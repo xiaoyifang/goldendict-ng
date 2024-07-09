@@ -13,6 +13,7 @@ public:
 
   bool play( const uint8_t * data, qint64 len );
   void setAudioFormat( int sampleRate, int channels );
+  void stop();
 
 protected:
   QScopedPointer< AudioOutputPrivate > d_ptr;

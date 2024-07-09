@@ -73,7 +73,7 @@ __attribute__( ( packed ) )
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Class idx( indexFile, "rb" );
+  File::Index idx( indexFile, "rb" );
 
   IdxHeader header;
 
@@ -84,7 +84,7 @@ bool indexIsOldOrBad( string const & indexFile )
 class DictdDictionary: public BtreeIndexing::BtreeDictionary
 {
   QMutex idxMutex;
-  File::Class idx, indexFile; // The later is .index file
+  File::Index idx, indexFile; // The later is .index file
   IdxHeader idxHeader;
   dictData * dz;
   QMutex indexFileMutex, dzMutex;
@@ -140,7 +140,7 @@ public:
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
-    can_FTS = fts.enabled && !fts.disabledTypes.contains( "DICTD", Qt::CaseInsensitive )
+    can_FTS = enable_FTS && fts.enabled && !fts.disabledTypes.contains( "DICTD", Qt::CaseInsensitive )
       && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
 };
@@ -177,12 +177,8 @@ DictdDictionary::DictdDictionary( string const & id,
 
   // Full-text search parameters
 
-  can_FTS = true;
-
   ftsIdxName = indexFile + Dictionary::getFtsSuffix();
 
-  if ( !Dictionary::needToRebuildIndex( dictionaryFiles, ftsIdxName ) && !FtsHelpers::ftsIndexIsOldOrBad( this ) )
-    FTS_index_completed.ref();
 }
 
 DictdDictionary::~DictdDictionary()
@@ -254,10 +250,10 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
   try {
     vector< WordArticleLink > chain = findArticles( word, ignoreDiacritics );
 
-    for ( unsigned x = 0; x < alts.size(); ++x ) {
+    for ( const auto & alt : alts ) {
       /// Make an additional query for each alt
 
-      vector< WordArticleLink > altChain = findArticles( alts[ x ], ignoreDiacritics );
+      vector< WordArticleLink > altChain = findArticles( alt, ignoreDiacritics );
 
       chain.insert( chain.end(), altChain.begin(), altChain.end() );
     }
@@ -274,15 +270,15 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
 
     char buf[ 16384 ];
 
-    for ( unsigned x = 0; x < chain.size(); ++x ) {
-      if ( articlesIncluded.find( chain[ x ].articleOffset ) != articlesIncluded.end() )
+    for ( auto & x : chain ) {
+      if ( articlesIncluded.find( x.articleOffset ) != articlesIncluded.end() )
         continue; // We already have this article in the body.
 
       // Now load that article
 
       {
         QMutexLocker _( &indexFileMutex );
-        indexFile.seek( chain[ x ].articleOffset );
+        indexFile.seek( x.articleOffset );
 
         if ( !indexFile.gets( buf, sizeof( buf ), true ) )
           throw exFailedToReadLineFromIndex();
@@ -382,16 +378,16 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
 
       // We do the case-folded comparison here.
 
-      wstring headwordStripped = Folding::applySimpleCaseOnly( chain[ x ].word );
+      wstring headwordStripped = Folding::applySimpleCaseOnly( x.word );
       if ( ignoreDiacritics )
         headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
 
       multimap< wstring, string > & mapToUse =
         ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
 
-      mapToUse.insert( pair( Folding::applySimpleCaseOnly( chain[ x ].word ), articleText ) );
+      mapToUse.insert( pair( Folding::applySimpleCaseOnly( x.word ), articleText ) );
 
-      articlesIncluded.insert( chain[ x ].articleOffset );
+      articlesIncluded.insert( x.articleOffset );
     }
 
     if ( mainArticles.empty() && alternateArticles.empty() )
@@ -551,17 +547,17 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 {
   vector< sptr< Dictionary::Class > > dictionaries;
 
-  for ( vector< string >::const_iterator i = fileNames.begin(); i != fileNames.end(); ++i ) {
+  for ( const auto & fileName : fileNames ) {
     // Only allow .index suffixes
 
-    if ( i->size() < 6 || strcasecmp( i->c_str() + ( i->size() - 6 ), ".index" ) != 0 )
+    if ( !Utils::endsWithIgnoreCase( fileName, ".index" ) )
       continue;
 
     try {
-      vector< string > dictFiles( 1, *i );
+      vector< string > dictFiles( 1, fileName );
 
       // Check if there is an 'abrv' file present
-      string baseName( *i, 0, i->size() - 5 );
+      string baseName( fileName, 0, fileName.size() - 5 );
 
       dictFiles.push_back( string() );
 
@@ -583,7 +579,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         initializing.indexingDictionary( dictionaryName );
 
-        File::Class idx( indexFile, "wb" );
+        File::Index idx( indexFile, "wb" );
 
         IdxHeader idxHeader;
 
@@ -596,7 +592,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         IndexedWords indexedWords;
 
-        File::Class indexFile( dictFiles[ 0 ], "rb" );
+        File::Index indexFile( dictFiles[ 0 ], "rb" );
 
         // Read words from index until none's left.
 
@@ -699,12 +695,12 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         idxHeader.signature     = Signature;
         idxHeader.formatVersion = CurrentFormatVersion;
 
-        // read languages
-        QPair< quint32, quint32 > langs = LangCoder::findIdsForFilename( QString::fromStdString( dictFiles[ 0 ] ) );
+        // read languages from dictioanry file name
+        auto langs = LangCoder::findLangIdPairFromPath( dictFiles[ 0 ] );
 
         // if no languages found, try dictionary's name
         if ( langs.first == 0 || langs.second == 0 ) {
-          langs = LangCoder::findIdsForFilename( QString::fromStdString( nameFromFileName( dictFiles[ 0 ] ) ) );
+          langs = LangCoder::findLangIdPairFromName( QString::fromStdString( dictionaryName ) );
         }
 
         idxHeader.langFrom = langs.first;
@@ -718,7 +714,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       dictionaries.push_back( std::make_shared< DictdDictionary >( dictId, indexFile, dictFiles ) );
     }
     catch ( std::exception & e ) {
-      gdWarning( "Dictd dictionary \"%s\" reading failed, error: %s\n", i->c_str(), e.what() );
+      gdWarning( "Dictd dictionary \"%s\" reading failed, error: %s\n", fileName.c_str(), e.what() );
     }
   }
 

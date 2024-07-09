@@ -1,0 +1,173 @@
+name: Release macOS
+concurrency: 
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+on: 
+  workflow_dispatch:
+  push:
+    branches:
+      - dev
+      - master
+      - experimental
+      # - staged
+    paths-ignore:
+      - 'docs/**'
+      # - ".github/**"
+      - "howto/**"
+      - "*.md"
+      - ".clang-format"
+jobs:
+  build:
+    name: Build
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-12,macos-14]
+        qt_ver: [ 6.7.2,6.6.3 ]
+        qt_arch: [clang_64]
+    env:
+      targetName: GoldenDict
+      version: 24.05.13
+      version-suffix: ${{ !contains(github.ref_name,'master') && 'alpha' || 'NextNameHere' }}
+      prerelease: ${{ !contains(github.ref_name,'master') }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: true
+      - name: Set outputs
+        id: githash
+        run: |
+          echo "sha_short=$(git rev-parse --short HEAD)"    >> $GITHUB_OUTPUT
+       
+      - name: install deps on macos
+        run: |
+          export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=TRUE
+          brew install cmake ninja pkg-config create-dmg \
+          opencc libzim hunspell xapian \
+          libiconv libogg libvorbis \
+          lzo bzip2 zstd lzip
+          
+          git clone https://github.com/xiaoyifang/eb.git
+          cd eb && ./configure && make -j 8 && sudo make install && cd ..
+
+      - name: version-file
+        shell: bash
+        env:
+          VAR_SUFFIX: ${{env.version-suffix}}
+          VAR_VERSION: ${{env.version}}
+        run: |
+          current_tag=$(git rev-parse --short=8 HEAD)
+          release_date=$(date +'%Y%m%d')
+          echo "$VAR_VERSION-$VAR_SUFFIX.$release_date.$current_tag">version.txt  
+          cat version.txt
+          echo "$version"     
+                
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: ${{ matrix.qt_ver }}
+          arch: ${{ matrix.qt_arch }}
+          modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
+          
+      - name: compile
+        run: |
+          mkdir build_dir
+          cmake -S . -B build_dir -G Ninja -DWITH_FFMPEG_PLAYER=OFF -DWITH_TTS=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_DEPLOYMENT_TARGET="12.0"
+          cmake --build build_dir
+          
+      - name: package
+        run: |
+          cmake --install build_dir/
+      - name: changelog
+        id: changelog
+        env:
+          prerelease: ${{env.prerelease}}
+        run: |
+          if [[ "$prerelease" == 'true' ]]
+          then
+            echo "This is a pre-release"
+            previousTag=$(git tag --sort=-creatordate | grep "^v" | sed -n 2p)
+            currentTag=$(git tag --sort=-creatordate | grep "^v" | sed -n 1p)
+          else 
+            echo "This is not a pre-release"
+            previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v "alpha"  | sed -n 2p)
+            currentTag=$(git tag --sort=-creatordate | grep "^v"  | grep -v "alpha" | sed -n 1p)
+          fi
+          echo "prev_tag=$previousTag" >> $GITHUB_OUTPUT
+          echo "curr_tag=$currentTag" >> $GITHUB_OUTPUT
+          echo "previousTag : $previousTag"
+          echo "currentTag : $currentTag"
+
+      - name: Set outputs
+        id: vars
+        run: |
+          echo "sha_short=$(git rev-parse --short=8 HEAD)"     >> $GITHUB_OUTPUT
+          echo "release_date=$(date +'%Y%m%d')"     >> $GITHUB_OUTPUT
+          echo "release_time=$(date +'%H%M%S')"   >> $GITHUB_OUTPUT
+          echo "release_time_clock=$(date +'%H:%M:%S')"    >> $GITHUB_OUTPUT
+          echo "release_hm=$(date +'%y%m%d')"   >> $GITHUB_OUTPUT
+
+      # tag 上传Release
+      - name: "Build Changelog"
+        id: build_changelog
+        uses: mikepenz/release-changelog-builder-action@v3
+        with:
+          commitMode: false
+          fromTag: ${{ steps.changelog.outputs.prev_tag }}
+          toTag:  "${{ steps.changelog.outputs.curr_tag }}"  
+          configurationJson: |
+            {
+              "template": "#{{CHANGELOG}}\n\n<details>\n<summary>🔴 Uncategorized</summary>\n\n#{{UNCATEGORIZED}}\n</details>",
+              "categories": [
+                {
+                    "title": "## 🚀 Features",
+                    "labels": ["feature","feat","opt"]
+                },
+                {
+                    "title": "## 🐛 Fixes",
+                    "labels": ["fix","bug"]
+                }
+                ,
+                {
+                    "title": "##  🤖  Github action",
+                    "labels": ["action"]
+                }
+                ,
+                {
+                    "title": "##  🧼  Clean Code",
+                    "labels": ["clean"]
+                }
+
+              ],
+              "label_extractor": [
+              {
+                "pattern": "([^:]*):.*",
+                "target": "$1",
+                "on_property": "title",
+                "flags": "gu"
+              }
+            ]
+            }          
+      - name: uploadRelease
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: "*.dmg"
+          file_glob: true
+          tag: v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.sha_short }}
+          overwrite: true
+          release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
+          prerelease: ${{env.prerelease}}
+          body: |
+            [Install instructions for Windows, macOS and Linux](https://xiaoyifang.github.io/goldendict-ng/install/).
+            
+            Filaname pattern: GoldenDict-[version]-[Qt version]-[system name]-...
+            
+            For Linux, released vesion is on Flathub -> [io.github.xiaoyifang.goldendict_ng](https://flathub.org/apps/io.github.xiaoyifang.goldendict_ng).
+  
+            Based on branch: ${{github.ref_name}}
+  
+            #### Changes
+            
+            ${{steps.build_changelog.outputs.changelog}}

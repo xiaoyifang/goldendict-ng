@@ -16,16 +16,14 @@
 #include "groupcombobox.hh"
 #include "globalbroadcaster.hh"
 #include "article_inspect.hh"
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-  #include <QtCore5Compat/QRegExp>
-
-#endif
+#include <QRegularExpression>
 #include "ankiconnector.hh"
 #include "webmultimediadownload.hh"
 #include "base_type.hh"
 #include "articlewebview.hh"
 #include "ui/searchpanel.hh"
 #include "ui/ftssearchpanel.hh"
+#include "dictionary_group.hh"
 
 class ResourceToSaveHandler;
 class ArticleViewAgent;
@@ -38,8 +36,7 @@ class ArticleView: public QWidget
 
   ArticleNetworkAccessManager & articleNetMgr;
   AudioPlayerPtr const & audioPlayer;
-  std::vector< sptr< Dictionary::Class > > const & allDictionaries;
-  Instances::Groups const & groups;
+  std::unique_ptr< DictionaryGroup > dictionaryGroup;
   bool popupView;
   Config::Class const & cfg;
   QWebChannel * channel;
@@ -49,10 +46,8 @@ class ArticleView: public QWidget
 
   QAction pasteAction, articleUpAction, articleDownAction, goBackAction, goForwardAction, selectCurrentArticleAction,
     copyAsTextAction, inspectAction;
-  QAction & openSearchAction;
-  bool searchIsOpened;
+
   bool expandOptionalParts;
-  QString rangeVarName;
 
   /// An action used to create Anki notes.
   QAction sendToAnkiAction{ tr( "&Create Anki note" ), this };
@@ -68,7 +63,7 @@ class ArticleView: public QWidget
   QSet< QString > desktopOpenedTempFiles;
 
   QAction * dictionaryBarToggled;
-  GroupComboBox const * groupComboBox;
+
   unsigned currentGroupId;
   QLineEdit const * translateLine;
 
@@ -86,9 +81,6 @@ class ArticleView: public QWidget
   /// Search in results of full-text search
   QString firstAvailableText;
   QStringList uniqueMatches;
-  bool ftsSearchIsOpened  = false;
-  bool ftsSearchMatchCase = false;
-  int ftsPosition         = 0;
 
   QString delayedHighlightText;
 
@@ -106,16 +98,16 @@ public:
                Instances::Groups const &,
                bool popupView,
                Config::Class const & cfg,
-               QAction & openSearchAction_,
                QLineEdit const * translateLine,
-               QAction * dictionaryBarToggled      = nullptr,
-               GroupComboBox const * groupComboBox = nullptr );
+               QAction * dictionaryBarToggled = nullptr,
+               unsigned currentGroupId        = 0 );
 
 
   void setCurrentGroupId( unsigned currengGrgId );
   unsigned getCurrentGroupId();
 
   virtual QSize minimumSizeHint() const;
+  void clearContent();
 
   ~ArticleView();
 
@@ -136,9 +128,10 @@ public:
 
   void showDefinition( QString const & word,
                        QStringList const & dictIDs,
-                       QRegExp const & searchRegExp,
+                       QRegularExpression const & searchRegExp,
                        unsigned group,
                        bool ignoreDiacritics );
+  void showDefinition( QString const & word, QStringList const & dictIDs, unsigned group, bool ignoreDiacritics );
 
   void sendToAnki( QString const & word, QString const & text, QString const & sentence );
   /// Clears the view and sets the application-global waiting cursor,
@@ -172,6 +165,9 @@ public:
 
   void setDelayedHighlightText( QString const & text );
 
+  /// \brief Set background as black if darkreader mode is enabled.
+  void syncBackgroundColorWithCfgDarkReader() const;
+
 private:
   // widgets
   ArticleWebView * webview;
@@ -199,6 +195,8 @@ public:
 
   /// Reloads the view
   void reload();
+
+  void stopSound();
 
   /// Returns true if there's an audio reference on the page, false otherwise.
   void hasSound( const std::function< void( bool has ) > & callback );
@@ -258,8 +256,6 @@ public:
 
 signals:
 
-  void iconChanged( ArticleView *, QIcon const & icon );
-
   void titleChanged( ArticleView *, QString const & title );
 
   void pageLoaded( ArticleView * );
@@ -314,6 +310,9 @@ signals:
 
 public slots:
 
+  /// Opens the search (Ctrl+F)
+  void openSearch();
+
   void on_searchPrevious_clicked();
   void on_searchNext_clicked();
 
@@ -332,7 +331,6 @@ private slots:
   void inspectElement();
   void loadFinished( bool ok );
   void handleTitleChanged( QString const & title );
-  void handleUrlChanged( QUrl const & url );
   void attachWebChannelToHtml();
 
   void linkHovered( const QString & link );
@@ -340,7 +338,7 @@ private slots:
 
   bool isAudioLink( QUrl & targetUrl )
   {
-    return ( targetUrl.scheme() == "gdau" || Dictionary::WebMultimediaDownload::isAudioUrl( targetUrl ) );
+    return ( targetUrl.scheme() == "gdau" || Utils::Url::isAudioUrl( targetUrl ) );
   }
 
   void resourceDownloadFinished();
@@ -356,14 +354,10 @@ private slots:
   /// Nagivates to the next article relative to the active one.
   void moveOneArticleDown();
 
-  /// Opens the search area
-  void openSearch();
-
   void on_searchText_textEdited();
   void on_searchText_returnPressed();
   void on_searchCloseButton_clicked();
   void on_searchCaseSensitive_clicked();
-  void on_highlightAllButton_clicked();
 
   void on_ftsSearchPrevious_clicked();
   void on_ftsSearchNext_clicked();
@@ -399,10 +393,6 @@ private:
   /// frame.
   void isFramedArticle( QString const & article, const std::function< void( bool framed ) > & callback );
 
-  /// Checks if the given link is to be opened externally, as opposed to opening
-  /// it in-place.
-  bool isExternalLink( QUrl const & url );
-
   /// Sees if the last clicked link is from a website frame. If so, changes url
   /// to point to url text translation instead, and saves the original
   /// url to the appropriate "contexts" entry.
@@ -416,17 +406,13 @@ private:
 
   bool eventFilter( QObject * obj, QEvent * ev ) override;
 
-  void performFindOperation( bool restart, bool backwards, bool checkHighlight = false );
+  void performFindOperation( bool backwards );
 
   /// Returns the comma-separated list of dictionary ids which should be muted
   /// for the given group. If there are none, returns empty string.
   QString getMutedForGroup( unsigned group );
 
   QStringList getMutedDictionaries( unsigned group );
-
-protected:
-  // We need this to hide the search bar when we're showed
-  void showEvent( QShowEvent * ) override;
 };
 
 class ResourceToSaveHandler: public QObject

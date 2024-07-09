@@ -322,8 +322,8 @@ void ProgramWordSearchRequest::instanceFinished( QByteArray output, QString erro
     output.replace( "\r\n", "\n" );
     QStringList result = QString::fromUtf8( output ).split( "\n", Qt::SkipEmptyParts );
 
-    for ( int x = 0; x < result.size(); ++x )
-      matches.push_back( Dictionary::WordMatch( gd::toWString( result[ x ] ) ) );
+    for ( const auto & x : result )
+      matches.push_back( Dictionary::WordMatch( gd::toWString( x ) ) );
 
     if ( !error.isEmpty() )
       setErrorString( error );
@@ -342,9 +342,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::Programs const & p
 {
   vector< sptr< Dictionary::Class > > result;
 
-  for ( Config::Programs::const_iterator i = programs.begin(); i != programs.end(); ++i )
-    if ( i->enabled )
-      result.push_back( std::make_shared< ProgramsDictionary >( *i ) );
+  for ( const auto & program : programs )
+    if ( program.enabled )
+      result.push_back( std::make_shared< ProgramsDictionary >( program ) );
 
   return result;
 }

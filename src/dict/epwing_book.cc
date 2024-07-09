@@ -61,6 +61,7 @@ HookFunc( hook_mpeg );
 HookFunc( hook_narrow_font );
 HookFunc( hook_wide_font );
 HookFunc( hook_reference );
+HookFunc( hook_candidate );
 
 const EB_Hook hooks[] = { { EB_HOOK_NEWLINE, hook_newline },
                           { EB_HOOK_ISO8859_1, hook_iso8859_1 },
@@ -89,6 +90,7 @@ const EB_Hook hooks[] = { { EB_HOOK_NEWLINE, hook_newline },
                           { EB_HOOK_WIDE_FONT, hook_wide_font },
                           { EB_HOOK_BEGIN_REFERENCE, hook_reference },
                           { EB_HOOK_END_REFERENCE, hook_reference },
+                          { EB_HOOK_END_CANDIDATE_GROUP, hook_candidate },
                           { EB_HOOK_NULL, NULL } };
 
 const EB_Hook refHooks[] = {
@@ -377,6 +379,21 @@ hook_reference( EB_Book * book, EB_Appendix *, void * container, EB_Hook_Code co
   return EB_SUCCESS;
 }
 
+EB_Error_Code
+hook_candidate( EB_Book * book, EB_Appendix *, void * container, EB_Hook_Code code, int, const unsigned int * argv )
+{
+  EContainer * cn = static_cast< EContainer * >( container );
+
+  if ( cn->textOnly )
+    return EB_SUCCESS;
+
+  QByteArray str = cn->book->handleCandidate( code, argv );
+  if ( !str.isEmpty() )
+    eb_write_text( book, str.data(), str.size() );
+
+  return EB_SUCCESS;
+}
+
 // EpwingBook class
 
 EpwingBook::EpwingBook():
@@ -564,7 +581,7 @@ QString EpwingBook::createCacheDir( QString const & dirName )
   if ( !info.exists() || !info.isDir() ) {
     if ( !dir.mkdir( mainCacheDir ) ) {
       gdWarning( "Epwing: can't create cache directory \"%s\"", mainCacheDir.toUtf8().data() );
-      return QString();
+      return {};
     }
   }
 
@@ -573,7 +590,7 @@ QString EpwingBook::createCacheDir( QString const & dirName )
   if ( !info.exists() || !info.isDir() ) {
     if ( !dir.mkdir( cacheDir ) ) {
       gdWarning( "Epwing: can't create cache directory \"%s\"", cacheDir.toUtf8().data() );
-      return QString();
+      return {};
     }
   }
   return cacheDir;
@@ -596,7 +613,36 @@ QString EpwingBook::getCurrentSubBookDirectory()
     throw exEbLibrary( error_string.toUtf8().data() );
   }
 
-  return QString::fromLocal8Bit( buffer );
+  QString subDir = QString::fromLocal8Bit( buffer );
+
+  return repairSubBookDirectory( subDir );
+}
+
+QString EpwingBook::repairSubBookDirectory( QString subBookDir )
+{
+  char path[ EB_MAX_PATH_LENGTH + 1 ];
+  EB_Error_Code error_code = eb_path( &book, path );
+  if ( error_code != EB_SUCCESS )
+    return subBookDir;
+
+  const QString & mainDirectory = QString::fromLocal8Bit( path );
+  QDir mainDir( mainDirectory );
+  QStringList allIdxFiles = mainDir.entryList( QDir::Dirs | QDir::NoDotAndDotDot | QDir::NoSymLinks );
+
+  if ( allIdxFiles.contains( subBookDir ) ) {
+    return subBookDir;
+  }
+
+  qDebug() << "Epwing: can not found subbook directory,try to fix automatically, dir=>" << subBookDir;
+
+  for ( const auto & file : allIdxFiles ) {
+    if ( file.compare( subBookDir, Qt::CaseInsensitive ) == 0 ) {
+      qDebug() << "Epwing: found " << file;
+      return file;
+    }
+  }
+  //return original subbook directory
+  return subBookDir;
 }
 
 QString EpwingBook::makeFName( QString const & ext, int page, int offset ) const
@@ -620,7 +666,7 @@ QString EpwingBook::title()
   if ( codec_Euc )
     return codec_Euc->toUnicode( buf );
 
-  return QString();
+  return {};
 }
 
 QString EpwingBook::copyright()
@@ -628,7 +674,7 @@ QString EpwingBook::copyright()
   error_string.clear();
 
   if ( !eb_have_copyright( &book ) )
-    return QString();
+    return {};
 
   EB_Position position;
   EB_Error_Code ret = eb_copyright( &book, &position );
@@ -642,9 +688,18 @@ QString EpwingBook::copyright()
   return getText( position.page, position.offset, true );
 }
 
+QList< EpwingHeadword > EpwingBook::candidate( int page, int offset )
+{
+  //clear candidateItems in getText;
+  candidateItems.clear();
+  getText( page, offset, false );
+  return candidateItems;
+}
+
 QString EpwingBook::getText( int page, int offset, bool text_only )
 {
   error_string.clear();
+  candidateItems.clear();
 
   seekBookThrow( page, offset );
 
@@ -672,7 +727,7 @@ QString EpwingBook::getText( int page, int offset, bool text_only )
     if ( buf.length() > TextSizeLimit ) {
       error_string         = "Data too large";
       currentPosition.page = 0;
-      return QString();
+      return {};
     }
   }
 
@@ -784,7 +839,7 @@ QString EpwingBook::getPreviousTextWithLength( int page, int offset, int total, 
     if ( buf.length() > TextSizeLimit ) {
       error_string         = "Data too large";
       currentPosition.page = 0;
-      return QString();
+      return {};
     }
   }
 
@@ -792,7 +847,6 @@ QString EpwingBook::getPreviousTextWithLength( int page, int offset, int total, 
   finalizeText( text );
   return text;
 }
-
 
 void EpwingBook::getReferencesFromText( int page, int offset )
 {
@@ -843,15 +897,14 @@ EB_Error_Code EpwingBook::forwardText( EB_Position & startPos )
   }
 
   ret = eb_forward_text( &book, &appendix );
-  while ( ret == EB_ERR_END_OF_CONTENT ) {
-    ret = eb_tell_text( &book, &startPos );
-    if ( ret != EB_SUCCESS )
-      break;
+  while ( ret != EB_SUCCESS ) {
 
-    if ( startPos.page >= book.subbook_current->text.end_page )
+    if ( ret == EB_ERR_END_OF_CONTENT || startPos.page >= book.subbook_current->text.end_page )
       return EB_ERR_END_OF_CONTENT;
 
-    startPos.offset += 2;
+    const auto offset = startPos.offset + 2;
+    startPos.offset   = offset % EB_SIZE_PAGE;
+    startPos.page += offset / EB_SIZE_PAGE;
     currentPosition = startPos;
 
     ret = eb_seek_text( &book, &startPos );
@@ -862,7 +915,7 @@ EB_Error_Code EpwingBook::forwardText( EB_Position & startPos )
   return ret;
 }
 
-void EpwingBook::getFirstHeadword( EpwingHeadword & head )
+bool EpwingBook::getFirstHeadword( EpwingHeadword & head )
 {
   error_string.clear();
 
@@ -871,13 +924,15 @@ void EpwingBook::getFirstHeadword( EpwingHeadword & head )
   EB_Error_Code ret = eb_text( &book, &pos );
   if ( ret != EB_SUCCESS ) {
     setErrorString( "eb_text", ret );
-    throw exEbLibrary( error_string.toUtf8().data() );
+    qWarning() << error_string;
+    return false;
   }
 
   ret = forwardText( pos );
   if ( ret != EB_SUCCESS ) {
-    setErrorString( "forwardText", ret );
-    throw exEbLibrary( error_string.toUtf8().data() );
+    setErrorString( "getFirstHeadword", ret );
+    qWarning() << error_string;
+    return false;
   }
 
   eb_backward_text( &book, &appendix );
@@ -885,7 +940,49 @@ void EpwingBook::getFirstHeadword( EpwingHeadword & head )
   ret = eb_tell_text( &book, &pos );
   if ( ret != EB_SUCCESS ) {
     setErrorString( "eb_tell_text", ret );
-    throw exEbLibrary( error_string.toUtf8().data() );
+    qWarning() << error_string;
+    return false;
+  }
+
+  currentPosition        = pos;
+  indexHeadwordsPosition = pos;
+
+  head.page   = pos.page;
+  head.offset = pos.offset;
+
+  if ( !readHeadword( pos, head.headword, true ) ) {
+    qWarning() << error_string;
+    return false;
+  }
+
+  fixHeadword( head.headword );
+
+  allHeadwordPositions[ ( (uint64_t)pos.page ) << 32 | ( pos.offset ) ] = true;
+  return true;
+}
+
+bool EpwingBook::haveMenu()
+{
+  error_string.clear();
+
+  int ret = eb_have_menu( &book );
+  return ret == 1;
+}
+
+bool EpwingBook::getMenu( EpwingHeadword & head )
+{
+  error_string.clear();
+
+  if ( !haveMenu() ) {
+    return false;
+  }
+
+  EB_Position pos;
+
+  EB_Error_Code ret = eb_menu( &book, &pos );
+  if ( ret != EB_SUCCESS ) {
+    setErrorString( "getMenu", ret );
+    return false;
   }
 
   currentPosition        = pos;
@@ -895,18 +992,17 @@ void EpwingBook::getFirstHeadword( EpwingHeadword & head )
   head.offset = pos.offset;
 
   if ( !readHeadword( pos, head.headword, true ) )
-    throw exEbLibrary( error_string.toUtf8().data() );
+    return false;
 
   fixHeadword( head.headword );
 
-  EWPos epos( pos.page, pos.offset );
   allHeadwordPositions[ ( (uint64_t)pos.page ) << 32 | ( pos.offset ) ] = true;
+  return true;
 }
 
 bool EpwingBook::getNextHeadword( EpwingHeadword & head )
 {
   EB_Position pos;
-
 
   // No queued positions - forward to next article
 
@@ -936,8 +1032,10 @@ bool EpwingBook::getNextHeadword( EpwingHeadword & head )
     head.page   = pos.page;
     head.offset = pos.offset;
 
-    if ( !readHeadword( pos, head.headword, true ) )
-      throw exEbLibrary( error_string.toUtf8().data() );
+    if ( !readHeadword( pos, head.headword, true ) ) {
+      qDebug() << "Epwing: ignore the following error=> " << error_string;
+      continue;
+    }
 
     if ( head.headword.isEmpty() )
       continue;
@@ -1275,6 +1373,7 @@ void EpwingBook::finalizeText( QString & text )
     url.setHost( "localhost" );
 
     url.setPath( Utils::Url::ensureLeadingSlash( QString( "r%1At%2" ).arg( ebpos.page ).arg( ebpos.offset ) ) );
+    url.setQuery( "dictionaries=" + dictID );
 
     QString link = "<a href=\"" + url.toEncoded() + "\">";
 
@@ -1735,6 +1834,27 @@ QByteArray EpwingBook::handleReference( EB_Hook_Code code, const unsigned int * 
   refCloseCount += 1;
 
   return str.toUtf8();
+}
+
+QByteArray EpwingBook::handleCandidate( EB_Hook_Code code, const unsigned int * argv )
+{
+  EpwingHeadword w_headword;
+  w_headword.headword = currentCandidate();
+  w_headword.page     = argv[ 1 ];
+  w_headword.offset   = argv[ 2 ];
+
+  candidateItems << w_headword;
+  return QByteArray{};
+}
+
+QString EpwingBook::currentCandidate()
+{
+  const char * s = eb_current_candidate( &book );
+  if ( book.character_code == EB_CHARCODE_ISO8859_1 )
+    return QString::fromLatin1( s );
+  if ( codec_Euc )
+    return codec_Euc->toUnicode( s );
+  return QString{};
 }
 
 bool EpwingBook::getMatches( QString word, QVector< QString > & matches )

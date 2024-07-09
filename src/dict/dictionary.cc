@@ -32,15 +32,20 @@ bool Request::isFinished()
 
 void Request::update()
 {
-  if ( !Utils::AtomicInt::loadAcquire( isFinishedFlag ) )
+  if ( !Utils::AtomicInt::loadAcquire( isFinishedFlag ) ) {
     emit updated();
+  }
 }
 
 void Request::finish()
 {
   if ( !Utils::AtomicInt::loadAcquire( isFinishedFlag ) ) {
-    isFinishedFlag.ref();
+    {
+      QMutexLocker _( &dataMutex );
+      isFinishedFlag.ref();
 
+      cond.wakeAll();
+    }
     emit finished();
   }
 }
@@ -103,8 +108,13 @@ void WordSearchRequest::addMatch( WordMatch const & match )
 long DataRequest::dataSize()
 {
   QMutexLocker _( &dataMutex );
+  long size = hasAnyData ? (long)data.size() : -1;
 
-  return hasAnyData ? (long)data.size() : -1;
+  if ( size == 0 && !isFinished() ) {
+    cond.wait( &dataMutex );
+    size = hasAnyData ? (long)data.size() : -1;
+  }
+  return size;
 }
 
 void DataRequest::appendDataSlice( const void * buffer, size_t size )
@@ -116,6 +126,7 @@ void DataRequest::appendDataSlice( const void * buffer, size_t size )
   data.resize( data.size() + size );
 
   memcpy( &data.front() + offset, buffer, size );
+  cond.wakeAll();
 }
 
 void DataRequest::appendString( std::string_view str )
@@ -123,13 +134,14 @@ void DataRequest::appendString( std::string_view str )
   QMutexLocker _( &dataMutex );
   data.reserve( data.size() + str.size() );
   data.insert( data.end(), str.begin(), str.end() );
+  cond.wakeAll();
 }
 
 void DataRequest::getDataSlice( size_t offset, size_t size, void * buffer )
 {
-  if ( size == 0 )
+  if ( size == 0 ) {
     return;
-
+  }
   QMutexLocker _( &dataMutex );
 
   if ( !hasAnyData )
@@ -178,7 +190,7 @@ sptr< WordSearchRequest > Class::findHeadwordsForSynonym( wstring const & )
 
 vector< wstring > Class::getAlternateWritings( wstring const & ) noexcept
 {
-  return vector< wstring >();
+  return {};
 }
 
 QString Class::getContainingFolder() const
@@ -190,7 +202,7 @@ QString Class::getContainingFolder() const
     return fileInfo.absolutePath();
   }
 
-  return QString();
+  return {};
 }
 
 sptr< DataRequest > Class::getResource( string const & /*name*/ )
@@ -211,7 +223,7 @@ QString const & Class::getDescription()
 
 QString Class::getMainFilename()
 {
-  return QString();
+  return {};
 }
 
 QIcon const & Class::getIcon() noexcept
@@ -312,7 +324,7 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
     QFont font = painter.font();
     //the text should be a little smaller than the icon
     font.setPixelSize( iconSize * 0.6 );
-    font.setWeight( QFont::Black );
+    font.setWeight( QFont::Bold );
     painter.setFont( font );
 
     const QRect rectangle = QRect( 0, 0, iconSize, iconSize );
@@ -320,6 +332,7 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
     //select a single char.
     auto abbrName = getAbbrName( text );
 
+    painter.setPen( QColor( 4, 57, 108, 200 ) );
     painter.drawText( rectangle, Qt::AlignCenter, abbrName );
 
     painter.end();
@@ -334,16 +347,24 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
 QString Class::getAbbrName( QString const & text )
 {
   if ( text.isEmpty() )
-    return QString();
-  //remove whitespace
+    return {};
+  //remove whitespace,number,mark,puncuation,symbol
   QString simplified = text;
-  simplified.remove( QRegularExpression( "\\s" ) );
+  simplified.remove(
+    QRegularExpression( R"([\p{Z}\p{N}\p{M}\p{P}\p{S}])", QRegularExpression::UseUnicodePropertiesOption ) );
+
+  if ( simplified.isEmpty() )
+    return {};
   int index = qHash( simplified ) % simplified.size();
 
   QString abbrName;
   if ( !Utils::isCJKChar( simplified.at( index ).unicode() ) ) {
     // take two chars.
     abbrName = simplified.mid( index, 2 );
+    if ( abbrName.size() == 1 ) {
+      //make up two characters.
+      abbrName = abbrName + simplified.at( 0 );
+    }
   }
   else {
     abbrName = simplified.mid( index, 1 );
@@ -357,6 +378,7 @@ void Class::isolateCSS( QString & css, QString const & wrapperSelector )
   if ( css.isEmpty() )
     return;
 
+  //comment syntax like:/* */
   QRegularExpression reg1( R"(\/\*(?:.(?!\*\/))*.?\*\/)", QRegularExpression::DotMatchesEverythingOption );
   QRegularExpression reg2( R"([ \*\>\+,;:\[\{\]])" );
   QRegularExpression reg3( "[,;\\{]" );
@@ -371,6 +393,9 @@ void Class::isolateCSS( QString & css, QString const & wrapperSelector )
 
   // Strip comments
   css.replace( reg1, QString() );
+
+  //replace the pseudo root selector with the prefix,like ":root  {"  to  "html{"
+  css.replace( QRegularExpression( R"(:root\s*{)" ), "html{" );
 
   for ( ;; ) {
     if ( currentPos >= css.length() )
@@ -544,7 +569,7 @@ bool needToRebuildIndex( vector< string > const & dictionaryFiles, string const 
     }
     else {
       if ( !fileInfo.exists() )
-        return true;
+        continue;
       ts = fileInfo.lastModified().toSecsSinceEpoch();
     }
 

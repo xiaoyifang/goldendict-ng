@@ -32,12 +32,6 @@
 #include <QSemaphore>
 #include <QThreadPool>
 
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-  #include <QtCore5Compat/QRegExp>
-#else
-  #include <QRegExp>
-#endif
-
 namespace Bgl {
 
 using std::map;
@@ -91,7 +85,7 @@ __attribute__( ( packed ) )
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Class idx( indexFile, "rb" );
+  File::Index idx( indexFile, "rb" );
 
   IdxHeader header;
 
@@ -175,7 +169,7 @@ DEF_EX( exChunkIndexOutOfRange, "Chunk index is out of range", Dictionary::Ex )
 class BglDictionary: public BtreeIndexing::BtreeDictionary
 {
   QMutex idxMutex;
-  File::Class idx;
+  File::Index idx;
   IdxHeader idxHeader;
   ChunkedStorage::Reader chunks;
 
@@ -225,7 +219,7 @@ public:
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
-    can_FTS = fts.enabled && !fts.disabledTypes.contains( "BGL", Qt::CaseInsensitive )
+    can_FTS = enable_FTS && fts.enabled && !fts.disabledTypes.contains( "BGL", Qt::CaseInsensitive )
       && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
 
@@ -270,13 +264,7 @@ BglDictionary::BglDictionary( string const & id, string const & indexFile, strin
 
   openIndex( IndexInfo( idxHeader.indexBtreeMaxElements, idxHeader.indexRootOffset ), idx, idxMutex );
 
-  can_FTS = true;
-
   ftsIdxName = indexFile + Dictionary::getFtsSuffix();
-
-  if ( !Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
-       && !FtsHelpers::ftsIndexIsOldOrBad( this ) )
-    FTS_index_completed.ref();
 }
 
 void BglDictionary::loadIcon() noexcept
@@ -405,13 +393,13 @@ void BglDictionary::getArticleText( uint32_t articleAddress, QString & headword,
     wstring wstr = Utf8::decode( articleStr );
 
     if ( getLangTo() == LangCoder::code2toInt( "he" ) ) {
-      for ( unsigned int i = 0; i < wstr.size(); i++ ) {
+      for ( char32_t & i : wstr ) {
         if (
-          ( wstr[ i ] >= 224 && wstr[ i ] <= 250 )
-          || ( wstr[ i ] >= 192
-               && wstr[ i ]
+          ( i >= 224 && i <= 250 )
+          || ( i >= 192
+               && i
                  <= 210 ) ) // Hebrew chars encoded ecoded as windows-1255 or ISO-8859-8, or as vowel-points of windows-1255
-          wstr[ i ] += 1488 - 224; // Convert to Hebrew unicode
+          i += 1488 - 224; // Convert to Hebrew unicode
       }
     }
 
@@ -492,7 +480,7 @@ void BglHeadwordsRequest::run()
 
   wstring caseFolded = Folding::applySimpleCaseOnly( str );
 
-  for ( unsigned x = 0; x < chain.size(); ++x ) {
+  for ( auto & x : chain ) {
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
       finish();
       return;
@@ -500,7 +488,7 @@ void BglHeadwordsRequest::run()
 
     string headword, displayedHeadword, articleText;
 
-    dict.loadArticle( chain[ x ].articleOffset, headword, displayedHeadword, articleText );
+    dict.loadArticle( x.articleOffset, headword, displayedHeadword, articleText );
 
     wstring headwordDecoded;
     try {
@@ -610,13 +598,13 @@ void BglArticleRequest::fixHebString( string & hebStr ) // Hebrew support - conv
     return;
   }
 
-  for ( unsigned int i = 0; i < hebWStr.size(); i++ ) {
+  for ( char32_t & i : hebWStr ) {
     if (
-      ( hebWStr[ i ] >= 224 && hebWStr[ i ] <= 250 )
-      || ( hebWStr[ i ] >= 192
-           && hebWStr[ i ]
+      ( i >= 224 && i <= 250 )
+      || ( i >= 192
+           && i
              <= 210 ) ) // Hebrew chars encoded ecoded as windows-1255 or ISO-8859-8, or as vowel-points of windows-1255
-      hebWStr[ i ] += 1488 - 224; // Convert to Hebrew unicode
+      i += 1488 - 224;  // Convert to Hebrew unicode
   }
   hebStr = Utf8::encode( hebWStr );
 }
@@ -645,10 +633,10 @@ void BglArticleRequest::run()
 
   static Language::Id hebrew = LangCoder::code2toInt( "he" ); // Hebrew support
 
-  for ( unsigned x = 0; x < alts.size(); ++x ) {
+  for ( const auto & alt : alts ) {
     /// Make an additional query for each alt
 
-    vector< WordArticleLink > altChain = dict.findArticles( alts[ x ], ignoreDiacritics );
+    vector< WordArticleLink > altChain = dict.findArticles( alt, ignoreDiacritics );
 
     chain.insert( chain.end(), altChain.begin(), altChain.end() );
   }
@@ -666,7 +654,7 @@ void BglArticleRequest::run()
   if ( ignoreDiacritics )
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
 
-  for ( unsigned x = 0; x < chain.size(); ++x ) {
+  for ( auto & x : chain ) {
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
       finish();
       return;
@@ -674,14 +662,14 @@ void BglArticleRequest::run()
 
     try {
 
-      if ( articlesIncluded.find( chain[ x ].articleOffset ) != articlesIncluded.end() )
+      if ( articlesIncluded.find( x.articleOffset ) != articlesIncluded.end() )
         continue; // We already have this article in the body.
 
       // Now grab that article
 
       string headword, displayedHeadword, articleText;
 
-      dict.loadArticle( chain[ x ].articleOffset, headword, displayedHeadword, articleText );
+      dict.loadArticle( x.articleOffset, headword, displayedHeadword, articleText );
 
       // Ok. Now, does it go to main articles, or to alternate ones? We list
       // main ones first, and alternates after.
@@ -714,7 +702,7 @@ void BglArticleRequest::run()
 
       mapToUse.insert( pair( Folding::applySimpleCaseOnly( headword ), pair( targetHeadword, articleText ) ) );
 
-      articlesIncluded.insert( chain[ x ].articleOffset );
+      articlesIncluded.insert( x.articleOffset );
 
     } // try
     catch ( std::exception & ex ) {
@@ -815,7 +803,7 @@ class BglResourceRequest: public Dictionary::DataRequest
 {
 
   QMutex & idxMutex;
-  File::Class & idx;
+  File::Index & idx;
   uint32_t resourceListOffset, resourcesCount;
   string name;
 
@@ -825,7 +813,7 @@ class BglResourceRequest: public Dictionary::DataRequest
 public:
 
   BglResourceRequest( QMutex & idxMutex_,
-                      File::Class & idx_,
+                      File::Index & idx_,
                       uint32_t resourceListOffset_,
                       uint32_t resourcesCount_,
                       string const & name_ ):
@@ -863,8 +851,8 @@ void BglResourceRequest::run()
 
   string nameLowercased = name;
 
-  for ( string::iterator i = nameLowercased.begin(); i != nameLowercased.end(); ++i )
-    *i = tolower( *i );
+  for ( char & i : nameLowercased )
+    i = tolower( i );
 
   QMutexLocker _( &idxMutex );
 
@@ -929,7 +917,7 @@ void BglDictionary::replaceCharsetEntities( string & text )
 
   QRegularExpression charsetExp(
     R"(<\s*charset\s+c\s*=\s*["']?t["']?\s*>((?:\s*[0-9a-fA-F]+\s*;\s*)*)<\s*/\s*charset\s*>)",
-    QRegularExpression::CaseInsensitiveOption | QRegularExpression::InvertedGreedinessOption );
+    QRegularExpression::CaseInsensitiveOption );
 
   QRegularExpression oneValueExp( "\\s*([0-9a-fA-F]+)\\s*;" );
   QString result;
@@ -959,12 +947,12 @@ void BglDictionary::replaceCharsetEntities( string & text )
 
 class ResourceHandler: public Babylon::ResourceHandler
 {
-  File::Class & idxFile;
+  File::Index & idxFile;
   list< pair< string, uint32_t > > resources;
 
 public:
 
-  ResourceHandler( File::Class & idxFile_ ):
+  ResourceHandler( File::Index & idxFile_ ):
     idxFile( idxFile_ )
   {
   }
@@ -1020,15 +1008,15 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 {
   vector< sptr< Dictionary::Class > > dictionaries;
 
-  for ( vector< string >::const_iterator i = fileNames.begin(); i != fileNames.end(); ++i ) {
+  for ( const auto & fileName : fileNames ) {
     // Skip files with the extensions different to .bgl to speed up the
     // scanning
-    if ( i->size() < 4 || strcasecmp( i->c_str() + ( i->size() - 4 ), ".bgl" ) != 0 )
+    if ( !Utils::endsWithIgnoreCase( fileName, ".bgl" ) )
       continue;
 
     // Got the file -- check if we need to rebuid the index
 
-    vector< string > dictFiles( 1, *i );
+    vector< string > dictFiles( 1, fileName );
 
     string dictId = Dictionary::makeDictionaryId( dictFiles );
 
@@ -1037,10 +1025,10 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
     if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
       // Building the index
 
-      gdDebug( "Bgl: Building the index for dictionary: %s\n", i->c_str() );
+      gdDebug( "Bgl: Building the index for dictionary: %s\n", fileName.c_str() );
 
       try {
-        Babylon b( *i );
+        Babylon b( fileName );
 
         if ( !b.open() )
           continue;
@@ -1048,13 +1036,13 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         std::string sourceCharset, targetCharset;
 
         if ( !b.read( sourceCharset, targetCharset ) ) {
-          gdWarning( "Failed to start reading from %s, skipping it\n", i->c_str() );
+          gdWarning( "Failed to start reading from %s, skipping it\n", fileName.c_str() );
           continue;
         }
 
         initializing.indexingDictionary( b.title() );
 
-        File::Class idx( indexFile, "wb" );
+        File::Index idx( indexFile, "wb" );
 
         IdxHeader idxHeader;
 
@@ -1127,8 +1115,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
           addEntryToIndex( e.headword, articleAddress, indexedWords, wcharBuffer );
 
-          for ( unsigned x = 0; x < e.alternates.size(); ++x )
-            addEntryToIndex( e.alternates[ x ], articleAddress, indexedWords, wcharBuffer );
+          for ( auto & alternate : e.alternates )
+            addEntryToIndex( alternate, articleAddress, indexedWords, wcharBuffer );
 
           wordCount += 1 + e.alternates.size();
           ++articleCount;
@@ -1152,12 +1140,10 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         idxHeader.resourceListOffset = idx.tell();
         idxHeader.resourcesCount     = resourceHandler.getResources().size();
 
-        for ( list< pair< string, uint32_t > >::const_iterator j = resourceHandler.getResources().begin();
-              j != resourceHandler.getResources().end();
-              ++j ) {
-          idx.write< uint32_t >( j->first.size() );
-          idx.write( j->first.data(), j->first.size() );
-          idx.write< uint32_t >( j->second );
+        for ( const auto & j : resourceHandler.getResources() ) {
+          idx.write< uint32_t >( j.first.size() );
+          idx.write( j.first.data(), j.first.size() );
+          idx.write< uint32_t >( j.second );
         }
 
         // That concludes it. Update the header.
@@ -1176,15 +1162,15 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         idx.write( &idxHeader, sizeof( idxHeader ) );
       }
       catch ( std::exception & e ) {
-        gdWarning( "BGL dictionary indexing failed: %s, error: %s\n", i->c_str(), e.what() );
+        gdWarning( "BGL dictionary indexing failed: %s, error: %s\n", fileName.c_str(), e.what() );
       }
     }
 
     try {
-      dictionaries.push_back( std::make_shared< BglDictionary >( dictId, indexFile, *i ) );
+      dictionaries.push_back( std::make_shared< BglDictionary >( dictId, indexFile, fileName ) );
     }
     catch ( std::exception & e ) {
-      gdWarning( "BGL dictionary initializing failed: %s, error: %s\n", i->c_str(), e.what() );
+      gdWarning( "BGL dictionary initializing failed: %s, error: %s\n", fileName.c_str(), e.what() );
     }
   }
 

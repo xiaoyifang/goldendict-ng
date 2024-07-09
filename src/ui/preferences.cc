@@ -27,18 +27,6 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 
   connect( ui.showScanFlag, &QAbstractButton::toggled, this, &Preferences::showScanFlagToggled );
 
-  connect( ui.altKey, &QAbstractButton::clicked, this, &Preferences::wholeAltClicked );
-  connect( ui.ctrlKey, &QAbstractButton::clicked, this, &Preferences::wholeCtrlClicked );
-  connect( ui.shiftKey, &QAbstractButton::clicked, this, &Preferences::wholeShiftClicked );
-
-  connect( ui.leftAlt, &QAbstractButton::clicked, this, &Preferences::sideAltClicked );
-  connect( ui.rightAlt, &QAbstractButton::clicked, this, &Preferences::sideAltClicked );
-  connect( ui.leftCtrl, &QAbstractButton::clicked, this, &Preferences::sideCtrlClicked );
-  connect( ui.rightCtrl, &QAbstractButton::clicked, this, &Preferences::sideCtrlClicked );
-  connect( ui.leftShift, &QAbstractButton::clicked, this, &Preferences::sideShiftClicked );
-  connect( ui.rightShift, &QAbstractButton::clicked, this, &Preferences::sideShiftClicked );
-
-
   helpAction.setShortcut( QKeySequence( "F1" ) );
   helpAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
 
@@ -97,7 +85,14 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
     }
   }
 
+  //System Font
+  if ( !p.interfaceFont.isEmpty() ) {
+    ui.systemFont->setCurrentText( p.interfaceFont );
+  }
+
+
   prevWebFontFamily = p.customFonts;
+  prevSysFont       = p.interfaceFont;
 
   if ( !p.customFonts.standard.isEmpty() )
     ui.font_standard->setCurrentText( p.customFonts.standard );
@@ -199,12 +194,6 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.ctrlKey->setChecked( p.scanPopupModifiers & KeyboardState::Ctrl );
   ui.shiftKey->setChecked( p.scanPopupModifiers & KeyboardState::Shift );
   ui.winKey->setChecked( p.scanPopupModifiers & KeyboardState::Win );
-  ui.leftAlt->setChecked( p.scanPopupModifiers & KeyboardState::LeftAlt );
-  ui.rightAlt->setChecked( p.scanPopupModifiers & KeyboardState::RightAlt );
-  ui.leftCtrl->setChecked( p.scanPopupModifiers & KeyboardState::LeftCtrl );
-  ui.rightCtrl->setChecked( p.scanPopupModifiers & KeyboardState::RightCtrl );
-  ui.leftShift->setChecked( p.scanPopupModifiers & KeyboardState::LeftShift );
-  ui.rightShift->setChecked( p.scanPopupModifiers & KeyboardState::RightShift );
 
   ui.ignoreOwnClipboardChanges->setChecked( p.ignoreOwnClipboardChanges );
   ui.scanToMainWindow->setChecked( p.scanToMainWindow );
@@ -243,12 +232,6 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 #ifdef Q_OS_WIN32
   ui.winKey->hide();
 #else
-  ui.leftAlt->hide();
-  ui.rightAlt->hide();
-  ui.leftCtrl->hide();
-  ui.rightCtrl->hide();
-  ui.leftShift->hide();
-  ui.rightShift->hide();
   #ifdef Q_OS_MAC
   ui.altKey->setText( "Opt" );
   ui.winKey->setText( "Ctrl" );
@@ -345,6 +328,9 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.maxNetworkCacheSize->setValue( p.maxNetworkCacheSize );
   ui.clearNetworkCacheOnExit->setChecked( p.clearNetworkCacheOnExit );
 
+  //Misc
+  ui.removeInvalidIndexOnExit->setChecked( p.removeInvalidIndexOnExit );
+
   // Add-on styles
   ui.addonStylesLabel->setVisible( ui.addonStyles->count() > 1 );
   ui.addonStyles->setCurrentStyle( p.addonStyle );
@@ -366,6 +352,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.allowGls->setChecked( !p.fts.disabledTypes.contains( "GLS", Qt::CaseInsensitive ) );
 
   ui.enablePosition->setChecked( p.fts.enablePosition );
+  ui.enablePosition->hide();
 #ifndef MAKE_ZIM_SUPPORT
   ui.allowZim->hide();
 #endif
@@ -392,6 +379,8 @@ Config::Preferences Preferences::getPreferences()
   Config::Preferences p;
 
   p.interfaceLanguage = ui.interfaceLanguage->itemData( ui.interfaceLanguage->currentIndex() ).toString();
+
+  p.interfaceFont = ui.systemFont->currentText();
 
   Config::CustomFonts c;
   c.standard    = ui.font_standard->currentText();
@@ -433,12 +422,6 @@ Config::Preferences Preferences::getPreferences()
   p.scanPopupModifiers += ui.ctrlKey->isChecked() ? KeyboardState::Ctrl : 0;
   p.scanPopupModifiers += ui.shiftKey->isChecked() ? KeyboardState::Shift : 0;
   p.scanPopupModifiers += ui.winKey->isChecked() ? KeyboardState::Win : 0;
-  p.scanPopupModifiers += ui.leftAlt->isChecked() ? KeyboardState::LeftAlt : 0;
-  p.scanPopupModifiers += ui.rightAlt->isChecked() ? KeyboardState::RightAlt : 0;
-  p.scanPopupModifiers += ui.leftCtrl->isChecked() ? KeyboardState::LeftCtrl : 0;
-  p.scanPopupModifiers += ui.rightCtrl->isChecked() ? KeyboardState::RightCtrl : 0;
-  p.scanPopupModifiers += ui.leftShift->isChecked() ? KeyboardState::LeftShift : 0;
-  p.scanPopupModifiers += ui.rightShift->isChecked() ? KeyboardState::RightShift : 0;
 
   p.ignoreOwnClipboardChanges = ui.ignoreOwnClipboardChanges->isChecked();
   p.scanToMainWindow          = ui.scanToMainWindow->isChecked();
@@ -505,6 +488,8 @@ Config::Preferences Preferences::getPreferences()
   p.maxNetworkCacheSize           = ui.maxNetworkCacheSize->value();
   p.clearNetworkCacheOnExit       = ui.clearNetworkCacheOnExit->isChecked();
 
+  p.removeInvalidIndexOnExit = ui.removeInvalidIndexOnExit->isChecked();
+
   p.addonStyle = ui.addonStyles->getCurrentStyle();
 
   p.fts.enabled           = ui.ftsGroupBox->isChecked();
@@ -541,48 +526,6 @@ void Preferences::showScanFlagToggled( bool b )
     ui.enableScanPopupModifiers->setChecked( false );
 }
 
-
-void Preferences::wholeAltClicked( bool b )
-{
-  if ( b ) {
-    ui.leftAlt->setChecked( false );
-    ui.rightAlt->setChecked( false );
-  }
-}
-
-void Preferences::wholeCtrlClicked( bool b )
-{
-  if ( b ) {
-    ui.leftCtrl->setChecked( false );
-    ui.rightCtrl->setChecked( false );
-  }
-}
-
-void Preferences::wholeShiftClicked( bool b )
-{
-  if ( b ) {
-    ui.leftShift->setChecked( false );
-    ui.rightShift->setChecked( false );
-  }
-}
-
-void Preferences::sideAltClicked( bool )
-{
-  if ( ui.leftAlt->isChecked() || ui.rightAlt->isChecked() )
-    ui.altKey->setChecked( false );
-}
-
-void Preferences::sideCtrlClicked( bool )
-{
-  if ( ui.leftCtrl->isChecked() || ui.rightCtrl->isChecked() )
-    ui.ctrlKey->setChecked( false );
-}
-
-void Preferences::sideShiftClicked( bool )
-{
-  if ( ui.leftShift->isChecked() || ui.rightShift->isChecked() )
-    ui.shiftKey->setChecked( false );
-}
 void Preferences::on_enableMainWindowHotkey_toggled( bool checked )
 {
   ui.mainWindowHotkey->setEnabled( checked );
@@ -595,17 +538,27 @@ void Preferences::on_enableClipboardHotkey_toggled( bool checked )
 
 void Preferences::on_buttonBox_accepted()
 {
-  if ( prevInterfaceLanguage != ui.interfaceLanguage->currentIndex() )
-    QMessageBox::information( this,
-                              tr( "Changing Language" ),
-                              tr( "Restart the program to apply the language change." ) );
+  QString promptText;
+
+  if ( prevInterfaceLanguage != ui.interfaceLanguage->currentIndex() ) {
+    promptText = tr( "Restart the program to apply the language change." );
+    promptText += "\n";
+  }
 
 #if !defined( Q_OS_WIN )
   if ( prevInterfaceStyle != ui.InterfaceStyle->currentIndex() ) {
-    QMessageBox::information( this, tr( "Restart needed" ), tr( "Restart to apply the interface style change." ) );
+    promptText += tr( "Restart to apply the interface style change." );
+    promptText += "\n";
   }
 #endif
 
+  if ( ui.systemFont->currentText() != prevSysFont ) {
+    promptText += tr( "Restart to apply the interface font change." );
+  }
+
+  if ( !promptText.isEmpty() ) {
+    QMessageBox::information( this, tr( "Restart needed" ), promptText );
+  }
 
   auto c = getPreferences();
   if ( c.customFonts != prevWebFontFamily ) {
@@ -617,6 +570,13 @@ void Preferences::on_buttonBox_accepted()
                                                                     c.customFonts.sansSerif );
     QWebEngineProfile::defaultProfile()->settings()->setFontFamily( QWebEngineSettings::FixedFont,
                                                                     c.customFonts.monospace );
+  }
+
+  //change interface font.
+  if ( ui.systemFont->currentText() != prevSysFont ) {
+    auto font = QApplication::font();
+    font.setFamily( ui.systemFont->currentText() );
+    QApplication::setFont( font );
   }
 }
 

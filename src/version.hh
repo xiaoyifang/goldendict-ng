@@ -5,7 +5,6 @@
 namespace Version {
 
 const QLatin1String flags = QLatin1String(
-  "USE_XAPIAN"
 #ifdef MAKE_ZIM_SUPPORT
   " MAKE_ZIM_SUPPORT"
 #endif
@@ -17,6 +16,12 @@ const QLatin1String flags = QLatin1String(
 #endif
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
   " MAKE_CHINESE_CONVERSION_SUPPORT"
+#endif
+#ifdef NO_TTS_SUPPORT
+  " NO_TTS_SUPPORT"
+#endif
+#ifndef MAKE_FFMPEG_PLAYER
+  " no_ffmpeg_player"
 #endif
 );
 

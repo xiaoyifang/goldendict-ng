@@ -24,7 +24,8 @@ QRegularExpression Ftx::token( R"((".*?")|([\w\W\+\-]+))",
                                  | QRegularExpression::CaseInsensitiveOption );
 //mdx
 
-QRegularExpression Mdx::allLinksRe( R"((?:<\s*(a(?:rea)?|img|link|script|source)(?:\s+[^>]+|\s*)>))",
+//<audio src="xxx"> is also a valid url.
+QRegularExpression Mdx::allLinksRe( R"((?:<\s*(a(?:rea)?|img|link|script|source|audio|video|object)(?:\s+[^>]+|\s*)>))",
                                     QRegularExpression::CaseInsensitiveOption );
 QRegularExpression Mdx::wordCrossLink( R"(([\s"']href\s*=)\s*(["'])entry://([^>#]*?)((?:#[^>]*?)?)\2)",
                                        QRegularExpression::CaseInsensitiveOption );
@@ -37,8 +38,7 @@ QRegularExpression Mdx::anchorIdRe2( R"(([\s"'](?:name|id)\s*=)\s*(?=[^"'])([^\s
 QRegularExpression Mdx::anchorLinkRe( R"(([\s"']href\s*=\s*["'])entry://#)",
                                       QRegularExpression::CaseInsensitiveOption );
 const QRegularExpression Mdx::audioRe( R"(([\s"']href\s*=)\s*(["'])sound://([^">]+)\2)",
-                                       QRegularExpression::CaseInsensitiveOption
-                                         | QRegularExpression::InvertedGreedinessOption );
+                                       QRegularExpression::CaseInsensitiveOption );
 const QRegularExpression Mdx::stylesRe(
   R"(([\s"']href\s*=)\s*(["'])(?!\s*\b(?:(?:bres|https?|ftp)://|(?:data|javascript):))(?:file://)?[\x00-\x1f\x7f]*\.*/?([^">]+)\2)",
   QRegularExpression::CaseInsensitiveOption );
@@ -54,6 +54,13 @@ QRegularExpression Mdx::srcRe(
 QRegularExpression Mdx::srcRe2(
   R"(([\s"'](?:src|srcset)\s*=)\s*(?![\s"']|\b(?:(?:bres|https?|ftp)://|(?:data|javascript):))(?:file://)?[\x00-\x1f\x7f]*\.*/?([^\s">]+))",
   QRegularExpression::CaseInsensitiveOption );
+// matches srcset in <img srcset="text">
+QRegularExpression Mdx::srcset( R"((?<before>[\s]srcset\s*=\s*["'])\s*(?<text>[\s\S]*)(?<after>["']))",
+                                QRegularExpression::CaseInsensitiveOption );
+
+// matches data in <object data="text">
+QRegularExpression Mdx::objectdata( R"((?<before>[\s]data\s*=\s*["'])\s*(?<text>[\s\S]*)(?<after>["']))",
+                                    QRegularExpression::CaseInsensitiveOption );
 
 QRegularExpression Mdx::links( R"(url\(\s*(['"]?)([^'"]*)(['"]?)\s*\))", QRegularExpression::CaseInsensitiveOption );
 

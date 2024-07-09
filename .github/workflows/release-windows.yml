@@ -1,0 +1,283 @@
+name: Release Windows
+concurrency: 
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+on: 
+  # workflow_run:
+  #   workflows: [AutoTag]
+  #   types: [completed]
+  workflow_dispatch:
+#  push:
+#    branches:
+#      - dev
+#      - master
+#      - experimental
+#      # - staged
+#    paths-ignore:
+#      - 'docs/**'
+#      # - ".github/**"
+#      - "howto/**"
+#      - "*.md"
+#      - ".clang-format"
+
+jobs:
+  build:
+    name: Build
+    # see https://github.com/actions/virtual-environments/blob/main/images/win/Windows2019-Readme.md
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-2019]
+        qt_ver: [ 6.6.3,6.7.2 ]
+        qt_arch: [win64_msvc2019_64]
+    env:
+      targetName: GoldenDict.exe
+      version: 24.05.13
+      version-suffix: ${{ !contains(github.ref_name,'master') && 'alpha' || 'NextNameHere' }}
+      prerelease: ${{ !contains(github.ref_name,'master') }}
+    steps:
+      - uses: actions/setup-python@v3
+        with:
+          python-version: '3.9'
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: ${{ matrix.qt_ver }}
+          # target: ${{ matrix.qt_target }}
+          arch: ${{ matrix.qt_arch }}
+          modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
+          setup-python: 'false'
+          
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: true
+
+      - name: changelog
+        id: changelog
+        shell: bash
+        env:
+          prerelease: ${{env.prerelease}}
+        run: |   
+          if [[ "$prerelease" == 'true' ]]
+          then
+            echo "This is a pre-release"
+            previousTag=$(git tag --sort=-creatordate | grep "^v" | sed -n 2p)
+            currentTag=$(git tag --sort=-creatordate | grep "^v" | sed -n 1p)
+          else 
+            echo "This is not a pre-release"
+            previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v "alpha"  | sed -n 2p)
+            currentTag=$(git tag --sort=-creatordate | grep "^v"  | grep -v "alpha" | sed -n 1p)
+          fi
+          echo "prev_tag=$previousTag" >> $GITHUB_OUTPUT
+          echo "curr_tag=$currentTag" >> $GITHUB_OUTPUT
+          echo "previousTag : $previousTag"
+          echo "currentTag : $currentTag"
+
+      - name: "Build Changelog"
+        id: build_changelog
+        uses: mikepenz/release-changelog-builder-action@v3
+        with:
+          commitMode: false
+          fromTag: "${{ steps.changelog.outputs.prev_tag }}"
+          toTag:  "${{ steps.changelog.outputs.curr_tag }}"
+          configurationJson: |
+            {
+              "template": "#{{CHANGELOG}}\n\n<details>\n<summary>🔴 Uncategorized</summary>\n\n#{{UNCATEGORIZED}}\n</details>",
+              "categories": [
+                {
+                    "title": "## 🚀 Features",
+                    "labels": ["feature","feat","opt"]
+                },
+                {
+                    "title": "## 🐛 Fixes",
+                    "labels": ["fix","bug"]
+                }
+                ,
+                {
+                    "title": "##  🤖  Github action",
+                    "labels": ["action"]
+                }
+                ,
+                {
+                    "title": "##  🧼  Clean Code",
+                    "labels": ["clean"]
+                }
+
+
+              ],
+              "label_extractor": [
+              {
+                "pattern": "([^:]*):.*",
+                "target": "$1",
+                "on_property": "title",
+                "flags": "gu"
+              }
+            ]
+            }
+          
+          
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}               
+      - name: Set outputs
+        id: vars
+        shell: bash
+        run: |
+          echo "sha_short=$(git rev-parse --short=8 HEAD)"     >> $GITHUB_OUTPUT
+          echo "release_date=$(date +'%Y%m%d')"     >> $GITHUB_OUTPUT
+          echo "release_time=$(date +'%H%M%S')"   >> $GITHUB_OUTPUT
+          echo "release_time_clock=$(date +'%H:%M:%S')"    >> $GITHUB_OUTPUT
+          echo "release_hm=$(date +'%y%m%d')"           >> $GITHUB_OUTPUT
+
+      - name: version-file
+        shell: bash
+        env:
+          VAR_SUFFIX: ${{env.version-suffix}}
+          VAR_VERSION: ${{env.version}}
+        run: |   
+          current_tag=$(git rev-parse --short=8 HEAD)
+          release_date=$(date +'%Y%m%d')
+          echo "$VAR_VERSION-$VAR_SUFFIX.$release_date.$current_tag">version.txt  
+          cat version.txt
+          echo "$version"  
+      # rename the vcpkg.json. with this file existed,the vcpkg action will fall to manifest mode
+      - name: remove vcpkg.json
+        shell: bash
+        run: |   
+          mv vcpkg.json vcpkg.json.bak
+      - name: vcpkg build
+        uses: johnwason/vcpkg-action@v6
+        id: vcpkg
+        with:
+          #manifest-dir: ${{ github.workspace }}
+          pkgs: breakpad
+          triplet: x64-windows-release
+          token: ${{ github.token }}
+          github-binarycache: true
+      - name: copy vcpkg packages into winlibs
+        shell: bash
+        run: |   
+          cp -R vcpkg/packages/breakpad_x64-windows-release/*  thirdparty/breakpad
+          ls -al thirdparty/breakpad
+
+      # # msvc编译
+      - uses: ilammy/msvc-dev-cmd@v1
+      #   with:
+      #     arch: ${{ matrix.msvc_arch }}    
+      - name: msvc-build goldendict
+        id: build
+        shell: cmd
+        run: |
+          qmake "CONFIG+=zim_support" CONFIG+=release CONFIG+=use_xapian CONFIG+=use_iconv CONFIG+=use_breakpad CONFIG+=no_ffmpeg_player CONFIG+=no_tts_support
+          nmake
+
+          echo winSdkDir=%WindowsSdkDir% >> %GITHUB_ENV%
+          echo winSdkVer=%WindowsSdkVersion% >> %GITHUB_ENV%
+          echo vcToolsInstallDir=%VCToolsInstallDir% >> %GITHUB_ENV%
+          echo vcToolsRedistDir=%VCToolsRedistDir% >> %GITHUB_ENV%
+          echo QTDIR=%Qt6_DIR% >> %GITHUB_ENV%
+
+      # 打包 
+      - name: windows ps package
+        id: package-windows
+        env:
+          archiveName: GoldenDict-Windows.${{ steps.vars.outputs.sha_short }}-${{ steps.vars.outputs.release_time }}
+        shell: pwsh
+        run: |
+          & .github\scripts\windows-publish.ps1 ${env:archiveName} ${env:targetName}
+       
+      - name: package
+        id: package
+        shell: bash
+        run: |
+          packageName=GoldenDict-Windows.${{ steps.vars.outputs.sha_short }}-${{ steps.vars.outputs.release_time }}
+          echo $packageName
+          echo "packageName=$packageName"  >> $GITHUB_OUTPUT
+
+      - name: upload goldendict.exe only
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: release/${{ env.targetName }}
+          asset_name: ${{ matrix.qt_ver }}.${{ matrix.os }}-${{ env.targetName }}
+          
+          tag: v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.sha_short }}
+          overwrite: true 
+          release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
+          prerelease: ${{env.prerelease}}
+
+      - name: upload pdb
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: release/GoldenDict.pdb
+          asset_name: ${{ matrix.qt_ver }}.${{ matrix.os }}-GoldenDict.pdb
+          
+          tag: v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.sha_short }}
+          overwrite: true 
+          release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
+          prerelease: ${{env.prerelease}}          
+
+      - name: copy nsis 
+        shell: bash
+        run: |
+          cp tools/nsis/GoldenDict.nsi ${{ steps.package.outputs.packageName }}/
+      - name: Create installer
+        uses: joncloud/makensis-action@v4
+        with:
+          arguments: "/V3"
+          script-file: ${{ steps.package.outputs.packageName }}/GoldenDict.nsi
+      - name: make installer 
+        run: |
+          cd ${{ steps.package.outputs.packageName }} 
+          ls *.exe
+      - name: upload goldendict installer
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ${{ steps.package.outputs.packageName }}/GoldenDict-ng-v23-Installer.exe
+          asset_name: ${{ matrix.qt_ver }}-GoldenDict-ng-Installer.exe
+          
+          tag: v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.sha_short }}
+          overwrite: true 
+          release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
+          prerelease: ${{env.prerelease}}
+
+      - name: uploadRelease
+        # if: startsWith(github.event.ref, 'refs/tags/')
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ${{ steps.package.outputs.packageName }}.zip
+          asset_name: ${{ matrix.qt_ver }}-${{ env.targetName }}_${{ matrix.os }}_${{steps.vars.outputs.release_date}}.zip
+          
+          tag: v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.sha_short }}
+          overwrite: true
+          release_name: GoldenDict-ng-v${{env.version}}-${{env.version-suffix}}.${{ steps.vars.outputs.release_hm }}.${{ steps.vars.outputs.sha_short }}
+          prerelease: ${{env.prerelease}}
+          body: |
+            #### Install instructions for Windows, macOS and Linux 
+
+            <https://xiaoyifang.github.io/goldendict-ng/install/>.
+
+            #### Filename pattern (文件名模式): **[Qt version]-GoldenDict-ng-[OS]-[release-date].[ext]**  
+
+            Windows users can use either `****-installer.exe` (for installer) or `****.zip` (unzip and run).
+            The `goldendict.exe` can be dropped into previous installation's folder (if dependencies aren't changed).
+
+            Linux users can use Flatpak or build from source.
+            https://flathub.org/apps/io.github.xiaoyifang.goldendict_ng
+
+            macOS users can use `.dmg` installer.
+
+            `6.5.1-GoldenDict.exe_windows-2019_20230701.zip` means built with Qt6.5.1, windows/msvc-2019 at 20230701 as a zip archive.
+
+            #### Build Details
+
+            macOS: macOS-12 (x86_64) and macOS-14 (Arm)
+            Windows: Visual studio 2019
+            based on: ${{github.ref_name}}
+
+            #### Changes
+            
+            ${{steps.build_changelog.outputs.changelog}}

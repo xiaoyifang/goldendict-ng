@@ -37,11 +37,6 @@
 #include <QString>
 #include <QSemaphore>
 #include <QAtomicInt>
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-  #include <QtCore5Compat/QRegExp>
-#else
-  #include <QRegExp>
-#endif
 #include <QStringList>
 #include <QDomDocument>
 #include "ufile.hh"
@@ -90,7 +85,7 @@ struct Ifo
   string sametypesequence, dicttype, description;
   string copyright, author, email, website, date;
 
-  explicit Ifo( File::Class & );
+  explicit Ifo( File::Index & );
 };
 
 enum {
@@ -123,7 +118,7 @@ __attribute__( ( packed ) )
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Class idx( indexFile, "rb" );
+  File::Index idx( indexFile, "rb" );
 
   IdxHeader header;
 
@@ -134,7 +129,7 @@ bool indexIsOldOrBad( string const & indexFile )
 class StardictDictionary: public BtreeIndexing::BtreeDictionary
 {
   QMutex idxMutex;
-  File::Class idx;
+  File::Index idx;
   IdxHeader idxHeader;
   string bookName;
   string sameTypeSequence;
@@ -205,7 +200,7 @@ public:
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
-    can_FTS = fts.enabled && !fts.disabledTypes.contains( "STARDICT", Qt::CaseInsensitive )
+    can_FTS = enable_FTS && fts.enabled && !fts.disabledTypes.contains( "STARDICT", Qt::CaseInsensitive )
       && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
 
@@ -270,12 +265,7 @@ StardictDictionary::StardictDictionary( string const & id,
 
   // Full-text search parameters
 
-  can_FTS = true;
-
   ftsIdxName = indexFile + Dictionary::getFtsSuffix();
-
-  if ( !Dictionary::needToRebuildIndex( dictionaryFiles, ftsIdxName ) && !FtsHelpers::ftsIndexIsOldOrBad( this ) )
-    FTS_index_completed.ref();
 }
 
 StardictDictionary::~StardictDictionary()
@@ -427,8 +417,7 @@ private:
 
     QString old;
     while ( s.compare( old ) != 0 ) {
-      for ( int i = 0; i < TRANSLATE_TBL_SIZE; ++i ) {
-        PWSyntaxTranslate & a = t[ i ];
+      for ( auto & a : t ) {
         s.replace( a.re(), a.replacement() );
       }
       old = s;
@@ -459,13 +448,10 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
     {
       QString articleText = QString( "<div class=\"sdct_h\">" ) + QString::fromUtf8( resource, size ) + "</div>";
 
-      QRegularExpression imgRe( R"((<\s*img\s+[^>]*src\s*=\s*["']+)(?!(?:data|https?|ftp):))",
-                                QRegularExpression::CaseInsensitiveOption
-                                  | QRegularExpression::InvertedGreedinessOption );
-      QRegularExpression linkRe( R"((<\s*link\s+[^>]*href\s*=\s*["']+)(?!(?:data|https?|ftp):))",
-                                 QRegularExpression::CaseInsensitiveOption
-                                   | QRegularExpression::InvertedGreedinessOption );
-
+      QRegularExpression imgRe( R"((<\s*(?:img|script)\s+[^>]*src\s*=\s*["']?)(?!(?:data|https?|ftp):))",
+                                QRegularExpression::CaseInsensitiveOption );
+      QRegularExpression linkRe( R"((<\s*link\s+[^>]*href\s*=\s*["']?)(?!(?:data|https?|ftp):))",
+                                 QRegularExpression::CaseInsensitiveOption );
 
       articleText.replace( imgRe, "\\1bres://" + QString::fromStdString( getId() ) + "/" )
         .replace( linkRe, "\\1bres://" + QString::fromStdString( getId() ) + "/" );
@@ -524,8 +510,7 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
 
       QRegularExpression audioRe( R"(<\s*audio\s*src\s*=\s*(["']+)([^"']+)(["'])\s*>(.*)</audio>)",
                                   QRegularExpression::CaseInsensitiveOption
-                                    | QRegularExpression::DotMatchesEverythingOption
-                                    | QRegularExpression::InvertedGreedinessOption );
+                                    | QRegularExpression::DotMatchesEverythingOption );
 
 
       pos = 0;
@@ -629,27 +614,32 @@ void StardictDictionary::pangoToHtml( QString & text )
  * Attributes "fallback", "lang", "gravity", "gravity_hint" just ignored
  */
 
-  QRegExp spanRegex( "<span\\s*([^>]*)>", Qt::CaseInsensitive );
-  QRegExp styleRegex( "(\\w+)=\"([^\"]*)\"" );
+  QRegularExpression spanRegex( "<span\\s*([^>]*)>", QRegularExpression::CaseInsensitiveOption );
+  QRegularExpression styleRegex( "(\\w+)=\"([^\"]*)\"" );
 
   text.replace( "\n", "<br>" );
 
   int pos = 0;
   do {
-    pos = spanRegex.indexIn( text, pos );
+    auto match = spanRegex.match( text, pos );
+    pos        = match.capturedStart();
     if ( pos >= 0 ) {
-      QString styles = spanRegex.cap( 1 );
+      QString styles = match.captured( 1 );
       QString newSpan( "<span style=\"" );
       int stylePos = 0;
       do {
-        stylePos      = styleRegex.indexIn( styles, stylePos );
-        QString style = styleRegex.cap( 1 );
+        auto styleMatch = styleRegex.match( styles, stylePos );
+
+        stylePos      = styleMatch.capturedStart();
+        QString style = styleMatch.captured( 1 );
         if ( stylePos >= 0 ) {
+          auto cap2 = styleMatch.captured( 2 );
+
           if ( style.compare( "font_desc", Qt::CaseInsensitive ) == 0
                || style.compare( "font", Qt::CaseInsensitive ) == 0 ) {
             // Parse font description
 
-            QStringList list = styleRegex.cap( 2 ).split( " ", Qt::SkipEmptyParts );
+            QStringList list = styleMatch.captured( 2 ).split( " ", Qt::SkipEmptyParts );
             int n;
             QString sizeStr, stylesStr, familiesStr;
             for ( n = list.size() - 1; n >= 0; n-- ) {
@@ -754,25 +744,25 @@ void StardictDictionary::pangoToHtml( QString & text )
           }
           else if ( style.compare( "font_family", Qt::CaseInsensitive ) == 0
                     || style.compare( "face", Qt::CaseInsensitive ) == 0 )
-            newSpan += QString( "font-family:" ) + styleRegex.cap( 2 ) + ";";
+            newSpan += QString( "font-family:" ) + cap2 + ";";
           else if ( style.compare( "font_size", Qt::CaseInsensitive ) == 0
                     || style.compare( "size", Qt::CaseInsensitive ) == 0 ) {
-            if ( styleRegex.cap( 2 )[ 0 ].isLetter() || styleRegex.cap( 2 ).endsWith( "px", Qt::CaseInsensitive )
-                 || styleRegex.cap( 2 ).endsWith( "pt", Qt::CaseInsensitive )
-                 || styleRegex.cap( 2 ).endsWith( "em", Qt::CaseInsensitive ) || styleRegex.cap( 2 ).endsWith( "%" ) )
-              newSpan += QString( "font-size:" ) + styleRegex.cap( 2 ) + ";";
+            if ( cap2[ 0 ].isLetter() || cap2.endsWith( "px", Qt::CaseInsensitive )
+                 || cap2.endsWith( "pt", Qt::CaseInsensitive ) || cap2.endsWith( "em", Qt::CaseInsensitive )
+                 || cap2.endsWith( "%" ) )
+              newSpan += QString( "font-size:" ) + cap2 + ";";
             else {
-              int size = styleRegex.cap( 2 ).toInt();
+              int size = cap2.toInt();
               if ( size )
                 newSpan += QString( "font-size:%1pt;" ).arg( size / 1024.0, 0, 'f', 3 );
             }
           }
           else if ( style.compare( "font_style", Qt::CaseInsensitive ) == 0
                     || style.compare( "style", Qt::CaseInsensitive ) == 0 )
-            newSpan += QString( "font-style:" ) + styleRegex.cap( 2 ) + ";";
+            newSpan += QString( "font-style:" ) + cap2 + ";";
           else if ( style.compare( "font_weight", Qt::CaseInsensitive ) == 0
                     || style.compare( "weight", Qt::CaseInsensitive ) == 0 ) {
-            QString str = styleRegex.cap( 2 );
+            QString str = cap2;
             if ( str.compare( "ultralight", Qt::CaseInsensitive ) == 0 )
               newSpan += QString( "font-weight:100;" );
             else if ( str.compare( "light", Qt::CaseInsensitive ) == 0 )
@@ -786,14 +776,14 @@ void StardictDictionary::pangoToHtml( QString & text )
           }
           else if ( style.compare( "font_variant", Qt::CaseInsensitive ) == 0
                     || style.compare( "variant", Qt::CaseInsensitive ) == 0 ) {
-            if ( styleRegex.cap( 2 ).compare( "smallcaps", Qt::CaseInsensitive ) == 0 )
+            if ( cap2.compare( "smallcaps", Qt::CaseInsensitive ) == 0 )
               newSpan += QString( "font-variant:small-caps" );
             else
-              newSpan += QString( "font-variant:" ) + styleRegex.cap( 2 ) + ";";
+              newSpan += QString( "font-variant:" ) + cap2 + ";";
           }
           else if ( style.compare( "font_stretch", Qt::CaseInsensitive ) == 0
                     || style.compare( "stretch", Qt::CaseInsensitive ) == 0 ) {
-            QString str = styleRegex.cap( 2 );
+            QString str = cap2;
             if ( str.compare( "ultracondensed", Qt::CaseInsensitive ) == 0 )
               newSpan += QString( "font-stretch:ultra-condensed;" );
             else if ( str.compare( "extracondensed", Qt::CaseInsensitive ) == 0 )
@@ -812,63 +802,61 @@ void StardictDictionary::pangoToHtml( QString & text )
           else if ( style.compare( "foreground", Qt::CaseInsensitive ) == 0
                     || style.compare( "fgcolor", Qt::CaseInsensitive ) == 0
                     || style.compare( "color", Qt::CaseInsensitive ) == 0 )
-            newSpan += QString( "color:" ) + styleRegex.cap( 2 ) + ";";
+            newSpan += QString( "color:" ) + cap2 + ";";
           else if ( style.compare( "background", Qt::CaseInsensitive ) == 0
                     || style.compare( "bgcolor", Qt::CaseInsensitive ) == 0 )
-            newSpan += QString( "background-color:" ) + styleRegex.cap( 2 ) + ";";
+            newSpan += QString( "background-color:" ) + cap2 + ";";
           else if ( style.compare( "underline_color", Qt::CaseInsensitive ) == 0
                     || style.compare( "strikethrough_color", Qt::CaseInsensitive ) == 0 )
-            newSpan += QString( "text-decoration-color:" ) + styleRegex.cap( 2 ) + ";";
+            newSpan += QString( "text-decoration-color:" ) + cap2 + ";";
           else if ( style.compare( "underline", Qt::CaseInsensitive ) == 0 ) {
-            if ( styleRegex.cap( 2 ).compare( "none", Qt::CaseInsensitive ) )
+            if ( cap2.compare( "none", Qt::CaseInsensitive ) )
               newSpan += QString( "text-decoration-line:none;" );
             else {
               newSpan += QString( "text-decoration-line:underline; " );
-              if ( styleRegex.cap( 2 ).compare( "low", Qt::CaseInsensitive ) )
+              if ( cap2.compare( "low", Qt::CaseInsensitive ) )
                 newSpan += QString( "text-decoration-style:dotted;" );
-              else if ( styleRegex.cap( 2 ).compare( "single", Qt::CaseInsensitive ) )
+              else if ( cap2.compare( "single", Qt::CaseInsensitive ) )
                 newSpan += QString( "text-decoration-style:solid;" );
-              else if ( styleRegex.cap( 2 ).compare( "error", Qt::CaseInsensitive ) )
+              else if ( cap2.compare( "error", Qt::CaseInsensitive ) )
                 newSpan += QString( "text-decoration-style:wavy;" );
               else
-                newSpan += QString( "text-decoration-style:" ) + styleRegex.cap( 2 ) + ";";
+                newSpan += QString( "text-decoration-style:" ) + cap2 + ";";
             }
           }
           else if ( style.compare( "strikethrough", Qt::CaseInsensitive ) == 0 ) {
-            if ( styleRegex.cap( 2 ).compare( "true", Qt::CaseInsensitive ) )
+            if ( cap2.compare( "true", Qt::CaseInsensitive ) )
               newSpan += QString( "text-decoration-line:line-through;" );
             else
               newSpan += QString( "text-decoration-line:none;" );
           }
           else if ( style.compare( "rise", Qt::CaseInsensitive ) == 0 ) {
-            if ( styleRegex.cap( 2 ).endsWith( "px", Qt::CaseInsensitive )
-                 || styleRegex.cap( 2 ).endsWith( "pt", Qt::CaseInsensitive )
-                 || styleRegex.cap( 2 ).endsWith( "em", Qt::CaseInsensitive ) || styleRegex.cap( 2 ).endsWith( "%" ) )
-              newSpan += QString( "vertical-align:" ) + styleRegex.cap( 2 ) + ";";
+            if ( cap2.endsWith( "px", Qt::CaseInsensitive ) || cap2.endsWith( "pt", Qt::CaseInsensitive )
+                 || cap2.endsWith( "em", Qt::CaseInsensitive ) || cap2.endsWith( "%" ) )
+              newSpan += QString( "vertical-align:" ) + cap2 + ";";
             else {
-              int riseValue = styleRegex.cap( 2 ).toInt();
+              int riseValue = cap2.toInt();
               if ( riseValue )
                 newSpan += QString( "vertical-align:%1pt;" ).arg( riseValue / 1024.0, 0, 'f', 3 );
             }
           }
           else if ( style.compare( "letter_spacing", Qt::CaseInsensitive ) == 0 ) {
-            if ( styleRegex.cap( 2 ).endsWith( "px", Qt::CaseInsensitive )
-                 || styleRegex.cap( 2 ).endsWith( "pt", Qt::CaseInsensitive )
-                 || styleRegex.cap( 2 ).endsWith( "em", Qt::CaseInsensitive ) || styleRegex.cap( 2 ).endsWith( "%" ) )
-              newSpan += QString( "letter-spacing:" ) + styleRegex.cap( 2 ) + ";";
+            if ( cap2.endsWith( "px", Qt::CaseInsensitive ) || cap2.endsWith( "pt", Qt::CaseInsensitive )
+                 || cap2.endsWith( "em", Qt::CaseInsensitive ) || cap2.endsWith( "%" ) )
+              newSpan += QString( "letter-spacing:" ) + cap2 + ";";
             else {
-              int spacing = styleRegex.cap( 2 ).toInt();
+              int spacing = cap2.toInt();
               if ( spacing )
                 newSpan += QString( "letter-spacing:%1pt;" ).arg( spacing / 1024.0, 0, 'f', 3 );
             }
           }
 
-          stylePos += styleRegex.matchedLength();
+          stylePos += styleMatch.capturedLength();
         }
       } while ( stylePos >= 0 );
 
       newSpan += "\">";
-      text.replace( pos, spanRegex.matchedLength(), newSpan );
+      text.replace( pos, match.capturedLength(), newSpan );
       pos += newSpan.size();
     }
   } while ( pos >= 0 );
@@ -1045,7 +1033,7 @@ QString const & StardictDictionary::getDescription()
   if ( !dictionaryDescription.isEmpty() )
     return dictionaryDescription;
 
-  File::Class ifoFile( getDictionaryFilenames()[ 0 ], "r" );
+  File::Index ifoFile( getDictionaryFilenames()[ 0 ], "r" );
   Ifo ifo( ifoFile );
 
   if ( !ifo.copyright.empty() ) {
@@ -1198,7 +1186,7 @@ void StardictHeadwordsRequest::run()
 
     wstring caseFolded = Folding::applySimpleCaseOnly( word );
 
-    for ( unsigned x = 0; x < chain.size(); ++x ) {
+    for ( auto & x : chain ) {
       if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
         finish();
         return;
@@ -1206,7 +1194,7 @@ void StardictHeadwordsRequest::run()
 
       string headword, articleText;
 
-      dict.loadArticle( chain[ x ].articleOffset, headword, articleText );
+      dict.loadArticle( x.articleOffset, headword, articleText );
 
       wstring headwordDecoded = Utf8::decode( headword );
 
@@ -1290,10 +1278,10 @@ void StardictArticleRequest::run()
 
     //if alts has more than 100 , great probability that the dictionary is wrong produced or parsed.
     if ( alts.size() < 100 ) {
-      for ( unsigned x = 0; x < alts.size(); ++x ) {
+      for ( const auto & alt : alts ) {
         /// Make an additional query for each alt
 
-        vector< WordArticleLink > altChain = dict.findArticles( alts[ x ], ignoreDiacritics );
+        vector< WordArticleLink > altChain = dict.findArticles( alt, ignoreDiacritics );
         if ( altChain.size() > 100 ) {
           continue;
         }
@@ -1408,7 +1396,7 @@ static char const * beginsWith( char const * substr, char const * str )
   return strncmp( str, substr, len ) == 0 ? str + len : 0;
 }
 
-Ifo::Ifo( File::Class & f ):
+Ifo::Ifo( File::Index & f ):
   wordcount( 0 ),
   synwordcount( 0 ),
   idxfilesize( 0 ),
@@ -1780,16 +1768,16 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 {
   vector< sptr< Dictionary::Class > > dictionaries;
 
-  for ( vector< string >::const_iterator i = fileNames.begin(); i != fileNames.end(); ++i ) {
-    if ( i->size() < 4 || strcasecmp( i->c_str() + ( i->size() - 4 ), ".ifo" ) != 0 )
+  for ( const auto & fileName : fileNames ) {
+    if ( !Utils::endsWithIgnoreCase( fileName, ".ifo" ) )
       continue;
 
     try {
-      vector< string > dictFiles( 1, *i );
+      vector< string > dictFiles( 1, fileName );
 
       string idxFileName, dictFileName, synFileName;
 
-      findCorrespondingFiles( *i, idxFileName, dictFileName, synFileName );
+      findCorrespondingFiles( fileName, idxFileName, dictFileName, synFileName );
 
       dictFiles.push_back( idxFileName );
       dictFiles.push_back( dictFileName );
@@ -1815,7 +1803,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
         // Building the index
 
-        File::Class ifoFile( *i, "r" );
+        File::Index ifoFile( fileName, "r" );
 
         Ifo ifo( ifoFile );
 
@@ -1846,7 +1834,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         initializing.indexingDictionary( ifo.bookname );
 
-        File::Class idx( indexFile, "wb" );
+        File::Index idx( indexFile, "wb" );
 
         IdxHeader idxHeader;
 
@@ -1913,12 +1901,11 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         idxHeader.bookNameSize         = ifo.bookname.size();
         idxHeader.sameTypeSequenceSize = ifo.sametypesequence.size();
 
-        // read languages
-        QPair< quint32, quint32 > langs = LangCoder::findIdsForFilename( QString::fromStdString( dictFileName ) );
-
+        // read languages from dictioanry file name
+        auto langs = LangCoder::findLangIdPairFromName( QString::fromStdString( dictFileName ) );
         // if no languages found, try dictionary's name
         if ( langs.first == 0 || langs.second == 0 ) {
-          langs = LangCoder::findIdsForFilename( QString::fromStdString( ifo.bookname ) );
+          langs = LangCoder::findLangIdPairFromName( QString::fromStdString( ifo.bookname ) );
         }
 
         idxHeader.langFrom = langs.first;
@@ -1964,7 +1951,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       dictionaries.push_back( std::make_shared< StardictDictionary >( dictId, indexFile, dictFiles ) );
     }
     catch ( std::exception & e ) {
-      gdWarning( "Stardict dictionary initializing failed: %s, error: %s\n", i->c_str(), e.what() );
+      gdWarning( "Stardict dictionary initializing failed: %s, error: %s\n", fileName.c_str(), e.what() );
     }
   }
 

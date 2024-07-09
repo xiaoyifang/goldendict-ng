@@ -7,26 +7,51 @@ ResourceSchemeHandler::ResourceSchemeHandler( ArticleNetworkAccessManager & arti
 }
 void ResourceSchemeHandler::requestStarted( QWebEngineUrlRequestJob * requestJob )
 {
-  QUrl url = requestJob->requestUrl();
+  const QUrl url = requestJob->requestUrl();
+  QString content_type;
+  const QMimeType mineType                    = db.mimeTypeForUrl( url );
+  const sptr< Dictionary::DataRequest > reply = this->mManager.getResource( url, content_type );
+  content_type                                = mineType.name();
 
-  QNetworkRequest request;
-  request.setUrl( url );
-  request.setAttribute( QNetworkRequest::CacheLoadControlAttribute, QNetworkRequest::PreferCache );
-  QNetworkReply * reply = this->mManager.getArticleReply( request );
-  connect( reply, &QNetworkReply::finished, requestJob, [ = ]() {
-    if ( reply->error() == QNetworkReply::ContentNotFoundError ) {
-      requestJob->fail( QWebEngineUrlRequestJob::UrlNotFound );
-      return;
-    }
-    if ( reply->error() != QNetworkReply::NoError ) {
-      qDebug() << "resource handler failed:" << reply->error() << ":" << reply->request().url();
-      requestJob->fail( QWebEngineUrlRequestJob::RequestFailed );
-      return;
-    }
-    QMimeType mineType  = db.mimeTypeForUrl( url );
-    QString contentType = mineType.name();
-    // Reply segment
-    requestJob->reply( contentType.toLatin1(), reply );
+  if ( reply == nullptr ) {
+    qDebug() << "Resource failed to load: " << url.toString();
+    requestJob->fail( QWebEngineUrlRequestJob::RequestFailed );
+  }
+  else if ( reply->isFinished() ) {
+    replyJob( reply, requestJob, content_type );
+  }
+  else
+    connect( reply.get(), &Dictionary::DataRequest::finished, requestJob, [ = ]() {
+      replyJob( reply, requestJob, content_type );
+    } );
+}
+
+
+void ResourceSchemeHandler::replyJob( sptr< Dictionary::DataRequest > reply,
+                                      QWebEngineUrlRequestJob * requestJob,
+                                      QString content_type )
+{
+  if ( !reply.get() ) {
+    requestJob->fail( QWebEngineUrlRequestJob::UrlNotFound );
+    return;
+  }
+  const auto & data = reply->getFullData();
+  if ( data.empty() ) {
+    requestJob->fail( QWebEngineUrlRequestJob::UrlNotFound );
+    return;
+  }
+  QByteArray * ba  = new QByteArray( data.data(), data.size() );
+  QBuffer * buffer = new QBuffer( ba );
+  buffer->open( QBuffer::ReadOnly );
+  buffer->seek( 0 );
+
+  // Reply segment
+  requestJob->reply( content_type.toLatin1(), buffer );
+
+  connect( requestJob, &QObject::destroyed, buffer, [ = ]() {
+    buffer->close();
+    ba->clear();
+    delete ba;
+    buffer->deleteLater();
   } );
-  connect( requestJob, &QObject::destroyed, reply, &QObject::deleteLater );
 }

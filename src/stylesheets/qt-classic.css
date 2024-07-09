@@ -20,22 +20,6 @@ QTabBar::close-button:hover {
   image: url(:/icons/closetab-hover.png);
 }
 
-MainStatusBar #text {
-  border-top-right-radius: 3px;
-  border-top: 1px solid palette(dark);
-  border-right: 1px solid palette(dark);
-  background: palette(window);
-  padding: 2px;
-}
-
-MainStatusBar #icon {
-  border-top: 1px solid palette(dark);
-  background: palette(window);
-  padding: 2px;
-  padding-left: 4px;
-  padding-right: 0px;
-}
-
 ScanPopup #translateLine {
   margin: 0px;
   padding: 1px 3px 1px 3px;

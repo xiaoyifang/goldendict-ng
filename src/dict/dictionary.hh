@@ -20,6 +20,7 @@
 #include "sptr.hh"
 #include "utils.hh"
 #include "wstring.hh"
+#include <QtGlobal>
 
 /// Abstract dictionary-related stuff
 namespace Dictionary {
@@ -103,7 +104,6 @@ signals:
   void matchCount( int );
 
 protected:
-
   /// Called by derivatives to signal update().
   void update();
 
@@ -112,6 +112,10 @@ protected:
 
   /// Sets the error string to be returned by getErrorString().
   void setErrorString( QString const & );
+  QWaitCondition cond;
+  // Subclasses should be filling up the 'data' array, locking the mutex when
+  // whey work with it.
+  QMutex dataMutex;
 
 private:
 
@@ -222,13 +226,10 @@ public:
     hasAnyData( false )
   {
   }
+signals:
+  void finishedArticle( QString articleText );
 
 protected:
-
-  // Subclasses should be filling up the 'data' array, locking the mutex when
-  // whey work with it.
-  QMutex dataMutex;
-
   bool hasAnyData; // With this being false, dataSize() always returns -1
   vector< char > data;
 };
@@ -236,6 +237,8 @@ protected:
 /// A helper class for synchronous word search implementations.
 class WordSearchRequestInstant: public WordSearchRequest
 {
+  Q_OBJECT
+
 public:
 
   WordSearchRequestInstant()
@@ -312,6 +315,8 @@ protected:
   QAtomicInt FTS_index_completed;
   bool synonymSearchEnabled;
   string dictionaryName;
+  //default to true;
+  bool enable_FTS = true;
 
   // Load user icon if it exist
   // By default set icon to empty
@@ -369,6 +374,11 @@ public:
     dictionaryName = _dictionaryName;
   }
 
+  void setFtsEnable( bool _enable_FTS )
+  {
+    enable_FTS = _enable_FTS;
+  }
+
   /// Returns all the available properties, like the author's name, copyright,
   /// description etc. All strings are in utf8.
   virtual map< Property, string > getProperties() noexcept = 0;
@@ -397,10 +407,14 @@ public:
 
   int getIndexingFtsProgress()
   {
+    if ( haveFTSIndex() ) {
+      return 100;
+    }
     auto total = getArticleCount();
     if ( total == 0 )
       return 0;
-    return indexedFtsDoc * 100 / total;
+    int progress = (int)indexedFtsDoc * 100 / total;
+    return qMin( progress, 100 );
   }
 
   /// Returns the number of words in the dictionary. This can be equal to
@@ -541,6 +555,7 @@ public:
   /// is useful to show in some kind of a splash screen.
   /// The dictionaryName is in utf8.
   virtual void indexingDictionary( string const & dictionaryName ) noexcept = 0;
+  virtual void loadingDictionary( string const & dictionaryName ) noexcept  = 0;
 
   virtual ~Initializing() = default;
 };

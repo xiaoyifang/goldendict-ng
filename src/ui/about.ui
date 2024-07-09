@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>428</width>
     <height>400</height>
    </rect>
   </property>
@@ -40,7 +40,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="resources.qrc">:/icons/programicon.png</pixmap>
+        <pixmap resource="../../resources.qrc">:/icons/programicon.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -88,7 +88,7 @@
        <item>
         <widget class="QLabel" name="label_2">
          <property name="text">
-          <string>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</string>
+          <string notr="true">(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -201,7 +201,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="resources.qrc"/>
+  <include location="../../resources.qrc"/>
  </resources>
  <connections>
   <connection>

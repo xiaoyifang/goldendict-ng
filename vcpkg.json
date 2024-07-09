@@ -1,0 +1,23 @@
+{
+  "name": "goldendict-ng",
+  "version": "24.5.5",
+  "dependencies": [
+    "bzip2",
+    "hunspell",
+    "libiconv",
+    "liblzma",
+    "libvorbis",
+    "libzim",
+    "lzo",
+    "opencc",
+    "xapian",
+    "zlib",
+    "openssl"
+  ],
+  "features": {
+    "breakpad": {
+      "description": "enable breakpad crash reporting",
+      "dependencies": [ "breakpad" ]
+    }
+  }
+}

@@ -1,6 +1,8 @@
 <RCC>
     <qresource prefix="/">
         <file>icons/add-anki-icon.svg</file>
+        <file>icons/document.png</file>
+        <file>icons/audio.png</file>
         <file>version.txt</file>
         <file>icons/arrow.png</file>
         <file>icons/prefix.png</file>
@@ -92,5 +94,7 @@
         <file>icons/old-downarrow.png</file>
         <file>icons/custom_trans.svg</file>
         <file>icons/splash.png</file>
+        <file>icons/fts_disabled.svg</file>
+        <file>icons/fts_enabled.svg</file>
     </qresource>
 </RCC>

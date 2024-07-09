@@ -14,10 +14,6 @@
 #include <vector>
 #include <string>
 
-
-#include <QRegularExpression>
-
-
 using std::vector;
 using std::string;
 
@@ -30,13 +26,13 @@ const static std::string finish_mark = std::string( "dehsinif" );
 bool ftsIndexIsOldOrBad( BtreeIndexing::BtreeDictionary * dict )
 {
   try {
-    Xapian::WritableDatabase db( dict->ftsIndexName() );
+    Xapian::WritableDatabase const db( dict->ftsIndexName() );
     auto docid    = db.get_lastdocid();
     auto document = db.get_document( docid );
 
-    qDebug() << document.get_data().c_str();
+    string const lastDoc   = document.get_data();
+    return lastDoc != finish_mark;
     //use a special document to mark the end of the index.
-    return document.get_data() != finish_mark;
   }
   catch ( Xapian::Error & e ) {
     qWarning() << e.get_description().c_str();
@@ -49,52 +45,9 @@ bool ftsIndexIsOldOrBad( BtreeIndexing::BtreeDictionary * dict )
   }
 }
 
-
-void tokenizeCJK( QStringList & indexWords, QRegularExpression wordRegExp, QStringList list )
-{
-  QStringList wordList, hieroglyphList;
-  for ( auto word : list ) {
-    // Check for CJK symbols in word
-    bool parsed = false;
-    QString hieroglyph;
-    for ( int x = 0; x < word.size(); x++ )
-      if ( Utils::isCJKChar( word.at( x ).unicode() ) ) {
-        parsed = true;
-        hieroglyph.append( word[ x ] );
-
-        if ( QChar( word.at( x ) ).isHighSurrogate() && QChar( word[ x + 1 ] ).isLowSurrogate() )
-          hieroglyph.append( word[ ++x ] );
-
-        hieroglyphList.append( hieroglyph );
-        hieroglyph.clear();
-      }
-
-    // If word don't contains CJK symbols put it in list as is
-    if ( !parsed )
-      wordList.append( word );
-  }
-
-  indexWords = wordList.filter( wordRegExp );
-  indexWords.removeDuplicates();
-
-  hieroglyphList.removeDuplicates();
-  indexWords += hieroglyphList;
-}
-
-bool containCJK( QString const & str )
-{
-  bool hasCJK = false;
-  for ( auto x : str )
-    if ( Utils::isCJKChar( x.unicode() ) ) {
-      hasCJK = true;
-      break;
-    }
-  return hasCJK;
-}
-
 void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancelled )
 {
-  QMutexLocker _( &dict->getFtsMutex() );
+  QMutexLocker const _( &dict->getFtsMutex() );
 
   //check the index again.
   if ( dict->haveFTSIndex() )
@@ -105,7 +58,7 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
       throw exUserAbort();
 
     // Open the database for update, creating a new database if necessary.
-    Xapian::WritableDatabase db( dict->ftsIndexName(), Xapian::DB_CREATE_OR_OPEN );
+    Xapian::WritableDatabase db( dict->ftsIndexName() + "_temp", Xapian::DB_CREATE_OR_OPEN );
 
     Xapian::TermGenerator indexer;
     //  Xapian::Stem stemmer("english");
@@ -125,7 +78,7 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
 
     QVector< uint32_t > offsets;
     offsets.resize( setOfOffsets.size() );
-    uint32_t * ptr = &offsets.front();
+    uint32_t * ptr = offsets.data();
 
     for ( QSet< uint32_t >::ConstIterator it = setOfOffsets.constBegin(); it != setOfOffsets.constEnd(); ++it ) {
       *ptr = *it;
@@ -137,8 +90,6 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
 
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
       throw exUserAbort();
-
-    dict->sortArticlesOffsetsForFTS( offsets, isCancelled );
 
     // incremental build the index.
     // get the last address.
@@ -163,8 +114,9 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
     for ( auto const & address : offsets ) {
       indexedDoc++;
 
-      if ( address > lastAddress && skip ) {
+      if ( address == lastAddress && skip ) {
         skip = false;
+        continue;
       }
       //skip until to the lastAddress;
       if ( skip ) {
@@ -183,12 +135,8 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
 
       indexer.set_document( doc );
 
-      if ( GlobalBroadcaster::instance()->getPreference()->fts.enablePosition ) {
-        indexer.index_text( articleStr.toStdString() );
-      }
-      else {
-        indexer.index_text_without_positions( articleStr.toStdString() );
-      }
+      indexer.index_text( articleStr.toStdString() );
+
 
       doc.set_data( std::to_string( address ) );
       // Add the document to the database.
@@ -206,6 +154,12 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
     offsets.clear();
 
     db.commit();
+
+    db.compact( dict->ftsIndexName() );
+
+    db.close();
+
+    Utils::Fs::removeDirectory( dict->ftsIndexName() + "_temp" );
   }
   catch ( Xapian::Error & e ) {
     qWarning() << "create xapian index:" << QString::fromStdString( e.get_description() );
@@ -238,10 +192,14 @@ void FTSResultsRequest::run()
       // Parse the query string to produce a Xapian::Query object.
       Xapian::QueryParser qp;
       qp.set_database( db );
-      Xapian::QueryParser::feature_flag flag = Xapian::QueryParser::FLAG_DEFAULT;
-      if ( searchMode == FTS::Wildcards )
-        flag = Xapian::QueryParser::FLAG_WILDCARD;
-      Xapian::Query query = qp.parse_query( query_string, flag | Xapian::QueryParser::FLAG_CJK_NGRAM );
+      qp.set_default_op( Xapian::Query::op::OP_AND );
+      int flag =
+        Xapian::QueryParser::FLAG_DEFAULT | Xapian::QueryParser::FLAG_PURE_NOT | Xapian::QueryParser::FLAG_CJK_NGRAM;
+      if ( searchMode == FTS::Wildcards ) {
+        flag = flag | Xapian::QueryParser::FLAG_WILDCARD;
+        qp.set_max_expansion( 1 );
+      }
+      Xapian::Query query = qp.parse_query( query_string, flag );
       qDebug() << "Parsed query is: " << query.get_description().c_str();
 
       // Find the top 100 results for the query.

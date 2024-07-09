@@ -37,6 +37,8 @@ And a few compression libraries:
 
 ## CMake Build
 
+Basically, you need those commands:
+
 ```shell
 cd goldendict-ng && mkdir build_dir
 # config step
@@ -53,38 +55,58 @@ cmake --install ./build_dir/
 
 Append `-D{flag_names}=ON/OFF` to cmake's config step
 
-Available flags:
-
-* `WITH_FFMPEG_PLAYER` "Enable support for FFMPEG player"
-* `WITH_EPWING_SUPPORT` "Enable epwing support"
-* `WITH_XAPIAN` "enable Xapian support"
-* `WITH_ZIM` "enable zim support"
-
-* `USE_SYSTEM_FMT` "use system fmt instead of bundled one"
-* `USE_SYSTEM_TOML` "use system toml++ instead of bundled one"
+Available flags can be found on the top of `CMakeLists.txt`
 
 ### Windows
 
-Install Qt6(msvc) through the standard installer
+Install Qt6(msvc) through the standard installer and pass Qt's path to CMake
 
-Pass those parameters to cmake, the path should be changed to your actual installation paths
 ```
 -DCMAKE_PREFIX_PATH=F:\Qt\6.4.1\msvc2019_64
 ```
+The built artifacts will end up in `build_dir/goldendict`
 
-Use`windeployqt.exe {your_build_dir}/goldendict.exe` which will copy the qt related `.dll` and other necessary files automatically.
+#### Using pre-built winlibs
 
-Due to the `winlibs` are built on Release mode, there are troubles to build GoldenDict on Debug mode.
+Use `windeploy` target to copy necessary runtime files.
+
+```
+cmake --build . --target windeploy
+```
+
+Or you can also manually run `windeployqt.exe {your_build_dir}/goldendict.exe` which will copy the qt related things to `build_dir`.
+
+#### Using Vcpkg
+
+The dependencies can be built via Vcpkg instead of using the pre-built ones.
+
+Vcpkg CMake build utilize the "manifest mode", all you need to do is basically 
+set `CMAKE_TOOLCHAIN_FILE` as described [here](https://learn.microsoft.com/en-us/vcpkg/consume/manifest-mode?tabs=cmake%2Cbuild-MSBuild#2---integrate-vcpkg-with-your-build-system).
+
+Add this to cmake command:
+```sh
+-DUSE_VCPKG=ON
+```
+
+Most `.dll` built by vcpkg will be automatically copied, but the Qt ones won't.
+
+You can
+
+* run `cmake --install .` (recommended)
+* manually run windeployqt
+* add `${Qt's install path}\Qt\6.5.2\msvc2019_64\bin` to your PATH environment variable
+
+Note that `-G Ninja` in CMake is assumed to be used. MSBuild has minor bugs for being "Multi-Config".
 
 ### macOS
 
-Similar to Linux build, but need `macdeployqt ./goldendict.app` to copy necessary dependencies to the app bundle.
+If you build in an IDE, then the created `GoldenDict.app`  will be runnable from the IDE which set up necessary magics for you.
+
+To make the `.app` runnable elsewhere, you can run `cmake --install build_dir/` which will invoke macdeployqt, ad-hoc code signing and various other things. The produced app will end up in `build_dir/redist/goldendict-ng.app`
+
+To create `.dmg` installer, you have to have [create-dmg](https://github.com/create-dmg/create-dmg) installed on your machine, then also `cmake --install build_dir/`.
 
 ## Qmake
-
-```shell
-git clone https://github.com/xiaoyifang/goldendict-ng.git
-```
 
 ### Build Steps
 
@@ -190,24 +212,19 @@ Then enable google breakpad like this with qmake:
 qmake "CONFIG+=use_breakpad"
 ```
 
+#### build with tts disabled
+
+`CONFIG+=no_tts_support` will disable the QTextToSpeech feature.
+
+
 ### Build with VS2019
 
-Install `QT tool for VS` from VS extension
+VS2019 support CMake project, open the source directory directly then you go.
 
-#### steps: 
-
-- configure qt path
-toolbar Extensions=>Qt VS Tools=>Options=>versions.
-add qt installation folder
-
-- Open pro project file directly throughttoolbar Extensions=>Qt VS Tools=>Open Qt Project file(.pro)
-
-ref: 
-[1](https://blog.csdn.net/qq_43493715/article/details/109839046)
 
 #### build
 
-after successfully build,in the target folder(where goldendict.exe resides) ,run windeployqt which copy all the necessary files to this folder.
-and copy other missing dlls to this folder. you can click the exe to verify the application can run .
+After successful build, run windeployqt.exe(bundled with Qt installation) in the target folder (where GoldenDict.exe is located), which will copy all necessary files to this folder.
+You can click on the exe to verify that the application can be run.
 
-after alll this ,you can debug the application normally.
+After all this, you can debug the application normally.

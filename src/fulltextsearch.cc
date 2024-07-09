@@ -40,7 +40,9 @@ void Indexing::run()
         sem.acquire();
         QFuture< void > const f = QtConcurrent::run( [ this, &sem, &dictionary ]() {
           QSemaphoreReleaser const _( sem );
-          emit sendNowIndexingName( QString::fromUtf8( dictionary->getName().c_str() ) );
+          const QString & dictionaryName = QString::fromUtf8( dictionary->getName().c_str() );
+          qDebug() << "[FULLTEXT] checking fts for the dictionary:" << dictionaryName;
+          emit sendNowIndexingName( dictionaryName );
           dictionary->makeFTSIndex( isCancelled, false );
         } );
         synchronizer.addFuture( f );
@@ -60,17 +62,25 @@ void Indexing::run()
 
 void Indexing::timeout()
 {
-  //display all the dictionary name in the following loop ,may result only one dictionary name been seen.
-  //as the interval is so small.
+  QString indexingDicts;
   for ( const auto & dictionary : dictionaries ) {
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
       break;
-
+    //Finished, clear the msg.
+    if ( dictionary->haveFTSIndex() ) {
+      continue;
+    }
     auto newProgress = dictionary->getIndexingFtsProgress();
     if ( newProgress > 0 && newProgress < 100 ) {
-      emit sendNowIndexingName(
+      if ( !indexingDicts.isEmpty() )
+        indexingDicts.append( "," );
+      indexingDicts.append(
         QString( "%1......%%2" ).arg( QString::fromStdString( dictionary->getName() ) ).arg( newProgress ) );
     }
+  }
+
+  if ( !indexingDicts.isEmpty() ) {
+    emit sendNowIndexingName( indexingDicts );
   }
 }
 
@@ -439,31 +449,12 @@ void FullTextSearchDialog::itemClicked( const QModelIndex & idx )
 {
   if ( idx.isValid() && idx.row() < results.size() ) {
     QString headword = results[ idx.row() ].headword;
-    QRegExp reg;
+    QRegularExpression reg;
     auto searchText = ui.searchLine->text();
     searchText.replace( RX::Ftx::tokenBoundary, " " );
 
-    auto it = RX::Ftx::token.globalMatch( searchText );
-    QString firstAvailbeItem;
-    while ( it.hasNext() ) {
-      QRegularExpressionMatch match = it.next();
-
-      auto p = match.captured();
-      if ( p.startsWith( '-' ) )
-        continue;
-
-      //the searched text should be like "term".remove enclosed double quotation marks.
-      if ( p.startsWith( "\"" ) ) {
-        p.remove( "\"" );
-      }
-
-      firstAvailbeItem = p;
-      break;
-    }
-
-    if ( !firstAvailbeItem.isEmpty() ) {
-      reg = QRegExp( firstAvailbeItem, Qt::CaseInsensitive, QRegExp::RegExp2 );
-      reg.setMinimal( true );
+    if ( !searchText.isEmpty() ) {
+      reg = QRegularExpression( searchText, QRegularExpression::CaseInsensitiveOption );
     }
 
     emit showTranslationFor( headword, results[ idx.row() ].dictIDs, reg, false );

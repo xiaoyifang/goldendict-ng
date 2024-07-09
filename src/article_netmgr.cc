@@ -62,45 +62,7 @@ AllowFrameReply::AllowFrameReply( QNetworkReply * _reply ):
 
 void AllowFrameReply::applyMetaData()
 {
-  // Set raw headers except X-Frame-Options
-  QList< QByteArray > rawHeaders = baseReply->rawHeaderList();
-  for ( QList< QByteArray >::iterator it = rawHeaders.begin(); it != rawHeaders.end(); ++it ) {
-    auto headerName = it->toLower();
-    if ( headerName != "x-frame-options" && headerName != "content-security-policy" )
-      setRawHeader( *it, baseReply->rawHeader( *it ) );
-  }
-
-  // Set known headers
-  setHeader( QNetworkRequest::ContentDispositionHeader,
-             baseReply->header( QNetworkRequest::ContentDispositionHeader ) );
-  setHeader( QNetworkRequest::ContentTypeHeader, baseReply->header( QNetworkRequest::ContentTypeHeader ) );
-  setHeader( QNetworkRequest::ContentLengthHeader, baseReply->header( QNetworkRequest::ContentLengthHeader ) );
-  setHeader( QNetworkRequest::LocationHeader, baseReply->header( QNetworkRequest::LocationHeader ) );
-  setHeader( QNetworkRequest::LastModifiedHeader, baseReply->header( QNetworkRequest::LastModifiedHeader ) );
-  setHeader( QNetworkRequest::CookieHeader, baseReply->header( QNetworkRequest::CookieHeader ) );
-  setHeader( QNetworkRequest::SetCookieHeader, baseReply->header( QNetworkRequest::SetCookieHeader ) );
-  setHeader( QNetworkRequest::UserAgentHeader, baseReply->header( QNetworkRequest::UserAgentHeader ) );
-  setHeader( QNetworkRequest::ServerHeader, baseReply->header( QNetworkRequest::ServerHeader ) );
-
-  // Set attributes
-  setAttribute( QNetworkRequest::HttpStatusCodeAttribute,
-                baseReply->attribute( QNetworkRequest::HttpStatusCodeAttribute ) );
-  setAttribute( QNetworkRequest::HttpReasonPhraseAttribute,
-                baseReply->attribute( QNetworkRequest::HttpReasonPhraseAttribute ) );
-  setAttribute( QNetworkRequest::RedirectionTargetAttribute,
-                baseReply->attribute( QNetworkRequest::RedirectionTargetAttribute ) );
-  setAttribute( QNetworkRequest::ConnectionEncryptedAttribute,
-                baseReply->attribute( QNetworkRequest::ConnectionEncryptedAttribute ) );
-  setAttribute( QNetworkRequest::SourceIsFromCacheAttribute,
-                baseReply->attribute( QNetworkRequest::SourceIsFromCacheAttribute ) );
-  setAttribute( QNetworkRequest::HttpPipeliningWasUsedAttribute,
-                baseReply->attribute( QNetworkRequest::HttpPipeliningWasUsedAttribute ) );
-  setAttribute( QNetworkRequest::BackgroundRequestAttribute,
-                baseReply->attribute( QNetworkRequest::BackgroundRequestAttribute ) );
-  setAttribute( QNetworkRequest::Http2WasUsedAttribute,
-                baseReply->attribute( QNetworkRequest::Http2WasUsedAttribute ) );
-
-  emit metaDataChanged();
+  // The webengine does not support to customize the headers right now ,maybe until Qt6.7 there should be some api supports
 }
 
 void AllowFrameReply::setReadBufferSize( qint64 size )
@@ -135,35 +97,20 @@ void AllowFrameReply::finishedSlot()
 
 QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest const & req )
 {
-  QUrl url;
-  auto op = GetOperation;
-
   if ( req.url().scheme() == "qrcx" ) {
-    // We had to override the local load policy for the qrc URL scheme until QWebSecurityOrigin::addLocalScheme() was
-    // introduced in Qt 4.6. Hence we used a custom qrcx URL scheme and redirected it here back to qrc. Qt versions
-    // older than 4.6 are no longer supported, so GoldenDict itself no longer uses the qrcx scheme. However, qrcx has
-    // been used for many years in our built-in article styles, and so may appear in user-defined article styles.
-    // TODO: deprecate (print a warning or show a warning message box) and eventually remove support for the obsolete
-    // qrcx URL scheme. A recent commit "Add support for qrc:// URL scheme" is the first one where the qrc scheme
-    // works correctly. So the deprecation has to wait until older GoldenDict versions become rarely used.
-    QUrl newUrl( req.url() );
-
-    newUrl.setScheme( "qrc" );
-    newUrl.setHost( "" );
-
-    QNetworkRequest newReq( req );
-    newReq.setUrl( newUrl );
-
-    return QNetworkAccessManager::createRequest( op, newReq, nullptr );
+    // Do not support qrcx which is the custom define protocol.
+    return new BlockedNetworkReply( this );
   }
 
-  url                 = req.url();
+  auto op = GetOperation;
+
+  QUrl url            = req.url();
   QMimeType mineType  = db.mimeTypeForUrl( url );
   QString contentType = mineType.name();
 
   if ( req.url().scheme() == "gdlookup" ) {
     QString path = url.path();
-    if ( !path.isEmpty() ) {
+    if ( path.size() > 1 ) {
       url.setPath( "" );
 
       Utils::Url::addQueryItem( url, "word", path.mid( 1 ) );
@@ -171,7 +118,7 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest co
     }
   }
 
-  sptr< Dictionary::DataRequest > dr = getResource( url, contentType );
+  auto dr = getResource( url, contentType );
 
   if ( dr.get() )
     return new ArticleResourceReply( this, req, dr, contentType );
@@ -182,7 +129,7 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest co
   //if not external url,can be blocked from here. no need to continue execute the following code.
   //such as bres://upload.wikimedia....  etc .
   if ( !Utils::isExternalLink( url ) ) {
-    gdWarning( "Blocking element \"%s\" as built-in link ", req.url().toEncoded().data() );
+    gdWarning( R"(Blocking element "%s" as built-in link )", req.url().toEncoded().data() );
     return new BlockedNetworkReply( this );
   }
 
@@ -197,7 +144,7 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest co
     if ( !url.host().endsWith( refererUrl.host() )
          && Utils::Url::getHostBaseFromUrl( url ) != Utils::Url::getHostBaseFromUrl( refererUrl )
          && !url.scheme().startsWith( "data" ) ) {
-      gdWarning( "Blocking element \"%s\" due to not same domain", url.toEncoded().data() );
+      gdWarning( R"(Blocking element "%s" due to not same domain)", url.toEncoded().data() );
 
       return new BlockedNetworkReply( this );
     }
@@ -206,7 +153,7 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest co
   if ( req.url().scheme() == "file" ) {
     // Check file presence and adjust path if necessary
     QString fileName = req.url().toLocalFile();
-    if ( req.url().host().isEmpty() && articleMaker.adjustFilePath( fileName ) ) {
+    if ( req.url().host().isEmpty() && ArticleMaker::adjustFilePath( fileName ) ) {
       QUrl newUrl( req.url() );
       QUrl localUrl = QUrl::fromLocalFile( fileName );
 
@@ -237,6 +184,20 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest co
   }
 
   return new AllowFrameReply( reply );
+}
+
+string ArticleNetworkAccessManager::getHtml( ResourceType resourceType )
+{
+  switch ( resourceType ) {
+    case ResourceType::UNTITLE:
+      return articleMaker.makeUntitleHtml();
+    case ResourceType::WELCOME:
+      return articleMaker.makeWelcomeHtml();
+    case ResourceType::BLANK:
+      return articleMaker.makeBlankHtml();
+    default:
+      return {};
+  }
 }
 
 sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( QUrl const & url, QString & contentType )
@@ -275,21 +236,8 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( QUrl c
 
     // Unpack contexts
 
-    QMap< QString, QString > contexts;
-
-    QString contextsEncoded = Utils::Url::queryItemValue( url, "contexts" );
-
-    if ( contextsEncoded.size() ) {
-      QByteArray ba = QByteArray::fromBase64( contextsEncoded.toLatin1() );
-
-      QBuffer buf( &ba );
-
-      buf.open( QBuffer::ReadOnly );
-
-      QDataStream stream( &buf );
-
-      stream >> contexts;
-    }
+    QString const contextsEncoded           = Utils::Url::queryItemValue( url, "contexts" );
+    QMap< QString, QString > const contexts = Utils::str2map( contextsEncoded );
 
     // See for ignore diacritics
 
@@ -301,21 +249,22 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( QUrl c
 
   if ( ( url.scheme() == "bres" || url.scheme() == "gdau" || url.scheme() == "gdvideo" || url.scheme() == "gico" )
        && url.path().size() ) {
-    //GD_DPRINTF( "Get %s\n", req.url().host().toLocal8Bit().data() );
-    //GD_DPRINTF( "Get %s\n", req.url().path().toLocal8Bit().data() );
 
+
+    QMimeType mineType = db.mimeTypeForUrl( url );
+    contentType        = mineType.name();
     string id = url.host().toStdString();
 
     bool search = ( id == "search" );
 
     if ( !search ) {
-      for ( unsigned x = 0; x < dictionaries.size(); ++x )
-        if ( dictionaries[ x ]->getId() == id ) {
+      for ( const auto & dictionary : dictionaries )
+        if ( dictionary->getId() == id ) {
           if ( url.scheme() == "gico" ) {
             QByteArray bytes;
             QBuffer buffer( &bytes );
             buffer.open( QIODevice::WriteOnly );
-            dictionaries[ x ]->getIcon().pixmap( 64 ).save( &buffer, "PNG" );
+            dictionary->getIcon().pixmap( 64 ).save( &buffer, "PNG" );
             buffer.close();
             sptr< Dictionary::DataRequestInstant > ico = std::make_shared< Dictionary::DataRequestInstant >( true );
             ico->getData().resize( bytes.size() );
@@ -323,24 +272,17 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( QUrl c
             return ico;
           }
           try {
-            return dictionaries[ x ]->getResource( Utils::Url::path( url ).mid( 1 ).toUtf8().data() );
+            return dictionary->getResource( Utils::Url::path( url ).mid( 1 ).toUtf8().data() );
           }
           catch ( std::exception & e ) {
-            gdWarning( "getResource request error (%s) in \"%s\"\n", e.what(), dictionaries[ x ]->getName().c_str() );
-            return sptr< Dictionary::DataRequest >();
+            gdWarning( "getResource request error (%s) in \"%s\"\n", e.what(), dictionary->getName().c_str() );
+            return {};
           }
         }
     }
   }
 
-  if ( url.scheme() == "gdpicture" ) {
-    contentType = "text/html";
-    QUrl imgUrl( url );
-    imgUrl.setScheme( "bres" );
-    return articleMaker.makePicturePage( imgUrl.toEncoded().data() );
-  }
-
-  return sptr< Dictionary::DataRequest >();
+  return {};
 }
 
 ArticleResourceReply::ArticleResourceReply( QObject * parent,
@@ -401,20 +343,23 @@ void ArticleResourceReply::reqFinished()
 
 qint64 ArticleResourceReply::bytesAvailable() const
 {
-  qint64 avail = req->dataSize();
+  qint64 const avail = req->dataSize();
 
   if ( avail < 0 )
     return 0;
 
-  return avail - alreadyRead + QNetworkReply::bytesAvailable();
+  qint64 const availBytes = avail - alreadyRead + QNetworkReply::bytesAvailable();
+  if ( availBytes == 0 && !req->isFinished() ) {
+    return 10240;
+  }
+
+  return availBytes;
 }
+
 
 bool ArticleResourceReply::atEnd() const
 {
-  // QWebEngineUrlRequestJob finishes and is destroyed as soon as QIODevice::atEnd() returns true.
-  // QNetworkReply::atEnd() returns true while bytesAvailable() returns 0.
-  // Return false if the data request is not finished to work around always-blank web page.
-  return req->isFinished() && QNetworkReply::atEnd();
+  return req->isFinished() && bytesAvailable() == 0;
 }
 
 qint64 ArticleResourceReply::readData( char * out, qint64 maxSize )
@@ -424,28 +369,20 @@ qint64 ArticleResourceReply::readData( char * out, qint64 maxSize )
   if ( maxSize == 0 )
     return 0;
 
-  bool finished = req->isFinished();
+  bool const finished = req->isFinished();
 
-  qint64 avail = req->dataSize();
+  qint64 const avail = req->dataSize();
 
   if ( avail < 0 )
     return finished ? -1 : 0;
 
-  qint64 left = avail - alreadyRead;
 
-  if ( left == 0 && !finished ) {
-    // Work around endlessly repeated useless calls to readData(). The sleep duration is a tradeoff.
-    // On the one hand, lowering the duration reduces CPU usage. On the other hand, overly long
-    // sleep duration reduces page content update frequency in the web view.
-    // Waiting on a condition variable is more complex and actually works worse than
-    // simple fixed-duration sleeping, because the web view is not updated until
-    // the data request is finished if readData() returns only when new data arrives.
-    QThread::msleep( 30 );
-    return 0;
-  }
+  qint64 const left = avail - alreadyRead;
 
-  qint64 toRead = maxSize < left ? maxSize : left;
-  GD_DPRINTF( "====reading  %d of (%d) bytes . Finished: %d", (int)toRead, avail, finished );
+  qint64 const toRead = maxSize < left ? maxSize : left;
+  if ( !toRead && finished )
+    return -1;
+  GD_DPRINTF( "====reading  %d of (%lld) bytes . Finished: %d", (int)toRead, avail, finished );
 
   try {
     req->getDataSlice( alreadyRead, toRead, out );
@@ -507,15 +444,15 @@ LocalSchemeHandler::LocalSchemeHandler( ArticleNetworkAccessManager & articleNet
 
 void LocalSchemeHandler::requestStarted( QWebEngineUrlRequestJob * requestJob )
 {
-  QUrl url = requestJob->requestUrl();
+  QUrl const url = requestJob->requestUrl();
   QNetworkRequest request;
   request.setUrl( url );
 
   //all the url reached here must be either gdlookup or bword scheme.
-  auto [ valid, word ] = Utils::Url::getQueryWord( url );
+  auto [ schemeValid, word ] = Utils::Url::getQueryWord( url );
   // or the condition can be (!queryWord.first || word.isEmpty())
   // ( queryWord.first && word.isEmpty() ) is only part of the above condition.
-  if ( valid && word.isEmpty() ) {
+  if ( schemeValid && word.isEmpty() ) {
     // invalid gdlookup url.
     return;
   }

@@ -1,4 +1,4 @@
-This dir includes fmt 10.0.0 (as of May 2023)
+This dir includes fmt 10.2.1 (as of January 2024)
 
 ---
 

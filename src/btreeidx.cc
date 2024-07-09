@@ -50,7 +50,7 @@ string const & BtreeDictionary::ensureInitDone()
   return empty;
 }
 
-void BtreeIndex::openIndex( IndexInfo const & indexInfo, File::Class & file, QMutex & mutex )
+void BtreeIndex::openIndex( IndexInfo const & indexInfo, File::Index & file, QMutex & mutex )
 {
   indexNodeSize = indexInfo.btreeMaxElements;
   rootOffset    = indexInfo.rootOffset;
@@ -272,6 +272,9 @@ void BtreeWordSearchRequest::findMatches()
             QMutexLocker _( &dataMutex );
 
             for ( auto & x : chain ) {
+              if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+                break;
+              }
               if ( useWildcards ) {
                 wstring word   = Utf8::decode( x.prefix + x.word );
                 wstring result = Folding::applyDiacriticsOnly( word );
@@ -290,15 +293,15 @@ void BtreeWordSearchRequest::findMatches()
                           || (int)resultFolded.size() - initialFoldedSize <= maxSuffixVariation ) )
                   addMatch( Utf8::decode( x.prefix + x.word ) );
               }
+              if ( matches.size() >= maxResults ) {
+                break;
+              }
             }
 
             if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
               break;
 
             if ( matches.size() >= maxResults ) {
-              // For now we actually allow more than maxResults if the last
-              // chain yield more than one result. That's ok and maybe even more
-              // desirable.
               break;
             }
           }
@@ -754,7 +757,7 @@ void BtreeIndex::antialias( wstring const & str, vector< WordArticleLink > & cha
 /// leaf nodes.
 static uint32_t buildBtreeNode( IndexedWords::const_iterator & nextIndex,
                                 size_t indexSize,
-                                File::Class & file,
+                                File::Index & file,
                                 size_t maxElements,
                                 uint32_t & lastLeafLinkOffset )
 {
@@ -886,17 +889,25 @@ static uint32_t buildBtreeNode( IndexedWords::const_iterator & nextIndex,
 
 void IndexedWords::addWord( wstring const & index_word, uint32_t articleOffset, unsigned int maxHeadwordSize )
 {
-  wstring const & word       = gd::removeTrailingZero( index_word );
-  wchar const * wordBegin    = word.c_str();
+  wstring word               = gd::removeTrailingZero( index_word );
   string::size_type wordSize = word.size();
 
   // Safeguard us against various bugs here. Don't attempt adding words
   // which are freakishly huge.
   if ( wordSize > maxHeadwordSize ) {
-    qWarning() << "Skipped too long headword: " << QString::fromStdU32String( word.substr( 0, 30 ) )
+    qWarning() << "Abbreviate the too long headword: " << QString::fromStdU32String( word.substr( 0, 30 ) )
                << "size:" << wordSize;
-    return;
+
+    //find the closest string to the maxHeadwordSize;
+    auto nonSpacePos = word.find_last_not_of( ' ', maxHeadwordSize );
+    if ( nonSpacePos > 0 )
+      word = word.substr( 0, nonSpacePos );
+    else
+      word = word.substr( 0, maxHeadwordSize );
+
+    wordSize = word.size();
   }
+  wchar const * wordBegin = word.c_str();
 
   // Skip any leading whitespace
   while ( *wordBegin && Folding::isWhitespace( *wordBegin ) ) {
@@ -976,7 +987,7 @@ void IndexedWords::addSingleWord( wstring const & index_word, uint32_t articleOf
   operator[]( Utf8::encode( folded ) ).emplace_back( Utf8::encode( word ), articleOffset );
 }
 
-IndexInfo buildIndex( IndexedWords const & indexedWords, File::Class & file )
+IndexInfo buildIndex( IndexedWords const & indexedWords, File::Index & file )
 {
   size_t indexSize = indexedWords.size();
   auto nextIndex   = indexedWords.begin();
@@ -1146,13 +1157,9 @@ void BtreeIndex::findArticleLinks( QVector< WordArticleLink > * articleLinks,
   }
 }
 
-void BtreeIndex::findHeadWords( QSet< uint32_t > offsets, int & index, QSet< QString > * headwords, uint32_t length )
+void BtreeIndex::findHeadWords( QList< uint32_t > offsets, int & index, QSet< QString > * headwords, uint32_t length )
 {
-  int i = 0;
-  for ( auto begin = offsets.begin(); begin != offsets.end(); begin++, i++ ) {
-    if ( i < index ) {
-      continue;
-    }
+  for ( auto begin = offsets.begin() + index; begin != offsets.end(); begin++ ) {
     findSingleNodeHeadwords( *begin, headwords );
     index++;
 
@@ -1196,8 +1203,8 @@ void BtreeIndex::findSingleNodeHeadwords( uint32_t offsets, QSet< QString > * he
   }
 }
 
-//find the next chain ptr ,which is large than this currentChainPtr
-QSet< uint32_t > BtreeIndex::findNodes()
+//find the next chain ptr ,which is larger than this currentChainPtr
+QList< uint32_t > BtreeIndex::findNodes()
 {
   QMutexLocker _( idxFileMutex );
 
@@ -1208,12 +1215,12 @@ QSet< uint32_t > BtreeIndex::findNodes()
   }
 
   char const * leaf = &rootNode.front();
-  QSet< uint32_t > leafOffset;
+  QList< uint32_t > leafOffset;
 
   uint32_t leafEntries;
   leafEntries = *(uint32_t *)leaf;
   if ( leafEntries != 0xffffFFFF ) {
-    leafOffset.insert( rootOffset );
+    leafOffset.append( rootOffset );
     return leafOffset;
   }
 
@@ -1223,8 +1230,9 @@ QSet< uint32_t > BtreeIndex::findNodes()
   uint32_t * offsets = (uint32_t *)leaf + 1;
   uint32_t i         = 0;
 
-  while ( i++ < ( indexNodeSize + 1 ) )
-    leafOffset.insert( *( offsets++ ) );
+  while ( i++ < ( indexNodeSize + 1 ) ) {
+    leafOffset.append( *( offsets++ ) );
+  }
 
   return leafOffset;
 }

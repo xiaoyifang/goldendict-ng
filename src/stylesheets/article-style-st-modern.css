@@ -9,7 +9,7 @@ body {
 
 a {
   text-decoration: none;
-  color: darkblue;
+  color: #18a3fa;
 }
 
 a:hover {
@@ -25,6 +25,9 @@ a:hover {
   background: white;
   padding-left: 2em;
   padding-right: 2em;
+
+  content-visibility: auto;
+  contain-intrinsic-height: auto 600px;
 }
 
 .gdactivearticle {

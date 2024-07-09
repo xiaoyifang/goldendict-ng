@@ -5,7 +5,7 @@ Popular dictionary formats are all supported.
 * [MDict](https://www.mdict.cn/) dictionaries (.mdx/.mdd)
 * [StarDict](http://www.huzheng.org/stardict/) dictionaries (.ifo/.dict./.idx/.syn)
 * [DSL](https://lingvoboard.ru/store/html/DSLReference_HTML/index.html) dictionaries (ABBYY Lingvo source files .dsl(.dz))
-* [Xdxf](https://github.com/soshial/xdxf_makedict) dictionaries (.xdxf(.dz))
+* [XDXF](https://github.com/soshial/xdxf_makedict) dictionaries (.xdxf(.dz))
 * [Zim](https://wiki.openzim.org/wiki/OpenZIM) dictionaries (.zim)
 * [Slob (Aard 2)](https://aarddict.org/) dictionaries (.slob)
 * [DictD](https://en.wikipedia.org/wiki/DICT#Dict_file_format) dictionaries (.index/.dict(.dz))
@@ -28,24 +28,7 @@ Popular dictionary formats are all supported.
 
 ## Other Sources
 
-**Programs**
-
-Any external apps can be added by setting a launch command. The `%GDWORD%` will be replaced by word from search line. If command line don't contains such template the word will be fed into standard input stream in 8-bit current locale encoding.
-
-| Type | Notes |
-|--|--|
-| Audio| Application play sound. A sound icon will be provided as article, click it will trigger the program. |
-| Text | Application output some plain text in 8-bit current locale encoding into standard output stream. This text will be shown as separate article. |
-| Html | Application output some html code into standard output stream. This code will be shown as separate article. |
-| Prefix | Application output some word list into standard output stream. This list will be added in common matches list.|
-
-**System Text-to-speech engines**
-
-Its capability is provided via Qt Speech.
-
-On Windows & macOS, the system provides sounds.
-
-On Linux, speech-dispatcher and flite are the backends.
+Various special "dictionaries" can be added, such as Programs, TTS, Morphology, Transliteration, etc... Their doc located at [Sources Management](manage_sources.md)
 
 ## Additional info
 
@@ -61,7 +44,7 @@ Every local dictionary can have individual icon. BMP, PNG, JPG or ICO files can 
 
 For Babylon, StarDict, DictD, ABBYY Lingvo, AardDictionary, SDictionary, Zim, MDict, Lsa, Zips, Slob, Gls dictionaries such graphics file must be named by main dictionary file name and places beside one. That is if main file of your dictionary, for example, named "My_best_dictionary.dsl" therefore icon file must be named "My_best_dictionary.bmp" (.png, .jpg etc.).
 
-For Xdxf dictionaries icon file must be named "icon16.png" (for 16х16 images) or "icon32.png" (for 32х32 images) and placed into dictionary folder.
+For XDXF dictionaries, the icon file must be named "icon16.png" (for 16х16 images) or "icon32.png" (for 32х32 images) or "dict.bmp" and placed into the dictionary folder.
 
 For Epwing dictionaries icon file must be named by name of folder with dictionary data beside "catalogs" file (a few folders can be presented, every folder is separate dictionary) and placed beside "catalogs" file.
 
@@ -81,13 +64,13 @@ Additional dictionary resources (images, sound files, etc.) also can be compress
 
 GoldenDict supports the "#SOUND_DICTIONARY" directive. Sounds missing in the resources of the dictionary will be searched first in the dictionary specified in this directive.
 
-### DictD, Xdxf
+### DictD and XDXF compression
 
-Main file of DictD dictionary (.dict) or Xdxf dictionary (.xdxf) can be compressed by Dictzip program to reduce its size.
+Main file of DictD dictionary (.dict) or XDXF dictionary (.xdxf) can be compressed into `*.dict.dz` or `*.xdxf.dz` by Dictzip program to reduce its size.
 
 ### Slob
 
-GoldenDict can render formulas in TeX format via Mimetex program. Just place "mimetex.cgi" file beside GoldenDict executable file.
+GoldenDict can render TeX formulas when a slob dictionary bundles MathJax.
 
 ### GLS
 

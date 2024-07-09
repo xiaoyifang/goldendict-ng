@@ -1,12 +1,12 @@
-#ifndef __SPEECHCLIENT_HH_INCLUDED__
-#define __SPEECHCLIENT_HH_INCLUDED__
+#pragma once
+#ifndef NO_TTS_SUPPORT
 
-#include <QObject>
-#include "config.hh"
-#include <QTextToSpeech>
-#include <memory>
-#include <QDebug>
-#include <QSharedPointer>
+  #include <QObject>
+  #include "config.hh"
+  #include <QTextToSpeech>
+  #include <memory>
+  #include <QDebug>
+  #include <QSharedPointer>
 
 class SpeechClient: public QObject
 {
@@ -81,4 +81,4 @@ private:
   QSharedPointer< InternalData > internalData;
 };
 
-#endif // __SPEECHCLIENT_HH_INCLUDED__
+#endif

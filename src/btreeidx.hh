@@ -82,7 +82,7 @@ public:
   /// Opens the index. The file reference is saved to be used for
   /// subsequent lookups.
   /// The mutex is the one to be locked when working with the file.
-  void openIndex( IndexInfo const &, File::Class &, QMutex & );
+  void openIndex( IndexInfo const &, File::Index &, QMutex & );
 
   /// Finds articles that match the given string. A case-insensitive search
   /// is performed.
@@ -100,9 +100,9 @@ public:
                          QSet< QString > * headwords,
                          QAtomicInt * isCancelled = 0 );
 
-  void findHeadWords( QSet< uint32_t > offsets, int & index, QSet< QString > * headwords, uint32_t length );
+  void findHeadWords( QList< uint32_t > offsets, int & index, QSet< QString > * headwords, uint32_t length );
   void findSingleNodeHeadwords( uint32_t offsets, QSet< QString > * headwords );
-  QSet< uint32_t > findNodes();
+  QList< uint32_t > findNodes();
 
   /// Retrieve headwords for presented article addresses
   void
@@ -140,7 +140,7 @@ protected:
 protected:
 
   QMutex * idxFileMutex;
-  File::Class * idxFile;
+  File::Index * idxFile;
 
 private:
 
@@ -195,15 +195,6 @@ public:
   virtual uint32_t getFtsIndexVersion()
   {
     return 0;
-  }
-
-  // Sort articles offsets for full-text search in dictionary-specific order
-  // to increase of articles retrieving speed
-  // Default - simple sorting in increase order
-  virtual void sortArticlesOffsetsForFTS( QVector< uint32_t > & offsets, QAtomicInt & isCancelled )
-  {
-    Q_UNUSED( isCancelled );
-    std::sort( offsets.begin(), offsets.end() );
   }
 
   /// Called before each matching operation to ensure that any child init
@@ -276,7 +267,7 @@ struct IndexedWords: public map< string, vector< WordArticleLink > >
 /// Builds the index, as a compressed btree. Returns IndexInfo.
 /// All the data is stored to the given file, beginning from its current
 /// position.
-IndexInfo buildIndex( IndexedWords const &, File::Class & file );
+IndexInfo buildIndex( IndexedWords const &, File::Index & file );
 
 } // namespace BtreeIndexing
 

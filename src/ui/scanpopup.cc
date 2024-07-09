@@ -77,14 +77,13 @@ ScanPopup::ScanPopup( QWidget * parent,
   escapeAction( this ),
   switchExpandModeAction( this ),
   focusTranslateLineAction( this ),
+  stopAudioAction( this ),
   openSearchAction( this ),
   wordFinder( this ),
   dictionaryBar( this, configEvents, cfg.editDictionaryCommandLine, cfg.preferences.maxDictionaryRefsInContextMenu ),
   hideTimer( this )
 {
   ui.setupUi( this );
-
-  openSearchAction.setShortcut( QKeySequence( "Ctrl+F" ) );
 
   if ( layoutDirection() == Qt::RightToLeft ) {
     // Adjust button icons for Right-To-Left layout
@@ -103,15 +102,20 @@ ScanPopup::ScanPopup( QWidget * parent,
                                 groups,
                                 true,
                                 cfg,
-                                openSearchAction,
                                 ui.translateBox->translateLine(),
-                                dictionaryBar.toggleViewAction() );
+                                dictionaryBar.toggleViewAction(),
+                                cfg.lastPopupGroupId );
 
   connect( definition, &ArticleView::inspectSignal, this, &ScanPopup::inspectElementWhenPinned );
   connect( definition, &ArticleView::forceAddWordToHistory, this, &ScanPopup::forceAddWordToHistory );
   connect( this, &ScanPopup::closeMenu, definition, &ArticleView::closePopupMenu );
   connect( definition, &ArticleView::sendWordToHistory, this, &ScanPopup::sendWordToHistory );
   connect( definition, &ArticleView::typingEvent, this, &ScanPopup::typingEvent );
+
+  openSearchAction.setShortcut( QKeySequence( "Ctrl+F" ) );
+  openSearchAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
+  addAction( &openSearchAction );
+  connect( &openSearchAction, &QAction::triggered, definition, &ArticleView::openSearch );
 
   wordListDefaultFont      = ui.translateBox->completerWidget()->font();
   translateLineDefaultFont = ui.translateBox->font();
@@ -123,9 +127,9 @@ ScanPopup::ScanPopup( QWidget * parent,
   definition->installEventFilter( this );
   this->installEventFilter( this );
 
-  connect( ui.translateBox->translateLine(), &QLineEdit::textChanged, this, &ScanPopup::translateInputChanged );
+  connect( ui.translateBox->translateLine(), &QLineEdit::textEdited, this, &ScanPopup::translateInputChanged );
 
-  connect( ui.translateBox->translateLine(), &QLineEdit::returnPressed, this, &ScanPopup::translateInputFinished );
+  connect( ui.translateBox, &TranslateBox::returnPressed, this, &ScanPopup::translateInputFinished );
 
   ui.pronounceButton->setDisabled( true );
 
@@ -133,6 +137,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   ui.groupList->setCurrentGroup( cfg.lastPopupGroupId );
 
   definition->setCurrentGroupId( ui.groupList->getCurrentGroup() );
+  definition->setSelectionBySingleClick( cfg.preferences.selectWordBySingleClick );
   dictionaryBar.setFloatable( false );
 
   Instances::Group const * igrp = groups.findGroup( cfg.lastPopupGroupId );
@@ -155,6 +160,17 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( &dictionaryBar, &DictionaryBar::showDictionaryInfo, this, &ScanPopup::showDictionaryInfo );
   connect( &dictionaryBar, &DictionaryBar::openDictionaryFolder, this, &ScanPopup::openDictionaryFolder );
 
+  connect( &GlobalBroadcaster::instance()->pronounce_engine,
+           &PronounceEngine::emitAudio,
+           this,
+           [ this ]( auto audioUrl ) {
+             if ( !isActiveWindow() )
+               return;
+             if ( cfg.preferences.pronounceOnLoadPopup ) {
+
+               definition->openLink( QUrl::fromEncoded( audioUrl.toUtf8() ), {} );
+             }
+           } );
   pinnedGeometry = cfg.popupWindowGeometry;
   if ( cfg.popupWindowGeometry.size() )
     restoreGeometry( cfg.popupWindowGeometry );
@@ -190,17 +206,6 @@ ScanPopup::ScanPopup( QWidget * parent,
 
   definition->focus();
 
-#if 0 // Experimental code to give window a non-rectangular shape (i.e. \
-      // balloon) using a colorkey mask.
-  QPixmap pixMask( size() );
-  render( &pixMask );
-
-  setMask( pixMask.createMaskFromColor( QColor( 255, 0, 0 ) ) );
-
-  // This helps against flickering
-  setAttribute( Qt::WA_NoSystemBackground );
-#endif
-
   escapeAction.setShortcut( QKeySequence( "Esc" ) );
   addAction( &escapeAction );
   connect( &escapeAction, &QAction::triggered, this, &ScanPopup::escapePressed );
@@ -211,6 +216,12 @@ ScanPopup::ScanPopup( QWidget * parent,
                                          << QKeySequence( "Alt+D" ) << QKeySequence( "Ctrl+L" ) );
 
   connect( &focusTranslateLineAction, &QAction::triggered, this, &ScanPopup::focusTranslateLine );
+
+  stopAudioAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
+  addAction( &stopAudioAction );
+  stopAudioAction.setShortcut( QKeySequence( "Ctrl+Shift+S" ) );
+
+  connect( &stopAudioAction, &QAction::triggered, this, &ScanPopup::stopAudio );
 
   QAction * const focusArticleViewAction = new QAction( this );
   focusArticleViewAction->setShortcutContext( Qt::WidgetWithChildrenShortcut );
@@ -255,8 +266,10 @@ ScanPopup::ScanPopup( QWidget * parent,
   ui.goBackButton->setEnabled( false );
   ui.goForwardButton->setEnabled( false );
 
+#ifndef Q_OS_MACOS
   grabGesture( Gestures::GDPinchGestureType );
   grabGesture( Gestures::GDSwipeGestureType );
+#endif
 
 #ifdef HAVE_X11
   scanFlag = new ScanFlag( this );
@@ -279,9 +292,6 @@ ScanPopup::ScanPopup( QWidget * parent,
 
 void ScanPopup::refresh()
 {
-
-  // TODO: GroupCombox's update should be moved inside GroupCombox
-
   // currentIndexChanged() signal is very trigger-happy. To avoid triggering
   // it, we disconnect it while we're clearing and filling back groups.
   disconnect( ui.groupList, &GroupComboBox::currentIndexChanged, this, &ScanPopup::currentGroupChanged );
@@ -298,6 +308,8 @@ void ScanPopup::refresh()
 
   updateDictionaryBar();
 
+  definition->syncBackgroundColorWithCfgDarkReader();
+
   connect( ui.groupList, &GroupComboBox::currentIndexChanged, this, &ScanPopup::currentGroupChanged );
 #ifdef HAVE_X11
   selectionDelayTimer.setInterval( cfg.preferences.selectionChangeDelayTimer );
@@ -308,12 +320,13 @@ void ScanPopup::refresh()
 ScanPopup::~ScanPopup()
 {
   saveConfigData();
-
+#ifndef Q_OS_MACOS
   ungrabGesture( Gestures::GDPinchGestureType );
   ungrabGesture( Gestures::GDSwipeGestureType );
+#endif
 }
 
-void ScanPopup::saveConfigData()
+void ScanPopup::saveConfigData() const
 {
   // Save state, geometry and pin status
   cfg.popupWindowState       = saveState();
@@ -328,7 +341,7 @@ void ScanPopup::inspectElementWhenPinned( QWebEnginePage * page )
     emit inspectSignal( page );
 }
 
-void ScanPopup::applyZoomFactor()
+void ScanPopup::applyZoomFactor() const
 {
   definition->setZoomFactor( cfg.preferences.zoomFactor );
 }
@@ -345,8 +358,9 @@ void ScanPopup::applyWordsZoomLevel()
     font.setPointSize( ps );
   }
 
-  if ( ui.translateBox->completerWidget()->font().pointSize() != ps )
+  if ( ui.translateBox->completerWidget()->font().pointSize() != ps ) {
     ui.translateBox->completerWidget()->setFont( font );
+  }
 
   font = translateLineDefaultFont;
   ps   = font.pointSize();
@@ -426,14 +440,7 @@ void ScanPopup::translateWord( QString const & word )
   emit hideScanFlag();
 #endif
 
-  engagePopup( false,
-#ifdef Q_OS_WIN
-               true // We only focus popup under Windows when activated via Ctrl+C+C
-                    // -- on Linux it already has an implicit focus
-#else
-               false
-#endif
-  );
+  engagePopup( false, true );
 }
 
 #ifdef HAVE_X11
@@ -472,8 +479,6 @@ void ScanPopup::engagePopup( bool forcePopup, bool giveFocus )
     emit sendPhraseToMainWindow( pendingWord );
     return;
   }
-
-  definition->setSelectionBySingleClick( cfg.preferences.selectWordBySingleClick );
 
   if ( !isVisible() ) {
     // Need to show the window
@@ -524,14 +529,6 @@ void ScanPopup::engagePopup( bool forcePopup, bool giveFocus )
 
     show();
 
-#if defined( HAVE_X11 )
-    // Ensure that the window always has focus on X11 with Qt::Tool flag.
-    // This also often prevents the window from disappearing prematurely with Qt::Popup flag,
-    // especially when combined with Qt::X11BypassWindowManagerHint flag.
-    if ( !ui.pinButton->isChecked() )
-      giveFocus = true;
-#endif
-
     if ( giveFocus ) {
       activateWindow();
       raise();
@@ -546,7 +543,7 @@ void ScanPopup::engagePopup( bool forcePopup, bool giveFocus )
     // This produced some funky mouse grip-related bugs so we commented it out
     //QApplication::processEvents(); // Make window appear immediately no matter what
   }
-  else if ( ui.pinButton->isChecked() ) {
+  else {
     // Pinned-down window isn't always on top, so we need to raise it
     show();
     if ( cfg.preferences.raiseWindowOnSearch ) {
@@ -554,16 +551,9 @@ void ScanPopup::engagePopup( bool forcePopup, bool giveFocus )
       raise();
     }
   }
-#if defined( HAVE_X11 )
-  else if ( ( windowFlags() & Qt::Tool ) == Qt::Tool && cfg.preferences.raiseWindowOnSearch ) {
-    // Ensure that the window with Qt::Tool flag always has focus on X11.
-    activateWindow();
-    raise();
-  }
-#endif
 
   if ( ui.pinButton->isChecked() )
-    setWindowTitle( tr( "%1 - %2" ).arg( elideInputWord(), "GoldenDict" ) );
+    setWindowTitle( tr( "%1 - GoldenDict-ng" ).arg( elideInputWord() ) );
 
   /// Too large strings make window expand which is probably not what user
   /// wants
@@ -612,6 +602,7 @@ void ScanPopup::currentGroupChanged( int )
 void ScanPopup::translateInputChanged( QString const & text )
 {
   updateSuggestionList( text );
+  GlobalBroadcaster::instance()->translateLineText = text;
 }
 
 void ScanPopup::updateSuggestionList()
@@ -629,13 +620,7 @@ void ScanPopup::updateSuggestionList( QString const & text )
     // An empty request always results in an empty result
     wordFinder.cancel();
 
-    // Reset the noResults mark if it's on right now
-    if ( ui.translateBox->translateLine()->property( "noResults" ).toBool() ) {
-      auto translateLine = ui.translateBox->translateLine();
-      translateLine->setProperty( "noResults", false );
 
-      Utils::Widget::setNoResultColor( translateLine, false );
-    }
     return;
   }
 
@@ -648,7 +633,7 @@ void ScanPopup::translateInputFinished()
   showTranslationFor( pendingWord );
 }
 
-void ScanPopup::showTranslationFor( QString const & word )
+void ScanPopup::showTranslationFor( QString const & word ) const
 {
   ui.pronounceButton->setDisabled( true );
 
@@ -697,6 +682,8 @@ void ScanPopup::typingEvent( QString const & t )
     ui.translateBox->setText( t, true );
     ui.translateBox->translateLine()->setCursorPosition( t.size() );
   }
+
+  updateSuggestionList();
 }
 
 bool ScanPopup::eventFilter( QObject * watched, QEvent * event )
@@ -851,18 +838,9 @@ void ScanPopup::enterEvent( QEvent * event )
   }
 }
 
-void ScanPopup::requestWindowFocus()
-{
-  // One of the rare, actually working workarounds for requesting a user keyboard focus on X11,
-  // works for Qt::Popup windows, exactly like our Scan Popup (in unpinned state).
-  // Modern window managers actively resist to automatically focus pop-up windows.
-}
-
 void ScanPopup::showEvent( QShowEvent * ev )
 {
   QMainWindow::showEvent( ev );
-
-  QTimer::singleShot( 100, this, &ScanPopup::requestWindowFocus );
 
   if ( groups.size() <= 1 ) // Only the default group? Hide then.
     ui.groupList->hide();
@@ -908,12 +886,16 @@ void ScanPopup::prefixMatchFinished()
         _results << fst;
       }
 
+      // Reset the noResults mark if it's on right now
+      auto translateLine = ui.translateBox->translateLine();
+
+      Utils::Widget::setNoResultColor( translateLine, _results.isEmpty() );
       ui.translateBox->setModel( _results );
     }
   }
 }
 
-void ScanPopup::on_pronounceButton_clicked()
+void ScanPopup::on_pronounceButton_clicked() const
 {
   definition->playSound();
 }
@@ -933,7 +915,7 @@ void ScanPopup::pinButtonClicked( bool checked )
     setAttribute( Qt::WA_MacAlwaysShowToolWindow );
 #endif
 
-    setWindowTitle( tr( "%1 - %2" ).arg( elideInputWord(), "GoldenDict" ) );
+    setWindowTitle( tr( "%1 - GoldenDict-ng" ).arg( elideInputWord() ) );
     dictionaryBar.setMovable( true );
     hideTimer.stop();
   }
@@ -965,6 +947,11 @@ void ScanPopup::focusTranslateLine()
   ui.translateBox->translateLine()->selectAll();
 }
 
+void ScanPopup::stopAudio() const
+{
+  definition->stopSound();
+}
+
 void ScanPopup::on_showDictionaryBar_clicked( bool checked )
 {
   dictionaryBar.setVisible( checked );
@@ -978,7 +965,7 @@ void ScanPopup::hideTimerExpired()
     hideWindow();
 }
 
-void ScanPopup::pageLoaded( ArticleView * )
+void ScanPopup::pageLoaded( ArticleView * ) const
 {
   if ( !isVisible() )
     return;
@@ -991,7 +978,7 @@ void ScanPopup::pageLoaded( ArticleView * )
   updateBackForwardButtons();
 }
 
-void ScanPopup::showStatusBarMessage( QString const & message, int timeout, QPixmap const & icon )
+void ScanPopup::showStatusBarMessage( QString const & message, int timeout, QPixmap const & icon ) const
 {
   mainStatusBar->showMessage( message, timeout, icon );
 }
@@ -1012,6 +999,7 @@ void ScanPopup::hideWindow()
   ui.translateBox->setPopupEnabled( false );
   ui.translateBox->translateLine()->deselect();
   hide();
+  definition->clearContent();
 }
 
 void ScanPopup::interceptMouse()
@@ -1103,18 +1091,18 @@ void ScanPopup::switchExpandOptionalPartsMode()
     emit switchExpandMode();
 }
 
-void ScanPopup::updateBackForwardButtons()
+void ScanPopup::updateBackForwardButtons() const
 {
   ui.goBackButton->setEnabled( definition->canGoBack() );
   ui.goForwardButton->setEnabled( definition->canGoForward() );
 }
 
-void ScanPopup::on_goBackButton_clicked()
+void ScanPopup::on_goBackButton_clicked() const
 {
   definition->back();
 }
 
-void ScanPopup::on_goForwardButton_clicked()
+void ScanPopup::on_goForwardButton_clicked() const
 {
   definition->forward();
 }
@@ -1126,7 +1114,7 @@ void ScanPopup::setDictionaryIconSize()
   dictionaryBar.setDictionaryIconSize( extent );
 }
 
-void ScanPopup::setGroupByName( QString const & name )
+void ScanPopup::setGroupByName( QString const & name ) const
 {
   int i;
   for ( i = 0; i < ui.groupList->count(); i++ ) {
@@ -1137,6 +1125,11 @@ void ScanPopup::setGroupByName( QString const & name )
   }
   if ( i >= ui.groupList->count() )
     gdWarning( "Group \"%s\" for popup window is not found\n", name.toUtf8().data() );
+}
+
+void ScanPopup::openSearch()
+{
+  definition->openSearch();
 }
 
 void ScanPopup::alwaysOnTopClicked( bool checked )
@@ -1153,7 +1146,7 @@ void ScanPopup::alwaysOnTopClicked( bool checked )
   }
 }
 
-void ScanPopup::titleChanged( ArticleView *, QString const & title )
+void ScanPopup::titleChanged( ArticleView *, QString const & title ) const
 {
   unsigned groupId = ui.groupList->getCurrentGroup();
 

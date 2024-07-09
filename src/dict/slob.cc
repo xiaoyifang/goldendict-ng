@@ -28,10 +28,6 @@
 #include <QTextCodec>
 #include <QMap>
 #include <QPair>
-#include <QRegExp>
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-  #include <QtCore5Compat>
-#endif
 #include <QProcess>
 #include <QVector>
 
@@ -58,6 +54,7 @@ using BtreeIndexing::IndexedWords;
 using BtreeIndexing::IndexInfo;
 
 DEF_EX_STR( exNotSlobFile, "Not an Slob file", Dictionary::Ex )
+DEF_EX( exTruncateFile, "Slob file truncated", Dictionary::Ex )
 using Dictionary::exCantReadFile;
 DEF_EX_STR( exCantDecodeFile, "Can't decode file", Dictionary::Ex )
 DEF_EX_STR( exNoCodecFound, "No text codec found", Dictionary::Ex )
@@ -103,7 +100,7 @@ struct RefEntry
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Class idx( indexFile, "rb" );
+  File::Index idx( indexFile, "rb" );
 
   IdxHeader header;
 
@@ -323,8 +320,8 @@ void SlobFile::open( const QString & name )
     encoding = readTinyText();
 
     codec = QTextCodec::codecForName( encoding.toLatin1() );
-    if ( codec == 0 ) {
-      error = QString( "for encoding \"" ) + encoding + "\"";
+    if ( codec == nullptr ) {
+      error = QString( R"(for encoding "%1")" ).arg( encoding );
       throw exNoCodecFound( string( error.toUtf8().data() ) );
     }
 
@@ -382,6 +379,11 @@ void SlobFile::open( const QString & name )
     if ( file.read( (char *)&tmp, sizeof( tmp ) ) != sizeof( tmp ) )
       break;
     fileSize = qFromBigEndian( tmp );
+
+    //truncated file
+    if ( file.size() < fileSize ) {
+      throw exTruncateFile();
+    }
 
     if ( file.read( (char *)&cnt, sizeof( cnt ) ) != sizeof( cnt ) )
       break;
@@ -575,11 +577,10 @@ class SlobDictionary: public BtreeIndexing::BtreeDictionary
 {
   QMutex idxMutex;
   QMutex slobMutex, idxResourceMutex;
-  File::Class idx;
+  File::Index idx;
   BtreeIndex resourceIndex;
   IdxHeader idxHeader;
   SlobFile sf;
-  QString texCgiPath, texCachePath;
 
   string idxFileName;
 
@@ -635,12 +636,11 @@ public:
 
   quint64 getArticlePos( uint32_t articleNumber );
 
-  void sortArticlesOffsetsForFTS( QVector< uint32_t > & offsets, QAtomicInt & isCancelled ) override;
   void makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration ) override;
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
-    can_FTS = fts.enabled && !fts.disabledTypes.contains( "SLOB", Qt::CaseInsensitive )
+    can_FTS = enable_FTS && fts.enabled && !fts.disabledTypes.contains( "SLOB", Qt::CaseInsensitive )
       && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
 
@@ -662,8 +662,6 @@ private:
 
   string convert( string const & in_data, RefEntry const & entry );
 
-  void removeDirectory( QString const & directory );
-
   friend class SlobArticleRequest;
   friend class SlobResourceRequest;
 };
@@ -675,13 +673,7 @@ SlobDictionary::SlobDictionary( string const & id, string const & indexFile, vec
   idxHeader( idx.read< IdxHeader >() )
 {
   // Open data file
-
-  try {
-    sf.open( dictionaryFiles[ 0 ].c_str() );
-  }
-  catch ( std::exception & e ) {
-    gdWarning( "Slob dictionary initializing failed: %s, error: %s\n", dictionaryFiles[ 0 ].c_str(), e.what() );
-  }
+  sf.open( dictionaryFiles[ 0 ].c_str() );
 
   // Initialize the indexes
 
@@ -702,42 +694,10 @@ SlobDictionary::SlobDictionary( string const & id, string const & indexFile, vec
 
   // Full-text search parameters
 
-  can_FTS = true;
-
   ftsIdxName = indexFile + Dictionary::getFtsSuffix();
-
-  if ( !Dictionary::needToRebuildIndex( dictionaryFiles, ftsIdxName ) && !FtsHelpers::ftsIndexIsOldOrBad( this ) )
-    FTS_index_completed.ref();
-
-  texCgiPath = Config::getProgramDataDir() + "/mimetex.cgi";
-  if ( QFileInfo( texCgiPath ).exists() ) {
-    QString dirName = QString::fromStdString( getId() );
-    QDir( QDir::tempPath() ).mkdir( dirName );
-    texCachePath = QDir::tempPath() + "/" + dirName;
-  }
-  else
-    texCgiPath.clear();
 }
 
-SlobDictionary::~SlobDictionary()
-{
-  if ( !texCachePath.isEmpty() )
-    removeDirectory( texCachePath );
-}
-
-void SlobDictionary::removeDirectory( QString const & directory )
-{
-  QDir dir( directory );
-  Q_FOREACH ( QFileInfo info,
-              dir.entryInfoList( QDir::NoDotAndDotDot | QDir::AllDirs | QDir::Files, QDir::DirsFirst ) ) {
-    if ( info.isDir() )
-      removeDirectory( info.absoluteFilePath() );
-    else
-      QFile::remove( info.absoluteFilePath() );
-  }
-
-  dir.rmdir( directory );
-}
+SlobDictionary::~SlobDictionary() {}
 
 void SlobDictionary::loadIcon() noexcept
 {
@@ -827,7 +787,7 @@ string SlobDictionary::convert( const string & in, RefEntry const & entry )
     pos = match.capturedEnd();
 
     QStringList list = match.capturedTexts();
-    // Add empty strings for compatibility with QRegExp behaviour
+    // Add empty strings for compatibility with regex behaviour
     for ( int i = match.lastCapturedIndex() + 1; i < 5; i++ )
       list.append( QString() );
 
@@ -858,142 +818,13 @@ string SlobDictionary::convert( const string & in, RefEntry const & entry )
   }
   newText.clear();
 
-
-  // Handle TeX formulas via mimetex.cgi
-
-  if ( !texCgiPath.isEmpty() ) {
-    QRegularExpression texImage( R"lit(<\s*img\s+class="([^"]+)"\s*([^>]*)alt="([^"]+)"[^>]*>)lit" );
-    QRegularExpression regFrac( "\\\\[dt]frac" );
-    QRegularExpression regSpaces( R"(\s+([\{\(\[\}\)\]]))" );
-
-    QRegExp multReg( R"(\*\{(\d+)\}([^\{]|\{([^\}]+)\}))", Qt::CaseSensitive, QRegExp::RegExp2 );
-
-    QString arrayDesc( "\\begin{array}{" );
-    pos               = 0;
-    unsigned texCount = 0;
-    QString imgName;
-
-    QRegularExpressionMatchIterator it = texImage.globalMatch( text );
-    QString newText;
-    while ( it.hasNext() ) {
-      QRegularExpressionMatch match = it.next();
-
-      newText += text.mid( pos, match.capturedStart() - pos );
-      pos = match.capturedEnd();
-
-      QStringList list = match.capturedTexts();
-
-
-      if ( list[ 1 ].compare( "tex" ) == 0 || list[ 1 ].compare( "mwe-math-fallback-image-inline" ) == 0
-           || list[ 1 ].endsWith( " tex" ) ) {
-        QString name;
-        name    = name.asprintf( "%04X%04X%04X.gif", entry.itemIndex, entry.binIndex, texCount );
-        imgName = texCachePath + "/" + name;
-
-        if ( !QFileInfo( imgName ).exists() ) {
-
-          // Replace some TeX commands which don't support by mimetex.cgi
-
-          QString tex = list[ 3 ];
-          tex.replace( regSpaces, "\\1" );
-          tex.replace( regFrac, "\\frac" );
-          tex.replace( "\\leqslant", "\\leq" );
-          tex.replace( "\\geqslant", "\\geq" );
-          tex.replace( "\\infin", "\\infty" );
-          tex.replace( "\\iff", "\\Longleftrightarrow" );
-          tex.replace( "\\tbinom", "\\binom" );
-          tex.replace( "\\implies", "\\Longrightarrow" );
-          tex.replace( "{aligned}", "{align*}" );
-          tex.replace( "\\Subset", "\\subset" );
-          tex.replace( "\\xrightarrow", "\\longrightarrow^" );
-          tex.remove( "\\scriptstyle" );
-          tex.remove( "\\mathop" );
-          tex.replace( "\\bigg|", "|" );
-
-          // Format array descriptions (mimetex now don't support *{N}x constructions in it)
-
-          int pos1 = 0;
-          while ( pos1 >= 0 ) {
-            pos1 = tex.indexOf( arrayDesc, pos1, Qt::CaseInsensitive );
-            if ( pos1 >= 0 ) {
-              // Retrieve array description
-              QString desc, newDesc;
-              int n      = 0;
-              int nstart = pos1 + arrayDesc.size();
-              int i;
-              for ( i = 0; i + nstart < tex.size(); i++ ) {
-                if ( tex[ i + nstart ] == '{' )
-                  n += 1;
-                if ( tex[ i + nstart ] == '}' )
-                  n -= 1;
-                if ( n < 0 )
-                  break;
-              }
-              if ( i > 0 && i + nstart + 1 < tex.size() )
-                desc = tex.mid( nstart, i );
-
-              if ( !desc.isEmpty() ) {
-                // Expand multipliers: "*{5}x" -> "xxxxx"
-
-                newDesc = desc;
-                QString newStr;
-                int pos2 = 0;
-                while ( pos2 >= 0 ) {
-                  pos2 = multReg.indexIn( newDesc, pos2 );
-                  if ( pos2 >= 0 ) {
-                    QStringList list = multReg.capturedTexts();
-                    int n            = list[ 1 ].toInt();
-                    for ( int i = 0; i < n; i++ )
-                      newStr += list[ 3 ].isEmpty() ? list[ 2 ] : list[ 3 ];
-                    newDesc.replace( pos2, list[ 0 ].size(), newStr );
-                    pos2 += newStr.size();
-                  }
-                  else
-                    break;
-                }
-                tex.replace( pos1 + arrayDesc.size(), desc.size(), newDesc );
-                pos1 += arrayDesc.size() + newDesc.size();
-              }
-              else
-                pos1 += arrayDesc.size();
-            }
-            else
-              break;
-          }
-
-          QString command = texCgiPath + " -e " + imgName + " \"" + tex + "\"";
-          QProcess::execute( command, QStringList() );
-        }
-
-        QString tag = QString( R"(<img class="imgtex" src="file://)" )
-  #ifdef Q_OS_WIN32
-          + "/"
-  #endif
-          + imgName + "\" alt=\"" + list[ 3 ] + "\">";
-
-        newText += tag;
-
-
-        texCount += 1;
-      }
-      else
-        newText += list[ 0 ];
-    }
-    if ( pos ) {
-      newText += text.mid( pos );
-      text = newText;
-    }
-    newText.clear();
-  }
-  #ifdef Q_OS_WIN32
-  else {
-    // Increase equations scale
-    text = QString::fromLatin1( "<script type=\"text/x-mathjax-config\">MathJax.Hub.Config({" )
-      + " SVG: { scale: 170, linebreaks: { automatic:true } }"
-      + ", \"HTML-CSS\": { scale: 210, linebreaks: { automatic:true } }"
-      + ", CommonHTML: { scale: 210, linebreaks: { automatic:true } }" + " });</script>" + text;
-  }
-  #endif
+#ifdef Q_OS_WIN32
+  // Increase equations scale
+  text = QString::fromLatin1( "<script type=\"text/x-mathjax-config\">MathJax.Hub.Config({" )
+    + " SVG: { scale: 170, linebreaks: { automatic:true } }"
+    + ", \"HTML-CSS\": { scale: 210, linebreaks: { automatic:true } }"
+    + ", CommonHTML: { scale: 210, linebreaks: { automatic:true } }" + " });</script>" + text;
+#endif
 
   // Fix outstanding elements
   text += "<br style=\"clear:both;\" />";
@@ -1054,11 +885,6 @@ quint64 SlobDictionary::getArticlePos( uint32_t articleNumber )
     sf.getRefEntry( articleNumber, entry );
   }
   return ( ( (quint64)( entry.binIndex ) ) << 32 ) | entry.itemIndex;
-}
-
-void SlobDictionary::sortArticlesOffsetsForFTS( QVector< uint32_t > & offsets, QAtomicInt & isCancelled )
-{
-  //Currently , we use xapian to create the fulltext index. The order of offsets is no important.
 }
 
 void SlobDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )
@@ -1183,10 +1009,10 @@ void SlobArticleRequest::run()
 
   vector< WordArticleLink > chain = dict.findArticles( word, ignoreDiacritics );
 
-  for ( unsigned x = 0; x < alts.size(); ++x ) {
+  for ( const auto & alt : alts ) {
     /// Make an additional query for each alt
 
-    vector< WordArticleLink > altChain = dict.findArticles( alts[ x ], ignoreDiacritics );
+    vector< WordArticleLink > altChain = dict.findArticles( alt, ignoreDiacritics );
 
     chain.insert( chain.end(), altChain.begin(), altChain.end() );
   }
@@ -1201,14 +1027,13 @@ void SlobArticleRequest::run()
   if ( ignoreDiacritics )
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
 
-  for ( unsigned x = 0; x < chain.size(); ++x ) {
+  for ( auto & x : chain ) {
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
       finish();
       return;
     }
 
-    quint64 pos =
-      dict.getArticlePos( chain[ x ].articleOffset ); // Several "articleOffset" values may refer to one article
+    quint64 pos = dict.getArticlePos( x.articleOffset ); // Several "articleOffset" values may refer to one article
 
     if ( articlesIncluded.find( pos ) != articlesIncluded.end() )
       continue; // We already have this article in the body.
@@ -1217,9 +1042,9 @@ void SlobArticleRequest::run()
 
     string headword, articleText;
 
-    headword = chain[ x ].word;
+    headword = x.word;
     try {
-      dict.loadArticle( chain[ x ].articleOffset, articleText );
+      dict.loadArticle( x.articleOffset, articleText );
     }
     catch ( ... ) {
     }
@@ -1383,17 +1208,17 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 {
   vector< sptr< Dictionary::Class > > dictionaries;
 
-  for ( vector< string >::const_iterator i = fileNames.begin(); i != fileNames.end(); ++i ) {
+  for ( const auto & fileName : fileNames ) {
     // Skip files with the extensions different to .slob to speed up the
     // scanning
 
-    QString firstName = QDir::fromNativeSeparators( i->c_str() );
+    QString firstName = QDir::fromNativeSeparators( fileName.c_str() );
     if ( !firstName.endsWith( ".slob" ) )
       continue;
 
     // Got the file -- check if we need to rebuid the index
 
-    vector< string > dictFiles( 1, *i );
+    vector< string > dictFiles( 1, fileName );
 
     string dictId = Dictionary::makeDictionaryId( dictFiles );
 
@@ -1403,13 +1228,13 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
         SlobFile sf;
 
-        gdDebug( "Slob: Building the index for dictionary: %s\n", i->c_str() );
+        gdDebug( "Slob: Building the index for dictionary: %s\n", fileName.c_str() );
 
         sf.open( firstName );
 
         initializing.indexingDictionary( sf.getDictionaryName().toUtf8().constData() );
 
-        File::Class idx( indexFile, "wb" );
+        File::Index idx( indexFile, "wb" );
         IdxHeader idxHeader;
         memset( &idxHeader, 0, sizeof( idxHeader ) );
 
@@ -1483,7 +1308,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         idxHeader.articleCount = articleCount;
         idxHeader.wordCount    = wordCount;
 
-        QPair< quint32, quint32 > langs = LangCoder::findIdsForFilename( QString::fromStdString( dictFiles[ 0 ] ) );
+        auto langs = LangCoder::findLangIdPairFromPath( dictFiles[ 0 ] );
 
         idxHeader.langFrom = langs.first;
         idxHeader.langTo   = langs.second;
@@ -1495,7 +1320,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       dictionaries.push_back( std::make_shared< SlobDictionary >( dictId, indexFile, dictFiles ) );
     }
     catch ( std::exception & e ) {
-      gdWarning( "Slob dictionary initializing failed: %s, error: %s\n", i->c_str(), e.what() );
+      gdWarning( "Slob dictionary initializing failed: %s, error: %s\n", fileName.c_str(), e.what() );
       continue;
     }
     catch ( ... ) {

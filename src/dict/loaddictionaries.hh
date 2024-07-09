@@ -23,7 +23,6 @@ class LoadDictionaries: public QThread, public Dictionary::Initializing
   Config::Transliteration const & transliteration;
   std::vector< sptr< Dictionary::Class > > dictionaries;
   std::string exceptionText;
-  int maxPictureWidth;
   unsigned int maxHeadwordSize;
   unsigned int maxHeadwordToExpand;
 
@@ -48,6 +47,7 @@ public:
 public:
 
   virtual void indexingDictionary( std::string const & dictionaryName ) noexcept;
+  virtual void loadingDictionary( std::string const & dictionaryName ) noexcept;
 
 private:
 
@@ -58,6 +58,7 @@ private:
 
 signals:
   void indexingDictionarySignal( QString const & dictionaryName );
+  void loadingDictionarySignal( QString const & dictionaryName );
 };
 
 /// Loads all dictionaries mentioned in the configuration passed, into the

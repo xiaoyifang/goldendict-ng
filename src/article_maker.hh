@@ -16,9 +16,10 @@
 /// This class generates the article's body for the given lookup request
 class ArticleMaker: public QObject
 {
-  Q_OBJECT // We make it QObject to use tr() conveniently
+  Q_OBJECT
+  // We make it QObject to use tr() conveniently
 
-    std::vector< sptr< Dictionary::Class > > const & dictionaries;
+  std::vector< sptr< Dictionary::Class > > const & dictionaries;
   std::vector< Instances::Group > const & groups;
   const Config::Preferences & cfg;
 
@@ -62,6 +63,9 @@ public:
   /// Add base path to file path if it's relative and file not found
   /// Return true if path successfully adjusted
   static bool adjustFilePath( QString & fileName );
+  string makeUntitleHtml() const;
+  string makeWelcomeHtml() const;
+  string makeBlankHtml() const;
 
 private:
   std::string readCssFile( QString const & fileName, std::string type ) const;

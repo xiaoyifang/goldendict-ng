@@ -24,10 +24,6 @@ namespace Config {
 /// Dictionaries which are temporarily disabled via the dictionary bar.
 typedef QSet< QString > MutedDictionaries;
 
-#ifdef Q_OS_WIN
-  #pragma pack( push, 4 )
-#endif
-
 /// A path where to search for the dictionaries
 struct Path
 {
@@ -345,6 +341,7 @@ ScanPopupWindowFlags spwfFromInt( int id );
 struct Preferences
 {
   QString interfaceLanguage; // Empty value corresponds to system default
+  QString interfaceFont;     //Empty as default value.
 
   CustomFonts customFonts;
   bool newTabsOpenAfterCurrentOne;
@@ -402,6 +399,7 @@ struct Preferences
   bool hideGoldenDictHeader;
   int maxNetworkCacheSize;
   bool clearNetworkCacheOnExit;
+  bool removeInvalidIndexOnExit = false;
 
   qreal zoomFactor;
   qreal helpZoomFactor;
@@ -453,24 +451,32 @@ struct MediaWiki
   QString id, name, url;
   bool enabled;
   QString icon;
+  QString lang;
 
   MediaWiki():
     enabled( false )
   {
   }
 
-  MediaWiki( QString const & id_, QString const & name_, QString const & url_, bool enabled_, QString const & icon_ ):
+  MediaWiki( QString const & id_,
+             QString const & name_,
+             QString const & url_,
+             bool enabled_,
+             QString const & icon_,
+             QString const & lang_ = "" ):
     id( id_ ),
     name( name_ ),
     url( url_ ),
     enabled( enabled_ ),
-    icon( icon_ )
+    icon( icon_ ),
+    lang( lang_ )
   {
   }
 
   bool operator==( MediaWiki const & other ) const
   {
-    return id == other.id && name == other.name && url == other.url && enabled == other.enabled && icon == other.icon;
+    return id == other.id && name == other.name && url == other.url && enabled == other.enabled && icon == other.icon
+      && lang == other.lang;
   }
 };
 
@@ -769,6 +775,7 @@ struct Program
 
 typedef QVector< Program > Programs;
 
+#ifndef NO_TTS_SUPPORT
 struct VoiceEngine
 {
   bool enabled;
@@ -813,6 +820,7 @@ struct VoiceEngine
 };
 
 typedef QVector< VoiceEngine > VoiceEngines;
+#endif
 
 struct HeadwordsDialog
 {
@@ -846,7 +854,9 @@ struct Class
   Lingua lingua;
   Forvo forvo;
   Programs programs;
+#ifndef NO_TTS_SUPPORT
   VoiceEngines voiceEngines;
+#endif
 
   unsigned lastMainGroupId;  // Last used group in main window
   unsigned lastPopupGroupId; // Last used group in popup window
@@ -854,7 +864,7 @@ struct Class
   QByteArray popupWindowState;           // Binary state saved by QMainWindow
   QByteArray popupWindowGeometry;        // Geometry saved by QMainWindow
   QByteArray dictInfoGeometry;           // Geometry of "Dictionary info" window
-  QByteArray inspectorGeometry;          // Geometry of WebKit inspector window
+  QByteArray inspectorGeometry;          // Geometry of Web Engine inspector window
   QByteArray dictionariesDialogGeometry; // Geometry of Dictionaries dialog
 
   QString historyExportPath; // Path for export/import history
@@ -878,8 +888,6 @@ struct Class
 
   bool usingSmallIconsInToolbars;
 
-  int maxPictureWidth; // Maximum picture width
-
   /// Maximum size for the headwords.
   /// Bigger headwords won't be indexed. For now, only in DSL.
   unsigned int maxHeadwordSize;
@@ -896,7 +904,6 @@ struct Class
     pinPopupWindow( false ),
     showingDictBarNames( false ),
     usingSmallIconsInToolbars( false ),
-    maxPictureWidth( 0 ),
     maxHeadwordSize( 256U ),
     maxHeadwordsToExpand( 0 )
   {
@@ -907,10 +914,6 @@ struct Class
   bool notts = false;
   bool resetState;
 };
-
-#ifdef Q_OS_WIN
-  #pragma pack( pop )
-#endif
 
 /// Configuration-specific events. Some parts of the program need to react
 /// to specific changes in configuration. The object of this class is used

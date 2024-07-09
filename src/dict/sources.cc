@@ -16,7 +16,9 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg ):
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
   chineseConversion( new ChineseConversion( this, cfg.transliteration.chinese ) ),
 #endif
+#ifndef NO_TTS_SUPPORT
   textToSpeechSource( nullptr ),
+#endif
   itemDelegate( new QItemDelegate( this ) ),
   itemEditorFactory( new QItemEditorFactory() ),
   mediawikisModel( this, cfg.mediawikis ),
@@ -39,7 +41,7 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg ):
   // anyone?
   QItemEditorCreatorBase * programTypeEditorCreator = new QStandardItemEditorCreator< ProgramTypeEditor >();
 
-  itemEditorFactory->registerEditor( QVariant::Int, programTypeEditorCreator );
+  itemEditorFactory->registerEditor( QMetaType::Int, programTypeEditorCreator );
 
   itemDelegate->setItemEditorFactory( itemEditorFactory.get() );
 
@@ -49,6 +51,7 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg ):
   ui.mediaWikis->resizeColumnToContents( 1 );
   ui.mediaWikis->resizeColumnToContents( 2 );
   ui.mediaWikis->resizeColumnToContents( 3 );
+  ui.mediaWikis->resizeColumnToContents( 4 );
 
   ui.webSites->setTabKeyNavigation( true );
   ui.webSites->setModel( &webSitesModel );
@@ -124,36 +127,12 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg ):
   ui.forvoLanguageCodes->setText( forvo.languageCodes );
 
   // Text to speech
+#ifndef NO_TTS_SUPPORT
   if ( !cfg.notts ) {
     textToSpeechSource = new TextToSpeechSource( this, cfg.voiceEngines );
     ui.tabWidget->addTab( textToSpeechSource, QIcon( ":/icons/text2speech.svg" ), tr( "Text to Speech" ) );
   }
-
-  if ( Config::isPortableVersion() ) {
-    // Paths
-
-    ui.paths->setEnabled( false );
-    ui.addPath->setEnabled( false );
-    ui.removePath->setEnabled( false );
-
-    // Sound dirs
-
-    {
-      QStandardItemModel * model = new QStandardItemModel( this );
-      model->setHorizontalHeaderLabels( QStringList() << " " );
-      model->invisibleRootItem()->appendRow( new QStandardItem( tr( "(not available in portable version)" ) ) );
-      ui.soundDirs->setModel( model );
-      ui.soundDirs->setEnabled( false );
-
-      ui.addSoundDir->setEnabled( false );
-      ui.removeSoundDir->setEnabled( false );
-    }
-
-    // Morpho
-
-    ui.hunspellPath->setEnabled( false );
-    ui.changeHunspellPath->setEnabled( false );
-  }
+#endif
 }
 
 void Sources::fitPathsColumns()
@@ -340,12 +319,14 @@ void Sources::on_removeProgram_clicked()
     programsModel.removeProgram( current.row() );
 }
 
+#ifndef NO_TTS_SUPPORT
 Config::VoiceEngines Sources::getVoiceEngines() const
 {
   if ( !textToSpeechSource )
     return Config::VoiceEngines();
   return textToSpeechSource->getVoiceEnginesModel().getCurrentVoiceEngines();
 }
+#endif
 
 Config::Hunspell Sources::getHunspell() const
 {
@@ -427,6 +408,8 @@ void MediaWikisModel::addNewWiki()
 
   w.url = "http://";
 
+  w.lang = "";
+
   beginInsertRows( QModelIndex(), mediawikis.size(), mediawikis.size() );
   mediawikis.push_back( w );
   endInsertRows();
@@ -469,7 +452,7 @@ int MediaWikisModel::columnCount( QModelIndex const & parent ) const
   if ( parent.isValid() )
     return 0;
   else
-    return 4;
+    return 5;
 }
 
 QVariant MediaWikisModel::headerData( int section, Qt::Orientation /*orientation*/, int role ) const
@@ -484,6 +467,8 @@ QVariant MediaWikisModel::headerData( int section, Qt::Orientation /*orientation
         return tr( "Address" );
       case 3:
         return tr( "Icon" );
+      case 4:
+        return tr( "Language Variant" );
       default:
         return QVariant();
     }
@@ -504,6 +489,8 @@ QVariant MediaWikisModel::data( QModelIndex const & index, int role ) const
         return mediawikis[ index.row() ].url;
       case 3:
         return mediawikis[ index.row() ].icon;
+      case 4:
+        return mediawikis[ index.row() ].lang;
       default:
         return QVariant();
     }
@@ -543,6 +530,10 @@ bool MediaWikisModel::setData( QModelIndex const & index, const QVariant & value
         return true;
       case 3:
         mediawikis[ index.row() ].icon = value.toString();
+        dataChanged( index, index );
+        return true;
+      case 4:
+        mediawikis[ index.row() ].lang = value.toString();
         dataChanged( index, index );
         return true;
       default:

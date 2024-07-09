@@ -16,5 +16,6 @@ t2s.json
 
 ![image](https://user-images.githubusercontent.com/105986/192209129-ebc9efe7-ce82-4d4d-ad52-1b3c33eaf270.png)
 
+3. search `丑` in Goldendict-ng will also show the result of `美`
 
 any other valid opencc configuration solutions should also work here.

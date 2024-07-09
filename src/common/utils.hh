@@ -13,8 +13,12 @@
 #include <QUrlQuery>
 #include <QWidget>
 #include "filetype.hh"
+#include <string>
+using std::string;
 
 namespace Utils {
+QMap< QString, QString > str2map( const QString & contextsEncoded );
+
 inline bool isCJKChar( ushort ch )
 {
   if ( ( ch >= 0x3400 && ch <= 0x9FFF ) || ( ch >= 0xF900 && ch <= 0xFAFF ) || ( ch >= 0xD800 && ch <= 0xDFFF ) )
@@ -37,7 +41,7 @@ inline QString rstrip( const QString & str )
 }
 
 std::string c_string( const QString & str );
-
+bool endsWithIgnoreCase( const string & str1, string str2 );
 /**
  * remove punctuation , space, symbol
  *
@@ -252,9 +256,21 @@ inline std::pair< bool, QString > getQueryWord( QUrl const & url )
 
 inline bool isAudioUrl( QUrl const & url )
 {
+  if ( !url.isValid() )
+    return false;
   // Note: we check for forvo sound links explicitly, as they don't have extensions
 
   return ( url.scheme() == "http" || url.scheme() == "https" || url.scheme() == "gdau" )
+    && ( Filetype::isNameOfSound( url.path().toUtf8().data() ) || url.host() == "apifree.forvo.com" );
+}
+
+inline bool isWebAudioUrl( QUrl const & url )
+{
+  if ( !url.isValid() )
+    return false;
+  // Note: we check for forvo sound links explicitly, as they don't have extensions
+
+  return ( url.scheme() == "http" || url.scheme() == "https" )
     && ( Filetype::isNameOfSound( url.path().toUtf8().data() ) || url.host() == "apifree.forvo.com" );
 }
 
@@ -320,8 +336,14 @@ char separator();
 
 /// Returns the name part of the given filename.
 string basename( string const & );
+void removeDirectory( QString const & directory );
 
+void removeDirectory( string const & directory );
 } // namespace Fs
+
+QString escapeAmps( QString const & str );
+
+QString unescapeAmps( QString const & str );
 
 } // namespace Utils
 

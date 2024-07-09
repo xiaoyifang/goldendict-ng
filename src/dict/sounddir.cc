@@ -17,6 +17,7 @@
 #include <set>
 #include <QDir>
 #include <QFileInfo>
+#include <QDirIterator>
 
 namespace SoundDir {
 
@@ -52,7 +53,7 @@ __attribute__( ( packed ) )
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Class idx( indexFile, "rb" );
+  File::Index idx( indexFile, "rb" );
 
   IdxHeader header;
 
@@ -64,7 +65,7 @@ class SoundDirDictionary: public BtreeIndexing::BtreeDictionary
 {
   string name;
   QMutex idxMutex;
-  File::Class idx;
+  File::Index idx;
   IdxHeader idxHeader;
   ChunkedStorage::Reader chunks;
   QString iconFilename;
@@ -132,10 +133,10 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( wstring const & 
 {
   vector< WordArticleLink > chain = findArticles( word, ignoreDiacritics );
 
-  for ( unsigned x = 0; x < alts.size(); ++x ) {
+  for ( const auto & alt : alts ) {
     /// Make an additional query for each alt
 
-    vector< WordArticleLink > altChain = findArticles( alts[ x ], ignoreDiacritics );
+    vector< WordArticleLink > altChain = findArticles( alt, ignoreDiacritics );
 
     chain.insert( chain.end(), altChain.begin(), altChain.end() );
   }
@@ -361,7 +362,7 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( string const & 
   // Now try loading that file
 
   try {
-    File::Class f( fileName.toStdString(), "rb" );
+    File::Index f( fileName.toStdString(), "rb" );
 
     sptr< Dictionary::DataRequestInstant > dr = std::make_shared< Dictionary::DataRequestInstant >( true );
 
@@ -422,8 +423,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::SoundDirs const & 
 {
   vector< sptr< Dictionary::Class > > dictionaries;
 
-  for ( Config::SoundDirs::const_iterator i = soundDirs.begin(); i != soundDirs.end(); ++i ) {
-    QDir dir( i->path );
+  for ( const auto & soundDir : soundDirs ) {
+    QDir dir( soundDir.path );
 
     if ( !dir.exists() )
       continue; // No such dir, no dictionary then
@@ -438,14 +439,36 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::SoundDirs const & 
 
     string indexFile = indicesDir + dictId;
 
-    if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
+    // Check if the soundDir and its subdirs' modification date changed, that means the user modified the sound files inside
+
+    bool soundDirModified = false;
+    {
+      QDateTime indexFileModifyTime = QFileInfo( QString::fromStdString( indexFile ) ).lastModified();
+      QDirIterator it( dir.path(),
+                       QDir::AllDirs | QDir::NoDotAndDotDot | QDir::NoSymLinks,
+                       QDirIterator::Subdirectories );
+
+      QDeadlineTimer deadline( 4000 );
+      while ( it.hasNext() && !deadline.hasExpired() ) {
+        it.next();
+        if ( it.fileInfo().lastModified() > indexFileModifyTime ) {
+          soundDirModified = true;
+          break;
+        }
+      }
+      if ( deadline.hasExpired() ) {
+        qDebug() << "SoundDir modification scanning timed out.";
+      }
+    }
+
+    if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) || soundDirModified ) {
       // Building the index
 
-      qDebug() << "Sounds: Building the index for directory: " << i->path;
+      qDebug() << "Sounds: Building the index for directory: " << soundDir.path;
 
-      initializing.indexingDictionary( i->name.toUtf8().data() );
+      initializing.indexingDictionary( soundDir.name.toUtf8().data() );
 
-      File::Class idx( indexFile, "wb" );
+      File::Index idx( indexFile, "wb" );
 
       IdxHeader idxHeader;
 
@@ -488,10 +511,10 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::SoundDirs const & 
     }
 
     dictionaries.push_back( std::make_shared< SoundDirDictionary >( dictId,
-                                                                    i->name.toUtf8().data(),
+                                                                    soundDir.name.toUtf8().data(),
                                                                     indexFile,
                                                                     dictFiles,
-                                                                    i->iconFilename ) );
+                                                                    soundDir.iconFilename ) );
   }
 
   return dictionaries;

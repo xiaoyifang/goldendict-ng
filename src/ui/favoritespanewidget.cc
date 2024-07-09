@@ -9,12 +9,15 @@
 #include <QMessageBox>
 #include <QtAlgorithms>
 #include <QMap>
+#include <QSaveFile>
+#include <QStringBuilder>
+#include <QDebug>
+
 #include <algorithm>
 #include <functional>
 
 #include "favoritespanewidget.hh"
 #include "gddebug.hh"
-#include "atomic_rename.hh"
 #include "globalbroadcaster.hh"
 
 /************************************************** FavoritesPaneWidget *********************************************/
@@ -624,7 +627,10 @@ void FavoritesModel::readData()
 
     dom.clear();
     favoritesFile.close();
-    renameAtomically( m_favoritesFilename, m_favoritesFilename + ".bak" );
+    QFile::rename( m_favoritesFilename,
+                   m_favoritesFilename % QStringLiteral( "." )
+                     % QDateTime::currentDateTime().toString( QStringLiteral( "yyyyMMdd_HHmmss" ) )
+                     % QStringLiteral( ".bad" ) );
   }
   else
     favoritesFile.close();
@@ -642,7 +648,7 @@ void FavoritesModel::saveData()
   if ( !dirty )
     return;
 
-  QFile tmpFile( m_favoritesFilename + ".tmp" );
+  QSaveFile tmpFile( m_favoritesFilename );
   if ( !tmpFile.open( QFile::WriteOnly ) ) {
     gdWarning( "Can't write favorites file, error: %s", tmpFile.errorString().toUtf8().data() );
     return;
@@ -661,11 +667,12 @@ void FavoritesModel::saveData()
     return;
   }
 
-  tmpFile.close();
-
-  if ( renameAtomically( tmpFile.fileName(), m_favoritesFilename ) )
+  if ( tmpFile.commit() ) {
     dirty = false;
-
+  }
+  else {
+    qDebug() << "Failed to save favorite file";
+  }
   dom.clear();
 }
 

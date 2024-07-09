@@ -37,10 +37,7 @@
 #include <QFileInfo>
 #include <QDir>
 #include <QPainter>
-#include <QRegExp>
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-  #include <QtCore5Compat>
-#endif
+#include <QRegularExpression>
 #include <QSemaphore>
 #include <QThreadPool>
 #include <QAtomicInt>
@@ -129,7 +126,7 @@ __attribute__( ( packed ) )
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Class idx( indexFile, "rb" );
+  File::Index idx( indexFile, "rb" );
 
   IdxHeader header;
 
@@ -141,7 +138,7 @@ bool indexIsOldOrBad( string const & indexFile )
 class XdxfDictionary: public BtreeIndexing::BtreeDictionary
 {
   QMutex idxMutex;
-  File::Class idx;
+  File::Index idx;
   IdxHeader idxHeader;
   sptr< ChunkedStorage::Reader > chunks;
   QMutex dzMutex;
@@ -203,7 +200,7 @@ public:
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
-    can_FTS = fts.enabled && !fts.disabledTypes.contains( "XDXF", Qt::CaseInsensitive )
+    can_FTS = enable_FTS && fts.enabled && !fts.disabledTypes.contains( "XDXF", Qt::CaseInsensitive )
       && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
 
@@ -297,12 +294,7 @@ XdxfDictionary::XdxfDictionary( string const & id, string const & indexFile, vec
 
   // Full-text search parameters
 
-  can_FTS = true;
-
   ftsIdxName = indexFile + Dictionary::getFtsSuffix();
-
-  if ( !Dictionary::needToRebuildIndex( dictionaryFiles, ftsIdxName ) && !FtsHelpers::ftsIndexIsOldOrBad( this ) )
-    FTS_index_completed.ref();
 }
 
 XdxfDictionary::~XdxfDictionary()
@@ -325,6 +317,11 @@ void XdxfDictionary::loadIcon() noexcept
 
   if ( !info.isFile() ) {
     fileName = baseInfo.absoluteDir().absoluteFilePath( "icon16.png" );
+    info     = QFileInfo( fileName );
+  }
+
+  if ( !info.isFile() ) {
+    fileName = baseInfo.absoluteDir().absoluteFilePath( "dict.bmp" );
     info     = QFileInfo( fileName );
   }
 
@@ -751,9 +748,9 @@ QString readXhtmlData( QXmlStreamReader & stream )
 
       QXmlStreamAttributes attrs = stream.attributes();
 
-      for ( int x = 0; x < attrs.size(); ++x ) {
-        result += Utils::escape( attrs[ x ].name().toString() );
-        result += "=\"" + Utils::escape( attrs[ x ].value().toString() ) + "\"";
+      for ( const auto & attr : attrs ) {
+        result += Utils::escape( attr.name().toString() );
+        result += "=\"" + Utils::escape( attr.value().toString() ) + "\"";
       }
 
       result += ">";
@@ -1015,8 +1012,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
   for ( const auto & fileName : fileNames ) {
     // Only allow .xdxf and .xdxf.dz suffixes
 
-    if ( ( fileName.size() < 5 || strcasecmp( fileName.c_str() + ( fileName.size() - 5 ), ".xdxf" ) != 0 )
-         && ( fileName.size() < 8 || strcasecmp( fileName.c_str() + ( fileName.size() - 8 ), ".xdxf.dz" ) != 0 ) )
+    if ( !Utils::endsWithIgnoreCase( fileName, ".xdxf" ) && !Utils::endsWithIgnoreCase( fileName, ".xdxf.dz" ) )
       continue;
 
     try {
@@ -1046,7 +1042,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         //initializing.indexingDictionary( nameFromFileName( dictFiles[ 0 ] ) );
 
-        File::Class idx( indexFile, "wb" );
+        File::Index idx( indexFile, "wb" );
 
         IdxHeader idxHeader;
         map< string, string > abrv;
@@ -1092,9 +1088,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
               if ( !str.empty() )
                 idxHeader.langTo = getLanguageId( str.c_str() );
 
-              QRegExp regNum( "\\d+" );
-              regNum.indexIn( stream.attributes().value( "revision" ).toString() );
-              idxHeader.revisionNumber = regNum.cap().toUInt();
+              QRegularExpression regNum( "\\d+" );
+              auto match               = regNum.match( stream.attributes().value( "revision" ).toString() );
+              idxHeader.revisionNumber = match.captured().toUInt();
 
               bool isLogical =
                 ( stream.attributes().value( "format" ) == u"logical" || idxHeader.revisionNumber >= 34 );

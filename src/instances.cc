@@ -4,6 +4,7 @@
 #include "instances.hh"
 #include <set>
 #include <QBuffer>
+#include <utility>
 
 namespace Instances {
 
@@ -27,7 +28,7 @@ Group::Group( Config::Group const & cfgGroup,
   auto dictMap = Dictionary::dictToMap( allDictionaries );
 
   for ( auto const & dict : cfgGroup.dictionaries ) {
-    std::string dictId = dict.id.toStdString();
+    std::string const dictId = dict.id.toStdString();
 
     if ( dictMap.contains( dictId ) ) {
       groupDicts.insert( dictId, dictMap[ dictId ] );
@@ -37,27 +38,28 @@ Group::Group( Config::Group const & cfgGroup,
 
   // Remove inactive dictionaries
   if ( !inactiveGroup.dictionaries.isEmpty() ) {
-    set< string, std::less<> > inactiveSet;
     for ( auto const & dict : inactiveGroup.dictionaries ) {
-      string dictId = dict.id.toStdString();
+      string const dictId = dict.id.toStdString();
       groupDicts.remove( dictId );
       dictOrderList.removeOne( dictId );
     }
   }
   for ( const auto & dictId : dictOrderList ) {
-    dictionaries.push_back( groupDicts[ dictId ] );
+    if ( groupDicts.contains( dictId ) ) {
+      dictionaries.push_back( groupDicts[ dictId ] );
+    }
   }
 }
 
-Group::Group( QString const & name_ ):
+Group::Group( QString name_ ):
   id( 0 ),
-  name( name_ )
+  name( std::move( name_ ) )
 {
 }
 
-Group::Group( unsigned id_, QString const & name_ ):
+Group::Group( unsigned id_, QString name_ ):
   id( id_ ),
-  name( name_ )
+  name( std::move( name_ ) )
 {
 }
 
@@ -100,9 +102,9 @@ void Group::checkMutedDictionaries( Config::MutedDictionaries * mutedDictionarie
   Config::MutedDictionaries temp;
 
   for ( auto const & dict : dictionaries ) {
-    QString id = QString::fromStdString( dict->getId() );
-    if ( mutedDictionaries->contains( id ) )
-      temp.insert( id );
+    auto dictId = QString::fromStdString( dict->getId() );
+    if ( mutedDictionaries->contains( dictId ) )
+      temp.insert( dictId );
   }
   *mutedDictionaries = temp;
 }
@@ -137,9 +139,9 @@ void complementDictionaryOrder( Group & group,
   for ( unsigned x = inactiveDictionaries.dictionaries.size(); x--; )
     presentIds.insert( inactiveDictionaries.dictionaries[ x ]->getId() );
 
-  for ( unsigned x = 0; x < dicts.size(); ++x ) {
-    if ( presentIds.find( dicts[ x ]->getId() ) == presentIds.end() )
-      group.dictionaries.push_back( dicts[ x ] );
+  for ( const auto & dict : dicts ) {
+    if ( presentIds.find( dict->getId() ) == presentIds.end() )
+      group.dictionaries.push_back( dict );
   }
 }
 
@@ -147,7 +149,7 @@ void updateNames( Config::Group & group, vector< sptr< Dictionary::Class > > con
 {
 
   for ( unsigned x = group.dictionaries.size(); x--; ) {
-    std::string id = group.dictionaries[ x ].id.toStdString();
+    std::string const id = group.dictionaries[ x ].id.toStdString();
 
     for ( unsigned y = allDictionaries.size(); y--; )
       if ( allDictionaries[ y ]->getId() == id ) {
@@ -159,8 +161,8 @@ void updateNames( Config::Group & group, vector< sptr< Dictionary::Class > > con
 
 void updateNames( Config::Groups & groups, vector< sptr< Dictionary::Class > > const & allDictionaries )
 {
-  for ( int x = 0; x < groups.size(); ++x )
-    updateNames( groups[ x ], allDictionaries );
+  for ( auto & group : groups )
+    updateNames( group, allDictionaries );
 }
 
 void updateNames( Config::Class & cfg, vector< sptr< Dictionary::Class > > const & allDictionaries )

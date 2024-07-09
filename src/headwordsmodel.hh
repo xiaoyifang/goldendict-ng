@@ -6,6 +6,7 @@
 #include <QAbstractListModel>
 #include <QStringList>
 
+static const int HEADWORDS_MAX_LIMIT = 500000;
 class HeadwordListModel: public QAbstractListModel
 {
   Q_OBJECT
@@ -19,15 +20,14 @@ public:
   bool isFinish() const;
   QVariant data( const QModelIndex & index, int role = Qt::DisplayRole ) const override;
   QString getRow( int row );
-  void setFilter( QRegularExpression );
+  void setFilter( const QRegularExpression & );
   void appendWord( const QString & word );
-  void addMatches( QStringList matches );
   int getCurrentIndex() const;
   bool containWord( const QString & word );
   QSet< QString > getRemainRows( int & nodeIndex );
+  void setMaxFilterResults( int _maxFilterResults );
 signals:
   void numberPopulated( int number );
-  void finished( int number );
 
 public slots:
   void setDict( Dictionary::Class * dict );
@@ -39,11 +39,14 @@ protected:
 
 private:
   QStringList words;
+  QStringList original_words;
   QSet< QString > hashedWords;
   QStringList filterWords;
   bool filtering;
   QStringList fileSortedList;
   long totalSize;
+  int maxFilterResults;
+  bool finished;
   Dictionary::Class * _dict;
   int index;
   char * ptr;

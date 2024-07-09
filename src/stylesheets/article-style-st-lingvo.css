@@ -6,11 +6,6 @@ body {
   background: white;
 }
 
-a {
-  text-decoration: none;
-  color: darkblue;
-}
-
 a:hover {
   text-decoration: underline;
 }

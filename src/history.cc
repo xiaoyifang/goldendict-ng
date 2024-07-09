@@ -3,8 +3,9 @@
 
 #include "history.hh"
 #include "config.hh"
-#include "atomic_rename.hh"
 #include <QFile>
+#include <QSaveFile>
+#include <QDebug>
 
 History::History( unsigned size, unsigned maxItemLength_ ):
   maxSize( size ),
@@ -65,24 +66,19 @@ History::Item History::getItem( int index )
 
 void History::addItem( Item const & item )
 {
-  // qDebug() << "adding item " << item.word << ", enabled=" << enabled();
   if ( !enabled() )
     return;
 
-  if ( (unsigned)item.word.size() > getMaxItemLength() || item.word.isEmpty() ) {
+  if ( item.word.isEmpty() ) {
     // The search looks bogus. Don't save it.
     return;
   }
 
+  //from the normal operation ,there should be only one item in the history at a time.
   if ( items.contains( item ) )
-    items.removeAll( item );
+    items.removeOne( item );
 
-  // Special case: if this items differs from the previous one only by group,
-  // remove it too.
-
-  if ( items.size() && items.first().word == item.word )
-    items.pop_front();
-
+  //TODO : The groupid has not used at all.
   items.push_front( item );
 
   ensureSizeConstraints();
@@ -122,7 +118,7 @@ bool History::save()
   if ( !dirty )
     return true;
 
-  QFile file( Config::getHistoryFileName() + ".tmp" );
+  QSaveFile file( Config::getHistoryFileName() );
 
   if ( !file.open( QFile::WriteOnly | QIODevice::Text ) )
     return false;
@@ -141,11 +137,13 @@ bool History::save()
       return false;
   }
 
-  file.close();
+  if ( file.commit() ) {
+    dirty = false;
+    return true;
+  }
 
-  dirty = false;
-
-  return renameAtomically( file.fileName(), Config::getHistoryFileName() );
+  qDebug() << "Failed to save history file";
+  return false;
 }
 
 void History::clear()

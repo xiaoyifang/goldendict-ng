@@ -1,0 +1,142 @@
+name: Build Check
+concurrency: 
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - dev
+      - master
+      - experimental
+      - staged
+    paths-ignore:
+      - 'docs/**'
+      # - ".github/**"
+      - "howto/**"
+      - "*.md"
+      - "locale/**"
+jobs:
+  job1:
+    name: ubuntu Build and analyze
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v3
+        with:
+          python-version: '3.9'              
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          # Qt6.4 for testing ubuntu LTS
+          version: 6.4.3
+          arch: gcc_64
+          modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
+          setup-python: 'false'
+          
+      - name: ubuntu install thirdparty dependencies
+        run: |
+          sudo apt-get install git pkg-config build-essential 
+          sudo apt-get install libvorbis-dev zlib1g-dev libhunspell-dev x11proto-record-dev 
+          sudo apt-get install libxtst-dev liblzo2-dev libbz2-dev 
+          sudo apt-get install libavutil-dev libavformat-dev libeb16-dev
+          sudo apt-get install doxygen libzstd-dev libxkbcommon-dev libgstreamer-plugins-base1.0-0 libgstreamer-gl1.0-0
+          sudo ln -sf /usr/bin/x86_64-linux-gnu-ld.gold /usr/bin/ld
+          sudo apt install libxapian-dev
+          
+          #build opencc
+          git clone https://github.com/BYVoid/OpenCC
+          cd OpenCC/
+          make PREFIX=/usr -j$(nproc)
+          sudo make install
+          cd ..
+          sudo apt-get install libzim-dev
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          submodules: false
+
+      - name: Run build-wrapper
+        run: |
+          cmake .
+          cmake --build .
+
+  job2:
+    name: windows Build and analyze
+    runs-on: windows-latest
+    steps:
+      - uses: actions/setup-python@v3
+        with:
+          python-version: '3.9'              
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: 6.5.1
+          arch: win64_msvc2019_64
+          
+          #serialport linuxdeploy need serialport to work.
+          modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech qtserialport
+          setup-python: 'false'
+      - uses: ilammy/msvc-dev-cmd@v1
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          submodules: true
+
+      - name: Run build-wrapper
+        run: |
+          cmake -S . -DWITH_FFMPEG_PLAYER=OFF
+          cmake --build . --config Release
+  job3:
+    name: macos Build and analyze
+    runs-on: macos-12
+    steps:
+      - uses: actions/setup-python@v3
+        with:
+          python-version: '3.9'              
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: 6.5.1
+          arch: clang_64
+          
+          #serialport linuxdeploy need serialport to work.
+          modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech qtserialport
+          setup-python: 'false'
+      - uses: ilammy/msvc-dev-cmd@v1
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          submodules: false
+      - name: install dependencies
+        run: |
+          brew install pcre2 harfbuzz freetype
+          brew install cmake ninja python
+          brew install automake
+          brew install autoconf
+          brew install libtool
+          brew install opencc
+          
+          brew install speex
+          brew tap homebrew-ffmpeg/ffmpeg
+          brew install homebrew-ffmpeg/ffmpeg/ffmpeg --with-speex
+          brew install libao
+          brew install libiconv
+          brew install lzo bzip2
+          brew install libogg
+          brew install zstd lzip
+          brew install libvorbis --force
+          brew install hunspell
+          wget ftp://ftp.sra.co.jp/pub/misc/eb/eb-4.4.3.tar.bz2
+          tar xvjf eb-4.4.3.tar.bz2
+          cd eb-4.4.3 && ./configure && make -j 8 && sudo make install && cd ..
+          #brew install qt # or use official offline installer
+          brew install  xz lzo 
+          brew install pkg-config
+          brew install xapian
+          brew install libzim
+          brew install icu4c
+      - name: Run build-wrapper
+        run: |
+          cmake .
+          cmake --build .                  
+      

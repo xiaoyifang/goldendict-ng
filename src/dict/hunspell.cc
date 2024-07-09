@@ -13,11 +13,9 @@
 #include <QRunnable>
 #include <QThreadPool>
 #include <QSemaphore>
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-  #include <QtCore5Compat/QRegExp>
-#else
-  #include <QRegExp>
-#endif
+
+#include <QRegularExpression>
+
 #include <QDir>
 #include <QCoreApplication>
 #include <QFileInfo>
@@ -360,8 +358,8 @@ void HunspellHeadwordsRequest::run()
     getSuggestionsForExpression( trimmedWord, results, hunspellMutex, hunspell );
 
     QMutexLocker _( &dataMutex );
-    for ( unsigned i = 0; i < results.size(); i++ )
-      matches.push_back( results[ i ] );
+    for ( const auto & result : results )
+      matches.push_back( result );
   }
   else {
     QVector< wstring > suggestions = suggest( trimmedWord, hunspellMutex, hunspell );
@@ -369,8 +367,8 @@ void HunspellHeadwordsRequest::run()
     if ( !suggestions.empty() ) {
       QMutexLocker _( &dataMutex );
 
-      for ( int x = 0; x < suggestions.size(); ++x )
-        matches.push_back( suggestions[ x ] );
+      for ( const auto & suggestion : suggestions )
+        matches.push_back( suggestion );
     }
   }
 
@@ -394,10 +392,10 @@ QVector< wstring > suggest( wstring & word, QMutex & hunspellMutex, Hunspell & h
 
       wstring lowercasedWord = Folding::applySimpleCaseOnly( word );
 
-      static QRegExp cutStem( R"(^\s*st:(((\s+(?!\w{2}:)(?!-)(?!\+))|\S+)+))" );
+      static QRegularExpression cutStem( R"(^\s*st:(((\s+(?!\w{2}:)(?!-)(?!\+))|\S+)+))" );
 
-      for ( vector< string >::size_type x = 0; x < suggestions.size(); ++x ) {
-        QString suggestion = QString::fromStdU32String( decodeFromHunspell( hunspell, suggestions[ x ].c_str() ) );
+      for ( const auto & x : suggestions ) {
+        QString suggestion = QString::fromStdU32String( decodeFromHunspell( hunspell, x.c_str() ) );
 
         // Strip comments
         int n = suggestion.indexOf( '#' );
@@ -406,14 +404,12 @@ QVector< wstring > suggest( wstring & word, QMutex & hunspellMutex, Hunspell & h
 
         GD_DPRINTF( ">>>Sugg: %s\n", suggestion.toLocal8Bit().data() );
 
-        if ( cutStem.indexIn( suggestion.trimmed() ) != -1 ) {
-          wstring alt = gd::toWString( cutStem.cap( 1 ) );
+        auto match = cutStem.match( suggestion.trimmed() );
+        if ( match.hasMatch() ) {
+          wstring alt = gd::toWString( match.captured( 1 ) );
 
           if ( Folding::applySimpleCaseOnly( alt ) != lowercasedWord ) // No point in providing same word
           {
-#ifdef QT_DEBUG
-            qDebug() << ">>>>>Alt:" << QString::fromStdU32String( alt );
-#endif
             result.append( alt );
           }
         }
@@ -562,11 +558,11 @@ void getSuggestionsForExpression( wstring const & expression,
 
   QVector< wstring > results;
 
-  for ( int i = 0; i < words.size(); i++ ) {
-    word = words.at( i );
+  for ( const auto & i : words ) {
+    word = i;
     if ( Folding::isPunct( word[ 0 ] ) || Folding::isWhitespace( word[ 0 ] ) ) {
-      for ( int j = 0; j < results.size(); j++ )
-        results[ j ].append( word );
+      for ( auto & result : results )
+        result.append( word );
     }
     else {
       QVector< wstring > sugg = suggest( word, hunspellMutex, hunspell );
@@ -594,9 +590,9 @@ void getSuggestionsForExpression( wstring const & expression,
     }
   }
 
-  for ( int i = 0; i < results.size(); i++ )
-    if ( results.at( i ) != trimmedWord )
-      suggestions.push_back( results.at( i ) );
+  for ( const auto & result : results )
+    if ( result != trimmedWord )
+      suggestions.push_back( result );
 }
 
 string encodeToHunspell( Hunspell & hunspell, wstring const & str )
@@ -642,9 +638,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::Hunspell const & c
   vector< DataFiles > dataFiles = findDataFiles( cfg.dictionariesPath );
 
 
-  for ( int x = 0; x < cfg.enabledDictionaries.size(); ++x ) {
+  for ( const auto & enabledDictionarie : cfg.enabledDictionaries ) {
     for ( unsigned d = dataFiles.size(); d--; ) {
-      if ( dataFiles[ d ].dictId == cfg.enabledDictionaries[ x ] ) {
+      if ( dataFiles[ d ].dictId == enabledDictionarie ) {
         // Found it
 
         vector< string > dictFiles;

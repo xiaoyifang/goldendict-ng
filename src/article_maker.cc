@@ -50,7 +50,7 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word, QString const & 
   // add jquery
   {
     result += R"(<script src="qrc:///scripts/jquery-3.6.0.slim.min.js"></script>)";
-    result += R"(<script> var $_$=$.noConflict(); </script>)";
+    result += R"(<script> var $_$=jQuery.noConflict(); </script>)";
     result += R"(<script src="qrc:///scripts/gd-custom.js"></script>)";
     result += R"(<script src="qrc:///scripts/iframeResizer.min.js"></script>)";
   }
@@ -141,6 +141,7 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word, QString const & 
               .toStdString();
 
   result += R"(<script src="qrc:///scripts/gd-builtin.js"></script>)";
+  result += R"(<script src="qrc:///scripts/mark.min.js"></script>)";
 
   if ( GlobalBroadcaster::instance()->getPreference()->darkReaderMode ) {
     //only enable this darkmode on modern style.
@@ -156,7 +157,7 @@ body { background: #242525; }
 .gdarticle { background: initial;}
 
 .gdarticlebody img{
-  background: white;
+  background: white !important;
 }
 </style>
 <script>
@@ -246,6 +247,33 @@ std::string ArticleMaker::makeNotFoundBody( QString const & word, QString const 
   return result;
 }
 
+string ArticleMaker::makeWelcomeHtml() const
+{
+  string result = makeHtmlHeader( tr( "Welcome!" ), QString(), cfg.alwaysExpandOptionalParts );
+
+  result +=
+    tr(
+      "<h3 align=\"center\">Welcome to <b>GoldenDict</b>!</h3>"
+      "<p>To start working with the program, first visit <em>Edit | Dictionaries</em> to add some directory paths where to search "
+      "for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups."
+      "<p>And then you're ready to look up your words! You can do that in this window "
+      "by using a pane to the left, or you can <a href=\"https://xiaoyifang.github.io/goldendict-ng/ui_popup/\">look up words from other active applications</a>. "
+      "<p>To customize program, check out the available preferences at <em>Edit | Preferences</em>. "
+      "All settings there have tooltips, be sure to read them if you are in doubt about anything."
+      "<p>Should you need further help, have any questions, "
+      "suggestions or just wonder what the others think, you are welcome at the program's <a href=\"https://github.com/xiaoyifang/goldendict/discussions\">forum</a>."
+      "<p>Check program's <a href=\"https://github.com/xiaoyifang/goldendict\">website</a> for the updates. "
+      "<p>(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later."
+
+      )
+      .toUtf8()
+      .data();
+
+  result += "</body></html>";
+
+  return result;
+}
+
 sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( QString const & word,
                                                                  unsigned groupId,
                                                                  QMap< QString, QString > const & contexts,
@@ -282,70 +310,26 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( QString const &
   }
 
   if ( groupId == Instances::Group::HelpGroupId ) {
-    // This is a special group containing internal welcome/help pages
-    string result = makeHtmlHeader( word, QString(), cfg.alwaysExpandOptionalParts );
-
     if ( word == tr( "Welcome!" ) ) {
-      result +=
-        tr(
-          "<h3 align=\"center\">Welcome to <b>GoldenDict</b>!</h3>"
-          "<p>To start working with the program, first visit <b>Edit|Dictionaries</b> to add some directory paths where to search "
-          "for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups."
-          "<p>And then you're ready to look up your words! You can do that in this window "
-          "by using a pane to the left, or you can <a href=\"Working with popup\">look up words from other active applications</a>. "
-          "<p>To customize program, check out the available preferences at <b>Edit|Preferences</b>. "
-          "All settings there have tooltips, be sure to read them if you are in doubt about anything."
-          "<p>Should you need further help, have any questions, "
-          "suggestions or just wonder what the others think, you are welcome at the program's <a href=\"https://github.com/xiaoyifang/goldendict/discussions\">forum</a>."
-          "<p>Check program's <a href=\"https://github.com/xiaoyifang/goldendict\">website</a> for the updates. "
-          "<p>(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later."
+      string welcome                           = makeWelcomeHtml();
+      sptr< Dictionary::DataRequestInstant > r = std::make_shared< Dictionary::DataRequestInstant >( true );
 
-          )
-          .toUtf8()
-          .data();
-    }
-    else if ( word == tr( "Working with popup" ) ) {
-      result +=
-        ( tr(
-            "<h3 align=\"center\">Working with the popup</h3>"
-
-            "To look up words from other active applications, you would need to first activate the <i>\"Scan popup functionality\"</i> in <b>Preferences</b>, "
-            "and then enable it at any time either by triggering the 'Popup' icon above, or "
-            "by clicking the tray icon down below with your right mouse button and choosing so in the menu you've popped. " )
-          +
-
-#ifdef Q_OS_WIN32
-          tr( "Then just stop the cursor over the word you want to look up in another application, "
-              "and a window would pop up which would describe it to you." )
-#else
-          tr( "Then just select any word you want to look up in another application by your mouse "
-              "(double-click it or swipe it with mouse with the button pressed), "
-              "and a window would pop up which would describe the word to you." )
-#endif
-            )
-          .toUtf8()
-          .data();
+      r->appendString( welcome );
+      return r;
     }
     else {
       // Not found
       return makeNotFoundTextFor( word, "help" );
     }
-
-    result += "</body></html>";
-
-    sptr< Dictionary::DataRequestInstant > r = std::make_shared< Dictionary::DataRequestInstant >( true );
-
-    r->appendString( result );
-    return r;
   }
 
   // Find the given group
 
   Instances::Group const * activeGroup = 0;
 
-  for ( unsigned x = 0; x < groups.size(); ++x )
-    if ( groups[ x ].id == groupId ) {
-      activeGroup = &groups[ x ];
+  for ( const auto & group : groups )
+    if ( group.id == groupId ) {
+      activeGroup = &group;
       break;
     }
 
@@ -362,9 +346,10 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( QString const &
 
     unmutedDicts.reserve( activeDicts.size() );
 
-    for ( unsigned x = 0; x < activeDicts.size(); ++x )
+    for ( unsigned x = 0; x < activeDicts.size(); ++x ) {
       if ( !mutedDicts.contains( QString::fromStdString( activeDicts[ x ]->getId() ) ) )
         unmutedDicts.push_back( activeDicts[ x ] );
+    }
 
     return std::make_shared< ArticleRequest >(
       word,
@@ -400,19 +385,22 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeNotFoundTextFor( QString const
 
 sptr< Dictionary::DataRequest > ArticleMaker::makeEmptyPage() const
 {
-  string result = makeHtmlHeader( tr( "(untitled)" ), QString(), true ) + "</body></html>";
-
+  string result                            = makeUntitleHtml();
   sptr< Dictionary::DataRequestInstant > r = std::make_shared< Dictionary::DataRequestInstant >( true );
 
   r->appendString( result );
   return r;
 }
 
+string ArticleMaker::makeUntitleHtml() const
+{
+  return makeHtmlHeader( tr( "(untitled)" ), QString(), true ) + "</body></html>";
+}
+
 sptr< Dictionary::DataRequest > ArticleMaker::makePicturePage( string const & url ) const
 {
-  string result = makeHtmlHeader( tr( "(picture)" ), QString(), true )
-    + "<a href=\"javascript: if(history.length>2) history.go(-1)\">" + "<img src=\"" + url + "\" /></a>"
-    + "</body></html>";
+  string const result =
+    makeHtmlHeader( tr( "(picture)" ), QString(), true ) + R"(<img src=")" + url + R"(" />)" + "</body></html>";
 
   sptr< Dictionary::DataRequestInstant > r = std::make_shared< Dictionary::DataRequestInstant >( true );
 
@@ -434,6 +422,10 @@ bool ArticleMaker::adjustFilePath( QString & fileName )
     }
   }
   return false;
+}
+string ArticleMaker::makeBlankHtml() const
+{
+  return makeHtmlHeader( "", QString(), true ) + "</body></html>";
 }
 
 //////// ArticleRequest
@@ -464,9 +456,8 @@ ArticleRequest::ArticleRequest( QString const & word,
   emit GlobalBroadcaster::instance()->dictionaryClear( ActiveDictIds{ group.id, word } );
 
   // Accumulate main forms
-  for ( unsigned x = 0; x < activeDicts.size(); ++x ) {
-    sptr< Dictionary::WordSearchRequest > s =
-      activeDicts[ x ]->findHeadwordsForSynonym( gd::removeTrailingZero( word ) );
+  for ( const auto & activeDict : activeDicts ) {
+    auto const s = activeDict->findHeadwordsForSynonym( gd::removeTrailingZero( word ) );
 
     connect( s.get(), &Dictionary::Request::finished, this, &ArticleRequest::altSearchFinished, Qt::QueuedConnection );
 
@@ -482,7 +473,7 @@ void ArticleRequest::altSearchFinished()
     return;
 
   // Check every request for finishing
-  for ( list< sptr< Dictionary::WordSearchRequest > >::iterator i = altSearches.begin(); i != altSearches.end(); ) {
+  for ( auto i = altSearches.begin(); i != altSearches.end(); ) {
     if ( ( *i )->isFinished() ) {
       // This one's finished
       for ( size_t count = ( *i )->matchesCount(), x = 0; x < count; ++x )
@@ -495,9 +486,6 @@ void ArticleRequest::altSearchFinished()
   }
 
   if ( altSearches.empty() ) {
-#ifdef QT_DEBUG
-    qDebug( "alts finished" );
-#endif
 
     // They all've finished! Now we can look up bodies
 
@@ -505,23 +493,17 @@ void ArticleRequest::altSearchFinished()
 
     vector< wstring > altsVector( alts.begin(), alts.end() );
 
-#ifdef QT_DEBUG
-    for ( unsigned x = 0; x < altsVector.size(); ++x ) {
-      qDebug() << "Alt:" << QString::fromStdU32String( altsVector[ x ] );
-    }
-#endif
-
     wstring wordStd = gd::toWString( word );
 
     if ( activeDicts.size() <= 1 )
       articleSizeLimit = -1; // Don't collapse article if only one dictionary presented
 
-    for ( unsigned x = 0; x < activeDicts.size(); ++x ) {
+    for ( const auto & activeDict : activeDicts ) {
       try {
-        sptr< Dictionary::DataRequest > r = activeDicts[ x ]->getArticle(
+        sptr< Dictionary::DataRequest > r = activeDict->getArticle(
           wordStd,
           altsVector,
-          gd::removeTrailingZero( contexts.value( QString::fromStdString( activeDicts[ x ]->getId() ) ) ),
+          gd::removeTrailingZero( contexts.value( QString::fromStdString( activeDict->getId() ) ) ),
           ignoreDiacritics );
 
         connect( r.get(), &Dictionary::Request::finished, this, &ArticleRequest::bodyFinished, Qt::QueuedConnection );
@@ -529,7 +511,7 @@ void ArticleRequest::altSearchFinished()
         bodyRequests.push_back( r );
       }
       catch ( std::exception & e ) {
-        gdWarning( "getArticle request error (%s) in \"%s\"\n", e.what(), activeDicts[ x ]->getName().c_str() );
+        gdWarning( "getArticle request error (%s) in \"%s\"\n", e.what(), activeDict->getName().c_str() );
       }
     }
 
@@ -619,8 +601,6 @@ void ArticleRequest::bodyFinished()
 
         string dictId = activeDict->getId();
 
-        //signal finished dictionray for pronounciation
-        GlobalBroadcaster::instance()->pronounce_engine.finishDictionary( dictId );
 
         dictIds << QString::fromStdString( dictId );
         string head;
@@ -638,8 +618,8 @@ void ArticleRequest::bodyFinished()
         fmt::format_to( std::back_inserter( head ),
                         FMT_COMPILE(
                           R"( <div class="gdarticle {0} {1}" id="{2}"
-                              onClick="gdMakeArticleActive( '{3}', false );"
-                              onContextMenu="gdMakeArticleActive( '{3}', false );">)" ),
+                              onClick="if(typeof gdMakeArticleActive !='undefined')  gdMakeArticleActive( '{3}', false );"
+                              onContextMenu="if(typeof gdMakeArticleActive !='undefined') gdMakeArticleActive( '{3}', false );">)" ),
                         closePrevSpan ? "" : " gdactivearticle",
                         collapse ? " gdcollapsedarticle" : "",
                         gdFrom,
@@ -706,6 +686,9 @@ void ArticleRequest::bodyFinished()
         wasUpdated = true;
 
         foundAnyDefinitions = true;
+
+        //signal finished dictionary for pronounciation
+        GlobalBroadcaster::instance()->pronounce_engine.finishDictionary( dictId );
       }
       GD_DPRINTF( "erasing.." );
       bodyRequests.pop_front();
@@ -752,13 +735,11 @@ void ArticleRequest::bodyFinished()
       }
       else {
         footer += R"(<div class="empty-space"></div>)";
-
         footer += "</body></html>";
       }
 
       appendString( footer );
     }
-
 
     if ( stemmedWordFinder.get() ) {
       update();
@@ -846,12 +827,11 @@ void ArticleRequest::stemmedSearchFinished()
     continueMatching = true;
   }
 
-  if ( !continueMatching )
+  if ( !continueMatching ) {
     footer += "</body></html>";
-
-  {
-    appendString( footer );
   }
+
+  appendString( footer );
 
   if ( continueMatching )
     update();
@@ -868,8 +848,6 @@ void ArticleRequest::compoundSearchNextStep( bool lastSearchSucceeded )
 
     if ( lastGoodCompoundResult.size() ) // We have something to append
     {
-      //      GD_DPRINTF( "Appending\n" );
-
       if ( !firstCompoundWasFound ) {
         // Append the beginning
         footer += R"(<div class="gdstemmedsuggestion"><span class="gdstemmedsuggestion_head">)"

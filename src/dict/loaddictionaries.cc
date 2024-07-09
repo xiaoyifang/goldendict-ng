@@ -58,7 +58,6 @@ LoadDictionaries::LoadDictionaries( Config::Class const & cfg ):
   hunspell( cfg.hunspell ),
   transliteration( cfg.transliteration ),
   exceptionText( "Load did not finish" ), // Will be cleared upon success
-  maxPictureWidth( cfg.maxPictureWidth ),
   maxHeadwordSize( cfg.maxHeadwordSize ),
   maxHeadwordToExpand( cfg.maxHeadwordsToExpand )
 {
@@ -93,8 +92,10 @@ LoadDictionaries::LoadDictionaries( Config::Class const & cfg ):
 void LoadDictionaries::run()
 {
   try {
-    for ( const auto & path : paths )
+    for ( const auto & path : paths ) {
+      qDebug() << "handle path:" << path.path;
       handlePath( path );
+    }
 
     // Make soundDirs
     {
@@ -109,6 +110,23 @@ void LoadDictionaries::run()
       vector< sptr< Dictionary::Class > > hunspellDictionaries = HunspellMorpho::makeDictionaries( hunspell );
 
       dictionaries.insert( dictionaries.end(), hunspellDictionaries.begin(), hunspellDictionaries.end() );
+    }
+
+    //handle the custom dictionary name&fts option
+    for ( const auto & dict : dictionaries ) {
+      auto baseDir = dict->getContainingFolder();
+      if ( baseDir.isEmpty() )
+        continue;
+
+      auto filePath = Utils::Path::combine( baseDir, "metadata.toml" );
+
+      auto dictMetaData = Metadata::load( filePath.toStdString() );
+      if ( dictMetaData && dictMetaData->name ) {
+        dict->setName( dictMetaData->name.value() );
+      }
+      if ( dictMetaData && dictMetaData->fullindex ) {
+        dict->setFtsEnable( dictMetaData->fullindex.value() );
+      }
     }
 
     exceptionText.clear();
@@ -148,8 +166,7 @@ void LoadDictionaries::handlePath( Config::Path const & path )
   addDicts( Bgl::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
   addDicts( Stardict::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this, maxHeadwordToExpand ) );
   addDicts( Lsa::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
-  addDicts(
-    Dsl::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this, maxPictureWidth, maxHeadwordSize ) );
+  addDicts( Dsl::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this, maxHeadwordSize ) );
   addDicts( DictdFiles::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
   addDicts( Xdxf::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
   addDicts( Sdict::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
@@ -164,25 +181,16 @@ void LoadDictionaries::handlePath( Config::Path const & path )
 #ifndef NO_EPWING_SUPPORT
   addDicts( Epwing::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
 #endif
-
-  //handle the custom dictionary name
-  for ( const auto & dict : dictionaries ) {
-    auto baseDir = dict->getContainingFolder();
-    if ( baseDir.isEmpty() )
-      continue;
-
-    auto filePath = Utils::Path::combine( baseDir, "metadata.toml" );
-
-    auto dictMetaData = Metadata::load( filePath.toStdString() );
-    if ( dictMetaData && dictMetaData->name ) {
-      dict->setName( dictMetaData->name.value() );
-    }
-  }
 }
 
 void LoadDictionaries::indexingDictionary( string const & dictionaryName ) noexcept
 {
   emit indexingDictionarySignal( QString::fromUtf8( dictionaryName.c_str() ) );
+}
+
+void LoadDictionaries::loadingDictionary( string const & dictionaryName ) noexcept
+{
+  emit loadingDictionarySignal( QString::fromUtf8( dictionaryName.c_str() ) );
 }
 
 
@@ -202,6 +210,7 @@ void loadDictionaries( QWidget * parent,
   LoadDictionaries loadDicts( cfg );
 
   QObject::connect( &loadDicts, &LoadDictionaries::indexingDictionarySignal, &init, &Initializing::indexing );
+  QObject::connect( &loadDicts, &LoadDictionaries::loadingDictionarySignal, &init, &Initializing::loading );
 
   QEventLoop localLoop;
 
@@ -260,7 +269,9 @@ void loadDictionaries( QWidget * parent,
   addDicts( Forvo::makeDictionaries( loadDicts, cfg.forvo, dictNetMgr ) );
   addDicts( Lingua::makeDictionaries( loadDicts, cfg.lingua, dictNetMgr ) );
   addDicts( Programs::makeDictionaries( cfg.programs ) );
+#ifndef NO_TTS_SUPPORT
   addDicts( VoiceEngines::makeDictionaries( cfg.voiceEngines ) );
+#endif
   addDicts( DictServer::makeDictionaries( cfg.dictServers ) );
 
 
@@ -283,24 +294,6 @@ void loadDictionaries( QWidget * parent,
     }
   }
 
-  QDir indexDir( Config::getIndexDir() );
-
-  QStringList allIdxFiles = indexDir.entryList( QDir::Files | QDir::Dirs | QDir::NoDotAndDotDot | QDir::NoSymLinks );
-
-  for ( const auto & file : allIdxFiles ) {
-    if ( file.size() >= 32 && ids.find( file.left( 32 ).toStdString() ) == ids.end() ) {
-      if ( QFile::exists( file ) ) {
-        indexDir.remove( file );
-      }
-      else {
-        // must be folder .
-        auto dirPath = Utils::Path::combine( Config::getIndexDir(), file );
-        QDir t( dirPath );
-        t.removeRecursively();
-      }
-    }
-  }
-
   // Run deferred inits
 
   if ( doDeferredInit_ )
@@ -309,6 +302,6 @@ void loadDictionaries( QWidget * parent,
 
 void doDeferredInit( std::vector< sptr< Dictionary::Class > > & dictionaries )
 {
-  for ( unsigned x = 0; x < dictionaries.size(); ++x )
-    dictionaries[ x ]->deferredInit();
+  for ( const auto & dictionarie : dictionaries )
+    dictionarie->deferredInit();
 }

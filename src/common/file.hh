@@ -13,11 +13,7 @@
 #include <vector>
 #include <QMutex>
 
-/// A simple wrapper over QFile with some convenient GD specific functions
-/// Consider the wrapped QFile as private implementation in the `Pimpl Idiom`
-///
-/// Note: this is used *only* in code related to `Dictionary::CLass` to manage dict files.
-/// In other places, just use QFile directly.
+/// File utilities
 namespace File {
 
 DEF_EX( Ex, "File exception", std::exception )
@@ -39,7 +35,8 @@ inline bool exists( std::string_view filename ) noexcept
   return QFileInfo::exists( QString::fromUtf8( filename.data(), filename.size() ) );
 };
 
-class Class
+/// Exclusivly used for processing GD's index files
+class Index
 {
   QFile f;
 
@@ -47,7 +44,7 @@ public:
   QMutex lock;
 
   // Create QFile Object and open() it.
-  Class( std::string_view filename, char const * mode );
+  Index( std::string_view filename, char const * mode );
 
   /// QFile::read  & QFile::write , but with exception throwing
   void read( void * buf, qint64 size );
@@ -114,7 +111,7 @@ public:
   /// Closes the file. No further operations are valid.
   void close();
 
-  ~Class() noexcept;
+  ~Index() noexcept;
 
 private:
   // QFile::open but with fopen-like mode settings.

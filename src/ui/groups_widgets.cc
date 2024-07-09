@@ -8,6 +8,7 @@
 #include "langcoder.hh"
 #include "language.hh"
 #include "metadata.hh"
+#include "utils.hh"
 
 #include <QDir>
 #include <QFileDialog>
@@ -480,14 +481,6 @@ void DictListWidget::focusInEvent( QFocusEvent * )
   emit gotFocus();
 }
 
-void DictListWidget::rowsInserted( QModelIndex const & parent, int start, int end )
-{
-  QListView::rowsInserted( parent, start, end );
-
-  // When inserting new rows, make the first of them current
-  selectionModel()->setCurrentIndex( model.index( start, 0, parent ), QItemSelectionModel::NoUpdate );
-}
-
 void DictListWidget::rowsAboutToBeRemoved( QModelIndex const & parent, int start, int end )
 {
   // When removing rows, if the current row is among the removed ones, select
@@ -517,23 +510,6 @@ DictGroupsWidget::DictGroupsWidget( QWidget * parent ):
   setUsesScrollButtons( true );
 }
 
-namespace {
-
-QString escapeAmps( QString const & str )
-{
-  QString result( str );
-  result.replace( "&", "&&" );
-  return result;
-}
-
-QString unescapeAmps( QString const & str )
-{
-  QString result( str );
-  result.replace( "&&", "&" );
-  return result;
-}
-
-} // namespace
 
 void DictGroupsWidget::populate( Config::Groups const & groups,
                                  vector< sptr< Dictionary::Class > > const & allDicts_,
@@ -546,7 +522,7 @@ void DictGroupsWidget::populate( Config::Groups const & groups,
 
   for ( int x = 0; x < groups.size(); ++x ) {
     const auto gr = new DictGroupWidget( this, *allDicts, groups[ x ] );
-    addTab( gr, escapeAmps( groups[ x ].name ) );
+    addTab( gr, Utils::escapeAmps( groups[ x ].name ) );
     connect( gr, &DictGroupWidget::showDictionaryInfo, this, &DictGroupsWidget::showDictionaryInfo );
     connect( gr->getModel(), &DictListModel::contentChanged, this, &DictGroupsWidget::tabDataChanged );
 
@@ -569,7 +545,7 @@ Config::Groups DictGroupsWidget::makeGroups() const
 
   for ( int x = 0; x < count(); ++x ) {
     result.push_back( dynamic_cast< DictGroupWidget & >( *widget( x ) ).makeGroup() );
-    result.back().name = unescapeAmps( tabText( x ) );
+    result.back().name = Utils::unescapeAmps( tabText( x ) );
   }
 
   return result;
@@ -638,7 +614,7 @@ int DictGroupsWidget::addNewGroup( QString const & name )
   newGroup.id = nextId++;
 
   const auto gr = new DictGroupWidget( this, *allDicts, newGroup );
-  const int idx = insertTab( currentIndex() + 1, gr, escapeAmps( name ) );
+  const int idx = insertTab( currentIndex() + 1, gr, Utils::escapeAmps( name ) );
   connect( gr, &DictGroupWidget::showDictionaryInfo, this, &DictGroupsWidget::showDictionaryInfo );
 
   connect( gr->getModel(), &DictListModel::contentChanged, this, &DictGroupsWidget::tabDataChanged );
@@ -684,7 +660,8 @@ void DictGroupsWidget::addAutoGroups()
     if ( idFrom == 0 ) {
       // Attempt to find language pair in dictionary name
 
-      const QPair< quint32, quint32 > ids = LangCoder::findIdsForName( QString::fromUtf8( dict->getName().c_str() ) );
+      const QPair< quint32, quint32 > ids =
+        LangCoder::findLangIdPairFromName( QString::fromUtf8( dict->getName().c_str() ) );
       idFrom                              = ids.first;
       idTo                                = ids.second;
     }
@@ -700,9 +677,9 @@ void DictGroupsWidget::addAutoGroups()
     else if ( !dict->getDictionaryFilenames().empty() ) {
       // Handle special case - morphology dictionaries
 
-      QString fileName = QFileInfo( dict->getDictionaryFilenames()[ 0 ].c_str() ).fileName();
+      QString const fileName = QFileInfo( dict->getDictionaryFilenames()[ 0 ].c_str() ).fileName();
       if ( fileName.endsWith( ".aff", Qt::CaseInsensitive ) ) {
-        QString code = fileName.left( 2 ).toLower();
+        QString const code = fileName.left( 2 ).toLower();
         morphoMap[ code ].push_back( dict );
         continue;
       }
@@ -711,7 +688,7 @@ void DictGroupsWidget::addAutoGroups()
     dictMap[ name ].push_back( dict );
   }
 
-  QStringList groupList = dictMap.keys();
+  QStringList const groupList = dictMap.keys();
 
   // Insert morphology dictionaries into corresponding lists
   for ( const auto & gr : groupList ) {
@@ -727,7 +704,7 @@ void DictGroupsWidget::addAutoGroups()
     const auto idx = addUniqueGroup( gr );
 
     // add dictionaries into the current group
-    QVector< sptr< Dictionary::Class > > vd = dictMap[ gr ];
+    QVector< sptr< Dictionary::Class > > const vd = dictMap[ gr ];
     DictListModel * model                   = getModelAt( idx );
     if ( !model )
       continue;
@@ -819,7 +796,7 @@ void DictGroupsWidget::addAutoGroupsByFolders()
       groupName = path.dirName();
     }
     else {
-      QString directFolder = path.dirName();
+      QString const directFolder = path.dirName();
       if ( !path.cdUp() ) {
         cdUpWentWrong( path.absolutePath() );
         return;
@@ -897,9 +874,9 @@ QString DictGroupsWidget::getCurrentGroupName() const
   const int current = currentIndex();
 
   if ( current >= 0 )
-    return unescapeAmps( tabText( current ) );
+    return Utils::unescapeAmps( tabText( current ) );
 
-  return QString();
+  return {};
 }
 
 void DictGroupsWidget::renameCurrentGroup( QString const & name )
@@ -907,7 +884,7 @@ void DictGroupsWidget::renameCurrentGroup( QString const & name )
   const int current = currentIndex();
 
   if ( current >= 0 )
-    setTabText( current, escapeAmps( name ) );
+    setTabText( current, Utils::escapeAmps( name ) );
 }
 
 void DictGroupsWidget::removeCurrentGroup()
@@ -965,7 +942,7 @@ void DictGroupsWidget::contextMenu( QPoint const & pos )
   QMenu menu( this );
 
   const auto combineSourceAction =
-    new QAction( QString( tr( "Combine groups by source language to \"%1->\"" ) ).arg( name.left( 2 ) ), &menu );
+    new QAction( QString( tr( R"(Combine groups by source language to "%1->")" ) ).arg( name.left( 2 ) ), &menu );
   combineSourceAction->setEnabled( false );
 
   QString grLeft  = name.left( 2 );
@@ -980,11 +957,11 @@ void DictGroupsWidget::contextMenu( QPoint const & pos )
   menu.addAction( combineSourceAction );
 
   const auto combineTargetAction =
-    new QAction( QString( tr( "Combine groups by target language to \"->%1\"" ) ).arg( name.right( 2 ) ), &menu );
+    new QAction( QString( tr( R"(Combine groups by target language to "->%1")" ) ).arg( name.right( 2 ) ), &menu );
   combineTargetAction->setEnabled( false );
 
   for ( int i = 0; i < count(); i++ ) {
-    QString str = tabText( i );
+    QString const str = tabText( i );
     if ( i != clickedGroup && str.length() == 7 && str.mid( 2, 3 ) == " - " && str.endsWith( grRight ) ) {
       combineTargetAction->setEnabled( true );
       break;
@@ -995,7 +972,7 @@ void DictGroupsWidget::contextMenu( QPoint const & pos )
   QAction * combineTwoSidedAction = nullptr;
   if ( grLeft != grRight ) {
     combineTwoSidedAction =
-      new QAction( QString( tr( "Make two-side translate group \"%1-%2-%1\"" ) ).arg( grLeft, grRight ), &menu );
+      new QAction( QString( tr( R"(Make two-side translate group "%1-%2-%1")" ) ).arg( grLeft, grRight ), &menu );
 
     combineTwoSidedAction->setEnabled( false );
 
@@ -1121,7 +1098,7 @@ QuickFilterLine::QuickFilterLine( QWidget * parent ):
   connect( this, &QLineEdit::textChanged, this, &QuickFilterLine::filterChangedInternal );
 }
 
-QuickFilterLine::~QuickFilterLine() {}
+QuickFilterLine::~QuickFilterLine() = default;
 
 void QuickFilterLine::applyTo( QAbstractItemView * source )
 {

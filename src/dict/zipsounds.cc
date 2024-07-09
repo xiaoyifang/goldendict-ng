@@ -61,7 +61,7 @@ __attribute__( ( packed ) )
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Class idx( indexFile, "rb" );
+  File::Index idx( indexFile, "rb" );
 
   IdxHeader header;
 
@@ -98,7 +98,7 @@ wstring stripExtension( string const & str )
 class ZipSoundsDictionary: public BtreeIndexing::BtreeDictionary
 {
   QMutex idxMutex;
-  File::Class idx;
+  File::Index idx;
   IdxHeader idxHeader;
   sptr< ChunkedStorage::Reader > chunks;
   IndexedZip zipsFile;
@@ -171,10 +171,10 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const &
 {
   vector< WordArticleLink > chain = findArticles( word, ignoreDiacritics );
 
-  for ( unsigned x = 0; x < alts.size(); ++x ) {
+  for ( const auto & alt : alts ) {
     /// Make an additional query for each alt
 
-    vector< WordArticleLink > altChain = findArticles( alts[ x ], ignoreDiacritics );
+    vector< WordArticleLink > altChain = findArticles( alt, ignoreDiacritics );
 
     chain.insert( chain.end(), altChain.begin(), altChain.end() );
   }
@@ -189,8 +189,8 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const &
   if ( ignoreDiacritics )
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
 
-  for ( unsigned x = 0; x < chain.size(); ++x ) {
-    if ( articlesIncluded.find( chain[ x ].articleOffset ) != articlesIncluded.end() )
+  for ( auto & x : chain ) {
+    if ( articlesIncluded.find( x.articleOffset ) != articlesIncluded.end() )
       continue; // We already have this article in the body.
 
     // Ok. Now, does it go to main articles, or to alternate ones? We list
@@ -198,16 +198,16 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const &
 
     // We do the case-folded comparison here.
 
-    wstring headwordStripped = Folding::applySimpleCaseOnly( chain[ x ].word );
+    wstring headwordStripped = Folding::applySimpleCaseOnly( x.word );
     if ( ignoreDiacritics )
       headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
 
     multimap< wstring, uint32_t > & mapToUse =
       ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
 
-    mapToUse.insert( std::pair( Folding::applySimpleCaseOnly( chain[ x ].word ), chain[ x ].articleOffset ) );
+    mapToUse.insert( std::pair( Folding::applySimpleCaseOnly( x.word ), x.articleOffset ) );
 
-    articlesIncluded.insert( chain[ x ].articleOffset );
+    articlesIncluded.insert( x.articleOffset );
   }
 
   if ( mainArticles.empty() && alternateArticles.empty() )
@@ -381,20 +381,20 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
   (void)initializing;
   vector< sptr< Dictionary::Class > > dictionaries;
 
-  for ( vector< string >::const_iterator i = fileNames.begin(); i != fileNames.end(); ++i ) {
+  for ( const auto & fileName : fileNames ) {
     /// Only allow .zips extension
-    if ( i->size() < 5 || strcasecmp( i->c_str() + ( i->size() - 5 ), ".zips" ) != 0 )
+    if ( !Utils::endsWithIgnoreCase( fileName, ".zips" ) )
       continue;
 
     try {
-      vector< string > dictFiles( 1, *i );
+      vector< string > dictFiles( 1, fileName );
       string dictId    = Dictionary::makeDictionaryId( dictFiles );
       string indexFile = indicesDir + dictId;
 
       if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
-        gdDebug( "Zips: Building the index for dictionary: %s\n", i->c_str() );
+        gdDebug( "Zips: Building the index for dictionary: %s\n", fileName.c_str() );
 
-        File::Class idx( indexFile, "wb" );
+        File::Index idx( indexFile, "wb" );
         IdxHeader idxHeader;
 
         memset( &idxHeader, 0, sizeof( idxHeader ) );
@@ -406,27 +406,27 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         IndexedWords names, zipFileNames;
         ChunkedStorage::Writer chunks( idx );
-        quint32 namesCount;
+        quint32 namesCount = 0;
 
         IndexedZip zipFile;
-        if ( zipFile.openZipFile( QDir::fromNativeSeparators( i->c_str() ) ) )
+        if ( zipFile.openZipFile( QDir::fromNativeSeparators( fileName.c_str() ) ) )
           zipFile.indexFile( zipFileNames, &namesCount );
 
         if ( !zipFileNames.empty() ) {
-          for ( IndexedWords::iterator i = zipFileNames.begin(); i != zipFileNames.end(); ++i ) {
-            vector< WordArticleLink > links = i->second;
-            for ( unsigned x = 0; x < links.size(); x++ ) {
+          for ( auto & zipFileName : zipFileNames ) {
+            vector< WordArticleLink > links = zipFileName.second;
+            for ( auto & link : links ) {
               // Save original name
 
               uint32_t offset = chunks.startNewBlock();
-              uint16_t sz     = links[ x ].word.size();
+              uint16_t sz     = link.word.size();
               chunks.addToBlock( &sz, sizeof( uint16_t ) );
-              chunks.addToBlock( links[ x ].word.c_str(), sz );
-              chunks.addToBlock( &links[ x ].articleOffset, sizeof( uint32_t ) );
+              chunks.addToBlock( link.word.c_str(), sz );
+              chunks.addToBlock( &link.articleOffset, sizeof( uint32_t ) );
 
               // Remove extension for sound files (like in sound dirs)
 
-              wstring word = stripExtension( links[ x ].word );
+              wstring word = stripExtension( link.word );
               if ( !word.empty() )
                 names.addWord( word, offset );
             }
@@ -464,7 +464,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       dictionaries.push_back( std::make_shared< ZipSoundsDictionary >( dictId, indexFile, dictFiles ) );
     }
     catch ( std::exception & e ) {
-      gdWarning( "Zipped sounds pack reading failed: %s, error: %s\n", i->c_str(), e.what() );
+      gdWarning( "Zipped sounds pack reading failed: %s, error: %s\n", fileName.c_str(), e.what() );
     }
   }
 

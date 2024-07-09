@@ -131,7 +131,7 @@ struct InsidedCard
 
 bool indexIsOldOrBad( string const & indexFile, bool hasZipFile )
 {
-  File::Class idx( indexFile, "rb" );
+  File::Index idx( indexFile, "rb" );
 
   IdxHeader header;
 
@@ -143,7 +143,7 @@ bool indexIsOldOrBad( string const & indexFile, bool hasZipFile )
 class DslDictionary: public BtreeIndexing::BtreeDictionary
 {
   QMutex idxMutex;
-  File::Class idx;
+  File::Index idx;
   IdxHeader idxHeader;
   sptr< ChunkedStorage::Reader > chunks;
   string preferredSoundDictionary;
@@ -163,17 +163,13 @@ class DslDictionary: public BtreeIndexing::BtreeDictionary
 
   int optionalPartNom;
   quint8 articleNom;
-  int maxPictureWidth;
 
   wstring currentHeadword;
   string resourceDir1, resourceDir2;
 
 public:
 
-  DslDictionary( string const & id,
-                 string const & indexFile,
-                 vector< string > const & dictionaryFiles,
-                 int maxPictureWidth_ );
+  DslDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles );
 
   void deferredInit() override;
 
@@ -240,7 +236,7 @@ public:
     if ( ensureInitDone().size() )
       return;
 
-    can_FTS = fts.enabled && !fts.disabledTypes.contains( "DSL", Qt::CaseInsensitive )
+    can_FTS = enable_FTS && fts.enabled && !fts.disabledTypes.contains( "DSL", Qt::CaseInsensitive )
       && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
 
@@ -285,25 +281,17 @@ private:
   friend class DslFTSResultsRequest;
 };
 
-DslDictionary::DslDictionary( string const & id,
-                              string const & indexFile,
-                              vector< string > const & dictionaryFiles,
-                              int maxPictureWidth_ ):
+DslDictionary::DslDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles ):
   BtreeDictionary( id, dictionaryFiles ),
   idx( indexFile, "rb" ),
   idxHeader( idx.read< IdxHeader >() ),
   dz( 0 ),
   deferredInitRunnableStarted( false ),
   optionalPartNom( 0 ),
-  articleNom( 0 ),
-  maxPictureWidth( maxPictureWidth_ )
+  articleNom( 0 )
 {
-  can_FTS = true;
 
   ftsIdxName = indexFile + Dictionary::getFtsSuffix();
-
-  if ( !Dictionary::needToRebuildIndex( dictionaryFiles, ftsIdxName ) && !FtsHelpers::ftsIndexIsOldOrBad( this ) )
-    FTS_index_completed.ref();
 
   // Read the dictionary name
 
@@ -844,61 +832,10 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
       url.setHost( QString::fromUtf8( getId().c_str() ) );
       url.setPath( Utils::Url::ensureLeadingSlash( QString::fromUtf8( filename.c_str() ) ) );
 
-      vector< char > imgdata;
-      bool resize = false;
+      string maxWidthStyle = " style=\"max-width:100%;\" ";
 
-      try {
-        File::loadFromFile( n, imgdata );
-      }
-      catch ( File::exCantOpen & ) {
-        try {
-          n = resourceDir2 + filename;
-          File::loadFromFile( n, imgdata );
-        }
-        catch ( File::exCantOpen & ) {
-          try {
-            n = getContainingFolder().toStdString() + Utils::Fs::separator() + filename;
-            File::loadFromFile( n, imgdata );
-          }
-          catch ( File::exCantOpen & ) {
-            // Try reading from zip file
-            if ( resourceZip.isOpen() ) {
-              QMutexLocker _( &resourceZipMutex );
-              resourceZip.loadFile( Utf8::decode( filename ), imgdata );
-            }
-          }
-        }
-      }
-      catch ( ... ) {
-      }
-
-      if ( !imgdata.empty() ) {
-        if ( Filetype::isNameOfSvg( filename ) ) {
-          // We don't need to render svg file now
-
-          QSvgRenderer svg;
-          svg.load( QByteArray::fromRawData( imgdata.data(), imgdata.size() ) );
-          if ( svg.isValid() ) {
-            QSize imgsize = svg.defaultSize();
-            resize        = maxPictureWidth > 0 && imgsize.width() > maxPictureWidth;
-          }
-        }
-        else {
-          QImage img = QImage::fromData( (unsigned char *)&imgdata.front(), imgdata.size() );
-
-          resize = maxPictureWidth > 0 && img.width() > maxPictureWidth;
-        }
-      }
-
-      if ( resize ) {
-        string link( url.toEncoded().data() );
-        link.replace( 0, 4, "gdpicture" );
-        result += string( "<a href=\"" ) + link + "\">" + "<img src=\"" + url.toEncoded().data() + "\" alt=\""
-          + Html::escape( filename ) + "\"" + "width=\"" + QString::number( maxPictureWidth ).toStdString() + "\"/>"
-          + "</a>";
-      }
-      else
-        result += string( "<img src=\"" ) + url.toEncoded().data() + "\" alt=\"" + Html::escape( filename ) + "\"/>";
+      result += string( "<img src=\"" ) + url.toEncoded().data() + "\" " + maxWidthStyle + " alt=\""
+        + Html::escape( filename ) + "\"/>";
     }
     else if ( Filetype::isNameOfVideo( filename ) ) {
       QUrl url;
@@ -1066,7 +1003,9 @@ QString const & DslDictionary::getDescription()
   if ( !dictionaryDescription.isEmpty() )
     return dictionaryDescription;
 
-  dictionaryDescription = "NONE";
+  QString none = QStringLiteral( "NONE" );
+
+  dictionaryDescription = none;
 
   QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
 
@@ -1119,6 +1058,9 @@ QString const & DslDictionary::getDescription()
       }
     }
   }
+  if ( dictionaryDescription != none ) {
+    dictionaryDescription.replace( QRegularExpression( R"(\R)" ), R"(<br>)" );
+  }
   return dictionaryDescription;
 }
 
@@ -1130,14 +1072,15 @@ QString DslDictionary::getMainFilename()
 void DslDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )
 {
   if ( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
-          || FtsHelpers::ftsIndexIsOldOrBad( this ) ) )
+          || FtsHelpers::ftsIndexIsOldOrBad( this ) ) ) {
     FTS_index_completed.ref();
+  }
 
 
   if ( haveFTSIndex() )
     return;
 
-  if ( ensureInitDone().size() )
+  if ( !ensureInitDone().empty() )
     return;
 
   if ( firstIteration && getArticleCount() > FTS::MaxDictionarySizeForFastSearch )
@@ -1213,10 +1156,11 @@ void DslDictionary::getArticleText( uint32_t articleAddress, QString & headword,
     size_t begin = pos;
 
     pos = articleData.find_first_of( U"\n\r", begin );
+    if ( pos == wstring::npos )
+      pos = articleData.size();
 
     if ( articleHeadword.empty() ) {
       // Process the headword
-
       articleHeadword = wstring( articleData, begin, pos - begin );
 
       if ( insidedCard && !articleHeadword.empty() && isDslWs( articleHeadword[ 0 ] ) ) {
@@ -1258,12 +1202,12 @@ void DslDictionary::getArticleText( uint32_t articleAddress, QString & headword,
     if ( articleData[ pos ] == '\r' )
       ++pos;
 
-    if ( pos != articleData.size() ) {
+    if ( pos < articleData.size() ) {
       if ( articleData[ pos ] == '\n' )
         ++pos;
     }
 
-    if ( pos == articleData.size() ) {
+    if ( pos >= articleData.size() ) {
       // Ok, it's end of article
       break;
     }
@@ -1708,7 +1652,6 @@ sptr< Dictionary::DataRequest > DslDictionary::getSearchResults( QString const &
 vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & fileNames,
                                                       string const & indicesDir,
                                                       Dictionary::Initializing & initializing,
-                                                      int maxPictureWidth,
                                                       unsigned int maxHeadwordSize )
 
 {
@@ -1717,10 +1660,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
   for ( const auto & fileName : fileNames ) {
     // Try .dsl and .dsl.dz suffixes
 
-    bool uncompressedDsl =
-      ( fileName.size() >= 4 && strcasecmp( fileName.c_str() + ( fileName.size() - 4 ), ".dsl" ) == 0 );
-    if ( !uncompressedDsl
-         && ( fileName.size() < 7 || strcasecmp( fileName.c_str() + ( fileName.size() - 7 ), ".dsl.dz" ) != 0 ) )
+    bool uncompressedDsl = Utils::endsWithIgnoreCase( fileName, ".dsl" );
+    if ( !uncompressedDsl && !Utils::endsWithIgnoreCase( fileName, ".dsl.dz" ) )
       continue;
 
     // Make sure it's not an abbreviation file
@@ -1749,6 +1690,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
            || File::tryPossibleName( baseName + "_ABRV.DSL.DZ", abrvFileName )
            || File::tryPossibleName( baseName + "_ABRV.DSL.dz", abrvFileName ) )
         dictFiles.push_back( abrvFileName );
+
+      initializing.loadingDictionary( fileName );
 
       string dictId = Dictionary::makeDictionaryId( dictFiles );
 
@@ -1780,7 +1723,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
           gdDebug( "Dsl: Building the index for dictionary: %s\n",
                    QString::fromStdU32String( scanner.getDictionaryName() ).toUtf8().data() );
 
-          File::Class idx( indexFile, "wb" );
+          File::Index idx( indexFile, "wb" );
 
           IdxHeader idxHeader;
 
@@ -1949,9 +1892,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
               if ( isDslWs( curString[ 0 ] ) )
                 break; // No more headwords
 
-#ifdef QT_DEBUG
-              qDebug() << "Alt headword" << QString::fromStdU32String( curString );
-#endif
+              qDebug() << "dsl Alt headword" << QString::fromStdU32String( curString );
 
               processUnsortedParts( curString, true );
               expandTildes( curString, allEntryWords.front() );
@@ -2168,7 +2109,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
       } // if need to rebuild
 
-      dictionaries.push_back( std::make_shared< DslDictionary >( dictId, indexFile, dictFiles, maxPictureWidth ) );
+      dictionaries.push_back( std::make_shared< DslDictionary >( dictId, indexFile, dictFiles ) );
     }
     catch ( std::exception & e ) {
       gdWarning( "DSL dictionary reading failed: %s:%u, error: %s\n", fileName.c_str(), atLine, e.what() );

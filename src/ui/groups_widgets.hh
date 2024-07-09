@@ -105,8 +105,6 @@ protected:
   void dropEvent( QDropEvent * event ) override;
   void focusInEvent( QFocusEvent * ) override;
 
-  // We need these to to handle drag-and-drop focus issues
-  void rowsInserted( QModelIndex const & parent, int start, int end ) override;
   void rowsAboutToBeRemoved( QModelIndex const & parent, int start, int end ) override;
 
 private:

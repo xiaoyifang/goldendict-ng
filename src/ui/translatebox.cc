@@ -49,13 +49,11 @@ TranslateBox::TranslateBox( QWidget * parent ):
   translate_line->setCompleter( completer );
   completer->setCompletionMode( QCompleter::UnfilteredPopupCompletion );
   completer->setMaxVisibleItems( 16 );
+  completer->popup()->setMinimumHeight( 256 );
 
-  connect( completer,
-           QOverload< const QString & >::of( &QCompleter::activated ),
-           translate_line,
-           [ & ]( const QString & ) {
-             emit translate_line->returnPressed();
-           } );
+  connect( translate_line, &QLineEdit::returnPressed, [ this ]() {
+    emit returnPressed();
+  } );
 }
 
 void TranslateBox::setText( const QString & text, bool showPopup )
@@ -79,9 +77,20 @@ void TranslateBox::setSizePolicy( QSizePolicy policy )
 
 void TranslateBox::setModel( QStringList & _words )
 {
-  auto model = (QStringListModel *)( completer->model() );
+  disconnect( completer, QOverload< const QString & >::of( &QCompleter::activated ), translate_line, nullptr );
+  const auto model = static_cast< QStringListModel * >( completer->model() );
 
   model->setStringList( _words );
+
+  completer->popup()->scrollToTop();
+
+  connect( completer,
+           QOverload< const QString & >::of( &QCompleter::activated ),
+           translate_line,
+           [ & ]( const QString & text ) {
+             translate_line->setText( text );
+             emit returnPressed();
+           } );
 }
 
 void TranslateBox::showPopup()
@@ -102,7 +111,7 @@ QLineEdit * TranslateBox::translateLine()
 
 QWidget * TranslateBox::completerWidget()
 {
-  return completer->widget();
+  return completer->popup();
 }
 
 void TranslateBox::rightButtonClicked()

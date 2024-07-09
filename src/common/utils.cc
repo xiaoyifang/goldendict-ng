@@ -3,12 +3,51 @@
 #include <QPalette>
 #include <QStyle>
 #include <QMessageBox>
+#include <string>
+#ifdef _MSC_VER
+  #include <stub_msvc.h>
+#endif
+#include <QBuffer>
 
+using std::string;
 namespace Utils {
+QMap< QString, QString > str2map( const QString & contextsEncoded )
+{
+  QMap< QString, QString > contexts;
+
+  if ( contextsEncoded.size() ) {
+    QByteArray ba = QByteArray::fromBase64( contextsEncoded.toLatin1() );
+    QBuffer buf( &ba );
+    buf.open( QBuffer::ReadOnly );
+    QDataStream stream( &buf );
+    stream >> contexts;
+  }
+  return contexts;
+}
 //some str has \0 in the middle of the string. return the string before the \0
 std::string c_string( const QString & str )
 {
   return std::string( str.toUtf8().constData() );
+}
+
+bool endsWithIgnoreCase( const string & str1, string str2 )
+{
+  return ( str1.size() >= (unsigned)str2.size() )
+    && ( strcasecmp( str1.c_str() + ( str1.size() - str2.size() ), str2.data() ) == 0 );
+}
+
+QString escapeAmps( QString const & str )
+{
+  QString result( str );
+  result.replace( "&", "&&" );
+  return result;
+}
+
+QString unescapeAmps( QString const & str )
+{
+  QString result( str );
+  result.replace( "&&", "&" );
+  return result;
 }
 } // namespace Utils
 
@@ -28,17 +67,16 @@ QString Utils::Url::getSchemeAndHost( QUrl const & url )
 void Utils::Widget::setNoResultColor( QWidget * widget, bool noResult )
 {
   if ( noResult ) {
-    QPalette pal( widget->palette() );
-    //    #febb7d
-    QRgb rgb = 0xfebb7d;
-    pal.setColor( QPalette::Base, QColor( rgb ) );
-    widget->setAutoFillBackground( true );
-    widget->setPalette( pal );
+    auto font = widget->font();
+    font.setItalic( true );
+
+    widget->setFont( font );
   }
   else {
-    QPalette pal( widget->style()->standardPalette() );
-    widget->setAutoFillBackground( true );
-    widget->setPalette( pal );
+    auto font = widget->font();
+    font.setItalic( false );
+
+    widget->setFont( font );
   }
 }
 
@@ -66,6 +104,17 @@ std::string basename( std::string const & str )
     return str;
 
   return std::string( str, x + 1 );
+}
+
+void removeDirectory( QString const & directory )
+{
+  QDir dir( directory );
+  dir.removeRecursively();
+}
+
+void removeDirectory( string const & directory )
+{
+  removeDirectory( QString::fromStdString( directory ) );
 }
 
 } // namespace Utils::Fs

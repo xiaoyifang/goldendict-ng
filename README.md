@@ -2,9 +2,7 @@
 
 [![Crowdin](https://badges.crowdin.net/goldendict-ng/localized.svg)](https://crowdin.com/project/goldendict-ng)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=xiaoyifang_goldendict&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=xiaoyifang_goldendict)
-[![Windows-6.x](https://github.com/xiaoyifang/goldendict-ng/actions/workflows/windows-6.x.yml/badge.svg)](https://github.com/xiaoyifang/goldendict-ng/actions/workflows/windows-6.x.yml)
-[![Ubuntu-6.2](https://github.com/xiaoyifang/goldendict-ng/actions/workflows/ubuntu-6.2.yml/badge.svg?branch=staged)](https://github.com/xiaoyifang/goldendict-ng/actions/workflows/ubuntu-6.2.yml)
-[![macos-homebrew](https://github.com/xiaoyifang/goldendict-ng/actions/workflows/macos-homebrew.yml/badge.svg)](https://github.com/xiaoyifang/goldendict-ng/actions/workflows/macos-homebrew.yml)
+[![Build](https://github.com/xiaoyifang/goldendict-ng/actions/workflows/PR-check-cmake.yml/badge.svg)](https://github.com/xiaoyifang/goldendict-ng/actions/workflows/PR-check-cmake.yml)
 
 The Next Generation GoldenDict. A feature-rich open-source dictionary lookup program,
 supporting [multiple dictionary formats](https://xiaoyifang.github.io/goldendict-ng/dictformats/) and online
@@ -14,22 +12,27 @@ dictionaries.
 |--|--|--|
 | [<img src="website/docs/img/linux_genshin.webp" width="500"/>](https://xiaoyifang.github.io/goldendict-ng/) | [<img src="website/docs/img/windows_white.webp" width="500"/>](https://xiaoyifang.github.io/goldendict-ng/) | [<img src="website/docs/img/mac_black.webp" width="500"/>](https://xiaoyifang.github.io/goldendict-ng/) |
 
+[Download & Install](https://xiaoyifang.github.io/goldendict-ng/install/)
+
+[Documentation](https://xiaoyifang.github.io/goldendict-ng/)
+
+[Bug reporting in issue tracker](https://github.com/xiaoyifang/goldendict-ng/issues)
+
+[General discussions](https://github.com/xiaoyifang/goldendict-ng/discussions)
+
 # Some significant features of this fork
 
 - webengine with latest html/css feature support
 - support >4GB dictionary
 - support highdpi screen resolution
 - built with xapian as fulltext engine
-- support Qt5.15.2 and higher ,include latest Qt6
+- support latest Qt6
 - performance optimization(eg. >10000000 headwords support) 
 - anki integration
 - dark theme
 - daily auto release support
 - lots of bug fixes and improvements
-
-## Installation
-
-<https://xiaoyifang.github.io/goldendict-ng/install/>
+- general code improvements for easier development
 
 ## Help GoldenDict's Development
 
@@ -40,16 +43,6 @@ All kinds of help like answering questions, bug reporting, testing, translation 
 To translate the interface, you can use the Crowdin <https://crowdin.com/project/goldendict-ng>
 
 To start development, check out [developer guide](https://xiaoyifang.github.io/goldendict-ng/developer/)
-
-## Build from source
-
-<https://xiaoyifang.github.io/goldendict-ng/howto/build_from_source/>
-
-## Support
-
-Bug reporting: [GoldenDict issue tracker](https://github.com/xiaoyifang/goldendict-ng/issues)
-
-General discussions: [discussions](https://github.com/xiaoyifang/goldendict-ng/discussions)
 
 
 ## License

@@ -26,7 +26,7 @@ namespace {
 class MediaWikiDictionary: public Dictionary::Class
 {
   string name;
-  QString url, icon;
+  QString url, icon, lang;
   QNetworkAccessManager & netMgr;
   quint32 langId;
 
@@ -36,11 +36,13 @@ public:
                        string const & name_,
                        QString const & url_,
                        QString const & icon_,
+                       QString const & lang_,
                        QNetworkAccessManager & netMgr_ ):
     Dictionary::Class( id, vector< string >() ),
     name( name_ ),
     url( url_ ),
     icon( icon_ ),
+    lang( lang_ ),
     netMgr( netMgr_ ),
     langId( 0 )
   {
@@ -88,6 +90,24 @@ protected:
   void loadIcon() noexcept override;
 };
 
+class MediaWikiWordSearchRequestSlots: public Dictionary::WordSearchRequest
+{
+  Q_OBJECT
+
+protected slots:
+
+  virtual void downloadFinished() {}
+};
+
+class MediaWikiDataRequestSlots: public Dictionary::DataRequest
+{
+  Q_OBJECT
+
+protected slots:
+
+  virtual void requestFinished( QNetworkReply * ) {}
+};
+
 void MediaWikiDictionary::loadIcon() noexcept
 {
   if ( dictionaryIconLoaded )
@@ -114,7 +134,7 @@ class MediaWikiWordSearchRequest: public MediaWikiWordSearchRequestSlots
 
 public:
 
-  MediaWikiWordSearchRequest( wstring const &, QString const & url, QNetworkAccessManager & mgr );
+  MediaWikiWordSearchRequest( wstring const &, QString const & url, QString const & lang, QNetworkAccessManager & mgr );
 
   ~MediaWikiWordSearchRequest();
 
@@ -127,6 +147,7 @@ private:
 
 MediaWikiWordSearchRequest::MediaWikiWordSearchRequest( wstring const & str,
                                                         QString const & url,
+                                                        QString const & lang,
                                                         QNetworkAccessManager & mgr ):
   isCancelling( false )
 {
@@ -136,8 +157,12 @@ MediaWikiWordSearchRequest::MediaWikiWordSearchRequest( wstring const & str,
   GlobalBroadcaster::instance()->addWhitelist( reqUrl.host() );
 
   Utils::Url::addQueryItem( reqUrl, "apprefix", QString::fromStdU32String( str ).replace( '+', "%2B" ) );
+  Utils::Url::addQueryItem( reqUrl, "lang", lang );
 
-  netReply = std::shared_ptr< QNetworkReply >( mgr.get( QNetworkRequest( reqUrl ) ) );
+  QNetworkRequest req( reqUrl );
+  //millseconds.
+  req.setTransferTimeout( 2000 );
+  netReply = std::shared_ptr< QNetworkReply >( mgr.get( req ) );
 
   connect( netReply.get(), SIGNAL( finished() ), this, SLOT( downloadFinished() ) );
 
@@ -355,12 +380,14 @@ class MediaWikiArticleRequest: public MediaWikiDataRequestSlots
   typedef std::list< std::pair< QNetworkReply *, bool > > NetReplies;
   NetReplies netReplies;
   QString url;
+  QString lang;
 
 public:
 
   MediaWikiArticleRequest( wstring const & word,
                            vector< wstring > const & alts,
                            QString const & url,
+                           QString const & lang,
                            QNetworkAccessManager & mgr,
                            Class * dictPtr_ );
 
@@ -404,9 +431,11 @@ void MediaWikiArticleRequest::cancel()
 MediaWikiArticleRequest::MediaWikiArticleRequest( wstring const & str,
                                                   vector< wstring > const & alts,
                                                   QString const & url_,
+                                                  QString const & lang_,
                                                   QNetworkAccessManager & mgr,
                                                   Class * dictPtr_ ):
   url( url_ ),
+  lang( lang_ ),
   dictPtr( dictPtr_ )
 {
   connect( &mgr,
@@ -417,8 +446,8 @@ MediaWikiArticleRequest::MediaWikiArticleRequest( wstring const & str,
 
   addQuery( mgr, str );
 
-  for ( unsigned x = 0; x < alts.size(); ++x )
-    addQuery( mgr, alts[ x ] );
+  for ( const auto & alt : alts )
+    addQuery( mgr, alt );
 }
 
 void MediaWikiArticleRequest::addQuery( QNetworkAccessManager & mgr, wstring const & str )
@@ -428,6 +457,7 @@ void MediaWikiArticleRequest::addQuery( QNetworkAccessManager & mgr, wstring con
   QUrl reqUrl( url + "/api.php?action=parse&prop=text|revid|sections&format=xml&redirects" );
 
   Utils::Url::addQueryItem( reqUrl, "page", QString::fromStdU32String( str ).replace( '+', "%2B" ) );
+  Utils::Url::addQueryItem( reqUrl, "variant", lang );
   QNetworkRequest req( reqUrl );
   //millseconds.
   req.setTransferTimeout( 3000 );
@@ -455,9 +485,9 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
 
   bool found = false;
 
-  for ( NetReplies::iterator i = netReplies.begin(); i != netReplies.end(); ++i ) {
-    if ( i->first == r ) {
-      i->second = true; // Mark as finished
+  for ( auto & netReplie : netReplies ) {
+    if ( netReplie.first == r ) {
+      netReplie.second = true; // Mark as finished
       found     = true;
       break;
     }
@@ -558,7 +588,12 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
               QRegularExpressionMatch match2 = reg2.match( tag );
               if ( match2.hasMatch() ) {
                 QString ref       = match2.captured( 1 );
-                QString audio_url = "<a href=\"" + ref
+                // audio url may like this <a href="//upload.wikimedia.org/wikipedia/a.ogg"
+                if ( ref.startsWith( "//" ) ) {
+                  ref = wikiUrl.scheme() + ":" + ref;
+                }
+                auto script       = addAudioLink( "\"" + ref + "\"", this->dictPtr->getId() );
+                QString audio_url = QString::fromStdString( script ) + "<a href=\"" + ref
                   + R"("><img src="qrc:///icons/playsound.png" border="0" align="absmiddle" alt="Play"/></a>)";
                 articleNewString += audio_url;
               }
@@ -571,14 +606,6 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
               articleNewString.clear();
             }
 
-            // audio url
-            articleString.replace(
-              QRegularExpression(
-                "<a\\s+href=\"(//upload\\.wikimedia\\.org/wikipedia/[^\"'&]*\\.og[ga](?:\\.mp3|))\"" ),
-
-              QString::fromStdString(
-                addAudioLink( string( "\"" ) + wikiUrl.scheme().toStdString() + ":\\1\"", this->dictPtr->getId() )
-                + "<a href=\"" + wikiUrl.scheme().toStdString() + ":\\1\"" ) );
 
             // Add url scheme to image source urls
             articleString.replace( " src=\"//", " src=\"" + wikiUrl.scheme() + "://" );
@@ -672,7 +699,7 @@ sptr< WordSearchRequest > MediaWikiDictionary::prefixMatch( wstring const & word
     return std::make_shared< WordSearchRequestInstant >();
   }
   else
-    return std::make_shared< MediaWikiWordSearchRequest >( word, url, netMgr );
+    return std::make_shared< MediaWikiWordSearchRequest >( word, url, lang, netMgr );
 }
 
 sptr< DataRequest >
@@ -685,7 +712,7 @@ MediaWikiDictionary::getArticle( wstring const & word, vector< wstring > const &
     return std::make_shared< DataRequestInstant >( false );
   }
   else
-    return std::make_shared< MediaWikiArticleRequest >( word, alts, url, netMgr, this );
+    return std::make_shared< MediaWikiArticleRequest >( word, alts, url, lang, netMgr, this );
 }
 
 } // namespace
@@ -696,16 +723,18 @@ makeDictionaries( Dictionary::Initializing &, Config::MediaWikis const & wikis, 
 {
   vector< sptr< Dictionary::Class > > result;
 
-  for ( int x = 0; x < wikis.size(); ++x ) {
-    if ( wikis[ x ].enabled )
-      result.push_back( std::make_shared< MediaWikiDictionary >( wikis[ x ].id.toStdString(),
-                                                                 wikis[ x ].name.toUtf8().data(),
-                                                                 wikis[ x ].url,
-                                                                 wikis[ x ].icon,
+  for ( const auto & wiki : wikis ) {
+    if ( wiki.enabled )
+      result.push_back( std::make_shared< MediaWikiDictionary >( wiki.id.toStdString(),
+                                                                 wiki.name.toUtf8().data(),
+                                                                 wiki.url,
+                                                                 wiki.icon,
+                                                                 wiki.lang,
                                                                  mgr ) );
   }
 
   return result;
 }
 
+#include "mediawiki.moc"
 } // namespace MediaWiki

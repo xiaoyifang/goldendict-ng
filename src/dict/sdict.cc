@@ -112,7 +112,7 @@ __attribute__( ( packed ) )
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Class idx( indexFile, "rb" );
+  File::Index idx( indexFile, "rb" );
 
   IdxHeader header;
 
@@ -123,10 +123,10 @@ bool indexIsOldOrBad( string const & indexFile )
 class SdictDictionary: public BtreeIndexing::BtreeDictionary
 {
   QMutex idxMutex, sdictMutex;
-  File::Class idx;
+  File::Index idx;
   IdxHeader idxHeader;
   ChunkedStorage::Reader chunks;
-  File::Class df;
+  File::Index df; // Not an index, uses this type for legacy reasons.
 
 public:
 
@@ -177,7 +177,7 @@ public:
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
-    can_FTS = fts.enabled && !fts.disabledTypes.contains( "SDICT", Qt::CaseInsensitive )
+    can_FTS = enable_FTS && fts.enabled && !fts.disabledTypes.contains( "SDICT", Qt::CaseInsensitive )
       && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
 
@@ -218,12 +218,8 @@ SdictDictionary::SdictDictionary( string const & id,
 
   // Full-text search parameters
 
-  can_FTS = true;
-
   ftsIdxName = indexFile + Dictionary::getFtsSuffix();
 
-  if ( !Dictionary::needToRebuildIndex( dictionaryFiles, ftsIdxName ) && !FtsHelpers::ftsIndexIsOldOrBad( this ) )
-    FTS_index_completed.ref();
 }
 
 SdictDictionary::~SdictDictionary()
@@ -259,8 +255,8 @@ string SdictDictionary::convert( string const & in )
 
   bool afterEol = false;
 
-  for ( string::const_iterator i = in.begin(), j = in.end(); i != j; ++i ) {
-    switch ( *i ) {
+  for ( char i : in ) {
+    switch ( i ) {
       case '\n':
         afterEol = true;
         inConverted.append( "<br/>" );
@@ -274,7 +270,7 @@ string SdictDictionary::convert( string const & in )
         // Fall-through
 
       default:
-        inConverted.push_back( *i );
+        inConverted.push_back( i );
         afterEol = false;
     }
   }
@@ -490,10 +486,10 @@ void SdictArticleRequest::run()
 
   vector< WordArticleLink > chain = dict.findArticles( word, ignoreDiacritics );
 
-  for ( unsigned x = 0; x < alts.size(); ++x ) {
+  for ( const auto & alt : alts ) {
     /// Make an additional query for each alt
 
-    vector< WordArticleLink > altChain = dict.findArticles( alts[ x ], ignoreDiacritics );
+    vector< WordArticleLink > altChain = dict.findArticles( alt, ignoreDiacritics );
 
     chain.insert( chain.end(), altChain.begin(), altChain.end() );
   }
@@ -508,23 +504,23 @@ void SdictArticleRequest::run()
   if ( ignoreDiacritics )
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
 
-  for ( unsigned x = 0; x < chain.size(); ++x ) {
+  for ( auto & x : chain ) {
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
       finish();
       return;
     }
 
-    if ( articlesIncluded.find( chain[ x ].articleOffset ) != articlesIncluded.end() )
+    if ( articlesIncluded.find( x.articleOffset ) != articlesIncluded.end() )
       continue; // We already have this article in the body.
 
     // Now grab that article
 
     string headword, articleText;
 
-    headword = chain[ x ].word;
+    headword = x.word;
 
     try {
-      dict.loadArticle( chain[ x ].articleOffset, articleText );
+      dict.loadArticle( x.articleOffset, articleText );
 
       // Ok. Now, does it go to main articles, or to alternate ones? We list
       // main ones first, and alternates after.
@@ -540,7 +536,7 @@ void SdictArticleRequest::run()
 
       mapToUse.insert( pair( Folding::applySimpleCaseOnly( headword ), pair( headword, articleText ) ) );
 
-      articlesIncluded.insert( chain[ x ].articleOffset );
+      articlesIncluded.insert( x.articleOffset );
     }
     catch ( std::exception & ex ) {
       gdWarning( "SDict: Failed loading article from \"%s\", reason: %s\n", dict.getName().c_str(), ex.what() );
@@ -662,15 +658,15 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 {
   vector< sptr< Dictionary::Class > > dictionaries;
 
-  for ( vector< string >::const_iterator i = fileNames.begin(); i != fileNames.end(); ++i ) {
+  for ( const auto & fileName : fileNames ) {
     // Skip files with the extensions different to .dct to speed up the
     // scanning
-    if ( i->size() < 4 || strcasecmp( i->c_str() + ( i->size() - 4 ), ".dct" ) != 0 )
+    if ( !Utils::endsWithIgnoreCase( fileName, ".dct" ) )
       continue;
 
     // Got the file -- check if we need to rebuid the index
 
-    vector< string > dictFiles( 1, *i );
+    vector< string > dictFiles( 1, fileName );
 
     string dictId = Dictionary::makeDictionaryId( dictFiles );
 
@@ -678,15 +674,15 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
     if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
       try {
-        gdDebug( "SDict: Building the index for dictionary: %s\n", i->c_str() );
+        gdDebug( "SDict: Building the index for dictionary: %s\n", fileName.c_str() );
 
-        File::Class df( *i, "rb" );
+        File::Index df( fileName, "rb" );
 
         DCT_header dictHeader;
 
         df.read( &dictHeader, sizeof( dictHeader ) );
         if ( strncmp( dictHeader.signature, "sdct", 4 ) ) {
-          gdWarning( "File \"%s\" is not valid SDictionary file", i->c_str() );
+          gdWarning( "File \"%s\" is not valid SDictionary file", fileName.c_str() );
           continue;
         }
         int compression = dictHeader.compression & 0x0F;
@@ -710,7 +706,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         initializing.indexingDictionary( dictName );
 
-        File::Class idx( indexFile, "wb" );
+        File::Index idx( indexFile, "wb" );
         IdxHeader idxHeader;
         memset( &idxHeader, 0, sizeof( idxHeader ) );
 
@@ -781,7 +777,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         idx.write( &idxHeader, sizeof( idxHeader ) );
       }
       catch ( std::exception & e ) {
-        gdWarning( "Sdictionary dictionary indexing failed: %s, error: %s\n", i->c_str(), e.what() );
+        gdWarning( "Sdictionary dictionary indexing failed: %s, error: %s\n", fileName.c_str(), e.what() );
         continue;
       }
       catch ( ... ) {
@@ -793,7 +789,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       dictionaries.push_back( std::make_shared< SdictDictionary >( dictId, indexFile, dictFiles ) );
     }
     catch ( std::exception & e ) {
-      gdWarning( "Sdictionary dictionary initializing failed: %s, error: %s\n", i->c_str(), e.what() );
+      gdWarning( "Sdictionary dictionary initializing failed: %s, error: %s\n", fileName.c_str(), e.what() );
     }
   }
   return dictionaries;

@@ -8,7 +8,7 @@ GlobalBroadcaster::GlobalBroadcaster( QObject * parent ):
 {
   QStringList whiteUrlHosts = { "ajax.googleapis.com" };
 
-  for ( auto host : whiteUrlHosts ) {
+  for ( const auto host : whiteUrlHosts ) {
     addWhitelist( host );
   }
 }
@@ -17,11 +17,12 @@ GlobalBroadcaster * GlobalBroadcaster::instance()
 {
   return bdcaster;
 }
+
 void GlobalBroadcaster::setPreference( Config::Preferences * p )
 {
   preference = p;
 }
-Config::Preferences * GlobalBroadcaster::getPreference()
+Config::Preferences * GlobalBroadcaster::getPreference() const
 {
   return preference;
 }
@@ -29,11 +30,11 @@ Config::Preferences * GlobalBroadcaster::getPreference()
 void GlobalBroadcaster::addWhitelist( QString url )
 {
   whitelist.insert( url );
-  auto baseUrl = Utils::Url::getHostBase( url );
+  const auto baseUrl = Utils::Url::getHostBase( url );
   whitelist.insert( baseUrl );
 }
 
-bool GlobalBroadcaster::existedInWhitelist( QString url )
+bool GlobalBroadcaster::existedInWhitelist( QString url ) const
 {
   return whitelist.contains( url );
 }

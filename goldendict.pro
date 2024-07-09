@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = goldendict
-VERSION = 23.06.02-alpha
+VERSION = 24.05.13
 
 # Generate version file. We do this here and in a build rule described later.
 # The build rule is required since qmake isn't run each time the project is
@@ -77,6 +77,7 @@ win32{
 CONFIG( use_breakpad ) {
   DEFINES += USE_BREAKPAD
 
+#the lib ,include files are copied from vcpkg install package.
   LIBS += -L$$PWD/thirdparty/breakpad/lib/ -llibbreakpad -llibbreakpad_client
 
 
@@ -119,8 +120,8 @@ LIBS += -lbz2 \
         -llzo2
 
 win32{
-    Debug: LIBS+= -lzlibd
-    Release: LIBS+= -lzlib
+    Debug: LIBS+= -L$$PWD/winlibs/lib/dbg/ -lzlibd
+    Release: LIBS+= -L$$PWD/winlibs/lib/ -lzlib
 }else{
   LIBS += -lz 
 }
@@ -132,7 +133,7 @@ win32 {
 
     win32-msvc* {
         # VS does not recognize 22.number.alpha,cause errors during compilation under MSVC++
-        VERSION = 23.06.02 
+        VERSION = 24.05.13
         DEFINES += __WIN32 _CRT_SECURE_NO_WARNINGS
         contains(QMAKE_TARGET.arch, x86_64) {
             DEFINES += NOMINMAX __WIN64
@@ -165,7 +166,7 @@ win32 {
     }
 
     RC_ICONS += icons/programicon.ico icons/programicon_old.ico
-    INCLUDEPATH += winlibs/include
+    INCLUDEPATH += winlibs/include src/windows
 
     # Enable console in Debug mode on Windows, with useful logging messages
     Debug:CONFIG += console
@@ -289,7 +290,6 @@ HEADERS += \
     src/audioplayerinterface.hh \
     src/btreeidx.hh \
     src/chunkedstorage.hh \
-    src/common/atomic_rename.hh \
     src/common/base_type.hh \
     src/common/ex.hh \
     src/common/file.hh \
@@ -362,6 +362,7 @@ HEADERS += \
     src/iframeschemehandler.hh \
     src/indexedzip.hh \
     src/initializing.hh \
+    src/dictionary_group.hh \
     src/instances.hh \
     src/keyboardstate.hh \
     src/langcoder.hh \
@@ -418,7 +419,6 @@ SOURCES += \
     src/audioplayerfactory.cc \
     src/btreeidx.cc \
     src/chunkedstorage.cc \
-    src/common/atomic_rename.cc \
     src/common/file.cc \
     src/common/filetype.cc \
     src/common/folding.cc \
@@ -485,6 +485,7 @@ SOURCES += \
     src/iframeschemehandler.cc \
     src/indexedzip.cc \
     src/initializing.cc \
+    src/dictionary_group.cc \
     src/instances.cc \
     src/keyboardstate.cc \
     src/langcoder.cc \
@@ -532,9 +533,14 @@ SOURCES += \
 
 #speech to text
 SOURCES += src/speechclient.cc \
-           src/texttospeechsource.cc
+          src/texttospeechsource.cc
 HEADERS += src/texttospeechsource.hh \
-           src/speechclient.hh
+          src/speechclient.hh
+          
+CONFIG( no_tts_support ) {
+  DEFINES += NO_TTS_SUPPORT
+}
+
 
 mac {
     HEADERS += src/macos/macmouseover.hh \
@@ -552,14 +558,11 @@ HEADERS += src/common/wildcard.hh
 SOURCES += src/common/wildcard.cc
 
 
+LIBS += -llzma
+
 CONFIG( zim_support ) {
   DEFINES += MAKE_ZIM_SUPPORT
-  LIBS += -llzma -lzim
-
-    win32{
-      Debug: LIBS+= -L$$PWD/winlibs/lib/dbg/
-      Release: LIBS+= -L$$PWD/winlibs/lib/
-    }
+  LIBS += -lzim
 }
 
 CONFIG( no_epwing_support ) {

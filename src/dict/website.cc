@@ -86,6 +86,15 @@ protected:
   void loadIcon() noexcept override;
 };
 
+class WebSiteDataRequestSlots: public Dictionary::DataRequest
+{
+  Q_OBJECT
+
+protected slots:
+
+  virtual void requestFinished( QNetworkReply * ) {}
+};
+
 sptr< WordSearchRequest > WebSiteDictionary::prefixMatch( wstring const & /*word*/, unsigned long )
 {
   sptr< WordSearchRequestInstant > sr = std::make_shared< WordSearchRequestInstant >();
@@ -504,17 +513,18 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::WebSites const & w
 {
   vector< sptr< Dictionary::Class > > result;
 
-  for ( int x = 0; x < ws.size(); ++x ) {
-    if ( ws[ x ].enabled )
-      result.push_back( std::make_shared< WebSiteDictionary >( ws[ x ].id.toUtf8().data(),
-                                                               ws[ x ].name.toUtf8().data(),
-                                                               ws[ x ].url,
-                                                               ws[ x ].iconFilename,
-                                                               ws[ x ].inside_iframe,
+  for ( const auto & w : ws ) {
+    if ( w.enabled )
+      result.push_back( std::make_shared< WebSiteDictionary >( w.id.toUtf8().data(),
+                                                               w.name.toUtf8().data(),
+                                                               w.url,
+                                                               w.iconFilename,
+                                                               w.inside_iframe,
                                                                mgr ) );
   }
 
   return result;
 }
 
+#include "website.moc"
 } // namespace WebSite

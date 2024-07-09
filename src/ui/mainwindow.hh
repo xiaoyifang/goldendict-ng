@@ -109,6 +109,8 @@ private:
     closeRestTabAction, switchToNextTabAction, switchToPrevTabAction, showDictBarNamesAction,
     useSmallIconsInToolbarsAction, toggleMenuBarAction, focusHeadwordsDlgAction, focusArticleViewAction,
     addAllTabToFavoritesAction;
+
+  QAction stopAudioAction;
   QToolBar * navToolbar;
   MainStatusBar * mainStatusBar;
   QAction *navBack, *navForward, *navPronounce, *enableScanningAction;
@@ -147,15 +149,14 @@ private:
 
   ScanPopup * scanPopup = nullptr;
 
+  //only used once, when used ,reset to empty.
+  QString consoleWindowOnce;
+
   sptr< HotkeyWrapper > hotkeyWrapper;
 
   sptr< QPrinter > printer; // The printer we use for all printing operations
 
   bool wordListSelChanged;
-
-  bool wasMaximized; // Window state before minimization
-
-  bool blockUpdateWindowTitle;
 
   QPrinter & getPrinter(); // Creates a printer if it's not there and returns it
 
@@ -192,7 +193,7 @@ private:
 
   /// Creates, destroys or otherwise updates tray icon, according to the
   /// current configuration and situation.
-  void updateTrayIcon();
+  void trayIconUpdateOrInit();
 
   void wheelEvent( QWheelEvent * );
   void closeEvent( QCloseEvent * );
@@ -201,7 +202,7 @@ private:
   void setupNetworkCache( int maxSize );
   void makeDictionaries();
   void updateStatusLine();
-  void updateGroupList();
+  void updateGroupList( bool reload = true );
   void updateDictionaryBar();
 
   void updatePronounceAvailability();
@@ -232,8 +233,6 @@ private:
 
   void mousePressEvent( QMouseEvent * event );
 
-  void updateCurrentGroupProperty();
-
 
   /// Handles backward and forward mouse buttons and
   /// returns true if the event is handled.
@@ -246,7 +245,10 @@ private:
 
   QString unescapeTabHeader( QString const & header );
 
-  void respondToTranslationRequest( QString const & word, bool checkModifiers, QString const & scrollTo = QString() );
+  void respondToTranslationRequest( QString const & word,
+                                    bool checkModifiers,
+                                    QString const & scrollTo = QString(),
+                                    bool focus               = true );
 
   void updateSuggestionList();
   void updateSuggestionList( QString const & text );
@@ -386,7 +388,7 @@ private slots:
 
   void showTranslationForDicts( QString const &,
                                 QStringList const & dictIDs,
-                                QRegExp const & searchRegExp,
+                                QRegularExpression const & searchRegExp,
                                 bool ignoreDiacritics );
 
   void showHistoryItem( QString const & );
@@ -456,6 +458,7 @@ private slots:
   void focusHeadwordsDialog();
 
   void focusArticleView();
+  void stopAudio();
 
   void proxyAuthentication( const QNetworkProxy & proxy, QAuthenticator * authenticator );
 
