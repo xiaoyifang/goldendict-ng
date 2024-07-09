@@ -1,6 +1,7 @@
 #include "version.hh"
 #include <QFile>
 
+
 namespace Version {
 QString version()
 {
