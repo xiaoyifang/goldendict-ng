@@ -118,6 +118,7 @@ jobs:
           cmake -S . -B "./build_dir" `
             -G Ninja `
             -DCMAKE_C_COMPILER="cl.exe" -DCMAKE_CXX_COMPILER="cl.exe" `
+            -DCMAKE_BUILD_TYPE=RelWithDebInfo `
             -DWITH_FFMPEG_PLAYER=OFF `
             -DUSE_VCPKG=ON `
             -DCMAKE_TOOLCHAIN_FILE="$env:VCPKG_INSTALLATION_ROOT\scripts\buildsystems\vcpkg.cmake" `
