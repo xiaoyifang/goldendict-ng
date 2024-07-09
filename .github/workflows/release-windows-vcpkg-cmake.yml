@@ -1,0 +1,182 @@
+name: Release Windows Vcpkg CMake
+concurrency: 
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+on: 
+  workflow_dispatch:
+  push:
+    branches:
+      - dev
+      - master
+      - experimental
+    paths-ignore:
+      - 'docs/**'
+      - "*.md"
+      - ".*"      
+
+jobs:
+  build:
+    name: Build
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-2022]
+        qt_ver: [ 6.7.2 ]
+        qt_arch: [win64_msvc2019_64]
+    env:
+      version: 24.05.13
+      versionSuffix: ${{ !contains(github.ref_name,'master') && 'alpha' || 'NextNameHere' }}
+      prerelease: ${{ !contains(github.ref_name,'master') }}
+    steps:
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: ${{ matrix.qt_ver }}
+          # target: ${{ matrix.qt_target }}
+          arch: ${{ matrix.qt_arch }}
+          modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
+          setup-python: 'false'
+          
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: true
+
+      - name: Setup changelog
+        id: changelog
+        shell: bash
+        env:
+          prerelease: ${{env.prerelease}}
+        run: |   
+          if [[ "$prerelease" == 'true' ]]
+          then
+            echo "This is a pre-release"
+            previousTag=$(git tag --sort=-creatordate | grep "^v" | sed -n 2p)
+            currentTag=$(git tag --sort=-creatordate | grep "^v" | sed -n 1p)
+          else 
+            echo "This is not a pre-release"
+            previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v "alpha"  | sed -n 2p)
+            currentTag=$(git tag --sort=-creatordate | grep "^v"  | grep -v "alpha" | sed -n 1p)
+          fi
+          echo "prev_tag=$previousTag" >> $GITHUB_OUTPUT
+          echo "curr_tag=$currentTag" >> $GITHUB_OUTPUT
+          echo "previousTag : $previousTag"
+          echo "currentTag : $currentTag"
+
+      - name: "Build Changelog"
+        id: build_changelog
+        uses: mikepenz/release-changelog-builder-action@v3    
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}     
+        with:
+          commitMode: false
+          fromTag: "${{ steps.changelog.outputs.prev_tag }}"
+          toTag:  "${{ steps.changelog.outputs.curr_tag }}"
+          configurationJson: |
+            {
+              "template": "#{{CHANGELOG}}\n\n<details>\n<summary>🔴 Uncategorized</summary>\n\n#{{UNCATEGORIZED}}\n</details>",
+              "categories": [
+                {
+                    "title": "## 🚀 Features",
+                    "labels": ["feature","feat","opt"]
+                },
+                {
+                    "title": "## 🐛 Fixes",
+                    "labels": ["fix","bug"]
+                }
+                ,
+                {
+                    "title": "##  🤖  Github action",
+                    "labels": ["action"]
+                }
+                ,
+                {
+                    "title": "##  🧼  Clean Code",
+                    "labels": ["clean"]
+                }
+
+
+              ],
+              "label_extractor": [
+              {
+                "pattern": "([^:]*):.*",
+                "target": "$1",
+                "on_property": "title",
+                "flags": "gu"
+              }
+            ]
+            }
+      - name: setup vcpkg github caches variables
+        uses: actions/github-script@v7
+        with:
+          script: |
+            core.exportVariable('ACTIONS_CACHE_URL', process.env.ACTIONS_CACHE_URL || '');
+            core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
+      - name: Build binaries
+        id: build
+        env:
+          VCPKG_BINARY_SOURCES: "clear;x-gha,readwrite"
+        run: |
+          # Launch-VsDevShell also provides Ninja
+          & 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\Launch-VsDevShell.ps1' `
+            -SkipAutomaticLocation -Arch amd64 -HostArch amd64
+          New-Item -Path './build_dir' -ItemType Directory
+          
+          # RelWithDebInfo + msvc's = .pdb file beside program file.
+          cmake -S . -B "./build_dir" `
+            -G Ninja `
+            -DCMAKE_C_COMPILER="cl.exe" -DCMAKE_CXX_COMPILER="cl.exe" `
+            -DCMAKE_BUILD_TYPE=RelWithDebInfo `
+            -DWITH_FFMPEG_PLAYER=OFF `
+            -DUSE_VCPKG=ON `
+            -DCMAKE_TOOLCHAIN_FILE="$env:VCPKG_INSTALLATION_ROOT\scripts\buildsystems\vcpkg.cmake" `
+            -DWITH_VCPKG_BREAKPAD=ON
+          cmake --build "./build_dir"
+      - name: CPack create package
+        run: |
+          cd './build_dir'
+          cpack --verbose --trace
+          cd ..
+          pwd
+      - name: Upload packages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          $tagName = "v$env:version-$env:versionSuffix.$(git rev-parse --short=8 HEAD)"
+          
+          $changeNotes = "
+          [Install instructions for Windows, macOS and Linux](https://xiaoyifang.github.io/goldendict-ng/install/).
+          
+          Filaname pattern: GoldenDict-[version]-[Qt version]-[system name]-...
+          
+          For Linux, released vesion is on Flathub -> [io.github.xiaoyifang.goldendict_ng](https://flathub.org/apps/io.github.xiaoyifang.goldendict_ng).
+
+          Based on branch: ${{github.ref_name}}
+
+          #### Changes
+          
+          ${{steps.build_changelog.outputs.changelog}}
+          "          
+
+          $tagExist = gh api --silent "repos/:owner/:repo/git/refs/tags/${{github.ref_name}}"
+          if (-not $?) {
+            if ($env:prerelease -eq "true") {
+              gh release create ${tagName} --target ${{github.ref_name}} --notes "${changeNotes}" --latest=false --prerelease
+            } else {
+              gh release create ${tagName} --target ${{github.ref_name}} --notes "${changeNotes}" --latest=true 
+            }
+          }
+
+          # file name after # is display label
+          
+          $namePrefix="GoldenDict-${{env.version}}-Qt${{matrix.qt_ver}}"
+          
+          cd './build_dir'
+          gh release upload "${tagName}"  "${namePrefix}.7z#${namePrefix}-Windows.7z"  --clobber
+          gh release upload "${tagName}"  "${namePrefix}.exe#${namePrefix}-Windows-installer.exe"  --clobber
+          
+          cd './goldendict'
+          gh release upload "${tagName}"  "goldendict.exe#${namePrefix}-Windows-main-exe-file-only.exe"  --clobber
+          gh release upload "${tagName}"  "goldendict.pdb#${namePrefix}-Windows-debug-file.pdb"  --clobber
+          cd ..
+

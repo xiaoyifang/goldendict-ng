@@ -29,6 +29,13 @@ h5,
 h6 {
   unicode-bidi: plaintext;
 }
+
+p,
+em,
+span,
+div {
+  unicode-bidi: plaintext;
+}
 /* This stylesheet is used to highligh current selection when doing a search.
   It changes the default selection color (e.g. blue under Windows, orange under Ubuntu) */
 

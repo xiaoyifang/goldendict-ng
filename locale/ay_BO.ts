@@ -583,19 +583,19 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
-      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+      <translation>Uñacht’ayaña jilpacha filtrado p’iqinchawinaka kutt’ayata.</translation>
     </message>
     <message>
       <source>Filter max results:</source>
-      <translation type="unfinished">Filter max results:</translation>
+      <translation>Filtro max ukax akhamawa:</translation>
     </message>
     <message>
       <source>Unique headwords total: %1.</source>
-      <translation type="unfinished">Unique headwords total: %1.</translation>
+      <translation>Jan uñt’at p’iqinchäwinak taqpachax: %1.</translation>
     </message>
     <message>
       <source>Unique headwords total: %1, filtered(limited): %2</source>
-      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
+      <translation>Sapa p’iqinchawi taqpacha: %1, filtrado(limitado): %2</translation>
     </message>
   </context>
   <context>

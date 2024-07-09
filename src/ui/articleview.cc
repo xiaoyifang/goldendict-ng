@@ -1324,7 +1324,7 @@ void ArticleView::syncBackgroundColorWithCfgDarkReader() const
 // Only works Qt6.6.3+ https://bugreports.qt.io/browse/QTBUG-112013
 #if QT_VERSION >= QT_VERSION_CHECK( 6, 6, 3 )
   if ( cfg.preferences.darkReaderMode ) {
-    webview->page()->setBackgroundColor( Qt::black );
+    webview->page()->setBackgroundColor( QColor( 39, 40, 40 ) );
   }
   else {
     webview->page()->setBackgroundColor( Qt::white );
@@ -1610,32 +1610,34 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
   unsigned refsAdded            = 0;
   bool maxDictionaryRefsReached = false;
 
-  for ( QStringList::const_iterator i = ids.constBegin(); i != ids.constEnd(); ++i, ++refsAdded ) {
-    // Find this dictionary
+  if ( cfg.preferences.maxDictionaryRefsInContextMenu > 0 ) {
+    for ( QStringList::const_iterator i = ids.constBegin(); i != ids.constEnd(); ++i, ++refsAdded ) {
+      // Find this dictionary
 
-    auto dictionary = dictionaryGroup->getDictionaryById( i->toUtf8().data() );
-    if ( dictionary ) {
-      QAction * action = nullptr;
-      if ( refsAdded == cfg.preferences.maxDictionaryRefsInContextMenu ) {
-        // Enough! Or the menu would become too large.
-        maxDictionaryRefsAction  = new QAction( ".........", &menu );
-        action                   = maxDictionaryRefsAction;
-        maxDictionaryRefsReached = true;
-      }
-      else {
-        action = new QAction( dictionary->getIcon(), QString::fromUtf8( dictionary->getName().c_str() ), &menu );
-        // Force icons in menu on all platforms,
-        // since without them it will be much harder
-        // to find things.
-        action->setIconVisibleInMenu( true );
-      }
-      menu.addAction( action );
+      auto dictionary = dictionaryGroup->getDictionaryById( i->toUtf8().data() );
+      if ( dictionary ) {
+        QAction * action = nullptr;
+        if ( refsAdded == cfg.preferences.maxDictionaryRefsInContextMenu ) {
+          // Enough! Or the menu would become too large.
+          maxDictionaryRefsAction  = new QAction( ".........", &menu );
+          action                   = maxDictionaryRefsAction;
+          maxDictionaryRefsReached = true;
+        }
+        else {
+          action = new QAction( dictionary->getIcon(), QString::fromUtf8( dictionary->getName().c_str() ), &menu );
+          // Force icons in menu on all platforms,
+          // since without them it will be much harder
+          // to find things.
+          action->setIconVisibleInMenu( true );
+        }
+        menu.addAction( action );
 
-      tableOfContents[ action ] = *i;
+        tableOfContents[ action ] = *i;
+      }
+
+      if ( maxDictionaryRefsReached )
+        break;
     }
-
-    if ( maxDictionaryRefsReached )
-      break;
   }
 
   menu.addSeparator();

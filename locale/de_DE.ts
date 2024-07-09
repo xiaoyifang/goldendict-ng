@@ -580,19 +580,19 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
-      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+      <translation>Geben Sie die maximale Anzahl gefilterter Schlagwörter zurück.</translation>
     </message>
     <message>
       <source>Filter max results:</source>
-      <translation type="unfinished">Filter max results:</translation>
+      <translation>Maximale Ergebnisse filtern:</translation>
     </message>
     <message>
       <source>Unique headwords total: %1.</source>
-      <translation type="unfinished">Unique headwords total: %1.</translation>
+      <translation>Einzigartige Schlagworte insgesamt: %1.</translation>
     </message>
     <message>
       <source>Unique headwords total: %1, filtered(limited): %2</source>
-      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
+      <translation>Einzigartige Schlagwörter insgesamt: %1, gefiltert(begrenzt): %2</translation>
     </message>
   </context>
   <context>

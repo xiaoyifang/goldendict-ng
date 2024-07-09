@@ -581,19 +581,19 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     </message>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
-      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+      <translation>Määritä suurin suodatetut otsikot.</translation>
     </message>
     <message>
       <source>Filter max results:</source>
-      <translation type="unfinished">Filter max results:</translation>
+      <translation>Suodatin max tulokset:</translation>
     </message>
     <message>
       <source>Unique headwords total: %1.</source>
-      <translation type="unfinished">Unique headwords total: %1.</translation>
+      <translation>Ainutlaatuiset kuulokkeet yhteensä: %1.</translation>
     </message>
     <message>
       <source>Unique headwords total: %1, filtered(limited): %2</source>
-      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
+      <translation>Ainutlaatuiset otsikot yhteensä: %1, filtered(limited): %2</translation>
     </message>
   </context>
   <context>

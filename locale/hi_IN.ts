@@ -580,19 +580,19 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
-      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+      <translation>लौटाए गए अधिकतम फ़िल्टर किए गए हेडवर्ड निर्दिष्ट करें.</translation>
     </message>
     <message>
       <source>Filter max results:</source>
-      <translation type="unfinished">Filter max results:</translation>
+      <translation>अधिकतम परिणाम फ़िल्टर करें:</translation>
     </message>
     <message>
       <source>Unique headwords total: %1.</source>
-      <translation type="unfinished">Unique headwords total: %1.</translation>
+      <translation>अद्वितीय हेडवर्ड्स कुल: %1.</translation>
     </message>
     <message>
       <source>Unique headwords total: %1, filtered(limited): %2</source>
-      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
+      <translation>अद्वितीय हेडवर्ड्स की कुल संख्या: %1, फ़िल्टर किया गया (सीमित): %2</translation>
     </message>
   </context>
   <context>

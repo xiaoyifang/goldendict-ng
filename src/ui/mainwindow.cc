@@ -1774,7 +1774,16 @@ ArticleView * MainWindow::createNewTab( bool switchToIt, QString const & name )
   connect( view, &ArticleView::zoomOut, this, &MainWindow::zoomout );
   connect( view, &ArticleView::saveBookmarkSignal, this, &MainWindow::addBookmarkToFavorite );
 
-  connect( ui.searchInPageAction, &QAction::triggered, view, &ArticleView::openSearch );
+  connect( ui.searchInPageAction, &QAction::triggered, this, [ this, view ]() {
+#ifdef Q_OS_MACOS
+    //workaround to fix macos popup page search Ctrl + F
+    if ( scanPopup && scanPopup->isActiveWindow() ) {
+      scanPopup->openSearch();
+      return;
+    }
+#endif
+    view->openSearch();
+  } );
 
   view->setSelectionBySingleClick( cfg.preferences.selectWordBySingleClick );
 
@@ -2225,6 +2234,7 @@ void MainWindow::editPreferences()
       auto & view = dynamic_cast< ArticleView & >( *( ui.tabWidget->widget( x ) ) );
 
       view.setSelectionBySingleClick( p.selectWordBySingleClick );
+      view.syncBackgroundColorWithCfgDarkReader();
       if ( needReload ) {
         view.reload();
       }
