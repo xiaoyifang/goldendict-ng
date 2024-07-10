@@ -20,9 +20,10 @@ Those Qt components are needed
       + Qt Image formats
       + Qt MultiMedia
       + Qt Positioning
-      + Qt speech
-      + Qt webchannel
-      + Qt webengine
+      + Qt SerialPort (? super weird here, but `windepolyqt` will fail without this)
+      + Qt Speech
+      + Qt Webchannel
+      + Qt Webengine
   + Developer and Design Tools
     + Qt Creator
     + CMake
@@ -52,31 +53,32 @@ Then choose your favorite IDE/editor and load the `CMakeLists.txt`, if unsure, j
 
 Open `CMakeLists.txt` from Qt Creator, then you wil choose a "Kit" which is pretty much a Qt installation.
 
-Qt Creator usually can auto detect your Qt installation. In case it doesn't, follow the red line in the screenshot.
+Qt Creator usually can auto detect your Qt installation. In case it doesn't, check out "Kit" settings. Note that, the compiler must be set to MSVC.
 
-To add CMake build flags, add them to the blue line in the screenshot.
+![](https://github.com/xiaoyifang/goldendict-ng/assets/20123683/27edeb6f-ae97-42c3-9c71-8d186bb4a9f6)
 
-Note that, the compiler must be set to MSVC.
+Then you can add CMake build flag by modifying "Current Configuration"
 
-![](https://github.com/xiaoyifang/goldendict-ng/assets/20123683/4678cda2-315c-4b0f-b64a-4042003fd859)
+![](https://github.com/xiaoyifang/goldendict-ng/assets/20123683/e46102ce-706f-4678-93ba-69b9d3ecfd88)
+
+By default everything will be built, you can disable ffmpeg, epwing...
+
+Then, hit the "Run" button at bottom-right corner should build and run GoldenDict.
+
+If it doesn't, click "Edit" and "build" `windeploy` target.
+
+![](https://github.com/xiaoyifang/goldendict-ng/assets/20123683/b1aa483a-1c54-433c-a58d-f4f541107ce3)
+
+If any `.dll` missing, copy them from winlibs to beside the built `goldendict.exe`.
 
 ### CLion
-
-
+### CMake GUI
 ### Visual Studio
+### XCode
+### Command Line only
+Help wanted.
 
-TODO: Not really works due to bugs. User needs to manually copy missing `.dll` from `winlibs` from GoldenDict source code.
-TODO: rewrite `windeploy` target into `install()`
-
-For Visual Studio 2022, you can open ["Open a local folder"](https://learn.microsoft.com/cpp/build/cmake-projects-in-visual-studio) that contains `CMakeLists.txt`.
-
-Then, add Qt's path to CMake's arguments as `-DCMAKE_PREFIX_PATH={Your Qt install path}`.
-
-![](https://github.com/xiaoyifang/goldendict-ng/assets/20123683/c3cd00c9-3e07-4216-a96d-b5b3b371205d)
-
-After this, run target `windeploy` & build. 
-
-## Related links
+## Related Things
 
 [Qt's documentation](https://doc.qt.io/)
 
