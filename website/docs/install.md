@@ -16,7 +16,7 @@ Because it is open source, you can always [build it for yourself](howto/build_fr
 Choose either
 
 * `****-installer.exe ` for traditional installer experience
-* `****.zip` for simply unzip and run experience
+* `****.7z` for simply unzip and run experience
 
 If Qt's version is not changed, you can also download a single `goldendict.exe` and drop it into previous installation's folder (If uncertain, don't do this).
 
