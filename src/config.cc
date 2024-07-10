@@ -1098,10 +1098,6 @@ Class load()
       if ( !fts.namedItem( "enabled" ).isNull() )
         c.preferences.fts.enabled = ( fts.namedItem( "enabled" ).toElement().text() == "1" );
 
-      if ( !fts.namedItem( "enablePosition" ).isNull() ) {
-        c.preferences.fts.enablePosition = ( fts.namedItem( "enablePosition" ).toElement().text() == "1" );
-      }
-
       if ( !fts.namedItem( "maxDictionarySize" ).isNull() )
         c.preferences.fts.maxDictionarySize = fts.namedItem( "maxDictionarySize" ).toElement().text().toUInt();
 
@@ -2086,10 +2082,6 @@ void save( Class const & c )
 
       opt = dd.createElement( "enabled" );
       opt.appendChild( dd.createTextNode( c.preferences.fts.enabled ? "1" : "0" ) );
-      hd.appendChild( opt );
-
-      opt = dd.createElement( "enablePosition" );
-      opt.appendChild( dd.createTextNode( c.preferences.fts.enablePosition ? "1" : "0" ) );
       hd.appendChild( opt );
 
       opt = dd.createElement( "maxDictionarySize" );

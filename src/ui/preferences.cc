@@ -351,8 +351,6 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.allowEpwing->setChecked( !p.fts.disabledTypes.contains( "EPWING", Qt::CaseInsensitive ) );
   ui.allowGls->setChecked( !p.fts.disabledTypes.contains( "GLS", Qt::CaseInsensitive ) );
 
-  ui.enablePosition->setChecked( p.fts.enablePosition );
-  ui.enablePosition->hide();
 #ifndef MAKE_ZIM_SUPPORT
   ui.allowZim->hide();
 #endif
@@ -495,7 +493,6 @@ Config::Preferences Preferences::getPreferences()
   p.fts.enabled           = ui.ftsGroupBox->isChecked();
   p.fts.maxDictionarySize = ui.maxDictionarySize->value();
   p.fts.parallelThreads   = ui.parallelThreads->value();
-  p.fts.enablePosition    = ui.enablePosition->isChecked();
 
   buildDisabledTypes( p.fts.disabledTypes, ui.allowAard->isChecked(), "AARD" );
   buildDisabledTypes( p.fts.disabledTypes, ui.allowBGL->isChecked(), "BGL" );
