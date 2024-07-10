@@ -3383,11 +3383,11 @@ void MainWindow::adjustCurrentZoomFactor()
 {
   if ( cfg.preferences.zoomFactor >= 5 )
     cfg.preferences.zoomFactor = 5;
-  else if ( cfg.preferences.zoomFactor <= 0.1 )
-    cfg.preferences.zoomFactor = 0.1;
+  else if ( cfg.preferences.zoomFactor <= 0.25 )
+    cfg.preferences.zoomFactor = 0.25;
 
   zoomIn->setEnabled( cfg.preferences.zoomFactor < 5 );
-  zoomOut->setEnabled( cfg.preferences.zoomFactor > 0.1 );
+  zoomOut->setEnabled( cfg.preferences.zoomFactor > 0.25 );
   zoomBase->setEnabled( !qFuzzyCompare( cfg.preferences.zoomFactor, 1.0 ) );
 }
 
