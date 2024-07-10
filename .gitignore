@@ -38,6 +38,7 @@ GoldenDict.xcodeproj/
 /.vs
 /.vscode
 /.qtc_clangd
+out/
 
 # cmake files
 /cmake-build-**/
