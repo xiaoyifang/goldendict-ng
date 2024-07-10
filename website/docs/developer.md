@@ -6,7 +6,10 @@ If you know some C++ and optionally some Qt, you can start to modify GoldenDict 
   (On Linux, install dependencies)
 
   Windows(qtcreator for example)
-Packages:
+### Prerequisite
+Install visual studio community ,choose C++ component.
+  
+QtCreator Packages:
 ```
 [x]qtX.X.X version
 [x]MSVC2019 /GCC
