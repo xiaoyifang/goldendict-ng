@@ -2,7 +2,7 @@ Developing GoldenDict is not hard.
 
 If you know some C++ and optionally some Qt, you can start to modify GoldenDict right now:
 
-* Install Qt and QtCreator
+## Install Qt and QtCreator
   (On Linux, install dependencies)
 
   Windows(qtcreator for example)
