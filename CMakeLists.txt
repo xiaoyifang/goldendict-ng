@@ -9,8 +9,7 @@ option(WITH_TTS "enable QTexttoSpeech support" ON)
 option(USE_SYSTEM_FMT "use system fmt instead of bundled one" OFF)
 option(USE_SYSTEM_TOML "use system toml++ instead of bundled one" OFF)
 
-# vcpkg build - only tested on Windows, does not support FFMPEG
-option(USE_VCPKG "uses VCPKG for providing dependencies" OFF)
+option(USE_CACHED_VCPKG "use a cached vcpkg with binaries prebuilt" OFF)
 option(WITH_VCPKG_BREAKPAD "build with Breakpad support for VCPKG build only" OFF)
 
 ## Change binary & resources folder to parallel install with original GD.
@@ -22,9 +21,34 @@ option(USE_ALTERNATIVE_NAME "Force the name goldendict-ng " OFF)
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}") # to put staff in the ./cmake folder
 
-if(WITH_VCPKG_BREAKPAD)
-  list(APPEND VCPKG_MANIFEST_FEATURES "breakpad")
-endif()
+
+# vcpkg handling code, must be placed before project()
+
+if (WIN32)
+    if (NOT USE_CACHED_VCPKG)
+        message(FATAL_ERROR "\
+GoldenDict-ng uses vcpkg for windows build.
+CMAKE_TOOLCHAIN_FILE needs to be set.
+Google `CMAKE_TOOLCHAIN_FILE vcpkg` will show how.
+`USE_CACHED_VCPKG` can be used to fetch a cached version with binaries prebuilt.
+            ")
+    else ()
+        include(FetchContent)
+        FetchContent_Declare(
+                goldendict-ng-vcpkg-export-cache
+                URL https://github.com/xiaoyifang/goldendict-ng/releases/download/v24.05.13-alpha.a84febaf/vcpkg-dependency-exports.zip
+                URL_HASH SHA512=0341D4C5E4E80D1DB4A9D7D76CA934B83AF16082FFD541BA9D1D59EEFADBF0B4AA4D11C3BB60A763ECDF267AD5B30ACA9E433ECBB16C4BECF05FE35825D76E44
+        )
+        FetchContent_MakeAvailable(goldendict-ng-vcpkg-export-cache)
+        set(VCPKG_MANIFEST_MODE OFF CACHE BOOL "disable existing manifest mode caused by the existrance of vcpkg.json" FORCE)
+        set(CMAKE_TOOLCHAIN_FILE "${CMAKE_BINARY_DIR}/_deps/goldendict-ng-vcpkg-export-cache-src/scripts/buildsystems/vcpkg.cmake")
+    endif ()
+endif ()
+
+
+if (WITH_VCPKG_BREAKPAD)
+    list(APPEND VCPKG_MANIFEST_FEATURES "breakpad")
+endif ()
 
 include(FeatureSummary)
 
@@ -203,10 +227,8 @@ endif ()
 
 #### libraries linking && includes for Win or Unix
 
-if (USE_VCPKG)
+if (WIN32)
     include(Deps_Vcpkg)
-elseif (WIN32)
-    include(Deps_Win)
 else ()
     include(Deps_Unix)
 endif ()
@@ -313,36 +335,23 @@ if (WIN32)
             LIBRARY_OUTPUT_DIRECTORY "${GD_WIN_OUTPUT_DIR}"
     )
 
-    if (NOT USE_VCPKG)
-        add_custom_target(windeploy
-                COMMENT "Deploy everything to the output dir"
-                DEPENDS ${GOLDENDICT} # build this target will check if Goldendict.exe is already built
-                COMMAND ${WINDEPLOYQT_EXECUTABLE} --no-quick-import "${GD_WIN_OUTPUT_DIR}/${GOLDENDICT}.exe" --plugindir "${GD_WIN_OUTPUT_DIR}/plugins"
-                COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/opencc" "${GD_WIN_OUTPUT_DIR}/opencc"
-                COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_SOURCE_DIR}/LICENSE.txt" "${GD_WIN_OUTPUT_DIR}/LICENSE.txt"
-                COMMAND ${CMAKE_COMMAND} -E rm -f "${GD_WIN_OUTPUT_DIR}/goldendict.exe.manifest" "${GD_WIN_OUTPUT_DIR}/eb.dll.manifest"
-                WORKING_DIRECTORY ${GD_WIN_OUTPUT_DIR}
-        )
+    set(CMAKE_INSTALL_PREFIX "${GD_WIN_OUTPUT_DIR}" CACHE PATH "If you see this message, don't change this unless you want look into CMake build script. If you are an expert, yes, this is wrong. Help welcomed." FORCE)
 
-    else () # VCPKG deploy
-        set(CMAKE_INSTALL_PREFIX "${GD_WIN_OUTPUT_DIR}" CACHE PATH "If you see this message, don't change this unless you want look into CMake build script. If you are an expert, yes, this is wrong. Help welcomed." FORCE)
+    qt_generate_deploy_script(
+            TARGET ${GOLDENDICT}
+            OUTPUT_SCRIPT deploy_script
+            CONTENT "qt_deploy_runtime_dependencies(
+                    EXECUTABLE \"${CMAKE_INSTALL_PREFIX}/goldendict.exe\"
+                    BIN_DIR .
+                    LIB_DIR .
+            )"
+    )
 
-        qt_generate_deploy_script(
-                TARGET ${GOLDENDICT}
-                OUTPUT_SCRIPT deploy_script
-                CONTENT "qt_deploy_runtime_dependencies(
-                        EXECUTABLE \"${CMAKE_INSTALL_PREFIX}/goldendict.exe\"
-                        BIN_DIR .
-                        LIB_DIR .
-                )"
-        )
-
-        install(SCRIPT ${deploy_script})
-        install(DIRECTORY "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/share/opencc" DESTINATION .)
-        # TODO: do we really need to carry a copy of openSSL?
-        install(FILES "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/bin/libssl-3-x64.dll" DESTINATION .)
-        install(FILES "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/bin/libcrypto-3-x64.dll" DESTINATION .)
-    endif ()
+    install(SCRIPT ${deploy_script})
+    install(DIRECTORY "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/share/opencc" DESTINATION .)
+    # TODO: do we really need to carry a copy of openSSL?
+    install(FILES "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/bin/libssl-3-x64.dll" DESTINATION .)
+    install(FILES "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/bin/libcrypto-3-x64.dll" DESTINATION .)
 
     # trick CPack to make the output folder as NSIS installer
     install(DIRECTORY "${GD_WIN_OUTPUT_DIR}/"
