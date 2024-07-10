@@ -2498,8 +2498,8 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
   }
 
   if ( obj == this && ev->type() == QEvent::WindowStateChange ) {
-    auto stev                      = dynamic_cast< QWindowStateChangeEvent * >( ev );
-    wasMaximized                   = ( stev->oldState() == Qt::WindowMaximized && isMinimized() );
+    auto stev    = dynamic_cast< QWindowStateChangeEvent * >( ev );
+    wasMaximized = ( stev->oldState() == Qt::WindowMaximized && isMinimized() );
   }
 
   if ( ev->type() == QEvent::MouseButtonPress ) {
