@@ -165,6 +165,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   audioPlayerFactory( cfg.preferences ),
   wordFinder( this ),
   wordListSelChanged( false ),
+  wasMaximized( false ),
   headwordsDlg( nullptr ),
   ftsIndexing( dictionaries ),
   ftsDlg( nullptr ),
@@ -870,6 +871,8 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   if ( cfg.preferences.startWithScanPopupOn && !MacMouseOver::isAXAPIEnabled() )
     mainStatusBar->showMessage( tr( "Accessibility API is not enabled" ), 10000, QPixmap( ":/icons/error.svg" ) );
 #endif
+
+  wasMaximized = isMaximized();
 
   history.setSaveInterval( cfg.preferences.historyStoreInterval );
 #ifndef Q_OS_MACOS
@@ -2494,6 +2497,11 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
     }
   }
 
+  if ( obj == this && ev->type() == QEvent::WindowStateChange ) {
+    auto stev                      = dynamic_cast< QWindowStateChangeEvent * >( ev );
+    wasMaximized                   = ( stev->oldState() == Qt::WindowMaximized && isMinimized() );
+  }
+
   if ( ev->type() == QEvent::MouseButtonPress ) {
     auto event = dynamic_cast< QMouseEvent * >( ev );
 
@@ -2747,6 +2755,15 @@ void MainWindow::toggleMainWindow( bool onlyShow )
   if ( !isVisible() ) {
     show();
 
+    activateWindow();
+    raise();
+    shown = true;
+  }
+  else if ( isMinimized() ) {
+    if ( wasMaximized )
+      showMaximized();
+    else
+      showNormal();
     activateWindow();
     raise();
     shown = true;
