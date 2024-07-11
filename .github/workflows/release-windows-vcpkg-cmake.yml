@@ -143,8 +143,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           $tagName = "v$env:version-$env:versionSuffix.$(git rev-parse --short=8 HEAD)"
-          
-          $changeNotes = "
+
+          Add-Content -Path ./change_note.txt -Value "
           [Install instructions for Windows, macOS and Linux](https://xiaoyifang.github.io/goldendict-ng/install/).
           
           Filename pattern: GoldenDict-ng-[version]-[Qt version]-[system name]-...
@@ -154,16 +154,18 @@ jobs:
           Based on branch: ${{github.ref_name}}
 
           #### Changes
+          "
           
+          Add-Content -Path ./change_note.txt -Value @'
           ${{steps.build_changelog.outputs.changelog}}
-          "          
+          '@
 
           $tagExist = gh api --silent "repos/:owner/:repo/git/refs/tags/${{github.ref_name}}"
           if (-not $?) {
             if ($env:prerelease -eq "true") {
-              gh release create ${tagName} --target ${{github.ref_name}} --notes "${changeNotes}" --latest=false --prerelease
+              gh release create ${tagName} --target ${{github.ref_name}} --notes-file=./change_note.txt --latest=false --prerelease
             } else {
-              gh release create ${tagName} --target ${{github.ref_name}} --notes "${changeNotes}" --latest=true 
+              gh release create ${tagName} --target ${{github.ref_name}} --notes-file=./change_note.txt --latest=true 
             }
           }
 
