@@ -48,9 +48,7 @@ For macOS, install [Homebrew](https://brew.sh/) and install related packages as 
 
 First, get GoldenDict's source code by [Cloning a repository](https://docs.github.com/repositories/creating-and-managing-repositories/cloning-a-repository).
 
-Then choose your favorite IDE/editor and load the `CMakeLists.txt`.
-
-If unsure, just use Qt Creator.
+Then choose your favorite IDE/editor and load the `CMakeLists.txt`. If unsure, just use Qt Creator.
 
 ### Qt Creator
 
@@ -112,5 +110,3 @@ Then add Qt's path and various other options to configure arguments.
 [Qt's documentation](https://doc.qt.io/)
 
 [C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines).
-
-Remember to enable `clang-tidy` support on your editor so that `.clang-tidy` will be respected.
