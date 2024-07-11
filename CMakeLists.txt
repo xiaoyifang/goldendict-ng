@@ -34,14 +34,15 @@ Google `CMAKE_TOOLCHAIN_FILE vcpkg` will show how.
             ")
     else ()
         include(FetchContent)
+        message(INFO "Fetching vcpkg exported caches")
         FetchContent_Declare(
-                goldendict-ng-vcpkg-export-cache
-                URL https://github.com/xiaoyifang/goldendict-ng/releases/download/v24.05.13-alpha.a84febaf/vcpkg-dependency-exports.zip
-                URL_HASH SHA512=0341D4C5E4E80D1DB4A9D7D76CA934B83AF16082FFD541BA9D1D59EEFADBF0B4AA4D11C3BB60A763ECDF267AD5B30ACA9E433ECBB16C4BECF05FE35825D76E44
+                vcpkg-export
+                URL https://github.com/shenlebantongying/goldendict-ng/releases/download/vcpkg_240711_3d72d8c930e1b6a1b2432b262c61af7d3287dcd0/goldendict-ng-vcpkg-exports.tar.zst
+                URL_HASH SHA512=F48A16A10CE3D05F74EEA1BCD2E7B7B2411CD984DE831FC802EC0EA03CCBF6BC173690CA40A889F40F4D26A201C73834141B44E8133902076D1C7A954F785280
         )
-        FetchContent_MakeAvailable(goldendict-ng-vcpkg-export-cache)
+        FetchContent_MakeAvailable(vcpkg-export)
         set(VCPKG_MANIFEST_MODE OFF CACHE BOOL "disable existing manifest mode caused by the existrance of vcpkg.json" FORCE)
-        set(CMAKE_TOOLCHAIN_FILE "${CMAKE_BINARY_DIR}/_deps/goldendict-ng-vcpkg-export-cache-src/scripts/buildsystems/vcpkg.cmake")
+        set(CMAKE_TOOLCHAIN_FILE "${CMAKE_BINARY_DIR}/_deps/vcpkg-export-src/goldendict-ng-vcpkg-exports/scripts/buildsystems/vcpkg.cmake")
     endif ()
 endif ()
 
