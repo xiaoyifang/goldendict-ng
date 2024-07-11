@@ -1,3 +1,5 @@
+The `release-*` and `PR-check-*` workflow files under `.github` in the source code has actual build & commands for reference.
+
 ## Dependencies
 
 * C++17 compiler (For windows it must be MSVC)
@@ -45,8 +47,6 @@ cmake --build build_dir
 
 cmake --install ./build_dir/
 ```
-
-The `release-*` and `PR-check-*` workflow files under `.github` in the source code has actual build & commands for reference.
 
 ### Feature flags
 
