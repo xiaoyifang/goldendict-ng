@@ -25,20 +25,15 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}") 
 # vcpkg handling code, must be placed before project()
 
 if (WIN32)
-    if (NOT USE_CACHED_VCPKG)
-        message(FATAL_ERROR "\
-GoldenDict-ng uses vcpkg for windows build.
-CMAKE_TOOLCHAIN_FILE needs to be set.
-Google `CMAKE_TOOLCHAIN_FILE vcpkg` will show how.
-`USE_CACHED_VCPKG` can be used to fetch a cached version with binaries prebuilt.
-            ")
+    if (DEFINED CMAKE_TOOLCHAIN_FILE)
+        message(STATUS "Using toolchain file: ${CMAKE_TOOLCHAIN_FILE}")
     else ()
+        message(STATUS "CMAKE_TOOLCHAIN_FILE is not set. Try fetching cached vcpkg.")
         include(FetchContent)
-        message(INFO "Fetching vcpkg exported caches")
         FetchContent_Declare(
                 vcpkg-export
-                URL https://github.com/shenlebantongying/goldendict-ng/releases/download/vcpkg_240711_3d72d8c930e1b6a1b2432b262c61af7d3287dcd0/goldendict-ng-vcpkg-exports.tar.zst
-                URL_HASH SHA512=F48A16A10CE3D05F74EEA1BCD2E7B7B2411CD984DE831FC802EC0EA03CCBF6BC173690CA40A889F40F4D26A201C73834141B44E8133902076D1C7A954F785280
+                URL https://github.com/shenlebantongying/goldendict-ng/releases/download/vcpkg_240711_3d72d8c930e1b6a1b2432b262c61af7d3287dcd0/goldendict-ng-vcpkg-export.tar.zst
+                URL_HASH SHA512=78BD344B46361CA77EEEB4DB05BBBF442311DABB157F439913BF3C86AA92B4FD3930E50DF59AABC56AD9679028EC5FD22302446EBD8F35EE05EED1047D1718A8
         )
         FetchContent_MakeAvailable(vcpkg-export)
         set(VCPKG_MANIFEST_MODE OFF CACHE BOOL "disable existing manifest mode caused by the existrance of vcpkg.json" FORCE)
