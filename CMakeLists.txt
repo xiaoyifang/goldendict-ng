@@ -9,7 +9,6 @@ option(WITH_TTS "enable QTexttoSpeech support" ON)
 option(USE_SYSTEM_FMT "use system fmt instead of bundled one" OFF)
 option(USE_SYSTEM_TOML "use system toml++ instead of bundled one" OFF)
 
-option(USE_CACHED_VCPKG "use a cached vcpkg with binaries prebuilt" OFF)
 option(WITH_VCPKG_BREAKPAD "build with Breakpad support for VCPKG build only" OFF)
 
 ## Change binary & resources folder to parallel install with original GD.
@@ -23,7 +22,6 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}") 
 
 
 # vcpkg handling code, must be placed before project()
-
 if (WIN32)
     if (DEFINED CMAKE_TOOLCHAIN_FILE)
         message(STATUS "Using toolchain file: ${CMAKE_TOOLCHAIN_FILE}")
