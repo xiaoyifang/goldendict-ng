@@ -51,8 +51,8 @@ nav:
   - Report Bugs & Feedbacks: feedbacks.md
   - Development Info:
     - Start develop: developer.md
-    - Architecture: architecture.md
     - Build from source: howto/build_from_source.md
+    - Architecture: architecture.md
     - Customize the opencc: howto/how to customize the opencc.md
     - Use .clang-format: howto/how to use .clang-format to format the code.md
     - Breadpad crash analysis: howto/how to use breadpad crash analysis.md

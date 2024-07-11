@@ -10,11 +10,6 @@ on:
       - master
       - experimental
       - staged
-    paths-ignore:
-      - "docs/**"
-      - "*.md"
-      - "locale/**"
-      - "website/**"
 jobs:
   job_ubuntu_build_check:
     name: ubuntu Build and analyze
