@@ -196,8 +196,6 @@ struct FullTextSearch
   int searchMode;
   bool enabled;
 
-  bool enablePosition = false;
-
   quint32 maxDictionarySize;
   quint32 parallelThreads = QThread::idealThreadCount() / 3 + 1;
   QByteArray dialogGeometry;
