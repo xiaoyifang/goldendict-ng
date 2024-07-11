@@ -54,7 +54,6 @@ nav:
     - Architecture: architecture.md
     - Build from source: howto/build_from_source.md
     - Customize the opencc: howto/how to customize the opencc.md
-    - Qt version and github action: howto/how to find out the latest qt version and module in github qt action.md
     - Use .clang-format: howto/how to use .clang-format to format the code.md
     - Breadpad crash analysis: howto/how to use breadpad crash analysis.md
     - Build ffmpeg on Windows: howto/how to build ffmpeg for visual studio.md

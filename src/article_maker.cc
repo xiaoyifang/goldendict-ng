@@ -707,39 +707,37 @@ void ArticleRequest::bodyFinished()
 
     bodyDone = true;
 
-    {
-      string footer;
+    string footer;
 
-      if ( closePrevSpan ) {
-        footer += "</div></div>";
-        closePrevSpan = false;
-      }
-
-      if ( !foundAnyDefinitions ) {
-        // No definitions were ever found, say so to the user.
-
-        // Larger words are usually whole sentences - don't clutter the output
-        // with their full bodies.
-        footer += ArticleMaker::makeNotFoundBody( word.size() < 40 ? word : "", group.name );
-
-        // When there were no definitions, we run stemmed search.
-        stemmedWordFinder = std::make_shared< WordFinder >( this );
-
-        connect( stemmedWordFinder.get(),
-                 &WordFinder::finished,
-                 this,
-                 &ArticleRequest::stemmedSearchFinished,
-                 Qt::QueuedConnection );
-
-        stemmedWordFinder->stemmedMatch( word, activeDicts );
-      }
-      else {
-        footer += R"(<div class="empty-space"></div>)";
-        footer += "</body></html>";
-      }
-
-      appendString( footer );
+    if ( closePrevSpan ) {
+      footer += "</div></div>";
+      closePrevSpan = false;
     }
+
+    if ( !foundAnyDefinitions ) {
+      // No definitions were ever found, say so to the user.
+
+      // Larger words are usually whole sentences - don't clutter the output
+      // with their full bodies.
+      footer += ArticleMaker::makeNotFoundBody( word.size() < 40 ? word : word.left( 40 ) + "...", group.name );
+
+      // When there were no definitions, we run stemmed search.
+      stemmedWordFinder = std::make_shared< WordFinder >( this );
+
+      connect( stemmedWordFinder.get(),
+               &WordFinder::finished,
+               this,
+               &ArticleRequest::stemmedSearchFinished,
+               Qt::QueuedConnection );
+
+      stemmedWordFinder->stemmedMatch( word, activeDicts );
+    }
+    else {
+      footer += R"(<div class="empty-space"></div>)";
+      footer += "</body></html>";
+    }
+
+    appendString( footer );
 
     if ( stemmedWordFinder.get() ) {
       update();

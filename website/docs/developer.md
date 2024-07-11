@@ -2,11 +2,26 @@ Developing GoldenDict is not hard.
 
 If you know some C++ and optionally some Qt, you can start to modify GoldenDict right now:
 
-* Install Qt and QtCreator
-* (On Linux, install dependencies)
-* Load `goldendict.pro` or `CMakeLists.txt`
-* Modify some code
-* Hit the `Run`.
+## Install Qt and QtCreator
+  (On Linux, install dependencies)
+
+  Windows(qtcreator for example)
+### Prerequisite
+Install visual studio community ,choose C++ component.
+  
+QtCreator Packages:
+```
+[x]qtX.X.X version
+[x]MSVC2019 /GCC
+[x]Qt5 Compatible Module
+[*]Additional
+  [x]Qt Image formats
+  [x]Qt MultiMedia
+  [x]Qt Positioning
+  [x]Qt speech
+  [x]Qt webchannel
+  [x]Qt webengine
+```
 
 ## Coding Standards
 

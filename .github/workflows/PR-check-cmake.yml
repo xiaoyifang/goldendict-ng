@@ -99,16 +99,7 @@ jobs:
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
           submodules: true
-      - name: Setup vcpkg github caches variables
-        uses: actions/github-script@v7
-        with:
-          script: |
-            core.exportVariable('ACTIONS_CACHE_URL', process.env.ACTIONS_CACHE_URL || '');
-            core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
       - name: Run build
-        id: build
-        env:
-          VCPKG_BINARY_SOURCES: "clear;x-gha,readwrite"
         run: |
           # Launch-VsDevShell also provides Ninja
           & 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\Launch-VsDevShell.ps1' `
@@ -118,8 +109,5 @@ jobs:
           cmake -S . -B "./build_dir" `
             -G Ninja `
             -DCMAKE_C_COMPILER="cl.exe" -DCMAKE_CXX_COMPILER="cl.exe" `
-            -DWITH_FFMPEG_PLAYER=OFF `
-            -DUSE_VCPKG=ON `
-            -DCMAKE_TOOLCHAIN_FILE="$env:VCPKG_INSTALLATION_ROOT\scripts\buildsystems\vcpkg.cmake" `
-            -DWITH_VCPKG_BREAKPAD=ON
+            -DWITH_FFMPEG_PLAYER=OFF
           cmake --build "./build_dir"
