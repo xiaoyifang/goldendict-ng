@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.25) # ubuntu 23.04 Fedora 36
 option(WITH_FFMPEG_PLAYER "Enable support for FFMPEG player" ON)
 option(WITH_EPWING_SUPPORT "Enable epwing support" ON)
 option(WITH_ZIM "enable zim support" ON)
-option(WITH_TTS "enable QTexttoSpeech support" ON)
+option(WITH_TTS "enable QTexttoSpeech support" OFF)
 
 # options for linux packaging
 option(USE_SYSTEM_FMT "use system fmt instead of bundled one" OFF)
