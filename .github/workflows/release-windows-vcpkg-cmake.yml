@@ -159,7 +159,7 @@ jobs:
           ${{steps.build_changelog.outputs.changelog}}
           '@
 
-          $tagExist = gh api --silent "repos/:owner/:repo/git/refs/tags/${{github.ref_name}}"
+          $tagExist = gh api --silent "repos/:owner/:repo/git/refs/tags/${tagName}"
           if (-not $?) {
             if ($env:prerelease -eq "true") {
               gh release create ${tagName} --target ${{github.ref_name}} --notes-file=./change_note.txt --latest=false --prerelease
