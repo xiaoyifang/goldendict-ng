@@ -185,6 +185,8 @@ class DictServerDictionary: public Dictionary::Class
   QTcpSocket socket;
   QString msgId;
 
+  bool initialized = false;
+
 public:
   DictServerDictionary( string const & id,
                         string const & name_,
@@ -209,6 +211,16 @@ public:
     strategies = strategies_.split( QRegularExpression( "[ ,;]" ), Qt::SkipEmptyParts );
     if ( strategies.isEmpty() )
       strategies.append( "prefix" );
+  }
+
+
+  void init( )
+  {
+    if(initialized){
+      return;
+    }
+    initialized = true;
+
     QUrl serverUrl( url );
     quint16 port = serverUrl.port( DefaultPort );
     QString reply;
@@ -286,11 +298,15 @@ public:
         }
       }
     } );
+
   }
 
   ~DictServerDictionary() override
   {
-    disconnectFromServer( socket );
+    if(initialized)
+    {
+      disconnectFromServer( socket );
+    }
   }
 
   string getName() noexcept override
@@ -358,6 +374,10 @@ void DictServerDictionary::loadIcon() noexcept
 
 QString const & DictServerDictionary::getDescription()
 {
+  if(!initialized){
+    init();
+    return "initializing...";
+  }
   if ( dictionaryDescription.isEmpty() ) {
     dictionaryDescription = QCoreApplication::translate( "DictServer", "Url: " ) + url + "<br>";
     dictionaryDescription += QCoreApplication::translate( "DictServer", "Databases: " ) + "<br>";
