@@ -214,9 +214,9 @@ public:
   }
 
 
-  void init( )
+  void init()
   {
-    if(initialized){
+    if ( initialized ) {
       return;
     }
     initialized = true;
@@ -298,13 +298,11 @@ public:
         }
       }
     } );
-
   }
 
   ~DictServerDictionary() override
   {
-    if(initialized)
-    {
+    if ( initialized ) {
       disconnectFromServer( socket );
     }
   }
@@ -374,7 +372,7 @@ void DictServerDictionary::loadIcon() noexcept
 
 QString const & DictServerDictionary::getDescription()
 {
-  if(!initialized){
+  if ( !initialized ) {
     init();
     return "initializing...";
   }
