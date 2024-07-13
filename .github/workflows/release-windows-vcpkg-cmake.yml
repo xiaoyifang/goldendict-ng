@@ -106,16 +106,8 @@ jobs:
               }
             ]
             }
-      - name: setup vcpkg github caches variables
-        uses: actions/github-script@v7
-        with:
-          script: |
-            core.exportVariable('ACTIONS_CACHE_URL', process.env.ACTIONS_CACHE_URL || '');
-            core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
       - name: Build binaries
         id: build
-        env:
-          VCPKG_BINARY_SOURCES: "clear;x-gha,readwrite"
         run: |
           # Launch-VsDevShell also provides Ninja
           & 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\Launch-VsDevShell.ps1' `
@@ -128,8 +120,6 @@ jobs:
             -DCMAKE_C_COMPILER="cl.exe" -DCMAKE_CXX_COMPILER="cl.exe" `
             -DCMAKE_BUILD_TYPE=RelWithDebInfo `
             -DWITH_FFMPEG_PLAYER=OFF `
-            -DUSE_VCPKG=ON `
-            -DCMAKE_TOOLCHAIN_FILE="$env:VCPKG_INSTALLATION_ROOT\scripts\buildsystems\vcpkg.cmake" `
             -DWITH_VCPKG_BREAKPAD=ON
           cmake --build "./build_dir"
       - name: CPack create package
@@ -160,7 +150,7 @@ jobs:
           ${{steps.build_changelog.outputs.changelog}}
           '@
 
-          $tagExist = gh api --silent "repos/:owner/:repo/git/refs/tags/${{github.ref_name}}"
+          $tagExist = gh api --silent "repos/:owner/:repo/git/refs/tags/${tagName}"
           if (-not $?) {
             if ($env:prerelease -eq "true") {
               gh release create ${tagName} --target ${{github.ref_name}} --notes-file=./change_note.txt --latest=false --prerelease

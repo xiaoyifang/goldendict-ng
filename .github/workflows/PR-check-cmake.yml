@@ -10,11 +10,6 @@ on:
       - master
       - experimental
       - staged
-    paths-ignore:
-      - "docs/**"
-      - "*.md"
-      - "locale/**"
-      - "website/**"
 jobs:
   job_ubuntu_build_check:
     name: ubuntu Build and analyze
@@ -108,6 +103,7 @@ jobs:
           New-Item -Path './build_dir' -ItemType Directory
           cmake -S . -B "./build_dir" `
             -G Ninja `
+            -DWITH_VCPKG_BREAKPAD=ON `
             -DCMAKE_C_COMPILER="cl.exe" -DCMAKE_CXX_COMPILER="cl.exe" `
             -DWITH_FFMPEG_PLAYER=OFF
           cmake --build "./build_dir"
