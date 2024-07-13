@@ -643,17 +643,14 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   connect( ui.dictionaries, &QAction::triggered, this, &MainWindow::editDictionaries );
 
-  connect( ui.menuTextToSpeech,
-           &QAction::triggered,
-           this,
-           [ this ] {
-             auto * ttsConfigWindow = new TTS::ConfigWindow( this, Config::getConfigDir() );
-             ttsConfigWindow->show();
-             connect( ttsConfigWindow,
-                      &TTS::ConfigWindow::service_changed,
-                      this->ttsServiceController.get(),
-                      &TTS::ServiceController::reload );
-           } );
+  connect( ui.menuTextToSpeech, &QAction::triggered, this, [ this ] {
+    auto * ttsConfigWindow = new TTS::ConfigWindow( this, Config::getConfigDir() );
+    ttsConfigWindow->show();
+    connect( ttsConfigWindow,
+             &TTS::ConfigWindow::service_changed,
+             this->ttsServiceController.get(),
+             &TTS::ServiceController::reload );
+  } );
 
 
   connect( ui.preferences, &QAction::triggered, this, &MainWindow::editPreferences );
@@ -876,7 +873,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   }
 
   if ( cfg.preferences.hideMenubar ) {
-        toggleMenuBarTriggered( false );
+    toggleMenuBarTriggered( false );
   }
 
   // makeDictionaries() didn't do deferred init - we do it here, at the end.

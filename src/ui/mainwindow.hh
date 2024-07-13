@@ -143,7 +143,7 @@ private:
                                     // in a separate thread
   AudioPlayerFactory audioPlayerFactory;
 
-  QScopedPointer<TTS::ServiceController> ttsServiceController;
+  QScopedPointer< TTS::ServiceController > ttsServiceController;
 
   //current active translateLine;
   QLineEdit * translateLine;

@@ -53,13 +53,14 @@ void ConfigWindow::setupUi()
   MainLayout->addWidget( configPane, 1, 0, 1, 1 );
   MainLayout->addWidget( previewPane, 1, 1, 1, 1 );
   MainLayout->addWidget( buttonBox, 2, 0, 1, 2 );
-  MainLayout->addWidget( new QLabel(
-                           R"(<font color="red">Experimental feature. The default API key may stop working at anytime. Feedback & Coding help are welcomed. </font>)",
-                           this ),
-                         3,
-                         0,
-                         1,
-                         2 );
+  MainLayout->addWidget(
+    new QLabel(
+      R"(<font color="red">Experimental feature. The default API key may stop working at anytime. Feedback & Coding help are welcomed. </font>)",
+      this ),
+    3,
+    0,
+    1,
+    2 );
 }
 
 ConfigWindow::ConfigWindow( QWidget * parent, const QString & configRootPath ):
@@ -82,65 +83,49 @@ ConfigWindow::ConfigWindow( QWidget * parent, const QString & configRootPath ):
   }
 
 
-  connect( previewButton,
-           &QPushButton::clicked,
-           this,
-           [ this ] {
-             this->serviceConfigUI->save();
+  connect( previewButton, &QPushButton::clicked, this, [ this ] {
+    this->serviceConfigUI->save();
 
 
-             if ( currentService == "azure" ) {
-               previewService.reset( Azure::Service::Construct( this->configRootDir ) );
-             }
-             else {
-               previewService.reset( new dummy::Service() );
-             }
+    if ( currentService == "azure" ) {
+      previewService.reset( Azure::Service::Construct( this->configRootDir ) );
+    }
+    else {
+      previewService.reset( new dummy::Service() );
+    }
 
-             if ( previewService != nullptr ) {
-               auto _ = previewService->speak( previewLineEdit->text().toUtf8() );
-             }
-             else {
-               exit( 1 ); // TODO
-             }
-           } );
+    if ( previewService != nullptr ) {
+      auto _ = previewService->speak( previewLineEdit->text().toUtf8() );
+    }
+    else {
+      exit( 1 ); // TODO
+    }
+  } );
 
 
   updateConfigPaneBasedOnCurrentService();
 
-  connect( serviceSelector,
-           &QComboBox::currentIndexChanged,
-           this,
-           [ this ] {
-             updateConfigPaneBasedOnCurrentService();
-           } );
+  connect( serviceSelector, &QComboBox::currentIndexChanged, this, [ this ] {
+    updateConfigPaneBasedOnCurrentService();
+  } );
 
-  connect( buttonBox,
-           &QDialogButtonBox::accepted,
-           this,
-           [ this ]() {
-             qDebug() << "accept";
-             this->serviceConfigUI->save();
-             save_service_name_to_path( configRootDir,
-                                        this->serviceSelector->currentData().toByteArray() );
+  connect( buttonBox, &QDialogButtonBox::accepted, this, [ this ]() {
+    qDebug() << "accept";
+    this->serviceConfigUI->save();
+    save_service_name_to_path( configRootDir, this->serviceSelector->currentData().toByteArray() );
 
-             emit this->service_changed();
-             this->close();
-           } );
+    emit this->service_changed();
+    this->close();
+  } );
 
-  connect( buttonBox,
-           &QDialogButtonBox::rejected,
-           this,
-           [ this ]() {
-             qDebug() << "rejected";
-             this->close();
-           } );
+  connect( buttonBox, &QDialogButtonBox::rejected, this, [ this ]() {
+    qDebug() << "rejected";
+    this->close();
+  } );
 
-  connect( buttonBox->button( QDialogButtonBox::Help ),
-           &QPushButton::clicked,
-           this,
-           [ this ]() {
-             qDebug() << "help";
-           } );
+  connect( buttonBox->button( QDialogButtonBox::Help ), &QPushButton::clicked, this, [ this ]() {
+    qDebug() << "help";
+  } );
 }
 
 

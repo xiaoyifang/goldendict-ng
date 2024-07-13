@@ -14,9 +14,9 @@ bool Service::private_initalize()
   auto ret_config = AzureConfig::loadFromFile( azureConfigFile );
   if ( !ret_config.has_value() ) {
     if ( !AzureConfig::saveToFile( azureConfigFile,
-                                   {.apiKey = "b9885138792d4403a8ccf1a34553351d",
-                                    .region = "eastus",
-                                    .voiceShortName = "en-CA-ClaraNeural"} ) ) {
+                                   { .apiKey         = "b9885138792d4403a8ccf1a34553351d",
+                                     .region         = "eastus",
+                                     .voiceShortName = "en-CA-ClaraNeural" } ) ) {
       return false;
     };
     ret_config = AzureConfig::loadFromFile( azureConfigFile );
@@ -26,7 +26,7 @@ bool Service::private_initalize()
 
   request = new QNetworkRequest();
   request->setUrl( QUrl( QString( QStringLiteral( "https://%1.tts.speech.microsoft.com/cognitiveservices/v1" ) )
-    .arg( ret_config->region ) ) );
+                           .arg( ret_config->region ) ) );
   request->setRawHeader( "User-Agent", "WhatEver" );
   request->setRawHeader( "Ocp-Apim-Subscription-Key", ret_config->apiKey.toLatin1() );
   request->setRawHeader( "Content-Type", "application/ssml+xml" );
@@ -68,14 +68,11 @@ Service * Service::Construct( const QDir & configRootPath )
   reply = globalNetworkAccessManager->post( *request, y.data() );
   qDebug() << "azure tries to speak.";
 
-  connect( reply,
-           &QNetworkReply::finished,
-           this,
-           [ this ]() {
-             qDebug() << "azure gets data.";
-             player->setSourceDevice( reply );
-             player->play();
-           } );
+  connect( reply, &QNetworkReply::finished, this, [ this ]() {
+    qDebug() << "azure gets data.";
+    player->setSourceDevice( reply );
+    player->play();
+  } );
 
   connect( reply, &QNetworkReply::errorOccurred, this, &Service::slotError );
   connect( reply, &QNetworkReply::sslErrors, this, &Service::slotSslErrors );
@@ -145,13 +142,13 @@ std::optional< AzureConfig > AzureConfig::loadFromFile( const QString & p )
     }
   }
 
-  return {ret};
+  return { ret };
 }
 
 bool Azure::AzureConfig::saveToFile( const QString & configFilePath, const AzureConfig & c )
 {
   QJsonDocument doc(
-    QJsonObject( {{"region", c.region}, {"apikey", c.apiKey}, {"voiceShortName", c.voiceShortName}} ) );
+    QJsonObject( { { "region", c.region }, { "apikey", c.apiKey }, { "voiceShortName", c.voiceShortName } } ) );
 
   QSaveFile f( configFilePath );
   f.open( QSaveFile::WriteOnly );
@@ -203,10 +200,10 @@ ConfigWidget::ConfigWidget( QWidget * parent, const QDir & configRootPath ):
 std::optional< std::string > ConfigWidget::save() noexcept
 {
   if ( !AzureConfig::saveToFile( azureConfigPath,
-                                 {.apiKey = apiKey->text().simplified(),
-                                  .region = region->text().simplified(),
-                                  .voiceShortName = voiceList->currentText()} ) ) {
-    return {"sth is wrong"};
+                                 { .apiKey         = apiKey->text().simplified(),
+                                   .region         = region->text().simplified(),
+                                   .voiceShortName = voiceList->currentText() } ) ) {
+    return { "sth is wrong" };
   }
   else {
     return {};
@@ -219,40 +216,34 @@ void ConfigWidget::asyncVoiceListPopulating( const QString & autoSelectThisName 
   voiceListRequest.reset( new QNetworkRequest() );
   voiceListRequest->setRawHeader( "User-Agent", "WhatEver" );
   voiceListRequest->setUrl( QUrl( QString( QStringLiteral( "https://%1.%2/voices/list" ) )
-    .arg( this->region->text(), QString::fromUtf8( Azure::hostUrlBody ) ) ) );
+                                    .arg( this->region->text(), QString::fromUtf8( Azure::hostUrlBody ) ) ) );
   voiceListRequest->setRawHeader( "Ocp-Apim-Subscription-Key", this->apiKey->text().toLatin1() );
 
   voiceListReply.reset( globalNetworkAccessManager->get( *voiceListRequest ) );
 
-  connect( voiceListReply.get(),
-           &QNetworkReply::finished,
-           this,
-           [ this, autoSelectThisName ]() {
-             voiceList->clear();
-             auto json = QJsonDocument::fromJson( this->voiceListReply->readAll() );
-             if ( json.isArray() ) {
-               for ( auto && o : json.array() ) {
-                 if ( o.isObject() ) {
-                   if ( auto r   = o.toObject()[ "ShortName" ]; r.isString() ) {
-                     if ( auto s = r.toString(); !s.isNull() ) {
-                       voiceList->addItem( s );
-                     }
-                   }
-                 }
-               }
-             }
-             if ( auto i = voiceList->findText( autoSelectThisName ); i != -1 ) {
-               voiceList->setCurrentIndex( i );
-             }
-           } );
+  connect( voiceListReply.get(), &QNetworkReply::finished, this, [ this, autoSelectThisName ]() {
+    voiceList->clear();
+    auto json = QJsonDocument::fromJson( this->voiceListReply->readAll() );
+    if ( json.isArray() ) {
+      for ( auto && o : json.array() ) {
+        if ( o.isObject() ) {
+          if ( auto r = o.toObject()[ "ShortName" ]; r.isString() ) {
+            if ( auto s = r.toString(); !s.isNull() ) {
+              voiceList->addItem( s );
+            }
+          }
+        }
+      }
+    }
+    if ( auto i = voiceList->findText( autoSelectThisName ); i != -1 ) {
+      voiceList->setCurrentIndex( i );
+    }
+  } );
 
-  connect( voiceListReply.get(),
-           &QNetworkReply::errorOccurred,
-           this,
-           [ this ]( QNetworkReply::NetworkError e ) {
-             qDebug() << "f";
-             this->voiceList->clear();
-             this->voiceList->addItem( "Failed to retrive voice list: " + QString::number( e ) );
-           } );
+  connect( voiceListReply.get(), &QNetworkReply::errorOccurred, this, [ this ]( QNetworkReply::NetworkError e ) {
+    qDebug() << "f";
+    this->voiceList->clear();
+    this->voiceList->addItem( "Failed to retrive voice list: " + QString::number( e ) );
+  } );
 }
 } // namespace Azure
