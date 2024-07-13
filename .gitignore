@@ -58,3 +58,7 @@ GoldenDict_resource.rc
 *.orig
 
 node_modules
+
+# tts testing files
+*.ogg
+*.mp3

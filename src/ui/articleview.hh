@@ -268,6 +268,8 @@ signals:
                                QString const & fromArticle,
                                Contexts const & contexts );
 
+  void prounceSelection( const QString & selectionText );
+
   /// Put translated word into history
   void sendWordToHistory( QString const & word );
 

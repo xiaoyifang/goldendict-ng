@@ -1474,6 +1474,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
   QAction * openImageAction           = nullptr;
   QAction * saveSoundAction           = nullptr;
   QAction * saveBookmark              = nullptr;
+  QAction * prounceSelectionAction    = nullptr;
 
 #if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
   const QWebEngineContextMenuData * menuData = &( r->contextMenuData() );
@@ -1543,6 +1544,9 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
 
       sendWordToInputLineAction = new QAction( tr( "Send \"%1\" to input line" ).arg( text ), &menu );
       menu.addAction( sendWordToInputLineAction );
+
+      prounceSelectionAction = new QAction( "Speak selection", &menu );
+      menu.addAction( prounceSelectionAction );
     }
 
     addWordToHistoryAction = new QAction( tr( "&Add \"%1\" to history" ).arg( text ), &menu );
@@ -1678,6 +1682,9 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
       emit showDefinitionInNewTab( selectedText, getGroup( webview->url() ), getCurrentArticle(), Contexts() );
     else if ( !popupView && result == lookupSelectionNewTabGr && currentGroupId )
       emit showDefinitionInNewTab( selectedText, currentGroupId, QString(), Contexts() );
+    else if ( !popupView && result == prounceSelectionAction ) {
+      emit prounceSelection( selectedText );
+    }
     else if ( result == saveImageAction || result == saveSoundAction ) {
       QUrl url = ( result == saveImageAction ) ? imageUrl : targetUrl;
       QString savePath;
