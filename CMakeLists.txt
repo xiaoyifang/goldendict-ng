@@ -104,7 +104,7 @@ set(CMAKE_AUTOUIC_SEARCH_PATHS "${CMAKE_CURRENT_SOURCE_DIR}/src/ui/")
 # https://cmake.org/cmake/help/latest/command/file.html#filesystem
 # ! Using GLOB_RECURSE is not recommended by cmake's documentation
 # CONFIGURE_DEPENDS will trigger file tree recheck in every rebuilds.
-file(GLOB_RECURSE ALL_SOURCE_FILES CONFIGURE_DEPENDS src/*.cc src/*.hh src/*.c)
+file(GLOB_RECURSE ALL_SOURCE_FILES CONFIGURE_DEPENDS src/*.cc src/*.hh src/*.ui src/*.c)
 
 if (APPLE)
     file(GLOB_RECURSE MACOS_SOURCE_FILES CONFIGURE_DEPENDS src/macos/*.mm)
