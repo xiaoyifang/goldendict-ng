@@ -62,7 +62,14 @@ bool IndexedZip::loadFile( uint32_t offset, vector< char > & data )
   ZipFile::LocalFileHeader header;
 
   if ( !ZipFile::readLocalHeader( zip, header ) ) {
+    vector< string > zipFileNames;
+    zip.getFilenames( &zipFileNames );
     GD_DPRINTF( "Failed to load header" );
+    qDebug() << "Current failed zip files:";
+    for ( auto const & fileName : zipFileNames )
+    {
+      qDebug() << "filename:"<<QString::fromStdString(fileName);
+    }
     return false;
   }
 
