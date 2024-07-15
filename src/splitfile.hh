@@ -32,6 +32,7 @@ public:
 
   virtual void setFileName( const QString & name ) = 0;
   void getFilenames( vector< string > & names ) const;
+  int getCurrentFile() const;
   bool open( QFile::OpenMode mode );
   void close();
   bool seek( quint64 pos );
