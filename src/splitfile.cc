@@ -44,6 +44,11 @@ void SplitFile::getFilenames( vector< string > & names ) const
     names.push_back( ( *i )->fileName().toStdString() );
 }
 
+int SplitFile::getCurrentFile() const
+{
+  return currentFile;
+}
+
 bool SplitFile::open( QFile::OpenMode mode )
 {
   for ( QVector< QFile * >::iterator i = files.begin(); i != files.end(); ++i )
