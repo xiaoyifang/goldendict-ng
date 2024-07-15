@@ -1535,7 +1535,7 @@ void MainWindow::makeDictionaries()
   ftsIndexing.doIndexing();
 
   updateStatusLine();
-  updateGroupList();
+  updateGroupList( false );
 }
 
 void MainWindow::updateStatusLine()
