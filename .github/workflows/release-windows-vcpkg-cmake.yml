@@ -21,7 +21,7 @@ jobs:
     strategy:
       matrix:
         os: [windows-2022]
-        qt_ver: [ 6.7.2, 6.6.3 ]
+        qt_ver: [ 6.7.2 ]
         qt_arch: [win64_msvc2019_64]
     env:
       version: 24.05.13
