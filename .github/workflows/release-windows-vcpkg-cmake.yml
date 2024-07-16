@@ -176,10 +176,12 @@ jobs:
           
           $tagName = "v$env:version-$env:versionSuffix.$(git rev-parse --short=8 HEAD)"
           $namePrefix="GoldenDict-ng-${{env.version}}-Qt${{matrix.qt_ver}}"
+
+          cd ./goldendict
+
           mv goldendict.exe goldendict-Qt${{matrix.qt_ver}}.exe
           mv goldendict.pdb goldendict-Qt${{matrix.qt_ver}}.pdb
           
-          cd './goldendict'
           gh release upload "${tagName}"  "goldendict-Qt${{matrix.qt_ver}}.exe#${namePrefix}-Windows-main-exe-file-only.exe"  --clobber
           gh release upload "${tagName}"  "goldendict-Qt${{matrix.qt_ver}}.pdb#${namePrefix}-Windows-debug-file.pdb"  --clobber
           cd ..
