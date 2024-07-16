@@ -71,7 +71,7 @@ bool IndexedZip::loadFile( uint32_t offset, vector< char > & data )
       filename = zipFileNames.at( zip.getCurrentFile() );
     }
 
-    qDebug() << "Current failed zip file:" << QString::fromStdString( fileName );
+    qDebug() << "Current failed zip file:" << QString::fromStdString( filename );
     return false;
   }
 
