@@ -133,6 +133,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           $tagName = "v$env:version-$env:versionSuffix.$(git rev-parse --short=8 HEAD)"
+          $releaseName = "v$env:version-$env:versionSuffix.$(date +'%y%m%d').$(git rev-parse --short=8 HEAD)"
 
           Add-Content -Path ./change_note.txt -Value "
           [Install instructions for Windows, macOS and Linux](https://xiaoyifang.github.io/goldendict-ng/install/).
@@ -153,9 +154,9 @@ jobs:
           $tagExist = gh api --silent "repos/:owner/:repo/git/refs/tags/${tagName}"
           if (-not $?) {
             if ($env:prerelease -eq "true") {
-              gh release create ${tagName} --target ${{github.ref_name}} --notes-file=./change_note.txt --latest=false --prerelease
+              gh release create ${tagName} -t ${releaseName} --target ${{github.ref_name}} --notes-file=./change_note.txt --latest=false --prerelease
             } else {
-              gh release create ${tagName} --target ${{github.ref_name}} --notes-file=./change_note.txt --latest=true 
+              gh release create ${tagName} -t ${releaseName} --target ${{github.ref_name}} --notes-file=./change_note.txt --latest=true 
             }
           }
 
