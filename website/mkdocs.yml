@@ -38,6 +38,7 @@ nav:
       - Shortcuts: ui_shortcuts.md
   - Advanced Usages:
       - Anki Integration: topic_anki.md
+      - Immersion Learning: topic_gd-tools.md
       - Program dictionary: howto/how to add a program as dictionary.md
       - Command Lines: topic_commandline.md
       - Custom Stylesheet & JavaScript: topic_userstyle.md
