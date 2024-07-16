@@ -21,7 +21,7 @@ jobs:
     strategy:
       matrix:
         os: [windows-2022]
-        qt_ver: [ 6.7.2 ]
+        qt_ver: [ 6.7.2, 6.6.3 ]
         qt_arch: [win64_msvc2019_64]
     env:
       version: 24.05.13
@@ -167,8 +167,19 @@ jobs:
           gh release upload "${tagName}"  "${namePrefix}.7z#${namePrefix}-Windows.7z"  --clobber
           gh release upload "${tagName}"  "${namePrefix}.exe#${namePrefix}-Windows-installer.exe"  --clobber
           
-          cd './goldendict'
-          gh release upload "${tagName}"  "goldendict.exe#${namePrefix}-Windows-main-exe-file-only.exe"  --clobber
-          gh release upload "${tagName}"  "goldendict.pdb#${namePrefix}-Windows-debug-file.pdb"  --clobber
-          cd ..
 
+      - name: Upload Single packages
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          
+          $tagName = "v$env:version-$env:versionSuffix.$(git rev-parse --short=8 HEAD)"
+          $namePrefix="GoldenDict-ng-${{env.version}}-Qt${{matrix.qt_ver}}"
+          mv goldendict.exe goldendict-Qt${{matrix.qt_ver}}.exe
+          mv goldendict.pdb goldendict-Qt${{matrix.qt_ver}}.pdb
+          
+          cd './goldendict'
+          gh release upload "${tagName}"  "goldendict-Qt${{matrix.qt_ver}}.exe#${namePrefix}-Windows-main-exe-file-only.exe"  --clobber
+          gh release upload "${tagName}"  "goldendict-Qt${{matrix.qt_ver}}.pdb#${namePrefix}-Windows-debug-file.pdb"  --clobber
+          cd ..
