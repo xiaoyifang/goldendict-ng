@@ -173,11 +173,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          
+          pwd
           tagName="v${{env.version}}-${{env.version-suffix}}.$(git rev-parse --short=8 HEAD)"
           namePrefix="GoldenDict-ng-${{env.version}}-Qt${{matrix.qt_ver}}"
 
-          cd ./goldendict
+          cd ./build_dir/goldendict
 
           # rename to avoid conflict with other packages
           mv goldendict.exe goldendict-Qt${{matrix.qt_ver}}.exe
