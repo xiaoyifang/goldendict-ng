@@ -2,6 +2,7 @@
 #include "config_file_main.hh"
 #include "tts/services/azure.hh"
 #include "tts/services/dummy.hh"
+#include "tts/error_dialog.hh"
 
 TTS::ServiceController::ServiceController( const QString & configPath )
 {
@@ -15,18 +16,22 @@ void TTS::ServiceController::reload()
 {
   QString service_name = get_service_name_from_path( this->configRootDir );
   if ( service_name == "azure" ) {
-    currentService.reset( Azure::Service::Construct( this->configRootDir ) );
+    currentService.reset( TTS::AzureService::Construct( this->configRootDir ) );
   }
   else {
-    currentService.reset( new dummy::Service() );
+    currentService.reset( new TTS::DummyService() );
   }
+
+  connect( currentService.get(), &Service::errorOccured, []( const QString & errorString ) {
+    TTS::reportError( errorString );
+  } );
 }
 
 void TTS::ServiceController::speak( const QString & text )
 {
 
-  if ( currentService.isNull() ) {
+  if ( !currentService ) {
     this->reload();
   }
-  auto err = currentService->speak( text.toStdString() );
+  currentService->speak( text.toStdString() );
 }

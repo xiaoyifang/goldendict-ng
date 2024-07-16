@@ -4,22 +4,25 @@
 #include <QLayout>
 #include <QVBoxLayout>
 
-namespace dummy {
-class Service: public TTS::Service
+namespace TTS {
+class DummyService: public TTS::Service
 {
-  std::optional< std::string > speak( QUtf8StringView s ) noexcept override
+  void speak( QUtf8StringView s ) noexcept override
   {
     qDebug() << "dummy speaks" << s;
-    return {};
+  };
+  void stop() noexcept override
+  {
+    qDebug() << "dummy stops";
   };
 };
 
-class ConfigWidget: public TTS::ServiceConfigWidget
+class DummyConfigWidget: public TTS::ServiceConfigWidget
 {
   Q_OBJECT
 
 public:
-  explicit ConfigWidget( QWidget * parent ):
+  explicit DummyConfigWidget( QWidget * parent ):
     TTS::ServiceConfigWidget( parent )
   {
     this->setLayout( new QVBoxLayout );

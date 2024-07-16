@@ -7,19 +7,27 @@
 #include <QLabel>
 #include <fmt/format.h>
 
-namespace Azure {
+namespace TTS {
 
-bool Service::private_initalize()
+/// @brief this is not visible to service consumers
+struct AzureConfig
+{
+  QString apiKey;
+  QString region;
+  QString voiceShortName;
+
+  /// @brief Load file. Create a default one on failure.
+  /// @param configFilePath
+  /// @return Return null if the file absolutely cannot be accessed.
+  [[nodiscard]] static std::optional< AzureConfig > loadFromFile( const QString & configFilePath );
+  [[nodiscard]] static bool saveToFile( const QString & configFilePath, const AzureConfig & );
+};
+
+bool AzureService::private_initialize()
 {
   auto ret_config = AzureConfig::loadFromFile( azureConfigFile );
   if ( !ret_config.has_value() ) {
-    if ( !AzureConfig::saveToFile( azureConfigFile,
-                                   { .apiKey         = "b9885138792d4403a8ccf1a34553351d",
-                                     .region         = "eastus",
-                                     .voiceShortName = "en-CA-ClaraNeural" } ) ) {
-      return false;
-    };
-    ret_config = AzureConfig::loadFromFile( azureConfigFile );
+    throw std::runtime_error( "TODO" );
   }
 
   voiceShortName = ret_config->voiceShortName.toStdString();
@@ -37,25 +45,25 @@ bool Service::private_initalize()
   audioOutput->setVolume( 50 );
   player->setAudioOutput( audioOutput );
 
-  connect( player, &QMediaPlayer::errorOccurred, this, &Service::mediaErrorOccur );
-  connect( player, &QMediaPlayer::mediaStatusChanged, this, &Service::mediaStatus );
+  connect( player, &QMediaPlayer::errorOccurred, this, &AzureService::mediaErrorOccur );
+  connect( player, &QMediaPlayer::mediaStatusChanged, this, &AzureService::mediaStatus );
 
   return true;
 }
 
-Service * Service::Construct( const QDir & configRootPath )
+AzureService * AzureService::Construct( const QDir & configRootPath )
 {
-  auto azure = new Service();
+  auto azure = new AzureService();
 
   azure->azureConfigFile = configRootPath.filePath( azureSaveFileName );
 
-  if ( azure->private_initalize() ) {
+  if ( azure->private_initialize() ) {
     return azure;
   }
   return nullptr;
 };
 
-[[nodiscard]] std::optional< std::string > Service::speak( QUtf8StringView s ) noexcept
+void AzureService::speak( QUtf8StringView s ) noexcept
 {
   std::string y = fmt::format( R"(<speak version='1.0' xml:lang='en-US'>
     <voice name='{}'>
@@ -74,40 +82,50 @@ Service * Service::Construct( const QDir & configRootPath )
     player->play();
   } );
 
-  connect( reply, &QNetworkReply::errorOccurred, this, &Service::slotError );
-  connect( reply, &QNetworkReply::sslErrors, this, &Service::slotSslErrors );
-  return std::nullopt;
+  connect( reply, &QNetworkReply::errorOccurred, this, &AzureService::slotError );
+  connect( reply, &QNetworkReply::sslErrors, this, &AzureService::slotSslErrors );
 }
 
-Service::~Service() = default;
+void AzureService::stop() noexcept
+{
+  // TODO
+}
 
-void Service::slotError( QNetworkReply::NetworkError e )
+AzureService::~AzureService() = default;
+
+void AzureService::slotError( QNetworkReply::NetworkError e )
 {
   qDebug() << e;
 }
 
-void Service::slotSslErrors()
+void AzureService::slotSslErrors()
 {
-  qDebug() << "ssl error";
+  emit AzureService::errorOccured( "ssl error" );
 }
 
-void Service::mediaErrorOccur( QMediaPlayer::Error error, const QString & errorString )
+void AzureService::mediaErrorOccur( QMediaPlayer::Error _, const QString & errorString )
 {
-  qDebug() << "media " << error << errorString;
+  emit AzureService::errorOccured( "media error: " + errorString );
 }
 
-void Service::mediaStatus( QMediaPlayer::MediaStatus status )
+void AzureService::mediaStatus( QMediaPlayer::MediaStatus status )
 {
-  qDebug() << "status " << status;
+  qDebug() << "azure media status " << status;
 }
 
-std::optional< AzureConfig > AzureConfig::loadFromFile( const QString & p )
+std::optional< AzureConfig > AzureConfig::loadFromFile( const QString & configFilePath )
 {
-  if ( !QFileInfo::exists( p ) ) {
-    return {};
+  if ( !QFileInfo::exists( configFilePath ) ) {
+    auto defaultConfig            = std::make_unique< AzureConfig >();
+    defaultConfig->apiKey         = "b9885138792d4403a8ccf1a34553351d";
+    defaultConfig->region         = "eastus";
+    defaultConfig->voiceShortName = "en-CA-ClaraNeural";
+    if ( !saveToFile( configFilePath, *defaultConfig ) ) {
+      return {};
+    }
   }
 
-  QFile f( p );
+  QFile f( configFilePath );
 
   if ( !f.open( QFile::ReadOnly ) ) {
     return {};
@@ -145,7 +163,7 @@ std::optional< AzureConfig > AzureConfig::loadFromFile( const QString & p )
   return { ret };
 }
 
-bool Azure::AzureConfig::saveToFile( const QString & configFilePath, const AzureConfig & c )
+bool TTS::AzureConfig::saveToFile( const QString & configFilePath, const AzureConfig & c )
 {
   QJsonDocument doc(
     QJsonObject( { { "region", c.region }, { "apikey", c.apiKey }, { "voiceShortName", c.voiceShortName } } ) );
@@ -166,17 +184,15 @@ ConfigWidget::ConfigWidget( QWidget * parent, const QDir & configRootPath ):
 
   auto config = AzureConfig::loadFromFile( azureConfigPath );
 
+  if ( !config.has_value() ) {
+    throw std::runtime_error( "TODO" );
+  }
+
   voiceList = new QComboBox( this );
 
-  if ( !config.has_value() ) {
-    region = new QLineEdit( "eastus", this );
-    apiKey = new QLineEdit( "b9885138792d4403a8ccf1a34553351d", this );
-  }
-  else {
-    region = new QLineEdit( config->region, this );
-    apiKey = new QLineEdit( config->apiKey, this );
-  }
 
+  region = new QLineEdit( config->region, this );
+  apiKey = new QLineEdit( config->apiKey, this );
   this->asyncVoiceListPopulating( config->voiceShortName );
 
   auto * title = new QLabel( "<b>Azure config</b>", this );
@@ -199,10 +215,14 @@ ConfigWidget::ConfigWidget( QWidget * parent, const QDir & configRootPath ):
 
 std::optional< std::string > ConfigWidget::save() noexcept
 {
-  if ( !AzureConfig::saveToFile( azureConfigPath,
-                                 { .apiKey         = apiKey->text().simplified(),
-                                   .region         = region->text().simplified(),
-                                   .voiceShortName = voiceList->currentText() } ) ) {
+
+  auto config            = std::make_unique< AzureConfig >();
+  config->apiKey         = apiKey->text().simplified();
+  config->region         = region->text().simplified();
+  config->voiceShortName = voiceList->currentText().simplified();
+
+
+  if ( !AzureConfig::saveToFile( azureConfigPath, *config ) ) {
     return { "sth is wrong" };
   }
   else {
@@ -216,7 +236,7 @@ void ConfigWidget::asyncVoiceListPopulating( const QString & autoSelectThisName 
   voiceListRequest.reset( new QNetworkRequest() );
   voiceListRequest->setRawHeader( "User-Agent", "WhatEver" );
   voiceListRequest->setUrl( QUrl( QString( QStringLiteral( "https://%1.%2/voices/list" ) )
-                                    .arg( this->region->text(), QString::fromUtf8( Azure::hostUrlBody ) ) ) );
+                                    .arg( this->region->text(), QString::fromUtf8( TTS::hostUrlBody ) ) ) );
   voiceListRequest->setRawHeader( "Ocp-Apim-Subscription-Key", this->apiKey->text().toLatin1() );
 
   voiceListReply.reset( globalNetworkAccessManager->get( *voiceListRequest ) );
@@ -243,7 +263,7 @@ void ConfigWidget::asyncVoiceListPopulating( const QString & autoSelectThisName 
   connect( voiceListReply.get(), &QNetworkReply::errorOccurred, this, [ this ]( QNetworkReply::NetworkError e ) {
     qDebug() << "f";
     this->voiceList->clear();
-    this->voiceList->addItem( "Failed to retrive voice list: " + QString::number( e ) );
+    this->voiceList->addItem( "Failed to retrieve voice list: " + QString::number( e ) );
   } );
 }
-} // namespace Azure
+} // namespace TTS

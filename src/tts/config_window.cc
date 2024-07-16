@@ -88,14 +88,14 @@ ConfigWindow::ConfigWindow( QWidget * parent, const QString & configRootPath ):
 
 
     if ( currentService == "azure" ) {
-      previewService.reset( Azure::Service::Construct( this->configRootDir ) );
+      previewService.reset( TTS::AzureService::Construct( this->configRootDir ) );
     }
     else {
-      previewService.reset( new dummy::Service() );
+      previewService.reset( new TTS::DummyService() );
     }
 
     if ( previewService != nullptr ) {
-      auto _ = previewService->speak( previewLineEdit->text().toUtf8() );
+      previewService->speak( previewLineEdit->text().toUtf8() );
     }
     else {
       exit( 1 ); // TODO
@@ -132,10 +132,10 @@ ConfigWindow::ConfigWindow( QWidget * parent, const QString & configRootPath ):
 void ConfigWindow::updateConfigPaneBasedOnCurrentService()
 {
   if ( serviceSelector->currentData() == "azure" ) {
-    serviceConfigUI.reset( new Azure::ConfigWidget( this, this->configRootDir ) );
+    serviceConfigUI.reset( new TTS::ConfigWidget( this, this->configRootDir ) );
   }
   else {
-    serviceConfigUI.reset( new dummy::ConfigWidget( this ) );
+    serviceConfigUI.reset( new TTS::DummyConfigWidget( this ) );
   }
   configPane->layout()->addWidget( serviceConfigUI.get() );
 }

@@ -19,7 +19,7 @@ public slots:
 
 private:
   QDir configRootDir;
-  QScopedPointer< Service > currentService;
+  std::unique_ptr< Service > currentService;
 };
 
 

@@ -30,8 +30,8 @@ private:
 
   QComboBox * serviceSelector;
 
-  QScopedPointer< TTS::Service > previewService;
-  QScopedPointer< TTS::ServiceConfigWidget > serviceConfigUI;
+  std::unique_ptr< TTS::Service > previewService;
+  std::unique_ptr< TTS::ServiceConfigWidget > serviceConfigUI;
 
   void setupUi();
 

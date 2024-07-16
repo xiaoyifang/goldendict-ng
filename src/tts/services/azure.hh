@@ -8,20 +8,40 @@
 #include <optional>
 #include <QMediaPlayer>
 
-namespace Azure {
+namespace TTS {
 
 static const char * azureSaveFileName = "azure.json";
 
 static const char * hostUrlBody = "tts.speech.microsoft.com/cognitiveservices";
 
-struct AzureConfig
-{
-  QString apiKey;
-  QString region;
-  QString voiceShortName;
 
-  [[nodiscard]] static std::optional< AzureConfig > loadFromFile( const QString & );
-  [[nodiscard]] static bool saveToFile( const QString & configFilePath, const AzureConfig & );
+
+class AzureService: public TTS::Service
+{
+  Q_OBJECT
+
+public:
+  static AzureService * Construct( const QDir & configRootPath );
+  void speak( QUtf8StringView s ) noexcept override;
+  void stop() noexcept override;
+
+  ~AzureService() override;
+
+private:
+  AzureService() = default;
+  bool private_initialize();
+  QNetworkReply * reply;
+  QMediaPlayer * player;
+  QNetworkRequest * request;
+  QString azureConfigFile;
+  std::string voiceShortName;
+
+private slots:
+  void slotError( QNetworkReply::NetworkError e );
+  void slotSslErrors();
+
+  void mediaErrorOccur( QMediaPlayer::Error error, const QString & errorString );
+  void mediaStatus( QMediaPlayer::MediaStatus status );
 };
 
 class ConfigWidget: public TTS::ServiceConfigWidget
@@ -37,38 +57,11 @@ private:
   QString azureConfigPath;
   QLineEdit * region;
   QLineEdit * apiKey;
-  QScopedPointer< QNetworkRequest > voiceListRequest;
-  QScopedPointer< QNetworkReply > voiceListReply;
+  std::unique_ptr< QNetworkRequest > voiceListRequest;
+  std::unique_ptr< QNetworkReply > voiceListReply;
 
   QComboBox * voiceList;
 
   void asyncVoiceListPopulating( const QString & autoSelectThisName );
-};
-
-class Service: public TTS::Service
-{
-  Q_OBJECT
-
-public:
-  static Service * Construct( const QDir & configRootPath );
-  [[nodiscard]] std::optional< std::string > speak( QUtf8StringView s ) noexcept override;
-
-  ~Service() override;
-
-private:
-  Service() = default;
-  bool private_initalize();
-  QNetworkReply * reply;
-  QMediaPlayer * player;
-  QNetworkRequest * request;
-  QString azureConfigFile;
-  std::string voiceShortName;
-
-private slots:
-  void slotError( QNetworkReply::NetworkError e );
-  void slotSslErrors();
-
-  void mediaErrorOccur( QMediaPlayer::Error error, const QString & errorString );
-  void mediaStatus( QMediaPlayer::MediaStatus status );
 };
 } // namespace Azure

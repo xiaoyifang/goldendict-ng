@@ -5,13 +5,9 @@
 
 /*
  *
- * Do not add anything new to this header to ensure maximum decouping between different services.
+ * We want maximum decoupling between different services.
  *
- * Things needed by Services, should be added to specific services.
- *
- * If something is needed by multiple services,
- * it should be implemented as a component that
- * can be plugged into needed services.
+ * Things needed by Services should be added to specific services.
  *
  * Consider other options before modifying this file.
  *
@@ -22,13 +18,12 @@ class Service: public QObject
 {
   Q_OBJECT
 public slots:
-  ///
-  /// @return If failed, return a string that contains Error message.
-  [[nodiscard]] virtual std::optional< std::string > speak( QUtf8StringView s ) noexcept
-  {
-    return {};
-  }
-  virtual void stop() noexcept {} // TODO: does here need error handling?
+  virtual void speak( QUtf8StringView s ) noexcept {};
+  virtual void stop() noexcept {}
+signals:
+  /// @brief User facing error reporting.
+  /// Service::speak is likely async, error cannot be reported at return position.
+  void errorOccured( const QString & errorString );
 };
 
 class ServiceConfigWidget: public QWidget
