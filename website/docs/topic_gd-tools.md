@@ -25,4 +25,4 @@ we have a mandarin version of gd-marisa, which relies on mecab (unix only) : <br
 ![image](https://codeberg.org/hashirama/gd-tools/raw/branch/main/misc/mandarin.png)
 
 # Notes
-This article was written by 柱間.
+This article was written by 柱間(developer of gd-tools).
