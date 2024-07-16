@@ -37,18 +37,19 @@ nav:
       - Favorites: ui_favorites.md
       - Shortcuts: ui_shortcuts.md
   - Advanced Usages:
-      - Anki Integration: topic_anki.md
-      - Immersion Learning: topic_gd-tools.md
       - Program dictionary: howto/how to add a program as dictionary.md
       - Command Lines: topic_commandline.md
       - Custom Stylesheet & JavaScript: topic_userstyle.md
       - Portable Mode: topic_portablemode.md
       - Custom transliteration: topic_transliteration.md
       - Customize Dictionary: custom_dictionary.md
-      - OCR Integration: howto/ocr.md
       - Wayland: topic_wayland.md
       - Debug dictionary JS: howto/how to debug dictionary js.md
       - Flatpak/FlatHub: topic_flatpak.md
+  - Related tools:
+      - Anki Integration: topic_anki.md
+      - OCR Integration: howto/ocr.md
+      - gd-tools: topic_gd-tools.md
   - Report Bugs & Feedbacks: feedbacks.md
   - Development Info:
     - Start develop: developer.md
