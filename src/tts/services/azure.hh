@@ -15,7 +15,6 @@ static const char * azureSaveFileName = "azure.json";
 static const char * hostUrlBody = "tts.speech.microsoft.com/cognitiveservices";
 
 
-
 class AzureService: public TTS::Service
 {
   Q_OBJECT
@@ -64,4 +63,4 @@ private:
 
   void asyncVoiceListPopulating( const QString & autoSelectThisName );
 };
-} // namespace Azure
+} // namespace TTS
