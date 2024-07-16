@@ -180,6 +180,7 @@ jobs:
 
           cd ./goldendict
 
+          # rename to avoid conflict with other packages
           mv goldendict.exe goldendict-Qt${{matrix.qt_ver}}.exe
           mv goldendict.pdb goldendict-Qt${{matrix.qt_ver}}.pdb
           
