@@ -175,6 +175,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           tagName="v${{env.version}}-${{env.versionSuffix}}.$(git rev-parse --short=8 HEAD)"
+          echo $tagName
           namePrefix="GoldenDict-ng-${{env.version}}-Qt${{matrix.qt_ver}}"
 
           cd ./build_dir/goldendict
