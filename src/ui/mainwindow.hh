@@ -29,6 +29,7 @@
 #include "dictheadwords.hh"
 #include "fulltextsearch.hh"
 #include "base_type.hh"
+#include "tts/single_service_controller.hh"
 
 #include "hotkeywrapper.hh"
 #include "resourceschemehandler.hh"
@@ -141,6 +142,8 @@ private:
                                     // since their requests can be destroyed
                                     // in a separate thread
   AudioPlayerFactory audioPlayerFactory;
+
+  QScopedPointer< TTS::SingleServiceController > ttsServiceController;
 
   //current active translateLine;
   QLineEdit * translateLine;
