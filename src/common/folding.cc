@@ -164,7 +164,7 @@ wstring applyWhitespaceAndPunctOnly( wstring const & in )
 bool isWhitespace( wchar ch )
 {
   //invisible character should be treated as whitespace as well.
-  return QChar::isSpace( ch )|| !QChar::isPrint( ch );
+  return QChar::isSpace( ch ) || !QChar::isPrint( ch );
 }
 
 bool isWhitespaceOrPunct( wchar ch )
@@ -183,14 +183,13 @@ wstring trimWhitespaceOrPunct( wstring const & in )
   wstring::size_type wordSize = in.size();
 
   // Skip any leading whitespace
-  while ( *wordBegin &&  Folding::isWhitespaceOrPunct( *wordBegin ) ) {
+  while ( *wordBegin && Folding::isWhitespaceOrPunct( *wordBegin ) ) {
     ++wordBegin;
     --wordSize;
   }
 
   // Skip any trailing whitespace
-  while ( wordSize
-          && Folding::isWhitespaceOrPunct( wordBegin[ wordSize - 1 ] ) )
+  while ( wordSize && Folding::isWhitespaceOrPunct( wordBegin[ wordSize - 1 ] ) )
     --wordSize;
 
   return wstring( wordBegin, wordSize );
