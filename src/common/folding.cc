@@ -183,14 +183,14 @@ wstring trimWhitespaceOrPunct( wstring const & in )
   wstring::size_type wordSize = in.size();
 
   // Skip any leading whitespace
-  while ( *wordBegin && ( Folding::isWhitespace( *wordBegin ) || Folding::isPunct( *wordBegin ) ) ) {
+  while ( *wordBegin &&  Folding::isWhitespaceOrPunct( *wordBegin ) ) {
     ++wordBegin;
     --wordSize;
   }
 
   // Skip any trailing whitespace
   while ( wordSize
-          && ( Folding::isWhitespace( wordBegin[ wordSize - 1 ] ) || Folding::isPunct( wordBegin[ wordSize - 1 ] ) ) )
+          && Folding::isWhitespaceOrPunct( wordBegin[ wordSize - 1 ] ) )
     --wordSize;
 
   return wstring( wordBegin, wordSize );
