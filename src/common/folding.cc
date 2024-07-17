@@ -163,12 +163,13 @@ wstring applyWhitespaceAndPunctOnly( wstring const & in )
 
 bool isWhitespace( wchar ch )
 {
-  return QChar::isSpace( ch );
+  //invisible character should be treated as whitespace as well.
+  return QChar::isSpace( ch )|| !QChar::isPrint( ch );
 }
 
 bool isWhitespaceOrPunct( wchar ch )
 {
-  return QChar::isSpace( ch ) || QChar::isPunct( ch );
+  return isWhitespace( ch ) || QChar::isPunct( ch );
 }
 
 bool isPunct( wchar ch )
