@@ -4,7 +4,7 @@
 
 namespace TTS {
 
-/// @brief Manage the life time of one single service, which reloaded to other service.
+/// @brief Manage the life time of one single service, which can be reloaded to other services.
 class SingleServiceController: public QObject
 {
   Q_OBJECT
