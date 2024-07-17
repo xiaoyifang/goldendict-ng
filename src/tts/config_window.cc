@@ -1,6 +1,7 @@
 #include "tts/config_window.hh"
 #include "tts/services/azure.hh"
 #include "tts/services/dummy.hh"
+#include "tts/services/local_command.hh"
 #include "tts/config_file_main.hh"
 
 #include <QDialogButtonBox>
@@ -74,7 +75,9 @@ ConfigWindow::ConfigWindow( QWidget * parent, const QString & configRootPath ):
   this->setupUi();
 
   serviceSelector->addItem( "Azure Text to Speech", QStringLiteral( "azure" ) );
+  serviceSelector->addItem( "Local Command Line", QStringLiteral( "local_command" ) );
   serviceSelector->addItem( "Dummy", QStringLiteral( "dummy" ) );
+
 
   this->currentService = get_service_name_from_path( configRootDir );
 
@@ -89,6 +92,11 @@ ConfigWindow::ConfigWindow( QWidget * parent, const QString & configRootPath ):
 
     if ( currentService == "azure" ) {
       previewService.reset( TTS::AzureService::Construct( this->configRootDir ) );
+    }
+    else if ( currentService == "local_command" ) {
+      auto * s = new TTS::LocalCommandService( this->configRootDir );
+      s->loadCommandFromConfigFile(); // TODO:: error unhandled.
+      previewService.reset( s );
     }
     else {
       previewService.reset( new TTS::DummyService() );
@@ -132,7 +140,10 @@ ConfigWindow::ConfigWindow( QWidget * parent, const QString & configRootPath ):
 void ConfigWindow::updateConfigPaneBasedOnCurrentService()
 {
   if ( serviceSelector->currentData() == "azure" ) {
-    serviceConfigUI.reset( new TTS::ConfigWidget( this, this->configRootDir ) );
+    serviceConfigUI.reset( new TTS::AzureConfigWidget( this, this->configRootDir ) );
+  }
+  else if ( serviceSelector->currentData() == "local_command" ) {
+    serviceConfigUI.reset( new TTS::LocalCommandConfigWidget( this, this->configRootDir ) );
   }
   else {
     serviceConfigUI.reset( new TTS::DummyConfigWidget( this ) );

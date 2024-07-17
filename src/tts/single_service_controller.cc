@@ -1,10 +1,13 @@
-#include "tts/service_controller.hh"
+#include "tts/single_service_controller.hh"
 #include "config_file_main.hh"
 #include "tts/services/azure.hh"
 #include "tts/services/dummy.hh"
+#include "tts/services/local_command.hh"
 #include "tts/error_dialog.hh"
 
-TTS::ServiceController::ServiceController( const QString & configPath )
+namespace TTS {
+
+SingleServiceController::SingleServiceController( const QString & configPath )
 {
   configRootDir = QDir( configPath );
   configRootDir.mkpath( QStringLiteral( "ctts" ) );
@@ -12,11 +15,16 @@ TTS::ServiceController::ServiceController( const QString & configPath )
   currentService.reset();
 }
 
-void TTS::ServiceController::reload()
+void SingleServiceController::reload()
 {
   QString service_name = get_service_name_from_path( this->configRootDir );
   if ( service_name == "azure" ) {
     currentService.reset( TTS::AzureService::Construct( this->configRootDir ) );
+  }
+  else if ( service_name == "local_command" ) {
+    auto * s = new TTS::LocalCommandService( this->configRootDir );
+    s->loadCommandFromConfigFile(); // TODO:: error unhandled.
+    currentService.reset( s );
   }
   else {
     currentService.reset( new TTS::DummyService() );
@@ -27,7 +35,7 @@ void TTS::ServiceController::reload()
   } );
 }
 
-void TTS::ServiceController::speak( const QString & text )
+void SingleServiceController::speak( const QString & text )
 {
 
   if ( !currentService ) {
@@ -35,3 +43,5 @@ void TTS::ServiceController::speak( const QString & text )
   }
   currentService->speak( text.toStdString() );
 }
+
+} // namespace TTS

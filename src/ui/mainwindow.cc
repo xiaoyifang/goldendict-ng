@@ -174,7 +174,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   ftsDlg( nullptr ),
   starIcon( ":/icons/star.svg" ),
   blueStarIcon( ":/icons/star_blue.svg" ),
-  ttsServiceController( new TTS::ServiceController( Config::getConfigDir() ) )
+  ttsServiceController( new TTS::SingleServiceController( Config::getConfigDir() ) )
 {
   if ( QThreadPool::globalInstance()->maxThreadCount() < MIN_THREAD_COUNT )
     QThreadPool::globalInstance()->setMaxThreadCount( MIN_THREAD_COUNT );
@@ -649,7 +649,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
     connect( ttsConfigWindow,
              &TTS::ConfigWindow::service_changed,
              this->ttsServiceController.get(),
-             &TTS::ServiceController::reload );
+             &TTS::SingleServiceController::reload );
   } );
 
 
@@ -1770,7 +1770,7 @@ ArticleView * MainWindow::createNewTab( bool switchToIt, QString const & name )
 
   connect( view, &ArticleView::showDefinitionInNewTab, this, &MainWindow::showDefinitionInNewTab );
 
-  connect( view, &ArticleView::prounceSelection, ttsServiceController.get(), &TTS::ServiceController::speak );
+  connect( view, &ArticleView::prounceSelection, ttsServiceController.get(), &TTS::SingleServiceController::speak );
 
   connect( view, &ArticleView::typingEvent, this, &MainWindow::typingEvent );
 

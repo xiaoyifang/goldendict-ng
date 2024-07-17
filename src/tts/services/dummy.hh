@@ -7,6 +7,9 @@
 namespace TTS {
 class DummyService: public TTS::Service
 {
+  Q_OBJECT
+
+public:
   void speak( QUtf8StringView s ) noexcept override
   {
     qDebug() << "dummy speaks" << s;

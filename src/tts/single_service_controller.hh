@@ -4,13 +4,13 @@
 
 namespace TTS {
 
-/// or call this ServiceManager?
-class ServiceController: public QObject
+/// @brief Manage the life time of one single service, which reloaded to other service.
+class SingleServiceController: public QObject
 {
   Q_OBJECT
 
 public:
-  explicit ServiceController( const QString & configPath );
+  explicit SingleServiceController( const QString & configPath );
 
 public slots:
   void speak( const QString & text );

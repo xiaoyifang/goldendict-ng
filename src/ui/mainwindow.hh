@@ -29,7 +29,7 @@
 #include "dictheadwords.hh"
 #include "fulltextsearch.hh"
 #include "base_type.hh"
-#include "tts/service_controller.hh"
+#include "tts/single_service_controller.hh"
 
 #include "hotkeywrapper.hh"
 #include "resourceschemehandler.hh"
@@ -143,7 +143,7 @@ private:
                                     // in a separate thread
   AudioPlayerFactory audioPlayerFactory;
 
-  QScopedPointer< TTS::ServiceController > ttsServiceController;
+  QScopedPointer< TTS::SingleServiceController > ttsServiceController;
 
   //current active translateLine;
   QLineEdit * translateLine;

@@ -22,7 +22,7 @@ public slots:
   virtual void stop() noexcept {}
 signals:
   /// @brief User facing error reporting.
-  /// Service::speak is likely async, error cannot be reported at return position.
+  /// Service::speak is likely async, error cannot be reported at return position of speak().
   void errorOccured( const QString & errorString );
 };
 

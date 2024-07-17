@@ -9,6 +9,12 @@
 
 namespace TTS {
 
+
+static const char * AzureSaveFileName = "azure.json";
+
+static const char * hostUrlBody = "tts.speech.microsoft.com/cognitiveservices";
+
+
 /// @brief this is not visible to service consumers
 struct AzureConfig
 {
@@ -40,7 +46,8 @@ bool AzureService::private_initialize()
   request->setRawHeader( "Content-Type", "application/ssml+xml" );
   request->setRawHeader( "X-Microsoft-OutputFormat", "ogg-48khz-16bit-mono-opus" );
 
-  player             = new QMediaPlayer();
+  player = new QMediaPlayer();
+
   auto * audioOutput = new QAudioOutput;
   audioOutput->setVolume( 50 );
   player->setAudioOutput( audioOutput );
@@ -55,7 +62,7 @@ AzureService * AzureService::Construct( const QDir & configRootPath )
 {
   auto azure = new AzureService();
 
-  azure->azureConfigFile = configRootPath.filePath( azureSaveFileName );
+  azure->azureConfigFile = configRootPath.filePath( AzureSaveFileName );
 
   if ( azure->private_initialize() ) {
     return azure;
@@ -88,7 +95,7 @@ void AzureService::speak( QUtf8StringView s ) noexcept
 
 void AzureService::stop() noexcept
 {
-  // TODO
+  this->player->stop();
 }
 
 AzureService::~AzureService() = default;
@@ -163,7 +170,7 @@ std::optional< AzureConfig > AzureConfig::loadFromFile( const QString & configFi
   return { ret };
 }
 
-bool TTS::AzureConfig::saveToFile( const QString & configFilePath, const AzureConfig & c )
+bool AzureConfig::saveToFile( const QString & configFilePath, const AzureConfig & c )
 {
   QJsonDocument doc(
     QJsonObject( { { "region", c.region }, { "apikey", c.apiKey }, { "voiceShortName", c.voiceShortName } } ) );
@@ -174,10 +181,10 @@ bool TTS::AzureConfig::saveToFile( const QString & configFilePath, const AzureCo
   return f.commit();
 }
 
-ConfigWidget::ConfigWidget( QWidget * parent, const QDir & configRootPath ):
+AzureConfigWidget::AzureConfigWidget( QWidget * parent, const QDir & configRootPath ):
   TTS::ServiceConfigWidget( parent )
 {
-  azureConfigPath = configRootPath.filePath( azureSaveFileName );
+  azureConfigPath = configRootPath.filePath( AzureSaveFileName );
 
   auto * form = new QFormLayout( this );
 
@@ -213,7 +220,7 @@ ConfigWidget::ConfigWidget( QWidget * parent, const QDir & configRootPath ):
   this->setLayout( wrapper );
 }
 
-std::optional< std::string > ConfigWidget::save() noexcept
+std::optional< std::string > AzureConfigWidget::save() noexcept
 {
 
   auto config            = std::make_unique< AzureConfig >();
@@ -230,7 +237,7 @@ std::optional< std::string > ConfigWidget::save() noexcept
   }
 }
 
-void ConfigWidget::asyncVoiceListPopulating( const QString & autoSelectThisName )
+void AzureConfigWidget::asyncVoiceListPopulating( const QString & autoSelectThisName )
 {
 
   voiceListRequest.reset( new QNetworkRequest() );

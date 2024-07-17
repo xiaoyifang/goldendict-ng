@@ -35,7 +35,7 @@ GoldenDict.xcodeproj/
 *.suo
 *.vcxproj.user
 /.idea
-/.vs
+.vs
 /.vscode
 /.qtc_clangd
 

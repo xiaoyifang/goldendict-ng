@@ -8,11 +8,7 @@
 #include <optional>
 #include <QMediaPlayer>
 
-namespace TTS {
-
-static const char * azureSaveFileName = "azure.json";
-
-static const char * hostUrlBody = "tts.speech.microsoft.com/cognitiveservices";
+namespace TTS{
 
 
 class AzureService: public TTS::Service
@@ -43,12 +39,12 @@ private slots:
   void mediaStatus( QMediaPlayer::MediaStatus status );
 };
 
-class ConfigWidget: public TTS::ServiceConfigWidget
+class AzureConfigWidget: public TTS::ServiceConfigWidget
 {
   Q_OBJECT
 
 public:
-  explicit ConfigWidget( QWidget * parent, const QDir & configRootPath );
+  explicit AzureConfigWidget( QWidget * parent, const QDir & configRootPath );
 
   std::optional< std::string > save() noexcept override;
 
