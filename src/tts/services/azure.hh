@@ -8,7 +8,7 @@
 #include <optional>
 #include <QMediaPlayer>
 
-namespace TTS{
+namespace TTS {
 
 
 class AzureService: public TTS::Service

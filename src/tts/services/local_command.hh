@@ -15,10 +15,10 @@ class LocalCommandService: public TTS::Service
   Q_OBJECT
 
 public:
-  explicit LocalCommandService( const QDir& configRootPath );
+  explicit LocalCommandService( const QDir & configRootPath );
 
-  /// @brief 
-  /// @return failure message if any 
+  /// @brief
+  /// @return failure message if any
   std::optional< std::string > loadCommandFromConfigFile();
   ~LocalCommandService();
 
@@ -27,7 +27,7 @@ public:
 signals:
 
 
-  private:
+private:
   QString configFilePath;
   QString command;
   std::unique_ptr< QProcess > process;
@@ -45,8 +45,6 @@ public:
 private:
   QLineEdit * commandLineEdit;
   QString configFilePath; // Don't use replace on this
-
-
 };
 
 
