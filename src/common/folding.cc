@@ -154,7 +154,7 @@ wstring applyWhitespaceAndPunctOnly( wstring const & in )
   out.reserve( in.size() );
 
   for ( size_t left = in.size(); left--; ++nextChar ) {
-    if ( !isWhitespace( *nextChar ) && !isPunct( *nextChar ) )
+    if ( !isWhitespaceOrPunct( *nextChar ) )
       out.push_back( *nextChar );
   }
 
