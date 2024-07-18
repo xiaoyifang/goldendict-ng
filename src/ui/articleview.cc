@@ -2027,7 +2027,7 @@ void ArticleView::performFindOperation( bool backwards )
 
   findText( text, f, [ text, this ]( bool match ) {
     bool setMark = !text.isEmpty() && !match;
-    if(setMark){
+    if ( setMark ) {
       //clear the previous findText results.
       //when the results is empty, the highlight has not been removed.more likely a qt bug.
       findText( "" );
