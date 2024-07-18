@@ -66,8 +66,6 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
     //  indexer.set_stemming_strategy(indexer.STEM_SOME_FULL_POS);
     indexer.set_flags( Xapian::TermGenerator::FLAG_CJK_NGRAM );
 
-    BtreeIndexing::IndexedWords indexedWords;
-
     QSet< uint32_t > setOfOffsets;
     setOfOffsets.reserve( dict->getArticleCount() );
 
