@@ -1965,6 +1965,8 @@ void ArticleView::on_searchCloseButton_clicked()
 
 void ArticleView::on_searchCaseSensitive_clicked()
 {
+  // clear the previous findText results
+  webview->findText( "" );
   performFindOperation( false );
 }
 
