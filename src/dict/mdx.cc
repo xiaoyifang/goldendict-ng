@@ -57,7 +57,7 @@ using namespace Mdict;
 
 enum {
   kSignature            = 0x4349444d, // MDIC
-  kCurrentFormatVersion = 11 + BtreeIndexing::FormatVersion + Folding::Version
+  kCurrentFormatVersion = 12 + BtreeIndexing::FormatVersion + Folding::Version
 };
 
 DEF_EX( exCorruptDictionary, "dictionary file was tampered or corrupted", std::exception )
@@ -1342,6 +1342,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       }
 
       File::Index idx( indexFile, "wb" );
+      auto headIndexFile = indexFile+".head";
       IdxHeader idxHeader;
       memset( &idxHeader, 0, sizeof( idxHeader ) );
       // We write a dummy header first. At the end of the process the header
@@ -1411,6 +1412,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
       GD_DPRINTF( "Writing index...\n" );
 
+      BtreeIndexing::buildXapianIndex( indexedWords, headIndexFile );
       // Good. Now build the index
       IndexInfo idxInfo               = BtreeIndexing::buildIndex( indexedWords, idx );
       idxHeader.indexBtreeMaxElements = idxInfo.btreeMaxElements;
