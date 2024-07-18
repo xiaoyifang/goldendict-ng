@@ -1965,8 +1965,6 @@ void ArticleView::on_searchCloseButton_clicked()
 
 void ArticleView::on_searchCaseSensitive_clicked()
 {
-  // clear the previous findText results
-  webview->findText( "" );
   performFindOperation( false );
 }
 
@@ -2029,6 +2027,11 @@ void ArticleView::performFindOperation( bool backwards )
 
   findText( text, f, [ text, this ]( bool match ) {
     bool setMark = !text.isEmpty() && !match;
+    if(setMark){
+      //clear the previous findText results.
+      //when the results is empty, the highlight has not been removed.more likely a qt bug.
+      findText( "" );
+    }
     Utils::Widget::setNoResultColor( searchPanel->lineEdit, setMark );
   } );
 }
