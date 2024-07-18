@@ -268,4 +268,6 @@ struct IndexedWords: public map< string, vector< WordArticleLink > >
 /// position.
 IndexInfo buildIndex( const IndexedWords &, File::Index & file );
 
+void buildXapianIndex( IndexedWords const &, string file );
+
 } // namespace BtreeIndexing
