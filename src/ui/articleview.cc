@@ -2026,13 +2026,13 @@ void ArticleView::performFindOperation( bool backwards )
     f |= QWebEnginePage::FindBackward;
 
   findText( text, f, [ text, this ]( bool match ) {
-    bool setMark = !text.isEmpty() && !match;
-    if ( setMark ) {
+    bool nomatch = !text.isEmpty() && !match;
+    if ( nomatch ) {
       //clear the previous findText results.
       //when the results is empty, the highlight has not been removed.more likely a qt bug.
       webview->findText( "" );
     }
-    Utils::Widget::setNoResultColor( searchPanel->lineEdit, setMark );
+    Utils::Widget::setNoResultColor( searchPanel->lineEdit, nomatch );
   } );
 }
 
