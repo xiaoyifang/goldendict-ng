@@ -2030,7 +2030,7 @@ void ArticleView::performFindOperation( bool backwards )
     if ( setMark ) {
       //clear the previous findText results.
       //when the results is empty, the highlight has not been removed.more likely a qt bug.
-      findText( "" );
+      webview->findText( "" );
     }
     Utils::Widget::setNoResultColor( searchPanel->lineEdit, setMark );
   } );
