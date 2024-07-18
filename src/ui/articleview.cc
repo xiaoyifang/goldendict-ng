@@ -2070,10 +2070,7 @@ bool ArticleView::closeSearch()
     ftsSearchPanel->hide();
     webview->setFocus();
 
-    QWebEnginePage::FindFlags flags( 0 );
-
-    webview->findText( "", flags );
-
+    webview->findText( "" );
     return true;
   }
   return false;
