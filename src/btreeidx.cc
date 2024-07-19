@@ -1034,6 +1034,8 @@ void BtreeIndex::buildXapianIndex( IndexedWords const & indexedWords, string fil
     for ( const auto &[ word, articleLinks ] : indexedWords ) {
 
       for ( const auto & articleLink : articleLinks ) {
+        if ( !articleLink.prefix.empty() )
+          continue;
         Xapian::Document doc;
 
         indexer.set_document( doc );
