@@ -1535,7 +1535,7 @@ void MainWindow::makeDictionaries()
   ftsIndexing.doIndexing();
 
   updateStatusLine();
-  updateGroupList();
+  updateGroupList( false );
 }
 
 void MainWindow::updateStatusLine()
@@ -1597,9 +1597,9 @@ void MainWindow::updateGroupList( bool reload )
 
   updateDictionaryBar();
 
-  qDebug() << "Reloading all the tabs...";
-
   if ( reload ) {
+    qDebug() << "Reloading all the tabs...";
+
     for ( int i = 0; i < ui.tabWidget->count(); ++i ) {
       auto & view = dynamic_cast< ArticleView & >( *( ui.tabWidget->widget( i ) ) );
 

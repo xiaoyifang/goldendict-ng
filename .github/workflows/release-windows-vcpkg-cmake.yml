@@ -21,7 +21,7 @@ jobs:
     strategy:
       matrix:
         os: [windows-2022]
-        qt_ver: [ 6.7.2 ]
+        qt_ver: [ 6.7.2, 6.6.3 ]
         qt_arch: [win64_msvc2019_64]
     env:
       version: 24.05.13
@@ -133,6 +133,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           $tagName = "v$env:version-$env:versionSuffix.$(git rev-parse --short=8 HEAD)"
+          $releaseName = "v$env:version-$env:versionSuffix.$(date +'%y%m%d').$(git rev-parse --short=8 HEAD)"
 
           Add-Content -Path ./change_note.txt -Value "
           [Install instructions for Windows, macOS and Linux](https://xiaoyifang.github.io/goldendict-ng/install/).
@@ -153,9 +154,9 @@ jobs:
           $tagExist = gh api --silent "repos/:owner/:repo/git/refs/tags/${tagName}"
           if (-not $?) {
             if ($env:prerelease -eq "true") {
-              gh release create ${tagName} --target ${{github.ref_name}} --notes-file=./change_note.txt --latest=false --prerelease
+              gh release create ${tagName} -t ${releaseName} --target ${{github.ref_name}} --notes-file=./change_note.txt --latest=false --prerelease
             } else {
-              gh release create ${tagName} --target ${{github.ref_name}} --notes-file=./change_note.txt --latest=true 
+              gh release create ${tagName} -t ${releaseName} --target ${{github.ref_name}} --notes-file=./change_note.txt --latest=true 
             }
           }
 
@@ -167,8 +168,22 @@ jobs:
           gh release upload "${tagName}"  "${namePrefix}.7z#${namePrefix}-Windows.7z"  --clobber
           gh release upload "${tagName}"  "${namePrefix}.exe#${namePrefix}-Windows-installer.exe"  --clobber
           
-          cd './goldendict'
-          gh release upload "${tagName}"  "goldendict.exe#${namePrefix}-Windows-main-exe-file-only.exe"  --clobber
-          gh release upload "${tagName}"  "goldendict.pdb#${namePrefix}-Windows-debug-file.pdb"  --clobber
-          cd ..
 
+      - name: Upload Single packages
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          tagName="v${{env.version}}-${{env.versionSuffix}}.$(git rev-parse --short=8 HEAD)"
+          echo $tagName
+          namePrefix="GoldenDict-ng-${{env.version}}-Qt${{matrix.qt_ver}}"
+
+          cd ./build_dir/goldendict
+
+          # rename to avoid conflict with other packages
+          mv goldendict.exe goldendict-Qt${{matrix.qt_ver}}.exe
+          mv goldendict.pdb goldendict-Qt${{matrix.qt_ver}}.pdb
+          
+          gh release upload "${tagName}"  "goldendict-Qt${{matrix.qt_ver}}.exe#${namePrefix}-Windows-main-exe-file-only.exe"  --clobber
+          gh release upload "${tagName}"  "goldendict-Qt${{matrix.qt_ver}}.pdb#${namePrefix}-Windows-debug-file.pdb"  --clobber
+          cd ..

@@ -1069,7 +1069,7 @@ void GlsResourceRequest::run()
   try {
     string n = dict.getContainingFolder().toStdString() + Utils::Fs::separator() + resourceName;
 
-    GD_DPRINTF( "n is %s\n", n.c_str() );
+    GD_DPRINTF( "gls resource name is %s\n", n.c_str() );
 
     try {
       QMutexLocker _( &dataMutex );

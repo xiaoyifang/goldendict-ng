@@ -13,6 +13,7 @@
 #else
   #include <QTextCodec>
 #endif
+#include <QMutexLocker>
 
 using namespace BtreeIndexing;
 using std::vector;
@@ -54,15 +55,23 @@ bool IndexedZip::loadFile( uint32_t offset, vector< char > & data )
   if ( !zipIsOpen )
     return false;
 
+  QMutexLocker _( &mutex );
   // Now seek into the zip file and read its header
-
   if ( !zip.seek( offset ) )
     return false;
 
   ZipFile::LocalFileHeader header;
 
   if ( !ZipFile::readLocalHeader( zip, header ) ) {
+    vector< string > zipFileNames;
+    zip.getFilenames( zipFileNames );
     GD_DPRINTF( "Failed to load header" );
+    string filename;
+    if ( zip.getCurrentFile() < zipFileNames.size() ) {
+      filename = zipFileNames.at( zip.getCurrentFile() );
+    }
+
+    qDebug() << "Current failed zip file:" << QString::fromStdString( filename );
     return false;
   }
 
@@ -123,6 +132,8 @@ bool IndexedZip::indexFile( BtreeIndexing::IndexedWords & zipFileNames, quint32 
 {
   if ( !zipIsOpen )
     return false;
+
+  QMutexLocker _( &mutex );
   if ( !ZipFile::positionAtCentralDir( zip ) )
     return false;
 
