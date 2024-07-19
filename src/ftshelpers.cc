@@ -110,15 +110,18 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
     }
 
     long indexedDoc = 0L;
+    bool no_position = false;
 
     for ( auto const & address : offsets ) {
       //check every 1000 documents.
-      if ( indexedDoc % 1000 == 0 ) {
+      if ( indexedDoc % 10000 == 0 && !no_position ) {
         auto totalLength = db.get_total_length();
-        qDebug() << "xapian database length:" << totalLength;
+        //arbitrary value.
+        if ( totalLength > 10000000 ) {
+          no_position = true;
+          qDebug() << "xapian database length is too large, turn off positional information.";
+        }
       }
-
-
       indexedDoc++;
 
       if ( address == lastAddress && skip ) {
@@ -142,8 +145,12 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
 
       indexer.set_document( doc );
 
-      indexer.index_text( articleStr.toStdString() );
-
+      if ( no_position ) {
+        indexer.index_text_without_positions( articleStr.toStdString() );
+      }
+      else {
+        indexer.index_text( articleStr.toStdString() );
+      }
 
       doc.set_data( std::to_string( address ) );
       // Add the document to the database.
@@ -159,21 +166,9 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
 
     // Free memory
     offsets.clear();
-
-    {
-      auto totalLength = db.get_total_length();
-      qDebug() << "xapian database total length:" << totalLength;
-    }
-
     db.commit();
 
     db.compact( dict->ftsIndexName() );
-
-    {
-      auto totalLength = db.get_total_length();
-      qDebug() << "xapian database total length(compact):" << totalLength;
-    }
-
     db.close();
 
     Utils::Fs::removeDirectory( dict->ftsIndexName() + "_temp" );
