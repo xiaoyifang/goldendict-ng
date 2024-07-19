@@ -113,7 +113,7 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
     bool no_position = false;
 
     for ( auto const & address : offsets ) {
-      //check every 1000 documents.
+      //check every 10000 documents.
       if ( indexedDoc % 10000 == 0 && !no_position ) {
         auto totalLength = db.get_total_length();
         //arbitrary value.
