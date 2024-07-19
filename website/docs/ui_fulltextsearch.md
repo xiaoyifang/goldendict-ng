@@ -13,9 +13,9 @@ Note that phrase and NEAR search needs the positional information when indexing.
 * "Plain text" - mode like "Whole words" but every word in search line can be treated as word fragment.
 * "Wildcards" - As xapian index only support wildcard syntax like this  "hell*" ,  the wildcard in the middle(eg."he*lo") is not supported.
 
-"Available dictionaries in group" - here you can view how many dictionaries in the current group are suitable for full-text search, how many dictionaries already indexed and how many dictionaries wait for indexing.
+"Available dictionaries in group" - here you can see how many dictionaries in the current group are suitable for full-text search, how many dictionaries are already indexed and how many dictionaries are waiting for indexing.
 
-When you place mouse cursor over headword in results list, the tooltip with dictionary list contains such articles matched the search conditions will be shown.
+When you hover the cursor over a headword in the results list, a tooltip appears with a list of dictionaries that contain the search term.
 
 !!! note
     The dictionary will index for full-text search in background and started immediately after program start, name of the currently indexing dictionary is displayed in the status line. This process can take a long time and require many computing resources.You may turn off indexing for huge dictionaries like Wikipedias or Wiktionaries in preferences. To find dictionary which can't be indexed check GoldenDict with `--log-to-file` or check `stdout`.
