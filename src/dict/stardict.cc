@@ -545,7 +545,7 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
         articleNewText.clear();
       }
 
-      return ( articleText.toUtf8().data() );
+      return articleText.toStdString();
     }
     case 'm': // Pure meaning, usually means preformatted text
       return "<div class=\"sdct_m\">" + Html::preformat( string( resource, size ), isToLanguageRTL() ) + "</div>";
