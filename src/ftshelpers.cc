@@ -173,7 +173,7 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
       auto totalLength = db.get_total_length();
       qDebug() << "xapian database total length(compact):" << totalLength;
     }
-    
+
     db.close();
 
     Utils::Fs::removeDirectory( dict->ftsIndexName() + "_temp" );
