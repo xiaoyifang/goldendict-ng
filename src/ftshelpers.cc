@@ -113,7 +113,7 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
 
     for ( auto const & address : offsets ) {
       //check every 1000 documents.
-      if(indexedDoc%1000 == 0){
+      if ( indexedDoc % 1000 == 0 ) {
         auto totalLength = db.get_total_length();
         qDebug() << "xapian database length:" << totalLength;
       }
