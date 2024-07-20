@@ -545,6 +545,8 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
         articleNewText.clear();
       }
 
+      qDebug().noquote() << "StardictDictionary::handleResource: " << articleText;
+
       return articleText.toStdString();
     }
     case 'm': // Pure meaning, usually means preformatted text
