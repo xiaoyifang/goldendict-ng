@@ -9,7 +9,7 @@ Type the desired word in "Search line" to search.
 Search modes
 
 * "Default" — This follows the [xapian search syntax](https://xapian.org/docs/queryparser.html). 
-Note that phrase and NEAR search needs the positional information when indexing.  The positional information will make the xapian index file too big.  The program has used a balanced way to enable or disable the positional information automatically based on the total document length.which means the positional information will not be disabled when the ditionary has reached the limit.
+Note that phrase and NEAR search needs the positional information which may make the Xapian index file impractically large. GoldenDict will heuristically disable positional information when the length of document length reaches a certain limit.
 * "Plain text" - mode like "Whole words" but every word in search line can be treated as word fragment.
 * "Wildcards" - As xapian index only support wildcard syntax like this  "hell*" ,  the wildcard in the middle(eg."he*lo") is not supported.
 
