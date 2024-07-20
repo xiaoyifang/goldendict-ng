@@ -545,7 +545,7 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
         articleNewText.clear();
       }
 
-      qDebug().noquote() << "StardictDictionary::handleResource: " << articleText;
+      qDebug().noquote() << "StardictDictionary::handleResource: "<<type<<"|"<<resource<<"|" << articleText;
 
       return articleText.toStdString();
     }
