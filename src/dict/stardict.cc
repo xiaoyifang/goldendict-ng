@@ -1738,7 +1738,7 @@ static void handleIdxSynFile( string const & fileName,
         if ( headword.find_first_of( '$' ) != string::npos )
           continue; // Skip this entry
       }
-      else if ( headword.end() == '$' ) {
+      else if ( headword.back() == '$' ) {
         if ( headword.find_first_of( '/' ) != string::npos )
           continue; // Skip this entry
       }
