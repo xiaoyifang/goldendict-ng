@@ -1660,7 +1660,7 @@ static void handleIdxSynFile( string const & fileName,
     }
 
     if ( rd != 65536 ) {
-      image.resize( oldSize + rd + 1 );
+      image.resize( oldSize + rd );
       break;
     }
   }
