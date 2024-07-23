@@ -137,7 +137,7 @@ ArticleView::ArticleView( QWidget * parent,
   connect( searchPanel->previous, &QPushButton::clicked, this, &ArticleView::on_searchPrevious_clicked );
   connect( searchPanel->next, &QPushButton::clicked, this, &ArticleView::on_searchNext_clicked );
   connect( searchPanel->close, &QPushButton::clicked, this, &ArticleView::on_searchCloseButton_clicked );
-  connect( searchPanel->caseSensitive, &QCheckBox::clicked, this, &ArticleView::on_searchCaseSensitive_clicked );
+  connect( searchPanel->caseSensitive, &QCheckBox::toggled, this, &ArticleView::on_searchCaseSensitive_clicked );
   connect( searchPanel->lineEdit, &QLineEdit::textEdited, this, &ArticleView::on_searchText_textEdited );
   connect( searchPanel->lineEdit, &QLineEdit::returnPressed, this, &ArticleView::on_searchText_returnPressed );
   connect( ftsSearchPanel->next, &QPushButton::clicked, this, &ArticleView::on_ftsSearchNext_clicked );
@@ -1963,7 +1963,7 @@ void ArticleView::on_searchCloseButton_clicked()
   closeSearch();
 }
 
-void ArticleView::on_searchCaseSensitive_clicked()
+void ArticleView::on_searchCaseSensitive_clicked( bool checked )
 {
   //clear the previous findText results.
   //when the results is empty, the highlight has not been removed.more likely a qt bug.
