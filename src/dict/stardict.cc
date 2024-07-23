@@ -1684,7 +1684,7 @@ static void handleIdxSynFile( string const & fileName,
 
     string headword( word, wordLen );
 
-    if ( strstr( headword, "&#" ) ) {
+    if ( headword.find_first_of( "&#" ) != string::npos ) {
       // Decode some html-coded symbols in headword
       headword = Html::unescapeUtf8( headword );
       wordLen  = headword.length();
@@ -1735,11 +1735,11 @@ static void handleIdxSynFile( string const & fileName,
       // synonyms which really start from slash and contain dollar signs, or
       // end with dollar and contain slashes.
       if ( headword.front() == '/' ) {
-        if ( strchr( headword, '$' ) )
+        if ( headword.find_first_of( '$' ) !=string::npos )
           continue; // Skip this entry
       }
       else if ( headword.end() == '$' ) {
-        if ( strchr( headword, '/' ) )
+        if ( headword.find_first_of( '/' ) != string::npos )
           continue; // Skip this entry
       }
 
