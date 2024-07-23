@@ -1682,12 +1682,12 @@ static void handleIdxSynFile( string const & fileName,
 
     uint32_t offset;
 
-    string headword(word,wordLen);
+    string headword( word, wordLen );
 
     if ( strstr( headword, "&#" ) ) {
       // Decode some html-coded symbols in headword
       headword = Html::unescapeUtf8( headword );
-      wordLen         = strlen( headword );
+      wordLen  = strlen( headword );
     }
 
     if ( !isSynFile ) {
