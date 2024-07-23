@@ -1682,11 +1682,12 @@ static void handleIdxSynFile( string const & fileName,
 
     uint32_t offset;
 
-    if ( strstr( word, "&#" ) ) {
+    string headword(word,wordLen);
+
+    if ( strstr( headword, "&#" ) ) {
       // Decode some html-coded symbols in headword
-      string unescapedWord = Html::unescapeUtf8( word );
-      strncpy( (char *)word, unescapedWord.c_str(), wordLen );
-      wordLen = strlen( word );
+      headword = Html::unescapeUtf8( headword );
+      wordLen         = strlen( headword );
     }
 
     if ( !isSynFile ) {
@@ -1710,7 +1711,7 @@ static void handleIdxSynFile( string const & fileName,
 
       chunks.addToBlock( &articleOffset, sizeof( uint32_t ) );
       chunks.addToBlock( &articleSize, sizeof( uint32_t ) );
-      chunks.addToBlock( word, wordLen + 1 );
+      chunks.addToBlock( headword.data(), wordLen + 1 );
     }
     else {
       // We're processing the .syn file
@@ -1733,17 +1734,17 @@ static void handleIdxSynFile( string const & fileName,
       // punctuation folding. Hopefully there are not a whole lot of valid
       // synonyms which really start from slash and contain dollar signs, or
       // end with dollar and contain slashes.
-      if ( *word == '/' ) {
-        if ( strchr( word, '$' ) )
+      if ( headword.front() == '/' ) {
+        if ( strchr( headword, '$' ) )
           continue; // Skip this entry
       }
-      else if ( wordLen && word[ wordLen - 1 ] == '$' ) {
-        if ( strchr( word, '/' ) )
+      else if ( headword.end() == '$' ) {
+        if ( strchr( headword, '/' ) )
           continue; // Skip this entry
       }
 
       // if the entry is hypen, skip
-      if ( wordLen == 1 && *word == '-' ) {
+      if ( wordLen == 1 && headword.front() == '-' ) {
         continue; // Skip this entry
       }
     }
@@ -1751,9 +1752,9 @@ static void handleIdxSynFile( string const & fileName,
     // Insert new entry into an index
 
     if ( parseHeadwords )
-      indexedWords.addWord( Utf8::decode( word ), offset );
+      indexedWords.addWord( Utf8::decode( headword ), offset );
     else
-      indexedWords.addSingleWord( Utf8::decode( word ), offset );
+      indexedWords.addSingleWord( Utf8::decode( headword ), offset );
   }
 
   GD_DPRINTF( "%u entires made\n", (unsigned)indexedWords.size() );
