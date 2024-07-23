@@ -1735,7 +1735,7 @@ static void handleIdxSynFile( string const & fileName,
       // synonyms which really start from slash and contain dollar signs, or
       // end with dollar and contain slashes.
       if ( headword.front() == '/' ) {
-        if ( headword.find_first_of( '$' ) !=string::npos )
+        if ( headword.find_first_of( '$' ) != string::npos )
           continue; // Skip this entry
       }
       else if ( headword.end() == '$' ) {
