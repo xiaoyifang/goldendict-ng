@@ -324,7 +324,7 @@ void StardictDictionary::getArticleProps( uint32_t articleAddress,
   memcpy( &headwordSize, articleData, sizeof( uint32_t ) );
   articleData += sizeof( uint32_t );
 
-  headword.assign(articleData,headwordSize);
+  headword.assign( articleData, headwordSize );
 }
 
 class PowerWordDataProcessor
