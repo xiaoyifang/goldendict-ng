@@ -90,7 +90,7 @@ struct Ifo
 
 enum {
   Signature            = 0x58444953, // SIDX on little-endian, XDIS on big-endian
-  CurrentFormatVersion = 9 + BtreeIndexing::FormatVersion + Folding::Version
+  CurrentFormatVersion = 10 + BtreeIndexing::FormatVersion + Folding::Version
 };
 
 struct IdxHeader
@@ -320,7 +320,11 @@ void StardictDictionary::getArticleProps( uint32_t articleAddress,
   memcpy( &size, articleData, sizeof( uint32_t ) );
   articleData += sizeof( uint32_t );
 
-  headword = articleData;
+  uint32_t headwordSize;
+  memcpy( &headwordSize, articleData, sizeof( uint32_t ) );
+  articleData += sizeof( uint32_t );
+
+  headword.assign(articleData,headwordSize);
 }
 
 class PowerWordDataProcessor
@@ -1711,7 +1715,8 @@ static void handleIdxSynFile( string const & fileName,
 
       chunks.addToBlock( &articleOffset, sizeof( uint32_t ) );
       chunks.addToBlock( &articleSize, sizeof( uint32_t ) );
-      chunks.addToBlock( headword.data(), wordLen + 1 );
+      chunks.addToBlock( &wordLen, sizeof( uint32_t ) );
+      chunks.addToBlock( headword.c_str(), wordLen + 1 );
     }
     else {
       // We're processing the .syn file
