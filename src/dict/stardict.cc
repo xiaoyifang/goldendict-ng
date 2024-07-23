@@ -1675,6 +1675,11 @@ static void handleIdxSynFile( string const & fileName,
   for ( char const * ptr = &image.front(); ptr != &image.back(); ) {
     size_t wordLen = strlen( ptr );
 
+    if ( wordLen == 0 ) {
+      ptr++;
+      continue;
+    }
+
     if ( ptr + wordLen + 1 + ( isSynFile ? sizeof( uint32_t ) : sizeof( uint32_t ) * 2 ) > &image.back() ) {
       GD_FDPRINTF( stderr, "Warning: sudden end of file %s\n", fileName.c_str() );
       break;
