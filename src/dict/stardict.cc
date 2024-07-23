@@ -1687,7 +1687,7 @@ static void handleIdxSynFile( string const & fileName,
     if ( strstr( headword, "&#" ) ) {
       // Decode some html-coded symbols in headword
       headword = Html::unescapeUtf8( headword );
-      wordLen  = strlen( headword );
+      wordLen  = headword.length();
     }
 
     if ( !isSynFile ) {
