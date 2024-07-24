@@ -529,13 +529,12 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
           articleNewText += match.captured();
 
         else {
-          std::string href = "\"gdau://" + getId() + "/" + src.toUtf8().data() + "\"";
-          QString newTag   = QString::fromStdString(
-             addAudioLink( href, getId() ) + "<span class=\"sdict_h_wav\"><a href=" + href + ">"  );
-          newTag += match.captured( 4 );
-          if ( match.captured( 4 ).indexOf( "<img " ) < 0 )
-
+          std::string href   = "\"gdau://" + getId() + "/" + src.toUtf8().data() + "\"";
+          std::string newTag = addAudioLink( href, getId() ) + "<span class=\"sdict_h_wav\"><a href=" + href + ">";
+          newTag += match.captured( 4 ).c_str();
+          if ( match.captured( 4 ).indexOf( "<img " ) < 0 ) {
             newTag += R"( <img src="qrc:///icons/playsound.png" border="0" alt="Play">)";
+          }
           newTag += "</a></span>";
 
           articleNewText += newTag;
@@ -546,8 +545,8 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
         articleText = articleNewText;
         articleNewText.clear();
       }
-
-      return articleText.toUtf8().constData();
+      auto text = articleText.toUtf8();
+      return text.data();
     }
     case 'm': // Pure meaning, usually means preformatted text
       return "<div class=\"sdct_m\">" + Html::preformat( string( resource, size ), isToLanguageRTL() ) + "</div>";
