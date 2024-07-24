@@ -130,7 +130,7 @@ string escapeForJavaScript( string const & str )
   return result;
 }
 
-void stripHtml( QString & tmp )
+QString stripHtml( QString tmp )
 {
   static QRegularExpression htmlRegex(
     "<(?:\\s*/?(?:div|h[1-6r]|q|p(?![alr])|br|li(?![ns])|td|blockquote|[uo]l|pre|d[dl]|nav|address))[^>]{0,}>",
@@ -138,17 +138,17 @@ void stripHtml( QString & tmp )
   tmp.replace( htmlRegex, " " );
   static QRegularExpression htmlElementRegex( "<[^>]*>" );
   tmp.replace( htmlElementRegex, " " );
+  return tmp;
 }
 
-QString unescape( QString const & str, HtmlOption option )
+QString unescape( QString str, HtmlOption option )
 {
   // Does it contain HTML? If it does, we need to strip it
   if ( str.contains( '<' ) || str.contains( '&' ) ) {
-    QString tmp = str;
     if ( option == HtmlOption::Strip ) {
-      stripHtml( tmp );
+      str = stripHtml( str );
     }
-    return QTextDocumentFragment::fromHtml( tmp.trimmed() ).toPlainText();
+    return QTextDocumentFragment::fromHtml( str.trimmed() ).toPlainText();
   }
   return str;
 }
