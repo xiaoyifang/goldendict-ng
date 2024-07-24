@@ -450,104 +450,9 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
       return Xdxf2Html::convert( string( resource, size ), Xdxf2Html::STARDICT, NULL, this, &resourceZip );
     case 'h': // Html content
     {
-      QString articleText = QString( "<div class=\"sdct_h\">" ) + QString::fromUtf8( resource, size ) + "</div>";
+      QString articleText = QString::fromUtf8( resource, size ) ;
 
-      QRegularExpression imgRe( R"((<\s*(?:img|script)\s+[^>]*src\s*=\s*["']?)(?!(?:data|https?|ftp):))",
-                                QRegularExpression::CaseInsensitiveOption );
-      QRegularExpression linkRe( R"((<\s*link\s+[^>]*href\s*=\s*["']?)(?!(?:data|https?|ftp):))",
-                                 QRegularExpression::CaseInsensitiveOption );
-
-      articleText.replace( imgRe, "\\1bres://" + QString::fromStdString( getId() ) + "/" )
-        .replace( linkRe, "\\1bres://" + QString::fromStdString( getId() ) + "/" );
-
-      // Handle links to articles
-
-      QRegularExpression linksReg( R"(<a(\s*[^>]*)href\s*=\s*['"](bword://)?([^'"]+)['"])",
-                                   QRegularExpression::CaseInsensitiveOption );
-
-
-      int pos = 0;
-      QString articleNewText;
-      QRegularExpressionMatchIterator it = linksReg.globalMatch( articleText );
-      while ( it.hasNext() ) {
-        QRegularExpressionMatch match = it.next();
-        articleNewText += articleText.mid( pos, match.capturedStart() - pos );
-        pos = match.capturedEnd();
-
-        QString link = match.captured( 3 );
-
-        if ( link.indexOf( ':' ) < 0 ) {
-          //compatible with issue #567
-          //such as bword://fl&#x205;k
-          if ( link.contains( RX::Html::htmlEntity ) ) {
-            link = Html::unescape( link );
-          }
-
-          QString newLink;
-          if ( link.indexOf( '#' ) < 0 )
-            newLink = QString( "<a" ) + match.captured( 1 ) + "href=\"bword:" + link + "\"";
-
-
-          // Anchors
-          if ( link.indexOf( '#' ) > 0 && link.indexOf( "&#" ) < 0 ) {
-            newLink = QString( "<a" ) + match.captured( 1 ) + "href=\"gdlookup://localhost/" + link + "\"";
-
-            newLink.replace( "#", "?gdanchor=" );
-          }
-
-          if ( !newLink.isEmpty() ) {
-            articleNewText += newLink;
-          }
-          else
-            articleNewText += match.captured();
-        }
-        else
-          articleNewText += match.captured();
-      }
-      if ( pos ) {
-        articleNewText += articleText.mid( pos );
-        articleText = articleNewText;
-        articleNewText.clear();
-      }
-
-      // Handle "audio" tags
-
-      QRegularExpression audioRe( R"(<\s*audio\s*src\s*=\s*(["']+)([^"']+)(["'])\s*>(.*)</audio>)",
-                                  QRegularExpression::CaseInsensitiveOption
-                                    | QRegularExpression::DotMatchesEverythingOption );
-
-
-      pos = 0;
-
-      it = audioRe.globalMatch( articleText );
-      while ( it.hasNext() ) {
-        QRegularExpressionMatch match = it.next();
-        articleNewText += articleText.mid( pos, match.capturedStart() - pos );
-        pos = match.capturedEnd();
-
-        QString src = match.captured( 2 );
-
-        if ( src.indexOf( "://" ) >= 0 )
-          articleNewText += match.captured();
-
-        else {
-          std::string href = "\"gdau://" + getId() + "/" + src.toUtf8().data() + "\"";
-          QString newTag   = QString::fromUtf8(
-            ( addAudioLink( href, getId() ) + "<span class=\"sdict_h_wav\"><a href=" + href + ">" ).c_str() );
-          newTag += match.captured( 4 );
-          if ( match.captured( 4 ).indexOf( "<img " ) < 0 )
-
-            newTag += R"( <img src="qrc:///icons/playsound.png" border="0" alt="Play">)";
-          newTag += "</a></span>";
-
-          articleNewText += newTag;
-        }
-      }
-      if ( pos ) {
-        articleNewText += articleText.mid( pos );
-        articleText = articleNewText;
-        articleNewText.clear();
-      }
+//test purpose.
 
       return articleText.toStdString();
     }
@@ -876,7 +781,7 @@ void StardictDictionary::loadArticle( uint32_t address, string & headword, strin
 
   char * articleBody;
 
-  //escalate the lock
+  //escalate the lock to the method level
   QMutexLocker _( &dzMutex );
   // Note that the function always zero-pads the result.
   articleBody = dict_data_read_( dz, offset, size, 0, 0 );
