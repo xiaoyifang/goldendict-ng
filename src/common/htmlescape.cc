@@ -130,15 +130,14 @@ string escapeForJavaScript( string const & str )
   return result;
 }
 
-QString stripHtml( QString & tmp )
+void stripHtml( QString & tmp )
 {
-  tmp.replace(
-    QRegularExpression(
-      "<(?:\\s*/?(?:div|h[1-6r]|q|p(?![alr])|br|li(?![ns])|td|blockquote|[uo]l|pre|d[dl]|nav|address))[^>]{0,}>",
-      QRegularExpression::CaseInsensitiveOption ),
-    " " );
-  tmp.replace( QRegularExpression( "<[^>]*>" ), " " );
-  return tmp;
+  static QRegularExpression htmlRegex(
+    "<(?:\\s*/?(?:div|h[1-6r]|q|p(?![alr])|br|li(?![ns])|td|blockquote|[uo]l|pre|d[dl]|nav|address))[^>]{0,}>",
+    QRegularExpression::CaseInsensitiveOption );
+  tmp.replace( htmlRegex, " " );
+  static QRegularExpression htmlElementRegex( "<[^>]*>" );
+  tmp.replace( htmlElementRegex, " " );
 }
 
 QString unescape( QString const & str, HtmlOption option )
