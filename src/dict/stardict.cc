@@ -876,12 +876,10 @@ void StardictDictionary::loadArticle( uint32_t address, string & headword, strin
 
   char * articleBody;
 
-  {
-    QMutexLocker _( &dzMutex );
-
-    // Note that the function always zero-pads the result.
-    articleBody = dict_data_read_( dz, offset, size, 0, 0 );
-  }
+  //escalate the lock
+  QMutexLocker _( &dzMutex );
+  // Note that the function always zero-pads the result.
+  articleBody = dict_data_read_( dz, offset, size, 0, 0 );
 
   if ( !articleBody ) {
     //    throw exCantReadFile( getDictionaryFilenames()[ 2 ] );
