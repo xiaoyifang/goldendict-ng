@@ -450,9 +450,9 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
       return Xdxf2Html::convert( string( resource, size ), Xdxf2Html::STARDICT, NULL, this, &resourceZip );
     case 'h': // Html content
     {
-      QString articleText = QString::fromUtf8( resource, size ) ;
+      QString articleText = QString::fromUtf8( resource, size );
 
-//test purpose.
+      //test purpose.
 
       return articleText.toStdString();
     }
