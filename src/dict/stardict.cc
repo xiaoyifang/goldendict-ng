@@ -537,7 +537,7 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
           }
           newTag += "</a></span>";
 
-          articleNewText += newTag;
+          articleNewText += QString::fromStdString( newTag );
         }
       }
       if ( pos ) {
