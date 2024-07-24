@@ -525,9 +525,9 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
 
         QString src = match.captured( 2 );
 
-        if ( src.indexOf( "://" ) >= 0 )
+        if ( src.indexOf( "://" ) >= 0 ) {
           articleNewText += match.captured();
-
+        }
         else {
           std::string href   = "\"gdau://" + getId() + "/" + src.toUtf8().data() + "\"";
           std::string newTag = addAudioLink( href, getId() ) + "<span class=\"sdict_h_wav\"><a href=" + href + ">";
