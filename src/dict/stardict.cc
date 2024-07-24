@@ -530,8 +530,8 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
 
         else {
           std::string href = "\"gdau://" + getId() + "/" + src.toUtf8().data() + "\"";
-          QString newTag   = QString::fromUtf8(
-            ( addAudioLink( href, getId() ) + "<span class=\"sdict_h_wav\"><a href=" + href + ">" ).c_str() );
+          QString newTag   = QString::fromStdString(
+             addAudioLink( href, getId() ) + "<span class=\"sdict_h_wav\"><a href=" + href + ">"  );
           newTag += match.captured( 4 );
           if ( match.captured( 4 ).indexOf( "<img " ) < 0 )
 
@@ -547,7 +547,7 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
         articleNewText.clear();
       }
 
-      return articleText.toLocal8Bit().constData();
+      return articleText.toUtf8().constData();
     }
     case 'm': // Pure meaning, usually means preformatted text
       return "<div class=\"sdct_m\">" + Html::preformat( string( resource, size ), isToLanguageRTL() ) + "</div>";
