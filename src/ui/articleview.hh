@@ -357,7 +357,7 @@ private slots:
   void on_searchText_textEdited();
   void on_searchText_returnPressed();
   void on_searchCloseButton_clicked();
-  void on_searchCaseSensitive_clicked();
+  void on_searchCaseSensitive_clicked( bool );
 
   void on_ftsSearchPrevious_clicked();
   void on_ftsSearchNext_clicked();

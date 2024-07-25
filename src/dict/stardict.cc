@@ -422,10 +422,12 @@ private:
       }
       old = s;
     }
-    s.replace( QRegularExpression( "&.\\s*\\{",
-                                   QRegularExpression::UseUnicodePropertiesOption
-                                     | QRegularExpression::DotMatchesEverythingOption ),
-               "" );
+
+    static QRegularExpression leadingBrace( "&.\\s*\\{",
+                                            QRegularExpression::UseUnicodePropertiesOption
+                                              | QRegularExpression::DotMatchesEverythingOption );
+
+    s.replace( leadingBrace, "" );
     s.replace( "}", "" );
   }
 
@@ -448,18 +450,18 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
     {
       QString articleText = QString( "<div class=\"sdct_h\">" ) + QString::fromUtf8( resource, size ) + "</div>";
 
-      QRegularExpression imgRe( R"((<\s*(?:img|script)\s+[^>]*src\s*=\s*["']?)(?!(?:data|https?|ftp):))",
-                                QRegularExpression::CaseInsensitiveOption );
-      QRegularExpression linkRe( R"((<\s*link\s+[^>]*href\s*=\s*["']?)(?!(?:data|https?|ftp):))",
-                                 QRegularExpression::CaseInsensitiveOption );
+      static QRegularExpression imgRe( R"((<\s*(?:img|script)\s+[^>]*src\s*=\s*["']?)(?!(?:data|https?|ftp):))",
+                                       QRegularExpression::CaseInsensitiveOption );
+      static QRegularExpression linkRe( R"((<\s*link\s+[^>]*href\s*=\s*["']?)(?!(?:data|https?|ftp):))",
+                                        QRegularExpression::CaseInsensitiveOption );
 
       articleText.replace( imgRe, "\\1bres://" + QString::fromStdString( getId() ) + "/" )
         .replace( linkRe, "\\1bres://" + QString::fromStdString( getId() ) + "/" );
 
       // Handle links to articles
 
-      QRegularExpression linksReg( R"(<a(\s*[^>]*)href\s*=\s*['"](bword://)?([^'"]+)['"])",
-                                   QRegularExpression::CaseInsensitiveOption );
+      static QRegularExpression linksReg( R"(<a(\s*[^>]*)href\s*=\s*['"](bword://)?([^'"]+)['"])",
+                                          QRegularExpression::CaseInsensitiveOption );
 
 
       int pos = 0;
@@ -508,9 +510,9 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
 
       // Handle "audio" tags
 
-      QRegularExpression audioRe( R"(<\s*audio\s*src\s*=\s*(["']+)([^"']+)(["'])\s*>(.*)</audio>)",
-                                  QRegularExpression::CaseInsensitiveOption
-                                    | QRegularExpression::DotMatchesEverythingOption );
+      static QRegularExpression audioRe( R"(<\s*audio\s*src\s*=\s*(["']+)([^"']+)(["'])\s*>(.*)</audio>)",
+                                         QRegularExpression::CaseInsensitiveOption
+                                           | QRegularExpression::DotMatchesEverythingOption );
 
 
       pos = 0;
@@ -523,20 +525,19 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
 
         QString src = match.captured( 2 );
 
-        if ( src.indexOf( "://" ) >= 0 )
+        if ( src.indexOf( "://" ) >= 0 ) {
           articleNewText += match.captured();
-
+        }
         else {
-          std::string href = "\"gdau://" + getId() + "/" + src.toUtf8().data() + "\"";
-          QString newTag   = QString::fromUtf8(
-            ( addAudioLink( href, getId() ) + "<span class=\"sdict_h_wav\"><a href=" + href + ">" ).c_str() );
-          newTag += match.captured( 4 );
-          if ( match.captured( 4 ).indexOf( "<img " ) < 0 )
-
+          std::string href   = "\"gdau://" + getId() + "/" + src.toUtf8().data() + "\"";
+          std::string newTag = addAudioLink( href, getId() ) + "<span class=\"sdict_h_wav\"><a href=" + href + ">";
+          newTag += match.captured( 4 ).toUtf8().constData();
+          if ( match.captured( 4 ).indexOf( "<img " ) < 0 ) {
             newTag += R"( <img src="qrc:///icons/playsound.png" border="0" alt="Play">)";
+          }
           newTag += "</a></span>";
 
-          articleNewText += newTag;
+          articleNewText += QString::fromStdString( newTag );
         }
       }
       if ( pos ) {
@@ -544,8 +545,8 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
         articleText = articleNewText;
         articleNewText.clear();
       }
-
-      return ( articleText.toUtf8().data() );
+      auto text = articleText.toUtf8();
+      return text.data();
     }
     case 'm': // Pure meaning, usually means preformatted text
       return "<div class=\"sdct_m\">" + Html::preformat( string( resource, size ), isToLanguageRTL() ) + "</div>";
@@ -614,8 +615,8 @@ void StardictDictionary::pangoToHtml( QString & text )
  * Attributes "fallback", "lang", "gravity", "gravity_hint" just ignored
  */
 
-  QRegularExpression spanRegex( "<span\\s*([^>]*)>", QRegularExpression::CaseInsensitiveOption );
-  QRegularExpression styleRegex( "(\\w+)=\"([^\"]*)\"" );
+  static QRegularExpression spanRegex( "<span\\s*([^>]*)>", QRegularExpression::CaseInsensitiveOption );
+  static QRegularExpression styleRegex( "(\\w+)=\"([^\"]*)\"" );
 
   text.replace( "\n", "<br>" );
 
@@ -1554,7 +1555,8 @@ void StardictResourceRequest::run()
       QString id = QString::fromUtf8( dict.getId().c_str() );
       int pos    = 0;
 
-      QRegularExpression links( R"(url\(\s*(['"]?)([^'"]*)(['"]?)\s*\))", QRegularExpression::CaseInsensitiveOption );
+      static QRegularExpression links( R"(url\(\s*(['"]?)([^'"]*)(['"]?)\s*\))",
+                                       QRegularExpression::CaseInsensitiveOption );
 
       QString newCSS;
       QRegularExpressionMatchIterator it = links.globalMatch( css );
