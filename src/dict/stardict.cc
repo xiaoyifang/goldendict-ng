@@ -525,20 +525,19 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
 
         QString src = match.captured( 2 );
 
-        if ( src.indexOf( "://" ) >= 0 )
+        if ( src.indexOf( "://" ) >= 0 ) {
           articleNewText += match.captured();
-
+        }
         else {
-          std::string href = "\"gdau://" + getId() + "/" + src.toUtf8().data() + "\"";
-          QString newTag   = QString::fromUtf8(
-            ( addAudioLink( href, getId() ) + "<span class=\"sdict_h_wav\"><a href=" + href + ">" ).c_str() );
-          newTag += match.captured( 4 );
-          if ( match.captured( 4 ).indexOf( "<img " ) < 0 )
-
+          std::string href   = "\"gdau://" + getId() + "/" + src.toUtf8().data() + "\"";
+          std::string newTag = addAudioLink( href, getId() ) + "<span class=\"sdict_h_wav\"><a href=" + href + ">";
+          newTag += match.captured( 4 ).toUtf8().constData();
+          if ( match.captured( 4 ).indexOf( "<img " ) < 0 ) {
             newTag += R"( <img src="qrc:///icons/playsound.png" border="0" alt="Play">)";
+          }
           newTag += "</a></span>";
 
-          articleNewText += newTag;
+          articleNewText += QString::fromStdString( newTag );
         }
       }
       if ( pos ) {
@@ -546,8 +545,8 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
         articleText = articleNewText;
         articleNewText.clear();
       }
-
-      return articleText.toStdString();
+      auto text = articleText.toUtf8();
+      return text.data();
     }
     case 'm': // Pure meaning, usually means preformatted text
       return "<div class=\"sdct_m\">" + Html::preformat( string( resource, size ), isToLanguageRTL() ) + "</div>";
