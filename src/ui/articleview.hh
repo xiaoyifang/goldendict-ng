@@ -65,7 +65,6 @@ class ArticleView: public QWidget
   QAction * dictionaryBarToggled;
 
   unsigned currentGroupId;
-  QLineEdit const * translateLine;
 
   /// current searching word.
   QString currentWord;
@@ -98,7 +97,6 @@ public:
                Instances::Groups const &,
                bool popupView,
                Config::Class const & cfg,
-               QLineEdit const * translateLine,
                QAction * dictionaryBarToggled = nullptr,
                unsigned currentGroupId        = 0 );
 

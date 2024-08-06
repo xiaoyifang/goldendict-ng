@@ -1740,7 +1740,6 @@ ArticleView * MainWindow::createNewTab( bool switchToIt, QString const & name )
                                         groupInstances,
                                         false,
                                         cfg,
-                                        translateLine,
                                         dictionaryBar.toggleViewAction(),
                                         groupList->getCurrentGroup() );
 

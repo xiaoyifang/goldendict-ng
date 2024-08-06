@@ -93,7 +93,6 @@ ArticleView::ArticleView( QWidget * parent,
                           Instances::Groups const & groups_,
                           bool popupView_,
                           Config::Class const & cfg_,
-                          QLineEdit const * translateLine_,
                           QAction * dictionaryBarToggled_,
                           unsigned int currentGroupId_ ):
   QWidget( parent ),
@@ -111,8 +110,7 @@ ArticleView::ArticleView( QWidget * parent,
   copyAsTextAction( this ),
   inspectAction( this ),
   dictionaryBarToggled( dictionaryBarToggled_ ),
-  currentGroupId( currentGroupId_ ),
-  translateLine( translateLine_ )
+  currentGroupId( currentGroupId_ )
 {
   // setup GUI
   webview        = new ArticleWebView( this );
@@ -910,7 +908,7 @@ void ArticleView::makeAnkiCardFromArticle( QString const & article_id )
 {
   auto const js_code = QString( R"EOF(document.getElementById("gdarticlefrom-%1").innerText)EOF" ).arg( article_id );
   webview->page()->runJavaScript( js_code, [ this ]( const QVariant & article_text ) {
-    sendToAnki( webview->title(), article_text.toString(), translateLine->text() );
+    sendToAnki( webview->title(), article_text.toString(), GlobalBroadcaster::instance()->translateLineText );
   } );
 }
 
@@ -939,7 +937,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
       makeAnkiCardFromArticle( url.path() );
     }
     else {
-      sendToAnki( webview->title(), webview->selectedText(), translateLine->text() );
+      sendToAnki( webview->title(), webview->selectedText(), GlobalBroadcaster::instance()->translateLineText );
     }
     qDebug() << "requested to make Anki card.";
     return;
@@ -1359,7 +1357,7 @@ void ArticleView::handleAnkiAction()
     makeAnkiCardFromArticle( getActiveArticleId() );
   }
   else {
-    sendToAnki( webview->title(), webview->selectedText(), translateLine->text() );
+    sendToAnki( webview->title(), webview->selectedText(), GlobalBroadcaster::instance()->translateLineText );
   }
 }
 
