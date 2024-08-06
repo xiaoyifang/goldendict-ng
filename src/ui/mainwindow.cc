@@ -2751,7 +2751,6 @@ void MainWindow::toggleMainWindow( bool onlyShow )
   if ( !cfg.preferences.searchInDock )
     translateBox->setPopupEnabled( false );
 
-  qDebug() << "Current state:" << isVisible() << isMinimized() << isActiveWindow() << onlyShow;
   if ( !isVisible() ) {
     show();
 
