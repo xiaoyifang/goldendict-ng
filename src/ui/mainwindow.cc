@@ -1216,6 +1216,32 @@ void MainWindow::commitData()
       if ( d.exists() ) {
         d.removeRecursively();
       }
+      //temp dir
+      QDir dtemp( filePath + "_FTS_x_temp" );
+      if ( dtemp.exists() ) {
+        dtemp.removeRecursively();
+      }
+    }
+
+
+    //remove temp directories.
+    QFileInfoList const entries = dir.entryInfoList( QDir::Dirs | QDir::NoDotAndDotDot );
+
+    for ( auto & file : entries ) {
+      QString const fileName = file.fileName();
+
+      if ( !fileName.endsWith( "_temp" ) )
+        continue;
+
+      const QFileInfo info( fileName );
+      const QDateTime lastModified = info.lastModified();
+
+      //if the temp directory has not been modified within 7 days,remove the temp directory.
+      if ( lastModified.addDays( 7 ) > QDateTime::currentDateTime() ) {
+        continue;
+      }
+      QDir d( fileName );
+      d.removeRecursively();
     }
   }
 
