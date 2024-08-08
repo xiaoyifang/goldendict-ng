@@ -593,7 +593,8 @@ void ScanPopup::currentGroupChanged( int )
 
   if ( isVisible() ) {
     updateSuggestionList();
-    translateInputFinished();
+    QString word = Folding::unescapeWildcardSymbols( definition->getWord() );
+    showTranslationFor( word );
   }
 
   cfg.lastPopupGroupId = ui.groupList->getCurrentGroup();
