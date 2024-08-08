@@ -629,8 +629,8 @@ void ScanPopup::updateSuggestionList( QString const & text )
 
 void ScanPopup::translateInputFinished()
 {
-  pendingWord = Folding::unescapeWildcardSymbols( ui.translateBox->translateLine()->text().trimmed() );
-  showTranslationFor( pendingWord );
+  QString word = Folding::unescapeWildcardSymbols( definition->getWord() );
+  showTranslationFor( word );
 }
 
 void ScanPopup::showTranslationFor( QString const & word ) const
