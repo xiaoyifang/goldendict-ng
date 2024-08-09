@@ -46,6 +46,7 @@ nav:
       - Wayland: topic_wayland.md
       - Debug dictionary JS: howto/how to debug dictionary js.md
       - Flatpak/FlatHub: topic_flatpak.md
+      - Move index folder: topic_move_index_folder.md
   - Related tools:
       - Anki Integration: topic_anki.md
       - OCR Integration: howto/ocr.md
