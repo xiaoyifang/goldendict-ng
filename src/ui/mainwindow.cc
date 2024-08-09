@@ -1225,9 +1225,9 @@ void MainWindow::commitData()
 
 
     //remove temp directories.
-    QFileInfoList const entries = dir.entryInfoList( QDir::Dirs | QDir::NoDotAndDotDot );
+    QFileInfoList const dirs = dir.entryInfoList( QDir::Dirs | QDir::NoDotAndDotDot );
 
-    for ( auto & file : entries ) {
+    for ( auto & file : dirs ) {
       QString const fileName = file.fileName();
 
       if ( !fileName.endsWith( "_temp" ) )
