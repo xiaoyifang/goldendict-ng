@@ -2114,25 +2114,11 @@ void ArticleView::highlightFTSResults()
   if ( parts.isEmpty() ) {
     return;
   }
-  //if parts has only one item.
-  if ( parts.length() == 1 ) {
-    firstAvailableText = parts[ 0 ];
-  }
-  else {
-    //hold the longest word
-    for ( int i = 0; i < parts.length(); i++ ) {
-      //minus one extra space
-      if ( p.size() > firstAvailableText.size() - 1 ) {
-        if ( i == 0 ) {
-          firstAvailableText = p + " ";
-        }
-        else if ( i == parts.length() - 1 ) {
-          firstAvailableText = " " + p;
-        }
-        else {
-          firstAvailableText = " " + p + " ";
-        }
-      }
+
+  //hold the longest word
+  for ( auto & p : parts ) {
+    if ( p.size() > firstAvailableText.size() ) {
+      firstAvailableText = p;
     }
   }
 
