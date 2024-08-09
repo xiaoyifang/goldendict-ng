@@ -2111,10 +2111,32 @@ void ArticleView::highlightFTSResults()
 
   webview->page()->runJavaScript( script );
   auto parts = regString.split( " ", Qt::SkipEmptyParts );
-  if ( !parts.isEmpty() ) {
-    firstAvailableText = parts[ 0 ];
-    ftsSearchPanel->show();
+  if ( parts.isEmpty() ) {
+    return;
   }
+  //if parts has only one item.
+  if ( parts.length() == 1 ) {
+    firstAvailableText = parts[ 0 ];
+  }
+  else {
+    //hold the longest word
+    for ( int i = 0; i < parts.length(); i++ ) {
+      //minus one extra space
+      if ( p.size() > firstAvailableText.size() - 1 ) {
+        if ( i == 0 ) {
+          firstAvailableText = p + " ";
+        }
+        else if ( i == parts.length() - 1 ) {
+          firstAvailableText = " " + p;
+        }
+        else {
+          firstAvailableText = " " + p + " ";
+        }
+      }
+    }
+  }
+
+  ftsSearchPanel->show();
 }
 
 void ArticleView::setActiveDictIds( const ActiveDictIds & ad )
