@@ -282,20 +282,16 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( QString const &
                                                                  bool ignoreDiacritics ) const
 {
   if ( !dictIDs.isEmpty() ) {
-    QStringList ids = dictIDs;
-    std::vector< sptr< Dictionary::Class > > ftsDicts;
+    std::vector< sptr< Dictionary::Class > > dicts;
 
     // Find dictionaries by ID's
-    for ( unsigned x = 0; x < dictionaries.size(); x++ ) {
-      for ( QStringList::Iterator it = ids.begin(); it != ids.end(); ++it ) {
-        if ( *it == QString::fromStdString( dictionaries[ x ]->getId() ) ) {
-          ftsDicts.push_back( dictionaries[ x ] );
-          ids.erase( it );
+    for ( const auto & dictId : dictIDs ) {
+      for ( unsigned x = 0; x < dictionaries.size(); x++ ) {
+        if ( dictId == QString::fromStdString( dictionaries[ x ]->getId() ) ) {
+          dicts.push_back( dictionaries[ x ] );
           break;
         }
       }
-      if ( ids.isEmpty() )
-        break;
     }
 
     string header = makeHtmlHeader( word, QString(), true );
@@ -303,7 +299,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( QString const &
     return std::make_shared< ArticleRequest >( word,
                                                Instances::Group{ groupId, "" },
                                                contexts,
-                                               ftsDicts,
+                                               dicts,
                                                header,
                                                -1,
                                                true );

@@ -2111,10 +2111,18 @@ void ArticleView::highlightFTSResults()
 
   webview->page()->runJavaScript( script );
   auto parts = regString.split( " ", Qt::SkipEmptyParts );
-  if ( !parts.isEmpty() ) {
-    firstAvailableText = parts[ 0 ];
-    ftsSearchPanel->show();
+  if ( parts.isEmpty() ) {
+    return;
   }
+
+  //hold the longest word
+  for ( auto & p : parts ) {
+    if ( p.size() > firstAvailableText.size() ) {
+      firstAvailableText = p;
+    }
+  }
+
+  ftsSearchPanel->show();
 }
 
 void ArticleView::setActiveDictIds( const ActiveDictIds & ad )
