@@ -373,7 +373,7 @@ static enum DZ_ERRORS dict_read_header( const char * filename, dictData * header
         fclose( str );
         if ( header->chunks ) {
           free( header->chunks );
-          header->chunks = 0;
+          header->chunks = NULL;
         }
         return DZ_ERR_INVALID_FORMAT;
       }
@@ -397,7 +397,7 @@ static enum DZ_ERRORS dict_read_header( const char * filename, dictData * header
         fclose( str );
         if ( header->chunks ) {
           free( header->chunks );
-          header->chunks = 0;
+          header->chunks = NULL;
         }
         return DZ_ERR_INVALID_FORMAT;
       }
@@ -422,7 +422,7 @@ static enum DZ_ERRORS dict_read_header( const char * filename, dictData * header
     fclose( str );
     if ( header->chunks ) {
       free( header->chunks );
-      header->chunks = 0;
+      header->chunks = NULL;
     }
     return DZ_ERR_INVALID_FORMAT;
   }
@@ -443,7 +443,7 @@ static enum DZ_ERRORS dict_read_header( const char * filename, dictData * header
   if ( header->offsets == 0 ) {
     if ( header->chunks ) {
       free( header->chunks );
-      header->chunks = 0;
+      header->chunks = NULL;
     }
     fclose( str );
     return DZ_ERR_NOMEMORY;
