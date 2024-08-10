@@ -371,8 +371,10 @@ static enum DZ_ERRORS dict_read_header( const char * filename, dictData * header
       if ( pt == buffer + sizeof( buffer ) ) {
         err_fatal( __func__, "too long FNAME field in dzip file \"%s\"\n", filename );
         fclose( str );
-        if ( header->chunks )
+        if ( header->chunks ) {
           free( header->chunks );
+          header->chunks = nullptr;
+        }
         return DZ_ERR_INVALID_FORMAT;
       }
     }
@@ -393,8 +395,10 @@ static enum DZ_ERRORS dict_read_header( const char * filename, dictData * header
       if ( pt == buffer + sizeof( buffer ) ) {
         err_fatal( __func__, "too long COMMENT field in dzip file \"%s\"\n", filename );
         fclose( str );
-        if ( header->chunks )
+        if ( header->chunks ) {
           free( header->chunks );
+          header->chunks = nullptr;
+        }
         return DZ_ERR_INVALID_FORMAT;
       }
     }
@@ -418,6 +422,7 @@ static enum DZ_ERRORS dict_read_header( const char * filename, dictData * header
     fclose( str );
     if ( header->chunks ) {
       free( header->chunks );
+      header->chunks = nullptr;
     }
     return DZ_ERR_INVALID_FORMAT;
   }
@@ -438,6 +443,7 @@ static enum DZ_ERRORS dict_read_header( const char * filename, dictData * header
   if ( header->offsets == 0 ) {
     if ( header->chunks ) {
       free( header->chunks );
+      header->chunks = nullptr;
     }
     fclose( str );
     return DZ_ERR_NOMEMORY;
