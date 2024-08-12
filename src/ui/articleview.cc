@@ -1430,7 +1430,8 @@ QString ArticleView::getTitle()
 
 QString ArticleView::getWord() const
 {
-  return currentWord;
+  return webview->history()->currentItem().title();
+  // return currentWord;
 }
 
 void ArticleView::print( QPrinter * printer ) const
