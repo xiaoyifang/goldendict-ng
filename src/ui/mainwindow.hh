@@ -161,11 +161,10 @@ private:
   bool wasMaximized; // Window state before minimization
 
   QPrinter & getPrinter(); // Creates a printer if it's not there and returns it
+  void saveConfigData();
 
   DictHeadwords * headwordsDlg;
-
   FTS::FtsIndexing ftsIndexing;
-
   FTS::FullTextSearchDialog * ftsDlg;
 
   QIcon starIcon, blueStarIcon;

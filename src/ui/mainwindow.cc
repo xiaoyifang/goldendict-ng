@@ -1274,6 +1274,20 @@ void MainWindow::commitData()
   }
 }
 
+void MainWindow::saveConfigData()
+{
+  try {
+    // Save MainWindow state and geometry
+    cfg.mainWindowState    = saveState();
+    cfg.mainWindowGeometry = saveGeometry();
+ 
+    Config::save( cfg );
+  }
+  catch ( std::exception & e ) {
+    gdWarning( "save config data failed, error: %s\n", e.what() );
+  }
+}
+
 QPrinter & MainWindow::getPrinter()
 {
   if ( printer.get() )
@@ -2521,6 +2535,8 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
       translateBox->setPopupEnabled( false );
       return false;
     }
+
+    saveConfigData();
   }
 
   if ( obj == this && ev->type() == QEvent::WindowStateChange ) {
