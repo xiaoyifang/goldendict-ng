@@ -23,7 +23,7 @@ void StateManager::setState( QByteArray state, QByteArray geometry )
   _dirty = true;
 
   //delay execution
-  QTimer::singleShot( 1000, this, [ = ]() {
+  QTimer::singleShot( 3000, this, [ = ]() {
     saveConfigData( state, geometry );
 
     _dirty = false;
