@@ -6,7 +6,7 @@ StateManager::StateManager( QWidget * parent, Config::Class & cfg ):
   _cfg( cfg )
 {
   _state = cfg.mainWindowState;
-  _geometry=.mainWindowGeometry;
+  _geometry = cfg.mainWindowGeometry;
 }
 
 
