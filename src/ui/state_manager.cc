@@ -23,8 +23,8 @@ void StateManager::setState( QString state, QString geometry )
   //delay execution
   QTimer::singleShot( 1000, &this, [ this, state, geometry ]() {
     saveConfigData( state, geometry );
-   
-    _dirty    = false;
+
+    _dirty = false;
   } );
 }
 
