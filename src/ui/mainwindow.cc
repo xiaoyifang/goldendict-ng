@@ -162,6 +162,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
                  cfg.preferences.disallowContentFromOtherSites,
                  cfg.preferences.hideGoldenDictHeader ),
   dictNetMgr( this ),
+  stateManager(this),
   audioPlayerFactory( cfg.preferences ),
   wordFinder( this ),
   wordListSelChanged( false ),
@@ -1276,16 +1277,7 @@ void MainWindow::commitData()
 
 void MainWindow::saveConfigData()
 {
-  try {
-    // Save MainWindow state and geometry
-    cfg.mainWindowState    = saveState();
-    cfg.mainWindowGeometry = saveGeometry();
- 
-    Config::save( cfg );
-  }
-  catch ( std::exception & e ) {
-    gdWarning( "save config data failed, error: %s\n", e.what() );
-  }
+    stateManager.setState( saveState(), saveGeometry() );
 }
 
 QPrinter & MainWindow::getPrinter()

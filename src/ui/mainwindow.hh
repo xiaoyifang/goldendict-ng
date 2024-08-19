@@ -40,6 +40,7 @@
 #if defined( Q_OS_MAC )
   #include "macos/gd_clipboard.hh"
 #endif
+#include "state_manager.hh"
 
 using std::string;
 using std::vector;
@@ -84,6 +85,8 @@ private:
   QScopedPointer< ArticleInspector > inspector;
 
   Ui::MainWindow ui;
+
+  StateManager stateManager;
 
   /// This widget is used as a title bar for the searchPane dock, and
   /// incorporates the next three objects inside
