@@ -162,7 +162,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
                  cfg.preferences.disallowContentFromOtherSites,
                  cfg.preferences.hideGoldenDictHeader ),
   dictNetMgr( this ),
-  stateManager(this),
+  stateManager( this ),
   audioPlayerFactory( cfg.preferences ),
   wordFinder( this ),
   wordListSelChanged( false ),
@@ -1277,7 +1277,7 @@ void MainWindow::commitData()
 
 void MainWindow::saveConfigData()
 {
-    stateManager.setState( saveState(), saveGeometry() );
+  stateManager.setState( saveState(), saveGeometry() );
 }
 
 QPrinter & MainWindow::getPrinter()

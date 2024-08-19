@@ -4,16 +4,18 @@
 StateManager::StateManager( QWidget * parent, Config::Class & cfg ):
   _cfg( cfg )
 {
-  _state = cfg.mainWindowState;
+  _state    = cfg.mainWindowState;
   _geometry = cfg.mainWindowGeometry;
 }
 
 
-void StateManager::setState( QString state,QString geometry ) {
-  if ( _dirty ) return;
+void StateManager::setState( QString state, QString geometry )
+{
+  if ( _dirty )
+    return;
 
 
-  if(state==_state&&_geometry==geometry){
+  if ( state == _state && _geometry == geometry ) {
     return;
   }
   _dirty = true;
@@ -21,7 +23,7 @@ void StateManager::setState( QString state,QString geometry ) {
   //delay execution
   QTimer::singleShot( 1000, &this, [ this, state, geometry ]() {
     saveConfigData( state, geometry );
-    _state = state;
+    _state    = state;
     _geometry = geometry;
     _dirty    = false;
   } );
