@@ -9,9 +9,9 @@ class StateManager: public QObject
   Q_OBJECT
 
 public:
-  StateManager( QWidget * parent, Config::Class & cfg );
+  StateManager( QObject * parent, Config::Class & cfg );
 
-  void setState( QByteArray state, QByteArray geometry );
+  void setState( const QByteArray & state, const QByteArray & geometry );
 
 private:
   bool _dirty;
@@ -19,7 +19,6 @@ private:
   QByteArray _state;
   QByteArray _geometry;
   void saveConfigData( QByteArray state, QByteArray geometry );
-  QMutex _mutex;
 };
 
 #endif // STATE_MANAGER_HH

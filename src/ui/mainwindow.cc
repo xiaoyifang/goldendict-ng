@@ -162,7 +162,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
                  cfg.preferences.disallowContentFromOtherSites,
                  cfg.preferences.hideGoldenDictHeader ),
   dictNetMgr( this ),
-  stateManager( this, cfg ),
+  stateManager( this, cfg_ ),
   audioPlayerFactory( cfg.preferences ),
   wordFinder( this ),
   wordListSelChanged( false ),
@@ -2523,12 +2523,12 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
 
   // when the main window is moved or resized, hide the word list suggestions
   if ( obj == this && ( ev->type() == QEvent::Move || ev->type() == QEvent::Resize ) ) {
+    saveConfigData();
+
     if ( !cfg.preferences.searchInDock ) {
       translateBox->setPopupEnabled( false );
       return false;
     }
-
-    saveConfigData();
   }
 
   if ( obj == this && ev->type() == QEvent::WindowStateChange ) {

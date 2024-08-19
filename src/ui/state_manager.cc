@@ -1,27 +1,25 @@
 #include "state_manager.hh"
 #include <QTimer>
-#include <QMutexLocker>
 
-StateManager::StateManager( QWidget * parent, Config::Class & cfg ):
+StateManager::StateManager( QObject * parent, Config::Class & cfg ):
+  QObject( parent ),
   _cfg( cfg )
 {
-  _state    = cfg.mainWindowState;
-  _geometry = cfg.mainWindowGeometry;
+  _state    = _cfg.mainWindowState;
+  _geometry = _cfg.mainWindowGeometry;
   _dirty    = false;
 }
 
 
-void StateManager::setState( QByteArray state, QByteArray geometry )
+void StateManager::setState( const QByteArray & state, const QByteArray & geometry )
 {
   if ( _dirty )
     return;
-
 
   if ( state == _state && _geometry == geometry ) {
     return;
   }
   _dirty = true;
-
   //delay execution
   QTimer::singleShot( 3000, this, [ = ]() {
     saveConfigData( state, geometry );
@@ -33,7 +31,6 @@ void StateManager::setState( QByteArray state, QByteArray geometry )
 
 void StateManager::saveConfigData( QByteArray state, QByteArray geometry )
 {
-  QMutexLocker locker( &_mutex );
   try {
     // Save MainWindow state and geometry
     _cfg.mainWindowState    = state;
