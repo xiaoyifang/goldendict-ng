@@ -1,5 +1,6 @@
 #include "state_manager.hh"
 #include <QTimer>
+#include <QMutexLocker>
 
 StateManager::StateManager( QWidget * parent, Config::Class & cfg ):
   _cfg( cfg )
@@ -32,6 +33,7 @@ void StateManager::setState( QByteArray state, QByteArray geometry )
 
 void StateManager::saveConfigData( QByteArray state, QByteArray geometry )
 {
+  QMutexLocker locker( &_mutex );
   try {
     // Save MainWindow state and geometry
     _cfg.mainWindowState    = state;

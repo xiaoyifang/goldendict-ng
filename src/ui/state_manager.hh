@@ -2,6 +2,7 @@
 #define STATE_MANAGER_HH
 
 #include <config.hh>
+#include <QMutex>
 
 class StateManager: public QObject
 {
@@ -18,6 +19,7 @@ private:
   QByteArray _state;
   QByteArray _geometry;
   void saveConfigData( QByteArray state, QByteArray geometry );
+  QMutex _mutex;
 };
 
 #endif // STATE_MANAGER_HH
