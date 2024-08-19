@@ -13,7 +13,7 @@ public:
   void setState( QString state, QString geometry );
 
 private:
-  boolean _dirty;
+  bool _dirty;
   Config::Class & _cfg;
   QString _state;
   QString _geometry;
