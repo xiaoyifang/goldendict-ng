@@ -1,5 +1,4 @@
 #include "state_manager.hh"
-
 #include <QTimer>
 
 StateManager::StateManager( QWidget * parent, Config::Class & cfg ):
