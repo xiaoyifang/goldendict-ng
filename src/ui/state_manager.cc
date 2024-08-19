@@ -6,7 +6,7 @@ StateManager::StateManager( QWidget * parent, Config::Class & cfg ):
 {
   _state    = cfg.mainWindowState;
   _geometry = cfg.mainWindowGeometry;
-  _dirty = false;
+  _dirty    = false;
 }
 
 
