@@ -10,7 +10,7 @@ StateManager::StateManager( QWidget * parent, Config::Class & cfg ):
 }
 
 
-void StateManager::setState( QString state, QString geometry )
+void StateManager::setState( QByteArray state, QByteArray geometry )
 {
   if ( _dirty )
     return;
@@ -30,7 +30,7 @@ void StateManager::setState( QString state, QString geometry )
 }
 
 
-void StateManager::saveConfigData( QString state, QString geometry )
+void StateManager::saveConfigData( QByteArray state, QByteArray geometry )
 {
   try {
     // Save MainWindow state and geometry

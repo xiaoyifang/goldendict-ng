@@ -10,14 +10,14 @@ class StateManager: public QObject
 public:
   StateManager( QWidget * parent, Config::Class & cfg );
 
-  void setState( QString state, QString geometry );
+  void setState( QByteArray state, QByteArray geometry );
 
 private:
   bool _dirty;
   Config::Class & _cfg;
-  QString _state;
-  QString _geometry;
-  void saveConfigData( QString state, QString geometry );
+  QByteArray _state;
+  QByteArray _geometry;
+  void saveConfigData( QByteArray state, QByteArray geometry );
 };
 
 #endif // STATE_MANAGER_HH
