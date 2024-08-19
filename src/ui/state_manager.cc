@@ -45,6 +45,6 @@ void StateManager::saveConfigData( QByteArray state, QByteArray geometry )
     _geometry = geometry;
   }
   catch ( std::exception & e ) {
-    qWarning()<< "save config data failed, error: %s" << e.what() ;
+    qWarning()<< "state manager save config data failed: " << e.what() ;
   }
 }
