@@ -23,8 +23,7 @@ void StateManager::setState( QString state, QString geometry )
   //delay execution
   QTimer::singleShot( 1000, &this, [ this, state, geometry ]() {
     saveConfigData( state, geometry );
-    _state    = state;
-    _geometry = geometry;
+   
     _dirty    = false;
   } );
 }
@@ -38,6 +37,9 @@ void StateManager::saveConfigData( QString state, QString geometry )
     _cfg.mainWindowGeometry = geometry;
 
     Config::save( _cfg );
+
+    _state    = state;
+    _geometry = geometry;
   }
   catch ( std::exception & e ) {
     gdWarning( "save config data failed, error: %s\n", e.what() );
