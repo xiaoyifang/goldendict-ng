@@ -2,7 +2,7 @@
 #define STATE_MANAGER_HH
 
 #include <config.hh>
-#include <QMutex>
+#include <QSettings>
 
 class StateManager: public QObject
 {
