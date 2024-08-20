@@ -261,7 +261,7 @@ public:
     if ( !ensureInitDone().empty() )
       return;
     if ( enable_FTS.has_value() ) {
-      can_FTS = enable_FTS.value();
+      can_FTS = fts.enabled && enable_FTS.value();
     }
     else
       can_FTS = fts.enabled && !fts.disabledTypes.contains( "MDICT", Qt::CaseInsensitive )
