@@ -40,10 +40,10 @@ void StateManager::saveConfigData( QByteArray state, QByteArray geometry )
 
     // Config::save( _cfg );
 
-    settings.beginGroup( "mainwindow" );
-    settings.setValue( "state", state );
-    settings.setValue( "geometry", geometry );
-    settings.endGroup();
+    _settings.beginGroup( "mainwindow" );
+    _settings.setValue( "state", state );
+    _settings.setValue( "geometry", geometry );
+    _settings.endGroup();
 
     _state    = state;
     _geometry = geometry;
