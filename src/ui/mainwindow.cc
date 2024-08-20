@@ -930,7 +930,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   }
 
   timer = new QTimer( this );
-  connect( timer, SIGNAL( timeout() ), this, [ this ]() {
+  connect( timer, &QTimer::timeout, this, [ this ]() {
     saveStateData();
   } );
   //60 seconds
