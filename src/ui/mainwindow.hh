@@ -41,6 +41,7 @@
   #include "macos/gd_clipboard.hh"
 #endif
 #include "state_manager.hh"
+#include <QTimer>
 
 using std::string;
 using std::vector;
@@ -164,7 +165,9 @@ private:
   bool wasMaximized; // Window state before minimization
 
   QPrinter & getPrinter(); // Creates a printer if it's not there and returns it
-  void saveConfigData();
+  void saveStateData();
+
+  QTimer * timer;
 
   DictHeadwords * headwordsDlg;
   FTS::FtsIndexing ftsIndexing;

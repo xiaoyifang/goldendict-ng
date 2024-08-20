@@ -928,6 +928,13 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   if ( cfg.preferences.checkForNewReleases ) {
     QTimer::singleShot( 0, this, &MainWindow::checkNewRelease );
   }
+
+  timer = new QTimer( this );
+  connect( timer, SIGNAL( timeout() ), this, [ this ]() {
+    saveStateData();
+  } );
+  //60 seconds
+  timer->start( 60000 );
 }
 
 void MainWindow::prefixMatchUpdated()
@@ -1293,7 +1300,7 @@ void MainWindow::commitData()
   }
 }
 
-void MainWindow::saveConfigData()
+void MainWindow::saveStateData()
 {
   stateManager.setState( saveState(), saveGeometry() );
 }
@@ -2541,7 +2548,7 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
 
   // when the main window is moved or resized, hide the word list suggestions
   if ( obj == this && ( ev->type() == QEvent::Move || ev->type() == QEvent::Resize ) ) {
-    saveConfigData();
+    saveStateData();
 
     if ( !cfg.preferences.searchInDock ) {
       translateBox->setPopupEnabled( false );
