@@ -1284,6 +1284,8 @@ void MainWindow::commitData()
     // Save any changes in last chosen groups etc
     try {
       Config::save( cfg );
+
+      stateManager.saveConfigData( cfg.mainWindowState, cfg.mainWindowGeometry );
     }
     catch ( std::exception & e ) {
       gdWarning( "Configuration saving failed, error: %s\n", e.what() );
