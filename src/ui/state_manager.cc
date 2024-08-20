@@ -1,9 +1,11 @@
 #include "state_manager.hh"
 #include <QTimer>
+#include <QSettings>
 
 StateManager::StateManager( QObject * parent, Config::Class & cfg ):
   QObject( parent ),
-  _cfg( cfg )
+  _cfg( cfg ),
+  _settings( Config::getStateFileName(), QSettings::IniFormat, parent )
 {
   _state    = _cfg.mainWindowState;
   _geometry = _cfg.mainWindowGeometry;
@@ -36,7 +38,12 @@ void StateManager::saveConfigData( QByteArray state, QByteArray geometry )
     _cfg.mainWindowState    = state;
     _cfg.mainWindowGeometry = geometry;
 
-    Config::save( _cfg );
+    // Config::save( _cfg );
+
+    settings.beginGroup( "mainwindow" );
+    settings.setValue( "state", state );
+    settings.setValue( "geometry", geometry );
+    settings.endGroup();
 
     _state    = state;
     _geometry = geometry;

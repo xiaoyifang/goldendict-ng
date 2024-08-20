@@ -938,6 +938,9 @@ void save( Class const & );
 /// Returns the configuration file name.
 QString getConfigFileName();
 
+//Return the state ini file name.
+QString getStateFileName();
+
 /// Returns the main configuration directory.
 QString getConfigDir();
 

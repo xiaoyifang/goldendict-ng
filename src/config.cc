@@ -2221,6 +2221,11 @@ QString getConfigFileName()
   return getHomeDir().absoluteFilePath( "config" );
 }
 
+QString getStateFileName()
+{
+  return getHomeDir().absoluteFilePath( "state.ini" );
+}
+
 QString getConfigDir()
 {
   return getHomeDir().path() + QDir::separator();

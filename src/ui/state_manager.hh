@@ -18,6 +18,9 @@ private:
   Config::Class & _cfg;
   QByteArray _state;
   QByteArray _geometry;
+  QSettings _settings;
+
+
   void saveConfigData( QByteArray state, QByteArray geometry );
 };
 
