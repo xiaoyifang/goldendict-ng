@@ -20,8 +20,6 @@ private:
   QByteArray _state;
   QByteArray _geometry;
   QSettings _settings;
-
-
 };
 
 #endif // STATE_MANAGER_HH
