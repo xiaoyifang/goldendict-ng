@@ -26,7 +26,7 @@ void StateManager::setState( const QByteArray & state, const QByteArray & geomet
   _dirty = true;
 
   //delay execution
-  QTimer::singleShot( 3000, this, [ &_state, &_geometry, this ]() {
+  QTimer::singleShot( 3000, this, [ this ]() {
     saveConfigData( _state, _geometry );
 
     _dirty = false;
