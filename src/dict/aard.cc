@@ -263,14 +263,13 @@ public:
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
-    if(enable_FTS.has_value()){
-
+    if ( enable_FTS.has_value() ) {
+      can_FTS = enable_FTS.value();
     }
-    else
-{
-    can_FTS = enable_FTS && fts.enabled && !fts.disabledTypes.contains( "AARD", Qt::CaseInsensitive )
-      && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
-      
+    else {
+      can_FTS = fts.enabled && !fts.disabledTypes.contains( "AARD", Qt::CaseInsensitive )
+        && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
+    }
   }
 
 protected:
