@@ -768,23 +768,23 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // restore should be called after all UI initialized but not necessarily after show()
   // This must be called before show() as of Qt6.5 on Windows, not sure if it is a bug
   // Due to a bug of WebEngine, this also must be called after WebEngine has a view loaded https://bugreports.qt.io/browse/QTBUG-115074
-  
+
   QSettings settings( Config::getStateFileName(), QSettings::IniFormat );
   settings.beginGroup( "mainwindow" );
   const auto state = settings.value( "state", QByteArray() ).toByteArray();
-  if ( !state.isEmpty() && !cfg.resetState ){
+  if ( !state.isEmpty() && !cfg.resetState ) {
     restoreState( state );
   }
-  else{
+  else {
     //fallback
     if ( cfg.mainWindowState.size() && !cfg.resetState )
       restoreState( cfg.mainWindowState );
   }
   const auto geometry = settings.value( "geometry", QByteArray() ).toByteArray();
-  if ( !geometry.isEmpty()  ) {
+  if ( !geometry.isEmpty() ) {
     restoreGeometry( geometry );
   }
-  else{
+  else {
     //fallback
     if ( cfg.mainWindowGeometry.size() )
       restoreGeometry( cfg.mainWindowGeometry );
