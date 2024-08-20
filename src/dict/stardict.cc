@@ -200,8 +200,12 @@ public:
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
-    can_FTS = enable_FTS && fts.enabled && !fts.disabledTypes.contains( "STARDICT", Qt::CaseInsensitive )
-      && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
+    if ( enable_FTS.has_value() ) {
+      can_FTS = enable_FTS.value();
+    }
+    else
+      can_FTS = fts.enabled && !fts.disabledTypes.contains( "STARDICT", Qt::CaseInsensitive )
+        && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
 
 protected:

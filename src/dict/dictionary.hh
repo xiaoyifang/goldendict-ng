@@ -316,7 +316,7 @@ protected:
   bool synonymSearchEnabled;
   string dictionaryName;
   //default to true;
-  bool enable_FTS = true;
+  std::optional<bool> enable_FTS;
 
   // Load user icon if it exist
   // By default set icon to empty

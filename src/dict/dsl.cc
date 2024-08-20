@@ -235,9 +235,12 @@ public:
   {
     if ( ensureInitDone().size() )
       return;
-
-    can_FTS = enable_FTS && fts.enabled && !fts.disabledTypes.contains( "DSL", Qt::CaseInsensitive )
-      && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
+    if ( enable_FTS.has_value() ) {
+      can_FTS = enable_FTS.value();
+    }
+    else
+      can_FTS = fts.enabled && !fts.disabledTypes.contains( "DSL", Qt::CaseInsensitive )
+        && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
 
   uint32_t getFtsIndexVersion() override
