@@ -154,9 +154,12 @@ public:
   {
     if ( ensureInitDone().size() )
       return;
-
-    can_FTS = enable_FTS && fts.enabled && !fts.disabledTypes.contains( "EPWING", Qt::CaseInsensitive )
-      && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
+    if ( metadata_enable_fts.has_value() ) {
+      can_FTS = fts.enabled && metadata_enable_fts.value();
+    }
+    else
+      can_FTS = fts.enabled && !fts.disabledTypes.contains( "EPWING", Qt::CaseInsensitive )
+        && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
 
   static int japaneseWriting( gd::wchar ch );
