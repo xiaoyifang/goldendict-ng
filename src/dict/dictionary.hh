@@ -315,8 +315,7 @@ protected:
   QAtomicInt FTS_index_completed;
   bool synonymSearchEnabled;
   string dictionaryName;
-  //default to true;
-  bool enable_FTS = true;
+  std::optional< bool > metadata_enable_fts = std::nullopt;
 
   // Load user icon if it exist
   // By default set icon to empty
@@ -376,7 +375,7 @@ public:
 
   void setFtsEnable( bool _enable_FTS )
   {
-    enable_FTS = _enable_FTS;
+    metadata_enable_fts = _enable_FTS;
   }
 
   /// Returns all the available properties, like the author's name, copyright,
