@@ -591,13 +591,13 @@ int main( int argc, char ** argv )
   if ( gdcl.needTranslateWord() )
     m.wordReceived( gdcl.wordToTranslate() );
 
-  #ifdef Q_OS_UNIX
+#ifdef Q_OS_UNIX
   // handle Unix's shutdown signals for graceful exit
   KSignalHandler::self()->watchSignal( SIGHUP );
   KSignalHandler::self()->watchSignal( SIGINT );
   KSignalHandler::self()->watchSignal( SIGTERM );
   QObject::connect( KSignalHandler::self(), &KSignalHandler::signalReceived, &m, &MainWindow::quitApp );
-  #endif
+#endif
   int r = app.exec();
 
   app.removeDataCommiter( m );
