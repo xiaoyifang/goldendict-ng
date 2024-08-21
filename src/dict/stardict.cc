@@ -200,8 +200,8 @@ public:
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
-    if ( enable_FTS.has_value() ) {
-      can_FTS = fts.enabled && enable_FTS.value();
+    if ( metadata_enable_fts.has_value() ) {
+      can_FTS = fts.enabled && metadata_enable_fts.value();
     }
     else
       can_FTS = fts.enabled && !fts.disabledTypes.contains( "STARDICT", Qt::CaseInsensitive )
