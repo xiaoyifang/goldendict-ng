@@ -315,7 +315,6 @@ protected:
   QAtomicInt FTS_index_completed;
   bool synonymSearchEnabled;
   string dictionaryName;
-  //default to true;
   std::optional< bool > metadata_enable_fts = std::nullopt;
 
   // Load user icon if it exist
