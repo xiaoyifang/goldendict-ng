@@ -6,9 +6,10 @@
     Copied from KDE's KCoreAddons with minor modifications
 */
 #pragma once
-#include <QObject>
+#include <QtSystemDetection>
 #ifdef Q_OS_UNIX
-  #include <signal.h>
+#include <QObject>
+#include <signal.h>
 
 class KSignalHandlerPrivate;
 
