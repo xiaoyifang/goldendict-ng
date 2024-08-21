@@ -8,8 +8,8 @@
 #pragma once
 #include <QtSystemDetection>
 #ifdef Q_OS_UNIX
-#include <QObject>
-#include <signal.h>
+  #include <QObject>
+  #include <signal.h>
 
 class KSignalHandlerPrivate;
 
