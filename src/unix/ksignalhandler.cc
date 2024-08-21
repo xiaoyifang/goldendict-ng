@@ -1,7 +1,7 @@
 /*
     SPDX-FileCopyrightText: 2021 Aleix Pol Gonzalez <aleixpol@kde.org>
 
-    SPDX-License-Identifier: LGPL-2.1-or-later
+    SPDX-License-Identifier: GPL-3.0-or-later
 
     Copied from KDE's KCoreAddons with minor modifications
 */
