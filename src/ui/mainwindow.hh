@@ -167,8 +167,6 @@ private:
   QPrinter & getPrinter(); // Creates a printer if it's not there and returns it
   void saveStateData();
 
-  QTimer * timer;
-
   DictHeadwords * headwordsDlg;
   FTS::FtsIndexing ftsIndexing;
   FTS::FullTextSearchDialog * ftsDlg;

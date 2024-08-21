@@ -173,6 +173,11 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   starIcon( ":/icons/star.svg" ),
   blueStarIcon( ":/icons/star_blue.svg" )
 {
+  QSettings settings( Config::getStateFileName(), QSettings::IniFormat );
+
+  const auto searchInDock      = settings.value( "mainwindow/searchInDock", false ).toBool();
+  cfg.preferences.searchInDock = searchInDock;
+
   if ( QThreadPool::globalInstance()->maxThreadCount() < MIN_THREAD_COUNT )
     QThreadPool::globalInstance()->setMaxThreadCount( MIN_THREAD_COUNT );
 
@@ -769,7 +774,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // This must be called before show() as of Qt6.5 on Windows, not sure if it is a bug
   // Due to a bug of WebEngine, this also must be called after WebEngine has a view loaded https://bugreports.qt.io/browse/QTBUG-115074
 
-  QSettings settings( Config::getStateFileName(), QSettings::IniFormat );
+
   settings.beginGroup( "mainwindow" );
   const auto state = settings.value( "state", QByteArray() ).toByteArray();
   if ( !state.isEmpty() && !cfg.resetState ) {
@@ -928,13 +933,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   if ( cfg.preferences.checkForNewReleases ) {
     QTimer::singleShot( 0, this, &MainWindow::checkNewRelease );
   }
-
-  timer = new QTimer( this );
-  connect( timer, &QTimer::timeout, this, [ this ]() {
-    saveStateData();
-  } );
-  //60 seconds
-  timer->start( 60000 );
 }
 
 void MainWindow::prefixMatchUpdated()
@@ -2550,12 +2548,15 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
 
   // when the main window is moved or resized, hide the word list suggestions
   if ( obj == this && ( ev->type() == QEvent::Move || ev->type() == QEvent::Resize ) ) {
-    saveStateData();
-
     if ( !cfg.preferences.searchInDock ) {
       translateBox->setPopupEnabled( false );
       return false;
     }
+  }
+
+  if ( obj == this
+       && ( ev->type() == QEvent::Move || ev->type() == QEvent::Resize || ev->type() == QEvent::UpdateRequest ) ) {
+    saveStateData();
   }
 
   if ( obj == this && ev->type() == QEvent::WindowStateChange ) {

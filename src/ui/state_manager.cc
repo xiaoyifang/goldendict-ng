@@ -12,7 +12,6 @@ StateManager::StateManager( QObject * parent, Config::Class & cfg ):
   _dirty    = false;
 }
 
-
 void StateManager::setState( const QByteArray & state, const QByteArray & geometry )
 {
   if ( state == _state && _geometry == geometry ) {
@@ -36,13 +35,9 @@ void StateManager::setState( const QByteArray & state, const QByteArray & geomet
 
 void StateManager::saveConfigData( QByteArray state, QByteArray geometry )
 {
-  try {
-    _settings.beginGroup( "mainwindow" );
-    _settings.setValue( "state", state );
-    _settings.setValue( "geometry", geometry );
-    _settings.endGroup();
-  }
-  catch ( std::exception & e ) {
-    qWarning() << "state manager save config data failed: " << e.what();
-  }
+  _settings.beginGroup( "mainwindow" );
+  _settings.setValue( "state", state );
+  _settings.setValue( "geometry", geometry );
+  _settings.setValue( "searchInDock", _cfg.preferences.searchInDock );
+  _settings.endGroup();
 }
