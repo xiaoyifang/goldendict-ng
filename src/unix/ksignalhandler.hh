@@ -6,7 +6,7 @@
     Copied from KDE's KCoreAddons with minor modifications
 */
 #pragma once
-#include <QtSystemDetection>
+#include <QtGlobal>
 #ifdef Q_OS_UNIX
   #include <QObject>
   #include <signal.h>

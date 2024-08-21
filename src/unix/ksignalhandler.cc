@@ -5,7 +5,7 @@
 
     Copied from KDE's KCoreAddons with minor modifications
 */
-#include <QtSystemDetection>
+#include <QtGlobal>
 #ifdef Q_OS_UNIX
 
   #include "ksignalhandler.hh"
