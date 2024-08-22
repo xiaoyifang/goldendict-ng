@@ -492,9 +492,6 @@ void ZimDictionary::makeFTSIndex( QAtomicInt & isCancelled )
   if ( !ensureInitDone().empty() )
     return;
 
-  if ( firstIteration )
-    return;
-
   gdDebug( "Zim: Building the full-text index for dictionary: %s\n", getName().c_str() );
   try {
     FtsHelpers::makeFTSIndex( this, isCancelled );
