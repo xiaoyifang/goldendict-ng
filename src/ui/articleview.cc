@@ -1430,7 +1430,8 @@ QString ArticleView::getTitle()
 
 QString ArticleView::getWord() const
 {
-  return currentWord;
+  return webview->history()->currentItem().title();
+  // return currentWord;
 }
 
 void ArticleView::print( QPrinter * printer ) const
@@ -2004,12 +2005,16 @@ void ArticleView::doubleClicked( QPoint pos )
       else {
         QUrl const & ref = webview->url();
 
+        auto groupId = getGroup( ref );
+        if ( groupId == 0 || groupId == Instances::Group::HelpGroupId ) {
+          groupId = currentGroupId;
+        }
         if ( Utils::Url::hasQueryItem( ref, "dictionaries" ) ) {
           QStringList dictsList = Utils::Url::queryItemValue( ref, "dictionaries" ).split( ",", Qt::SkipEmptyParts );
-          showDefinition( selectedText, dictsList, getGroup( ref ), false );
+          showDefinition( selectedText, dictsList, groupId, false );
         }
         else
-          showDefinition( selectedText, getGroup( ref ), getCurrentArticle() );
+          showDefinition( selectedText, groupId, getCurrentArticle() );
       }
     }
   }

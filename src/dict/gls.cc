@@ -408,8 +408,12 @@ public:
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
-    can_FTS = enable_FTS && fts.enabled && !fts.disabledTypes.contains( "GLS", Qt::CaseInsensitive )
-      && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
+    if ( metadata_enable_fts.has_value() ) {
+      can_FTS = fts.enabled && metadata_enable_fts.value();
+    }
+    else
+      can_FTS = fts.enabled && !fts.disabledTypes.contains( "GLS", Qt::CaseInsensitive )
+        && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
 
 protected:

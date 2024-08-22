@@ -14,10 +14,9 @@ QByteArray zlibDecompress( const char * bufptr, unsigned length )
   memset( &zs, 0, sizeof( zs ) );
   zs.next_in  = (Bytef *)bufptr;
   zs.avail_in = length;
-  while ( 1 ) {
-    res = inflateInit( &zs );
-    if ( res != Z_OK )
-      break;
+  res         = inflateInit( &zs );
+
+  if ( res == Z_OK ) {
     while ( res != Z_STREAM_END ) {
       zs.next_out  = (Bytef *)buf;
       zs.avail_out = CHUNK_SIZE;
@@ -26,8 +25,8 @@ QByteArray zlibDecompress( const char * bufptr, unsigned length )
       if ( res != Z_OK && res != Z_STREAM_END )
         break;
     }
-    break;
   }
+
   inflateEnd( &zs );
   if ( res != Z_STREAM_END )
     str.clear();
@@ -50,10 +49,8 @@ string decompressBzip2( const char * bufptr, unsigned length )
   zs.next_in       = (char *)bufptr;
   zs.avail_in      = length;
   zs.total_in_lo32 = length;
-  while ( 1 ) {
-    res = BZ2_bzDecompressInit( &zs, 0, 0 );
-    if ( res != BZ_OK )
-      break;
+  res              = BZ2_bzDecompressInit( &zs, 0, 0 );
+  if ( res == BZ_OK ) {
     while ( res != BZ_STREAM_END ) {
       zs.next_out       = buf;
       zs.avail_out      = CHUNK_SIZE;
@@ -63,7 +60,6 @@ string decompressBzip2( const char * bufptr, unsigned length )
       if ( res != BZ_OK && res != BZ_STREAM_END )
         break;
     }
-    break;
   }
   BZ2_bzDecompressEnd( &zs );
   if ( res != BZ_STREAM_END )
@@ -92,14 +88,13 @@ string decompressLzma2( const char * bufptr, unsigned length, bool raw_decoder )
     filters[ 1 ].id      = LZMA_VLI_UNKNOWN;
   }
 
-  while ( 1 ) {
-    if ( raw_decoder )
-      res = lzma_raw_decoder( &strm, filters );
-    else
-      res = lzma_stream_decoder( &strm, UINT64_MAX, 0 );
 
-    if ( res != LZMA_OK )
-      break;
+  if ( raw_decoder )
+    res = lzma_raw_decoder( &strm, filters );
+  else
+    res = lzma_stream_decoder( &strm, UINT64_MAX, 0 );
+
+  if ( res == LZMA_OK ) {
 
     while ( res != LZMA_STREAM_END ) {
       strm.next_out  = reinterpret_cast< uint8_t * >( buf );
@@ -112,8 +107,7 @@ string decompressLzma2( const char * bufptr, unsigned length, bool raw_decoder )
     lzma_end( &strm );
     if ( res != LZMA_STREAM_END )
       str.clear();
-
-    break;
   }
+
   return str;
 }

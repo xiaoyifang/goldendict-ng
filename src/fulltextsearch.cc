@@ -217,10 +217,9 @@ FullTextSearchDialog::FullTextSearchDialog( QWidget * parent,
            &FullTextSearchDialog::setNewIndexingName );
 
   ui.searchMode->addItem( tr( "Default" ), WholeWords );
-  ui.searchMode->addItem( tr( "Plain text" ), PlainText );
   ui.searchMode->addItem( tr( "Wildcards" ), Wildcards );
 
-  ui.searchLine->setToolTip( tr( "support xapian search syntax,such as AND OR +/- etc" ) );
+  ui.searchLine->setToolTip( tr( "Support xapian search syntax, such as AND OR +/- etc." ) );
 
   ui.searchMode->setCurrentIndex( cfg.preferences.fts.searchMode );
 
