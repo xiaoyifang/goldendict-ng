@@ -523,7 +523,7 @@ public:
   }
 
   /// Make index for full-text search
-  virtual void makeFTSIndex( QAtomicInt &, bool ) {}
+  virtual void makeFTSIndex( QAtomicInt & ) {}
 
   /// Set full-text search parameters
   virtual void setFTSParameters( Config::FullTextSearch const & ) {}
