@@ -215,7 +215,7 @@ public:
 
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
-  void makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration ) override;
+  void makeFTSIndex( QAtomicInt & isCancelled ) override;
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
@@ -414,7 +414,7 @@ void BglDictionary::getArticleText( uint32_t articleAddress, QString & headword,
   }
 }
 
-void BglDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )
+void BglDictionary::makeFTSIndex( QAtomicInt & isCancelled )
 {
   if ( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
           || FtsHelpers::ftsIndexIsOldOrBad( this ) ) )
@@ -423,8 +423,6 @@ void BglDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration 
   if ( haveFTSIndex() )
     return;
 
-  if ( firstIteration && getArticleCount() > FTS::MaxDictionarySizeForFastSearch )
-    return;
 
   gdDebug( "Bgl: Building the full-text index for dictionary: %s\n", getName().c_str() );
 

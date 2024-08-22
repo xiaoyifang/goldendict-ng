@@ -34,7 +34,7 @@ void Indexing::run()
           const QString & dictionaryName = QString::fromUtf8( dictionary->getName().c_str() );
           qDebug() << "[FULLTEXT] checking fts for the dictionary:" << dictionaryName;
           emit sendNowIndexingName( dictionaryName );
-          dictionary->makeFTSIndex( isCancelled, false );
+          dictionary->makeFTSIndex( isCancelled );
         } );
         synchronizer.addFuture( f );
       }

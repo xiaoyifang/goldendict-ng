@@ -148,7 +148,7 @@ public:
   getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
-  void makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration ) override;
+  void makeFTSIndex( QAtomicInt & isCancelled ) override;
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
@@ -425,7 +425,7 @@ QString const & EpwingDictionary::getDescription()
   return dictionaryDescription;
 }
 
-void EpwingDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )
+void EpwingDictionary::makeFTSIndex( QAtomicInt & isCancelled )
 {
   if ( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
           || FtsHelpers::ftsIndexIsOldOrBad( this ) ) )
@@ -435,8 +435,6 @@ void EpwingDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIterati
   if ( haveFTSIndex() )
     return;
 
-  if ( firstIteration && getArticleCount() > FTS::MaxDictionarySizeForFastSearch )
-    return;
 
   gdDebug( "Epwing: Building the full-text index for dictionary: %s\n", getName().c_str() );
 

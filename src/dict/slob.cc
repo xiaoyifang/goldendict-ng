@@ -636,7 +636,7 @@ public:
 
   quint64 getArticlePos( uint32_t articleNumber );
 
-  void makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration ) override;
+  void makeFTSIndex( QAtomicInt & isCancelled ) override;
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
@@ -891,7 +891,7 @@ quint64 SlobDictionary::getArticlePos( uint32_t articleNumber )
   return ( ( (quint64)( entry.binIndex ) ) << 32 ) | entry.itemIndex;
 }
 
-void SlobDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )
+void SlobDictionary::makeFTSIndex( QAtomicInt & isCancelled )
 {
   if ( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
           || FtsHelpers::ftsIndexIsOldOrBad( this ) ) )
@@ -903,8 +903,6 @@ void SlobDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration
   if ( !ensureInitDone().empty() )
     return;
 
-  if ( firstIteration && getArticleCount() > FTS::MaxDictionarySizeForFastSearch )
-    return;
 
   gdDebug( "Slob: Building the full-text index for dictionary: %s\n", getName().c_str() );
 
