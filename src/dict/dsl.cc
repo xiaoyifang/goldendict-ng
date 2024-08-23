@@ -229,7 +229,7 @@ public:
 
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
-  void makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration ) override;
+  void makeFTSIndex( QAtomicInt & isCancelled ) override;
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
@@ -1072,7 +1072,7 @@ QString DslDictionary::getMainFilename()
   return getDictionaryFilenames()[ 0 ].c_str();
 }
 
-void DslDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )
+void DslDictionary::makeFTSIndex( QAtomicInt & isCancelled )
 {
   if ( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
           || FtsHelpers::ftsIndexIsOldOrBad( this ) ) ) {
@@ -1086,8 +1086,6 @@ void DslDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration 
   if ( !ensureInitDone().empty() )
     return;
 
-  if ( firstIteration && getArticleCount() > FTS::MaxDictionarySizeForFastSearch )
-    return;
 
   gdDebug( "Dsl: Building the full-text index for dictionary: %s\n", getName().c_str() );
 
