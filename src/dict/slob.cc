@@ -726,14 +726,8 @@ QString const & SlobDictionary::getDescription()
   if ( !dictionaryDescription.isEmpty() )
     return dictionaryDescription;
 
-  QMap< QString, QString > const & tags = sf.getTags();
-
-  QMap< QString, QString >::const_iterator it;
-  for ( it = tags.begin(); it != tags.end(); ++it ) {
-    if ( it != tags.begin() )
-      dictionaryDescription += "\n\n";
-
-    dictionaryDescription += it.key() + ": " + it.value();
+  for ( auto [ key, value ] : sf.getTags().asKeyValueRange() ) {
+    dictionaryDescription += "<b>" % key % "</b>" % ": " % value % "<br>";
   }
 
   return dictionaryDescription;
