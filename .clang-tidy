@@ -1,15 +1,18 @@
 # https://clang.llvm.org/extra/clang-tidy/
 ---
 Checks: >
-  -*
+  -*,
   bugprone-*,
   cert-*,
   clang-analyzer-*,
   clang-diagnostic-*,
+  concurrency-*,
   cppcoreguidelines-*,
   google-*,
+  hicpp-*,
   misc-*,
   modernize-*,
+  objc-*,
   performance-*,
   portability-*,
   readability-*,
@@ -17,18 +20,22 @@ Checks: >
   -bugprone-reserved-identifier,
   -cppcoreguidelines-owning-memory,
   -cppcoreguidelines-prefer-member-initializer,
+  -cppcoreguidelines-pro-bounds-array-to-pointer-decay,
+  -cppcoreguidelines-pro-type-cstyle-cast,
+  -cppcoreguidelines-pro-type-reinterpret-cast,
   -google-default-arguments,
-  -misc-non-private-member-variables-in-classes,
+  -google-readability-casting,
+  -hicpp-deprecated-headers,
   -misc-const-correctness,
+  -misc-non-private-member-variables-in-classes,
   -modernize-avoid-c-arrays,
-#  -modernize-use-auto,
+  -modernize-deprecated-headers,
   -modernize-use-nodiscard,
   -modernize-use-trailing-return-type,
-  -readability-magic-numbers,
-  -google-readability-braces-around-statements,
   -readability-braces-around-statements,
-  -readability-identifier-length,
   -readability-function-cognitive-complexity,
+  -readability-identifier-length,
+  -readability-magic-numbers,
 CheckOptions:
   - key: modernize-loop-convert.MinConfidence
     value: reasonable
