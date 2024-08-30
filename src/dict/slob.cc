@@ -21,11 +21,12 @@
   #include <stub_msvc.h>
 #endif
 
+#include "iconv.hh"
+
 #include <QString>
 #include <QFile>
 #include <QFileInfo>
 #include <QDir>
-#include <QTextCodec>
 #include <QMap>
 #include <QPair>
 #include <QProcess>
@@ -127,9 +128,8 @@ private:
   QFile file;
   QString fileName, dictionaryName;
   Compressions compression;
-  QString encoding;
+  std::string encoding;
   unsigned char uuid[ 16 ];
-  QTextCodec * codec;
   QMap< QString, QString > tags;
   QVector< QString > contentTypes;
   quint32 blobCount;
@@ -149,7 +149,6 @@ private:
 public:
   SlobFile():
     compression( UNKNOWN ),
-    codec( 0 ),
     blobCount( 0 ),
     storeOffset( 0 ),
     fileSize( 0 ),
@@ -170,7 +169,7 @@ public:
     return compression;
   }
 
-  QString const & getEncoding() const
+  std::string const & getEncoding() const
   {
     return encoding;
   }
@@ -198,11 +197,6 @@ public:
   quint32 getContentTypesCount() const
   {
     return contentTypesCount;
-  }
-
-  QTextCodec * getCodec() const
-  {
-    return codec;
   }
 
   const RefOffsetsVector & getSortedRefOffsets();
@@ -241,10 +235,17 @@ QString SlobFile::readString( unsigned length )
   QByteArray data = file.read( length );
   QString str;
 
-  if ( codec != 0 && !data.isEmpty() )
-    str = codec->toUnicode( data );
-  else
+  if ( !encoding.empty() && !data.isEmpty() ) {
+    try {
+      str = Iconv::toQString( encoding.c_str(), data.data(), data.size() );
+    }
+    catch ( Iconv::Ex & e ) {
+      qDebug() << QString( R"(slob decoding failed: %1)" ).arg( e.what() );
+    }
+  }
+  else {
     str = QString( data );
+  }
 
   char term = 0;
   int n     = str.indexOf( term );
@@ -317,13 +318,7 @@ void SlobFile::open( const QString & name )
 
     // Read encoding
 
-    encoding = readTinyText();
-
-    codec = QTextCodec::codecForName( encoding.toLatin1() );
-    if ( codec == nullptr ) {
-      error = QString( R"(for encoding "%1")" ).arg( encoding );
-      throw exNoCodecFound( string( error.toUtf8().data() ) );
-    }
+    encoding = readTinyText().toStdString();
 
     // Read compression type
 
@@ -865,9 +860,15 @@ quint32 SlobDictionary::readArticle( quint32 articleNumber, std::string & result
        || contentType.contains( "/css", Qt::CaseInsensitive )
        || contentType.contains( "/javascript", Qt::CaseInsensitive )
        || contentType.contains( "/json", Qt::CaseInsensitive ) ) {
-    QTextCodec * codec = sf.getCodec();
-    QString content    = codec->toUnicode( data.c_str(), data.size() );
-    result             = string( content.toUtf8().data() );
+    QString content;
+    try {
+      content = Iconv::toQString( sf.getEncoding().c_str(), data.data(), data.size() );
+    }
+    catch ( Iconv::Ex & e ) {
+      qDebug() << QString( R"(slob decoding failed: %1)" ).arg( e.what() );
+    }
+
+    result = string( content.toUtf8().data() );
   }
   else
     result = data;

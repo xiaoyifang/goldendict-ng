@@ -47,6 +47,8 @@ public:
   // string.
   static std::string toUtf8( char const * fromEncoding, void const * fromData, size_t dataSize );
 
+  static QString toQString( char const * fromEncoding, void const * fromData, size_t dataSize );
+
 private:
 
   // Copying/assigning not supported

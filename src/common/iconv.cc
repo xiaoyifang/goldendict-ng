@@ -126,3 +126,13 @@ std::string Iconv::toUtf8( char const * fromEncoding, void const * fromData, siz
   const QString outStr = ic.convert( fromData, dataSize );
   return outStr.toStdString();
 }
+
+QString Iconv::toQString( char const * fromEncoding, void const * fromData, size_t dataSize )
+{
+  if ( dataSize == 0 ) {
+    return {};
+  }
+
+  Iconv ic( fromEncoding );
+  return ic.convert( fromData, dataSize );
+}
