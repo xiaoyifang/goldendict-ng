@@ -4,24 +4,19 @@
 #ifndef __ICONV_HH_INCLUDED__
 #define __ICONV_HH_INCLUDED__
 
-#include <QTextCodec>
+#include <QString>
 
 #include "wstring.hh"
 #include "ex.hh"
 
-#ifdef USE_ICONV
-  #include <iconv.h>
-#endif
+#include <iconv.h>
 
-/// A wrapper for the iconv() character set conversion functions
+
+/// "Internationalization conversion" for char encoding conversion, currently implemented with iconv()
+/// Only supports converting from a known "from" to UTF8
 class Iconv
 {
-#ifdef USE_ICONV
   iconv_t state;
-#else
-  QTextCodec * codec;
-
-#endif
 
 public:
 
@@ -34,7 +29,7 @@ public:
   static char const * const Utf16Le;
   static char const * const Utf8;
 
-  Iconv( char const * from );
+  explicit Iconv( char const * from );
 
   ~Iconv();
 
@@ -47,11 +42,10 @@ public:
   // string.
   static std::string toUtf8( char const * fromEncoding, void const * fromData, size_t dataSize );
 
-private:
+  static QString toQString( char const * fromEncoding, void const * fromData, size_t dataSize );
 
-  // Copying/assigning not supported
-  Iconv( Iconv const & );
-  Iconv & operator=( Iconv const & );
+  // Copying/assigning isn't supported
+  Q_DISABLE_COPY_MOVE( Iconv );
 };
 
 #endif

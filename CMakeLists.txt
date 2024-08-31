@@ -186,7 +186,6 @@ endif ()
 
 target_compile_definitions(${GOLDENDICT} PUBLIC
         CMAKE_USED_HACK  # temporal hack to avoid breaking qmake build
-        USE_ICONV
         MAKE_QTMULTIMEDIA_PLAYER
         MAKE_CHINESE_CONVERSION_SUPPORT
         )
