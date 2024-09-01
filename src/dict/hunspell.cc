@@ -126,7 +126,7 @@ string encodeToHunspell( Hunspell &, wstring const & );
 wstring decodeFromHunspell( Hunspell &, char const * );
 
 /// Generates suggestions via hunspell
-QVector< wstring > suggest( wstring & word, QMutex & hunspellMutex, Hunspell & hunspell );
+QList< wstring > suggest( wstring & word, QMutex & hunspellMutex, Hunspell & hunspell );
 
 /// Generates suggestions for compound expression
 void getSuggestionsForExpression( wstring const & expression,
@@ -362,7 +362,7 @@ void HunspellHeadwordsRequest::run()
       matches.push_back( result );
   }
   else {
-    QVector< wstring > suggestions = suggest( trimmedWord, hunspellMutex, hunspell );
+    QList< wstring > suggestions = suggest( trimmedWord, hunspellMutex, hunspell );
 
     if ( !suggestions.empty() ) {
       QMutexLocker _( &dataMutex );
@@ -375,9 +375,9 @@ void HunspellHeadwordsRequest::run()
   finish();
 }
 
-QVector< wstring > suggest( wstring & word, QMutex & hunspellMutex, Hunspell & hunspell )
+QList< wstring > suggest( wstring & word, QMutex & hunspellMutex, Hunspell & hunspell )
 {
-  QVector< wstring > result;
+  QList< wstring > result;
 
   vector< string > suggestions;
 
@@ -522,7 +522,7 @@ void getSuggestionsForExpression( wstring const & expression,
 
   wstring trimmedWord = Folding::trimWhitespaceOrPunct( expression );
   wstring word, punct;
-  QVector< wstring > words;
+  QList< wstring > words;
 
   suggestions.clear();
 
@@ -556,7 +556,7 @@ void getSuggestionsForExpression( wstring const & expression,
 
   // Combine result strings from suggestions
 
-  QVector< wstring > results;
+  QList< wstring > results;
 
   for ( const auto & i : words ) {
     word = i;
@@ -565,7 +565,7 @@ void getSuggestionsForExpression( wstring const & expression,
         result.append( word );
     }
     else {
-      QVector< wstring > sugg = suggest( word, hunspellMutex, hunspell );
+      QList< wstring > sugg   = suggest( word, hunspellMutex, hunspell );
       int suggNum             = sugg.size() + 1;
       if ( suggNum > 3 )
         suggNum = 3;

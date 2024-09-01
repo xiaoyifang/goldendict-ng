@@ -89,7 +89,7 @@ public:
   vector< WordArticleLink > findArticles( wstring const &, bool ignoreDiacritics = false, uint32_t maxMatchCount = -1 );
 
   /// Find all unique article links in the index
-  void findAllArticleLinks( QVector< WordArticleLink > & articleLinks );
+  void findAllArticleLinks( QList< WordArticleLink > & articleLinks );
 
   /// Retrieve all unique headwords from index
   void getAllHeadwords( QSet< QString > & headwords );

@@ -19,7 +19,7 @@
 #include <QMenu>
 #include <QMessageBox>
 #include <QTimer>
-#include <QVector>
+#include <QList>
 
 using std::vector;
 
@@ -374,8 +374,8 @@ void DictListModel::addSelectedUniqueFromModel( QItemSelectionModel * source )
   if ( !baseModel )
     return;
 
-  QVector< std::string > list;
-  QVector< std::string > dicts;
+  QList< std::string > list;
+  QList< std::string > dicts;
   for ( const auto & dictionarie : dictionaries )
     dicts.append( dictionarie->getId() );
 
@@ -649,8 +649,8 @@ void DictGroupsWidget::addAutoGroups()
        != QMessageBox::Yes )
     return;
 
-  QMap< QString, QVector< sptr< Dictionary::Class > > > dictMap;
-  QMap< QString, QVector< sptr< Dictionary::Class > > > morphoMap;
+  QMap< QString, QList< sptr< Dictionary::Class > > > dictMap;
+  QMap< QString, QList< sptr< Dictionary::Class > > > morphoMap;
 
   // Put active dictionaries into lists
 
@@ -660,7 +660,7 @@ void DictGroupsWidget::addAutoGroups()
     if ( idFrom == 0 ) {
       // Attempt to find language pair in dictionary name
 
-      const QPair< quint32, quint32 > ids =
+      const std::pair< quint32, quint32 > ids =
         LangCoder::findLangIdPairFromName( QString::fromUtf8( dict->getName().c_str() ) );
       idFrom                              = ids.first;
       idTo                                = ids.second;
@@ -693,7 +693,7 @@ void DictGroupsWidget::addAutoGroups()
   // Insert morphology dictionaries into corresponding lists
   for ( const auto & gr : groupList ) {
     if ( auto morpho_key = gr.left( 2 ).toLower(); morphoMap.contains( morpho_key ) ) {
-      QVector< sptr< Dictionary::Class > > vdg = dictMap[ gr ];
+      QList< sptr< Dictionary::Class > > vdg = dictMap[ gr ];
       vdg += morphoMap[ morpho_key ];
       dictMap[ gr ] = vdg;
     }
@@ -704,7 +704,7 @@ void DictGroupsWidget::addAutoGroups()
     const auto idx = addUniqueGroup( gr );
 
     // add dictionaries into the current group
-    QVector< sptr< Dictionary::Class > > const vd = dictMap[ gr ];
+    QList< sptr< Dictionary::Class > > const vd = dictMap[ gr ];
     DictListModel * model                   = getModelAt( idx );
     if ( !model )
       continue;

@@ -76,7 +76,7 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
       throw exUserAbort();
 
-    QVector< uint32_t > offsets;
+    QList< uint32_t > offsets;
     offsets.resize( setOfOffsets.size() );
     uint32_t * ptr = offsets.data();
 
@@ -220,7 +220,7 @@ void FTSResultsRequest::run()
       }
 
       if ( !offsetsForHeadwords.isEmpty() ) {
-        QVector< QString > headwords;
+        QList< QString > headwords;
         QMutexLocker _( &dataMutex );
         QString id = QString::fromUtf8( dict.getId().c_str() );
         dict.getHeadwordsFromOffsets( offsetsForHeadwords, headwords, &isCancelled );
