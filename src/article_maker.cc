@@ -998,9 +998,9 @@ void ArticleRequest::individualWordFinished()
   compoundSearchNextStep( false );
 }
 
-QPair< ArticleRequest::Words, ArticleRequest::Spacings > ArticleRequest::splitIntoWords( QString const & input )
+std::pair< ArticleRequest::Words, ArticleRequest::Spacings > ArticleRequest::splitIntoWords( QString const & input )
 {
-  QPair< Words, Spacings > result;
+  std::pair< Words, Spacings > result;
 
   QChar const * ptr = input.data();
 

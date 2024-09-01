@@ -119,8 +119,8 @@ struct InsidedCard
 {
   uint32_t offset;
   uint32_t size;
-  QVector< wstring > headwords;
-  InsidedCard( uint32_t _offset, uint32_t _size, QVector< wstring > const & words ):
+  QList< wstring > headwords;
+  InsidedCard( uint32_t _offset, uint32_t _size, QList< wstring > const & words ):
     offset( _offset ),
     size( _size ),
     headwords( words )
@@ -950,8 +950,8 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
       QString attr = QString::fromStdU32String( node.tagAttrs ).remove( '\"' );
       int n        = attr.indexOf( '=' );
       if ( n > 0 ) {
-        QList< QPair< QString, QString > > query;
-        query.append( QPair< QString, QString >( attr.left( n ), attr.mid( n + 1 ) ) );
+        QList< std::pair< QString, QString > > query;
+        query.append( std::pair< QString, QString >( attr.left( n ), attr.mid( n + 1 ) ) );
         Utils::Url::setQueryItems( url, query );
       }
     }
@@ -1920,9 +1920,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
             int insideInsided = 0;
             wstring headword;
-            QVector< InsidedCard > insidedCards;
+            QList< InsidedCard > insidedCards;
             uint32_t offset = curOffset;
-            QVector< wstring > insidedHeadwords;
+            QList< wstring > insidedHeadwords;
             unsigned linesInsideCard = 0;
             int dogLine              = 0;
             bool wasEmptyLine        = false;

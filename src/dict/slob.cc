@@ -28,14 +28,14 @@
 #include <QFileInfo>
 #include <QDir>
 #include <QMap>
-#include <QPair>
 #include <QProcess>
-#include <QVector>
+#include <QList>
 
 #include <QRegularExpression>
 
 #include <string>
 #include <vector>
+#include <utility>
 #include <map>
 #include <set>
 #include <algorithm>
@@ -113,8 +113,8 @@ bool indexIsOldOrBad( string const & indexFile )
 class SlobFile
 {
 public:
-  typedef QPair< quint64, quint32 > RefEntryOffsetItem;
-  typedef QVector< RefEntryOffsetItem > RefOffsetsVector;
+  typedef std::pair< quint64, quint32 > RefEntryOffsetItem;
+  typedef QList< RefEntryOffsetItem > RefOffsetsVector;
 
 private:
   enum Compressions {
@@ -131,7 +131,7 @@ private:
   std::string encoding;
   unsigned char uuid[ 16 ];
   QMap< QString, QString > tags;
-  QVector< QString > contentTypes;
+  QList< QString > contentTypes;
   quint32 blobCount;
   quint64 storeOffset, fileSize, refsOffset;
   quint32 refsCount, itemsCount;
@@ -499,7 +499,7 @@ quint8 SlobFile::getItem( RefEntry const & entry, string * data )
     if ( entry.binIndex >= bins )
       return 0xFF;
 
-    QVector< quint8 > ids;
+    QList< quint8 > ids;
     ids.resize( bins );
     if ( file.read( (char *)ids.data(), bins ) != bins )
       break;
