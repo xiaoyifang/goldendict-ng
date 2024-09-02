@@ -194,7 +194,7 @@ inline void removeQueryItem( QUrl & url, QString const & key )
   url.setQuery( urlQuery );
 }
 
-inline void setQueryItems( QUrl & url, QList< QPair< QString, QString > > const & query )
+inline void setQueryItems( QUrl & url, QList< std::pair< QString, QString > > const & query )
 {
   QUrlQuery urlQuery( url );
   urlQuery.setQueryItems( query );
