@@ -92,8 +92,8 @@ VoiceEnginesDictionary::getArticle( wstring const & word, vector< wstring > cons
   url.setScheme( "gdtts" );
   url.setHost( "localhost" );
   url.setPath( Utils::Url::ensureLeadingSlash( QString::fromUtf8( wordUtf8.c_str() ) ) );
-  QList< QPair< QString, QString > > query;
-  query.push_back( QPair< QString, QString >( "engine", QString::fromStdString( getId() ) ) );
+  QList< std::pair< QString, QString > > query;
+  query.push_back( std::pair< QString, QString >( "engine", QString::fromStdString( getId() ) ) );
   Utils::Url::setQueryItems( url, query );
 
   string encodedUrl = url.toEncoded().data();

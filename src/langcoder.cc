@@ -283,7 +283,7 @@ quint32 LangCoder::guessId( const QString & lang )
 }
 
 
-QPair< quint32, quint32 > LangCoder::findLangIdPairFromName( QString const & name )
+std::pair< quint32, quint32 > LangCoder::findLangIdPairFromName( QString const & name )
 {
   static QRegularExpression reg( "(?=([a-z]{2,3})-([a-z]{2,3}))", QRegularExpression::CaseInsensitiveOption );
 
@@ -301,7 +301,7 @@ QPair< quint32, quint32 > LangCoder::findLangIdPairFromName( QString const & nam
   return { 0, 0 };
 }
 
-QPair< quint32, quint32 > LangCoder::findLangIdPairFromPath( std::string const & p )
+std::pair< quint32, quint32 > LangCoder::findLangIdPairFromPath( std::string const & p )
 {
   return findLangIdPairFromName( QFileInfo( QString::fromStdString( p ) ).fileName() );
 }

@@ -2,7 +2,7 @@
 #define __SPLITFILE_HH_INCLUDED__
 
 #include <QFile>
-#include <QVector>
+#include <QList>
 #include <QString>
 
 #include <vector>
@@ -19,8 +19,8 @@ class SplitFile
 {
 protected:
 
-  QVector< QFile * > files;
-  QVector< quint64 > offsets;
+  QList< QFile * > files;
+  QList< quint64 > offsets;
   int currentFile;
 
   void appendFile( const QString & name );

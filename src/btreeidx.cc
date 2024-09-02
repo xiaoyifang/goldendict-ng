@@ -1028,7 +1028,7 @@ void BtreeIndex::getAllHeadwords( QSet< QString > & headwords )
   findArticleLinks( nullptr, nullptr, &headwords );
 }
 
-void BtreeIndex::findAllArticleLinks( QVector< WordArticleLink > & articleLinks )
+void BtreeIndex::findAllArticleLinks( QList< WordArticleLink > & articleLinks )
 {
   if ( !idxFile )
     throw exIndexWasNotOpened();
@@ -1038,7 +1038,7 @@ void BtreeIndex::findAllArticleLinks( QVector< WordArticleLink > & articleLinks 
   findArticleLinks( &articleLinks, &offsets, nullptr );
 }
 
-void BtreeIndex::findArticleLinks( QVector< WordArticleLink > * articleLinks,
+void BtreeIndex::findArticleLinks( QList< WordArticleLink > * articleLinks,
                                    QSet< uint32_t > * offsets,
                                    QSet< QString > * headwords,
                                    QAtomicInt * isCancelled )
@@ -1217,7 +1217,7 @@ QList< uint32_t > BtreeIndex::findNodes()
 }
 
 void BtreeIndex::getHeadwordsFromOffsets( QList< uint32_t > & offsets,
-                                          QVector< QString > & headwords,
+                                          QList< QString > & headwords,
                                           QAtomicInt * isCancelled )
 {
   uint32_t currentNodeOffset = rootOffset;

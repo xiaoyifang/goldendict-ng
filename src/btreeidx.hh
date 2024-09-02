@@ -16,7 +16,7 @@
 #include <QFuture>
 #include <QList>
 #include <QSet>
-#include <QVector>
+#include <QList>
 
 
 /// A base for the dictionary which creates a btree index to look up
@@ -89,13 +89,13 @@ public:
   vector< WordArticleLink > findArticles( wstring const &, bool ignoreDiacritics = false, uint32_t maxMatchCount = -1 );
 
   /// Find all unique article links in the index
-  void findAllArticleLinks( QVector< WordArticleLink > & articleLinks );
+  void findAllArticleLinks( QList< WordArticleLink > & articleLinks );
 
   /// Retrieve all unique headwords from index
   void getAllHeadwords( QSet< QString > & headwords );
 
   /// Find all article links and/or headwords in the index
-  void findArticleLinks( QVector< WordArticleLink > * articleLinks,
+  void findArticleLinks( QList< WordArticleLink > * articleLinks,
                          QSet< uint32_t > * offsets,
                          QSet< QString > * headwords,
                          QAtomicInt * isCancelled = 0 );
@@ -106,7 +106,7 @@ public:
 
   /// Retrieve headwords for presented article addresses
   void
-  getHeadwordsFromOffsets( QList< uint32_t > & offsets, QVector< QString > & headwords, QAtomicInt * isCancelled = 0 );
+  getHeadwordsFromOffsets( QList< uint32_t > & offsets, QList< QString > & headwords, QAtomicInt * isCancelled = 0 );
 
 protected:
 

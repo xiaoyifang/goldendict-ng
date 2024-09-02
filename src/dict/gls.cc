@@ -404,7 +404,7 @@ public:
 
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
-  void makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration ) override;
+  void makeFTSIndex( QAtomicInt & isCancelled ) override;
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
@@ -546,7 +546,7 @@ QString GlsDictionary::getMainFilename()
   return getDictionaryFilenames()[ 0 ].c_str();
 }
 
-void GlsDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )
+void GlsDictionary::makeFTSIndex( QAtomicInt & isCancelled )
 {
   if ( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
           || FtsHelpers::ftsIndexIsOldOrBad( this ) ) )
@@ -558,8 +558,6 @@ void GlsDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration 
   if ( ensureInitDone().size() )
     return;
 
-  if ( firstIteration && getArticleCount() > FTS::MaxDictionarySizeForFastSearch )
-    return;
 
   gdDebug( "Gls: Building the full-text index for dictionary: %s\n", getName().c_str() );
 

@@ -196,7 +196,7 @@ public:
   getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
-  void makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration ) override;
+  void makeFTSIndex( QAtomicInt & isCancelled ) override;
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
@@ -369,7 +369,7 @@ QString XdxfDictionary::getMainFilename()
   return getDictionaryFilenames()[ 0 ].c_str();
 }
 
-void XdxfDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )
+void XdxfDictionary::makeFTSIndex( QAtomicInt & isCancelled )
 {
   if ( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
           || FtsHelpers::ftsIndexIsOldOrBad( this ) ) )
@@ -381,8 +381,6 @@ void XdxfDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration
   if ( ensureInitDone().size() )
     return;
 
-  if ( firstIteration && getArticleCount() > FTS::MaxDictionarySizeForFastSearch )
-    return;
 
   gdDebug( "Xdxf: Building the full-text index for dictionary: %s\n", getName().c_str() );
 

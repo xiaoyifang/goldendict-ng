@@ -11,33 +11,20 @@ char const * const Iconv::GdWchar = "UTF-32LE";
 char const * const Iconv::Utf16Le = "UTF-16LE";
 char const * const Iconv::Utf8    = "UTF-8";
 
-using gd::wchar;
-
-Iconv::Iconv( char const * from )
-#ifdef USE_ICONV
-  // the to encoding must be UTF8
-  :
+Iconv::Iconv( char const * from ):
   state( iconv_open( Utf8, from ) )
-#endif
 {
-#ifdef USE_ICONV
   if ( state == (iconv_t)-1 )
     throw exCantInit( strerror( errno ) );
-#else
-  codec = QTextCodec::codecForName( from );
-#endif
 }
 
 Iconv::~Iconv()
 {
-#ifdef USE_ICONV
   iconv_close( state );
-#endif
 }
 
 QString Iconv::convert( void const *& inBuf, size_t & inBytesLeft )
 {
-#ifdef USE_ICONV
   size_t dsz = inBytesLeft;
   //avoid most realloc
   std::vector< char > outBuf( dsz + 32 );
@@ -90,12 +77,6 @@ QString Iconv::convert( void const *& inBuf, size_t & inBytesLeft )
   size_t datasize = outBuf.size() - outBufLeft;
   //  QByteArray ba( &outBuf.front(), datasize );
   return QString::fromUtf8( &outBuf.front(), datasize );
-#else
-  if ( codec )
-    return codec->toUnicode( static_cast< const char * >( inBuf ), inBytesLeft );
-  QByteArray ba( static_cast< const char * >( inBuf ), inBytesLeft );
-  return QString( ba );
-#endif
 }
 
 gd::wstring Iconv::toWstring( char const * fromEncoding, void const * fromData, size_t dataSize )
@@ -104,8 +85,9 @@ gd::wstring Iconv::toWstring( char const * fromEncoding, void const * fromData, 
   /// Special-case the dataSize == 0 to avoid any kind of iconv-specific
   /// behaviour in that regard.
 
-  if ( !dataSize )
+  if ( dataSize == 0 ) {
     return {};
+  }
 
   Iconv ic( fromEncoding );
 
@@ -118,11 +100,22 @@ std::string Iconv::toUtf8( char const * fromEncoding, void const * fromData, siz
 {
   // Similar to toWstring
 
-  if ( !dataSize )
+  if ( dataSize == 0 ) {
     return {};
+  }
 
   Iconv ic( fromEncoding );
 
   const QString outStr = ic.convert( fromData, dataSize );
   return outStr.toStdString();
+}
+
+QString Iconv::toQString( char const * fromEncoding, void const * fromData, size_t dataSize )
+{
+  if ( dataSize == 0 ) {
+    return {};
+  }
+
+  Iconv ic( fromEncoding );
+  return ic.convert( fromData, dataSize );
 }

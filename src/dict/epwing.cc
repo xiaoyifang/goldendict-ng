@@ -137,7 +137,7 @@ public:
 
   QString const & getDescription() override;
 
-  void getHeadwordPos( wstring const & word_, QVector< int > & pg, QVector< int > & off );
+  void getHeadwordPos( wstring const & word_, QList< int > & pg, QList< int > & off );
 
   sptr< Dictionary::DataRequest >
   getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ignoreDiacritics ) override;
@@ -148,7 +148,7 @@ public:
   getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
-  void makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration ) override;
+  void makeFTSIndex( QAtomicInt & isCancelled ) override;
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
@@ -425,7 +425,7 @@ QString const & EpwingDictionary::getDescription()
   return dictionaryDescription;
 }
 
-void EpwingDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )
+void EpwingDictionary::makeFTSIndex( QAtomicInt & isCancelled )
 {
   if ( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
           || FtsHelpers::ftsIndexIsOldOrBad( this ) ) )
@@ -435,8 +435,6 @@ void EpwingDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIterati
   if ( haveFTSIndex() )
     return;
 
-  if ( firstIteration && getArticleCount() > FTS::MaxDictionarySizeForFastSearch )
-    return;
 
   gdDebug( "Epwing: Building the full-text index for dictionary: %s\n", getName().c_str() );
 
@@ -545,8 +543,8 @@ void EpwingHeadwordsRequest::run()
   }
 
 
-  QVector< int > pg;
-  QVector< int > off;
+  QList< int > pg;
+  QList< int > off;
   dict.getHeadwordPos( parts[ 0 ].toStdU32String(), pg, off );
 
   for ( unsigned i = 0; i < pg.size(); ++i ) {
@@ -602,8 +600,8 @@ public:
   void run();
 
   void getBuiltInArticle( wstring const & word_,
-                          QVector< int > & pages,
-                          QVector< int > & offsets,
+                          QList< int > & pages,
+                          QList< int > & offsets,
                           multimap< wstring, pair< string, string > > & mainArticles );
 
   void cancel() override
@@ -644,7 +642,7 @@ void EpwingArticleRequest::run()
   if ( ignoreDiacritics )
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
 
-  QVector< int > pages, offsets;
+  QList< int > pages, offsets;
 
   for ( auto & x : chain ) {
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
@@ -753,14 +751,14 @@ void EpwingArticleRequest::run()
 }
 
 void EpwingArticleRequest::getBuiltInArticle( wstring const & word_,
-                                              QVector< int > & pages,
-                                              QVector< int > & offsets,
+                                              QList< int > & pages,
+                                              QList< int > & offsets,
                                               multimap< wstring, pair< string, string > > & mainArticles )
 {
   try {
     string headword, articleText;
 
-    QVector< int > pg, off;
+    QList< int > pg, off;
     {
       QMutexLocker _( &dict.eBook.getLibMutex() );
       dict.eBook.getArticlePos( QString::fromStdU32String( word_ ), pg, off );
@@ -789,7 +787,7 @@ void EpwingArticleRequest::getBuiltInArticle( wstring const & word_,
   }
 }
 
-void EpwingDictionary::getHeadwordPos( wstring const & word_, QVector< int > & pg, QVector< int > & off )
+void EpwingDictionary::getHeadwordPos( wstring const & word_, QList< int > & pg, QList< int > & off )
 {
   try {
     QMutexLocker _( &eBook.getLibMutex() );
@@ -988,7 +986,7 @@ void EpwingWordSearchRequest::findMatches()
   }
 
   while ( matches.size() < maxResults ) {
-    QVector< QString > headwords;
+    QList< QString > headwords;
     {
       QMutexLocker _( &edict.eBook.getLibMutex() );
       if ( Utils::AtomicInt::loadAcquire( isCancelled ) )

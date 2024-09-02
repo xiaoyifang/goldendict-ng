@@ -5,7 +5,7 @@
 #define __CONFIG_HH_INCLUDED__
 
 #include <QObject>
-#include <QVector>
+#include <QList>
 #include <QString>
 #include <QSize>
 #include <QDateTime>
@@ -47,7 +47,7 @@ struct Path
 };
 
 /// A list of paths where to search for the dictionaries
-typedef QVector< Path > Paths;
+typedef QList< Path > Paths;
 
 /// A directory holding bunches of audiofiles, which is indexed into a separate
 /// dictionary.
@@ -72,7 +72,7 @@ struct SoundDir
 };
 
 /// A list of SoundDirs
-typedef QVector< SoundDir > SoundDirs;
+typedef QList< SoundDir > SoundDirs;
 
 struct DictionaryRef
 {
@@ -101,7 +101,7 @@ struct Group
   QByteArray iconData;
   QKeySequence shortcut;
   QString favoritesFolder;
-  QVector< DictionaryRef > dictionaries;
+  QList< DictionaryRef > dictionaries;
   Config::MutedDictionaries mutedDictionaries;      // Disabled via dictionary bar
   Config::MutedDictionaries popupMutedDictionaries; // Disabled via dictionary bar in popup
 
@@ -125,7 +125,7 @@ struct Group
 };
 
 /// All the groups
-struct Groups: public QVector< Group >
+struct Groups: public QList< Group >
 {
   unsigned nextId; // Id to use to create the group next time
 
@@ -498,7 +498,7 @@ struct WebSite
 };
 
 /// All the WebSites
-typedef QVector< WebSite > WebSites;
+typedef QList< WebSite > WebSites;
 
 /// Any DICT server
 struct DictServer
@@ -539,14 +539,14 @@ struct DictServer
 };
 
 /// All the DictServers
-typedef QVector< DictServer > DictServers;
+typedef QList< DictServer > DictServers;
 
 /// Hunspell configuration
 struct Hunspell
 {
   QString dictionariesPath;
 
-  typedef QVector< QString > Dictionaries;
+  typedef QList< QString > Dictionaries;
 
   Dictionaries enabledDictionaries;
 
@@ -562,7 +562,7 @@ struct Hunspell
 };
 
 /// All the MediaWikis
-typedef QVector< MediaWiki > MediaWikis;
+typedef QList< MediaWiki > MediaWikis;
 
 
 /// Chinese transliteration configuration
@@ -755,7 +755,7 @@ struct Program
   }
 };
 
-typedef QVector< Program > Programs;
+typedef QList< Program > Programs;
 
 #ifndef NO_TTS_SUPPORT
 struct VoiceEngine
@@ -801,7 +801,7 @@ struct VoiceEngine
   }
 };
 
-typedef QVector< VoiceEngine > VoiceEngines;
+typedef QList< VoiceEngine > VoiceEngines;
 #endif
 
 struct HeadwordsDialog

@@ -5,3 +5,7 @@ b5349478cfb0dc2dd0de8c8e8aeebdd24cf7ac6b
 
 # reformat every .js .css
 534d8c2e96ef00ae03650c2185d7b240ea5a1114
+
+# replace QVector & QPair
+3273f39dd73f4dba07fa95be2be74061f2690b2c
+44853544f850e1de90b341780168c04d089c37a1

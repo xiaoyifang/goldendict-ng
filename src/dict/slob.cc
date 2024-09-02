@@ -21,20 +21,21 @@
   #include <stub_msvc.h>
 #endif
 
+#include "iconv.hh"
+
 #include <QString>
 #include <QFile>
 #include <QFileInfo>
 #include <QDir>
-#include <QTextCodec>
 #include <QMap>
-#include <QPair>
 #include <QProcess>
-#include <QVector>
+#include <QList>
 
 #include <QRegularExpression>
 
 #include <string>
 #include <vector>
+#include <utility>
 #include <map>
 #include <set>
 #include <algorithm>
@@ -112,8 +113,8 @@ bool indexIsOldOrBad( string const & indexFile )
 class SlobFile
 {
 public:
-  typedef QPair< quint64, quint32 > RefEntryOffsetItem;
-  typedef QVector< RefEntryOffsetItem > RefOffsetsVector;
+  typedef std::pair< quint64, quint32 > RefEntryOffsetItem;
+  typedef QList< RefEntryOffsetItem > RefOffsetsVector;
 
 private:
   enum Compressions {
@@ -127,11 +128,10 @@ private:
   QFile file;
   QString fileName, dictionaryName;
   Compressions compression;
-  QString encoding;
+  std::string encoding;
   unsigned char uuid[ 16 ];
-  QTextCodec * codec;
   QMap< QString, QString > tags;
-  QVector< QString > contentTypes;
+  QList< QString > contentTypes;
   quint32 blobCount;
   quint64 storeOffset, fileSize, refsOffset;
   quint32 refsCount, itemsCount;
@@ -149,7 +149,6 @@ private:
 public:
   SlobFile():
     compression( UNKNOWN ),
-    codec( 0 ),
     blobCount( 0 ),
     storeOffset( 0 ),
     fileSize( 0 ),
@@ -170,7 +169,7 @@ public:
     return compression;
   }
 
-  QString const & getEncoding() const
+  std::string const & getEncoding() const
   {
     return encoding;
   }
@@ -198,11 +197,6 @@ public:
   quint32 getContentTypesCount() const
   {
     return contentTypesCount;
-  }
-
-  QTextCodec * getCodec() const
-  {
-    return codec;
   }
 
   const RefOffsetsVector & getSortedRefOffsets();
@@ -241,10 +235,17 @@ QString SlobFile::readString( unsigned length )
   QByteArray data = file.read( length );
   QString str;
 
-  if ( codec != 0 && !data.isEmpty() )
-    str = codec->toUnicode( data );
-  else
+  if ( !encoding.empty() && !data.isEmpty() ) {
+    try {
+      str = Iconv::toQString( encoding.c_str(), data.data(), data.size() );
+    }
+    catch ( Iconv::Ex & e ) {
+      qDebug() << QString( R"(slob decoding failed: %1)" ).arg( e.what() );
+    }
+  }
+  else {
     str = QString( data );
+  }
 
   char term = 0;
   int n     = str.indexOf( term );
@@ -317,13 +318,7 @@ void SlobFile::open( const QString & name )
 
     // Read encoding
 
-    encoding = readTinyText();
-
-    codec = QTextCodec::codecForName( encoding.toLatin1() );
-    if ( codec == nullptr ) {
-      error = QString( R"(for encoding "%1")" ).arg( encoding );
-      throw exNoCodecFound( string( error.toUtf8().data() ) );
-    }
+    encoding = readTinyText().toStdString();
 
     // Read compression type
 
@@ -504,7 +499,7 @@ quint8 SlobFile::getItem( RefEntry const & entry, string * data )
     if ( entry.binIndex >= bins )
       return 0xFF;
 
-    QVector< quint8 > ids;
+    QList< quint8 > ids;
     ids.resize( bins );
     if ( file.read( (char *)ids.data(), bins ) != bins )
       break;
@@ -636,7 +631,7 @@ public:
 
   quint64 getArticlePos( uint32_t articleNumber );
 
-  void makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration ) override;
+  void makeFTSIndex( QAtomicInt & isCancelled ) override;
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
@@ -726,14 +721,8 @@ QString const & SlobDictionary::getDescription()
   if ( !dictionaryDescription.isEmpty() )
     return dictionaryDescription;
 
-  QMap< QString, QString > const & tags = sf.getTags();
-
-  QMap< QString, QString >::const_iterator it;
-  for ( it = tags.begin(); it != tags.end(); ++it ) {
-    if ( it != tags.begin() )
-      dictionaryDescription += "\n\n";
-
-    dictionaryDescription += it.key() + ": " + it.value();
+  for ( auto [ key, value ] : sf.getTags().asKeyValueRange() ) {
+    dictionaryDescription += "<b>" % key % "</b>" % ": " % value % "<br>";
   }
 
   return dictionaryDescription;
@@ -871,9 +860,15 @@ quint32 SlobDictionary::readArticle( quint32 articleNumber, std::string & result
        || contentType.contains( "/css", Qt::CaseInsensitive )
        || contentType.contains( "/javascript", Qt::CaseInsensitive )
        || contentType.contains( "/json", Qt::CaseInsensitive ) ) {
-    QTextCodec * codec = sf.getCodec();
-    QString content    = codec->toUnicode( data.c_str(), data.size() );
-    result             = string( content.toUtf8().data() );
+    QString content;
+    try {
+      content = Iconv::toQString( sf.getEncoding().c_str(), data.data(), data.size() );
+    }
+    catch ( Iconv::Ex & e ) {
+      qDebug() << QString( R"(slob decoding failed: %1)" ).arg( e.what() );
+    }
+
+    result = string( content.toUtf8().data() );
   }
   else
     result = data;
@@ -891,7 +886,7 @@ quint64 SlobDictionary::getArticlePos( uint32_t articleNumber )
   return ( ( (quint64)( entry.binIndex ) ) << 32 ) | entry.itemIndex;
 }
 
-void SlobDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )
+void SlobDictionary::makeFTSIndex( QAtomicInt & isCancelled )
 {
   if ( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
           || FtsHelpers::ftsIndexIsOldOrBad( this ) ) )
@@ -903,8 +898,6 @@ void SlobDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration
   if ( !ensureInitDone().empty() )
     return;
 
-  if ( firstIteration && getArticleCount() > FTS::MaxDictionarySizeForFastSearch )
-    return;
 
   gdDebug( "Slob: Building the full-text index for dictionary: %s\n", getName().c_str() );
 

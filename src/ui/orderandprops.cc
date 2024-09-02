@@ -7,9 +7,9 @@
 #include "language.hh"
 
 #include <algorithm>
+#include <utility>
 
 #include <QMenu>
-#include <QPair>
 
 using std::vector;
 using std::sort;
@@ -33,7 +33,8 @@ bool dictLessThan( sptr< Dictionary::Class > const & dict1, sptr< Dictionary::Cl
   int idFrom1 = dict1->getLangFrom();
   int idTo1   = dict1->getLangTo();
   if ( idFrom1 == 0 ) {
-    QPair< quint32, quint32 > ids = LangCoder::findLangIdPairFromName( QString::fromUtf8( dict1->getName().c_str() ) );
+    std::pair< quint32, quint32 > ids =
+      LangCoder::findLangIdPairFromName( QString::fromUtf8( dict1->getName().c_str() ) );
     idFrom1                       = ids.first;
     idTo1                         = ids.second;
   }
@@ -41,7 +42,8 @@ bool dictLessThan( sptr< Dictionary::Class > const & dict1, sptr< Dictionary::Cl
   int idFrom2 = dict2->getLangFrom();
   int idTo2   = dict2->getLangTo();
   if ( idFrom2 == 0 ) {
-    QPair< quint32, quint32 > ids = LangCoder::findLangIdPairFromName( QString::fromUtf8( dict2->getName().c_str() ) );
+    std::pair< quint32, quint32 > ids =
+      LangCoder::findLangIdPairFromName( QString::fromUtf8( dict2->getName().c_str() ) );
     idFrom2                       = ids.first;
     idTo2                         = ids.second;
   }

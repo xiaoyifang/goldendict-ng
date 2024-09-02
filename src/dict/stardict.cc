@@ -196,7 +196,7 @@ public:
   getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
-  void makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration ) override;
+  void makeFTSIndex( QAtomicInt & isCancelled ) override;
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
@@ -1085,7 +1085,7 @@ QString StardictDictionary::getMainFilename()
   return getDictionaryFilenames()[ 0 ].c_str();
 }
 
-void StardictDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )
+void StardictDictionary::makeFTSIndex( QAtomicInt & isCancelled )
 {
   if ( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
           || FtsHelpers::ftsIndexIsOldOrBad( this ) ) )
@@ -1097,8 +1097,6 @@ void StardictDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstItera
   if ( ensureInitDone().size() )
     return;
 
-  if ( firstIteration && getArticleCount() > FTS::MaxDictionarySizeForFastSearch )
-    return;
 
   gdDebug( "Stardict: Building the full-text index for dictionary: %s\n", getName().c_str() );
 
