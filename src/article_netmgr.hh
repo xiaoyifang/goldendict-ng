@@ -5,13 +5,13 @@
 #define __ARTICLE_NETMGR_HH_INCLUDED__
 
 #include <QtNetwork>
-
 #include <QSet>
 #include <QMap>
-#include <QPair>
 #include <QWebEngineUrlSchemeHandler>
 #include <QWebEngineUrlRequestJob>
 #include <QNetworkAccessManager>
+
+#include <utility>
 
 #include "dict/dictionary.hh"
 #include "article_maker.hh"
