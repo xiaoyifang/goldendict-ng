@@ -164,7 +164,7 @@ bool RunInstance::start( Config::Program const & prg, QString const & word, QStr
 
     process.start( programName, args );
     if ( writeToStdInput ) {
-      process.write( word.toLocal8Bit() );
+      process.write( word.toUtf8() );
       process.closeWriteChannel();
     }
 

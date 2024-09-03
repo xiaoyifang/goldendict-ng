@@ -68,9 +68,10 @@ In the "Icon" column you can set custom icon for every server. If you add icon f
 
 ## Programs
 
-Here you can add external applications. To add such application, you should set command line for its launch, name for the dictionary list and application type.
+Here you can add external applications. To add such an application, you should set the command line for its launch, name for the dictionary list and application type.
 
-The `%GDWORD%` in command line will be replaced by word from search line. If the command line doesn't contain such `%GDWORD%` the word will be fed into standard input stream in 8-bit current locale encoding.
+The `%GDWORD%` in command line will be replaced by word from search line.
+
 
 | Program type | Purpose                                                                               |
 |--------------|---------------------------------------------------------------------------------------|
@@ -82,6 +83,20 @@ The `%GDWORD%` in command line will be replaced by word from search line. If the
 Other than "Audio", the program should print the content to standard output.
 
 In the "Icon" column, you can set a custom icon for every application. If you add icon file name without a path, GoldenDict will search this file in the configuration folder.
+
+!!!note 
+
+    The word will be written to `stdin` in UTF-8 if the command line doesn't contain `%GDWORD%`.
+
+    In rare situations on Windows, some programs may not read `stdin` as UTF-8. In this case, you need to do some adjustments.
+    
+    For Python3.6+, reading `stdin` as UTF-8 is the default behaviour. For older versions, you may need to change [PYTHONIOENCODING](https://docs.python.org/3/using/cmdline.html#envvar-PYTHONIOENCODING).
+
+    For Node.js, try `process.stdin.setEncoding('utf8');`.
+
+    If you cannot change how your language handles stdin's encoding, try store the data read from the `stdin` as bytes and call related methods that interpret bytes as UTF-8 strings.
+
+    If you cannot access the source code, try enable "Beta: Use Unicode UTF-8 for worldwide language support." in Windows settings.
 
 ## Transliteration
 
