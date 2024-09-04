@@ -6,7 +6,6 @@
 #include "htmlescape.hh"
 #include "utf8.hh"
 #include "wstring_qt.hh"
-#include "parsecmdline.hh"
 #include "iconv.hh"
 #include "utils.hh"
 #include "globalbroadcaster.hh"
@@ -142,7 +141,7 @@ RunInstance::RunInstance():
 
 bool RunInstance::start( Config::Program const & prg, QString const & word, QString & error )
 {
-  QStringList args = parseCommandLine( prg.commandLine );
+  QStringList args = QProcess::splitCommand( prg.commandLine );
 
   if ( !args.empty() ) {
     QString programName = args.first();
