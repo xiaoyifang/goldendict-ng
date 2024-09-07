@@ -72,7 +72,7 @@ void DictionaryBar::setDictionaries( vector< sptr< Dictionary::Class > > const &
     dictActions.append( action );
   }
 
-  setDictionaryIconSize( 40 );
+  setDictionaryIconSize( 200 );
 
   setUpdatesEnabled( true );
 }
