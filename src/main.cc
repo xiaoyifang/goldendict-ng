@@ -370,7 +370,10 @@ int main( int argc, char ** argv )
 
   QHotkeyApplication::setApplicationName( "GoldenDict-ng" );
   QHotkeyApplication::setOrganizationDomain( "https://github.com/xiaoyifang/goldendict-ng" );
+#ifndef Q_OS_MACOS
+  // macOS icon is defined in Info.plist
   QHotkeyApplication::setWindowIcon( QIcon( ":/icons/programicon.png" ) );
+#endif
 
 #ifdef Q_OS_WIN
   // TODO: Force fusion because Qt6.7's "ModernStyle"'s dark theme have problems, need to test / reconsider in future
