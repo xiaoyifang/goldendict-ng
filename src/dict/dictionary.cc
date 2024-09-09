@@ -292,8 +292,6 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
   QImage img( iconUrl );
 
   if ( !img.isNull() ) {
-    //some icon is very large ,will crash the application.
-    img = img.scaledToWidth( iconWidth );
     QImage result = img.scaled( { iconWidth, iconWidth }, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation );
 
     QPainter painter( &result );
