@@ -239,7 +239,9 @@ else ()
 endif ()
 
 qt_add_translations(${GOLDENDICT} TS_FILES ${TRANS_FILES}
-        QM_FILES_OUTPUT_VARIABLE qm_files)
+        QM_FILES_OUTPUT_VARIABLE qm_files
+        LUPDATE_OPTIONS "-no-ui-lines -locations none -no-obsolete")
+
 add_dependencies(${GOLDENDICT} "release_translations")
 
 #### installation or assemble redistribution
