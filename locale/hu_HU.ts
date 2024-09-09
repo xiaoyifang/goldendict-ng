@@ -9,14 +9,6 @@
         <translation>Névjegy</translation>
     </message>
     <message>
-        <source>GoldenDict dictionary lookup program, version </source>
-        <translation type="vanished">GoldenDict szótári keresőprogram, verzió </translation>
-    </message>
-    <message>
-        <source>(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</source>
-        <translation type="vanished">(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</translation>
-    </message>
-    <message>
         <location filename="../src/ui/about.ui" line="66"/>
         <source>GoldenDict-ng dictionary lookup program, version </source>
         <translation>GoldenDict-ng szótári keresőprogram, verzió </translation>
@@ -40,14 +32,6 @@
         <location filename="../src/ui/about.ui" line="168"/>
         <source>Credits:</source>
         <translation>Készítők:</translation>
-    </message>
-    <message>
-        <source>[Unknown]</source>
-        <translation type="vanished">[Ismeretlen]</translation>
-    </message>
-    <message>
-        <source>Based on Qt %1 (%2, %3 bit)</source>
-        <translation type="vanished">Qt %1 alapokon (%2, %3 bit)</translation>
     </message>
     <message>
         <location filename="../src/ui/about.cc" line="20"/>
@@ -110,10 +94,6 @@
         <translation>&lt;h3 align=&quot;center&quot;&gt;Üdvözli a &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;A programmal való munka megkezdéséhez nyissa meg a &lt;em&gt;Szerkesztés | Szótárak&lt;/em&gt; menüt, és adja meg a könyvtárakat ahol a szótárfájlok találhatók, válasszon ki különböző Wikipédia oldalakat és más forrásokat, majd adja meg a szótárak sorrendjét vagy rendezze őket csoportokba.&lt;p&gt;Ezután már kezdheti is kikeresni a kívánt szavakat! Ezt végezheti ebben az ablakban, az egyik bal oldali panel használatával, vagy &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;kereshet szavakat más futó programokból&lt;/a&gt;.&lt;p&gt;A program testreszabásához nézze meg a lehetséges beállításokat a &lt;em&gt;Szerkesztés | Beállítások&lt;/em&gt; menüpontban. Az összes beállításnak van eszköztippje, így ha kétségei lennének a működésével kapcsolatban, mindenképpen olvassa el azokat.&lt;p&gt;Ha további segítségre van szüksége, kérdése, javaslata van, vagy csak kíváncsi a többiek véleményére, akkor szívesen látjuk a program &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;fórumán&lt;/a&gt;. Nézze meg a program &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;weboldalát&lt;/a&gt; a frissítésekért. (c) 2008-2013 Konstantin Isakov. Licenc: GPL v3 vagy újabb.</translation>
     </message>
     <message>
-        <source>No translation for &lt;b&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
-        <translation type="vanished">Nem található fordítás ehhez: &lt;b&gt;%1&lt;/b&gt;, a(z) &lt;b&gt;%2&lt;/b&gt; csoportban.</translation>
-    </message>
-    <message>
         <location filename="../src/article_maker.cc" line="240"/>
         <source>No translation was found in group &lt;b&gt;%1&lt;/b&gt;.</source>
         <translation>Nem található fordítás a csoportban: &lt;b&gt;%1&lt;/b&gt;.</translation>
@@ -123,26 +103,6 @@
         <location filename="../src/article_maker.cc" line="309"/>
         <source>Welcome!</source>
         <translation>Üdvözöljük!</translation>
-    </message>
-    <message>
-        <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;b&gt;Edit|Dictionaries&lt;/b&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;Working with popup&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;b&gt;Edit|Preferences&lt;/b&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;http://goldendict.org/forum/&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;http://goldendict.org/&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-        <translation type="vanished">&lt;h3 align=&quot;center&quot;&gt;Üdvözli a &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;A programmal való munka megkezdéséhez nyissa meg a &lt;b&gt;Szerkesztés|Szótárak&lt;/b&gt; menüt, és adja meg a könyvtárakat ahol a szótárfájlok találhatók, válasszon ki különböző Wikipédia oldalakat és más forrásokat, majd adja meg a szótárak sorrendjét vagy rendezze őket csoportokba.&lt;p&gt;Ezután már kezdheti is kikeresni a kívánt szavakat! Ezt végezheti ebben az ablakban, az egyik bal oldali panel használatával, vagy &lt;a href=&quot;A felugróablak kezelése&quot;&gt;kereshet szavakat más futó programokból&lt;/a&gt;.&lt;p&gt;A program testreszabásához nézze meg a lehetséges beállításokat a &lt;b&gt;Szerkesztés|Beállítások&lt;/b&gt; menüpontban. Az összes beállításnak van eszköztippje, így ha kétségei lennének a működésével kapcsolatban, mindenképpen olvassa el azokat.&lt;p&gt;Ha további segítségre van szüksége, kérdése, javaslata van, vagy csak kíváncsi a többiek véleményére, akkor szívesen látjuk a program &lt;a href=&quot;http://goldendict.org/forum/&quot;&gt;fórumán&lt;/a&gt;. Nézze meg a program &lt;a href=&quot;http://goldendict.org/&quot;&gt;weboldalát&lt;/a&gt; a frissítésekért. (c) 2008-2013 Konstantin Isakov. Licenc: GPL v3 vagy újabb.</translation>
-    </message>
-    <message>
-        <source>Working with popup</source>
-        <translation type="vanished">A felugróablak kezelése</translation>
-    </message>
-    <message>
-        <source>&lt;h3 align=&quot;center&quot;&gt;Working with the popup&lt;/h3&gt;To look up words from other active applications, you would need to first activate the &lt;i&gt;&quot;Scan popup functionality&quot;&lt;/i&gt; in &lt;b&gt;Preferences&lt;/b&gt;, and then enable it at any time either by triggering the &apos;Popup&apos; icon above, or by clicking the tray icon down below with your right mouse button and choosing so in the menu you&apos;ve popped. </source>
-        <translation type="vanished">&lt;h3 align=&quot;center&quot;&gt;A felugróablak kezelése&lt;/h3&gt;Ahhoz, hogy más futó programokban olvasható szavakat kereshessen ki a szótárakból, először be kell kapcsolnia a &lt;i&gt;Fordító felugróablak funkciót&lt;/i&gt; a &lt;b&gt;Beállításokban&lt;/b&gt;, majd engedélyeznie kell amikor szüksége van rá. Ezt megteheti a fentebbi &apos;Fordító felugróablak&apos; ikonnal, vagy a rendszertálcán lévő ikonon jobb gombbal kattintva és a vonatkozó menüt kiválasztva. </translation>
-    </message>
-    <message>
-        <source>Then just stop the cursor over the word you want to look up in another application, and a window would pop up which would describe it to you.</source>
-        <translation type="vanished">Ezután csak állítsa meg a kurzort a szó felett, amelyet szeretne kikeresni a másik alkalmazásból, és felugrik egy ablak, a szó leírásával.</translation>
-    </message>
-    <message>
-        <source>Then just select any word you want to look up in another application by your mouse (double-click it or swipe it with mouse with the button pressed), and a window would pop up which would describe the word to you.</source>
-        <translation type="vanished">Ezután csak válassza ki az egérrel azt a szót, amelyet szeretne kikeresni a másik alkalmazásból (kattintson rá duplán, vagy húzza át az egérrel, miközben a gombot lenyomva tartja), és felugrik egy ablak a szó leírásával.</translation>
     </message>
     <message>
         <location filename="../src/article_maker.cc" line="393"/>
@@ -201,42 +161,6 @@
 <context>
     <name>ArticleView</name>
     <message>
-        <source>Form</source>
-        <translation type="vanished">Űrlap</translation>
-    </message>
-    <message>
-        <source>about:blank</source>
-        <translation type="vanished">about:blank</translation>
-    </message>
-    <message>
-        <source>&amp;Previous</source>
-        <translation type="vanished">&amp;Előző</translation>
-    </message>
-    <message>
-        <source>&amp;Next</source>
-        <translation type="vanished">&amp;Következő</translation>
-    </message>
-    <message>
-        <source>Find:</source>
-        <translation type="vanished">Keresés:</translation>
-    </message>
-    <message>
-        <source>x</source>
-        <translation type="vanished">x</translation>
-    </message>
-    <message>
-        <source>Ctrl+G</source>
-        <translation type="vanished">Ctrl+G</translation>
-    </message>
-    <message>
-        <source>Highlight &amp;all</source>
-        <translation type="vanished">&amp;Összes kiemelése</translation>
-    </message>
-    <message>
-        <source>&amp;Case Sensitive</source>
-        <translation type="vanished">Kis- és nagybetűk &amp;megkülönböztetése</translation>
-    </message>
-    <message>
         <location filename="../src/ui/articleview.cc" line="70"/>
         <source>Phrase not found</source>
         <translation>Kifejezés nem található</translation>
@@ -277,10 +201,6 @@
         <translation>TTS hang</translation>
     </message>
     <message>
-        <source>Picture</source>
-        <translation type="vanished">Kép</translation>
-    </message>
-    <message>
         <location filename="../src/ui/articleview.cc" line="831"/>
         <source>Video</source>
         <translation>Videó</translation>
@@ -317,10 +237,6 @@
         <location filename="../src/ui/articleview.cc" line="1143"/>
         <source>The referenced audio program doesn&apos;t exist.</source>
         <translation>A hivatkozott hanglejátszó program nem található.</translation>
-    </message>
-    <message>
-        <source>&amp;Open Link</source>
-        <translation type="vanished">&amp;Hivatkozás megnyitása</translation>
     </message>
     <message>
         <location filename="../src/ui/articleview.cc" line="1491"/>
@@ -409,10 +325,6 @@
         <translation>Hangfájlok (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;Minden fájl (*.*)</translation>
     </message>
     <message>
-        <source>Sound files (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape);;All files (*.*)</source>
-        <translation type="vanished">Hangfájlok (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape);;Minden fájl (*.*)</translation>
-    </message>
-    <message>
         <location filename="../src/ui/articleview.cc" line="1721"/>
         <source>Save image</source>
         <translation>Kép mentése</translation>
@@ -436,14 +348,6 @@
         <location filename="../src/ui/articleview.cc" line="1827"/>
         <source>Failed to auto-open resource file, try opening manually: %1.</source>
         <translation>Hiba az erőforrásfájl automatikus megnyitásakor, próbálja meg manuálisan: %1.</translation>
-    </message>
-    <message>
-        <source>WARNING: %1</source>
-        <translation type="vanished">FIGYELEM: %1</translation>
-    </message>
-    <message>
-        <source>The referenced resource failed to download.</source>
-        <translation type="vanished">A hivatkozott erőforrás letöltése nem sikerült.</translation>
     </message>
     <message>
         <location filename="../src/ui/articleview.cc" line="1855"/>
@@ -537,53 +441,6 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
         <location filename="../src/dict/chinese.cc" line="150"/>
         <source>Traditional to simplified Chinese conversion</source>
         <translation>Átalakítás hagyományosról egyszerűsített kínai írásra</translation>
-    </message>
-</context>
-<context>
-    <name>CommandLineHelp</name>
-    <message>
-        <source>Usage:
-  goldendict [OPTION]... [WORD|URI]
-
-GoldenDict dictionary lookup program
-
-  WORD				A word or quoted phrase to translate
-  URI				&quot;[golden]dict://[/]word or phrase to translate[/]&quot;
-
-Options:
-  -h, --help			Show command-line help and exit
-  --log-to-file			Turn on debug mode
-  --toggle-scan-popup		Toggle scanning mode on/off
-  --group-name=GROUP		Set current group of dictionaries in the main window to GROUP
-  --popup-group-name=GROUP	Set current group of dictionaries in the popup window to GROUP
-
-If another GoldenDict instance is running, the second instance exits immediately, the options --toggle-scan-popup, --group-name, --popup-group-name affect the running instance, WORD or URI is translated in the running instance&apos;s popup window.
-Otherwise, all options affect the initial state of the new instance, WORD or URI is translated in the new instance&apos;s main window.
-
-Assigning a global keyboard shortcut to the &quot;goldendict --toggle-scan-popup&quot; command in system preferences emulates a scanning-mode-toggling global hotkey.</source>
-        <translation type="vanished">Használata:
-  goldendict [KAPCSOLÓ]... [SZÓ|URI]
-
-GoldenDict szótári keresőprogram
-
-  SZÓ				A lefordítandó szó vagy idézőjelbe tett kifejezés
-  URI				&quot;[golden]dict://[/]lefordítandó szó vagy kifejezés[/]&quot;
-
-Kapcsolók:
-  -h, --help			A parancssori súgó megjelenítése és kilépés
-  --log-to-file			Hibakeresési mód bekapcsolása
-  --toggle-scan-popup		Felugróablak mód ki- vagy bekapcsolása
-  --group-name=CSOPORT		Kiválasztja a CSOPORT szótárcsoportot a főablakban
-  --popup-group-name=CSOPORT	Kiválasztja a CSOPORT szótárcsoportot a felugróablakban
-
-Ha egy második GoldenDict példány is fut, az azonnal ki fog lépni, a --toggle-scan-popup, --group-name, --popup-group-name kapcsolók a futó példányra hatnak, SZÓ vagy URI lefordítása a futó példány felugróablakában történik.
-Más esetekben a kapcsolók az induló új példány induló állapotát befolyásolják, a SZÓ vagy URI lefordítása az elinduló példány főablakában történik
-
-Egy globális gyorsbillentyű hozzárendelése a rendszerbeállításokban a &quot;goldendict --toggle-scan-popup&quot; parancshoz. a fordító felugróablak gyorsbillentyűvel való ki- és bekapcsolását teszi lehetővé.</translation>
-    </message>
-    <message>
-        <source>GoldenDict command-line help</source>
-        <translation type="vanished">GoldenDict parancssor súgó</translation>
     </message>
 </context>
 <context>
@@ -840,10 +697,6 @@ Egy globális gyorsbillentyű hozzárendelése a rendszerbeállításokban a &qu
         <location filename="../src/ui/dictheadwords.cc" line="45"/>
         <source>RegExp</source>
         <translation>Reguláris kifejezés</translation>
-    </message>
-    <message>
-        <source>Unique headwords total: %1, filtered: %2</source>
-        <translation type="vanished">Különböző címszavak száma összesen: %1, szűrve: %2</translation>
     </message>
     <message>
         <location filename="../src/ui/dictheadwords.cc" line="288"/>
@@ -1161,29 +1014,9 @@ Egy globális gyorsbillentyű hozzárendelése a rendszerbeállításokban a &qu
         <translation>Keresés a teljes szövegben</translation>
     </message>
     <message>
-        <source>Whole words</source>
-        <translation type="vanished">Teljes szó</translation>
-    </message>
-    <message>
-        <source>Plain text</source>
-        <translation type="vanished">Egyszerű szöveg</translation>
-    </message>
-    <message>
         <location filename="../src/fulltextsearch.cc" line="220"/>
         <source>Wildcards</source>
         <translation>Helyettesítő karakterek</translation>
-    </message>
-    <message>
-        <source>RegExp</source>
-        <translation type="vanished">Reguláris kifejezés</translation>
-    </message>
-    <message>
-        <source>Max distance between words (%1-%2):</source>
-        <translation type="vanished">Szavak közötti távolság max. (%1-%2):</translation>
-    </message>
-    <message>
-        <source>Max articles per dictionary (%1-%2):</source>
-        <translation type="vanished">Szócikkek szótáranként max. (%1-%2):</translation>
     </message>
     <message>
         <location filename="../src/fulltextsearch.cc" line="219"/>
@@ -1217,18 +1050,6 @@ Egy globális gyorsbillentyű hozzárendelése a rendszerbeállításokban a &qu
         <location filename="../src/fulltextsearch.cc" line="323"/>
         <source>The querying word can not be empty.</source>
         <translation>A keresett szó nem lehet üres.</translation>
-    </message>
-    <message>
-        <source>CJK symbols in search string are not compatible with search modes &quot;Whole words&quot; and &quot;Plain text&quot;</source>
-        <translation type="vanished">CJK-szimbólumok a keresésben nem kompatibilisek a &quot;Teljes szavak&quot; és az &quot;Egyszerű szöveg&quot; móddal</translation>
-    </message>
-    <message>
-        <source>The search line must contains at least one word containing </source>
-        <translation type="vanished">A keresési kifejezésnek tartalmaznia kell legalább egy szót </translation>
-    </message>
-    <message>
-        <source> or more symbols</source>
-        <translation type="vanished"> vagy több szimbólummal</translation>
     </message>
     <message>
         <location filename="../src/fulltextsearch.cc" line="333"/>
@@ -1332,21 +1153,9 @@ Egy globális gyorsbillentyű hozzárendelése a rendszerbeállításokban a &qu
         <translation>Keresés</translation>
     </message>
     <message>
-        <source>Match case</source>
-        <translation type="vanished">Kis- és nagybetűk</translation>
-    </message>
-    <message>
         <location filename="../src/ui/fulltextsearch.ui" line="37"/>
         <source>Mode:</source>
         <translation>Mód:</translation>
-    </message>
-    <message>
-        <source>Ignore words order</source>
-        <translation type="vanished">A szavak sorrendje mindegy</translation>
-    </message>
-    <message>
-        <source>Ignore diacritics</source>
-        <translation type="vanished">Ékezetek figyelmen kívül hagyása</translation>
     </message>
     <message>
         <location filename="../src/ui/fulltextsearch.ui" line="63"/>
@@ -1476,10 +1285,6 @@ Egy globális gyorsbillentyű hozzárendelése a rendszerbeállításokban a &qu
         <translation>Nyelv alapú csoportok létrehozása</translation>
     </message>
     <message>
-        <source>Auto groups</source>
-        <translation type="vanished">Automatikus csoportok</translation>
-    </message>
-    <message>
         <location filename="../src/ui/groups.ui" line="153"/>
         <source>Rename current dictionary group</source>
         <translation>A jelenlegi csoport átnevezése</translation>
@@ -1582,45 +1387,6 @@ Egy globális gyorsbillentyű hozzárendelése a rendszerbeállításokban a &qu
     </message>
 </context>
 <context>
-    <name>Help::HelpWindow</name>
-    <message>
-        <source>GoldenDict help</source>
-        <translation type="vanished">GoldenDict súgó</translation>
-    </message>
-    <message>
-        <source>Home</source>
-        <translation type="vanished">Kezdőlap</translation>
-    </message>
-    <message>
-        <source>Back</source>
-        <translation type="vanished">Vissza</translation>
-    </message>
-    <message>
-        <source>Forward</source>
-        <translation type="vanished">Előre</translation>
-    </message>
-    <message>
-        <source>Zoom In</source>
-        <translation type="vanished">Nagyítás</translation>
-    </message>
-    <message>
-        <source>Zoom Out</source>
-        <translation type="vanished">Kicsinyítés</translation>
-    </message>
-    <message>
-        <source>Normal Size</source>
-        <translation type="vanished">Alapértelmezett méret</translation>
-    </message>
-    <message>
-        <source>Content</source>
-        <translation type="vanished">Tartalomjegyzék</translation>
-    </message>
-    <message>
-        <source>Index</source>
-        <translation type="vanished">Szójegyzék</translation>
-    </message>
-</context>
-<context>
     <name>HistoryPaneWidget</name>
     <message>
         <location filename="../src/ui/historypanewidget.cc" line="22"/>
@@ -1676,14 +1442,6 @@ Egy globális gyorsbillentyű hozzárendelése a rendszerbeállításokban a &qu
 </context>
 <context>
     <name>Initializing</name>
-    <message>
-        <source>GoldenDict - Initializing</source>
-        <translation type="vanished">GondenDict - Előkészítés</translation>
-    </message>
-    <message>
-        <source>Please wait while indexing dictionary</source>
-        <translation type="vanished">Kis türelmet, a szótárak indexelése folyamatban</translation>
-    </message>
     <message>
         <location filename="../src/ui/initializing.ui" line="29"/>
         <source>GoldenDict-ng - Initializing</source>
@@ -3046,10 +2804,6 @@ Egy globális gyorsbillentyű hozzárendelése a rendszerbeállításokban a &qu
         <translation>&amp;Névjegy</translation>
     </message>
     <message>
-        <source>About GoldenDict</source>
-        <translation type="vanished">A GoldenDict névjegye</translation>
-    </message>
-    <message>
         <location filename="../src/ui/mainwindow.ui" line="327"/>
         <source>About GoldenDict-ng</source>
         <translation>GoldenDict-ng névjegye</translation>
@@ -3299,10 +3053,6 @@ Egy globális gyorsbillentyű hozzárendelése a rendszerbeállításokban a &qu
         <translation>Előre</translation>
     </message>
     <message>
-        <source>Scan Popup</source>
-        <translation type="vanished">Fordító felugróablak</translation>
-    </message>
-    <message>
         <location filename="../src/ui/mainwindow.cc" line="257"/>
         <source>Pronounce Word (Alt+S)</source>
         <translation>Szó kiejtése (Alt+S)</translation>
@@ -3321,10 +3071,6 @@ Egy globális gyorsbillentyű hozzárendelése a rendszerbeállításokban a &qu
         <location filename="../src/ui/mainwindow.cc" line="278"/>
         <source>Normal Size</source>
         <translation>Alapértelmezett méret</translation>
-    </message>
-    <message>
-        <source>Look up in:</source>
-        <translation type="vanished">Források:</translation>
     </message>
     <message>
         <location filename="../src/ui/mainwindow.cc" line="363"/>
@@ -3377,10 +3123,6 @@ Egy globális gyorsbillentyű hozzárendelése a rendszerbeállításokban a &qu
         <translation>Minden lap hozzáadása a kedvencekhez</translation>
     </message>
     <message>
-        <source>Loading...</source>
-        <translation type="vanished">Betöltés...</translation>
-    </message>
-    <message>
         <location filename="../src/ui/mainwindow.cc" line="604"/>
         <source>New Tab</source>
         <translation>Új lap</translation>
@@ -3402,10 +3144,6 @@ A &apos;*&apos;, &apos;?&apos;, &apos;[&apos; és &apos;]&apos; karakterek keres
         <location filename="../src/ui/mainwindow.cc" line="1577"/>
         <source>%1 dictionaries, %2 articles, %3 words</source>
         <translation>%1 szótár, %2 szócikk, %3 szó</translation>
-    </message>
-    <message>
-        <source>Look up:</source>
-        <translation type="vanished">Keresés:</translation>
     </message>
     <message>
         <location filename="../src/ui/mainwindow.cc" line="1604"/>
@@ -3732,33 +3470,6 @@ A &apos;*&apos;, &apos;?&apos;, &apos;[&apos; és &apos;]&apos; karakterek keres
     </message>
 </context>
 <context>
-    <name>Options</name>
-    <message>
-        <source>Options</source>
-        <translation type="vanished">Beállítások</translation>
-    </message>
-    <message>
-        <source>Imagine searching for the word &apos;cats&apos;. One dictionary lists
-it as a synonym for &apos;cat&apos;, another one only knows &apos;cat&apos;
-alone. With this option on, the first dictionary would help
-discover the main word &apos;cat&apos; which would be added to the
-query, and both dictionaries would include a definition for
-&apos;cat&apos; in response to the &apos;cats&apos; query. This is very useful in
-most cases, and thus it is recommended to keep this on.</source>
-        <translation type="vanished">Képzelje el, hogy rákeres a &apos;cats&apos; szóra. Az egyik szótárban
-ez a &apos;cat&apos; szinonimájaként szerepel, egy másik viszont csak
-a &apos;cat&apos; szót tartalmazza. Ha ez a beállítás be van kapcsolva,
-akkor az első szótár segít felfedezni a &apos;cat&apos; szót, ami bekerül
-a keresésbe, és így mindkét szótár kiad egy definíciót a &apos;cat&apos;
-szóra,.a &apos;cats&apos; szóra keresve. Ez nagyon hasznos a legtöbb
-esetben, ezért ajánlott ezt bekapcsolva tartani.</translation>
-    </message>
-    <message>
-        <source>Inject main forms of synonyms into search queries</source>
-        <translation type="vanished">A főbb szinonimák beszúrása a keresésbe</translation>
-    </message>
-</context>
-<context>
     <name>OrderAndProps</name>
     <message>
         <location filename="../src/ui/orderandprops.ui" line="14"/>
@@ -4039,14 +3750,6 @@ kikapcsolásával a megjelenő szócikk a legfelső szótárnál nyílik meg.</t
         <translation>Felület nyelve:</translation>
     </message>
     <message>
-        <source>Display style:</source>
-        <translation type="vanished">Megjelenési stílus:</translation>
-    </message>
-    <message>
-        <source>Help language</source>
-        <translation type="vanished">Súgó nyelve</translation>
-    </message>
-    <message>
         <location filename="../src/ui/preferences.ui" line="243"/>
         <source>Adjust this value to avoid huge context menus.</source>
         <translation>Állítsa ezt az értéket a túl nagy helyi menük elkerüléséhez.</translation>
@@ -4060,20 +3763,6 @@ kikapcsolásával a megjelenő szócikk a legfelső szótárnál nyílik meg.</t
         <location filename="../src/ui/preferences.ui" line="526"/>
         <source>&amp;Scan Popup</source>
         <translation>Fordító felugró&amp;ablak</translation>
-    </message>
-    <message>
-        <source>When enabled, a translation popup window would be shown each time
-you point your mouse on any word on the screen (Windows) or select
-any word with mouse (Linux). When enabled, you can switch it on and
-off from main window or tray icon.</source>
-        <translation type="vanished">Bekapcsolásakor egy felugróablak jelenhet meg, amikor az egeret
-a képernyőn egy szó fölé viszi (Windows) vagy kijelöl egy szót a
-képernyőn (Linux). Ha ez engedélyezve van, akkor ki- és bekapcsolhatja
-a funkciót a főablakon vagy a rendszertálca ikonon.</translation>
-    </message>
-    <message>
-        <source>Enable scan popup functionality</source>
-        <translation type="vanished">Fordító felugróablak lehetőség bekapcsolása</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="532"/>
@@ -4093,26 +3782,6 @@ legyen kapcsolva.</translation>
 in the pressed state when the word selection changes.</source>
         <translation>Bekapcsolásakor, csak abban az esetben jelenik meg a felugróablak egy szó
 kijelölésekor, ha a kiválasztott billentyűk mindegyike le van nyomva.</translation>
-    </message>
-    <message>
-        <source>Only show popup when all selected keys are kept pressed:</source>
-        <translation type="vanished">A felugróablak csak a billentyűk lenyomásakor jelenjen meg:</translation>
-    </message>
-    <message>
-        <source>Left Ctrl only</source>
-        <translation type="vanished">Csak bal Ctrl</translation>
-    </message>
-    <message>
-        <source>Left Ctrl</source>
-        <translation type="vanished">Bal Ctrl</translation>
-    </message>
-    <message>
-        <source>Right Shift only</source>
-        <translation type="vanished">Csak jobb Shift</translation>
-    </message>
-    <message>
-        <source>Right Shift</source>
-        <translation type="vanished">Jobb Shift</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="627"/>
@@ -4135,14 +3804,6 @@ kijelölésekor, ha a kiválasztott billentyűk mindegyike le van nyomva.</trans
         <translation></translation>
     </message>
     <message>
-        <source>Left Alt only</source>
-        <translation type="vanished">Csak bal Alt</translation>
-    </message>
-    <message>
-        <source>Left Alt</source>
-        <translation type="vanished">Bal Alt</translation>
-    </message>
-    <message>
         <location filename="../src/ui/preferences.ui" line="647"/>
         <source>Shift key</source>
         <translation>Shift billentyű</translation>
@@ -4153,30 +3814,6 @@ kijelölésekor, ha a kiválasztott billentyűk mindegyike le van nyomva.</trans
         <translation>Shift</translation>
     </message>
     <message>
-        <source>Right Alt only</source>
-        <translation type="vanished">Csak jobb Alt</translation>
-    </message>
-    <message>
-        <source>Right Alt</source>
-        <translation type="vanished">Jobb Alt</translation>
-    </message>
-    <message>
-        <source>Right Ctrl only</source>
-        <translation type="vanished">Csak jobb Ctrl</translation>
-    </message>
-    <message>
-        <source>Right Ctrl</source>
-        <translation type="vanished">Jobb Ctrl</translation>
-    </message>
-    <message>
-        <source>Left Shift only</source>
-        <translation type="vanished">Csak bal Shift</translation>
-    </message>
-    <message>
-        <source>Left Shift</source>
-        <translation type="vanished">Bal Shift</translation>
-    </message>
-    <message>
         <location filename="../src/ui/preferences.ui" line="657"/>
         <source>Windows key or Meta key</source>
         <translation>Windows vagy Meta billentyű</translation>
@@ -4185,32 +3822,6 @@ kijelölésekor, ha a kiválasztott billentyűk mindegyike le van nyomva.</trans
         <location filename="../src/ui/preferences.ui" line="660"/>
         <source>Win/Meta</source>
         <translation>Win/Meta</translation>
-    </message>
-    <message>
-        <source>Normally, in order to activate a popup you have to
-maintain the chosen keys pressed while you select
-a word. With this enabled, the chosen keys may also
-be pressed shortly after the selection is done.</source>
-        <translation type="vanished">Általában a billentyűknek már akkor lenyomva kell
-lennie, amikor kijelöli a szót. Ezzel a lehetőséggel a
-program, a szó kijelölése, után még az adott ideig
-késleltetve is elfogadja a billentyűk lenyomását.</translation>
-    </message>
-    <message>
-        <source>Keys may also be pressed afterwards, within</source>
-        <translation type="vanished">A billentyűk lenyomása késhet eddig</translation>
-    </message>
-    <message>
-        <source>To avoid false positives, the keys are only monitored
-after the selection&apos;s done for a limited amount of
-seconds, which is specified here.</source>
-        <translation type="vanished">A téves aktiválódás elkerülésére a program csak az itt
-megadott másodpercen belül fogadja el a késleltetve
-lenyomott billentyűket.</translation>
-    </message>
-    <message>
-        <source>secs</source>
-        <translation type="vanished">mp</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="701"/>
@@ -4346,18 +3957,6 @@ lenyomott billentyűket.</translation>
         <location filename="../src/ui/preferences.ui" line="847"/>
         <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
         <translation>A gyorsbillentyűk globálisak és bármilyen programból működnek, mindaddig amíg a GoldenDict fut a háttérben.</translation>
-    </message>
-    <message>
-        <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;DejaVu Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Note: You appear to be running an X.Org XServer release which has the RECORD extension broken. Hotkeys in GoldenDict will probably not work. This must be fixed in the server itself. Please refer to the following &lt;/span&gt;&lt;a href=&quot;https://bugs.freedesktop.org/show_bug.cgi?id=20500&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;bug entry&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt; and leave a comment there if you like.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="vanished">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;DejaVu Sans&apos;; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Megjegyzés: Úgy tűnik, a X.Org XServer egy olyan kiadását használja, amelyben a RECORD bővítmény hibás. A GoldenDict gyorsbillentyűk valószínűleg nem fognak működni. Ezt magában a szerverben kell javítani. További információkat az alábbi &lt;/span&gt;&lt;a href=&quot;https://bugs.freedesktop.org/show_bug.cgi?id=20500&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;hibajegynél&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt; találhat és ott kérheti a javítást.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="875"/>
@@ -4558,18 +4157,6 @@ keretek). Ha bizonyos oldalak nem működnének, próbálja meg ezt kikapcsolni.
         <translation>Érvénytelen index törlése a kilépéskor</translation>
     </message>
     <message>
-        <source>Enabling this would allow to listen to sound pronunciations from
-online dictionaries that rely on Flash or other web plugins.
-Plugin must be installed for this option to work.</source>
-        <translation type="vanished">Bekapcsolásakor lehetőség lesz olyan oldalakon meghallgatni a szavak
-kiejtését, amelyek Flash vagy más bővítményeket használnak.
-A bővítménynek telepítve kell lennie a működéséhez.</translation>
-    </message>
-    <message>
-        <source>Enable web plugins</source>
-        <translation type="vanished">Webes bővítmények engedélyezése</translation>
-    </message>
-    <message>
         <location filename="../src/ui/preferences.ui" line="1255"/>
         <source>Some sites detect GoldenDict via HTTP headers and block the requests.
 Enable this option to workaround the problem.</source>
@@ -4658,76 +4245,6 @@ a letöltési oldal megnyitására.</translation>
         <location filename="../src/ui/preferences.ui" line="1533"/>
         <source>Ad&amp;vanced</source>
         <translation>&amp;Speciális</translation>
-    </message>
-    <message>
-        <source>ScanPopup extra technologies</source>
-        <translation type="vanished">Felugróablak technológiák</translation>
-    </message>
-    <message>
-        <source>Try to use IAccessibleEx technology to retrieve word under cursor.
-This technology works only with some programs that support it
- (for example Internet Explorer 9).
-It is not needed to select this option if you don&apos;t use such programs.</source>
-        <translation type="vanished">Az IAccessibleEx technológiával megpróbálhatja a kurzor alatti szót felfedezni.
-Ez csak néhány olyan programmal működik, amely támogatja a funkciót
- (például Internet Explorer 9).
-Nem szükséges bejelölni, ha nem használ olyan programokat.</translation>
-    </message>
-    <message>
-        <source>Use &amp;IAccessibleEx</source>
-        <translation type="vanished">&amp;IAccessibleEx használata</translation>
-    </message>
-    <message>
-        <source>Try to use UI Automation technology to retrieve word under cursor.
-This technology works only with some programs that support it.
-It is not needed to select this option if you don&apos;t use such programs.</source>
-        <translation type="vanished">Az UI Automation technológia használata a kurzor alatti szó felfedezésére.
-Ez csak néhány olyan programmal működik, amely támogatja a funkciót.
-Nem szükséges bejelölni, ha nem használ olyan programokat.</translation>
-    </message>
-    <message>
-        <source>Use &amp;UIAutomation</source>
-        <translation type="vanished">&amp;UIAutomation használata</translation>
-    </message>
-    <message>
-        <source>Try to use special GoldenDict message to retrieve word under cursor.
-This technology works only with some programs that support it.
-It is not needed to select this option if you don&apos;t use such programs.</source>
-        <translation type="vanished">Egy speciális GoldenDict üzenet használata a kurzor alatti szó felfedezésére.
-Ez csak néhány olyan programmal működik, amely támogatja a funkciót.
-Nem szükséges bejelölni, ha nem használ olyan programokat.</translation>
-    </message>
-    <message>
-        <source>Use &amp;GoldenDict message</source>
-        <translation type="vanished">&amp;GoldenDict üzenet használata</translation>
-    </message>
-    <message>
-        <source>ScanPopup unpinned window flags</source>
-        <translation type="vanished">A nem rögzített felugróablak jelzői</translation>
-    </message>
-    <message>
-        <source>Experiment with non-default flags if the unpinned scan popup window misbehaves</source>
-        <translation type="vanished">Próbálja ki a lehetséges jelzőket, ha a nem rögzített felugróablak nem működne megfelelően</translation>
-    </message>
-    <message>
-        <source>&lt;default&gt;</source>
-        <translation type="vanished">&lt;alapértelmezett&gt;</translation>
-    </message>
-    <message>
-        <source>Popup</source>
-        <translation type="vanished">Felugróablak</translation>
-    </message>
-    <message>
-        <source>Tool</source>
-        <translation type="vanished">Eszközablak</translation>
-    </message>
-    <message>
-        <source>This hint can be combined with non-default window flags</source>
-        <translation type="vanished">Ez kombinálható a nem alapértelmezett jelzőkkel is</translation>
-    </message>
-    <message>
-        <source>Bypass window manager hint</source>
-        <translation type="vanished">Az ablakkezelő értékjavaslatának felülbírálása</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="1541"/>
@@ -4942,10 +4459,6 @@ is felhasználja további szócikkek felfedezéséhez</translation>
         <translation>Újraindítás szükséges</translation>
     </message>
     <message>
-        <source>Changing Language</source>
-        <translation type="vanished">Nyelv megváltoztatása</translation>
-    </message>
-    <message>
         <location filename="../src/ui/preferences.cc" line="541"/>
         <source>Restart the program to apply the language change.</source>
         <translation>Indítsa újra a programot a kiválasztott nyelv alkalmazásához.</translation>
@@ -5067,82 +4580,6 @@ is felhasználja további szócikkek felfedezéséhez</translation>
         <translation>E-mail: %1%2</translation>
     </message>
     <message>
-        <source>avformat_alloc_context() failed.</source>
-        <translation type="vanished">avformat_alloc_context() hiba.</translation>
-    </message>
-    <message>
-        <source>av_malloc() failed.</source>
-        <translation type="vanished">av_malloc() hiba.</translation>
-    </message>
-    <message>
-        <source>avio_alloc_context() failed.</source>
-        <translation type="vanished">avio_alloc_context() hiba.</translation>
-    </message>
-    <message>
-        <source>avformat_open_input() failed: %1.</source>
-        <translation type="vanished">avformat_open_input() hiba: %1.</translation>
-    </message>
-    <message>
-        <source>avformat_find_stream_info() failed: %1.</source>
-        <translation type="vanished">avformat_find_stream_info() hiba: %1.</translation>
-    </message>
-    <message>
-        <source>Could not find audio stream.</source>
-        <translation type="vanished">Nem található audiofolyam.</translation>
-    </message>
-    <message>
-        <source>Codec [id: %1] not found.</source>
-        <translation type="vanished">Kodek [id: %1] nem található.</translation>
-    </message>
-    <message>
-        <source>avcodec_alloc_context3() failed.</source>
-        <translation type="vanished">avcodec_alloc_context3() hiba.</translation>
-    </message>
-    <message>
-        <source>avcodec_open2() failed: %1.</source>
-        <translation type="vanished">avcodec_open2() hiba: %1.</translation>
-    </message>
-    <message>
-        <source>swr_alloc_set_opts2() failed: %1.</source>
-        <translation type="vanished">swr_alloc_set_opts2() hiba: %1.</translation>
-    </message>
-    <message>
-        <source>Cannot find usable audio output device.</source>
-        <translation type="vanished">Nem található használható hangeszköz.</translation>
-    </message>
-    <message>
-        <source>Unsupported sample format.</source>
-        <translation type="vanished">Nem támogatott hangformátum.</translation>
-    </message>
-    <message>
-        <source>ao_open_live() failed: </source>
-        <translation type="vanished">ao_open_live() hiba: </translation>
-    </message>
-    <message>
-        <source>No driver.</source>
-        <translation type="vanished">Nincs illesztőprogram.</translation>
-    </message>
-    <message>
-        <source>This driver is not a live output device.</source>
-        <translation type="vanished">Ez az illesztőprogram nem egy élő kimeneti eszközhöz tartozik.</translation>
-    </message>
-    <message>
-        <source>A valid option key has an invalid value.</source>
-        <translation type="vanished">Egy érvényes opciónév érvénytelen értékű.</translation>
-    </message>
-    <message>
-        <source>Cannot open the device: %1, channels: %2, rate: %3, bits: %4.</source>
-        <translation type="vanished">Eszköz megnyitása nem sikerült: %1, csatornák: %2, bitráta: %3, bitek: %4.</translation>
-    </message>
-    <message>
-        <source>Unknown error.</source>
-        <translation type="vanished">Ismeretlen hiba.</translation>
-    </message>
-    <message>
-        <source>avcodec_alloc_frame() failed.</source>
-        <translation type="vanished">avcodec_alloc_frame() hiba.</translation>
-    </message>
-    <message>
         <location filename="../src/dict/sdict.cc" line="597"/>
         <source>Title: %1%2</source>
         <translation>Cím: %1%2</translation>
@@ -5221,10 +4658,6 @@ is felhasználja további szócikkek felfedezéséhez</translation>
         <translation>Szótár keresés/szűrés (Ctrl+F)</translation>
     </message>
     <message>
-        <source>Quick Search</source>
-        <translation type="vanished">Gyors keresés</translation>
-    </message>
-    <message>
         <location filename="../src/ui/groups_widgets.cc" line="1090"/>
         <source>Clear Search</source>
         <translation>Keresés törlése</translation>
@@ -5275,13 +4708,6 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     </message>
 </context>
 <context>
-    <name>ScanFlag</name>
-    <message>
-        <source>MainWindow</source>
-        <translation type="vanished">Főablak</translation>
-    </message>
-</context>
-<context>
     <name>ScanPopup</name>
     <message>
         <location filename="../src/ui/scanpopup.ui" line="14"/>
@@ -5292,10 +4718,6 @@ is felhasználja további szócikkek felfedezéséhez</translation>
         <location filename="../src/ui/scanpopup.ui" line="113"/>
         <source>Back</source>
         <translation>Vissza</translation>
-    </message>
-    <message>
-        <source>...</source>
-        <translation type="vanished">...</translation>
     </message>
     <message>
         <location filename="../src/ui/scanpopup.ui" line="124"/>
@@ -5343,10 +4765,6 @@ is felhasználja további szócikkek felfedezéséhez</translation>
 could be resized or managed in other ways.</source>
         <translation>Ezzel rögzítheti az ablakot, hogy mindig a képernyőn maradjon,
 átméretezheti vagy különféleképpen kezelheti.</translation>
-    </message>
-    <message>
-        <source>%1 - %2</source>
-        <translation type="vanished">%1 - %2</translation>
     </message>
     <message>
         <location filename="../src/ui/scanpopup.cc" line="556"/>
@@ -5417,10 +4835,6 @@ could be resized or managed in other ways.</source>
         <location filename="../src/ui/sources.ui" line="40"/>
         <source>Files</source>
         <translation>Fájlok</translation>
-    </message>
-    <message>
-        <source>&lt;b&gt;Dictionary paths cannot be added or removed, because GoldenDict is in portable mode. See the &lt;i&gt;Portable mode&lt;/i&gt; section in GoldenDict Help.&lt;/b&gt;</source>
-        <translation type="vanished">&lt;b&gt;Szótár útvonalak nem adhatók hozzá vagy törölhetők, mert a GoldenDict hordozható módban fut. Nézze meg a &lt;i&gt;Hordozható mód (Portable)&lt;/i&gt; dokumentációját a súgóban.&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../src/ui/sources.ui" line="46"/>
@@ -5541,10 +4955,6 @@ csoportok aljához.</translation>
         <translation>Programok</translation>
     </message>
     <message>
-        <source>Any external programs. A string %GDWORD% will be replaced with the query word. If such string is not presented, the word will be fed into standard input.</source>
-        <translation type="vanished">Bármilyen külső program. A %GDWORD% kifejezés a keresett szóra cserélődik. Ha nem szerepel ez a kifejezés, akkor a keresést a standard bemeneten kapja meg a program.</translation>
-    </message>
-    <message>
         <location filename="../src/ui/sources.ui" line="533"/>
         <source>Forvo</source>
         <translation>Forvo</translation>
@@ -5563,18 +4973,6 @@ csoportok aljához.</translation>
         <location filename="../src/ui/sources.ui" line="575"/>
         <source>API Key:</source>
         <translation>API-kulcs:</translation>
-    </message>
-    <message>
-        <source>Use of Forvo currently requires an API key. Leave this field
-blank to use the default key, which may become unavailable
-in the future, or register on the site to get your own key.</source>
-        <translation type="vanished">A Forvo használatához API-kulcs szükséges. Ha üresen hagyja ezt
-a mezőt, egy alapértelmezett kulcs kerül felhasználásra, ami nem
-feltétlenül működőképes. Az oldalon regisztrálva kérhet saját kulcsot..</translation>
-    </message>
-    <message>
-        <source>Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;here&lt;/a&gt;, or leave blank to use the default one.</source>
-        <translation type="vanished">Saját kulcsot &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;itt kérhet&lt;/a&gt;, vagy hagyja üresen az alapértelmezetthez.</translation>
     </message>
     <message>
         <location filename="../src/ui/sources.ui" line="618"/>
@@ -5763,10 +5161,6 @@ A GoldenDict még nem támogatja.</translation>
         <location filename="../src/dict/sources.cc" line="133"/>
         <source>Text to Speech</source>
         <translation>Szöveg kimondása</translation>
-    </message>
-    <message>
-        <source>(not available in portable version)</source>
-        <translation type="vanished">(nem érhető el a hordozható verzióban)</translation>
     </message>
     <message>
         <location filename="../src/dict/sources.cc" line="159"/>
@@ -5966,13 +5360,6 @@ A GoldenDict még nem támogatja.</translation>
         <location filename="../src/wordfinder.cc" line="192"/>
         <source>Failed to query some dictionaries.</source>
         <translation>A szótárak lekérdezése nem sikerült.</translation>
-    </message>
-</context>
-<context>
-    <name>WordList</name>
-    <message>
-        <source>WARNING: %1</source>
-        <translation type="vanished">FIGYELEM: %1</translation>
     </message>
 </context>
 </TS>
