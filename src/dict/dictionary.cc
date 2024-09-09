@@ -274,7 +274,7 @@ bool Class::loadIconFromFile( QString const & _filename, bool isFullName )
     if ( !img.isNull() ) {
       // Load successful
 
-      auto result = img.scaled( { iconSize, iconSize }, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation );
+      auto result    = img.scaled( { iconSize, iconSize }, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation );
       dictionaryIcon = QIcon( result );
 
       return !dictionaryIcon.isNull();
@@ -292,7 +292,7 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
   if ( !img.isNull() ) {
     auto iconSize = getOptimalIconSize();
 
-    QImage result = img.scaled( { iconSize, iconSize}, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation );
+    QImage result = img.scaled( { iconSize, iconSize }, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation );
 
     QPainter painter( &result );
     painter.setRenderHints( QPainter::Antialiasing | QPainter::TextAntialiasing );
