@@ -1655,11 +1655,8 @@ void MainWindow::updateDictionaryBar()
 
     dictionaryBar.setDictionaries( grp->dictionaries );
 
-    int extent = useSmallIconsInToolbarsAction.isChecked() ?
-      QApplication::style()->pixelMetric( QStyle::PM_SmallIconSize ) :
-      QApplication::style()->pixelMetric( QStyle::PM_ToolBarIconSize );
-
-    dictionaryBar.setDictionaryIconSize( extent );
+    dictionaryBar.updateDictionaryIconSize(
+      useSmallIconsInToolbarsAction.isChecked() ? DictionaryBar::iconSize::small : DictionaryBar::iconSize::normal );
   }
 }
 

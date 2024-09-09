@@ -34,7 +34,15 @@ public:
   {
     return mutedDictionaries;
   }
-  void setDictionaryIconSize( int extent );
+
+  enum class iconSize
+  {
+    small,
+    normal,
+    // large TODO: implement this.
+  };
+
+  void updateDictionaryIconSize( iconSize size );
 
 signals:
 
@@ -68,6 +76,8 @@ private:
   /// All the actions we have added to the toolbar
   QList< QAction * > dictActions;
   QAction * maxDictionaryRefsAction;
+
+  QSize normalIconSize; // cache icon size set by stylesheet provided by user
 
 protected:
 
