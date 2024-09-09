@@ -76,6 +76,7 @@ void DictionaryBar::setDictionaries( vector< sptr< Dictionary::Class > > const &
     dictActions.append( action );
   }
 
+
   setUpdatesEnabled( true );
 }
 
