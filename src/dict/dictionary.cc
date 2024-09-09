@@ -276,9 +276,6 @@ bool Class::loadIconFromFile( QString const & _filename, bool isFullName )
       img.setAlphaChannel( img.createMaskFromColor( QColor( 192, 192, 192 ).rgb(), Qt::MaskOutColor ) );
 #endif
 
-      dictionaryIcon = QIcon( QPixmap::fromImage( result ) );
-
-      return !dictionaryIcon.isNull();
     }
   }
   return false;
