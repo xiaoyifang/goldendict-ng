@@ -588,11 +588,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Unique headwords total: %1.</source>
-      <translation type="unfinished">Unique headwords total: %1.</translation>
+      <translation>Unique headwords total: %1.</translation>
     </message>
     <message>
       <source>Unique headwords total: %1, filtered(limited): %2</source>
-      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
+      <translation>Unique headwords total: %1, filtered(limited): %2</translation>
     </message>
   </context>
   <context>
