@@ -5,7 +5,7 @@
     <name>About</name>
     <message>
       <source>About</source>
-      <translation type="unfinished">About</translation>
+      <translation>Névjegy</translation>
     </message>
     <message>
       <source>GoldenDict-ng dictionary lookup program, version </source>
