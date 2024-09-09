@@ -276,20 +276,6 @@ bool Class::loadIconFromFile( QString const & _filename, bool isFullName )
       img.setAlphaChannel( img.createMaskFromColor( QColor( 192, 192, 192 ).rgb(), Qt::MaskOutColor ) );
 #endif
 
-      // Transform it to be square
-      int max = img.width() > img.height() ? img.width() : img.height();
-
-      QImage result( max, max, QImage::Format_ARGB32 );
-      result.fill( 0 ); // Black transparent
-
-      QPainter painter( &result );
-      painter.setRenderHint( QPainter::RenderHint::Antialiasing );
-      painter.drawImage( QPoint( img.width() == max ? 0 : ( max - img.width() ) / 2,
-                                 img.height() == max ? 0 : ( max - img.height() ) / 2 ),
-                         img );
-
-      painter.end();
-
       dictionaryIcon = QIcon( QPixmap::fromImage( result ) );
 
       return !dictionaryIcon.isNull();
