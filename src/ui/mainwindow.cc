@@ -1655,8 +1655,8 @@ void MainWindow::updateDictionaryBar()
 
     dictionaryBar.setDictionaries( grp->dictionaries );
 
-    dictionaryBar.updateDictionaryIconSize(
-      useSmallIconsInToolbarsAction.isChecked() ? DictionaryBar::IconSize::Small : DictionaryBar::IconSize::Normal );
+    dictionaryBar.setDictionaryIconSize( useSmallIconsInToolbarsAction.isChecked() ? DictionaryBar::IconSize::Small :
+                                                                                     DictionaryBar::IconSize::Normal );
   }
 }
 
