@@ -20,7 +20,8 @@ DictionaryBar::DictionaryBar( QWidget * parent,
   maxDictionaryRefsInContextMenu( maxDictionaryRefsInContextMenu_ )
 {
 
-  normalIconSize = this->size(); // At the time of initialization, this equals `QStyle::PM_ToolBarIconSize`
+  auto iconHeight = this->size().height(); // At the time of initialization, this equals `QStyle::PM_ToolBarIconSize`
+  normalIconSize  = { iconHeight, iconHeight };
 
   setObjectName( "dictionaryBar" );
 
