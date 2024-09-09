@@ -19,7 +19,7 @@
     <message>
         <location filename="../src/ui/about.ui" line="66"/>
         <source>GoldenDict-ng dictionary lookup program, version </source>
-        <translation type="unfinished"></translation>
+        <translation>GoldenDict-ng szótári keresőprogram, verzió </translation>
     </message>
     <message>
         <location filename="../src/ui/about.ui" line="101"/>
@@ -29,12 +29,12 @@
     <message>
         <location filename="../src/ui/about.ui" line="129"/>
         <source>Copy version info</source>
-        <translation type="unfinished"></translation>
+        <translation>Verzió infó másolása</translation>
     </message>
     <message>
         <location filename="../src/ui/about.ui" line="142"/>
         <source>Copy dictionaries list</source>
-        <translation type="unfinished"></translation>
+        <translation>Szótárlista másolása</translation>
     </message>
     <message>
         <location filename="../src/ui/about.ui" line="168"/>
@@ -52,7 +52,7 @@
     <message>
         <location filename="../src/ui/about.cc" line="20"/>
         <source>Based on Qt %1 (%2, %3)</source>
-        <translation type="unfinished"></translation>
+        <translation>Qt %1 alapokon (%2, %3)</translation>
     </message>
 </context>
 <context>
@@ -60,23 +60,23 @@
     <message>
         <location filename="../src/ankiconnector.cc" line="25"/>
         <source>anki: can&apos;t create a card without a word</source>
-        <translation type="unfinished"></translation>
+        <translation>anki: szó nélkül nem hozható létre a kártya</translation>
     </message>
     <message>
         <location filename="../src/ankiconnector.cc" line="67"/>
         <source>Anki search: AnkiConnect is not enabled.</source>
-        <translation type="unfinished"></translation>
+        <translation>Anki kereső: Az AnkiConnect nincs bekapcsolva.</translation>
     </message>
     <message>
         <location filename="../src/ankiconnector.cc" line="94"/>
         <location filename="../src/ankiconnector.cc" line="111"/>
         <source>anki: post to anki failed</source>
-        <translation type="unfinished"></translation>
+        <translation>anki: beküldés nem sikerült</translation>
     </message>
     <message>
         <location filename="../src/ankiconnector.cc" line="108"/>
         <source>anki: post to anki success</source>
-        <translation type="unfinished"></translation>
+        <translation>anki: beküldés sikeres</translation>
     </message>
 </context>
 <context>
@@ -84,7 +84,7 @@
     <message>
         <location filename="../src/ui/article_inspect.cc" line="9"/>
         <source>Inspect</source>
-        <translation type="unfinished">Vizsgálat</translation>
+        <translation>Vizsgálat</translation>
     </message>
 </context>
 <context>
@@ -102,12 +102,12 @@
     <message>
         <location filename="../src/article_maker.cc" line="233"/>
         <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nem található fordítás ehhez: &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt;, a(z) &lt;b&gt;%2&lt;/b&gt; csoportban.</translation>
     </message>
     <message>
         <location filename="../src/article_maker.cc" line="255"/>
         <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;h3 align=&quot;center&quot;&gt;Üdvözli a &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;A programmal való munka megkezdéséhez nyissa meg a &lt;em&gt;Szerkesztés | Szótárak&lt;/em&gt; menüt, és adja meg a könyvtárakat ahol a szótárfájlok találhatók, válasszon ki különböző Wikipédia oldalakat és más forrásokat, majd adja meg a szótárak sorrendjét vagy rendezze őket csoportokba.&lt;p&gt;Ezután már kezdheti is kikeresni a kívánt szavakat! Ezt végezheti ebben az ablakban, az egyik bal oldali panel használatával, vagy &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;kereshet szavakat más futó programokból&lt;/a&gt;.&lt;p&gt;A program testreszabásához nézze meg a lehetséges beállításokat a &lt;em&gt;Szerkesztés | Beállítások&lt;/em&gt; menüpontban. Az összes beállításnak van eszköztippje, így ha kétségei lennének a működésével kapcsolatban, mindenképpen olvassa el azokat.&lt;p&gt;Ha további segítségre van szüksége, kérdése, javaslata van, vagy csak kíváncsi a többiek véleményére, akkor szívesen látjuk a program &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;fórumán&lt;/a&gt;. Nézze meg a program &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;weboldalát&lt;/a&gt; a frissítésekért. (c) 2008-2013 Konstantin Isakov. Licenc: GPL v3 vagy újabb.</translation>
     </message>
     <message>
         <source>No translation for &lt;b&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
@@ -175,7 +175,7 @@
     <message>
         <location filename="../src/article_maker.cc" line="653"/>
         <source>Make a new Anki note</source>
-        <translation type="unfinished"></translation>
+        <translation>Anki feljegyzés létrehozása</translation>
     </message>
     <message>
         <location filename="../src/article_maker.cc" line="667"/>
@@ -325,7 +325,7 @@
     <message>
         <location filename="../src/ui/articleview.cc" line="1491"/>
         <source>Op&amp;en Link</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Hivatkozás megnyitása</translation>
     </message>
     <message>
         <location filename="../src/ui/articleview.cc" line="1495"/>
@@ -345,7 +345,7 @@
     <message>
         <location filename="../src/ui/articleview.cc" line="1520"/>
         <source>Open image in system viewer...</source>
-        <translation type="unfinished"></translation>
+        <translation>Kép megnyitása az alapértelmezett megjelenítőben...</translation>
     </message>
     <message>
         <location filename="../src/ui/articleview.cc" line="1526"/>
@@ -386,17 +386,17 @@
     <message>
         <location filename="../src/ui/articleview.cc" line="1573"/>
         <source>Save &amp;Bookmark &quot;%1...&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Könyvjelző mentése: &quot;%1...&quot;</translation>
     </message>
     <message>
         <location filename="../src/ui/articleview.cc" line="1581"/>
         <source>&amp;Send Current Article to Anki</source>
-        <translation type="unfinished"></translation>
+        <translation>Jelenlegi szócikk küldése &amp;Anki feljegyzésbe</translation>
     </message>
     <message>
         <location filename="../src/ui/articleview.cc" line="1582"/>
         <source>&amp;Send selected text to Anki</source>
-        <translation type="unfinished"></translation>
+        <translation>Kijelölt &amp;szöveg küldése Anki feljegyzésbe</translation>
     </message>
     <message>
         <location filename="../src/ui/articleview.cc" line="1705"/>
@@ -406,7 +406,7 @@
     <message>
         <location filename="../src/ui/articleview.cc" line="1707"/>
         <source>Sound files (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Hangfájlok (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;Minden fájl (*.*)</translation>
     </message>
     <message>
         <source>Sound files (*.wav *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape);;All files (*.*)</source>
@@ -453,7 +453,7 @@
     <message>
         <location filename="../src/ui/articleview.hh" line="53"/>
         <source>&amp;Create Anki note</source>
-        <translation type="unfinished"></translation>
+        <translation>Anki &amp;feljegyzés létrehozása</translation>
     </message>
 </context>
 <context>
@@ -591,7 +591,7 @@ Egy globális gyorsbillentyű hozzárendelése a rendszerbeállításokban a &qu
     <message>
         <location filename="../src/dict/customtransliteration.cc" line="53"/>
         <source>custom transliteration</source>
-        <translation type="unfinished"></translation>
+        <translation>egyéni átbetűzés</translation>
     </message>
 </context>
 <context>
@@ -705,22 +705,22 @@ Egy globális gyorsbillentyű hozzárendelése a rendszerbeállításokban a &qu
     <message>
         <location filename="../src/ui/groups_widgets.cc" line="725"/>
         <source>Auto group by folder failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>A mappánkénti csoportosítás nem sikerült.</translation>
     </message>
     <message>
         <location filename="../src/ui/groups_widgets.cc" line="726"/>
         <source>The parent directory of %1 can not be reached.</source>
-        <translation type="unfinished"></translation>
+        <translation>A(z) %1 szülőkönyvtára nem érhető el.</translation>
     </message>
     <message>
         <location filename="../src/ui/groups_widgets.cc" line="731"/>
         <source>Are you sure you want to generate a set of groups based on containing folders?</source>
-        <translation type="unfinished"></translation>
+        <translation>Biztos, hogy létre szeretne hozni csoportokat a tartalmazó mappák alapján?</translation>
     </message>
     <message>
         <location filename="../src/ui/groups_widgets.cc" line="838"/>
         <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-        <translation type="unfinished"></translation>
+        <translation>Biztos, hogy létre szeretne hozni csoportokat a metadata.toml alapján?</translation>
     </message>
     <message>
         <location filename="../src/ui/groups_widgets.cc" line="945"/>
@@ -779,12 +779,12 @@ Egy globális gyorsbillentyű hozzárendelése a rendszerbeállításokban a &qu
     <message>
         <location filename="../src/ui/dictheadwords.ui" line="106"/>
         <source>Specify the maximum filtered headwords returned.</source>
-        <translation type="unfinished"></translation>
+        <translation>Adja meg a szűrésben maximálisan visszaadható címszavak számát.</translation>
     </message>
     <message>
         <location filename="../src/ui/dictheadwords.ui" line="109"/>
         <source>Filter max results:</source>
-        <translation type="unfinished"></translation>
+        <translation>Találatok maximális száma:</translation>
     </message>
     <message>
         <location filename="../src/ui/dictheadwords.ui" line="145"/>
@@ -848,12 +848,12 @@ Egy globális gyorsbillentyű hozzárendelése a rendszerbeállításokban a &qu
     <message>
         <location filename="../src/ui/dictheadwords.cc" line="288"/>
         <source>Unique headwords total: %1.</source>
-        <translation type="unfinished"></translation>
+        <translation>Különböző címszavak száma összesen: %1.</translation>
     </message>
     <message>
         <location filename="../src/ui/dictheadwords.cc" line="291"/>
         <source>Unique headwords total: %1, filtered(limited): %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Különböző címszavak száma összesen: %1, szűrve (korlátozott): %2</translation>
     </message>
     <message>
         <location filename="../src/ui/dictheadwords.cc" line="383"/>
@@ -868,7 +868,7 @@ Egy globális gyorsbillentyű hozzárendelése a rendszerbeállításokban a &qu
     <message>
         <location filename="../src/ui/dictheadwords.cc" line="392"/>
         <source>Can not open exported file</source>
-        <translation type="unfinished"></translation>
+        <translation>Az exportált fájl megnyitása nem sikerült</translation>
     </message>
     <message>
         <location filename="../src/ui/dictheadwords.cc" line="401"/>
@@ -883,12 +883,12 @@ Egy globális gyorsbillentyű hozzárendelése a rendszerbeállításokban a &qu
     <message>
         <location filename="../src/ui/dictheadwords.cc" line="418"/>
         <source>Export process is interrupted</source>
-        <translation type="unfinished"></translation>
+        <translation>Az exportálást megszakították</translation>
     </message>
     <message>
         <location filename="../src/ui/dictheadwords.cc" line="424"/>
         <source>Export finished</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportálás befejeződött</translation>
     </message>
 </context>
 <context>
@@ -926,12 +926,12 @@ Egy globális gyorsbillentyű hozzárendelése a rendszerbeállításokban a &qu
     <message>
         <location filename="../src/ui/dictinfo.ui" line="53"/>
         <source>Open index folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Indexmappa megnyitása</translation>
     </message>
     <message>
         <location filename="../src/ui/dictinfo.ui" line="87"/>
         <source>Index filename:</source>
-        <translation type="unfinished"></translation>
+        <translation>Index fájlnév:</translation>
     </message>
     <message>
         <location filename="../src/ui/dictinfo.ui" line="142"/>
@@ -956,12 +956,12 @@ Egy globális gyorsbillentyű hozzárendelése a rendszerbeállításokban a &qu
     <message>
         <location filename="../src/ui/dictinfo.cc" line="23"/>
         <source>Full-text search enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Keresés a teljes szövegben engedélyezve</translation>
     </message>
     <message>
         <location filename="../src/ui/dictinfo.cc" line="23"/>
         <source>Full-text search disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Keresés a teljes szövegben letiltva</translation>
     </message>
     <message>
         <location filename="../src/ui/dictinfo.cc" line="32"/>
@@ -1137,12 +1137,12 @@ Egy globális gyorsbillentyű hozzárendelése a rendszerbeállításokban a &qu
     <message>
         <location filename="../src/dict/epwing.cc" line="318"/>
         <source>Previous Page</source>
-        <translation type="unfinished"></translation>
+        <translation>Előző oldal</translation>
     </message>
     <message>
         <location filename="../src/dict/epwing.cc" line="356"/>
         <source>Next Page</source>
-        <translation type="unfinished"></translation>
+        <translation>Következő oldal</translation>
     </message>
 </context>
 <context>
@@ -1188,12 +1188,12 @@ Egy globális gyorsbillentyű hozzárendelése a rendszerbeállításokban a &qu
     <message>
         <location filename="../src/fulltextsearch.cc" line="219"/>
         <source>Default</source>
-        <translation type="unfinished">Alapértelmezett</translation>
+        <translation>Alapértelmezett</translation>
     </message>
     <message>
         <location filename="../src/fulltextsearch.cc" line="222"/>
         <source>Support xapian search syntax, such as AND OR +/- etc.</source>
-        <translation type="unfinished"></translation>
+        <translation>Xapian keresések támogatása, mint például AND OR +/- stb.</translation>
     </message>
     <message>
         <location filename="../src/fulltextsearch.cc" line="231"/>
@@ -1216,7 +1216,7 @@ Egy globális gyorsbillentyű hozzárendelése a rendszerbeállításokban a &qu
     <message>
         <location filename="../src/fulltextsearch.cc" line="323"/>
         <source>The querying word can not be empty.</source>
-        <translation type="unfinished"></translation>
+        <translation>A keresett szó nem lehet üres.</translation>
     </message>
     <message>
         <source>CJK symbols in search string are not compatible with search modes &quot;Whole words&quot; and &quot;Plain text&quot;</source>
@@ -1315,12 +1315,12 @@ Egy globális gyorsbillentyű hozzárendelése a rendszerbeállításokban a &qu
     <message>
         <location filename="../src/ui/ftssearchpanel.cc" line="20"/>
         <source>&amp;Previous</source>
-        <translation type="unfinished">&amp;Előző</translation>
+        <translation>&amp;Előző</translation>
     </message>
     <message>
         <location filename="../src/ui/ftssearchpanel.cc" line="21"/>
         <source>&amp;Next</source>
-        <translation type="unfinished">&amp;Következő</translation>
+        <translation>&amp;Következő</translation>
     </message>
 </context>
 <context>
@@ -1513,22 +1513,22 @@ Egy globális gyorsbillentyű hozzárendelése a rendszerbeállításokban a &qu
     <message>
         <location filename="../src/ui/groups.ui" line="203"/>
         <source>Group by Languages</source>
-        <translation type="unfinished"></translation>
+        <translation>Csoportosítás nyelvek szerint</translation>
     </message>
     <message>
         <location filename="../src/ui/groups.ui" line="210"/>
         <source>Create folder-based groups.</source>
-        <translation type="unfinished"></translation>
+        <translation>Mappa alapú csoportok létrehozása.</translation>
     </message>
     <message>
         <location filename="../src/ui/groups.ui" line="213"/>
         <source>Group by Folders</source>
-        <translation type="unfinished"></translation>
+        <translation>Csoportosítás mappák szerint</translation>
     </message>
     <message>
         <location filename="../src/ui/groups.ui" line="220"/>
         <source>Group by Metadata</source>
-        <translation type="unfinished"></translation>
+        <translation>Csoportosítás metaadatok szerint</translation>
     </message>
     <message>
         <location filename="../src/ui/groups.ui" line="244"/>
@@ -1687,12 +1687,12 @@ Egy globális gyorsbillentyű hozzárendelése a rendszerbeállításokban a &qu
     <message>
         <location filename="../src/ui/initializing.ui" line="29"/>
         <source>GoldenDict-ng - Initializing</source>
-        <translation type="unfinished"></translation>
+        <translation>GondenDict-ng - Előkészítés</translation>
     </message>
     <message>
         <location filename="../src/ui/initializing.ui" line="105"/>
         <source>Indexing: </source>
-        <translation type="unfinished"></translation>
+        <translation>Indexelés: </translation>
     </message>
     <message>
         <location filename="../src/ui/initializing.ui" line="127"/>
@@ -1707,12 +1707,12 @@ Egy globális gyorsbillentyű hozzárendelése a rendszerbeállításokban a &qu
     <message>
         <location filename="../src/initializing.cc" line="27"/>
         <source>Indexing...</source>
-        <translation type="unfinished"></translation>
+        <translation>Indexelés...</translation>
     </message>
     <message>
         <location filename="../src/initializing.cc" line="37"/>
         <source>Loading...</source>
-        <translation type="unfinished">Betöltés...</translation>
+        <translation>Betöltés...</translation>
     </message>
 </context>
 <context>
@@ -2728,207 +2728,207 @@ Egy globális gyorsbillentyű hozzárendelése a rendszerbeállításokban a &qu
     <message>
         <location filename="../src/language.cc" line="38"/>
         <source>French</source>
-        <translation type="unfinished">Francia</translation>
+        <translation>Francia</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="39"/>
         <source>Spanish</source>
-        <translation type="unfinished">Spanyol</translation>
+        <translation>Spanyol</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="40"/>
         <source>Belarusian</source>
-        <translation type="unfinished">Belorusz</translation>
+        <translation>Belorusz</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="41"/>
         <source>Bulgarian</source>
-        <translation type="unfinished">Bolgár</translation>
+        <translation>Bolgár</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="42"/>
         <source>Czech</source>
-        <translation type="unfinished">Cseh</translation>
+        <translation>Cseh</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="43"/>
         <source>German</source>
-        <translation type="unfinished">Német</translation>
+        <translation>Német</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="44"/>
         <source>Greek</source>
-        <translation type="unfinished">Görög</translation>
+        <translation>Görög</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="45"/>
         <source>Finnish</source>
-        <translation type="unfinished">Finn</translation>
+        <translation>Finn</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="46"/>
         <source>Italian</source>
-        <translation type="unfinished">Olasz</translation>
+        <translation>Olasz</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="47"/>
         <source>Japanese</source>
-        <translation type="unfinished">Japán</translation>
+        <translation>Japán</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="48"/>
         <source>Korean</source>
-        <translation type="unfinished">Koreai</translation>
+        <translation>Koreai</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="49"/>
         <source>Lithuanian</source>
-        <translation type="unfinished">Litván</translation>
+        <translation>Litván</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="50"/>
         <source>Macedonian</source>
-        <translation type="unfinished">Macedón</translation>
+        <translation>Macedón</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="51"/>
         <source>Dutch</source>
-        <translation type="unfinished">Holland</translation>
+        <translation>Holland</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="52"/>
         <source>Polish</source>
-        <translation type="unfinished">Lengyel</translation>
+        <translation>Lengyel</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="53"/>
         <source>Portuguese</source>
-        <translation type="unfinished">Portugál</translation>
+        <translation>Portugál</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="54"/>
         <source>Russian</source>
-        <translation type="unfinished">Orosz</translation>
+        <translation>Orosz</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="55"/>
         <source>Slovak</source>
-        <translation type="unfinished">Szlovák</translation>
+        <translation>Szlovák</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="56"/>
         <source>Albanian</source>
-        <translation type="unfinished">Albán</translation>
+        <translation>Albán</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="57"/>
         <source>Serbian (Cyrillic)</source>
-        <translation type="unfinished"></translation>
+        <translation>Szerb (Cirill)</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="58"/>
         <source>Swedish</source>
-        <translation type="unfinished">Svéd</translation>
+        <translation>Svéd</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="59"/>
         <source>Turkish</source>
-        <translation type="unfinished">Török</translation>
+        <translation>Török</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="60"/>
         <source>Ukrainian</source>
-        <translation type="unfinished">Ukrán</translation>
+        <translation>Ukrán</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="61"/>
         <source>Chinese Simplified</source>
-        <translation type="unfinished"></translation>
+        <translation>Kínai Egyszerűsített</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="62"/>
         <source>Chinese Traditional</source>
-        <translation type="unfinished"></translation>
+        <translation>Kínai Hagyományos</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="63"/>
         <source>Vietnamese</source>
-        <translation type="unfinished">Vietnámi</translation>
+        <translation>Vietnámi</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="64"/>
         <source>Portuguese, Brazilian</source>
-        <translation type="unfinished"></translation>
+        <translation>Portugál, brazíliai</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="65"/>
         <source>Persian</source>
-        <translation type="unfinished">Perzsa</translation>
+        <translation>Perzsa</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="66"/>
         <source>Spanish, Argentina</source>
-        <translation type="unfinished"></translation>
+        <translation>Spanyol, argentínai</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="67"/>
         <source>Hindi</source>
-        <translation type="unfinished">Hindi</translation>
+        <translation>Hindi</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="68"/>
         <source>Esperanto</source>
-        <translation type="unfinished">Eszperantó</translation>
+        <translation>Eszperantó</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="69"/>
         <source>German, Switzerland</source>
-        <translation type="unfinished"></translation>
+        <translation>Német, svájci</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="70"/>
         <source>Spanish, Bolivia</source>
-        <translation type="unfinished"></translation>
+        <translation>Spanyol, bolíviai</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="71"/>
         <source>Tajik</source>
-        <translation type="unfinished">Tádzsik</translation>
+        <translation>Tádzsik</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="72"/>
         <source>Quechua</source>
-        <translation type="unfinished">Kecsua</translation>
+        <translation>Kecsua</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="73"/>
         <source>Aymara</source>
-        <translation type="unfinished">Ajmara</translation>
+        <translation>Ajmara</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="74"/>
         <source>Arabic, Saudi Arabia</source>
-        <translation type="unfinished"></translation>
+        <translation>Arab, szaúd-arábiai</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="75"/>
         <source>Turkmen</source>
-        <translation type="unfinished">Türkmén</translation>
+        <translation>Türkmén</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="76"/>
         <source>Interlingue</source>
-        <translation type="unfinished">Interlingue</translation>
+        <translation>Interlingue</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="77"/>
         <source>Lojban</source>
-        <translation type="unfinished">Lojban</translation>
+        <translation>Lojban</translation>
     </message>
     <message>
         <location filename="../src/language.cc" line="78"/>
         <source>English</source>
-        <translation type="unfinished">Angol</translation>
+        <translation>Angol</translation>
     </message>
 </context>
 <context>
@@ -3052,7 +3052,7 @@ Egy globális gyorsbillentyű hozzárendelése a rendszerbeállításokban a &qu
     <message>
         <location filename="../src/ui/mainwindow.ui" line="327"/>
         <source>About GoldenDict-ng</source>
-        <translation type="unfinished"></translation>
+        <translation>GoldenDict-ng névjegye</translation>
     </message>
     <message>
         <location filename="../src/ui/mainwindow.ui" line="335"/>
@@ -3519,7 +3519,7 @@ A &apos;*&apos;, &apos;?&apos;, &apos;[&apos; és &apos;]&apos; karakterek keres
     <message>
         <location filename="../src/ui/mainwindow.cc" line="3324"/>
         <source>Save article complete</source>
-        <translation type="unfinished"></translation>
+        <translation>Szócikk mentése kész</translation>
     </message>
     <message>
         <location filename="../src/ui/mainwindow.cc" line="3372"/>
@@ -3586,12 +3586,12 @@ A &apos;*&apos;, &apos;?&apos;, &apos;[&apos; és &apos;]&apos; karakterek keres
     <message>
         <location filename="../src/ui/mainwindow.cc" line="249"/>
         <source>Enable Scanning</source>
-        <translation type="unfinished"></translation>
+        <translation>Felugróablak engedélyezése</translation>
     </message>
     <message>
         <location filename="../src/ui/mainwindow.cc" line="970"/>
         <source>WARNING: %1</source>
-        <translation type="unfinished">FIGYELEM: %1</translation>
+        <translation>FIGYELEM: %1</translation>
     </message>
     <message>
         <location filename="../src/ui/mainwindow.cc" line="3795"/>
@@ -3622,7 +3622,7 @@ A &apos;*&apos;, &apos;?&apos;, &apos;[&apos; és &apos;]&apos; karakterek keres
     <message>
         <location filename="../src/ui/mainwindow.cc" line="3884"/>
         <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-        <translation type="unfinished"></translation>
+        <translation>XML fájlok (*.xml);;Szövegfájlok (*.txt);;Minden fájl (*.*)</translation>
     </message>
     <message>
         <location filename="../src/ui/mainwindow.cc" line="3914"/>
@@ -3720,7 +3720,7 @@ A &apos;*&apos;, &apos;?&apos;, &apos;[&apos; és &apos;]&apos; karakterek keres
     <message>
         <location filename="../src/dict/sources.cc" line="471"/>
         <source>Language Variant</source>
-        <translation type="unfinished"></translation>
+        <translation>Nyelvi változat</translation>
     </message>
 </context>
 <context>
@@ -3884,7 +3884,7 @@ esetben, ezért ajánlott ezt bekapcsolva tartani.</translation>
     <message>
         <location filename="../src/ui/preferences.ui" line="336"/>
         <source>Article Display style:</source>
-        <translation type="unfinished"></translation>
+        <translation>Szócikk megjelenítése:</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="363"/>
@@ -4000,12 +4000,12 @@ az utolsó lap után.</translation>
     <message>
         <location filename="../src/ui/preferences.ui" line="106"/>
         <source>MRU order: Most recently used order.</source>
-        <translation type="unfinished"></translation>
+        <translation>Időrend, a legutóbbi használat alapján.</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="109"/>
         <source>Ctrl-Tab navigates tabs in MRU order</source>
-        <translation>A Ctrl+Tab az MRU sorrendben navigál</translation>
+        <translation>A Ctrl+Tab időrendi sorrendben navigál</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="159"/>
@@ -4013,22 +4013,25 @@ az utolsó lap után.</translation>
 selection in an article loads the translation and almost immediately
 scrolls to the article from the same dictionary. With this option off,
 however, the article from the topmost dictionary is shown.</source>
-        <translation type="unfinished"></translation>
+        <translation>Általában, ha egy hivatkozásra kattint, vagy duplán egy szóra, vagy
+kijelölés alapján keres egy szócikkből, akkor a betöltődő szócikk
+azonnal ugyanahhoz a szótárhoz görget, amelyet vizsgált. Ennek
+kikapcsolásával a megjelenő szócikk a legfelső szótárnál nyílik meg.</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="165"/>
         <source>Automatically scroll to target article</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatikus görgetés a cél szócikkhez</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="284"/>
         <source>Appearance</source>
-        <translation type="unfinished"></translation>
+        <translation>Megjelenés</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="292"/>
         <source>Interface Font</source>
-        <translation type="unfinished"></translation>
+        <translation>Felület betűtípusa</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="306"/>
@@ -4176,7 +4179,7 @@ kijelölésekor, ha a kiválasztott billentyűk mindegyike le van nyomva.</trans
     <message>
         <location filename="../src/ui/preferences.ui" line="657"/>
         <source>Windows key or Meta key</source>
-        <translation>Windwos vagy Meta billentyű</translation>
+        <translation>Windows vagy Meta billentyű</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="660"/>
@@ -4237,57 +4240,57 @@ lenyomott billentyűket.</translation>
     <message>
         <location filename="../src/ui/preferences.ui" line="390"/>
         <source>Interface Style:</source>
-        <translation type="unfinished"></translation>
+        <translation>Felület stílusa:</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="402"/>
         <source>Turn the UI to dark.</source>
-        <translation type="unfinished"></translation>
+        <translation>A felület megjelenésének átállítása sötét módra.</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="405"/>
         <source>Dark Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Sötét mód</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="412"/>
         <source>Turn the article display style to dark.</source>
-        <translation type="unfinished"></translation>
+        <translation>A szócikk megjelenítésének átállítása sötét módra.</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="415"/>
         <source>Dark Reader Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Sötét olvasó mód</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="438"/>
         <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ezek a betűkészletek akkor kerülnek felhasználásra, ha a szótár átlal megadott nem található.</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="441"/>
         <source>Fallback Fonts</source>
-        <translation type="unfinished"></translation>
+        <translation>Helyettesítő betűkészletek</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="447"/>
         <source>Standard Font</source>
-        <translation type="unfinished"></translation>
+        <translation>Általános betűkészlet</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="464"/>
         <source>Serif Font</source>
-        <translation type="unfinished"></translation>
+        <translation>Talpas betűkészlet</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="481"/>
         <source>Sans-serif Font</source>
-        <translation type="unfinished"></translation>
+        <translation>Talpatlan betűkészlet</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="498"/>
         <source>Monospace Font</source>
-        <translation type="unfinished"></translation>
+        <translation>Fix szélességű betűkészlet</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="546"/>
@@ -4297,32 +4300,32 @@ lenyomott billentyűket.</translation>
     <message>
         <location filename="../src/ui/preferences.ui" line="553"/>
         <source>Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</source>
-        <translation type="unfinished"></translation>
+        <translation>A vágólap változásainak figyelése ha a fordító felugróablak aktív. Ezt javasolt mindig bekapcsolnia, hacsak nem Linuxot használ.</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="556"/>
         <source>Track Clipboard change</source>
-        <translation type="unfinished"></translation>
+        <translation>Vágólap változásának figyelése</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="563"/>
         <source>Track Selection change</source>
-        <translation type="unfinished"></translation>
+        <translation>Kijelölés változásának figyelése</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="579"/>
         <source>Only tack selection when all selected keys are kept pressed:</source>
-        <translation type="unfinished"></translation>
+        <translation>A kijelölés változását csak a billentyűk együttes lenyomásakor figyelje:</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="724"/>
         <source>Delay time</source>
-        <translation type="unfinished"></translation>
+        <translation>Késleltetés</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="731"/>
         <source> ms</source>
-        <translation type="unfinished"></translation>
+        <translation> ms</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="771"/>
@@ -4473,52 +4476,52 @@ forgalmát proxy szerveren át szeretné irányítani.</translation>
     <message>
         <location filename="../src/ui/preferences.ui" line="1094"/>
         <source>Anki Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>Anki kapcsolódás</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="1115"/>
         <source>http://</source>
-        <translation type="unfinished"></translation>
+        <translation>http://</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="1159"/>
         <source>Deck:</source>
-        <translation type="unfinished"></translation>
+        <translation>Dekk:</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="1169"/>
         <source>Model:</source>
-        <translation type="unfinished"></translation>
+        <translation>Modell:</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="1196"/>
         <source>Word</source>
-        <translation type="unfinished"></translation>
+        <translation>Szó</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="1203"/>
         <source>Vocabulary field...</source>
-        <translation type="unfinished"></translation>
+        <translation>Szókincs mező...</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="1210"/>
         <source>Text</source>
-        <translation type="unfinished">Szöveg</translation>
+        <translation>Szöveg</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="1217"/>
         <source>Definition field...</source>
-        <translation type="unfinished"></translation>
+        <translation>Definíció mező...</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="1224"/>
         <source>Sentence</source>
-        <translation type="unfinished"></translation>
+        <translation>Mondat</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="1231"/>
         <source>Sentence field (can be empty)...</source>
-        <translation type="unfinished"></translation>
+        <translation>Mondat mező (üresen hagyható)...</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="1243"/>
@@ -4537,22 +4540,22 @@ keretek). Ha bizonyos oldalak nem működnének, próbálja meg ezt kikapcsolni.
     <message>
         <location filename="../src/ui/preferences.ui" line="1896"/>
         <source>When using clipboard, strip everything after newline</source>
-        <translation type="unfinished"></translation>
+        <translation>A vágólap használatakor, az új sor utáni részek levágása</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="1903"/>
         <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-        <translation type="unfinished"></translation>
+        <translation>Új keresés esetén, fókuszáljon a főablakra vagy felugróablakra, akkor is ha látható</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="1910"/>
         <source>Miscellaneous</source>
-        <translation type="unfinished"></translation>
+        <translation>Egyéb</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="1916"/>
         <source>Remove invalid index on exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Érvénytelen index törlése a kilépéskor</translation>
     </message>
     <message>
         <source>Enabling this would allow to listen to sound pronunciations from
@@ -4649,7 +4652,7 @@ a letöltési oldal megnyitására.</translation>
     <message>
         <location filename="../src/ui/preferences.ui" line="1496"/>
         <source>Create fulltext index with parallel threads </source>
-        <translation type="unfinished"></translation>
+        <translation>A szöveg indexelése ennyi párhuzamos szálon történjen </translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="1533"/>
@@ -4796,7 +4799,7 @@ Nem szükséges bejelölni, ha nem használ olyan programokat.</translation>
     <message>
         <location filename="../src/ui/preferences.ui" line="1749"/>
         <source>Ignore punctuation while searching</source>
-        <translation type="unfinished"></translation>
+        <translation>Írásjelek figyelmek kívül hagyása</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="1779"/>
@@ -4839,7 +4842,7 @@ hagyásra kerülnek az egér alól, kijelölésből, vágólapról vagy parancss
     <message>
         <location filename="../src/ui/preferences.ui" line="1849"/>
         <source>Turn this option on to ignore diacritics while searching articles</source>
-        <translation>Bekapcsolásakor az ékezeteket és más diaktrikus jeleket a keresés figyelmen kívül hagyja</translation>
+        <translation>Bekapcsolásakor az ékezeteket és más diakritikus jeleket a keresés figyelmen kívül hagyja</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="1852"/>
@@ -4859,12 +4862,12 @@ hagyásra kerülnek az egér alól, kijelölésből, vágólapról vagy parancss
     <message>
         <location filename="../src/ui/preferences.ui" line="1872"/>
         <source>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</source>
-        <translation type="unfinished"></translation>
+        <translation>Ha egy szótárat manuálisan összecsukott, akkor a további kereséseknél is összecsukva marad</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="1875"/>
         <source>Session collapse</source>
-        <translation type="unfinished"></translation>
+        <translation>Összecsukás megtartása</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.ui" line="1885"/>
@@ -4891,7 +4894,7 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     <message>
         <location filename="../src/ui/preferences.cc" line="126"/>
         <source>Classic</source>
-        <translation type="unfinished"></translation>
+        <translation>Klasszikus</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.cc" line="127"/>
@@ -4926,17 +4929,17 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     <message>
         <location filename="../src/ui/preferences.cc" line="547"/>
         <source>Restart to apply the interface style change.</source>
-        <translation type="unfinished"></translation>
+        <translation>Indítsa újra a programot a kiválasztott stílus alkalmazásához.</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.cc" line="553"/>
         <source>Restart to apply the interface font change.</source>
-        <translation type="unfinished"></translation>
+        <translation>Indítsa újra a programot a kiválasztott betűkészletek alkalmazásához.</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences.cc" line="557"/>
         <source>Restart needed</source>
-        <translation type="unfinished"></translation>
+        <translation>Újraindítás szükséges</translation>
     </message>
     <message>
         <source>Changing Language</source>
@@ -5157,57 +5160,57 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     <message>
         <location filename="../src/main.cc" line="202"/>
         <source>A dictionary lookup program.</source>
-        <translation type="unfinished"></translation>
+        <translation>Egy szótári keresőprogram.</translation>
     </message>
     <message>
         <location filename="../src/main.cc" line="205"/>
         <source>Word or sentence to query.</source>
-        <translation type="unfinished"></translation>
+        <translation>A keresendő szó vagy kifejezés.</translation>
     </message>
     <message>
         <location filename="../src/main.cc" line="209"/>
         <source>Save debug messages to gd_log.txt in the config folder.</source>
-        <translation type="unfinished"></translation>
+        <translation>Hibakeresési üzenetek mentése a gd_log.txt fájlba a beállítási mappában.</translation>
     </message>
     <message>
         <location filename="../src/main.cc" line="213"/>
         <source>Reset window state.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ablak állapotának visszaállítása.</translation>
     </message>
     <message>
         <location filename="../src/main.cc" line="215"/>
         <source>Disable tts.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kimondás letiltása.</translation>
     </message>
     <message>
         <location filename="../src/main.cc" line="219"/>
         <source>Change the group of main window.</source>
-        <translation type="unfinished"></translation>
+        <translation>A főablak csoportjának megváltoztatása.</translation>
     </message>
     <message>
         <location filename="../src/main.cc" line="223"/>
         <source>Change the group of popup.</source>
-        <translation type="unfinished"></translation>
+        <translation>A felguróablak csoportjának megváltoztatása.</translation>
     </message>
     <message>
         <location filename="../src/main.cc" line="228"/>
         <source>Force the word to be translated in scanpopup</source>
-        <translation type="unfinished"></translation>
+        <translation>A lefordított szó kényszerített beküldése a felugróablakba</translation>
     </message>
     <message>
         <location filename="../src/main.cc" line="232"/>
         <source>Force the word to be translated in the mainwindow</source>
-        <translation type="unfinished"></translation>
+        <translation>A lefordított szó kényszerített beküldése a főablakba</translation>
     </message>
     <message>
         <location filename="../src/main.cc" line="236"/>
         <source>Toggle scan popup.</source>
-        <translation type="unfinished"></translation>
+        <translation>Fordító felugróablak ki- vagy bekapcsolása.</translation>
     </message>
     <message>
         <location filename="../src/main.cc" line="240"/>
         <source>Print version and diagnosis info.</source>
-        <translation type="unfinished"></translation>
+        <translation>Verzió is diagnosztikai információk megjelenítése.</translation>
     </message>
 </context>
 <context>
@@ -5349,12 +5352,12 @@ could be resized or managed in other ways.</source>
         <location filename="../src/ui/scanpopup.cc" line="556"/>
         <location filename="../src/ui/scanpopup.cc" line="919"/>
         <source>%1 - GoldenDict-ng</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 - GoldenDict-ng</translation>
     </message>
     <message>
         <location filename="../src/ui/scanpopup.cc" line="878"/>
         <source>WARNING: %1</source>
-        <translation type="unfinished">FIGYELEM: %1</translation>
+        <translation>FIGYELEM: %1</translation>
     </message>
 </context>
 <context>
@@ -5362,32 +5365,32 @@ could be resized or managed in other ways.</source>
     <message>
         <location filename="../src/ui/searchpanel.cc" line="15"/>
         <source>&amp;Previous</source>
-        <translation type="unfinished">&amp;Előző</translation>
+        <translation>&amp;Előző</translation>
     </message>
     <message>
         <location filename="../src/ui/searchpanel.cc" line="16"/>
         <source>Ctrl+Shift+G</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+G</translation>
     </message>
     <message>
         <location filename="../src/ui/searchpanel.cc" line="20"/>
         <source>&amp;Next</source>
-        <translation type="unfinished">&amp;Következő</translation>
+        <translation>&amp;Következő</translation>
     </message>
     <message>
         <location filename="../src/ui/searchpanel.cc" line="21"/>
         <source>Ctrl+G</source>
-        <translation type="unfinished">Ctrl+G</translation>
+        <translation>Ctrl+G</translation>
     </message>
     <message>
         <location filename="../src/ui/searchpanel.cc" line="24"/>
         <source>&amp;Case Sensitive</source>
-        <translation type="unfinished">Kis- és nagybetűk &amp;megkülönböztetése</translation>
+        <translation>Kis- és nagybetűk &amp;megkülönböztetése</translation>
     </message>
     <message>
         <location filename="../src/ui/searchpanel.cc" line="26"/>
         <source>Find:</source>
-        <translation type="unfinished">Keresés:</translation>
+        <translation>Keresés:</translation>
     </message>
 </context>
 <context>
@@ -5606,44 +5609,46 @@ feltétlenül működőképes. Az oldalon regisztrálva kérhet saját kulcsot..
     <message>
         <location filename="../src/ui/sources.ui" line="412"/>
         <source>Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bármilyen külső program. A %GDWORD% kifejezés a keresett szóra cserélődik.A %GDSEARCH% kifejezés a keresősávon lévő szövegre cserélődik. Ha nem szerepel egyik kifejezés sem, akkor a címszót a standard bemeneten kapja meg a program.</translation>
     </message>
     <message>
         <location filename="../src/ui/sources.ui" line="465"/>
         <source>Lingua Libre</source>
-        <translation type="unfinished"></translation>
+        <translation>Lingua Libre</translation>
     </message>
     <message>
         <location filename="../src/ui/sources.ui" line="471"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pronunciations provided by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A kiejtéseket a &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt; biztosítja, amely a Wikimedia France közösségi nyelvi médiatára. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../src/ui/sources.ui" line="481"/>
         <source>Enable Lingua Libre</source>
-        <translation type="unfinished"></translation>
+        <translation>Lingua Libre engedélyezése</translation>
     </message>
     <message>
         <location filename="../src/ui/sources.ui" line="490"/>
         <source>ISO 639-3 language code</source>
-        <translation type="unfinished"></translation>
+        <translation>ISO 639-3 nyelvi kód</translation>
     </message>
     <message>
         <location filename="../src/ui/sources.ui" line="500"/>
         <source>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
 
 Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Példák:  &amp;quot;eng&amp;quot; az angol, &amp;quot;fra&amp;quot; a francia &lt;br&gt;
+
+Az elérhető nyelvek teljes listája megtalálható &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; ezen az oldalon &lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="../src/ui/sources.ui" line="582"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use of Forvo currently requires an API key, register on the site to get your own key.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A Forvo használatához API-kulcs szükséges. Az oldalon regisztrálva kérhet saját kulcsot.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../src/ui/sources.ui" line="605"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Szerezzen be saját kulcsot &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;ezen ez oldalon&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../src/ui/sources.ui" line="714"/>
@@ -5742,17 +5747,17 @@ A GoldenDict még nem támogatja.</translation>
     <message>
         <location filename="../src/ui/sources.ui" line="835"/>
         <source>Custom transliteration</source>
-        <translation type="unfinished"></translation>
+        <translation>Egyéni átbetűzés</translation>
     </message>
     <message>
         <location filename="../src/ui/sources.ui" line="844"/>
         <source>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ez csak a keresett kifejezésre vonatkozik. Minden sor egy-egy átbetűzést határoz meg, pontosvesszővel elválasztva. Például: ae;æ, így a felhasználók ae formában is leírhatják a keresett szóban szereplő æ betűt.</translation>
     </message>
     <message>
         <location filename="../src/ui/sources.ui" line="854"/>
         <source>ae;æ #this is an example</source>
-        <translation type="unfinished"></translation>
+        <translation>ae;æ #ez egy példa</translation>
     </message>
     <message>
         <location filename="../src/dict/sources.cc" line="133"/>
