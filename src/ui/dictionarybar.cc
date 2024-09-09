@@ -72,15 +72,10 @@ void DictionaryBar::setDictionaries( vector< sptr< Dictionary::Class > > const &
     dictActions.append( action );
   }
 
-  setDictionaryIconSize( 200 );
-
   setUpdatesEnabled( true );
 }
 
-void DictionaryBar::setDictionaryIconSize( int extent )
-{
-  setIconSize( QSize( extent, extent ) );
-}
+
 
 void DictionaryBar::contextMenuEvent( QContextMenuEvent * event )
 {
