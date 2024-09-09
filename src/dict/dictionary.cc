@@ -276,7 +276,7 @@ bool Class::loadIconFromFile( QString const & _filename, bool isFullName )
       img.setAlphaChannel( img.createMaskFromColor( QColor( 192, 192, 192 ).rgb(), Qt::MaskOutColor ) );
 #endif
 
-      auto result    = img.scaled( { iconSize, iconSize }, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation );
+      auto result    = img.scaled( { iconWidth, iconWidth }, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation );
       dictionaryIcon = QIcon( QPixmap::fromImage( result ) );
 
       return !dictionaryIcon.isNull();
@@ -293,19 +293,19 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
 
   if ( !img.isNull() ) {
     //some icon is very large ,will crash the application.
-    img = img.scaledToWidth( iconSize );
-    QImage result = img.scaled( { iconSize, iconSize }, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation );
+    img = img.scaledToWidth( iconWidth );
+    QImage result = img.scaled( { iconWidth, iconWidth }, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation );
 
     QPainter painter( &result );
     painter.setCompositionMode( QPainter::CompositionMode_SourceAtop );
 
     QFont font = painter.font();
     //the text should be a little smaller than the icon
-    font.setPixelSize( iconSize * 0.6 );
+    font.setPixelSize( iconWidth * 0.6 );
     font.setWeight( QFont::Bold );
     painter.setFont( font );
 
-    const QRect rectangle = QRect( 0, 0, iconSize, iconSize );
+    const QRect rectangle = QRect( 0, 0, iconWidth, iconWidth );
 
     //select a single char.
     auto abbrName = getAbbrName( text );

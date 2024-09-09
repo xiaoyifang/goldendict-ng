@@ -79,16 +79,16 @@ void DictionaryBar::setDictionaries( vector< sptr< Dictionary::Class > > const &
   setUpdatesEnabled( true );
 }
 
-void DictionaryBar::updateDictionaryIconSize( iconSize size )
+void DictionaryBar::updateDictionaryIconSize( IconSize size )
 {
   switch ( size ) {
-    case iconSize::small: {
+    case IconSize::Small: {
       auto smallSize = QApplication::style()->pixelMetric( QStyle::PM_SmallIconSize );
       setIconSize( { smallSize, smallSize } );
       break;
     }
 
-    case iconSize::normal: {
+    case IconSize::Normal: {
       setIconSize( normalIconSize );
       break;
     }

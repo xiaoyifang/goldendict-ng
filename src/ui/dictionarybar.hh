@@ -35,14 +35,13 @@ public:
     return mutedDictionaries;
   }
 
-  enum class iconSize
-  {
-    small,
-    normal,
-    // large TODO: implement this.
+  enum class IconSize {
+    Small,
+    Normal,
+    // TODO: implement something to have an Large option
   };
 
-  void updateDictionaryIconSize( iconSize size );
+  void updateDictionaryIconSize( IconSize size );
 
 signals:
 

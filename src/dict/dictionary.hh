@@ -320,7 +320,7 @@ protected:
   // By default set icon to empty
   virtual void loadIcon() noexcept;
 
-  const int iconSize = 64;
+  const int iconWidth = 64;
 
   // Load icon from filename directly if isFullName == true
   // else treat filename as name without extension
