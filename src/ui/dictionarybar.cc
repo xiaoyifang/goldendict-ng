@@ -20,7 +20,7 @@ DictionaryBar::DictionaryBar( QWidget * parent,
   maxDictionaryRefsInContextMenu( maxDictionaryRefsInContextMenu_ )
 {
 
-  normalIconSize = this->size();
+  normalIconSize = this->size(); // At the time of initialization, this equals `QStyle::PM_ToolBarIconSize`
 
   setObjectName( "dictionaryBar" );
 
@@ -79,7 +79,7 @@ void DictionaryBar::setDictionaries( vector< sptr< Dictionary::Class > > const &
   setUpdatesEnabled( true );
 }
 
-void DictionaryBar::updateDictionaryIconSize( IconSize size )
+void DictionaryBar::setDictionaryIconSize( IconSize size )
 {
   switch ( size ) {
     case IconSize::Small: {

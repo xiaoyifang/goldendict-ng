@@ -41,7 +41,7 @@ public:
     // TODO: implement something to have an Large option
   };
 
-  void updateDictionaryIconSize( IconSize size );
+  void setDictionaryIconSize( IconSize size );
 
 signals:
 
