@@ -20,10 +20,10 @@ DictionaryBar::DictionaryBar( QWidget * parent,
   maxDictionaryRefsInContextMenu( maxDictionaryRefsInContextMenu_ )
 {
 
-auto iconWidth = this->size().width();
-auto iconHeight = this->size().height();
+  auto iconWidth  = this->size().width();
+  auto iconHeight = this->size().height();
 
-normalIconSize = { std::max(iconWidth, iconHeight), std::max(iconWidth, iconHeight) };
+  normalIconSize = { std::max( iconWidth, iconHeight ), std::max( iconWidth, iconHeight ) };
 
 
   setObjectName( "dictionaryBar" );
