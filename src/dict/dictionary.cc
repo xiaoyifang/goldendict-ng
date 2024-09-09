@@ -276,7 +276,7 @@ bool Class::loadIconFromFile( QString const & _filename, bool isFullName )
       img.setAlphaChannel( img.createMaskFromColor( QColor( 192, 192, 192 ).rgb(), Qt::MaskOutColor ) );
 #endif
 
-      auto result = img.scaled( {iconSize,iconSize},Qt::KeepAspectRatioByExpanding,Qt::SmoothTransformation );
+      auto result    = img.scaled( { iconSize, iconSize }, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation );
       dictionaryIcon = QIcon( QPixmap::fromImage( result ) );
 
       return !dictionaryIcon.isNull();
@@ -294,7 +294,7 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
   if ( !img.isNull() ) {
     //some icon is very large ,will crash the application.
     img = img.scaledToWidth( iconSize );
-    QImage result = img.scaled( {iconSize,iconSize},Qt::KeepAspectRatioByExpanding,Qt::SmoothTransformation);
+    QImage result = img.scaled( { iconSize, iconSize }, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation );
 
     QPainter painter( &result );
     painter.setCompositionMode( QPainter::CompositionMode_SourceAtop );
