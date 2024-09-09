@@ -815,20 +815,12 @@ between classic and school orthography in cyrillic)</source>
         <translation>全文搜索</translation>
     </message>
     <message>
-        <source>Plain text</source>
-        <translation>纯文本</translation>
-    </message>
-    <message>
         <source>Wildcards</source>
         <translation>通配符</translation>
     </message>
     <message>
         <source>The querying word can not be empty.</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>support xapian search syntax,such as AND OR +/- etc</source>
-        <translation>支持 xapian 搜索语法，例如 AND OR +/- 等</translation>
     </message>
     <message>
         <source>Default</source>
@@ -849,6 +841,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
         <source>No dictionaries for full-text search</source>
         <translation>没有可供全文搜索的词典</translation>
+    </message>
+    <message>
+        <source>Support xapian search syntax, such as AND OR +/- etc.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2162,6 +2158,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
         <source>English</source>
         <translation>英语</translation>
+    </message>
+    <message>
+        <source>Hungarian</source>
+        <translation type="unfinished">匈牙利语</translation>
     </message>
 </context>
 <context>
@@ -3504,14 +3504,6 @@ from Stardict, Babylon and GLS dictionaries</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enable index with positional information</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Standard Font</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3808,12 +3800,12 @@ could be resized or managed in other ways.</source>
         <translation>前进</translation>
     </message>
     <message>
-        <source>%1 - %2</source>
-        <translation>%1 - %2</translation>
-    </message>
-    <message>
         <source>WARNING: %1</source>
         <translation type="unfinished">警告： %1</translation>
+    </message>
+    <message>
+        <source>%1 - GoldenDict-ng</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
