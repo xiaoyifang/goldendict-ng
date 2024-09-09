@@ -276,7 +276,7 @@ bool Class::loadIconFromFile( QString const & _filename, bool isFullName )
       img.setAlphaChannel( img.createMaskFromColor( QColor( 192, 192, 192 ).rgb(), Qt::MaskOutColor ) );
 #endif
 
-      auto result    = img.scaled( { iconWidth, iconWidth }, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation );
+      auto result    = img.scaled( { iconSize, iconSize }, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation );
       dictionaryIcon = QIcon( QPixmap::fromImage( result ) );
 
       return !dictionaryIcon.isNull();
@@ -292,18 +292,19 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
   QImage img( iconUrl );
 
   if ( !img.isNull() ) {
-    QImage result = img.scaled( { iconWidth, iconWidth }, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation );
+    QImage result = img.scaled( { iconSize, iconSize }, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation );
 
     QPainter painter( &result );
+    painter.setRenderHints( QPainter::Antialiasing | QPainter::TextAntialiasing );
     painter.setCompositionMode( QPainter::CompositionMode_SourceAtop );
 
     QFont font = painter.font();
     //the text should be a little smaller than the icon
-    font.setPixelSize( iconWidth * 0.6 );
+    font.setPixelSize( iconSize * 0.6 );
     font.setWeight( QFont::Bold );
     painter.setFont( font );
 
-    const QRect rectangle = QRect( 0, 0, iconWidth, iconWidth );
+    const QRect rectangle = QRect( 0, 0, iconSize, iconSize );
 
     //select a single char.
     auto abbrName = getAbbrName( text );
