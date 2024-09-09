@@ -6,18 +6,15 @@
 #include <cstdio>
 #include "dictionary.hh"
 
-#include <QCryptographicHash>
-
 // For needToRebuildIndex(), read below
 #include <QFileInfo>
 #include <QDateTime>
 
 #include "config.hh"
 #include <QDir>
-#include <QFileInfo>
 #include <QCryptographicHash>
-#include <QDateTime>
 #include <QImage>
+#include <QPixmap>
 #include <QPainter>
 #include <QRegularExpression>
 #include "utils.hh"
@@ -238,6 +235,11 @@ void Class::loadIcon() noexcept
   dictionaryIconLoaded = true;
 }
 
+int Class::getOptimalIconSize()
+{
+  return 64 * qGuiApp->devicePixelRatio();
+}
+
 bool Class::loadIconFromFile( QString const & _filename, bool isFullName )
 {
   QFileInfo info;
@@ -266,19 +268,14 @@ bool Class::loadIconFromFile( QString const & _filename, bool isFullName )
   }
 
   if ( info.isFile() ) {
-    QImage img( fileName );
+    auto iconSize = getOptimalIconSize();
+    QPixmap img( fileName );
 
     if ( !img.isNull() ) {
       // Load successful
 
-
-      // Apply the color key
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-      img.setAlphaChannel( img.createMaskFromColor( QColor( 192, 192, 192 ).rgb(), Qt::MaskOutColor ) );
-#endif
-
       auto result    = img.scaled( { iconSize, iconSize }, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation );
-      dictionaryIcon = QIcon( QPixmap::fromImage( result ) );
+      dictionaryIcon = QIcon( result );
 
       return !dictionaryIcon.isNull();
     }
@@ -293,6 +290,8 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
   QImage img( iconUrl );
 
   if ( !img.isNull() ) {
+    auto iconSize = getOptimalIconSize();
+
     QImage result = img.scaled( { iconSize, iconSize }, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation );
 
     QPainter painter( &result );
