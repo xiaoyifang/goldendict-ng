@@ -12,6 +12,7 @@
 #include <QObject>
 #include <QString>
 #include <QWaitCondition>
+#include <QGuiApplication>
 
 #include "config.hh"
 #include "ex.hh"
@@ -320,7 +321,7 @@ protected:
   // By default set icon to empty
   virtual void loadIcon() noexcept;
 
-  const int iconSize = 64;
+  static int getOptimalIconSize();
 
   // Load icon from filename directly if isFullName == true
   // else treat filename as name without extension
