@@ -316,10 +316,11 @@ protected:
   bool synonymSearchEnabled;
   string dictionaryName;
   std::optional< bool > metadata_enable_fts = std::nullopt;
-
   // Load user icon if it exist
   // By default set icon to empty
   virtual void loadIcon() noexcept;
+
+  const int iconSize = 64;
 
   // Load icon from filename directly if isFullName == true
   // else treat filename as name without extension
