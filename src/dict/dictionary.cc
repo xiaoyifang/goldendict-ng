@@ -271,27 +271,13 @@ bool Class::loadIconFromFile( QString const & _filename, bool isFullName )
     if ( !img.isNull() ) {
       // Load successful
 
-      //some icon is very large ,will crash the application.
-      img = img.scaledToWidth( 64 );
+
       // Apply the color key
 #if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
       img.setAlphaChannel( img.createMaskFromColor( QColor( 192, 192, 192 ).rgb(), Qt::MaskOutColor ) );
 #endif
 
-      // Transform it to be square
-      int max = img.width() > img.height() ? img.width() : img.height();
-
-      QImage result( max, max, QImage::Format_ARGB32 );
-      result.fill( 0 ); // Black transparent
-
-      QPainter painter( &result );
-      painter.setRenderHint( QPainter::RenderHint::Antialiasing );
-      painter.drawImage( QPoint( img.width() == max ? 0 : ( max - img.width() ) / 2,
-                                 img.height() == max ? 0 : ( max - img.height() ) / 2 ),
-                         img );
-
-      painter.end();
-
+      auto result    = img.scaled( { iconSize, iconSize }, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation );
       dictionaryIcon = QIcon( QPixmap::fromImage( result ) );
 
       return !dictionaryIcon.isNull();
@@ -307,18 +293,10 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
   QImage img( iconUrl );
 
   if ( !img.isNull() ) {
-    int iconSize = 64;
-    //some icon is very large ,will crash the application.
-    img = img.scaledToWidth( iconSize );
-    QImage result( iconSize, iconSize, QImage::Format_ARGB32 );
-    result.fill( 0 ); // Black transparent
-    int max = img.width() > img.height() ? img.width() : img.height();
+    QImage result = img.scaled( { iconSize, iconSize }, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation );
 
     QPainter painter( &result );
-    painter.setRenderHint( QPainter::RenderHint::Antialiasing );
-    painter.drawImage( QPoint( img.width() == max ? 0 : ( max - img.width() ) / 2,
-                               img.height() == max ? 0 : ( max - img.height() ) / 2 ),
-                       img );
+    painter.setRenderHints( QPainter::Antialiasing | QPainter::TextAntialiasing );
     painter.setCompositionMode( QPainter::CompositionMode_SourceAtop );
 
     QFont font = painter.font();

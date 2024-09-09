@@ -4,6 +4,7 @@
 #include <QMenu>
 #include <QContextMenuEvent>
 #include <QProcess>
+#include <QStyle>
 
 
 using std::vector;
@@ -18,6 +19,13 @@ DictionaryBar::DictionaryBar( QWidget * parent,
   editDictionaryCommand( _editDictionaryCommand ),
   maxDictionaryRefsInContextMenu( maxDictionaryRefsInContextMenu_ )
 {
+
+  auto iconWidth  = this->size().width();
+  auto iconHeight = this->size().height();
+
+  normalIconSize = { std::max( iconWidth, iconHeight ), std::max( iconWidth, iconHeight ) };
+
+
   setObjectName( "dictionaryBar" );
 
   maxDictionaryRefsAction =
@@ -72,20 +80,31 @@ void DictionaryBar::setDictionaries( vector< sptr< Dictionary::Class > > const &
     dictActions.append( action );
   }
 
-  setDictionaryIconSize( 21 );
 
   setUpdatesEnabled( true );
 }
 
-void DictionaryBar::setDictionaryIconSize( int extent )
+void DictionaryBar::setDictionaryIconSize( IconSize size )
 {
-  setIconSize( QSize( extent, extent ) );
+  switch ( size ) {
+    case IconSize::Small: {
+      auto smallSize = QApplication::style()->pixelMetric( QStyle::PM_SmallIconSize );
+      setIconSize( { smallSize, smallSize } );
+      break;
+    }
+
+    case IconSize::Normal: {
+      setIconSize( normalIconSize );
+      break;
+    }
+  }
 }
 
 void DictionaryBar::contextMenuEvent( QContextMenuEvent * event )
 {
   showContextMenu( event );
 }
+
 
 void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
 {
