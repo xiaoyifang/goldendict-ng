@@ -76,7 +76,6 @@ void DictionaryBar::setDictionaries( vector< sptr< Dictionary::Class > > const &
 }
 
 
-
 void DictionaryBar::contextMenuEvent( QContextMenuEvent * event )
 {
   showContextMenu( event );
