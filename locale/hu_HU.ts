@@ -818,7 +818,7 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
     </message>
     <message>
       <source>Plain text</source>
-      <translation type="unfinished">Plain text</translation>
+      <translation>Egyszerű szöveg</translation>
     </message>
     <message>
       <source>Wildcards</source>
@@ -830,7 +830,7 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
     </message>
     <message>
       <source>support xapian search syntax,such as AND OR +/- etc</source>
-      <translation type="unfinished">support xapian search syntax,such as AND OR +/- etc</translation>
+      <translation>támogatja az xapian keresési szintaxist, például ÉS VAGY +/- stb</translation>
     </message>
     <message>
       <source>Default</source>
@@ -2862,7 +2862,7 @@ A &apos;*&apos;, &apos;?&apos;, &apos;[&apos; és &apos;]&apos; karakterek keres
     </message>
     <message>
       <source>Ctrl</source>
-      <translation type="unfinished">Ctrl</translation>
+      <translation>Ctrl</translation>
     </message>
     <message>
       <source>Win/Meta</source>
@@ -3521,11 +3521,11 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     </message>
     <message>
       <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
-      <translation type="unfinished">Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</translation>
+      <translation>A Xapian&apos;kifejezéskereső és a NEAR operátor használatához pozícióinformációk szükségesek, de az adatbázis mérete sokkal nagyobb lesz. Csak az új bejövő szótárakra vonatkozik.</translation>
     </message>
     <message>
       <source>Enable index with positional information</source>
-      <translation type="unfinished">Enable index with positional information</translation>
+      <translation>Index engedélyezése pozícióinformációkkal</translation>
     </message>
     <message>
       <source>Standard Font</source>
@@ -3826,7 +3826,7 @@ could be resized or managed in other ways.</source>
     </message>
     <message>
       <source>%1 - %2</source>
-      <translation type="unfinished">%1 - %2</translation>
+      <translation>%1 - %2</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
@@ -3929,7 +3929,7 @@ A GoldenDict még nem támogatja.</translation>
     </message>
     <message>
       <source>Wikipedia (MediaWiki) sites:</source>
-      <translation type="unfinished">Wikipedia (MediaWiki) sites:</translation>
+      <translation>Wikipédia (MediaWiki) oldalak:</translation>
     </message>
     <message>
       <source>Sound Dirs</source>
