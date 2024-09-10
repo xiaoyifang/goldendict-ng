@@ -83,6 +83,12 @@ endif ()
 if (WITH_ZIM)
     pkg_check_modules(ZIM REQUIRED IMPORTED_TARGET libzim)
     target_link_libraries(${GOLDENDICT} PRIVATE PkgConfig::ZIM)
+    if (APPLE)
+        # For some reason, icu4c as transitive dependency of libzim may not be copied into app bundle,
+        # so we directly depends on it to help macdeployqt or whatever
+        pkg_check_modules(BREW_ICU_FOR_LIBZIM_FORCE_LINK REQUIRED IMPORTED_TARGET icu-i18n icu-uc)
+        target_link_libraries(${GOLDENDICT} PUBLIC PkgConfig::BREW_ICU_FOR_LIBZIM_FORCE_LINK)
+    endif ()
 endif ()
 
 if (USE_SYSTEM_FMT)
