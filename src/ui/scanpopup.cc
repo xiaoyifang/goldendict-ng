@@ -1110,9 +1110,8 @@ void ScanPopup::on_goForwardButton_clicked() const
 
 void ScanPopup::setDictionaryIconSize()
 {
-  int extent = cfg.usingSmallIconsInToolbars ? QApplication::style()->pixelMetric( QStyle::PM_SmallIconSize ) :
-                                               QApplication::style()->pixelMetric( QStyle::PM_ToolBarIconSize );
-  dictionaryBar.setDictionaryIconSize( extent );
+  dictionaryBar.setDictionaryIconSize( cfg.usingSmallIconsInToolbars ? DictionaryBar::IconSize::Small :
+                                                                       DictionaryBar::IconSize::Normal );
 }
 
 void ScanPopup::setGroupByName( QString const & name ) const

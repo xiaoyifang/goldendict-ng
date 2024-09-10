@@ -239,7 +239,9 @@ else ()
 endif ()
 
 qt_add_translations(${GOLDENDICT} TS_FILES ${TRANS_FILES}
-        QM_FILES_OUTPUT_VARIABLE qm_files)
+        QM_FILES_OUTPUT_VARIABLE qm_files
+        LUPDATE_OPTIONS "-no-ui-lines -locations none -no-obsolete")
+
 add_dependencies(${GOLDENDICT} "release_translations")
 
 #### installation or assemble redistribution
@@ -269,7 +271,19 @@ if (APPLE)
 
     install(TARGETS ${GOLDENDICT} BUNDLE DESTINATION "${Assembling_Dir}")
     install(FILES ${qm_files} DESTINATION "${Redistributable_APP}/Contents/MacOS/locale")
-    install(DIRECTORY "${CMAKE_SOURCE_DIR}/opencc" DESTINATION "${Redistributable_APP}/Contents/MacOS")
+
+    if (IS_READABLE "/opt/homebrew/share/opencc/")
+        set(OPENCC_DATA_PATH "/opt/homebrew/share/opencc/" CACHE PATH "opencc's data path")
+    elseif (IS_READABLE "/usr/local/share/opencc/")
+        set(OPENCC_DATA_PATH "/usr/local/share/opencc/" CACHE PATH "opencc's data path")
+    else ()
+        message(FATAL_ERROR "Cannot find opencc's data folder!")
+    endif ()
+
+    file(REAL_PATH "${OPENCC_DATA_PATH}" OPENCC_DATA_PATH_FOR_REAL)
+
+    message(STATUS "OPENCC data is found -> ${OPENCC_DATA_PATH_FOR_REAL}")
+    install(DIRECTORY "${OPENCC_DATA_PATH_FOR_REAL}" DESTINATION "${Redistributable_APP}/Contents/MacOS")
 
     install(SCRIPT ${deploy_script})
 

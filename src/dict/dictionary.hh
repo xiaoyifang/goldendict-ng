@@ -12,6 +12,7 @@
 #include <QObject>
 #include <QString>
 #include <QWaitCondition>
+#include <QGuiApplication>
 
 #include "config.hh"
 #include "ex.hh"
@@ -316,10 +317,11 @@ protected:
   bool synonymSearchEnabled;
   string dictionaryName;
   std::optional< bool > metadata_enable_fts = std::nullopt;
-
   // Load user icon if it exist
   // By default set icon to empty
   virtual void loadIcon() noexcept;
+
+  static int getOptimalIconSize();
 
   // Load icon from filename directly if isFullName == true
   // else treat filename as name without extension
