@@ -44,7 +44,6 @@
     </message>
     <message>
       <source>anki: post to anki failed</source>
-      <translatorcomment>anki:发布成功</translatorcomment>
       <translation>anki: ارسال به anki ناموفق بود</translation>
     </message>
     <message>
@@ -70,28 +69,28 @@
       <translation>جمع‌کردن بند</translation>
     </message>
     <message>
-      <source>(untitled)</source>
-      <translation>(بی‌عنوان)</translation>
-    </message>
-    <message>
-      <source>Welcome!</source>
-      <translation>خوش آمدید!</translation>
+      <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
+      <translation>هیچ ترجمه ای برای &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; در گروه &lt;b&gt;%2&lt;/b&gt;یافت نشد.</translation>
     </message>
     <message>
       <source>No translation was found in group &lt;b&gt;%1&lt;/b&gt;.</source>
       <translation>هیچ ترجمه‌ای در گروه &lt;b&gt;%1&lt;/b&gt; یافت نشد.</translation>
     </message>
     <message>
-      <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
-      <translation>هیچ ترجمه ای برای &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; در گروه &lt;b&gt;%2&lt;/b&gt;یافت نشد.</translation>
-    </message>
-    <message>
-      <source>(picture)</source>
-      <translation>(عکس)</translation>
+      <source>Welcome!</source>
+      <translation>خوش آمدید!</translation>
     </message>
     <message>
       <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
       <translation>&lt;h3 align=&quot;center&quot;&gt;به &lt;b&gt;GoldenDict&lt;/b&gt;خوش آمدید!&lt;/h3&gt;&lt;p&gt;برای شروع کار با برنامه، ابتدا از &lt;em&gt;ویرایش | Dictionaries&lt;/em&gt; برای افزودن برخی مسیرهای فهرست راهنمای جستجو برای فایل های فرهنگ لغت، راه اندازی سایت های مختلف ویکی پدیا یا منابع دیگر، تنظیم ترتیب فرهنگ لغت یا ایجاد گروه های فرهنگ لغت.&lt;p&gt;و سپس شما&apos;آماده هستید تا کلمات خود را جستجو کنید! شما می توانید این کار را در این پنجره با استفاده از یک صفحه در سمت چپ انجام دهید، یا می توانید &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;کلمات را از سایر برنامه های فعال جستجو کنید&lt;/a&gt;. &lt;p&gt;برای سفارشی کردن برنامه، تنظیمات برگزیده موجود را در &lt;em&gt;Edit | بررسی کنید ترجیحات&lt;/em&gt;. همه تنظیمات در آنجا دارای نکات ابزار هستند، اگر در مورد چیزی شک دارید، حتما آنها را بخوانید.&lt;p&gt;اگر به کمک بیشتری نیاز دارید، سؤال، پیشنهادی دارید یا فقط می‌پرسید دیگران چه فکری می‌کنند، در انجمن برنامه&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;خوش آمدید&lt;/a&gt;.&lt;p&gt;برنامه&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;وب سایت&lt;/a&gt; برای به روز رسانی بررسی کنید. &lt;p&gt;(ج) 2008-2013 کنستانتین ایزاکوف. تحت مجوز GPLv3 یا بالاتر.</translation>
+    </message>
+    <message>
+      <source>(untitled)</source>
+      <translation>(بی‌عنوان)</translation>
+    </message>
+    <message>
+      <source>(picture)</source>
+      <translation>(عکس)</translation>
     </message>
   </context>
   <context>
@@ -132,28 +131,12 @@
   <context>
     <name>ArticleView</name>
     <message>
-      <source>Failed to create temporary file.</source>
-      <translation>ساخت پرونده موقت شکست خورد.</translation>
+      <source>Phrase not found</source>
+      <translation>عبارت پیدا نشد</translation>
     </message>
     <message>
-      <source>&amp;Look up &quot;%1&quot;</source>
-      <translation>&amp;یافتن &quot;%1&quot;</translation>
-    </message>
-    <message>
-      <source>Look up &quot;%1&quot; in &amp;New Tab</source>
-      <translation>یافتن &quot;%1&quot; در &amp;زبانه تازه</translation>
-    </message>
-    <message>
-      <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>منبع ارجاع شده وجود ندارد.</translation>
-    </message>
-    <message>
-      <source>Failed to auto-open resource file, try opening manually: %1.</source>
-      <translation>باز کردن خودکار پرونده منبع شکست خورد، تلاش کنید به‌صورت دستی بازکنید: %1.</translation>
-    </message>
-    <message>
-      <source>Look up &quot;%1&quot; in %2</source>
-      <translation>یافتن &quot;%1&quot; در %2</translation>
+      <source>%1 of %2 matches</source>
+      <translation>%1 از %2 مسابقه</translation>
     </message>
     <message>
       <source>Select Current Article</source>
@@ -166,18 +149,6 @@
     <message>
       <source>Inspect</source>
       <translation>بازرسی کردن</translation>
-    </message>
-    <message>
-      <source>Look up &quot;%1&quot; in %2 in &amp;New Tab</source>
-      <translation>یافتن &quot;%1&quot; در %2 در &amp;زبانه تازه</translation>
-    </message>
-    <message>
-      <source>Open Link in New &amp;Tab</source>
-      <translation>باز کردن پیوند در &amp;زیانه تازه</translation>
-    </message>
-    <message>
-      <source>Open Link in &amp;External Browser</source>
-      <translation>باز کردن پیوند در &amp;مرورگر بیرونی</translation>
     </message>
     <message>
       <source>Resource</source>
@@ -193,7 +164,6 @@
     </message>
     <message>
       <source>Video</source>
-      <translatorcomment>视频: %1</translatorcomment>
       <translation>ویدیو</translation>
     </message>
     <message>
@@ -209,6 +179,14 @@
       <translation>تعریف: %1</translation>
     </message>
     <message>
+      <source>ERROR: %1</source>
+      <translation>خطای: %1</translation>
+    </message>
+    <message>
+      <source>The referenced resource doesn&apos;t exist.</source>
+      <translation>منبع ارجاع شده وجود ندارد.</translation>
+    </message>
+    <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>برنامه شنیداری ارجاع شده وجود ندارد.</translation>
     </message>
@@ -217,44 +195,32 @@
       <translation>لینک باز</translation>
     </message>
     <message>
-      <source>Save &amp;Bookmark &quot;%1...&quot;</source>
-      <translation>ذخیره &amp;نشانک &quot;%1...&quot;</translation>
+      <source>Open Link in New &amp;Tab</source>
+      <translation>باز کردن پیوند در &amp;زیانه تازه</translation>
     </message>
     <message>
-      <source>WARNING: Audio Player: %1</source>
-      <translation>هشدار: پخش کننده صوتی: %1</translation>
-    </message>
-    <message>
-      <source>ERROR: %1</source>
-      <translation>خطای: %1</translation>
-    </message>
-    <message>
-      <source>Save sound</source>
-      <translation>ذخیره کردن آوا</translation>
-    </message>
-    <message>
-      <source>Save image</source>
-      <translation>ذخیره کردن تصویر</translation>
-    </message>
-    <message>
-      <source>Image files (*.bmp *.jpg *.png *.tif);;All files (*.*)</source>
-      <translation>پرونده‌های تصویر (*.bmp *.jpg *.png *.tif);;همه پرونده‌ها (*.*)</translation>
+      <source>Open Link in &amp;External Browser</source>
+      <translation>باز کردن پیوند در &amp;مرورگر بیرونی</translation>
     </message>
     <message>
       <source>Save &amp;image...</source>
       <translation>ذخیره &amp;تصویر...</translation>
     </message>
     <message>
-      <source>Phrase not found</source>
-      <translation>عبارت پیدا نشد</translation>
-    </message>
-    <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 از %2 مسابقه</translation>
+      <source>Open image in system viewer...</source>
+      <translation>باز کردن تصویر در نمایشگر سیستم...</translation>
     </message>
     <message>
       <source>Save s&amp;ound...</source>
       <translation>ذخیره آ&amp;وا...</translation>
+    </message>
+    <message>
+      <source>&amp;Look up &quot;%1&quot;</source>
+      <translation>&amp;یافتن &quot;%1&quot;</translation>
+    </message>
+    <message>
+      <source>Look up &quot;%1&quot; in &amp;New Tab</source>
+      <translation>یافتن &quot;%1&quot; در &amp;زبانه تازه</translation>
     </message>
     <message>
       <source>Send &quot;%1&quot; to input line</source>
@@ -265,6 +231,18 @@
       <translation>&amp;افزودن &quot;%1&quot; به پیشینه</translation>
     </message>
     <message>
+      <source>Look up &quot;%1&quot; in %2</source>
+      <translation>یافتن &quot;%1&quot; در %2</translation>
+    </message>
+    <message>
+      <source>Look up &quot;%1&quot; in %2 in &amp;New Tab</source>
+      <translation>یافتن &quot;%1&quot; در %2 در &amp;زبانه تازه</translation>
+    </message>
+    <message>
+      <source>Save &amp;Bookmark &quot;%1...&quot;</source>
+      <translation>ذخیره &amp;نشانک &quot;%1...&quot;</translation>
+    </message>
+    <message>
       <source>&amp;Send Current Article to Anki</source>
       <translation>&amp;ارسال مقاله فعلی به Anki</translation>
     </message>
@@ -273,20 +251,40 @@
       <translation>&amp;ارسال متن انتخابی به Anki</translation>
     </message>
     <message>
+      <source>Save sound</source>
+      <translation>ذخیره کردن آوا</translation>
+    </message>
+    <message>
       <source>Sound files (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
       <translation>فایل های صوتی (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;همه فایل ها (*.*)</translation>
+    </message>
+    <message>
+      <source>Save image</source>
+      <translation>ذخیره کردن تصویر</translation>
+    </message>
+    <message>
+      <source>Image files (*.bmp *.jpg *.png *.tif);;All files (*.*)</source>
+      <translation>پرونده‌های تصویر (*.bmp *.jpg *.png *.tif);;همه پرونده‌ها (*.*)</translation>
     </message>
     <message>
       <source>Failed to play sound file: %1</source>
       <translation>فایل صوتی پخش نشد: %1</translation>
     </message>
     <message>
-      <source>&amp;Create Anki note</source>
-      <translation>&amp;ایجاد یادداشت Anki</translation>
+      <source>Failed to create temporary file.</source>
+      <translation>ساخت پرونده موقت شکست خورد.</translation>
     </message>
     <message>
-      <source>Open image in system viewer...</source>
-      <translation>باز کردن تصویر در نمایشگر سیستم...</translation>
+      <source>Failed to auto-open resource file, try opening manually: %1.</source>
+      <translation>باز کردن خودکار پرونده منبع شکست خورد، تلاش کنید به‌صورت دستی بازکنید: %1.</translation>
+    </message>
+    <message>
+      <source>WARNING: Audio Player: %1</source>
+      <translation>هشدار: پخش کننده صوتی: %1</translation>
+    </message>
+    <message>
+      <source>&amp;Create Anki note</source>
+      <translation>&amp;ایجاد یادداشت Anki</translation>
     </message>
   </context>
   <context>
@@ -433,6 +431,10 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictGroupsWidget</name>
     <message>
+      <source>Dictionaries: </source>
+      <translation>واژه‌نامه‌ها:</translation>
+    </message>
+    <message>
       <source>Confirmation</source>
       <translation>تایید</translation>
     </message>
@@ -441,16 +443,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>آیا شما از درخواست ایجاد یک مجموعه از گروه‌ها برپایه جفت‌های زبان اطمینان دارید؟</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>آیا مطمئن هستید که می خواهید مجموعه ای از گروه ها را بر اساس metadata.toml ایجاد کنید؟</translation>
-    </message>
-    <message>
-      <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
-      <translation>گروه‌ها را با زبان منبع ترکیب کنید به &quot;%1-&gt;&quot;</translation>
-    </message>
-    <message>
-      <source>Combine groups by target language to &quot;-&gt;%1&quot;</source>
-      <translation>گروه‌ها را با زبان هدف ترکیب کنید به &quot;%1-&gt;&quot;</translation>
+      <source>Unassigned</source>
+      <translation>واگذار نشده</translation>
     </message>
     <message>
       <source>Auto group by folder failed.</source>
@@ -465,6 +459,18 @@ between classic and school orthography in cyrillic)</source>
       <translation>آیا مطمئن هستید که می خواهید مجموعه ای از گروه ها را بر اساس پوشه های حاوی آن ایجاد کنید؟</translation>
     </message>
     <message>
+      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
+      <translation>آیا مطمئن هستید که می خواهید مجموعه ای از گروه ها را بر اساس metadata.toml ایجاد کنید؟</translation>
+    </message>
+    <message>
+      <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
+      <translation>گروه‌ها را با زبان منبع ترکیب کنید به &quot;%1-&gt;&quot;</translation>
+    </message>
+    <message>
+      <source>Combine groups by target language to &quot;-&gt;%1&quot;</source>
+      <translation>گروه‌ها را با زبان هدف ترکیب کنید به &quot;%1-&gt;&quot;</translation>
+    </message>
+    <message>
       <source>Make two-side translate group &quot;%1-%2-%1&quot;</source>
       <translation>گروه ترجمه دوطرفه بسازید &quot;%1-%2-%1&quot;</translation>
     </message>
@@ -472,17 +478,33 @@ between classic and school orthography in cyrillic)</source>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>گروه‌ها را ترکیب کنید با &quot;%1&quot;</translation>
     </message>
-    <message>
-      <source>Dictionaries: </source>
-      <translation>واژه‌نامه‌ها:</translation>
-    </message>
-    <message>
-      <source>Unassigned</source>
-      <translation>واگذار نشده</translation>
-    </message>
   </context>
   <context>
     <name>DictHeadwords</name>
+    <message>
+      <source>If checked any filter changes will we immediately applied to headwords list</source>
+      <translation>اگر به‌کار افتاده باشد هر تغییر پالایه بی‌درنگ بر روی لیست سرواژه‌ها اعمال می‌گردد</translation>
+    </message>
+    <message>
+      <source>Auto apply</source>
+      <translation>اعمال خودکار</translation>
+    </message>
+    <message>
+      <source>Press this button to apply filter to headwords list</source>
+      <translation>برای اعمال پالایه لیست سرواژه‌ها این کلید را فشار دهید</translation>
+    </message>
+    <message>
+      <source>Apply</source>
+      <translation>اعمال کردن</translation>
+    </message>
+    <message>
+      <source>Filter string (fixed string, wildcards or regular expression)</source>
+      <translation>رشته پالایه (رشته ثابت، نویسه‌های عام یا عبارت منظم)</translation>
+    </message>
+    <message>
+      <source>Filter:</source>
+      <translation>پالایه:</translation>
+    </message>
     <message>
       <source>Search mode</source>
       <translation>شیوه جست‌وجو</translation>
@@ -508,36 +530,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>صادر کردن</translation>
     </message>
     <message>
+      <source>Specify the maximum filtered headwords returned.</source>
+      <translation>حداکثر عبارات فیلتر شده بازگشتی را مشخص کنید.</translation>
+    </message>
+    <message>
+      <source>Filter max results:</source>
+      <translation>فیلتر حداکثر نتایج:</translation>
+    </message>
+    <message>
       <source>Help</source>
       <translation>کمک</translation>
     </message>
     <message>
       <source>OK</source>
       <translation>خوب</translation>
-    </message>
-    <message>
-      <source>Press this button to apply filter to headwords list</source>
-      <translation>برای اعمال پالایه لیست سرواژه‌ها این کلید را فشار دهید</translation>
-    </message>
-    <message>
-      <source>Apply</source>
-      <translation>اعمال کردن</translation>
-    </message>
-    <message>
-      <source>If checked any filter changes will we immediately applied to headwords list</source>
-      <translation>اگر به‌کار افتاده باشد هر تغییر پالایه بی‌درنگ بر روی لیست سرواژه‌ها اعمال می‌گردد</translation>
-    </message>
-    <message>
-      <source>Auto apply</source>
-      <translation>اعمال خودکار</translation>
-    </message>
-    <message>
-      <source>Filter:</source>
-      <translation>پالایه:</translation>
-    </message>
-    <message>
-      <source>Filter string (fixed string, wildcards or regular expression)</source>
-      <translation>رشته پالایه (رشته ثابت، نویسه‌های عام یا عبارت منظم)</translation>
     </message>
     <message>
       <source>Text</source>
@@ -550,6 +556,14 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>RegExp</source>
       <translation>RegExp</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1.</source>
+      <translation>کل سر واژه های منحصر به فرد: %1.</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1, filtered(limited): %2</source>
+      <translation>کل کلمات منحصر به فرد: %1، فیلتر شده (محدود): %2</translation>
     </message>
     <message>
       <source>Save headwords to file</source>
@@ -579,48 +593,40 @@ between classic and school orthography in cyrillic)</source>
       <source>Export finished</source>
       <translation>صادرات به پایان رسید</translation>
     </message>
-    <message>
-      <source>Specify the maximum filtered headwords returned.</source>
-      <translation>حداکثر عبارات فیلتر شده بازگشتی را مشخص کنید.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>فیلتر حداکثر نتایج:</translation>
-    </message>
-    <message>
-      <source>Unique headwords total: %1.</source>
-      <translation>کل سر واژه های منحصر به فرد: %1.</translation>
-    </message>
-    <message>
-      <source>Unique headwords total: %1, filtered(limited): %2</source>
-      <translation>کل کلمات منحصر به فرد: %1، فیلتر شده (محدود): %2</translation>
-    </message>
   </context>
   <context>
     <name>DictInfo</name>
+    <message>
+      <source>Edit dictionary</source>
+      <translation>ویرایش واژه‌نامه</translation>
+    </message>
+    <message>
+      <source>Open index folder</source>
+      <translation>پوشه فهرست را باز کنید</translation>
+    </message>
     <message>
       <source>Total articles:</source>
       <translation>مجموع بندها:</translation>
     </message>
     <message>
-      <source>Translates from:</source>
-      <translation>ترجمه از:</translation>
+      <source>Index filename:</source>
+      <translation>نام فایل فهرست:</translation>
     </message>
     <message>
       <source>Total words:</source>
       <translation>مجموع واژه‌ها:</translation>
     </message>
     <message>
-      <source>Translates to:</source>
-      <translation>ترجمه به:</translation>
-    </message>
-    <message>
       <source>Open folder</source>
       <translation>بازکردن پوشه</translation>
     </message>
     <message>
-      <source>Edit dictionary</source>
-      <translation>ویرایش واژه‌نامه</translation>
+      <source>Translates from:</source>
+      <translation>ترجمه از:</translation>
+    </message>
+    <message>
+      <source>Translates to:</source>
+      <translation>ترجمه به:</translation>
     </message>
     <message>
       <source>Files comprising this dictionary:</source>
@@ -650,14 +656,6 @@ between classic and school orthography in cyrillic)</source>
       <source>Edit the dictionary via command:
 %1</source>
       <translation>ویرایش واژه‌نامه با دستور: %1</translation>
-    </message>
-    <message>
-      <source>Index filename:</source>
-      <translation>نام فایل فهرست:</translation>
-    </message>
-    <message>
-      <source>Open index folder</source>
-      <translation>پوشه فهرست را باز کنید</translation>
     </message>
   </context>
   <context>
@@ -728,6 +726,10 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictionaryBar</name>
     <message>
+      <source>&amp;Dictionary Bar</source>
+      <translation>نوار &amp;واژه‌نامه</translation>
+    </message>
+    <message>
       <source>Extended menu with all dictionaries...</source>
       <translation>منوی گسترش یافته با همه واژه‌نامه‌ها...</translation>
     </message>
@@ -751,20 +753,32 @@ between classic and school orthography in cyrillic)</source>
       <source>Edit dictionary</source>
       <translation>ویرایش واژه‌نامه</translation>
     </message>
-    <message>
-      <source>&amp;Dictionary Bar</source>
-      <translation>نوار &amp;واژه‌نامه</translation>
-    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
+    <message>
+      <source>Dictionaries</source>
+      <translation>واژه‌نامه‌ها</translation>
+    </message>
+    <message>
+      <source>&amp;Sources</source>
+      <translation>&amp;منابع</translation>
+    </message>
     <message>
       <source>&amp;Dictionaries</source>
       <translation>&amp;واژه‌نامه‌ها</translation>
     </message>
     <message>
-      <source>Dictionaries</source>
-      <translation>واژه‌نامه‌ها</translation>
+      <source>&amp;Groups</source>
+      <translation>&amp;گروه‌ها</translation>
+    </message>
+    <message>
+      <source>Sources changed</source>
+      <translation>منابع تغییر کردند</translation>
+    </message>
+    <message>
+      <source>Some sources were changed. Would you like to accept the changes?</source>
+      <translation>برخی منابع تغییر کرده‌اند. شما می‌خواهید تغییرات را بپذیرید؟</translation>
     </message>
     <message>
       <source>Accept</source>
@@ -773,22 +787,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Cancel</source>
       <translation>لغو</translation>
-    </message>
-    <message>
-      <source>Sources changed</source>
-      <translation>منابع تغییر کردند</translation>
-    </message>
-    <message>
-      <source>&amp;Sources</source>
-      <translation>&amp;منابع</translation>
-    </message>
-    <message>
-      <source>&amp;Groups</source>
-      <translation>&amp;گروه‌ها</translation>
-    </message>
-    <message>
-      <source>Some sources were changed. Would you like to accept the changes?</source>
-      <translation>برخی منابع تغییر کرده‌اند. شما می‌خواهید تغییرات را بپذیرید؟</translation>
     </message>
   </context>
   <context>
@@ -816,24 +814,16 @@ between classic and school orthography in cyrillic)</source>
       <translation>جستجوی متن کامل</translation>
     </message>
     <message>
-      <source>Plain text</source>
-      <translation>متن ساده</translation>
+      <source>Default</source>
+      <translation>پیش فرض</translation>
     </message>
     <message>
       <source>Wildcards</source>
       <translation>نویسه‌های عام</translation>
     </message>
     <message>
-      <source>The querying word can not be empty.</source>
-      <translation>کلمه پرس و جو نمی تواند خالی باشد.</translation>
-    </message>
-    <message>
-      <source>support xapian search syntax,such as AND OR +/- etc</source>
-      <translation>از نحو جستجوی xapian مانند AND OR +/- و غیره پشتیبانی کنید</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>پیش فرض</translation>
+      <source>Support xapian search syntax, such as AND OR +/- etc.</source>
+      <translation type="unfinished">Support xapian search syntax, such as AND OR +/- etc.</translation>
     </message>
     <message>
       <source>Articles found: </source>
@@ -846,6 +836,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>None</source>
       <translation>هیچ یک</translation>
+    </message>
+    <message>
+      <source>The querying word can not be empty.</source>
+      <translation>کلمه پرس و جو نمی تواند خالی باشد.</translation>
     </message>
     <message>
       <source>No dictionaries for full-text search</source>
@@ -947,10 +941,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>منتظر نمایه سازی باشید:</translation>
     </message>
     <message>
-      <source>Help</source>
-      <translation>کمک</translation>
-    </message>
-    <message>
       <source>Total:</source>
       <translation>جمع:</translation>
     </message>
@@ -965,6 +955,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Cancel</source>
       <translation>لغو</translation>
+    </message>
+    <message>
+      <source>Help</source>
+      <translation>کمک</translation>
     </message>
   </context>
   <context>
@@ -991,68 +985,76 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>Groups</name>
     <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
+      <source>Dictionaries available:</source>
+      <translation>واژه‌نامه‌های در دست‌رس:</translation>
+    </message>
+    <message>
+      <source>Add selected dictionaries to group (Ins)</source>
+      <translation>افزودن واژه‌نامه‌های برگزیده شده به گروه (درج)</translation>
     </message>
     <message>
       <source>&gt;</source>
       <translation>&gt;</translation>
     </message>
     <message>
+      <source>Ins</source>
+      <translation>درج</translation>
+    </message>
+    <message>
+      <source>Remove selected dictionaries from group (Del)</source>
+      <translation>حذف واژه‌نامه‌های برگزیده شده از گروه (حذف)</translation>
+    </message>
+    <message>
+      <source>&lt;</source>
+      <translation>&lt;</translation>
+    </message>
+    <message>
       <source>Del</source>
       <translation>حذف</translation>
     </message>
     <message>
-      <source>Ins</source>
-      <translation>درج</translation>
+      <source>Groups:</source>
+      <translation>گروه‌ها:</translation>
     </message>
     <message>
       <source>Tab 2</source>
       <translation>زبانه ۲</translation>
     </message>
     <message>
-      <source>Are you sure you want to remove all the groups?</source>
-      <translation>آیا شما از حذف همه گروه‌ها اطمینان دارید؟</translation>
-    </message>
-    <message>
-      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
-      <translation>آیا شما از حذف گروه &lt;b&gt;%1&lt;/b&gt; اطمینان دارید؟</translation>
-    </message>
-    <message>
-      <source>Group tabs</source>
-      <translation>زبانه‌های گروه</translation>
-    </message>
-    <message>
-      <source>Open groups list</source>
-      <translation>لیست گروه‌ها را باز کن</translation>
-    </message>
-    <message>
-      <source>Remove group</source>
-      <translation>حذف گروه</translation>
-    </message>
-    <message>
-      <source>Rename group</source>
-      <translation>تغییرنام گروه</translation>
-    </message>
-    <message>
-      <source>Give a new name for the group:</source>
-      <translation>یک نام تازه برای گروه بدهید:</translation>
-    </message>
-    <message>
-      <source>Dictionaries available:</source>
-      <translation>واژه‌نامه‌های در دست‌رس:</translation>
+      <source>Create new dictionary group</source>
+      <translation>ساخت گروه واژه‌نامه تازه</translation>
     </message>
     <message>
       <source>&amp;Add group</source>
       <translation>&amp;افزودن گروه</translation>
     </message>
     <message>
-      <source>Add group</source>
-      <translation>افزودن گروه</translation>
+      <source>Rename current dictionary group</source>
+      <translation>تغییرنام گروه واژه‌نامه جاری</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>ساخت گروه واژه‌نامه تازه</translation>
+      <source>Re&amp;name group</source>
+      <translation>&amp;تغییرنام گروه</translation>
+    </message>
+    <message>
+      <source>Remove current dictionary group</source>
+      <translation>حذف گروه واژه‌نامه جاری</translation>
+    </message>
+    <message>
+      <source>&amp;Remove group</source>
+      <translation>&amp;حذف گروه</translation>
+    </message>
+    <message>
+      <source>Remove all dictionary groups</source>
+      <translation>حذف همه گروه‌های واژه‌نامه</translation>
+    </message>
+    <message>
+      <source>Remove all groups</source>
+      <translation>حذف همه گروه‌ها</translation>
+    </message>
+    <message>
+      <source>Create language-based groups</source>
+      <translation>ساخت گروه‌های زبان-پایه</translation>
     </message>
     <message>
       <source>Group by Languages</source>
@@ -1075,48 +1077,40 @@ between classic and school orthography in cyrillic)</source>
       <translation>کشیدن و &amp;رهاکردن واژه‌نامه‌ها به و از گروه‌ها، جابه‌جایی آن‌ها درون گروه‌ها، مرتب‌سازی دوباره گروه‌ها به‌وسیله موش.</translation>
     </message>
     <message>
-      <source>Rename current dictionary group</source>
-      <translation>تغییرنام گروه واژه‌نامه جاری</translation>
+      <source>Group tabs</source>
+      <translation>زبانه‌های گروه</translation>
     </message>
     <message>
-      <source>Remove current dictionary group</source>
-      <translation>حذف گروه واژه‌نامه جاری</translation>
+      <source>Open groups list</source>
+      <translation>لیست گروه‌ها را باز کن</translation>
+    </message>
+    <message>
+      <source>Add group</source>
+      <translation>افزودن گروه</translation>
     </message>
     <message>
       <source>Give a name for the new group:</source>
       <translation>یک نام برای گروه تازه بدهید:</translation>
     </message>
     <message>
-      <source>Remove all groups</source>
-      <translation>حذف همه گروه‌ها</translation>
+      <source>Rename group</source>
+      <translation>تغییرنام گروه</translation>
     </message>
     <message>
-      <source>Remove selected dictionaries from group (Del)</source>
-      <translation>حذف واژه‌نامه‌های برگزیده شده از گروه (حذف)</translation>
+      <source>Give a new name for the group:</source>
+      <translation>یک نام تازه برای گروه بدهید:</translation>
     </message>
     <message>
-      <source>Add selected dictionaries to group (Ins)</source>
-      <translation>افزودن واژه‌نامه‌های برگزیده شده به گروه (درج)</translation>
+      <source>Remove group</source>
+      <translation>حذف گروه</translation>
     </message>
     <message>
-      <source>&amp;Remove group</source>
-      <translation>&amp;حذف گروه</translation>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>آیا شما از حذف گروه &lt;b&gt;%1&lt;/b&gt; اطمینان دارید؟</translation>
     </message>
     <message>
-      <source>Groups:</source>
-      <translation>گروه‌ها:</translation>
-    </message>
-    <message>
-      <source>Re&amp;name group</source>
-      <translation>&amp;تغییرنام گروه</translation>
-    </message>
-    <message>
-      <source>Remove all dictionary groups</source>
-      <translation>حذف همه گروه‌های واژه‌نامه</translation>
-    </message>
-    <message>
-      <source>Create language-based groups</source>
-      <translation>ساخت گروه‌های زبان-پایه</translation>
+      <source>Are you sure you want to remove all the groups?</source>
+      <translation>آیا شما از حذف همه گروه‌ها اطمینان دارید؟</translation>
     </message>
   </context>
   <context>
@@ -1156,16 +1150,20 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>HunspellDictsModel</name>
     <message>
-      <source>Name</source>
-      <translation>نام</translation>
-    </message>
-    <message>
       <source>Enabled</source>
       <translation>به‌کار افتاده</translation>
+    </message>
+    <message>
+      <source>Name</source>
+      <translation>نام</translation>
     </message>
   </context>
   <context>
     <name>Initializing</name>
+    <message>
+      <source>GoldenDict-ng - Initializing</source>
+      <translation>گلدن‌دیکت - برپاسازی</translation>
+    </message>
     <message>
       <source>Indexing: </source>
       <translation>نمایه سازی: </translation>
@@ -1173,10 +1171,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Dictionary Name</source>
       <translation>نام واژه‌نامه</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng - Initializing</source>
-      <translation>گلدن‌دیکت - برپاسازی</translation>
     </message>
     <message>
       <source>Please wait...</source>
@@ -1194,484 +1188,52 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>Language</name>
     <message>
-      <source>Ewe</source>
-      <translation>ایوی</translation>
-    </message>
-    <message>
-      <source>Ido</source>
-      <translation>ایدو</translation>
-    </message>
-    <message>
-      <source>Lao</source>
-      <translation>لائوسی</translation>
-    </message>
-    <message>
-      <source>Twi</source>
-      <translation>توی</translation>
-    </message>
-    <message>
       <source>Afar</source>
       <translation>عفری</translation>
-    </message>
-    <message>
-      <source>Akan</source>
-      <translation>آکانی</translation>
-    </message>
-    <message>
-      <source>Cree</source>
-      <translation>کری</translation>
-    </message>
-    <message>
-      <source>Igbo</source>
-      <translation>ایگبویی</translation>
-    </message>
-    <message>
-      <source>Komi</source>
-      <translation>کومی</translation>
-    </message>
-    <message>
-      <source>Manx</source>
-      <translation>مانکسی</translation>
-    </message>
-    <message>
-      <source>Pali</source>
-      <translation>پالی</translation>
-    </message>
-    <message>
-      <source>Thai</source>
-      <translation>تایلندی</translation>
-    </message>
-    <message>
-      <source>Urdu</source>
-      <translation>اردو</translation>
-    </message>
-    <message>
-      <source>Zulu</source>
-      <translation>زولو</translation>
-    </message>
-    <message>
-      <source>Czech</source>
-      <translation>چکی</translation>
-    </message>
-    <message>
-      <source>Dutch</source>
-      <translation>هلندی</translation>
-    </message>
-    <message>
-      <source>Ganda</source>
-      <translation>گاندا</translation>
-    </message>
-    <message>
-      <source>Fulah</source>
-      <translation>فولاهی</translation>
-    </message>
-    <message>
-      <source>Greek</source>
-      <translation>یونانی</translation>
-    </message>
-    <message>
-      <source>Hausa</source>
-      <translation>هوساوی</translation>
-    </message>
-    <message>
-      <source>Hindi</source>
-      <translation>هندی</translation>
-    </message>
-    <message>
-      <source>Irish</source>
-      <translation>ایرلندی</translation>
-    </message>
-    <message>
-      <source>Khmer</source>
-      <translation>خمیری</translation>
-    </message>
-    <message>
-      <source>Kongo</source>
-      <translation>کنگو</translation>
-    </message>
-    <message>
-      <source>Latin</source>
-      <translation>لاتینی</translation>
-    </message>
-    <message>
-      <source>Malay</source>
-      <translation>مالایا</translation>
-    </message>
-    <message>
-      <source>Maori</source>
-      <translation>مائوری</translation>
-    </message>
-    <message>
-      <source>Nauru</source>
-      <translation>نائورو</translation>
-    </message>
-    <message>
-      <source>Oriya</source>
-      <translation>اوریا</translation>
-    </message>
-    <message>
-      <source>Oromo</source>
-      <translation>اورومی</translation>
-    </message>
-    <message>
-      <source>Sango</source>
-      <translation>سانگو</translation>
-    </message>
-    <message>
-      <source>Shona</source>
-      <translation>شونا</translation>
-    </message>
-    <message>
-      <source>Tajik</source>
-      <translation>تاجیک</translation>
-    </message>
-    <message>
-      <source>Tamil</source>
-      <translation>تامیلی</translation>
-    </message>
-    <message>
-      <source>Tatar</source>
-      <translation>تاتاری</translation>
-    </message>
-    <message>
-      <source>Swati</source>
-      <translation>سواتی</translation>
-    </message>
-    <message>
-      <source>Tonga</source>
-      <translation>تونگا</translation>
-    </message>
-    <message>
-      <source>Inupiaq</source>
-      <translation>اینوپیاک</translation>
-    </message>
-    <message>
-      <source>Venda</source>
-      <translation>ویندا</translation>
-    </message>
-    <message>
-      <source>Uzbek</source>
-      <translation>ازبکی</translation>
-    </message>
-    <message>
-      <source>Welsh</source>
-      <translation>ولزی</translation>
-    </message>
-    <message>
-      <source>Wolof</source>
-      <translation>ولوف</translation>
-    </message>
-    <message>
-      <source>Xhosa</source>
-      <translation>زوسا</translation>
-    </message>
-    <message>
-      <source>Italian</source>
-      <translation>ایتالیایی</translation>
-    </message>
-    <message>
-      <source>Raeto-Romance</source>
-      <translation>ریتو-رومنس</translation>
-    </message>
-    <message>
-      <source>Dzongkha</source>
-      <translation>زونخایی</translation>
-    </message>
-    <message>
-      <source>Kannada</source>
-      <translation>کانادایی</translation>
-    </message>
-    <message>
-      <source>North Ndebele</source>
-      <translation>ندیبیلی شمال</translation>
     </message>
     <message>
       <source>Abkhazian</source>
       <translation>آبخازی</translation>
     </message>
     <message>
-      <source>Kirghiz</source>
-      <translation>قرقیزی</translation>
+      <source>Avestan</source>
+      <translation>اوستایی</translation>
     </message>
     <message>
-      <source>Kirundi</source>
-      <translation>کیروندی</translation>
+      <source>Afrikaans</source>
+      <translation>آفریقایی</translation>
     </message>
     <message>
-      <source>Scottish Gaelic</source>
-      <translation>اسکاتلندی بومی</translation>
-    </message>
-    <message>
-      <source>Albanian</source>
-      <translation>آلبانی</translation>
-    </message>
-    <message>
-      <source>Latvian</source>
-      <translation>لاتویانی</translation>
-    </message>
-    <message>
-      <source>Malayalam</source>
-      <translation>مالایایی</translation>
-    </message>
-    <message>
-      <source>Kurdish</source>
-      <translation>کردی</translation>
-    </message>
-    <message>
-      <source>Bulgarian</source>
-      <translation>بلغاری</translation>
-    </message>
-    <message>
-      <source>Lingala</source>
-      <translation>لینگالی</translation>
-    </message>
-    <message>
-      <source>Maltese</source>
-      <translation>مالتی</translation>
-    </message>
-    <message>
-      <source>Marathi</source>
-      <translation>مهاراتی</translation>
-    </message>
-    <message>
-      <source>Arabic</source>
-      <translation>عربی</translation>
-    </message>
-    <message>
-      <source>Basque</source>
-      <translation>باسکی</translation>
-    </message>
-    <message>
-      <source>Avaric</source>
-      <translation>آواری</translation>
-    </message>
-    <message>
-      <source>Bihari</source>
-      <translation>بیهاری</translation>
-    </message>
-    <message>
-      <source>Aymara</source>
-      <translation>آیماری</translation>
-    </message>
-    <message>
-      <source>Breton</source>
-      <translation>بریتونی</translation>
-    </message>
-    <message>
-      <source>Sundanese</source>
-      <translation>سوندانی</translation>
-    </message>
-    <message>
-      <source>Danish</source>
-      <translation>دانمارکی</translation>
-    </message>
-    <message>
-      <source>Divehi</source>
-      <translation>دایوهایی</translation>
-    </message>
-    <message>
-      <source>Luba-Katanga</source>
-      <translation>لوبا کاتانگا</translation>
-    </message>
-    <message>
-      <source>Fijian</source>
-      <translation>فیجی</translation>
-    </message>
-    <message>
-      <source>Hungarian</source>
-      <translation>مجارستانی</translation>
-    </message>
-    <message>
-      <source>French</source>
-      <translation>فرانسوی</translation>
-    </message>
-    <message>
-      <source>German</source>
-      <translation>آلمانی</translation>
-    </message>
-    <message>
-      <source>Mongolian</source>
-      <translation>مغولستانی</translation>
-    </message>
-    <message>
-      <source>Hebrew</source>
-      <translation>عبری</translation>
-    </message>
-    <message>
-      <source>Herero</source>
-      <translation>هریرو</translation>
-    </message>
-    <message>
-      <source>Luxembourgish</source>
-      <translation>لوگزامبورگی</translation>
-    </message>
-    <message>
-      <source>Kanuri</source>
-      <translation>کانیوری</translation>
-    </message>
-    <message>
-      <source>Kazakh</source>
-      <translation>قزاقی</translation>
-    </message>
-    <message>
-      <source>Kikuyu</source>
-      <translation>کیکویو</translation>
-    </message>
-    <message>
-      <source>Korean</source>
-      <translation>کره‌ای</translation>
-    </message>
-    <message>
-      <source>Navajo</source>
-      <translation>ناواهو</translation>
-    </message>
-    <message>
-      <source>Ndonga</source>
-      <translation>اندونگا</translation>
-    </message>
-    <message>
-      <source>Nepali</source>
-      <translation>نپالی</translation>
-    </message>
-    <message>
-      <source>Ojibwa</source>
-      <translation>اجیبوا</translation>
-    </message>
-    <message>
-      <source>Pashto</source>
-      <translation>پشتو</translation>
-    </message>
-    <message>
-      <source>Polish</source>
-      <translation>لهستانی</translation>
-    </message>
-    <message>
-      <source>Samoan</source>
-      <translation>ساموی</translation>
-    </message>
-    <message>
-      <source>Occitan</source>
-      <translation>اکیتانی</translation>
-    </message>
-    <message>
-      <source>Sindhi</source>
-      <translation>سندی</translation>
-    </message>
-    <message>
-      <source>Slovak</source>
-      <translation>اسلواکی</translation>
-    </message>
-    <message>
-      <source>Somali</source>
-      <translation>سومالی</translation>
-    </message>
-    <message>
-      <source>Telugu</source>
-      <translation>تیلگو</translation>
-    </message>
-    <message>
-      <source>Tsonga</source>
-      <translation>تسونگا</translation>
-    </message>
-    <message>
-      <source>Tswana</source>
-      <translation>تسوانی</translation>
-    </message>
-    <message>
-      <source>Uighur</source>
-      <translation>اویغوری</translation>
-    </message>
-    <message>
-      <source>Serbo-Croatian</source>
-      <translation>صربستانی- کرواتی</translation>
-    </message>
-    <message>
-      <source>Yoruba</source>
-      <translation>یوروبی</translation>
-    </message>
-    <message>
-      <source>Zhuang</source>
-      <translation>ژوانکی</translation>
-    </message>
-    <message>
-      <source>Romanian</source>
-      <translation>رومانی</translation>
-    </message>
-    <message>
-      <source>Indonesian</source>
-      <translation>اندونزیایی</translation>
-    </message>
-    <message>
-      <source>Panjabi</source>
-      <translation>پنجابی</translation>
-    </message>
-    <message>
-      <source>Southern Sotho</source>
-      <translation>سوتو جنوب</translation>
-    </message>
-    <message>
-      <source>Corsican</source>
-      <translation>کورسیکی</translation>
-    </message>
-    <message>
-      <source>Esperanto</source>
-      <translation>اسپرانتور</translation>
-    </message>
-    <message>
-      <source>Persian</source>
-      <translation>فارسی</translation>
-    </message>
-    <message>
-      <source>Slovenian</source>
-      <translation>اسلونی</translation>
-    </message>
-    <message>
-      <source>Western Frisian</source>
-      <translation>فریزلندی غربی</translation>
-    </message>
-    <message>
-      <source>Aragonese</source>
-      <translation>اراگونی</translation>
-    </message>
-    <message>
-      <source>Tahitian</source>
-      <translation>تاهیتی</translation>
-    </message>
-    <message>
-      <source>Malagasy</source>
-      <translation>مالاگاسی</translation>
-    </message>
-    <message>
-      <source>Galician</source>
-      <translation>گالیشی</translation>
-    </message>
-    <message>
-      <source>Azerbaijani</source>
-      <translation>آذری</translation>
+      <source>Akan</source>
+      <translation>آکانی</translation>
     </message>
     <message>
       <source>Amharic</source>
       <translation>آمهاری</translation>
     </message>
     <message>
-      <source>Sanskrit</source>
-      <translation>سانسکریتی</translation>
+      <source>Aragonese</source>
+      <translation>اراگونی</translation>
     </message>
     <message>
-      <source>Japanese</source>
-      <translation>ژاپنی</translation>
+      <source>Arabic</source>
+      <translation>عربی</translation>
     </message>
     <message>
-      <source>Ukrainian</source>
-      <translation>اوکراینی</translation>
+      <source>Assamese</source>
+      <translation>اسامی</translation>
     </message>
     <message>
-      <source>Bambara</source>
-      <translation>بامباری</translation>
+      <source>Avaric</source>
+      <translation>آواری</translation>
     </message>
     <message>
-      <source>Kalaallisut</source>
-      <translation>گرینلندی</translation>
+      <source>Aymara</source>
+      <translation>آیماری</translation>
+    </message>
+    <message>
+      <source>Azerbaijani</source>
+      <translation>آذری</translation>
     </message>
     <message>
       <source>Bashkir</source>
@@ -1682,196 +1244,652 @@ between classic and school orthography in cyrillic)</source>
       <translation>بلاروسی</translation>
     </message>
     <message>
-      <source>Kashmiri</source>
-      <translation>کشمیری</translation>
+      <source>Bulgarian</source>
+      <translation>بلغاری</translation>
     </message>
     <message>
-      <source>Sardinian</source>
-      <translation>ساردینی</translation>
-    </message>
-    <message>
-      <source>Hiri Motu</source>
-      <translation>هیری موتو</translation>
-    </message>
-    <message>
-      <source>Quechua</source>
-      <translation>کچوا</translation>
-    </message>
-    <message>
-      <source>Bengali</source>
-      <translation>بنگالی</translation>
-    </message>
-    <message>
-      <source>Javanese</source>
-      <translation>جاوایی</translation>
-    </message>
-    <message>
-      <source>Avestan</source>
-      <translation>اوستایی</translation>
-    </message>
-    <message>
-      <source>Kinyarwanda</source>
-      <translation>کینیارواندی</translation>
-    </message>
-    <message>
-      <source>Afrikaans</source>
-      <translation>آفریقایی</translation>
+      <source>Bihari</source>
+      <translation>بیهاری</translation>
     </message>
     <message>
       <source>Bislama</source>
       <translation>بیسلامی</translation>
     </message>
     <message>
-      <source>Armenian</source>
-      <translation>ارمنی</translation>
+      <source>Bambara</source>
+      <translation>بامباری</translation>
     </message>
     <message>
-      <source>Norwegian Bokmal</source>
-      <translation>بوکمال نروژی</translation>
-    </message>
-    <message>
-      <source>Croatian</source>
-      <translation>کرواتی</translation>
-    </message>
-    <message>
-      <source>Bosnian</source>
-      <translation>بوسنی</translation>
-    </message>
-    <message>
-      <source>Interlingua</source>
-      <translation>اینترلینگوا</translation>
-    </message>
-    <message>
-      <source>Interlingue</source>
-      <translation>اینترلینگو</translation>
-    </message>
-    <message>
-      <source>Catalan</source>
-      <translation>کاتالانی</translation>
-    </message>
-    <message>
-      <source>Serbian</source>
-      <translation>صربستانی</translation>
-    </message>
-    <message>
-      <source>Burmese</source>
-      <translation>برمه‌ای</translation>
-    </message>
-    <message>
-      <source>Russian</source>
-      <translation>روسی</translation>
-    </message>
-    <message>
-      <source>Limburgish</source>
-      <translation>لیمبورگی</translation>
-    </message>
-    <message>
-      <source>Norwegian</source>
-      <translation>نروژی</translation>
-    </message>
-    <message>
-      <source>Chechen</source>
-      <translation>چچنی</translation>
-    </message>
-    <message>
-      <source>Chinese</source>
-      <translation>چینی</translation>
-    </message>
-    <message>
-      <source>Chuvash</source>
-      <translation>چوواشی</translation>
-    </message>
-    <message>
-      <source>Sinhala</source>
-      <translation>سنهالی</translation>
-    </message>
-    <message>
-      <source>Spanish</source>
-      <translation>اسپانیایی</translation>
-    </message>
-    <message>
-      <source>Cornish</source>
-      <translation>کرنیش</translation>
-    </message>
-    <message>
-      <source>Tagalog</source>
-      <translation>تاگالوگی</translation>
-    </message>
-    <message>
-      <source>Assamese</source>
-      <translation>اسامی</translation>
-    </message>
-    <message>
-      <source>Ossetian</source>
-      <translation>قفقازی</translation>
-    </message>
-    <message>
-      <source>Estonian</source>
-      <translation>استونیایی</translation>
-    </message>
-    <message>
-      <source>Swahili</source>
-      <translation>سواحیلی</translation>
-    </message>
-    <message>
-      <source>Swedish</source>
-      <translation>سوئدی</translation>
+      <source>Bengali</source>
+      <translation>بنگالی</translation>
     </message>
     <message>
       <source>Tibetan</source>
       <translation>تبتی</translation>
     </message>
     <message>
-      <source>Vietnamese</source>
-      <translation>ویتنامی</translation>
+      <source>Breton</source>
+      <translation>بریتونی</translation>
     </message>
     <message>
-      <source>Macedonian</source>
-      <translation>مقدونی</translation>
+      <source>Bosnian</source>
+      <translation>بوسنی</translation>
     </message>
     <message>
-      <source>Portuguese</source>
-      <translation>پرتغالی</translation>
+      <source>Catalan</source>
+      <translation>کاتالانی</translation>
     </message>
     <message>
-      <source>Turkish</source>
-      <translation>ترکی</translation>
+      <source>Chechen</source>
+      <translation>چچنی</translation>
     </message>
     <message>
-      <source>Turkmen</source>
-      <translation>ترکمن</translation>
+      <source>Chamorro</source>
+      <translation>چامورو</translation>
     </message>
     <message>
-      <source>Gujarati</source>
-      <translation>گوجراتی</translation>
+      <source>Corsican</source>
+      <translation>کورسیکی</translation>
     </message>
     <message>
-      <source>Icelandic</source>
-      <translation>آیسلندی</translation>
+      <source>Cree</source>
+      <translation>کری</translation>
     </message>
     <message>
-      <source>Inuktitut</source>
-      <translation>اینوکتیتوتی</translation>
-    </message>
-    <message>
-      <source>English</source>
-      <translation>انگلیسی</translation>
-    </message>
-    <message>
-      <source>Georgian</source>
-      <translation>گرجستانی</translation>
+      <source>Czech</source>
+      <translation>چکی</translation>
     </message>
     <message>
       <source>Church Slavic</source>
       <translation>کلیسا اسلاوی</translation>
     </message>
     <message>
-      <source>Faroese</source>
-      <translation>فارویی</translation>
+      <source>Chuvash</source>
+      <translation>چوواشی</translation>
+    </message>
+    <message>
+      <source>Welsh</source>
+      <translation>ولزی</translation>
+    </message>
+    <message>
+      <source>Danish</source>
+      <translation>دانمارکی</translation>
+    </message>
+    <message>
+      <source>German</source>
+      <translation>آلمانی</translation>
+    </message>
+    <message>
+      <source>Divehi</source>
+      <translation>دایوهایی</translation>
+    </message>
+    <message>
+      <source>Dzongkha</source>
+      <translation>زونخایی</translation>
+    </message>
+    <message>
+      <source>Ewe</source>
+      <translation>ایوی</translation>
+    </message>
+    <message>
+      <source>Greek</source>
+      <translation>یونانی</translation>
+    </message>
+    <message>
+      <source>English</source>
+      <translation>انگلیسی</translation>
+    </message>
+    <message>
+      <source>Esperanto</source>
+      <translation>اسپرانتور</translation>
+    </message>
+    <message>
+      <source>Spanish</source>
+      <translation>اسپانیایی</translation>
+    </message>
+    <message>
+      <source>Estonian</source>
+      <translation>استونیایی</translation>
+    </message>
+    <message>
+      <source>Basque</source>
+      <translation>باسکی</translation>
+    </message>
+    <message>
+      <source>Persian</source>
+      <translation>فارسی</translation>
+    </message>
+    <message>
+      <source>Fulah</source>
+      <translation>فولاهی</translation>
     </message>
     <message>
       <source>Finnish</source>
       <translation>فنلاندی</translation>
+    </message>
+    <message>
+      <source>Fijian</source>
+      <translation>فیجی</translation>
+    </message>
+    <message>
+      <source>Faroese</source>
+      <translation>فارویی</translation>
+    </message>
+    <message>
+      <source>French</source>
+      <translation>فرانسوی</translation>
+    </message>
+    <message>
+      <source>Western Frisian</source>
+      <translation>فریزلندی غربی</translation>
+    </message>
+    <message>
+      <source>Irish</source>
+      <translation>ایرلندی</translation>
+    </message>
+    <message>
+      <source>Scottish Gaelic</source>
+      <translation>اسکاتلندی بومی</translation>
+    </message>
+    <message>
+      <source>Galician</source>
+      <translation>گالیشی</translation>
+    </message>
+    <message>
+      <source>Guarani</source>
+      <translation>گورانی</translation>
+    </message>
+    <message>
+      <source>Gujarati</source>
+      <translation>گوجراتی</translation>
+    </message>
+    <message>
+      <source>Manx</source>
+      <translation>مانکسی</translation>
+    </message>
+    <message>
+      <source>Hausa</source>
+      <translation>هوساوی</translation>
+    </message>
+    <message>
+      <source>Hebrew</source>
+      <translation>عبری</translation>
+    </message>
+    <message>
+      <source>Hindi</source>
+      <translation>هندی</translation>
+    </message>
+    <message>
+      <source>Hiri Motu</source>
+      <translation>هیری موتو</translation>
+    </message>
+    <message>
+      <source>Croatian</source>
+      <translation>کرواتی</translation>
+    </message>
+    <message>
+      <source>Haitian</source>
+      <translation>هایتی</translation>
+    </message>
+    <message>
+      <source>Hungarian</source>
+      <translation>مجارستانی</translation>
+    </message>
+    <message>
+      <source>Armenian</source>
+      <translation>ارمنی</translation>
+    </message>
+    <message>
+      <source>Herero</source>
+      <translation>هریرو</translation>
+    </message>
+    <message>
+      <source>Interlingua</source>
+      <translation>اینترلینگوا</translation>
+    </message>
+    <message>
+      <source>Indonesian</source>
+      <translation>اندونزیایی</translation>
+    </message>
+    <message>
+      <source>Interlingue</source>
+      <translation>اینترلینگو</translation>
+    </message>
+    <message>
+      <source>Igbo</source>
+      <translation>ایگبویی</translation>
+    </message>
+    <message>
+      <source>Sichuan Yi</source>
+      <translation>سیچوانی یی</translation>
+    </message>
+    <message>
+      <source>Inupiaq</source>
+      <translation>اینوپیاک</translation>
+    </message>
+    <message>
+      <source>Ido</source>
+      <translation>ایدو</translation>
+    </message>
+    <message>
+      <source>Icelandic</source>
+      <translation>آیسلندی</translation>
+    </message>
+    <message>
+      <source>Italian</source>
+      <translation>ایتالیایی</translation>
+    </message>
+    <message>
+      <source>Inuktitut</source>
+      <translation>اینوکتیتوتی</translation>
+    </message>
+    <message>
+      <source>Japanese</source>
+      <translation>ژاپنی</translation>
+    </message>
+    <message>
+      <source>Javanese</source>
+      <translation>جاوایی</translation>
+    </message>
+    <message>
+      <source>Georgian</source>
+      <translation>گرجستانی</translation>
+    </message>
+    <message>
+      <source>Kongo</source>
+      <translation>کنگو</translation>
+    </message>
+    <message>
+      <source>Kikuyu</source>
+      <translation>کیکویو</translation>
+    </message>
+    <message>
+      <source>Kwanyama</source>
+      <translation>کاوانیامی</translation>
+    </message>
+    <message>
+      <source>Kazakh</source>
+      <translation>قزاقی</translation>
+    </message>
+    <message>
+      <source>Kalaallisut</source>
+      <translation>گرینلندی</translation>
+    </message>
+    <message>
+      <source>Khmer</source>
+      <translation>خمیری</translation>
+    </message>
+    <message>
+      <source>Kannada</source>
+      <translation>کانادایی</translation>
+    </message>
+    <message>
+      <source>Korean</source>
+      <translation>کره‌ای</translation>
+    </message>
+    <message>
+      <source>Kanuri</source>
+      <translation>کانیوری</translation>
+    </message>
+    <message>
+      <source>Kashmiri</source>
+      <translation>کشمیری</translation>
+    </message>
+    <message>
+      <source>Kurdish</source>
+      <translation>کردی</translation>
+    </message>
+    <message>
+      <source>Komi</source>
+      <translation>کومی</translation>
+    </message>
+    <message>
+      <source>Cornish</source>
+      <translation>کرنیش</translation>
+    </message>
+    <message>
+      <source>Kirghiz</source>
+      <translation>قرقیزی</translation>
+    </message>
+    <message>
+      <source>Latin</source>
+      <translation>لاتینی</translation>
+    </message>
+    <message>
+      <source>Luxembourgish</source>
+      <translation>لوگزامبورگی</translation>
+    </message>
+    <message>
+      <source>Ganda</source>
+      <translation>گاندا</translation>
+    </message>
+    <message>
+      <source>Limburgish</source>
+      <translation>لیمبورگی</translation>
+    </message>
+    <message>
+      <source>Lingala</source>
+      <translation>لینگالی</translation>
+    </message>
+    <message>
+      <source>Lao</source>
+      <translation>لائوسی</translation>
+    </message>
+    <message>
+      <source>Lithuanian</source>
+      <translation>لیتوانی</translation>
+    </message>
+    <message>
+      <source>Luba-Katanga</source>
+      <translation>لوبا کاتانگا</translation>
+    </message>
+    <message>
+      <source>Latvian</source>
+      <translation>لاتویانی</translation>
+    </message>
+    <message>
+      <source>Malagasy</source>
+      <translation>مالاگاسی</translation>
+    </message>
+    <message>
+      <source>Marshallese</source>
+      <translation>مارشالی</translation>
+    </message>
+    <message>
+      <source>Maori</source>
+      <translation>مائوری</translation>
+    </message>
+    <message>
+      <source>Macedonian</source>
+      <translation>مقدونی</translation>
+    </message>
+    <message>
+      <source>Malayalam</source>
+      <translation>مالایایی</translation>
+    </message>
+    <message>
+      <source>Mongolian</source>
+      <translation>مغولستانی</translation>
+    </message>
+    <message>
+      <source>Marathi</source>
+      <translation>مهاراتی</translation>
+    </message>
+    <message>
+      <source>Malay</source>
+      <translation>مالایا</translation>
+    </message>
+    <message>
+      <source>Maltese</source>
+      <translation>مالتی</translation>
+    </message>
+    <message>
+      <source>Burmese</source>
+      <translation>برمه‌ای</translation>
+    </message>
+    <message>
+      <source>Nauru</source>
+      <translation>نائورو</translation>
+    </message>
+    <message>
+      <source>Norwegian Bokmal</source>
+      <translation>بوکمال نروژی</translation>
+    </message>
+    <message>
+      <source>North Ndebele</source>
+      <translation>ندیبیلی شمال</translation>
+    </message>
+    <message>
+      <source>Nepali</source>
+      <translation>نپالی</translation>
+    </message>
+    <message>
+      <source>Ndonga</source>
+      <translation>اندونگا</translation>
+    </message>
+    <message>
+      <source>Dutch</source>
+      <translation>هلندی</translation>
+    </message>
+    <message>
+      <source>Norwegian Nynorsk</source>
+      <translation>نینورسک نروژی</translation>
+    </message>
+    <message>
+      <source>Norwegian</source>
+      <translation>نروژی</translation>
+    </message>
+    <message>
+      <source>South Ndebele</source>
+      <translation>ندیبیلی جنوب</translation>
+    </message>
+    <message>
+      <source>Navajo</source>
+      <translation>ناواهو</translation>
+    </message>
+    <message>
+      <source>Chichewa</source>
+      <translation>چیچوا</translation>
+    </message>
+    <message>
+      <source>Occitan</source>
+      <translation>اکیتانی</translation>
+    </message>
+    <message>
+      <source>Ojibwa</source>
+      <translation>اجیبوا</translation>
+    </message>
+    <message>
+      <source>Oromo</source>
+      <translation>اورومی</translation>
+    </message>
+    <message>
+      <source>Oriya</source>
+      <translation>اوریا</translation>
+    </message>
+    <message>
+      <source>Ossetian</source>
+      <translation>قفقازی</translation>
+    </message>
+    <message>
+      <source>Panjabi</source>
+      <translation>پنجابی</translation>
+    </message>
+    <message>
+      <source>Pali</source>
+      <translation>پالی</translation>
+    </message>
+    <message>
+      <source>Polish</source>
+      <translation>لهستانی</translation>
+    </message>
+    <message>
+      <source>Pashto</source>
+      <translation>پشتو</translation>
+    </message>
+    <message>
+      <source>Portuguese</source>
+      <translation>پرتغالی</translation>
+    </message>
+    <message>
+      <source>Quechua</source>
+      <translation>کچوا</translation>
+    </message>
+    <message>
+      <source>Raeto-Romance</source>
+      <translation>ریتو-رومنس</translation>
+    </message>
+    <message>
+      <source>Kirundi</source>
+      <translation>کیروندی</translation>
+    </message>
+    <message>
+      <source>Romanian</source>
+      <translation>رومانی</translation>
+    </message>
+    <message>
+      <source>Russian</source>
+      <translation>روسی</translation>
+    </message>
+    <message>
+      <source>Kinyarwanda</source>
+      <translation>کینیارواندی</translation>
+    </message>
+    <message>
+      <source>Sanskrit</source>
+      <translation>سانسکریتی</translation>
+    </message>
+    <message>
+      <source>Sardinian</source>
+      <translation>ساردینی</translation>
+    </message>
+    <message>
+      <source>Sindhi</source>
+      <translation>سندی</translation>
+    </message>
+    <message>
+      <source>Northern Sami</source>
+      <translation>سامی شمال</translation>
+    </message>
+    <message>
+      <source>Sango</source>
+      <translation>سانگو</translation>
+    </message>
+    <message>
+      <source>Serbo-Croatian</source>
+      <translation>صربستانی- کرواتی</translation>
+    </message>
+    <message>
+      <source>Sinhala</source>
+      <translation>سنهالی</translation>
+    </message>
+    <message>
+      <source>Slovak</source>
+      <translation>اسلواکی</translation>
+    </message>
+    <message>
+      <source>Slovenian</source>
+      <translation>اسلونی</translation>
+    </message>
+    <message>
+      <source>Samoan</source>
+      <translation>ساموی</translation>
+    </message>
+    <message>
+      <source>Shona</source>
+      <translation>شونا</translation>
+    </message>
+    <message>
+      <source>Somali</source>
+      <translation>سومالی</translation>
+    </message>
+    <message>
+      <source>Albanian</source>
+      <translation>آلبانی</translation>
+    </message>
+    <message>
+      <source>Serbian</source>
+      <translation>صربستانی</translation>
+    </message>
+    <message>
+      <source>Swati</source>
+      <translation>سواتی</translation>
+    </message>
+    <message>
+      <source>Southern Sotho</source>
+      <translation>سوتو جنوب</translation>
+    </message>
+    <message>
+      <source>Sundanese</source>
+      <translation>سوندانی</translation>
+    </message>
+    <message>
+      <source>Swedish</source>
+      <translation>سوئدی</translation>
+    </message>
+    <message>
+      <source>Swahili</source>
+      <translation>سواحیلی</translation>
+    </message>
+    <message>
+      <source>Tamil</source>
+      <translation>تامیلی</translation>
+    </message>
+    <message>
+      <source>Telugu</source>
+      <translation>تیلگو</translation>
+    </message>
+    <message>
+      <source>Tajik</source>
+      <translation>تاجیک</translation>
+    </message>
+    <message>
+      <source>Thai</source>
+      <translation>تایلندی</translation>
+    </message>
+    <message>
+      <source>Tigrinya</source>
+      <translation>تگرینی</translation>
+    </message>
+    <message>
+      <source>Turkmen</source>
+      <translation>ترکمن</translation>
+    </message>
+    <message>
+      <source>Tagalog</source>
+      <translation>تاگالوگی</translation>
+    </message>
+    <message>
+      <source>Tswana</source>
+      <translation>تسوانی</translation>
+    </message>
+    <message>
+      <source>Tonga</source>
+      <translation>تونگا</translation>
+    </message>
+    <message>
+      <source>Turkish</source>
+      <translation>ترکی</translation>
+    </message>
+    <message>
+      <source>Tsonga</source>
+      <translation>تسونگا</translation>
+    </message>
+    <message>
+      <source>Tatar</source>
+      <translation>تاتاری</translation>
+    </message>
+    <message>
+      <source>Twi</source>
+      <translation>توی</translation>
+    </message>
+    <message>
+      <source>Tahitian</source>
+      <translation>تاهیتی</translation>
+    </message>
+    <message>
+      <source>Uighur</source>
+      <translation>اویغوری</translation>
+    </message>
+    <message>
+      <source>Ukrainian</source>
+      <translation>اوکراینی</translation>
+    </message>
+    <message>
+      <source>Urdu</source>
+      <translation>اردو</translation>
+    </message>
+    <message>
+      <source>Uzbek</source>
+      <translation>ازبکی</translation>
+    </message>
+    <message>
+      <source>Venda</source>
+      <translation>ویندا</translation>
+    </message>
+    <message>
+      <source>Vietnamese</source>
+      <translation>ویتنامی</translation>
     </message>
     <message>
       <source>Volapuk</source>
@@ -1882,56 +1900,36 @@ between classic and school orthography in cyrillic)</source>
       <translation>والونی</translation>
     </message>
     <message>
-      <source>Kwanyama</source>
-      <translation>کاوانیامی</translation>
+      <source>Wolof</source>
+      <translation>ولوف</translation>
     </message>
     <message>
-      <source>Marshallese</source>
-      <translation>مارشالی</translation>
-    </message>
-    <message>
-      <source>Northern Sami</source>
-      <translation>سامی شمال</translation>
-    </message>
-    <message>
-      <source>Haitian</source>
-      <translation>هایتی</translation>
-    </message>
-    <message>
-      <source>Chamorro</source>
-      <translation>چامورو</translation>
-    </message>
-    <message>
-      <source>Norwegian Nynorsk</source>
-      <translation>نینورسک نروژی</translation>
-    </message>
-    <message>
-      <source>Guarani</source>
-      <translation>گورانی</translation>
-    </message>
-    <message>
-      <source>South Ndebele</source>
-      <translation>ندیبیلی جنوب</translation>
-    </message>
-    <message>
-      <source>Chichewa</source>
-      <translation>چیچوا</translation>
-    </message>
-    <message>
-      <source>Lithuanian</source>
-      <translation>لیتوانی</translation>
-    </message>
-    <message>
-      <source>Sichuan Yi</source>
-      <translation>سیچوانی یی</translation>
-    </message>
-    <message>
-      <source>Tigrinya</source>
-      <translation>تگرینی</translation>
+      <source>Xhosa</source>
+      <translation>زوسا</translation>
     </message>
     <message>
       <source>Yiddish</source>
       <translation>یدیشی</translation>
+    </message>
+    <message>
+      <source>Yoruba</source>
+      <translation>یوروبی</translation>
+    </message>
+    <message>
+      <source>Zhuang</source>
+      <translation>ژوانکی</translation>
+    </message>
+    <message>
+      <source>Chinese</source>
+      <translation>چینی</translation>
+    </message>
+    <message>
+      <source>Zulu</source>
+      <translation>زولو</translation>
+    </message>
+    <message>
+      <source>Lojban</source>
+      <translation>لوجبانی</translation>
     </message>
     <message>
       <source>Traditional Chinese</source>
@@ -1992,10 +1990,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Tamazight</source>
       <translation>آمازیغی</translation>
-    </message>
-    <message>
-      <source>Lojban</source>
-      <translation>لوجبانی</translation>
     </message>
   </context>
   <context>
@@ -2161,6 +2155,10 @@ between classic and school orthography in cyrillic)</source>
       <translation>لوژبان</translation>
     </message>
     <message>
+      <source>Hungarian</source>
+      <translation type="unfinished">Hungarian</translation>
+    </message>
+    <message>
       <source>English</source>
       <translation>انگلیسی</translation>
     </message>
@@ -2182,406 +2180,40 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>MainWindow</name>
     <message>
-      <source>F1</source>
-      <translation>F1</translation>
-    </message>
-    <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
-      <source>Favo&amp;rites</source>
-      <translation>آداب و رسوم مورد علاقه</translation>
-    </message>
-    <message>
-      <source>F3</source>
-      <translation>F3</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>F4</translation>
-    </message>
-    <message>
-      <source>All</source>
-      <translation>همه</translation>
-    </message>
-    <message>
-      <source>Back</source>
-      <translation>پس</translation>
-    </message>
-    <message>
-      <source>%1 dictionaries, %2 articles, %3 words</source>
-      <translation>%1 واژه‌نامه، %2 بند، %3 واژه</translation>
-    </message>
-    <message>
-      <source>&amp;Edit</source>
-      <translation>&amp;ویرایش</translation>
+      <source>Welcome!</source>
+      <translation>خوش آمدید!</translation>
     </message>
     <message>
       <source>&amp;File</source>
       <translation>&amp;پرونده</translation>
     </message>
     <message>
+      <source>&amp;Edit</source>
+      <translation>&amp;ویرایش</translation>
+    </message>
+    <message>
       <source>&amp;Help</source>
       <translation>&amp;راهنما</translation>
-    </message>
-    <message>
-      <source>Search</source>
-      <translation>جست‌وجو</translation>
-    </message>
-    <message>
-      <source>&amp;Quit</source>
-      <translation>&amp;ترک کردن</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>خطا</translation>
-    </message>
-    <message>
-      <source>Quit from application</source>
-      <translation>ترک کردن برنامه</translation>
-    </message>
-    <message>
-      <source>&amp;Close To Tray</source>
-      <translation>بستن به &amp;سینی</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>نمی‌تواند بند: %1 را ذخیره کند</translation>
-    </message>
-    <message>
-      <source>Zoom In</source>
-      <translation>بزرگ‌نمایی به درون</translation>
-    </message>
-    <message>
-      <source>&amp;Dictionaries...</source>
-      <translation>&amp;واژه‌نامه‌ها...</translation>
-    </message>
-    <message>
-      <source>&amp;About</source>
-      <translation>&amp;درباره</translation>
-    </message>
-    <message>
-      <source>&amp;Forum</source>
-      <translation>&amp;انجمن</translation>
-    </message>
-    <message>
-      <source>&amp;Print</source>
-      <translation>&amp;چاپ</translation>
-    </message>
-    <message>
-      <source>&amp;Save Article</source>
-      <translation>&amp;ذخیره بند</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>ذخیره بند به‌عنوان</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Ctrl+P</translation>
-    </message>
-    <message>
-      <source>Ctrl+Q</source>
-      <translation>Ctrl+Q</translation>
-    </message>
-    <message>
-      <source>Minimizes the window to tray</source>
-      <translation>کمینه کردن پنجره به سینی</translation>
-    </message>
-    <message>
-      <source>Page Set&amp;up</source>
-      <translation>&amp;برپایی برگه</translation>
-    </message>
-    <message>
-      <source>&amp;Homepage</source>
-      <translation>&amp;برگه آغازین</translation>
-    </message>
-    <message>
-      <source>New Release Available</source>
-      <translation>نسخه تازه موجود است</translation>
-    </message>
-    <message>
-      <source>Zoom Out</source>
-      <translation>بزرگ‌نمایی به بیرون</translation>
-    </message>
-    <message>
-      <source>Show &amp;Main Window</source>
-      <translation>&amp;نمایش پنجرهٔ اصلی</translation>
-    </message>
-    <message>
-      <source>About GoldenDict-ng</source>
-      <translation>درباره گلدن‌دیکت</translation>
-    </message>
-    <message>
-      <source>Download</source>
-      <translation>بارگیری</translation>
-    </message>
-    <message>
-      <source>Page Setup</source>
-      <translation>برپایی برگه</translation>
-    </message>
-    <message>
-      <source>Normal Size</source>
-      <translation>اندازه عادی</translation>
-    </message>
-    <message>
-      <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
-      <translation>برپاسازی سازوکار بازبینی کلیدهای میان‌بر شکست خورد.&lt;br&gt;مطمئن شوید که افزونه RECORD مربوط به XServer روشن شده است.</translation>
-    </message>
-    <message>
-      <source>Version &lt;b&gt;%1&lt;/b&gt; of GoldenDict is now available for download.&lt;br&gt;Click &lt;b&gt;Download&lt;/b&gt; to get to the download page.</source>
-      <translation>نسخه &lt;b&gt;%1&lt;/b&gt; گلدن‌دیکت برای بارگیری آماده است &lt;br&gt; برای به‌دست آوردن برگه بارگیری &lt;b&gt;بارگیری&lt;/b&gt; را کلیک کنید.</translation>
-    </message>
-    <message>
-      <source>Ctrl+F4</source>
-      <translation>Ctrl+F4</translation>
-    </message>
-    <message>
-      <source>Ctrl+F5</source>
-      <translation>Ctrl+F5</translation>
-    </message>
-    <message>
-      <source>(untitled)</source>
-      <translation>(بی‌عنوان)</translation>
-    </message>
-    <message>
-      <source>&amp;Preferences...</source>
-      <translation>&amp;ترجیحات...</translation>
-    </message>
-    <message>
-      <source>Welcome!</source>
-      <translation>خوش آمدید!</translation>
-    </message>
-    <message>
-      <source>Pronounce Word (Alt+S)</source>
-      <translation>بیان واژه (Alt+S)</translation>
-    </message>
-    <message>
-      <source>Save Article</source>
-      <translation>ذخیره بند</translation>
-    </message>
-    <message>
-      <source>Skip This Release</source>
-      <translation>پرش از این نسخه</translation>
-    </message>
-    <message>
-      <source>Forward</source>
-      <translation>پیش</translation>
-    </message>
-    <message>
-      <source>Print Article</source>
-      <translation>چاپ بند</translation>
-    </message>
-    <message>
-      <source>No printer is available. Please install one first.</source>
-      <translation>چاپ‌گری موجود نیست. لطفاً نخست یکی نصب کنید.</translation>
     </message>
     <message>
       <source>&amp;View</source>
       <translation>&amp;نما</translation>
     </message>
     <message>
-      <source>H&amp;istory</source>
-      <translation>پی&amp;شینه</translation>
-    </message>
-    <message>
-      <source>&amp;Clear</source>
-      <translation>&amp;پاک کردن</translation>
-    </message>
-    <message>
       <source>&amp;Zoom</source>
       <translation>&amp;بزرگ‌نمایی</translation>
     </message>
     <message>
-      <source>Words Zoom In</source>
-      <translation>بزرگ‌نمایی به درون واژه‌ها</translation>
+      <source>H&amp;istory</source>
+      <translation>پی&amp;شینه</translation>
     </message>
     <message>
-      <source>Words Zoom Out</source>
-      <translation>بزرگ‌نمایی به بیرون واژه‌ها</translation>
+      <source>Search</source>
+      <translation>جست‌وجو</translation>
     </message>
     <message>
-      <source>Words Normal Size</source>
-      <translation>اندازه عادی واژه‌ها</translation>
-    </message>
-    <message>
-      <source>Close current tab</source>
-      <translation>بستن زبانه جاری</translation>
-    </message>
-    <message>
-      <source>Close all tabs</source>
-      <translation>بستن همه زبانه‌ها</translation>
-    </message>
-    <message>
-      <source>Close all tabs except current</source>
-      <translation>بستن همه زبانه‌ها مگر زبانه جاری</translation>
-    </message>
-    <message>
-      <source>Opened tabs</source>
-      <translation>زبانه‌های باز شده</translation>
-    </message>
-    <message>
-      <source>New Tab</source>
-      <translation>زبانه تازه</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>Ctrl+T</translation>
-    </message>
-    <message>
-      <source>&amp;Configuration Folder</source>
-      <translation>&amp;پوشه پیکربندی</translation>
-    </message>
-    <message>
-      <source>&amp;Menubar</source>
-      <translation>نوار &amp;منو</translation>
-    </message>
-    <message>
-      <source>Found in Dictionaries:</source>
-      <translation>در این واژه‌نامه‌ها یافت شد:</translation>
-    </message>
-    <message>
-      <source>Add all tabs to Favorites</source>
-      <translation>افزودن تمام زبانه‌ها به پسندیده‌ها</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>هشدار: %1</translation>
-    </message>
-    <message>
-      <source>String to search in dictionaries. The wildcards &apos;*&apos;, &apos;?&apos; and sets of symbols &apos;[...]&apos; are allowed.
-To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos; respectively</source>
-      <translation>رشته‌ای که باید در واژه‌نامه‌ها جست‌وجو شود. نویسه‌های عام &apos;*&apos;، &apos;?&apos; و گروه‌هایی از نمادهای &apos;[...]&apos; مجاز هستند.
-برای یافتن نمادهای &apos;*&apos;، &apos;?&apos;، &apos;[&apos;، &apos;]&apos; به ترتیب &apos;\*&apos;، &apos;\?&apos;، &apos;\[&apos;، &apos;\]&apos; را به‌کار ببرید</translation>
-    </message>
-    <message>
-      <source>Open Tabs List</source>
-      <translation>باز کردن لیست زبانه‌ها</translation>
-    </message>
-    <message>
-      <source>Remove current tab from Favorites</source>
-      <translation>حذف زبانهٔ کنونی از پسندیده‌ها</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
-    </message>
-    <message>
-      <source>You have chosen to hide a menubar. Use %1 to show it back.</source>
-      <translation>شما پنهان کردن نوار منو را برگزیده‌اید. %1 را به‌کار ببرید تا دوباره نمایش داده شود.</translation>
-    </message>
-    <message>
-      <source>Ctrl+M</source>
-      <translation>Ctrl+M</translation>
-    </message>
-    <message>
-      <source>&amp;Show</source>
-      <translation>&amp;نمایش</translation>
-    </message>
-    <message>
-      <source>&amp;Export</source>
-      <translation>&amp;صادر کردن</translation>
-    </message>
-    <message>
-      <source>&amp;Hide</source>
-      <translation>پنهان&amp;سازی</translation>
-    </message>
-    <message>
-      <source>Export history to file</source>
-      <translation>صادر کردن پیشینه به پرونده</translation>
-    </message>
-    <message>
-      <source>Text files (*.txt);;All files (*.*)</source>
-      <translation>پرونده‌های متنی (*.txt);;همه پرونده‌ها (*.*)</translation>
-    </message>
-    <message>
-      <source>History export complete</source>
-      <translation>صادر کردن پیشینه کامل شد</translation>
-    </message>
-    <message>
-      <source>Export error: </source>
-      <translation>خطا در صادر کردن:</translation>
-    </message>
-    <message>
-      <source>Ctrl+H</source>
-      <translation>Ctrl+H</translation>
-    </message>
-    <message>
-      <source>&amp;Import</source>
-      <translation>&amp;وارد کردن</translation>
-    </message>
-    <message>
-      <source>Import history from file</source>
-      <translation>وارد کردن پیشینه از پرونده</translation>
-    </message>
-    <message>
-      <source>Import error: invalid data in file</source>
-      <translation>خطا در وارد کردن: داده نامعتبر در پرونده</translation>
-    </message>
-    <message>
-      <source>History import complete</source>
-      <translation>وارد کردن پیشینه کامل شد</translation>
-    </message>
-    <message>
-      <source>Import error: </source>
-      <translation>خطا در وارد کردن:</translation>
-    </message>
-    <message>
-      <source>Export Favorites to file</source>
-      <translation>برون‌ریزی پسندیده‌ها به پرونده</translation>
-    </message>
-    <message>
-      <source>XML files (*.xml);;All files (*.*)</source>
-      <translation>فایل های XML (*.xml)؛؛ همه فایل ها (*.*)</translation>
-    </message>
-    <message>
-      <source>Favorites export complete</source>
-      <translation>برون‌ریزی پسندیده‌ها کامل شد</translation>
-    </message>
-    <message>
-      <source>Export Favorites to file as plain list</source>
-      <translation>برون‌ریزی پسندیده‌ها به پرونده به عنوان متن ساده</translation>
-    </message>
-    <message>
-      <source>Import Favorites from file</source>
-      <translation>درون‌ریزی پسندیده‌ها از پرونده</translation>
-    </message>
-    <message>
-      <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation>فایل های XML (*.xml)؛؛ فایل های Txt (*.txt)؛؛ همه فایل ها (*.*)</translation>
-    </message>
-    <message>
-      <source>Favorites import complete</source>
-      <translation>درون‌ریزی پسندیده‌ها کامل شد</translation>
-    </message>
-    <message>
-      <source>Data parsing error</source>
-      <translation>خطای تجزیه داده ها</translation>
-    </message>
-    <message>
-      <source>Dictionary info</source>
-      <translation>اطلاعات واژه‌نامه</translation>
-    </message>
-    <message>
-      <source>Dictionary headwords</source>
-      <translation>سرواژه‌های واژه‌نامه</translation>
-    </message>
-    <message>
-      <source>Open dictionary folder</source>
-      <translation>باز کردن پوشه واژه‌نامه</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>ویرایش واژه‌نامه</translation>
-    </message>
-    <message>
-      <source>Now indexing for full-text search: </source>
-      <translation>اکنون در حال نمایه سازی برای جستجوی متن کامل: </translation>
-    </message>
-    <message>
-      <source>Remove headword &quot;%1&quot; from Favorites?</source>
-      <translation>عنوان &quot;%1&quot; از موارد دلخواه حذف شود؟</translation>
+      <source>Favo&amp;rites</source>
+      <translation>آداب و رسوم مورد علاقه</translation>
     </message>
     <message>
       <source>&amp;Search Pane</source>
@@ -2596,6 +2228,90 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>صفحه موارد دلخواه</translation>
     </message>
     <message>
+      <source>&amp;History Pane</source>
+      <translation>قاب &amp;پیشینه</translation>
+    </message>
+    <message>
+      <source>&amp;Dictionaries...</source>
+      <translation>&amp;واژه‌نامه‌ها...</translation>
+    </message>
+    <message>
+      <source>F3</source>
+      <translation>F3</translation>
+    </message>
+    <message>
+      <source>&amp;Preferences...</source>
+      <translation>&amp;ترجیحات...</translation>
+    </message>
+    <message>
+      <source>F4</source>
+      <translation>F4</translation>
+    </message>
+    <message>
+      <source>&amp;Homepage</source>
+      <translation>&amp;برگه آغازین</translation>
+    </message>
+    <message>
+      <source>&amp;About</source>
+      <translation>&amp;درباره</translation>
+    </message>
+    <message>
+      <source>About GoldenDict-ng</source>
+      <translation>درباره گلدن‌دیکت</translation>
+    </message>
+    <message>
+      <source>&amp;Quit</source>
+      <translation>&amp;ترک کردن</translation>
+    </message>
+    <message>
+      <source>Quit from application</source>
+      <translation>ترک کردن برنامه</translation>
+    </message>
+    <message>
+      <source>Ctrl+Q</source>
+      <translation>Ctrl+Q</translation>
+    </message>
+    <message>
+      <source>&amp;Forum</source>
+      <translation>&amp;انجمن</translation>
+    </message>
+    <message>
+      <source>&amp;Close To Tray</source>
+      <translation>بستن به &amp;سینی</translation>
+    </message>
+    <message>
+      <source>Minimizes the window to tray</source>
+      <translation>کمینه کردن پنجره به سینی</translation>
+    </message>
+    <message>
+      <source>Ctrl+F4</source>
+      <translation>Ctrl+F4</translation>
+    </message>
+    <message>
+      <source>&amp;Save Article</source>
+      <translation>&amp;ذخیره بند</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>ذخیره بند</translation>
+    </message>
+    <message>
+      <source>F2</source>
+      <translation>F2</translation>
+    </message>
+    <message>
+      <source>&amp;Print</source>
+      <translation>&amp;چاپ</translation>
+    </message>
+    <message>
+      <source>Ctrl+P</source>
+      <translation>Ctrl+P</translation>
+    </message>
+    <message>
+      <source>Page Set&amp;up</source>
+      <translation>&amp;برپایی برگه</translation>
+    </message>
+    <message>
       <source>Print Pre&amp;view</source>
       <translation>&amp;پیش‌نمایش چاپ</translation>
     </message>
@@ -2604,8 +2320,40 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>پویش &amp;دوباره پرونده‌ها</translation>
     </message>
     <message>
+      <source>Ctrl+F5</source>
+      <translation>Ctrl+F5</translation>
+    </message>
+    <message>
+      <source>&amp;Clear</source>
+      <translation>&amp;پاک کردن</translation>
+    </message>
+    <message>
       <source>&amp;New Tab</source>
       <translation>&amp;زبانه تازه</translation>
+    </message>
+    <message>
+      <source>Ctrl+T</source>
+      <translation>Ctrl+T</translation>
+    </message>
+    <message>
+      <source>&amp;Configuration Folder</source>
+      <translation>&amp;پوشه پیکربندی</translation>
+    </message>
+    <message>
+      <source>&amp;Show</source>
+      <translation>&amp;نمایش</translation>
+    </message>
+    <message>
+      <source>Ctrl+H</source>
+      <translation>Ctrl+H</translation>
+    </message>
+    <message>
+      <source>&amp;Export</source>
+      <translation>&amp;صادر کردن</translation>
+    </message>
+    <message>
+      <source>&amp;Import</source>
+      <translation>&amp;وارد کردن</translation>
     </message>
     <message>
       <source>&amp;Always on Top</source>
@@ -2644,6 +2392,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>مرجع GoldenDict</translation>
     </message>
     <message>
+      <source>F1</source>
+      <translation>F1</translation>
+    </message>
+    <message>
       <source>Show</source>
       <translation>نمایش دهید</translation>
     </message>
@@ -2680,12 +2432,162 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>نمایش نشانه‌های &amp;کوچک در نوار ابزار</translation>
     </message>
     <message>
+      <source>&amp;Menubar</source>
+      <translation>نوار &amp;منو</translation>
+    </message>
+    <message>
       <source>&amp;Navigation</source>
       <translation>نا&amp;وبری</translation>
     </message>
     <message>
+      <source>Back</source>
+      <translation>پس</translation>
+    </message>
+    <message>
+      <source>Forward</source>
+      <translation>پیش</translation>
+    </message>
+    <message>
       <source>Enable Scanning</source>
       <translation>به کار انداختن پویش</translation>
+    </message>
+    <message>
+      <source>Pronounce Word (Alt+S)</source>
+      <translation>بیان واژه (Alt+S)</translation>
+    </message>
+    <message>
+      <source>Zoom In</source>
+      <translation>بزرگ‌نمایی به درون</translation>
+    </message>
+    <message>
+      <source>Zoom Out</source>
+      <translation>بزرگ‌نمایی به بیرون</translation>
+    </message>
+    <message>
+      <source>Normal Size</source>
+      <translation>اندازه عادی</translation>
+    </message>
+    <message>
+      <source>Found in Dictionaries:</source>
+      <translation>در این واژه‌نامه‌ها یافت شد:</translation>
+    </message>
+    <message>
+      <source>Words Zoom In</source>
+      <translation>بزرگ‌نمایی به درون واژه‌ها</translation>
+    </message>
+    <message>
+      <source>Words Zoom Out</source>
+      <translation>بزرگ‌نمایی به بیرون واژه‌ها</translation>
+    </message>
+    <message>
+      <source>Words Normal Size</source>
+      <translation>اندازه عادی واژه‌ها</translation>
+    </message>
+    <message>
+      <source>Show &amp;Main Window</source>
+      <translation>&amp;نمایش پنجرهٔ اصلی</translation>
+    </message>
+    <message>
+      <source>Opened tabs</source>
+      <translation>زبانه‌های باز شده</translation>
+    </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>بستن زبانه جاری</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>بستن همه زبانه‌ها</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>بستن همه زبانه‌ها مگر زبانه جاری</translation>
+    </message>
+    <message>
+      <source>Add all tabs to Favorites</source>
+      <translation>افزودن تمام زبانه‌ها به پسندیده‌ها</translation>
+    </message>
+    <message>
+      <source>New Tab</source>
+      <translation>زبانه تازه</translation>
+    </message>
+    <message>
+      <source>Accessibility API is not enabled</source>
+      <translation>API دست‌رسی به‌کار نیفتاده است</translation>
+    </message>
+    <message>
+      <source>WARNING: %1</source>
+      <translation>هشدار: %1</translation>
+    </message>
+    <message>
+      <source>String to search in dictionaries. The wildcards &apos;*&apos;, &apos;?&apos; and sets of symbols &apos;[...]&apos; are allowed.
+To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos; respectively</source>
+      <translation>رشته‌ای که باید در واژه‌نامه‌ها جست‌وجو شود. نویسه‌های عام &apos;*&apos;، &apos;?&apos; و گروه‌هایی از نمادهای &apos;[...]&apos; مجاز هستند.
+برای یافتن نمادهای &apos;*&apos;، &apos;?&apos;، &apos;[&apos;، &apos;]&apos; به ترتیب &apos;\*&apos;، &apos;\?&apos;، &apos;\[&apos;، &apos;\]&apos; را به‌کار ببرید</translation>
+    </message>
+    <message>
+      <source>%1 dictionaries, %2 articles, %3 words</source>
+      <translation>%1 واژه‌نامه، %2 بند، %3 واژه</translation>
+    </message>
+    <message>
+      <source>All</source>
+      <translation>همه</translation>
+    </message>
+    <message>
+      <source>Open Tabs List</source>
+      <translation>باز کردن لیست زبانه‌ها</translation>
+    </message>
+    <message>
+      <source>(untitled)</source>
+      <translation>(بی‌عنوان)</translation>
+    </message>
+    <message>
+      <source>Remove current tab from Favorites</source>
+      <translation>حذف زبانهٔ کنونی از پسندیده‌ها</translation>
+    </message>
+    <message>
+      <source>%1 - %2</source>
+      <translation>%1 - %2</translation>
+    </message>
+    <message>
+      <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
+      <translation>برپاسازی سازوکار بازبینی کلیدهای میان‌بر شکست خورد.&lt;br&gt;مطمئن شوید که افزونه RECORD مربوط به XServer روشن شده است.</translation>
+    </message>
+    <message>
+      <source>New Release Available</source>
+      <translation>نسخه تازه موجود است</translation>
+    </message>
+    <message>
+      <source>Version &lt;b&gt;%1&lt;/b&gt; of GoldenDict is now available for download.&lt;br&gt;Click &lt;b&gt;Download&lt;/b&gt; to get to the download page.</source>
+      <translation>نسخه &lt;b&gt;%1&lt;/b&gt; گلدن‌دیکت برای بارگیری آماده است &lt;br&gt; برای به‌دست آوردن برگه بارگیری &lt;b&gt;بارگیری&lt;/b&gt; را کلیک کنید.</translation>
+    </message>
+    <message>
+      <source>Download</source>
+      <translation>بارگیری</translation>
+    </message>
+    <message>
+      <source>Skip This Release</source>
+      <translation>پرش از این نسخه</translation>
+    </message>
+    <message>
+      <source>You have chosen to hide a menubar. Use %1 to show it back.</source>
+      <translation>شما پنهان کردن نوار منو را برگزیده‌اید. %1 را به‌کار ببرید تا دوباره نمایش داده شود.</translation>
+    </message>
+    <message>
+      <source>Ctrl+M</source>
+      <translation>Ctrl+M</translation>
+    </message>
+    <message>
+      <source>Page Setup</source>
+      <translation>برپایی برگه</translation>
+    </message>
+    <message>
+      <source>No printer is available. Please install one first.</source>
+      <translation>چاپ‌گری موجود نیست. لطفاً نخست یکی نصب کنید.</translation>
+    </message>
+    <message>
+      <source>Print Article</source>
+      <translation>چاپ بند</translation>
     </message>
     <message>
       <source>Article, Complete (*.html)</source>
@@ -2694,6 +2596,18 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Article, HTML Only (*.html)</source>
       <translation>بند HTML تنها (*.html)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation>ذخیره بند به‌عنوان</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>خطا</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation>نمی‌تواند بند: %1 را ذخیره کند</translation>
     </message>
     <message>
       <source>Saving article...</source>
@@ -2708,12 +2622,96 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>پنجره اصلی تنظیم می‌شود تا همیشه در بالا باشد.</translation>
     </message>
     <message>
-      <source>&amp;History Pane</source>
-      <translation>قاب &amp;پیشینه</translation>
+      <source>&amp;Hide</source>
+      <translation>پنهان&amp;سازی</translation>
     </message>
     <message>
-      <source>Accessibility API is not enabled</source>
-      <translation>API دست‌رسی به‌کار نیفتاده است</translation>
+      <source>Export history to file</source>
+      <translation>صادر کردن پیشینه به پرونده</translation>
+    </message>
+    <message>
+      <source>Text files (*.txt);;All files (*.*)</source>
+      <translation>پرونده‌های متنی (*.txt);;همه پرونده‌ها (*.*)</translation>
+    </message>
+    <message>
+      <source>Export error: </source>
+      <translation>خطا در صادر کردن:</translation>
+    </message>
+    <message>
+      <source>History export complete</source>
+      <translation>صادر کردن پیشینه کامل شد</translation>
+    </message>
+    <message>
+      <source>Import history from file</source>
+      <translation>وارد کردن پیشینه از پرونده</translation>
+    </message>
+    <message>
+      <source>Import error: </source>
+      <translation>خطا در وارد کردن:</translation>
+    </message>
+    <message>
+      <source>Import error: invalid data in file</source>
+      <translation>خطا در وارد کردن: داده نامعتبر در پرونده</translation>
+    </message>
+    <message>
+      <source>History import complete</source>
+      <translation>وارد کردن پیشینه کامل شد</translation>
+    </message>
+    <message>
+      <source>Export Favorites to file</source>
+      <translation>برون‌ریزی پسندیده‌ها به پرونده</translation>
+    </message>
+    <message>
+      <source>XML files (*.xml);;All files (*.*)</source>
+      <translation>فایل های XML (*.xml)؛؛ همه فایل ها (*.*)</translation>
+    </message>
+    <message>
+      <source>Favorites export complete</source>
+      <translation>برون‌ریزی پسندیده‌ها کامل شد</translation>
+    </message>
+    <message>
+      <source>Export Favorites to file as plain list</source>
+      <translation>برون‌ریزی پسندیده‌ها به پرونده به عنوان متن ساده</translation>
+    </message>
+    <message>
+      <source>Import Favorites from file</source>
+      <translation>درون‌ریزی پسندیده‌ها از پرونده</translation>
+    </message>
+    <message>
+      <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
+      <translation>فایل های XML (*.xml)؛؛ فایل های Txt (*.txt)؛؛ همه فایل ها (*.*)</translation>
+    </message>
+    <message>
+      <source>Data parsing error</source>
+      <translation>خطای تجزیه داده ها</translation>
+    </message>
+    <message>
+      <source>Favorites import complete</source>
+      <translation>درون‌ریزی پسندیده‌ها کامل شد</translation>
+    </message>
+    <message>
+      <source>Dictionary info</source>
+      <translation>اطلاعات واژه‌نامه</translation>
+    </message>
+    <message>
+      <source>Dictionary headwords</source>
+      <translation>سرواژه‌های واژه‌نامه</translation>
+    </message>
+    <message>
+      <source>Open dictionary folder</source>
+      <translation>باز کردن پوشه واژه‌نامه</translation>
+    </message>
+    <message>
+      <source>Edit dictionary</source>
+      <translation>ویرایش واژه‌نامه</translation>
+    </message>
+    <message>
+      <source>Now indexing for full-text search: </source>
+      <translation>اکنون در حال نمایه سازی برای جستجوی متن کامل: </translation>
+    </message>
+    <message>
+      <source>Remove headword &quot;%1&quot; from Favorites?</source>
+      <translation>عنوان &quot;%1&quot; از موارد دلخواه حذف شود؟</translation>
     </message>
   </context>
   <context>
@@ -2744,16 +2742,16 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
   <context>
     <name>MediaWikisModel</name>
     <message>
+      <source>Enabled</source>
+      <translation>به‌کار افتاده</translation>
+    </message>
+    <message>
       <source>Name</source>
       <translation>نام</translation>
     </message>
     <message>
       <source>Address</source>
       <translation>آدرس</translation>
-    </message>
-    <message>
-      <source>Enabled</source>
-      <translation>به‌کار افتاده</translation>
     </message>
     <message>
       <source>Icon</source>
@@ -2778,8 +2776,16 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>فرم</translation>
     </message>
     <message>
+      <source>Dictionary order:</source>
+      <translation>ترتیب واژه‌نامه‌ها:</translation>
+    </message>
+    <message>
       <source>Inactive (disabled) dictionaries:</source>
       <translation>واژه‌نامه‌های غیرفعال (از کار افتاده):</translation>
+    </message>
+    <message>
+      <source>Dictionary information</source>
+      <translation>اطلاعات واژه‌نامه</translation>
     </message>
     <message>
       <source>Name:</source>
@@ -2790,6 +2796,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>جمع بندها:</translation>
     </message>
     <message>
+      <source>Total words:</source>
+      <translation>جمع واژه‌ها:</translation>
+    </message>
+    <message>
       <source>Translates from:</source>
       <translation>ترجمه از:</translation>
     </message>
@@ -2798,28 +2808,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>ترجمه به:</translation>
     </message>
     <message>
-      <source>Total words:</source>
-      <translation>جمع واژه‌ها:</translation>
-    </message>
-    <message>
-      <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
-      <translation>با کشیدن و رها کردن آیتم‌ها ترتیب آن‌ها را تنظیم کنید. برای از کار انداختن واژه‌نامه‌ها آن‌ها را در گروه غیرفعال بیندازید.</translation>
-    </message>
-    <message>
-      <source>Dictionary order:</source>
-      <translation>ترتیب واژه‌نامه‌ها:</translation>
+      <source>Description:</source>
+      <translation>شرح:</translation>
     </message>
     <message>
       <source>Files comprising this dictionary:</source>
       <translation>پرونده‌های دربرگیرنده این واژه‌نامه:</translation>
     </message>
     <message>
-      <source>Dictionary information</source>
-      <translation>اطلاعات واژه‌نامه</translation>
+      <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
+      <translation>با کشیدن و رها کردن آیتم‌ها ترتیب آن‌ها را تنظیم کنید. برای از کار انداختن واژه‌نامه‌ها آن‌ها را در گروه غیرفعال بیندازید.</translation>
     </message>
     <message>
-      <source>Description:</source>
-      <translation>شرح:</translation>
+      <source>Dictionary headwords</source>
+      <translation>سرواژه‌های واژه‌نامه</translation>
     </message>
     <message>
       <source>Sort by name</source>
@@ -2828,10 +2830,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Sort by languages</source>
       <translation>مرتب کردن با زبان</translation>
-    </message>
-    <message>
-      <source>Dictionary headwords</source>
-      <translation>سرواژه‌های واژه‌نامه</translation>
     </message>
     <message>
       <source>Dictionaries active: %1, inactive: %2</source>
@@ -2852,48 +2850,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
   <context>
     <name>Preferences</name>
     <message>
-      <source>Alt</source>
-      <translation>دگرساز</translation>
+      <source>Preferences</source>
+      <translation>ترجیحات</translation>
     </message>
     <message>
-      <source>Start to system tray</source>
-      <translation>آغاز برنامه در سینی سیستم</translation>
+      <source>&amp;Interface</source>
+      <translation>&amp;رابط</translation>
     </message>
     <message>
-      <source>Ctrl</source>
-      <translation>مهار</translation>
+      <source>Double-click translates the word clicked</source>
+      <translation>دوبار کلیک واژه کلیک شده را ترجمه کند</translation>
     </message>
     <message>
-      <source>Win/Meta</source>
-      <translation>ویندوز/متا</translation>
-    </message>
-    <message>
-      <source>Enable system tray icon</source>
-      <translation>به‌کار انداختن نشانه سینی سیستم</translation>
-    </message>
-    <message>
-      <source>Host:</source>
-      <translation>میزبان:</translation>
-    </message>
-    <message>
-      <source>Port:</source>
-      <translation>درگاه:</translation>
-    </message>
-    <message>
-      <source>Shift</source>
-      <translation>تبدیل</translation>
-    </message>
-    <message>
-      <source>Type:</source>
-      <translation>نوع:</translation>
-    </message>
-    <message>
-      <source>User:</source>
-      <translation>کاربر:</translation>
-    </message>
-    <message>
-      <source>&amp;Scan Popup</source>
-      <translation>پویش &amp;واشو</translation>
+      <source>Tabbed browsing</source>
+      <translation>مرور زبانه‌ای</translation>
     </message>
     <message>
       <source>Normally, opening a new tab switches to it immediately.
@@ -2903,86 +2873,8 @@ switching to them.</source>
 با فعال بودن این، زیانه‌ی تازه باز می‌شود ولی به آن نمی‌روید.</translation>
     </message>
     <message>
-      <source>Use proxy server</source>
-      <translation>به‌کار بردن کارگزار پروکسی</translation>
-    </message>
-    <message>
-      <source>Use the following hotkey to translate a word from clipboard:</source>
-      <translation>برای ترجمه یک واژه از حافظه میان‌برهای زیر را به‌کار ببر:</translation>
-    </message>
-    <message>
-      <source>Windows key or Meta key</source>
-      <translation>کلید ویندوز یا کلید متا</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in main window</source>
-      <translation>بیان خودکار واژه‌ها در پنجره اصلی</translation>
-    </message>
-    <message>
-      <source>Start with system</source>
-      <translation>آغاز هم‌راه با سیستم</translation>
-    </message>
-    <message>
-      <source>Tabbed browsing</source>
-      <translation>مرور زبانه‌ای</translation>
-    </message>
-    <message>
-      <source>With this on, an attempt to close main window would hide it instead of closing
-the application.</source>
-      <translation>با به‌کار انداختن این،هر تلاشی برای بستن پنجره
-اصلی به جای بستن برنامه آن‌را پنهان می‌کند.</translation>
-    </message>
-    <message>
-      <source>&amp;Audio</source>
-      <translation>&amp;شنیداری</translation>
-    </message>
-    <message>
-      <source>Enable if you wish to use a proxy server
-for all program&apos;s network requests.</source>
-      <translation>اگر می‌خواهید کارگزار پروکسی را برای همه درخواست‌های
-شبکه برنامه به‌کار ببرید این را به‌کار اندازید.</translation>
-    </message>
-    <message>
-      <source>Interface language:</source>
-      <translation>زبان رابط کاربری:</translation>
-    </message>
-    <message>
       <source>Open new tabs in background</source>
       <translation>باز کردن زبانه‌های تازه در پس‌زمینه</translation>
-    </message>
-    <message>
-      <source>&amp;Network</source>
-      <translation>ش&amp;بکه</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>لینگوُ</translation>
-    </message>
-    <message>
-      <source>With this enabled, the popup would only show up if all chosen keys are
-in the pressed state when the word selection changes.</source>
-      <translation>با به‌کار انداختن این، واشو تنها زمانی نمایش داده می‌شود که
-هنگام تغییر گزینش واژه همه کلیدهای برگزیده فشار داده شوند.</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in scan popup</source>
-      <translation>بیان خودکار واژه‌ها در پویش واشو</translation>
-    </message>
-    <message>
-      <source>Open new tabs after the current one</source>
-      <translation>باز کردن زبانه تازه پس از زبانه جاری</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>برای به‌کار برده شدن تغییر زبان برنامه را دوباره راه‌اندازی کنید.</translation>
-    </message>
-    <message>
-      <source>Alt key</source>
-      <translation>کلید دگرساز</translation>
-    </message>
-    <message>
-      <source>Check for new program releases periodically</source>
-      <translation>بررسی دوره‌ای برای نسخه‌های تازه برنامه</translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -2993,145 +2885,24 @@ be the last ones.</source>
 به‌عنوان آخرین زیانه افزوده می‌شوند.</translation>
     </message>
     <message>
-      <source>Close to system tray</source>
-      <translation>بستن به سینی سیستم</translation>
+      <source>Open new tabs after the current one</source>
+      <translation>باز کردن زبانه تازه پس از زبانه جاری</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>پیش‌فرض سیستم</translation>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
+      <translation>اگر نمی‌خواهید نوار زبانه اصلی را هنگامی‌که تنها یک زبانه باز شده دارید ببینید این را برگزینید.</translation>
     </message>
     <message>
-      <source>When enabled, an icon appears in the system tray area which can be used
-to open main window and perform other tasks.</source>
-      <translation>هنگامی‌که به‌کار افتاده، یک نشانه در سینی سیستم نمایش داده می‌شود
-که می‌تواند برای باز کردن پنجره اصلی و انجام دیگر کارها به‌کار برده شود.</translation>
+      <source>Hide single tab</source>
+      <translation>پنهان کردن تک زبانه</translation>
     </message>
     <message>
-      <source>When this is enabled, the program periodically
-checks if a new, updated version of GoldenDict
-is available for download. If it is so, the program
-informs the user about it and prompts to open a
-download page.</source>
-      <translation>وقتی به‌کار افتاده است، برنامه به‌طور دوره‌ای برای
-نسخه‌های تازه گلدن‌دیکت برای بارگیری بررسی می‌کند.
-اگر در دست‌رس بود برنامه کاربر را آگاه می‌کند
-و پیام می‌دهد تا یک برگه بارگیری باز کند.</translation>
+      <source>MRU order: Most recently used order.</source>
+      <translation>سفارش MRU: سفارش اخیر استفاده شده.</translation>
     </message>
     <message>
-      <source>Startup</source>
-      <translation>آغازگر</translation>
-    </message>
-    <message>
-      <source>Password:</source>
-      <translation>گذرواژه:</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>پیش‌فرض</translation>
-    </message>
-    <message>
-      <source>&amp;Interface</source>
-      <translation>&amp;رابط</translation>
-    </message>
-    <message>
-      <source>Ctrl key</source>
-      <translation>کلید مهار</translation>
-    </message>
-    <message>
-      <source>Use the following hotkey to show or hide the main window:</source>
-      <translation>برای نمایش یا پنهان کردن پنجره اصلی میان‌برهای زیر را به‌کار ببر:</translation>
-    </message>
-    <message>
-      <source>Preferences</source>
-      <translation>ترجیحات</translation>
-    </message>
-    <message>
-      <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
-      <translation>کلیدهای میان‌بر سراسری هستند و تا زمانی که گلدن‌دیکت در پس‌زمینه در حال اجراست در هر برنامه و هر متنی کار می‌کنند.</translation>
-    </message>
-    <message>
-      <source>Hotkeys</source>
-      <translation>کلیدهای میان‌برها</translation>
-    </message>
-    <message>
-      <source>Start with scan popup turned on</source>
-      <translation>آغاز با روشن بودن پویش واشو</translation>
-    </message>
-    <message>
-      <source>With this on, the application starts directly to system tray without showing
-its main window.</source>
-      <translation>با به‌کار انداختن این، برنامه هنگام آغاز بدون
-نمایش پنجره اصلی به سینی سیستم می‌رود.</translation>
-    </message>
-    <message>
-      <source>Shift key</source>
-      <translation>کلید تبدیل</translation>
-    </message>
-    <message>
-      <source>Automatically starts GoldenDict after operation system bootup.</source>
-      <translation>پس از بالا آمدن سیستم‌عامل گلدن‌دیکت به‌طور خودکار اجرا شود.</translation>
-    </message>
-    <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
-      <translation>برگزینید که آیا حالت پویش واشو به‌طور پیش‌فرض روشن باشد یا نه. اگر
-به‌کار افتاده باشد، برنامه همیشه با فعال بودن پویش واشو آغاز می‌شود.</translation>
-    </message>
-    <message>
-      <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation>هنگام تغییر انتخاب یا کلیپ بورد در یکی از پنجره های خود GoldenDict، پنجره بازشو نشان داده نشود</translation>
-    </message>
-    <message>
-      <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation>انتخاب و تغییرات کلیپ‌بورد خود GoldenDict را نادیده بگیرید</translation>
-    </message>
-    <message>
-      <source>Play audio files via built-in audio support</source>
-      <translation>پخش فایل های صوتی از طریق پشتیبانی صوتی داخلی</translation>
-    </message>
-    <message>
-      <source>Use internal player:</source>
-      <translation>از پخش کننده داخلی استفاده کنید:</translation>
-    </message>
-    <message>
-      <source>Choose audio back end</source>
-      <translation>پایان صوتی را انتخاب کنید</translation>
-    </message>
-    <message>
-      <source>Enter audio player command line</source>
-      <translation>وارد خط فرمان پخش کننده صوتی شوید</translation>
-    </message>
-    <message>
-      <source>Enabling this would make GoldenDict block most advertisements
-by disallowing content (images, frames) not originating from the site
-you are browsing. If some site breaks because of this, try disabling this.</source>
-      <translation>با به‌کار انداختن این گلدن‌دیکت بیش‌تر آگهی‌ها را با اجازه ندادن
-به محتوای (تصویرها، قاب‌ها) که از پایگاه مروری شما نیست می‌بندد.
-اگر برخی پایگاه‌ها به خاطر این خراب شدند، این را از کار بیندازید. </translation>
-    </message>
-    <message>
-      <source>Disallow loading content from other sites (hides most advertisements)</source>
-      <translation>بارگیری محتوا از دیگر پایگاه‌ها را می‌بندد (بیش‌تر آگهی‌ها را پنهان می‌کند)</translation>
-    </message>
-    <message>
-      <source>Pronunciation</source>
-      <translation>بیان کردن</translation>
-    </message>
-    <message>
-      <source>Playback</source>
-      <translation>بازپخش</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>به‌کار بردن برنامه بیرونی:</translation>
-    </message>
-    <message>
-      <source>Double-click translates the word clicked</source>
-      <translation>دوبار کلیک واژه کلیک شده را ترجمه کند</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>به‌کار بردن هر برنامه بیرونی برای پخش پرونده‌های شنیداری</translation>
+      <source>Ctrl-Tab navigates tabs in MRU order</source>
+      <translation>با مهار+Tab بین زبانه‌ها به ترتیب MRU جابه‌جا شوید</translation>
     </message>
     <message>
       <source>Normally, pressing ESC key moves focus to the translation line.
@@ -3144,32 +2915,24 @@ With this on however, it will hide the main window.</source>
       <translation>کلید ESC پنجره اصلی را پنهان کند</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>اگر نمی‌خواهید نوار زبانه اصلی را هنگامی‌که تنها یک زبانه باز شده دارید ببینید این را برگزینید.</translation>
+      <source>Turn this option on if you want to select words by single mouse click</source>
+      <translation>اگر می‌خواهید واژه‌ها را با تک کلیک موش برگزینید این گزینه را به‌کار اندازید</translation>
     </message>
     <message>
-      <source>Hide single tab</source>
-      <translation>پنهان کردن تک زبانه</translation>
+      <source>Select word by single click</source>
+      <translation>برگزیدن واژه با تک کلیک</translation>
     </message>
     <message>
-      <source>Adjust this value to avoid huge context menus.</source>
-      <translation>برای دوری از فهرست زمینه خیلی بزرگ این مقدار را تنظیم کنید.</translation>
+      <source>Startup</source>
+      <translation>آغازگر</translation>
     </message>
     <message>
-      <source>Context menu dictionaries limit:</source>
-      <translation>شمار واژه‌نامه‌های فهرست زمینه:</translation>
+      <source>Automatically starts GoldenDict after operation system bootup.</source>
+      <translation>پس از بالا آمدن سیستم‌عامل گلدن‌دیکت به‌طور خودکار اجرا شود.</translation>
     </message>
     <message>
-      <source>Send translated word to main window instead of to show it in popup window</source>
-      <translation>واژه ترجمه شده را به‌جای نمایش در پنجره واشو به پنجره اصلی بفرست</translation>
-    </message>
-    <message>
-      <source>Send translated word to main window</source>
-      <translation>واژه ترجمه شده را به پنجره اصلی بفرست</translation>
-    </message>
-    <message>
-      <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
-      <translation>نمایش یک پنجره پرچم قبل از نمایش پنجره بازشو، روی پرچم کلیک کنید تا پنجره بازشو نشان داده شود. </translation>
+      <source>Start with system</source>
+      <translation>آغاز هم‌راه با سیستم</translation>
     </message>
     <message>
       <source>Normally, clicking on a link, double-clicking on a word or looking up
@@ -3186,8 +2949,66 @@ however, the article from the topmost dictionary is shown.</source>
       <translation>به طور خودکار به مقاله هدف بروید</translation>
     </message>
     <message>
+      <source>When enabled, an icon appears in the system tray area which can be used
+to open main window and perform other tasks.</source>
+      <translation>هنگامی‌که به‌کار افتاده، یک نشانه در سینی سیستم نمایش داده می‌شود
+که می‌تواند برای باز کردن پنجره اصلی و انجام دیگر کارها به‌کار برده شود.</translation>
+    </message>
+    <message>
+      <source>Enable system tray icon</source>
+      <translation>به‌کار انداختن نشانه سینی سیستم</translation>
+    </message>
+    <message>
+      <source>With this on, the application starts directly to system tray without showing
+its main window.</source>
+      <translation>با به‌کار انداختن این، برنامه هنگام آغاز بدون
+نمایش پنجره اصلی به سینی سیستم می‌رود.</translation>
+    </message>
+    <message>
+      <source>Start to system tray</source>
+      <translation>آغاز برنامه در سینی سیستم</translation>
+    </message>
+    <message>
+      <source>With this on, an attempt to close main window would hide it instead of closing
+the application.</source>
+      <translation>با به‌کار انداختن این،هر تلاشی برای بستن پنجره
+اصلی به جای بستن برنامه آن‌را پنهان می‌کند.</translation>
+    </message>
+    <message>
+      <source>Close to system tray</source>
+      <translation>بستن به سینی سیستم</translation>
+    </message>
+    <message>
+      <source>Adjust this value to avoid huge context menus.</source>
+      <translation>برای دوری از فهرست زمینه خیلی بزرگ این مقدار را تنظیم کنید.</translation>
+    </message>
+    <message>
+      <source>Context menu dictionaries limit:</source>
+      <translation>شمار واژه‌نامه‌های فهرست زمینه:</translation>
+    </message>
+    <message>
+      <source>Appearance</source>
+      <translation>ظاهر</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>فونت رابط</translation>
+    </message>
+    <message>
+      <source>Interface language:</source>
+      <translation>زبان رابط کاربری:</translation>
+    </message>
+    <message>
       <source>Article Display style:</source>
       <translation>سبک نمایش مقاله:</translation>
+    </message>
+    <message>
+      <source>Add-on style:</source>
+      <translation>سبک افزونه:</translation>
+    </message>
+    <message>
+      <source>Interface Style:</source>
+      <translation>سبک رابط:</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -3206,8 +3027,50 @@ however, the article from the topmost dictionary is shown.</source>
       <translation>حالت خواننده تاریک</translation>
     </message>
     <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>سفارش MRU: سفارش اخیر استفاده شده.</translation>
+      <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
+      <translation>این فونت ها زمانی اعمال می شوند که فونت های مشخص شده توسط یک فرهنگ لغت پیدا نشوند.</translation>
+    </message>
+    <message>
+      <source>Fallback Fonts</source>
+      <translation>فونت های بازگشتی</translation>
+    </message>
+    <message>
+      <source>Standard Font</source>
+      <translation>فونت استاندارد</translation>
+    </message>
+    <message>
+      <source>Serif Font</source>
+      <translation>قلم سریف</translation>
+    </message>
+    <message>
+      <source>Sans-serif Font</source>
+      <translation>قلم Sans-serif</translation>
+    </message>
+    <message>
+      <source>Monospace Font</source>
+      <translation>فونت Monospace</translation>
+    </message>
+    <message>
+      <source>&amp;Scan Popup</source>
+      <translation>پویش &amp;واشو</translation>
+    </message>
+    <message>
+      <source>Chooses whether the scan popup mode is on by default or not. If checked,
+the program would always start with the scan popup active.</source>
+      <translation>برگزینید که آیا حالت پویش واشو به‌طور پیش‌فرض روشن باشد یا نه. اگر
+به‌کار افتاده باشد، برنامه همیشه با فعال بودن پویش واشو آغاز می‌شود.</translation>
+    </message>
+    <message>
+      <source>Start with scan popup turned on</source>
+      <translation>آغاز با روشن بودن پویش واشو</translation>
+    </message>
+    <message>
+      <source>Send translated word to main window instead of to show it in popup window</source>
+      <translation>واژه ترجمه شده را به‌جای نمایش در پنجره واشو به پنجره اصلی بفرست</translation>
+    </message>
+    <message>
+      <source>Send translated word to main window</source>
+      <translation>واژه ترجمه شده را به پنجره اصلی بفرست</translation>
     </message>
     <message>
       <source>Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</source>
@@ -3222,12 +3085,62 @@ however, the article from the topmost dictionary is shown.</source>
       <translation>تغییر انتخاب آهنگ</translation>
     </message>
     <message>
+      <source>With this enabled, the popup would only show up if all chosen keys are
+in the pressed state when the word selection changes.</source>
+      <translation>با به‌کار انداختن این، واشو تنها زمانی نمایش داده می‌شود که
+هنگام تغییر گزینش واژه همه کلیدهای برگزیده فشار داده شوند.</translation>
+    </message>
+    <message>
       <source>Only tack selection when all selected keys are kept pressed:</source>
       <translation>فقط زمانی که همه کلیدهای انتخاب شده فشار داده شده باشند، انتخاب تکه‌ها:</translation>
     </message>
     <message>
+      <source>Alt key</source>
+      <translation>کلید دگرساز</translation>
+    </message>
+    <message>
+      <source>Alt</source>
+      <translation>دگرساز</translation>
+    </message>
+    <message>
+      <source>Ctrl key</source>
+      <translation>کلید مهار</translation>
+    </message>
+    <message>
+      <source>Ctrl</source>
+      <translation>مهار</translation>
+    </message>
+    <message>
+      <source>Shift key</source>
+      <translation>کلید تبدیل</translation>
+    </message>
+    <message>
+      <source>Shift</source>
+      <translation>تبدیل</translation>
+    </message>
+    <message>
+      <source>Windows key or Meta key</source>
+      <translation>کلید ویندوز یا کلید متا</translation>
+    </message>
+    <message>
+      <source>Win/Meta</source>
+      <translation>ویندوز/متا</translation>
+    </message>
+    <message>
+      <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
+      <translation>نمایش یک پنجره پرچم قبل از نمایش پنجره بازشو، روی پرچم کلیک کنید تا پنجره بازشو نشان داده شود. </translation>
+    </message>
+    <message>
       <source>Show scan flag when word is selected</source>
       <translation>هنگام انتخاب کلمه، پرچم اسکن را نشان دهید</translation>
+    </message>
+    <message>
+      <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
+      <translation>هنگام تغییر انتخاب یا کلیپ بورد در یکی از پنجره های خود GoldenDict، پنجره بازشو نشان داده نشود</translation>
+    </message>
+    <message>
+      <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
+      <translation>انتخاب و تغییرات کلیپ‌بورد خود GoldenDict را نادیده بگیرید</translation>
     </message>
     <message>
       <source>Delay time</source>
@@ -3236,6 +3149,80 @@ however, the article from the topmost dictionary is shown.</source>
     <message>
       <source> ms</source>
       <translation> ms</translation>
+    </message>
+    <message>
+      <source>Hotkeys</source>
+      <translation>کلیدهای میان‌برها</translation>
+    </message>
+    <message>
+      <source>Use the following hotkey to show or hide the main window:</source>
+      <translation>برای نمایش یا پنهان کردن پنجره اصلی میان‌برهای زیر را به‌کار ببر:</translation>
+    </message>
+    <message>
+      <source>Use the following hotkey to translate a word from clipboard:</source>
+      <translation>برای ترجمه یک واژه از حافظه میان‌برهای زیر را به‌کار ببر:</translation>
+    </message>
+    <message>
+      <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
+      <translation>کلیدهای میان‌بر سراسری هستند و تا زمانی که گلدن‌دیکت در پس‌زمینه در حال اجراست در هر برنامه و هر متنی کار می‌کنند.</translation>
+    </message>
+    <message>
+      <source>&amp;Audio</source>
+      <translation>&amp;شنیداری</translation>
+    </message>
+    <message>
+      <source>Pronunciation</source>
+      <translation>بیان کردن</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in main window</source>
+      <translation>بیان خودکار واژه‌ها در پنجره اصلی</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in scan popup</source>
+      <translation>بیان خودکار واژه‌ها در پویش واشو</translation>
+    </message>
+    <message>
+      <source>Playback</source>
+      <translation>بازپخش</translation>
+    </message>
+    <message>
+      <source>Play audio files via built-in audio support</source>
+      <translation>پخش فایل های صوتی از طریق پشتیبانی صوتی داخلی</translation>
+    </message>
+    <message>
+      <source>Use internal player:</source>
+      <translation>از پخش کننده داخلی استفاده کنید:</translation>
+    </message>
+    <message>
+      <source>Choose audio back end</source>
+      <translation>پایان صوتی را انتخاب کنید</translation>
+    </message>
+    <message>
+      <source>Use any external program to play audio files</source>
+      <translation>به‌کار بردن هر برنامه بیرونی برای پخش پرونده‌های شنیداری</translation>
+    </message>
+    <message>
+      <source>Use external program:</source>
+      <translation>به‌کار بردن برنامه بیرونی:</translation>
+    </message>
+    <message>
+      <source>Enter audio player command line</source>
+      <translation>وارد خط فرمان پخش کننده صوتی شوید</translation>
+    </message>
+    <message>
+      <source>&amp;Network</source>
+      <translation>ش&amp;بکه</translation>
+    </message>
+    <message>
+      <source>Enable if you wish to use a proxy server
+for all program&apos;s network requests.</source>
+      <translation>اگر می‌خواهید کارگزار پروکسی را برای همه درخواست‌های
+شبکه برنامه به‌کار ببرید این را به‌کار اندازید.</translation>
+    </message>
+    <message>
+      <source>Use proxy server</source>
+      <translation>به‌کار بردن کارگزار پروکسی</translation>
     </message>
     <message>
       <source>System proxy</source>
@@ -3248,6 +3235,26 @@ however, the article from the topmost dictionary is shown.</source>
     <message>
       <source>Custom settings</source>
       <translation>تنظیمات سفارشی</translation>
+    </message>
+    <message>
+      <source>Type:</source>
+      <translation>نوع:</translation>
+    </message>
+    <message>
+      <source>Host:</source>
+      <translation>میزبان:</translation>
+    </message>
+    <message>
+      <source>Port:</source>
+      <translation>درگاه:</translation>
+    </message>
+    <message>
+      <source>User:</source>
+      <translation>کاربر:</translation>
+    </message>
+    <message>
+      <source>Password:</source>
+      <translation>گذرواژه:</translation>
     </message>
     <message>
       <source>Anki Connect</source>
@@ -3290,6 +3297,18 @@ however, the article from the topmost dictionary is shown.</source>
       <translation>قسمت جمله (می تواند خالی باشد)...</translation>
     </message>
     <message>
+      <source>Enabling this would make GoldenDict block most advertisements
+by disallowing content (images, frames) not originating from the site
+you are browsing. If some site breaks because of this, try disabling this.</source>
+      <translation>با به‌کار انداختن این گلدن‌دیکت بیش‌تر آگهی‌ها را با اجازه ندادن
+به محتوای (تصویرها، قاب‌ها) که از پایگاه مروری شما نیست می‌بندد.
+اگر برخی پایگاه‌ها به خاطر این خراب شدند، این را از کار بیندازید. </translation>
+    </message>
+    <message>
+      <source>Disallow loading content from other sites (hides most advertisements)</source>
+      <translation>بارگیری محتوا از دیگر پایگاه‌ها را می‌بندد (بیش‌تر آگهی‌ها را پنهان می‌کند)</translation>
+    </message>
+    <message>
       <source>Some sites detect GoldenDict via HTTP headers and block the requests.
 Enable this option to workaround the problem.</source>
       <translation>برخی پایگاه‌ها گلدن‌دیگت را از سرآیند HTTP می‌شناسند و درخواست‌ها
@@ -3326,6 +3345,21 @@ clears its network cache from disk during exit.</source>
       <translation>کش شبکه را در هنگام خروج پاک کنید</translation>
     </message>
     <message>
+      <source>When this is enabled, the program periodically
+checks if a new, updated version of GoldenDict
+is available for download. If it is so, the program
+informs the user about it and prompts to open a
+download page.</source>
+      <translation>وقتی به‌کار افتاده است، برنامه به‌طور دوره‌ای برای
+نسخه‌های تازه گلدن‌دیکت برای بارگیری بررسی می‌کند.
+اگر در دست‌رس بود برنامه کاربر را آگاه می‌کند
+و پیام می‌دهد تا یک برگه بارگیری باز کند.</translation>
+    </message>
+    <message>
+      <source>Check for new program releases periodically</source>
+      <translation>بررسی دوره‌ای برای نسخه‌های تازه برنامه</translation>
+    </message>
+    <message>
       <source>Full-text search</source>
       <translation>جستجوی متن کامل</translation>
     </message>
@@ -3342,104 +3376,12 @@ clears its network cache from disk during exit.</source>
       <translation>مقالات (0 - نامحدود)</translation>
     </message>
     <message>
+      <source>Create fulltext index with parallel threads </source>
+      <translation>نمایه تمام متن را با رشته های موازی ایجاد کنید </translation>
+    </message>
+    <message>
       <source>Ad&amp;vanced</source>
       <translation>&amp;پیش‌رفته</translation>
-    </message>
-    <message>
-      <source>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</source>
-      <translation>در طول جستجوهای متوالی، اگر یک فرهنگ لغت به صورت دستی جمع شود، در جستجوی بعدی جمع می شود.</translation>
-    </message>
-    <message>
-      <source>Session collapse</source>
-      <translation>فروپاشی جلسه</translation>
-    </message>
-    <message>
-      <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation>در جستجوی جدید، پنجره اصلی یا بازشو را فوکوس کنید، حتی اگر قابل مشاهده باشد</translation>
-    </message>
-    <message>
-      <source>Favorites</source>
-      <translation>پسندیده‌ها</translation>
-    </message>
-    <message>
-      <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
-      <translation>فاصله ذخیره موارد دلخواه. اگر روی 0 تنظیم شود، موارد دلخواه فقط در حین خروج ذخیره می شود.</translation>
-    </message>
-    <message>
-      <source>Turn this option on to confirm every operation of items deletion</source>
-      <translation>برای تأیید هر عملیات حذف موارد، این گزینه را روشن کنید</translation>
-    </message>
-    <message>
-      <source>Confirmation for items deletion</source>
-      <translation>تایید برای حذف موارد</translation>
-    </message>
-    <message>
-      <source>Turn this option on to ignore unreasonably long input text
-from mouse-over, selection, clipboard or command line</source>
-      <translation>این گزینه را روشن کنید تا متن ورودی طولانی و غیرمنطقی
-را از روی ماوس، انتخاب، کلیپ بورد یا خط فرمان نادیده بگیرید.</translation>
-    </message>
-    <message>
-      <source>Ignore input phrases longer than</source>
-      <translation>عبارات ورودی طولانی تر از آن را نادیده بگیرید</translation>
-    </message>
-    <message>
-      <source>Input phrases longer than this size will be ignored</source>
-      <translation>عبارات ورودی طولانی تر از این اندازه نادیده گرفته می شود</translation>
-    </message>
-    <message>
-      <source>Turn this option on to ignore diacritics while searching articles</source>
-      <translation>این گزینه را روشن کنید تا در حین جستجوی مقاله‌ها، نشانه‌ها نادیده گرفته شوند</translation>
-    </message>
-    <message>
-      <source>Ignore diacritics while searching</source>
-      <translation>در حین جست و جو از نشانه ها چشم پوشی کنید</translation>
-    </message>
-    <message>
-      <source>Turn this option on to always expand optional parts of articles</source>
-      <translation>برای گستراندن همیشگی بخش‌های اختیاری بندها این گزینه را روشن کنید</translation>
-    </message>
-    <message>
-      <source>Expand optional &amp;parts</source>
-      <translation>&amp;بخش‌های اختیاری را بگستران</translation>
-    </message>
-    <message>
-      <source>Select this option to automatic collapse big articles</source>
-      <translation>برای جمع کردن خودکار بندهای بزرگ این گزینه را برگزینید</translation>
-    </message>
-    <message>
-      <source>Collapse articles more than</source>
-      <translation>بندهای بیش از این را جمع کن</translation>
-    </message>
-    <message>
-      <source>Articles longer than this size will be collapsed</source>
-      <translation>بندهای کشیده‌تر از این اندازه جمع می‌شوند</translation>
-    </message>
-    <message>
-      <source>Ignore punctuation while searching</source>
-      <translation>هنگام جستجو، علائم نگارشی را نادیده بگیرید</translation>
-    </message>
-    <message>
-      <source>Turn this option on to enable extra articles search via synonym lists
-from Stardict, Babylon and GLS dictionaries</source>
-      <translation>این گزینه را روشن کنید تا جستجوی مقالات اضافی از طریق فهرست‌های مترادف
-از دیکشنری‌های Stardict، Babylon و GLS فعال شود.</translation>
-    </message>
-    <message>
-      <source>Extra search via synonyms</source>
-      <translation>جستجوی اضافی از طریق مترادف ها</translation>
-    </message>
-    <message>
-      <source>symbols</source>
-      <translation>نماد</translation>
-    </message>
-    <message>
-      <source>Ctrl-Tab navigates tabs in MRU order</source>
-      <translation>با مهار+Tab بین زبانه‌ها به ترتیب MRU جابه‌جا شوید</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>بابیلون</translation>
     </message>
     <message>
       <source>History</source>
@@ -3452,22 +3394,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Store &amp;history</source>
       <translation>نگه‌داری &amp;پیشینه</translation>
-    </message>
-    <message>
-      <source>Articles</source>
-      <translation>بندها</translation>
-    </message>
-    <message>
-      <source>Turn this option on if you want to select words by single mouse click</source>
-      <translation>اگر می‌خواهید واژه‌ها را با تک کلیک موش برگزینید این گزینه را به‌کار اندازید</translation>
-    </message>
-    <message>
-      <source>Select word by single click</source>
-      <translation>برگزیدن واژه با تک کلیک</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>سبک افزونه:</translation>
     </message>
     <message>
       <source>Specify the maximum number of entries to keep in history.</source>
@@ -3490,12 +3416,132 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>دقیقه</translation>
     </message>
     <message>
+      <source>Favorites</source>
+      <translation>پسندیده‌ها</translation>
+    </message>
+    <message>
+      <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
+      <translation>فاصله ذخیره موارد دلخواه. اگر روی 0 تنظیم شود، موارد دلخواه فقط در حین خروج ذخیره می شود.</translation>
+    </message>
+    <message>
+      <source>Turn this option on to confirm every operation of items deletion</source>
+      <translation>برای تأیید هر عملیات حذف موارد، این گزینه را روشن کنید</translation>
+    </message>
+    <message>
+      <source>Confirmation for items deletion</source>
+      <translation>تایید برای حذف موارد</translation>
+    </message>
+    <message>
+      <source>Articles</source>
+      <translation>بندها</translation>
+    </message>
+    <message>
+      <source>Ignore punctuation while searching</source>
+      <translation>هنگام جستجو، علائم نگارشی را نادیده بگیرید</translation>
+    </message>
+    <message>
+      <source>Input phrases longer than this size will be ignored</source>
+      <translation>عبارات ورودی طولانی تر از این اندازه نادیده گرفته می شود</translation>
+    </message>
+    <message>
+      <source>symbols</source>
+      <translation>نماد</translation>
+    </message>
+    <message>
+      <source>Select this option to automatic collapse big articles</source>
+      <translation>برای جمع کردن خودکار بندهای بزرگ این گزینه را برگزینید</translation>
+    </message>
+    <message>
+      <source>Collapse articles more than</source>
+      <translation>بندهای بیش از این را جمع کن</translation>
+    </message>
+    <message>
+      <source>Turn this option on to ignore unreasonably long input text
+from mouse-over, selection, clipboard or command line</source>
+      <translation>این گزینه را روشن کنید تا متن ورودی طولانی و غیرمنطقی
+را از روی ماوس، انتخاب، کلیپ بورد یا خط فرمان نادیده بگیرید.</translation>
+    </message>
+    <message>
+      <source>Ignore input phrases longer than</source>
+      <translation>عبارات ورودی طولانی تر از آن را نادیده بگیرید</translation>
+    </message>
+    <message>
+      <source>Articles longer than this size will be collapsed</source>
+      <translation>بندهای کشیده‌تر از این اندازه جمع می‌شوند</translation>
+    </message>
+    <message>
+      <source>Turn this option on to always expand optional parts of articles</source>
+      <translation>برای گستراندن همیشگی بخش‌های اختیاری بندها این گزینه را روشن کنید</translation>
+    </message>
+    <message>
+      <source>Expand optional &amp;parts</source>
+      <translation>&amp;بخش‌های اختیاری را بگستران</translation>
+    </message>
+    <message>
+      <source>Turn this option on to ignore diacritics while searching articles</source>
+      <translation>این گزینه را روشن کنید تا در حین جستجوی مقاله‌ها، نشانه‌ها نادیده گرفته شوند</translation>
+    </message>
+    <message>
+      <source>Ignore diacritics while searching</source>
+      <translation>در حین جست و جو از نشانه ها چشم پوشی کنید</translation>
+    </message>
+    <message>
+      <source>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</source>
+      <translation>در طول جستجوهای متوالی، اگر یک فرهنگ لغت به صورت دستی جمع شود، در جستجوی بعدی جمع می شود.</translation>
+    </message>
+    <message>
+      <source>Session collapse</source>
+      <translation>فروپاشی جلسه</translation>
+    </message>
+    <message>
+      <source>Turn this option on to enable extra articles search via synonym lists
+from Stardict, Babylon and GLS dictionaries</source>
+      <translation>این گزینه را روشن کنید تا جستجوی مقالات اضافی از طریق فهرست‌های مترادف
+از دیکشنری‌های Stardict، Babylon و GLS فعال شود.</translation>
+    </message>
+    <message>
+      <source>Extra search via synonyms</source>
+      <translation>جستجوی اضافی از طریق مترادف ها</translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation>هنگام استفاده از کلیپ بورد، همه چیز را بعد از خط جدید پاک کنید</translation>
+    </message>
+    <message>
+      <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
+      <translation>در جستجوی جدید، پنجره اصلی یا بازشو را فوکوس کنید، حتی اگر قابل مشاهده باشد</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>متفرقه</translation>
+    </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>هنگام خروج، فهرست نامعتبر را حذف کنید</translation>
+    </message>
+    <message>
+      <source>System default</source>
+      <translation>پیش‌فرض سیستم</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>پیش‌فرض</translation>
+    </message>
+    <message>
       <source>Classic</source>
       <translation>کلاسیک</translation>
     </message>
     <message>
       <source>Modern</source>
       <translation>نوین</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>لینگوُ</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>بابیلون</translation>
     </message>
     <message>
       <source>Lingoes</source>
@@ -3510,76 +3556,20 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation> MB</translation>
     </message>
     <message>
-      <source>Restart needed</source>
-      <translation>نیاز به راه اندازی مجدد</translation>
+      <source>Restart the program to apply the language change.</source>
+      <translation>برای به‌کار برده شدن تغییر زبان برنامه را دوباره راه‌اندازی کنید.</translation>
     </message>
     <message>
       <source>Restart to apply the interface style change.</source>
       <translation>برای اعمال تغییر سبک رابط، راه اندازی مجدد کنید.</translation>
     </message>
     <message>
-      <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
-      <translation>برای استفاده از جستجوی عبارت Xapian و عملگر NEAR به اطلاعات موقعیتی نیاز است، اما اندازه پایگاه داده بسیار بزرگتر خواهد بود. فقط برای فرهنگ لغت‌های ورودی جدید اعمال می‌شود.</translation>
-    </message>
-    <message>
-      <source>Enable index with positional information</source>
-      <translation>فهرست را با اطلاعات موقعیتی فعال کنید</translation>
-    </message>
-    <message>
-      <source>Standard Font</source>
-      <translation>فونت استاندارد</translation>
-    </message>
-    <message>
-      <source>Monospace Font</source>
-      <translation>فونت Monospace</translation>
-    </message>
-    <message>
-      <source>Serif Font</source>
-      <translation>قلم سریف</translation>
-    </message>
-    <message>
-      <source>Sans-serif Font</source>
-      <translation>قلم Sans-serif</translation>
-    </message>
-    <message>
-      <source>Appearance</source>
-      <translation>ظاهر</translation>
-    </message>
-    <message>
-      <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
-      <translation>این فونت ها زمانی اعمال می شوند که فونت های مشخص شده توسط یک فرهنگ لغت پیدا نشوند.</translation>
-    </message>
-    <message>
-      <source>Fallback Fonts</source>
-      <translation>فونت های بازگشتی</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>سبک رابط:</translation>
-    </message>
-    <message>
-      <source>Create fulltext index with parallel threads </source>
-      <translation>نمایه تمام متن را با رشته های موازی ایجاد کنید </translation>
-    </message>
-    <message>
-      <source>When using clipboard, strip everything after newline</source>
-      <translation>هنگام استفاده از کلیپ بورد، همه چیز را بعد از خط جدید پاک کنید</translation>
-    </message>
-    <message>
-      <source>Remove invalid index on exit</source>
-      <translation>هنگام خروج، فهرست نامعتبر را حذف کنید</translation>
-    </message>
-    <message>
-      <source>Miscellaneous</source>
-      <translation>متفرقه</translation>
-    </message>
-    <message>
-      <source>Interface Font</source>
-      <translation>فونت رابط</translation>
-    </message>
-    <message>
       <source>Restart to apply the interface font change.</source>
       <translation>برای اعمال تغییر فونت رابط، راه اندازی مجدد کنید.</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>نیاز به راه اندازی مجدد</translation>
     </message>
   </context>
   <context>
@@ -3710,20 +3700,20 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>گروه پاپ آپ را تغییر دهید.</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
-      <translation>جابجایی پنجره اسکن</translation>
-    </message>
-    <message>
-      <source>Print version and diagnosis info.</source>
-      <translation>نسخه چاپی و اطلاعات تشخیص</translation>
-    </message>
-    <message>
       <source>Force the word to be translated in scanpopup</source>
       <translation>ترجمه اجباری کلمه در scanpopup</translation>
     </message>
     <message>
       <source>Force the word to be translated in the mainwindow</source>
       <translation>مجبور کنید کلمه را در پنجره اصلی ترجمه کنید</translation>
+    </message>
+    <message>
+      <source>Toggle scan popup.</source>
+      <translation>جابجایی پنجره اسکن</translation>
+    </message>
+    <message>
+      <source>Print version and diagnosis info.</source>
+      <translation>نسخه چاپی و اطلاعات تشخیص</translation>
     </message>
   </context>
   <context>
@@ -3748,23 +3738,23 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>خطا در ذخیره منبع: </translation>
     </message>
     <message>
-      <source>The referenced resource failed to download.</source>
-      <translation>بارگیری منبع ارجاع شده شکست خورد.</translation>
-    </message>
-    <message>
       <source>WARNING: %1</source>
       <translation>هشدار: %1</translation>
+    </message>
+    <message>
+      <source>The referenced resource failed to download.</source>
+      <translation>بارگیری منبع ارجاع شده شکست خورد.</translation>
     </message>
   </context>
   <context>
     <name>Romaji</name>
     <message>
-      <source>Hepburn Romaji for Katakana</source>
-      <translation>روماجی هپ‌برن  برای کاتاکانا</translation>
-    </message>
-    <message>
       <source>Hepburn Romaji for Hiragana</source>
       <translation>روماجی هپ‌برن  برای هیراگانا</translation>
+    </message>
+    <message>
+      <source>Hepburn Romaji for Katakana</source>
+      <translation>روماجی هپ‌برن  برای کاتاکانا</translation>
     </message>
   </context>
   <context>
@@ -3777,16 +3767,32 @@ from Stardict, Babylon and GLS dictionaries</source>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Alt+S</source>
-      <translation>Alt+S</translation>
-    </message>
-    <message>
       <source>Dialog</source>
       <translation>دیالوگ</translation>
     </message>
     <message>
+      <source>Back</source>
+      <translation>پس</translation>
+    </message>
+    <message>
+      <source>Forward</source>
+      <translation>پیش</translation>
+    </message>
+    <message>
       <source>Pronounce Word (Alt+S)</source>
       <translation>بیان واژه (Alt+S)</translation>
+    </message>
+    <message>
+      <source>Alt+S</source>
+      <translation>Alt+S</translation>
+    </message>
+    <message>
+      <source>Send word to main window (Alt+W)</source>
+      <translation>فرستادن واژه به پنجره اصلی (Alt+W)</translation>
+    </message>
+    <message>
+      <source>Alt+W</source>
+      <translation>Alt+W</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>
@@ -3807,24 +3813,8 @@ could be resized or managed in other ways.</source>
 می‌توان تغییر اندازه داد یا طور دیگری مدیریت کرد.</translation>
     </message>
     <message>
-      <source>Send word to main window (Alt+W)</source>
-      <translation>فرستادن واژه به پنجره اصلی (Alt+W)</translation>
-    </message>
-    <message>
-      <source>Alt+W</source>
-      <translation>Alt+W</translation>
-    </message>
-    <message>
-      <source>Back</source>
-      <translation>پس</translation>
-    </message>
-    <message>
-      <source>Forward</source>
-      <translation>پیش</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
+      <source>%1 - GoldenDict-ng</source>
+      <translation type="unfinished">%1 - GoldenDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
@@ -3861,12 +3851,12 @@ could be resized or managed in other ways.</source>
   <context>
     <name>SoundDirsModel</name>
     <message>
-      <source>Name</source>
-      <translation>نام</translation>
-    </message>
-    <message>
       <source>Path</source>
       <translation>مسیر</translation>
+    </message>
+    <message>
+      <source>Name</source>
+      <translation>نام</translation>
     </message>
     <message>
       <source>Icon</source>
@@ -3880,194 +3870,44 @@ could be resized or managed in other ways.</source>
       <translation>پرونده‌ها</translation>
     </message>
     <message>
-      <source>Hiragana</source>
-      <translation>هیراگانا</translation>
-    </message>
-    <message>
-      <source>Systems:</source>
-      <translation>سامانه‌ها:</translation>
-    </message>
-    <message>
-      <source>Nihon-shiki</source>
-      <translation>نیهون-شیکی</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>پایگاه &lt;b&gt;%1&lt;/b&gt; را از لیست حذف کند؟</translation>
-    </message>
-    <message>
-      <source>Wikipedia</source>
-      <translation>ویکی‌پدیا</translation>
-    </message>
-    <message>
-      <source>Katakana Japanese syllabary</source>
-      <translation>هجابندی کاتاکانای ژاپنی</translation>
-    </message>
-    <message>
-      <source>Make dictionaries from bunches of audiofiles by adding paths here:</source>
-      <translation>ساخت واژه‌نامه‌ها از دسته‌های پرونده‌های شنیداری با افزودن مسیرها در این‌جا:</translation>
-    </message>
-    <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>شاخه &lt;b&gt;%1&lt;/b&gt; را از لیست حذف کند؟</translation>
-    </message>
-    <message>
-      <source>Japanese Romaji</source>
-      <translation>روماجی ژاپنی</translation>
-    </message>
-    <message>
-      <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>برپایه سامانه نیهون-شیکی، ولی برای استاندارد نوین ژاپنی پیراسته شده است.
-استاندارد شده در ISO 3602
-
-هنوز در گلدن‌دیکت پیاده‌سازی نشده است.</translation>
-    </message>
-    <message>
-      <source>Wikipedia (MediaWiki) sites:</source>
-      <translation>پایگاه‌های ویکی‌پدیا (ویکی‌مدیا):</translation>
-    </message>
-    <message>
-      <source>Sound Dirs</source>
-      <translation>شاخه‌های آوا</translation>
-    </message>
-    <message>
-      <source>Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</source>
-      <translation>هر برنامه خارجی رشته %GDWORD% با کلمه پرس و جو جایگزین می شود. رشته %GDSEARCH% با متن در نوار جستجو جایگزین می شود. اگر هر دو پارامتر ارائه نشده باشند، عنوان اصلی به ورودی استاندارد وارد می شود.</translation>
-    </message>
-    <message>
-      <source>Lingua Libre</source>
-      <translation>Lingua Libre</translation>
-    </message>
-    <message>
-      <source>Enable Lingua Libre</source>
-      <translation>Lingua Libre را فعال کنید</translation>
-    </message>
-    <message>
-      <source>ISO 639-3 language code</source>
-      <translation>کد زبان ISO 639-3</translation>
-    </message>
-    <message>
-      <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use of Forvo currently requires an API key, register on the site to get your own key.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;استفاده از Forvo در حال حاضر به یک کلید API نیاز دارد، برای دریافت کلید خود در سایت ثبت نام کنید.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-      <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;کلید خود را دریافت کنید &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;اینجا&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-      <source>The most widely used method of transcription of Japanese,
-based on English phonology</source>
-      <translation>پر کاربردترین روش آوانویسی ژاپنی،
-بر پایه واج‌شناسی انگلیسی</translation>
-    </message>
-    <message>
-      <source>Hiragana Japanese syllabary</source>
-      <translation>هجابندی هیراگانای ژاپنی</translation>
-    </message>
-    <message>
-      <source>Custom transliteration</source>
-      <translation>نویسه‌گردانی سفارشی</translation>
-    </message>
-    <message>
-      <source>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</source>
-      <translation>این فقط در عبارت جستجو اعمال می شود، با هر خط نشان دهنده نویسه نویسی، نقطه ویرگول از هم جدا شده است. به عنوان مثال، ae;æ، کاربران می توانند ae را برای نشان دادن æ در کلمه هدف وارد کنند.</translation>
-    </message>
-    <message>
-      <source>ae;æ #this is an example</source>
-      <translation>ae;æ #این یک مثال است</translation>
-    </message>
-    <message>
-      <source>Transliteration</source>
-      <translation>نویسه‌گردانی</translation>
-    </message>
-    <message>
-      <source>The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>منظم‌ترین سامانه، یک رابطه یک-به-یک با سامانه‌های
-نوشتاری کانا. استاندارد شده در ISO 3602
-
-هنوز در گلدن‌دیکت پیاده‌سازی نشده است.</translation>
-    </message>
-    <message>
-      <source>Russian transliteration</source>
-      <translation>نویسه‌گردانی روسی</translation>
-    </message>
-    <message>
-      <source>Morphology</source>
-      <translation>ریخت‌شناسی</translation>
-    </message>
-    <message>
-      <source>&amp;Change...</source>
-      <translation>&amp;تغییر دادن...</translation>
-    </message>
-    <message>
-      <source>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
-
-Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</source>
-      <translation>مثال‌ها:  &amp;quot;eng&amp;quot; برای انگلیسی، &amp;quot;fra&amp;quot; برای فرانسوی &lt;br&gt;
-
-فهرست کامل زبان‌های موجود را می‌توانید پیدا کنید &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; اینجا &lt;/a&gt;</translation>
-    </message>
-    <message>
-      <source>Katakana</source>
-      <translation>کاتاکانا</translation>
-    </message>
-    <message>
-      <source>Path to a directory with Hunspell/Myspell dictionaries:</source>
-      <translation>مسیر شاخه با واژه‌نامه‌های Hunspell/Myspell:</translation>
-    </message>
-    <message>
-      <source>Re&amp;scan now</source>
-      <translation>اکنون &amp;پویش دوباره کن</translation>
-    </message>
-    <message>
-      <source>German transliteration</source>
-      <translation>نویسه‌گردانی آلمانی</translation>
-    </message>
-    <message>
-      <source>Any websites. A string %GDWORD% will be replaced with the query word:</source>
-      <translation>هر پایگاه وبی. یک رشته %GDWORD% با واژه درخواستی جای‌گزین می‌شود:</translation>
+      <source>Paths to search for the dictionary files:</source>
+      <translation>مسیرهای جست‌وجوی پرونده‌های واژه‌نامه:</translation>
     </message>
     <message>
       <source>&amp;Add...</source>
       <translation>&amp;افزودن...</translation>
     </message>
     <message>
-      <source>Choose a directory</source>
-      <translation>یک شاخه برگزینید</translation>
-    </message>
-    <message>
       <source>&amp;Remove</source>
       <translation>&amp;حذف کردن</translation>
     </message>
     <message>
-      <source>Websites</source>
-      <translation>پایگاه‌های وب</translation>
+      <source>Re&amp;scan now</source>
+      <translation>اکنون &amp;پویش دوباره کن</translation>
     </message>
     <message>
-      <source>Paths to search for the dictionary files:</source>
-      <translation>مسیرهای جست‌وجوی پرونده‌های واژه‌نامه:</translation>
+      <source>Sound Dirs</source>
+      <translation>شاخه‌های آوا</translation>
     </message>
     <message>
-      <source>Confirm removal</source>
-      <translation>تایید حذف کردن</translation>
+      <source>Make dictionaries from bunches of audiofiles by adding paths here:</source>
+      <translation>ساخت واژه‌نامه‌ها از دسته‌های پرونده‌های شنیداری با افزودن مسیرها در این‌جا:</translation>
     </message>
     <message>
-      <source>Syllabaries:</source>
-      <translation>هجابندی‌ها:</translation>
+      <source>Morphology</source>
+      <translation>ریخت‌شناسی</translation>
+    </message>
+    <message>
+      <source>Path to a directory with Hunspell/Myspell dictionaries:</source>
+      <translation>مسیر شاخه با واژه‌نامه‌های Hunspell/Myspell:</translation>
+    </message>
+    <message>
+      <source>&amp;Change...</source>
+      <translation>&amp;تغییر دادن...</translation>
     </message>
     <message>
       <source>Available morphology dictionaries:</source>
       <translation>واژه‌نامه‌های ریخت‌شناسی موجود:</translation>
-    </message>
-    <message>
-      <source>Enables to use the Latin alphabet to write the Japanese language</source>
-      <translation>برای به‌کار بردن الفبای لاتین برای نوشتن زبان ژاپنی به‌کار اندازید</translation>
     </message>
     <message>
       <source>Each morphology dictionary appears as a
@@ -4084,16 +3924,26 @@ of the appropriate groups to use them.</source>
 مناسب برای به‌کار بردن آن‌ها می‌افزاید.</translation>
     </message>
     <message>
-      <source>Hepburn</source>
-      <translation>هپ‌برن</translation>
+      <source>Wikipedia</source>
+      <translation>ویکی‌پدیا</translation>
     </message>
     <message>
-      <source>Kunrei-shiki</source>
-      <translation>کنری-شیکی</translation>
+      <source>Wikipedia (MediaWiki) sites:</source>
+      <translation>پایگاه‌های ویکی‌پدیا (ویکی‌مدیا):</translation>
     </message>
     <message>
-      <source>Forvo</source>
-      <translation>فوروُ</translation>
+      <source>Websites</source>
+      <translation>پایگاه‌های وب</translation>
+    </message>
+    <message>
+      <source>Any websites. A string %GDWORD% will be replaced with the query word:</source>
+      <translation>هر پایگاه وبی. یک رشته %GDWORD% با واژه درخواستی جای‌گزین می‌شود:</translation>
+    </message>
+    <message>
+      <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
+%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
+      <translation>به‌نوبت، به‌کار می‌برد %GD1251% برای CP1251،و %GDISO1%...%GDISO16% برای ISO 8859-1...ISO 8859-16 را به‌ترتیب برای،
+%GDBIG5% برای Big-5، و %GDBIG5HKSCS% برای Big5-HKSCS، و %GDGBK% برای GBK و GB18030، و %GDSHIFTJIS% برای Shift-JIS.</translation>
     </message>
     <message>
       <source>DICT servers</source>
@@ -4102,6 +3952,42 @@ of the appropriate groups to use them.</source>
     <message>
       <source>DICT servers:</source>
       <translation>سرورهای DICT:</translation>
+    </message>
+    <message>
+      <source>Programs</source>
+      <translation>برنامه‌ها</translation>
+    </message>
+    <message>
+      <source>Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</source>
+      <translation>هر برنامه خارجی رشته %GDWORD% با کلمه پرس و جو جایگزین می شود. رشته %GDSEARCH% با متن در نوار جستجو جایگزین می شود. اگر هر دو پارامتر ارائه نشده باشند، عنوان اصلی به ورودی استاندارد وارد می شود.</translation>
+    </message>
+    <message>
+      <source>Lingua Libre</source>
+      <translation>Lingua Libre</translation>
+    </message>
+    <message>
+      <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pronunciations provided by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;تلفظ ها توسط &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;ارائه شده است، یک کتابخانه رسانه زبانی مشترک ویکی مدیا فرانسه. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+      <source>Enable Lingua Libre</source>
+      <translation>Lingua Libre را فعال کنید</translation>
+    </message>
+    <message>
+      <source>ISO 639-3 language code</source>
+      <translation>کد زبان ISO 639-3</translation>
+    </message>
+    <message>
+      <source>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
+
+Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</source>
+      <translation>مثال‌ها:  &amp;quot;eng&amp;quot; برای انگلیسی، &amp;quot;fra&amp;quot; برای فرانسوی &lt;br&gt;
+
+فهرست کامل زبان‌های موجود را می‌توانید پیدا کنید &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; اینجا &lt;/a&gt;</translation>
+    </message>
+    <message>
+      <source>Forvo</source>
+      <translation>فوروُ</translation>
     </message>
     <message>
       <source>Live pronunciations from &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. The site allows people to record and share word pronunciations. You can listen to them from GoldenDict.</source>
@@ -4116,6 +4002,14 @@ of the appropriate groups to use them.</source>
       <translation>کلید API:</translation>
     </message>
     <message>
+      <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use of Forvo currently requires an API key, register on the site to get your own key.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;استفاده از Forvo در حال حاضر به یک کلید API نیاز دارد، برای دریافت کلید خود در سایت ثبت نام کنید.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+      <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;کلید خود را دریافت کنید &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;اینجا&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
       <source>Language codes (comma-separated):</source>
       <translation>کدهای زبان (جدا شده با کاما):</translation>
     </message>
@@ -4128,34 +4022,130 @@ of the appropriate groups to use them.</source>
       <translation>لیست همه کدهای زبان &lt;a href=&quot;http://www.forvo.com/languages-codes/&quot;&gt;این‌جا&lt;/a&gt; در دست‌رس است.</translation>
     </message>
     <message>
+      <source>Transliteration</source>
+      <translation>نویسه‌گردانی</translation>
+    </message>
+    <message>
       <source>Greek transliteration</source>
       <translation>نویسه‌گردانی یونانی</translation>
     </message>
     <message>
-      <source>Programs</source>
-      <translation>برنامه‌ها</translation>
+      <source>Russian transliteration</source>
+      <translation>نویسه‌گردانی روسی</translation>
     </message>
     <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>برنامه &lt;b&gt;%1&lt;/b&gt; را از لیست حذف کند؟</translation>
+      <source>German transliteration</source>
+      <translation>نویسه‌گردانی آلمانی</translation>
     </message>
     <message>
       <source>Belarusian transliteration</source>
       <translation>نویسه‌گردانی بلاروسی</translation>
     </message>
     <message>
-      <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
-      <translation>به‌نوبت، به‌کار می‌برد %GD1251% برای CP1251،و %GDISO1%...%GDISO16% برای ISO 8859-1...ISO 8859-16 را به‌ترتیب برای،
-%GDBIG5% برای Big-5، و %GDBIG5HKSCS% برای Big5-HKSCS، و %GDGBK% برای GBK و GB18030، و %GDSHIFTJIS% برای Shift-JIS.</translation>
+      <source>Enables to use the Latin alphabet to write the Japanese language</source>
+      <translation>برای به‌کار بردن الفبای لاتین برای نوشتن زبان ژاپنی به‌کار اندازید</translation>
+    </message>
+    <message>
+      <source>Japanese Romaji</source>
+      <translation>روماجی ژاپنی</translation>
+    </message>
+    <message>
+      <source>Systems:</source>
+      <translation>سامانه‌ها:</translation>
+    </message>
+    <message>
+      <source>The most widely used method of transcription of Japanese,
+based on English phonology</source>
+      <translation>پر کاربردترین روش آوانویسی ژاپنی،
+بر پایه واج‌شناسی انگلیسی</translation>
+    </message>
+    <message>
+      <source>Hepburn</source>
+      <translation>هپ‌برن</translation>
+    </message>
+    <message>
+      <source>The most regular system, having a one-to-one relation to the
+kana writing systems. Standardized as ISO 3602
+
+Not implemented yet in GoldenDict.</source>
+      <translation>منظم‌ترین سامانه، یک رابطه یک-به-یک با سامانه‌های
+نوشتاری کانا. استاندارد شده در ISO 3602
+
+هنوز در گلدن‌دیکت پیاده‌سازی نشده است.</translation>
+    </message>
+    <message>
+      <source>Nihon-shiki</source>
+      <translation>نیهون-شیکی</translation>
+    </message>
+    <message>
+      <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
+Standardized as ISO 3602
+
+Not implemented yet in GoldenDict.</source>
+      <translation>برپایه سامانه نیهون-شیکی، ولی برای استاندارد نوین ژاپنی پیراسته شده است.
+استاندارد شده در ISO 3602
+
+هنوز در گلدن‌دیکت پیاده‌سازی نشده است.</translation>
+    </message>
+    <message>
+      <source>Kunrei-shiki</source>
+      <translation>کنری-شیکی</translation>
+    </message>
+    <message>
+      <source>Syllabaries:</source>
+      <translation>هجابندی‌ها:</translation>
+    </message>
+    <message>
+      <source>Hiragana Japanese syllabary</source>
+      <translation>هجابندی هیراگانای ژاپنی</translation>
+    </message>
+    <message>
+      <source>Hiragana</source>
+      <translation>هیراگانا</translation>
+    </message>
+    <message>
+      <source>Katakana Japanese syllabary</source>
+      <translation>هجابندی کاتاکانای ژاپنی</translation>
+    </message>
+    <message>
+      <source>Katakana</source>
+      <translation>کاتاکانا</translation>
+    </message>
+    <message>
+      <source>Custom transliteration</source>
+      <translation>نویسه‌گردانی سفارشی</translation>
+    </message>
+    <message>
+      <source>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</source>
+      <translation>این فقط در عبارت جستجو اعمال می شود، با هر خط نشان دهنده نویسه نویسی، نقطه ویرگول از هم جدا شده است. به عنوان مثال، ae;æ، کاربران می توانند ae را برای نشان دادن æ در کلمه هدف وارد کنند.</translation>
+    </message>
+    <message>
+      <source>ae;æ #this is an example</source>
+      <translation>ae;æ #این یک مثال است</translation>
     </message>
     <message>
       <source>Text to Speech</source>
       <translation>متن به گفتار</translation>
     </message>
     <message>
-      <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pronunciations provided by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;تلفظ ها توسط &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;ارائه شده است، یک کتابخانه رسانه زبانی مشترک ویکی مدیا فرانسه. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <source>Choose a directory</source>
+      <translation>یک شاخه برگزینید</translation>
+    </message>
+    <message>
+      <source>Confirm removal</source>
+      <translation>تایید حذف کردن</translation>
+    </message>
+    <message>
+      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
+      <translation>شاخه &lt;b&gt;%1&lt;/b&gt; را از لیست حذف کند؟</translation>
+    </message>
+    <message>
+      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
+      <translation>پایگاه &lt;b&gt;%1&lt;/b&gt; را از لیست حذف کند؟</translation>
+    </message>
+    <message>
+      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
+      <translation>برنامه &lt;b&gt;%1&lt;/b&gt; را از لیست حذف کند؟</translation>
     </message>
   </context>
   <context>
@@ -4178,6 +4168,18 @@ of the appropriate groups to use them.</source>
     <message>
       <source>&amp;Remove</source>
       <translation>&amp;حذف</translation>
+    </message>
+    <message>
+      <source>Preferences</source>
+      <translation>ترجیحات</translation>
+    </message>
+    <message>
+      <source>Volume:</source>
+      <translation>حجم:</translation>
+    </message>
+    <message>
+      <source>Rate:</source>
+      <translation>نرخ:</translation>
     </message>
     <message>
       <source>Preview</source>
@@ -4204,28 +4206,16 @@ of the appropriate groups to use them.</source>
       <translation>گفتار TTS در دست‌رس نیست</translation>
     </message>
     <message>
+      <source>Cannot find available TTS voice.&lt;br&gt;Please make sure that at least one TTS engine installed on your computer already.</source>
+      <translation>نمی‌تواند گفتار TTS در دست‌رسی بیابد. &lt;br&gt; مطمئن شوید که دست‌کم یک موتور TTS روی رایانه شما نصب شده است.</translation>
+    </message>
+    <message>
       <source>Confirm removal</source>
       <translation>تایید حذف</translation>
     </message>
     <message>
       <source>Remove voice engine &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>حذف موتور گفتار &lt;b&gt;%1&lt;/b&gt; از لیست؟</translation>
-    </message>
-    <message>
-      <source>Cannot find available TTS voice.&lt;br&gt;Please make sure that at least one TTS engine installed on your computer already.</source>
-      <translation>نمی‌تواند گفتار TTS در دست‌رسی بیابد. &lt;br&gt; مطمئن شوید که دست‌کم یک موتور TTS روی رایانه شما نصب شده است.</translation>
-    </message>
-    <message>
-      <source>Preferences</source>
-      <translation>ترجیحات</translation>
-    </message>
-    <message>
-      <source>Volume:</source>
-      <translation>حجم:</translation>
-    </message>
-    <message>
-      <source>Rate:</source>
-      <translation>نرخ:</translation>
     </message>
   </context>
   <context>
@@ -4261,24 +4251,24 @@ of the appropriate groups to use them.</source>
   <context>
     <name>WebSitesModel</name>
     <message>
-      <source>Name</source>
-      <translation>نام</translation>
-    </message>
-    <message>
-      <source>Address</source>
-      <translation>آدرس</translation>
+      <source>Insert article as link inside &lt;iframe&gt; tag</source>
+      <translation>مقاله را به عنوان پیوند داخل تگ &lt;iframe&gt; درج کنید</translation>
     </message>
     <message>
       <source>Enabled</source>
       <translation>به‌کار افتاده</translation>
     </message>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>مقاله را به عنوان پیوند داخل تگ &lt;iframe&gt; درج کنید</translation>
-    </message>
-    <message>
       <source>As link</source>
       <translation>به عنوان پیوند</translation>
+    </message>
+    <message>
+      <source>Name</source>
+      <translation>نام</translation>
+    </message>
+    <message>
+      <source>Address</source>
+      <translation>آدرس</translation>
     </message>
     <message>
       <source>Icon</source>
