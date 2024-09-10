@@ -44,7 +44,6 @@
     </message>
     <message>
       <source>anki: post to anki failed</source>
-      <translatorcomment>anki:发布成功</translatorcomment>
       <translation>anki: post to anki epäonnistui</translation>
     </message>
     <message>
@@ -70,28 +69,28 @@
       <translation>Piilota artikkeli</translation>
     </message>
     <message>
-      <source>(untitled)</source>
-      <translation>(nimetön)</translation>
-    </message>
-    <message>
-      <source>Welcome!</source>
-      <translation>Tervetuloa!</translation>
+      <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
+      <translation>Ryhmästä &lt;b&gt;%2&lt;/b&gt;ei löytynyt käännöstä sanalle &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt;.</translation>
     </message>
     <message>
       <source>No translation was found in group &lt;b&gt;%1&lt;/b&gt;.</source>
       <translation>Käännöstä ei löytynyt ryhmässä &lt;b&gt;%1&lt;/b&gt;.</translation>
     </message>
     <message>
-      <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
-      <translation>Ryhmästä &lt;b&gt;%2&lt;/b&gt;ei löytynyt käännöstä sanalle &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt;.</translation>
-    </message>
-    <message>
-      <source>(picture)</source>
-      <translation>(kuva)</translation>
+      <source>Welcome!</source>
+      <translation>Tervetuloa!</translation>
     </message>
     <message>
       <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
       <translation>&lt;h3 align=&quot;center&quot;&gt;Tervetuloa &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Aloita työskentely ohjelman kanssa käymällä ensin osoitteessa &lt;em&gt;Muokkaa | Sanakirjat&lt;/em&gt; lisätäksesi hakemistopolkuja, joihin voit etsiä sanakirjatiedostoja, perustaa erilaisia Wikipedia-sivustoja tai muita lähteitä, säätää sanakirjajärjestystä tai luoda sanakirjaryhmiä.&lt;p&gt;Ja sitten&apos;valmis etsimään sanojasi! Voit tehdä sen tässä ikkunassa käyttämällä vasemmalla olevaa ruutua tai voit &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;sanoja muista aktiivisista sovelluksista&lt;/a&gt;. &lt;p&gt;Voit mukauttaa ohjelmaa tutustumalla käytettävissä oleviin asetuksiin kohdassa &lt;em&gt;Muokkaa | Asetukset&lt;/em&gt;. Kaikissa asetuksissa on työkaluvihjeitä, muista lukea ne, jos olet epävarma jostain.&lt;p&gt;Jos tarvitset lisäapua, sinulla on kysyttävää, ehdotuksia tai vain ihmettelet muiden mielipiteitä, olet tervetullut ohjelman&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;foorumille&lt;/a&gt;.&lt;p&gt;Tarkista ohjelman&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;verkkosivuilta&lt;/a&gt; päivitykset. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Lisensoitu GPLv3:lla tai uudemmalla.</translation>
+    </message>
+    <message>
+      <source>(untitled)</source>
+      <translation>(nimetön)</translation>
+    </message>
+    <message>
+      <source>(picture)</source>
+      <translation>(kuva)</translation>
     </message>
   </context>
   <context>
@@ -132,28 +131,12 @@
   <context>
     <name>ArticleView</name>
     <message>
-      <source>Failed to create temporary file.</source>
-      <translation>Väliaikaistiedoston luonti epäonnistui.</translation>
+      <source>Phrase not found</source>
+      <translation>Ilmausta ei löydy</translation>
     </message>
     <message>
-      <source>&amp;Look up &quot;%1&quot;</source>
-      <translation>&amp;Hae &quot;%1&quot;</translation>
-    </message>
-    <message>
-      <source>Look up &quot;%1&quot; in &amp;New Tab</source>
-      <translation>Etsi &quot;%1&quot; &amp;uudessa välilehdessä</translation>
-    </message>
-    <message>
-      <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>Viittattu resurssi ei ole&apos;t olemassa.</translation>
-    </message>
-    <message>
-      <source>Failed to auto-open resource file, try opening manually: %1.</source>
-      <translation>Resurssitiedoston automaattinen avaaminen epäonnistui, yritä avata manuaalisesti: %1.</translation>
-    </message>
-    <message>
-      <source>Look up &quot;%1&quot; in %2</source>
-      <translation>Hae &quot;%1&quot; %2</translation>
+      <source>%1 of %2 matches</source>
+      <translation>%1 / %2 ottelua</translation>
     </message>
     <message>
       <source>Select Current Article</source>
@@ -166,18 +149,6 @@
     <message>
       <source>Inspect</source>
       <translation>Tarkista</translation>
-    </message>
-    <message>
-      <source>Look up &quot;%1&quot; in %2 in &amp;New Tab</source>
-      <translation>Hae &quot;%1&quot; %2 &amp;uudessa välilehdessä</translation>
-    </message>
-    <message>
-      <source>Open Link in New &amp;Tab</source>
-      <translation>Avaa linkki uuteen &amp;välilehteen</translation>
-    </message>
-    <message>
-      <source>Open Link in &amp;External Browser</source>
-      <translation>Avaa linkki ulkoisessa &amp;selaimessa</translation>
     </message>
     <message>
       <source>Resource</source>
@@ -193,7 +164,6 @@
     </message>
     <message>
       <source>Video</source>
-      <translatorcomment>视频: %1</translatorcomment>
       <translation>Video</translation>
     </message>
     <message>
@@ -209,6 +179,14 @@
       <translation>Määritelmä: %1</translation>
     </message>
     <message>
+      <source>ERROR: %1</source>
+      <translation>VIRHE: %1</translation>
+    </message>
+    <message>
+      <source>The referenced resource doesn&apos;t exist.</source>
+      <translation>Viittattu resurssi ei ole&apos;t olemassa.</translation>
+    </message>
+    <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>Viittattu ääniohjelma ei ole&apos;t olemassa.</translation>
     </message>
@@ -217,44 +195,32 @@
       <translation>Avaa Linkki</translation>
     </message>
     <message>
-      <source>Save &amp;Bookmark &quot;%1...&quot;</source>
-      <translation>Tallenna kirjanmerkki &quot;%1...&quot;</translation>
+      <source>Open Link in New &amp;Tab</source>
+      <translation>Avaa linkki uuteen &amp;välilehteen</translation>
     </message>
     <message>
-      <source>WARNING: Audio Player: %1</source>
-      <translation>VAROITUS: äänisoitin: %1</translation>
-    </message>
-    <message>
-      <source>ERROR: %1</source>
-      <translation>VIRHE: %1</translation>
-    </message>
-    <message>
-      <source>Save sound</source>
-      <translation>Tallenna ääni</translation>
-    </message>
-    <message>
-      <source>Save image</source>
-      <translation>Tallenna kuva</translation>
-    </message>
-    <message>
-      <source>Image files (*.bmp *.jpg *.png *.tif);;All files (*.*)</source>
-      <translation>Kuvatiedostot (*.bmp *.jpg *.png *.tif);;Kaikki tiedostot (*.*)</translation>
+      <source>Open Link in &amp;External Browser</source>
+      <translation>Avaa linkki ulkoisessa &amp;selaimessa</translation>
     </message>
     <message>
       <source>Save &amp;image...</source>
       <translation>Tallenna &amp;kuva...</translation>
     </message>
     <message>
-      <source>Phrase not found</source>
-      <translation>Ilmausta ei löydy</translation>
-    </message>
-    <message>
-      <source>%1 of %2 matches</source>
-      <translation>%1 / %2 ottelua</translation>
+      <source>Open image in system viewer...</source>
+      <translation>Avaa kuva järjestelmän katseluohjelmassa...</translation>
     </message>
     <message>
       <source>Save s&amp;ound...</source>
       <translation>Tallenna ää&amp;ni...</translation>
+    </message>
+    <message>
+      <source>&amp;Look up &quot;%1&quot;</source>
+      <translation>&amp;Hae &quot;%1&quot;</translation>
+    </message>
+    <message>
+      <source>Look up &quot;%1&quot; in &amp;New Tab</source>
+      <translation>Etsi &quot;%1&quot; &amp;uudessa välilehdessä</translation>
     </message>
     <message>
       <source>Send &quot;%1&quot; to input line</source>
@@ -265,6 +231,18 @@
       <translation>&amp;Lisää &quot;%1&quot; historiaan</translation>
     </message>
     <message>
+      <source>Look up &quot;%1&quot; in %2</source>
+      <translation>Hae &quot;%1&quot; %2</translation>
+    </message>
+    <message>
+      <source>Look up &quot;%1&quot; in %2 in &amp;New Tab</source>
+      <translation>Hae &quot;%1&quot; %2 &amp;uudessa välilehdessä</translation>
+    </message>
+    <message>
+      <source>Save &amp;Bookmark &quot;%1...&quot;</source>
+      <translation>Tallenna kirjanmerkki &quot;%1...&quot;</translation>
+    </message>
+    <message>
       <source>&amp;Send Current Article to Anki</source>
       <translation>&amp;Lähetä nykyinen artikkeli Ankille</translation>
     </message>
@@ -273,20 +251,40 @@
       <translation>&amp;Lähetä valittu teksti Ankiin</translation>
     </message>
     <message>
+      <source>Save sound</source>
+      <translation>Tallenna ääni</translation>
+    </message>
+    <message>
       <source>Sound files (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
       <translation>Äänitiedostot (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);Kaikki tiedostot (*.*)</translation>
+    </message>
+    <message>
+      <source>Save image</source>
+      <translation>Tallenna kuva</translation>
+    </message>
+    <message>
+      <source>Image files (*.bmp *.jpg *.png *.tif);;All files (*.*)</source>
+      <translation>Kuvatiedostot (*.bmp *.jpg *.png *.tif);;Kaikki tiedostot (*.*)</translation>
     </message>
     <message>
       <source>Failed to play sound file: %1</source>
       <translation>Äänitiedoston toistaminen epäonnistui: %1</translation>
     </message>
     <message>
-      <source>&amp;Create Anki note</source>
-      <translation>&amp;Luo Anki-muistio</translation>
+      <source>Failed to create temporary file.</source>
+      <translation>Väliaikaistiedoston luonti epäonnistui.</translation>
     </message>
     <message>
-      <source>Open image in system viewer...</source>
-      <translation>Avaa kuva järjestelmän katseluohjelmassa...</translation>
+      <source>Failed to auto-open resource file, try opening manually: %1.</source>
+      <translation>Resurssitiedoston automaattinen avaaminen epäonnistui, yritä avata manuaalisesti: %1.</translation>
+    </message>
+    <message>
+      <source>WARNING: Audio Player: %1</source>
+      <translation>VAROITUS: äänisoitin: %1</translation>
+    </message>
+    <message>
+      <source>&amp;Create Anki note</source>
+      <translation>&amp;Luo Anki-muistio</translation>
     </message>
   </context>
   <context>
@@ -433,6 +431,10 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
   <context>
     <name>DictGroupsWidget</name>
     <message>
+      <source>Dictionaries: </source>
+      <translation>Sanakirjaa: </translation>
+    </message>
+    <message>
       <source>Confirmation</source>
       <translation>Vahvistus</translation>
     </message>
@@ -441,16 +443,8 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Oletko varma, että haluat luoda joukon ryhmiä, jotka perustuvat kielipareihin?</translation>
     </message>
     <message>
-      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>Haluatko varmasti luoda joukon ryhmiä metadata.toml-tiedoston perusteella?</translation>
-    </message>
-    <message>
-      <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
-      <translation>Yhdistä ryhmät lähdekielen mukaan &quot;%1-&gt;&quot;</translation>
-    </message>
-    <message>
-      <source>Combine groups by target language to &quot;-&gt;%1&quot;</source>
-      <translation>Yhdistä ryhmät kohdekielen mukaan &quot;-&gt;%1&quot;</translation>
+      <source>Unassigned</source>
+      <translation>Määrittämätön</translation>
     </message>
     <message>
       <source>Auto group by folder failed.</source>
@@ -465,6 +459,18 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Haluatko varmasti luoda joukon ryhmiä sisältävien kansioiden perusteella?</translation>
     </message>
     <message>
+      <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
+      <translation>Haluatko varmasti luoda joukon ryhmiä metadata.toml-tiedoston perusteella?</translation>
+    </message>
+    <message>
+      <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
+      <translation>Yhdistä ryhmät lähdekielen mukaan &quot;%1-&gt;&quot;</translation>
+    </message>
+    <message>
+      <source>Combine groups by target language to &quot;-&gt;%1&quot;</source>
+      <translation>Yhdistä ryhmät kohdekielen mukaan &quot;-&gt;%1&quot;</translation>
+    </message>
+    <message>
       <source>Make two-side translate group &quot;%1-%2-%1&quot;</source>
       <translation>Tee kaksipuolinen kääntää ryhmä &quot;%1-%2-%1&quot;</translation>
     </message>
@@ -472,17 +478,33 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>Yhdistä ryhmät &quot;%1&quot;</translation>
     </message>
-    <message>
-      <source>Dictionaries: </source>
-      <translation>Sanakirjaa: </translation>
-    </message>
-    <message>
-      <source>Unassigned</source>
-      <translation>Määrittämätön</translation>
-    </message>
   </context>
   <context>
     <name>DictHeadwords</name>
+    <message>
+      <source>If checked any filter changes will we immediately applied to headwords list</source>
+      <translation>Jos valittuna, suodatinmuutokset otetaan välittömästi käyttöön otsikkoluettelossa</translation>
+    </message>
+    <message>
+      <source>Auto apply</source>
+      <translation>Automaattinen soveltaminen</translation>
+    </message>
+    <message>
+      <source>Press this button to apply filter to headwords list</source>
+      <translation>Paina tätä painiketta ottaaksesi käyttöön suodattimen otsikkoluettelosta</translation>
+    </message>
+    <message>
+      <source>Apply</source>
+      <translation>Käytä</translation>
+    </message>
+    <message>
+      <source>Filter string (fixed string, wildcards or regular expression)</source>
+      <translation>Suodatinmerkkijono (kiinteä merkkijono, jokerimerkit tai säännöllinen lauseke)</translation>
+    </message>
+    <message>
+      <source>Filter:</source>
+      <translation>Suodatin:</translation>
+    </message>
     <message>
       <source>Search mode</source>
       <translation>Hakutila</translation>
@@ -508,36 +530,20 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Vienti</translation>
     </message>
     <message>
+      <source>Specify the maximum filtered headwords returned.</source>
+      <translation>Määritä suurin suodatetut otsikot.</translation>
+    </message>
+    <message>
+      <source>Filter max results:</source>
+      <translation>Suodatin max tulokset:</translation>
+    </message>
+    <message>
       <source>Help</source>
       <translation>Ohje</translation>
     </message>
     <message>
       <source>OK</source>
       <translation>Ok</translation>
-    </message>
-    <message>
-      <source>Press this button to apply filter to headwords list</source>
-      <translation>Paina tätä painiketta ottaaksesi käyttöön suodattimen otsikkoluettelosta</translation>
-    </message>
-    <message>
-      <source>Apply</source>
-      <translation>Käytä</translation>
-    </message>
-    <message>
-      <source>If checked any filter changes will we immediately applied to headwords list</source>
-      <translation>Jos valittuna, suodatinmuutokset otetaan välittömästi käyttöön otsikkoluettelossa</translation>
-    </message>
-    <message>
-      <source>Auto apply</source>
-      <translation>Automaattinen soveltaminen</translation>
-    </message>
-    <message>
-      <source>Filter:</source>
-      <translation>Suodatin:</translation>
-    </message>
-    <message>
-      <source>Filter string (fixed string, wildcards or regular expression)</source>
-      <translation>Suodatinmerkkijono (kiinteä merkkijono, jokerimerkit tai säännöllinen lauseke)</translation>
     </message>
     <message>
       <source>Text</source>
@@ -550,6 +556,14 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>RegExp</source>
       <translation>RegExp</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1.</source>
+      <translation>Ainutlaatuiset kuulokkeet yhteensä: %1.</translation>
+    </message>
+    <message>
+      <source>Unique headwords total: %1, filtered(limited): %2</source>
+      <translation>Ainutlaatuiset otsikot yhteensä: %1, filtered(limited): %2</translation>
     </message>
     <message>
       <source>Save headwords to file</source>
@@ -579,48 +593,40 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <source>Export finished</source>
       <translation>Vienti valmis</translation>
     </message>
-    <message>
-      <source>Specify the maximum filtered headwords returned.</source>
-      <translation>Määritä suurin suodatetut otsikot.</translation>
-    </message>
-    <message>
-      <source>Filter max results:</source>
-      <translation>Suodatin max tulokset:</translation>
-    </message>
-    <message>
-      <source>Unique headwords total: %1.</source>
-      <translation>Ainutlaatuiset kuulokkeet yhteensä: %1.</translation>
-    </message>
-    <message>
-      <source>Unique headwords total: %1, filtered(limited): %2</source>
-      <translation>Ainutlaatuiset otsikot yhteensä: %1, filtered(limited): %2</translation>
-    </message>
   </context>
   <context>
     <name>DictInfo</name>
+    <message>
+      <source>Edit dictionary</source>
+      <translation>Muokkaa sanakirjaa</translation>
+    </message>
+    <message>
+      <source>Open index folder</source>
+      <translation>Avaa hakemistokansio</translation>
+    </message>
     <message>
       <source>Total articles:</source>
       <translation>Yhteensä artikkeleita:</translation>
     </message>
     <message>
-      <source>Translates from:</source>
-      <translation>Käännökset lähteestä:</translation>
+      <source>Index filename:</source>
+      <translation>Hakemistotiedoston nimi:</translation>
     </message>
     <message>
       <source>Total words:</source>
       <translation>Yhteensä sanoja:</translation>
     </message>
     <message>
-      <source>Translates to:</source>
-      <translation>Käännös:</translation>
-    </message>
-    <message>
       <source>Open folder</source>
       <translation>Avaa kansio</translation>
     </message>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Muokkaa sanakirjaa</translation>
+      <source>Translates from:</source>
+      <translation>Käännökset lähteestä:</translation>
+    </message>
+    <message>
+      <source>Translates to:</source>
+      <translation>Käännös:</translation>
     </message>
     <message>
       <source>Files comprising this dictionary:</source>
@@ -651,14 +657,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
 %1</source>
       <translation>Muokkaa sanakirjaa komennon kautta:
 %1</translation>
-    </message>
-    <message>
-      <source>Index filename:</source>
-      <translation>Hakemistotiedoston nimi:</translation>
-    </message>
-    <message>
-      <source>Open index folder</source>
-      <translation>Avaa hakemistokansio</translation>
     </message>
   </context>
   <context>
@@ -729,6 +727,10 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
   <context>
     <name>DictionaryBar</name>
     <message>
+      <source>&amp;Dictionary Bar</source>
+      <translation>&amp;Sanakirjapalkki</translation>
+    </message>
+    <message>
       <source>Extended menu with all dictionaries...</source>
       <translation>Laajennettu valikko kaikilla sanakirjoilla...</translation>
     </message>
@@ -752,20 +754,32 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <source>Edit dictionary</source>
       <translation>Muokkaa sanakirjaa</translation>
     </message>
-    <message>
-      <source>&amp;Dictionary Bar</source>
-      <translation>&amp;Sanakirjapalkki</translation>
-    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
+    <message>
+      <source>Dictionaries</source>
+      <translation>Sanakirjat</translation>
+    </message>
+    <message>
+      <source>&amp;Sources</source>
+      <translation>&amp;Lähteet</translation>
+    </message>
     <message>
       <source>&amp;Dictionaries</source>
       <translation>&amp;Sanakirjat</translation>
     </message>
     <message>
-      <source>Dictionaries</source>
-      <translation>Sanakirjat</translation>
+      <source>&amp;Groups</source>
+      <translation>&amp;Ryhmät</translation>
+    </message>
+    <message>
+      <source>Sources changed</source>
+      <translation>Lähteet vaihdettu</translation>
+    </message>
+    <message>
+      <source>Some sources were changed. Would you like to accept the changes?</source>
+      <translation>Joitakin lähteitä on muutettu. Haluatko hyväksyä muutokset?</translation>
     </message>
     <message>
       <source>Accept</source>
@@ -774,22 +788,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>Cancel</source>
       <translation>Peruuta</translation>
-    </message>
-    <message>
-      <source>Sources changed</source>
-      <translation>Lähteet vaihdettu</translation>
-    </message>
-    <message>
-      <source>&amp;Sources</source>
-      <translation>&amp;Lähteet</translation>
-    </message>
-    <message>
-      <source>&amp;Groups</source>
-      <translation>&amp;Ryhmät</translation>
-    </message>
-    <message>
-      <source>Some sources were changed. Would you like to accept the changes?</source>
-      <translation>Joitakin lähteitä on muutettu. Haluatko hyväksyä muutokset?</translation>
     </message>
   </context>
   <context>
@@ -817,24 +815,16 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Täystekstihaku</translation>
     </message>
     <message>
-      <source>Plain text</source>
-      <translation>Pelkkä teksti</translation>
+      <source>Default</source>
+      <translation>Oletus</translation>
     </message>
     <message>
       <source>Wildcards</source>
       <translation>Jokerimerkit</translation>
     </message>
     <message>
-      <source>The querying word can not be empty.</source>
-      <translation>Kyselysana ei voi olla tyhjä.</translation>
-    </message>
-    <message>
-      <source>support xapian search syntax,such as AND OR +/- etc</source>
-      <translation>tukea xapian hakusyntaksia, kuten JA TAI +/- jne.</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>Oletus</translation>
+      <source>Support xapian search syntax, such as AND OR +/- etc.</source>
+      <translation type="unfinished">Support xapian search syntax, such as AND OR +/- etc.</translation>
     </message>
     <message>
       <source>Articles found: </source>
@@ -847,6 +837,10 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>None</source>
       <translation>Tyhjä</translation>
+    </message>
+    <message>
+      <source>The querying word can not be empty.</source>
+      <translation>Kyselysana ei voi olla tyhjä.</translation>
     </message>
     <message>
       <source>No dictionaries for full-text search</source>
@@ -948,10 +942,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Odota indeksointia:</translation>
     </message>
     <message>
-      <source>Help</source>
-      <translation>Ohje</translation>
-    </message>
-    <message>
       <source>Total:</source>
       <translation>Yhteensä:</translation>
     </message>
@@ -966,6 +956,10 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>Cancel</source>
       <translation>Peruuta</translation>
+    </message>
+    <message>
+      <source>Help</source>
+      <translation>Ohje</translation>
     </message>
   </context>
   <context>
@@ -992,68 +986,76 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
   <context>
     <name>Groups</name>
     <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
+      <source>Dictionaries available:</source>
+      <translation>Saatavilla olevat sanakirjat:</translation>
+    </message>
+    <message>
+      <source>Add selected dictionaries to group (Ins)</source>
+      <translation>Lisää valitut sanakirjat ryhmään (Ins)</translation>
     </message>
     <message>
       <source>&gt;</source>
       <translation>&gt;</translation>
     </message>
     <message>
+      <source>Ins</source>
+      <translation>Ins</translation>
+    </message>
+    <message>
+      <source>Remove selected dictionaries from group (Del)</source>
+      <translation>Poista valitut sanakirjat ryhmästä (Del)</translation>
+    </message>
+    <message>
+      <source>&lt;</source>
+      <translation>&lt;</translation>
+    </message>
+    <message>
       <source>Del</source>
       <translation>Del</translation>
     </message>
     <message>
-      <source>Ins</source>
-      <translation>Ins</translation>
+      <source>Groups:</source>
+      <translation>Ryhmät:</translation>
     </message>
     <message>
       <source>Tab 2</source>
       <translation>Tab 2</translation>
     </message>
     <message>
-      <source>Are you sure you want to remove all the groups?</source>
-      <translation>Oletko varma, että haluat poistaa kaikki ryhmät?</translation>
-    </message>
-    <message>
-      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
-      <translation>Oletko varma, että haluat poistaa ryhmän &lt;b&gt;%1&lt;/b&gt;?</translation>
-    </message>
-    <message>
-      <source>Group tabs</source>
-      <translation>Ryhmän välilehdet</translation>
-    </message>
-    <message>
-      <source>Open groups list</source>
-      <translation>Avaa ryhmäluettelo</translation>
-    </message>
-    <message>
-      <source>Remove group</source>
-      <translation>Poista ryhmä</translation>
-    </message>
-    <message>
-      <source>Rename group</source>
-      <translation>Nimeä ryhmä uudelleen</translation>
-    </message>
-    <message>
-      <source>Give a new name for the group:</source>
-      <translation>Anna ryhmälle uusi nimi:</translation>
-    </message>
-    <message>
-      <source>Dictionaries available:</source>
-      <translation>Saatavilla olevat sanakirjat:</translation>
+      <source>Create new dictionary group</source>
+      <translation>Luo uusi sanakirja ryhmä</translation>
     </message>
     <message>
       <source>&amp;Add group</source>
       <translation>&amp;Lisää ryhmä</translation>
     </message>
     <message>
-      <source>Add group</source>
-      <translation>Lisää ryhmä</translation>
+      <source>Rename current dictionary group</source>
+      <translation>Nimeä nykyinen sanakirja uudestaan</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>Luo uusi sanakirja ryhmä</translation>
+      <source>Re&amp;name group</source>
+      <translation>Ni&amp;meä ryhmä uudelleen</translation>
+    </message>
+    <message>
+      <source>Remove current dictionary group</source>
+      <translation>Poista nykyinen sanakirja ryhmä</translation>
+    </message>
+    <message>
+      <source>&amp;Remove group</source>
+      <translation>&amp;Poista ryhmä</translation>
+    </message>
+    <message>
+      <source>Remove all dictionary groups</source>
+      <translation>Poista kaikki sanakirjaryhmät</translation>
+    </message>
+    <message>
+      <source>Remove all groups</source>
+      <translation>Poista kaikki ryhmät</translation>
+    </message>
+    <message>
+      <source>Create language-based groups</source>
+      <translation>Luo kielipohjaisia ryhmiä</translation>
     </message>
     <message>
       <source>Group by Languages</source>
@@ -1076,48 +1078,40 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Vedä ja pudota sanakirjoja ryhmiin, siirrä ne ryhmien sisälle, järjestä ryhmät uudelleen hiirellä.</translation>
     </message>
     <message>
-      <source>Rename current dictionary group</source>
-      <translation>Nimeä nykyinen sanakirja uudestaan</translation>
+      <source>Group tabs</source>
+      <translation>Ryhmän välilehdet</translation>
     </message>
     <message>
-      <source>Remove current dictionary group</source>
-      <translation>Poista nykyinen sanakirja ryhmä</translation>
+      <source>Open groups list</source>
+      <translation>Avaa ryhmäluettelo</translation>
+    </message>
+    <message>
+      <source>Add group</source>
+      <translation>Lisää ryhmä</translation>
     </message>
     <message>
       <source>Give a name for the new group:</source>
       <translation>Anna uuden ryhmän nimi:</translation>
     </message>
     <message>
-      <source>Remove all groups</source>
-      <translation>Poista kaikki ryhmät</translation>
+      <source>Rename group</source>
+      <translation>Nimeä ryhmä uudelleen</translation>
     </message>
     <message>
-      <source>Remove selected dictionaries from group (Del)</source>
-      <translation>Poista valitut sanakirjat ryhmästä (Del)</translation>
+      <source>Give a new name for the group:</source>
+      <translation>Anna ryhmälle uusi nimi:</translation>
     </message>
     <message>
-      <source>Add selected dictionaries to group (Ins)</source>
-      <translation>Lisää valitut sanakirjat ryhmään (Ins)</translation>
+      <source>Remove group</source>
+      <translation>Poista ryhmä</translation>
     </message>
     <message>
-      <source>&amp;Remove group</source>
-      <translation>&amp;Poista ryhmä</translation>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>Oletko varma, että haluat poistaa ryhmän &lt;b&gt;%1&lt;/b&gt;?</translation>
     </message>
     <message>
-      <source>Groups:</source>
-      <translation>Ryhmät:</translation>
-    </message>
-    <message>
-      <source>Re&amp;name group</source>
-      <translation>Ni&amp;meä ryhmä uudelleen</translation>
-    </message>
-    <message>
-      <source>Remove all dictionary groups</source>
-      <translation>Poista kaikki sanakirjaryhmät</translation>
-    </message>
-    <message>
-      <source>Create language-based groups</source>
-      <translation>Luo kielipohjaisia ryhmiä</translation>
+      <source>Are you sure you want to remove all the groups?</source>
+      <translation>Oletko varma, että haluat poistaa kaikki ryhmät?</translation>
     </message>
   </context>
   <context>
@@ -1157,16 +1151,20 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
   <context>
     <name>HunspellDictsModel</name>
     <message>
-      <source>Name</source>
-      <translation>Nimi</translation>
-    </message>
-    <message>
       <source>Enabled</source>
       <translation>Käytössä</translation>
+    </message>
+    <message>
+      <source>Name</source>
+      <translation>Nimi</translation>
     </message>
   </context>
   <context>
     <name>Initializing</name>
+    <message>
+      <source>GoldenDict-ng - Initializing</source>
+      <translation>GoldenDict-ng - Alustetaan</translation>
+    </message>
     <message>
       <source>Indexing: </source>
       <translation>Indeksointi: </translation>
@@ -1174,10 +1172,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>Dictionary Name</source>
       <translation>Sanakirjan nimi</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng - Initializing</source>
-      <translation>GoldenDict-ng - Alustetaan</translation>
     </message>
     <message>
       <source>Please wait...</source>
@@ -1195,484 +1189,52 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
   <context>
     <name>Language</name>
     <message>
-      <source>Ewe</source>
-      <translation>ewe</translation>
-    </message>
-    <message>
-      <source>Ido</source>
-      <translation>ido</translation>
-    </message>
-    <message>
-      <source>Lao</source>
-      <translation>lao</translation>
-    </message>
-    <message>
-      <source>Twi</source>
-      <translation>twi</translation>
-    </message>
-    <message>
       <source>Afar</source>
       <translation>afari</translation>
-    </message>
-    <message>
-      <source>Akan</source>
-      <translation>akani</translation>
-    </message>
-    <message>
-      <source>Cree</source>
-      <translation>cree</translation>
-    </message>
-    <message>
-      <source>Igbo</source>
-      <translation>igbo</translation>
-    </message>
-    <message>
-      <source>Komi</source>
-      <translation>komi</translation>
-    </message>
-    <message>
-      <source>Manx</source>
-      <translation>manski</translation>
-    </message>
-    <message>
-      <source>Pali</source>
-      <translation>paali</translation>
-    </message>
-    <message>
-      <source>Thai</source>
-      <translation>thai</translation>
-    </message>
-    <message>
-      <source>Urdu</source>
-      <translation>urdu</translation>
-    </message>
-    <message>
-      <source>Zulu</source>
-      <translation>zulu</translation>
-    </message>
-    <message>
-      <source>Czech</source>
-      <translation>tšekki</translation>
-    </message>
-    <message>
-      <source>Dutch</source>
-      <translation>hollanti</translation>
-    </message>
-    <message>
-      <source>Ganda</source>
-      <translation>ganda</translation>
-    </message>
-    <message>
-      <source>Fulah</source>
-      <translation>fulani</translation>
-    </message>
-    <message>
-      <source>Greek</source>
-      <translation>kreikka</translation>
-    </message>
-    <message>
-      <source>Hausa</source>
-      <translation>hausa</translation>
-    </message>
-    <message>
-      <source>Hindi</source>
-      <translation>hindi</translation>
-    </message>
-    <message>
-      <source>Irish</source>
-      <translation>iiri</translation>
-    </message>
-    <message>
-      <source>Khmer</source>
-      <translation>khmeri</translation>
-    </message>
-    <message>
-      <source>Kongo</source>
-      <translation>kongo</translation>
-    </message>
-    <message>
-      <source>Latin</source>
-      <translation>latina</translation>
-    </message>
-    <message>
-      <source>Malay</source>
-      <translation>malaiji</translation>
-    </message>
-    <message>
-      <source>Maori</source>
-      <translation>maori</translation>
-    </message>
-    <message>
-      <source>Nauru</source>
-      <translation>nauru</translation>
-    </message>
-    <message>
-      <source>Oriya</source>
-      <translation>orija</translation>
-    </message>
-    <message>
-      <source>Oromo</source>
-      <translation>oromo</translation>
-    </message>
-    <message>
-      <source>Sango</source>
-      <translation>sango</translation>
-    </message>
-    <message>
-      <source>Shona</source>
-      <translation>Šona</translation>
-    </message>
-    <message>
-      <source>Tajik</source>
-      <translation>tadžikki</translation>
-    </message>
-    <message>
-      <source>Tamil</source>
-      <translation>tamili</translation>
-    </message>
-    <message>
-      <source>Tatar</source>
-      <translation>tataari</translation>
-    </message>
-    <message>
-      <source>Swati</source>
-      <translation>swazi</translation>
-    </message>
-    <message>
-      <source>Tonga</source>
-      <translation>tonga</translation>
-    </message>
-    <message>
-      <source>Inupiaq</source>
-      <translation>inupiatu</translation>
-    </message>
-    <message>
-      <source>Venda</source>
-      <translation>venda</translation>
-    </message>
-    <message>
-      <source>Uzbek</source>
-      <translation>uzbekki</translation>
-    </message>
-    <message>
-      <source>Welsh</source>
-      <translation>kymri</translation>
-    </message>
-    <message>
-      <source>Wolof</source>
-      <translation>wolofi</translation>
-    </message>
-    <message>
-      <source>Xhosa</source>
-      <translation>xhosa</translation>
-    </message>
-    <message>
-      <source>Italian</source>
-      <translation>italia</translation>
-    </message>
-    <message>
-      <source>Raeto-Romance</source>
-      <translation>retoromaani</translation>
-    </message>
-    <message>
-      <source>Dzongkha</source>
-      <translation>dzongkha</translation>
-    </message>
-    <message>
-      <source>Kannada</source>
-      <translation>kannada</translation>
-    </message>
-    <message>
-      <source>North Ndebele</source>
-      <translation>pohjois-ndebele</translation>
     </message>
     <message>
       <source>Abkhazian</source>
       <translation>abhaasi</translation>
     </message>
     <message>
-      <source>Kirghiz</source>
-      <translation>kirgiisi</translation>
+      <source>Avestan</source>
+      <translation>avesta</translation>
     </message>
     <message>
-      <source>Kirundi</source>
-      <translation>kirundi</translation>
+      <source>Afrikaans</source>
+      <translation>afrikaansi</translation>
     </message>
     <message>
-      <source>Scottish Gaelic</source>
-      <translation>gaeli</translation>
-    </message>
-    <message>
-      <source>Albanian</source>
-      <translation>albania</translation>
-    </message>
-    <message>
-      <source>Latvian</source>
-      <translation>latvia</translation>
-    </message>
-    <message>
-      <source>Malayalam</source>
-      <translation>malajalam</translation>
-    </message>
-    <message>
-      <source>Kurdish</source>
-      <translation>kurdi</translation>
-    </message>
-    <message>
-      <source>Bulgarian</source>
-      <translation>bulgaria</translation>
-    </message>
-    <message>
-      <source>Lingala</source>
-      <translation>lingala</translation>
-    </message>
-    <message>
-      <source>Maltese</source>
-      <translation>malta</translation>
-    </message>
-    <message>
-      <source>Marathi</source>
-      <translation>marathi</translation>
-    </message>
-    <message>
-      <source>Arabic</source>
-      <translation>arabia</translation>
-    </message>
-    <message>
-      <source>Basque</source>
-      <translation>baski</translation>
-    </message>
-    <message>
-      <source>Avaric</source>
-      <translation>avaari</translation>
-    </message>
-    <message>
-      <source>Bihari</source>
-      <translation>bihar</translation>
-    </message>
-    <message>
-      <source>Aymara</source>
-      <translation>aimara</translation>
-    </message>
-    <message>
-      <source>Breton</source>
-      <translation>bretoni</translation>
-    </message>
-    <message>
-      <source>Sundanese</source>
-      <translation>sunda</translation>
-    </message>
-    <message>
-      <source>Danish</source>
-      <translation>tanska</translation>
-    </message>
-    <message>
-      <source>Divehi</source>
-      <translation>divehi</translation>
-    </message>
-    <message>
-      <source>Luba-Katanga</source>
-      <translation>katanganluba</translation>
-    </message>
-    <message>
-      <source>Fijian</source>
-      <translation>fidži</translation>
-    </message>
-    <message>
-      <source>Hungarian</source>
-      <translation>unkari</translation>
-    </message>
-    <message>
-      <source>French</source>
-      <translation>ranska</translation>
-    </message>
-    <message>
-      <source>German</source>
-      <translation>saksa</translation>
-    </message>
-    <message>
-      <source>Mongolian</source>
-      <translation>mongoli</translation>
-    </message>
-    <message>
-      <source>Hebrew</source>
-      <translation>heprea</translation>
-    </message>
-    <message>
-      <source>Herero</source>
-      <translation>herero</translation>
-    </message>
-    <message>
-      <source>Luxembourgish</source>
-      <translation>luxemburgi</translation>
-    </message>
-    <message>
-      <source>Kanuri</source>
-      <translation>kanuri</translation>
-    </message>
-    <message>
-      <source>Kazakh</source>
-      <translation>kazaki</translation>
-    </message>
-    <message>
-      <source>Kikuyu</source>
-      <translation>kikuju</translation>
-    </message>
-    <message>
-      <source>Korean</source>
-      <translation>korea</translation>
-    </message>
-    <message>
-      <source>Navajo</source>
-      <translation>navajo</translation>
-    </message>
-    <message>
-      <source>Ndonga</source>
-      <translation>ndonga</translation>
-    </message>
-    <message>
-      <source>Nepali</source>
-      <translation>nepali</translation>
-    </message>
-    <message>
-      <source>Ojibwa</source>
-      <translation>odžibwa</translation>
-    </message>
-    <message>
-      <source>Pashto</source>
-      <translation>paštu</translation>
-    </message>
-    <message>
-      <source>Polish</source>
-      <translation>puola</translation>
-    </message>
-    <message>
-      <source>Samoan</source>
-      <translation>samoa</translation>
-    </message>
-    <message>
-      <source>Occitan</source>
-      <translation>oksitaani</translation>
-    </message>
-    <message>
-      <source>Sindhi</source>
-      <translation>sindhi</translation>
-    </message>
-    <message>
-      <source>Slovak</source>
-      <translation>slovakki</translation>
-    </message>
-    <message>
-      <source>Somali</source>
-      <translation>somali</translation>
-    </message>
-    <message>
-      <source>Telugu</source>
-      <translation>telugu</translation>
-    </message>
-    <message>
-      <source>Tsonga</source>
-      <translation>tsonga</translation>
-    </message>
-    <message>
-      <source>Tswana</source>
-      <translation>tswana</translation>
-    </message>
-    <message>
-      <source>Uighur</source>
-      <translation>uiguuri</translation>
-    </message>
-    <message>
-      <source>Serbo-Croatian</source>
-      <translation>serbokroaati</translation>
-    </message>
-    <message>
-      <source>Yoruba</source>
-      <translation>joruba</translation>
-    </message>
-    <message>
-      <source>Zhuang</source>
-      <translation>zhuangi</translation>
-    </message>
-    <message>
-      <source>Romanian</source>
-      <translation>romania</translation>
-    </message>
-    <message>
-      <source>Indonesian</source>
-      <translation>indonesia</translation>
-    </message>
-    <message>
-      <source>Panjabi</source>
-      <translation>pandžabi</translation>
-    </message>
-    <message>
-      <source>Southern Sotho</source>
-      <translation>eteläsotho</translation>
-    </message>
-    <message>
-      <source>Corsican</source>
-      <translation>korsika</translation>
-    </message>
-    <message>
-      <source>Esperanto</source>
-      <translation>esperanto</translation>
-    </message>
-    <message>
-      <source>Persian</source>
-      <translation>persia</translation>
-    </message>
-    <message>
-      <source>Slovenian</source>
-      <translation>sloveeni</translation>
-    </message>
-    <message>
-      <source>Western Frisian</source>
-      <translation>länsifriisi</translation>
-    </message>
-    <message>
-      <source>Aragonese</source>
-      <translation>aragonia</translation>
-    </message>
-    <message>
-      <source>Tahitian</source>
-      <translation>tahiti</translation>
-    </message>
-    <message>
-      <source>Malagasy</source>
-      <translation>malagassi</translation>
-    </message>
-    <message>
-      <source>Galician</source>
-      <translation>galicia</translation>
-    </message>
-    <message>
-      <source>Azerbaijani</source>
-      <translation>azeri</translation>
+      <source>Akan</source>
+      <translation>akani</translation>
     </message>
     <message>
       <source>Amharic</source>
       <translation>amhara</translation>
     </message>
     <message>
-      <source>Sanskrit</source>
-      <translation>sanskrit</translation>
+      <source>Aragonese</source>
+      <translation>aragonia</translation>
     </message>
     <message>
-      <source>Japanese</source>
-      <translation>japani</translation>
+      <source>Arabic</source>
+      <translation>arabia</translation>
     </message>
     <message>
-      <source>Ukrainian</source>
-      <translation>ukraina</translation>
+      <source>Assamese</source>
+      <translation>assami</translation>
     </message>
     <message>
-      <source>Bambara</source>
-      <translation>bambara</translation>
+      <source>Avaric</source>
+      <translation>avaari</translation>
     </message>
     <message>
-      <source>Kalaallisut</source>
-      <translation>grönlanti</translation>
+      <source>Aymara</source>
+      <translation>aimara</translation>
+    </message>
+    <message>
+      <source>Azerbaijani</source>
+      <translation>azeri</translation>
     </message>
     <message>
       <source>Bashkir</source>
@@ -1683,196 +1245,652 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>valkovenäjä</translation>
     </message>
     <message>
-      <source>Kashmiri</source>
-      <translation>kašmiri</translation>
+      <source>Bulgarian</source>
+      <translation>bulgaria</translation>
     </message>
     <message>
-      <source>Sardinian</source>
-      <translation>sardi</translation>
-    </message>
-    <message>
-      <source>Hiri Motu</source>
-      <translation>hiri-motu</translation>
-    </message>
-    <message>
-      <source>Quechua</source>
-      <translation>ketšua</translation>
-    </message>
-    <message>
-      <source>Bengali</source>
-      <translation>bengali</translation>
-    </message>
-    <message>
-      <source>Javanese</source>
-      <translation>jaava</translation>
-    </message>
-    <message>
-      <source>Avestan</source>
-      <translation>avesta</translation>
-    </message>
-    <message>
-      <source>Kinyarwanda</source>
-      <translation>ruanda</translation>
-    </message>
-    <message>
-      <source>Afrikaans</source>
-      <translation>afrikaansi</translation>
+      <source>Bihari</source>
+      <translation>bihar</translation>
     </message>
     <message>
       <source>Bislama</source>
       <translation>bislama</translation>
     </message>
     <message>
-      <source>Armenian</source>
-      <translation>armenia</translation>
+      <source>Bambara</source>
+      <translation>bambara</translation>
     </message>
     <message>
-      <source>Norwegian Bokmal</source>
-      <translation>kirjanorja</translation>
-    </message>
-    <message>
-      <source>Croatian</source>
-      <translation>kroatia</translation>
-    </message>
-    <message>
-      <source>Bosnian</source>
-      <translation>bosnia</translation>
-    </message>
-    <message>
-      <source>Interlingua</source>
-      <translation>interlingua</translation>
-    </message>
-    <message>
-      <source>Interlingue</source>
-      <translation>interlingue</translation>
-    </message>
-    <message>
-      <source>Catalan</source>
-      <translation>katalaani</translation>
-    </message>
-    <message>
-      <source>Serbian</source>
-      <translation>serbia</translation>
-    </message>
-    <message>
-      <source>Burmese</source>
-      <translation>burma</translation>
-    </message>
-    <message>
-      <source>Russian</source>
-      <translation>venäjä</translation>
-    </message>
-    <message>
-      <source>Limburgish</source>
-      <translation>limburgi</translation>
-    </message>
-    <message>
-      <source>Norwegian</source>
-      <translation>norja</translation>
-    </message>
-    <message>
-      <source>Chechen</source>
-      <translation>tšetšeeni</translation>
-    </message>
-    <message>
-      <source>Chinese</source>
-      <translation>kiina</translation>
-    </message>
-    <message>
-      <source>Chuvash</source>
-      <translation>tšuvassi</translation>
-    </message>
-    <message>
-      <source>Sinhala</source>
-      <translation>sinhali</translation>
-    </message>
-    <message>
-      <source>Spanish</source>
-      <translation>espanja</translation>
-    </message>
-    <message>
-      <source>Cornish</source>
-      <translation>korni</translation>
-    </message>
-    <message>
-      <source>Tagalog</source>
-      <translation>tagalog</translation>
-    </message>
-    <message>
-      <source>Assamese</source>
-      <translation>assami</translation>
-    </message>
-    <message>
-      <source>Ossetian</source>
-      <translation>osseeti</translation>
-    </message>
-    <message>
-      <source>Estonian</source>
-      <translation>eesti</translation>
-    </message>
-    <message>
-      <source>Swahili</source>
-      <translation>swahili</translation>
-    </message>
-    <message>
-      <source>Swedish</source>
-      <translation>ruotsi</translation>
+      <source>Bengali</source>
+      <translation>bengali</translation>
     </message>
     <message>
       <source>Tibetan</source>
       <translation>tiibeti</translation>
     </message>
     <message>
-      <source>Vietnamese</source>
-      <translation>vietnami</translation>
+      <source>Breton</source>
+      <translation>bretoni</translation>
     </message>
     <message>
-      <source>Macedonian</source>
-      <translation>makedonia</translation>
+      <source>Bosnian</source>
+      <translation>bosnia</translation>
     </message>
     <message>
-      <source>Portuguese</source>
-      <translation>portugali</translation>
+      <source>Catalan</source>
+      <translation>katalaani</translation>
     </message>
     <message>
-      <source>Turkish</source>
-      <translation>turki</translation>
+      <source>Chechen</source>
+      <translation>tšetšeeni</translation>
     </message>
     <message>
-      <source>Turkmen</source>
-      <translation>turkmeeni</translation>
+      <source>Chamorro</source>
+      <translation>tšamorro</translation>
     </message>
     <message>
-      <source>Gujarati</source>
-      <translation>gudžarati</translation>
+      <source>Corsican</source>
+      <translation>korsika</translation>
     </message>
     <message>
-      <source>Icelandic</source>
-      <translation>islanti</translation>
+      <source>Cree</source>
+      <translation>cree</translation>
     </message>
     <message>
-      <source>Inuktitut</source>
-      <translation>inuktitut</translation>
-    </message>
-    <message>
-      <source>English</source>
-      <translation>englanti</translation>
-    </message>
-    <message>
-      <source>Georgian</source>
-      <translation>georgia</translation>
+      <source>Czech</source>
+      <translation>tšekki</translation>
     </message>
     <message>
       <source>Church Slavic</source>
       <translation>kirkkoslaavi</translation>
     </message>
     <message>
-      <source>Faroese</source>
-      <translation>fääri</translation>
+      <source>Chuvash</source>
+      <translation>tšuvassi</translation>
+    </message>
+    <message>
+      <source>Welsh</source>
+      <translation>kymri</translation>
+    </message>
+    <message>
+      <source>Danish</source>
+      <translation>tanska</translation>
+    </message>
+    <message>
+      <source>German</source>
+      <translation>saksa</translation>
+    </message>
+    <message>
+      <source>Divehi</source>
+      <translation>divehi</translation>
+    </message>
+    <message>
+      <source>Dzongkha</source>
+      <translation>dzongkha</translation>
+    </message>
+    <message>
+      <source>Ewe</source>
+      <translation>ewe</translation>
+    </message>
+    <message>
+      <source>Greek</source>
+      <translation>kreikka</translation>
+    </message>
+    <message>
+      <source>English</source>
+      <translation>englanti</translation>
+    </message>
+    <message>
+      <source>Esperanto</source>
+      <translation>esperanto</translation>
+    </message>
+    <message>
+      <source>Spanish</source>
+      <translation>espanja</translation>
+    </message>
+    <message>
+      <source>Estonian</source>
+      <translation>eesti</translation>
+    </message>
+    <message>
+      <source>Basque</source>
+      <translation>baski</translation>
+    </message>
+    <message>
+      <source>Persian</source>
+      <translation>persia</translation>
+    </message>
+    <message>
+      <source>Fulah</source>
+      <translation>fulani</translation>
     </message>
     <message>
       <source>Finnish</source>
       <translation>suomi</translation>
+    </message>
+    <message>
+      <source>Fijian</source>
+      <translation>fidži</translation>
+    </message>
+    <message>
+      <source>Faroese</source>
+      <translation>fääri</translation>
+    </message>
+    <message>
+      <source>French</source>
+      <translation>ranska</translation>
+    </message>
+    <message>
+      <source>Western Frisian</source>
+      <translation>länsifriisi</translation>
+    </message>
+    <message>
+      <source>Irish</source>
+      <translation>iiri</translation>
+    </message>
+    <message>
+      <source>Scottish Gaelic</source>
+      <translation>gaeli</translation>
+    </message>
+    <message>
+      <source>Galician</source>
+      <translation>galicia</translation>
+    </message>
+    <message>
+      <source>Guarani</source>
+      <translation>guarani</translation>
+    </message>
+    <message>
+      <source>Gujarati</source>
+      <translation>gudžarati</translation>
+    </message>
+    <message>
+      <source>Manx</source>
+      <translation>manski</translation>
+    </message>
+    <message>
+      <source>Hausa</source>
+      <translation>hausa</translation>
+    </message>
+    <message>
+      <source>Hebrew</source>
+      <translation>heprea</translation>
+    </message>
+    <message>
+      <source>Hindi</source>
+      <translation>hindi</translation>
+    </message>
+    <message>
+      <source>Hiri Motu</source>
+      <translation>hiri-motu</translation>
+    </message>
+    <message>
+      <source>Croatian</source>
+      <translation>kroatia</translation>
+    </message>
+    <message>
+      <source>Haitian</source>
+      <translation>haiti</translation>
+    </message>
+    <message>
+      <source>Hungarian</source>
+      <translation>unkari</translation>
+    </message>
+    <message>
+      <source>Armenian</source>
+      <translation>armenia</translation>
+    </message>
+    <message>
+      <source>Herero</source>
+      <translation>herero</translation>
+    </message>
+    <message>
+      <source>Interlingua</source>
+      <translation>interlingua</translation>
+    </message>
+    <message>
+      <source>Indonesian</source>
+      <translation>indonesia</translation>
+    </message>
+    <message>
+      <source>Interlingue</source>
+      <translation>interlingue</translation>
+    </message>
+    <message>
+      <source>Igbo</source>
+      <translation>igbo</translation>
+    </message>
+    <message>
+      <source>Sichuan Yi</source>
+      <translation>sichuanin-yi</translation>
+    </message>
+    <message>
+      <source>Inupiaq</source>
+      <translation>inupiatu</translation>
+    </message>
+    <message>
+      <source>Ido</source>
+      <translation>ido</translation>
+    </message>
+    <message>
+      <source>Icelandic</source>
+      <translation>islanti</translation>
+    </message>
+    <message>
+      <source>Italian</source>
+      <translation>italia</translation>
+    </message>
+    <message>
+      <source>Inuktitut</source>
+      <translation>inuktitut</translation>
+    </message>
+    <message>
+      <source>Japanese</source>
+      <translation>japani</translation>
+    </message>
+    <message>
+      <source>Javanese</source>
+      <translation>jaava</translation>
+    </message>
+    <message>
+      <source>Georgian</source>
+      <translation>georgia</translation>
+    </message>
+    <message>
+      <source>Kongo</source>
+      <translation>kongo</translation>
+    </message>
+    <message>
+      <source>Kikuyu</source>
+      <translation>kikuju</translation>
+    </message>
+    <message>
+      <source>Kwanyama</source>
+      <translation>Kwanyama</translation>
+    </message>
+    <message>
+      <source>Kazakh</source>
+      <translation>kazaki</translation>
+    </message>
+    <message>
+      <source>Kalaallisut</source>
+      <translation>grönlanti</translation>
+    </message>
+    <message>
+      <source>Khmer</source>
+      <translation>khmeri</translation>
+    </message>
+    <message>
+      <source>Kannada</source>
+      <translation>kannada</translation>
+    </message>
+    <message>
+      <source>Korean</source>
+      <translation>korea</translation>
+    </message>
+    <message>
+      <source>Kanuri</source>
+      <translation>kanuri</translation>
+    </message>
+    <message>
+      <source>Kashmiri</source>
+      <translation>kašmiri</translation>
+    </message>
+    <message>
+      <source>Kurdish</source>
+      <translation>kurdi</translation>
+    </message>
+    <message>
+      <source>Komi</source>
+      <translation>komi</translation>
+    </message>
+    <message>
+      <source>Cornish</source>
+      <translation>korni</translation>
+    </message>
+    <message>
+      <source>Kirghiz</source>
+      <translation>kirgiisi</translation>
+    </message>
+    <message>
+      <source>Latin</source>
+      <translation>latina</translation>
+    </message>
+    <message>
+      <source>Luxembourgish</source>
+      <translation>luxemburgi</translation>
+    </message>
+    <message>
+      <source>Ganda</source>
+      <translation>ganda</translation>
+    </message>
+    <message>
+      <source>Limburgish</source>
+      <translation>limburgi</translation>
+    </message>
+    <message>
+      <source>Lingala</source>
+      <translation>lingala</translation>
+    </message>
+    <message>
+      <source>Lao</source>
+      <translation>lao</translation>
+    </message>
+    <message>
+      <source>Lithuanian</source>
+      <translation>liettua</translation>
+    </message>
+    <message>
+      <source>Luba-Katanga</source>
+      <translation>katanganluba</translation>
+    </message>
+    <message>
+      <source>Latvian</source>
+      <translation>latvia</translation>
+    </message>
+    <message>
+      <source>Malagasy</source>
+      <translation>malagassi</translation>
+    </message>
+    <message>
+      <source>Marshallese</source>
+      <translation>marshalli</translation>
+    </message>
+    <message>
+      <source>Maori</source>
+      <translation>maori</translation>
+    </message>
+    <message>
+      <source>Macedonian</source>
+      <translation>makedonia</translation>
+    </message>
+    <message>
+      <source>Malayalam</source>
+      <translation>malajalam</translation>
+    </message>
+    <message>
+      <source>Mongolian</source>
+      <translation>mongoli</translation>
+    </message>
+    <message>
+      <source>Marathi</source>
+      <translation>marathi</translation>
+    </message>
+    <message>
+      <source>Malay</source>
+      <translation>malaiji</translation>
+    </message>
+    <message>
+      <source>Maltese</source>
+      <translation>malta</translation>
+    </message>
+    <message>
+      <source>Burmese</source>
+      <translation>burma</translation>
+    </message>
+    <message>
+      <source>Nauru</source>
+      <translation>nauru</translation>
+    </message>
+    <message>
+      <source>Norwegian Bokmal</source>
+      <translation>kirjanorja</translation>
+    </message>
+    <message>
+      <source>North Ndebele</source>
+      <translation>pohjois-ndebele</translation>
+    </message>
+    <message>
+      <source>Nepali</source>
+      <translation>nepali</translation>
+    </message>
+    <message>
+      <source>Ndonga</source>
+      <translation>ndonga</translation>
+    </message>
+    <message>
+      <source>Dutch</source>
+      <translation>hollanti</translation>
+    </message>
+    <message>
+      <source>Norwegian Nynorsk</source>
+      <translation>uusnorja</translation>
+    </message>
+    <message>
+      <source>Norwegian</source>
+      <translation>norja</translation>
+    </message>
+    <message>
+      <source>South Ndebele</source>
+      <translation>etelä-ndebele</translation>
+    </message>
+    <message>
+      <source>Navajo</source>
+      <translation>navajo</translation>
+    </message>
+    <message>
+      <source>Chichewa</source>
+      <translation>njandža</translation>
+    </message>
+    <message>
+      <source>Occitan</source>
+      <translation>oksitaani</translation>
+    </message>
+    <message>
+      <source>Ojibwa</source>
+      <translation>odžibwa</translation>
+    </message>
+    <message>
+      <source>Oromo</source>
+      <translation>oromo</translation>
+    </message>
+    <message>
+      <source>Oriya</source>
+      <translation>orija</translation>
+    </message>
+    <message>
+      <source>Ossetian</source>
+      <translation>osseeti</translation>
+    </message>
+    <message>
+      <source>Panjabi</source>
+      <translation>pandžabi</translation>
+    </message>
+    <message>
+      <source>Pali</source>
+      <translation>paali</translation>
+    </message>
+    <message>
+      <source>Polish</source>
+      <translation>puola</translation>
+    </message>
+    <message>
+      <source>Pashto</source>
+      <translation>paštu</translation>
+    </message>
+    <message>
+      <source>Portuguese</source>
+      <translation>portugali</translation>
+    </message>
+    <message>
+      <source>Quechua</source>
+      <translation>ketšua</translation>
+    </message>
+    <message>
+      <source>Raeto-Romance</source>
+      <translation>retoromaani</translation>
+    </message>
+    <message>
+      <source>Kirundi</source>
+      <translation>kirundi</translation>
+    </message>
+    <message>
+      <source>Romanian</source>
+      <translation>romania</translation>
+    </message>
+    <message>
+      <source>Russian</source>
+      <translation>venäjä</translation>
+    </message>
+    <message>
+      <source>Kinyarwanda</source>
+      <translation>ruanda</translation>
+    </message>
+    <message>
+      <source>Sanskrit</source>
+      <translation>sanskrit</translation>
+    </message>
+    <message>
+      <source>Sardinian</source>
+      <translation>sardi</translation>
+    </message>
+    <message>
+      <source>Sindhi</source>
+      <translation>sindhi</translation>
+    </message>
+    <message>
+      <source>Northern Sami</source>
+      <translation>pohjoissaame</translation>
+    </message>
+    <message>
+      <source>Sango</source>
+      <translation>sango</translation>
+    </message>
+    <message>
+      <source>Serbo-Croatian</source>
+      <translation>serbokroaati</translation>
+    </message>
+    <message>
+      <source>Sinhala</source>
+      <translation>sinhali</translation>
+    </message>
+    <message>
+      <source>Slovak</source>
+      <translation>slovakki</translation>
+    </message>
+    <message>
+      <source>Slovenian</source>
+      <translation>sloveeni</translation>
+    </message>
+    <message>
+      <source>Samoan</source>
+      <translation>samoa</translation>
+    </message>
+    <message>
+      <source>Shona</source>
+      <translation>Šona</translation>
+    </message>
+    <message>
+      <source>Somali</source>
+      <translation>somali</translation>
+    </message>
+    <message>
+      <source>Albanian</source>
+      <translation>albania</translation>
+    </message>
+    <message>
+      <source>Serbian</source>
+      <translation>serbia</translation>
+    </message>
+    <message>
+      <source>Swati</source>
+      <translation>swazi</translation>
+    </message>
+    <message>
+      <source>Southern Sotho</source>
+      <translation>eteläsotho</translation>
+    </message>
+    <message>
+      <source>Sundanese</source>
+      <translation>sunda</translation>
+    </message>
+    <message>
+      <source>Swedish</source>
+      <translation>ruotsi</translation>
+    </message>
+    <message>
+      <source>Swahili</source>
+      <translation>swahili</translation>
+    </message>
+    <message>
+      <source>Tamil</source>
+      <translation>tamili</translation>
+    </message>
+    <message>
+      <source>Telugu</source>
+      <translation>telugu</translation>
+    </message>
+    <message>
+      <source>Tajik</source>
+      <translation>tadžikki</translation>
+    </message>
+    <message>
+      <source>Thai</source>
+      <translation>thai</translation>
+    </message>
+    <message>
+      <source>Tigrinya</source>
+      <translation>tigrinja</translation>
+    </message>
+    <message>
+      <source>Turkmen</source>
+      <translation>turkmeeni</translation>
+    </message>
+    <message>
+      <source>Tagalog</source>
+      <translation>tagalog</translation>
+    </message>
+    <message>
+      <source>Tswana</source>
+      <translation>tswana</translation>
+    </message>
+    <message>
+      <source>Tonga</source>
+      <translation>tonga</translation>
+    </message>
+    <message>
+      <source>Turkish</source>
+      <translation>turki</translation>
+    </message>
+    <message>
+      <source>Tsonga</source>
+      <translation>tsonga</translation>
+    </message>
+    <message>
+      <source>Tatar</source>
+      <translation>tataari</translation>
+    </message>
+    <message>
+      <source>Twi</source>
+      <translation>twi</translation>
+    </message>
+    <message>
+      <source>Tahitian</source>
+      <translation>tahiti</translation>
+    </message>
+    <message>
+      <source>Uighur</source>
+      <translation>uiguuri</translation>
+    </message>
+    <message>
+      <source>Ukrainian</source>
+      <translation>ukraina</translation>
+    </message>
+    <message>
+      <source>Urdu</source>
+      <translation>urdu</translation>
+    </message>
+    <message>
+      <source>Uzbek</source>
+      <translation>uzbekki</translation>
+    </message>
+    <message>
+      <source>Venda</source>
+      <translation>venda</translation>
+    </message>
+    <message>
+      <source>Vietnamese</source>
+      <translation>vietnami</translation>
     </message>
     <message>
       <source>Volapuk</source>
@@ -1883,56 +1901,36 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>valloni</translation>
     </message>
     <message>
-      <source>Kwanyama</source>
-      <translation>Kwanyama</translation>
+      <source>Wolof</source>
+      <translation>wolofi</translation>
     </message>
     <message>
-      <source>Marshallese</source>
-      <translation>marshalli</translation>
-    </message>
-    <message>
-      <source>Northern Sami</source>
-      <translation>pohjoissaame</translation>
-    </message>
-    <message>
-      <source>Haitian</source>
-      <translation>haiti</translation>
-    </message>
-    <message>
-      <source>Chamorro</source>
-      <translation>tšamorro</translation>
-    </message>
-    <message>
-      <source>Norwegian Nynorsk</source>
-      <translation>uusnorja</translation>
-    </message>
-    <message>
-      <source>Guarani</source>
-      <translation>guarani</translation>
-    </message>
-    <message>
-      <source>South Ndebele</source>
-      <translation>etelä-ndebele</translation>
-    </message>
-    <message>
-      <source>Chichewa</source>
-      <translation>njandža</translation>
-    </message>
-    <message>
-      <source>Lithuanian</source>
-      <translation>liettua</translation>
-    </message>
-    <message>
-      <source>Sichuan Yi</source>
-      <translation>sichuanin-yi</translation>
-    </message>
-    <message>
-      <source>Tigrinya</source>
-      <translation>tigrinja</translation>
+      <source>Xhosa</source>
+      <translation>xhosa</translation>
     </message>
     <message>
       <source>Yiddish</source>
       <translation>jiddiš</translation>
+    </message>
+    <message>
+      <source>Yoruba</source>
+      <translation>joruba</translation>
+    </message>
+    <message>
+      <source>Zhuang</source>
+      <translation>zhuangi</translation>
+    </message>
+    <message>
+      <source>Chinese</source>
+      <translation>kiina</translation>
+    </message>
+    <message>
+      <source>Zulu</source>
+      <translation>zulu</translation>
+    </message>
+    <message>
+      <source>Lojban</source>
+      <translation>lojban</translation>
     </message>
     <message>
       <source>Traditional Chinese</source>
@@ -1993,10 +1991,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>Tamazight</source>
       <translation>berberikielet</translation>
-    </message>
-    <message>
-      <source>Lojban</source>
-      <translation>lojban</translation>
     </message>
   </context>
   <context>
@@ -2162,6 +2156,10 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Lojban</translation>
     </message>
     <message>
+      <source>Hungarian</source>
+      <translation type="unfinished">Hungarian</translation>
+    </message>
+    <message>
       <source>English</source>
       <translation>Englanti</translation>
     </message>
@@ -2183,406 +2181,40 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
   <context>
     <name>MainWindow</name>
     <message>
-      <source>F1</source>
-      <translation>F1</translation>
-    </message>
-    <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
-      <source>Favo&amp;rites</source>
-      <translation>&amp;Suosikit</translation>
-    </message>
-    <message>
-      <source>F3</source>
-      <translation>F3</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>F4</translation>
-    </message>
-    <message>
-      <source>All</source>
-      <translation>Kaikki</translation>
-    </message>
-    <message>
-      <source>Back</source>
-      <translation>Taaksepäin</translation>
-    </message>
-    <message>
-      <source>%1 dictionaries, %2 articles, %3 words</source>
-      <translation>%1 sanakirjaa, %2 artikkelia, %3 sanaa</translation>
-    </message>
-    <message>
-      <source>&amp;Edit</source>
-      <translation>&amp;Muokkaa</translation>
+      <source>Welcome!</source>
+      <translation>Tervetuloa!</translation>
     </message>
     <message>
       <source>&amp;File</source>
       <translation>&amp;Tiedosto</translation>
     </message>
     <message>
+      <source>&amp;Edit</source>
+      <translation>&amp;Muokkaa</translation>
+    </message>
+    <message>
       <source>&amp;Help</source>
       <translation>&amp;Ohje</translation>
-    </message>
-    <message>
-      <source>Search</source>
-      <translation>&amp;Etsi</translation>
-    </message>
-    <message>
-      <source>&amp;Quit</source>
-      <translation>Lopeta</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>Virhe</translation>
-    </message>
-    <message>
-      <source>Quit from application</source>
-      <translation>Lopeta sovellus</translation>
-    </message>
-    <message>
-      <source>&amp;Close To Tray</source>
-      <translation>&amp;Sulje Kaukalon</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>Voi&apos;t tallentaa artikkeli: %1</translation>
-    </message>
-    <message>
-      <source>Zoom In</source>
-      <translation>Lähennä</translation>
-    </message>
-    <message>
-      <source>&amp;Dictionaries...</source>
-      <translation>Sanakirjat...</translation>
-    </message>
-    <message>
-      <source>&amp;About</source>
-      <translation>Tietoja</translation>
-    </message>
-    <message>
-      <source>&amp;Forum</source>
-      <translation>Foorumi</translation>
-    </message>
-    <message>
-      <source>&amp;Print</source>
-      <translation>Tulosta</translation>
-    </message>
-    <message>
-      <source>&amp;Save Article</source>
-      <translation>Tallenna artikkeli</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>Tallenna artikkeli nimellä</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Ctrl+P</translation>
-    </message>
-    <message>
-      <source>Ctrl+Q</source>
-      <translation>Ctrl+Q</translation>
-    </message>
-    <message>
-      <source>Minimizes the window to tray</source>
-      <translation>Minimoi ikkunan ilmoitusalueelle</translation>
-    </message>
-    <message>
-      <source>Page Set&amp;up</source>
-      <translation>Sivun asetukset</translation>
-    </message>
-    <message>
-      <source>&amp;Homepage</source>
-      <translation>Kotisivu</translation>
-    </message>
-    <message>
-      <source>New Release Available</source>
-      <translation>Uusi Versio Saatavilla</translation>
-    </message>
-    <message>
-      <source>Zoom Out</source>
-      <translation>Loitonna</translation>
-    </message>
-    <message>
-      <source>Show &amp;Main Window</source>
-      <translation>Näytä Pääikkuna</translation>
-    </message>
-    <message>
-      <source>About GoldenDict-ng</source>
-      <translation>Tietoja GoldenDictista</translation>
-    </message>
-    <message>
-      <source>Download</source>
-      <translation>Lataa</translation>
-    </message>
-    <message>
-      <source>Page Setup</source>
-      <translation>Sivun asetukset</translation>
-    </message>
-    <message>
-      <source>Normal Size</source>
-      <translation>Normaalikoko</translation>
-    </message>
-    <message>
-      <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
-      <translation>Pikanäppäinten seurantamekanismin alustus epäonnistui.&lt;br&gt;Varmista, että XServer on ottanut RECORD-laajennuksen käyttöön.</translation>
-    </message>
-    <message>
-      <source>Version &lt;b&gt;%1&lt;/b&gt; of GoldenDict is now available for download.&lt;br&gt;Click &lt;b&gt;Download&lt;/b&gt; to get to the download page.</source>
-      <translation>GoldenDictin &lt;b&gt;%1&lt;/b&gt; versio on nyt ladattavissa.&lt;br&gt;Napsauta &lt;b&gt;Lataa&lt;/b&gt; päästäksesi lataussivulle.</translation>
-    </message>
-    <message>
-      <source>Ctrl+F4</source>
-      <translation>Ctrl+F4</translation>
-    </message>
-    <message>
-      <source>Ctrl+F5</source>
-      <translation>Ctrl+F5</translation>
-    </message>
-    <message>
-      <source>(untitled)</source>
-      <translation>(nimetön)</translation>
-    </message>
-    <message>
-      <source>&amp;Preferences...</source>
-      <translation>Asetukset...</translation>
-    </message>
-    <message>
-      <source>Welcome!</source>
-      <translation>Tervetuloa!</translation>
-    </message>
-    <message>
-      <source>Pronounce Word (Alt+S)</source>
-      <translation>Prounce Word (Alt+S)</translation>
-    </message>
-    <message>
-      <source>Save Article</source>
-      <translation>Tallenna artikkeli</translation>
-    </message>
-    <message>
-      <source>Skip This Release</source>
-      <translation>Ohita Tämä Versio</translation>
-    </message>
-    <message>
-      <source>Forward</source>
-      <translation>Eteenpäin</translation>
-    </message>
-    <message>
-      <source>Print Article</source>
-      <translation>Tulosta artikkeli</translation>
-    </message>
-    <message>
-      <source>No printer is available. Please install one first.</source>
-      <translation>Tulostinta ei ole saatavilla. Asenna se ensin.</translation>
     </message>
     <message>
       <source>&amp;View</source>
       <translation>&amp;Näytä</translation>
     </message>
     <message>
-      <source>H&amp;istory</source>
-      <translation>&amp;Historia</translation>
-    </message>
-    <message>
-      <source>&amp;Clear</source>
-      <translation>Tyhjennä</translation>
-    </message>
-    <message>
       <source>&amp;Zoom</source>
       <translation>Zoomaus</translation>
     </message>
     <message>
-      <source>Words Zoom In</source>
-      <translation>Sanojen Lähennys</translation>
+      <source>H&amp;istory</source>
+      <translation>&amp;Historia</translation>
     </message>
     <message>
-      <source>Words Zoom Out</source>
-      <translation>Sanat Lähennä Loitonna</translation>
+      <source>Search</source>
+      <translation>&amp;Etsi</translation>
     </message>
     <message>
-      <source>Words Normal Size</source>
-      <translation>Sanojen Normaali Koko</translation>
-    </message>
-    <message>
-      <source>Close current tab</source>
-      <translation>Sulje nykyinen välilehti</translation>
-    </message>
-    <message>
-      <source>Close all tabs</source>
-      <translation>Sulje kaikki välilehdet</translation>
-    </message>
-    <message>
-      <source>Close all tabs except current</source>
-      <translation>Sulje kaikki välilehdet paitsi nykyisen</translation>
-    </message>
-    <message>
-      <source>Opened tabs</source>
-      <translation>Avatut välilehdet</translation>
-    </message>
-    <message>
-      <source>New Tab</source>
-      <translation>Uusi välilehti</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>Ctrl+T</translation>
-    </message>
-    <message>
-      <source>&amp;Configuration Folder</source>
-      <translation>&amp;Asetuskansio</translation>
-    </message>
-    <message>
-      <source>&amp;Menubar</source>
-      <translation>Valikkopalkki</translation>
-    </message>
-    <message>
-      <source>Found in Dictionaries:</source>
-      <translation>Löytyi sanakirjoista:</translation>
-    </message>
-    <message>
-      <source>Add all tabs to Favorites</source>
-      <translation>Lisää kaikki välilehdet suosikkeihin</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>VAROITUS: %1</translation>
-    </message>
-    <message>
-      <source>String to search in dictionaries. The wildcards &apos;*&apos;, &apos;?&apos; and sets of symbols &apos;[...]&apos; are allowed.
-To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos; respectively</source>
-      <translation>Merkkijono hakemaan sanakirjoja. Villikortit &apos;*&apos;, &apos;?&apos; ja symbolisarjat &apos;[...]&apos; ovat sallittuja.
-Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnusta käytetään &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos;</translation>
-    </message>
-    <message>
-      <source>Open Tabs List</source>
-      <translation>Avaa Välilehdet</translation>
-    </message>
-    <message>
-      <source>Remove current tab from Favorites</source>
-      <translation>Poista nykyinen välilehti suosikeista</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
-    </message>
-    <message>
-      <source>You have chosen to hide a menubar. Use %1 to show it back.</source>
-      <translation>Olet valinnut valikkopalkin piilottamisen. Käytä %1 näyttääksesi sen takaisin.</translation>
-    </message>
-    <message>
-      <source>Ctrl+M</source>
-      <translation>Ctrl+M</translation>
-    </message>
-    <message>
-      <source>&amp;Show</source>
-      <translation>&amp;Näytä</translation>
-    </message>
-    <message>
-      <source>&amp;Export</source>
-      <translation>Vie</translation>
-    </message>
-    <message>
-      <source>&amp;Hide</source>
-      <translation>Piilota</translation>
-    </message>
-    <message>
-      <source>Export history to file</source>
-      <translation>Vie historia tiedostoon</translation>
-    </message>
-    <message>
-      <source>Text files (*.txt);;All files (*.*)</source>
-      <translation>Tekstitiedostot (*.txt);;Kaikki tiedostot (*.*)</translation>
-    </message>
-    <message>
-      <source>History export complete</source>
-      <translation>Historian vienti valmis</translation>
-    </message>
-    <message>
-      <source>Export error: </source>
-      <translation>Vientivirhe: </translation>
-    </message>
-    <message>
-      <source>Ctrl+H</source>
-      <translation>Ctrl+H</translation>
-    </message>
-    <message>
-      <source>&amp;Import</source>
-      <translation>Tuo</translation>
-    </message>
-    <message>
-      <source>Import history from file</source>
-      <translation>Tuo historia tiedostosta</translation>
-    </message>
-    <message>
-      <source>Import error: invalid data in file</source>
-      <translation>Tuontivirhe: virheellinen data tiedostossa</translation>
-    </message>
-    <message>
-      <source>History import complete</source>
-      <translation>Historian tuonti valmis</translation>
-    </message>
-    <message>
-      <source>Import error: </source>
-      <translation>Tuontivirhe: </translation>
-    </message>
-    <message>
-      <source>Export Favorites to file</source>
-      <translation>Vie suosikit tiedostoon</translation>
-    </message>
-    <message>
-      <source>XML files (*.xml);;All files (*.*)</source>
-      <translation>XML-tiedostot (*.xml);;Kaikki tiedostot (*.*)</translation>
-    </message>
-    <message>
-      <source>Favorites export complete</source>
-      <translation>Suosikkien vienti valmis</translation>
-    </message>
-    <message>
-      <source>Export Favorites to file as plain list</source>
-      <translation>Vie suosikit tiedostoon pelkkänä listana</translation>
-    </message>
-    <message>
-      <source>Import Favorites from file</source>
-      <translation>Tuo suosikit tiedostosta</translation>
-    </message>
-    <message>
-      <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation>XML-tiedostot (*.xml);;Txt tiedostot (*.txt);;Kaikki tiedostot (*.*)</translation>
-    </message>
-    <message>
-      <source>Favorites import complete</source>
-      <translation>Suosikkien tuonti valmis</translation>
-    </message>
-    <message>
-      <source>Data parsing error</source>
-      <translation>Datan jäsennysvirhe</translation>
-    </message>
-    <message>
-      <source>Dictionary info</source>
-      <translation>Sanakirjan tiedot</translation>
-    </message>
-    <message>
-      <source>Dictionary headwords</source>
-      <translation>Sanakirjan otsikot</translation>
-    </message>
-    <message>
-      <source>Open dictionary folder</source>
-      <translation>Avaa sanakirjakansio</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>Muokkaa sanakirjaa</translation>
-    </message>
-    <message>
-      <source>Now indexing for full-text search: </source>
-      <translation>Nyt indeksoidaan koko tekstin hakuun: </translation>
-    </message>
-    <message>
-      <source>Remove headword &quot;%1&quot; from Favorites?</source>
-      <translation>Poista otsikkosana &quot;%1&quot; suosikeista?</translation>
+      <source>Favo&amp;rites</source>
+      <translation>&amp;Suosikit</translation>
     </message>
     <message>
       <source>&amp;Search Pane</source>
@@ -2597,6 +2229,90 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <translation>Suosikit-paneeli</translation>
     </message>
     <message>
+      <source>&amp;History Pane</source>
+      <translation>Historiapaneeli</translation>
+    </message>
+    <message>
+      <source>&amp;Dictionaries...</source>
+      <translation>Sanakirjat...</translation>
+    </message>
+    <message>
+      <source>F3</source>
+      <translation>F3</translation>
+    </message>
+    <message>
+      <source>&amp;Preferences...</source>
+      <translation>Asetukset...</translation>
+    </message>
+    <message>
+      <source>F4</source>
+      <translation>F4</translation>
+    </message>
+    <message>
+      <source>&amp;Homepage</source>
+      <translation>Kotisivu</translation>
+    </message>
+    <message>
+      <source>&amp;About</source>
+      <translation>Tietoja</translation>
+    </message>
+    <message>
+      <source>About GoldenDict-ng</source>
+      <translation>Tietoja GoldenDictista</translation>
+    </message>
+    <message>
+      <source>&amp;Quit</source>
+      <translation>Lopeta</translation>
+    </message>
+    <message>
+      <source>Quit from application</source>
+      <translation>Lopeta sovellus</translation>
+    </message>
+    <message>
+      <source>Ctrl+Q</source>
+      <translation>Ctrl+Q</translation>
+    </message>
+    <message>
+      <source>&amp;Forum</source>
+      <translation>Foorumi</translation>
+    </message>
+    <message>
+      <source>&amp;Close To Tray</source>
+      <translation>&amp;Sulje Kaukalon</translation>
+    </message>
+    <message>
+      <source>Minimizes the window to tray</source>
+      <translation>Minimoi ikkunan ilmoitusalueelle</translation>
+    </message>
+    <message>
+      <source>Ctrl+F4</source>
+      <translation>Ctrl+F4</translation>
+    </message>
+    <message>
+      <source>&amp;Save Article</source>
+      <translation>Tallenna artikkeli</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>Tallenna artikkeli</translation>
+    </message>
+    <message>
+      <source>F2</source>
+      <translation>F2</translation>
+    </message>
+    <message>
+      <source>&amp;Print</source>
+      <translation>Tulosta</translation>
+    </message>
+    <message>
+      <source>Ctrl+P</source>
+      <translation>Ctrl+P</translation>
+    </message>
+    <message>
+      <source>Page Set&amp;up</source>
+      <translation>Sivun asetukset</translation>
+    </message>
+    <message>
       <source>Print Pre&amp;view</source>
       <translation>Tulostuksen esikatselu</translation>
     </message>
@@ -2605,8 +2321,40 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <translation>Skannaa tiedostot uudelleen</translation>
     </message>
     <message>
+      <source>Ctrl+F5</source>
+      <translation>Ctrl+F5</translation>
+    </message>
+    <message>
+      <source>&amp;Clear</source>
+      <translation>Tyhjennä</translation>
+    </message>
+    <message>
       <source>&amp;New Tab</source>
       <translation>Uusi välilehti</translation>
+    </message>
+    <message>
+      <source>Ctrl+T</source>
+      <translation>Ctrl+T</translation>
+    </message>
+    <message>
+      <source>&amp;Configuration Folder</source>
+      <translation>&amp;Asetuskansio</translation>
+    </message>
+    <message>
+      <source>&amp;Show</source>
+      <translation>&amp;Näytä</translation>
+    </message>
+    <message>
+      <source>Ctrl+H</source>
+      <translation>Ctrl+H</translation>
+    </message>
+    <message>
+      <source>&amp;Export</source>
+      <translation>Vie</translation>
+    </message>
+    <message>
+      <source>&amp;Import</source>
+      <translation>Tuo</translation>
     </message>
     <message>
       <source>&amp;Always on Top</source>
@@ -2645,6 +2393,10 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <translation>GoldenDictin viite</translation>
     </message>
     <message>
+      <source>F1</source>
+      <translation>F1</translation>
+    </message>
+    <message>
       <source>Show</source>
       <translation>Näytä</translation>
     </message>
@@ -2681,12 +2433,162 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <translation>Näytä pienet kuvakkeet työkalupalkeissa</translation>
     </message>
     <message>
+      <source>&amp;Menubar</source>
+      <translation>Valikkopalkki</translation>
+    </message>
+    <message>
       <source>&amp;Navigation</source>
       <translation>Navigointi</translation>
     </message>
     <message>
+      <source>Back</source>
+      <translation>Taaksepäin</translation>
+    </message>
+    <message>
+      <source>Forward</source>
+      <translation>Eteenpäin</translation>
+    </message>
+    <message>
       <source>Enable Scanning</source>
       <translation>Ota Skannaus Käyttöön</translation>
+    </message>
+    <message>
+      <source>Pronounce Word (Alt+S)</source>
+      <translation>Prounce Word (Alt+S)</translation>
+    </message>
+    <message>
+      <source>Zoom In</source>
+      <translation>Lähennä</translation>
+    </message>
+    <message>
+      <source>Zoom Out</source>
+      <translation>Loitonna</translation>
+    </message>
+    <message>
+      <source>Normal Size</source>
+      <translation>Normaalikoko</translation>
+    </message>
+    <message>
+      <source>Found in Dictionaries:</source>
+      <translation>Löytyi sanakirjoista:</translation>
+    </message>
+    <message>
+      <source>Words Zoom In</source>
+      <translation>Sanojen Lähennys</translation>
+    </message>
+    <message>
+      <source>Words Zoom Out</source>
+      <translation>Sanat Lähennä Loitonna</translation>
+    </message>
+    <message>
+      <source>Words Normal Size</source>
+      <translation>Sanojen Normaali Koko</translation>
+    </message>
+    <message>
+      <source>Show &amp;Main Window</source>
+      <translation>Näytä Pääikkuna</translation>
+    </message>
+    <message>
+      <source>Opened tabs</source>
+      <translation>Avatut välilehdet</translation>
+    </message>
+    <message>
+      <source>Close current tab</source>
+      <translation>Sulje nykyinen välilehti</translation>
+    </message>
+    <message>
+      <source>Close all tabs</source>
+      <translation>Sulje kaikki välilehdet</translation>
+    </message>
+    <message>
+      <source>Close all tabs except current</source>
+      <translation>Sulje kaikki välilehdet paitsi nykyisen</translation>
+    </message>
+    <message>
+      <source>Add all tabs to Favorites</source>
+      <translation>Lisää kaikki välilehdet suosikkeihin</translation>
+    </message>
+    <message>
+      <source>New Tab</source>
+      <translation>Uusi välilehti</translation>
+    </message>
+    <message>
+      <source>Accessibility API is not enabled</source>
+      <translation>Esteettömyyden API ei ole käytössä</translation>
+    </message>
+    <message>
+      <source>WARNING: %1</source>
+      <translation>VAROITUS: %1</translation>
+    </message>
+    <message>
+      <source>String to search in dictionaries. The wildcards &apos;*&apos;, &apos;?&apos; and sets of symbols &apos;[...]&apos; are allowed.
+To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos; respectively</source>
+      <translation>Merkkijono hakemaan sanakirjoja. Villikortit &apos;*&apos;, &apos;?&apos; ja symbolisarjat &apos;[...]&apos; ovat sallittuja.
+Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnusta käytetään &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos;</translation>
+    </message>
+    <message>
+      <source>%1 dictionaries, %2 articles, %3 words</source>
+      <translation>%1 sanakirjaa, %2 artikkelia, %3 sanaa</translation>
+    </message>
+    <message>
+      <source>All</source>
+      <translation>Kaikki</translation>
+    </message>
+    <message>
+      <source>Open Tabs List</source>
+      <translation>Avaa Välilehdet</translation>
+    </message>
+    <message>
+      <source>(untitled)</source>
+      <translation>(nimetön)</translation>
+    </message>
+    <message>
+      <source>Remove current tab from Favorites</source>
+      <translation>Poista nykyinen välilehti suosikeista</translation>
+    </message>
+    <message>
+      <source>%1 - %2</source>
+      <translation>%1 - %2</translation>
+    </message>
+    <message>
+      <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
+      <translation>Pikanäppäinten seurantamekanismin alustus epäonnistui.&lt;br&gt;Varmista, että XServer on ottanut RECORD-laajennuksen käyttöön.</translation>
+    </message>
+    <message>
+      <source>New Release Available</source>
+      <translation>Uusi Versio Saatavilla</translation>
+    </message>
+    <message>
+      <source>Version &lt;b&gt;%1&lt;/b&gt; of GoldenDict is now available for download.&lt;br&gt;Click &lt;b&gt;Download&lt;/b&gt; to get to the download page.</source>
+      <translation>GoldenDictin &lt;b&gt;%1&lt;/b&gt; versio on nyt ladattavissa.&lt;br&gt;Napsauta &lt;b&gt;Lataa&lt;/b&gt; päästäksesi lataussivulle.</translation>
+    </message>
+    <message>
+      <source>Download</source>
+      <translation>Lataa</translation>
+    </message>
+    <message>
+      <source>Skip This Release</source>
+      <translation>Ohita Tämä Versio</translation>
+    </message>
+    <message>
+      <source>You have chosen to hide a menubar. Use %1 to show it back.</source>
+      <translation>Olet valinnut valikkopalkin piilottamisen. Käytä %1 näyttääksesi sen takaisin.</translation>
+    </message>
+    <message>
+      <source>Ctrl+M</source>
+      <translation>Ctrl+M</translation>
+    </message>
+    <message>
+      <source>Page Setup</source>
+      <translation>Sivun asetukset</translation>
+    </message>
+    <message>
+      <source>No printer is available. Please install one first.</source>
+      <translation>Tulostinta ei ole saatavilla. Asenna se ensin.</translation>
+    </message>
+    <message>
+      <source>Print Article</source>
+      <translation>Tulosta artikkeli</translation>
     </message>
     <message>
       <source>Article, Complete (*.html)</source>
@@ -2695,6 +2597,18 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
     <message>
       <source>Article, HTML Only (*.html)</source>
       <translation>Vain Artikkeli, Html (*.html)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation>Tallenna artikkeli nimellä</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>Virhe</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation>Voi&apos;t tallentaa artikkeli: %1</translation>
     </message>
     <message>
       <source>Saving article...</source>
@@ -2709,12 +2623,96 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <translation>Tärkein ikkuna on asetettu aina päälle.</translation>
     </message>
     <message>
-      <source>&amp;History Pane</source>
-      <translation>Historiapaneeli</translation>
+      <source>&amp;Hide</source>
+      <translation>Piilota</translation>
     </message>
     <message>
-      <source>Accessibility API is not enabled</source>
-      <translation>Esteettömyyden API ei ole käytössä</translation>
+      <source>Export history to file</source>
+      <translation>Vie historia tiedostoon</translation>
+    </message>
+    <message>
+      <source>Text files (*.txt);;All files (*.*)</source>
+      <translation>Tekstitiedostot (*.txt);;Kaikki tiedostot (*.*)</translation>
+    </message>
+    <message>
+      <source>Export error: </source>
+      <translation>Vientivirhe: </translation>
+    </message>
+    <message>
+      <source>History export complete</source>
+      <translation>Historian vienti valmis</translation>
+    </message>
+    <message>
+      <source>Import history from file</source>
+      <translation>Tuo historia tiedostosta</translation>
+    </message>
+    <message>
+      <source>Import error: </source>
+      <translation>Tuontivirhe: </translation>
+    </message>
+    <message>
+      <source>Import error: invalid data in file</source>
+      <translation>Tuontivirhe: virheellinen data tiedostossa</translation>
+    </message>
+    <message>
+      <source>History import complete</source>
+      <translation>Historian tuonti valmis</translation>
+    </message>
+    <message>
+      <source>Export Favorites to file</source>
+      <translation>Vie suosikit tiedostoon</translation>
+    </message>
+    <message>
+      <source>XML files (*.xml);;All files (*.*)</source>
+      <translation>XML-tiedostot (*.xml);;Kaikki tiedostot (*.*)</translation>
+    </message>
+    <message>
+      <source>Favorites export complete</source>
+      <translation>Suosikkien vienti valmis</translation>
+    </message>
+    <message>
+      <source>Export Favorites to file as plain list</source>
+      <translation>Vie suosikit tiedostoon pelkkänä listana</translation>
+    </message>
+    <message>
+      <source>Import Favorites from file</source>
+      <translation>Tuo suosikit tiedostosta</translation>
+    </message>
+    <message>
+      <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
+      <translation>XML-tiedostot (*.xml);;Txt tiedostot (*.txt);;Kaikki tiedostot (*.*)</translation>
+    </message>
+    <message>
+      <source>Data parsing error</source>
+      <translation>Datan jäsennysvirhe</translation>
+    </message>
+    <message>
+      <source>Favorites import complete</source>
+      <translation>Suosikkien tuonti valmis</translation>
+    </message>
+    <message>
+      <source>Dictionary info</source>
+      <translation>Sanakirjan tiedot</translation>
+    </message>
+    <message>
+      <source>Dictionary headwords</source>
+      <translation>Sanakirjan otsikot</translation>
+    </message>
+    <message>
+      <source>Open dictionary folder</source>
+      <translation>Avaa sanakirjakansio</translation>
+    </message>
+    <message>
+      <source>Edit dictionary</source>
+      <translation>Muokkaa sanakirjaa</translation>
+    </message>
+    <message>
+      <source>Now indexing for full-text search: </source>
+      <translation>Nyt indeksoidaan koko tekstin hakuun: </translation>
+    </message>
+    <message>
+      <source>Remove headword &quot;%1&quot; from Favorites?</source>
+      <translation>Poista otsikkosana &quot;%1&quot; suosikeista?</translation>
     </message>
   </context>
   <context>
@@ -2745,16 +2743,16 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
   <context>
     <name>MediaWikisModel</name>
     <message>
+      <source>Enabled</source>
+      <translation>Käytössä</translation>
+    </message>
+    <message>
       <source>Name</source>
       <translation>Nimi</translation>
     </message>
     <message>
       <source>Address</source>
       <translation>Osoite</translation>
-    </message>
-    <message>
-      <source>Enabled</source>
-      <translation>Käytössä</translation>
     </message>
     <message>
       <source>Icon</source>
@@ -2779,8 +2777,16 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <translation>Lomake</translation>
     </message>
     <message>
+      <source>Dictionary order:</source>
+      <translation>Sanakirjan järjestys:</translation>
+    </message>
+    <message>
       <source>Inactive (disabled) dictionaries:</source>
       <translation>Passiiviset (pois käytöstä) sanakirjat:</translation>
+    </message>
+    <message>
+      <source>Dictionary information</source>
+      <translation>Sanakirjan tiedot</translation>
     </message>
     <message>
       <source>Name:</source>
@@ -2791,6 +2797,10 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <translation>Yhteensä artikkeleita:</translation>
     </message>
     <message>
+      <source>Total words:</source>
+      <translation>Yhteensä sanoja:</translation>
+    </message>
+    <message>
       <source>Translates from:</source>
       <translation>Käännökset lähteestä:</translation>
     </message>
@@ -2799,28 +2809,20 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <translation>Käännös:</translation>
     </message>
     <message>
-      <source>Total words:</source>
-      <translation>Yhteensä sanoja:</translation>
-    </message>
-    <message>
-      <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
-      <translation>Säädä tilausta vetämällä ja pudottamalla kohteita siihen. Pudota sanakirjoja passiiviseen ryhmään poistaaksesi käytöstä niiden käytön.</translation>
-    </message>
-    <message>
-      <source>Dictionary order:</source>
-      <translation>Sanakirjan järjestys:</translation>
+      <source>Description:</source>
+      <translation>Kuvaus:</translation>
     </message>
     <message>
       <source>Files comprising this dictionary:</source>
       <translation>Tämän sanakirjan sisältämät tiedostot:</translation>
     </message>
     <message>
-      <source>Dictionary information</source>
-      <translation>Sanakirjan tiedot</translation>
+      <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
+      <translation>Säädä tilausta vetämällä ja pudottamalla kohteita siihen. Pudota sanakirjoja passiiviseen ryhmään poistaaksesi käytöstä niiden käytön.</translation>
     </message>
     <message>
-      <source>Description:</source>
-      <translation>Kuvaus:</translation>
+      <source>Dictionary headwords</source>
+      <translation>Sanakirjan otsikot</translation>
     </message>
     <message>
       <source>Sort by name</source>
@@ -2829,10 +2831,6 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
     <message>
       <source>Sort by languages</source>
       <translation>Järjestä kielen mukaan</translation>
-    </message>
-    <message>
-      <source>Dictionary headwords</source>
-      <translation>Sanakirjan otsikot</translation>
     </message>
     <message>
       <source>Dictionaries active: %1, inactive: %2</source>
@@ -2853,48 +2851,20 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
   <context>
     <name>Preferences</name>
     <message>
-      <source>Alt</source>
-      <translation>Alt</translation>
+      <source>Preferences</source>
+      <translation>Asetukset</translation>
     </message>
     <message>
-      <source>Start to system tray</source>
-      <translation>Aloita ilmoitusalueelle</translation>
+      <source>&amp;Interface</source>
+      <translation>&amp;Käyttöliittymä</translation>
     </message>
     <message>
-      <source>Ctrl</source>
-      <translation>Ctrl</translation>
+      <source>Double-click translates the word clicked</source>
+      <translation>Kaksoisnapsauta kääntää sanan napsautettuna</translation>
     </message>
     <message>
-      <source>Win/Meta</source>
-      <translation>Win/Meta</translation>
-    </message>
-    <message>
-      <source>Enable system tray icon</source>
-      <translation>Ota käyttöön ilmoitusalueen kuvake</translation>
-    </message>
-    <message>
-      <source>Host:</source>
-      <translation>Isäntä:</translation>
-    </message>
-    <message>
-      <source>Port:</source>
-      <translation>Portti:</translation>
-    </message>
-    <message>
-      <source>Shift</source>
-      <translation>Vaihto</translation>
-    </message>
-    <message>
-      <source>Type:</source>
-      <translation>Tyyppi:</translation>
-    </message>
-    <message>
-      <source>User:</source>
-      <translation>Käyttäjä:</translation>
-    </message>
-    <message>
-      <source>&amp;Scan Popup</source>
-      <translation>&amp;Kartoita Ponnahdusikkuna</translation>
+      <source>Tabbed browsing</source>
+      <translation>Välilehden selaus</translation>
     </message>
     <message>
       <source>Normally, opening a new tab switches to it immediately.
@@ -2905,86 +2875,8 @@ Tällä avataan kuitenkin uusia välilehtiä ilman
 vaihtamista niihin.</translation>
     </message>
     <message>
-      <source>Use proxy server</source>
-      <translation>Käytä välityspalvelinta</translation>
-    </message>
-    <message>
-      <source>Use the following hotkey to translate a word from clipboard:</source>
-      <translation>Käytä seuraavaa pikanäppäintä kääntääksesi sanan leikepöydältä:</translation>
-    </message>
-    <message>
-      <source>Windows key or Meta key</source>
-      <translation>Windows-näppäin tai Meta-näppäin</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in main window</source>
-      <translation>Ääntää sanat automaattisesti pääikkunassa</translation>
-    </message>
-    <message>
-      <source>Start with system</source>
-      <translation>Aloita järjestelmällä</translation>
-    </message>
-    <message>
-      <source>Tabbed browsing</source>
-      <translation>Välilehden selaus</translation>
-    </message>
-    <message>
-      <source>With this on, an attempt to close main window would hide it instead of closing
-the application.</source>
-      <translation>Tämän avulla pääikkunan sulkeminen piilottaisi sen sen sijaan, että suljettaisiin
-sovellus.</translation>
-    </message>
-    <message>
-      <source>&amp;Audio</source>
-      <translation>&amp;Ääni</translation>
-    </message>
-    <message>
-      <source>Enable if you wish to use a proxy server
-for all program&apos;s network requests.</source>
-      <translation>Ota käyttöön, jos haluat käyttää välityspalvelinta
-kaikille ohjelmille&apos;s verkkopyyntöille.</translation>
-    </message>
-    <message>
-      <source>Interface language:</source>
-      <translation>Käyttöliittymän kieli:</translation>
-    </message>
-    <message>
       <source>Open new tabs in background</source>
       <translation>Avaa uudet välilehdet taustalla</translation>
-    </message>
-    <message>
-      <source>&amp;Network</source>
-      <translation>&amp;Verkko</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>With this enabled, the popup would only show up if all chosen keys are
-in the pressed state when the word selection changes.</source>
-      <translation>Tämän ollessa käytössä, ponnahdusikkuna näkyisi vain, jos kaikki valitut avaimet ovat
-painettuna tilassa, kun sana valinta muuttuu.</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in scan popup</source>
-      <translation>Ääntää automaattisesti sanoja skannauksessa</translation>
-    </message>
-    <message>
-      <source>Open new tabs after the current one</source>
-      <translation>Avaa uudet välilehdet nykyisen välilehtien jälkeen</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>Ohjelma pitää käynnistää uudelleen jotta kieli voidaan vaihtaa.</translation>
-    </message>
-    <message>
-      <source>Alt key</source>
-      <translation>Alt-näppäin</translation>
-    </message>
-    <message>
-      <source>Check for new program releases periodically</source>
-      <translation>Tarkista uusien ohjelmien julkaisut ajoittain</translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
@@ -2995,146 +2887,24 @@ virtauksen jälkeen, aktiivinen välilehti. Muuten ne lisätään
 ovat viimeisiä.</translation>
     </message>
     <message>
-      <source>Close to system tray</source>
-      <translation>Sulje ilmoitusalue</translation>
+      <source>Open new tabs after the current one</source>
+      <translation>Avaa uudet välilehdet nykyisen välilehtien jälkeen</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>Järjestelmän oletus</translation>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
+      <translation>Valitse tämä vaihtoehto, jos et halua&apos;t nähdä päävälilehden palkin, kun vain yksi välilehti on avattu.</translation>
     </message>
     <message>
-      <source>When enabled, an icon appears in the system tray area which can be used
-to open main window and perform other tasks.</source>
-      <translation>Kun käytössä, kuvake näkyy ilmoitusalueen alueella, jota voidaan käyttää
-avaamaan pääikkuna ja suorittamaan muita tehtäviä.</translation>
+      <source>Hide single tab</source>
+      <translation>Piilota yksi välilehti</translation>
     </message>
     <message>
-      <source>When this is enabled, the program periodically
-checks if a new, updated version of GoldenDict
-is available for download. If it is so, the program
-informs the user about it and prompts to open a
-download page.</source>
-      <translation>Kun tämä on käytössä, ohjelma
-tarkistaa säännöllisesti, onko uusi päivitetty versio GoldenDict
-ladattavissa. Jos näin on, ohjelma
-ilmoittaa siitä käyttäjälle ja pyytää avaamaan
-lataussivun.</translation>
+      <source>MRU order: Most recently used order.</source>
+      <translation>MRU-tilaus: Viimeksi käytetty tilaus.</translation>
     </message>
     <message>
-      <source>Startup</source>
-      <translation>Käynnistys</translation>
-    </message>
-    <message>
-      <source>Password:</source>
-      <translation>Salasana:</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>Oletus</translation>
-    </message>
-    <message>
-      <source>&amp;Interface</source>
-      <translation>&amp;Käyttöliittymä</translation>
-    </message>
-    <message>
-      <source>Ctrl key</source>
-      <translation>Ctrl-näppäin</translation>
-    </message>
-    <message>
-      <source>Use the following hotkey to show or hide the main window:</source>
-      <translation>Käytä seuraavaa pikanäppäintä näyttääksesi tai piilottaaksesi pääikkunan:</translation>
-    </message>
-    <message>
-      <source>Preferences</source>
-      <translation>Asetukset</translation>
-    </message>
-    <message>
-      <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
-      <translation>Pikanäppäimet ovat globaaleja ja toimivat mistä tahansa ohjelmasta ja missä tahansa kontekstissa niin kauan kuin GoldenDict on käynnissä taustalla.</translation>
-    </message>
-    <message>
-      <source>Hotkeys</source>
-      <translation>Pikanäppäimet</translation>
-    </message>
-    <message>
-      <source>Start with scan popup turned on</source>
-      <translation>Aloita skannaus ponnahdusikkuna otettu käyttöön</translation>
-    </message>
-    <message>
-      <source>With this on, the application starts directly to system tray without showing
-its main window.</source>
-      <translation>Tämän avulla sovellus alkaa suoraan ilmoitusalueelle näyttämättä
-sen pääikkunaa.</translation>
-    </message>
-    <message>
-      <source>Shift key</source>
-      <translation>Shift-näppäin</translation>
-    </message>
-    <message>
-      <source>Automatically starts GoldenDict after operation system bootup.</source>
-      <translation>Käynnistä GoldenDict automaattisesti käyttöjärjestelmän käynnistyksen jälkeen.</translation>
-    </message>
-    <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
-      <translation>Valitsee onko skannaus ponnahdusikkuna oletusarvoisesti päällä vai ei. Jos valittuna,
-ohjelma alkaisi aina skannauksen ponnahdusikkunan ollessa aktiivinen.</translation>
-    </message>
-    <message>
-      <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation>Älä näytä ponnahdusikkunoita kun valinta tai leikepöytä yhdessä GoldenDict&apos;s omat ikkunat muuttuvat</translation>
-    </message>
-    <message>
-      <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation>Ohita GoldenDict&apos;s oma valinta ja leikepöydän muutokset</translation>
-    </message>
-    <message>
-      <source>Play audio files via built-in audio support</source>
-      <translation>Toista äänitiedostoja sisäänrakennetun äänituen kautta</translation>
-    </message>
-    <message>
-      <source>Use internal player:</source>
-      <translation>Käytä sisäistä pelaajaa:</translation>
-    </message>
-    <message>
-      <source>Choose audio back end</source>
-      <translation>Valitse audio back end</translation>
-    </message>
-    <message>
-      <source>Enter audio player command line</source>
-      <translation>Syötä soittimen komentorivi</translation>
-    </message>
-    <message>
-      <source>Enabling this would make GoldenDict block most advertisements
-by disallowing content (images, frames) not originating from the site
-you are browsing. If some site breaks because of this, try disabling this.</source>
-      <translation>Tämän käyttöönotto tekisi GoldenDictin estämästä useimmat mainokset
-kieltämällä sisällön (kuvien, kehyksien) käytön, jotka eivät ole peräisin sivustosta
-joita selailet. Jos jokin sivusto rikkoo tämän vuoksi, kokeile poistaa tämä käytöstä.</translation>
-    </message>
-    <message>
-      <source>Disallow loading content from other sites (hides most advertisements)</source>
-      <translation>Estä sisällön lataaminen muilta sivustoilta (piilottaa useimmat mainokset)</translation>
-    </message>
-    <message>
-      <source>Pronunciation</source>
-      <translation>Ääntäminen</translation>
-    </message>
-    <message>
-      <source>Playback</source>
-      <translation>Toisto</translation>
-    </message>
-    <message>
-      <source>Use external program:</source>
-      <translation>Käytä ulkoista ohjelmaa:</translation>
-    </message>
-    <message>
-      <source>Double-click translates the word clicked</source>
-      <translation>Kaksoisnapsauta kääntää sanan napsautettuna</translation>
-    </message>
-    <message>
-      <source>Use any external program to play audio files</source>
-      <translation>Käytä mitä tahansa ulkoista ohjelmaa äänitiedostojen toistamiseen</translation>
+      <source>Ctrl-Tab navigates tabs in MRU order</source>
+      <translation>Ctrl-välilehti navigoi välilehdet MRU-järjestyksessä</translation>
     </message>
     <message>
       <source>Normally, pressing ESC key moves focus to the translation line.
@@ -3147,32 +2917,24 @@ Tämän avulla se kuitenkin piilottaa pääikkunan.</translation>
       <translation>ESC-näppäin piilottaa pääikkunan</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Valitse tämä vaihtoehto, jos et halua&apos;t nähdä päävälilehden palkin, kun vain yksi välilehti on avattu.</translation>
+      <source>Turn this option on if you want to select words by single mouse click</source>
+      <translation>Ota tämä asetus käyttöön, jos haluat valita sanat yhdellä hiiren napsautuksella</translation>
     </message>
     <message>
-      <source>Hide single tab</source>
-      <translation>Piilota yksi välilehti</translation>
+      <source>Select word by single click</source>
+      <translation>Valitse sana yhdellä napsautuksella</translation>
     </message>
     <message>
-      <source>Adjust this value to avoid huge context menus.</source>
-      <translation>Säädä tätä arvoa välttääksesi valtavat kontekstivalikot.</translation>
+      <source>Startup</source>
+      <translation>Käynnistys</translation>
     </message>
     <message>
-      <source>Context menu dictionaries limit:</source>
-      <translation>Kontekstivalikon sanakirjojen raja:</translation>
+      <source>Automatically starts GoldenDict after operation system bootup.</source>
+      <translation>Käynnistä GoldenDict automaattisesti käyttöjärjestelmän käynnistyksen jälkeen.</translation>
     </message>
     <message>
-      <source>Send translated word to main window instead of to show it in popup window</source>
-      <translation>Lähetä käännetty sana pääikkunaan sen sijaan, että se näytetään ponnahdusikkunassa</translation>
-    </message>
-    <message>
-      <source>Send translated word to main window</source>
-      <translation>Lähetä käännetty sana pääikkunaan</translation>
-    </message>
-    <message>
-      <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
-      <translation>Näytä lippuikkuna ennen kuin näytetään ponnahdusikkuna, napsauta lippua näyttääksesi ponnahdusikkunan. </translation>
+      <source>Start with system</source>
+      <translation>Aloita järjestelmällä</translation>
     </message>
     <message>
       <source>Normally, clicking on a link, double-clicking on a word or looking up
@@ -3189,8 +2951,66 @@ kuitenkin ylimmän sanakirjan artikkeli näytetään.</translation>
       <translation>Vieritä automaattisesti kohdistetulle artikkelille</translation>
     </message>
     <message>
+      <source>When enabled, an icon appears in the system tray area which can be used
+to open main window and perform other tasks.</source>
+      <translation>Kun käytössä, kuvake näkyy ilmoitusalueen alueella, jota voidaan käyttää
+avaamaan pääikkuna ja suorittamaan muita tehtäviä.</translation>
+    </message>
+    <message>
+      <source>Enable system tray icon</source>
+      <translation>Ota käyttöön ilmoitusalueen kuvake</translation>
+    </message>
+    <message>
+      <source>With this on, the application starts directly to system tray without showing
+its main window.</source>
+      <translation>Tämän avulla sovellus alkaa suoraan ilmoitusalueelle näyttämättä
+sen pääikkunaa.</translation>
+    </message>
+    <message>
+      <source>Start to system tray</source>
+      <translation>Aloita ilmoitusalueelle</translation>
+    </message>
+    <message>
+      <source>With this on, an attempt to close main window would hide it instead of closing
+the application.</source>
+      <translation>Tämän avulla pääikkunan sulkeminen piilottaisi sen sen sijaan, että suljettaisiin
+sovellus.</translation>
+    </message>
+    <message>
+      <source>Close to system tray</source>
+      <translation>Sulje ilmoitusalue</translation>
+    </message>
+    <message>
+      <source>Adjust this value to avoid huge context menus.</source>
+      <translation>Säädä tätä arvoa välttääksesi valtavat kontekstivalikot.</translation>
+    </message>
+    <message>
+      <source>Context menu dictionaries limit:</source>
+      <translation>Kontekstivalikon sanakirjojen raja:</translation>
+    </message>
+    <message>
+      <source>Appearance</source>
+      <translation>Ulkomuoto</translation>
+    </message>
+    <message>
+      <source>Interface Font</source>
+      <translation>Käyttöliittymän Kirjasin</translation>
+    </message>
+    <message>
+      <source>Interface language:</source>
+      <translation>Käyttöliittymän kieli:</translation>
+    </message>
+    <message>
       <source>Article Display style:</source>
       <translation>Artikkelin esitystyyli:</translation>
+    </message>
+    <message>
+      <source>Add-on style:</source>
+      <translation>Lisäosan tyyli:</translation>
+    </message>
+    <message>
+      <source>Interface Style:</source>
+      <translation>Käyttöliittymän tyyli:</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -3209,8 +3029,50 @@ kuitenkin ylimmän sanakirjan artikkeli näytetään.</translation>
       <translation>Tumma Lukija -tila</translation>
     </message>
     <message>
-      <source>MRU order: Most recently used order.</source>
-      <translation>MRU-tilaus: Viimeksi käytetty tilaus.</translation>
+      <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
+      <translation>Näitä fontteja käytetään, kun sanakirjan määrittämiä fontteja ei löydy.</translation>
+    </message>
+    <message>
+      <source>Fallback Fonts</source>
+      <translation>Varafontit</translation>
+    </message>
+    <message>
+      <source>Standard Font</source>
+      <translation>Vakiofontti</translation>
+    </message>
+    <message>
+      <source>Serif Font</source>
+      <translation>Serif-fontti</translation>
+    </message>
+    <message>
+      <source>Sans-serif Font</source>
+      <translation>Sans-serif-fontti</translation>
+    </message>
+    <message>
+      <source>Monospace Font</source>
+      <translation>Monospace fontti</translation>
+    </message>
+    <message>
+      <source>&amp;Scan Popup</source>
+      <translation>&amp;Kartoita Ponnahdusikkuna</translation>
+    </message>
+    <message>
+      <source>Chooses whether the scan popup mode is on by default or not. If checked,
+the program would always start with the scan popup active.</source>
+      <translation>Valitsee onko skannaus ponnahdusikkuna oletusarvoisesti päällä vai ei. Jos valittuna,
+ohjelma alkaisi aina skannauksen ponnahdusikkunan ollessa aktiivinen.</translation>
+    </message>
+    <message>
+      <source>Start with scan popup turned on</source>
+      <translation>Aloita skannaus ponnahdusikkuna otettu käyttöön</translation>
+    </message>
+    <message>
+      <source>Send translated word to main window instead of to show it in popup window</source>
+      <translation>Lähetä käännetty sana pääikkunaan sen sijaan, että se näytetään ponnahdusikkunassa</translation>
+    </message>
+    <message>
+      <source>Send translated word to main window</source>
+      <translation>Lähetä käännetty sana pääikkunaan</translation>
     </message>
     <message>
       <source>Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</source>
@@ -3225,12 +3087,62 @@ kuitenkin ylimmän sanakirjan artikkeli näytetään.</translation>
       <translation>Kappaleen valinnan muutos</translation>
     </message>
     <message>
+      <source>With this enabled, the popup would only show up if all chosen keys are
+in the pressed state when the word selection changes.</source>
+      <translation>Tämän ollessa käytössä, ponnahdusikkuna näkyisi vain, jos kaikki valitut avaimet ovat
+painettuna tilassa, kun sana valinta muuttuu.</translation>
+    </message>
+    <message>
       <source>Only tack selection when all selected keys are kept pressed:</source>
       <translation>Valitse vain kun kaikki valitut näppäimet pidetään painettuna:</translation>
     </message>
     <message>
+      <source>Alt key</source>
+      <translation>Alt-näppäin</translation>
+    </message>
+    <message>
+      <source>Alt</source>
+      <translation>Alt</translation>
+    </message>
+    <message>
+      <source>Ctrl key</source>
+      <translation>Ctrl-näppäin</translation>
+    </message>
+    <message>
+      <source>Ctrl</source>
+      <translation>Ctrl</translation>
+    </message>
+    <message>
+      <source>Shift key</source>
+      <translation>Shift-näppäin</translation>
+    </message>
+    <message>
+      <source>Shift</source>
+      <translation>Vaihto</translation>
+    </message>
+    <message>
+      <source>Windows key or Meta key</source>
+      <translation>Windows-näppäin tai Meta-näppäin</translation>
+    </message>
+    <message>
+      <source>Win/Meta</source>
+      <translation>Win/Meta</translation>
+    </message>
+    <message>
+      <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
+      <translation>Näytä lippuikkuna ennen kuin näytetään ponnahdusikkuna, napsauta lippua näyttääksesi ponnahdusikkunan. </translation>
+    </message>
+    <message>
       <source>Show scan flag when word is selected</source>
       <translation>Näytä skannaus kun sana on valittu</translation>
+    </message>
+    <message>
+      <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
+      <translation>Älä näytä ponnahdusikkunoita kun valinta tai leikepöytä yhdessä GoldenDict&apos;s omat ikkunat muuttuvat</translation>
+    </message>
+    <message>
+      <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
+      <translation>Ohita GoldenDict&apos;s oma valinta ja leikepöydän muutokset</translation>
     </message>
     <message>
       <source>Delay time</source>
@@ -3239,6 +3151,80 @@ kuitenkin ylimmän sanakirjan artikkeli näytetään.</translation>
     <message>
       <source> ms</source>
       <translation> ms</translation>
+    </message>
+    <message>
+      <source>Hotkeys</source>
+      <translation>Pikanäppäimet</translation>
+    </message>
+    <message>
+      <source>Use the following hotkey to show or hide the main window:</source>
+      <translation>Käytä seuraavaa pikanäppäintä näyttääksesi tai piilottaaksesi pääikkunan:</translation>
+    </message>
+    <message>
+      <source>Use the following hotkey to translate a word from clipboard:</source>
+      <translation>Käytä seuraavaa pikanäppäintä kääntääksesi sanan leikepöydältä:</translation>
+    </message>
+    <message>
+      <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
+      <translation>Pikanäppäimet ovat globaaleja ja toimivat mistä tahansa ohjelmasta ja missä tahansa kontekstissa niin kauan kuin GoldenDict on käynnissä taustalla.</translation>
+    </message>
+    <message>
+      <source>&amp;Audio</source>
+      <translation>&amp;Ääni</translation>
+    </message>
+    <message>
+      <source>Pronunciation</source>
+      <translation>Ääntäminen</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in main window</source>
+      <translation>Ääntää sanat automaattisesti pääikkunassa</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in scan popup</source>
+      <translation>Ääntää automaattisesti sanoja skannauksessa</translation>
+    </message>
+    <message>
+      <source>Playback</source>
+      <translation>Toisto</translation>
+    </message>
+    <message>
+      <source>Play audio files via built-in audio support</source>
+      <translation>Toista äänitiedostoja sisäänrakennetun äänituen kautta</translation>
+    </message>
+    <message>
+      <source>Use internal player:</source>
+      <translation>Käytä sisäistä pelaajaa:</translation>
+    </message>
+    <message>
+      <source>Choose audio back end</source>
+      <translation>Valitse audio back end</translation>
+    </message>
+    <message>
+      <source>Use any external program to play audio files</source>
+      <translation>Käytä mitä tahansa ulkoista ohjelmaa äänitiedostojen toistamiseen</translation>
+    </message>
+    <message>
+      <source>Use external program:</source>
+      <translation>Käytä ulkoista ohjelmaa:</translation>
+    </message>
+    <message>
+      <source>Enter audio player command line</source>
+      <translation>Syötä soittimen komentorivi</translation>
+    </message>
+    <message>
+      <source>&amp;Network</source>
+      <translation>&amp;Verkko</translation>
+    </message>
+    <message>
+      <source>Enable if you wish to use a proxy server
+for all program&apos;s network requests.</source>
+      <translation>Ota käyttöön, jos haluat käyttää välityspalvelinta
+kaikille ohjelmille&apos;s verkkopyyntöille.</translation>
+    </message>
+    <message>
+      <source>Use proxy server</source>
+      <translation>Käytä välityspalvelinta</translation>
     </message>
     <message>
       <source>System proxy</source>
@@ -3251,6 +3237,26 @@ kuitenkin ylimmän sanakirjan artikkeli näytetään.</translation>
     <message>
       <source>Custom settings</source>
       <translation>Mukautetut asetukset</translation>
+    </message>
+    <message>
+      <source>Type:</source>
+      <translation>Tyyppi:</translation>
+    </message>
+    <message>
+      <source>Host:</source>
+      <translation>Isäntä:</translation>
+    </message>
+    <message>
+      <source>Port:</source>
+      <translation>Portti:</translation>
+    </message>
+    <message>
+      <source>User:</source>
+      <translation>Käyttäjä:</translation>
+    </message>
+    <message>
+      <source>Password:</source>
+      <translation>Salasana:</translation>
     </message>
     <message>
       <source>Anki Connect</source>
@@ -3293,6 +3299,18 @@ kuitenkin ylimmän sanakirjan artikkeli näytetään.</translation>
       <translation>Lausekkeen kenttä (voi olla tyhjä)...</translation>
     </message>
     <message>
+      <source>Enabling this would make GoldenDict block most advertisements
+by disallowing content (images, frames) not originating from the site
+you are browsing. If some site breaks because of this, try disabling this.</source>
+      <translation>Tämän käyttöönotto tekisi GoldenDictin estämästä useimmat mainokset
+kieltämällä sisällön (kuvien, kehyksien) käytön, jotka eivät ole peräisin sivustosta
+joita selailet. Jos jokin sivusto rikkoo tämän vuoksi, kokeile poistaa tämä käytöstä.</translation>
+    </message>
+    <message>
+      <source>Disallow loading content from other sites (hides most advertisements)</source>
+      <translation>Estä sisällön lataaminen muilta sivustoilta (piilottaa useimmat mainokset)</translation>
+    </message>
+    <message>
       <source>Some sites detect GoldenDict via HTTP headers and block the requests.
 Enable this option to workaround the problem.</source>
       <translation>Jotkut sivustot havaitsevat GoldenDictin HTTP-otsikoiden kautta ja estävät pyynnöt.
@@ -3329,6 +3347,22 @@ tyhjentää verkon välimuistin levyltä poistumisen aikana.</translation>
       <translation>Tyhjennä verkkovälimuisti poistuttaessa</translation>
     </message>
     <message>
+      <source>When this is enabled, the program periodically
+checks if a new, updated version of GoldenDict
+is available for download. If it is so, the program
+informs the user about it and prompts to open a
+download page.</source>
+      <translation>Kun tämä on käytössä, ohjelma
+tarkistaa säännöllisesti, onko uusi päivitetty versio GoldenDict
+ladattavissa. Jos näin on, ohjelma
+ilmoittaa siitä käyttäjälle ja pyytää avaamaan
+lataussivun.</translation>
+    </message>
+    <message>
+      <source>Check for new program releases periodically</source>
+      <translation>Tarkista uusien ohjelmien julkaisut ajoittain</translation>
+    </message>
+    <message>
       <source>Full-text search</source>
       <translation>Täystekstihaku</translation>
     </message>
@@ -3345,104 +3379,12 @@ tyhjentää verkon välimuistin levyltä poistumisen aikana.</translation>
       <translation>artikkelit (0 - rajoittamaton)</translation>
     </message>
     <message>
+      <source>Create fulltext index with parallel threads </source>
+      <translation>Luo kokotekstihakemisto rinnakkaisilla säikeillä </translation>
+    </message>
+    <message>
       <source>Ad&amp;vanced</source>
       <translation>Ad&amp;vanced</translation>
-    </message>
-    <message>
-      <source>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</source>
-      <translation>Aikana peräkkäisiä hakuja, jos yksi sanakirja on romahtanut manuaalisesti, se pysyy romahti seuraavassa haussa</translation>
-    </message>
-    <message>
-      <source>Session collapse</source>
-      <translation>Istunto romahtaa</translation>
-    </message>
-    <message>
-      <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation>Tarkenna uudessa haussa pää- tai ponnahdusikkuna, vaikka se olisi&apos;s näkyvissä</translation>
-    </message>
-    <message>
-      <source>Favorites</source>
-      <translation>Suosikit</translation>
-    </message>
-    <message>
-      <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
-      <translation>Suosikkien tallennusväli. Jos arvo on 0 Suosikkia, tallennetaan vain ulostulon aikana.</translation>
-    </message>
-    <message>
-      <source>Turn this option on to confirm every operation of items deletion</source>
-      <translation>Ota tämä asetus käyttöön vahvistaaksesi jokaisen toimintojen poistamisen</translation>
-    </message>
-    <message>
-      <source>Confirmation for items deletion</source>
-      <translation>Vahvistus kohteiden poistolle</translation>
-    </message>
-    <message>
-      <source>Turn this option on to ignore unreasonably long input text
-from mouse-over, selection, clipboard or command line</source>
-      <translation>Ota tämä asetus käyttöön ohittaaksesi kohtuuttoman pitkän tekstin
-hiiren yli, valinnan, leikepöydältä tai komentoriviltä</translation>
-    </message>
-    <message>
-      <source>Ignore input phrases longer than</source>
-      <translation>Jätä huomiotta pidemmät syöttölauseet</translation>
-    </message>
-    <message>
-      <source>Input phrases longer than this size will be ignored</source>
-      <translation>Tämän kokoisia pidempiä ilmaisuja ei oteta huomioon</translation>
-    </message>
-    <message>
-      <source>Turn this option on to ignore diacritics while searching articles</source>
-      <translation>Ota tämä asetus käyttöön, jos haluat ohittaa diakritiikan artikkeleita etsittäessä</translation>
-    </message>
-    <message>
-      <source>Ignore diacritics while searching</source>
-      <translation>Ohita diakritiikka etsittäessä</translation>
-    </message>
-    <message>
-      <source>Turn this option on to always expand optional parts of articles</source>
-      <translation>Laita tämä asetus päälle laajentaaksesi aina artikkeleiden valinnaisia osia</translation>
-    </message>
-    <message>
-      <source>Expand optional &amp;parts</source>
-      <translation>Laajenna valinnaiset &amp;osat</translation>
-    </message>
-    <message>
-      <source>Select this option to automatic collapse big articles</source>
-      <translation>Valitse tämä vaihtoehto suurien artikkeleiden automaattiseen tiivistämiseen</translation>
-    </message>
-    <message>
-      <source>Collapse articles more than</source>
-      <translation>Tiivistä artikkelit enemmän kuin</translation>
-    </message>
-    <message>
-      <source>Articles longer than this size will be collapsed</source>
-      <translation>Tämän kokoisia pidempiä artikkeleita romahtaa</translation>
-    </message>
-    <message>
-      <source>Ignore punctuation while searching</source>
-      <translation>Ohita välimerkit etsittäessä</translation>
-    </message>
-    <message>
-      <source>Turn this option on to enable extra articles search via synonym lists
-from Stardict, Babylon and GLS dictionaries</source>
-      <translation>Laita tämä asetus päälle ottaaksesi käyttöön ylimääräiset artikkelit haun synonyymilistojen kautta
-alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
-    </message>
-    <message>
-      <source>Extra search via synonyms</source>
-      <translation>Ylimääräinen haku synonyymien kautta</translation>
-    </message>
-    <message>
-      <source>symbols</source>
-      <translation>symbolit</translation>
-    </message>
-    <message>
-      <source>Ctrl-Tab navigates tabs in MRU order</source>
-      <translation>Ctrl-välilehti navigoi välilehdet MRU-järjestyksessä</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>Babylon</translation>
     </message>
     <message>
       <source>History</source>
@@ -3455,22 +3397,6 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <source>Store &amp;history</source>
       <translation>Kaupan &amp;historia</translation>
-    </message>
-    <message>
-      <source>Articles</source>
-      <translation>Artikkelit</translation>
-    </message>
-    <message>
-      <source>Turn this option on if you want to select words by single mouse click</source>
-      <translation>Ota tämä asetus käyttöön, jos haluat valita sanat yhdellä hiiren napsautuksella</translation>
-    </message>
-    <message>
-      <source>Select word by single click</source>
-      <translation>Valitse sana yhdellä napsautuksella</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>Lisäosan tyyli:</translation>
     </message>
     <message>
       <source>Specify the maximum number of entries to keep in history.</source>
@@ -3493,12 +3419,132 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <translation>minuuttia</translation>
     </message>
     <message>
+      <source>Favorites</source>
+      <translation>Suosikit</translation>
+    </message>
+    <message>
+      <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
+      <translation>Suosikkien tallennusväli. Jos arvo on 0 Suosikkia, tallennetaan vain ulostulon aikana.</translation>
+    </message>
+    <message>
+      <source>Turn this option on to confirm every operation of items deletion</source>
+      <translation>Ota tämä asetus käyttöön vahvistaaksesi jokaisen toimintojen poistamisen</translation>
+    </message>
+    <message>
+      <source>Confirmation for items deletion</source>
+      <translation>Vahvistus kohteiden poistolle</translation>
+    </message>
+    <message>
+      <source>Articles</source>
+      <translation>Artikkelit</translation>
+    </message>
+    <message>
+      <source>Ignore punctuation while searching</source>
+      <translation>Ohita välimerkit etsittäessä</translation>
+    </message>
+    <message>
+      <source>Input phrases longer than this size will be ignored</source>
+      <translation>Tämän kokoisia pidempiä ilmaisuja ei oteta huomioon</translation>
+    </message>
+    <message>
+      <source>symbols</source>
+      <translation>symbolit</translation>
+    </message>
+    <message>
+      <source>Select this option to automatic collapse big articles</source>
+      <translation>Valitse tämä vaihtoehto suurien artikkeleiden automaattiseen tiivistämiseen</translation>
+    </message>
+    <message>
+      <source>Collapse articles more than</source>
+      <translation>Tiivistä artikkelit enemmän kuin</translation>
+    </message>
+    <message>
+      <source>Turn this option on to ignore unreasonably long input text
+from mouse-over, selection, clipboard or command line</source>
+      <translation>Ota tämä asetus käyttöön ohittaaksesi kohtuuttoman pitkän tekstin
+hiiren yli, valinnan, leikepöydältä tai komentoriviltä</translation>
+    </message>
+    <message>
+      <source>Ignore input phrases longer than</source>
+      <translation>Jätä huomiotta pidemmät syöttölauseet</translation>
+    </message>
+    <message>
+      <source>Articles longer than this size will be collapsed</source>
+      <translation>Tämän kokoisia pidempiä artikkeleita romahtaa</translation>
+    </message>
+    <message>
+      <source>Turn this option on to always expand optional parts of articles</source>
+      <translation>Laita tämä asetus päälle laajentaaksesi aina artikkeleiden valinnaisia osia</translation>
+    </message>
+    <message>
+      <source>Expand optional &amp;parts</source>
+      <translation>Laajenna valinnaiset &amp;osat</translation>
+    </message>
+    <message>
+      <source>Turn this option on to ignore diacritics while searching articles</source>
+      <translation>Ota tämä asetus käyttöön, jos haluat ohittaa diakritiikan artikkeleita etsittäessä</translation>
+    </message>
+    <message>
+      <source>Ignore diacritics while searching</source>
+      <translation>Ohita diakritiikka etsittäessä</translation>
+    </message>
+    <message>
+      <source>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</source>
+      <translation>Aikana peräkkäisiä hakuja, jos yksi sanakirja on romahtanut manuaalisesti, se pysyy romahti seuraavassa haussa</translation>
+    </message>
+    <message>
+      <source>Session collapse</source>
+      <translation>Istunto romahtaa</translation>
+    </message>
+    <message>
+      <source>Turn this option on to enable extra articles search via synonym lists
+from Stardict, Babylon and GLS dictionaries</source>
+      <translation>Laita tämä asetus päälle ottaaksesi käyttöön ylimääräiset artikkelit haun synonyymilistojen kautta
+alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
+    </message>
+    <message>
+      <source>Extra search via synonyms</source>
+      <translation>Ylimääräinen haku synonyymien kautta</translation>
+    </message>
+    <message>
+      <source>When using clipboard, strip everything after newline</source>
+      <translation>Kun käytät leikepöytää, poista kaikki rivinvaihdon jälkeen</translation>
+    </message>
+    <message>
+      <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
+      <translation>Tarkenna uudessa haussa pää- tai ponnahdusikkuna, vaikka se olisi&apos;s näkyvissä</translation>
+    </message>
+    <message>
+      <source>Miscellaneous</source>
+      <translation>Sekalaista</translation>
+    </message>
+    <message>
+      <source>Remove invalid index on exit</source>
+      <translation>Poista virheellinen indeksi poistuessasi</translation>
+    </message>
+    <message>
+      <source>System default</source>
+      <translation>Järjestelmän oletus</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>Oletus</translation>
+    </message>
+    <message>
       <source>Classic</source>
       <translation>Klassinen</translation>
     </message>
     <message>
       <source>Modern</source>
       <translation>Moderni</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>Lingvo</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>Babylon</translation>
     </message>
     <message>
       <source>Lingoes</source>
@@ -3513,76 +3559,20 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <translation> Mt</translation>
     </message>
     <message>
-      <source>Restart needed</source>
-      <translation>Uudelleenkäynnistys tarvitaan</translation>
+      <source>Restart the program to apply the language change.</source>
+      <translation>Ohjelma pitää käynnistää uudelleen jotta kieli voidaan vaihtaa.</translation>
     </message>
     <message>
       <source>Restart to apply the interface style change.</source>
       <translation>Käynnistä käyttöliittymän tyylin muutos uudelleen.</translation>
     </message>
     <message>
-      <source>Positional information is required to use Xapian&apos;s phrase searching and NEAR operator, but the database size will be much bigger. Applies only to new incoming dictionaries.</source>
-      <translation>Xapianin lausehaun ja NEAR-operaattorin käyttämiseen tarvitaan sijaintitietoja, mutta tietokannan koko tulee olemaan paljon suurempi. Koskee vain uusia saapuvia sanakirjoja.</translation>
-    </message>
-    <message>
-      <source>Enable index with positional information</source>
-      <translation>Ota indeksi käyttöön sijaintitiedoilla</translation>
-    </message>
-    <message>
-      <source>Standard Font</source>
-      <translation>Vakiofontti</translation>
-    </message>
-    <message>
-      <source>Monospace Font</source>
-      <translation>Monospace fontti</translation>
-    </message>
-    <message>
-      <source>Serif Font</source>
-      <translation>Serif-fontti</translation>
-    </message>
-    <message>
-      <source>Sans-serif Font</source>
-      <translation>Sans-serif-fontti</translation>
-    </message>
-    <message>
-      <source>Appearance</source>
-      <translation>Ulkomuoto</translation>
-    </message>
-    <message>
-      <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
-      <translation>Näitä fontteja käytetään, kun sanakirjan määrittämiä fontteja ei löydy.</translation>
-    </message>
-    <message>
-      <source>Fallback Fonts</source>
-      <translation>Varafontit</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>Käyttöliittymän tyyli:</translation>
-    </message>
-    <message>
-      <source>Create fulltext index with parallel threads </source>
-      <translation>Luo kokotekstihakemisto rinnakkaisilla säikeillä </translation>
-    </message>
-    <message>
-      <source>When using clipboard, strip everything after newline</source>
-      <translation>Kun käytät leikepöytää, poista kaikki rivinvaihdon jälkeen</translation>
-    </message>
-    <message>
-      <source>Remove invalid index on exit</source>
-      <translation>Poista virheellinen indeksi poistuessasi</translation>
-    </message>
-    <message>
-      <source>Miscellaneous</source>
-      <translation>Sekalaista</translation>
-    </message>
-    <message>
-      <source>Interface Font</source>
-      <translation>Käyttöliittymän Kirjasin</translation>
-    </message>
-    <message>
       <source>Restart to apply the interface font change.</source>
       <translation>Käynnistä uudelleen ottaaksesi käyttöön käyttöliittymän kirjasimen muutokset.</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>Uudelleenkäynnistys tarvitaan</translation>
     </message>
   </context>
   <context>
@@ -3713,20 +3703,20 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <translation>Muuta ponnahdusikkunan ryhmää.</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
-      <translation>Vaihda skannauksen ponnahdusikkuna.</translation>
-    </message>
-    <message>
-      <source>Print version and diagnosis info.</source>
-      <translation>Tulostusversio ja diagnoositiedot.</translation>
-    </message>
-    <message>
       <source>Force the word to be translated in scanpopup</source>
       <translation>Pakota sana käännettäväksi scanpopupissa</translation>
     </message>
     <message>
       <source>Force the word to be translated in the mainwindow</source>
       <translation>Pakota sana käännettäväksi pääikkunassa</translation>
+    </message>
+    <message>
+      <source>Toggle scan popup.</source>
+      <translation>Vaihda skannauksen ponnahdusikkuna.</translation>
+    </message>
+    <message>
+      <source>Print version and diagnosis info.</source>
+      <translation>Tulostusversio ja diagnoositiedot.</translation>
     </message>
   </context>
   <context>
@@ -3751,23 +3741,23 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <translation>Resurssien tallennusvirhe: </translation>
     </message>
     <message>
-      <source>The referenced resource failed to download.</source>
-      <translation>Viitattua resurssia ei voitu ladata.</translation>
-    </message>
-    <message>
       <source>WARNING: %1</source>
       <translation>VAROITUS: %1</translation>
+    </message>
+    <message>
+      <source>The referenced resource failed to download.</source>
+      <translation>Viitattua resurssia ei voitu ladata.</translation>
     </message>
   </context>
   <context>
     <name>Romaji</name>
     <message>
-      <source>Hepburn Romaji for Katakana</source>
-      <translation>Hepburn Romaji Katakana</translation>
-    </message>
-    <message>
       <source>Hepburn Romaji for Hiragana</source>
       <translation>Hepburn Romaji for Hiragana</translation>
+    </message>
+    <message>
+      <source>Hepburn Romaji for Katakana</source>
+      <translation>Hepburn Romaji Katakana</translation>
     </message>
   </context>
   <context>
@@ -3780,16 +3770,32 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Alt+S</source>
-      <translation>Alt+S</translation>
-    </message>
-    <message>
       <source>Dialog</source>
       <translation>Dialogi</translation>
     </message>
     <message>
+      <source>Back</source>
+      <translation>Taaksepäin</translation>
+    </message>
+    <message>
+      <source>Forward</source>
+      <translation>Eteenpäin</translation>
+    </message>
+    <message>
       <source>Pronounce Word (Alt+S)</source>
       <translation>Prounce Word (Alt+S)</translation>
+    </message>
+    <message>
+      <source>Alt+S</source>
+      <translation>Alt+S</translation>
+    </message>
+    <message>
+      <source>Send word to main window (Alt+W)</source>
+      <translation>Lähetä sana pääikkunaan (Alt+W)</translation>
+    </message>
+    <message>
+      <source>Alt+W</source>
+      <translation>Alt+W</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>
@@ -3810,24 +3816,8 @@ could be resized or managed in other ways.</source>
 voidaan muuttaa tai hallita muulla tavoin.</translation>
     </message>
     <message>
-      <source>Send word to main window (Alt+W)</source>
-      <translation>Lähetä sana pääikkunaan (Alt+W)</translation>
-    </message>
-    <message>
-      <source>Alt+W</source>
-      <translation>Alt+W</translation>
-    </message>
-    <message>
-      <source>Back</source>
-      <translation>Taaksepäin</translation>
-    </message>
-    <message>
-      <source>Forward</source>
-      <translation>Eteenpäin</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
+      <source>%1 - GoldenDict-ng</source>
+      <translation type="unfinished">%1 - GoldenDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
@@ -3864,12 +3854,12 @@ voidaan muuttaa tai hallita muulla tavoin.</translation>
   <context>
     <name>SoundDirsModel</name>
     <message>
-      <source>Name</source>
-      <translation>Nimi</translation>
-    </message>
-    <message>
       <source>Path</source>
       <translation>Polku</translation>
+    </message>
+    <message>
+      <source>Name</source>
+      <translation>Nimi</translation>
     </message>
     <message>
       <source>Icon</source>
@@ -3883,194 +3873,44 @@ voidaan muuttaa tai hallita muulla tavoin.</translation>
       <translation>Tiedostot</translation>
     </message>
     <message>
-      <source>Hiragana</source>
-      <translation>Hiragana</translation>
-    </message>
-    <message>
-      <source>Systems:</source>
-      <translation>Järjestelmät:</translation>
-    </message>
-    <message>
-      <source>Nihon-shiki</source>
-      <translation>Nihon-shiki</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Poistetaanko sivusto &lt;b&gt;%1&lt;/b&gt; luettelosta?</translation>
-    </message>
-    <message>
-      <source>Wikipedia</source>
-      <translation>Wikipedia</translation>
-    </message>
-    <message>
-      <source>Katakana Japanese syllabary</source>
-      <translation>Katakana japanilainen oppimäärä</translation>
-    </message>
-    <message>
-      <source>Make dictionaries from bunches of audiofiles by adding paths here:</source>
-      <translation>Tee sanakirjoja nippujen audiofiles lisäämällä polkuja tähän:</translation>
-    </message>
-    <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Poistetaanko kansio &lt;b&gt;%1&lt;/b&gt; listalta?</translation>
-    </message>
-    <message>
-      <source>Japanese Romaji</source>
-      <translation>Japanilainen Romaji</translation>
-    </message>
-    <message>
-      <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Perustuu Nihon-shiki järjestelmään, mutta muokattu moderni Japani.
-Standardoitu ISO 3602
-
-Ei vielä käytössä GoldenDict.</translation>
-    </message>
-    <message>
-      <source>Wikipedia (MediaWiki) sites:</source>
-      <translation>Wikipedia (MediaWiki) sivustot:</translation>
-    </message>
-    <message>
-      <source>Sound Dirs</source>
-      <translation>Ääni Dirs</translation>
-    </message>
-    <message>
-      <source>Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</source>
-      <translation>Kaikki ulkoiset ohjelmat. Merkkijono %GDWORD% korvataan kyselyn sanalla. A string %GDSEARCH% will be replaced with the text in the search bar. (Automatic Copy) Jos kumpaakin parametria ei ole annettu, otsikkosana syötetään standardiin syötettäväksi.</translation>
-    </message>
-    <message>
-      <source>Lingua Libre</source>
-      <translation>Lingua Libre</translation>
-    </message>
-    <message>
-      <source>Enable Lingua Libre</source>
-      <translation>Ota Lingua Libre Käyttöön</translation>
-    </message>
-    <message>
-      <source>ISO 639-3 language code</source>
-      <translation>ISO 639–3 -kielikoodi</translation>
-    </message>
-    <message>
-      <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use of Forvo currently requires an API key, register on the site to get your own key.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Forvon käyttö vaatii tällä hetkellä API-avaimen, rekisteröityä sivustolle saadaksesi oman avaimen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-      <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hanki oma avain &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;täältä&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-      <source>The most widely used method of transcription of Japanese,
-based on English phonology</source>
-      <translation>Yleisimmin käytetty menetelmä transkriptio japani,
-perustuu Englanti fonologia</translation>
-    </message>
-    <message>
-      <source>Hiragana Japanese syllabary</source>
-      <translation>Hiraganan japanilainen tavu</translation>
-    </message>
-    <message>
-      <source>Custom transliteration</source>
-      <translation>Muokattu translitterointi</translation>
-    </message>
-    <message>
-      <source>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</source>
-      <translation>Tätä sovelletaan vain hakulausekkeessa, ja jokainen rivi edustaa translitterointia puolipisteellä erotettuna. Esimerkiksi ae;æ, käyttäjät voivat syöttää ae edustamaan æ:tä kohdesanassa.</translation>
-    </message>
-    <message>
-      <source>ae;æ #this is an example</source>
-      <translation>ae;æ #tämä on esimerkki</translation>
-    </message>
-    <message>
-      <source>Transliteration</source>
-      <translation>Translitteraatio</translation>
-    </message>
-    <message>
-      <source>The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Kaikkein säännöllisin järjestelmä, jolla on yksi suhde
-kanan kirjoitusjärjestelmiin. Standardoitu ISO 3602
-
-Ei vielä toteutettu GoldenDictissä.</translation>
-    </message>
-    <message>
-      <source>Russian transliteration</source>
-      <translation>venäjän translitteraatio</translation>
-    </message>
-    <message>
-      <source>Morphology</source>
-      <translation>Morfologia</translation>
-    </message>
-    <message>
-      <source>&amp;Change...</source>
-      <translation>&amp;Muuta...</translation>
-    </message>
-    <message>
-      <source>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
-
-Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</source>
-      <translation>Esimerkkejä:  &amp;quot;eng&amp;quot; englanniksi, &amp;quot;fra&amp;quot; ranskaksi &lt;br&gt;
-
-Täydellinen luettelo saatavilla olevista kielistä löytyy &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; täältä &lt;/a&gt;</translation>
-    </message>
-    <message>
-      <source>Katakana</source>
-      <translation>Katakana</translation>
-    </message>
-    <message>
-      <source>Path to a directory with Hunspell/Myspell dictionaries:</source>
-      <translation>Polku hakemistoon, jossa on Hunspell/Myspell sanakirjat:</translation>
-    </message>
-    <message>
-      <source>Re&amp;scan now</source>
-      <translation>Uudelleen&amp;skannaa nyt</translation>
-    </message>
-    <message>
-      <source>German transliteration</source>
-      <translation>saksan translitteraatio</translation>
-    </message>
-    <message>
-      <source>Any websites. A string %GDWORD% will be replaced with the query word:</source>
-      <translation>Kaikki sivustot. Merkkijono %GDWORD% korvataan kyselyn sanalla:</translation>
+      <source>Paths to search for the dictionary files:</source>
+      <translation>Hakupolut, jotka hakevat sanakirjatiedostoja:</translation>
     </message>
     <message>
       <source>&amp;Add...</source>
       <translation>&amp;Lisää...</translation>
     </message>
     <message>
-      <source>Choose a directory</source>
-      <translation>Valitse hakemisto</translation>
-    </message>
-    <message>
       <source>&amp;Remove</source>
       <translation>&amp;Poista</translation>
     </message>
     <message>
-      <source>Websites</source>
-      <translation>Verkkosivut</translation>
+      <source>Re&amp;scan now</source>
+      <translation>Uudelleen&amp;skannaa nyt</translation>
     </message>
     <message>
-      <source>Paths to search for the dictionary files:</source>
-      <translation>Hakupolut, jotka hakevat sanakirjatiedostoja:</translation>
+      <source>Sound Dirs</source>
+      <translation>Ääni Dirs</translation>
     </message>
     <message>
-      <source>Confirm removal</source>
-      <translation>Vahvista poistaminen</translation>
+      <source>Make dictionaries from bunches of audiofiles by adding paths here:</source>
+      <translation>Tee sanakirjoja nippujen audiofiles lisäämällä polkuja tähän:</translation>
     </message>
     <message>
-      <source>Syllabaries:</source>
-      <translation>Tillabaarit:</translation>
+      <source>Morphology</source>
+      <translation>Morfologia</translation>
+    </message>
+    <message>
+      <source>Path to a directory with Hunspell/Myspell dictionaries:</source>
+      <translation>Polku hakemistoon, jossa on Hunspell/Myspell sanakirjat:</translation>
+    </message>
+    <message>
+      <source>&amp;Change...</source>
+      <translation>&amp;Muuta...</translation>
     </message>
     <message>
       <source>Available morphology dictionaries:</source>
       <translation>Käytettävissä olevat morfologian sanakirjat:</translation>
-    </message>
-    <message>
-      <source>Enables to use the Latin alphabet to write the Japanese language</source>
-      <translation>Mahdollistaa latinan aakkosten käyttämisen Japanin kielen kirjoittamiseen</translation>
     </message>
     <message>
       <source>Each morphology dictionary appears as a
@@ -4087,16 +3927,26 @@ Lisätään sopivia sanakirjoja asianomaisten ryhmien pohjalle
 niiden käyttämiseksi.</translation>
     </message>
     <message>
-      <source>Hepburn</source>
-      <translation>Hepburn</translation>
+      <source>Wikipedia</source>
+      <translation>Wikipedia</translation>
     </message>
     <message>
-      <source>Kunrei-shiki</source>
-      <translation>Kunrei-shiki</translation>
+      <source>Wikipedia (MediaWiki) sites:</source>
+      <translation>Wikipedia (MediaWiki) sivustot:</translation>
     </message>
     <message>
-      <source>Forvo</source>
-      <translation>Forvo</translation>
+      <source>Websites</source>
+      <translation>Verkkosivut</translation>
+    </message>
+    <message>
+      <source>Any websites. A string %GDWORD% will be replaced with the query word:</source>
+      <translation>Kaikki sivustot. Merkkijono %GDWORD% korvataan kyselyn sanalla:</translation>
+    </message>
+    <message>
+      <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
+%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
+      <translation>Vaihtoehtoisesti, käytä %GD1251% CP1251, %GDISO1%...%GDISO16% ISO 8859-1... SO 8859-16 vastaavasti,
+%GDBIG5% Big-5, %GDBIG5HKSCS% Big5-HKSCS:lle, %GDGBK% GBK:lle ja GB18030, %GDSHIFTJIS% Shift-JIS:lle.</translation>
     </message>
     <message>
       <source>DICT servers</source>
@@ -4105,6 +3955,42 @@ niiden käyttämiseksi.</translation>
     <message>
       <source>DICT servers:</source>
       <translation>DICT-palvelimet:</translation>
+    </message>
+    <message>
+      <source>Programs</source>
+      <translation>Ohjelmat</translation>
+    </message>
+    <message>
+      <source>Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</source>
+      <translation>Kaikki ulkoiset ohjelmat. Merkkijono %GDWORD% korvataan kyselyn sanalla. A string %GDSEARCH% will be replaced with the text in the search bar. (Automatic Copy) Jos kumpaakin parametria ei ole annettu, otsikkosana syötetään standardiin syötettäväksi.</translation>
+    </message>
+    <message>
+      <source>Lingua Libre</source>
+      <translation>Lingua Libre</translation>
+    </message>
+    <message>
+      <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pronunciations provided by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ääntämiset tarjoaa &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, Wikimedia Francen yhteistoiminnallinen kielellinen mediakirjasto. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+      <source>Enable Lingua Libre</source>
+      <translation>Ota Lingua Libre Käyttöön</translation>
+    </message>
+    <message>
+      <source>ISO 639-3 language code</source>
+      <translation>ISO 639–3 -kielikoodi</translation>
+    </message>
+    <message>
+      <source>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
+
+Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</source>
+      <translation>Esimerkkejä:  &amp;quot;eng&amp;quot; englanniksi, &amp;quot;fra&amp;quot; ranskaksi &lt;br&gt;
+
+Täydellinen luettelo saatavilla olevista kielistä löytyy &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; täältä &lt;/a&gt;</translation>
+    </message>
+    <message>
+      <source>Forvo</source>
+      <translation>Forvo</translation>
     </message>
     <message>
       <source>Live pronunciations from &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. The site allows people to record and share word pronunciations. You can listen to them from GoldenDict.</source>
@@ -4119,6 +4005,14 @@ niiden käyttämiseksi.</translation>
       <translation>API avain:</translation>
     </message>
     <message>
+      <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use of Forvo currently requires an API key, register on the site to get your own key.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Forvon käyttö vaatii tällä hetkellä API-avaimen, rekisteröityä sivustolle saadaksesi oman avaimen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
+      <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hanki oma avain &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;täältä&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+    </message>
+    <message>
       <source>Language codes (comma-separated):</source>
       <translation>Kielikoodit (pilkulla erotettu):</translation>
     </message>
@@ -4131,34 +4025,130 @@ niiden käyttämiseksi.</translation>
       <translation>Koko kielikoodien luettelo on saatavilla &lt;a href=&quot;http://www.forvo.com/languages-codes/&quot;&gt;täällä&lt;/a&gt;.</translation>
     </message>
     <message>
+      <source>Transliteration</source>
+      <translation>Translitteraatio</translation>
+    </message>
+    <message>
       <source>Greek transliteration</source>
       <translation>kreikan translitteraatio</translation>
     </message>
     <message>
-      <source>Programs</source>
-      <translation>Ohjelmat</translation>
+      <source>Russian transliteration</source>
+      <translation>venäjän translitteraatio</translation>
     </message>
     <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Poistetaanko ohjelma &lt;b&gt;%1&lt;/b&gt; listalta?</translation>
+      <source>German transliteration</source>
+      <translation>saksan translitteraatio</translation>
     </message>
     <message>
       <source>Belarusian transliteration</source>
       <translation>valkovenäjän translitteraatio</translation>
     </message>
     <message>
-      <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
-      <translation>Vaihtoehtoisesti, käytä %GD1251% CP1251, %GDISO1%...%GDISO16% ISO 8859-1... SO 8859-16 vastaavasti,
-%GDBIG5% Big-5, %GDBIG5HKSCS% Big5-HKSCS:lle, %GDGBK% GBK:lle ja GB18030, %GDSHIFTJIS% Shift-JIS:lle.</translation>
+      <source>Enables to use the Latin alphabet to write the Japanese language</source>
+      <translation>Mahdollistaa latinan aakkosten käyttämisen Japanin kielen kirjoittamiseen</translation>
+    </message>
+    <message>
+      <source>Japanese Romaji</source>
+      <translation>Japanilainen Romaji</translation>
+    </message>
+    <message>
+      <source>Systems:</source>
+      <translation>Järjestelmät:</translation>
+    </message>
+    <message>
+      <source>The most widely used method of transcription of Japanese,
+based on English phonology</source>
+      <translation>Yleisimmin käytetty menetelmä transkriptio japani,
+perustuu Englanti fonologia</translation>
+    </message>
+    <message>
+      <source>Hepburn</source>
+      <translation>Hepburn</translation>
+    </message>
+    <message>
+      <source>The most regular system, having a one-to-one relation to the
+kana writing systems. Standardized as ISO 3602
+
+Not implemented yet in GoldenDict.</source>
+      <translation>Kaikkein säännöllisin järjestelmä, jolla on yksi suhde
+kanan kirjoitusjärjestelmiin. Standardoitu ISO 3602
+
+Ei vielä toteutettu GoldenDictissä.</translation>
+    </message>
+    <message>
+      <source>Nihon-shiki</source>
+      <translation>Nihon-shiki</translation>
+    </message>
+    <message>
+      <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
+Standardized as ISO 3602
+
+Not implemented yet in GoldenDict.</source>
+      <translation>Perustuu Nihon-shiki järjestelmään, mutta muokattu moderni Japani.
+Standardoitu ISO 3602
+
+Ei vielä käytössä GoldenDict.</translation>
+    </message>
+    <message>
+      <source>Kunrei-shiki</source>
+      <translation>Kunrei-shiki</translation>
+    </message>
+    <message>
+      <source>Syllabaries:</source>
+      <translation>Tillabaarit:</translation>
+    </message>
+    <message>
+      <source>Hiragana Japanese syllabary</source>
+      <translation>Hiraganan japanilainen tavu</translation>
+    </message>
+    <message>
+      <source>Hiragana</source>
+      <translation>Hiragana</translation>
+    </message>
+    <message>
+      <source>Katakana Japanese syllabary</source>
+      <translation>Katakana japanilainen oppimäärä</translation>
+    </message>
+    <message>
+      <source>Katakana</source>
+      <translation>Katakana</translation>
+    </message>
+    <message>
+      <source>Custom transliteration</source>
+      <translation>Muokattu translitterointi</translation>
+    </message>
+    <message>
+      <source>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</source>
+      <translation>Tätä sovelletaan vain hakulausekkeessa, ja jokainen rivi edustaa translitterointia puolipisteellä erotettuna. Esimerkiksi ae;æ, käyttäjät voivat syöttää ae edustamaan æ:tä kohdesanassa.</translation>
+    </message>
+    <message>
+      <source>ae;æ #this is an example</source>
+      <translation>ae;æ #tämä on esimerkki</translation>
     </message>
     <message>
       <source>Text to Speech</source>
       <translation>Tekstistä puheeksi</translation>
     </message>
     <message>
-      <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pronunciations provided by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ääntämiset tarjoaa &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, Wikimedia Francen yhteistoiminnallinen kielellinen mediakirjasto. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <source>Choose a directory</source>
+      <translation>Valitse hakemisto</translation>
+    </message>
+    <message>
+      <source>Confirm removal</source>
+      <translation>Vahvista poistaminen</translation>
+    </message>
+    <message>
+      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
+      <translation>Poistetaanko kansio &lt;b&gt;%1&lt;/b&gt; listalta?</translation>
+    </message>
+    <message>
+      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
+      <translation>Poistetaanko sivusto &lt;b&gt;%1&lt;/b&gt; luettelosta?</translation>
+    </message>
+    <message>
+      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
+      <translation>Poistetaanko ohjelma &lt;b&gt;%1&lt;/b&gt; listalta?</translation>
     </message>
   </context>
   <context>
@@ -4181,6 +4171,18 @@ niiden käyttämiseksi.</translation>
     <message>
       <source>&amp;Remove</source>
       <translation>&amp;Poista</translation>
+    </message>
+    <message>
+      <source>Preferences</source>
+      <translation>Asetukset</translation>
+    </message>
+    <message>
+      <source>Volume:</source>
+      <translation>Äänenvoimakkuus:</translation>
+    </message>
+    <message>
+      <source>Rate:</source>
+      <translation>Hinta:</translation>
     </message>
     <message>
       <source>Preview</source>
@@ -4207,28 +4209,16 @@ niiden käyttämiseksi.</translation>
       <translation>TTS-ääntä ei ole saatavilla</translation>
     </message>
     <message>
+      <source>Cannot find available TTS voice.&lt;br&gt;Please make sure that at least one TTS engine installed on your computer already.</source>
+      <translation>Saatavilla olevaa TTS-ääntä ei löydy.&lt;br&gt;Varmista, että tietokoneelle on jo asennettu ainakin yksi TTS-moottori.</translation>
+    </message>
+    <message>
       <source>Confirm removal</source>
       <translation>Vahvista poistaminen</translation>
     </message>
     <message>
       <source>Remove voice engine &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>Poistetaanko äänimoottori &lt;b&gt;%1&lt;/b&gt; luettelosta?</translation>
-    </message>
-    <message>
-      <source>Cannot find available TTS voice.&lt;br&gt;Please make sure that at least one TTS engine installed on your computer already.</source>
-      <translation>Saatavilla olevaa TTS-ääntä ei löydy.&lt;br&gt;Varmista, että tietokoneelle on jo asennettu ainakin yksi TTS-moottori.</translation>
-    </message>
-    <message>
-      <source>Preferences</source>
-      <translation>Asetukset</translation>
-    </message>
-    <message>
-      <source>Volume:</source>
-      <translation>Äänenvoimakkuus:</translation>
-    </message>
-    <message>
-      <source>Rate:</source>
-      <translation>Hinta:</translation>
     </message>
   </context>
   <context>
@@ -4264,24 +4254,24 @@ niiden käyttämiseksi.</translation>
   <context>
     <name>WebSitesModel</name>
     <message>
-      <source>Name</source>
-      <translation>Nimi</translation>
-    </message>
-    <message>
-      <source>Address</source>
-      <translation>Osoite</translation>
+      <source>Insert article as link inside &lt;iframe&gt; tag</source>
+      <translation>Lisää artikkeli linkkinä &lt;iframe&gt; -tagin sisälle</translation>
     </message>
     <message>
       <source>Enabled</source>
       <translation>Käytössä</translation>
     </message>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Lisää artikkeli linkkinä &lt;iframe&gt; -tagin sisälle</translation>
-    </message>
-    <message>
       <source>As link</source>
       <translation>Linkinä</translation>
+    </message>
+    <message>
+      <source>Name</source>
+      <translation>Nimi</translation>
+    </message>
+    <message>
+      <source>Address</source>
+      <translation>Osoite</translation>
     </message>
     <message>
       <source>Icon</source>
