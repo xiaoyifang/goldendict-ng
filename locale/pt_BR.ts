@@ -824,7 +824,7 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Support xapian search syntax, such as AND OR +/- etc.</source>
-      <translation type="unfinished">Support xapian search syntax, such as AND OR +/- etc.</translation>
+      <translation>Suporte à sintaxe de pesquisa xapiana, como AND OR +/- etc.</translation>
     </message>
     <message>
       <source>Articles found: </source>
@@ -2157,7 +2157,7 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Hungarian</source>
-      <translation type="unfinished">Hungarian</translation>
+      <translation>húngaro</translation>
     </message>
     <message>
       <source>English</source>
@@ -3822,7 +3822,7 @@ das outras janelas, redimensioná-la ou geri-la à vontade.</translation>
     </message>
     <message>
       <source>%1 - GoldenDict-ng</source>
-      <translation type="unfinished">%1 - GoldenDict-ng</translation>
+      <translation>%1 - GoldenDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>

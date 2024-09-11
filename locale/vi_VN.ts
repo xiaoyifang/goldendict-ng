@@ -823,7 +823,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Support xapian search syntax, such as AND OR +/- etc.</source>
-      <translation type="unfinished">Support xapian search syntax, such as AND OR +/- etc.</translation>
+      <translation>Hỗ trợ cú pháp tìm kiếm xapian, chẳng hạn như AND OR +/- v.v.</translation>
     </message>
     <message>
       <source>Articles found: </source>
@@ -2156,7 +2156,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Hungarian</source>
-      <translation type="unfinished">Hungarian</translation>
+      <translation>Tiếng Hungary</translation>
     </message>
     <message>
       <source>English</source>
@@ -3810,7 +3810,7 @@ quản lý theo nhiều cách khác.</translation>
     </message>
     <message>
       <source>%1 - GoldenDict-ng</source>
-      <translation type="unfinished">%1 - GoldenDict-ng</translation>
+      <translation>%1 - GoldenDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>

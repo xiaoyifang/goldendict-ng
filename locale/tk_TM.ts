@@ -558,11 +558,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Unique headwords total: %1.</source>
-      <translation type="unfinished">Unique headwords total: %1.</translation>
+      <translation>Täsin sözleriň jemi: %1.</translation>
     </message>
     <message>
       <source>Unique headwords total: %1, filtered(limited): %2</source>
-      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
+      <translation>Täsin sözleriň jemi: %1, süzülen (çäkli): %2</translation>
     </message>
     <message>
       <source>Save headwords to file</source>
@@ -823,7 +823,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Support xapian search syntax, such as AND OR +/- etc.</source>
-      <translation type="unfinished">Support xapian search syntax, such as AND OR +/- etc.</translation>
+      <translation>KAPI gözleg sintaksisini goldaň, meselem AND OR +/- we ş.m.</translation>
     </message>
     <message>
       <source>Articles found: </source>
@@ -2156,7 +2156,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Hungarian</source>
-      <translation type="unfinished">Hungarian</translation>
+      <translation>Wenger</translation>
     </message>
     <message>
       <source>English</source>

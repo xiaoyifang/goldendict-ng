@@ -824,7 +824,7 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     </message>
     <message>
       <source>Support xapian search syntax, such as AND OR +/- etc.</source>
-      <translation type="unfinished">Support xapian search syntax, such as AND OR +/- etc.</translation>
+      <translation>Tukee xapian-haun syntaksia, kuten AND TAI +/- jne.</translation>
     </message>
     <message>
       <source>Articles found: </source>
@@ -2157,7 +2157,7 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     </message>
     <message>
       <source>Hungarian</source>
-      <translation type="unfinished">Hungarian</translation>
+      <translation>Unkari</translation>
     </message>
     <message>
       <source>English</source>
@@ -3817,7 +3817,7 @@ voidaan muuttaa tai hallita muulla tavoin.</translation>
     </message>
     <message>
       <source>%1 - GoldenDict-ng</source>
-      <translation type="unfinished">%1 - GoldenDict-ng</translation>
+      <translation>%1 - GoldenDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>

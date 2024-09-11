@@ -824,7 +824,7 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     </message>
     <message>
       <source>Support xapian search syntax, such as AND OR +/- etc.</source>
-      <translation type="unfinished">Support xapian search syntax, such as AND OR +/- etc.</translation>
+      <translation>Ondersteunt Xapian-zoeksyntaxis, zoals AND OR +/- etc.</translation>
     </message>
     <message>
       <source>Articles found: </source>
@@ -2157,7 +2157,7 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     </message>
     <message>
       <source>Hungarian</source>
-      <translation type="unfinished">Hungarian</translation>
+      <translation>Hongaars</translation>
     </message>
     <message>
       <source>English</source>
@@ -3813,7 +3813,7 @@ en u het in grootte of anderszins kunt aanpassen.</translation>
     </message>
     <message>
       <source>%1 - GoldenDict-ng</source>
-      <translation type="unfinished">%1 - GoldenDict-ng</translation>
+      <translation>%1 - GoldenDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
