@@ -824,7 +824,7 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     </message>
     <message>
       <source>Support xapian search syntax, such as AND OR +/- etc.</source>
-      <translation type="unfinished">Support xapian search syntax, such as AND OR +/- etc.</translation>
+      <translation>Obsługa składni wyszukiwania Xapian, np. AND OR +/- itp.</translation>
     </message>
     <message>
       <source>Articles found: </source>
@@ -2157,7 +2157,7 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     </message>
     <message>
       <source>Hungarian</source>
-      <translation type="unfinished">Hungarian</translation>
+      <translation>węgierski</translation>
     </message>
     <message>
       <source>English</source>
@@ -3816,7 +3816,7 @@ temu można zmieniać jego wielkość i zarządzać nim w inny sposób.</transla
     </message>
     <message>
       <source>%1 - GoldenDict-ng</source>
-      <translation type="unfinished">%1 - GoldenDict-ng</translation>
+      <translation>%1 - GoldenDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
