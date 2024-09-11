@@ -824,7 +824,7 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
     </message>
     <message>
       <source>Support xapian search syntax, such as AND OR +/- etc.</source>
-      <translation type="unfinished">Support xapian search syntax, such as AND OR +/- etc.</translation>
+      <translation>Podpora syntaxe vyhľadávania xapian, ako je AND OR +/- atď.</translation>
     </message>
     <message>
       <source>Articles found: </source>
@@ -2157,7 +2157,7 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
     </message>
     <message>
       <source>Hungarian</source>
-      <translation type="unfinished">Hungarian</translation>
+      <translation>maďarský</translation>
     </message>
     <message>
       <source>English</source>
@@ -3810,7 +3810,7 @@ môžete mu zmeniť veľkosť alebo ho inak spravovať.</translation>
     </message>
     <message>
       <source>%1 - GoldenDict-ng</source>
-      <translation type="unfinished">%1 - GoldenDict-ng</translation>
+      <translation>%1 - GoldenDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
