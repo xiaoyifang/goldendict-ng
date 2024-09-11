@@ -824,7 +824,7 @@ arasındaki farkı giderir)</translation>
     </message>
     <message>
       <source>Support xapian search syntax, such as AND OR +/- etc.</source>
-      <translation type="unfinished">Support xapian search syntax, such as AND OR +/- etc.</translation>
+      <translation>AND OR +/- vb. gibi xapian arama sözdizimini destekler.</translation>
     </message>
     <message>
       <source>Articles found: </source>
@@ -2157,7 +2157,7 @@ arasındaki farkı giderir)</translation>
     </message>
     <message>
       <source>Hungarian</source>
-      <translation type="unfinished">Hungarian</translation>
+      <translation>Macarca</translation>
     </message>
     <message>
       <source>English</source>
@@ -3812,7 +3812,7 @@ Yeniden boyutlandırma, ya da başka bir şekilde yönetilebilir.</translation>
     </message>
     <message>
       <source>%1 - GoldenDict-ng</source>
-      <translation type="unfinished">%1 - GoldenDict-ng</translation>
+      <translation>%1 - AltınDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
