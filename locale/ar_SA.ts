@@ -822,7 +822,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Support xapian search syntax, such as AND OR +/- etc.</source>
-      <translation type="unfinished">Support xapian search syntax, such as AND OR +/- etc.</translation>
+      <translation>دعم صيغة البحث الصينية، مثل AND OR +/- وما إلى ذلك.</translation>
     </message>
     <message>
       <source>Articles found: </source>
@@ -2155,7 +2155,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Hungarian</source>
-      <translation type="unfinished">Hungarian</translation>
+      <translation>الهنغارية</translation>
     </message>
     <message>
       <source>English</source>
