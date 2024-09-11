@@ -824,7 +824,7 @@ chiqan kayninta sumaqyachin)</translation>
     </message>
     <message>
       <source>Support xapian search syntax, such as AND OR +/- etc.</source>
-      <translation type="unfinished">Support xapian search syntax, such as AND OR +/- etc.</translation>
+      <translation>Yanapay xapian maskana sintaxis, ahinataq AND OR +/- etc.</translation>
     </message>
     <message>
       <source>Articles found: </source>
@@ -2157,7 +2157,7 @@ chiqan kayninta sumaqyachin)</translation>
     </message>
     <message>
       <source>Hungarian</source>
-      <translation type="unfinished">Hungarian</translation>
+      <translation>Hungría simi</translation>
     </message>
     <message>
       <source>English</source>
@@ -3812,7 +3812,7 @@ could be resized or managed in other ways.</source>
     </message>
     <message>
       <source>%1 - GoldenDict-ng</source>
-      <translation type="unfinished">%1 - GoldenDict-ng</translation>
+      <translation>%1 - QuriDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
