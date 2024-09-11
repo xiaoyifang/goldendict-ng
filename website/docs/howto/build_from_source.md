@@ -41,6 +41,20 @@ Basically, you need those commands:
 ```shell
 cd goldendict-ng && mkdir build_dir
 # config step
+cmake -S . -B build_dir \
+      --install-prefix=/usr/local/ \
+      -DCMAKE_BUILD_TYPE=Release
+# actual build
+cmake --build build_dir --parallel 7
+
+cmake --install ./build_dir/
+```
+
+With *Ninja* (optional)
+
+```shell
+cd goldendict-ng && mkdir build_dir
+# config step
 cmake -S . -B build_dir -G Ninja
 # actual build
 cmake --build build_dir
