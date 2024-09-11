@@ -823,7 +823,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Support xapian search syntax, such as AND OR +/- etc.</source>
-      <translation type="unfinished">Support xapian search syntax, such as AND OR +/- etc.</translation>
+      <translation>xapian खोज सिंटैक्स का समर्थन करें, जैसे AND OR +/- आदि.</translation>
     </message>
     <message>
       <source>Articles found: </source>
@@ -2156,7 +2156,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Hungarian</source>
-      <translation type="unfinished">Hungarian</translation>
+      <translation>हंगेरी</translation>
     </message>
     <message>
       <source>English</source>
@@ -3801,7 +3801,7 @@ could be resized or managed in other ways.</source>
     </message>
     <message>
       <source>%1 - GoldenDict-ng</source>
-      <translation type="unfinished">%1 - GoldenDict-ng</translation>
+      <translation>%1 - गोल्डनडिक्ट-एनजी</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
