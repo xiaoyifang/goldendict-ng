@@ -830,7 +830,7 @@ Se han modificado algunas fuentes.
     </message>
     <message>
       <source>Support xapian search syntax, such as AND OR +/- etc.</source>
-      <translation type="unfinished">Support xapian search syntax, such as AND OR +/- etc.</translation>
+      <translation>Yanapt’aña xapian thakhi sintaxis, kunjamatix AND OR +/- ukat juk’ampinaka.</translation>
     </message>
     <message>
       <source>Articles found: </source>
@@ -2191,7 +2191,7 @@ Abrir una lista de grupos</translation>
     </message>
     <message>
       <source>Hungarian</source>
-      <translation type="unfinished">Hungarian</translation>
+      <translation>Húngaro aru</translation>
     </message>
     <message>
       <source>English</source>
@@ -3943,7 +3943,7 @@ redimensionarla o gerenciarla en otra manera.</translation>
     </message>
     <message>
       <source>%1 - GoldenDict-ng</source>
-      <translation type="unfinished">%1 - GoldenDict-ng</translation>
+      <translation>%1 - QuriDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
