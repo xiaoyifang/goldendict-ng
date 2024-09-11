@@ -1971,7 +1971,7 @@ void MainWindow::updateWindowTitle()
   if ( view ) {
     QString str = view->getTitle();
     if ( !str.isEmpty() ) {
-      setWindowTitle( tr( "%1 - %2" ).arg( str, "GoldenDict-ng" ) );
+      setWindowTitle( QString( "%1 - %2" ).arg( str, "GoldenDict-ng" ) );
     }
   }
 }
