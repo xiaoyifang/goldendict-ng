@@ -41,10 +41,15 @@ Basically, you need those commands:
 ```shell
 cd goldendict-ng && mkdir build_dir
 # config step
-cmake -S . -B build_dir -G Ninja
+cmake -S . -B build_dir
+      -G "Ninja"/"Unix Makefiles"/"Xcode"...  (Optional)
+      -install-prefix=/usr/local/             (Optional)
+      -DCMAKE_BUILD_TYPE=Release              (Optional)
+
 # actual build
 cmake --build build_dir
-
+      --parallel 7  (Optional if Ninja was chosen)
+ 
 cmake --install ./build_dir/
 ```
 
