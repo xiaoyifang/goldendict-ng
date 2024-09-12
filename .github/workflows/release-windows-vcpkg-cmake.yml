@@ -24,8 +24,8 @@ jobs:
         qt_ver: [ 6.7.2, 6.6.3 ]
         qt_arch: [win64_msvc2019_64]
     env:
-      version: 24.05.13
-      versionSuffix: ${{ !contains(github.ref_name,'master') && 'alpha' || 'NextNameHere' }}
+      version: 24.09.0
+      versionSuffix: ${{ !contains(github.ref_name,'master') && 'alpha' || 'Release' }}
       prerelease: ${{ !contains(github.ref_name,'master') }}
     steps:
       - name: Install Qt

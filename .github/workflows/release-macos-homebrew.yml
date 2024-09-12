@@ -27,8 +27,8 @@ jobs:
         qt_arch: [clang_64]
     env:
       targetName: GoldenDict
-      version: 24.05.13
-      version-suffix: ${{ !contains(github.ref_name,'master') && 'alpha' || 'NextNameHere' }}
+      version: 24.09.0
+      version-suffix: ${{ !contains(github.ref_name,'master') && 'alpha' || 'Release' }}
       prerelease: ${{ !contains(github.ref_name,'master') }}
     steps:
       - uses: actions/checkout@v4

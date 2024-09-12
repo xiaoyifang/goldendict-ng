@@ -47,7 +47,7 @@ endif ()
 include(FeatureSummary)
 
 project(goldendict-ng
-        VERSION 24.05.13
+        VERSION 24.09.0
         LANGUAGES CXX C)
 
 set(GOLDENDICT "goldendict") # binary/executable name
