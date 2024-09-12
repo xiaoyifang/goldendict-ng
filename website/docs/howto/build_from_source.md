@@ -43,7 +43,7 @@ cd goldendict-ng && mkdir build_dir
 # config step
 cmake -S . -B build_dir
       -G "Ninja"/"Unix Makefiles"/"Xcode"...  (Optional)
-      -install-prefix=/usr/local/             (Optional)
+      --install-prefix=/usr/local/            (Optional)
       -DCMAKE_BUILD_TYPE=Release              (Optional)
 
 # actual build
