@@ -6,7 +6,7 @@
 
 #include <QMap>
 #include <QStack>
-#include <QVector>
+#include <QList>
 #include <QtGlobal>
 
 #include <string>
@@ -58,7 +58,7 @@ struct EpwingHeadword
 
 class EpwingBook
 {
-  typedef QPair< int, int > EWPos;
+  typedef std::pair< int, int > EWPos;
 
   void setErrorString( QString const & func, EB_Error_Code code );
 
@@ -79,10 +79,10 @@ class EpwingBook
   int monoWidth, monoHeight;
   QStringList imageCacheList, soundsCacheList, moviesCacheList, fontsCacheList;
   QMap< QString, QString > baseFontsMap, customFontsMap;
-  QVector< int > refPages, refOffsets;
+  QList< int > refPages, refOffsets;
   QMap< uint64_t, bool > allHeadwordPositions;
   QMap< uint64_t, bool > allRefPositions;
-  QVector< EWPos > LinksQueue;
+  QList< EWPos > LinksQueue;
   int refOpenCount, refCloseCount;
   static QMutex libMutex;
   QList< EpwingHeadword > candidateItems;
@@ -242,9 +242,9 @@ public:
 
   QByteArray handleReference( EB_Hook_Code code, const unsigned int * argv );
 
-  bool getMatches( QString word, QVector< QString > & matches );
+  bool getMatches( QString word, QList< QString > & matches );
 
-  bool getArticlePos( QString word, QVector< int > & pages, QVector< int > & offsets );
+  bool getArticlePos( QString word, QList< int > & pages, QList< int > & offsets );
   QString repairSubBookDirectory( QString subBookDir );
 };
 

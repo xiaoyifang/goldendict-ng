@@ -8,15 +8,6 @@
 
 #include <QThreadPool>
 #include <QMessageBox>
-#include <qalgorithms.h>
-
-#if defined( Q_OS_WIN32 )
-
-  #include "initializing.hh"
-  #include <qt_windows.h>
-  #include <QOperatingSystemVersion>
-
-#endif
 #include "globalregex.hh"
 
 namespace FTS {
@@ -43,7 +34,7 @@ void Indexing::run()
           const QString & dictionaryName = QString::fromUtf8( dictionary->getName().c_str() );
           qDebug() << "[FULLTEXT] checking fts for the dictionary:" << dictionaryName;
           emit sendNowIndexingName( dictionaryName );
-          dictionary->makeFTSIndex( isCancelled, false );
+          dictionary->makeFTSIndex( isCancelled );
         } );
         synchronizer.addFuture( f );
       }
@@ -226,10 +217,9 @@ FullTextSearchDialog::FullTextSearchDialog( QWidget * parent,
            &FullTextSearchDialog::setNewIndexingName );
 
   ui.searchMode->addItem( tr( "Default" ), WholeWords );
-  ui.searchMode->addItem( tr( "Plain text" ), PlainText );
   ui.searchMode->addItem( tr( "Wildcards" ), Wildcards );
 
-  ui.searchLine->setToolTip( tr( "support xapian search syntax,such as AND OR +/- etc" ) );
+  ui.searchLine->setToolTip( tr( "Support xapian search syntax, such as AND OR +/- etc." ) );
 
   ui.searchMode->setCurrentIndex( cfg.preferences.fts.searchMode );
 
@@ -449,31 +439,12 @@ void FullTextSearchDialog::itemClicked( const QModelIndex & idx )
 {
   if ( idx.isValid() && idx.row() < results.size() ) {
     QString headword = results[ idx.row() ].headword;
-    QRegExp reg;
+    QRegularExpression reg;
     auto searchText = ui.searchLine->text();
     searchText.replace( RX::Ftx::tokenBoundary, " " );
 
-    auto it = RX::Ftx::token.globalMatch( searchText );
-    QString firstAvailbeItem;
-    while ( it.hasNext() ) {
-      QRegularExpressionMatch match = it.next();
-
-      auto p = match.captured();
-      if ( p.startsWith( '-' ) )
-        continue;
-
-      //the searched text should be like "term".remove enclosed double quotation marks.
-      if ( p.startsWith( "\"" ) ) {
-        p.remove( "\"" );
-      }
-
-      firstAvailbeItem = p;
-      break;
-    }
-
-    if ( !firstAvailbeItem.isEmpty() ) {
-      reg = QRegExp( firstAvailbeItem, Qt::CaseInsensitive, QRegExp::RegExp2 );
-      reg.setMinimal( true );
+    if ( !searchText.isEmpty() ) {
+      reg = QRegularExpression( searchText, QRegularExpression::CaseInsensitiveOption );
     }
 
     emit showTranslationFor( headword, results[ idx.row() ].dictIDs, reg, false );

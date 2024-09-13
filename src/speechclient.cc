@@ -30,7 +30,7 @@ SpeechClient::Engines SpeechClient::availableEngines()
 
     qDebug() << engine_name << sp->state();
 
-    //    const QVector< QLocale > locales = sp->availableLocales();
+    //    const QList< QLocale > locales = sp->availableLocales();
     //    for ( const QLocale & locale : locales )
     {
       QLocale locale;

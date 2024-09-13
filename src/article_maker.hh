@@ -105,9 +105,9 @@ class ArticleRequest: public Dictionary::DataRequest
   typedef QList< QString > Spacings;
 
   /// Splits the given string into words and spacings between them.
-  QPair< Words, Spacings > splitIntoWords( QString const & );
+  std::pair< Words, Spacings > splitIntoWords( QString const & );
 
-  QPair< Words, Spacings > splittedWords;
+  std::pair< Words, Spacings > splittedWords;
   int currentSplittedWordStart;
   int currentSplittedWordEnd;
   QString currentSplittedWordCompound;

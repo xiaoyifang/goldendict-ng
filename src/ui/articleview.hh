@@ -16,16 +16,14 @@
 #include "groupcombobox.hh"
 #include "globalbroadcaster.hh"
 #include "article_inspect.hh"
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-  #include <QtCore5Compat/QRegExp>
-
-#endif
+#include <QRegularExpression>
 #include "ankiconnector.hh"
 #include "webmultimediadownload.hh"
 #include "base_type.hh"
 #include "articlewebview.hh"
 #include "ui/searchpanel.hh"
 #include "ui/ftssearchpanel.hh"
+#include "dictionary_group.hh"
 
 class ResourceToSaveHandler;
 class ArticleViewAgent;
@@ -38,8 +36,7 @@ class ArticleView: public QWidget
 
   ArticleNetworkAccessManager & articleNetMgr;
   AudioPlayerPtr const & audioPlayer;
-  std::vector< sptr< Dictionary::Class > > const & allDictionaries;
-  Instances::Groups const & groups;
+  std::unique_ptr< DictionaryGroup > dictionaryGroup;
   bool popupView;
   Config::Class const & cfg;
   QWebChannel * channel;
@@ -49,9 +46,8 @@ class ArticleView: public QWidget
 
   QAction pasteAction, articleUpAction, articleDownAction, goBackAction, goForwardAction, selectCurrentArticleAction,
     copyAsTextAction, inspectAction;
-  bool searchIsOpened;
+
   bool expandOptionalParts;
-  QString rangeVarName;
 
   /// An action used to create Anki notes.
   QAction sendToAnkiAction{ tr( "&Create Anki note" ), this };
@@ -67,7 +63,7 @@ class ArticleView: public QWidget
   QSet< QString > desktopOpenedTempFiles;
 
   QAction * dictionaryBarToggled;
-  GroupComboBox const * groupComboBox;
+
   unsigned currentGroupId;
   QLineEdit const * translateLine;
 
@@ -85,8 +81,6 @@ class ArticleView: public QWidget
   /// Search in results of full-text search
   QString firstAvailableText;
   QStringList uniqueMatches;
-  bool ftsSearchIsOpened  = false;
-  bool ftsSearchMatchCase = false;
 
   QString delayedHighlightText;
 
@@ -105,8 +99,8 @@ public:
                bool popupView,
                Config::Class const & cfg,
                QLineEdit const * translateLine,
-               QAction * dictionaryBarToggled      = nullptr,
-               GroupComboBox const * groupComboBox = nullptr );
+               QAction * dictionaryBarToggled = nullptr,
+               unsigned currentGroupId        = 0 );
 
 
   void setCurrentGroupId( unsigned currengGrgId );
@@ -134,9 +128,10 @@ public:
 
   void showDefinition( QString const & word,
                        QStringList const & dictIDs,
-                       QRegExp const & searchRegExp,
+                       QRegularExpression const & searchRegExp,
                        unsigned group,
                        bool ignoreDiacritics );
+  void showDefinition( QString const & word, QStringList const & dictIDs, unsigned group, bool ignoreDiacritics );
 
   void sendToAnki( QString const & word, QString const & text, QString const & sentence );
   /// Clears the view and sets the application-global waiting cursor,
@@ -261,8 +256,6 @@ public:
 
 signals:
 
-  void iconChanged( ArticleView *, QIcon const & icon );
-
   void titleChanged( ArticleView *, QString const & title );
 
   void pageLoaded( ArticleView * );
@@ -338,7 +331,6 @@ private slots:
   void inspectElement();
   void loadFinished( bool ok );
   void handleTitleChanged( QString const & title );
-  void handleUrlChanged( QUrl const & url );
   void attachWebChannelToHtml();
 
   void linkHovered( const QString & link );
@@ -365,8 +357,7 @@ private slots:
   void on_searchText_textEdited();
   void on_searchText_returnPressed();
   void on_searchCloseButton_clicked();
-  void on_searchCaseSensitive_clicked();
-  void on_highlightAllButton_clicked();
+  void on_searchCaseSensitive_clicked( bool );
 
   void on_ftsSearchPrevious_clicked();
   void on_ftsSearchNext_clicked();
@@ -415,17 +406,13 @@ private:
 
   bool eventFilter( QObject * obj, QEvent * ev ) override;
 
-  void performFindOperation( bool restart, bool backwards, bool checkHighlight = false );
+  void performFindOperation( bool backwards );
 
   /// Returns the comma-separated list of dictionary ids which should be muted
   /// for the given group. If there are none, returns empty string.
   QString getMutedForGroup( unsigned group );
 
   QStringList getMutedDictionaries( unsigned group );
-
-protected:
-  // We need this to hide the search bar when we're showed
-  void showEvent( QShowEvent * ) override;
 };
 
 class ResourceToSaveHandler: public QObject

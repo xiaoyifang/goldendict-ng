@@ -195,7 +195,7 @@ private:
 
   /// Creates, destroys or otherwise updates tray icon, according to the
   /// current configuration and situation.
-  void updateTrayIcon();
+  void trayIconUpdateOrInit();
 
   void wheelEvent( QWheelEvent * );
   void closeEvent( QCloseEvent * );
@@ -204,7 +204,7 @@ private:
   void setupNetworkCache( int maxSize );
   void makeDictionaries();
   void updateStatusLine();
-  void updateGroupList();
+  void updateGroupList( bool reload = true );
   void updateDictionaryBar();
 
   void updatePronounceAvailability();
@@ -234,8 +234,6 @@ private:
   void adjustCurrentZoomFactor();
 
   void mousePressEvent( QMouseEvent * event );
-
-  void updateCurrentGroupProperty();
 
 
   /// Handles backward and forward mouse buttons and
@@ -392,7 +390,7 @@ private slots:
 
   void showTranslationForDicts( QString const &,
                                 QStringList const & dictIDs,
-                                QRegExp const & searchRegExp,
+                                QRegularExpression const & searchRegExp,
                                 bool ignoreDiacritics );
 
   void showHistoryItem( QString const & );

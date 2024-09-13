@@ -27,7 +27,7 @@ void SplitFile::appendFile( const QString & name )
 
 void SplitFile::close()
 {
-  for ( QVector< QFile * >::const_iterator i = files.begin(); i != files.end(); ++i ) {
+  for ( QList< QFile * >::const_iterator i = files.begin(); i != files.end(); ++i ) {
     ( *i )->close();
     delete ( *i );
   }
@@ -40,13 +40,18 @@ void SplitFile::close()
 
 void SplitFile::getFilenames( vector< string > & names ) const
 {
-  for ( QVector< QFile * >::const_iterator i = files.begin(); i != files.end(); ++i )
+  for ( QList< QFile * >::const_iterator i = files.begin(); i != files.end(); ++i )
     names.push_back( ( *i )->fileName().toStdString() );
+}
+
+int SplitFile::getCurrentFile() const
+{
+  return currentFile;
 }
 
 bool SplitFile::open( QFile::OpenMode mode )
 {
-  for ( QVector< QFile * >::iterator i = files.begin(); i != files.end(); ++i )
+  for ( QList< QFile * >::iterator i = files.begin(); i != files.end(); ++i )
     if ( !( *i )->open( mode ) ) {
       close();
       return false;

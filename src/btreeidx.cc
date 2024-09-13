@@ -272,6 +272,9 @@ void BtreeWordSearchRequest::findMatches()
             QMutexLocker _( &dataMutex );
 
             for ( auto & x : chain ) {
+              if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+                break;
+              }
               if ( useWildcards ) {
                 wstring word   = Utf8::decode( x.prefix + x.word );
                 wstring result = Folding::applyDiacriticsOnly( word );
@@ -290,15 +293,15 @@ void BtreeWordSearchRequest::findMatches()
                           || (int)resultFolded.size() - initialFoldedSize <= maxSuffixVariation ) )
                   addMatch( Utf8::decode( x.prefix + x.word ) );
               }
+              if ( matches.size() >= maxResults ) {
+                break;
+              }
             }
 
             if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
               break;
 
             if ( matches.size() >= maxResults ) {
-              // For now we actually allow more than maxResults if the last
-              // chain yield more than one result. That's ok and maybe even more
-              // desirable.
               break;
             }
           }
@@ -1025,7 +1028,7 @@ void BtreeIndex::getAllHeadwords( QSet< QString > & headwords )
   findArticleLinks( nullptr, nullptr, &headwords );
 }
 
-void BtreeIndex::findAllArticleLinks( QVector< WordArticleLink > & articleLinks )
+void BtreeIndex::findAllArticleLinks( QList< WordArticleLink > & articleLinks )
 {
   if ( !idxFile )
     throw exIndexWasNotOpened();
@@ -1035,7 +1038,7 @@ void BtreeIndex::findAllArticleLinks( QVector< WordArticleLink > & articleLinks 
   findArticleLinks( &articleLinks, &offsets, nullptr );
 }
 
-void BtreeIndex::findArticleLinks( QVector< WordArticleLink > * articleLinks,
+void BtreeIndex::findArticleLinks( QList< WordArticleLink > * articleLinks,
                                    QSet< uint32_t > * offsets,
                                    QSet< QString > * headwords,
                                    QAtomicInt * isCancelled )
@@ -1094,27 +1097,6 @@ void BtreeIndex::findArticleLinks( QVector< WordArticleLink > * articleLinks,
   for ( ;; ) {
     vector< WordArticleLink > result = readChain( chainPtr );
 
-    if ( headwords
-         && static_cast< vector< WordArticleLink >::size_type >( headwords->capacity() )
-           < headwords->size() + result.size() ) {
-      int n = headwords->capacity();
-      headwords->reserve( n + n / 10 );
-    }
-
-    if ( offsets
-         && static_cast< vector< WordArticleLink >::size_type >( offsets->capacity() )
-           < offsets->size() + result.size() ) {
-      int n = offsets->capacity();
-      offsets->reserve( n + n / 10 );
-    }
-
-    if ( articleLinks
-         && static_cast< vector< WordArticleLink >::size_type >( articleLinks->capacity() )
-           < articleLinks->size() + result.size() ) {
-      int n = articleLinks->capacity();
-      articleLinks->reserve( n + n / 10 );
-    }
-
     for ( auto & i : result ) {
       if ( isCancelled && Utils::AtomicInt::loadAcquire( *isCancelled ) )
         return;
@@ -1154,13 +1136,9 @@ void BtreeIndex::findArticleLinks( QVector< WordArticleLink > * articleLinks,
   }
 }
 
-void BtreeIndex::findHeadWords( QSet< uint32_t > offsets, int & index, QSet< QString > * headwords, uint32_t length )
+void BtreeIndex::findHeadWords( QList< uint32_t > offsets, int & index, QSet< QString > * headwords, uint32_t length )
 {
-  int i = 0;
-  for ( auto begin = offsets.begin(); begin != offsets.end(); begin++, i++ ) {
-    if ( i < index ) {
-      continue;
-    }
+  for ( auto begin = offsets.begin() + index; begin != offsets.end(); begin++ ) {
     findSingleNodeHeadwords( *begin, headwords );
     index++;
 
@@ -1204,8 +1182,8 @@ void BtreeIndex::findSingleNodeHeadwords( uint32_t offsets, QSet< QString > * he
   }
 }
 
-//find the next chain ptr ,which is large than this currentChainPtr
-QSet< uint32_t > BtreeIndex::findNodes()
+//find the next chain ptr ,which is larger than this currentChainPtr
+QList< uint32_t > BtreeIndex::findNodes()
 {
   QMutexLocker _( idxFileMutex );
 
@@ -1216,12 +1194,12 @@ QSet< uint32_t > BtreeIndex::findNodes()
   }
 
   char const * leaf = &rootNode.front();
-  QSet< uint32_t > leafOffset;
+  QList< uint32_t > leafOffset;
 
   uint32_t leafEntries;
   leafEntries = *(uint32_t *)leaf;
   if ( leafEntries != 0xffffFFFF ) {
-    leafOffset.insert( rootOffset );
+    leafOffset.append( rootOffset );
     return leafOffset;
   }
 
@@ -1231,14 +1209,15 @@ QSet< uint32_t > BtreeIndex::findNodes()
   uint32_t * offsets = (uint32_t *)leaf + 1;
   uint32_t i         = 0;
 
-  while ( i++ < ( indexNodeSize + 1 ) )
-    leafOffset.insert( *( offsets++ ) );
+  while ( i++ < ( indexNodeSize + 1 ) ) {
+    leafOffset.append( *( offsets++ ) );
+  }
 
   return leafOffset;
 }
 
 void BtreeIndex::getHeadwordsFromOffsets( QList< uint32_t > & offsets,
-                                          QVector< QString > & headwords,
+                                          QList< QString > & headwords,
                                           QAtomicInt * isCancelled )
 {
   uint32_t currentNodeOffset = rootOffset;

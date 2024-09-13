@@ -176,18 +176,6 @@ bool InternalPlayerBackend::isQtmultimedia() const
 #endif
 }
 
-ScanPopupWindowFlags spwfFromInt( int id )
-{
-  if ( id == SPWF_Popup )
-    return SPWF_Popup;
-  if ( id == SPWF_Tool )
-    return SPWF_Tool;
-
-  if ( id != SPWF_default )
-    gdWarning( "Invalid ScanPopup unpinned window flags: %d\n", id );
-  return SPWF_default;
-}
-
 QString Preferences::sanitizeInputPhrase( QString const & inputWord ) const
 {
   QString result = inputWord;
@@ -1109,10 +1097,6 @@ Class load()
 
       if ( !fts.namedItem( "enabled" ).isNull() )
         c.preferences.fts.enabled = ( fts.namedItem( "enabled" ).toElement().text() == "1" );
-
-      if ( !fts.namedItem( "enablePosition" ).isNull() ) {
-        c.preferences.fts.enablePosition = ( fts.namedItem( "enablePosition" ).toElement().text() == "1" );
-      }
 
       if ( !fts.namedItem( "maxDictionarySize" ).isNull() )
         c.preferences.fts.maxDictionarySize = fts.namedItem( "maxDictionarySize" ).toElement().text().toUInt();
@@ -2098,10 +2082,6 @@ void save( Class const & c )
 
       opt = dd.createElement( "enabled" );
       opt.appendChild( dd.createTextNode( c.preferences.fts.enabled ? "1" : "0" ) );
-      hd.appendChild( opt );
-
-      opt = dd.createElement( "enablePosition" );
-      opt.appendChild( dd.createTextNode( c.preferences.fts.enablePosition ? "1" : "0" ) );
       hd.appendChild( opt );
 
       opt = dd.createElement( "maxDictionarySize" );

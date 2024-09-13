@@ -259,12 +259,17 @@ public:
   getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
-  void makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration ) override;
+  void makeFTSIndex( QAtomicInt & isCancelled ) override;
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
-    can_FTS = enable_FTS && fts.enabled && !fts.disabledTypes.contains( "AARD", Qt::CaseInsensitive )
-      && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
+    if ( metadata_enable_fts.has_value() ) {
+      can_FTS = fts.enabled && metadata_enable_fts.value();
+    }
+    else {
+      can_FTS = fts.enabled && !fts.disabledTypes.contains( "AARD", Qt::CaseInsensitive )
+        && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
+    }
   }
 
 protected:
@@ -539,7 +544,7 @@ QString const & AardDictionary::getDescription()
   return dictionaryDescription;
 }
 
-void AardDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )
+void AardDictionary::makeFTSIndex( QAtomicInt & isCancelled )
 {
   if ( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
           || FtsHelpers::ftsIndexIsOldOrBad( this ) ) )
@@ -551,8 +556,6 @@ void AardDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration
   if ( ensureInitDone().size() )
     return;
 
-  if ( firstIteration && getArticleCount() > FTS::MaxDictionarySizeForFastSearch )
-    return;
 
   gdDebug( "Aard: Building the full-text index for dictionary: %s\n", getName().c_str() );
 

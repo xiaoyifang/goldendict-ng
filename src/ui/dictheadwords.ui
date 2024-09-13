@@ -101,6 +101,32 @@
         </widget>
        </item>
        <item>
+           <widget class="QLabel" name="label_2">
+               <property name="toolTip">
+                   <string>Specify the maximum filtered headwords returned.</string>
+               </property>
+               <property name="text">
+                   <string>Filter max results:</string>
+               </property>
+           </widget>
+       </item>
+          <item>
+              <widget class="QSpinBox" name="filterMaxResult">
+                  <property name="toolTip">
+                      <string/>
+                  </property>
+                  <property name="minimum">
+                      <number>10</number>
+                  </property>
+                  <property name="maximum">
+                      <number>3000</number>
+                  </property>
+                  <property name="singleStep">
+                      <number>10</number>
+                  </property>
+              </widget>
+          </item>
+          <item>
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>

@@ -7,6 +7,7 @@
 #include "btreeidx.hh"
 #include <QFile>
 #include "zipfile.hh"
+#include <QMutex>
 
 /// Allows using a btree index to read zip files. Basically built on top of
 /// the base dictionary infrastructure adapted for zips.
@@ -14,6 +15,7 @@ class IndexedZip: public BtreeIndexing::BtreeIndex
 {
   ZipFile::SplitZipFile zip;
   bool zipIsOpen;
+  QMutex mutex;
 
 public:
 

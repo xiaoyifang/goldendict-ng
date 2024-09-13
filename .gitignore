@@ -21,8 +21,6 @@ object_script.goldendict.Release
 
 version.txt
 
-.gitattributes
-
 *.dmg
 
 .DS_Store

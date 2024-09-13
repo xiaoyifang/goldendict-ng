@@ -1,0 +1,109 @@
+name: Build Check
+concurrency: 
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - dev
+      - master
+      - experimental
+      - staged
+jobs:
+  job_ubuntu_build_check:
+    name: ubuntu Build and analyze
+    runs-on: ubuntu-24.04
+    steps:             
+      - name: Install dependencies
+        run: |
+          sudo apt-get install build-essential ninja-build \
+          libvorbis-dev zlib1g-dev libhunspell-dev x11proto-record-dev \
+          libxtst-dev liblzo2-dev libbz2-dev \
+          libavutil-dev libavformat-dev libeb16-dev \
+          libzstd-dev libxkbcommon-dev \
+          libxapian-dev libzim-dev libopencc-dev \
+          qt6-5compat-dev \
+          qt6-base-dev \
+          qt6-multimedia-dev \
+          qt6-speech-dev \
+          qt6-svg-dev \
+          qt6-tools-dev \
+          qt6-tools-dev-tools \
+          qt6-webchannel-dev \
+          qt6-webengine-dev
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          submodules: false
+      - name: Run build
+        run: |
+          mkdir build_dir
+          cmake -S . \
+            -B ./build_dir \
+            -G Ninja
+          cmake --build ./build_dir 
+  job_macos_build_check:
+    name: macos Build and analyze
+    runs-on: macos-12
+    steps:             
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          submodules: false
+      - name: Install dependencies
+        run: |
+          brew install \
+          ninja \
+          opencc \
+          ffmpeg \
+          libao \
+          libiconv \
+          bzip2 \
+          lzip \
+          libvorbis \
+          hunspell \
+          xapian \
+          libzim \
+          qt
+
+          wget ftp://ftp.sra.co.jp/pub/misc/eb/eb-4.4.3.tar.bz2
+          tar xvjf eb-4.4.3.tar.bz2
+          cd eb-4.4.3 && ./configure && make -j 8 && sudo make install && cd ..
+
+      - name: Run build
+        run: |
+          mkdir build_dir
+          cmake -S . \
+            -B ./build_dir \
+            -G Ninja
+          cmake --build ./build_dir
+              
+  job_window_build_check:
+    name: windows Build and analyze
+    runs-on: windows-latest
+    steps:       
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v4
+        with:
+          version: 6.7.2
+          arch: win64_msvc2019_64
+          modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech 
+          setup-python: 'false'
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          submodules: true
+      - name: Run build
+        run: |
+          # Launch-VsDevShell also provides Ninja
+          & 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\Launch-VsDevShell.ps1' `
+            -SkipAutomaticLocation -Arch amd64 -HostArch amd64
+          
+          New-Item -Path './build_dir' -ItemType Directory
+          cmake -S . -B "./build_dir" `
+            -G Ninja `
+            -DWITH_VCPKG_BREAKPAD=ON `
+            -DCMAKE_C_COMPILER="cl.exe" -DCMAKE_CXX_COMPILER="cl.exe" `
+            -DWITH_FFMPEG_PLAYER=OFF
+          cmake --build "./build_dir"

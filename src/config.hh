@@ -5,7 +5,7 @@
 #define __CONFIG_HH_INCLUDED__
 
 #include <QObject>
-#include <QVector>
+#include <QList>
 #include <QString>
 #include <QSize>
 #include <QDateTime>
@@ -23,10 +23,6 @@ namespace Config {
 
 /// Dictionaries which are temporarily disabled via the dictionary bar.
 typedef QSet< QString > MutedDictionaries;
-
-#ifdef Q_OS_WIN
-  #pragma pack( push, 4 )
-#endif
 
 /// A path where to search for the dictionaries
 struct Path
@@ -51,7 +47,7 @@ struct Path
 };
 
 /// A list of paths where to search for the dictionaries
-typedef QVector< Path > Paths;
+typedef QList< Path > Paths;
 
 /// A directory holding bunches of audiofiles, which is indexed into a separate
 /// dictionary.
@@ -76,7 +72,7 @@ struct SoundDir
 };
 
 /// A list of SoundDirs
-typedef QVector< SoundDir > SoundDirs;
+typedef QList< SoundDir > SoundDirs;
 
 struct DictionaryRef
 {
@@ -105,7 +101,7 @@ struct Group
   QByteArray iconData;
   QKeySequence shortcut;
   QString favoritesFolder;
-  QVector< DictionaryRef > dictionaries;
+  QList< DictionaryRef > dictionaries;
   Config::MutedDictionaries mutedDictionaries;      // Disabled via dictionary bar
   Config::MutedDictionaries popupMutedDictionaries; // Disabled via dictionary bar in popup
 
@@ -129,7 +125,7 @@ struct Group
 };
 
 /// All the groups
-struct Groups: public QVector< Group >
+struct Groups: public QList< Group >
 {
   unsigned nextId; // Id to use to create the group next time
 
@@ -199,8 +195,6 @@ struct FullTextSearch
 {
   int searchMode;
   bool enabled;
-
-  bool enablePosition = false;
 
   quint32 maxDictionarySize;
   quint32 parallelThreads = QThread::idealThreadCount() / 3 + 1;
@@ -324,22 +318,6 @@ private:
 
   QString name;
 };
-
-#if defined( HAVE_X11 )
-  // The ScanPopup window flags customization code has been tested
-  // only in X11 desktop environments and window managers.
-  // None of the window flags configurations I have tried works perfectly well
-  // in XFCE with Qt4. Let us enable customization code for Qt5 exclusively to
-  // avoid regressions with Qt4.
-  #define ENABLE_SPWF_CUSTOMIZATION
-#endif
-
-enum ScanPopupWindowFlags {
-  SPWF_default = 0,
-  SPWF_Popup,
-  SPWF_Tool
-};
-ScanPopupWindowFlags spwfFromInt( int id );
 
 /// Various user preferences
 struct Preferences
@@ -520,7 +498,7 @@ struct WebSite
 };
 
 /// All the WebSites
-typedef QVector< WebSite > WebSites;
+typedef QList< WebSite > WebSites;
 
 /// Any DICT server
 struct DictServer
@@ -561,14 +539,14 @@ struct DictServer
 };
 
 /// All the DictServers
-typedef QVector< DictServer > DictServers;
+typedef QList< DictServer > DictServers;
 
 /// Hunspell configuration
 struct Hunspell
 {
   QString dictionariesPath;
 
-  typedef QVector< QString > Dictionaries;
+  typedef QList< QString > Dictionaries;
 
   Dictionaries enabledDictionaries;
 
@@ -584,7 +562,7 @@ struct Hunspell
 };
 
 /// All the MediaWikis
-typedef QVector< MediaWiki > MediaWikis;
+typedef QList< MediaWiki > MediaWikis;
 
 
 /// Chinese transliteration configuration
@@ -777,7 +755,7 @@ struct Program
   }
 };
 
-typedef QVector< Program > Programs;
+typedef QList< Program > Programs;
 
 #ifndef NO_TTS_SUPPORT
 struct VoiceEngine
@@ -823,7 +801,7 @@ struct VoiceEngine
   }
 };
 
-typedef QVector< VoiceEngine > VoiceEngines;
+typedef QList< VoiceEngine > VoiceEngines;
 #endif
 
 struct HeadwordsDialog
@@ -868,7 +846,7 @@ struct Class
   QByteArray popupWindowState;           // Binary state saved by QMainWindow
   QByteArray popupWindowGeometry;        // Geometry saved by QMainWindow
   QByteArray dictInfoGeometry;           // Geometry of "Dictionary info" window
-  QByteArray inspectorGeometry;          // Geometry of WebKit inspector window
+  QByteArray inspectorGeometry;          // Geometry of Web Engine inspector window
   QByteArray dictionariesDialogGeometry; // Geometry of Dictionaries dialog
 
   QString historyExportPath; // Path for export/import history
@@ -918,10 +896,6 @@ struct Class
   bool notts = false;
   bool resetState;
 };
-
-#ifdef Q_OS_WIN
-  #pragma pack( pop )
-#endif
 
 /// Configuration-specific events. Some parts of the program need to react
 /// to specific changes in configuration. The object of this class is used

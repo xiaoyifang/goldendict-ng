@@ -38,6 +38,8 @@ public:
   static QRegularExpression closeScriptTagRe;
   static QRegularExpression srcRe;
   static QRegularExpression srcRe2;
+  static QRegularExpression srcset;
+  static QRegularExpression objectdata;
 
   static QRegularExpression links;
   static QRegularExpression fontFace;
@@ -67,10 +69,13 @@ bool containHtmlEntity( std::string const & text );
 } // namespace Html
 
 const static QRegularExpression accentMark( R"(\p{M})", QRegularExpression::UseUnicodePropertiesOption );
-//contain unicode space mark and punctuation
-const static QRegularExpression markPuncSpace( R"([\p{M}\p{Z}\p{P}])", QRegularExpression::UseUnicodePropertiesOption );
-//contain unicode space and mark.
-const static QRegularExpression markSpace( R"([\p{M}\p{Z}])", QRegularExpression::UseUnicodePropertiesOption );
+//contain unicode space mark,invisible, and punctuation
+const static QRegularExpression markPuncSpace( R"([\p{M}\p{Z}\p{C}\p{P}])",
+                                               QRegularExpression::UseUnicodePropertiesOption );
+//contain unicode space and mark.invisible
+const static QRegularExpression markSpace( R"([\p{M}\p{Z}\p{C}])", QRegularExpression::UseUnicodePropertiesOption );
+
+const static QRegularExpression whiteSpace( "\\s+" );
 
 } // namespace RX
 

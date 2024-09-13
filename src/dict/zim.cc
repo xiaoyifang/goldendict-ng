@@ -217,15 +217,17 @@ public:
   getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
-  void makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration ) override;
+  void makeFTSIndex( QAtomicInt & isCancelled ) override;
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
-    can_FTS = enable_FTS && fts.enabled && !fts.disabledTypes.contains( "ZIM", Qt::CaseInsensitive )
-      && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
+    if ( metadata_enable_fts.has_value() ) {
+      can_FTS = fts.enabled && metadata_enable_fts.value();
+    }
+    else
+      can_FTS = fts.enabled && !fts.disabledTypes.contains( "ZIM", Qt::CaseInsensitive )
+        && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
-
-  void sortArticlesOffsetsForFTS( QVector< uint32_t > & offsets, QAtomicInt & isCancelled ) override;
 
 protected:
 
@@ -388,7 +390,7 @@ string ZimDictionary::convert( const string & in )
     pos = match.capturedEnd();
 
     QStringList list = match.capturedTexts();
-    // Add empty strings for compatibility with QRegExp behaviour
+    // Add empty strings for compatibility with regex behaviour
     for ( int i = list.size(); i < 5; i++ )
       list.append( QString() );
 
@@ -435,7 +437,7 @@ string ZimDictionary::convert( const string & in )
     pos = match.capturedEnd();
 
     QStringList list = match.capturedTexts();
-    // Add empty strings for compatibility with QRegExp behaviour
+    // Add empty strings for compatibility with regex behaviour
     for ( int i = match.lastCapturedIndex() + 1; i < 3; i++ )
       list.append( QString() );
 
@@ -478,7 +480,7 @@ QString const & ZimDictionary::getDescription()
   return dictionaryDescription;
 }
 
-void ZimDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )
+void ZimDictionary::makeFTSIndex( QAtomicInt & isCancelled )
 {
   if ( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
           || FtsHelpers::ftsIndexIsOldOrBad( this ) ) )
@@ -490,9 +492,6 @@ void ZimDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration 
   if ( !ensureInitDone().empty() )
     return;
 
-  if ( firstIteration )
-    return;
-
   gdDebug( "Zim: Building the full-text index for dictionary: %s\n", getName().c_str() );
   try {
     FtsHelpers::makeFTSIndex( this, isCancelled );
@@ -502,25 +501,6 @@ void ZimDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration 
     gdWarning( "Zim: Failed building full-text search index for \"%s\", reason: %s\n", getName().c_str(), ex.what() );
     QFile::remove( ftsIdxName.c_str() );
   }
-}
-
-void ZimDictionary::sortArticlesOffsetsForFTS( QVector< uint32_t > & offsets, QAtomicInt & isCancelled )
-{
-  QVector< QPair< quint32, uint32_t > > offsetsWithClusters;
-  offsetsWithClusters.reserve( offsets.size() );
-
-  for ( QVector< uint32_t >::ConstIterator it = offsets.constBegin(); it != offsets.constEnd(); ++it ) {
-    if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
-      return;
-
-    QMutexLocker _( &zimMutex );
-    offsetsWithClusters.append( QPair< uint32_t, quint32 >( getArticleCluster( df, *it ), *it ) );
-  }
-
-  std::sort( offsetsWithClusters.begin(), offsetsWithClusters.end() );
-
-  for ( int i = 0; i < offsetsWithClusters.size(); i++ )
-    offsets[ i ] = offsetsWithClusters.at( i ).second;
 }
 
 void ZimDictionary::getArticleText( uint32_t articleAddress, QString & headword, QString & text )

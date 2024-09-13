@@ -13,11 +13,9 @@
 #include <QRunnable>
 #include <QThreadPool>
 #include <QSemaphore>
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-  #include <QtCore5Compat/QRegExp>
-#else
-  #include <QRegExp>
-#endif
+
+#include <QRegularExpression>
+
 #include <QDir>
 #include <QCoreApplication>
 #include <QFileInfo>
@@ -128,7 +126,7 @@ string encodeToHunspell( Hunspell &, wstring const & );
 wstring decodeFromHunspell( Hunspell &, char const * );
 
 /// Generates suggestions via hunspell
-QVector< wstring > suggest( wstring & word, QMutex & hunspellMutex, Hunspell & hunspell );
+QList< wstring > suggest( wstring & word, QMutex & hunspellMutex, Hunspell & hunspell );
 
 /// Generates suggestions for compound expression
 void getSuggestionsForExpression( wstring const & expression,
@@ -364,7 +362,7 @@ void HunspellHeadwordsRequest::run()
       matches.push_back( result );
   }
   else {
-    QVector< wstring > suggestions = suggest( trimmedWord, hunspellMutex, hunspell );
+    QList< wstring > suggestions = suggest( trimmedWord, hunspellMutex, hunspell );
 
     if ( !suggestions.empty() ) {
       QMutexLocker _( &dataMutex );
@@ -377,9 +375,9 @@ void HunspellHeadwordsRequest::run()
   finish();
 }
 
-QVector< wstring > suggest( wstring & word, QMutex & hunspellMutex, Hunspell & hunspell )
+QList< wstring > suggest( wstring & word, QMutex & hunspellMutex, Hunspell & hunspell )
 {
-  QVector< wstring > result;
+  QList< wstring > result;
 
   vector< string > suggestions;
 
@@ -394,7 +392,7 @@ QVector< wstring > suggest( wstring & word, QMutex & hunspellMutex, Hunspell & h
 
       wstring lowercasedWord = Folding::applySimpleCaseOnly( word );
 
-      static QRegExp cutStem( R"(^\s*st:(((\s+(?!\w{2}:)(?!-)(?!\+))|\S+)+))" );
+      static QRegularExpression cutStem( R"(^\s*st:(((\s+(?!\w{2}:)(?!-)(?!\+))|\S+)+))" );
 
       for ( const auto & x : suggestions ) {
         QString suggestion = QString::fromStdU32String( decodeFromHunspell( hunspell, x.c_str() ) );
@@ -406,8 +404,9 @@ QVector< wstring > suggest( wstring & word, QMutex & hunspellMutex, Hunspell & h
 
         GD_DPRINTF( ">>>Sugg: %s\n", suggestion.toLocal8Bit().data() );
 
-        if ( cutStem.indexIn( suggestion.trimmed() ) != -1 ) {
-          wstring alt = gd::toWString( cutStem.cap( 1 ) );
+        auto match = cutStem.match( suggestion.trimmed() );
+        if ( match.hasMatch() ) {
+          wstring alt = gd::toWString( match.captured( 1 ) );
 
           if ( Folding::applySimpleCaseOnly( alt ) != lowercasedWord ) // No point in providing same word
           {
@@ -523,7 +522,7 @@ void getSuggestionsForExpression( wstring const & expression,
 
   wstring trimmedWord = Folding::trimWhitespaceOrPunct( expression );
   wstring word, punct;
-  QVector< wstring > words;
+  QList< wstring > words;
 
   suggestions.clear();
 
@@ -557,7 +556,7 @@ void getSuggestionsForExpression( wstring const & expression,
 
   // Combine result strings from suggestions
 
-  QVector< wstring > results;
+  QList< wstring > results;
 
   for ( const auto & i : words ) {
     word = i;
@@ -566,7 +565,7 @@ void getSuggestionsForExpression( wstring const & expression,
         result.append( word );
     }
     else {
-      QVector< wstring > sugg = suggest( word, hunspellMutex, hunspell );
+      QList< wstring > sugg   = suggest( word, hunspellMutex, hunspell );
       int suggNum             = sugg.size() + 1;
       if ( suggNum > 3 )
         suggNum = 3;

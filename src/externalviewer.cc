@@ -4,7 +4,6 @@
 #include <QDir>
 #include <QTimer>
 #include "externalviewer.hh"
-#include "parsecmdline.hh"
 #include "gddebug.hh"
 
 ExternalViewer::ExternalViewer(
@@ -34,18 +33,18 @@ void ExternalViewer::start()
   connect( &viewer, &QProcess::finished, this, &QObject::deleteLater );
   connect( &viewer, &QProcess::errorOccurred, this, &QObject::deleteLater );
 
-  QStringList args = parseCommandLine( viewerCmdLine );
-
+  QStringList args = QProcess::splitCommand( viewerCmdLine );
   if ( !args.isEmpty() ) {
-    QString program = args.first();
-    args.pop_front();
+    const QString program = args.takeFirst();
     args.push_back( tempFileName );
     viewer.start( program, args, QIODevice::NotOpen );
-    if ( !viewer.waitForStarted() )
+    if ( !viewer.waitForStarted() ) {
       throw exCantRunViewer( viewerCmdLine.toUtf8().data() );
+    }
   }
-  else
+  else {
     throw exCantRunViewer( tr( "the viewer program name is empty" ).toUtf8().data() );
+  }
 }
 
 bool ExternalViewer::stop()

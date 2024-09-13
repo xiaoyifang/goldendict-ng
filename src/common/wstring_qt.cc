@@ -1,5 +1,5 @@
 #include "wstring_qt.hh"
-#include <QVector>
+#include <QList>
 
 namespace gd {
 wstring toWString( QString const & in )
@@ -19,7 +19,7 @@ wstring removeTrailingZero( wstring const & v )
 
 wstring removeTrailingZero( QString const & in )
 {
-  QVector< unsigned int > v = in.toUcs4();
+  QList< unsigned int > v = in.toUcs4();
 
   int n = v.size();
   while ( n > 0 && v[ n - 1 ] == 0 )

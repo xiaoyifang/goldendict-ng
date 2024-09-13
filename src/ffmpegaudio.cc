@@ -179,6 +179,31 @@ bool DecoderContext::openCodec( QString & errorString )
     return false;
   }
 
+  // 61 = FFmpeg 7.0 -> https://github.com/FFmpeg/FFmpeg/blob/release/7.0/libavcodec/version_major.h
+  #if LIBAVCODEC_VERSION_MAJOR >= 61
+  gdDebug( "Codec open: %s: channels: %d, rate: %d, format: %s\n",
+           codec_->long_name,
+           codecContext_->ch_layout.nb_channels,
+           codecContext_->sample_rate,
+           av_get_sample_fmt_name( codecContext_->sample_fmt ) );
+
+  if ( !av_channel_layout_check( &codecContext_->ch_layout ) ) {
+    av_channel_layout_default( &codecContext_->ch_layout, codecContext_->ch_layout.nb_channels );
+  }
+
+  if ( swr_alloc_set_opts2( &swr_,
+                            &codecContext_->ch_layout,
+                            AV_SAMPLE_FMT_S16,
+                            44100,
+                            &codecContext_->ch_layout,
+                            codecContext_->sample_fmt,
+                            codecContext_->sample_rate,
+                            0,
+                            nullptr ) != 0
+  ) {
+    qDebug() << "swr_alloc_set_opts2 failed.";
+  }
+  #else
   gdDebug( "Codec open: %s: channels: %d, rate: %d, format: %s\n",
            codec_->long_name,
            codecContext_->channels,
@@ -200,6 +225,8 @@ bool DecoderContext::openCodec( QString & errorString )
                              codecContext_->sample_rate,
                              0,
                              nullptr );
+  #endif
+
 
   if ( !swr_ || swr_init( swr_ ) < 0 ) {
     av_log( nullptr, AV_LOG_ERROR, "Cannot create sample rate converter \n" );
@@ -268,8 +295,11 @@ bool DecoderContext::openOutputDevice( QString & errorString )
     errorString += QStringLiteral( "Failed to create audioOutput." );
     return false;
   }
-
+#if LIBAVCODEC_VERSION_MAJOR >= 61
+  audioOutput->setAudioFormat( 44100, codecContext_->ch_layout.nb_channels );
+#else
   audioOutput->setAudioFormat( 44100, codecContext_->channels );
+#endif
   return true;
 }
 
@@ -329,7 +359,13 @@ void DecoderContext::stop()
 bool DecoderContext::normalizeAudio( AVFrame * frame, vector< uint8_t > & samples )
 {
   auto dst_freq     = 44100;
+
+  #if LIBAVCODEC_VERSION_MAJOR >= 61
+  auto dst_channels = codecContext_->ch_layout.nb_channels;
+  #else
   auto dst_channels = codecContext_->channels;
+  #endif
+
   int out_count     = (int64_t)frame->nb_samples * dst_freq / frame->sample_rate + 256;
   int out_size      = av_samples_get_buffer_size( nullptr, dst_channels, out_count, AV_SAMPLE_FMT_S16, 1 );
   samples.resize( out_size );

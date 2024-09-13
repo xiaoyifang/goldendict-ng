@@ -2,7 +2,7 @@
 #define __SPLITFILE_HH_INCLUDED__
 
 #include <QFile>
-#include <QVector>
+#include <QList>
 #include <QString>
 
 #include <vector>
@@ -19,8 +19,8 @@ class SplitFile
 {
 protected:
 
-  QVector< QFile * > files;
-  QVector< quint64 > offsets;
+  QList< QFile * > files;
+  QList< quint64 > offsets;
   int currentFile;
 
   void appendFile( const QString & name );
@@ -32,6 +32,7 @@ public:
 
   virtual void setFileName( const QString & name ) = 0;
   void getFilenames( vector< string > & names ) const;
+  int getCurrentFile() const;
   bool open( QFile::OpenMode mode );
   void close();
   bool seek( quint64 pos );

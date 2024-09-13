@@ -282,20 +282,16 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( QString const &
                                                                  bool ignoreDiacritics ) const
 {
   if ( !dictIDs.isEmpty() ) {
-    QStringList ids = dictIDs;
-    std::vector< sptr< Dictionary::Class > > ftsDicts;
+    std::vector< sptr< Dictionary::Class > > dicts;
 
     // Find dictionaries by ID's
-    for ( unsigned x = 0; x < dictionaries.size(); x++ ) {
-      for ( QStringList::Iterator it = ids.begin(); it != ids.end(); ++it ) {
-        if ( *it == QString::fromStdString( dictionaries[ x ]->getId() ) ) {
-          ftsDicts.push_back( dictionaries[ x ] );
-          ids.erase( it );
+    for ( const auto & dictId : dictIDs ) {
+      for ( unsigned x = 0; x < dictionaries.size(); x++ ) {
+        if ( dictId == QString::fromStdString( dictionaries[ x ]->getId() ) ) {
+          dicts.push_back( dictionaries[ x ] );
           break;
         }
       }
-      if ( ids.isEmpty() )
-        break;
     }
 
     string header = makeHtmlHeader( word, QString(), true );
@@ -303,7 +299,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( QString const &
     return std::make_shared< ArticleRequest >( word,
                                                Instances::Group{ groupId, "" },
                                                contexts,
-                                               ftsDicts,
+                                               dicts,
                                                header,
                                                -1,
                                                true );
@@ -601,8 +597,6 @@ void ArticleRequest::bodyFinished()
 
         string dictId = activeDict->getId();
 
-        //signal finished dictionray for pronounciation
-        GlobalBroadcaster::instance()->pronounce_engine.finishDictionary( dictId );
 
         dictIds << QString::fromStdString( dictId );
         string head;
@@ -688,6 +682,9 @@ void ArticleRequest::bodyFinished()
         wasUpdated = true;
 
         foundAnyDefinitions = true;
+
+        //signal finished dictionary for pronounciation
+        GlobalBroadcaster::instance()->pronounce_engine.finishDictionary( dictId );
       }
       GD_DPRINTF( "erasing.." );
       bodyRequests.pop_front();
@@ -706,39 +703,37 @@ void ArticleRequest::bodyFinished()
 
     bodyDone = true;
 
-    {
-      string footer;
+    string footer;
 
-      if ( closePrevSpan ) {
-        footer += "</div></div>";
-        closePrevSpan = false;
-      }
-
-      if ( !foundAnyDefinitions ) {
-        // No definitions were ever found, say so to the user.
-
-        // Larger words are usually whole sentences - don't clutter the output
-        // with their full bodies.
-        footer += ArticleMaker::makeNotFoundBody( word.size() < 40 ? word : "", group.name );
-
-        // When there were no definitions, we run stemmed search.
-        stemmedWordFinder = std::make_shared< WordFinder >( this );
-
-        connect( stemmedWordFinder.get(),
-                 &WordFinder::finished,
-                 this,
-                 &ArticleRequest::stemmedSearchFinished,
-                 Qt::QueuedConnection );
-
-        stemmedWordFinder->stemmedMatch( word, activeDicts );
-      }
-      else {
-        footer += R"(<div class="empty-space"></div>)";
-        footer += "</body></html>";
-      }
-
-      appendString( footer );
+    if ( closePrevSpan ) {
+      footer += "</div></div>";
+      closePrevSpan = false;
     }
+
+    if ( !foundAnyDefinitions ) {
+      // No definitions were ever found, say so to the user.
+
+      // Larger words are usually whole sentences - don't clutter the output
+      // with their full bodies.
+      footer += ArticleMaker::makeNotFoundBody( word.size() < 40 ? word : word.left( 40 ) + "...", group.name );
+
+      // When there were no definitions, we run stemmed search.
+      stemmedWordFinder = std::make_shared< WordFinder >( this );
+
+      connect( stemmedWordFinder.get(),
+               &WordFinder::finished,
+               this,
+               &ArticleRequest::stemmedSearchFinished,
+               Qt::QueuedConnection );
+
+      stemmedWordFinder->stemmedMatch( word, activeDicts );
+    }
+    else {
+      footer += R"(<div class="empty-space"></div>)";
+      footer += "</body></html>";
+    }
+
+    appendString( footer );
 
     if ( stemmedWordFinder.get() ) {
       update();
@@ -1003,9 +998,9 @@ void ArticleRequest::individualWordFinished()
   compoundSearchNextStep( false );
 }
 
-QPair< ArticleRequest::Words, ArticleRequest::Spacings > ArticleRequest::splitIntoWords( QString const & input )
+std::pair< ArticleRequest::Words, ArticleRequest::Spacings > ArticleRequest::splitIntoWords( QString const & input )
 {
-  QPair< Words, Spacings > result;
+  std::pair< Words, Spacings > result;
 
   QChar const * ptr = input.data();
 

@@ -24,7 +24,7 @@ Group::Group( Config::Group const & cfgGroup,
     iconData = iconFromData( cfgGroup.iconData );
 
   QMap< string, sptr< Dictionary::Class > > groupDicts;
-  QVector< string > dictOrderList;
+  QList< string > dictOrderList;
   auto dictMap = Dictionary::dictToMap( allDictionaries );
 
   for ( auto const & dict : cfgGroup.dictionaries ) {

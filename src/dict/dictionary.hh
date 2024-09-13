@@ -12,6 +12,7 @@
 #include <QObject>
 #include <QString>
 #include <QWaitCondition>
+#include <QGuiApplication>
 
 #include "config.hh"
 #include "ex.hh"
@@ -315,12 +316,12 @@ protected:
   QAtomicInt FTS_index_completed;
   bool synonymSearchEnabled;
   string dictionaryName;
-  //default to true;
-  bool enable_FTS = true;
-
+  std::optional< bool > metadata_enable_fts = std::nullopt;
   // Load user icon if it exist
   // By default set icon to empty
   virtual void loadIcon() noexcept;
+
+  static int getOptimalIconSize();
 
   // Load icon from filename directly if isFullName == true
   // else treat filename as name without extension
@@ -376,7 +377,7 @@ public:
 
   void setFtsEnable( bool _enable_FTS )
   {
-    enable_FTS = _enable_FTS;
+    metadata_enable_fts = _enable_FTS;
   }
 
   /// Returns all the available properties, like the author's name, copyright,
@@ -524,7 +525,7 @@ public:
   }
 
   /// Make index for full-text search
-  virtual void makeFTSIndex( QAtomicInt &, bool ) {}
+  virtual void makeFTSIndex( QAtomicInt & ) {}
 
   /// Set full-text search parameters
   virtual void setFTSParameters( Config::FullTextSearch const & ) {}

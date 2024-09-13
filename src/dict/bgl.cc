@@ -32,12 +32,6 @@
 #include <QSemaphore>
 #include <QThreadPool>
 
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-  #include <QtCore5Compat/QRegExp>
-#else
-  #include <QRegExp>
-#endif
-
 namespace Bgl {
 
 using std::map;
@@ -221,12 +215,16 @@ public:
 
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
-  void makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration ) override;
+  void makeFTSIndex( QAtomicInt & isCancelled ) override;
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
-    can_FTS = enable_FTS && fts.enabled && !fts.disabledTypes.contains( "BGL", Qt::CaseInsensitive )
-      && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
+    if ( metadata_enable_fts.has_value() ) {
+      can_FTS = fts.enabled && metadata_enable_fts.value();
+    }
+    else
+      can_FTS = fts.enabled && !fts.disabledTypes.contains( "BGL", Qt::CaseInsensitive )
+        && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
 
 protected:
@@ -416,7 +414,7 @@ void BglDictionary::getArticleText( uint32_t articleAddress, QString & headword,
   }
 }
 
-void BglDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )
+void BglDictionary::makeFTSIndex( QAtomicInt & isCancelled )
 {
   if ( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
           || FtsHelpers::ftsIndexIsOldOrBad( this ) ) )
@@ -425,8 +423,6 @@ void BglDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration 
   if ( haveFTSIndex() )
     return;
 
-  if ( firstIteration && getArticleCount() > FTS::MaxDictionarySizeForFastSearch )
-    return;
 
   gdDebug( "Bgl: Building the full-text index for dictionary: %s\n", getName().c_str() );
 
@@ -923,7 +919,7 @@ void BglDictionary::replaceCharsetEntities( string & text )
 
   QRegularExpression charsetExp(
     R"(<\s*charset\s+c\s*=\s*["']?t["']?\s*>((?:\s*[0-9a-fA-F]+\s*;\s*)*)<\s*/\s*charset\s*>)",
-    QRegularExpression::CaseInsensitiveOption | QRegularExpression::InvertedGreedinessOption );
+    QRegularExpression::CaseInsensitiveOption );
 
   QRegularExpression oneValueExp( "\\s*([0-9a-fA-F]+)\\s*;" );
   QString result;

@@ -75,6 +75,7 @@ private:
                                               { "tk_TM", QT_TR_NOOP( "Turkmen" ) },
                                               { "ie_001", QT_TR_NOOP( "Interlingue" ) },
                                               { "jbo_EN", QT_TR_NOOP( "Lojban" ) },
+                                              { "hu_HU", QT_TR_NOOP( "Hungarian" ) },
                                               { "en_US", QT_TR_NOOP( "English" ) } };
 
   Db();

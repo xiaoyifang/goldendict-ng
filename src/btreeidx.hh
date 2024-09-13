@@ -16,7 +16,7 @@
 #include <QFuture>
 #include <QList>
 #include <QSet>
-#include <QVector>
+#include <QList>
 
 
 /// A base for the dictionary which creates a btree index to look up
@@ -89,24 +89,24 @@ public:
   vector< WordArticleLink > findArticles( wstring const &, bool ignoreDiacritics = false, uint32_t maxMatchCount = -1 );
 
   /// Find all unique article links in the index
-  void findAllArticleLinks( QVector< WordArticleLink > & articleLinks );
+  void findAllArticleLinks( QList< WordArticleLink > & articleLinks );
 
   /// Retrieve all unique headwords from index
   void getAllHeadwords( QSet< QString > & headwords );
 
   /// Find all article links and/or headwords in the index
-  void findArticleLinks( QVector< WordArticleLink > * articleLinks,
+  void findArticleLinks( QList< WordArticleLink > * articleLinks,
                          QSet< uint32_t > * offsets,
                          QSet< QString > * headwords,
                          QAtomicInt * isCancelled = 0 );
 
-  void findHeadWords( QSet< uint32_t > offsets, int & index, QSet< QString > * headwords, uint32_t length );
+  void findHeadWords( QList< uint32_t > offsets, int & index, QSet< QString > * headwords, uint32_t length );
   void findSingleNodeHeadwords( uint32_t offsets, QSet< QString > * headwords );
-  QSet< uint32_t > findNodes();
+  QList< uint32_t > findNodes();
 
   /// Retrieve headwords for presented article addresses
   void
-  getHeadwordsFromOffsets( QList< uint32_t > & offsets, QVector< QString > & headwords, QAtomicInt * isCancelled = 0 );
+  getHeadwordsFromOffsets( QList< uint32_t > & offsets, QList< QString > & headwords, QAtomicInt * isCancelled = 0 );
 
 protected:
 
@@ -195,15 +195,6 @@ public:
   virtual uint32_t getFtsIndexVersion()
   {
     return 0;
-  }
-
-  // Sort articles offsets for full-text search in dictionary-specific order
-  // to increase of articles retrieving speed
-  // Default - simple sorting in increase order
-  virtual void sortArticlesOffsetsForFTS( QVector< uint32_t > & offsets, QAtomicInt & isCancelled )
-  {
-    Q_UNUSED( isCancelled );
-    std::sort( offsets.begin(), offsets.end() );
   }
 
   /// Called before each matching operation to ensure that any child init

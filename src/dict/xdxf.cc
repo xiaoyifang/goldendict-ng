@@ -37,10 +37,7 @@
 #include <QFileInfo>
 #include <QDir>
 #include <QPainter>
-#include <QRegExp>
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-  #include <QtCore5Compat>
-#endif
+#include <QRegularExpression>
 #include <QSemaphore>
 #include <QThreadPool>
 #include <QAtomicInt>
@@ -199,12 +196,16 @@ public:
   getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
-  void makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration ) override;
+  void makeFTSIndex( QAtomicInt & isCancelled ) override;
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
-    can_FTS = enable_FTS && fts.enabled && !fts.disabledTypes.contains( "XDXF", Qt::CaseInsensitive )
-      && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
+    if ( metadata_enable_fts.has_value() ) {
+      can_FTS = fts.enabled && metadata_enable_fts.value();
+    }
+    else
+      can_FTS = fts.enabled && !fts.disabledTypes.contains( "XDXF", Qt::CaseInsensitive )
+        && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
 
   uint32_t getFtsIndexVersion() override
@@ -323,6 +324,11 @@ void XdxfDictionary::loadIcon() noexcept
     info     = QFileInfo( fileName );
   }
 
+  if ( !info.isFile() ) {
+    fileName = baseInfo.absoluteDir().absoluteFilePath( "dict.bmp" );
+    info     = QFileInfo( fileName );
+  }
+
   if ( info.isFile() )
     loadIconFromFile( fileName, true );
 
@@ -363,7 +369,7 @@ QString XdxfDictionary::getMainFilename()
   return getDictionaryFilenames()[ 0 ].c_str();
 }
 
-void XdxfDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )
+void XdxfDictionary::makeFTSIndex( QAtomicInt & isCancelled )
 {
   if ( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
           || FtsHelpers::ftsIndexIsOldOrBad( this ) ) )
@@ -375,8 +381,6 @@ void XdxfDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration
   if ( ensureInitDone().size() )
     return;
 
-  if ( firstIteration && getArticleCount() > FTS::MaxDictionarySizeForFastSearch )
-    return;
 
   gdDebug( "Xdxf: Building the full-text index for dictionary: %s\n", getName().c_str() );
 
@@ -940,7 +944,7 @@ void XdxfResourceRequest::run()
 
   string n = dict.getContainingFolder().toStdString() + Utils::Fs::separator() + resourceName;
 
-  GD_DPRINTF( "n is %s\n", n.c_str() );
+  GD_DPRINTF( "xdxf resource name is %s\n", n.c_str() );
 
   try {
     try {
@@ -1086,9 +1090,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
               if ( !str.empty() )
                 idxHeader.langTo = getLanguageId( str.c_str() );
 
-              QRegExp regNum( "\\d+" );
-              regNum.indexIn( stream.attributes().value( "revision" ).toString() );
-              idxHeader.revisionNumber = regNum.cap().toUInt();
+              QRegularExpression regNum( "\\d+" );
+              auto match               = regNum.match( stream.attributes().value( "revision" ).toString() );
+              idxHeader.revisionNumber = match.captured().toUInt();
 
               bool isLogical =
                 ( stream.attributes().value( "format" ) == u"logical" || idxHeader.revisionNumber >= 34 );

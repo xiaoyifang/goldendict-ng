@@ -404,12 +404,16 @@ public:
 
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
-  void makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration ) override;
+  void makeFTSIndex( QAtomicInt & isCancelled ) override;
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
-    can_FTS = enable_FTS && fts.enabled && !fts.disabledTypes.contains( "GLS", Qt::CaseInsensitive )
-      && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
+    if ( metadata_enable_fts.has_value() ) {
+      can_FTS = fts.enabled && metadata_enable_fts.value();
+    }
+    else
+      can_FTS = fts.enabled && !fts.disabledTypes.contains( "GLS", Qt::CaseInsensitive )
+        && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
 
 protected:
@@ -542,7 +546,7 @@ QString GlsDictionary::getMainFilename()
   return getDictionaryFilenames()[ 0 ].c_str();
 }
 
-void GlsDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )
+void GlsDictionary::makeFTSIndex( QAtomicInt & isCancelled )
 {
   if ( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
           || FtsHelpers::ftsIndexIsOldOrBad( this ) ) )
@@ -554,8 +558,6 @@ void GlsDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration 
   if ( ensureInitDone().size() )
     return;
 
-  if ( firstIteration && getArticleCount() > FTS::MaxDictionarySizeForFastSearch )
-    return;
 
   gdDebug( "Gls: Building the full-text index for dictionary: %s\n", getName().c_str() );
 
@@ -688,10 +690,10 @@ void GlsDictionary::loadArticle( uint32_t address, string & headword, string & a
 
 QString & GlsDictionary::filterResource( QString & article )
 {
-  QRegularExpression imgRe( R"((<\s*img\s+[^>]*src\s*=\s*["']+)(?!(?:data|https?|ftp|qrcx):))",
-                            QRegularExpression::CaseInsensitiveOption | QRegularExpression::InvertedGreedinessOption );
-  QRegularExpression linkRe( R"((<\s*link\s+[^>]*href\s*=\s*["']+)(?!(?:data|https?|ftp):))",
-                             QRegularExpression::CaseInsensitiveOption | QRegularExpression::InvertedGreedinessOption );
+  QRegularExpression imgRe( R"((<\s*(?:img|script)\s+[^>]*src\s*=\s*["']?)(?!(?:data|https?|ftp|qrcx):))",
+                            QRegularExpression::CaseInsensitiveOption );
+  QRegularExpression linkRe( R"((<\s*link\s+[^>]*href\s*=\s*["']?)(?!(?:data|https?|ftp):))",
+                             QRegularExpression::CaseInsensitiveOption );
 
   article.replace( imgRe, "\\1bres://" + QString::fromStdString( getId() ) + "/" )
     .replace( linkRe, "\\1bres://" + QString::fromStdString( getId() ) + "/" );
@@ -742,8 +744,8 @@ QString & GlsDictionary::filterResource( QString & article )
   // Handle "audio" tags
 
   QRegularExpression audioRe( R"(<\s*audio\s+src\s*=\s*(["']+)([^"']+)(["'])\s*>(.*)</audio>)",
-                              QRegularExpression::CaseInsensitiveOption | QRegularExpression::DotMatchesEverythingOption
-                                | QRegularExpression::InvertedGreedinessOption );
+                              QRegularExpression::CaseInsensitiveOption
+                                | QRegularExpression::DotMatchesEverythingOption );
 
 
   pos = 0;
@@ -1069,7 +1071,7 @@ void GlsResourceRequest::run()
   try {
     string n = dict.getContainingFolder().toStdString() + Utils::Fs::separator() + resourceName;
 
-    GD_DPRINTF( "n is %s\n", n.c_str() );
+    GD_DPRINTF( "gls resource name is %s\n", n.c_str() );
 
     try {
       QMutexLocker _( &dataMutex );
@@ -1367,11 +1369,11 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
           idxHeader.langTo   = LangCoder::findIdForLanguage( scanner.getLangTo() );
           if ( idxHeader.langFrom == 0 && idxHeader.langTo == 0 ) {
             // if no languages found, try dictionary's file name
-            QPair< quint32, quint32 > langs = LangCoder::findIdsForFilename( QString::fromStdString( dictFiles[ 0 ] ) );
+            auto langs = LangCoder::findLangIdPairFromPath( dictFiles[ 0 ] );
 
             // if no languages found, try dictionary's name
             if ( langs.first == 0 || langs.second == 0 ) {
-              langs = LangCoder::findIdsForFilename( QString::fromStdString( dictionaryName ) );
+              langs = LangCoder::findLangIdPairFromName( QString::fromStdString( dictionaryName ) );
             }
             idxHeader.langFrom = langs.first;
             idxHeader.langTo   = langs.second;

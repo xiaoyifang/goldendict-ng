@@ -254,15 +254,18 @@ public:
   getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
-  void makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration ) override;
+  void makeFTSIndex( QAtomicInt & isCancelled ) override;
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
     if ( !ensureInitDone().empty() )
       return;
-
-    can_FTS = enable_FTS && fts.enabled && !fts.disabledTypes.contains( "MDICT", Qt::CaseInsensitive )
-      && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
+    if ( metadata_enable_fts.has_value() ) {
+      can_FTS = fts.enabled && metadata_enable_fts.value();
+    }
+    else
+      can_FTS = fts.enabled && !fts.disabledTypes.contains( "MDICT", Qt::CaseInsensitive )
+        && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
 
   QString getCachedFileName( QString name );
@@ -435,7 +438,7 @@ void MdxDictionary::doDeferredInit()
   }
 }
 
-void MdxDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )
+void MdxDictionary::makeFTSIndex( QAtomicInt & isCancelled )
 {
   if ( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
           || FtsHelpers::ftsIndexIsOldOrBad( this ) ) )
@@ -447,8 +450,6 @@ void MdxDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration 
   //  if( !ensureInitDone().empty() )
   //    return;
 
-  if ( firstIteration && getArticleCount() > FTS::MaxDictionarySizeForFastSearch )
-    return;
 
   gdDebug( "MDict: Building the full-text index for dictionary: %s", getName().c_str() );
 
@@ -978,6 +979,51 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
         else
           newLink = linkTxt.replace( RX::Mdx::srcRe2, R"(\1"bres://)" + id + R"(/\2")" );
       }
+
+      // convert <img src="bres://{id}/a.png" srcset="a-1x.png 1x, b-2x.png 2x, c.png">
+      // into    <img src="bres://{id}/a.png" srcset="bres://{id}/a-1x.png 1x,bres://{id}/b-2x.png 2x,bres://{id}/c.png">
+
+      if ( linkType.compare( "img" ) == 0 ) {
+        match = RX::Mdx::srcset.match( newLink ); // have to use newLink since linkTxt may already be modified
+        if ( match.hasMatch() ) {
+          auto srcsetOriginalText   = match.captured( "text" );
+          QStringList srcsetNewText = {};
+
+          auto ImageList = srcsetOriginalText.split( u',', Qt::SkipEmptyParts );
+
+          for ( auto & img : ImageList ) {
+            auto imgPair = img.split( RX::whiteSpace );
+
+            if ( !imgPair.empty() && !imgPair.at( 0 ).contains( "//" ) ) {
+              if ( imgPair.length() == 1 ) {
+                srcsetNewText.append( QString( R"(bres://%1/%2)" ).arg( id, imgPair.at( 0 ) ) );
+              }
+              else if ( imgPair.length() == 2 ) {
+                srcsetNewText.append( QString( R"(bres://%1/%2 %3)" ).arg( id, imgPair.at( 0 ), imgPair.at( 1 ) ) );
+              }
+            }
+          }
+
+          newLink.replace( match.capturedStart(),
+                           match.capturedLength(),
+                           match.captured( "before" ) % srcsetNewText.join( ',' ) % match.captured( "after" ) );
+        }
+      }
+
+      if ( linkType.compare( "object" ) == 0 ) {
+        match = RX::Mdx::objectdata.match( newLink );
+        if ( match.hasMatch() ) {
+          auto srcsetOriginalText = match.captured( "text" );
+          QString srcsetNewText;
+          if ( !srcsetOriginalText.contains( "//" ) ) {
+            srcsetNewText = QString( R"(bres://%1/%2)" ).arg( id, srcsetOriginalText );
+          }
+
+          newLink.replace( match.capturedStart(),
+                           match.capturedLength(),
+                           match.captured( "before" ) % srcsetNewText % match.captured( "after" ) );
+        }
+      }
     }
 
     if ( !newLink.isEmpty() ) {
@@ -1392,12 +1438,12 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         }
       }
 
-      // read languages
-      QPair< quint32, quint32 > langs = LangCoder::findIdsForFilename( QString::fromStdString( fileName ) );
+      // read languages from dictioanry's file name
+      auto langs = LangCoder::findLangIdPairFromPath( fileName );
 
-      // if no languages found, try dictionary's name
+      // if no languages found, try dictionary name
       if ( langs.first == 0 || langs.second == 0 ) {
-        langs = LangCoder::findIdsForFilename( parser.title() );
+        langs = LangCoder::findLangIdPairFromName( parser.title() );
       }
 
       idxHeader.langFrom = langs.first;

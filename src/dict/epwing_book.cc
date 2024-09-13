@@ -1857,7 +1857,7 @@ QString EpwingBook::currentCandidate()
   return QString{};
 }
 
-bool EpwingBook::getMatches( QString word, QVector< QString > & matches )
+bool EpwingBook::getMatches( QString word, QList< QString > & matches )
 {
   QByteArray bword, bword2;
   EB_Hit hits[ HitsBufferSize ];
@@ -1904,7 +1904,7 @@ bool EpwingBook::getMatches( QString word, QVector< QString > & matches )
     }
   }
 
-  QVector< int > pages, offsets;
+  QList< int > pages, offsets;
 
   for ( int i = 0; i < hitCount; i++ ) {
     bool same_article = false;
@@ -1928,7 +1928,7 @@ bool EpwingBook::getMatches( QString word, QVector< QString > & matches )
   return true;
 }
 
-bool EpwingBook::getArticlePos( QString word, QVector< int > & pages, QVector< int > & offsets )
+bool EpwingBook::getArticlePos( QString word, QList< int > & pages, QList< int > & offsets )
 {
   QByteArray bword, bword2;
   EB_Hit hits[ HitsBufferSize ];

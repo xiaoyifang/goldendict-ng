@@ -136,12 +136,16 @@ public:
   getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
-  void makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration ) override;
+  void makeFTSIndex( QAtomicInt & isCancelled ) override;
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
-    can_FTS = enable_FTS && fts.enabled && !fts.disabledTypes.contains( "DICTD", Qt::CaseInsensitive )
-      && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
+    if ( metadata_enable_fts.has_value() ) {
+      can_FTS = fts.enabled && metadata_enable_fts.value();
+    }
+    else
+      can_FTS = fts.enabled && !fts.disabledTypes.contains( "DICTD", Qt::CaseInsensitive )
+        && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
 };
 
@@ -431,7 +435,7 @@ QString const & DictdDictionary::getDescription()
   return dictionaryDescription;
 }
 
-void DictdDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteration )
+void DictdDictionary::makeFTSIndex( QAtomicInt & isCancelled )
 {
   if ( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
           || FtsHelpers::ftsIndexIsOldOrBad( this ) ) )
@@ -443,8 +447,6 @@ void DictdDictionary::makeFTSIndex( QAtomicInt & isCancelled, bool firstIteratio
   if ( ensureInitDone().size() )
     return;
 
-  if ( firstIteration && getArticleCount() > FTS::MaxDictionarySizeForFastSearch )
-    return;
 
   gdDebug( "DictD: Building the full-text index for dictionary: %s\n", getName().c_str() );
 
@@ -695,12 +697,12 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         idxHeader.signature     = Signature;
         idxHeader.formatVersion = CurrentFormatVersion;
 
-        // read languages
-        QPair< quint32, quint32 > langs = LangCoder::findIdsForFilename( QString::fromStdString( dictFiles[ 0 ] ) );
+        // read languages from dictioanry file name
+        auto langs = LangCoder::findLangIdPairFromPath( dictFiles[ 0 ] );
 
         // if no languages found, try dictionary's name
         if ( langs.first == 0 || langs.second == 0 ) {
-          langs = LangCoder::findIdsForFilename( QString::fromStdString( nameFromFileName( dictFiles[ 0 ] ) ) );
+          langs = LangCoder::findLangIdPairFromName( QString::fromStdString( dictionaryName ) );
         }
 
         idxHeader.langFrom = langs.first;

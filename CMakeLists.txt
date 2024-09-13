@@ -1,15 +1,15 @@
 cmake_minimum_required(VERSION 3.25) # ubuntu 23.04 Fedora 36
 
-# Qt6.4+ only
-
 option(WITH_FFMPEG_PLAYER "Enable support for FFMPEG player" ON)
 option(WITH_EPWING_SUPPORT "Enable epwing support" ON)
 option(WITH_ZIM "enable zim support" ON)
-option(WITH_TTS "enable QTexttoSpeech support" ON)
+option(WITH_TTS "enable QTexttoSpeech support" OFF)
 
 # options for linux packaging
 option(USE_SYSTEM_FMT "use system fmt instead of bundled one" OFF)
 option(USE_SYSTEM_TOML "use system toml++ instead of bundled one" OFF)
+
+option(WITH_VCPKG_BREAKPAD "build with Breakpad support for VCPKG build only" OFF)
 
 ## Change binary & resources folder to parallel install with original GD.
 ## This flag should be avoided because it leads to small regressions:
@@ -18,10 +18,36 @@ option(USE_SYSTEM_TOML "use system toml++ instead of bundled one" OFF)
 ## 3. There are dictionary packages that install files to "/usr/share/goldendict/content" -> nullify the auto dict discovery
 option(USE_ALTERNATIVE_NAME "Force the name goldendict-ng " OFF)
 
+set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}") # to put staff in the ./cmake folder
+
+
+# vcpkg handling code, must be placed before project()
+if (WIN32)
+    if (DEFINED CMAKE_TOOLCHAIN_FILE)
+        message(STATUS "Using toolchain file: ${CMAKE_TOOLCHAIN_FILE}")
+    else ()
+        message(STATUS "CMAKE_TOOLCHAIN_FILE is not set. Try fetching cached vcpkg.")
+        include(FetchContent)
+        FetchContent_Declare(
+                vcpkg-export
+                URL https://github.com/xiaoyifang/goldendict-ng/releases/download/vcpkg_240711_3d72d8c930e1b6a1b2432b262c61af7d3287dcd0/goldendict-ng-vcpkg-export.tar.zst
+                URL_HASH SHA512=CB7AB20F03CE1BB1D46FE5DF25C9B9F4E365B72CE0A817B3C9E39BD0C85DC571F992363A1A5E8DD1E31C44FF88C51E9A88A537688C6070B4E58FF8FA2585EAB7
+        )
+        FetchContent_MakeAvailable(vcpkg-export)
+        set(VCPKG_MANIFEST_MODE OFF CACHE BOOL "disable existing manifest mode caused by the existrance of vcpkg.json" FORCE)
+        set(CMAKE_TOOLCHAIN_FILE "${CMAKE_BINARY_DIR}/_deps/vcpkg-export-src/scripts/buildsystems/vcpkg.cmake")
+    endif ()
+endif ()
+
+
+if (WITH_VCPKG_BREAKPAD)
+    list(APPEND VCPKG_MANIFEST_FEATURES "breakpad")
+endif ()
+
 include(FeatureSummary)
 
 project(goldendict-ng
-        VERSION 24.05.05
+        VERSION 24.09.0
         LANGUAGES CXX C)
 
 set(GOLDENDICT "goldendict") # binary/executable name
@@ -78,7 +104,7 @@ set(CMAKE_AUTOUIC_SEARCH_PATHS "${CMAKE_CURRENT_SOURCE_DIR}/src/ui/")
 # https://cmake.org/cmake/help/latest/command/file.html#filesystem
 # ! Using GLOB_RECURSE is not recommended by cmake's documentation
 # CONFIGURE_DEPENDS will trigger file tree recheck in every rebuilds.
-file(GLOB_RECURSE ALL_SOURCE_FILES CONFIGURE_DEPENDS src/*.cc src/*.hh src/*.c)
+file(GLOB_RECURSE ALL_SOURCE_FILES CONFIGURE_DEPENDS src/*.cc src/*.hh src/*.ui src/*.c)
 
 if (APPLE)
     file(GLOB_RECURSE MACOS_SOURCE_FILES CONFIGURE_DEPENDS src/macos/*.mm)
@@ -144,6 +170,10 @@ target_include_directories(${GOLDENDICT} PRIVATE
         ${PROJECT_SOURCE_DIR}/src/ui
         )
 
+if (WIN32)
+    target_include_directories(${GOLDENDICT} PRIVATE ${PROJECT_SOURCE_DIR}/src/windows)
+endif ()
+
 if (NOT USE_SYSTEM_TOML)
     target_include_directories(${GOLDENDICT} PRIVATE ${PROJECT_SOURCE_DIR}/thirdparty/tomlplusplus)
 endif ()
@@ -156,10 +186,16 @@ endif ()
 
 target_compile_definitions(${GOLDENDICT} PUBLIC
         CMAKE_USED_HACK  # temporal hack to avoid breaking qmake build
-        USE_ICONV
         MAKE_QTMULTIMEDIA_PLAYER
         MAKE_CHINESE_CONVERSION_SUPPORT
         )
+
+if (WIN32)
+    target_compile_definitions(${GOLDENDICT} PUBLIC
+            __WIN32
+            INCLUDE_LIBRARY_PATH
+    )
+endif ()
 
 if (WITH_FFMPEG_PLAYER)
     target_compile_definitions(${GOLDENDICT} PUBLIC MAKE_FFMPEG_PLAYER)
@@ -178,12 +214,16 @@ if (WITH_ZIM)
     target_compile_definitions(${GOLDENDICT} PUBLIC MAKE_ZIM_SUPPORT)
 endif ()
 
+if (WITH_VCPKG_BREAKPAD)
+    target_compile_definitions(${GOLDENDICT} PUBLIC USE_BREAKPAD)
+endif ()
+
 #### libraries linking && includes for Win or Unix
 
 if (WIN32)
-    include(CMake_Win.cmake)
+    include(Deps_Vcpkg)
 else ()
-    include(CMake_Unix.cmake)
+    include(Deps_Unix)
 endif ()
 
 #### add translations
@@ -197,9 +237,12 @@ if (WIN32)
 else ()
     set_source_files_properties(${TRANS_FILES} PROPERTIES OUTPUT_LOCATION "${CMAKE_CURRENT_BINARY_DIR}/locale")
 endif ()
-# a wrapper over qt_add_lupdate and  qt_add_lrelease
+
 qt_add_translations(${GOLDENDICT} TS_FILES ${TRANS_FILES}
-        QM_FILES_OUTPUT_VARIABLE qm_files)
+        QM_FILES_OUTPUT_VARIABLE qm_files
+        LUPDATE_OPTIONS "-no-ui-lines -locations none -no-obsolete")
+
+add_dependencies(${GOLDENDICT} "release_translations")
 
 #### installation or assemble redistribution
 
@@ -228,7 +271,19 @@ if (APPLE)
 
     install(TARGETS ${GOLDENDICT} BUNDLE DESTINATION "${Assembling_Dir}")
     install(FILES ${qm_files} DESTINATION "${Redistributable_APP}/Contents/MacOS/locale")
-    install(DIRECTORY "${CMAKE_SOURCE_DIR}/opencc" DESTINATION "${Redistributable_APP}/Contents/MacOS")
+
+    if (IS_READABLE "/opt/homebrew/share/opencc/")
+        set(OPENCC_DATA_PATH "/opt/homebrew/share/opencc/" CACHE PATH "opencc's data path")
+    elseif (IS_READABLE "/usr/local/share/opencc/")
+        set(OPENCC_DATA_PATH "/usr/local/share/opencc/" CACHE PATH "opencc's data path")
+    else ()
+        message(FATAL_ERROR "Cannot find opencc's data folder!")
+    endif ()
+
+    file(REAL_PATH "${OPENCC_DATA_PATH}" OPENCC_DATA_PATH_FOR_REAL)
+
+    message(STATUS "OPENCC data is found -> ${OPENCC_DATA_PATH_FOR_REAL}")
+    install(DIRECTORY "${OPENCC_DATA_PATH_FOR_REAL}" DESTINATION "${Redistributable_APP}/Contents/MacOS")
 
     install(SCRIPT ${deploy_script})
 
@@ -244,7 +299,7 @@ if (APPLE)
             --volicon ${CMAKE_SOURCE_DIR}/icons/macicon.icns \
             --icon \"${App_Name}\" 100 100
             --app-drop-link 300 100 \
-            \"GoldenDict-${CMAKE_PROJECT_VERSION}-Qt${Qt6_VERSION}-${CMAKE_SYSTEM_PROCESSOR}.dmg\" \
+            \"GoldenDict-ng-${CMAKE_PROJECT_VERSION}-Qt${Qt6_VERSION}-macOS-${CMAKE_SYSTEM_PROCESSOR}.dmg\" \
             \"${Assembling_Dir}\")"
         )
     else ()
@@ -279,6 +334,7 @@ if (LINUX OR BSD)
 endif ()
 
 if (WIN32)
+
     set_target_properties(${GOLDENDICT}
             PROPERTIES
             WIN32_EXECUTABLE TRUE
@@ -286,26 +342,49 @@ if (WIN32)
             LIBRARY_OUTPUT_DIRECTORY "${GD_WIN_OUTPUT_DIR}"
     )
 
-    add_custom_target(windeploy
-            COMMENT "Deploy everything to the output dir"
-            DEPENDS ${GOLDENDICT} # build this target will check if Goldendict.exe is already built
-            COMMAND ${WINDEPLOYQT_EXECUTABLE} --no-quick-import "${GD_WIN_OUTPUT_DIR}/${GOLDENDICT}.exe" --plugindir "${GD_WIN_OUTPUT_DIR}/plugins"
-            COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_SOURCE_DIR}/opencc" "${GD_WIN_OUTPUT_DIR}/opencc"
-            COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_SOURCE_DIR}/LICENSE.txt" "${GD_WIN_OUTPUT_DIR}/LICENSE.txt"
-            COMMAND ${CMAKE_COMMAND} -E rm -f "${GD_WIN_OUTPUT_DIR}/goldendict.exe.manifest" "${GD_WIN_OUTPUT_DIR}/eb.dll.manifest"
-            WORKING_DIRECTORY ${GD_WIN_OUTPUT_DIR}
+    set(CMAKE_INSTALL_PREFIX "${GD_WIN_OUTPUT_DIR}" CACHE PATH "If you see this message, don't change this unless you want look into CMake build script. If you are an expert, yes, this is wrong. Help welcomed." FORCE)
+
+    qt_generate_deploy_script(
+            TARGET ${GOLDENDICT}
+            OUTPUT_SCRIPT deploy_script
+            CONTENT "qt_deploy_runtime_dependencies(
+                    EXECUTABLE \"${CMAKE_INSTALL_PREFIX}/goldendict.exe\"
+                    BIN_DIR .
+                    LIB_DIR .
+            )"
     )
 
-    # use CPack to make the output folder as NSIS installer
-    install(
-        DIRECTORY "${GD_WIN_OUTPUT_DIR}/"
-        DESTINATION .
-    )
+    install(SCRIPT ${deploy_script})
+    install(DIRECTORY "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/share/opencc" DESTINATION .)
+    # TODO: do we really need to carry a copy of openSSL?
+    install(FILES "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/bin/libssl-3-x64.dll" DESTINATION .)
+    install(FILES "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/bin/libcrypto-3-x64.dll" DESTINATION .)
 
-    set(CPACK_PACKAGE_FILE_NAME "${Qt6Widgets_VERSION}-${PROJECT_NAME}-${PROJECT_VERSION}-${CMAKE_SYSTEM_NAME}-${CMAKE_SYSTEM_PROCESSOR}")
-    set(CPACK_GENERATOR "7Z;NSIS")
+    # trick CPack to make the output folder as NSIS installer
+    install(DIRECTORY "${GD_WIN_OUTPUT_DIR}/"
+            DESTINATION .
+            FILES_MATCHING
+            PATTERN "*"
+            PATTERN "*.pdb" EXCLUDE
+            PATTERN "*.ilk" EXCLUDE)
+
+
+    set(CPACK_PACKAGE_FILE_NAME "GoldenDict-ng-${PROJECT_VERSION}-Qt${Qt6Widgets_VERSION}")
+    set(CPACK_GENERATOR "7Z;NSIS64")
+
+    # override the default install path, which is $PROGRAMFILES64\${project-name} ${project-version} in NSIS
+    set(CPACK_PACKAGE_INSTALL_DIRECTORY "GoldenDict-ng")
+
+    # NSIS specificS
     set(CPACK_NSIS_MANIFEST_DPI_AWARE ON)
+    set(CPACK_NSIS_MUI_ICON "${CMAKE_SOURCE_DIR}/icons/programicon.ico")
+    set(CPACK_NSIS_PACKAGE_NAME "${CMAKE_PROJECT_NAME}-${CMAKE_PROJECT_VERSION}")
+    set(CPACK_NSIS_DISPLAY_NAME "${CMAKE_PROJECT_NAME}-${CMAKE_PROJECT_VERSION}")
+    set(CPACK_NSIS_URL_INFO_ABOUT [=[https://xiaoyifang.github.io/goldendict-ng/]=])
     set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE.txt")
+    set(CPACK_NSIS_CREATE_ICONS_EXTRA "CreateShortCut '$SMPROGRAMS\\\\$STARTMENU_FOLDER\\\\GoldenDict-ng.lnk' '$INSTDIR\\\\${GOLDENDICT}.exe'")
+    set(CPACK_NSIS_DELETE_ICONS_EXTRA "Delete '$SMPROGRAMS\\\\$START_MENU\\\\GoldenDict-ng.lnk'")
+
     include(CPack)
 endif ()
 

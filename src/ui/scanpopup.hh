@@ -81,7 +81,6 @@ signals:
   /// Put translated word into Favorites
   void sendWordToFavorites( QString const & word, unsigned groupId, bool );
 
-
 #ifdef Q_OS_WIN32
   /// Ask for source window is current translate tab
   bool isGoldenDictWindow( HWND hwnd );
@@ -102,6 +101,8 @@ public slots:
 #ifdef HAVE_X11
   void showEngagePopup();
 #endif
+  void openSearch();
+
 
 private:
 

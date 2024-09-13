@@ -483,7 +483,7 @@ void LsaDictionary::loadIcon() noexcept
 
   if ( !loadIconFromFile( fileName ) ) {
     // Load failed -- use default icons
-    dictionaryIcon = QIcon( ":/icons/lsasound.svg" );
+    dictionaryIcon = QIcon( ":/icons/lsasound.png" );
   }
 
   dictionaryIconLoaded = true;

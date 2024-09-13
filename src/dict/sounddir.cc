@@ -447,12 +447,17 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::SoundDirs const & 
       QDirIterator it( dir.path(),
                        QDir::AllDirs | QDir::NoDotAndDotDot | QDir::NoSymLinks,
                        QDirIterator::Subdirectories );
-      while ( it.hasNext() ) {
+
+      QDeadlineTimer deadline( 4000 );
+      while ( it.hasNext() && !deadline.hasExpired() ) {
         it.next();
         if ( it.fileInfo().lastModified() > indexFileModifyTime ) {
           soundDirModified = true;
           break;
         }
+      }
+      if ( deadline.hasExpired() ) {
+        qDebug() << "SoundDir modification scanning timed out.";
       }
     }
 

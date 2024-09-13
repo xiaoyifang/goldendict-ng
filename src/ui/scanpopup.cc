@@ -103,7 +103,8 @@ ScanPopup::ScanPopup( QWidget * parent,
                                 true,
                                 cfg,
                                 ui.translateBox->translateLine(),
-                                dictionaryBar.toggleViewAction() );
+                                dictionaryBar.toggleViewAction(),
+                                cfg.lastPopupGroupId );
 
   connect( definition, &ArticleView::inspectSignal, this, &ScanPopup::inspectElementWhenPinned );
   connect( definition, &ArticleView::forceAddWordToHistory, this, &ScanPopup::forceAddWordToHistory );
@@ -112,6 +113,8 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( definition, &ArticleView::typingEvent, this, &ScanPopup::typingEvent );
 
   openSearchAction.setShortcut( QKeySequence( "Ctrl+F" ) );
+  openSearchAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
+  addAction( &openSearchAction );
   connect( &openSearchAction, &QAction::triggered, definition, &ArticleView::openSearch );
 
   wordListDefaultFont      = ui.translateBox->completerWidget()->font();
@@ -134,6 +137,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   ui.groupList->setCurrentGroup( cfg.lastPopupGroupId );
 
   definition->setCurrentGroupId( ui.groupList->getCurrentGroup() );
+  definition->setSelectionBySingleClick( cfg.preferences.selectWordBySingleClick );
   dictionaryBar.setFloatable( false );
 
   Instances::Group const * igrp = groups.findGroup( cfg.lastPopupGroupId );
@@ -156,6 +160,17 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( &dictionaryBar, &DictionaryBar::showDictionaryInfo, this, &ScanPopup::showDictionaryInfo );
   connect( &dictionaryBar, &DictionaryBar::openDictionaryFolder, this, &ScanPopup::openDictionaryFolder );
 
+  connect( &GlobalBroadcaster::instance()->pronounce_engine,
+           &PronounceEngine::emitAudio,
+           this,
+           [ this ]( auto audioUrl ) {
+             if ( !isActiveWindow() )
+               return;
+             if ( cfg.preferences.pronounceOnLoadPopup ) {
+
+               definition->openLink( QUrl::fromEncoded( audioUrl.toUtf8() ), {} );
+             }
+           } );
   pinnedGeometry = cfg.popupWindowGeometry;
   if ( cfg.popupWindowGeometry.size() )
     restoreGeometry( cfg.popupWindowGeometry );
@@ -425,14 +440,7 @@ void ScanPopup::translateWord( QString const & word )
   emit hideScanFlag();
 #endif
 
-  engagePopup( false,
-#ifdef Q_OS_WIN
-               true // We only focus popup under Windows when activated via Ctrl+C+C
-                    // -- on Linux it already has an implicit focus
-#else
-               false
-#endif
-  );
+  engagePopup( false, true );
 }
 
 #ifdef HAVE_X11
@@ -471,8 +479,6 @@ void ScanPopup::engagePopup( bool forcePopup, bool giveFocus )
     emit sendPhraseToMainWindow( pendingWord );
     return;
   }
-
-  definition->setSelectionBySingleClick( cfg.preferences.selectWordBySingleClick );
 
   if ( !isVisible() ) {
     // Need to show the window
@@ -523,14 +529,6 @@ void ScanPopup::engagePopup( bool forcePopup, bool giveFocus )
 
     show();
 
-#if defined( HAVE_X11 )
-    // Ensure that the window always has focus on X11 with Qt::Tool flag.
-    // This also often prevents the window from disappearing prematurely with Qt::Popup flag,
-    // especially when combined with Qt::X11BypassWindowManagerHint flag.
-    if ( !ui.pinButton->isChecked() )
-      giveFocus = true;
-#endif
-
     if ( giveFocus ) {
       activateWindow();
       raise();
@@ -545,7 +543,7 @@ void ScanPopup::engagePopup( bool forcePopup, bool giveFocus )
     // This produced some funky mouse grip-related bugs so we commented it out
     //QApplication::processEvents(); // Make window appear immediately no matter what
   }
-  else if ( ui.pinButton->isChecked() ) {
+  else {
     // Pinned-down window isn't always on top, so we need to raise it
     show();
     if ( cfg.preferences.raiseWindowOnSearch ) {
@@ -553,16 +551,9 @@ void ScanPopup::engagePopup( bool forcePopup, bool giveFocus )
       raise();
     }
   }
-#if defined( HAVE_X11 )
-  else if ( ( windowFlags() & Qt::Tool ) == Qt::Tool && cfg.preferences.raiseWindowOnSearch ) {
-    // Ensure that the window with Qt::Tool flag always has focus on X11.
-    activateWindow();
-    raise();
-  }
-#endif
 
   if ( ui.pinButton->isChecked() )
-    setWindowTitle( tr( "%1 - %2" ).arg( elideInputWord(), "GoldenDict" ) );
+    setWindowTitle( QString( "%1 - GoldenDict-ng" ).arg( elideInputWord() ) );
 
   /// Too large strings make window expand which is probably not what user
   /// wants
@@ -602,7 +593,8 @@ void ScanPopup::currentGroupChanged( int )
 
   if ( isVisible() ) {
     updateSuggestionList();
-    translateInputFinished();
+    QString word = Folding::unescapeWildcardSymbols( definition->getWord() );
+    showTranslationFor( word );
   }
 
   cfg.lastPopupGroupId = ui.groupList->getCurrentGroup();
@@ -924,7 +916,7 @@ void ScanPopup::pinButtonClicked( bool checked )
     setAttribute( Qt::WA_MacAlwaysShowToolWindow );
 #endif
 
-    setWindowTitle( tr( "%1 - %2" ).arg( elideInputWord(), "GoldenDict" ) );
+    setWindowTitle( QString( "%1 - GoldenDict-ng" ).arg( elideInputWord() ) );
     dictionaryBar.setMovable( true );
     hideTimer.stop();
   }
@@ -1118,9 +1110,8 @@ void ScanPopup::on_goForwardButton_clicked() const
 
 void ScanPopup::setDictionaryIconSize()
 {
-  int extent = cfg.usingSmallIconsInToolbars ? QApplication::style()->pixelMetric( QStyle::PM_SmallIconSize ) :
-                                               QApplication::style()->pixelMetric( QStyle::PM_ToolBarIconSize );
-  dictionaryBar.setDictionaryIconSize( extent );
+  dictionaryBar.setDictionaryIconSize( cfg.usingSmallIconsInToolbars ? DictionaryBar::IconSize::Small :
+                                                                       DictionaryBar::IconSize::Normal );
 }
 
 void ScanPopup::setGroupByName( QString const & name ) const
@@ -1134,6 +1125,11 @@ void ScanPopup::setGroupByName( QString const & name ) const
   }
   if ( i >= ui.groupList->count() )
     gdWarning( "Group \"%s\" for popup window is not found\n", name.toUtf8().data() );
+}
+
+void ScanPopup::openSearch()
+{
+  definition->openSearch();
 }
 
 void ScanPopup::alwaysOnTopClicked( bool checked )

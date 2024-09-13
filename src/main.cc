@@ -14,6 +14,7 @@
 
 #if defined( Q_OS_UNIX )
   #include <clocale>
+  #include "unix/ksignalhandler.hh"
 #endif
 
 #ifdef Q_OS_WIN32
@@ -31,6 +32,7 @@
 
 #include "gddebug.hh"
 #include <QMutex>
+#include <QStyleFactory>
 
 #if defined( USE_BREAKPAD )
   #if defined( Q_OS_MAC )
@@ -351,6 +353,8 @@ int main( int argc, char ** argv )
     freopen( "CON", "w", stderr );
   }
 
+  qputenv( "QT_QPA_PLATFORM", "windows:darkmode=1" );
+
 #endif
 
 
@@ -366,7 +370,16 @@ int main( int argc, char ** argv )
 
   QHotkeyApplication::setApplicationName( "GoldenDict-ng" );
   QHotkeyApplication::setOrganizationDomain( "https://github.com/xiaoyifang/goldendict-ng" );
+#ifndef Q_OS_MACOS
+  // macOS icon is defined in Info.plist
   QHotkeyApplication::setWindowIcon( QIcon( ":/icons/programicon.png" ) );
+#endif
+
+#ifdef Q_OS_WIN
+  // TODO: Force fusion because Qt6.7's "ModernStyle"'s dark theme have problems, need to test / reconsider in future
+  QHotkeyApplication::setStyle( QStyleFactory::create( "Fusion" ) );
+#endif
+
 
 #if defined( USE_BREAKPAD )
   QString appDirPath = Config::getConfigDir() + "crash";
@@ -547,6 +560,8 @@ int main( int argc, char ** argv )
 
   QLocale locale( localeName );
   QLocale::setDefault( locale );
+  QApplication::setLayoutDirection( locale.textDirection() );
+
   if ( !qtTranslator.load( "qt_extra_" + localeName, Config::getLocDir() ) ) {
     qtTranslator.load( "qt_extra_" + localeName, QLibraryInfo::location( QLibraryInfo::TranslationsPath ) );
     app.installTranslator( &qtTranslator );
@@ -579,6 +594,12 @@ int main( int argc, char ** argv )
   if ( gdcl.needTranslateWord() )
     m.wordReceived( gdcl.wordToTranslate() );
 
+#ifdef Q_OS_UNIX
+  // handle Unix's shutdown signals for graceful exit
+  KSignalHandler::self()->watchSignal( SIGINT );
+  KSignalHandler::self()->watchSignal( SIGTERM );
+  QObject::connect( KSignalHandler::self(), &KSignalHandler::signalReceived, &m, &MainWindow::quitApp );
+#endif
   int r = app.exec();
 
   app.removeDataCommiter( m );

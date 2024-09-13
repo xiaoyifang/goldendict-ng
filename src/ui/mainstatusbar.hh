@@ -25,7 +25,7 @@ public slots:
   void setBackgroundMessage( QString const & message );
 
 protected:
-  virtual void mousePressEvent( QMouseEvent * event );
+  void mousePressEvent( QMouseEvent * event ) override;
 
 private:
   // component to display a small picture
@@ -35,10 +35,10 @@ private:
   QLabel * textWidget;
 
   QTimer * timer;
-  QString backgroungMessage;
+  QString backgroundMessage;
   QString message;
 
-  bool eventFilter( QObject * obj, QEvent * event );
+  bool eventFilter( QObject * obj, QEvent * event ) override;
 };
 
 #endif // MAINSTATUSBAR_HH
