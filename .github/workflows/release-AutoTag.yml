@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
       
     env:
-      version: 24.09.0
+      version: 24.11.0
       version-suffix: ${{ !contains(github.ref_name,'master') && 'alpha' || 'Release' }}
       prerelease: ${{ !contains(github.ref_name,'master') }}
 

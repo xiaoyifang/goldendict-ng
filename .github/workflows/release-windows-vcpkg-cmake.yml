@@ -24,7 +24,7 @@ jobs:
         qt_ver: [ 6.7.2, 6.6.3 ]
         qt_arch: [win64_msvc2019_64]
     env:
-      version: 24.09.0
+      version: 24.11.0
       versionSuffix: ${{ !contains(github.ref_name,'master') && 'alpha' || 'Release' }}
       prerelease: ${{ !contains(github.ref_name,'master') }}
     steps:
