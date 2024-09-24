@@ -5,7 +5,7 @@
 #include "bgl_babylon.hh"
 #include "btreeidx.hh"
 #include "chunkedstorage.hh"
-#include "file.hh"
+#include "dictfile.hh"
 #include "folding.hh"
 #include "ftshelpers.hh"
 #include "gddebug.hh"

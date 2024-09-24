@@ -11,7 +11,7 @@
   #include "utf8.hh"
   #include "langcoder.hh"
   #include "filetype.hh"
-  #include "file.hh"
+  #include "dictfile.hh"
   #include "utils.hh"
   #include "tiff.hh"
   #include "ftshelpers.hh"
