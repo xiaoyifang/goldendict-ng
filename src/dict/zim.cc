@@ -66,13 +66,12 @@ DEF_EX( exUserAbort, "User abort", Dictionary::Ex )
 using ZimFile = zim::Archive;
 
 
-
 enum {
   Signature            = 0x584D495A, // ZIMX on little-endian, XMIZ on big-endian
   CurrentFormatVersion = 4 + BtreeIndexing::FormatVersion + Folding::Version
 };
 
-#pragma pack( push, 1 )
+  #pragma pack( push, 1 )
 struct IdxHeader
 {
   quint32 signature;             // First comes the signature, ZIMX
@@ -89,7 +88,7 @@ struct IdxHeader
   quint32 langTo;   // Target language
 };
 static_assert( alignof( IdxHeader ) == 1 );
-#pragma pack( pop )
+  #pragma pack( pop )
 
 // Some supporting functions
 bool indexIsOldOrBad( string const & indexFile )

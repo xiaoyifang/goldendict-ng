@@ -95,7 +95,7 @@ struct IdxHeader
   uint32_t zipSupportVersion;     // Zip support version -- narrows down reindexing
                                   // when it changes only for dictionaries with the
                                   // zip files
-  uint32_t dslEncoding;                // Which encoding is used for the file indexed
+  uint32_t dslEncoding;           // Which encoding is used for the file indexed
   uint32_t chunksOffset;          // The offset to chunks' storage
   uint32_t hasAbrv;               // Non-zero means file has abrvs at abrvAddress
   uint32_t abrvAddress;           // Address of abrv map in the chunked storage
@@ -113,7 +113,7 @@ struct IdxHeader
   uint32_t zipIndexRootOffset;
 };
 static_assert( alignof( IdxHeader ) == 1 );
-#pragma pop( pop )
+#pragma pack( pop )
 
 
 struct InsidedCard

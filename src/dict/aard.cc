@@ -75,11 +75,15 @@ struct IndexElement
   quint32 wordOffset;
   quint32 articleOffset;
 };
+static_assert( alignof( IndexElement ) == 1 );
+
 struct IndexElement64
 {
   quint32 wordOffset;
   quint64 articleOffset;
 };
+static_assert( alignof( IndexElement64 ) == 1 );
+
 
 enum {
   Signature            = 0x58524141, // AARX on little-endian, XRAA on big-endian
@@ -99,7 +103,6 @@ struct IdxHeader
   quint32 langTo;   // Target language
 };
 static_assert( alignof( IdxHeader ) == 1 );
-
 #pragma pack( pop )
 
 bool indexIsOldOrBad( string const & indexFile )

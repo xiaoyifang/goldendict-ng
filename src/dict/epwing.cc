@@ -60,7 +60,7 @@ struct IdxHeader
   quint32 nameSize;
   quint32 langFrom; // Source language
   quint32 langTo;   // Target language
-}
+};
 static_assert( alignof( IdxHeader ) == 1 );
 #pragma pack( pop )
 
