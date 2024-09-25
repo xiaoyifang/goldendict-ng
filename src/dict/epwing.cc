@@ -62,7 +62,7 @@ struct IdxHeader
   quint32 langTo;   // Target language
 };
 static_assert( alignof( IdxHeader ) == 1 );
-#pragma pack( pop )
+  #pragma pack( pop )
 
 bool indexIsOldOrBad( string const & indexFile )
 {
