@@ -62,6 +62,8 @@ enum {
 
 DEF_EX( exCorruptDictionary, "dictionary file was tampered or corrupted", std::exception )
 
+#pragma pack( push, 1 )
+
 struct IdxHeader
 {
   uint32_t signature;     // First comes the signature, MDIC
@@ -92,11 +94,9 @@ struct IdxHeader
 
   uint32_t mddIndexInfosOffset; // address of IndexInfos for resource files (.mdd)
   uint32_t mddIndexInfosCount;  // count of IndexInfos for resource files
-}
-#ifndef _MSC_VER
-__attribute__( ( packed ) )
-#endif
-;
+};
+static_assert( alignof( IdxHeader ) == 1 );
+#pragma pack( pop )
 
 // A helper method to read resources from .mdd file
 class IndexedMdd: public BtreeIndexing::BtreeIndex
