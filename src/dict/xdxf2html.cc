@@ -9,7 +9,7 @@
 #include "folding.hh"
 
 #include "audiolink.hh"
-#include "file.hh"
+#include "dictfile.hh"
 #include "filetype.hh"
 #include "htmlescape.hh"
 #include "utils.hh"

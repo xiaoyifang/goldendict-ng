@@ -1,4 +1,4 @@
-/* Made up from data.c and other supplementary files of dictd-1.0.11 for the
+/* Made up from data.c and other supplementary files of dictd-1.11.0 for the
  * GoldenDict program.
  */
 

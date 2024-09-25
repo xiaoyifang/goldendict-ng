@@ -167,6 +167,7 @@ target_include_directories(${GOLDENDICT} PRIVATE
         ${PROJECT_SOURCE_DIR}/src/
         ${PROJECT_SOURCE_DIR}/src/common
         ${PROJECT_SOURCE_DIR}/src/dict
+        ${PROJECT_SOURCE_DIR}/src/dict/utils
         ${PROJECT_SOURCE_DIR}/src/ui
         )
 

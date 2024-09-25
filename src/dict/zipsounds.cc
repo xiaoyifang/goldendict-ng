@@ -2,7 +2,7 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "zipsounds.hh"
-#include "file.hh"
+#include "dictfile.hh"
 #include "folding.hh"
 #include "utf8.hh"
 #include "btreeidx.hh"

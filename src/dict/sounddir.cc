@@ -2,7 +2,6 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "sounddir.hh"
-#include "file.hh"
 #include "folding.hh"
 #include "utf8.hh"
 #include "btreeidx.hh"

@@ -5,7 +5,7 @@
 #define __CHUNKEDSTORAGE_HH_INCLUDED__
 
 #include "ex.hh"
-#include "file.hh"
+#include "dictfile.hh"
 
 #include <vector>
 #include <stdint.h>
