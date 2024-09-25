@@ -68,22 +68,14 @@ struct DCT_header
   uint32_t shortIndexOffset;
   uint32_t fullIndexOffset;
   uint32_t articlesOffset;
-}
-#ifndef _MSC_VER
-__attribute__( ( packed ) )
-#endif
-;
+};
 
 struct IndexElement
 {
   uint16_t nextWord;
   uint16_t previousWord;
   uint32_t articleOffset;
-}
-#ifndef _MSC_VER
-__attribute__( ( packed ) )
-#endif
-;
+};
 
 enum {
   Signature            = 0x43494453, // SDIC on little-endian, CIDS on big-endian
@@ -102,12 +94,8 @@ struct IdxHeader
   uint32_t compressionType; // Data compression in file. 0 - no compression, 1 - zip, 2 - bzip2
   uint32_t langFrom;        // Source language
   uint32_t langTo;          // Target language
-}
-#ifndef _MSC_VER
-__attribute__( ( packed ) )
-#endif
-;
-
+};
+static_assert( alignof( IdxHeader ) == 1 );
 #pragma pack( pop )
 
 bool indexIsOldOrBad( string const & indexFile )

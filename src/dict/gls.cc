@@ -304,6 +304,8 @@ enum {
   CurrentFtsIndexVersion   = 1
 };
 
+#pragma pack( push, 1 )
+
 struct IdxHeader
 {
   uint32_t signature;             // First comes the signature, GLSX
@@ -311,7 +313,7 @@ struct IdxHeader
   uint32_t zipSupportVersion;     // Zip support version -- narrows down reindexing
                                   // when it changes only for dictionaries with the
                                   // zip files
-  int glsEncoding;                // Which encoding is used for the file indexed
+  uint32_t glsEncoding;                // Which encoding is used for the file indexed
   uint32_t chunksOffset;          // The offset to chunks' storage
   uint32_t indexBtreeMaxElements; // Two fields from IndexInfo
   uint32_t indexRootOffset;
@@ -324,11 +326,9 @@ struct IdxHeader
   uint32_t zipIndexBtreeMaxElements; // Two fields from IndexInfo of the zip
                                      // resource index.
   uint32_t zipIndexRootOffset;
-}
-#ifndef _MSC_VER
-__attribute__( ( packed ) )
-#endif
-;
+};
+static_assert( alignof( IdxHeader ) == 1 );
+#pragma pack( pop )
 
 bool indexIsOldOrBad( string const & indexFile, bool hasZipFile )
 {

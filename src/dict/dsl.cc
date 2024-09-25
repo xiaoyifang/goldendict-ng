@@ -86,6 +86,8 @@ enum {
   CurrentFtsIndexVersion   = 7
 };
 
+#pragma pack( push, 1 )
+
 struct IdxHeader
 {
   uint32_t signature;             // First comes the signature, DSLX
@@ -93,7 +95,7 @@ struct IdxHeader
   uint32_t zipSupportVersion;     // Zip support version -- narrows down reindexing
                                   // when it changes only for dictionaries with the
                                   // zip files
-  int dslEncoding;                // Which encoding is used for the file indexed
+  uint32_t dslEncoding;                // Which encoding is used for the file indexed
   uint32_t chunksOffset;          // The offset to chunks' storage
   uint32_t hasAbrv;               // Non-zero means file has abrvs at abrvAddress
   uint32_t abrvAddress;           // Address of abrv map in the chunked storage
@@ -109,11 +111,10 @@ struct IdxHeader
   uint32_t zipIndexBtreeMaxElements; // Two fields from IndexInfo of the zip
                                      // resource index.
   uint32_t zipIndexRootOffset;
-}
-#ifndef _MSC_VER
-__attribute__( ( packed ) )
-#endif
-;
+};
+static_assert( alignof( IdxHeader ) == 1 );
+#pragma pop( pop )
+
 
 struct InsidedCard
 {

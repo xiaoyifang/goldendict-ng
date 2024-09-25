@@ -55,6 +55,8 @@ enum {
   CurrentFormatVersion = 5 + BtreeIndexing::FormatVersion + Folding::Version
 };
 
+#pragma pack( push, 1 )
+
 struct IdxHeader
 {
   uint32_t signature;             // First comes the signature, DCDX
@@ -65,11 +67,10 @@ struct IdxHeader
   uint32_t indexRootOffset;
   uint32_t langFrom; // Source language
   uint32_t langTo;   // Target language
-}
-#ifndef _MSC_VER
-__attribute__( ( packed ) )
-#endif
-;
+};
+static_assert( alignof( IdxHeader ) == 1 );
+#pragma pack( pop )
+
 
 bool indexIsOldOrBad( string const & indexFile )
 {
