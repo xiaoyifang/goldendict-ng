@@ -69,6 +69,7 @@ struct DCT_header
   uint32_t fullIndexOffset;
   uint32_t articlesOffset;
 };
+static_assert( alignof( DCT_header ) == 1 );
 
 struct IndexElement
 {
@@ -76,6 +77,7 @@ struct IndexElement
   uint16_t previousWord;
   uint32_t articleOffset;
 };
+static_assert( alignof( IndexElement ) == 1 );
 
 enum {
   Signature            = 0x43494453, // SDIC on little-endian, CIDS on big-endian
