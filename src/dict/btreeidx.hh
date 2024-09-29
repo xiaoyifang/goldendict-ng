@@ -5,7 +5,7 @@
 #define __BTREEIDX_HH_INCLUDED__
 
 #include "dict/dictionary.hh"
-#include "file.hh"
+#include "dictfile.hh"
 
 #include <algorithm>
 #include <map>

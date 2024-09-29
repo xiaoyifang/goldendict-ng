@@ -5,7 +5,7 @@
 #include "bgl_babylon.hh"
 #include "btreeidx.hh"
 #include "chunkedstorage.hh"
-#include "file.hh"
+#include "dictfile.hh"
 #include "folding.hh"
 #include "ftshelpers.hh"
 #include "gddebug.hh"
@@ -53,6 +53,8 @@ enum {
   CurrentFormatVersion = 19 + BtreeIndexing::FormatVersion
 };
 
+#pragma pack( push, 1 )
+
 struct IdxHeader
 {
   uint32_t signature;      // First comes the signature, BGLX
@@ -77,11 +79,9 @@ struct IdxHeader
   uint32_t iconSize;           // Size of the icon in the chunks' storage, 0 = no icon
   uint32_t descriptionAddress; // Address of the dictionary description in the chunks' storage
   uint32_t descriptionSize;    // Size of the description in the chunks' storage, 0 = no description
-}
-#ifndef _MSC_VER
-__attribute__( ( packed ) )
-#endif
-;
+};
+static_assert( alignof( IdxHeader ) == 1 );
+#pragma pack( pop )
 
 bool indexIsOldOrBad( string const & indexFile )
 {

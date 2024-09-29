@@ -11,7 +11,7 @@
   #include "utf8.hh"
   #include "langcoder.hh"
   #include "filetype.hh"
-  #include "file.hh"
+  #include "dictfile.hh"
   #include "utils.hh"
   #include "tiff.hh"
   #include "ftshelpers.hh"
@@ -66,13 +66,12 @@ DEF_EX( exUserAbort, "User abort", Dictionary::Ex )
 using ZimFile = zim::Archive;
 
 
-  #pragma pack( push, 1 )
-
 enum {
   Signature            = 0x584D495A, // ZIMX on little-endian, XMIZ on big-endian
   CurrentFormatVersion = 4 + BtreeIndexing::FormatVersion + Folding::Version
 };
 
+  #pragma pack( push, 1 )
 struct IdxHeader
 {
   quint32 signature;             // First comes the signature, ZIMX
@@ -87,12 +86,8 @@ struct IdxHeader
   quint32 descriptionPtr;
   quint32 langFrom; // Source language
   quint32 langTo;   // Target language
-}
-  #ifndef _MSC_VER
-__attribute__( ( packed ) )
-  #endif
-;
-
+};
+static_assert( alignof( IdxHeader ) == 1 );
   #pragma pack( pop )
 
 // Some supporting functions

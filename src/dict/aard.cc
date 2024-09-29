@@ -67,31 +67,23 @@ struct AAR_header
   char indexItemFormat[ 4 ];
   char keyLengthFormat[ 2 ];
   char articleLengthFormat[ 2 ];
-}
-#ifndef _MSC_VER
-__attribute__( ( packed ) )
-#endif
-;
+};
+static_assert( alignof( AAR_header ) == 1 );
 
 struct IndexElement
 {
   quint32 wordOffset;
   quint32 articleOffset;
-}
-#ifndef _MSC_VER
-__attribute__( ( packed ) )
-#endif
-;
+};
+static_assert( alignof( IndexElement ) == 1 );
 
 struct IndexElement64
 {
   quint32 wordOffset;
   quint64 articleOffset;
-}
-#ifndef _MSC_VER
-__attribute__( ( packed ) )
-#endif
-;
+};
+static_assert( alignof( IndexElement64 ) == 1 );
+
 
 enum {
   Signature            = 0x58524141, // AARX on little-endian, XRAA on big-endian
@@ -109,12 +101,8 @@ struct IdxHeader
   quint32 articleCount;
   quint32 langFrom; // Source language
   quint32 langTo;   // Target language
-}
-#ifndef _MSC_VER
-__attribute__( ( packed ) )
-#endif
-;
-
+};
+static_assert( alignof( IdxHeader ) == 1 );
 #pragma pack( pop )
 
 bool indexIsOldOrBad( string const & indexFile )

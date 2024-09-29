@@ -93,6 +93,7 @@ enum {
   CurrentFormatVersion = 9 + BtreeIndexing::FormatVersion + Folding::Version
 };
 
+#pragma pack( push, 1 )
 struct IdxHeader
 {
   uint32_t signature;             // First comes the signature, SIDX
@@ -110,10 +111,10 @@ struct IdxHeader
   uint32_t zipIndexBtreeMaxElements; // Two fields from IndexInfo of the zip
                                      // resource index.
   uint32_t zipIndexRootOffset;
-}
-#ifndef _MSC_VER
-__attribute__( ( packed ) )
-#endif
+};
+static_assert( alignof( IdxHeader ) == 1 );
+#pragma pack( pop )
+
 ;
 
 bool indexIsOldOrBad( string const & indexFile )

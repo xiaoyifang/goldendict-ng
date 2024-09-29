@@ -1,6 +1,9 @@
 #ifndef UFILE_HH_INCLUDED
 #define UFILE_HH_INCLUDED
 
+// Don't use this thing.
+// Use QFile instead.
+
 #ifdef __WIN32
 
   #include "zlib.h"
