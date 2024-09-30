@@ -870,6 +870,10 @@ struct Class
 
   bool usingSmallIconsInToolbars;
 
+  bool usingNormalIconsInToolbars;
+  
+  bool usingLargeIconsInToolbars;
+
   /// Maximum size for the headwords.
   /// Bigger headwords won't be indexed. For now, only in DSL.
   unsigned int maxHeadwordSize;
@@ -886,6 +890,7 @@ struct Class
     pinPopupWindow( false ),
     showingDictBarNames( false ),
     usingSmallIconsInToolbars( false ),
+    usingLargeIconsInToolbars( true ),
     maxHeadwordSize( 256U ),
     maxHeadwordsToExpand( 0 )
   {

@@ -107,7 +107,7 @@ private:
 
   QAction escAction, focusTranslateLineAction, addTabAction, closeCurrentTabAction, closeAllTabAction,
     closeRestTabAction, switchToNextTabAction, switchToPrevTabAction, showDictBarNamesAction,
-    useSmallIconsInToolbarsAction, toggleMenuBarAction, focusHeadwordsDlgAction, focusArticleViewAction,
+    useSmallIconsInToolbarsAction, useLargeIconsInToolbarsAction, toggleMenuBarAction, focusHeadwordsDlgAction, focusArticleViewAction,
     addAllTabToFavoritesAction;
 
   QAction stopAudioAction;
@@ -408,6 +408,7 @@ private slots:
 
   void showDictBarNamesTriggered();
   void useSmallIconsInToolbarsTriggered();
+  void useLargeIconsInToolbarsTriggered();
   void toggleMenuBarTriggered( bool announce = true );
 
   void on_clearHistory_triggered();
