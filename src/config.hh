@@ -821,7 +821,7 @@ struct HeadwordsDialog
 };
 
 // TODO: arbitrary sizing
-enum class ToolbarsIconSize : qint8 {
+enum class ToolbarsIconSize : std::int8_t {
   small  = 0,
   normal = 1,
   large  = 2,

@@ -2153,7 +2153,7 @@ void save( Class const & c )
     root.appendChild( opt );
 
     opt = dd.createElement( "usingToolbarsIconSize" );
-    opt.appendChild( dd.createTextNode( QString::number( static_cast< qint8 >( c.usingToolbarsIconSize ) ) ) );
+    opt.appendChild( dd.createTextNode( QString::number( static_cast< std::int8_t >( c.usingToolbarsIconSize ) ) ) );
     root.appendChild( opt );
 
     if ( !c.historyExportPath.isEmpty() ) {
