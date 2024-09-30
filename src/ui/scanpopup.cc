@@ -1110,7 +1110,7 @@ void ScanPopup::on_goForwardButton_clicked() const
 
 void ScanPopup::setDictionaryIconSize()
 {
-  if ( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::small ) {
+  if ( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::small_size ) {
     dictionaryBar.setDictionaryIconSize( DictionaryBar::IconSize::Small );
   }
   else if ( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::normal ) {

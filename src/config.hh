@@ -819,13 +819,13 @@ struct HeadwordsDialog
   {
   }
 };
+
 // TODO: arbitrary sizing
-// Not using enum here to bypass MSVC 2022 BUG.
-namespace ToolbarsIconSize {
-static const int small  = 0;
-static const int normal = 1;
-static const int large  = 2;
-} // namespace ToolbarsIconSize
+enum class ToolbarsIconSize : std::uint8_t {
+  small_size = 0, // _size because `small` causes error in MSVC 2022
+  normal     = 1,
+  large      = 2,
+};
 
 struct Class
 {
@@ -875,7 +875,7 @@ struct Class
 
   bool showingDictBarNames;
 
-  int usingToolbarsIconSize = ToolbarsIconSize::normal;
+  ToolbarsIconSize usingToolbarsIconSize = ToolbarsIconSize::normal;
 
   /// Maximum size for the headwords.
   /// Bigger headwords won't be indexed. For now, only in DSL.
