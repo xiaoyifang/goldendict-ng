@@ -820,6 +820,13 @@ struct HeadwordsDialog
   }
 };
 
+// TODO: arbitrary sizing
+enum class ToolbarsIconSize : qint8 {
+  small  = 0,
+  normal = 1,
+  large  = 2,
+};
+
 struct Class
 {
   Paths paths;
@@ -868,11 +875,7 @@ struct Class
 
   bool showingDictBarNames;
 
-  bool usingSmallIconsInToolbars;
-
-  bool usingNormalIconsInToolbars;
-
-  bool usingLargeIconsInToolbars;
+  ToolbarsIconSize usingToolbarsIconSize = ToolbarsIconSize::normal;
 
   /// Maximum size for the headwords.
   /// Bigger headwords won't be indexed. For now, only in DSL.
@@ -889,8 +892,6 @@ struct Class
     lastPopupGroupId( 0 ),
     pinPopupWindow( false ),
     showingDictBarNames( false ),
-    usingSmallIconsInToolbars( false ),
-    usingLargeIconsInToolbars( true ),
     maxHeadwordSize( 256U ),
     maxHeadwordsToExpand( 0 )
   {

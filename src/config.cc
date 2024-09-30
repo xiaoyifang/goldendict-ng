@@ -1157,7 +1157,8 @@ Class load()
 
   c.showingDictBarNames = ( root.namedItem( "showingDictBarNames" ).toElement().text() == "1" );
 
-  c.usingSmallIconsInToolbars = ( root.namedItem( "usingSmallIconsInToolbars" ).toElement().text() == "1" );
+  c.usingToolbarsIconSize = ( static_cast< ToolbarsIconSize >(
+    root.namedItem( "usingToolbarsIconSize" ).toElement().text().toInt() ) );
 
   if ( !root.namedItem( "historyExportPath" ).isNull() )
     c.historyExportPath = root.namedItem( "historyExportPath" ).toElement().text();
@@ -2151,8 +2152,8 @@ void save( Class const & c )
     opt.appendChild( dd.createTextNode( c.showingDictBarNames ? "1" : "0" ) );
     root.appendChild( opt );
 
-    opt = dd.createElement( "usingSmallIconsInToolbars" );
-    opt.appendChild( dd.createTextNode( c.usingSmallIconsInToolbars ? "1" : "0" ) );
+    opt = dd.createElement( "usingToolbarsIconSize" );
+    opt.appendChild( dd.createTextNode( QString::number( static_cast< qint8 >( c.usingToolbarsIconSize ) ) ) );
     root.appendChild( opt );
 
     if ( !c.historyExportPath.isEmpty() ) {

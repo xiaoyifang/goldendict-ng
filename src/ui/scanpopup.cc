@@ -1110,13 +1110,13 @@ void ScanPopup::on_goForwardButton_clicked() const
 
 void ScanPopup::setDictionaryIconSize()
 {
-  if ( cfg.usingSmallIconsInToolbars ) {
+  if ( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::small ) {
     dictionaryBar.setDictionaryIconSize( DictionaryBar::IconSize::Small );
   }
-  else if ( cfg.usingNormalIconsInToolbars ) {
+  else if ( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::normal ) {
     dictionaryBar.setDictionaryIconSize( DictionaryBar::IconSize::Normal );
   }
-  else if ( cfg.usingLargeIconsInToolbars ) {
+  else if ( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::large ) {
     dictionaryBar.setDictionaryIconSize( DictionaryBar::IconSize::Large );
   }
 }
