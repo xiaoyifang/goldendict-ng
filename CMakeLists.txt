@@ -47,7 +47,7 @@ endif ()
 include(FeatureSummary)
 
 project(goldendict-ng
-        VERSION 24.05.13
+        VERSION 24.11.0
         LANGUAGES CXX C)
 
 set(GOLDENDICT "goldendict") # binary/executable name
@@ -167,6 +167,7 @@ target_include_directories(${GOLDENDICT} PRIVATE
         ${PROJECT_SOURCE_DIR}/src/
         ${PROJECT_SOURCE_DIR}/src/common
         ${PROJECT_SOURCE_DIR}/src/dict
+        ${PROJECT_SOURCE_DIR}/src/dict/utils
         ${PROJECT_SOURCE_DIR}/src/ui
         )
 

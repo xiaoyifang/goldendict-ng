@@ -2,7 +2,7 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "zipsounds.hh"
-#include "file.hh"
+#include "dictfile.hh"
 #include "folding.hh"
 #include "utf8.hh"
 #include "btreeidx.hh"
@@ -45,6 +45,7 @@ enum {
   CurrentFormatVersion = 6 + BtreeIndexing::FormatVersion
 };
 
+#pragma pack( push, 1 )
 struct IdxHeader
 {
   uint32_t signature;             // First comes the signature, ZIPS
@@ -53,11 +54,9 @@ struct IdxHeader
   uint32_t indexBtreeMaxElements; // Two fields from IndexInfo
   uint32_t indexRootOffset;
   uint32_t chunksOffset; // The offset to chunks' storage
-}
-#ifndef _MSC_VER
-__attribute__( ( packed ) )
-#endif
-;
+};
+static_assert( alignof( IdxHeader ) == 1 );
+#pragma pack( pop )
 
 bool indexIsOldOrBad( string const & indexFile )
 {

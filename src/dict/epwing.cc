@@ -60,13 +60,9 @@ struct IdxHeader
   quint32 nameSize;
   quint32 langFrom; // Source language
   quint32 langTo;   // Target language
-}
-#ifndef _MSC_VER
-__attribute__( ( packed ) )
-#endif
-;
-
-#pragma pack( pop )
+};
+static_assert( alignof( IdxHeader ) == 1 );
+  #pragma pack( pop )
 
 bool indexIsOldOrBad( string const & indexFile )
 {

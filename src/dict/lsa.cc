@@ -2,7 +2,7 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "lsa.hh"
-#include "file.hh"
+#include "dictfile.hh"
 #include "iconv.hh"
 #include "folding.hh"
 #include "utf8.hh"
@@ -49,6 +49,8 @@ enum {
   CurrentFormatVersion = 5
 };
 
+#pragma pack( push, 1 )
+
 struct IdxHeader
 {
   uint32_t signature;             // First comes the signature, BGLX
@@ -57,11 +59,9 @@ struct IdxHeader
   uint32_t vorbisOffset;          // Offset of the vorbis file which contains all snds
   uint32_t indexBtreeMaxElements; // Two fields from IndexInfo
   uint32_t indexRootOffset;
-}
-#ifndef _MSC_VER
-__attribute__( ( packed ) )
-#endif
-;
+};
+static_assert( alignof( IdxHeader ) == 1 );
+#pragma pack( pop )
 
 bool indexIsOldOrBad( string const & indexFile )
 {

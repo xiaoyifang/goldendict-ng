@@ -38,7 +38,7 @@ public:
   enum class IconSize {
     Small,
     Normal,
-    // TODO: implement something to have an Large option
+    Large,
   };
 
   void setDictionaryIconSize( IconSize size );

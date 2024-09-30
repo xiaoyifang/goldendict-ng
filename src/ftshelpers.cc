@@ -6,7 +6,7 @@
 #include "fulltextsearch.hh"
 #include "ftshelpers.hh"
 #include "wstring_qt.hh"
-#include "file.hh"
+#include "dictfile.hh"
 #include "gddebug.hh"
 #include "folding.hh"
 #include "utils.hh"

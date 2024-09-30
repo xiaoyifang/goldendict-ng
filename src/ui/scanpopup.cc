@@ -553,7 +553,7 @@ void ScanPopup::engagePopup( bool forcePopup, bool giveFocus )
   }
 
   if ( ui.pinButton->isChecked() )
-    setWindowTitle( tr( "%1 - GoldenDict-ng" ).arg( elideInputWord() ) );
+    setWindowTitle( QString( "%1 - GoldenDict-ng" ).arg( elideInputWord() ) );
 
   /// Too large strings make window expand which is probably not what user
   /// wants
@@ -916,7 +916,7 @@ void ScanPopup::pinButtonClicked( bool checked )
     setAttribute( Qt::WA_MacAlwaysShowToolWindow );
 #endif
 
-    setWindowTitle( tr( "%1 - GoldenDict-ng" ).arg( elideInputWord() ) );
+    setWindowTitle( QString( "%1 - GoldenDict-ng" ).arg( elideInputWord() ) );
     dictionaryBar.setMovable( true );
     hideTimer.stop();
   }
@@ -1110,9 +1110,17 @@ void ScanPopup::on_goForwardButton_clicked() const
 
 void ScanPopup::setDictionaryIconSize()
 {
-  dictionaryBar.setDictionaryIconSize( cfg.usingSmallIconsInToolbars ? DictionaryBar::IconSize::Small :
-                                                                       DictionaryBar::IconSize::Normal );
+  if ( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::Small ) {
+    dictionaryBar.setDictionaryIconSize( DictionaryBar::IconSize::Small );
+  }
+  else if ( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::Normal ) {
+    dictionaryBar.setDictionaryIconSize( DictionaryBar::IconSize::Normal );
+  }
+  else if ( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::Large ) {
+    dictionaryBar.setDictionaryIconSize( DictionaryBar::IconSize::Large );
+  }
 }
+
 
 void ScanPopup::setGroupByName( QString const & name ) const
 {
