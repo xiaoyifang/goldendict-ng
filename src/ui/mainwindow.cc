@@ -3032,6 +3032,9 @@ void MainWindow::useSmallIconsInToolbarsTriggered()
     cfg.usingToolbarsIconSize = Config::ToolbarsIconSize::small;
     useLargeIconsInToolbarsAction.setChecked( false );
   }
+  else if ( !useLargeIconsInToolbarsAction.isChecked() ) {
+    cfg.usingToolbarsIconSize = Config::ToolbarsIconSize::normal;
+  }
 
   int extent = useSmallIcons ? QApplication::style()->pixelMetric( QStyle::PM_SmallIconSize ) :
                                QApplication::style()->pixelMetric( QStyle::PM_ToolBarIconSize );
@@ -3053,6 +3056,9 @@ void MainWindow::useLargeIconsInToolbarsTriggered()
   if ( useLargeIcons ) {
     cfg.usingToolbarsIconSize = Config::ToolbarsIconSize::large;
     useSmallIconsInToolbarsAction.setChecked( false );
+  }
+  else if ( !useSmallIconsInToolbarsAction.isChecked() ) {
+    cfg.usingToolbarsIconSize = Config::ToolbarsIconSize::normal;
   }
 
   int extent = useLargeIcons ? QApplication::style()->pixelMetric( QStyle::PM_LargeIconSize ) :
