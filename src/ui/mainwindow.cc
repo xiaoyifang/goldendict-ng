@@ -508,7 +508,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // Use small icons in toolbars
 
   useSmallIconsInToolbarsAction.setCheckable( true );
-  useSmallIconsInToolbarsAction.setChecked( cfg.usingToolbarsIconSize ==  Config::ToolbarsIconSize::small);
+  useSmallIconsInToolbarsAction.setChecked( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::small );
 
   connect( &useSmallIconsInToolbarsAction, &QAction::triggered, this, &MainWindow::useSmallIconsInToolbarsTriggered );
 

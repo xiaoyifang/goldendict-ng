@@ -1157,8 +1157,8 @@ Class load()
 
   c.showingDictBarNames = ( root.namedItem( "showingDictBarNames" ).toElement().text() == "1" );
 
-  c.usingToolbarsIconSize = ( static_cast< ToolbarsIconSize >(
-    root.namedItem( "usingToolbarsIconSize" ).toElement().text().toInt() ) );
+  c.usingToolbarsIconSize =
+    ( static_cast< ToolbarsIconSize >( root.namedItem( "usingToolbarsIconSize" ).toElement().text().toInt() ) );
 
   if ( !root.namedItem( "historyExportPath" ).isNull() )
     c.historyExportPath = root.namedItem( "historyExportPath" ).toElement().text();
