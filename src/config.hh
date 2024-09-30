@@ -821,10 +821,10 @@ struct HeadwordsDialog
 };
 
 // TODO: arbitrary sizing
-enum class ToolbarsIconSize {
-  small,
-  normal,
-  large,
+enum struct ToolbarsIconSize {
+  small  = 0,
+  normal = 1,
+  large  = 2,
 };
 
 struct Class
