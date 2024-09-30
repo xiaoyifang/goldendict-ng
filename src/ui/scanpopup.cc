@@ -1110,9 +1110,17 @@ void ScanPopup::on_goForwardButton_clicked() const
 
 void ScanPopup::setDictionaryIconSize()
 {
-  dictionaryBar.setDictionaryIconSize( cfg.usingSmallIconsInToolbars ? DictionaryBar::IconSize::Small :
-                                                                       DictionaryBar::IconSize::Normal );
+  if ( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::Small ) {
+    dictionaryBar.setDictionaryIconSize( DictionaryBar::IconSize::Small );
+  }
+  else if ( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::Normal ) {
+    dictionaryBar.setDictionaryIconSize( DictionaryBar::IconSize::Normal );
+  }
+  else if ( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::Large ) {
+    dictionaryBar.setDictionaryIconSize( DictionaryBar::IconSize::Large );
+  }
 }
+
 
 void ScanPopup::setGroupByName( QString const & name ) const
 {

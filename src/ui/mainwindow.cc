@@ -145,6 +145,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   switchToPrevTabAction( this ),
   showDictBarNamesAction( tr( "Show Names in Dictionary &Bar" ), this ),
   useSmallIconsInToolbarsAction( tr( "Show Small Icons in &Toolbars" ), this ),
+  useLargeIconsInToolbarsAction( tr( "Show Large Icons in &Toolbars" ), this ),
   toggleMenuBarAction( tr( "&Menubar" ), this ),
   focusHeadwordsDlgAction( this ),
   focusArticleViewAction( this ),
@@ -507,9 +508,16 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // Use small icons in toolbars
 
   useSmallIconsInToolbarsAction.setCheckable( true );
-  useSmallIconsInToolbarsAction.setChecked( cfg.usingSmallIconsInToolbars );
+  useSmallIconsInToolbarsAction.setChecked( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::Small );
 
   connect( &useSmallIconsInToolbarsAction, &QAction::triggered, this, &MainWindow::useSmallIconsInToolbarsTriggered );
+
+  // Use large icons in toolbars
+
+  useLargeIconsInToolbarsAction.setCheckable( true );
+  useLargeIconsInToolbarsAction.setChecked( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::Large );
+
+  connect( &useLargeIconsInToolbarsAction, &QAction::triggered, this, &MainWindow::useLargeIconsInToolbarsTriggered );
 
   // Toggle Menubar
   toggleMenuBarAction.setCheckable( true );
@@ -535,6 +543,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   ui.menuView->addSeparator();
   ui.menuView->addAction( &showDictBarNamesAction );
   ui.menuView->addAction( &useSmallIconsInToolbarsAction );
+  ui.menuView->addAction( &useLargeIconsInToolbarsAction );
   ui.menuView->addSeparator();
   ui.alwaysOnTop->setChecked( cfg.preferences.alwaysOnTop );
   ui.menuView->addAction( ui.alwaysOnTop );
@@ -905,6 +914,8 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 #endif
 
   useSmallIconsInToolbarsTriggered();
+  useLargeIconsInToolbarsTriggered();
+
 
   if ( cfg.preferences.checkForNewReleases ) {
     QTimer::singleShot( 0, this, &MainWindow::checkNewRelease );
@@ -1655,8 +1666,15 @@ void MainWindow::updateDictionaryBar()
 
     dictionaryBar.setDictionaries( grp->dictionaries );
 
-    dictionaryBar.setDictionaryIconSize( useSmallIconsInToolbarsAction.isChecked() ? DictionaryBar::IconSize::Small :
-                                                                                     DictionaryBar::IconSize::Normal );
+    if ( useSmallIconsInToolbarsAction.isChecked() ) {
+      dictionaryBar.setDictionaryIconSize( DictionaryBar::IconSize::Small );
+    }
+    else if ( useLargeIconsInToolbarsAction.isChecked() ) {
+      dictionaryBar.setDictionaryIconSize( DictionaryBar::IconSize::Large );
+    }
+    else {
+      dictionaryBar.setDictionaryIconSize( DictionaryBar::IconSize::Normal );
+    }
   }
 }
 
@@ -3010,6 +3028,13 @@ void MainWindow::showDictBarNamesTriggered()
 void MainWindow::useSmallIconsInToolbarsTriggered()
 {
   bool useSmallIcons = useSmallIconsInToolbarsAction.isChecked();
+  if ( useSmallIcons ) {
+    cfg.usingToolbarsIconSize = Config::ToolbarsIconSize::Small;
+    useLargeIconsInToolbarsAction.setChecked( false );
+  }
+  else if ( !useLargeIconsInToolbarsAction.isChecked() ) {
+    cfg.usingToolbarsIconSize = Config::ToolbarsIconSize::Normal;
+  }
 
   int extent = useSmallIcons ? QApplication::style()->pixelMetric( QStyle::PM_SmallIconSize ) :
                                QApplication::style()->pixelMetric( QStyle::PM_ToolBarIconSize );
@@ -3021,7 +3046,30 @@ void MainWindow::useSmallIconsInToolbarsTriggered()
 
   updateDictionaryBar();
 
-  cfg.usingSmallIconsInToolbars = useSmallIcons;
+
+  scanPopup->setDictionaryIconSize();
+}
+
+void MainWindow::useLargeIconsInToolbarsTriggered()
+{
+  bool useLargeIcons = useLargeIconsInToolbarsAction.isChecked();
+  if ( useLargeIcons ) {
+    cfg.usingToolbarsIconSize = Config::ToolbarsIconSize::Large;
+    useSmallIconsInToolbarsAction.setChecked( false );
+  }
+  else if ( !useSmallIconsInToolbarsAction.isChecked() ) {
+    cfg.usingToolbarsIconSize = Config::ToolbarsIconSize::Normal;
+  }
+
+  int extent = useLargeIcons ? QApplication::style()->pixelMetric( QStyle::PM_LargeIconSize ) :
+                               QApplication::style()->pixelMetric( QStyle::PM_ToolBarIconSize );
+
+  navToolbar->setIconSize( QSize( extent, extent ) );
+
+
+  menuButton->setIconSize( QSize( extent, extent ) );
+
+  updateDictionaryBar();
 
   scanPopup->setDictionaryIconSize();
 }
