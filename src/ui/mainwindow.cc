@@ -508,14 +508,14 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // Use small icons in toolbars
 
   useSmallIconsInToolbarsAction.setCheckable( true );
-  useSmallIconsInToolbarsAction.setChecked( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::small_size );
+  useSmallIconsInToolbarsAction.setChecked( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::Small );
 
   connect( &useSmallIconsInToolbarsAction, &QAction::triggered, this, &MainWindow::useSmallIconsInToolbarsTriggered );
 
   // Use large icons in toolbars
 
   useLargeIconsInToolbarsAction.setCheckable( true );
-  useLargeIconsInToolbarsAction.setChecked( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::large );
+  useLargeIconsInToolbarsAction.setChecked( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::Large );
 
   connect( &useLargeIconsInToolbarsAction, &QAction::triggered, this, &MainWindow::useLargeIconsInToolbarsTriggered );
 
@@ -3029,11 +3029,11 @@ void MainWindow::useSmallIconsInToolbarsTriggered()
 {
   bool useSmallIcons = useSmallIconsInToolbarsAction.isChecked();
   if ( useSmallIcons ) {
-    cfg.usingToolbarsIconSize = Config::ToolbarsIconSize::small_size;
+    cfg.usingToolbarsIconSize = Config::ToolbarsIconSize::Small;
     useLargeIconsInToolbarsAction.setChecked( false );
   }
   else if ( !useLargeIconsInToolbarsAction.isChecked() ) {
-    cfg.usingToolbarsIconSize = Config::ToolbarsIconSize::normal;
+    cfg.usingToolbarsIconSize = Config::ToolbarsIconSize::Normal;
   }
 
   int extent = useSmallIcons ? QApplication::style()->pixelMetric( QStyle::PM_SmallIconSize ) :
@@ -3054,11 +3054,11 @@ void MainWindow::useLargeIconsInToolbarsTriggered()
 {
   bool useLargeIcons = useLargeIconsInToolbarsAction.isChecked();
   if ( useLargeIcons ) {
-    cfg.usingToolbarsIconSize = Config::ToolbarsIconSize::large;
+    cfg.usingToolbarsIconSize = Config::ToolbarsIconSize::Large;
     useSmallIconsInToolbarsAction.setChecked( false );
   }
   else if ( !useSmallIconsInToolbarsAction.isChecked() ) {
-    cfg.usingToolbarsIconSize = Config::ToolbarsIconSize::normal;
+    cfg.usingToolbarsIconSize = Config::ToolbarsIconSize::Normal;
   }
 
   int extent = useLargeIcons ? QApplication::style()->pixelMetric( QStyle::PM_LargeIconSize ) :
