@@ -135,7 +135,6 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
           headwordsAction = menu.addAction( tr( "Dictionary headwords" ) );
 
         openDictFolderAction = menu.addAction( tr( "Open dictionary folder" ) );
-
       }
     }
   }

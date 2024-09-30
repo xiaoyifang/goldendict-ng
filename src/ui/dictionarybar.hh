@@ -18,9 +18,7 @@ class DictionaryBar: public QToolBar
 public:
 
   /// Constructs an empty dictionary bar
-  DictionaryBar( QWidget * parent,
-                 Config::Events &,
-                 unsigned short const & maxDictionaryRefsInContextMenu_ );
+  DictionaryBar( QWidget * parent, Config::Events &, unsigned short const & maxDictionaryRefsInContextMenu_ );
 
   /// Sets dictionaries to be displayed in the bar. Their statuses (enabled/
   /// disabled) are taken from the configuration data.

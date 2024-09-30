@@ -884,7 +884,7 @@ struct Class
   unsigned int maxHeadwordsToExpand;
 
   HeadwordsDialog headwordsDialog;
-  
+
   Class():
     lastMainGroupId( 0 ),
     lastPopupGroupId( 0 ),
