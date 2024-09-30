@@ -80,7 +80,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   stopAudioAction( this ),
   openSearchAction( this ),
   wordFinder( this ),
-  dictionaryBar( this, configEvents, cfg.editDictionaryCommandLine, cfg.preferences.maxDictionaryRefsInContextMenu ),
+  dictionaryBar( this, configEvents, cfg.preferences.maxDictionaryRefsInContextMenu ),
   hideTimer( this )
 {
   ui.setupUi( this );

@@ -20,7 +20,6 @@ public:
   /// Constructs an empty dictionary bar
   DictionaryBar( QWidget * parent,
                  Config::Events &,
-                 QString const & _editDictionaryCommand,
                  unsigned short const & maxDictionaryRefsInContextMenu_ );
 
   /// Sets dictionaries to be displayed in the bar. Their statuses (enabled/
@@ -68,7 +67,7 @@ private:
   Config::MutedDictionaries storedMutedSet;
 
   bool enterSoloMode = false;
-  QString editDictionaryCommand;
+
   // how many dictionaries should be shown in the context menu:
   unsigned short const & maxDictionaryRefsInContextMenu;
   std::vector< sptr< Dictionary::Class > > allDictionaries;

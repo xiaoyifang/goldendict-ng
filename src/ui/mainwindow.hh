@@ -290,8 +290,6 @@ private slots:
 
   void openDictionaryFolder( QString const & id );
 
-  void editDictionary( Dictionary::Class * dict );
-
   void showFTSIndexingName( QString const & name );
 
   void handleAddToFavoritesButton();
