@@ -518,7 +518,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   useLargeIconsInToolbarsAction.setChecked( cfg.usingLargeIconsInToolbars );
 
   connect( &useLargeIconsInToolbarsAction, &QAction::triggered, this, &MainWindow::useLargeIconsInToolbarsTriggered );
-  
+
   // Toggle Menubar
   toggleMenuBarAction.setCheckable( true );
   toggleMenuBarAction.setChecked( !cfg.preferences.hideMenubar );
@@ -916,7 +916,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   useSmallIconsInToolbarsTriggered();
   useLargeIconsInToolbarsTriggered();
 
-  
+
   if ( cfg.preferences.checkForNewReleases ) {
     QTimer::singleShot( 0, this, &MainWindow::checkNewRelease );
   }
@@ -1666,14 +1666,15 @@ void MainWindow::updateDictionaryBar()
 
     dictionaryBar.setDictionaries( grp->dictionaries );
 
-    if (useSmallIconsInToolbarsAction.isChecked()) {
-      dictionaryBar.setDictionaryIconSize(DictionaryBar::IconSize::Small);
-    } else if (useLargeIconsInToolbarsAction.isChecked()) {
-      dictionaryBar.setDictionaryIconSize(DictionaryBar::IconSize::Large);
-    } else {
-      dictionaryBar.setDictionaryIconSize(DictionaryBar::IconSize::Normal);
+    if ( useSmallIconsInToolbarsAction.isChecked() ) {
+      dictionaryBar.setDictionaryIconSize( DictionaryBar::IconSize::Small );
     }
-
+    else if ( useLargeIconsInToolbarsAction.isChecked() ) {
+      dictionaryBar.setDictionaryIconSize( DictionaryBar::IconSize::Large );
+    }
+    else {
+      dictionaryBar.setDictionaryIconSize( DictionaryBar::IconSize::Normal );
+    }
   }
 }
 
@@ -3052,12 +3053,12 @@ void MainWindow::useLargeIconsInToolbarsTriggered()
 
   navToolbar->setIconSize( QSize( extent, extent ) );
 
-  
-  menuButton->setIconSize( QSize( extent , extent ) );
+
+  menuButton->setIconSize( QSize( extent, extent ) );
 
   updateDictionaryBar();
 
-  cfg.usingLargeIconsInToolbars = true ; //  useLargeIcons;
+  cfg.usingLargeIconsInToolbars = true; //  useLargeIcons;
 
   scanPopup->setDictionaryIconSize();
 }

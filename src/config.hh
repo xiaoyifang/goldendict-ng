@@ -871,7 +871,7 @@ struct Class
   bool usingSmallIconsInToolbars;
 
   bool usingNormalIconsInToolbars;
-  
+
   bool usingLargeIconsInToolbars;
 
   /// Maximum size for the headwords.

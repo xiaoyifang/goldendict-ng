@@ -38,7 +38,7 @@ public:
   enum class IconSize {
     Small,
     Normal,
-    Large, 
+    Large,
   };
 
   void setDictionaryIconSize( IconSize size );

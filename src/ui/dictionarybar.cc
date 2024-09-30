@@ -94,9 +94,9 @@ void DictionaryBar::setDictionaryIconSize( IconSize size )
     }
 
     case IconSize::Large: {
-        auto largeSize = QApplication::style()->pixelMetric( QStyle::PM_LargeIconSize );
-        setIconSize( { largeSize + 10, largeSize + 10 } );
-        break;
+      auto largeSize = QApplication::style()->pixelMetric( QStyle::PM_LargeIconSize );
+      setIconSize( { largeSize + 10, largeSize + 10 } );
+      break;
     }
   }
 }
