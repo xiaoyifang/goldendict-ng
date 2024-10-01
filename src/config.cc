@@ -1171,9 +1171,6 @@ Class load()
   if ( !root.namedItem( "articleSavePath" ).isNull() )
     c.articleSavePath = root.namedItem( "articleSavePath" ).toElement().text();
 
-  if ( !root.namedItem( "editDictionaryCommandLine" ).isNull() )
-    c.editDictionaryCommandLine = root.namedItem( "editDictionaryCommandLine" ).toElement().text();
-
   if ( !root.namedItem( "maxHeadwordSize" ).isNull() ) {
     unsigned int value = root.namedItem( "maxHeadwordSize" ).toElement().text().toUInt();
     if ( value != 0 ) // 0 is invalid value for our purposes
@@ -2175,10 +2172,6 @@ void save( Class const & c )
       opt.appendChild( dd.createTextNode( c.articleSavePath ) );
       root.appendChild( opt );
     }
-
-    opt = dd.createElement( "editDictionaryCommandLine" );
-    opt.appendChild( dd.createTextNode( c.editDictionaryCommandLine ) );
-    root.appendChild( opt );
 
     opt = dd.createElement( "maxHeadwordSize" );
     opt.appendChild( dd.createTextNode( QString::number( c.maxHeadwordSize ) ) );
