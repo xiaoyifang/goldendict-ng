@@ -516,7 +516,8 @@ string makeDictionaryId( vector< string > const & dictionaryFiles ) noexcept
   QCryptographicHash hash( QCryptographicHash::Md5 );
 
   for ( const auto & i : sortedList ) {
-    hash.addData( i.c_str(), i.size() + 1 );
+    // Note: a null byte at the end is a must
+    hash.addData( { i.c_str(), static_cast< qsizetype >( i.size() + 1 ) } );
   }
 
   return hash.result().toHex().data();

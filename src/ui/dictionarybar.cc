@@ -11,12 +11,10 @@ using std::vector;
 
 DictionaryBar::DictionaryBar( QWidget * parent,
                               Config::Events & events,
-                              QString const & _editDictionaryCommand,
                               unsigned short const & maxDictionaryRefsInContextMenu_ ):
   QToolBar( tr( "&Dictionary Bar" ), parent ),
   mutedDictionaries( nullptr ),
   configEvents( events ),
-  editDictionaryCommand( _editDictionaryCommand ),
   maxDictionaryRefsInContextMenu( maxDictionaryRefsInContextMenu_ )
 {
   normalIconSize = { this->iconSize().height(), this->iconSize().height() };
@@ -115,7 +113,6 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
 
   const QAction * infoAction           = nullptr;
   const QAction * headwordsAction      = nullptr;
-  const QAction * editDictAction       = nullptr;
   const QAction * openDictFolderAction = nullptr;
   QString dictFilename;
 
@@ -138,13 +135,6 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
           headwordsAction = menu.addAction( tr( "Dictionary headwords" ) );
 
         openDictFolderAction = menu.addAction( tr( "Open dictionary folder" ) );
-
-        if ( !editDictionaryCommand.isEmpty() ) {
-          if ( !pDict->getMainFilename().isEmpty() ) {
-            dictFilename   = pDict->getMainFilename();
-            editDictAction = menu.addAction( tr( "Edit dictionary" ) );
-          }
-        }
       }
     }
   }
@@ -199,13 +189,6 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
     QString const id = dictAction->data().toString();
     emit openDictionaryFolder( id );
     return;
-  }
-
-  if ( result && result == editDictAction ) {
-    QString command( editDictionaryCommand );
-    command.replace( "%GDDICT%", QString( R"("%1")" ).arg( dictFilename ) );
-    if ( !QProcess::startDetached( command, QStringList() ) )
-      QApplication::beep();
   }
 
   if ( result && result == maxDictionaryRefsAction ) {

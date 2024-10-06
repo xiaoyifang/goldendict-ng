@@ -1157,8 +1157,10 @@ Class load()
 
   c.showingDictBarNames = ( root.namedItem( "showingDictBarNames" ).toElement().text() == "1" );
 
-  c.usingToolbarsIconSize =
-    ( static_cast< ToolbarsIconSize >( root.namedItem( "usingToolbarsIconSize" ).toElement().text().toInt() ) );
+  QDomNode usingToolbarsIconSize = root.namedItem( "usingToolbarsIconSize" );
+  if ( !usingToolbarsIconSize.isNull() ) {
+    c.usingToolbarsIconSize = static_cast< ToolbarsIconSize >( usingToolbarsIconSize.toElement().text().toInt() );
+  }
 
   if ( !root.namedItem( "historyExportPath" ).isNull() )
     c.historyExportPath = root.namedItem( "historyExportPath" ).toElement().text();
@@ -1168,9 +1170,6 @@ Class load()
 
   if ( !root.namedItem( "articleSavePath" ).isNull() )
     c.articleSavePath = root.namedItem( "articleSavePath" ).toElement().text();
-
-  if ( !root.namedItem( "editDictionaryCommandLine" ).isNull() )
-    c.editDictionaryCommandLine = root.namedItem( "editDictionaryCommandLine" ).toElement().text();
 
   if ( !root.namedItem( "maxHeadwordSize" ).isNull() ) {
     unsigned int value = root.namedItem( "maxHeadwordSize" ).toElement().text().toUInt();
@@ -2173,10 +2172,6 @@ void save( Class const & c )
       opt.appendChild( dd.createTextNode( c.articleSavePath ) );
       root.appendChild( opt );
     }
-
-    opt = dd.createElement( "editDictionaryCommandLine" );
-    opt.appendChild( dd.createTextNode( c.editDictionaryCommandLine ) );
-    root.appendChild( opt );
 
     opt = dd.createElement( "maxHeadwordSize" );
     opt.appendChild( dd.createTextNode( QString::number( c.maxHeadwordSize ) ) );

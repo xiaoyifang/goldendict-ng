@@ -27,6 +27,7 @@ Checks: >
   -google-readability-casting,
   -hicpp-deprecated-headers,
   -misc-const-correctness,
+  -misc-include-cleaner,
   -misc-non-private-member-variables-in-classes,
   -modernize-avoid-c-arrays,
   -modernize-deprecated-headers,

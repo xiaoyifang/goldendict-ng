@@ -885,8 +885,6 @@ struct Class
 
   HeadwordsDialog headwordsDialog;
 
-  QString editDictionaryCommandLine; // Command line to call external editor for dictionary
-
   Class():
     lastMainGroupId( 0 ),
     lastPopupGroupId( 0 ),

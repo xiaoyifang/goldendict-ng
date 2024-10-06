@@ -16,7 +16,6 @@ public:
     REJECTED,
     ACCEPTED,
     OPEN_FOLDER,
-    EDIT_DICTIONARY,
     SHOW_HEADWORDS
   };
 
@@ -28,7 +27,6 @@ private:
   Config::Class & cfg;
 private slots:
   void savePos( int );
-  void on_editDictionary_clicked();
   void on_openFolder_clicked();
   void on_OKButton_clicked();
   void on_headwordsButton_clicked();

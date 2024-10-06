@@ -155,7 +155,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   addTab( this ),
   cfg( cfg_ ),
   history( History::Load(), cfg_.preferences.maxStringsInHistory, cfg_.maxHeadwordSize ),
-  dictionaryBar( this, configEvents, cfg.editDictionaryCommandLine, cfg.preferences.maxDictionaryRefsInContextMenu ),
+  dictionaryBar( this, configEvents, cfg.preferences.maxDictionaryRefsInContextMenu ),
   articleMaker( dictionaries, groupInstances, cfg.preferences ),
   articleNetMgr( this,
                  dictionaries,
@@ -4021,9 +4021,6 @@ void MainWindow::showDictionaryInfo( const QString & id )
       if ( result == DictInfo::OPEN_FOLDER ) {
         openDictionaryFolder( id );
       }
-      else if ( result == DictInfo::EDIT_DICTIONARY ) {
-        editDictionary( dictionaries[ x ].get() );
-      }
       else if ( result == DictInfo::SHOW_HEADWORDS ) {
         showDictionaryHeadwords( dictionaries[ x ].get() );
       }
@@ -4100,21 +4097,6 @@ void MainWindow::stopAudio()
   }
 }
 
-void MainWindow::editDictionary( Dictionary::Class * dict )
-{
-  QString dictFilename = dict->getMainFilename();
-  if ( !cfg.editDictionaryCommandLine.isEmpty() && !dictFilename.isEmpty() ) {
-    QString command( cfg.editDictionaryCommandLine );
-    command.replace( "%GDDICT%", "\"" + dictFilename + "\"" );
-    if ( command.contains( "%GDWORD%" ) ) {
-      QString headword = unescapeTabHeader( ui.tabWidget->tabText( ui.tabWidget->currentIndex() ) );
-      command.replace( "%GDWORD%", headword );
-    }
-    if ( !QProcess::startDetached( command, QStringList() ) )
-      QApplication::beep();
-  }
-}
-
 void MainWindow::openDictionaryFolder( const QString & id )
 {
   for ( unsigned x = 0; x < dictionaries.size(); x++ ) {
@@ -4161,12 +4143,6 @@ void MainWindow::foundDictsContextMenuRequested( const QPoint & pos )
 
       QAction * openDictFolderAction = menu.addAction( tr( "Open dictionary folder" ) );
 
-      QAction * editAction = nullptr;
-
-      QString dictFilename = pDict->getMainFilename();
-      if ( !cfg.editDictionaryCommandLine.isEmpty() && !dictFilename.isEmpty() )
-        editAction = menu.addAction( tr( "Edit dictionary" ) );
-
       QAction * result = menu.exec( ui.dictsList->mapToGlobal( pos ) );
 
       if ( result && result == infoAction ) {
@@ -4185,9 +4161,6 @@ void MainWindow::foundDictsContextMenuRequested( const QPoint & pos )
       }
       else if ( result && result == openDictFolderAction ) {
         openDictionaryFolder( id );
-      }
-      else if ( result && result == editAction ) {
-        editDictionary( pDict );
       }
     }
   }
