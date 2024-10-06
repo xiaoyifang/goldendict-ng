@@ -1389,7 +1389,7 @@ void ArticleView::playSound()
         return link;})();         )";
 
   webview->page()->runJavaScript( variable, [ this ]( const QVariant & result ) {
-    if ( result.type() == QVariant::String ) {
+    if ( result.typeId() == qMetaTypeId< QString >() ) {
       QString soundScript = result.toString();
       if ( !soundScript.isEmpty() )
         openLink( QUrl::fromEncoded( soundScript.toUtf8() ), webview->url() );
