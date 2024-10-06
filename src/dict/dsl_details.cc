@@ -858,7 +858,7 @@ DslScanner::DslScanner( string const & fileName ):
 
   codec = QTextCodec::codecForName( getEncodingNameFor( encoding ) );
 
-  qDebug() << "DSL encoding ->"<< codec->name();
+  qDebug() << "DSL encoding ->" << codec->name();
 
   if ( gzrewind( f ) ) {
     gzclose( f );
