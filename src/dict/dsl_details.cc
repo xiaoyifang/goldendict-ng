@@ -807,7 +807,7 @@ bool ArticleDom::atSignFirstInLine()
 /////////////// DslScanner
 
 DslScanner::DslScanner( string const & fileName ):
-  encoding( Utf8::Windows1252 ),
+  encoding( Utf8::Utf8 ),
   readBufferPtr( readBuffer ),
   readBufferLeft( 0 ),
   linesRead( 0 )
@@ -819,11 +819,12 @@ DslScanner::DslScanner( string const & fileName ):
   if ( !f )
     throw exCantOpen( fileName );
 
-  // Now try guessing the encoding by reading the first two bytes
+  // Now try guessing the encoding
 
-  unsigned char firstBytes[ 50 ];
+  constexpr size_t firstBytesSize = 50;
+  unsigned char firstBytes[ firstBytesSize ];
 
-  if ( gzread( f, firstBytes, sizeof( firstBytes ) ) != sizeof( firstBytes ) ) {
+  if ( gzread( f, firstBytes, firstBytesSize ) != firstBytesSize ) {
     // Apparently the file's too short
     gzclose( f );
     throw exMalformedDslFile( fileName );
@@ -831,37 +832,33 @@ DslScanner::DslScanner( string const & fileName ):
 
   bool needExactEncoding = false;
 
-  QByteArray ba = QByteArray::fromRawData( (const char *)firstBytes, 50 );
-  codec         = QTextCodec::codecForUtfText( ba, nullptr );
-  if ( !codec ) {
-    // the encoding has no bom.
-    // check the first char # (0x23).
-    auto hashTag = 0x0023;
-
-    auto uci = qFromUnaligned< uint32_t >( firstBytes );
-    if ( uci == qToBigEndian( hashTag ) ) {
-      codec = QTextCodec::codecForMib( 1018 ); // utf-32 be
-    }
-    else if ( uci == qToLittleEndian( hashTag ) ) {
-      codec = QTextCodec::codecForMib( 1019 ); // utf-32 le
-    }
-    else {
-      auto uc = qFromUnaligned< uint16_t >( firstBytes );
-      if ( uc == qToBigEndian( uint16_t( hashTag ) ) ) {
-        codec = QTextCodec::codecForMib( 1013 ); // utf16 be
-      }
-      else if ( uc == qToLittleEndian( uint16_t( hashTag ) ) ) {
-        codec = QTextCodec::codecForMib( 1014 ); // utf16 le
-      }
-      else {
-        //default encoding
-        codec = QTextCodec::codecForName( "UTF-8" );
-      }
+  // Note that .dsl format always starts with "#NAME"
+  if ( auto guessedEncoding = QStringConverter::encodingForData( { firstBytes, firstBytesSize }, '#' );
+       guessedEncoding.has_value() ) {
+    switch ( guessedEncoding.value() ) {
+      case QStringConverter::Utf8:
+        encoding = Utf8::Utf8;
+        break;
+      case QStringConverter::Utf16LE:
+        encoding = Utf8::Utf16LE;
+        break;
+      case QStringConverter::Utf16BE:
+        encoding = Utf8::Utf16BE;
+        break;
+      case QStringConverter::Utf32LE:
+        encoding = Utf8::Utf16LE;
+        break;
+      case QStringConverter::Utf32BE:
+        encoding = Utf8::Utf32BE;
+        break;
+      default:
+        break;
     }
   }
 
-  encoding = Utf8::getEncodingForName( codec->name() );
-  qDebug() << codec->name();
+  codec = QTextCodec::codecForName( getEncodingNameFor( encoding ) );
+
+  qDebug() << "DSL encoding ->" << codec->name();
 
   if ( gzrewind( f ) ) {
     gzclose( f );
