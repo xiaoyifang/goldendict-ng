@@ -33,7 +33,7 @@ GoldenDict.xcodeproj/
 *.suo
 *.vcxproj.user
 /.idea
-/.vs
+.vs
 /.vscode
 /.qtc_clangd
 
@@ -56,3 +56,7 @@ GoldenDict_resource.rc
 *.orig
 
 node_modules
+
+# tts testing files
+*.ogg
+*.mp3
