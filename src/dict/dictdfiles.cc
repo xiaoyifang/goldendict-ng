@@ -426,8 +426,7 @@ QString const & DictdDictionary::getDescription()
   sptr< Dictionary::DataRequest > req = getArticle( U"00databaseinfo", vector< wstring >(), wstring(), false );
 
   if ( req->dataSize() > 0 ) {
-    dictionaryDescription = Html::unescape( QString::fromUtf8( req->getFullData().data(), req->getFullData().size() ),
-                                            Html::HtmlOption::Keep );
+    dictionaryDescription = QString::fromUtf8( req->getFullData().data(), req->getFullData().size() );
   }
   else {
     dictionaryDescription = "NONE";
