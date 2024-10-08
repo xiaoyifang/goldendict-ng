@@ -3,6 +3,7 @@
 [![Crowdin](https://badges.crowdin.net/goldendict-ng/localized.svg)](https://crowdin.com/project/goldendict-ng)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=xiaoyifang_goldendict&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=xiaoyifang_goldendict)
 [![Build](https://github.com/xiaoyifang/goldendict-ng/actions/workflows/PR-check-cmake.yml/badge.svg)](https://github.com/xiaoyifang/goldendict-ng/actions/workflows/PR-check-cmake.yml)
+[![SWH](https://archive.softwareheritage.org/badge/origin/https://github.com/xiaoyifang/goldendict-ng/)](https://archive.softwareheritage.org/browse/origin/?origin_url=https://github.com/xiaoyifang/goldendict-ng)
 
 The Next Generation GoldenDict. A feature-rich open-source dictionary lookup program,
 supporting [multiple dictionary formats](https://xiaoyifang.github.io/goldendict-ng/dictformats/) and online
