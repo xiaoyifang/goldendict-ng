@@ -1,24 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
- <defs>
-  <linearGradient id="linearGradient4582" x1="-1.7198" x2="-1.7198" y1="3.5719" y2=".79375" gradientTransform="matrix(3.7795 0 0 3.7795 14.5 -6.308e-7)" gradientUnits="userSpaceOnUse">
-   <stop stop-color="#6fb558" offset="0"/>
-   <stop stop-color="#a5db9b" offset="1"/>
-  </linearGradient>
-  <linearGradient id="linearGradient4758-7" x1="7.5406" x2="5.1594" y1="3.3073" y2=".92604" gradientTransform="matrix(3.7795 0 0 3.7795 -16 -6e-7)" gradientUnits="userSpaceOnUse">
-   <stop stop-color="#34812c" offset="0"/>
-   <stop stop-color="#87b870" offset="1"/>
-  </linearGradient>
-  <radialGradient id="radialGradient4683-3" cx="2.1167" cy="2.1167" r=".66146" gradientTransform="matrix(4.5354 8.0301e-7 -8.0301e-7 4.5354 -1.6 -1.6)" gradientUnits="userSpaceOnUse">
-   <stop stop-opacity=".28986" offset="0"/>
-   <stop stop-opacity="0" offset="1"/>
-  </radialGradient>
- </defs>
- <g>
-  <circle cx="8" cy="8" r="6.5" fill="url(#linearGradient4582)"/>
-  <circle cx="8" cy="8" r="5.75" fill="none" stroke="#fff" stroke-opacity=".50196" stroke-width="1.5"/>
-  <circle cx="8" cy="8" r="6.5" fill="none" stroke="url(#linearGradient4758-7)"/>
-  <circle cx="8" cy="8" r="3" fill="url(#radialGradient4683-3)"/>
-  <path d="m5 7h2v-2h2v2h2v2h-2v2h-2v-2h-2v-2" fill="#fff"/>
- </g>
-</svg>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
+<svg width="64px" height="64px" viewBox="-1.7 -1.7 20.40 20.40" xmlns="http://www.w3.org/2000/svg" fill="#3276c3" stroke="#3276c3" transform="rotate(180)">
+<g id="SVGRepo_bgCarrier" stroke-width="0"/>
+<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.10200000000000001"/>
+<g id="SVGRepo_iconCarrier"> <g id="add-card-16px" transform="translate(0.5 0.5)"> <path id="Subtração_7" data-name="Subtração 7" d="M8,12H.5a.5.5,0,0,1-.5-.5V.5A.5.5,0,0,1,.5,0h15a.5.5,0,0,1,.5.5V4H15V1H1V11H8v1Z" transform="translate(0 0)" stroke="rgba(0,0,0,0)" stroke-miterlimit="10" stroke-width="1"/> <path id="Caminho_179" data-name="Caminho 179" d="M38,12.5a.5.5,0,0,1-.5.5H35v2.5a.5.5,0,0,1-1,0V13H31.5a.5.5,0,0,1,0-1H34V9.5a.5.5,0,0,1,1,0V12h2.5A.5.5,0,0,1,38,12.5Z" transform="translate(-22 -4)"/> <path id="Caminho_272" data-name="Caminho 272" d="M976.148,357.487h2.005" transform="translate(-970.156 -345.987)" fill="none" stroke="#3276c3" stroke-linecap="round" stroke-width="1"/> <path id="Caminho_273" data-name="Caminho 273" d="M976.148,357.487h2.005" transform="translate(372.987 -974.148) rotate(90)" fill="none" stroke="#3276c3" stroke-linecap="round" stroke-width="1"/> <path id="Caminho_269" data-name="Caminho 269" d="M43.606,3.483h-5.07" transform="translate(-36 -0.483)" fill="none" stroke="#3276c3" stroke-linecap="round" stroke-width="1"/> <path id="Caminho_270" data-name="Caminho 270" d="M42.673,3.483H38.536" transform="translate(-36 2.517)" fill="none" stroke="#3276c3" stroke-linecap="round" stroke-width="1"/> <path id="Caminho_271" data-name="Caminho 271" d="M41.673,3.483H38.536" transform="translate(-36 5.517)" fill="none" stroke="#3276c3" stroke-linecap="round" stroke-width="1"/> </g> </g>
+</svg>
