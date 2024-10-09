@@ -3047,16 +3047,16 @@ the application.</source>
       <translation>等寬字體</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>螢幕取詞(&amp;S)</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
       <translation>選擇是否預設啟用螢幕取詞模式。如果選用，程式啟動時將會自動啟用螢幕取詞功能。</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
+      <source>Start with popup turned on</source>
       <translation>啟動程式時同時啟動螢幕取詞</translation>
     </message>
     <message>
@@ -3173,7 +3173,7 @@ in the pressed state when the word selection changes.</source>
       <translation>自動朗讀主視窗中的單字</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
+      <source>Auto-pronounce words in popup</source>
       <translation>自動朗讀螢幕取詞彈出視窗中的單字</translation>
     </message>
     <message>
@@ -3700,7 +3700,7 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>強制在主視窗中翻譯該單字</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>切換彈出窗口。</translation>
     </message>
     <message>

@@ -3049,18 +3049,18 @@ the application.</source>
       <translation>Monospace-Schriftart</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>Popup &amp;scannen</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
-      <translation>Gibt an, ob der Scan Popup Modus standardmäßig aktiviert ist oder nicht. Falls aktiviert,
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
+      <translation>Gibt an, ob der Popup Modus standardmäßig aktiviert ist oder nicht. Falls aktiviert,
 wird das Programm immer mit aktiviertem Modus gestartet.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
-      <translation>Mit aktiviertem Scan Popup starten</translation>
+      <source>Start with popup turned on</source>
+      <translation>Mit aktiviertem Popup starten</translation>
     </message>
     <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
@@ -3085,7 +3085,7 @@ wird das Programm immer mit aktiviertem Modus gestartet.</translation>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
 in the pressed state when the word selection changes.</source>
-      <translation>Fallt aktiviert, wird das Scan Popup bei Änderung der Wortauswahl nur angezeigt, wenn alle ausgewählten Tasten gedrückt sind.</translation>
+      <translation>Fallt aktiviert, wird das Popup bei Änderung der Wortauswahl nur angezeigt, wenn alle ausgewählten Tasten gedrückt sind.</translation>
     </message>
     <message>
       <source>Only tack selection when all selected keys are kept pressed:</source>
@@ -3176,8 +3176,8 @@ in the pressed state when the word selection changes.</source>
       <translation>Wörter im Hauptfenster automatisch aussprechen</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
-      <translation>Wörter im Scan Popup automatisch aussprechen</translation>
+      <source>Auto-pronounce words in popup</source>
+      <translation>Wörter im Popup automatisch aussprechen</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3703,7 +3703,7 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Erzwingen Sie die Übersetzung des Wortes im Hauptfenster</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>Scan-Popup umschalten.</translation>
     </message>
     <message>

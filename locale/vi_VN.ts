@@ -3050,17 +3050,17 @@ the application.</source>
       <translation>Phông chữ đơn cách</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>&amp;Quét Popup</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
       <translation>Chọn bật chế độ quét popup mặc định. Nếu chọn, chương trình sẽ khởi động
 với tính năng quét popup được bật.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
+      <source>Start with popup turned on</source>
       <translation>Khởi động với quét popup được bật</translation>
     </message>
     <message>
@@ -3177,7 +3177,7 @@ in the pressed state when the word selection changes.</source>
       <translation>Tự động phát âm trong cửa sổ chính</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
+      <source>Auto-pronounce words in popup</source>
       <translation>Tự động phát âm trong quét popup</translation>
     </message>
     <message>
@@ -3704,7 +3704,7 @@ từ các từ điển Stardict, Babylon và GLS</translation>
       <translation>Buộc dịch từ trong cửa sổ chính</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>Chuyển đổi cửa sổ bật lên quét.</translation>
     </message>
     <message>

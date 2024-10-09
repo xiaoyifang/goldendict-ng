@@ -3053,17 +3053,17 @@ the application.</source>
       <translation>等幅フォント</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>スキャン ポップアップ(&amp;S)</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
       <translation>スキャン ポップアップ モードを既定でオンにするかを選択します。チェックされている場合、
 プログラムは常にスキャン ポップアップがアクティブで起動します。</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
+      <source>Start with popup turned on</source>
       <translation>スキャン ポップアップをオンにして起動する</translation>
     </message>
     <message>
@@ -3181,7 +3181,7 @@ in the pressed state when the word selection changes.</source>
       <translation>メイン ウィンドウで単語を自動的に発音する</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
+      <source>Auto-pronounce words in popup</source>
       <translation>スキャン ポップアップで単語を自動的に発音する</translation>
     </message>
     <message>
@@ -3710,7 +3710,7 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>メインウィンドウで単語を強制的に翻訳する</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>スキャンポップアップの切り替え。</translation>
     </message>
     <message>

@@ -3049,17 +3049,17 @@ skryje program namiesto jeho ukončenia.</translation>
       <translation>Jednopriestorové písmo</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>Vys&amp;kakovacie okno</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
       <translation>Určuje, či vyskakovacie okno je automaticky povolené, alebo zakázané. Pokiaľ je zaškrtnuté,
 program sa bude spúšťať s automaticky aktivovaným vyskakovacím oknom.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
+      <source>Start with popup turned on</source>
       <translation>Spustiť s povoleným vyskakovacím oknom</translation>
     </message>
     <message>
@@ -3176,7 +3176,7 @@ in the pressed state when the word selection changes.</source>
       <translation>Automaticky vysloviť slová v hlavnom okne</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
+      <source>Auto-pronounce words in popup</source>
       <translation>Automaticky vysloviť slová vo vyskakovacom okne</translation>
     </message>
     <message>
@@ -3704,7 +3704,7 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
       <translation>Vynútiť preklad slova v hlavnom okne</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>Prepnúť kontextové okno skenovania.</translation>
     </message>
     <message>

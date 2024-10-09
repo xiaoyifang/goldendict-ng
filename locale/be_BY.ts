@@ -3045,17 +3045,17 @@ the application.</source>
       <translation>Монашырынны шрыфт</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>&amp;Апрацоўванне ў выплыўных вокнах</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
       <translation>Вызначае, ці будзе прадвызначана ўключаная функцыя апрацоўвання ў выплыўных вокнах. Калі адзначана,
 праграма заўсёды будзе запускацца з актываванай функцыяй.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
+      <source>Start with popup turned on</source>
       <translation>Запускаць з уключанай функцыяй апрацоўвання ў выплыўных вокнах</translation>
     </message>
     <message>
@@ -3172,7 +3172,7 @@ in the pressed state when the word selection changes.</source>
       <translation>Аўтаматычна вымаўляць словы ў галоўным акне</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
+      <source>Auto-pronounce words in popup</source>
       <translation>Аўтаматычна вымаўляць словы ў выплыўных вокнах</translation>
     </message>
     <message>
@@ -3698,7 +3698,7 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Прымусова перакласці слова ў галоўным акне</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>Уключыць або адключыць апрацоўванне ў выплыўных вокнах.</translation>
     </message>
     <message>

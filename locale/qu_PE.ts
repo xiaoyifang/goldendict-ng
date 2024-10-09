@@ -3051,17 +3051,17 @@ cerrar la aplicación.</translation>
       <translation>Monoespacio nisqa qillqa</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>&amp;Juch&apos;uy qhawanapi mask&apos;ay</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
       <translation>Selecciona si el modo de escaneo está activado por defecto o no. Si está
 marcado, el programa siempre iniciará con el modo de escaneo habilitado.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
+      <source>Start with popup turned on</source>
       <translation>Qallarinapaq escaneo popup llank’achisqawan</translation>
     </message>
     <message>
@@ -3179,7 +3179,7 @@ seleccionadas estén oprimidas cuando la selección de la palabra cambie.</trans
       <translation>Qhapaq qhawanapi kunanpacha simikunata parlachiy</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
+      <source>Auto-pronounce words in popup</source>
       <translation>Juch&apos;uy qhawanapi kunanpacha simikunata parlachiy</translation>
     </message>
     <message>
@@ -3707,7 +3707,7 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
       <translation>Hatun ventanata t’ikranapaq simita kallpachay</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>Toggle escaneo nisqa popup nisqa.</translation>
     </message>
     <message>

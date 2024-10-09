@@ -3051,17 +3051,17 @@ the application.</source>
       <translation>모노스페이스 글꼴</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>스캔팝업(&amp;S)</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
       <translation>기본값으로 스캔팝업모드를 켤 것인지 설정합니다. 이 항목을 선택하면,
 프로그램이 시작할 때 항상 스캔팝업기능이 활성화됩니다.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
+      <source>Start with popup turned on</source>
       <translation>프로그램 시작시 스캔팝업 활성화</translation>
     </message>
     <message>
@@ -3179,7 +3179,7 @@ in the pressed state when the word selection changes.</source>
       <translation>메인창에서 발음 자동 재생</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
+      <source>Auto-pronounce words in popup</source>
       <translation>스캔팝업창에서 발음 자동 재생</translation>
     </message>
     <message>
@@ -3707,7 +3707,7 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>메인 창에서 단어가 강제로 번역되도록 합니다.</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>스캔 팝업을 전환합니다.</translation>
     </message>
     <message>

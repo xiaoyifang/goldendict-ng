@@ -3047,17 +3047,17 @@ the application.</source>
       <translation>Fonti Monospace</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>&amp;Skanimi i jashtëm</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
       <translation>Zgjedh nëse mënyra standarde e skanimit të jashtëm është ndezur apo jo.
 Kur e zgjedh, programi nis gjithmonë me skanimin e jashtëm aktiv.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
+      <source>Start with popup turned on</source>
       <translation>Nis me skanuesin e ndezur</translation>
     </message>
     <message>
@@ -3175,7 +3175,7 @@ janë në gjendjen e shtypur.</translation>
       <translation>Autoshqiptoj fjalët në dritaren kryesore</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
+      <source>Auto-pronounce words in popup</source>
       <translation>Autoshqiptoj fjalët e skanuara</translation>
     </message>
     <message>
@@ -3703,7 +3703,7 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
       <translation>Detyrojeni fjalën të përkthehet në dritaren kryesore</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>Ndrysho dritaren kërcyese të skanimit.</translation>
     </message>
     <message>

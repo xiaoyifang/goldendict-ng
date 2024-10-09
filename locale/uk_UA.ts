@@ -3053,17 +3053,17 @@ the application.</source>
       <translation>Моноширинний шрифт</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>&amp;Контекстне вікно</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
       <translation>Визначає, чи типово ввімкнуті контекстні вікна, чи ні. Якщо це відмічено,
 програма завжди запускатиметься з контекстними меню.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
+      <source>Start with popup turned on</source>
       <translation>Увімкнути контекстні меню при запуску</translation>
     </message>
     <message>
@@ -3182,7 +3182,7 @@ in the pressed state when the word selection changes.</source>
       <translation>Автоматично вимовляти слово в головному меню</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
+      <source>Auto-pronounce words in popup</source>
       <translation>Автоматично вимовляти слова в контекстному меню</translation>
     </message>
     <message>
@@ -3712,7 +3712,7 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Примусово перекласти слово в головному вікні</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>Увімкнути або вимкнути вікно сканування.</translation>
     </message>
     <message>

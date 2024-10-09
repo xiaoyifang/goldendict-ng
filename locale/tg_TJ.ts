@@ -3053,17 +3053,17 @@ the application.</source>
       <translation>Шрифти Monospace</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>&amp;Тарҷумаи пайдошаванда</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
       <translation>Барои фаъол ё хомӯш кардани тарҷумаи пайдошаванда, имконоти зеринро истифода баред.
 Агар ин имконотро интихоб мекунед, тарҷумаи пайдошаванда ба худкор фаъол мешавад.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
+      <source>Start with popup turned on</source>
       <translation>Барномаро бо хусусияти тарҷумаи пайдошаванда оғоз кардан</translation>
     </message>
     <message>
@@ -3181,7 +3181,7 @@ in the pressed state when the word selection changes.</source>
       <translation>Талаффузи худкори калимаҳо дар равзанаи асосӣ</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
+      <source>Auto-pronounce words in popup</source>
       <translation>Талаффузи худкори калимаҳо дар тарҷумаи пайдошаванда</translation>
     </message>
     <message>
@@ -3711,7 +3711,7 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Маҷбур кардани калима дар равзанаи асосӣ тарҷума карда шавад</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>Ивазкунандаи поп-апаи скан.</translation>
     </message>
     <message>
