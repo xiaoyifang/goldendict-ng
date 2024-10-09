@@ -247,7 +247,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // scan popup
   navToolbar->addSeparator();
 
-  enableScanningAction = navToolbar->addAction( QIcon( ":/icons/wizard.svg" ), tr( "Enable Scanning" ) );
+  enableScanningAction = navToolbar->addAction( QIcon( ":/icons/wizard.svg" ), tr( "Toggle clipboard monitoring" ) );
   enableScanningAction->setCheckable( true );
 
   navToolbar->widgetForAction( enableScanningAction )->setObjectName( "scanPopupButton" );
@@ -2878,7 +2878,7 @@ void MainWindow::installHotKeys()
     if ( cfg.preferences.enableMainWindowHotkey )
       hotkeyWrapper->setGlobalKey( cfg.preferences.mainWindowHotkey, 0 );
 
-    if ( cfg.preferences.enableClipboardHotkey && !enableScanningAction->isChecked() ) {
+    if ( cfg.preferences.enableClipboardHotkey ) {
       hotkeyWrapper->setGlobalKey( cfg.preferences.clipboardHotkey, 1 );
     }
 
@@ -3607,7 +3607,7 @@ void MainWindow::messageFromAnotherInstanceReceived( QString const & message )
     }
     else {
       //default logic
-      if ( scanPopup && enableScanningAction->isChecked() )
+      if ( scanPopup )
         scanPopup->translateWord( word );
       else
         wordReceived( word );
