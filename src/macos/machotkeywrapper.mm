@@ -3,7 +3,25 @@
 
 #include "hotkeywrapper.hh"
 #include <QTimer>
-#include <ApplicationServices/ApplicationServices.h>
+#include <QMessageBox>
+#include <QPushButton>
+#include <QObject>
+#include <memory>
+
+#import <Appkit/Appkit.h>
+
+///
+/// Implementation of the Cmd+C+C trick:
+/// These two methods from `Carbon` API are the core part:
+/// * `RegisterEventHotKey` -> For trapping Cmd+C and waiting for second Cmd+C press.
+/// * `CGEventCreateKeyboardEvent` -> For simulating Cmd+C press.
+///
+/// The capturing of the first Cmd+C will prevent user's normal copy action.
+/// The trick is to insert a Cmd+C in between two user generated Cmd+C.
+///
+/// Note: Based an expert's opinion, despite `Carbon` APIs are mostly deprecated, the used two are not.
+/// https://github.com/sindresorhus/KeyboardShortcuts/blob/9369a045a72a5296150879781321aecd228171db/readme.md?plain=1#L207
+///
 
 namespace MacKeyMapping
 {
@@ -114,6 +132,26 @@ void HotkeyWrapper::waitKey2()
 {
   state2 = false;
 }
+void checkAndRequestAccessibilityPermission()
+{
+    if (AXIsProcessTrusted()) {
+        return;
+    }
+
+    auto msgBox = std::make_unique<QMessageBox>(nullptr);
+    auto* turnOnPermission = new QPushButton(QObject::tr("Turn on Accessibility"), msgBox.get());
+
+    msgBox->setInformativeText(QObject::tr("Global shortcut using ⌘+C needs Accessibility permission. Please grant it to Goldendict or change ⌘+C to something else."));
+
+    msgBox->addButton(QMessageBox::Ok);
+    msgBox->addButton(turnOnPermission, QMessageBox::AcceptRole); // the role is unused.
+    msgBox->setDefaultButton(turnOnPermission);
+    msgBox->exec();
+
+    if (msgBox->clickedButton() == turnOnPermission) {
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility"]];
+    }
+}
 
 void HotkeyWrapper::activated( int hkId )
 {
@@ -137,6 +175,8 @@ void HotkeyWrapper::activated( int hkId )
     {
       if( hs.key == keyC && hs.modifier == cmdKey )
       {
+        checkAndRequestAccessibilityPermission();
+          
         // If that was a copy-to-clipboard shortcut, re-emit it back so it could
         // reach its original destination so it could be acted upon.
         UnregisterEventHotKey( hs.hkRef );
