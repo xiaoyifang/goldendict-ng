@@ -43,13 +43,13 @@ public:
       engine( e )
     {
       qDebug() << QStringLiteral( "initialize tts" ) << e.engine_name;
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
+  #if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
       if ( !sp || sp->state() == QTextToSpeech::Error )
         return;
-#else
+  #else
       if ( !sp || sp->state() == QTextToSpeech::BackendError )
         return;
-#endif
+  #endif
       sp->setLocale( e.locale );
       auto voices = sp->availableVoices();
       for ( const auto & voice : voices ) {

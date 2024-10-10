@@ -45,8 +45,9 @@ QString MultimediaAudioPlayer::play( const char * data, int size )
   stop();
   audioBuffer = new QBuffer();
   audioBuffer->setData( data, size );
-  if ( !audioBuffer->open( QIODevice::ReadOnly ) )
+  if ( !audioBuffer->open( QIODevice::ReadOnly ) ) {
     return tr( "Couldn't open audio buffer for reading." );
+  }
   #if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
   player.setSourceDevice( audioBuffer );
     #if ( QT_VERSION > QT_VERSION_CHECK( 6, 2, 0 ) )

@@ -37,10 +37,12 @@ void IframeSchemeHandler::requestStarted( QWebEngineUrlRequestJob * requestJob )
     QString articleString;
 
     QTextCodec * codec = QTextCodec::codecForUtfText( replyData, QTextCodec::codecForName( codecName.toUtf8() ) );
-    if ( codec )
+    if ( codec ) {
       articleString = codec->toUnicode( replyData );
-    else
+    }
+    else {
       articleString = QString::fromUtf8( replyData );
+    }
     // Handle reply data
     // 404 response may have response body.
     if ( reply->error() != QNetworkReply::NoError && articleString.isEmpty() ) {

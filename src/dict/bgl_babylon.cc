@@ -72,8 +72,9 @@ bool Babylon::open()
   unsigned char buf[ 6 ];
 
   FILE * f = gd_fopen( m_filename.c_str(), "rb" );
-  if ( f == nullptr )
+  if ( f == nullptr ) {
     return false;
+  }
 
   int i = fread( buf, 1, 6, f );
 
@@ -109,8 +110,9 @@ bool Babylon::open()
 
   fclose( f );
 
-  if ( file == nullptr )
+  if ( file == nullptr ) {
     return false;
+  }
 
   return true;
 }
@@ -127,19 +129,22 @@ void Babylon::close()
 
 bool Babylon::readBlock( bgl_block & block )
 {
-  if ( file == nullptr || gzeof( file ) )
+  if ( file == nullptr || gzeof( file ) ) {
     return false;
+  }
 
   block.length = bgl_readnum( 1 );
   block.type   = block.length & 0xf;
-  if ( block.type == 4 )
+  if ( block.type == 4 ) {
     return false; // end of file marker
+  }
   block.length >>= 4;
   block.length = block.length < 4 ? bgl_readnum( block.length + 1 ) : block.length - 4;
   if ( block.length ) {
     block.data = (char *)malloc( block.length );
-    if ( !block.data )
+    if ( !block.data ) {
       throw exAllocation();
+    }
 
     unsigned res = gzread( file, block.data, block.length );
     if ( block.length != res ) {
@@ -159,24 +164,27 @@ unsigned int Babylon::bgl_readnum( int bytes )
   unsigned char buf[ 4 ];
   unsigned val = 0;
 
-  if ( bytes < 1 || bytes > 4 )
+  if ( bytes < 1 || bytes > 4 ) {
     return 0;
+  }
 
   if ( const int res = gzread( file, buf, bytes ); res != bytes ) {
     gzclearerr( file );
     return 4; // Read error - return end of file marker
   }
 
-  for ( int i = 0; i < bytes; i++ )
+  for ( int i = 0; i < bytes; i++ ) {
     val = ( val << 8 ) | buf[ i ];
+  }
   return val;
 }
 
 
 bool Babylon::read( const std::string & source_charset, const std::string & target_charset )
 {
-  if ( file == nullptr )
+  if ( file == nullptr ) {
     return false;
+  }
 
   bgl_block block;
   unsigned int pos;
@@ -198,10 +206,12 @@ bool Babylon::read( const std::string & source_charset, const std::string & targ
         switch ( block.data[ 0 ] ) {
           case 8:
             type = (unsigned int)block.data[ 2 ];
-            if ( type > 64 )
+            if ( type > 64 ) {
               type -= 65;
-            if ( type >= 14 )
+            }
+            if ( type >= 14 ) {
               type = 0;
+            }
             m_defaultCharset = bgl_charset[ type ];
             break;
           default:
@@ -220,26 +230,30 @@ bool Babylon::read( const std::string & source_charset, const std::string & targ
         switch ( block.data[ 1 ] ) {
           case 1:
             headword.reserve( block.length - 2 );
-            for ( unsigned int a = 0; a < block.length - 2; a++ )
+            for ( unsigned int a = 0; a < block.length - 2; a++ ) {
               headword += block.data[ pos++ ];
+            }
             m_title = headword;
             break;
           case 2:
             headword.reserve( block.length - 2 );
-            for ( unsigned int a = 0; a < block.length - 2; a++ )
+            for ( unsigned int a = 0; a < block.length - 2; a++ ) {
               headword += block.data[ pos++ ];
+            }
             m_author = headword;
             break;
           case 3:
             headword.reserve( block.length - 2 );
-            for ( unsigned int a = 0; a < block.length - 2; a++ )
+            for ( unsigned int a = 0; a < block.length - 2; a++ ) {
               headword += block.data[ pos++ ];
+            }
             m_email = headword;
             break;
           case 4:
             headword.reserve( block.length - 2 );
-            for ( unsigned int a = 0; a < block.length - 2; a++ )
+            for ( unsigned int a = 0; a < block.length - 2; a++ ) {
               headword += block.data[ pos++ ];
+            }
             m_copyright = headword;
             break;
           case 7:
@@ -268,26 +282,33 @@ bool Babylon::read( const std::string & source_charset, const std::string & targ
             memcpy( &icon.front(), &( block.data[ 2 ] ), icon.size() );
             break;
           case 17:
-            if ( block.length >= 5 && ( (unsigned char)block.data[ 4 ] & 0x80 ) != 0 )
+            if ( block.length >= 5 && ( (unsigned char)block.data[ 4 ] & 0x80 ) != 0 ) {
               isUtf8File = true;
+            }
             break;
           case 26:
             type = (unsigned int)block.data[ 2 ];
-            if ( type > 64 )
+            if ( type > 64 ) {
               type -= 65;
-            if ( type >= 14 )
+            }
+            if ( type >= 14 ) {
               type = 0;
-            if ( m_sourceCharset.empty() )
+            }
+            if ( m_sourceCharset.empty() ) {
               m_sourceCharset = bgl_charset[ type ];
+            }
             break;
           case 27:
             type = (unsigned int)block.data[ 2 ];
-            if ( type > 64 )
+            if ( type > 64 ) {
               type -= 65;
-            if ( type >= 14 )
+            }
+            if ( type >= 14 ) {
               type = 0;
-            if ( m_targetCharset.empty() )
+            }
+            if ( m_targetCharset.empty() ) {
               m_targetCharset = bgl_charset[ type ];
+            }
             break;
           default:
             break;
@@ -295,8 +316,9 @@ bool Babylon::read( const std::string & source_charset, const std::string & targ
         break;
       default:;
     }
-    if ( block.length )
+    if ( block.length ) {
       free( block.data );
+    }
   }
   gzseek( file, 0, SEEK_SET );
 
@@ -344,16 +366,19 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
     switch ( block.type ) {
       case 2: {
         // the block data may have length==0
-        if ( block.length == 0 )
+        if ( block.length == 0 ) {
           break;
+        }
         pos = 0;
         len = (unsigned char)block.data[ pos++ ];
-        if ( pos + len > block.length )
+        if ( pos + len > block.length ) {
           break;
+        }
         std::string filename( block.data + pos, len );
         pos += len;
-        if ( resourceHandler )
+        if ( resourceHandler ) {
           resourceHandler->handleBabylonResource( filename, block.data + pos, block.length - pos );
+        }
         break;
       }
       case 1:
@@ -371,54 +396,64 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
         // Headword
         if ( block.type == 11 ) {
           pos = 1;
-          if ( pos + 4 > block.length )
+          if ( pos + 4 > block.length ) {
             break;
+          }
           len = qFromBigEndian( *reinterpret_cast< quint32 * >( block.data + pos ) );
           pos += 4;
         }
         else {
-          if ( pos + 1 > block.length )
+          if ( pos + 1 > block.length ) {
             break;
+          }
           len = (unsigned char)block.data[ pos++ ];
         }
 
-        if ( pos + len > block.length )
+        if ( pos + len > block.length ) {
           break;
+        }
 
         headword.reserve( len );
-        for ( unsigned int a = 0; a < len; a++ )
+        for ( unsigned int a = 0; a < len; a++ ) {
           headword += block.data[ pos++ ];
+        }
 
         convertToUtf8( headword, BGL_SOURCE_CHARSET );
 
         // Try to repair malformed headwords
-        if ( RX::Html::containHtmlEntity( headword ) )
+        if ( RX::Html::containHtmlEntity( headword ) ) {
           headword = Html::unescapeUtf8( headword );
+        }
 
         if ( block.type == 11 ) {
           // Alternate forms
-          if ( pos + 4 >= block.length )
+          if ( pos + 4 >= block.length ) {
             break;
+          }
 
           alts_num = qFromBigEndian( *reinterpret_cast< quint32 * >( block.data + pos ) );
           pos += 4;
 
           for ( unsigned j = 0; j < alts_num; j++ ) {
-            if ( pos + 4 > block.length )
+            if ( pos + 4 > block.length ) {
               break;
+            }
             len = qFromBigEndian( *reinterpret_cast< quint32 * >( block.data + pos ) );
             pos += 4;
 
-            if ( pos + len >= block.length )
+            if ( pos + len >= block.length ) {
               break;
+            }
             alternate.reserve( len );
-            for ( unsigned int a = 0; a < len; a++ )
+            for ( unsigned int a = 0; a < len; a++ ) {
               alternate += block.data[ pos++ ];
+            }
             convertToUtf8( alternate, BGL_SOURCE_CHARSET );
 
             // Try to repair malformed forms
-            if ( RX::Html::containHtmlEntity( alternate ) )
+            if ( RX::Html::containHtmlEntity( alternate ) ) {
               alternate = Html::unescapeUtf8( alternate );
+            }
 
             alternates.push_back( alternate );
             alternate.clear();
@@ -428,8 +463,9 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
         // Definition
 
         if ( block.type == 11 ) {
-          if ( pos + 4 > block.length )
+          if ( pos + 4 > block.length ) {
             break;
+          }
           len = qFromBigEndian( *reinterpret_cast< quint32 * >( block.data + pos ) );
           pos += 4;
         }
@@ -438,8 +474,9 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
           pos += 2;
         }
 
-        if ( pos + len > block.length )
+        if ( pos + len > block.length ) {
           break;
+        }
 
         definition.reserve( len );
 
@@ -520,8 +557,9 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
                 transcription = std::string( block.data + pos + 3, length );
               }
             }
-            else
+            else {
               transcription = std::string( block.data + pos + 3, length );
+            }
 
             pos += length + 3;
             a += length + 2;
@@ -548,8 +586,9 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
                 transcription = std::string( block.data + pos + 4, length );
               }
             }
-            else
+            else {
               transcription = std::string( block.data + pos + 4, length );
+            }
 
             pos += length + 4;
             a += length + 3;
@@ -621,25 +660,30 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
           }
         }
         convertToUtf8( definition, BGL_TARGET_CHARSET );
-        if ( !transcription.empty() )
+        if ( !transcription.empty() ) {
           definition = std::string( "<span class=\"bgltrn\">" ) + transcription + "</span>" + definition;
+        }
 
-        if ( displayedHeadword.size() )
+        if ( displayedHeadword.size() ) {
           convertToUtf8( displayedHeadword, BGL_TARGET_CHARSET );
+        }
 
         // Alternate forms
         while ( pos < block.length ) {
           len = (unsigned char)block.data[ pos++ ];
-          if ( pos + len > block.length )
+          if ( pos + len > block.length ) {
             break;
+          }
           alternate.reserve( len );
-          for ( unsigned int a = 0; a < len; a++ )
+          for ( unsigned int a = 0; a < len; a++ ) {
             alternate += block.data[ pos++ ];
+          }
           convertToUtf8( alternate, BGL_SOURCE_CHARSET );
 
           // Try to repair malformed forms
-          if ( RX::Html::containHtmlEntity( alternate ) )
+          if ( RX::Html::containHtmlEntity( alternate ) ) {
             alternate = Html::unescapeUtf8( alternate );
+          }
 
           alternates.push_back( alternate );
           alternate.clear();
@@ -652,11 +696,13 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
           // as some kind of an identifier instead of being an actual headword)
           int totalDigits = 0;
 
-          for ( char const * p = headword.c_str(); *p; ++p )
+          for ( char const * p = headword.c_str(); *p; ++p ) {
             if ( *p >= '0' && *p <= '9' ) {
-              if ( ++totalDigits > 1 )
+              if ( ++totalDigits > 1 ) {
                 break;
+              }
             }
+          }
 
           if ( totalDigits > 1 ) {
             // Ok, let's add it.
@@ -665,11 +711,13 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
             if ( displayedHeadword.find( '<' ) != string::npos || displayedHeadword.find( '&' ) != string::npos ) {
               string result = Html::unescapeUtf8( displayedHeadword );
 
-              if ( result != headword )
+              if ( result != headword ) {
                 alternates.push_back( result );
+              }
             }
-            else
+            else {
               alternates.push_back( displayedHeadword );
+            }
           }
         }
 
@@ -680,21 +728,24 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
 
         entry.alternates = alternates;
 
-        if ( block.length )
+        if ( block.length ) {
           free( block.data );
+        }
 
         // Some dictionaries can in fact have an empty headword, so we
         // make it non-empty here to differentiate between the end of entries.
-        if ( entry.headword.empty() )
+        if ( entry.headword.empty() ) {
           entry.headword += ' ';
+        }
 
         return entry;
 
         break;
       default:;
     }
-    if ( block.length )
+    if ( block.length ) {
       free( block.data );
+    }
   }
   entry.headword = "";
   return entry;
@@ -703,39 +754,49 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
 
 void Babylon::convertToUtf8( std::string & s, unsigned int type )
 {
-  if ( s.size() < 1 )
+  if ( s.size() < 1 ) {
     return;
-  if ( type > 2 )
+  }
+  if ( type > 2 ) {
     return;
+  }
 
-  if ( s.compare( 0, 13, "<charset c=U>" ) == 0 )
+  if ( s.compare( 0, 13, "<charset c=U>" ) == 0 ) {
     return;
+  }
 
   std::string charset;
   switch ( type ) {
     case BGL_DEFAULT_CHARSET:
-      if ( !m_defaultCharset.empty() )
+      if ( !m_defaultCharset.empty() ) {
         charset = m_defaultCharset;
-      else
+      }
+      else {
         charset = m_sourceCharset;
+      }
       break;
     case BGL_SOURCE_CHARSET:
-      if ( !m_sourceCharset.empty() )
+      if ( !m_sourceCharset.empty() ) {
         charset = m_sourceCharset;
-      else
+      }
+      else {
         charset = m_defaultCharset;
+      }
       break;
     case BGL_TARGET_CHARSET:
-      if ( !m_targetCharset.empty() )
+      if ( !m_targetCharset.empty() ) {
         charset = m_targetCharset;
-      else
+      }
+      else {
         charset = m_defaultCharset;
+      }
       break;
     default:;
   }
 
-  if ( charset == "UTF-8" )
+  if ( charset == "UTF-8" ) {
     return;
+  }
 
   Iconv conv_( charset.c_str() );
 

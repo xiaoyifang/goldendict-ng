@@ -68,8 +68,9 @@ void QHotkeyApplication::removeDataCommiter( DataCommitter & d )
 
 void QHotkeyApplication::hotkeyAppCommitData( QSessionManager & mgr )
 {
-  for ( int x = 0; x < dataCommitters.size(); ++x )
+  for ( int x = 0; x < dataCommitters.size(); ++x ) {
     dataCommitters[ x ]->commitData( mgr );
+  }
 }
 
 void QHotkeyApplication::hotkeyAppSaveState( QSessionManager & mgr )
@@ -79,14 +80,16 @@ void QHotkeyApplication::hotkeyAppSaveState( QSessionManager & mgr )
 
 void QHotkeyApplication::registerWrapper( HotkeyWrapper * wrapper )
 {
-  if ( wrapper && !hotkeyWrappers.contains( wrapper ) )
+  if ( wrapper && !hotkeyWrappers.contains( wrapper ) ) {
     hotkeyWrappers.append( wrapper );
+  }
 }
 
 void QHotkeyApplication::unregisterWrapper( HotkeyWrapper * wrapper )
 {
-  if ( wrapper && hotkeyWrappers.contains( wrapper ) )
+  if ( wrapper && hotkeyWrappers.contains( wrapper ) ) {
     hotkeyWrappers.removeAll( wrapper );
+  }
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -556,8 +559,8 @@ void HotkeyWrapper::init()
   lMetaCode = XKeysymToKeycode( display, XK_Super_L );
   rMetaCode = XKeysymToKeycode( display, XK_Super_R );
 
-  cCode = XKeysymToKeycode( display, XK_c );
-  insertCode = XKeysymToKeycode( display, XK_Insert );
+  cCode        = XKeysymToKeycode( display, XK_c );
+  insertCode   = XKeysymToKeycode( display, XK_Insert );
   kpInsertCode = XKeysymToKeycode( display, XK_KP_Insert );
 
   currentModifiers = 0;
@@ -576,8 +579,8 @@ void HotkeyWrapper::init()
   }
 
   recordRange->device_events.first = KeyPress;
-  recordRange->device_events.last = KeyRelease;
-  recordClientSpec = XRecordAllClients;
+  recordRange->device_events.last  = KeyRelease;
+  recordClientSpec                 = XRecordAllClients;
 
   recordContext = XRecordCreateContext( display, 0, &recordClientSpec, 1, &recordRange, 1 );
 
@@ -660,7 +663,7 @@ bool HotkeyWrapper::setGlobalKey( int key, int key2, Qt::KeyboardModifiers modif
   if ( !key )
     return false; // We don't monitor empty combinations
 
-  int vk = nativeKey( key );
+  int vk  = nativeKey( key );
   int vk2 = key2 ? nativeKey( key2 ) : 0;
 
   quint32 mod = 0;
@@ -718,7 +721,7 @@ public:
 
   X11GrabUngrabErrorHandler()
   {
-    error = false;
+    error                 = false;
     previousErrorHandler_ = XSetErrorHandler( grab_ungrab_error_handler );
   }
 

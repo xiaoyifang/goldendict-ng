@@ -14,8 +14,9 @@ size_t encode( wchar const * in, size_t inSize, char * out_ )
   unsigned char * out = (unsigned char *)out_;
 
   while ( inSize-- ) {
-    if ( *in < 0x80 )
+    if ( *in < 0x80 ) {
       *out++ = *in++;
+    }
     else if ( *in < 0x800 ) {
       *out++ = 0xC0 | ( *in >> 6 );
       *out++ = 0x80 | ( *in++ & 0x3F );
@@ -49,59 +50,69 @@ long decode( char const * in_, size_t inSize, wchar * out_ )
         if ( *in & 0x20 ) {
           if ( *in & 0x10 ) {
             // Four-byte sequence
-            if ( *in & 8 )
+            if ( *in & 8 ) {
               // This can't be
               return -1;
+            }
 
-            if ( inSize < 3 )
+            if ( inSize < 3 ) {
               return -1;
+            }
 
             inSize -= 3;
 
             result = ( (wchar)*in++ & 7 ) << 18;
 
-            if ( ( *in & 0xC0 ) != 0x80 )
+            if ( ( *in & 0xC0 ) != 0x80 ) {
               return -1;
+            }
             result |= ( (wchar)*in++ & 0x3F ) << 12;
 
-            if ( ( *in & 0xC0 ) != 0x80 )
+            if ( ( *in & 0xC0 ) != 0x80 ) {
               return -1;
+            }
             result |= ( (wchar)*in++ & 0x3F ) << 6;
 
-            if ( ( *in & 0xC0 ) != 0x80 )
+            if ( ( *in & 0xC0 ) != 0x80 ) {
               return -1;
+            }
             result |= (wchar)*in++ & 0x3F;
           }
           else {
             // Three-byte sequence
 
-            if ( inSize < 2 )
+            if ( inSize < 2 ) {
               return -1;
+            }
 
             inSize -= 2;
 
             result = ( (wchar)*in++ & 0xF ) << 12;
 
-            if ( ( *in & 0xC0 ) != 0x80 )
+            if ( ( *in & 0xC0 ) != 0x80 ) {
               return -1;
+            }
             result |= ( (wchar)*in++ & 0x3F ) << 6;
 
-            if ( ( *in & 0xC0 ) != 0x80 )
+            if ( ( *in & 0xC0 ) != 0x80 ) {
               return -1;
+            }
             result |= (wchar)*in++ & 0x3F;
           }
         }
         else {
           // Two-byte sequence
-          if ( !inSize )
+          if ( !inSize ) {
             return -1;
+          }
 
           --inSize;
 
           result = ( (wchar)*in++ & 0x1F ) << 6;
 
-          if ( ( *in & 0xC0 ) != 0x80 )
+          if ( ( *in & 0xC0 ) != 0x80 ) {
             return -1;
+          }
           result |= (wchar)*in++ & 0x3F;
         }
       }
@@ -110,9 +121,10 @@ long decode( char const * in_, size_t inSize, wchar * out_ )
         return -1;
       }
     }
-    else
+    else {
       // One-byte encoding
       result = *in++;
+    }
 
     *out++ = result;
   }
@@ -122,8 +134,9 @@ long decode( char const * in_, size_t inSize, wchar * out_ )
 
 string encode( wstring const & in ) noexcept
 {
-  if ( in.empty() )
+  if ( in.empty() ) {
     return {};
+  }
 
   std::vector< char > buffer( in.size() * 4 );
 
@@ -132,15 +145,17 @@ string encode( wstring const & in ) noexcept
 
 wstring decode( string const & in )
 {
-  if ( in.empty() )
+  if ( in.empty() ) {
     return {};
+  }
 
   std::vector< wchar > buffer( in.size() );
 
   long result = decode( in.data(), in.size(), &buffer.front() );
 
-  if ( result < 0 )
+  if ( result < 0 ) {
     throw exCantDecode( in );
+  }
 
   return wstring( &buffer.front(), result );
 }
@@ -166,8 +181,9 @@ int findFirstLinePosition( char * s1, int s1length, const char * s2, int s2lengt
 {
   char * pos = std::search( s1, s1 + s1length, s2, s2 + s2length );
 
-  if ( pos == s1 + s1length )
+  if ( pos == s1 + s1length ) {
     return pos - s1;
+  }
 
   //the line size.
   return pos - s1 + s2length;
@@ -200,22 +216,30 @@ char const * getEncodingNameFor( Encoding e )
 Encoding getEncodingForName( const QByteArray & _name )
 {
   const auto name = _name.toUpper();
-  if ( name == "UTF-32LE" )
+  if ( name == "UTF-32LE" ) {
     return Utf32LE;
-  if ( name == "UTF-32BE" )
+  }
+  if ( name == "UTF-32BE" ) {
     return Utf32BE;
-  if ( name == "UTF-16LE" )
+  }
+  if ( name == "UTF-16LE" ) {
     return Utf16LE;
-  if ( name == "UTF-16BE" )
+  }
+  if ( name == "UTF-16BE" ) {
     return Utf16BE;
-  if ( name == "WINDOWS-1252" )
+  }
+  if ( name == "WINDOWS-1252" ) {
     return Windows1252;
-  if ( name == "WINDOWS-1251" )
+  }
+  if ( name == "WINDOWS-1251" ) {
     return Windows1251;
-  if ( name == "UTF-8" )
+  }
+  if ( name == "UTF-8" ) {
     return Utf8;
-  if ( name == "WINDOWS-1250" )
+  }
+  if ( name == "WINDOWS-1250" ) {
     return Windows1250;
+  }
   return Utf8;
 }
 

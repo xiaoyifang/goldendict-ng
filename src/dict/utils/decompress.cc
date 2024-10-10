@@ -22,14 +22,16 @@ QByteArray zlibDecompress( const char * bufptr, unsigned length )
       zs.avail_out = CHUNK_SIZE;
       res          = inflate( &zs, Z_SYNC_FLUSH );
       str.append( buf, CHUNK_SIZE - zs.avail_out );
-      if ( res != Z_OK && res != Z_STREAM_END )
+      if ( res != Z_OK && res != Z_STREAM_END ) {
         break;
+      }
     }
   }
 
   inflateEnd( &zs );
-  if ( res != Z_STREAM_END )
+  if ( res != Z_STREAM_END ) {
     str.clear();
+  }
   return str;
 }
 
@@ -57,13 +59,15 @@ string decompressBzip2( const char * bufptr, unsigned length )
       zs.total_out_lo32 = length;
       res               = BZ2_bzDecompress( &zs );
       str.append( buf, CHUNK_SIZE - zs.avail_out );
-      if ( res != BZ_OK && res != BZ_STREAM_END )
+      if ( res != BZ_OK && res != BZ_STREAM_END ) {
         break;
+      }
     }
   }
   BZ2_bzDecompressEnd( &zs );
-  if ( res != BZ_STREAM_END )
+  if ( res != BZ_STREAM_END ) {
     str.clear();
+  }
   return str;
 }
 
@@ -89,10 +93,12 @@ string decompressLzma2( const char * bufptr, unsigned length, bool raw_decoder )
   }
 
 
-  if ( raw_decoder )
+  if ( raw_decoder ) {
     res = lzma_raw_decoder( &strm, filters );
-  else
+  }
+  else {
     res = lzma_stream_decoder( &strm, UINT64_MAX, 0 );
+  }
 
   if ( res == LZMA_OK ) {
 
@@ -101,12 +107,14 @@ string decompressLzma2( const char * bufptr, unsigned length, bool raw_decoder )
       strm.avail_out = CHUNK_SIZE;
       res            = lzma_code( &strm, LZMA_RUN );
       str.append( buf, CHUNK_SIZE - strm.avail_out );
-      if ( res != LZMA_OK && res != LZMA_STREAM_END )
+      if ( res != LZMA_OK && res != LZMA_STREAM_END ) {
         break;
+      }
     }
     lzma_end( &strm );
-    if ( res != LZMA_STREAM_END )
+    if ( res != LZMA_STREAM_END ) {
       str.clear();
+    }
   }
 
   return str;

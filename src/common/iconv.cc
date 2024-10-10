@@ -14,8 +14,9 @@ char const * const Iconv::Utf8    = "UTF-8";
 Iconv::Iconv( char const * from ):
   state( iconv_open( Utf8, from ) )
 {
-  if ( state == (iconv_t)-1 )
+  if ( state == (iconv_t)-1 ) {
     throw exCantInit( strerror( errno ) );
+  }
 }
 
 Iconv::~Iconv()

@@ -32,13 +32,15 @@ DictHeadwords::DictHeadwords( QWidget * parent, Config::Class & cfg_, Dictionary
 
   const bool fromMainWindow = parent->objectName() == "MainWindow";
 
-  if ( fromMainWindow )
+  if ( fromMainWindow ) {
     setAttribute( Qt::WA_DeleteOnClose, false );
+  }
 
   setWindowFlags( windowFlags() & ~Qt::WindowContextHelpButtonHint );
 
-  if ( cfg.headwordsDialog.headwordsDialogGeometry.size() > 0 )
+  if ( cfg.headwordsDialog.headwordsDialogGeometry.size() > 0 ) {
     restoreGeometry( cfg.headwordsDialog.headwordsDialogGeometry );
+  }
 
   ui.searchModeCombo->addItem( tr( "Text" ), SearchType::FixedString );
   ui.searchModeCombo->addItem( tr( "Wildcards" ), SearchType::Wildcard );
@@ -69,8 +71,9 @@ DictHeadwords::DictHeadwords( QWidget * parent, Config::Class & cfg_, Dictionary
   ui.headersListView->setUniformItemSizes( true );
 
   delegate = new WordListItemDelegate( ui.headersListView->itemDelegate() );
-  if ( delegate )
+  if ( delegate ) {
     ui.headersListView->setItemDelegate( delegate );
+  }
 
   ui.autoApply->setChecked( cfg.headwordsDialog.autoApply );
 
@@ -117,8 +120,9 @@ DictHeadwords::DictHeadwords( QWidget * parent, Config::Class & cfg_, Dictionary
 
 DictHeadwords::~DictHeadwords()
 {
-  if ( delegate )
+  if ( delegate ) {
     delegate->deleteLater();
+  }
 }
 
 void DictHeadwords::setup( Dictionary::Class * dict_ )
@@ -163,8 +167,8 @@ void DictHeadwords::setup( Dictionary::Class * dict_ )
 
 void DictHeadwords::savePos()
 {
-  cfg.headwordsDialog.searchMode = ui.searchModeCombo->currentIndex();
-  cfg.headwordsDialog.matchCase  = ui.matchCase->isChecked();
+  cfg.headwordsDialog.searchMode              = ui.searchModeCombo->currentIndex();
+  cfg.headwordsDialog.matchCase               = ui.matchCase->isChecked();
   cfg.headwordsDialog.autoApply               = ui.autoApply->isChecked();
   cfg.headwordsDialog.headwordsDialogGeometry = saveGeometry();
 }
@@ -179,8 +183,9 @@ bool DictHeadwords::eventFilter( QObject * obj, QEvent * ev )
     }
     else if ( kev->key() == Qt::Key_Up ) {
       auto index = ui.headersListView->currentIndex();
-      if ( index.row() == 0 )
+      if ( index.row() == 0 ) {
         return true;
+      }
       auto preIndex = ui.headersListView->model()->index( index.row() - 1, index.column() );
       ui.headersListView->setCurrentIndex( preIndex );
       return true;
@@ -188,8 +193,9 @@ bool DictHeadwords::eventFilter( QObject * obj, QEvent * ev )
     else if ( kev->key() == Qt::Key_Down ) {
       auto index = ui.headersListView->currentIndex();
       //last row.
-      if ( index.row() == ui.headersListView->model()->rowCount() - 1 )
+      if ( index.row() == ui.headersListView->model()->rowCount() - 1 ) {
         return true;
+      }
       auto preIndex = ui.headersListView->model()->index( index.row() + 1, index.column() );
       ui.headersListView->setCurrentIndex( preIndex );
       return true;
@@ -218,8 +224,9 @@ void DictHeadwords::exportButtonClicked()
 void DictHeadwords::filterChangedInternal()
 {
   // emit signal in async manner, to avoid UI slowdown
-  if ( ui.autoApply->isChecked() )
+  if ( ui.autoApply->isChecked() ) {
     QTimer::singleShot( 100, this, &DictHeadwords::filterChanged );
+  }
 }
 
 QRegularExpression DictHeadwords::getFilterRegex() const
@@ -228,8 +235,9 @@ QRegularExpression DictHeadwords::getFilterRegex() const
     static_cast< SearchType >( ui.searchModeCombo->itemData( ui.searchModeCombo->currentIndex() ).toInt() );
 
   QRegularExpression::PatternOptions options = QRegularExpression::UseUnicodePropertiesOption;
-  if ( !ui.matchCase->isChecked() )
+  if ( !ui.matchCase->isChecked() ) {
     options |= QRegularExpression::CaseInsensitiveOption;
+  }
 
   QString pattern;
   switch ( syntax ) {
@@ -307,12 +315,14 @@ void DictHeadwords::exportAllWords( QProgressDialog & progress, QTextStream & ou
 
   int totalCount = 0;
   for ( int i = 0; i < headwordsNumber && i < model->wordCount(); ++i ) {
-    if ( progress.wasCanceled() )
+    if ( progress.wasCanceled() ) {
       break;
+    }
 
     QVariant value = model->getRow( i );
-    if ( !value.canConvert< QString >() )
+    if ( !value.canConvert< QString >() ) {
       continue;
+    }
 
     allHeadwords.insert( value.toString() );
   }
@@ -323,22 +333,23 @@ void DictHeadwords::exportAllWords( QProgressDialog & progress, QTextStream & ou
     writeWordToFile( out, item );
   }
 
-    // continue to write the remaining headword
-    int nodeIndex  = model->getCurrentIndex();
-    auto headwords = model->getRemainRows( nodeIndex );
-    while ( !headwords.isEmpty() ) {
-      if ( progress.wasCanceled() )
-        break;
-
-      for ( const auto & item : headwords ) {
-        progress.setValue( totalCount++ );
-
-        writeWordToFile( out, item );
-      }
-
-
-      headwords = model->getRemainRows( nodeIndex );
+  // continue to write the remaining headword
+  int nodeIndex  = model->getCurrentIndex();
+  auto headwords = model->getRemainRows( nodeIndex );
+  while ( !headwords.isEmpty() ) {
+    if ( progress.wasCanceled() ) {
+      break;
     }
+
+    for ( const auto & item : headwords ) {
+      progress.setValue( totalCount++ );
+
+      writeWordToFile( out, item );
+    }
+
+
+    headwords = model->getRemainRows( nodeIndex );
+  }
 }
 
 void DictHeadwords::loadRegex( QProgressDialog & progress, QTextStream & out )
@@ -350,12 +361,14 @@ void DictHeadwords::loadRegex( QProgressDialog & progress, QTextStream & out )
 
   int totalCount = 0;
   for ( int i = 0; i < model->wordCount(); ++i ) {
-    if ( progress.wasCanceled() )
+    if ( progress.wasCanceled() ) {
       break;
+    }
 
     QVariant value = model->getRow( i );
-    if ( !value.canConvert< QString >() )
+    if ( !value.canConvert< QString >() ) {
       continue;
+    }
 
     allHeadwords.insert( value.toString() );
   }
@@ -371,20 +384,23 @@ void DictHeadwords::loadRegex( QProgressDialog & progress, QTextStream & out )
 void DictHeadwords::saveHeadersToFile()
 {
   QString exportPath;
-  if ( cfg.headwordsDialog.headwordsExportPath.isEmpty() )
+  if ( cfg.headwordsDialog.headwordsExportPath.isEmpty() ) {
     exportPath = QDir::homePath();
+  }
   else {
     exportPath = QDir::fromNativeSeparators( cfg.headwordsDialog.headwordsExportPath );
-    if ( !QDir( exportPath ).exists() )
+    if ( !QDir( exportPath ).exists() ) {
       exportPath = QDir::homePath();
+    }
   }
 
   QString const fileName = QFileDialog::getSaveFileName( this,
                                                          tr( "Save headwords to file" ),
                                                          exportPath,
                                                          tr( "Text files (*.txt);;All files (*.*)" ) );
-  if ( fileName.size() == 0 )
+  if ( fileName.size() == 0 ) {
     return;
+  }
 
   QFile file( fileName );
 

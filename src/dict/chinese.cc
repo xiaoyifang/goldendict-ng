@@ -63,8 +63,9 @@ CharacterConversionDictionary::CharacterConversionDictionary( std::string const 
 CharacterConversionDictionary::~CharacterConversionDictionary()
 {
   // #ifdef Q_OS_MAC
-  if ( converter != NULL && converter != reinterpret_cast< opencc_t >( -1 ) )
+  if ( converter != NULL && converter != reinterpret_cast< opencc_t >( -1 ) ) {
     opencc_close( converter );
+  }
   // #else
   //   if ( converter != NULL )
   //     delete converter;
@@ -89,8 +90,9 @@ std::vector< gd::wstring > CharacterConversionDictionary::getAlternateWritings( 
           output = std::string( tmp );
           opencc_convert_utf8_free( tmp );
         }
-        else
+        else {
           gdWarning( "OpenCC: conversion failed %s\n", opencc_error() );
+        }
       }
       // #else
       //       output = converter->Convert( input );
@@ -101,8 +103,9 @@ std::vector< gd::wstring > CharacterConversionDictionary::getAlternateWritings( 
       gdWarning( "OpenCC: conversion failed %s\n", ex.what() );
     }
 
-    if ( !result.empty() && result != folded )
+    if ( !result.empty() && result != folded ) {
       results.push_back( result );
+    }
   }
 
   return results;
@@ -117,8 +120,9 @@ std::vector< sptr< Dictionary::Class > > makeDictionaries( Config::Chinese const
   QString configDir = "";
 #else
   QString configDir = Config::getOpenCCDir();
-  if ( !configDir.isEmpty() )
+  if ( !configDir.isEmpty() ) {
     configDir += "/";
+  }
 #endif
 
   if ( cfg.enable ) {

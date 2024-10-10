@@ -115,8 +115,9 @@ void LoadDictionaries::run()
     //handle the custom dictionary name&fts option
     for ( const auto & dict : dictionaries ) {
       auto baseDir = dict->getContainingFolder();
-      if ( baseDir.isEmpty() )
+      if ( baseDir.isEmpty() ) {
         continue;
+      }
 
       auto filePath = Utils::Path::combine( baseDir, "metadata.toml" );
 
@@ -155,12 +156,14 @@ void LoadDictionaries::handlePath( Config::Path const & path )
     if ( path.recursive && i->isDir() ) {
       // Make sure the path doesn't look like with dsl resources
       if ( !fullName.endsWith( ".dsl.files", Qt::CaseInsensitive )
-           && !fullName.endsWith( ".dsl.dz.files", Qt::CaseInsensitive ) )
+           && !fullName.endsWith( ".dsl.dz.files", Qt::CaseInsensitive ) ) {
         handlePath( Config::Path( fullName, true ) );
+      }
     }
 
-    if ( !i->isDir() )
+    if ( !i->isDir() ) {
       allFiles.push_back( QDir::toNativeSeparators( fullName ).toStdString() );
+    }
   }
 
   addDicts( Bgl::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
@@ -248,16 +251,19 @@ void loadDictionaries( QWidget * parent,
   addDicts( CustomTranslit::makeDictionaries( cfg.transliteration.customTrans ) );
 
   // Make Russian transliteration
-  if ( cfg.transliteration.enableRussianTransliteration )
+  if ( cfg.transliteration.enableRussianTransliteration ) {
     dictionaries.push_back( RussianTranslit::makeDictionary() );
+  }
 
   // Make German transliteration
-  if ( cfg.transliteration.enableGermanTransliteration )
+  if ( cfg.transliteration.enableGermanTransliteration ) {
     dictionaries.push_back( GermanTranslit::makeDictionary() );
+  }
 
   // Make Greek transliteration
-  if ( cfg.transliteration.enableGreekTransliteration )
+  if ( cfg.transliteration.enableGreekTransliteration ) {
     dictionaries.push_back( GreekTranslit::makeDictionary() );
+  }
 
   // Make Belarusian transliteration
   if ( cfg.transliteration.enableBelarusianTransliteration ) {
@@ -296,12 +302,14 @@ void loadDictionaries( QWidget * parent,
 
   // Run deferred inits
 
-  if ( doDeferredInit_ )
+  if ( doDeferredInit_ ) {
     doDeferredInit( dictionaries );
+  }
 }
 
 void doDeferredInit( std::vector< sptr< Dictionary::Class > > & dictionaries )
 {
-  for ( const auto & dictionarie : dictionaries )
+  for ( const auto & dictionarie : dictionaries ) {
     dictionarie->deferredInit();
+  }
 }

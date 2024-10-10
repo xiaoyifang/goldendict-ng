@@ -27,8 +27,9 @@ void WebMultimediaDownload::cancel()
 
 void WebMultimediaDownload::replyFinished( QNetworkReply * r )
 {
-  if ( !r || r != reply )
+  if ( !r || r != reply ) {
     return; // Not our reply
+  }
 
   if ( r->error() == QNetworkReply::NoError ) {
     // Check for redirect reply
@@ -62,8 +63,9 @@ void WebMultimediaDownload::replyFinished( QNetworkReply * r )
 
     hasAnyData = true;
   }
-  else
+  else {
     setErrorString( r->errorString() );
+  }
 
   disconnect( r, 0, 0, 0 );
   r->deleteLater();

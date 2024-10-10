@@ -120,8 +120,9 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest co
 
   auto dr = getResource( url, contentType );
 
-  if ( dr.get() )
+  if ( dr.get() ) {
     return new ArticleResourceReply( this, req, dr, contentType );
+  }
 
   //dr.get() can be null. code continue to execute.
 
@@ -214,8 +215,9 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( QUrl c
 
     contentType = "text/html";
 
-    if ( Utils::Url::queryItemValue( url, "blank" ) == "1" )
+    if ( Utils::Url::queryItemValue( url, "blank" ) == "1" ) {
       return articleMaker.makeEmptyPage();
+    }
 
     QString word = Utils::Url::queryItemValue( url, "word" ).trimmed();
 
@@ -243,8 +245,9 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( QUrl c
 
     bool ignoreDiacritics = Utils::Url::queryItemValue( url, "ignore_diacritics" ) == "1";
 
-    if ( groupIsValid && !word.isEmpty() ) // Require group and phrase to be passed
+    if ( groupIsValid && !word.isEmpty() ) { // Require group and phrase to be passed
       return articleMaker.makeDefinitionFor( word, group, contexts, mutedDicts, QStringList(), ignoreDiacritics );
+    }
   }
 
   if ( ( url.scheme() == "bres" || url.scheme() == "gdau" || url.scheme() == "gdvideo" || url.scheme() == "gico" )
@@ -253,12 +256,12 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( QUrl c
 
     QMimeType mineType = db.mimeTypeForUrl( url );
     contentType        = mineType.name();
-    string id = url.host().toStdString();
+    string id          = url.host().toStdString();
 
     bool search = ( id == "search" );
 
     if ( !search ) {
-      for ( const auto & dictionary : dictionaries )
+      for ( const auto & dictionary : dictionaries ) {
         if ( dictionary->getId() == id ) {
           if ( url.scheme() == "gico" ) {
             QByteArray bytes;
@@ -279,6 +282,7 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( QUrl c
             return {};
           }
         }
+      }
     }
   }
 
@@ -297,8 +301,9 @@ ArticleResourceReply::ArticleResourceReply( QObject * parent,
   setOpenMode( ReadOnly );
   setUrl( netReq.url() );
 
-  if ( contentType.size() )
+  if ( contentType.size() ) {
     setHeader( QNetworkRequest::ContentTypeHeader, contentType );
+  }
 
   connect( req.get(), &Dictionary::Request::updated, this, &ArticleResourceReply::reqUpdated );
 
@@ -345,8 +350,9 @@ qint64 ArticleResourceReply::bytesAvailable() const
 {
   qint64 const avail = req->dataSize();
 
-  if ( avail < 0 )
+  if ( avail < 0 ) {
     return 0;
+  }
 
   qint64 const availBytes = avail - alreadyRead + QNetworkReply::bytesAvailable();
   if ( availBytes == 0 && !req->isFinished() ) {
@@ -366,22 +372,25 @@ qint64 ArticleResourceReply::readData( char * out, qint64 maxSize )
 {
   // From the doc: "This function might be called with a maxSize of 0,
   // which can be used to perform post-reading operations".
-  if ( maxSize == 0 )
+  if ( maxSize == 0 ) {
     return 0;
+  }
 
   bool const finished = req->isFinished();
 
   qint64 const avail = req->dataSize();
 
-  if ( avail < 0 )
+  if ( avail < 0 ) {
     return finished ? -1 : 0;
+  }
 
 
   qint64 const left = avail - alreadyRead;
 
   qint64 const toRead = maxSize < left ? maxSize : left;
-  if ( !toRead && finished )
+  if ( !toRead && finished ) {
     return -1;
+  }
   GD_DPRINTF( "====reading  %d of (%lld) bytes . Finished: %d", (int)toRead, avail, finished );
 
   try {
@@ -393,10 +402,12 @@ qint64 ArticleResourceReply::readData( char * out, qint64 maxSize )
 
   alreadyRead += toRead;
 
-  if ( !toRead && finished )
+  if ( !toRead && finished ) {
     return -1;
-  else
+  }
+  else {
     return toRead;
+  }
 }
 
 void ArticleResourceReply::readyReadSlot()

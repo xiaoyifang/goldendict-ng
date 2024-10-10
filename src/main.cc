@@ -481,8 +481,9 @@ int main( int argc, char ** argv )
       wasMessage = true;
     }
 
-    if ( !wasMessage )
+    if ( !wasMessage ) {
       app.sendMessage( "bringToFront" );
+    }
 
     return 0; // Another instance is running
   }
@@ -507,8 +508,9 @@ int main( int argc, char ** argv )
         QHotkeyApplication::translate( "Main", "Error in configuration file. Continue with default settings?" ),
         QMessageBox::Yes | QMessageBox::No );
       mb.exec();
-      if ( mb.result() != QMessageBox::Yes )
+      if ( mb.result() != QMessageBox::Yes ) {
         return -1;
+      }
 
       QString configFile = Config::getConfigFileName();
       QFile::rename( configFile,
@@ -585,14 +587,17 @@ int main( int argc, char ** argv )
 
   QObject::connect( &app, &QtSingleApplication::messageReceived, &m, &MainWindow::messageFromAnotherInstanceReceived );
 
-  if ( gdcl.needSetGroup() )
+  if ( gdcl.needSetGroup() ) {
     m.setGroupByName( gdcl.getGroupName(), true );
+  }
 
-  if ( gdcl.needSetPopupGroup() )
+  if ( gdcl.needSetPopupGroup() ) {
     m.setGroupByName( gdcl.getPopupGroupName(), false );
+  }
 
-  if ( gdcl.needTranslateWord() )
+  if ( gdcl.needTranslateWord() ) {
     m.wordReceived( gdcl.wordToTranslate() );
+  }
 
 #ifdef Q_OS_UNIX
   // handle Unix's shutdown signals for graceful exit
@@ -604,8 +609,9 @@ int main( int argc, char ** argv )
 
   app.removeDataCommiter( m );
 
-  if ( logFilePtr->isOpen() )
+  if ( logFilePtr->isOpen() ) {
     logFilePtr->close();
+  }
 
   return r;
 }

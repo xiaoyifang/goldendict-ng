@@ -38,8 +38,9 @@ void HistoryPaneWidget::setUp( Config::Class * cfg, History * history, QMenu * m
   m_historyMenu = new QMenu( this );
   m_separator   = m_historyMenu->addSeparator();
   QListIterator< QAction * > actionsIter( menu->actions() );
-  while ( actionsIter.hasNext() )
+  while ( actionsIter.hasNext() ) {
     m_historyMenu->addAction( actionsIter.next() );
+  }
 
   // Make the history pane's titlebar
 
@@ -89,8 +90,9 @@ void HistoryPaneWidget::setUp( Config::Class * cfg, History * history, QMenu * m
 
 HistoryPaneWidget::~HistoryPaneWidget()
 {
-  if ( listItemDelegate )
+  if ( listItemDelegate ) {
     delete listItemDelegate;
+  }
 }
 
 void HistoryPaneWidget::copySelectedItems()
@@ -132,8 +134,9 @@ void HistoryPaneWidget::deleteSelectedItems()
   std::sort( idxsToDelete.begin(), idxsToDelete.end(), std::greater< int >() );
 
   QListIterator< int > idxs( idxsToDelete );
-  while ( idxs.hasNext() )
+  while ( idxs.hasNext() ) {
     m_history->removeItem( idxs.next() );
+  }
 
   if ( idxsToDelete.size() == 1 ) {
     // We've just removed a single entry,
@@ -183,8 +186,9 @@ void HistoryPaneWidget::onSelectionChanged( const QItemSelection & selection, co
 {
   Q_UNUSED( deselected );
 
-  if ( selection.empty() )
+  if ( selection.empty() ) {
     return;
+  }
 
   itemSelectionChanged = true;
   emitHistoryItemRequested( selection.front().topLeft() );

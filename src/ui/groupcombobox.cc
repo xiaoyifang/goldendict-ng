@@ -34,21 +34,24 @@ void GroupComboBox::fill( Instances::Groups const & groups )
 {
   unsigned prevId = 0;
 
-  if ( count() )
+  if ( count() ) {
     prevId = itemData( currentIndex() ).toUInt();
+  }
 
   clear();
 
-  for ( QMap< int, int >::iterator i = shortcuts.begin(); i != shortcuts.end(); ++i )
+  for ( QMap< int, int >::iterator i = shortcuts.begin(); i != shortcuts.end(); ++i ) {
     releaseShortcut( i.key() );
+  }
 
   shortcuts.clear();
 
   for ( unsigned x = 0; x < groups.size(); ++x ) {
     addItem( groups[ x ].makeIcon(), groups[ x ].name, groups[ x ].id );
 
-    if ( prevId == groups[ x ].id )
+    if ( prevId == groups[ x ].id ) {
       setCurrentIndex( x );
+    }
 
     // Create a shortcut
 
@@ -99,8 +102,9 @@ void GroupComboBox::setCurrentGroup( unsigned id )
 
 unsigned GroupComboBox::getCurrentGroup() const
 {
-  if ( !count() )
+  if ( !count() ) {
     return 0;
+  }
 
   return itemData( currentIndex() ).toUInt();
 }
@@ -112,20 +116,24 @@ void GroupComboBox::popupGroups()
 
 void GroupComboBox::selectNextGroup()
 {
-  if ( count() <= 1 )
+  if ( count() <= 1 ) {
     return;
+  }
   int n = currentIndex() + 1;
-  if ( n >= count() )
+  if ( n >= count() ) {
     n = 0;
+  }
   setCurrentIndex( n );
 }
 
 void GroupComboBox::selectPreviousGroup()
 {
-  if ( count() <= 1 )
+  if ( count() <= 1 ) {
     return;
+  }
   int n = currentIndex() - 1;
-  if ( n < 0 )
+  if ( n < 0 ) {
     n = count() - 1;
+  }
   setCurrentIndex( n );
 }

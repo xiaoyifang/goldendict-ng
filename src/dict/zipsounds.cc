@@ -80,16 +80,19 @@ wstring stripExtension( string const & str )
 
   if ( Filetype::isNameOfSound( str ) ) {
     wstring::size_type pos = name.rfind( L'.' );
-    if ( pos != wstring::npos )
+    if ( pos != wstring::npos ) {
       name.erase( pos );
+    }
 
     // Strip spaces at the end of name
     string::size_type n = name.length();
-    while ( n && name.at( n - 1 ) == L' ' )
+    while ( n && name.at( n - 1 ) == L' ' ) {
       n--;
+    }
 
-    if ( n != name.length() )
+    if ( n != name.length() ) {
       name.erase( n );
+    }
   }
   return name;
 }
@@ -185,12 +188,14 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const &
                                     // by only allowing them to appear once.
 
   wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
-  if ( ignoreDiacritics )
+  if ( ignoreDiacritics ) {
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
+  }
 
   for ( auto & x : chain ) {
-    if ( articlesIncluded.find( x.articleOffset ) != articlesIncluded.end() )
+    if ( articlesIncluded.find( x.articleOffset ) != articlesIncluded.end() ) {
       continue; // We already have this article in the body.
+    }
 
     // Ok. Now, does it go to main articles, or to alternate ones? We list
     // main ones first, and alternates after.
@@ -198,8 +203,9 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const &
     // We do the case-folded comparison here.
 
     wstring headwordStripped = Folding::applySimpleCaseOnly( x.word );
-    if ( ignoreDiacritics )
+    if ( ignoreDiacritics ) {
       headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
+    }
 
     multimap< wstring, uint32_t > & mapToUse =
       ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
@@ -209,8 +215,9 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const &
     articlesIncluded.insert( x.articleOffset );
   }
 
-  if ( mainArticles.empty() && alternateArticles.empty() )
+  if ( mainArticles.empty() && alternateArticles.empty() ) {
     return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such word
+  }
 
   string result;
 
@@ -321,8 +328,9 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getResource( string const &
 
   vector< WordArticleLink > chain = findArticles( strippedName );
 
-  if ( chain.empty() )
+  if ( chain.empty() ) {
     return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such resource
+  }
 
   // Find sound
 
@@ -340,22 +348,25 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getResource( string const &
 
     memcpy( &dataOffset, nameBlock, sizeof( uint32_t ) );
 
-    if ( name.compare( fileName ) == 0 )
+    if ( name.compare( fileName ) == 0 ) {
       break;
+    }
   }
 
   sptr< Dictionary::DataRequestInstant > dr = std::make_shared< Dictionary::DataRequestInstant >( true );
 
-  if ( zipsFile.loadFile( dataOffset, dr->getData() ) )
+  if ( zipsFile.loadFile( dataOffset, dr->getData() ) ) {
     return dr;
+  }
 
   return std::make_shared< Dictionary::DataRequestInstant >( false );
 }
 
 void ZipSoundsDictionary::loadIcon() noexcept
 {
-  if ( dictionaryIconLoaded )
+  if ( dictionaryIconLoaded ) {
     return;
+  }
 
   QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
 
@@ -382,8 +393,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
   for ( const auto & fileName : fileNames ) {
     /// Only allow .zips extension
-    if ( !Utils::endsWithIgnoreCase( fileName, ".zips" ) )
+    if ( !Utils::endsWithIgnoreCase( fileName, ".zips" ) ) {
       continue;
+    }
 
     try {
       vector< string > dictFiles( 1, fileName );
@@ -408,8 +420,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         quint32 namesCount = 0;
 
         IndexedZip zipFile;
-        if ( zipFile.openZipFile( QDir::fromNativeSeparators( fileName.c_str() ) ) )
+        if ( zipFile.openZipFile( QDir::fromNativeSeparators( fileName.c_str() ) ) ) {
           zipFile.indexFile( zipFileNames, &namesCount );
+        }
 
         if ( !zipFileNames.empty() ) {
           for ( auto & zipFileName : zipFileNames ) {
@@ -426,8 +439,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
               // Remove extension for sound files (like in sound dirs)
 
               wstring word = stripExtension( link.word );
-              if ( !word.empty() )
+              if ( !word.empty() ) {
                 names.addWord( word, offset );
+              }
             }
           }
 

@@ -147,12 +147,14 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( wstring const & 
                                     // by only allowing them to appear once.
 
   wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
-  if ( ignoreDiacritics )
+  if ( ignoreDiacritics ) {
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
+  }
 
   for ( unsigned x = 0; x < chain.size(); ++x ) {
-    if ( articlesIncluded.find( chain[ x ].articleOffset ) != articlesIncluded.end() )
+    if ( articlesIncluded.find( chain[ x ].articleOffset ) != articlesIncluded.end() ) {
       continue; // We already have this article in the body.
+    }
 
     // Ok. Now, does it go to main articles, or to alternate ones? We list
     // main ones first, and alternates after.
@@ -160,8 +162,9 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( wstring const & 
     // We do the case-folded comparison here.
 
     wstring headwordStripped = Folding::applySimpleCaseOnly( chain[ x ].word );
-    if ( ignoreDiacritics )
+    if ( ignoreDiacritics ) {
       headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
+    }
 
     multimap< wstring, unsigned > & mapToUse =
       ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
@@ -171,8 +174,9 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( wstring const & 
     articlesIncluded.insert( chain[ x ].articleOffset );
   }
 
-  if ( mainArticles.empty() && alternateArticles.empty() )
+  if ( mainArticles.empty() && alternateArticles.empty() ) {
     return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such word
+  }
 
   string result;
 
@@ -187,8 +191,9 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( wstring const & 
   for ( i = mainArticles.begin(); i != mainArticles.end(); ++i ) {
     uint32_t address = chain[ i->second ].articleOffset;
 
-    if ( mainArticles.size() + alternateArticles.size() <= 1 )
+    if ( mainArticles.size() + alternateArticles.size() <= 1 ) {
       displayedName = chain[ i->second ].word;
+    }
     else {
       try {
         QMutexLocker _( &idxMutex );
@@ -234,8 +239,9 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( wstring const & 
   for ( i = alternateArticles.begin(); i != alternateArticles.end(); ++i ) {
     uint32_t address = chain[ i->second ].articleOffset;
 
-    if ( mainArticles.size() + alternateArticles.size() <= 1 )
+    if ( mainArticles.size() + alternateArticles.size() <= 1 ) {
       displayedName = chain[ i->second ].word;
+    }
     else {
       try {
         QMutexLocker _( &idxMutex );
@@ -289,16 +295,19 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( wstring const & 
 
 void SoundDirDictionary::loadIcon() noexcept
 {
-  if ( dictionaryIconLoaded )
+  if ( dictionaryIconLoaded ) {
     return;
+  }
 
   if ( !iconFilename.isEmpty() ) {
     const QFileInfo fInfo( QDir( Config::getConfigDir() ), iconFilename );
-    if ( fInfo.isFile() )
+    if ( fInfo.isFile() ) {
       loadIconFromFile( fInfo.absoluteFilePath(), true );
+    }
   }
-  if ( dictionaryIcon.isNull() )
+  if ( dictionaryIcon.isNull() ) {
     dictionaryIcon = QIcon( ":/icons/sounddir.svg" );
+  }
   dictionaryIconLoaded = true;
 }
 
@@ -344,8 +353,9 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( string const & 
   }
 
 
-  if ( !isNumber )
+  if ( !isNumber ) {
     return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such resource
+  }
 
   QString file_name;
   if ( !get_file_name( articleOffset, file_name ) ) {
@@ -389,8 +399,9 @@ void addDir( QDir const & baseDir,
   const QFileInfoList entries = dir.entryInfoList( QDir::Dirs | QDir::Files | QDir::NoDotAndDotDot );
 
   for ( QFileInfoList::const_iterator i = entries.constBegin(); i != entries.constEnd(); ++i ) {
-    if ( i->isDir() )
+    if ( i->isDir() ) {
       addDir( baseDir, QDir( i->absoluteFilePath() ), indexedWords, soundsCount, chunks );
+    }
     else if ( Filetype::isNameOfSound( i->fileName().toUtf8().data() ) ) {
       // Add this sound to index
       string fileName = baseDir.relativeFilePath( i->filePath() ).toUtf8().data();
@@ -402,8 +413,9 @@ void addDir( QDir const & baseDir,
 
       const wstring::size_type pos = name.rfind( L'.' );
 
-      if ( pos != wstring::npos )
+      if ( pos != wstring::npos ) {
         name.erase( pos );
+      }
 
       indexedWords.addWord( name, articleOffset );
 
@@ -424,8 +436,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::SoundDirs const & 
   for ( const auto & soundDir : soundDirs ) {
     QDir dir( soundDir.path );
 
-    if ( !dir.exists() )
+    if ( !dir.exists() ) {
       continue; // No such dir, no dictionary then
+    }
 
     vector< string > dictFiles( 1, QDir::toNativeSeparators( dir.canonicalPath() ).toStdString() );
 

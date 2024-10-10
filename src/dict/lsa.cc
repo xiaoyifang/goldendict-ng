@@ -75,10 +75,12 @@ bool indexIsOldOrBad( string const & indexFile )
 
 string stripExtension( string const & str )
 {
-  if ( Utils::endsWithIgnoreCase( str, ".wav" ) )
+  if ( Utils::endsWithIgnoreCase( str, ".wav" ) ) {
     return string( str, 0, str.size() - 4 );
-  else
+  }
+  else {
     return str;
+  }
 }
 
 struct Entry
@@ -103,14 +105,16 @@ Entry::Entry( File::Index & f )
   vector< uint16_t > filenameBuffer( 64 );
 
   for ( ;; ++read ) {
-    if ( filenameBuffer.size() <= read )
+    if ( filenameBuffer.size() <= read ) {
       filenameBuffer.resize( read + 64 );
+    }
 
     f.read( &filenameBuffer[ read ], 2 );
 
     if ( filenameBuffer[ read ] == 0xD ) {
-      if ( f.read< uint16_t >() != 0xA )
+      if ( f.read< uint16_t >() != 0xA ) {
         throw exInvalidData();
+      }
 
       // Filename ending marker
       break;
@@ -120,11 +124,13 @@ Entry::Entry( File::Index & f )
   // Skip zero or ff, or just ff.
 
   if ( auto x = f.read< uint8_t >() ) {
-    if ( x != 0xFF )
+    if ( x != 0xFF ) {
       throw exInvalidData();
+    }
   }
-  else if ( f.read< uint8_t >() != 0xFF )
+  else if ( f.read< uint8_t >() != 0xFF ) {
     throw exInvalidData();
+  }
 
 
   if ( !firstEntry ) {
@@ -132,11 +138,13 @@ Entry::Entry( File::Index & f )
     // samples.
     samplesOffset = f.read< uint32_t >();
 
-    if ( f.read< uint8_t >() != 0xFF )
+    if ( f.read< uint8_t >() != 0xFF ) {
       throw exInvalidData();
+    }
   }
-  else
+  else {
     samplesOffset = 0;
+  }
 
   // Read the size of the recording, in samples
   samplesLength = f.read< uint32_t >();
@@ -224,12 +232,14 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( wstring const & word,
                                     // by only allowing them to appear once.
 
   wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
-  if ( ignoreDiacritics )
+  if ( ignoreDiacritics ) {
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
+  }
 
   for ( auto & x : chain ) {
-    if ( articlesIncluded.find( x.articleOffset ) != articlesIncluded.end() )
+    if ( articlesIncluded.find( x.articleOffset ) != articlesIncluded.end() ) {
       continue; // We already have this article in the body.
+    }
 
     // Ok. Now, does it go to main articles, or to alternate ones? We list
     // main ones first, and alternates after.
@@ -237,8 +247,9 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( wstring const & word,
     // We do the case-folded comparison here.
 
     wstring headwordStripped = Folding::applySimpleCaseOnly( x.word );
-    if ( ignoreDiacritics )
+    if ( ignoreDiacritics ) {
       headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
+    }
 
     multimap< wstring, string > & mapToUse = ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
 
@@ -247,8 +258,9 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( wstring const & word,
     articlesIncluded.insert( x.articleOffset );
   }
 
-  if ( mainArticles.empty() && alternateArticles.empty() )
+  if ( mainArticles.empty() && alternateArticles.empty() ) {
     return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such word
+  }
 
   string result;
 
@@ -330,25 +342,29 @@ int ShiftedVorbis::seek( void * datasource, ogg_int64_t offset, int whence )
 {
   auto * sv = (ShiftedVorbis *)datasource;
 
-  if ( whence == SEEK_SET )
+  if ( whence == SEEK_SET ) {
     offset += sv->shift;
+  }
 
-  if ( whence == SEEK_CUR )
+  if ( whence == SEEK_CUR ) {
     offset += sv->f.pos();
+  }
 
-  if ( whence == SEEK_END )
+  if ( whence == SEEK_END ) {
     offset += sv->f.size();
+  }
 
   return sv->f.seek( offset );
 }
 
 long ShiftedVorbis::tell( void * datasource )
 {
-  auto * sv = (ShiftedVorbis *)datasource;
-  long result        = sv->f.pos();
+  auto * sv   = (ShiftedVorbis *)datasource;
+  long result = sv->f.pos();
 
-  if ( result != -1 )
+  if ( result != -1 ) {
     result -= sv->shift;
+  }
 
   return result;
 }
@@ -381,14 +397,13 @@ sptr< Dictionary::DataRequest > LsaDictionary::getResource( string const & name 
 {
   // See if the name ends in .wav. Remove that extension then
 
-  string strippedName = Utils::endsWithIgnoreCase( name,  ".wav" )  ?
-    string( name, 0, name.size() - 4 ) :
-    name;
+  string strippedName = Utils::endsWithIgnoreCase( name, ".wav" ) ? string( name, 0, name.size() - 4 ) : name;
 
   vector< WordArticleLink > chain = findArticles( Utf8::decode( strippedName ) );
 
-  if ( chain.empty() )
+  if ( chain.empty() ) {
     return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such resource
+  }
 
   File::Index f( getDictionaryFilenames()[ 0 ], "rb" );
 
@@ -403,11 +418,13 @@ sptr< Dictionary::DataRequest > LsaDictionary::getResource( string const & name 
 
   int result = ov_open_callbacks( &sv, &vf, 0, 0, ShiftedVorbis::callbacks );
 
-  if ( result )
+  if ( result ) {
     throw exFailedToOpenVorbisData();
+  }
 
-  if ( ov_pcm_seek( &vf, e.samplesOffset ) )
+  if ( ov_pcm_seek( &vf, e.samplesOffset ) ) {
     throw exFailedToSeekInVorbisData();
+  }
 
   vorbis_info * vi = ov_info( &vf, -1 );
 
@@ -473,8 +490,9 @@ sptr< Dictionary::DataRequest > LsaDictionary::getResource( string const & name 
 
 void LsaDictionary::loadIcon() noexcept
 {
-  if ( dictionaryIconLoaded )
+  if ( dictionaryIconLoaded ) {
     return;
+  }
 
   QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
 
@@ -499,8 +517,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
   for ( auto i = fileNames.begin(); i != fileNames.end(); ++i ) {
     /// Only allow .dat and .lsa extensions to save scanning time
-    if ( !Utils::endsWithIgnoreCase( *i, ".dat" ) && !Utils::endsWithIgnoreCase( *i, ".lsa" ) )
+    if ( !Utils::endsWithIgnoreCase( *i, ".dat" ) && !Utils::endsWithIgnoreCase( *i, ".lsa" ) ) {
       continue;
+    }
 
     try {
       File::Index f( *i, "rb" );
@@ -574,8 +593,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         f.read( buf, sizeof( buf ) );
 
-        if ( strncmp( buf, "OggS", 4 ) != 0 )
+        if ( strncmp( buf, "OggS", 4 ) != 0 ) {
           throw exInvalidData();
+        }
 
         // Build the index
 

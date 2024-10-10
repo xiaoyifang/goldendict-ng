@@ -43,7 +43,8 @@ void finalize()
 
 namespace Book {
 
-#define HookFunc( name ) EB_Error_Code name( EB_Book *, EB_Appendix *, void *, EB_Hook_Code, int, const unsigned int * )
+  #define HookFunc( name ) \
+    EB_Error_Code name( EB_Book *, EB_Appendix *, void *, EB_Hook_Code, int, const unsigned int * )
 
 HookFunc( hook_newline );
 HookFunc( hook_iso8859_1 );
@@ -96,8 +97,8 @@ const EB_Hook hooks[] = { { EB_HOOK_NEWLINE, hook_newline },
 const EB_Hook refHooks[] = {
   { EB_HOOK_BEGIN_REFERENCE, hook_reference }, { EB_HOOK_END_REFERENCE, hook_reference }, { EB_HOOK_NULL, NULL } };
 
-#define EUC_TO_ASCII_TABLE_START 0xa0
-#define EUC_TO_ASCII_TABLE_END   0xff
+  #define EUC_TO_ASCII_TABLE_START 0xa0
+  #define EUC_TO_ASCII_TABLE_END   0xff
 
 // Tables from EB library
 
@@ -540,11 +541,11 @@ bool EpwingBook::setSubBook( int book_nom )
   QFile f( fileName );
   if ( f.open( QFile::ReadOnly | QFile::Text ) ) {
     QTextStream ts( &f );
-#if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
+  #if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
     ts.setCodec( "UTF-8" );
-#else
+  #else
     ts.setEncoding( QStringConverter::Utf8 );
-#endif
+  #endif
 
     QString line = ts.readLine();
     while ( !line.isEmpty() ) {

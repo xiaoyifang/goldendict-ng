@@ -36,7 +36,8 @@ void StylesComboBox::setCurrentStyle( QString const & style )
 
 QString StylesComboBox::getCurrentStyle() const
 {
-  if ( currentIndex() == 0 )
+  if ( currentIndex() == 0 ) {
     return {};
+  }
   return itemText( currentIndex() );
 }

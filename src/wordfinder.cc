@@ -80,8 +80,9 @@ void WordFinder::stemmedMatch( QString const & str,
   resultsIndex.clear();
   searchResults.clear();
 
-  if ( queuedRequests.empty() )
+  if ( queuedRequests.empty() ) {
     startSearch();
+  }
 }
 
 void WordFinder::expressionMatch( QString const & str,
@@ -110,8 +111,9 @@ void WordFinder::expressionMatch( QString const & str,
 
 void WordFinder::startSearch()
 {
-  if ( !searchQueued )
+  if ( !searchQueued ) {
     return; // Search was probably cancelled
+  }
 
   // Clear the requests just in case
   queuedRequests.clear();
@@ -125,8 +127,9 @@ void WordFinder::startSearch()
 
   // Gather all writings of the word
 
-  if ( allWordWritings.size() != 1 )
+  if ( allWordWritings.size() != 1 ) {
     allWordWritings.resize( 1 );
+  }
 
   allWordWritings[ 0 ] = gd::toWString( inputWord );
 
@@ -139,8 +142,9 @@ void WordFinder::startSearch()
   // Query each dictionary for all word writings
 
   for ( const auto & inputDict : *inputDicts ) {
-    if ( ( inputDict->getFeatures() & requestedFeatures ) != requestedFeatures )
+    if ( ( inputDict->getFeatures() & requestedFeatures ) != requestedFeatures ) {
       continue;
+    }
 
     for ( const auto & allWordWriting : allWordWritings ) {
       try {
@@ -188,11 +192,13 @@ void WordFinder::requestFinished()
   // See how many new requests have finished, and if we have any new results
   for ( auto i = queuedRequests.begin(); i != queuedRequests.end(); ) {
     if ( ( *i )->isFinished() ) {
-      if ( searchInProgress && !( *i )->getErrorString().isEmpty() )
+      if ( searchInProgress && !( *i )->getErrorString().isEmpty() ) {
         searchErrorString = tr( "Failed to query some dictionaries." );
+      }
 
-      if ( ( *i )->isUncertain() )
+      if ( ( *i )->isUncertain() ) {
         searchResultsUncertain = true;
+      }
 
       if ( ( *i )->matchesCount() ) {
         newResults = true;
@@ -200,11 +206,13 @@ void WordFinder::requestFinished()
         // This list is handled by updateResults()
         finishedRequests.splice( finishedRequests.end(), queuedRequests, i++ );
       }
-      else // We won't do anything with it anymore, so we erase it
+      else { // We won't do anything with it anymore, so we erase it
         queuedRequests.erase( i++ );
+      }
     }
-    else
+    else {
       ++i;
+    }
   }
 
   if ( !searchInProgress ) {
@@ -215,8 +223,9 @@ void WordFinder::requestFinished()
       // We got rid of all queries, queued search can now start
       finishedRequests.clear();
 
-      if ( searchQueued )
+      if ( searchQueued ) {
         startSearch();
+      }
     }
 
     return;
@@ -248,14 +257,16 @@ unsigned saturated( unsigned x )
 /// is larger than 255, it is set to 255.
 bool hasSurroundedWithWs( wstring const & haystack, wstring const & needle, wstring::size_type & pos )
 {
-  if ( haystack.size() < needle.size() )
+  if ( haystack.size() < needle.size() ) {
     return false; // Needle won't even fit into a haystack
+  }
 
   for ( pos = 0;; ++pos ) {
     pos = haystack.find( needle, pos );
 
-    if ( pos == wstring::npos )
+    if ( pos == wstring::npos ) {
       return false; // Not found
+    }
 
     if ( ( !pos || Folding::isWhitespace( haystack[ pos - 1 ] ) || Folding::isPunct( haystack[ pos - 1 ] ) )
          && ( ( pos + needle.size() == haystack.size() ) || Folding::isWhitespace( haystack[ pos + needle.size() ] )
@@ -271,11 +282,13 @@ bool hasSurroundedWithWs( wstring const & haystack, wstring const & needle, wstr
 
 void WordFinder::updateResults()
 {
-  if ( !searchInProgress )
+  if ( !searchInProgress ) {
     return; // Old queued signal
+  }
 
-  if ( updateResultsTimer.isActive() )
+  if ( updateResultsTimer.isActive() ) {
     updateResultsTimer.stop(); // Can happen when we were done before it'd expire
+  }
 
   wstring original = Folding::applySimpleCaseOnly( allWordWritings[ 0 ] );
 
@@ -291,11 +304,13 @@ void WordFinder::updateResults()
         for ( ws = 0; ws < allWordWritings.size(); ws++ ) {
           if ( ws == 0 ) {
             // Check for prefix match with original expression
-            if ( lowerCased.compare( 0, original.size(), original ) == 0 )
+            if ( lowerCased.compare( 0, original.size(), original ) == 0 ) {
               break;
+            }
           }
-          else if ( lowerCased == Folding::applySimpleCaseOnly( allWordWritings[ ws ] ) )
+          else if ( lowerCased == Folding::applySimpleCaseOnly( allWordWritings[ ws ] ) ) {
             break;
+          }
         }
 
         if ( ws >= allWordWritings.size() ) {
@@ -313,8 +328,9 @@ void WordFinder::updateResults()
           // The case is different -- agree on a lowercase version
           insertResult.first->second->word = lowerCased;
         }
-        if ( !weight && insertResult.first->second->wasSuggested )
+        if ( !weight && insertResult.first->second->wasSuggested ) {
           insertResult.first->second->wasSuggested = false;
+        }
       }
       else {
         resultsArray.emplace_back();
@@ -366,38 +382,52 @@ void WordFinder::updateResults()
 
           int rank;
 
-          if ( i.first == target )
+          if ( i.first == target ) {
             rank = ExactMatch * Multiplier;
-          else if ( ( resultNoFullCase = Folding::applyFullCaseOnly( i.first ) ) == targetNoFullCase )
+          }
+          else if ( ( resultNoFullCase = Folding::applyFullCaseOnly( i.first ) ) == targetNoFullCase ) {
             rank = ExactNoFullCaseMatch * Multiplier;
-          else if ( ( resultNoDia = Folding::applyDiacriticsOnly( resultNoFullCase ) ) == targetNoDia )
+          }
+          else if ( ( resultNoDia = Folding::applyDiacriticsOnly( resultNoFullCase ) ) == targetNoDia ) {
             rank = ExactNoDiaMatch * Multiplier;
-          else if ( ( resultNoPunct = Folding::applyPunctOnly( resultNoDia ) ) == targetNoPunct )
+          }
+          else if ( ( resultNoPunct = Folding::applyPunctOnly( resultNoDia ) ) == targetNoPunct ) {
             rank = ExactNoPunctMatch * Multiplier;
-          else if ( ( resultNoWs = Folding::applyWhitespaceOnly( resultNoPunct ) ) == targetNoWs )
+          }
+          else if ( ( resultNoWs = Folding::applyWhitespaceOnly( resultNoPunct ) ) == targetNoWs ) {
             rank = ExactNoWsMatch * Multiplier;
-          else if ( hasSurroundedWithWs( i.first, target, matchPos ) )
+          }
+          else if ( hasSurroundedWithWs( i.first, target, matchPos ) ) {
             rank = ExactInsideMatch * Multiplier + matchPos;
-          else if ( hasSurroundedWithWs( resultNoDia, targetNoDia, matchPos ) )
+          }
+          else if ( hasSurroundedWithWs( resultNoDia, targetNoDia, matchPos ) ) {
             rank = ExactNoDiaInsideMatch * Multiplier + matchPos;
-          else if ( hasSurroundedWithWs( resultNoPunct, targetNoPunct, matchPos ) )
+          }
+          else if ( hasSurroundedWithWs( resultNoPunct, targetNoPunct, matchPos ) ) {
             rank = ExactNoPunctInsideMatch * Multiplier + matchPos;
-          else if ( i.first.size() > target.size() && i.first.compare( 0, target.size(), target ) == 0 )
+          }
+          else if ( i.first.size() > target.size() && i.first.compare( 0, target.size(), target ) == 0 ) {
             rank = PrefixMatch * Multiplier + saturated( i.first.size() );
+          }
           else if ( resultNoDia.size() > targetNoDia.size()
-                    && resultNoDia.compare( 0, targetNoDia.size(), targetNoDia ) == 0 )
+                    && resultNoDia.compare( 0, targetNoDia.size(), targetNoDia ) == 0 ) {
             rank = PrefixNoDiaMatch * Multiplier + saturated( i.first.size() );
+          }
           else if ( resultNoPunct.size() > targetNoPunct.size()
-                    && resultNoPunct.compare( 0, targetNoPunct.size(), targetNoPunct ) == 0 )
+                    && resultNoPunct.compare( 0, targetNoPunct.size(), targetNoPunct ) == 0 ) {
             rank = PrefixNoPunctMatch * Multiplier + saturated( i.first.size() );
+          }
           else if ( resultNoWs.size() > targetNoWs.size()
-                    && resultNoWs.compare( 0, targetNoWs.size(), targetNoWs ) == 0 )
+                    && resultNoWs.compare( 0, targetNoWs.size(), targetNoWs ) == 0 ) {
             rank = PrefixNoWsMatch * Multiplier + saturated( i.first.size() );
-          else
+          }
+          else {
             rank = WorstMatch * Multiplier;
+          }
 
-          if ( i.second->rank > rank )
+          if ( i.second->rank > rank ) {
             i.second->rank = rank; // We store the best rank of any writing
+          }
         }
       }
 
@@ -418,15 +448,18 @@ void WordFinder::updateResults()
 
           int charsInCommon = 0;
 
-          for ( wchar const *t = target.c_str(), *r = resultFolded.c_str(); *t && *t == *r; ++t, ++r, ++charsInCommon )
+          for ( wchar const *t = target.c_str(), *r = resultFolded.c_str(); *t && *t == *r;
+                ++t, ++r, ++charsInCommon ) {
             ;
+          }
 
           int rank = -charsInCommon; // Negated so the lesser-than
                                      // comparison would yield right
                                      // results.
 
-          if ( i.second->rank > rank )
+          if ( i.second->rank > rank ) {
             i.second->rank = rank; // We store the best rank of any writing
+          }
         }
       }
 
@@ -440,10 +473,12 @@ void WordFinder::updateResults()
   searchResults.reserve( resultsArray.size() < maxSearchResults ? resultsArray.size() : maxSearchResults );
 
   for ( const auto & i : resultsArray ) {
-    if ( searchResults.size() < maxSearchResults )
+    if ( searchResults.size() < maxSearchResults ) {
       searchResults.emplace_back( QString::fromStdU32String( i.word ), i.wasSuggested );
-    else
+    }
+    else {
       break;
+    }
   }
 
   if ( !queuedRequests.empty() ) {
@@ -459,6 +494,7 @@ void WordFinder::updateResults()
 
 void WordFinder::cancelSearches()
 {
-  for ( auto & queuedRequest : queuedRequests )
+  for ( auto & queuedRequest : queuedRequests ) {
     queuedRequest->cancel();
+  }
 }

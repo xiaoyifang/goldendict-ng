@@ -123,9 +123,10 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word, QString const & 
 
   // This doesn't seem to be much of influence right now, but we'll keep
   // it anyway.
-  if ( icon.size() )
+  if ( icon.size() ) {
     result +=
       R"(<link rel="icon" type="image/png" href="qrc:///flags/)" + Html::escape( icon.toUtf8().data() ) + "\" >\n";
+  }
 
   result += QString::fromUtf8( R"(
 <script>
@@ -229,18 +230,20 @@ std::string ArticleMaker::makeNotFoundBody( QString const & word, QString const 
 {
   string result( "<div class=\"gdnotfound\"><p>" );
 
-  if ( word.size() )
+  if ( word.size() ) {
     result += tr( "No translation for <b dir=\"%3\">%1</b> was found in group <b>%2</b>." )
                 .arg( QString::fromUtf8( Html::escape( word.toUtf8().data() ).c_str() ),
                       QString::fromUtf8( Html::escape( group.toUtf8().data() ).c_str() ),
                       word.isRightToLeft() ? "rtl" : "ltr" )
                 .toUtf8()
                 .data();
-  else
+  }
+  else {
     result += tr( "No translation was found in group <b>%1</b>." )
                 .arg( QString::fromUtf8( Html::escape( group.toUtf8().data() ).c_str() ) )
                 .toUtf8()
                 .data();
+  }
 
   result += "</p></div>";
 
@@ -323,11 +326,12 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( QString const &
 
   Instances::Group const * activeGroup = 0;
 
-  for ( const auto & group : groups )
+  for ( const auto & group : groups ) {
     if ( group.id == groupId ) {
       activeGroup = &group;
       break;
     }
+  }
 
   // If we've found a group, use its dictionaries; otherwise, use the global
   // heap.
@@ -343,8 +347,9 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( QString const &
     unmutedDicts.reserve( activeDicts.size() );
 
     for ( unsigned x = 0; x < activeDicts.size(); ++x ) {
-      if ( !mutedDicts.contains( QString::fromStdString( activeDicts[ x ]->getId() ) ) )
+      if ( !mutedDicts.contains( QString::fromStdString( activeDicts[ x ]->getId() ) ) ) {
         unmutedDicts.push_back( activeDicts[ x ] );
+      }
     }
 
     return std::make_shared< ArticleRequest >(
@@ -357,7 +362,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( QString const &
       cfg.alwaysExpandOptionalParts,
       ignoreDiacritics );
   }
-  else
+  else {
     return std::make_shared< ArticleRequest >(
       word,
       Instances::Group{ activeGroup ? activeGroup->id : 0, activeGroup ? activeGroup->name : "" },
@@ -367,6 +372,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( QString const &
       cfg.collapseBigArticles ? cfg.articleSizeLimit : -1,
       cfg.alwaysExpandOptionalParts,
       ignoreDiacritics );
+  }
 }
 
 sptr< Dictionary::DataRequest > ArticleMaker::makeNotFoundTextFor( QString const & word, QString const & group ) const
@@ -449,7 +455,7 @@ ArticleRequest::ArticleRequest( QString const & word,
   appendString( header );
 
   //clear founded dicts.
-  emit GlobalBroadcaster::instance()->dictionaryClear( ActiveDictIds{ group.id, word } );
+  emit GlobalBroadcaster::instance() -> dictionaryClear( ActiveDictIds{ group.id, word } );
 
   // Accumulate main forms
   for ( const auto & activeDict : activeDicts ) {
@@ -465,20 +471,23 @@ ArticleRequest::ArticleRequest( QString const & word,
 
 void ArticleRequest::altSearchFinished()
 {
-  if ( altsDone )
+  if ( altsDone ) {
     return;
+  }
 
   // Check every request for finishing
   for ( auto i = altSearches.begin(); i != altSearches.end(); ) {
     if ( ( *i )->isFinished() ) {
       // This one's finished
-      for ( size_t count = ( *i )->matchesCount(), x = 0; x < count; ++x )
+      for ( size_t count = ( *i )->matchesCount(), x = 0; x < count; ++x ) {
         alts.insert( ( **i )[ x ].word );
+      }
 
       altSearches.erase( i++ );
     }
-    else
+    else {
       ++i;
+    }
   }
 
   if ( altSearches.empty() ) {
@@ -491,8 +500,9 @@ void ArticleRequest::altSearchFinished()
 
     wstring wordStd = gd::toWString( word );
 
-    if ( activeDicts.size() <= 1 )
+    if ( activeDicts.size() <= 1 ) {
       articleSizeLimit = -1; // Don't collapse article if only one dictionary presented
+    }
 
     for ( const auto & activeDict : activeDicts ) {
       try {
@@ -519,24 +529,28 @@ int ArticleRequest::findEndOfCloseDiv( const QString & str, int pos )
 {
   for ( ;; ) {
     const int n1 = str.indexOf( "</div>", pos );
-    if ( n1 <= 0 )
+    if ( n1 <= 0 ) {
       return n1;
+    }
 
     // will there be some custom tags starts with <div but not <div> ,such as <divider>
     const int n2 = str.indexOf( RX::Html::startDivTag, pos );
-    if ( n2 <= 0 || n2 > n1 )
+    if ( n2 <= 0 || n2 > n1 ) {
       return n1 + 6;
+    }
 
     pos = findEndOfCloseDiv( str, n2 + 1 );
-    if ( pos <= 0 )
+    if ( pos <= 0 ) {
       return pos;
+    }
   }
 }
 
 bool ArticleRequest::isCollapsable( Dictionary::DataRequest & req, QString const & dictId )
 {
-  if ( GlobalBroadcaster::instance()->collapsedDicts.contains( dictId ) )
+  if ( GlobalBroadcaster::instance()->collapsedDicts.contains( dictId ) ) {
     return true;
+  }
 
   bool collapse = false;
 
@@ -551,19 +565,23 @@ bool ArticleRequest::isCollapsable( Dictionary::DataRequest & req, QString const
           const int pos = text.indexOf( "<div class=\"dsl_opt\"" );
           if ( pos > 0 ) {
             const int endPos = findEndOfCloseDiv( text, pos + 1 );
-            if ( endPos > pos )
+            if ( endPos > pos ) {
               text.remove( pos, endPos - pos );
-            else
+            }
+            else {
               break;
+            }
           }
-          else
+          else {
             break;
+          }
         }
       }
 
       int size = htmlTextSize( text );
-      if ( size > articleSizeLimit )
+      if ( size > articleSizeLimit ) {
         collapse = true;
+      }
     }
     catch ( ... ) {
     }
@@ -573,8 +591,9 @@ bool ArticleRequest::isCollapsable( Dictionary::DataRequest & req, QString const
 
 void ArticleRequest::bodyFinished()
 {
-  if ( bodyDone )
+  if ( bodyDone ) {
     return;
+  }
 
   GD_DPRINTF( "some body finished" );
 
@@ -738,20 +757,20 @@ void ArticleRequest::bodyFinished()
     if ( stemmedWordFinder.get() ) {
       update();
       qDebug() << "send dicts(stemmed):" << hittedWord;
-      emit GlobalBroadcaster::instance()->dictionaryChanges( hittedWord );
+      emit GlobalBroadcaster::instance() -> dictionaryChanges( hittedWord );
       dictIds.clear();
     }
     else {
       finish();
       qDebug() << "send dicts(finished):" << hittedWord;
-      emit GlobalBroadcaster::instance()->dictionaryChanges( hittedWord );
+      emit GlobalBroadcaster::instance() -> dictionaryChanges( hittedWord );
       dictIds.clear();
     }
   }
   else if ( wasUpdated ) {
     update();
     qDebug() << "send dicts(updated):" << hittedWord;
-    emit GlobalBroadcaster::instance()->dictionaryChanges( hittedWord );
+    emit GlobalBroadcaster::instance() -> dictionaryChanges( hittedWord );
     dictIds.clear();
   }
 }
@@ -827,10 +846,12 @@ void ArticleRequest::stemmedSearchFinished()
 
   appendString( footer );
 
-  if ( continueMatching )
+  if ( continueMatching ) {
     update();
-  else
+  }
+  else {
     finish();
+  }
 }
 
 void ArticleRequest::compoundSearchNextStep( bool lastSearchSucceeded )
@@ -865,16 +886,18 @@ void ArticleRequest::compoundSearchNextStep( bool lastSearchSucceeded )
     if ( currentSplittedWordStart >= splittedWords.first.size() - 2 ) {
       // The last word was the last possible to start from
 
-      if ( firstCompoundWasFound )
+      if ( firstCompoundWasFound ) {
         footer += "</span>";
+      }
 
       // Now add links to all the individual words. They conclude the result.
 
       footer += R"(<div class="gdstemmedsuggestion"><span class="gdstemmedsuggestion_head">)"
         + Html::escape( tr( "Individual words: " ).toUtf8().data() )
         + "</span><span class=\"gdstemmedsuggestion_body\"";
-      if ( splittedWords.first[ 0 ].isRightToLeft() )
+      if ( splittedWords.first[ 0 ].isRightToLeft() ) {
         footer += " dir=\"rtl\"";
+      }
       footer += ">";
 
       footer += escapeSpacing( splittedWords.second[ 0 ] );
@@ -1007,19 +1030,23 @@ std::pair< ArticleRequest::Words, ArticleRequest::Spacings > ArticleRequest::spl
   for ( ;; ) {
     QString spacing;
 
-    for ( ; ptr->unicode() && ( Folding::isPunct( ptr->unicode() ) || Folding::isWhitespace( ptr->unicode() ) ); ++ptr )
+    for ( ; ptr->unicode() && ( Folding::isPunct( ptr->unicode() ) || Folding::isWhitespace( ptr->unicode() ) );
+          ++ptr ) {
       spacing.append( *ptr );
+    }
 
     result.second.append( spacing );
 
     QString word;
 
     for ( ; ptr->unicode() && !( Folding::isPunct( ptr->unicode() ) || Folding::isWhitespace( ptr->unicode() ) );
-          ++ptr )
+          ++ptr ) {
       word.append( *ptr );
+    }
 
-    if ( word.isEmpty() )
+    if ( word.isEmpty() ) {
       break;
+    }
 
     result.first.append( word );
   }
@@ -1050,8 +1077,9 @@ std::string ArticleRequest::escapeSpacing( QString const & str )
 
 void ArticleRequest::cancel()
 {
-  if ( isFinished() )
+  if ( isFinished() ) {
     return;
+  }
   if ( !altSearches.empty() ) {
     for ( list< sptr< Dictionary::WordSearchRequest > >::iterator i = altSearches.begin(); i != altSearches.end();
           ++i ) {
@@ -1063,7 +1091,8 @@ void ArticleRequest::cancel()
       ( *i )->cancel();
     }
   }
-  if ( stemmedWordFinder.get() )
+  if ( stemmedWordFinder.get() ) {
     stemmedWordFinder->cancel();
+  }
   finish();
 }

@@ -139,17 +139,20 @@ bool containsWhitespace( wstring const & str )
 {
   wchar const * next = str.c_str();
 
-  for ( ; *next; ++next )
-    if ( Folding::isWhitespace( *next ) )
+  for ( ; *next; ++next ) {
+    if ( Folding::isWhitespace( *next ) ) {
       return true;
+    }
+  }
 
   return false;
 }
 
 void HunspellDictionary::loadIcon() noexcept
 {
-  if ( dictionaryIconLoaded )
+  if ( dictionaryIconLoaded ) {
     return;
+  }
 
   QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
 
@@ -268,8 +271,9 @@ void HunspellArticleRequest::run()
         result += Html::escape( suggestionUtf8 ) + "\">";
         result += Html::escape( suggestionUtf8 ) + "</a>";
 
-        if ( x != suggestions.size() - 1 )
+        if ( x != suggestions.size() - 1 ) {
           result += ", ";
+        }
       }
 
       result += "</div>";
@@ -358,8 +362,9 @@ void HunspellHeadwordsRequest::run()
     getSuggestionsForExpression( trimmedWord, results, hunspellMutex, hunspell );
 
     QMutexLocker _( &dataMutex );
-    for ( const auto & result : results )
+    for ( const auto & result : results ) {
       matches.push_back( result );
+    }
   }
   else {
     QList< wstring > suggestions = suggest( trimmedWord, hunspellMutex, hunspell );
@@ -367,8 +372,9 @@ void HunspellHeadwordsRequest::run()
     if ( !suggestions.empty() ) {
       QMutexLocker _( &dataMutex );
 
-      for ( const auto & suggestion : suggestions )
+      for ( const auto & suggestion : suggestions ) {
         matches.push_back( suggestion );
+      }
     }
   }
 
@@ -399,8 +405,9 @@ QList< wstring > suggest( wstring & word, QMutex & hunspellMutex, Hunspell & hun
 
         // Strip comments
         int n = suggestion.indexOf( '#' );
-        if ( n >= 0 )
+        if ( n >= 0 ) {
           suggestion.chop( suggestion.length() - n );
+        }
 
         GD_DPRINTF( ">>>Sugg: %s\n", suggestion.toLocal8Bit().data() );
 
@@ -534,19 +541,22 @@ void getSuggestionsForExpression( wstring const & expression,
         words.push_back( word );
         word.clear();
       }
-      if ( *c )
+      if ( *c ) {
         punct.push_back( *c );
+      }
     }
     else {
       if ( punct.size() ) {
         words.push_back( punct );
         punct.clear();
       }
-      if ( *c )
+      if ( *c ) {
         word.push_back( *c );
+      }
     }
-    if ( !*c )
+    if ( !*c ) {
       break;
+    }
   }
 
   if ( words.size() > 21 ) {
@@ -561,38 +571,45 @@ void getSuggestionsForExpression( wstring const & expression,
   for ( const auto & i : words ) {
     word = i;
     if ( Folding::isPunct( word[ 0 ] ) || Folding::isWhitespace( word[ 0 ] ) ) {
-      for ( auto & result : results )
+      for ( auto & result : results ) {
         result.append( word );
+      }
     }
     else {
-      QList< wstring > sugg   = suggest( word, hunspellMutex, hunspell );
-      int suggNum             = sugg.size() + 1;
-      if ( suggNum > 3 )
+      QList< wstring > sugg = suggest( word, hunspellMutex, hunspell );
+      int suggNum           = sugg.size() + 1;
+      if ( suggNum > 3 ) {
         suggNum = 3;
+      }
       int resNum = results.size();
       wstring resultStr;
 
       if ( resNum == 0 ) {
-        for ( int k = 0; k < suggNum; k++ )
+        for ( int k = 0; k < suggNum; k++ ) {
           results.push_back( k == 0 ? word : sugg.at( k - 1 ) );
+        }
       }
       else {
         for ( int j = 0; j < resNum; j++ ) {
           resultStr = results.at( j );
           for ( int k = 0; k < suggNum; k++ ) {
-            if ( k == 0 )
+            if ( k == 0 ) {
               results[ j ].append( word );
-            else
+            }
+            else {
               results.push_back( resultStr + sugg.at( k - 1 ) );
+            }
           }
         }
       }
     }
   }
 
-  for ( const auto & result : results )
-    if ( result != trimmedWord )
+  for ( const auto & result : results ) {
+    if ( result != trimmedWord ) {
       suggestions.push_back( result );
+    }
+  }
 }
 
 string encodeToHunspell( Hunspell & hunspell, wstring const & str )
@@ -662,8 +679,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::Hunspell const & c
 vector< DataFiles > findDataFiles( QString const & path )
 {
   // Empty path means unconfigured directory
-  if ( path.isEmpty() )
+  if ( path.isEmpty() ) {
     return vector< DataFiles >();
+  }
 
   QDir dir( path );
 
@@ -686,8 +704,9 @@ vector< DataFiles > findDataFiles( QString const & path )
 
     if ( !QFile( dicFileName ).exists() ) {
       dicFileName = dicFileNameBase + "DIC";
-      if ( !QFile( dicFileName ).exists() )
+      if ( !QFile( dicFileName ).exists() ) {
         continue; // No dic file
+      }
     }
 
     QString dictId = i->fileName();
@@ -702,8 +721,9 @@ vector< DataFiles > findDataFiles( QString const & path )
 
     QString localizedName;
 
-    if ( dictBaseId.size() == 2 )
+    if ( dictBaseId.size() == 2 ) {
       localizedName = Language::localizedNameForId( LangCoder::code2toInt( dictBaseId.toLatin1().data() ) );
+    }
 
     QString dictName = dictId;
 
@@ -711,8 +731,9 @@ vector< DataFiles > findDataFiles( QString const & path )
       dictName = localizedName;
 
       if ( dictId.size() > 2 && ( dictId[ 2 ] == '-' || dictId[ 2 ] == '_' )
-           && dictId.mid( 3 ).toLower() != dictBaseId )
+           && dictId.mid( 3 ).toLower() != dictBaseId ) {
         dictName += " (" + dictId.mid( 3 ) + ")";
+      }
     }
 
     dictName = QCoreApplication::translate( "Hunspell", "%1 Morphology" ).arg( dictName );

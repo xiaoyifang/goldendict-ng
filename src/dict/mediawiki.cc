@@ -47,8 +47,9 @@ public:
     langId( 0 )
   {
     int n = url.indexOf( "." );
-    if ( n == 2 || ( n > 3 && url[ n - 3 ] == '/' ) )
+    if ( n == 2 || ( n > 3 && url[ n - 3 ] == '/' ) ) {
       langId = LangCoder::code2toInt( url.mid( n - 2, 2 ).toLatin1().data() );
+    }
   }
 
   string getName() noexcept override
@@ -110,19 +111,23 @@ protected slots:
 
 void MediaWikiDictionary::loadIcon() noexcept
 {
-  if ( dictionaryIconLoaded )
+  if ( dictionaryIconLoaded ) {
     return;
+  }
 
   if ( !icon.isEmpty() ) {
     QFileInfo fInfo( QDir( Config::getConfigDir() ), icon );
-    if ( fInfo.isFile() )
+    if ( fInfo.isFile() ) {
       loadIconFromFile( fInfo.absoluteFilePath(), true );
+    }
   }
   if ( dictionaryIcon.isNull() ) {
-    if ( url.contains( "tionary" ) )
+    if ( url.contains( "tionary" ) ) {
       dictionaryIcon = QIcon( ":/icons/wiktionary.png" );
-    else
+    }
+    else {
       dictionaryIcon = QIcon( ":/icons/icon32_wiki.png" );
+    }
   }
   dictionaryIconLoaded = true;
 }
@@ -183,8 +188,9 @@ void MediaWikiWordSearchRequest::cancel()
   // We either finish it in place, or in the timer handler
   isCancelling = true;
 
-  if ( netReply.get() )
+  if ( netReply.get() ) {
     netReply.reset();
+  }
 
   finish();
 
@@ -193,8 +199,9 @@ void MediaWikiWordSearchRequest::cancel()
 
 void MediaWikiWordSearchRequest::downloadFinished()
 {
-  if ( isCancelling || isFinished() ) // Was cancelled
+  if ( isCancelling || isFinished() ) { // Was cancelled
     return;
+  }
 
   if ( netReply->error() == QNetworkReply::NoError ) {
     QDomDocument dd;
@@ -215,14 +222,16 @@ void MediaWikiWordSearchRequest::downloadFinished()
         QMutexLocker _( &dataMutex );
 
         qDebug() << "matches" << matches.size();
-        for ( int x = 0; x < nl.length(); ++x )
+        for ( int x = 0; x < nl.length(); ++x ) {
           matches.emplace_back( gd::toWString( nl.item( x ).toElement().attribute( "title" ) ) );
+        }
       }
     }
     GD_DPRINTF( "done.\n" );
   }
-  else
+  else {
     setErrorString( netReply->errorString() );
+  }
 
   finish();
 }
@@ -243,8 +252,9 @@ public:
   {
     QString const emptyTocIndicator = "<meta property=\"mw:PageProp/toc\" />";
     int const emptyTocPos           = articleString.indexOf( emptyTocIndicator );
-    if ( emptyTocPos == -1 )
+    if ( emptyTocPos == -1 ) {
       return; // The ToC must be absent or nonempty => nothing to do.
+    }
 
     QDomElement const sectionsElement = parseNode.firstChildElement( "sections" );
     if ( sectionsElement.isNull() ) {
@@ -283,8 +293,9 @@ void MediaWikiSectionsParser::generateTableOfContents( QDomElement const & secti
 
   QString const elTagName = "s";
   QDomElement el          = sectionsElement.firstChildElement( elTagName );
-  if ( el.isNull() )
+  if ( el.isNull() ) {
     return;
+  }
 
   // Omit invisible and useless toctogglecheckbox, toctogglespan and toctogglelabel elements.
   // The values of lang (e.g. 'en') and dir (e.g. 'ltr') attributes of the toctitle element depend on
@@ -351,8 +362,9 @@ bool MediaWikiSectionsParser::addListLevel( QString const & levelString )
     tableOfContents += "\n<ul>\n";
     previousLevel = level;
   }
-  else
+  else {
     closeListTags( level );
+  }
   Q_ASSERT( level == previousLevel );
 
   // Open this list item tag.
@@ -407,8 +419,9 @@ private:
   public:
     bool insert( T x )
     {
-      if ( std::find( elements.begin(), elements.end(), x ) != elements.end() )
+      if ( std::find( elements.begin(), elements.end(), x ) != elements.end() ) {
         return false;
+      }
       elements.push_back( x );
       return true;
     }
@@ -446,8 +459,9 @@ MediaWikiArticleRequest::MediaWikiArticleRequest( wstring const & str,
 
   addQuery( mgr, str );
 
-  for ( const auto & alt : alts )
+  for ( const auto & alt : alts ) {
     addQuery( mgr, alt );
+  }
 }
 
 void MediaWikiArticleRequest::addQuery( QNetworkAccessManager & mgr, wstring const & str )
@@ -478,8 +492,9 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
 {
   GD_DPRINTF( "Finished.\n" );
 
-  if ( isFinished() ) // Was cancelled
+  if ( isFinished() ) { // Was cancelled
     return;
+  }
 
   // Find this reply
 
@@ -488,7 +503,7 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
   for ( auto & netReplie : netReplies ) {
     if ( netReplie.first == r ) {
       netReplie.second = true; // Mark as finished
-      found     = true;
+      found            = true;
       break;
     }
   }
@@ -544,8 +559,9 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
                 continue;
               }
 
-              if ( link.indexOf( ':' ) >= 0 )
+              if ( link.indexOf( ':' ) >= 0 ) {
                 link.replace( ':', "%3A" );
+              }
 
               int n = link.indexOf( '#', 1 );
               if ( n > 0 ) {
@@ -587,7 +603,7 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
               QString tag                    = match.captured();
               QRegularExpressionMatch match2 = reg2.match( tag );
               if ( match2.hasMatch() ) {
-                QString ref       = match2.captured( 1 );
+                QString ref = match2.captured( 1 );
                 // audio url may like this <a href="//upload.wikimedia.org/wikipedia/a.ogg"
                 if ( ref.startsWith( "//" ) ) {
                   ref = wikiUrl.scheme() + ":" + ref;
@@ -597,8 +613,9 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
                   + R"("><img src="qrc:///icons/playsound.png" border="0" align="absmiddle" alt="Play"/></a>)";
                 articleNewString += audio_url;
               }
-              else
+              else {
                 articleNewString += match.captured();
+              }
             }
             if ( pos ) {
               articleNewString += articleString.mid( pos );
@@ -620,9 +637,11 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
             it = rxLink.globalMatch( articleString );
             while ( it.hasNext() ) {
               QRegularExpressionMatch match = it.next();
-              for ( int i = match.capturedStart() + 9; i < match.capturedEnd(); i++ )
-                if ( articleString.at( i ) == QChar( '_' ) )
+              for ( int i = match.capturedStart() + 9; i < match.capturedEnd(); i++ ) {
+                if ( articleString.at( i ) == QChar( '_' ) ) {
                   articleString[ i ] = ' ';
+                }
+              }
             }
 
             //fix file: url
@@ -676,17 +695,20 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
       }
       GD_DPRINTF( "done.\n" );
     }
-    else
+    else {
       setErrorString( netReply->errorString() );
+    }
 
     disconnect( netReply, 0, 0, 0 );
     netReply->deleteLater();
   }
 
-  if ( netReplies.empty() )
+  if ( netReplies.empty() ) {
     finish();
-  else if ( updated )
+  }
+  else if ( updated ) {
     update();
+  }
 }
 
 sptr< WordSearchRequest > MediaWikiDictionary::prefixMatch( wstring const & word, unsigned long maxResults )
@@ -698,8 +720,9 @@ sptr< WordSearchRequest > MediaWikiDictionary::prefixMatch( wstring const & word
 
     return std::make_shared< WordSearchRequestInstant >();
   }
-  else
+  else {
     return std::make_shared< MediaWikiWordSearchRequest >( word, url, lang, netMgr );
+  }
 }
 
 sptr< DataRequest >
@@ -711,8 +734,9 @@ MediaWikiDictionary::getArticle( wstring const & word, vector< wstring > const &
 
     return std::make_shared< DataRequestInstant >( false );
   }
-  else
+  else {
     return std::make_shared< MediaWikiArticleRequest >( word, alts, url, lang, netMgr, this );
+  }
 }
 
 } // namespace
@@ -724,13 +748,14 @@ makeDictionaries( Dictionary::Initializing &, Config::MediaWikis const & wikis, 
   vector< sptr< Dictionary::Class > > result;
 
   for ( const auto & wiki : wikis ) {
-    if ( wiki.enabled )
+    if ( wiki.enabled ) {
       result.push_back( std::make_shared< MediaWikiDictionary >( wiki.id.toStdString(),
                                                                  wiki.name.toUtf8().data(),
                                                                  wiki.url,
                                                                  wiki.icon,
                                                                  wiki.lang,
                                                                  mgr ) );
+    }
   }
 
   return result;

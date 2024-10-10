@@ -20,14 +20,16 @@ const std::vector< sptr< Dictionary::Class > > * DictionaryGroup::getActiveDicti
   std::vector< sptr< Dictionary::Class > > const * activeDicts = nullptr;
 
   if ( !groups.empty() ) {
-    for ( const auto & group : groups )
+    for ( const auto & group : groups ) {
       if ( group.id == currentGroup ) {
         activeDicts = &( group.dictionaries );
         break;
       }
+    }
   }
-  else
+  else {
     activeDicts = &allDictionaries;
+  }
 
   return activeDicts;
 }

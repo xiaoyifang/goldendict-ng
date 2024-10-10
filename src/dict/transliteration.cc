@@ -63,8 +63,9 @@ sptr< Dictionary::WordSearchRequest > BaseTransliterationDictionary::findHeadwor
 
   GD_DPRINTF( "alts = %u\n", (unsigned)alts.size() );
 
-  for ( const auto & alt : alts )
+  for ( const auto & alt : alts ) {
     result->getMatches().push_back( alt );
+  }
 
   return result;
 }
@@ -74,8 +75,9 @@ void Table::ins( char const * from, char const * to )
 {
   wstring fr = Utf8::decode( std::string( from ) );
 
-  if ( fr.size() > maxEntrySize )
+  if ( fr.size() > maxEntrySize ) {
     maxEntrySize = fr.size();
+  }
 
   insert( std::pair< wstring, wstring >( fr, Utf8::decode( std::string( to ) ) ) );
 }
@@ -132,8 +134,9 @@ vector< wstring > TransliterationDictionary::getAlternateWritings( wstring const
     }
   }
 
-  if ( result != *target )
+  if ( result != *target ) {
     results.push_back( result );
+  }
 
   return results;
 }

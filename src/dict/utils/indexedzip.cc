@@ -29,8 +29,9 @@ bool IndexedZip::openZipFile( QString const & name )
 
 bool IndexedZip::hasFile( gd::wstring const & name )
 {
-  if ( !zipIsOpen )
+  if ( !zipIsOpen ) {
     return false;
+  }
 
   vector< WordArticleLink > links = findArticles( name );
 
@@ -39,26 +40,30 @@ bool IndexedZip::hasFile( gd::wstring const & name )
 
 bool IndexedZip::loadFile( gd::wstring const & name, vector< char > & data )
 {
-  if ( !zipIsOpen )
+  if ( !zipIsOpen ) {
     return false;
+  }
 
   vector< WordArticleLink > links = findArticles( name );
 
-  if ( links.empty() )
+  if ( links.empty() ) {
     return false;
+  }
 
   return loadFile( links[ 0 ].articleOffset, data );
 }
 
 bool IndexedZip::loadFile( uint32_t offset, vector< char > & data )
 {
-  if ( !zipIsOpen )
+  if ( !zipIsOpen ) {
     return false;
+  }
 
   QMutexLocker _( &mutex );
   // Now seek into the zip file and read its header
-  if ( !zip.seek( offset ) )
+  if ( !zip.seek( offset ) ) {
     return false;
+  }
 
   ZipFile::LocalFileHeader header;
 
@@ -88,8 +93,9 @@ bool IndexedZip::loadFile( uint32_t offset, vector< char > & data )
 
       QByteArray compressedData = zip.read( header.compressedSize );
 
-      if ( compressedData.size() != (int)header.compressedSize )
+      if ( compressedData.size() != (int)header.compressedSize ) {
         return false;
+      }
 
       data.resize( header.uncompressedSize );
 
@@ -130,12 +136,14 @@ bool IndexedZip::loadFile( uint32_t offset, vector< char > & data )
 
 bool IndexedZip::indexFile( BtreeIndexing::IndexedWords & zipFileNames, quint32 * filesCount )
 {
-  if ( !zipIsOpen )
+  if ( !zipIsOpen ) {
     return false;
+  }
 
   QMutexLocker _( &mutex );
-  if ( !ZipFile::positionAtCentralDir( zip ) )
+  if ( !ZipFile::positionAtCentralDir( zip ) ) {
     return false;
+  }
 
   // File seems to be a valid zip file
 
@@ -145,8 +153,9 @@ bool IndexedZip::indexFile( BtreeIndexing::IndexedWords & zipFileNames, quint32 
   ZipFile::CentralDirEntry entry;
 
   bool alreadyCounted;
-  if ( filesCount )
+  if ( filesCount ) {
     *filesCount = 0;
+  }
 
   while ( ZipFile::readNextEntry( zip, entry ) ) {
     if ( entry.compressionMethod == ZipFile::Unsupported ) {
@@ -165,8 +174,9 @@ bool IndexedZip::indexFile( BtreeIndexing::IndexedWords & zipFileNames, quint32 
         hasNonAscii = true;
         break;
       }
-      else if ( !*ptr++ )
+      else if ( !*ptr++ ) {
         break;
+      }
     }
 
     alreadyCounted = false;
@@ -175,8 +185,9 @@ bool IndexedZip::indexFile( BtreeIndexing::IndexedWords & zipFileNames, quint32 
       // Add entry as is
 
       zipFileNames.addSingleWord( Utf8::decode( entry.fileName.data() ), entry.localHeaderOffset );
-      if ( filesCount )
+      if ( filesCount ) {
         *filesCount += 1;
+      }
     }
     else {
       // Try assuming different encodings. Those are UTF8, system locale and two

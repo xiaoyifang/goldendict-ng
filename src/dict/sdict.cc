@@ -170,9 +170,10 @@ public:
     if ( metadata_enable_fts.has_value() ) {
       can_FTS = fts.enabled && metadata_enable_fts.value();
     }
-    else
+    else {
       can_FTS = fts.enabled && !fts.disabledTypes.contains( "SDICT", Qt::CaseInsensitive )
         && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
+    }
   }
 
 protected:
@@ -213,7 +214,6 @@ SdictDictionary::SdictDictionary( string const & id,
   // Full-text search parameters
 
   ftsIdxName = indexFile + Dictionary::getFtsSuffix();
-
 }
 
 SdictDictionary::~SdictDictionary()
@@ -223,8 +223,9 @@ SdictDictionary::~SdictDictionary()
 
 void SdictDictionary::loadIcon() noexcept
 {
-  if ( dictionaryIconLoaded )
+  if ( dictionaryIconLoaded ) {
     return;
+  }
 
   QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
 
@@ -292,12 +293,14 @@ string SdictDictionary::convert( string const & in )
     QRegularExpression end_link_tag( "<\\s*/r\\s*>", QRegularExpression::CaseInsensitiveOption );
 
     n = result.indexOf( start_link_tag, n );
-    if ( n < 0 )
+    if ( n < 0 ) {
       break;
+    }
 
     int end = result.indexOf( end_link_tag, n );
-    if ( end < 0 )
+    if ( end < 0 ) {
       break;
+    }
 
     QRegularExpressionMatch m = start_link_tag.match( result, 0, QRegularExpression::PartialPreferFirstMatch );
     int tag_len               = m.captured().length();
@@ -348,21 +351,26 @@ void SdictDictionary::loadArticle( uint32_t address, string & articleText )
     df.read( &articleBody.front(), articleSize );
   }
 
-  if ( articleBody.empty() )
+  if ( articleBody.empty() ) {
     throw exCantReadFile( getDictionaryFilenames()[ 0 ] );
+  }
 
-  if ( idxHeader.compressionType == 1 )
+  if ( idxHeader.compressionType == 1 ) {
     articleText = decompressZlib( articleBody.data(), articleSize );
-  else if ( idxHeader.compressionType == 2 )
+  }
+  else if ( idxHeader.compressionType == 2 ) {
     articleText = decompressBzip2( articleBody.data(), articleSize );
-  else
+  }
+  else {
     articleText = string( articleBody.data(), articleSize );
+  }
 
   articleText = convert( articleText );
 
   string div = "<div class=\"sdict\"";
-  if ( isToLanguageRTL() )
+  if ( isToLanguageRTL() ) {
     div += " dir=\"rtl\"";
+  }
   div += ">";
 
   articleText.insert( 0, div );
@@ -372,14 +380,17 @@ void SdictDictionary::loadArticle( uint32_t address, string & articleText )
 void SdictDictionary::makeFTSIndex( QAtomicInt & isCancelled )
 {
   if ( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
-          || FtsHelpers::ftsIndexIsOldOrBad( this ) ) )
+          || FtsHelpers::ftsIndexIsOldOrBad( this ) ) ) {
     FTS_index_completed.ref();
+  }
 
-  if ( haveFTSIndex() )
+  if ( haveFTSIndex() ) {
     return;
+  }
 
-  if ( ensureInitDone().size() )
+  if ( ensureInitDone().size() ) {
     return;
+  }
 
 
   gdDebug( "SDict: Building the full-text index for dictionary: %s\n", getName().c_str() );
@@ -493,8 +504,9 @@ void SdictArticleRequest::run()
                                     // by only allowing them to appear once.
 
   wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
-  if ( ignoreDiacritics )
+  if ( ignoreDiacritics ) {
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
+  }
 
   for ( auto & x : chain ) {
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
@@ -502,8 +514,9 @@ void SdictArticleRequest::run()
       return;
     }
 
-    if ( articlesIncluded.find( x.articleOffset ) != articlesIncluded.end() )
+    if ( articlesIncluded.find( x.articleOffset ) != articlesIncluded.end() ) {
       continue; // We already have this article in the body.
+    }
 
     // Now grab that article
 
@@ -520,8 +533,9 @@ void SdictArticleRequest::run()
       // We do the case-folded comparison here.
 
       wstring headwordStripped = Folding::applySimpleCaseOnly( headword );
-      if ( ignoreDiacritics )
+      if ( ignoreDiacritics ) {
         headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
+      }
 
       multimap< wstring, pair< string, string > > & mapToUse =
         ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
@@ -556,11 +570,13 @@ void SdictArticleRequest::run()
     result += dict.isFromLanguageRTL() ? "<h3 dir=\"rtl\">" : "<h3>";
     result += i->second.first;
     result += "</h3>";
-    if ( dict.isToLanguageRTL() )
+    if ( dict.isToLanguageRTL() ) {
       result += "<span dir=\"rtl\">";
+    }
     result += i->second.second;
-    if ( dict.isToLanguageRTL() )
+    if ( dict.isToLanguageRTL() ) {
       result += "</span>";
+    }
   }
 
   appendString( result );
@@ -581,8 +597,9 @@ sptr< Dictionary::DataRequest > SdictDictionary::getArticle( wstring const & wor
 
 QString const & SdictDictionary::getDescription()
 {
-  if ( !dictionaryDescription.isEmpty() )
+  if ( !dictionaryDescription.isEmpty() ) {
     return dictionaryDescription;
+  }
 
   dictionaryDescription = QObject::tr( "Title: %1%2" ).arg( QString::fromUtf8( getName().c_str() ) ).arg( "\n\n" );
 
@@ -592,8 +609,9 @@ QString const & SdictDictionary::getDescription()
     DCT_header dictHeader;
 
     df.seek( 0 );
-    if ( df.readRecords( &dictHeader, sizeof( dictHeader ), 1 ) != 1 )
+    if ( df.readRecords( &dictHeader, sizeof( dictHeader ), 1 ) != 1 ) {
       throw exCantReadFile( getDictionaryFilenames()[ 0 ] );
+    }
 
     int compression = dictHeader.compression & 0x0F;
 
@@ -606,12 +624,15 @@ QString const & SdictDictionary::getDescription()
     data.resize( size );
     df.read( &data.front(), size );
 
-    if ( compression == 1 )
+    if ( compression == 1 ) {
       str = decompressZlib( data.data(), size );
-    else if ( compression == 2 )
+    }
+    else if ( compression == 2 ) {
       str = decompressBzip2( data.data(), size );
-    else
+    }
+    else {
       str = string( data.data(), size );
+    }
 
     dictionaryDescription +=
       QObject::tr( "Copyright: %1%2" ).arg( QString::fromUtf8( str.c_str(), str.size() ) ).arg( "\n\n" );
@@ -621,12 +642,15 @@ QString const & SdictDictionary::getDescription()
     data.resize( size );
     df.read( &data.front(), size );
 
-    if ( compression == 1 )
+    if ( compression == 1 ) {
       str = decompressZlib( data.data(), size );
-    else if ( compression == 2 )
+    }
+    else if ( compression == 2 ) {
       str = decompressBzip2( data.data(), size );
-    else
+    }
+    else {
       str = string( data.data(), size );
+    }
 
     dictionaryDescription +=
       QObject::tr( "Version: %1%2" ).arg( QString::fromUtf8( str.c_str(), str.size() ) ).arg( "\n\n" );
@@ -635,8 +659,9 @@ QString const & SdictDictionary::getDescription()
     gdWarning( "SDict: Failed description reading for \"%s\", reason: %s\n", getName().c_str(), ex.what() );
   }
 
-  if ( dictionaryDescription.isEmpty() )
+  if ( dictionaryDescription.isEmpty() ) {
     dictionaryDescription = "NONE";
+  }
 
   return dictionaryDescription;
 }
@@ -653,8 +678,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
   for ( const auto & fileName : fileNames ) {
     // Skip files with the extensions different to .dct to speed up the
     // scanning
-    if ( !Utils::endsWithIgnoreCase( fileName, ".dct" ) )
+    if ( !Utils::endsWithIgnoreCase( fileName, ".dct" ) ) {
       continue;
+    }
 
     // Got the file -- check if we need to rebuid the index
 
@@ -689,12 +715,15 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         string dictName;
 
-        if ( compression == 1 )
+        if ( compression == 1 ) {
           dictName = decompressZlib( data.data(), size );
-        else if ( compression == 2 )
+        }
+        else if ( compression == 2 ) {
           dictName = decompressBzip2( data.data(), size );
-        else
+        }
+        else {
           dictName = string( data.data(), size );
+        }
 
         initializing.indexingDictionary( dictName );
 
@@ -724,14 +753,16 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
           df.read( &el, sizeof( el ) );
           uint32_t articleOffset = dictHeader.articlesOffset + el.articleOffset;
           size                   = el.nextWord - sizeof( el );
-          if ( el.nextWord < sizeof( el ) )
+          if ( el.nextWord < sizeof( el ) ) {
             break;
+          }
           wordCount++;
           data.resize( size );
           df.read( &data.front(), size );
 
-          if ( articleOffsets.find( articleOffset ) == articleOffsets.end() )
+          if ( articleOffsets.find( articleOffset ) == articleOffsets.end() ) {
             articleOffsets.insert( articleOffset );
+          }
 
           // Insert new entry
 

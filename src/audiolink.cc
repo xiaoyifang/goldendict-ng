@@ -11,8 +11,9 @@ std::string addAudioLink( std::string const & url, std::string const & dictionar
 
 std::string addAudioLink( QString const & url, std::string const & dictionaryId )
 {
-  if ( url.isEmpty() || url.length() < 2 )
+  if ( url.isEmpty() || url.length() < 2 ) {
     return {};
+  }
   GlobalBroadcaster::instance()->pronounce_engine.sendAudio( dictionaryId, url.mid( 1, url.length() - 2 ) );
 
   return std::string( "<script type=\"text/javascript\">" + makeAudioLinkScript( url.toStdString(), dictionaryId )
@@ -31,8 +32,9 @@ std::string makeAudioLinkScript( std::string const & url, std::string const & di
       escaped = false;
       continue;
     }
-    if ( ch == '\'' )
+    if ( ch == '\'' ) {
       ref += '\\';
+    }
     ref += ch;
     escaped = ( ch == '\\' );
   }

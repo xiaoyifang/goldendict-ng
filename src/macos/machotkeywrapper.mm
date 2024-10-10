@@ -41,10 +41,12 @@ void createMapping()
   if( mapping == NULL )
   {
     TISInputSourceRef inputSourceRef = TISCopyInputSourceForLanguage( CFSTR( "en" ) );
-    if ( !inputSourceRef )
+    if ( !inputSourceRef ) {
       inputSourceRef = TISCopyCurrentKeyboardInputSource();
-    if ( !inputSourceRef )
+}
+    if ( !inputSourceRef ) {
       return;
+}
 
     CFDataRef dataRef = ( CFDataRef )TISGetInputSourceProperty( inputSourceRef,
                                      kTISPropertyUnicodeKeyLayoutData ); 
@@ -60,12 +62,14 @@ void createMapping()
     }
 
     const UCKeyboardLayout * keyboardLayoutPtr = ( const UCKeyboardLayout * )CFDataGetBytePtr( dataRef );
-    if( !keyboardLayoutPtr )
+    if( !keyboardLayoutPtr ) {
       return;
+}
 
     mapping = ( struct ReverseMapEntry * )calloc( 128 , sizeof(struct ReverseMapEntry) );
-    if( !mapping )
+    if( !mapping ) {
       return;
+}
 
     mapEntries = 0;
 
@@ -89,13 +93,15 @@ void createMapping()
 quint32 qtKeyToNativeKey( quint32 key )
 {
   createMapping();
-  if( mapping == NULL )
+  if( mapping == NULL ) {
     return 0;
+}
 
   for( int i = 0; i < mapEntries; i++ )
   {
-    if( mapping[ i ].character == key )
+    if( mapping[ i ].character == key ) {
       return mapping[ i ].keyCode;
+}
   }
 
   return 0;
@@ -214,8 +220,9 @@ void HotkeyWrapper::unregister()
 
     UnregisterEventHotKey( hk.hkRef );
 
-    if ( hk.key2 && hk.key2 != hk.key )
+    if ( hk.key2 && hk.key2 != hk.key ) {
       UnregisterEventHotKey( hk.hkRef2 );
+}
   }
 
   (static_cast< QHotkeyApplication * >( qApp ))->unregisterWrapper( this );
@@ -229,29 +236,36 @@ bool HotkeyWrapper::setGlobalKey( QKeySequence const & seq, int handle )
 
 bool HotkeyWrapper::setGlobalKey( int key, int key2, Qt::KeyboardModifiers modifier, int handle )
 {
-  if ( !key )
+  if ( !key ) {
     return false; // We don't monitor empty combinations
+}
 
   quint32 vk = nativeKey( key );
 
-  if( vk == 0 )
+  if( vk == 0 ) {
     return false;
+}
 
   quint32 vk2 = key2 ? nativeKey( key2 ) : 0;
 
   static int nextId = 1;
-  if( nextId > 0xBFFF - 1 )
+  if( nextId > 0xBFFF - 1 ) {
     nextId = 1;
+}
 
   quint32 mod = 0;
-  if( modifier & Qt::CTRL )
+  if( modifier & Qt::CTRL ) {
     mod |= cmdKey;
-  if( modifier & Qt::ALT )
+}
+  if( modifier & Qt::ALT ) {
     mod |= optionKey;
-  if( modifier & Qt::SHIFT )
+}
+  if( modifier & Qt::SHIFT ) {
     mod |= shiftKey;
-  if( modifier & Qt::META )
+}
+  if( modifier & Qt::META ) {
     mod |= controlKey;
+}
 
   hotkeys.append( HotkeyStruct( vk, vk2, mod, handle, nextId ) );
   HotkeyStruct &hk = hotkeys.last();
@@ -261,8 +275,9 @@ bool HotkeyWrapper::setGlobalKey( int key, int key2, Qt::KeyboardModifiers modif
   hotKeyID.id = nextId;
 
   OSStatus ret = RegisterEventHotKey( vk, mod, hotKeyID, GetApplicationEventTarget(), 0, &hk.hkRef );
-  if ( ret != 0 )
+  if ( ret != 0 ) {
     return false;
+}
 
   if ( vk2 && vk2 != vk )
   {
