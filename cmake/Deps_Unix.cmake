@@ -6,7 +6,8 @@ if (APPLE)
 
     # libzim depends on ICU, but the ICU from homebrew is "key-only", we need to manually prioritize it
     # See `brew info icu4c` if this no longer works
-    set(ENV{PKG_CONFIG_PATH} "$ENV{PKG_CONFIG_PATH}:/usr/local/opt/icu4c/lib/pkgconfig:/opt/homebrew/opt/icu4c/lib/pkgconfig")
+    # Note: Remove icu4c@75 if it fails again
+    set(ENV{PKG_CONFIG_PATH} "$ENV{PKG_CONFIG_PATH}:/usr/local/opt/icu4c/lib/pkgconfig:/opt/homebrew/opt/icu4c@75/lib/pkgconfig:/opt/homebrew/opt/icu4c/lib/pkgconfig")
 endif ()
 
 target_include_directories(${GOLDENDICT} PRIVATE
