@@ -3704,7 +3704,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Toggle popup.</source>
-      <translation>Scan-Popup umschalten.</translation>
+      <translation>Popup umschalten.</translation>
     </message>
     <message>
       <source>Print version and diagnosis info.</source>

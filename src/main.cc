@@ -232,7 +232,7 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
                                               QObject::tr( "Force the word to be translated in the mainwindow" ) );
 
   QCommandLineOption togglePopupOption( QStringList() << "t"
-                                                      << "toggle-scan-popup",
+                                                      << "toggle-popup",
                                         QObject::tr( "Toggle popup." ) );
 
   QCommandLineOption printVersion( QStringList() << "v"
