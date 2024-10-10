@@ -59,9 +59,9 @@ void History::addItem( Item const & item )
   if ( items.contains( item ) )
     items.removeOne( item );
 
-  items.push_front(item);
+  items.push_front( item );
 
-  Item& addedItem = items.first();
+  Item & addedItem = items.first();
 
   // remove \n and \r to avoid destroying the history file
   addedItem.word.replace( QChar::LineFeed, QChar::Space );

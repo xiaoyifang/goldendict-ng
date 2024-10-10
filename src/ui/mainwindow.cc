@@ -3970,13 +3970,13 @@ void MainWindow::addWordToHistory( const QString & word )
   //    skip epwing reference link. epwing reference link has the pattern of r%dAt%d
   if ( QRegularExpressionMatch m = RX::Epwing::refWord.match( word ); m.hasMatch() )
     return;
-  history.addItem( {word.trimmed()} );
+  history.addItem( { word.trimmed() } );
 }
 
 void MainWindow::forceAddWordToHistory( const QString & word )
 {
   history.enableAdd( true );
-  history.addItem( {word.trimmed()} );
+  history.addItem( { word.trimmed() } );
   history.enableAdd( cfg.preferences.storeHistory );
 }
 
