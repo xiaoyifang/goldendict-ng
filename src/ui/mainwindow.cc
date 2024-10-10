@@ -3959,25 +3959,6 @@ void MainWindow::on_importFavorites_triggered()
   mainStatusBar->showMessage( tr( "Favorites import complete" ), 5000 );
 }
 
-void MainWindow::fillWordListFromHistory()
-{
-  ui.wordList->setUpdatesEnabled( false );
-  ui.wordList->clear();
-
-  QList< History::Item > const & items = history.getItems();
-  for ( const auto & item : items ) {
-    History::Item const * i = &item;
-    auto s                  = new QListWidgetItem( i->word, ui.wordList );
-    if ( s->text().at( 0 ).direction() == QChar::DirR )
-      s->setTextAlignment( Qt::AlignRight );
-    if ( s->text().at( 0 ).direction() == QChar::DirL )
-      s->setTextAlignment( Qt::AlignLeft );
-    ui.wordList->addItem( s );
-  }
-
-  ui.wordList->setUpdatesEnabled( true );
-}
-
 void MainWindow::focusWordList()
 {
   if ( ui.wordList->count() > 0 )
