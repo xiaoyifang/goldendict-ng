@@ -163,8 +163,9 @@ QTextCodec * WebSiteArticleRequest::codecForHtml( QByteArray const & ba )
 
 void WebSiteArticleRequest::requestFinished( QNetworkReply * r )
 {
-  if ( isFinished() ) // Was cancelled
+  if ( isFinished() ) { // Was cancelled
     return;
+  }
 
   if ( r != netReply ) {
     // Well, that's not our reply, don't do anything
@@ -192,17 +193,20 @@ void WebSiteArticleRequest::requestFinished( QNetworkReply * r )
     QString articleString;
 
     QTextCodec * codec = WebSiteArticleRequest::codecForHtml( replyData );
-    if ( codec )
+    if ( codec ) {
       articleString = codec->toUnicode( replyData );
-    else
+    }
+    else {
       articleString = QString::fromUtf8( replyData );
+    }
 
     // Change links from relative to absolute
 
     QString root = netReply->url().scheme() + "://" + netReply->url().host();
     QString base = root + netReply->url().path();
-    while ( !base.isEmpty() && !base.endsWith( "/" ) )
+    while ( !base.isEmpty() && !base.endsWith( "/" ) ) {
       base.chop( 1 );
+    }
 
     QRegularExpression tags( R"(<\s*(a|link|img|script)\s+[^>]*(src|href)\s*=\s*['"][^>]+>)",
                              QRegularExpression::CaseInsensitiveOption );
@@ -233,12 +237,15 @@ void WebSiteArticleRequest::requestFinished( QNetworkReply * r )
       }
 
       QString newUrl = match_links.captured( 1 ) + "=" + match_links.captured( 2 );
-      if ( url.startsWith( "//" ) )
+      if ( url.startsWith( "//" ) ) {
         newUrl += netReply->url().scheme() + ":";
-      else if ( url.startsWith( "/" ) )
+      }
+      else if ( url.startsWith( "/" ) ) {
         newUrl += root;
-      else
+      }
+      else {
         newUrl += base;
+      }
       newUrl += match_links.captured( 3 );
 
       tag.replace( match_links.capturedStart(), match_links.capturedLength(), newUrl );
@@ -313,8 +320,9 @@ WebSiteDictionary::getArticle( wstring const & str, vector< wstring > const &, w
   QByteArray urlString;
 
   // Context contains the right url to go to
-  if ( context.size() )
+  if ( context.size() ) {
     urlString = Utf8::encode( context ).c_str();
+  }
   else {
     urlString = urlTemplate;
 
@@ -323,35 +331,42 @@ WebSiteDictionary::getArticle( wstring const & str, vector< wstring > const &, w
     urlString.replace( "%25GDWORD%25", inputWord.toUtf8().toPercentEncoding() );
 
     QTextCodec * codec = QTextCodec::codecForName( "Windows-1251" );
-    if ( codec )
+    if ( codec ) {
       urlString.replace( "%25GD1251%25", codec->fromUnicode( inputWord ).toPercentEncoding() );
+    }
 
     codec = QTextCodec::codecForName( "Big-5" );
-    if ( codec )
+    if ( codec ) {
       urlString.replace( "%25GDBIG5%25", codec->fromUnicode( inputWord ).toPercentEncoding() );
+    }
 
     codec = QTextCodec::codecForName( "Big5-HKSCS" );
-    if ( codec )
+    if ( codec ) {
       urlString.replace( "%25GDBIG5HKSCS%25", codec->fromUnicode( inputWord ).toPercentEncoding() );
+    }
 
     codec = QTextCodec::codecForName( "Shift-JIS" );
-    if ( codec )
+    if ( codec ) {
       urlString.replace( "%25GDSHIFTJIS%25", codec->fromUnicode( inputWord ).toPercentEncoding() );
+    }
 
     codec = QTextCodec::codecForName( "GB18030" );
-    if ( codec )
+    if ( codec ) {
       urlString.replace( "%25GDGBK%25", codec->fromUnicode( inputWord ).toPercentEncoding() );
+    }
 
 
     // Handle all ISO-8859 encodings
     for ( int x = 1; x <= 16; ++x ) {
       codec = QTextCodec::codecForName( QString( "ISO 8859-%1" ).arg( x ).toLatin1() );
-      if ( codec )
+      if ( codec ) {
         urlString.replace( QString( "%25GDISO%1%25" ).arg( x ).toUtf8(),
                            codec->fromUnicode( inputWord ).toPercentEncoding() );
+      }
 
-      if ( x == 10 )
+      if ( x == 10 ) {
         x = 12; // Skip encodings 11..12, they don't exist
+      }
     }
   }
 
@@ -439,8 +454,9 @@ void WebSiteResourceRequest::cancel()
 
 void WebSiteResourceRequest::requestFinished( QNetworkReply * r )
 {
-  if ( isFinished() ) // Was cancelled
+  if ( isFinished() ) { // Was cancelled
     return;
+  }
 
   if ( r != netReply ) {
     // Well, that's not our reply, don't do anything
@@ -473,8 +489,9 @@ void WebSiteResourceRequest::requestFinished( QNetworkReply * r )
 
     hasAnyData = true;
   }
-  else
+  else {
     setErrorString( netReply->errorString() );
+  }
 
   disconnect( netReply, 0, 0, 0 );
   netReply->deleteLater();
@@ -486,23 +503,27 @@ sptr< Dictionary::DataRequest > WebSiteDictionary::getResource( string const & n
 {
   QString link = QString::fromUtf8( name.c_str() );
   int pos      = link.indexOf( '/' );
-  if ( pos > 0 )
+  if ( pos > 0 ) {
     link.replace( pos, 1, "://" );
+  }
   return std::make_shared< WebSiteResourceRequest >( link, netMgr, this );
 }
 
 void WebSiteDictionary::loadIcon() noexcept
 {
-  if ( dictionaryIconLoaded )
+  if ( dictionaryIconLoaded ) {
     return;
+  }
 
   if ( !iconFilename.isEmpty() ) {
     QFileInfo fInfo( QDir( Config::getConfigDir() ), iconFilename );
-    if ( fInfo.isFile() )
+    if ( fInfo.isFile() ) {
       loadIconFromFile( fInfo.absoluteFilePath(), true );
+    }
   }
-  if ( dictionaryIcon.isNull() && !loadIconFromText( ":/icons/webdict.svg", QString::fromStdString( name ) ) )
+  if ( dictionaryIcon.isNull() && !loadIconFromText( ":/icons/webdict.svg", QString::fromStdString( name ) ) ) {
     dictionaryIcon = QIcon( ":/icons/webdict.svg" );
+  }
   dictionaryIconLoaded = true;
 }
 
@@ -514,13 +535,14 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::WebSites const & w
   vector< sptr< Dictionary::Class > > result;
 
   for ( const auto & w : ws ) {
-    if ( w.enabled )
+    if ( w.enabled ) {
       result.push_back( std::make_shared< WebSiteDictionary >( w.id.toUtf8().data(),
                                                                w.name.toUtf8().data(),
                                                                w.url,
                                                                w.iconFilename,
                                                                w.inside_iframe,
                                                                mgr ) );
+    }
   }
 
   return result;

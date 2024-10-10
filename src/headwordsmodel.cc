@@ -88,13 +88,15 @@ void HeadwordListModel::requestFinished()
       }
       else if ( ( *i )->matchesCount() ) {
         auto allmatches = ( *i )->getAllMatches();
-        for ( auto & match : allmatches )
+        for ( auto & match : allmatches ) {
           filterWords.append( QString::fromStdU32String( match.word ) );
+        }
       }
       queuedRequests.erase( i++ );
     }
-    else
+    else {
       ++i;
+    }
   }
 
   if ( queuedRequests.empty() ) {
@@ -115,11 +117,13 @@ int HeadwordListModel::wordCount() const
 
 QVariant HeadwordListModel::data( const QModelIndex & index, int role ) const
 {
-  if ( !index.isValid() )
+  if ( !index.isValid() ) {
     return {};
+  }
 
-  if ( index.row() >= totalSize || index.row() < 0 || index.row() >= words.size() )
+  if ( index.row() >= totalSize || index.row() < 0 || index.row() >= words.size() ) {
     return {};
+  }
 
   if ( role == Qt::DisplayRole ) {
     return words.at( index.row() );
@@ -129,15 +133,17 @@ QVariant HeadwordListModel::data( const QModelIndex & index, int role ) const
 
 bool HeadwordListModel::canFetchMore( const QModelIndex & parent ) const
 {
-  if ( parent.isValid() || filtering || finished )
+  if ( parent.isValid() || filtering || finished ) {
     return false;
+  }
   return ( words.size() < totalSize );
 }
 
 void HeadwordListModel::fetchMore( const QModelIndex & parent )
 {
-  if ( parent.isValid() || filtering || finished )
+  if ( parent.isValid() || filtering || finished ) {
     return;
+  }
 
   //arbitrary number
   if ( totalSize < HEADWORDS_MAX_LIMIT ) {
@@ -192,8 +198,9 @@ QSet< QString > HeadwordListModel::getRemainRows( int & nodeIndex )
 
   QSet< QString > filtered;
   for ( const auto & word : headword ) {
-    if ( !containWord( word ) )
+    if ( !containWord( word ) ) {
       filtered.insert( word );
+    }
   }
   return filtered;
 }

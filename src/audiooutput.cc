@@ -53,7 +53,7 @@ public:
 #if QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 )
   using AudioOutput = QAudioOutput;
 #else
-  using AudioOutput      = QAudioSink;
+  using AudioOutput = QAudioSink;
 #endif
   AudioOutput * audioOutput = nullptr;
   QByteArray buffer;
@@ -73,18 +73,21 @@ public:
 
   qint64 readData( char * data, qint64 len ) override
   {
-    if ( !len )
+    if ( !len ) {
       return 0;
+    }
 
     QMutexLocker locker( &mutex );
     qint64 bytesWritten = 0;
     while ( len && !quit ) {
       if ( buffer.isEmpty() ) {
         // Wait for more frames
-        if ( bytesWritten == 0 )
+        if ( bytesWritten == 0 ) {
           cond.wait( &mutex );
-        if ( buffer.isEmpty() )
+        }
+        if ( buffer.isEmpty() ) {
           break;
+        }
       }
 
       auto sampleData   = buffer.data();
@@ -123,8 +126,9 @@ public:
   {
     if ( !audioOutput || ( fmt.isValid() && audioOutput->format() != fmt )
          || audioOutput->state() == QAudio::StoppedState ) {
-      if ( audioOutput )
+      if ( audioOutput ) {
         audioOutput->deleteLater();
+      }
       audioOutput = new AudioOutput( fmt );
       QObject::connect( audioOutput, &AudioOutput::stateChanged, audioOutput, [ & ]( QAudio::State state ) {
         switch ( state ) {
@@ -141,8 +145,9 @@ public:
       } );
 
       audioOutput->start( this );
-      if ( audioOutput && audioOutput->state() == QAudio::StoppedState )
+      if ( audioOutput && audioOutput->state() == QAudio::StoppedState ) {
         quit = true;
+      }
     }
 
     //    audioOutput->setVolume(volume);
@@ -155,8 +160,9 @@ public:
       cond.wait( &mutex, 10 );
       auto fmt = sampleRate == 0 ? QAudioFormat() : format( sampleRate, channels );
       locker.unlock();
-      if ( fmt.isValid() )
+      if ( fmt.isValid() ) {
         init( fmt );
+      }
       QCoreApplication::processEvents();
     }
     if ( audioOutput ) {
@@ -202,8 +208,9 @@ AudioOutput::~AudioOutput()
 bool AudioOutput::play( const uint8_t * data, qint64 len )
 {
   Q_D( AudioOutput );
-  if ( d->quit )
+  if ( d->quit ) {
     return false;
+  }
 
   QMutexLocker locker( &d->mutex );
   auto cuint = const_cast< uint8_t * >( data );

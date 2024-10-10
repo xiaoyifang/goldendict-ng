@@ -41,8 +41,9 @@ QString ExternalAudioPlayer::play( const char * data, int size )
     return e.what();
   }
 
-  if ( exitingViewer )
+  if ( exitingViewer ) {
     return QString(); // Will start later.
+  }
   return startViewer();
 }
 
@@ -58,8 +59,9 @@ void ExternalAudioPlayer::stop()
     //      while synchronously waiting for the external process to exit.
     exitingViewer = viewer.release();
   }
-  else // viewer is either not started or already stopped -> simply destroy it.
+  else { // viewer is either not started or already stopped -> simply destroy it.
     viewer.reset();
+  }
 }
 
 void ExternalAudioPlayer::onViewerDestroyed( QObject * destroyedViewer )
@@ -68,12 +70,14 @@ void ExternalAudioPlayer::onViewerDestroyed( QObject * destroyedViewer )
     exitingViewer = 0;
     if ( viewer ) {
       QString errorMessage = startViewer();
-      if ( !errorMessage.isEmpty() )
+      if ( !errorMessage.isEmpty() ) {
         emit error( errorMessage );
+      }
     }
   }
-  else if ( viewer.get() == destroyedViewer )
+  else if ( viewer.get() == destroyedViewer ) {
     viewer.reset( nullptr ); // viewer finished and died -> reset
+  }
 }
 
 QString ExternalAudioPlayer::startViewer()

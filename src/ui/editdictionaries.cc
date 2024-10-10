@@ -90,8 +90,9 @@ void EditDictionaries::save( bool rebuildGroups )
   const Config::Group newOrder    = orderAndProps->getCurrentDictionaryOrder();
   const Config::Group newInactive = orderAndProps->getCurrentInactiveDictionaries();
 
-  if ( isSourcesChanged() )
+  if ( isSourcesChanged() ) {
     acceptChangedSources( rebuildGroups );
+  }
 
   if ( origCfg.groups != newGroups || origCfg.dictionaryOrder != newOrder
        || origCfg.inactiveDictionaries != newInactive ) {
@@ -110,8 +111,9 @@ void EditDictionaries::accept()
 
 void EditDictionaries::currentChanged( int index )
 {
-  if ( index == -1 || !isVisible() )
+  if ( index == -1 || !isVisible() ) {
     return; // Sent upon the construction/destruction
+  }
   qDebug() << ui.tabs->currentWidget()->objectName();
   if ( lastTabName.isEmpty() || lastTabName == "Sources" ) {
     // We're switching away from the Sources tab -- if its contents were
@@ -197,7 +199,7 @@ void EditDictionaries::acceptChangedSources( bool rebuildGroups )
   cfg.dictServers     = sources.getDictServers();
   cfg.programs        = sources.getPrograms();
 #ifndef NO_TTS_SUPPORT
-  cfg.voiceEngines    = sources.getVoiceEngines();
+  cfg.voiceEngines = sources.getVoiceEngines();
 #endif
   ui.tabs->setUpdatesEnabled( false );
   // Those hold pointers to dictionaries, we need to free them.
@@ -211,22 +213,25 @@ void EditDictionaries::acceptChangedSources( bool rebuildGroups )
   // If no changes to groups were made, update the original data
   const bool noGroupEdits = ( origCfg.groups == savedGroups );
 
-  if ( noGroupEdits )
+  if ( noGroupEdits ) {
     savedGroups = cfg.groups;
+  }
 
   Instances::updateNames( savedGroups, dictionaries );
 
   const bool noOrderEdits = ( origCfg.dictionaryOrder == savedOrder );
 
-  if ( noOrderEdits )
+  if ( noOrderEdits ) {
     savedOrder = cfg.dictionaryOrder;
+  }
 
   Instances::updateNames( savedOrder, dictionaries );
 
   const bool noInactiveEdits = ( origCfg.inactiveDictionaries == savedInactive );
 
-  if ( noInactiveEdits )
+  if ( noInactiveEdits ) {
     savedInactive = cfg.inactiveDictionaries;
+  }
 
   Instances::updateNames( savedInactive, dictionaries );
 
@@ -242,14 +247,17 @@ void EditDictionaries::acceptChangedSources( bool rebuildGroups )
     connect( groups, &Groups::showDictionaryInfo, this, &EditDictionaries::showDictionaryInfo );
     connect( orderAndProps, &OrderAndProps::showDictionaryHeadwords, this, &EditDictionaries::showDictionaryHeadwords );
 
-    if ( noGroupEdits )
+    if ( noGroupEdits ) {
       origCfg.groups = groups->getGroups();
+    }
 
-    if ( noOrderEdits )
+    if ( noOrderEdits ) {
       origCfg.dictionaryOrder = orderAndProps->getCurrentDictionaryOrder();
+    }
 
-    if ( noInactiveEdits )
+    if ( noInactiveEdits ) {
       origCfg.inactiveDictionaries = orderAndProps->getCurrentInactiveDictionaries();
+    }
   }
   ui.tabs->setUpdatesEnabled( true );
 }

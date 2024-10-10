@@ -63,8 +63,9 @@ protected:
 sptr< WordSearchRequest > ProgramsDictionary::prefixMatch( wstring const & word, unsigned long /*maxResults*/ )
 
 {
-  if ( prg.type == Config::Program::PrefixMatch )
+  if ( prg.type == Config::Program::PrefixMatch ) {
     return std::make_shared< ProgramWordSearchRequest >( QString::fromStdU32String( word ), prg );
+  }
   else {
     sptr< WordSearchRequestInstant > sr = std::make_shared< WordSearchRequestInstant >();
 
@@ -116,16 +117,19 @@ ProgramsDictionary::getArticle( wstring const & word, vector< wstring > const &,
 
 void ProgramsDictionary::loadIcon() noexcept
 {
-  if ( dictionaryIconLoaded )
+  if ( dictionaryIconLoaded ) {
     return;
+  }
 
   if ( !prg.iconFilename.isEmpty() ) {
     QFileInfo fInfo( QDir( Config::getConfigDir() ), prg.iconFilename );
-    if ( fInfo.isFile() )
+    if ( fInfo.isFile() ) {
       loadIconFromFile( fInfo.absoluteFilePath(), true );
+    }
   }
-  if ( dictionaryIcon.isNull() )
+  if ( dictionaryIcon.isNull() ) {
     dictionaryIcon = QIcon( ":/icons/programdict.svg" );
+  }
   dictionaryIconLoaded = true;
 }
 
@@ -185,16 +189,19 @@ void RunInstance::handleProcessFinished()
   QByteArray output = process.readAllStandardOutput();
 
   QString error;
-  if ( process.exitStatus() != QProcess::NormalExit )
+  if ( process.exitStatus() != QProcess::NormalExit ) {
     error = tr( "The program has crashed." );
-  else if ( int code = process.exitCode() )
+  }
+  else if ( int code = process.exitCode() ) {
     error = tr( "The program has returned exit code %1." ).arg( code );
+  }
 
   if ( !error.isEmpty() ) {
     QByteArray err = process.readAllStandardError();
 
-    if ( !err.isEmpty() )
+    if ( !err.isEmpty() ) {
       error += "\n\n" + QString::fromLocal8Bit( err );
+    }
   }
 
   emit finished( output, error );
@@ -227,15 +234,17 @@ void ProgramDataRequest::instanceFinished( QByteArray output, QString error )
             unsigned char * uchars = reinterpret_cast< unsigned char * >( output.data() );
             if ( output.length() >= 2 && uchars[ 0 ] == 0xFF && uchars[ 1 ] == 0xFE ) {
               int size = output.length() - 2;
-              if ( size & 1 )
+              if ( size & 1 ) {
                 size -= 1;
+              }
               string res  = Iconv::toUtf8( "UTF-16LE", output.data() + 2, size );
               prog_output = QString::fromUtf8( res.c_str(), res.size() );
             }
             else if ( output.length() >= 2 && uchars[ 0 ] == 0xFE && uchars[ 1 ] == 0xFF ) {
               int size = output.length() - 2;
-              if ( size & 1 )
+              if ( size & 1 ) {
                 size -= 1;
+              }
               string res  = Iconv::toUtf8( "UTF-16BE", output.data() + 2, size );
               prog_output = QString::fromUtf8( res.c_str(), res.size() );
             }
@@ -259,14 +268,16 @@ void ProgramDataRequest::instanceFinished( QByteArray output, QString error )
             unsigned char * uchars = reinterpret_cast< unsigned char * >( output.data() );
             if ( output.length() >= 2 && uchars[ 0 ] == 0xFF && uchars[ 1 ] == 0xFE ) {
               int size = output.length() - 2;
-              if ( size & 1 )
+              if ( size & 1 ) {
                 size -= 1;
+              }
               result += Iconv::toUtf8( "UTF-16LE", output.data() + 2, size );
             }
             else if ( output.length() >= 2 && uchars[ 0 ] == 0xFE && uchars[ 1 ] == 0xFF ) {
               int size = output.length() - 2;
-              if ( size & 1 )
+              if ( size & 1 ) {
                 size -= 1;
+              }
               result += Iconv::toUtf8( "UTF-16BE", output.data() + 2, size );
             }
             else if ( output.length() >= 3 && uchars[ 0 ] == 0xEF && uchars[ 1 ] == 0xBB && uchars[ 2 ] == 0xBF ) {
@@ -290,8 +301,9 @@ void ProgramDataRequest::instanceFinished( QByteArray output, QString error )
       hasAnyData = true;
     }
 
-    if ( !error.isEmpty() )
+    if ( !error.isEmpty() ) {
       setErrorString( error );
+    }
 
     finish();
   }
@@ -321,11 +333,13 @@ void ProgramWordSearchRequest::instanceFinished( QByteArray output, QString erro
     output.replace( "\r\n", "\n" );
     QStringList result = QString::fromUtf8( output ).split( "\n", Qt::SkipEmptyParts );
 
-    for ( const auto & x : result )
+    for ( const auto & x : result ) {
       matches.push_back( Dictionary::WordMatch( gd::toWString( x ) ) );
+    }
 
-    if ( !error.isEmpty() )
+    if ( !error.isEmpty() ) {
       setErrorString( error );
+    }
 
     finish();
   }
@@ -341,9 +355,11 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::Programs const & p
 {
   vector< sptr< Dictionary::Class > > result;
 
-  for ( const auto & program : programs )
-    if ( program.enabled )
+  for ( const auto & program : programs ) {
+    if ( program.enabled ) {
       result.push_back( std::make_shared< ProgramsDictionary >( program ) );
+    }
+  }
 
   return result;
 }

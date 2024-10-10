@@ -20,10 +20,12 @@ bool dictNameLessThan( sptr< Dictionary::Class > const & dict1, sptr< Dictionary
 {
   QString str1 = QString::fromUtf8( dict1->getName().c_str() );
   QString str2 = QString::fromUtf8( dict2->getName().c_str() );
-  if ( str1.isEmpty() && !str2.isEmpty() )
+  if ( str1.isEmpty() && !str2.isEmpty() ) {
     return false;
-  if ( !str1.isEmpty() && str2.isEmpty() )
+  }
+  if ( !str1.isEmpty() && str2.isEmpty() ) {
     return true;
+  }
 
   return str1.localeAwareCompare( str2 ) < 0;
 }
@@ -35,8 +37,8 @@ bool dictLessThan( sptr< Dictionary::Class > const & dict1, sptr< Dictionary::Cl
   if ( idFrom1 == 0 ) {
     std::pair< quint32, quint32 > ids =
       LangCoder::findLangIdPairFromName( QString::fromUtf8( dict1->getName().c_str() ) );
-    idFrom1                       = ids.first;
-    idTo1                         = ids.second;
+    idFrom1 = ids.first;
+    idTo1   = ids.second;
   }
 
   int idFrom2 = dict2->getLangFrom();
@@ -44,36 +46,44 @@ bool dictLessThan( sptr< Dictionary::Class > const & dict1, sptr< Dictionary::Cl
   if ( idFrom2 == 0 ) {
     std::pair< quint32, quint32 > ids =
       LangCoder::findLangIdPairFromName( QString::fromUtf8( dict2->getName().c_str() ) );
-    idFrom2                       = ids.first;
-    idTo2                         = ids.second;
+    idFrom2 = ids.first;
+    idTo2   = ids.second;
   }
 
   QString str1 = LangCoder::decode( idFrom1 );
   QString str2 = LangCoder::decode( idFrom2 );
-  if ( str1.isEmpty() && !str2.isEmpty() )
+  if ( str1.isEmpty() && !str2.isEmpty() ) {
     return false;
-  if ( !str1.isEmpty() && str2.isEmpty() )
+  }
+  if ( !str1.isEmpty() && str2.isEmpty() ) {
     return true;
+  }
   int res = str1.localeAwareCompare( str2 );
-  if ( res )
+  if ( res ) {
     return res < 0;
+  }
 
   str1 = LangCoder::decode( idTo1 );
   str2 = LangCoder::decode( idTo2 );
-  if ( str1.isEmpty() && !str2.isEmpty() )
+  if ( str1.isEmpty() && !str2.isEmpty() ) {
     return false;
-  if ( !str1.isEmpty() && str2.isEmpty() )
+  }
+  if ( !str1.isEmpty() && str2.isEmpty() ) {
     return true;
+  }
   res = str1.localeAwareCompare( str2 );
-  if ( res )
+  if ( res ) {
     return res < 0;
+  }
 
   str1 = QString::fromUtf8( dict1->getName().c_str() );
   str2 = QString::fromUtf8( dict2->getName().c_str() );
-  if ( str1.isEmpty() && !str2.isEmpty() )
+  if ( str1.isEmpty() && !str2.isEmpty() ) {
     return false;
-  if ( !str1.isEmpty() && str2.isEmpty() )
+  }
+  if ( !str1.isEmpty() && str2.isEmpty() ) {
     return true;
+  }
 
   return str1.localeAwareCompare( str2 ) < 0;
 }
@@ -162,16 +172,18 @@ void OrderAndProps::dictionarySelectionChanged( const QItemSelection & current, 
 {
   Q_UNUSED( deselected )
 
-  if ( current.empty() )
+  if ( current.empty() ) {
     return;
+  }
 
   describeDictionary( ui.dictionaryOrder, ui.searchLine->mapToSource( current.front().topLeft() ) );
 }
 
 void OrderAndProps::inactiveDictionarySelectionChanged( QItemSelection const & current )
 {
-  if ( current.empty() )
+  if ( current.empty() ) {
     return;
+  }
   describeDictionary( ui.inactiveDictionaries, current.front().topLeft() );
 }
 
@@ -195,8 +207,9 @@ void OrderAndProps::disableDictionaryDescription()
 
 void OrderAndProps::describeDictionary( DictListWidget * lst, QModelIndex const & idx )
 {
-  if ( !idx.isValid() || (unsigned)idx.row() >= lst->getCurrentDictionaries().size() )
+  if ( !idx.isValid() || (unsigned)idx.row() >= lst->getCurrentDictionaries().size() ) {
     disableDictionaryDescription();
+  }
   else {
     sptr< Dictionary::Class > dict = lst->getCurrentDictionaries()[ idx.row() ];
 
@@ -249,8 +262,9 @@ void OrderAndProps::contextMenuRequested( const QPoint & pos )
   QAction * showHeadwordsAction = NULL;
   QModelIndex idx               = ui.searchLine->mapToSource( ui.dictionaryOrder->indexAt( pos ) );
   sptr< Dictionary::Class > dict;
-  if ( idx.isValid() && (unsigned)idx.row() < ui.dictionaryOrder->getCurrentDictionaries().size() )
+  if ( idx.isValid() && (unsigned)idx.row() < ui.dictionaryOrder->getCurrentDictionaries().size() ) {
     dict = ui.dictionaryOrder->getCurrentDictionaries()[ idx.row() ];
+  }
   if ( dict && dict->getWordCount() > 0 ) {
     showHeadwordsAction = new QAction( tr( "Dictionary headwords" ), &menu );
     menu.addAction( showHeadwordsAction );
@@ -265,10 +279,12 @@ void OrderAndProps::contextMenuRequested( const QPoint & pos )
 
   if ( result == sortNameAction || result == sortLangAction ) {
     vector< sptr< Dictionary::Class > > sortedDicts = ui.dictionaryOrder->getCurrentDictionaries();
-    if ( result == sortNameAction )
+    if ( result == sortNameAction ) {
       sort( sortedDicts.begin(), sortedDicts.end(), dictNameLessThan );
-    else
+    }
+    else {
       sort( sortedDicts.begin(), sortedDicts.end(), dictLessThan );
+    }
     ui.dictionaryOrder->populate( sortedDicts );
   }
 

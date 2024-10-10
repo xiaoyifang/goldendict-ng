@@ -26,21 +26,25 @@ string simplifyString( string const & str, bool lowercase )
 
   size_t beginPos = 0;
 
-  while ( beginPos < str.size() && Utf8::isspace( str[ beginPos ] ) )
+  while ( beginPos < str.size() && Utf8::isspace( str[ beginPos ] ) ) {
     ++beginPos;
+  }
 
   size_t endPos = str.size();
 
-  while ( endPos && Utf8::isspace( str[ endPos - 1 ] ) )
+  while ( endPos && Utf8::isspace( str[ endPos - 1 ] ) ) {
     --endPos;
+  }
 
-  if ( endPos <= beginPos )
+  if ( endPos <= beginPos ) {
     return string();
+  }
 
   result.reserve( endPos - beginPos );
 
-  while ( beginPos < endPos )
+  while ( beginPos < endPos ) {
     result.push_back( lowercase ? tolower( str[ beginPos++ ] ) : str[ beginPos++ ] );
+  }
 
   return result;
 }

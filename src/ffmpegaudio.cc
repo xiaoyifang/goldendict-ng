@@ -94,13 +94,15 @@ static int readAudioData( void * opaque, unsigned char * buffer, int bufferSize 
   // This function is passed as the read_packet callback into avio_alloc_context().
   // The documentation for this callback parameter states:
   // For stream protocols, must never return 0 but rather a proper AVERROR code.
-  if ( pStream->atEnd() )
+  if ( pStream->atEnd() ) {
     return AVERROR_EOF;
+  }
   const int bytesRead = pStream->readRawData( (char *)buffer, bufferSize );
   // QDataStream::readRawData() returns 0 at EOF => return AVERROR_EOF in this case.
   // An error is unlikely here, so just print a warning and return AVERROR_EOF too.
-  if ( bytesRead < 0 )
+  if ( bytesRead < 0 ) {
     gdWarning( "readAudioData: error while reading raw data." );
+  }
   return bytesRead > 0 ? bytesRead : AVERROR_EOF;
 }
 
@@ -199,8 +201,8 @@ bool DecoderContext::openCodec( QString & errorString )
                             codecContext_->sample_fmt,
                             codecContext_->sample_rate,
                             0,
-                            nullptr ) != 0
-  ) {
+                            nullptr )
+       != 0 ) {
     qDebug() << "swr_alloc_set_opts2 failed.";
   }
   #else
@@ -295,11 +297,11 @@ bool DecoderContext::openOutputDevice( QString & errorString )
     errorString += QStringLiteral( "Failed to create audioOutput." );
     return false;
   }
-#if LIBAVCODEC_VERSION_MAJOR >= 61
+  #if LIBAVCODEC_VERSION_MAJOR >= 61
   audioOutput->setAudioFormat( 44100, codecContext_->ch_layout.nb_channels );
-#else
+  #else
   audioOutput->setAudioFormat( 44100, codecContext_->channels );
-#endif
+  #endif
   return true;
 }
 
@@ -322,8 +324,9 @@ bool DecoderContext::play( QString & errorString )
       while ( ret >= 0 ) {
         ret = avcodec_receive_frame( codecContext_, frame );
 
-        if ( Utils::AtomicInt::loadAcquire( isCancelled_ ) || ret < 0 )
+        if ( Utils::AtomicInt::loadAcquire( isCancelled_ ) || ret < 0 ) {
           break;
+        }
 
         playFrame( frame );
       }
@@ -338,8 +341,9 @@ bool DecoderContext::play( QString & errorString )
   int ret      = avcodec_send_packet( codecContext_, packet );
   while ( ret >= 0 ) {
     ret = avcodec_receive_frame( codecContext_, frame );
-    if ( Utils::AtomicInt::loadAcquire( isCancelled_ ) || ret < 0 )
+    if ( Utils::AtomicInt::loadAcquire( isCancelled_ ) || ret < 0 ) {
       break;
+    }
     playFrame( frame );
   }
   av_frame_free( &frame );
@@ -358,7 +362,7 @@ void DecoderContext::stop()
 
 bool DecoderContext::normalizeAudio( AVFrame * frame, vector< uint8_t > & samples )
 {
-  auto dst_freq     = 44100;
+  auto dst_freq = 44100;
 
   #if LIBAVCODEC_VERSION_MAJOR >= 61
   auto dst_channels = codecContext_->ch_layout.nb_channels;
@@ -366,8 +370,8 @@ bool DecoderContext::normalizeAudio( AVFrame * frame, vector< uint8_t > & sample
   auto dst_channels = codecContext_->channels;
   #endif
 
-  int out_count     = (int64_t)frame->nb_samples * dst_freq / frame->sample_rate + 256;
-  int out_size      = av_samples_get_buffer_size( nullptr, dst_channels, out_count, AV_SAMPLE_FMT_S16, 1 );
+  int out_count = (int64_t)frame->nb_samples * dst_freq / frame->sample_rate + 256;
+  int out_size  = av_samples_get_buffer_size( nullptr, dst_channels, out_count, AV_SAMPLE_FMT_S16, 1 );
   samples.resize( out_size );
   uint8_t * data[ 2 ] = { nullptr };
   data[ 0 ]           = &samples.front();
@@ -389,8 +393,9 @@ bool DecoderContext::normalizeAudio( AVFrame * frame, vector< uint8_t > & sample
 
 void DecoderContext::playFrame( AVFrame * frame )
 {
-  if ( !frame )
+  if ( !frame ) {
     return;
+  }
 
   vector< uint8_t > samples;
   if ( normalizeAudio( frame, samples ) ) {
@@ -422,14 +427,17 @@ void DecoderThread::run()
   }
 
   while ( !deviceMutex_.tryLock( 100 ) ) {
-    if ( Utils::AtomicInt::loadAcquire( isCancelled_ ) )
+    if ( Utils::AtomicInt::loadAcquire( isCancelled_ ) ) {
       return;
+    }
   }
 
-  if ( !d.openOutputDevice( errorString ) )
+  if ( !d.openOutputDevice( errorString ) ) {
     emit error( errorString );
-  else if ( !d.play( errorString ) )
+  }
+  else if ( !d.play( errorString ) ) {
     emit error( errorString );
+  }
 
   d.closeOutputDevice();
   deviceMutex_.unlock();
@@ -439,8 +447,9 @@ void DecoderThread::cancel( bool waitUntilFinished )
 {
   isCancelled_.ref();
   d.stop();
-  if ( waitUntilFinished )
+  if ( waitUntilFinished ) {
     this->wait();
+  }
 }
 
 } // namespace Ffmpeg

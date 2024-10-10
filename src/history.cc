@@ -16,8 +16,9 @@ History::History( unsigned size, unsigned maxItemLength_ ):
 {
   QFile file( Config::getHistoryFileName() );
 
-  if ( !file.open( QFile::ReadOnly | QIODevice::Text ) )
+  if ( !file.open( QFile::ReadOnly | QIODevice::Text ) ) {
     return; // No file -- no history
+  }
 
   QTextStream in( &file );
   while ( !in.atEnd() && items.size() <= maxSize ) {
@@ -47,8 +48,9 @@ History::Item History::getItem( int index )
 
 void History::addItem( Item const & item )
 {
-  if ( !enabled() )
+  if ( !enabled() ) {
     return;
+  }
 
   if ( item.word.isEmpty() || item.word.size() > maxItemLength ) {
     // The search looks bogus. Don't save it.
@@ -56,8 +58,9 @@ void History::addItem( Item const & item )
   }
 
   //from the normal operation ,there should be only one item in the history at a time.
-  if ( items.contains( item ) )
+  if ( items.contains( item ) ) {
     items.removeOne( item );
+  }
 
   items.push_front( item );
 
@@ -101,8 +104,9 @@ int History::size() const
 
 bool History::save()
 {
-  if ( !dirty )
+  if ( !dirty ) {
     return true;
+  }
 
   QSaveFile file( Config::getHistoryFileName() );
   if ( !file.open( QFile::WriteOnly | QIODevice::Text ) ) {

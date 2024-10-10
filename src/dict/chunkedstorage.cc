@@ -49,11 +49,13 @@ uint32_t Writer::startNewBlock()
 
 void Writer::addToBlock( void const * data, size_t size )
 {
-  if ( !size )
+  if ( !size ) {
     return;
+  }
 
-  if ( buffer.size() - bufferUsed < size )
+  if ( buffer.size() - bufferUsed < size ) {
     buffer.resize( bufferUsed + size );
+  }
 
   memcpy( &buffer.front() + bufferUsed, data, size );
 
@@ -66,13 +68,15 @@ void Writer::saveCurrentChunk()
 {
   size_t maxCompressedSize = compressBound( bufferUsed );
 
-  if ( bufferCompressed.size() < maxCompressedSize )
+  if ( bufferCompressed.size() < maxCompressedSize ) {
     bufferCompressed.resize( maxCompressedSize );
+  }
 
   unsigned long compressedSize = bufferCompressed.size();
 
-  if ( compress( &bufferCompressed.front(), &compressedSize, &buffer.front(), bufferUsed ) != Z_OK )
+  if ( compress( &bufferCompressed.front(), &compressedSize, &buffer.front(), bufferUsed ) != Z_OK ) {
     throw exFailedToCompressChunk();
+  }
 
   offsets.push_back( file.tell() );
 
@@ -87,8 +91,9 @@ void Writer::saveCurrentChunk()
 
 uint32_t Writer::finish()
 {
-  if ( bufferUsed || chunkStarted )
+  if ( bufferUsed || chunkStarted ) {
     saveCurrentChunk();
+  }
 
   bool useScratchPad   = false;
   uint32_t savedOffset = 0;
@@ -103,11 +108,13 @@ uint32_t Writer::finish()
 
   file.write( (uint32_t)offsets.size() );
 
-  if ( offsets.size() )
+  if ( offsets.size() ) {
     file.write( &offsets.front(), offsets.size() * sizeof( uint32_t ) );
+  }
 
-  if ( useScratchPad )
+  if ( useScratchPad ) {
     file.seek( savedOffset );
+  }
 
   offsets.clear();
   chunkStarted = false;
@@ -121,8 +128,9 @@ Reader::Reader( File::Index & f, uint32_t offset ):
   file.seek( offset );
 
   uint32_t size = file.read< uint32_t >();
-  if ( size == 0 )
+  if ( size == 0 ) {
     return;
+  }
   offsets.resize( size );
   file.read( &offsets.front(), offsets.size() * sizeof( uint32_t ) );
 }
@@ -131,16 +139,18 @@ char * Reader::getBlock( uint32_t address, vector< char > & chunk )
 {
   size_t chunkIdx = address >> 16;
 
-  if ( chunkIdx >= offsets.size() )
+  if ( chunkIdx >= offsets.size() ) {
     throw exAddressOutOfRange();
+  }
 
   // Read and decompress the chunk
   {
     // file.seek( offsets[ chunkIdx ] );
     QMutexLocker _( &file.lock );
     auto bytes = file.map( offsets[ chunkIdx ], 8 );
-    if ( bytes == nullptr )
+    if ( bytes == nullptr ) {
       throw mapFailed();
+    }
     auto qBytes = QByteArray::fromRawData( reinterpret_cast< char * >( bytes ), 8 );
     QDataStream in( qBytes );
     in.setByteOrder( QDataStream::LittleEndian );
@@ -155,8 +165,9 @@ char * Reader::getBlock( uint32_t address, vector< char > & chunk )
 
     // vector< unsigned char > compressedData( compressedSize );
     auto chunkDataBytes = file.map( offsets[ chunkIdx ] + 8, compressedSize );
-    if ( chunkDataBytes == nullptr )
+    if ( chunkDataBytes == nullptr ) {
       throw mapFailed();
+    }
     // file.read( &compressedData.front(), compressedData.size() );
     auto autoUnmap = qScopeGuard( [ & ] {
       file.unmap( chunkDataBytes );
@@ -173,8 +184,9 @@ char * Reader::getBlock( uint32_t address, vector< char > & chunk )
 
   size_t offsetInChunk = address & 0xffFF;
 
-  if ( offsetInChunk > chunk.size() ) // It can be equal to for 0-sized blocks
+  if ( offsetInChunk > chunk.size() ) { // It can be equal to for 0-sized blocks
     throw exAddressOutOfRange();
+  }
 
   return &chunk.front() + offsetInChunk;
 }

@@ -19,8 +19,9 @@ bool tryPossibleName( std::string const & name, std::string & copyTo )
     copyTo = name;
     return true;
   }
-  else
+  else {
     return false;
+  }
 }
 
 bool tryPossibleZipName( std::string const & name, std::string & copyTo )
@@ -29,8 +30,9 @@ bool tryPossibleZipName( std::string const & name, std::string & copyTo )
     copyTo = name;
     return true;
   }
-  else
+  else {
     return false;
+  }
 }
 
 void loadFromFile( std::string const & filename, std::vector< char > & data )
@@ -70,8 +72,9 @@ void Index::open( char const * mode )
     ++pch;
   }
 
-  if ( !f.open( openMode ) )
+  if ( !f.open( openMode ) ) {
     throw exCantOpen( f.fileName().toStdString() + ": " + f.errorString().toUtf8().data() );
+  }
 }
 
 Index::Index( std::string_view filename, char const * mode )
@@ -124,10 +127,12 @@ char * Index::gets( char * s, int size, bool stripNl )
     while ( len-- ) {
       --last;
 
-      if ( *last == '\n' || *last == '\r' )
+      if ( *last == '\n' || *last == '\r' ) {
         *last = 0;
-      else
+      }
+      else {
         break;
+      }
     }
   }
 
@@ -138,8 +143,9 @@ std::string Index::gets( bool stripNl )
 {
   char buf[ 1024 ];
 
-  if ( !gets( buf, sizeof( buf ), stripNl ) )
+  if ( !gets( buf, sizeof( buf ), stripNl ) ) {
     throw exReadError();
+  }
 
   return { buf };
 }
@@ -152,8 +158,9 @@ QByteArray Index::readall()
 
 void Index::seek( qint64 offset )
 {
-  if ( !f.seek( offset ) )
+  if ( !f.seek( offset ) ) {
     throw exSeekError();
+  }
 }
 
 uchar * Index::map( qint64 offset, qint64 size )
@@ -169,8 +176,9 @@ bool Index::unmap( uchar * address )
 
 void Index::seekEnd()
 {
-  if ( !f.seek( f.size() ) )
+  if ( !f.seek( f.size() ) ) {
     throw exSeekError();
+  }
 }
 
 void Index::rewind()

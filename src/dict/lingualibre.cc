@@ -208,8 +208,9 @@ WHERE {
 protected:
   void loadIcon() noexcept override
   {
-    if ( dictionaryIconLoaded )
+    if ( dictionaryIconLoaded ) {
       return;
+    }
 
     dictionaryIcon       = QIcon( ":/icons/lingualibre.svg" );
     dictionaryIconLoaded = true;

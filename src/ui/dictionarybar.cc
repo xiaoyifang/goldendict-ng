@@ -35,8 +35,9 @@ static QString elideDictName( QString const & name )
 
   int const maxSize = 33;
 
-  if ( name.size() <= maxSize )
+  if ( name.size() <= maxSize ) {
     return name;
+  }
 
   int const pieceSize = maxSize / 2 - 1;
 
@@ -131,16 +132,18 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
       infoAction = menu.addAction( tr( "Dictionary info" ) );
 
       if ( pDict->isLocalDictionary() ) {
-        if ( pDict->getWordCount() > 0 )
+        if ( pDict->getWordCount() > 0 ) {
           headwordsAction = menu.addAction( tr( "Dictionary headwords" ) );
+        }
 
         openDictFolderAction = menu.addAction( tr( "Open dictionary folder" ) );
       }
     }
   }
 
-  if ( !dictActions.empty() )
+  if ( !dictActions.empty() ) {
     menu.addSeparator();
+  }
 
   unsigned refsAdded = 0;
 
@@ -195,10 +198,12 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
     showContextMenu( event, true );
   }
 
-  if ( result == editAction )
+  if ( result == editAction ) {
     emit editGroupRequested();
-  else if ( result && result->data().value< void * >() )
+  }
+  else if ( result && result->data().value< void * >() ) {
     ( (QAction *)( result->data().value< void * >() ) )->trigger();
+  }
 
   event->accept();
 }
@@ -207,8 +212,9 @@ void DictionaryBar::mutedDictionariesChanged()
 {
   //GD_DPRINTF( "Muted dictionaries changed\n" );
 
-  if ( !mutedDictionaries )
+  if ( !mutedDictionaries ) {
     return;
+  }
 
   // Update actions
 
@@ -217,8 +223,9 @@ void DictionaryBar::mutedDictionariesChanged()
   for ( const auto & dictAction : dictActions ) {
     bool const isUnmuted = !mutedDictionaries->contains( dictAction->data().toString() );
 
-    if ( isUnmuted != dictAction->isChecked() )
+    if ( isUnmuted != dictAction->isChecked() ) {
       dictAction->setChecked( isUnmuted );
+    }
   }
 
   setUpdatesEnabled( true );
@@ -226,13 +233,15 @@ void DictionaryBar::mutedDictionariesChanged()
 
 void DictionaryBar::actionWasTriggered( QAction * action )
 {
-  if ( !mutedDictionaries )
+  if ( !mutedDictionaries ) {
     return;
+  }
 
   QString const id = action->data().toString();
 
-  if ( id.isEmpty() )
+  if ( id.isEmpty() ) {
     return; // Some weird action, not our button
+  }
 
   if ( QApplication::keyboardModifiers() & ( Qt::ControlModifier | Qt::ShiftModifier ) ) {
     // Ctrl ,solo mode with single dictionary
@@ -266,18 +275,21 @@ void DictionaryBar::actionWasTriggered( QAction * action )
       }
 
       if ( isSolo ) {
-        for ( const auto & dictAction : dictActions )
+        for ( const auto & dictAction : dictActions ) {
           mutedDictionaries->remove( dictAction->data().toString() );
+        }
       }
       else {
         // Make dictionary solo
         for ( const auto & dictAction : dictActions ) {
           QString const dictId = dictAction->data().toString();
 
-          if ( dictId == id )
+          if ( dictId == id ) {
             mutedDictionaries->remove( dictId );
-          else
+          }
+          else {
             mutedDictionaries->insert( dictId );
+          }
         }
       }
     }
@@ -309,8 +321,9 @@ void DictionaryBar::actionWasTriggered( QAction * action )
 
 void DictionaryBar::dictsPaneClicked( const QString & id )
 {
-  if ( !isVisible() )
+  if ( !isVisible() ) {
     return;
+  }
 
   for ( const auto & dictAction : dictActions ) {
     QString const dictId = dictAction->data().toString();

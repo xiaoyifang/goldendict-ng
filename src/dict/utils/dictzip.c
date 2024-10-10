@@ -158,14 +158,16 @@ static void err_fatal( const char * routine, const char * format, ... )
 
   fflush( stdout );
   if ( _err_programName ) {
-    if ( routine )
+    if ( routine ) {
       fprintf( stderr, "%s (%s): ", _err_programName, routine );
-    else
+    } else {
       fprintf( stderr, "%s: ", _err_programName );
+}
   }
   else {
-    if ( routine )
+    if ( routine ) {
       fprintf( stderr, "%s: ", routine );
+}
   }
 
   va_start( ap, format );
@@ -190,14 +192,16 @@ static void err_fatal_errno( const char * routine, const char * format, ... )
 
   fflush( stdout );
   if ( _err_programName ) {
-    if ( routine )
+    if ( routine ) {
       fprintf( stderr, "%s (%s): ", _err_programName, routine );
-    else
+    } else {
       fprintf( stderr, "%s: ", _err_programName );
+}
   }
   else {
-    if ( routine )
+    if ( routine ) {
       fprintf( stderr, "%s: ", routine );
+}
   }
 
   va_start( ap, format );
@@ -229,16 +233,18 @@ static void err_internal( const char * routine, const char * format, ... )
 
   fflush( stdout );
   if ( _err_programName ) {
-    if ( routine )
+    if ( routine ) {
       fprintf( stderr, "%s (%s): Internal error\n     ", _err_programName, routine );
-    else
+    } else {
       fprintf( stderr, "%s: Internal error\n     ", _err_programName );
+}
   }
   else {
-    if ( routine )
+    if ( routine ) {
       fprintf( stderr, "%s: Internal error\n     ", routine );
-    else
+    } else {
       fprintf( stderr, "Internal error\n     " );
+}
   }
 
   va_start( ap, format );
@@ -246,10 +252,11 @@ static void err_internal( const char * routine, const char * format, ... )
   log_error( routine, format, ap );
   va_end( ap );
 
-  if ( _err_programName )
+  if ( _err_programName ) {
     fprintf( stderr, "Aborting %s...\n", _err_programName );
-  else
+  } else {
     fprintf( stderr, "Aborting...\n" );
+}
   fflush( stderr );
   fflush( stdout );
   //  abort();
@@ -544,30 +551,36 @@ void dict_data_close( dictData * header )
 {
   int i;
 
-  if ( !header )
+  if ( !header ) {
     return;
+}
 
 #ifdef __WIN32
   if ( header->fd != INVALID_HANDLE_VALUE )
     CloseHandle( header->fd );
 #else
-  if ( header->fd )
+  if ( header->fd ) {
     fclose( header->fd );
+}
 #endif
 
-  if ( header->chunks )
+  if ( header->chunks ) {
     xfree( header->chunks );
-  if ( header->offsets )
+}
+  if ( header->offsets ) {
     xfree( header->offsets );
+}
 
   if ( header->initialized ) {
-    if ( inflateEnd( &header->zStream ) )
+    if ( inflateEnd( &header->zStream ) ) {
       err_internal( __func__, "Cannot shut down inflation engine: %s\n", header->zStream.msg );
+}
   }
 
   for ( i = 0; i < DICT_CACHE_SIZE; ++i ) {
-    if ( header->cache[ i ].inBuffer )
+    if ( header->cache[ i ].inBuffer ) {
       xfree( header->cache[ i ].inBuffer );
+}
   }
 
   xfree( header );
@@ -695,8 +708,9 @@ char * dict_data_read_(
         h->cache[ target ].stamp = ++h->stamp;
         if ( h->stamp < 0 ) {
           h->stamp = 0;
-          for ( j = 0; j < DICT_CACHE_SIZE; j++ )
+          for ( j = 0; j < DICT_CACHE_SIZE; j++ ) {
             h->cache[ j ].stamp = -1;
+}
         }
         if ( found ) {
           count    = h->cache[ target ].count;
@@ -708,8 +722,9 @@ char * dict_data_read_(
           DWORD readed;
 #endif
           h->cache[ target ].chunk = -1;
-          if ( !h->cache[ target ].inBuffer )
+          if ( !h->cache[ target ].inBuffer ) {
             h->cache[ target ].inBuffer = xmalloc( h->chunkLength );
+}
           inBuffer = h->cache[ target ].inBuffer;
           if ( !inBuffer ) {
             strcpy( h->errorString, dz_error_str( DZ_ERR_NOMEMORY ) );

@@ -72,17 +72,21 @@ bool positionAtCentralDir( SplitZipFile & zip )
 
   int maxEofBufferSize = 65535 + sizeof( EndOfCdirRecord );
 
-  if ( zip.size() > maxEofBufferSize )
+  if ( zip.size() > maxEofBufferSize ) {
     zip.seek( zip.size() - maxEofBufferSize );
-  else if ( (size_t)zip.size() < sizeof( EndOfCdirRecord ) )
+  }
+  else if ( (size_t)zip.size() < sizeof( EndOfCdirRecord ) ) {
     return false;
-  else
+  }
+  else {
     zip.seek( 0 );
+  }
 
   QByteArray eocBuffer = zip.read( maxEofBufferSize );
 
-  if ( eocBuffer.size() < (int)sizeof( EndOfCdirRecord ) )
+  if ( eocBuffer.size() < (int)sizeof( EndOfCdirRecord ) ) {
     return false;
+  }
 
   int lastIndex = eocBuffer.size() - sizeof( EndOfCdirRecord );
 
@@ -96,8 +100,9 @@ bool positionAtCentralDir( SplitZipFile & zip )
   for ( ;; --lastIndex ) {
     lastIndex = eocBuffer.lastIndexOf( endOfCdirRecordSignature, lastIndex );
 
-    if ( lastIndex == -1 )
+    if ( lastIndex == -1 ) {
       return false;
+    }
 
     /// We need to copy it due to possible alignment issues on ARM etc
     memcpy( &endOfCdirRecord, eocBuffer.data() + lastIndex, sizeof( endOfCdirRecord ) );
@@ -107,16 +112,19 @@ bool positionAtCentralDir( SplitZipFile & zip )
     cdir_offset = zip.calcAbsoluteOffset( qFromLittleEndian( endOfCdirRecord.offset ),
                                           qFromLittleEndian( endOfCdirRecord.numDiskCd ) );
 
-    if ( !zip.seek( cdir_offset ) )
+    if ( !zip.seek( cdir_offset ) ) {
       continue;
+    }
 
     quint32 signature;
 
-    if ( zip.read( (char *)&signature, sizeof( signature ) ) != sizeof( signature ) )
+    if ( zip.read( (char *)&signature, sizeof( signature ) ) != sizeof( signature ) ) {
       continue;
+    }
 
-    if ( signature == centralFileHeaderSignature )
+    if ( signature == centralFileHeaderSignature ) {
       break;
+    }
   }
 
   // Found cdir -- position the file on the first header
@@ -128,25 +136,29 @@ bool readNextEntry( SplitZipFile & zip, CentralDirEntry & entry )
 {
   CentralFileHeaderRecord record;
 
-  if ( zip.read( (char *)&record, sizeof( record ) ) != sizeof( record ) )
+  if ( zip.read( (char *)&record, sizeof( record ) ) != sizeof( record ) ) {
     return false;
+  }
 
-  if ( record.signature != centralFileHeaderSignature )
+  if ( record.signature != centralFileHeaderSignature ) {
     return false;
+  }
 
   // Read file name
 
   int fileNameLength = qFromLittleEndian( record.fileNameLength );
   entry.fileName     = zip.read( fileNameLength );
 
-  if ( entry.fileName.size() != fileNameLength )
+  if ( entry.fileName.size() != fileNameLength ) {
     return false;
+  }
 
   // Skip extra fields
 
   if ( !zip.seek( ( zip.pos() + qFromLittleEndian( record.extraFieldLength ) )
-                  + qFromLittleEndian( record.fileCommentLength ) ) )
+                  + qFromLittleEndian( record.fileCommentLength ) ) ) {
     return false;
+  }
 
   entry.localHeaderOffset = zip.calcAbsoluteOffset( qFromLittleEndian( record.offsetOfLocalHeader ),
                                                     qFromLittleEndian( record.diskNumberStart ) );
@@ -162,24 +174,28 @@ bool readLocalHeader( SplitZipFile & zip, LocalFileHeader & entry )
 {
   LocalFileHeaderRecord record;
 
-  if ( zip.read( (char *)&record, sizeof( record ) ) != sizeof( record ) )
+  if ( zip.read( (char *)&record, sizeof( record ) ) != sizeof( record ) ) {
     return false;
+  }
 
-  if ( record.signature != localFileHeaderSignature )
+  if ( record.signature != localFileHeaderSignature ) {
     return false;
+  }
 
   // Read file name
 
   int fileNameLength = qFromLittleEndian( record.fileNameLength );
   entry.fileName     = zip.read( fileNameLength );
 
-  if ( entry.fileName.size() != fileNameLength )
+  if ( entry.fileName.size() != fileNameLength ) {
     return false;
+  }
 
   // Skip extra field
 
-  if ( !zip.seek( zip.pos() + qFromLittleEndian( record.extraFieldLength ) ) )
+  if ( !zip.seek( zip.pos() + qFromLittleEndian( record.extraFieldLength ) ) ) {
     return false;
+  }
 
   entry.compressedSize    = qFromLittleEndian( record.compressedSize );
   entry.uncompressedSize  = qFromLittleEndian( record.uncompressedSize );
@@ -202,27 +218,32 @@ void SplitZipFile::setFileName( const QString & name )
       return;
     }
 
-    if ( !lname.endsWith( ".zip" ) )
+    if ( !lname.endsWith( ".zip" ) ) {
       return;
+    }
   }
 
   if ( QFileInfo( name ).isFile() ) {
     for ( int i = 1; i < 100; i++ ) {
       QString name2 = name.left( name.size() - 2 ) + QString( "%1" ).arg( i, 2, 10, QChar( '0' ) );
-      if ( QFileInfo( name2 ).isFile() )
+      if ( QFileInfo( name2 ).isFile() ) {
         appendFile( name2 );
-      else
+      }
+      else {
         break;
+      }
     }
     appendFile( name );
   }
   else {
     for ( int i = 1; i < 1000; i++ ) {
       QString name2 = name + QString( ".%1" ).arg( i, 3, 10, QChar( '0' ) );
-      if ( QFileInfo( name2 ).isFile() )
+      if ( QFileInfo( name2 ).isFile() ) {
         appendFile( name2 );
-      else
+      }
+      else {
         break;
+      }
     }
   }
 }
@@ -232,16 +253,18 @@ QDateTime SplitZipFile::lastModified() const
   unsigned long ts = 0;
   for ( QList< QFile * >::const_iterator i = files.begin(); i != files.end(); ++i ) {
     unsigned long t = QFileInfo( ( *i )->fileName() ).lastModified().toSecsSinceEpoch();
-    if ( t > ts )
+    if ( t > ts ) {
       ts = t;
+    }
   }
   return QDateTime::fromSecsSinceEpoch( ts );
 }
 
 qint64 SplitZipFile::calcAbsoluteOffset( qint64 offset, quint16 partNo )
 {
-  if ( partNo >= offsets.size() )
+  if ( partNo >= offsets.size() ) {
     return 0;
+  }
 
   return offsets.at( partNo ) + offset;
 }

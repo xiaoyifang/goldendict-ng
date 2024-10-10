@@ -100,8 +100,9 @@ void Groups::countChanged()
   ui.removeAllGroups->setEnabled( en );
 
   int stretch = ui.groups->count() / 5;
-  if ( stretch > 3 )
+  if ( stretch > 3 ) {
     stretch = 3;
+  }
   ui.gridLayout->setColumnStretch( 2, stretch );
 }
 
@@ -143,8 +144,9 @@ void Groups::renameCurrent()
 {
   int current = ui.groups->currentIndex();
 
-  if ( current < 0 )
+  if ( current < 0 ) {
     return;
+  }
 
   bool ok;
 
@@ -155,8 +157,9 @@ void Groups::renameCurrent()
                                         ui.groups->getCurrentGroupName(),
                                         &ok );
 
-  if ( ok )
+  if ( ok ) {
     ui.groups->renameCurrentGroup( name );
+  }
 }
 
 void Groups::removeCurrent()
@@ -215,17 +218,21 @@ void Groups::showDictInfo( QPoint const & pos )
   QVariant data =
     ui.dictionaries->getModel()->data( ui.searchLine->mapToSource( ui.dictionaries->indexAt( pos ) ), Qt::EditRole );
   QString id;
-  if ( data.canConvert< QString >() )
+  if ( data.canConvert< QString >() ) {
     id = data.toString();
+  }
 
   if ( !id.isEmpty() ) {
     vector< sptr< Dictionary::Class > > const & dicts = ui.dictionaries->getCurrentDictionaries();
     unsigned n;
-    for ( n = 0; n < dicts.size(); n++ )
-      if ( id.compare( QString::fromUtf8( dicts.at( n )->getId().c_str() ) ) == 0 )
+    for ( n = 0; n < dicts.size(); n++ ) {
+      if ( id.compare( QString::fromUtf8( dicts.at( n )->getId().c_str() ) ) == 0 ) {
         break;
-    if ( n < dicts.size() )
+      }
+    }
+    if ( n < dicts.size() ) {
       emit showDictionaryInfo( id );
+    }
   }
 }
 
@@ -242,8 +249,9 @@ void Groups::fillGroupsMenu()
     }
   }
 
-  if ( groupsListMenu->actions().size() > 1 )
+  if ( groupsListMenu->actions().size() > 1 ) {
     groupsListMenu->setActiveAction( groupsListMenu->actions().at( ui.groups->currentIndex() ) );
+  }
 }
 
 void Groups::switchToGroup( QAction * act )

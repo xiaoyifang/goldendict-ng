@@ -71,8 +71,9 @@ BtreeIndex::findArticles( wstring const & search_word, bool ignoreDiacritics, ui
 
   try {
     wstring folded = Folding::apply( word );
-    if ( folded.empty() )
+    if ( folded.empty() ) {
       folded = Folding::applyWhitespaceOnly( word );
+    }
 
     bool exactMatch;
 
@@ -139,9 +140,10 @@ void BtreeWordSearchRequest::findMatches()
   QRegularExpression regexp;
 
   bool useWildcards = false;
-  if ( allowMiddleMatches )
+  if ( allowMiddleMatches ) {
     useWildcards = ( str.find( '*' ) != wstring::npos || str.find( '?' ) != wstring::npos
                      || str.find( '[' ) != wstring::npos || str.find( ']' ) != wstring::npos );
+  }
 
   wstring folded = Folding::apply( str );
 
@@ -150,17 +152,20 @@ void BtreeWordSearchRequest::findMatches()
   if ( useWildcards ) {
     regexp.setPattern( wildcardsToRegexp(
       QString::fromStdU32String( Folding::applyDiacriticsOnly( Folding::applySimpleCaseOnly( str ) ) ) ) );
-    if ( !regexp.isValid() )
+    if ( !regexp.isValid() ) {
       regexp.setPattern( QRegularExpression::escape( regexp.pattern() ) );
+    }
     regexp.setPatternOptions( QRegularExpression::CaseInsensitiveOption );
 
     bool bNoLetters = folded.empty();
     wstring foldedWithWildcards;
 
-    if ( bNoLetters )
+    if ( bNoLetters ) {
       foldedWithWildcards = Folding::applyWhitespaceOnly( str );
-    else
+    }
+    else {
       foldedWithWildcards = Folding::apply( str, useWildcards );
+    }
 
     // Calculate minimum match length
 
@@ -188,8 +193,9 @@ void BtreeWordSearchRequest::findMatches()
         continue;
       }
 
-      if ( ch == L'*' && !escaped )
+      if ( ch == L'*' && !escaped ) {
         continue;
+      }
 
       escaped = false;
       minMatchLength += 1;
@@ -202,8 +208,9 @@ void BtreeWordSearchRequest::findMatches()
     escaped = false;
     for ( char32_t ch : foldedWithWildcards ) {
       if ( escaped ) {
-        if ( bNoLetters || ( ch != L'*' && ch != L'?' && ch != L'[' && ch != L']' ) )
+        if ( bNoLetters || ( ch != L'*' && ch != L'?' && ch != L'[' && ch != L']' ) ) {
           folded.push_back( ch );
+        }
         escaped = false;
         continue;
       }
@@ -213,19 +220,22 @@ void BtreeWordSearchRequest::findMatches()
           escaped = true;
           continue;
         }
-        else
+        else {
           break;
+        }
       }
 
-      if ( ch == '*' || ch == '?' || ch == '[' || ch == ']' )
+      if ( ch == '*' || ch == '?' || ch == '[' || ch == ']' ) {
         break;
+      }
 
       folded.push_back( ch );
     }
   }
   else {
-    if ( folded.empty() )
+    if ( folded.empty() ) {
       folded = Folding::applyWhitespaceOnly( str );
+    }
   }
 
   int initialFoldedSize = folded.size();
@@ -235,10 +245,12 @@ void BtreeWordSearchRequest::findMatches()
   if ( maxSuffixVariation >= 0 ) {
     charsLeftToChop = initialFoldedSize - (int)minLength;
 
-    if ( charsLeftToChop < 0 )
+    if ( charsLeftToChop < 0 ) {
       charsLeftToChop = 0;
-    else if ( charsLeftToChop > maxSuffixVariation )
+    }
+    else if ( charsLeftToChop > maxSuffixVariation ) {
       charsLeftToChop = maxSuffixVariation;
+    }
   }
 
   try {
@@ -250,10 +262,11 @@ void BtreeWordSearchRequest::findMatches()
 
       char const * chainOffset = dict.findChainOffsetExactOrPrefix( folded, exactMatch, leaf, nextLeaf, leafEnd );
 
-      if ( chainOffset )
+      if ( chainOffset ) {
         for ( ;; ) {
-          if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
+          if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
             break;
+          }
 
           //GD_DPRINTF( "offset = %u, size = %u\n", chainOffset - &leaf.front(), leaf.size() );
 
@@ -262,8 +275,9 @@ void BtreeWordSearchRequest::findMatches()
           wstring chainHead = Utf8::decode( chain[ 0 ].word );
 
           wstring resultFolded = Folding::apply( chainHead );
-          if ( resultFolded.empty() )
+          if ( resultFolded.empty() ) {
             resultFolded = Folding::applyWhitespaceOnly( chainHead );
+          }
 
           if ( ( useWildcards && folded.empty() )
                || ( resultFolded.size() >= folded.size() && !resultFolded.compare( 0, folded.size(), folded ) ) ) {
@@ -290,24 +304,27 @@ void BtreeWordSearchRequest::findMatches()
                 // make sure the string isn't larger than requested.
                 if ( ( allowMiddleMatches || Folding::apply( Utf8::decode( x.prefix ) ).empty() )
                      && ( maxSuffixVariation < 0
-                          || (int)resultFolded.size() - initialFoldedSize <= maxSuffixVariation ) )
+                          || (int)resultFolded.size() - initialFoldedSize <= maxSuffixVariation ) ) {
                   addMatch( Utf8::decode( x.prefix + x.word ) );
+                }
               }
               if ( matches.size() >= maxResults ) {
                 break;
               }
             }
 
-            if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
+            if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
               break;
+            }
 
             if ( matches.size() >= maxResults ) {
               break;
             }
           }
-          else
+          else {
             // Neither exact nor a prefix match, end this
             break;
+          }
 
           // Fetch new leaf if we're out of chains here
 
@@ -332,17 +349,20 @@ void BtreeWordSearchRequest::findMatches()
                 exit( 1 );
               }
             }
-            else
+            else {
               break; // That was the last leaf
+            }
           }
         }
+      }
 
       if ( charsLeftToChop && !Utils::AtomicInt::loadAcquire( isCancelled ) ) {
         --charsLeftToChop;
         folded.resize( folded.size() - 1 );
       }
-      else
+      else {
         break;
+      }
     }
   }
   catch ( std::exception & e ) {
@@ -416,15 +436,17 @@ void BtreeIndex::readNode( uint32_t offset, vector< char > & out )
 
   if ( uncompress( (unsigned char *)&out.front(), &decompressedLength, &compressedData.front(), compressedData.size() )
          != Z_OK
-       || decompressedLength != out.size() )
+       || decompressedLength != out.size() ) {
     throw exFailedToDecompressNode();
+  }
 }
 
 char const * BtreeIndex::findChainOffsetExactOrPrefix(
   wstring const & target, bool & exactMatch, vector< char > & extLeaf, uint32_t & nextLeaf, char const *& leafEnd )
 {
-  if ( !idxFile )
+  if ( !idxFile ) {
     throw exIndexWasNotOpened();
+  }
 
   QMutexLocker _( idxFileMutex );
 
@@ -466,8 +488,9 @@ char const * BtreeIndex::findChainOffsetExactOrPrefix(
           // Only one leaf in index, there's no next leaf
           nextLeaf = 0;
         }
-        if ( !leafEntries )
+        if ( !leafEntries ) {
           return nullptr;
+        }
 
         return leaf + sizeof( uint32_t );
       }
@@ -505,8 +528,9 @@ char const * BtreeIndex::findChainOffsetExactOrPrefix(
 
         closestString = testPoint;
 
-        while ( closestString > ptr && closestString[ -1 ] )
+        while ( closestString > ptr && closestString[ -1 ] ) {
           --closestString;
+        }
 
         size_t wordSize = strlen( closestString );
 
@@ -523,8 +547,9 @@ char const * BtreeIndex::findChainOffsetExactOrPrefix(
           // Go to the left.
           windowSize = closestString - window;
 
-          if ( !windowSize )
+          if ( !windowSize ) {
             break;
+          }
         }
         else {
           // The target string is larger than the current one.
@@ -532,8 +557,9 @@ char const * BtreeIndex::findChainOffsetExactOrPrefix(
           windowSize -= ( closestString - window ) + wordSize + 1;
           window = closestString + wordSize + 1;
 
-          if ( !windowSize )
+          if ( !windowSize ) {
             break;
+          }
         }
       }
 
@@ -543,8 +569,9 @@ char const * BtreeIndex::findChainOffsetExactOrPrefix(
 
       unsigned entry = 0;
 
-      for ( char const * next = ptr; next != closestString; next += strlen( next ) + 1, ++entry )
+      for ( char const * next = ptr; next != closestString; next += strlen( next ) + 1, ++entry ) {
         ;
+      }
 
       // Ok, now check the outcome
 
@@ -580,10 +607,12 @@ char const * BtreeIndex::findChainOffsetExactOrPrefix(
 
       if ( !leafEntries ) {
         // Empty leaf? This may only be possible for entirely empty trees only.
-        if ( currentNodeOffset != rootOffset )
+        if ( currentNodeOffset != rootOffset ) {
           throw exCorruptedChainData();
-        else
+        }
+        else {
           return nullptr; // No match
+        }
       }
 
       // Build an array containing all chain pointers
@@ -627,8 +656,9 @@ char const * BtreeIndex::findChainOffsetExactOrPrefix(
         w_word = Utf8::decode( string( ptr, wordSize ) );
 
         wstring foldedWord = Folding::apply( w_word );
-        if ( foldedWord.empty() )
+        if ( foldedWord.empty() ) {
           foldedWord = Folding::applyWhitespaceOnly( w_word );
+        }
 
         int compareResult = target.compare( foldedWord );
 
@@ -672,11 +702,13 @@ char const * BtreeIndex::findChainOffsetExactOrPrefix(
 
                 return &extLeaf.front() + sizeof( uint32_t );
               }
-              else
+              else {
                 return nullptr; // This was the last leaf
+              }
             }
-            else
+            else {
               return chainToCheck[ 1 ];
+            }
           }
 
           window = chainToCheck + 1;
@@ -711,10 +743,12 @@ vector< WordArticleLink > BtreeIndex::readChain( char const *& ptr, uint32_t max
 
     result.emplace_back( str, articleOffset, prefix );
 
-    if ( chainSize < str.size() + 1 + prefix.size() + 1 + sizeof( uint32_t ) )
+    if ( chainSize < str.size() + 1 + prefix.size() + 1 + sizeof( uint32_t ) ) {
       throw exCorruptedChainData();
-    else
+    }
+    else {
       chainSize -= str.size() + 1 + prefix.size() + 1 + sizeof( uint32_t );
+    }
   }
 
   return result;
@@ -723,25 +757,30 @@ vector< WordArticleLink > BtreeIndex::readChain( char const *& ptr, uint32_t max
 void BtreeIndex::antialias( wstring const & str, vector< WordArticleLink > & chain, bool ignoreDiacritics )
 {
   wstring caseFolded = Folding::applySimpleCaseOnly( gd::normalize( str ) );
-  if ( ignoreDiacritics )
+  if ( ignoreDiacritics ) {
     caseFolded = Folding::applyDiacriticsOnly( caseFolded );
+  }
 
-  if ( GlobalBroadcaster::instance()->getPreference()->ignorePunctuation )
+  if ( GlobalBroadcaster::instance()->getPreference()->ignorePunctuation ) {
     caseFolded = Folding::trimWhitespaceOrPunct( caseFolded );
+  }
 
   for ( unsigned x = chain.size(); x--; ) {
     // If after applying case folding to each word they wouldn't match, we
     // drop the entry.
     wstring entry =
       Folding::applySimpleCaseOnly( gd::normalize( Utf8::decode( chain[ x ].prefix + chain[ x ].word ) ) );
-    if ( ignoreDiacritics )
+    if ( ignoreDiacritics ) {
       entry = Folding::applyDiacriticsOnly( entry );
+    }
 
-    if ( GlobalBroadcaster::instance()->getPreference()->ignorePunctuation )
+    if ( GlobalBroadcaster::instance()->getPreference()->ignorePunctuation ) {
       entry = Folding::trimWhitespaceOrPunct( entry );
+    }
 
-    if ( entry != caseFolded )
+    if ( entry != caseFolded ) {
       chain.erase( chain.begin() + x );
+    }
     else if ( !chain[ x ].prefix.empty() ) // If there's a prefix, merge it with the word,
                                            // since it's what dictionaries expect
     {
@@ -778,8 +817,9 @@ static uint32_t buildBtreeNode( IndexedWords::const_iterator & nextIndex,
 
       vector< WordArticleLink > const & chain = nextWord->second;
 
-      for ( const auto & y : chain )
+      for ( const auto & y : chain ) {
         totalChainsLength += y.word.size() + 1 + y.prefix.size() + 1 + sizeof( uint32_t );
+      }
     }
 
     uncompressedData.resize( sizeof( uint32_t ) + totalChainsLength );
@@ -900,10 +940,12 @@ void IndexedWords::addWord( wstring const & index_word, uint32_t articleOffset, 
 
     //find the closest string to the maxHeadwordSize;
     auto nonSpacePos = word.find_last_not_of( ' ', maxHeadwordSize );
-    if ( nonSpacePos > 0 )
+    if ( nonSpacePos > 0 ) {
       word = word.substr( 0, nonSpacePos );
-    else
+    }
+    else {
       word = word.substr( 0, maxHeadwordSize );
+    }
 
     wordSize = word.size();
   }
@@ -916,8 +958,9 @@ void IndexedWords::addWord( wstring const & index_word, uint32_t articleOffset, 
   }
 
   // Skip any trailing whitespace
-  while ( wordSize && Folding::isWhitespace( wordBegin[ wordSize - 1 ] ) )
+  while ( wordSize && Folding::isWhitespace( wordBegin[ wordSize - 1 ] ) ) {
     --wordSize;
+  }
 
   wchar const * nextChar = wordBegin;
 
@@ -943,8 +986,9 @@ void IndexedWords::addWord( wstring const & index_word, uint32_t articleOffset, 
         return;
       }
 
-      if ( !Folding::isWhitespace( *nextChar ) && !Folding::isPunct( *nextChar ) )
+      if ( !Folding::isWhitespace( *nextChar ) && !Folding::isPunct( *nextChar ) ) {
         break;
+      }
     }
 
     // Insert this word
@@ -969,11 +1013,13 @@ void IndexedWords::addWord( wstring const & index_word, uint32_t articleOffset, 
 
     // Skip all non-whitespace/punctuation
     for ( ++nextChar;; ++nextChar ) {
-      if ( !*nextChar )
+      if ( !*nextChar ) {
         return; // End of string ends everything
+      }
 
-      if ( Folding::isWhitespace( *nextChar ) || Folding::isPunct( *nextChar ) )
+      if ( Folding::isWhitespace( *nextChar ) || Folding::isPunct( *nextChar ) ) {
         break;
+      }
     }
   }
 }
@@ -982,8 +1028,9 @@ void IndexedWords::addSingleWord( wstring const & index_word, uint32_t articleOf
 {
   wstring const & word = gd::removeTrailingZero( index_word );
   wstring folded       = Folding::apply( word );
-  if ( folded.empty() )
+  if ( folded.empty() ) {
     folded = Folding::applyWhitespaceOnly( word );
+  }
   operator[]( Utf8::encode( folded ) ).emplace_back( Utf8::encode( word ), articleOffset );
 }
 
@@ -1005,10 +1052,12 @@ IndexInfo buildIndex( IndexedWords const & indexedWords, File::Index & file )
 
   size_t btreeMaxElements = ( (size_t)sqrt( (double)indexSize ) ) + 1;
 
-  if ( btreeMaxElements < BtreeMinElements )
+  if ( btreeMaxElements < BtreeMinElements ) {
     btreeMaxElements = BtreeMinElements;
-  else if ( btreeMaxElements > BtreeMaxElements )
+  }
+  else if ( btreeMaxElements > BtreeMaxElements ) {
     btreeMaxElements = BtreeMaxElements;
+  }
 
   GD_DPRINTF( "Building a tree of %u elements\n", (unsigned)btreeMaxElements );
 
@@ -1022,16 +1071,18 @@ IndexInfo buildIndex( IndexedWords const & indexedWords, File::Index & file )
 
 void BtreeIndex::getAllHeadwords( QSet< QString > & headwords )
 {
-  if ( !idxFile )
+  if ( !idxFile ) {
     throw exIndexWasNotOpened();
+  }
 
   findArticleLinks( nullptr, nullptr, &headwords );
 }
 
 void BtreeIndex::findAllArticleLinks( QList< WordArticleLink > & articleLinks )
 {
-  if ( !idxFile )
+  if ( !idxFile ) {
     throw exIndexWasNotOpened();
+  }
 
   QSet< uint32_t > offsets;
 
@@ -1066,8 +1117,9 @@ void BtreeIndex::findArticleLinks( QList< WordArticleLink > * articleLinks,
   for ( ;; ) {
     leafEntries = *(uint32_t *)leaf;
 
-    if ( isCancelled && Utils::AtomicInt::loadAcquire( *isCancelled ) )
+    if ( isCancelled && Utils::AtomicInt::loadAcquire( *isCancelled ) ) {
       return;
+    }
 
     if ( leafEntries == 0xffffFFFF ) {
       // A node
@@ -1086,10 +1138,12 @@ void BtreeIndex::findArticleLinks( QList< WordArticleLink > * articleLinks,
 
   if ( !leafEntries ) {
     // Empty leaf? This may only be possible for entirely empty trees only.
-    if ( currentNodeOffset != rootOffset )
+    if ( currentNodeOffset != rootOffset ) {
       throw exCorruptedChainData();
-    else
+    }
+    else {
       return; // No match
+    }
   }
 
   // Read all chains
@@ -1098,20 +1152,25 @@ void BtreeIndex::findArticleLinks( QList< WordArticleLink > * articleLinks,
     vector< WordArticleLink > result = readChain( chainPtr );
 
     for ( auto & i : result ) {
-      if ( isCancelled && Utils::AtomicInt::loadAcquire( *isCancelled ) )
+      if ( isCancelled && Utils::AtomicInt::loadAcquire( *isCancelled ) ) {
         return;
+      }
 
-      if ( headwords )
+      if ( headwords ) {
         headwords->insert( QString::fromUtf8( ( i.prefix + i.word ).c_str() ) );
+      }
 
-      if ( offsets && offsets->contains( i.articleOffset ) )
+      if ( offsets && offsets->contains( i.articleOffset ) ) {
         continue;
+      }
 
-      if ( offsets )
+      if ( offsets ) {
         offsets->insert( i.articleOffset );
+      }
 
-      if ( articleLinks )
+      if ( articleLinks ) {
         articleLinks->push_back( WordArticleLink( i.prefix + i.word, i.articleOffset ) );
+      }
     }
 
     if ( chainPtr >= leafEnd ) {
@@ -1127,11 +1186,13 @@ void BtreeIndex::findArticleLinks( QList< WordArticleLink > * articleLinks,
 
         leafEntries = *(uint32_t *)leaf;
 
-        if ( leafEntries == 0xffffFFFF )
+        if ( leafEntries == 0xffffFFFF ) {
           throw exCorruptedChainData();
+        }
       }
-      else
+      else {
         break; // That was the last leaf
+      }
     }
   }
 }
@@ -1142,8 +1203,9 @@ void BtreeIndex::findHeadWords( QList< uint32_t > offsets, int & index, QSet< QS
     findSingleNodeHeadwords( *begin, headwords );
     index++;
 
-    if ( headwords->size() >= length )
+    if ( headwords->size() >= length ) {
       break;
+    }
   }
 }
 
@@ -1245,8 +1307,9 @@ void BtreeIndex::getHeadwordsFromOffsets( QList< uint32_t > & offsets,
   for ( ;; ) {
     leafEntries = *(uint32_t *)leaf;
 
-    if ( isCancelled && Utils::AtomicInt::loadAcquire( *isCancelled ) )
+    if ( isCancelled && Utils::AtomicInt::loadAcquire( *isCancelled ) ) {
       return;
+    }
 
     if ( leafEntries == 0xffffFFFF ) {
       // A node
@@ -1265,10 +1328,12 @@ void BtreeIndex::getHeadwordsFromOffsets( QList< uint32_t > & offsets,
 
   if ( !leafEntries ) {
     // Empty leaf? This may only be possible for entirely empty trees only.
-    if ( currentNodeOffset != rootOffset )
+    if ( currentNodeOffset != rootOffset ) {
       throw exCorruptedChainData();
-    else
+    }
+    else {
       return; // No match
+    }
   }
 
   // Read all chains
@@ -1285,8 +1350,9 @@ void BtreeIndex::getHeadwordsFromOffsets( QList< uint32_t > & offsets,
       QList< uint32_t >::Iterator it = std::lower_bound( begOffsets, endOffsets, articleOffset );
 
       if ( it != offsets.end() && *it == articleOffset ) {
-        if ( isCancelled && Utils::AtomicInt::loadAcquire( *isCancelled ) )
+        if ( isCancelled && Utils::AtomicInt::loadAcquire( *isCancelled ) ) {
           return;
+        }
 
         auto word = QString::fromUtf8( ( i.prefix + i.word ).c_str() );
 
@@ -1298,12 +1364,14 @@ void BtreeIndex::getHeadwordsFromOffsets( QList< uint32_t > & offsets,
         endOffsets = offsets.end();
       }
 
-      if ( offsets.isEmpty() )
+      if ( offsets.isEmpty() ) {
         break;
+      }
     }
 
-    if ( offsets.isEmpty() )
+    if ( offsets.isEmpty() ) {
       break;
+    }
 
     if ( chainPtr >= leafEnd ) {
       // We're past the current leaf, fetch the next one
@@ -1318,11 +1386,13 @@ void BtreeIndex::getHeadwordsFromOffsets( QList< uint32_t > & offsets,
 
         leafEntries = *(uint32_t *)leaf;
 
-        if ( leafEntries == 0xffffFFFF )
+        if ( leafEntries == 0xffffFFFF ) {
           throw exCorruptedChainData();
+        }
       }
-      else
+      else {
         break; // That was the last leaf
+      }
     }
   }
 }
@@ -1343,8 +1413,9 @@ bool BtreeDictionary::getHeadwords( QStringList & headwords )
       QSet< QString >::const_iterator it  = setOfHeadwords.constBegin();
       QSet< QString >::const_iterator end = setOfHeadwords.constEnd();
 
-      for ( ; it != end; ++it )
+      for ( ; it != end; ++it ) {
         headwords.append( *it );
+      }
     }
   }
   catch ( std::exception & ex ) {

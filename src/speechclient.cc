@@ -20,13 +20,13 @@ SpeechClient::Engines SpeechClient::availableEngines()
   for ( const auto & engine_name : innerEngines ) {
     const auto sp = new QTextToSpeech( engine_name );
 
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
+  #if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
     if ( sp->state() == QTextToSpeech::Error )
       continue;
-#else
+  #else
     if ( !sp || sp->state() == QTextToSpeech::BackendError )
       continue;
-#endif
+  #endif
 
     qDebug() << engine_name << sp->state();
 
