@@ -255,8 +255,6 @@ Preferences::Preferences():
   maxStringsInHistory( 500 ),
   storeHistory( 1 ),
   alwaysExpandOptionalParts( true ),
-  historyStoreInterval( 0 ),
-  favoritesStoreInterval( 0 ),
   confirmFavoritesDeletion( true ),
   collapseBigArticles( false ),
   articleSizeLimit( 2000 ),
