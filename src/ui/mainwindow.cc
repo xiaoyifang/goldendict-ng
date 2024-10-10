@@ -154,7 +154,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   trayIconMenu( this ),
   addTab( this ),
   cfg( cfg_ ),
-  history( History::Load(), cfg_.preferences.maxStringsInHistory, cfg_.maxHeadwordSize ),
+  history( cfg_.preferences.maxStringsInHistory, cfg_.maxHeadwordSize ),
   dictionaryBar( this, configEvents, cfg.preferences.maxDictionaryRefsInContextMenu ),
   articleMaker( dictionaries, groupInstances, cfg.preferences ),
   articleNetMgr( this,
@@ -3800,7 +3800,7 @@ void MainWindow::on_importHistory_triggered()
   history.enableAdd( true );
 
   for ( QList< QString >::const_iterator i = itemList.constBegin(); i != itemList.constEnd(); ++i )
-    history.addItem( History::Item( 1, *i ) );
+    history.addItem( { *i } );
 
   history.enableAdd( cfg.preferences.storeHistory );
 
@@ -3970,13 +3970,13 @@ void MainWindow::addWordToHistory( const QString & word )
   //    skip epwing reference link. epwing reference link has the pattern of r%dAt%d
   if ( QRegularExpressionMatch m = RX::Epwing::refWord.match( word ); m.hasMatch() )
     return;
-  history.addItem( History::Item( 1, word.trimmed() ) );
+  history.addItem( {word.trimmed()} );
 }
 
 void MainWindow::forceAddWordToHistory( const QString & word )
 {
   history.enableAdd( true );
-  history.addItem( History::Item( 1, word.trimmed() ) );
+  history.addItem( {word.trimmed()} );
   history.enableAdd( cfg.preferences.storeHistory );
 }
 
