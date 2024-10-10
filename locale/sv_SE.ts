@@ -3052,17 +3052,17 @@ minimera fönstret till meddelandefältet istället för att avsluta programmet.
       <translation>Monospace teckensnitt</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>&amp;Sökpopupruta</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
       <translation>Avgör om sökpopuprutelägets standardinställning är PÅ eller AV. Om kryss-
 rutan är markerad startar programmet alltid med sökpopuprutan påslagen.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
+      <source>Start with popup turned on</source>
       <translation>Starta med sökpopuprutan påslagen</translation>
     </message>
     <message>
@@ -3180,7 +3180,7 @@ angivna tangenterna är nedtryckta när ordet markeras.</translation>
       <translation>Läs automatiskt upp ord i huvudfönstret</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
+      <source>Auto-pronounce words in popup</source>
       <translation>Läs automatiskt upp ord i popuprutan</translation>
     </message>
     <message>
@@ -3713,7 +3713,7 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <translation>Tvinga ordet att översättas i huvudfönstret</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>Växla skanning popup.</translation>
     </message>
     <message>

@@ -232,8 +232,8 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
                                               QObject::tr( "Force the word to be translated in the mainwindow" ) );
 
   QCommandLineOption togglePopupOption( QStringList() << "t"
-                                                      << "toggle-scan-popup",
-                                        QObject::tr( "Toggle scan popup." ) );
+                                                      << "toggle-popup",
+                                        QObject::tr( "Toggle popup." ) );
 
   QCommandLineOption printVersion( QStringList() << "v"
                                                  << "version",
@@ -575,7 +575,7 @@ int main( int argc, char ** argv )
     app.installTranslator( &webengineTs );
   }
 
-  // Prevent app from quitting spontaneously when it works with scan popup
+  // Prevent app from quitting spontaneously when it works with popup
   // and with the main window closed.
   app.setQuitOnLastWindowClosed( false );
 

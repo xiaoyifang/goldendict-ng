@@ -3055,17 +3055,17 @@ the application.</source>
       <translation>Fuente monoespaciada</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>&amp;Ventana emergente de lectura</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
       <translation>Elige si la ventana emergente de lectura se activará por defecto o no. Si estuviera tildada, 
 el programa siempre se iniciará con la ventana emergente de lectura activa.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
+      <source>Start with popup turned on</source>
       <translation>Iniciar con la ventana emergente de lectura activada</translation>
     </message>
     <message>
@@ -3182,7 +3182,7 @@ in the pressed state when the word selection changes.</source>
       <translation>Auto-pronunciar palabras en la ventana principal</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
+      <source>Auto-pronounce words in popup</source>
       <translation>Auto-pronunciar palabras en la ventana emergente de lectura</translation>
     </message>
     <message>
@@ -3710,7 +3710,7 @@ de los diccionarios Stardict, Babylon y GLS.</translation>
       <translation>Forzar la traducción de la palabra en la ventana principal.</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>Alternar ventana emergente de escaneo.</translation>
     </message>
     <message>

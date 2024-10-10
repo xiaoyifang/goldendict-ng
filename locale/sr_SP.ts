@@ -3055,16 +3055,16 @@ the application.</source>
       <translation>Моноспаце Фонт</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>&amp;Искачући прозор</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
       <translation>Укључите или не укључити искачући прозор када програм почиње.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
+      <source>Start with popup turned on</source>
       <translation>Омогући искачући прозор при покретању</translation>
     </message>
     <message>
@@ -3182,7 +3182,7 @@ in the pressed state when the word selection changes.</source>
       <translation>Аутоматски изговари речи у главном прозору</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
+      <source>Auto-pronounce words in popup</source>
       <translation>Аутоматски изговорити речи у искачућем прозору</translation>
     </message>
     <message>
@@ -3713,7 +3713,7 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Присилите да се реч преведе у главном прозору</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>Укључите искачући прозор за скенирање.</translation>
     </message>
     <message>

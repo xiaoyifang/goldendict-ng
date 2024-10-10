@@ -3053,17 +3053,17 @@ tiesiog paslepiama.</translation>
       <translation>Monospace šriftas</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>&amp;Iškylantis langas</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
       <translation>Nurodykite, ar ši iškylančių langų funkcija yra numatytoji.
 Jei pažymėta, iškylančių langų funkcija bus įjungta vos paleistoje programoje.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
+      <source>Start with popup turned on</source>
       <translation>Paleisti su įjungta iškylančių langų funkcija</translation>
     </message>
     <message>
@@ -3181,7 +3181,7 @@ po to, kai pasikeis pažymėtas žodis.</translation>
       <translation>Automatiškai ištarti pagrindinio lango žodžius</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
+      <source>Auto-pronounce words in popup</source>
       <translation>Automatiškai ištarti iškylančio lango žodžius</translation>
     </message>
     <message>
@@ -3708,7 +3708,7 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Priverskite žodį išversti pagrindiniame lange</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>Perjungti nuskaitymo iššokantįjį langą.</translation>
     </message>
     <message>

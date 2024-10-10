@@ -3051,17 +3051,17 @@ prowadzi do jego ukrycia, a nie do zamknięcia aplikacji.</translation>
       <translation>Czcionka o stałej szerokości</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>&amp;Skanowanie automatyczne</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
       <translation>Wskazuje, czy tryb skanowania automatycznego jest domyślnie włączony, czy nie. Zaznaczenie
 tej opcji powoduje, że program uruchamia się z włączonym skanowaniem automatycznym.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
+      <source>Start with popup turned on</source>
       <translation>Uruchamiaj z włączoną funkcją skanowania automatycznego</translation>
     </message>
     <message>
@@ -3179,7 +3179,7 @@ kiedy zaznaczenie słowa ulega zmianie przy naciśniętych wszystkich wybranych 
       <translation>Automatycznie wymawiaj słowa znajdujące się w oknie głównym</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
+      <source>Auto-pronounce words in popup</source>
       <translation>Automatycznie wymawiaj słowa znajdujące się w okienku wyskakującym</translation>
     </message>
     <message>
@@ -3710,7 +3710,7 @@ ze słowników Stardict, Babylon i GLS</translation>
       <translation>Wymuś przetłumaczenie słowa w oknie głównym</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>Przełącz wyskakujące okienko skanowania.</translation>
     </message>
     <message>

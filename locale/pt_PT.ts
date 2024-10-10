@@ -3053,17 +3053,17 @@ a aplicação.</translation>
       <translation>Fonte monoespaçada</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>&amp;Escanear pop-up</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
       <translation>Escolha se o modo popup está ativado por padrão. Se selecionado,
 o programa sempre iniciará com o popup de verificação ativo.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
+      <source>Start with popup turned on</source>
       <translation>Iniciar com o popup de verificação ativado</translation>
     </message>
     <message>
@@ -3181,7 +3181,7 @@ no estado pressionado quando a seleção de palavras mudar.</translation>
       <translation>Auto-pronunciar palavras na janela principal</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
+      <source>Auto-pronounce words in popup</source>
       <translation>Auto-pronunciar palavras em pop-up de verificação</translation>
     </message>
     <message>
@@ -3711,7 +3711,7 @@ no Stardict, Babilônia e dicionários GLS</translation>
       <translation>Forçar a palavra a ser traduzida na janela principal</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>Alternar pop-up de verificação.</translation>
     </message>
     <message>

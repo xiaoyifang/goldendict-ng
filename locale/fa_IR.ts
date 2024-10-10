@@ -3051,17 +3051,17 @@ the application.</source>
       <translation>فونت Monospace</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>پویش &amp;واشو</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
       <translation>برگزینید که آیا حالت پویش واشو به‌طور پیش‌فرض روشن باشد یا نه. اگر
 به‌کار افتاده باشد، برنامه همیشه با فعال بودن پویش واشو آغاز می‌شود.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
+      <source>Start with popup turned on</source>
       <translation>آغاز با روشن بودن پویش واشو</translation>
     </message>
     <message>
@@ -3179,7 +3179,7 @@ in the pressed state when the word selection changes.</source>
       <translation>بیان خودکار واژه‌ها در پنجره اصلی</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
+      <source>Auto-pronounce words in popup</source>
       <translation>بیان خودکار واژه‌ها در پویش واشو</translation>
     </message>
     <message>
@@ -3708,7 +3708,7 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>مجبور کنید کلمه را در پنجره اصلی ترجمه کنید</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>جابجایی پنجره اسکن</translation>
     </message>
     <message>

@@ -244,10 +244,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   translateBoxLayout->addWidget( translateBox );
   translateBoxToolBarAction = navToolbar->addWidget( translateBoxWidget );
 
-  // scan popup
+  // popup
   navToolbar->addSeparator();
 
-  enableScanningAction = navToolbar->addAction( QIcon( ":/icons/wizard.svg" ), tr( "Enable Scanning" ) );
+  enableScanningAction = navToolbar->addAction( QIcon( ":/icons/wizard.svg" ), tr( "Toggle clipboard monitoring" ) );
   enableScanningAction->setCheckable( true );
 
   navToolbar->widgetForAction( enableScanningAction )->setObjectName( "scanPopupButton" );
@@ -2878,7 +2878,7 @@ void MainWindow::installHotKeys()
     if ( cfg.preferences.enableMainWindowHotkey )
       hotkeyWrapper->setGlobalKey( cfg.preferences.mainWindowHotkey, 0 );
 
-    if ( cfg.preferences.enableClipboardHotkey && !enableScanningAction->isChecked() ) {
+    if ( cfg.preferences.enableClipboardHotkey ) {
       hotkeyWrapper->setGlobalKey( cfg.preferences.clipboardHotkey, 1 );
     }
 
@@ -3457,7 +3457,7 @@ void MainWindow::applyZoomFactor()
 
   // Scaling article views asynchronously dramatically improves performance when
   // a zoom action is triggered repeatedly while many or large articles are open
-  // in the main window or in scan popup.
+  // in the main window or in popup.
   // Multiple zoom action signals are processed before (often slow) article view
   // scaling is requested. Multiple scaling requests then ask for the same zoom factor,
   // so all of them except for the first one don't change anything and run very fast.
@@ -3607,7 +3607,7 @@ void MainWindow::messageFromAnotherInstanceReceived( QString const & message )
     }
     else {
       //default logic
-      if ( scanPopup && enableScanningAction->isChecked() )
+      if ( scanPopup )
         scanPopup->translateWord( word );
       else
         wordReceived( word );

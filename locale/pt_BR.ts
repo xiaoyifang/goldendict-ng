@@ -3059,16 +3059,16 @@ ser fechado.</translation>
       <translation>Fonte monoespaçada</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>&amp;Janela de Definições/Tradução Semiautomáticas</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
       <translation>Permite especificar se a janela secundária de definições/tradução semiautomáticas deve ficar ativa por padrão. Se habilitada esta opção, o programa será sempre executado com a janela secundária ativada.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
+      <source>Start with popup turned on</source>
       <translation>Executar o GoldenDict com a janela de definições/tradução semiautomáticas habilitada</translation>
     </message>
     <message>
@@ -3187,7 +3187,7 @@ em qualquer situação ou contexto, desde que o GoldenDict esteja em execução.
       <translation>Pronunciar palavras na janela principal automaticamente</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
+      <source>Auto-pronounce words in popup</source>
       <translation>Pronunciar automaticamente palavras da janela de definições/tradução semiautomáticas</translation>
     </message>
     <message>
@@ -3716,7 +3716,7 @@ dos dicionários Stardict, Babylon e GLS</translation>
       <translation>Forçar a palavra a ser traduzida na janela principal</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>Alternar pop-up de verificação.</translation>
     </message>
     <message>

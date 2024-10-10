@@ -3053,18 +3053,18 @@ the application.</source>
       <translation>Γραμματοσειρά Monospace</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>Ανα&amp;δυόμενο παράθυρο</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
       <translation>Καθορίζει αν θα είναι προεπιλεγμένη η λειτουργία αναδυόμενου παραθύρου.
 Αν σημειώσετε την επιλογή, η εφαρμογή θα εκκινείται πάντα με το αναδυόμενο 
 παράθυρο ενεργοποιημένο.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
+      <source>Start with popup turned on</source>
       <translation>Εκκίνηση με το αναδυόμενο παράθυρο ενεργοποιημένο</translation>
     </message>
     <message>
@@ -3182,7 +3182,7 @@ in the pressed state when the word selection changes.</source>
       <translation>Αυτόματη εκφώνηση λημμάτων στο κύριο παράθυρο</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
+      <source>Auto-pronounce words in popup</source>
       <translation>Αυτόματη εκφώνηση λημμάτων στο αναδυόμενο παράθυρο</translation>
     </message>
     <message>
@@ -3713,7 +3713,7 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Αναγκάστε να μεταφραστεί η λέξη στο κύριο παράθυρο</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>Εναλλαγή αναδυόμενου παραθύρου σάρωσης.</translation>
     </message>
     <message>

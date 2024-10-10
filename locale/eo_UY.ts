@@ -3053,17 +3053,17 @@ la aplikaĵon.</translation>
       <translation>Monospaca Tiparo</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>&amp;Skani Ŝprucfenestron</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
       <translation>Elektas ĉu la skana ŝprucfenestra reĝimo estas ŝaltita defaŭlte aŭ ne. Se markite,
 la programo ĉiam komenciĝus kun la skana ŝprucfenestro aktiva.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
+      <source>Start with popup turned on</source>
       <translation>Komencu kun skanado ŝprucfenestron ŝaltita</translation>
     </message>
     <message>
@@ -3181,7 +3181,7 @@ en la premita stato kiam la vortelekto ŝanĝiĝas.</translation>
       <translation>Aŭtomate prononcu vortojn en ĉefa fenestro</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
+      <source>Auto-pronounce words in popup</source>
       <translation>Aŭtomate prononcu vortojn en skana ŝprucfenestro</translation>
     </message>
     <message>
@@ -3711,7 +3711,7 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
       <translation>Devigu la vorton esti tradukita en la ĉeffenestro</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>Baskuligi skanadon ŝprucfenestron.</translation>
     </message>
     <message>

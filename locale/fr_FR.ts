@@ -3051,17 +3051,17 @@ the application.</source>
       <translation>Police Monospace</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>Fenêtre de &amp;scan</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
       <translation>Définit si la fonctionnalité de scan par fenêtre pop-up est activée par défaut ou non.
 Si cette option est active, GoldenDict démarrera toujours avec la fenêtre de scan activée.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
+      <source>Start with popup turned on</source>
       <translation>Démarrer avec la fenêtre de scan activée</translation>
     </message>
     <message>
@@ -3178,7 +3178,7 @@ in the pressed state when the word selection changes.</source>
       <translation>Prononciation automatique dans la fenêtre principale</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
+      <source>Auto-pronounce words in popup</source>
       <translation>Prononciation automatique dans la fenêtre de scan</translation>
     </message>
     <message>
@@ -3707,7 +3707,7 @@ des dictionnaires Stardict, Babylon et GLS</translation>
       <translation>Forcer la traduction du mot dans la fenêtre principale</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>Activer/désactiver la popup d'analyse.</translation>
     </message>
     <message>

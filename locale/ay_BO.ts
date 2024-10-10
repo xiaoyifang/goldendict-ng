@@ -3136,19 +3136,19 @@ Aka jakhu mayjacham jach&apos;a menus jithiqañataki.</translation>
       <translation>Monoespacio ukax Fuente ukawa</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>&amp;Uñstir wintanampi ullaña</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
       <translation>Habilitar escaneo en una ventana emergente cuando inicia.
 
 Jisa uskum thaqhañataki jan walikitaki janiwa.
 Akasti marcado, thaqhawi ist&apos;araskaniwa.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
+      <source>Start with popup turned on</source>
       <translation>Mä uñstiri wintananxa escaneo uk naktayaña, qalltkis ukja</translation>
     </message>
     <message>
@@ -3274,7 +3274,7 @@ Uñstir wintana uñachañatakixa salta ukan mä klik luram. </translation>
       <translation>Nayrir wintanan justupak arunak arst&apos;awi</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
+      <source>Auto-pronounce words in popup</source>
       <translation>Uñstiri wintanan justupak arunak arst&apos;awi</translation>
     </message>
     <message>
@@ -3833,7 +3833,7 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
       <translation>Jaqukipaña aru jach’a ventanana ch’amañchaña</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>Toggle escaneo ukax mä popup uñt’ayatawa.</translation>
     </message>
     <message>

@@ -34,9 +34,9 @@ static const Qt::WindowFlags defaultUnpinnedWindowFlags =
 
 static const Qt::WindowFlags pinnedWindowFlags =
 #ifdef HAVE_X11
-  /// With the Qt::Dialog flag, scan popup is always on top of the main window
+  /// With the Qt::Dialog flag, popup is always on top of the main window
   /// on Linux/X11 with Qt 4, Qt 5 since version 5.12.1 (QTBUG-74309).
-  /// Qt::Window allows to use the scan popup and the main window independently.
+  /// Qt::Window allows to use the popup and the main window independently.
   Qt::Window
 #else
   Qt::Dialog
@@ -454,7 +454,7 @@ void ScanPopup::showEngagePopup()
   auto sanitizedPhrase = cfg.preferences.sanitizeInputPhrase( str );
 
   if ( isVisible() && sanitizedPhrase == pendingWord ) {
-    // Attempt to translate the same word we already have shown in scan popup.
+    // Attempt to translate the same word we already have shown in popup.
     // Ignore it, as it is probably a spurious mouseover event.
     return;
   }

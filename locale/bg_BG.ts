@@ -3053,17 +3053,17 @@ the application.</source>
       <translation>Монопространствен шрифт</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>&amp;Изскачащ прозорец</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
       <translation>Избран ли е, Изкачащ прозорец по подразб. или не. Ако е проверено,
 програмата винаги ще стартира с активен Изкачащ прозорец.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
+      <source>Start with popup turned on</source>
       <translation>Пускане с включен изскачащ прозорец</translation>
     </message>
     <message>
@@ -3181,7 +3181,7 @@ in the pressed state when the word selection changes.</source>
       <translation>Автоматично произнасяне на думите в главния прозорец</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
+      <source>Auto-pronounce words in popup</source>
       <translation>Автоматично произнасяне на думите в изскачащия прозорец</translation>
     </message>
     <message>
@@ -3710,7 +3710,7 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Принудете думата да бъде преведена в главния прозорец</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>Превключване на изскачащия прозорец за сканиране.</translation>
     </message>
     <message>
