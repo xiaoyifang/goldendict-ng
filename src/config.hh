@@ -391,8 +391,8 @@ struct Preferences
   unsigned storeHistory;
   bool alwaysExpandOptionalParts;
 
-  unsigned historyStoreInterval;
-  unsigned favoritesStoreInterval;
+  unsigned historyStoreInterval   = 15; // unit is minutes
+  unsigned favoritesStoreInterval = 15;
 
   bool confirmFavoritesDeletion;
 
