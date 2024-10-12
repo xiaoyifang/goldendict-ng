@@ -243,8 +243,6 @@ private:
   ArticleView * getCurrentArticleView();
   void ctrlTabPressed();
 
-  void fillWordListFromHistory();
-
   QString unescapeTabHeader( QString const & header );
 
   void respondToTranslationRequest( QString const & word,

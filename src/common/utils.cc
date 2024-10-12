@@ -100,8 +100,9 @@ std::string basename( std::string const & str )
 {
   size_t x = str.rfind( separator() );
 
-  if ( x == std::string::npos )
+  if ( x == std::string::npos ) {
     return str;
+  }
 
   return std::string( str, x + 1 );
 }

@@ -109,16 +109,18 @@ bool QtLocalPeer::isClient()
         res = server->listen(socketName);
     }
 #endif
-    if (!res)
+    if (!res) {
         qWarning("QtSingleCoreApplication: listen on local socket failed, %s", qPrintable(server->errorString()));
+}
     QObject::connect( server, &QLocalServer::newConnection, this, &QtLocalPeer::receiveConnection );
     return false;
 }
 
 bool QtLocalPeer::sendMessage(const QString &message, int timeout)
 {
-    if (!isClient())
+    if (!isClient()) {
         return false;
+}
 
     QLocalSocket socket;
     bool connOk = false;
@@ -126,8 +128,9 @@ bool QtLocalPeer::sendMessage(const QString &message, int timeout)
         // Try twice, in case the other instance is just starting up
         socket.connectToServer(socketName);
         connOk = socket.waitForConnected(timeout/2);
-        if (connOk || i)
+        if (connOk || i) {
             break;
+}
         int ms = 250;
 #if defined(Q_OS_WIN)
         Sleep(DWORD(ms));
@@ -136,8 +139,9 @@ bool QtLocalPeer::sendMessage(const QString &message, int timeout)
         nanosleep(&ts, NULL);
 #endif
     }
-    if (!connOk)
+    if (!connOk) {
         return false;
+}
 
     QByteArray uMsg(message.toUtf8());
     QDataStream ds(&socket);
@@ -145,8 +149,9 @@ bool QtLocalPeer::sendMessage(const QString &message, int timeout)
     bool res = socket.waitForBytesWritten(timeout);
     if (res) {
         res &= socket.waitForReadyRead(timeout);   // wait for ack
-        if (res)
+        if (res) {
             res &= (socket.read(qstrlen(ack)) == ack);
+}
     }
     return res;
 }
@@ -154,11 +159,13 @@ bool QtLocalPeer::sendMessage(const QString &message, int timeout)
 void QtLocalPeer::receiveConnection()
 {
     QLocalSocket* socket = server->nextPendingConnection();
-    if (!socket)
+    if (!socket) {
         return;
+}
 
-    while (socket->bytesAvailable() < (int)sizeof(quint32))
+    while (socket->bytesAvailable() < (int)sizeof(quint32)) {
         socket->waitForReadyRead();
+}
     QDataStream ds(socket);
     QByteArray uMsg;
     quint32 remaining;

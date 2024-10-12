@@ -14,7 +14,7 @@ string escape( string const & str )
 {
   string result( str );
 
-  for ( size_t x = result.size(); x--; )
+  for ( size_t x = result.size(); x--; ) {
     switch ( result[ x ] ) {
       case '&':
         result.erase( x, 1 );
@@ -39,6 +39,7 @@ string escape( string const & str )
       default:
         break;
     }
+  }
 
   return result;
 }
@@ -82,16 +83,18 @@ string preformat( string const & str, bool baseRightToLeft )
       continue;
     }
 
-    if ( *nextChar == '\r' )
+    if ( *nextChar == '\r' ) {
       continue; // Just skip all \r
+    }
 
     line.push_back( *nextChar );
 
     leading = false;
   }
 
-  if ( !line.empty() )
+  if ( !line.empty() ) {
     storeLineInDiv( result, line, baseRightToLeft );
+  }
 
   return result;
 }
@@ -100,7 +103,7 @@ string escapeForJavaScript( string const & str )
 {
   string result( str );
 
-  for ( size_t x = result.size(); x--; )
+  for ( size_t x = result.size(); x--; ) {
     switch ( result[ x ] ) {
       case '\\':
       case '"':
@@ -126,6 +129,7 @@ string escapeForJavaScript( string const & str )
       default:
         break;
     }
+  }
 
   return result;
 }

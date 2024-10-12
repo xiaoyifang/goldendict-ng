@@ -50,8 +50,9 @@ QString portableHomeDirPath()
 
 QDir getHomeDir()
 {
-  if ( isPortableVersion() )
+  if ( isPortableVersion() ) {
     return QDir( portableHomeDirPath() );
+  }
 
   QDir result;
 
@@ -74,8 +75,9 @@ QDir getHomeDir()
 
   result.mkpath( pathInHome );
 
-  if ( !result.cd( pathInHome ) )
+  if ( !result.cd( pathInHome ) ) {
     throw exCantUseHomeDir();
+  }
 
   return result;
 }
@@ -255,8 +257,6 @@ Preferences::Preferences():
   maxStringsInHistory( 500 ),
   storeHistory( 1 ),
   alwaysExpandOptionalParts( true ),
-  historyStoreInterval( 0 ),
-  favoritesStoreInterval( 0 ),
   confirmFavoritesDeletion( true ),
   collapseBigArticles( false ),
   articleSizeLimit( 2000 ),
@@ -292,17 +292,21 @@ Romaji::Romaji():
 
 Group * Class::getGroup( unsigned id )
 {
-  for ( auto & group : groups )
-    if ( group.id == id )
+  for ( auto & group : groups ) {
+    if ( group.id == id ) {
       return &group;
+    }
+  }
   return 0;
 }
 
 Group const * Class::getGroup( unsigned id ) const
 {
-  for ( const auto & group : groups )
-    if ( group.id == id )
+  for ( const auto & group : groups ) {
+    if ( group.id == id ) {
       return &group;
+    }
+  }
   return 0;
 }
 
@@ -434,45 +438,54 @@ void applyBoolOption( bool & option, QDomNode const & node )
 {
   QString value = node.toElement().text();
 
-  if ( value == "1" )
+  if ( value == "1" ) {
     option = true;
-  else if ( value == "0" )
+  }
+  else if ( value == "0" ) {
     option = false;
+  }
 }
 
 Group loadGroup( QDomElement grp, unsigned * nextId = 0 )
 {
   Group g;
 
-  if ( grp.hasAttribute( "id" ) )
+  if ( grp.hasAttribute( "id" ) ) {
     g.id = grp.attribute( "id" ).toUInt();
-  else
+  }
+  else {
     g.id = nextId ? ( *nextId )++ : 0;
+  }
 
   g.name            = grp.attribute( "name" );
   g.icon            = grp.attribute( "icon" );
   g.favoritesFolder = grp.attribute( "favoritesFolder" );
 
-  if ( !grp.attribute( "iconData" ).isEmpty() )
+  if ( !grp.attribute( "iconData" ).isEmpty() ) {
     g.iconData = QByteArray::fromBase64( grp.attribute( "iconData" ).toLatin1() );
+  }
 
-  if ( !grp.attribute( "shortcut" ).isEmpty() )
+  if ( !grp.attribute( "shortcut" ).isEmpty() ) {
     g.shortcut = QKeySequence::fromString( grp.attribute( "shortcut" ) );
+  }
 
   QDomNodeList dicts = grp.elementsByTagName( "dictionary" );
 
-  for ( int y = 0; y < dicts.length(); ++y )
+  for ( int y = 0; y < dicts.length(); ++y ) {
     g.dictionaries.push_back(
       DictionaryRef( dicts.item( y ).toElement().text(), dicts.item( y ).toElement().attribute( "name" ) ) );
+  }
 
   QDomNode muted = grp.namedItem( "mutedDictionaries" );
   dicts          = muted.toElement().elementsByTagName( "mutedDictionary" );
-  for ( int x = 0; x < dicts.length(); ++x )
+  for ( int x = 0; x < dicts.length(); ++x ) {
     g.mutedDictionaries.insert( dicts.item( x ).toElement().text() );
+  }
 
   dicts = muted.toElement().elementsByTagName( "popupMutedDictionary" );
-  for ( int x = 0; x < dicts.length(); ++x )
+  for ( int x = 0; x < dicts.length(); ++x ) {
     g.popupMutedDictionaries.insert( dicts.item( x ).toElement().text() );
+  }
 
   return g;
 }
@@ -484,8 +497,9 @@ MutedDictionaries loadMutedDictionaries( const QDomNode & mutedDictionaries )
   if ( !mutedDictionaries.isNull() ) {
     QDomNodeList nl = mutedDictionaries.toElement().elementsByTagName( "mutedDictionary" );
 
-    for ( int x = 0; x < nl.length(); ++x )
+    for ( int x = 0; x < nl.length(); ++x ) {
       result.insert( nl.item( x ).toElement().text() );
+    }
   }
 
   return result;
@@ -506,8 +520,9 @@ void saveMutedDictionaries( QDomDocument & dd, QDomElement & muted, MutedDiction
 
 bool fromConfig2Preference( const QDomNode & node, const QString & expectedValue, bool defaultValue = false )
 {
-  if ( !node.isNull() )
+  if ( !node.isNull() ) {
     return ( node.toElement().text() == expectedValue );
+  }
   return defaultValue;
 }
 
@@ -549,8 +564,9 @@ Class load()
 
     QString possibleMorphologyPath = getProgramDataDir() + "/content/morphology";
 
-    if ( QDir( possibleMorphologyPath ).exists() )
+    if ( QDir( possibleMorphologyPath ).exists() ) {
       c.hunspell.dictionariesPath = possibleMorphologyPath;
+    }
 
     c.mediawikis  = makeDefaultMediaWikis( true );
     c.webSites    = makeDefaultWebSites();
@@ -573,8 +589,9 @@ Class load()
 
   QFile configFile( configName );
 
-  if ( !configFile.open( QFile::ReadOnly ) )
+  if ( !configFile.open( QFile::ReadOnly ) ) {
     throw exCantReadConfigFile();
+  }
 
   QDomDocument dd;
 
@@ -613,9 +630,10 @@ Class load()
   if ( !paths.isNull() ) {
     QDomNodeList nl = paths.toElement().elementsByTagName( "path" );
 
-    for ( int x = 0; x < nl.length(); ++x )
+    for ( int x = 0; x < nl.length(); ++x ) {
       c.paths.push_back(
         Path( nl.item( x ).toElement().text(), nl.item( x ).toElement().attribute( "recursive" ) == "1" ) );
+    }
   }
 
   if ( Config::isPortableVersion() && c.paths.empty() ) {
@@ -628,21 +646,24 @@ Class load()
   if ( !soundDirs.isNull() ) {
     QDomNodeList nl = soundDirs.toElement().elementsByTagName( "sounddir" );
 
-    for ( int x = 0; x < nl.length(); ++x )
+    for ( int x = 0; x < nl.length(); ++x ) {
       c.soundDirs.push_back( SoundDir( nl.item( x ).toElement().text(),
                                        nl.item( x ).toElement().attribute( "name" ),
                                        nl.item( x ).toElement().attribute( "icon" ) ) );
+    }
   }
 
   QDomNode dictionaryOrder = root.namedItem( "dictionaryOrder" );
 
-  if ( !dictionaryOrder.isNull() )
+  if ( !dictionaryOrder.isNull() ) {
     c.dictionaryOrder = loadGroup( dictionaryOrder.toElement() );
+  }
 
   QDomNode inactiveDictionaries = root.namedItem( "inactiveDictionaries" );
 
-  if ( !inactiveDictionaries.isNull() )
+  if ( !inactiveDictionaries.isNull() ) {
     c.inactiveDictionaries = loadGroup( inactiveDictionaries.toElement() );
+  }
 
   QDomNode groups = root.namedItem( "groups" );
 
@@ -665,8 +686,9 @@ Class load()
 
     QDomNodeList nl = hunspell.toElement().elementsByTagName( "enabled" );
 
-    for ( int x = 0; x < nl.length(); ++x )
+    for ( int x = 0; x < nl.length(); ++x ) {
       c.hunspell.enabledDictionaries.push_back( nl.item( x ).toElement().text() );
+    }
   }
 
   QDomNode transliteration = root.namedItem( "transliteration" );
@@ -733,8 +755,9 @@ Class load()
     c.forvo.apiKey        = forvo.namedItem( "apiKey" ).toElement().text();
     c.forvo.languageCodes = forvo.namedItem( "languageCodes" ).toElement().text();
   }
-  else
+  else {
     c.forvo.languageCodes = "en, ru"; // Default demo values
+  }
 
   QDomNode programs = root.namedItem( "programs" );
 
@@ -897,45 +920,56 @@ Class load()
       c.preferences.customFonts = fonts;
     }
 
-    if ( !preferences.namedItem( "doubleClickTranslates" ).isNull() )
+    if ( !preferences.namedItem( "doubleClickTranslates" ).isNull() ) {
       c.preferences.doubleClickTranslates =
         ( preferences.namedItem( "doubleClickTranslates" ).toElement().text() == "1" );
+    }
 
-    if ( !preferences.namedItem( "selectWordBySingleClick" ).isNull() )
+    if ( !preferences.namedItem( "selectWordBySingleClick" ).isNull() ) {
       c.preferences.selectWordBySingleClick =
         ( preferences.namedItem( "selectWordBySingleClick" ).toElement().text() == "1" );
+    }
 
-    if ( !preferences.namedItem( "autoScrollToTargetArticle" ).isNull() )
+    if ( !preferences.namedItem( "autoScrollToTargetArticle" ).isNull() ) {
       c.preferences.autoScrollToTargetArticle =
         ( preferences.namedItem( "autoScrollToTargetArticle" ).toElement().text() == "1" );
+    }
 
-    if ( !preferences.namedItem( "escKeyHidesMainWindow" ).isNull() )
+    if ( !preferences.namedItem( "escKeyHidesMainWindow" ).isNull() ) {
       c.preferences.escKeyHidesMainWindow =
         ( preferences.namedItem( "escKeyHidesMainWindow" ).toElement().text() == "1" );
+    }
 
-    if ( !preferences.namedItem( "darkMode" ).isNull() )
+    if ( !preferences.namedItem( "darkMode" ).isNull() ) {
       c.preferences.darkMode = ( preferences.namedItem( "darkMode" ).toElement().text() == "1" );
+    }
 
-    if ( !preferences.namedItem( "darkReaderMode" ).isNull() )
+    if ( !preferences.namedItem( "darkReaderMode" ).isNull() ) {
       c.preferences.darkReaderMode = ( preferences.namedItem( "darkReaderMode" ).toElement().text() == "1" );
+    }
 
-    if ( !preferences.namedItem( "zoomFactor" ).isNull() )
+    if ( !preferences.namedItem( "zoomFactor" ).isNull() ) {
       c.preferences.zoomFactor = preferences.namedItem( "zoomFactor" ).toElement().text().toDouble();
+    }
 
-    if ( !preferences.namedItem( "helpZoomFactor" ).isNull() )
+    if ( !preferences.namedItem( "helpZoomFactor" ).isNull() ) {
       c.preferences.helpZoomFactor = preferences.namedItem( "helpZoomFactor" ).toElement().text().toDouble();
+    }
 
-    if ( !preferences.namedItem( "wordsZoomLevel" ).isNull() )
+    if ( !preferences.namedItem( "wordsZoomLevel" ).isNull() ) {
       c.preferences.wordsZoomLevel = preferences.namedItem( "wordsZoomLevel" ).toElement().text().toInt();
+    }
 
     applyBoolOption( c.preferences.enableMainWindowHotkey, preferences.namedItem( "enableMainWindowHotkey" ) );
-    if ( !preferences.namedItem( "mainWindowHotkey" ).isNull() )
+    if ( !preferences.namedItem( "mainWindowHotkey" ).isNull() ) {
       c.preferences.mainWindowHotkey =
         QKeySequence::fromString( preferences.namedItem( "mainWindowHotkey" ).toElement().text() );
+    }
     applyBoolOption( c.preferences.enableClipboardHotkey, preferences.namedItem( "enableClipboardHotkey" ) );
-    if ( !preferences.namedItem( "clipboardHotkey" ).isNull() )
+    if ( !preferences.namedItem( "clipboardHotkey" ).isNull() ) {
       c.preferences.clipboardHotkey =
         QKeySequence::fromString( preferences.namedItem( "clipboardHotkey" ).toElement().text() );
+    }
 
     c.preferences.startWithScanPopupOn = ( preferences.namedItem( "startWithScanPopupOn" ).toElement().text() == "1" );
     c.preferences.enableScanPopupModifiers =
@@ -945,8 +979,9 @@ Class load()
       ( preferences.namedItem( "ignoreOwnClipboardChanges" ).toElement().text() == "1" );
     c.preferences.scanToMainWindow = ( preferences.namedItem( "scanToMainWindow" ).toElement().text() == "1" );
     c.preferences.ignoreDiacritics = ( preferences.namedItem( "ignoreDiacritics" ).toElement().text() == "1" );
-    if ( !preferences.namedItem( "ignorePunctuation" ).isNull() )
+    if ( !preferences.namedItem( "ignorePunctuation" ).isNull() ) {
       c.preferences.ignorePunctuation = ( preferences.namedItem( "ignorePunctuation" ).toElement().text() == "1" );
+    }
 
     if ( !preferences.namedItem( "sessionCollapse" ).isNull() ) {
       c.preferences.sessionCollapse = ( preferences.namedItem( "sessionCollapse" ).toElement().text() == "1" );
@@ -964,20 +999,25 @@ Class load()
     c.preferences.pronounceOnLoadPopup = ( preferences.namedItem( "pronounceOnLoadPopup" ).toElement().text() == "1" );
 
     if ( InternalPlayerBackend::anyAvailable() ) {
-      if ( !preferences.namedItem( "useInternalPlayer" ).isNull() )
+      if ( !preferences.namedItem( "useInternalPlayer" ).isNull() ) {
         c.preferences.useInternalPlayer = ( preferences.namedItem( "useInternalPlayer" ).toElement().text() == "1" );
+      }
     }
-    else
+    else {
       c.preferences.useInternalPlayer = false;
+    }
 
-    if ( !preferences.namedItem( "internalPlayerBackend" ).isNull() )
+    if ( !preferences.namedItem( "internalPlayerBackend" ).isNull() ) {
       c.preferences.internalPlayerBackend.setUiName(
         preferences.namedItem( "internalPlayerBackend" ).toElement().text() );
+    }
 
-    if ( !preferences.namedItem( "audioPlaybackProgram" ).isNull() )
+    if ( !preferences.namedItem( "audioPlaybackProgram" ).isNull() ) {
       c.preferences.audioPlaybackProgram = preferences.namedItem( "audioPlaybackProgram" ).toElement().text();
-    else
+    }
+    else {
       c.preferences.audioPlaybackProgram = "mplayer";
+    }
 
     QDomNode proxy = preferences.namedItem( "proxyserver" );
 
@@ -1007,102 +1047,129 @@ Class load()
       c.preferences.ankiConnectServer.sentence = ankiConnectServer.namedItem( "sentence" ).toElement().text();
     }
 
-    if ( !preferences.namedItem( "checkForNewReleases" ).isNull() )
+    if ( !preferences.namedItem( "checkForNewReleases" ).isNull() ) {
       c.preferences.checkForNewReleases = ( preferences.namedItem( "checkForNewReleases" ).toElement().text() == "1" );
+    }
 
-    if ( !preferences.namedItem( "disallowContentFromOtherSites" ).isNull() )
+    if ( !preferences.namedItem( "disallowContentFromOtherSites" ).isNull() ) {
       c.preferences.disallowContentFromOtherSites =
         ( preferences.namedItem( "disallowContentFromOtherSites" ).toElement().text() == "1" );
+    }
 
-    if ( !preferences.namedItem( "hideGoldenDictHeader" ).isNull() )
+    if ( !preferences.namedItem( "hideGoldenDictHeader" ).isNull() ) {
       c.preferences.hideGoldenDictHeader =
         ( preferences.namedItem( "hideGoldenDictHeader" ).toElement().text() == "1" );
+    }
 
-    if ( !preferences.namedItem( "maxNetworkCacheSize" ).isNull() )
+    if ( !preferences.namedItem( "maxNetworkCacheSize" ).isNull() ) {
       c.preferences.maxNetworkCacheSize = preferences.namedItem( "maxNetworkCacheSize" ).toElement().text().toInt();
+    }
 
-    if ( !preferences.namedItem( "clearNetworkCacheOnExit" ).isNull() )
+    if ( !preferences.namedItem( "clearNetworkCacheOnExit" ).isNull() ) {
       c.preferences.clearNetworkCacheOnExit =
         ( preferences.namedItem( "clearNetworkCacheOnExit" ).toElement().text() == "1" );
+    }
 
 
-    if ( !preferences.namedItem( "removeInvalidIndexOnExit" ).isNull() )
+    if ( !preferences.namedItem( "removeInvalidIndexOnExit" ).isNull() ) {
       c.preferences.removeInvalidIndexOnExit =
         ( preferences.namedItem( "removeInvalidIndexOnExit" ).toElement().text() == "1" );
+    }
 
-    if ( !preferences.namedItem( "maxStringsInHistory" ).isNull() )
+    if ( !preferences.namedItem( "maxStringsInHistory" ).isNull() ) {
       c.preferences.maxStringsInHistory = preferences.namedItem( "maxStringsInHistory" ).toElement().text().toUInt();
+    }
 
-    if ( !preferences.namedItem( "storeHistory" ).isNull() )
+    if ( !preferences.namedItem( "storeHistory" ).isNull() ) {
       c.preferences.storeHistory = preferences.namedItem( "storeHistory" ).toElement().text().toUInt();
+    }
 
-    if ( !preferences.namedItem( "alwaysExpandOptionalParts" ).isNull() )
+    if ( !preferences.namedItem( "alwaysExpandOptionalParts" ).isNull() ) {
       c.preferences.alwaysExpandOptionalParts =
         preferences.namedItem( "alwaysExpandOptionalParts" ).toElement().text().toUInt();
+    }
 
-    if ( !preferences.namedItem( "addonStyle" ).isNull() )
+    if ( !preferences.namedItem( "addonStyle" ).isNull() ) {
       c.preferences.addonStyle = preferences.namedItem( "addonStyle" ).toElement().text();
+    }
 
-    if ( !preferences.namedItem( "historyStoreInterval" ).isNull() )
+    if ( !preferences.namedItem( "historyStoreInterval" ).isNull() ) {
       c.preferences.historyStoreInterval = preferences.namedItem( "historyStoreInterval" ).toElement().text().toUInt();
+    }
 
-    if ( !preferences.namedItem( "favoritesStoreInterval" ).isNull() )
+    if ( !preferences.namedItem( "favoritesStoreInterval" ).isNull() ) {
       c.preferences.favoritesStoreInterval =
         preferences.namedItem( "favoritesStoreInterval" ).toElement().text().toUInt();
+    }
 
-    if ( !preferences.namedItem( "confirmFavoritesDeletion" ).isNull() )
+    if ( !preferences.namedItem( "confirmFavoritesDeletion" ).isNull() ) {
       c.preferences.confirmFavoritesDeletion =
         ( preferences.namedItem( "confirmFavoritesDeletion" ).toElement().text() == "1" );
+    }
 
-    if ( !preferences.namedItem( "collapseBigArticles" ).isNull() )
+    if ( !preferences.namedItem( "collapseBigArticles" ).isNull() ) {
       c.preferences.collapseBigArticles = ( preferences.namedItem( "collapseBigArticles" ).toElement().text() == "1" );
+    }
 
-    if ( !preferences.namedItem( "articleSizeLimit" ).isNull() )
+    if ( !preferences.namedItem( "articleSizeLimit" ).isNull() ) {
       c.preferences.articleSizeLimit = preferences.namedItem( "articleSizeLimit" ).toElement().text().toInt();
+    }
 
-    if ( !preferences.namedItem( "limitInputPhraseLength" ).isNull() )
+    if ( !preferences.namedItem( "limitInputPhraseLength" ).isNull() ) {
       c.preferences.limitInputPhraseLength =
         ( preferences.namedItem( "limitInputPhraseLength" ).toElement().text() == "1" );
+    }
 
-    if ( !preferences.namedItem( "inputPhraseLengthLimit" ).isNull() )
+    if ( !preferences.namedItem( "inputPhraseLengthLimit" ).isNull() ) {
       c.preferences.inputPhraseLengthLimit =
         preferences.namedItem( "inputPhraseLengthLimit" ).toElement().text().toInt();
+    }
 
-    if ( !preferences.namedItem( "maxDictionaryRefsInContextMenu" ).isNull() )
+    if ( !preferences.namedItem( "maxDictionaryRefsInContextMenu" ).isNull() ) {
       c.preferences.maxDictionaryRefsInContextMenu =
         preferences.namedItem( "maxDictionaryRefsInContextMenu" ).toElement().text().toUShort();
+    }
 
-    if ( !preferences.namedItem( "synonymSearchEnabled" ).isNull() )
+    if ( !preferences.namedItem( "synonymSearchEnabled" ).isNull() ) {
       c.preferences.synonymSearchEnabled =
         ( preferences.namedItem( "synonymSearchEnabled" ).toElement().text() == "1" );
+    }
 
-    if ( !preferences.namedItem( "stripClipboard" ).isNull() )
+    if ( !preferences.namedItem( "stripClipboard" ).isNull() ) {
       c.preferences.stripClipboard = ( preferences.namedItem( "stripClipboard" ).toElement().text() == "1" );
+    }
 
-    if ( !preferences.namedItem( "raiseWindowOnSearch" ).isNull() )
+    if ( !preferences.namedItem( "raiseWindowOnSearch" ).isNull() ) {
       c.preferences.raiseWindowOnSearch = ( preferences.namedItem( "raiseWindowOnSearch" ).toElement().text() == "1" );
+    }
 
     QDomNode fts = preferences.namedItem( "fullTextSearch" );
 
     if ( !fts.isNull() ) {
-      if ( !fts.namedItem( "searchMode" ).isNull() )
+      if ( !fts.namedItem( "searchMode" ).isNull() ) {
         c.preferences.fts.searchMode = fts.namedItem( "searchMode" ).toElement().text().toInt();
+      }
 
-      if ( !fts.namedItem( "dialogGeometry" ).isNull() )
+      if ( !fts.namedItem( "dialogGeometry" ).isNull() ) {
         c.preferences.fts.dialogGeometry =
           QByteArray::fromBase64( fts.namedItem( "dialogGeometry" ).toElement().text().toLatin1() );
+      }
 
-      if ( !fts.namedItem( "disabledTypes" ).isNull() )
+      if ( !fts.namedItem( "disabledTypes" ).isNull() ) {
         c.preferences.fts.disabledTypes = fts.namedItem( "disabledTypes" ).toElement().text();
+      }
 
-      if ( !fts.namedItem( "enabled" ).isNull() )
+      if ( !fts.namedItem( "enabled" ).isNull() ) {
         c.preferences.fts.enabled = ( fts.namedItem( "enabled" ).toElement().text() == "1" );
+      }
 
-      if ( !fts.namedItem( "maxDictionarySize" ).isNull() )
+      if ( !fts.namedItem( "maxDictionarySize" ).isNull() ) {
         c.preferences.fts.maxDictionarySize = fts.namedItem( "maxDictionarySize" ).toElement().text().toUInt();
+      }
 
-      if ( !fts.namedItem( "parallelThreads" ).isNull() )
+      if ( !fts.namedItem( "parallelThreads" ).isNull() ) {
         c.preferences.fts.parallelThreads = fts.namedItem( "parallelThreads" ).toElement().text().toUInt();
+      }
     }
   }
 
@@ -1111,13 +1178,15 @@ Class load()
 
   QDomNode popupWindowState = root.namedItem( "popupWindowState" );
 
-  if ( !popupWindowState.isNull() )
+  if ( !popupWindowState.isNull() ) {
     c.popupWindowState = QByteArray::fromBase64( popupWindowState.toElement().text().toLatin1() );
+  }
 
   QDomNode popupWindowGeometry = root.namedItem( "popupWindowGeometry" );
 
-  if ( !popupWindowGeometry.isNull() )
+  if ( !popupWindowGeometry.isNull() ) {
     c.popupWindowGeometry = QByteArray::fromBase64( popupWindowGeometry.toElement().text().toLatin1() );
+  }
 
   c.pinPopupWindow = ( root.namedItem( "pinPopupWindow" ).toElement().text() == "1" );
 
@@ -1125,33 +1194,39 @@ Class load()
 
   QDomNode mainWindowState = root.namedItem( "mainWindowState" );
 
-  if ( !mainWindowState.isNull() )
+  if ( !mainWindowState.isNull() ) {
     c.mainWindowState = QByteArray::fromBase64( mainWindowState.toElement().text().toLatin1() );
+  }
 
   QDomNode mainWindowGeometry = root.namedItem( "mainWindowGeometry" );
 
-  if ( !mainWindowGeometry.isNull() )
+  if ( !mainWindowGeometry.isNull() ) {
     c.mainWindowGeometry = QByteArray::fromBase64( mainWindowGeometry.toElement().text().toLatin1() );
+  }
 
   QDomNode dictInfoGeometry = root.namedItem( "dictInfoGeometry" );
 
-  if ( !dictInfoGeometry.isNull() )
+  if ( !dictInfoGeometry.isNull() ) {
     c.dictInfoGeometry = QByteArray::fromBase64( dictInfoGeometry.toElement().text().toLatin1() );
+  }
 
   QDomNode inspectorGeometry = root.namedItem( "inspectorGeometry" );
 
-  if ( !inspectorGeometry.isNull() )
+  if ( !inspectorGeometry.isNull() ) {
     c.inspectorGeometry = QByteArray::fromBase64( inspectorGeometry.toElement().text().toLatin1() );
+  }
 
   QDomNode dictionariesDialogGeometry = root.namedItem( "dictionariesDialogGeometry" );
 
-  if ( !dictionariesDialogGeometry.isNull() )
+  if ( !dictionariesDialogGeometry.isNull() ) {
     c.dictionariesDialogGeometry = QByteArray::fromBase64( dictionariesDialogGeometry.toElement().text().toLatin1() );
+  }
 
   QDomNode timeForNewReleaseCheck = root.namedItem( "timeForNewReleaseCheck" );
 
-  if ( !timeForNewReleaseCheck.isNull() )
+  if ( !timeForNewReleaseCheck.isNull() ) {
     c.timeForNewReleaseCheck = QDateTime::fromString( timeForNewReleaseCheck.toElement().text(), Qt::ISODate );
+  }
 
   c.skippedRelease = root.namedItem( "skippedRelease" ).toElement().text();
 
@@ -1162,14 +1237,17 @@ Class load()
     c.usingToolbarsIconSize = static_cast< ToolbarsIconSize >( usingToolbarsIconSize.toElement().text().toInt() );
   }
 
-  if ( !root.namedItem( "historyExportPath" ).isNull() )
+  if ( !root.namedItem( "historyExportPath" ).isNull() ) {
     c.historyExportPath = root.namedItem( "historyExportPath" ).toElement().text();
+  }
 
-  if ( !root.namedItem( "resourceSavePath" ).isNull() )
+  if ( !root.namedItem( "resourceSavePath" ).isNull() ) {
     c.resourceSavePath = root.namedItem( "resourceSavePath" ).toElement().text();
+  }
 
-  if ( !root.namedItem( "articleSavePath" ).isNull() )
+  if ( !root.namedItem( "articleSavePath" ).isNull() ) {
     c.articleSavePath = root.namedItem( "articleSavePath" ).toElement().text();
+  }
 
   if ( !root.namedItem( "maxHeadwordSize" ).isNull() ) {
     unsigned int value = root.namedItem( "maxHeadwordSize" ).toElement().text().toUInt();
@@ -1179,27 +1257,33 @@ Class load()
     }
   }
 
-  if ( !root.namedItem( "maxHeadwordsToExpand" ).isNull() )
+  if ( !root.namedItem( "maxHeadwordsToExpand" ).isNull() ) {
     c.maxHeadwordsToExpand = root.namedItem( "maxHeadwordsToExpand" ).toElement().text().toUInt();
+  }
 
   QDomNode headwordsDialog = root.namedItem( "headwordsDialog" );
 
   if ( !headwordsDialog.isNull() ) {
-    if ( !headwordsDialog.namedItem( "searchMode" ).isNull() )
+    if ( !headwordsDialog.namedItem( "searchMode" ).isNull() ) {
       c.headwordsDialog.searchMode = headwordsDialog.namedItem( "searchMode" ).toElement().text().toInt();
+    }
 
-    if ( !headwordsDialog.namedItem( "matchCase" ).isNull() )
+    if ( !headwordsDialog.namedItem( "matchCase" ).isNull() ) {
       c.headwordsDialog.matchCase = ( headwordsDialog.namedItem( "matchCase" ).toElement().text() == "1" );
+    }
 
-    if ( !headwordsDialog.namedItem( "autoApply" ).isNull() )
+    if ( !headwordsDialog.namedItem( "autoApply" ).isNull() ) {
       c.headwordsDialog.autoApply = ( headwordsDialog.namedItem( "autoApply" ).toElement().text() == "1" );
+    }
 
-    if ( !headwordsDialog.namedItem( "headwordsExportPath" ).isNull() )
+    if ( !headwordsDialog.namedItem( "headwordsExportPath" ).isNull() ) {
       c.headwordsDialog.headwordsExportPath = headwordsDialog.namedItem( "headwordsExportPath" ).toElement().text();
+    }
 
-    if ( !headwordsDialog.namedItem( "headwordsDialogGeometry" ).isNull() )
+    if ( !headwordsDialog.namedItem( "headwordsDialogGeometry" ).isNull() ) {
       c.headwordsDialog.headwordsDialogGeometry =
         QByteArray::fromBase64( headwordsDialog.namedItem( "headwordsDialogGeometry" ).toElement().text().toLatin1() );
+    }
   }
 
   return c;
@@ -1294,8 +1378,9 @@ void save( Class const & c )
 {
   QSaveFile configFile( getConfigFileName() );
 
-  if ( !configFile.open( QFile::WriteOnly ) )
+  if ( !configFile.open( QFile::WriteOnly ) ) {
     throw exCantWriteConfigFile();
+  }
 
   QDomDocument dd;
 
@@ -2208,8 +2293,9 @@ void save( Class const & c )
   }
 
   configFile.write( dd.toByteArray() );
-  if ( !configFile.commit() )
+  if ( !configFile.commit() ) {
     throw exCantWriteConfigFile();
+  }
 }
 
 QString getConfigFileName()
@@ -2236,8 +2322,9 @@ QString getIndexDir()
 
   result.mkpath( "index" );
 
-  if ( !result.cd( "index" ) )
+  if ( !result.cd( "index" ) ) {
     throw exCantUseIndexDir();
+  }
 
   return result.path() + QDir::separator();
 }
@@ -2295,9 +2382,10 @@ QString getUserQtCssFileName()
 
 QString getProgramDataDir() noexcept
 {
-  if ( isPortableVersion() )
+  if ( isPortableVersion() ) {
     return QCoreApplication::applicationDirPath();
-    // TODO: rewrite this in QStandardPaths::AppDataLocation
+  }
+  // TODO: rewrite this in QStandardPaths::AppDataLocation
 #ifdef PROGRAM_DATA_DIR
   return PROGRAM_DATA_DIR;
 #else
@@ -2307,18 +2395,22 @@ QString getProgramDataDir() noexcept
 
 QString getLocDir() noexcept
 {
-  if ( QDir( getProgramDataDir() ).cd( "locale" ) )
+  if ( QDir( getProgramDataDir() ).cd( "locale" ) ) {
     return getProgramDataDir() + "/locale";
-  else
+  }
+  else {
     return QCoreApplication::applicationDirPath() + "/locale";
+  }
 }
 
 QString getHelpDir() noexcept
 {
-  if ( QDir( getProgramDataDir() ).cd( "help" ) )
+  if ( QDir( getProgramDataDir() ).cd( "help" ) ) {
     return getProgramDataDir() + "/help";
-  else
+  }
+  else {
     return QCoreApplication::applicationDirPath() + "/help";
+  }
 }
 
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
@@ -2331,8 +2423,9 @@ QString getOpenCCDir() noexcept
     return QCoreApplication::applicationDirPath() + "/opencc";
   #elif defined( Q_OS_MAC )
   QString path = QCoreApplication::applicationDirPath() + "/opencc";
-  if ( QDir( path ).exists() )
+  if ( QDir( path ).exists() ) {
     return path;
+  }
 
   return QString();
   #else
@@ -2360,18 +2453,22 @@ bool isPortableVersion() noexcept
 
 QString getPortableVersionDictionaryDir() noexcept
 {
-  if ( isPortableVersion() )
+  if ( isPortableVersion() ) {
     return getProgramDataDir() + "/content";
-  else
+  }
+  else {
     return QString();
+  }
 }
 
 QString getPortableVersionMorphoDir() noexcept
 {
-  if ( isPortableVersion() )
+  if ( isPortableVersion() ) {
     return getPortableVersionDictionaryDir() + "/morphology";
-  else
+  }
+  else {
     return QString();
+  }
 }
 
 QString getStylesDir()
@@ -2380,8 +2477,9 @@ QString getStylesDir()
 
   result.mkpath( "styles" );
 
-  if ( !result.cd( "styles" ) )
+  if ( !result.cd( "styles" ) ) {
     return QString();
+  }
 
   return result.path() + QDir::separator();
 }

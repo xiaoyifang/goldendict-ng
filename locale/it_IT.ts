@@ -3051,18 +3051,18 @@ ne causerà soltanto l&apos;iconizzazione nella barra di notifica.</translation>
       <translation>Carattere monospazio</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>&amp;Puntamento</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
       <translation>Spuntando questa casella, si attiva sin dall&apos;inizio l&apos;attività di scansione e traduzione delle parole puntate.
 Le parole tradotte verranno mostrate in una finestra di dialogo a comparsa.
 Al contrario se si deseleziona questa casella, scansione e traduzione vengono disabilitate.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
+      <source>Start with popup turned on</source>
       <translation>abilita l&apos;attività di scansione e traduzione delle parole puntate fin dall&apos;avvio del programma</translation>
     </message>
     <message>
@@ -3181,7 +3181,7 @@ Le parole tradotte verranno mostrate in una finestra di dialogo a comparsa.</tra
       <translation>pronuncia automaticamente le parole dalla finestra principale</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
+      <source>Auto-pronounce words in popup</source>
       <translation>pronuncia automaticamente le parole puntate</translation>
     </message>
     <message>
@@ -3709,7 +3709,7 @@ dai dizionari di Stardict, Babylon e GLS</translation>
       <translation>Forza la traduzione della parola nella finestra principale</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>Attiva/disattiva popup di scansione.</translation>
     </message>
     <message>

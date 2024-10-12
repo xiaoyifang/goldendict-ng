@@ -3052,17 +3052,17 @@ programmany ýapmagyň ýerine ony gizlärdi.</translation>
       <translation>Monospace şrifti</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>&amp;Skan popup</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
       <translation>Skaner açylýan re modeimiň deslapkydygyny ýa-da ýokdugyny saýlaýar. Barlanylsa,
 programma elmydama skananyň açylmagy bilen işjeň başlar.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
+      <source>Start with popup turned on</source>
       <translation>Skan ýüze çykarmany işledip başlat</translation>
     </message>
     <message>
@@ -3180,7 +3180,7 @@ basylan ýagdaýynda görkeziler.</translation>
       <translation>Baş penjirede sözleriň awto-aýdylyşy</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
+      <source>Auto-pronounce words in popup</source>
       <translation>Skan popup-dan sözleriň awto-aýdylyşy</translation>
     </message>
     <message>
@@ -3710,7 +3710,7 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
       <translation>Sözü esasy setirde terjime etmäge mejbur ediň</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>Açylýan paneli açyň.</translation>
     </message>
     <message>

@@ -32,10 +32,12 @@ void AudioPlayerFactory::setPreferences( Config::Preferences const & p )
   else if ( !useInternalPlayer && p.audioPlaybackProgram != audioPlaybackProgram ) {
     audioPlaybackProgram                       = p.audioPlaybackProgram;
     ExternalAudioPlayer * const externalPlayer = qobject_cast< ExternalAudioPlayer * >( playerPtr.data() );
-    if ( externalPlayer )
+    if ( externalPlayer ) {
       setAudioPlaybackProgram( *externalPlayer );
-    else
+    }
+    else {
       gdWarning( "External player was expected, but it does not exist.\n" );
+    }
   }
 }
 
@@ -52,15 +54,17 @@ void AudioPlayerFactory::reset()
               && "Adjust the code below after changing the default backend." );
 
     if ( !internalPlayerBackend.isQtmultimedia() ) {
-      if ( !playerPtr || !qobject_cast< Ffmpeg::AudioPlayer * >( playerPtr.data() ) )
+      if ( !playerPtr || !qobject_cast< Ffmpeg::AudioPlayer * >( playerPtr.data() ) ) {
         playerPtr.reset( new Ffmpeg::AudioPlayer );
+      }
       return;
     }
 #endif
 
 #ifdef MAKE_QTMULTIMEDIA_PLAYER
-    if ( !playerPtr || !qobject_cast< MultimediaAudioPlayer * >( playerPtr.data() ) )
+    if ( !playerPtr || !qobject_cast< MultimediaAudioPlayer * >( playerPtr.data() ) ) {
       playerPtr.reset( new MultimediaAudioPlayer );
+    }
     return;
 #endif
   }

@@ -523,17 +523,16 @@ the application.</string>
         <normaloff>:/icons/wizard.svg</normaloff>:/icons/wizard.svg</iconset>
       </attribute>
       <attribute name="title">
-       <string>&amp;Scan Popup</string>
+       <string>&amp;Popup</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_10">
        <item>
         <widget class="QCheckBox" name="startWithScanPopupOn">
          <property name="toolTip">
-          <string>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</string>
+          <string>Chooses whether the clipboard monitoring will be turned on by default at the program's startup.</string>
          </property>
          <property name="text">
-          <string>Start with scan popup turned on</string>
+          <string>Start with clipboard monitoring turned on</string>
          </property>
         </widget>
        </item>
@@ -891,7 +890,7 @@ in the pressed state when the word selection changes.</string>
           <item>
            <widget class="QCheckBox" name="pronounceOnLoadPopup">
             <property name="text">
-             <string>Auto-pronounce words in scan popup</string>
+             <string>Auto-pronounce words in the popup</string>
             </property>
            </widget>
           </item>

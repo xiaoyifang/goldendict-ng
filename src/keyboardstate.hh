@@ -12,10 +12,10 @@ class KeyboardState
 public:
 
   enum Modifier {
-    Alt        = 1,
-    Ctrl       = 2,
-    Shift      = 4,
-    Win        = 8, // Ironically, Linux only, since it's no use under Windows
+    Alt   = 1,
+    Ctrl  = 2,
+    Shift = 4,
+    Win   = 8, // Ironically, Linux only, since it's no use under Windows
   };
 
   /// Returns true if all Modifiers present within the given mask are pressed

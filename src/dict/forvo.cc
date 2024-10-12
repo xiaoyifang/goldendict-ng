@@ -133,8 +133,9 @@ ForvoDictionary::getArticle( wstring const & word, vector< wstring > const & alt
 
 void ForvoDictionary::loadIcon() noexcept
 {
-  if ( dictionaryIconLoaded )
+  if ( dictionaryIconLoaded ) {
     return;
+  }
 
   dictionaryIcon       = QIcon( ":/icons/forvo.png" );
   dictionaryIconLoaded = true;
@@ -161,8 +162,9 @@ ForvoArticleRequest::ForvoArticleRequest( wstring const & str,
 
   addQuery( mgr, str );
 
-  for ( const auto & alt : alts )
+  for ( const auto & alt : alts ) {
     addQuery( mgr, alt );
+  }
 }
 
 void ForvoArticleRequest::addQuery( QNetworkAccessManager & mgr, wstring const & str )
@@ -193,8 +195,9 @@ void ForvoArticleRequest::requestFinished( QNetworkReply * r )
 {
   GD_DPRINTF( "Finished.\n" );
 
-  if ( isFinished() ) // Was cancelled
+  if ( isFinished() ) { // Was cancelled
     return;
+  }
 
   // Find this reply
 
@@ -203,7 +206,7 @@ void ForvoArticleRequest::requestFinished( QNetworkReply * r )
   for ( auto & netReplie : netReplies ) {
     if ( netReplie.reply.get() == r ) {
       netReplie.finished = true; // Mark as finished
-      found       = true;
+      found              = true;
       break;
     }
   }
@@ -283,8 +286,9 @@ void ForvoArticleRequest::requestFinished( QNetworkReply * r )
                   }
 
                   if ( negativeVotes ) {
-                    if ( positiveVotes )
+                    if ( positiveVotes ) {
                       votes += " ";
+                    }
 
                     votes += "<span class='forvo_negative_votes'>-";
                     votes += QByteArray::number( negativeVotes ).data();
@@ -333,14 +337,17 @@ void ForvoArticleRequest::requestFinished( QNetworkReply * r )
       }
       GD_DPRINTF( "done.\n" );
     }
-    else
+    else {
       setErrorString( netReply->errorString() );
+    }
   }
 
-  if ( netReplies.empty() )
+  if ( netReplies.empty() ) {
     finish();
-  else if ( updated )
+  }
+  else if ( updated ) {
     update();
+  }
 }
 
 vector< sptr< Dictionary::Class > >
@@ -367,8 +374,9 @@ makeDictionaries( Dictionary::Initializing &, Config::Forvo const & forvo, QNetw
 
         QString displayedCode( code.toLower() );
 
-        if ( displayedCode.size() )
+        if ( displayedCode.size() ) {
           displayedCode[ 0 ] = displayedCode[ 0 ].toUpper();
+        }
 
         result.push_back(
           std::make_shared< ForvoDictionary >( hash.result().toHex().data(),

@@ -74,3 +74,6 @@ Apache License Version 2.0
 1downarrow.svg
 system-search.svg
 Modified from  https://github.com/google/material-design-icons
+
+add-anki-icon.svg   MIT license
+https://www.svgrepo.com/svg/435992/add-card

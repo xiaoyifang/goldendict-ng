@@ -3052,18 +3052,18 @@ the application.</source>
       <translation>Monospace-lettertype</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>Scan &amp;Popup</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
-      <translation>Hier kunt u aangeven of de Scan Popup modus standaard in- of uitgeschakeld is.
-Het programma start met de Scan Popup modus ingeschakeld als dit geselecteerd is.</translation>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
+      <translation>Hier kunt u aangeven of de Popup modus standaard in- of uitgeschakeld is.
+Het programma start met de Popup modus ingeschakeld als dit geselecteerd is.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
-      <translation>Starten met Scan Popup ingeschakeld</translation>
+      <source>Start with popup turned on</source>
+      <translation>Starten met Popup ingeschakeld</translation>
     </message>
     <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
@@ -3180,8 +3180,8 @@ toetsen zijn ingedrukt wanneer de woordselectie verandert.</translation>
       <translation>Woorden in hoofdvenster automatisch uitspreken</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
-      <translation>Woorden in Scan Popup automatisch uitspreken</translation>
+      <source>Auto-pronounce words in popup</source>
+      <translation>Woorden in Popup automatisch uitspreken</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3707,8 +3707,8 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <translation>Forceer dat het woord in het hoofdvenster wordt vertaald</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
-      <translation>Toggle scan popup.</translation>
+      <source>Toggle popup.</source>
+      <translation type="unfinished">Toggle popup.</translation>
     </message>
     <message>
       <source>Print version and diagnosis info.</source>

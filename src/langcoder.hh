@@ -47,8 +47,6 @@ public:
 
   /// Returns decoded name of language or empty string if not found.
   static QString decode( quint32 _code );
-  /// Returns icon for language or empty string if not found.
-  static QIcon icon( quint32 code );
 
   /// Return true for RTL languages
   static bool isLanguageRTL( quint32 code );

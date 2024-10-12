@@ -30,7 +30,7 @@ bool ftsIndexIsOldOrBad( BtreeIndexing::BtreeDictionary * dict )
     auto docid    = db.get_lastdocid();
     auto document = db.get_document( docid );
 
-    string const lastDoc   = document.get_data();
+    string const lastDoc = document.get_data();
     return lastDoc != finish_mark;
     //use a special document to mark the end of the index.
   }
@@ -50,12 +50,14 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
   QMutexLocker const _( &dict->getFtsMutex() );
 
   //check the index again.
-  if ( dict->haveFTSIndex() )
+  if ( dict->haveFTSIndex() ) {
     return;
+  }
 
   try {
-    if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
+    if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
       throw exUserAbort();
+    }
 
     // Open the database for update, creating a new database if necessary.
     Xapian::WritableDatabase db( dict->ftsIndexName() + "_temp", Xapian::DB_CREATE_OR_OPEN );
@@ -73,8 +75,9 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
 
     dict->findArticleLinks( nullptr, &setOfOffsets, nullptr, &isCancelled );
 
-    if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
+    if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
       throw exUserAbort();
+    }
 
     QList< uint32_t > offsets;
     offsets.resize( setOfOffsets.size() );
@@ -88,8 +91,9 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
     // Free memory
     setOfOffsets.clear();
 
-    if ( Utils::AtomicInt::loadAcquire( isCancelled ) )
+    if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
       throw exUserAbort();
+    }
 
     // incremental build the index.
     // get the last address.
@@ -214,8 +218,9 @@ void FTSResultsRequest::run()
       for ( Xapian::MSetIterator i = matches.begin(); i != matches.end(); ++i ) {
         qDebug() << i.get_rank() + 1 << ": " << i.get_weight() << " docid=" << *i << " ["
                  << i.get_document().get_data().c_str() << "]";
-        if ( i.get_document().get_data() == finish_mark )
+        if ( i.get_document().get_data() == finish_mark ) {
           continue;
+        }
         offsetsForHeadwords.append( atoi( i.get_document().get_data().c_str() ) );
       }
 

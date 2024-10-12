@@ -3051,17 +3051,17 @@ the application.</source>
       <translation>الخط الأحادي الفضاء</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>منبثقة الا&amp;ستكشاف</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
       <translation>يحدّد إن كان وضع منبثقة الاستكشاف ممكّن افتراضيًّا أو لا. إن عُلِّم،
 سيبدأ البرنامج دائمًا ومنبثقة الاستكشاف نشطة.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
+      <source>Start with popup turned on</source>
       <translation>ابدأ و منبثقة الاستكشاف تعمل</translation>
     </message>
     <message>
@@ -3179,7 +3179,7 @@ in the pressed state when the word selection changes.</source>
       <translation>انطق تلقائيًّا الكلمات في النافذة الرئيسية</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
+      <source>Auto-pronounce words in popup</source>
       <translation>انطق تلقائيًّا الكلمات في منبثقة الاستكشاف</translation>
     </message>
     <message>
@@ -3708,7 +3708,7 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>فرض ترجمة الكلمة في النافذة الرئيسية</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>قم بتبديل قائمة الفحص المنبثقة.</translation>
     </message>
     <message>

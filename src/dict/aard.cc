@@ -120,16 +120,19 @@ void readJSONValue( string const & source, string & str, string::size_type & pos
   int level = 1;
   char endChar;
   str.push_back( source[ pos ] );
-  if ( source[ pos ] == '{' )
+  if ( source[ pos ] == '{' ) {
     endChar = '}';
-  else if ( source[ pos ] == '[' )
+  }
+  else if ( source[ pos ] == '[' ) {
     endChar = ']';
+  }
   else if ( source[ pos ] == '\"' ) {
     str.clear();
     endChar = '\"';
   }
-  else
+  else {
     endChar = ',';
+  }
 
   pos++;
   char ch     = 0;
@@ -137,13 +140,16 @@ void readJSONValue( string const & source, string & str, string::size_type & pos
   while ( !( ch == endChar && lastCh != '\\' && level == 0 ) && pos < source.size() ) {
     lastCh = ch;
     ch     = source[ pos++ ];
-    if ( ( ch == '{' || ch == '[' ) && lastCh != '\\' )
+    if ( ( ch == '{' || ch == '[' ) && lastCh != '\\' ) {
       level++;
-    if ( ( ch == '}' || ch == ']' ) && lastCh != '\\' )
+    }
+    if ( ( ch == '}' || ch == ']' ) && lastCh != '\\' ) {
       level--;
+    }
 
-    if ( ch == endChar && ( ( ch == '\"' && lastCh != '\\' ) || ch == ',' ) && level == 1 )
+    if ( ch == endChar && ( ( ch == '\"' && lastCh != '\\' ) || ch == ',' ) && level == 1 ) {
       break;
+    }
     str.push_back( ch );
   }
 }
@@ -155,36 +161,45 @@ map< string, string > parseMetaData( string const & metaData )
   string name, value;
   string::size_type n = 0;
 
-  while ( n < metaData.length() && metaData[ n ] != '{' )
+  while ( n < metaData.length() && metaData[ n ] != '{' ) {
     n++;
+  }
   while ( n < metaData.length() ) {
     // Skip to '"'
-    while ( n < metaData.length() && metaData[ n ] != '\"' )
+    while ( n < metaData.length() && metaData[ n ] != '\"' ) {
       n++;
-    if ( ++n >= metaData.length() )
+    }
+    if ( ++n >= metaData.length() ) {
       break;
+    }
 
     // Read name
     while ( n < metaData.length()
-            && !( ( metaData[ n ] == '\"' || metaData[ n ] == '{' ) && metaData[ n - 1 ] != '\\' ) )
+            && !( ( metaData[ n ] == '\"' || metaData[ n ] == '{' ) && metaData[ n - 1 ] != '\\' ) ) {
       name.push_back( metaData[ n++ ] );
+    }
 
     // Skip to ':'
-    if ( ++n >= metaData.length() )
+    if ( ++n >= metaData.length() ) {
       break;
-    while ( n < metaData.length() && metaData[ n ] != ':' )
+    }
+    while ( n < metaData.length() && metaData[ n ] != ':' ) {
       n++;
-    if ( ++n >= metaData.length() )
+    }
+    if ( ++n >= metaData.length() ) {
       break;
+    }
 
     // Find value start after ':'
     while ( n < metaData.length()
             && !( ( metaData[ n ] == '\"' || metaData[ n ] == '{' || metaData[ n ] == '['
                     || ( metaData[ n ] >= '0' && metaData[ n ] <= '9' ) )
-                  && metaData[ n - 1 ] != '\\' ) )
+                  && metaData[ n - 1 ] != '\\' ) ) {
       n++;
-    if ( n >= metaData.length() )
+    }
+    if ( n >= metaData.length() ) {
       break;
+    }
 
     readJSONValue( metaData, value, n );
 
@@ -192,8 +207,9 @@ map< string, string > parseMetaData( string const & metaData )
 
     name.clear();
     value.clear();
-    if ( ++n >= metaData.length() )
+    if ( ++n >= metaData.length() ) {
       break;
+    }
   }
   return data;
 }
@@ -305,8 +321,9 @@ AardDictionary::~AardDictionary()
 
 void AardDictionary::loadIcon() noexcept
 {
-  if ( dictionaryIconLoaded )
+  if ( dictionaryIconLoaded ) {
     return;
+  }
 
   QString fileName = QDir::fromNativeSeparators( QString::fromStdString( getDictionaryFilenames()[ 0 ] ) );
 
@@ -337,15 +354,17 @@ string AardDictionary::convert( const string & in )
         afterEol = true;
         continue;
       }
-      else if ( inCh == 'r' )
+      else if ( inCh == 'r' ) {
         continue;
+      }
     }
     else if ( inCh == ' ' && afterEol ) {
       inConverted.append( "&nbsp;" );
       continue;
     }
-    else
+    else {
       lastCh = inCh;
+    }
     afterEol = false;
     inConverted.push_back( inCh );
   }
@@ -395,8 +414,9 @@ void AardDictionary::loadArticle( quint32 address, string & articleText, bool ra
 
       // Don't try to read and decode too big articles,
       // it is most likely error in dictionary
-      if ( articleSize > 1048576 )
+      if ( articleSize > 1048576 ) {
         break;
+      }
 
       articleBody.resize( articleSize );
       df.read( &articleBody.front(), articleSize );
@@ -409,23 +429,28 @@ void AardDictionary::loadArticle( quint32 address, string & articleText, bool ra
       break;
     }
 
-    if ( articleBody.empty() )
+    if ( articleBody.empty() ) {
       break;
+    }
 
     articleText.clear();
 
     string text = decompressBzip2( articleBody.data(), articleSize );
-    if ( text.empty() )
+    if ( text.empty() ) {
       text = decompressZlib( articleBody.data(), articleSize );
-    if ( text.empty() )
+    }
+    if ( text.empty() ) {
       text = string( articleBody.data(), articleSize );
+    }
 
-    if ( text.empty() || text[ 0 ] != '[' )
+    if ( text.empty() || text[ 0 ] != '[' ) {
       break;
+    }
 
     string::size_type n = text.find( '\"' );
-    if ( n == string::npos )
+    if ( n == string::npos ) {
       break;
+    }
 
     readJSONValue( text, articleText, n );
 
@@ -433,8 +458,9 @@ void AardDictionary::loadArticle( quint32 address, string & articleText, bool ra
       n = text.find( "\"r\"" );
       if ( n != string::npos && n + 3 < text.size() ) {
         n = text.find( '\"', n + 3 );
-        if ( n == string::npos )
+        if ( n == string::npos ) {
           break;
+        }
 
         string link;
         readJSONValue( text, link, n );
@@ -463,20 +489,23 @@ void AardDictionary::loadArticle( quint32 address, string & articleText, bool ra
   }
 
   if ( !articleText.empty() ) {
-    if ( rawText )
+    if ( rawText ) {
       return;
+    }
 
     articleText = convert( articleText );
   }
-  else
+  else {
     articleText = QObject::tr( "Article decoding error" ).toStdString();
+  }
 
   // See Issue #271: A mechanism to clean-up invalid HTML cards.
   const string cleaner = Utils::Html::getHtmlCleaner();
 
   string prefix( "<div class=\"aard\"" );
-  if ( isToLanguageRTL() )
+  if ( isToLanguageRTL() ) {
     prefix += " dir=\"rtl\"";
+  }
   prefix += ">";
 
   articleText = prefix + articleText + cleaner + "</div>";
@@ -484,8 +513,9 @@ void AardDictionary::loadArticle( quint32 address, string & articleText, bool ra
 
 QString const & AardDictionary::getDescription()
 {
-  if ( !dictionaryDescription.isEmpty() )
+  if ( !dictionaryDescription.isEmpty() ) {
     return dictionaryDescription;
+  }
 
   AAR_header dictHeader;
   quint32 size;
@@ -501,21 +531,24 @@ QString const & AardDictionary::getDescription()
   }
 
   string metaStr = decompressBzip2( data.data(), size );
-  if ( metaStr.empty() )
+  if ( metaStr.empty() ) {
     metaStr = decompressZlib( data.data(), size );
+  }
 
   map< string, string > meta = parseMetaData( metaStr );
 
   if ( !meta.empty() ) {
     map< string, string >::const_iterator iter = meta.find( "copyright" );
-    if ( iter != meta.end() )
+    if ( iter != meta.end() ) {
       dictionaryDescription =
         QObject::tr( "Copyright: %1%2" ).arg( QString::fromUtf8( iter->second.c_str() ) ).arg( "\n\n" );
+    }
 
     iter = meta.find( "version" );
-    if ( iter != meta.end() )
+    if ( iter != meta.end() ) {
       dictionaryDescription =
         QObject::tr( "Version: %1%2" ).arg( QString::fromUtf8( iter->second.c_str() ) ).arg( "\n\n" );
+    }
 
     iter = meta.find( "description" );
     if ( iter != meta.end() ) {
@@ -526,8 +559,9 @@ QString const & AardDictionary::getDescription()
     }
   }
 
-  if ( dictionaryDescription.isEmpty() )
+  if ( dictionaryDescription.isEmpty() ) {
     dictionaryDescription = "NONE";
+  }
 
   return dictionaryDescription;
 }
@@ -535,14 +569,17 @@ QString const & AardDictionary::getDescription()
 void AardDictionary::makeFTSIndex( QAtomicInt & isCancelled )
 {
   if ( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
-          || FtsHelpers::ftsIndexIsOldOrBad( this ) ) )
+          || FtsHelpers::ftsIndexIsOldOrBad( this ) ) ) {
     FTS_index_completed.ref();
+  }
 
-  if ( haveFTSIndex() )
+  if ( haveFTSIndex() ) {
     return;
+  }
 
-  if ( ensureInitDone().size() )
+  if ( ensureInitDone().size() ) {
     return;
+  }
 
 
   gdDebug( "Aard: Building the full-text index for dictionary: %s\n", getName().c_str() );
@@ -648,8 +685,9 @@ void AardArticleRequest::run()
                                    // by only allowing them to appear once.
 
   wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
-  if ( ignoreDiacritics )
+  if ( ignoreDiacritics ) {
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
+  }
 
   for ( auto & x : chain ) {
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
@@ -657,8 +695,9 @@ void AardArticleRequest::run()
       return;
     }
 
-    if ( articlesIncluded.find( x.articleOffset ) != articlesIncluded.end() )
+    if ( articlesIncluded.find( x.articleOffset ) != articlesIncluded.end() ) {
       continue; // We already have this article in the body.
+    }
 
     // Now grab that article
 
@@ -677,8 +716,9 @@ void AardArticleRequest::run()
     // We do the case-folded comparison here.
 
     wstring headwordStripped = Folding::applySimpleCaseOnly( headword );
-    if ( ignoreDiacritics )
+    if ( ignoreDiacritics ) {
       headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
+    }
 
     multimap< wstring, pair< string, string > > & mapToUse =
       ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
@@ -741,8 +781,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
   for ( const auto & fileName : fileNames ) {
     // Skip files with the extensions different to .aar to speed up the
     // scanning
-    if ( !Utils::endsWithIgnoreCase( fileName, ".aar" ) )
+    if ( !Utils::endsWithIgnoreCase( fileName, ".aar" ) ) {
       continue;
+    }
 
     // Got the file -- check if we need to rebuid the index
 
@@ -789,8 +830,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         data.resize( size );
         df.read( &data.front(), size );
         string metaStr = decompressBzip2( data.data(), size );
-        if ( metaStr.empty() )
+        if ( metaStr.empty() ) {
           metaStr = decompressZlib( data.data(), size );
+        }
 
         map< string, string > meta = parseMetaData( metaStr );
 
@@ -801,18 +843,21 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         string dictName;
         map< string, string >::const_iterator iter = meta.find( "title" );
-        if ( iter != meta.end() )
+        if ( iter != meta.end() ) {
           dictName = iter->second;
+        }
 
         string langFrom;
         iter = meta.find( "index_language" );
-        if ( iter != meta.end() )
+        if ( iter != meta.end() ) {
           langFrom = iter->second;
+        }
 
         string langTo;
         iter = meta.find( "article_language" );
-        if ( iter != meta.end() )
+        if ( iter != meta.end() ) {
           langTo = iter->second;
+        }
 
         if ( ( dictName.compare( "Wikipedia" ) == 0 || dictName.compare( "Wikiquote" ) == 0
                || dictName.compare( "Wiktionary" ) == 0 )
@@ -840,8 +885,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         idx.write( idxHeader );
 
         idx.write( (quint32)dictName.size() );
-        if ( !dictName.empty() )
+        if ( !dictName.empty() ) {
           idx.write( dictName.data(), dictName.size() );
+        }
 
         IndexedWords indexedWords;
 
@@ -881,19 +927,23 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
           quint16 sizeBE;
           df.read( &sizeBE, sizeof( sizeBE ) );
           quint16 wordSize = qFromBigEndian( sizeBE );
-          if ( data.size() < wordSize )
+          if ( data.size() < wordSize ) {
             data.resize( wordSize );
+          }
           df.read( &data.front(), wordSize );
 
-          if ( articleOffsets.find( articleOffset ) == articleOffsets.end() )
+          if ( articleOffsets.find( articleOffset ) == articleOffsets.end() ) {
             articleOffsets.insert( articleOffset );
+          }
 
           // Insert new entry
           wstring word = Utf8::decode( string( data.data(), wordSize ) );
-          if ( maxHeadwordsToExpand && dictHeader.wordsCount >= maxHeadwordsToExpand )
+          if ( maxHeadwordsToExpand && dictHeader.wordsCount >= maxHeadwordsToExpand ) {
             indexedWords.addSingleWord( word, articleOffset );
-          else
+          }
+          else {
             indexedWords.addWord( word, articleOffset );
+          }
 
           pos += has64bitIndex ? sizeof( IndexElement64 ) : sizeof( IndexElement );
         }
@@ -922,15 +972,19 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         idxHeader.wordCount = wordCount;
 
-        if ( langFrom.size() == 3 )
+        if ( langFrom.size() == 3 ) {
           idxHeader.langFrom = LangCoder::findIdForLanguageCode3( langFrom );
-        else if ( langFrom.size() == 2 )
+        }
+        else if ( langFrom.size() == 2 ) {
           idxHeader.langFrom = LangCoder::code2toInt( langFrom.c_str() );
+        }
 
-        if ( langTo.size() == 3 )
+        if ( langTo.size() == 3 ) {
           idxHeader.langTo = LangCoder::findIdForLanguageCode3( langTo );
-        else if ( langTo.size() == 2 )
+        }
+        else if ( langTo.size() == 2 ) {
           idxHeader.langTo = LangCoder::code2toInt( langTo.c_str() );
+        }
 
         idx.rewind();
 

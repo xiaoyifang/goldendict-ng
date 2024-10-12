@@ -83,11 +83,11 @@ protected slots:
 
   void waitKey2();
 
-  #ifndef Q_OS_MAC
+#ifndef Q_OS_MAC
 private slots:
 
   bool checkState( quint32 vk, quint32 mod );
-  #endif
+#endif
 
 private:
 
@@ -99,16 +99,16 @@ private:
   bool state2;
   HotkeyStruct state2waiter;
 
-  #ifdef Q_OS_WIN32
+#ifdef Q_OS_WIN32
 
-    #if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
+  #if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
   virtual bool winEvent( MSG * message, long * result );
-    #else
+  #else
   virtual bool winEvent( MSG * message, qintptr * result );
-    #endif
+  #endif
   HWND hwnd;
 
-  #elif defined( Q_OS_MAC )
+#elif defined( Q_OS_MAC )
 
 public:
   void activated( int hkId );
@@ -120,7 +120,7 @@ private:
   quint32 keyC;
   EventHandlerRef handlerRef;
 
-  #else
+#else
 
   static void recordEventCallback( XPointer, XRecordInterceptData * );
 
@@ -165,7 +165,7 @@ signals:
   /// Emitted from the thread
   void keyRecorded( quint32 vk, quint32 mod );
 
-  #endif
+#endif
 };
 
 //////////////////////////////////////////////////////////////////////////

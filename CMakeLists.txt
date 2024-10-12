@@ -49,6 +49,15 @@ include(FeatureSummary)
 project(goldendict-ng
         VERSION 24.11.0
         LANGUAGES CXX C)
+        
+if (APPLE)
+    enable_language(OBJCXX)
+    set(CMAKE_OBJCXX_STANDARD 17)
+endif ()
+
+set(CMAKE_C_STANDARD 17)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(GOLDENDICT "goldendict") # binary/executable name
 if (USE_ALTERNATIVE_NAME )
@@ -58,8 +67,6 @@ if (APPLE)
     set(GOLDENDICT "GoldenDict-ng")
 endif()
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 #### Qt
 

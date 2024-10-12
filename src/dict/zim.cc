@@ -219,9 +219,10 @@ public:
     if ( metadata_enable_fts.has_value() ) {
       can_FTS = fts.enabled && metadata_enable_fts.value();
     }
-    else
+    else {
       can_FTS = fts.enabled && !fts.disabledTypes.contains( "ZIM", Qt::CaseInsensitive )
         && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
+    }
   }
 
 protected:
@@ -264,8 +265,9 @@ ZimDictionary::ZimDictionary( string const & id, string const & indexFile, vecto
 
 void ZimDictionary::loadIcon() noexcept
 {
-  if ( dictionaryIconLoaded )
+  if ( dictionaryIconLoaded ) {
     return;
+  }
 
   // Try to load Original GD's user provided icon
   QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
@@ -304,8 +306,9 @@ quint32 ZimDictionary::loadArticle( quint32 address, string & articleText, bool 
     QMutexLocker _( &zimMutex );
     ret = readArticle( df, address, articleText );
   }
-  if ( !rawText )
+  if ( !rawText ) {
     articleText = convert( articleText );
+  }
 
   return ret;
 }
@@ -386,8 +389,9 @@ string ZimDictionary::convert( const string & in )
 
     QStringList list = match.capturedTexts();
     // Add empty strings for compatibility with regex behaviour
-    for ( int i = list.size(); i < 5; i++ )
+    for ( int i = list.size(); i < 5; i++ ) {
       list.append( QString() );
+    }
 
     QString formatTag;
     QString tag = list[ 3 ]; // a url, ex: Precambrian_Chaotian.html
@@ -433,8 +437,9 @@ string ZimDictionary::convert( const string & in )
 
     QStringList list = match.capturedTexts();
     // Add empty strings for compatibility with regex behaviour
-    for ( int i = match.lastCapturedIndex() + 1; i < 3; i++ )
+    for ( int i = match.lastCapturedIndex() + 1; i < 3; i++ ) {
       list.append( QString() );
+    }
 
     QString tag = list[ 2 ];
     tag
@@ -460,16 +465,18 @@ string ZimDictionary::convert( const string & in )
 
 void ZimDictionary::loadResource( std::string & resourceName, string & data )
 {
-  if ( resourceName.empty() )
+  if ( resourceName.empty() ) {
     return;
+  }
   QMutexLocker _( &zimMutex );
   readArticleByPath( df, resourceName, data );
 }
 
 QString const & ZimDictionary::getDescription()
 {
-  if ( !dictionaryDescription.isEmpty() )
+  if ( !dictionaryDescription.isEmpty() ) {
     return dictionaryDescription;
+  }
 
   dictionaryDescription = QString::fromStdString( df.getMetadata( "Description" ) );
   return dictionaryDescription;
@@ -478,14 +485,17 @@ QString const & ZimDictionary::getDescription()
 void ZimDictionary::makeFTSIndex( QAtomicInt & isCancelled )
 {
   if ( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
-          || FtsHelpers::ftsIndexIsOldOrBad( this ) ) )
+          || FtsHelpers::ftsIndexIsOldOrBad( this ) ) ) {
     FTS_index_completed.ref();
+  }
 
-  if ( haveFTSIndex() )
+  if ( haveFTSIndex() ) {
     return;
+  }
 
-  if ( !ensureInitDone().empty() )
+  if ( !ensureInitDone().empty() ) {
     return;
+  }
 
   gdDebug( "Zim: Building the full-text index for dictionary: %s\n", getName().c_str() );
   try {
@@ -585,8 +595,9 @@ void ZimArticleRequest::run()
                                    // by only allowing them to appear once.
 
   wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
-  if ( ignoreDiacritics )
+  if ( ignoreDiacritics ) {
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
+  }
 
   for ( auto & x : chain ) {
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
@@ -607,11 +618,13 @@ void ZimArticleRequest::run()
     catch ( ... ) {
     }
 
-    if ( articleNumber == 0xFFFFFFFF )
+    if ( articleNumber == 0xFFFFFFFF ) {
       continue; // No article loaded
+    }
 
-    if ( articlesIncluded.find( articleNumber ) != articlesIncluded.end() )
+    if ( articlesIncluded.find( articleNumber ) != articlesIncluded.end() ) {
       continue; // We already have this article in the body.
+    }
 
     // Ok. Now, does it go to main articles, or to alternate ones? We list
     // main ones first, and alternates after.
@@ -619,8 +632,9 @@ void ZimArticleRequest::run()
     // We do the case-folded comparison here.
 
     wstring headwordStripped = Folding::applySimpleCaseOnly( headword );
-    if ( ignoreDiacritics )
+    if ( ignoreDiacritics ) {
       headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
+    }
 
     multimap< wstring, pair< string, string > > & mapToUse =
       ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
@@ -725,8 +739,9 @@ void ZimResourceRequest::run()
   try {
     string resource;
     dict.loadResource( resourceName, resource );
-    if ( resource.empty() )
+    if ( resource.empty() ) {
       throw File::Ex();
+    }
 
     if ( Filetype::isNameOfCSS( resourceName ) ) {
       QString css = QString::fromUtf8( resource.data(), resource.size() );
@@ -824,10 +839,12 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         idxHeader.descriptionPtr = 0xFFFFFFFF;
 
         auto lang = df.getMetadata( "Language" );
-        if ( lang.size() == 2 )
+        if ( lang.size() == 2 ) {
           idxHeader.langFrom = LangCoder::code2toInt( lang.c_str() );
-        else if ( lang.size() == 3 )
+        }
+        else if ( lang.size() == 3 ) {
           idxHeader.langFrom = LangCoder::findIdForLanguageCode3( lang.c_str() );
+        }
         idxHeader.langTo = idxHeader.langFrom;
         // We write a dummy header first. At the end of the process the header
         // will be rewritten with the right values.

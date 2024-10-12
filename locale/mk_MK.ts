@@ -3055,16 +3055,16 @@ the application.</source>
       <translation>Моноспејс фонт</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>&amp;Скан попап </translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
       <translation>Вклучи или не вклучи попап прозорец кога програмот стартува.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
+      <source>Start with popup turned on</source>
       <translation>Овозможи попап прозорец при стартување</translation>
     </message>
     <message>
@@ -3182,7 +3182,7 @@ in the pressed state when the word selection changes.</source>
       <translation>Автоматски изговари зборови во главниот прозорец</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
+      <source>Auto-pronounce words in popup</source>
       <translation>Автоматски изговори зборови во скокачки прозорец</translation>
     </message>
     <message>
@@ -3713,7 +3713,7 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Принудете го зборот да се преведе во главниот прозорец</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>Вклучете го скокачкиот прозорец за скенирање.</translation>
     </message>
     <message>

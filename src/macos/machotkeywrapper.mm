@@ -3,7 +3,25 @@
 
 #include "hotkeywrapper.hh"
 #include <QTimer>
-#include <ApplicationServices/ApplicationServices.h>
+#include <QMessageBox>
+#include <QPushButton>
+#include <QObject>
+#include <memory>
+
+#import <Appkit/Appkit.h>
+
+///
+/// Implementation of the Cmd+C+C trick:
+/// These two methods from `Carbon` API are the core part:
+/// * `RegisterEventHotKey` -> For trapping Cmd+C and waiting for second Cmd+C press.
+/// * `CGEventCreateKeyboardEvent` -> For simulating Cmd+C press.
+///
+/// The capturing of the first Cmd+C will prevent user's normal copy action.
+/// The trick is to insert a Cmd+C in between two user generated Cmd+C.
+///
+/// Note: Based an expert's opinion, despite `Carbon` APIs are mostly deprecated, the used two are not.
+/// https://github.com/sindresorhus/KeyboardShortcuts/blob/9369a045a72a5296150879781321aecd228171db/readme.md?plain=1#L207
+///
 
 namespace MacKeyMapping
 {
@@ -23,10 +41,12 @@ void createMapping()
   if( mapping == NULL )
   {
     TISInputSourceRef inputSourceRef = TISCopyInputSourceForLanguage( CFSTR( "en" ) );
-    if ( !inputSourceRef )
+    if ( !inputSourceRef ) {
       inputSourceRef = TISCopyCurrentKeyboardInputSource();
-    if ( !inputSourceRef )
+}
+    if ( !inputSourceRef ) {
       return;
+}
 
     CFDataRef dataRef = ( CFDataRef )TISGetInputSourceProperty( inputSourceRef,
                                      kTISPropertyUnicodeKeyLayoutData ); 
@@ -42,12 +62,14 @@ void createMapping()
     }
 
     const UCKeyboardLayout * keyboardLayoutPtr = ( const UCKeyboardLayout * )CFDataGetBytePtr( dataRef );
-    if( !keyboardLayoutPtr )
+    if( !keyboardLayoutPtr ) {
       return;
+}
 
     mapping = ( struct ReverseMapEntry * )calloc( 128 , sizeof(struct ReverseMapEntry) );
-    if( !mapping )
+    if( !mapping ) {
       return;
+}
 
     mapEntries = 0;
 
@@ -71,13 +93,15 @@ void createMapping()
 quint32 qtKeyToNativeKey( quint32 key )
 {
   createMapping();
-  if( mapping == NULL )
+  if( mapping == NULL ) {
     return 0;
+}
 
   for( int i = 0; i < mapEntries; i++ )
   {
-    if( mapping[ i ].character == key )
+    if( mapping[ i ].character == key ) {
       return mapping[ i ].keyCode;
+}
   }
 
   return 0;
@@ -114,6 +138,26 @@ void HotkeyWrapper::waitKey2()
 {
   state2 = false;
 }
+void checkAndRequestAccessibilityPermission()
+{
+    if (AXIsProcessTrusted()) {
+        return;
+    }
+
+    auto msgBox = std::make_unique<QMessageBox>(nullptr);
+    auto* turnOnPermission = new QPushButton(QObject::tr("Turn on Accessibility"), msgBox.get());
+
+    msgBox->setInformativeText(QObject::tr("Global shortcut using ⌘+C needs Accessibility permission. Please grant it to Goldendict or change ⌘+C to something else."));
+
+    msgBox->addButton(QMessageBox::Ok);
+    msgBox->addButton(turnOnPermission, QMessageBox::AcceptRole); // the role is unused.
+    msgBox->setDefaultButton(turnOnPermission);
+    msgBox->exec();
+
+    if (msgBox->clickedButton() == turnOnPermission) {
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility"]];
+    }
+}
 
 void HotkeyWrapper::activated( int hkId )
 {
@@ -137,6 +181,8 @@ void HotkeyWrapper::activated( int hkId )
     {
       if( hs.key == keyC && hs.modifier == cmdKey )
       {
+        checkAndRequestAccessibilityPermission();
+          
         // If that was a copy-to-clipboard shortcut, re-emit it back so it could
         // reach its original destination so it could be acted upon.
         UnregisterEventHotKey( hs.hkRef );
@@ -174,8 +220,9 @@ void HotkeyWrapper::unregister()
 
     UnregisterEventHotKey( hk.hkRef );
 
-    if ( hk.key2 && hk.key2 != hk.key )
+    if ( hk.key2 && hk.key2 != hk.key ) {
       UnregisterEventHotKey( hk.hkRef2 );
+}
   }
 
   (static_cast< QHotkeyApplication * >( qApp ))->unregisterWrapper( this );
@@ -189,29 +236,36 @@ bool HotkeyWrapper::setGlobalKey( QKeySequence const & seq, int handle )
 
 bool HotkeyWrapper::setGlobalKey( int key, int key2, Qt::KeyboardModifiers modifier, int handle )
 {
-  if ( !key )
+  if ( !key ) {
     return false; // We don't monitor empty combinations
+}
 
   quint32 vk = nativeKey( key );
 
-  if( vk == 0 )
+  if( vk == 0 ) {
     return false;
+}
 
   quint32 vk2 = key2 ? nativeKey( key2 ) : 0;
 
   static int nextId = 1;
-  if( nextId > 0xBFFF - 1 )
+  if( nextId > 0xBFFF - 1 ) {
     nextId = 1;
+}
 
   quint32 mod = 0;
-  if( modifier & Qt::CTRL )
+  if( modifier & Qt::CTRL ) {
     mod |= cmdKey;
-  if( modifier & Qt::ALT )
+}
+  if( modifier & Qt::ALT ) {
     mod |= optionKey;
-  if( modifier & Qt::SHIFT )
+}
+  if( modifier & Qt::SHIFT ) {
     mod |= shiftKey;
-  if( modifier & Qt::META )
+}
+  if( modifier & Qt::META ) {
     mod |= controlKey;
+}
 
   hotkeys.append( HotkeyStruct( vk, vk2, mod, handle, nextId ) );
   HotkeyStruct &hk = hotkeys.last();
@@ -221,8 +275,9 @@ bool HotkeyWrapper::setGlobalKey( int key, int key2, Qt::KeyboardModifiers modif
   hotKeyID.id = nextId;
 
   OSStatus ret = RegisterEventHotKey( vk, mod, hotKeyID, GetApplicationEventTarget(), 0, &hk.hkRef );
-  if ( ret != 0 )
+  if ( ret != 0 ) {
     return false;
+}
 
   if ( vk2 && vk2 != vk )
   {

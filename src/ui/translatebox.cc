@@ -71,8 +71,9 @@ void TranslateBox::setPopupEnabled( bool enable )
 void TranslateBox::setSizePolicy( QSizePolicy policy )
 {
   QWidget::setSizePolicy( policy );
-  if ( translate_line )
+  if ( translate_line ) {
     translate_line->setSizePolicy( policy );
+  }
 }
 
 void TranslateBox::setModel( QStringList & _words )

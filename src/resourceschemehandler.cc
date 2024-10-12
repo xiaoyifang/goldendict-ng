@@ -20,10 +20,11 @@ void ResourceSchemeHandler::requestStarted( QWebEngineUrlRequestJob * requestJob
   else if ( reply->isFinished() ) {
     replyJob( reply, requestJob, content_type );
   }
-  else
+  else {
     connect( reply.get(), &Dictionary::DataRequest::finished, requestJob, [ = ]() {
       replyJob( reply, requestJob, content_type );
     } );
+  }
 }
 
 

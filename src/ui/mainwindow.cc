@@ -154,7 +154,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   trayIconMenu( this ),
   addTab( this ),
   cfg( cfg_ ),
-  history( History::Load(), cfg_.preferences.maxStringsInHistory, cfg_.maxHeadwordSize ),
+  history( cfg_.preferences.maxStringsInHistory, cfg_.maxHeadwordSize ),
   dictionaryBar( this, configEvents, cfg.preferences.maxDictionaryRefsInContextMenu ),
   articleMaker( dictionaries, groupInstances, cfg.preferences ),
   articleNetMgr( this,
@@ -173,8 +173,9 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   starIcon( ":/icons/star.svg" ),
   blueStarIcon( ":/icons/star_blue.svg" )
 {
-  if ( QThreadPool::globalInstance()->maxThreadCount() < MIN_THREAD_COUNT )
+  if ( QThreadPool::globalInstance()->maxThreadCount() < MIN_THREAD_COUNT ) {
     QThreadPool::globalInstance()->setMaxThreadCount( MIN_THREAD_COUNT );
+  }
 
 #ifndef QT_NO_SSL
   QThreadPool::globalInstance()->start( new InitSSLRunnable );
@@ -182,7 +183,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   GlobalBroadcaster::instance()->setPreference( &cfg.preferences );
 
-  localSchemeHandler = new LocalSchemeHandler( articleNetMgr, this );
+  localSchemeHandler     = new LocalSchemeHandler( articleNetMgr, this );
   QStringList htmlScheme = { "gdlookup", "bword", "entry" };
   for ( const auto & localScheme : htmlScheme ) {
     QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( localScheme.toLatin1(), localSchemeHandler );
@@ -244,10 +245,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   translateBoxLayout->addWidget( translateBox );
   translateBoxToolBarAction = navToolbar->addWidget( translateBoxWidget );
 
-  // scan popup
+  // popup
   navToolbar->addSeparator();
 
-  enableScanningAction = navToolbar->addAction( QIcon( ":/icons/wizard.svg" ), tr( "Enable Scanning" ) );
+  enableScanningAction = navToolbar->addAction( QIcon( ":/icons/wizard.svg" ), tr( "Toggle clipboard monitoring" ) );
   enableScanningAction->setCheckable( true );
 
   navToolbar->widgetForAction( enableScanningAction )->setObjectName( "scanPopupButton" );
@@ -552,14 +553,16 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   Instances::Group const * igrp = groupInstances.findGroup( cfg.lastMainGroupId );
   if ( cfg.lastMainGroupId == Instances::Group::AllGroupId ) {
-    if ( igrp )
+    if ( igrp ) {
       igrp->checkMutedDictionaries( &cfg.mutedDictionaries );
+    }
     dictionaryBar.setMutedDictionaries( &cfg.mutedDictionaries );
   }
   else {
     Config::Group * grp = cfg.getGroup( cfg.lastMainGroupId );
-    if ( igrp && grp )
+    if ( igrp && grp ) {
       igrp->checkMutedDictionaries( &grp->mutedDictionaries );
+    }
     dictionaryBar.setMutedDictionaries( grp ? &grp->mutedDictionaries : nullptr );
   }
   GlobalBroadcaster::instance()->currentGroupId = cfg.lastMainGroupId;
@@ -714,8 +717,9 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
            &PronounceEngine::emitAudio,
            this,
            [ this ]( auto audioUrl ) {
-             if ( !isActiveWindow() )
+             if ( !isActiveWindow() ) {
                return;
+             }
              auto view = getCurrentArticleView();
              if ( ( cfg.preferences.pronounceOnLoadMain ) && view != nullptr ) {
 
@@ -776,10 +780,12 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // restore should be called after all UI initialized but not necessarily after show()
   // This must be called before show() as of Qt6.5 on Windows, not sure if it is a bug
   // Due to a bug of WebEngine, this also must be called after WebEngine has a view loaded https://bugreports.qt.io/browse/QTBUG-115074
-  if ( cfg.mainWindowState.size() && !cfg.resetState )
+  if ( cfg.mainWindowState.size() && !cfg.resetState ) {
     restoreState( cfg.mainWindowState );
-  if ( cfg.mainWindowGeometry.size() )
+  }
+  if ( cfg.mainWindowGeometry.size() ) {
     restoreGeometry( cfg.mainWindowGeometry );
+  }
 
   // Show window unless it is configured not to
   if ( !cfg.preferences.enableTrayIcon || !cfg.preferences.startToTray ) {
@@ -821,8 +827,9 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
     }
 
 #ifdef Q_OS_MAC
-    if ( !MacMouseOver::isAXAPIEnabled() )
+    if ( !MacMouseOver::isAXAPIEnabled() ) {
       mainStatusBar->showMessage( tr( "Accessibility API is not enabled" ), 10000, QPixmap( ":/icons/error.svg" ) );
+    }
 
     if ( on ) {
       macClipboard->start();
@@ -877,8 +884,9 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   updateStatusLine();
 
 #ifdef Q_OS_MAC
-  if ( cfg.preferences.startWithScanPopupOn && !MacMouseOver::isAXAPIEnabled() )
+  if ( cfg.preferences.startWithScanPopupOn && !MacMouseOver::isAXAPIEnabled() ) {
     mainStatusBar->showMessage( tr( "Accessibility API is not enabled" ), 10000, QPixmap( ":/icons/error.svg" ) );
+  }
 #endif
 
   wasMaximized = isMaximized();
@@ -977,17 +985,19 @@ void MainWindow::updateMatchResults( bool finished )
 
     refreshTranslateLine();
 
-    if ( !wordFinder.getErrorString().isEmpty() )
+    if ( !wordFinder.getErrorString().isEmpty() ) {
       emit showStatusBarMessage( tr( "WARNING: %1" ).arg( wordFinder.getErrorString() ),
                                  20000,
                                  QPixmap( ":/icons/error.svg" ) );
+    }
   }
 }
 
 void MainWindow::refreshTranslateLine()
 {
-  if ( !translateLine )
+  if ( !translateLine ) {
     return;
+  }
 
   // Visually mark the input line to mark if there's no results
   bool setMark = wordFinder.getResults().empty() && !wordFinder.wasSearchUncertain();
@@ -1055,10 +1065,12 @@ void MainWindow::updateSearchPaneAndBar( bool searchInDock )
 {
   QString text = translateLine->text();
 
-  if ( ftsDlg )
+  if ( ftsDlg ) {
     removeGroupComboBoxActionsFromDialog( ftsDlg, groupList );
-  if ( headwordsDlg )
+  }
+  if ( headwordsDlg ) {
     removeGroupComboBoxActionsFromDialog( headwordsDlg, groupList );
+  }
 
   if ( searchInDock ) {
     cfg.preferences.searchInDock = true;
@@ -1093,10 +1105,12 @@ void MainWindow::updateSearchPaneAndBar( bool searchInDock )
     translateBoxToolBarAction->setVisible( true );
   }
 
-  if ( ftsDlg )
+  if ( ftsDlg ) {
     addGroupComboBoxActionsToDialog( ftsDlg, groupList );
-  if ( headwordsDlg )
+  }
+  if ( headwordsDlg ) {
     addGroupComboBoxActionsToDialog( headwordsDlg, groupList );
+  }
 
   translateLine->setToolTip( tr(
     "String to search in dictionaries. The wildcards '*', '?' and sets of symbols '[...]' are allowed.\nTo find '*', '?', '[', ']' symbols use '\\*', '\\?', '\\[', '\\]' respectively" ) );
@@ -1117,8 +1131,9 @@ void MainWindow::mousePressEvent( QMouseEvent * event )
     return;
   }
 
-  if ( event->button() != Qt::MiddleButton )
+  if ( event->button() != Qt::MiddleButton ) {
     return QMainWindow::mousePressEvent( event );
+  }
 
   // middle clicked
   QString subtype = "plain";
@@ -1191,8 +1206,9 @@ void MainWindow::addGroupComboBoxActionsToDialog( QDialog * dialog, GroupComboBo
 void MainWindow::removeGroupComboBoxActionsFromDialog( QDialog * dialog, GroupComboBox * pGroupComboBox )
 {
   QList< QAction * > actions = pGroupComboBox->getExternActions();
-  for ( QList< QAction * >::iterator it = actions.begin(); it != actions.end(); ++it )
+  for ( QList< QAction * >::iterator it = actions.begin(); it != actions.end(); ++it ) {
     dialog->removeAction( *it );
+  }
 }
 
 void MainWindow::commitData( QSessionManager & )
@@ -1203,8 +1219,9 @@ void MainWindow::commitData( QSessionManager & )
 void MainWindow::commitData()
 {
   if ( cfg.preferences.clearNetworkCacheOnExit ) {
-    if ( QAbstractNetworkCache * cache = articleNetMgr.cache() )
+    if ( QAbstractNetworkCache * cache = articleNetMgr.cache() ) {
       cache->clear();
+    }
   }
 
   //if the dictionaries is empty ,large chance that the config has corrupt.
@@ -1216,8 +1233,9 @@ void MainWindow::commitData()
     for ( auto & file : entries ) {
       QString const fileName = file.fileName();
 
-      if ( dictMap.contains( fileName.toStdString() ) )
+      if ( dictMap.contains( fileName.toStdString() ) ) {
         continue;
+      }
       //remove both normal index and fts index.
       auto filePath = file.absoluteFilePath();
       qDebug() << "remove invalid index files & fts dirs";
@@ -1241,8 +1259,9 @@ void MainWindow::commitData()
     for ( auto & file : dirs ) {
       QString const fileName = file.fileName();
 
-      if ( !fileName.endsWith( "_temp" ) )
+      if ( !fileName.endsWith( "_temp" ) ) {
         continue;
+      }
 
       const QFileInfo info( fileName );
       const QDateTime lastModified = info.lastModified();
@@ -1263,8 +1282,9 @@ void MainWindow::commitData()
     cfg.mainWindowGeometry = saveGeometry();
 
     // Save popup window state and geometry
-    if ( scanPopup )
+    if ( scanPopup ) {
       scanPopup->saveConfigData();
+    }
 
     // Save any changes in last chosen groups etc
     try {
@@ -1287,8 +1307,9 @@ void MainWindow::commitData()
 
 QPrinter & MainWindow::getPrinter()
 {
-  if ( printer.get() )
+  if ( printer.get() ) {
     return *printer;
+  }
 
   printer = std::make_shared< QPrinter >( QPrinter::HighResolution );
 
@@ -1306,7 +1327,7 @@ void MainWindow::updateAppearances( QString const & addonStyle,
 {
 #ifdef Q_OS_WIN32
   if ( darkMode ) {
-  //https://forum.qt.io/topic/101391/windows-10-dark-theme
+    //https://forum.qt.io/topic/101391/windows-10-dark-theme
 
     QPalette darkPalette;
     QColor darkColor     = QColor( 45, 45, 45 );
@@ -1372,14 +1393,16 @@ void MainWindow::updateAppearances( QString const & addonStyle,
   // Try loading a style sheet if there's one
   QFile cssFile( Config::getUserQtCssFileName() );
 
-  if ( cssFile.open( QFile::ReadOnly ) )
+  if ( cssFile.open( QFile::ReadOnly ) ) {
     css += cssFile.readAll();
+  }
 
   if ( !addonStyle.isEmpty() ) {
     QString name = Config::getStylesDir() + addonStyle + QDir::separator() + "qt-style.css";
     QFile addonCss( name );
-    if ( addonCss.open( QFile::ReadOnly ) )
+    if ( addonCss.open( QFile::ReadOnly ) ) {
       css += addonCss.readAll();
+    }
   }
 
 #ifdef Q_OS_WIN32
@@ -1439,8 +1462,9 @@ void MainWindow::wheelEvent( QWheelEvent * ev )
 void MainWindow::closeEvent( QCloseEvent * ev )
 {
   if ( cfg.preferences.enableTrayIcon && cfg.preferences.closeToTray ) {
-    if ( !cfg.preferences.searchInDock )
+    if ( !cfg.preferences.searchInDock ) {
       translateBox->setPopupEnabled( false );
+    }
 
 #ifdef Q_OS_MACOS
     if ( !ev->spontaneous() || !isVisible() ) {
@@ -1512,11 +1536,13 @@ void MainWindow::applyProxySettings()
     proxy.setHostName( cfg.preferences.proxyServer.host );
     proxy.setPort( cfg.preferences.proxyServer.port );
 
-    if ( cfg.preferences.proxyServer.user.size() )
+    if ( cfg.preferences.proxyServer.user.size() ) {
       proxy.setUser( cfg.preferences.proxyServer.user );
+    }
 
-    if ( cfg.preferences.proxyServer.password.size() )
+    if ( cfg.preferences.proxyServer.password.size() ) {
       proxy.setPassword( cfg.preferences.proxyServer.password );
+    }
   }
 
   QNetworkProxy::setApplicationProxy( proxy );
@@ -1533,8 +1559,9 @@ void MainWindow::setupNetworkCache( int maxSize )
     diskCache->setMaximumCacheSize( maxCacheSizeInBytes );
     return;
   }
-  if ( maxCacheSizeInBytes == 0 )
+  if ( maxCacheSizeInBytes == 0 ) {
     return; // There is currently no cache and it is not needed.
+  }
 
   QString cacheDirectory = Config::getCacheDir();
   if ( !QDir().mkpath( cacheDirectory ) ) {
@@ -1649,16 +1676,18 @@ void MainWindow::updateGroupList( bool reload )
 
 void MainWindow::updateDictionaryBar()
 {
-  if ( !dictionaryBar.toggleViewAction()->isChecked() )
+  if ( !dictionaryBar.toggleViewAction()->isChecked() ) {
     return; // It's not enabled, therefore hidden -- don't waste time
+  }
 
   unsigned currentId     = groupList->getCurrentGroup();
   Instances::Group * grp = groupInstances.findGroup( currentId );
 
   dictionaryBar.setMutedDictionaries( nullptr );
   if ( grp ) { // Should always be !0, but check as a safeguard
-    if ( currentId == Instances::Group::AllGroupId )
+    if ( currentId == Instances::Group::AllGroupId ) {
       dictionaryBar.setMutedDictionaries( &cfg.mutedDictionaries );
+    }
     else {
       Config::Group * _grp = cfg.getGroup( currentId );
       dictionaryBar.setMutedDictionaries( _grp ? &_grp->mutedDictionaries : nullptr );
@@ -1680,8 +1709,9 @@ void MainWindow::updateDictionaryBar()
 
 vector< sptr< Dictionary::Class > > const & MainWindow::getActiveDicts()
 {
-  if ( groupInstances.empty() )
+  if ( groupInstances.empty() ) {
     return dictionaries;
+  }
 
   int current = groupList->currentIndex();
 
@@ -1691,8 +1721,9 @@ vector< sptr< Dictionary::Class > > const & MainWindow::getActiveDicts()
   }
 
   Config::MutedDictionaries const * mutedDictionaries = dictionaryBar.getMutedDictionaries();
-  if ( !dictionaryBar.toggleViewAction()->isChecked() || mutedDictionaries == nullptr )
+  if ( !dictionaryBar.toggleViewAction()->isChecked() || mutedDictionaries == nullptr ) {
     return groupInstances[ current ].dictionaries;
+  }
   else {
     vector< sptr< Dictionary::Class > > const & activeDicts = groupInstances[ current ].dictionaries;
 
@@ -1702,9 +1733,11 @@ vector< sptr< Dictionary::Class > > const & MainWindow::getActiveDicts()
     dictionariesUnmuted.clear();
     dictionariesUnmuted.reserve( activeDicts.size() );
 
-    for ( unsigned x = 0; x < activeDicts.size(); ++x )
-      if ( !mutedDictionaries->contains( QString::fromStdString( activeDicts[ x ]->getId() ) ) )
+    for ( unsigned x = 0; x < activeDicts.size(); ++x ) {
+      if ( !mutedDictionaries->contains( QString::fromStdString( activeDicts[ x ]->getId() ) ) ) {
         dictionariesUnmuted.push_back( activeDicts[ x ] );
+      }
+    }
 
     return dictionariesUnmuted;
   }
@@ -1838,8 +1871,9 @@ ArticleView * MainWindow::createNewTab( bool switchToIt, QString const & name )
   ui.tabWidget->insertTab( index, view, escaped );
   mruList.append( dynamic_cast< QWidget * >( view ) );
 
-  if ( switchToIt )
+  if ( switchToIt ) {
     ui.tabWidget->setCurrentIndex( index );
+  }
 
   view->setZoomFactor( cfg.preferences.zoomFactor );
 
@@ -1870,16 +1904,18 @@ void MainWindow::tabCloseRequested( int x )
   else if ( ui.tabWidget->count() > 1 ) {
     //activate neighboring tab
     int n = x >= ui.tabWidget->count() - 1 ? x - 1 : x + 1;
-    if ( n >= 0 )
+    if ( n >= 0 ) {
       ui.tabWidget->setCurrentIndex( n );
+    }
   }
 
   ui.tabWidget->removeTab( x );
   delete w;
 
   // if everything is closed, add a new tab
-  if ( ui.tabWidget->count() == 0 )
+  if ( ui.tabWidget->count() == 0 ) {
     addNewTab();
+  }
 }
 
 void MainWindow::closeCurrentTab()
@@ -1889,8 +1925,9 @@ void MainWindow::closeCurrentTab()
 
 void MainWindow::closeAllTabs()
 {
-  while ( ui.tabWidget->count() > 1 )
+  while ( ui.tabWidget->count() > 1 ) {
     closeCurrentTab();
+  }
 
   // close last tab
   closeCurrentTab();
@@ -1898,37 +1935,44 @@ void MainWindow::closeAllTabs()
 
 void MainWindow::closeRestTabs()
 {
-  if ( ui.tabWidget->count() < 2 )
+  if ( ui.tabWidget->count() < 2 ) {
     return;
+  }
 
   int idx = ui.tabWidget->currentIndex();
 
-  for ( int i = 0; i < idx; i++ )
+  for ( int i = 0; i < idx; i++ ) {
     tabCloseRequested( 0 );
+  }
 
   ui.tabWidget->setCurrentIndex( 0 );
 
-  while ( ui.tabWidget->count() > 1 )
+  while ( ui.tabWidget->count() > 1 ) {
     tabCloseRequested( 1 );
+  }
 }
 
 void MainWindow::switchToNextTab()
 {
-  if ( ui.tabWidget->count() < 2 )
+  if ( ui.tabWidget->count() < 2 ) {
     return;
+  }
 
   ui.tabWidget->setCurrentIndex( ( ui.tabWidget->currentIndex() + 1 ) % ui.tabWidget->count() );
 }
 
 void MainWindow::switchToPrevTab()
 {
-  if ( ui.tabWidget->count() < 2 )
+  if ( ui.tabWidget->count() < 2 ) {
     return;
+  }
 
-  if ( !ui.tabWidget->currentIndex() )
+  if ( !ui.tabWidget->currentIndex() ) {
     ui.tabWidget->setCurrentIndex( ui.tabWidget->count() - 1 );
-  else
+  }
+  else {
     ui.tabWidget->setCurrentIndex( ui.tabWidget->currentIndex() - 1 );
+  }
 }
 
 void MainWindow::backClicked()
@@ -1960,8 +2004,9 @@ void MainWindow::titleChanged( ArticleView * view, QString const & title )
   escaped = Utils::escapeAmps( escaped );
 
   int index = ui.tabWidget->indexOf( view );
-  if ( !escaped.isEmpty() )
+  if ( !escaped.isEmpty() ) {
     ui.tabWidget->setTabText( index, escaped );
+  }
 
   if ( index == ui.tabWidget->currentIndex() ) {
     // Set icon for "Add to Favorites" action
@@ -1996,8 +2041,9 @@ void MainWindow::updateWindowTitle()
 
 void MainWindow::pageLoaded( ArticleView * view )
 {
-  if ( view != getCurrentArticleView() )
+  if ( view != getCurrentArticleView() ) {
     return; // It was background action
+  }
 
   updateBackForwardButtons();
   updatePronounceAvailability();
@@ -2005,10 +2051,12 @@ void MainWindow::pageLoaded( ArticleView * view )
 
 void MainWindow::showStatusBarMessage( QString const & message, int timeout, QPixmap const & icon )
 {
-  if ( message.isEmpty() )
+  if ( message.isEmpty() ) {
     mainStatusBar->clearMessage();
-  else
+  }
+  else {
     mainStatusBar->showMessage( message, timeout, icon );
+  }
 }
 
 void MainWindow::tabSwitched( int )
@@ -2020,8 +2068,9 @@ void MainWindow::tabSwitched( int )
   updateWindowTitle();
   if ( mruList.size() > 1 ) {
     int from = mruList.indexOf( ui.tabWidget->widget( ui.tabWidget->currentIndex() ) );
-    if ( from > 0 )
+    if ( from > 0 ) {
       mruList.move( from, 0 );
+    }
   }
 
   // Set icon for "Add to Favorites" action
@@ -2061,8 +2110,9 @@ void MainWindow::dictionaryBarToggled( bool )
 
 void MainWindow::showDictsPane()
 {
-  if ( !ui.dictsPane->isVisible() )
+  if ( !ui.dictsPane->isVisible() ) {
     ui.dictsPane->show();
+  }
 }
 
 void MainWindow::dictsPaneVisibilityChanged( bool visible )
@@ -2155,8 +2205,9 @@ void MainWindow::editDictionaries( unsigned editDictionaryGroup )
 
     connect( &dicts, &EditDictionaries::showDictionaryHeadwords, this, &MainWindow::showDictionaryHeadwords );
 
-    if ( editDictionaryGroup != Instances::Group::NoGroupId )
+    if ( editDictionaryGroup != Instances::Group::NoGroupId ) {
       dicts.editGroup( editDictionaryGroup );
+    }
 
     dicts.restoreGeometry( cfg.dictionariesDialogGeometry );
     dicts.exec();
@@ -2252,14 +2303,17 @@ void MainWindow::editPreferences()
     }
 
 
-    if ( cfg.preferences.historyStoreInterval != p.historyStoreInterval )
+    if ( cfg.preferences.historyStoreInterval != p.historyStoreInterval ) {
       history.setSaveInterval( p.historyStoreInterval );
+    }
 
-    if ( cfg.preferences.favoritesStoreInterval != p.favoritesStoreInterval )
+    if ( cfg.preferences.favoritesStoreInterval != p.favoritesStoreInterval ) {
       ui.favoritesPaneWidget->setSaveInterval( p.favoritesStoreInterval );
+    }
 
-    if ( cfg.preferences.maxNetworkCacheSize != p.maxNetworkCacheSize )
+    if ( cfg.preferences.maxNetworkCacheSize != p.maxNetworkCacheSize ) {
       setupNetworkCache( p.maxNetworkCacheSize );
+    }
 
     bool needReload =
       ( cfg.preferences.displayStyle != p.displayStyle || cfg.preferences.addonStyle != p.addonStyle
@@ -2320,19 +2374,22 @@ void MainWindow::currentGroupChanged( int )
   cfg.lastMainGroupId           = grg_id;
   Instances::Group const * igrp = groupInstances.findGroup( grg_id );
   if ( grg_id == Instances::Group::AllGroupId ) {
-    if ( igrp )
+    if ( igrp ) {
       igrp->checkMutedDictionaries( &cfg.mutedDictionaries );
+    }
     dictionaryBar.setMutedDictionaries( &cfg.mutedDictionaries );
   }
   else {
     Config::Group * grp = cfg.getGroup( grg_id );
     if ( grp ) {
-      if ( igrp )
+      if ( igrp ) {
         igrp->checkMutedDictionaries( &grp->mutedDictionaries );
+      }
       dictionaryBar.setMutedDictionaries( &grp->mutedDictionaries );
     }
-    else
+    else {
       dictionaryBar.setMutedDictionaries( nullptr );
+    }
   }
 
   if ( igrp ) {
@@ -2357,8 +2414,9 @@ void MainWindow::currentGroupChanged( int )
     }
   }
 
-  if ( ftsDlg )
+  if ( ftsDlg ) {
     ftsDlg->setCurrentGroup( grg_id );
+  }
 }
 
 void MainWindow::translateInputChanged( QString const & newValue )
@@ -2384,8 +2442,9 @@ void MainWindow::updateSuggestionList( QString const & newValue )
   // If some word is selected in the word list, unselect it. This prevents
   // triggering a set of spurious activation signals when the list changes.
 
-  if ( ui.wordList->selectionModel()->hasSelection() )
+  if ( ui.wordList->selectionModel()->hasSelection() ) {
     ui.wordList->setCurrentItem( nullptr, QItemSelectionModel::Clear );
+  }
 
   QString req = newValue.trimmed();
 
@@ -2417,14 +2476,16 @@ void MainWindow::respondToTranslationRequest( QString const & word,
 {
   if ( !word.isEmpty() ) {
     Qt::KeyboardModifiers mods = QApplication::keyboardModifiers();
-    if ( checkModifiers && ( mods & ( Qt::ControlModifier | Qt::ShiftModifier ) ) )
+    if ( checkModifiers && ( mods & ( Qt::ControlModifier | Qt::ShiftModifier ) ) ) {
       addNewTab();
+    }
 
     showTranslationFor( word, 0, scrollTo );
 
     if ( cfg.preferences.searchInDock ) {
-      if ( ui.searchPane->isFloating() )
+      if ( ui.searchPane->isFloating() ) {
         activateWindow();
+      }
     }
 
     if ( focus ) {
@@ -2435,8 +2496,9 @@ void MainWindow::respondToTranslationRequest( QString const & word,
 
 void MainWindow::setInputLineText( QString text, WildcardPolicy wildcardPolicy, TranslateBoxPopup popupAction )
 {
-  if ( wildcardPolicy == WildcardPolicy::EscapeWildcards )
+  if ( wildcardPolicy == WildcardPolicy::EscapeWildcards ) {
     text = Folding::escapeWildcardSymbols( text );
+  }
 
   if ( popupAction == NoPopupChange || cfg.preferences.searchInDock ) {
     translateLine->setText( text );
@@ -2452,25 +2514,29 @@ void MainWindow::setInputLineText( QString text, WildcardPolicy wildcardPolicy, 
 void MainWindow::handleEsc()
 {
   ArticleView * view = getCurrentArticleView();
-  if ( view && view->closeSearch() )
+  if ( view && view->closeSearch() ) {
     return;
+  }
 
   if ( cfg.preferences.escKeyHidesMainWindow ) {
     toggleMainWindow();
   }
-  else
+  else {
     focusTranslateLine();
+  }
 }
 
 void MainWindow::focusTranslateLine()
 {
   if ( cfg.preferences.searchInDock ) {
-    if ( ui.searchPane->isFloating() )
+    if ( ui.searchPane->isFloating() ) {
       ui.searchPane->activateWindow();
+    }
   }
   else {
-    if ( !isActiveWindow() )
+    if ( !isActiveWindow() ) {
       activateWindow();
+    }
   }
 
   translateLine->clearFocus();
@@ -2502,8 +2568,9 @@ bool MainWindow::handleBackForwardMouseButtons( QMouseEvent * event )
     forwardClicked();
     return true;
   }
-  else
+  else {
     return false;
+  }
 }
 
 bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
@@ -2514,8 +2581,9 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
     int const key = ke->key();
     if ( key == Qt::Key_F3 ) {
       ArticleView * view = getCurrentArticleView();
-      if ( view && view->handleF3( obj, ev ) )
+      if ( view && view->handleF3( obj, ev ) ) {
         return true;
+      }
     }
 
     //workaround to fix #660
@@ -2608,8 +2676,9 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
 
       if ( keyEvent->matches( QKeySequence::InsertParagraphSeparator ) && ui.wordList->selectedItems().size() ) {
         if ( cfg.preferences.searchInDock ) {
-          if ( ui.searchPane->isFloating() )
+          if ( ui.searchPane->isFloating() ) {
             activateWindow();
+          }
         }
 
         focusArticleView();
@@ -2625,8 +2694,9 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
       const QString text = key_event->text();
 
       if ( Utils::ignoreKeyEvent( key_event ) || key_event->key() == Qt::Key_Return
-           || key_event->key() == Qt::Key_Enter )
+           || key_event->key() == Qt::Key_Enter ) {
         return false; // Those key have other uses than to start typing
+      }
       // or don't make sense
       if ( !text.isEmpty() ) {
         typingEvent( text );
@@ -2697,8 +2767,9 @@ void MainWindow::showDefinitionInNewTab( QString const & word,
 
 void MainWindow::activeArticleChanged( ArticleView const * view, QString const & id )
 {
-  if ( view != getCurrentArticleView() )
+  if ( view != getCurrentArticleView() ) {
     return; // It was background action
+  }
 
   // select the row with the corresponding id
   for ( int i = 0; i < ui.dictsList->count(); ++i ) {
@@ -2718,16 +2789,19 @@ void MainWindow::activeArticleChanged( ArticleView const * view, QString const &
 void MainWindow::typingEvent( QString const & t )
 {
   if ( t == "\n" || t == "\r" ) {
-    if ( translateLine->isEnabled() )
+    if ( translateLine->isEnabled() ) {
       focusTranslateLine();
+    }
   }
   else {
-    if ( ( cfg.preferences.searchInDock && ui.searchPane->isFloating() ) || ui.dictsPane->isFloating() )
+    if ( ( cfg.preferences.searchInDock && ui.searchPane->isFloating() ) || ui.dictsPane->isFloating() ) {
       ui.searchPane->activateWindow();
+    }
 
     if ( translateLine->isEnabled() ) {
-      if ( navToolbar->isFloating() )
+      if ( navToolbar->isFloating() ) {
         navToolbar->activateWindow();
+      }
 
       translateLine->clear();
       translateLine->setFocus();
@@ -2740,8 +2814,9 @@ void MainWindow::typingEvent( QString const & t )
 
 void MainWindow::mutedDictionariesChanged()
 {
-  if ( dictionaryBar.toggleViewAction()->isChecked() )
+  if ( dictionaryBar.toggleViewAction()->isChecked() ) {
     applyMutedDictionariesState();
+  }
 }
 
 void MainWindow::showHistoryItem( QString const & word )
@@ -2789,8 +2864,9 @@ void MainWindow::toggleMainWindow( bool onlyShow )
 {
   bool shown = false;
 
-  if ( !cfg.preferences.searchInDock )
+  if ( !cfg.preferences.searchInDock ) {
     translateBox->setPopupEnabled( false );
+  }
 
   if ( !isVisible() ) {
     show();
@@ -2800,10 +2876,12 @@ void MainWindow::toggleMainWindow( bool onlyShow )
     shown = true;
   }
   else if ( isMinimized() ) {
-    if ( wasMaximized )
+    if ( wasMaximized ) {
       showMaximized();
-    else
+    }
+    else {
       showNormal();
+    }
     activateWindow();
     raise();
     shown = true;
@@ -2824,8 +2902,9 @@ void MainWindow::toggleMainWindow( bool onlyShow )
     // but click it won't bring it back, thus we can only minimize it.
 
 #ifdef Q_OS_MAC
-    if ( cfg.preferences.enableTrayIcon )
+    if ( cfg.preferences.enableTrayIcon ) {
       showMinimized();
+    }
 #else
     if ( cfg.preferences.enableTrayIcon )
       hide();
@@ -2834,19 +2913,23 @@ void MainWindow::toggleMainWindow( bool onlyShow )
 #endif
 
 
-    if ( headwordsDlg )
+    if ( headwordsDlg ) {
       headwordsDlg->hide();
+    }
 
-    if ( ftsDlg )
+    if ( ftsDlg ) {
       ftsDlg->hide();
+    }
   }
 
   if ( shown ) {
-    if ( headwordsDlg )
+    if ( headwordsDlg ) {
       headwordsDlg->show();
+    }
 
-    if ( ftsDlg )
+    if ( ftsDlg ) {
       ftsDlg->show();
+    }
 
     focusTranslateLine();
   }
@@ -2875,10 +2958,11 @@ void MainWindow::installHotKeys()
       return;
     }
 
-    if ( cfg.preferences.enableMainWindowHotkey )
+    if ( cfg.preferences.enableMainWindowHotkey ) {
       hotkeyWrapper->setGlobalKey( cfg.preferences.mainWindowHotkey, 0 );
+    }
 
-    if ( cfg.preferences.enableClipboardHotkey && !enableScanningAction->isChecked() ) {
+    if ( cfg.preferences.enableClipboardHotkey ) {
       hotkeyWrapper->setGlobalKey( cfg.preferences.clipboardHotkey, 1 );
     }
 
@@ -2892,8 +2976,9 @@ void MainWindow::installHotKeys()
 
 void MainWindow::hotKeyActivated( int hk )
 {
-  if ( !hk )
+  if ( !hk ) {
     toggleMainWindow();
+  }
   else if ( scanPopup ) {
 #ifdef HAVE_X11
     // When the user requests translation with the Ctrl+C+C hotkey in certain apps
@@ -2953,8 +3038,9 @@ void MainWindow::checkNewRelease()
 
             msg.exec();
 
-            if ( msg.clickedButton() == dload )
+            if ( msg.clickedButton() == dload ) {
               QDesktopServices::openUrl( QUrl( downloadUrl ) );
+            }
             else if ( msg.clickedButton() == skip ) {
               cfg.skippedRelease = latestVersion;
             }
@@ -3172,8 +3258,9 @@ void MainWindow::on_pageSetup_triggered()
 
     dialog.exec();
   }
-  else
+  else {
     QMessageBox::critical( this, tr( "Page Setup" ), tr( "No printer is available. Please install one first." ) );
+  }
 }
 
 void MainWindow::on_printPreview_triggered()
@@ -3196,8 +3283,9 @@ void MainWindow::on_print_triggered()
 
   dialog.setWindowTitle( tr( "Print Article" ) );
 
-  if ( dialog.exec() != QDialog::Accepted )
+  if ( dialog.exec() != QDialog::Accepted ) {
     return;
+  }
 
   ArticleView * view = getCurrentArticleView();
 
@@ -3227,10 +3315,12 @@ static void filterAndCollectResources( QString & html,
     QString host         = url.host();
     QString resourcePath = Utils::Url::path( url );
 
-    if ( !host.startsWith( '/' ) )
+    if ( !host.startsWith( '/' ) ) {
       host.insert( 0, '/' );
-    if ( !resourcePath.startsWith( '/' ) )
+    }
+    if ( !resourcePath.startsWith( '/' ) ) {
       resourcePath.insert( 0, '/' );
+    }
 
     QCryptographicHash hash( QCryptographicHash::Md5 );
     hash.addData( match.captured().toUtf8() );
@@ -3262,12 +3352,14 @@ void MainWindow::on_saveArticle_triggered()
   fileName += ".html";
   QString savePath;
 
-  if ( cfg.articleSavePath.isEmpty() )
+  if ( cfg.articleSavePath.isEmpty() ) {
     savePath = QDir::homePath();
+  }
   else {
     savePath = QDir::fromNativeSeparators( cfg.articleSavePath );
-    if ( !QDir( savePath ).exists() )
+    if ( !QDir( savePath ).exists() ) {
       savePath = QDir::homePath();
+    }
   }
 
   QFileDialog::Options options = QFileDialog::HideNameFilterDetails;
@@ -3287,8 +3379,9 @@ void MainWindow::on_saveArticle_triggered()
   // The " (*.html)" part of filters[i] is absent from selectedFilter in Qt 5.
   bool const complete = filters.at( 0 ).startsWith( selectedFilter );
 
-  if ( fileName.isEmpty() )
+  if ( fileName.isEmpty() ) {
     return;
+  }
 
   view->toHtml( [ = ]( QString & html ) mutable {
     QFile file( fileName );
@@ -3457,7 +3550,7 @@ void MainWindow::applyZoomFactor()
 
   // Scaling article views asynchronously dramatically improves performance when
   // a zoom action is triggered repeatedly while many or large articles are open
-  // in the main window or in scan popup.
+  // in the main window or in popup.
   // Multiple zoom action signals are processed before (often slow) article view
   // scaling is requested. Multiple scaling requests then ask for the same zoom factor,
   // so all of them except for the first one don't change anything and run very fast.
@@ -3468,10 +3561,12 @@ void MainWindow::applyZoomFactor()
 
 void MainWindow::adjustCurrentZoomFactor()
 {
-  if ( cfg.preferences.zoomFactor >= 5 )
+  if ( cfg.preferences.zoomFactor >= 5 ) {
     cfg.preferences.zoomFactor = 5;
-  else if ( cfg.preferences.zoomFactor <= 0.25 )
+  }
+  else if ( cfg.preferences.zoomFactor <= 0.25 ) {
     cfg.preferences.zoomFactor = 0.25;
+  }
 
   zoomIn->setEnabled( cfg.preferences.zoomFactor < 5 );
   zoomOut->setEnabled( cfg.preferences.zoomFactor > 0.25 );
@@ -3518,14 +3613,16 @@ void MainWindow::applyWordsZoomLevel()
   if ( cfg.preferences.wordsZoomLevel != 0 ) {
     ps += cfg.preferences.wordsZoomLevel;
 
-    if ( ps < 1 )
+    if ( ps < 1 ) {
       ps = 1;
+    }
 
     font.setPointSize( ps );
   }
 
-  if ( ui.wordList->font().pointSize() != ps )
+  if ( ui.wordList->font().pointSize() != ps ) {
     ui.wordList->setFont( font );
+  }
 
   font = translateLineDefaultFont;
 
@@ -3534,8 +3631,9 @@ void MainWindow::applyWordsZoomLevel()
   if ( cfg.preferences.wordsZoomLevel != 0 ) {
     ps += cfg.preferences.wordsZoomLevel;
 
-    if ( ps < 1 )
+    if ( ps < 1 ) {
       ps = 1;
+    }
 
     font.setPointSize( ps );
   }
@@ -3553,8 +3651,9 @@ void MainWindow::applyWordsZoomLevel()
   if ( cfg.preferences.wordsZoomLevel != 0 ) {
     ps += cfg.preferences.wordsZoomLevel;
 
-    if ( ps < 1 )
+    if ( ps < 1 ) {
       ps = 1;
+    }
 
     font.setPointSize( ps );
   }
@@ -3607,10 +3706,12 @@ void MainWindow::messageFromAnotherInstanceReceived( QString const & message )
     }
     else {
       //default logic
-      if ( scanPopup && enableScanningAction->isChecked() )
+      if ( scanPopup ) {
         scanPopup->translateWord( word );
-      else
+      }
+      else {
         wordReceived( word );
+      }
     }
 
     consoleWindowOnce.clear();
@@ -3621,8 +3722,9 @@ void MainWindow::messageFromAnotherInstanceReceived( QString const & message )
   else if ( message.left( 15 ) == "setPopupGroup: " ) {
     setGroupByName( message.mid( 15 ), false );
   }
-  else
+  else {
     qWarning() << "Unknown message received from another instance: " << message;
+  }
 }
 
 ArticleView * MainWindow::getCurrentArticleView()
@@ -3692,20 +3794,23 @@ void MainWindow::toggle_historyPane()
 void MainWindow::on_exportHistory_triggered()
 {
   QString exportPath;
-  if ( cfg.historyExportPath.isEmpty() )
+  if ( cfg.historyExportPath.isEmpty() ) {
     exportPath = QDir::homePath();
+  }
   else {
     exportPath = QDir::fromNativeSeparators( cfg.historyExportPath );
-    if ( !QDir( exportPath ).exists() )
+    if ( !QDir( exportPath ).exists() ) {
       exportPath = QDir::homePath();
+    }
   }
 
   QString fileName = QFileDialog::getSaveFileName( this,
                                                    tr( "Export history to file" ),
                                                    exportPath,
                                                    tr( "Text files (*.txt);;All files (*.*)" ) );
-  if ( fileName.size() == 0 )
+  if ( fileName.size() == 0 ) {
     return;
+  }
 
   cfg.historyExportPath = QDir::toNativeSeparators( QFileInfo( fileName ).absoluteDir().absolutePath() );
   QFile file( fileName );
@@ -3753,20 +3858,23 @@ void MainWindow::on_exportHistory_triggered()
 void MainWindow::on_importHistory_triggered()
 {
   QString importPath;
-  if ( cfg.historyExportPath.isEmpty() )
+  if ( cfg.historyExportPath.isEmpty() ) {
     importPath = QDir::homePath();
+  }
   else {
     importPath = QDir::fromNativeSeparators( cfg.historyExportPath );
-    if ( !QDir( importPath ).exists() )
+    if ( !QDir( importPath ).exists() ) {
       importPath = QDir::homePath();
+    }
   }
 
   QString fileName = QFileDialog::getOpenFileName( this,
                                                    tr( "Import history from file" ),
                                                    importPath,
                                                    tr( "Text files (*.txt);;All files (*.*)" ) );
-  if ( fileName.size() == 0 )
+  if ( fileName.size() == 0 ) {
     return;
+  }
 
   QFileInfo fileInfo( fileName );
   cfg.historyExportPath = QDir::toNativeSeparators( fileInfo.absoluteDir().absolutePath() );
@@ -3785,22 +3893,26 @@ void MainWindow::on_importHistory_triggered()
 
   do {
     itemStr = fileStream.readLine();
-    if ( fileStream.status() >= QTextStream::ReadCorruptData )
+    if ( fileStream.status() >= QTextStream::ReadCorruptData ) {
       break;
+    }
 
     trimmedStr = itemStr.trimmed();
-    if ( trimmedStr.isEmpty() )
+    if ( trimmedStr.isEmpty() ) {
       continue;
+    }
 
-    if ( (unsigned)trimmedStr.size() <= history.getMaxItemLength() )
+    if ( (unsigned)trimmedStr.size() <= history.getMaxItemLength() ) {
       itemList.prepend( trimmedStr );
+    }
 
   } while ( !fileStream.atEnd() && itemList.size() < (int)history.getMaxSize() );
 
   history.enableAdd( true );
 
-  for ( QList< QString >::const_iterator i = itemList.constBegin(); i != itemList.constEnd(); ++i )
-    history.addItem( History::Item( 1, *i ) );
+  for ( QList< QString >::const_iterator i = itemList.constBegin(); i != itemList.constEnd(); ++i ) {
+    history.addItem( { *i } );
+  }
 
   history.enableAdd( cfg.preferences.storeHistory );
 
@@ -3828,20 +3940,23 @@ void MainWindow::errorMessageOnStatusBar( const QString & errStr )
 void MainWindow::on_exportFavorites_triggered()
 {
   QString exportPath;
-  if ( cfg.historyExportPath.isEmpty() )
+  if ( cfg.historyExportPath.isEmpty() ) {
     exportPath = QDir::homePath();
+  }
   else {
     exportPath = QDir::fromNativeSeparators( cfg.historyExportPath );
-    if ( !QDir( exportPath ).exists() )
+    if ( !QDir( exportPath ).exists() ) {
       exportPath = QDir::homePath();
+    }
   }
 
   QString fileName = QFileDialog::getSaveFileName( this,
                                                    tr( "Export Favorites to file" ),
                                                    exportPath,
                                                    tr( "XML files (*.xml);;All files (*.*)" ) );
-  if ( fileName.size() == 0 )
+  if ( fileName.size() == 0 ) {
     return;
+  }
 
   cfg.historyExportPath = QDir::toNativeSeparators( QFileInfo( fileName ).absoluteDir().absolutePath() );
   QFile file( fileName );
@@ -3867,20 +3982,23 @@ void MainWindow::on_exportFavorites_triggered()
 void MainWindow::on_ExportFavoritesToList_triggered()
 {
   QString exportPath;
-  if ( cfg.historyExportPath.isEmpty() )
+  if ( cfg.historyExportPath.isEmpty() ) {
     exportPath = QDir::homePath();
+  }
   else {
     exportPath = QDir::fromNativeSeparators( cfg.historyExportPath );
-    if ( !QDir( exportPath ).exists() )
+    if ( !QDir( exportPath ).exists() ) {
       exportPath = QDir::homePath();
+    }
   }
 
   QString fileName = QFileDialog::getSaveFileName( this,
                                                    tr( "Export Favorites to file as plain list" ),
                                                    exportPath,
                                                    tr( "Text files (*.txt);;All files (*.*)" ) );
-  if ( fileName.size() == 0 )
+  if ( fileName.size() == 0 ) {
     return;
+  }
 
   cfg.historyExportPath = QDir::toNativeSeparators( QFileInfo( fileName ).absoluteDir().absolutePath() );
   QFile file( fileName );
@@ -3915,20 +4033,23 @@ void MainWindow::on_ExportFavoritesToList_triggered()
 void MainWindow::on_importFavorites_triggered()
 {
   QString importPath;
-  if ( cfg.historyExportPath.isEmpty() )
+  if ( cfg.historyExportPath.isEmpty() ) {
     importPath = QDir::homePath();
+  }
   else {
     importPath = QDir::fromNativeSeparators( cfg.historyExportPath );
-    if ( !QDir( importPath ).exists() )
+    if ( !QDir( importPath ).exists() ) {
       importPath = QDir::homePath();
+    }
   }
 
   QString fileName = QFileDialog::getOpenFileName( this,
                                                    tr( "Import Favorites from file" ),
                                                    importPath,
                                                    tr( "XML files (*.xml);;Txt files (*.txt);;All files (*.*)" ) );
-  if ( fileName.size() == 0 )
+  if ( fileName.size() == 0 ) {
     return;
+  }
 
   QFileInfo fileInfo( fileName );
   cfg.historyExportPath = QDir::toNativeSeparators( fileInfo.absoluteDir().absolutePath() );
@@ -3959,43 +4080,26 @@ void MainWindow::on_importFavorites_triggered()
   mainStatusBar->showMessage( tr( "Favorites import complete" ), 5000 );
 }
 
-void MainWindow::fillWordListFromHistory()
-{
-  ui.wordList->setUpdatesEnabled( false );
-  ui.wordList->clear();
-
-  QList< History::Item > const & items = history.getItems();
-  for ( const auto & item : items ) {
-    History::Item const * i = &item;
-    auto s                  = new QListWidgetItem( i->word, ui.wordList );
-    if ( s->text().at( 0 ).direction() == QChar::DirR )
-      s->setTextAlignment( Qt::AlignRight );
-    if ( s->text().at( 0 ).direction() == QChar::DirL )
-      s->setTextAlignment( Qt::AlignLeft );
-    ui.wordList->addItem( s );
-  }
-
-  ui.wordList->setUpdatesEnabled( true );
-}
-
 void MainWindow::focusWordList()
 {
-  if ( ui.wordList->count() > 0 )
+  if ( ui.wordList->count() > 0 ) {
     ui.wordList->setFocus();
+  }
 }
 
 void MainWindow::addWordToHistory( const QString & word )
 {
   //    skip epwing reference link. epwing reference link has the pattern of r%dAt%d
-  if ( QRegularExpressionMatch m = RX::Epwing::refWord.match( word ); m.hasMatch() )
+  if ( QRegularExpressionMatch m = RX::Epwing::refWord.match( word ); m.hasMatch() ) {
     return;
-  history.addItem( History::Item( 1, word.trimmed() ) );
+  }
+  history.addItem( { word.trimmed() } );
 }
 
 void MainWindow::forceAddWordToHistory( const QString & word )
 {
   history.enableAdd( true );
-  history.addItem( History::Item( 1, word.trimmed() ) );
+  history.addItem( { word.trimmed() } );
   history.enableAdd( cfg.preferences.storeHistory );
 }
 
@@ -4076,16 +4180,18 @@ void MainWindow::focusHeadwordsDialog()
 {
   if ( headwordsDlg ) {
     headwordsDlg->activateWindow();
-    if ( ftsDlg )
+    if ( ftsDlg ) {
       ftsDlg->lower();
+    }
   }
 }
 
 void MainWindow::focusArticleView()
 {
   if ( ArticleView * view = getCurrentArticleView() ) {
-    if ( !isActiveWindow() )
+    if ( !isActiveWindow() ) {
       activateWindow();
+    }
     view->focus();
   }
 }
@@ -4123,41 +4229,49 @@ void MainWindow::foundDictsContextMenuRequested( const QPoint & pos )
       }
     }
 
-    if ( pDict == nullptr )
+    if ( pDict == nullptr ) {
       return;
+    }
 
     if ( !pDict->isLocalDictionary() ) {
-      if ( scanPopup )
+      if ( scanPopup ) {
         scanPopup->blockSignals( true );
+      }
       showDictionaryInfo( id );
-      if ( scanPopup )
+      if ( scanPopup ) {
         scanPopup->blockSignals( false );
+      }
     }
     else {
       QMenu menu( ui.dictsList );
       QAction * infoAction = menu.addAction( tr( "Dictionary info" ) );
 
       QAction * headwordsAction = nullptr;
-      if ( pDict->getWordCount() > 0 )
+      if ( pDict->getWordCount() > 0 ) {
         headwordsAction = menu.addAction( tr( "Dictionary headwords" ) );
+      }
 
       QAction * openDictFolderAction = menu.addAction( tr( "Open dictionary folder" ) );
 
       QAction * result = menu.exec( ui.dictsList->mapToGlobal( pos ) );
 
       if ( result && result == infoAction ) {
-        if ( scanPopup )
+        if ( scanPopup ) {
           scanPopup->blockSignals( true );
+        }
         showDictionaryInfo( id );
-        if ( scanPopup )
+        if ( scanPopup ) {
           scanPopup->blockSignals( false );
+        }
       }
       else if ( result && result == headwordsAction ) {
-        if ( scanPopup )
+        if ( scanPopup ) {
           scanPopup->blockSignals( true );
+        }
         showDictionaryHeadwords( pDict );
-        if ( scanPopup )
+        if ( scanPopup ) {
           scanPopup->blockSignals( false );
+        }
       }
       else if ( result && result == openDictFolderAction ) {
         openDictionaryFolder( id );
@@ -4242,12 +4356,14 @@ void MainWindow::showFullTextSearchDialog()
     ftsDlg->setCurrentGroup( group );
   }
 
-  if ( !ftsDlg->isVisible() )
+  if ( !ftsDlg->isVisible() ) {
     ftsDlg->show();
+  }
   else {
     ftsDlg->activateWindow();
-    if ( headwordsDlg )
+    if ( headwordsDlg ) {
       headwordsDlg->lower();
+    }
   }
 }
 
@@ -4262,10 +4378,12 @@ void MainWindow::closeFullTextSearchDialog()
 
 void MainWindow::showFTSIndexingName( QString const & name )
 {
-  if ( name.isEmpty() )
+  if ( name.isEmpty() ) {
     mainStatusBar->setBackgroundMessage( QString() );
-  else
+  }
+  else {
     mainStatusBar->setBackgroundMessage( tr( "Now indexing for full-text search: " ) + name );
+  }
 }
 
 QString MainWindow::unescapeTabHeader( QString const & header )
@@ -4278,8 +4396,9 @@ void MainWindow::addCurrentTabToFavorites()
 {
   QString folder;
   Instances::Group const * igrp = groupInstances.findGroup( cfg.lastMainGroupId );
-  if ( igrp )
+  if ( igrp ) {
     folder = igrp->favoritesFolder;
+  }
 
   QString headword = ui.tabWidget->tabText( ui.tabWidget->currentIndex() );
 
@@ -4293,8 +4412,9 @@ void MainWindow::handleAddToFavoritesButton()
 {
   QString folder;
   Instances::Group const * igrp = groupInstances.findGroup( cfg.lastMainGroupId );
-  if ( igrp )
+  if ( igrp ) {
     folder = igrp->favoritesFolder;
+  }
   QString headword = unescapeTabHeader( ui.tabWidget->tabText( ui.tabWidget->currentIndex() ) );
 
   if ( ui.favoritesPaneWidget->isHeadwordPresent( folder, headword ) ) {
@@ -4321,13 +4441,16 @@ void MainWindow::addWordToFavorites( QString const & word, unsigned groupId, boo
 {
   QString folder;
   Instances::Group const * igrp = groupInstances.findGroup( groupId );
-  if ( igrp )
+  if ( igrp ) {
     folder = igrp->favoritesFolder;
+  }
 
-  if ( !exist )
+  if ( !exist ) {
     ui.favoritesPaneWidget->addHeadword( folder, word );
-  else
+  }
+  else {
     ui.favoritesPaneWidget->removeHeadword( folder, word );
+  }
 }
 
 void MainWindow::addBookmarkToFavorite( QString const & text )
@@ -4343,8 +4466,9 @@ void MainWindow::addAllTabsToFavorites()
 {
   QString folder;
   Instances::Group const * igrp = groupInstances.findGroup( cfg.lastMainGroupId );
-  if ( igrp )
+  if ( igrp ) {
     folder = igrp->favoritesFolder;
+  }
 
   for ( int i = 0; i < ui.tabWidget->count(); i++ ) {
     QString headword = ui.tabWidget->tabText( i );
@@ -4358,8 +4482,9 @@ bool MainWindow::isWordPresentedInFavorites( QString const & word, unsigned grou
 {
   QString folder;
   Instances::Group const * igrp = groupInstances.findGroup( groupId );
-  if ( igrp )
+  if ( igrp ) {
     folder = igrp->favoritesFolder;
+  }
 
   return ui.favoritesPaneWidget->isHeadwordPresent( folder, word );
 }
@@ -4374,8 +4499,9 @@ void MainWindow::setGroupByName( QString const & name, bool main_window )
         break;
       }
     }
-    if ( i >= groupList->count() )
+    if ( i >= groupList->count() ) {
       gdWarning( "Group \"%s\" for main window is not found\n", name.toUtf8().data() );
+    }
   }
   else {
     emit setPopupGroupByName( name );

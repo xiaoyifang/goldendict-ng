@@ -15,8 +15,9 @@ const int mouseOverInterval = 300;
 CGEventRef eventCallback( CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon )
 {
 (void) proxy;
-  if( type != kCGEventMouseMoved )
+  if( type != kCGEventMouseMoved ) {
     return event;
+}
   static_cast< MacMouseOver * >( refcon )->mouseMoved();
   return event;
 }
@@ -36,8 +37,9 @@ static CGPoint carbonScreenPointFromCocoaScreenPoint( NSPoint cocoaPoint )
     CGFloat screenHeight = [foundScreen frame].size.height;
     thePoint = CGPointMake(cocoaPoint.x, screenHeight - cocoaPoint.y - 1);
   }
-  else
+  else {
     thePoint = CGPointMake(0.0, 0.0);
+}
 
   return thePoint;
 }
@@ -64,21 +66,25 @@ MacMouseOver::~MacMouseOver()
 {
   disableMouseOver();
 
-  if( tapRef )
+  if( tapRef ) {
     CFRelease( tapRef );
+}
 
-  if( loop )
+  if( loop ) {
     CFRelease( loop );
+}
 
-  if( elementSystemWide )
+  if( elementSystemWide ) {
     CFRelease( elementSystemWide );
+}
 }
 
 QString MacMouseOver::CFStringRefToQString( CFStringRef str )
 {
   int length = CFStringGetLength( str );
-  if( length == 0 )
+  if( length == 0 ) {
     return QString();
+}
 
   UniChar *chars = new UniChar[ length ];
   CFStringGetCharacters( str, CFRangeMake( 0, length ), chars );
@@ -97,38 +103,47 @@ void MacMouseOver::mouseMoved()
 void MacMouseOver::enableMouseOver()
 {
   mouseTimer.stop();
-  if( !isAXAPIEnabled() )
+  if( !isAXAPIEnabled() ) {
     return;
-  if( !tapRef )
+}
+  if( !tapRef ) {
     tapRef = CGEventTapCreate( kCGAnnotatedSessionEventTap, kCGHeadInsertEventTap,
                                kCGEventTapOptionListenOnly,
                                CGEventMaskBit( kCGEventMouseMoved ),
                                eventCallback, this );
-  if( !tapRef )
+}
+  if( !tapRef ) {
     return;
-  if( !loop )
+}
+  if( !loop ) {
     loop = CFMachPortCreateRunLoopSource( kCFAllocatorDefault, tapRef, 0 );
-  if( loop )
+}
+  if( loop ) {
     CFRunLoopAddSource( CFRunLoopGetMain(), loop, kCFRunLoopCommonModes );
+}
 }
 
 void MacMouseOver::disableMouseOver()
 {
   mouseTimer.stop();
-  if( loop )
+  if( loop ) {
     CFRunLoopRemoveSource( CFRunLoopGetMain(), loop, kCFRunLoopCommonModes );
+}
 }
 
 void MacMouseOver::timerShot()
 {
-  if( mouseMutex.tryLock( 0 ) )
+  if( mouseMutex.tryLock( 0 ) ) {
     mouseMutex.unlock();
-  else
+  } else {
     return;
-  if( !pPref )
+}
+  if( !pPref ) {
     return;
-  if( !pPref->enableScanPopupModifiers || checkModifiersPressed( pPref->scanPopupModifiers ) )
+}
+  if( !pPref->enableScanPopupModifiers || checkModifiersPressed( pPref->scanPopupModifiers ) ) {
     handlePosition();
+}
 }
 
 void MacMouseOver::handlePosition()
@@ -146,16 +161,18 @@ void MacMouseOver::handlePosition()
   AXUIElementRef elem = 0;
   AXError err = AXUIElementCopyElementAtPosition( elementSystemWide, pt.x, pt.y, &elem );
 
-  if( err != kAXErrorSuccess )
+  if( err != kAXErrorSuccess ) {
     return;
+}
 
   for( ; ; )
   {
     CFTypeRef parameter = AXValueCreate( kAXValueTypeCGPoint, &pt );
     CFTypeRef rangeValue;
     err = AXUIElementCopyParameterizedAttributeNames( elem, &names );
-    if( err != kAXErrorSuccess )
+    if( err != kAXErrorSuccess ) {
       break;
+}
 
     int numOfAttributes = CFArrayGetCount( names );
     if( CFArrayContainsValue( names, CFRangeMake( 0, numOfAttributes ), CFSTR( "AXRangeForPosition" ) ) )
@@ -164,8 +181,9 @@ void MacMouseOver::handlePosition()
       err = AXUIElementCopyParameterizedAttributeValue( elem, kAXRangeForPositionParameterizedAttribute,
                                                             parameter, ( CFTypeRef * )&rangeValue );
       CFRelease( parameter );
-      if( err != kAXErrorSuccess )
+      if( err != kAXErrorSuccess ) {
         break;
+}
 
       CFStringRef stringValue;
 
@@ -175,8 +193,9 @@ void MacMouseOver::handlePosition()
       if( b )
       {
         int fromPos = decodedRange.location - 127;
-        if( fromPos < 0 )
+        if( fromPos < 0 ) {
           fromPos = 0;
+}
         int wordPos = decodedRange.location - fromPos;  // Cursor position in result string
 
         CFRange range = CFRangeMake( fromPos, wordPos + 1 );
@@ -184,8 +203,9 @@ void MacMouseOver::handlePosition()
         err = AXUIElementCopyParameterizedAttributeValue( elem, kAXStringForRangeParameterizedAttribute,
                                                             parameter, (CFTypeRef *)&stringValue );
         CFRelease( parameter );
-        if( err != kAXErrorSuccess )
+        if( err != kAXErrorSuccess ) {
           break;
+}
 
         strToTranslate = CFStringRefToQString( stringValue );
         CFRelease( stringValue );
@@ -199,16 +219,18 @@ void MacMouseOver::handlePosition()
                                                               parameter, (CFTypeRef *)&stringValue );
           CFRelease( parameter );
 
-          if( err != kAXErrorSuccess )
+          if( err != kAXErrorSuccess ) {
             break;
+}
 
           QString s = CFStringRefToQString( stringValue );
           CFRelease( stringValue );
 
-          if( s[ 0 ].isLetterOrNumber() || s[ 0 ] == '-' )
+          if( s[ 0 ].isLetterOrNumber() || s[ 0 ] == '-' ) {
             strToTranslate += s;
-          else
+          } else {
             break;
+}
         }
 
         handleRetrievedString( strToTranslate, wordPos );
@@ -222,14 +244,16 @@ void MacMouseOver::handlePosition()
       err = AXUIElementCopyParameterizedAttributeValue( elem, CFSTR( "AXTextMarkerForPosition" ),
                                                             parameter, ( CFTypeRef * )&marker );
       CFRelease( parameter );
-      if( err != kAXErrorSuccess )
+      if( err != kAXErrorSuccess ) {
         break;
+}
 
       err = AXUIElementCopyParameterizedAttributeValue( elem, CFSTR( "AXLeftWordTextMarkerRangeForTextMarker" ),
                                                         marker, ( CFTypeRef * )&range );
       CFRelease( marker );
-      if( err != kAXErrorSuccess )
+      if( err != kAXErrorSuccess ) {
         break;
+}
 
       err = AXUIElementCopyParameterizedAttributeValue( elem, CFSTR( "AXStringForTextMarkerRange" ),
                                                         range, ( CFTypeRef * )&str );
@@ -243,17 +267,20 @@ void MacMouseOver::handlePosition()
     }
     break;
   }
-  if( elem )
+  if( elem ) {
     CFRelease( elem );
-  if( names )
+}
+  if( names ) {
     CFRelease( names );
+}
 }
 
 void MacMouseOver::handleRetrievedString( QString & wordSeq, int wordSeqPos )
 {
 
-  if( wordSeq.isEmpty() )
+  if( wordSeq.isEmpty() ) {
     return;
+}
 
   // locate the word inside the sequence
 
@@ -273,15 +300,19 @@ void MacMouseOver::handleRetrievedString( QString & wordSeq, int wordSeqPos )
 
     int begin = wordSeqPos;
 
-    for( ; begin; --begin )
-      if ( !wordSeq[ begin - 1 ].isLetterOrNumber() )
+    for( ; begin; --begin ) {
+      if ( !wordSeq[ begin - 1 ].isLetterOrNumber() ) {
         break;
+}
+}
 
     int end = wordSeqPos;
 
-    while( ++end < wordSeq.size() )
-      if ( !wordSeq[ end ].isLetterOrNumber() )
+    while( ++end < wordSeq.size() ) {
+      if ( !wordSeq[ end ].isLetterOrNumber() ) {
         break;
+}
+}
 
     if ( end - begin == 1 )
     {
@@ -297,16 +328,19 @@ void MacMouseOver::handleRetrievedString( QString & wordSeq, int wordSeqPos )
 
     int begin = wordSeqPos;
 
-    for( ; begin; --begin )
-      if ( !wordSeq[ begin - 1 ].isLetterOrNumber() )
+    for( ; begin; --begin ) {
+      if ( !wordSeq[ begin - 1 ].isLetterOrNumber() ) {
         break;
+}
+}
 
     int end = wordSeqPos;
 
     while( ++end < wordSeq.size() )
     {
-      if ( !wordSeq[ end ].isLetterOrNumber() )
+      if ( !wordSeq[ end ].isLetterOrNumber() ) {
         break;
+}
     }
     word = wordSeq.mid( begin, end - begin );
   }
@@ -330,8 +364,9 @@ void MacMouseOver::handleRetrievedString( QString & wordSeq, int wordSeqPos )
 
 bool MacMouseOver::isAXAPIEnabled()
 {
-  if( NSFoundationVersionNumber >= 1000 )  // MacOS 10.9+
+  if( NSFoundationVersionNumber >= 1000 ) {  // MacOS 10.9+
     return AXIsProcessTrusted();
+}
 
   return AXAPIEnabled();
 }

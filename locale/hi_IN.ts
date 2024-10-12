@@ -3045,18 +3045,18 @@ the application.</source>
       <translation>मोनोस्पेस फ़ॉन्ट</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>&amp;स्कैन पॉपअप</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
       <translation>यह चुनता है कि स्कैन पॉपअप पद्धति औत्सर्गिक रूप से चालू है या नहीं। अगर जाँचा हुआ हो,
 तो प्रोग्राम हमेशा स्कैन पॉपअप सक्रिय के साथ शुरू होगा।
 </translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
+      <source>Start with popup turned on</source>
       <translation>स्कैन पॉपअप चालू के साथ शुरू करें</translation>
     </message>
     <message>
@@ -3173,7 +3173,7 @@ in the pressed state when the word selection changes.</source>
       <translation>मुख्य खिडकी में शब्दों का स्वतः उच्चारण करें</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
+      <source>Auto-pronounce words in popup</source>
       <translation>स्कैन पॉपअप में शब्दों का स्वतः उच्चारण करें</translation>
     </message>
     <message>
@@ -3695,7 +3695,7 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>शब्द को मुख्य विंडो में अनुवादित करने के लिए बाध्य करें</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>स्कैन पॉपअप टॉगल करें.</translation>
     </message>
     <message>

@@ -41,7 +41,7 @@ using gd::wstring;
 
 namespace {
 
-#pragma pack( push, 1 )
+  #pragma pack( push, 1 )
 
 enum {
   Signature            = 0x58575045, // EPWX on little-endian, XWPE on big-endian
@@ -247,7 +247,6 @@ EpwingDictionary::EpwingDictionary( string const & id,
   // Full-text search parameters
 
   ftsIdxName = indexFile + Dictionary::getFtsSuffix();
-
 }
 
 EpwingDictionary::~EpwingDictionary()

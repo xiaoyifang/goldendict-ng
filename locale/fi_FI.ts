@@ -3053,17 +3053,17 @@ sovellus.</translation>
       <translation>Monospace fontti</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>&amp;Kartoita Ponnahdusikkuna</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
       <translation>Valitsee onko skannaus ponnahdusikkuna oletusarvoisesti päällä vai ei. Jos valittuna,
 ohjelma alkaisi aina skannauksen ponnahdusikkunan ollessa aktiivinen.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
+      <source>Start with popup turned on</source>
       <translation>Aloita skannaus ponnahdusikkuna otettu käyttöön</translation>
     </message>
     <message>
@@ -3181,7 +3181,7 @@ painettuna tilassa, kun sana valinta muuttuu.</translation>
       <translation>Ääntää sanat automaattisesti pääikkunassa</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
+      <source>Auto-pronounce words in popup</source>
       <translation>Ääntää automaattisesti sanoja skannauksessa</translation>
     </message>
     <message>
@@ -3711,7 +3711,7 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <translation>Pakota sana käännettäväksi pääikkunassa</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>Vaihda skannauksen ponnahdusikkuna.</translation>
     </message>
     <message>

@@ -3057,16 +3057,16 @@ the application.</source>
       <translation>Моноширинный шрифт</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>&amp;Всплывающее окно</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
       <translation>Включать или нет режим всплывающего окна при запуске программы.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
+      <source>Start with popup turned on</source>
       <translation>Включить режим всплывающего окна при запуске</translation>
     </message>
     <message>
@@ -3184,7 +3184,7 @@ in the pressed state when the word selection changes.</source>
       <translation>Автоматически произносить слова в главном окне</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
+      <source>Auto-pronounce words in popup</source>
       <translation>Автоматически произносить слова во всплывающем окне</translation>
     </message>
     <message>
@@ -3716,7 +3716,7 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Принудительно перевести слово в главном окне</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>Переключить всплывающее окно сканирования.</translation>
     </message>
     <message>

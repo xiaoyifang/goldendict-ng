@@ -3053,17 +3053,17 @@ való kilépés helyett.</translation>
       <translation>Fix szélességű betűkészlet</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>Fordító felugró&amp;ablak</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
       <translation>Megadja, hogy a fordító felugróablak a program indításakor be vagy ki
 legyen kapcsolva.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
+      <source>Start with popup turned on</source>
       <translation>Indulás bekapcsolt felugróablakkal</translation>
     </message>
     <message>
@@ -3181,7 +3181,7 @@ kijelölésekor, ha a kiválasztott billentyűk mindegyike le van nyomva.</trans
       <translation>Szavak automatikus kimondása a főablakban</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
+      <source>Auto-pronounce words in popup</source>
       <translation>Szavak automatikus kimondása a felugróablakban</translation>
     </message>
     <message>
@@ -3710,7 +3710,7 @@ is felhasználja további szócikkek felfedezéséhez</translation>
       <translation>A lefordított szó kényszerített beküldése a főablakba</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>Fordító felugróablak ki- vagy bekapcsolása.</translation>
     </message>
     <message>

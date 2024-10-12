@@ -240,8 +240,9 @@ void Sources::on_removeMediaWiki_clicked()
             tr( "Remove site <b>%1</b> from the list?" ).arg( mediawikisModel.getCurrentWikis()[ current.row() ].name ),
             QMessageBox::Ok,
             QMessageBox::Cancel )
-         == QMessageBox::Ok )
+         == QMessageBox::Ok ) {
     mediawikisModel.removeWiki( current.row() );
+  }
 }
 
 void Sources::on_addWebSite_clicked()
@@ -265,8 +266,9 @@ void Sources::on_removeWebSite_clicked()
                                    .arg( webSitesModel.getCurrentWebSites()[ current.row() ].name ),
                                  QMessageBox::Ok,
                                  QMessageBox::Cancel )
-         == QMessageBox::Ok )
+         == QMessageBox::Ok ) {
     webSitesModel.removeSite( current.row() );
+  }
 }
 
 void Sources::on_addDictServer_clicked()
@@ -290,8 +292,9 @@ void Sources::on_removeDictServer_clicked()
                                    .arg( dictServersModel.getCurrentDictServers()[ current.row() ].name ),
                                  QMessageBox::Ok,
                                  QMessageBox::Cancel )
-         == QMessageBox::Ok )
+         == QMessageBox::Ok ) {
     dictServersModel.removeServer( current.row() );
+  }
 }
 
 void Sources::on_addProgram_clicked()
@@ -315,8 +318,9 @@ void Sources::on_removeProgram_clicked()
                                    .arg( programsModel.getCurrentPrograms()[ current.row() ].name ),
                                  QMessageBox::Ok,
                                  QMessageBox::Cancel )
-         == QMessageBox::Ok )
+         == QMessageBox::Ok ) {
     programsModel.removeProgram( current.row() );
+  }
 }
 
 #ifndef NO_TTS_SUPPORT
@@ -430,10 +434,12 @@ Qt::ItemFlags MediaWikisModel::flags( QModelIndex const & index ) const
   Qt::ItemFlags result = QAbstractItemModel::flags( index );
 
   if ( index.isValid() ) {
-    if ( !index.column() )
+    if ( !index.column() ) {
       result |= Qt::ItemIsUserCheckable;
-    else
+    }
+    else {
       result |= Qt::ItemIsEditable;
+    }
   }
 
   return result;
@@ -441,23 +447,27 @@ Qt::ItemFlags MediaWikisModel::flags( QModelIndex const & index ) const
 
 int MediaWikisModel::rowCount( QModelIndex const & parent ) const
 {
-  if ( parent.isValid() )
+  if ( parent.isValid() ) {
     return 0;
-  else
+  }
+  else {
     return mediawikis.size();
+  }
 }
 
 int MediaWikisModel::columnCount( QModelIndex const & parent ) const
 {
-  if ( parent.isValid() )
+  if ( parent.isValid() ) {
     return 0;
-  else
+  }
+  else {
     return 5;
+  }
 }
 
 QVariant MediaWikisModel::headerData( int section, Qt::Orientation /*orientation*/, int role ) const
 {
-  if ( role == Qt::DisplayRole )
+  if ( role == Qt::DisplayRole ) {
     switch ( section ) {
       case 0:
         return tr( "Enabled" );
@@ -472,14 +482,16 @@ QVariant MediaWikisModel::headerData( int section, Qt::Orientation /*orientation
       default:
         return QVariant();
     }
+  }
 
   return QVariant();
 }
 
 QVariant MediaWikisModel::data( QModelIndex const & index, int role ) const
 {
-  if ( index.row() >= mediawikis.size() )
+  if ( index.row() >= mediawikis.size() ) {
     return QVariant();
+  }
 
   if ( role == Qt::DisplayRole || role == Qt::EditRole ) {
     switch ( index.column() ) {
@@ -496,16 +508,18 @@ QVariant MediaWikisModel::data( QModelIndex const & index, int role ) const
     }
   }
 
-  if ( role == Qt::CheckStateRole && !index.column() )
+  if ( role == Qt::CheckStateRole && !index.column() ) {
     return mediawikis[ index.row() ].enabled ? Qt::Checked : Qt::Unchecked;
+  }
 
   return QVariant();
 }
 
 bool MediaWikisModel::setData( QModelIndex const & index, const QVariant & value, int role )
 {
-  if ( index.row() >= mediawikis.size() )
+  if ( index.row() >= mediawikis.size() ) {
     return false;
+  }
 
   if ( role == Qt::CheckStateRole && !index.column() ) {
     //GD_DPRINTF( "type = %d\n", (int)value.type() );
@@ -518,7 +532,7 @@ bool MediaWikisModel::setData( QModelIndex const & index, const QVariant & value
     return true;
   }
 
-  if ( role == Qt::DisplayRole || role == Qt::EditRole )
+  if ( role == Qt::DisplayRole || role == Qt::EditRole ) {
     switch ( index.column() ) {
       case 1:
         mediawikis[ index.row() ].name = value.toString();
@@ -539,6 +553,7 @@ bool MediaWikisModel::setData( QModelIndex const & index, const QVariant & value
       default:
         return false;
     }
+  }
 
   return false;
 }
@@ -590,10 +605,12 @@ Qt::ItemFlags WebSitesModel::flags( QModelIndex const & index ) const
   Qt::ItemFlags result = QAbstractItemModel::flags( index );
 
   if ( index.isValid() ) {
-    if ( index.column() <= 1 )
+    if ( index.column() <= 1 ) {
       result |= Qt::ItemIsUserCheckable;
-    else
+    }
+    else {
       result |= Qt::ItemIsEditable;
+    }
   }
 
   return result;
@@ -601,30 +618,35 @@ Qt::ItemFlags WebSitesModel::flags( QModelIndex const & index ) const
 
 int WebSitesModel::rowCount( QModelIndex const & parent ) const
 {
-  if ( parent.isValid() )
+  if ( parent.isValid() ) {
     return 0;
-  else
+  }
+  else {
     return webSites.size();
+  }
 }
 
 int WebSitesModel::columnCount( QModelIndex const & parent ) const
 {
-  if ( parent.isValid() )
+  if ( parent.isValid() ) {
     return 0;
-  else
+  }
+  else {
     return 5;
+  }
 }
 
 QVariant WebSitesModel::headerData( int section, Qt::Orientation /*orientation*/, int role ) const
 {
   if ( role == Qt::ToolTipRole ) {
-    if ( section == 1 )
+    if ( section == 1 ) {
       return tr( "Insert article as link inside <iframe> tag" );
+    }
 
     return QVariant();
   }
 
-  if ( role == Qt::DisplayRole )
+  if ( role == Qt::DisplayRole ) {
     switch ( section ) {
       case 0:
         return tr( "Enabled" );
@@ -639,18 +661,21 @@ QVariant WebSitesModel::headerData( int section, Qt::Orientation /*orientation*/
       default:
         return QVariant();
     }
+  }
 
   return QVariant();
 }
 
 QVariant WebSitesModel::data( QModelIndex const & index, int role ) const
 {
-  if ( index.row() >= webSites.size() )
+  if ( index.row() >= webSites.size() ) {
     return QVariant();
+  }
 
   if ( role == Qt::ToolTipRole ) {
-    if ( index.column() == 1 )
+    if ( index.column() == 1 ) {
       return tr( "Insert article as link inside <iframe> tag" );
+    }
 
     return QVariant();
   }
@@ -668,19 +693,22 @@ QVariant WebSitesModel::data( QModelIndex const & index, int role ) const
     }
   }
 
-  if ( role == Qt::CheckStateRole && !index.column() )
+  if ( role == Qt::CheckStateRole && !index.column() ) {
     return webSites[ index.row() ].enabled ? Qt::Checked : Qt::Unchecked;
+  }
 
-  if ( role == Qt::CheckStateRole && index.column() == 1 )
+  if ( role == Qt::CheckStateRole && index.column() == 1 ) {
     return webSites[ index.row() ].inside_iframe ? Qt::Checked : Qt::Unchecked;
+  }
 
   return QVariant();
 }
 
 bool WebSitesModel::setData( QModelIndex const & index, const QVariant & value, int role )
 {
-  if ( index.row() >= webSites.size() )
+  if ( index.row() >= webSites.size() ) {
     return false;
+  }
 
   if ( role == Qt::CheckStateRole && !index.column() ) {
     //GD_DPRINTF( "type = %d\n", (int)value.type() );
@@ -700,7 +728,7 @@ bool WebSitesModel::setData( QModelIndex const & index, const QVariant & value, 
     return true;
   }
 
-  if ( role == Qt::DisplayRole || role == Qt::EditRole )
+  if ( role == Qt::DisplayRole || role == Qt::EditRole ) {
     switch ( index.column() ) {
       case 2:
         webSites[ index.row() ].name = value.toString();
@@ -717,6 +745,7 @@ bool WebSitesModel::setData( QModelIndex const & index, const QVariant & value, 
       default:
         return false;
     }
+  }
 
   return false;
 }
@@ -765,10 +794,12 @@ Qt::ItemFlags DictServersModel::flags( QModelIndex const & index ) const
   Qt::ItemFlags result = QAbstractItemModel::flags( index );
 
   if ( index.isValid() ) {
-    if ( !index.column() )
+    if ( !index.column() ) {
       result |= Qt::ItemIsUserCheckable;
-    else
+    }
+    else {
       result |= Qt::ItemIsEditable;
+    }
   }
 
   return result;
@@ -776,23 +807,27 @@ Qt::ItemFlags DictServersModel::flags( QModelIndex const & index ) const
 
 int DictServersModel::rowCount( QModelIndex const & parent ) const
 {
-  if ( parent.isValid() )
+  if ( parent.isValid() ) {
     return 0;
-  else
+  }
+  else {
     return dictServers.size();
+  }
 }
 
 int DictServersModel::columnCount( QModelIndex const & parent ) const
 {
-  if ( parent.isValid() )
+  if ( parent.isValid() ) {
     return 0;
-  else
+  }
+  else {
     return 6;
+  }
 }
 
 QVariant DictServersModel::headerData( int section, Qt::Orientation /*orientation*/, int role ) const
 {
-  if ( role == Qt::DisplayRole )
+  if ( role == Qt::DisplayRole ) {
     switch ( section ) {
       case 0:
         return tr( "Enabled" );
@@ -809,14 +844,16 @@ QVariant DictServersModel::headerData( int section, Qt::Orientation /*orientatio
       default:
         return QVariant();
     }
+  }
 
   return QVariant();
 }
 
 QVariant DictServersModel::data( QModelIndex const & index, int role ) const
 {
-  if ( index.row() >= dictServers.size() )
+  if ( index.row() >= dictServers.size() ) {
     return QVariant();
+  }
 
   if ( role == Qt::DisplayRole || role == Qt::EditRole ) {
     switch ( index.column() ) {
@@ -835,22 +872,26 @@ QVariant DictServersModel::data( QModelIndex const & index, int role ) const
     }
   }
 
-  if ( role == Qt::ToolTipRole && index.column() == 3 )
+  if ( role == Qt::ToolTipRole && index.column() == 3 ) {
     return tr( "Comma-delimited list of databases\n(empty string or \"*\" matches all databases)" );
+  }
 
-  if ( role == Qt::ToolTipRole && index.column() == 4 )
+  if ( role == Qt::ToolTipRole && index.column() == 4 ) {
     return tr( "Comma-delimited list of search strategies\n(empty string mean \"prefix\" strategy)" );
+  }
 
-  if ( role == Qt::CheckStateRole && !index.column() )
+  if ( role == Qt::CheckStateRole && !index.column() ) {
     return dictServers[ index.row() ].enabled ? Qt::Checked : Qt::Unchecked;
+  }
 
   return QVariant();
 }
 
 bool DictServersModel::setData( QModelIndex const & index, const QVariant & value, int role )
 {
-  if ( index.row() >= dictServers.size() )
+  if ( index.row() >= dictServers.size() ) {
     return false;
+  }
 
   if ( role == Qt::CheckStateRole && !index.column() ) {
     // XXX it seems to be always passing Int( 2 ) as a value, so we just toggle
@@ -860,7 +901,7 @@ bool DictServersModel::setData( QModelIndex const & index, const QVariant & valu
     return true;
   }
 
-  if ( role == Qt::DisplayRole || role == Qt::EditRole )
+  if ( role == Qt::DisplayRole || role == Qt::EditRole ) {
     switch ( index.column() ) {
       case 1:
         dictServers[ index.row() ].name = value.toString();
@@ -885,6 +926,7 @@ bool DictServersModel::setData( QModelIndex const & index, const QVariant & valu
       default:
         return false;
     }
+  }
 
   return false;
 }
@@ -934,10 +976,12 @@ Qt::ItemFlags ProgramsModel::flags( QModelIndex const & index ) const
   Qt::ItemFlags result = QAbstractItemModel::flags( index );
 
   if ( index.isValid() ) {
-    if ( !index.column() )
+    if ( !index.column() ) {
       result |= Qt::ItemIsUserCheckable;
-    else
+    }
+    else {
       result |= Qt::ItemIsEditable;
+    }
   }
 
   return result;
@@ -945,23 +989,27 @@ Qt::ItemFlags ProgramsModel::flags( QModelIndex const & index ) const
 
 int ProgramsModel::rowCount( QModelIndex const & parent ) const
 {
-  if ( parent.isValid() )
+  if ( parent.isValid() ) {
     return 0;
-  else
+  }
+  else {
     return programs.size();
+  }
 }
 
 int ProgramsModel::columnCount( QModelIndex const & parent ) const
 {
-  if ( parent.isValid() )
+  if ( parent.isValid() ) {
     return 0;
-  else
+  }
+  else {
     return 5;
+  }
 }
 
 QVariant ProgramsModel::headerData( int section, Qt::Orientation /*orientation*/, int role ) const
 {
-  if ( role == Qt::DisplayRole )
+  if ( role == Qt::DisplayRole ) {
     switch ( section ) {
       case 0:
         return tr( "Enabled" );
@@ -976,22 +1024,26 @@ QVariant ProgramsModel::headerData( int section, Qt::Orientation /*orientation*/
       default:
         return QVariant();
     }
+  }
 
   return QVariant();
 }
 
 QVariant ProgramsModel::data( QModelIndex const & index, int role ) const
 {
-  if ( index.row() >= programs.size() )
+  if ( index.row() >= programs.size() ) {
     return QVariant();
+  }
 
   if ( role == Qt::DisplayRole || role == Qt::EditRole ) {
     switch ( index.column() ) {
       case 1:
-        if ( role == Qt::DisplayRole )
+        if ( role == Qt::DisplayRole ) {
           return ProgramTypeEditor::getNameForType( programs[ index.row() ].type );
-        else
+        }
+        else {
           return QVariant( (int)programs[ index.row() ].type );
+        }
       case 2:
         return programs[ index.row() ].name;
       case 3:
@@ -1003,16 +1055,18 @@ QVariant ProgramsModel::data( QModelIndex const & index, int role ) const
     }
   }
 
-  if ( role == Qt::CheckStateRole && !index.column() )
+  if ( role == Qt::CheckStateRole && !index.column() ) {
     return programs[ index.row() ].enabled ? Qt::Checked : Qt::Unchecked;
+  }
 
   return QVariant();
 }
 
 bool ProgramsModel::setData( QModelIndex const & index, const QVariant & value, int role )
 {
-  if ( index.row() >= programs.size() )
+  if ( index.row() >= programs.size() ) {
     return false;
+  }
 
   if ( role == Qt::CheckStateRole && !index.column() ) {
     programs[ index.row() ].enabled = !programs[ index.row() ].enabled;
@@ -1021,7 +1075,7 @@ bool ProgramsModel::setData( QModelIndex const & index, const QVariant & value, 
     return true;
   }
 
-  if ( role == Qt::DisplayRole || role == Qt::EditRole )
+  if ( role == Qt::DisplayRole || role == Qt::EditRole ) {
     switch ( index.column() ) {
       case 1:
         programs[ index.row() ].type = Config::Program::Type( value.toInt() );
@@ -1042,6 +1096,7 @@ bool ProgramsModel::setData( QModelIndex const & index, const QVariant & value, 
       default:
         return false;
     }
+  }
 
   return false;
 }
@@ -1065,8 +1120,9 @@ QString ProgramTypeEditor::getNameForType( int v )
 ProgramTypeEditor::ProgramTypeEditor( QWidget * widget ):
   QComboBox( widget )
 {
-  for ( int x = 0; x < Config::Program::MaxTypeValue; ++x )
+  for ( int x = 0; x < Config::Program::MaxTypeValue; ++x ) {
     addItem( getNameForType( x ) );
+  }
 }
 
 int ProgramTypeEditor::getType() const
@@ -1115,31 +1171,36 @@ Qt::ItemFlags PathsModel::flags( QModelIndex const & index ) const
 {
   Qt::ItemFlags result = QAbstractItemModel::flags( index );
 
-  if ( index.isValid() && index.column() == 1 )
+  if ( index.isValid() && index.column() == 1 ) {
     result |= Qt::ItemIsUserCheckable;
+  }
 
   return result;
 }
 
 int PathsModel::rowCount( QModelIndex const & parent ) const
 {
-  if ( parent.isValid() )
+  if ( parent.isValid() ) {
     return 0;
-  else
+  }
+  else {
     return paths.size();
+  }
 }
 
 int PathsModel::columnCount( QModelIndex const & parent ) const
 {
-  if ( parent.isValid() )
+  if ( parent.isValid() ) {
     return 0;
-  else
+  }
+  else {
     return 2;
+  }
 }
 
 QVariant PathsModel::headerData( int section, Qt::Orientation /*orientation*/, int role ) const
 {
-  if ( role == Qt::DisplayRole )
+  if ( role == Qt::DisplayRole ) {
     switch ( section ) {
       case 0:
         return tr( "Path" );
@@ -1148,28 +1209,33 @@ QVariant PathsModel::headerData( int section, Qt::Orientation /*orientation*/, i
       default:
         return QVariant();
     }
+  }
 
   return QVariant();
 }
 
 QVariant PathsModel::data( QModelIndex const & index, int role ) const
 {
-  if ( index.row() >= paths.size() )
+  if ( index.row() >= paths.size() ) {
     return QVariant();
+  }
 
-  if ( ( role == Qt::DisplayRole || role == Qt::EditRole ) && !index.column() )
+  if ( ( role == Qt::DisplayRole || role == Qt::EditRole ) && !index.column() ) {
     return paths[ index.row() ].path;
+  }
 
-  if ( role == Qt::CheckStateRole && index.column() == 1 )
+  if ( role == Qt::CheckStateRole && index.column() == 1 ) {
     return paths[ index.row() ].recursive ? Qt::Checked : Qt::Unchecked;
+  }
 
   return QVariant();
 }
 
 bool PathsModel::setData( QModelIndex const & index, const QVariant & /*value*/, int role )
 {
-  if ( index.row() >= paths.size() )
+  if ( index.row() >= paths.size() ) {
     return false;
+  }
 
   if ( role == Qt::CheckStateRole && index.column() == 1 ) {
     paths[ index.row() ].recursive = !paths[ index.row() ].recursive;
@@ -1218,31 +1284,36 @@ Qt::ItemFlags SoundDirsModel::flags( QModelIndex const & index ) const
 {
   Qt::ItemFlags result = QAbstractItemModel::flags( index );
 
-  if ( index.isValid() && index.column() < 3 )
+  if ( index.isValid() && index.column() < 3 ) {
     result |= Qt::ItemIsEditable;
+  }
 
   return result;
 }
 
 int SoundDirsModel::rowCount( QModelIndex const & parent ) const
 {
-  if ( parent.isValid() )
+  if ( parent.isValid() ) {
     return 0;
-  else
+  }
+  else {
     return soundDirs.size();
+  }
 }
 
 int SoundDirsModel::columnCount( QModelIndex const & parent ) const
 {
-  if ( parent.isValid() )
+  if ( parent.isValid() ) {
     return 0;
-  else
+  }
+  else {
     return 3;
+  }
 }
 
 QVariant SoundDirsModel::headerData( int section, Qt::Orientation /*orientation*/, int role ) const
 {
-  if ( role == Qt::DisplayRole )
+  if ( role == Qt::DisplayRole ) {
     switch ( section ) {
       case 0:
         return tr( "Path" );
@@ -1253,39 +1324,48 @@ QVariant SoundDirsModel::headerData( int section, Qt::Orientation /*orientation*
       default:
         return QVariant();
     }
+  }
 
   return QVariant();
 }
 
 QVariant SoundDirsModel::data( QModelIndex const & index, int role ) const
 {
-  if ( index.row() >= soundDirs.size() )
+  if ( index.row() >= soundDirs.size() ) {
     return QVariant();
+  }
 
-  if ( ( role == Qt::DisplayRole || role == Qt::EditRole ) && !index.column() )
+  if ( ( role == Qt::DisplayRole || role == Qt::EditRole ) && !index.column() ) {
     return soundDirs[ index.row() ].path;
+  }
 
-  if ( ( role == Qt::DisplayRole || role == Qt::EditRole ) && index.column() == 1 )
+  if ( ( role == Qt::DisplayRole || role == Qt::EditRole ) && index.column() == 1 ) {
     return soundDirs[ index.row() ].name;
+  }
 
-  if ( ( role == Qt::DisplayRole || role == Qt::EditRole ) && index.column() == 2 )
+  if ( ( role == Qt::DisplayRole || role == Qt::EditRole ) && index.column() == 2 ) {
     return soundDirs[ index.row() ].iconFilename;
+  }
 
   return QVariant();
 }
 
 bool SoundDirsModel::setData( QModelIndex const & index, const QVariant & value, int role )
 {
-  if ( index.row() >= soundDirs.size() )
+  if ( index.row() >= soundDirs.size() ) {
     return false;
+  }
 
   if ( ( role == Qt::DisplayRole || role == Qt::EditRole ) && index.column() < 3 ) {
-    if ( !index.column() )
+    if ( !index.column() ) {
       soundDirs[ index.row() ].path = value.toString();
-    else if ( index.column() == 1 )
+    }
+    else if ( index.column() == 1 ) {
       soundDirs[ index.row() ].name = value.toString();
-    else
+    }
+    else {
       soundDirs[ index.row() ].iconFilename = value.toString();
+    }
 
     dataChanged( index, index );
     return true;
@@ -1326,8 +1406,9 @@ Qt::ItemFlags HunspellDictsModel::flags( QModelIndex const & index ) const
   Qt::ItemFlags result = QAbstractItemModel::flags( index );
 
   if ( index.isValid() ) {
-    if ( !index.column() )
+    if ( !index.column() ) {
       result |= Qt::ItemIsUserCheckable;
+    }
   }
 
   return result;
@@ -1335,23 +1416,27 @@ Qt::ItemFlags HunspellDictsModel::flags( QModelIndex const & index ) const
 
 int HunspellDictsModel::rowCount( QModelIndex const & parent ) const
 {
-  if ( parent.isValid() )
+  if ( parent.isValid() ) {
     return 0;
-  else
+  }
+  else {
     return dataFiles.size();
+  }
 }
 
 int HunspellDictsModel::columnCount( QModelIndex const & parent ) const
 {
-  if ( parent.isValid() )
+  if ( parent.isValid() ) {
     return 0;
-  else
+  }
+  else {
     return 2;
+  }
 }
 
 QVariant HunspellDictsModel::headerData( int section, Qt::Orientation /*orientation*/, int role ) const
 {
-  if ( role == Qt::DisplayRole )
+  if ( role == Qt::DisplayRole ) {
     switch ( section ) {
       case 0:
         return tr( "Enabled" );
@@ -1360,22 +1445,26 @@ QVariant HunspellDictsModel::headerData( int section, Qt::Orientation /*orientat
       default:
         return QVariant();
     }
+  }
 
   return QVariant();
 }
 
 QVariant HunspellDictsModel::data( QModelIndex const & index, int role ) const
 {
-  if ( (unsigned)index.row() >= dataFiles.size() )
+  if ( (unsigned)index.row() >= dataFiles.size() ) {
     return QVariant();
+  }
 
-  if ( role == Qt::DisplayRole && index.column() == 1 )
+  if ( role == Qt::DisplayRole && index.column() == 1 ) {
     return dataFiles[ index.row() ].dictName;
+  }
 
   if ( role == Qt::CheckStateRole && !index.column() ) {
     for ( unsigned x = enabledDictionaries.size(); x--; ) {
-      if ( enabledDictionaries[ x ] == dataFiles[ index.row() ].dictId )
+      if ( enabledDictionaries[ x ] == dataFiles[ index.row() ].dictId ) {
         return Qt::Checked;
+      }
     }
 
     return Qt::Unchecked;
@@ -1386,8 +1475,9 @@ QVariant HunspellDictsModel::data( QModelIndex const & index, int role ) const
 
 bool HunspellDictsModel::setData( QModelIndex const & index, const QVariant & /*value*/, int role )
 {
-  if ( (unsigned)index.row() >= dataFiles.size() )
+  if ( (unsigned)index.row() >= dataFiles.size() ) {
     return false;
+  }
 
   if ( role == Qt::CheckStateRole && !index.column() ) {
     for ( unsigned x = enabledDictionaries.size(); x--; ) {

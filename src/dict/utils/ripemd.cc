@@ -116,8 +116,9 @@ void RIPEMD128::transform( const uchar buffer[ 64 ] )
   c = g = state[ 2 ];
   d = h = state[ 3 ];
 
-  for ( n = 0; n < 16; n++ )
+  for ( n = 0; n < 16; n++ ) {
     block[ n ] = qFromLittleEndian< quint32 >( buffer + 4 * n );
+  }
   n = 0;
 
   R128_0;
@@ -156,8 +157,9 @@ void RIPEMD128::update( const uchar * data, size_t len )
   if ( ( j + len ) > 63 ) {
     memcpy( &buffer[ j ], data, ( i = 64 - j ) );
     transform( buffer );
-    for ( ; i + 63 < len; i += 64 )
+    for ( ; i + 63 < len; i += 64 ) {
       transform( &data[ i ] );
+    }
     j = 0;
   }
   else {
@@ -170,9 +172,11 @@ void RIPEMD128::digest( uchar * digest )
 {
   quint64 finalcount = qFromLittleEndian( count << 3 );
   update( (const uchar *)"\200", 1 );
-  while ( ( count & 63 ) != 56 )
+  while ( ( count & 63 ) != 56 ) {
     update( (const uchar *)"", 1 );
+  }
   update( (uchar *)&finalcount, 8 ); /* Should cause a transform() */
-  for ( int i = 0; i < 4; i++ )
+  for ( int i = 0; i < 4; i++ ) {
     qToLittleEndian( state[ i ], digest + i * 4 );
+  }
 }

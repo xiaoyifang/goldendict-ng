@@ -3053,18 +3053,18 @@ the application.</translation>
       <translation type="unfinished">Monospace Font</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
-      <translation type="unfinished">&amp;Scan Popup</translation>
+      <source>&amp;Popup</source>
+      <translation type="unfinished">&amp;Popup</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
-      <translation type="unfinished">Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</translation>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
+      <translation type="unfinished">Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
-      <translation type="unfinished">Start with scan popup turned on</translation>
+      <source>Start with popup turned on</source>
+      <translation type="unfinished">Start with popup turned on</translation>
     </message>
     <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
@@ -3181,8 +3181,8 @@ in the pressed state when the word selection changes.</translation>
       <translation type="unfinished">Auto-pronounce words in main window</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
-      <translation type="unfinished">Auto-pronounce words in scan popup</translation>
+      <source>Auto-pronounce words in popup</source>
+      <translation type="unfinished">Auto-pronounce words in popup</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3711,8 +3711,8 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <translation type="unfinished">Force the word to be translated in the mainwindow</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
-      <translation type="unfinished">Toggle scan popup.</translation>
+      <source>Toggle popup.</source>
+      <translation type="unfinished">Toggle popup.</translation>
     </message>
     <message>
       <source>Print version and diagnosis info.</source>

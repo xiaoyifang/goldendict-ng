@@ -51,8 +51,9 @@ wstring apply( wstring const & in, bool preserveWildcards )
 
   wchar buf[ foldCaseMaxOut ];
 
-  for ( size_t left = withoutDiacritics.size(); left--; )
+  for ( size_t left = withoutDiacritics.size(); left--; ) {
     caseFolded.append( buf, foldCase( *nextChar++, buf ) );
+  }
 
   return caseFolded;
 }
@@ -65,8 +66,9 @@ wstring applySimpleCaseOnly( wstring const & in )
 
   out.reserve( in.size() );
 
-  for ( size_t left = in.size(); left--; )
+  for ( size_t left = in.size(); left--; ) {
     out.push_back( foldCaseSimple( *nextChar++ ) );
+  }
 
   return out;
 }
@@ -93,8 +95,9 @@ wstring applyFullCaseOnly( wstring const & in )
 
   wchar buf[ foldCaseMaxOut ];
 
-  for ( size_t left = in.size(); left--; )
+  for ( size_t left = in.size(); left--; ) {
     caseFolded.append( buf, foldCase( *nextChar++, buf ) );
+  }
 
   return caseFolded;
 }
@@ -113,9 +116,11 @@ wstring applyPunctOnly( wstring const & in )
 
   out.reserve( in.size() );
 
-  for ( size_t left = in.size(); left--; ++nextChar )
-    if ( !isPunct( *nextChar ) )
+  for ( size_t left = in.size(); left--; ++nextChar ) {
+    if ( !isPunct( *nextChar ) ) {
       out.push_back( *nextChar );
+    }
+  }
 
   return out;
 }
@@ -123,9 +128,11 @@ wstring applyPunctOnly( wstring const & in )
 QString applyPunctOnly( QString const & in )
 {
   QString out;
-  for ( auto c : in )
-    if ( !c.isPunct() )
+  for ( auto c : in ) {
+    if ( !c.isPunct() ) {
       out.push_back( c );
+    }
+  }
 
   return out;
 }
@@ -138,9 +145,11 @@ wstring applyWhitespaceOnly( wstring const & in )
 
   out.reserve( in.size() );
 
-  for ( size_t left = in.size(); left--; ++nextChar )
-    if ( !isWhitespace( *nextChar ) )
+  for ( size_t left = in.size(); left--; ++nextChar ) {
+    if ( !isWhitespace( *nextChar ) ) {
       out.push_back( *nextChar );
+    }
+  }
 
   return out;
 }
@@ -154,8 +163,9 @@ wstring applyWhitespaceAndPunctOnly( wstring const & in )
   out.reserve( in.size() );
 
   for ( size_t left = in.size(); left--; ++nextChar ) {
-    if ( !isWhitespaceOrPunct( *nextChar ) )
+    if ( !isWhitespaceOrPunct( *nextChar ) ) {
       out.push_back( *nextChar );
+    }
   }
 
   return out;
@@ -189,8 +199,9 @@ wstring trimWhitespaceOrPunct( wstring const & in )
   }
 
   // Skip any trailing whitespace
-  while ( wordSize && Folding::isWhitespaceOrPunct( wordBegin[ wordSize - 1 ] ) )
+  while ( wordSize && Folding::isWhitespaceOrPunct( wordBegin[ wordSize - 1 ] ) ) {
     --wordSize;
+  }
 
   return wstring( wordBegin, wordSize );
 }
@@ -218,8 +229,9 @@ QString trimWhitespaceOrPunct( QString const & in )
 
 wstring trimWhitespace( wstring const & in )
 {
-  if ( in.empty() )
+  if ( in.empty() ) {
     return in;
+  }
   wchar const * wordBegin     = in.c_str();
   wstring::size_type wordSize = in.size();
 
@@ -230,8 +242,9 @@ wstring trimWhitespace( wstring const & in )
   }
 
   // Skip any trailing whitespace
-  while ( wordSize && Folding::isWhitespace( wordBegin[ wordSize - 1 ] ) )
+  while ( wordSize && Folding::isWhitespace( wordBegin[ wordSize - 1 ] ) ) {
     --wordSize;
+  }
 
   return wstring( wordBegin, wordSize );
 }

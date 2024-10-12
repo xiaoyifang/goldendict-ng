@@ -37,20 +37,23 @@ void ScanFlag::pushButtonClicked()
 
 void ScanFlag::hideWindow()
 {
-  if ( isVisible() )
+  if ( isVisible() ) {
     hide();
+  }
 }
 
 void ScanFlag::showScanFlag()
 {
-  if ( isVisible() )
+  if ( isVisible() ) {
     hide();
+  }
 
   QPoint currentPos = QCursor::pos();
 
   auto screen = QGuiApplication::screenAt( currentPos );
-  if ( !screen )
+  if ( !screen ) {
     return;
+  }
 
   QRect desktop = screen->geometry();
 

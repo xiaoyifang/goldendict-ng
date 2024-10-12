@@ -12,8 +12,9 @@ wstring toWString( QString const & in )
 wstring removeTrailingZero( wstring const & v )
 {
   int n = v.size();
-  while ( n > 0 && v[ n - 1 ] == 0 )
+  while ( n > 0 && v[ n - 1 ] == 0 ) {
     n--;
+  }
   return wstring( v.data(), n );
 }
 
@@ -22,10 +23,12 @@ wstring removeTrailingZero( QString const & in )
   QList< unsigned int > v = in.toUcs4();
 
   int n = v.size();
-  while ( n > 0 && v[ n - 1 ] == 0 )
+  while ( n > 0 && v[ n - 1 ] == 0 ) {
     n--;
-  if ( n != v.size() )
+  }
+  if ( n != v.size() ) {
     v.resize( n );
+  }
 
   return wstring( (const wchar *)v.constData(), v.size() );
 }

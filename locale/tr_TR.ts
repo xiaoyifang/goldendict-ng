@@ -3050,17 +3050,17 @@ yerine onu gizler.</translation>
       <translation>Tek Aralıklı Yazı Tipi</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>&amp;Ekranda Kelime Yakala</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
+      <source>Chooses whether the popup mode is on by default or not. If checked,
+the program would always start with the popup active.</source>
       <translation>Ekranda kelime yakala kipinin öntanımlı olarak etkin olup olmadığını gösterir.
 Etkinse, program her zaman aktif kip ile başlar.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
+      <source>Start with popup turned on</source>
       <translation>Ekranda Kelime Yakala&apos;mayı açık olarak başlat</translation>
     </message>
     <message>
@@ -3178,7 +3178,7 @@ Aksi halde fare, sözcüğün üzerine geldiğinde çeviri yapılır.</translati
       <translation>Ana penceredeki kelimeleri otomatik telaffuz et</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
+      <source>Auto-pronounce words in popup</source>
       <translation>Ekranda Kelime Yakalarken kelimeleri otomatik seslendir</translation>
     </message>
     <message>
@@ -3706,7 +3706,7 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
       <translation>Ana pencerede çevrilecek kelimeyi zorla</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>Tarama açılır penceresini aç / kapat.</translation>
     </message>
     <message>
