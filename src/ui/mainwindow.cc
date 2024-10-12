@@ -1800,7 +1800,7 @@ ArticleView * MainWindow::createNewTab( bool switchToIt, QString const & name )
   connect( view, &ArticleView::zoomOut, this, &MainWindow::zoomout );
   connect( view, &ArticleView::saveBookmarkSignal, this, &MainWindow::addBookmarkToFavorite );
 
-  connect( ui.searchInPageAction, &QAction::triggered, this, [ this, view ]() {
+  connect( ui.searchInPageAction, &QAction::triggered, view, [ this, view ]() {
 #ifdef Q_OS_MACOS
     //workaround to fix macos popup page search Ctrl + F
     if ( scanPopup && scanPopup->isActiveWindow() ) {
