@@ -252,7 +252,7 @@ void ProgramDataRequest::instanceFinished( QByteArray output, QString error )
               prog_output = QString::fromUtf8( output.data() + 3, output.length() - 3 );
             }
             else {
-              // No BOM, assume local 8-bit encoding
+              // No BOM, assume UTF-8 encoding
               prog_output = QString::fromUtf8( output );
             }
           }
