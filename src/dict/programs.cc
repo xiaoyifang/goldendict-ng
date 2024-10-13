@@ -200,7 +200,7 @@ void RunInstance::handleProcessFinished()
     QByteArray err = process.readAllStandardError();
 
     if ( !err.isEmpty() ) {
-      error += "\n\n" + QString::fromLocal8Bit( err );
+      error += "\n\n" + QString::fromUtf8( err );
     }
   }
 
@@ -252,8 +252,8 @@ void ProgramDataRequest::instanceFinished( QByteArray output, QString error )
               prog_output = QString::fromUtf8( output.data() + 3, output.length() - 3 );
             }
             else {
-              // No BOM, assume local 8-bit encoding
-              prog_output = QString::fromLocal8Bit( output );
+              // No BOM, assume UTF-8 encoding
+              prog_output = QString::fromUtf8( output );
             }
           }
           catch ( std::exception & e ) {
