@@ -17,6 +17,8 @@ jobs:
     steps:             
       - name: Install dependencies
         run: |
+          sudo apt-get update
+
           sudo apt-get install build-essential ninja-build \
           libvorbis-dev zlib1g-dev libhunspell-dev x11proto-record-dev \
           libxtst-dev liblzo2-dev libbz2-dev \
@@ -34,7 +36,6 @@ jobs:
           qt6-webengine-dev
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
           submodules: false
       - name: Run build
         run: |
@@ -49,7 +50,6 @@ jobs:
     steps:             
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
           submodules: false
       - name: Install dependencies
         run: |
@@ -92,7 +92,6 @@ jobs:
           setup-python: 'false'
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
           submodules: true
       - name: Run build
         run: |
