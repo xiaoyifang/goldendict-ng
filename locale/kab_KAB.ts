@@ -9,7 +9,7 @@
     </message>
     <message>
       <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation type="unfinished">GoldenDict-ng dictionary lookup program, version </translation>
+      <translation>Goldendict, aseɣẓan n unadi n isegzawalen, alqem wis </translation>
     </message>
     <message>
       <source>Licensed under GNU GPLv3 or later</source>
@@ -180,7 +180,7 @@
     </message>
     <message>
       <source>ERROR: %1</source>
-      <translation type="unfinished">ERROR: %1</translation>
+      <translation>TUCCḌA: %1</translation>
     </message>
     <message>
       <source>The referenced resource doesn&apos;t exist.</source>
@@ -260,7 +260,7 @@
     </message>
     <message>
       <source>Save image</source>
-      <translation type="unfinished">Save image</translation>
+      <translation>Sekles tugna</translation>
     </message>
     <message>
       <source>Image files (*.bmp *.jpg *.png *.tif);;All files (*.*)</source>
@@ -340,7 +340,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>TC to SC</source>
-      <translation type="unfinished">TC to SC</translation>
+      <translation>TC ɣer SC</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -413,7 +413,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Images</source>
-      <translation type="unfinished">Images</translation>
+      <translation>Tugniwin</translation>
     </message>
     <message>
       <source>All files</source>
@@ -432,7 +432,7 @@ between classic and school orthography in cyrillic)</translation>
     <name>DictGroupsWidget</name>
     <message>
       <source>Dictionaries: </source>
-      <translation type="unfinished">Dictionaries: </translation>
+      <translation>Isegzawalen: </translation>
     </message>
     <message>
       <source>Confirmation</source>
@@ -598,7 +598,7 @@ between classic and school orthography in cyrillic)</translation>
     <name>DictInfo</name>
     <message>
       <source>Edit dictionary</source>
-      <translation type="unfinished">Edit dictionary</translation>
+      <translation>Ẓreg asegzawal</translation>
     </message>
     <message>
       <source>Open index folder</source>
@@ -794,11 +794,11 @@ between classic and school orthography in cyrillic)</translation>
     <name>Epwing::EpwingDictionary</name>
     <message>
       <source>Previous Page</source>
-      <translation type="unfinished">Previous Page</translation>
+      <translation>Asebter uzwir</translation>
     </message>
     <message>
       <source>Next Page</source>
-      <translation type="unfinished">Next Page</translation>
+      <translation>Asebter uḍfir</translation>
     </message>
   </context>
   <context>
@@ -1171,7 +1171,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Dictionary Name</source>
-      <translation type="unfinished">Dictionary Name</translation>
+      <translation>Isem n usegzawal</translation>
     </message>
     <message>
       <source>Please wait...</source>
@@ -2234,7 +2234,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>&amp;Dictionaries...</source>
-      <translation type="unfinished">&amp;Dictionaries...</translation>
+      <translation>&amp;Isegzawalen...</translation>
     </message>
     <message>
       <source>F3</source>
