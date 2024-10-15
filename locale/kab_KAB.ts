@@ -204,7 +204,7 @@
     </message>
     <message>
       <source>Save &amp;image...</source>
-      <translation type="unfinished">Save &amp;image...</translation>
+      <translation>Sekles &amp;tugna...</translation>
     </message>
     <message>
       <source>Open image in system viewer...</source>
@@ -618,7 +618,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Open folder</source>
-      <translation type="unfinished">Open folder</translation>
+      <translation>Ldi akaram</translation>
     </message>
     <message>
       <source>Translates from:</source>
@@ -674,7 +674,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Databases: </source>
-      <translation type="unfinished">Databases: </translation>
+      <translation>Izaduren n yisefka: </translation>
     </message>
     <message>
       <source>Search strategies: </source>
@@ -889,7 +889,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>by</source>
-      <translation type="unfinished">by</translation>
+      <translation>sɣur</translation>
     </message>
     <message>
       <source>Male</source>
@@ -987,7 +987,7 @@ between classic and school orthography in cyrillic)</translation>
     <name>Groups</name>
     <message>
       <source>Dictionaries available:</source>
-      <translation type="unfinished">Dictionaries available:</translation>
+      <translation>Isegzawalen i yellan:</translation>
     </message>
     <message>
       <source>Add selected dictionaries to group (Ins)</source>
@@ -1190,7 +1190,7 @@ between classic and school orthography in cyrillic)</translation>
     <name>Language</name>
     <message>
       <source>Afar</source>
-      <translation type="unfinished">Afar</translation>
+      <translation>Tafarit</translation>
     </message>
     <message>
       <source>Abkhazian</source>
@@ -2470,7 +2470,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Found in Dictionaries:</source>
-      <translation type="unfinished">Found in Dictionaries:</translation>
+      <translation>Yettwaf deg isegzawalen-a:</translation>
     </message>
     <message>
       <source>Words Zoom In</source>
@@ -2700,7 +2700,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Open dictionary folder</source>
-      <translation type="unfinished">Open dictionary folder</translation>
+      <translation>Ldi akaram n isegzawalen</translation>
     </message>
     <message>
       <source>Edit dictionary</source>
@@ -3734,7 +3734,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <name>ResourceToSaveHandler</name>
     <message>
       <source>ERROR: %1</source>
-      <translation type="unfinished">ERROR: %1</translation>
+      <translation>TUCCḌA: %1</translation>
     </message>
     <message>
       <source>Resource saving error: </source>
