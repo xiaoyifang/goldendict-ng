@@ -78,7 +78,7 @@
     </message>
     <message>
       <source>Welcome!</source>
-      <translation type="unfinished">Welcome!</translation>
+      <translation>Anṣuf !</translation>
     </message>
     <message>
       <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
@@ -164,7 +164,7 @@
     </message>
     <message>
       <source>Video</source>
-      <translation type="unfinished">Video</translation>
+      <translation>Tavidyut</translation>
     </message>
     <message>
       <source>Video: %1</source>
@@ -374,11 +374,11 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Username:</source>
-      <translation type="unfinished">Username:</translation>
+      <translation>Isem n useqdac:</translation>
     </message>
     <message>
       <source>Password:</source>
-      <translation type="unfinished">Password:</translation>
+      <translation>Awal n uɛeddi:</translation>
     </message>
   </context>
   <context>
@@ -393,7 +393,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Shortcut:</source>
-      <translation type="unfinished">Shortcut:</translation>
+      <translation>Anegzum:</translation>
     </message>
     <message>
       <source>Favorites folder:</source>
@@ -405,7 +405,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>From file...</source>
-      <translation type="unfinished">From file...</translation>
+      <translation>Seg ufaylu...</translation>
     </message>
     <message>
       <source>Choose a file to use as group icon</source>
@@ -417,11 +417,11 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>All files</source>
-      <translation type="unfinished">All files</translation>
+      <translation>Akk ifuyla</translation>
     </message>
     <message>
       <source>Error</source>
-      <translation type="unfinished">Error</translation>
+      <translation>Tuccḍa</translation>
     </message>
     <message>
       <source>Can&apos;t read the specified image file.</source>
@@ -527,7 +527,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Export</source>
-      <translation type="unfinished">Export</translation>
+      <translation>Sifeḍ</translation>
     </message>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
@@ -539,15 +539,15 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Help</source>
-      <translation type="unfinished">Help</translation>
+      <translation>Tallelt</translation>
     </message>
     <message>
       <source>OK</source>
-      <translation type="unfinished">OK</translation>
+      <translation>IH</translation>
     </message>
     <message>
       <source>Text</source>
-      <translation type="unfinished">Text</translation>
+      <translation>Aḍris</translation>
     </message>
     <message>
       <source>Wildcards</source>
@@ -583,7 +583,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Cancel</source>
-      <translation type="unfinished">Cancel</translation>
+      <translation>Sefsex</translation>
     </message>
     <message>
       <source>Export process is interrupted</source>
@@ -622,11 +622,11 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Translates from:</source>
-      <translation type="unfinished">Translates from:</translation>
+      <translation>Tisuqilin seg:</translation>
     </message>
     <message>
       <source>Translates to:</source>
-      <translation type="unfinished">Translates to:</translation>
+      <translation>Tisuqilin ɣer:</translation>
     </message>
     <message>
       <source>Files comprising this dictionary:</source>
@@ -634,7 +634,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Description:</source>
-      <translation type="unfinished">Description:</translation>
+      <translation>Aglam:</translation>
     </message>
     <message>
       <source>Show all unique dictionary headwords</source>
@@ -693,15 +693,15 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation type="unfinished">Name</translation>
+      <translation>Isem</translation>
     </message>
     <message>
       <source>Address</source>
-      <translation type="unfinished">Address</translation>
+      <translation>Tansa</translation>
     </message>
     <message>
       <source>Databases</source>
-      <translation type="unfinished">Databases</translation>
+      <translation>Izaduren n yisefka</translation>
     </message>
     <message>
       <source>Strategies</source>
@@ -709,7 +709,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Icon</source>
-      <translation type="unfinished">Icon</translation>
+      <translation>Tignit</translation>
     </message>
     <message>
       <source>Comma-delimited list of databases
@@ -748,26 +748,26 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Open dictionary folder</source>
-      <translation type="unfinished">Open dictionary folder</translation>
+      <translation>Ldi akaram n usegzawal</translation>
     </message>
     <message>
       <source>Edit dictionary</source>
-      <translation type="unfinished">Edit dictionary</translation>
+      <translation>Ẓreg asegzawal</translation>
     </message>
   </context>
   <context>
     <name>EditDictionaries</name>
     <message>
       <source>Dictionaries</source>
-      <translation type="unfinished">Dictionaries</translation>
+      <translation>Isegzawalen</translation>
     </message>
     <message>
       <source>&amp;Sources</source>
-      <translation type="unfinished">&amp;Sources</translation>
+      <translation>&amp;Tiɣbula</translation>
     </message>
     <message>
       <source>&amp;Dictionaries</source>
-      <translation type="unfinished">&amp;Dictionaries</translation>
+      <translation>&amp;Isegzawalen</translation>
     </message>
     <message>
       <source>&amp;Groups</source>
@@ -787,7 +787,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Cancel</source>
-      <translation type="unfinished">Cancel</translation>
+      <translation>Sefsex</translation>
     </message>
   </context>
   <context>
@@ -816,7 +816,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Default</source>
-      <translation type="unfinished">Default</translation>
+      <translation>Amezwaru</translation>
     </message>
     <message>
       <source>Wildcards</source>
@@ -866,7 +866,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Add folder</source>
-      <translation type="unfinished">Add folder</translation>
+      <translation>Rnu akaram</translation>
     </message>
     <message>
       <source>Favorites:</source>
@@ -923,7 +923,7 @@ between classic and school orthography in cyrillic)</translation>
     <name>FullTextSearchDialog</name>
     <message>
       <source>Search</source>
-      <translation type="unfinished">Search</translation>
+      <translation>Anadi</translation>
     </message>
     <message>
       <source>Mode:</source>
@@ -959,7 +959,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Help</source>
-      <translation type="unfinished">Help</translation>
+      <translation>Tallelt</translation>
     </message>
   </context>
   <context>
@@ -1027,7 +1027,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>&amp;Add group</source>
-      <translation type="unfinished">&amp;Add group</translation>
+      <translation>&amp;Snulfu-d agraw</translation>
     </message>
     <message>
       <source>Rename current dictionary group</source>
@@ -1087,7 +1087,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Add group</source>
-      <translation type="unfinished">Add group</translation>
+      <translation>Rnu agraw</translation>
     </message>
     <message>
       <source>Give a name for the new group:</source>
@@ -1130,7 +1130,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>%1/%2</source>
-      <translation type="unfinished">%1/%2</translation>
+      <translation>%1/%2</translation>
     </message>
     <message>
       <source>History size: %1 entries out of maximum %2</source>
@@ -1156,7 +1156,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation type="unfinished">Name</translation>
+      <translation>Isem</translation>
     </message>
   </context>
   <context>
@@ -1202,55 +1202,55 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Afrikaans</source>
-      <translation type="unfinished">Afrikaans</translation>
+      <translation>Tafrikanst</translation>
     </message>
     <message>
       <source>Akan</source>
-      <translation type="unfinished">Akan</translation>
+      <translation>Takanit</translation>
     </message>
     <message>
       <source>Amharic</source>
-      <translation type="unfinished">Amharic</translation>
+      <translation>Tamharikt</translation>
     </message>
     <message>
       <source>Aragonese</source>
-      <translation type="unfinished">Aragonese</translation>
+      <translation>Taṛagunit</translation>
     </message>
     <message>
       <source>Arabic</source>
-      <translation type="unfinished">Arabic</translation>
+      <translation>Taɛrabt</translation>
     </message>
     <message>
       <source>Assamese</source>
-      <translation type="unfinished">Assamese</translation>
+      <translation>Tasamizt</translation>
     </message>
     <message>
       <source>Avaric</source>
-      <translation type="unfinished">Avaric</translation>
+      <translation>Tavarikt</translation>
     </message>
     <message>
       <source>Aymara</source>
-      <translation type="unfinished">Aymara</translation>
+      <translation>Taymarat</translation>
     </message>
     <message>
       <source>Azerbaijani</source>
-      <translation type="unfinished">Azerbaijani</translation>
+      <translation>Tazeṛbayǧanit</translation>
     </message>
     <message>
       <source>Bashkir</source>
-      <translation type="unfinished">Bashkir</translation>
+      <translation>Tabackirt</translation>
     </message>
     <message>
       <source>Belarusian</source>
-      <translation type="unfinished">Belarusian</translation>
+      <translation>Tabilurusit</translation>
     </message>
     <message>
       <source>Bulgarian</source>
-      <translation type="unfinished">Bulgarian</translation>
+      <translation>Tabulgarit</translation>
     </message>
     <message>
       <source>Bihari</source>
-      <translation type="unfinished">Bihari</translation>
+      <translation>Tabiharit</translation>
     </message>
     <message>
       <source>Bislama</source>
@@ -1270,35 +1270,35 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Breton</source>
-      <translation type="unfinished">Breton</translation>
+      <translation>Tabrutunt</translation>
     </message>
     <message>
       <source>Bosnian</source>
-      <translation type="unfinished">Bosnian</translation>
+      <translation>Tabusnit</translation>
     </message>
     <message>
       <source>Catalan</source>
-      <translation type="unfinished">Catalan</translation>
+      <translation>Takaṭalant</translation>
     </message>
     <message>
       <source>Chechen</source>
-      <translation type="unfinished">Chechen</translation>
+      <translation>Tačičinit</translation>
     </message>
     <message>
       <source>Chamorro</source>
-      <translation type="unfinished">Chamorro</translation>
+      <translation>Takumurit</translation>
     </message>
     <message>
       <source>Corsican</source>
-      <translation type="unfinished">Corsican</translation>
+      <translation>Takuṛsikant</translation>
     </message>
     <message>
       <source>Cree</source>
-      <translation type="unfinished">Cree</translation>
+      <translation>Takrikt</translation>
     </message>
     <message>
       <source>Czech</source>
-      <translation type="unfinished">Czech</translation>
+      <translation>Taččikit</translation>
     </message>
     <message>
       <source>Church Slavic</source>
@@ -1318,7 +1318,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>German</source>
-      <translation type="unfinished">German</translation>
+      <translation>Talmanit</translation>
     </message>
     <message>
       <source>Divehi</source>
@@ -1334,27 +1334,27 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Greek</source>
-      <translation type="unfinished">Greek</translation>
+      <translation>Tagrigit</translation>
     </message>
     <message>
       <source>English</source>
-      <translation type="unfinished">English</translation>
+      <translation>Taglizit</translation>
     </message>
     <message>
       <source>Esperanto</source>
-      <translation type="unfinished">Esperanto</translation>
+      <translation>Taspirantit</translation>
     </message>
     <message>
       <source>Spanish</source>
-      <translation type="unfinished">Spanish</translation>
+      <translation>Taspenyulit</translation>
     </message>
     <message>
       <source>Estonian</source>
-      <translation type="unfinished">Estonian</translation>
+      <translation>Tasṭunit</translation>
     </message>
     <message>
       <source>Basque</source>
-      <translation type="unfinished">Basque</translation>
+      <translation>Tabaskit</translation>
     </message>
     <message>
       <source>Persian</source>
@@ -1378,7 +1378,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>French</source>
-      <translation type="unfinished">French</translation>
+      <translation>Tafṛansist</translation>
     </message>
     <message>
       <source>Western Frisian</source>
@@ -1390,11 +1390,11 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Scottish Gaelic</source>
-      <translation type="unfinished">Scottish Gaelic</translation>
+      <translation>Tagalikant n Skutland</translation>
     </message>
     <message>
       <source>Galician</source>
-      <translation type="unfinished">Galician</translation>
+      <translation>Tagalisyant</translation>
     </message>
     <message>
       <source>Guarani</source>
@@ -1486,7 +1486,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Japanese</source>
-      <translation type="unfinished">Japanese</translation>
+      <translation>Tajapunit</translation>
     </message>
     <message>
       <source>Javanese</source>
@@ -1650,7 +1650,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Dutch</source>
-      <translation type="unfinished">Dutch</translation>
+      <translation>Tahulandit</translation>
     </message>
     <message>
       <source>Norwegian Nynorsk</source>
@@ -1674,7 +1674,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Occitan</source>
-      <translation type="unfinished">Occitan</translation>
+      <translation>Tuksiṭant</translation>
     </message>
     <message>
       <source>Ojibwa</source>
@@ -1730,7 +1730,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Russian</source>
-      <translation type="unfinished">Russian</translation>
+      <translation>Tarusit</translation>
     </message>
     <message>
       <source>Kinyarwanda</source>
@@ -1890,7 +1890,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Vietnamese</source>
-      <translation type="unfinished">Vietnamese</translation>
+      <translation>Tavyitnamit</translation>
     </message>
     <message>
       <source>Volapuk</source>
@@ -1922,7 +1922,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Chinese</source>
-      <translation type="unfinished">Chinese</translation>
+      <translation>Tacinwat</translation>
     </message>
     <message>
       <source>Zulu</source>
@@ -1990,54 +1990,54 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Tamazight</source>
-      <translation type="unfinished">Tamazight</translation>
+      <translation>Tamaziɣt</translation>
     </message>
   </context>
   <context>
     <name>Language::Db</name>
     <message>
       <source>French</source>
-      <translation type="unfinished">French</translation>
+      <translation>Tafṛansist</translation>
     </message>
     <message>
       <source>Spanish</source>
-      <translation type="unfinished">Spanish</translation>
+      <translation>Taspenyulit</translation>
     </message>
     <message>
       <source>Belarusian</source>
-      <translation type="unfinished">Belarusian</translation>
+      <translation>Tabilurusit</translation>
     </message>
     <message>
       <source>Bulgarian</source>
-      <translation type="unfinished">Bulgarian</translation>
+      <translation>Tabulgarit</translation>
     </message>
     <message>
       <source>Czech</source>
-      <translation type="unfinished">Czech</translation>
+      <translation>Taččikit</translation>
     </message>
     <message>
       <source>German</source>
-      <translation type="unfinished">German</translation>
+      <translation>Talmanit</translation>
     </message>
     <message>
       <source>Greek</source>
-      <translation type="unfinished">Greek</translation>
+      <translation>Tagrigit</translation>
     </message>
     <message>
       <source>Finnish</source>
-      <translation type="unfinished">Finnish</translation>
+      <translation>Tafinit</translation>
     </message>
     <message>
       <source>Italian</source>
-      <translation type="unfinished">Italian</translation>
+      <translation>Taṭelyanit</translation>
     </message>
     <message>
       <source>Japanese</source>
-      <translation type="unfinished">Japanese</translation>
+      <translation>Tajapunit</translation>
     </message>
     <message>
       <source>Korean</source>
-      <translation type="unfinished">Korean</translation>
+      <translation>Takurit</translation>
     </message>
     <message>
       <source>Lithuanian</source>
@@ -2057,11 +2057,11 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Portuguese</source>
-      <translation type="unfinished">Portuguese</translation>
+      <translation>Tapurtugit</translation>
     </message>
     <message>
       <source>Russian</source>
-      <translation type="unfinished">Russian</translation>
+      <translation>Tarusit</translation>
     </message>
     <message>
       <source>Slovak</source>
@@ -2081,11 +2081,11 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Turkish</source>
-      <translation type="unfinished">Turkish</translation>
+      <translation>Taṭurkit</translation>
     </message>
     <message>
       <source>Ukrainian</source>
-      <translation type="unfinished">Ukrainian</translation>
+      <translation>Tukranit</translation>
     </message>
     <message>
       <source>Chinese Simplified</source>
@@ -2097,7 +2097,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Vietnamese</source>
-      <translation type="unfinished">Vietnamese</translation>
+      <translation>Tavyitnamit</translation>
     </message>
     <message>
       <source>Portuguese, Brazilian</source>
@@ -2113,11 +2113,11 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Hindi</source>
-      <translation type="unfinished">Hindi</translation>
+      <translation>Tahendit</translation>
     </message>
     <message>
       <source>Esperanto</source>
-      <translation type="unfinished">Esperanto</translation>
+      <translation>Taspirantit</translation>
     </message>
     <message>
       <source>German, Switzerland</source>
@@ -2186,7 +2186,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>&amp;File</source>
-      <translation type="unfinished">&amp;File</translation>
+      <translation>&amp;Afaylu</translation>
     </message>
     <message>
       <source>&amp;Edit</source>
@@ -2238,7 +2238,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>F3</source>
-      <translation type="unfinished">F3</translation>
+      <translation>F3</translation>
     </message>
     <message>
       <source>&amp;Preferences...</source>
@@ -2246,7 +2246,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>F4</source>
-      <translation type="unfinished">F4</translation>
+      <translation>F4</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
@@ -2286,7 +2286,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Ctrl+F4</source>
-      <translation type="unfinished">Ctrl+F4</translation>
+      <translation>Ctrl+F4</translation>
     </message>
     <message>
       <source>&amp;Save Article</source>
@@ -2298,7 +2298,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>F2</source>
-      <translation type="unfinished">F2</translation>
+      <translation>F2</translation>
     </message>
     <message>
       <source>&amp;Print</source>
@@ -2306,7 +2306,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Ctrl+P</source>
-      <translation type="unfinished">Ctrl+P</translation>
+      <translation>Ctrl+P</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2322,7 +2322,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Ctrl+F5</source>
-      <translation type="unfinished">Ctrl+F5</translation>
+      <translation>Ctrl+F5</translation>
     </message>
     <message>
       <source>&amp;Clear</source>
@@ -2334,7 +2334,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Ctrl+T</source>
-      <translation type="unfinished">Ctrl+T</translation>
+      <translation>Ctrl+T</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2366,7 +2366,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Ctrl+O</source>
-      <translation type="unfinished">Ctrl+O</translation>
+      <translation>Ctrl+O</translation>
     </message>
     <message>
       <source>Menu Button</source>
@@ -2378,7 +2378,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Ctrl+F</source>
-      <translation type="unfinished">Ctrl+F</translation>
+      <translation>Ctrl+F</translation>
     </message>
     <message>
       <source>Full-text search</source>
@@ -2386,7 +2386,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Ctrl+Shift+F</source>
-      <translation type="unfinished">Ctrl+Shift+F</translation>
+      <translation>Ctrl+Shift+F</translation>
     </message>
     <message>
       <source>GoldenDict reference</source>
@@ -2394,23 +2394,23 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>F1</source>
-      <translation type="unfinished">F1</translation>
+      <translation>F1</translation>
     </message>
     <message>
       <source>Show</source>
-      <translation type="unfinished">Show</translation>
+      <translation>Sken</translation>
     </message>
     <message>
       <source>Export</source>
-      <translation type="unfinished">Export</translation>
+      <translation>Sifeḍ</translation>
     </message>
     <message>
       <source>Import</source>
-      <translation type="unfinished">Import</translation>
+      <translation>Kter</translation>
     </message>
     <message>
       <source>Add</source>
-      <translation type="unfinished">Add</translation>
+      <translation>Rnu</translation>
     </message>
     <message>
       <source>Add current tab to Favorites</source>
@@ -2418,7 +2418,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Ctrl+E</source>
-      <translation type="unfinished">Ctrl+E</translation>
+      <translation>Ctrl+E</translation>
     </message>
     <message>
       <source>Export to list</source>
@@ -2442,11 +2442,11 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Back</source>
-      <translation type="unfinished">Back</translation>
+      <translation>Tuɣalin</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation type="unfinished">Forward</translation>
+      <translation>Uḍfir</translation>
     </message>
     <message>
       <source>Enable Scanning</source>
@@ -2576,7 +2576,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Ctrl+M</source>
-      <translation type="unfinished">Ctrl+M</translation>
+      <translation>Ctrl+M</translation>
     </message>
     <message>
       <source>Page Setup</source>
@@ -2604,7 +2604,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Error</source>
-      <translation type="unfinished">Error</translation>
+      <translation>Tuccḍa</translation>
     </message>
     <message>
       <source>Can&apos;t save article: %1</source>
@@ -2748,15 +2748,15 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Name</source>
-      <translation type="unfinished">Name</translation>
+      <translation>Isem</translation>
     </message>
     <message>
       <source>Address</source>
-      <translation type="unfinished">Address</translation>
+      <translation>Tansa</translation>
     </message>
     <message>
       <source>Icon</source>
-      <translation type="unfinished">Icon</translation>
+      <translation>Tignit</translation>
     </message>
     <message>
       <source>Language Variant</source>
@@ -2790,7 +2790,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Name:</source>
-      <translation type="unfinished">Name:</translation>
+      <translation>Isem:</translation>
     </message>
     <message>
       <source>Total articles:</source>
@@ -2802,15 +2802,15 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Translates from:</source>
-      <translation type="unfinished">Translates from:</translation>
+      <translation>Tisuqilin seg:</translation>
     </message>
     <message>
       <source>Translates to:</source>
-      <translation type="unfinished">Translates to:</translation>
+      <translation>Tisuqilin ɣer:</translation>
     </message>
     <message>
       <source>Description:</source>
-      <translation type="unfinished">Description:</translation>
+      <translation>Aglam:</translation>
     </message>
     <message>
       <source>Files comprising this dictionary:</source>
@@ -2830,7 +2830,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Sort by languages</source>
-      <translation type="unfinished">Sort by languages</translation>
+      <translation>Smizwer s tutlayin</translation>
     </message>
     <message>
       <source>Dictionaries active: %1, inactive: %2</source>
@@ -2998,7 +2998,7 @@ the application.</translation>
     </message>
     <message>
       <source>Interface language:</source>
-      <translation type="unfinished">Interface language:</translation>
+      <translation>Tutlayt n wegrudem:</translation>
     </message>
     <message>
       <source>Article Display style:</source>
@@ -3252,11 +3252,11 @@ for all program&apos;s network requests.</translation>
     </message>
     <message>
       <source>User:</source>
-      <translation type="unfinished">User:</translation>
+      <translation>Aseqdac:</translation>
     </message>
     <message>
       <source>Password:</source>
-      <translation type="unfinished">Password:</translation>
+      <translation>Awal n uɛeddi:</translation>
     </message>
     <message>
       <source>Anki Connect</source>
@@ -3264,7 +3264,7 @@ for all program&apos;s network requests.</translation>
     </message>
     <message>
       <source>http://</source>
-      <translation type="unfinished">http://</translation>
+      <translation>http://</translation>
     </message>
     <message>
       <source>Deck:</source>
@@ -3276,7 +3276,7 @@ for all program&apos;s network requests.</translation>
     </message>
     <message>
       <source>Word</source>
-      <translation type="unfinished">Word</translation>
+      <translation>Awal</translation>
     </message>
     <message>
       <source>Vocabulary field...</source>
@@ -3284,7 +3284,7 @@ for all program&apos;s network requests.</translation>
     </message>
     <message>
       <source>Text</source>
-      <translation type="unfinished">Text</translation>
+      <translation>Aḍris</translation>
     </message>
     <message>
       <source>Definition field...</source>
@@ -3625,7 +3625,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation type="unfinished">Name</translation>
+      <translation>Isem</translation>
     </message>
     <message>
       <source>Command Line</source>
@@ -3633,7 +3633,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Icon</source>
-      <translation type="unfinished">Icon</translation>
+      <translation>Tignit</translation>
     </message>
   </context>
   <context>
@@ -3859,7 +3859,7 @@ could be resized or managed in other ways.</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation type="unfinished">Name</translation>
+      <translation>Isem</translation>
     </message>
     <message>
       <source>Icon</source>
@@ -3870,7 +3870,7 @@ could be resized or managed in other ways.</translation>
     <name>Sources</name>
     <message>
       <source>Files</source>
-      <translation type="unfinished">Files</translation>
+      <translation>Ifuyla</translation>
     </message>
     <message>
       <source>Paths to search for the dictionary files:</source>
@@ -4240,7 +4240,7 @@ Not implemented yet in GoldenDict.</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation type="unfinished">Name</translation>
+      <translation>Isem</translation>
     </message>
     <message>
       <source>Id</source>
@@ -4267,11 +4267,11 @@ Not implemented yet in GoldenDict.</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation type="unfinished">Name</translation>
+      <translation>Isem</translation>
     </message>
     <message>
       <source>Address</source>
-      <translation type="unfinished">Address</translation>
+      <translation>Tansa</translation>
     </message>
     <message>
       <source>Icon</source>
