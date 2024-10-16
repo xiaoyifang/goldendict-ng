@@ -25,11 +25,11 @@
     </message>
     <message>
       <source>Credits:</source>
-      <translation type="unfinished">Credits:</translation>
+      <translation>Asnemmer:</translation>
     </message>
     <message>
       <source>Based on Qt %1 (%2, %3)</source>
-      <translation type="unfinished">Based on Qt %1 (%2, %3)</translation>
+      <translation>Yettwabna ɣef Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -144,7 +144,7 @@
     </message>
     <message>
       <source>Copy as text</source>
-      <translation type="unfinished">Copy as text</translation>
+      <translation>Nɣel am uḍris</translation>
     </message>
     <message>
       <source>Inspect</source>
@@ -168,7 +168,7 @@
     </message>
     <message>
       <source>Video: %1</source>
-      <translation type="unfinished">Video: %1</translation>
+      <translation>Tavidyutt: %1</translation>
     </message>
     <message>
       <source>Definition from dictionary &quot;%1&quot;: %2</source>
