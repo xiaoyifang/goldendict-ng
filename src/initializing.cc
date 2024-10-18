@@ -5,7 +5,7 @@
 #include "initializing.hh"
 #include <QCloseEvent>
 
-Initializing::Initializing( QWidget * parent):
+Initializing::Initializing( QWidget * parent ):
   QDialog( parent )
 {
   ui.setupUi( this );
