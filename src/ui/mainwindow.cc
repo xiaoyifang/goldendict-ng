@@ -1585,7 +1585,7 @@ void MainWindow::makeDictionaries()
   ftsIndexing.stopIndexing();
   ftsIndexing.clearDictionaries();
 
-  loadDictionaries( this, isVisible(), cfg, dictionaries, dictNetMgr, false );
+  loadDictionaries( this, cfg, dictionaries, dictNetMgr, false );
 
   //create map
   dictMap = Dictionary::dictToMap( dictionaries );
@@ -3478,7 +3478,7 @@ void MainWindow::on_rescanFiles_triggered()
   dictionariesUnmuted.clear();
   dictionaryBar.setDictionaries( dictionaries );
 
-  loadDictionaries( this, true, cfg, dictionaries, dictNetMgr );
+  loadDictionaries( this, cfg, dictionaries, dictNetMgr );
   dictMap = Dictionary::dictToMap( dictionaries );
 
   for ( const auto & dictionarie : dictionaries ) {
