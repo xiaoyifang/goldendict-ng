@@ -3,7 +3,7 @@
  <class>About</class>
  <widget class="QDialog" name="About">
   <property name="windowModality">
-   <enum>Qt::NonModal</enum>
+   <enum>Qt::WindowModality::NonModal</enum>
   </property>
   <property name="geometry">
    <rect>
@@ -46,7 +46,7 @@
         <bool>true</bool>
        </property>
        <property name="alignment">
-        <set>Qt::AlignCenter</set>
+        <set>Qt::AlignmentFlag::AlignCenter</set>
        </property>
        <property name="margin">
         <number>10</number>
@@ -66,7 +66,7 @@
             <string>GoldenDict-ng dictionary lookup program, version </string>
            </property>
            <property name="alignment">
-            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+            <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
            </property>
           </widget>
          </item>
@@ -79,7 +79,7 @@
             <string notr="true">#.#</string>
            </property>
            <property name="textInteractionFlags">
-            <set>Qt::TextEditorInteraction</set>
+            <set>Qt::TextInteractionFlag::TextEditorInteraction</set>
            </property>
           </widget>
          </item>
@@ -91,7 +91,7 @@
           <string notr="true">(c) 2008-2013 Konstantin Isakov (ikm@goldendict.org)</string>
          </property>
          <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
          </property>
         </widget>
        </item>
@@ -101,7 +101,7 @@
           <string>Licensed under GNU GPLv3 or later</string>
          </property>
          <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
          </property>
         </widget>
        </item>
@@ -111,7 +111,7 @@
           <string notr="true">Based on Qt #.#.# (GCC #.#, 32/64 bit)</string>
          </property>
          <property name="textInteractionFlags">
-          <set>Qt::TextEditorInteraction</set>
+          <set>Qt::TextInteractionFlag::TextEditorInteraction</set>
          </property>
         </widget>
        </item>
@@ -146,7 +146,7 @@
          <item>
           <spacer name="horizontalSpacer">
            <property name="orientation">
-            <enum>Qt::Horizontal</enum>
+            <enum>Qt::Orientation::Horizontal</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
@@ -168,7 +168,7 @@
       <string>Credits:</string>
      </property>
      <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
      </property>
     </widget>
    </item>
@@ -188,10 +188,10 @@
    <item>
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+      <enum>Qt::Orientation::Horizontal</enum>
      </property>
      <property name="standardButtons">
-      <set>QDialogButtonBox::Ok</set>
+      <set>QDialogButtonBox::StandardButton::Ok</set>
      </property>
      <property name="centerButtons">
       <bool>true</bool>

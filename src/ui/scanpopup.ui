@@ -36,10 +36,10 @@
     <item>
      <widget class="QFrame" name="outerFrame">
       <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
+       <enum>QFrame::Shape::NoFrame</enum>
       </property>
       <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
+       <enum>QFrame::Shadow::Raised</enum>
       </property>
       <property name="lineWidth">
        <number>0</number>
@@ -76,7 +76,7 @@
               </sizepolicy>
              </property>
              <property name="sizeAdjustPolicy">
-              <enum>QComboBox::AdjustToContents</enum>
+              <enum>QComboBox::SizeAdjustPolicy::AdjustToContents</enum>
              </property>
             </widget>
            </item>
@@ -177,7 +177,7 @@
            <item>
             <spacer name="horizontalSpacer">
              <property name="orientation">
-              <enum>Qt::Horizontal</enum>
+              <enum>Qt::Orientation::Horizontal</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
