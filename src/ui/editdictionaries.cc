@@ -208,7 +208,7 @@ void EditDictionaries::acceptChangedSources( bool rebuildGroups )
   groups.clear();
   orderAndProps.clear();
 
-  loadDictionaries( this, true, cfg, dictionaries, dictNetMgr );
+  loadDictionaries( this, cfg, dictionaries, dictNetMgr );
 
   // If no changes to groups were made, update the original data
   const bool noGroupEdits = ( origCfg.groups == savedGroups );

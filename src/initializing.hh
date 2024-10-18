@@ -12,7 +12,7 @@ class Initializing: public QDialog
 
 public:
 
-  Initializing( QWidget * parent, bool showOnStartup );
+  Initializing( QWidget * parent );
 
 public slots:
 

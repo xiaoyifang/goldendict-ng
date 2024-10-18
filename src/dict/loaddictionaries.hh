@@ -67,7 +67,6 @@ signals:
 /// If doDeferredInit is true (default), doDeferredInit() is done on all
 /// dictionaries at the end.
 void loadDictionaries( QWidget * parent,
-                       bool showInitially,
                        Config::Class const & cfg,
                        std::vector< sptr< Dictionary::Class > > &,
                        QNetworkAccessManager & dictNetMgr,

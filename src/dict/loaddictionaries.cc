@@ -198,7 +198,6 @@ void LoadDictionaries::loadingDictionary( string const & dictionaryName ) noexce
 
 
 void loadDictionaries( QWidget * parent,
-                       bool showInitially,
                        Config::Class const & cfg,
                        std::vector< sptr< Dictionary::Class > > & dictionaries,
                        QNetworkAccessManager & dictNetMgr,
@@ -206,7 +205,7 @@ void loadDictionaries( QWidget * parent,
 {
   dictionaries.clear();
 
-  ::Initializing init( parent, showInitially );
+  ::Initializing init( parent );
 
   // Start a thread to load all the dictionaries
 
