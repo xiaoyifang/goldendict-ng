@@ -228,7 +228,7 @@ jobs:
 
           Based on branch: ${{github.ref_name}}
           #### Changes
-          
+
           ${{steps.build_changelog.outputs.changelog}}
           HEREDOC
       - name: Generate release title
@@ -270,17 +270,19 @@ jobs:
             --target ${{github.ref_name}} \
             --notes-file=./changelog.txt \
             --latest=false \
-            --prerelease
+            --prerelease \
+            --repo ${GITHUB_REPOSITORY}
           else
             gh release create ${{env.newtag}} \
             -t ${{env.releaseTitle}} \
             --target ${{github.ref_name}} \
             --notes-file=./changelog.txt \
-            --latest=true
+            --latest=true \
+            --repo ${GITHUB_REPOSITORY}
           fi 
       - name: Uploading artifacts
         run: |
-          gh release upload ${{env.newtag}}  *.exe *.pdb *.dmg
+          gh release upload ${{env.newtag}} *.exe *.pdb *.dmg --repo ${GITHUB_REPOSITORY}
         
 
         
