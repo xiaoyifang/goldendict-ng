@@ -231,7 +231,7 @@ jobs:
       - name: Generate release title
         id: getReleaseTitle
         run: |
-          if [[ "$prerelease" == 'true' ]]
+          if [[ '$prerelease' == 'true' ]]
           then
             echo "releaseTitle=Daily snapshot $(date -u +"%y-%m-%d %H:%M") ${{ steps.shortSHA.outputs.sha_short}}" >> $GITHUB_OUTPUT
           else
@@ -260,7 +260,7 @@ jobs:
         run: ls -R
       - name: Create new tag
         run: |
-          if [[ "${{env.prerelease}}" == 'true' ]]
+          if [[ '${{env.prerelease}}'' == 'true' ]]
           then
             gh release create ${{env.newtag}} \
             -t ${{env.releaseTitle}} \
@@ -273,7 +273,7 @@ jobs:
             -t ${{env.releaseTitle}} \
             --target ${{github.ref_name}} \
             --notes-file=./changelog.txt \
-            --latest=true \
+            --latest=true
           fi 
       - name: Uploading artifacts
         run: |
