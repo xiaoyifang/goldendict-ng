@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         os: [macos-14]
-        qt_ver: [ 6.7.3 ]
+        qt_ver: [ 6.6.3, 6.7.3 ]
         qt_arch: [clang_64]
     env:
       targetName: GoldenDict
@@ -66,13 +66,14 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: macOS-${{ matrix.os }}-Qt${{ matrix.qt_ver }}
+          retention-days: 7
           path: '*.dmg'
   build_Windows:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [windows-2022]
-        qt_ver: [ 6.7.3 ]
+        qt_ver: [ 6.6.3, 6.7.3 ]
         qt_arch: [win64_msvc2019_64]
     env:
       version: 24.11.0
@@ -121,8 +122,8 @@ jobs:
             mv "${namePrefix}.7z" "${namePrefix}-Windows.7z"
             mv "${namePrefix}.exe" "${namePrefix}-Windows-installer.exe"
             cd ./goldendict
-            mv goldendict.exe "${namePrefix}-Windows-main-exe-file-only.exe" 
-            mv goldendict.pdb "${namePrefix}-Windows-debug-file.pdb"
+            mv goldendict.exe "../${namePrefix}-Windows-main-exe-file-only.exe" 
+            mv goldendict.pdb "../${namePrefix}-Windows-debug-file.pdb"
             cd ..
             cd ..
             pwd
@@ -130,11 +131,11 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: Windows-Qt${{ matrix.qt_ver }}
+          retention-days: 7
           path: |
             ./build_dir/*.exe
             ./build_dir/*.7z
-            ./build_dir/goldendict/*.exe
-            ./build_dir/goldendict/*.pdb
+            ./build_dir/*.pdb
 
   publish:
     needs: [build_macOS, build_Windows]
