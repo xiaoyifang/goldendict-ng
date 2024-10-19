@@ -23,13 +23,21 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: true
-      - name: install deps on macos
+      - name: install deps
         run: |
           export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=TRUE
-          brew install cmake ninja pkg-config create-dmg \
-          opencc libzim hunspell xapian \
-          libiconv libogg libvorbis \
-          lzo bzip2 zstd lzip
+          brew install \
+          bzip2  \
+          create-dmg \
+          hunspell \
+          libiconv \
+          libogg \
+          libvorbis \
+          libzim \
+          lzip \
+          ninja \
+          opencc \
+          xapian
           
           git clone https://github.com/xiaoyifang/eb.git
           cd eb && ./configure && make -j 8 && sudo make install && cd ..
@@ -106,7 +114,9 @@ jobs:
       - name: Rename files
         shell: bash
         run: |
-            namePrefix="GoldenDict-ng-${{env.version}}-Qt${{matrix.qt_ver}}"
+            # rename installer names to something better
+            namePrefix=$(basename "$(ls *.7z)" .7z)
+
             cd ./build_dir
             mv "${namePrefix}.7z" "${namePrefix}-Windows.7z"
             mv "${namePrefix}.exe" "${namePrefix}-Windows-installer.exe"
@@ -183,13 +193,13 @@ jobs:
                 }
                 ,
                 {
-                    "title": "##  🤖  Github action",
-                    "labels": ["action"]
+                    "title": "## 🤖 DevOps",
+                    "labels": ["action",]
                 }
                 ,
                 {
-                    "title": "##  🧼  Clean Code",
-                    "labels": ["clean"]
+                    "title": "## 🧼 Clean Code",
+                    "labels": ["clean","refactor"]
                 }
 
               ],
@@ -248,16 +258,24 @@ jobs:
         run: ls -R
       - name: Create new tag
         run: |
-          if [[ "$prerelease" == 'true' ]]
+          if [[ "${{env.prerelease}}" == 'true' ]]
           then
-            gh release create ${newtag} -t ${releaseTitle} --target ${{github.ref_name}} --notes-file=./changelog.txt --latest=false \
+            gh release create ${{env.newtag}} \
+            -t ${{env.releaseTitle}} \
+            --target ${{github.ref_name}} \
+            --notes-file=./changelog.txt \
+            --latest=false \
             --prerelease
           else
-            gh release create ${newtag} -t ${releaseTitle} --target ${{github.ref_name}} --notes-file=./changelog.txt --latest=false \
+            gh release create ${{env.newtag}} \
+            -t ${{env.releaseTitle}} \
+            --target ${{github.ref_name}} \
+            --notes-file=./changelog.txt \
+            --latest=true \
           fi 
       - name: Uploading artifacts
         run: |
-          gh release upload "${newtag}"  *.exe *.pdb *.dmg  --clobber
+          gh release upload ${{env.newtag}}  *.exe *.pdb *.dmg
         
 
         
