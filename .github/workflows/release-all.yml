@@ -6,10 +6,8 @@ on:
       - dev
       - master
       - experimental
-      # - staged
     paths-ignore:
       - 'docs/**'
-      # - ".github/**"
       - "howto/**"
       - "*.md"
       - ".clang-format"
@@ -21,16 +19,10 @@ jobs:
         os: [macos-14]
         qt_ver: [ 6.6.3, 6.7.3 ]
         qt_arch: [clang_64]
-    env:
-      targetName: GoldenDict
-      version: 24.11.0
-      version-suffix: ${{ !contains(github.ref_name,'master') && 'alpha' || 'Release' }}
-      prerelease: ${{ !contains(github.ref_name,'master') }}
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: true
-
       - name: install deps on macos
         run: |
           export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=TRUE
@@ -68,6 +60,7 @@ jobs:
           name: macOS-${{ matrix.os }}-Qt${{ matrix.qt_ver }}
           retention-days: 7
           path: '*.dmg'
+
   build_Windows:
     runs-on: ${{ matrix.os }}
     strategy:
@@ -75,10 +68,6 @@ jobs:
         os: [windows-2022]
         qt_ver: [ 6.6.3, 6.7.3 ]
         qt_arch: [win64_msvc2019_64]
-    env:
-      version: 24.11.0
-      versionSuffix: ${{ !contains(github.ref_name,'master') && 'alpha' || 'Release' }}
-      prerelease: ${{ !contains(github.ref_name,'master') }}
     steps:
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
@@ -136,25 +125,140 @@ jobs:
             ./build_dir/*.exe
             ./build_dir/*.7z
             ./build_dir/*.pdb
+  
+  get_version_info:
+    runs-on: ubuntu-latest
+    env:
+      version: 24.11.0
+      prerelease: ${{ !contains(github.ref_name,'master') }}
+      versionSuffix: ${{ !contains(github.ref_name,'master') && 'alpha' || 'Release' }}
+    outputs:
+      prerelease: ${{ env.prerelease }}
+      newTag: ${{ steps.getNewTag.outputs.newTag }}
+      releaseTitle: ${{steps.getReleaseTitle.outputs.releaseTitle}}
+    steps:
+      - uses: actions/checkout@v4
+      - id: shortSHA
+        run: |
+          echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+      - name: getTags
+        id: changelogTags
+        run: |
+          if [[ "$prerelease" == 'true' ]]
+          then
+            echo "This is a pre-release"
+            previousTag=$(git tag --sort=-creatordate | grep "^v" | sed -n 2p)
+            currentTag=$(git tag --sort=-creatordate | grep "^v" | sed -n 1p)
+          else 
+            echo "This is not a pre-release"
+            previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v "alpha"  | sed -n 2p)
+            currentTag=$(git tag --sort=-creatordate | grep "^v"  | grep -v "alpha" | sed -n 1p)
+          fi
+          echo "prev_tag=$previousTag" >> $GITHUB_OUTPUT
+          echo "curr_tag=$currentTag" >> $GITHUB_OUTPUT
+          echo "previousTag : $previousTag"
+          echo "currentTag : $currentTag"
+      - name: get new tag
+        id: getNewTag
+        run: |
+          echo "newTag=v${{env.version}}-${{env.versionSuffix}}.${{ steps.shortSHA.outputs.sha_short }}" >> $GITHUB_OUTPUT
+      - name: Build Changelog
+        id: build_changelog
+        uses: mikepenz/release-changelog-builder-action@v3
+        with:
+          commitMode: false
+          fromTag: ${{ steps.changelogTags.outputs.prev_tag }}
+          toTag:  "${{ steps.changelogTags.outputs.curr_tag }}"  
+          configurationJson: |
+            {
+              "template": "#{{CHANGELOG}}\n\n<details>\n<summary>🔴 Uncategorized</summary>\n\n#{{UNCATEGORIZED}}\n</details>",
+              "categories": [
+                {
+                    "title": "## 🚀 Features",
+                    "labels": ["feature","feat","opt"]
+                },
+                {
+                    "title": "## 🐛 Fixes",
+                    "labels": ["fix","bug"]
+                }
+                ,
+                {
+                    "title": "##  🤖  Github action",
+                    "labels": ["action"]
+                }
+                ,
+                {
+                    "title": "##  🧼  Clean Code",
+                    "labels": ["clean"]
+                }
 
+              ],
+              "label_extractor": [
+              {
+                "pattern": "([^:]*):.*",
+                "target": "$1",
+                "on_property": "title",
+                "flags": "gu"
+              }
+            ]
+            }
+      - name: generate changelog.txt
+        run: |
+          touch changelog.txt
+          cat <<HEREDOC > changelog.txt
+          [Install instructions for Windows, macOS and Linux](https://xiaoyifang.github.io/goldendict-ng/install/).
+          
+          Filename pattern: GoldenDict-ng-[version]-[Qt version]-[system name]-...
+          
+          For Linux, the released version is on Flathub → [io.github.xiaoyifang.goldendict_ng](https://flathub.org/apps/io.github.xiaoyifang.goldendict_ng).
+
+          Based on branch: ${{github.ref_name}}
+          #### Changes
+          ${{steps.build_changelog.outputs.changelog}}
+          HEREDOC
+      - name: generate release title
+        id: getReleaseTitle
+        run: |
+          if [[ "$prerelease" == 'true' ]]
+          then
+            echo "releaseTitle=Daily snapshot $(date -u +"%y-%m-%d %H:%M")" >> $GITHUB_OUTPUT
+          else
+            echo "releaseTitle=v${{env.version}}-${{env.versionSuffix}}.${{ steps.shortSHA.outputs.sha_short}}" >> $GITHUB_OUTPUT
+          fi
+          
+      - uses: actions/upload-artifact@v4
+        with:
+          name: changelog.txt
+          retention-days: 7
+          path: ./changelog.txt
+        
   publish:
-    needs: [build_macOS, build_Windows]
+    needs: [build_macOS, build_Windows, get_version_info]
     runs-on: ubuntu-24.04
     env:
-        version: 24.11.0
-        versionSuffix: ${{ !contains(github.ref_name,'master') && 'alpha' || 'Release' }}
-        prerelease: ${{ !contains(github.ref_name,'master') }}
+        prerelease: ${{ needs.get_version_info.outputs.prerelease }}
+        newtag: ${{ needs.get_version_info.outputs.newTag }}
+        releaseTitle: ${{ needs.get_version_info.outputs.releaseTitle }}
     steps:
       - uses: actions/download-artifact@v4
         with:
           merge-multiple: true
-      - name: Print Items
+      - name: Print all files
+        run: ls -R
+      - name: Create new tag
         run: |
-          ls
-          printf "\n\n>"
-          ls -R
-          printf "\n\n>"
-          sudo apt-get install tree
-          tree
+          if [[ "$prerelease" == 'true' ]]
+          then
+            gh release create ${newtag} -t ${releaseTitle} --target ${{github.ref_name}} --notes-file=./changelog.txt --latest=false \
+            --prerelease
+          else
+            gh release create ${newtag} -t ${releaseTitle} --target ${{github.ref_name}} --notes-file=./changelog.txt --latest=false \
+          fi 
+      - name: Uploading artifacts
+        run: |
+          gh release upload "${newtag}"  *.exe *.pdb *.dmg  --clobber
+        
+
+        
 
 
