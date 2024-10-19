@@ -133,7 +133,7 @@ jobs:
             'build_dir/goldendict/*.pdb'
 
   publish:
-    needs: [build_macOS]
+    needs: [build_macOS, build_Windows]
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/download-artifact@v4
