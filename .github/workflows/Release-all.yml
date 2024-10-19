@@ -1,5 +1,8 @@
 name: Release All
-env: {version: 24.11.0}
+env: 
+  version: 24.11.0
+  prerelease: ${{ !contains(github.ref_name,'master') }}
+  versionSuffix: ${{ !contains(github.ref_name,'master') && 'alpha' || 'Release' }}
 on: 
   workflow_dispatch:
   push:
@@ -40,15 +43,13 @@ jobs:
             xapian
           
           git clone https://github.com/xiaoyifang/eb.git
-          cd eb && ./configure && make -j 8 && sudo make install && cd ..
-                
+          cd eb && ./configure && make -j 8 && sudo make install && cd ..         
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
           version: ${{ matrix.qt_ver }}
           arch: clang_64
-          modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
-          
+          modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech      
       - name: Compile
         run: |
           mkdir build_dir
@@ -59,7 +60,6 @@ jobs:
             -DCMAKE_BUILD_TYPE=RelWithDebInfo \
             -DCMAKE_OSX_DEPLOYMENT_TARGET="12.0"
           cmake --build build_dir
-          
       - name: Package
         run: |
           cmake --install build_dir/
@@ -83,11 +83,9 @@ jobs:
           arch: win64_msvc2019_64
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
           setup-python: 'false'
-          
       - uses: actions/checkout@v4
         with:
           submodules: true
-
       - name: Build binaries
         id: build
         run: |
@@ -139,11 +137,7 @@ jobs:
   
   generate_other_staffs:
     runs-on: ubuntu-latest
-    env:
-      prerelease: ${{ !contains(github.ref_name,'master') }}
-      versionSuffix: ${{ !contains(github.ref_name,'master') && 'alpha' || 'Release' }}
     outputs:
-      prerelease: ${{ env.prerelease }}
       newTag: ${{ steps.getNewTag.outputs.newTag }}
       releaseTitle: ${{steps.getReleaseTitle.outputs.releaseTitle}}
     steps:
@@ -252,8 +246,7 @@ jobs:
     needs: [build_macOS, build_Windows, generate_other_staffs]
     runs-on: ubuntu-24.04
     env:
-        prerelease: ${{ needs.generate_other_staffs.outputs.prerelease }}
-        newtag: ${{ needs.generate_other_staffs.outputs.newTag }}
+        newTag: ${{ needs.generate_other_staffs.outputs.newTag }}
         releaseTitle: ${{ needs.generate_other_staffs.outputs.releaseTitle }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
@@ -266,15 +259,15 @@ jobs:
         run: |
           if [[ '${{env.prerelease}}' == 'true' ]]
           then
-            gh release create '${{env.newtag}}' \
+            gh release create '${{env.newTag}}' \
               -t '${{env.releaseTitle}}' \
               --target '${{github.ref_name}}' \
               --notes-file=./changelog.txt \
               --latest=false \
               --prerelease \
-              --repo '${GITHUB_REPOSITORY}'
+              --repo ${GITHUB_REPOSITORY}
           else
-            gh release create '${{env.newtag}}' \
+            gh release create '${{env.newTag}}' \
               -t '${{env.releaseTitle}}' \
               --target '${{github.ref_name}}' \
               --notes-file=./changelog.txt \
@@ -283,4 +276,4 @@ jobs:
           fi 
       - name: Uploading artifacts
         run: |
-          gh release upload '${{env.newtag}}' *.exe *.pdb *.dmg *.7z --repo ${GITHUB_REPOSITORY}
+          gh release upload '${{env.newTag}}' *.exe *.pdb *.dmg *.7z --repo ${GITHUB_REPOSITORY}
