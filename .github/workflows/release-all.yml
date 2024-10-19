@@ -125,14 +125,16 @@ jobs:
             mv goldendict.pdb "${namePrefix}-Windows-debug-file.pdb"
             cd ..
             cd ..
+            pwd
+            ls -R
       - uses: actions/upload-artifact@v4
         with:
           name: Windows-Qt${{ matrix.qt_ver }}
           path: |
-            'build_dir/*.exe'
-            'build_dir/*.7z'
-            'build_dir/goldendict/*.exe'
-            'build_dir/goldendict/*.pdb'
+            ./build_dir/*.exe
+            ./build_dir/*.7z
+            ./build_dir/goldendict/*.exe
+            ./build_dir/goldendict/*.pdb
 
   publish:
     needs: [build_macOS, build_Windows]
