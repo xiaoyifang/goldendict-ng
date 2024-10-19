@@ -1,4 +1,5 @@
 name: Release All
+run-name: 'Releasing ${{github.sha}}'
 on: 
   workflow_dispatch:
   push:
@@ -23,7 +24,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: true
-      - name: install deps
+      - name: Install dependencies
         run: |
           export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=TRUE
           brew install \
@@ -49,7 +50,7 @@ jobs:
           arch: ${{ matrix.qt_arch }}
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
           
-      - name: compile
+      - name: Compile
         run: |
           mkdir build_dir
           cmake -S . -B build_dir \
@@ -60,7 +61,7 @@ jobs:
             -DCMAKE_OSX_DEPLOYMENT_TARGET="12.0"
           cmake --build build_dir
           
-      - name: package
+      - name: Package
         run: |
           cmake --install build_dir/
       - uses: actions/upload-artifact@v4
@@ -105,7 +106,7 @@ jobs:
             -DWITH_FFMPEG_PLAYER=OFF `
             -DWITH_VCPKG_BREAKPAD=ON
           cmake --build "./build_dir"
-      - name: CPack create package
+      - name: Create packages
         run: |
           cd './build_dir'
           cpack --verbose --trace
@@ -148,10 +149,11 @@ jobs:
       releaseTitle: ${{steps.getReleaseTitle.outputs.releaseTitle}}
     steps:
       - uses: actions/checkout@v4
-      - id: shortSHA
+      - name: Get git short SHA
+        id: shortSHA
         run: |
           echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-      - name: getTags
+      - name: Get change log tags
         id: changelogTags
         run: |
           if [[ "$prerelease" == 'true' ]]
@@ -168,7 +170,7 @@ jobs:
           echo "curr_tag=$currentTag" >> $GITHUB_OUTPUT
           echo "previousTag : $previousTag"
           echo "currentTag : $currentTag"
-      - name: get new tag
+      - name: Get new tag
         id: getNewTag
         run: |
           echo "newTag=v${{env.version}}-${{env.versionSuffix}}.${{ steps.shortSHA.outputs.sha_short }}" >> $GITHUB_OUTPUT
@@ -212,7 +214,7 @@ jobs:
               }
             ]
             }
-      - name: generate changelog.txt
+      - name: Generate changelog.txt
         run: |
           touch changelog.txt
           cat <<HEREDOC > changelog.txt
@@ -226,12 +228,12 @@ jobs:
           #### Changes
           ${{steps.build_changelog.outputs.changelog}}
           HEREDOC
-      - name: generate release title
+      - name: Generate release title
         id: getReleaseTitle
         run: |
           if [[ "$prerelease" == 'true' ]]
           then
-            echo "releaseTitle=Daily snapshot $(date -u +"%y-%m-%d %H:%M")" >> $GITHUB_OUTPUT
+            echo "releaseTitle=Daily snapshot $(date -u +"%y-%m-%d %H:%M") ${{ steps.shortSHA.outputs.sha_short}}" >> $GITHUB_OUTPUT
           else
             echo "releaseTitle=v${{env.version}}-${{env.versionSuffix}}.${{ steps.shortSHA.outputs.sha_short}}" >> $GITHUB_OUTPUT
           fi
