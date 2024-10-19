@@ -157,10 +157,10 @@ jobs:
         id: shortSHA
         run: |
           echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-      - name: Get change log tags
+      - name: Get changelog tags
         id: changelogTags
         run: |
-          if [[ '$prerelease' == 'true' ]]
+          if [[ '${{env.prerelease}}' == 'true' ]]
           then
             echo "This is a pre-release"
             previousTag=$(git tag --sort=-creatordate | grep "^v" | sed -n 2p)
@@ -233,10 +233,10 @@ jobs:
 
           ${{steps.build_changelog.outputs.changelog}}
           HEREDOC
-      - name: Generate release title
+      - name: Get release title
         id: getReleaseTitle
         run: |
-          if [[ '$prerelease' == 'true' ]]
+          if [[ '${{env.prerelease}}' == 'true' ]]
           then
             echo "releaseTitle=Daily snapshot $(date -u +"%y-%m-%d %H:%M") ${{ steps.shortSHA.outputs.sha_short}}" >> $GITHUB_OUTPUT
           else
@@ -285,8 +285,3 @@ jobs:
       - name: Uploading artifacts
         run: |
           gh release upload ${{env.newtag}} *.exe *.pdb *.dmg *.7z --repo ${GITHUB_REPOSITORY}
-        
-
-        
-
-
