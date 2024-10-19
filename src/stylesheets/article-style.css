@@ -84,6 +84,10 @@ pre {
   background-color: hsl(0deg 0% 70%);
 }
 
+.ankibutton img {
+  width: 32px;
+}
+
 .gddicttitle {
   user-select: none;
 }
