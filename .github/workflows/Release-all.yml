@@ -185,7 +185,7 @@ jobs:
                 ,
                 {
                     "title": "## 🤖 DevOps",
-                    "labels": ["action",]
+                    "labels": ["action"]
                 }
                 ,
                 {
