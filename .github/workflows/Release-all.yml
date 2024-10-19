@@ -282,7 +282,7 @@ jobs:
           fi 
       - name: Uploading artifacts
         run: |
-          gh release upload ${{env.newtag}} *.exe *.pdb *.dmg --repo ${GITHUB_REPOSITORY}
+          gh release upload ${{env.newtag}} *.exe *.pdb *.dmg *.7z --repo ${GITHUB_REPOSITORY}
         
 
         
