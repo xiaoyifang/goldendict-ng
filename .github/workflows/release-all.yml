@@ -115,7 +115,7 @@ jobs:
         shell: bash
         run: |
             # rename installer names to something better
-            namePrefix=$(basename "$(ls *.7z)" .7z)
+            namePrefix=$(basename "$(ls ./build_dir/*.7z)" .7z)
 
             cd ./build_dir
             mv "${namePrefix}.7z" "${namePrefix}-Windows.7z"
@@ -136,7 +136,7 @@ jobs:
             ./build_dir/*.7z
             ./build_dir/*.pdb
   
-  get_version_info:
+  generate_other_staffs:
     runs-on: ubuntu-latest
     env:
       version: 24.11.0
@@ -243,12 +243,12 @@ jobs:
           path: ./changelog.txt
         
   publish:
-    needs: [build_macOS, build_Windows, get_version_info]
+    needs: [build_macOS, build_Windows, generate_other_staffs]
     runs-on: ubuntu-24.04
     env:
-        prerelease: ${{ needs.get_version_info.outputs.prerelease }}
-        newtag: ${{ needs.get_version_info.outputs.newTag }}
-        releaseTitle: ${{ needs.get_version_info.outputs.releaseTitle }}
+        prerelease: ${{ needs.generate_other_staffs.outputs.prerelease }}
+        newtag: ${{ needs.generate_other_staffs.outputs.newTag }}
+        releaseTitle: ${{ needs.generate_other_staffs.outputs.releaseTitle }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/download-artifact@v4
