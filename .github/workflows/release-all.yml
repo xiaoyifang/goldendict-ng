@@ -52,7 +52,12 @@ jobs:
       - name: compile
         run: |
           mkdir build_dir
-          cmake -S . -B build_dir -G Ninja -DWITH_FFMPEG_PLAYER=OFF -DWITH_TTS=OFF -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_OSX_DEPLOYMENT_TARGET="12.0"
+          cmake -S . -B build_dir \
+            -G Ninja \
+            -DWITH_FFMPEG_PLAYER=OFF \
+            -DWITH_TTS=OFF \
+            -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+            -DCMAKE_OSX_DEPLOYMENT_TARGET="12.0"
           cmake --build build_dir
           
       - name: package
@@ -60,8 +65,73 @@ jobs:
           cmake --install build_dir/
       - uses: actions/upload-artifact@v4
         with:
-          name: my-artifact
+          name: macOS-artifacts
           path: '*.dmg'
+  build_Windows:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-2022]
+        qt_ver: [ 6.7.3 ]
+        qt_arch: [win64_msvc2019_64]
+    env:
+      version: 24.11.0
+      versionSuffix: ${{ !contains(github.ref_name,'master') && 'alpha' || 'Release' }}
+      prerelease: ${{ !contains(github.ref_name,'master') }}
+    steps:
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: ${{ matrix.qt_ver }}
+          arch: ${{ matrix.qt_arch }}
+          modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
+          setup-python: 'false'
+          
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Build binaries
+        id: build
+        run: |
+          # Launch-VsDevShell also provides Ninja
+          & 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\Launch-VsDevShell.ps1' `
+            -SkipAutomaticLocation -Arch amd64 -HostArch amd64
+          New-Item -Path './build_dir' -ItemType Directory
+          
+          # RelWithDebInfo + msvc's = .pdb file beside program file.
+          cmake -S . -B "./build_dir" `
+            -G Ninja `
+            -DCMAKE_C_COMPILER="cl.exe" -DCMAKE_CXX_COMPILER="cl.exe" `
+            -DCMAKE_BUILD_TYPE=RelWithDebInfo `
+            -DWITH_FFMPEG_PLAYER=OFF `
+            -DWITH_VCPKG_BREAKPAD=ON
+          cmake --build "./build_dir"
+      - name: CPack create package
+        run: |
+          cd './build_dir'
+          cpack --verbose --trace
+          cd ..
+          pwd
+      - name: Rename files
+        shell: bash
+        run: |
+            namePrefix="GoldenDict-ng-${{env.version}}-Qt${{matrix.qt_ver}}"
+            cd ./build_dir
+            mv "${namePrefix}.7z" "${namePrefix}-Windows.7z"
+            mv "${namePrefix}.exe" "${namePrefix}-Windows-installer.exe"
+            cd ./goldendict
+            mv goldendict.exe "${namePrefix}-Windows-main-exe-file-only.exe" 
+            mv goldendict.pdb "${namePrefix}-Windows-debug-file.pdb"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Windows-artifacts
+          path: |
+            'build_dir/*.exe'
+            'build_dir/*.7z'
+            'build_dir/goldendict/*.exe'
+            'build_dir/goldendict/*.pdb'
+
   publish:
     needs: [build_macOS]
     runs-on: ubuntu-24.04
@@ -72,8 +142,9 @@ jobs:
       - name: Print Items
         run: |
           ls
-
+          printf "\n\n>"
+          ls -R
+          printf "\n\n>"
           sudo apt-get install tree
-
           tree
 
