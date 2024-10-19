@@ -218,7 +218,7 @@ jobs:
           cat <<HEREDOC > changelog.txt
           [Install instructions for Windows, macOS and Linux](https://xiaoyifang.github.io/goldendict-ng/install/).
           
-          Filename pattern: `GoldenDict-ng-[version]-[Qt version]-[system name]...`
+          Filename pattern: GoldenDict-ng-[version]-[Qt version]-[system name]...
           
           For Linux, the released version is on Flathub → [io.github.xiaoyifang.goldendict_ng](https://flathub.org/apps/io.github.xiaoyifang.goldendict_ng).
 
