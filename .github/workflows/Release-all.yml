@@ -170,7 +170,7 @@ jobs:
       - name: Get new tag
         id: getNewTag
         run: |
-          echo "newTag=v${{env.version}}-${{env.versionSuffix}}.${{ steps.shortSHA.outputs.sha_short }}" >> $GITHUB_OUTPUT
+          echo "newTag=v${{ env.version }}-${{ env.versionSuffix }}.${{ steps.shortSHA.outputs.sha_short }}" >> $GITHUB_OUTPUT
       - name: Build Changelog
         id: build_changelog
         uses: mikepenz/release-changelog-builder-action@v3
@@ -218,23 +218,22 @@ jobs:
           cat <<HEREDOC > changelog.txt
           [Install instructions for Windows, macOS and Linux](https://xiaoyifang.github.io/goldendict-ng/install/).
           
-          Filename pattern: GoldenDict-ng-[version]-[Qt version]-[system name]-...
+          Filename pattern: `GoldenDict-ng-[version]-[Qt version]-[system name]...`
           
           For Linux, the released version is on Flathub → [io.github.xiaoyifang.goldendict_ng](https://flathub.org/apps/io.github.xiaoyifang.goldendict_ng).
 
-          Based on branch: ${{github.ref_name}}
+          Based on branch: ${{ github.ref_name }}
           #### Changes
-
-          ${{steps.build_changelog.outputs.changelog}}
+          ${{ steps.build_changelog.outputs.changelog }}
           HEREDOC
       - name: Get release title
         id: getReleaseTitle
         run: |
-          if [[ '${{env.prerelease}}' == 'true' ]]
+          if [[ '${{ env.prerelease }}' == 'true' ]]
           then
-            echo "releaseTitle=Daily snapshot $(date -u +"%y-%m-%d %H:%M") ${{ steps.shortSHA.outputs.sha_short}}" >> $GITHUB_OUTPUT
+            echo "releaseTitle=Daily build ${{ steps.shortSHA.outputs.sha_short }}" >> $GITHUB_OUTPUT
           else
-            echo "releaseTitle=v${{env.version}}-${{env.versionSuffix}}.${{ steps.shortSHA.outputs.sha_short}}" >> $GITHUB_OUTPUT
+            echo "releaseTitle=v${{ env.version }}-${{ env.versionSuffix }}.${{ steps.shortSHA.outputs.sha_short }}" >> $GITHUB_OUTPUT
           fi
           
       - uses: actions/upload-artifact@v4
@@ -259,23 +258,24 @@ jobs:
         run: ls -R
       - name: Create new tag
         run: |
-          if [[ '${{env.prerelease}}' == 'true' ]]
+          if [[ '${{ env.prerelease }}' == 'true' ]]
           then
-            gh release create '${{env.newTag}}' \
-              -t '${{env.releaseTitle}}' \
-              --target '${{github.ref_name}}' \
+            gh release create '${{ env.newTag }}' \
+              -t '${{ env.releaseTitle }}' \
+              --target '${{ github.ref_name }}' \
               --notes-file=./changelog.txt \
               --latest=false \
               --prerelease \
               --repo ${GITHUB_REPOSITORY}
           else
-            gh release create '${{env.newTag}}' \
-              -t '${{env.releaseTitle}}' \
-              --target '${{github.ref_name}}' \
+            gh release create '${{ env.newTag }}' \
+              -t '${{ env.releaseTitle }}' \
+              --target '${{ github.ref_name }}' \
               --notes-file=./changelog.txt \
               --latest=true \
               --repo ${GITHUB_REPOSITORY}
           fi 
       - name: Uploading artifacts
         run: |
-          gh release upload '${{env.newTag}}' *.exe *.pdb *.dmg *.7z --repo ${GITHUB_REPOSITORY}
+          gh release upload '${{ env.newTag }}' --repo ${GITHUB_REPOSITORY} --clobber \
+            *.7z *.exe *.pdb *.dmg 
