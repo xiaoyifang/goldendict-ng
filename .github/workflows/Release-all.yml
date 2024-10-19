@@ -65,6 +65,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: macOS-${{ matrix.os }}-Qt${{ matrix.qt_ver }}
+          if-no-files-found: error
           retention-days: 7
           path: '*.dmg'
 
@@ -212,8 +213,6 @@ jobs:
             }
       - name: Generate changelog.txt
         run: |
-          touch changelog.txt
-
           cat <<HEREDOC > changelog.txt
           [Install instructions for Windows, macOS and Linux](https://xiaoyifang.github.io/goldendict-ng/install/).
           
