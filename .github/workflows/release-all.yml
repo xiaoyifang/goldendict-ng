@@ -65,7 +65,7 @@ jobs:
           cmake --install build_dir/
       - uses: actions/upload-artifact@v4
         with:
-          name: macOS-artifacts
+          name: macOS-${{ matrix.os }}-${{ matrix.qt_ver }}
           path: '*.dmg'
   build_Windows:
     runs-on: ${{ matrix.os }}
@@ -125,7 +125,7 @@ jobs:
             mv goldendict.pdb "${namePrefix}-Windows-debug-file.pdb"
       - uses: actions/upload-artifact@v4
         with:
-          name: Windows-artifacts
+          name: Windows-${{ matrix.qt_ver }}
           path: |
             'build_dir/*.exe'
             'build_dir/*.7z'
