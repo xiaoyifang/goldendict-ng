@@ -1,5 +1,5 @@
 name: Release All
-run-name: 'Releasing ${{github.sha}}'
+env: {version: 24.11.0}
 on: 
   workflow_dispatch:
   push:
@@ -19,7 +19,6 @@ jobs:
       matrix:
         os: [macos-13,macos-14]
         qt_ver: [ 6.6.3, 6.7.3 ]
-        qt_arch: [clang_64]
     steps:
       - uses: actions/checkout@v4
         with:
@@ -47,7 +46,7 @@ jobs:
         uses: jurplel/install-qt-action@v3
         with:
           version: ${{ matrix.qt_ver }}
-          arch: ${{ matrix.qt_arch }}
+          arch: clang_64
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
           
       - name: Compile
@@ -76,13 +75,12 @@ jobs:
       matrix:
         os: [windows-2022]
         qt_ver: [ 6.6.3, 6.7.3 ]
-        qt_arch: [win64_msvc2019_64]
     steps:
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
           version: ${{ matrix.qt_ver }}
-          arch: ${{ matrix.qt_arch }}
+          arch: win64_msvc2019_64
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
           setup-python: 'false'
           
@@ -142,7 +140,6 @@ jobs:
   generate_other_staffs:
     runs-on: ubuntu-latest
     env:
-      version: 24.11.0
       prerelease: ${{ !contains(github.ref_name,'master') }}
       versionSuffix: ${{ !contains(github.ref_name,'master') && 'alpha' || 'Release' }}
     outputs:
@@ -282,8 +279,8 @@ jobs:
               --target '${{github.ref_name}}' \
               --notes-file=./changelog.txt \
               --latest=true \
-              --repo '${GITHUB_REPOSITORY}'
+              --repo ${GITHUB_REPOSITORY}
           fi 
       - name: Uploading artifacts
         run: |
-          gh release upload '${{env.newtag}}' *.exe *.pdb *.dmg *.7z --repo '${GITHUB_REPOSITORY}'
+          gh release upload '${{env.newtag}}' *.exe *.pdb *.dmg *.7z --repo ${GITHUB_REPOSITORY}
