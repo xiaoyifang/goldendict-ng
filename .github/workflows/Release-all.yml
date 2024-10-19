@@ -149,6 +149,8 @@ jobs:
       releaseTitle: ${{steps.getReleaseTitle.outputs.releaseTitle}}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # need all tags to genearte changelog
       - name: Get git short SHA
         id: shortSHA
         run: |
@@ -226,6 +228,7 @@ jobs:
 
           Based on branch: ${{github.ref_name}}
           #### Changes
+          
           ${{steps.build_changelog.outputs.changelog}}
           HEREDOC
       - name: Generate release title
