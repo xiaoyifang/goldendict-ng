@@ -28,17 +28,17 @@ jobs:
         run: |
           export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=TRUE
           brew install \
-          bzip2  \
-          create-dmg \
-          hunspell \
-          libiconv \
-          libogg \
-          libvorbis \
-          libzim \
-          lzip \
-          ninja \
-          opencc \
-          xapian
+            bzip2  \
+            create-dmg \
+            hunspell \
+            libiconv \
+            libogg \
+            libvorbis \
+            libzim \
+            lzip \
+            ninja \
+            opencc \
+            xapian
           
           git clone https://github.com/xiaoyifang/eb.git
           cd eb && ./configure && make -j 8 && sudo make install && cd ..
@@ -115,21 +115,21 @@ jobs:
       - name: Rename files
         shell: bash
         run: |
-            # rename installer names to something better
-            namePrefix=$(basename "$(ls ./build_dir/*.7z)" .7z)
+          # rename installer names to something better
+          namePrefix=$(basename "$(ls ./build_dir/*.7z)" .7z)
 
-            # note the name will ensure `installer` ranked higher after sorting
+          # note the name will ensure `installer` ranked higher after sorting
 
-            cd ./build_dir
-            mv "${namePrefix}.7z" "${namePrefix}-Windows-installer.7z"
-            mv "${namePrefix}.exe" "${namePrefix}-Windows-installer.exe"
-            cd ./goldendict
-            mv goldendict.exe "../${namePrefix}-Windows-main-exe-file-only.exe" 
-            mv goldendict.pdb "../${namePrefix}-Windows-pdb-debug-file.pdb"
-            cd ..
-            cd ..
-            pwd
-            ls -R
+          cd ./build_dir
+          mv "${namePrefix}.7z" "${namePrefix}-Windows-installer.7z"
+          mv "${namePrefix}.exe" "${namePrefix}-Windows-installer.exe"
+          cd ./goldendict
+          mv goldendict.exe "../${namePrefix}-Windows-main-exe-file-only.exe" 
+          mv goldendict.pdb "../${namePrefix}-Windows-pdb-debug-file.pdb"
+          cd ..
+          cd ..
+          pwd
+          ls -R
       - uses: actions/upload-artifact@v4
         with:
           name: Windows-Qt${{ matrix.qt_ver }}
@@ -170,6 +170,7 @@ jobs:
             previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v "alpha"  | sed -n 2p)
             currentTag=$(git tag --sort=-creatordate | grep "^v"  | grep -v "alpha" | sed -n 1p)
           fi
+
           echo "prev_tag=$previousTag" >> $GITHUB_OUTPUT
           echo "curr_tag=$currentTag" >> $GITHUB_OUTPUT
           echo "previousTag : $previousTag"
@@ -221,6 +222,7 @@ jobs:
       - name: Generate changelog.txt
         run: |
           touch changelog.txt
+
           cat <<HEREDOC > changelog.txt
           [Install instructions for Windows, macOS and Linux](https://xiaoyifang.github.io/goldendict-ng/install/).
           
@@ -267,21 +269,21 @@ jobs:
         run: |
           if [[ '${{env.prerelease}}' == 'true' ]]
           then
-            gh release create ${{env.newtag}} \
-            -t ${{env.releaseTitle}} \
-            --target ${{github.ref_name}} \
-            --notes-file=./changelog.txt \
-            --latest=false \
-            --prerelease \
-            --repo ${GITHUB_REPOSITORY}
+            gh release create '${{env.newtag}}' \
+              -t '${{env.releaseTitle}}' \
+              --target '${{github.ref_name}}' \
+              --notes-file=./changelog.txt \
+              --latest=false \
+              --prerelease \
+              --repo '${GITHUB_REPOSITORY}'
           else
-            gh release create ${{env.newtag}} \
-            -t ${{env.releaseTitle}} \
-            --target ${{github.ref_name}} \
-            --notes-file=./changelog.txt \
-            --latest=true \
-            --repo ${GITHUB_REPOSITORY}
+            gh release create '${{env.newtag}}' \
+              -t '${{env.releaseTitle}}' \
+              --target '${{github.ref_name}}' \
+              --notes-file=./changelog.txt \
+              --latest=true \
+              --repo '${GITHUB_REPOSITORY}'
           fi 
       - name: Uploading artifacts
         run: |
-          gh release upload ${{env.newtag}} *.exe *.pdb *.dmg *.7z --repo ${GITHUB_REPOSITORY}
+          gh release upload '${{env.newtag}}' *.exe *.pdb *.dmg *.7z --repo '${GITHUB_REPOSITORY}'
