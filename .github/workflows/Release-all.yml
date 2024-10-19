@@ -118,12 +118,14 @@ jobs:
             # rename installer names to something better
             namePrefix=$(basename "$(ls ./build_dir/*.7z)" .7z)
 
+            # note the name will ensure `installer` ranked higher after sorting
+
             cd ./build_dir
-            mv "${namePrefix}.7z" "${namePrefix}-Windows.7z"
+            mv "${namePrefix}.7z" "${namePrefix}-Windows-installer.7z"
             mv "${namePrefix}.exe" "${namePrefix}-Windows-installer.exe"
             cd ./goldendict
             mv goldendict.exe "../${namePrefix}-Windows-main-exe-file-only.exe" 
-            mv goldendict.pdb "../${namePrefix}-Windows-debug-file.pdb"
+            mv goldendict.pdb "../${namePrefix}-Windows-pdb-debug-file.pdb"
             cd ..
             cd ..
             pwd
