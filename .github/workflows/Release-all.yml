@@ -171,21 +171,21 @@ jobs:
               "template": "#{{CHANGELOG}}\n\n<details>\n<summary>🔴 Uncategorized</summary>\n\n#{{UNCATEGORIZED}}\n</details>",
               "categories": [
                 {
-                    "title": "## 🚀 Features",
-                    "labels": ["feature","feat","opt"]
+                    "title": "#### 🚀 Features",
+                    "labels": ["feature","feat"]
                 },
                 {
-                    "title": "## 🐛 Fixes",
-                    "labels": ["fix","bug"]
+                    "title": "#### 🔧 Fixes and Optimizations",
+                    "labels": ["fix","bug", "opt"]
                 }
                 ,
                 {
-                    "title": "## 🤖 DevOps",
+                    "title": "#### 🤖 DevOps",
                     "labels": ["action"]
                 }
                 ,
                 {
-                    "title": "## 🧼 Clean Code",
+                    "title": "#### 🧼 Clean Code",
                     "labels": ["clean","refactor"]
                 }
 
@@ -201,7 +201,8 @@ jobs:
             }
       - name: Get changelog.txt
         run: |
-          cat <<HEREDOC > changelog.txt
+          # HEREDOC must be quoted to avoid Bash substitution
+          cat <<'HEREDOC' > changelog.txt
           [Install instructions for Windows, macOS and Linux](https://xiaoyifang.github.io/goldendict-ng/install/).
           
           Filename pattern: GoldenDict-ng-[version]-[Qt version]-[system name]...
@@ -209,7 +210,7 @@ jobs:
           For Linux, the released version is on Flathub → [io.github.xiaoyifang.goldendict_ng](https://flathub.org/apps/io.github.xiaoyifang.goldendict_ng).
 
           Based on branch: ${{ github.ref_name }}
-          #### Changes
+          ### Changes
           ${{ steps.build_changelog.outputs.changelog }}
           HEREDOC
       - name: Get release title
