@@ -141,24 +141,20 @@ jobs:
         id: shortSHA
         run: |
           echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-      - name: Get changelog tags
+      - name: Get previous tag
         id: changelogTags
         run: |
           if [[ '${{env.prerelease}}' == 'true' ]]
           then
             echo "This is a pre-release"
-            previousTag=$(git tag --sort=-creatordate | grep "^v" | sed -n 2p)
-            currentTag=$(git tag --sort=-creatordate | grep "^v" | sed -n 1p)
+            previousTag=$(git tag --sort=-creatordate | grep "^v" | head -n 1)
           else 
             echo "This is not a pre-release"
-            previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v "alpha"  | sed -n 2p)
-            currentTag=$(git tag --sort=-creatordate | grep "^v"  | grep -v "alpha" | sed -n 1p)
+            previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v "alpha" | head -n 1)
           fi
 
           echo "prev_tag=$previousTag" >> $GITHUB_OUTPUT
-          echo "curr_tag=$currentTag" >> $GITHUB_OUTPUT
           echo "previousTag : $previousTag"
-          echo "currentTag : $currentTag"
       - name: Get new tag
         id: getNewTag
         run: |
@@ -169,7 +165,7 @@ jobs:
         with:
           commitMode: false
           fromTag: ${{ steps.changelogTags.outputs.prev_tag }}
-          toTag:  "${{ steps.changelogTags.outputs.curr_tag }}"  
+          toTag:  ${{ github.sha }}
           configurationJson: |
             {
               "template": "#{{CHANGELOG}}\n\n<details>\n<summary>🔴 Uncategorized</summary>\n\n#{{UNCATEGORIZED}}\n</details>",
@@ -232,7 +228,7 @@ jobs:
           if-no-files-found: error
           retention-days: 7
           path: ./changelog.txt
-        
+
   publish:
     needs: [build_macOS, build_Windows, generate_other_staffs]
     runs-on: ubuntu-24.04
