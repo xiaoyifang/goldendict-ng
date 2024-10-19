@@ -28,7 +28,6 @@ jobs:
           submodules: true
       - name: Install dependencies
         run: |
-          export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=TRUE
           brew install \
             bzip2  \
             create-dmg \
