@@ -65,7 +65,7 @@ jobs:
           cmake --install build_dir/
       - uses: actions/upload-artifact@v4
         with:
-          name: macOS-${{ matrix.os }}-${{ matrix.qt_ver }}
+          name: macOS-${{ matrix.os }}-Qt${{ matrix.qt_ver }}
           path: '*.dmg'
   build_Windows:
     runs-on: ${{ matrix.os }}
@@ -123,9 +123,11 @@ jobs:
             cd ./goldendict
             mv goldendict.exe "${namePrefix}-Windows-main-exe-file-only.exe" 
             mv goldendict.pdb "${namePrefix}-Windows-debug-file.pdb"
+            cd ..
+            cd ..
       - uses: actions/upload-artifact@v4
         with:
-          name: Windows-${{ matrix.qt_ver }}
+          name: Windows-Qt${{ matrix.qt_ver }}
           path: |
             'build_dir/*.exe'
             'build_dir/*.7z'
@@ -135,6 +137,10 @@ jobs:
   publish:
     needs: [build_macOS, build_Windows]
     runs-on: ubuntu-24.04
+    env:
+        version: 24.11.0
+        versionSuffix: ${{ !contains(github.ref_name,'master') && 'alpha' || 'Release' }}
+        prerelease: ${{ !contains(github.ref_name,'master') }}
     steps:
       - uses: actions/download-artifact@v4
         with:
@@ -147,4 +153,5 @@ jobs:
           printf "\n\n>"
           sudo apt-get install tree
           tree
+
 
