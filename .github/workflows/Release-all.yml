@@ -156,7 +156,7 @@ jobs:
       - name: Get change log tags
         id: changelogTags
         run: |
-          if [[ "$prerelease" == 'true' ]]
+          if [[ '$prerelease' == 'true' ]]
           then
             echo "This is a pre-release"
             previousTag=$(git tag --sort=-creatordate | grep "^v" | sed -n 2p)
@@ -260,7 +260,7 @@ jobs:
         run: ls -R
       - name: Create new tag
         run: |
-          if [[ '${{env.prerelease}}'' == 'true' ]]
+          if [[ '${{env.prerelease}}' == 'true' ]]
           then
             gh release create ${{env.newtag}} \
             -t ${{env.releaseTitle}} \
