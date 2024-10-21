@@ -1226,7 +1226,6 @@ void ArticleView::playAudio( QUrl const & url )
     if ( Utils::Url::isWebAudioUrl( url ) ) {
       sptr< Dictionary::DataRequest > req = std::make_shared< Dictionary::WebMultimediaDownload >( url, articleNetMgr );
 
-
       connect( req.get(), &Dictionary::Request::finished, this, [ &req, this ]() {
         audioDownloadFinished( req );
       } );
@@ -1241,7 +1240,6 @@ void ArticleView::playAudio( QUrl const & url )
       if ( dict ) {
         try {
           sptr< Dictionary::DataRequest > req = dict->getResource( url.path().mid( 1 ).toUtf8().data() );
-
 
           if ( !req->isFinished() ) {
             // Queued loading
