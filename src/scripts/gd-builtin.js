@@ -8,7 +8,8 @@ var gdAudioLinks = {
 var gdAudioMap = new Map();
 
 function gdMakeArticleActive(newId, noEvent) {
-const gdCurrentArticle = document.querySelector(".gdactivearticle").attributes.id;
+  const gdCurrentArticle =
+    document.querySelector(".gdactivearticle").attributes.id;
   if (gdCurrentArticle !== "gdfrom-" + newId) {
     document
       .querySelector(".gdactivearticle")
