@@ -1219,21 +1219,16 @@ void ArticleView::playAudio( QUrl const & url )
   audioPlayer->stop();
   qDebug() << "play audio,the link url:" << url;
 
-  Contexts contexts( contexts_ );
-
   if ( url.scheme() == "bres" || url.scheme() == "gdau" || url.scheme() == "gdvideo"
        || Utils::Url::isAudioUrl( url ) ) {
     // Download it
-
-    // Clear any pending ones
-
 
     if ( Utils::Url::isWebAudioUrl( url ) ) {
       sptr< Dictionary::DataRequest > req = std::make_shared< Dictionary::WebMultimediaDownload >( url, articleNetMgr );
 
 
-      connect( req.get(), &Dictionary::Request::finished, this, [ &req ]() {
-        &ArticleView::audioDownloadFinished( req );
+      connect( req.get(), &Dictionary::Request::finished, this, [ &req, this ]() {
+        audioDownloadFinished( req );
       } );
     }
     else if ( url.scheme() == "gdau" ) {
@@ -1247,27 +1242,28 @@ void ArticleView::playAudio( QUrl const & url )
         dictionaryGroup->getActiveDictionaries( currentGroup );
 
       if ( activeDicts ) {
-        unsigned preferred = UINT_MAX;
 
         for ( unsigned x = 0; x < activeDicts->size(); ++x ) {
           try {
-            if ( x == preferred ) {
+            if ( url.host() != ( *activeDicts )[ x ]->getId() ) {
               continue;
             }
 
             sptr< Dictionary::DataRequest > req =
               ( *activeDicts )[ x ]->getResource( url.path().mid( 1 ).toUtf8().data() );
 
-            resourceDownloadRequests.push_back( req );
 
             if ( !req->isFinished() ) {
               // Queued loading
-              connect( req.get(), &Dictionary::Request::finished, this, &ArticleView::resourceDownloadFinished );
+              connect( req.get(), &Dictionary::Request::finished, this, [ &req, this ]() {
+                audioDownloadFinished( req );
+              } );
             }
             else {
               // Immediate loading
               if ( req->dataSize() > 0 ) {
                 // Resource already found, stop next search
+                audioDownloadFinished( req );
                 break;
               }
             }
@@ -1998,11 +1994,9 @@ void ArticleView::resourceDownloadFinished()
 
 void ArticleView::audioDownloadFinished( sptr< Dictionary::DataRequest > req )
 {
-
   if ( req->dataSize() >= 0 ) {
     // Ok, got one finished, all others are irrelevant now
-
-    vector< char > const & data = req->getFullData();
+    qDebug() << "audio download finished. Playing..." vector< char > const & data = req->getFullData();
 
     // Audio data
     audioPlayer->stop();
