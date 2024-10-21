@@ -1213,6 +1213,74 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
   }
 }
 
+
+void ArticleView::playAudio( QUrl const & url )
+{
+  audioPlayer->stop();
+  qDebug() << "play audio,the link url:" << url;
+
+  Contexts contexts( contexts_ );
+
+  if ( url.scheme() == "bres" || url.scheme() == "gdau" || url.scheme() == "gdvideo"
+       || Utils::Url::isAudioUrl( url ) ) {
+    // Download it
+
+    // Clear any pending ones
+
+
+    if ( Utils::Url::isWebAudioUrl( url ) ) {
+      sptr< Dictionary::DataRequest > req = std::make_shared< Dictionary::WebMultimediaDownload >( url, articleNetMgr );
+
+
+      connect( req.get(), &Dictionary::Request::finished, this, [ &req ]() {
+        &ArticleView::audioDownloadFinished( req );
+      } );
+    }
+    else if ( url.scheme() == "gdau" ) {
+      // Since searches should be limited to current group, we just do them
+      // here ourselves since otherwise we'd need to pass group id to netmgr
+      // and it should've been having knowledge of the current groups, too.
+
+      unsigned currentGroup = getGroup( ref );
+
+      std::vector< sptr< Dictionary::Class > > const * activeDicts =
+        dictionaryGroup->getActiveDictionaries( currentGroup );
+
+      if ( activeDicts ) {
+        unsigned preferred = UINT_MAX;
+
+        for ( unsigned x = 0; x < activeDicts->size(); ++x ) {
+          try {
+            if ( x == preferred ) {
+              continue;
+            }
+
+            sptr< Dictionary::DataRequest > req =
+              ( *activeDicts )[ x ]->getResource( url.path().mid( 1 ).toUtf8().data() );
+
+            resourceDownloadRequests.push_back( req );
+
+            if ( !req->isFinished() ) {
+              // Queued loading
+              connect( req.get(), &Dictionary::Request::finished, this, &ArticleView::resourceDownloadFinished );
+            }
+            else {
+              // Immediate loading
+              if ( req->dataSize() > 0 ) {
+                // Resource already found, stop next search
+                break;
+              }
+            }
+          }
+          catch ( std::exception & e ) {
+            emit statusBarMessage( tr( "ERROR: %1" ).arg( e.what() ), 10000, QPixmap( ":/icons/error.svg" ) );
+          }
+        }
+      }
+    }
+  }
+}
+
 ResourceToSaveHandler * ArticleView::saveResource( const QUrl & url, const QString & fileName )
 {
   return saveResource( url, webview->url(), fileName );
@@ -1924,6 +1992,29 @@ void ArticleView::resourceDownloadFinished()
     // emit statusBarMessage(
     //     tr("WARNING: %1").arg(tr("The referenced resource failed to download.")),
     //     10000, QPixmap(":/icons/error.svg"));
+  }
+}
+
+
+void ArticleView::audioDownloadFinished( sptr< Dictionary::DataRequest > req )
+{
+
+  if ( req->dataSize() >= 0 ) {
+    // Ok, got one finished, all others are irrelevant now
+
+    vector< char > const & data = req->getFullData();
+
+    // Audio data
+    audioPlayer->stop();
+    connect( audioPlayer.data(),
+             &AudioPlayerInterface::error,
+             this,
+             &ArticleView::audioPlayerError,
+             Qt::UniqueConnection );
+    QString errorMessage = audioPlayer->play( data.data(), data.size() );
+    if ( !errorMessage.isEmpty() ) {
+      QMessageBox::critical( this, "GoldenDict", tr( "Failed to play sound file: %1" ).arg( errorMessage ) );
+    }
   }
 }
 
