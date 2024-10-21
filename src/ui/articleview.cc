@@ -1996,7 +1996,8 @@ void ArticleView::audioDownloadFinished( sptr< Dictionary::DataRequest > req )
 {
   if ( req->dataSize() >= 0 ) {
     // Ok, got one finished, all others are irrelevant now
-    qDebug() << "audio download finished. Playing..." vector< char > const & data = req->getFullData();
+    qDebug() << "audio download finished. Playing...";
+    vector< char > const & data = req->getFullData();
 
     // Audio data
     audioPlayer->stop();
