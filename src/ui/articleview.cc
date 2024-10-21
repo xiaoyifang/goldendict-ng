@@ -1245,7 +1245,7 @@ void ArticleView::playAudio( QUrl const & url )
 
         for ( unsigned x = 0; x < activeDicts->size(); ++x ) {
           try {
-            if ( url.host() != ( *activeDicts )[ x ]->getId() ) {
+            if ( url.host().toStdString() != ( *activeDicts )[ x ]->getId() ) {
               continue;
             }
 
