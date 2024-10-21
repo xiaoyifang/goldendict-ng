@@ -1251,11 +1251,7 @@ void ArticleView::playAudio( QUrl const & url )
           }
           else {
             // Immediate loading
-            if ( req->dataSize() > 0 ) {
-              // Resource already found, stop next search
-              audioDownloadFinished( req );
-              break;
-            }
+            audioDownloadFinished( req );
           }
         }
         catch ( std::exception & e ) {
