@@ -50,7 +50,8 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word, QString const & 
   // add jquery
   {
     result += R"(<script src="qrc:///scripts/jquery-3.6.0.slim.min.js"></script>)";
-    result += R"(<script> var $_$=jQuery.noConflict(); </script>)";
+    result += R"(<script> jQuery.noConflict(); </script>)";
+
     result += R"(<script src="qrc:///scripts/gd-custom.js"></script>)";
     result += R"(<script src="qrc:///scripts/iframeResizer.min.js"></script>)";
   }
@@ -64,13 +65,19 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word, QString const & 
   {
     result += R"(
     <script>
-     $_$(document).ready( function ($){ 
+      function gd_init_QtWebChannel(){
          console.log("webchannel ready..."); 
          new QWebChannel(qt.webChannelTransport, function(channel) { 
              window.articleview = channel.objects.articleview; 
        }); 
-     }); 
-    </script>
+      };
+
+      if (document.readyState !== "loading") {
+        gd_init_QtWebChannel();
+      } else {
+        document.addEventListener("DOMContentLoaded", gd_init_QtWebChannel);
+      };
+     </script>
     )";
   }
 
