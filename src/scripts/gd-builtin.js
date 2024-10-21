@@ -8,12 +8,13 @@ var gdAudioLinks = {
 var gdAudioMap = new Map();
 
 function gdMakeArticleActive(newId, noEvent) {
-  var gdCurrentArticle = $_$(".gdactivearticle").attr("id");
+const gdCurrentArticle = document.querySelector(".gdactivearticle").attributes.id;
   if (gdCurrentArticle !== "gdfrom-" + newId) {
-    $_$(".gdactivearticle").removeClass("gdactivearticle");
-    var newFormId = "gdfrom-" + newId;
-    $_$("#" + newFormId).addClass("gdactivearticle");
-    gdCurrentArticle = "gdfrom-" + newId;
+    document
+      .querySelector(".gdactivearticle")
+      .classList.remove("gdactivearticle");
+    const newFormId = "gdfrom-" + newId;
+    document.querySelector(`#${newFormId}`).classList.add("gdactivearticle");
     gdAudioLinks.current = newId;
     if (!noEvent) articleview.onJsActiveArticleChanged("gdfrom-" + newId);
   }
