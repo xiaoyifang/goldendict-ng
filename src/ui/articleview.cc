@@ -1975,7 +1975,7 @@ void ArticleView::resourceDownloadFinished()
 }
 
 
-void ArticleView::audioDownloadFinished( sptr< Dictionary::DataRequest > req )
+void ArticleView::audioDownloadFinished( const sptr< Dictionary::DataRequest > & req )
 {
   if ( req->dataSize() >= 0 ) {
     // Ok, got one finished, all others are irrelevant now

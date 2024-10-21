@@ -153,7 +153,7 @@ public:
                  QString const & scrollTo  = QString(),
                  Contexts const & contexts = Contexts() );
   void playAudio( QUrl const & url );
-  void audioDownloadFinished( sptr< Dictionary::DataRequest > req );
+  void audioDownloadFinished( const sptr< Dictionary::DataRequest > & req );
 
   /// Called when the state of dictionary bar changes and the view is active.
   /// The function reloads content if the change affects it.
