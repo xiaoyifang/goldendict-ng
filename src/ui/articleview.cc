@@ -1236,7 +1236,7 @@ void ArticleView::playAudio( QUrl const & url )
       // here ourselves since otherwise we'd need to pass group id to netmgr
       // and it should've been having knowledge of the current groups, too.
 
-      sptr< Dictionary::Class > dict = dictionaryGroup->getDictionaryById( url.host() );
+      sptr< Dictionary::Class > dict = dictionaryGroup->getDictionaryById( url.host().toStdString() );
 
       if ( dict ) {
         try {
