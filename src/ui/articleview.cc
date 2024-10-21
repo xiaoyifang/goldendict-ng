@@ -1236,41 +1236,30 @@ void ArticleView::playAudio( QUrl const & url )
       // here ourselves since otherwise we'd need to pass group id to netmgr
       // and it should've been having knowledge of the current groups, too.
 
-      unsigned currentGroup = getGroup( ref );
+      sptr< Dictionary::Class > dict = dictionaryGroup->getDictionaryById( url.host() );
 
-      std::vector< sptr< Dictionary::Class > > const * activeDicts =
-        dictionaryGroup->getActiveDictionaries( currentGroup );
-
-      if ( activeDicts ) {
-
-        for ( unsigned x = 0; x < activeDicts->size(); ++x ) {
-          try {
-            if ( url.host().toStdString() != ( *activeDicts )[ x ]->getId() ) {
-              continue;
-            }
-
-            sptr< Dictionary::DataRequest > req =
-              ( *activeDicts )[ x ]->getResource( url.path().mid( 1 ).toUtf8().data() );
+      if ( dict ) {
+        try {
+          sptr< Dictionary::DataRequest > req = dict->getResource( url.path().mid( 1 ).toUtf8().data() );
 
 
-            if ( !req->isFinished() ) {
-              // Queued loading
-              connect( req.get(), &Dictionary::Request::finished, this, [ &req, this ]() {
-                audioDownloadFinished( req );
-              } );
-            }
-            else {
-              // Immediate loading
-              if ( req->dataSize() > 0 ) {
-                // Resource already found, stop next search
-                audioDownloadFinished( req );
-                break;
-              }
+          if ( !req->isFinished() ) {
+            // Queued loading
+            connect( req.get(), &Dictionary::Request::finished, this, [ &req, this ]() {
+              audioDownloadFinished( req );
+            } );
+          }
+          else {
+            // Immediate loading
+            if ( req->dataSize() > 0 ) {
+              // Resource already found, stop next search
+              audioDownloadFinished( req );
+              break;
             }
           }
-          catch ( std::exception & e ) {
-            emit statusBarMessage( tr( "ERROR: %1" ).arg( e.what() ), 10000, QPixmap( ":/icons/error.svg" ) );
-          }
+        }
+        catch ( std::exception & e ) {
+          emit statusBarMessage( tr( "ERROR: %1" ).arg( e.what() ), 10000, QPixmap( ":/icons/error.svg" ) );
         }
       }
     }
