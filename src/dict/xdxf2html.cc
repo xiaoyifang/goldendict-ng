@@ -654,14 +654,6 @@ string convert( string const & in,
         QDomElement el_script = dd.createElement( "script" );
         QDomNode parent       = el.parentNode();
         if ( !parent.isNull() ) {
-          if ( type == STARDICT ) {
-            string n = dictPtr->getContainingFolder().toStdString() + Utils::Fs::separator() + string( "res" )
-              + Utils::Fs::separator() + filename;
-          }
-          else {
-            string n = dictPtr->getDictionaryFilenames()[ 0 ] + ".files" + Utils::Fs::separator() + filename;
-          }
-
           QUrl url;
           url.setScheme( "gdau" );
           url.setHost( QString::fromUtf8( dictPtr->getId().c_str() ) );
