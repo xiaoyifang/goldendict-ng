@@ -633,7 +633,6 @@ void XdxfDictionary::loadArticle( uint32_t address, string & articleText, QStrin
                                     Xdxf2Html::XDXF,
                                     idxHeader.hasAbrv ? &abrv : NULL,
                                     this,
-                                    &resourceZip,
                                     fType == Logical,
                                     idxHeader.revisionNumber,
                                     headword );

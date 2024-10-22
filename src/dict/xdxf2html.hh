@@ -27,7 +27,6 @@ string convert( string const &,
                 DICT_TYPE type,
                 map< string, string > const * pAbrv,
                 Dictionary::Class * dictPtr,
-                IndexedZip * resourceZip,
                 bool isLogicalFormat    = false,
                 unsigned revisionNumber = 0,
                 QString * headword      = 0 );

@@ -70,7 +70,6 @@ string convert( string const & in,
                 DICT_TYPE type,
                 map< string, string > const * pAbrv,
                 Dictionary::Class * dictPtr,
-                IndexedZip * resourceZip,
                 bool isLogicalFormat,
                 unsigned revisionNumber,
                 QString * headword )
