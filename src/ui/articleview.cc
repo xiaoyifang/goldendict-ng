@@ -2198,12 +2198,18 @@ void ArticleView::highlightFTSResults()
   if ( regString.trimmed().isEmpty() ) {
     return;
   }
+  
+  QString accuracy = "exactly";
+
+  if ( regString.contains( QRegularExpression( "[\\x4e00-\\x9fa5]+" ) ) ) {
+    accuracy = "partially";
+  }
 
   QString script = QString(
                      "var context = document.querySelector(\"body\");\n"
                      "var instance = new Mark(context);\n instance.unmark();\n"
-                     "instance.mark(\"%1\",{\"accuracy\": \"exactly\"});" )
-                     .arg( regString );
+                     "instance.mark(\"%1\",{\"accuracy\": \"%2\"});" )
+                     .arg( regString, accuracy );
 
   webview->page()->runJavaScript( script );
   auto parts = regString.split( " ", Qt::SkipEmptyParts );
