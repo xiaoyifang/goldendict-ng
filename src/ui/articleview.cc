@@ -1037,18 +1037,12 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
             || Utils::Url::isAudioUrl( url ) ) {
     // Download it
 
-    // Clear any pending ones
-
-    resourceDownloadRequests.clear();
-
-    resourceDownloadUrl = url;
-
     if ( Utils::Url::isWebAudioUrl( url ) ) {
       sptr< Dictionary::DataRequest > req = std::make_shared< Dictionary::WebMultimediaDownload >( url, articleNetMgr );
 
-      resourceDownloadRequests.push_back( req );
-
-      connect( req.get(), &Dictionary::Request::finished, this, &ArticleView::resourceDownloadFinished );
+      connect( req.get(), &Dictionary::Request::finished, this, [ req,url, this ]() {
+        resourceDownloadFinished( req,url );
+      } );
     }
     else {
       // Normal resource download
@@ -1062,27 +1056,15 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
       }
       else if ( req->isFinished() && req->dataSize() >= 0 ) {
         // Have data ready, handle it
-        resourceDownloadRequests.push_back( req );
-        resourceDownloadFinished();
+        resourceDownloadFinished(req,url);
 
         return;
       }
       else if ( !req->isFinished() ) {
-        // Queue to be handled when done
-
-        resourceDownloadRequests.push_back( req );
-
-        connect( req.get(), &Dictionary::Request::finished, this, &ArticleView::resourceDownloadFinished );
+        connect( req.get(), &Dictionary::Request::finished, this, [ req, this ]() {
+          resourceDownloadFinished( req,url );
+        } );
       }
-    }
-
-    if ( resourceDownloadRequests.empty() ) // No requests were queued
-    {
-      qDebug() << tr( "The referenced resource doesn't exist." );
-      return;
-    }
-    else {
-      resourceDownloadFinished(); // Check any requests finished already
     }
   }
   else if ( url.scheme() == "gdprg" ) {
@@ -1711,20 +1693,13 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
   qDebug() << "title = " << r->title();
 }
 
-void ArticleView::resourceDownloadFinished()
+void ArticleView::resourceDownloadFinished( const sptr< Dictionary::DataRequest > & req, const QUrl & resourceDownloadUrl )
 {
-  if ( resourceDownloadRequests.empty() ) {
-    return; // Stray signal
-  }
-
-  // Find any finished resources
-  for ( list< sptr< Dictionary::DataRequest > >::iterator i = resourceDownloadRequests.begin();
-        i != resourceDownloadRequests.end(); ) {
-    if ( ( *i )->isFinished() ) {
-      if ( ( *i )->dataSize() >= 0 ) {
+    if ( req->isFinished() ) {
+      if ( req->dataSize() >= 0 ) {
         // Ok, got one finished, all others are irrelevant now
 
-        vector< char > const & data = ( *i )->getFullData();
+        vector< char > const & data = req->getFullData();
 
         if ( resourceDownloadUrl.scheme() == "gdau" || Utils::Url::isWebAudioUrl( resourceDownloadUrl ) ) {
           // Audio data
@@ -1766,29 +1741,9 @@ void ArticleView::resourceDownloadFinished()
               tr( "Failed to auto-open resource file, try opening manually: %1." ).arg( fileName ) );
           }
         }
-
-        // Ok, whatever it was, it's finished. Remove this and any other
-        // requests and finish.
-
-        resourceDownloadRequests.clear();
-
         return;
       }
-      else {
-        // This one had no data. Erase it.
-        resourceDownloadRequests.erase( i++ );
-      }
     }
-    else { // Unfinished, wait.
-      break;
-    }
-  }
-
-  if ( resourceDownloadRequests.empty() ) {
-    // emit statusBarMessage(
-    //     tr("WARNING: %1").arg(tr("The referenced resource failed to download.")),
-    //     10000, QPixmap(":/icons/error.svg"));
-  }
 }
 
 void ArticleView::audioPlayerError( QString const & message )
