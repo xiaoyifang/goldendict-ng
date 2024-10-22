@@ -1061,7 +1061,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
         return;
       }
       else if ( !req->isFinished() ) {
-        connect( req.get(), &Dictionary::Request::finished, this, [ req, this ]() {
+        connect( req.get(), &Dictionary::Request::finished, this, [ req, url, this ]() {
           resourceDownloadFinished( req, url );
         } );
       }
