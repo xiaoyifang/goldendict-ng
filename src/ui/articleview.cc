@@ -1716,24 +1716,18 @@ void ArticleView::resourceDownloadFinished( const sptr< Dictionary::DataRequest 
         }
       }
       else {
-        // Create a temporary file
-        // Remove the ones previously used, if any
-        cleanupTemp();
         QString fileName;
 
-        {
-          QTemporaryFile tmp( QDir::temp().filePath( "XXXXXX-" + resourceDownloadUrl.path().section( '/', -1 ) ),
-                              this );
+        QTemporaryFile tmp( QDir::temp().filePath( "XXXXXX-" + resourceDownloadUrl.path().section( '/', -1 ) ), this );
 
-          if ( !tmp.open() || (size_t)tmp.write( &data.front(), data.size() ) != data.size() ) {
-            QMessageBox::critical( this, "GoldenDict", tr( "Failed to create temporary file." ) );
-            return;
-          }
-
-          tmp.setAutoRemove( false );
-
-          desktopOpenedTempFiles.insert( fileName = tmp.fileName() );
+        if ( !tmp.open() || (size_t)tmp.write( &data.front(), data.size() ) != data.size() ) {
+          QMessageBox::critical( this, "GoldenDict", tr( "Failed to create temporary file." ) );
+          return;
         }
+
+        tmp.setAutoRemove( false );
+
+        desktopOpenedTempFiles.insert( fileName = tmp.fileName() );
 
         if ( !QDesktopServices::openUrl( QUrl::fromLocalFile( fileName ) ) ) {
           QMessageBox::critical( this,
