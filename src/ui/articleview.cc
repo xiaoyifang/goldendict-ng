@@ -1050,79 +1050,6 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
 
       connect( req.get(), &Dictionary::Request::finished, this, &ArticleView::resourceDownloadFinished );
     }
-    else if ( url.scheme() == "gdau" && url.host() == "search" ) {
-      // Since searches should be limited to current group, we just do them
-      // here ourselves since otherwise we'd need to pass group id to netmgr
-      // and it should've been having knowledge of the current groups, too.
-
-      unsigned currentGroup = getGroup( ref );
-
-      std::vector< sptr< Dictionary::Class > > const * activeDicts =
-        dictionaryGroup->getActiveDictionaries( currentGroup );
-
-      if ( activeDicts ) {
-        unsigned preferred = UINT_MAX;
-        if ( url.hasFragment() ) {
-          // Find sound in the preferred dictionary
-          QString preferredName = Utils::Url::fragment( url );
-          try {
-            for ( unsigned x = 0; x < activeDicts->size(); ++x ) {
-              if ( preferredName.compare( QString::fromUtf8( ( *activeDicts )[ x ]->getName().c_str() ) ) == 0 ) {
-                preferred = x;
-                sptr< Dictionary::DataRequest > req =
-                  ( *activeDicts )[ x ]->getResource( url.path().mid( 1 ).toUtf8().data() );
-
-                resourceDownloadRequests.push_back( req );
-
-                if ( !req->isFinished() ) {
-                  // Queued loading
-                  connect( req.get(), &Dictionary::Request::finished, this, &ArticleView::resourceDownloadFinished );
-                }
-                else {
-                  // Immediate loading
-                  if ( req->dataSize() > 0 ) {
-                    // Resource already found, stop next search
-                    resourceDownloadFinished();
-                    return;
-                  }
-                }
-                break;
-              }
-            }
-          }
-          catch ( std::exception & e ) {
-            emit statusBarMessage( tr( "ERROR: %1" ).arg( e.what() ), 10000, QPixmap( ":/icons/error.svg" ) );
-          }
-        }
-        for ( unsigned x = 0; x < activeDicts->size(); ++x ) {
-          try {
-            if ( x == preferred ) {
-              continue;
-            }
-
-            sptr< Dictionary::DataRequest > req =
-              ( *activeDicts )[ x ]->getResource( url.path().mid( 1 ).toUtf8().data() );
-
-            resourceDownloadRequests.push_back( req );
-
-            if ( !req->isFinished() ) {
-              // Queued loading
-              connect( req.get(), &Dictionary::Request::finished, this, &ArticleView::resourceDownloadFinished );
-            }
-            else {
-              // Immediate loading
-              if ( req->dataSize() > 0 ) {
-                // Resource already found, stop next search
-                break;
-              }
-            }
-          }
-          catch ( std::exception & e ) {
-            emit statusBarMessage( tr( "ERROR: %1" ).arg( e.what() ), 10000, QPixmap( ":/icons/error.svg" ) );
-          }
-        }
-      }
-    }
     else {
       // Normal resource download
       QString contentType;
@@ -1224,75 +1151,12 @@ ResourceToSaveHandler * ArticleView::saveResource( const QUrl & url, const QUrl 
   sptr< Dictionary::DataRequest > req;
 
   if ( url.scheme() == "bres" || url.scheme() == "gico" || url.scheme() == "gdau" || url.scheme() == "gdvideo" ) {
-    if ( url.host() == "search" ) {
-      // Since searches should be limited to current group, we just do them
-      // here ourselves since otherwise we'd need to pass group id to netmgr
-      // and it should've been having knowledge of the current groups, too.
+    // Normal resource download
+    QString contentType;
+    req = articleNetMgr.getResource( url, contentType );
 
-      unsigned currentGroup = getGroup( ref );
-
-      std::vector< sptr< Dictionary::Class > > const * activeDicts =
-        dictionaryGroup->getActiveDictionaries( currentGroup );
-
-      if ( activeDicts ) {
-        unsigned preferred = UINT_MAX;
-        if ( url.hasFragment() && url.scheme() == "gdau" ) {
-          // Find sound in the preferred dictionary
-          QString preferredName = Utils::Url::fragment( url );
-          for ( unsigned x = 0; x < activeDicts->size(); ++x ) {
-            try {
-              if ( preferredName.compare( QString::fromUtf8( ( *activeDicts )[ x ]->getName().c_str() ) ) == 0 ) {
-                preferred = x;
-                sptr< Dictionary::DataRequest > data_request =
-                  ( *activeDicts )[ x ]->getResource( url.path().mid( 1 ).toUtf8().data() );
-
-                handler->addRequest( data_request );
-
-                if ( data_request->isFinished() && data_request->dataSize() > 0 ) {
-                  handler->downloadFinished();
-                  return handler;
-                }
-                break;
-              }
-            }
-            catch ( std::exception & e ) {
-              gdWarning( "getResource request error (%s) in \"%s\"\n",
-                         e.what(),
-                         ( *activeDicts )[ x ]->getName().c_str() );
-            }
-          }
-        }
-        for ( unsigned x = 0; x < activeDicts->size(); ++x ) {
-          try {
-            if ( x == preferred ) {
-              continue;
-            }
-
-            req = ( *activeDicts )[ x ]->getResource( Utils::Url::path( url ).mid( 1 ).toUtf8().data() );
-
-            handler->addRequest( req );
-
-            if ( req->isFinished() && req->dataSize() > 0 ) {
-              // Resource already found, stop next search
-              break;
-            }
-          }
-          catch ( std::exception & e ) {
-            gdWarning( "getResource request error (%s) in \"%s\"\n",
-                       e.what(),
-                       ( *activeDicts )[ x ]->getName().c_str() );
-          }
-        }
-      }
-    }
-    else {
-      // Normal resource download
-      QString contentType;
-      req = articleNetMgr.getResource( url, contentType );
-
-      if ( req.get() ) {
-        handler->addRequest( req );
-      }
+    if ( req.get() ) {
+      handler->addRequest( req );
     }
   }
   else {
