@@ -1696,45 +1696,46 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
 void ArticleView::resourceDownloadFinished( const sptr< Dictionary::DataRequest > & req,
                                             const QUrl & resourceDownloadUrl )
 {
-  if ( req->isFinished() ) {
-    if ( req->dataSize() >= 0 ) {
-      vector< char > const & data = req->getFullData();
+  if ( !req->isFinished() ) {
+    return;
+  }
+  if ( req->dataSize() >= 0 ) {
+    vector< char > const & data = req->getFullData();
 
-      if ( resourceDownloadUrl.scheme() == "gdau" || Utils::Url::isWebAudioUrl( resourceDownloadUrl ) ) {
-        // Audio data
-        audioPlayer->stop();
-        connect( audioPlayer.data(),
-                 &AudioPlayerInterface::error,
-                 this,
-                 &ArticleView::audioPlayerError,
-                 Qt::UniqueConnection );
-        QString errorMessage = audioPlayer->play( data.data(), data.size() );
-        if ( !errorMessage.isEmpty() ) {
-          QMessageBox::critical( this, "GoldenDict", tr( "Failed to play sound file: %1" ).arg( errorMessage ) );
-        }
+    if ( resourceDownloadUrl.scheme() == "gdau" || Utils::Url::isWebAudioUrl( resourceDownloadUrl ) ) {
+      // Audio data
+      audioPlayer->stop();
+      connect( audioPlayer.data(),
+               &AudioPlayerInterface::error,
+               this,
+               &ArticleView::audioPlayerError,
+               Qt::UniqueConnection );
+      QString errorMessage = audioPlayer->play( data.data(), data.size() );
+      if ( !errorMessage.isEmpty() ) {
+        QMessageBox::critical( this, "GoldenDict", tr( "Failed to play sound file: %1" ).arg( errorMessage ) );
       }
-      else {
-        QString fileName;
-
-        QTemporaryFile tmp( QDir::temp().filePath( "XXXXXX-" + resourceDownloadUrl.path().section( '/', -1 ) ), this );
-
-        if ( !tmp.open() || (size_t)tmp.write( &data.front(), data.size() ) != data.size() ) {
-          QMessageBox::critical( this, "GoldenDict", tr( "Failed to create temporary file." ) );
-          return;
-        }
-
-        tmp.setAutoRemove( false );
-
-        desktopOpenedTempFiles.insert( fileName = tmp.fileName() );
-
-        if ( !QDesktopServices::openUrl( QUrl::fromLocalFile( fileName ) ) ) {
-          QMessageBox::critical( this,
-                                 "GoldenDict",
-                                 tr( "Failed to auto-open resource file, try opening manually: %1." ).arg( fileName ) );
-        }
-      }
-      return;
     }
+    else {
+      QString fileName;
+
+      QTemporaryFile tmp( QDir::temp().filePath( "XXXXXX-" + resourceDownloadUrl.path().section( '/', -1 ) ), this );
+
+      if ( !tmp.open() || (size_t)tmp.write( &data.front(), data.size() ) != data.size() ) {
+        QMessageBox::critical( this, "GoldenDict", tr( "Failed to create temporary file." ) );
+        return;
+      }
+
+      tmp.setAutoRemove( false );
+
+      desktopOpenedTempFiles.insert( fileName = tmp.fileName() );
+
+      if ( !QDesktopServices::openUrl( QUrl::fromLocalFile( fileName ) ) ) {
+        QMessageBox::critical( this,
+                               "GoldenDict",
+                               tr( "Failed to auto-open resource file, try opening manually: %1." ).arg( fileName ) );
+      }
+    }
+    return;
   }
 }
 
