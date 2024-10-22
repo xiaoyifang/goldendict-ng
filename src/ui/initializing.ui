@@ -3,7 +3,7 @@
  <class>Initializing</class>
  <widget class="QDialog" name="Initializing">
   <property name="windowModality">
-   <enum>Qt::WindowModality::ApplicationModal</enum>
+   <enum>Qt::ApplicationModal</enum>
   </property>
   <property name="geometry">
    <rect>
@@ -75,7 +75,7 @@
     <number>-1</number>
    </property>
    <property name="alignment">
-    <set>Qt::AlignmentFlag::AlignCenter</set>
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QWidget" name="layoutWidget">
@@ -105,7 +105,7 @@
        <string>Indexing: </string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
       </property>
      </widget>
     </item>
@@ -127,7 +127,7 @@
        <string>Dictionary Name</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
       <property name="wordWrap">
        <bool>true</bool>
