@@ -1698,8 +1698,6 @@ void ArticleView::resourceDownloadFinished( const sptr< Dictionary::DataRequest 
 {
   if ( req->isFinished() ) {
     if ( req->dataSize() >= 0 ) {
-      // Ok, got one finished, all others are irrelevant now
-
       vector< char > const & data = req->getFullData();
 
       if ( resourceDownloadUrl.scheme() == "gdau" || Utils::Url::isWebAudioUrl( resourceDownloadUrl ) ) {
