@@ -2198,7 +2198,7 @@ void ArticleView::highlightFTSResults()
   if ( regString.trimmed().isEmpty() ) {
     return;
   }
-  
+
   QString accuracy = "exactly";
 
   if ( regString.contains( QRegularExpression( "[\\x4e00-\\x9fa5]+" ) ) ) {
