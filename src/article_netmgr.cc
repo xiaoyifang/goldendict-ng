@@ -258,29 +258,25 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( QUrl c
     contentType        = mineType.name();
     string id          = url.host().toStdString();
 
-    bool search = ( id == "search" );
-
-    if ( !search ) {
-      for ( const auto & dictionary : dictionaries ) {
-        if ( dictionary->getId() == id ) {
-          if ( url.scheme() == "gico" ) {
-            QByteArray bytes;
-            QBuffer buffer( &bytes );
-            buffer.open( QIODevice::WriteOnly );
-            dictionary->getIcon().pixmap( 64 ).save( &buffer, "PNG" );
-            buffer.close();
-            sptr< Dictionary::DataRequestInstant > ico = std::make_shared< Dictionary::DataRequestInstant >( true );
-            ico->getData().resize( bytes.size() );
-            memcpy( &( ico->getData().front() ), bytes.data(), bytes.size() );
-            return ico;
-          }
-          try {
-            return dictionary->getResource( Utils::Url::path( url ).mid( 1 ).toUtf8().data() );
-          }
-          catch ( std::exception & e ) {
-            gdWarning( "getResource request error (%s) in \"%s\"\n", e.what(), dictionary->getName().c_str() );
-            return {};
-          }
+    for ( const auto & dictionary : dictionaries ) {
+      if ( dictionary->getId() == id ) {
+        if ( url.scheme() == "gico" ) {
+          QByteArray bytes;
+          QBuffer buffer( &bytes );
+          buffer.open( QIODevice::WriteOnly );
+          dictionary->getIcon().pixmap( 64 ).save( &buffer, "PNG" );
+          buffer.close();
+          sptr< Dictionary::DataRequestInstant > ico = std::make_shared< Dictionary::DataRequestInstant >( true );
+          ico->getData().resize( bytes.size() );
+          memcpy( &( ico->getData().front() ), bytes.data(), bytes.size() );
+          return ico;
+        }
+        try {
+          return dictionary->getResource( Utils::Url::path( url ).mid( 1 ).toUtf8().data() );
+        }
+        catch ( std::exception & e ) {
+          gdWarning( "getResource request error (%s) in \"%s\"\n", e.what(), dictionary->getName().c_str() );
+          return {};
         }
       }
     }
