@@ -851,18 +851,11 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
     string n        = resourceDir1 + filename;
 
     if ( Filetype::isNameOfSound( filename ) ) {
-      // If we have the file here, do the exact reference to this dictionary.
-      // Otherwise, make a global 'search' one.
-
-      bool search = !File::exists( n ) && !File::exists( resourceDir2 + filename )
-        && !File::exists( getContainingFolder().toStdString() + Utils::Fs::separator() + filename )
-        && ( !resourceZip.isOpen() || !resourceZip.hasFile( Utf8::decode( filename ) ) );
-
       QUrl url;
       url.setScheme( "gdau" );
-      url.setHost( QString::fromUtf8( search ? "search" : getId().c_str() ) );
+      url.setHost( QString::fromUtf8( getId().c_str() ) );
       url.setPath( Utils::Url::ensureLeadingSlash( QString::fromUtf8( filename.c_str() ) ) );
-      if ( search && idxHeader.hasSoundDictionaryName ) {
+      if ( idxHeader.hasSoundDictionaryName ) {
         Utils::Url::setFragment( url, QString::fromUtf8( preferredSoundDictionary.c_str() ) );
       }
 

@@ -654,24 +654,17 @@ string convert( string const & in,
         QDomElement el_script = dd.createElement( "script" );
         QDomNode parent       = el.parentNode();
         if ( !parent.isNull() ) {
-          bool search = false;
           if ( type == STARDICT ) {
             string n = dictPtr->getContainingFolder().toStdString() + Utils::Fs::separator() + string( "res" )
               + Utils::Fs::separator() + filename;
-            search = !File::exists( n )
-              && ( !resourceZip || !resourceZip->isOpen() || !resourceZip->hasFile( Utf8::decode( filename ) ) );
           }
           else {
             string n = dictPtr->getDictionaryFilenames()[ 0 ] + ".files" + Utils::Fs::separator() + filename;
-            search   = !File::exists( n )
-              && !File::exists( dictPtr->getContainingFolder().toStdString() + Utils::Fs::separator() + filename )
-              && ( !resourceZip || !resourceZip->isOpen() || !resourceZip->hasFile( Utf8::decode( filename ) ) );
           }
-
 
           QUrl url;
           url.setScheme( "gdau" );
-          url.setHost( QString::fromUtf8( search ? "search" : dictPtr->getId().c_str() ) );
+          url.setHost( QString::fromUtf8( dictPtr->getId().c_str() ) );
           url.setPath( Utils::Url::ensureLeadingSlash( QString::fromUtf8( filename.c_str() ) ) );
 
           el_script.setAttribute( "type", "text/javascript" );
