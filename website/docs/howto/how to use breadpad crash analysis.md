@@ -1,7 +1,7 @@
 Introduction
 ----------------------
 
-Goldendict-ng has provide an option to build the application with [breakpad](https://docs.sentry.io/platforms/native/guides/breakpad/)
+GoldenDict-ng has provide an option to build the application with [breakpad](https://docs.sentry.io/platforms/native/guides/breakpad/)
 
 `CONFIG+=use_breakpad` to enable this feature.
 

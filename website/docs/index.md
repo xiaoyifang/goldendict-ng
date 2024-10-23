@@ -1,6 +1,18 @@
-This is the Next Generation GoldenDict.
+GoldenDict-ng is an advanced dictionary lookup program.
 
-The Best Multi-format Cross-platform Open-Source Dictionaries Lookup Program.
+## Features
+
+* Supports many dictionary formats, such as MDX, DSL, StarDict, Zim...
+* Presents lookup results of multiple dictionaries in the same page
+* Supports special types of "dictionaries", such as external program, website, audio files...
+* Lots of auxiliary features
+    * Popup window
+    * Full text search
+    * Anki integration
+    * Transliteration for some languages
+    * Word stemming and spelling correction via Hunspell's morphology analysis 
+    * Unicode case, diacritics, punctuation and whitespace folding (e.g. typing 'Grussen' would yield 'grüßen' in German dictionaries).
+    * ...
 
 ## Screenshots
 On Windows 11 with default theme:
@@ -18,3 +30,5 @@ On Linux with custom Qt color theme
 ## Project history
 
 This project is forked from the original GoldenDict which was developed at <http://goldendict.org/>
+
+The `-ng` in name means "next generation".
