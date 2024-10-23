@@ -723,7 +723,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
              auto view = getCurrentArticleView();
              if ( ( cfg.preferences.pronounceOnLoadMain ) && view != nullptr ) {
 
-               view->openLink( QUrl::fromEncoded( audioUrl.toUtf8() ), {} );
+               view->playAudio( QUrl::fromEncoded( audioUrl.toUtf8() ) );
              }
            } );
   applyProxySettings();

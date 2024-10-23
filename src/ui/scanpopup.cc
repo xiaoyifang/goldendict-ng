@@ -169,8 +169,7 @@ ScanPopup::ScanPopup( QWidget * parent,
                return;
              }
              if ( cfg.preferences.pronounceOnLoadPopup ) {
-
-               definition->openLink( QUrl::fromEncoded( audioUrl.toUtf8() ), {} );
+               definition->playAudio( QUrl::fromEncoded( audioUrl.toUtf8() ) );
              }
            } );
   pinnedGeometry = cfg.popupWindowGeometry;
