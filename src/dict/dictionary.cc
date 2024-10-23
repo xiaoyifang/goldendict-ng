@@ -181,13 +181,11 @@ sptr< WordSearchRequest > Class::stemmedMatch( wstring const & /*str*/,
                                                unsigned /*minLength*/,
                                                unsigned /*maxSuffixVariation*/,
                                                unsigned long /*maxResults*/ )
-
 {
   return std::make_shared< WordSearchRequestInstant >();
 }
 
 sptr< WordSearchRequest > Class::findHeadwordsForSynonym( wstring const & )
-
 {
   return std::make_shared< WordSearchRequestInstant >();
 }

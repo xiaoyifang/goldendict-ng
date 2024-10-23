@@ -1038,18 +1038,12 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
             || Utils::Url::isAudioUrl( url ) ) {
     // Download it
 
-    // Clear any pending ones
-
-    resourceDownloadRequests.clear();
-
-    resourceDownloadUrl = url;
-
     if ( Utils::Url::isWebAudioUrl( url ) ) {
       sptr< Dictionary::DataRequest > req = std::make_shared< Dictionary::WebMultimediaDownload >( url, articleNetMgr );
 
-      resourceDownloadRequests.push_back( req );
-
-      connect( req.get(), &Dictionary::Request::finished, this, &ArticleView::resourceDownloadFinished );
+      connect( req.get(), &Dictionary::Request::finished, this, [ req, url, this ]() {
+        resourceDownloadFinished( req, url );
+      } );
     }
     else {
       // Normal resource download
@@ -1063,27 +1057,15 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
       }
       else if ( req->isFinished() && req->dataSize() >= 0 ) {
         // Have data ready, handle it
-        resourceDownloadRequests.push_back( req );
-        resourceDownloadFinished();
+        resourceDownloadFinished( req, url );
 
         return;
       }
       else if ( !req->isFinished() ) {
-        // Queue to be handled when done
-
-        resourceDownloadRequests.push_back( req );
-
-        connect( req.get(), &Dictionary::Request::finished, this, &ArticleView::resourceDownloadFinished );
+        connect( req.get(), &Dictionary::Request::finished, this, [ req, url, this ]() {
+          resourceDownloadFinished( req, url );
+        } );
       }
-    }
-
-    if ( resourceDownloadRequests.empty() ) // No requests were queued
-    {
-      qDebug() << tr( "The referenced resource doesn't exist." );
-      return;
-    }
-    else {
-      resourceDownloadFinished(); // Check any requests finished already
     }
   }
   else if ( url.scheme() == "gdprg" ) {
@@ -1754,83 +1736,49 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
   qDebug() << "title = " << r->title();
 }
 
-void ArticleView::resourceDownloadFinished()
+void ArticleView::resourceDownloadFinished( const sptr< Dictionary::DataRequest > & req,
+                                            const QUrl & resourceDownloadUrl )
 {
-  if ( resourceDownloadRequests.empty() ) {
-    return; // Stray signal
+  if ( !req->isFinished() ) {
+    return;
   }
+  if ( req->dataSize() >= 0 ) {
+    vector< char > const & data = req->getFullData();
 
-  // Find any finished resources
-  for ( list< sptr< Dictionary::DataRequest > >::iterator i = resourceDownloadRequests.begin();
-        i != resourceDownloadRequests.end(); ) {
-    if ( ( *i )->isFinished() ) {
-      if ( ( *i )->dataSize() >= 0 ) {
-        // Ok, got one finished, all others are irrelevant now
+    if ( resourceDownloadUrl.scheme() == "gdau" || Utils::Url::isWebAudioUrl( resourceDownloadUrl ) ) {
+      // Audio data
+      audioPlayer->stop();
+      connect( audioPlayer.data(),
+               &AudioPlayerInterface::error,
+               this,
+               &ArticleView::audioPlayerError,
+               Qt::UniqueConnection );
+      QString errorMessage = audioPlayer->play( data.data(), data.size() );
+      if ( !errorMessage.isEmpty() ) {
+        QMessageBox::critical( this, "GoldenDict", tr( "Failed to play sound file: %1" ).arg( errorMessage ) );
+      }
+    }
+    else {
+      QString fileName;
 
-        vector< char > const & data = ( *i )->getFullData();
+      QTemporaryFile tmp( QDir::temp().filePath( "XXXXXX-" + resourceDownloadUrl.path().section( '/', -1 ) ), this );
 
-        if ( resourceDownloadUrl.scheme() == "gdau" || Utils::Url::isWebAudioUrl( resourceDownloadUrl ) ) {
-          // Audio data
-          audioPlayer->stop();
-          connect( audioPlayer.data(),
-                   &AudioPlayerInterface::error,
-                   this,
-                   &ArticleView::audioPlayerError,
-                   Qt::UniqueConnection );
-          QString errorMessage = audioPlayer->play( data.data(), data.size() );
-          if ( !errorMessage.isEmpty() ) {
-            QMessageBox::critical( this, "GoldenDict", tr( "Failed to play sound file: %1" ).arg( errorMessage ) );
-          }
-        }
-        else {
-          // Create a temporary file
-          // Remove the ones previously used, if any
-          cleanupTemp();
-          QString fileName;
-
-          {
-            QTemporaryFile tmp( QDir::temp().filePath( "XXXXXX-" + resourceDownloadUrl.path().section( '/', -1 ) ),
-                                this );
-
-            if ( !tmp.open() || (size_t)tmp.write( &data.front(), data.size() ) != data.size() ) {
-              QMessageBox::critical( this, "GoldenDict", tr( "Failed to create temporary file." ) );
-              return;
-            }
-
-            tmp.setAutoRemove( false );
-
-            desktopOpenedTempFiles.insert( fileName = tmp.fileName() );
-          }
-
-          if ( !QDesktopServices::openUrl( QUrl::fromLocalFile( fileName ) ) ) {
-            QMessageBox::critical(
-              this,
-              "GoldenDict",
-              tr( "Failed to auto-open resource file, try opening manually: %1." ).arg( fileName ) );
-          }
-        }
-
-        // Ok, whatever it was, it's finished. Remove this and any other
-        // requests and finish.
-
-        resourceDownloadRequests.clear();
-
+      if ( !tmp.open() || (size_t)tmp.write( &data.front(), data.size() ) != data.size() ) {
+        QMessageBox::critical( this, "GoldenDict", tr( "Failed to create temporary file." ) );
         return;
       }
-      else {
-        // This one had no data. Erase it.
-        resourceDownloadRequests.erase( i++ );
+
+      tmp.setAutoRemove( false );
+
+      desktopOpenedTempFiles.insert( fileName = tmp.fileName() );
+
+      if ( !QDesktopServices::openUrl( QUrl::fromLocalFile( fileName ) ) ) {
+        QMessageBox::critical( this,
+                               "GoldenDict",
+                               tr( "Failed to auto-open resource file, try opening manually: %1." ).arg( fileName ) );
       }
     }
-    else { // Unfinished, wait.
-      break;
-    }
-  }
-
-  if ( resourceDownloadRequests.empty() ) {
-    // emit statusBarMessage(
-    //     tr("WARNING: %1").arg(tr("The referenced resource failed to download.")),
-    //     10000, QPixmap(":/icons/error.svg"));
+    return;
   }
 }
 

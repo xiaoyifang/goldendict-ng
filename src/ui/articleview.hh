@@ -52,13 +52,6 @@ class ArticleView: public QWidget
   /// An action used to create Anki notes.
   QAction sendToAnkiAction{ tr( "&Create Anki note" ), this };
 
-  /// Any resource we've decided to download off the dictionary gets stored here.
-  /// Full vector capacity is used for search requests, where we have to make
-  /// a multitude of requests.
-  std::list< sptr< Dictionary::DataRequest > > resourceDownloadRequests;
-  /// Url of the resourceDownloadRequests
-  QUrl resourceDownloadUrl;
-
   /// For resources opened via desktop services
   QSet< QString > desktopOpenedTempFiles;
 
@@ -342,7 +335,7 @@ private slots:
     return ( targetUrl.scheme() == "gdau" || Utils::Url::isAudioUrl( targetUrl ) );
   }
 
-  void resourceDownloadFinished();
+  void resourceDownloadFinished( const sptr< Dictionary::DataRequest > & req, const QUrl & resourceDownloadUrl );
 
   /// We handle pasting by attempting to define the word in clipboard.
   void pasteTriggered();
