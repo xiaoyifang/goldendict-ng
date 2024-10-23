@@ -25,7 +25,7 @@ Under GoldenDict's configuration folder, you can create a "styles" folder for "A
 Folder structure like below will create two “addon” styles to switch in settings -> appearances.
 
 ```
-.    <- Goldendict's configuration folder
+.    <- GD's configuration folder
 ├── config
 └── styles
     ├── dark

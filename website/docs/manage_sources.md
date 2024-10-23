@@ -24,7 +24,7 @@ GoldenDict will scan these folders and add found dictionaries into dictionaries 
 
 Similar to Files, you can either add a folder which contains sound files or a `.zip` archive which contains the sound files.
 
-Goldendict will search through the sound file names when querying words.
+GD will search through the sound file names when querying words.
 
 ## Morphology
 
