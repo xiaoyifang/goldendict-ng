@@ -456,7 +456,7 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
   // See "Type identifiers" at http://www.huzheng.org/stardict/StarDictFileFormat
   switch ( type ) {
     case 'x': // Xdxf content
-      return Xdxf2Html::convert( string( resource, size ), Xdxf2Html::STARDICT, NULL, this, &resourceZip );
+      return Xdxf2Html::convert( string( resource, size ), Xdxf2Html::STARDICT, NULL, this );
     case 'h': // Html content
     {
       QString articleText = QString( "<div class=\"sdct_h\">" ) + QString::fromUtf8( resource, size ) + "</div>";

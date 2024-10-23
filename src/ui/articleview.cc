@@ -1142,11 +1142,6 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
 
 ResourceToSaveHandler * ArticleView::saveResource( const QUrl & url, const QString & fileName )
 {
-  return saveResource( url, webview->url(), fileName );
-}
-
-ResourceToSaveHandler * ArticleView::saveResource( const QUrl & url, const QUrl & ref, const QString & fileName )
-{
   ResourceToSaveHandler * handler = new ResourceToSaveHandler( this, fileName );
   sptr< Dictionary::DataRequest > req;
 
@@ -1659,7 +1654,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
       if ( !fileName.isEmpty() ) {
         QFileInfo fileInfo( fileName );
         emit storeResourceSavePath( QDir::toNativeSeparators( fileInfo.absoluteDir().absolutePath() ) );
-        saveResource( url, webview->url(), fileName );
+        saveResource( url, fileName );
       }
     }
     else if ( result == openImageAction ) {
@@ -1682,7 +1677,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
 
       if ( !fileName.isEmpty() ) {
         QFileInfo fileInfo( fileName );
-        auto handler = saveResource( url, webview->url(), fileName );
+        auto handler = saveResource( url, fileName );
 
         if ( !handler->isEmpty() ) {
           connect( handler, &ResourceToSaveHandler::done, this, [ fileName ]() {

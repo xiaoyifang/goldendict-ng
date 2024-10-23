@@ -248,7 +248,6 @@ public:
   void setActiveArticleId( QString const & );
 
   ResourceToSaveHandler * saveResource( const QUrl & url, const QString & fileName );
-  ResourceToSaveHandler * saveResource( const QUrl & url, const QUrl & ref, const QString & fileName );
 
   void findText( QString & text,
                  const QWebEnginePage::FindFlags & f,
