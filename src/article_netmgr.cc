@@ -380,15 +380,20 @@ qint64 ArticleResourceReply::readData( char * out, qint64 maxSize )
     return finished ? -1 : 0;
   }
 
-
   qint64 const left = avail - alreadyRead;
 
   qint64 const toRead = maxSize < left ? maxSize : left;
   if ( !toRead && finished ) {
     return -1;
   }
-  GD_DPRINTF( "====reading  %d of (%lld) bytes . Finished: %d", (int)toRead, avail, finished );
-
+  GD_DPRINTF( "====reading  %lld of (%lld) bytes, %lld bytes readed . Finish status: %d",
+              toRead,
+              avail,
+              alreadyRead,
+              finished );
+  if ( toRead == 0 ) {
+    return 0;
+  }
   try {
     req->getDataSlice( alreadyRead, toRead, out );
   }
