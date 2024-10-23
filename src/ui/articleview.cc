@@ -2201,7 +2201,7 @@ void ArticleView::highlightFTSResults()
 
   QString accuracy = "exactly";
 
-  if ( regString.contains( QRegularExpression( "[\\x4e00-\\x9fa5]+" ) ) ) {
+if ( std::any_of(regString.begin(), regString.end(), [](QChar& a) { return a.script() == QChar::Script_Han; })) {
     accuracy = "partially";
   }
 
