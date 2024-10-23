@@ -389,7 +389,7 @@ qint64 ArticleResourceReply::readData( char * out, qint64 maxSize )
   if ( toRead == 0 ) {
     return 0;
   }
-  
+
   GD_DPRINTF( "====reading  %lld of (%lld) bytes, %lld bytes readed . Finish status: %d",
               toRead,
               avail,
