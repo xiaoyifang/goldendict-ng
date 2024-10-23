@@ -2058,11 +2058,19 @@ void ArticleView::highlightFTSResults()
     return;
   }
 
+  QString accuracy = "exactly";
+
+  if ( std::any_of( regString.begin(), regString.end(), []( QChar & a ) {
+         return a.script() == QChar::Script_Han;
+       } ) ) {
+    accuracy = "partially";
+  }
+
   QString script = QString(
                      "var context = document.querySelector(\"body\");\n"
                      "var instance = new Mark(context);\n instance.unmark();\n"
-                     "instance.mark(\"%1\",{\"accuracy\": \"exactly\"});" )
-                     .arg( regString );
+                     "instance.mark(\"%1\",{\"accuracy\": \"%2\"});" )
+                     .arg( regString, accuracy );
 
   webview->page()->runJavaScript( script );
   auto parts = regString.split( " ", Qt::SkipEmptyParts );
