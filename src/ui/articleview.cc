@@ -435,6 +435,8 @@ void ArticleView::loadFinished( bool result )
   QUrl url = webview->url();
   qDebug() << "article view loaded url:" << url.url().left( 200 ) << result;
 
+  webview->unsetCursor();
+
   if ( url.url() == "about:blank" ) {
     return;
   }
@@ -458,7 +460,6 @@ void ArticleView::loadFinished( bool result )
     setActiveArticleId( "" );
   }
 
-  webview->unsetCursor();
 
   // Expand collapsed article if only one loaded
   webview->page()->runJavaScript( QString( "gdCheckArticlesNumber();" ) );
