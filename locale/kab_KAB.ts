@@ -252,7 +252,7 @@
     </message>
     <message>
       <source>Save sound</source>
-      <translation type="unfinished">Save sound</translation>
+      <translation>Sekles imesli</translation>
     </message>
     <message>
       <source>Sound files (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
@@ -3617,11 +3617,11 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <name>ProgramsModel</name>
     <message>
       <source>Enabled</source>
-      <translation type="unfinished">Enabled</translation>
+      <translation>Yermed</translation>
     </message>
     <message>
       <source>Type</source>
-      <translation type="unfinished">Type</translation>
+      <translation>Anaw</translation>
     </message>
     <message>
       <source>Name</source>
@@ -3629,7 +3629,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Command Line</source>
-      <translation type="unfinished">Command Line</translation>
+      <translation>Izirig n tladan</translation>
     </message>
     <message>
       <source>Icon</source>
@@ -3652,27 +3652,27 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Version: %1%2</source>
-      <translation type="unfinished">Version: %1%2</translation>
+      <translation>Lqem: %1%2</translation>
     </message>
     <message>
       <source>Author: %1%2</source>
-      <translation type="unfinished">Author: %1%2</translation>
+      <translation>Ameskar: %1%2</translation>
     </message>
     <message>
       <source>E-mail: %1%2</source>
-      <translation type="unfinished">E-mail: %1%2</translation>
+      <translation>Imayl: %1%2</translation>
     </message>
     <message>
       <source>Title: %1%2</source>
-      <translation type="unfinished">Title: %1%2</translation>
+      <translation>Azwel: %1%2</translation>
     </message>
     <message>
       <source>Website: %1%2</source>
-      <translation type="unfinished">Website: %1%2</translation>
+      <translation>Asmel web: %1%2</translation>
     </message>
     <message>
       <source>Date: %1%2</source>
-      <translation type="unfinished">Date: %1%2</translation>
+      <translation>Azemz: %1%2</translation>
     </message>
     <message>
       <source>A dictionary lookup program.</source>
@@ -3771,15 +3771,15 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <name>ScanPopup</name>
     <message>
       <source>Dialog</source>
-      <translation type="unfinished">Dialog</translation>
+      <translation>Adiwenni</translation>
     </message>
     <message>
       <source>Back</source>
-      <translation type="unfinished">Back</translation>
+      <translation>Tuɣalin</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation type="unfinished">Forward</translation>
+      <translation>Welleh</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -3787,7 +3787,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Alt+S</source>
-      <translation type="unfinished">Alt+S</translation>
+      <translation>Alt+S</translation>
     </message>
     <message>
       <source>Send word to main window (Alt+W)</source>
@@ -3795,7 +3795,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Alt+W</source>
-      <translation type="unfinished">Alt+W</translation>
+      <translation>Alt+W</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>
@@ -3840,7 +3840,7 @@ could be resized or managed in other ways.</translation>
     </message>
     <message>
       <source>Ctrl+G</source>
-      <translation type="unfinished">Ctrl+G</translation>
+      <translation>Ctrl+G</translation>
     </message>
     <message>
       <source>&amp;Case Sensitive</source>
@@ -3848,14 +3848,14 @@ could be resized or managed in other ways.</translation>
     </message>
     <message>
       <source>Find:</source>
-      <translation type="unfinished">Find:</translation>
+      <translation>Af:</translation>
     </message>
   </context>
   <context>
     <name>SoundDirsModel</name>
     <message>
       <source>Path</source>
-      <translation type="unfinished">Path</translation>
+      <translation>Abrid</translation>
     </message>
     <message>
       <source>Name</source>
@@ -3863,7 +3863,7 @@ could be resized or managed in other ways.</translation>
     </message>
     <message>
       <source>Icon</source>
-      <translation type="unfinished">Icon</translation>
+      <translation>Tignit</translation>
     </message>
   </context>
   <context>
@@ -3878,11 +3878,11 @@ could be resized or managed in other ways.</translation>
     </message>
     <message>
       <source>&amp;Add...</source>
-      <translation type="unfinished">&amp;Add...</translation>
+      <translation>&amp;Rnu...</translation>
     </message>
     <message>
       <source>&amp;Remove</source>
-      <translation type="unfinished">&amp;Remove</translation>
+      <translation>&amp;Kkes</translation>
     </message>
     <message>
       <source>Re&amp;scan now</source>
@@ -3906,7 +3906,7 @@ could be resized or managed in other ways.</translation>
     </message>
     <message>
       <source>&amp;Change...</source>
-      <translation type="unfinished">&amp;Change...</translation>
+      <translation>&amp;Beddel...</translation>
     </message>
     <message>
       <source>Available morphology dictionaries:</source>
@@ -3950,15 +3950,15 @@ of the appropriate groups to use them.</translation>
     </message>
     <message>
       <source>DICT servers</source>
-      <translation type="unfinished">DICT servers</translation>
+      <translation>Iqeddacen DICT</translation>
     </message>
     <message>
       <source>DICT servers:</source>
-      <translation type="unfinished">DICT servers:</translation>
+      <translation>Iqeddacen DICT:</translation>
     </message>
     <message>
       <source>Programs</source>
-      <translation type="unfinished">Programs</translation>
+      <translation>Ihalen</translation>
     </message>
     <message>
       <source>Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</source>
@@ -4054,7 +4054,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>Systems:</source>
-      <translation type="unfinished">Systems:</translation>
+      <translation>Inagrawen:</translation>
     </message>
     <message>
       <source>The most widely used method of transcription of Japanese,
@@ -4132,7 +4132,7 @@ Not implemented yet in GoldenDict.</translation>
     </message>
     <message>
       <source>Choose a directory</source>
-      <translation type="unfinished">Choose a directory</translation>
+      <translation>Fren akaram</translation>
     </message>
     <message>
       <source>Confirm removal</source>
@@ -4244,11 +4244,11 @@ Not implemented yet in GoldenDict.</translation>
     </message>
     <message>
       <source>Id</source>
-      <translation type="unfinished">Id</translation>
+      <translation>Asulay</translation>
     </message>
     <message>
       <source>Icon</source>
-      <translation type="unfinished">Icon</translation>
+      <translation>Tignit</translation>
     </message>
   </context>
   <context>
@@ -4259,11 +4259,11 @@ Not implemented yet in GoldenDict.</translation>
     </message>
     <message>
       <source>Enabled</source>
-      <translation type="unfinished">Enabled</translation>
+      <translation>Yermed</translation>
     </message>
     <message>
       <source>As link</source>
-      <translation type="unfinished">As link</translation>
+      <translation>Am useɣwen</translation>
     </message>
     <message>
       <source>Name</source>
@@ -4275,7 +4275,7 @@ Not implemented yet in GoldenDict.</translation>
     </message>
     <message>
       <source>Icon</source>
-      <translation type="unfinished">Icon</translation>
+      <translation>Tignit</translation>
     </message>
   </context>
   <context>
