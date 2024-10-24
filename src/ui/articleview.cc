@@ -1324,7 +1324,7 @@ void ArticleView::hasSound( const std::function< void( bool ) > & callback )
 void ArticleView::playSound()
 {
   if ( !audioLink_.isEmpty() ) {
-    playAudio( QUrl::fromEncoded( audioLink_.toUtf8() ) );
+    playAudio( QUrl::fromEncoded( audioLink_ ) );
   }
 }
 
