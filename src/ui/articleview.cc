@@ -442,7 +442,7 @@ void ArticleView::loadFinished( bool result )
   if ( loadingInfo_ ) {
     url = loadingInfo_.url();
   }
-  qDebug() << "article view loaded url:" << url.url().left( 200 ) << result;
+  qDebug() << "article view loaded url:" << url.url().left( 100 ) << result;
 
   webview->unsetCursor();
 

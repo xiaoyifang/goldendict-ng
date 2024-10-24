@@ -169,7 +169,7 @@ private:
   SearchPanel * searchPanel;
   FtsSearchPanel * ftsSearchPanel;
 
-  sptr< QWebEngineLoadingInfo > loadingInfo_;
+  QWebEngineLoadingInfo loadingInfo_;
 
 public slots:
 
