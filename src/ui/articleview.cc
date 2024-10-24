@@ -277,6 +277,15 @@ unsigned ArticleView::getCurrentGroupId()
   return currentGroupId;
 }
 
+void ArticleView::setAudioLink( QString audioLink ) {
+  audioLink_ = audioLink;
+}
+
+void ArticleView::getAudioLink()
+{
+  return audioLink_;
+}
+
 ArticleView::~ArticleView()
 {
   cleanupTemp();
@@ -1306,20 +1315,12 @@ void ArticleView::reload()
 
 void ArticleView::hasSound( const std::function< void( bool ) > & callback )
 {
-  webview->page()->runJavaScript( R"(if(typeof(gdAudioLinks)!="undefined") gdAudioLinks.first)",
-                                  [ callback ]( const QVariant & v ) {
-                                    bool has = false;
-                                    if ( v.type() == QVariant::String ) {
-                                      has = !v.toString().isEmpty();
-                                    }
-                                    callback( has );
-                                  } );
+  callback( !audioLink_.isEmpty() );
 }
 
-//use webengine javascript to playsound
 void ArticleView::playSound()
 {
-  QString soundScript = GlobalBroadcaster::instance()->pronounce_engine.getAudioFirst();
+  QString soundScript = audioLink_;
 
   if ( !soundScript.isEmpty() ) {
     playAudio( QUrl::fromEncoded( soundScript.toUtf8() ), webview->url() );

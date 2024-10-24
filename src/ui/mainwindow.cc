@@ -717,10 +717,11 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
            &PronounceEngine::emitAudio,
            this,
            [ this ]( auto audioUrl ) {
+             auto view = getCurrentArticleView();
+             view->setAudioLink( audioUrl );
              if ( !isActiveWindow() ) {
                return;
              }
-             auto view = getCurrentArticleView();
              if ( ( cfg.preferences.pronounceOnLoadMain ) && view != nullptr ) {
 
                view->playAudio( QUrl::fromEncoded( audioUrl.toUtf8() ) );
