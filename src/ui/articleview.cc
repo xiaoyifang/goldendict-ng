@@ -277,7 +277,8 @@ unsigned ArticleView::getCurrentGroupId()
   return currentGroupId;
 }
 
-void ArticleView::setAudioLink( QString audioLink ) {
+void ArticleView::setAudioLink( QString audioLink )
+{
   audioLink_ = audioLink;
 }
 
