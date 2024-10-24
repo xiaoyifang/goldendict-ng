@@ -24,6 +24,7 @@
 #include "ui/searchpanel.hh"
 #include "ui/ftssearchpanel.hh"
 #include "dictionary_group.hh"
+#include <QWebEngineLoadingInfo>
 
 class ResourceToSaveHandler;
 class ArticleViewAgent;
