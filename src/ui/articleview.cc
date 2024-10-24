@@ -172,7 +172,7 @@ ArticleView::ArticleView( QWidget * parent,
            &QWebEnginePage::loadingChanged,
            this,
            [ this ]( const QWebEngineLoadingInfo & loadingInfo ) {
-             loadingInfo_ = loadingInfo;
+             loadingInfo_ = std::make_shared( &loadingInfo );
            } );
 
   connect( webview, &ArticleWebView::linkClicked, this, &ArticleView::linkClicked );
@@ -440,7 +440,7 @@ void ArticleView::loadFinished( bool result )
   setZoomFactor( cfg.preferences.zoomFactor );
   QUrl url = webview->url();
   if ( loadingInfo_ ) {
-    url = loadingInfo_.url();
+    url = loadingInfo_->url();
   }
   qDebug() << "article view loaded url:" << url.url().left( 100 ) << result;
 
