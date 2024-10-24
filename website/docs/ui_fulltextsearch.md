@@ -8,7 +8,7 @@ Type the desired word in "Search line" to search.
 
 Search modes
 
-* "Default" — This follows the [xapian search syntax](https://xapian.org/docs/queryparser.html). Note that phrase searching and NEAR operator needs `Enable index with positional information` enabled at settings.
+* "Default" — This follows the [xapian search syntax](https://xapian.org/docs/queryparser.html). 
 * "Plain text" - mode like "Whole words" but every word in search line can be treated as word fragment.
 * "Wildcards" - the search line contains a Unix-like template. Such template can contain wildcard symbols `?` (matches any one character), `*` (matches any character number) or ranges of characters `[...]` To find characters `?`, `*`, `[` and `]` it should be escaped by backslash like `\?`, `\*`, `\[`, `\]`.
 
