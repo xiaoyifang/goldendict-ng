@@ -282,7 +282,7 @@ void ArticleView::setAudioLink( QString audioLink )
   audioLink_ = audioLink;
 }
 
-QString ArticleView::getAudioLink()
+QString ArticleView::getAudioLink() const
 {
   return audioLink_;
 }
@@ -1323,11 +1323,9 @@ void ArticleView::hasSound( const std::function< void( bool ) > & callback )
 
 void ArticleView::playSound()
 {
-  QString soundScript = audioLink_;
-
-  if ( !soundScript.isEmpty() ) {
-    playAudio( QUrl::fromEncoded( soundScript.toUtf8() ) );
-  };
+  if ( !audioLink_.isEmpty() ) {
+    playAudio( QUrl::fromEncoded( audioLink_.toUtf8() ) );
+  }
 }
 
 void ArticleView::stopSound()

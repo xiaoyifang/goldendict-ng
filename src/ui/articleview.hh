@@ -102,7 +102,7 @@ public:
   unsigned getCurrentGroupId();
 
   void setAudioLink( QString audioLink );
-  QString getAudioLink();
+  QString getAudioLink() const;
 
   virtual QSize minimumSizeHint() const;
   void clearContent();
