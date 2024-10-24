@@ -789,9 +789,11 @@ QString & GlsDictionary::filterResource( QString & article )
       articleNewText += match.captured();
     }
     else {
-      std::string href = "\"gdau://" + getId() + "/" + src.toUtf8().data() + "\"";
-      QString newTag   = QString::fromUtf8(
-        ( addAudioLink( href, getId() ) + "<span class=\"gls_wav\"><a href=" + href + ">" ).c_str() );
+      std::string audioLink = "gdau://" + getId() + "/" + src.toUtf8().data();
+      std::string href      = "\"" + audioLink + "\"";
+
+      QString newTag = QString::fromUtf8(
+        ( addAudioLink( audioLink, getId() ) + "<span class=\"gls_wav\"><a href=" + href + ">" ).c_str() );
       newTag += match.captured( 4 );
       if ( match.captured( 4 ).indexOf( "<img " ) < 0 ) {
         newTag += R"( <img src="qrc:///icons/playsound.png" border="0" alt="Play">)";

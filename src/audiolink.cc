@@ -11,9 +11,9 @@ std::string addAudioLink( std::string const & url, std::string const & dictionar
 
 std::string addAudioLink( QString const & url, std::string const & dictionaryId )
 {
-  if ( url.isEmpty() || url.length() < 2 ) {
+  if ( url.isEmpty() ) {
     return {};
   }
-  GlobalBroadcaster::instance()->pronounce_engine.sendAudio( dictionaryId, url.mid( 1, url.length() - 2 ) );
+  GlobalBroadcaster::instance()->pronounce_engine.sendAudio( dictionaryId, url );
   return "";
 }

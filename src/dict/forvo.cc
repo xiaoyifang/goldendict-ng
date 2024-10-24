@@ -260,7 +260,7 @@ void ForvoArticleRequest::requestFinished( QNetworkReply * r )
 
                 string ref = string( "\"" ) + url.toEncoded().data() + "\"";
 
-                articleBody += addAudioLink( ref, dictionaryId ).c_str();
+                articleBody += addAudioLink( url.toEncoded(), dictionaryId ).c_str();
 
                 bool isMale = ( item.namedItem( "sex" ).toElement().text().toLower() != "f" );
 

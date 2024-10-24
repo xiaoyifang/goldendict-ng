@@ -924,7 +924,7 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
           + match.captured( 2 ) + R"( onclick="return false;" )";
         newLink =
           QString::fromUtf8(
-            addAudioLink( "\"gdau://" + getId() + "/" + match.captured( 3 ).toUtf8().data() + "\"", getId() ).c_str() )
+            addAudioLink( "gdau://" + getId() + "/" + match.captured( 3 ).toUtf8().data(), getId() ).c_str() )
           + newLink.replace( match.capturedStart(), match.capturedLength(), newTxt );
       }
 
