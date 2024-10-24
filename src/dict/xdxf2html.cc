@@ -661,7 +661,7 @@ string convert( string const & in,
           el_script.setAttribute( "type", "text/javascript" );
           parent.replaceChild( el_script, el );
 
-          addAudioLink( string( "\"" ) + url.toEncoded().data() + "\"", dictPtr->getId() ).c_str() );
+          addAudioLink( string( "\"" ) + url.toEncoded().data() + "\"", dictPtr->getId() );
 
           QDomElement el_span = dd.createElement( "span" );
           el_span.setAttribute( "class", "xdxf_wav" );
