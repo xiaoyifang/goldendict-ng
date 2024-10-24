@@ -2097,6 +2097,7 @@ void ArticleView::highlightFTSResults()
   }
 
   ftsSearchPanel->show();
+  performFtsFindOperation( true );
 }
 
 void ArticleView::setActiveDictIds( const ActiveDictIds & ad )
