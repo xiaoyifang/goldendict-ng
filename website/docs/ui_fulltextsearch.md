@@ -9,7 +9,6 @@ Type the desired word in "Search line" to search.
 Search modes
 
 * "Default" — This follows the [xapian search syntax](https://xapian.org/docs/queryparser.html). 
-* "Plain text" - mode like "Whole words" but every word in search line can be treated as word fragment.
 * "Wildcards" - xpaian "wildcard" mode which mean it only supports the prefix wildcards like "hell*".
 
 "Available dictionaries in group" - here you can view how many dictionaries in the current group are suitable for full-text search, how many dictionaries already indexed and how many dictionaries wait for indexing.
