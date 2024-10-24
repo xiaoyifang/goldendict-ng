@@ -994,12 +994,12 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
             scheme = "bres://";
           }
           newText =
-            match.captured( 1 ) + match.captured( 2 ) + scheme + id + "/" + match.captured( 3 ) + match.captured( 2 );
+            match.captured( 1 ) + match.captured( 2 ) + scheme + id + "/" + match.captured( 3 ) + match.captured( 2 )+" defer ";
 
           newLink = linkTxt.replace( match.capturedStart(), match.capturedLength(), newText );
         }
         else {
-          newLink = linkTxt.replace( RX::Mdx::srcRe2, R"(\1"bres://)" + id + R"(/\2")" );
+          newLink = linkTxt.replace( RX::Mdx::srcRe2, R"(\1"bres://)" + id + R"(/\2" defer )" );
         }
       }
 
