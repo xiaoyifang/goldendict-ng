@@ -282,7 +282,7 @@ void ArticleView::setAudioLink( QString audioLink )
   audioLink_ = audioLink;
 }
 
-void ArticleView::getAudioLink()
+QString ArticleView::getAudioLink()
 {
   return audioLink_;
 }
@@ -1324,7 +1324,7 @@ void ArticleView::playSound()
   QString soundScript = audioLink_;
 
   if ( !soundScript.isEmpty() ) {
-    playAudio( QUrl::fromEncoded( soundScript.toUtf8() ), webview->url() );
+    playAudio( QUrl::fromEncoded( soundScript.toUtf8() ) );
   };
 }
 
