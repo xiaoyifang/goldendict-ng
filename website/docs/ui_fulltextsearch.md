@@ -9,7 +9,7 @@ Type the desired word in "Search line" to search.
 Search modes
 
 * "Default" — This follows the [xapian search syntax](https://xapian.org/docs/queryparser.html). 
-* "Wildcards" - xpaian "wildcard" mode, which means it only supports the prefix wildcards like "hell*".
+* "Wildcards" - xpaian "wildcard" mode, which means it only supports the prefix wildcards like "hell*"(in English alike language).As CJK use NGRAM term generator,the `*` should be treated as a seperator while not quoted.
 
 "Available dictionaries in group" - here you can view how many dictionaries in the current group are suitable for full-text search, how many dictionaries already indexed and how many dictionaries wait for indexing.
 
