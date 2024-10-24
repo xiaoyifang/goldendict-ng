@@ -1,12 +1,3 @@
-// seperate from cpp code.
-var gdAudioLinks = {
-  first: null,
-  current: null,
-};
-
-//store dictionary audio link.
-var gdAudioMap = new Map();
-
 function gdMakeArticleActive(newId, noEvent) {
   const gdCurrentArticle =
     document.querySelector(".gdactivearticle").attributes.id;
@@ -16,7 +7,6 @@ function gdMakeArticleActive(newId, noEvent) {
       .classList.remove("gdactivearticle");
     const newFormId = "gdfrom-" + newId;
     document.querySelector(`#${newFormId}`).classList.add("gdactivearticle");
-    gdAudioLinks.current = newId;
     if (!noEvent) articleview.onJsActiveArticleChanged("gdfrom-" + newId);
   }
 }

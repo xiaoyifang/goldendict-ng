@@ -277,6 +277,16 @@ unsigned ArticleView::getCurrentGroupId()
   return currentGroupId;
 }
 
+void ArticleView::setAudioLink( QString audioLink )
+{
+  audioLink_ = audioLink;
+}
+
+QString ArticleView::getAudioLink() const
+{
+  return audioLink_;
+}
+
 ArticleView::~ArticleView()
 {
   cleanupTemp();
@@ -302,6 +312,7 @@ void ArticleView::showDefinition( QString const & word,
   currentActiveDictIds.clear();
   // first, let's stop the player
   audioPlayer->stop();
+  audioLink_.clear();
 
   QUrl req;
   Contexts contexts( contexts_ );
@@ -376,6 +387,7 @@ void ArticleView::showDefinition( QString const & word,
   currentActiveDictIds.clear();
   // first, let's stop the player
   audioPlayer->stop();
+  audioLink_.clear();
 
   QUrl req;
 
@@ -1306,33 +1318,14 @@ void ArticleView::reload()
 
 void ArticleView::hasSound( const std::function< void( bool ) > & callback )
 {
-  webview->page()->runJavaScript( R"(if(typeof(gdAudioLinks)!="undefined") gdAudioLinks.first)",
-                                  [ callback ]( const QVariant & v ) {
-                                    bool has = false;
-                                    if ( v.type() == QVariant::String ) {
-                                      has = !v.toString().isEmpty();
-                                    }
-                                    callback( has );
-                                  } );
+  callback( !audioLink_.isEmpty() );
 }
 
-//use webengine javascript to playsound
 void ArticleView::playSound()
 {
-  QString variable = R"( (function(){  var link=gdAudioMap.get(gdAudioLinks.current);           
-       if(link==undefined){           
-           link=gdAudioLinks.first;           
-       }          
-        return link;})();         )";
-
-  webview->page()->runJavaScript( variable, [ this ]( const QVariant & result ) {
-    if ( result.typeId() == qMetaTypeId< QString >() ) {
-      QString soundScript = result.toString();
-      if ( !soundScript.isEmpty() ) {
-        openLink( QUrl::fromEncoded( soundScript.toUtf8() ), webview->url() );
-      }
-    }
-  } );
+  if ( !audioLink_.isEmpty() ) {
+    playAudio( QUrl::fromEncoded( audioLink_.toUtf8() ) );
+  }
 }
 
 void ArticleView::stopSound()

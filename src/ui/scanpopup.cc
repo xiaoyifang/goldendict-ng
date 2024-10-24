@@ -165,6 +165,7 @@ ScanPopup::ScanPopup( QWidget * parent,
            &PronounceEngine::emitAudio,
            this,
            [ this ]( auto audioUrl ) {
+             definition->setAudioLink( audioUrl );
              if ( !isActiveWindow() ) {
                return;
              }

@@ -95,7 +95,7 @@ ProgramsDictionary::getArticle( wstring const & word, vector< wstring > const &,
 
       string ref = string( "\"" ) + url.toEncoded().data() + "\"";
 
-      result += addAudioLink( ref, getId() );
+      result += addAudioLink( url.toEncoded(), getId() );
 
       result += "<td><a href=" + ref + R"(><img src="qrc:///icons/playsound.png" border="0" alt="Play"/></a></td>)";
       result += "<td><a href=" + ref + ">" + Html::escape( wordUtf8 ) + "</a></td>";
