@@ -8,14 +8,12 @@ PronounceEngine::PronounceEngine( QObject * parent ):
 {
 }
 
-
 void PronounceEngine::reset()
 {
   QMutexLocker _( &mutex );
   state = PronounceState::AVAILABLE;
 
   dictAudioMap.clear();
-  audioLinkFirst.clear();
 }
 
 
@@ -50,14 +48,6 @@ void PronounceEngine::finishDictionary( std::string dictId )
       state = PronounceState::OCCUPIED;
     }
     auto link = dictAudioMap[ dictId ].first();
-    if ( audioLinkFirst.empty() ) {
-      audioLinkFirst = link;
-    }
     emit emitAudio( link );
   }
-}
-
-QString PronounceEngine::getAudioFirst()
-{
-  return audioLinkFirst;
 }
