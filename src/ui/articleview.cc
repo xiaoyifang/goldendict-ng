@@ -1319,20 +1319,11 @@ void ArticleView::hasSound( const std::function< void( bool ) > & callback )
 //use webengine javascript to playsound
 void ArticleView::playSound()
 {
-  QString variable = R"( (function(){  var link=gdAudioMap.get(gdAudioLinks.current);           
-       if(link==undefined){           
-           link=gdAudioLinks.first;           
-       }          
-        return link;})();         )";
+  QString soundScript = GlobalBroadcaster::instance()->pronounce_engine.getAudioFirst();
 
-  webview->page()->runJavaScript( variable, [ this ]( const QVariant & result ) {
-    if ( result.typeId() == qMetaTypeId< QString >() ) {
-      QString soundScript = result.toString();
-      if ( !soundScript.isEmpty() ) {
-        openLink( QUrl::fromEncoded( soundScript.toUtf8() ), webview->url() );
-      }
-    }
-  } );
+  if ( !soundScript.isEmpty() ) {
+    playAudio( QUrl::fromEncoded( soundScript.toUtf8() ), webview->url() );
+  };
 }
 
 void ArticleView::stopSound()

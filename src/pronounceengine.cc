@@ -15,6 +15,7 @@ void PronounceEngine::reset()
   state = PronounceState::AVAILABLE;
 
   dictAudioMap.clear();
+  audioLinkFirst.clear();
 }
 
 
@@ -48,6 +49,15 @@ void PronounceEngine::finishDictionary( std::string dictId )
       }
       state = PronounceState::OCCUPIED;
     }
-    emit emitAudio( dictAudioMap[ dictId ].first() );
+    auto link = dictAudioMap[ dictId ].first();
+    if ( audioLinkFirst.empty() ) {
+      audioLinkFirst = link;
+    }
+    emit emitAudio( link );
   }
+}
+
+QString PronounceEngine::getAudioFirst()
+{
+  return audioLinkFirst;
 }
