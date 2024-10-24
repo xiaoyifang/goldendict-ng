@@ -921,7 +921,7 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
       if ( match.hasMatch() ) {
         // sounds and audio link script
         QString newTxt = match.captured( 1 ) + match.captured( 2 ) + "gdau://" + id + "/" + match.captured( 3 )
-          + match.captured( 2 ) + " onclick=\"return false;\" ";
+          + match.captured( 2 ) + R"( onclick="return false;" )";
         newLink =
           QString::fromUtf8(
             addAudioLink( "\"gdau://" + getId() + "/" + match.captured( 3 ).toUtf8().data() + "\"", getId() ).c_str() )
@@ -999,7 +999,7 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
           newLink = linkTxt.replace( match.capturedStart(), match.capturedLength(), newText );
         }
         else {
-          newLink = linkTxt.replace( RX::Mdx::srcRe2, R"(\1"bres://)" + id + R"(/\2" defer )" );
+          newLink = linkTxt.replace( RX::Mdx::srcRe2, R"(\1"bres://)" + id + R"(/\2")" );
         }
       }
 
