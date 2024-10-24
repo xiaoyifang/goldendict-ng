@@ -169,6 +169,8 @@ private:
   SearchPanel * searchPanel;
   FtsSearchPanel * ftsSearchPanel;
 
+  sptr< QWebEngineLoadingInfo > loadingInfo_;
+
 public slots:
 
   /// Goes back in history

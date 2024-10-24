@@ -168,6 +168,12 @@ ArticleView::ArticleView( QWidget * parent,
   webview->setContextMenuPolicy( Qt::CustomContextMenu );
 
   connect( webview, &QWebEngineView::loadFinished, this, &ArticleView::loadFinished );
+  connect( webview->page(),
+           &QWebEnginePage::loadingChanged,
+           this,
+           [ this ]( const QWebEngineLoadingInfo & loadingInfo ) {
+             loadingInfo_ = loadingInfo;
+           } );
 
   connect( webview, &ArticleWebView::linkClicked, this, &ArticleView::linkClicked );
 
@@ -433,6 +439,9 @@ void ArticleView::loadFinished( bool result )
 {
   setZoomFactor( cfg.preferences.zoomFactor );
   QUrl url = webview->url();
+  if ( loadingInfo_ ) {
+    url = loadingInfo_.url();
+  }
   qDebug() << "article view loaded url:" << url.url().left( 200 ) << result;
 
   webview->unsetCursor();
