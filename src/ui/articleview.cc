@@ -312,6 +312,7 @@ void ArticleView::showDefinition( QString const & word,
   currentActiveDictIds.clear();
   // first, let's stop the player
   audioPlayer->stop();
+  audioLink_.clear();
 
   QUrl req;
   Contexts contexts( contexts_ );
@@ -386,6 +387,7 @@ void ArticleView::showDefinition( QString const & word,
   currentActiveDictIds.clear();
   // first, let's stop the player
   audioPlayer->stop();
+  audioLink_.clear();
 
   QUrl req;
 
