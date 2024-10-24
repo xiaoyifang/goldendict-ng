@@ -994,7 +994,7 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
             scheme = "bres://";
           }
           newText =
-            match.captured( 1 ) + match.captured( 2 ) + scheme + id + "/" + match.captured( 3 ) + match.captured( 2 )+" defer ";
+            match.captured( 1 ) + match.captured( 2 ) + scheme + id + "/" + match.captured( 3 ) + match.captured( 2 );
 
           newLink = linkTxt.replace( match.capturedStart(), match.capturedLength(), newText );
         }
