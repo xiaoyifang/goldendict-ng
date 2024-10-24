@@ -172,7 +172,7 @@ ArticleView::ArticleView( QWidget * parent,
            &QWebEnginePage::loadingChanged,
            this,
            [ this ]( const QWebEngineLoadingInfo & loadingInfo ) {
-             loadingInfo_ = std::make_shared< QWebEngineLoadingInfo >( &loadingInfo );
+             loadingInfo_ = std::make_shared< QWebEngineLoadingInfo >( loadingInfo );
            } );
 
   connect( webview, &ArticleWebView::linkClicked, this, &ArticleView::linkClicked );
