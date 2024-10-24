@@ -920,8 +920,8 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
       QRegularExpressionMatch match = RX::Mdx::audioRe.match( newLink );
       if ( match.hasMatch() ) {
         // sounds and audio link script
-        QString newTxt =
-          match.captured( 1 ) + match.captured( 2 ) + "gdau://" + id + "/" + match.captured( 3 ) + match.captured( 2 );
+        QString newTxt = match.captured( 1 ) + match.captured( 2 ) + "gdau://" + id + "/" + match.captured( 3 )
+          + match.captured( 2 ) + R"( onclick="return false;" )";
         newLink =
           QString::fromUtf8(
             addAudioLink( "\"gdau://" + getId() + "/" + match.captured( 3 ).toUtf8().data() + "\"", getId() ).c_str() )
