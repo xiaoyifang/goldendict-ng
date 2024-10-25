@@ -32,10 +32,6 @@ AllowFrameReply::AllowFrameReply( QNetworkReply * _reply ):
 
   // Redirect QNetworkReply signals
 
-  connect( baseReply, &QNetworkReply::downloadProgress, this, &QNetworkReply::downloadProgress );
-
-  connect( baseReply, &QNetworkReply::encrypted, this, &QNetworkReply::encrypted );
-
   connect( baseReply, &QNetworkReply::finished, this, &QNetworkReply::finished );
 
   connect( baseReply,
@@ -43,19 +39,11 @@ AllowFrameReply::AllowFrameReply( QNetworkReply * _reply ):
            this,
            &QNetworkReply::preSharedKeyAuthenticationRequired );
 
-  connect( baseReply, &QNetworkReply::redirected, this, &QNetworkReply::redirected );
-
   connect( baseReply, &QNetworkReply::sslErrors, this, &QNetworkReply::sslErrors );
-
-  connect( baseReply, &QNetworkReply::uploadProgress, this, &QNetworkReply::uploadProgress );
 
   // Redirect QIODevice signals
 
   connect( baseReply, &QIODevice::aboutToClose, this, &QIODevice::aboutToClose );
-
-  connect( baseReply, &QIODevice::bytesWritten, this, &QIODevice::bytesWritten );
-
-  connect( baseReply, &QIODevice::readChannelFinished, this, &QIODevice::readChannelFinished );
 
   setOpenMode( QIODevice::ReadOnly );
 }
@@ -63,12 +51,6 @@ AllowFrameReply::AllowFrameReply( QNetworkReply * _reply ):
 void AllowFrameReply::applyMetaData()
 {
   // The webengine does not support to customize the headers right now ,maybe until Qt6.7 there should be some api supports
-}
-
-void AllowFrameReply::setReadBufferSize( qint64 size )
-{
-  QNetworkReply::setReadBufferSize( size );
-  baseReply->setReadBufferSize( size );
 }
 
 qint64 AllowFrameReply::bytesAvailable() const
