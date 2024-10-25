@@ -980,7 +980,7 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
         continue;
       }
       else {
-        //audio ,video ,html5 tags fall here.
+        //audio ,script,video ,html5 tags fall here.
         match = RX::Mdx::srcRe.match( linkTxt );
         if ( match.hasMatch() ) {
           QString newText;
@@ -992,8 +992,15 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
           else {
             scheme = "bres://";
           }
-          newText =
-            match.captured( 1 ) + match.captured( 2 ) + scheme + id + "/" + match.captured( 3 ) + match.captured( 2 );
+
+          if ( linkType.compare( "script" ) == 0 ) {
+            newText = match.captured( 1 ) + match.captured( 2 ) + scheme + id + "/" + match.captured( 3 )
+              + match.captured( 2 ) + " defer ";
+          }
+          else {
+            newText =
+              match.captured( 1 ) + match.captured( 2 ) + scheme + id + "/" + match.captured( 3 ) + match.captured( 2 );
+          }
 
           newLink = linkTxt.replace( match.capturedStart(), match.capturedLength(), newText );
         }
