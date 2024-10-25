@@ -96,7 +96,6 @@ public slots:
   {
     baseReply->ignoreSslErrors();
   }
-  void finishedSlot();
 
 protected:
   // QNetworkReply virtual functions

@@ -62,17 +62,6 @@ qint64 AllowFrameReply::readData( char * data, qint64 maxSize )
   return size;
 }
 
-bool ArticleResourceReply::atEnd() const
-{
-  return baseReply->atEnd();
-}
-
-void AllowFrameReply::finishedSlot()
-{
-  setFinished( true );
-  emit finished();
-}
-
 QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest const & req )
 {
   if ( req.url().scheme() == "qrcx" ) {
