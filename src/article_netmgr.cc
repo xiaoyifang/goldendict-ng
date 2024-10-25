@@ -34,17 +34,6 @@ AllowFrameReply::AllowFrameReply( QNetworkReply * _reply ):
 
   connect( baseReply, &QNetworkReply::finished, this, &QNetworkReply::finished );
 
-  connect( baseReply,
-           &QNetworkReply::preSharedKeyAuthenticationRequired,
-           this,
-           &QNetworkReply::preSharedKeyAuthenticationRequired );
-
-  connect( baseReply, &QNetworkReply::sslErrors, this, &QNetworkReply::sslErrors );
-
-  // Redirect QIODevice signals
-
-  connect( baseReply, &QIODevice::aboutToClose, this, &QIODevice::aboutToClose );
-
   setOpenMode( QIODevice::ReadOnly );
 }
 
