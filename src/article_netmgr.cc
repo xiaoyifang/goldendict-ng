@@ -22,9 +22,15 @@ AllowFrameReply::AllowFrameReply( QNetworkReply * _reply ):
   setRequest( baseReply->request() );
   setUrl( baseReply->url() );
 
-  // Signals to own slots
-
-  connect( baseReply, &QNetworkReply::metaDataChanged, this, &AllowFrameReply::applyMetaData );
+#if QT_VERSION > QT_VERSION_CHECK( 6, 8, 0 )
+  setHeaders( baseReply->headers() );
+#else
+  QList< QByteArray > rawHeaders = baseReply->rawHeaderList();
+  for ( auto & header : rawHeaders ) {
+    if ( header.toLower() != "x-frame-options" )
+      setRawHeader( header, baseReply->rawHeader( header ) );
+  }
+#endif
 
   connect( baseReply, &QNetworkReply::errorOccurred, this, &AllowFrameReply::applyError );
 
@@ -35,11 +41,6 @@ AllowFrameReply::AllowFrameReply( QNetworkReply * _reply ):
   connect( baseReply, &QNetworkReply::finished, this, &QNetworkReply::finished );
 
   setOpenMode( QIODevice::ReadOnly );
-}
-
-void AllowFrameReply::applyMetaData()
-{
-  // The webengine does not support to customize the headers right now ,maybe until Qt6.7 there should be some api supports
 }
 
 qint64 AllowFrameReply::bytesAvailable() const
@@ -60,6 +61,12 @@ qint64 AllowFrameReply::readData( char * data, qint64 maxSize )
   baseReply->read( data, size );
   return size;
 }
+
+bool ArticleResourceReply::atEnd() const
+{
+  return baseReply->atEnd();
+}
+
 void AllowFrameReply::finishedSlot()
 {
   setFinished( true );
