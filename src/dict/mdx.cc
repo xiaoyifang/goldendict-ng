@@ -993,13 +993,12 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
             scheme = "bres://";
           }
 
+          newText =
+            match.captured( 1 ) + match.captured( 2 ) + scheme + id + "/" + match.captured( 3 ) + match.captured( 2 );
+
+          //add defer to script tag
           if ( linkType.compare( "script" ) == 0 ) {
-            newText = match.captured( 1 ) + match.captured( 2 ) + scheme + id + "/" + match.captured( 3 )
-              + match.captured( 2 ) + " defer ";
-          }
-          else {
-            newText =
-              match.captured( 1 ) + match.captured( 2 ) + scheme + id + "/" + match.captured( 3 ) + match.captured( 2 );
+            newText = newText + " defer ";
           }
 
           newLink = linkTxt.replace( match.capturedStart(), match.capturedLength(), newText );
