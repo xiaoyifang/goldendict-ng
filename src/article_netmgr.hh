@@ -81,11 +81,7 @@ public:
   }
 
 public slots:
-
-  // Own AllowFrameReply slots
-  void applyMetaData();
   void applyError( QNetworkReply::NetworkError code );
-  //  void readDataFromBase();
 
   // Redirect QNetworkReply slots
   virtual void abort()
