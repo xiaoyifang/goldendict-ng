@@ -823,7 +823,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Support xapian search syntax, such as AND OR +/- etc.</source>
-      <translation>Падтрымка сінтаксісу пошуку xapian, напрыклад І АБО +/- і г.д.</translation>
+      <translation>Падтрымка сінтаксісу пошуку xapian. Напрыклад: І АБО +/- і г.д.</translation>
     </message>
     <message>
       <source>Articles found: </source>
@@ -2156,7 +2156,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Hungarian</source>
-      <translation>венгерскі</translation>
+      <translation>Венгерская</translation>
     </message>
     <message>
       <source>English</source>
