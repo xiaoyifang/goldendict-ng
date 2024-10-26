@@ -42,8 +42,6 @@ public:
     delete baseReply;
   }
 
-  // QNetworkReply virtual functions
-  void setReadBufferSize( qint64 size );
   void close()
   {
     baseReply->close();
@@ -51,7 +49,7 @@ public:
 
   // QIODevice virtual functions
   qint64 bytesAvailable() const;
-  bool atEnd() const
+  bool atEnd() const override
   {
     return baseReply->atEnd();
   }
@@ -81,11 +79,7 @@ public:
   }
 
 public slots:
-
-  // Own AllowFrameReply slots
-  void applyMetaData();
   void applyError( QNetworkReply::NetworkError code );
-  //  void readDataFromBase();
 
   // Redirect QNetworkReply slots
   virtual void abort()
@@ -96,7 +90,6 @@ public slots:
   {
     baseReply->ignoreSslErrors();
   }
-  void finishedSlot();
 
 protected:
   // QNetworkReply virtual functions
@@ -186,7 +179,7 @@ public:
 protected:
 
   virtual qint64 bytesAvailable() const;
-  bool atEnd() const;
+  bool atEnd() const override;
   virtual void abort() {}
   virtual qint64 readData( char * data, qint64 maxSize );
 
