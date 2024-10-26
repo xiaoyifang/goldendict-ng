@@ -1170,7 +1170,7 @@ QModelIndex PathsModel::parent( QModelIndex const & /*parent*/ ) const
 Qt::ItemFlags PathsModel::flags( QModelIndex const & index ) const
 {
   Qt::ItemFlags result = QAbstractItemModel::flags( index );
-  
+
   if ( Config::isPortableVersion() ) {
     if ( index.isValid() && index.row() == 0 ) {
       result &= ~Qt::ItemIsSelectable;

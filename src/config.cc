@@ -1401,7 +1401,7 @@ void save( Class const & c )
     // which is stored in the first element of list.
     qsizetype pos = Config::isPortableVersion();
 
-    for ( const auto & i : c.paths.mid(pos) ) {
+    for ( const auto & i : c.paths.mid( pos ) ) {
       QDomElement path = dd.createElement( "path" );
       paths.appendChild( path );
 
