@@ -22,15 +22,11 @@ AllowFrameReply::AllowFrameReply( QNetworkReply * _reply ):
   setRequest( baseReply->request() );
   setUrl( baseReply->url() );
 
-#if QT_VERSION >= QT_VERSION_CHECK( 6, 8, 0 )
-  setHeaders( baseReply->headers() );
-#else
   QList< QByteArray > rawHeaders = baseReply->rawHeaderList();
   for ( auto & header : rawHeaders ) {
     if ( header.toLower() != "x-frame-options" )
       setRawHeader( header, baseReply->rawHeader( header ) );
   }
-#endif
 
   connect( baseReply, &QNetworkReply::errorOccurred, this, &AllowFrameReply::applyError );
 
