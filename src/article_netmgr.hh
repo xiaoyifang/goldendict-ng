@@ -49,7 +49,7 @@ public:
 
   // QIODevice virtual functions
   qint64 bytesAvailable() const;
-  bool atEnd() const
+  bool atEnd() const override
   {
     return baseReply->atEnd();
   }

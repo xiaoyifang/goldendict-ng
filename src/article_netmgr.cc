@@ -23,7 +23,7 @@ AllowFrameReply::AllowFrameReply( QNetworkReply * _reply ):
   setUrl( baseReply->url() );
 
   QList< QByteArray > rawHeaders = baseReply->rawHeaderList();
-  for ( auto & header : rawHeaders ) {
+  for ( const auto & header : rawHeaders ) {
     if ( header.toLower() != "x-frame-options" )
       setRawHeader( header, baseReply->rawHeader( header ) );
   }
