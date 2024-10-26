@@ -554,9 +554,13 @@ Class load()
 
     if ( QDir( "/usr/share/myspell/dicts" ).exists() )
       c.hunspell.dictionariesPath = "/usr/share/myspell/dicts";
-
 #endif
 
+    // Put portable hard-code directory the the config for the first time.
+    if ( isPortableVersion() ) {
+      // For portable version, hardcode some settings
+      c.paths.push_back( Path( getPortableVersionDictionaryDir(), true ) );
+    }
 
 #ifndef Q_OS_WIN32
     c.preferences.audioPlaybackProgram = "mplayer";
@@ -625,6 +629,13 @@ Class load()
 
   Class c;
 
+  // Put the hard-code portable directory to the first.
+  // To allow additional directories, this path should not be saved.
+  if ( isPortableVersion() ) {
+    // For portable version, hardcode some settings
+    c.paths.push_back( Path( getPortableVersionDictionaryDir(), true ) );
+  }
+
   QDomNode paths = root.namedItem( "paths" );
 
   if ( !paths.isNull() ) {
@@ -634,11 +645,6 @@ Class load()
       c.paths.push_back(
         Path( nl.item( x ).toElement().text(), nl.item( x ).toElement().attribute( "recursive" ) == "1" ) );
     }
-  }
-
-  if ( Config::isPortableVersion() && c.paths.empty() ) {
-    // For portable version, hardcode some settings
-    c.paths.push_back( Config::Path( Config::getPortableVersionDictionaryDir(), true ) );
   }
 
   QDomNode soundDirs = root.namedItem( "sounddirs" );
@@ -1391,7 +1397,11 @@ void save( Class const & c )
     QDomElement paths = dd.createElement( "paths" );
     root.appendChild( paths );
 
-    for ( const auto & i : c.paths ) {
+    // Save all paths except the hard-code portable path,
+    // which is stored in the first element of list.
+    qsizetype pos = Config::isPortableVersion();
+
+    for ( const auto & i : c.paths.mid(pos) ) {
       QDomElement path = dd.createElement( "path" );
       paths.appendChild( path );
 
