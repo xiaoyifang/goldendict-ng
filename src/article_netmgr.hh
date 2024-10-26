@@ -42,8 +42,6 @@ public:
     delete baseReply;
   }
 
-  // QNetworkReply virtual functions
-  void setReadBufferSize( qint64 size );
   void close()
   {
     baseReply->close();
