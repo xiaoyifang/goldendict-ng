@@ -317,6 +317,12 @@ MdxDictionary::MdxDictionary( string const & id, string const & indexFile, vecto
     dictionaryName = string( &buf.front(), len );
   }
 
+  //fallback, use filename as dictionary name
+  if ( dictionaryName.empty() ) {
+    QFileInfo f( QString::fromUtf8( dictionaryFiles[ 0 ].c_str() ) );
+    dictionaryName = f.baseName().toStdString();
+  }
+
   // then read the dictionary's encoding
   len = idx.read< uint32_t >();
   if ( len > 0 ) {
