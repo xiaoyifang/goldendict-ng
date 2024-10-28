@@ -2686,19 +2686,19 @@ Norėdami atverti parsisiuntimo puslapį, spauskite &lt;b&gt;Parsisiųsti&lt;/b&
     </message>
     <message>
       <source>Show &amp;Small Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Small Icons in Toolbars</translation>
+      <translation>Rodyti &amp;mažas piktogramas įrankių juostose</translation>
     </message>
     <message>
       <source>Show &amp;Large Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Large Icons in Toolbars</translation>
+      <translation>Rodyti &amp;dideles piktogramas įrankių juostose</translation>
     </message>
     <message>
       <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Normal Icons in Toolbars</translation>
+      <translation>Rodyti &amp;įprastas piktogramas įrankių juostose</translation>
     </message>
     <message>
       <source>Toggle clipboard monitoring</source>
-      <translation type="unfinished">Toggle clipboard monitoring</translation>
+      <translation>Perjungti iškarpinės stebėjimą</translation>
     </message>
   </context>
   <context>
@@ -3545,15 +3545,15 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+      <translation>Pasirenkama, ar iškarpinės stebėjimas bus įjungtas pagal numatytuosius nustatymus paleidžiant programą&apos;.</translation>
     </message>
     <message>
       <source>Start with clipboard monitoring turned on</source>
-      <translation type="unfinished">Start with clipboard monitoring turned on</translation>
+      <translation>Pradėkite įjungę iškarpinės stebėjimą</translation>
     </message>
     <message>
       <source>Auto-pronounce words in the popup</source>
-      <translation type="unfinished">Auto-pronounce words in the popup</translation>
+      <translation>Automatiškai ištarti žodžius iššokančiajame lange</translation>
     </message>
   </context>
   <context>
