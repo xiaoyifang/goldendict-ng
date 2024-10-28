@@ -2685,19 +2685,19 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     </message>
     <message>
       <source>Show &amp;Small Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Small Icons in Toolbars</translation>
+      <translation>Afficher les petites icônes dans les barres d'outils</translation>
     </message>
     <message>
       <source>Show &amp;Large Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Large Icons in Toolbars</translation>
+      <translation>Afficher les grandes icônes dans les barres d'outils</translation>
     </message>
     <message>
       <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Normal Icons in Toolbars</translation>
+      <translation>Afficher les icônes normales dans les barres d'outils</translation>
     </message>
     <message>
       <source>Toggle clipboard monitoring</source>
-      <translation type="unfinished">Toggle clipboard monitoring</translation>
+      <translation>Activer/désactiver la surveillance du presse-papiers</translation>
     </message>
   </context>
   <context>
@@ -3544,15 +3544,15 @@ des dictionnaires Stardict, Babylon et GLS</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+      <translation>Choisissez si la surveillance du presse-papiers sera activée par défaut au démarrage du programme&apos;.</translation>
     </message>
     <message>
       <source>Start with clipboard monitoring turned on</source>
-      <translation type="unfinished">Start with clipboard monitoring turned on</translation>
+      <translation>Commencez avec la surveillance du presse-papiers activée</translation>
     </message>
     <message>
       <source>Auto-pronounce words in the popup</source>
-      <translation type="unfinished">Auto-pronounce words in the popup</translation>
+      <translation>Prononciation automatique des mots dans la fenêtre contextuelle</translation>
     </message>
   </context>
   <context>
