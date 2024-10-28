@@ -650,6 +650,9 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( ui.quit, &QAction::triggered, this, &MainWindow::quitApp );
 
   connect( ui.dictionaries, &QAction::triggered, this, &MainWindow::editDictionaries );
+  connect( ui.sourcesAction, &QAction::triggered, this, []() {
+    editDictionaries( Instances::Group::NoGroupId, true );
+  } );
 
   connect( ui.preferences, &QAction::triggered, this, &MainWindow::editPreferences );
 
@@ -2188,7 +2191,7 @@ void MainWindow::updatePronounceAvailability()
   }
 }
 
-void MainWindow::editDictionaries( unsigned editDictionaryGroup )
+void MainWindow::editDictionaries( unsigned editDictionaryGroup, bool showSourceOnly )
 {
   hotkeyWrapper.reset(); // No hotkeys while we're editing dictionaries
   closeHeadwordsDialog();
@@ -2206,8 +2209,14 @@ void MainWindow::editDictionaries( unsigned editDictionaryGroup )
 
     connect( &dicts, &EditDictionaries::showDictionaryHeadwords, this, &MainWindow::showDictionaryHeadwords );
 
-    if ( editDictionaryGroup != Instances::Group::NoGroupId ) {
-      dicts.editGroup( editDictionaryGroup );
+    if ( !showSourceOnly ) {
+      if ( editDictionaryGroup != Instances::Group::NoGroupId ) {
+        dicts.editGroup( editDictionaryGroup );
+      }
+    }
+    else {
+      ui.tabs->setTabVisible( 0, true );
+      ui.tabs->setCurrentIndex( 0 );
     }
 
     dicts.restoreGeometry( cfg.dictionariesDialogGeometry );

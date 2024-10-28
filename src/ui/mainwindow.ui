@@ -94,6 +94,7 @@
     <property name="title">
      <string>&amp;Edit</string>
     </property>
+    <addaction name="sourcesAction"/>
     <addaction name="dictionaries"/>
     <addaction name="preferences"/>
    </widget>
@@ -281,6 +282,18 @@
     </layout>
    </widget>
   </widget>
+  <action name="sourcesAction">
+   <property name="icon">
+    <iconset resource="../../resources.qrc">
+     <normaloff>:/icons/sources.png</normaloff>:/icons/sources.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Sources...</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
   <action name="dictionaries">
    <property name="icon">
     <iconset resource="../../resources.qrc">

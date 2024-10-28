@@ -74,6 +74,8 @@ EditDictionaries::EditDictionaries( QWidget * parent,
 void EditDictionaries::editGroup( unsigned id )
 {
   ui.tabs->setTabVisible( 0, false );
+  ui.tabs->setTabVisible( 1, true );
+  ui.tabs->setTabVisible( 2, true );
 
   if ( id == Instances::Group::AllGroupId ) {
     ui.tabs->setCurrentIndex( 1 );
