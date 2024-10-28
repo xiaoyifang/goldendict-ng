@@ -2686,19 +2686,19 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
     </message>
     <message>
       <source>Show &amp;Small Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Small Icons in Toolbars</translation>
+      <translation>Mostrar iconos pequeños en las barras de herramientas</translation>
     </message>
     <message>
       <source>Show &amp;Large Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Large Icons in Toolbars</translation>
+      <translation>Mostrar iconos grandes en las barras de herramientas</translation>
     </message>
     <message>
       <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Normal Icons in Toolbars</translation>
+      <translation>Mostrar iconos normales en las barras de herramientas</translation>
     </message>
     <message>
       <source>Toggle clipboard monitoring</source>
-      <translation type="unfinished">Toggle clipboard monitoring</translation>
+      <translation>Activar o desactivar la supervisión del portapapeles</translation>
     </message>
   </context>
   <context>
@@ -3549,11 +3549,11 @@ de diccionarios Stardict, Babylon y GLS</translation>
     </message>
     <message>
       <source>Start with clipboard monitoring turned on</source>
-      <translation type="unfinished">Start with clipboard monitoring turned on</translation>
+      <translation>Comience con la supervisión del portapapeles activada</translation>
     </message>
     <message>
       <source>Auto-pronounce words in the popup</source>
-      <translation type="unfinished">Auto-pronounce words in the popup</translation>
+      <translation>Pronunciar palabras automáticamente en la ventana emergente</translation>
     </message>
   </context>
   <context>
