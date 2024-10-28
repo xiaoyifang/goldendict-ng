@@ -597,10 +597,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
   <context>
     <name>DictInfo</name>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Muokkaa sanakirjaa</translation>
-    </message>
-    <message>
       <source>Open index folder</source>
       <translation>Avaa hakemistokansio</translation>
     </message>
@@ -651,12 +647,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>Full-text search disabled</source>
       <translation>Koko tekstihaku pois käytöstä</translation>
-    </message>
-    <message>
-      <source>Edit the dictionary via command:
-%1</source>
-      <translation>Muokkaa sanakirjaa komennon kautta:
-%1</translation>
     </message>
   </context>
   <context>
@@ -749,10 +739,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>Open dictionary folder</source>
       <translation>Avaa sanakirjakansio</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>Muokkaa sanakirjaa</translation>
     </message>
   </context>
   <context>
@@ -2429,10 +2415,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Näytä nimet sanakirjassa &amp;palkki</translation>
     </message>
     <message>
-      <source>Show Small Icons in &amp;Toolbars</source>
-      <translation>Näytä pienet kuvakkeet työkalupalkeissa</translation>
-    </message>
-    <message>
       <source>&amp;Menubar</source>
       <translation>Valikkopalkki</translation>
     </message>
@@ -2447,10 +2429,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>Forward</source>
       <translation>Eteenpäin</translation>
-    </message>
-    <message>
-      <source>Enable Scanning</source>
-      <translation>Ota Skannaus Käyttöön</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2545,10 +2523,6 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
     <message>
       <source>Remove current tab from Favorites</source>
       <translation>Poista nykyinen välilehti suosikeista</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
@@ -2703,16 +2677,28 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <translation>Avaa sanakirjakansio</translation>
     </message>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Muokkaa sanakirjaa</translation>
-    </message>
-    <message>
       <source>Now indexing for full-text search: </source>
       <translation>Nyt indeksoidaan koko tekstin hakuun: </translation>
     </message>
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Poista otsikkosana &quot;%1&quot; suosikeista?</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Small Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Large Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Normal Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation type="unfinished">Toggle clipboard monitoring</translation>
     </message>
   </context>
   <context>
@@ -3057,16 +3043,6 @@ sovellus.</translation>
       <translation>&amp;Kartoita Ponnahdusikkuna</translation>
     </message>
     <message>
-      <source>Chooses whether the popup mode is on by default or not. If checked,
-the program would always start with the popup active.</source>
-      <translation>Valitsee onko skannaus ponnahdusikkuna oletusarvoisesti päällä vai ei. Jos valittuna,
-ohjelma alkaisi aina skannauksen ponnahdusikkunan ollessa aktiivinen.</translation>
-    </message>
-    <message>
-      <source>Start with popup turned on</source>
-      <translation>Aloita skannaus ponnahdusikkuna otettu käyttöön</translation>
-    </message>
-    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Lähetä käännetty sana pääikkunaan sen sijaan, että se näytetään ponnahdusikkunassa</translation>
     </message>
@@ -3179,10 +3155,6 @@ painettuna tilassa, kun sana valinta muuttuu.</translation>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Ääntää sanat automaattisesti pääikkunassa</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in popup</source>
-      <translation>Ääntää automaattisesti sanoja skannauksessa</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3574,6 +3546,18 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <source>Restart needed</source>
       <translation>Uudelleenkäynnistys tarvitaan</translation>
     </message>
+    <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation type="unfinished">Start with clipboard monitoring turned on</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation type="unfinished">Auto-pronounce words in the popup</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3814,10 +3798,6 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
 could be resized or managed in other ways.</source>
       <translation>Tämän avulla voit kiinnittää ikkunan alaspäin, jotta se pysyisi ruudulla,
 voidaan muuttaa tai hallita muulla tavoin.</translation>
-    </message>
-    <message>
-      <source>%1 - GoldenDict-ng</source>
-      <translation>%1 - GoldenDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
