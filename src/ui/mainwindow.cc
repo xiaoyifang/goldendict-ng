@@ -649,7 +649,9 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   connect( ui.quit, &QAction::triggered, this, &MainWindow::quitApp );
 
-  connect( ui.dictionaries, &QAction::triggered, this, &MainWindow::editDictionaries );
+  connect( ui.dictionaries, &QAction::triggered, this, [ this ]() {
+    editDictionaries( Instances::Group::NoGroupId, false );
+  } );
   connect( ui.sourcesAction, &QAction::triggered, this, [ this ]() {
     editDictionaries( Instances::Group::NoGroupId, true );
   } );
