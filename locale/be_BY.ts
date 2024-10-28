@@ -2686,19 +2686,19 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Show &amp;Small Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Small Icons in Toolbars</translation>
+      <translation>Паказваць &amp;маленькія значкі на панэлі інструментаў</translation>
     </message>
     <message>
       <source>Show &amp;Large Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Large Icons in Toolbars</translation>
+      <translation>Паказваць &amp;вялікія значкі на панэлі інструментаў</translation>
     </message>
     <message>
       <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Normal Icons in Toolbars</translation>
+      <translation>Паказваць &amp;звычайныя значкі на панэлі інструментаў</translation>
     </message>
     <message>
       <source>Toggle clipboard monitoring</source>
-      <translation type="unfinished">Toggle clipboard monitoring</translation>
+      <translation>Пераключыць маніторынг буфера абмену</translation>
     </message>
   </context>
   <context>
@@ -3536,15 +3536,15 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+      <translation>Выбірае, ці будзе маніторынг буфера абмену ўключацца па змаўчанні пры запуску праграмы&apos;.</translation>
     </message>
     <message>
       <source>Start with clipboard monitoring turned on</source>
-      <translation type="unfinished">Start with clipboard monitoring turned on</translation>
+      <translation>Пачніце з уключанага маніторынгу буфера абмену</translation>
     </message>
     <message>
       <source>Auto-pronounce words in the popup</source>
-      <translation type="unfinished">Auto-pronounce words in the popup</translation>
+      <translation>Аўтаматычнае вымаўленне слоў ва ўсплываючым акне</translation>
     </message>
   </context>
   <context>
