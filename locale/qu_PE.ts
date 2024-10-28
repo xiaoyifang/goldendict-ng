@@ -2686,19 +2686,19 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Show &amp;Small Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Small Icons in Toolbars</translation>
+      <translation>&amp;Uchuy Iconokuna Llamkanakuna Barras nisqapi rikuchiy</translation>
     </message>
     <message>
       <source>Show &amp;Large Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Large Icons in Toolbars</translation>
+      <translation>&amp;Hatun Iconokuna Llamkanakuna Barras nisqapi rikuchiy</translation>
     </message>
     <message>
       <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Normal Icons in Toolbars</translation>
+      <translation>&amp;Normal Iconos nisqakunata rikuchiy Barras de herramientas nisqapi</translation>
     </message>
     <message>
       <source>Toggle clipboard monitoring</source>
-      <translation type="unfinished">Toggle clipboard monitoring</translation>
+      <translation>Portapapeles nisqa qhawayta tikray</translation>
     </message>
   </context>
   <context>
@@ -3544,15 +3544,15 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+      <translation>Akllan sichus portapapeles qhawayqa ñawpaqmanta llamk'achisqa kanqa programa&apos;s qallariypi.</translation>
     </message>
     <message>
       <source>Start with clipboard monitoring turned on</source>
-      <translation type="unfinished">Start with clipboard monitoring turned on</translation>
+      <translation>Qallarina portapapeles qhawayta llank’achisqawan</translation>
     </message>
     <message>
       <source>Auto-pronounce words in the popup</source>
-      <translation type="unfinished">Auto-pronounce words in the popup</translation>
+      <translation>Chay popup nisqapi simikunata kikillanmanta t’oqyachiy</translation>
     </message>
   </context>
   <context>
