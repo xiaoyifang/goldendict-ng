@@ -10,9 +10,7 @@
 #include <QSystemTrayIcon>
 #include <QNetworkAccessManager>
 #include <QProgressDialog>
-#include <QAction>
 #include <QActionGroup>
-
 #include <functional>
 #include "ui_mainwindow.h"
 #include "config.hh"

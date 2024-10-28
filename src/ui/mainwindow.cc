@@ -519,7 +519,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   useLargeIconsInToolbarsAction.setCheckable( true );
   useLargeIconsInToolbarsAction.setChecked( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::Large );
 
-  connect( smallLargeIconGroup, &QAction::triggered, this, &MainWindow::iconSizeActionTriggered );
+  connect( smallLargeIconGroup, &QActionGroup::triggered, this, &MainWindow::iconSizeActionTriggered );
 
   // Toggle Menubar
   toggleMenuBarAction.setCheckable( true );
