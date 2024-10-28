@@ -2686,19 +2686,19 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Show &amp;Small Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Small Icons in Toolbars</translation>
+      <translation>Нишонаҳои &amp;хурдро дар панели асбобҳо нишон диҳед</translation>
     </message>
     <message>
       <source>Show &amp;Large Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Large Icons in Toolbars</translation>
+      <translation>Нишонаҳои &amp;калонро дар панели асбобҳо нишон диҳед</translation>
     </message>
     <message>
       <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Normal Icons in Toolbars</translation>
+      <translation>Нишон додани &amp;Нормӣ дар панели асбобҳо</translation>
     </message>
     <message>
       <source>Toggle clipboard monitoring</source>
-      <translation type="unfinished">Toggle clipboard monitoring</translation>
+      <translation>Мониторинги буферро иваз кунед</translation>
     </message>
   </context>
   <context>
@@ -3548,15 +3548,15 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+      <translation>Интихоб мекунад, ки мониторинги буфер ба таври нобаёнӣ ҳангоми оғози барнома&apos;фаъол мешавад ё на.</translation>
     </message>
     <message>
       <source>Start with clipboard monitoring turned on</source>
-      <translation type="unfinished">Start with clipboard monitoring turned on</translation>
+      <translation>Бо фаъол кардани мониторинги буфер оғоз кунед</translation>
     </message>
     <message>
       <source>Auto-pronounce words in the popup</source>
-      <translation type="unfinished">Auto-pronounce words in the popup</translation>
+      <translation>Калимаҳоро дар равзанаи пайдошуда худкор талаффуз кунед</translation>
     </message>
   </context>
   <context>
