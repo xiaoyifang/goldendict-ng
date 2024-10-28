@@ -597,10 +597,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictInfo</name>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Редактирай речника</translation>
-    </message>
-    <message>
       <source>Open index folder</source>
       <translation>Отворете индексната папка</translation>
     </message>
@@ -651,12 +647,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Full-text search disabled</source>
       <translation>Търсенето в пълен текст е деактивирано</translation>
-    </message>
-    <message>
-      <source>Edit the dictionary via command:
-%1</source>
-      <translation>Редакция на речник чрез команда:
-%1</translation>
     </message>
   </context>
   <context>
@@ -749,10 +739,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>Отвори папката на речника</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>Редактирай речника</translation>
     </message>
   </context>
   <context>
@@ -2429,10 +2415,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>По&amp;казвай името в панел речници</translation>
     </message>
     <message>
-      <source>Show Small Icons in &amp;Toolbars</source>
-      <translation>&amp;Малки икони в панел инструменти</translation>
-    </message>
-    <message>
       <source>&amp;Menubar</source>
       <translation>&amp;Главно меню</translation>
     </message>
@@ -2447,10 +2429,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Forward</source>
       <translation>Напред</translation>
-    </message>
-    <message>
-      <source>Enable Scanning</source>
-      <translation>Активиране на сканирането</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2545,10 +2523,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Remove current tab from Favorites</source>
       <translation>Изтрий текущия подпрозорец от Любими</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
@@ -2703,16 +2677,28 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Отвори папката на речника</translation>
     </message>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Редактирай речник</translation>
-    </message>
-    <message>
       <source>Now indexing for full-text search: </source>
       <translation>Индексират се за Цялотекстово търсене: </translation>
     </message>
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Да изтрие заглавието &quot;%1&quot; от Любими?</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Small Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Large Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Normal Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation type="unfinished">Toggle clipboard monitoring</translation>
     </message>
   </context>
   <context>
@@ -3057,16 +3043,6 @@ the application.</source>
       <translation>&amp;Изскачащ прозорец</translation>
     </message>
     <message>
-      <source>Chooses whether the popup mode is on by default or not. If checked,
-the program would always start with the popup active.</source>
-      <translation>Избран ли е, Изкачащ прозорец по подразб. или не. Ако е проверено,
-програмата винаги ще стартира с активен Изкачащ прозорец.</translation>
-    </message>
-    <message>
-      <source>Start with popup turned on</source>
-      <translation>Пускане с включен изскачащ прозорец</translation>
-    </message>
-    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Изпрати превежданата дума в главния окно прозорец вместо превод в изскачащ</translation>
     </message>
@@ -3179,10 +3155,6 @@ in the pressed state when the word selection changes.</source>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Автоматично произнасяне на думите в главния прозорец</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in popup</source>
-      <translation>Автоматично произнасяне на думите в изскачащия прозорец</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3573,6 +3545,18 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Restart needed</source>
       <translation>Необходимо е рестартиране</translation>
     </message>
+    <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation type="unfinished">Start with clipboard monitoring turned on</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation type="unfinished">Auto-pronounce words in the popup</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3813,10 +3797,6 @@ from Stardict, Babylon and GLS dictionaries</source>
 could be resized or managed in other ways.</source>
       <translation>Използвайте да закрепи отдолу прозореца, да бъде на екрана,
 като променен или аранжиран по друг начин.</translation>
-    </message>
-    <message>
-      <source>%1 - GoldenDict-ng</source>
-      <translation>%1 - GoldenDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
