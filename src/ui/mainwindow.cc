@@ -513,7 +513,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   useSmallIconsInToolbarsAction.setChecked( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::Small );
 
   // Use large icons in toolbars
-  smallLargeIconGroup.setExclusionPolicy( QActionGroup::ExclusionPolicy::ExclusiveOptional );
+  smallLargeIconGroup.setExclusionPolicy( QActionGroup::ExclusiveOptional );
   smallLargeIconGroup.addAction( &useLargeIconsInToolbarsAction );
   smallLargeIconGroup.addAction( &useSmallIconsInToolbarsAction );
 
