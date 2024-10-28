@@ -596,10 +596,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictInfo</name>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Chỉnh sửa từ điển</translation>
-    </message>
-    <message>
       <source>Open index folder</source>
       <translation>Mở thư mục chỉ mục</translation>
     </message>
@@ -650,12 +646,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Full-text search disabled</source>
       <translation>Tìm kiếm toàn văn bị vô hiệu hóa</translation>
-    </message>
-    <message>
-      <source>Edit the dictionary via command:
-%1</source>
-      <translation>Chỉnh sửa từ điển với lệnh:
-%1</translation>
     </message>
   </context>
   <context>
@@ -748,10 +738,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>Mở thư mục từ điển</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>Sửa đổi từ điển</translation>
     </message>
   </context>
   <context>
@@ -2428,10 +2414,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Hiện tên từ điển trên Thanh &amp;Từ điển</translation>
     </message>
     <message>
-      <source>Show Small Icons in &amp;Toolbars</source>
-      <translation>Hiện &amp;biểu tượng nhỏ trên Thanh công cụ</translation>
-    </message>
-    <message>
       <source>&amp;Menubar</source>
       <translation>Thanh Trì&amp;nh đơn</translation>
     </message>
@@ -2446,10 +2428,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Forward</source>
       <translation>Tiếp tục</translation>
-    </message>
-    <message>
-      <source>Enable Scanning</source>
-      <translation>Bật tính năng quét</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2544,10 +2522,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Remove current tab from Favorites</source>
       <translation>Xóa tab hiện tại khỏi Mục ưa thích</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
@@ -2702,16 +2676,28 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Mở thư mục từ điển</translation>
     </message>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Chỉnh sửa từ điển</translation>
-    </message>
-    <message>
       <source>Now indexing for full-text search: </source>
       <translation>Hiện đang lập chỉ mục cho tìm kiếm toàn văn: </translation>
     </message>
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Xóa tiêu đề &quot;%1&quot; khỏi Mục ưa thích?</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Small Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Large Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Normal Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation type="unfinished">Toggle clipboard monitoring</translation>
     </message>
   </context>
   <context>
@@ -3054,16 +3040,6 @@ the application.</source>
       <translation>&amp;Quét Popup</translation>
     </message>
     <message>
-      <source>Chooses whether the popup mode is on by default or not. If checked,
-the program would always start with the popup active.</source>
-      <translation>Chọn bật chế độ quét popup mặc định. Nếu chọn, chương trình sẽ khởi động
-với tính năng quét popup được bật.</translation>
-    </message>
-    <message>
-      <source>Start with popup turned on</source>
-      <translation>Khởi động với quét popup được bật</translation>
-    </message>
-    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Hiện từ đã dịch trên cửa sổ chính thay vì cửa sổ popup</translation>
     </message>
@@ -3175,10 +3151,6 @@ in the pressed state when the word selection changes.</source>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Tự động phát âm trong cửa sổ chính</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in popup</source>
-      <translation>Tự động phát âm trong quét popup</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3567,6 +3539,18 @@ từ các từ điển Stardict, Babylon và GLS</translation>
       <source>Restart needed</source>
       <translation>khởi động lại cần thiết</translation>
     </message>
+    <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation type="unfinished">Start with clipboard monitoring turned on</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation type="unfinished">Auto-pronounce words in the popup</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3807,10 +3791,6 @@ từ các từ điển Stardict, Babylon và GLS</translation>
 could be resized or managed in other ways.</source>
       <translation>Đính cửa sổ trên màn hình, có thể thay đổi kích thước hay
 quản lý theo nhiều cách khác.</translation>
-    </message>
-    <message>
-      <source>%1 - GoldenDict-ng</source>
-      <translation>%1 - GoldenDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
