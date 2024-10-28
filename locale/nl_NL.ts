@@ -2686,19 +2686,19 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
     </message>
     <message>
       <source>Show &amp;Small Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Small Icons in Toolbars</translation>
+      <translation>&amp;Kleine pictogrammen weergeven in werkbalken</translation>
     </message>
     <message>
       <source>Show &amp;Large Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Large Icons in Toolbars</translation>
+      <translation>Grote pictogrammen weergeven in werkbalken</translation>
     </message>
     <message>
       <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Normal Icons in Toolbars</translation>
+      <translation>&amp;Normale pictogrammen weergeven in werkbalken</translation>
     </message>
     <message>
       <source>Toggle clipboard monitoring</source>
-      <translation type="unfinished">Toggle clipboard monitoring</translation>
+      <translation>Klembordbewaking in-/uitschakelen</translation>
     </message>
   </context>
   <context>
@@ -3544,15 +3544,15 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+      <translation>Hiermee kiest u of de klembordbewaking standaard wordt ingeschakeld bij het opstarten van het programma&apos;.</translation>
     </message>
     <message>
       <source>Start with clipboard monitoring turned on</source>
-      <translation type="unfinished">Start with clipboard monitoring turned on</translation>
+      <translation>Begin met klembordbewaking ingeschakeld</translation>
     </message>
     <message>
       <source>Auto-pronounce words in the popup</source>
-      <translation type="unfinished">Auto-pronounce words in the popup</translation>
+      <translation>Woorden automatisch uitspreken in de pop-up</translation>
     </message>
   </context>
   <context>
@@ -3692,7 +3692,7 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     </message>
     <message>
       <source>Toggle popup.</source>
-      <translation type="unfinished">Toggle popup.</translation>
+      <translation>Pop-up weergeven/verbergen.</translation>
     </message>
     <message>
       <source>Print version and diagnosis info.</source>
