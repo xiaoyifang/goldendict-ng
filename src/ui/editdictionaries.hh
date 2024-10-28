@@ -31,6 +31,7 @@ public:
 
   /// Instructs the dialog to position itself on editing the given group.
   void editGroup( unsigned id );
+  void showSource( bool show );
 
   /// Returns true if any changes to the 'dictionaries' vector passed were done.
   bool areDictionariesChanged() const

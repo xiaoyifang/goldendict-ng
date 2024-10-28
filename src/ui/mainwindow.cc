@@ -2209,20 +2209,12 @@ void MainWindow::editDictionaries( unsigned editDictionaryGroup, bool showSource
 
     connect( &dicts, &EditDictionaries::showDictionaryHeadwords, this, &MainWindow::showDictionaryHeadwords );
 
-    if ( !showSourceOnly ) {
-      ui.tabs->setTabVisible( 0, false );
+    dicts.showSource( showSourceOnly );
 
-      ui.tabs->setTabVisible( 1, true );
-      ui.tabs->setTabVisible( 2, true );
+    if ( !showSourceOnly ) {
       if ( editDictionaryGroup != Instances::Group::NoGroupId ) {
         dicts.editGroup( editDictionaryGroup );
       }
-    }
-    else {
-      ui.tabs->setTabVisible( 0, true );
-      ui.tabs->setTabVisible( 1, false );
-      ui.tabs->setTabVisible( 2, false );
-      ui.tabs->setCurrentIndex( 0 );
     }
 
     dicts.restoreGeometry( cfg.dictionariesDialogGeometry );

@@ -82,6 +82,22 @@ void EditDictionaries::editGroup( unsigned id )
   }
 }
 
+void EditDictionaries::showSource( bool show )
+{
+  if ( !show ) {
+    ui.tabs->setTabVisible( 0, false );
+
+    ui.tabs->setTabVisible( 1, true );
+    ui.tabs->setTabVisible( 2, true );
+  }
+  else {
+    ui.tabs->setTabVisible( 0, true );
+    ui.tabs->setTabVisible( 1, false );
+    ui.tabs->setTabVisible( 2, false );
+    ui.tabs->setCurrentIndex( 0 );
+  }
+}
+
 void EditDictionaries::save( bool rebuildGroups )
 {
   const Config::Groups newGroups  = groups->getGroups();
