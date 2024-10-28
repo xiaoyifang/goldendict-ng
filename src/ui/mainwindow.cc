@@ -501,26 +501,22 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   tabMenu->addAction( &addAllTabToFavoritesAction );
 
   // Dictionary bar names
-
   showDictBarNamesAction.setCheckable( true );
   showDictBarNamesAction.setChecked( cfg.showingDictBarNames );
 
   connect( &showDictBarNamesAction, &QAction::triggered, this, &MainWindow::showDictBarNamesTriggered );
 
-  // Use small icons in toolbars
-
   useSmallIconsInToolbarsAction.setCheckable( true );
   useSmallIconsInToolbarsAction.setChecked( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::Small );
-
-  // Use large icons in toolbars
-  smallLargeIconGroup->addAction( &useLargeIconsInToolbarsAction );
-  smallLargeIconGroup->addAction( &useSmallIconsInToolbarsAction );
-  smallLargeIconGroup->addAction( &useNormalIconsInToolbarsAction );
-
   useLargeIconsInToolbarsAction.setCheckable( true );
   useLargeIconsInToolbarsAction.setChecked( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::Large );
   useNormalIconsInToolbarsAction.setCheckable( true );
   useNormalIconsInToolbarsAction.setChecked( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::Normal );
+
+  // icon action group,default exclusive option.
+  smallLargeIconGroup->addAction( &useLargeIconsInToolbarsAction );
+  smallLargeIconGroup->addAction( &useSmallIconsInToolbarsAction );
+  smallLargeIconGroup->addAction( &useNormalIconsInToolbarsAction );
 
   connect( smallLargeIconGroup, &QActionGroup::triggered, this, &MainWindow::iconSizeActionTriggered );
 
@@ -532,7 +528,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( &toggleMenuBarAction, &QAction::triggered, this, &MainWindow::toggleMenuBarTriggered );
 
   // Populate 'View' menu
-
   ui.menuView->addAction( &toggleMenuBarAction );
   ui.menuView->addSeparator();
   ui.menuView->addAction( ui.searchPane->toggleViewAction() );
@@ -548,7 +543,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   ui.menuView->addSeparator();
   ui.menuView->addAction( &showDictBarNamesAction );
   ui.menuView->addSeparator();
-
   ui.menuView->addAction( &useSmallIconsInToolbarsAction );
   ui.menuView->addAction( &useNormalIconsInToolbarsAction );
   ui.menuView->addAction( &useLargeIconsInToolbarsAction );
