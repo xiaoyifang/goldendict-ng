@@ -2685,19 +2685,19 @@ Um &apos;*&apos;, &apos;zu finden?&apos;, &apos;[&apos;, &apos;]&apos; Symbole v
     </message>
     <message>
       <source>Show &amp;Small Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Small Icons in Toolbars</translation>
+      <translation>Kleine Symbole in Symbolleisten anzeigen</translation>
     </message>
     <message>
       <source>Show &amp;Large Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Large Icons in Toolbars</translation>
+      <translation>Große Symbole in Symbolleisten anzeigen</translation>
     </message>
     <message>
       <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Normal Icons in Toolbars</translation>
+      <translation>&amp;Normale Symbole in Symbolleisten anzeigen</translation>
     </message>
     <message>
       <source>Toggle clipboard monitoring</source>
-      <translation type="unfinished">Toggle clipboard monitoring</translation>
+      <translation>Zwischenablageüberwachung ein-/ausschalten</translation>
     </message>
   </context>
   <context>
@@ -3540,15 +3540,15 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+      <translation>Wählt, ob die Zwischenablageüberwachung beim Start des Programms&apos;standardmäßig aktiviert wird.</translation>
     </message>
     <message>
       <source>Start with clipboard monitoring turned on</source>
-      <translation type="unfinished">Start with clipboard monitoring turned on</translation>
+      <translation>Beginnen Sie mit aktivierter Zwischenablageüberwachung</translation>
     </message>
     <message>
       <source>Auto-pronounce words in the popup</source>
-      <translation type="unfinished">Auto-pronounce words in the popup</translation>
+      <translation>Wörter im Popup automatisch aussprechen</translation>
     </message>
   </context>
   <context>
