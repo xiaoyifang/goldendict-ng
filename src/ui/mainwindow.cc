@@ -144,7 +144,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   switchToNextTabAction( this ),
   switchToPrevTabAction( this ),
   showDictBarNamesAction( tr( "Show Names in Dictionary &Bar" ), this ),
-  smallLargeIconGroup( this ),
   useSmallIconsInToolbarsAction( tr( "Show Small Icons in &Toolbars" ), this ),
   useLargeIconsInToolbarsAction( tr( "Show Large Icons in &Toolbars" ), this ),
   toggleMenuBarAction( tr( "&Menubar" ), this ),
@@ -513,14 +512,14 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   useSmallIconsInToolbarsAction.setChecked( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::Small );
 
   // Use large icons in toolbars
-  smallLargeIconGroup.setExclusionPolicy( QActionGroup::ExclusiveOptional );
-  smallLargeIconGroup.addAction( &useLargeIconsInToolbarsAction );
-  smallLargeIconGroup.addAction( &useSmallIconsInToolbarsAction );
+  smallLargeIconGroup->setExclusionPolicy( QActionGroup::ExclusionPolicy::ExclusiveOptional );
+  smallLargeIconGroup->addAction( &useLargeIconsInToolbarsAction );
+  smallLargeIconGroup->addAction( &useSmallIconsInToolbarsAction );
 
   useLargeIconsInToolbarsAction.setCheckable( true );
   useLargeIconsInToolbarsAction.setChecked( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::Large );
 
-  connect( &smallLargeIconGroup, &QAction::triggered, this, &MainWindow::iconSizeActionTriggered );
+  connect( smallLargeIconGroup, &QAction::triggered, this, &MainWindow::iconSizeActionTriggered );
 
   // Toggle Menubar
   toggleMenuBarAction.setCheckable( true );

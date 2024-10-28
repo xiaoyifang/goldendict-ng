@@ -111,7 +111,7 @@ private:
     useSmallIconsInToolbarsAction, useLargeIconsInToolbarsAction, toggleMenuBarAction, focusHeadwordsDlgAction,
     focusArticleViewAction, addAllTabToFavoritesAction;
 
-  QActionGroup smallLargeIconGroup;
+  QActionGroup * smallLargeIconGroup = new QActionGroup( this );
 
   QAction stopAudioAction;
   QToolBar * navToolbar;
