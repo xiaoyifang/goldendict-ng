@@ -39,7 +39,7 @@
 #if defined( Q_OS_MAC )
   #include "macos/gd_clipboard.hh"
 #endif
-//must placed qactiongroup after fixx11h.h, None in QActionGroup conflict with X.h's macro None.
+//must place the qactiongroup after fixx11h.h, None in QActionGroup conflict with X.h's macro None.
 #include <QActionGroup>
 
 using std::string;
