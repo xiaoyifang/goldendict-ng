@@ -597,10 +597,6 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
   <context>
     <name>DictInfo</name>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Redigera ordlista</translation>
-    </message>
-    <message>
       <source>Open index folder</source>
       <translation>Öppna indexmappen</translation>
     </message>
@@ -651,12 +647,6 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <message>
       <source>Full-text search disabled</source>
       <translation>Fulltextsökning avaktiverad</translation>
-    </message>
-    <message>
-      <source>Edit the dictionary via command:
-%1</source>
-      <translation>Redigera ordlistan via kommando:
-%1</translation>
     </message>
   </context>
   <context>
@@ -749,10 +739,6 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <message>
       <source>Open dictionary folder</source>
       <translation>Öppna ordlistans lagringsmapp</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>Redigera ordlista</translation>
     </message>
   </context>
   <context>
@@ -2429,10 +2415,6 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <translation>Visa namn i ordliste&amp;fältet</translation>
     </message>
     <message>
-      <source>Show Small Icons in &amp;Toolbars</source>
-      <translation>Visa små ikoner i &amp;verktygsfält</translation>
-    </message>
-    <message>
       <source>&amp;Menubar</source>
       <translation>&amp;Menyrad</translation>
     </message>
@@ -2447,10 +2429,6 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <message>
       <source>Forward</source>
       <translation>Framåt</translation>
-    </message>
-    <message>
-      <source>Enable Scanning</source>
-      <translation>Aktivera skanning</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2545,10 +2523,6 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
     <message>
       <source>Remove current tab from Favorites</source>
       <translation>Ta bort aktuell flik från Favoriter</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
@@ -2703,16 +2677,28 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
       <translation>Öppna ordlistans mapp</translation>
     </message>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Redigera ordlista</translation>
-    </message>
-    <message>
       <source>Now indexing for full-text search: </source>
       <translation>Nu indexering för fulltextsökning: </translation>
     </message>
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Ta bort huvudord &quot;%1&quot; från Favoriter?</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Small Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Large Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Normal Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation type="unfinished">Toggle clipboard monitoring</translation>
     </message>
   </context>
   <context>
@@ -3056,16 +3042,6 @@ minimera fönstret till meddelandefältet istället för att avsluta programmet.
       <translation>&amp;Sökpopupruta</translation>
     </message>
     <message>
-      <source>Chooses whether the popup mode is on by default or not. If checked,
-the program would always start with the popup active.</source>
-      <translation>Avgör om sökpopuprutelägets standardinställning är PÅ eller AV. Om kryss-
-rutan är markerad startar programmet alltid med sökpopuprutan påslagen.</translation>
-    </message>
-    <message>
-      <source>Start with popup turned on</source>
-      <translation>Starta med sökpopuprutan påslagen</translation>
-    </message>
-    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Skicka översatta ord till huvudfönstret istället för att visa dem i popuprutan.</translation>
     </message>
@@ -3178,10 +3154,6 @@ angivna tangenterna är nedtryckta när ordet markeras.</translation>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Läs automatiskt upp ord i huvudfönstret</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in popup</source>
-      <translation>Läs automatiskt upp ord i popuprutan</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3576,6 +3548,18 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <source>Restart needed</source>
       <translation>Omstart behövs</translation>
     </message>
+    <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation type="unfinished">Start with clipboard monitoring turned on</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation type="unfinished">Auto-pronounce words in the popup</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3816,10 +3800,6 @@ från Stardict, Babylon och GLS ordböcker</translation>
 could be resized or managed in other ways.</source>
       <translation>Klicka här för att nåla fast rutan så att den stannar kvar på skärmen.
 Rutan kan storleksändras och hanteras på andra sätt.</translation>
-    </message>
-    <message>
-      <source>%1 - GoldenDict-ng</source>
-      <translation>%1 - GoldenDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
