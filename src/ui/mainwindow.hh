@@ -10,6 +10,8 @@
 #include <QSystemTrayIcon>
 #include <QNetworkAccessManager>
 #include <QProgressDialog>
+#include <QActionGroup>
+
 #include <functional>
 #include "ui_mainwindow.h"
 #include "config.hh"
@@ -29,7 +31,6 @@
 #include "dictheadwords.hh"
 #include "fulltextsearch.hh"
 #include "base_type.hh"
-#include <QActionGroup>
 #include "hotkeywrapper.hh"
 #include "resourceschemehandler.hh"
 #include "iframeschemehandler.hh"
