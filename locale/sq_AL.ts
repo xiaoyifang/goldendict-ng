@@ -2685,19 +2685,19 @@ Për të gjetur &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simbo
     </message>
     <message>
       <source>Show &amp;Small Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Small Icons in Toolbars</translation>
+      <translation>Shfaq ikonat e &amp;të vogla në shiritat e veglave</translation>
     </message>
     <message>
       <source>Show &amp;Large Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Large Icons in Toolbars</translation>
+      <translation>Shfaq ikona &amp;të mëdha në shiritat e veglave</translation>
     </message>
     <message>
       <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Normal Icons in Toolbars</translation>
+      <translation>Shfaq ikonat &amp;Normale në shiritat e veglave</translation>
     </message>
     <message>
       <source>Toggle clipboard monitoring</source>
-      <translation type="unfinished">Toggle clipboard monitoring</translation>
+      <translation>Ndrysho monitorimin e kujtesës së fragmenteve</translation>
     </message>
   </context>
   <context>
@@ -3540,15 +3540,15 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+      <translation>Zgjedh nëse monitorimi i kujtesës së fragmenteve do të aktivizohet si parazgjedhje në nisjen e programit&apos;.</translation>
     </message>
     <message>
       <source>Start with clipboard monitoring turned on</source>
-      <translation type="unfinished">Start with clipboard monitoring turned on</translation>
+      <translation>Filloni me monitorimin e kujtesës së fragmenteve të aktivizuar</translation>
     </message>
     <message>
       <source>Auto-pronounce words in the popup</source>
-      <translation type="unfinished">Auto-pronounce words in the popup</translation>
+      <translation>Shqiptoni automatikisht fjalët në dritaren kërcyese</translation>
     </message>
   </context>
   <context>
