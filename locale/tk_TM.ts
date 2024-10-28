@@ -596,10 +596,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictInfo</name>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Sözlügi üýtget</translation>
-    </message>
-    <message>
       <source>Open index folder</source>
       <translation>Indeks bukjasyny açyň</translation>
     </message>
@@ -650,12 +646,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Full-text search disabled</source>
       <translation>Doly tekst gözlegi ýapyldy</translation>
-    </message>
-    <message>
-      <source>Edit the dictionary via command:
-%1</source>
-      <translation>Sözlügi şu komanda bilen üýtget:
-%1</translation>
     </message>
   </context>
   <context>
@@ -748,10 +738,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>Sözlügiň bukjasyny aç</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>Sözlügi üýtget</translation>
     </message>
   </context>
   <context>
@@ -2428,10 +2414,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Sözlük &amp;tagtasynda atlary görkez</translation>
     </message>
     <message>
-      <source>Show Small Icons in &amp;Toolbars</source>
-      <translation>Kiçi nyşanlary görkez &amp;gurallar-tagtasynda</translation>
-    </message>
-    <message>
       <source>&amp;Menubar</source>
       <translation>&amp;Menýu zolagy</translation>
     </message>
@@ -2446,10 +2428,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Forward</source>
       <translation>Ugrukdyr</translation>
-    </message>
-    <message>
-      <source>Enable Scanning</source>
-      <translation>Skaneri açyň</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2544,10 +2522,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Remove current tab from Favorites</source>
       <translation>Häzirki goýmany Halanýanlardan aýyryň</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
@@ -2702,16 +2676,28 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Sözlügiň bukjasyny aç</translation>
     </message>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Sözlügi üýtget</translation>
-    </message>
-    <message>
       <source>Now indexing for full-text search: </source>
       <translation>Indi doly tekst gözlegi üçin indeksirleme: </translation>
     </message>
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Halanýanlardan &quot;%1&quot; söz sözüni aýyryň?</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Small Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Large Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Normal Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation type="unfinished">Toggle clipboard monitoring</translation>
     </message>
   </context>
   <context>
@@ -3056,16 +3042,6 @@ programmany ýapmagyň ýerine ony gizlärdi.</translation>
       <translation>&amp;Skan popup</translation>
     </message>
     <message>
-      <source>Chooses whether the popup mode is on by default or not. If checked,
-the program would always start with the popup active.</source>
-      <translation>Skaner açylýan re modeimiň deslapkydygyny ýa-da ýokdugyny saýlaýar. Barlanylsa,
-programma elmydama skananyň açylmagy bilen işjeň başlar.</translation>
-    </message>
-    <message>
-      <source>Start with popup turned on</source>
-      <translation>Skan ýüze çykarmany işledip başlat</translation>
-    </message>
-    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Terjime edilen sözleri ýüze çykýan penjireden görkezmän olary baş penjirä iber</translation>
     </message>
@@ -3178,10 +3154,6 @@ basylan ýagdaýynda görkeziler.</translation>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Baş penjirede sözleriň awto-aýdylyşy</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in popup</source>
-      <translation>Skan popup-dan sözleriň awto-aýdylyşy</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3573,6 +3545,18 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
       <source>Restart needed</source>
       <translation>Gaýtadan açmaly</translation>
     </message>
+    <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation type="unfinished">Start with clipboard monitoring turned on</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation type="unfinished">Auto-pronounce words in the popup</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3813,10 +3797,6 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
 could be resized or managed in other ways.</source>
       <translation>Penjiräni ekranda saklamak üçin ulanyň,
 ölçegini üýtgedip ýa-da başga usullar bilen dolandyryp bolar.</translation>
-    </message>
-    <message>
-      <source>%1 - GoldenDict-ng</source>
-      <translation type="unfinished">%1 - GoldenDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
