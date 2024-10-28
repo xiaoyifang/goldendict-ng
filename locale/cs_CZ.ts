@@ -597,10 +597,6 @@ a školní ortografií v cyrilici)</translation>
   <context>
     <name>DictInfo</name>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Upravit slovník</translation>
-    </message>
-    <message>
       <source>Open index folder</source>
       <translation>Otevřete složku indexu</translation>
     </message>
@@ -651,12 +647,6 @@ a školní ortografií v cyrilici)</translation>
     <message>
       <source>Full-text search disabled</source>
       <translation>Fulltextové vyhledávání zakázáno</translation>
-    </message>
-    <message>
-      <source>Edit the dictionary via command:
-%1</source>
-      <translation>Upravit slovník příkazem:
-%1</translation>
     </message>
   </context>
   <context>
@@ -749,10 +739,6 @@ a školní ortografií v cyrilici)</translation>
     <message>
       <source>Open dictionary folder</source>
       <translation>Otevřít složku slovníků</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>Upravit slovník</translation>
     </message>
   </context>
   <context>
@@ -2429,10 +2415,6 @@ a školní ortografií v cyrilici)</translation>
       <translation>Zo&amp;brazit názvy v pruhu slovníků</translation>
     </message>
     <message>
-      <source>Show Small Icons in &amp;Toolbars</source>
-      <translation>Zobrazi&amp;t malé ikony v nástrojových lištách</translation>
-    </message>
-    <message>
       <source>&amp;Menubar</source>
       <translation>Pruh &amp;nabídky</translation>
     </message>
@@ -2447,10 +2429,6 @@ a školní ortografií v cyrilici)</translation>
     <message>
       <source>Forward</source>
       <translation>Vpřed</translation>
-    </message>
-    <message>
-      <source>Enable Scanning</source>
-      <translation>Povolit skenování</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2545,10 +2523,6 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
     <message>
       <source>Remove current tab from Favorites</source>
       <translation>Odstranit aktuální kartu z oblíbených</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
@@ -2703,16 +2677,28 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
       <translation>Otevřít složku slovníků</translation>
     </message>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Upravit slovník</translation>
-    </message>
-    <message>
       <source>Now indexing for full-text search: </source>
       <translation>Indexování pro fulltextové vyhledávání: </translation>
     </message>
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Odstranit headword &quot;%1&quot; z oblíbených položek?</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Small Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Large Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Normal Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation type="unfinished">Toggle clipboard monitoring</translation>
     </message>
   </context>
   <context>
@@ -3055,16 +3041,6 @@ ukončení aplikace.</translation>
       <translation>Vy&amp;skakovací okno</translation>
     </message>
     <message>
-      <source>Chooses whether the popup mode is on by default or not. If checked,
-the program would always start with the popup active.</source>
-      <translation>Určuje, zda je vyskakovací okno automaticky povoleno nebo zakázáno. Pokud
-zaškrtnuto, program bude automaticky startovat s aktivovaným vyskakovacím oknem.</translation>
-    </message>
-    <message>
-      <source>Start with popup turned on</source>
-      <translation>Spouštět s povoleným vyskakovacím oknem</translation>
-    </message>
-    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Poslat přeložené slovo do hlavního okna namísto zobrazení ve vyskakovacím okně</translation>
     </message>
@@ -3177,10 +3153,6 @@ zvolené klávesy stisknuty při změně výběru.</translation>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Automaticky vyslovovat slova v hlavním okně</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in popup</source>
-      <translation>Automaticky vyslovovat slova ve vyskakovacím okně</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3571,6 +3543,18 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <source>Restart needed</source>
       <translation>Je potřeba restart</translation>
     </message>
+    <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation type="unfinished">Start with clipboard monitoring turned on</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation type="unfinished">Auto-pronounce words in the popup</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3811,10 +3795,6 @@ ze Stardict, Babylon a GLS slovníků</translation>
 could be resized or managed in other ways.</source>
       <translation>Toto použijte pro připíchnutí okna, aby zůstalo na obrazovce.
 Lze měnit jeho velikost a může s ním být i jinak manipulováno.</translation>
-    </message>
-    <message>
-      <source>%1 - GoldenDict-ng</source>
-      <translation>%1 – GoldenDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
