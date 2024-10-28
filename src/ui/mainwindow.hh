@@ -106,9 +106,10 @@ private:
   QFont wordListDefaultFont, translateLineDefaultFont, groupListDefaultFont;
 
   QAction escAction, focusTranslateLineAction, addTabAction, closeCurrentTabAction, closeAllTabAction,
-    closeRestTabAction, switchToNextTabAction, switchToPrevTabAction, showDictBarNamesAction,
-    useSmallIconsInToolbarsAction, useLargeIconsInToolbarsAction, toggleMenuBarAction, focusHeadwordsDlgAction,
-    focusArticleViewAction, addAllTabToFavoritesAction;
+    closeRestTabAction, switchToNextTabAction, switchToPrevTabAction, showDictBarNamesAction, toggleMenuBarAction,
+    focusHeadwordsDlgAction, focusArticleViewAction, addAllTabToFavoritesAction;
+
+  QAction useSmallIconsInToolbarsAction, useLargeIconsInToolbarsAction, useNormalIconsInToolbarsAction;
 
   QActionGroup * smallLargeIconGroup = new QActionGroup( this );
 
