@@ -596,10 +596,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictInfo</name>
     <message>
-      <source>Edit dictionary</source>
-      <translation>शब्दकोश संपादित करें</translation>
-    </message>
-    <message>
       <source>Open index folder</source>
       <translation>इंडेक्स फ़ोल्डर खोलें</translation>
     </message>
@@ -650,12 +646,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Full-text search disabled</source>
       <translation>पूर्ण-पाठ खोज अक्षम की गई</translation>
-    </message>
-    <message>
-      <source>Edit the dictionary via command:
-%1</source>
-      <translation>शब्दकोश को समादेश के माध्यम से संपादित करें:
-%1</translation>
     </message>
   </context>
   <context>
@@ -748,10 +738,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>शब्दकोश फ़ोल्डर खोलें</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>शब्दकोश संपादित करें</translation>
     </message>
   </context>
   <context>
@@ -2428,10 +2414,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Afficher les noms dans la &amp;barre de dictionnaire</translation>
     </message>
     <message>
-      <source>Show Small Icons in &amp;Toolbars</source>
-      <translation>Afficher de petites icônes dans les barres d&apos;ou&amp;tils</translation>
-    </message>
-    <message>
       <source>&amp;Menubar</source>
       <translation>Barre du &amp;menu</translation>
     </message>
@@ -2446,10 +2428,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Forward</source>
       <translation>Suivant</translation>
-    </message>
-    <message>
-      <source>Enable Scanning</source>
-      <translation>स्कैनिंग सक्षम करें</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2544,10 +2522,6 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     <message>
       <source>Remove current tab from Favorites</source>
       <translation>पसंदीदा से वर्तमान टैब हटाएँ</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
@@ -2702,16 +2676,28 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
       <translation>Ouvrir le dossier des dictionnaires</translation>
     </message>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Éditer le dictionnaire</translation>
-    </message>
-    <message>
       <source>Now indexing for full-text search: </source>
       <translation>अब पूर्ण-पाठ खोज के लिए अनुक्रमण: </translation>
     </message>
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>पसंदीदा से हेडवर्ड &quot;%1&quot; हटाएं?</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Small Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Large Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Normal Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation type="unfinished">Toggle clipboard monitoring</translation>
     </message>
   </context>
   <context>
@@ -3049,17 +3035,6 @@ the application.</source>
       <translation>&amp;स्कैन पॉपअप</translation>
     </message>
     <message>
-      <source>Chooses whether the popup mode is on by default or not. If checked,
-the program would always start with the popup active.</source>
-      <translation>यह चुनता है कि स्कैन पॉपअप पद्धति औत्सर्गिक रूप से चालू है या नहीं। अगर जाँचा हुआ हो,
-तो प्रोग्राम हमेशा स्कैन पॉपअप सक्रिय के साथ शुरू होगा।
-</translation>
-    </message>
-    <message>
-      <source>Start with popup turned on</source>
-      <translation>स्कैन पॉपअप चालू के साथ शुरू करें</translation>
-    </message>
-    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>पॉपअप विंडो में दिखाने की जगह, अनुवादित शब्द को मुख्य विंडो पर भेजें</translation>
     </message>
@@ -3171,10 +3146,6 @@ in the pressed state when the word selection changes.</source>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>मुख्य खिडकी में शब्दों का स्वतः उच्चारण करें</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in popup</source>
-      <translation>स्कैन पॉपअप में शब्दों का स्वतः उच्चारण करें</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3558,6 +3529,18 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Restart needed</source>
       <translation>पुनः प्रारंभ करने की आवश्यकता है</translation>
     </message>
+    <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation type="unfinished">Start with clipboard monitoring turned on</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation type="unfinished">Auto-pronounce words in the popup</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3798,10 +3781,6 @@ from Stardict, Babylon and GLS dictionaries</source>
 could be resized or managed in other ways.</source>
       <translation>खिड़की को पिन करने के लिए इसका उपयोग करें जिससे कि यह स्क्रीन पर बना रहे,
 अन्य विधियों से आकार बदला या प्रबंधित किया जा सकता है</translation>
-    </message>
-    <message>
-      <source>%1 - GoldenDict-ng</source>
-      <translation>%1 - गोल्डनडिक्ट-एनजी</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
