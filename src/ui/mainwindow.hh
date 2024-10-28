@@ -10,8 +10,6 @@
 #include <QSystemTrayIcon>
 #include <QNetworkAccessManager>
 #include <QProgressDialog>
-#include <QAction>
-#include <QActionGroup>
 #include <functional>
 #include "ui_mainwindow.h"
 #include "config.hh"
@@ -41,6 +39,8 @@
 #if defined( Q_OS_MAC )
   #include "macos/gd_clipboard.hh"
 #endif
+//must  placed qactiongroup after fixx11h.h, None in QActionGroup confilct with X.h's macro None.
+#include <QActionGroup>
 
 using std::string;
 using std::vector;
