@@ -29,7 +29,7 @@
 #include "dictheadwords.hh"
 #include "fulltextsearch.hh"
 #include "base_type.hh"
-
+#include <QActionGroup>
 #include "hotkeywrapper.hh"
 #include "resourceschemehandler.hh"
 #include "iframeschemehandler.hh"
@@ -109,6 +109,8 @@ private:
     closeRestTabAction, switchToNextTabAction, switchToPrevTabAction, showDictBarNamesAction,
     useSmallIconsInToolbarsAction, useLargeIconsInToolbarsAction, toggleMenuBarAction, focusHeadwordsDlgAction,
     focusArticleViewAction, addAllTabToFavoritesAction;
+
+  QActionGroup smallLargeIconGroup;
 
   QAction stopAudioAction;
   QToolBar * navToolbar;
@@ -403,8 +405,7 @@ private slots:
   void showAbout();
 
   void showDictBarNamesTriggered();
-  void useSmallIconsInToolbarsTriggered();
-  void useLargeIconsInToolbarsTriggered();
+  void iconSizeActionTriggered( QAction * action );
   void toggleMenuBarTriggered( bool announce = true );
 
   void on_clearHistory_triggered();
