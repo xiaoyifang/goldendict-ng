@@ -2686,19 +2686,19 @@ A &apos;*&apos;, &apos;?&apos;, &apos;[&apos; és &apos;]&apos; karakterek keres
     </message>
     <message>
       <source>Show &amp;Small Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Small Icons in Toolbars</translation>
+      <translation>&amp;Kis ikonok megjelenítése az eszköztáron</translation>
     </message>
     <message>
       <source>Show &amp;Large Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Large Icons in Toolbars</translation>
+      <translation>&amp;Nagy ikonok megjelenítése az eszköztáron</translation>
     </message>
     <message>
       <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Normal Icons in Toolbars</translation>
+      <translation>&amp;Normál ikonok megjelenítése az eszköztáron</translation>
     </message>
     <message>
       <source>Toggle clipboard monitoring</source>
-      <translation type="unfinished">Toggle clipboard monitoring</translation>
+      <translation>Vágólap-figyelés be- és kikapcsolása</translation>
     </message>
   </context>
   <context>
@@ -3547,15 +3547,15 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+      <translation>Kiválasztja, hogy a vágólap figyelése alapértelmezés szerint be legyen-e kapcsolva a&apos;program indításakor.</translation>
     </message>
     <message>
       <source>Start with clipboard monitoring turned on</source>
-      <translation type="unfinished">Start with clipboard monitoring turned on</translation>
+      <translation>Kezdje a vágólap-felügyelet bekapcsolásával</translation>
     </message>
     <message>
       <source>Auto-pronounce words in the popup</source>
-      <translation type="unfinished">Auto-pronounce words in the popup</translation>
+      <translation>Szavak automatikus kiejtése a felugró ablakban</translation>
     </message>
   </context>
   <context>
