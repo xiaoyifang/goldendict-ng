@@ -2686,19 +2686,19 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
     </message>
     <message>
       <source>Show &amp;Small Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Small Icons in Toolbars</translation>
+      <translation>Pokaż &amp;małe ikony na paskach narzędzi</translation>
     </message>
     <message>
       <source>Show &amp;Large Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Large Icons in Toolbars</translation>
+      <translation>Pokaż &amp;duże ikony na paskach narzędzi</translation>
     </message>
     <message>
       <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Normal Icons in Toolbars</translation>
+      <translation>Pokaż &amp;normalne ikony na paskach narzędzi</translation>
     </message>
     <message>
       <source>Toggle clipboard monitoring</source>
-      <translation type="unfinished">Toggle clipboard monitoring</translation>
+      <translation>Przełącz monitorowanie schowka</translation>
     </message>
   </context>
   <context>
@@ -3547,15 +3547,15 @@ ze słowników Stardict, Babylon i GLS</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+      <translation>Wybiera, czy monitorowanie schowka będzie domyślnie włączone podczas uruchamiania programu&apos;s.</translation>
     </message>
     <message>
       <source>Start with clipboard monitoring turned on</source>
-      <translation type="unfinished">Start with clipboard monitoring turned on</translation>
+      <translation>Rozpocznij z włączonym monitorowaniem schowka</translation>
     </message>
     <message>
       <source>Auto-pronounce words in the popup</source>
-      <translation type="unfinished">Auto-pronounce words in the popup</translation>
+      <translation>Automatyczne wymawianie słów w oknie podręcznym</translation>
     </message>
   </context>
   <context>
