@@ -144,6 +144,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   switchToNextTabAction( this ),
   switchToPrevTabAction( this ),
   showDictBarNamesAction( tr( "Show Names in Dictionary &Bar" ), this ),
+  smallLargeIconGroup( this ),
   useSmallIconsInToolbarsAction( tr( "Show Small Icons in &Toolbars" ), this ),
   useLargeIconsInToolbarsAction( tr( "Show Large Icons in &Toolbars" ), this ),
   toggleMenuBarAction( tr( "&Menubar" ), this ),
