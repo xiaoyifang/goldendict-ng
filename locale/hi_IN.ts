@@ -2685,19 +2685,19 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     </message>
     <message>
       <source>Show &amp;Small Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Small Icons in Toolbars</translation>
+      <translation>टूलबार में छोटे चिह्न दिखाएं</translation>
     </message>
     <message>
       <source>Show &amp;Large Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Large Icons in Toolbars</translation>
+      <translation>टूलबार में बड़े चिह्न दिखाएं</translation>
     </message>
     <message>
       <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Normal Icons in Toolbars</translation>
+      <translation>टूलबार में &amp;सामान्य चिह्न दिखाएँ</translation>
     </message>
     <message>
       <source>Toggle clipboard monitoring</source>
-      <translation type="unfinished">Toggle clipboard monitoring</translation>
+      <translation>क्लिपबोर्ड मॉनिटरिंग टॉगल करें</translation>
     </message>
   </context>
   <context>
@@ -3531,15 +3531,15 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+      <translation>यह चुनता है कि प्रोग्राम&apos;के प्रारंभ होने पर क्लिपबोर्ड मॉनिटरिंग डिफ़ॉल्ट रूप से चालू होगी या नहीं।</translation>
     </message>
     <message>
       <source>Start with clipboard monitoring turned on</source>
-      <translation type="unfinished">Start with clipboard monitoring turned on</translation>
+      <translation>क्लिपबोर्ड मॉनिटरिंग चालू करके प्रारंभ करें</translation>
     </message>
     <message>
       <source>Auto-pronounce words in the popup</source>
-      <translation type="unfinished">Auto-pronounce words in the popup</translation>
+      <translation>पॉपअप में शब्दों का स्वतः उच्चारण</translation>
     </message>
   </context>
   <context>
