@@ -2685,19 +2685,19 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Show &amp;Small Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Small Icons in Toolbars</translation>
+      <translation>Hiển thị &amp;Biểu tượng nhỏ trong Thanh công cụ</translation>
     </message>
     <message>
       <source>Show &amp;Large Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Large Icons in Toolbars</translation>
+      <translation>Hiển thị &amp;Biểu tượng lớn trong Thanh công cụ</translation>
     </message>
     <message>
       <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Normal Icons in Toolbars</translation>
+      <translation>Hiển thị &amp;Biểu tượng bình thường trong Thanh công cụ</translation>
     </message>
     <message>
       <source>Toggle clipboard monitoring</source>
-      <translation type="unfinished">Toggle clipboard monitoring</translation>
+      <translation>Bật/tắt giám sát clipboard</translation>
     </message>
   </context>
   <context>
@@ -3541,15 +3541,15 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+      <translation>Chọn xem tính năng giám sát bảng tạm có được bật theo mặc định khi chương trình&apos;khởi động hay không.</translation>
     </message>
     <message>
       <source>Start with clipboard monitoring turned on</source>
-      <translation type="unfinished">Start with clipboard monitoring turned on</translation>
+      <translation>Bắt đầu với chức năng giám sát clipboard được bật</translation>
     </message>
     <message>
       <source>Auto-pronounce words in the popup</source>
-      <translation type="unfinished">Auto-pronounce words in the popup</translation>
+      <translation>Tự động phát âm các từ trong cửa sổ bật lên</translation>
     </message>
   </context>
   <context>
