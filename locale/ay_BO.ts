@@ -2753,19 +2753,19 @@ Error de importación: datos incorrectos en el fichero.</translation>
     </message>
     <message>
       <source>Show &amp;Small Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Small Icons in Toolbars</translation>
+      <translation>Uñacht’ayaña &amp;Jisk’a Iconos ukanakax Barras de Herramientas ukan uñacht’ayatawa</translation>
     </message>
     <message>
       <source>Show &amp;Large Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Large Icons in Toolbars</translation>
+      <translation>Uñacht’ayaña &amp;Jach’a Iconos Barras de Herramientas ukan</translation>
     </message>
     <message>
       <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Normal Icons in Toolbars</translation>
+      <translation>Uñacht’ayaña &amp;Normal Iconos ukanakax Barras de Herramientas ukan uñacht’ayatawa</translation>
     </message>
     <message>
       <source>Toggle clipboard monitoring</source>
-      <translation type="unfinished">Toggle clipboard monitoring</translation>
+      <translation>Toggle portapapeles uñakipaña</translation>
     </message>
   </context>
   <context>
@@ -3668,15 +3668,15 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+      <translation>Ajlliñawa, portapapeles uñakipañaxa wakichawi&apos;s qalltawipanxa nayraqata uñakipatawa.</translation>
     </message>
     <message>
       <source>Start with clipboard monitoring turned on</source>
-      <translation type="unfinished">Start with clipboard monitoring turned on</translation>
+      <translation>Qalltañatakix portapapeles ukan uñjañax ch’amanchatawa</translation>
     </message>
     <message>
       <source>Auto-pronounce words in the popup</source>
-      <translation type="unfinished">Auto-pronounce words in the popup</translation>
+      <translation>Uka popup ukanx arunakax auto-pronunciar sañ muni</translation>
     </message>
   </context>
   <context>
