@@ -2686,19 +2686,19 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
     </message>
     <message>
       <source>Show &amp;Small Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Small Icons in Toolbars</translation>
+      <translation>Näytä &amp;pienet kuvakkeet työkalupalkeissa</translation>
     </message>
     <message>
       <source>Show &amp;Large Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Large Icons in Toolbars</translation>
+      <translation>Näytä &amp;suuret kuvakkeet työkalupalkeissa</translation>
     </message>
     <message>
       <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Normal Icons in Toolbars</translation>
+      <translation>Näytä &amp;normaalit kuvakkeet työkalupalkissa</translation>
     </message>
     <message>
       <source>Toggle clipboard monitoring</source>
-      <translation type="unfinished">Toggle clipboard monitoring</translation>
+      <translation>Vaihda leikepöydän valvontaa</translation>
     </message>
   </context>
   <context>
@@ -3548,15 +3548,15 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+      <translation>Valitsee, otetaanko leikepöydän valvonta oletusarvoisesti käyttöön ohjelman&apos;käynnistyessä.</translation>
     </message>
     <message>
       <source>Start with clipboard monitoring turned on</source>
-      <translation type="unfinished">Start with clipboard monitoring turned on</translation>
+      <translation>Aloita leikepöydän valvonnalla</translation>
     </message>
     <message>
       <source>Auto-pronounce words in the popup</source>
-      <translation type="unfinished">Auto-pronounce words in the popup</translation>
+      <translation>Äännä sanat automaattisesti ponnahdusikkunassa</translation>
     </message>
   </context>
   <context>
