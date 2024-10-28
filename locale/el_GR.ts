@@ -599,10 +599,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictInfo</name>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Επεξεργασία λεξικού</translation>
-    </message>
-    <message>
       <source>Open index folder</source>
       <translation>Άνοιγμα φακέλου ευρετηρίου</translation>
     </message>
@@ -653,11 +649,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Full-text search disabled</source>
       <translation>Η αναζήτηση πλήρους κειμένου απενεργοποιήθηκε</translation>
-    </message>
-    <message>
-      <source>Edit the dictionary via command:
-%1</source>
-      <translation>Επεξεργασία του λεξικού με χρήση της εντολής: %1</translation>
     </message>
   </context>
   <context>
@@ -750,10 +741,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>Άνοιγμα φακέλου λεξικού</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>Επεξεργασία λεξικού</translation>
     </message>
   </context>
   <context>
@@ -2430,10 +2417,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Εμφάνιση &amp;ονομάτων λεξικών</translation>
     </message>
     <message>
-      <source>Show Small Icons in &amp;Toolbars</source>
-      <translation>Μι&amp;κρά εικονίδια</translation>
-    </message>
-    <message>
       <source>&amp;Menubar</source>
       <translation>Γραμμή &amp;μενού</translation>
     </message>
@@ -2448,10 +2431,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Forward</source>
       <translation>Μπροστά</translation>
-    </message>
-    <message>
-      <source>Enable Scanning</source>
-      <translation>Ενεργοποίηση Σάρωσης</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2546,10 +2525,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Remove current tab from Favorites</source>
       <translation>Αφαίρεση τρέχουσας καρτέλας από τα αγαπημένα</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
@@ -2704,16 +2679,28 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Άνοιγμα φακέλου λεξικού</translation>
     </message>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Επεξεργασία λεξικού</translation>
-    </message>
-    <message>
       <source>Now indexing for full-text search: </source>
       <translation>Τώρα ευρετηρίαση για αναζήτηση πλήρους κειμένου: </translation>
     </message>
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Αφαίρεση κεφαλίδας &quot;%1&quot; από τα Αγαπημένα?</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Small Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Large Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Normal Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation type="unfinished">Toggle clipboard monitoring</translation>
     </message>
   </context>
   <context>
@@ -3057,17 +3044,6 @@ the application.</source>
       <translation>Ανα&amp;δυόμενο παράθυρο</translation>
     </message>
     <message>
-      <source>Chooses whether the popup mode is on by default or not. If checked,
-the program would always start with the popup active.</source>
-      <translation>Καθορίζει αν θα είναι προεπιλεγμένη η λειτουργία αναδυόμενου παραθύρου.
-Αν σημειώσετε την επιλογή, η εφαρμογή θα εκκινείται πάντα με το αναδυόμενο 
-παράθυρο ενεργοποιημένο.</translation>
-    </message>
-    <message>
-      <source>Start with popup turned on</source>
-      <translation>Εκκίνηση με το αναδυόμενο παράθυρο ενεργοποιημένο</translation>
-    </message>
-    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Εμφάνιση της μετάφρασης στο κύριο παράθυρο αντί για το αναδυόμενο</translation>
     </message>
@@ -3180,10 +3156,6 @@ in the pressed state when the word selection changes.</source>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Αυτόματη εκφώνηση λημμάτων στο κύριο παράθυρο</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in popup</source>
-      <translation>Αυτόματη εκφώνηση λημμάτων στο αναδυόμενο παράθυρο</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3576,6 +3548,18 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Restart needed</source>
       <translation>Απαιτείται επανεκκίνηση</translation>
     </message>
+    <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation type="unfinished">Start with clipboard monitoring turned on</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation type="unfinished">Auto-pronounce words in the popup</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3815,10 +3799,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
       <translation>Χρησιμοποιήστε το για να μετατρέψετε το αναδυόμενο σε κανονικό παράθυρο, που δεν εξαφανίζεται από την οθόνη και μπορεί π.χ. να αλλάξει μέγεθος.</translation>
-    </message>
-    <message>
-      <source>%1 - GoldenDict-ng</source>
-      <translation>%1 - GoldenDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
