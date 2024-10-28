@@ -2686,19 +2686,19 @@ Por trovi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simboloj uz
     </message>
     <message>
       <source>Show &amp;Small Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Small Icons in Toolbars</translation>
+      <translation>Montri &amp;Malgrandajn Ikonojn en Ilobretoj</translation>
     </message>
     <message>
       <source>Show &amp;Large Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Large Icons in Toolbars</translation>
+      <translation>Montri &amp;Grandajn piktogramojn en Ilobretoj</translation>
     </message>
     <message>
       <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Normal Icons in Toolbars</translation>
+      <translation>Montri &amp;Normalajn piktogramojn en Ilobretoj</translation>
     </message>
     <message>
       <source>Toggle clipboard monitoring</source>
-      <translation type="unfinished">Toggle clipboard monitoring</translation>
+      <translation>Ŝaltigi monitoradon de tondujo</translation>
     </message>
   </context>
   <context>
@@ -3548,15 +3548,15 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+      <translation>Elektas ĉu la monitorado de la tondujo estos ŝaltita defaŭlte ĉe la ekfunkciigo de la programo&apos;.</translation>
     </message>
     <message>
       <source>Start with clipboard monitoring turned on</source>
-      <translation type="unfinished">Start with clipboard monitoring turned on</translation>
+      <translation>Komencu kun monitorado de tondujo ŝaltita</translation>
     </message>
     <message>
       <source>Auto-pronounce words in the popup</source>
-      <translation type="unfinished">Auto-pronounce words in the popup</translation>
+      <translation>Aŭtomate prononcu vortojn en la ŝprucfenestro</translation>
     </message>
   </context>
   <context>
