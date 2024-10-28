@@ -597,10 +597,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictInfo</name>
     <message>
-      <source>Edit dictionary</source>
-      <translation>사전 편집</translation>
-    </message>
-    <message>
       <source>Open index folder</source>
       <translation>색인 폴더 열기</translation>
     </message>
@@ -651,12 +647,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Full-text search disabled</source>
       <translation>전체 텍스트 검색이 비활성화됨</translation>
-    </message>
-    <message>
-      <source>Edit the dictionary via command:
-%1</source>
-      <translation>명령행으로 사전 편집:
-%1</translation>
     </message>
   </context>
   <context>
@@ -749,10 +739,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>사전 폴더 열기</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>사전 편집</translation>
     </message>
   </context>
   <context>
@@ -2429,10 +2415,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>사전모음에 이름 보이기(&amp;B)</translation>
     </message>
     <message>
-      <source>Show Small Icons in &amp;Toolbars</source>
-      <translation>도구모음에 작은 아이콘(&amp;T)</translation>
-    </message>
-    <message>
       <source>&amp;Menubar</source>
       <translation>메뉴 모음(&amp;M)</translation>
     </message>
@@ -2447,10 +2429,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Forward</source>
       <translation>앞으로</translation>
-    </message>
-    <message>
-      <source>Enable Scanning</source>
-      <translation>스캔 활성화</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2545,10 +2523,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Remove current tab from Favorites</source>
       <translation>즐겨찾기에서 현재 탭 제거</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
@@ -2703,16 +2677,28 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>사전 폴더 열기</translation>
     </message>
     <message>
-      <source>Edit dictionary</source>
-      <translation>사전 편집</translation>
-    </message>
-    <message>
       <source>Now indexing for full-text search: </source>
       <translation>이제 전체 텍스트 검색을 위한 인덱싱: </translation>
     </message>
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>즐겨찾기에서 제목 &quot;%1&quot; 를 제거하시겠습니까?</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Small Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Large Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Normal Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation type="unfinished">Toggle clipboard monitoring</translation>
     </message>
   </context>
   <context>
@@ -3055,16 +3041,6 @@ the application.</source>
       <translation>스캔팝업(&amp;S)</translation>
     </message>
     <message>
-      <source>Chooses whether the popup mode is on by default or not. If checked,
-the program would always start with the popup active.</source>
-      <translation>기본값으로 스캔팝업모드를 켤 것인지 설정합니다. 이 항목을 선택하면,
-프로그램이 시작할 때 항상 스캔팝업기능이 활성화됩니다.</translation>
-    </message>
-    <message>
-      <source>Start with popup turned on</source>
-      <translation>프로그램 시작시 스캔팝업 활성화</translation>
-    </message>
-    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>검색내용을 팝업창에 표시하지 않고 메인창으로 보냅니다</translation>
     </message>
@@ -3177,10 +3153,6 @@ in the pressed state when the word selection changes.</source>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>메인창에서 발음 자동 재생</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in popup</source>
-      <translation>스캔팝업창에서 발음 자동 재생</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3570,6 +3542,18 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Restart needed</source>
       <translation>재시작 필요</translation>
     </message>
+    <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation type="unfinished">Start with clipboard monitoring turned on</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation type="unfinished">Auto-pronounce words in the popup</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3810,10 +3794,6 @@ from Stardict, Babylon and GLS dictionaries</source>
 could be resized or managed in other ways.</source>
       <translation>핀 아이콘을 선택하면 창을 항상 화면 맨 위에 표시하고, 
 팝업창 크기, 사전모음의 위치 등을 조절할 수 있습니다.</translation>
-    </message>
-    <message>
-      <source>%1 - GoldenDict-ng</source>
-      <translation>%1 - GoldenDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
