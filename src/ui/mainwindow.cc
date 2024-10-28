@@ -650,7 +650,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( ui.quit, &QAction::triggered, this, &MainWindow::quitApp );
 
   connect( ui.dictionaries, &QAction::triggered, this, [ this ]( bool checked ) {
-    editDictionaries( Instances::Group::NoGroupId, false );
+    editDictionaries();
   } );
   connect( ui.sourcesAction, &QAction::triggered, this, [ this ]( bool checked ) {
     editDictionaries( Instances::Group::NoGroupId, true );
@@ -805,7 +805,14 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   scanPopup->setStyleSheet( styleSheet() );
 
-  connect( scanPopup, &ScanPopup::editGroupRequest, this, &MainWindow::editDictionaries, Qt::QueuedConnection );
+  connect(
+    scanPopup,
+    &ScanPopup::editGroupRequest,
+    this,
+    [ this ]( bool check ) {
+      editDictionaries();
+    },
+    Qt::QueuedConnection );
 
   connect( scanPopup, &ScanPopup::sendPhraseToMainWindow, this, [ this ]( QString const & word ) {
     wordReceived( word );
