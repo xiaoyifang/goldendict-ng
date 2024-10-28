@@ -2687,19 +2687,19 @@ Clicca &lt;b&gt;Scarica&lt;/b&gt; per accedere alla pagina di scaricamento.</tra
     </message>
     <message>
       <source>Show &amp;Small Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Small Icons in Toolbars</translation>
+      <translation>Mostra icone piccole nelle barre degli strumenti</translation>
     </message>
     <message>
       <source>Show &amp;Large Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Large Icons in Toolbars</translation>
+      <translation>Mostra icone grandi nelle barre degli strumenti</translation>
     </message>
     <message>
       <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Normal Icons in Toolbars</translation>
+      <translation>Mostra icone &amp;normali nelle barre degli strumenti</translation>
     </message>
     <message>
       <source>Toggle clipboard monitoring</source>
-      <translation type="unfinished">Toggle clipboard monitoring</translation>
+      <translation>Attiva/disattiva il monitoraggio degli appunti</translation>
     </message>
   </context>
   <context>
@@ -3545,15 +3545,15 @@ dai dizionari di Stardict, Babylon e GLS</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+      <translation>Sceglie se il monitoraggio degli appunti verrà attivato per impostazione predefinita all'avvio del programma&apos;.</translation>
     </message>
     <message>
       <source>Start with clipboard monitoring turned on</source>
-      <translation type="unfinished">Start with clipboard monitoring turned on</translation>
+      <translation>Inizia con il monitoraggio degli appunti attivato</translation>
     </message>
     <message>
       <source>Auto-pronounce words in the popup</source>
-      <translation type="unfinished">Auto-pronounce words in the popup</translation>
+      <translation>Pronuncia automaticamente le parole nel popup</translation>
     </message>
   </context>
   <context>
