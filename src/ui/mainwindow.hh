@@ -29,7 +29,6 @@
 #include "dictheadwords.hh"
 #include "fulltextsearch.hh"
 #include "base_type.hh"
-
 #include "hotkeywrapper.hh"
 #include "resourceschemehandler.hh"
 #include "iframeschemehandler.hh"
@@ -40,6 +39,8 @@
 #if defined( Q_OS_MAC )
   #include "macos/gd_clipboard.hh"
 #endif
+//must place the qactiongroup after fixx11h.h, None in QActionGroup conflict with X.h's macro None.
+#include <QActionGroup>
 
 using std::string;
 using std::vector;
@@ -106,9 +107,12 @@ private:
   QFont wordListDefaultFont, translateLineDefaultFont, groupListDefaultFont;
 
   QAction escAction, focusTranslateLineAction, addTabAction, closeCurrentTabAction, closeAllTabAction,
-    closeRestTabAction, switchToNextTabAction, switchToPrevTabAction, showDictBarNamesAction,
-    useSmallIconsInToolbarsAction, useLargeIconsInToolbarsAction, toggleMenuBarAction, focusHeadwordsDlgAction,
-    focusArticleViewAction, addAllTabToFavoritesAction;
+    closeRestTabAction, switchToNextTabAction, switchToPrevTabAction, showDictBarNamesAction, toggleMenuBarAction,
+    focusHeadwordsDlgAction, focusArticleViewAction, addAllTabToFavoritesAction;
+
+  QAction useSmallIconsInToolbarsAction, useLargeIconsInToolbarsAction, useNormalIconsInToolbarsAction;
+
+  QActionGroup * smallLargeIconGroup = new QActionGroup( this );
 
   QAction stopAudioAction;
   QToolBar * navToolbar;
@@ -403,8 +407,7 @@ private slots:
   void showAbout();
 
   void showDictBarNamesTriggered();
-  void useSmallIconsInToolbarsTriggered();
-  void useLargeIconsInToolbarsTriggered();
+  void iconSizeActionTriggered( QAction * action );
   void toggleMenuBarTriggered( bool announce = true );
 
   void on_clearHistory_triggered();
