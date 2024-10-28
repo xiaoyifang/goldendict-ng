@@ -597,10 +597,6 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
   <context>
     <name>DictInfo</name>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Redakti vortaron</translation>
-    </message>
-    <message>
       <source>Open index folder</source>
       <translation>Malfermu indeksan dosierujon</translation>
     </message>
@@ -651,12 +647,6 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     <message>
       <source>Full-text search disabled</source>
       <translation>Plenteksta serĉo malŝaltita</translation>
-    </message>
-    <message>
-      <source>Edit the dictionary via command:
-%1</source>
-      <translation>Redaktu la vortaron per komando:
-%1</translation>
     </message>
   </context>
   <context>
@@ -749,10 +739,6 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     <message>
       <source>Open dictionary folder</source>
       <translation>Malfermu vortaran dosierujon</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>Redakti vortaron</translation>
     </message>
   </context>
   <context>
@@ -2429,10 +2415,6 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <translation>Montri Nomojn en Vortaro &amp; Trinkejo</translation>
     </message>
     <message>
-      <source>Show Small Icons in &amp;Toolbars</source>
-      <translation>Montru Malgrandajn Piktogramojn en &amp;Ilbretoj</translation>
-    </message>
-    <message>
       <source>&amp;Menubar</source>
       <translation>&amp;Menubreto</translation>
     </message>
@@ -2447,10 +2429,6 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     <message>
       <source>Forward</source>
       <translation>Antaŭen</translation>
-    </message>
-    <message>
-      <source>Enable Scanning</source>
-      <translation>Ebligu Skanadon</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2545,10 +2523,6 @@ Por trovi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simboloj uz
     <message>
       <source>Remove current tab from Favorites</source>
       <translation>Forigu la nunan langeton el Favoritoj</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
@@ -2703,16 +2677,28 @@ Por trovi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simboloj uz
       <translation>Malfermu vortaran dosierujon</translation>
     </message>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Redakti vortaron</translation>
-    </message>
-    <message>
       <source>Now indexing for full-text search: </source>
       <translation>Nun indeksante por plenteksta serĉo: </translation>
     </message>
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Ĉu forigi kapvorton &quot;%1&quot; el Favoritoj?</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Small Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Large Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Normal Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation type="unfinished">Toggle clipboard monitoring</translation>
     </message>
   </context>
   <context>
@@ -3057,16 +3043,6 @@ la aplikaĵon.</translation>
       <translation>&amp;Skani Ŝprucfenestron</translation>
     </message>
     <message>
-      <source>Chooses whether the popup mode is on by default or not. If checked,
-the program would always start with the popup active.</source>
-      <translation>Elektas ĉu la skana ŝprucfenestra reĝimo estas ŝaltita defaŭlte aŭ ne. Se markite,
-la programo ĉiam komenciĝus kun la skana ŝprucfenestro aktiva.</translation>
-    </message>
-    <message>
-      <source>Start with popup turned on</source>
-      <translation>Komencu kun skanado ŝprucfenestron ŝaltita</translation>
-    </message>
-    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Sendu tradukitan vorton al ĉefa fenestro anstataŭ montri ĝin en ŝprucfenestro</translation>
     </message>
@@ -3179,10 +3155,6 @@ en la premita stato kiam la vortelekto ŝanĝiĝas.</translation>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Aŭtomate prononcu vortojn en ĉefa fenestro</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in popup</source>
-      <translation>Aŭtomate prononcu vortojn en skana ŝprucfenestro</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3574,6 +3546,18 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
       <source>Restart needed</source>
       <translation>Rekomenco necesas</translation>
     </message>
+    <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation type="unfinished">Start with clipboard monitoring turned on</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation type="unfinished">Auto-pronounce words in the popup</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3814,10 +3798,6 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
 could be resized or managed in other ways.</source>
       <translation>Uzu ĉi tion por fiksi la fenestron por ke ĝi restu sur ekrano,
 povus esti regrandigita aŭ administrita alimaniere.</translation>
-    </message>
-    <message>
-      <source>%1 - GoldenDict-ng</source>
-      <translation>%1 - GoldenDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
