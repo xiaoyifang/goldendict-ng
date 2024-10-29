@@ -167,8 +167,6 @@ void EditDictionariesSources::acceptChangedSources( bool rebuildGroups )
   Instances::updateNames( savedInactive, dictionaries );
 
   if ( rebuildGroups ) {
-    ui.tabs->removeTab( 1 );
-    ui.tabs->removeTab( 1 );
 
     orderAndProps = new OrderAndProps( this, savedOrder, savedInactive, dictionaries );
     groups        = new Groups( this, dictionaries, savedGroups, orderAndProps->getCurrentDictionaryOrder() );
@@ -195,5 +193,4 @@ void EditDictionariesSources::acceptChangedSources( bool rebuildGroups )
 }
 EditDictionariesSources::~EditDictionariesSources()
 {
-  disconnect( ui.tabs, &QTabWidget::currentChanged, this, &EditDictionariesSources::currentChanged );
 }
