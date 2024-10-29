@@ -342,6 +342,7 @@ private slots:
   /// If editDictionaryGroup is specified, the dialog positions on that group
   /// initially.
   void editDictionaries( unsigned editDictionaryGroup = Instances::Group::NoGroupId, bool showSourceOnly = false );
+  void editDictionariesSource();
   /// Edits current group when triggered from the dictionary bar.
   void editCurrentGroup();
   void editPreferences();

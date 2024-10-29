@@ -10,6 +10,7 @@
 #include "mainwindow.hh"
 #include <QWebEngineProfile>
 #include "editdictionaries.hh"
+#include "editdictionaries_sources.hh"
 #include "dict/loaddictionaries.hh"
 #include "preferences.hh"
 #include "about.hh"
@@ -653,7 +654,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
     editDictionaries();
   } );
   connect( ui.sourcesAction, &QAction::triggered, this, [ this ]( bool checked ) {
-    editDictionaries( Instances::Group::NoGroupId, true );
+    editDictionariesSource();
   } );
 
   connect( ui.preferences, &QAction::triggered, this, &MainWindow::editPreferences );
@@ -2225,6 +2226,65 @@ void MainWindow::editDictionaries( unsigned editDictionaryGroup, bool showSource
         dicts.editGroup( editDictionaryGroup );
       }
     }
+
+    dicts.restoreGeometry( cfg.dictionariesDialogGeometry );
+    dicts.exec();
+    cfg.dictionariesDialogGeometry = newCfg.dictionariesDialogGeometry = dicts.saveGeometry();
+
+    if ( dicts.areDictionariesChanged() || dicts.areGroupsChanged() ) {
+      ftsIndexing.stopIndexing();
+      ftsIndexing.clearDictionaries();
+      // Set muted dictionaries from old groups
+      for ( auto & group : newCfg.groups ) {
+        unsigned id = group.id;
+        if ( id != Instances::Group::NoGroupId ) {
+          Config::Group const * grp = cfg.getGroup( id );
+          if ( grp ) {
+            group.mutedDictionaries      = grp->mutedDictionaries;
+            group.popupMutedDictionaries = grp->popupMutedDictionaries;
+          }
+        }
+      }
+
+      cfg = newCfg;
+
+      updateGroupList();
+
+      Config::save( cfg );
+
+      updateSuggestionList();
+
+      for ( auto & dictionary : dictionaries ) {
+        dictionary->setFTSParameters( cfg.preferences.fts );
+        dictionary->setSynonymSearchEnabled( cfg.preferences.synonymSearchEnabled );
+      }
+
+      ftsIndexing.setDictionaries( dictionaries );
+      ftsIndexing.doIndexing();
+    }
+  }
+
+  scanPopup->refresh();
+  installHotKeys();
+}
+
+void MainWindow::editDictionariesSource()
+{
+  hotkeyWrapper.reset(); // No hotkeys while we're editing dictionaries
+  closeHeadwordsDialog();
+  closeFullTextSearchDialog();
+
+  wordFinder.clear();
+  dictionariesUnmuted.clear();
+
+  { // Limit existence of newCfg
+
+    Config::Class newCfg = cfg;
+    EditDictionariesSource dicts( this, newCfg, dictionaries, groupInstances, dictNetMgr );
+
+    connect( &dicts, &EditDictionariesSource::showDictionaryInfo, this, &MainWindow::showDictionaryInfo );
+
+    connect( &dicts, &EditDictionariesSource::showDictionaryHeadwords, this, &MainWindow::showDictionaryHeadwords );
 
     dicts.restoreGeometry( cfg.dictionariesDialogGeometry );
     dicts.exec();
