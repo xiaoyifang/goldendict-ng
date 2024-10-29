@@ -10,7 +10,7 @@
 #include "groups.hh"
 #include "instances.hh"
 #include "orderandprops.hh"
-#include "ui_editdictionaries_sources.h"
+#include "ui_editdictionariessources.h"
 #include <QAction>
 #include <QNetworkAccessManager>
 #include <QPointer>
