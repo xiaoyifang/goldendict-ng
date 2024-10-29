@@ -22,10 +22,10 @@ class EditDictionariesSources: public QDialog
 public:
 
   EditDictionariesSources( QWidget * parent,
-                    Config::Class & cfg,
-                    std::vector< sptr< Dictionary::Class > > & dictionaries,
-                    Instances::Groups & groupInstances, // We only clear those on rescan
-                    QNetworkAccessManager & dictNetMgr );
+                           Config::Class & cfg,
+                           std::vector< sptr< Dictionary::Class > > & dictionaries,
+                           Instances::Groups & groupInstances, // We only clear those on rescan
+                           QNetworkAccessManager & dictNetMgr );
 
   ~EditDictionariesSources();
 

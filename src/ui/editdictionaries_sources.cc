@@ -10,10 +10,10 @@
 using std::vector;
 
 EditDictionariesSources::EditDictionariesSources( QWidget * parent,
-                                    Config::Class & cfg_,
-                                    vector< sptr< Dictionary::Class > > & dictionaries_,
-                                    Instances::Groups & groupInstances_,
-                                    QNetworkAccessManager & dictNetMgr_ ):
+                                                  Config::Class & cfg_,
+                                                  vector< sptr< Dictionary::Class > > & dictionaries_,
+                                                  Instances::Groups & groupInstances_,
+                                                  QNetworkAccessManager & dictNetMgr_ ):
   QDialog( parent, Qt::WindowSystemMenuHint | Qt::WindowMaximizeButtonHint | Qt::WindowCloseButtonHint ),
   cfg( cfg_ ),
   dictionaries( dictionaries_ ),
@@ -52,7 +52,7 @@ EditDictionariesSources::EditDictionariesSources( QWidget * parent,
   helpAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
 
   connect( &helpAction, &QAction::triggered, [ this ]() {
-      Help::openHelpWebpage( Help::section::manage_sources );
+    Help::openHelpWebpage( Help::section::manage_sources );
   } );
   connect( ui.buttons, &QDialogButtonBox::helpRequested, &helpAction, &QAction::trigger );
 
@@ -172,7 +172,10 @@ void EditDictionariesSources::acceptChangedSources( bool rebuildGroups )
     groups        = new Groups( this, dictionaries, savedGroups, orderAndProps->getCurrentDictionaryOrder() );
 
     connect( groups, &Groups::showDictionaryInfo, this, &EditDictionariesSources::showDictionaryInfo );
-    connect( orderAndProps, &OrderAndProps::showDictionaryHeadwords, this, &EditDictionariesSources::showDictionaryHeadwords );
+    connect( orderAndProps,
+             &OrderAndProps::showDictionaryHeadwords,
+             this,
+             &EditDictionariesSources::showDictionaryHeadwords );
 
     if ( noGroupEdits ) {
       origCfg.groups = groups->getGroups();
