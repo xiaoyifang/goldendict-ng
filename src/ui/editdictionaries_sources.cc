@@ -37,7 +37,7 @@ EditDictionariesSources::EditDictionariesSources( QWidget * parent,
 
   ui.setupUi( this );
 
-  setWindowIcon( QIcon( ":/icons/dictionary.svg" ) );
+  setWindowIcon( QIcon( ":/icons/sources.png" ) );
 
   ui.tabs->clear();
 
