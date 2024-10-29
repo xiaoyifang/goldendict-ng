@@ -21,6 +21,8 @@ EditDictionariesSources::EditDictionariesSources( QWidget * parent,
   dictNetMgr( dictNetMgr_ ),
   origCfg( cfg ),
   sources( this, cfg ),
+  orderAndProps( new OrderAndProps( this, cfg.dictionaryOrder, cfg.inactiveDictionaries, dictionaries ) ),
+  groups( new Groups( this, dictionaries, cfg.groups, orderAndProps->getCurrentDictionaryOrder() ) ),
   dictionariesChanged( false ),
   groupsChanged( false ),
   helpAction( this )
