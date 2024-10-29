@@ -1,8 +1,8 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __EDITDICTIONARIES_HH_INCLUDED__
-#define __EDITDICTIONARIES_HH_INCLUDED__
+#ifndef __EDITDICTIONARIES_SOUCES_HH_INCLUDED__
+#define __EDITDICTIONARIES_SOUCES_HH_INCLUDED__
 
 #include "config.hh"
 #include "dict/dictionary.hh"
@@ -10,7 +10,7 @@
 #include "groups.hh"
 #include "instances.hh"
 #include "orderandprops.hh"
-#include "ui_editdictionariessources.h"
+#include "ui_editdictionaries_sources.h"
 #include <QAction>
 #include <QNetworkAccessManager>
 #include <QPointer>
