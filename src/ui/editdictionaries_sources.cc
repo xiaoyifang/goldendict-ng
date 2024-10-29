@@ -191,6 +191,4 @@ void EditDictionariesSources::acceptChangedSources( bool rebuildGroups )
   }
   ui.tabs->setUpdatesEnabled( true );
 }
-EditDictionariesSources::~EditDictionariesSources()
-{
-}
+EditDictionariesSources::~EditDictionariesSources() {}
