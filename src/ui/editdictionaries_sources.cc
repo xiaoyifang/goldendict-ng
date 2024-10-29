@@ -46,9 +46,11 @@ EditDictionariesSources::EditDictionariesSources( QWidget * parent,
   connect( ui.buttons, &QDialogButtonBox::clicked, this, &EditDictionariesSources::buttonBoxClicked );
 
   connect( &sources, &Sources::rescan, this, &EditDictionariesSources::rescanSources );
-  connect( groups, &Groups::showDictionaryInfo, this, &EditDictionaries::showDictionaryInfo );
-
-  connect( orderAndProps, &OrderAndProps::showDictionaryHeadwords, this, &EditDictionaries::showDictionaryHeadwords );
+  connect( groups, &Groups::showDictionaryInfo, this, &EditDictionariesSources::showDictionaryInfo );
+  connect( orderAndProps,
+           &OrderAndProps::showDictionaryHeadwords,
+           this,
+           &EditDictionariesSources::showDictionaryHeadwords );
 
   helpAction.setShortcut( QKeySequence( "F1" ) );
   helpAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
