@@ -596,10 +596,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictInfo</name>
     <message>
-      <source>Edit dictionary</source>
-      <translation>編輯字典</translation>
-    </message>
-    <message>
       <source>Open index folder</source>
       <translation>打開索引資料夾</translation>
     </message>
@@ -650,12 +646,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Full-text search disabled</source>
       <translation>全文搜索已禁用</translation>
-    </message>
-    <message>
-      <source>Edit the dictionary via command:
-%1</source>
-      <translation>以指令編輯字典：
-%1</translation>
     </message>
   </context>
   <context>
@@ -748,10 +738,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>開啟字典資料夾</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>編輯字典</translation>
     </message>
   </context>
   <context>
@@ -2428,10 +2414,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>在字典列中顯示字典名稱(&amp;B)</translation>
     </message>
     <message>
-      <source>Show Small Icons in &amp;Toolbars</source>
-      <translation>在工具列中顯示小型圖示(&amp;T)</translation>
-    </message>
-    <message>
       <source>&amp;Menubar</source>
       <translation>選單列(&amp;M)</translation>
     </message>
@@ -2446,10 +2428,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Forward</source>
       <translation>下一頁</translation>
-    </message>
-    <message>
-      <source>Enable Scanning</source>
-      <translation>啟用掃描</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2544,10 +2522,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Remove current tab from Favorites</source>
       <translation>將目前分頁從我的最愛中移除</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
@@ -2703,16 +2677,28 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>開啟字典資料夾</translation>
     </message>
     <message>
-      <source>Edit dictionary</source>
-      <translation>編輯字典</translation>
-    </message>
-    <message>
       <source>Now indexing for full-text search: </source>
       <translation>正在建立全文搜尋用的索引：</translation>
     </message>
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>確定要將詞條 &quot;%1&quot; 從我的最愛中移除嗎？</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>在工具列中顯示小圖示(&amp;S)</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>在工具列中顯示大圖示(&amp;L)</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>在工具列中顯示普通圖示(&amp;N)</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>切換剪貼簿監控</translation>
     </message>
   </context>
   <context>
@@ -3051,15 +3037,6 @@ the application.</source>
       <translation>螢幕取詞(&amp;S)</translation>
     </message>
     <message>
-      <source>Chooses whether the popup mode is on by default or not. If checked,
-the program would always start with the popup active.</source>
-      <translation>選擇是否預設啟用螢幕取詞模式。如果選用，程式啟動時將會自動啟用螢幕取詞功能。</translation>
-    </message>
-    <message>
-      <source>Start with popup turned on</source>
-      <translation>啟動程式時同時啟動螢幕取詞</translation>
-    </message>
-    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>將翻譯的文字傳送至主視窗，而非顯示在彈出式視窗中</translation>
     </message>
@@ -3171,10 +3148,6 @@ in the pressed state when the word selection changes.</source>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>自動朗讀主視窗中的單字</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in popup</source>
-      <translation>自動朗讀螢幕取詞彈出視窗中的單字</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3563,6 +3536,18 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Restart needed</source>
       <translation>需要重啟</translation>
     </message>
+    <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>選擇程式&apos;啟動時是否預設開啟剪貼簿監控。</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>從開啟剪貼簿監控開始</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>自動發音彈出視窗中的單字</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3803,10 +3788,6 @@ from Stardict, Babylon and GLS dictionaries</source>
 could be resized or managed in other ways.</source>
       <translation>使用此按鈕可以釘選視窗，以便它能停留在螢幕上，
 調整大小等相關視窗管理操作。</translation>
-    </message>
-    <message>
-      <source>%1 - GoldenDict-ng</source>
-      <translation>%1 - GoldenDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>

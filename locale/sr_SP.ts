@@ -597,10 +597,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictInfo</name>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Уреди речник</translation>
-    </message>
-    <message>
       <source>Open index folder</source>
       <translation>Отворите фасциклу индекса</translation>
     </message>
@@ -651,12 +647,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Full-text search disabled</source>
       <translation>Претрага целог текста је онемогућена</translation>
-    </message>
-    <message>
-      <source>Edit the dictionary via command:
-%1</source>
-      <translation>Уреди речник преко командне:
-%1</translation>
     </message>
   </context>
   <context>
@@ -749,10 +739,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>Отвори фасциклу речника</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>Уреди речник</translation>
     </message>
   </context>
   <context>
@@ -2429,10 +2415,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Прикажи називе у картици &amp;речника</translation>
     </message>
     <message>
-      <source>Show Small Icons in &amp;Toolbars</source>
-      <translation>Прикажи малу икону у &amp;алатној траци</translation>
-    </message>
-    <message>
       <source>&amp;Menubar</source>
       <translation>Главни мени</translation>
     </message>
@@ -2447,10 +2429,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Forward</source>
       <translation>Напред</translation>
-    </message>
-    <message>
-      <source>Enable Scanning</source>
-      <translation>Омогући скенирање</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2545,10 +2523,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Remove current tab from Favorites</source>
       <translation>Уклони тренутну картицу из омиљених</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
@@ -2704,16 +2678,28 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Отвори фасциклу речника</translation>
     </message>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Уреди речник</translation>
-    </message>
-    <message>
       <source>Now indexing for full-text search: </source>
       <translation>Сада се индексира за претрагу целог текста: </translation>
     </message>
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Уклонити насловну реч &quot;%1&quot; из омиљених?</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>Прикажи &amp;мале иконе на тракама са алаткама</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>Прикажи &amp;велике иконе на тракама са алаткама</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>Прикажи &amp;нормалне иконе на тракама са алаткама</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>Укључите праћење међуспремника</translation>
     </message>
   </context>
   <context>
@@ -3059,15 +3045,6 @@ the application.</source>
       <translation>&amp;Искачући прозор</translation>
     </message>
     <message>
-      <source>Chooses whether the popup mode is on by default or not. If checked,
-the program would always start with the popup active.</source>
-      <translation>Укључите или не укључити искачући прозор када програм почиње.</translation>
-    </message>
-    <message>
-      <source>Start with popup turned on</source>
-      <translation>Омогући искачући прозор при покретању</translation>
-    </message>
-    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Пошаљите преведену реч на главни прозор уместо да га прикаже у искачућем прозору</translation>
     </message>
@@ -3180,10 +3157,6 @@ in the pressed state when the word selection changes.</source>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Аутоматски изговари речи у главном прозору</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in popup</source>
-      <translation>Аутоматски изговорити речи у искачућем прозору</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3576,6 +3549,18 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Restart needed</source>
       <translation>Потребан је рестарт</translation>
     </message>
+    <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>Бира да ли ће праћење међуспремника бити укључено подразумевано при покретању програма&apos;.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>Почните са укљученим праћењем међуспремника</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>Аутоматски изговор речи у искачућем прозору</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3816,10 +3801,6 @@ from Stardict, Babylon and GLS dictionaries</source>
 could be resized or managed in other ways.</source>
       <translation>Кликните да усидрите прозор на екрану, промените величину
 или било које друге особине.</translation>
-    </message>
-    <message>
-      <source>%1 - GoldenDict-ng</source>
-      <translation>%1 - ГолденДицт-нг</translation>
     </message>
     <message>
       <source>WARNING: %1</source>

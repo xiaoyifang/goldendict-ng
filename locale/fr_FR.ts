@@ -596,10 +596,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictInfo</name>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Éditer le dictionnaire</translation>
-    </message>
-    <message>
       <source>Open index folder</source>
       <translation>Ouvrir le dossier d'index</translation>
     </message>
@@ -650,12 +646,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Full-text search disabled</source>
       <translation>Recherche plein texte désactivée</translation>
-    </message>
-    <message>
-      <source>Edit the dictionary via command:
-%1</source>
-      <translation>Éditer le dictionnaire avec la commande :
-%1</translation>
     </message>
   </context>
   <context>
@@ -748,10 +738,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>Ouvrir le dossier des dictionnaires</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>Éditer le dictionnaire</translation>
     </message>
   </context>
   <context>
@@ -2428,10 +2414,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Afficher les noms dans la &amp;barre de dictionnaire</translation>
     </message>
     <message>
-      <source>Show Small Icons in &amp;Toolbars</source>
-      <translation>Afficher de petites icônes dans les barres d&apos;ou&amp;tils</translation>
-    </message>
-    <message>
       <source>&amp;Menubar</source>
       <translation>Barre du &amp;menu</translation>
     </message>
@@ -2446,10 +2428,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Forward</source>
       <translation>Suivant</translation>
-    </message>
-    <message>
-      <source>Enable Scanning</source>
-      <translation>Activer le scan</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2544,10 +2522,6 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     <message>
       <source>Remove current tab from Favorites</source>
       <translation>Supprimer l'onglet actuel des Favoris</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
@@ -2702,16 +2676,28 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
       <translation>Ouvrir le dossier des dictionnaires</translation>
     </message>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Éditer le dictionnaire</translation>
-    </message>
-    <message>
       <source>Now indexing for full-text search: </source>
       <translation>Indexation en cours pour la recherche plein texte : </translation>
     </message>
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Supprimer le mot-vedette &quot;%1&quot; des favoris ?</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>Afficher les petites icônes dans les barres d'outils</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>Afficher les grandes icônes dans les barres d'outils</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>Afficher les icônes normales dans les barres d'outils</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>Activer/désactiver la surveillance du presse-papiers</translation>
     </message>
   </context>
   <context>
@@ -3055,16 +3041,6 @@ the application.</source>
       <translation>Fenêtre de &amp;scan</translation>
     </message>
     <message>
-      <source>Chooses whether the popup mode is on by default or not. If checked,
-the program would always start with the popup active.</source>
-      <translation>Définit si la fonctionnalité de scan par fenêtre pop-up est activée par défaut ou non.
-Si cette option est active, GoldenDict démarrera toujours avec la fenêtre de scan activée.</translation>
-    </message>
-    <message>
-      <source>Start with popup turned on</source>
-      <translation>Démarrer avec la fenêtre de scan activée</translation>
-    </message>
-    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Envoyer la traduction du mot vers la fenêtre principale de GoldenDict au lieu de la montrer dans une pop-up</translation>
     </message>
@@ -3176,10 +3152,6 @@ in the pressed state when the word selection changes.</source>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Prononciation automatique dans la fenêtre principale</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in popup</source>
-      <translation>Prononciation automatique dans la fenêtre de scan</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3570,6 +3542,18 @@ des dictionnaires Stardict, Babylon et GLS</translation>
       <source>Restart needed</source>
       <translation>Redémarrage nécessaire</translation>
     </message>
+    <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>Choisissez si la surveillance du presse-papiers sera activée par défaut au démarrage du programme&apos;.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>Commencez avec la surveillance du presse-papiers activée</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>Prononciation automatique des mots dans la fenêtre contextuelle</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3810,10 +3794,6 @@ Erreur lors de l&apos;enregistrement de la ressource :</translation>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
       <translation>Utiliser pour épingler la fenêtre de manière à ce qu&apos;elle reste à l&apos;écran, puisse être redimensionnée ou gérée par d&apos;autres moyens.</translation>
-    </message>
-    <message>
-      <source>%1 - GoldenDict-ng</source>
-      <translation>%1 - GoldenDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>

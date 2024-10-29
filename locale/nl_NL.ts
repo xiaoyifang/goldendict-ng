@@ -597,10 +597,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
   <context>
     <name>DictInfo</name>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Woordenboek bewerken</translation>
-    </message>
-    <message>
       <source>Open index folder</source>
       <translation>Indexmap openen</translation>
     </message>
@@ -651,12 +647,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>Full-text search disabled</source>
       <translation>Zoeken in volledige tekst uitgeschakeld</translation>
-    </message>
-    <message>
-      <source>Edit the dictionary via command:
-%1</source>
-      <translation>Woordenboek bewerken via opdracht:
-%1</translation>
     </message>
   </context>
   <context>
@@ -749,10 +739,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>Open dictionary folder</source>
       <translation>Woordenboekmap openen</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>Woordenboek bewerken</translation>
     </message>
   </context>
   <context>
@@ -2429,10 +2415,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Woordenboekwerkbalk met &amp;tekst</translation>
     </message>
     <message>
-      <source>Show Small Icons in &amp;Toolbars</source>
-      <translation>Werkbalken met &amp;kleine pictogrammen</translation>
-    </message>
-    <message>
       <source>&amp;Menubar</source>
       <translation>&amp;Menubalk</translation>
     </message>
@@ -2447,10 +2429,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>Forward</source>
       <translation>Vooruit</translation>
-    </message>
-    <message>
-      <source>Enable Scanning</source>
-      <translation>Scannen inschakelen</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2545,10 +2523,6 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
     <message>
       <source>Remove current tab from Favorites</source>
       <translation>Huidige tab uit favorieten verwijderen</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
@@ -2703,16 +2677,28 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
       <translation>Woordenboekmap openen</translation>
     </message>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Woordenboek bewerken</translation>
-    </message>
-    <message>
       <source>Now indexing for full-text search: </source>
       <translation>Nu indexeren voor full-text zoeken: </translation>
     </message>
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Hoofdwoord &quot;%1&quot; uit favorieten verwijderen?</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>&amp;Kleine pictogrammen weergeven in werkbalken</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>Grote pictogrammen weergeven in werkbalken</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>&amp;Normale pictogrammen weergeven in werkbalken</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>Klembordbewaking in-/uitschakelen</translation>
     </message>
   </context>
   <context>
@@ -3056,16 +3042,6 @@ the application.</source>
       <translation>Scan &amp;Popup</translation>
     </message>
     <message>
-      <source>Chooses whether the popup mode is on by default or not. If checked,
-the program would always start with the popup active.</source>
-      <translation>Hier kunt u aangeven of de Popup modus standaard in- of uitgeschakeld is.
-Het programma start met de Popup modus ingeschakeld als dit geselecteerd is.</translation>
-    </message>
-    <message>
-      <source>Start with popup turned on</source>
-      <translation>Starten met Popup ingeschakeld</translation>
-    </message>
-    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Vertaald woord niet in popup weergeven maar naar hoofdvenster verzenden</translation>
     </message>
@@ -3178,10 +3154,6 @@ toetsen zijn ingedrukt wanneer de woordselectie verandert.</translation>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Woorden in hoofdvenster automatisch uitspreken</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in popup</source>
-      <translation>Woorden in Popup automatisch uitspreken</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3570,6 +3542,18 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <source>Restart needed</source>
       <translation>Opnieuw opstarten nodig</translation>
     </message>
+    <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>Hiermee kiest u of de klembordbewaking standaard wordt ingeschakeld bij het opstarten van het programma&apos;.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>Begin met klembordbewaking ingeschakeld</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>Woorden automatisch uitspreken in de pop-up</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3708,7 +3692,7 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     </message>
     <message>
       <source>Toggle popup.</source>
-      <translation type="unfinished">Toggle popup.</translation>
+      <translation>Pop-up weergeven/verbergen.</translation>
     </message>
     <message>
       <source>Print version and diagnosis info.</source>
@@ -3810,10 +3794,6 @@ van Stardict, Babylon en GLS woordenboeken</translation>
 could be resized or managed in other ways.</source>
       <translation>Hiermee vergrendelt u het venster zodat het zichtbaar blijft
 en u het in grootte of anderszins kunt aanpassen.</translation>
-    </message>
-    <message>
-      <source>%1 - GoldenDict-ng</source>
-      <translation>%1 - GoldenDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>

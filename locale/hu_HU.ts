@@ -597,10 +597,6 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
   <context>
     <name>DictInfo</name>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Szótár szerkesztése</translation>
-    </message>
-    <message>
       <source>Open index folder</source>
       <translation>Indexmappa megnyitása</translation>
     </message>
@@ -651,12 +647,6 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
     <message>
       <source>Full-text search disabled</source>
       <translation>Keresés a teljes szövegben letiltva</translation>
-    </message>
-    <message>
-      <source>Edit the dictionary via command:
-%1</source>
-      <translation>A szótár szerkesztése a paranccsal:
-%1</translation>
     </message>
   </context>
   <context>
@@ -749,10 +739,6 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
     <message>
       <source>Open dictionary folder</source>
       <translation>Mappa megnyitása</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>Szótár szerkesztése</translation>
     </message>
   </context>
   <context>
@@ -2429,10 +2415,6 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
       <translation>Nevek megjelenítése a szótár &amp;gombokon</translation>
     </message>
     <message>
-      <source>Show Small Icons in &amp;Toolbars</source>
-      <translation>Kis &amp;ikonok megjelenítése az eszköztáron</translation>
-    </message>
-    <message>
       <source>&amp;Menubar</source>
       <translation>&amp;Menüsor</translation>
     </message>
@@ -2447,10 +2429,6 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
     <message>
       <source>Forward</source>
       <translation>Előre</translation>
-    </message>
-    <message>
-      <source>Enable Scanning</source>
-      <translation>Felugróablak engedélyezése</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2545,10 +2523,6 @@ A &apos;*&apos;, &apos;?&apos;, &apos;[&apos; és &apos;]&apos; karakterek keres
     <message>
       <source>Remove current tab from Favorites</source>
       <translation>A jelenlegi lap eltávolítása a kedvencekből</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
@@ -2703,16 +2677,28 @@ A &apos;*&apos;, &apos;?&apos;, &apos;[&apos; és &apos;]&apos; karakterek keres
       <translation>Mappa megnyitása</translation>
     </message>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Szótár szerkesztése</translation>
-    </message>
-    <message>
       <source>Now indexing for full-text search: </source>
       <translation>Indexelés alatt teljes szöveges kereséshez: </translation>
     </message>
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Eltávolítja a címszót a kedvencekből: &quot;%1&quot;?</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>&amp;Kis ikonok megjelenítése az eszköztáron</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>&amp;Nagy ikonok megjelenítése az eszköztáron</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>&amp;Normál ikonok megjelenítése az eszköztáron</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>Vágólap-figyelés be- és kikapcsolása</translation>
     </message>
   </context>
   <context>
@@ -3057,16 +3043,6 @@ való kilépés helyett.</translation>
       <translation>Fordító felugró&amp;ablak</translation>
     </message>
     <message>
-      <source>Chooses whether the popup mode is on by default or not. If checked,
-the program would always start with the popup active.</source>
-      <translation>Megadja, hogy a fordító felugróablak a program indításakor be vagy ki
-legyen kapcsolva.</translation>
-    </message>
-    <message>
-      <source>Start with popup turned on</source>
-      <translation>Indulás bekapcsolt felugróablakkal</translation>
-    </message>
-    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>A lefordított szót a program főablakában keresi ki, a felugróablak megjelenítése helyett</translation>
     </message>
@@ -3179,10 +3155,6 @@ kijelölésekor, ha a kiválasztott billentyűk mindegyike le van nyomva.</trans
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Szavak automatikus kimondása a főablakban</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in popup</source>
-      <translation>Szavak automatikus kimondása a felugróablakban</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3573,6 +3545,18 @@ is felhasználja további szócikkek felfedezéséhez</translation>
       <source>Restart needed</source>
       <translation>Újraindítás szükséges</translation>
     </message>
+    <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>Kiválasztja, hogy a vágólap figyelése alapértelmezés szerint be legyen-e kapcsolva a&apos;program indításakor.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>Kezdje a vágólap-felügyelet bekapcsolásával</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>Szavak automatikus kiejtése a felugró ablakban</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3813,10 +3797,6 @@ is felhasználja további szócikkek felfedezéséhez</translation>
 could be resized or managed in other ways.</source>
       <translation>Ezzel rögzítheti az ablakot, hogy mindig a képernyőn maradjon,
 átméretezheti vagy különféleképpen kezelheti.</translation>
-    </message>
-    <message>
-      <source>%1 - GoldenDict-ng</source>
-      <translation>%1 - GoldenDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>

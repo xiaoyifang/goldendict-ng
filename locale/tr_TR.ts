@@ -597,10 +597,6 @@ arasındaki farkı giderir)</translation>
   <context>
     <name>DictInfo</name>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Sözlüğü düzenle</translation>
-    </message>
-    <message>
       <source>Open index folder</source>
       <translation>İndeks klasörünü aç</translation>
     </message>
@@ -651,12 +647,6 @@ arasındaki farkı giderir)</translation>
     <message>
       <source>Full-text search disabled</source>
       <translation>Tam metin arama devre dışı</translation>
-    </message>
-    <message>
-      <source>Edit the dictionary via command:
-%1</source>
-      <translation>Sözlüğü komut ile düzenleyin:
-%1</translation>
     </message>
   </context>
   <context>
@@ -749,10 +739,6 @@ arasındaki farkı giderir)</translation>
     <message>
       <source>Open dictionary folder</source>
       <translation>Sözlük klasörünü aç</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>Sözlüğü düzenle</translation>
     </message>
   </context>
   <context>
@@ -2429,10 +2415,6 @@ arasındaki farkı giderir)</translation>
       <translation>Sözlük Çubuğunda Adları Göster</translation>
     </message>
     <message>
-      <source>Show Small Icons in &amp;Toolbars</source>
-      <translation>Araç Çubuklarında Küçük İkonlar Göster</translation>
-    </message>
-    <message>
       <source>&amp;Menubar</source>
       <translation>&amp;Menü Çubuğu</translation>
     </message>
@@ -2447,10 +2429,6 @@ arasındaki farkı giderir)</translation>
     <message>
       <source>Forward</source>
       <translation>Sonraki</translation>
-    </message>
-    <message>
-      <source>Enable Scanning</source>
-      <translation>Taramayı Etkinleştir</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2545,10 +2523,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Remove current tab from Favorites</source>
       <translation>Geçerli sekmeyi favorilerden kaldır</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
@@ -2703,16 +2677,28 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Sözlük klasörünü açın</translation>
     </message>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Sözlüğü düzenle</translation>
-    </message>
-    <message>
       <source>Now indexing for full-text search: </source>
       <translation>Tam metin araması için dizinlenmekte: </translation>
     </message>
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>&quot;%1&quot; madde başı favorilerden çıkarılsın mı?</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>Araç Çubuklarında &amp;Küçük Simgeleri Göster</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>Araç Çubuklarında &amp;Büyük Simgeleri Göster</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>&amp;Normal Simgeleri Araç Çubuklarında Göster</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>Pano izlemeyi aç/kapat</translation>
     </message>
   </context>
   <context>
@@ -3054,16 +3040,6 @@ yerine onu gizler.</translation>
       <translation>&amp;Ekranda Kelime Yakala</translation>
     </message>
     <message>
-      <source>Chooses whether the popup mode is on by default or not. If checked,
-the program would always start with the popup active.</source>
-      <translation>Ekranda kelime yakala kipinin öntanımlı olarak etkin olup olmadığını gösterir.
-Etkinse, program her zaman aktif kip ile başlar.</translation>
-    </message>
-    <message>
-      <source>Start with popup turned on</source>
-      <translation>Ekranda Kelime Yakala&apos;mayı açık olarak başlat</translation>
-    </message>
-    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Ana pencereye çevrilmiş kelime göndermek yerine açılır pencerede göster</translation>
     </message>
@@ -3176,10 +3152,6 @@ Aksi halde fare, sözcüğün üzerine geldiğinde çeviri yapılır.</translati
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Ana penceredeki kelimeleri otomatik telaffuz et</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in popup</source>
-      <translation>Ekranda Kelime Yakalarken kelimeleri otomatik seslendir</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3569,6 +3541,18 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
       <source>Restart needed</source>
       <translation>Yeniden başlatma gerekli</translation>
     </message>
+    <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>Program&apos;başlatıldığında pano izleme özelliğinin varsayılan olarak açılıp açılmayacağını seçer.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>Pano izlemeyi açarak başlayın</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>Açılır pencerede kelimeleri otomatik telaffuz et</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3809,10 +3793,6 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
 could be resized or managed in other ways.</source>
       <translation>Bu ekranda kalır ve böylece bu pencere, sabitlenebilir.
 Yeniden boyutlandırma, ya da başka bir şekilde yönetilebilir.</translation>
-    </message>
-    <message>
-      <source>%1 - GoldenDict-ng</source>
-      <translation>%1 - AltınDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>

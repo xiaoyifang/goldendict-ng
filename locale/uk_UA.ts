@@ -597,10 +597,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictInfo</name>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Редагувати словник</translation>
-    </message>
-    <message>
       <source>Open index folder</source>
       <translation>Відкрити індексну папку</translation>
     </message>
@@ -651,12 +647,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Full-text search disabled</source>
       <translation>Повнотекстовий пошук вимкнено</translation>
-    </message>
-    <message>
-      <source>Edit the dictionary via command:
-%1</source>
-      <translation>Редагувати словник через команду:
-%1</translation>
     </message>
   </context>
   <context>
@@ -749,10 +739,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>Відкрити словникову теку</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>Редагувати словник</translation>
     </message>
   </context>
   <context>
@@ -2430,10 +2416,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Відображувати назви у &amp;Рядку словника</translation>
     </message>
     <message>
-      <source>Show Small Icons in &amp;Toolbars</source>
-      <translation>Показувати малі налички у &amp;тулбарі</translation>
-    </message>
-    <message>
       <source>&amp;Menubar</source>
       <translation>&amp;Лоток меню</translation>
     </message>
@@ -2448,10 +2430,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Forward</source>
       <translation>Вперед</translation>
-    </message>
-    <message>
-      <source>Enable Scanning</source>
-      <translation>Увімкнути сканування</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2546,10 +2524,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Remove current tab from Favorites</source>
       <translation>Вилучити поточну вкладку з Обраного</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
@@ -2704,16 +2678,28 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Відкрити словникову теку</translation>
     </message>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Редагувати словник</translation>
-    </message>
-    <message>
       <source>Now indexing for full-text search: </source>
       <translation>Індексування для повнотекстового пошуку: </translation>
     </message>
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Видалити заголовки &quot;%1&quot; з вибраного?</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>Показати &amp;маленькі значки на панелях інструментів</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>Показати &amp;великі значки на панелях інструментів</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>Показати &amp;звичайні значки на панелях інструментів</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>Увімкнути моніторинг буфера обміну</translation>
     </message>
   </context>
   <context>
@@ -3057,16 +3043,6 @@ the application.</source>
       <translation>&amp;Контекстне вікно</translation>
     </message>
     <message>
-      <source>Chooses whether the popup mode is on by default or not. If checked,
-the program would always start with the popup active.</source>
-      <translation>Визначає, чи типово ввімкнуті контекстні вікна, чи ні. Якщо це відмічено,
-програма завжди запускатиметься з контекстними меню.</translation>
-    </message>
-    <message>
-      <source>Start with popup turned on</source>
-      <translation>Увімкнути контекстні меню при запуску</translation>
-    </message>
-    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Послилати перекладене слово до головного вікна, замість того аби показувати його у виринаючому вікні</translation>
     </message>
@@ -3180,10 +3156,6 @@ in the pressed state when the word selection changes.</source>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Автоматично вимовляти слово в головному меню</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in popup</source>
-      <translation>Автоматично вимовляти слова в контекстному меню</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3575,6 +3547,18 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Restart needed</source>
       <translation>Потрібен перезапуск</translation>
     </message>
+    <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>Вибирає, чи буде моніторинг буфера обміну ввімкнено за замовчуванням під час запуску програми&apos;.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>Почніть із увімкненого моніторингу буфера обміну</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>Автоматичне вимовляння слів у спливаючому вікні</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3815,10 +3799,6 @@ from Stardict, Babylon and GLS dictionaries</source>
 could be resized or managed in other ways.</source>
       <translation>Використайте шпильку, щоб вікно залишалось на екрані,
 можна змінювати розмір або керувати ним у зручний вам спосіб.</translation>
-    </message>
-    <message>
-      <source>%1 - GoldenDict-ng</source>
-      <translation>%1 - GoldenDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
