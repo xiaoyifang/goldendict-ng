@@ -243,8 +243,9 @@ void EditDictionaries::acceptChangedSources( bool rebuildGroups )
     ui.tabs->removeTab( 1 );
     ui.tabs->removeTab( 1 );
 
-    orderAndProps = std::make_shared< OrderAndProps >( this, savedOrder, savedInactive, dictionaries );
-    groups = std::make_shared< Groups >( this, dictionaries, savedGroups, orderAndProps->getCurrentDictionaryOrder() );
+    orderAndProps.swap( std::make_shared< OrderAndProps >( this, savedOrder, savedInactive, dictionaries ) );
+    groups.swap(
+      std::make_shared< Groups >( this, dictionaries, savedGroups, orderAndProps->getCurrentDictionaryOrder() ) );
 
     ui.tabs->insertTab( 1, orderAndProps.get(), QIcon( ":/icons/book.svg" ), tr( "&Dictionaries" ) );
     ui.tabs->insertTab( 2, groups.get(), QIcon( ":/icons/bookcase.svg" ), tr( "&Groups" ) );
