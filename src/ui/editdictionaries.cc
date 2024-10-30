@@ -240,15 +240,15 @@ void EditDictionaries::acceptChangedSources( bool rebuildGroups )
   Instances::updateNames( savedInactive, dictionaries );
 
   if ( rebuildGroups ) {
-    ui.tabs->removeTab( 1 );
-    ui.tabs->removeTab( 1 );
+    // ui.tabs->removeTab( 1 );
+    // ui.tabs->removeTab( 1 );
 
     orderAndProps.swap( std::make_shared< OrderAndProps >( this, savedOrder, savedInactive, dictionaries ) );
     groups.swap(
       std::make_shared< Groups >( this, dictionaries, savedGroups, orderAndProps->getCurrentDictionaryOrder() ) );
 
-    ui.tabs->insertTab( 1, orderAndProps.get(), QIcon( ":/icons/book.svg" ), tr( "&Dictionaries" ) );
-    ui.tabs->insertTab( 2, groups.get(), QIcon( ":/icons/bookcase.svg" ), tr( "&Groups" ) );
+    // ui.tabs->insertTab( 1, orderAndProps.get(), QIcon( ":/icons/book.svg" ), tr( "&Dictionaries" ) );
+    // ui.tabs->insertTab( 2, groups.get(), QIcon( ":/icons/bookcase.svg" ), tr( "&Groups" ) );
     connect( groups.get(), &Groups::showDictionaryInfo, this, &EditDictionaries::showDictionaryInfo );
     connect( orderAndProps.get(),
              &OrderAndProps::showDictionaryHeadwords,
