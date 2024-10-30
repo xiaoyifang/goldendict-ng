@@ -52,7 +52,10 @@ EditDictionaries::EditDictionaries( QWidget * parent,
 
   connect( groups.get(), &Groups::showDictionaryInfo, this, &EditDictionaries::showDictionaryInfo );
 
-  connect( orderAndProps.get(), &OrderAndProps::showDictionaryHeadwords, this, &EditDictionaries::showDictionaryHeadwords );
+  connect( orderAndProps.get(),
+           &OrderAndProps::showDictionaryHeadwords,
+           this,
+           &EditDictionaries::showDictionaryHeadwords );
 
   helpAction.setShortcut( QKeySequence( "F1" ) );
   helpAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
@@ -246,7 +249,10 @@ void EditDictionaries::acceptChangedSources( bool rebuildGroups )
     ui.tabs->insertTab( 1, orderAndProps.get(), QIcon( ":/icons/book.svg" ), tr( "&Dictionaries" ) );
     ui.tabs->insertTab( 2, groups.get(), QIcon( ":/icons/bookcase.svg" ), tr( "&Groups" ) );
     connect( groups.get(), &Groups::showDictionaryInfo, this, &EditDictionaries::showDictionaryInfo );
-    connect( orderAndProps.get(), &OrderAndProps::showDictionaryHeadwords, this, &EditDictionaries::showDictionaryHeadwords );
+    connect( orderAndProps.get(),
+             &OrderAndProps::showDictionaryHeadwords,
+             this,
+             &EditDictionaries::showDictionaryHeadwords );
 
     if ( noGroupEdits ) {
       origCfg.groups = groups->getGroups();
