@@ -21,7 +21,8 @@ EditDictionaries::EditDictionaries( QWidget * parent,
   dictNetMgr( dictNetMgr_ ),
   origCfg( cfg ),
   sources( this, cfg ),
-  orderAndProps( std::make_shared< OrderAndProps >( this, cfg.dictionaryOrder, cfg.inactiveDictionaries, dictionaries ) ),
+  orderAndProps(
+    std::make_shared< OrderAndProps >( this, cfg.dictionaryOrder, cfg.inactiveDictionaries, dictionaries ) ),
   groups( std::make_shared< Groups >( this, dictionaries, cfg.groups, orderAndProps->getCurrentDictionaryOrder() ) ),
   dictionariesChanged( false ),
   groupsChanged( false ),
@@ -240,7 +241,7 @@ void EditDictionaries::acceptChangedSources( bool rebuildGroups )
     ui.tabs->removeTab( 1 );
 
     orderAndProps = std::make_shared< OrderAndProps >( this, savedOrder, savedInactive, dictionaries );
-    groups = std::make_shared < Groups >( this, dictionaries, savedGroups, orderAndProps->getCurrentDictionaryOrder() );
+    groups = std::make_shared< Groups >( this, dictionaries, savedGroups, orderAndProps->getCurrentDictionaryOrder() );
 
     ui.tabs->insertTab( 1, orderAndProps, QIcon( ":/icons/book.svg" ), tr( "&Dictionaries" ) );
     ui.tabs->insertTab( 2, groups, QIcon( ":/icons/bookcase.svg" ), tr( "&Groups" ) );
