@@ -83,8 +83,8 @@ private:
 
   Ui::EditDictionaries ui;
   Sources sources;
-  QPointer< OrderAndProps > orderAndProps;
-  QPointer< Groups > groups;
+  sptr< OrderAndProps > orderAndProps;
+  sptr< Groups > groups;
 
   bool dictionariesChanged;
   bool groupsChanged;
