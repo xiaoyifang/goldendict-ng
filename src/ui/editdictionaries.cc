@@ -61,7 +61,7 @@ EditDictionaries::EditDictionaries( QWidget * parent,
   helpAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
 
   connect( &helpAction, &QAction::triggered, [ this ]() {
-    if ( ui.tabs->currentWidget() == this->groups ) {
+    if ( ui.tabs->currentWidget() == this->groups.get() ) {
       Help::openHelpWebpage( Help::section::manage_groups );
     }
     else {
