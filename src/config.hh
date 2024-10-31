@@ -832,7 +832,7 @@ struct GroupBackup
   Group dictionaryOrder;
   Group inactiveDictionaries;
   Groups groups;
-}
+};
 
 struct Class
 {
