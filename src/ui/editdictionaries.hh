@@ -79,7 +79,7 @@ private:
   QNetworkAccessManager & dictNetMgr;
 
   // Backed up to decide later if something was changed or not
-  Config::Class origCfg;
+  Config::Group origCfg;
 
   Ui::EditDictionaries ui;
   Sources sources;

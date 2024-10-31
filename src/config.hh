@@ -827,6 +827,12 @@ enum class ToolbarsIconSize : std::uint8_t {
   Large  = 2,
 };
 
+struct Group{
+  Group dictionaryOrder;
+  Group inactiveDictionaries;
+  Groups groups;
+}
+
 struct Class
 {
   Paths paths;
