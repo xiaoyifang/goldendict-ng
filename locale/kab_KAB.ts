@@ -86,7 +86,7 @@
     </message>
     <message>
       <source>(untitled)</source>
-      <translation type="unfinished">(untitled)</translation>
+      <translation>(war azwel)</translation>
     </message>
     <message>
       <source>(picture)</source>
@@ -101,7 +101,7 @@
     </message>
     <message>
       <source>From </source>
-      <translation type="unfinished">From </translation>
+      <translation>Seg </translation>
     </message>
     <message>
       <source>Collapse article</source>
@@ -156,7 +156,7 @@
     </message>
     <message>
       <source>Audio</source>
-      <translation type="unfinished">Audio</translation>
+      <translation>Ameslaw</translation>
     </message>
     <message>
       <source>TTS Voice</source>
@@ -941,7 +941,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Cancel</source>
-      <translation type="unfinished">Cancel</translation>
+      <translation>Sefsex</translation>
     </message>
     <message>
       <source>Help</source>
@@ -1161,7 +1161,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Please wait...</source>
-      <translation type="unfinished">Please wait...</translation>
+      <translation>Txil rǧu…</translation>
     </message>
     <message>
       <source>Indexing...</source>
@@ -1180,11 +1180,11 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Abkhazian</source>
-      <translation type="unfinished">Abkhazian</translation>
+      <translation>Tabxazit</translation>
     </message>
     <message>
       <source>Avestan</source>
-      <translation type="unfinished">Avestan</translation>
+      <translation>Tavestant</translation>
     </message>
     <message>
       <source>Afrikaans</source>
@@ -1244,15 +1244,15 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Bambara</source>
-      <translation type="unfinished">Bambara</translation>
+      <translation>Tabambarat</translation>
     </message>
     <message>
       <source>Bengali</source>
-      <translation type="unfinished">Bengali</translation>
+      <translation>Tabengalit</translation>
     </message>
     <message>
       <source>Tibetan</source>
-      <translation type="unfinished">Tibetan</translation>
+      <translation>Tatibitant</translation>
     </message>
     <message>
       <source>Breton</source>
@@ -1312,7 +1312,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Dzongkha</source>
-      <translation type="unfinished">Dzongkha</translation>
+      <translation>Tadzungat</translation>
     </message>
     <message>
       <source>Ewe</source>
