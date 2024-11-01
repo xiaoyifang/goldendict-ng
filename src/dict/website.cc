@@ -83,7 +83,7 @@ public:
 
   Features getFeatures() const noexcept override
   {
-    return WebSite;
+    return Dictionary::WebSite;
   }
 
 protected:
