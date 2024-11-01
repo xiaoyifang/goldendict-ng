@@ -81,9 +81,9 @@ public:
 
   void isolateWebCSS( QString & css );
 
-  override Features getFeatures() const noexcept
+  Features getFeatures() const noexcept override
   {
-    return Dictionary::WebSite;
+    return WebSite;
   }
 
 protected:
