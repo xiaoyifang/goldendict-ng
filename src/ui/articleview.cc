@@ -783,7 +783,7 @@ QString ArticleView::getMutedForGroup( unsigned group )
 {
   auto mutedDicts = getMutedDictionaries( group );
   if ( !mutedDicts.empty() ) {
-    return mutedDicts.join( ", " );
+    return mutedDicts.join( "," );
   }
 
   return {};
