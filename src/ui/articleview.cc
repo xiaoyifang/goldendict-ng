@@ -341,13 +341,9 @@ void ArticleView::showDefinition( QString const & word,
 
   if ( contexts.size() ) {
     QBuffer buf;
-
     buf.open( QIODevice::WriteOnly );
-
     QDataStream stream( &buf );
-
     stream << contexts;
-
     buf.close();
 
     Utils::Url::addQueryItem( req, "contexts", QString::fromLatin1( buf.buffer().toBase64() ) );
@@ -785,38 +781,9 @@ bool ArticleView::eventFilter( QObject * obj, QEvent * ev )
 
 QString ArticleView::getMutedForGroup( unsigned group )
 {
-  if ( dictionaryBarToggled && dictionaryBarToggled->isChecked() ) {
-    // Dictionary bar is active -- mute the muted dictionaries
-    Instances::Group const * groupInstance = dictionaryGroup->getGroupById( group );
-
-    // Find muted dictionaries for current group
-    Config::Group const * grp = cfg.getGroup( group );
-    Config::MutedDictionaries const * mutedDictionaries;
-    if ( group == Instances::Group::AllGroupId ) {
-      mutedDictionaries = popupView ? &cfg.popupMutedDictionaries : &cfg.mutedDictionaries;
-    }
-    else {
-      mutedDictionaries = grp ? ( popupView ? &grp->popupMutedDictionaries : &grp->mutedDictionaries ) : nullptr;
-    }
-    if ( !mutedDictionaries ) {
-      return {};
-    }
-
-    QStringList mutedDicts;
-
-    if ( groupInstance ) {
-      for ( const auto & dictionarie : groupInstance->dictionaries ) {
-        QString id = QString::fromStdString( dictionarie->getId() );
-
-        if ( mutedDictionaries->contains( id ) ) {
-          mutedDicts.append( id );
-        }
-      }
-    }
-
-    if ( !mutedDicts.empty() ) {
-      return mutedDicts.join( "," );
-    }
+  auto mutedDicts = getMutedDictionaries( group );
+  if ( !mutedDicts.empty() ) {
+    return mutedDicts.join( "," );
   }
 
   return {};
@@ -1013,14 +980,6 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
         QString( "window.location = \"%1\"" ).arg( QString::fromUtf8( url.toEncoded() ) ) );
     }
     else {
-      if ( Utils::Url::hasQueryItem( ref, "dictionaries" ) ) {
-        // Specific dictionary group from full-text search
-        QStringList dictsList = Utils::Url::queryItemValue( ref, "dictionaries" ).split( ",", Qt::SkipEmptyParts );
-
-        showDefinition( url.path().mid( 1 ), dictsList, getGroup( ref ), false );
-        return;
-      }
-
       if ( Utils::Url::hasQueryItem( url, "dictionaries" ) ) {
         // Specific dictionary group from full-text search
         QStringList dictsList = Utils::Url::queryItemValue( url, "dictionaries" ).split( ",", Qt::SkipEmptyParts );
@@ -1135,16 +1094,15 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
   }
 }
 
-
 void ArticleView::playAudio( QUrl const & url )
 {
   audioPlayer->stop();
-  qDebug() << "play audio,the link url:" << url;
+  qDebug() << "play audio [url]:" << url;
 
   if ( url.scheme() == "bres" || url.scheme() == "gdau" || url.scheme() == "gdvideo"
        || Utils::Url::isAudioUrl( url ) ) {
-    // Download it
 
+    // Download it
     if ( Utils::Url::isWebAudioUrl( url ) ) {
       sptr< Dictionary::DataRequest > req = std::make_shared< Dictionary::WebMultimediaDownload >( url, articleNetMgr );
 
