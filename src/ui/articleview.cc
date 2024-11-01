@@ -781,38 +781,9 @@ bool ArticleView::eventFilter( QObject * obj, QEvent * ev )
 
 QString ArticleView::getMutedForGroup( unsigned group )
 {
-  if ( dictionaryBarToggled && dictionaryBarToggled->isChecked() ) {
-    // Dictionary bar is active -- mute the muted dictionaries
-    Instances::Group const * groupInstance = dictionaryGroup->getGroupById( group );
-
-    // Find muted dictionaries for current group
-    Config::Group const * grp = cfg.getGroup( group );
-    Config::MutedDictionaries const * mutedDictionaries;
-    if ( group == Instances::Group::AllGroupId ) {
-      mutedDictionaries = popupView ? &cfg.popupMutedDictionaries : &cfg.mutedDictionaries;
-    }
-    else {
-      mutedDictionaries = grp ? ( popupView ? &grp->popupMutedDictionaries : &grp->mutedDictionaries ) : nullptr;
-    }
-    if ( !mutedDictionaries ) {
-      return {};
-    }
-
-    QStringList mutedDicts;
-
-    if ( groupInstance ) {
-      for ( const auto & dictionarie : groupInstance->dictionaries ) {
-        QString id = QString::fromStdString( dictionarie->getId() );
-
-        if ( mutedDictionaries->contains( id ) ) {
-          mutedDicts.append( id );
-        }
-      }
-    }
-
-    if ( !mutedDicts.empty() ) {
-      return mutedDicts.join( "," );
-    }
+  auto mutedDicts = getMutedDictionaries( group );
+  if ( !mutedDicts.empty() ) {
+    return mutedDicts.join( ", " );
   }
 
   return {};
