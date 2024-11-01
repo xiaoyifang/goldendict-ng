@@ -1009,14 +1009,6 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
         QString( "window.location = \"%1\"" ).arg( QString::fromUtf8( url.toEncoded() ) ) );
     }
     else {
-      if ( Utils::Url::hasQueryItem( ref, "dictionaries" ) ) {
-        // Specific dictionary group from full-text search
-        QStringList dictsList = Utils::Url::queryItemValue( ref, "dictionaries" ).split( ",", Qt::SkipEmptyParts );
-
-        showDefinition( url.path().mid( 1 ), dictsList, getGroup( ref ), false );
-        return;
-      }
-
       if ( Utils::Url::hasQueryItem( url, "dictionaries" ) ) {
         // Specific dictionary group from full-text search
         QStringList dictsList = Utils::Url::queryItemValue( url, "dictionaries" ).split( ",", Qt::SkipEmptyParts );

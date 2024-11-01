@@ -81,6 +81,11 @@ public:
 
   void isolateWebCSS( QString & css );
 
+  override Features getFeatures() const noexcept
+  {
+    return Dictionary::WebSite;
+  }
+
 protected:
 
   void loadIcon() noexcept override;
