@@ -30,9 +30,9 @@ EditDictionaries::EditDictionaries( QWidget * parent,
   // would like to preserve them if no edits were done. To that end, we save
   // the initial group readings so that if no edits were really done, we won't
   // be changing groups.
-  origCfg.groups               = groups->getGroups();
-  origCfg.dictionaryOrder      = orderAndProps->getCurrentDictionaryOrder();
-  origCfg.inactiveDictionaries = orderAndProps->getCurrentInactiveDictionaries();
+  origGroups.groups               = groups->getGroups();
+  origGroups.dictionaryOrder      = orderAndProps->getCurrentDictionaryOrder();
+  origGroups.inactiveDictionaries = orderAndProps->getCurrentInactiveDictionaries();
 
   ui.setupUi( this );
 
@@ -93,8 +93,8 @@ void EditDictionaries::save( bool rebuildGroups )
     acceptChangedSources( rebuildGroups );
   }
 
-  if ( origCfg.groups != newGroups || origCfg.dictionaryOrder != newOrder
-       || origCfg.inactiveDictionaries != newInactive ) {
+  if ( origGroups.groups != newGroups || origGroups.dictionaryOrder != newOrder
+       || origGroups.inactiveDictionaries != newInactive ) {
     groupsChanged            = true;
     cfg.groups               = newGroups;
     cfg.dictionaryOrder      = newOrder;
