@@ -341,13 +341,9 @@ void ArticleView::showDefinition( QString const & word,
 
   if ( contexts.size() ) {
     QBuffer buf;
-
     buf.open( QIODevice::WriteOnly );
-
     QDataStream stream( &buf );
-
     stream << contexts;
-
     buf.close();
 
     Utils::Url::addQueryItem( req, "contexts", QString::fromLatin1( buf.buffer().toBase64() ) );
@@ -1135,16 +1131,15 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
   }
 }
 
-
 void ArticleView::playAudio( QUrl const & url )
 {
   audioPlayer->stop();
-  qDebug() << "play audio,the link url:" << url;
+  qDebug() << "play audio [url]:" << url;
 
   if ( url.scheme() == "bres" || url.scheme() == "gdau" || url.scheme() == "gdvideo"
        || Utils::Url::isAudioUrl( url ) ) {
-    // Download it
 
+    // Download it
     if ( Utils::Url::isWebAudioUrl( url ) ) {
       sptr< Dictionary::DataRequest > req = std::make_shared< Dictionary::WebMultimediaDownload >( url, articleNetMgr );
 
