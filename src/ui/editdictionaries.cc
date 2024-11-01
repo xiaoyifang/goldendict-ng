@@ -19,7 +19,6 @@ EditDictionaries::EditDictionaries( QWidget * parent,
   dictionaries( dictionaries_ ),
   groupInstances( groupInstances_ ),
   dictNetMgr( dictNetMgr_ ),
-  origCfg( cfg ),
   sources( this, cfg ),
   orderAndProps( new OrderAndProps( this, cfg.dictionaryOrder, cfg.inactiveDictionaries, dictionaries ) ),
   groups( new Groups( this, dictionaries, cfg.groups, orderAndProps->getCurrentDictionaryOrder() ) ),
@@ -31,9 +30,9 @@ EditDictionaries::EditDictionaries( QWidget * parent,
   // would like to preserve them if no edits were done. To that end, we save
   // the initial group readings so that if no edits were really done, we won't
   // be changing groups.
-  origCfg.groups               = groups->getGroups();
-  origCfg.dictionaryOrder      = orderAndProps->getCurrentDictionaryOrder();
-  origCfg.inactiveDictionaries = orderAndProps->getCurrentInactiveDictionaries();
+  origGroups.groups               = groups->getGroups();
+  origGroups.dictionaryOrder      = orderAndProps->getCurrentDictionaryOrder();
+  origGroups.inactiveDictionaries = orderAndProps->getCurrentInactiveDictionaries();
 
   ui.setupUi( this );
 
@@ -94,8 +93,8 @@ void EditDictionaries::save( bool rebuildGroups )
     acceptChangedSources( rebuildGroups );
   }
 
-  if ( origCfg.groups != newGroups || origCfg.dictionaryOrder != newOrder
-       || origCfg.inactiveDictionaries != newInactive ) {
+  if ( origGroups.groups != newGroups || origGroups.dictionaryOrder != newOrder
+       || origGroups.inactiveDictionaries != newInactive ) {
     groupsChanged            = true;
     cfg.groups               = newGroups;
     cfg.dictionaryOrder      = newOrder;
@@ -210,29 +209,8 @@ void EditDictionaries::acceptChangedSources( bool rebuildGroups )
 
   loadDictionaries( this, cfg, dictionaries, dictNetMgr );
 
-  // If no changes to groups were made, update the original data
-  const bool noGroupEdits = ( origCfg.groups == savedGroups );
-
-  if ( noGroupEdits ) {
-    savedGroups = cfg.groups;
-  }
-
   Instances::updateNames( savedGroups, dictionaries );
-
-  const bool noOrderEdits = ( origCfg.dictionaryOrder == savedOrder );
-
-  if ( noOrderEdits ) {
-    savedOrder = cfg.dictionaryOrder;
-  }
-
   Instances::updateNames( savedOrder, dictionaries );
-
-  const bool noInactiveEdits = ( origCfg.inactiveDictionaries == savedInactive );
-
-  if ( noInactiveEdits ) {
-    savedInactive = cfg.inactiveDictionaries;
-  }
-
   Instances::updateNames( savedInactive, dictionaries );
 
   if ( rebuildGroups ) {
@@ -246,18 +224,6 @@ void EditDictionaries::acceptChangedSources( bool rebuildGroups )
     ui.tabs->insertTab( 2, groups, QIcon( ":/icons/bookcase.svg" ), tr( "&Groups" ) );
     connect( groups, &Groups::showDictionaryInfo, this, &EditDictionaries::showDictionaryInfo );
     connect( orderAndProps, &OrderAndProps::showDictionaryHeadwords, this, &EditDictionaries::showDictionaryHeadwords );
-
-    if ( noGroupEdits ) {
-      origCfg.groups = groups->getGroups();
-    }
-
-    if ( noOrderEdits ) {
-      origCfg.dictionaryOrder = orderAndProps->getCurrentDictionaryOrder();
-    }
-
-    if ( noInactiveEdits ) {
-      origCfg.inactiveDictionaries = orderAndProps->getCurrentInactiveDictionaries();
-    }
   }
   ui.tabs->setUpdatesEnabled( true );
 }
