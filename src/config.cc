@@ -1082,6 +1082,10 @@ Class load()
         ( preferences.namedItem( "removeInvalidIndexOnExit" ).toElement().text() == "1" );
     }
 
+    if ( !preferences.namedItem( "openWebsiteInNewTab" ).isNull() ) {
+      c.preferences.openWebsiteInNewTab = ( preferences.namedItem( "openWebsiteInNewTab" ).toElement().text() == "1" );
+    }
+
     if ( !preferences.namedItem( "maxStringsInHistory" ).isNull() ) {
       c.preferences.maxStringsInHistory = preferences.namedItem( "maxStringsInHistory" ).toElement().text().toUInt();
     }
@@ -2109,6 +2113,10 @@ void save( Class const & c )
 
     opt = dd.createElement( "removeInvalidIndexOnExit" );
     opt.appendChild( dd.createTextNode( c.preferences.removeInvalidIndexOnExit ? "1" : "0" ) );
+    preferences.appendChild( opt );
+
+    opt = dd.createElement( "openWebsiteInNewTab" );
+    opt.appendChild( dd.createTextNode( c.preferences.openWebsiteInNewTab ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "maxStringsInHistory" );

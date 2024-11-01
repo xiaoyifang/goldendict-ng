@@ -336,6 +336,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 
   //Misc
   ui.removeInvalidIndexOnExit->setChecked( p.removeInvalidIndexOnExit );
+  ui.openWebsiteInNewTab->setChecked( p.openWebsiteInNewTab );
 
   // Add-on styles
   ui.addonStylesLabel->setVisible( ui.addonStyles->count() > 1 );
@@ -494,6 +495,7 @@ Config::Preferences Preferences::getPreferences()
   p.clearNetworkCacheOnExit       = ui.clearNetworkCacheOnExit->isChecked();
 
   p.removeInvalidIndexOnExit = ui.removeInvalidIndexOnExit->isChecked();
+  p.openWebsiteInNewTab      = ui.openWebsiteInNewTab->isChecked();
 
   p.addonStyle = ui.addonStyles->getCurrentStyle();
 

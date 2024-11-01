@@ -382,6 +382,7 @@ struct Preferences
   int maxNetworkCacheSize;
   bool clearNetworkCacheOnExit;
   bool removeInvalidIndexOnExit = false;
+  bool openWebsiteInNewTab      = false;
 
   qreal zoomFactor;
   qreal helpZoomFactor;

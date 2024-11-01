@@ -1916,6 +1916,13 @@ from Stardict, Babylon and GLS dictionaries</string>
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QCheckBox" name="openWebsiteInNewTab">
+            <property name="text">
+             <string>Open website dictionary in seperate tab</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
