@@ -32,7 +32,7 @@ Group::Group( Config::Group const & cfgGroup,
     std::string const dictId = dict.id.toStdString();
 
     //avoid duplicate dictionary in groups in config file.
-    if ( dictMap.contains( dictId ) && !dictOrderList.contains( dictId) ) {
+    if ( dictMap.contains( dictId ) && !dictOrderList.contains( dictId ) ) {
       groupDicts.insert( dictId, dictMap[ dictId ] );
       dictOrderList.push_back( dictId );
     }
