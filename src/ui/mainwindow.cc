@@ -64,7 +64,6 @@
 #include <QGuiApplication>
 #include <QWebEngineSettings>
 #include <QProxyStyle>
-#include <QShortcut>
 
 #ifdef WITH_X11
   #include <X11/Xlib.h>
@@ -713,6 +712,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
            &GlobalBroadcaster::indexingDictionary,
            this,
            &MainWindow::showFTSIndexingName );
+  connect( GlobalBroadcaster::instance(),
+           &GlobalBroadcaster::websiteDictionarySignal,
+           this,
+           &MainWindow::openWebsiteInNewTab );
 
   connect( &GlobalBroadcaster::instance()->pronounce_engine,
            &PronounceEngine::emitAudio,
@@ -2086,7 +2089,7 @@ void MainWindow::updateFoundInDictsList()
         if ( dictionaries[ x ]->getId() == i->toUtf8().data() ) {
           QString dictName = QString::fromUtf8( dictionaries[ x ]->getName().c_str() );
           QString dictId   = QString::fromUtf8( dictionaries[ x ]->getId().c_str() );
-          QListWidgetItem * item =
+          auto * item =
             new QListWidgetItem( dictionaries[ x ]->getIcon(), dictName, ui.dictsList, QListWidgetItem::Type );
           item->setData( Qt::UserRole, QVariant( dictId ) );
           item->setToolTip( dictName );
@@ -2100,7 +2103,7 @@ void MainWindow::updateFoundInDictsList()
       }
     }
 
-    //if no item in dict List panel has been choose ,select first one.
+    //if no item in dict List panel has been choosen ,select first one.
     if ( ui.dictsList->count() > 0 && ui.dictsList->selectedItems().empty() ) {
       ui.dictsList->setCurrentRow( 0 );
     }
@@ -2111,7 +2114,7 @@ void MainWindow::updateBackForwardButtons()
 {
   ArticleView * view = getCurrentArticleView();
 
-  if ( view ) {
+  if ( view != nullptr ) {
     navBack->setEnabled( view->canGoBack() );
     navForward->setEnabled( view->canGoForward() );
   }
@@ -2120,7 +2123,12 @@ void MainWindow::updateBackForwardButtons()
 void MainWindow::updatePronounceAvailability()
 {
   if ( ui.tabWidget->count() > 0 ) {
-    getCurrentArticleView()->hasSound( [ this ]( bool has ) {
+    ArticleView * pView = getCurrentArticleView();
+    if ( pView == nullptr ) {
+      return;
+    }
+
+    pView->hasSound( [ this ]( bool has ) {
       navPronounce->setEnabled( has );
     } );
   }
@@ -3617,7 +3625,19 @@ void MainWindow::messageFromAnotherInstanceReceived( const QString & message )
 ArticleView * MainWindow::getCurrentArticleView()
 {
   if ( QWidget * cw = ui.tabWidget->currentWidget() ) {
-    return dynamic_cast< ArticleView * >( cw );
+    auto * pView = dynamic_cast< ArticleView * >( cw );
+    return pView;
+  }
+  return nullptr;
+}
+
+ArticleView * MainWindow::findArticleViewByHost( const QString & host )
+{
+  for ( int i = 0; i < ui.tabWidget->count(); i++ ) {
+    auto * view = qobject_cast< ArticleView * >( ui.tabWidget->widget( i ) );
+    if ( view && view->isWebsite() && view->getWebsiteHost() == host ) {
+      return view;
+    }
   }
   return nullptr;
 }
@@ -4213,6 +4233,17 @@ void MainWindow::showFTSIndexingName( const QString & name )
   else {
     mainStatusBar->setBackgroundMessage( tr( "Now indexing for full-text search: " ) + name );
   }
+}
+
+void MainWindow::openWebsiteInNewTab( QString name, QString url )
+{
+  auto view = findArticleViewByHost(QUrl(url).host());
+  if(view==nullptr)
+  {
+    view = createNewTab(false, name);
+    view->setWebsiteView( true );
+  }
+  view->load( url );
 }
 
 void MainWindow::addCurrentTabToFavorites()

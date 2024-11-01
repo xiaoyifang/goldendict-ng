@@ -353,6 +353,7 @@ struct Preferences
 #else
     false;
 #endif
+  bool openWebsiteInNewTab      = false;
 
   qreal zoomFactor;
   qreal helpZoomFactor;

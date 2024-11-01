@@ -376,6 +376,10 @@ public:
     return NoFeatures;
   }
 
+  virtual map<QString, QString> getProperties() noexcept {
+    return {};
+  }
+
   /// Returns the number of articles in the dictionary.
   virtual unsigned long getArticleCount() noexcept = 0;
 

@@ -75,6 +75,12 @@ class ArticleView: public QWidget
 
   QString delayedHighlightText;
 
+  /// Flag indicating if this view is dedicated for website browsing
+  bool isWebsiteView = false;
+
+  /// Host part of the website URL for identification
+  QString websiteHost;
+
   void highlightFTSResults();
   void performFtsFindOperation( bool backwards );
 
@@ -93,7 +99,6 @@ public:
                QAction * dictionaryBarToggled = nullptr,
                unsigned currentGroupId        = 0 );
 
-
   void setCurrentGroupId( unsigned currengGrgId );
   unsigned getCurrentGroupId();
 
@@ -105,7 +110,7 @@ public:
 
   ~ArticleView();
 
-
+  void load( QString url );
   /// Returns "gdfrom-" + dictionaryId.
   static QString scrollToFromDictionaryId( const QString & dictionaryId );
 
@@ -166,6 +171,7 @@ public:
 
   QString getCurrentWord();
 
+
 private:
   // widgets
   ArticleWebView * webview;
@@ -211,6 +217,18 @@ public:
       //webview->page()->setZoomFactor(factor);
     }
   }
+
+  /// Returns whether this view is for website browsing
+  bool isWebsite() const { return isWebsiteView; }
+
+  /// Sets whether this view is for website browsing
+  void setWebsiteView( bool website ) { isWebsiteView = website; }
+
+  /// Returns the website host
+  QString getWebsiteHost() const { return websiteHost; }
+
+  /// Sets website host
+  void setWebsiteHost( const QString & host );
 
   /// Returns current article's text in .html format
   void toHtml( const std::function< void( QString & ) > & callback );

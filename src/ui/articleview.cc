@@ -284,6 +284,7 @@ void ArticleView::showDefinition( const QString & word,
                                   const Contexts & contexts_ )
 {
   GlobalBroadcaster::instance()->pronounce_engine.reset();
+  clearWebsiteTabs();
   currentWord = word.trimmed();
   if ( currentWord.isEmpty() ) {
     return;
@@ -332,7 +333,7 @@ void ArticleView::showDefinition( const QString & word,
 
   QString mutedDicts = getMutedForGroup( group );
 
-  if ( mutedDicts.size() ) {
+  if ( !mutedDicts.isEmpty() ) {
     reqQuery.addQueryItem( "muted", mutedDicts );
   }
 
@@ -586,6 +587,11 @@ void ArticleView::tryMangleWebsiteClickedUrl( QUrl & url, Contexts & contexts )
 
 void ArticleView::load( const QUrl & url )
 {
+  // Auto-detect if this is a website URL
+  if ( url.scheme() == "http" || url.scheme() == "https" ) {
+    isWebsiteView = true;
+    setWebsiteHost( url.host() );
+  }
   webview->load( url );
 }
 
@@ -1196,7 +1202,6 @@ QString ArticleView::getCurrentWord()
 {
   return currentWord;
 }
-
 
 void ArticleView::back()
 {
@@ -2096,6 +2101,22 @@ void ArticleView::clearContent()
 
   webview->setHtml( QString::fromStdString( html ) );
 }
+
+void ArticleView::setWebsiteHost( const QString & host )
+{
+  websiteHost = host;
+}
+void ArticleView::load( QString url )
+{
+  QUrl qurl( url );
+  // Auto-detect if this is a website URL
+  if ( qurl.scheme() == "http" || qurl.scheme() == "https" ) {
+    isWebsiteView = true;
+    setWebsiteHost( qurl.host() );
+  }
+  webview->load( qurl );
+}
+
 
 ResourceToSaveHandler::ResourceToSaveHandler( ArticleView * view, QString fileName ):
   QObject( view ),

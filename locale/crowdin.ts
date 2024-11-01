@@ -3450,6 +3450,10 @@ from Stardict, Babylon and GLS dictionaries</source>
         <source>None</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Open website dictionary in seperate tab</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ProgramTypeEditor</name>
