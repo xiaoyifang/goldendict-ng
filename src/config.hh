@@ -342,6 +342,7 @@ struct Preferences
   bool clearNetworkCacheOnExit;
   bool removeInvalidIndexOnExit = false;
   bool enableApplicationLog     = false;
+  bool openWebsiteInNewTab      = false;
 
   qreal zoomFactor;
   qreal helpZoomFactor;

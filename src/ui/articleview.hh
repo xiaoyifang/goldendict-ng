@@ -96,7 +96,7 @@ public:
                QAction * dictionaryBarToggled = nullptr,
                unsigned currentGroupId        = 0 );
 
-
+  void openWebsiteInNewTab( QString name, QString url );
   void setCurrentGroupId( unsigned currengGrgId );
   unsigned getCurrentGroupId();
 
@@ -108,7 +108,7 @@ public:
 
   ~ArticleView();
 
-
+  void load( QString url );
   /// Returns "gdfrom-" + dictionaryId.
   static QString scrollToFromDictionaryId( QString const & dictionaryId );
 
@@ -168,10 +168,15 @@ public:
   void syncBackgroundColorWithCfgDarkReader() const;
 
   QString getCurrentWord();
+  void openWebsiteInNewTab( QString name, QString url );
+  void addWebsiteTab( QString name, QString url );
+
+  void clearWebsiteTabs();
 
 private:
   // widgets
   ArticleWebView * webview;
+  QTabWidget * tabWidget;
   SearchPanel * searchPanel;
   FtsSearchPanel * ftsSearchPanel;
 
@@ -414,6 +419,7 @@ private:
   QString getMutedForGroup( unsigned group );
 
   QStringList getMutedDictionaries( unsigned group );
+  void setupWebview();
 };
 
 class ResourceToSaveHandler: public QObject

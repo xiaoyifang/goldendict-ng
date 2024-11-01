@@ -517,6 +517,26 @@ void ArticleRequest::altSearchFinished()
 
     for ( const auto & activeDict : activeDicts ) {
       try {
+        // if the dictionary is website dictionary and openinNewTab is enabled, emit a signal.
+        if ( GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
+          if ( ( activeDict->getFeatures() | Dictionary::WebSite ) == Dictionary::WebSite ) {
+            //replace the word,and get the actual requested url
+            string url = activeDict->getProperties()[ Dictionary::Property::Url ];
+            if ( url.empty() ) {
+              continue;
+            }
+
+            QString requestUrl = Utils::WebSite::urlReplaceWord( QString::fromStdString( url ), word );
+            emit GlobalBroadcaster::instance()
+              -> websiteDictionarySignal( QString::fromStdString( activeDict->getName() ), requestUrl );
+            QStringList dictIds;
+            dictIds << QString::fromStdString( activeDict->getId() );
+            ActiveDictIds hittedWord{ group.id, word, dictIds };
+            emit GlobalBroadcaster::instance() -> dictionaryChanges( hittedWord );
+            continue;
+          }
+        }
+
         sptr< Dictionary::DataRequest > r = activeDict->getArticle(
           wordStd,
           altsVector,

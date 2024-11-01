@@ -385,6 +385,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   //Misc
   ui.removeInvalidIndexOnExit->setChecked( p.removeInvalidIndexOnExit );
   ui.enableApplicationLog->setChecked( p.enableApplicationLog );
+  ui.openWebsiteInNewTab->setChecked( p.openWebsiteInNewTab );
 
   // Add-on styles
   ui.addonStylesLabel->setVisible( ui.addonStyles->count() > 1 );
@@ -553,6 +554,7 @@ Config::Preferences Preferences::getPreferences()
 
   p.removeInvalidIndexOnExit = ui.removeInvalidIndexOnExit->isChecked();
   p.enableApplicationLog     = ui.enableApplicationLog->isChecked();
+  p.openWebsiteInNewTab      = ui.openWebsiteInNewTab->isChecked();
 
   p.addonStyle = ui.addonStyles->getCurrentStyle();
 

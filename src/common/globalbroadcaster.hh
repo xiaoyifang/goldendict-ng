@@ -49,4 +49,6 @@ signals:
   void dictionaryClear( ActiveDictIds ad );
 
   void indexingDictionary( QString );
+
+  void websiteDictionarySignal( QString, QString );
 };

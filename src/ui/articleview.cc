@@ -77,6 +77,162 @@ QString ArticleView::scrollToFromDictionaryId( QString const & dictionaryId )
   Q_ASSERT( !isScrollTo( dictionaryId ) );
   return scrollToPrefix + dictionaryId;
 }
+void ArticleView::setupWebview()
+{ // setup GUI
+  this->webview        = new ArticleWebView( this );
+  this->ftsSearchPanel = new FtsSearchPanel( this );
+  this->searchPanel    = new SearchPanel( this );
+  this->searchPanel->hide();
+  this->ftsSearchPanel->hide();
+
+  auto * baseLayout = new QVBoxLayout( this );
+
+  this->tabWidget = new QTabWidget( this );
+  baseLayout->setContentsMargins( 0, 0, 0, 0 );
+  baseLayout->addWidget( this->tabWidget );
+
+  auto * tab1 = new QWidget( tabWidget );
+  // Layout
+  auto * mainLayout = new QVBoxLayout( tab1 );
+  mainLayout->addWidget( this->webview );
+  mainLayout->addWidget( this->ftsSearchPanel );
+  mainLayout->addWidget( this->searchPanel );
+
+  this->webview->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
+  this->ftsSearchPanel->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Minimum );
+  this->searchPanel->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Minimum );
+
+  mainLayout->setContentsMargins( 0, 0, 0, 0 );
+
+  this->tabWidget->addTab( tab1, "Dictionaries" );
+  this->tabWidget->setTabBarAutoHide( true );
+
+  // end UI setup
+
+  connect( this->searchPanel->previous, &QPushButton::clicked, this, &ArticleView::on_searchPrevious_clicked );
+  connect( this->searchPanel->next, &QPushButton::clicked, this, &ArticleView::on_searchNext_clicked );
+  connect( this->searchPanel->close, &QPushButton::clicked, this, &ArticleView::on_searchCloseButton_clicked );
+  connect( this->searchPanel->caseSensitive, &QCheckBox::toggled, this, &ArticleView::on_searchCaseSensitive_clicked );
+  connect( this->searchPanel->lineEdit, &QLineEdit::textEdited, this, &ArticleView::on_searchText_textEdited );
+  connect( this->searchPanel->lineEdit, &QLineEdit::returnPressed, this, &ArticleView::on_searchText_returnPressed );
+  connect( this->ftsSearchPanel->next, &QPushButton::clicked, this, &ArticleView::on_ftsSearchNext_clicked );
+  connect( this->ftsSearchPanel->previous, &QPushButton::clicked, this, &ArticleView::on_ftsSearchPrevious_clicked );
+
+  //
+
+  this->webview->setUp( const_cast< Config::Class * >( &this->cfg ) );
+
+  this->syncBackgroundColorWithCfgDarkReader();
+
+  this->goBackAction.setShortcut( QKeySequence( "Alt+Left" ) );
+  this->webview->addAction( &this->goBackAction );
+  connect( &this->goBackAction, &QAction::triggered, this, &ArticleView::back );
+
+  this->goForwardAction.setShortcut( QKeySequence( "Alt+Right" ) );
+  this->webview->addAction( &this->goForwardAction );
+  connect( &this->goForwardAction, &QAction::triggered, this, &ArticleView::forward );
+
+  this->webview->pageAction( QWebEnginePage::Copy )->setShortcut( QKeySequence::Copy );
+  this->webview->addAction( this->webview->pageAction( QWebEnginePage::Copy ) );
+
+  QAction * selectAll = this->webview->pageAction( QWebEnginePage::SelectAll );
+  selectAll->setShortcut( QKeySequence::SelectAll );
+  selectAll->setShortcutContext( Qt::WidgetWithChildrenShortcut );
+  this->webview->addAction( selectAll );
+
+  this->webview->setContextMenuPolicy( Qt::CustomContextMenu );
+
+  connect( this->webview, &QWebEngineView::loadFinished, this, &ArticleView::loadFinished );
+
+  connect( this->webview, &ArticleWebView::linkClicked, this, &ArticleView::linkClicked );
+
+  connect( this->webview->page(), &QWebEnginePage::titleChanged, this, &ArticleView::handleTitleChanged );
+
+  connect( this->webview, &QWidget::customContextMenuRequested, this, &ArticleView::contextMenuRequested );
+
+  connect( this->webview->page(), &QWebEnginePage::linkHovered, this, &ArticleView::linkHovered );
+
+  connect( this->webview, &ArticleWebView::doubleClicked, this, &ArticleView::doubleClicked );
+
+  this->pasteAction.setShortcut( QKeySequence::Paste );
+  this->webview->addAction( &this->pasteAction );
+  connect( &this->pasteAction, &QAction::triggered, this, &ArticleView::pasteTriggered );
+
+  this->articleUpAction.setShortcut( QKeySequence( "Alt+Up" ) );
+  this->webview->addAction( &this->articleUpAction );
+  connect( &this->articleUpAction, &QAction::triggered, this, &ArticleView::moveOneArticleUp );
+
+  this->articleDownAction.setShortcut( QKeySequence( "Alt+Down" ) );
+  this->webview->addAction( &this->articleDownAction );
+  connect( &this->articleDownAction, &QAction::triggered, this, &ArticleView::moveOneArticleDown );
+
+  this->selectCurrentArticleAction.setShortcut( QKeySequence( "Ctrl+Shift+A" ) );
+  this->selectCurrentArticleAction.setText( tr( "Select Current Article" ) );
+  this->webview->addAction( &this->selectCurrentArticleAction );
+  connect( &this->selectCurrentArticleAction, &QAction::triggered, this, &ArticleView::selectCurrentArticle );
+
+  this->copyAsTextAction.setShortcut( QKeySequence( "Ctrl+Shift+C" ) );
+  this->copyAsTextAction.setText( tr( "Copy as text" ) );
+  this->webview->addAction( &this->copyAsTextAction );
+  connect( &this->copyAsTextAction, &QAction::triggered, this, &ArticleView::copyAsText );
+
+  this->inspectAction.setShortcut( QKeySequence( Qt::Key_F12 ) );
+  this->inspectAction.setText( tr( "Inspect" ) );
+  this->webview->addAction( &this->inspectAction );
+
+
+  connect( &this->inspectAction, &QAction::triggered, this, &ArticleView::inspectElement );
+
+  this->webview->installEventFilter( this );
+  this->searchPanel->installEventFilter( this );
+  this->ftsSearchPanel->installEventFilter( this );
+
+  QWebEngineSettings * settings = this->webview->settings();
+  settings->setUnknownUrlSchemePolicy( QWebEngineSettings::UnknownUrlSchemePolicy::DisallowUnknownUrlSchemes );
+#if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
+  settings->defaultSettings()->setAttribute( QWebEngineSettings::LocalContentCanAccessRemoteUrls, true );
+  settings->defaultSettings()->setAttribute( QWebEngineSettings::LocalContentCanAccessFileUrls, true );
+  settings->defaultSettings()->setAttribute( QWebEngineSettings::ErrorPageEnabled, false );
+  settings->defaultSettings()->setAttribute( QWebEngineSettings::LinksIncludedInFocusChain, false );
+  settings->defaultSettings()->setAttribute( QWebEngineSettings::PlaybackRequiresUserGesture, false );
+  settings->defaultSettings()->setAttribute( QWebEngineSettings::JavascriptCanAccessClipboard, true );
+  settings->defaultSettings()->setAttribute( QWebEngineSettings::PrintElementBackgrounds, false );
+#else
+  settings->setAttribute( QWebEngineSettings::LocalContentCanAccessRemoteUrls, true );
+  settings->setAttribute( QWebEngineSettings::LocalContentCanAccessFileUrls, true );
+  settings->setAttribute( QWebEngineSettings::ErrorPageEnabled, false );
+  settings->setAttribute( QWebEngineSettings::LinksIncludedInFocusChain, false );
+  settings->setAttribute( QWebEngineSettings::PlaybackRequiresUserGesture, false );
+  settings->setAttribute( QWebEngineSettings::JavascriptCanAccessClipboard, true );
+  settings->setAttribute( QWebEngineSettings::PrintElementBackgrounds, false );
+#endif
+
+
+  this->expandOptionalParts = this->cfg.preferences.alwaysExpandOptionalParts;
+#ifndef Q_OS_MACOS
+  this->webview->grabGesture( Gestures::GDPinchGestureType );
+  this->webview->grabGesture( Gestures::GDSwipeGestureType );
+#endif
+}
+
+void ArticleView::addWebsiteTab( QString name, QString url )
+{
+  auto * view = new QWebEngineView( this );
+  view->load( url );
+  view->setZoomFactor( this->cfg.preferences.zoomFactor );
+  int index       = tabWidget->count();
+  QString escaped = Utils::escapeAmps( name );
+  tabWidget->insertTab( index, view, escaped );
+}
+
+void ArticleView::clearWebsiteTabs()
+{
+  int index = tabWidget->count();
+  // keep the first tab
+  while ( index-- > 1 ) {
+    tabWidget->removeTab( index );
+  }
+}
 
 ArticleView::ArticleView( QWidget * parent,
                           ArticleNetworkAccessManager & nm,
@@ -107,124 +263,12 @@ ArticleView::ArticleView( QWidget * parent,
   translateLine( translateLine_ )
 {
   // setup GUI
-  webview        = new ArticleWebView( this );
-  ftsSearchPanel = new FtsSearchPanel( this );
-  searchPanel    = new SearchPanel( this );
-  searchPanel->hide();
-  ftsSearchPanel->hide();
-  // Layout
-  auto * mainLayout = new QVBoxLayout( this );
-  mainLayout->addWidget( webview );
-  mainLayout->addWidget( ftsSearchPanel );
-  mainLayout->addWidget( searchPanel );
-
-  webview->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
-  ftsSearchPanel->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Minimum );
-  searchPanel->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Minimum );
-
-  mainLayout->setContentsMargins( 0, 0, 0, 0 );
-
-  // end UI setup
-
-  connect( searchPanel->previous, &QPushButton::clicked, this, &ArticleView::on_searchPrevious_clicked );
-  connect( searchPanel->next, &QPushButton::clicked, this, &ArticleView::on_searchNext_clicked );
-  connect( searchPanel->close, &QPushButton::clicked, this, &ArticleView::on_searchCloseButton_clicked );
-  connect( searchPanel->caseSensitive, &QCheckBox::toggled, this, &ArticleView::on_searchCaseSensitive_clicked );
-  connect( searchPanel->lineEdit, &QLineEdit::textEdited, this, &ArticleView::on_searchText_textEdited );
-  connect( searchPanel->lineEdit, &QLineEdit::returnPressed, this, &ArticleView::on_searchText_returnPressed );
-  connect( ftsSearchPanel->next, &QPushButton::clicked, this, &ArticleView::on_ftsSearchNext_clicked );
-  connect( ftsSearchPanel->previous, &QPushButton::clicked, this, &ArticleView::on_ftsSearchPrevious_clicked );
-
-  //
-
-  webview->setUp( const_cast< Config::Class * >( &cfg ) );
-
-  syncBackgroundColorWithCfgDarkReader();
-
-  goBackAction.setShortcut( QKeySequence( "Alt+Left" ) );
-  webview->addAction( &goBackAction );
-  connect( &goBackAction, &QAction::triggered, this, &ArticleView::back );
-
-  goForwardAction.setShortcut( QKeySequence( "Alt+Right" ) );
-  webview->addAction( &goForwardAction );
-  connect( &goForwardAction, &QAction::triggered, this, &ArticleView::forward );
-
-  webview->pageAction( QWebEnginePage::Copy )->setShortcut( QKeySequence::Copy );
-  webview->addAction( webview->pageAction( QWebEnginePage::Copy ) );
-
-  QAction * selectAll = webview->pageAction( QWebEnginePage::SelectAll );
-  selectAll->setShortcut( QKeySequence::SelectAll );
-  selectAll->setShortcutContext( Qt::WidgetWithChildrenShortcut );
-  webview->addAction( selectAll );
-
-  webview->setContextMenuPolicy( Qt::CustomContextMenu );
-
-  connect( webview, &QWebEngineView::loadFinished, this, &ArticleView::loadFinished );
-
-  connect( webview, &ArticleWebView::linkClicked, this, &ArticleView::linkClicked );
-
-  connect( webview->page(), &QWebEnginePage::titleChanged, this, &ArticleView::handleTitleChanged );
-
-  connect( webview, &QWidget::customContextMenuRequested, this, &ArticleView::contextMenuRequested );
-
-  connect( webview->page(), &QWebEnginePage::linkHovered, this, &ArticleView::linkHovered );
-
-  connect( webview, &ArticleWebView::doubleClicked, this, &ArticleView::doubleClicked );
-
-  pasteAction.setShortcut( QKeySequence::Paste );
-  webview->addAction( &pasteAction );
-  connect( &pasteAction, &QAction::triggered, this, &ArticleView::pasteTriggered );
-
-  articleUpAction.setShortcut( QKeySequence( "Alt+Up" ) );
-  webview->addAction( &articleUpAction );
-  connect( &articleUpAction, &QAction::triggered, this, &ArticleView::moveOneArticleUp );
-
-  articleDownAction.setShortcut( QKeySequence( "Alt+Down" ) );
-  webview->addAction( &articleDownAction );
-  connect( &articleDownAction, &QAction::triggered, this, &ArticleView::moveOneArticleDown );
-
-  selectCurrentArticleAction.setShortcut( QKeySequence( "Ctrl+Shift+A" ) );
-  selectCurrentArticleAction.setText( tr( "Select Current Article" ) );
-  webview->addAction( &selectCurrentArticleAction );
-  connect( &selectCurrentArticleAction, &QAction::triggered, this, &ArticleView::selectCurrentArticle );
-
-  copyAsTextAction.setShortcut( QKeySequence( "Ctrl+Shift+C" ) );
-  copyAsTextAction.setText( tr( "Copy as text" ) );
-  webview->addAction( &copyAsTextAction );
-  connect( &copyAsTextAction, &QAction::triggered, this, &ArticleView::copyAsText );
-
-  inspectAction.setShortcut( QKeySequence( Qt::Key_F12 ) );
-  inspectAction.setText( tr( "Inspect" ) );
-  webview->addAction( &inspectAction );
+  setupWebview();
 
 
-  connect( &inspectAction, &QAction::triggered, this, &ArticleView::inspectElement );
+  auto html = this->articleNetMgr.getHtml( ResourceType::UNTITLE );
 
-  webview->installEventFilter( this );
-  searchPanel->installEventFilter( this );
-  ftsSearchPanel->installEventFilter( this );
-
-  QWebEngineSettings * settings = webview->settings();
-  settings->setUnknownUrlSchemePolicy( QWebEngineSettings::UnknownUrlSchemePolicy::DisallowUnknownUrlSchemes );
-
-  settings->setAttribute( QWebEngineSettings::LocalContentCanAccessRemoteUrls, true );
-  settings->setAttribute( QWebEngineSettings::LocalContentCanAccessFileUrls, true );
-  settings->setAttribute( QWebEngineSettings::ErrorPageEnabled, false );
-  settings->setAttribute( QWebEngineSettings::LinksIncludedInFocusChain, false );
-  settings->setAttribute( QWebEngineSettings::PlaybackRequiresUserGesture, false );
-  settings->setAttribute( QWebEngineSettings::JavascriptCanAccessClipboard, true );
-  settings->setAttribute( QWebEngineSettings::PrintElementBackgrounds, false );
-
-  auto html = articleNetMgr.getHtml( ResourceType::UNTITLE );
-
-  webview->setHtml( QString::fromStdString( html ) );
-
-  expandOptionalParts = cfg.preferences.alwaysExpandOptionalParts;
-#ifndef Q_OS_MACOS
-  webview->grabGesture( Gestures::GDPinchGestureType );
-  webview->grabGesture( Gestures::GDSwipeGestureType );
-#endif
-
+  this->webview->setHtml( QString::fromStdString( html ) );
   connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::dictionaryChanges, this, &ArticleView::setActiveDictIds );
   connect( GlobalBroadcaster::instance(), &GlobalBroadcaster::dictionaryClear, this, &ArticleView::dictionaryClear );
 
@@ -287,6 +331,7 @@ void ArticleView::showDefinition( QString const & word,
                                   Contexts const & contexts_ )
 {
   GlobalBroadcaster::instance()->pronounce_engine.reset();
+  clearWebsiteTabs();
   currentWord = word.trimmed();
   if ( currentWord.isEmpty() ) {
     return;
@@ -335,7 +380,7 @@ void ArticleView::showDefinition( QString const & word,
 
   QString mutedDicts = getMutedForGroup( group );
 
-  if ( mutedDicts.size() ) {
+  if ( !mutedDicts.isEmpty() ) {
     reqQuery.addQueryItem( "muted", mutedDicts );
   }
 
@@ -1198,6 +1243,17 @@ void ArticleView::syncBackgroundColorWithCfgDarkReader() const
 QString ArticleView::getCurrentWord()
 {
   return currentWord;
+}
+
+void ArticleView::openWebsiteInNewTab( QString name, QString url )
+{
+  QString escaped = Utils::escapeAmps( name );
+
+  //found existed QWebEngineView.
+  auto * view = new QWebEngineView( this );
+  view->load( QUrl( url ) );
+
+  tabWidget->addTab( view, escaped );
 }
 
 
@@ -2097,6 +2153,11 @@ void ArticleView::clearContent()
 
   webview->setHtml( QString::fromStdString( html ) );
 }
+void ArticleView::load( QString url )
+{
+  webview->load( QUrl( url ) );
+}
+
 
 ResourceToSaveHandler::ResourceToSaveHandler( ArticleView * view, QString fileName ):
   QObject( view ),
