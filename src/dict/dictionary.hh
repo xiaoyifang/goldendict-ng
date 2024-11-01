@@ -292,7 +292,7 @@ enum Feature {
   NoFeatures = 0,
   /// The dictionary is suitable to query when searching for compound expressions.
   SuitableForCompoundSearching = 1,
-  WebSite = 2
+  WebSite                      = 2
 };
 
 Q_DECLARE_FLAGS( Features, Feature )
