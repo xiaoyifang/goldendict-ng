@@ -10,6 +10,7 @@
 #include <QFileInfo>
 #include "gddebug.hh"
 #include "globalbroadcaster.hh"
+#include "fmt/compile.h"
 
 #include <QRegularExpression>
 
@@ -312,15 +313,16 @@ void WebSiteArticleRequest::requestFinished( QNetworkReply * r )
     }
   }
 
-  disconnect( netReply, 0, 0, 0 );
+  disconnect( netReply, nullptr, 0, 0 );
   netReply->deleteLater();
 
   finish();
 }
 
-sptr< DataRequest >
-WebSiteDictionary::getArticle( wstring const & str, vector< wstring > const &, wstring const & context, bool )
-
+sptr< DataRequest > WebSiteDictionary::getArticle( wstring const & str,
+                                                   vector< wstring > const & /*alts*/,
+                                                   wstring const & context,
+                                                   bool /*ignoreDiacritics*/ )
 {
   QString urlString = Utils::WebSite::urlReplaceWord( QString( urlTemplate ), QString::fromStdU32String( str ) );
 
@@ -341,14 +343,15 @@ WebSiteDictionary::getArticle( wstring const & str, vector< wstring > const &, w
       encodeUrl = urlString;
     }
 
-
-    result += string( "<iframe id=\"gdexpandframe-" ) + getId() +
-                      "\" src=\""+encodeUrl.toStdString() +
-                      "\" onmouseover=\"processIframeMouseOver('gdexpandframe-" + getId() + "');\" "
-                      "onmouseout=\"processIframeMouseOut();\" "
-                      "scrolling=\"no\" "
-                      "style=\"overflow:visible; width:100%; display:block; border:none;\" sandbox=\"allow-same-origin allow-scripts allow-popups\">"
-                      "</iframe>";
+    fmt::format_to( std::back_inserter( result ),
+                    R"(<iframe id="gdexpandframe-{}" src="{}"
+onmouseover="processIframeMouseOver('gdexpandframe-{}');"
+onmouseout="processIframeMouseOut();" scrolling="no"
+style="overflow:visible; width:100%; display:block; border:none;"
+sandbox="allow-same-origin allow-scripts allow-popups"></iframe>)",
+                    getId(),
+                    encodeUrl.toStdString(),
+                    getId() );
 
     auto dr = std::make_shared< DataRequestInstant >( true );
     dr->appendString( result );
