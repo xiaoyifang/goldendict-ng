@@ -4365,12 +4365,12 @@ void MainWindow::showFTSIndexingName( QString const & name )
   }
 }
 
-void MainWindow::openWebsiteInNewTab( QString const & name,QString const & url )
+void MainWindow::openWebsiteInNewTab( QString const & name, QString const & url )
 {
   QString escaped = Utils::escapeAmps( name );
 
-  auto view = new QWebEngineView(this);
-  view->load(QUrl(url));
+  auto view = new QWebEngineView( this );
+  view->load( QUrl( url ) );
 
   ui.tabWidget->insertTab( index, view, escaped );
   mruList.append( dynamic_cast< QWidget * >( view ) );

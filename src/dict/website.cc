@@ -54,7 +54,7 @@ public:
   map< Property, string > getProperties() noexcept override
   {
     map< Property, string > properties;
-    properties.insert({ Property::Url, urlTemplate_ } ) ;
+    properties.insert( { Property::Url, urlTemplate_ } );
     return properties;
   }
 
@@ -330,12 +330,12 @@ sptr< DataRequest > WebSiteDictionary::getArticle( wstring const & str,
     QUrl url( urlString );
     GlobalBroadcaster::instance()->addWhitelist( url.host() );
 
-    QString encodeUrl=encodeUrl = urlString;
+    QString encodeUrl = encodeUrl = urlString;
 
-    if ( GlobalBroadcaster::instance()->getPreference()->openWebSiteInNewTab ){
-      result += string("<div><span>this website dictionary is opened in the new tab</span></div>");
+    if ( GlobalBroadcaster::instance()->getPreference()->openWebSiteInNewTab ) {
+      result += string( "<div><span>this website dictionary is opened in the new tab</span></div>" );
     }
-    else{
+    else {
           fmt::format_to( std::back_inserter( result ),
                     R"(<iframe id="gdexpandframe-{}" src="{}"
 onmouseover="processIframeMouseOver('gdexpandframe-{}');"

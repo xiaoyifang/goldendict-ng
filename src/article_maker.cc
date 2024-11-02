@@ -517,7 +517,7 @@ void ArticleRequest::altSearchFinished()
         if ( GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
           if ( activeDict->getFeature() == Dictionary::WebSite ) {
             //todo ,replace the word with actual url
-            emit GlobalBroadcaster::instance() -> websiteDictionary( word,url );
+            emit GlobalBroadcaster::instance() -> websiteDictionary( word, url );
             continue;
           }
         }
