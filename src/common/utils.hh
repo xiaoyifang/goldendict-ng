@@ -341,6 +341,10 @@ void removeDirectory( QString const & directory );
 void removeDirectory( string const & directory );
 } // namespace Fs
 
+namespace WebSite {
+QString urlReplaceWord( const QString url, QString word );
+}
+
 QString escapeAmps( QString const & str );
 
 QString unescapeAmps( QString const & str );

@@ -10,6 +10,7 @@
 #include <QFileInfo>
 #include "gddebug.hh"
 #include "globalbroadcaster.hh"
+#include "fmt/compile.h"
 
 #include <QRegularExpression>
 
@@ -312,73 +313,23 @@ void WebSiteArticleRequest::requestFinished( QNetworkReply * r )
     }
   }
 
-  disconnect( netReply, 0, 0, 0 );
+  disconnect( netReply, nullptr, 0, 0 );
   netReply->deleteLater();
 
   finish();
 }
 
-sptr< DataRequest >
-WebSiteDictionary::getArticle( wstring const & str, vector< wstring > const &, wstring const & context, bool )
-
+sptr< DataRequest > WebSiteDictionary::getArticle( wstring const & str,
+                                                   vector< wstring > const & /*alts*/,
+                                                   wstring const & context,
+                                                   bool /*ignoreDiacritics*/ )
 {
-  QByteArray urlString;
-
-  // Context contains the right url to go to
-  if ( context.size() ) {
-    urlString = Utf8::encode( context ).c_str();
-  }
-  else {
-    urlString = urlTemplate;
-
-    QString inputWord = QString::fromStdU32String( str );
-
-    urlString.replace( "%25GDWORD%25", inputWord.toUtf8().toPercentEncoding() );
-
-    QTextCodec * codec = QTextCodec::codecForName( "Windows-1251" );
-    if ( codec ) {
-      urlString.replace( "%25GD1251%25", codec->fromUnicode( inputWord ).toPercentEncoding() );
-    }
-
-    codec = QTextCodec::codecForName( "Big-5" );
-    if ( codec ) {
-      urlString.replace( "%25GDBIG5%25", codec->fromUnicode( inputWord ).toPercentEncoding() );
-    }
-
-    codec = QTextCodec::codecForName( "Big5-HKSCS" );
-    if ( codec ) {
-      urlString.replace( "%25GDBIG5HKSCS%25", codec->fromUnicode( inputWord ).toPercentEncoding() );
-    }
-
-    codec = QTextCodec::codecForName( "Shift-JIS" );
-    if ( codec ) {
-      urlString.replace( "%25GDSHIFTJIS%25", codec->fromUnicode( inputWord ).toPercentEncoding() );
-    }
-
-    codec = QTextCodec::codecForName( "GB18030" );
-    if ( codec ) {
-      urlString.replace( "%25GDGBK%25", codec->fromUnicode( inputWord ).toPercentEncoding() );
-    }
-
-
-    // Handle all ISO-8859 encodings
-    for ( int x = 1; x <= 16; ++x ) {
-      codec = QTextCodec::codecForName( QString( "ISO 8859-%1" ).arg( x ).toLatin1() );
-      if ( codec ) {
-        urlString.replace( QString( "%25GDISO%1%25" ).arg( x ).toUtf8(),
-                           codec->fromUnicode( inputWord ).toPercentEncoding() );
-      }
-
-      if ( x == 10 ) {
-        x = 12; // Skip encodings 11..12, they don't exist
-      }
-    }
-  }
+  QString urlString = Utils::WebSite::urlReplaceWord( QString( urlTemplate ), QString::fromStdU32String( str ) );
 
   if ( inside_iframe ) {
     // Just insert link in <iframe> tag
 
-    string result = "<div class=\"website_padding\"></div>";
+    string result = R"(<div class="website_padding"></div>)";
 
     //heuristic add url to global whitelist.
     QUrl url( urlString );
@@ -392,14 +343,15 @@ WebSiteDictionary::getArticle( wstring const & str, vector< wstring > const &, w
       encodeUrl = urlString;
     }
 
-
-    result += string( "<iframe id=\"gdexpandframe-" ) + getId() +
-                      "\" src=\""+encodeUrl.toStdString() +
-                      "\" onmouseover=\"processIframeMouseOver('gdexpandframe-" + getId() + "');\" "
-                      "onmouseout=\"processIframeMouseOut();\" "
-                      "scrolling=\"no\" "
-                      "style=\"overflow:visible; width:100%; display:block; border:none;\" sandbox=\"allow-same-origin allow-scripts allow-popups\">"
-                      "</iframe>";
+    fmt::format_to( std::back_inserter( result ),
+                    R"(<iframe id="gdexpandframe-{}" src="{}"
+onmouseover="processIframeMouseOver('gdexpandframe-{}');"
+onmouseout="processIframeMouseOut();" scrolling="no"
+style="overflow:visible; width:100%; display:block; border:none;"
+sandbox="allow-same-origin allow-scripts allow-popups"></iframe>)",
+                    getId(),
+                    encodeUrl.toStdString(),
+                    getId() );
 
     auto dr = std::make_shared< DataRequestInstant >( true );
     dr->appendString( result );
