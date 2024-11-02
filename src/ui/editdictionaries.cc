@@ -113,7 +113,6 @@ void EditDictionaries::currentChanged( int index )
   if ( index == -1 || !isVisible() ) {
     return; // Sent upon the construction/destruction
   }
-  qDebug() << ui.tabs->currentWidget()->objectName();
   if ( lastTabName.isEmpty() || lastTabName == "Sources" ) {
     // We're switching away from the Sources tab -- if its contents were
     // changed, we need to either apply or reject now.
@@ -183,9 +182,6 @@ void EditDictionaries::acceptChangedSources( bool rebuildGroups )
 {
   dictionariesChanged = true;
 
-  Config::Groups savedGroups  = groups->getGroups();
-  Config::Group savedOrder    = orderAndProps->getCurrentDictionaryOrder();
-  Config::Group savedInactive = orderAndProps->getCurrentInactiveDictionaries();
 
   cfg.paths           = sources.getPaths();
   cfg.soundDirs       = sources.getSoundDirs();
@@ -209,10 +205,6 @@ void EditDictionaries::acceptChangedSources( bool rebuildGroups )
 
   loadDictionaries( this, cfg, dictionaries, dictNetMgr );
 
-  Instances::updateNames( savedGroups, dictionaries );
-  Instances::updateNames( savedOrder, dictionaries );
-  Instances::updateNames( savedInactive, dictionaries );
-
   if ( rebuildGroups ) {
     // ui.tabs->removeTab( 1 );
     // ui.tabs->removeTab( 1 );
@@ -225,6 +217,15 @@ void EditDictionaries::acceptChangedSources( bool rebuildGroups )
     // connect( groups, &Groups::showDictionaryInfo, this, &EditDictionaries::showDictionaryInfo );
     // connect( orderAndProps, &OrderAndProps::showDictionaryHeadwords, this, &EditDictionaries::showDictionaryHeadwords );
   }
+
+  Config::Groups savedGroups  = groups->getGroups();
+  Config::Group savedOrder    = orderAndProps->getCurrentDictionaryOrder();
+  Config::Group savedInactive = orderAndProps->getCurrentInactiveDictionaries();
+
+  Instances::updateNames( savedGroups, dictionaries );
+  Instances::updateNames( savedOrder, dictionaries );
+  Instances::updateNames( savedInactive, dictionaries );
+
   setUpdatesEnabled( true );
 }
 EditDictionaries::~EditDictionaries()
