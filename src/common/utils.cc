@@ -8,6 +8,7 @@
   #include <stub_msvc.h>
 #endif
 #include <QBuffer>
+#include <QTextCodec>
 
 using std::string;
 namespace Utils {
