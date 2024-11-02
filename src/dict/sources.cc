@@ -55,7 +55,8 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg ):
 
   ui.webSites->setTabKeyNavigation( true );
   ui.webSites->setModel( &webSitesModel );
-  ui.webSites->setColumnHidden
+  //[As link] column.
+  ui.webSites->setColumnHidden( 1, true );
   ui.webSites->resizeColumnToContents( 0 );
   ui.webSites->resizeColumnToContents( 1 );
   ui.webSites->resizeColumnToContents( 2 );
