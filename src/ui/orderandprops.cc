@@ -133,6 +133,27 @@ OrderAndProps::OrderAndProps( QWidget * parent,
   showDictNumbers();
 }
 
+void OrderAndProps::rebuild( Config::Group const & dictionaryOrder,
+                              Config::Group const & inactiveDictionaries,
+                              std::vector< sptr< Dictionary::Class > > const & allDictionaries )
+{
+  Instances::Group order( dictionaryOrder, allDictionaries, Config::Group() );
+  Instances::Group inactive( inactiveDictionaries, allDictionaries, Config::Group() );
+
+  Instances::complementDictionaryOrder( order, inactive, allDictionaries );
+
+  setUpdatesEnabled( false );
+  ui.dictionaryOrder->populate( order.dictionaries, allDictionaries );
+  ui.inactiveDictionaries->populate( inactive.dictionaries, allDictionaries );
+
+  ui.searchLine->applyTo( ui.dictionaryOrder );
+
+  disableDictionaryDescription();
+
+  showDictNumbers();
+  setUpdatesEnabled( true );
+}
+
 Config::Group OrderAndProps::getCurrentDictionaryOrder() const
 {
   Instances::Group g;
