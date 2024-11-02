@@ -42,8 +42,6 @@ public:
     inside_iframe( inside_iframe_ ),
     netMgr( netMgr_ )
   {
-    //else file:/// local dictionary file path
-
     urlTemplate           = QUrl( urlTemplate_ ).toEncoded();
     dictionaryDescription = urlTemplate_;
   }
@@ -55,7 +53,9 @@ public:
 
   map< Property, string > getProperties() noexcept override
   {
-    return map< Property, string >();
+    map< Property, string > properties;
+    properties.insert({ Property::Url, urlTemplate_ } ) ;
+    return properties;
   }
 
   unsigned long getArticleCount() noexcept override
