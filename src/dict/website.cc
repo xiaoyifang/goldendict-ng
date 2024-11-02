@@ -24,7 +24,6 @@ class WebSiteDictionary: public Dictionary::Class
 {
   string name;
   QByteArray urlTemplate;
-  bool experimentalIframe;
   QString iconFilename;
   bool inside_iframe;
   QNetworkAccessManager & netMgr;
@@ -41,12 +40,8 @@ public:
     name( name_ ),
     iconFilename( iconFilename_ ),
     inside_iframe( inside_iframe_ ),
-    netMgr( netMgr_ ),
-    experimentalIframe( false )
+    netMgr( netMgr_ )
   {
-    if ( urlTemplate_.startsWith( "http://" ) || urlTemplate_.startsWith( "https://" ) ) {
-      experimentalIframe = true;
-    }
     //else file:/// local dictionary file path
 
     urlTemplate           = QUrl( urlTemplate_ ).toEncoded();
@@ -335,15 +330,13 @@ sptr< DataRequest > WebSiteDictionary::getArticle( wstring const & str,
     QUrl url( urlString );
     GlobalBroadcaster::instance()->addWhitelist( url.host() );
 
-    QString encodeUrl;
-    if ( experimentalIframe ) {
-      encodeUrl = "ifr://localhost?url=" + QUrl::toPercentEncoding( urlString );
-    }
-    else {
-      encodeUrl = urlString;
-    }
+    QString encodeUrl=encodeUrl = urlString;
 
-    fmt::format_to( std::back_inserter( result ),
+    if ( GlobalBroadcaster::instance()->getPreference()->openWebSiteInNewTab ){
+      result += string("<div><span>this website dictionary is opened in the new tab</span></div>");
+    }
+    else{
+          fmt::format_to( std::back_inserter( result ),
                     R"(<iframe id="gdexpandframe-{}" src="{}"
 onmouseover="processIframeMouseOver('gdexpandframe-{}');"
 onmouseout="processIframeMouseOut();" scrolling="no"
@@ -352,7 +345,7 @@ sandbox="allow-same-origin allow-scripts allow-popups"></iframe>)",
                     getId(),
                     encodeUrl.toStdString(),
                     getId() );
-
+    }
     auto dr = std::make_shared< DataRequestInstant >( true );
     dr->appendString( result );
     return dr;
