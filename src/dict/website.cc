@@ -322,20 +322,12 @@ sptr< DataRequest >
 WebSiteDictionary::getArticle( wstring const & str, vector< wstring > const &, wstring const & context, bool )
 
 {
-  QByteArray urlString;
-
-  // Context contains the right url to go to
-  if ( context.size() ) {
-    urlString = Utf8::encode( context ).c_str();
-  }
-  else {
-    urlString = Utils::WebSite::urlReplaceWord( QString( urlTemplate ), QString::fromStdU32String( str ) );
-  }
+  QString urlString = Utils::WebSite::urlReplaceWord( QString( urlTemplate ), QString::fromStdU32String( str ) );
 
   if ( inside_iframe ) {
     // Just insert link in <iframe> tag
 
-    string result = "<div class=\"website_padding\"></div>";
+    string result = R"(<div class="website_padding"></div>)";
 
     //heuristic add url to global whitelist.
     QUrl url( urlString );
