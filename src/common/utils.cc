@@ -122,12 +122,10 @@ void removeDirectory( string const & directory )
 } // namespace Utils::Fs
 
 namespace Utils::WebSite {
-QString urlReplaceWord( const QString url, QString str )
+QString urlReplaceWord( const QString url, QString inputWord )
 {
   //copy temp url
   auto urlString = url;
-
-  QString inputWord = QString::fromStdU32String( str );
 
   urlString.replace( "%25GDWORD%25", inputWord.toUtf8().toPercentEncoding() );
 
