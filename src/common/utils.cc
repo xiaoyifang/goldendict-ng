@@ -123,6 +123,7 @@ void removeDirectory( string const & directory )
 namespace Utils::WebSite{
 QString urlReplaceWord( const QString url, QString str )
 {
+  //copy temp url
   auto urlString    = url;
  
   QString inputWord = QString::fromStdU32String( str );

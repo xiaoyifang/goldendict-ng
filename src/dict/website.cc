@@ -329,9 +329,9 @@ WebSiteDictionary::getArticle( wstring const & str, vector< wstring > const &, w
     urlString = Utf8::encode( context ).c_str();
   }
   else {
-    urlString = urlTemplate;
+    
 
-    urlString = Utils::WebSite::urlReplaceWord( urlString, str );
+    urlString = Utils::WebSite::urlReplaceWord( urlTemplate, str );
   }
 
   if ( inside_iframe ) {
