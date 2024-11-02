@@ -713,6 +713,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
            &GlobalBroadcaster::indexingDictionary,
            this,
            &MainWindow::showFTSIndexingName );
+  connect( GlobalBroadcaster::instance(),
+           &GlobalBroadcaster::websiteDictionary,
+           this,
+           &MainWindow::openWebsiteInNewTab );
 
   connect( &GlobalBroadcaster::instance()->pronounce_engine,
            &PronounceEngine::emitAudio,
@@ -4359,6 +4363,17 @@ void MainWindow::showFTSIndexingName( QString const & name )
   else {
     mainStatusBar->setBackgroundMessage( tr( "Now indexing for full-text search: " ) + name );
   }
+}
+
+void MainWindow::openWebsiteInNewTab( QString const & name,QString const & url )
+{
+  QString escaped = Utils::escapeAmps( name );
+
+  auto view = new QWebEngineView(this);
+  view->load(QUrl(url));
+
+  ui.tabWidget->insertTab( index, view, escaped );
+  mruList.append( dynamic_cast< QWidget * >( view ) );
 }
 
 QString MainWindow::unescapeTabHeader( QString const & header )

@@ -513,6 +513,15 @@ void ArticleRequest::altSearchFinished()
 
     for ( const auto & activeDict : activeDicts ) {
       try {
+        // if the dictionary is website dictionary and openinNewTab is enabled, emit a signal.
+        if ( GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
+          if ( activeDict->getFeature() == Dictionary::WebSite ) {
+            //todo ,replace the word with actual url
+            emit GlobalBroadcaster::instance() -> websiteDictionary( word,url );
+            continue;
+          }
+        }
+
         sptr< Dictionary::DataRequest > r = activeDict->getArticle(
           wordStd,
           altsVector,
