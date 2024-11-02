@@ -120,12 +120,12 @@ void removeDirectory( string const & directory )
 
 } // namespace Utils::Fs
 
-namespace Utils::WebSite{
+namespace Utils::WebSite {
 QString urlReplaceWord( const QString url, QString str )
 {
   //copy temp url
-  auto urlString    = url;
- 
+  auto urlString = url;
+
   QString inputWord = QString::fromStdU32String( str );
 
   urlString.replace( "%25GDWORD%25", inputWord.toUtf8().toPercentEncoding() );
@@ -166,10 +166,10 @@ QString urlReplaceWord( const QString url, QString str )
 
     // Skip encodings 11..12, they don't exist
     if ( x == 10 ) {
-    x = 12; 
+      x = 12;
     }
   }
 
   return urlString;
 }
-}
+} // namespace Utils::WebSite
