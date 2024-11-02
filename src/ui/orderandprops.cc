@@ -134,8 +134,8 @@ OrderAndProps::OrderAndProps( QWidget * parent,
 }
 
 void OrderAndProps::rebuild( Config::Group const & dictionaryOrder,
-                              Config::Group const & inactiveDictionaries,
-                              std::vector< sptr< Dictionary::Class > > const & allDictionaries )
+                             Config::Group const & inactiveDictionaries,
+                             std::vector< sptr< Dictionary::Class > > const & allDictionaries )
 {
   Instances::Group order( dictionaryOrder, allDictionaries, Config::Group() );
   Instances::Group inactive( inactiveDictionaries, allDictionaries, Config::Group() );

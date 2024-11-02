@@ -64,12 +64,13 @@ Groups::Groups( QWidget * parent,
   countChanged();
 }
 
-void Groups::rebuild(                vector< sptr< Dictionary::Class > > const & dicts_,
-                Config::Groups const & groups_,
-                Config::Group const & order ){
-  
+void Groups::rebuild( vector< sptr< Dictionary::Class > > const & dicts_,
+                      Config::Groups const & groups_,
+                      Config::Group const & order )
+{
+
   setUpdatesEnabled( false );
-  dicts = dicts_;
+  dicts  = dicts_;
   groups = groups_;
 
   ui.dictionaries->setAsSource();
