@@ -217,8 +217,8 @@ void EditDictionaries::acceptChangedSources( bool rebuildGroups )
     // ui.tabs->removeTab( 1 );
     // ui.tabs->removeTab( 1 );
 
-    orderAndProps->rebuild( this, savedOrder, savedInactive, dictionaries );
-    groups->rebuild( this, dictionaries, savedGroups, orderAndProps->getCurrentDictionaryOrder() );
+    orderAndProps->rebuild( savedOrder, savedInactive, dictionaries );
+    groups->rebuild( dictionaries, savedGroups, orderAndProps->getCurrentDictionaryOrder() );
 
     // ui.tabs->insertTab( 1, orderAndProps, QIcon( ":/icons/book.svg" ), tr( "&Dictionaries" ) );
     // ui.tabs->insertTab( 2, groups, QIcon( ":/icons/bookcase.svg" ), tr( "&Groups" ) );
