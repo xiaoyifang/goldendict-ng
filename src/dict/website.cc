@@ -329,7 +329,7 @@ WebSiteDictionary::getArticle( wstring const & str, vector< wstring > const &, w
     urlString = Utf8::encode( context ).c_str();
   }
   else {
-    urlString = Utils::WebSite::urlReplaceWord( QString(urlTemplate), QString::fromStdU32String( str ) );
+    urlString = Utils::WebSite::urlReplaceWord( QString( urlTemplate ), QString::fromStdU32String( str ) );
   }
 
   if ( inside_iframe ) {
