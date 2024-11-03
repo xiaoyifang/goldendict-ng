@@ -96,7 +96,10 @@ public:
                QLineEdit const * translateLine,
                QAction * dictionaryBarToggled = nullptr,
                unsigned currentGroupId        = 0 );
-
+  explicit ArticleView( QWidget * parent,
+                        ArticleNetworkAccessManager & nm,
+                        AudioPlayerPtr const & audioPlayer_,
+                        Config::Class const & cfg_ );
 
   void setCurrentGroupId( unsigned currengGrgId );
   unsigned getCurrentGroupId();
@@ -109,7 +112,7 @@ public:
 
   ~ArticleView();
 
-
+  void load( QString url );
   /// Returns "gdfrom-" + dictionaryId.
   static QString scrollToFromDictionaryId( QString const & dictionaryId );
 
@@ -412,6 +415,7 @@ private:
   QString getMutedForGroup( unsigned group );
 
   QStringList getMutedDictionaries( unsigned group );
+  void setupWebview();
 };
 
 class ResourceToSaveHandler: public QObject

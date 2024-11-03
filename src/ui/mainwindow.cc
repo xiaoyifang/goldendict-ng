@@ -4370,12 +4370,14 @@ void MainWindow::showFTSIndexingName( QString const & name )
   }
 }
 
-void MainWindow::openWebsiteInNewTab( QString const & name, QString const & url )
+void MainWindow::openWebsiteInNewTab( QString name, QString url )
 {
   QString escaped = Utils::escapeAmps( name );
 
-  auto view = new QWebEngineView( this );
-  view->load( QUrl( url ) );
+  auto * view = new ArticleView( this, articleNetMgr, audioPlayerFactory.player(), cfg );
+
+  connect( view, &ArticleView::inspectSignal, this, &MainWindow::inspectElement );
+  view->load( url );
   int index = cfg.preferences.newTabsOpenAfterCurrentOne ? ui.tabWidget->currentIndex() + 1 : ui.tabWidget->count();
 
   ui.tabWidget->insertTab( index, view, escaped );
