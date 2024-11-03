@@ -515,9 +515,14 @@ void ArticleRequest::altSearchFinished()
       try {
         // if the dictionary is website dictionary and openinNewTab is enabled, emit a signal.
         if ( GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
-          if ( activeDict->getFeature() == Dictionary::WebSite ) {
+          if ( ( activeDict->getFeatures() | Dictionary::WebSite ) == Dictionary::WebSite ) {
             //todo ,replace the word with actual url
-            emit GlobalBroadcaster::instance() -> websiteDictionary( word, url );
+            string url = activeDict->getProperties()[ Dictionary::Property::Url ];
+            if ( url.empty() ) {
+              continue;
+            }
+            emit GlobalBroadcaster::instance()
+              -> websiteDictionary( QString::fromStdString( activeDict->getName() ), QString::fromStdString( url ) );
             continue;
           }
         }

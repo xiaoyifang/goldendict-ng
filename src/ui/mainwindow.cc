@@ -4371,6 +4371,7 @@ void MainWindow::openWebsiteInNewTab( QString const & name, QString const & url 
 
   auto view = new QWebEngineView( this );
   view->load( QUrl( url ) );
+  int index = cfg.preferences.newTabsOpenAfterCurrentOne ? ui.tabWidget->currentIndex() + 1 : ui.tabWidget->count();
 
   ui.tabWidget->insertTab( index, view, escaped );
   mruList.append( dynamic_cast< QWidget * >( view ) );

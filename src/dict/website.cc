@@ -54,7 +54,7 @@ public:
   map< Property, string > getProperties() noexcept override
   {
     map< Property, string > properties;
-    properties.insert( { Property::Url, urlTemplate_ } );
+    properties.insert( { Property::Url, urlTemplate.toStdString() } );
     return properties;
   }
 

@@ -47,7 +47,7 @@ signals:
 
   void indexingDictionary( QString );
 
-  void websiteDictionary( QString );
+  void websiteDictionary( QString, QString );
 };
 
 #endif // GLOBAL_GLOBALBROADCASTER_H
