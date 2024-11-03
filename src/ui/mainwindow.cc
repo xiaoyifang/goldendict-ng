@@ -2182,7 +2182,12 @@ void MainWindow::updateBackForwardButtons()
 void MainWindow::updatePronounceAvailability()
 {
   if ( ui.tabWidget->count() > 0 ) {
-    getCurrentArticleView()->hasSound( [ this ]( bool has ) {
+    ArticleView * pView = getCurrentArticleView();
+    if ( pView == nullptr ) {
+      return;
+    }
+
+    pView->hasSound( [ this ]( bool has ) {
       navPronounce->setEnabled( has );
     } );
   }

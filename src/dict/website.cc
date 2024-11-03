@@ -316,7 +316,7 @@ void WebSiteArticleRequest::requestFinished( QNetworkReply * r )
 
 sptr< DataRequest > WebSiteDictionary::getArticle( wstring const & str,
                                                    vector< wstring > const & /*alts*/,
-                                                   wstring const & context,
+                                                   wstring const & /*context*/,
                                                    bool /*ignoreDiacritics*/ )
 {
   QString urlString = Utils::WebSite::urlReplaceWord( QString( urlTemplate ), QString::fromStdU32String( str ) );
@@ -330,14 +330,14 @@ sptr< DataRequest > WebSiteDictionary::getArticle( wstring const & str,
     QUrl url( urlString );
     GlobalBroadcaster::instance()->addWhitelist( url.host() );
 
-    QString encodeUrl = encodeUrl = urlString;
+    const QString & encodeUrl = urlString;
 
-    if ( GlobalBroadcaster::instance()->getPreference()->openWebSiteInNewTab ) {
+    if ( GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
       result += string( "<div><span>this website dictionary is opened in the new tab</span></div>" );
     }
     else {
           fmt::format_to( std::back_inserter( result ),
-                    R"(<iframe id="gdexpandframe-{}" src="{}"
+                      R"(<iframe id="gdexpandframe-{}" src="{}"
 onmouseover="processIframeMouseOver('gdexpandframe-{}');"
 onmouseout="processIframeMouseOut();" scrolling="no"
 style="overflow:visible; width:100%; display:block; border:none;"
