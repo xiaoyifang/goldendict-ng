@@ -2173,7 +2173,7 @@ void MainWindow::updateBackForwardButtons()
 {
   ArticleView * view = getCurrentArticleView();
 
-  if ( view ) {
+  if ( view != nullptr ) {
     navBack->setEnabled( view->canGoBack() );
     navForward->setEnabled( view->canGoForward() );
   }
@@ -3714,7 +3714,13 @@ void MainWindow::messageFromAnotherInstanceReceived( QString const & message )
 ArticleView * MainWindow::getCurrentArticleView()
 {
   if ( QWidget * cw = ui.tabWidget->currentWidget() ) {
-    return dynamic_cast< ArticleView * >( cw );
+    auto * pView = dynamic_cast< ArticleView * >( cw );
+    if ( pView != nullptr ) {
+      if ( pView->getParentView() != nullptr ) {
+        return pView->getParentView();
+      }
+    }
+    return pView;
   }
   return nullptr;
 }
@@ -4375,7 +4381,7 @@ void MainWindow::openWebsiteInNewTab( QString name, QString url )
   QString escaped = Utils::escapeAmps( name );
 
   auto * view = new ArticleView( this, articleNetMgr, audioPlayerFactory.player(), cfg );
-
+  view->setParentView( getCurrentArticleView() );
   connect( view, &ArticleView::inspectSignal, this, &MainWindow::inspectElement );
   view->load( url );
   int index = cfg.preferences.newTabsOpenAfterCurrentOne ? ui.tabWidget->currentIndex() + 1 : ui.tabWidget->count();

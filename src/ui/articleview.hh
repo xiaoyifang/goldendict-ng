@@ -42,6 +42,8 @@ class ArticleView: public QWidget
   QWebChannel * channel;
   ArticleViewAgent * agent;
 
+  ArticleView * parentView;
+
   AnkiConnector * ankiConnector;
 
   QAction pasteAction, articleUpAction, articleDownAction, goBackAction, goForwardAction, selectCurrentArticleAction,
@@ -101,6 +103,15 @@ public:
                         AudioPlayerPtr const & audioPlayer_,
                         Config::Class const & cfg_ );
 
+  void setParentView( ArticleView * parentView_ )
+  {
+    parentView = parentView_;
+  }
+
+  ArticleView * getParentView()
+  {
+    return parentView;
+  }
   void setCurrentGroupId( unsigned currengGrgId );
   unsigned getCurrentGroupId();
 
