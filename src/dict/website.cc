@@ -336,15 +336,15 @@ sptr< DataRequest > WebSiteDictionary::getArticle( wstring const & str,
       result += string( "<div><span>this website dictionary is opened in the new tab</span></div>" );
     }
     else {
-          fmt::format_to( std::back_inserter( result ),
+      fmt::format_to( std::back_inserter( result ),
                       R"(<iframe id="gdexpandframe-{}" src="{}"
 onmouseover="processIframeMouseOver('gdexpandframe-{}');"
 onmouseout="processIframeMouseOut();" scrolling="no"
 style="overflow:visible; width:100%; display:block; border:none;"
 sandbox="allow-same-origin allow-scripts allow-popups"></iframe>)",
-                    getId(),
-                    encodeUrl.toStdString(),
-                    getId() );
+                      getId(),
+                      encodeUrl.toStdString(),
+                      getId() );
     }
     auto dr = std::make_shared< DataRequestInstant >( true );
     dr->appendString( result );
