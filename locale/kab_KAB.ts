@@ -86,7 +86,7 @@
     </message>
     <message>
       <source>(untitled)</source>
-      <translation type="unfinished">(untitled)</translation>
+      <translation>(war azwel)</translation>
     </message>
     <message>
       <source>(picture)</source>
@@ -101,7 +101,7 @@
     </message>
     <message>
       <source>From </source>
-      <translation type="unfinished">From </translation>
+      <translation>Seg </translation>
     </message>
     <message>
       <source>Collapse article</source>
@@ -156,7 +156,7 @@
     </message>
     <message>
       <source>Audio</source>
-      <translation type="unfinished">Audio</translation>
+      <translation>Ameslaw</translation>
     </message>
     <message>
       <source>TTS Voice</source>
@@ -941,7 +941,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Cancel</source>
-      <translation type="unfinished">Cancel</translation>
+      <translation>Sefsex</translation>
     </message>
     <message>
       <source>Help</source>
@@ -1161,7 +1161,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Please wait...</source>
-      <translation type="unfinished">Please wait...</translation>
+      <translation>Txil rǧu…</translation>
     </message>
     <message>
       <source>Indexing...</source>
@@ -1180,11 +1180,11 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Abkhazian</source>
-      <translation type="unfinished">Abkhazian</translation>
+      <translation>Tabxazit</translation>
     </message>
     <message>
       <source>Avestan</source>
-      <translation type="unfinished">Avestan</translation>
+      <translation>Tavestant</translation>
     </message>
     <message>
       <source>Afrikaans</source>
@@ -1244,15 +1244,15 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Bambara</source>
-      <translation type="unfinished">Bambara</translation>
+      <translation>Tabambarat</translation>
     </message>
     <message>
       <source>Bengali</source>
-      <translation type="unfinished">Bengali</translation>
+      <translation>Tabengalit</translation>
     </message>
     <message>
       <source>Tibetan</source>
-      <translation type="unfinished">Tibetan</translation>
+      <translation>Tatibitant</translation>
     </message>
     <message>
       <source>Breton</source>
@@ -1312,11 +1312,11 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Dzongkha</source>
-      <translation type="unfinished">Dzongkha</translation>
+      <translation>Tadzungat</translation>
     </message>
     <message>
       <source>Ewe</source>
-      <translation type="unfinished">Ewe</translation>
+      <translation>Tawit</translation>
     </message>
     <message>
       <source>Greek</source>
@@ -1344,11 +1344,11 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Persian</source>
-      <translation type="unfinished">Persian</translation>
+      <translation>Tafarsit</translation>
     </message>
     <message>
       <source>Fulah</source>
-      <translation type="unfinished">Fulah</translation>
+      <translation>Tafulaht</translation>
     </message>
     <message>
       <source>Finnish</source>
@@ -1372,7 +1372,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Irish</source>
-      <translation type="unfinished">Irish</translation>
+      <translation>Tirlandit</translation>
     </message>
     <message>
       <source>Scottish Gaelic</source>
@@ -1404,15 +1404,15 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Hindi</source>
-      <translation type="unfinished">Hindi</translation>
+      <translation>Tahendit</translation>
     </message>
     <message>
       <source>Hiri Motu</source>
-      <translation type="unfinished">Hiri Motu</translation>
+      <translation>Tahirimutut</translation>
     </message>
     <message>
       <source>Croatian</source>
-      <translation type="unfinished">Croatian</translation>
+      <translation>Takrwasit</translation>
     </message>
     <message>
       <source>Haitian</source>
@@ -1420,23 +1420,23 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Hungarian</source>
-      <translation type="unfinished">Hungarian</translation>
+      <translation>Tahungarit</translation>
     </message>
     <message>
       <source>Armenian</source>
-      <translation type="unfinished">Armenian</translation>
+      <translation>Taṛminit</translation>
     </message>
     <message>
       <source>Herero</source>
-      <translation type="unfinished">Herero</translation>
+      <translation>Tahirirut</translation>
     </message>
     <message>
       <source>Interlingua</source>
-      <translation type="unfinished">Interlingua</translation>
+      <translation>Tantirlingwat</translation>
     </message>
     <message>
       <source>Indonesian</source>
-      <translation type="unfinished">Indonesian</translation>
+      <translation>Tandunizit</translation>
     </message>
     <message>
       <source>Interlingue</source>
@@ -1460,15 +1460,15 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Icelandic</source>
-      <translation type="unfinished">Icelandic</translation>
+      <translation>Taslandit</translation>
     </message>
     <message>
       <source>Italian</source>
-      <translation type="unfinished">Italian</translation>
+      <translation>Taṭelyanit</translation>
     </message>
     <message>
       <source>Inuktitut</source>
-      <translation type="unfinished">Inuktitut</translation>
+      <translation>Tinuktitut</translation>
     </message>
     <message>
       <source>Japanese</source>
@@ -1480,23 +1480,23 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Georgian</source>
-      <translation type="unfinished">Georgian</translation>
+      <translation>Tajyurjit</translation>
     </message>
     <message>
       <source>Kongo</source>
-      <translation type="unfinished">Kongo</translation>
+      <translation>Takungut</translation>
     </message>
     <message>
       <source>Kikuyu</source>
-      <translation type="unfinished">Kikuyu</translation>
+      <translation>Takikuyut</translation>
     </message>
     <message>
       <source>Kwanyama</source>
-      <translation type="unfinished">Kwanyama</translation>
+      <translation>Takwanyamat</translation>
     </message>
     <message>
       <source>Kazakh</source>
-      <translation type="unfinished">Kazakh</translation>
+      <translation>Takazaxt</translation>
     </message>
     <message>
       <source>Kalaallisut</source>
@@ -1512,27 +1512,27 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Korean</source>
-      <translation type="unfinished">Korean</translation>
+      <translation>Takurit</translation>
     </message>
     <message>
       <source>Kanuri</source>
-      <translation type="unfinished">Kanuri</translation>
+      <translation>Takanurit</translation>
     </message>
     <message>
       <source>Kashmiri</source>
-      <translation type="unfinished">Kashmiri</translation>
+      <translation>Takacmirit</translation>
     </message>
     <message>
       <source>Kurdish</source>
-      <translation type="unfinished">Kurdish</translation>
+      <translation>Takurdit</translation>
     </message>
     <message>
       <source>Komi</source>
-      <translation type="unfinished">Komi</translation>
+      <translation>Takumit</translation>
     </message>
     <message>
       <source>Cornish</source>
-      <translation type="unfinished">Cornish</translation>
+      <translation>Takurnikt</translation>
     </message>
     <message>
       <source>Kirghiz</source>
@@ -1628,11 +1628,11 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Nepali</source>
-      <translation type="unfinished">Nepali</translation>
+      <translation>Tanipalit</translation>
     </message>
     <message>
       <source>Ndonga</source>
-      <translation type="unfinished">Ndonga</translation>
+      <translation>Tandungat</translation>
     </message>
     <message>
       <source>Dutch</source>
@@ -1644,7 +1644,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Norwegian</source>
-      <translation type="unfinished">Norwegian</translation>
+      <translation>Tanurvijit</translation>
     </message>
     <message>
       <source>South Ndebele</source>
@@ -1696,11 +1696,11 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Portuguese</source>
-      <translation type="unfinished">Portuguese</translation>
+      <translation>Tapurtugit</translation>
     </message>
     <message>
       <source>Quechua</source>
-      <translation type="unfinished">Quechua</translation>
+      <translation>Takicwat</translation>
     </message>
     <message>
       <source>Raeto-Romance</source>
@@ -1712,7 +1712,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Romanian</source>
-      <translation type="unfinished">Romanian</translation>
+      <translation>Tarumanit</translation>
     </message>
     <message>
       <source>Russian</source>
@@ -1752,35 +1752,35 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Slovak</source>
-      <translation type="unfinished">Slovak</translation>
+      <translation>Tasluvakt</translation>
     </message>
     <message>
       <source>Slovenian</source>
-      <translation type="unfinished">Slovenian</translation>
+      <translation>Tasluvinit</translation>
     </message>
     <message>
       <source>Samoan</source>
-      <translation type="unfinished">Samoan</translation>
+      <translation>Tasamwant</translation>
     </message>
     <message>
       <source>Shona</source>
-      <translation type="unfinished">Shona</translation>
+      <translation>Tacunat</translation>
     </message>
     <message>
       <source>Somali</source>
-      <translation type="unfinished">Somali</translation>
+      <translation>Tasumalit</translation>
     </message>
     <message>
       <source>Albanian</source>
-      <translation type="unfinished">Albanian</translation>
+      <translation>Talbanit</translation>
     </message>
     <message>
       <source>Serbian</source>
-      <translation type="unfinished">Serbian</translation>
+      <translation>Taṣirbit</translation>
     </message>
     <message>
       <source>Swati</source>
-      <translation type="unfinished">Swati</translation>
+      <translation>Taswatit</translation>
     </message>
     <message>
       <source>Southern Sotho</source>
@@ -1792,27 +1792,27 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Swedish</source>
-      <translation type="unfinished">Swedish</translation>
+      <translation>Taswidit</translation>
     </message>
     <message>
       <source>Swahili</source>
-      <translation type="unfinished">Swahili</translation>
+      <translation>Taswahilit</translation>
     </message>
     <message>
       <source>Tamil</source>
-      <translation type="unfinished">Tamil</translation>
+      <translation>Taṭamilit</translation>
     </message>
     <message>
       <source>Telugu</source>
-      <translation type="unfinished">Telugu</translation>
+      <translation>Tatilugut</translation>
     </message>
     <message>
       <source>Tajik</source>
-      <translation type="unfinished">Tajik</translation>
+      <translation>Tatajikt</translation>
     </message>
     <message>
       <source>Thai</source>
-      <translation type="unfinished">Thai</translation>
+      <translation>Taṭaylandit</translation>
     </message>
     <message>
       <source>Tigrinya</source>
@@ -1836,7 +1836,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Turkish</source>
-      <translation type="unfinished">Turkish</translation>
+      <translation>Taṭurkit</translation>
     </message>
     <message>
       <source>Tsonga</source>
@@ -1860,19 +1860,19 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Ukrainian</source>
-      <translation type="unfinished">Ukrainian</translation>
+      <translation>Tukranit</translation>
     </message>
     <message>
       <source>Urdu</source>
-      <translation type="unfinished">Urdu</translation>
+      <translation>Turdut</translation>
     </message>
     <message>
       <source>Uzbek</source>
-      <translation type="unfinished">Uzbek</translation>
+      <translation>Tuzbikt</translation>
     </message>
     <message>
       <source>Venda</source>
-      <translation type="unfinished">Venda</translation>
+      <translation>Tavendat</translation>
     </message>
     <message>
       <source>Vietnamese</source>
@@ -1912,11 +1912,11 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Zulu</source>
-      <translation type="unfinished">Zulu</translation>
+      <translation>Tazulut</translation>
     </message>
     <message>
       <source>Lojban</source>
-      <translation type="unfinished">Lojban</translation>
+      <translation>Talujbant</translation>
     </message>
     <message>
       <source>Traditional Chinese</source>
@@ -2027,11 +2027,11 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Lithuanian</source>
-      <translation type="unfinished">Lithuanian</translation>
+      <translation>Taliṭwanit</translation>
     </message>
     <message>
       <source>Macedonian</source>
-      <translation type="unfinished">Macedonian</translation>
+      <translation>Tamasidunt</translation>
     </message>
     <message>
       <source>Dutch</source>
@@ -2039,7 +2039,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Polish</source>
-      <translation type="unfinished">Polish</translation>
+      <translation>Tapulandit</translation>
     </message>
     <message>
       <source>Portuguese</source>
@@ -2055,7 +2055,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Albanian</source>
-      <translation type="unfinished">Albanian</translation>
+      <translation>Talbanit</translation>
     </message>
     <message>
       <source>Serbian (Cyrillic)</source>
@@ -2091,7 +2091,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Persian</source>
-      <translation type="unfinished">Persian</translation>
+      <translation>Tafarsit</translation>
     </message>
     <message>
       <source>Spanish, Argentina</source>
@@ -2115,23 +2115,23 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Tajik</source>
-      <translation type="unfinished">Tajik</translation>
+      <translation>Tatajikt</translation>
     </message>
     <message>
       <source>Quechua</source>
-      <translation type="unfinished">Quechua</translation>
+      <translation>Takicwat</translation>
     </message>
     <message>
       <source>Aymara</source>
-      <translation type="unfinished">Aymara</translation>
+      <translation>Taymarat</translation>
     </message>
     <message>
       <source>Arabic, Saudi Arabia</source>
-      <translation type="unfinished">Arabic, Saudi Arabia</translation>
+      <translation>Taɛrabt, Suɛudiya Taɛrabt</translation>
     </message>
     <message>
       <source>Turkmen</source>
-      <translation type="unfinished">Turkmen</translation>
+      <translation>Taturkmant</translation>
     </message>
     <message>
       <source>Interlingue</source>
@@ -2147,7 +2147,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>English</source>
-      <translation type="unfinished">English</translation>
+      <translation>Taglizit</translation>
     </message>
   </context>
   <context>
