@@ -110,8 +110,9 @@ void ArticleView::setupWebview()
   this->tabWidget = new QTabWidget( this );
   baseLayout->addWidget( this->tabWidget );
 
+  QWidget * tab1 = new QWidget( tabWidget );
   // Layout
-  auto * mainLayout = new QVBoxLayout( tabWidget );
+  auto * mainLayout = new QVBoxLayout( tab1 );
   mainLayout->addWidget( this->webview );
   mainLayout->addWidget( this->ftsSearchPanel );
   mainLayout->addWidget( this->searchPanel );
@@ -122,7 +123,7 @@ void ArticleView::setupWebview()
 
   mainLayout->setContentsMargins( 0, 0, 0, 0 );
 
-  this->tabWidget->addTab( mainLayout, "Dictionaries" );
+  this->tabWidget->addTab( tab1, "Dictionaries" );
   this->tabWidget->setTabBarAutoHide( true );
 
   // end UI setup
