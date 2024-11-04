@@ -915,9 +915,9 @@ QString DictGroupsWidget::getCurrentGroupName() const
   const int current = currentIndex();
 
   if ( current >= 0 ) {
-    auto widget = dynamic_cast< DictGroupWidget & >( *widget( x ) );
+    auto w = dynamic_cast< DictGroupWidget & >( *widget( x ) );
 
-    return widget.name();
+    return w.name();
   }
 
   return {};
@@ -928,8 +928,8 @@ void DictGroupsWidget::renameCurrentGroup( QString const & name )
   const int current = currentIndex();
 
   if ( current >= 0 ) {
-    auto widget = dynamic_cast< DictGroupWidget & >( *widget( x ) );
-    widget->setName( name );
+    auto w = dynamic_cast< DictGroupWidget & >( *widget( x ) );
+    w->setName( name );
     setTabText( current, Utils::escapeAmps( name ) );
   }
 }
