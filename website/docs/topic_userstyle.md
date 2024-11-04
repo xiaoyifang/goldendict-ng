@@ -27,6 +27,8 @@ Folder structure like below will create two “addon” styles to switch in sett
 ```
 .    <- GD's configuration folder
 ├── config
+└── article-style.css
+└── article-script.js
 └── styles
     ├── dark
     │   ├── article-style.css
