@@ -29,7 +29,8 @@ DictGroupWidget::DictGroupWidget( QWidget * parent,
                                   vector< sptr< Dictionary::Class > > const & dicts,
                                   Config::Group const & group ):
   QWidget( parent ),
-  groupId( group.id )
+  groupId( group.id ),
+  groupName( group.name )
 {
   ui.setupUi( this );
   ui.dictionaries->populate( Instances::Group( group, dicts, Config::Group() ).dictionaries, dicts );
@@ -139,6 +140,7 @@ Config::Group DictGroupWidget::makeGroup() const
 
   g.favoritesFolder = ui.favoritesFolder->text().replace( '\\', '/' );
 
+  g.name = groupName;
   return g.makeConfigGroup();
 }
 
@@ -558,8 +560,7 @@ void DictGroupsWidget::populate( Config::Groups const & groups,
     connect( gr, &DictGroupWidget::showDictionaryInfo, this, &DictGroupsWidget::showDictionaryInfo );
     connect( gr->getModel(), &DictListModel::contentChanged, this, &DictGroupsWidget::tabDataChanged );
 
-    QString toolTipStr =
-      "\"" + tabText( x ) + "\"\n" + tr( "Dictionaries: " ) + QString::number( getDictionaryCountAt( x ) );
+    QString toolTipStr = tr( "Dictionaries: " ) + QString::number( getDictionaryCountAt( x ) );
     setTabToolTip( x, toolTipStr );
   }
 
@@ -577,7 +578,6 @@ Config::Groups DictGroupsWidget::makeGroups() const
 
   for ( int x = 0; x < count(); ++x ) {
     result.push_back( dynamic_cast< DictGroupWidget & >( *widget( x ) ).makeGroup() );
-    result.back().name = Utils::unescapeAmps( tabText( x ) );
   }
 
   return result;
@@ -655,8 +655,7 @@ int DictGroupsWidget::addNewGroup( QString const & name )
 
   connect( gr->getModel(), &DictListModel::contentChanged, this, &DictGroupsWidget::tabDataChanged );
 
-  const QString toolTipStr =
-    "\"" + tabText( idx ) + "\"\n" + tr( "Dictionaries: " ) + QString::number( getDictionaryCountAt( idx ) );
+  const QString toolTipStr = tr( "Dictionaries: " ) + QString::number( getDictionaryCountAt( idx ) );
   setTabToolTip( idx, toolTipStr );
   return idx;
 }
@@ -916,7 +915,9 @@ QString DictGroupsWidget::getCurrentGroupName() const
   const int current = currentIndex();
 
   if ( current >= 0 ) {
-    return Utils::unescapeAmps( tabText( current ) );
+    auto widget = dynamic_cast< DictGroupWidget & >( *widget( x ) );
+   
+    return widget.name();
   }
 
   return {};
@@ -927,6 +928,8 @@ void DictGroupsWidget::renameCurrentGroup( QString const & name )
   const int current = currentIndex();
 
   if ( current >= 0 ) {
+    auto widget = dynamic_cast< DictGroupWidget & >( *widget( x ) );
+    widget->setName( name );
     setTabText( current, Utils::escapeAmps( name ) );
   }
 }
@@ -971,7 +974,7 @@ void DictGroupsWidget::combineGroups( int source, int target )
 
   connect( model, &DictListModel::contentChanged, this, &DictGroupsWidget::tabDataChanged );
 
-  const QString toolTipStr = "\"" + tabText( target ) + "\"\n" + tr( "Dictionaries: " )
+  const QString toolTipStr = tr( "Dictionaries: " )
     + QString::number( model->getCurrentDictionaries().size() );
   setTabToolTip( target, toolTipStr );
 }
@@ -1124,7 +1127,7 @@ void DictGroupsWidget::contextMenu( QPoint const & pos )
 
 void DictGroupsWidget::tabDataChanged()
 {
-  const QString toolTipStr = "\"" + tabText( currentIndex() ) + "\"\n" + tr( "Dictionaries: " )
+  const QString toolTipStr = tr( "Dictionaries: " )
     + QString::number( getCurrentModel()->getCurrentDictionaries().size() );
   setTabToolTip( currentIndex(), toolTipStr );
 }

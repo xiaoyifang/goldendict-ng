@@ -136,6 +136,14 @@ public:
     return ui.dictionaries->selectionModel();
   }
 
+  QString name(){
+    return groupName;
+  }
+
+  void setName( const QString & name ){
+    groupName = name;
+  }
+
 private slots:
 
   void groupIconActivated( int );
@@ -145,6 +153,7 @@ private slots:
 private:
   Ui::DictGroupWidget ui;
   unsigned groupId;
+  QString groupName;
 
 signals:
   void showDictionaryInfo( QString const & id );
