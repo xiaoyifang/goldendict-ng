@@ -68,8 +68,7 @@ void Groups::rebuild( vector< sptr< Dictionary::Class > > const & dicts_,
                       Config::Groups const & groups_,
                       Config::Group const & order )
 {
-
-  setUpdatesEnabled( false );
+  this->setUpdatesEnabled( false );
   dicts  = dicts_;
   groups = groups_;
 
@@ -83,7 +82,7 @@ void Groups::rebuild( vector< sptr< Dictionary::Class > > const & dicts_,
   ui.groups->populate( groups, dicts, ui.dictionaries->getCurrentDictionaries() );
 
   countChanged();
-  setUpdatesEnabled( true );
+  this->setUpdatesEnabled( true );
 }
 
 void Groups::editGroup( unsigned id )

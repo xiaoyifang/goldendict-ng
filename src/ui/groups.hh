@@ -18,7 +18,7 @@ public:
           std::vector< sptr< Dictionary::Class > > const &,
           Config::Groups const &,
           Config::Group const & order );
-  void rebuild( vector< sptr< Dictionary::Class > > const & dicts_,
+  void rebuild( std::vector< sptr< Dictionary::Class > > const & dicts_,
                 Config::Groups const & groups_,
                 Config::Group const & order );
   /// Instructs the dialog to position itself on editing the given group.
@@ -33,7 +33,7 @@ public:
 
 private:
   Ui::Groups ui;
-  std::vector< sptr< Dictionary::Class > > const & dicts;
+  std::vector< sptr< Dictionary::Class > > dicts;
   Config::Groups groups;
 
   QToolButton * groupsListButton;
