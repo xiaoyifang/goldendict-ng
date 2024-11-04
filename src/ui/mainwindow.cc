@@ -4376,18 +4376,16 @@ void MainWindow::showFTSIndexingName( QString const & name )
   }
 }
 
-void MainWindow::openWebsiteInNewTab( QString name, QString url )
-{
-  QString escaped = Utils::escapeAmps( name );
+void MainWindow::openWebsiteInNewTab( QString name, QString url ){
+  // QString escaped = Utils::escapeAmps( name );
 
-  auto * view = new ArticleView( this, articleNetMgr, audioPlayerFactory.player(), cfg );
-  view->setParentView( getCurrentArticleView() );
-  connect( view, &ArticleView::inspectSignal, this, &MainWindow::inspectElement );
-  view->load( url );
-  int index = cfg.preferences.newTabsOpenAfterCurrentOne ? ui.tabWidget->currentIndex() + 1 : ui.tabWidget->count();
+  // auto * view = new ArticleView( this, articleNetMgr, audioPlayerFactory.player(), cfg );
+  // view->load( url );
+  // int index = cfg.preferences.newTabsOpenAfterCurrentOne ? ui.tabWidget->currentIndex() + 1 : ui.tabWidget->count();
 
-  ui.tabWidget->insertTab( index, view, escaped );
-  mruList.append( dynamic_cast< QWidget * >( view ) );
+  // ui.tabWidget->insertTab( index, view, escaped );
+  // mruList.append( dynamic_cast< QWidget * >( view ) );
+  getCurrentArticleView()->addWebsiteTab( name, url );
 }
 
 QString MainWindow::unescapeTabHeader( QString const & header )

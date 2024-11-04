@@ -104,8 +104,14 @@ void ArticleView::setupWebview()
   this->searchPanel    = new SearchPanel( this );
   this->searchPanel->hide();
   this->ftsSearchPanel->hide();
+
+  auto * baseLayout = new QVBoxLayout( this );
+
+  this->tabWidget = new QTabWidget( this );
+  baseLayout->addWidget( this->tabWidget );
+
   // Layout
-  auto * mainLayout = new QVBoxLayout( this );
+  auto * mainLayout = new QVBoxLayout( tabWidget );
   mainLayout->addWidget( this->webview );
   mainLayout->addWidget( this->ftsSearchPanel );
   mainLayout->addWidget( this->searchPanel );
@@ -116,7 +122,10 @@ void ArticleView::setupWebview()
 
   mainLayout->setContentsMargins( 0, 0, 0, 0 );
 
-  // end UI setup
+  this->tabWidget->addTab( mainLayout, "Dictionaries" );
+  this->tabWidget->setTabBarAutoHide( true );
+
+    // end UI setup
 
   connect( this->searchPanel->previous, &QPushButton::clicked, this, &ArticleView::on_searchPrevious_clicked );
   connect( this->searchPanel->next, &QPushButton::clicked, this, &ArticleView::on_searchNext_clicked );
@@ -1251,6 +1260,16 @@ void ArticleView::syncBackgroundColorWithCfgDarkReader() const
     webview->page()->setBackgroundColor( Qt::white );
   }
 #endif
+}
+
+void ArticleView::openWebsiteInNewTab( QString name, QString url ) {
+  QString escaped = Utils::escapeAmps( name );
+
+//found existed QWebEngineView.
+  auto * view = new QWebEngineView( this );
+  view->load( QUrl(url) );
+
+  tabWidget->addTab( view, escaped );
 }
 
 
