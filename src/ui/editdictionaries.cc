@@ -209,9 +209,6 @@ void EditDictionaries::acceptChangedSources( bool rebuildGroups )
 
   loadDictionaries( this, cfg, dictionaries, dictNetMgr );
 
-  Instances::updateNames( savedGroups, dictionaries );
-  Instances::updateNames( savedOrder, dictionaries );
-  Instances::updateNames( savedInactive, dictionaries );
 
   if ( rebuildGroups ) {
     // ui.tabs->removeTab( 1 );
