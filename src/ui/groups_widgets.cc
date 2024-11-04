@@ -648,6 +648,7 @@ int DictGroupsWidget::addNewGroup( QString const & name )
   Config::Group newGroup;
 
   newGroup.id = nextId++;
+  newGroup.name = name;
 
   const auto gr = new DictGroupWidget( this, *allDicts, newGroup );
   const int idx = insertTab( currentIndex() + 1, gr, Utils::escapeAmps( name ) );
@@ -909,15 +910,13 @@ void DictGroupsWidget::groupsByMetadata()
   addGroupBasedOnMap( groupToDicts );
 }
 
-
 QString DictGroupsWidget::getCurrentGroupName() const
 {
   const int current = currentIndex();
 
   if ( current >= 0 ) {
-    auto w = dynamic_cast< DictGroupWidget & >( *widget( current ) );
-
-    return w.name();
+    auto * w = dynamic_cast< DictGroupWidget * >( widget( current ) );
+    return w->name();
   }
 
   return {};
@@ -928,7 +927,7 @@ void DictGroupsWidget::renameCurrentGroup( QString const & name )
   const int current = currentIndex();
 
   if ( current >= 0 ) {
-    auto w = dynamic_cast< DictGroupWidget & >( *widget( current ) );
+    auto * w = dynamic_cast< DictGroupWidget * >( widget( current ) );
     w->setName( name );
     setTabText( current, Utils::escapeAmps( name ) );
   }

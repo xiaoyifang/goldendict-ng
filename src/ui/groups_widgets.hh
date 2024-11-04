@@ -121,9 +121,6 @@ class DictGroupWidget: public QWidget
 public:
   DictGroupWidget( QWidget * parent, std::vector< sptr< Dictionary::Class > > const &, Config::Group const & );
 
-  /// Makes the group's configuration out of the data currently held.
-  /// Since the group's name is not part of the widget by design right now
-  /// (it is known by the containing tab widget only), it is returned as empty.
   Config::Group makeGroup() const;
 
   DictListModel * getModel() const
