@@ -136,11 +136,13 @@ public:
     return ui.dictionaries->selectionModel();
   }
 
-  QString name(){
+  QString name()
+  {
     return groupName;
   }
 
-  void setName( const QString & name ){
+  void setName( const QString & name )
+  {
     groupName = name;
   }
 

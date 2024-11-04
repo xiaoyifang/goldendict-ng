@@ -916,7 +916,7 @@ QString DictGroupsWidget::getCurrentGroupName() const
 
   if ( current >= 0 ) {
     auto widget = dynamic_cast< DictGroupWidget & >( *widget( x ) );
-   
+
     return widget.name();
   }
 
@@ -974,8 +974,7 @@ void DictGroupsWidget::combineGroups( int source, int target )
 
   connect( model, &DictListModel::contentChanged, this, &DictGroupsWidget::tabDataChanged );
 
-  const QString toolTipStr = tr( "Dictionaries: " )
-    + QString::number( model->getCurrentDictionaries().size() );
+  const QString toolTipStr = tr( "Dictionaries: " ) + QString::number( model->getCurrentDictionaries().size() );
   setTabToolTip( target, toolTipStr );
 }
 
@@ -1127,8 +1126,8 @@ void DictGroupsWidget::contextMenu( QPoint const & pos )
 
 void DictGroupsWidget::tabDataChanged()
 {
-  const QString toolTipStr = tr( "Dictionaries: " )
-    + QString::number( getCurrentModel()->getCurrentDictionaries().size() );
+  const QString toolTipStr =
+    tr( "Dictionaries: " ) + QString::number( getCurrentModel()->getCurrentDictionaries().size() );
   setTabToolTip( currentIndex(), toolTipStr );
 }
 
