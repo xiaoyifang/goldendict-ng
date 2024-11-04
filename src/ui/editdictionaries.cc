@@ -183,9 +183,9 @@ void EditDictionaries::acceptChangedSources( bool rebuildGroups )
 {
   dictionariesChanged = true;
 
-  Config::Groups savedGroups  = groups->getGroups();
-  Config::Group savedOrder    = orderAndProps->getCurrentDictionaryOrder();
-  Config::Group savedInactive = orderAndProps->getCurrentInactiveDictionaries();
+  Config::Groups savedGroups  = cfg.groups;
+  Config::Group savedOrder    = cfg.dictionaryOrder;
+  Config::Group savedInactive = cfg.inactiveDictionaries;
 
   cfg.paths           = sources.getPaths();
   cfg.soundDirs       = sources.getSoundDirs();
