@@ -125,7 +125,7 @@ void ArticleView::setupWebview()
   this->tabWidget->addTab( mainLayout, "Dictionaries" );
   this->tabWidget->setTabBarAutoHide( true );
 
-    // end UI setup
+  // end UI setup
 
   connect( this->searchPanel->previous, &QPushButton::clicked, this, &ArticleView::on_searchPrevious_clicked );
   connect( this->searchPanel->next, &QPushButton::clicked, this, &ArticleView::on_searchNext_clicked );
@@ -1262,12 +1262,13 @@ void ArticleView::syncBackgroundColorWithCfgDarkReader() const
 #endif
 }
 
-void ArticleView::openWebsiteInNewTab( QString name, QString url ) {
+void ArticleView::openWebsiteInNewTab( QString name, QString url )
+{
   QString escaped = Utils::escapeAmps( name );
 
-//found existed QWebEngineView.
+  //found existed QWebEngineView.
   auto * view = new QWebEngineView( this );
-  view->load( QUrl(url) );
+  view->load( QUrl( url ) );
 
   tabWidget->addTab( view, escaped );
 }

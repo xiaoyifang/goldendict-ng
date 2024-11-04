@@ -4376,7 +4376,8 @@ void MainWindow::showFTSIndexingName( QString const & name )
   }
 }
 
-void MainWindow::openWebsiteInNewTab( QString name, QString url ){
+void MainWindow::openWebsiteInNewTab( QString name, QString url )
+{
   // QString escaped = Utils::escapeAmps( name );
 
   // auto * view = new ArticleView( this, articleNetMgr, audioPlayerFactory.player(), cfg );
