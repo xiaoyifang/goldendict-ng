@@ -315,7 +315,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( QString const &
                                                true );
   }
 
-  if ( groupId == Instances::Group::HelpGroupId ) {
+  if ( groupId == GroupId::HelpGroupId ) {
     if ( word == tr( "Welcome!" ) ) {
       string welcome                           = makeWelcomeHtml();
       sptr< Dictionary::DataRequestInstant > r = std::make_shared< Dictionary::DataRequestInstant >( true );

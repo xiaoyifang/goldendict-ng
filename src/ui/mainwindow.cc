@@ -553,7 +553,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // Dictionary bar
 
   Instances::Group const * igrp = groupInstances.findGroup( cfg.lastMainGroupId );
-  if ( cfg.lastMainGroupId == Instances::Group::AllGroupId ) {
+  if ( cfg.lastMainGroupId == GroupId::AllGroupId ) {
     if ( igrp ) {
       igrp->checkMutedDictionaries( &cfg.mutedDictionaries );
     }
@@ -776,7 +776,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   addNewTab();
   ArticleView * view = getCurrentArticleView();
   history.enableAdd( false );
-  view->showDefinition( tr( "Welcome!" ), Instances::Group::HelpGroupId );
+  view->showDefinition( tr( "Welcome!" ), GroupId::HelpGroupId );
   history.enableAdd( cfg.preferences.storeHistory );
 
   // restore should be called after all UI initialized but not necessarily after show()
@@ -1640,7 +1640,7 @@ void MainWindow::updateGroupList( bool reload )
                                           dictionaries );
 
     g.name = tr( "All" );
-    g.id   = Instances::Group::AllGroupId;
+    g.id   = GroupId::AllGroupId;
     g.icon = "folder.png";
 
     groupInstances.push_back( g );
@@ -1685,7 +1685,7 @@ void MainWindow::updateDictionaryBar()
 
   dictionaryBar.setMutedDictionaries( nullptr );
   if ( grp ) { // Should always be !0, but check as a safeguard
-    if ( currentId == Instances::Group::AllGroupId ) {
+    if ( currentId == GroupId::AllGroupId ) {
       dictionaryBar.setMutedDictionaries( &cfg.mutedDictionaries );
     }
     else {
@@ -2205,7 +2205,7 @@ void MainWindow::editDictionaries( unsigned editDictionaryGroup )
 
     connect( &dicts, &EditDictionaries::showDictionaryHeadwords, this, &MainWindow::showDictionaryHeadwords );
 
-    if ( editDictionaryGroup != Instances::Group::NoGroupId ) {
+    if ( editDictionaryGroup != GroupId::NoGroupId ) {
       dicts.editGroup( editDictionaryGroup );
     }
 
@@ -2219,7 +2219,7 @@ void MainWindow::editDictionaries( unsigned editDictionaryGroup )
       // Set muted dictionaries from old groups
       for ( auto & group : newCfg.groups ) {
         unsigned id = group.id;
-        if ( id != Instances::Group::NoGroupId ) {
+        if ( id != GroupId::NoGroupId ) {
           Config::Group const * grp = cfg.getGroup( id );
           if ( grp ) {
             group.mutedDictionaries      = grp->mutedDictionaries;
@@ -2373,7 +2373,7 @@ void MainWindow::currentGroupChanged( int )
   unsigned grg_id               = groupList->getCurrentGroup();
   cfg.lastMainGroupId           = grg_id;
   Instances::Group const * igrp = groupInstances.findGroup( grg_id );
-  if ( grg_id == Instances::Group::AllGroupId ) {
+  if ( grg_id == GroupId::AllGroupId ) {
     if ( igrp ) {
       igrp->checkMutedDictionaries( &cfg.mutedDictionaries );
     }

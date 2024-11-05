@@ -140,7 +140,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   dictionaryBar.setFloatable( false );
 
   Instances::Group const * igrp = groups.findGroup( cfg.lastPopupGroupId );
-  if ( cfg.lastPopupGroupId == Instances::Group::AllGroupId ) {
+  if ( cfg.lastPopupGroupId == GroupId::AllGroupId ) {
     if ( igrp ) {
       igrp->checkMutedDictionaries( &cfg.popupMutedDictionaries );
     }
@@ -591,7 +591,7 @@ void ScanPopup::currentGroupChanged( int )
 {
   cfg.lastPopupGroupId          = ui.groupList->getCurrentGroup();
   Instances::Group const * igrp = groups.findGroup( cfg.lastPopupGroupId );
-  if ( cfg.lastPopupGroupId == Instances::Group::AllGroupId ) {
+  if ( cfg.lastPopupGroupId == GroupId::AllGroupId ) {
     if ( igrp ) {
       igrp->checkMutedDictionaries( &cfg.popupMutedDictionaries );
     }
@@ -1086,7 +1086,7 @@ void ScanPopup::updateDictionaryBar()
     dictionaryBar.setDictionaries( grp->dictionaries );
   }
 
-  if ( currentId == Instances::Group::AllGroupId ) {
+  if ( currentId == GroupId::AllGroupId ) {
     dictionaryBar.setMutedDictionaries( &cfg.popupMutedDictionaries );
   }
   else {

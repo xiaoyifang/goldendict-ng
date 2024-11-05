@@ -18,6 +18,13 @@
 #include <optional>
 #include <QThread>
 
+/// Special group IDs
+enum GroupId : unsigned {
+  AllGroupId  = UINT_MAX - 1, /// The 'All' group
+  HelpGroupId = UINT_MAX,     /// The fictitious 'Help' group
+  NoGroupId   = 0,            /// Invalid value, used to specify that no group id is specified at all.
+};
+
 /// GoldenDict's configuration
 namespace Config {
 

@@ -74,7 +74,7 @@ void EditDictionaries::editGroup( unsigned id )
 {
   ui.tabs->setTabVisible( 0, false );
 
-  if ( id == Instances::Group::AllGroupId ) {
+  if ( id == GroupId::AllGroupId ) {
     ui.tabs->setCurrentIndex( 1 );
   }
   else {
