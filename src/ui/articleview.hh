@@ -104,7 +104,7 @@ public:
   void setAudioLink( QString audioLink );
   QString getAudioLink() const;
 
-  virtual QSize minimumSizeHint() const;
+  QSize minimumSizeHint() const override;
   void clearContent();
 
   ~ArticleView();

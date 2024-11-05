@@ -107,7 +107,7 @@ public:
                        string const & dictionaryId_,
                        QNetworkAccessManager & mgr );
 
-  virtual void cancel();
+  void cancel() override;
 
 private:
 
