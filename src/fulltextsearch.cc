@@ -494,7 +494,7 @@ void FullTextSearchDialog::updateDictionaries()
   Config::Group const * grp = cfg.getGroup( group );
   Config::MutedDictionaries const * mutedDicts;
 
-  if ( group == Instances::Group::AllGroupId ) {
+  if ( group == GroupId::AllGroupId ) {
     mutedDicts = &cfg.mutedDictionaries;
   }
   else {

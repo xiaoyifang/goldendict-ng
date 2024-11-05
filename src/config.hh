@@ -18,6 +18,17 @@
 #include <optional>
 #include <QThread>
 
+namespace GroupId {
+/// The id of the 'All' group
+static const unsigned AllGroupId = UINT_MAX - 1;
+
+/// The id of the fictious 'Help' group
+static const unsigned HelpGroupId = UINT_MAX;
+
+/// Invalid value, used to specify that no group id is specified at all.
+static const unsigned NoGroupId = 0;
+} // namespace GroupId
+
 /// GoldenDict's configuration
 namespace Config {
 
