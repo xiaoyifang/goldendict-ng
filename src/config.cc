@@ -105,15 +105,18 @@ AnkiConnectServer::AnkiConnectServer():
 HotKey::HotKey( QKeySequence const & seq ):
   modifiers( seq[ 0 ].keyboardModifiers() ),
   key1( seq[ 0 ].key() ),
-  key2( seq[ 1 ].key() ) {}
+  key2( seq[ 1 ].key() )
+{
+}
 
 QKeySequence HotKey::toKeySequence() const
 {
   if ( key2 != 0 || key2 != Qt::Key::Key_unknown ) {
-    return {QKeyCombination( modifiers, static_cast< Qt::Key >(key1) ),
-            QKeyCombination( modifiers, static_cast< Qt::Key >(key2) )};
+    return { QKeyCombination( modifiers, static_cast< Qt::Key >( key1 ) ),
+             QKeyCombination( modifiers, static_cast< Qt::Key >( key2 ) ) };
   }
-  return {QKeyCombination( modifiers, static_cast< Qt::Key >(key1) )};;
+  return { QKeyCombination( modifiers, static_cast< Qt::Key >( key1 ) ) };
+  ;
 }
 
 
