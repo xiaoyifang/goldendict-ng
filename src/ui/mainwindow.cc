@@ -2331,7 +2331,6 @@ void MainWindow::editPreferences()
     // After this point, p must not be accessed.
     cfg.preferences = p;
 
-
     // Loop through all tabs and reload pages due to ArticleMaker's change.
     for ( int x = 0; x < ui.tabWidget->count(); ++x ) {
       auto & view = dynamic_cast< ArticleView & >( *( ui.tabWidget->widget( x ) ) );
