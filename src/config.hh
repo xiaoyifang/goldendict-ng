@@ -17,7 +17,6 @@
 #include <QLocale>
 #include <optional>
 #include <QThread>
-#include <signal.h>
 
 /// Special group IDs
 enum GroupId : unsigned {
