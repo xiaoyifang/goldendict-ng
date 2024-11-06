@@ -12,3 +12,6 @@ b5349478cfb0dc2dd0de8c8e8aeebdd24cf7ac6b
 
 # mass apply clang-tidy's readability-braces-around-statements
 a11c9e3aeca4329e1982d8fe26bacbb21ab50ddf
+
+# mass apply clang-tidy's modernize-use-using
+d15081e723756eef053550dc9e06e31d7828dec3
