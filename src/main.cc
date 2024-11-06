@@ -564,18 +564,35 @@ int main( int argc, char ** argv )
   QLocale::setDefault( locale );
   QApplication::setLayoutDirection( locale.textDirection() );
 
-  if ( !qtTranslator.load( "qt_extra_" + localeName, Config::getLocDir() ) ) {
-    qtTranslator.load( "qt_extra_" + localeName, QLibraryInfo::location( QLibraryInfo::TranslationsPath ) );
+  // Load Qt translators
+  // For Windows, windeployqt will combine multiple qt modules translations into `qt_*`
+  // Thus, after deployment, loading `qtwebengine_*` is guaranteed to fail on Windows.
+  if ( qtTranslator.load( locale, "qt", "_", QLibraryInfo::path( QLibraryInfo::TranslationsPath ) ) ) {
     app.installTranslator( &qtTranslator );
+    qDebug() << "qt translator loaded: " << qtTranslator.filePath();
   }
-
-  translator.load( Config::getLocDir() + "/" + localeName );
-  app.installTranslator( &translator );
+  else {
+    qDebug() << "qt translator didn't load anything.";
+  }
 
   QTranslator webengineTs;
-  if ( webengineTs.load( "qtwebengine_" + localeName, Config::getLocDir() ) ) {
+  if ( webengineTs.load( locale, "qtwebengine", "_", QLibraryInfo::path( QLibraryInfo::TranslationsPath ) ) ) {
     app.installTranslator( &webengineTs );
+    qDebug() << "qt webengine translator loaded: " << webengineTs.filePath();
   }
+  else {
+    qDebug() << "qt webengine translator may or may not be loaded.";
+  }
+
+  // Load GD's translations, note GD has local names beyond what's supported by QLocal
+  if ( translator.load( localeName, Config::getLocDir() ) ) {
+    app.installTranslator( &translator );
+    qDebug() << "gd translator loaded: " << translator.filePath();
+  }
+  else {
+    qDebug() << "gd translator didn't load anything";
+  }
+
 
   // Prevent app from quitting spontaneously when it works with popup
   // and with the main window closed.
