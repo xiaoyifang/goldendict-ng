@@ -427,7 +427,7 @@ struct Preferences
 
   // Appearances
 
-  Dark darkMode = Dark::Off;
+  Dark darkMode       = Dark::Off;
   Dark darkReaderMode = Dark::Off;
   QString addonStyle;
   QString displayStyle; // Article Display style (Which also affect interface style on windows)

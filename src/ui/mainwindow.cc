@@ -1326,7 +1326,7 @@ void MainWindow::updateAppearances( QString const & addonStyle,
 )
 {
 #ifdef Q_OS_WIN32
-  if ( darkMode == Config::Dark::On) {
+  if ( darkMode == Config::Dark::On ) {
     //https://forum.qt.io/topic/101391/windows-10-dark-theme
 
     QPalette darkPalette;
@@ -1406,7 +1406,7 @@ void MainWindow::updateAppearances( QString const & addonStyle,
   }
 
 #ifdef Q_OS_WIN32
-  if ( darkMode == Config::Dark::On) {
+  if ( darkMode == Config::Dark::On ) {
     css += "QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }";
   }
 #endif

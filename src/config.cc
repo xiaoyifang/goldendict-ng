@@ -1881,7 +1881,7 @@ void save( Class const & c )
     preferences.appendChild( opt );
 
     opt = dd.createElement( "darkMode" );
-    opt.appendChild( dd.createTextNode( QString::number( static_cast< int >( c.preferences.darkMode ) ) ));
+    opt.appendChild( dd.createTextNode( QString::number( static_cast< int >( c.preferences.darkMode ) ) ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "darkReaderMode" );
