@@ -36,6 +36,8 @@
 #include <QThreadPool>
 #include <QSslConfiguration>
 #include <QStyleFactory>
+#include <QStyleHints>
+
 #include "weburlrequestinterceptor.hh"
 #include "folding.hh"
 
@@ -61,6 +63,7 @@
   #include <windows.h>
 #endif
 
+#include <QGuiApplication>
 #include <QWebEngineSettings>
 #include <QProxyStyle>
 
@@ -2321,6 +2324,7 @@ void MainWindow::editPreferences()
         || cfg.preferences.collapseBigArticles != p.collapseBigArticles
         || cfg.preferences.articleSizeLimit != p.articleSizeLimit
         || cfg.preferences.alwaysExpandOptionalParts != p.alwaysExpandOptionalParts // DSL format's special feature
+        || p.darkReaderMode == Config::Dark::Auto // We cannot know if a reload is needed, just do it regardless.
       );
 
     // This line must be here because the components below require cfg's value to reconfigure
@@ -2336,6 +2340,15 @@ void MainWindow::editPreferences()
       if ( needReload ) {
         view.reload();
       }
+
+#if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
+      if ( cfg.preferences.darkReaderMode == Config::Dark::Auto ) {
+        connect( QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, &view, &ArticleView::reload );
+      }
+      else {
+        disconnect( QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, &view, &ArticleView::reload );
+      }
+#endif
     }
 
     audioPlayerFactory.setPreferences( cfg.preferences );

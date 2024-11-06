@@ -32,7 +32,7 @@ namespace Config {
 enum class Dark : std::uint8_t {
   Off = 0,
   On  = 1,
-  // TODO: Auto = 2,
+  Auto = 2,
 };
 
 /// Dictionaries which are temporarily disabled via the dictionary bar.
@@ -428,7 +428,13 @@ struct Preferences
   // Appearances
 
   Dark darkMode       = Dark::Off;
-  Dark darkReaderMode = Dark::Off;
+  Dark darkReaderMode =
+#if defined( Q_OS_MACOS )
+    Dark::Auto;
+#else
+    Dark::Off;
+#endif
+
   QString addonStyle;
   QString displayStyle; // Article Display style (Which also affect interface style on windows)
 
