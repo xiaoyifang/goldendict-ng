@@ -564,13 +564,21 @@ int main( int argc, char ** argv )
   QLocale::setDefault( locale );
   QApplication::setLayoutDirection( locale.textDirection() );
 
-  if ( !qtTranslator.load( "qt_extra_" + localeName, Config::getLocDir() ) ) {
-    qtTranslator.load( "qt_extra_" + localeName, QLibraryInfo::location( QLibraryInfo::TranslationsPath ) );
+  if ( qtTranslator.load( "qt_extra_" + localeName, Config::getLocDir() )
+       || qtTranslator.load( "qt_extra_" + localeName, QLibraryInfo::path( QLibraryInfo::TranslationsPath ) ) ) {
     app.installTranslator( &qtTranslator );
   }
+  else {
+    qDebug() << "qt_extra translator didn't load anything.";
+  }
 
-  translator.load( Config::getLocDir() + "/" + localeName );
-  app.installTranslator( &translator );
+  if ( translator.load( Config::getLocDir() + "/" + localeName ) ) {
+    app.installTranslator( &translator );
+  }
+  else {
+    qDebug() << "translator didn't load anything.";
+  }
+
 
   QTranslator webengineTs;
   if ( webengineTs.load( "qtwebengine_" + localeName, Config::getLocDir() ) ) {
