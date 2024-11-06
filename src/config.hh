@@ -32,7 +32,7 @@ namespace Config {
 enum class Dark : std::uint8_t {
   Off = 0,
   On  = 1,
-  // TODO: Auto = 2,
+  Auto = 2,
 };
 
 /// Dictionaries which are temporarily disabled via the dictionary bar.

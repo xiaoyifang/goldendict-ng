@@ -15,6 +15,7 @@
 #include <QFile>
 #include <QTextDocumentFragment>
 #include <QUrl>
+#include <QStyleHints>
 
 #include "fmt/core.h"
 #include "fmt/compile.h"
@@ -151,7 +152,10 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word, QString const & 
   result += R"(<script src="qrc:///scripts/gd-builtin.js"></script>)";
   result += R"(<script src="qrc:///scripts/mark.min.js"></script>)";
 
-  if ( GlobalBroadcaster::instance()->getPreference()->darkReaderMode == Config::Dark::On ) {
+  if ( auto darkreadermode = GlobalBroadcaster::instance()->getPreference()->darkReaderMode;
+       darkreadermode == Config::Dark::On
+       || ( darkreadermode == Config::Dark::Auto
+            && QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark ) ) {
     //only enable this darkmode on modern style.
     if ( cfg.displayStyle == "modern" ) {
       result += R"(<link href="qrc:///article-style-darkmode.css"  media="all" rel="stylesheet" type="text/css">)";

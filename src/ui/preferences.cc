@@ -189,6 +189,8 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
     ui.darkMode->setCurrentIndex( i );
   }
 
+  ui.darkReaderMode->addItem( tr( "Auto" ), QVariant::fromValue( Config::Dark::Auto ) );
+  ui.darkReaderMode->setItemData( 0, tr( "Auto does nothing on some systems." ), Qt::ToolTipRole );
   ui.darkReaderMode->addItem( tr( "On" ), QVariant::fromValue( Config::Dark::On ) );
   ui.darkReaderMode->addItem( tr( "Off" ), QVariant::fromValue( Config::Dark::Off ) );
 
