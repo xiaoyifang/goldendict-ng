@@ -169,6 +169,16 @@ however, the article from the topmost dictionary is shown.</string>
          </property>
         </widget>
        </item>
+       <item row="4" column="1">
+        <widget class="QCheckBox" name="targetArticleAtFirst">
+         <property name="text">
+          <string>Place the target article at the first place.</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
        <item row="1" column="0">
         <widget class="QGroupBox" name="enableTrayIcon">
          <property name="toolTip">
