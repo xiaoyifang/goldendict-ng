@@ -152,10 +152,22 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word, QString const & 
   result += R"(<script src="qrc:///scripts/gd-builtin.js"></script>)";
   result += R"(<script src="qrc:///scripts/mark.min.js"></script>)";
 
-  if ( auto darkreadermode = GlobalBroadcaster::instance()->getPreference()->darkReaderMode;
-       darkreadermode == Config::Dark::On
-       || ( darkreadermode == Config::Dark::Auto
-            && QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark ) ) {
+  /// Handling Dark reader mode.
+
+  bool darkReaderModeEnabled = false;
+
+  if ( GlobalBroadcaster::instance()->getPreference()->darkReaderMode == Config::Dark::On ) {
+    darkReaderModeEnabled = true;
+  }
+
+#if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
+  if ( GlobalBroadcaster::instance()->getPreference()->darkReaderMode == Config::Dark::Auto
+       && QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark ) {
+    darkReaderModeEnabled = true;
+  }
+#endif
+
+  if ( darkReaderModeEnabled ) {
     //only enable this darkmode on modern style.
     if ( cfg.displayStyle == "modern" ) {
       result += R"(<link href="qrc:///article-style-darkmode.css"  media="all" rel="stylesheet" type="text/css">)";

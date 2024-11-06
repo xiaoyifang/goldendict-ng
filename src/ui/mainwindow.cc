@@ -2342,11 +2342,14 @@ void MainWindow::editPreferences()
         view.reload();
       }
 
+#if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
       if ( cfg.preferences.darkReaderMode == Config::Dark::Auto ) {
         connect( QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, &view, &ArticleView::reload );
-      } else {
+      }
+      else {
         disconnect( QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, &view, &ArticleView::reload );
       }
+#endif
     }
 
     audioPlayerFactory.setPreferences( cfg.preferences );
