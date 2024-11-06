@@ -148,7 +148,7 @@ private:
   bool mouseEnteredOnce = false;
   bool mouseIntercepted = false;
 
-  QPoint startPos; // For window moving
+  QPointF startPos; // For window moving
   QByteArray pinnedGeometry;
 
   QTimer hideTimer; // When mouse leaves the window, a grace period is
@@ -169,7 +169,7 @@ private:
 
   /// Called from event filter or from mouseGrabPoll to handle mouse event
   /// while it is being intercepted.
-  void reactOnMouseMove( QPoint const & p );
+  void reactOnMouseMove(QPointF const& p);
 
   virtual void mousePressEvent( QMouseEvent * );
   virtual void mouseMoveEvent( QMouseEvent * );

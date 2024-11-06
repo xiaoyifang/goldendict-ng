@@ -727,7 +727,7 @@ bool ScanPopup::eventFilter( QObject * watched, QEvent * event )
 
     if ( event->type() == QEvent::MouseMove ) {
       QMouseEvent * mouseEvent = (QMouseEvent *)event;
-      reactOnMouseMove( mouseEvent->globalPos() );
+      reactOnMouseMove( mouseEvent->globalPosition() );
     }
   }
 
@@ -751,9 +751,9 @@ bool ScanPopup::eventFilter( QObject * watched, QEvent * event )
   return QMainWindow::eventFilter( watched, event );
 }
 
-void ScanPopup::reactOnMouseMove( QPoint const & p )
+void ScanPopup::reactOnMouseMove(QPointF const& p)
 {
-  if ( geometry().contains( p ) ) {
+  if ( geometry().contains( p.toPoint() ) ) {
     //        GD_DPRINTF( "got inside\n" );
 
     hideTimer.stop();
@@ -773,7 +773,7 @@ void ScanPopup::reactOnMouseMove( QPoint const & p )
     // receiving this event, meaning there's basically nothing under the
     // cursor.
     if ( /*watched == this &&*/
-         !frameGeometry().adjusted( -proximity, -proximity, proximity, proximity ).contains( p ) ) {
+         !frameGeometry().adjusted( -proximity, -proximity, proximity, proximity ).contains( p.toPoint() ) ) {
       // We've way too far from the window -- hide the popup
 
       // If the mouse never entered the popup, hide the window instantly --
@@ -794,14 +794,14 @@ void ScanPopup::mousePressEvent( QMouseEvent * ev )
   // With mouse grabs, the press can occur anywhere on the screen, which
   // might mean hiding the window.
 
-  if ( !frameGeometry().contains( ev->globalPos() ) ) {
+  if ( !frameGeometry().contains( ev->globalPosition().toPoint() ) ) {
     hideWindow();
 
     return;
   }
 
   if ( ev->button() == Qt::LeftButton ) {
-    startPos = ev->globalPos();
+    startPos = ev->globalPosition();
     setCursor( Qt::ClosedHandCursor );
   }
 
@@ -811,15 +811,13 @@ void ScanPopup::mousePressEvent( QMouseEvent * ev )
 void ScanPopup::mouseMoveEvent( QMouseEvent * event )
 {
   if ( event->buttons() && cursor().shape() == Qt::ClosedHandCursor ) {
-    QPoint newPos = event->globalPos();
-
-    QPoint delta = newPos - startPos;
+    QPointF newPos = event->globalPosition();
+    QPointF delta = newPos - startPos;
 
     startPos = newPos;
 
     // Move the window
-
-    move( pos() + delta );
+    move( (pos() + delta).toPoint() );
   }
 
   QMainWindow::mouseMoveEvent( event );
