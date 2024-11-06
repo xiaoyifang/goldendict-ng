@@ -93,7 +93,7 @@ class ForvoArticleRequest: public Dictionary::DataRequest
     }
   };
 
-  typedef std::list< NetReply > NetReplies;
+  using NetReplies = std::list< NetReply >;
   NetReplies netReplies;
   QString apiKey, languageCode;
   string dictionaryId;

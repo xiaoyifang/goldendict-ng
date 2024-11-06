@@ -26,6 +26,6 @@ signals:
   void error( QString message );
 };
 
-typedef QScopedPointer< AudioPlayerInterface > AudioPlayerPtr;
+using AudioPlayerPtr = QScopedPointer< AudioPlayerInterface >;
 
 #endif // AUDIOPLAYERINTERFACE_HH_INCLUDED

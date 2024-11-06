@@ -60,8 +60,8 @@ private:
 
   // Maps lowercased string to the original one. This catches all duplicates
   // without case sensitivity. Made as an array and a map indexing that array.
-  typedef std::list< OneResult > ResultsArray;
-  typedef std::map< gd::wstring, ResultsArray::iterator > ResultsIndex;
+  using ResultsArray = std::list< OneResult >;
+  using ResultsIndex = std::map< gd::wstring, ResultsArray::iterator >;
   ResultsArray resultsArray;
   ResultsIndex resultsIndex;
 

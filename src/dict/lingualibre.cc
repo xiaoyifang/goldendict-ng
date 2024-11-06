@@ -33,7 +33,7 @@ class LinguaArticleRequest: public Dictionary::DataRequest
     }
   };
 
-  typedef std::list< NetReply > NetReplies;
+  using NetReplies = std::list< NetReply >;
   NetReplies netReplies;
   QString languageCode, langWikipediaID;
   string dictionaryId;

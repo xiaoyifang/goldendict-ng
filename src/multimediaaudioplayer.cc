@@ -20,17 +20,9 @@ MultimediaAudioPlayer::MultimediaAudioPlayer()
   player( 0, QMediaPlayer::StreamPlayback )
   #endif
 {
-  typedef void ( QMediaPlayer::*ErrorSignal )( QMediaPlayer::Error );
-  #if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
-  connect( &player,
-           static_cast< ErrorSignal >( &QMediaPlayer::error ),
-           this,
-           &MultimediaAudioPlayer::onMediaPlayerError );
-  #else
   player.setAudioOutput( &audioOutput );
 
   connect( &player, &QMediaPlayer::errorChanged, this, &MultimediaAudioPlayer::onMediaPlayerError );
-  #endif
 
   #if ( QT_VERSION > QT_VERSION_CHECK( 6, 2, 0 ) )
   connect( &mediaDevices, &QMediaDevices::audioOutputsChanged, this, &MultimediaAudioPlayer::audioOutputChange );

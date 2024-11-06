@@ -101,8 +101,8 @@ class ArticleRequest: public Dictionary::DataRequest
 
   /// A sequence of words and spacings between them, including the initial
   /// spacing before the first word and the final spacing after the last word.
-  typedef QList< QString > Words;
-  typedef QList< QString > Spacings;
+  using Words    = QList< QString >;
+  using Spacings = QList< QString >;
 
   /// Splits the given string into words and spacings between them.
   std::pair< Words, Spacings > splitIntoWords( QString const & );

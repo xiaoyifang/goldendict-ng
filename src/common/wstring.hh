@@ -12,6 +12,6 @@
 ///
 
 namespace gd {
-typedef char32_t wchar;
-typedef std::u32string wstring;
+using wchar   = char32_t;
+using wstring = std::u32string;
 } // namespace gd

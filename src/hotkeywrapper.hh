@@ -142,7 +142,7 @@ private:
 
   /// Holds all the keys currently grabbed.
   /// The first value is keycode, the second is modifiers
-  typedef std::set< std::pair< quint32, quint32 > > GrabbedKeys;
+  using GrabbedKeys = std::set< std::pair< quint32, quint32 > >;
   GrabbedKeys grabbedKeys;
 
   GrabbedKeys::iterator keyToUngrab; // Used for second stage grabs

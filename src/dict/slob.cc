@@ -109,8 +109,8 @@ bool indexIsOldOrBad( string const & indexFile )
 class SlobFile
 {
 public:
-  typedef std::pair< quint64, quint32 > RefEntryOffsetItem;
-  typedef QList< RefEntryOffsetItem > RefOffsetsVector;
+  using RefEntryOffsetItem = std::pair< quint64, quint32 >;
+  using RefOffsetsVector   = QList< RefEntryOffsetItem >;
 
 private:
   enum Compressions {
