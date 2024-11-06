@@ -440,19 +440,16 @@ void ArticleView::inspectElement()
 void ArticleView::loadFinished( bool result )
 {
   setZoomFactor( cfg.preferences.zoomFactor );
-  QUrl url = webview->url();
-  qDebug() << "article view loaded url:" << url.url().left( 200 ) << result;
-
   webview->unsetCursor();
-
-  if ( url.url() == "about:blank" ) {
-    return;
-  }
-
   if ( !result ) {
     qWarning() << "article loaded unsuccessful";
     return;
   }
+  QUrl url = webview->url();
+  if ( url.url() == "about:blank" ) {
+    return;
+  }
+  qDebug() << "article view loaded url:" << url.url().left( 50 ) << result;
 
   if ( cfg.preferences.autoScrollToTargetArticle ) {
     QString const scrollTo = Utils::Url::queryItemValue( url, "scrollto" );
