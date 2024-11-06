@@ -102,31 +102,23 @@ AnkiConnectServer::AnkiConnectServer():
 {
 }
 
-HotKey::HotKey():
-  modifiers( 0 ),
-  key1( 0 ),
-  key2( 0 )
-{
-}
-
-// Does anyone know how to separate modifiers from the keycode? We'll
-// use our own mask.
-
-uint32_t const keyMask = 0x01FFFFFF;
-
 HotKey::HotKey( QKeySequence const & seq ):
-  modifiers( seq[ 0 ] & ~keyMask ),
-  key1( seq[ 0 ] & keyMask ),
-  key2( seq[ 1 ] & keyMask )
+  modifiers( seq[ 0 ].keyboardModifiers() ),
+  key1( seq[ 0 ].key() ),
+  key2( seq[ 1 ].key() )
 {
 }
 
 QKeySequence HotKey::toKeySequence() const
 {
-  int v2 = key2 ? ( key2 | modifiers ) : 0;
-
-  return QKeySequence( key1 | modifiers, v2 );
+  if ( key2 != 0 || key2 != Qt::Key::Key_unknown ) {
+    return { QKeyCombination( modifiers, static_cast< Qt::Key >( key1 ) ),
+             QKeyCombination( modifiers, static_cast< Qt::Key >( key2 ) ) };
+  }
+  return { QKeyCombination( modifiers, static_cast< Qt::Key >( key1 ) ) };
+  ;
 }
+
 
 bool InternalPlayerBackend::anyAvailable()
 {
