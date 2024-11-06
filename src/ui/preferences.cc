@@ -181,9 +181,27 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.selectBySingleClick->setChecked( p.selectWordBySingleClick );
   ui.autoScrollToTargetArticle->setChecked( p.autoScrollToTargetArticle );
   ui.escKeyHidesMainWindow->setChecked( p.escKeyHidesMainWindow );
-  ui.darkMode->setChecked( p.darkMode );
-  ui.darkReaderMode->setChecked( p.darkReaderMode );
+
+  ui.darkMode->addItem( tr( "On" ), QVariant::fromValue( Config::Dark::On ) );
+  ui.darkMode->addItem( tr( "Off" ), QVariant::fromValue( Config::Dark::Off ) );
+
+  if ( auto i = ui.darkMode->findData( QVariant::fromValue( p.darkMode ) ); i != -1 ) {
+    ui.darkMode->setCurrentIndex( i );
+  }
+
+  // ui.darkReaderMode->addItem( tr( "Auto" ), QVariant::fromValue( Config::DarkReaderMode::Auto ) );
+  // ui.darkReaderMode->setItemData( 0, tr( "Auto does nothing on some systems." ), Qt::ToolTipRole );
+  ui.darkReaderMode->addItem( tr( "On" ), QVariant::fromValue( Config::Dark::On ) );
+  ui.darkReaderMode->addItem( tr( "Off" ), QVariant::fromValue( Config::Dark::Off ) );
+
+  if ( auto i = ui.darkReaderMode->findData( QVariant::fromValue( p.darkReaderMode ) ); i != -1 ) {
+    ui.darkReaderMode->setCurrentIndex( i );
+  }
+
+
 #ifndef Q_OS_WIN32
+  // TODO: make this availiable on other platforms
+  ui.darkModeLabel->hide();
   ui.darkMode->hide();
 #endif
 
@@ -413,8 +431,9 @@ Config::Preferences Preferences::getPreferences()
   p.autoScrollToTargetArticle  = ui.autoScrollToTargetArticle->isChecked();
   p.escKeyHidesMainWindow      = ui.escKeyHidesMainWindow->isChecked();
 
-  p.darkMode               = ui.darkMode->isChecked();
-  p.darkReaderMode         = ui.darkReaderMode->isChecked();
+  p.darkMode       = ui.darkMode->currentData().value< Config::Dark >();
+  p.darkReaderMode = ui.darkReaderMode->currentData().value< Config::Dark >();
+
   p.enableMainWindowHotkey = ui.enableMainWindowHotkey->isChecked();
   p.mainWindowHotkey       = ui.mainWindowHotkey->keySequence();
   p.enableClipboardHotkey  = ui.enableClipboardHotkey->isChecked();
