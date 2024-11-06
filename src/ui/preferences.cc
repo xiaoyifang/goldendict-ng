@@ -180,6 +180,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.doubleClickTranslates->setChecked( p.doubleClickTranslates );
   ui.selectBySingleClick->setChecked( p.selectWordBySingleClick );
   ui.autoScrollToTargetArticle->setChecked( p.autoScrollToTargetArticle );
+  ui.targetArticleAtFirst->setChecked( p.targetArticleAtFirst );
   ui.escKeyHidesMainWindow->setChecked( p.escKeyHidesMainWindow );
   ui.darkMode->setChecked( p.darkMode );
   ui.darkReaderMode->setChecked( p.darkReaderMode );
@@ -411,6 +412,7 @@ Config::Preferences Preferences::getPreferences()
   p.doubleClickTranslates      = ui.doubleClickTranslates->isChecked();
   p.selectWordBySingleClick    = ui.selectBySingleClick->isChecked();
   p.autoScrollToTargetArticle  = ui.autoScrollToTargetArticle->isChecked();
+  p.targetArticleAtFirst       = ui.targetArticleAtFirst->isChecked();
   p.escKeyHidesMainWindow      = ui.escKeyHidesMainWindow->isChecked();
 
   p.darkMode               = ui.darkMode->isChecked();

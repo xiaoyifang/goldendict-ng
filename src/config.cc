@@ -212,6 +212,7 @@ Preferences::Preferences():
   doubleClickTranslates( true ),
   selectWordBySingleClick( false ),
   autoScrollToTargetArticle( true ),
+  targetArticleAtFirst(false),
   escKeyHidesMainWindow( false ),
   darkMode( false ),
   darkReaderMode( false ),
@@ -939,6 +940,11 @@ Class load()
     if ( !preferences.namedItem( "autoScrollToTargetArticle" ).isNull() ) {
       c.preferences.autoScrollToTargetArticle =
         ( preferences.namedItem( "autoScrollToTargetArticle" ).toElement().text() == "1" );
+    }
+
+    if ( !preferences.namedItem( "targetArticleAtFirst" ).isNull() ) {
+      c.preferences.targetArticleAtFirst =
+        ( preferences.namedItem( "targetArticleAtFirst" ).toElement().text() == "1" );
     }
 
     if ( !preferences.namedItem( "escKeyHidesMainWindow" ).isNull() ) {
@@ -1875,6 +1881,10 @@ void save( Class const & c )
 
     opt = dd.createElement( "autoScrollToTargetArticle" );
     opt.appendChild( dd.createTextNode( c.preferences.autoScrollToTargetArticle ? "1" : "0" ) );
+    preferences.appendChild( opt );
+
+    opt = dd.createElement( "targetArticleAtFirst" );
+    opt.appendChild( dd.createTextNode( c.preferences.targetArticleAtFirst ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "escKeyHidesMainWindow" );
