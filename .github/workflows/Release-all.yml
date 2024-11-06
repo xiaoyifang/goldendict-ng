@@ -147,7 +147,7 @@ jobs:
           if [[ '${{env.prerelease}}' == 'true' ]]
           then
             echo "This is a pre-release"
-            previousTag=$(git tag --sort=-creatordate | grep "^v" | head -n 1)
+            previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v "Release" | head -n 1)
           else 
             echo "This is not a pre-release"
             previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v "alpha" | head -n 1)
