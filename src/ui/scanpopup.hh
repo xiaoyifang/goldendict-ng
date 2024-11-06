@@ -169,7 +169,7 @@ private:
 
   /// Called from event filter or from mouseGrabPoll to handle mouse event
   /// while it is being intercepted.
-  void reactOnMouseMove(QPointF const& p);
+  void reactOnMouseMove( QPointF const & p );
 
   virtual void mousePressEvent( QMouseEvent * );
   virtual void mouseMoveEvent( QMouseEvent * );

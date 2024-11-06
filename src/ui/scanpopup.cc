@@ -751,7 +751,7 @@ bool ScanPopup::eventFilter( QObject * watched, QEvent * event )
   return QMainWindow::eventFilter( watched, event );
 }
 
-void ScanPopup::reactOnMouseMove(QPointF const& p)
+void ScanPopup::reactOnMouseMove( QPointF const & p )
 {
   if ( geometry().contains( p.toPoint() ) ) {
     //        GD_DPRINTF( "got inside\n" );
@@ -812,12 +812,12 @@ void ScanPopup::mouseMoveEvent( QMouseEvent * event )
 {
   if ( event->buttons() && cursor().shape() == Qt::ClosedHandCursor ) {
     QPointF newPos = event->globalPosition();
-    QPointF delta = newPos - startPos;
+    QPointF delta  = newPos - startPos;
 
     startPos = newPos;
 
     // Move the window
-    move( (pos() + delta).toPoint() );
+    move( ( pos() + delta ).toPoint() );
   }
 
   QMainWindow::mouseMoveEvent( event );
