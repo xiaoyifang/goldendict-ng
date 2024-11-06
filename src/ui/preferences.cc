@@ -205,10 +205,17 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.darkMode->hide();
 #endif
 
+  /// Hotkey Tab
   ui.enableMainWindowHotkey->setChecked( p.enableMainWindowHotkey );
   ui.mainWindowHotkey->setKeySequence( p.mainWindowHotkey );
   ui.enableClipboardHotkey->setChecked( p.enableClipboardHotkey );
   ui.clipboardHotkey->setKeySequence( p.clipboardHotkey );
+
+#if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
+  // Bound by current global hotkey implementations
+  ui.mainWindowHotkey->setMaximumSequenceLength( 2 );
+  ui.clipboardHotkey->setMaximumSequenceLength( 2 );
+#endif
 
   ui.startWithScanPopupOn->setChecked( p.startWithScanPopupOn );
   ui.enableScanPopupModifiers->setChecked( p.enableScanPopupModifiers );

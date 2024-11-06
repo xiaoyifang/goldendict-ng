@@ -215,8 +215,8 @@ Preferences::Preferences():
   enableMainWindowHotkey( true ),
   enableClipboardHotkey( true ),
 #endif
-  mainWindowHotkey( QKeySequence( "Ctrl+F11,F11" ) ),
-  clipboardHotkey( QKeySequence( "Ctrl+C,C" ) ),
+  mainWindowHotkey( QKeySequence( "Ctrl+F11, Ctrl+F11" ) ),
+  clipboardHotkey( QKeySequence( "Ctrl+C, Ctrl+C" ) ),
   startWithScanPopupOn( false ),
   enableScanPopupModifiers( false ),
   scanPopupModifiers( 0 ),
