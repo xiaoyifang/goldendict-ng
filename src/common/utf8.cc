@@ -13,7 +13,7 @@ size_t encode( wchar const * in, size_t inSize, char * out_ )
 {
   unsigned char * out = (unsigned char *)out_;
 
-  while ( inSize-- ) {
+  while ( (inSize--) != 0u ) {
     if ( *in < 0x80 ) {
       *out++ = *in++;
     }
@@ -42,15 +42,15 @@ long decode( char const * in_, size_t inSize, wchar * out_ )
   unsigned char const * in = (unsigned char const *)in_;
   wchar * out              = out_;
 
-  while ( inSize-- ) {
+  while ( (inSize--) != 0u ) {
     wchar result;
 
-    if ( *in & 0x80 ) {
-      if ( *in & 0x40 ) {
-        if ( *in & 0x20 ) {
-          if ( *in & 0x10 ) {
+    if ( (*in & 0x80) != 0 ) {
+      if ( (*in & 0x40) != 0 ) {
+        if ( (*in & 0x20) != 0 ) {
+          if ( (*in & 0x10) != 0 ) {
             // Four-byte sequence
-            if ( *in & 8 ) {
+            if ( (*in & 8) != 0 ) {
               // This can't be
               return -1;
             }
@@ -102,7 +102,7 @@ long decode( char const * in_, size_t inSize, wchar * out_ )
         }
         else {
           // Two-byte sequence
-          if ( !inSize ) {
+          if ( inSize == 0u ) {
             return -1;
           }
 

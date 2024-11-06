@@ -37,7 +37,7 @@ KSignalHandler::KSignalHandler():
   d( new KSignalHandlerPrivate )
 {
   d->q = this;
-  if ( ::socketpair( AF_UNIX, SOCK_STREAM, 0, KSignalHandlerPrivate::signalFd ) ) {
+  if ( ::socketpair( AF_UNIX, SOCK_STREAM, 0, KSignalHandlerPrivate::signalFd ) != 0 ) {
     qDebug() << "Couldn't create a socketpair";
     return;
   }

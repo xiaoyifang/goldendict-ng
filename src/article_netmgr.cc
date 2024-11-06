@@ -214,7 +214,7 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( QUrl c
   }
 
   if ( ( url.scheme() == "bres" || url.scheme() == "gdau" || url.scheme() == "gdvideo" || url.scheme() == "gico" )
-       && url.path().size() ) {
+       && (url.path().size() != 0) ) {
 
 
     QMimeType mineType = db.mimeTypeForUrl( url );
@@ -260,7 +260,7 @@ ArticleResourceReply::ArticleResourceReply( QObject * parent,
   setOpenMode( ReadOnly );
   setUrl( netReq.url() );
 
-  if ( contentType.size() ) {
+  if ( contentType.size() != 0 ) {
     setHeader( QNetworkRequest::ContentTypeHeader, contentType );
   }
 
@@ -346,7 +346,7 @@ qint64 ArticleResourceReply::readData( char * out, qint64 maxSize )
   qint64 const left = avail - alreadyRead;
 
   qint64 const toRead = maxSize < left ? maxSize : left;
-  if ( !toRead && finished ) {
+  if ( (toRead == 0) && finished ) {
     return -1;
   }
   if ( toRead == 0 ) {
@@ -368,7 +368,7 @@ qint64 ArticleResourceReply::readData( char * out, qint64 maxSize )
 
   alreadyRead += toRead;
 
-  if ( !toRead && finished ) {
+  if ( (toRead == 0) && finished ) {
     return -1;
   }
   else {
@@ -388,7 +388,7 @@ void ArticleResourceReply::finishedSlot()
     setError( ContentNotFoundError, "content not found" );
   }
   //prevent sent multi times.
-  if ( !finishSignalSent.loadAcquire() ) {
+  if ( finishSignalSent.loadAcquire() == 0 ) {
     finishSignalSent.ref();
     setFinished( true );
     emit finished();

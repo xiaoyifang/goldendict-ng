@@ -353,7 +353,7 @@ string ZimDictionary::convert( const string & in )
 
     newText += replacedLink;
   }
-  if ( pos ) {
+  if ( pos != 0 ) {
     newText += text.mid( pos );
     text = newText;
   }
@@ -451,7 +451,7 @@ string ZimDictionary::convert( const string & in )
 
     newText += tag;
   }
-  if ( pos ) {
+  if ( pos != 0 ) {
     newText += text.mid( pos );
     text = newText;
   }
@@ -573,7 +573,7 @@ public:
 
 void ZimArticleRequest::run()
 {
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
     finish();
     return;
   }
@@ -600,7 +600,7 @@ void ZimArticleRequest::run()
   }
 
   for ( auto & x : chain ) {
-    if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+    if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
       finish();
       return;
     }
@@ -731,7 +731,7 @@ public:
 void ZimResourceRequest::run()
 {
   // Some runnables linger enough that they are cancelled before they start
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
     finish();
     return;
   }

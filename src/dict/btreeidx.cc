@@ -126,12 +126,12 @@ BtreeWordSearchRequest::BtreeWordSearchRequest( BtreeDictionary & dict_,
 
 void BtreeWordSearchRequest::findMatches()
 {
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
     finish();
     return;
   }
 
-  if ( dict.ensureInitDone().size() ) {
+  if ( dict.ensureInitDone().size() != 0u ) {
     setErrorString( QString::fromUtf8( dict.ensureInitDone().c_str() ) );
     finish();
     return;
@@ -264,7 +264,7 @@ void BtreeWordSearchRequest::findMatches()
 
       if ( chainOffset ) {
         for ( ;; ) {
-          if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+          if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
             break;
           }
 
@@ -280,13 +280,13 @@ void BtreeWordSearchRequest::findMatches()
           }
 
           if ( ( useWildcards && folded.empty() )
-               || ( resultFolded.size() >= folded.size() && !resultFolded.compare( 0, folded.size(), folded ) ) ) {
+               || ( resultFolded.size() >= folded.size() && (resultFolded.compare( 0, folded.size(), folded ) == 0) ) ) {
             // Exact or prefix match
 
             QMutexLocker _( &dataMutex );
 
             for ( auto & x : chain ) {
-              if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+              if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
                 break;
               }
               if ( useWildcards ) {
@@ -313,7 +313,7 @@ void BtreeWordSearchRequest::findMatches()
               }
             }
 
-            if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+            if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
               break;
             }
 
@@ -333,7 +333,7 @@ void BtreeWordSearchRequest::findMatches()
 
             //GD_DPRINTF( "advancing\n" );
 
-            if ( nextLeaf ) {
+            if ( nextLeaf != 0u ) {
               QMutexLocker _( dict.idxFileMutex );
 
               dict.readNode( nextLeaf, leaf );
@@ -356,7 +356,7 @@ void BtreeWordSearchRequest::findMatches()
         }
       }
 
-      if ( charsLeftToChop && !Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+      if ( (charsLeftToChop != 0) && (Utils::AtomicInt::loadAcquire( isCancelled ) == 0) ) {
         --charsLeftToChop;
         folded.resize( folded.size() - 1 );
       }
@@ -375,12 +375,12 @@ void BtreeWordSearchRequest::findMatches()
 
 void BtreeWordSearchRequest::run()
 {
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
     finish();
     return;
   }
 
-  if ( dict.ensureInitDone().size() ) {
+  if ( dict.ensureInitDone().size() != 0u ) {
     setErrorString( QString::fromUtf8( dict.ensureInitDone().c_str() ) );
     finish();
     return;
@@ -488,7 +488,7 @@ char const * BtreeIndex::findChainOffsetExactOrPrefix(
           // Only one leaf in index, there's no next leaf
           nextLeaf = 0;
         }
-        if ( !leafEntries ) {
+        if ( leafEntries == 0u ) {
           return nullptr;
         }
 
@@ -528,7 +528,7 @@ char const * BtreeIndex::findChainOffsetExactOrPrefix(
 
         closestString = testPoint;
 
-        while ( closestString > ptr && closestString[ -1 ] ) {
+        while ( closestString > ptr && (closestString[ -1 ] != 0) ) {
           --closestString;
         }
 
@@ -538,7 +538,7 @@ char const * BtreeIndex::findChainOffsetExactOrPrefix(
 
         compareResult = target.compare( w_word );
 
-        if ( !compareResult ) {
+        if ( compareResult == 0 ) {
           // The target string matches the current one. Finish the search.
           break;
         }
@@ -547,7 +547,7 @@ char const * BtreeIndex::findChainOffsetExactOrPrefix(
           // Go to the left.
           windowSize = closestString - window;
 
-          if ( !windowSize ) {
+          if ( windowSize == 0u ) {
             break;
           }
         }
@@ -557,7 +557,7 @@ char const * BtreeIndex::findChainOffsetExactOrPrefix(
           windowSize -= ( closestString - window ) + wordSize + 1;
           window = closestString + wordSize + 1;
 
-          if ( !windowSize ) {
+          if ( windowSize == 0u ) {
             break;
           }
         }
@@ -575,7 +575,7 @@ char const * BtreeIndex::findChainOffsetExactOrPrefix(
 
       // Ok, now check the outcome
 
-      if ( !compareResult ) {
+      if ( compareResult == 0 ) {
         // The target string matches the one found.
         // Go to the right, since it's there where we store such results.
         currentNodeOffset = offsets[ entry + 1 ];
@@ -605,7 +605,7 @@ char const * BtreeIndex::findChainOffsetExactOrPrefix(
       // be in the right place for root node anyway, since we precache it.
       nextLeaf = ( currentNodeOffset != rootOffset ? idxFile->read< uint32_t >() : 0 );
 
-      if ( !leafEntries ) {
+      if ( leafEntries == 0u ) {
         // Empty leaf? This may only be possible for entirely empty trees only.
         if ( currentNodeOffset != rootOffset ) {
           throw exCorruptedChainData();
@@ -625,7 +625,7 @@ char const * BtreeIndex::findChainOffsetExactOrPrefix(
       {
         char const ** nextOffset = &chainOffsets.front();
 
-        while ( leafEntries-- ) {
+        while ( (leafEntries--) != 0u ) {
           *nextOffset++ = ptr;
 
           memcpy( &chainSize, ptr, sizeof( uint32_t ) );
@@ -662,7 +662,7 @@ char const * BtreeIndex::findChainOffsetExactOrPrefix(
 
         int compareResult = target.compare( foldedWord );
 
-        if ( !compareResult ) {
+        if ( compareResult == 0 ) {
           // Exact match -- return and be done
           exactMatch = true;
 
@@ -674,7 +674,7 @@ char const * BtreeIndex::findChainOffsetExactOrPrefix(
 
           windowSize /= 2;
 
-          if ( !windowSize ) {
+          if ( windowSize == 0u ) {
             // That finishes our search. Since our target string
             // landed before the last tested chain, we return a possible
             // prefix match against that chain.
@@ -687,13 +687,13 @@ char const * BtreeIndex::findChainOffsetExactOrPrefix(
 
           windowSize -= windowSize / 2 + 1;
 
-          if ( !windowSize ) {
+          if ( windowSize == 0u ) {
             // That finishes our search. Since our target string
             // landed after the last tested chain, we return the next
             // chain. If there's no next chain in this leaf, this
             // would mean the first element in the next leaf.
             if ( chainToCheck == &chainOffsets.back() ) {
-              if ( nextLeaf ) {
+              if ( nextLeaf != 0u ) {
                 readNode( nextLeaf, extLeaf );
 
                 leafEnd = &extLeaf.front() + extLeaf.size();
@@ -728,7 +728,7 @@ vector< WordArticleLink > BtreeIndex::readChain( char const *& ptr, uint32_t max
 
   vector< WordArticleLink > result;
 
-  while ( chainSize && ( maxMatchCount < 0 || result.size() < maxMatchCount ) ) {
+  while ( (chainSize != 0u) && ( maxMatchCount < 0 || result.size() < maxMatchCount ) ) {
     string str = ptr;
     ptr += str.size() + 1;
 
@@ -765,7 +765,7 @@ void BtreeIndex::antialias( wstring const & str, vector< WordArticleLink > & cha
     caseFolded = Folding::trimWhitespaceOrPunct( caseFolded );
   }
 
-  for ( unsigned x = chain.size(); x--; ) {
+  for ( unsigned x = chain.size(); (x--) != 0u; ) {
     // If after applying case folding to each word they wouldn't match, we
     // drop the entry.
     wstring entry =
@@ -812,7 +812,7 @@ static uint32_t buildBtreeNode( IndexedWords::const_iterator & nextIndex,
 
     auto nextWord = nextIndex;
 
-    for ( unsigned x = indexSize; x--; ++nextWord ) {
+    for ( unsigned x = indexSize; (x--) != 0u; ++nextWord ) {
       totalChainsLength += sizeof( uint32_t );
 
       vector< WordArticleLink > const & chain = nextWord->second;
@@ -829,7 +829,7 @@ static uint32_t buildBtreeNode( IndexedWords::const_iterator & nextIndex,
 
     unsigned char * ptr = &uncompressedData.front() + sizeof( uint32_t );
 
-    for ( unsigned x = indexSize; x--; ++nextIndex ) {
+    for ( unsigned x = indexSize; (x--) != 0u; ++nextIndex ) {
       vector< WordArticleLink > const & chain = nextIndex->second;
 
       unsigned char * saveSizeHere = ptr;
@@ -913,7 +913,7 @@ static uint32_t buildBtreeNode( IndexedWords::const_iterator & nextIndex,
 
     uint32_t here = file.tell();
 
-    if ( lastLeafLinkOffset ) {
+    if ( lastLeafLinkOffset != 0u ) {
       // Update the previous leaf to have the offset of this one.
       file.seek( lastLeafLinkOffset );
       file.write( offset );
@@ -952,13 +952,13 @@ void IndexedWords::addWord( wstring const & index_word, uint32_t articleOffset, 
   wchar const * wordBegin = word.c_str();
 
   // Skip any leading whitespace
-  while ( *wordBegin && Folding::isWhitespace( *wordBegin ) ) {
+  while ( (*wordBegin != 0u) && Folding::isWhitespace( *wordBegin ) ) {
     ++wordBegin;
     --wordSize;
   }
 
   // Skip any trailing whitespace
-  while ( wordSize && Folding::isWhitespace( wordBegin[ wordSize - 1 ] ) ) {
+  while ( (wordSize != 0u) && Folding::isWhitespace( wordBegin[ wordSize - 1 ] ) ) {
     --wordSize;
   }
 
@@ -971,7 +971,7 @@ void IndexedWords::addWord( wstring const & index_word, uint32_t articleOffset, 
   for ( ;; ) {
     // Skip any whitespace/punctuation
     for ( ;; ++nextChar ) {
-      if ( !*nextChar ) // End of string ends everything
+      if ( *nextChar == 0u ) // End of string ends everything
       {
         if ( wordsAdded == 0 ) {
           wstring folded = Folding::applyWhitespaceOnly( wstring( wordBegin, wordSize ) );
@@ -1013,7 +1013,7 @@ void IndexedWords::addWord( wstring const & index_word, uint32_t articleOffset, 
 
     // Skip all non-whitespace/punctuation
     for ( ++nextChar;; ++nextChar ) {
-      if ( !*nextChar ) {
+      if ( *nextChar == 0u ) {
         return; // End of string ends everything
       }
 
@@ -1042,7 +1042,7 @@ IndexInfo buildIndex( IndexedWords const & indexedWords, File::Index & file )
   // Skip any empty words. No point in indexing those, and some dictionaries
   // are known to have buggy empty-word entries (Stardict's jargon for instance).
 
-  while ( indexSize && nextIndex->first.empty() ) {
+  while ( (indexSize != 0u) && nextIndex->first.empty() ) {
     indexSize--;
     ++nextIndex;
   }
@@ -1117,7 +1117,7 @@ void BtreeIndex::findArticleLinks( QList< WordArticleLink > * articleLinks,
   for ( ;; ) {
     leafEntries = *(uint32_t *)leaf;
 
-    if ( isCancelled && Utils::AtomicInt::loadAcquire( *isCancelled ) ) {
+    if ( isCancelled && (Utils::AtomicInt::loadAcquire( *isCancelled ) != 0) ) {
       return;
     }
 
@@ -1136,7 +1136,7 @@ void BtreeIndex::findArticleLinks( QList< WordArticleLink > * articleLinks,
     }
   }
 
-  if ( !leafEntries ) {
+  if ( leafEntries == 0u ) {
     // Empty leaf? This may only be possible for entirely empty trees only.
     if ( currentNodeOffset != rootOffset ) {
       throw exCorruptedChainData();
@@ -1152,7 +1152,7 @@ void BtreeIndex::findArticleLinks( QList< WordArticleLink > * articleLinks,
     vector< WordArticleLink > result = readChain( chainPtr );
 
     for ( auto & i : result ) {
-      if ( isCancelled && Utils::AtomicInt::loadAcquire( *isCancelled ) ) {
+      if ( isCancelled && (Utils::AtomicInt::loadAcquire( *isCancelled ) != 0) ) {
         return;
       }
 
@@ -1176,7 +1176,7 @@ void BtreeIndex::findArticleLinks( QList< WordArticleLink > * articleLinks,
     if ( chainPtr >= leafEnd ) {
       // We're past the current leaf, fetch the next one
 
-      if ( nextLeaf ) {
+      if ( nextLeaf != 0u ) {
         readNode( nextLeaf, extLeaf );
         leaf    = &extLeaf.front();
         leafEnd = leaf + extLeaf.size();
@@ -1307,7 +1307,7 @@ void BtreeIndex::getHeadwordsFromOffsets( QList< uint32_t > & offsets,
   for ( ;; ) {
     leafEntries = *(uint32_t *)leaf;
 
-    if ( isCancelled && Utils::AtomicInt::loadAcquire( *isCancelled ) ) {
+    if ( isCancelled && (Utils::AtomicInt::loadAcquire( *isCancelled ) != 0) ) {
       return;
     }
 
@@ -1326,7 +1326,7 @@ void BtreeIndex::getHeadwordsFromOffsets( QList< uint32_t > & offsets,
     }
   }
 
-  if ( !leafEntries ) {
+  if ( leafEntries == 0u ) {
     // Empty leaf? This may only be possible for entirely empty trees only.
     if ( currentNodeOffset != rootOffset ) {
       throw exCorruptedChainData();
@@ -1350,7 +1350,7 @@ void BtreeIndex::getHeadwordsFromOffsets( QList< uint32_t > & offsets,
       QList< uint32_t >::Iterator it = std::lower_bound( begOffsets, endOffsets, articleOffset );
 
       if ( it != offsets.end() && *it == articleOffset ) {
-        if ( isCancelled && Utils::AtomicInt::loadAcquire( *isCancelled ) ) {
+        if ( isCancelled && (Utils::AtomicInt::loadAcquire( *isCancelled ) != 0) ) {
           return;
         }
 
@@ -1376,7 +1376,7 @@ void BtreeIndex::getHeadwordsFromOffsets( QList< uint32_t > & offsets,
     if ( chainPtr >= leafEnd ) {
       // We're past the current leaf, fetch the next one
 
-      if ( nextLeaf ) {
+      if ( nextLeaf != 0u ) {
         readNode( nextLeaf, extLeaf );
         leaf    = &extLeaf.front();
         leafEnd = leaf + extLeaf.size();
@@ -1407,7 +1407,7 @@ bool BtreeDictionary::getHeadwords( QStringList & headwords )
   try {
     getAllHeadwords( setOfHeadwords );
 
-    if ( setOfHeadwords.size() ) {
+    if ( setOfHeadwords.size() != 0 ) {
       headwords.reserve( setOfHeadwords.size() );
 
       QSet< QString >::const_iterator it  = setOfHeadwords.constBegin();

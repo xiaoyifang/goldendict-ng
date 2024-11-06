@@ -240,7 +240,7 @@ uint32_t decodeBase64( string const & str )
 
   uint32_t number = 0;
 
-  for ( char const * next = str.c_str(); *next; ++next ) {
+  for ( char const * next = str.c_str(); *next != 0; ++next ) {
     char const * d = strchr( digits, *next );
 
     if ( !d ) {
@@ -379,7 +379,7 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
                            QString::fromUtf8( QUrl::toPercentEncoding( link.simplified() ) ) );
           articleNewString += newLink;
         }
-        if ( pos ) {
+        if ( pos != 0 ) {
           articleNewString += articleString.mid( pos );
           articleString = articleNewString;
           articleNewString.clear();
@@ -464,7 +464,7 @@ void DictdDictionary::makeFTSIndex( QAtomicInt & isCancelled )
     return;
   }
 
-  if ( ensureInitDone().size() ) {
+  if ( ensureInitDone().size() != 0u ) {
     return;
   }
 
@@ -656,7 +656,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
               ++idxHeader.articleCount;
 
               // Check for proper dictionary name
-              if ( !strncmp( buf, "00databaseshort", 15 ) || !strncmp( buf, "00-database-short", 17 ) ) {
+              if ( (strncmp( buf, "00databaseshort", 15 ) == 0) || (strncmp( buf, "00-database-short", 17 ) == 0) ) {
                 // After tab1 should be article offset, after tab2 -- article size
                 uint32_t articleOffset = decodeBase64( string( tab1 + 1, tab2 - tab1 - 1 ) );
                 uint32_t articleSize   = decodeBase64( tab2 + 1 );
@@ -668,15 +668,15 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
                   char * articleBody = dict_data_read_( dz, articleOffset, articleSize, 0, 0 );
                   if ( articleBody ) {
                     char * eol;
-                    if ( !strncmp( articleBody, "00databaseshort", 15 )
-                         || !strncmp( articleBody, "00-database-short", 17 ) ) {
+                    if ( (strncmp( articleBody, "00databaseshort", 15 ) == 0)
+                         || (strncmp( articleBody, "00-database-short", 17 ) == 0) ) {
                       eol = strchr( articleBody, '\n' ); // skip the first line (headword itself)
                     }
                     else {
                       eol = articleBody; // No headword itself
                     }
                     if ( eol ) {
-                      while ( *eol && Utf8::isspace( *eol ) ) {
+                      while ( (*eol != 0) && Utf8::isspace( *eol ) ) {
                         ++eol; // skip spaces
                       }
 

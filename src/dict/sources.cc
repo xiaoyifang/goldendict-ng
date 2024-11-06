@@ -436,7 +436,7 @@ Qt::ItemFlags MediaWikisModel::flags( QModelIndex const & index ) const
   Qt::ItemFlags result = QAbstractItemModel::flags( index );
 
   if ( index.isValid() ) {
-    if ( !index.column() ) {
+    if ( index.column() == 0 ) {
       result |= Qt::ItemIsUserCheckable;
     }
     else {
@@ -510,7 +510,7 @@ QVariant MediaWikisModel::data( QModelIndex const & index, int role ) const
     }
   }
 
-  if ( role == Qt::CheckStateRole && !index.column() ) {
+  if ( role == Qt::CheckStateRole && (index.column() == 0) ) {
     return mediawikis[ index.row() ].enabled ? Qt::Checked : Qt::Unchecked;
   }
 
@@ -523,7 +523,7 @@ bool MediaWikisModel::setData( QModelIndex const & index, const QVariant & value
     return false;
   }
 
-  if ( role == Qt::CheckStateRole && !index.column() ) {
+  if ( role == Qt::CheckStateRole && (index.column() == 0) ) {
     //GD_DPRINTF( "type = %d\n", (int)value.type() );
     //GD_DPRINTF( "value = %d\n", (int)value.toInt() );
 
@@ -695,7 +695,7 @@ QVariant WebSitesModel::data( QModelIndex const & index, int role ) const
     }
   }
 
-  if ( role == Qt::CheckStateRole && !index.column() ) {
+  if ( role == Qt::CheckStateRole && (index.column() == 0) ) {
     return webSites[ index.row() ].enabled ? Qt::Checked : Qt::Unchecked;
   }
 
@@ -712,7 +712,7 @@ bool WebSitesModel::setData( QModelIndex const & index, const QVariant & value, 
     return false;
   }
 
-  if ( role == Qt::CheckStateRole && !index.column() ) {
+  if ( role == Qt::CheckStateRole && (index.column() == 0) ) {
     //GD_DPRINTF( "type = %d\n", (int)value.type() );
     //GD_DPRINTF( "value = %d\n", (int)value.toInt() );
 
@@ -796,7 +796,7 @@ Qt::ItemFlags DictServersModel::flags( QModelIndex const & index ) const
   Qt::ItemFlags result = QAbstractItemModel::flags( index );
 
   if ( index.isValid() ) {
-    if ( !index.column() ) {
+    if ( index.column() == 0 ) {
       result |= Qt::ItemIsUserCheckable;
     }
     else {
@@ -882,7 +882,7 @@ QVariant DictServersModel::data( QModelIndex const & index, int role ) const
     return tr( "Comma-delimited list of search strategies\n(empty string mean \"prefix\" strategy)" );
   }
 
-  if ( role == Qt::CheckStateRole && !index.column() ) {
+  if ( role == Qt::CheckStateRole && (index.column() == 0) ) {
     return dictServers[ index.row() ].enabled ? Qt::Checked : Qt::Unchecked;
   }
 
@@ -895,7 +895,7 @@ bool DictServersModel::setData( QModelIndex const & index, const QVariant & valu
     return false;
   }
 
-  if ( role == Qt::CheckStateRole && !index.column() ) {
+  if ( role == Qt::CheckStateRole && (index.column() == 0) ) {
     // XXX it seems to be always passing Int( 2 ) as a value, so we just toggle
     dictServers[ index.row() ].enabled = !dictServers[ index.row() ].enabled;
 
@@ -978,7 +978,7 @@ Qt::ItemFlags ProgramsModel::flags( QModelIndex const & index ) const
   Qt::ItemFlags result = QAbstractItemModel::flags( index );
 
   if ( index.isValid() ) {
-    if ( !index.column() ) {
+    if ( index.column() == 0 ) {
       result |= Qt::ItemIsUserCheckable;
     }
     else {
@@ -1057,7 +1057,7 @@ QVariant ProgramsModel::data( QModelIndex const & index, int role ) const
     }
   }
 
-  if ( role == Qt::CheckStateRole && !index.column() ) {
+  if ( role == Qt::CheckStateRole && (index.column() == 0) ) {
     return programs[ index.row() ].enabled ? Qt::Checked : Qt::Unchecked;
   }
 
@@ -1070,7 +1070,7 @@ bool ProgramsModel::setData( QModelIndex const & index, const QVariant & value, 
     return false;
   }
 
-  if ( role == Qt::CheckStateRole && !index.column() ) {
+  if ( role == Qt::CheckStateRole && (index.column() == 0) ) {
     programs[ index.row() ].enabled = !programs[ index.row() ].enabled;
 
     dataChanged( index, index );
@@ -1229,7 +1229,7 @@ QVariant PathsModel::data( QModelIndex const & index, int role ) const
     return QVariant();
   }
 
-  if ( ( role == Qt::DisplayRole || role == Qt::EditRole ) && !index.column() ) {
+  if ( ( role == Qt::DisplayRole || role == Qt::EditRole ) && (index.column() == 0) ) {
     return paths[ index.row() ].path;
   }
 
@@ -1344,7 +1344,7 @@ QVariant SoundDirsModel::data( QModelIndex const & index, int role ) const
     return QVariant();
   }
 
-  if ( ( role == Qt::DisplayRole || role == Qt::EditRole ) && !index.column() ) {
+  if ( ( role == Qt::DisplayRole || role == Qt::EditRole ) && (index.column() == 0) ) {
     return soundDirs[ index.row() ].path;
   }
 
@@ -1366,7 +1366,7 @@ bool SoundDirsModel::setData( QModelIndex const & index, const QVariant & value,
   }
 
   if ( ( role == Qt::DisplayRole || role == Qt::EditRole ) && index.column() < 3 ) {
-    if ( !index.column() ) {
+    if ( index.column() == 0 ) {
       soundDirs[ index.row() ].path = value.toString();
     }
     else if ( index.column() == 1 ) {
@@ -1415,7 +1415,7 @@ Qt::ItemFlags HunspellDictsModel::flags( QModelIndex const & index ) const
   Qt::ItemFlags result = QAbstractItemModel::flags( index );
 
   if ( index.isValid() ) {
-    if ( !index.column() ) {
+    if ( index.column() == 0 ) {
       result |= Qt::ItemIsUserCheckable;
     }
   }
@@ -1469,8 +1469,8 @@ QVariant HunspellDictsModel::data( QModelIndex const & index, int role ) const
     return dataFiles[ index.row() ].dictName;
   }
 
-  if ( role == Qt::CheckStateRole && !index.column() ) {
-    for ( unsigned x = enabledDictionaries.size(); x--; ) {
+  if ( role == Qt::CheckStateRole && (index.column() == 0) ) {
+    for ( unsigned x = enabledDictionaries.size(); (x--) != 0u; ) {
       if ( enabledDictionaries[ x ] == dataFiles[ index.row() ].dictId ) {
         return Qt::Checked;
       }
@@ -1488,8 +1488,8 @@ bool HunspellDictsModel::setData( QModelIndex const & index, const QVariant & /*
     return false;
   }
 
-  if ( role == Qt::CheckStateRole && !index.column() ) {
-    for ( unsigned x = enabledDictionaries.size(); x--; ) {
+  if ( role == Qt::CheckStateRole && (index.column() == 0) ) {
+    for ( unsigned x = enabledDictionaries.size(); (x--) != 0u; ) {
       if ( enabledDictionaries[ x ] == dataFiles[ index.row() ].dictId ) {
         // Remove it now
         enabledDictionaries.erase( enabledDictionaries.begin() + x );

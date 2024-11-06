@@ -240,7 +240,7 @@ void FavoritesPaneWidget::addFolder()
   }
 
   QModelIndex folderIdx;
-  if ( selectedIdx.size() ) {
+  if ( selectedIdx.size() != 0 ) {
     folderIdx = m_favoritesModel->addNewFolder( selectedIdx.front() );
   }
   else {
@@ -292,11 +292,11 @@ bool FavoritesPaneWidget::setDataFromTxt( QString const & dataStr )
 
 void FavoritesPaneWidget::setSaveInterval( unsigned interval )
 {
-  if ( timerId ) {
+  if ( timerId != 0 ) {
     killTimer( timerId );
     timerId = 0;
   }
-  if ( interval ) {
+  if ( interval != 0u ) {
     m_favoritesModel->saveData();
     timerId = startTimer( interval * 60000 );
   }

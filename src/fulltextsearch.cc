@@ -22,7 +22,7 @@ void Indexing::run()
     QFutureSynchronizer< void > synchronizer;
     qDebug() << "starting create the fts with thread:" << parallel_count;
     for ( const auto & dictionary : dictionaries ) {
-      if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+      if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
         // synchronizer.setCancelOnWait( true );
         break;
       }
@@ -55,7 +55,7 @@ void Indexing::timeout()
 {
   QString indexingDicts;
   for ( const auto & dictionary : dictionaries ) {
-    if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+    if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
       break;
     }
     //Finished, clear the msg.
@@ -90,7 +90,7 @@ void FtsIndexing::doIndexing()
   }
 
   if ( !started ) {
-    while ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+    while ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
       isCancelled.deref();
     }
 
@@ -107,7 +107,7 @@ void FtsIndexing::doIndexing()
 void FtsIndexing::stopIndexing()
 {
   if ( started ) {
-    if ( !Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+    if ( Utils::AtomicInt::loadAcquire( isCancelled ) == 0 ) {
       isCancelled.ref();
     }
 
@@ -288,7 +288,7 @@ void FullTextSearchDialog::stopSearch()
       }
     }
 
-    while ( searchReqs.size() ) {
+    while ( searchReqs.size() != 0u ) {
       QApplication::processEvents();
     }
   }
@@ -385,7 +385,7 @@ void FullTextSearchDialog::accept()
 void FullTextSearchDialog::searchReqFinished()
 {
   QList< FtsHeadword > allHeadwords;
-  while ( searchReqs.size() ) {
+  while ( searchReqs.size() != 0u ) {
     std::list< sptr< Dictionary::DataRequest > >::iterator it;
     for ( it = searchReqs.begin(); it != searchReqs.end(); ++it ) {
       if ( ( *it )->isFinished() ) {
@@ -393,7 +393,7 @@ void FullTextSearchDialog::searchReqFinished()
 
         QString errorString = ( *it )->getErrorString();
 
-        if ( ( *it )->dataSize() >= 0 || errorString.size() ) {
+        if ( ( *it )->dataSize() >= 0 || (errorString.size() != 0) ) {
           QList< FtsHeadword > * headwords;
           if ( (unsigned)( *it )->dataSize() >= sizeof( headwords ) ) {
             QList< FtsHeadword > hws;
@@ -622,7 +622,7 @@ QString FtsHeadword::trimQuotes( QString const & str ) const
   while ( str[ n ] == '\"' || str[ n ] == '\'' ) {
     n++;
   }
-  if ( n ) {
+  if ( n != 0 ) {
     trimmed = trimmed.mid( n );
   }
 
@@ -639,7 +639,7 @@ bool FtsHeadword::operator<( FtsHeadword const & other ) const
   QString second = trimQuotes( other.headword );
 
   int result = first.localeAwareCompare( second );
-  if ( result ) {
+  if ( result != 0 ) {
     return result < 0;
   }
 

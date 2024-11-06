@@ -257,7 +257,7 @@ void WebSiteArticleRequest::requestFinished( QNetworkReply * r )
       tag.replace( match_links.capturedStart(), match_links.capturedLength(), newUrl );
       articleNewString += tag;
     }
-    if ( pos ) {
+    if ( pos != 0 ) {
       articleNewString += articleString.mid( pos );
       articleString = articleNewString;
       articleNewString.clear();
@@ -280,7 +280,7 @@ void WebSiteArticleRequest::requestFinished( QNetworkReply * r )
       QString newTag = match.captured( 1 ) + prefix + match.captured( 2 ) + "/" + match.captured( 3 );
       articleNewString += newTag;
     }
-    if ( pos ) {
+    if ( pos != 0 ) {
       articleNewString += articleString.mid( pos );
       articleString = articleNewString;
       articleNewString.clear();

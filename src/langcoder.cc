@@ -218,7 +218,7 @@ bool LangCoder::code2Exists( const QString & _code )
 
 QString LangCoder::intToCode2( quint32 val )
 {
-  if ( !val || val == 0xFFffFFff ) {
+  if ( (val == 0u) || val == 0xFFffFFff ) {
     return {};
   }
 

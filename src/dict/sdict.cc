@@ -388,7 +388,7 @@ void SdictDictionary::makeFTSIndex( QAtomicInt & isCancelled )
     return;
   }
 
-  if ( ensureInitDone().size() ) {
+  if ( ensureInitDone().size() != 0u ) {
     return;
   }
 
@@ -482,7 +482,7 @@ public:
 
 void SdictArticleRequest::run()
 {
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
     finish();
     return;
   }
@@ -509,7 +509,7 @@ void SdictArticleRequest::run()
   }
 
   for ( auto & x : chain ) {
-    if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+    if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
       finish();
       return;
     }
@@ -699,7 +699,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         DCT_header dictHeader;
 
         df.read( &dictHeader, sizeof( dictHeader ) );
-        if ( strncmp( dictHeader.signature, "sdct", 4 ) ) {
+        if ( strncmp( dictHeader.signature, "sdct", 4 ) != 0 ) {
           gdWarning( "File \"%s\" is not valid SDictionary file", fileName.c_str() );
           continue;
         }

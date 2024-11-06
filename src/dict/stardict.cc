@@ -259,7 +259,7 @@ StardictDictionary::StardictDictionary( string const & id,
 
   // Open a resource zip file, if there's one
 
-  if ( idxHeader.hasZipFile && ( idxHeader.zipIndexBtreeMaxElements || idxHeader.zipIndexRootOffset ) ) {
+  if ( (idxHeader.hasZipFile != 0u) && ( (idxHeader.zipIndexBtreeMaxElements != 0u) || (idxHeader.zipIndexRootOffset != 0u) ) ) {
     resourceZip.openIndex( IndexInfo( idxHeader.zipIndexBtreeMaxElements, idxHeader.zipIndexRootOffset ),
                            idx,
                            idxMutex );
@@ -516,7 +516,7 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
           articleNewText += match.captured();
         }
       }
-      if ( pos ) {
+      if ( pos != 0 ) {
         articleNewText += articleText.mid( pos );
         articleText = articleNewText;
         articleNewText.clear();
@@ -555,7 +555,7 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
           articleNewText += QString::fromStdString( newTag );
         }
       }
-      if ( pos ) {
+      if ( pos != 0 ) {
         articleNewText += articleText.mid( pos );
         articleText = articleNewText;
         articleNewText.clear();
@@ -615,7 +615,7 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
       return "<div class=\"sdct_P\">(an embedded picture file)</div>";
   }
 
-  if ( islower( type ) ) {
+  if ( islower( type ) != 0 ) {
     return string( "<b>Unknown textual entry type " ) + string( 1, type ) + ":</b> "
       + Html::escape( string( resource, size ) ) + "<br>";
   }
@@ -774,7 +774,7 @@ void StardictDictionary::pangoToHtml( QString & text )
             }
             else {
               int size = cap2.toInt();
-              if ( size ) {
+              if ( size != 0 ) {
                 newSpan += QString( "font-size:%1pt;" ).arg( size / 1024.0, 0, 'f', 3 );
               }
             }
@@ -850,18 +850,18 @@ void StardictDictionary::pangoToHtml( QString & text )
             newSpan += QString( "text-decoration-color:" ) + cap2 + ";";
           }
           else if ( style.compare( "underline", Qt::CaseInsensitive ) == 0 ) {
-            if ( cap2.compare( "none", Qt::CaseInsensitive ) ) {
+            if ( cap2.compare( "none", Qt::CaseInsensitive ) != 0 ) {
               newSpan += QString( "text-decoration-line:none;" );
             }
             else {
               newSpan += QString( "text-decoration-line:underline; " );
-              if ( cap2.compare( "low", Qt::CaseInsensitive ) ) {
+              if ( cap2.compare( "low", Qt::CaseInsensitive ) != 0 ) {
                 newSpan += QString( "text-decoration-style:dotted;" );
               }
-              else if ( cap2.compare( "single", Qt::CaseInsensitive ) ) {
+              else if ( cap2.compare( "single", Qt::CaseInsensitive ) != 0 ) {
                 newSpan += QString( "text-decoration-style:solid;" );
               }
-              else if ( cap2.compare( "error", Qt::CaseInsensitive ) ) {
+              else if ( cap2.compare( "error", Qt::CaseInsensitive ) != 0 ) {
                 newSpan += QString( "text-decoration-style:wavy;" );
               }
               else {
@@ -870,7 +870,7 @@ void StardictDictionary::pangoToHtml( QString & text )
             }
           }
           else if ( style.compare( "strikethrough", Qt::CaseInsensitive ) == 0 ) {
-            if ( cap2.compare( "true", Qt::CaseInsensitive ) ) {
+            if ( cap2.compare( "true", Qt::CaseInsensitive ) != 0 ) {
               newSpan += QString( "text-decoration-line:line-through;" );
             }
             else {
@@ -884,7 +884,7 @@ void StardictDictionary::pangoToHtml( QString & text )
             }
             else {
               int riseValue = cap2.toInt();
-              if ( riseValue ) {
+              if ( riseValue != 0 ) {
                 newSpan += QString( "vertical-align:%1pt;" ).arg( riseValue / 1024.0, 0, 'f', 3 );
               }
             }
@@ -896,7 +896,7 @@ void StardictDictionary::pangoToHtml( QString & text )
             }
             else {
               int spacing = cap2.toInt();
-              if ( spacing ) {
+              if ( spacing != 0 ) {
                 newSpan += QString( "letter-spacing:%1pt;" ).arg( spacing / 1024.0, 0, 'f', 3 );
               }
             }
@@ -952,7 +952,7 @@ void StardictDictionary::loadArticle( uint32_t address, string & headword, strin
       if ( entrySizeKnown ) {
         entrySize = size;
       }
-      else if ( !size ) {
+      else if ( size == 0u ) {
         gdWarning( "Stardict: short entry for the word %s encountered in \"%s\".\n",
                    headword.c_str(),
                    getName().c_str() );
@@ -961,7 +961,7 @@ void StardictDictionary::loadArticle( uint32_t address, string & headword, strin
 
       char type = sameTypeSequence[ seq ];
 
-      if ( islower( type ) ) {
+      if ( islower( type ) != 0 ) {
         // Zero-terminated entry, unless it's the last one
         if ( !entrySizeKnown ) {
           entrySize = strlen( ptr );
@@ -983,7 +983,7 @@ void StardictDictionary::loadArticle( uint32_t address, string & headword, strin
         ptr += entrySize;
         size -= entrySize;
       }
-      else if ( isupper( *ptr ) ) {
+      else if ( isupper( *ptr ) != 0 ) {
         // An entry which has its size before contents, unless it's the last one
 
         if ( !entrySizeKnown ) {
@@ -1025,8 +1025,8 @@ void StardictDictionary::loadArticle( uint32_t address, string & headword, strin
   }
   else {
     // The sequence is stored in each article separately
-    while ( size ) {
-      if ( islower( *ptr ) ) {
+    while ( size != 0u ) {
+      if ( islower( *ptr ) != 0 ) {
         // Zero-terminated entry
         size_t len = strlen( ptr + 1 );
 
@@ -1042,7 +1042,7 @@ void StardictDictionary::loadArticle( uint32_t address, string & headword, strin
         ptr += len + 2;
         size -= len + 2;
       }
-      else if ( isupper( *ptr ) ) {
+      else if ( isupper( *ptr ) != 0 ) {
         // An entry which havs its size before contents
         if ( size < sizeof( uint32_t ) + 1 ) {
           gdWarning( "Stardict: malformed entry for the word %s encountered in \"%s\".\n",
@@ -1147,7 +1147,7 @@ void StardictDictionary::makeFTSIndex( QAtomicInt & isCancelled )
     return;
   }
 
-  if ( ensureInitDone().size() ) {
+  if ( ensureInitDone().size() != 0u ) {
     return;
   }
 
@@ -1232,7 +1232,7 @@ public:
 
 void StardictHeadwordsRequest::run()
 {
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
     finish();
     return;
   }
@@ -1244,7 +1244,7 @@ void StardictHeadwordsRequest::run()
     wstring caseFolded = Folding::applySimpleCaseOnly( word );
 
     for ( auto & x : chain ) {
-      if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+      if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
         finish();
         return;
       }
@@ -1325,7 +1325,7 @@ public:
 
 void StardictArticleRequest::run()
 {
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
     finish();
     return;
   }
@@ -1359,7 +1359,7 @@ void StardictArticleRequest::run()
 
     //if the chain is too large, it is more likely has some dictionary making or parsing issue.
     for ( unsigned x = 0; x < qMin( 10, (int)chain.size() ); ++x ) {
-      if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+      if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
         finish();
         return;
       }
@@ -1474,7 +1474,7 @@ Ifo::Ifo( File::Index & f ):
   //GD_DPRINTF( "%s<\n", f.gets().c_str() );
 
   if ( QString::fromUtf8( f.gets().c_str() ) != "StarDict's dict ifo file"
-       || f.gets().compare( 0, versionEq.size(), versionEq ) ) {
+       || (f.gets().compare( 0, versionEq.size(), versionEq ) != 0) ) {
     throw exNotAnIfoFile();
   }
 
@@ -1582,7 +1582,7 @@ public:
 void StardictResourceRequest::run()
 {
   // Some runnables linger enough that they are cancelled before they start
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
     finish();
     return;
   }
@@ -1659,7 +1659,7 @@ void StardictResourceRequest::run()
           QString( "url(" ) + match.captured( 1 ) + "bres://" + id + "/" + url + match.captured( 3 ) + ")";
         newCSS += newUrl;
       }
-      if ( pos ) {
+      if ( pos != 0 ) {
         newCSS += css.mid( pos );
         css = newCSS;
         newCSS.clear();
@@ -1828,7 +1828,7 @@ static void handleIdxSynFile( string const & fileName,
           continue; // Skip this entry
         }
       }
-      else if ( wordLen && word[ wordLen - 1 ] == '$' ) {
+      else if ( (wordLen != 0u) && word[ wordLen - 1 ] == '$' ) {
         if ( strchr( word, '/' ) ) {
           continue; // Skip this entry
         }
@@ -1877,7 +1877,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       dictFiles.push_back( idxFileName );
       dictFiles.push_back( dictFileName );
 
-      if ( synFileName.size() ) {
+      if ( synFileName.size() != 0u ) {
         dictFiles.push_back( synFileName );
       }
 
@@ -1910,19 +1910,19 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
           throw ex64BitsNotSupported();
         }
 
-        if ( ifo.dicttype.size() ) {
+        if ( ifo.dicttype.size() != 0u ) {
           throw exDicttypeNotSupported();
         }
 
         if ( synFileName.empty() ) {
-          if ( ifo.synwordcount ) {
+          if ( ifo.synwordcount != 0u ) {
             GD_DPRINTF(
               "Warning: dictionary has synwordcount specified, but no "
               "corresponding .syn file was found\n" );
             ifo.synwordcount = 0; // Pretend it wasn't there
           }
         }
-        else if ( !ifo.synwordcount ) {
+        else if ( ifo.synwordcount == 0u ) {
           GD_DPRINTF( "Warning: ignoring .syn file %s, since there's no synwordcount in .ifo specified\n",
                       synFileName.c_str() );
         }
@@ -1952,13 +1952,13 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         ChunkedStorage::Writer chunks( idx );
 
         // Load indices
-        if ( !ifo.synwordcount ) {
+        if ( ifo.synwordcount == 0u ) {
           handleIdxSynFile( idxFileName,
                             indexedWords,
                             chunks,
                             0,
                             false,
-                            !maxHeadwordsToExpand || ifo.wordcount < maxHeadwordsToExpand );
+                            (maxHeadwordsToExpand == 0u) || ifo.wordcount < maxHeadwordsToExpand );
         }
         else {
           vector< uint32_t > articleOffsets;
@@ -1970,14 +1970,14 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
                             chunks,
                             &articleOffsets,
                             false,
-                            !maxHeadwordsToExpand || ( ifo.wordcount + ifo.synwordcount ) < maxHeadwordsToExpand );
+                            (maxHeadwordsToExpand == 0u) || ( ifo.wordcount + ifo.synwordcount ) < maxHeadwordsToExpand );
 
           handleIdxSynFile( synFileName,
                             indexedWords,
                             chunks,
                             &articleOffsets,
                             true,
-                            !maxHeadwordsToExpand || ( ifo.wordcount + ifo.synwordcount ) < maxHeadwordsToExpand );
+                            (maxHeadwordsToExpand == 0u) || ( ifo.wordcount + ifo.synwordcount ) < maxHeadwordsToExpand );
         }
 
         // Finish with the chunks
@@ -2013,7 +2013,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         // If there was a zip file, index it too
 
-        if ( zipFileName.size() ) {
+        if ( zipFileName.size() != 0u ) {
           GD_DPRINTF( "Indexing zip file\n" );
 
           idxHeader.hasZipFile = 1;

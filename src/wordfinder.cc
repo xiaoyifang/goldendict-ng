@@ -200,7 +200,7 @@ void WordFinder::requestFinished()
         searchResultsUncertain = true;
       }
 
-      if ( ( *i )->matchesCount() ) {
+      if ( ( *i )->matchesCount() != 0u ) {
         newResults = true;
 
         // This list is handled by updateResults()
@@ -268,7 +268,7 @@ bool hasSurroundedWithWs( wstring const & haystack, wstring const & needle, wstr
       return false; // Not found
     }
 
-    if ( ( !pos || Folding::isWhitespace( haystack[ pos - 1 ] ) || Folding::isPunct( haystack[ pos - 1 ] ) )
+    if ( ( (pos == 0u) || Folding::isWhitespace( haystack[ pos - 1 ] ) || Folding::isPunct( haystack[ pos - 1 ] ) )
          && ( ( pos + needle.size() == haystack.size() ) || Folding::isWhitespace( haystack[ pos + needle.size() ] )
               || Folding::isPunct( haystack[ pos + needle.size() ] ) ) ) {
       pos = saturated( pos );
@@ -328,7 +328,7 @@ void WordFinder::updateResults()
           // The case is different -- agree on a lowercase version
           insertResult.first->second->word = lowerCased;
         }
-        if ( !weight && insertResult.first->second->wasSuggested ) {
+        if ( (weight == 0) && insertResult.first->second->wasSuggested ) {
           insertResult.first->second->wasSuggested = false;
         }
       }
@@ -448,7 +448,7 @@ void WordFinder::updateResults()
 
           int charsInCommon = 0;
 
-          for ( wchar const *t = target.c_str(), *r = resultFolded.c_str(); *t && *t == *r;
+          for ( wchar const *t = target.c_str(), *r = resultFolded.c_str(); (*t != 0u) && *t == *r;
                 ++t, ++r, ++charsInCommon ) {
             ;
           }

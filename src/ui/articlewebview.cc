@@ -80,7 +80,7 @@ bool ArticleWebView::eventFilter( QObject * obj, QEvent * ev )
         singleClickAction( pe );
       } );
     }
-    if ( pe->buttons() & Qt::MiddleButton ) {
+    if ( pe->buttons() & Qt::MiddleButton != 0u ) {
       midButtonPressed = true;
       QTimer::singleShot( 100, this, [ = ]() {
         sendCustomMouseEvent( QEvent::MouseButtonPress );

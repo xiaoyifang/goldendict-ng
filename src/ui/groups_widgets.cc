@@ -246,16 +246,16 @@ QVariant DictListModel::data( QModelIndex const & index, int role ) const
       }
 
       int entries = item->getArticleCount();
-      if ( !entries ) {
+      if ( entries == 0 ) {
         entries = item->getWordCount();
       }
-      if ( entries ) {
+      if ( entries != 0 ) {
         tt += "<br>" + tr( "%1 entries" ).arg( entries );
       }
 
       const std::vector< std::string > & dirs = item->getDictionaryFilenames();
 
-      if ( dirs.size() ) {
+      if ( dirs.size() != 0u ) {
         tt += "<hr>";
         tt += dirs.at( 0 ).c_str();
       }
@@ -364,7 +364,7 @@ void DictListModel::removeSelectedRows( QItemSelectionModel * source )
 
   const QModelIndexList rows = source->selectedRows();
 
-  if ( !rows.count() ) {
+  if ( rows.count() == 0 ) {
     return;
   }
 
@@ -385,7 +385,7 @@ void DictListModel::addSelectedUniqueFromModel( QItemSelectionModel * source )
 
   const QModelIndexList rows = source->selectedRows();
 
-  if ( !rows.count() ) {
+  if ( rows.count() == 0 ) {
     return;
   }
 
@@ -520,7 +520,7 @@ void DictListWidget::rowsAboutToBeRemoved( QModelIndex const & parent, int start
   // an item just before the first row to be removed, if there's one.
 
   if ( const QModelIndex current = currentIndex();
-       current.isValid() && current.row() && current.row() >= start && current.row() <= end ) {
+       current.isValid() && (current.row() != 0) && current.row() >= start && current.row() <= end ) {
     selectionModel()->setCurrentIndex( model.index( current.row() - 1, 0, parent ), QItemSelectionModel::NoUpdate );
   }
 
@@ -944,7 +944,7 @@ void DictGroupsWidget::removeCurrentGroup()
 
 void DictGroupsWidget::removeAllGroups()
 {
-  while ( count() ) {
+  while ( count() != 0 ) {
     const QWidget * w = widget( 0 );
     removeTab( 0 );
     delete w;

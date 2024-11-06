@@ -14,7 +14,7 @@ string escape( string const & str )
 {
   string result( str );
 
-  for ( size_t x = result.size(); x--; ) {
+  for ( size_t x = result.size(); (x--) != 0u; ) {
     switch ( result[ x ] ) {
       case '&':
         result.erase( x, 1 );
@@ -64,7 +64,7 @@ string preformat( string const & str, bool baseRightToLeft )
 
   bool leading = true;
 
-  for ( char const * nextChar = escaped.c_str(); *nextChar; ++nextChar ) {
+  for ( char const * nextChar = escaped.c_str(); *nextChar != 0; ++nextChar ) {
     if ( leading ) {
       if ( *nextChar == ' ' ) {
         line += "&nbsp;";
@@ -103,7 +103,7 @@ string escapeForJavaScript( string const & str )
 {
   string result( str );
 
-  for ( size_t x = result.size(); x--; ) {
+  for ( size_t x = result.size(); (x--) != 0u; ) {
     switch ( result[ x ] ) {
       case '\\':
       case '"':

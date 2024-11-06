@@ -59,7 +59,7 @@ bool dictLessThan( sptr< Dictionary::Class > const & dict1, sptr< Dictionary::Cl
     return true;
   }
   int res = str1.localeAwareCompare( str2 );
-  if ( res ) {
+  if ( res != 0 ) {
     return res < 0;
   }
 
@@ -72,7 +72,7 @@ bool dictLessThan( sptr< Dictionary::Class > const & dict1, sptr< Dictionary::Cl
     return true;
   }
   res = str1.localeAwareCompare( str2 );
-  if ( res ) {
+  if ( res != 0 ) {
     return res < 0;
   }
 

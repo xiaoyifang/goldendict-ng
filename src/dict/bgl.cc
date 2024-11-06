@@ -97,13 +97,13 @@ bool indexIsOldOrBad( string const & indexFile )
 // Removes the $1$-like postfix
 string removePostfix( string const & in )
 {
-  if ( in.size() && in[ in.size() - 1 ] == '$' ) {
+  if ( (in.size() != 0u) && in[ in.size() - 1 ] == '$' ) {
     // Find the end of it and cut it, barring any unexpectedness
     for ( long x = in.size() - 2; x >= 0; x-- ) {
       if ( in[ x ] == '$' ) {
         return in.substr( 0, x );
       }
-      else if ( !isdigit( in[ x ] ) ) {
+      else if ( isdigit( in[ x ] ) == 0 ) {
         break;
       }
     }
@@ -115,7 +115,7 @@ string removePostfix( string const & in )
 // Removes any leading or trailing whitespace
 void trimWs( string & word )
 {
-  if ( word.size() ) {
+  if ( word.size() != 0u ) {
     unsigned begin = 0;
 
     while ( begin < word.size() && Utf8::isspace( word[ begin ] ) ) {
@@ -134,7 +134,7 @@ void trimWs( string & word )
         --end;
       }
 
-      if ( end != word.size() || begin ) {
+      if ( end != word.size() || (begin != 0u) ) {
         word = string( word, begin, end - begin );
       }
     }
@@ -152,7 +152,7 @@ void addEntryToIndex( string & word,
   // If the word starts with a slash, we drop it. There are quite a lot
   // of them, and they all seem to be redudant duplicates.
 
-  if ( word.size() && word[ 0 ] == '/' ) {
+  if ( (word.size() != 0u) && word[ 0 ] == '/' ) {
     return;
   }
 
@@ -160,7 +160,7 @@ void addEntryToIndex( string & word,
   // signifies different meaning in Bgl files. We emit different meaning
   // as different articles, but they appear in the index as the same word.
 
-  if ( word.size() && word[ word.size() - 1 ] == '$' ) {
+  if ( (word.size() != 0u) && word[ word.size() - 1 ] == '$' ) {
     word = removePostfix( word );
     trimWs( word );
   }
@@ -264,7 +264,7 @@ BglDictionary::BglDictionary( string const & id, string const & indexFile, strin
 
   size_t len = idx.read< uint32_t >();
 
-  if ( len ) {
+  if ( len != 0u ) {
     vector< char > nameBuf( len );
 
     idx.read( &nameBuf.front(), len );
@@ -291,7 +291,7 @@ void BglDictionary::loadIcon() noexcept
   fileName.chop( 3 );
 
   if ( !loadIconFromFile( fileName ) ) {
-    if ( idxHeader.iconSize ) {
+    if ( idxHeader.iconSize != 0u ) {
 
       // Try loading icon now
 
@@ -400,11 +400,11 @@ void BglDictionary::getArticleText( uint32_t articleAddress, QString & headword,
     // Some headword normalization similar while indexing
     trimWs( headwordStr );
 
-    if ( headwordStr.size() && headwordStr[ 0 ] == '/' ) {
+    if ( (headwordStr.size() != 0u) && headwordStr[ 0 ] == '/' ) {
       headwordStr.erase(); // We will take headword from index later
     }
 
-    if ( headwordStr.size() && headwordStr[ headwordStr.size() - 1 ] == '$' ) {
+    if ( (headwordStr.size() != 0u) && headwordStr[ headwordStr.size() - 1 ] == '$' ) {
       headwordStr = removePostfix( headwordStr );
       trimWs( headwordStr );
     }
@@ -493,7 +493,7 @@ public:
 
 void BglHeadwordsRequest::run()
 {
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
     finish();
     return;
   }
@@ -503,7 +503,7 @@ void BglHeadwordsRequest::run()
   wstring caseFolded = Folding::applySimpleCaseOnly( str );
 
   for ( auto & x : chain ) {
-    if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+    if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
       finish();
       return;
     }
@@ -541,7 +541,7 @@ sptr< Dictionary::WordSearchRequest > BglDictionary::findHeadwordsForSynonym( ws
 // Converts a $1$-like postfix to a <sup>1</sup> one
 string postfixToSuperscript( string const & in )
 {
-  if ( !in.size() || in[ in.size() - 1 ] != '$' ) {
+  if ( (in.size() == 0u) || in[ in.size() - 1 ] != '$' ) {
     return in;
   }
 
@@ -557,7 +557,7 @@ string postfixToSuperscript( string const & in )
         return in.substr( 0, x ) + "<sup>" + in.substr( x + 1, in.size() - x - 2 ) + "</sup>";
       }
     }
-    else if ( !isdigit( in[ x ] ) ) {
+    else if ( isdigit( in[ x ] ) == 0 ) {
       break;
     }
   }
@@ -651,7 +651,7 @@ void BglArticleRequest::fixHebArticle( string & hebArticle ) // Hebrew support -
 
 void BglArticleRequest::run()
 {
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
     finish();
     return;
   }
@@ -683,7 +683,7 @@ void BglArticleRequest::run()
   }
 
   for ( auto & x : chain ) {
-    if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+    if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
       finish();
       return;
     }
@@ -712,13 +712,13 @@ void BglArticleRequest::run()
 
       // Hebrew support - fix Hebrew text
       if ( dict.idxHeader.langFrom == hebrew ) {
-        displayedHeadword = displayedHeadword.size() ? displayedHeadword : headword;
+        displayedHeadword = (displayedHeadword.size() != 0u) ? displayedHeadword : headword;
         fixHebString( articleText );
         fixHebArticle( articleText );
         fixHebString( displayedHeadword );
       }
 
-      string const & targetHeadword = displayedHeadword.size() ? displayedHeadword : headword;
+      string const & targetHeadword = (displayedHeadword.size() != 0u) ? displayedHeadword : headword;
 
       QCryptographicHash hash( QCryptographicHash::Md5 );
       hash.addData( targetHeadword.data(), targetHeadword.size() + 1 ); // with 0
@@ -883,7 +883,7 @@ public:
 
 void BglResourceRequest::run()
 {
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
     finish();
     return;
   }
@@ -898,15 +898,15 @@ void BglResourceRequest::run()
 
   idx.seek( resourceListOffset );
 
-  for ( size_t count = resourcesCount; count--; ) {
-    if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+  for ( size_t count = resourcesCount; (count--) != 0u; ) {
+    if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
       break;
     }
 
     vector< char > nameData( idx.read< uint32_t >() );
     idx.read( &nameData.front(), nameData.size() );
 
-    for ( size_t x = nameData.size(); x--; ) {
+    for ( size_t x = nameData.size(); (x--) != 0u; ) {
       nameData[ x ] = tolower( nameData[ x ] );
     }
 
@@ -979,7 +979,7 @@ void BglDictionary::replaceCharsetEntities( string & text )
     }
   }
 
-  if ( pos ) {
+  if ( pos != 0 ) {
     result += str.mid( pos );
     str = result;
   }

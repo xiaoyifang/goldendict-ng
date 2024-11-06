@@ -152,7 +152,7 @@ void QtSingleApplication::sysInit(const QString &appId)
 */
 
 QtSingleApplication::QtSingleApplication(int &argc, char **argv, bool GUIenabled)
-    : QApplication(argc, argv, GUIenabled)
+    : QApplication(argc, argv, static_cast<int>(GUIenabled))
 {
     sysInit();
 }

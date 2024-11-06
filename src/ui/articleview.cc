@@ -325,11 +325,11 @@ void ArticleView::showDefinition( QString const & word,
     Utils::Url::addQueryItem( req, "ignore_diacritics", "1" );
   }
 
-  if ( scrollTo.size() ) {
+  if ( scrollTo.size() != 0 ) {
     Utils::Url::addQueryItem( req, "scrollto", scrollTo );
   }
 
-  if ( delayedHighlightText.size() ) {
+  if ( delayedHighlightText.size() != 0 ) {
     Utils::Url::addQueryItem( req, "regexp", delayedHighlightText );
     delayedHighlightText.clear();
   }
@@ -339,7 +339,7 @@ void ArticleView::showDefinition( QString const & word,
     contexts.erase( pos );
   }
 
-  if ( contexts.size() ) {
+  if ( contexts.size() != 0 ) {
     QBuffer buf;
     buf.open( QIODevice::WriteOnly );
     QDataStream stream( &buf );
@@ -351,7 +351,7 @@ void ArticleView::showDefinition( QString const & word,
 
   QString mutedDicts = getMutedForGroup( group );
 
-  if ( mutedDicts.size() ) {
+  if ( mutedDicts.size() != 0 ) {
     Utils::Url::addQueryItem( req, "muted", mutedDicts );
   }
 
@@ -744,7 +744,7 @@ bool ArticleView::eventFilter( QObject * obj, QEvent * ev )
     if ( ev->type() == QEvent::KeyPress ) {
       auto keyEvent = static_cast< QKeyEvent * >( ev );
 
-      if ( keyEvent->modifiers() & ( Qt::ControlModifier | Qt::AltModifier | Qt::MetaModifier ) ) {
+      if ( keyEvent->modifiers() & ( Qt::ControlModifier | Qt::AltModifier | Qt::MetaModifier ) != 0u ) {
         return false; // A non-typing modifier is pressed
       }
 
@@ -755,7 +755,7 @@ bool ArticleView::eventFilter( QObject * obj, QEvent * ev )
 
       QString text = keyEvent->text();
 
-      if ( text.size() ) {
+      if ( text.size() != 0 ) {
         emit typingEvent( text );
         return true;
       }
@@ -897,7 +897,7 @@ void ArticleView::linkClicked( QUrl const & url_ )
   Qt::KeyboardModifiers kmod = QApplication::keyboardModifiers();
 
   // Lock jump on links while Alt key is pressed
-  if ( kmod & Qt::AltModifier ) {
+  if ( kmod & Qt::AltModifier != 0u ) {
     return;
   }
 
@@ -906,7 +906,7 @@ void ArticleView::linkClicked( QUrl const & url_ )
 
   tryMangleWebsiteClickedUrl( url, contexts );
 
-  if ( !popupView && ( webview->isMidButtonPressed() || ( kmod & ( Qt::ControlModifier | Qt::ShiftModifier ) ) )
+  if ( !popupView && ( webview->isMidButtonPressed() || (( kmod & ( Qt::ControlModifier | Qt::ShiftModifier ) ) != 0u) )
        && !isAudioLink( url ) ) {
     // Mid button or Control/Shift is currently pressed - open the link in new tab
     webview->resetMidButtonPressed();
@@ -1183,7 +1183,7 @@ void ArticleView::updateMutedContents()
 
   unsigned group = getGroup( currentUrl );
 
-  if ( !group ) {
+  if ( group == 0u ) {
     return; // No group in url -- do nothing
   }
 
@@ -1194,7 +1194,7 @@ void ArticleView::updateMutedContents()
 
     Utils::Url::removeQueryItem( currentUrl, "muted" );
 
-    if ( mutedDicts.size() ) {
+    if ( mutedDicts.size() != 0 ) {
       Utils::Url::addQueryItem( currentUrl, "muted", mutedDicts );
     }
 
@@ -1420,7 +1420,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
   QString const selectedText = webview->selectedText();
   QString text               = Utils::trimNonChar( selectedText );
 
-  if ( text.size() && text.size() < 60 ) {
+  if ( (text.size() != 0) && text.size() < 60 ) {
     // We don't prompt for selections larger or equal to 60 chars, since
     // it ruins the menu and it's hardly a single word anyway.
 
@@ -1443,7 +1443,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
       ( currentGroupId != getGroup( webview->url() ) ) ? dictionaryGroup->getGroupById( currentGroupId ) : nullptr;
 
     if ( altGroup ) {
-      QIcon icon = altGroup->icon.size() ? QIcon( ":/flags/" + altGroup->icon ) : QIcon();
+      QIcon icon = (altGroup->icon.size() != 0) ? QIcon( ":/flags/" + altGroup->icon ) : QIcon();
 
       lookupSelectionGr = new QAction( icon, tr( "Look up \"%1\" in %2" ).arg( text ).arg( altGroup->name ), &menu );
       menu.addAction( lookupSelectionGr );
@@ -1458,7 +1458,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
     }
   }
 
-  if ( text.size() ) {
+  if ( text.size() != 0 ) {
     // avoid too long in the menu ,use left 30 characters.
     saveBookmark = new QAction( tr( "Save &Bookmark \"%1...\"" ).arg( text.left( 30 ) ), &menu );
     menu.addAction( saveBookmark );
@@ -1472,7 +1472,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
                                                                   tr( "&Send selected text to Anki" ) );
   }
 
-  if ( text.isEmpty() && !cfg.preferences.storeHistory ) {
+  if ( text.isEmpty() && (cfg.preferences.storeHistory == 0u) ) {
     QString txt = webview->title();
     if ( txt.size() > 60 ) {
       txt = txt.left( 60 ) + "...";
@@ -1482,7 +1482,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
     menu.addAction( addHeaderToHistoryAction );
   }
 
-  if ( selectedText.size() ) {
+  if ( selectedText.size() != 0 ) {
     menu.addAction( webview->pageAction( QWebEnginePage::Copy ) );
     menu.addAction( &copyAsTextAction );
   }
@@ -1563,7 +1563,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
       // This action is handled by a slot.
       return;
     }
-    else if ( result == lookupSelectionGr && currentGroupId ) {
+    else if ( result == lookupSelectionGr && (currentGroupId != 0u) ) {
       showDefinition( selectedText, currentGroupId, QString() );
     }
     else if ( result == addWordToHistoryAction ) {
@@ -1581,7 +1581,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
     else if ( !popupView && result == lookupSelectionNewTab ) {
       emit showDefinitionInNewTab( selectedText, getGroup( webview->url() ), getCurrentArticle(), Contexts() );
     }
-    else if ( !popupView && result == lookupSelectionNewTabGr && currentGroupId ) {
+    else if ( !popupView && result == lookupSelectionNewTabGr && (currentGroupId != 0u) ) {
       emit showDefinitionInNewTab( selectedText, currentGroupId, QString(), Contexts() );
     }
     else if ( result == saveImageAction || result == saveSoundAction ) {
@@ -1621,7 +1621,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
         if ( name[ 0 ] == '\x1E' ) {
           name.remove( 0, 1 );
         }
-        if ( name.length() && name[ name.length() - 1 ] == '\x1F' ) {
+        if ( (name.length() != 0) && name[ name.length() - 1 ] == '\x1F' ) {
           name.chop( 1 );
         }
 
@@ -1650,7 +1650,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
       if ( name[ 0 ] == '\x1E' ) {
         name.remove( 0, 1 );
       }
-      if ( name.length() && name[ name.length() - 1 ] == '\x1F' ) {
+      if ( (name.length() != 0) && name[ name.length() - 1 ] == '\x1F' ) {
         name.chop( 1 );
       }
 
@@ -1678,7 +1678,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
       // Match against table of contents
       QString id = tableOfContents[ result ];
 
-      if ( id.size() ) {
+      if ( id.size() != 0 ) {
         setCurrentArticle( scrollToFromDictionaryId( id ), true );
       }
     }
@@ -1784,7 +1784,7 @@ void ArticleView::moveOneArticleUp()
 {
   QString current = getCurrentArticle();
 
-  if ( current.size() ) {
+  if ( current.size() != 0 ) {
     QStringList lst = getArticlesList();
 
     int idx = lst.indexOf( dictionaryIdFromScrollTo( current ) );
@@ -1908,10 +1908,10 @@ void ArticleView::doubleClicked( QPoint pos )
 
     emit sendWordToInputLine( selectedText );
     // Do some checks to make sure there's a sensible selection indeed
-    if ( Folding::applyWhitespaceOnly( gd::toWString( selectedText ) ).size() && selectedText.size() < 60 ) {
+    if ( (Folding::applyWhitespaceOnly( gd::toWString( selectedText ) ).size() != 0u) && selectedText.size() < 60 ) {
       // Initiate translation
       Qt::KeyboardModifiers kmod = QApplication::keyboardModifiers();
-      if ( kmod & ( Qt::ControlModifier | Qt::ShiftModifier ) ) { // open in new tab
+      if ( kmod & ( Qt::ControlModifier | Qt::ShiftModifier ) != 0u ) { // open in new tab
         emit showDefinitionInNewTab( selectedText, getGroup( webview->url() ), getCurrentArticle(), Contexts() );
       }
       else {
@@ -2209,7 +2209,7 @@ void ResourceToSaveHandler::downloadFinished()
             file.close();
           }
 
-          if ( file.error() ) {
+          if ( file.error() != 0u ) {
             emit statusBarMessage( tr( "ERROR: %1" ).arg( tr( "Resource saving error: " ) + file.errorString() ),
                                    10000,
                                    QPixmap( ":/icons/error.svg" ) );

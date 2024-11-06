@@ -182,7 +182,7 @@ GlsScanner::GlsScanner( string const & fileName ):
     encoding = Utf8::Utf8;
   }
   else {
-    if ( gzrewind( f ) ) {
+    if ( gzrewind( f ) != 0 ) {
       gzclose( f );
       throw exCantOpen( fileName );
     }
@@ -251,7 +251,7 @@ bool GlsScanner::readNextLine( wstring & out, size_t & offset )
   {
     // Check that we have bytes to read
     if ( readBufferLeft < 5000 ) {
-      if ( !gzeof( f ) ) {
+      if ( gzeof( f ) == 0 ) {
         // To avoid having to deal with ring logic, we move the remaining bytes
         // to the beginning
         memmove( readBuffer, readBufferPtr, readBufferLeft );
@@ -477,7 +477,7 @@ GlsDictionary::GlsDictionary( string const & id, string const & indexFile, vecto
 
   // Open a resource zip file, if there's one
 
-  if ( idxHeader.hasZipFile && ( idxHeader.zipIndexBtreeMaxElements || idxHeader.zipIndexRootOffset ) ) {
+  if ( (idxHeader.hasZipFile != 0u) && ( (idxHeader.zipIndexBtreeMaxElements != 0u) || (idxHeader.zipIndexRootOffset != 0u) ) ) {
     resourceZip.openIndex( IndexInfo( idxHeader.zipIndexBtreeMaxElements, idxHeader.zipIndexRootOffset ),
                            idx,
                            idxMutex );
@@ -573,7 +573,7 @@ void GlsDictionary::makeFTSIndex( QAtomicInt & isCancelled )
     return;
   }
 
-  if ( ensureInitDone().size() ) {
+  if ( ensureInitDone().size() != 0u ) {
     return;
   }
 
@@ -671,7 +671,7 @@ void GlsDictionary::loadArticle( uint32_t address, string & headword, string & a
   loadArticleText( address, headwords, articleBody );
 
   QString article = QString::fromLatin1( "<div class=\"glsdict\">" );
-  if ( headwords.size() ) {
+  if ( headwords.size() != 0u ) {
     // Headwords
     article += "<div class=\"glsdict_headwords\"";
     if ( isFromLanguageRTL() ) {
@@ -762,7 +762,7 @@ QString & GlsDictionary::filterResource( QString & article )
       articleNewText += match.captured();
     }
   }
-  if ( pos ) {
+  if ( pos != 0 ) {
     articleNewText += article.mid( pos );
     article = articleNewText;
     articleNewText.clear();
@@ -803,7 +803,7 @@ QString & GlsDictionary::filterResource( QString & article )
       articleNewText += newTag;
     }
   }
-  if ( pos ) {
+  if ( pos != 0 ) {
     articleNewText += article.mid( pos );
     article = articleNewText;
     articleNewText.clear();
@@ -867,7 +867,7 @@ public:
 
 void GlsHeadwordsRequest::run()
 {
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
     finish();
     return;
   }
@@ -878,7 +878,7 @@ void GlsHeadwordsRequest::run()
     wstring caseFolded = Folding::applySimpleCaseOnly( word );
 
     for ( auto & x : chain ) {
-      if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+      if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
         finish();
         return;
       }
@@ -959,7 +959,7 @@ public:
 
 void GlsArticleRequest::run()
 {
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
     finish();
     return;
   }
@@ -986,7 +986,7 @@ void GlsArticleRequest::run()
     }
 
     for ( auto & x : chain ) {
-      if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+      if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
         finish();
         return;
       }
@@ -1098,7 +1098,7 @@ public:
 void GlsResourceRequest::run()
 {
   // Some runnables linger enough that they are cancelled before they start
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
     finish();
     return;
   }
@@ -1175,7 +1175,7 @@ void GlsResourceRequest::run()
           QString( "url(" ) + match.captured( 1 ) + "bres://" + id + "/" + url + match.captured( 3 ) + ")";
         newCSS += newUrl;
       }
-      if ( pos ) {
+      if ( pos != 0 ) {
         newCSS += css.mid( pos );
         css = newCSS;
         newCSS.clear();
@@ -1262,7 +1262,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       string indexFile = indicesDir + dictId;
 
       if ( Dictionary::needToRebuildIndex( dictFiles, indexFile )
-           || indexIsOldOrBad( indexFile, zipFileName.size() ) ) {
+           || indexIsOldOrBad( indexFile, zipFileName.size() != 0u ) ) {
         GlsScanner scanner( fileName );
 
         try { // Here we intercept any errors during the read to save line at
@@ -1373,7 +1373,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
           // If there was a zip file, index it too
 
-          if ( zipFileName.size() ) {
+          if ( zipFileName.size() != 0u ) {
             GD_DPRINTF( "Indexing zip file\n" );
 
             idxHeader.hasZipFile = 1;

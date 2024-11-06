@@ -73,13 +73,13 @@ public:
 
   qint64 readData( char * data, qint64 len ) override
   {
-    if ( !len ) {
+    if ( len == 0 ) {
       return 0;
     }
 
     QMutexLocker locker( &mutex );
     qint64 bytesWritten = 0;
-    while ( len && !quit ) {
+    while ( (len != 0) && !quit ) {
       if ( buffer.isEmpty() ) {
         // Wait for more frames
         if ( bytesWritten == 0 ) {
@@ -124,7 +124,7 @@ public:
 
   void init( const QAudioFormat & fmt )
   {
-    if ( !audioOutput || ( fmt.isValid() && audioOutput->format() != fmt )
+    if ( (audioOutput == nullptr) || ( fmt.isValid() && audioOutput->format() != fmt )
          || audioOutput->state() == QAudio::StoppedState ) {
       if ( audioOutput ) {
         audioOutput->deleteLater();

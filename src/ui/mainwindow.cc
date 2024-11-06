@@ -606,7 +606,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   // History
   ui.historyPaneWidget->setUp( &cfg, &history, ui.menuHistory );
-  history.enableAdd( cfg.preferences.storeHistory );
+  history.enableAdd( cfg.preferences.storeHistory != 0u );
 
   connect( ui.historyPaneWidget, &HistoryPaneWidget::historyItemRequested, this, &MainWindow::showHistoryItem );
 
@@ -780,15 +780,15 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   ArticleView * view = getCurrentArticleView();
   history.enableAdd( false );
   view->showDefinition( tr( "Welcome!" ), GroupId::HelpGroupId );
-  history.enableAdd( cfg.preferences.storeHistory );
+  history.enableAdd( cfg.preferences.storeHistory != 0u );
 
   // restore should be called after all UI initialized but not necessarily after show()
   // This must be called before show() as of Qt6.5 on Windows, not sure if it is a bug
   // Due to a bug of WebEngine, this also must be called after WebEngine has a view loaded https://bugreports.qt.io/browse/QTBUG-115074
-  if ( cfg.mainWindowState.size() && !cfg.resetState ) {
+  if ( (cfg.mainWindowState.size() != 0) && !cfg.resetState ) {
     restoreState( cfg.mainWindowState );
   }
-  if ( cfg.mainWindowGeometry.size() ) {
+  if ( cfg.mainWindowGeometry.size() != 0 ) {
     restoreGeometry( cfg.mainWindowGeometry );
   }
 
@@ -965,7 +965,7 @@ void MainWindow::updateMatchResults( bool finished )
       i->setTextAlignment( Qt::AlignLeft );
     }
 
-    if ( ui.wordList->count() ) {
+    if ( ui.wordList->count() != 0 ) {
       ui.wordList->scrollToItem( ui.wordList->item( 0 ), QAbstractItemView::PositionAtTop );
       ui.wordList->setCurrentItem( nullptr, QItemSelectionModel::Clear );
     }
@@ -1093,7 +1093,7 @@ void MainWindow::updateSearchPaneAndBar( bool searchInDock )
     // handle the main toolbar, it must not be on the side, since it should
     // contain the group widget and the translate line. Valid locations: Top and Bottom.
     navToolbar->setAllowedAreas( Qt::BottomToolBarArea | Qt::TopToolBarArea );
-    if ( toolBarArea( navToolbar ) & ( Qt::LeftToolBarArea | Qt::RightToolBarArea ) ) {
+    if ( toolBarArea( navToolbar ) & ( Qt::LeftToolBarArea | Qt::RightToolBarArea ) != 0u ) {
       if ( toolBarArea( &dictionaryBar ) == Qt::TopToolBarArea ) {
         insertToolBar( &dictionaryBar, navToolbar );
       }
@@ -1161,7 +1161,7 @@ MainWindow::~MainWindow()
 
   // Close all tabs -- they should be destroyed before network managers
   // do.
-  while ( ui.tabWidget->count() ) {
+  while ( ui.tabWidget->count() != 0 ) {
     QWidget * w = ui.tabWidget->widget( 0 );
 
     ui.tabWidget->removeTab( 0 );
@@ -1539,11 +1539,11 @@ void MainWindow::applyProxySettings()
     proxy.setHostName( cfg.preferences.proxyServer.host );
     proxy.setPort( cfg.preferences.proxyServer.port );
 
-    if ( cfg.preferences.proxyServer.user.size() ) {
+    if ( cfg.preferences.proxyServer.user.size() != 0 ) {
       proxy.setUser( cfg.preferences.proxyServer.user );
     }
 
-    if ( cfg.preferences.proxyServer.password.size() ) {
+    if ( cfg.preferences.proxyServer.password.size() != 0 ) {
       proxy.setPassword( cfg.preferences.proxyServer.password );
     }
   }
@@ -1609,7 +1609,7 @@ void MainWindow::updateStatusLine()
 {
   unsigned articleCount = 0, wordCount = 0;
 
-  for ( unsigned x = dictionaries.size(); x--; ) {
+  for ( unsigned x = dictionaries.size(); (x--) != 0u; ) {
     articleCount += dictionaries[ x ]->getArticleCount();
     wordCount += dictionaries[ x ]->getWordCount();
   }
@@ -1970,7 +1970,7 @@ void MainWindow::switchToPrevTab()
     return;
   }
 
-  if ( !ui.tabWidget->currentIndex() ) {
+  if ( ui.tabWidget->currentIndex() == 0 ) {
     ui.tabWidget->setCurrentIndex( ui.tabWidget->count() - 1 );
   }
   else {
@@ -2143,7 +2143,7 @@ void MainWindow::updateFoundInDictsList()
     for ( QStringList::const_iterator i = ids.constBegin(); i != ids.constEnd(); ++i ) {
       // Find this dictionary
 
-      for ( unsigned x = dictionaries.size(); x--; ) {
+      for ( unsigned x = dictionaries.size(); (x--) != 0u; ) {
         if ( dictionaries[ x ]->getId() == i->toUtf8().data() ) {
           QString dictName = QString::fromUtf8( dictionaries[ x ]->getName().c_str() );
           QString dictId   = QString::fromUtf8( dictionaries[ x ]->getId().c_str() );
@@ -2360,7 +2360,7 @@ void MainWindow::editPreferences()
 
     setAutostart( cfg.preferences.autoStart );
 
-    history.enableAdd( cfg.preferences.storeHistory );
+    history.enableAdd( cfg.preferences.storeHistory != 0u );
     history.setMaxSize( cfg.preferences.maxStringsInHistory );
     ui.historyPaneWidget->updateHistoryCounts();
 
@@ -2461,7 +2461,7 @@ void MainWindow::updateSuggestionList( QString const & newValue )
 
   QString req = newValue.trimmed();
 
-  if ( !req.size() ) {
+  if ( req.size() == 0 ) {
     // An empty request always results in an empty result
     wordFinder.cancel();
     ui.wordList->clear();
@@ -2489,7 +2489,7 @@ void MainWindow::respondToTranslationRequest( QString const & word,
 {
   if ( !word.isEmpty() ) {
     Qt::KeyboardModifiers mods = QApplication::keyboardModifiers();
-    if ( checkModifiers && ( mods & ( Qt::ControlModifier | Qt::ShiftModifier ) ) ) {
+    if ( checkModifiers && (( mods & ( Qt::ControlModifier | Qt::ShiftModifier ) ) != 0u) ) {
       addNewTab();
     }
 
@@ -2660,7 +2660,7 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
       QKeyEvent * keyEvent = dynamic_cast< QKeyEvent * >( ev );
 
       if ( cfg.preferences.searchInDock ) {
-        if ( keyEvent->matches( QKeySequence::MoveToNextLine ) && ui.wordList->count() ) {
+        if ( keyEvent->matches( QKeySequence::MoveToNextLine ) && (ui.wordList->count() != 0) ) {
           ui.wordList->setFocus( Qt::ShortcutFocusReason );
           ui.wordList->setCurrentRow( 0, QItemSelectionModel::ClearAndSelect );
           return true;
@@ -2681,13 +2681,13 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
     if ( ev->type() == QEvent::KeyPress ) {
       QKeyEvent * keyEvent = dynamic_cast< QKeyEvent * >( ev );
 
-      if ( keyEvent->matches( QKeySequence::MoveToPreviousLine ) && !ui.wordList->currentRow() ) {
+      if ( keyEvent->matches( QKeySequence::MoveToPreviousLine ) && (ui.wordList->currentRow() == 0) ) {
         ui.wordList->setCurrentRow( 0, QItemSelectionModel::Clear );
         translateLine->setFocus( Qt::ShortcutFocusReason );
         return true;
       }
 
-      if ( keyEvent->matches( QKeySequence::InsertParagraphSeparator ) && ui.wordList->selectedItems().size() ) {
+      if ( keyEvent->matches( QKeySequence::InsertParagraphSeparator ) && (ui.wordList->selectedItems().size() != 0) ) {
         if ( cfg.preferences.searchInDock ) {
           if ( ui.searchPane->isFloating() ) {
             activateWindow();
@@ -2749,7 +2749,7 @@ void MainWindow::dictsListItemActivated( QListWidgetItem * item )
 void MainWindow::dictsListSelectionChanged()
 {
   QList< QListWidgetItem * > selected = ui.dictsList->selectedItems();
-  if ( selected.size() ) {
+  if ( selected.size() != 0 ) {
     jumpToDictionary( selected.front() );
   }
 }
@@ -2841,7 +2841,7 @@ void MainWindow::showHistoryItem( QString const & word )
   setInputLineText( word, WildcardPolicy::EscapeWildcards, DisablePopup );
   showTranslationFor( word );
 
-  history.enableAdd( cfg.preferences.storeHistory );
+  history.enableAdd( cfg.preferences.storeHistory != 0u );
 }
 
 void MainWindow::showTranslationFor( QString const & word, unsigned inGroup, QString const & scrollTo )
@@ -2850,7 +2850,7 @@ void MainWindow::showTranslationFor( QString const & word, unsigned inGroup, QSt
 
   navPronounce->setEnabled( false );
 
-  unsigned group = inGroup ? inGroup : ( groupInstances.empty() ? 0 : groupInstances[ groupList->currentIndex() ].id );
+  unsigned group = (inGroup != 0u) ? inGroup : ( groupInstances.empty() ? 0 : groupInstances[ groupList->currentIndex() ].id );
 
   view->showDefinition( word, group, scrollTo );
 
@@ -2989,7 +2989,7 @@ void MainWindow::installHotKeys()
 
 void MainWindow::hotKeyActivated( int hk )
 {
-  if ( !hk ) {
+  if ( hk == 0 ) {
     toggleMainWindow();
   }
   else if ( scanPopup ) {
@@ -3686,7 +3686,7 @@ void MainWindow::messageFromAnotherInstanceReceived( QString const & message )
 
   if ( message.left( 15 ) == "translateWord: " ) {
     auto word = message.mid( 15 );
-    if ( ( consoleWindowOnce == "popup" ) && scanPopup ) {
+    if ( ( consoleWindowOnce == "popup" ) && (scanPopup != nullptr) ) {
       scanPopup->translateWord( word );
     }
     else if ( consoleWindowOnce == "main" ) {
@@ -3902,7 +3902,7 @@ void MainWindow::on_importHistory_triggered()
     history.addItem( { *i } );
   }
 
-  history.enableAdd( cfg.preferences.storeHistory );
+  history.enableAdd( cfg.preferences.storeHistory != 0u );
 
   if ( file.error() != QFile::NoError ) {
     errStr = QString( tr( "Import error: " ) ) + file.errorString();
@@ -4088,13 +4088,13 @@ void MainWindow::forceAddWordToHistory( const QString & word )
 {
   history.enableAdd( true );
   history.addItem( { word.trimmed() } );
-  history.enableAdd( cfg.preferences.storeHistory );
+  history.enableAdd( cfg.preferences.storeHistory != 0u );
 }
 
 void MainWindow::foundDictsPaneClicked( QListWidgetItem * item )
 {
   Qt::KeyboardModifiers m = QApplication::keyboardModifiers();
-  if ( ( m & ( Qt::ControlModifier | Qt::ShiftModifier ) ) || ( m == Qt::AltModifier ) ) {
+  if ( (( m & ( Qt::ControlModifier | Qt::ShiftModifier ) ) != 0u) || ( m == Qt::AltModifier ) ) {
     QString id = item->data( Qt::UserRole ).toString();
     emit clickOnDictPane( id );
   }

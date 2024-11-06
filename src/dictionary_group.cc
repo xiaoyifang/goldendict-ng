@@ -38,7 +38,7 @@ const std::vector< sptr< Dictionary::Class > > * DictionaryGroup::getActiveDicti
 sptr< Dictionary::Class > DictionaryGroup::getDictionaryById( const std::string & dictId )
 {
 
-  for ( unsigned x = allDictionaries.size(); x--; ) {
+  for ( unsigned x = allDictionaries.size(); (x--) != 0u; ) {
     if ( allDictionaries[ x ]->getId() == dictId ) {
       return allDictionaries[ x ];
     }

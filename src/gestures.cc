@@ -343,10 +343,10 @@ void registerRecognizers()
 
 void unregisterRecognizers()
 {
-  if ( GDPinchGestureType )
+  if ( GDPinchGestureType != 0u )
     QGestureRecognizer::unregisterRecognizer( GDPinchGestureType );
 
-  if ( GDSwipeGestureType )
+  if ( GDSwipeGestureType != 0u )
     QGestureRecognizer::unregisterRecognizer( GDSwipeGestureType );
 }
 

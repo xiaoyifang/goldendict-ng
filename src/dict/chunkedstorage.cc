@@ -49,7 +49,7 @@ uint32_t Writer::startNewBlock()
 
 void Writer::addToBlock( void const * data, size_t size )
 {
-  if ( !size ) {
+  if ( size == 0u ) {
     return;
   }
 
@@ -91,7 +91,7 @@ void Writer::saveCurrentChunk()
 
 uint32_t Writer::finish()
 {
-  if ( bufferUsed || chunkStarted ) {
+  if ( (bufferUsed != 0u) || chunkStarted ) {
     saveCurrentChunk();
   }
 
@@ -108,7 +108,7 @@ uint32_t Writer::finish()
 
   file.write( (uint32_t)offsets.size() );
 
-  if ( offsets.size() ) {
+  if ( offsets.size() != 0u ) {
     file.write( &offsets.front(), offsets.size() * sizeof( uint32_t ) );
   }
 

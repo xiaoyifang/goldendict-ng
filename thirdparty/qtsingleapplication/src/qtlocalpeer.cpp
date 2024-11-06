@@ -128,7 +128,7 @@ bool QtLocalPeer::sendMessage(const QString &message, int timeout)
         // Try twice, in case the other instance is just starting up
         socket.connectToServer(socketName);
         connOk = socket.waitForConnected(timeout/2);
-        if (connOk || i) {
+        if (connOk || (i != 0)) {
             break;
 }
         int ms = 250;
@@ -177,7 +177,7 @@ void QtLocalPeer::receiveConnection()
         got = ds.readRawData(uMsgBuf, remaining);
         remaining -= got;
         uMsgBuf += got;
-    } while (remaining && got >= 0 && socket->waitForReadyRead(2000));
+    } while ((remaining != 0u) && got >= 0 && socket->waitForReadyRead(2000));
     if (got < 0) {
         qWarning("QtLocalPeer: Message reception failed %s", socket->errorString().toLatin1().constData());
         delete socket;

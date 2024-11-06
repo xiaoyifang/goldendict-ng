@@ -170,11 +170,11 @@ bool IndexedZip::indexFile( BtreeIndexing::IndexedWords & zipFileNames, quint32 
     bool hasNonAscii = false;
 
     for ( ;; ) {
-      if ( *ptr & 0x80 ) {
+      if ( (*ptr & 0x80) != 0 ) {
         hasNonAscii = true;
         break;
       }
-      else if ( !*ptr++ ) {
+      else if ( *ptr++ == 0u ) {
         break;
       }
     }

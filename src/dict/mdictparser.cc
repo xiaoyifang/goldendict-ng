@@ -451,7 +451,7 @@ bool MdictParser::readHeadWordBlockInfos( QDataStream & in )
 
   if ( version_ >= 2.0 ) {
     // decrypt
-    if ( encrypted_ & EcryptedHeadWordIndex ) {
+    if ( (encrypted_ & EcryptedHeadWordIndex) != 0 ) {
       if ( !decryptHeadWordIndex( headWordBlockInfo.data(), headWordBlockInfo.size() ) ) {
         return false;
       }
@@ -650,7 +650,7 @@ QString & MdictParser::substituteStylesheet( QString & article, MdictParser::Sty
       endStyle = "";
     }
   }
-  if ( pos ) {
+  if ( pos != 0 ) {
     articleNewText += Utils::rstripnull( article.mid( pos ) );
     article = articleNewText;
     articleNewText.clear();

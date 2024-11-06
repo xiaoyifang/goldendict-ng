@@ -224,7 +224,7 @@ void loadDictionaries( QWidget * parent,
 
   loadDicts.wait();
 
-  if ( loadDicts.getExceptionText().size() ) {
+  if ( loadDicts.getExceptionText().size() != 0u ) {
     QMessageBox::critical( parent,
                            QCoreApplication::translate( "LoadDictionaries", "Error loading dictionaries" ),
                            QString::fromUtf8( loadDicts.getExceptionText().c_str() ) );
@@ -287,7 +287,7 @@ void loadDictionaries( QWidget * parent,
   set< string > ids;
   std::pair< std::set< string >::iterator, bool > ret;
 
-  for ( unsigned x = dictionaries.size(); x--; ) {
+  for ( unsigned x = dictionaries.size(); (x--) != 0u; ) {
     ret = ids.insert( dictionaries[ x ]->getId() );
     if ( !ret.second ) {
       gdWarning( R"(Duplicate dictionary ID found: ID=%s, name="%s", path="%s")",

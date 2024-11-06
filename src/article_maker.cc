@@ -86,7 +86,7 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word, QString const & 
   {
     result += R"(<link href="qrc:///article-style.css"  media="all" rel="stylesheet" type="text/css">)";
 
-    if ( cfg.displayStyle.size() ) {
+    if ( cfg.displayStyle.size() != 0 ) {
       // Load an additional stylesheet
       fmt::format_to(
         std::back_inserter( result ),
@@ -131,7 +131,7 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word, QString const & 
 
   // This doesn't seem to be much of influence right now, but we'll keep
   // it anyway.
-  if ( icon.size() ) {
+  if ( icon.size() != 0 ) {
     result +=
       R"(<link rel="icon" type="image/png" href="qrc:///flags/)" + Html::escape( icon.toUtf8().data() ) + "\" >\n";
   }
@@ -253,7 +253,7 @@ std::string ArticleMaker::makeNotFoundBody( QString const & word, QString const 
 {
   string result( "<div class=\"gdnotfound\"><p>" );
 
-  if ( word.size() ) {
+  if ( word.size() != 0 ) {
     result += tr( "No translation for <b dir=\"%3\">%1</b> was found in group <b>%2</b>." )
                 .arg( QString::fromUtf8( Html::escape( word.toUtf8().data() ).c_str() ),
                       QString::fromUtf8( Html::escape( group.toUtf8().data() ).c_str() ),
@@ -361,10 +361,10 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( QString const &
   std::vector< sptr< Dictionary::Class > > const & activeDicts = activeGroup ? activeGroup->dictionaries : dictionaries;
 
   string header = makeHtmlHeader( word,
-                                  activeGroup && activeGroup->icon.size() ? activeGroup->icon : QString(),
+                                  activeGroup && (activeGroup->icon.size() != 0) ? activeGroup->icon : QString(),
                                   cfg.alwaysExpandOptionalParts );
 
-  if ( mutedDicts.size() ) {
+  if ( mutedDicts.size() != 0 ) {
     std::vector< sptr< Dictionary::Class > > unmutedDicts;
 
     unmutedDicts.reserve( activeDicts.size() );
@@ -623,7 +623,7 @@ void ArticleRequest::bodyFinished()
   bool wasUpdated = false;
 
   QStringList dictIds;
-  while ( bodyRequests.size() ) {
+  while ( bodyRequests.size() != 0u ) {
     // Since requests should go in order, check the first one first
     if ( bodyRequests.front()->isFinished() ) {
       // Good
@@ -634,7 +634,7 @@ void ArticleRequest::bodyFinished()
 
       QString errorString = req.getErrorString();
 
-      if ( req.dataSize() >= 0 || errorString.size() ) {
+      if ( req.dataSize() >= 0 || (errorString.size() != 0) ) {
         sptr< Dictionary::Class > const & activeDict = activeDicts[ activeDicts.size() - bodyRequests.size() ];
 
         string dictId = activeDict->getId();
@@ -704,7 +704,7 @@ void ArticleRequest::bodyFinished()
           collapse ? "none" : "inline",
           dictId );
 
-        if ( errorString.size() ) {
+        if ( errorString.size() != 0 ) {
           head += "<div class=\"gderrordesc\">"
             + Html::escape( tr( "Query error: %1" ).arg( errorString ).toUtf8().data() ) + "</div>";
         }
@@ -826,7 +826,7 @@ void ArticleRequest::stemmedSearchFinished()
 
   bool continueMatching = false;
 
-  if ( sr.size() ) {
+  if ( sr.size() != 0u ) {
     footer += R"(<div class="gdstemmedsuggestion"><span class="gdstemmedsuggestion_head">)"
       + Html::escape( tr( "Close words: " ).toUtf8().data() ) + "</span><span class=\"gdstemmedsuggestion_body\">";
 
@@ -884,7 +884,7 @@ void ArticleRequest::compoundSearchNextStep( bool lastSearchSucceeded )
 
     string footer;
 
-    if ( lastGoodCompoundResult.size() ) // We have something to append
+    if ( lastGoodCompoundResult.size() != 0 ) // We have something to append
     {
       if ( !firstCompoundWasFound ) {
         // Append the beginning
@@ -941,7 +941,7 @@ void ArticleRequest::compoundSearchNextStep( bool lastSearchSucceeded )
       return;
     }
 
-    if ( footer.size() ) {
+    if ( footer.size() != 0u ) {
       appendString( footer );
       update();
     }
@@ -1005,7 +1005,7 @@ void ArticleRequest::individualWordFinished()
 {
   WordFinder::SearchResults const & results = stemmedWordFinder->getResults();
 
-  if ( results.size() ) {
+  if ( results.size() != 0u ) {
     wstring source = Folding::applySimpleCaseOnly( currentSplittedWordCompound );
 
     bool hadSomething = false;
@@ -1053,7 +1053,7 @@ std::pair< ArticleRequest::Words, ArticleRequest::Spacings > ArticleRequest::spl
   for ( ;; ) {
     QString spacing;
 
-    for ( ; ptr->unicode() && ( Folding::isPunct( ptr->unicode() ) || Folding::isWhitespace( ptr->unicode() ) );
+    for ( ; (ptr->unicode() != 0u) && ( Folding::isPunct( ptr->unicode() ) || Folding::isWhitespace( ptr->unicode() ) );
           ++ptr ) {
       spacing.append( *ptr );
     }
@@ -1062,7 +1062,7 @@ std::pair< ArticleRequest::Words, ArticleRequest::Spacings > ArticleRequest::spl
 
     QString word;
 
-    for ( ; ptr->unicode() && !( Folding::isPunct( ptr->unicode() ) || Folding::isWhitespace( ptr->unicode() ) );
+    for ( ; (ptr->unicode() != 0u) && !( Folding::isPunct( ptr->unicode() ) || Folding::isWhitespace( ptr->unicode() ) );
           ++ptr ) {
       word.append( *ptr );
     }

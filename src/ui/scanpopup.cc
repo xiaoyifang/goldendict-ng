@@ -174,11 +174,11 @@ ScanPopup::ScanPopup( QWidget * parent,
              }
            } );
   pinnedGeometry = cfg.popupWindowGeometry;
-  if ( cfg.popupWindowGeometry.size() ) {
+  if ( cfg.popupWindowGeometry.size() != 0 ) {
     restoreGeometry( cfg.popupWindowGeometry );
   }
 
-  if ( cfg.popupWindowState.size() ) {
+  if ( cfg.popupWindowState.size() != 0 ) {
     restoreState( cfg.popupWindowState );
   }
 
@@ -640,7 +640,7 @@ void ScanPopup::updateSuggestionList( QString const & text )
 
   QString req = text.trimmed();
 
-  if ( !req.size() ) {
+  if ( req.size() == 0 ) {
     // An empty request always results in an empty result
     wordFinder.cancel();
 
@@ -810,7 +810,7 @@ void ScanPopup::mousePressEvent( QMouseEvent * ev )
 
 void ScanPopup::mouseMoveEvent( QMouseEvent * event )
 {
-  if ( event->buttons() && cursor().shape() == Qt::ClosedHandCursor ) {
+  if ( (event->buttons() != 0u) && cursor().shape() == Qt::ClosedHandCursor ) {
     QPoint newPos = event->globalPos();
 
     QPoint delta = newPos - startPos;
@@ -901,7 +901,7 @@ void ScanPopup::prefixMatchFinished()
 {
   // Check that there's a window there at all
   if ( isVisible() ) {
-    if ( wordFinder.getErrorString().size() ) {
+    if ( wordFinder.getErrorString().size() != 0 ) {
       ui.queryError->setToolTip( wordFinder.getErrorString() );
       ui.queryError->show();
       showStatusBarMessage( tr( "WARNING: %1" ).arg( wordFinder.getErrorString() ),

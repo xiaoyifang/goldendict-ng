@@ -584,7 +584,7 @@ void HotkeyWrapper::init()
 
   recordContext = XRecordCreateContext( display, 0, &recordClientSpec, 1, &recordRange, 1 );
 
-  if ( !recordContext ) {
+  if ( recordContext == 0u ) {
     XFree( recordRange );
     XCloseDisplay( dataDisplay );
     throw exInit();
@@ -600,7 +600,7 @@ void HotkeyWrapper::init()
 
 void HotkeyWrapper::run() // Runs in a separate thread
 {
-  if ( !XRecordEnableContext( dataDisplay, recordContext, recordEventCallback, (XPointer)this ) )
+  if ( XRecordEnableContext( dataDisplay, recordContext, recordEventCallback, (XPointer)this ) == 0 )
     GD_DPRINTF( "Failed to enable record context\n" );
 }
 
@@ -660,20 +660,20 @@ bool HotkeyWrapper::setGlobalKey( QKeySequence const & seq, int handle )
 
 bool HotkeyWrapper::setGlobalKey( int key, int key2, Qt::KeyboardModifiers modifier, int handle )
 {
-  if ( !key )
+  if ( key == 0 )
     return false; // We don't monitor empty combinations
 
   int vk  = nativeKey( key );
-  int vk2 = key2 ? nativeKey( key2 ) : 0;
+  int vk2 = (key2 != 0) ? nativeKey( key2 ) : 0;
 
   quint32 mod = 0;
-  if ( modifier & Qt::ShiftModifier )
+  if ( modifier & Qt::ShiftModifier != 0u )
     mod |= ShiftMask;
-  if ( modifier & Qt::ControlModifier )
+  if ( modifier & Qt::ControlModifier != 0u )
     mod |= ControlMask;
-  if ( modifier & Qt::AltModifier )
+  if ( modifier & Qt::AltModifier != 0u )
     mod |= Mod1Mask;
-  if ( modifier & Qt::MetaModifier )
+  if ( modifier & Qt::MetaModifier != 0u )
     mod |= Mod4Mask;
 
   hotkeys.append( HotkeyStruct( vk, vk2, mod, handle, 0 ) );
@@ -841,7 +841,7 @@ void HotkeyWrapper::unregister()
   XFree( recordRange );
   XCloseDisplay( dataDisplay );
 
-  while ( grabbedKeys.size() )
+  while ( grabbedKeys.size() != 0u )
     ungrabKey( grabbedKeys.begin() );
 
   ( static_cast< QHotkeyApplication * >( qApp ) )->unregisterWrapper( this );

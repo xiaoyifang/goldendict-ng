@@ -131,7 +131,7 @@ bool indexIsOldOrBad( string const & indexFile )
   IdxHeader header;
 
   return idx.readRecords( &header, sizeof( header ), 1 ) != 1 || header.signature != Signature
-    || header.formatVersion != CurrentFormatVersion || !header.articleFormat;
+    || header.formatVersion != CurrentFormatVersion || (header.articleFormat == 0u);
 }
 
 
@@ -236,7 +236,7 @@ XdxfDictionary::XdxfDictionary( string const & id, string const & indexFile, vec
 
   chunks = std::shared_ptr< ChunkedStorage::Reader >( new ChunkedStorage::Reader( idx, idxHeader.chunksOffset ) );
 
-  if ( idxHeader.nameSize ) {
+  if ( idxHeader.nameSize != 0u ) {
     vector< char > chunk;
 
     dictionaryName = string( chunks->getBlock( idxHeader.nameAddress, chunk ), idxHeader.nameSize );
@@ -253,7 +253,7 @@ XdxfDictionary::XdxfDictionary( string const & id, string const & indexFile, vec
 
   // Read the abrv, if any
 
-  if ( idxHeader.hasAbrv ) {
+  if ( idxHeader.hasAbrv != 0u ) {
     vector< char > chunk;
 
     char * abrvBlock = chunks->getBlock( idxHeader.abrvAddress, chunk );
@@ -262,7 +262,7 @@ XdxfDictionary::XdxfDictionary( string const & id, string const & indexFile, vec
     memcpy( &total, abrvBlock, sizeof( uint32_t ) );
     abrvBlock += sizeof( uint32_t );
 
-    while ( total-- ) {
+    while ( (total--) != 0u ) {
       uint32_t keySz;
       memcpy( &keySz, abrvBlock, sizeof( uint32_t ) );
       abrvBlock += sizeof( uint32_t );
@@ -282,7 +282,7 @@ XdxfDictionary::XdxfDictionary( string const & id, string const & indexFile, vec
 
     // Open a resource zip file, if there's one
 
-    if ( idxHeader.hasZipFile && ( idxHeader.zipIndexBtreeMaxElements || idxHeader.zipIndexRootOffset ) ) {
+    if ( (idxHeader.hasZipFile != 0u) && ( (idxHeader.zipIndexBtreeMaxElements != 0u) || (idxHeader.zipIndexRootOffset != 0u) ) ) {
       resourceZip.openIndex( IndexInfo( idxHeader.zipIndexBtreeMaxElements, idxHeader.zipIndexRootOffset ),
                              idx,
                              idxMutex );
@@ -388,7 +388,7 @@ void XdxfDictionary::makeFTSIndex( QAtomicInt & isCancelled )
     return;
   }
 
-  if ( ensureInitDone().size() ) {
+  if ( ensureInitDone().size() != 0u ) {
     return;
   }
 
@@ -475,7 +475,7 @@ public:
 
 void XdxfArticleRequest::run()
 {
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
     finish();
     return;
   }
@@ -502,7 +502,7 @@ void XdxfArticleRequest::run()
   }
 
   for ( const auto & x : chain ) {
-    if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+    if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
       finish();
       return;
     }
@@ -631,7 +631,7 @@ void XdxfDictionary::loadArticle( uint32_t address, string & articleText, QStrin
 
   articleText = Xdxf2Html::convert( string( articleBody ),
                                     Xdxf2Html::XDXF,
-                                    idxHeader.hasAbrv ? &abrv : NULL,
+                                    (idxHeader.hasAbrv != 0u) ? &abrv : NULL,
                                     this,
                                     fType == Logical,
                                     idxHeader.revisionNumber,
@@ -665,12 +665,12 @@ protected:
 
   bool waitForReadyRead( int ) override
   {
-    return !gzeof( gz );
+    return gzeof( gz ) == 0;
   }
 
   qint64 bytesAvailable() const override
   {
-    return ( gzeof( gz ) ? 0 : 1 ) + QIODevice::bytesAvailable();
+    return ( (gzeof( gz ) != 0) ? 0 : 1 ) + QIODevice::bytesAvailable();
   }
 
   qint64 readData( char * data, qint64 maxSize ) override;
@@ -704,7 +704,7 @@ GzippedFile::~GzippedFile()
 
 bool GzippedFile::atEnd() const
 {
-  return gzeof( gz );
+  return gzeof( gz ) != 0;
 }
 
 /*
@@ -729,7 +729,7 @@ qint64 GzippedFile::readData( char * data, qint64 maxSize )
   if ( n == 1 ) {
     char ch      = *data;
     int addBytes = 0;
-    if ( ch & 0x80 ) {
+    if ( (ch & 0x80) != 0 ) {
       if ( ( ch & 0xF8 ) == 0xF0 ) {
         addBytes = 3;
       }
@@ -741,7 +741,7 @@ qint64 GzippedFile::readData( char * data, qint64 maxSize )
       }
     }
 
-    if ( addBytes ) {
+    if ( addBytes != 0 ) {
       n += gzread( gz, data + 1, addBytes );
     }
   }
@@ -961,12 +961,12 @@ public:
 void XdxfResourceRequest::run()
 {
   // Some runnables linger enough that they are cancelled before they start
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
     finish();
     return;
   }
 
-  if ( dict.ensureInitDone().size() ) {
+  if ( dict.ensureInitDone().size() != 0u ) {
     setErrorString( QString::fromUtf8( dict.ensureInitDone().c_str() ) );
     finish();
     return;
@@ -1192,7 +1192,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
                   }
                   else if ( stream.name() == u"languages" ) {
                     while ( !( stream.isEndElement() && stream.name() == u"languages" ) && !stream.atEnd() ) {
-                      if ( !stream.readNext() ) {
+                      if ( stream.readNext() == 0u ) {
                         break;
                       }
                       if ( stream.isStartElement() ) {
@@ -1312,7 +1312,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
               // If there was a zip file, index it too
 
-              if ( zipFileName.size() ) {
+              if ( zipFileName.size() != 0u ) {
                 GD_DPRINTF( "Indexing zip file\n" );
 
                 idxHeader.hasZipFile = 1;

@@ -354,7 +354,7 @@ int ShiftedVorbis::seek( void * datasource, ogg_int64_t offset, int whence )
     offset += sv->f.size();
   }
 
-  return sv->f.seek( offset );
+  return static_cast<int>(sv->f.seek( offset ));
 }
 
 long ShiftedVorbis::tell( void * datasource )
@@ -418,11 +418,11 @@ sptr< Dictionary::DataRequest > LsaDictionary::getResource( string const & name 
 
   int result = ov_open_callbacks( &sv, &vf, 0, 0, ShiftedVorbis::callbacks );
 
-  if ( result ) {
+  if ( result != 0 ) {
     throw exFailedToOpenVorbisData();
   }
 
-  if ( ov_pcm_seek( &vf, e.samplesOffset ) ) {
+  if ( ov_pcm_seek( &vf, e.samplesOffset ) != 0 ) {
     throw exFailedToSeekInVorbisData();
   }
 
@@ -464,7 +464,7 @@ sptr< Dictionary::DataRequest > LsaDictionary::getResource( string const & name 
   int left      = data.size() - sizeof( *wh );
   int bitstream = 0;
 
-  while ( left ) {
+  while ( left != 0 ) {
     long result = ov_read( &vf, ptr, left, 0, 2, 1, &bitstream );
 
     if ( result <= 0 ) {
@@ -569,7 +569,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         vector< uint16_t > filenameBuffer;
 
-        while ( entriesCount-- ) {
+        while ( (entriesCount--) != 0u ) {
           uint32_t offset = f.tell();
 
           Entry e( f );

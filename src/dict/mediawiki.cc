@@ -515,7 +515,7 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
 
   bool updated = false;
 
-  for ( ; netReplies.size() && netReplies.front().second; netReplies.pop_front() ) {
+  for ( ; (netReplies.size() != 0u) && netReplies.front().second; netReplies.pop_front() ) {
     QNetworkReply * netReply = netReplies.front().first;
 
     if ( netReply->error() == QNetworkReply::NoError ) {
@@ -573,7 +573,7 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
               QString newLink = QString( "<a href=\"/%1\"" ).arg( link );
               articleNewString += newLink;
             }
-            if ( pos ) {
+            if ( pos != 0 ) {
               articleNewString += articleString.mid( pos );
               articleString = articleNewString;
               articleNewString.clear();
@@ -617,7 +617,7 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
                 articleNewString += match.captured();
               }
             }
-            if ( pos ) {
+            if ( pos != 0 ) {
               articleNewString += articleString.mid( pos );
               articleString = articleNewString;
               articleNewString.clear();
@@ -671,7 +671,7 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
               QString newSrcset = srcset.replace( "//", wikiUrl.scheme() + "://" );
               articleNewString += newSrcset;
             }
-            if ( pos ) {
+            if ( pos != 0 ) {
               articleNewString += articleString.mid( pos );
               articleString = articleNewString;
               articleNewString.clear();

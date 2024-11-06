@@ -55,7 +55,7 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
   }
 
   try {
-    if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+    if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
       throw exUserAbort();
     }
 
@@ -75,7 +75,7 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
 
     dict->findArticleLinks( nullptr, &setOfOffsets, nullptr, &isCancelled );
 
-    if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+    if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
       throw exUserAbort();
     }
 
@@ -91,7 +91,7 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
     // Free memory
     setOfOffsets.clear();
 
-    if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+    if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
       throw exUserAbort();
     }
 
@@ -127,7 +127,7 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
         continue;
       }
 
-      if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+      if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
         return;
       }
 

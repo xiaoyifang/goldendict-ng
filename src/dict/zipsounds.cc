@@ -86,7 +86,7 @@ wstring stripExtension( string const & str )
 
     // Strip spaces at the end of name
     string::size_type n = name.length();
-    while ( n && name.at( n - 1 ) == L' ' ) {
+    while ( (n != 0u) && name.at( n - 1 ) == L' ' ) {
       n--;
     }
 

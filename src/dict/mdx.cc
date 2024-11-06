@@ -354,10 +354,10 @@ MdxDictionary::~MdxDictionary()
 
 void MdxDictionary::deferredInit()
 {
-  if ( !Utils::AtomicInt::loadAcquire( deferredInitDone ) ) {
+  if ( Utils::AtomicInt::loadAcquire( deferredInitDone ) == 0 ) {
     QMutexLocker _( &deferredInitMutex );
 
-    if ( Utils::AtomicInt::loadAcquire( deferredInitDone ) ) {
+    if ( Utils::AtomicInt::loadAcquire( deferredInitDone ) != 0 ) {
       return;
     }
 
@@ -380,10 +380,10 @@ string const & MdxDictionary::ensureInitDone()
 
 void MdxDictionary::doDeferredInit()
 {
-  if ( !Utils::AtomicInt::loadAcquire( deferredInitDone ) ) {
+  if ( Utils::AtomicInt::loadAcquire( deferredInitDone ) == 0 ) {
     QMutexLocker _( &deferredInitMutex );
 
-    if ( Utils::AtomicInt::loadAcquire( deferredInitDone ) ) {
+    if ( Utils::AtomicInt::loadAcquire( deferredInitDone ) != 0 ) {
       return;
     }
 
@@ -555,7 +555,7 @@ public:
 
 void MdxArticleRequest::run()
 {
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
     finish();
     return;
   }
@@ -583,7 +583,7 @@ void MdxArticleRequest::run()
   string articleText;
 
   for ( unsigned x = 0; x < chain.size(); ++x ) {
-    if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+    if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
       finish();
       return;
     }
@@ -723,7 +723,7 @@ QByteArray MddResourceRequest::isolate_css()
     QString newUrl = QString( "url(" ) + match.captured( 1 ) + "bres://" + id + "/" + url + match.captured( 3 ) + ")";
     newCSS += newUrl;
   }
-  if ( pos ) {
+  if ( pos != 0 ) {
     newCSS += css.mid( pos );
     css = newCSS;
     newCSS.clear();
@@ -736,12 +736,12 @@ QByteArray MddResourceRequest::isolate_css()
 
 void MddResourceRequest::run()
 {
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
     finish();
     return;
   }
 
-  if ( dict.ensureInitDone().size() ) {
+  if ( dict.ensureInitDone().size() != 0u ) {
     setErrorString( QString::fromUtf8( dict.ensureInitDone().c_str() ) );
     finish();
     return;
@@ -752,7 +752,7 @@ void MddResourceRequest::run()
 
   for ( ;; ) {
     // Some runnables linger enough that they are cancelled before they start
-    if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+    if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
       finish();
       return;
     }
@@ -1067,7 +1067,7 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
       articleNewText += allLinksMatch.captured();
     }
   }
-  if ( linkPos ) {
+  if ( linkPos != 0 ) {
     articleNewText += article.mid( linkPos );
     article = articleNewText;
   }
@@ -1097,7 +1097,7 @@ void MdxDictionary::replaceStyleInHtml( QString & id, QString & article )
     articleNewText += style;
     articleNewText += allLinksMatch.captured( 3 );
   }
-  if ( linkPos ) {
+  if ( linkPos != 0 ) {
     articleNewText += article.mid( linkPos );
     article = articleNewText;
   }
@@ -1128,7 +1128,7 @@ void MdxDictionary::replaceFontLinks( QString & id, QString & article )
     }
     articleNewText += newLink;
   }
-  if ( linkPos ) {
+  if ( linkPos != 0 ) {
     articleNewText += article.mid( linkPos );
     article = articleNewText;
   }
@@ -1411,7 +1411,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       IndexedWords indexedWords;
       ChunkedStorage::Writer chunks( idx );
 
-      idxHeader.isRightToLeft = parser.isRightToLeft();
+      idxHeader.isRightToLeft = static_cast<uint32_t>(parser.isRightToLeft());
 
       // Save dictionary description if there's one
       {

@@ -300,7 +300,7 @@ AardDictionary::AardDictionary( string const & id, string const & indexFile, vec
 
   idx.seek( sizeof( idxHeader ) );
   vector< char > dName( idx.read< quint32 >() );
-  if ( dName.size() ) {
+  if ( dName.size() != 0u ) {
     idx.read( &dName.front(), dName.size() );
     dictionaryName = string( &dName.front(), dName.size() );
   }
@@ -404,7 +404,7 @@ void AardDictionary::loadArticle( quint32 address, string & articleText, bool ra
   articleText.clear();
 
 
-  while ( 1 ) {
+  while ( true ) {
     articleText = QObject::tr( "Article loading error" ).toStdString();
     try {
       QMutexLocker _( &aardMutex );
@@ -577,7 +577,7 @@ void AardDictionary::makeFTSIndex( QAtomicInt & isCancelled )
     return;
   }
 
-  if ( ensureInitDone().size() ) {
+  if ( ensureInitDone().size() != 0u ) {
     return;
   }
 
@@ -663,7 +663,7 @@ public:
 
 void AardArticleRequest::run()
 {
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
     finish();
     return;
   }
@@ -690,7 +690,7 @@ void AardArticleRequest::run()
   }
 
   for ( auto & x : chain ) {
-    if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+    if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
       finish();
       return;
     }
@@ -811,10 +811,10 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         AAR_header dictHeader;
 
         df.read( &dictHeader, sizeof( dictHeader ) );
-        bool has64bitIndex = !strncmp( dictHeader.indexItemFormat, ">LQ", 4 );
-        if ( strncmp( dictHeader.signature, "aard", 4 )
-             || ( !has64bitIndex && strncmp( dictHeader.indexItemFormat, ">LL", 4 ) )
-             || strncmp( dictHeader.keyLengthFormat, ">H", 2 ) || strncmp( dictHeader.articleLengthFormat, ">L", 2 ) ) {
+        bool has64bitIndex = strncmp( dictHeader.indexItemFormat, ">LQ", 4 ) == 0;
+        if ( (strncmp( dictHeader.signature, "aard", 4 ) != 0)
+             || ( !has64bitIndex && (strncmp( dictHeader.indexItemFormat, ">LL", 4 ) != 0) )
+             || (strncmp( dictHeader.keyLengthFormat, ">H", 2 ) != 0) || (strncmp( dictHeader.articleLengthFormat, ">L", 2 ) != 0) ) {
           gdWarning( "File %s is not in supported aard format\n", fileName.c_str() );
           continue;
         }
@@ -938,7 +938,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
           // Insert new entry
           wstring word = Utf8::decode( string( data.data(), wordSize ) );
-          if ( maxHeadwordsToExpand && dictHeader.wordsCount >= maxHeadwordsToExpand ) {
+          if ( (maxHeadwordsToExpand != 0u) && dictHeader.wordsCount >= maxHeadwordsToExpand ) {
             indexedWords.addSingleWord( word, articleOffset );
           }
           else {

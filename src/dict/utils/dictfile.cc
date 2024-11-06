@@ -48,7 +48,7 @@ void Index::open( char const * mode )
   QFile::OpenMode openMode = QIODevice::Text;
 
   const char * pch = mode;
-  while ( *pch ) {
+  while ( *pch != 0 ) {
     switch ( *pch ) {
       case 'r':
         openMode |= QIODevice::ReadOnly;
@@ -124,7 +124,7 @@ char * Index::gets( char * s, int size, bool stripNl )
 
     char * last = result + len;
 
-    while ( len-- ) {
+    while ( (len--) != 0 ) {
       --last;
 
       if ( *last == '\n' || *last == '\r' ) {

@@ -79,7 +79,7 @@ bool Babylon::open()
   int i = fread( buf, 1, 6, f );
 
   /* First four bytes: BGL signature 0x12340001 or 0x12340002 (big-endian) */
-  if ( i < 6 || memcmp( buf, "\x12\x34\x00", 3 ) || buf[ 3 ] == 0 || buf[ 3 ] > 2 ) {
+  if ( i < 6 || (memcmp( buf, "\x12\x34\x00", 3 ) != 0) || buf[ 3 ] == 0 || buf[ 3 ] > 2 ) {
     fclose( f );
     return false;
   }
@@ -93,7 +93,7 @@ bool Babylon::open()
     return false;
   }
 
-  if ( ferror( f ) || feof( f ) ) {
+  if ( (ferror( f ) != 0) || (feof( f ) != 0) ) {
     fclose( f );
     return false;
   }
@@ -129,7 +129,7 @@ void Babylon::close()
 
 bool Babylon::readBlock( bgl_block & block )
 {
-  if ( file == nullptr || gzeof( file ) ) {
+  if ( file == nullptr || (gzeof( file ) != 0) ) {
     return false;
   }
 
@@ -140,7 +140,7 @@ bool Babylon::readBlock( bgl_block & block )
   }
   block.length >>= 4;
   block.length = block.length < 4 ? bgl_readnum( block.length + 1 ) : block.length - 4;
-  if ( block.length ) {
+  if ( block.length != 0u ) {
     block.data = (char *)malloc( block.length );
     if ( !block.data ) {
       throw exAllocation();
@@ -316,7 +316,7 @@ bool Babylon::read( const std::string & source_charset, const std::string & targ
         break;
       default:;
     }
-    if ( block.length ) {
+    if ( block.length != 0u ) {
       free( block.data );
     }
   }
@@ -664,7 +664,7 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
           definition = std::string( "<span class=\"bgltrn\">" ) + transcription + "</span>" + definition;
         }
 
-        if ( displayedHeadword.size() ) {
+        if ( displayedHeadword.size() != 0u ) {
           convertToUtf8( displayedHeadword, BGL_TARGET_CHARSET );
         }
 
@@ -696,7 +696,7 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
           // as some kind of an identifier instead of being an actual headword)
           int totalDigits = 0;
 
-          for ( char const * p = headword.c_str(); *p; ++p ) {
+          for ( char const * p = headword.c_str(); *p != 0; ++p ) {
             if ( *p >= '0' && *p <= '9' ) {
               if ( ++totalDigits > 1 ) {
                 break;
@@ -728,7 +728,7 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
 
         entry.alternates = alternates;
 
-        if ( block.length ) {
+        if ( block.length != 0u ) {
           free( block.data );
         }
 
@@ -743,7 +743,7 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
         break;
       default:;
     }
-    if ( block.length ) {
+    if ( block.length != 0u ) {
       free( block.data );
     }
   }

@@ -123,7 +123,7 @@ HotKey::HotKey( QKeySequence const & seq ):
 
 QKeySequence HotKey::toKeySequence() const
 {
-  int v2 = key2 ? ( key2 | modifiers ) : 0;
+  int v2 = (key2 != 0) ? ( key2 | modifiers ) : 0;
 
   return QKeySequence( key1 | modifiers, v2 );
 }
@@ -1091,7 +1091,7 @@ Class load()
 
     if ( !preferences.namedItem( "alwaysExpandOptionalParts" ).isNull() ) {
       c.preferences.alwaysExpandOptionalParts =
-        preferences.namedItem( "alwaysExpandOptionalParts" ).toElement().text().toUInt();
+        (preferences.namedItem( "alwaysExpandOptionalParts" ).toElement().text().toUInt() != 0u);
     }
 
     if ( !preferences.namedItem( "addonStyle" ).isNull() ) {
@@ -1311,13 +1311,13 @@ void saveGroup( Group const & data, QDomElement & group )
 
   group.setAttributeNode( name );
 
-  if ( data.favoritesFolder.size() ) {
+  if ( data.favoritesFolder.size() != 0 ) {
     QDomAttr folder = dd.createAttribute( "favoritesFolder" );
     folder.setValue( data.favoritesFolder );
     group.setAttributeNode( folder );
   }
 
-  if ( data.icon.size() ) {
+  if ( data.icon.size() != 0 ) {
     QDomAttr icon = dd.createAttribute( "icon" );
 
     icon.setValue( data.icon );
@@ -1325,7 +1325,7 @@ void saveGroup( Group const & data, QDomElement & group )
     group.setAttributeNode( icon );
   }
 
-  if ( data.iconData.size() ) {
+  if ( data.iconData.size() != 0 ) {
     QDomAttr iconData = dd.createAttribute( "iconData" );
 
     iconData.setValue( QString::fromLatin1( data.iconData.toBase64() ) );
@@ -1398,7 +1398,7 @@ void save( Class const & c )
 
     // Save all paths except the hard-code portable path,
     // which is stored in the first element of list.
-    qsizetype pos = Config::isPortableVersion();
+    qsizetype pos = static_cast<qsizetype>(Config::isPortableVersion());
 
     for ( const auto & i : c.paths.mid( pos ) ) {
       QDomElement path = dd.createElement( "path" );
@@ -2119,7 +2119,7 @@ void save( Class const & c )
     preferences.appendChild( opt );
 
     opt = dd.createElement( "alwaysExpandOptionalParts" );
-    opt.appendChild( dd.createTextNode( QString::number( c.preferences.alwaysExpandOptionalParts ) ) );
+    opt.appendChild( dd.createTextNode( QString::number( static_cast<int>(c.preferences.alwaysExpandOptionalParts) ) ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "addonStyle" );

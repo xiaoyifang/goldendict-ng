@@ -86,7 +86,7 @@ void HeadwordListModel::requestFinished()
       if ( !( *i )->getErrorString().isEmpty() ) {
         qDebug() << "error:" << ( *i )->getErrorString();
       }
-      else if ( ( *i )->matchesCount() ) {
+      else if ( ( *i )->matchesCount() != 0u ) {
         auto allmatches = ( *i )->getAllMatches();
         for ( auto & match : allmatches ) {
           filterWords.append( QString::fromStdU32String( match.word ) );

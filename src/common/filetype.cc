@@ -32,7 +32,7 @@ string simplifyString( string const & str, bool lowercase )
 
   size_t endPos = str.size();
 
-  while ( endPos && Utf8::isspace( str[ endPos - 1 ] ) ) {
+  while ( (endPos != 0u) && Utf8::isspace( str[ endPos - 1 ] ) ) {
     --endPos;
   }
 

@@ -421,7 +421,7 @@ public:
       matchesList.removeDuplicates();
       int countn = qMin( matchesList.size(), MAX_MATCHES_COUNT );
 
-      if ( countn ) {
+      if ( countn != 0 ) {
         QMutexLocker _( &dataMutex );
         for ( int x = 0; x < countn; x++ ) {
           matches.emplace_back( gd::toWString( matchesList.at( x ) ) );
@@ -474,7 +474,7 @@ signals:
 
 void DictServerWordSearchRequest::run()
 {
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
     finish();
     return;
   }
@@ -586,7 +586,7 @@ public:
     dictImpl( new DictServerImpl( this, dict_.url, "GoldenDict-t" ) )
   {
     connect( this, &DictServerArticleRequest::finishedArticle, this, [ this ]( QString articleText ) {
-      if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+      if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
         cancel();
         return;
       }
@@ -632,7 +632,7 @@ public:
 
           articleNewText += R"(<span class="dictd_phonetic">)" + phonetic_text + "</span>";
         }
-        if ( pos ) {
+        if ( pos != 0 ) {
           articleNewText += articleText.mid( pos );
           articleText = articleNewText;
           articleNewText.clear();
@@ -657,7 +657,7 @@ public:
                            QString::fromUtf8( QUrl::toPercentEncoding( link.simplified() ) ) );
           articleNewText += newLink;
         }
-        if ( pos ) {
+        if ( pos != 0 ) {
           articleNewText += articleText.mid( pos );
           articleText = articleNewText;
           articleNewText.clear();
@@ -716,7 +716,7 @@ bool DictServerArticleRequest::defineNext()
 
 void DictServerArticleRequest::run()
 {
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
     finish();
     return;
   }

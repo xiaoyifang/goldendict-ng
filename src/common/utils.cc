@@ -16,7 +16,7 @@ QMap< QString, QString > str2map( const QString & contextsEncoded )
 {
   QMap< QString, QString > contexts;
 
-  if ( contextsEncoded.size() ) {
+  if ( contextsEncoded.size() != 0 ) {
     QByteArray ba = QByteArray::fromBase64( contextsEncoded.toLatin1() );
     QBuffer buf( &ba );
     buf.open( QBuffer::ReadOnly );

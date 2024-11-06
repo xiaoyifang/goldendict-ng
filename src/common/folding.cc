@@ -51,7 +51,7 @@ wstring apply( wstring const & in, bool preserveWildcards )
 
   wchar buf[ foldCaseMaxOut ];
 
-  for ( size_t left = withoutDiacritics.size(); left--; ) {
+  for ( size_t left = withoutDiacritics.size(); (left--) != 0u; ) {
     caseFolded.append( buf, foldCase( *nextChar++, buf ) );
   }
 
@@ -66,7 +66,7 @@ wstring applySimpleCaseOnly( wstring const & in )
 
   out.reserve( in.size() );
 
-  for ( size_t left = in.size(); left--; ) {
+  for ( size_t left = in.size(); (left--) != 0u; ) {
     out.push_back( foldCaseSimple( *nextChar++ ) );
   }
 
@@ -95,7 +95,7 @@ wstring applyFullCaseOnly( wstring const & in )
 
   wchar buf[ foldCaseMaxOut ];
 
-  for ( size_t left = in.size(); left--; ) {
+  for ( size_t left = in.size(); (left--) != 0u; ) {
     caseFolded.append( buf, foldCase( *nextChar++, buf ) );
   }
 
@@ -116,7 +116,7 @@ wstring applyPunctOnly( wstring const & in )
 
   out.reserve( in.size() );
 
-  for ( size_t left = in.size(); left--; ++nextChar ) {
+  for ( size_t left = in.size(); (left--) != 0u; ++nextChar ) {
     if ( !isPunct( *nextChar ) ) {
       out.push_back( *nextChar );
     }
@@ -145,7 +145,7 @@ wstring applyWhitespaceOnly( wstring const & in )
 
   out.reserve( in.size() );
 
-  for ( size_t left = in.size(); left--; ++nextChar ) {
+  for ( size_t left = in.size(); (left--) != 0u; ++nextChar ) {
     if ( !isWhitespace( *nextChar ) ) {
       out.push_back( *nextChar );
     }
@@ -162,7 +162,7 @@ wstring applyWhitespaceAndPunctOnly( wstring const & in )
 
   out.reserve( in.size() );
 
-  for ( size_t left = in.size(); left--; ++nextChar ) {
+  for ( size_t left = in.size(); (left--) != 0u; ++nextChar ) {
     if ( !isWhitespaceOrPunct( *nextChar ) ) {
       out.push_back( *nextChar );
     }
@@ -193,13 +193,13 @@ wstring trimWhitespaceOrPunct( wstring const & in )
   wstring::size_type wordSize = in.size();
 
   // Skip any leading whitespace
-  while ( *wordBegin && Folding::isWhitespaceOrPunct( *wordBegin ) ) {
+  while ( (*wordBegin != 0u) && Folding::isWhitespaceOrPunct( *wordBegin ) ) {
     ++wordBegin;
     --wordSize;
   }
 
   // Skip any trailing whitespace
-  while ( wordSize && Folding::isWhitespaceOrPunct( wordBegin[ wordSize - 1 ] ) ) {
+  while ( (wordSize != 0u) && Folding::isWhitespaceOrPunct( wordBegin[ wordSize - 1 ] ) ) {
     --wordSize;
   }
 
@@ -236,13 +236,13 @@ wstring trimWhitespace( wstring const & in )
   wstring::size_type wordSize = in.size();
 
   // Skip any leading whitespace
-  while ( *wordBegin && Folding::isWhitespace( *wordBegin ) ) {
+  while ( (*wordBegin != 0u) && Folding::isWhitespace( *wordBegin ) ) {
     ++wordBegin;
     --wordSize;
   }
 
   // Skip any trailing whitespace
-  while ( wordSize && Folding::isWhitespace( wordBegin[ wordSize - 1 ] ) ) {
+  while ( (wordSize != 0u) && Folding::isWhitespace( wordBegin[ wordSize - 1 ] ) ) {
     --wordSize;
   }
 

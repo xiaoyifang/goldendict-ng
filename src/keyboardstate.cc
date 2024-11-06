@@ -9,7 +9,7 @@ bool KeyboardState::checkModifiersPressed( int mask )
 {
   auto modifiers = QApplication::queryKeyboardModifiers();
 
-  return !( ( mask & Alt && !( modifiers.testFlag( Qt::AltModifier ) ) )
-            || ( mask & Ctrl && !( modifiers.testFlag( Qt::ControlModifier ) ) )
-            || ( mask & Shift && !( modifiers.testFlag( Qt::ShiftModifier ) ) ) );
+  return !( ( ((mask & Alt) != 0) && !( modifiers.testFlag( Qt::AltModifier ) ) )
+            || ( ((mask & Ctrl) != 0) && !( modifiers.testFlag( Qt::ControlModifier ) ) )
+            || ( ((mask & Shift) != 0) && !( modifiers.testFlag( Qt::ShiftModifier ) ) ) );
 }

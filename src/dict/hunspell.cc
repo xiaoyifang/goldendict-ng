@@ -139,7 +139,7 @@ bool containsWhitespace( wstring const & str )
 {
   wchar const * next = str.c_str();
 
-  for ( ; *next; ++next ) {
+  for ( ; *next != 0u; ++next ) {
     if ( Folding::isWhitespace( *next ) ) {
       return true;
     }
@@ -218,7 +218,7 @@ public:
 
 void HunspellArticleRequest::run()
 {
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
     finish();
     return;
   }
@@ -342,7 +342,7 @@ public:
 
 void HunspellHeadwordsRequest::run()
 {
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
     finish();
     return;
   }
@@ -479,7 +479,7 @@ public:
 
 void HunspellPrefixMatchRequest::run()
 {
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
     finish();
     return;
   }
@@ -536,25 +536,25 @@ void getSuggestionsForExpression( wstring const & expression,
   // Parse string to separate words
 
   for ( wchar const * c = trimmedWord.c_str();; ++c ) {
-    if ( !*c || Folding::isPunct( *c ) || Folding::isWhitespace( *c ) ) {
-      if ( word.size() ) {
+    if ( (*c == 0u) || Folding::isPunct( *c ) || Folding::isWhitespace( *c ) ) {
+      if ( word.size() != 0u ) {
         words.push_back( word );
         word.clear();
       }
-      if ( *c ) {
+      if ( *c != 0u ) {
         punct.push_back( *c );
       }
     }
     else {
-      if ( punct.size() ) {
+      if ( punct.size() != 0u ) {
         words.push_back( punct );
         punct.clear();
       }
-      if ( *c ) {
+      if ( *c != 0u ) {
         word.push_back( *c );
       }
     }
-    if ( !*c ) {
+    if ( *c == 0u ) {
       break;
     }
   }
@@ -656,7 +656,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::Hunspell const & c
 
 
   for ( const auto & enabledDictionarie : cfg.enabledDictionaries ) {
-    for ( unsigned d = dataFiles.size(); d--; ) {
+    for ( unsigned d = dataFiles.size(); (d--) != 0u; ) {
       if ( dataFiles[ d ].dictId == enabledDictionarie ) {
         // Found it
 
@@ -727,7 +727,7 @@ vector< DataFiles > findDataFiles( QString const & path )
 
     QString dictName = dictId;
 
-    if ( localizedName.size() ) {
+    if ( localizedName.size() != 0 ) {
       dictName = localizedName;
 
       if ( dictId.size() > 2 && ( dictId[ 2 ] == '-' || dictId[ 2 ] == '_' )

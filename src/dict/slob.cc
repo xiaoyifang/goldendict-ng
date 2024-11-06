@@ -846,7 +846,7 @@ string SlobDictionary::convert( const string & in, RefEntry const & entry )
 
     newText += tag;
   }
-  if ( pos ) {
+  if ( pos != 0 ) {
     newText += text.mid( pos );
     text = newText;
   }
@@ -1048,7 +1048,7 @@ public:
 
 void SlobArticleRequest::run()
 {
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
     finish();
     return;
   }
@@ -1075,7 +1075,7 @@ void SlobArticleRequest::run()
   }
 
   for ( auto & x : chain ) {
-    if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+    if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
       finish();
       return;
     }
@@ -1196,7 +1196,7 @@ public:
 void SlobResourceRequest::run()
 {
   // Some runnables linger enough that they are cancelled before they start
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
     finish();
     return;
   }
@@ -1314,7 +1314,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
           if ( contentType.startsWith( "text/html", Qt::CaseInsensitive )
                || contentType.startsWith( "text/plain", Qt::CaseInsensitive ) ) {
             //Article
-            if ( maxHeadwordsToExpand && entries > maxHeadwordsToExpand ) {
+            if ( (maxHeadwordsToExpand != 0u) && entries > maxHeadwordsToExpand ) {
               indexedWords.addSingleWord( gd::toWString( refEntry.key ), offsets[ i ].second );
             }
             else {

@@ -234,7 +234,7 @@ public:
 
   void setFTSParameters( Config::FullTextSearch const & fts ) override
   {
-    if ( ensureInitDone().size() ) {
+    if ( ensureInitDone().size() != 0u ) {
       return;
     }
     if ( metadata_enable_fts.has_value() ) {
@@ -342,10 +342,10 @@ DslDictionary::~DslDictionary()
 
 void DslDictionary::deferredInit()
 {
-  if ( !Utils::AtomicInt::loadAcquire( deferredInitDone ) ) {
+  if ( Utils::AtomicInt::loadAcquire( deferredInitDone ) == 0 ) {
     QMutexLocker _( &deferredInitMutex );
 
-    if ( Utils::AtomicInt::loadAcquire( deferredInitDone ) ) {
+    if ( Utils::AtomicInt::loadAcquire( deferredInitDone ) != 0 ) {
       return;
     }
 
@@ -371,10 +371,10 @@ string const & DslDictionary::ensureInitDone()
 
 void DslDictionary::doDeferredInit()
 {
-  if ( !Utils::AtomicInt::loadAcquire( deferredInitDone ) ) {
+  if ( Utils::AtomicInt::loadAcquire( deferredInitDone ) == 0 ) {
     QMutexLocker _( &deferredInitMutex );
 
-    if ( Utils::AtomicInt::loadAcquire( deferredInitDone ) ) {
+    if ( Utils::AtomicInt::loadAcquire( deferredInitDone ) != 0 ) {
       return;
     }
 
@@ -398,7 +398,7 @@ void DslDictionary::doDeferredInit()
 
       // Read the abrv, if any
 
-      if ( idxHeader.hasAbrv ) {
+      if ( idxHeader.hasAbrv != 0u ) {
         vector< char > chunk;
 
         char * abrvBlock = chunks->getBlock( idxHeader.abrvAddress, chunk );
@@ -409,7 +409,7 @@ void DslDictionary::doDeferredInit()
 
         GD_DPRINTF( "Loading %u abbrv\n", total );
 
-        while ( total-- ) {
+        while ( (total--) != 0u ) {
           uint32_t keySz;
           memcpy( &keySz, abrvBlock, sizeof( uint32_t ) );
           abrvBlock += sizeof( uint32_t );
@@ -434,7 +434,7 @@ void DslDictionary::doDeferredInit()
 
       // Open a resource zip file, if there's one
 
-      if ( idxHeader.hasZipFile && ( idxHeader.zipIndexBtreeMaxElements || idxHeader.zipIndexRootOffset ) ) {
+      if ( (idxHeader.hasZipFile != 0u) && ( (idxHeader.zipIndexBtreeMaxElements != 0u) || (idxHeader.zipIndexRootOffset != 0u) ) ) {
         resourceZip.openIndex( IndexInfo( idxHeader.zipIndexBtreeMaxElements, idxHeader.zipIndexRootOffset ),
                                idx,
                                idxMutex );
@@ -611,7 +611,7 @@ void DslDictionary::loadArticle( uint32_t address,
 
           expandOptionalParts( tildeValue, &lst );
 
-          if ( lst.size() ) { // Should always be
+          if ( lst.size() != 0u ) { // Should always be
             tildeValue = lst.front();
           }
 
@@ -810,7 +810,7 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
   else if ( node.tagName == U"u" ) {
     string nodeText = processNodeChildren( node );
 
-    if ( nodeText.size() && isDslWs( nodeText[ 0 ] ) ) {
+    if ( (nodeText.size() != 0u) && isDslWs( nodeText[ 0 ] ) ) {
       result.push_back( ' ' ); // Fix a common problem where in "foo[i] bar[/i]"
     }
     // the space before "bar" gets underlined.
@@ -834,7 +834,7 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
   else if ( node.tagName == U"m" ) {
     result += "<div class=\"dsl_m\">" + processNodeChildren( node ) + "</div>";
   }
-  else if ( node.tagName.size() == 2 && node.tagName[ 0 ] == L'm' && iswdigit( node.tagName[ 1 ] ) ) {
+  else if ( node.tagName.size() == 2 && node.tagName[ 0 ] == L'm' && (iswdigit( node.tagName[ 1 ] ) != 0) ) {
     result += "<div class=\"dsl_" + Utf8::encode( node.tagName ) + "\">" + processNodeChildren( node ) + "</div>";
   }
   else if ( node.tagName == U"trn" ) {
@@ -855,7 +855,7 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
       url.setScheme( "gdau" );
       url.setHost( QString::fromUtf8( getId().c_str() ) );
       url.setPath( Utils::Url::ensureLeadingSlash( QString::fromUtf8( filename.c_str() ) ) );
-      if ( idxHeader.hasSoundDictionaryName ) {
+      if ( idxHeader.hasSoundDictionaryName != 0u ) {
         Utils::Url::setFragment( url, QString::fromUtf8( preferredSoundDictionary.c_str() ) );
       }
 
@@ -957,7 +957,7 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
       int n        = attr.indexOf( "id=" );
       if ( n >= 0 ) {
         int id = attr.mid( n + 3 ).toInt();
-        if ( id ) {
+        if ( id != 0 ) {
           langcode = findCodeForDslId( id );
         }
       }
@@ -1245,7 +1245,7 @@ void DslDictionary::getArticleText( uint32_t articleAddress, QString & headword,
         processUnsortedParts( articleHeadword, true );
         expandOptionalParts( articleHeadword, &lst );
 
-        if ( lst.size() ) { // Should always be
+        if ( lst.size() != 0u ) { // Should always be
           articleHeadword = lst.front();
         }
       }
@@ -1314,7 +1314,7 @@ void DslDictionary::getArticleText( uint32_t articleAddress, QString & headword,
     processUnsortedParts( tildeValue, false );
     expandOptionalParts( tildeValue, &lst );
 
-    if ( lst.size() ) { // Should always be
+    if ( lst.size() != 0u ) { // Should always be
       expandTildes( articleText, lst.front() );
     }
   }
@@ -1456,12 +1456,12 @@ public:
 
 void DslArticleRequest::run()
 {
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
     finish();
     return;
   }
 
-  if ( dict.ensureInitDone().size() ) {
+  if ( dict.ensureInitDone().size() != 0u ) {
     setErrorString( QString::fromUtf8( dict.ensureInitDone().c_str() ) );
     finish();
     return;
@@ -1487,7 +1487,7 @@ void DslArticleRequest::run()
 
   for ( auto & x : chain ) {
     // Check if we're cancelled occasionally
-    if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+    if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
       finish();
       return;
     }
@@ -1630,12 +1630,12 @@ public:
 void DslResourceRequest::run()
 {
   // Some runnables linger enough that they are cancelled before they start
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+  if ( Utils::AtomicInt::loadAcquire( isCancelled ) != 0 ) {
     finish();
     return;
   }
 
-  if ( dict.ensureInitDone().size() ) {
+  if ( dict.ensureInitDone().size() != 0u ) {
     setErrorString( QString::fromUtf8( dict.ensureInitDone().c_str() ) );
     finish();
     return;
@@ -1791,7 +1791,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       string indexFile = indicesDir + dictId;
 
       if ( Dictionary::needToRebuildIndex( dictFiles, indexFile )
-           || indexIsOldOrBad( indexFile, zipFileName.size() ) ) {
+           || indexIsOldOrBad( indexFile, zipFileName.size() != 0u ) ) {
         DslScanner scanner( fileName );
 
         try { // Here we intercept any errors during the read to save line at
@@ -1838,7 +1838,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
           // Read the abbreviations
 
-          if ( abrvFileName.size() ) {
+          if ( abrvFileName.size() != 0u ) {
             try {
               DslScanner abrvScanner( abrvFileName );
 
@@ -1864,7 +1864,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
                 for ( ;; ) {
                   processUnsortedParts( curString, true );
 
-                  if ( keys.size() ) {
+                  if ( keys.size() != 0u ) {
                     expandTildes( curString, keys.front() );
                   }
 
@@ -1887,7 +1887,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
                 curString.erase( 0, curString.find_first_not_of( U" \t" ) );
 
-                if ( keys.size() ) {
+                if ( keys.size() != 0u ) {
                   expandTildes( curString, keys.front() );
                 }
 
@@ -2029,8 +2029,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
               hasString = haveLine ? true : scanner.readNextLineWithoutComments( curString, curOffset );
               haveLine  = false;
 
-              if ( !hasString || ( curString.size() && !isDslWs( curString[ 0 ] ) ) ) {
-                if ( insideInsided ) {
+              if ( !hasString || ( (curString.size() != 0u) && !isDslWs( curString[ 0 ] ) ) ) {
+                if ( insideInsided != 0 ) {
                   gdWarning( "Unclosed tag '@' at line %i", dogLine );
                   insidedCards.append( InsidedCard( offset, curOffset - offset, insidedHeadwords ) );
                 }
@@ -2061,7 +2061,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
               wstring::size_type n = curString.find( L'@' );
               if ( n == wstring::npos || curString[ n - 1 ] == L'\\' ) {
-                if ( insideInsided ) {
+                if ( insideInsided != 0 ) {
                   linesInsideCard++;
                 }
 
@@ -2072,7 +2072,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
                 if ( !isAtSignFirst( curString ) ) {
                   gdWarning( "Unescaped '@' symbol at line %i", scanner.getLinesRead() - 1 );
 
-                  if ( insideInsided ) {
+                  if ( insideInsided != 0 ) {
                     linesInsideCard++;
                   }
 
@@ -2084,8 +2084,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
               // Handle embedded card
 
-              if ( insideInsided ) {
-                if ( linesInsideCard ) {
+              if ( insideInsided != 0 ) {
+                if ( linesInsideCard != 0u ) {
                   insidedCards.append( InsidedCard( offset, curOffset - offset, insidedHeadwords ) );
 
                   insidedHeadwords.clear();
@@ -2104,10 +2104,10 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
                 processUnsortedParts( headword, true );
                 expandTildes( headword, allEntryWords.front() );
                 insidedHeadwords.append( headword );
-                insideInsided = true;
+                insideInsided = 1;
               }
               else {
-                insideInsided = false;
+                insideInsided = 0;
               }
             }
 
@@ -2159,7 +2159,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
           // If there was a zip file, index it too
 
-          if ( zipFileName.size() ) {
+          if ( zipFileName.size() != 0u ) {
             GD_DPRINTF( "Indexing zip file\n" );
 
             idxHeader.hasZipFile = 1;

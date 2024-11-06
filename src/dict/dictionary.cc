@@ -24,19 +24,19 @@ namespace Dictionary {
 
 bool Request::isFinished()
 {
-  return Utils::AtomicInt::loadAcquire( isFinishedFlag );
+  return Utils::AtomicInt::loadAcquire( isFinishedFlag ) != 0;
 }
 
 void Request::update()
 {
-  if ( !Utils::AtomicInt::loadAcquire( isFinishedFlag ) ) {
+  if ( Utils::AtomicInt::loadAcquire( isFinishedFlag ) == 0 ) {
     emit updated();
   }
 }
 
 void Request::finish()
 {
-  if ( !Utils::AtomicInt::loadAcquire( isFinishedFlag ) ) {
+  if ( Utils::AtomicInt::loadAcquire( isFinishedFlag ) == 0 ) {
     {
       QMutexLocker _( &dataMutex );
       isFinishedFlag.ref();
@@ -168,7 +168,7 @@ Class::Class( string const & id_, vector< string > const & dictionaryFiles_ ):
   indexedFtsDoc( 0 ),
   dictionaryIconLoaded( false ),
   can_FTS( false ),
-  FTS_index_completed( false )
+  FTS_index_completed( 0 )
 {
 }
 

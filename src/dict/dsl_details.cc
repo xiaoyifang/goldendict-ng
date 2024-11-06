@@ -72,7 +72,7 @@ namespace {
 /// @return true if @p tagName equals "mN" where N is a digit
 bool is_mN( wstring const & tagName )
 {
-  return tagName.size() == 2 && tagName[ 0 ] == U'm' && iswdigit( tagName[ 1 ] );
+  return tagName.size() == 2 && tagName[ 0 ] == U'm' && (iswdigit( tagName[ 1 ] ) != 0);
 }
 
 bool isAnyM( wstring const & tagName )
@@ -272,7 +272,7 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName, wstring co
         // If the tag is [t], we update the transcriptionCount
         if ( name == U"t" ) {
           if ( isClosing ) {
-            if ( transcriptionCount ) {
+            if ( transcriptionCount != 0u ) {
               --transcriptionCount;
             }
           }
@@ -284,7 +284,7 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName, wstring co
         // If the tag is [s], we update the mediaCount
         if ( name == U"s" ) {
           if ( isClosing ) {
-            if ( mediaCount ) {
+            if ( mediaCount != 0u ) {
               --mediaCount;
             }
           }
@@ -443,7 +443,7 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName, wstring co
       }
 
       // If we're inside the transcription, do old-encoding conversion
-      if ( transcriptionCount ) {
+      if ( transcriptionCount != 0u ) {
         switch ( ch ) {
           case 0x2021:
             ch = 0xE6;
@@ -801,14 +801,14 @@ void ArticleDom::closeTag( wstring const & name, list< Node * > & stack, bool wa
 
 void ArticleDom::nextChar()
 {
-  if ( !*stringPos ) {
+  if ( *stringPos == 0u ) {
     throw eot();
   }
 
   ch = *stringPos++;
 
   if ( ch == L'\\' ) {
-    if ( !*stringPos ) {
+    if ( *stringPos == 0u ) {
       throw eot();
     }
 
@@ -900,7 +900,7 @@ DslScanner::DslScanner( string const & fileName ):
 
   qDebug() << "DSL encoding ->" << codec->name();
 
-  if ( gzrewind( f ) ) {
+  if ( gzrewind( f ) != 0 ) {
     gzclose( f );
     throw exCantOpen( fileName );
   }
@@ -927,19 +927,19 @@ DslScanner::DslScanner( string const & fileName ):
     bool isLangTo    = false;
     bool isSoundDict = false;
 
-    if ( !str.compare( 0, 5, U"#NAME", 5 ) ) {
+    if ( str.compare( 0, 5, U"#NAME", 5 ) == 0 ) {
       isName = true;
     }
-    else if ( !str.compare( 0, 15, U"#INDEX_LANGUAGE", 15 ) ) {
+    else if ( str.compare( 0, 15, U"#INDEX_LANGUAGE", 15 ) == 0 ) {
       isLangFrom = true;
     }
-    else if ( !str.compare( 0, 18, U"#CONTENTS_LANGUAGE", 18 ) ) {
+    else if ( str.compare( 0, 18, U"#CONTENTS_LANGUAGE", 18 ) == 0 ) {
       isLangTo = true;
     }
-    else if ( !str.compare( 0, 17, U"#SOUND_DICTIONARY", 17 ) ) {
+    else if ( str.compare( 0, 17, U"#SOUND_DICTIONARY", 17 ) == 0 ) {
       isSoundDict = true;
     }
-    else if ( str.compare( 0, 17, U"#SOURCE_CODE_PAGE", 17 ) ) {
+    else if ( str.compare( 0, 17, U"#SOURCE_CODE_PAGE", 17 ) != 0 ) {
       continue;
     }
 
@@ -977,13 +977,13 @@ DslScanner::DslScanner( string const & fileName ):
         // We don't need that!
         GD_FDPRINTF( stderr, "Warning: encoding was specified in a Unicode file, ignoring.\n" );
       }
-      else if ( !arg.compare( U"Latin" ) ) {
+      else if ( arg.compare( U"Latin" ) == 0 ) {
         encoding = Utf8::Windows1252;
       }
-      else if ( !arg.compare( U"Cyrillic" ) ) {
+      else if ( arg.compare( U"Cyrillic" ) == 0 ) {
         encoding = Utf8::Windows1251;
       }
-      else if ( !arg.compare( U"EasternEuropean" ) ) {
+      else if ( arg.compare( U"EasternEuropean" ) == 0 ) {
         encoding = Utf8::Windows1250;
       }
       else {
@@ -997,7 +997,7 @@ DslScanner::DslScanner( string const & fileName ):
   // We need to rewind to that line so readNextLine() would return it again
   // next time it's called. To do that, we just use the slow gzseek() and
   // empty the read buffer.
-  if ( gzdirect( f ) ) { // Without this ZLib 1.2.7 gzread() return 0
+  if ( gzdirect( f ) != 0 ) { // Without this ZLib 1.2.7 gzread() return 0
     gzrewind( f );       // after gzseek() call on uncompressed files
   }
   gzseek( f, offset, SEEK_SET );
@@ -1017,7 +1017,7 @@ bool DslScanner::readNextLine( wstring & out, size_t & offset, bool only_head_wo
   for ( ;; ) {
     // Check that we have bytes to read
     if ( readBufferLeft < 5000 ) {
-      if ( !gzeof( f ) ) {
+      if ( gzeof( f ) == 0 ) {
         // To avoid having to deal with ring logic, we move the remaining bytes
         // to the beginning
         memmove( readBuffer, readBufferPtr, readBufferLeft );
@@ -1133,7 +1133,7 @@ void processUnsortedParts( wstring & str, bool strip )
         str.erase( x, 1 );
         continue;
       }
-      else if ( !refCount ) {
+      else if ( refCount == 0 ) {
         // The final closing brace -- we can erase the whole range now.
         str.erase( startPos, x - startPos + 1 );
         x = startPos;
@@ -1145,7 +1145,7 @@ void processUnsortedParts( wstring & str, bool strip )
     ++x;
   }
 
-  if ( strip && refCount ) {
+  if ( strip && (refCount != 0) ) {
     GD_FDPRINTF( stderr, "Warning: unclosed brace(s) encountered.\n" );
     str.erase( startPos );
   }
@@ -1185,7 +1185,7 @@ void expandOptionalParts( wstring & str, list< wstring > * result, size_t x, boo
             ++refCount;
           }
           else if ( ch == L')' ) {
-            if ( !--refCount ) {
+            if ( --refCount == 0 ) {
               // Now that the closing parenthesis is found,
               // cut the whole thing out and be done.
 
@@ -1202,7 +1202,7 @@ void expandOptionalParts( wstring & str, list< wstring > * result, size_t x, boo
           }
         }
 
-        if ( refCount && x != str.size() - 1 ) {
+        if ( (refCount != 0) && x != str.size() - 1 ) {
           // Closing paren not found? Chop it.
 
           wstring removed( str, 0, x );
@@ -1310,7 +1310,7 @@ void normalizeHeadword( wstring & str )
   {
     if ( str[ x ] == L' ' ) {
       size_t y;
-      for ( y = x; y && ( str[ y - 1 ] == L' ' ); --y ) {
+      for ( y = x; (y != 0u) && ( str[ y - 1 ] == L' ' ); --y ) {
         ;
       }
 

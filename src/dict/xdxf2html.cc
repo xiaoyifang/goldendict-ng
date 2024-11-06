@@ -153,7 +153,7 @@ string convert( string const & in,
 
   QDomNodeList nodes = dd.elementsByTagName( "ex" ); // Example
 
-  while ( nodes.size() ) {
+  while ( nodes.size() != 0 ) {
     QString author, source;
     QDomElement el = nodes.at( 0 ).toElement();
 
@@ -204,7 +204,7 @@ string convert( string const & in,
 
   nodes = dd.elementsByTagName( "mrkd" ); // marked out words in translations/examples of usage
 
-  while ( nodes.size() ) {
+  while ( nodes.size() != 0 ) {
     QDomElement el = nodes.at( 0 ).toElement();
 
     if ( el.text().isEmpty() && el.childNodes().isEmpty() ) {
@@ -221,7 +221,7 @@ string convert( string const & in,
     headword->clear();
   }
 
-  while ( nodes.size() ) {
+  while ( nodes.size() != 0 ) {
     QDomElement el = nodes.at( 0 ).toElement();
 
     if ( el.text().isEmpty() && el.childNodes().isEmpty() ) {
@@ -247,7 +247,7 @@ string convert( string const & in,
         el.setAttribute( "lang", lang );
 
         quint32 langID = Xdxf::getLanguageId( lang );
-        if ( langID ) {
+        if ( langID != 0u ) {
           isLanguageRtl = LangCoder::isLanguageRTL( langID );
         }
       }
@@ -342,7 +342,7 @@ string convert( string const & in,
       }
     }
     // we finally change all <def> tags into 'xdxf_def' <span>s
-    while ( nodes.size() ) {
+    while ( nodes.size() != 0 ) {
       QDomElement el = nodes.at( 0 ).toElement();
       el.setTagName( "span" );
       el.setAttribute( "class", "xdxf_def" );
@@ -354,7 +354,7 @@ string convert( string const & in,
         el.setAttribute( "lang", lang );
 
         quint32 langID = Xdxf::getLanguageId( lang );
-        if ( langID ) {
+        if ( langID != 0u ) {
           isLanguageRtl = LangCoder::isLanguageRTL( langID );
         }
       }
@@ -366,7 +366,7 @@ string convert( string const & in,
 
   nodes = dd.elementsByTagName( "opt" ); // Optional headword part
 
-  while ( nodes.size() ) {
+  while ( nodes.size() != 0 ) {
     QDomElement el = nodes.at( 0 ).toElement();
 
     if ( el.text().isEmpty() && el.childNodes().isEmpty() ) {
@@ -379,7 +379,7 @@ string convert( string const & in,
 
   nodes = dd.elementsByTagName( "kref" ); // Reference to another word
 
-  while ( nodes.size() ) {
+  while ( nodes.size() != 0 ) {
     QDomElement el = nodes.at( 0 ).toElement();
 
     if ( el.text().isEmpty() && el.childNodes().isEmpty() ) {
@@ -401,7 +401,7 @@ string convert( string const & in,
 
   nodes = dd.elementsByTagName( "iref" ); // Reference to internet site
 
-  while ( nodes.size() ) {
+  while ( nodes.size() != 0 ) {
     QDomElement el = nodes.at( 0 ).toElement();
 
     if ( el.text().isEmpty() && el.childNodes().isEmpty() ) {
@@ -425,7 +425,7 @@ string convert( string const & in,
     nodes = dd.elementsByTagName( "abbr" );
   }
 
-  while ( nodes.size() ) {
+  while ( nodes.size() != 0 ) {
     QDomElement el = nodes.at( 0 ).toElement();
 
     if ( el.text().isEmpty() && el.childNodes().isEmpty() ) {
@@ -448,7 +448,7 @@ string convert( string const & in,
           // Replace all spaces with non-breakable ones, since that's how Lingvo shows tooltips
           title.reserve( i->second.size() );
 
-          for ( char const * c = i->second.c_str(); *c; ++c ) {
+          for ( char const * c = i->second.c_str(); *c != 0; ++c ) {
             if ( *c == ' ' || *c == '\t' ) {
               // u00A0 in utf8
               title.push_back( 0xC2 );
@@ -475,7 +475,7 @@ string convert( string const & in,
 
   nodes = dd.elementsByTagName( "dtrn" ); // Direct translation
 
-  while ( nodes.size() ) {
+  while ( nodes.size() != 0 ) {
     QDomElement el = nodes.at( 0 ).toElement();
 
     if ( el.text().isEmpty() && el.childNodes().isEmpty() ) {
@@ -488,7 +488,7 @@ string convert( string const & in,
 
   nodes = dd.elementsByTagName( "c" ); // Color
 
-  while ( nodes.size() ) {
+  while ( nodes.size() != 0 ) {
     QDomElement el = nodes.at( 0 ).toElement();
 
     if ( el.text().isEmpty() && el.childNodes().isEmpty() ) {
@@ -508,7 +508,7 @@ string convert( string const & in,
 
   nodes = dd.elementsByTagName( "co" ); // Editorial comment
 
-  while ( nodes.size() ) {
+  while ( nodes.size() != 0 ) {
     QDomElement el = nodes.at( 0 ).toElement();
 
     if ( el.text().isEmpty() && el.childNodes().isEmpty() ) {
@@ -526,7 +526,7 @@ string convert( string const & in,
 
   /* grammar information */
   nodes = dd.elementsByTagName( "gr" ); // proper grammar tag
-  while ( nodes.size() ) {
+  while ( nodes.size() != 0 ) {
     QDomElement el = nodes.at( 0 ).toElement();
 
     if ( el.text().isEmpty() && el.childNodes().isEmpty() ) {
@@ -542,7 +542,7 @@ string convert( string const & in,
     }
   }
   nodes = dd.elementsByTagName( "pos" ); // deprecated grammar tag
-  while ( nodes.size() ) {
+  while ( nodes.size() != 0 ) {
     QDomElement el = nodes.at( 0 ).toElement();
 
     if ( el.text().isEmpty() && el.childNodes().isEmpty() ) {
@@ -558,7 +558,7 @@ string convert( string const & in,
     }
   }
   nodes = dd.elementsByTagName( "tense" ); // deprecated grammar tag
-  while ( nodes.size() ) {
+  while ( nodes.size() != 0 ) {
     QDomElement el = nodes.at( 0 ).toElement();
 
     if ( el.text().isEmpty() && el.childNodes().isEmpty() ) {
@@ -577,7 +577,7 @@ string convert( string const & in,
 
   nodes = dd.elementsByTagName( "tr" ); // Transcription
 
-  while ( nodes.size() ) {
+  while ( nodes.size() != 0 ) {
     QDomElement el = nodes.at( 0 ).toElement();
 
     if ( el.text().isEmpty() && el.childNodes().isEmpty() ) {
@@ -621,7 +621,7 @@ string convert( string const & in,
 
   nodes = dd.elementsByTagName( "rref" ); // Resource reference
 
-  while ( nodes.size() ) {
+  while ( nodes.size() != 0 ) {
     QDomElement el = nodes.at( 0 ).toElement();
 
     if ( el.text().isEmpty() && el.childNodes().isEmpty() ) {

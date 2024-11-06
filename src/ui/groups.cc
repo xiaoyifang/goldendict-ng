@@ -93,7 +93,7 @@ Config::Groups Groups::getGroups() const
 
 void Groups::countChanged()
 {
-  bool en = ui.groups->count();
+  bool en = ui.groups->count() != 0;
 
   ui.renameGroup->setEnabled( en );
   ui.removeGroup->setEnabled( en );

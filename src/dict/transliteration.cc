@@ -111,7 +111,7 @@ vector< wstring > TransliterationDictionary::getAlternateWritings( wstring const
 
   Table::const_iterator i;
 
-  while ( left ) {
+  while ( left != 0u ) {
     unsigned x;
 
     for ( x = table.getMaxEntrySize(); x >= 1; --x ) {
@@ -127,7 +127,7 @@ vector< wstring > TransliterationDictionary::getAlternateWritings( wstring const
       }
     }
 
-    if ( !x ) {
+    if ( x == 0u ) {
       // No matches -- add this char as it is
       result.push_back( *ptr++ );
       --left;

@@ -2,46 +2,9 @@
 ---
 Checks: >
   -*,
-  bugprone-*,
-  cert-*,
-  clang-analyzer-*,
-  clang-diagnostic-*,
-  concurrency-*,
-  cppcoreguidelines-*,
-  google-*,
-  hicpp-*,
-  misc-*,
-  modernize-*,
-  objc-*,
-  performance-*,
-  portability-*,
-  readability-*,
-  -bugprone-easily-swappable-parameters,
-  -bugprone-reserved-identifier,
-  -cppcoreguidelines-owning-memory,
-  -cppcoreguidelines-prefer-member-initializer,
-  -cppcoreguidelines-pro-bounds-array-to-pointer-decay,
-  -cppcoreguidelines-pro-type-cstyle-cast,
-  -cppcoreguidelines-pro-type-reinterpret-cast,
-  -google-default-arguments,
-  -google-readability-casting,
-  -hicpp-deprecated-headers,
-  -misc-const-correctness,
-  -misc-include-cleaner,
-  -misc-non-private-member-variables-in-classes,
-  -modernize-avoid-c-arrays,
-  -modernize-deprecated-headers,
-  -modernize-use-nodiscard,
-  -modernize-use-trailing-return-type,
-  -readability-function-cognitive-complexity,
-  -readability-identifier-length,
-  -readability-magic-numbers,
+  readability-implicit-bool-conversion
 CheckOptions:
-  - key: modernize-loop-convert.MinConfidence
-    value: reasonable
-  - key: modernize-use-override.IgnoreDestructors
-    value: 1
-  - key: cppcoreguidelines-explicit-virtual-functions.IgnoreDestructors
+  - key: readability-implicit-bool-conversion.AllowPointerConditions
     value: 1
 ...
 

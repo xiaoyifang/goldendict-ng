@@ -218,7 +218,7 @@ void ForvoArticleRequest::requestFinished( QNetworkReply * r )
 
   bool updated = false;
 
-  for ( ; netReplies.size() && netReplies.front().finished; netReplies.pop_front() ) {
+  for ( ; (netReplies.size() != 0u) && netReplies.front().finished; netReplies.pop_front() ) {
     sptr< QNetworkReply > netReply = netReplies.front().reply;
 
     if ( netReply->error() == QNetworkReply::NoError ) {
@@ -239,7 +239,7 @@ void ForvoArticleRequest::requestFinished( QNetworkReply * r )
         if ( !items.isNull() ) {
           QDomNodeList nl = items.toElement().elementsByTagName( "item" );
 
-          if ( nl.count() ) {
+          if ( nl.count() != 0 ) {
             string articleBody;
 
             articleBody += "<div class='forvo_headword'>";
@@ -276,17 +276,17 @@ void ForvoArticleRequest::requestFinished( QNetworkReply * r )
 
                 string votes;
 
-                if ( positiveVotes || negativeVotes ) {
+                if ( (positiveVotes != 0) || (negativeVotes != 0) ) {
                   votes += " ";
 
-                  if ( positiveVotes ) {
+                  if ( positiveVotes != 0 ) {
                     votes += "<span class='forvo_positive_votes'>+";
                     votes += QByteArray::number( positiveVotes ).data();
                     votes += "</span>";
                   }
 
-                  if ( negativeVotes ) {
-                    if ( positiveVotes ) {
+                  if ( negativeVotes != 0 ) {
+                    if ( positiveVotes != 0 ) {
                       votes += " ";
                     }
 
@@ -364,7 +364,7 @@ makeDictionaries( Dictionary::Initializing &, Config::Forvo const & forvo, QNetw
     for ( const auto & x : codes ) {
       QString code = x.simplified();
 
-      if ( code.size() && !usedCodes.contains( code ) ) {
+      if ( (code.size() != 0) && !usedCodes.contains( code ) ) {
         // Generate id
 
         QCryptographicHash hash( QCryptographicHash::Md5 );
@@ -374,7 +374,7 @@ makeDictionaries( Dictionary::Initializing &, Config::Forvo const & forvo, QNetw
 
         QString displayedCode( code.toLower() );
 
-        if ( displayedCode.size() ) {
+        if ( displayedCode.size() != 0 ) {
           displayedCode[ 0 ] = displayedCode[ 0 ].toUpper();
         }
 

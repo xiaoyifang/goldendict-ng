@@ -34,7 +34,7 @@ void GroupComboBox::fill( Instances::Groups const & groups )
 {
   unsigned prevId = 0;
 
-  if ( count() ) {
+  if ( count() != 0 ) {
     prevId = itemData( currentIndex() ).toUInt();
   }
 
@@ -102,7 +102,7 @@ void GroupComboBox::setCurrentGroup( unsigned id )
 
 unsigned GroupComboBox::getCurrentGroup() const
 {
-  if ( !count() ) {
+  if ( count() == 0 ) {
     return 0;
   }
 

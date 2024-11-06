@@ -95,7 +95,7 @@ QIcon Group::makeIcon() const
     return iconData;
   }
 
-  QIcon i = icon.size() ? QIcon( ":/flags/" + icon ) : QIcon();
+  QIcon i = (icon.size() != 0) ? QIcon( ":/flags/" + icon ) : QIcon();
 
   return i;
 }
@@ -141,11 +141,11 @@ void complementDictionaryOrder( Group & group,
 {
   set< string, std::less<> > presentIds;
 
-  for ( unsigned x = group.dictionaries.size(); x--; ) {
+  for ( unsigned x = group.dictionaries.size(); (x--) != 0u; ) {
     presentIds.insert( group.dictionaries[ x ]->getId() );
   }
 
-  for ( unsigned x = inactiveDictionaries.dictionaries.size(); x--; ) {
+  for ( unsigned x = inactiveDictionaries.dictionaries.size(); (x--) != 0u; ) {
     presentIds.insert( inactiveDictionaries.dictionaries[ x ]->getId() );
   }
 
@@ -159,10 +159,10 @@ void complementDictionaryOrder( Group & group,
 void updateNames( Config::Group & group, vector< sptr< Dictionary::Class > > const & allDictionaries )
 {
 
-  for ( unsigned x = group.dictionaries.size(); x--; ) {
+  for ( unsigned x = group.dictionaries.size(); (x--) != 0u; ) {
     std::string const id = group.dictionaries[ x ].id.toStdString();
 
-    for ( unsigned y = allDictionaries.size(); y--; ) {
+    for ( unsigned y = allDictionaries.size(); (y--) != 0u; ) {
       if ( allDictionaries[ y ]->getId() == id ) {
         group.dictionaries[ x ].name = QString::fromUtf8( allDictionaries[ y ]->getName().c_str() );
         break;

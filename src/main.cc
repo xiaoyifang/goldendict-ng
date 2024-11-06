@@ -335,7 +335,7 @@ int main( int argc, char ** argv )
   if ( qEnvironmentVariableIsEmpty( "GOLDENDICT_FORCE_WAYLAND" ) ) {
     char * xdg_envc     = getenv( "XDG_SESSION_TYPE" );
     QString xdg_session = xdg_envc ? QString::fromLatin1( xdg_envc ) : QString();
-    if ( !QString::compare( xdg_session, QString( "wayland" ), Qt::CaseInsensitive ) ) {
+    if ( QString::compare( xdg_session, QString( "wayland" ), Qt::CaseInsensitive ) == 0 ) {
       setenv( "QT_QPA_PLATFORM", "xcb", 1 );
     }
   }

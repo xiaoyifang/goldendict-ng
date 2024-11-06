@@ -201,7 +201,7 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
   if ( result == editAction ) {
     emit editGroupRequested();
   }
-  else if ( result && result->data().value< void * >() ) {
+  else if ( (result != nullptr) && (result->data().value< void * >() != nullptr) ) {
     ( (QAction *)( result->data().value< void * >() ) )->trigger();
   }
 
@@ -243,7 +243,7 @@ void DictionaryBar::actionWasTriggered( QAction * action )
     return; // Some weird action, not our button
   }
 
-  if ( QApplication::keyboardModifiers() & ( Qt::ControlModifier | Qt::ShiftModifier ) ) {
+  if ( QApplication::keyboardModifiers() & ( Qt::ControlModifier | Qt::ShiftModifier ) != 0u ) {
     // Ctrl ,solo mode with single dictionary
     // Shift,toggle back the previous dictionaries
     // Are we solo already?
@@ -259,7 +259,7 @@ void DictionaryBar::actionWasTriggered( QAction * action )
         break;
       }
     }
-    if ( QApplication::keyboardModifiers() & Qt::ShiftModifier ) {
+    if ( QApplication::keyboardModifiers() & Qt::ShiftModifier != 0u ) {
       if ( enterSoloMode ) {
         *mutedDictionaries = storedMutedSet;
 

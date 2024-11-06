@@ -213,15 +213,15 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.startWithScanPopupOn->setChecked( p.startWithScanPopupOn );
   ui.enableScanPopupModifiers->setChecked( p.enableScanPopupModifiers );
 
-  ui.altKey->setChecked( p.scanPopupModifiers & KeyboardState::Alt );
-  ui.ctrlKey->setChecked( p.scanPopupModifiers & KeyboardState::Ctrl );
-  ui.shiftKey->setChecked( p.scanPopupModifiers & KeyboardState::Shift );
-  ui.winKey->setChecked( p.scanPopupModifiers & KeyboardState::Win );
+  ui.altKey->setChecked( (p.scanPopupModifiers & KeyboardState::Alt) != 0u );
+  ui.ctrlKey->setChecked( (p.scanPopupModifiers & KeyboardState::Ctrl) != 0u );
+  ui.shiftKey->setChecked( (p.scanPopupModifiers & KeyboardState::Shift) != 0u );
+  ui.winKey->setChecked( (p.scanPopupModifiers & KeyboardState::Win) != 0u );
 
   ui.ignoreOwnClipboardChanges->setChecked( p.ignoreOwnClipboardChanges );
   ui.scanToMainWindow->setChecked( p.scanToMainWindow );
 
-  ui.storeHistory->setChecked( p.storeHistory );
+  ui.storeHistory->setChecked( p.storeHistory != 0u );
   ui.historyMaxSizeField->setValue( p.maxStringsInHistory );
   ui.historySaveIntervalField->setValue( p.historyStoreInterval );
   ui.alwaysExpandOptionalParts->setChecked( p.alwaysExpandOptionalParts );
@@ -456,7 +456,7 @@ Config::Preferences Preferences::getPreferences()
   p.selectionChangeDelayTimer = ui.delayTimer->value();
 #endif
 
-  p.storeHistory              = ui.storeHistory->isChecked();
+  p.storeHistory              = static_cast<unsigned int>(ui.storeHistory->isChecked());
   p.maxStringsInHistory       = ui.historyMaxSizeField->text().toUInt();
   p.historyStoreInterval      = ui.historySaveIntervalField->text().toUInt();
   p.alwaysExpandOptionalParts = ui.alwaysExpandOptionalParts->isChecked();
