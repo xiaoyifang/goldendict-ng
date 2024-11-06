@@ -389,7 +389,7 @@ void MediaWikiSectionsParser::closeListTags( int currentLevel )
 
 class MediaWikiArticleRequest: public MediaWikiDataRequestSlots
 {
-  typedef std::list< std::pair< QNetworkReply *, bool > > NetReplies;
+  using NetReplies = std::list< std::pair< QNetworkReply *, bool > >;
   NetReplies netReplies;
   QString url;
   QString lang;

@@ -112,9 +112,9 @@ public:
     virtual void handleRecord( QString const & name, RecordInfo const & recordInfo ) = 0;
   };
 
-  typedef vector< pair< qint64, qint64 > > BlockInfoVector;
-  typedef vector< pair< qint64, QString > > HeadWordIndex;
-  typedef map< qint32, pair< QString, QString > > StyleSheets;
+  using BlockInfoVector = vector< pair< qint64, qint64 > >;
+  using HeadWordIndex   = vector< pair< qint64, QString > >;
+  using StyleSheets     = map< qint32, pair< QString, QString > >;
 
   inline QString const & title() const
   {

@@ -3,5 +3,5 @@
 
 #include <QString>
 
-typedef QMap< QString, QString > Contexts;
+using Contexts = QMap< QString, QString >;
 #endif // BASE_TYPE_H

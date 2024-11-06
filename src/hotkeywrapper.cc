@@ -698,7 +698,7 @@ bool HotkeyWrapper::isKeyGrabbed( quint32 keyCode, quint32 modifiers ) const
 
 namespace {
 
-typedef int ( *X11ErrorHandler )( Display * display, XErrorEvent * event );
+using X11ErrorHandler = int ( * )( Display * display, XErrorEvent * event );
 
 class X11GrabUngrabErrorHandler
 {

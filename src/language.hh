@@ -11,7 +11,7 @@ namespace Language {
 
 /// This identifies any language uniquely within the program. It also has
 /// two special meanings - Unknown and Any.
-typedef quint32 Id;
+using Id = quint32;
 
 enum {
   /// Value for Id which signifies that the language is unknown or unspecified.

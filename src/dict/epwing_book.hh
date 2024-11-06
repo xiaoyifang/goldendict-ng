@@ -58,7 +58,7 @@ struct EpwingHeadword
 
 class EpwingBook
 {
-  typedef std::pair< int, int > EWPos;
+  using EWPos = std::pair< int, int >;
 
   void setErrorString( QString const & func, EB_Error_Code code );
 
