@@ -17,6 +17,7 @@
 #include <QLocale>
 #include <optional>
 #include <QThread>
+#include <signal.h>
 
 /// Special group IDs
 enum GroupId : unsigned {
@@ -428,7 +429,15 @@ struct Preferences
   // Appearances
 
   Dark darkMode       = Dark::Off;
-  Dark darkReaderMode = Dark::Off;
+
+
+  Dark darkReaderMode =
+#if defined( Q_OS_MACOS )
+    Dark::Auto;
+#else
+    Dark::Off
+#endif
+
   QString addonStyle;
   QString displayStyle; // Article Display style (Which also affect interface style on windows)
 
