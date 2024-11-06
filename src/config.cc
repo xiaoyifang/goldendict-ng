@@ -213,8 +213,6 @@ Preferences::Preferences():
   selectWordBySingleClick( false ),
   autoScrollToTargetArticle( true ),
   escKeyHidesMainWindow( false ),
-  darkMode( false ),
-  darkReaderMode( false ),
   alwaysOnTop( false ),
   searchInDock( false ),
 // on macOS, register hotkeys will override system shortcuts, disabled for now to avoid troubles.
@@ -947,11 +945,12 @@ Class load()
     }
 
     if ( !preferences.namedItem( "darkMode" ).isNull() ) {
-      c.preferences.darkMode = ( preferences.namedItem( "darkMode" ).toElement().text() == "1" );
+      c.preferences.darkMode = static_cast< Dark >( preferences.namedItem( "darkMode" ).toElement().text().toInt() );
     }
 
     if ( !preferences.namedItem( "darkReaderMode" ).isNull() ) {
-      c.preferences.darkReaderMode = ( preferences.namedItem( "darkReaderMode" ).toElement().text() == "1" );
+      c.preferences.darkReaderMode =
+        static_cast< Dark >( preferences.namedItem( "darkReaderMode" ).toElement().text().toInt() );
     }
 
     if ( !preferences.namedItem( "zoomFactor" ).isNull() ) {
@@ -1882,11 +1881,11 @@ void save( Class const & c )
     preferences.appendChild( opt );
 
     opt = dd.createElement( "darkMode" );
-    opt.appendChild( dd.createTextNode( c.preferences.darkMode ? "1" : "0" ) );
+    opt.appendChild( dd.createTextNode( QString::number( static_cast< int >( c.preferences.darkMode ) ) ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "darkReaderMode" );
-    opt.appendChild( dd.createTextNode( c.preferences.darkReaderMode ? "1" : "0" ) );
+    opt.appendChild( dd.createTextNode( QString::number( static_cast< int >( c.preferences.darkReaderMode ) ) ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "zoomFactor" );

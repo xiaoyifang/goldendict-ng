@@ -190,7 +190,7 @@ private:
   /// Applies Qt stylesheets, use Windows dark palette etc....
   void updateAppearances( const QString & addonStyle,
                           const QString & displayStyle,
-                          const bool & darkMode
+                          Config::Dark darkMode
 #if !defined( Q_OS_WIN )
                           ,
                           const QString & interfaceStyle

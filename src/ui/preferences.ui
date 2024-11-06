@@ -397,24 +397,46 @@ the application.</string>
            </layout>
           </item>
           <item>
-           <widget class="QCheckBox" name="darkMode">
-            <property name="toolTip">
-             <string>Turn the UI to dark.</string>
-            </property>
-            <property name="text">
-             <string>Dark Mode</string>
-            </property>
-           </widget>
+           <layout class="QHBoxLayout" name="darkModeLayout">
+            <item>
+             <widget class="QLabel" name="darkModeLabel">
+              <property name="toolTip">
+               <string>Turn the UI to dark.</string>
+              </property>
+              <property name="text">
+               <string>Dark Mode</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="darkMode">
+              <property name="toolTip">
+               <string>Turn the UI to dark.</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
           <item>
-           <widget class="QCheckBox" name="darkReaderMode">
-            <property name="toolTip">
-             <string>Turn the article display style to dark.</string>
-            </property>
-            <property name="text">
-             <string>Dark Reader Mode</string>
-            </property>
-           </widget>
+           <layout class="QHBoxLayout" name="darkReaderLayout">
+            <item>
+             <widget class="QLabel" name="darkReaderModeLabel">
+              <property name="toolTip">
+               <string>Turn the article display style to dark.</string>
+              </property>
+              <property name="text">
+               <string>Dark Reader Mode</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="darkReaderMode">
+              <property name="toolTip">
+               <string>Turn the article display style to dark.</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
           <item>
            <spacer name="verticalSpacer_5">

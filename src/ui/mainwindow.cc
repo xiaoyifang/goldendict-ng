@@ -1318,7 +1318,7 @@ QPrinter & MainWindow::getPrinter()
 
 void MainWindow::updateAppearances( QString const & addonStyle,
                                     QString const & displayStyle,
-                                    bool const & darkMode
+                                    Config::Dark darkMode
 #if !defined( Q_OS_WIN )
                                     ,
                                     const QString & interfaceStyle
@@ -1326,7 +1326,7 @@ void MainWindow::updateAppearances( QString const & addonStyle,
 )
 {
 #ifdef Q_OS_WIN32
-  if ( darkMode ) {
+  if ( darkMode == Config::Dark::On ) {
     //https://forum.qt.io/topic/101391/windows-10-dark-theme
 
     QPalette darkPalette;
@@ -1381,7 +1381,7 @@ void MainWindow::updateAppearances( QString const & addonStyle,
 
   // Load an additional stylesheet
   // Dark Mode doesn't work nice with custom qt style sheets,
-  if ( !darkMode ) {
+  if ( darkMode == Config::Dark::Off ) {
     QFile additionalStyle( QString( ":qt-%1.css" ).arg( displayStyle ) );
     if ( additionalStyle.open( QFile::ReadOnly ) ) {
       css += additionalStyle.readAll();
@@ -1406,7 +1406,7 @@ void MainWindow::updateAppearances( QString const & addonStyle,
   }
 
 #ifdef Q_OS_WIN32
-  if ( darkMode ) {
+  if ( darkMode == Config::Dark::On ) {
     css += "QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }";
   }
 #endif
