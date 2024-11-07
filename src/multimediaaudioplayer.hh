@@ -43,4 +43,3 @@ private:
 };
 
 #endif // MAKE_QTMULTIMEDIA_PLAYER
-

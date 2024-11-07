@@ -26,4 +26,3 @@ signals:
 };
 
 using AudioPlayerPtr = QScopedPointer< AudioPlayerInterface >;
-

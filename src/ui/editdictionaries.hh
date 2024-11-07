@@ -92,4 +92,3 @@ private:
 
   QAction helpAction;
 };
-

@@ -61,4 +61,3 @@ private slots:
 signals:
   void showDictionaryInfo( QString const & id );
 };
-

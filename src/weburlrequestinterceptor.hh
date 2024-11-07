@@ -12,4 +12,3 @@ public:
 signals:
   void linkClicked( const QUrl & url );
 };
-

@@ -20,4 +20,3 @@ private:
 
   virtual void closeEvent( QCloseEvent * );
 };
-

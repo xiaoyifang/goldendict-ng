@@ -29,4 +29,3 @@ private:
   std::vector< sptr< Dictionary::Class > > const & allDictionaries;
   Instances::Groups const & groups;
 };
-

@@ -40,4 +40,3 @@ vector< DataFiles > findDataFiles( QString const & path );
 vector< sptr< Dictionary::Class > > makeDictionaries( Config::Hunspell const & );
 
 } // namespace HunspellMorpho
-

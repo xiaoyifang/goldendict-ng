@@ -15,4 +15,3 @@ protected:
 private:
   QNetworkAccessManager mgr;
 };
-

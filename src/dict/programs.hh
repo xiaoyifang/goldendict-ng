@@ -78,4 +78,3 @@ private slots:
 };
 
 } // namespace Programs
-

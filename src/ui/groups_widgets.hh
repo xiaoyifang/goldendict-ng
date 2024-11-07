@@ -261,4 +261,3 @@ private slots:
 signals:
   void filterChanged( QString const & filter );
 };
-

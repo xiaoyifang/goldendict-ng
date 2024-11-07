@@ -90,4 +90,3 @@ private slots:
 private:
   History * m_history;
 };
-

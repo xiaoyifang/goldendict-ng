@@ -18,5 +18,3 @@ private:
 signals:
   void requestTabChange( int index );
 };
-
-

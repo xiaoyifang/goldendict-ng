@@ -26,4 +26,3 @@ public:
 signals:
   void emitAudio( QString audioLink );
 };
-

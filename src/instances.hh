@@ -78,4 +78,3 @@ void updateNames( Config::Class &, vector< sptr< Dictionary::Class > > const & a
 QIcon iconFromData( QByteArray const & );
 
 } // namespace Instances
-

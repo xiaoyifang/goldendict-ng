@@ -232,4 +232,3 @@ private slots:
 
   void titleChanged( ArticleView *, QString const & title ) const;
 };
-

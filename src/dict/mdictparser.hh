@@ -214,4 +214,3 @@ protected:
 };
 
 } // namespace Mdict
-

@@ -14,4 +14,3 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
                                                       unsigned maxHeadwordsToExpand );
 
 } // namespace Slob
-

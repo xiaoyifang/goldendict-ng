@@ -49,4 +49,3 @@ struct BabylonLang
 BabylonLang getBabylonLangByIndex( int index );
 quint32 findBlgLangIDByEnglishName( gd::wstring const & lang );
 } // namespace Language
-

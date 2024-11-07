@@ -25,4 +25,3 @@ private:
 
   Ui::Initializing ui;
 };
-

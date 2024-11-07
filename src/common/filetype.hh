@@ -30,4 +30,3 @@ bool isNameOfCSS( string const & );
 bool isNameOfSvg( string const & name );
 
 } // namespace Filetype
-

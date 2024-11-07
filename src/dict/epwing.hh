@@ -19,4 +19,3 @@ void addWordToChunks( Epwing::Book::EpwingHeadword & head,
 vector< sptr< Dictionary::Class > >
 makeDictionaries( vector< string > const & fileNames, string const & indicesDir, Dictionary::Initializing & );
 } // namespace Epwing
-

@@ -20,4 +20,3 @@ private:
 
   Ui::About ui;
 };
-

@@ -17,4 +17,3 @@ makeDictionaries( Dictionary::Initializing &, Config::MediaWikis const & wikis, 
 
 
 } // namespace MediaWiki
-

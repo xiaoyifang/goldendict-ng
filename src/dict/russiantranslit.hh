@@ -10,4 +10,3 @@ namespace RussianTranslit {
 
 sptr< Dictionary::Class > makeDictionary();
 }
-

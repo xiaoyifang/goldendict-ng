@@ -17,5 +17,3 @@ public:
   QPushButton * next;
   QCheckBox * caseSensitive;
 };
-
-

@@ -10,4 +10,3 @@ namespace GermanTranslit {
 
 sptr< Dictionary::Class > makeDictionary();
 }
-

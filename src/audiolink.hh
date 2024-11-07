@@ -14,4 +14,3 @@
 /// The dictionary id is used to make active dictionary feature work.
 std::string addAudioLink( std::string const & url, std::string const & dictionaryId );
 std::string addAudioLink( QString const & url, std::string const & dictionaryId );
-

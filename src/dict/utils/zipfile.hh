@@ -71,4 +71,3 @@ bool readNextEntry( SplitZipFile &, CentralDirEntry & );
 bool readLocalHeader( SplitZipFile &, LocalFileHeader & );
 
 } // namespace ZipFile
-

@@ -46,4 +46,3 @@ public:
   // Copying/assigning isn't supported
   Q_DISABLE_COPY_MOVE( Iconv );
 };
-

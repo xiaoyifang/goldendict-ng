@@ -90,4 +90,3 @@ public slots:
 
   void dictsPaneClicked( QString const & );
 };
-

@@ -52,4 +52,3 @@ private:
   QMutex lock;
   std::list< sptr< Dictionary::WordSearchRequest > > queuedRequests;
 };
-

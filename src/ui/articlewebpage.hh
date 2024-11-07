@@ -23,4 +23,3 @@ protected:
 private:
   LastReqInfo lastReq;
 };
-

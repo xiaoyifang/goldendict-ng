@@ -309,4 +309,3 @@ private:
   QStringList mimeFormats;
   QModelIndexList indexes;
 };
-

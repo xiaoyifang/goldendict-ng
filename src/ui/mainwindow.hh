@@ -504,4 +504,3 @@ public slots:
     setValue( progress );
   }
 };
-

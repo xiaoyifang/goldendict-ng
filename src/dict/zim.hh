@@ -18,4 +18,3 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 } // namespace Zim
 
 #endif
-

@@ -41,4 +41,3 @@ private:
 
   void transform( const uchar buffer[ 64 ] );
 };
-

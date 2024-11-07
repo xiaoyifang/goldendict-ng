@@ -43,4 +43,3 @@ private:
   // deleteLater() is safer because viewer actively participates in the QEventLoop.
   std::unique_ptr< ExternalViewer, QObjectDeleteLater > viewer;
 };
-

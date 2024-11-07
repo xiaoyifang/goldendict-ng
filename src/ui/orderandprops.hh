@@ -39,4 +39,3 @@ private:
 signals:
   void showDictionaryHeadwords( Dictionary::Class * dict );
 };
-

@@ -89,4 +89,3 @@ QString escapeWildcardSymbols( QString const & );
 bool isCombiningMark( wchar ch );
 
 } // namespace Folding
-

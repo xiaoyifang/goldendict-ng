@@ -24,4 +24,3 @@ private:
   QTimer hideTimer;
   QPushButton * pushButton;
 };
-

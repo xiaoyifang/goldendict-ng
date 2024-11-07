@@ -27,4 +27,3 @@ void gdDebug( const char *, ... )
   ;
 
 extern QFile * logFilePtr;
-

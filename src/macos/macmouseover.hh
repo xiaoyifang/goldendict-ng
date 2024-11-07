@@ -1,14 +1,14 @@
 #ifdef __APPLE__
 
-#pragma once
+  #pragma once
 
-    #include <QObject>
-    #include <QTimer>
-    #include <ApplicationServices/ApplicationServices.h>
-    #include "config.hh"
-    #include "keyboardstate.hh"
-    #include <QMutexLocker>
-    #include <QMutex>
+  #include <QObject>
+  #include <QTimer>
+  #include <ApplicationServices/ApplicationServices.h>
+  #include "config.hh"
+  #include "keyboardstate.hh"
+  #include <QMutexLocker>
+  #include <QMutex>
 
 /// This is a mouseover feature interface, where you can point your mouse at
 /// any word in any window and wait a little, and it would provide that word
@@ -66,4 +66,3 @@ private:
 };
 
   #endif
-

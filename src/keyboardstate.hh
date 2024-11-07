@@ -21,4 +21,3 @@ public:
   /// right now.
   bool static checkModifiersPressed( int mask );
 };
-

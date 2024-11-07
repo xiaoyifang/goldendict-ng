@@ -21,5 +21,3 @@ private:
   Q_DISABLE_COPY( AudioOutput )
   Q_DECLARE_PRIVATE( AudioOutput )
 };
-
-

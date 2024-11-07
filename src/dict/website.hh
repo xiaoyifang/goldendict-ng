@@ -16,4 +16,3 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::WebSites const &, 
 
 
 } // namespace WebSite
-

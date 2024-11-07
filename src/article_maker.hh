@@ -157,5 +157,3 @@ private:
   int findEndOfCloseDiv( QString const &, int pos );
   bool isCollapsable( Dictionary::DataRequest & req, QString const & dictId );
 };
-
-

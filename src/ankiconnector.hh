@@ -28,4 +28,3 @@ signals:
 private slots:
   void finishedSlot( QNetworkReply * reply );
 };
-

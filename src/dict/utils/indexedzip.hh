@@ -47,4 +47,3 @@ public:
   /// Index compressed files in zip file
   bool indexFile( BtreeIndexing::IndexedWords & zipFileNames, quint32 * filesCount = 0 );
 };
-

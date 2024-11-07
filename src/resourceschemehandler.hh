@@ -17,4 +17,3 @@ private:
   ArticleNetworkAccessManager & mManager;
   QMimeDatabase db;
 };
-

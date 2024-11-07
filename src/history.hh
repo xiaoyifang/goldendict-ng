@@ -113,4 +113,3 @@ private:
 protected:
   virtual void timerEvent( QTimerEvent * );
 };
-

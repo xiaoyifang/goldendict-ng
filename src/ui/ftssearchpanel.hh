@@ -14,5 +14,3 @@ public:
   QPushButton * previous;
   QPushButton * next;
 };
-
-

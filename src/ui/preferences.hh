@@ -53,4 +53,3 @@ private slots:
   void on_collapseBigArticles_toggled( bool checked );
   void on_limitInputPhraseLength_toggled( bool checked );
 };
-

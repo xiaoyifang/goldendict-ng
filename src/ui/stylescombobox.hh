@@ -24,4 +24,3 @@ public:
   /// Returns current style.
   QString getCurrentStyle() const;
 };
-

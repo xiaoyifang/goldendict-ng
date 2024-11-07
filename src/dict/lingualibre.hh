@@ -10,4 +10,3 @@ std::vector< sptr< Dictionary::Class > >
 makeDictionaries( Dictionary::Initializing &, Config::Lingua const &, QNetworkAccessManager & );
 
 } // namespace Lingua
-

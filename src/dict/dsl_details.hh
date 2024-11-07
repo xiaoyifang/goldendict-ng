@@ -222,4 +222,3 @@ quint32 dslLanguageToId( wstring const & name );
 
 } // namespace Details
 } // namespace Dsl
-

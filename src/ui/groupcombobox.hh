@@ -53,4 +53,3 @@ private:
   QAction selectNextAction, selectPreviousAction;
   QMap< int, int > shortcuts;
 };
-

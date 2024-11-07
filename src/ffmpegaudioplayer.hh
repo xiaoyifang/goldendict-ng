@@ -40,4 +40,3 @@ public:
 } // namespace Ffmpeg
 
 #endif // MAKE_FFMPEG_PLAYER
-

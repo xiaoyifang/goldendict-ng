@@ -27,4 +27,3 @@ private slots:
 };
 
 } // namespace Dictionary
-

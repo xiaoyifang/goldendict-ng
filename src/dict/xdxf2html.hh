@@ -31,4 +31,3 @@ string convert( string const &,
                 QString * headword      = 0 );
 
 } // namespace Xdxf2Html
-

@@ -46,4 +46,3 @@ signals:
 
   void indexingDictionary( QString );
 };
-

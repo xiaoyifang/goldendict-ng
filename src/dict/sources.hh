@@ -359,4 +359,3 @@ private slots:
 
   void on_rescan_clicked();
 };
-

@@ -66,4 +66,3 @@ struct LineFeed
 
 LineFeed initLineFeed( Encoding e );
 } // namespace Utf8
-

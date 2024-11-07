@@ -228,4 +228,3 @@ private:
     BGL_TARGET_CHARSET
   };
 };
-

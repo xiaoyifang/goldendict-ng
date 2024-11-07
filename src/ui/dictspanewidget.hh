@@ -23,4 +23,3 @@ public:
     return QSize( 204, 204 );
   }
 };
-

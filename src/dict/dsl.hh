@@ -17,4 +17,3 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
                                                       unsigned int maxHeadwordSize );
 
 } // namespace Dsl
-

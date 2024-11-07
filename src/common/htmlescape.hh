@@ -32,4 +32,3 @@ QString fromHtmlEscaped( QString const & str );
 string unescapeUtf8( string const & str, HtmlOption option = HtmlOption::Strip );
 
 } // namespace Html
-

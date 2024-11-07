@@ -28,4 +28,3 @@ gzFile gd_gzopen( const char * filename );
   #define gd_fopen              fopen
   #define gd_gzopen( filename ) gzopen( filename, "rb" )
 #endif
-

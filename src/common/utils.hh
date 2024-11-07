@@ -349,4 +349,3 @@ QString escapeAmps( QString const & str );
 QString unescapeAmps( QString const & str );
 
 } // namespace Utils
-

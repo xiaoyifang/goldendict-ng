@@ -39,4 +39,3 @@ private:
   QCompleter * completer;
   QStringList words;
 };
-

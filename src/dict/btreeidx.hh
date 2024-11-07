@@ -269,4 +269,3 @@ struct IndexedWords: public map< string, vector< WordArticleLink > >
 IndexInfo buildIndex( IndexedWords const &, File::Index & file );
 
 } // namespace BtreeIndexing
-

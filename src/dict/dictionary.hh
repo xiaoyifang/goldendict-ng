@@ -583,4 +583,3 @@ QString generateRandomDictionaryId();
 QMap< std::string, sptr< Dictionary::Class > > dictToMap( std::vector< sptr< Dictionary::Class > > const & dicts );
 
 } // namespace Dictionary
-

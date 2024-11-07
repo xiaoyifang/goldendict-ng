@@ -12,4 +12,3 @@ namespace Chinese {
 
 std::vector< sptr< Dictionary::Class > > makeDictionaries( Config::Chinese const & );
 }
-

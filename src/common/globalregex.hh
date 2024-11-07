@@ -77,4 +77,3 @@ const static QRegularExpression markSpace( R"([\p{M}\p{Z}\p{C}])", QRegularExpre
 const static QRegularExpression whiteSpace( "\\s+" );
 
 } // namespace RX
-

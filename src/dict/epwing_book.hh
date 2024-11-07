@@ -269,5 +269,3 @@ struct EContainer
 } // namespace Book
 
 } // namespace Epwing
-
-

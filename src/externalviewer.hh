@@ -43,4 +43,3 @@ public:
 /// Call this function instead of simply deleting viewer to prevent the
 /// "QProcess: Destroyed while process X is still running." warning in log.
 void stopAndDestroySynchronously( ExternalViewer * viewer );
-

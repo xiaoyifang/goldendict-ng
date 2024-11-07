@@ -14,4 +14,3 @@ std::vector< sptr< Dictionary::Class > >
 makeDictionaries( Dictionary::Initializing &, Config::Forvo const &, QNetworkAccessManager & );
 
 } // namespace Forvo
-

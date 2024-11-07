@@ -63,4 +63,3 @@ signals:
   void headwordSelected( QString const &, QString const & );
   void closeDialog();
 };
-

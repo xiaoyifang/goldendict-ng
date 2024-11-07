@@ -1027,4 +1027,3 @@ QString getStylesDir();
 QString getCacheDir() noexcept;
 
 } // namespace Config
-

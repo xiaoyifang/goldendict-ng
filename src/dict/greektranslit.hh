@@ -10,4 +10,3 @@ namespace GreekTranslit {
 
 sptr< Dictionary::Class > makeDictionary();
 }
-
