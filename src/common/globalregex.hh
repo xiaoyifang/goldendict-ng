@@ -1,5 +1,4 @@
-#ifndef GLOBALREGEX_HH
-#define GLOBALREGEX_HH
+#pragma once
 
 #include <QRegularExpression>
 
@@ -78,5 +77,3 @@ const static QRegularExpression markSpace( R"([\p{M}\p{Z}\p{C}])", QRegularExpre
 const static QRegularExpression whiteSpace( "\\s+" );
 
 } // namespace RX
-
-#endif // GLOBALREGEX_HH

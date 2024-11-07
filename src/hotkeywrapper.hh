@@ -1,5 +1,4 @@
-#ifndef HOTKEYWRAPPER_H
-#define HOTKEYWRAPPER_H
+#pragma once
 
 #include <QGuiApplication>
 #include <QThread>
@@ -221,5 +220,3 @@ protected:
 };
 
 //////////////////////////////////////////////////////////////////////////
-
-#endif // HOTKEYWRAPPER_H

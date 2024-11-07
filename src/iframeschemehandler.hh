@@ -1,5 +1,4 @@
-#ifndef IFRAMESCHEMEHANDLER_H
-#define IFRAMESCHEMEHANDLER_H
+#pragma once
 
 #include "article_netmgr.hh"
 
@@ -16,5 +15,3 @@ protected:
 private:
   QNetworkAccessManager mgr;
 };
-
-#endif // IFRAMESCHEMEHANDLER_H

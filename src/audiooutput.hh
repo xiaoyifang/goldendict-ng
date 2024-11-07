@@ -1,5 +1,4 @@
-#ifndef AUDIOOUTPUT_H
-#define AUDIOOUTPUT_H
+#pragma once
 
 #include <QObject>
 #include <QScopedPointer>
@@ -22,6 +21,3 @@ private:
   Q_DISABLE_COPY( AudioOutput )
   Q_DECLARE_PRIVATE( AudioOutput )
 };
-
-
-#endif // AUDIOOUTPUT_H

@@ -1,8 +1,7 @@
 /* This file is (c) 2017 Abs62
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __FAVORITIESPANEWIDGET_HH__INCLUDED__
-#define __FAVORITIESPANEWIDGET_HH__INCLUDED__
+#pragma once
 
 #include <QWidget>
 #include <QSize>
@@ -310,5 +309,3 @@ private:
   QStringList mimeFormats;
   QModelIndexList indexes;
 };
-
-#endif // __FAVORITIESPANEWIDGET_HH__INCLUDED__

@@ -16,8 +16,7 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
 
-#ifndef __RIPEMD_HH_INCLUDED__
-#define __RIPEMD_HH_INCLUDED__
+#pragma once
 
 #include <stddef.h>
 #include <QtGlobal>
@@ -42,5 +41,3 @@ private:
 
   void transform( const uchar buffer[ 64 ] );
 };
-
-#endif // __RIPEMD_HH_INCLUDED__

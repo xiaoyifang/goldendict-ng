@@ -18,8 +18,7 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
 
-#ifndef __MDICTPARSER_HH_INCLUDED__
-#define __MDICTPARSER_HH_INCLUDED__
+#pragma once
 
 #include <string>
 #include <vector>
@@ -215,5 +214,3 @@ protected:
 };
 
 } // namespace Mdict
-
-#endif // __MDICTPARSER_HH_INCLUDED__

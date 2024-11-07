@@ -1,8 +1,7 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __BTREEIDX_HH_INCLUDED__
-#define __BTREEIDX_HH_INCLUDED__
+#pragma once
 
 #include "dict/dictionary.hh"
 #include "dictfile.hh"
@@ -270,5 +269,3 @@ struct IndexedWords: public map< string, vector< WordArticleLink > >
 IndexInfo buildIndex( IndexedWords const &, File::Index & file );
 
 } // namespace BtreeIndexing
-
-#endif

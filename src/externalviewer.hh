@@ -1,8 +1,7 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __EXTERNALVIEWER_HH_INCLUDED__
-#define __EXTERNALVIEWER_HH_INCLUDED__
+#pragma once
 
 #include <QObject>
 #include <QTemporaryFile>
@@ -44,5 +43,3 @@ public:
 /// Call this function instead of simply deleting viewer to prevent the
 /// "QProcess: Destroyed while process X is still running." warning in log.
 void stopAndDestroySynchronously( ExternalViewer * viewer );
-
-#endif

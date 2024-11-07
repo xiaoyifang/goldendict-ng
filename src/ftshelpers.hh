@@ -1,5 +1,4 @@
-#ifndef __FTSHELPERS_HH_INCLUDED__
-#define __FTSHELPERS_HH_INCLUDED__
+#pragma once
 
 #include <QString>
 #include <QList>
@@ -71,5 +70,3 @@ public:
 };
 
 } // namespace FtsHelpers
-
-#endif // __FTSHELPERS_HH_INCLUDED__

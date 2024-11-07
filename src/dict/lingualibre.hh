@@ -1,5 +1,4 @@
-#ifndef GOLDENDICT_LINGUALIBRE_H
-#define GOLDENDICT_LINGUALIBRE_H
+#pragma once
 
 #include "dictionary.hh"
 #include "config.hh"
@@ -11,5 +10,3 @@ std::vector< sptr< Dictionary::Class > >
 makeDictionaries( Dictionary::Initializing &, Config::Lingua const &, QNetworkAccessManager & );
 
 } // namespace Lingua
-
-#endif //GOLDENDICT_LINGUALIBRE_H

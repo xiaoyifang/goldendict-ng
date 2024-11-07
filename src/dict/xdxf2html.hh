@@ -1,8 +1,7 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __XDXF2HTML_HH_INCLUDED__
-#define __XDXF2HTML_HH_INCLUDED__
+#pragma once
 
 #include <string>
 #include <map>
@@ -32,5 +31,3 @@ string convert( string const &,
                 QString * headword      = 0 );
 
 } // namespace Xdxf2Html
-
-#endif

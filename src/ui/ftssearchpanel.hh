@@ -1,5 +1,4 @@
-#ifndef GOLDENDICT_FTSSEARCHPANEL_H
-#define GOLDENDICT_FTSSEARCHPANEL_H
+#pragma once
 
 #include <QWidget>
 #include <QLabel>
@@ -15,6 +14,3 @@ public:
   QPushButton * previous;
   QPushButton * next;
 };
-
-
-#endif //GOLDENDICT_FTSSEARCHPANEL_H

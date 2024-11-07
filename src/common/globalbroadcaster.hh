@@ -1,5 +1,4 @@
-#ifndef GLOBAL_GLOBALBROADCASTER_H
-#define GLOBAL_GLOBALBROADCASTER_H
+#pragma once
 
 #include <QObject>
 #include <vector>
@@ -47,5 +46,3 @@ signals:
 
   void indexingDictionary( QString );
 };
-
-#endif // GLOBAL_GLOBALBROADCASTER_H

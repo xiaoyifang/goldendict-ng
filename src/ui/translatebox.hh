@@ -1,8 +1,7 @@
 /* This file is (c) 2012 Tvangeste <i.4m.l33t@yandex.ru>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef TRANSLATEBOX_HH
-#define TRANSLATEBOX_HH
+#pragma once
 
 #include <QLineEdit>
 #include <QWidget>
@@ -40,5 +39,3 @@ private:
   QCompleter * completer;
   QStringList words;
 };
-
-#endif // TRANSLATEBOX_HH

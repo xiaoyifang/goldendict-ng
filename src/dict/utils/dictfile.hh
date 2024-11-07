@@ -1,8 +1,7 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef GOLDENDICT_FILE_HH
-#define GOLDENDICT_FILE_HH
+#pragma once
 
 #include "ex.hh"
 
@@ -125,5 +124,3 @@ private:
 };
 
 } // namespace File
-
-#endif

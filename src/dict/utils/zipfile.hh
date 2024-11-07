@@ -1,8 +1,7 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __ZIPFILE_HH_INCLUDED__
-#define __ZIPFILE_HH_INCLUDED__
+#pragma once
 
 #include <QFile>
 #include <QDateTime>
@@ -72,5 +71,3 @@ bool readNextEntry( SplitZipFile &, CentralDirEntry & );
 bool readLocalHeader( SplitZipFile &, LocalFileHeader & );
 
 } // namespace ZipFile
-
-#endif

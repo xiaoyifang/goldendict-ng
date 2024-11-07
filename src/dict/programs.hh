@@ -1,8 +1,7 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __PROGRAMS_HH_INCLUDED__
-#define __PROGRAMS_HH_INCLUDED__
+#pragma once
 
 #include <QProcess>
 #include "dictionary.hh"
@@ -79,5 +78,3 @@ private slots:
 };
 
 } // namespace Programs
-
-#endif

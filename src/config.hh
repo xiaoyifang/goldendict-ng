@@ -1,8 +1,7 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __CONFIG_HH_INCLUDED__
-#define __CONFIG_HH_INCLUDED__
+#pragma once
 
 #include <QObject>
 #include <QList>
@@ -1028,5 +1027,3 @@ QString getStylesDir();
 QString getCacheDir() noexcept;
 
 } // namespace Config
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef MRUQMENU_HH
-#define MRUQMENU_HH
+#pragma once
 
 #include <QMenu>
 #include <QEvent>
@@ -19,6 +18,3 @@ private:
 signals:
   void requestTabChange( int index );
 };
-
-
-#endif // MRUQMENU_HH

@@ -1,5 +1,4 @@
-#ifndef SCAN_FLAG_H
-#define SCAN_FLAG_H
+#pragma once
 
 #include <QMainWindow>
 #include <QPushButton>
@@ -25,5 +24,3 @@ private:
   QTimer hideTimer;
   QPushButton * pushButton;
 };
-
-#endif // SCAN_FLAG_H
