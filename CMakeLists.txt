@@ -192,6 +192,12 @@ endif ()
 
 #### Compile definitions
 
+# Disable deprecated staffs for Qt<=6.5 (Bump this if ever consider bump Qt version)
+target_compile_definitions(${GOLDENDICT} PRIVATE
+        QT_DISABLE_DEPRECATED_UP_TO=0x060500
+        QT_NO_DEPRECATED_WARNINGS
+)
+
 target_compile_definitions(${GOLDENDICT} PUBLIC
         CMAKE_USED_HACK  # temporal hack to avoid breaking qmake build
         MAKE_QTMULTIMEDIA_PLAYER

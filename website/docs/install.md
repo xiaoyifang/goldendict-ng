@@ -31,7 +31,7 @@ Requires Windows 10 (1809 or later).
 * For ArchLinux, pre-built binary is available from [archlinuxcn's repo](https://github.com/archlinuxcn/repo/tree/master/archlinuxcn/goldendict-ng-git).
 * [Gentoo package from PG_Overlay](https://gitlab.com/Perfect_Gentleman/PG_Overlay/-/tree/master/app-text/goldendict-ng)
 
-Minimum supported "Linux" versions is supposedly the current Ubuntu LTS or Debian's old stable or Qt6.4.
+Minimum supported "Linux" version is supposedly the current Ubuntu LTS and Debian's oldstable.
 
 ## macOS
 
