@@ -621,7 +621,7 @@ void MdxArticleRequest::run()
     }
 
     QCryptographicHash hash( QCryptographicHash::Md5 );
-    hash.addData( articleBody.data(), articleBody.size() );
+    hash.addData( {articleBody.data(),static_cast<qsizetype>(articleBody.length())});
     if ( !articleBodiesIncluded.insert( hash.result() ).second ) {
       continue; // Already had this body
     }
