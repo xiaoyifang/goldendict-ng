@@ -65,4 +65,4 @@ private:
   bool mouseOverEnabled;
 };
 
-  #endif
+#endif
