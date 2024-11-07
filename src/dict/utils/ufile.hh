@@ -1,5 +1,4 @@
-#ifndef UFILE_HH_INCLUDED
-#define UFILE_HH_INCLUDED
+#pragma once
 
 // Don't use this thing.
 // Use QFile instead.
@@ -30,4 +29,3 @@ gzFile gd_gzopen( const char * filename );
   #define gd_gzopen( filename ) gzopen( filename, "rb" )
 #endif
 
-#endif // UFILE_HH

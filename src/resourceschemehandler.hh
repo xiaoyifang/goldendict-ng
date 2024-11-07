@@ -1,5 +1,4 @@
-#ifndef RESOURCESCHEMEHANDLER_H
-#define RESOURCESCHEMEHANDLER_H
+#pragma once
 
 #include "article_netmgr.hh"
 
@@ -19,4 +18,3 @@ private:
   QMimeDatabase db;
 };
 
-#endif // RESOURCESCHEMEHANDLER_H

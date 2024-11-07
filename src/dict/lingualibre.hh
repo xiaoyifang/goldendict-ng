@@ -1,5 +1,4 @@
-#ifndef GOLDENDICT_LINGUALIBRE_H
-#define GOLDENDICT_LINGUALIBRE_H
+#pragma once
 
 #include "dictionary.hh"
 #include "config.hh"
@@ -12,4 +11,3 @@ makeDictionaries( Dictionary::Initializing &, Config::Lingua const &, QNetworkAc
 
 } // namespace Lingua
 
-#endif //GOLDENDICT_LINGUALIBRE_H

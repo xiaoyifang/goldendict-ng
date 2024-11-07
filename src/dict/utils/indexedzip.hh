@@ -1,8 +1,7 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __INDEXEDZIP_HH_INCLUDED__
-#define __INDEXEDZIP_HH_INCLUDED__
+#pragma once
 
 #include "btreeidx.hh"
 #include <QFile>
@@ -49,4 +48,3 @@ public:
   bool indexFile( BtreeIndexing::IndexedWords & zipFileNames, quint32 * filesCount = 0 );
 };
 
-#endif

@@ -18,8 +18,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.          *
  ***************************************************************************/
 
-#ifndef BABYLON_H
-#define BABYLON_H
+#pragma once
 
 #include <stdlib.h>
 #include <zlib.h>
@@ -230,4 +229,3 @@ private:
   };
 };
 
-#endif // BABYLON_H

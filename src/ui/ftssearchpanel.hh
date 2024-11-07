@@ -1,5 +1,4 @@
-#ifndef GOLDENDICT_FTSSEARCHPANEL_H
-#define GOLDENDICT_FTSSEARCHPANEL_H
+#pragma once
 
 #include <QWidget>
 #include <QLabel>
@@ -17,4 +16,3 @@ public:
 };
 
 
-#endif //GOLDENDICT_FTSSEARCHPANEL_H

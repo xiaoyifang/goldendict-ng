@@ -1,5 +1,4 @@
-#ifndef GOLDENDICT_SEARCHPANEL_H
-#define GOLDENDICT_SEARCHPANEL_H
+#pragma once
 
 #include <QWidget>
 #include <QLineEdit>
@@ -20,4 +19,3 @@ public:
 };
 
 
-#endif //GOLDENDICT_SEARCHPANEL_H

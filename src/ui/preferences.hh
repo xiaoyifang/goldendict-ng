@@ -1,5 +1,4 @@
-#ifndef __PREFERENCES_HH_INCLUDED__
-#define __PREFERENCES_HH_INCLUDED__
+#pragma once
 
 #include <QDialog>
 #include <QAction>
@@ -55,4 +54,3 @@ private slots:
   void on_limitInputPhraseLength_toggled( bool checked );
 };
 
-#endif

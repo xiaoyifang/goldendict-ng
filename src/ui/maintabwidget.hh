@@ -1,8 +1,7 @@
 /* This file is (c) 2012 Tvangeste <i.4m.l33t@yandex.ru>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef MAINTABWIDGET_HH
-#define MAINTABWIDGET_HH
+#pragma once
 
 #include <QTabWidget>
 #include <QTabBar>
@@ -32,4 +31,3 @@ private:
   bool hideSingleTab;
 };
 
-#endif // MAINTABWIDGET_HH

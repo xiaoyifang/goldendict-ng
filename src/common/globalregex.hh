@@ -1,5 +1,4 @@
-#ifndef GLOBALREGEX_HH
-#define GLOBALREGEX_HH
+#pragma once
 
 #include <QRegularExpression>
 
@@ -79,4 +78,3 @@ const static QRegularExpression whiteSpace( "\\s+" );
 
 } // namespace RX
 
-#endif // GLOBALREGEX_HH

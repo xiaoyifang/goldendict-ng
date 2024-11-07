@@ -1,5 +1,4 @@
-#ifndef SCAN_FLAG_H
-#define SCAN_FLAG_H
+#pragma once
 
 #include <QMainWindow>
 #include <QPushButton>
@@ -26,4 +25,3 @@ private:
   QPushButton * pushButton;
 };
 
-#endif // SCAN_FLAG_H

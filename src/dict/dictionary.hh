@@ -1,8 +1,7 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __DICTIONARY_HH_INCLUDED__
-#define __DICTIONARY_HH_INCLUDED__
+#pragma once
 
 #include <map>
 #include <string>
@@ -585,4 +584,3 @@ QMap< std::string, sptr< Dictionary::Class > > dictToMap( std::vector< sptr< Dic
 
 } // namespace Dictionary
 
-#endif

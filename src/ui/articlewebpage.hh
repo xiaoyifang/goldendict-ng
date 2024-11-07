@@ -1,5 +1,4 @@
-#ifndef ARTICLEWEBPAGE_H
-#define ARTICLEWEBPAGE_H
+#pragma once
 
 #include <QWebEnginePage>
 
@@ -25,4 +24,3 @@ private:
   LastReqInfo lastReq;
 };
 
-#endif // ARTICLEWEBPAGE_H

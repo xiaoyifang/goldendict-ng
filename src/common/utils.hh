@@ -1,7 +1,6 @@
 /* Thin wrappers for retaining compatibility for both Qt6.x and Qt5.x */
 
-#ifndef UTILS_HH
-#define UTILS_HH
+#pragma once
 
 #include <QAtomicInt>
 #include <QJsonDocument>
@@ -351,4 +350,3 @@ QString unescapeAmps( QString const & str );
 
 } // namespace Utils
 
-#endif // UTILS_HH

@@ -1,5 +1,4 @@
-#ifndef __DICTIONARYBAR_HH_INCLUDED__
-#define __DICTIONARYBAR_HH_INCLUDED__
+#pragma once
 
 #include <QToolBar>
 #include <QSize>
@@ -92,4 +91,3 @@ public slots:
   void dictsPaneClicked( QString const & );
 };
 
-#endif

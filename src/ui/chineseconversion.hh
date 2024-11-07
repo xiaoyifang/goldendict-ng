@@ -1,8 +1,7 @@
 /* This file is (c) 2015 Zhe Wang <0x1997@gmail.com>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __CHINESE_CONVERSION_HH_INCLUDED__
-#define __CHINESE_CONVERSION_HH_INCLUDED__
+#pragma once
 
 #include <QGroupBox>
 #include "config.hh"
@@ -25,4 +24,3 @@ private:
   Ui::ChineseConversion * ui;
 };
 
-#endif // __CHINESE_CONVERSION_HH_INCLUDED__

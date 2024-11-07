@@ -1,8 +1,7 @@
 /* This file is (c) 2013 Tvangeste <i.4m.l33t@yandex.ru>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __HISTORYPANEWIDGET_HH_INCLUDED__
-#define __HISTORYPANEWIDGET_HH_INCLUDED__
+#pragma once
 
 #include <QWidget>
 #include <QSize>
@@ -92,4 +91,3 @@ private:
   History * m_history;
 };
 
-#endif // HISTORYPANEWIDGET_HH

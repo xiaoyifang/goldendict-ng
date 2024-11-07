@@ -1,8 +1,7 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __DSL_DETAILS_HH_INCLUDED__
-#define __DSL_DETAILS_HH_INCLUDED__
+#pragma once
 
 #include <string>
 #include <list>
@@ -224,4 +223,3 @@ quint32 dslLanguageToId( wstring const & name );
 } // namespace Details
 } // namespace Dsl
 
-#endif

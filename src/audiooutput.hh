@@ -1,5 +1,4 @@
-#ifndef AUDIOOUTPUT_H
-#define AUDIOOUTPUT_H
+#pragma once
 
 #include <QObject>
 #include <QScopedPointer>
@@ -24,4 +23,3 @@ private:
 };
 
 
-#endif // AUDIOOUTPUT_H

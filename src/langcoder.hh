@@ -1,5 +1,4 @@
-#ifndef LANGCODER_H
-#define LANGCODER_H
+#pragma once
 
 #include <QString>
 #include <QIcon>
@@ -61,4 +60,3 @@ private:
 #define LangCodeRole Qt::UserRole
 
 
-#endif // LANGCODER_H

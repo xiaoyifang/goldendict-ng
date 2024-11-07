@@ -1,5 +1,4 @@
-#ifndef __SLOB_HH_INCLUDED__
-#define __SLOB_HH_INCLUDED__
+#pragma once
 
 #include "dictionary.hh"
 
@@ -16,4 +15,3 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
 } // namespace Slob
 
-#endif // __SLOB_HH_INCLUDED__

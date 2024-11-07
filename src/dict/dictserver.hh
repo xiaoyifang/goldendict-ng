@@ -1,5 +1,4 @@
-#ifndef __DICTSERVER_HH__INCLUDED__
-#define __DICTSERVER_HH__INCLUDED__
+#pragma once
 
 #include "dict/dictionary.hh"
 #include "config.hh"
@@ -14,4 +13,3 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::DictServers const 
 
 } // namespace DictServer
 
-#endif // __DICTSERVER_HH__INCLUDED__

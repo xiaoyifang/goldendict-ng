@@ -1,8 +1,7 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef GOLDENDICT_ARTICLEVIEW_H
-#define GOLDENDICT_ARTICLEVIEW_H
+#pragma once
 
 #include <QAction>
 #include <QMap>
@@ -454,4 +453,3 @@ public slots:
   Q_INVOKABLE void collapseInHtml( QString const & dictId, bool on = true ) const;
 };
 
-#endif

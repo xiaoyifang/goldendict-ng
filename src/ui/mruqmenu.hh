@@ -1,5 +1,4 @@
-#ifndef MRUQMENU_HH
-#define MRUQMENU_HH
+#pragma once
 
 #include <QMenu>
 #include <QEvent>
@@ -21,4 +20,3 @@ signals:
 };
 
 
-#endif // MRUQMENU_HH

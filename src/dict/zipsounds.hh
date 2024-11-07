@@ -1,7 +1,6 @@
 /* This file is part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef ZIPSOUNDS_HH
-#define ZIPSOUNDS_HH
+#pragma once
 
 #include "dictionary.hh"
 
@@ -16,4 +15,3 @@ makeDictionaries( vector< string > const & fileNames, string const & indicesDir,
 
 } // namespace ZipSounds
 
-#endif // ZIPSOUNDS_HH

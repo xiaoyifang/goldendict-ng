@@ -1,5 +1,4 @@
-#ifndef __FULLTEXTSEARCH_HH_INCLUDED__
-#define __FULLTEXTSEARCH_HH_INCLUDED__
+#pragma once
 
 #include <QAbstractListModel>
 #include <QAction>
@@ -262,4 +261,3 @@ signals:
 
 } // namespace FTS
 
-#endif // __FULLTEXTSEARCH_HH_INCLUDED__

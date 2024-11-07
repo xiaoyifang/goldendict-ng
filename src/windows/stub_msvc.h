@@ -1,3 +1,5 @@
+#pragma once
+
 #include <string>
 #ifdef _MSC_VER
 #if !defined(strcasecmp)

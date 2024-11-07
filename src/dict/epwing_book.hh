@@ -1,5 +1,4 @@
-#ifndef __EPWING_BOOK_HH_INCLUDED__
-#define __EPWING_BOOK_HH_INCLUDED__
+#pragma once
 
 #include "dict/dictionary.hh"
 #include "ex.hh"
@@ -272,4 +271,3 @@ struct EContainer
 } // namespace Epwing
 
 
-#endif // __EPWING_BOOK_HH_INCLUDED__

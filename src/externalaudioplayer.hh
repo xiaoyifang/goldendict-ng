@@ -1,8 +1,7 @@
 /* This file is (c) 2018 Igor Kushnir <igorkuo@gmail.com>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef EXTERNALAUDIOPLAYER_HH_INCLUDED
-#define EXTERNALAUDIOPLAYER_HH_INCLUDED
+#pragma once
 
 #include "audioplayerinterface.hh"
 #include <memory>
@@ -45,4 +44,3 @@ private:
   std::unique_ptr< ExternalViewer, QObjectDeleteLater > viewer;
 };
 
-#endif // EXTERNALAUDIOPLAYER_HH_INCLUDED

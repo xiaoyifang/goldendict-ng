@@ -1,5 +1,4 @@
-#ifndef __FFMPEGAUDIO_HH_INCLUDED__
-#define __FFMPEGAUDIO_HH_INCLUDED__
+#pragma once
 
 #ifdef MAKE_FFMPEG_PLAYER
   #include "audiooutput.hh"
@@ -107,4 +106,3 @@ signals:
 
 #endif // MAKE_FFMPEG_PLAYER
 
-#endif // __FFMPEGAUDIO_HH_INCLUDED__

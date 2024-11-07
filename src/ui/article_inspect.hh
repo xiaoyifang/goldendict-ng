@@ -1,5 +1,4 @@
-#ifndef ARTICLE_INSPECT_H
-#define ARTICLE_INSPECT_H
+#pragma once
 
 #include <QDialog>
 #include <QWebEngineView>
@@ -22,4 +21,3 @@ private:
   virtual void closeEvent( QCloseEvent * );
 };
 
-#endif // ARTICLE_INSPECT_H

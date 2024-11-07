@@ -1,5 +1,4 @@
-#ifndef __GDDEBUG_HH_INCLUDED__
-#define __GDDEBUG_HH_INCLUDED__
+#pragma once
 
 #include <QFile>
 
@@ -29,4 +28,3 @@ void gdDebug( const char *, ... )
 
 extern QFile * logFilePtr;
 
-#endif // __GDDEBUG_HH_INCLUDED__

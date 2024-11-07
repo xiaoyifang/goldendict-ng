@@ -1,5 +1,4 @@
-#ifndef __EPWING_CHARMAP_HH_INCLUDED_
-#define __EPWING_CHARMAP_HH_INCLUDED_
+#pragma once
 
 #include <QByteArray>
 #include <QMap>
@@ -23,4 +22,3 @@ private:
 
 } // namespace Epwing
 
-#endif // __EPWING_CHARMAP_HH_INCLUDED_

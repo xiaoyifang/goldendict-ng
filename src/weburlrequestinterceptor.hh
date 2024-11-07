@@ -1,5 +1,4 @@
-#ifndef WEBURLREQUESTINTERCEPTOR_H
-#define WEBURLREQUESTINTERCEPTOR_H
+#pragma once
 
 #include <QWebEngineUrlRequestInterceptor>
 
@@ -14,4 +13,3 @@ signals:
   void linkClicked( const QUrl & url );
 };
 
-#endif // WEBURLREQUESTINTERCEPTOR_H

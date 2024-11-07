@@ -21,8 +21,7 @@
  * 51 Franklin Street, Suite 500, Boston, MA 02110, USA.
  */
 
-#ifndef _DICTZIP_H_
-#define _DICTZIP_H_
+#pragma once
 
 #include <stdio.h>
 #include <zlib.h>
@@ -113,4 +112,3 @@ extern int mmap_mode;
 } /* end extern "C" */
 #endif
 
-#endif /* _DICTZIP_H_ */

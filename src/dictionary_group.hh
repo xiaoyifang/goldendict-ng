@@ -1,7 +1,6 @@
 /* Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef DICTIONARYGROUP_HH_INCLUDED
-#define DICTIONARYGROUP_HH_INCLUDED
+#pragma once
 
 #include "sptr.hh"
 #include "dict/dictionary.hh"
@@ -31,4 +30,3 @@ private:
   Instances::Groups const & groups;
 };
 
-#endif // DICTIONARYGROUP_HH_INCLUDED

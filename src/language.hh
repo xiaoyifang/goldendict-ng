@@ -1,8 +1,7 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __LANGUAGE_HH_INCLUDED__
-#define __LANGUAGE_HH_INCLUDED__
+#pragma once
 
 #include <QString>
 #include "wstring_qt.hh"
@@ -51,4 +50,3 @@ BabylonLang getBabylonLangByIndex( int index );
 quint32 findBlgLangIDByEnglishName( gd::wstring const & lang );
 } // namespace Language
 
-#endif

@@ -1,5 +1,4 @@
-#ifndef ANKICONNECTOR_H
-#define ANKICONNECTOR_H
+#pragma once
 
 #include "config.hh"
 
@@ -30,4 +29,3 @@ private slots:
   void finishedSlot( QNetworkReply * reply );
 };
 
-#endif // ANKICONNECTOR_H

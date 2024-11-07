@@ -1,8 +1,7 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __HTMLESCAPE_HH_INCLUDED__
-#define __HTMLESCAPE_HH_INCLUDED__
+#pragma once
 
 #include <QString>
 #include <string>
@@ -34,4 +33,3 @@ string unescapeUtf8( string const & str, HtmlOption option = HtmlOption::Strip )
 
 } // namespace Html
 
-#endif
