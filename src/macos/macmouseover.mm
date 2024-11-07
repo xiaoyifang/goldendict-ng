@@ -88,8 +88,8 @@ QString MacMouseOver::CFStringRefToQString( CFStringRef str )
 
   UniChar *chars = new UniChar[ length ];
   CFStringGetCharacters( str, CFRangeMake( 0, length ), chars );
-
-  QString result = QString::fromUtf16( chars, length );
+  
+  QString result = QString::fromUtf16( (char16_t*)chars, length );
 
   delete[] chars;
   return result;
