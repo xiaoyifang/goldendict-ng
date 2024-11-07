@@ -266,15 +266,25 @@ if (APPLE)
     set(Assembling_Dir "${CMAKE_BINARY_DIR}/redist")
     set(App_Name "${GOLDENDICT}.app")
     set(Redistributable_APP "${Assembling_Dir}/${App_Name}")
-    
+
+    # if anything wrong, delete this and affect lines, and see what's Qt will generate by default.
+    set(QtConfPath "${Redistributable_APP}/Contents/Resources/qt.conf")
+
     qt_generate_deploy_script(
             TARGET ${GOLDENDICT}
             OUTPUT_SCRIPT deploy_script
-            CONTENT "qt_deploy_runtime_dependencies(
+            CONTENT "
+            set(QT_DEPLOY_PREFIX \"${Redistributable_APP}\")
+            set(QT_DEPLOY_TRANSLATIONS_DIR \"Contents/Resources/translations\")
+            qt_deploy_runtime_dependencies(
                         EXECUTABLE \"${Redistributable_APP}\"
                         GENERATE_QT_CONF
-                        NO_APP_STORE_COMPLIANCE
-                )"
+                        NO_APP_STORE_COMPLIANCE)
+            qt_deploy_translations()
+            qt_deploy_qt_conf(\"${QtConfPath}\"
+                         PLUGINS_DIR PlugIns
+                         TRANSLATIONS_DIR Resources/translations)
+            "
     )
 
     install(TARGETS ${GOLDENDICT} BUNDLE DESTINATION "${Assembling_Dir}")
