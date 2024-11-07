@@ -39,7 +39,7 @@ SpeechClient::Engines SpeechClient::availableEngines()
       for ( const QVoice & voice : sp->availableVoices() ) {
         const QString name( QString( "%4 - %3 %1 (%2)" )
                               .arg( QLocale::languageToString( locale.language() ),
-                                    ( QLocale::countryToString( locale.country() ) ),
+                                    ( QLocale::territoryToString( locale.territory() ) ),
                                     voice.name(),
                                     engine_name ) );
         Engine engine( Config::VoiceEngine( engine_name, name, voice.name(), QLocale( locale ), 50, 0 ) );
