@@ -146,7 +146,7 @@ void OrderAndProps::rebuild( Config::Group const & dictionaryOrder,
   ui.dictionaryOrder->populate( order.dictionaries, allDictionaries );
   ui.inactiveDictionaries->populate( inactive.dictionaries, allDictionaries );
 
-  ui.searchLine->applyTo( ui.dictionaryOrder );
+  //  ui.searchLine->applyTo( ui.dictionaryOrder );
 
   disableDictionaryDescription();
 
