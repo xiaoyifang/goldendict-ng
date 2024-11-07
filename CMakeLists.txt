@@ -192,9 +192,9 @@ endif ()
 
 #### Compile definitions
 
-# Disable deprecated staffs for Qt<=6.5 (Bump this if ever consider bump Qt version)
+# Disable deprecated staffs for Qt<=6.7 (Bump this if ever consider bump Qt version)
 target_compile_definitions(${GOLDENDICT} PRIVATE
-        QT_DISABLE_DEPRECATED_UP_TO=0x060500
+        QT_DISABLE_DEPRECATED_UP_TO=0x060700
         QT_NO_DEPRECATED_WARNINGS
 )
 
