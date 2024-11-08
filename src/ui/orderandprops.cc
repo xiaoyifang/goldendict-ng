@@ -135,7 +135,7 @@ OrderAndProps::OrderAndProps( QWidget * parent,
 
 Config::Group OrderAndProps::getCurrentDictionaryOrder() const
 {
-  Instances::Group g( "" );
+  Instances::Group g;
 
   g.dictionaries = ui.dictionaryOrder->getCurrentDictionaries();
 
@@ -144,7 +144,7 @@ Config::Group OrderAndProps::getCurrentDictionaryOrder() const
 
 Config::Group OrderAndProps::getCurrentInactiveDictionaries() const
 {
-  Instances::Group g( "" );
+  Instances::Group g;
 
   g.dictionaries = ui.inactiveDictionaries->getCurrentDictionaries();
 
