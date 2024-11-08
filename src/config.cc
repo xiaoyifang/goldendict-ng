@@ -111,7 +111,7 @@ HotKey::HotKey( QKeySequence const & seq ):
 
 QKeySequence HotKey::toKeySequence() const
 {
-  if ( key2 != 0 || key2 != Qt::Key::Key_unknown ) {
+  if ( key2 != 0 && key2 != Qt::Key::Key_unknown ) {
     return { QKeyCombination( modifiers, static_cast< Qt::Key >( key1 ) ),
              QKeyCombination( modifiers, static_cast< Qt::Key >( key2 ) ) };
   }
