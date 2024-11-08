@@ -200,7 +200,7 @@ void EditDictionaries::acceptChangedSources( bool rebuildGroups )
 #ifndef NO_TTS_SUPPORT
   cfg.voiceEngines = sources.getVoiceEngines();
 #endif
-  ui.tabs->setUpdatesEnabled( false );
+  setUpdatesEnabled( false );
   // Those hold pointers to dictionaries, we need to free them.
   groupInstances.clear();
 
@@ -225,7 +225,7 @@ void EditDictionaries::acceptChangedSources( bool rebuildGroups )
     connect( groups, &Groups::showDictionaryInfo, this, &EditDictionaries::showDictionaryInfo );
     connect( orderAndProps, &OrderAndProps::showDictionaryHeadwords, this, &EditDictionaries::showDictionaryHeadwords );
   }
-  ui.tabs->setUpdatesEnabled( true );
+  setUpdatesEnabled( true );
 }
 EditDictionaries::~EditDictionaries()
 {
