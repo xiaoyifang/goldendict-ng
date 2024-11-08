@@ -32,7 +32,7 @@ struct Group
          Config::Group const & inactiveGroup );
 
   /// Creates an empty group.
-  explicit Group( QString name_ );
+  explicit Group();
 
   Group( unsigned id, QString name_ );
 

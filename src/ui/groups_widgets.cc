@@ -122,7 +122,7 @@ void DictGroupWidget::groupIconActivated( int index )
 
 Config::Group DictGroupWidget::makeGroup() const
 {
-  Instances::Group g( "" );
+  Instances::Group g;
 
   g.id = groupId;
 

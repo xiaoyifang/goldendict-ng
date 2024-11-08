@@ -53,9 +53,8 @@ Group::Group( Config::Group const & cfgGroup,
   }
 }
 
-Group::Group( QString name_ ):
-  id( 0 ),
-  name( std::move( name_ ) )
+Group::Group():
+  id( 0 )
 {
 }
 
