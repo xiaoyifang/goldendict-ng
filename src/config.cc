@@ -212,7 +212,7 @@ Preferences::Preferences():
   doubleClickTranslates( true ),
   selectWordBySingleClick( false ),
   autoScrollToTargetArticle( true ),
-  targetArticleAtFirst(false),
+  targetArticleAtFirst( false ),
   escKeyHidesMainWindow( false ),
   darkMode( false ),
   darkReaderMode( false ),
