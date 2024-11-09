@@ -96,9 +96,10 @@ void ArticleView::setupWebview()
   auto * baseLayout = new QVBoxLayout( this );
 
   this->tabWidget = new QTabWidget( this );
+  baseLayout->setContentsMargins( 0, 0, 0, 0 );
   baseLayout->addWidget( this->tabWidget );
 
-  QWidget * tab1 = new QWidget( tabWidget );
+  auto * tab1 = new QWidget( tabWidget );
   // Layout
   auto * mainLayout = new QVBoxLayout( tab1 );
   mainLayout->addWidget( this->webview );

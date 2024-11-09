@@ -524,7 +524,11 @@ void ArticleRequest::altSearchFinished()
 
             QString requestUrl = Utils::WebSite::urlReplaceWord( QString::fromStdString( url ), word );
             emit GlobalBroadcaster::instance()
-              -> websiteDictionary( QString::fromStdString( activeDict->getName() ), requestUrl );
+              -> websiteDictionarySignal( QString::fromStdString( activeDict->getName() ), requestUrl );
+            QStringList dictIds;
+            dictIds << QString::fromStdString( activeDict->getId() );
+            ActiveDictIds hittedWord{ group.id, word, dictIds };
+            emit GlobalBroadcaster::instance() -> dictionaryChanges( hittedWord );
             continue;
           }
         }

@@ -715,7 +715,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
            this,
            &MainWindow::showFTSIndexingName );
   connect( GlobalBroadcaster::instance(),
-           &GlobalBroadcaster::websiteDictionary,
+           &GlobalBroadcaster::websiteDictionarySignal,
            this,
            &MainWindow::openWebsiteInNewTab );
 
@@ -2149,7 +2149,7 @@ void MainWindow::updateFoundInDictsList()
         if ( dictionaries[ x ]->getId() == i->toUtf8().data() ) {
           QString dictName = QString::fromUtf8( dictionaries[ x ]->getName().c_str() );
           QString dictId   = QString::fromUtf8( dictionaries[ x ]->getId().c_str() );
-          QListWidgetItem * item =
+          auto * item =
             new QListWidgetItem( dictionaries[ x ]->getIcon(), dictName, ui.dictsList, QListWidgetItem::Type );
           item->setData( Qt::UserRole, QVariant( dictId ) );
           item->setToolTip( dictName );
@@ -2163,7 +2163,7 @@ void MainWindow::updateFoundInDictsList()
       }
     }
 
-    //if no item in dict List panel has been choose ,select first one.
+    //if no item in dict List panel has been choosen ,select first one.
     if ( ui.dictsList->count() > 0 && ui.dictsList->selectedItems().empty() ) {
       ui.dictsList->setCurrentRow( 0 );
     }
