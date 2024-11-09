@@ -96,11 +96,8 @@ public:
                QLineEdit const * translateLine,
                QAction * dictionaryBarToggled = nullptr,
                unsigned currentGroupId        = 0 );
-  explicit ArticleView( QWidget * parent,
-                        ArticleNetworkAccessManager & nm,
-                        AudioPlayerPtr const & audioPlayer_,
-                        Config::Class const & cfg_ );
 
+  void openWebsiteInNewTab( QString name, QString url );
   void setCurrentGroupId( unsigned currengGrgId );
   unsigned getCurrentGroupId();
 
@@ -171,7 +168,9 @@ public:
   /// \brief Set background as black if darkreader mode is enabled.
   void syncBackgroundColorWithCfgDarkReader() const;
 
-  void openWebsiteInNewTab( QString name, QString url );
+  void addWebsiteTab( QString name, QString url );
+
+  void clearWebsiteTabs();
 
 private:
   // widgets

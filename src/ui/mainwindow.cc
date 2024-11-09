@@ -63,6 +63,7 @@
 
 #include <QWebEngineSettings>
 #include <QProxyStyle>
+#include <utility>
 
 #ifdef HAVE_X11
   #if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
@@ -3715,11 +3716,6 @@ ArticleView * MainWindow::getCurrentArticleView()
 {
   if ( QWidget * cw = ui.tabWidget->currentWidget() ) {
     auto * pView = dynamic_cast< ArticleView * >( cw );
-    if ( pView != nullptr ) {
-      if ( pView->getParentView() != nullptr ) {
-        return pView->getParentView();
-      }
-    }
     return pView;
   }
   return nullptr;
@@ -4386,7 +4382,7 @@ void MainWindow::openWebsiteInNewTab( QString name, QString url )
 
   // ui.tabWidget->insertTab( index, view, escaped );
   // mruList.append( dynamic_cast< QWidget * >( view ) );
-  getCurrentArticleView()->addWebsiteTab( name, url );
+  getCurrentArticleView()->addWebsiteTab( std::move( name ), url );
 }
 
 QString MainWindow::unescapeTabHeader( QString const & header )

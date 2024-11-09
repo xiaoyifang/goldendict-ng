@@ -85,18 +85,6 @@ QString ArticleView::scrollToFromDictionaryId( QString const & dictionaryId )
   Q_ASSERT( !isScrollTo( dictionaryId ) );
   return scrollToPrefix + dictionaryId;
 }
-ArticleView::ArticleView( QWidget * parent,
-                          ArticleNetworkAccessManager & nm,
-                          AudioPlayerPtr const & audioPlayer_,
-                          Config::Class const & cfg_ ):
-  QWidget( parent ),
-  articleNetMgr( nm ),
-  audioPlayer( audioPlayer_ ),
-  cfg( cfg_ )
-{
-  // setup GUI
-  setupWebview();
-}
 void ArticleView::setupWebview()
 { // setup GUI
   this->webview        = new ArticleWebView( this );
@@ -233,6 +221,26 @@ void ArticleView::setupWebview()
   this->webview->grabGesture( Gestures::GDSwipeGestureType );
 #endif
 }
+
+void ArticleView::addWebsiteTab( QString name, QString url )
+{
+  auto * view = new QWebEngineView( this );
+  view->load( url );
+  view->setZoomFactor( this->cfg.preferences.zoomFactor );
+  int index       = tabWidget->count();
+  QString escaped = Utils::escapeAmps( name );
+  tabWidget->insertTab( index, view, escaped );
+}
+
+void ArticleView::clearWebsiteTabs()
+{
+  int index = tabWidget->count();
+  // keep the first tab
+  while ( index-- > 1 ) {
+    tabWidget->removeTab( index );
+  }
+}
+
 ArticleView::ArticleView( QWidget * parent,
                           ArticleNetworkAccessManager & nm,
                           AudioPlayerPtr const & audioPlayer_,
@@ -329,6 +337,7 @@ void ArticleView::showDefinition( QString const & word,
                                   Contexts const & contexts_ )
 {
   GlobalBroadcaster::instance()->pronounce_engine.reset();
+  clearWebsiteTabs();
   currentWord = word.trimmed();
   if ( currentWord.isEmpty() ) {
     return;
@@ -376,7 +385,7 @@ void ArticleView::showDefinition( QString const & word,
 
   QString mutedDicts = getMutedForGroup( group );
 
-  if ( mutedDicts.size() ) {
+  if ( !mutedDicts.isEmpty() ) {
     Utils::Url::addQueryItem( req, "muted", mutedDicts );
   }
 
