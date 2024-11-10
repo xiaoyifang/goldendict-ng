@@ -10,7 +10,7 @@
 #include <QWebEngineView>
 #include <list>
 #include "article_netmgr.hh"
-#include "audioplayerinterface.hh"
+#include "audio/audioplayerinterface.hh"
 #include "instances.hh"
 #include "groupcombobox.hh"
 #include "globalbroadcaster.hh"

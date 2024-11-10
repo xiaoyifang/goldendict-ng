@@ -14,7 +14,7 @@
 #include "config.hh"
 #include "dict/dictionary.hh"
 #include "article_netmgr.hh"
-#include "audioplayerfactory.hh"
+#include "audio/audioplayerfactory.hh"
 #include "instances.hh"
 #include "article_maker.hh"
 #include "scanpopup.hh"
