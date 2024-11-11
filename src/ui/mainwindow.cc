@@ -404,7 +404,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 // tray icon
 #ifndef Q_OS_MACOS // macOS uses the dock menu instead of the tray icon
   connect( trayIconMenu.addAction( tr( "Show &Main Window" ) ), &QAction::triggered, this, [ this ] {
-    this->toggleMainWindow( true );
+    this->mainWindow_ensure_show();
   } );
 #endif
   trayIconMenu.addAction( enableScanningAction );
@@ -1471,6 +1471,19 @@ void MainWindow::wheelEvent( QWheelEvent * ev )
   }
 }
 
+#ifdef Q_OS_MACOS
+// macOS's favourable "close" which is what apps produced by Apple do.
+// Red button -> only closes the tabs, and the app goes to the background
+// Ctrl + Q or click the "Quit" menu item -> actually quit
+void MainWindow::closeEvent( QCloseEvent * ev )
+{
+  if ( ev->spontaneous() ) {
+    closeAllTabs();
+    mainWindow_ensure_hide();
+    ev->ignore();
+  }
+}
+#else
 void MainWindow::closeEvent( QCloseEvent * ev )
 {
   if ( cfg.preferences.enableTrayIcon && cfg.preferences.closeToTray ) {
@@ -1478,11 +1491,6 @@ void MainWindow::closeEvent( QCloseEvent * ev )
       translateBox->setPopupEnabled( false );
     }
 
-#ifdef Q_OS_MACOS
-    if ( !ev->spontaneous() || !isVisible() ) {
-      return;
-    }
-#endif
 #ifdef HAVE_X11
     // Don't ignore the close event, because doing so cancels session logout if
     // the main window is visible when the user attempts to log out.
@@ -1501,6 +1509,8 @@ void MainWindow::closeEvent( QCloseEvent * ev )
     quitApp();
   }
 }
+
+#endif
 
 void MainWindow::quitApp()
 {
@@ -2541,7 +2551,7 @@ void MainWindow::handleEsc()
   }
 
   if ( cfg.preferences.escKeyHidesMainWindow ) {
-    toggleMainWindow( false );
+    mainWindow_toggle( );
   }
   else {
     focusTranslateLine();
@@ -2882,7 +2892,7 @@ void MainWindow::showTranslationForDicts( QString const & inWord,
                         ignoreDiacritics );
 }
 
-void MainWindow::toggleMainWindow( bool ensureShow )
+void MainWindow::mainWindow_ensure_show()
 {
   bool shown = false;
 
@@ -2915,34 +2925,6 @@ void MainWindow::toggleMainWindow( bool ensureShow )
     }
     shown = true;
   }
-  else if ( !ensureShow ) {
-
-    // On Windows and Linux, a hidden window won't show a task bar icon
-    // When trayicon is enabled, the duplication is unneeded
-
-    // On macOS, a hidden window will still show on the Dock,
-    // but click it won't bring it back, thus we can only minimize it.
-
-#ifdef Q_OS_MAC
-    if ( cfg.preferences.enableTrayIcon ) {
-      showMinimized();
-    }
-#else
-    if ( cfg.preferences.enableTrayIcon )
-      hide();
-    else
-      showMinimized();
-#endif
-
-
-    if ( headwordsDlg ) {
-      headwordsDlg->hide();
-    }
-
-    if ( ftsDlg ) {
-      ftsDlg->hide();
-    }
-  }
 
   if ( shown ) {
     if ( headwordsDlg ) {
@@ -2954,6 +2936,46 @@ void MainWindow::toggleMainWindow( bool ensureShow )
     }
 
     focusTranslateLine();
+  }
+}
+
+void MainWindow::mainWindow_ensure_hide()
+{
+  // On Windows and Linux, a hidden window won't show a task bar icon
+  // When trayicon is enabled, the duplication is unneeded
+
+  // On macOS, a hidden window will still show on the Dock,
+  // but click it won't bring it back, thus we can only minimize it.
+
+  #ifdef Q_OS_MAC
+  if ( cfg.preferences.enableTrayIcon ) {
+    showMinimized();
+  }
+  #else
+  if ( cfg.preferences.enableTrayIcon )
+    hide();
+  else
+    showMinimized();
+  #endif
+
+
+  if ( headwordsDlg ) {
+    headwordsDlg->hide();
+  }
+
+  if ( ftsDlg ) {
+    ftsDlg->hide();
+  }
+}
+
+
+void MainWindow::mainWindow_toggle()
+{
+  if ( !isVisible() || isMinimized() || !isActiveWindow ) {
+    mainWindow_ensure_show();
+  }
+  else {
+    mainWindow_ensure_hide();
   }
 }
 
@@ -2999,7 +3021,7 @@ void MainWindow::installHotKeys()
 void MainWindow::hotKeyActivated( int hk )
 {
   if ( !hk ) {
-    toggleMainWindow( false );
+    mainWindow_toggle(  );
   }
   else if ( scanPopup ) {
 #ifdef HAVE_X11
@@ -3084,7 +3106,7 @@ void MainWindow::trayIconActivated( QSystemTrayIcon::ActivationReason r )
   switch ( r ) {
     case QSystemTrayIcon::Trigger:
       // Left click toggles the visibility of main window
-      toggleMainWindow( false );
+      mainWindow_toggle(  );
       break;
 
     case QSystemTrayIcon::MiddleClick:
@@ -3241,7 +3263,9 @@ void MainWindow::setAutostart( bool autostart )
 
 void MainWindow::on_actionCloseToTray_triggered()
 {
-  toggleMainWindow( !cfg.preferences.enableTrayIcon );
+  if ( cfg.preferences.enableTrayIcon ) {
+    mainWindow_ensure_hide();
+  }
 }
 
 void MainWindow::on_pageSetup_triggered()
@@ -3675,7 +3699,7 @@ void MainWindow::applyWordsZoomLevel()
 void MainWindow::messageFromAnotherInstanceReceived( QString const & message )
 {
   if ( message == "bringToFront" ) {
-    toggleMainWindow( true );
+    mainWindow_ensure_show();
     return;
   }
 
@@ -3730,7 +3754,7 @@ ArticleView * MainWindow::getCurrentArticleView()
 
 void MainWindow::wordReceived( const QString & word )
 {
-  toggleMainWindow( true );
+  mainWindow_ensure_show( );
   setInputLineText( word, WildcardPolicy::EscapeWildcards, NoPopupChange );
   respondToTranslationRequest( word, false );
 }

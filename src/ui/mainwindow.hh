@@ -225,8 +225,10 @@ private:
   /// group, or to all dictionaries if there are no groups.
   vector< sptr< Dictionary::Class > > const & getActiveDicts();
 
-  /// @param ensureShow only ensure the window will be shown and no "toggling"
-  void toggleMainWindow( bool ensureShow );
+  // controlling the visibility of the mainWindow and related widgets.
+  void mainWindow_ensure_show();
+  void mainWindow_ensure_hide();
+  void mainWindow_toggle();
 
   /// Creates hotkeyWrapper and hooks the currently set keys for it
   void installHotKeys();
