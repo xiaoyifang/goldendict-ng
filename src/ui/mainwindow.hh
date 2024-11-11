@@ -225,9 +225,8 @@ private:
   /// group, or to all dictionaries if there are no groups.
   vector< sptr< Dictionary::Class > > const & getActiveDicts();
 
-  /// Brings the main window to front if it's not currently, or hides it
-  /// otherwise. The hiding part is omitted if onlyShow is true.
-  void toggleMainWindow( bool onlyShow = false );
+  /// @param ensureShow only ensure the window will be shown and no "toggling"
+  void toggleMainWindow( bool ensureShow );
 
   /// Creates hotkeyWrapper and hooks the currently set keys for it
   void installHotKeys();
@@ -396,8 +395,6 @@ private slots:
   void trayIconActivated( QSystemTrayIcon::ActivationReason );
 
   void setAutostart( bool );
-
-  void showMainWindow();
 
   void visitHomepage();
   void visitForum();
