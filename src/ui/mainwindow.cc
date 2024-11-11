@@ -2971,7 +2971,7 @@ void MainWindow::mainWindow_ensure_hide()
 
 void MainWindow::mainWindow_toggle()
 {
-  if ( !isVisible() || isMinimized() || !isActiveWindow ) {
+  if ( !isVisible() || isMinimized() || !isActiveWindow() ) {
     mainWindow_ensure_show();
   }
   else {
