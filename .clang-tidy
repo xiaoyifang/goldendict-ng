@@ -26,6 +26,7 @@ Checks: >
   -google-default-arguments,
   -google-readability-casting,
   -hicpp-deprecated-headers,
+  -hicpp-no-array-decay,
   -misc-const-correctness,
   -misc-include-cleaner,
   -misc-non-private-member-variables-in-classes,
