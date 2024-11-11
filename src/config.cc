@@ -199,7 +199,6 @@ Preferences::Preferences():
   hideMenubar( false ),
   enableTrayIcon( true ),
   startToTray( false ),
-  closeToTray( true ),
   autoStart( false ),
   doubleClickTranslates( true ),
   selectWordBySingleClick( false ),
@@ -906,7 +905,9 @@ Class load()
 
     c.preferences.enableTrayIcon = ( preferences.namedItem( "enableTrayIcon" ).toElement().text() == "1" );
     c.preferences.startToTray    = ( preferences.namedItem( "startToTray" ).toElement().text() == "1" );
-    c.preferences.closeToTray    = ( preferences.namedItem( "closeToTray" ).toElement().text() == "1" );
+#ifndef Q_OS_MACOS // // macOS uses the dock menu instead of the tray icon
+    c.preferences.closeToTray = ( preferences.namedItem( "closeToTray" ).toElement().text() == "1" );
+#endif
     c.preferences.autoStart      = ( preferences.namedItem( "autoStart" ).toElement().text() == "1" );
     c.preferences.alwaysOnTop    = ( preferences.namedItem( "alwaysOnTop" ).toElement().text() == "1" );
     c.preferences.searchInDock   = ( preferences.namedItem( "searchInDock" ).toElement().text() == "1" );

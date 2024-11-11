@@ -401,14 +401,18 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( wordsZoomOut, &QAction::triggered, this, &MainWindow::doWordsZoomOut );
   connect( wordsZoomBase, &QAction::triggered, this, &MainWindow::doWordsZoomBase );
 
-  // tray icon
+// tray icon
+#ifndef Q_OS_MACOS // macOS uses the dock menu instead of the tray icon
   connect( trayIconMenu.addAction( tr( "Show &Main Window" ) ), &QAction::triggered, this, [ this ] {
     this->toggleMainWindow( true );
   } );
+#endif
   trayIconMenu.addAction( enableScanningAction );
 
+#ifndef Q_OS_MACOS // macOS uses the dock menu instead of the tray icon
   trayIconMenu.addSeparator();
   connect( trayIconMenu.addAction( tr( "&Quit" ) ), &QAction::triggered, this, &MainWindow::quitApp );
+#endif
 
   addGlobalAction( &escAction, [ this ]() {
     handleEsc();
@@ -1420,6 +1424,10 @@ void MainWindow::updateAppearances( QString const & addonStyle,
 
 void MainWindow::trayIconUpdateOrInit()
 {
+#ifdef Q_OS_MACOS
+  trayIconMenu.setAsDockMenu();
+#else
+
   if ( !cfg.preferences.enableTrayIcon ) {
     if ( trayIcon ) {
       delete trayIcon;
@@ -1443,6 +1451,7 @@ void MainWindow::trayIconUpdateOrInit()
   // The 'Close to tray' action is associated with the tray icon, so we hide
   // or show it here.
   ui.actionCloseToTray->setVisible( cfg.preferences.enableTrayIcon );
+#endif
 }
 
 void MainWindow::wheelEvent( QWheelEvent * ev )

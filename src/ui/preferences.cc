@@ -174,6 +174,11 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.hideSingleTab->setChecked( p.hideSingleTab );
   ui.mruTabOrder->setChecked( p.mruTabOrder );
   ui.enableTrayIcon->setChecked( p.enableTrayIcon );
+
+#ifdef Q_OS_MACOS // macOS uses the dock menu instead of the tray icon
+  ui.enableTrayIcon->hide();
+#endif
+
   ui.startToTray->setChecked( p.startToTray );
   ui.closeToTray->setChecked( p.closeToTray );
   ui.cbAutostart->setChecked( p.autoStart );
