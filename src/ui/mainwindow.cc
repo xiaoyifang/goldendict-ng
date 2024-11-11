@@ -402,10 +402,9 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( wordsZoomBase, &QAction::triggered, this, &MainWindow::doWordsZoomBase );
 
   // tray icon
-  connect( trayIconMenu.addAction( tr( "Show &Main Window" ) ),
-           &QAction::triggered,
-           this,
-           &MainWindow::showMainWindow );
+  connect( trayIconMenu.addAction( tr( "Show &Main Window" ) ), &QAction::triggered, this, [ this ] {
+    this->toggleMainWindow( true );
+  } );
   trayIconMenu.addAction( enableScanningAction );
 
   trayIconMenu.addSeparator();
@@ -2532,7 +2531,7 @@ void MainWindow::handleEsc()
   }
 
   if ( cfg.preferences.escKeyHidesMainWindow ) {
-    toggleMainWindow();
+    toggleMainWindow( false );
   }
   else {
     focusTranslateLine();
@@ -2873,7 +2872,7 @@ void MainWindow::showTranslationForDicts( QString const & inWord,
                         ignoreDiacritics );
 }
 
-void MainWindow::toggleMainWindow( bool onlyShow )
+void MainWindow::toggleMainWindow( bool ensureShow )
 {
   bool shown = false;
 
@@ -2906,7 +2905,7 @@ void MainWindow::toggleMainWindow( bool onlyShow )
     }
     shown = true;
   }
-  else if ( !onlyShow ) {
+  else if ( !ensureShow ) {
 
     // On Windows and Linux, a hidden window won't show a task bar icon
     // When trayicon is enabled, the duplication is unneeded
@@ -2990,7 +2989,7 @@ void MainWindow::installHotKeys()
 void MainWindow::hotKeyActivated( int hk )
 {
   if ( !hk ) {
-    toggleMainWindow();
+    toggleMainWindow( false );
   }
   else if ( scanPopup ) {
 #ifdef HAVE_X11
@@ -3075,7 +3074,7 @@ void MainWindow::trayIconActivated( QSystemTrayIcon::ActivationReason r )
   switch ( r ) {
     case QSystemTrayIcon::Trigger:
       // Left click toggles the visibility of main window
-      toggleMainWindow();
+      toggleMainWindow( false );
       break;
 
     case QSystemTrayIcon::MiddleClick:
@@ -3088,10 +3087,6 @@ void MainWindow::trayIconActivated( QSystemTrayIcon::ActivationReason r )
   }
 }
 
-void MainWindow::showMainWindow()
-{
-  toggleMainWindow( true );
-}
 
 void MainWindow::visitHomepage()
 {
