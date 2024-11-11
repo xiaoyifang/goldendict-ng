@@ -75,10 +75,7 @@ void Groups::rebuild( vector< sptr< Dictionary::Class > > const & dicts_,
   ui.dictionaries->setAsSource();
   ui.dictionaries->populate( Instances::Group( order, dicts, Config::Group() ).dictionaries, dicts );
 
-  //  ui.searchLine->applyTo( ui.dictionaries );
-
   // Populate groups' widget
-
   ui.groups->populate( groups, dicts, ui.dictionaries->getCurrentDictionaries() );
 
   countChanged();

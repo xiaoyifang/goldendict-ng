@@ -204,22 +204,11 @@ void EditDictionaries::acceptChangedSources( bool rebuildGroups )
   // Those hold pointers to dictionaries, we need to free them.
   groupInstances.clear();
 
-  //  groups.clear();
-  //  orderAndProps.clear();
-
   loadDictionaries( this, cfg, dictionaries, dictNetMgr );
 
   if ( rebuildGroups ) {
-    // ui.tabs->removeTab( 1 );
-    // ui.tabs->removeTab( 1 );
-
     orderAndProps->rebuild( savedOrder, savedInactive, dictionaries );
     groups->rebuild( dictionaries, savedGroups, orderAndProps->getCurrentDictionaryOrder() );
-
-    // ui.tabs->insertTab( 1, orderAndProps, QIcon( ":/icons/book.svg" ), tr( "&Dictionaries" ) );
-    // ui.tabs->insertTab( 2, groups, QIcon( ":/icons/bookcase.svg" ), tr( "&Groups" ) );
-    // connect( groups, &Groups::showDictionaryInfo, this, &EditDictionaries::showDictionaryInfo );
-    // connect( orderAndProps, &OrderAndProps::showDictionaryHeadwords, this, &EditDictionaries::showDictionaryHeadwords );
   }
   setUpdatesEnabled( true );
 }
