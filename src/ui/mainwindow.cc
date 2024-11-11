@@ -1471,6 +1471,17 @@ void MainWindow::wheelEvent( QWheelEvent * ev )
   }
 }
 
+#ifdef Q_OS_MACOS
+// macOS's favourable "close"
+void MainWindow::closeEvent( QCloseEvent * ev )
+{
+  if ( ev->spontaneous() ) {
+    closeAllTabs();
+    showMinimized();
+    ev->ignore();
+  }
+}
+#else
 void MainWindow::closeEvent( QCloseEvent * ev )
 {
   if ( cfg.preferences.enableTrayIcon && cfg.preferences.closeToTray ) {
@@ -1478,11 +1489,6 @@ void MainWindow::closeEvent( QCloseEvent * ev )
       translateBox->setPopupEnabled( false );
     }
 
-#ifdef Q_OS_MACOS
-    if ( !ev->spontaneous() || !isVisible() ) {
-      return;
-    }
-#endif
 #ifdef HAVE_X11
     // Don't ignore the close event, because doing so cancels session logout if
     // the main window is visible when the user attempts to log out.
@@ -1501,6 +1507,8 @@ void MainWindow::closeEvent( QCloseEvent * ev )
     quitApp();
   }
 }
+
+#endif
 
 void MainWindow::quitApp()
 {
