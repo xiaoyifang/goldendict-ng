@@ -1489,18 +1489,18 @@ void MainWindow::closeEvent( QCloseEvent * ev )
       translateBox->setPopupEnabled( false );
     }
 
-#ifdef HAVE_X11
+  #ifdef HAVE_X11
     // Don't ignore the close event, because doing so cancels session logout if
     // the main window is visible when the user attempts to log out.
     // The main window will be only hidden, because QApplication::quitOnLastWindowClosed
     // property is false and Qt::WA_DeleteOnClose widget  is not set.
     Q_ASSERT( !QApplication::quitOnLastWindowClosed() );
     Q_ASSERT( !testAttribute( Qt::WA_DeleteOnClose ) );
-#else
+  #else
     // Ignore the close event because closing the main window breaks global hotkeys on Windows.
     ev->ignore();
     hide();
-#endif
+  #endif
   }
   else {
     ev->accept();
