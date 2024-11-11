@@ -343,7 +343,12 @@ struct Preferences
   bool hideMenubar;
   bool enableTrayIcon;
   bool startToTray;
-  bool closeToTray;
+#ifdef Q_OS_MACOS // macOS uses the dock menu instead of the tray icon
+  bool closeToTray = false;
+#else
+  bool closeToTray = true;
+#endif
+
   bool autoStart;
   bool doubleClickTranslates;
   bool selectWordBySingleClick;
