@@ -3730,13 +3730,6 @@ void MainWindow::wordReceived( const QString & word )
   respondToTranslationRequest( word, false );
 }
 
-void MainWindow::headwordReceived( const QString & word, const QString & ID )
-{
-  toggleMainWindow( true );
-  setInputLineText( word, WildcardPolicy::EscapeWildcards, NoPopupChange );
-  respondToTranslationRequest( word, false, ArticleView::scrollToFromDictionaryId( ID ), false );
-}
-
 void MainWindow::updateFavoritesMenu()
 {
   if ( ui.favoritesPane->isVisible() ) {
@@ -4141,7 +4134,13 @@ void MainWindow::showDictionaryHeadwords( Dictionary::Class * dict )
       headwordsDlg = new DictHeadwords( this, cfg, dict );
       addGlobalActionsToDialog( headwordsDlg );
       addGroupComboBoxActionsToDialog( headwordsDlg, groupList );
-      connect( headwordsDlg, &DictHeadwords::headwordSelected, this, &MainWindow::headwordReceived );
+      connect( headwordsDlg,
+               &DictHeadwords::headwordSelected,
+               this,
+               [ this ]( QString const & headword, QString const & dictID ) {
+                 setInputLineText( headword, WildcardPolicy::EscapeWildcards, NoPopupChange );
+                 respondToTranslationRequest( headword, false, ArticleView::scrollToFromDictionaryId( dictID ), false );
+               } );
       connect( headwordsDlg,
                &DictHeadwords::closeDialog,
                this,
