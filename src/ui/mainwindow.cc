@@ -1491,18 +1491,18 @@ void MainWindow::closeEvent( QCloseEvent * ev )
       translateBox->setPopupEnabled( false );
     }
 
-#ifdef HAVE_X11
+  #ifdef HAVE_X11
     // Don't ignore the close event, because doing so cancels session logout if
     // the main window is visible when the user attempts to log out.
     // The main window will be only hidden, because QApplication::quitOnLastWindowClosed
     // property is false and Qt::WA_DeleteOnClose widget  is not set.
     Q_ASSERT( !QApplication::quitOnLastWindowClosed() );
     Q_ASSERT( !testAttribute( Qt::WA_DeleteOnClose ) );
-#else
+  #else
     // Ignore the close event because closing the main window breaks global hotkeys on Windows.
     ev->ignore();
     hide();
-#endif
+  #endif
   }
   else {
     ev->accept();
@@ -2551,7 +2551,7 @@ void MainWindow::handleEsc()
   }
 
   if ( cfg.preferences.escKeyHidesMainWindow ) {
-    mainWindow_toggle( );
+    mainWindow_toggle();
   }
   else {
     focusTranslateLine();
@@ -2947,16 +2947,16 @@ void MainWindow::mainWindow_ensure_hide()
   // On macOS, a hidden window will still show on the Dock,
   // but click it won't bring it back, thus we can only minimize it.
 
-  #ifdef Q_OS_MAC
+#ifdef Q_OS_MAC
   if ( cfg.preferences.enableTrayIcon ) {
     showMinimized();
   }
-  #else
+#else
   if ( cfg.preferences.enableTrayIcon )
     hide();
   else
     showMinimized();
-  #endif
+#endif
 
 
   if ( headwordsDlg ) {
@@ -3021,7 +3021,7 @@ void MainWindow::installHotKeys()
 void MainWindow::hotKeyActivated( int hk )
 {
   if ( !hk ) {
-    mainWindow_toggle(  );
+    mainWindow_toggle();
   }
   else if ( scanPopup ) {
 #ifdef HAVE_X11
@@ -3106,7 +3106,7 @@ void MainWindow::trayIconActivated( QSystemTrayIcon::ActivationReason r )
   switch ( r ) {
     case QSystemTrayIcon::Trigger:
       // Left click toggles the visibility of main window
-      mainWindow_toggle(  );
+      mainWindow_toggle();
       break;
 
     case QSystemTrayIcon::MiddleClick:
@@ -3754,7 +3754,7 @@ ArticleView * MainWindow::getCurrentArticleView()
 
 void MainWindow::wordReceived( const QString & word )
 {
-  mainWindow_ensure_show( );
+  mainWindow_ensure_show();
   setInputLineText( word, WildcardPolicy::EscapeWildcards, NoPopupChange );
   respondToTranslationRequest( word, false );
 }
