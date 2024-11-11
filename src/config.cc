@@ -197,8 +197,6 @@ Preferences::Preferences():
   hideSingleTab( false ),
   mruTabOrder( false ),
   hideMenubar( false ),
-  enableTrayIcon( true ),
-  startToTray( false ),
   autoStart( false ),
   doubleClickTranslates( true ),
   selectWordBySingleClick( false ),
@@ -902,11 +900,10 @@ Class load()
     c.preferences.hideSingleTab = ( preferences.namedItem( "hideSingleTab" ).toElement().text() == "1" );
     c.preferences.mruTabOrder   = ( preferences.namedItem( "mruTabOrder" ).toElement().text() == "1" );
     c.preferences.hideMenubar   = ( preferences.namedItem( "hideMenubar" ).toElement().text() == "1" );
-
+#ifndef Q_OS_MACOS // // macOS uses the dock menu instead of the tray icon
     c.preferences.enableTrayIcon = ( preferences.namedItem( "enableTrayIcon" ).toElement().text() == "1" );
     c.preferences.startToTray    = ( preferences.namedItem( "startToTray" ).toElement().text() == "1" );
-#ifndef Q_OS_MACOS // // macOS uses the dock menu instead of the tray icon
-    c.preferences.closeToTray = ( preferences.namedItem( "closeToTray" ).toElement().text() == "1" );
+    c.preferences.closeToTray    = ( preferences.namedItem( "closeToTray" ).toElement().text() == "1" );
 #endif
     c.preferences.autoStart      = ( preferences.namedItem( "autoStart" ).toElement().text() == "1" );
     c.preferences.alwaysOnTop    = ( preferences.namedItem( "alwaysOnTop" ).toElement().text() == "1" );

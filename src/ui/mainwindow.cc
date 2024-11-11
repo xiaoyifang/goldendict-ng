@@ -1426,6 +1426,7 @@ void MainWindow::trayIconUpdateOrInit()
 {
 #ifdef Q_OS_MACOS
   trayIconMenu.setAsDockMenu();
+  ui.actionCloseToTray->setVisible( false );
 #else
 
   if ( !cfg.preferences.enableTrayIcon ) {
