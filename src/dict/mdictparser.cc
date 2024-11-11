@@ -264,14 +264,12 @@ bool MdictParser::parseCompressedBlock( qint64 compressedBlockSize,
 
     case 0x02000000:
       // zlib compression
-      decompressedBlock = zlibDecompress( buf, size );
-
-      if ( !checkAdler32( decompressedBlock.constData(), decompressedBlock.size(), checksum ) ) {
-        gdWarning( "MDict: parseCompressedBlock: zlib: checksum does not match" );
+      decompressedBlock = zlibDecompress( buf, size, checksum );
+      if ( decompressedBlock.isEmpty() ) {
+        gdWarning( "MDict: parseCompressedBlock: zlib: failed to decompress or checksum does not match" );
         return false;
       }
       break;
-
     default:
       gdWarning( "MDict: parseCompressedBlock: unknown type" );
       return false;
