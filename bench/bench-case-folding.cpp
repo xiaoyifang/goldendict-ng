@@ -3,17 +3,19 @@
 
 static std::u32string a = U"HOMEBREW_NO_AUTO_UPDATE. Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).";
 
-static void applyFolding(benchmark::State& state){
-  for (auto _ : state){
-    Folding::apply(a);
+static void applyFolding( benchmark::State & state )
+{
+  for ( auto _ : state ) {
+    Folding::apply( a );
   }
 }
-BENCHMARK(applyFolding);
+BENCHMARK( applyFolding );
 
 
-static void applyFolding2(benchmark::State& state){
-  for (auto _ : state){
-    Folding::apply2(a);
+static void applyFolding2( benchmark::State & state )
+{
+  for ( auto _ : state ) {
+    Folding::apply2( a );
   }
 }
-BENCHMARK(applyFolding2);
+BENCHMARK( applyFolding2 );
