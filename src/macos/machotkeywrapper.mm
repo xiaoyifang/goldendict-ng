@@ -7,8 +7,8 @@
 #include <QPushButton>
 #include <QTimer>
 
-#include <vector>
 #include <memory>
+#include <vector>
 
 #import <Appkit/Appkit.h>
 
@@ -45,21 +45,21 @@ void createMapping()
 {
     if (mapping.empty()) {
         mapping.reserve(128);
-        
+
         TISInputSourceRef inputSourceRef = TISCopyCurrentKeyboardLayoutInputSource();
         if (!inputSourceRef) {
             return;
         }
 
         CFDataRef dataRef = (CFDataRef)TISGetInputSourceProperty(inputSourceRef, kTISPropertyUnicodeKeyLayoutData);
-        
+
         const UCKeyboardLayout* keyboardLayoutPtr;
-        
-        if(dataRef){
+
+        if (dataRef) {
             keyboardLayoutPtr = (const UCKeyboardLayout*)CFDataGetBytePtr(dataRef);
         }
-        
-        if(!keyboardLayoutPtr){
+
+        if (!keyboardLayoutPtr) {
             return;
         }
 
@@ -69,11 +69,11 @@ void createMapping()
             UniChar temp_char_buf;
             if (UCKeyTranslate(keyboardLayoutPtr, i, kUCKeyActionDown, 0, LMGetKbdType(),
                     kUCKeyTranslateNoDeadKeysBit, &theDeadKeyState, 1, &theLength,
-                               &temp_char_buf)
+                    &temp_char_buf)
                     == noErr
                 && theLength > 0) {
                 if (isprint(temp_char_buf)) {
-                    mapping.emplace_back(ReverseMapEntry{temp_char,i});
+                    mapping.emplace_back(ReverseMapEntry { temp_char, i });
                 }
             }
         }
@@ -87,7 +87,7 @@ quint32 qtKeyToNativeKey(quint32 key)
         return 0;
     }
 
-    for (auto& m:mapping) {
+    for (auto& m : mapping) {
         if (m.character == key) {
             return m.keyCode;
         }
