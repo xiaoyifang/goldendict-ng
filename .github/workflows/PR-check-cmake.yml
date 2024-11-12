@@ -158,7 +158,8 @@ jobs:
             -DWITH_FFMPEG_PLAYER=ON \
             -DWITH_TTS=ON \
             -DUSE_SYSTEM_FMT=ON \
-            -DUSE_SYSTEM_TOML=ON
+            -DUSE_SYSTEM_TOML=ON \
+            -DWITH_DEV_GOOGLE_BENCH=ON
 
           cmake --build ./build_dir
 
