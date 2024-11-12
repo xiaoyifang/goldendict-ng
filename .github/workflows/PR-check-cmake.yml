@@ -160,3 +160,7 @@ jobs:
             -DUSE_SYSTEM_TOML=ON
 
           cmake --build ./build_dir
+
+      - name: Run benchmark
+        run: |
+          ./build_dir/bcf
