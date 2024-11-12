@@ -33,7 +33,7 @@ struct ReverseMapEntry {
     UInt16 keyCode;
 };
 
-std::vector<ReverseMapEntry> mapping;
+static std::vector<ReverseMapEntry> mapping;
 
 /// References:
 /// * https://github.com/libsdl-org/SDL/blob/fc12cc6dfd859a4e01376162a58f12208e539ac6/src/video/cocoa/SDL_cocoakeyboard.m#L345
@@ -52,13 +52,13 @@ void createMapping()
 
         CFDataRef uchrDataRef = (CFDataRef)TISGetInputSourceProperty(inputSourceRef, kTISPropertyUnicodeKeyLayoutData);
 
-        const UCKeyboardLayout* UCkeyboardLayoutPtr;
+        const UCKeyboardLayout* UCKeyboardLayoutPtr;
 
         if (uchrDataRef) {
-            UCkeyboardLayoutPtr = (const UCKeyboardLayout*)CFDataGetBytePtr(uchrDataRef);
+            UCKeyboardLayoutPtr = (const UCKeyboardLayout*)CFDataGetBytePtr(uchrDataRef);
         }
 
-        if (!UCkeyboardLayoutPtr) {
+        if (!UCKeyboardLayoutPtr) {
             return;
         }
 
@@ -66,7 +66,7 @@ void createMapping()
             UInt32 theDeadKeyState = 0;
             UniCharCount theLength = 0;
             UniChar temp_char_buf;
-            if (UCKeyTranslate(UCkeyboardLayoutPtr, i, kUCKeyActionDown, 0, LMGetKbdType(),
+            if (UCKeyTranslate(UCKeyboardLayoutPtr, i, kUCKeyActionDown, 0, LMGetKbdType(),
                     kUCKeyTranslateNoDeadKeysBit, &theDeadKeyState, 1, &theLength,
                     &temp_char_buf)
                     == noErr
