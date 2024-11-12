@@ -6,6 +6,8 @@
 #include <QObject>
 #include <QPushButton>
 #include <QTimer>
+
+#include <vector>
 #include <memory>
 
 #import <Appkit/Appkit.h>
@@ -31,54 +33,47 @@ struct ReverseMapEntry {
     UInt16 keyCode;
 };
 
-static struct ReverseMapEntry* mapping;
-static int mapEntries = 0;
+std::vector<ReverseMapEntry> mapping;
 
+/// References:
+/// * https://github.com/libsdl-org/SDL/blob/fc12cc6dfd859a4e01376162a58f12208e539ac6/src/video/cocoa/SDL_cocoakeyboard.m#L345
+/// * https://github.com/qt/qtbase/blob/922369844fcb75386237bca3eef59edd5093f58d/src/gui/platform/darwin/qapplekeymapper.mm#L449
+///
+///  Known flaw:
+///  * UCKeyTranslate doesn't handle modifiers at all.
 void createMapping()
 {
-    if (mapping == NULL) {
-        TISInputSourceRef inputSourceRef = TISCopyInputSourceForLanguage(CFSTR("en"));
+    if (mapping.empty()) {
+        mapping.reserve(128);
+        
+        TISInputSourceRef inputSourceRef = TISCopyCurrentKeyboardLayoutInputSource();
         if (!inputSourceRef) {
-            inputSourceRef = TISCopyCurrentKeyboardInputSource();
-        }
-        if (!inputSourceRef) {
             return;
         }
 
-        CFDataRef dataRef = (CFDataRef)TISGetInputSourceProperty(inputSourceRef,
-            kTISPropertyUnicodeKeyLayoutData);
-        // this method returns null under macos Japanese input method(and also Chinese), which causes cmd+C+C not to be registered as a hotkey
-        if (!dataRef) {
-            // solve the null value under Japanese keyboard
-            inputSourceRef = TISCopyCurrentKeyboardLayoutInputSource();
-            dataRef = static_cast<CFDataRef>((TISGetInputSourceProperty(inputSourceRef, kTISPropertyUnicodeKeyLayoutData)));
-            if (!dataRef) {
-                return;
-            }
+        CFDataRef dataRef = (CFDataRef)TISGetInputSourceProperty(inputSourceRef, kTISPropertyUnicodeKeyLayoutData);
+        
+        const UCKeyboardLayout* keyboardLayoutPtr;
+        
+        if(dataRef){
+            keyboardLayoutPtr = (const UCKeyboardLayout*)CFDataGetBytePtr(dataRef);
         }
-
-        const UCKeyboardLayout* keyboardLayoutPtr = (const UCKeyboardLayout*)CFDataGetBytePtr(dataRef);
-        if (!keyboardLayoutPtr) {
+        
+        if(!keyboardLayoutPtr){
             return;
         }
 
-        mapping = (struct ReverseMapEntry*)calloc(128, sizeof(struct ReverseMapEntry));
-        if (!mapping) {
-            return;
-        }
-
-        mapEntries = 0;
-
-        for (int i = 0; i < 128; i++) {
+        for (UInt16 i = 0; i < 128; i++) {
             UInt32 theDeadKeyState = 0;
             UniCharCount theLength = 0;
-            if (UCKeyTranslate(keyboardLayoutPtr, i, kUCKeyActionDisplay, 0, LMGetKbdType(),
+            UniChar temp_char_buf;
+            if (UCKeyTranslate(keyboardLayoutPtr, i, kUCKeyActionDown, 0, LMGetKbdType(),
                     kUCKeyTranslateNoDeadKeysBit, &theDeadKeyState, 1, &theLength,
-                    &mapping[mapEntries].character)
+                               &temp_char_buf)
                     == noErr
                 && theLength > 0) {
-                if (isprint(mapping[mapEntries].character)) {
-                    mapping[mapEntries++].keyCode = i;
+                if (isprint(temp_char_buf)) {
+                    mapping.emplace_back(ReverseMapEntry{temp_char,i});
                 }
             }
         }
@@ -88,13 +83,13 @@ void createMapping()
 quint32 qtKeyToNativeKey(quint32 key)
 {
     createMapping();
-    if (mapping == NULL) {
+    if (mapping.empty()) {
         return 0;
     }
 
-    for (int i = 0; i < mapEntries; i++) {
-        if (mapping[i].character == key) {
-            return mapping[i].keyCode;
+    for (auto& m:mapping) {
+        if (m.character == key) {
+            return m.keyCode;
         }
     }
 
