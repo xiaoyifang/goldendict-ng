@@ -11,6 +11,9 @@ option(USE_SYSTEM_TOML "use system toml++ instead of bundled one" OFF)
 
 option(WITH_VCPKG_BREAKPAD "build with Breakpad support for VCPKG build only" OFF)
 
+# dev purpose options
+option(WITH_DEV_GOOGLE_BENCH "Add google benchmark to the tree" OFF)
+
 ## Change binary & resources folder to parallel install with original GD.
 ## This flag should be avoided because it leads to small regressions:
 ## 1. There are personal scripts assuming the binary name to be "goldendict" -> require everyone to change the name in their script
@@ -49,7 +52,7 @@ include(FeatureSummary)
 project(goldendict-ng
         VERSION 24.11.0
         LANGUAGES CXX C)
-        
+
 if (APPLE)
     enable_language(OBJCXX)
     set(CMAKE_OBJCXX_STANDARD 17)
@@ -60,12 +63,12 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(GOLDENDICT "goldendict") # binary/executable name
-if (USE_ALTERNATIVE_NAME )
+if (USE_ALTERNATIVE_NAME)
     set(GOLDENDICT "goldendict-ng")
 endif ()
 if (APPLE)
     set(GOLDENDICT "GoldenDict-ng")
-endif()
+endif ()
 
 
 #### Qt
@@ -163,7 +166,7 @@ target_link_libraries(${GOLDENDICT} PRIVATE
         Qt6::WebEngineWidgets
         Qt6::Widgets
         Qt6::Svg
-        )
+)
 
 if (WITH_TTS)
     target_link_libraries(${GOLDENDICT} PRIVATE Qt6::TextToSpeech)
@@ -176,7 +179,7 @@ target_include_directories(${GOLDENDICT} PRIVATE
         ${PROJECT_SOURCE_DIR}/src/dict
         ${PROJECT_SOURCE_DIR}/src/dict/utils
         ${PROJECT_SOURCE_DIR}/src/ui
-        )
+)
 
 if (WIN32)
     target_include_directories(${GOLDENDICT} PRIVATE ${PROJECT_SOURCE_DIR}/src/windows)
@@ -202,7 +205,7 @@ target_compile_definitions(${GOLDENDICT} PUBLIC
         CMAKE_USED_HACK  # temporal hack to avoid breaking qmake build
         MAKE_QTMULTIMEDIA_PLAYER
         MAKE_CHINESE_CONVERSION_SUPPORT
-        )
+)
 
 if (WIN32)
     target_compile_definitions(${GOLDENDICT} PUBLIC
@@ -215,9 +218,9 @@ if (WITH_FFMPEG_PLAYER)
     target_compile_definitions(${GOLDENDICT} PUBLIC MAKE_FFMPEG_PLAYER)
 endif ()
 
-if(NOT WITH_TTS)
+if (NOT WITH_TTS)
     target_compile_definitions(${GOLDENDICT} PUBLIC NO_TTS_SUPPORT)
-endif()
+endif ()
 
 
 if (NOT WITH_EPWING_SUPPORT)
@@ -257,6 +260,11 @@ qt_add_translations(${GOLDENDICT} TS_FILES ${TRANS_FILES}
         LUPDATE_OPTIONS "-no-ui-lines -locations none -no-obsolete")
 
 add_dependencies(${GOLDENDICT} "release_translations")
+
+add_executable(bcf bench/bench-case-folding.cpp src/common/folding.cc src/common/utf8.cc )
+target_link_libraries(bcf PUBLIC benchmark::benchmark_main Qt6::Core fmt::fmt)
+target_include_directories(bcf PUBLIC src/common)
+
 
 #### installation or assemble redistribution
 

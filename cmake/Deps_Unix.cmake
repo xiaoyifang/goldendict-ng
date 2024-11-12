@@ -101,3 +101,7 @@ if (USE_SYSTEM_TOML)
     find_package(tomlplusplus)
     target_link_libraries(${GOLDENDICT} PRIVATE tomlplusplus::tomlplusplus)
 endif ()
+
+if (WITH_DEV_GOOGLE_BENCH)
+    find_package(benchmark REQUIRED)
+endif ()

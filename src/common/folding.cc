@@ -58,6 +58,19 @@ wstring apply( wstring const & in, bool preserveWildcards )
   return caseFolded;
 }
 
+wstring apply2( wstring const & in, bool preserveWildcards )
+{
+  return QString::fromStdU32String( in )
+    .toCaseFolded()
+    .normalized( QString::NormalizationForm_KD )
+    .remove( RX::markSpace )
+    .removeIf( [ preserveWildcards ]( const QChar & ch ) -> bool {
+      return ch.isPunct()
+        || ( preserveWildcards && ( ch == '\\' || ch == '?' || ch == '*' || ch == '[' || ch == ']' ) );
+    } )
+    .toStdU32String();
+}
+
 wstring applySimpleCaseOnly( wstring const & in )
 {
   wchar const * nextChar = in.data();
