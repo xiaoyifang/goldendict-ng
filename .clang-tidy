@@ -17,7 +17,6 @@ Checks: >
   portability-*,
   readability-*,
   -bugprone-easily-swappable-parameters,
-  -bugprone-reserved-identifier,
   -cppcoreguidelines-owning-memory,
   -cppcoreguidelines-prefer-member-initializer,
   -cppcoreguidelines-pro-bounds-array-to-pointer-decay,
@@ -43,6 +42,12 @@ CheckOptions:
   - key: modernize-use-override.IgnoreDestructors
     value: 1
   - key: cppcoreguidelines-explicit-virtual-functions.IgnoreDestructors
+    value: 1
+  - key: modernize-avoid-c-arrays.AllowStringArrays
+    value: 1
+  - key: cppcoreguidelines-avoid-c-arrays.AllowStringArrays
+    value: 1
+  - key: hicpp-avoid-c-arrays.AllowStringArrays
     value: 1
 ...
 
