@@ -30,8 +30,7 @@
 #endif
 
 #ifdef Q_OS_MAC
-  #define __SECURITYHI__
-  #include <Carbon/Carbon.h>
+  #import <Carbon/Carbon.h>
 #endif
 
 //////////////////////////////////////////////////////////////////////////
