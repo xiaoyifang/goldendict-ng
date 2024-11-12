@@ -81,7 +81,6 @@ namespace {
 
 using Dictionary::exCantReadFile;
 DEF_EX_STR( exNotXdxfFile, "The file is not an XDXF file:", Dictionary::Ex )
-DEF_EX( exCorruptedIndex, "The index file is corrupted", Dictionary::Ex )
 DEF_EX_STR( exDictzipError, "DICTZIP error", Dictionary::Ex )
 
 enum {
