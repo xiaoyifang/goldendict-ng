@@ -36,18 +36,18 @@ static int mapEntries = 0;
 
 void createMapping()
 {
-if (mapping == NULL) {
-TISInputSourceRef inputSourceRef = TISCopyInputSourceForLanguage(CFSTR("en"));
-if (!inputSourceRef) {
-inputSourceRef = TISCopyCurrentKeyboardInputSource();
-}
-if (!inputSourceRef) {
-return;
-}
+    if (mapping == NULL) {
+        TISInputSourceRef inputSourceRef = TISCopyInputSourceForLanguage(CFSTR("en"));
+        if (!inputSourceRef) {
+            inputSourceRef = TISCopyCurrentKeyboardInputSource();
+        }
+        if (!inputSourceRef) {
+            return;
+        }
 
-CFDataRef dataRef = (CFDataRef)TISGetInputSourceProperty(inputSourceRef,
-kTISPropertyUnicodeKeyLayoutData);
-// this method returns null under macos Japanese input method(and also Chinese), which causes cmd+C+C not to be registered as a hotkey
+        CFDataRef dataRef = (CFDataRef)TISGetInputSourceProperty(inputSourceRef,
+            kTISPropertyUnicodeKeyLayoutData);
+        // this method returns null under macos Japanese input method(and also Chinese), which causes cmd+C+C not to be registered as a hotkey
         if (!dataRef) {
             // solve the null value under Japanese keyboard
             inputSourceRef = TISCopyCurrentKeyboardLayoutInputSource();
