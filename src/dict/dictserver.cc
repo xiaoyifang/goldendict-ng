@@ -538,11 +538,13 @@ void DictServerWordSearchRequest::readMatchData( QByteArray & reply )
       if ( word.endsWith( '\"' ) ) {
         word.chop( 1 );
       }
-      if ( word[ 0 ] == '\"' ) {
-        word = word.mid( 1 );
+      if ( word.startsWith( '\"' ) ) {
+        word = word.remove( 0, 1 );
       }
 
-      this->addMatchedWord( word );
+      if ( !word.isEmpty() ) {
+        this->addMatchedWord( word );
+      }
     }
 
     reply = this->dictImpl->socket.readLine();
