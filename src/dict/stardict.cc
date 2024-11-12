@@ -64,14 +64,11 @@ DEF_EX( exNotAnIfoFile, "Not an .ifo file", Dictionary::Ex )
 DEF_EX_STR( exBadFieldInIfo, "Bad field in .ifo file encountered:", Dictionary::Ex )
 DEF_EX_STR( exNoIdxFile, "No corresponding .idx file was found for", Dictionary::Ex )
 DEF_EX_STR( exNoDictFile, "No corresponding .dict file was found for", Dictionary::Ex )
-DEF_EX_STR( exNoSynFile, "No corresponding .syn file was found for", Dictionary::Ex )
 
 DEF_EX( ex64BitsNotSupported, "64-bit indices are not presently supported, sorry", Dictionary::Ex )
 DEF_EX( exDicttypeNotSupported, "Dictionaries with dicttypes are not supported, sorry", Dictionary::Ex )
 
 using Dictionary::exCantReadFile;
-DEF_EX_STR( exWordIsTooLarge, "Enountered a word that is too large:", Dictionary::Ex )
-DEF_EX_STR( exSuddenEndOfFile, "Sudden end of file", Dictionary::Ex )
 DEF_EX_STR( exDictzipError, "DICTZIP error", Dictionary::Ex )
 
 DEF_EX_STR( exIncorrectOffset, "Incorrect offset encountered in file", Dictionary::Ex )

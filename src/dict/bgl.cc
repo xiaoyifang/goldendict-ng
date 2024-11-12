@@ -169,10 +169,6 @@ void addEntryToIndex( string & word,
   indexedWords.addWord( Utf8::decode( word ), articleOffset );
 }
 
-
-DEF_EX( exFailedToDecompressArticle, "Failed to decompress article's body", Dictionary::Ex )
-DEF_EX( exChunkIndexOutOfRange, "Chunk index is out of range", Dictionary::Ex )
-
 class BglDictionary: public BtreeIndexing::BtreeDictionary
 {
   QMutex idxMutex;
