@@ -81,7 +81,7 @@ void createMapping()
     }
 }
 
-quint32 qtKeyToNativeKey(quint32 key)
+quint32 qtKeyToNativeKey(UniChar key)
 {
     createMapping();
     if (mapping.empty()) {
@@ -341,7 +341,7 @@ quint32 HotkeyWrapper::nativeKey(int key)
         return 0x72;
     default:;
     }
-    return MacKeyMapping::qtKeyToNativeKey(QChar(key).toLower().toLatin1());
+    return MacKeyMapping::qtKeyToNativeKey(QChar(key).toLower().unicode());
 }
 
 void HotkeyWrapper::sendCmdC()
