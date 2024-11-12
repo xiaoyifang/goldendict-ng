@@ -141,7 +141,8 @@ jobs:
           qt6-tools \
           qt6-webengine \
           tomlplusplus \
-          xapian-core
+          xapian-core \
+          benchmark
 
       - uses: actions/checkout@v4
         with:
