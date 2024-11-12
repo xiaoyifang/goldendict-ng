@@ -51,15 +51,15 @@ void createMapping()
             return;
         }
 
-        CFDataRef dataRef = (CFDataRef)TISGetInputSourceProperty(inputSourceRef, kTISPropertyUnicodeKeyLayoutData);
+        CFDataRef uchrDataRef = (CFDataRef)TISGetInputSourceProperty(inputSourceRef, kTISPropertyUnicodeKeyLayoutData);
 
-        const UCKeyboardLayout* keyboardLayoutPtr;
+        const UCKeyboardLayout* UCkeyboardLayoutPtr;
 
-        if (dataRef) {
-            keyboardLayoutPtr = (const UCKeyboardLayout*)CFDataGetBytePtr(dataRef);
+        if (uchrDataRef) {
+            UCkeyboardLayoutPtr = (const UCKeyboardLayout*)CFDataGetBytePtr(uchrDataRef);
         }
 
-        if (!keyboardLayoutPtr) {
+        if (!UCkeyboardLayoutPtr) {
             return;
         }
 
@@ -67,16 +67,17 @@ void createMapping()
             UInt32 theDeadKeyState = 0;
             UniCharCount theLength = 0;
             UniChar temp_char_buf;
-            if (UCKeyTranslate(keyboardLayoutPtr, i, kUCKeyActionDown, 0, LMGetKbdType(),
+            if (UCKeyTranslate(UCkeyboardLayoutPtr, i, kUCKeyActionDown, 0, LMGetKbdType(),
                     kUCKeyTranslateNoDeadKeysBit, &theDeadKeyState, 1, &theLength,
                     &temp_char_buf)
                     == noErr
                 && theLength > 0) {
                 if (isprint(temp_char_buf)) {
-                    mapping.emplace_back(ReverseMapEntry { temp_char, i });
+                    mapping.emplace_back(ReverseMapEntry { temp_char_buf, i });
                 }
             }
         }
+        mapping.shrink_to_fit();
     }
 }
 
