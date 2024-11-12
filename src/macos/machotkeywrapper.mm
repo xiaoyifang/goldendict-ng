@@ -39,8 +39,7 @@ std::vector<ReverseMapEntry> mapping;
 /// * https://github.com/libsdl-org/SDL/blob/fc12cc6dfd859a4e01376162a58f12208e539ac6/src/video/cocoa/SDL_cocoakeyboard.m#L345
 /// * https://github.com/qt/qtbase/blob/922369844fcb75386237bca3eef59edd5093f58d/src/gui/platform/darwin/qapplekeymapper.mm#L449
 ///
-///  Known flaw:
-///  * UCKeyTranslate doesn't handle modifiers at all.
+///  Known possible flaws 1) UCKeyTranslate doesn't handle modifiers at all 2) Handling keyboard switching
 void createMapping()
 {
     if (mapping.empty()) {
