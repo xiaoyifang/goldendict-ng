@@ -214,7 +214,7 @@ bool IndexedZip::indexFile( BtreeIndexing::IndexedWords & zipFileNames, quint32 
         // System locale
         if ( localeCodec ) {
           QString name       = localeCodec->toUnicode( entry.fileName.constData(), entry.fileName.size() );
-          nameInSystemLocale = gd::toWString( name );
+          nameInSystemLocale = name.toStdU32String();
           if ( !nameInSystemLocale.empty() ) {
             zipFileNames.addSingleWord( nameInSystemLocale, entry.localHeaderOffset );
 

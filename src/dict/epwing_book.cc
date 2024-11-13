@@ -1141,7 +1141,7 @@ void EpwingBook::fixHeadword( QString & headword )
   //  return;
   //}
 
-  gd::wstring folded = Folding::applyPunctOnly( gd::toWString( fixed ) );
+  gd::wstring folded = Folding::applyPunctOnly( fixed.toStdU32String() );
   //fixed = QString::fromStdU32String( folded );
 
   //if( isHeadwordCorrect( fixed ) )

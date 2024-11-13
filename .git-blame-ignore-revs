@@ -15,3 +15,6 @@ a11c9e3aeca4329e1982d8fe26bacbb21ab50ddf
 
 # mass apply clang-tidy's modernize-use-using
 d15081e723756eef053550dc9e06e31d7828dec3
+
+# remove gd::toWString
+c8af0450f1f7f8188004db96e3f53e7e33e2ccad

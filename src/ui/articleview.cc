@@ -1905,7 +1905,7 @@ void ArticleView::doubleClicked( QPoint pos )
 
     emit sendWordToInputLine( selectedText );
     // Do some checks to make sure there's a sensible selection indeed
-    if ( Folding::applyWhitespaceOnly( gd::toWString( selectedText ) ).size() && selectedText.size() < 60 ) {
+    if ( Folding::applyWhitespaceOnly( selectedText.toStdU32String() ).size() && selectedText.size() < 60 ) {
       // Initiate translation
       Qt::KeyboardModifiers kmod = QApplication::keyboardModifiers();
       if ( kmod & ( Qt::ControlModifier | Qt::ShiftModifier ) ) { // open in new tab

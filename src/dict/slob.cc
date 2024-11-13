@@ -1315,10 +1315,10 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
                || contentType.startsWith( "text/plain", Qt::CaseInsensitive ) ) {
             //Article
             if ( maxHeadwordsToExpand && entries > maxHeadwordsToExpand ) {
-              indexedWords.addSingleWord( gd::toWString( refEntry.key ), offsets[ i ].second );
+              indexedWords.addSingleWord( refEntry.key.toStdU32String(), offsets[ i ].second );
             }
             else {
-              indexedWords.addWord( gd::toWString( refEntry.key ), offsets[ i ].second );
+              indexedWords.addWord( refEntry.key.toStdU32String(), offsets[ i ].second );
             }
 
             wordCount += 1;
@@ -1330,7 +1330,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
             }
           }
           else {
-            indexedResources.addSingleWord( gd::toWString( refEntry.key ), offsets[ i ].second );
+            indexedResources.addSingleWord( refEntry.key.toStdU32String(), offsets[ i ].second );
           }
         }
         sf.clearRefOffsets();

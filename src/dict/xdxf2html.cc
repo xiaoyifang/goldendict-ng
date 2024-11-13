@@ -630,7 +630,7 @@ string convert( string const & in,
 
     //    if( type == XDXF && dictPtr != NULL && !el.hasAttribute( "start" ) )
     if ( dictPtr != NULL && !el.hasAttribute( "start" ) ) {
-      string filename = Utf8::encode( gd::toWString( el.text() ) );
+      string filename = Utf8::encode( el.text().toStdU32String() );
 
       if ( Filetype::isNameOfPicture( filename ) ) {
         QUrl url;

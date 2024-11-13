@@ -93,7 +93,7 @@ gd::wstring Iconv::toWstring( char const * fromEncoding, void const * fromData, 
   Iconv ic( fromEncoding );
 
   QString outStr = ic.convert( fromData, dataSize );
-  return gd::toWString( outStr );
+  return outStr.toStdU32String();
 }
 
 std::string Iconv::toUtf8( char const * fromEncoding, void const * fromData, size_t dataSize )

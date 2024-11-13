@@ -223,7 +223,7 @@ void MediaWikiWordSearchRequest::downloadFinished()
 
         qDebug() << "matches" << matches.size();
         for ( int x = 0; x < nl.length(); ++x ) {
-          matches.emplace_back( gd::toWString( nl.item( x ).toElement().attribute( "title" ) ) );
+          matches.emplace_back( nl.item( x ).toElement().attribute( "title" ).toStdU32String() );
         }
       }
     }

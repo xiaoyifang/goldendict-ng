@@ -413,7 +413,7 @@ QList< wstring > suggest( wstring & word, QMutex & hunspellMutex, Hunspell & hun
 
         auto match = cutStem.match( suggestion.trimmed() );
         if ( match.hasMatch() ) {
-          wstring alt = gd::toWString( match.captured( 1 ) );
+          wstring alt = match.captured( 1 ).toStdU32String();
 
           if ( Folding::applySimpleCaseOnly( alt ) != lowercasedWord ) // No point in providing same word
           {
@@ -643,7 +643,7 @@ wstring decodeFromHunspell( Hunspell & hunspell, char const * str )
   size_t outLeft = result.size() * sizeof( wchar );
 
   QString convStr = conv.convert( in, inLeft );
-  return gd::toWString( convStr );
+  return convStr.toStdU32String();
 }
 } // namespace
 
