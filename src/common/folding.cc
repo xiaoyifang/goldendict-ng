@@ -20,41 +20,23 @@ bool isCombiningMark( wchar ch )
 
 wstring apply( wstring const & in, bool preserveWildcards )
 {
-  //remove space and accent;
-  auto withPunc = QString::fromStdU32String( in )
-                    .normalized( QString::NormalizationForm_KD )
-                    .remove( RX::markSpace )
-                    .toStdU32String();
-
-  //First, strip diacritics and apply ws/punctuation removal
-  wstring withoutDiacritics;
-
-  withoutDiacritics.reserve( withPunc.size() );
-
-
-  for ( auto const & ch : withPunc ) {
-
-    if ( !isPunct( ch )
-         || ( preserveWildcards && ( ch == '\\' || ch == '?' || ch == '*' || ch == '[' || ch == ']' ) ) ) {
-      withoutDiacritics.push_back( ch );
-    }
-  }
-
-
-  // Now, fold the case
-
-  wstring caseFolded;
-
-  caseFolded.reserve( withoutDiacritics.size() * foldCaseMaxOut );
-
-  wchar const * nextChar = withoutDiacritics.data();
-
+  // remove diacritics (normalization), white space, punt,
+  auto temp = QString::fromStdU32String( in )
+                .normalized( QString::NormalizationForm_KD )
+                .remove( RX::markSpace )
+                .removeIf( [ preserveWildcards ]( const QChar & ch ) -> bool {
+                  return ch.isPunct()
+                    && !( preserveWildcards && ( ch == '\\' || ch == '?' || ch == '*' || ch == '[' || ch == ']' ) );
+                } )
+                .toStdU32String();
+  // case folding
+  std::u32string caseFolded;
+  caseFolded.reserve( temp.size() );
   wchar buf[ foldCaseMaxOut ];
-
-  for ( size_t left = withoutDiacritics.size(); left--; ) {
-    caseFolded.append( buf, foldCase( *nextChar++, buf ) );
+  for ( const char32_t ch : temp ) {
+    auto n = foldCase( ch, buf );
+    caseFolded.append( buf, n );
   }
-
   return caseFolded;
 }
 
