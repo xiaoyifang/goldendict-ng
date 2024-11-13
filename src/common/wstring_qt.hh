@@ -10,7 +10,6 @@
 #include <QString>
 
 namespace gd {
-wstring toWString( QString const & );
 wstring removeTrailingZero( wstring const & v );
 wstring removeTrailingZero( QString const & in );
 wstring normalize( wstring const & );

@@ -334,7 +334,7 @@ void ProgramWordSearchRequest::instanceFinished( QByteArray output, QString erro
     QStringList result = QString::fromUtf8( output ).split( "\n", Qt::SkipEmptyParts );
 
     for ( const auto & x : result ) {
-      matches.push_back( Dictionary::WordMatch( gd::toWString( x ) ) );
+      matches.push_back( Dictionary::WordMatch( x.toStdU32String() ) );
     }
 
     if ( !error.isEmpty() ) {

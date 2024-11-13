@@ -409,7 +409,7 @@ void addDir( QDir const & baseDir,
       const uint32_t articleOffset = chunks.startNewBlock();
       chunks.addToBlock( fileName.c_str(), fileName.size() + 1 );
 
-      wstring name = gd::toWString( i->fileName() );
+      wstring name = i->fileName().toStdU32String();
 
       const wstring::size_type pos = name.rfind( L'.' );
 

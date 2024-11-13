@@ -424,7 +424,7 @@ public:
       if ( countn ) {
         QMutexLocker _( &dataMutex );
         for ( int x = 0; x < countn; x++ ) {
-          matches.emplace_back( gd::toWString( matchesList.at( x ) ) );
+          matches.emplace_back( matchesList.at( x ).toStdU32String() );
         }
       }
       finish();

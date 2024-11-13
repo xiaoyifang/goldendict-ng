@@ -540,7 +540,7 @@ void DslDictionary::loadArticle( uint32_t address,
 
     if ( !articleBody ) {
       //      throw exCantReadFile( getDictionaryFilenames()[ 0 ] );
-      articleData = U"\n\r\t" + gd::toWString( QString( "DICTZIP error: " ) + dict_error_str( dz ) );
+      articleData = U"\n\r\tDICTZIP error: " + QString( dict_error_str( dz ) ).toStdU32String();
     }
     else {
       try {
@@ -966,7 +966,7 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
         if ( n >= 0 ) {
           int n2 = attr.indexOf( '\"', n + 6 );
           if ( n2 > 0 ) {
-            quint32 id = dslLanguageToId( gd::toWString( attr.mid( n + 6, n2 - n - 6 ) ) );
+            quint32 id = dslLanguageToId( attr.mid( n + 6, n2 - n - 6 ).toStdU32String() );
             langcode   = LangCoder::intToCode2( id ).toStdString();
           }
         }
@@ -1089,7 +1089,7 @@ QString const & DslDictionary::getDescription()
       for ( ;; ) {
         data.clear();
         langStr = str.mid( 10 ).replace( '\"', ' ' ).trimmed();
-        annLang = LangCoder::findIdForLanguage( gd::toWString( langStr ) );
+        annLang = LangCoder::findIdForLanguage( langStr.toStdU32String() );
         do {
           str = annStream.readLine();
           if ( str.left( 10 ).compare( "#LANGUAGE " ) == 0 ) {
@@ -1391,7 +1391,7 @@ void DslDictionary::getArticleText( uint32_t articleAddress, QString & headword,
 
     if ( haveInsidedCards ) {
       // Use base DSL parser for articles with insided cards
-      ArticleDom dom( gd::toWString( text ), getName(), articleHeadword );
+      ArticleDom dom( text.toStdU32String(), getName(), articleHeadword );
       text = QString::fromStdU32String( dom.root.renderAsText( true ) );
     }
     else {

@@ -521,7 +521,7 @@ void ArticleRequest::altSearchFinished()
 
     vector< wstring > altsVector( alts.begin(), alts.end() );
 
-    wstring wordStd = gd::toWString( word );
+    wstring wordStd = word.toStdU32String();
 
     if ( activeDicts.size() <= 1 ) {
       articleSizeLimit = -1; // Don't collapse article if only one dictionary presented
