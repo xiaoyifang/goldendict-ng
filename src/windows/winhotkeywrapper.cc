@@ -4,6 +4,9 @@
   #include <windows.h>
   #include <QWidget>
 
+/// Implementation is pretty much using RegisterHotKey & UnregisterHotKey
+/// https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-registerhotkey
+
 void HotkeyWrapper::init()
 {
   hwnd = (HWND)( ( static_cast< QWidget * >( this->parent() ) )->winId() );
