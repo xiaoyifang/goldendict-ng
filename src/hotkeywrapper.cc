@@ -332,8 +332,9 @@ bool HotkeyWrapper::winEvent( MSG * message, qintptr * result )
 quint32 HotkeyWrapper::nativeKey( int key )
 {
   // Qt's 0-9 & A-Z overlaps with Windows's VK
-  if ( key >= Qt::Key_0 && key <= Qt::Key_9 || key >= Qt::Key_A && key <= Qt::Key_Z )
+  if ( key >= Qt::Key_0 && key <= Qt::Key_9 || key >= Qt::Key_A && key <= Qt::Key_Z ) {
     return key;
+  }
 
   switch ( key ) {
     case Qt::Key_Space:
