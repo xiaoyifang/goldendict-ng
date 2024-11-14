@@ -46,3 +46,5 @@ will disable the current dictionary's full-text search.
 You can check the full-text search status on each dictionary's info dialog.
 
 ![](img/dictionary-info-fullindex.png)
+
+Note that it is possible to enable full text for a single dictionary by disabling full-text search in the Preferences dialog, and set `fts=true` for that dictionary.

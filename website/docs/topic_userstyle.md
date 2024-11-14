@@ -4,6 +4,7 @@ By creating `article-style.css` or `article-script.js` in GoldenDict's configura
 .    <- GD's configuration folder
 ├── config
 ├── article-style.css
+├── article-style-print.css (affecting styles when printing)
 ├── article-script.js
 └── qt-style.css
 ```
