@@ -1,5 +1,5 @@
 #include <QtGlobal>
-#if defined( Q_OS_WIN )
+#ifdef Q_OS_WIN
   #include "hotkeywrapper.hh"
   #include <windows.h>
   #include <QWidget>
@@ -87,7 +87,9 @@ bool QHotkeyApplication::nativeEventFilter( const QByteArray & /*eventType*/, vo
 }
 
 
-/// Ref: https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
+/// References:
+/// https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
+/// https://doc.qt.io/qt-6/qt.html#Key-enum
 quint32 HotkeyWrapper::nativeKey( int key )
 {
   // Qt's 0-9 & A-Z overlaps with Windows's VK
