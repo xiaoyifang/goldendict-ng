@@ -102,8 +102,7 @@ string convert( string const & in,
           }
           break;
         }
-        // Fall-through
-
+      [[fallthrough]]
       default:
         inConverted.push_back( i );
         afterEol = false;

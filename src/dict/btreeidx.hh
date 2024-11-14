@@ -45,9 +45,9 @@ DEF_EX( exCorruptedChainData, "Corrupted chain data in the leaf of a btree encou
 struct WordArticleLink
 {
   string word, prefix; // in utf8
-  uint32_t articleOffset;
+  uint32_t articleOffset = 0;
 
-  WordArticleLink() {}
+  WordArticleLink() = default;
 
   WordArticleLink( string const & word_, uint32_t articleOffset_, string const & prefix_ = string() ):
     word( word_ ),

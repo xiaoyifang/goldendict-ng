@@ -492,7 +492,7 @@ struct WebSite
   QString id, name, url;
   bool enabled;
   QString iconFilename;
-  bool inside_iframe;
+  bool inside_iframe = false;
 
   WebSite():
     enabled( false )
@@ -698,7 +698,7 @@ struct Transliteration
 
 struct Lingua
 {
-  bool enable;
+  bool enable = false;
   QString languageCodes;
 
   bool operator==( Lingua const & other ) const
@@ -737,13 +737,15 @@ struct Forvo
 struct Program
 {
   bool enabled;
+  // NOTE: the value of this enum is used for config
   enum Type {
-    Audio,
-    PlainText,
-    Html,
-    PrefixMatch,
-    MaxTypeValue
-  } type;
+    Unknown      = -1,
+    Audio        = 0,
+    PlainText    = 1,
+    Html         = 2,
+    PrefixMatch  = 3,
+    MaxTypeValue = 4
+  } type = Unknown;
   QString id, name, commandLine;
   QString iconFilename;
 
@@ -892,7 +894,7 @@ struct Class
   QString articleSavePath;   // Path to save articles
 
   bool pinPopupWindow;         // Last pin status
-  bool popupWindowAlwaysOnTop; // Last status of pinned popup window
+  bool popupWindowAlwaysOnTop = false; // Last status of pinned popup window
 
   QByteArray mainWindowState;    // Binary state saved by QMainWindow
   QByteArray mainWindowGeometry; // Geometry saved by QMainWindow
@@ -929,7 +931,7 @@ struct Class
   Group const * getGroup( unsigned id ) const;
   //disable tts dictionary. does not need to save to persistent file
   bool notts = false;
-  bool resetState;
+  bool resetState = false;
 };
 
 /// Configuration-specific events. Some parts of the program need to react

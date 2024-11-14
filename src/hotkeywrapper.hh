@@ -47,10 +47,11 @@ struct HotkeyStruct
   HotkeyStruct() = default;
   HotkeyStruct( quint32 key, quint32 key2, quint32 modifier, int handle, int id );
 
-  quint32 key, key2;
-  quint32 modifier;
-  int handle;
-  int id;
+  quint32 key      = 0;
+  quint32 key2     = 0;
+  quint32 modifier = 0;
+  int handle       = 0;
+  int id           = 0;
 #ifdef Q_OS_MAC
   EventHotKeyRef hkRef  = 0;
   EventHotKeyRef hkRef2 = 0;
