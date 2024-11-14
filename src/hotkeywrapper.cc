@@ -1,5 +1,8 @@
 #include "hotkeywrapper.hh"
-
+#include "gddebug.hh"
+#include <QTimer>
+#include <QSessionManager>
+#include <QWidget>
 #ifdef Q_OS_WIN
   #include <windows.h>
 #endif
