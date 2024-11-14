@@ -103,6 +103,7 @@ private:
 #endif
 
 #ifdef Q_OS_MAC
+
 public:
   void activated( int hkId );
 

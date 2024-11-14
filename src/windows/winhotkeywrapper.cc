@@ -1,5 +1,5 @@
 #include <QtGlobal>
-#if defined(Q_OS_WIN)
+#if defined( Q_OS_WIN )
   #include "hotkeywrapper.hh"
   #include <windows.h>
   #include <QWidget>
