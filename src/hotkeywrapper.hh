@@ -37,7 +37,6 @@
 
 struct HotkeyStruct
 {
-  HotkeyStruct() {}
   HotkeyStruct( quint32 key, quint32 key2, quint32 modifier, int handle, int id );
 
   quint32 key, key2;
@@ -45,7 +44,8 @@ struct HotkeyStruct
   int handle;
   int id;
 #ifdef Q_OS_MAC
-  EventHotKeyRef hkRef, hkRef2;
+  EventHotKeyRef hkRef  = 0;
+  EventHotKeyRef hkRef2 = 0;
 #endif
 };
 
@@ -98,16 +98,11 @@ private:
   HotkeyStruct state2waiter;
 
 #ifdef Q_OS_WIN32
-
-  #if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
-  virtual bool winEvent( MSG * message, long * result );
-  #else
   virtual bool winEvent( MSG * message, qintptr * result );
-  #endif
   HWND hwnd;
+#endif
 
-#elif defined( Q_OS_MAC )
-
+#ifdef Q_OS_MAC
 public:
   void activated( int hkId );
 
@@ -117,9 +112,9 @@ private:
   static EventHandlerUPP hotKeyFunction;
   quint32 keyC;
   EventHandlerRef handlerRef;
+#endif
 
-#else
-
+#ifdef HAVE_X11
   static void recordEventCallback( XPointer, XRecordInterceptData * );
 
   /// Called by recordEventCallback()
@@ -205,16 +200,10 @@ protected:
   void registerWrapper( HotkeyWrapper * wrapper );
   void unregisterWrapper( HotkeyWrapper * wrapper );
 
-#ifdef Q_OS_WIN32
-
-  #if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
-  virtual bool nativeEventFilter( const QByteArray & eventType, void * message, long * result );
-  #else
+#ifdef Q_OS_WIN
   virtual bool nativeEventFilter( const QByteArray & eventType, void * message, qintptr * result );
-  #endif
+#endif
 
-protected:
-#endif // Q_OS_WIN32
   QList< HotkeyWrapper * > hotkeyWrappers;
 };
 
