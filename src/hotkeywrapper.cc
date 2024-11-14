@@ -480,6 +480,8 @@ quint32 HotkeyWrapper::nativeKey( int key )
       return 0x39;
     case Qt::Key_Underscore:
       return VK_OEM_MINUS;
+    case Qt::Key_Meta:
+      return VK_LWIN;
     default:;
   }
 
