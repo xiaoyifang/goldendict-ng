@@ -541,11 +541,7 @@ bool EpwingBook::setSubBook( int book_nom )
   QFile f( fileName );
   if ( f.open( QFile::ReadOnly | QFile::Text ) ) {
     QTextStream ts( &f );
-  #if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
-    ts.setCodec( "UTF-8" );
-  #else
     ts.setEncoding( QStringConverter::Utf8 );
-  #endif
 
     QString line = ts.readLine();
     while ( !line.isEmpty() ) {

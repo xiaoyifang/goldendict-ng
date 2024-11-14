@@ -31,15 +31,9 @@
 #include <map>
 #include <QApplication>
 #include <QRandomGenerator>
-
-#if ( QT_VERSION >= QT_VERSION_CHECK( 5, 0, 0 ) && QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
-  #include <QWebEngineContextMenuData>
-#endif
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-  #include <QWebEngineContextMenuRequest>
-  #include <QWebEngineFindTextResult>
-  #include <utility>
-#endif
+#include <QWebEngineContextMenuRequest>
+#include <QWebEngineFindTextResult>
+#include <utility>
 #ifdef Q_OS_WIN32
   #include <windows.h>
   #include <QPainter>
@@ -214,15 +208,7 @@ ArticleView::ArticleView( QWidget * parent,
 
   QWebEngineSettings * settings = webview->settings();
   settings->setUnknownUrlSchemePolicy( QWebEngineSettings::UnknownUrlSchemePolicy::DisallowUnknownUrlSchemes );
-#if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
-  settings->defaultSettings()->setAttribute( QWebEngineSettings::LocalContentCanAccessRemoteUrls, true );
-  settings->defaultSettings()->setAttribute( QWebEngineSettings::LocalContentCanAccessFileUrls, true );
-  settings->defaultSettings()->setAttribute( QWebEngineSettings::ErrorPageEnabled, false );
-  settings->defaultSettings()->setAttribute( QWebEngineSettings::LinksIncludedInFocusChain, false );
-  settings->defaultSettings()->setAttribute( QWebEngineSettings::PlaybackRequiresUserGesture, false );
-  settings->defaultSettings()->setAttribute( QWebEngineSettings::JavascriptCanAccessClipboard, true );
-  settings->defaultSettings()->setAttribute( QWebEngineSettings::PrintElementBackgrounds, false );
-#else
+
   settings->setAttribute( QWebEngineSettings::LocalContentCanAccessRemoteUrls, true );
   settings->setAttribute( QWebEngineSettings::LocalContentCanAccessFileUrls, true );
   settings->setAttribute( QWebEngineSettings::ErrorPageEnabled, false );
@@ -230,7 +216,6 @@ ArticleView::ArticleView( QWidget * parent,
   settings->setAttribute( QWebEngineSettings::PlaybackRequiresUserGesture, false );
   settings->setAttribute( QWebEngineSettings::JavascriptCanAccessClipboard, true );
   settings->setAttribute( QWebEngineSettings::PrintElementBackgrounds, false );
-#endif
 
   auto html = articleNetMgr.getHtml( ResourceType::UNTITLE );
 
@@ -1329,12 +1314,10 @@ void ArticleView::print( QPrinter * printer ) const
     result = success;
     loop.quit();
   };
-#if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
-  webview->page()->print( printer, std::move( printPreview ) );
-#else
+
   connect( webview, &QWebEngineView::printFinished, &loop, std::move( printPreview ) );
   webview->print( printer );
-#endif
+
   loop.exec();
   if ( !result ) {
     qDebug() << "print failed";
@@ -1363,11 +1346,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
   QAction * saveSoundAction           = nullptr;
   QAction * saveBookmark              = nullptr;
 
-#if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
-  const QWebEngineContextMenuData * menuData = &( r->contextMenuData() );
-#else
   QWebEngineContextMenuRequest * menuData = webview->lastContextMenuRequest();
-#endif
   QUrl targetUrl( menuData->linkUrl() );
   Contexts contexts;
 
@@ -1392,12 +1371,8 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
   }
 
   QUrl imageUrl;
-#if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
-  if ( !popupView && menuData->mediaType() == QWebEngineContextMenuData::MediaTypeImage )
-#else
-  if ( !popupView && menuData->mediaType() == QWebEngineContextMenuRequest::MediaType::MediaTypeImage )
-#endif
-  {
+
+  if ( !popupView && menuData->mediaType() == QWebEngineContextMenuRequest::MediaType::MediaTypeImage ) {
     imageUrl = menuData->mediaUrl();
     if ( !imageUrl.isEmpty() ) {
       menu.addAction( webview->pageAction( QWebEnginePage::CopyImageToClipboard ) );
@@ -1955,19 +1930,12 @@ void ArticleView::findText( QString & text,
                             const QWebEnginePage::FindFlags & f,
                             const std::function< void( bool match ) > & callback )
 {
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
   webview->findText( text, f, [ callback ]( const QWebEngineFindTextResult & result ) {
     auto r = result.numberOfMatches() > 0;
     if ( callback ) {
       callback( r );
     }
   } );
-#else
-  webview->findText( text, f, [ callback ]( bool result ) {
-    if ( callback )
-      callback( result );
-  } );
-#endif
 }
 
 bool ArticleView::closeSearch()
@@ -2099,7 +2067,6 @@ void ArticleView::performFtsFindOperation( bool backwards )
   QWebEnginePage::FindFlags flags( 0 );
 
   if ( backwards ) {
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
     webview->findText( firstAvailableText,
                        flags | QWebEnginePage::FindBackward,
                        [ this ]( const QWebEngineFindTextResult & result ) {
@@ -2114,16 +2081,8 @@ void ArticleView::performFtsFindOperation( bool backwards )
                          ftsSearchPanel->statusLabel->setText(
                            searchStatusMessage( result.activeMatch(), result.numberOfMatches() ) );
                        } );
-#else
-    webview->findText( firstAvailableText, flags | QWebEnginePage::FindBackward, [ this ]( bool res ) {
-      ftsSearchPanel->previous->setEnabled( res );
-      if ( !ftsSearchPanel->next->isEnabled() )
-        ftsSearchPanel->next->setEnabled( res );
-    } );
-#endif
   }
   else {
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
     webview->findText( firstAvailableText, flags, [ this ]( const QWebEngineFindTextResult & result ) {
       if ( result.numberOfMatches() == 0 ) {
         return;
@@ -2135,15 +2094,6 @@ void ArticleView::performFtsFindOperation( bool backwards )
 
       ftsSearchPanel->statusLabel->setText( searchStatusMessage( result.activeMatch(), result.numberOfMatches() ) );
     } );
-#else
-
-    webview->findText( firstAvailableText, flags, [ this ]( bool res ) {
-      ftsSearchPanel->next->setEnabled( res );
-      if ( !ftsSearchPanel->previous->isEnabled() )
-        ftsSearchPanel->previous->setEnabled( res );
-    } );
-
-#endif
   }
 }
 

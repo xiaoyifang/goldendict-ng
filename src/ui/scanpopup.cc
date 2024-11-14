@@ -8,11 +8,6 @@
 #include <QBitmap>
 #include <QMenu>
 #include <QMouseEvent>
-#if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
-  #include <QDesktopWidget>
-  #include <QScreen>
-  #include <QStringList>
-#endif
 #include "gddebug.hh"
 #include "gestures.hh"
 
@@ -846,11 +841,7 @@ void ScanPopup::leaveEvent( QEvent * event )
   }
 }
 
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
 void ScanPopup::enterEvent( QEnterEvent * event )
-#else
-void ScanPopup::enterEvent( QEvent * event )
-#endif
 {
   QMainWindow::enterEvent( event );
 
