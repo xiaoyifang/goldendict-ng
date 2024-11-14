@@ -16,12 +16,7 @@
 #endif
 
 #include <QString>
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-  #include <QtCore5Compat/QTextCodec>
-#else
-  #include <QTextCodec>
-#endif
-
+#include <QtCore5Compat/QTextCodec>
 
 #ifdef _MSC_VER
   #include <stub_msvc.h>

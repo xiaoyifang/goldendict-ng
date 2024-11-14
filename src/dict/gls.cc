@@ -32,11 +32,8 @@
 #include <QBuffer>
 
 #include <QRegularExpression>
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-  #include <QtCore5Compat/QTextCodec>
-#else
-  #include <QTextCodec>
-#endif
+#include <QtCore5Compat/QTextCodec>
+
 #include <string>
 #include <list>
 #include <map>

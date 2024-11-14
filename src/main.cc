@@ -307,15 +307,7 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
     // Handle cases where we get encoded URL
     if ( result->word.startsWith( QStringLiteral( "xn--" ) ) ) {
       // For `kde-open` or `gio` or others, URL are encoded into ACE or Punycode
-  #if QT_VERSION >= QT_VERSION_CHECK( 6, 3, 0 )
       result->word = QUrl::fromAce( result->word.toLatin1(), QUrl::IgnoreIDNWhitelist );
-  #else
-      // Old Qt's fromAce only applies to whitelisted domains, so we add .com to bypass this restriction :)
-      // https://bugreports.qt.io/browse/QTBUG-29080
-      result->word.append( QStringLiteral( ".com" ) );
-      result->word = QUrl::fromAce( result->word.toLatin1() );
-      result->word.chop( 4 );
-  #endif
     }
     else if ( result->word.startsWith( QStringLiteral( "%" ) ) ) {
       // For Firefox or other browsers where URL are percent encoded
@@ -359,10 +351,6 @@ int main( int argc, char ** argv )
 
 
   //high dpi screen support
-#if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
-  QApplication::setAttribute( Qt::AA_EnableHighDpiScaling );
-  QApplication::setAttribute( Qt::AA_UseHighDpiPixmaps );
-#endif
   qputenv( "QT_ENABLE_HIGHDPI_SCALING", "1" );
   QApplication::setHighDpiScaleFactorRoundingPolicy( Qt::HighDpiScaleFactorRoundingPolicy::PassThrough );
 

@@ -760,11 +760,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
 
 #if defined( Q_OS_LINUX )
-  #if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
   defaultInterfaceStyle = QApplication::style()->name();
-  #else
-  defaultInterfaceStyle = QApplication::style()->objectName();
-  #endif
 #elif defined( Q_OS_MAC )
   defaultInterfaceStyle = "Fusion";
 #endif

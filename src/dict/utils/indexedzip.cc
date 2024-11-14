@@ -8,11 +8,8 @@
 #include "utf8.hh"
 #include "iconv.hh"
 #include "wstring_qt.hh"
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-  #include <QtCore5Compat/QTextCodec>
-#else
-  #include <QTextCodec>
-#endif
+#include <QtCore5Compat/QTextCodec>
+
 #include <QMutexLocker>
 
 using namespace BtreeIndexing;
