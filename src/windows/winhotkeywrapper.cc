@@ -2,7 +2,90 @@
 #ifdef Q_OS_WIN
   #include "hotkeywrapper.hh"
   #include <windows.h>
-#include <QWidget>
+  #include <QWidget>
+
+void HotkeyWrapper::init()
+{
+  hwnd = (HWND)( ( static_cast< QWidget * >( this->parent() ) )->winId() );
+}
+
+bool HotkeyWrapper::setGlobalKey( QKeySequence const & seq, int handle )
+{
+  Config::HotKey hk( seq );
+  return setGlobalKey( hk.key1, hk.key2, hk.modifiers, handle );
+}
+
+bool HotkeyWrapper::setGlobalKey( int key, int key2, Qt::KeyboardModifiers modifier, int handle )
+{
+  if ( !key )
+    return false; // We don't monitor empty combinations
+
+  static int id = 0;
+  if ( id > 0xBFFF - 1 )
+    id = 0;
+
+  quint32 mod = 0;
+  if ( modifier & Qt::CTRL )
+    mod |= MOD_CONTROL;
+  if ( modifier & Qt::ALT )
+    mod |= MOD_ALT;
+  if ( modifier & Qt::SHIFT )
+    mod |= MOD_SHIFT;
+  if ( modifier & Qt::META )
+    mod |= MOD_WIN;
+
+  quint32 vk  = nativeKey( key );
+  quint32 vk2 = key2 ? nativeKey( key2 ) : 0;
+
+  hotkeys.append( HotkeyStruct( vk, vk2, mod, handle, id ) );
+
+  if ( !RegisterHotKey( hwnd, id++, mod, vk ) )
+    return false;
+
+  if ( key2 && key2 != key )
+    return RegisterHotKey( hwnd, id++, mod, vk2 );
+
+  return true;
+}
+
+
+bool HotkeyWrapper::winEvent( MSG * message, qintptr * result )
+{
+  Q_UNUSED(result);
+  if ( message->message == WM_HOTKEY )
+    return checkState( ( message->lParam >> 16 ), ( message->lParam & 0xffff ) );
+
+  return false;
+}
+
+void HotkeyWrapper::unregister()
+{
+  for ( int i = 0; i < hotkeys.count(); i++ ) {
+    HotkeyStruct const & hk = hotkeys.at( i );
+
+    UnregisterHotKey( hwnd, hk.id );
+
+    if ( hk.key2 && hk.key2 != hk.key )
+      UnregisterHotKey( hwnd, hk.id + 1 );
+  }
+
+  ( static_cast< QHotkeyApplication * >( qApp ) )->unregisterWrapper( this );
+}
+
+bool QHotkeyApplication::nativeEventFilter( const QByteArray & /*eventType*/, void * message, qintptr * result )
+{
+  MSG * msg = reinterpret_cast< MSG * >( message );
+
+  if ( msg->message == WM_HOTKEY ) {
+    for ( int i = 0; i < hotkeyWrappers.size(); i++ ) {
+      if ( hotkeyWrappers.at( i )->winEvent( msg, result ) )
+        return true;
+    }
+  }
+
+  return false;
+}
+
 
 /// Ref: https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
 quint32 HotkeyWrapper::nativeKey( int key )
@@ -163,88 +246,6 @@ quint32 HotkeyWrapper::nativeKey( int key )
   }
 
   return key;
-}
-
-void HotkeyWrapper::init()
-{
-  hwnd = (HWND)( ( static_cast< QWidget * >( this->parent() ) )->winId() );
-}
-
-bool HotkeyWrapper::setGlobalKey( QKeySequence const & seq, int handle )
-{
-  Config::HotKey hk( seq );
-  return setGlobalKey( hk.key1, hk.key2, hk.modifiers, handle );
-}
-
-bool HotkeyWrapper::setGlobalKey( int key, int key2, Qt::KeyboardModifiers modifier, int handle )
-{
-  if ( !key )
-    return false; // We don't monitor empty combinations
-
-  static int id = 0;
-  if ( id > 0xBFFF - 1 )
-    id = 0;
-
-  quint32 mod = 0;
-  if ( modifier & Qt::CTRL )
-    mod |= MOD_CONTROL;
-  if ( modifier & Qt::ALT )
-    mod |= MOD_ALT;
-  if ( modifier & Qt::SHIFT )
-    mod |= MOD_SHIFT;
-  if ( modifier & Qt::META )
-    mod |= MOD_WIN;
-
-  quint32 vk  = nativeKey( key );
-  quint32 vk2 = key2 ? nativeKey( key2 ) : 0;
-
-  hotkeys.append( HotkeyStruct( vk, vk2, mod, handle, id ) );
-
-  if ( !RegisterHotKey( hwnd, id++, mod, vk ) )
-    return false;
-
-  if ( key2 && key2 != key )
-    return RegisterHotKey( hwnd, id++, mod, vk2 );
-
-  return true;
-}
-
-
-bool HotkeyWrapper::winEvent( MSG * message, qintptr * result )
-{
-  Q_UNUSED(result);
-  if ( message->message == WM_HOTKEY )
-    return checkState( ( message->lParam >> 16 ), ( message->lParam & 0xffff ) );
-
-  return false;
-}
-
-void HotkeyWrapper::unregister()
-{
-  for ( int i = 0; i < hotkeys.count(); i++ ) {
-    HotkeyStruct const & hk = hotkeys.at( i );
-
-    UnregisterHotKey( hwnd, hk.id );
-
-    if ( hk.key2 && hk.key2 != hk.key )
-      UnregisterHotKey( hwnd, hk.id + 1 );
-  }
-
-  ( static_cast< QHotkeyApplication * >( qApp ) )->unregisterWrapper( this );
-}
-
-bool QHotkeyApplication::nativeEventFilter( const QByteArray & /*eventType*/, void * message, qintptr * result )
-{
-  MSG * msg = reinterpret_cast< MSG * >( message );
-
-  if ( msg->message == WM_HOTKEY ) {
-    for ( int i = 0; i < hotkeyWrappers.size(); i++ ) {
-      if ( hotkeyWrappers.at( i )->winEvent( msg, result ) )
-        return true;
-    }
-  }
-
-  return false;
 }
 
 #endif
