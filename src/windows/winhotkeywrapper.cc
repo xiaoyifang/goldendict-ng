@@ -1,4 +1,4 @@
-#include <QtSystemDetection>
+#include <QtGlobal>
 #ifdef Q_OS_WIN
   #include "hotkeywrapper.hh"
   #include <windows.h>
