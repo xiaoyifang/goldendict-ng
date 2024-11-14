@@ -51,7 +51,7 @@ bool HotkeyWrapper::setGlobalKey( int key, int key2, Qt::KeyboardModifiers modif
 
 bool HotkeyWrapper::winEvent( MSG * message, qintptr * result )
 {
-  Q_UNUSED(result);
+  Q_UNUSED( result );
   if ( message->message == WM_HOTKEY )
     return checkState( ( message->lParam >> 16 ), ( message->lParam & 0xffff ) );
 
