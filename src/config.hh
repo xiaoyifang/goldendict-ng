@@ -739,13 +739,14 @@ struct Program
   bool enabled;
   // NOTE: the value of this enum is used for config
   enum Type {
-    Unknown      = -1,
+    Invalid      = -1, // Init value
     Audio        = 0,
     PlainText    = 1,
     Html         = 2,
     PrefixMatch  = 3,
     MaxTypeValue = 4
-  } type = Unknown;
+  };
+  Type type = Invalid;
   QString id, name, commandLine;
   QString iconFilename;
 
