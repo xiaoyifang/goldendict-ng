@@ -44,6 +44,7 @@
 
 struct HotkeyStruct
 {
+  HotkeyStruct() = default;
   HotkeyStruct( quint32 key, quint32 key2, quint32 modifier, int handle, int id );
 
   quint32 key, key2;
