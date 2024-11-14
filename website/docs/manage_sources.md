@@ -1,4 +1,4 @@
-Dictionaries management dialog can be opened via menu `Edit` -> `Dictionaries`.
+Dictionary management dialog can be opened via menu `Edit` -> `Dictionaries`.
 
 To use local dictionaries, add them via `Sources` -> `Files`.
 
@@ -34,7 +34,7 @@ Morphology dictionary uses Hunspell's morphological analysis to obtain word's va
 
 You can specify a path that includes Hunspell format data files (`.aff` + `.dic`). GoldenDict scan this folder and create a list of available dictionaries.
 
-One possible source of Hunspell dictionaries is Libreoffice's [dictionaries](https://github.com/LibreOffice/dictionaries).
+One possible source of Hunspell dictionaries is LibreOffice's [dictionaries](https://github.com/LibreOffice/dictionaries).
 
 The detailed document about the affix file (`.aff`) and the dict file (`.dic`) can be found at [hunspell.5](https://man.archlinux.org/man/hunspell.5.en).
 

@@ -21,6 +21,7 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+  - pymdownx.keys
 
 nav:
   - Getting started: index.md
@@ -33,7 +34,7 @@ nav:
       - Popup Window: ui_popup.md
       - Headwords Dialog: ui_headwords.md
       - Full Text Search: ui_fulltextsearch.md
-      - ToolBar & DictBar: ui_toolbar.md
+      - Tool & Dictionary Bar: ui_toolbar.md
       - Favorites: ui_favorites.md
       - Shortcuts: ui_shortcuts.md
   - Advanced Usages:
