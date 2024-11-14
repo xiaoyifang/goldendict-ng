@@ -1,8 +1,3 @@
-#ifdef __WIN32 // Q_OS_WIN32 isn't available at this point
-  #define _WIN32_WINNT 0x0430
-  #include <windows.h>
-#endif
-
 #include "hotkeywrapper.hh"
 #include "gddebug.hh"
 
@@ -12,6 +7,7 @@
 
 #ifdef Q_OS_WIN
   #include "mainwindow.hh"
+  #include <windows.h>
 #endif
 
 //////////////////////////////////////////////////////////////////////////
@@ -332,12 +328,11 @@ bool HotkeyWrapper::winEvent( MSG * message, qintptr * result )
   return false;
 }
 
+/// Ref: https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes
 quint32 HotkeyWrapper::nativeKey( int key )
 {
-  if ( key >= Qt::Key_0 && key <= Qt::Key_9 )
-    return VK_NUMPAD0 + ( key - Qt::Key_0 );
-
-  if ( key >= Qt::Key_A && key <= Qt::Key_Z )
+  // Qt's 0-1 & A-Z overlaps with Windows's VK
+  if ( key >= Qt::Key_0 && key <= Qt::Key_9 || key >= Qt::Key_A && key <= Qt::Key_Z )
     return key;
 
   switch ( key ) {
