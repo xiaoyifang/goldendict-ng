@@ -2,10 +2,10 @@
 
 /// @file
 /// Handling global hotkeys and some tricks
-/// Part of this header are implmented in 
+/// Part of this header are implmented in
 /// + `winhotkeywrapper.cc`
 /// + `machotkeywrapper.hh`
-/// 
+///
 
 #include <QGuiApplication>
 #include <QThread>
