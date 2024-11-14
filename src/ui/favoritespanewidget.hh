@@ -84,13 +84,13 @@ private slots:
 private:
   virtual bool eventFilter( QObject *, QEvent * );
 
-  Config::Class * m_cfg;
-  QTreeView * m_favoritesTree;
-  QMenu * m_favoritesMenu;
-  QAction * m_deleteSelectedAction;
-  QAction * m_separator;
-  QAction * m_copySelectedToClipboard;
-  QAction * m_addFolder;
+  Config::Class * m_cfg               = nullptr;
+  QTreeView * m_favoritesTree         = nullptr;
+  QMenu * m_favoritesMenu             = nullptr;
+  QAction * m_deleteSelectedAction    = nullptr;
+  QAction * m_separator               = nullptr;
+  QAction * m_copySelectedToClipboard = nullptr;
+  QAction * m_addFolder               = nullptr;
 
   QWidget favoritesPaneTitleBar;
   QHBoxLayout favoritesPaneTitleBarLayout;

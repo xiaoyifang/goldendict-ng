@@ -341,8 +341,11 @@ int main( int argc, char ** argv )
   // attach the new console to this application's process
   if ( AttachConsole( ATTACH_PARENT_PROCESS ) ) {
     // reopen the std I/O streams to redirect I/O to the new console
-    freopen( "CON", "w", stdout );
-    freopen( "CON", "w", stderr );
+    auto ret1 = freopen( "CON", "w", stdout );
+    auto ret2 = freopen( "CON", "w", stderr );
+    if ( ret1 == nullptr || ret2 == nullptr ) {
+      qDebug() << "Attaching console stdout or stderr failed";
+    }
   }
 
   qputenv( "QT_QPA_PLATFORM", "windows:darkmode=1" );
