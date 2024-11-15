@@ -95,7 +95,7 @@ ProgramsDictionary::getArticle( wstring const & word, vector< wstring > const &,
 
       string ref = string( "\"" ) + url.toEncoded().data() + "\"";
 
-      result += addAudioLink( ref, getId() );
+      result += addAudioLink( url.toEncoded(), getId() );
 
       result += "<td><a href=" + ref + R"(><img src="qrc:///icons/playsound.png" border="0" alt="Play"/></a></td>)";
       result += "<td><a href=" + ref + ">" + Html::escape( wordUtf8 ) + "</a></td>";
@@ -334,7 +334,7 @@ void ProgramWordSearchRequest::instanceFinished( QByteArray output, QString erro
     QStringList result = QString::fromUtf8( output ).split( "\n", Qt::SkipEmptyParts );
 
     for ( const auto & x : result ) {
-      matches.push_back( Dictionary::WordMatch( gd::toWString( x ) ) );
+      matches.push_back( Dictionary::WordMatch( x.toStdU32String() ) );
     }
 
     if ( !error.isEmpty() ) {

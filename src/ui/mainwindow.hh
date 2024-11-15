@@ -1,8 +1,7 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __MAINWINDOW_HH_INCLUDED__
-#define __MAINWINDOW_HH_INCLUDED__
+#pragma once
 
 #include <QMainWindow>
 #include <QThread>
@@ -15,7 +14,7 @@
 #include "config.hh"
 #include "dict/dictionary.hh"
 #include "article_netmgr.hh"
-#include "audioplayerfactory.hh"
+#include "audio/audioplayerfactory.hh"
 #include "instances.hh"
 #include "article_maker.hh"
 #include "scanpopup.hh"
@@ -29,7 +28,6 @@
 #include "dictheadwords.hh"
 #include "fulltextsearch.hh"
 #include "base_type.hh"
-
 #include "hotkeywrapper.hh"
 #include "resourceschemehandler.hh"
 #include "iframeschemehandler.hh"
@@ -40,6 +38,8 @@
 #if defined( Q_OS_MAC )
   #include "macos/gd_clipboard.hh"
 #endif
+//must place the qactiongroup after fixx11h.h, None in QActionGroup conflict with X.h's macro None.
+#include <QActionGroup>
 
 using std::string;
 using std::vector;
@@ -67,7 +67,6 @@ public slots:
   void messageFromAnotherInstanceReceived( QString const & );
   void showStatusBarMessage( QString const &, int, QPixmap const & );
   void wordReceived( QString const & );
-  void headwordReceived( QString const &, QString const & );
   void headwordFromFavorites( QString const &, QString const & );
   void quitApp();
 
@@ -106,9 +105,12 @@ private:
   QFont wordListDefaultFont, translateLineDefaultFont, groupListDefaultFont;
 
   QAction escAction, focusTranslateLineAction, addTabAction, closeCurrentTabAction, closeAllTabAction,
-    closeRestTabAction, switchToNextTabAction, switchToPrevTabAction, showDictBarNamesAction,
-    useSmallIconsInToolbarsAction, useLargeIconsInToolbarsAction, toggleMenuBarAction, focusHeadwordsDlgAction,
-    focusArticleViewAction, addAllTabToFavoritesAction;
+    closeRestTabAction, switchToNextTabAction, switchToPrevTabAction, showDictBarNamesAction, toggleMenuBarAction,
+    focusHeadwordsDlgAction, focusArticleViewAction, addAllTabToFavoritesAction;
+
+  QAction useSmallIconsInToolbarsAction, useLargeIconsInToolbarsAction, useNormalIconsInToolbarsAction;
+
+  QActionGroup * smallLargeIconGroup = new QActionGroup( this );
 
   QAction stopAudioAction;
   QToolBar * navToolbar;
@@ -186,7 +188,7 @@ private:
   /// Applies Qt stylesheets, use Windows dark palette etc....
   void updateAppearances( const QString & addonStyle,
                           const QString & displayStyle,
-                          const bool & darkMode
+                          Config::Dark darkMode
 #if !defined( Q_OS_WIN )
                           ,
                           const QString & interfaceStyle
@@ -223,9 +225,8 @@ private:
   /// group, or to all dictionaries if there are no groups.
   vector< sptr< Dictionary::Class > > const & getActiveDicts();
 
-  /// Brings the main window to front if it's not currently, or hides it
-  /// otherwise. The hiding part is omitted if onlyShow is true.
-  void toggleMainWindow( bool onlyShow = false );
+  /// @param ensureShow only ensure the window will be shown and no "toggling"
+  void toggleMainWindow( bool ensureShow );
 
   /// Creates hotkeyWrapper and hooks the currently set keys for it
   void installHotKeys();
@@ -341,7 +342,7 @@ private slots:
 
   /// If editDictionaryGroup is specified, the dialog positions on that group
   /// initially.
-  void editDictionaries( unsigned editDictionaryGroup = Instances::Group::NoGroupId );
+  void editDictionaries( unsigned editDictionaryGroup = GroupId::NoGroupId );
   /// Edits current group when triggered from the dictionary bar.
   void editCurrentGroup();
   void editPreferences();
@@ -395,16 +396,13 @@ private slots:
 
   void setAutostart( bool );
 
-  void showMainWindow();
-
   void visitHomepage();
   void visitForum();
   void openConfigFolder();
   void showAbout();
 
   void showDictBarNamesTriggered();
-  void useSmallIconsInToolbarsTriggered();
-  void useLargeIconsInToolbarsTriggered();
+  void iconSizeActionTriggered( QAction * action );
   void toggleMenuBarTriggered( bool announce = true );
 
   void on_clearHistory_triggered();
@@ -502,5 +500,3 @@ public slots:
     setValue( progress );
   }
 };
-
-#endif

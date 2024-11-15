@@ -307,15 +307,7 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
     // Handle cases where we get encoded URL
     if ( result->word.startsWith( QStringLiteral( "xn--" ) ) ) {
       // For `kde-open` or `gio` or others, URL are encoded into ACE or Punycode
-  #if QT_VERSION >= QT_VERSION_CHECK( 6, 3, 0 )
       result->word = QUrl::fromAce( result->word.toLatin1(), QUrl::IgnoreIDNWhitelist );
-  #else
-      // Old Qt's fromAce only applies to whitelisted domains, so we add .com to bypass this restriction :)
-      // https://bugreports.qt.io/browse/QTBUG-29080
-      result->word.append( QStringLiteral( ".com" ) );
-      result->word = QUrl::fromAce( result->word.toLatin1() );
-      result->word.chop( 4 );
-  #endif
     }
     else if ( result->word.startsWith( QStringLiteral( "%" ) ) ) {
       // For Firefox or other browsers where URL are percent encoded
@@ -349,8 +341,11 @@ int main( int argc, char ** argv )
   // attach the new console to this application's process
   if ( AttachConsole( ATTACH_PARENT_PROCESS ) ) {
     // reopen the std I/O streams to redirect I/O to the new console
-    freopen( "CON", "w", stdout );
-    freopen( "CON", "w", stderr );
+    auto ret1 = freopen( "CON", "w", stdout );
+    auto ret2 = freopen( "CON", "w", stderr );
+    if ( ret1 == nullptr || ret2 == nullptr ) {
+      qDebug() << "Attaching console stdout or stderr failed";
+    }
   }
 
   qputenv( "QT_QPA_PLATFORM", "windows:darkmode=1" );
@@ -359,10 +354,6 @@ int main( int argc, char ** argv )
 
 
   //high dpi screen support
-#if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
-  QApplication::setAttribute( Qt::AA_EnableHighDpiScaling );
-  QApplication::setAttribute( Qt::AA_UseHighDpiPixmaps );
-#endif
   qputenv( "QT_ENABLE_HIGHDPI_SCALING", "1" );
   QApplication::setHighDpiScaleFactorRoundingPolicy( Qt::HighDpiScaleFactorRoundingPolicy::PassThrough );
 
@@ -564,18 +555,35 @@ int main( int argc, char ** argv )
   QLocale::setDefault( locale );
   QApplication::setLayoutDirection( locale.textDirection() );
 
-  if ( !qtTranslator.load( "qt_extra_" + localeName, Config::getLocDir() ) ) {
-    qtTranslator.load( "qt_extra_" + localeName, QLibraryInfo::location( QLibraryInfo::TranslationsPath ) );
+  // Load Qt translators
+  // For Windows, windeployqt will combine multiple qt modules translations into `qt_*`
+  // Thus, after deployment, loading `qtwebengine_*` is guaranteed to fail on Windows.
+  if ( qtTranslator.load( locale, "qt", "_", QLibraryInfo::path( QLibraryInfo::TranslationsPath ) ) ) {
     app.installTranslator( &qtTranslator );
+    qDebug() << "qt translator loaded: " << qtTranslator.filePath();
   }
-
-  translator.load( Config::getLocDir() + "/" + localeName );
-  app.installTranslator( &translator );
+  else {
+    qDebug() << "qt translator didn't load anything.";
+  }
 
   QTranslator webengineTs;
-  if ( webengineTs.load( "qtwebengine_" + localeName, Config::getLocDir() ) ) {
+  if ( webengineTs.load( locale, "qtwebengine", "_", QLibraryInfo::path( QLibraryInfo::TranslationsPath ) ) ) {
     app.installTranslator( &webengineTs );
+    qDebug() << "qt webengine translator loaded: " << webengineTs.filePath();
   }
+  else {
+    qDebug() << "qt webengine translator may or may not be loaded.";
+  }
+
+  // Load GD's translations, note GD has local names beyond what's supported by QLocal
+  if ( translator.load( localeName, Config::getLocDir() ) ) {
+    app.installTranslator( &translator );
+    qDebug() << "gd translator loaded: " << translator.filePath();
+  }
+  else {
+    qDebug() << "gd translator didn't load anything";
+  }
+
 
   // Prevent app from quitting spontaneously when it works with popup
   // and with the main window closed.

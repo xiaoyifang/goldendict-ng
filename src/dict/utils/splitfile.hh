@@ -1,5 +1,4 @@
-#ifndef __SPLITFILE_HH_INCLUDED__
-#define __SPLITFILE_HH_INCLUDED__
+#pragma once
 
 #include <QFile>
 #include <QList>
@@ -51,5 +50,3 @@ public:
 };
 
 } // namespace SplitFile
-
-#endif // __SPLITFILE_HH_INCLUDED__

@@ -317,6 +317,12 @@ MdxDictionary::MdxDictionary( string const & id, string const & indexFile, vecto
     dictionaryName = string( &buf.front(), len );
   }
 
+  //fallback, use filename as dictionary name
+  if ( dictionaryName.empty() ) {
+    QFileInfo f( QString::fromUtf8( dictionaryFiles[ 0 ].c_str() ) );
+    dictionaryName = f.baseName().toStdString();
+  }
+
   // then read the dictionary's encoding
   len = idx.read< uint32_t >();
   if ( len > 0 ) {
@@ -615,7 +621,7 @@ void MdxArticleRequest::run()
     }
 
     QCryptographicHash hash( QCryptographicHash::Md5 );
-    hash.addData( articleBody.data(), articleBody.size() );
+    hash.addData( { articleBody.data(), static_cast< qsizetype >( articleBody.length() ) } );
     if ( !articleBodiesIncluded.insert( hash.result() ).second ) {
       continue; // Already had this body
     }
@@ -779,7 +785,7 @@ void MddResourceRequest::run()
         data.push_back( '\0' );
         QString target =
           MdictParser::toUtf16( "UTF-16LE", &data.front() + sizeof( pattern ), data.size() - sizeof( pattern ) );
-        resourceName = gd::toWString( target.trimmed() );
+        resourceName = target.trimmed().toStdU32String();
         continue;
       }
     }
@@ -920,11 +926,10 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
       QRegularExpressionMatch match = RX::Mdx::audioRe.match( newLink );
       if ( match.hasMatch() ) {
         // sounds and audio link script
-        QString newTxt =
-          match.captured( 1 ) + match.captured( 2 ) + "gdau://" + id + "/" + match.captured( 3 ) + match.captured( 2 );
-        newLink =
-          QString::fromUtf8(
-            addAudioLink( "\"gdau://" + getId() + "/" + match.captured( 3 ).toUtf8().data() + "\"", getId() ).c_str() )
+        QString newTxt = match.captured( 1 ) + match.captured( 2 ) + "gdau://" + id + "/" + match.captured( 3 )
+          + match.captured( 2 ) + R"( onclick="return false;" )";
+        newLink = QString::fromUtf8(
+                    addAudioLink( "gdau://" + getId() + "/" + match.captured( 3 ).toUtf8().data(), getId() ).c_str() )
           + newLink.replace( match.capturedStart(), match.capturedLength(), newTxt );
       }
 
@@ -981,7 +986,7 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
         continue;
       }
       else {
-        //audio ,video ,html5 tags fall here.
+        //audio ,script,video ,html5 tags fall here.
         match = RX::Mdx::srcRe.match( linkTxt );
         if ( match.hasMatch() ) {
           QString newText;
@@ -993,8 +998,14 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
           else {
             scheme = "bres://";
           }
+
           newText =
             match.captured( 1 ) + match.captured( 2 ) + scheme + id + "/" + match.captured( 3 ) + match.captured( 2 );
+
+          //add defer to script tag
+          if ( linkType.compare( "script" ) == 0 ) {
+            newText = newText + " defer ";
+          }
 
           newLink = linkTxt.replace( match.capturedStart(), match.capturedLength(), newText );
         }
@@ -1189,7 +1200,7 @@ QString MdxDictionary::getCachedFileName( QString filename )
       data.push_back( '\0' );
       QString target =
         MdictParser::toUtf16( "UTF-16LE", &data.front() + sizeof( pattern ), data.size() - sizeof( pattern ) );
-      resourceName = gd::toWString( target.trimmed() );
+      resourceName = target.trimmed().toStdU32String();
       continue;
     }
     break;
@@ -1238,14 +1249,14 @@ static void addEntryToIndex( QString const & word, uint32_t offset, IndexedWords
 {
   // Strip any leading or trailing whitespaces
   QString wordTrimmed = word.trimmed();
-  indexedWords.addWord( gd::toWString( wordTrimmed ), offset );
+  indexedWords.addWord( wordTrimmed.toStdU32String(), offset );
 }
 
 static void addEntryToIndexSingle( QString const & word, uint32_t offset, IndexedWords & indexedWords )
 {
   // Strip any leading or trailing whitespaces
   QString wordTrimmed = word.trimmed();
-  indexedWords.addSingleWord( gd::toWString( wordTrimmed ), offset );
+  indexedWords.addSingleWord( wordTrimmed.toStdU32String(), offset );
 }
 
 class ArticleHandler: public MdictParser::RecordHandler

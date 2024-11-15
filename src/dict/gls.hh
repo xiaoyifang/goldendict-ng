@@ -1,5 +1,4 @@
-#ifndef __GLS_HH_INCLUDED__
-#define __GLS_HH_INCLUDED__
+#pragma once
 
 #include "dictionary.hh"
 
@@ -13,5 +12,3 @@ vector< sptr< Dictionary::Class > >
 makeDictionaries( vector< string > const & fileNames, string const & indicesDir, Dictionary::Initializing & );
 
 } // namespace Gls
-
-#endif // __GLS_HH_INCLUDED__

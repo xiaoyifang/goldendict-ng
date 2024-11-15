@@ -597,10 +597,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictInfo</name>
     <message>
-      <source>Edit dictionary</source>
-      <translation>ویرایش واژه‌نامه</translation>
-    </message>
-    <message>
       <source>Open index folder</source>
       <translation>پوشه فهرست را باز کنید</translation>
     </message>
@@ -651,11 +647,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Full-text search disabled</source>
       <translation>جستجوی متن کامل غیرفعال شد</translation>
-    </message>
-    <message>
-      <source>Edit the dictionary via command:
-%1</source>
-      <translation>ویرایش واژه‌نامه با دستور: %1</translation>
     </message>
   </context>
   <context>
@@ -748,10 +739,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>بازکردن پوشه واژه‌نامه</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>ویرایش واژه‌نامه</translation>
     </message>
   </context>
   <context>
@@ -2428,10 +2415,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>نمایش نا&amp;م‌ها در نوار واژه‌نامه</translation>
     </message>
     <message>
-      <source>Show Small Icons in &amp;Toolbars</source>
-      <translation>نمایش نشانه‌های &amp;کوچک در نوار ابزار</translation>
-    </message>
-    <message>
       <source>&amp;Menubar</source>
       <translation>نوار &amp;منو</translation>
     </message>
@@ -2446,10 +2429,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Forward</source>
       <translation>پیش</translation>
-    </message>
-    <message>
-      <source>Enable Scanning</source>
-      <translation>به کار انداختن پویش</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2544,10 +2523,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Remove current tab from Favorites</source>
       <translation>حذف زبانهٔ کنونی از پسندیده‌ها</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
@@ -2702,16 +2677,28 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>باز کردن پوشه واژه‌نامه</translation>
     </message>
     <message>
-      <source>Edit dictionary</source>
-      <translation>ویرایش واژه‌نامه</translation>
-    </message>
-    <message>
       <source>Now indexing for full-text search: </source>
       <translation>اکنون در حال نمایه سازی برای جستجوی متن کامل: </translation>
     </message>
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>عنوان &quot;%1&quot; از موارد دلخواه حذف شود؟</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>نمایش نمادهای &amp;کوچک در نوار ابزار</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>نمایش نمادهای &amp;بزرگ در نوار ابزار</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>نمایش نمادهای &amp;عادی در نوار ابزار</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>تغییر وضعیت نظارت بر کلیپ بورد</translation>
     </message>
   </context>
   <context>
@@ -3055,16 +3042,6 @@ the application.</source>
       <translation>پویش &amp;واشو</translation>
     </message>
     <message>
-      <source>Chooses whether the popup mode is on by default or not. If checked,
-the program would always start with the popup active.</source>
-      <translation>برگزینید که آیا حالت پویش واشو به‌طور پیش‌فرض روشن باشد یا نه. اگر
-به‌کار افتاده باشد، برنامه همیشه با فعال بودن پویش واشو آغاز می‌شود.</translation>
-    </message>
-    <message>
-      <source>Start with popup turned on</source>
-      <translation>آغاز با روشن بودن پویش واشو</translation>
-    </message>
-    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>واژه ترجمه شده را به‌جای نمایش در پنجره واشو به پنجره اصلی بفرست</translation>
     </message>
@@ -3177,10 +3154,6 @@ in the pressed state when the word selection changes.</source>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>بیان خودکار واژه‌ها در پنجره اصلی</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in popup</source>
-      <translation>بیان خودکار واژه‌ها در پویش واشو</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3571,6 +3544,18 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Restart needed</source>
       <translation>نیاز به راه اندازی مجدد</translation>
     </message>
+    <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>انتخاب می کند که آیا هنگام راه اندازی برنامه&apos;نظارت بر کلیپ بورد به طور پیش فرض روشن شود یا خیر.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>با روشن بودن نظارت بر کلیپ بورد شروع کنید</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>تلفظ خودکار کلمات در پنجره بازشو</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3811,10 +3796,6 @@ from Stardict, Babylon and GLS dictionaries</source>
 could be resized or managed in other ways.</source>
       <translation>این سنجاق را فشار دهید تا پنجره روی صفحه بماند،
 می‌توان تغییر اندازه داد یا طور دیگری مدیریت کرد.</translation>
-    </message>
-    <message>
-      <source>%1 - GoldenDict-ng</source>
-      <translation>%1 - GoldenDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>

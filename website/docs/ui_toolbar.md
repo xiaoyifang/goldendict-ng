@@ -1,37 +1,56 @@
 ## Toolbar
 ![toolbar](img/toolbar.webp)
 
-From left to right:
+Type your word in Search Box and press `Enter` to search word in the current selected group. You can also choose a variant from a matches list.
 
-* Forward/Backward navigation buttons;
-* Group selector
-* Search Line
-* Toggle Scanning
-* Play the first pronunciation in found articles;
-* Font scale buttons;
-* Save the article as HTML
-* Print article
-* Add to Favorites;
-
-Type your word in Search Box and press `Enter` to search word in the current selected group. You can also choose a variant from matches list.
-
-If Ctrl or Shift key has been pressed the new tab for translation will be created.
+Holding Ctrl or Shift will display the translation result in a new tab.
 
 ### Wildcard matching
 
-The Search Line can contain wildcard symbols `?` (matches any one character), `*` (matches any characters number) or ranges of characters `[...]`. To find characters `?`, `*`, `[` and `]` it should be escaped with backslash like `\?`, `\*`, `\[`, `\]`.
+The search line can use wildcard or glob symbols for matching words.  
+
+| Wildcard | Description                                                            | 
+|----------|------------------------------------------------------------------------|
+| `?`      | Matches any single character.                                          |
+| `*`      | Matches zero or more of any characters.                                |
+| `[abc]`  | Matches one character given in the bracket.                            |
+| `[a-c]`  | Matches one character from the range given in the bracket.             |
+| `[!abc]` | Matches one character that is not given in the bracket.                |
+| `[!a-c]` | Matches one character that is not from the range given in the bracket. |
+| `\`      | Escaping wildcard symbols, e.g. `\?` to search `?`                     |
 
 !!! note
-    The wildcard symbol at first position in word leads to full headwords list scanning and it may take a long time for huge dictionaries.
+    The wildcard symbol in the first character leads to scanning of every dictionary's every word and may take a long time.
+
+More information about wildcard matching can be found in [Wikipedia's glob article](https://en.wikipedia.org/wiki/Glob_(programming)).
+
 
 ## Dictionary Bar
 
-The dictionaries bar contains all dictionaries from current dictionaries group. Click the icons to disable/enable them.
+The dictionary bar contains all dictionaries from the current dictionaries group. Click the icons to disable/enable them.
 
-Hold `Shift` and click dictionary bar will temporally focus on a single dictionary. Hold `Shift` and click again to defocus and restore the previous dictionaries bar state.
+### "Solo" mode
 
-Hold `Ctrl` and click dictionary bar will toggle between "Enable a single dictionary" and "Enable all dictionary".
+Temporally focus on a single dictionary and restore back to all dictionaries or previously selected dictionaries.
 
-Note: The `Shift` and `Ctrl` interaction can also be used on "Found in dictionaries" panel
+To enter solo mode:
 
+++ctrl+left-button++ -> Select a single dictionary.
+
+To exit solo mode:
+
+++ctrl+left-button++ -> Reselect all dictionaries.
+
+++shift+left-button++ -> Reselect dictionaries that were previously selected before entering solo mode.
+
+For example, there are 4 dictionaries A,B,C,D with ABC selected.
+
+| Cases                                    | Note                                         |
+|------------------------------------------|----------------------------------------------|
+| Ctrl+Click A                             | select A only                                |
+| Ctrl+Click A, Ctrl+Click B               | select B only                                |
+| Ctrl+Click A, Ctrl+Click A               | A,B,C,D selected (all dictionaries selected) |
+| Ctrl+Click A, Shift+Click any dictionary | A,B,C selected                               |
+
+Note: This can also be used on the "Found in dictionaries" panel.
 

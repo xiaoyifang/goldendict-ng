@@ -2,10 +2,6 @@
 #include <QList>
 
 namespace gd {
-wstring toWString( QString const & in )
-{
-  return in.toStdU32String();
-}
 
 // When convert non-BMP characters to wstring,the ending char maybe \0 .This method remove the tailing \0 from the wstring
 // as \0 is sensitive in the index.  This method will be only used with index related operations like store/query.
@@ -35,7 +31,7 @@ wstring removeTrailingZero( QString const & in )
 
 wstring normalize( const wstring & str )
 {
-  return toWString( QString::fromStdU32String( str ).normalized( QString::NormalizationForm_C ) );
+  return QString::fromStdU32String( str ).normalized( QString::NormalizationForm_C ).toStdU32String();
 }
 
 

@@ -1,5 +1,4 @@
-#ifndef DICTINFO_HH
-#define DICTINFO_HH
+#pragma once
 
 #include <QDialog>
 #include "ui_dictinfo.h"
@@ -32,5 +31,3 @@ private slots:
   void on_headwordsButton_clicked();
   void on_openIndexFolder_clicked();
 };
-
-#endif // DICTINFO_HH

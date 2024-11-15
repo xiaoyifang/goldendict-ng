@@ -994,7 +994,7 @@ void EpwingWordSearchRequest::findMatches()
     QMutexLocker _( &dataMutex );
 
     for ( const auto & headword : headwords )
-      addMatch( gd::toWString( headword ) );
+      addMatch( headword.toStdU32String() );
 
     break;
   }
@@ -1047,7 +1047,7 @@ void addWordToChunks( Epwing::Book::EpwingHeadword & head,
     chunks.addToBlock( &head.page, sizeof( head.page ) );
     chunks.addToBlock( &head.offset, sizeof( head.offset ) );
 
-    wstring hw = gd::toWString( head.headword );
+    wstring hw = head.headword.toStdU32String();
 
     indexedWords.addWord( hw, offset );
     wordCount++;

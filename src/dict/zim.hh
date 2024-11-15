@@ -1,5 +1,4 @@
-#ifndef __ZIM_HH_INCLUDED__
-#define __ZIM_HH_INCLUDED__
+#pragma once
 
 #ifdef MAKE_ZIM_SUPPORT
 
@@ -17,7 +16,5 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
                                                       unsigned maxHeadwordsToExpand );
 
 } // namespace Zim
-
-#endif
 
 #endif

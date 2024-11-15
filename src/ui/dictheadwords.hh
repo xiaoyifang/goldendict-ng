@@ -1,5 +1,4 @@
-#ifndef __DICTHEADWORDS_H_INCLUDED__
-#define __DICTHEADWORDS_H_INCLUDED__
+#pragma once
 
 #include <QDialog>
 #include <QSet>
@@ -64,5 +63,3 @@ signals:
   void headwordSelected( QString const &, QString const & );
   void closeDialog();
 };
-
-#endif // __DICTHEADWORDS_H_INCLUDED__

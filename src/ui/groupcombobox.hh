@@ -1,8 +1,7 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __GROUPCOMBOBOX_HH_INCLUDED__
-#define __GROUPCOMBOBOX_HH_INCLUDED__
+#pragma once
 
 #include <QComboBox>
 #include <QAction>
@@ -54,5 +53,3 @@ private:
   QAction selectNextAction, selectPreviousAction;
   QMap< int, int > shortcuts;
 };
-
-#endif

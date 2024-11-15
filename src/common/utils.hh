@@ -1,7 +1,6 @@
 /* Thin wrappers for retaining compatibility for both Qt6.x and Qt5.x */
 
-#ifndef UTILS_HH
-#define UTILS_HH
+#pragma once
 
 #include <QAtomicInt>
 #include <QJsonDocument>
@@ -341,10 +340,12 @@ void removeDirectory( QString const & directory );
 void removeDirectory( string const & directory );
 } // namespace Fs
 
+namespace WebSite {
+QString urlReplaceWord( const QString url, QString word );
+}
+
 QString escapeAmps( QString const & str );
 
 QString unescapeAmps( QString const & str );
 
 } // namespace Utils
-
-#endif // UTILS_HH

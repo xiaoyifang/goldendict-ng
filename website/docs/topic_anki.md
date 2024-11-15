@@ -46,9 +46,9 @@ the back template
 
 ## Using URI schemes
 
-`goldendict://word` link can be use to query a word directly on Goldendict.
+`goldendict://word` link can be use to query a word directly on GoldenDict-ng.
 
-On your Anki card's template, you can add the code below to have a "1 click open in Goldendict" card.
+On your Anki card's template, you can add the code below to have a "1 click open in GoldenDict-ng" card.
 
 ```
 <a href="goldendict://{{Front}}">{{Front}}</a>

@@ -1,8 +1,7 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __ARTICLE_NETMGR_HH_INCLUDED__
-#define __ARTICLE_NETMGR_HH_INCLUDED__
+#pragma once
 
 #include <QtNetwork>
 #include <QSet>
@@ -42,84 +41,77 @@ public:
     delete baseReply;
   }
 
-  // QNetworkReply virtual functions
-  void setReadBufferSize( qint64 size );
-  void close()
+  void close() override
   {
     baseReply->close();
   }
 
   // QIODevice virtual functions
-  qint64 bytesAvailable() const;
-  bool atEnd() const
+  qint64 bytesAvailable() const override;
+  bool atEnd() const override
   {
     return baseReply->atEnd();
   }
-  qint64 bytesToWrite() const
+  qint64 bytesToWrite() const override
   {
     return baseReply->bytesToWrite();
   }
-  bool canReadLine() const
+  bool canReadLine() const override
   {
     return baseReply->canReadLine();
   }
-  bool isSequential() const
+  bool isSequential() const override
   {
     return baseReply->isSequential();
   }
-  bool waitForReadyRead( int msecs )
+  bool waitForReadyRead( int msecs ) override
   {
     return baseReply->waitForReadyRead( msecs );
   }
-  bool waitForBytesWritten( int msecs )
+  bool waitForBytesWritten( int msecs ) override
   {
     return baseReply->waitForBytesWritten( msecs );
   }
-  bool reset()
+  bool reset() override
   {
     return baseReply->reset();
   }
 
 public slots:
-
-  // Own AllowFrameReply slots
-  void applyMetaData();
   void applyError( QNetworkReply::NetworkError code );
-  //  void readDataFromBase();
 
   // Redirect QNetworkReply slots
-  virtual void abort()
+  void abort() override
   {
     baseReply->abort();
   }
-  virtual void ignoreSslErrors()
+  void ignoreSslErrors() override
   {
     baseReply->ignoreSslErrors();
   }
-  void finishedSlot();
 
 protected:
   // QNetworkReply virtual functions
-  void ignoreSslErrorsImplementation( const QList< QSslError > & errors )
+  void ignoreSslErrorsImplementation( const QList< QSslError > & errors ) override
   {
     baseReply->ignoreSslErrors( errors );
   }
-  void setSslConfigurationImplementation( const QSslConfiguration & configuration )
+  void setSslConfigurationImplementation( const QSslConfiguration & configuration ) override
   {
     baseReply->setSslConfiguration( configuration );
   }
-  void sslConfigurationImplementation( QSslConfiguration & configuration ) const
+  void sslConfigurationImplementation( QSslConfiguration & configuration ) const override
   {
     configuration = baseReply->sslConfiguration();
   }
 
   // QIODevice virtual functions
-  qint64 readData( char * data, qint64 maxSize );
-  qint64 readLineData( char * data, qint64 maxSize )
+  qint64 readData( char * data, qint64 maxSize ) override;
+  qint64 readLineData( char * data, qint64 maxSize ) override
   {
     return baseReply->readLine( data, maxSize );
   }
-  qint64 writeData( const char * data, qint64 maxSize )
+  qint64 writeData( const char * data, qint64 maxSize ) override
   {
     return baseReply->write( data, maxSize );
   }
@@ -185,10 +177,10 @@ public:
 
 protected:
 
-  virtual qint64 bytesAvailable() const;
-  bool atEnd() const;
-  virtual void abort() {}
-  virtual qint64 readData( char * data, qint64 maxSize );
+  virtual qint64 bytesAvailable() const override;
+  bool atEnd() const override;
+  virtual void abort() override {}
+  virtual qint64 readData( char * data, qint64 maxSize ) override;
 
   // We use the hackery below to work around the fact that we need to emit
   // ready/finish signals after we've been constructed.
@@ -249,4 +241,3 @@ private:
   ArticleNetworkAccessManager & mManager;
   QNetworkAccessManager mgr;
 };
-#endif

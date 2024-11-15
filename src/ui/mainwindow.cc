@@ -36,6 +36,8 @@
 #include <QThreadPool>
 #include <QSslConfiguration>
 #include <QStyleFactory>
+#include <QStyleHints>
+
 #include "weburlrequestinterceptor.hh"
 #include "folding.hh"
 
@@ -61,6 +63,7 @@
   #include <windows.h>
 #endif
 
+#include <QGuiApplication>
 #include <QWebEngineSettings>
 #include <QProxyStyle>
 
@@ -144,8 +147,9 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   switchToNextTabAction( this ),
   switchToPrevTabAction( this ),
   showDictBarNamesAction( tr( "Show Names in Dictionary &Bar" ), this ),
-  useSmallIconsInToolbarsAction( tr( "Show Small Icons in &Toolbars" ), this ),
-  useLargeIconsInToolbarsAction( tr( "Show Large Icons in &Toolbars" ), this ),
+  useSmallIconsInToolbarsAction( tr( "Show &Small Icons in Toolbars" ), this ),
+  useLargeIconsInToolbarsAction( tr( "Show &Large Icons in Toolbars" ), this ),
+  useNormalIconsInToolbarsAction( tr( "Show &Normal Icons in Toolbars" ), this ),
   toggleMenuBarAction( tr( "&Menubar" ), this ),
   focusHeadwordsDlgAction( this ),
   focusArticleViewAction( this ),
@@ -397,15 +401,18 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( wordsZoomOut, &QAction::triggered, this, &MainWindow::doWordsZoomOut );
   connect( wordsZoomBase, &QAction::triggered, this, &MainWindow::doWordsZoomBase );
 
-  // tray icon
-  connect( trayIconMenu.addAction( tr( "Show &Main Window" ) ),
-           &QAction::triggered,
-           this,
-           &MainWindow::showMainWindow );
+// tray icon
+#ifndef Q_OS_MACOS // macOS uses the dock menu instead of the tray icon
+  connect( trayIconMenu.addAction( tr( "Show &Main Window" ) ), &QAction::triggered, this, [ this ] {
+    this->toggleMainWindow( true );
+  } );
+#endif
   trayIconMenu.addAction( enableScanningAction );
 
+#ifndef Q_OS_MACOS // macOS uses the dock menu instead of the tray icon
   trayIconMenu.addSeparator();
   connect( trayIconMenu.addAction( tr( "&Quit" ) ), &QAction::triggered, this, &MainWindow::quitApp );
+#endif
 
   addGlobalAction( &escAction, [ this ]() {
     handleEsc();
@@ -500,25 +507,24 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   tabMenu->addAction( &addAllTabToFavoritesAction );
 
   // Dictionary bar names
-
   showDictBarNamesAction.setCheckable( true );
   showDictBarNamesAction.setChecked( cfg.showingDictBarNames );
 
   connect( &showDictBarNamesAction, &QAction::triggered, this, &MainWindow::showDictBarNamesTriggered );
 
-  // Use small icons in toolbars
-
   useSmallIconsInToolbarsAction.setCheckable( true );
   useSmallIconsInToolbarsAction.setChecked( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::Small );
-
-  connect( &useSmallIconsInToolbarsAction, &QAction::triggered, this, &MainWindow::useSmallIconsInToolbarsTriggered );
-
-  // Use large icons in toolbars
-
   useLargeIconsInToolbarsAction.setCheckable( true );
   useLargeIconsInToolbarsAction.setChecked( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::Large );
+  useNormalIconsInToolbarsAction.setCheckable( true );
+  useNormalIconsInToolbarsAction.setChecked( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::Normal );
 
-  connect( &useLargeIconsInToolbarsAction, &QAction::triggered, this, &MainWindow::useLargeIconsInToolbarsTriggered );
+  // icon action group,default exclusive option.
+  smallLargeIconGroup->addAction( &useLargeIconsInToolbarsAction );
+  smallLargeIconGroup->addAction( &useSmallIconsInToolbarsAction );
+  smallLargeIconGroup->addAction( &useNormalIconsInToolbarsAction );
+
+  connect( smallLargeIconGroup, &QActionGroup::triggered, this, &MainWindow::iconSizeActionTriggered );
 
   // Toggle Menubar
   toggleMenuBarAction.setCheckable( true );
@@ -528,7 +534,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( &toggleMenuBarAction, &QAction::triggered, this, &MainWindow::toggleMenuBarTriggered );
 
   // Populate 'View' menu
-
   ui.menuView->addAction( &toggleMenuBarAction );
   ui.menuView->addSeparator();
   ui.menuView->addAction( ui.searchPane->toggleViewAction() );
@@ -543,7 +548,9 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   ui.menuView->addAction( navToolbar->toggleViewAction() );
   ui.menuView->addSeparator();
   ui.menuView->addAction( &showDictBarNamesAction );
+  ui.menuView->addSeparator();
   ui.menuView->addAction( &useSmallIconsInToolbarsAction );
+  ui.menuView->addAction( &useNormalIconsInToolbarsAction );
   ui.menuView->addAction( &useLargeIconsInToolbarsAction );
   ui.menuView->addSeparator();
   ui.alwaysOnTop->setChecked( cfg.preferences.alwaysOnTop );
@@ -552,7 +559,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // Dictionary bar
 
   Instances::Group const * igrp = groupInstances.findGroup( cfg.lastMainGroupId );
-  if ( cfg.lastMainGroupId == Instances::Group::AllGroupId ) {
+  if ( cfg.lastMainGroupId == GroupId::AllGroupId ) {
     if ( igrp ) {
       igrp->checkMutedDictionaries( &cfg.mutedDictionaries );
     }
@@ -717,13 +724,14 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
            &PronounceEngine::emitAudio,
            this,
            [ this ]( auto audioUrl ) {
+             auto view = getCurrentArticleView();
+             view->setAudioLink( audioUrl );
              if ( !isActiveWindow() ) {
                return;
              }
-             auto view = getCurrentArticleView();
              if ( ( cfg.preferences.pronounceOnLoadMain ) && view != nullptr ) {
 
-               view->openLink( QUrl::fromEncoded( audioUrl.toUtf8() ), {} );
+               view->playAudio( QUrl::fromEncoded( audioUrl.toUtf8() ) );
              }
            } );
   applyProxySettings();
@@ -752,11 +760,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
 
 #if defined( Q_OS_LINUX )
-  #if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
   defaultInterfaceStyle = QApplication::style()->name();
-  #else
-  defaultInterfaceStyle = QApplication::style()->objectName();
-  #endif
 #elif defined( Q_OS_MAC )
   defaultInterfaceStyle = "Fusion";
 #endif
@@ -774,7 +778,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   addNewTab();
   ArticleView * view = getCurrentArticleView();
   history.enableAdd( false );
-  view->showDefinition( tr( "Welcome!" ), Instances::Group::HelpGroupId );
+  view->showDefinition( tr( "Welcome!" ), GroupId::HelpGroupId );
   history.enableAdd( cfg.preferences.storeHistory );
 
   // restore should be called after all UI initialized but not necessarily after show()
@@ -921,9 +925,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   urlRegistry.endGroup();
 #endif
 
-  useSmallIconsInToolbarsTriggered();
-  useLargeIconsInToolbarsTriggered();
-
+  iconSizeActionTriggered( nullptr );
 
   if ( cfg.preferences.checkForNewReleases ) {
     QTimer::singleShot( 0, this, &MainWindow::checkNewRelease );
@@ -1318,7 +1320,7 @@ QPrinter & MainWindow::getPrinter()
 
 void MainWindow::updateAppearances( QString const & addonStyle,
                                     QString const & displayStyle,
-                                    bool const & darkMode
+                                    Config::Dark darkMode
 #if !defined( Q_OS_WIN )
                                     ,
                                     const QString & interfaceStyle
@@ -1326,7 +1328,7 @@ void MainWindow::updateAppearances( QString const & addonStyle,
 )
 {
 #ifdef Q_OS_WIN32
-  if ( darkMode ) {
+  if ( darkMode == Config::Dark::On ) {
     //https://forum.qt.io/topic/101391/windows-10-dark-theme
 
     QPalette darkPalette;
@@ -1381,7 +1383,7 @@ void MainWindow::updateAppearances( QString const & addonStyle,
 
   // Load an additional stylesheet
   // Dark Mode doesn't work nice with custom qt style sheets,
-  if ( !darkMode ) {
+  if ( darkMode == Config::Dark::Off ) {
     QFile additionalStyle( QString( ":qt-%1.css" ).arg( displayStyle ) );
     if ( additionalStyle.open( QFile::ReadOnly ) ) {
       css += additionalStyle.readAll();
@@ -1406,7 +1408,7 @@ void MainWindow::updateAppearances( QString const & addonStyle,
   }
 
 #ifdef Q_OS_WIN32
-  if ( darkMode ) {
+  if ( darkMode == Config::Dark::On ) {
     css += "QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }";
   }
 #endif
@@ -1418,6 +1420,11 @@ void MainWindow::updateAppearances( QString const & addonStyle,
 
 void MainWindow::trayIconUpdateOrInit()
 {
+#ifdef Q_OS_MACOS
+  trayIconMenu.setAsDockMenu();
+  ui.actionCloseToTray->setVisible( false );
+#else
+
   if ( !cfg.preferences.enableTrayIcon ) {
     if ( trayIcon ) {
       delete trayIcon;
@@ -1441,6 +1448,7 @@ void MainWindow::trayIconUpdateOrInit()
   // The 'Close to tray' action is associated with the tray icon, so we hide
   // or show it here.
   ui.actionCloseToTray->setVisible( cfg.preferences.enableTrayIcon );
+#endif
 }
 
 void MainWindow::wheelEvent( QWheelEvent * ev )
@@ -1640,7 +1648,7 @@ void MainWindow::updateGroupList( bool reload )
                                           dictionaries );
 
     g.name = tr( "All" );
-    g.id   = Instances::Group::AllGroupId;
+    g.id   = GroupId::AllGroupId;
     g.icon = "folder.png";
 
     groupInstances.push_back( g );
@@ -1685,7 +1693,7 @@ void MainWindow::updateDictionaryBar()
 
   dictionaryBar.setMutedDictionaries( nullptr );
   if ( grp ) { // Should always be !0, but check as a safeguard
-    if ( currentId == Instances::Group::AllGroupId ) {
+    if ( currentId == GroupId::AllGroupId ) {
       dictionaryBar.setMutedDictionaries( &cfg.mutedDictionaries );
     }
     else {
@@ -2205,7 +2213,7 @@ void MainWindow::editDictionaries( unsigned editDictionaryGroup )
 
     connect( &dicts, &EditDictionaries::showDictionaryHeadwords, this, &MainWindow::showDictionaryHeadwords );
 
-    if ( editDictionaryGroup != Instances::Group::NoGroupId ) {
+    if ( editDictionaryGroup != GroupId::NoGroupId ) {
       dicts.editGroup( editDictionaryGroup );
     }
 
@@ -2219,7 +2227,7 @@ void MainWindow::editDictionaries( unsigned editDictionaryGroup )
       // Set muted dictionaries from old groups
       for ( auto & group : newCfg.groups ) {
         unsigned id = group.id;
-        if ( id != Instances::Group::NoGroupId ) {
+        if ( id != GroupId::NoGroupId ) {
           Config::Group const * grp = cfg.getGroup( id );
           if ( grp ) {
             group.mutedDictionaries      = grp->mutedDictionaries;
@@ -2321,6 +2329,7 @@ void MainWindow::editPreferences()
         || cfg.preferences.collapseBigArticles != p.collapseBigArticles
         || cfg.preferences.articleSizeLimit != p.articleSizeLimit
         || cfg.preferences.alwaysExpandOptionalParts != p.alwaysExpandOptionalParts // DSL format's special feature
+        || p.darkReaderMode == Config::Dark::Auto // We cannot know if a reload is needed, just do it regardless.
       );
 
     // This line must be here because the components below require cfg's value to reconfigure
@@ -2336,6 +2345,15 @@ void MainWindow::editPreferences()
       if ( needReload ) {
         view.reload();
       }
+
+#if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
+      if ( cfg.preferences.darkReaderMode == Config::Dark::Auto ) {
+        connect( QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, &view, &ArticleView::reload );
+      }
+      else {
+        disconnect( QGuiApplication::styleHints(), &QStyleHints::colorSchemeChanged, &view, &ArticleView::reload );
+      }
+#endif
     }
 
     audioPlayerFactory.setPreferences( cfg.preferences );
@@ -2373,7 +2391,7 @@ void MainWindow::currentGroupChanged( int )
   unsigned grg_id               = groupList->getCurrentGroup();
   cfg.lastMainGroupId           = grg_id;
   Instances::Group const * igrp = groupInstances.findGroup( grg_id );
-  if ( grg_id == Instances::Group::AllGroupId ) {
+  if ( grg_id == GroupId::AllGroupId ) {
     if ( igrp ) {
       igrp->checkMutedDictionaries( &cfg.mutedDictionaries );
     }
@@ -2519,7 +2537,7 @@ void MainWindow::handleEsc()
   }
 
   if ( cfg.preferences.escKeyHidesMainWindow ) {
-    toggleMainWindow();
+    toggleMainWindow( false );
   }
   else {
     focusTranslateLine();
@@ -2860,7 +2878,7 @@ void MainWindow::showTranslationForDicts( QString const & inWord,
                         ignoreDiacritics );
 }
 
-void MainWindow::toggleMainWindow( bool onlyShow )
+void MainWindow::toggleMainWindow( bool ensureShow )
 {
   bool shown = false;
 
@@ -2893,7 +2911,7 @@ void MainWindow::toggleMainWindow( bool onlyShow )
     }
     shown = true;
   }
-  else if ( !onlyShow ) {
+  else if ( !ensureShow ) {
 
     // On Windows and Linux, a hidden window won't show a task bar icon
     // When trayicon is enabled, the duplication is unneeded
@@ -2977,7 +2995,7 @@ void MainWindow::installHotKeys()
 void MainWindow::hotKeyActivated( int hk )
 {
   if ( !hk ) {
-    toggleMainWindow();
+    toggleMainWindow( false );
   }
   else if ( scanPopup ) {
 #ifdef HAVE_X11
@@ -3062,7 +3080,7 @@ void MainWindow::trayIconActivated( QSystemTrayIcon::ActivationReason r )
   switch ( r ) {
     case QSystemTrayIcon::Trigger:
       // Left click toggles the visibility of main window
-      toggleMainWindow();
+      toggleMainWindow( false );
       break;
 
     case QSystemTrayIcon::MiddleClick:
@@ -3075,10 +3093,6 @@ void MainWindow::trayIconActivated( QSystemTrayIcon::ActivationReason r )
   }
 }
 
-void MainWindow::showMainWindow()
-{
-  toggleMainWindow( true );
-}
 
 void MainWindow::visitHomepage()
 {
@@ -3111,48 +3125,23 @@ void MainWindow::showDictBarNamesTriggered()
   cfg.showingDictBarNames = show;
 }
 
-void MainWindow::useSmallIconsInToolbarsTriggered()
-{
-  bool useSmallIcons = useSmallIconsInToolbarsAction.isChecked();
-  if ( useSmallIcons ) {
-    cfg.usingToolbarsIconSize = Config::ToolbarsIconSize::Small;
-    useLargeIconsInToolbarsAction.setChecked( false );
-  }
-  else if ( !useLargeIconsInToolbarsAction.isChecked() ) {
-    cfg.usingToolbarsIconSize = Config::ToolbarsIconSize::Normal;
-  }
-
-  int extent = useSmallIcons ? QApplication::style()->pixelMetric( QStyle::PM_SmallIconSize ) :
-                               QApplication::style()->pixelMetric( QStyle::PM_ToolBarIconSize );
-
-  navToolbar->setIconSize( QSize( extent, extent ) );
-
-  // additional fix for #176
-  menuButton->setIconSize( QSize( extent, extent ) );
-
-  updateDictionaryBar();
-
-
-  scanPopup->setDictionaryIconSize();
-}
-
-void MainWindow::useLargeIconsInToolbarsTriggered()
+void MainWindow::iconSizeActionTriggered( QAction * /*action*/ )
 {
   bool useLargeIcons = useLargeIconsInToolbarsAction.isChecked();
+  int extent         = QApplication::style()->pixelMetric( QStyle::PM_ToolBarIconSize );
   if ( useLargeIcons ) {
     cfg.usingToolbarsIconSize = Config::ToolbarsIconSize::Large;
-    useSmallIconsInToolbarsAction.setChecked( false );
+    extent                    = QApplication::style()->pixelMetric( QStyle::PM_LargeIconSize );
   }
-  else if ( !useSmallIconsInToolbarsAction.isChecked() ) {
+  else if ( useSmallIconsInToolbarsAction.isChecked() ) {
+    cfg.usingToolbarsIconSize = Config::ToolbarsIconSize::Small;
+    extent                    = QApplication::style()->pixelMetric( QStyle::PM_SmallIconSize );
+  }
+  else {
     cfg.usingToolbarsIconSize = Config::ToolbarsIconSize::Normal;
   }
 
-  int extent = useLargeIcons ? QApplication::style()->pixelMetric( QStyle::PM_LargeIconSize ) :
-                               QApplication::style()->pixelMetric( QStyle::PM_ToolBarIconSize );
-
   navToolbar->setIconSize( QSize( extent, extent ) );
-
-
   menuButton->setIconSize( QSize( extent, extent ) );
 
   updateDictionaryBar();
@@ -3742,13 +3731,6 @@ void MainWindow::wordReceived( const QString & word )
   respondToTranslationRequest( word, false );
 }
 
-void MainWindow::headwordReceived( const QString & word, const QString & ID )
-{
-  toggleMainWindow( true );
-  setInputLineText( word, WildcardPolicy::EscapeWildcards, NoPopupChange );
-  respondToTranslationRequest( word, false, ArticleView::scrollToFromDictionaryId( ID ), false );
-}
-
 void MainWindow::updateFavoritesMenu()
 {
   if ( ui.favoritesPane->isVisible() ) {
@@ -4153,7 +4135,13 @@ void MainWindow::showDictionaryHeadwords( Dictionary::Class * dict )
       headwordsDlg = new DictHeadwords( this, cfg, dict );
       addGlobalActionsToDialog( headwordsDlg );
       addGroupComboBoxActionsToDialog( headwordsDlg, groupList );
-      connect( headwordsDlg, &DictHeadwords::headwordSelected, this, &MainWindow::headwordReceived );
+      connect( headwordsDlg,
+               &DictHeadwords::headwordSelected,
+               this,
+               [ this ]( QString const & headword, QString const & dictID ) {
+                 setInputLineText( headword, WildcardPolicy::EscapeWildcards, NoPopupChange );
+                 respondToTranslationRequest( headword, false, ArticleView::scrollToFromDictionaryId( dictID ), false );
+               } );
       connect( headwordsDlg,
                &DictHeadwords::closeDialog,
                this,

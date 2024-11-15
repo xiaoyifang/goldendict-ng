@@ -1,8 +1,7 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __DICTIONARY_HH_INCLUDED__
-#define __DICTIONARY_HH_INCLUDED__
+#pragma once
 
 #include <map>
 #include <string>
@@ -291,7 +290,8 @@ enum Feature {
   /// No features
   NoFeatures = 0,
   /// The dictionary is suitable to query when searching for compound expressions.
-  SuitableForCompoundSearching = 1
+  SuitableForCompoundSearching = 1,
+  WebSite                      = 2
 };
 
 Q_DECLARE_FLAGS( Features, Feature )
@@ -583,5 +583,3 @@ QString generateRandomDictionaryId();
 QMap< std::string, sptr< Dictionary::Class > > dictToMap( std::vector< sptr< Dictionary::Class > > const & dicts );
 
 } // namespace Dictionary
-
-#endif

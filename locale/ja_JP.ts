@@ -597,10 +597,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictInfo</name>
     <message>
-      <source>Edit dictionary</source>
-      <translation>辞書を編集</translation>
-    </message>
-    <message>
       <source>Open index folder</source>
       <translation>インデックスフォルダーを開く</translation>
     </message>
@@ -651,12 +647,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Full-text search disabled</source>
       <translation>全文検索が無効になっています</translation>
-    </message>
-    <message>
-      <source>Edit the dictionary via command:
-%1</source>
-      <translation>コマンドで辞書を編集します:
-%1</translation>
     </message>
   </context>
   <context>
@@ -749,10 +739,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>辞書フォルダを開く</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>辞書を編集</translation>
     </message>
   </context>
   <context>
@@ -2429,10 +2415,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>辞書バーに名前を表示(&amp;B)</translation>
     </message>
     <message>
-      <source>Show Small Icons in &amp;Toolbars</source>
-      <translation>ツールバーに小さなアイコンを表示(&amp;T)</translation>
-    </message>
-    <message>
       <source>&amp;Menubar</source>
       <translation>メニューバー(&amp;M)</translation>
     </message>
@@ -2447,10 +2429,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Forward</source>
       <translation>進む</translation>
-    </message>
-    <message>
-      <source>Enable Scanning</source>
-      <translation>スキャンを有効化</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2545,10 +2523,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Remove current tab from Favorites</source>
       <translation>お気に入りから現在のタブを削除</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
@@ -2703,16 +2677,28 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>辞書フォルダを開く</translation>
     </message>
     <message>
-      <source>Edit dictionary</source>
-      <translation>辞書を編集</translation>
-    </message>
-    <message>
       <source>Now indexing for full-text search: </source>
       <translation>全文検索のインデックス作成: </translation>
     </message>
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>ヘッドワード &quot;%1&quot; をお気に入りから削除しますか？</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>ツールバーに小さいアイコンを表示する(&amp;S)</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>ツールバーに大きいアイコンを表示する(&amp;L)</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>ツールバーに通常アイコンを表示する(&amp;N)</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>クリップボード監視の切り替え</translation>
     </message>
   </context>
   <context>
@@ -3057,16 +3043,6 @@ the application.</source>
       <translation>スキャン ポップアップ(&amp;S)</translation>
     </message>
     <message>
-      <source>Chooses whether the popup mode is on by default or not. If checked,
-the program would always start with the popup active.</source>
-      <translation>スキャン ポップアップ モードを既定でオンにするかを選択します。チェックされている場合、
-プログラムは常にスキャン ポップアップがアクティブで起動します。</translation>
-    </message>
-    <message>
-      <source>Start with popup turned on</source>
-      <translation>スキャン ポップアップをオンにして起動する</translation>
-    </message>
-    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>翻訳された単語をポップアップウィンドウに表示する代わりにメインウィンドウに送信する</translation>
     </message>
@@ -3179,10 +3155,6 @@ in the pressed state when the word selection changes.</source>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>メイン ウィンドウで単語を自動的に発音する</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in popup</source>
-      <translation>スキャン ポップアップで単語を自動的に発音する</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3573,6 +3545,18 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Restart needed</source>
       <translation>再起動が必要です</translation>
     </message>
+    <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>クリップボード監視をオンにして開始します</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>ポップアップで単語を自動発音する</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3813,10 +3797,6 @@ from Stardict, Babylon and GLS dictionaries</source>
 could be resized or managed in other ways.</source>
       <translation>ウィンドウを画面に固定してサイズの変更ができる
 ようにするにはこのピンを使用します。</translation>
-    </message>
-    <message>
-      <source>%1 - GoldenDict-ng</source>
-      <translation>%1 - GoldenDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>

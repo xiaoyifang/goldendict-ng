@@ -277,7 +277,7 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( wstring const & word,
 
     string ref = string( "\"" ) + url.toEncoded().data() + "\"";
 
-    result += addAudioLink( ref, getId() );
+    result += addAudioLink( url.toEncoded(), getId() );
 
     result += "<td><a href=" + ref + R"(><img src="qrc:///icons/playsound.png" border="0" alt="Play"/></a></td>)";
     result += "<td><a href=" + ref + ">" + i->second + "</a></td>";
@@ -294,7 +294,7 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( wstring const & word,
 
     string ref = string( "\"" ) + url.toEncoded().data() + "\"";
 
-    result += addAudioLink( ref, getId() );
+    result += addAudioLink( url.toEncoded(), getId() );
 
     result += "<td><a href=" + ref + R"(><img src="qrc:///icons/playsound.png" border="0" alt="Play"/></a></td>)";
     result += "<td><a href=" + ref + ">" + i->second + "</a></td>";

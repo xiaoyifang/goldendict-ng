@@ -596,10 +596,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictInfo</name>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Editoj fjalorin</translation>
-    </message>
-    <message>
       <source>Open index folder</source>
       <translation>Hapni dosjen e indeksit</translation>
     </message>
@@ -650,12 +646,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Full-text search disabled</source>
       <translation>Kërkimi në tekst të plotë është çaktivizuar</translation>
-    </message>
-    <message>
-      <source>Edit the dictionary via command:
-%1</source>
-      <translation>Editoj fjalorin me komandën:
-%1</translation>
     </message>
   </context>
   <context>
@@ -748,10 +738,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>Hap dosjen e fjalorit</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>Editoj fjalorin</translation>
     </message>
   </context>
   <context>
@@ -2428,10 +2414,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Tregoj emrat e &amp;fjalorëve</translation>
     </message>
     <message>
-      <source>Show Small Icons in &amp;Toolbars</source>
-      <translation>Tregoj ikonat e &amp;vogla</translation>
-    </message>
-    <message>
       <source>&amp;Menubar</source>
       <translation>Brezi i &amp;menysë</translation>
     </message>
@@ -2446,10 +2428,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Forward</source>
       <translation>Para</translation>
-    </message>
-    <message>
-      <source>Enable Scanning</source>
-      <translation>Aktivizo Skanimin</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2544,10 +2522,6 @@ Për të gjetur &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simbo
     <message>
       <source>Remove current tab from Favorites</source>
       <translation>Hiq skedën aktuale nga Të preferuarat</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
@@ -2702,16 +2676,28 @@ Për të gjetur &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simbo
       <translation>Hap dosjen e fjalorit</translation>
     </message>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Editoj fjalorin</translation>
-    </message>
-    <message>
       <source>Now indexing for full-text search: </source>
       <translation>Tani indeksoni për kërkimin e tekstit të plotë: </translation>
     </message>
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Të hiqet kryefjala &quot;%1&quot; nga Të preferuarat?</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>Shfaq ikonat e &amp;të vogla në shiritat e veglave</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>Shfaq ikona &amp;të mëdha në shiritat e veglave</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>Shfaq ikonat &amp;Normale në shiritat e veglave</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>Ndrysho monitorimin e kujtesës së fragmenteve</translation>
     </message>
   </context>
   <context>
@@ -3051,16 +3037,6 @@ the application.</source>
       <translation>&amp;Skanimi i jashtëm</translation>
     </message>
     <message>
-      <source>Chooses whether the popup mode is on by default or not. If checked,
-the program would always start with the popup active.</source>
-      <translation>Zgjedh nëse mënyra standarde e skanimit të jashtëm është ndezur apo jo.
-Kur e zgjedh, programi nis gjithmonë me skanimin e jashtëm aktiv.</translation>
-    </message>
-    <message>
-      <source>Start with popup turned on</source>
-      <translation>Nis me skanuesin e ndezur</translation>
-    </message>
-    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Dërgon fjalën e përkthyer te dritarja kryesore, jo te dritarja kërcyese</translation>
     </message>
@@ -3173,10 +3149,6 @@ janë në gjendjen e shtypur.</translation>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Autoshqiptoj fjalët në dritaren kryesore</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in popup</source>
-      <translation>Autoshqiptoj fjalët e skanuara</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3566,6 +3538,18 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
       <source>Restart needed</source>
       <translation>Nevojitet rinisja</translation>
     </message>
+    <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>Zgjedh nëse monitorimi i kujtesës së fragmenteve do të aktivizohet si parazgjedhje në nisjen e programit&apos;.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>Filloni me monitorimin e kujtesës së fragmenteve të aktivizuar</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>Shqiptoni automatikisht fjalët në dritaren kërcyese</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3806,10 +3790,6 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
 could be resized or managed in other ways.</source>
       <translation>Këtë e përdor për të piketuar dritaren që të qëndrojë mbi ekran,
 që të marrë një përmasë të re ose për mënyrat e tjera.</translation>
-    </message>
-    <message>
-      <source>%1 - GoldenDict-ng</source>
-      <translation>%1 - GoldenDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>

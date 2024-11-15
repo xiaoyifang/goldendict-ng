@@ -597,10 +597,6 @@ entre la ortografía clásica y la escolar en cirílico)</translation>
   <context>
     <name>DictInfo</name>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Editar diccionario</translation>
-    </message>
-    <message>
       <source>Open index folder</source>
       <translation>Abrir carpeta de índice</translation>
     </message>
@@ -651,12 +647,6 @@ entre la ortografía clásica y la escolar en cirílico)</translation>
     <message>
       <source>Full-text search disabled</source>
       <translation>Búsqueda de texto completo deshabilitada</translation>
-    </message>
-    <message>
-      <source>Edit the dictionary via command:
-%1</source>
-      <translation>Edite el diccionario mediante el comando:
-%1</translation>
     </message>
   </context>
   <context>
@@ -749,10 +739,6 @@ entre la ortografía clásica y la escolar en cirílico)</translation>
     <message>
       <source>Open dictionary folder</source>
       <translation>Abrir carpeta del diccionario</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>Editar diccionario</translation>
     </message>
   </context>
   <context>
@@ -2429,10 +2415,6 @@ entre la ortografía clásica y la escolar en cirílico)</translation>
       <translation>Mostrar nombres en el diccionario y la barra</translation>
     </message>
     <message>
-      <source>Show Small Icons in &amp;Toolbars</source>
-      <translation>Mostrar iconos pequeños en las barras de herramientas</translation>
-    </message>
-    <message>
       <source>&amp;Menubar</source>
       <translation>&amp;Barra de menús</translation>
     </message>
@@ -2447,10 +2429,6 @@ entre la ortografía clásica y la escolar en cirílico)</translation>
     <message>
       <source>Forward</source>
       <translation>Siguiente</translation>
-    </message>
-    <message>
-      <source>Enable Scanning</source>
-      <translation>Habilitar escaneo</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2545,10 +2523,6 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; uso de
     <message>
       <source>Remove current tab from Favorites</source>
       <translation>Eliminar la pestaña actual de Favoritos</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
@@ -2703,16 +2677,28 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; uso de
       <translation>Abrir carpeta del diccionario</translation>
     </message>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Editar diccionario</translation>
-    </message>
-    <message>
       <source>Now indexing for full-text search: </source>
       <translation>Ahora indexando para búsqueda de texto completo: </translation>
     </message>
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>¿Eliminar el encabezado &quot;%1&quot; de Favoritos?</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Small Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Large Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Normal Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation type="unfinished">Toggle clipboard monitoring</translation>
     </message>
   </context>
   <context>
@@ -3054,16 +3040,6 @@ the application.</source>
       <translation>&amp;Escanear con ventana emergente</translation>
     </message>
     <message>
-      <source>Chooses whether the popup mode is on by default or not. If checked,
-the program would always start with the popup active.</source>
-      <translation>Selecciona si el modo de escaneo está activado por defecto o no. Si está
-marcado, el programa siempre iniciará con el modo de escaneo habilitado.</translation>
-    </message>
-    <message>
-      <source>Start with popup turned on</source>
-      <translation>Habilitar escaneo en una ventana emergente cuando inicia</translation>
-    </message>
-    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Enviar la palabra traducida a la ventana principal en lugar de mostrarla en la ventana emergente</translation>
     </message>
@@ -3176,10 +3152,6 @@ seleccionadas estén oprimidas cuando la selección de la palabra cambie.</trans
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Pronuncia palabras automáticamente en la ventana principal</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in popup</source>
-      <translation>Pronunciar palabras automáticamente a escanear con la ventana emergente</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3569,6 +3541,18 @@ de los diccionarios Stardict, Babylon y GLS.</translation>
       <source>Restart needed</source>
       <translation>Reiniciar necesario</translation>
     </message>
+    <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation type="unfinished">Start with clipboard monitoring turned on</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation type="unfinished">Auto-pronounce words in the popup</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3808,10 +3792,6 @@ de los diccionarios Stardict, Babylon y GLS.</translation>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
       <translation>Utilice esto para fijar la ventana en la pantalla, redimensionarla o gerenciarla en otra manera.</translation>
-    </message>
-    <message>
-      <source>%1 - GoldenDict-ng</source>
-      <translation type="unfinished">%1 - GoldenDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>

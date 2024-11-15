@@ -1,8 +1,7 @@
 /* This file is (c) 2017 Abs62
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __FAVORITIESPANEWIDGET_HH__INCLUDED__
-#define __FAVORITIESPANEWIDGET_HH__INCLUDED__
+#pragma once
 
 #include <QWidget>
 #include <QSize>
@@ -85,13 +84,13 @@ private slots:
 private:
   virtual bool eventFilter( QObject *, QEvent * );
 
-  Config::Class * m_cfg;
-  QTreeView * m_favoritesTree;
-  QMenu * m_favoritesMenu;
-  QAction * m_deleteSelectedAction;
-  QAction * m_separator;
-  QAction * m_copySelectedToClipboard;
-  QAction * m_addFolder;
+  Config::Class * m_cfg               = nullptr;
+  QTreeView * m_favoritesTree         = nullptr;
+  QMenu * m_favoritesMenu             = nullptr;
+  QAction * m_deleteSelectedAction    = nullptr;
+  QAction * m_separator               = nullptr;
+  QAction * m_copySelectedToClipboard = nullptr;
+  QAction * m_addFolder               = nullptr;
 
   QWidget favoritesPaneTitleBar;
   QHBoxLayout favoritesPaneTitleBarLayout;
@@ -310,5 +309,3 @@ private:
   QStringList mimeFormats;
   QModelIndexList indexes;
 };
-
-#endif // __FAVORITIESPANEWIDGET_HH__INCLUDED__

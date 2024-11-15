@@ -596,10 +596,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictInfo</name>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Wörterbuch bearbeiten</translation>
-    </message>
-    <message>
       <source>Open index folder</source>
       <translation>Indexordner öffnen</translation>
     </message>
@@ -650,12 +646,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Full-text search disabled</source>
       <translation>Volltextsuche deaktiviert</translation>
-    </message>
-    <message>
-      <source>Edit the dictionary via command:
-%1</source>
-      <translation>Das Wörterbuch mit folgendem Kommando bearbeiten:
-%1</translation>
     </message>
   </context>
   <context>
@@ -748,10 +738,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>Wörterbuch-Ordner öffnen</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>Wörterbuch bearbeiten</translation>
     </message>
   </context>
   <context>
@@ -2428,10 +2414,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Namen in &amp;Wörterbuchleiste anzeigen</translation>
     </message>
     <message>
-      <source>Show Small Icons in &amp;Toolbars</source>
-      <translation>Kleine Icons in der &amp;Toolbar anzeigen</translation>
-    </message>
-    <message>
       <source>&amp;Menubar</source>
       <translation>&amp;Menüleiste</translation>
     </message>
@@ -2446,10 +2428,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Forward</source>
       <translation>Vorwärts</translation>
-    </message>
-    <message>
-      <source>Enable Scanning</source>
-      <translation>Scannen aktivieren</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2544,10 +2522,6 @@ Um &apos;*&apos;, &apos;zu finden?&apos;, &apos;[&apos;, &apos;]&apos; Symbole v
     <message>
       <source>Remove current tab from Favorites</source>
       <translation>Aktuellen Tab von Lesezeichen entfernen</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
@@ -2702,16 +2676,28 @@ Um &apos;*&apos;, &apos;zu finden?&apos;, &apos;[&apos;, &apos;]&apos; Symbole v
       <translation>Wörterbuch-Ordner öffnen</translation>
     </message>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Wörterbuch bearbeiten</translation>
-    </message>
-    <message>
       <source>Now indexing for full-text search: </source>
       <translation>Indexierung für Volltextsuche: </translation>
     </message>
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Schlagwort &quot;%1&quot; aus den Favoriten entfernen?</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>Kleine Symbole in Symbolleisten anzeigen</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>Große Symbole in Symbolleisten anzeigen</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>&amp;Normale Symbole in Symbolleisten anzeigen</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>Zwischenablageüberwachung ein-/ausschalten</translation>
     </message>
   </context>
   <context>
@@ -3053,16 +3039,6 @@ the application.</source>
       <translation>Popup &amp;scannen</translation>
     </message>
     <message>
-      <source>Chooses whether the popup mode is on by default or not. If checked,
-the program would always start with the popup active.</source>
-      <translation>Gibt an, ob der Popup Modus standardmäßig aktiviert ist oder nicht. Falls aktiviert,
-wird das Programm immer mit aktiviertem Modus gestartet.</translation>
-    </message>
-    <message>
-      <source>Start with popup turned on</source>
-      <translation>Mit aktiviertem Popup starten</translation>
-    </message>
-    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Übersetzte Wörter ans Hauptfenster senden, anstatt sie im Popup-Fenster anzuzeigen</translation>
     </message>
@@ -3174,10 +3150,6 @@ in the pressed state when the word selection changes.</source>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Wörter im Hauptfenster automatisch aussprechen</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in popup</source>
-      <translation>Wörter im Popup automatisch aussprechen</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3566,6 +3538,18 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Restart needed</source>
       <translation>Neustart erforderlich</translation>
     </message>
+    <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>Wählt, ob die Zwischenablageüberwachung beim Start des Programms&apos;standardmäßig aktiviert wird.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>Beginnen Sie mit aktivierter Zwischenablageüberwachung</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>Wörter im Popup automatisch aussprechen</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3806,10 +3790,6 @@ from Stardict, Babylon and GLS dictionaries</source>
 could be resized or managed in other ways.</source>
       <translation>Hiermit kann das Fenster fixiert  werden, damit es am Bildschirm bleibt,
 es in der Größe verändert, oder andersweitig verwaltet werden kann.</translation>
-    </message>
-    <message>
-      <source>%1 - GoldenDict-ng</source>
-      <translation>%1 - GoldenDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>

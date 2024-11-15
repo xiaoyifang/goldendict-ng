@@ -1,17 +1,13 @@
-#ifndef __DECOMPRESS_HH_INCLUDED__
-#define __DECOMPRESS_HH_INCLUDED__
+#pragma once
 
 #include <QByteArray>
 #include <string>
 
-using std::string;
+/// @param adler32_checksum  0 to skip checksum
+QByteArray zlibDecompress( const char * bufptr, unsigned length, unsigned long adler32_checksum );
 
-QByteArray zlibDecompress( const char * bufptr, unsigned length );
+std::string decompressZlib( const char * bufptr, unsigned length );
 
-string decompressZlib( const char * bufptr, unsigned length );
+std::string decompressBzip2( const char * bufptr, unsigned length );
 
-string decompressBzip2( const char * bufptr, unsigned length );
-
-string decompressLzma2( const char * bufptr, unsigned length, bool raw_decoder = false );
-
-#endif // DECOMPRESS_HH
+std::string decompressLzma2( const char * bufptr, unsigned length, bool raw_decoder = false );

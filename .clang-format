@@ -142,4 +142,7 @@ StatementMacros:
   - QT_REQUIRE_VERSION
 UseCRLF: false
 UseTab: Never
+---
+Language: ObjC
+BasedOnStyle: WebKit
 ...

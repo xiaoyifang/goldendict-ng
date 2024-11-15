@@ -1,8 +1,6 @@
 #include "article_inspect.hh"
 #include <QCloseEvent>
-#if ( QT_VERSION > QT_VERSION_CHECK( 6, 0, 0 ) )
-  #include <QWebEngineContextMenuRequest>
-#endif
+#include <QWebEngineContextMenuRequest>
 ArticleInspector::ArticleInspector( QWidget * parent ):
   QWidget( parent, Qt::WindowType::Window )
 {
@@ -39,9 +37,7 @@ void ArticleInspector::triggerAction( QWebEnginePage * page )
     return;
   }
 
-#if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) || QT_VERSION > QT_VERSION_CHECK( 6, 3, 0 ) )
   page->triggerAction( QWebEnginePage::InspectElement );
-#endif
 }
 
 void ArticleInspector::closeEvent( QCloseEvent * )

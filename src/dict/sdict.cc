@@ -1,35 +1,30 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#include "sdict.hh"
 #include "btreeidx.hh"
-#include "folding.hh"
-#include "utf8.hh"
 #include "chunkedstorage.hh"
-#include "langcoder.hh"
-#include "gddebug.hh"
-
 #include "decompress.hh"
-#include "htmlescape.hh"
+#include "folding.hh"
 #include "ftshelpers.hh"
-
+#include "gddebug.hh"
+#include "htmlescape.hh"
+#include "langcoder.hh"
+#include "sdict.hh"
+#include "utf8.hh"
 #include <map>
+#include <QAtomicInt>
+#include <QRegularExpression>
+#include <QSemaphore>
+#include <QString>
 #include <set>
 #include <string>
+
+#include "utils.hh"
+
 
 #ifdef _MSC_VER
   #include <stub_msvc.h>
 #endif
-
-#include <QString>
-#include <QSemaphore>
-#include <QAtomicInt>
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-  #include <QtCore5Compat>
-#endif
-#include <QRegularExpression>
-
-#include "utils.hh"
 
 namespace Sdict {
 

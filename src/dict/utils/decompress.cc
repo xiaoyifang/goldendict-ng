@@ -3,20 +3,21 @@
 #include <bzlib.h>
 #include <lzma.h>
 
-#define CHUNK_SIZE 2048
+using std::string;
 
-QByteArray zlibDecompress( const char * bufptr, unsigned length )
+static constexpr qsizetype CHUNK_SIZE = 2048;
+
+QByteArray zlibDecompress( const char * bufptr, unsigned length, uLong adler32_checksum )
 {
-  z_stream zs;
-  char buf[ CHUNK_SIZE ];
+  z_stream zs{};
   QByteArray str;
-  int res;
-  memset( &zs, 0, sizeof( zs ) );
+  int res     = Z_OK;
   zs.next_in  = (Bytef *)bufptr;
   zs.avail_in = length;
   res         = inflateInit( &zs );
 
   if ( res == Z_OK ) {
+    char buf[ CHUNK_SIZE ];
     while ( res != Z_STREAM_END ) {
       zs.next_out  = (Bytef *)buf;
       zs.avail_out = CHUNK_SIZE;
@@ -27,9 +28,7 @@ QByteArray zlibDecompress( const char * bufptr, unsigned length )
       }
     }
   }
-
-  inflateEnd( &zs );
-  if ( res != Z_STREAM_END ) {
+  if ( inflateEnd( &zs ) != Z_OK || res != Z_STREAM_END || ( adler32_checksum != 0 && zs.adler != adler32_checksum ) ) {
     str.clear();
   }
   return str;
@@ -37,7 +36,7 @@ QByteArray zlibDecompress( const char * bufptr, unsigned length )
 
 string decompressZlib( const char * bufptr, unsigned length )
 {
-  QByteArray b = zlibDecompress( bufptr, length );
+  QByteArray b = zlibDecompress( bufptr, length, 0 );
   return string( b.constData(), b.size() );
 }
 

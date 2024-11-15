@@ -1,8 +1,7 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __GROUPS_WIDGETS_HH_INCLUDED__
-#define __GROUPS_WIDGETS_HH_INCLUDED__
+#pragma once
 
 // Various custom widgets used in the Groups dialog
 
@@ -121,9 +120,6 @@ class DictGroupWidget: public QWidget
 public:
   DictGroupWidget( QWidget * parent, std::vector< sptr< Dictionary::Class > > const &, Config::Group const & );
 
-  /// Makes the group's configuration out of the data currently held.
-  /// Since the group's name is not part of the widget by design right now
-  /// (it is known by the containing tab widget only), it is returned as empty.
   Config::Group makeGroup() const;
 
   DictListModel * getModel() const
@@ -136,6 +132,16 @@ public:
     return ui.dictionaries->selectionModel();
   }
 
+  QString name()
+  {
+    return groupName;
+  }
+
+  void setName( const QString & name )
+  {
+    groupName = name;
+  }
+
 private slots:
 
   void groupIconActivated( int );
@@ -145,6 +151,7 @@ private slots:
 private:
   Ui::DictGroupWidget ui;
   unsigned groupId;
+  QString groupName;
 
 signals:
   void showDictionaryInfo( QString const & id );
@@ -254,5 +261,3 @@ private slots:
 signals:
   void filterChanged( QString const & filter );
 };
-
-#endif

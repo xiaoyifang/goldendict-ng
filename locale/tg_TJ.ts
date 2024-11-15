@@ -597,10 +597,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictInfo</name>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Таҳрир кардани луғат</translation>
-    </message>
-    <message>
       <source>Open index folder</source>
       <translation>Папкаи индексро кушоед</translation>
     </message>
@@ -651,12 +647,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Full-text search disabled</source>
       <translation>Ҷустуҷӯи пурраи матн ғайрифаъол аст</translation>
-    </message>
-    <message>
-      <source>Edit the dictionary via command:
-%1</source>
-      <translation>Таҳрир кардани луғат тавассути фармон:
-%1</translation>
     </message>
   </context>
   <context>
@@ -749,10 +739,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>Кушодани ҷузвдони луғат</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>Таҳрир кардани луғат</translation>
     </message>
   </context>
   <context>
@@ -2429,10 +2415,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Номҳоро дар &amp;лавҳаи луғат намоиш додан</translation>
     </message>
     <message>
-      <source>Show Small Icons in &amp;Toolbars</source>
-      <translation>Нишонаҳои хурдро дар панели асбобҳо нишон диҳед</translation>
-    </message>
-    <message>
       <source>&amp;Menubar</source>
       <translation>&amp;Лавҳаи меню</translation>
     </message>
@@ -2447,10 +2429,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Forward</source>
       <translation>Ба пеш</translation>
-    </message>
-    <message>
-      <source>Enable Scanning</source>
-      <translation>Сканерро фаъол созед</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2545,10 +2523,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Remove current tab from Favorites</source>
       <translation>Варақаи ҷориро аз Favorites хориҷ кунед</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
@@ -2703,16 +2677,28 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Кушодани ҷузвдони луғат</translation>
     </message>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Таҳрир кардани луғат</translation>
-    </message>
-    <message>
       <source>Now indexing for full-text search: </source>
       <translation>Дар ҳоли таҳияи индекси ҷустуҷӯ бо матни пурра: </translation>
     </message>
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Сарлавҳаи &quot;%1&quot; аз дӯстдоштаҳо хориҷ карда шавад?</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>Нишонаҳои &amp;хурдро дар панели асбобҳо нишон диҳед</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>Нишонаҳои &amp;калонро дар панели асбобҳо нишон диҳед</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>Нишон додани &amp;Нормӣ дар панели асбобҳо</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>Мониторинги буферро иваз кунед</translation>
     </message>
   </context>
   <context>
@@ -3057,16 +3043,6 @@ the application.</source>
       <translation>&amp;Тарҷумаи пайдошаванда</translation>
     </message>
     <message>
-      <source>Chooses whether the popup mode is on by default or not. If checked,
-the program would always start with the popup active.</source>
-      <translation>Барои фаъол ё хомӯш кардани тарҷумаи пайдошаванда, имконоти зеринро истифода баред.
-Агар ин имконотро интихоб мекунед, тарҷумаи пайдошаванда ба худкор фаъол мешавад.</translation>
-    </message>
-    <message>
-      <source>Start with popup turned on</source>
-      <translation>Барномаро бо хусусияти тарҷумаи пайдошаванда оғоз кардан</translation>
-    </message>
-    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Калимаи тарҷумашударо ба ҷои равзанаи пайдошаванда дар равзанаи асосӣ нишон диҳед</translation>
     </message>
@@ -3179,10 +3155,6 @@ in the pressed state when the word selection changes.</source>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Талаффузи худкори калимаҳо дар равзанаи асосӣ</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in popup</source>
-      <translation>Талаффузи худкори калимаҳо дар тарҷумаи пайдошаванда</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3574,6 +3546,18 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Restart needed</source>
       <translation>Аз нав оғоз кардан лозим аст</translation>
     </message>
+    <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>Интихоб мекунад, ки мониторинги буфер ба таври нобаёнӣ ҳангоми оғози барнома&apos;фаъол мешавад ё на.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>Бо фаъол кардани мониторинги буфер оғоз кунед</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>Калимаҳоро дар равзанаи пайдошуда худкор талаффуз кунед</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3814,10 +3798,6 @@ from Stardict, Babylon and GLS dictionaries</source>
 could be resized or managed in other ways.</source>
       <translation>Барои мустаҳкам кардан равзана дар экран, иваз кардани ҳаҷм,
 ё идоракунии хусусиятҳои дигар инро зер кунед.</translation>
-    </message>
-    <message>
-      <source>%1 - GoldenDict-ng</source>
-      <translation>%1 - GoldenDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>

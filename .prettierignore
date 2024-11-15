@@ -1,2 +1,12 @@
-**/.clang-format
+# ignore all
+/**/*.*
 
+# unignore js and cssfiles
+!**/*.js
+!**/*.css
+
+# reignore other js files
+**/*.min.js
+**/iframe-defer.js
+**/mark.js
+**/darkreader.js

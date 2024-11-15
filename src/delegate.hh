@@ -1,5 +1,4 @@
-#ifndef __DELEGATE_HH_INCLUDED__
-#define __DELEGATE_HH_INCLUDED__
+#pragma once
 
 #include <QAbstractItemDelegate>
 #include <QStyledItemDelegate>
@@ -13,5 +12,3 @@ public:
 private:
   QStyledItemDelegate * mainDelegate;
 };
-
-#endif

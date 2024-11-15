@@ -8,11 +8,6 @@
 #include <QBitmap>
 #include <QMenu>
 #include <QMouseEvent>
-#if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
-  #include <QDesktopWidget>
-  #include <QScreen>
-  #include <QStringList>
-#endif
 #include "gddebug.hh"
 #include "gestures.hh"
 
@@ -140,7 +135,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   dictionaryBar.setFloatable( false );
 
   Instances::Group const * igrp = groups.findGroup( cfg.lastPopupGroupId );
-  if ( cfg.lastPopupGroupId == Instances::Group::AllGroupId ) {
+  if ( cfg.lastPopupGroupId == GroupId::AllGroupId ) {
     if ( igrp ) {
       igrp->checkMutedDictionaries( &cfg.popupMutedDictionaries );
     }
@@ -165,12 +160,12 @@ ScanPopup::ScanPopup( QWidget * parent,
            &PronounceEngine::emitAudio,
            this,
            [ this ]( auto audioUrl ) {
+             definition->setAudioLink( audioUrl );
              if ( !isActiveWindow() ) {
                return;
              }
              if ( cfg.preferences.pronounceOnLoadPopup ) {
-
-               definition->openLink( QUrl::fromEncoded( audioUrl.toUtf8() ), {} );
+               definition->playAudio( QUrl::fromEncoded( audioUrl.toUtf8() ) );
              }
            } );
   pinnedGeometry = cfg.popupWindowGeometry;
@@ -591,7 +586,7 @@ void ScanPopup::currentGroupChanged( int )
 {
   cfg.lastPopupGroupId          = ui.groupList->getCurrentGroup();
   Instances::Group const * igrp = groups.findGroup( cfg.lastPopupGroupId );
-  if ( cfg.lastPopupGroupId == Instances::Group::AllGroupId ) {
+  if ( cfg.lastPopupGroupId == GroupId::AllGroupId ) {
     if ( igrp ) {
       igrp->checkMutedDictionaries( &cfg.popupMutedDictionaries );
     }
@@ -727,7 +722,7 @@ bool ScanPopup::eventFilter( QObject * watched, QEvent * event )
 
     if ( event->type() == QEvent::MouseMove ) {
       QMouseEvent * mouseEvent = (QMouseEvent *)event;
-      reactOnMouseMove( mouseEvent->globalPos() );
+      reactOnMouseMove( mouseEvent->globalPosition() );
     }
   }
 
@@ -751,9 +746,9 @@ bool ScanPopup::eventFilter( QObject * watched, QEvent * event )
   return QMainWindow::eventFilter( watched, event );
 }
 
-void ScanPopup::reactOnMouseMove( QPoint const & p )
+void ScanPopup::reactOnMouseMove( QPointF const & p )
 {
-  if ( geometry().contains( p ) ) {
+  if ( geometry().contains( p.toPoint() ) ) {
     //        GD_DPRINTF( "got inside\n" );
 
     hideTimer.stop();
@@ -773,7 +768,7 @@ void ScanPopup::reactOnMouseMove( QPoint const & p )
     // receiving this event, meaning there's basically nothing under the
     // cursor.
     if ( /*watched == this &&*/
-         !frameGeometry().adjusted( -proximity, -proximity, proximity, proximity ).contains( p ) ) {
+         !frameGeometry().adjusted( -proximity, -proximity, proximity, proximity ).contains( p.toPoint() ) ) {
       // We've way too far from the window -- hide the popup
 
       // If the mouse never entered the popup, hide the window instantly --
@@ -794,14 +789,14 @@ void ScanPopup::mousePressEvent( QMouseEvent * ev )
   // With mouse grabs, the press can occur anywhere on the screen, which
   // might mean hiding the window.
 
-  if ( !frameGeometry().contains( ev->globalPos() ) ) {
+  if ( !frameGeometry().contains( ev->globalPosition().toPoint() ) ) {
     hideWindow();
 
     return;
   }
 
   if ( ev->button() == Qt::LeftButton ) {
-    startPos = ev->globalPos();
+    startPos = ev->globalPosition();
     setCursor( Qt::ClosedHandCursor );
   }
 
@@ -811,15 +806,13 @@ void ScanPopup::mousePressEvent( QMouseEvent * ev )
 void ScanPopup::mouseMoveEvent( QMouseEvent * event )
 {
   if ( event->buttons() && cursor().shape() == Qt::ClosedHandCursor ) {
-    QPoint newPos = event->globalPos();
-
-    QPoint delta = newPos - startPos;
+    QPointF newPos = event->globalPosition();
+    QPointF delta  = newPos - startPos;
 
     startPos = newPos;
 
     // Move the window
-
-    move( pos() + delta );
+    move( ( pos() + delta ).toPoint() );
   }
 
   QMainWindow::mouseMoveEvent( event );
@@ -848,11 +841,7 @@ void ScanPopup::leaveEvent( QEvent * event )
   }
 }
 
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
 void ScanPopup::enterEvent( QEnterEvent * event )
-#else
-void ScanPopup::enterEvent( QEvent * event )
-#endif
 {
   QMainWindow::enterEvent( event );
 
@@ -1086,7 +1075,7 @@ void ScanPopup::updateDictionaryBar()
     dictionaryBar.setDictionaries( grp->dictionaries );
   }
 
-  if ( currentId == Instances::Group::AllGroupId ) {
+  if ( currentId == GroupId::AllGroupId ) {
     dictionaryBar.setMutedDictionaries( &cfg.popupMutedDictionaries );
   }
   else {

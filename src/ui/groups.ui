@@ -36,7 +36,7 @@
      <item>
       <spacer name="verticalSpacer_2">
        <property name="orientation">
-        <enum>Qt::Orientation::Vertical</enum>
+        <enum>Qt::Vertical</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -99,7 +99,7 @@
      <item>
       <spacer name="verticalSpacer">
        <property name="orientation">
-        <enum>Qt::Orientation::Vertical</enum>
+        <enum>Qt::Vertical</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -123,10 +123,10 @@
      <item>
       <widget class="DictGroupsWidget" name="groups">
        <property name="tabPosition">
-        <enum>QTabWidget::TabPosition::North</enum>
+        <enum>QTabWidget::North</enum>
        </property>
        <property name="elideMode">
-        <enum>Qt::TextElideMode::ElideNone</enum>
+        <enum>Qt::ElideNone</enum>
        </property>
        <widget class="QWidget" name="tab_4">
         <attribute name="title">
@@ -180,7 +180,7 @@
        <item>
         <spacer name="horizontalSpacer_2">
          <property name="orientation">
-          <enum>Qt::Orientation::Horizontal</enum>
+          <enum>Qt::Horizontal</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
@@ -224,7 +224,7 @@
        <item>
         <spacer name="horizontalSpacer">
          <property name="orientation">
-          <enum>Qt::Orientation::Horizontal</enum>
+          <enum>Qt::Horizontal</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>

@@ -169,10 +169,6 @@ void addEntryToIndex( string & word,
   indexedWords.addWord( Utf8::decode( word ), articleOffset );
 }
 
-
-DEF_EX( exFailedToDecompressArticle, "Failed to decompress article's body", Dictionary::Ex )
-DEF_EX( exChunkIndexOutOfRange, "Chunk index is out of range", Dictionary::Ex )
-
 class BglDictionary: public BtreeIndexing::BtreeDictionary
 {
   QMutex idxMutex;
@@ -721,8 +717,8 @@ void BglArticleRequest::run()
       string const & targetHeadword = displayedHeadword.size() ? displayedHeadword : headword;
 
       QCryptographicHash hash( QCryptographicHash::Md5 );
-      hash.addData( targetHeadword.data(), targetHeadword.size() + 1 ); // with 0
-      hash.addData( articleText.data(), articleText.size() );
+      hash.addData( { targetHeadword.data(), static_cast< qsizetype >( targetHeadword.size() + 1 ) } ); // with 0
+      hash.addData( { articleText.data(), static_cast< qsizetype >( articleText.size() ) } );
 
       if ( !articleBodiesIncluded.insert( hash.result() ).second ) {
         continue; // Already had this body

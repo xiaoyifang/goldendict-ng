@@ -93,7 +93,7 @@ class ForvoArticleRequest: public Dictionary::DataRequest
     }
   };
 
-  typedef std::list< NetReply > NetReplies;
+  using NetReplies = std::list< NetReply >;
   NetReplies netReplies;
   QString apiKey, languageCode;
   string dictionaryId;
@@ -107,7 +107,7 @@ public:
                        string const & dictionaryId_,
                        QNetworkAccessManager & mgr );
 
-  virtual void cancel();
+  void cancel() override;
 
 private:
 
@@ -260,7 +260,7 @@ void ForvoArticleRequest::requestFinished( QNetworkReply * r )
 
                 string ref = string( "\"" ) + url.toEncoded().data() + "\"";
 
-                articleBody += addAudioLink( ref, dictionaryId ).c_str();
+                articleBody += addAudioLink( url.toEncoded(), dictionaryId ).c_str();
 
                 bool isMale = ( item.namedItem( "sex" ).toElement().text().toLower() != "f" );
 

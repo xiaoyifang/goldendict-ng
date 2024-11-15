@@ -1,7 +1,6 @@
 /* Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __STYLESCOMBOBOX_HH_INCLUDED__
-#define __STYLESCOMBOBOX_HH_INCLUDED__
+#pragma once
 
 #include <QComboBox>
 #include <QString>
@@ -25,5 +24,3 @@ public:
   /// Returns current style.
   QString getCurrentStyle() const;
 };
-
-#endif // __STYLESCOMBOBOX_HH_INCLUDED__

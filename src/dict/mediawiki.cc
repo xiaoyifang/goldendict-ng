@@ -223,7 +223,7 @@ void MediaWikiWordSearchRequest::downloadFinished()
 
         qDebug() << "matches" << matches.size();
         for ( int x = 0; x < nl.length(); ++x ) {
-          matches.emplace_back( gd::toWString( nl.item( x ).toElement().attribute( "title" ) ) );
+          matches.emplace_back( nl.item( x ).toElement().attribute( "title" ).toStdU32String() );
         }
       }
     }
@@ -389,7 +389,7 @@ void MediaWikiSectionsParser::closeListTags( int currentLevel )
 
 class MediaWikiArticleRequest: public MediaWikiDataRequestSlots
 {
-  typedef std::list< std::pair< QNetworkReply *, bool > > NetReplies;
+  using NetReplies = std::list< std::pair< QNetworkReply *, bool > >;
   NetReplies netReplies;
   QString url;
   QString lang;
@@ -608,7 +608,7 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
                 if ( ref.startsWith( "//" ) ) {
                   ref = wikiUrl.scheme() + ":" + ref;
                 }
-                auto script       = addAudioLink( "\"" + ref + "\"", this->dictPtr->getId() );
+                auto script       = addAudioLink( ref, this->dictPtr->getId() );
                 QString audio_url = QString::fromStdString( script ) + "<a href=\"" + ref
                   + R"("><img src="qrc:///icons/playsound.png" border="0" align="absmiddle" alt="Play"/></a>)";
                 articleNewString += audio_url;

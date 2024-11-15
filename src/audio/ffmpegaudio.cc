@@ -2,27 +2,14 @@
 
   #include "audiooutput.hh"
   #include "ffmpegaudio.hh"
-
-  #include <errno.h>
-
-extern "C" {
-  #include <libavcodec/avcodec.h>
-  #include <libavformat/avformat.h>
-  #include <libavutil/avutil.h>
-  #include "libswresample/swresample.h"
-}
-
-  #include <QString>
-  #include <QDataStream>
-
-  #include <vector>
-  #if ( QT_VERSION >= QT_VERSION_CHECK( 6, 2, 0 ) )
-    #include <QMediaDevices>
-
-    #include <QAudioDevice>
-  #endif
   #include "gddebug.hh"
   #include "utils.hh"
+  #include <QAudioDevice>
+  #include <QDataStream>
+  #include <QMediaDevices>
+  #include <QString>
+  #include <errno.h>
+  #include <vector>
 
 using std::vector;
 
@@ -284,14 +271,11 @@ void DecoderContext::closeCodec()
 
 bool DecoderContext::openOutputDevice( QString & errorString )
 {
-  // only check device when qt version is greater than 6.2
-  #if ( QT_VERSION >= QT_VERSION_CHECK( 6, 2, 0 ) )
   QAudioDevice m_outputDevice = QMediaDevices::defaultAudioOutput();
   if ( m_outputDevice.isNull() ) {
     errorString += QString( "Can not found default audio output device" );
     return false;
   }
-  #endif
 
   if ( audioOutput == nullptr ) {
     errorString += QStringLiteral( "Failed to create audioOutput." );

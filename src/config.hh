@@ -1,8 +1,7 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __CONFIG_HH_INCLUDED__
-#define __CONFIG_HH_INCLUDED__
+#pragma once
 
 #include <QObject>
 #include <QList>
@@ -18,11 +17,25 @@
 #include <optional>
 #include <QThread>
 
+/// Special group IDs
+enum GroupId : unsigned {
+  AllGroupId  = UINT_MAX - 1, /// The 'All' group
+  HelpGroupId = UINT_MAX,     /// The fictitious 'Help' group
+  NoGroupId   = 0,            /// Invalid value, used to specify that no group id is specified at all.
+};
+
 /// GoldenDict's configuration
 namespace Config {
 
+// Tri states enum for Dark and Dark reader mode
+enum class Dark : std::uint8_t {
+  Off = 0,
+  On  = 1,
+  Auto = 2,
+};
+
 /// Dictionaries which are temporarily disabled via the dictionary bar.
-typedef QSet< QString > MutedDictionaries;
+using MutedDictionaries = QSet< QString >;
 
 /// A path where to search for the dictionaries
 struct Path
@@ -47,7 +60,7 @@ struct Path
 };
 
 /// A list of paths where to search for the dictionaries
-typedef QList< Path > Paths;
+using Paths = QList< Path >;
 
 /// A directory holding bunches of audiofiles, which is indexed into a separate
 /// dictionary.
@@ -72,7 +85,7 @@ struct SoundDir
 };
 
 /// A list of SoundDirs
-typedef QList< SoundDir > SoundDirs;
+using SoundDirs = QList< SoundDir >;
 
 struct DictionaryRef
 {
@@ -178,14 +191,11 @@ struct HotKey
   Qt::KeyboardModifiers modifiers;
   int key1, key2;
 
-  HotKey();
-
   /// Hotkey's constructor, take a QKeySequence's first two keys
   /// 1st key's modifier will be the `modifiers` above
   /// 1st key without modifier will becomes `key1`
   /// 2nd key without modifier will becomes `key2`
   /// The relation between the int and qt's KeyCode should consult qt's doc
-
   HotKey( QKeySequence const & );
 
   QKeySequence toKeySequence() const;
@@ -331,9 +341,17 @@ struct Preferences
   bool hideSingleTab;
   bool mruTabOrder;
   bool hideMenubar;
-  bool enableTrayIcon;
-  bool startToTray;
-  bool closeToTray;
+
+#ifdef Q_OS_MACOS // macOS uses the dock menu instead of the tray icon
+  bool closeToTray    = false;
+  bool enableTrayIcon = false;
+  bool startToTray    = false;
+#else
+  bool enableTrayIcon = true;
+  bool closeToTray    = true;
+  bool startToTray    = false;
+#endif
+
   bool autoStart;
   bool doubleClickTranslates;
   bool selectWordBySingleClick;
@@ -413,8 +431,14 @@ struct Preferences
 
   // Appearances
 
-  bool darkMode;
-  bool darkReaderMode;
+  Dark darkMode       = Dark::Off;
+  Dark darkReaderMode =
+#if defined( Q_OS_MACOS )
+    Dark::Auto;
+#else
+    Dark::Off;
+#endif
+
   QString addonStyle;
   QString displayStyle; // Article Display style (Which also affect interface style on windows)
 
@@ -468,7 +492,7 @@ struct WebSite
   QString id, name, url;
   bool enabled;
   QString iconFilename;
-  bool inside_iframe;
+  bool inside_iframe = false;
 
   WebSite():
     enabled( false )
@@ -498,7 +522,7 @@ struct WebSite
 };
 
 /// All the WebSites
-typedef QList< WebSite > WebSites;
+using WebSites = QList< WebSite >;
 
 /// Any DICT server
 struct DictServer
@@ -539,14 +563,14 @@ struct DictServer
 };
 
 /// All the DictServers
-typedef QList< DictServer > DictServers;
+using DictServers = QList< DictServer >;
 
 /// Hunspell configuration
 struct Hunspell
 {
   QString dictionariesPath;
 
-  typedef QList< QString > Dictionaries;
+  using Dictionaries = QList< QString >;
 
   Dictionaries enabledDictionaries;
 
@@ -562,7 +586,7 @@ struct Hunspell
 };
 
 /// All the MediaWikis
-typedef QList< MediaWiki > MediaWikis;
+using MediaWikis = QList< MediaWiki >;
 
 
 /// Chinese transliteration configuration
@@ -674,7 +698,7 @@ struct Transliteration
 
 struct Lingua
 {
-  bool enable;
+  bool enable = false;
   QString languageCodes;
 
   bool operator==( Lingua const & other ) const
@@ -713,13 +737,16 @@ struct Forvo
 struct Program
 {
   bool enabled;
+  // NOTE: the value of this enum is used for config
   enum Type {
-    Audio,
-    PlainText,
-    Html,
-    PrefixMatch,
-    MaxTypeValue
-  } type;
+    Invalid      = -1, // Init value
+    Audio        = 0,
+    PlainText    = 1,
+    Html         = 2,
+    PrefixMatch  = 3,
+    MaxTypeValue = 4
+  };
+  Type type = Invalid;
   QString id, name, commandLine;
   QString iconFilename;
 
@@ -755,7 +782,7 @@ struct Program
   }
 };
 
-typedef QList< Program > Programs;
+using Programs = QList< Program >;
 
 #ifndef NO_TTS_SUPPORT
 struct VoiceEngine
@@ -801,7 +828,7 @@ struct VoiceEngine
   }
 };
 
-typedef QList< VoiceEngine > VoiceEngines;
+using VoiceEngines = QList< VoiceEngine >;
 #endif
 
 struct HeadwordsDialog
@@ -825,6 +852,13 @@ enum class ToolbarsIconSize : std::uint8_t {
   Small  = 0,
   Normal = 1,
   Large  = 2,
+};
+
+struct GroupBackup
+{
+  Group dictionaryOrder;
+  Group inactiveDictionaries;
+  Groups groups;
 };
 
 struct Class
@@ -861,7 +895,7 @@ struct Class
   QString articleSavePath;   // Path to save articles
 
   bool pinPopupWindow;         // Last pin status
-  bool popupWindowAlwaysOnTop; // Last status of pinned popup window
+  bool popupWindowAlwaysOnTop = false; // Last status of pinned popup window
 
   QByteArray mainWindowState;    // Binary state saved by QMainWindow
   QByteArray mainWindowGeometry; // Geometry saved by QMainWindow
@@ -898,7 +932,7 @@ struct Class
   Group const * getGroup( unsigned id ) const;
   //disable tts dictionary. does not need to save to persistent file
   bool notts = false;
-  bool resetState;
+  bool resetState = false;
 };
 
 /// Configuration-specific events. Some parts of the program need to react
@@ -1004,5 +1038,3 @@ QString getStylesDir();
 QString getCacheDir() noexcept;
 
 } // namespace Config
-
-#endif

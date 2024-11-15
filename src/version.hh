@@ -27,7 +27,7 @@ const QLatin1String flags = QLatin1String(
 
 const QLatin1String compiler = QLatin1String(
 #if defined( Q_CC_MSVC )
-  "Visual C++ Compiler " QT_STRINGIFY( _MSC_FULL_VER )
+  "MSVC " QT_STRINGIFY( _MSC_FULL_VER )
 #elif defined( Q_CC_CLANG )
   "Clang " __clang_version__
 #elif defined( Q_CC_GNU )

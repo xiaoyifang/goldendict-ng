@@ -1,5 +1,4 @@
-#ifndef WEBMULTIMEDIADOWNLOAD_HH
-#define WEBMULTIMEDIADOWNLOAD_HH
+#pragma once
 
 #include "dict/dictionary.hh"
 #include <QtNetwork>
@@ -28,5 +27,3 @@ private slots:
 };
 
 } // namespace Dictionary
-
-#endif // WEBMULTIMEDIADOWNLOAD_HH

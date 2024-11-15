@@ -1,5 +1,11 @@
-#ifndef HOTKEYWRAPPER_H
-#define HOTKEYWRAPPER_H
+#pragma once
+
+/// @file
+/// Handling global hotkeys and some tricks
+/// Part of this header are implmented in
+/// + `winhotkeywrapper.cc`
+/// + `machotkeywrapper.hh`
+///
 
 #include <QGuiApplication>
 #include <QThread>
@@ -31,23 +37,24 @@
 #endif
 
 #ifdef Q_OS_MAC
-  #define __SECURITYHI__
-  #include <Carbon/Carbon.h>
+  #import <Carbon/Carbon.h>
 #endif
 
 //////////////////////////////////////////////////////////////////////////
 
 struct HotkeyStruct
 {
-  HotkeyStruct() {}
+  HotkeyStruct() = default;
   HotkeyStruct( quint32 key, quint32 key2, quint32 modifier, int handle, int id );
 
-  quint32 key, key2;
-  quint32 modifier;
-  int handle;
-  int id;
+  quint32 key      = 0;
+  quint32 key2     = 0;
+  quint32 modifier = 0;
+  int handle       = 0;
+  int id           = 0;
 #ifdef Q_OS_MAC
-  EventHotKeyRef hkRef, hkRef2;
+  EventHotKeyRef hkRef  = 0;
+  EventHotKeyRef hkRef2 = 0;
 #endif
 };
 
@@ -100,15 +107,11 @@ private:
   HotkeyStruct state2waiter;
 
 #ifdef Q_OS_WIN32
-
-  #if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
-  virtual bool winEvent( MSG * message, long * result );
-  #else
   virtual bool winEvent( MSG * message, qintptr * result );
-  #endif
   HWND hwnd;
+#endif
 
-#elif defined( Q_OS_MAC )
+#ifdef Q_OS_MAC
 
 public:
   void activated( int hkId );
@@ -119,9 +122,9 @@ private:
   static EventHandlerUPP hotKeyFunction;
   quint32 keyC;
   EventHandlerRef handlerRef;
+#endif
 
-#else
-
+#ifdef HAVE_X11
   static void recordEventCallback( XPointer, XRecordInterceptData * );
 
   /// Called by recordEventCallback()
@@ -142,7 +145,7 @@ private:
 
   /// Holds all the keys currently grabbed.
   /// The first value is keycode, the second is modifiers
-  typedef std::set< std::pair< quint32, quint32 > > GrabbedKeys;
+  using GrabbedKeys = std::set< std::pair< quint32, quint32 > >;
   GrabbedKeys grabbedKeys;
 
   GrabbedKeys::iterator keyToUngrab; // Used for second stage grabs
@@ -207,19 +210,11 @@ protected:
   void registerWrapper( HotkeyWrapper * wrapper );
   void unregisterWrapper( HotkeyWrapper * wrapper );
 
-#ifdef Q_OS_WIN32
-
-  #if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
-  virtual bool nativeEventFilter( const QByteArray & eventType, void * message, long * result );
-  #else
+#ifdef Q_OS_WIN
   virtual bool nativeEventFilter( const QByteArray & eventType, void * message, qintptr * result );
-  #endif
+#endif
 
-protected:
-#endif // Q_OS_WIN32
   QList< HotkeyWrapper * > hotkeyWrappers;
 };
 
 //////////////////////////////////////////////////////////////////////////
-
-#endif // HOTKEYWRAPPER_H

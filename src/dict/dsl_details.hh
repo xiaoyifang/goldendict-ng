@@ -1,8 +1,7 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __DSL_DETAILS_HH_INCLUDED__
-#define __DSL_DETAILS_HH_INCLUDED__
+#pragma once
 
 #include <string>
 #include <list>
@@ -10,11 +9,7 @@
 #include <zlib.h>
 #include "dictionary.hh"
 #include "iconv.hh"
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-  #include <QtCore5Compat/QTextCodec>
-#else
-  #include <QTextCodec>
-#endif
+#include <QtCore5Compat/QTextCodec>
 #include <QByteArray>
 #include "utf8.hh"
 
@@ -223,5 +218,3 @@ quint32 dslLanguageToId( wstring const & name );
 
 } // namespace Details
 } // namespace Dsl
-
-#endif

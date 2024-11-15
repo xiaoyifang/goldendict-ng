@@ -597,10 +597,6 @@ chiqan kayninta sumaqyachin)</translation>
   <context>
     <name>DictInfo</name>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Diccionariota allichay</translation>
-    </message>
-    <message>
       <source>Open index folder</source>
       <translation>Indice nisqa qillqana mayt’uta kichay</translation>
     </message>
@@ -651,12 +647,6 @@ chiqan kayninta sumaqyachin)</translation>
     <message>
       <source>Full-text search disabled</source>
       <translation>Tukuy qillqasqa maskay mana llamk'achisqa</translation>
-    </message>
-    <message>
-      <source>Edit the dictionary via command:
-%1</source>
-      <translation>Diccionariota kamachiywan allichay:
-%1</translation>
     </message>
   </context>
   <context>
@@ -749,10 +739,6 @@ chiqan kayninta sumaqyachin)</translation>
     <message>
       <source>Open dictionary folder</source>
       <translation>Diccionario nisqa qillqana mayt’uta kichay</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>Diccionariota allichay</translation>
     </message>
   </context>
   <context>
@@ -2429,10 +2415,6 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>Sutikunata Diccionariopi rikuchiy &amp;Bar</translation>
     </message>
     <message>
-      <source>Show Small Icons in &amp;Toolbars</source>
-      <translation>&amp;Toolbars nisqapi Huch'uy Iconokunata rikuchiy</translation>
-    </message>
-    <message>
       <source>&amp;Menubar</source>
       <translation>&amp;Menubar nisqa</translation>
     </message>
@@ -2447,10 +2429,6 @@ chiqan kayninta sumaqyachin)</translation>
     <message>
       <source>Forward</source>
       <translation>Qhipa</translation>
-    </message>
-    <message>
-      <source>Enable Scanning</source>
-      <translation>Escáner nisqa ruway atichiy</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2545,10 +2523,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Remove current tab from Favorites</source>
       <translation>Kunan kaq tablata Favoritos nisqamanta hurquy</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
@@ -2703,16 +2677,28 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Diccionario nisqa qillqana mayt’uta kichay</translation>
     </message>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Diccionariota allichay</translation>
-    </message>
-    <message>
       <source>Now indexing for full-text search: </source>
       <translation>Kunanqa hunt'asqa qillqa maskanapaq index nisqapi: </translation>
     </message>
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>¿Munasqakunamanta &quot;%1&quot; umalliq simita hurquy?</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>&amp;Uchuy Iconokuna Llamkanakuna Barras nisqapi rikuchiy</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>&amp;Hatun Iconokuna Llamkanakuna Barras nisqapi rikuchiy</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>&amp;Normal Iconos nisqakunata rikuchiy Barras de herramientas nisqapi</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>Portapapeles nisqa qhawayta tikray</translation>
     </message>
   </context>
   <context>
@@ -3055,16 +3041,6 @@ cerrar la aplicación.</translation>
       <translation>&amp;Juch&apos;uy qhawanapi mask&apos;ay</translation>
     </message>
     <message>
-      <source>Chooses whether the popup mode is on by default or not. If checked,
-the program would always start with the popup active.</source>
-      <translation>Selecciona si el modo de escaneo está activado por defecto o no. Si está
-marcado, el programa siempre iniciará con el modo de escaneo habilitado.</translation>
-    </message>
-    <message>
-      <source>Start with popup turned on</source>
-      <translation>Qallarinapaq escaneo popup llank’achisqawan</translation>
-    </message>
-    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>T'ikrasqa simita hatun ventanata apachiy, popup ventanata qhawachinamantaqa</translation>
     </message>
@@ -3177,10 +3153,6 @@ seleccionadas estén oprimidas cuando la selección de la palabra cambie.</trans
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Qhapaq qhawanapi kunanpacha simikunata parlachiy</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in popup</source>
-      <translation>Juch&apos;uy qhawanapi kunanpacha simikunata parlachiy</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3570,6 +3542,18 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
       <source>Restart needed</source>
       <translation>Wakmanta qallariy necesitakun</translation>
     </message>
+    <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>Akllan sichus portapapeles qhawayqa ñawpaqmanta llamk'achisqa kanqa programa&apos;s qallariypi.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>Qallarina portapapeles qhawayta llank’achisqawan</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>Chay popup nisqapi simikunata kikillanmanta t’oqyachiy</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3809,10 +3793,6 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
       <translation>Utilice esto para fijar la ventana en la pantalla, redimensionarla o gerenciarla en otra manera.</translation>
-    </message>
-    <message>
-      <source>%1 - GoldenDict-ng</source>
-      <translation>%1 - QuriDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>

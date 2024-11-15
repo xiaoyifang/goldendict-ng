@@ -15,6 +15,7 @@
 #include <QFile>
 #include <QTextDocumentFragment>
 #include <QUrl>
+#include <QStyleHints>
 
 #include "fmt/core.h"
 #include "fmt/compile.h"
@@ -50,7 +51,8 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word, QString const & 
   // add jquery
   {
     result += R"(<script src="qrc:///scripts/jquery-3.6.0.slim.min.js"></script>)";
-    result += R"(<script> var $_$=jQuery.noConflict(); </script>)";
+    result += R"(<script> jQuery.noConflict(); </script>)";
+
     result += R"(<script src="qrc:///scripts/gd-custom.js"></script>)";
     result += R"(<script src="qrc:///scripts/iframeResizer.min.js"></script>)";
   }
@@ -64,13 +66,19 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word, QString const & 
   {
     result += R"(
     <script>
-     $_$(document).ready( function ($){ 
+      function gd_init_QtWebChannel(){
          console.log("webchannel ready..."); 
          new QWebChannel(qt.webChannelTransport, function(channel) { 
              window.articleview = channel.objects.articleview; 
        }); 
-     }); 
-    </script>
+      };
+
+      if (document.readyState !== "loading") {
+        gd_init_QtWebChannel();
+      } else {
+        document.addEventListener("DOMContentLoaded", gd_init_QtWebChannel);
+      };
+     </script>
     )";
   }
 
@@ -144,7 +152,22 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word, QString const & 
   result += R"(<script src="qrc:///scripts/gd-builtin.js"></script>)";
   result += R"(<script src="qrc:///scripts/mark.min.js"></script>)";
 
-  if ( GlobalBroadcaster::instance()->getPreference()->darkReaderMode ) {
+  /// Handling Dark reader mode.
+
+  bool darkReaderModeEnabled = false;
+
+  if ( GlobalBroadcaster::instance()->getPreference()->darkReaderMode == Config::Dark::On ) {
+    darkReaderModeEnabled = true;
+  }
+
+#if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
+  if ( GlobalBroadcaster::instance()->getPreference()->darkReaderMode == Config::Dark::Auto
+       && QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark ) {
+    darkReaderModeEnabled = true;
+  }
+#endif
+
+  if ( darkReaderModeEnabled ) {
     //only enable this darkmode on modern style.
     if ( cfg.displayStyle == "modern" ) {
       result += R"(<link href="qrc:///article-style-darkmode.css"  media="all" rel="stylesheet" type="text/css">)";
@@ -202,7 +225,7 @@ body { background: #242525; }
 
   // load the `article-style.js` in user's config folder
   if ( auto userJsFile = Config::getUserJsFileName(); userJsFile.has_value() ) {
-    result += fmt::format( FMT_COMPILE( R"(<script src="file://{}"></script>)" ), userJsFile.value() );
+    result += fmt::format( FMT_COMPILE( R"(<script src="file://{}" defer></script>)" ), userJsFile.value() );
   }
 
   result += "</head><body>";
@@ -308,7 +331,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( QString const &
                                                true );
   }
 
-  if ( groupId == Instances::Group::HelpGroupId ) {
+  if ( groupId == GroupId::HelpGroupId ) {
     if ( word == tr( "Welcome!" ) ) {
       string welcome                           = makeWelcomeHtml();
       sptr< Dictionary::DataRequestInstant > r = std::make_shared< Dictionary::DataRequestInstant >( true );
@@ -498,7 +521,7 @@ void ArticleRequest::altSearchFinished()
 
     vector< wstring > altsVector( alts.begin(), alts.end() );
 
-    wstring wordStd = gd::toWString( word );
+    wstring wordStd = word.toStdU32String();
 
     if ( activeDicts.size() <= 1 ) {
       articleSizeLimit = -1; // Don't collapse article if only one dictionary presented

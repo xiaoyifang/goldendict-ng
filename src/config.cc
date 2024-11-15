@@ -102,31 +102,23 @@ AnkiConnectServer::AnkiConnectServer():
 {
 }
 
-HotKey::HotKey():
-  modifiers( 0 ),
-  key1( 0 ),
-  key2( 0 )
-{
-}
-
-// Does anyone know how to separate modifiers from the keycode? We'll
-// use our own mask.
-
-uint32_t const keyMask = 0x01FFFFFF;
-
 HotKey::HotKey( QKeySequence const & seq ):
-  modifiers( seq[ 0 ] & ~keyMask ),
-  key1( seq[ 0 ] & keyMask ),
-  key2( seq[ 1 ] & keyMask )
+  modifiers( seq[ 0 ].keyboardModifiers() ),
+  key1( seq[ 0 ].key() ),
+  key2( seq[ 1 ].key() )
 {
 }
 
 QKeySequence HotKey::toKeySequence() const
 {
-  int v2 = key2 ? ( key2 | modifiers ) : 0;
-
-  return QKeySequence( key1 | modifiers, v2 );
+  if ( key2 != 0 && key2 != Qt::Key::Key_unknown ) {
+    return { QKeyCombination( modifiers, static_cast< Qt::Key >( key1 ) ),
+             QKeyCombination( modifiers, static_cast< Qt::Key >( key2 ) ) };
+  }
+  return { QKeyCombination( modifiers, static_cast< Qt::Key >( key1 ) ) };
+  ;
 }
+
 
 bool InternalPlayerBackend::anyAvailable()
 {
@@ -205,16 +197,11 @@ Preferences::Preferences():
   hideSingleTab( false ),
   mruTabOrder( false ),
   hideMenubar( false ),
-  enableTrayIcon( true ),
-  startToTray( false ),
-  closeToTray( true ),
   autoStart( false ),
   doubleClickTranslates( true ),
   selectWordBySingleClick( false ),
   autoScrollToTargetArticle( true ),
   escKeyHidesMainWindow( false ),
-  darkMode( false ),
-  darkReaderMode( false ),
   alwaysOnTop( false ),
   searchInDock( false ),
 // on macOS, register hotkeys will override system shortcuts, disabled for now to avoid troubles.
@@ -225,8 +212,8 @@ Preferences::Preferences():
   enableMainWindowHotkey( true ),
   enableClipboardHotkey( true ),
 #endif
-  mainWindowHotkey( QKeySequence( "Ctrl+F11,F11" ) ),
-  clipboardHotkey( QKeySequence( "Ctrl+C,C" ) ),
+  mainWindowHotkey( QKeySequence( "Ctrl+F11, Ctrl+F11" ) ),
+  clipboardHotkey( QKeySequence( "Ctrl+C, Ctrl+C" ) ),
   startWithScanPopupOn( false ),
   enableScanPopupModifiers( false ),
   scanPopupModifiers( 0 ),
@@ -554,9 +541,13 @@ Class load()
 
     if ( QDir( "/usr/share/myspell/dicts" ).exists() )
       c.hunspell.dictionariesPath = "/usr/share/myspell/dicts";
-
 #endif
 
+    // Put portable hard-code directory the the config for the first time.
+    if ( isPortableVersion() ) {
+      // For portable version, hardcode some settings
+      c.paths.push_back( Path( getPortableVersionDictionaryDir(), true ) );
+    }
 
 #ifndef Q_OS_WIN32
     c.preferences.audioPlaybackProgram = "mplayer";
@@ -625,6 +616,13 @@ Class load()
 
   Class c;
 
+  // Put the hard-code portable directory to the first.
+  // To allow additional directories, this path should not be saved.
+  if ( isPortableVersion() ) {
+    // For portable version, hardcode some settings
+    c.paths.push_back( Path( getPortableVersionDictionaryDir(), true ) );
+  }
+
   QDomNode paths = root.namedItem( "paths" );
 
   if ( !paths.isNull() ) {
@@ -634,11 +632,6 @@ Class load()
       c.paths.push_back(
         Path( nl.item( x ).toElement().text(), nl.item( x ).toElement().attribute( "recursive" ) == "1" ) );
     }
-  }
-
-  if ( Config::isPortableVersion() && c.paths.empty() ) {
-    // For portable version, hardcode some settings
-    c.paths.push_back( Config::Path( Config::getPortableVersionDictionaryDir(), true ) );
   }
 
   QDomNode soundDirs = root.namedItem( "sounddirs" );
@@ -907,10 +900,11 @@ Class load()
     c.preferences.hideSingleTab = ( preferences.namedItem( "hideSingleTab" ).toElement().text() == "1" );
     c.preferences.mruTabOrder   = ( preferences.namedItem( "mruTabOrder" ).toElement().text() == "1" );
     c.preferences.hideMenubar   = ( preferences.namedItem( "hideMenubar" ).toElement().text() == "1" );
-
+#ifndef Q_OS_MACOS // // macOS uses the dock menu instead of the tray icon
     c.preferences.enableTrayIcon = ( preferences.namedItem( "enableTrayIcon" ).toElement().text() == "1" );
     c.preferences.startToTray    = ( preferences.namedItem( "startToTray" ).toElement().text() == "1" );
     c.preferences.closeToTray    = ( preferences.namedItem( "closeToTray" ).toElement().text() == "1" );
+#endif
     c.preferences.autoStart      = ( preferences.namedItem( "autoStart" ).toElement().text() == "1" );
     c.preferences.alwaysOnTop    = ( preferences.namedItem( "alwaysOnTop" ).toElement().text() == "1" );
     c.preferences.searchInDock   = ( preferences.namedItem( "searchInDock" ).toElement().text() == "1" );
@@ -941,11 +935,12 @@ Class load()
     }
 
     if ( !preferences.namedItem( "darkMode" ).isNull() ) {
-      c.preferences.darkMode = ( preferences.namedItem( "darkMode" ).toElement().text() == "1" );
+      c.preferences.darkMode = static_cast< Dark >( preferences.namedItem( "darkMode" ).toElement().text().toInt() );
     }
 
     if ( !preferences.namedItem( "darkReaderMode" ).isNull() ) {
-      c.preferences.darkReaderMode = ( preferences.namedItem( "darkReaderMode" ).toElement().text() == "1" );
+      c.preferences.darkReaderMode =
+        static_cast< Dark >( preferences.namedItem( "darkReaderMode" ).toElement().text().toInt() );
     }
 
     if ( !preferences.namedItem( "zoomFactor" ).isNull() ) {
@@ -1391,7 +1386,11 @@ void save( Class const & c )
     QDomElement paths = dd.createElement( "paths" );
     root.appendChild( paths );
 
-    for ( const auto & i : c.paths ) {
+    // Save all paths except the hard-code portable path,
+    // which is stored in the first element of list.
+    qsizetype pos = Config::isPortableVersion();
+
+    for ( const auto & i : c.paths.mid( pos ) ) {
       QDomElement path = dd.createElement( "path" );
       paths.appendChild( path );
 
@@ -1872,11 +1871,11 @@ void save( Class const & c )
     preferences.appendChild( opt );
 
     opt = dd.createElement( "darkMode" );
-    opt.appendChild( dd.createTextNode( c.preferences.darkMode ? "1" : "0" ) );
+    opt.appendChild( dd.createTextNode( QString::number( static_cast< int >( c.preferences.darkMode ) ) ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "darkReaderMode" );
-    opt.appendChild( dd.createTextNode( c.preferences.darkReaderMode ? "1" : "0" ) );
+    opt.appendChild( dd.createTextNode( QString::number( static_cast< int >( c.preferences.darkReaderMode ) ) ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "zoomFactor" );

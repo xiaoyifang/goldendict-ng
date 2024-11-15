@@ -1,8 +1,7 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __GROUPS_HH_INCLUDED__
-#define __GROUPS_HH_INCLUDED__
+#pragma once
 
 #include "ui_groups.h"
 #include "config.hh"
@@ -62,5 +61,3 @@ private slots:
 signals:
   void showDictionaryInfo( QString const & id );
 };
-
-#endif

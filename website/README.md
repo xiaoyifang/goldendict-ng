@@ -3,10 +3,10 @@
 With venv
 ```
 cd ./website
-python -m venv ./venv/
+python3 -m venv ./venv/
 source ./venv/bin/activate
 # source ./venv/bin/activate.fish
-pip install mkdocs-material
+pip3 install mkdocs-material
 ```
 
 Then

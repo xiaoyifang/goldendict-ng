@@ -1,5 +1,4 @@
-#ifndef CUSTOMTRANSLITERATION_HH
-#define CUSTOMTRANSLITERATION_HH
+#pragma once
 
 
 #include <vector>
@@ -23,4 +22,3 @@ private:
 std::vector< sptr< Dictionary::Class > > makeDictionaries( Config::CustomTrans const & );
 
 } // namespace CustomTranslit
-#endif // CUSTOMTRANSLITERATION_HH

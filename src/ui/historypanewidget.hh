@@ -1,8 +1,7 @@
 /* This file is (c) 2013 Tvangeste <i.4m.l33t@yandex.ru>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __HISTORYPANEWIDGET_HH_INCLUDED__
-#define __HISTORYPANEWIDGET_HH_INCLUDED__
+#pragma once
 
 #include <QWidget>
 #include <QSize>
@@ -54,13 +53,13 @@ private slots:
 private:
   virtual bool eventFilter( QObject *, QEvent * );
 
-  Config::Class * m_cfg;
-  History * m_history;
-  QListView * m_historyList;
-  QMenu * m_historyMenu;
-  QAction * m_deleteSelectedAction;
-  QAction * m_separator;
-  QAction * m_copySelectedToClipboard;
+  Config::Class * m_cfg               = nullptr;
+  History * m_history                 = nullptr;
+  QListView * m_historyList           = nullptr;
+  QMenu * m_historyMenu               = nullptr;
+  QAction * m_deleteSelectedAction    = nullptr;
+  QAction * m_separator               = nullptr;
+  QAction * m_copySelectedToClipboard = nullptr;
 
   QWidget historyPaneTitleBar;
   QHBoxLayout historyPaneTitleBarLayout;
@@ -91,5 +90,3 @@ private slots:
 private:
   History * m_history;
 };
-
-#endif // HISTORYPANEWIDGET_HH

@@ -1,7 +1,5 @@
-#ifndef BASE_TYPE_H
-#define BASE_TYPE_H
+#pragma once
 
 #include <QString>
 
-typedef QMap< QString, QString > Contexts;
-#endif // BASE_TYPE_H
+using Contexts = QMap< QString, QString >;

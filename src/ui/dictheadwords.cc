@@ -420,10 +420,6 @@ void DictHeadwords::saveHeadersToFile()
   // Write UTF-8 BOM
   QTextStream out( &file );
   out.setGenerateByteOrderMark( true );
-//qt 6 will use utf-8 default.
-#if QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 )
-  out.setCodec( "UTF-8" );
-#endif
 
   exportAllWords( progress, out );
 

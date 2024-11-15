@@ -39,7 +39,7 @@
        </size>
       </property>
       <property name="elideMode">
-       <enum>Qt::TextElideMode::ElideRight</enum>
+       <enum>Qt::ElideRight</enum>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -293,7 +293,7 @@
     <string>F3</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::MenuRole::NoRole</enum>
+    <enum>QAction::NoRole</enum>
    </property>
   </action>
   <action name="preferences">
@@ -308,7 +308,7 @@
     <string>F4</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::MenuRole::PreferencesRole</enum>
+    <enum>QAction::PreferencesRole</enum>
    </property>
   </action>
   <action name="visitHomepage">
@@ -316,7 +316,7 @@
     <string>&amp;Homepage</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::MenuRole::NoRole</enum>
+    <enum>QAction::NoRole</enum>
    </property>
   </action>
   <action name="about">
@@ -327,7 +327,7 @@
     <string>About GoldenDict-ng</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::MenuRole::AboutRole</enum>
+    <enum>QAction::AboutRole</enum>
    </property>
   </action>
   <action name="quit">
@@ -341,7 +341,7 @@
     <string>Ctrl+Q</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::MenuRole::QuitRole</enum>
+    <enum>QAction::QuitRole</enum>
    </property>
   </action>
   <action name="visitForum">
@@ -349,7 +349,7 @@
     <string>&amp;Forum</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::MenuRole::NoRole</enum>
+    <enum>QAction::NoRole</enum>
    </property>
   </action>
   <action name="actionCloseToTray">
@@ -363,7 +363,7 @@
     <string>Ctrl+F4</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::MenuRole::NoRole</enum>
+    <enum>QAction::NoRole</enum>
    </property>
   </action>
   <action name="saveArticle">
@@ -382,7 +382,7 @@
     <string>F2</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::MenuRole::NoRole</enum>
+    <enum>QAction::NoRole</enum>
    </property>
   </action>
   <action name="print">
@@ -397,7 +397,7 @@
     <string>Ctrl+P</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::MenuRole::NoRole</enum>
+    <enum>QAction::NoRole</enum>
    </property>
   </action>
   <action name="pageSetup">
@@ -405,7 +405,7 @@
     <string>Page Set&amp;up</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::MenuRole::NoRole</enum>
+    <enum>QAction::NoRole</enum>
    </property>
   </action>
   <action name="printPreview">
@@ -413,7 +413,7 @@
     <string>Print Pre&amp;view</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::MenuRole::NoRole</enum>
+    <enum>QAction::NoRole</enum>
    </property>
   </action>
   <action name="rescanFiles">
@@ -424,7 +424,7 @@
     <string>Ctrl+F5</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::MenuRole::NoRole</enum>
+    <enum>QAction::NoRole</enum>
    </property>
   </action>
   <action name="clearHistory">
@@ -432,7 +432,7 @@
     <string>&amp;Clear</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::MenuRole::NoRole</enum>
+    <enum>QAction::NoRole</enum>
    </property>
   </action>
   <action name="newTab">
@@ -447,10 +447,10 @@
     <string>Ctrl+T</string>
    </property>
    <property name="shortcutContext">
-    <enum>Qt::ShortcutContext::WidgetShortcut</enum>
+    <enum>Qt::WidgetShortcut</enum>
    </property>
    <property name="menuRole">
-    <enum>QAction::MenuRole::NoRole</enum>
+    <enum>QAction::NoRole</enum>
    </property>
   </action>
   <action name="openConfigFolder">
@@ -458,7 +458,7 @@
     <string>&amp;Configuration Folder</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::MenuRole::NoRole</enum>
+    <enum>QAction::NoRole</enum>
    </property>
   </action>
   <action name="showHideHistory">
@@ -469,7 +469,7 @@
     <string>Ctrl+H</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::MenuRole::NoRole</enum>
+    <enum>QAction::NoRole</enum>
    </property>
   </action>
   <action name="exportHistory">
@@ -477,7 +477,7 @@
     <string>&amp;Export</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::MenuRole::NoRole</enum>
+    <enum>QAction::NoRole</enum>
    </property>
   </action>
   <action name="importHistory">
@@ -485,7 +485,7 @@
     <string>&amp;Import</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::MenuRole::NoRole</enum>
+    <enum>QAction::NoRole</enum>
    </property>
   </action>
   <action name="alwaysOnTop">
@@ -522,7 +522,7 @@
     <string>Ctrl+F</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::MenuRole::TextHeuristicRole</enum>
+    <enum>QAction::TextHeuristicRole</enum>
    </property>
   </action>
   <action name="fullTextSearchAction">
@@ -533,10 +533,10 @@
     <string>Ctrl+Shift+F</string>
    </property>
    <property name="shortcutContext">
-    <enum>Qt::ShortcutContext::WidgetWithChildrenShortcut</enum>
+    <enum>Qt::WidgetWithChildrenShortcut</enum>
    </property>
    <property name="menuRole">
-    <enum>QAction::MenuRole::TextHeuristicRole</enum>
+    <enum>QAction::TextHeuristicRole</enum>
    </property>
   </action>
   <action name="showReference">

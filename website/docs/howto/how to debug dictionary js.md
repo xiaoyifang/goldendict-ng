@@ -1,27 +1,14 @@
-# How to debug dictionary javascript
-
-- [How to debug dictionary javascript](#how-to-debug-dictionary-javascript)
-  - [background](#background)
-  - [goldendict-ng inspector](#goldendict-ng-inspector)
-  - [How to navigate to the specified element](#how-to-navigate-to-the-specified-element)
-  - [Modify the css style](#modify-the-css-style)
-  - [check javascript events](#check-javascript-events)
-  - [reproduce the issue in the goldendit](#reproduce-the-issue-in-the-goldendit)
-
-
 ## background
 When some js functions do not work as expected, this article tries to give a debug solution to pinpoint the problem.
 
+## Web inspector (DevTools)
 
-
-## goldendict-ng inspector
-
-Goldendict-ng has embedded an inspector, you can trigger it manually using `F12`.
+GoldenDict-ng has embedded an inspector, which is actually [chromium's DevTools](https://developer.chrome.com/docs/devtools). You can trigger it manually using `F12`.
 
 Screenshot:
 ![Inspector](../img/inspector.png)
 
-## How to navigate to the specified element
+## Navigate to the specified element
 
 Click the find element and move mouse to the specified element, click the element will navigate the source panel to the very place.
 ![steps](../img/inspector-steps.png)
@@ -32,7 +19,7 @@ you can play around with the css to modify the appearance of the html and check 
 
 ![style](../img/inspector-style.png)
 
-## check javascript events
+## Check javascript events
 
 - navigate to the specified element
 - check eventlisterner panel
@@ -47,7 +34,7 @@ If some desired event does not triggered , it can first check does the event lis
 ![breakpoint](../img/inspector-breakpoint.png)
 
 
-## reproduce the issue in the goldendit
+## Reproduce the issues
 
 following your normal operations and debugging the javascript code and pay attention to the console output. Whether any errors happened.
 ![Alt text](../img/inspector-console.png)

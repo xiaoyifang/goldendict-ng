@@ -1,8 +1,7 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __BTREEIDX_HH_INCLUDED__
-#define __BTREEIDX_HH_INCLUDED__
+#pragma once
 
 #include "dict/dictionary.hh"
 #include "dictfile.hh"
@@ -46,9 +45,9 @@ DEF_EX( exCorruptedChainData, "Corrupted chain data in the leaf of a btree encou
 struct WordArticleLink
 {
   string word, prefix; // in utf8
-  uint32_t articleOffset;
+  uint32_t articleOffset = 0;
 
-  WordArticleLink() {}
+  WordArticleLink() = default;
 
   WordArticleLink( string const & word_, uint32_t articleOffset_, string const & prefix_ = string() ):
     word( word_ ),
@@ -270,5 +269,3 @@ struct IndexedWords: public map< string, vector< WordArticleLink > >
 IndexInfo buildIndex( IndexedWords const &, File::Index & file );
 
 } // namespace BtreeIndexing
-
-#endif

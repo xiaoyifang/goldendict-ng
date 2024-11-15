@@ -131,7 +131,7 @@ void WordFinder::startSearch()
     allWordWritings.resize( 1 );
   }
 
-  allWordWritings[ 0 ] = gd::toWString( inputWord );
+  allWordWritings[ 0 ] = inputWord.toStdU32String();
 
   for ( const auto & inputDict : *inputDicts ) {
     vector< wstring > writings = inputDict->getAlternateWritings( allWordWritings[ 0 ] );

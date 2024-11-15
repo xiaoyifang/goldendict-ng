@@ -8,7 +8,6 @@ PronounceEngine::PronounceEngine( QObject * parent ):
 {
 }
 
-
 void PronounceEngine::reset()
 {
   QMutexLocker _( &mutex );
@@ -48,6 +47,7 @@ void PronounceEngine::finishDictionary( std::string dictId )
       }
       state = PronounceState::OCCUPIED;
     }
-    emit emitAudio( dictAudioMap[ dictId ].first() );
+    auto link = dictAudioMap[ dictId ].first();
+    emit emitAudio( link );
   }
 }

@@ -6,11 +6,7 @@
 #include <QWaitCondition>
 #include <QCoreApplication>
 #include <QThreadPool>
-#if QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 )
-  #include <QAudioOutput>
-#else
-  #include <QAudioSink>
-#endif
+#include <QAudioSink>
 #include <QtGlobal>
 #include <QBuffer>
 
@@ -23,18 +19,7 @@ static QAudioFormat format( int sampleRate, int channelCount )
 
   out.setSampleRate( sampleRate );
   out.setChannelCount( channelCount );
-#if QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 )
-  out.setByteOrder( QAudioFormat::LittleEndian );
-  out.setCodec( QLatin1String( "audio/pcm" ) );
-#endif
-
-#if QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 )
-  out.setSampleSize( 16 );
-  out.setSampleType( QAudioFormat::SignedInt );
-#else
   out.setSampleFormat( QAudioFormat::Int16 );
-#endif
-
 
   return out;
 }
@@ -50,11 +35,8 @@ public:
 
   QFuture< void > audioPlayFuture;
 
-#if QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 )
-  using AudioOutput = QAudioOutput;
-#else
   using AudioOutput = QAudioSink;
-#endif
+
   AudioOutput * audioOutput = nullptr;
   QByteArray buffer;
   qint64 offset = 0;
@@ -185,11 +167,7 @@ AudioOutput::AudioOutput( QObject * parent ):
   QObject( parent ),
   d_ptr( new AudioOutputPrivate )
 {
-#if QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 )
-  d_ptr->audioPlayFuture = QtConcurrent::run( &d_ptr->threadPool, d_ptr.data(), &AudioOutputPrivate::doPlayAudio );
-#else
   d_ptr->audioPlayFuture = QtConcurrent::run( &d_ptr->threadPool, &AudioOutputPrivate::doPlayAudio, d_ptr.data() );
-#endif
 }
 
 void AudioOutput::setAudioFormat( int sampleRate, int channels )

@@ -1,5 +1,4 @@
-#ifndef PRONOUNCEENGINE_HH
-#define PRONOUNCEENGINE_HH
+#pragma once
 
 #include <QObject>
 #include <QMap>
@@ -27,5 +26,3 @@ public:
 signals:
   void emitAudio( QString audioLink );
 };
-
-#endif // PRONOUNCEENGINE_HH

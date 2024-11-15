@@ -1,8 +1,7 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __AUDIOLINK_HH_INCLUDED__
-#define __AUDIOLINK_HH_INCLUDED__
+#pragma once
 
 
 #include <QString>
@@ -15,6 +14,3 @@
 /// The dictionary id is used to make active dictionary feature work.
 std::string addAudioLink( std::string const & url, std::string const & dictionaryId );
 std::string addAudioLink( QString const & url, std::string const & dictionaryId );
-std::string makeAudioLinkScript( std::string const & url, std::string const & dictionaryId );
-
-#endif

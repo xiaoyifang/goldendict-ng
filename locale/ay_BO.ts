@@ -599,10 +599,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictInfo</name>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Aru-pirwa askichaña</translation>
-    </message>
-    <message>
       <source>Open index folder</source>
       <translation>Jisk’a carpeta índice uka jist’araña</translation>
     </message>
@@ -653,12 +649,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Full-text search disabled</source>
       <translation>Phuqat qillqat thaqhañax ch’amanchatawa</translation>
-    </message>
-    <message>
-      <source>Edit the dictionary via command:
-%1</source>
-      <translation>Aru-pirwa askichaña lurayaña ukampi:
-%1</translation>
     </message>
   </context>
   <context>
@@ -751,10 +741,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>Aru-pirwa ukat q&apos;ipi jist&apos;araña</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>Aru-pirwa askichaña</translation>
     </message>
   </context>
   <context>
@@ -2469,10 +2455,6 @@ Añadir la pestaña actual a favoritos</translation>
       <translation>Aru-pirwanak wak&apos;an &amp;sutinak uñachayaña</translation>
     </message>
     <message>
-      <source>Show Small Icons in &amp;Toolbars</source>
-      <translation>Irnaqañatak &amp;wak&apos;an jisk&apos;a saltanak uñachayaña</translation>
-    </message>
-    <message>
       <source>&amp;Menubar</source>
       <translation>&amp;Menú uka wak&apos;a</translation>
     </message>
@@ -2491,10 +2473,6 @@ Anterior</translation>
       <translation>Jutiri
 
 Posterior</translation>
-    </message>
-    <message>
-      <source>Enable Scanning</source>
-      <translation>Escáner ukax ch’amanchatawa</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2600,10 +2578,6 @@ Abrir lista de pestañas</translation>
       <translation>Munat arunakat jichha phichhu chhaqtayaña
 
 Eliminar la pestaña actual de favoritos</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2Ukaxa mä juk’a pachanakwa lurasi</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
@@ -2768,10 +2742,6 @@ Error de importación: datos incorrectos en el fichero.</translation>
       <translation>Aru-pirwa ukat q&apos;ipi jist&apos;araña</translation>
     </message>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Aru-pirwa askichaña</translation>
-    </message>
-    <message>
       <source>Now indexing for full-text search: </source>
       <translation>Taqpach qillqat thaqhawix ullasiskiwa: </translation>
     </message>
@@ -2780,6 +2750,22 @@ Error de importación: datos incorrectos en el fichero.</translation>
       <translation>Munat arunakatxa &quot;%1&quot; chhaqtayañ muntati?
 
 ¿Eliminar la palabra &quot;%1&quot; de favoritos?</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>Uñacht’ayaña &amp;Jisk’a Iconos ukanakax Barras de Herramientas ukan uñacht’ayatawa</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>Uñacht’ayaña &amp;Jach’a Iconos Barras de Herramientas ukan</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>Uñacht’ayaña &amp;Normal Iconos ukanakax Barras de Herramientas ukan uñacht’ayatawa</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>Toggle portapapeles uñakipaña</translation>
     </message>
   </context>
   <context>
@@ -3140,18 +3126,6 @@ Aka jakhu mayjacham jach&apos;a menus jithiqañataki.</translation>
       <translation>&amp;Uñstir wintanampi ullaña</translation>
     </message>
     <message>
-      <source>Chooses whether the popup mode is on by default or not. If checked,
-the program would always start with the popup active.</source>
-      <translation>Habilitar escaneo en una ventana emergente cuando inicia.
-
-Jisa uskum thaqhañataki jan walikitaki janiwa.
-Akasti marcado, thaqhawi ist&apos;araskaniwa.</translation>
-    </message>
-    <message>
-      <source>Start with popup turned on</source>
-      <translation>Mä uñstiri wintananxa escaneo uk naktayaña, qalltkis ukja</translation>
-    </message>
-    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Enviar palabra traducida a la ventana principal
 
@@ -3272,10 +3246,6 @@ Uñstir wintana uñachañatakixa salta ukan mä klik luram. </translation>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Nayrir wintanan justupak arunak arst&apos;awi</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in popup</source>
-      <translation>Uñstiri wintanan justupak arunak arst&apos;awi</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3696,6 +3666,18 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
       <source>Restart needed</source>
       <translation>Wasitat qalltañaw wakisi</translation>
     </message>
+    <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>Ajlliñawa, portapapeles uñakipañaxa wakichawi&apos;s qalltawipanxa nayraqata uñakipatawa.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>Qalltañatakix portapapeles ukan uñjañax ch’amanchatawa</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>Uka popup ukanx arunakax auto-pronunciar sañ muni</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3940,10 +3922,6 @@ Posterior</translation>
 could be resized or managed in other ways.</source>
       <translation>Utilice esto para fijar la ventana en la pantalla,
 redimensionarla o gerenciarla en otra manera.</translation>
-    </message>
-    <message>
-      <source>%1 - GoldenDict-ng</source>
-      <translation>%1 - QuriDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>

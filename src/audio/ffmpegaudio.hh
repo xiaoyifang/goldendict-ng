@@ -1,28 +1,24 @@
-#ifndef __FFMPEGAUDIO_HH_INCLUDED__
-#define __FFMPEGAUDIO_HH_INCLUDED__
+#pragma once
 
 #ifdef MAKE_FFMPEG_PLAYER
-  #include "audiooutput.hh"
-  #include <QObject>
-  #include <QMutex>
-  #include <QByteArray>
-  #include <QThread>
+
 extern "C" {
   #include <libavcodec/avcodec.h>
   #include <libavformat/avformat.h>
   #include <libavutil/avutil.h>
   #include "libswresample/swresample.h"
 }
-
-  #include <QString>
+  #include "audiooutput.hh"
+  #include <QObject>
+  #include <QMutex>
+  #include <QByteArray>
+  #include <QThread>
+  #include <QAudioDevice>
   #include <QDataStream>
-
+  #include <QMediaDevices>
+  #include <QString>
   #include <vector>
-  #if ( QT_VERSION >= QT_VERSION_CHECK( 6, 2, 0 ) )
-    #include <QMediaDevices>
 
-    #include <QAudioDevice>
-  #endif
 using std::vector;
 namespace Ffmpeg {
 class DecoderThread;
@@ -106,5 +102,3 @@ signals:
 } // namespace Ffmpeg
 
 #endif // MAKE_FFMPEG_PLAYER
-
-#endif // __FFMPEGAUDIO_HH_INCLUDED__
