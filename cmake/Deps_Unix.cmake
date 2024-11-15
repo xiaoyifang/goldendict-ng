@@ -3,11 +3,6 @@
 if (APPLE)
     # old & new homebrew's include paths
     target_include_directories(${GOLDENDICT} PRIVATE /usr/local/include /opt/homebrew/include)
-
-    # libzim depends on ICU, but the ICU from homebrew is "key-only", we need to manually prioritize it
-    # See `brew info icu4c` if this no longer works
-    # Note: Remove icu4c@75 if it fails again
-    set(ENV{PKG_CONFIG_PATH} "$ENV{PKG_CONFIG_PATH}:/usr/local/opt/icu4c@75/lib/pkgconfig:/opt/homebrew/opt/icu4c@75/lib/pkgconfig:/usr/local/opt/icu4c/lib/pkgconfig:/opt/homebrew/opt/icu4c/lib/pkgconfig")
 endif ()
 
 target_include_directories(${GOLDENDICT} PRIVATE
@@ -82,13 +77,31 @@ if (WITH_EPWING_SUPPORT)
 endif ()
 
 if (WITH_ZIM)
+    if (APPLE)
+        # ICU from homebrew is "key-only", we need to manually prioritize it -> see `brew info icu4c`
+        set(ENV{PKG_CONFIG_PATH} "$ENV{PKG_CONFIG_PATH}:/usr/local/opt/icu4c@76/lib/pkgconfig:/opt/homebrew/opt/icu4c@76/lib/pkgconfig:/usr/local/opt/icu4c/lib/pkgconfig:/opt/homebrew/opt/icu4c/lib/pkgconfig")
+    endif ()
+
     pkg_check_modules(ZIM REQUIRED IMPORTED_TARGET libzim)
     target_link_libraries(${GOLDENDICT} PRIVATE PkgConfig::ZIM)
+
     if (APPLE)
-        # For some reason, icu4c as transitive dependency of libzim may not be copied into app bundle,
-        # so we directly depends on it to help macdeployqt or whatever
-        pkg_check_modules(BREW_ICU_FOR_LIBZIM_FORCE_LINK REQUIRED IMPORTED_TARGET icu-i18n icu-uc)
-        target_link_libraries(${GOLDENDICT} PUBLIC PkgConfig::BREW_ICU_FOR_LIBZIM_FORCE_LINK)
+        # icu4c as transitive dependency of libzim may not be copied into app bundle, so we directly depends on it to assist macdeployqt
+        # Why such complexities: 1) System or XCode SDKS's icu exists 2) icu itself is depended by various stuffs and homebrew may need multiple versions of it
+        pkg_check_modules(BREW_ICU REQUIRED IMPORTED_TARGET icu-i18n icu-uc)
+        target_link_libraries(${GOLDENDICT} PUBLIC PkgConfig::BREW_ICU)
+
+        # Verify icu <-> zim matches
+        message("Zim include dirs -> ${ZIM_INCLUDE_DIRS}")
+        message("Homebrew icu include dirs-> ${BREW_ICU_INCLUDE_DIRS}")
+
+        list(GET BREW_ICU_INCLUDE_DIRS 0 ONE_OF_BREW_ICU_INCLUDE_DIR)
+        if (ONE_OF_BREW_ICU_INCLUDE_DIR IN_LIST ZIM_INCLUDE_DIRS)
+            message("ZIM OK!")
+        else ()
+            message(FATAL_ERROR "!!!! ZIM <-> icu error -> check `brew info libzim` and `brew list libzim`")
+        endif ()
+        # TODO: get rid of these 💩, how?
     endif ()
 endif ()
 
