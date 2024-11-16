@@ -14,8 +14,8 @@ AudioPlayerFactory::AudioPlayerFactory( bool useInternalPlayer,
                                         InternalPlayerBackend internalPlayerBackend,
                                         QString audioPlaybackProgram ):
   useInternalPlayer( useInternalPlayer ),
-  internalPlayerBackend( std::move(internalPlayerBackend) ),
-  audioPlaybackProgram( std::move(audioPlaybackProgram) )
+  internalPlayerBackend( std::move( internalPlayerBackend ) ),
+  audioPlaybackProgram( std::move( audioPlaybackProgram ) )
 {
   reset();
 }
