@@ -67,7 +67,7 @@ jobs:
           libzim \
           qt
 
-          wget ftp://ftp.sra.co.jp/pub/misc/eb/eb-4.4.3.tar.bz2
+          wget https://github.com/mistydemeo/eb/releases/download/v4.4.3/eb-4.4.3.tar.bz2
           tar xvjf eb-4.4.3.tar.bz2
           cd eb-4.4.3 && ./configure && make -j 8 && sudo make install && cd ..
 
