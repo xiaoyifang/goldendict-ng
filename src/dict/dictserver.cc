@@ -820,7 +820,7 @@ void DictServerArticleRequest::readData( QByteArray reply )
     dbID = reply.mid( pos, endPos - pos );
 
     // Retrieve database ID
-    pos    = endPos + 1;
+    pos = endPos + 1;
     if ( reply[ pos ] == '\"' ) {
       endPos = reply.indexOf( '\"', pos + 1 ) + 1;
     }
@@ -855,10 +855,9 @@ void DictServerArticleRequest::readData( QByteArray reply )
     qDebug() << "reply data:" << reply << QDateTime::currentDateTime();
     if ( articleText.contains( ".\r\n" ) ) {
       //discard all left message.
-        emit finishedArticle( articleText );
-        return;
-      }
-
+      emit finishedArticle( articleText );
+      return;
+    }
   }
   else {
     reply = dictImpl->socket.readAll();
