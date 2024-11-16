@@ -294,7 +294,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.pronounceOnLoadMain->setChecked( p.pronounceOnLoadMain );
   ui.pronounceOnLoadPopup->setChecked( p.pronounceOnLoadPopup );
 
-  ui.internalPlayerBackend->addItems( Config::InternalPlayerBackend::nameList() );
+  ui.internalPlayerBackend->addItems( InternalPlayerBackend::nameList() );
 
   // Make sure that exactly one radio button in the group is checked and that
   // on_useExternalPlayer_toggled() is called.
@@ -306,7 +306,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 
     int index = ui.internalPlayerBackend->findText( p.internalPlayerBackend.uiName() );
     if ( index < 0 ) { // The specified backend is unavailable.
-      index = ui.internalPlayerBackend->findText( Config::InternalPlayerBackend::defaultBackend().uiName() );
+      index = ui.internalPlayerBackend->findText( InternalPlayerBackend::defaultBackend().uiName() );
     }
     Q_ASSERT( index >= 0 && "Logic error: the default backend must be present in the backend name list." );
     ui.internalPlayerBackend->setCurrentIndex( index );

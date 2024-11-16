@@ -3,19 +3,20 @@
 
 #pragma once
 
-#include <QObject>
-#include <QList>
-#include <QString>
-#include <QSize>
-#include <QDateTime>
-#include <QKeySequence>
-#include <QSet>
-#include <QMetaType>
+#include "audio/internalplayerbackend.hh"
 #include "ex.hh"
+#include <QDateTime>
 #include <QDomDocument>
+#include <QKeySequence>
+#include <QList>
 #include <QLocale>
-#include <optional>
+#include <QMetaType>
+#include <QObject>
+#include <QSet>
+#include <QSize>
+#include <QString>
 #include <QThread>
+#include <optional>
 
 /// Special group IDs
 enum GroupId : unsigned {
@@ -267,66 +268,6 @@ struct CustomFonts
     c.monospace = proxy.attribute( "monospace" );
     return c;
   }
-};
-
-/// This class encapsulates supported backend preprocessor logic,
-/// discourages duplicating backend names in code, which is error-prone.
-class InternalPlayerBackend
-{
-public:
-  /// Returns true if at least one backend is available.
-  static bool anyAvailable();
-  /// Returns the default backend or null backend if none is available.
-  static InternalPlayerBackend defaultBackend();
-  /// Returns the name list of supported backends.
-  static QStringList nameList();
-
-  /// Returns true if built with FFmpeg player support and the name matches.
-  bool isFfmpeg() const;
-  /// Returns true if built with Qt Multimedia player support and the name matches.
-  bool isQtmultimedia() const;
-
-  QString const & uiName() const
-  {
-    return name;
-  }
-
-  void setUiName( QString const & name_ )
-  {
-    name = name_;
-  }
-
-  bool operator==( InternalPlayerBackend const & other ) const
-  {
-    return name == other.name;
-  }
-
-  bool operator!=( InternalPlayerBackend const & other ) const
-  {
-    return !operator==( other );
-  }
-
-private:
-#ifdef MAKE_FFMPEG_PLAYER
-  static InternalPlayerBackend ffmpeg()
-  {
-    return InternalPlayerBackend( "FFmpeg" );
-  }
-#endif
-
-#ifdef MAKE_QTMULTIMEDIA_PLAYER
-  static InternalPlayerBackend qtmultimedia()
-  {
-    return InternalPlayerBackend( "Qt Multimedia" );
-  }
-#endif
-
-  explicit InternalPlayerBackend( QString const & name_ ):
-    name( name_ )
-  {
-  }
-
-  QString name;
 };
 
 /// Various user preferences

@@ -167,7 +167,8 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
                  cfg.preferences.disallowContentFromOtherSites,
                  cfg.preferences.hideGoldenDictHeader ),
   dictNetMgr( this ),
-  audioPlayerFactory( cfg.preferences ),
+  audioPlayerFactory(
+    cfg.preferences.useInternalPlayer, cfg.preferences.internalPlayerBackend, cfg.preferences.audioPlaybackProgram ),
   wordFinder( this ),
   wordListSelChanged( false ),
   wasMaximized( false ),
@@ -2356,7 +2357,9 @@ void MainWindow::editPreferences()
 #endif
     }
 
-    audioPlayerFactory.setPreferences( cfg.preferences );
+    audioPlayerFactory.setPreferences( cfg.preferences.useInternalPlayer,
+                                       cfg.preferences.internalPlayerBackend,
+                                       cfg.preferences.audioPlaybackProgram );
 
     trayIconUpdateOrInit();
     applyProxySettings();
