@@ -865,8 +865,7 @@ void DictServerArticleRequest::readData( QByteArray reply )
 
     articleText += reply;
     if ( reply.contains( ".\r\n" ) ) {
-      //discard all left message.
-      while ( !dictImpl->socket.readLine().isEmpty() ) {}
+      //discard all left message. maybe delete all the remaining data after `.\r\n`
       emit finishedArticle( articleText );
       return;
     }
