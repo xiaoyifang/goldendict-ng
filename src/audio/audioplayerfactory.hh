@@ -4,7 +4,7 @@
 #pragma once
 
 #include "audioplayerinterface.hh"
-#include "config.hh"
+#include "internalplayerbackend.hh"
 
 class ExternalAudioPlayer;
 
@@ -13,8 +13,12 @@ class AudioPlayerFactory
   Q_DISABLE_COPY( AudioPlayerFactory )
 
 public:
-  explicit AudioPlayerFactory( Config::Preferences const & );
-  void setPreferences( Config::Preferences const & );
+  explicit AudioPlayerFactory( bool useInternalPlayer,
+                               InternalPlayerBackend internalPlayerBackend,
+                               QString audioPlaybackProgram );
+  void setPreferences( bool new_useInternalPlayer,
+                       const InternalPlayerBackend & new_internalPlayerBackend,
+                       const QString & new_audioPlaybackProgram );
   /// The returned reference to a smart pointer is valid as long as this object
   /// exists. The pointer to the owned AudioPlayerInterface may change after the
   /// call to setPreferences(), but it is guaranteed to never be null.
@@ -28,7 +32,7 @@ private:
   void setAudioPlaybackProgram( ExternalAudioPlayer & externalPlayer );
 
   bool useInternalPlayer;
-  Config::InternalPlayerBackend internalPlayerBackend;
+  InternalPlayerBackend internalPlayerBackend;
   QString audioPlaybackProgram;
   AudioPlayerPtr playerPtr;
 };

@@ -3,34 +3,39 @@
 
 #include <QScopedPointer>
 #include <QObject>
+#include <utility>
 #include "audioplayerfactory.hh"
 #include "ffmpegaudioplayer.hh"
 #include "multimediaaudioplayer.hh"
 #include "externalaudioplayer.hh"
 #include "gddebug.hh"
 
-AudioPlayerFactory::AudioPlayerFactory( Config::Preferences const & p ):
-  useInternalPlayer( p.useInternalPlayer ),
-  internalPlayerBackend( p.internalPlayerBackend ),
-  audioPlaybackProgram( p.audioPlaybackProgram )
+AudioPlayerFactory::AudioPlayerFactory( bool useInternalPlayer,
+                                        InternalPlayerBackend internalPlayerBackend,
+                                        QString audioPlaybackProgram ):
+  useInternalPlayer( useInternalPlayer ),
+  internalPlayerBackend( std::move( internalPlayerBackend ) ),
+  audioPlaybackProgram( std::move( audioPlaybackProgram ) )
 {
   reset();
 }
 
-void AudioPlayerFactory::setPreferences( Config::Preferences const & p )
+void AudioPlayerFactory::setPreferences( bool new_useInternalPlayer,
+                                         const InternalPlayerBackend & new_internalPlayerBackend,
+                                         const QString & new_audioPlaybackProgram )
 {
-  if ( p.useInternalPlayer != useInternalPlayer ) {
-    useInternalPlayer     = p.useInternalPlayer;
-    internalPlayerBackend = p.internalPlayerBackend;
-    audioPlaybackProgram  = p.audioPlaybackProgram;
+  if ( useInternalPlayer != new_useInternalPlayer ) {
+    useInternalPlayer     = new_useInternalPlayer;
+    internalPlayerBackend = new_internalPlayerBackend;
+    audioPlaybackProgram  = new_audioPlaybackProgram;
     reset();
   }
-  else if ( useInternalPlayer && p.internalPlayerBackend != internalPlayerBackend ) {
-    internalPlayerBackend = p.internalPlayerBackend;
+  else if ( useInternalPlayer && internalPlayerBackend != new_internalPlayerBackend ) {
+    internalPlayerBackend = new_internalPlayerBackend;
     reset();
   }
-  else if ( !useInternalPlayer && p.audioPlaybackProgram != audioPlaybackProgram ) {
-    audioPlaybackProgram                       = p.audioPlaybackProgram;
+  else if ( !useInternalPlayer && new_audioPlaybackProgram != audioPlaybackProgram ) {
+    audioPlaybackProgram                       = new_audioPlaybackProgram;
     ExternalAudioPlayer * const externalPlayer = qobject_cast< ExternalAudioPlayer * >( playerPtr.data() );
     if ( externalPlayer ) {
       setAudioPlaybackProgram( *externalPlayer );
@@ -50,7 +55,7 @@ void AudioPlayerFactory::reset()
     // another object of the same type.
 
 #ifdef MAKE_FFMPEG_PLAYER
-    Q_ASSERT( Config::InternalPlayerBackend::defaultBackend().isFfmpeg()
+    Q_ASSERT( InternalPlayerBackend::defaultBackend().isFfmpeg()
               && "Adjust the code below after changing the default backend." );
 
     if ( !internalPlayerBackend.isQtmultimedia() ) {
