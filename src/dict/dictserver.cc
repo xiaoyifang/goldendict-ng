@@ -855,6 +855,7 @@ void DictServerArticleRequest::readData( QByteArray reply )
     }
   }
   else {
+    articleText += reply;
     reply = dictImpl->socket.readAll();
     qDebug() << "reply data:" << reply << QDateTime::currentDateTime();
 
