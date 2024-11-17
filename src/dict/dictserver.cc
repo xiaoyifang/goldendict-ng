@@ -844,16 +844,11 @@ void DictServerArticleRequest::readData( QByteArray reply )
     articleData += string( "<div class=\"dictserver_from\">" ) + dbName.toUtf8().data() + "[" + dbID.toUtf8().data()
       + "]" + "</div>";
 
-    // Retreive MIME headers if any
-
-    static QRegularExpression contentTypeExpr( "Content-Type\\s*:\\s*text/html",
-                                               QRegularExpression::CaseInsensitiveOption );
-
     reply = dictImpl->socket.readAll();
 
     articleText += reply;
     qDebug() << "reply data:" << reply << QDateTime::currentDateTime();
-    if ( articleText.contains( ".\r\n" ) ) {
+    if ( articleText.contains( "\r\n.\r\n" ) ) {
       //discard all left message.
       emit finishedArticle( articleText );
       return;
@@ -864,7 +859,7 @@ void DictServerArticleRequest::readData( QByteArray reply )
     qDebug() << "reply data:" << reply << QDateTime::currentDateTime();
 
     articleText += reply;
-    if ( reply.contains( ".\r\n" ) ) {
+    if ( reply.contains( "\r\n.\r\n" ) ) {
       //discard all left message. maybe delete all the remaining data after `.\r\n`
       emit finishedArticle( articleText );
       return;
