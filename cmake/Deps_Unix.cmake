@@ -86,22 +86,15 @@ if (WITH_ZIM)
     target_link_libraries(${GOLDENDICT} PRIVATE PkgConfig::ZIM)
 
     if (APPLE)
-        # icu4c as transitive dependency of libzim may not be copied into app bundle, so we directly depends on it to assist macdeployqt
-        # Why such complexities: 1) System or XCode SDKS's icu exists 2) icu itself is depended by various stuffs and homebrew may need multiple versions of it
+        # icu4c as transitive dependency of libzim may not be automatically copied into app bundle
+        # so we manually discover the icu4c from homebrew, then find the relevent dylibs
         pkg_check_modules(BREW_ICU REQUIRED IMPORTED_TARGET icu-i18n icu-uc)
-        target_link_libraries(${GOLDENDICT} PUBLIC PkgConfig::BREW_ICU)
-
-        # Verify icu <-> zim matches
-        message("Zim include dirs -> ${ZIM_INCLUDE_DIRS}")
-        message("Homebrew icu include dirs-> ${BREW_ICU_INCLUDE_DIRS}")
-
-        list(GET BREW_ICU_INCLUDE_DIRS 0 ONE_OF_BREW_ICU_INCLUDE_DIR)
-        if (ONE_OF_BREW_ICU_INCLUDE_DIR IN_LIST ZIM_INCLUDE_DIRS)
-            message("ZIM OK!")
+        if (BREW_ICU_INCLUDE_DIRS IN_LIST ZIM_INCLUDE_DIRS)
+            message(STATUS "ZIM OK!")
         else ()
-            message(FATAL_ERROR "!!!! ZIM <-> icu error -> check `brew info libzim` and `brew list libzim`")
+            message(FATAL_ERROR "!!! ZIM <-> icu error -> check `brew info libzim` to know what libzim is depending.")
         endif ()
-        # TODO: get rid of these 💩, how?
+        set(BREW_ICU_NEEDED_LIBS "${BREW_ICU_LIBRARY_DIRS}/libicudata.dylib ${BREW_ICU_LIBRARY_DIRS}/libicui18n.dylib ${BREW_ICU_LIBRARY_DIRS}/libicuuc.dylib")
     endif ()
 endif ()
 
