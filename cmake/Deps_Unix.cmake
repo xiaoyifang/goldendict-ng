@@ -86,7 +86,7 @@ if (WITH_ZIM)
 
     if (APPLE)
         # 查找 ICU 库
-        find_package(ICU REQUIRED COMPONENTS i18n data)
+        find_package(ICU REQUIRED COMPONENTS i18n data uc)
         target_link_libraries(${GOLDENDICT} PRIVATE ${ICU_LIBRARIES})
     endif ()
 endif ()
