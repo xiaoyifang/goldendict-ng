@@ -79,7 +79,14 @@ endif ()
 if (WITH_ZIM)
     if (APPLE)
         # ICU from homebrew is "key-only", we need to manually prioritize it -> see `brew info icu4c`
-        set(ENV{PKG_CONFIG_PATH} "$ENV{PKG_CONFIG_PATH}:/usr/local/opt/icu4c@76/lib/pkgconfig:/opt/homebrew/opt/icu4c@76/lib/pkgconfig:/usr/local/opt/icu4c/lib/pkgconfig:/opt/homebrew/opt/icu4c/lib/pkgconfig")
+        # And we needs to find the correct one if multiple versions co exists.
+        set(ENV{PATH} "$ENV{PATH}:/usr/local/bin/:/opt/homebrew/bin") # add brew command into PATH
+        execute_process(
+                COMMAND sh -c [=[brew --prefix $(brew deps libzim | grep icu4c)]=]
+                OUTPUT_VARIABLE ICU_REQUIRED_BY_ZIM_PREFIX
+                COMMAND_ERROR_IS_FATAL ANY)
+        message(STATUS "Found correct homebrew icu path -> ${ICU_REQUIRED_BY_ZIM_PREFIX}")
+        set(ENV{PKG_CONFIG_PATH} "$ENV{PKG_CONFIG_PATH}:${ICU_REQUIRED_BY_ZIM_PREFIX}/lib/pkgconfig")
     endif ()
 
     pkg_check_modules(ZIM REQUIRED IMPORTED_TARGET libzim)
@@ -89,11 +96,6 @@ if (WITH_ZIM)
         # icu4c as transitive dependency of libzim may not be automatically copied into app bundle
         # so we manually discover the icu4c from homebrew, then find the relevent dylibs
         pkg_check_modules(BREW_ICU REQUIRED IMPORTED_TARGET icu-i18n icu-uc)
-        if (BREW_ICU_INCLUDE_DIRS IN_LIST ZIM_INCLUDE_DIRS)
-            message(STATUS "ZIM OK!")
-        else ()
-            message(FATAL_ERROR "!!! ZIM <-> icu error -> check `brew info libzim` to know what libzim is depending.")
-        endif ()
         set(BREW_ICU_NEEDED_LIBS "${BREW_ICU_LIBRARY_DIRS}/libicudata.dylib ${BREW_ICU_LIBRARY_DIRS}/libicui18n.dylib ${BREW_ICU_LIBRARY_DIRS}/libicuuc.dylib")
         message(STATUS "Additional Libs -> ${BREW_ICU_NEEDED_LIBS}")
     endif ()
