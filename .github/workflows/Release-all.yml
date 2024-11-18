@@ -39,6 +39,7 @@ jobs:
             libogg \
             libvorbis \
             libzim  \
+            icu4c \
             lzip \
             ninja \
             opencc \
