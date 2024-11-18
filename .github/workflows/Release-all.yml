@@ -65,6 +65,9 @@ jobs:
       - name: Package
         run: |
           cmake --install build_dir/
+      - name: Print package content
+        run: |
+          ls -Rl ./build_dir/redist
       - uses: actions/upload-artifact@v4
         with:
           name: macOS-${{ matrix.os }}-Qt${{ matrix.qt_ver }}
