@@ -31,7 +31,6 @@ jobs:
           brew update
       - name: Install dependencies
         run: |
-          vcpkg install libzim
           brew install \
             bzip2  \
             create-dmg \
@@ -39,6 +38,7 @@ jobs:
             libiconv \
             libogg \
             libvorbis \
+            libzim  \
             lzip \
             ninja \
             opencc \
