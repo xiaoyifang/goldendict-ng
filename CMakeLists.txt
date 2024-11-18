@@ -284,6 +284,7 @@ if (APPLE)
             set(QT_DEPLOY_TRANSLATIONS_DIR \"Contents/Resources/translations\")
             qt_deploy_runtime_dependencies(
                         EXECUTABLE \"${Redistributable_APP}\"
+                        ADDITIONAL_LIBRARIES ${BREW_ICU_ADDITIONAL_DYLIBS}
                         GENERATE_QT_CONF
                         NO_APP_STORE_COMPLIANCE)
             qt_deploy_translations()

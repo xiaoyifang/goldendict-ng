@@ -79,30 +79,25 @@ endif ()
 if (WITH_ZIM)
     if (APPLE)
         # ICU from homebrew is "key-only", we need to manually prioritize it -> see `brew info icu4c`
-        set(ENV{PKG_CONFIG_PATH} "$ENV{PKG_CONFIG_PATH}:/usr/local/opt/icu4c@76/lib/pkgconfig:/opt/homebrew/opt/icu4c@76/lib/pkgconfig:/usr/local/opt/icu4c/lib/pkgconfig:/opt/homebrew/opt/icu4c/lib/pkgconfig")
+        # And we needs to find the correct one if multiple versions co exists.
+        set(ENV{PATH} "$ENV{PATH}:/usr/local/bin/:/opt/homebrew/bin") # add brew command into PATH
+        execute_process(
+                COMMAND sh -c [=[brew --prefix $(brew deps libzim | grep icu4c)]=]
+                OUTPUT_VARIABLE ICU_REQUIRED_BY_ZIM_PREFIX
+                OUTPUT_STRIP_TRAILING_WHITESPACE
+                COMMAND_ERROR_IS_FATAL ANY)
+        message(STATUS "Found correct homebrew icu path -> ${ICU_REQUIRED_BY_ZIM_PREFIX}")
+        set(ENV{PKG_CONFIG_PATH} "$ENV{PKG_CONFIG_PATH}:${ICU_REQUIRED_BY_ZIM_PREFIX}/lib/pkgconfig")
+        message(STATUS "Updated pkg_config_path -> $ENV{PKG_CONFIG_PATH}:${ICU_REQUIRED_BY_ZIM_PREFIX}/lib/pkgconfig")
+
+        # icu4c as transitive dependency of libzim may not be automatically copied into app bundle
+        # so we manually discover the icu4c from homebrew, then find the relevent dylibs
+        set(BREW_ICU_ADDITIONAL_DYLIBS "${ICU_REQUIRED_BY_ZIM_PREFIX}/lib/libicudata.dylib ${ICU_REQUIRED_BY_ZIM_PREFIX}/lib/libicui18n.dylib ${ICU_REQUIRED_BY_ZIM_PREFIX}/lib/libicuuc.dylib")
+        message(STATUS "Additional ICU `.dylib`s -> ${BREW_ICU_ADDITIONAL_DYLIBS}")
     endif ()
 
     pkg_check_modules(ZIM REQUIRED IMPORTED_TARGET libzim)
     target_link_libraries(${GOLDENDICT} PRIVATE PkgConfig::ZIM)
-
-    if (APPLE)
-        # icu4c as transitive dependency of libzim may not be copied into app bundle, so we directly depends on it to assist macdeployqt
-        # Why such complexities: 1) System or XCode SDKS's icu exists 2) icu itself is depended by various stuffs and homebrew may need multiple versions of it
-        pkg_check_modules(BREW_ICU REQUIRED IMPORTED_TARGET icu-i18n icu-uc)
-        target_link_libraries(${GOLDENDICT} PUBLIC PkgConfig::BREW_ICU)
-
-        # Verify icu <-> zim matches
-        message("Zim include dirs -> ${ZIM_INCLUDE_DIRS}")
-        message("Homebrew icu include dirs-> ${BREW_ICU_INCLUDE_DIRS}")
-
-        list(GET BREW_ICU_INCLUDE_DIRS 0 ONE_OF_BREW_ICU_INCLUDE_DIR)
-        if (ONE_OF_BREW_ICU_INCLUDE_DIR IN_LIST ZIM_INCLUDE_DIRS)
-            message("ZIM OK!")
-        else ()
-            message(FATAL_ERROR "!!!! ZIM <-> icu error -> check `brew info libzim` and `brew list libzim`")
-        endif ()
-        # TODO: get rid of these 💩, how?
-    endif ()
 endif ()
 
 if (USE_SYSTEM_FMT)
