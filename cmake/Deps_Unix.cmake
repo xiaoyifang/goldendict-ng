@@ -95,6 +95,7 @@ if (WITH_ZIM)
             message(FATAL_ERROR "!!! ZIM <-> icu error -> check `brew info libzim` to know what libzim is depending.")
         endif ()
         set(BREW_ICU_NEEDED_LIBS "${BREW_ICU_LIBRARY_DIRS}/libicudata.dylib ${BREW_ICU_LIBRARY_DIRS}/libicui18n.dylib ${BREW_ICU_LIBRARY_DIRS}/libicuuc.dylib")
+        message(STATUS "Additional Libs -> ${BREW_ICU_NEEDED_LIBS}")
     endif ()
 endif ()
 
