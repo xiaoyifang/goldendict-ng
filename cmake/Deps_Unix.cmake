@@ -88,18 +88,19 @@ if (WITH_ZIM)
                 COMMAND_ERROR_IS_FATAL ANY)
         message(STATUS "Found correct homebrew icu path -> ${ICU_REQUIRED_BY_ZIM_PREFIX}")
         set(ENV{PKG_CONFIG_PATH} "$ENV{PKG_CONFIG_PATH}:${ICU_REQUIRED_BY_ZIM_PREFIX}/lib/pkgconfig")
-        message(STATUS "$ENV{PKG_CONFIG_PATH}:${ICU_REQUIRED_BY_ZIM_PREFIX}/lib/pkgconfig")
+        message(STATUS "Updated pkg_config_path -> $ENV{PKG_CONFIG_PATH}:${ICU_REQUIRED_BY_ZIM_PREFIX}/lib/pkgconfig")
+
+        # icu4c as transitive dependency of libzim may not be automatically copied into app bundle
+        # so we manually discover the icu4c from homebrew, then find the relevent dylibs
+        set(BREW_ICU_ADDITIONAL_DYLIBS "${ICU_REQUIRED_BY_ZIM_PREFIX}/lib/libicudata.dylib ${BREW_ICU_LIBRARY_DIRS}/lib/libicui18n.dylib ${BREW_ICU_LIBRARY_DIRS}/lib/libicuuc.dylib")
+        message(STATUS "Additional ICU `.dylib`s -> ${BREW_ICU_NEEDED_LIBS}")
     endif ()
 
     pkg_check_modules(ZIM REQUIRED IMPORTED_TARGET libzim)
     target_link_libraries(${GOLDENDICT} PRIVATE PkgConfig::ZIM)
 
     if (APPLE)
-        # icu4c as transitive dependency of libzim may not be automatically copied into app bundle
-        # so we manually discover the icu4c from homebrew, then find the relevent dylibs
-        pkg_check_modules(BREW_ICU REQUIRED IMPORTED_TARGET icu-i18n icu-uc)
-        set(BREW_ICU_NEEDED_LIBS "${BREW_ICU_LIBRARY_DIRS}/libicudata.dylib ${BREW_ICU_LIBRARY_DIRS}/libicui18n.dylib ${BREW_ICU_LIBRARY_DIRS}/libicuuc.dylib")
-        message(STATUS "Additional Libs -> ${BREW_ICU_NEEDED_LIBS}")
+
     endif ()
 endif ()
 
