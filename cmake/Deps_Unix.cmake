@@ -92,8 +92,8 @@ if (WITH_ZIM)
 
         # icu4c as transitive dependency of libzim may not be automatically copied into app bundle
         # so we manually discover the icu4c from homebrew, then find the relevent dylibs
-        set(BREW_ICU_ADDITIONAL_DYLIBS "${ICU_REQUIRED_BY_ZIM_PREFIX}/lib/libicudata.dylib ${BREW_ICU_LIBRARY_DIRS}/lib/libicui18n.dylib ${BREW_ICU_LIBRARY_DIRS}/lib/libicuuc.dylib")
-        message(STATUS "Additional ICU `.dylib`s -> ${BREW_ICU_NEEDED_LIBS}")
+        set(BREW_ICU_ADDITIONAL_DYLIBS "${ICU_REQUIRED_BY_ZIM_PREFIX}/lib/libicudata.dylib ${ICU_REQUIRED_BY_ZIM_PREFIX}/lib/libicui18n.dylib ${ICU_REQUIRED_BY_ZIM_PREFIX}/lib/libicuuc.dylib")
+        message(STATUS "Additional ICU `.dylib`s -> ${BREW_ICU_ADDITIONAL_DYLIBS}")
     endif ()
 
     pkg_check_modules(ZIM REQUIRED IMPORTED_TARGET libzim)
