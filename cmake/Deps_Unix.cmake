@@ -85,7 +85,7 @@ if (WITH_ZIM)
     target_link_libraries(${GOLDENDICT} PRIVATE PkgConfig::ZIM)
 
     if (APPLE)
-        set(ICU_ROOT "$(brew --prefix icu4c)")
+        set(ICU_ROOT "/usr/local/opt/")
     
         # 查找 ICU 库
         find_package(ICU REQUIRED COMPONENTS i18n data uc)
