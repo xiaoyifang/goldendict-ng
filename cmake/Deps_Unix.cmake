@@ -78,7 +78,7 @@ endif ()
 
 if (WITH_ZIM)
     if (APPLE)
-        set(CMAKE_PREFIX_PATH "/usr/local;/opt/homebrew/opt/icu4c")
+        set(CMAKE_PREFIX_PATH "${CMAKE_PREFIX_PATH};$(brew --prefix icu4c)")
     endif ()
 
     pkg_check_modules(ZIM REQUIRED IMPORTED_TARGET libzim)
