@@ -26,6 +26,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: true
+      - name: Update brew
+        run: |
+          brew update
       - name: Install dependencies
         run: |
           brew install \
@@ -40,7 +43,8 @@ jobs:
             ninja \
             opencc \
             xapian
-          
+      - name: Install eb
+        run: |
           git clone https://github.com/xiaoyifang/eb.git
           cd eb && ./configure && make -j 8 && sudo make install && cd ..         
       - uses: jurplel/install-qt-action@v4

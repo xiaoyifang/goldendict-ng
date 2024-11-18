@@ -51,6 +51,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: false
+      - name: Update brew
+        run: |
+          brew update
       - name: Install dependencies
         run: |
           brew install \
@@ -66,11 +69,11 @@ jobs:
           xapian \
           libzim \
           qt
-
+      - name: Install eb
+        run: |
           wget ftp://ftp.sra.co.jp/pub/misc/eb/eb-4.4.3.tar.bz2
           tar xvjf eb-4.4.3.tar.bz2
           cd eb-4.4.3 && ./configure && make -j 8 && sudo make install && cd ..
-
       - name: Run build
         run: |
           mkdir build_dir
