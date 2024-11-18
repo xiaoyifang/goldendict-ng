@@ -84,9 +84,11 @@ if (WITH_ZIM)
         execute_process(
                 COMMAND sh -c [=[brew --prefix $(brew deps libzim | grep icu4c)]=]
                 OUTPUT_VARIABLE ICU_REQUIRED_BY_ZIM_PREFIX
+                OUTPUT_STRIP_TRAILING_WHITESPACE
                 COMMAND_ERROR_IS_FATAL ANY)
         message(STATUS "Found correct homebrew icu path -> ${ICU_REQUIRED_BY_ZIM_PREFIX}")
         set(ENV{PKG_CONFIG_PATH} "$ENV{PKG_CONFIG_PATH}:${ICU_REQUIRED_BY_ZIM_PREFIX}/lib/pkgconfig")
+        message(STATUS "$ENV{PKG_CONFIG_PATH}:${ICU_REQUIRED_BY_ZIM_PREFIX}/lib/pkgconfig")
     endif ()
 
     pkg_check_modules(ZIM REQUIRED IMPORTED_TARGET libzim)
