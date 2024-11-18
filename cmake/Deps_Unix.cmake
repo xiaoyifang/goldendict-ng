@@ -98,10 +98,6 @@ if (WITH_ZIM)
 
     pkg_check_modules(ZIM REQUIRED IMPORTED_TARGET libzim)
     target_link_libraries(${GOLDENDICT} PRIVATE PkgConfig::ZIM)
-
-    if (APPLE)
-
-    endif ()
 endif ()
 
 if (USE_SYSTEM_FMT)
