@@ -77,14 +77,12 @@ if (WITH_EPWING_SUPPORT)
 endif ()
 
 if (WITH_ZIM)
-    if (APPLE)
-        set(CMAKE_PREFIX_PATH "$(brew --prefix icu4c);/usr/local;/opt/homebrew/opt/icu4c")
-    endif ()
-
     pkg_check_modules(ZIM REQUIRED IMPORTED_TARGET libzim)
     target_link_libraries(${GOLDENDICT} PRIVATE PkgConfig::ZIM)
 
     if (APPLE)
+        set(CMAKE_PREFIX_PATH "$(brew --prefix icu4c);/usr/local;/opt/homebrew/opt/icu4c")
+    
         # 查找 ICU 库
         find_package(ICU REQUIRED COMPONENTS i18n data uc)
         target_link_libraries(${GOLDENDICT} PRIVATE ${ICU_LIBRARIES})
