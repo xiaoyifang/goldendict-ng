@@ -77,11 +77,15 @@ if (WITH_EPWING_SUPPORT)
 endif ()
 
 if (WITH_ZIM)
+    if (APPLE)
+        # ICU from homebrew is "key-only", we need to manually prioritize it -> see `brew info icu4c`
+        set(ENV{PKG_CONFIG_PATH} "$ENV{PKG_CONFIG_PATH}:/usr/local/opt/icu4c@76/lib/pkgconfig:/opt/homebrew/opt/icu4c@76/lib/pkgconfig:/usr/local/opt/icu4c/lib/pkgconfig:/opt/homebrew/opt/icu4c/lib/pkgconfig")
+    endif ()
     pkg_check_modules(ZIM REQUIRED IMPORTED_TARGET libzim)
     target_link_libraries(${GOLDENDICT} PRIVATE PkgConfig::ZIM)
 
     if (APPLE)
-        set(CMAKE_PREFIX_PATH "$(brew --prefix icu4c);/usr/local;/opt/homebrew/opt/icu4c")
+        set(CMAKE_PREFIX_PATH "${CMAKE_PREFIX_PATH};$(brew --prefix icu4c);/usr/local;/opt/homebrew/opt/icu4c")
     
         # 查找 ICU 库
         find_package(ICU REQUIRED COMPONENTS i18n data uc)
