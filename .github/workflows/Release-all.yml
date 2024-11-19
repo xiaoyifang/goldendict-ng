@@ -1,4 +1,4 @@
-name: test 
+name: Release All
 env: 
   version: 24.11.0
   prerelease: ${{ !contains(github.ref_name,'master') }}
