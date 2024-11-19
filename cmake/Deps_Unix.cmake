@@ -79,15 +79,13 @@ endif ()
 if (WITH_ZIM)
     if (APPLE)
 
-        # 执行 brew list 命令并捕获输出
-        execute_process(
-            COMMAND brew --prefix libzim
-            OUTPUT_VARIABLE LIBZIM_PATH
-            
-        )
-        message(STATUS "zim path:${LIBZIM_PATH}")
-        # ICU from homebrew is "key-only", we need to manually prioritize it -> see `brew info icu4c`
-        set(ENV{PKG_CONFIG_PATH} "$ENV{PKG_CONFIG_PATH}:${LIBZIM_PATH}/lib/pkgconfig")
+        if (EXISTS /opt/homebrew)
+            set(ENV{PKG_CONFIG_PATH} "/opt/homebrew/lib/pkgconfig:$ENV{PKG_CONFIG_PATH}")
+        endif()
+
+        if (EXISTS /usr/local)
+            set(ENV{PKG_CONFIG_PATH} "/usr/local/lib/pkgconfig:$ENV{PKG_CONFIG_PATH}")
+        endif()
     endif ()
     pkg_check_modules(ZIM REQUIRED IMPORTED_TARGET libzim)
     target_link_libraries(${GOLDENDICT} PRIVATE PkgConfig::ZIM)
