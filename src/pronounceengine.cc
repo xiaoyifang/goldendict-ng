@@ -17,7 +17,7 @@ void PronounceEngine::reset()
 }
 
 
-void PronounceEngine::sendAudio( std::string dictId, QString audioLink )
+void PronounceEngine::sendAudio( const std::string & dictId, const QString& audioLink )
 {
   if ( state == PronounceState::OCCUPIED ) {
     return;
@@ -29,7 +29,7 @@ void PronounceEngine::sendAudio( std::string dictId, QString audioLink )
 
   QMutexLocker _( &mutex );
 
-  dictAudioMap.operator[]( dictId ).push_back( audioLink );
+  dictAudioMap[ dictId ].append( audioLink );
 }
 
 void PronounceEngine::finishDictionary( std::string dictId )
