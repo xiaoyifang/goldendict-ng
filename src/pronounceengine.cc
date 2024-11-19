@@ -17,7 +17,7 @@ void PronounceEngine::reset()
 }
 
 
-void PronounceEngine::sendAudio( const std::string & dictId, const QString& audioLink )
+void PronounceEngine::sendAudio( const std::string & dictId, const QString & audioLink )
 {
   if ( state == PronounceState::OCCUPIED ) {
     return;
