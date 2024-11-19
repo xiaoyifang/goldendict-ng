@@ -368,7 +368,7 @@ int main( int argc, char ** argv )
 
 #ifdef Q_OS_WIN
   // TODO: Force fusion because Qt6.7's "ModernStyle"'s dark theme have problems, need to test / reconsider in future
-  QHotkeyApplication::setStyle( QStyleFactory::create( "Fusion" ) );
+  QHotkeyApplication::setStyle( QStyleFactory::create( "WindowsVista" ) );
 #endif
 
 

@@ -1356,8 +1356,10 @@ void MainWindow::updateAppearances( QString const & addonStyle,
     darkPalette.setColor( QPalette::Disabled, QPalette::HighlightedText, disabledColor );
 
     qApp->setPalette( darkPalette );
+    qApp->setStyle( "Fusion" );
   }
   else {
+    qApp->setStyle( "WindowsVista" );
     qApp->setPalette( QPalette() );
   }
 #endif
