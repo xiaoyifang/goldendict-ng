@@ -85,6 +85,7 @@ if (WITH_ZIM)
             OUTPUT_VARIABLE LIBZIM_PATH
             
         )
+        message(STATUS "zim path:${LIBZIM_PATH}")
         # ICU from homebrew is "key-only", we need to manually prioritize it -> see `brew info icu4c`
         set(ENV{PKG_CONFIG_PATH} "$ENV{PKG_CONFIG_PATH}:${LIBZIM_PATH}/lib/pkgconfig")
     endif ()
