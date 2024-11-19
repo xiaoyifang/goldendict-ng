@@ -39,11 +39,11 @@ jobs:
             libogg \
             libvorbis \
             libzim  \
-            icu4c \
             lzip \
             ninja \
             opencc \
             xapian
+          brew install icu4c --force
       - name: Install eb
         run: |
           git clone https://github.com/xiaoyifang/eb.git
