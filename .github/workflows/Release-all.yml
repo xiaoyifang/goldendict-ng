@@ -20,8 +20,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-13]
-        qt_ver: [ 6.6.3 ]
+        os: [macos-13,macos-14]
+        qt_ver: [ 6.6.3,6.7.2 ]
     steps:
       - uses: actions/checkout@v4
         with:
