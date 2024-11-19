@@ -78,9 +78,9 @@ endif ()
 
 if (WITH_ZIM)
     if (APPLE)
-# 设置 pkg-config 的搜索路径
-        set(ENV{PKG_CONFIG_PATH} "/usr/local/lib/pkgconfig:/usr/lib/pkgconfig:$ENV{PKG_CONFIG_PATH}")
-    endif()
+        # ICU from homebrew is "key-only", we need to manually prioritize it -> see `brew info icu4c`
+        set(ENV{PKG_CONFIG_PATH} "$ENV{PKG_CONFIG_PATH}:/usr/local/opt/icu4c@76/lib/pkgconfig:/opt/homebrew/opt/icu4c@76/lib/pkgconfig:/usr/local/opt/icu4c/lib/pkgconfig:/opt/homebrew/opt/icu4c/lib/pkgconfig")
+    endif ()
     pkg_check_modules(ZIM REQUIRED IMPORTED_TARGET libzim)
     target_link_libraries(${GOLDENDICT} PRIVATE PkgConfig::ZIM)
 
