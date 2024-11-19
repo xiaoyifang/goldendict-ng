@@ -85,12 +85,21 @@ if (WITH_ZIM)
     target_link_libraries(${GOLDENDICT} PRIVATE PkgConfig::ZIM)
 
     if (APPLE)
+    # 执行 brew list 命令并捕获输出
+        execute_process(
+            COMMAND brew --prefix icu4c
+            OUTPUT_VARIABLE BREW_OUTPUT
+            ERROR_VARIABLE BREW_ERROR
+            RESULT_VARIABLE BREW_RESULT
+        )
+
+     
+        # 输出 brew 命令的结果
+        message(STATUS "icu4c path:${BREW_OUTPUT}")
         # 查找 ICU 库
         # 设置 CMAKE_PREFIX_PATH
-        set(ICU_DEBUG ON)
         set(ICU_ROOT "/usr/local/opt/icu4c")
-        message(STATUS "ICU_LIBRARIES: $(brew --prefix icu4c)")
-        find_package(ICU COMPONENTS i18n data uc)
+        find_package(ICU REQUIRED COMPONENTS i18n data uc)
         message(STATUS "ICU_LIBRARIES: ${ICU_LIBRARIES}")
 
         target_link_libraries(${GOLDENDICT} PRIVATE ${ICU_LIBRARIES})
