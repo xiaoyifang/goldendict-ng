@@ -90,7 +90,7 @@ if (WITH_ZIM)
         set(ICU_DEBUG ON)
         set(ICU_ROOT "/usr/local/opt/icu4c")
         message(STATUS "ICU_LIBRARIES: $(brew --prefix icu4c)")
-        find_package(ICU REQUIRED COMPONENTS i18n data uc)
+        find_package(ICU COMPONENTS i18n data uc)
         message(STATUS "ICU_LIBRARIES: ${ICU_LIBRARIES}")
 
         target_link_libraries(${GOLDENDICT} PRIVATE ${ICU_LIBRARIES})
