@@ -77,6 +77,10 @@ if (WITH_EPWING_SUPPORT)
 endif ()
 
 if (WITH_ZIM)
+    if (APPLE)
+# 设置 pkg-config 的搜索路径
+        set(ENV{PKG_CONFIG_PATH} "/usr/local/lib/pkgconfig:/usr/lib/pkgconfig:$ENV{PKG_CONFIG_PATH}")
+    endif()
     pkg_check_modules(ZIM REQUIRED IMPORTED_TARGET libzim)
     target_link_libraries(${GOLDENDICT} PRIVATE PkgConfig::ZIM)
 
