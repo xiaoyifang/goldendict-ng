@@ -89,6 +89,8 @@ if (WITH_ZIM)
         # 设置 CMAKE_PREFIX_PATH
         set(CMAKE_PREFIX_PATH "${CMAKE_PREFIX_PATH};$(brew --prefix icu4c)")
         find_package(ICU REQUIRED COMPONENTS i18n data uc)
+        message(STATUS "ICU_LIBRARIES: ${ICU_LIBRARIES}")
+
         target_link_libraries(${GOLDENDICT} PRIVATE ${ICU_LIBRARIES})
     endif ()
 endif ()
