@@ -87,7 +87,8 @@ if (WITH_ZIM)
     if (APPLE)
         # 查找 ICU 库
         # 设置 CMAKE_PREFIX_PATH
-        set(CMAKE_PREFIX_PATH "${CMAKE_PREFIX_PATH};$(brew --prefix icu4c)")
+        set(ICU_ROOT "/usr/local/opt/icu4c")
+        message(STATUS "ICU_LIBRARIES: $(brew --prefix icu4c)")
         find_package(ICU REQUIRED COMPONENTS i18n data uc)
         message(STATUS "ICU_LIBRARIES: ${ICU_LIBRARIES}")
 
