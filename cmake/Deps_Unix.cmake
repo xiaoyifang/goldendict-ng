@@ -100,7 +100,7 @@ if (WITH_ZIM)
         # 设置 CMAKE_PREFIX_PATH
         set(ICU_DEBUG ON)
         set(ICU_ROOT "${BREW_OUTPUT}")
-        find_package(ICU REQUIRED COMPONENTS i18n data uc)
+        find_package(ICU COMPONENTS i18n data uc)
         message(STATUS "ICU_LIBRARIES: ${ICU_LIBRARIES}")
 
         target_link_libraries(${GOLDENDICT} PRIVATE ${ICU_LIBRARIES})
