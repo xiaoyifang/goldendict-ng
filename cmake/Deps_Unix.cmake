@@ -85,9 +85,9 @@ if (WITH_ZIM)
     target_link_libraries(${GOLDENDICT} PRIVATE PkgConfig::ZIM)
 
     if (APPLE)
-        set(ICU_ROOT "/usr/local/opt/")
-    
         # 查找 ICU 库
+        # 设置 CMAKE_PREFIX_PATH
+        set(CMAKE_PREFIX_PATH "${CMAKE_PREFIX_PATH};$(brew --prefix icu4c)")
         find_package(ICU REQUIRED COMPONENTS i18n data uc)
         target_link_libraries(${GOLDENDICT} PRIVATE ${ICU_LIBRARIES})
     endif ()
