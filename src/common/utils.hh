@@ -257,9 +257,14 @@ inline bool isAudioUrl( QUrl const & url )
 {
   if ( !url.isValid() )
     return false;
-  // Note: we check for forvo sound links explicitly, as they don't have extensions
 
-  return ( url.scheme() == "http" || url.scheme() == "https" || url.scheme() == "gdau" )
+  // gdau links are known to be audios, (sometimes they may not have file extension).
+  if ( url.scheme() == "gdau" ) {
+    return true;
+  }
+
+  // Note: we check for forvo sound links explicitly, as they don't have extensions
+  return ( url.scheme() == "http" || url.scheme() == "https" )
     && ( Filetype::isNameOfSound( url.path().toUtf8().data() ) || url.host() == "apifree.forvo.com" );
 }
 
