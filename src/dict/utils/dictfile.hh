@@ -43,7 +43,7 @@ public:
   QMutex lock;
 
   // Create QFile Object and open() it.
-  Index( std::string_view filename, char const * mode );
+  Index( std::string_view filename, QIODevice::OpenMode mode );
 
   /// QFile::read  & QFile::write , but with exception throwing
   void read( void * buf, qint64 size );
@@ -113,8 +113,6 @@ public:
   ~Index() noexcept;
 
 private:
-  // QFile::open but with fopen-like mode settings.
-  void open( char const * mode );
 
   template< typename T >
   void readType( T & value )

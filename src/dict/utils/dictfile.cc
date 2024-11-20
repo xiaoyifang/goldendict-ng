@@ -37,50 +37,18 @@ bool tryPossibleZipName( std::string const & name, std::string & copyTo )
 
 void loadFromFile( std::string const & filename, std::vector< char > & data )
 {
-  File::Index f( filename, "rb" );
+  File::Index f( filename, QIODevice::ReadOnly );
   auto size = f.file().size(); // QFile::size() obtains size via statx on Linux
   data.resize( size );
   f.read( data.data(), size );
 }
 
-void Index::open( char const * mode )
-{
-  QFile::OpenMode openMode = QIODevice::Text;
-
-  const char * pch = mode;
-  while ( *pch ) {
-    switch ( *pch ) {
-      case 'r':
-        openMode |= QIODevice::ReadOnly;
-        break;
-      case 'w':
-        openMode |= QIODevice::WriteOnly;
-        break;
-      case '+':
-        openMode &= ~( QIODevice::ReadOnly | QIODevice::WriteOnly );
-        openMode |= QIODevice::ReadWrite;
-        break;
-      case 'a':
-        openMode |= QIODevice::Append;
-        break;
-      case 'b':
-        openMode &= ~QIODevice::Text;
-        break;
-      default:
-        break;
-    }
-    ++pch;
-  }
-
-  if ( !f.open( openMode ) ) {
-    throw exCantOpen( f.fileName().toStdString() + ": " + f.errorString().toUtf8().data() );
-  }
-}
-
-Index::Index( std::string_view filename, char const * mode )
+Index::Index( std::string_view filename, QIODevice::OpenMode mode )
 {
   f.setFileName( QString::fromUtf8( filename.data(), filename.size() ) );
-  open( mode );
+  if ( !f.open( mode ) ) {
+    throw exCantOpen( ( f.fileName() + ": " + f.errorString() ).toStdString() );
+  }
 }
 
 void Index::read( void * buf, qint64 size )

@@ -65,7 +65,7 @@ static_assert( alignof( IdxHeader ) == 1 );
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Index idx( indexFile, "rb" );
+  File::Index idx( indexFile, QIODevice::ReadOnly );
 
   IdxHeader header;
 
@@ -201,7 +201,7 @@ string LsaDictionary::getName() noexcept
 
 LsaDictionary::LsaDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles ):
   BtreeDictionary( id, dictionaryFiles ),
-  idx( indexFile, "rb" ),
+  idx( indexFile, QIODevice::ReadOnly ),
   idxHeader( idx.read< IdxHeader >() )
 {
   // Initialize the index
@@ -405,7 +405,7 @@ sptr< Dictionary::DataRequest > LsaDictionary::getResource( string const & name 
     return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such resource
   }
 
-  File::Index f( getDictionaryFilenames()[ 0 ], "rb" );
+  File::Index f( getDictionaryFilenames()[ 0 ], QIODevice::ReadOnly );
 
   f.seek( chain[ 0 ].articleOffset );
   Entry e( f );
@@ -522,7 +522,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
     }
 
     try {
-      File::Index f( *i, "rb" );
+      File::Index f( *i, QIODevice::ReadOnly );
 
       /// Check the signature
 
@@ -547,7 +547,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         initializing.indexingDictionary( Utils::Fs::basename( *i ) );
 
-        File::Index idx( indexFile, "wb" );
+        File::Index idx( indexFile, QIODevice::WriteOnly );
 
         IdxHeader idxHeader;
 
