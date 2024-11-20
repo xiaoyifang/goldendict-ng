@@ -237,22 +237,21 @@ else ()
 endif ()
 
 #### add translations
-
-# include all *ts files under locale
-file(GLOB TRANS_FILES "locale/*.ts")
-
-if (WIN32)
-    # Put generated files to output dir's locale
-    set_source_files_properties(${TRANS_FILES} PROPERTIES OUTPUT_LOCATION "${GD_WIN_OUTPUT_DIR}/locale")
-else ()
-    set_source_files_properties(${TRANS_FILES} PROPERTIES OUTPUT_LOCATION "${CMAKE_CURRENT_BINARY_DIR}/locale")
-endif ()
-
-qt_add_translations(${GOLDENDICT} TS_FILES ${TRANS_FILES}
-        QM_FILES_OUTPUT_VARIABLE qm_files
-        LUPDATE_OPTIONS "-no-ui-lines -locations none -no-obsolete")
-
 if (WITH_TRANSLATIONS)
+    # include all *ts files under locale
+    file(GLOB TRANS_FILES "locale/*.ts")
+
+    if (WIN32)
+        # Put generated files to output dir's locale
+        set_source_files_properties(${TRANS_FILES} PROPERTIES OUTPUT_LOCATION "${GD_WIN_OUTPUT_DIR}/locale")
+    else ()
+        set_source_files_properties(${TRANS_FILES} PROPERTIES OUTPUT_LOCATION "${CMAKE_CURRENT_BINARY_DIR}/locale")
+    endif ()
+
+    qt_add_translations(${GOLDENDICT} TS_FILES ${TRANS_FILES}
+            QM_FILES_OUTPUT_VARIABLE qm_files
+            LUPDATE_OPTIONS "-no-ui-lines -locations none -no-obsolete")
+
     add_dependencies(${GOLDENDICT} "release_translations")
 endif ()
 
