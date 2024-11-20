@@ -80,7 +80,7 @@ struct Ifo
   uint32_t wordcount     = 0;
   uint32_t synwordcount  = 0;
   uint32_t idxfilesize   = 0;
-  uint32_t idxoffsetbits = 0;
+  uint32_t idxoffsetbits = 32;
   string sametypesequence, dicttype, description;
   string copyright, author, email, website, date;
 
@@ -1455,34 +1455,24 @@ static char const * beginsWith( char const * substr, char const * str )
   return strncmp( str, substr, len ) == 0 ? str + len : 0;
 }
 
-Ifo::Ifo( const QString & fileName ):
-  wordcount( 0 ),
-  synwordcount( 0 ),
-  idxfilesize( 0 ),
-  idxoffsetbits( 32 )
+Ifo::Ifo( const QString & fileName )
 {
   QFile f( fileName );
   if ( !f.open( QIODevice::ReadOnly ) ) {
     throw exCantReadFile( "Cannot open IFO file -> " + fileName.toStdString() );
   };
 
-  if ( f.readLine().trimmed() != "StarDict's dict ifo file" || !f.readLine().startsWith( "version=" ) ) {
+  if ( !f.readLine().startsWith( "StarDict's dict ifo file" ) || !f.readLine().startsWith( "version=" ) ) {
     throw exNotAnIfoFile();
   }
 
   /// Now go through the file and parse options
+  {
+    while ( !f.atEnd() ) {
+      auto line   = f.readLine();
+      auto option = QByteArrayView( line ).trimmed();
+      // Empty lines are allowed in .ifo file
 
-  std::array< char, 16384 > buf{};
-  for ( ;; ) {
-    auto lineLenth = f.readLine( buf.data(), buf.size() );
-    if ( lineLenth == -1 ) {
-      break;
-    }
-
-    if ( lineLenth != -1 ) {
-      auto option = QByteArrayView( buf.data(), lineLenth ).trimmed();
-
-      // emptry line allowed in ifo file
       if ( option.isEmpty() ) {
         continue;
       }
