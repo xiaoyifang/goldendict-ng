@@ -231,7 +231,7 @@ quint32 LangCoder::findIdForLanguage( gd::wstring const & lang )
   const auto langFolded = QByteArrayView( Utf8::encode( lang ) );
 
   for ( auto const & lc : LANG_CODE_MAP ) {
-    if ( langFolded.compare( lc.lang, Qt::CaseInsensitive ) ) {
+    if ( langFolded.compare( lc.lang, Qt::CaseInsensitive ) == 0 ) {
       return code2toInt( lc.code2.toStdString().c_str() );
     }
   }

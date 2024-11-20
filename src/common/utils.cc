@@ -30,7 +30,8 @@ std::string c_string( const QString & str )
 
 bool endsWithIgnoreCase( QByteArrayView str, QByteArrayView extension )
 {
-  return ( str.size() >= extension.size() ) && str.last( extension.size() ).compare( extension, Qt::CaseInsensitive );
+  return ( str.size() >= extension.size() )
+    && ( str.last( extension.size() ).compare( extension, Qt::CaseInsensitive ) == 0 );
 }
 
 QString escapeAmps( QString const & str )
