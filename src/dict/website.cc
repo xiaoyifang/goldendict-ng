@@ -474,7 +474,7 @@ void WebSiteDictionary::loadIcon() noexcept
       loadIconFromFile( fInfo.absoluteFilePath(), true );
     }
   }
-  if ( dictionaryIcon.isNull() && !loadIconFromText( ":/icons/webdict.svg", QString::fromStdString( name ) ) ) {
+  if ( dictionaryIcon.isNull() && !loadIconFromText( ":/icons/webdict.svg", QString::fromStdString( dictionaryName ) ) ) {
     dictionaryIcon = QIcon( ":/icons/webdict.svg" );
   }
   dictionaryIconLoaded = true;

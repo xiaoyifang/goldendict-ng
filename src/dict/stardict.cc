@@ -224,10 +224,10 @@ StardictDictionary::StardictDictionary( string const & id,
   BtreeDictionary( id, dictionaryFiles ),
   idx( indexFile, QIODevice::ReadOnly ),
   idxHeader( idx.read< IdxHeader >() ),
-  dictionaryName( loadString( idxHeader.bookNameSize ) ),
   sameTypeSequence( loadString( idxHeader.sameTypeSequenceSize ) ),
   chunks( idx, idxHeader.chunksOffset )
 {
+  dictionaryName = loadString( idxHeader.bookNameSize );
   // Open the .dict file
 
   DZ_ERRORS error;
