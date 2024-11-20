@@ -61,7 +61,7 @@ public:
     hunspell( files[ 0 ].c_str(), files[ 1 ].c_str() )
 #endif
   {
-  dictionaryName = name_;
+    dictionaryName = name_;
   }
 
 
