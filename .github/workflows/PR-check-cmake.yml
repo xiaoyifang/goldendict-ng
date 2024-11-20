@@ -42,6 +42,7 @@ jobs:
           mkdir build_dir
           cmake -S . \
             -B ./build_dir \
+            -DWITH_TRANSLATIONS=OFF \
             -G Ninja
           cmake --build ./build_dir 
   job_macos_build_check:
@@ -79,6 +80,7 @@ jobs:
           mkdir build_dir
           cmake -S . \
             -B ./build_dir \
+            -DWITH_TRANSLATIONS=OFF \
             -G Ninja
           cmake --build ./build_dir
               
@@ -107,6 +109,7 @@ jobs:
             -G Ninja `
             -DWITH_VCPKG_BREAKPAD=ON `
             -DCMAKE_C_COMPILER="cl.exe" -DCMAKE_CXX_COMPILER="cl.exe" `
+            -DWITH_TRANSLATIONS=OFF `
             -DWITH_FFMPEG_PLAYER=OFF
           cmake --build "./build_dir"
 
@@ -159,6 +162,7 @@ jobs:
             -DWITH_EPWING_SUPPORT=OFF \
             -DWITH_FFMPEG_PLAYER=ON \
             -DWITH_TTS=ON \
+            -DWITH_TRANSLATIONS=OFF \
             -DUSE_SYSTEM_FMT=ON \
             -DUSE_SYSTEM_TOML=ON
 

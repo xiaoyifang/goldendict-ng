@@ -9,17 +9,13 @@ option(WITH_TTS "enable QTexttoSpeech support" OFF)
 option(USE_SYSTEM_FMT "use system fmt instead of bundled one" OFF)
 option(USE_SYSTEM_TOML "use system toml++ instead of bundled one" OFF)
 
-option(WITH_VCPKG_BREAKPAD "build with Breakpad support for VCPKG build only" OFF)
-
-## Change binary & resources folder to parallel install with original GD.
-## This flag should be avoided because it leads to small regressions:
-## 1. There are personal scripts assuming the binary name to be "goldendict" -> require everyone to change the name in their script
-## 2. There are icon themes that assuming the icon name to be "goldendict" -> invalidate the GD icon when using a icon theme
-## 3. There are dictionary packages that install files to "/usr/share/goldendict/content" -> nullify the auto dict discovery
+## Change binary & resources folder to parallel install with original GD. goldendict -> goldendict-ng
+## This flag should be avoided because some one will assume the binary name is `goldendict`
 option(USE_ALTERNATIVE_NAME "Force the name goldendict-ng " OFF)
 
-set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}") # to put staff in the ./cmake folder
-
+# Unusual options, mostly for development, not really tested and may be changed or removed at any time.
+option(WITH_VCPKG_BREAKPAD "build with Breakpad support for VCPKG build only" OFF)
+option(WITH_TRANSLATIONS "build translations with the default target" ON)
 
 # vcpkg handling code, must be placed before project()
 if (WIN32)
@@ -235,9 +231,9 @@ endif ()
 #### libraries linking && includes for Win or Unix
 
 if (WIN32)
-    include(Deps_Vcpkg)
+    include(cmake/Deps_Vcpkg.cmake)
 else ()
-    include(Deps_Unix)
+    include(cmake/Deps_Unix.cmake)
 endif ()
 
 #### add translations
@@ -256,7 +252,9 @@ qt_add_translations(${GOLDENDICT} TS_FILES ${TRANS_FILES}
         QM_FILES_OUTPUT_VARIABLE qm_files
         LUPDATE_OPTIONS "-no-ui-lines -locations none -no-obsolete")
 
-add_dependencies(${GOLDENDICT} "release_translations")
+if (WITH_DEFAULT_TRANSLATIONS)
+    add_dependencies(${GOLDENDICT} "release_translations")
+endif ()
 
 #### installation or assemble redistribution
 
