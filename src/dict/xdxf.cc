@@ -149,10 +149,6 @@ public:
 
   ~XdxfDictionary();
 
-  string getName() noexcept override
-  {
-    return dictionaryName;
-  }
 
   map< Dictionary::Property, string > getProperties() noexcept override
   {

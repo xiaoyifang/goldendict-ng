@@ -61,7 +61,6 @@ bool indexIsOldOrBad( string const & indexFile )
 
 class SoundDirDictionary: public BtreeIndexing::BtreeDictionary
 {
-  string name;
   QMutex idxMutex;
   File::Index idx;
   IdxHeader idxHeader;
@@ -76,10 +75,6 @@ public:
                       vector< string > const & dictionaryFiles,
                       QString const & iconFilename_ );
 
-  string getName() noexcept override
-  {
-    return name;
-  }
 
   map< Dictionary::Property, string > getProperties() noexcept override
   {
@@ -113,12 +108,13 @@ SoundDirDictionary::SoundDirDictionary( string const & id,
                                         vector< string > const & dictionaryFiles,
                                         QString const & iconFilename_ ):
   BtreeDictionary( id, dictionaryFiles ),
-  name( name_ ),
   idx( indexFile, QIODevice::ReadOnly ),
   idxHeader( idx.read< IdxHeader >() ),
   chunks( idx, idxHeader.chunksOffset ),
   iconFilename( iconFilename_ )
 {
+  dictionaryName = name_;
+
   // Initialize the index
 
   openIndex( IndexInfo( idxHeader.indexBtreeMaxElements, idxHeader.indexRootOffset ), idx, idxMutex );

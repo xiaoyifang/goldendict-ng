@@ -22,7 +22,6 @@ namespace {
 
 class WebSiteDictionary: public Dictionary::Class
 {
-  string name;
   QByteArray urlTemplate;
   bool experimentalIframe;
   QString iconFilename;
@@ -38,12 +37,13 @@ public:
                      bool inside_iframe_,
                      QNetworkAccessManager & netMgr_ ):
     Dictionary::Class( id, vector< string >() ),
-    name( name_ ),
     iconFilename( iconFilename_ ),
     inside_iframe( inside_iframe_ ),
     netMgr( netMgr_ ),
     experimentalIframe( false )
   {
+    dictionaryName = name_;
+
     if ( urlTemplate_.startsWith( "http://" ) || urlTemplate_.startsWith( "https://" ) ) {
       experimentalIframe = true;
     }
@@ -53,10 +53,6 @@ public:
     dictionaryDescription = urlTemplate_;
   }
 
-  string getName() noexcept override
-  {
-    return name;
-  }
 
   map< Property, string > getProperties() noexcept override
   {
@@ -478,7 +474,8 @@ void WebSiteDictionary::loadIcon() noexcept
       loadIconFromFile( fInfo.absoluteFilePath(), true );
     }
   }
-  if ( dictionaryIcon.isNull() && !loadIconFromText( ":/icons/webdict.svg", QString::fromStdString( name ) ) ) {
+  if ( dictionaryIcon.isNull()
+       && !loadIconFromText( ":/icons/webdict.svg", QString::fromStdString( dictionaryName ) ) ) {
     dictionaryIcon = QIcon( ":/icons/webdict.svg" );
   }
   dictionaryIconLoaded = true;

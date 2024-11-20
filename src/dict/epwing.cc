@@ -82,7 +82,6 @@ class EpwingDictionary: public BtreeIndexing::BtreeDictionary
   QMutex idxMutex;
   File::Index idx;
   IdxHeader idxHeader;
-  string bookName;
   ChunkedStorage::Reader chunks;
   Epwing::Book::EpwingBook eBook;
   QString cacheDirectory;
@@ -96,15 +95,6 @@ public:
 
   ~EpwingDictionary();
 
-  string getName() noexcept override
-  {
-    return bookName;
-  }
-
-  void setName( string _name ) noexcept override
-  {
-    bookName = _name;
-  }
 
   map< Dictionary::Property, string > getProperties() noexcept override
   {
@@ -227,7 +217,7 @@ EpwingDictionary::EpwingDictionary( string const & id,
   idx.seek( sizeof( idxHeader ) );
   if ( data.size() > 0 ) {
     idx.read( &data.front(), idxHeader.nameSize );
-    bookName = string( &data.front(), idxHeader.nameSize );
+    dictionaryName = string( &data.front(), idxHeader.nameSize );
   }
 
   // Initialize eBook
