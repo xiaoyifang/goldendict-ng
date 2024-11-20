@@ -258,7 +258,7 @@ BglDictionary::BglDictionary( string const & id, string const & indexFile, strin
 
   // Read the dictionary's name
 
-  idx.readU32SizeAndData<>(dictionaryName);
+  idx.readU32SizeAndData<>( dictionaryName );
 
   // Initialize the index
 

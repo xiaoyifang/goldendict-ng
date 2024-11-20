@@ -295,7 +295,7 @@ AardDictionary::AardDictionary( string const & id, string const & indexFile, vec
   // Read dictionary name
 
   idx.seek( sizeof( idxHeader ) );
-  idx.readU32SizeAndData<>(  dictionaryName);
+  idx.readU32SizeAndData<>( dictionaryName );
 
   // Initialize the index
 
