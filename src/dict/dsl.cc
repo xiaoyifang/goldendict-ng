@@ -1735,11 +1735,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
     // Make sure it's not an abbreviation file. extSize of ".dsl" or ".dsl.dz"
     int extSize = ( uncompressedDsl ? 4 : 7 );
-    if ( fileName.size() >= ( 5 + extSize ) ) {
-      if ( QByteArrayView( fileName ).chopped( extSize ).last( 5 ).compare( "_abrv", Qt::CaseInsensitive ) ) {
+    if ( (fileName.size() >= ( 5 + extSize )) &&  QByteArrayView( fileName ).chopped( extSize ).last( 5 ).compare( "_abrv", Qt::CaseInsensitive )) {
         // It is, skip it
         continue;
-      }
     }
 
     unsigned atLine = 0; // Indicates current line in .dsl, for debug purposes
