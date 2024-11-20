@@ -1472,7 +1472,7 @@ Ifo::Ifo( const QString & fileName ):
 
   /// Now go through the file and parse options
 
-  std::array< char, 16384 > buf;
+  std::array< char, 16384 > buf{};
   for ( ;; ) {
     auto lineLenth = f.readLine( buf.data(), buf.size() );
     if ( lineLenth == -1 ) {
