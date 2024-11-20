@@ -22,9 +22,6 @@
 #include <string.h>
 #include <zlib.h>
 
-#ifdef _MSC_VER
-  #include <stub_msvc.h>
-#endif
 
 #include <QAtomicInt>
 #include <QPainter>

@@ -17,10 +17,6 @@
 #include "tiff.hh"
 #include "utils.hh"
 
-#ifdef _MSC_VER
-  #include <stub_msvc.h>
-#endif
-
 #include "iconv.hh"
 
 #include <QString>

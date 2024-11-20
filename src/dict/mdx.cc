@@ -23,9 +23,6 @@
 #include <map>
 #include <set>
 #include <list>
-#ifdef _MSC_VER
-  #include <stub_msvc.h>
-#endif
 
 #include "globalregex.hh"
 #include "tiff.hh"

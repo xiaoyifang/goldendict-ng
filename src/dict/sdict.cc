@@ -19,12 +19,6 @@
 #include <set>
 #include <string>
 
-#include "utils.hh"
-
-
-#ifdef _MSC_VER
-  #include <stub_msvc.h>
-#endif
 
 namespace Sdict {
 

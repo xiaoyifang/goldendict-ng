@@ -40,7 +40,7 @@ inline QString rstrip( const QString & str )
 }
 
 std::string c_string( const QString & str );
-bool endsWithIgnoreCase( const string & str1, string str2 );
+bool endsWithIgnoreCase( QByteArrayView str, QByteArrayView extension );
 /**
  * remove punctuation , space, symbol
  *

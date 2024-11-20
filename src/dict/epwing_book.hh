@@ -18,8 +18,12 @@
 #include <QString>
 #include <QtCore5Compat/QTextCodec>
 
-#ifdef _MSC_VER
-  #include <stub_msvc.h>
+// POSIX symbol unavailable on Windows needed for eb headers
+#ifdef Q_OS_WIN
+  #ifndef _SSIZE_T
+    #define _SSIZE_T
+    #define ssize_t long
+  #endif
 #endif
 
 #include <eb/eb.h>

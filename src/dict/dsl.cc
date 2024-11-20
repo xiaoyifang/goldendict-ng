@@ -27,10 +27,6 @@
 #include <list>
 #include <wctype.h>
 
-#ifdef _MSC_VER
-  #include <stub_msvc.h>
-#endif
-
 #include <QSemaphore>
 #include <QThreadPool>
 #include <QAtomicInt>
@@ -1737,11 +1733,10 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       continue;
     }
 
-    // Make sure it's not an abbreviation file
+    // Make sure it's not an abbreviation file. extSize of ".dsl" or ".dsl.dz"
 
-    int extSize = ( uncompressedDsl ? 4 : 7 );
-    if ( fileName.size() - extSize >= 5
-         && strncasecmp( fileName.c_str() + fileName.size() - extSize - 5, "_abrv", 5 ) == 0 ) {
+    if ( int extSize = ( uncompressedDsl ? 4 : 7 ); ( fileName.size() >= ( 5 + extSize ) )
+         && QByteArrayView( fileName ).chopped( extSize ).last( 5 ).compare( "_abrv", Qt::CaseInsensitive ) ) {
       // It is, skip it
       continue;
     }
