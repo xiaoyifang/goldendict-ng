@@ -84,7 +84,7 @@ struct Ifo
   string sametypesequence, dicttype, description;
   string copyright, author, email, website, date;
 
-  explicit Ifo( File::Index & );
+  explicit Ifo( const QString & fileName );
 };
 
 enum {
@@ -1087,8 +1087,7 @@ QString const & StardictDictionary::getDescription()
     return dictionaryDescription;
   }
 
-  File::Index ifoFile( getDictionaryFilenames()[ 0 ], "r" );
-  Ifo ifo( ifoFile );
+  Ifo ifo( QString::fromStdString( getDictionaryFilenames()[ 0 ] ) );
 
   if ( !ifo.copyright.empty() ) {
     QString copyright = QString::fromUtf8( ifo.copyright.c_str() );
@@ -1456,31 +1455,26 @@ static char const * beginsWith( char const * substr, char const * str )
   return strncmp( str, substr, len ) == 0 ? str + len : 0;
 }
 
-Ifo::Ifo( File::Index & f ):
+Ifo::Ifo( const QString & fileName ):
   wordcount( 0 ),
   synwordcount( 0 ),
   idxfilesize( 0 ),
   idxoffsetbits( 32 )
 {
-  static string const versionEq( "version=" );
+  QFile f(fileName);
+  if(!f.open( QIODevice::ReadOnly )) {
+    throw exCantReadFile( "Cannot open IFO file -> " + fileName.toStdString() );
+  };
 
-  static string const booknameEq( "bookname=" );
-
-  //GD_DPRINTF( "%s<\n", f.gets().c_str() );
-  //GD_DPRINTF( "%s<\n", f.gets().c_str() );
-
-  if ( QString::fromUtf8( f.gets().c_str() ) != "StarDict's dict ifo file"
-       || f.gets().compare( 0, versionEq.size(), versionEq ) ) {
+  if ( f.readLine().trimmed() != "StarDict's dict ifo file" || !f.readLine().startsWith( "version=" ) ) {
     throw exNotAnIfoFile();
   }
 
   /// Now go through the file and parse options
-
-  try {
-    char option[ 16384 ];
-
+  {
     for ( ;; ) {
-      if ( !f.gets( option, sizeof( option ), true ) ) {
+      auto option = f.readLine().trimmed();
+      if ( option.isEmpty() ) {
         break;
       }
 
@@ -1489,22 +1483,22 @@ Ifo::Ifo( File::Index & f ):
       }
       else if ( char const * val = beginsWith( "wordcount=", option ) ) {
         if ( sscanf( val, "%u", &wordcount ) != 1 ) {
-          throw exBadFieldInIfo( option );
+          throw exBadFieldInIfo( option.data() );
         }
       }
       else if ( char const * val = beginsWith( "synwordcount=", option ) ) {
         if ( sscanf( val, "%u", &synwordcount ) != 1 ) {
-          throw exBadFieldInIfo( option );
+          throw exBadFieldInIfo( option.data() );
         }
       }
       else if ( char const * val = beginsWith( "idxfilesize=", option ) ) {
         if ( sscanf( val, "%u", &idxfilesize ) != 1 ) {
-          throw exBadFieldInIfo( option );
+          throw exBadFieldInIfo( option.data() );
         }
       }
       else if ( char const * val = beginsWith( "idxoffsetbits=", option ) ) {
         if ( sscanf( val, "%u", &idxoffsetbits ) != 1 || ( idxoffsetbits != 32 && idxoffsetbits != 64 ) ) {
-          throw exBadFieldInIfo( option );
+          throw exBadFieldInIfo( option.data() );
         }
       }
       else if ( char const * val = beginsWith( "sametypesequence=", option ) ) {
@@ -1532,8 +1526,6 @@ Ifo::Ifo( File::Index & f ):
         date = val;
       }
     }
-  }
-  catch ( File::exReadError & ) {
   }
 }
 
@@ -1896,9 +1888,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
         // Building the index
 
-        File::Index ifoFile( fileName, "r" );
-
-        Ifo ifo( ifoFile );
+        Ifo ifo( QString::fromStdString( fileName ) );
 
         gdDebug( "Stardict: Building the index for dictionary: %s\n", ifo.bookname.c_str() );
 
