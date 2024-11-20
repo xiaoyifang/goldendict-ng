@@ -200,7 +200,7 @@ public:
     langId( 0 )
   {
 
-    dictionaryName = name_ ;
+    dictionaryName = name_;
 
     int pos = url.indexOf( "://" );
     if ( pos < 0 ) {

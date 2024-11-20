@@ -70,7 +70,7 @@ public:
     languageCode( std::move( languageCode_ ) ),
     netMgr( netMgr_ )
   {
-  dictionaryName = name_;
+    dictionaryName = name_;
     /* map of iso lang code to wikipedia lang id
 
 Data was obtained by this query on https://commons-query.wikimedia.org/
