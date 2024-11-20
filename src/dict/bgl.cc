@@ -85,7 +85,7 @@ static_assert( alignof( IdxHeader ) == 1 );
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Index idx( indexFile, "rb" );
+  File::Index idx( indexFile, QIODevice::ReadOnly );
 
   IdxHeader header;
 
@@ -250,7 +250,7 @@ private:
 
 BglDictionary::BglDictionary( string const & id, string const & indexFile, string const & dictionaryFile ):
   BtreeDictionary( id, vector< string >( 1, dictionaryFile ) ),
-  idx( indexFile, "rb" ),
+  idx( indexFile, QIODevice::ReadOnly ),
   idxHeader( idx.read< IdxHeader >() ),
   chunks( idx, idxHeader.chunksOffset )
 {
@@ -1083,7 +1083,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         initializing.indexingDictionary( b.title() );
 
-        File::Index idx( indexFile, "wb" );
+        File::Index idx( indexFile, QIODevice::WriteOnly );
 
         IdxHeader idxHeader;
 

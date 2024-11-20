@@ -74,7 +74,7 @@ static_assert( alignof( IdxHeader ) == 1 );
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Index idx( indexFile, "rb" );
+  File::Index idx( indexFile, QIODevice::ReadOnly );
 
   IdxHeader header;
 
@@ -155,8 +155,8 @@ DictdDictionary::DictdDictionary( string const & id,
                                   string const & indexFile,
                                   vector< string > const & dictionaryFiles ):
   BtreeDictionary( id, dictionaryFiles ),
-  idx( indexFile, "rb" ),
-  indexFile( dictionaryFiles[ 0 ], "rb" ),
+  idx( indexFile, QIODevice::ReadOnly ),
+  indexFile( dictionaryFiles[ 0 ], QIODevice::ReadOnly ),
   idxHeader( idx.read< IdxHeader >() )
 {
 
@@ -606,7 +606,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         initializing.indexingDictionary( dictionaryName );
 
-        File::Index idx( indexFile, "wb" );
+        File::Index idx( indexFile, QIODevice::WriteOnly );
 
         IdxHeader idxHeader;
 
@@ -619,7 +619,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         IndexedWords indexedWords;
 
-        File::Index indexFile( dictFiles[ 0 ], "rb" );
+        File::Index indexFile( dictFiles[ 0 ], QIODevice::ReadOnly );
 
         // Read words from index until none's left.
 

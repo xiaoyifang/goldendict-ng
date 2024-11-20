@@ -302,7 +302,7 @@ private:
 
 MdxDictionary::MdxDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles ):
   BtreeDictionary( id, dictionaryFiles ),
-  idx( indexFile, "rb" ),
+  idx( indexFile, QIODevice::ReadOnly ),
   idxFileName( indexFile ),
   idxHeader( idx.read< IdxHeader >() ),
   chunks( idx, idxHeader.chunksOffset ),
@@ -1307,7 +1307,7 @@ private:
 
 static bool indexIsOldOrBad( vector< string > const & dictFiles, string const & indexFile )
 {
-  File::Index idx( indexFile, "rb" );
+  File::Index idx( indexFile, QIODevice::ReadOnly );
   IdxHeader header;
 
   return idx.readRecords( &header, sizeof( header ), 1 ) != 1 || header.signature != kSignature
@@ -1385,7 +1385,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         }
       }
 
-      File::Index idx( indexFile, "wb" );
+      File::Index idx( indexFile, QIODevice::WriteOnly );
       IdxHeader idxHeader;
       memset( &idxHeader, 0, sizeof( idxHeader ) );
       // We write a dummy header first. At the end of the process the header

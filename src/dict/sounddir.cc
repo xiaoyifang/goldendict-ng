@@ -51,7 +51,7 @@ static_assert( alignof( IdxHeader ) == 1 );
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Index idx( indexFile, "rb" );
+  File::Index idx( indexFile, QIODevice::ReadOnly );
 
   IdxHeader header;
 
@@ -114,7 +114,7 @@ SoundDirDictionary::SoundDirDictionary( string const & id,
                                         QString const & iconFilename_ ):
   BtreeDictionary( id, dictionaryFiles ),
   name( name_ ),
-  idx( indexFile, "rb" ),
+  idx( indexFile, QIODevice::ReadOnly ),
   idxHeader( idx.read< IdxHeader >() ),
   chunks( idx, idxHeader.chunksOffset ),
   iconFilename( iconFilename_ )
@@ -370,7 +370,7 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( string const & 
   // Now try loading that file
 
   try {
-    File::Index f( fileName.toStdString(), "rb" );
+    File::Index f( fileName.toStdString(), QIODevice::ReadOnly );
 
     sptr< Dictionary::DataRequestInstant > dr = std::make_shared< Dictionary::DataRequestInstant >( true );
 
@@ -479,7 +479,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::SoundDirs const & 
 
       initializing.indexingDictionary( soundDir.name.toUtf8().data() );
 
-      File::Index idx( indexFile, "wb" );
+      File::Index idx( indexFile, QIODevice::WriteOnly );
 
       IdxHeader idxHeader;
 

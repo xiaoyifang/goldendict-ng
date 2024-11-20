@@ -66,7 +66,7 @@ static_assert( alignof( IdxHeader ) == 1 );
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Index idx( indexFile, "rb" );
+  File::Index idx( indexFile, QIODevice::ReadOnly );
 
   IdxHeader header;
 
@@ -219,7 +219,7 @@ EpwingDictionary::EpwingDictionary( string const & id,
                                     vector< string > const & dictionaryFiles,
                                     int subBook ):
   BtreeDictionary( id, dictionaryFiles ),
-  idx( indexFile, "rb" ),
+  idx( indexFile, QIODevice::ReadOnly ),
   idxHeader( idx.read< IdxHeader >() ),
   chunks( idx, idxHeader.chunksOffset )
 {
@@ -1197,7 +1197,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
           QByteArray nameData = str.toUtf8();
           initializing.indexingDictionary( nameData.data() );
 
-          File::Index idx( indexFile, "wb" );
+          File::Index idx( indexFile, QIODevice::WriteOnly );
 
           IdxHeader idxHeader{};
 

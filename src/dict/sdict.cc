@@ -97,7 +97,7 @@ static_assert( alignof( IdxHeader ) == 1 );
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Index idx( indexFile, "rb" );
+  File::Index idx( indexFile, QIODevice::ReadOnly );
 
   IdxHeader header;
 
@@ -188,10 +188,10 @@ SdictDictionary::SdictDictionary( string const & id,
                                   string const & indexFile,
                                   vector< string > const & dictionaryFiles ):
   BtreeDictionary( id, dictionaryFiles ),
-  idx( indexFile, "rb" ),
+  idx( indexFile, QIODevice::ReadOnly ),
   idxHeader( idx.read< IdxHeader >() ),
   chunks( idx, idxHeader.chunksOffset ),
-  df( dictionaryFiles[ 0 ], "rb" )
+  df( dictionaryFiles[ 0 ], QIODevice::ReadOnly )
 {
   // Read dictionary name
 
@@ -689,7 +689,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       try {
         gdDebug( "SDict: Building the index for dictionary: %s\n", fileName.c_str() );
 
-        File::Index df( fileName, "rb" );
+        File::Index df( fileName, QIODevice::ReadOnly );
 
         DCT_header dictHeader;
 
@@ -722,7 +722,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         initializing.indexingDictionary( dictName );
 
-        File::Index idx( indexFile, "wb" );
+        File::Index idx( indexFile, QIODevice::WriteOnly );
         IdxHeader idxHeader;
         memset( &idxHeader, 0, sizeof( idxHeader ) );
 

@@ -93,7 +93,7 @@ static_assert( alignof( IdxHeader ) == 1 );
 // Some supporting functions
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Index idx( indexFile, "rb" );
+  File::Index idx( indexFile, QIODevice::ReadOnly );
 
   IdxHeader header;
 
@@ -241,7 +241,7 @@ private:
 
 ZimDictionary::ZimDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles ):
   BtreeDictionary( id, dictionaryFiles ),
-  idx( indexFile, "rb" ),
+  idx( indexFile, QIODevice::ReadOnly ),
   idxHeader( idx.read< IdxHeader >() ),
   df( dictionaryFiles[ 0 ] )
 {
@@ -832,7 +832,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
           initializing.indexingDictionary( firstName.mid( n + 1 ).toUtf8().constData() );
         }
 
-        File::Index idx( indexFile, "wb" );
+        File::Index idx( indexFile, QIODevice::WriteOnly );
         IdxHeader idxHeader;
         memset( &idxHeader, 0, sizeof( idxHeader ) );
         idxHeader.namePtr        = 0xFFFFFFFF;
