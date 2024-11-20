@@ -310,12 +310,7 @@ MdxDictionary::MdxDictionary( string const & id, string const & indexFile, vecto
 {
   // Read the dictionary's name
   idx.seek( sizeof( idxHeader ) );
-  size_t len = idx.read< uint32_t >();
-  vector< char > buf( len );
-  if ( len > 0 ) {
-    idx.read( &buf.front(), len );
-    dictionaryName = string( &buf.front(), len );
-  }
+  idx.readU32SizeAndData<>( dictionaryName );
 
   //fallback, use filename as dictionary name
   if ( dictionaryName.empty() ) {
@@ -324,12 +319,7 @@ MdxDictionary::MdxDictionary( string const & id, string const & indexFile, vecto
   }
 
   // then read the dictionary's encoding
-  len = idx.read< uint32_t >();
-  if ( len > 0 ) {
-    buf.resize( len );
-    idx.read( &buf.front(), len );
-    encoding = string( &buf.front(), len );
-  }
+  idx.readU32SizeAndData<>( encoding );
 
   dictFile.setFileName( QString::fromUtf8( dictionaryFiles[ 0 ].c_str() ) );
   dictFile.open( QIODevice::ReadOnly );
