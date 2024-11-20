@@ -76,9 +76,11 @@ DEF_EX_STR( exIncorrectOffset, "Incorrect offset encountered in file", Dictionar
 /// Contents of an ifo file
 struct Ifo
 {
-  string version;
   string bookname;
-  uint32_t wordcount, synwordcount, idxfilesize, idxoffsetbits;
+  uint32_t wordcount     = 0;
+  uint32_t synwordcount  = 0;
+  uint32_t idxfilesize   = 0;
+  uint32_t idxoffsetbits = 0;
   string sametypesequence, dicttype, description;
   string copyright, author, email, website, date;
 
