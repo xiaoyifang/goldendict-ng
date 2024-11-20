@@ -45,8 +45,6 @@
 #include <QRegularExpression>
 #include "globalregex.hh"
 
-#include <sys/fcntl.h>
-
 namespace Stardict {
 
 using std::map;
