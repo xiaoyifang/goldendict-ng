@@ -31,7 +31,6 @@ public:
                    QString const & languageCode_,
                    QNetworkAccessManager & netMgr_ ):
     Dictionary::Class( id, vector< string >() ),
-    name( name_ ),
     apiKey( apiKey_ ),
     languageCode( languageCode_ ),
     netMgr( netMgr_ )
