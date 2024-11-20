@@ -1089,36 +1089,33 @@ QString const & StardictDictionary::getDescription()
   Ifo ifo( ifoFile );
 
   if ( !ifo.copyright.empty() ) {
-    QString copyright = QString::fromUtf8( ifo.copyright.c_str() ).replace( "<br>", "\n", Qt::CaseInsensitive );
-    dictionaryDescription += QObject::tr( "Copyright: %1%2" ).arg( copyright ).arg( "\n\n" );
+    QString copyright = QString::fromUtf8( ifo.copyright.c_str() );
+    dictionaryDescription += QObject::tr( "Copyright: %1%2" ).arg( ifo.copyright.c_str() ).arg( "<br><br>" );
   }
 
   if ( !ifo.author.empty() ) {
     QString author = QString::fromUtf8( ifo.author.c_str() );
-    dictionaryDescription += QObject::tr( "Author: %1%2" ).arg( author ).arg( "\n\n" );
+    dictionaryDescription += QObject::tr( "Author: %1%2" ).arg( author ).arg( "<br><br>" );
   }
 
   if ( !ifo.email.empty() ) {
     QString email = QString::fromUtf8( ifo.email.c_str() );
-    dictionaryDescription += QObject::tr( "E-mail: %1%2" ).arg( email ).arg( "\n\n" );
+    dictionaryDescription += QObject::tr( "E-mail: %1%2" ).arg( email ).arg( "<br><br>" );
   }
 
   if ( !ifo.website.empty() ) {
     QString website = QString::fromUtf8( ifo.website.c_str() );
-    dictionaryDescription += QObject::tr( "Website: %1%2" ).arg( website ).arg( "\n\n" );
+    dictionaryDescription += QObject::tr( "Website: %1%2" ).arg( website ).arg( "<br><br>" );
   }
 
   if ( !ifo.date.empty() ) {
     QString date = QString::fromUtf8( ifo.date.c_str() );
-    dictionaryDescription += QObject::tr( "Date: %1%2" ).arg( date ).arg( "\n\n" );
+    dictionaryDescription += QObject::tr( "Date: %1%2" ).arg( date ).arg( "<br><br>" );
   }
 
   if ( !ifo.description.empty() ) {
     QString desc = QString::fromUtf8( ifo.description.c_str() );
-    desc.replace( "\t", "<br/>" );
-    desc.replace( "\\n", "<br/>" );
-    desc.replace( "<br>", "<br/>", Qt::CaseInsensitive );
-    dictionaryDescription += Html::unescape( desc, Html::HtmlOption::Keep );
+    dictionaryDescription += desc;
   }
 
   if ( dictionaryDescription.isEmpty() ) {
