@@ -76,10 +76,6 @@ public:
                       vector< string > const & dictionaryFiles,
                       QString const & iconFilename_ );
 
-  string getName() noexcept override
-  {
-    return name;
-  }
 
   map< Dictionary::Property, string > getProperties() noexcept override
   {
@@ -113,12 +109,13 @@ SoundDirDictionary::SoundDirDictionary( string const & id,
                                         vector< string > const & dictionaryFiles,
                                         QString const & iconFilename_ ):
   BtreeDictionary( id, dictionaryFiles ),
-  name( name_ ),
+  name(  ),
   idx( indexFile, QIODevice::ReadOnly ),
   idxHeader( idx.read< IdxHeader >() ),
   chunks( idx, idxHeader.chunksOffset ),
   iconFilename( iconFilename_ )
 {
+    dictionaryName = name_;
   // Initialize the index
 
   openIndex( IndexInfo( idxHeader.indexBtreeMaxElements, idxHeader.indexRootOffset ), idx, idxMutex );

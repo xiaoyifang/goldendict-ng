@@ -92,11 +92,6 @@ public:
 
   ~DictdDictionary();
 
-  string getName() noexcept override
-  {
-    return dictionaryName;
-  }
-
   map< Dictionary::Property, string > getProperties() noexcept override
   {
     return map< Dictionary::Property, string >();

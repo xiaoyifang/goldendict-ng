@@ -60,7 +60,6 @@ private slots:
 class LinguaDictionary: public Dictionary::Class
 {
 
-  string name;
   QString languageCode;
   QString langWikipediaID;
   QNetworkAccessManager & netMgr;
@@ -68,10 +67,10 @@ class LinguaDictionary: public Dictionary::Class
 public:
   LinguaDictionary( string const & id, string name_, QString languageCode_, QNetworkAccessManager & netMgr_ ):
     Dictionary::Class( id, vector< string >() ),
-    name( std::move( name_ ) ),
     languageCode( std::move( languageCode_ ) ),
     netMgr( netMgr_ )
   {
+  dictionaryName = name_;
     /* map of iso lang code to wikipedia lang id
 
 Data was obtained by this query on https://commons-query.wikimedia.org/
@@ -166,10 +165,6 @@ WHERE {
     }
   }
 
-  string getName() noexcept override
-  {
-    return name;
-  }
 
   map< Property, string > getProperties() noexcept override
   {

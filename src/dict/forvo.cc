@@ -20,7 +20,6 @@ namespace {
 
 class ForvoDictionary: public Dictionary::Class
 {
-  string name;
   QString apiKey, languageCode;
   QNetworkAccessManager & netMgr;
 
@@ -37,12 +36,9 @@ public:
     languageCode( languageCode_ ),
     netMgr( netMgr_ )
   {
+    dictionaryName = name_;
   }
 
-  string getName() noexcept override
-  {
-    return name;
-  }
 
   map< Property, string > getProperties() noexcept override
   {

@@ -41,7 +41,6 @@ namespace {
 
 class HunspellDictionary: public Dictionary::Class
 {
-  string name;
   Hunspell hunspell;
 
 #ifdef Q_OS_WIN32
@@ -56,19 +55,15 @@ public:
   /// files[ 0 ] should be .aff file, files[ 1 ] should be .dic file.
   HunspellDictionary( string const & id, string const & name_, vector< string > const & files ):
     Dictionary::Class( id, files ),
-    name( name_ ),
 #ifdef Q_OS_WIN32
     hunspell( Utf8ToLocal8Bit( files[ 0 ] ).c_str(), Utf8ToLocal8Bit( files[ 1 ] ).c_str() )
 #else
     hunspell( files[ 0 ].c_str(), files[ 1 ].c_str() )
 #endif
   {
+  dictionaryName = name_;
   }
 
-  string getName() noexcept override
-  {
-    return name;
-  }
 
   map< Property, string > getProperties() noexcept override
   {
