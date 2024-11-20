@@ -196,11 +196,7 @@ SdictDictionary::SdictDictionary( string const & id,
   // Read dictionary name
 
   idx.seek( sizeof( idxHeader ) );
-  vector< char > dName( idx.read< uint32_t >() );
-  if ( dName.size() > 0 ) {
-    idx.read( &dName.front(), dName.size() );
-    dictionaryName = string( &dName.front(), dName.size() );
-  }
+  idx.readU32SizeAndData<>( dictionaryName );
 
   // Initialize the index
 

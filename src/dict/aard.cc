@@ -295,11 +295,7 @@ AardDictionary::AardDictionary( string const & id, string const & indexFile, vec
   // Read dictionary name
 
   idx.seek( sizeof( idxHeader ) );
-  vector< char > dName( idx.read< quint32 >() );
-  if ( dName.size() ) {
-    idx.read( &dName.front(), dName.size() );
-    dictionaryName = string( &dName.front(), dName.size() );
-  }
+  idx.readU32SizeAndData<>( dictionaryName );
 
   // Initialize the index
 

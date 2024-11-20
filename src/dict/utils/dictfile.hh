@@ -81,6 +81,18 @@ public:
   /// Like the above, but uses its own local internal buffer and strips newlines by default.
   std::string gets( bool stripNl = true );
 
+  /// Read 32bit as uint, then reading the subsequent data into a container
+  template< typename T >
+  void readU32SizeAndData( T & container )
+  {
+    uint32_t size = 0;
+    read( &size, sizeof( uint32_t ) );
+    if ( size > 0 ) {
+      container.resize( size );
+      read( container.data(), size );
+    }
+  };
+
   /// export QFile::readall
   QByteArray readall();
 
