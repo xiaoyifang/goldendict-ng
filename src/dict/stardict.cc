@@ -45,6 +45,8 @@
 #include <QRegularExpression>
 #include "globalregex.hh"
 
+#include <sys/fcntl.h>
+
 namespace Stardict {
 
 using std::map;
@@ -1461,8 +1463,8 @@ Ifo::Ifo( const QString & fileName ):
   idxfilesize( 0 ),
   idxoffsetbits( 32 )
 {
-  QFile f(fileName);
-  if(!f.open( QIODevice::ReadOnly )) {
+  QFile f( fileName );
+  if ( !f.open( QIODevice::ReadOnly ) ) {
     throw exCantReadFile( "Cannot open IFO file -> " + fileName.toStdString() );
   };
 
@@ -1471,58 +1473,67 @@ Ifo::Ifo( const QString & fileName ):
   }
 
   /// Now go through the file and parse options
-  {
-    for ( ;; ) {
-      auto option = f.readLine().trimmed();
+
+  std::array< char, 16384 > buf;
+  for ( ;; ) {
+    auto lineLenth = f.readLine( buf.data(), buf.size() );
+    if ( lineLenth == -1 ) {
+      break;
+    }
+
+    if ( lineLenth != -1 ) {
+      auto option = QByteArrayView( buf.data(), lineLenth ).trimmed();
+
+      // emptry line allowed in ifo file
       if ( option.isEmpty() ) {
-        break;
+        continue;
       }
 
-      if ( char const * val = beginsWith( "bookname=", option ) ) {
+      if ( char const * val = beginsWith( "bookname=", option.data() ) ) {
         bookname = val;
       }
-      else if ( char const * val = beginsWith( "wordcount=", option ) ) {
+      else if ( char const * val = beginsWith( "wordcount=", option.data() ) ) {
         if ( sscanf( val, "%u", &wordcount ) != 1 ) {
           throw exBadFieldInIfo( option.data() );
         }
       }
-      else if ( char const * val = beginsWith( "synwordcount=", option ) ) {
+      else if ( char const * val = beginsWith( "synwordcount=", option.data() ) ) {
         if ( sscanf( val, "%u", &synwordcount ) != 1 ) {
           throw exBadFieldInIfo( option.data() );
         }
       }
-      else if ( char const * val = beginsWith( "idxfilesize=", option ) ) {
+      else if ( char const * val = beginsWith( "idxfilesize=", option.data() ) ) {
         if ( sscanf( val, "%u", &idxfilesize ) != 1 ) {
           throw exBadFieldInIfo( option.data() );
         }
       }
-      else if ( char const * val = beginsWith( "idxoffsetbits=", option ) ) {
+      else if ( char const * val = beginsWith( "idxoffsetbits=", option.data() ) ) {
         if ( sscanf( val, "%u", &idxoffsetbits ) != 1 || ( idxoffsetbits != 32 && idxoffsetbits != 64 ) ) {
           throw exBadFieldInIfo( option.data() );
         }
       }
-      else if ( char const * val = beginsWith( "sametypesequence=", option ) ) {
+      else if ( char const * val = beginsWith( "sametypesequence=", option.data() ) ) {
         sametypesequence = val;
       }
-      else if ( char const * val = beginsWith( "dicttype=", option ) ) {
+      else if ( char const * val = beginsWith( "dicttype=", option.data() ) ) {
         dicttype = val;
       }
-      else if ( char const * val = beginsWith( "description=", option ) ) {
+      else if ( char const * val = beginsWith( "description=", option.data() ) ) {
         description = val;
       }
-      else if ( char const * val = beginsWith( "copyright=", option ) ) {
+      else if ( char const * val = beginsWith( "copyright=", option.data() ) ) {
         copyright = val;
       }
-      else if ( char const * val = beginsWith( "author=", option ) ) {
+      else if ( char const * val = beginsWith( "author=", option.data() ) ) {
         author = val;
       }
-      else if ( char const * val = beginsWith( "email=", option ) ) {
+      else if ( char const * val = beginsWith( "email=", option.data() ) ) {
         email = val;
       }
-      else if ( char const * val = beginsWith( "website=", option ) ) {
+      else if ( char const * val = beginsWith( "website=", option.data() ) ) {
         website = val;
       }
-      else if ( char const * val = beginsWith( "date=", option ) ) {
+      else if ( char const * val = beginsWith( "date=", option.data() ) ) {
         date = val;
       }
     }
