@@ -17,10 +17,6 @@
   #include "ftshelpers.hh"
   #include "htmlescape.hh"
 
-  #ifdef _MSC_VER
-    #include <stub_msvc.h>
-  #endif
-
   #include <QByteArray>
   #include <QFile>
   #include <QString>

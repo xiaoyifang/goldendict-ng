@@ -23,10 +23,6 @@
 
 #include <QRegularExpression>
 
-#ifdef _MSC_VER
-  #include <stub_msvc.h>
-#endif
-
 namespace DictdFiles {
 
 using std::map;

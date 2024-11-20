@@ -27,10 +27,6 @@
 #include <list>
 #include <wctype.h>
 
-#ifdef _MSC_VER
-  #include <stub_msvc.h>
-#endif
-
 #include <QSemaphore>
 #include <QThreadPool>
 #include <QAtomicInt>
@@ -1741,7 +1737,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
     int extSize = ( uncompressedDsl ? 4 : 7 );
     if ( fileName.size() - extSize >= 5
-         && strncasecmp( fileName.c_str() + fileName.size() - extSize - 5, "_abrv", 5 ) == 0 ) {
+         && qstrnicmp( fileName.c_str() + fileName.size() - extSize - 5, "_abrv", 5 ) == 0 ) {
       // It is, skip it
       continue;
     }

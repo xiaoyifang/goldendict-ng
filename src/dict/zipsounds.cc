@@ -19,9 +19,6 @@
 #include <QFile>
 #include <QDir>
 
-#ifdef _MSC_VER
-  #include <stub_msvc.h>
-#endif
 
 #include "utils.hh"
 
