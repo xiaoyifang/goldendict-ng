@@ -1090,7 +1090,7 @@ QString const & StardictDictionary::getDescription()
 
   if ( !ifo.copyright.empty() ) {
     QString copyright = QString::fromUtf8( ifo.copyright.c_str() );
-    dictionaryDescription += QObject::tr( "Copyright: %1%2" ).arg( ifo.copyright.c_str() ).arg( "<br><br>" );
+    dictionaryDescription += QObject::tr( "Copyright: %1%2" ).arg( copyright ).arg( "<br><br>" );
   }
 
   if ( !ifo.author.empty() ) {
