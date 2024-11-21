@@ -154,7 +154,6 @@ class DslDictionary: public BtreeIndexing::BtreeDictionary
   QAtomicInt deferredInitDone;
   QMutex deferredInitMutex;
   bool deferredInitRunnableStarted;
-  QSemaphore deferredInitRunnableExited;
 
   string initError;
 
@@ -1405,7 +1404,6 @@ class DslArticleRequest: public Dictionary::DataRequest
   bool ignoreDiacritics;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
   QFuture< void > f;
 
 public:
@@ -1582,7 +1580,6 @@ class DslResourceRequest: public Dictionary::DataRequest
   string resourceName;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
   QFuture< void > f;
 
 public:
