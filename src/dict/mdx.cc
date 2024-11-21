@@ -1121,7 +1121,7 @@ QString MdxDictionary::getCachedFileName( QString filename )
   QFileInfo info( cacheDirName );
   if ( !info.exists() || !info.isDir() ) {
     if ( !dir.mkdir( cacheDirName ) ) {
-      qWarning( "Mdx: can't create cache directory \"%s\"", cacheDirName.toUtf8().data() );
+      qWarning( "Mdx: can't create cache directory \"%s\"", cacheDirName );
       return QString();
     }
   }
@@ -1139,7 +1139,7 @@ QString MdxDictionary::getCachedFileName( QString filename )
       QFileInfo dirInfo( dirName );
       if ( !dirInfo.exists() ) {
         if ( !dir.mkdir( dirName ) ) {
-          qWarning( "Mdx: can't create cache directory \"%s\"", dirName.toUtf8().data() );
+          qWarning( "Mdx: can't create cache directory \"%s\"", dirName );
           return QString();
         }
       }

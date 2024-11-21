@@ -1171,7 +1171,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         string indexFile = indicesDir + dictId;
 
         if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
-          qDebug( "Epwing: Building the index for dictionary in directory %s", dir.toUtf8().data() );
+          qDebug( "Epwing: Building the index for dictionary in directory %s", dir );
 
           QString str         = dict.title();
           QByteArray nameData = str.toUtf8();
@@ -1251,7 +1251,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         dictionaries.push_back( std::make_shared< EpwingDictionary >( dictId, indexFile, dictFiles, sb ) );
       }
       catch ( std::exception & e ) {
-        qWarning( "Epwing dictionary initializing failed: %s, error: %s", dir.toUtf8().data(), e.what() );
+        qWarning( "Epwing dictionary initializing failed: %s, error: %s", dir, e.what() );
         continue;
       }
     }

@@ -4493,7 +4493,7 @@ void MainWindow::setGroupByName( QString const & name, bool main_window )
       }
     }
     if ( i >= groupList->count() ) {
-      qWarning( "Group \"%s\" for main window is not found", name.toUtf8().data() );
+      qWarning( "Group \"%s\" for main window is not found", name );
     }
   }
   else {

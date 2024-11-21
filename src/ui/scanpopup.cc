@@ -1164,7 +1164,7 @@ void ScanPopup::setGroupByName( QString const & name ) const
     }
   }
   if ( i >= ui.groupList->count() ) {
-    qWarning( "Group \"%s\" for popup window is not found", name.toUtf8().data() );
+    qWarning( "Group \"%s\" for popup window is not found", name );
   }
 }
 

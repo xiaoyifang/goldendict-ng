@@ -254,7 +254,7 @@ QRegularExpression DictHeadwords::getFilterRegex() const
   QRegularExpression regExp = QRegularExpression( pattern, options );
 
   if ( !regExp.isValid() ) {
-    qWarning( "Invalid regexp pattern: %s", pattern.toUtf8().data() );
+    qWarning( "Invalid regexp pattern: %s", pattern );
   }
   return regExp;
 }
@@ -427,7 +427,7 @@ void DictHeadwords::saveHeadersToFile()
   progress.setValue( progress.maximum() );
   if ( progress.wasCanceled() ) {
     QMessageBox::warning( this, "GoldenDict", tr( "Export process is interrupted" ) );
-    qWarning( "Headers export error: %s", file.errorString().toUtf8().data() );
+    qWarning( "Headers export error: %s", file.errorString() );
   }
   else {
     //completed.

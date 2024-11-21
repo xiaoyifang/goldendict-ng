@@ -652,7 +652,7 @@ void FavoritesModel::readData()
 
   if ( !dom.setContent( &favoritesFile, false, &errorStr, &errorLine, &errorColumn ) ) {
     // Mailformed file
-    qWarning( "Favorites file parsing error: %s at %d,%d", errorStr.toUtf8().data(), errorLine, errorColumn );
+    qWarning( "Favorites file parsing error: %s at %d,%d", errorStr, errorLine, errorColumn );
 
     QMessageBox mb( QMessageBox::Warning, "GoldenDict", tr( "Error in favorities file" ), QMessageBox::Ok );
     mb.exec();
@@ -684,7 +684,7 @@ void FavoritesModel::saveData()
 
   QSaveFile tmpFile( m_favoritesFilename );
   if ( !tmpFile.open( QFile::WriteOnly ) ) {
-    qWarning( "Can't write favorites file, error: %s", tmpFile.errorString().toUtf8().data() );
+    qWarning( "Can't write favorites file, error: %s", tmpFile.errorString() );
     return;
   }
 
@@ -697,7 +697,7 @@ void FavoritesModel::saveData()
   QByteArray result( dom.toByteArray() );
 
   if ( tmpFile.write( result ) != result.size() ) {
-    qWarning( "Can't write favorites file, error: %s", tmpFile.errorString().toUtf8().data() );
+    qWarning( "Can't write favorites file, error: %s", tmpFile.errorString() );
     return;
   }
 
@@ -1143,7 +1143,7 @@ bool FavoritesModel::setDataFromXml( QString const & dataStr )
 
   if ( !dom.setContent( dataStr, false, &errorStr, &errorLine, &errorColumn ) ) {
     // Mailformed data
-    qWarning( "XML parsing error: %s at %d,%d", errorStr.toUtf8().data(), errorLine, errorColumn );
+    qWarning( "XML parsing error: %s at %d,%d", errorStr, errorLine, errorColumn );
     dom.clear();
     return false;
   }

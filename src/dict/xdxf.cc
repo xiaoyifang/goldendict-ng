@@ -882,7 +882,7 @@ void indexArticle( GzippedFile & gzFile,
         // Add also first header - it's needed for full-text search
         chunks.addToBlock( words.begin()->toUtf8().data(), words.begin()->toUtf8().length() + 1 );
 
-        //        qDebug( "%x: %s", articleOffset, words.begin()->toUtf8().data() );
+        //        qDebug( "%x: %s", articleOffset, words.begin()- );
 
         // Add words to index
 

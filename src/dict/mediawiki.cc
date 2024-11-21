@@ -465,7 +465,7 @@ MediaWikiArticleRequest::MediaWikiArticleRequest( wstring const & str,
 
 void MediaWikiArticleRequest::addQuery( QNetworkAccessManager & mgr, wstring const & str )
 {
-  qDebug( "MediaWiki: requesting article %s", QString::fromStdU32String( str ).toUtf8().data() );
+  qDebug( "MediaWiki: requesting article %s", QString::fromStdU32String( str ) );
 
   QUrl reqUrl( url + "/api.php?action=parse&prop=text|revid|sections&format=xml&redirects" );
 

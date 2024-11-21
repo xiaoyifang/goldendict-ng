@@ -574,7 +574,7 @@ QString EpwingBook::createCacheDir( QString const & dirName )
   QFileInfo info( mainCacheDir );
   if ( !info.exists() || !info.isDir() ) {
     if ( !dir.mkdir( mainCacheDir ) ) {
-      qWarning( "Epwing: can't create cache directory \"%s\"", mainCacheDir.toUtf8().data() );
+      qWarning( "Epwing: can't create cache directory \"%s\"", mainCacheDir );
       return {};
     }
   }
@@ -583,7 +583,7 @@ QString EpwingBook::createCacheDir( QString const & dirName )
   info             = QFileInfo( cacheDir );
   if ( !info.exists() || !info.isDir() ) {
     if ( !dir.mkdir( cacheDir ) ) {
-      qWarning( "Epwing: can't create cache directory \"%s\"", cacheDir.toUtf8().data() );
+      qWarning( "Epwing: can't create cache directory \"%s\"", cacheDir );
       return {};
     }
   }
@@ -1402,7 +1402,7 @@ QByteArray EpwingBook::handleColorImage( EB_Hook_Code code, const unsigned int *
   EB_Error_Code ret = eb_set_binary_color_graphic( &book, &pos );
   if ( ret != EB_SUCCESS ) {
     setErrorString( "eb_set_binary_color_graphic", ret );
-    qWarning( "Epwing image retrieve error: %s", error_string.toUtf8().data() );
+    qWarning( "Epwing image retrieve error: %s", error_string );
     return QByteArray();
   }
 
@@ -1440,7 +1440,7 @@ QByteArray EpwingBook::handleColorImage( EB_Hook_Code code, const unsigned int *
         ret = eb_read_binary( &book, BinaryBufferSize, buffer.data(), &length );
         if ( ret != EB_SUCCESS ) {
           setErrorString( "eb_read_binary", ret );
-          qWarning( "Epwing image retrieve error: %s", error_string.toUtf8().data() );
+          qWarning( "Epwing image retrieve error: %s", error_string );
           break;
         }
 
@@ -1477,7 +1477,7 @@ QByteArray EpwingBook::handleMonoImage( EB_Hook_Code code, const unsigned int * 
   EB_Error_Code ret = eb_set_binary_mono_graphic( &book, &pos, monoWidth, monoHeight );
   if ( ret != EB_SUCCESS ) {
     setErrorString( "eb_set_binary_mono_graphic", ret );
-    qWarning( "Epwing image retrieve error: %s", error_string.toUtf8().data() );
+    qWarning( "Epwing image retrieve error: %s", error_string );
     return QByteArray();
   }
 
@@ -1512,7 +1512,7 @@ QByteArray EpwingBook::handleMonoImage( EB_Hook_Code code, const unsigned int * 
         ret = eb_read_binary( &book, BinaryBufferSize, buffer.data(), &length );
         if ( ret != EB_SUCCESS ) {
           setErrorString( "eb_read_binary", ret );
-          qWarning( "Epwing image retrieve error: %s", error_string.toUtf8().data() );
+          qWarning( "Epwing image retrieve error: %s", error_string );
           break;
         }
 
@@ -1582,7 +1582,7 @@ QByteArray EpwingBook::handleWave( EB_Hook_Code code, const unsigned int * argv 
         EB_Error_Code ret = eb_read_binary( &book, BinaryBufferSize, buffer.data(), &length );
         if ( ret != EB_SUCCESS ) {
           setErrorString( "eb_read_binary", ret );
-          qWarning( "Epwing sound retrieve error: %s", error_string.toUtf8().data() );
+          qWarning( "Epwing sound retrieve error: %s", error_string );
           break;
         }
 
@@ -1649,7 +1649,7 @@ QByteArray EpwingBook::handleMpeg( EB_Hook_Code code, const unsigned int * argv 
         EB_Error_Code ret = eb_read_binary( &book, BinaryBufferSize, buffer.data(), &length );
         if ( ret != EB_SUCCESS ) {
           setErrorString( "eb_read_binary", ret );
-          qWarning( "Epwing movie retrieve error: %s", error_string.toUtf8().data() );
+          qWarning( "Epwing movie retrieve error: %s", error_string );
           break;
         }
 
@@ -1717,7 +1717,7 @@ QByteArray EpwingBook::handleNarrowFont( const unsigned int * argv, bool text_on
     EB_Error_Code ret = eb_narrow_font_character_bitmap( &book, *argv, bitmap );
     if ( ret != EB_SUCCESS ) {
       setErrorString( "eb_narrow_font_character_bitmap", ret );
-      qWarning( "Epwing: Font retrieve error: %s", error_string.toUtf8().data() );
+      qWarning( "Epwing: Font retrieve error: %s", error_string );
       return QByteArray( "?" );
     }
 
@@ -1726,7 +1726,7 @@ QByteArray EpwingBook::handleNarrowFont( const unsigned int * argv, bool text_on
     ret = eb_bitmap_to_png( bitmap, 8, 16, buff, &nlen );
     if ( ret != EB_SUCCESS ) {
       setErrorString( "eb_bitmap_to_png", ret );
-      qWarning( "Epwing: Font retrieve error: %s", error_string.toUtf8().data() );
+      qWarning( "Epwing: Font retrieve error: %s", error_string );
       return QByteArray( "?" );
     }
 
@@ -1781,7 +1781,7 @@ QByteArray EpwingBook::handleWideFont( const unsigned int * argv, bool text_only
     EB_Error_Code ret = eb_wide_font_character_bitmap( &book, *argv, bitmap );
     if ( ret != EB_SUCCESS ) {
       setErrorString( "eb_wide_font_character_bitmap", ret );
-      qWarning( "Epwing: Font retrieve error: %s", error_string.toUtf8().data() );
+      qWarning( "Epwing: Font retrieve error: %s", error_string );
       return QByteArray( "?" );
     }
 
@@ -1790,7 +1790,7 @@ QByteArray EpwingBook::handleWideFont( const unsigned int * argv, bool text_only
     ret = eb_bitmap_to_png( bitmap, 16, 16, buff, &wlen );
     if ( ret != EB_SUCCESS ) {
       setErrorString( "eb_bitmap_to_png", ret );
-      qWarning( "Epwing: Font retrieve error: %s", error_string.toUtf8().data() );
+      qWarning( "Epwing: Font retrieve error: %s", error_string );
       return QByteArray( "?" );
     }
 
@@ -1870,14 +1870,14 @@ bool EpwingBook::getMatches( QString word, QList< QString > & matches )
     EB_Error_Code ret = eb_search_word( &book, bword.data() );
     if ( ret != EB_SUCCESS ) {
       setErrorString( "eb_search_word", ret );
-      qWarning( "Epwing word search error: %s", error_string.toUtf8().data() );
+      qWarning( "Epwing word search error: %s", error_string );
       return false;
     }
 
     ret = eb_hit_list( &book, 10, hits, &hitCount );
     if ( ret != EB_SUCCESS ) {
       setErrorString( "eb_hit_list", ret );
-      qWarning( "Epwing word search error: %s", error_string.toUtf8().data() );
+      qWarning( "Epwing word search error: %s", error_string );
       return false;
     }
   }
@@ -1886,14 +1886,14 @@ bool EpwingBook::getMatches( QString word, QList< QString > & matches )
     EB_Error_Code ret = eb_search_word( &book, bword2.data() );
     if ( ret != EB_SUCCESS ) {
       setErrorString( "eb_search_word", ret );
-      qWarning( "Epwing word search error: %s", error_string.toUtf8().data() );
+      qWarning( "Epwing word search error: %s", error_string );
       return false;
     }
 
     ret = eb_hit_list( &book, 10, hits, &hitCount );
     if ( ret != EB_SUCCESS ) {
       setErrorString( "eb_hit_list", ret );
-      qWarning( "Epwing word search error: %s", error_string.toUtf8().data() );
+      qWarning( "Epwing word search error: %s", error_string );
       return false;
     }
   }
@@ -1941,14 +1941,14 @@ bool EpwingBook::getArticlePos( QString word, QList< int > & pages, QList< int >
     EB_Error_Code ret = eb_search_exactword( &book, bword.data() );
     if ( ret != EB_SUCCESS ) {
       setErrorString( "eb_search_word", ret );
-      qWarning( "Epwing word search error: %s", error_string.toUtf8().data() );
+      qWarning( "Epwing word search error: %s", error_string );
       return false;
     }
 
     ret = eb_hit_list( &book, HitsBufferSize, hits, &hitCount );
     if ( ret != EB_SUCCESS ) {
       setErrorString( "eb_hit_list", ret );
-      qWarning( "Epwing word search error: %s", error_string.toUtf8().data() );
+      qWarning( "Epwing word search error: %s", error_string );
       return false;
     }
   }
@@ -1957,14 +1957,14 @@ bool EpwingBook::getArticlePos( QString word, QList< int > & pages, QList< int >
     EB_Error_Code ret = eb_search_exactword( &book, bword2.data() );
     if ( ret != EB_SUCCESS ) {
       setErrorString( "eb_search_word", ret );
-      qWarning( "Epwing word search error: %s", error_string.toUtf8().data() );
+      qWarning( "Epwing word search error: %s", error_string );
       return false;
     }
 
     ret = eb_hit_list( &book, HitsBufferSize, hits, &hitCount );
     if ( ret != EB_SUCCESS ) {
       setErrorString( "eb_hit_list", ret );
-      qWarning( "Epwing word search error: %s", error_string.toUtf8().data() );
+      qWarning( "Epwing word search error: %s", error_string );
       return false;
     }
   }

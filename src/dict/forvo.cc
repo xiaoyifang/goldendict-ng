@@ -163,7 +163,7 @@ ForvoArticleRequest::ForvoArticleRequest( wstring const & str,
 
 void ForvoArticleRequest::addQuery( QNetworkAccessManager & mgr, wstring const & str )
 {
-  qDebug( "Forvo: requesting article %s", QString::fromStdU32String( str ).toUtf8().data() );
+  qDebug( "Forvo: requesting article %s", QString::fromStdU32String( str ) );
 
   QString key = apiKey;
 
