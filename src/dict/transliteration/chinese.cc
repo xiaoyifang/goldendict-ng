@@ -4,16 +4,13 @@
 #include "chinese.hh"
 #include <stdexcept>
 #include <QCoreApplication>
-// #ifdef Q_OS_MAC
 #include <opencc/opencc.h>
-// #endif
-// #include <opencc/SimpleConverter.hpp>
 #include "folding.hh"
 #include "gddebug.hh"
 #include "transliteration.hh"
 #include "utf8.hh"
 
-namespace Chinese {
+namespace ChineseTranslit {
 
 class CharacterConversionDictionary: public Transliteration::BaseTransliterationDictionary
 {
@@ -162,4 +159,4 @@ std::vector< sptr< Dictionary::Class > > makeDictionaries( Config::Chinese const
   return result;
 }
 
-} // namespace Chinese
+} // namespace ChineseTranslit

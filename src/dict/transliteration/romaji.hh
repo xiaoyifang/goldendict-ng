@@ -4,12 +4,9 @@
 #pragma once
 
 #include "transliteration.hh"
-#include "config.hh"
 
 /// Japanese romanization (Romaji) support.
-namespace Romaji {
+namespace RomajiTranslit {
 
-using std::vector;
-
-vector< sptr< Dictionary::Class > > makeDictionaries( Config::Romaji const & );
-} // namespace Romaji
+std::vector< sptr< Dictionary::Class > > makeDictionaries( Config::Romaji const & );
+} // namespace RomajiTranslit
