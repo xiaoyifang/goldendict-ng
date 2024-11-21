@@ -2,8 +2,9 @@
 #include "hotkeywrapper.hh"
 #include <X11/keysym.h>
 
-///
-/// Implemented with X Record Extension Library
+//
+/// Previously impletended with XGrabKey
+/// Then reimplemented with X Record Extension Library
 ///
 
 void HotkeyWrapper::init()
