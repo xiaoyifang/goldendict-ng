@@ -237,7 +237,7 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( QUrl c
           return dictionary->getResource( Utils::Url::path( url ).mid( 1 ).toUtf8().data() );
         }
         catch ( std::exception & e ) {
-          qWarning( "getResource request error (%s) in \"%s\"", e.what(), dictionary->getName().c_str() );
+          qWarning( "getResource request error (%s) in \"%s\"", e.what(), dictionary->getName() );
           return {};
         }
       }

@@ -405,7 +405,7 @@ void AardDictionary::loadArticle( quint32 address, string & articleText, bool ra
       df.read( &articleBody.front(), articleSize );
     }
     catch ( std::exception & ex ) {
-      qWarning( "AARD: Failed loading article from \"%s\", reason: %s", getName().c_str(), ex.what() );
+      qWarning( "AARD: Failed loading article from \"%s\", reason: %s", getName(), ex.what() );
       break;
     }
     catch ( ... ) {
@@ -572,7 +572,7 @@ void AardDictionary::makeFTSIndex( QAtomicInt & isCancelled )
     FTS_index_completed.ref();
   }
   catch ( std::exception & ex ) {
-    qWarning( "Aard: Failed building full-text search index for \"%s\", reason: %s", getName().c_str(), ex.what() );
+    qWarning( "Aard: Failed building full-text search index for \"%s\", reason: %s", getName(), ex.what() );
     QFile::remove( QString::fromStdString( ftsIdxName ) );
   }
 }
@@ -588,7 +588,7 @@ void AardDictionary::getArticleText( uint32_t articleAddress, QString & headword
     text = Html::unescape( QString::fromUtf8( articleText.data(), articleText.size() ) );
   }
   catch ( std::exception & ex ) {
-    qWarning( "Aard: Failed retrieving article from \"%s\", reason: %s", getName().c_str(), ex.what() );
+    qWarning( "Aard: Failed retrieving article from \"%s\", reason: %s", getName(), ex.what() );
   }
 }
 
@@ -784,7 +784,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         {
           QFileInfo info( QString::fromUtf8( fileName.c_str() ) );
           if ( static_cast< quint64 >( info.size() ) > ULONG_MAX ) {
-            qWarning( "File %s is too large", fileName.c_str() );
+            qWarning( "File %s is too large", fileName );
             continue;
           }
         }
@@ -798,7 +798,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         if ( strncmp( dictHeader.signature, "aard", 4 )
              || ( !has64bitIndex && strncmp( dictHeader.indexItemFormat, ">LL", 4 ) )
              || strncmp( dictHeader.keyLengthFormat, ">H", 2 ) || strncmp( dictHeader.articleLengthFormat, ">L", 2 ) ) {
-          qWarning( "File %s is not in supported aard format", fileName.c_str() );
+          qWarning( "File %s is not in supported aard format", fileName );
           continue;
         }
 
@@ -806,7 +806,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         quint32 size = qFromBigEndian( dictHeader.metaLength );
 
         if ( size == 0 ) {
-          qWarning( "File %s has invalid metadata", fileName.c_str() );
+          qWarning( "File %s has invalid metadata", fileName );
           continue;
         }
 
@@ -820,7 +820,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         map< string, string > meta = parseMetaData( metaStr );
 
         if ( meta.empty() ) {
-          qWarning( "File %s has invalid metadata", fileName.c_str() );
+          qWarning( "File %s has invalid metadata", fileName );
           continue;
         }
 
@@ -974,7 +974,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         idx.write( &idxHeader, sizeof( idxHeader ) );
       }
       catch ( std::exception & e ) {
-        qWarning( "Aard dictionary indexing failed: %s, error: %s", fileName.c_str(), e.what() );
+        qWarning( "Aard dictionary indexing failed: %s, error: %s", fileName, e.what() );
         continue;
       }
       catch ( ... ) {
@@ -986,7 +986,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       dictionaries.push_back( std::make_shared< AardDictionary >( dictId, indexFile, dictFiles ) );
     }
     catch ( std::exception & e ) {
-      qWarning( "Aard dictionary initializing failed: %s, error: %s", fileName.c_str(), e.what() );
+      qWarning( "Aard dictionary initializing failed: %s, error: %s", fileName, e.what() );
       continue;
     }
   }

@@ -409,7 +409,7 @@ void BglDictionary::getArticleText( uint32_t articleAddress, QString & headword,
     text = Html::unescape( QString::fromStdU32String( wstr ) );
   }
   catch ( std::exception & ex ) {
-    qWarning( "BGL: Failed retrieving article from \"%s\", reason: %s", getName().c_str(), ex.what() );
+    qWarning( "BGL: Failed retrieving article from \"%s\", reason: %s", getName(), ex.what() );
   }
 }
 
@@ -432,7 +432,7 @@ void BglDictionary::makeFTSIndex( QAtomicInt & isCancelled )
     FTS_index_completed.ref();
   }
   catch ( std::exception & ex ) {
-    qWarning( "Bgl: Failed building full-text search index for \"%s\", reason: %s", getName().c_str(), ex.what() );
+    qWarning( "Bgl: Failed building full-text search index for \"%s\", reason: %s", getName(), ex.what() );
     QFile::remove( QString::fromStdString( ftsIdxName ) );
   }
 }
@@ -718,7 +718,7 @@ void BglArticleRequest::run()
 
     } // try
     catch ( std::exception & ex ) {
-      qWarning( "BGL: Failed loading article from \"%s\", reason: %s", dict.getName().c_str(), ex.what() );
+      qWarning( "BGL: Failed loading article from \"%s\", reason: %s", dict.getName(), ex.what() );
     }
   }
 
@@ -914,7 +914,7 @@ void BglResourceRequest::run()
                        compressedData.size() )
              != Z_OK
            || decompressedLength != data.size() ) {
-        qWarning( "Failed to decompress resource \"%s\", ignoring it.", name.c_str() );
+        qWarning( "Failed to decompress resource \"%s\", ignoring it.", name );
       }
       else {
         hasAnyData = true;
@@ -999,7 +999,7 @@ void ResourceHandler::handleBabylonResource( string const & filename, char const
   unsigned long compressedSize = compressedData.size();
 
   if ( compress( &compressedData.front(), &compressedSize, (unsigned char const *)data, size ) != Z_OK ) {
-    qWarning( "Failed to compress the body of resource \"%s\", dropping it.", filename.c_str() );
+    qWarning( "Failed to compress the body of resource \"%s\", dropping it.", filename );
     return;
   }
 
@@ -1062,7 +1062,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         std::string sourceCharset, targetCharset;
 
         if ( !b.read( sourceCharset, targetCharset ) ) {
-          qWarning( "Failed to start reading from %s, skipping it", fileName.c_str() );
+          qWarning( "Failed to start reading from %s, skipping it", fileName );
           continue;
         }
 
@@ -1190,7 +1190,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         idx.write( &idxHeader, sizeof( idxHeader ) );
       }
       catch ( std::exception & e ) {
-        qWarning( "BGL dictionary indexing failed: %s, error: %s", fileName.c_str(), e.what() );
+        qWarning( "BGL dictionary indexing failed: %s, error: %s", fileName, e.what() );
       }
     }
 
@@ -1198,7 +1198,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       dictionaries.push_back( std::make_shared< BglDictionary >( dictId, indexFile, fileName ) );
     }
     catch ( std::exception & e ) {
-      qWarning( "BGL dictionary initializing failed: %s, error: %s", fileName.c_str(), e.what() );
+      qWarning( "BGL dictionary initializing failed: %s, error: %s", fileName, e.what() );
     }
   }
 

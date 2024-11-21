@@ -497,7 +497,7 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
             unsigned length = (unsigned char)block.data[ pos ] - 0x3F;
 
             if ( length > len - a - 2 ) {
-              qWarning( "Hidden displayed headword is too large %s", headword.c_str() );
+              qWarning( "Hidden displayed headword is too large %s", headword );
               pos += len - a;
               break;
             }
@@ -510,7 +510,7 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
             unsigned length = (unsigned char)block.data[ pos + 1 ];
 
             if ( length > len - a - 2 ) {
-              qWarning( "Displayed headword's length is too large for headword %s", headword.c_str() );
+              qWarning( "Displayed headword's length is too large for headword %s", headword );
               pos += len - a;
               break;
             }
@@ -524,7 +524,7 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
             unsigned length = qFromBigEndian( *reinterpret_cast< quint16 * >( block.data + pos + 1 ) );
 
             if ( length > len - a - 3 ) {
-              qWarning( "2-byte sized displayed headword for %s is too large", headword.c_str() );
+              qWarning( "2-byte sized displayed headword for %s is too large", headword );
               pos += len - a;
               break;
             }
@@ -540,7 +540,7 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
             unsigned length = (unsigned char)block.data[ pos + 2 ];
 
             if ( length > len - a - 3 ) {
-              qWarning( "1-byte-sized transcription's length is too large for headword %s", headword.c_str() );
+              qWarning( "1-byte-sized transcription's length is too large for headword %s", headword );
               pos += len - a;
               break;
             }
@@ -567,7 +567,7 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
             unsigned length = qFromBigEndian( *reinterpret_cast< quint16 * >( block.data + pos + 2 ) );
 
             if ( length > len - a - 4 ) {
-              qWarning( "2-byte-sized transcription's length is too large for headword %s", headword.c_str() );
+              qWarning( "2-byte-sized transcription's length is too large for headword %s", headword );
               pos += len - a;
               break;
             }
@@ -595,7 +595,7 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
             unsigned length = (unsigned char)block.data[ pos ] - 0x3F;
 
             if ( length > len - a - 2 ) {
-              qWarning( "Hidden transcription is too large %s", headword.c_str() );
+              qWarning( "Hidden transcription is too large %s", headword );
               pos += len - a;
               break;
             }

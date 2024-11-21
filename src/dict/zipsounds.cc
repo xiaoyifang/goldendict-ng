@@ -473,7 +473,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       dictionaries.push_back( std::make_shared< ZipSoundsDictionary >( dictId, indexFile, dictFiles ) );
     }
     catch ( std::exception & e ) {
-      qWarning( "Zipped sounds pack reading failed: %s, error: %s", fileName.c_str(), e.what() );
+      qWarning( "Zipped sounds pack reading failed: %s, error: %s", fileName, e.what() );
     }
   }
 

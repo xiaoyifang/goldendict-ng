@@ -133,7 +133,7 @@ string convert( string const & in,
               errorStr.toLocal8Bit().constData(),
               errorLine,
               errorColumn );
-    qWarning( "The input was: %s", in_data.c_str() );
+    qWarning( "The input was: %s", in_data );
     return in;
   }
 #else
@@ -143,7 +143,7 @@ string convert( string const & in,
               setContentResult.errorMessage.toStdString().c_str(),
               setContentResult.errorLine,
               setContentResult.errorColumn );
-    qWarning( "The input was: %s", in_data.c_str() );
+    qWarning( "The input was: %s", in_data );
     return in;
   }
 #endif

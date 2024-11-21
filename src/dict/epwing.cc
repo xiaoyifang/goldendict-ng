@@ -420,7 +420,7 @@ void EpwingDictionary::makeFTSIndex( QAtomicInt & isCancelled )
     FTS_index_completed.ref();
   }
   catch ( std::exception & ex ) {
-    qWarning( "Epwing: Failed building full-text search index for \"%s\", reason: %s", getName().c_str(), ex.what() );
+    qWarning( "Epwing: Failed building full-text search index for \"%s\", reason: %s", getName(), ex.what() );
     QFile::remove( QString::fromStdString( ftsIdxName ) );
   }
 }
@@ -1136,7 +1136,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       subBooksNumber = dict.setBook( mainDirectory );
     }
     catch ( std::exception & e ) {
-      qWarning( "Epwing dictionary initializing failed: %s, error: %s", mainDirectory.c_str(), e.what() );
+      qWarning( "Epwing dictionary initializing failed: %s, error: %s", mainDirectory, e.what() );
       continue;
     }
 

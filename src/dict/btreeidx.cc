@@ -362,10 +362,10 @@ void BtreeWordSearchRequest::findMatches()
     }
   }
   catch ( std::exception & e ) {
-    qWarning( "Index searching failed: \"%s\", error: %s", dict.getName().c_str(), e.what() );
+    qWarning( "Index searching failed: \"%s\", error: %s", dict.getName(), e.what() );
   }
   catch ( ... ) {
-    qWarning( "Index searching failed: \"%s\"", dict.getName().c_str() );
+    qWarning( "Index searching failed: \"%s\"", dict.getName() );
   }
 }
 
@@ -1415,7 +1415,7 @@ bool BtreeDictionary::getHeadwords( QStringList & headwords )
     }
   }
   catch ( std::exception & ex ) {
-    qWarning( "Failed headwords retrieving for \"%s\", reason: %s", getName().c_str(), ex.what() );
+    qWarning( "Failed headwords retrieving for \"%s\", reason: %s", getName(), ex.what() );
   }
 
   return headwords.size() > 0;

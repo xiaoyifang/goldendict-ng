@@ -943,7 +943,7 @@ void SlobDictionary::makeFTSIndex( QAtomicInt & isCancelled )
     FTS_index_completed.ref();
   }
   catch ( std::exception & ex ) {
-    qWarning( "Slob: Failed building full-text search index for \"%s\", reason: %s", getName().c_str(), ex.what() );
+    qWarning( "Slob: Failed building full-text search index for \"%s\", reason: %s", getName(), ex.what() );
     QFile::remove( ftsIdxName.c_str() );
   }
 }
@@ -973,7 +973,7 @@ void SlobDictionary::getArticleText( uint32_t articleAddress, QString & headword
     }
   }
   catch ( std::exception & ex ) {
-    qWarning( "Slob: Failed retrieving article from \"%s\", reason: %s", getName().c_str(), ex.what() );
+    qWarning( "Slob: Failed retrieving article from \"%s\", reason: %s", getName(), ex.what() );
   }
 }
 
@@ -1361,7 +1361,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       dictionaries.push_back( std::make_shared< SlobDictionary >( dictId, indexFile, dictFiles ) );
     }
     catch ( std::exception & e ) {
-      qWarning( "Slob dictionary initializing failed: %s, error: %s", fileName.c_str(), e.what() );
+      qWarning( "Slob dictionary initializing failed: %s, error: %s", fileName, e.what() );
       continue;
     }
     catch ( ... ) {

@@ -121,7 +121,7 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName, wstring co
             qWarning( "Unescaped '@' symbol found" );
           }
           else {
-            qWarning( "Unescaped '@' symbol found in \"%s\"", dictName.c_str() );
+            qWarning( "Unescaped '@' symbol found in \"%s\"", dictName );
           }
         }
         else {

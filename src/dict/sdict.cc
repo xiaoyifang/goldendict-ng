@@ -380,7 +380,7 @@ void SdictDictionary::makeFTSIndex( QAtomicInt & isCancelled )
     FTS_index_completed.ref();
   }
   catch ( std::exception & ex ) {
-    qWarning( "SDict: Failed building full-text search index for \"%s\", reason: %s", getName().c_str(), ex.what() );
+    qWarning( "SDict: Failed building full-text search index for \"%s\", reason: %s", getName(), ex.what() );
     QFile::remove( ftsIdxName.c_str() );
   }
 }
@@ -401,7 +401,7 @@ void SdictDictionary::getArticleText( uint32_t articleAddress, QString & headwor
     }
   }
   catch ( std::exception & ex ) {
-    qWarning( "SDict: Failed retrieving article from \"%s\", reason: %s", getName().c_str(), ex.what() );
+    qWarning( "SDict: Failed retrieving article from \"%s\", reason: %s", getName(), ex.what() );
   }
 }
 
@@ -525,7 +525,7 @@ void SdictArticleRequest::run()
       articlesIncluded.insert( x.articleOffset );
     }
     catch ( std::exception & ex ) {
-      qWarning( "SDict: Failed loading article from \"%s\", reason: %s", dict.getName().c_str(), ex.what() );
+      qWarning( "SDict: Failed loading article from \"%s\", reason: %s", dict.getName(), ex.what() );
     }
   }
 
@@ -636,7 +636,7 @@ QString const & SdictDictionary::getDescription()
       QObject::tr( "Version: %1%2" ).arg( QString::fromUtf8( str.c_str(), str.size() ) ).arg( "\n\n" );
   }
   catch ( std::exception & ex ) {
-    qWarning( "SDict: Failed description reading for \"%s\", reason: %s", getName().c_str(), ex.what() );
+    qWarning( "SDict: Failed description reading for \"%s\", reason: %s", getName(), ex.what() );
   }
 
   if ( dictionaryDescription.isEmpty() ) {
@@ -680,7 +680,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         df.read( &dictHeader, sizeof( dictHeader ) );
         if ( strncmp( dictHeader.signature, "sdct", 4 ) ) {
-          qWarning( "File \"%s\" is not valid SDictionary file", fileName.c_str() );
+          qWarning( "File \"%s\" is not valid SDictionary file", fileName );
           continue;
         }
         int compression = dictHeader.compression & 0x0F;
@@ -780,7 +780,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         idx.write( &idxHeader, sizeof( idxHeader ) );
       }
       catch ( std::exception & e ) {
-        qWarning( "Sdictionary dictionary indexing failed: %s, error: %s", fileName.c_str(), e.what() );
+        qWarning( "Sdictionary dictionary indexing failed: %s, error: %s", fileName, e.what() );
         continue;
       }
       catch ( ... ) {
@@ -792,7 +792,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       dictionaries.push_back( std::make_shared< SdictDictionary >( dictId, indexFile, dictFiles ) );
     }
     catch ( std::exception & e ) {
-      qWarning( "Sdictionary dictionary initializing failed: %s, error: %s", fileName.c_str(), e.what() );
+      qWarning( "Sdictionary dictionary initializing failed: %s, error: %s", fileName, e.what() );
     }
   }
   return dictionaries;

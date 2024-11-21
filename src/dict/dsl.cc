@@ -1112,7 +1112,7 @@ void DslDictionary::makeFTSIndex( QAtomicInt & isCancelled )
     FTS_index_completed.ref();
   }
   catch ( std::exception & ex ) {
-    qWarning( "DSL: Failed building full-text search index for \"%s\", reason: %s", getName().c_str(), ex.what() );
+    qWarning( "DSL: Failed building full-text search index for \"%s\", reason: %s", getName(), ex.what() );
     QFile::remove( ftsIdxName.c_str() );
   }
 }
@@ -1533,7 +1533,7 @@ void DslArticleRequest::run()
       articleText += articleAfter;
     }
     catch ( std::exception & ex ) {
-      qWarning( "DSL: Failed loading article from \"%s\", reason: %s", dict.getName().c_str(), ex.what() );
+      qWarning( "DSL: Failed loading article from \"%s\", reason: %s", dict.getName(), ex.what() );
       articleText =
         string( "<span class=\"dsl_article\">" ) + QObject::tr( "Article loading error" ).toStdString() + "</span>";
     }
@@ -1835,7 +1835,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
                   expandOptionalParts( curString, &keys );
 
                   if ( !abrvScanner.readNextLineWithoutComments( curString, curOffset ) || curString.empty() ) {
-                    qWarning( "Premature end of file %s", abrvFileName.c_str() );
+                    qWarning( "Premature end of file %s", abrvFileName );
                     eof = true;
                     break;
                   }
@@ -1874,7 +1874,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
               chunks.addToBlock( &sz, sizeof( uint32_t ) );
 
               for ( const auto & i : abrv ) {
-                //              qDebug( "%s:%s", i->first.c_str(), i->second );
+                //              qDebug( "%s:%s", i->first, i->second );
 
                 sz = i.first.size();
                 chunks.addToBlock( &sz, sizeof( uint32_t ) );
@@ -1885,7 +1885,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
               }
             }
             catch ( std::exception & e ) {
-              qWarning( "Error reading abrv file \"%s\", error: %s. Skipping it.", abrvFileName.c_str(), e.what() );
+              qWarning( "Error reading abrv file \"%s\", error: %s. Skipping it.", abrvFileName, e.what() );
             }
           }
 
@@ -1915,7 +1915,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
               // characters are blank, too.
               for ( size_t x = 1; x < curString.size(); ++x ) {
                 if ( !isDslWs( curString[ x ] ) ) {
-                  qWarning( "Garbage string in %s at offset 0x%lX", fileName.c_str(), curOffset );
+                  qWarning( "Garbage string in %s at offset 0x%lX", fileName, curOffset );
                   break;
                 }
               }
@@ -1937,7 +1937,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
             for ( ;; ) {
               if ( !( hasString = scanner.readNextLineWithoutComments( curString, curOffset ) ) ) {
-                qWarning( "Premature end of file %s", fileName.c_str() );
+                qWarning( "Premature end of file %s", fileName );
                 break;
               }
 
@@ -2180,7 +2180,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       dictionaries.push_back( std::make_shared< DslDictionary >( dictId, indexFile, dictFiles ) );
     }
     catch ( std::exception & e ) {
-      qWarning( "DSL dictionary reading failed: %s:%u, error: %s", fileName.c_str(), atLine, e.what() );
+      qWarning( "DSL dictionary reading failed: %s:%u, error: %s", fileName, atLine, e.what() );
     }
   }
 

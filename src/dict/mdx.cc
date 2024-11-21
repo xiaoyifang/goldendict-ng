@@ -458,7 +458,7 @@ void MdxDictionary::makeFTSIndex( QAtomicInt & isCancelled )
     FTS_index_completed.ref();
   }
   catch ( std::exception & ex ) {
-    qWarning( "MDict: Failed building full-text search index for \"%s\", reason: %s", getName().c_str(), ex.what() );
+    qWarning( "MDict: Failed building full-text search index for \"%s\", reason: %s", getName(), ex.what() );
     QFile::remove( ftsIdxName.c_str() );
   }
 }
@@ -473,7 +473,7 @@ void MdxDictionary::getArticleText( uint32_t articleAddress, QString & headword,
     text = Html::unescape( QString::fromUtf8( articleText.data(), articleText.size() ) );
   }
   catch ( std::exception & ex ) {
-    qWarning( "MDict: Failed retrieving article from \"%s\", reason: %s", getName().c_str(), ex.what() );
+    qWarning( "MDict: Failed retrieving article from \"%s\", reason: %s", getName(), ex.what() );
   }
 }
 

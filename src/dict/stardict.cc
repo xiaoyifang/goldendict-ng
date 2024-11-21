@@ -1125,7 +1125,7 @@ void StardictDictionary::makeFTSIndex( QAtomicInt & isCancelled )
   }
 
 
-  qDebug( "Stardict: Building the full-text index for dictionary: %s", getName().c_str() );
+  qDebug( "Stardict: Building the full-text index for dictionary: %s", getName() );
 
   try {
     FtsHelpers::makeFTSIndex( this, isCancelled );
@@ -1150,7 +1150,7 @@ void StardictDictionary::getArticleText( uint32_t articleAddress, QString & head
     text = Html::unescape( QString::fromStdString( articleStr ) );
   }
   catch ( std::exception & ex ) {
-    qWarning( "Stardict: Failed retrieving article from \"%s\", reason: %s", getName().c_str(), ex.what() );
+    qWarning( "Stardict: Failed retrieving article from \"%s\", reason: %s", getName(), ex.what() );
   }
 }
 
@@ -1563,7 +1563,7 @@ void StardictResourceRequest::run()
     string n =
       dict.getContainingFolder().toStdString() + Utils::Fs::separator() + "res" + Utils::Fs::separator() + resourceName;
 
-    qDebug( "startdict resource name is %s", n.c_str() );
+    qDebug( "startdict resource name is %s", n );
 
     try {
       QMutexLocker _( &dataMutex );
@@ -1725,7 +1725,7 @@ static void handleIdxSynFile( string const & fileName,
     size_t wordLen = strlen( ptr );
 
     if ( ptr + wordLen + 1 + ( isSynFile ? sizeof( uint32_t ) : sizeof( uint32_t ) * 2 ) > &image.back() ) {
-      qWarning( "Warning: sudden end of file %s", fileName.c_str() );
+      qWarning( "Warning: sudden end of file %s", fileName );
       break;
     }
 
@@ -1867,7 +1867,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         Ifo ifo( QString::fromStdString( fileName ) );
 
-        qDebug( "Stardict: Building the index for dictionary: %s", ifo.bookname.c_str() );
+        qDebug( "Stardict: Building the index for dictionary: %s", ifo.bookname );
 
         if ( ifo.idxoffsetbits == 64 ) {
           throw ex64BitsNotSupported();
@@ -1891,7 +1891,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         }
 
 
-        qDebug( "bookname = %s", ifo.bookname.c_str() );
+        qDebug( "bookname = %s", ifo.bookname );
         qDebug( "wordcount = %u", ifo.wordcount );
 
         initializing.indexingDictionary( ifo.bookname );
@@ -2016,7 +2016,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       dictionaries.push_back( std::make_shared< StardictDictionary >( dictId, indexFile, dictFiles ) );
     }
     catch ( std::exception & e ) {
-      qWarning( "Stardict dictionary initializing failed: %s, error: %s", fileName.c_str(), e.what() );
+      qWarning( "Stardict dictionary initializing failed: %s, error: %s", fileName, e.what() );
     }
   }
 

@@ -252,7 +252,7 @@ void FTSResultsRequest::run()
     qWarning() << e.get_description().c_str();
   }
   catch ( std::exception & ex ) {
-    qWarning( "FTS: Failed full-text search for \"%s\", reason: %s", dict.getName().c_str(), ex.what() );
+    qWarning( "FTS: Failed full-text search for \"%s\", reason: %s", dict.getName(), ex.what() );
     // Results not loaded -- we don't set the hasAnyData flag then
   }
 

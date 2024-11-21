@@ -462,7 +462,7 @@ void DictdDictionary::makeFTSIndex( QAtomicInt & isCancelled )
     FTS_index_completed.ref();
   }
   catch ( std::exception & ex ) {
-    qWarning( "DictD: Failed building full-text search index for \"%s\", reason: %s", getName().c_str(), ex.what() );
+    qWarning( "DictD: Failed building full-text search index for \"%s\", reason: %s", getName(), ex.what() );
     QFile::remove( QString::fromStdString( ftsIdxName ) );
   }
 }
@@ -536,7 +536,7 @@ void DictdDictionary::getArticleText( uint32_t articleAddress, QString & headwor
     }
   }
   catch ( std::exception & ex ) {
-    qWarning( "DictD: Failed retrieving article from \"%s\", reason: %s", getName().c_str(), ex.what() );
+    qWarning( "DictD: Failed retrieving article from \"%s\", reason: %s", getName(), ex.what() );
   }
 }
 
@@ -733,7 +733,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       dictionaries.push_back( std::make_shared< DictdDictionary >( dictId, indexFile, dictFiles ) );
     }
     catch ( std::exception & e ) {
-      qWarning( "Dictd dictionary \"%s\" reading failed, error: %s", fileName.c_str(), e.what() );
+      qWarning( "Dictd dictionary \"%s\" reading failed, error: %s", fileName, e.what() );
     }
   }
 

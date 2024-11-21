@@ -383,7 +383,7 @@ void XdxfDictionary::makeFTSIndex( QAtomicInt & isCancelled )
     FTS_index_completed.ref();
   }
   catch ( std::exception & ex ) {
-    qWarning( "Xdxf: Failed building full-text search index for \"%s\", reason: %s", getName().c_str(), ex.what() );
+    qWarning( "Xdxf: Failed building full-text search index for \"%s\", reason: %s", getName(), ex.what() );
     QFile::remove( ftsIdxName.c_str() );
   }
 }
@@ -397,7 +397,7 @@ void XdxfDictionary::getArticleText( uint32_t articleAddress, QString & headword
     text = Html::unescape( QString::fromStdString( articleStr ) );
   }
   catch ( std::exception & ex ) {
-    qWarning( "Xdxf: Failed retrieving article from \"%s\", reason: %s", getName().c_str(), ex.what() );
+    qWarning( "Xdxf: Failed retrieving article from \"%s\", reason: %s", getName(), ex.what() );
   }
 }
 
@@ -521,7 +521,7 @@ void XdxfArticleRequest::run()
       articlesIncluded.insert( x.articleOffset );
     }
     catch ( std::exception & ex ) {
-      qWarning( "XDXF: Failed loading article from \"%s\", reason: %s", dict.getName().c_str(), ex.what() );
+      qWarning( "XDXF: Failed loading article from \"%s\", reason: %s", dict.getName(), ex.what() );
     }
   }
 
@@ -1357,7 +1357,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       dictionaries.push_back( std::make_shared< XdxfDictionary >( dictId, indexFile, dictFiles ) );
     }
     catch ( std::exception & e ) {
-      qWarning( "Xdxf dictionary initializing failed: %s, error: %s", fileName.c_str(), e.what() );
+      qWarning( "Xdxf dictionary initializing failed: %s, error: %s", fileName, e.what() );
     }
   }
 

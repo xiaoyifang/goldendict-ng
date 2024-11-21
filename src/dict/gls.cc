@@ -522,7 +522,7 @@ QString const & GlsDictionary::getDescription()
     }
   }
   catch ( std::exception & e ) {
-    qWarning( "GLS dictionary description reading failed: %s, error: %s", getName().c_str(), e.what() );
+    qWarning( "GLS dictionary description reading failed: %s, error: %s", getName(), e.what() );
   }
 
   if ( dictionaryDescription.isEmpty() ) {
@@ -560,7 +560,7 @@ void GlsDictionary::makeFTSIndex( QAtomicInt & isCancelled )
     FTS_index_completed.ref();
   }
   catch ( std::exception & ex ) {
-    qWarning( "Gls: Failed building full-text search index for \"%s\", reason: %s", getName().c_str(), ex.what() );
+    qWarning( "Gls: Failed building full-text search index for \"%s\", reason: %s", getName(), ex.what() );
     QFile::remove( ftsIdxName.c_str() );
   }
 }
@@ -801,7 +801,7 @@ void GlsDictionary::getArticleText( uint32_t articleAddress, QString & headword,
     text = Html::unescape( QString::fromStdString( articleStr ) );
   }
   catch ( std::exception & ex ) {
-    qWarning( "Gls: Failed retrieving article from \"%s\", reason: %s", getName().c_str(), ex.what() );
+    qWarning( "Gls: Failed retrieving article from \"%s\", reason: %s", getName(), ex.what() );
   }
 }
 
@@ -1414,7 +1414,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       dictionaries.push_back( std::make_shared< GlsDictionary >( dictId, indexFile, dictFiles ) );
     }
     catch ( std::exception & e ) {
-      qWarning( "GLS dictionary reading failed: %s:%u, error: %s", fileName.c_str(), atLine, e.what() );
+      qWarning( "GLS dictionary reading failed: %s:%u, error: %s", fileName, atLine, e.what() );
     }
   }
 

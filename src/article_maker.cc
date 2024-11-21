@@ -539,7 +539,7 @@ void ArticleRequest::altSearchFinished()
         bodyRequests.push_back( r );
       }
       catch ( std::exception & e ) {
-        qWarning( "getArticle request error (%s) in \"%s\"", e.what(), activeDict->getName().c_str() );
+        qWarning( "getArticle request error (%s) in \"%s\"", e.what(), activeDict->getName() );
       }
     }
 
