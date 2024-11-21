@@ -3,7 +3,6 @@
 
 #include "xdxf2html.hh"
 #include <QtXml>
-#include "gddebug.hh"
 #include "utf8.hh"
 #include "wstring_qt.hh"
 #include "folding.hh"
@@ -131,21 +130,21 @@ string convert( string const & in,
 
 #if ( QT_VERSION < QT_VERSION_CHECK( 6, 5, 0 ) )
   if ( !dd.setContent( QByteArray( in_data.c_str() ), false, &errorStr, &errorLine, &errorColumn ) ) {
-    qWarning( "Xdxf2html error, xml parse failed: %s at %d,%d\n",
+    qWarning( "Xdxf2html error, xml parse failed: %s at %d,%d",
               errorStr.toLocal8Bit().constData(),
               errorLine,
               errorColumn );
-    gdWarning( "The input was: %s\n", in_data.c_str() );
+    qWarning( "The input was: %s", in_data.c_str() );
     return in;
   }
 #else
   auto setContentResult = dd.setContent( QByteArray::fromStdString( in_data ) );
   if ( !setContentResult ) {
-    qWarning( "Xdxf2html error, xml parse failed: %s at %lld,%lld\n",
+    qWarning( "Xdxf2html error, xml parse failed: %s at %lld,%lld",
               setContentResult.errorMessage.toStdString().c_str(),
               setContentResult.errorLine,
               setContentResult.errorColumn );
-    gdWarning( "The input was: %s\n", in_data.c_str() );
+    qWarning( "The input was: %s", in_data.c_str() );
     return in;
   }
 #endif

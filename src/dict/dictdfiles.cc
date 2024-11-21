@@ -15,7 +15,6 @@
 #include <list>
 #include <wctype.h>
 #include <stdlib.h>
-#include "gddebug.hh"
 #include "ftshelpers.hh"
 #include <QDir>
 #include <QUrl>
@@ -456,14 +455,14 @@ void DictdDictionary::makeFTSIndex( QAtomicInt & isCancelled )
   }
 
 
-  gdDebug( "DictD: Building the full-text index for dictionary: %s\n", getName().c_str() );
+  qDebug( "DictD: Building the full-text index for dictionary: %s", getName().c_str() );
 
   try {
     FtsHelpers::makeFTSIndex( this, isCancelled );
     FTS_index_completed.ref();
   }
   catch ( std::exception & ex ) {
-    gdWarning( "DictD: Failed building full-text search index for \"%s\", reason: %s\n", getName().c_str(), ex.what() );
+    qWarning( "DictD: Failed building full-text search index for \"%s\", reason: %s", getName().c_str(), ex.what() );
     QFile::remove( QString::fromStdString( ftsIdxName ) );
   }
 }
@@ -537,7 +536,7 @@ void DictdDictionary::getArticleText( uint32_t articleAddress, QString & headwor
     }
   }
   catch ( std::exception & ex ) {
-    gdWarning( "DictD: Failed retrieving article from \"%s\", reason: %s\n", getName().c_str(), ex.what() );
+    qWarning( "DictD: Failed retrieving article from \"%s\", reason: %s", getName().c_str(), ex.what() );
   }
 }
 
@@ -589,7 +588,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         // Building the index
         string dictionaryName = nameFromFileName( dictFiles[ 0 ] );
 
-        gdDebug( "DictD: Building the index for dictionary: %s\n", dictionaryName.c_str() );
+        qDebug( "DictD: Building the index for dictionary: %s", dictionaryName.c_str() );
 
         initializing.indexingDictionary( dictionaryName );
 
@@ -628,7 +627,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
               if ( tab3 ) {
                 char * tab4 = strchr( tab3 + 1, '\t' );
                 if ( tab4 ) {
-                  GD_DPRINTF( "Warning: too many tabs present, skipping: %s\n", buf );
+                  qDebug( "Warning: too many tabs present, skipping: %s", buf );
                   continue;
                 }
 
@@ -673,7 +672,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
                         *endEol = 0;
                       }
 
-                      GD_DPRINTF( "DICT NAME: '%s'\n", eol );
+                      qDebug( "DICT NAME: '%s'", eol );
                       dictionaryName = eol;
                     }
                   }
@@ -685,12 +684,12 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
               }
             }
             else {
-              GD_DPRINTF( "Warning: only a single tab present, skipping: %s\n", buf );
+              qDebug( "Warning: only a single tab present, skipping: %s", buf );
               continue;
             }
           }
           else {
-            GD_DPRINTF( "Warning: no tabs present, skipping: %s\n", buf );
+            qDebug( "Warning: no tabs present, skipping: %s", buf );
             continue;
           }
 
@@ -734,7 +733,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       dictionaries.push_back( std::make_shared< DictdDictionary >( dictId, indexFile, dictFiles ) );
     }
     catch ( std::exception & e ) {
-      gdWarning( "Dictd dictionary \"%s\" reading failed, error: %s\n", fileName.c_str(), e.what() );
+      qWarning( "Dictd dictionary \"%s\" reading failed, error: %s", fileName.c_str(), e.what() );
     }
   }
 

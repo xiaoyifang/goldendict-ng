@@ -8,7 +8,6 @@
 #include <QBitmap>
 #include <QMenu>
 #include <QMouseEvent>
-#include "gddebug.hh"
 #include "gestures.hh"
 
 #ifdef Q_OS_MAC
@@ -51,7 +50,7 @@ static bool ownsClipboardMode( QClipboard::Mode mode )
       return clipboard.ownsFindBuffer();
   }
 
-  gdWarning( "Unknown clipboard mode: %d\n", static_cast< int >( mode ) );
+  qWarning( "Unknown clipboard mode: %d", static_cast< int >( mode ) );
   return false;
 }
 #endif
@@ -749,14 +748,14 @@ bool ScanPopup::eventFilter( QObject * watched, QEvent * event )
 void ScanPopup::reactOnMouseMove( QPointF const & p )
 {
   if ( geometry().contains( p.toPoint() ) ) {
-    //        GD_DPRINTF( "got inside\n" );
+    //        qDebug( "got inside" );
 
     hideTimer.stop();
     mouseEnteredOnce = true;
     uninterceptMouse();
   }
   else {
-    //        GD_DPRINTF( "outside\n" );
+    //        qDebug( "outside" );
     // We're in grab mode and outside the window - calculate the
     // distance from it. We might want to hide it.
 
@@ -1165,7 +1164,7 @@ void ScanPopup::setGroupByName( QString const & name ) const
     }
   }
   if ( i >= ui.groupList->count() ) {
-    gdWarning( "Group \"%s\" for popup window is not found\n", name.toUtf8().data() );
+    qWarning( "Group \"%s\" for popup window is not found", name.toUtf8().data() );
   }
 }
 

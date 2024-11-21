@@ -8,7 +8,6 @@
 #include <QtXml>
 #include <QApplication>
 #include <QStyle>
-#include "gddebug.hh"
 
 #ifdef Q_OS_WIN32
   //this is a windows header file.
@@ -130,9 +129,9 @@ QString Preferences::sanitizeInputPhrase( QString const & inputWord ) const
   }
 
   if ( limitInputPhraseLength && result.size() > inputPhraseLengthLimit ) {
-    gdDebug( "Ignoring an input phrase %lld symbols long. The configured maximum input phrase length is %d symbols.",
-             result.size(),
-             inputPhraseLengthLimit );
+    qDebug( "Ignoring an input phrase %lld symbols long. The configured maximum input phrase length is %d symbols.",
+            result.size(),
+            inputPhraseLengthLimit );
     return {};
   }
 
@@ -541,7 +540,7 @@ Class load()
   if ( !loadFromTemplate ) {
     // Load the config as usual
     if ( !dd.setContent( &configFile, false, &errorStr, &errorLine, &errorColumn ) ) {
-      GD_DPRINTF( "Error: %s at %d,%d\n", errorStr.toLocal8Bit().constData(), errorLine, errorColumn );
+      qDebug( "Error: %s at %d,%d", errorStr.toLocal8Bit().constData(), errorLine, errorColumn );
       throw exMalformedConfigFile();
     }
   }
@@ -554,7 +553,7 @@ Class load()
     QBuffer bufferedData( &data );
 
     if ( !dd.setContent( &bufferedData, false, &errorStr, &errorLine, &errorColumn ) ) {
-      GD_DPRINTF( "Error: %s at %d,%d\n", errorStr.toLocal8Bit().constData(), errorLine, errorColumn );
+      qDebug( "Error: %s at %d,%d", errorStr.toLocal8Bit().constData(), errorLine, errorColumn );
       throw exMalformedConfigFile();
     }
   }

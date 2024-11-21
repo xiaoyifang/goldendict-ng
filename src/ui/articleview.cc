@@ -4,7 +4,6 @@
 #include "articleview.hh"
 #include "dict/programs.hh"
 #include "folding.hh"
-#include "gddebug.hh"
 #include "gestures.hh"
 #include "globalbroadcaster.hh"
 #include "speechclient.hh"

@@ -4,7 +4,6 @@
 #include <stdint.h>
 #include <QUrl>
 #include "article_netmgr.hh"
-#include "gddebug.hh"
 #include "utils.hh"
 #include <QNetworkAccessManager>
 #include "globalbroadcaster.hh"
@@ -93,7 +92,7 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest co
   //if not external url,can be blocked from here. no need to continue execute the following code.
   //such as bres://upload.wikimedia....  etc .
   if ( !Utils::isExternalLink( url ) ) {
-    gdWarning( R"(Blocking element "%s" as built-in link )", req.url().toEncoded().data() );
+    qWarning( R"(Blocking element "%s" as built-in link )", req.url().toEncoded().data() );
     return new BlockedNetworkReply( this );
   }
 
@@ -108,7 +107,7 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest co
     if ( !url.host().endsWith( refererUrl.host() )
          && Utils::Url::getHostBaseFromUrl( url ) != Utils::Url::getHostBaseFromUrl( refererUrl )
          && !url.scheme().startsWith( "data" ) ) {
-      gdWarning( R"(Blocking element "%s" due to not same domain)", url.toEncoded().data() );
+      qWarning( R"(Blocking element "%s" due to not same domain)", url.toEncoded().data() );
 
       return new BlockedNetworkReply( this );
     }
@@ -238,7 +237,7 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( QUrl c
           return dictionary->getResource( Utils::Url::path( url ).mid( 1 ).toUtf8().data() );
         }
         catch ( std::exception & e ) {
-          gdWarning( "getResource request error (%s) in \"%s\"\n", e.what(), dictionary->getName().c_str() );
+          qWarning( "getResource request error (%s) in \"%s\"", e.what(), dictionary->getName().c_str() );
           return {};
         }
       }
@@ -284,7 +283,7 @@ ArticleResourceReply::ArticleResourceReply( QObject * parent,
 
     if ( req->isFinished() ) {
       emit finishedSignal();
-      GD_DPRINTF( "In-place finish.\n" );
+      qDebug( "In-place finish." );
     }
   }
 }
@@ -353,11 +352,11 @@ qint64 ArticleResourceReply::readData( char * out, qint64 maxSize )
     return 0;
   }
 
-  GD_DPRINTF( "====reading  %lld of (%lld) bytes, %lld bytes readed . Finish status: %d",
-              toRead,
-              avail,
-              alreadyRead,
-              finished );
+  qDebug( "====reading  %lld of (%lld) bytes, %lld bytes readed . Finish status: %d",
+          toRead,
+          avail,
+          alreadyRead,
+          finished );
 
   try {
     req->getDataSlice( alreadyRead, toRead, out );

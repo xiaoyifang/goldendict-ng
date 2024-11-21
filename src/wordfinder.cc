@@ -5,7 +5,7 @@
 #include "folding.hh"
 #include "wstring_qt.hh"
 #include <map>
-#include "gddebug.hh"
+
 
 using std::vector;
 using std::list;
@@ -157,10 +157,10 @@ void WordFinder::startSearch()
         queuedRequests.push_back( sr );
       }
       catch ( std::exception & e ) {
-        gdWarning( "Word \"%s\" search error (%s) in \"%s\"\n",
-                   inputWord.toUtf8().data(),
-                   e.what(),
-                   inputDict->getName().c_str() );
+        qWarning( "Word \"%s\" search error (%s) in \"%s\"",
+                  inputWord.toUtf8().data(),
+                  e.what(),
+                  inputDict->getName().c_str() );
       }
     }
   }

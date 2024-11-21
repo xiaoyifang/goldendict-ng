@@ -15,7 +15,6 @@
 #include "dict/forvo.hh"
 #include "dict/programs.hh"
 #include "dict/voiceengines.hh"
-#include "gddebug.hh"
 #include "dict/xdxf.hh"
 #include "dict/sdict.hh"
 #include "dict/aard.hh"
@@ -281,7 +280,7 @@ void loadDictionaries( QWidget * parent,
   addDicts( DictServer::makeDictionaries( cfg.dictServers ) );
 
 
-  GD_DPRINTF( "Load done\n" );
+  qDebug( "Load done" );
 
   // Remove any stale index files
 
@@ -291,12 +290,12 @@ void loadDictionaries( QWidget * parent,
   for ( unsigned x = dictionaries.size(); x--; ) {
     ret = ids.insert( dictionaries[ x ]->getId() );
     if ( !ret.second ) {
-      gdWarning( R"(Duplicate dictionary ID found: ID=%s, name="%s", path="%s")",
-                 dictionaries[ x ]->getId().c_str(),
-                 dictionaries[ x ]->getName().c_str(),
-                 dictionaries[ x ]->getDictionaryFilenames().empty() ?
-                   "" :
-                   dictionaries[ x ]->getDictionaryFilenames()[ 0 ].c_str() );
+      qWarning( R"(Duplicate dictionary ID found: ID=%s, name="%s", path="%s")",
+                dictionaries[ x ]->getId().c_str(),
+                dictionaries[ x ]->getName().c_str(),
+                dictionaries[ x ]->getDictionaryFilenames().empty() ?
+                  "" :
+                  dictionaries[ x ]->getDictionaryFilenames()[ 0 ].c_str() );
     }
   }
 
