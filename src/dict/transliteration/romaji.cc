@@ -377,4 +377,4 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::Romaji const & r )
   return result;
 }
 
-} // namespace Romaji
+} // namespace RomajiTranslit

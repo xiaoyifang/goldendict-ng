@@ -159,4 +159,4 @@ std::vector< sptr< Dictionary::Class > > makeDictionaries( Config::Chinese const
   return result;
 }
 
-}  // namespace ChineseTranslit
+} // namespace ChineseTranslit
