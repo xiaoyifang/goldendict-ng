@@ -30,7 +30,6 @@
 #include <QStringBuilder>
 #include <QtWebEngineCore/QWebEngineUrlScheme>
 
-#include "gddebug.hh"
 #include <QMutex>
 #include <QStyleFactory>
 

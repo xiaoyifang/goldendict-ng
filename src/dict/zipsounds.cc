@@ -10,7 +10,6 @@
 #include "audiolink.hh"
 #include "indexedzip.hh"
 #include "filetype.hh"
-#include "gddebug.hh"
 #include "chunkedstorage.hh"
 #include "htmlescape.hh"
 
@@ -400,7 +399,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       string indexFile = indicesDir + dictId;
 
       if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
-        gdDebug( "Zips: Building the index for dictionary: %s\n", fileName.c_str() );
+        qDebug( "Zips: Building the index for dictionary: %s", fileName.c_str() );
 
         File::Index idx( indexFile, QIODevice::WriteOnly );
         IdxHeader idxHeader;
@@ -474,7 +473,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       dictionaries.push_back( std::make_shared< ZipSoundsDictionary >( dictId, indexFile, dictFiles ) );
     }
     catch ( std::exception & e ) {
-      gdWarning( "Zipped sounds pack reading failed: %s, error: %s\n", fileName.c_str(), e.what() );
+      qWarning( "Zipped sounds pack reading failed: %s, error: %s", fileName.c_str(), e.what() );
     }
   }
 

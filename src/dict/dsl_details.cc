@@ -5,7 +5,6 @@
 
 #include "folding.hh"
 #include "langcoder.hh"
-#include "gddebug.hh"
 #include "ufile.hh"
 #include "utf8.hh"
 
@@ -119,10 +118,10 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName, wstring co
         if ( !atSignFirstInLine() ) {
           // Not insided card
           if ( dictName.empty() ) {
-            gdWarning( "Unescaped '@' symbol found" );
+            qWarning( "Unescaped '@' symbol found" );
           }
           else {
-            gdWarning( "Unescaped '@' symbol found in \"%s\"", dictName.c_str() );
+            qWarning( "Unescaped '@' symbol found in \"%s\"", dictName.c_str() );
           }
         }
         else {
@@ -246,16 +245,16 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName, wstring co
         }
         catch ( std::exception & ex ) {
           if ( !dictionaryName.empty() ) {
-            gdWarning( R"(DSL: Unfinished tag "%s" with attributes "%s" found in "%s", article "%s".)",
-                       QString::fromStdU32String( name ).toUtf8().data(),
-                       QString::fromStdU32String( attrs ).toUtf8().data(),
-                       dictionaryName.c_str(),
-                       QString::fromStdU32String( headword ).toUtf8().data() );
+            qWarning( R"(DSL: Unfinished tag "%s" with attributes "%s" found in "%s", article "%s".)",
+                      QString::fromStdU32String( name ).toUtf8().data(),
+                      QString::fromStdU32String( attrs ).toUtf8().data(),
+                      dictionaryName.c_str(),
+                      QString::fromStdU32String( headword ).toUtf8().data() );
           }
           else {
-            gdWarning( R"(DSL: Unfinished tag "%s" with attributes "%s" found)",
-                       QString::fromStdU32String( name ).toUtf8().data(),
-                       QString::fromStdU32String( attrs ).toUtf8().data() );
+            qWarning( R"(DSL: Unfinished tag "%s" with attributes "%s" found)",
+                      QString::fromStdU32String( name ).toUtf8().data(),
+                      QString::fromStdU32String( attrs ).toUtf8().data() );
           }
 
           throw ex;
@@ -678,16 +677,16 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName, wstring co
     unsigned const unclosedTagCount = 1 + std::count_if( it, stack.end(), MustTagBeClosed() );
 
     if ( dictName.empty() ) {
-      gdWarning( "Warning: %u tag(s) were unclosed, first tag name \"%s\".\n",
-                 unclosedTagCount,
-                 firstTagName.constData() );
+      qWarning( "Warning: %u tag(s) were unclosed, first tag name \"%s\".",
+                unclosedTagCount,
+                firstTagName.constData() );
     }
     else {
-      gdWarning( "Warning: %u tag(s) were unclosed in \"%s\", article \"%s\", first tag name \"%s\".\n",
-                 unclosedTagCount,
-                 dictName.c_str(),
-                 QString::fromStdU32String( headword ).toUtf8().constData(),
-                 firstTagName.constData() );
+      qWarning( "Warning: %u tag(s) were unclosed in \"%s\", article \"%s\", first tag name \"%s\".",
+                unclosedTagCount,
+                dictName.c_str(),
+                QString::fromStdU32String( headword ).toUtf8().constData(),
+                firstTagName.constData() );
     }
   }
 }
@@ -787,14 +786,14 @@ void ArticleDom::closeTag( wstring const & name, list< Node * > & stack, bool wa
   }
   else if ( warn ) {
     if ( !dictionaryName.empty() ) {
-      gdWarning( R"(No corresponding opening tag for closing tag "%s" found in "%s", article "%s".)",
-                 QString::fromStdU32String( name ).toUtf8().data(),
-                 dictionaryName.c_str(),
-                 QString::fromStdU32String( headword ).toUtf8().data() );
+      qWarning( R"(No corresponding opening tag for closing tag "%s" found in "%s", article "%s".)",
+                QString::fromStdU32String( name ).toUtf8().data(),
+                dictionaryName.c_str(),
+                QString::fromStdU32String( headword ).toUtf8().data() );
     }
     else {
-      gdWarning( "No corresponding opening tag for closing tag \"%s\" found.",
-                 QString::fromStdU32String( name ).toUtf8().data() );
+      qWarning( "No corresponding opening tag for closing tag \"%s\" found.",
+                QString::fromStdU32String( name ).toUtf8().data() );
     }
   }
 }
@@ -975,7 +974,7 @@ DslScanner::DslScanner( string const & fileName ):
       // The encoding
       if ( !needExactEncoding ) {
         // We don't need that!
-        GD_FDPRINTF( stderr, "Warning: encoding was specified in a Unicode file, ignoring.\n" );
+        qWarning( "Warning: encoding was specified in a Unicode file, ignoring." );
       }
       else if ( !arg.compare( U"Latin" ) ) {
         encoding = Utf8::Windows1252;
@@ -1121,7 +1120,7 @@ void processUnsortedParts( wstring & str, bool strip )
       --refCount;
 
       if ( refCount < 0 ) {
-        GD_FDPRINTF( stderr, "Warning: an unmatched closing brace was encountered.\n" );
+        qWarning( "Warning: an unmatched closing brace was encountered." );
         refCount = 0;
         // But we remove that thing either way
         str.erase( x, 1 );
@@ -1146,7 +1145,7 @@ void processUnsortedParts( wstring & str, bool strip )
   }
 
   if ( strip && refCount ) {
-    GD_FDPRINTF( stderr, "Warning: unclosed brace(s) encountered.\n" );
+    qWarning( "Warning: unclosed brace(s) encountered." );
     str.erase( startPos );
   }
 }

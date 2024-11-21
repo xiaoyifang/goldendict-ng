@@ -7,9 +7,7 @@
 #include "folding.hh"
 #include "utf8.hh"
 #include "btreeidx.hh"
-
 #include "audiolink.hh"
-#include "gddebug.hh"
 
 #include <set>
 #include <string>
@@ -464,13 +462,13 @@ sptr< Dictionary::DataRequest > LsaDictionary::getResource( string const & name 
     long result = ov_read( &vf, ptr, left, 0, 2, 1, &bitstream );
 
     if ( result <= 0 ) {
-      gdWarning( "Failed to read Vorbis data (code = %ld)\n", result );
+      qWarning( "Failed to read Vorbis data (code = %ld)", result );
       memset( ptr, 0, left );
       break;
     }
 
     if ( result > left ) {
-      GD_FDPRINTF( stderr, "Warning: Vorbis decode returned more data than requested.\n" );
+      qWarning( "Warning: Vorbis decode returned more data than requested." );
 
       result = left;
     }
@@ -539,7 +537,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
         // Building the index
 
-        gdDebug( "Lsa: Building the index for dictionary: %s\n", i->c_str() );
+        qDebug( "Lsa: Building the index for dictionary: %s", i->c_str() );
 
         initializing.indexingDictionary( Utils::Fs::basename( *i ) );
 
@@ -559,7 +557,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         /// XXX handle big-endian machines here!
         auto entriesCount = f.read< uint32_t >();
 
-        GD_DPRINTF( "%s: %u entries\n", i->c_str(), entriesCount );
+        qDebug( "%s: %u entries", i->c_str(), entriesCount );
 
         idxHeader.soundsCount = entriesCount;
 
@@ -574,7 +572,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
           // Remove the extension, no need for that in the index
           e.name = stripExtension( e.name );
 
-          GD_DPRINTF( "Read filename %s (%u at %u)<\n", e.name.c_str(), e.samplesLength, e.samplesOffset );
+          qDebug( "Read filename %s (%u at %u)<", e.name.c_str(), e.samplesLength, e.samplesOffset );
 
           // Insert new entry into an index
 
@@ -613,7 +611,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       dictionaries.push_back( std::make_shared< LsaDictionary >( dictId, indexFile, dictFiles ) );
     }
     catch ( std::exception & e ) {
-      gdWarning( "Lingvo's LSA reading failed: %s, error: %s\n", i->c_str(), e.what() );
+      qWarning( "Lingvo's LSA reading failed: %s, error: %s", i->c_str(), e.what() );
     }
   }
 

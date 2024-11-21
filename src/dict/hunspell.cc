@@ -13,7 +13,6 @@
 #include <QCoreApplication>
 #include <QFileInfo>
 #include <set>
-#include "gddebug.hh"
 #include "utils.hh"
 #include <QtConcurrentRun>
 
@@ -271,10 +270,10 @@ void HunspellArticleRequest::run()
     }
   }
   catch ( Iconv::Ex & e ) {
-    gdWarning( "Hunspell: charset conversion error, no processing's done: %s\n", e.what() );
+    qWarning( "Hunspell: charset conversion error, no processing's done: %s", e.what() );
   }
   catch ( std::exception & e ) {
-    gdWarning( "Hunspell: error: %s\n", e.what() );
+    qWarning( "Hunspell: error: %s", e.what() );
   }
 
   finish();
@@ -396,7 +395,7 @@ QList< wstring > suggest( wstring & word, QMutex & hunspellMutex, Hunspell & hun
           suggestion.chop( suggestion.length() - n );
         }
 
-        GD_DPRINTF( ">>>Sugg: %s\n", suggestion.toLocal8Bit().data() );
+        qDebug( ">>>Sugg: %s", suggestion.toLocal8Bit().data() );
 
         auto match = cutStem.match( suggestion.trimmed() );
         if ( match.hasMatch() ) {
@@ -411,7 +410,7 @@ QList< wstring > suggest( wstring & word, QMutex & hunspellMutex, Hunspell & hun
     }
   }
   catch ( Iconv::Ex & e ) {
-    gdWarning( "Hunspell: charset conversion error, no processing's done: %s\n", e.what() );
+    qWarning( "Hunspell: charset conversion error, no processing's done: %s", e.what() );
   }
 
   return result;
@@ -493,7 +492,7 @@ void HunspellPrefixMatchRequest::run()
     }
   }
   catch ( Iconv::Ex & e ) {
-    gdWarning( "Hunspell: charset conversion error, no processing's done: %s\n", e.what() );
+    qWarning( "Hunspell: charset conversion error, no processing's done: %s", e.what() );
   }
 
   finish();

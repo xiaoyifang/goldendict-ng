@@ -23,7 +23,6 @@
 
 #include "bgl_babylon.hh"
 #include "dictionary.hh"
-#include "gddebug.hh"
 #include "globalregex.hh"
 #include "htmlescape.hh"
 #include "iconv.hh"
@@ -333,10 +332,10 @@ bool Babylon::read( const std::string & source_charset, const std::string & targ
   convertToUtf8( m_email, BGL_TARGET_CHARSET );
   convertToUtf8( m_copyright, BGL_TARGET_CHARSET );
   convertToUtf8( m_description, BGL_TARGET_CHARSET );
-  GD_DPRINTF( "Default charset: %s\nSource Charset: %s\nTargetCharset: %s\n",
-              m_defaultCharset.c_str(),
-              m_sourceCharset.c_str(),
-              m_targetCharset.c_str() );
+  qDebug( "Default charset: %s\nSource Charset: %s\nTargetCharset: %s",
+          m_defaultCharset.c_str(),
+          m_sourceCharset.c_str(),
+          m_targetCharset.c_str() );
   return true;
 }
 
@@ -498,7 +497,7 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
             unsigned length = (unsigned char)block.data[ pos ] - 0x3F;
 
             if ( length > len - a - 2 ) {
-              GD_FDPRINTF( stderr, "Hidden displayed headword is too large %s\n", headword.c_str() );
+              qWarning( "Hidden displayed headword is too large %s", headword.c_str() );
               pos += len - a;
               break;
             }
@@ -511,7 +510,7 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
             unsigned length = (unsigned char)block.data[ pos + 1 ];
 
             if ( length > len - a - 2 ) {
-              GD_FDPRINTF( stderr, "Displayed headword's length is too large for headword %s\n", headword.c_str() );
+              qWarning( "Displayed headword's length is too large for headword %s", headword.c_str() );
               pos += len - a;
               break;
             }
@@ -525,7 +524,7 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
             unsigned length = qFromBigEndian( *reinterpret_cast< quint16 * >( block.data + pos + 1 ) );
 
             if ( length > len - a - 3 ) {
-              GD_FDPRINTF( stderr, "2-byte sized displayed headword for %s is too large\n", headword.c_str() );
+              qWarning( "2-byte sized displayed headword for %s is too large", headword.c_str() );
               pos += len - a;
               break;
             }
@@ -541,9 +540,7 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
             unsigned length = (unsigned char)block.data[ pos + 2 ];
 
             if ( length > len - a - 3 ) {
-              GD_FDPRINTF( stderr,
-                           "1-byte-sized transcription's length is too large for headword %s\n",
-                           headword.c_str() );
+              qWarning( "1-byte-sized transcription's length is too large for headword %s", headword.c_str() );
               pos += len - a;
               break;
             }
@@ -553,7 +550,7 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
                 transcription = Iconv::toUtf8( "Windows-1252", block.data + pos + 3, length );
               }
               catch ( Iconv::Ex & e ) {
-                qWarning( "Bgl: charset conversion error, no trancription processing's done: %s\n", e.what() );
+                qWarning( "Bgl: charset conversion error, no trancription processing's done: %s", e.what() );
                 transcription = std::string( block.data + pos + 3, length );
               }
             }
@@ -570,9 +567,7 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
             unsigned length = qFromBigEndian( *reinterpret_cast< quint16 * >( block.data + pos + 2 ) );
 
             if ( length > len - a - 4 ) {
-              GD_FDPRINTF( stderr,
-                           "2-byte-sized transcription's length is too large for headword %s\n",
-                           headword.c_str() );
+              qWarning( "2-byte-sized transcription's length is too large for headword %s", headword.c_str() );
               pos += len - a;
               break;
             }
@@ -582,7 +577,7 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
                 transcription = Iconv::toUtf8( "Windows-1252", block.data + pos + 4, length );
               }
               catch ( Iconv::Ex & e ) {
-                qWarning( "Bgl: charset conversion error, no transcription processing's done: %s\n", e.what() );
+                qWarning( "Bgl: charset conversion error, no transcription processing's done: %s", e.what() );
                 transcription = std::string( block.data + pos + 4, length );
               }
             }
@@ -600,7 +595,7 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
             unsigned length = (unsigned char)block.data[ pos ] - 0x3F;
 
             if ( length > len - a - 2 ) {
-              GD_FDPRINTF( stderr, "Hidden transcription is too large %s\n", headword.c_str() );
+              qWarning( "Hidden transcription is too large %s", headword.c_str() );
               pos += len - a;
               break;
             }

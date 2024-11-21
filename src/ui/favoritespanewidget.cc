@@ -12,12 +12,10 @@
 #include <QSaveFile>
 #include <QStringBuilder>
 #include <QDebug>
-
+#include <QFile>
 #include <algorithm>
 #include <functional>
-
 #include "favoritespanewidget.hh"
-#include "gddebug.hh"
 #include "globalbroadcaster.hh"
 
 /************************************************** FavoritesPaneWidget *********************************************/
@@ -644,7 +642,7 @@ void FavoritesModel::readData()
 
   QFile favoritesFile( m_favoritesFilename );
   if ( !favoritesFile.open( QFile::ReadOnly ) ) {
-    gdDebug( "No favorites file found" );
+    qDebug( "No favorites file found" );
     return;
   }
 
@@ -654,7 +652,7 @@ void FavoritesModel::readData()
 
   if ( !dom.setContent( &favoritesFile, false, &errorStr, &errorLine, &errorColumn ) ) {
     // Mailformed file
-    gdWarning( "Favorites file parsing error: %s at %d,%d\n", errorStr.toUtf8().data(), errorLine, errorColumn );
+    qWarning( "Favorites file parsing error: %s at %d,%d", errorStr.toUtf8().data(), errorLine, errorColumn );
 
     QMessageBox mb( QMessageBox::Warning, "GoldenDict", tr( "Error in favorities file" ), QMessageBox::Ok );
     mb.exec();
@@ -686,7 +684,7 @@ void FavoritesModel::saveData()
 
   QSaveFile tmpFile( m_favoritesFilename );
   if ( !tmpFile.open( QFile::WriteOnly ) ) {
-    gdWarning( "Can't write favorites file, error: %s", tmpFile.errorString().toUtf8().data() );
+    qWarning( "Can't write favorites file, error: %s", tmpFile.errorString().toUtf8().data() );
     return;
   }
 
@@ -699,7 +697,7 @@ void FavoritesModel::saveData()
   QByteArray result( dom.toByteArray() );
 
   if ( tmpFile.write( result ) != result.size() ) {
-    gdWarning( "Can't write favorites file, error: %s", tmpFile.errorString().toUtf8().data() );
+    qWarning( "Can't write favorites file, error: %s", tmpFile.errorString().toUtf8().data() );
     return;
   }
 
@@ -1145,7 +1143,7 @@ bool FavoritesModel::setDataFromXml( QString const & dataStr )
 
   if ( !dom.setContent( dataStr, false, &errorStr, &errorLine, &errorColumn ) ) {
     // Mailformed data
-    gdWarning( "XML parsing error: %s at %d,%d\n", errorStr.toUtf8().data(), errorLine, errorColumn );
+    qWarning( "XML parsing error: %s at %d,%d", errorStr.toUtf8().data(), errorLine, errorColumn );
     dom.clear();
     return false;
   }

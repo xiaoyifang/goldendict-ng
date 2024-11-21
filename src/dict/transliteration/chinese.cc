@@ -6,7 +6,6 @@
 #include <QCoreApplication>
 #include <opencc/opencc.h>
 #include "folding.hh"
-#include "gddebug.hh"
 #include "transliteration.hh"
 #include "utf8.hh"
 
@@ -42,18 +41,18 @@ CharacterConversionDictionary::CharacterConversionDictionary( std::string const 
     // #ifdef Q_OS_MAC
     converter = opencc_open( openccConfig.toLocal8Bit().constData() );
     if ( converter == reinterpret_cast< opencc_t >( -1 ) ) {
-      gdWarning( "CharacterConversionDictionary: failed to initialize OpenCC from config %s: %s\n",
-                 openccConfig.toLocal8Bit().constData(),
-                 opencc_error() );
+      qWarning( "CharacterConversionDictionary: failed to initialize OpenCC from config %s: %s",
+                openccConfig.toLocal8Bit().constData(),
+                opencc_error() );
     }
     // #else
     //     converter = new opencc::SimpleConverter( openccConfig.toLocal8Bit().constData() );
     // #endif
   }
   catch ( std::runtime_error & e ) {
-    gdWarning( "CharacterConversionDictionary: failed to initialize OpenCC from config %s: %s\n",
-               openccConfig.toLocal8Bit().constData(),
-               e.what() );
+    qWarning( "CharacterConversionDictionary: failed to initialize OpenCC from config %s: %s",
+              openccConfig.toLocal8Bit().constData(),
+              e.what() );
   }
 }
 
@@ -88,7 +87,7 @@ std::vector< gd::wstring > CharacterConversionDictionary::getAlternateWritings( 
           opencc_convert_utf8_free( tmp );
         }
         else {
-          gdWarning( "OpenCC: conversion failed %s\n", opencc_error() );
+          qWarning( "OpenCC: conversion failed %s", opencc_error() );
         }
       }
       // #else
@@ -97,7 +96,7 @@ std::vector< gd::wstring > CharacterConversionDictionary::getAlternateWritings( 
       result = Utf8::decode( output );
     }
     catch ( std::exception & ex ) {
-      gdWarning( "OpenCC: conversion failed %s\n", ex.what() );
+      qWarning( "OpenCC: conversion failed %s", ex.what() );
     }
 
     if ( !result.empty() && result != folded ) {

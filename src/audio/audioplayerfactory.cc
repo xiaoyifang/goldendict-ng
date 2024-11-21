@@ -8,7 +8,6 @@
 #include "ffmpegaudioplayer.hh"
 #include "multimediaaudioplayer.hh"
 #include "externalaudioplayer.hh"
-#include "gddebug.hh"
 
 AudioPlayerFactory::AudioPlayerFactory( bool useInternalPlayer,
                                         InternalPlayerBackend internalPlayerBackend,
@@ -41,7 +40,7 @@ void AudioPlayerFactory::setPreferences( bool new_useInternalPlayer,
       setAudioPlaybackProgram( *externalPlayer );
     }
     else {
-      gdWarning( "External player was expected, but it does not exist.\n" );
+      qWarning( "External player was expected, but it does not exist." );
     }
   }
 }

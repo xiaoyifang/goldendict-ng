@@ -8,7 +8,6 @@
 #include <QTextCodec>
 #include <QDir>
 #include <QFileInfo>
-#include "gddebug.hh"
 #include "globalbroadcaster.hh"
 #include "fmt/compile.h"
 
@@ -300,9 +299,9 @@ void WebSiteArticleRequest::requestFinished( QNetworkReply * r )
   }
   else {
     if ( netReply->url().scheme() == "file" ) {
-      gdWarning( "WebSites: Failed loading article from \"%s\", reason: %s\n",
-                 dictPtr->getName().c_str(),
-                 netReply->errorString().toUtf8().data() );
+      qWarning( "WebSites: Failed loading article from \"%s\", reason: %s",
+                dictPtr->getName().c_str(),
+                netReply->errorString().toUtf8().data() );
     }
     else {
       setErrorString( netReply->errorString() );

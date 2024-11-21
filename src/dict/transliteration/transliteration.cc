@@ -4,7 +4,6 @@
 #include "transliteration.hh"
 #include "utf8.hh"
 #include "folding.hh"
-#include "gddebug.hh"
 
 namespace Transliteration {
 
@@ -61,7 +60,7 @@ sptr< Dictionary::WordSearchRequest > BaseTransliterationDictionary::findHeadwor
 
   vector< wstring > alts = getAlternateWritings( str );
 
-  GD_DPRINTF( "alts = %u\n", (unsigned)alts.size() );
+  qDebug( "alts = %u", (unsigned)alts.size() );
 
   for ( const auto & alt : alts ) {
     result->getMatches().push_back( alt );

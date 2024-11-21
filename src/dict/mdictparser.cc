@@ -35,7 +35,6 @@
 #include <QtCore5Compat/QTextCodec>
 
 #include "decompress.hh"
-#include "gddebug.hh"
 #include "ripemd.hh"
 #include "utils.hh"
 #include "htmlescape.hh"
@@ -118,7 +117,7 @@ bool MdictParser::open( const char * filename )
   filename_ = QString::fromUtf8( filename );
   file_     = new QFile( filename_ );
 
-  gdDebug( "MdictParser: open %s", filename );
+  qDebug( "MdictParser: open %s", filename );
 
   if ( file_.isNull() || !file_->exists() ) {
     return false;
@@ -233,7 +232,7 @@ bool MdictParser::parseCompressedBlock( qint64 compressedBlockSize,
     case 0x00000000:
       // No compression
       if ( !checkAdler32( buf, size, checksum ) ) {
-        gdWarning( "MDict: parseCompressedBlock: plain: checksum not match" );
+        qWarning( "MDict: parseCompressedBlock: plain: checksum not match" );
         return false;
       }
 
@@ -248,13 +247,13 @@ bool MdictParser::parseCompressedBlock( qint64 compressedBlockSize,
       result = lzo1x_decompress_safe( (const uchar *)buf, size, (uchar *)decompressedBlock.data(), &blockSize, NULL );
 
       if ( result != LZO_E_OK || blockSize != (lzo_uint)decompressedBlockSize ) {
-        gdWarning( "MDict: parseCompressedBlock: decompression failed" );
+        qWarning( "MDict: parseCompressedBlock: decompression failed" );
         return false;
       }
 
       if ( checksum
            != lzo_adler32( lzo_adler32( 0, NULL, 0 ), (const uchar *)decompressedBlock.constData(), blockSize ) ) {
-        gdWarning( "MDict: parseCompressedBlock: lzo: checksum does not match" );
+        qWarning( "MDict: parseCompressedBlock: lzo: checksum does not match" );
         return false;
       }
     } break;
@@ -263,12 +262,12 @@ bool MdictParser::parseCompressedBlock( qint64 compressedBlockSize,
       // zlib compression
       decompressedBlock = zlibDecompress( buf, size, checksum );
       if ( decompressedBlock.isEmpty() ) {
-        gdWarning( "MDict: parseCompressedBlock: zlib: failed to decompress or checksum does not match" );
+        qWarning( "MDict: parseCompressedBlock: zlib: failed to decompress or checksum does not match" );
         return false;
       }
       break;
     default:
-      gdWarning( "MDict: parseCompressedBlock: unknown type" );
+      qWarning( "MDict: parseCompressedBlock: unknown type" );
       return false;
   }
 
@@ -320,7 +319,7 @@ bool MdictParser::readHeader( QDataStream & in )
   in.setByteOrder( QDataStream::LittleEndian );
   in >> checksum;
   if ( !checkAdler32( headerTextUtf16.constData(), headerTextUtf16.size(), checksum ) ) {
-    gdWarning( "MDict: readHeader: checksum does not match" );
+    qWarning( "MDict: readHeader: checksum does not match" );
     return false;
   }
   headerTextUtf16.clear();

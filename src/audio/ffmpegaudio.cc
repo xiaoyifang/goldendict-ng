@@ -2,7 +2,6 @@
 
   #include "audiooutput.hh"
   #include "ffmpegaudio.hh"
-  #include "gddebug.hh"
   #include "utils.hh"
   #include <QAudioDevice>
   #include <QDataStream>
@@ -88,7 +87,7 @@ static int readAudioData( void * opaque, unsigned char * buffer, int bufferSize 
   // QDataStream::readRawData() returns 0 at EOF => return AVERROR_EOF in this case.
   // An error is unlikely here, so just print a warning and return AVERROR_EOF too.
   if ( bytesRead < 0 ) {
-    gdWarning( "readAudioData: error while reading raw data." );
+    qWarning( "readAudioData: error while reading raw data." );
   }
   return bytesRead > 0 ? bytesRead : AVERROR_EOF;
 }
@@ -170,11 +169,11 @@ bool DecoderContext::openCodec( QString & errorString )
 
   // 61 = FFmpeg 7.0 -> https://github.com/FFmpeg/FFmpeg/blob/release/7.0/libavcodec/version_major.h
   #if LIBAVCODEC_VERSION_MAJOR >= 61
-  gdDebug( "Codec open: %s: channels: %d, rate: %d, format: %s\n",
-           codec_->long_name,
-           codecContext_->ch_layout.nb_channels,
-           codecContext_->sample_rate,
-           av_get_sample_fmt_name( codecContext_->sample_fmt ) );
+  qDebug( "Codec open: %s: channels: %d, rate: %d, format: %s",
+          codec_->long_name,
+          codecContext_->ch_layout.nb_channels,
+          codecContext_->sample_rate,
+          av_get_sample_fmt_name( codecContext_->sample_fmt ) );
 
   if ( !av_channel_layout_check( &codecContext_->ch_layout ) ) {
     av_channel_layout_default( &codecContext_->ch_layout, codecContext_->ch_layout.nb_channels );
@@ -193,11 +192,11 @@ bool DecoderContext::openCodec( QString & errorString )
     qDebug() << "swr_alloc_set_opts2 failed.";
   }
   #else
-  gdDebug( "Codec open: %s: channels: %d, rate: %d, format: %s\n",
-           codec_->long_name,
-           codecContext_->channels,
-           codecContext_->sample_rate,
-           av_get_sample_fmt_name( codecContext_->sample_fmt ) );
+  qDebug( "Codec open: %s: channels: %d, rate: %d, format: %s",
+          codec_->long_name,
+          codecContext_->channels,
+          codecContext_->sample_rate,
+          av_get_sample_fmt_name( codecContext_->sample_fmt ) );
 
   auto layout = codecContext_->channel_layout;
   if ( !layout ) {
@@ -367,7 +366,7 @@ bool DecoderContext::normalizeAudio( AVFrame * frame, vector< uint8_t > & sample
     return false;
   }
   else {
-    //    qDebug( "out_count:%d, out_nb_samples:%d, frame->nb_samples:%d \n", out_count, out_nb_samples, frame->nb_samples );
+    //    qDebug( "out_count:%d, out_nb_samples:%d, frame->nb_samples:%d ", out_count, out_nb_samples, frame->nb_samples );
   }
 
   int actual_size = av_samples_get_buffer_size( nullptr, dst_channels, out_nb_samples, AV_SAMPLE_FMT_S16, 1 );

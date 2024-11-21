@@ -1,5 +1,4 @@
 #include "hotkeywrapper.hh"
-#include "gddebug.hh"
 #include <QTimer>
 #include <QSessionManager>
 #include <QWidget>
@@ -329,7 +328,7 @@ void HotkeyWrapper::init()
 void HotkeyWrapper::run() // Runs in a separate thread
 {
   if ( !XRecordEnableContext( dataDisplay, recordContext, recordEventCallback, (XPointer)this ) )
-    GD_DPRINTF( "Failed to enable record context\n" );
+    qDebug( "Failed to enable record context" );
 }
 
 
@@ -502,7 +501,7 @@ HotkeyWrapper::GrabbedKeys::iterator HotkeyWrapper::grabKey( quint32 keyCode, qu
     XGrabKey( displayID, keyCode, modifiers, DefaultRootWindow( displayID ), True, GrabModeAsync, GrabModeAsync );
 
     if ( errorHandler.isError() ) {
-      gdWarning( "Possible hotkeys conflict. Check your hotkeys options." );
+      qWarning( "Possible hotkeys conflict. Check your hotkeys options." );
       ungrabKey( result.first );
     }
   }
@@ -524,7 +523,7 @@ void HotkeyWrapper::ungrabKey( GrabbedKeys::iterator i )
   grabbedKeys.erase( i );
 
   if ( errorHandler.isError() ) {
-    gdWarning( "Cannot ungrab the hotkey" );
+    qWarning( "Cannot ungrab the hotkey" );
   }
 }
 
