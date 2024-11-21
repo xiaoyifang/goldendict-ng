@@ -14,20 +14,17 @@
 #include "language.hh"
 #include "utf8.hh"
 #include "utils.hh"
-
 #include <ctype.h>
 #include <list>
 #include <map>
 #include <set>
 #include <string.h>
 #include <zlib.h>
-
-
 #include <QAtomicInt>
+#include <QCryptographicHash>
+#include <QDir>
 #include <QPainter>
 #include <QRegularExpression>
-#include <QSemaphore>
-#include <QThreadPool>
 
 namespace Bgl {
 

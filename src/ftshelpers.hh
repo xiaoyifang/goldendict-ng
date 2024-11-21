@@ -2,8 +2,7 @@
 
 #include <QString>
 #include <QList>
-#include <QtConcurrent>
-
+#include <QtConcurrentRun>
 #include "dict/dictionary.hh"
 #include "btreeidx.hh"
 #include "fulltextsearch.hh"

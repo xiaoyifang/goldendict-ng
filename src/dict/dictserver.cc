@@ -7,11 +7,12 @@
 #include <QUrl>
 #include <QTcpSocket>
 #include <QString>
-#include <list>
 #include "htmlescape.hh"
-
+#include <QCryptographicHash>
+#include <QDir>
+#include <QFileInfo>
 #include <QRegularExpression>
-#include <QtConcurrent>
+#include <QtConcurrentRun>
 
 namespace DictServer {
 

@@ -8,7 +8,6 @@
 #include "chunkedstorage.hh"
 #include "dictzip.hh"
 #include "htmlescape.hh"
-
 #include <map>
 #include <set>
 #include <string>
@@ -17,26 +16,19 @@
 #include <wctype.h>
 #include <stdlib.h>
 #include "gddebug.hh"
-#include "wstring_qt.hh"
 #include "xdxf2html.hh"
 #include "ufile.hh"
-#include "dictzip.hh"
 #include "langcoder.hh"
 #include "indexedzip.hh"
 #include "filetype.hh"
 #include "tiff.hh"
 #include "ftshelpers.hh"
-
-
 #include <QIODevice>
 #include <QXmlStreamReader>
-#include <QTextDocument>
 #include <QFileInfo>
 #include <QDir>
 #include <QPainter>
 #include <QRegularExpression>
-#include <QSemaphore>
-#include <QThreadPool>
 #include <QAtomicInt>
 
 #include "utils.hh"

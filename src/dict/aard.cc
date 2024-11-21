@@ -16,16 +16,11 @@
 #include <set>
 #include <string>
 
-
+#include <QDir>
 #include <QString>
-#include <QSemaphore>
-#include <QThreadPool>
 #include <QAtomicInt>
-#include <QDomDocument>
 #include <QtEndian>
 #include <QRegularExpression>
-#include "ufile.hh"
-#include "wstring_qt.hh"
 #include "utils.hh"
 
 namespace Aard {

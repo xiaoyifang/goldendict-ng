@@ -11,19 +11,16 @@
 #include "chunkedstorage.hh"
 #include "gddebug.hh"
 #include "langcoder.hh"
-
 #include "audiolink.hh"
 #include "ex.hh"
 #include "mdictparser.hh"
 #include "filetype.hh"
 #include "ftshelpers.hh"
 #include "htmlescape.hh"
-
 #include <algorithm>
 #include <map>
 #include <set>
 #include <list>
-
 #include "globalregex.hh"
 #include "tiff.hh"
 #include "utils.hh"
@@ -33,7 +30,7 @@
 #include <QRegularExpression>
 #include <QString>
 #include <QThreadPool>
-#include <QtConcurrent>
+#include <QtConcurrentRun>
 
 namespace Mdx {
 

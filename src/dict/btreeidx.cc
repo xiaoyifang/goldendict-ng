@@ -4,9 +4,6 @@
 #include "btreeidx.hh"
 #include "folding.hh"
 #include "utf8.hh"
-#include <QRunnable>
-#include <QThreadPool>
-#include <QSemaphore>
 #include <math.h>
 #include <string.h>
 #include <stdlib.h>
@@ -18,7 +15,7 @@
 #include "wildcard.hh"
 #include "globalbroadcaster.hh"
 
-#include <QtConcurrent>
+#include <QtConcurrentRun>
 #include <zlib.h>
 
 namespace BtreeIndexing {

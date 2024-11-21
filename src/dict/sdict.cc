@@ -13,8 +13,8 @@
 #include "utf8.hh"
 #include <map>
 #include <QAtomicInt>
+#include <QDir>
 #include <QRegularExpression>
-#include <QSemaphore>
 #include <QString>
 #include <set>
 #include <string>

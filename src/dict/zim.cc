@@ -5,7 +5,6 @@
 
   #include "zim.hh"
   #include "btreeidx.hh"
-
   #include "folding.hh"
   #include "gddebug.hh"
   #include "utf8.hh"
@@ -23,14 +22,12 @@
   #include <QAtomicInt>
   #include <QImage>
   #include <QDir>
-
   #include <QRegularExpression>
-
   #include <string>
   #include <set>
   #include <map>
   #include <algorithm>
-  #include <QtConcurrent>
+  #include <QtConcurrentRun>
   #include <utility>
   #include "globalregex.hh"
   #include <zim/zim.h>

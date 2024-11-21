@@ -1,14 +1,14 @@
 /* This file is (c) 2014 Abs62
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#include "fulltextsearch.hh"
 #include "ftshelpers.hh"
+#include "fulltextsearch.hh"
 #include "gddebug.hh"
-#include "help.hh"
-
-#include <QThreadPool>
-#include <QMessageBox>
 #include "globalregex.hh"
+#include "help.hh"
+#include <QFutureSynchronizer>
+#include <QMessageBox>
+#include <QThreadPool>
 
 namespace FTS {
 
