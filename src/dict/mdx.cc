@@ -29,6 +29,7 @@
 #include <QDir>
 #include <QRegularExpression>
 #include <QString>
+#include <QStringBuilder>
 #include <QThreadPool>
 #include <QtConcurrentRun>
 
