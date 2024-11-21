@@ -11,12 +11,6 @@
 #include "dict/sounddir.hh"
 #include "dict/hunspell.hh"
 #include "dictdfiles.hh"
-#include "dict/romaji.hh"
-#include "dict/customtransliteration.hh"
-#include "dict/russiantranslit.hh"
-#include "dict/german.hh"
-#include "dict/greektranslit.hh"
-#include "dict/belarusiantranslit.hh"
 #include "dict/website.hh"
 #include "dict/forvo.hh"
 #include "dict/programs.hh"
@@ -34,12 +28,19 @@
 #include "dict/lingualibre.hh"
 #include "metadata.hh"
 
+#include "dict/transliteration/belarusian.hh"
+#include "dict/transliteration/custom.hh"
+#include "dict/transliteration/german.hh"
+#include "dict/transliteration/greek.hh"
+#include "dict/transliteration/romaji.hh"
+#include "dict/transliteration/russian.hh"
+
 #ifndef NO_EPWING_SUPPORT
   #include "dict/epwing.hh"
 #endif
 
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
-  #include "dict/chinese.hh"
+  #include "dict/transliteration/chinese.hh"
 #endif
 
 #include <QMessageBox>
@@ -243,10 +244,10 @@ void loadDictionaries( QWidget * parent,
   ///// We create transliterations synchronously since they are very simple
 
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
-  addDicts( Chinese::makeDictionaries( cfg.transliteration.chinese ) );
+  addDicts( ChineseTranslit::makeDictionaries( cfg.transliteration.chinese ) );
 #endif
 
-  addDicts( Romaji::makeDictionaries( cfg.transliteration.romaji ) );
+  addDicts( RomajiTranslit::makeDictionaries( cfg.transliteration.romaji ) );
   addDicts( CustomTranslit::makeDictionaries( cfg.transliteration.customTrans ) );
 
   // Make Russian transliteration

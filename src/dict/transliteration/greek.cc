@@ -1,7 +1,7 @@
 /* This file is (c) 2010 Jennie Petoumenou <epetoumenou@gmail.com>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#include "greektranslit.hh"
+#include "greek.hh"
 #include "transliteration.hh"
 #include <QCoreApplication>
 

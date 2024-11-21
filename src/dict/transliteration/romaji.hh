@@ -7,7 +7,7 @@
 #include "config.hh"
 
 /// Japanese romanization (Romaji) support.
-namespace Romaji {
+namespace RomajiTranslit {
 
 using std::vector;
 

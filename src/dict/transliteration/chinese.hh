@@ -8,7 +8,7 @@
 #include "dictionary.hh"
 
 /// Chinese character conversion support.
-namespace Chinese {
+namespace ChineseTranslit {
 
 std::vector< sptr< Dictionary::Class > > makeDictionaries( Config::Chinese const & );
 }

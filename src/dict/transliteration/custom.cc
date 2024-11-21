@@ -1,4 +1,4 @@
-#include "customtransliteration.hh"
+#include "custom.hh"
 #include "dictionary.hh"
 #include <QCoreApplication>
 
