@@ -1,15 +1,14 @@
 #pragma once
 
 /// @file
-/// Handling global hotkeys and some tricks
-/// Part of this header are implmented in
-/// + `winhotkeywrapper.cc`
-/// + `machotkeywrapper.hh`
-///
+/// Handling global hotkeys and some trick
+/// Part of this header is implemented in
+/// + `winhotkeywrapper`
+/// + `machotkeywrapper`
+/// + `x11hotkeywrapper`
 
 #include <QGuiApplication>
 #include <QThread>
-
 #include "config.hh"
 #include "ex.hh"
 #include "qtsingleapplication.h"
@@ -124,7 +123,7 @@ private:
   /// Called by recordEventCallback()
   void handleRecordEvent( XRecordInterceptData * );
 
-  void run(); // QThread
+  void run() override; // QThread
 
   // We do one-time init of those, translating keysyms to keycodes
   KeyCode lShiftCode, rShiftCode, lCtrlCode, rCtrlCode, lAltCode, rAltCode, cCode, insertCode, kpInsertCode, lMetaCode,
