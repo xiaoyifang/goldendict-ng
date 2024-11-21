@@ -16,24 +16,16 @@
 #include "dictzip.hh"
 #include "indexedzip.hh"
 #include "ftshelpers.hh"
-
 #include "htmlescape.hh"
 #include "filetype.hh"
 #include "tiff.hh"
 #include "audiolink.hh"
-
 #include <QString>
-#include <QSemaphore>
-#include <QThreadPool>
 #include <QAtomicInt>
-// For TIFF conversion
-#include <QImage>
 #include <QByteArray>
-#include <QBuffer>
-
+#include <QDir>
 #include <QRegularExpression>
 #include <QtCore5Compat/QTextCodec>
-
 #include <string>
 #include <list>
 #include <map>

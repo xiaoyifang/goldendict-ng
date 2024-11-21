@@ -7,7 +7,6 @@
 #include "utf8.hh"
 #include "dictzip.hh"
 #include "htmlescape.hh"
-
 #include "langcoder.hh"
 #include <map>
 #include <set>
@@ -18,6 +17,7 @@
 #include <stdlib.h>
 #include "gddebug.hh"
 #include "ftshelpers.hh"
+#include <QDir>
 #include <QUrl>
 
 

@@ -1,26 +1,19 @@
 /* This file is (c) 2014 Abs62
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
+#include <QDir>
 #ifndef NO_EPWING_SUPPORT
 
   #include "epwing_book.hh"
   #include "epwing.hh"
-
   #include <QByteArray>
-  #include <QDir>
-  #include <QRunnable>
-  #include <QSemaphore>
-
   #include <map>
-  #include <QtConcurrent>
+  #include <QtConcurrentRun>
   #include <set>
   #include <string>
-
   #include "btreeidx.hh"
   #include "folding.hh"
   #include "gddebug.hh"
-
   #include "chunkedstorage.hh"
-  #include "wstring_qt.hh"
   #include "filetype.hh"
   #include "ftshelpers.hh"
   #include "globalregex.hh"

@@ -11,7 +11,6 @@
 #include "htmlescape.hh"
 #include "iconv.hh"
 #include "filetype.hh"
-
 #include "audiolink.hh"
 #include "langcoder.hh"
 #include "wstring_qt.hh"
@@ -19,36 +18,22 @@
 #include "gddebug.hh"
 #include "tiff.hh"
 #include "ftshelpers.hh"
-
 #include <map>
 #include <set>
 #include <string>
 #include <vector>
 #include <list>
 #include <wctype.h>
-
-#include <QSemaphore>
 #include <QThreadPool>
 #include <QAtomicInt>
 #include <QUrl>
-
 #include <QDir>
 #include <QFileInfo>
 #include <QPainter>
-#include <QStringList>
-
 #include <QRegularExpression>
-
-// For TIFF conversion
-#include <QImage>
 #include <QByteArray>
-#include <QBuffer>
-
-// For SVG handling
-#include <QtSvg/QSvgRenderer>
-
-#include <QtConcurrent>
-
+#include <QSvgRenderer>
+#include <QtConcurrentRun>
 #include "utils.hh"
 
 namespace Dsl {
@@ -154,7 +139,6 @@ class DslDictionary: public BtreeIndexing::BtreeDictionary
   QAtomicInt deferredInitDone;
   QMutex deferredInitMutex;
   bool deferredInitRunnableStarted;
-  QSemaphore deferredInitRunnableExited;
 
   string initError;
 
@@ -1405,7 +1389,6 @@ class DslArticleRequest: public Dictionary::DataRequest
   bool ignoreDiacritics;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
   QFuture< void > f;
 
 public:
@@ -1582,7 +1565,6 @@ class DslResourceRequest: public Dictionary::DataRequest
   string resourceName;
 
   QAtomicInt isCancelled;
-  QSemaphore hasExited;
   QFuture< void > f;
 
 public:

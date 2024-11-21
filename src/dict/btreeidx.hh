@@ -5,16 +5,11 @@
 
 #include "dict/dictionary.hh"
 #include "dictfile.hh"
-
-#include <algorithm>
 #include <map>
 #include <stdint.h>
 #include <string>
 #include <vector>
-
 #include <QFuture>
-#include <QList>
-#include <QSet>
 #include <QList>
 
 

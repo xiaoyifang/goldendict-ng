@@ -10,25 +10,22 @@
 #include "utf8.hh"
 #include "decompress.hh"
 #include "langcoder.hh"
-#include "wstring_qt.hh"
 #include "ftshelpers.hh"
 #include "htmlescape.hh"
 #include "filetype.hh"
 #include "tiff.hh"
 #include "utils.hh"
-
 #include "iconv.hh"
-
 #include <QString>
+#include <QStringBuilder>
 #include <QFile>
 #include <QFileInfo>
 #include <QDir>
 #include <QMap>
 #include <QProcess>
 #include <QList>
-
+#include <QtEndian>
 #include <QRegularExpression>
-
 #include <string>
 #include <vector>
 #include <utility>

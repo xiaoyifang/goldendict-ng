@@ -1,19 +1,10 @@
 #pragma once
 
-#include <QAbstractListModel>
-#include <QAction>
-#include <QList>
 #include <QTimer>
-#include <QThread>
 #include <QRunnable>
 #include <QSemaphore>
-#include <QStringList>
-
-#include <QRegularExpression>
-
 #include "dict/dictionary.hh"
 #include "ui_fulltextsearch.h"
-
 #include "config.hh"
 #include "instances.hh"
 #include "delegate.hh"

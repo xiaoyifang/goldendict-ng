@@ -6,30 +6,22 @@
 #include "htmlescape.hh"
 #include "iconv.hh"
 #include "folding.hh"
-#include "wstring_qt.hh"
 #include "language.hh"
 #include "langcoder.hh"
-
-#include <QRunnable>
-#include <QThreadPool>
-#include <QSemaphore>
-
 #include <QRegularExpression>
-
 #include <QDir>
 #include <QCoreApplication>
 #include <QFileInfo>
-
 #include <set>
+#include "gddebug.hh"
+#include "utils.hh"
+#include <QtConcurrentRun>
+
 #ifndef INCLUDE_LIBRARY_PATH
   #include <hunspell.hxx>
 #else
   #include <hunspell/hunspell.hxx>
 #endif
-#include "gddebug.hh"
-
-#include "utils.hh"
-#include <QtConcurrent>
 
 namespace HunspellMorpho {
 

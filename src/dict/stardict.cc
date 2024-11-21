@@ -11,36 +11,30 @@
 #include "htmlescape.hh"
 #include "langcoder.hh"
 #include "gddebug.hh"
-
 #include "filetype.hh"
 #include "indexedzip.hh"
 #include "tiff.hh"
 #include "ftshelpers.hh"
 #include "audiolink.hh"
-
 #include <zlib.h>
 #include <map>
 #include <set>
 #include <string>
+#include <QString>
+#include <QAtomicInt>
+#include <QDomDocument>
+#include "ufile.hh"
+#include "utils.hh"
+#include <QRegularExpression>
+#include "globalregex.hh"
+#include <QDir>
+#include <stdlib.h>
 
 #ifndef Q_OS_WIN
   #include <arpa/inet.h>
 #else
   #include <winsock.h>
 #endif
-#include <stdlib.h>
-
-
-#include <QString>
-#include <QSemaphore>
-#include <QAtomicInt>
-#include <QStringList>
-#include <QDomDocument>
-#include "ufile.hh"
-#include "utils.hh"
-
-#include <QRegularExpression>
-#include "globalregex.hh"
 
 namespace Stardict {
 
