@@ -1,6 +1,6 @@
 #ifdef HAVE_X11
-#include "hotkeywrapper.hh"
-#include <X11/keysym.h>
+  #include "hotkeywrapper.hh"
+  #include <X11/keysym.h>
 
 //
 /// Previously impletended with XGrabKey
@@ -202,7 +202,7 @@ public:
 
     QNativeInterface::QX11Application * x11AppInfo = qApp->nativeInterface< QNativeInterface::QX11Application >();
 
-    Display * displayID  = x11AppInfo->display();
+    Display * displayID = x11AppInfo->display();
 
     XFlush( displayID );
     (void)XSetErrorHandler( previousErrorHandler_ );
@@ -289,7 +289,7 @@ quint32 HotkeyWrapper::nativeKey( int key )
 void HotkeyWrapper::unregister()
 {
   QNativeInterface::QX11Application * x11AppInfo = qApp->nativeInterface< QNativeInterface::QX11Application >();
-  Display * display = x11AppInfo->display();
+  Display * display                              = x11AppInfo->display();
 
   XRecordDisableContext( display, recordContext );
   XSync( display, False );
