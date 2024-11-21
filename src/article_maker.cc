@@ -4,7 +4,6 @@
 #include "article_maker.hh"
 #include "config.hh"
 #include "folding.hh"
-#include "gddebug.hh"
 #include "globalbroadcaster.hh"
 #include "globalregex.hh"
 #include "htmlescape.hh"
@@ -540,7 +539,7 @@ void ArticleRequest::altSearchFinished()
         bodyRequests.push_back( r );
       }
       catch ( std::exception & e ) {
-        gdWarning( "getArticle request error (%s) in \"%s\"\n", e.what(), activeDict->getName().c_str() );
+        qWarning( "getArticle request error (%s) in \"%s\"", e.what(), activeDict->getName().c_str() );
       }
     }
 
@@ -618,7 +617,7 @@ void ArticleRequest::bodyFinished()
     return;
   }
 
-  GD_DPRINTF( "some body finished" );
+  qDebug( "some body finished" );
 
   bool wasUpdated = false;
 
@@ -628,7 +627,7 @@ void ArticleRequest::bodyFinished()
     if ( bodyRequests.front()->isFinished() ) {
       // Good
 
-      GD_DPRINTF( "one finished." );
+      qDebug( "one finished." );
 
       Dictionary::DataRequest & req = *bodyRequests.front();
 
@@ -718,7 +717,7 @@ void ArticleRequest::bodyFinished()
           }
         }
         catch ( std::exception & e ) {
-          gdWarning( "getDataSlice error: %s\n", e.what() );
+          qWarning( "getDataSlice error: %s", e.what() );
         }
 
         wasUpdated = true;
@@ -728,12 +727,12 @@ void ArticleRequest::bodyFinished()
         //signal finished dictionary for pronounciation
         GlobalBroadcaster::instance()->pronounce_engine.finishDictionary( dictId );
       }
-      GD_DPRINTF( "erasing.." );
+      qDebug( "erasing.." );
       bodyRequests.pop_front();
-      GD_DPRINTF( "erase done.." );
+      qDebug( "erase done.." );
     }
     else {
-      GD_DPRINTF( "one not finished." );
+      qDebug( "one not finished." );
       break;
     }
   }
@@ -976,7 +975,7 @@ void ArticleRequest::compoundSearchNextStep( bool lastSearchSucceeded )
 
   // Look it up
 
-  //  GD_DPRINTF( "Looking up %s\n", qPrintable( currentSplittedWordCompound ) );
+  //  qDebug( "Looking up %s", qPrintable( currentSplittedWordCompound ) );
 
   stemmedWordFinder->expressionMatch( currentSplittedWordCompound,
                                       activeDicts,

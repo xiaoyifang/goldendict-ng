@@ -3,7 +3,6 @@
 
 #include "ftshelpers.hh"
 #include "fulltextsearch.hh"
-#include "gddebug.hh"
 #include "globalregex.hh"
 #include "help.hh"
 #include <QFutureSynchronizer>
@@ -46,7 +45,7 @@ void Indexing::run()
     timerThread->wait();
   }
   catch ( std::exception & ex ) {
-    gdWarning( "Exception occurred while full-text search: %s", ex.what() );
+    qWarning( "Exception occurred while full-text search: %s", ex.what() );
   }
   emit sendNowIndexingName( QString() );
 }
@@ -389,7 +388,7 @@ void FullTextSearchDialog::searchReqFinished()
     std::list< sptr< Dictionary::DataRequest > >::iterator it;
     for ( it = searchReqs.begin(); it != searchReqs.end(); ++it ) {
       if ( ( *it )->isFinished() ) {
-        GD_DPRINTF( "one finished.\n" );
+        qDebug( "one finished." );
 
         QString errorString = ( *it )->getErrorString();
 
@@ -405,7 +404,7 @@ void FullTextSearchDialog::searchReqFinished()
               addSortedHeadwords( allHeadwords, hws );
             }
             catch ( std::exception & e ) {
-              gdWarning( "getDataSlice error: %s\n", e.what() );
+              qWarning( "getDataSlice error: %s", e.what() );
             }
           }
         }
@@ -413,9 +412,9 @@ void FullTextSearchDialog::searchReqFinished()
       }
     }
     if ( it != searchReqs.end() ) {
-      GD_DPRINTF( "erasing..\n" );
+      qDebug( "erasing.." );
       searchReqs.erase( it );
-      GD_DPRINTF( "erase done..\n" );
+      qDebug( "erase done.." );
       continue;
     }
     else {

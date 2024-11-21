@@ -4,7 +4,6 @@
 #include <QDir>
 #include <QTimer>
 #include "externalviewer.hh"
-#include "gddebug.hh"
 
 ExternalViewer::ExternalViewer(
   const char * data, int size, QString const & extension, QString const & viewerCmdLine_, QObject * parent ):
@@ -26,7 +25,7 @@ ExternalViewer::ExternalViewer(
 
   tempFile.close();
 
-  GD_DPRINTF( "%s\n", tempFile.fileName().toLocal8Bit().data() );
+  qDebug( "%s", tempFile.fileName().toLocal8Bit().data() );
 }
 
 void ExternalViewer::start()

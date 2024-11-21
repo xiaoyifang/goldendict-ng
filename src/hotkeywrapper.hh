@@ -16,20 +16,14 @@
 #include "utils.hh"
 
 #ifdef HAVE_X11
-
+  #include <fixx11h.h>
   #include <set>
-
   #include <X11/Xlib.h>
   #include <X11/extensions/record.h>
-  #if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
-    #include <QX11Info>
-  #endif
   #include <X11/Xlibint.h>
-
   #undef Bool
   #undef min
   #undef max
-
 #endif
 
 #ifdef Q_OS_WIN

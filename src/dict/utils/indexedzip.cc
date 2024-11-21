@@ -4,7 +4,6 @@
 #include "indexedzip.hh"
 #include "zipfile.hh"
 #include <zlib.h>
-#include "gddebug.hh"
 #include "utf8.hh"
 #include "iconv.hh"
 #include "wstring_qt.hh"
@@ -67,7 +66,7 @@ bool IndexedZip::loadFile( uint32_t offset, vector< char > & data )
   if ( !ZipFile::readLocalHeader( zip, header ) ) {
     vector< string > zipFileNames;
     zip.getFilenames( zipFileNames );
-    GD_DPRINTF( "Failed to load header" );
+    qDebug( "Failed to load header" );
     string filename;
     if ( zip.getCurrentFile() < zipFileNames.size() ) {
       filename = zipFileNames.at( zip.getCurrentFile() );
@@ -81,7 +80,7 @@ bool IndexedZip::loadFile( uint32_t offset, vector< char > & data )
 
   switch ( header.compressionMethod ) {
     case ZipFile::Uncompressed:
-      GD_DPRINTF( "Uncompressed" );
+      qDebug( "Uncompressed" );
       data.resize( header.uncompressedSize );
       return (size_t)zip.read( &data.front(), data.size() ) == data.size();
 
@@ -111,7 +110,7 @@ bool IndexedZip::loadFile( uint32_t offset, vector< char > & data )
       }
 
       if ( inflate( &stream, Z_FINISH ) != Z_STREAM_END ) {
-        GD_DPRINTF( "Not zstream end!" );
+        qDebug( "Not zstream end!" );
 
         data.clear();
 
@@ -156,7 +155,7 @@ bool IndexedZip::indexFile( BtreeIndexing::IndexedWords & zipFileNames, quint32 
 
   while ( ZipFile::readNextEntry( zip, entry ) ) {
     if ( entry.compressionMethod == ZipFile::Unsupported ) {
-      qWarning( "Zip warning: compression method unsupported -- skipping file \"%s\"\n", entry.fileName.data() );
+      qWarning( "Zip warning: compression method unsupported -- skipping file \"%s\"", entry.fileName.data() );
       continue;
     }
 

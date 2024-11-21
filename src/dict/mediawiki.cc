@@ -9,7 +9,6 @@
 #include <QtXml>
 #include <algorithm>
 #include <list>
-#include "gddebug.hh"
 #include "audiolink.hh"
 #include "langcoder.hh"
 #include "utils.hh"
@@ -156,7 +155,7 @@ MediaWikiWordSearchRequest::MediaWikiWordSearchRequest( wstring const & str,
                                                         QNetworkAccessManager & mgr ):
   isCancelling( false )
 {
-  GD_DPRINTF( "wiki request begin\n" );
+  qDebug( "wiki request begin" );
   QUrl reqUrl( url + "/api.php?action=query&list=allpages&aplimit=40&format=xml" );
 
   GlobalBroadcaster::instance()->addWhitelist( reqUrl.host() );
@@ -180,7 +179,7 @@ MediaWikiWordSearchRequest::MediaWikiWordSearchRequest( wstring const & str,
 
 MediaWikiWordSearchRequest::~MediaWikiWordSearchRequest()
 {
-  GD_DPRINTF( "request end\n" );
+  qDebug( "request end" );
 }
 
 void MediaWikiWordSearchRequest::cancel()
@@ -194,7 +193,7 @@ void MediaWikiWordSearchRequest::cancel()
 
   finish();
 
-  GD_DPRINTF( "cancel the request" );
+  qDebug( "cancel the request" );
 }
 
 void MediaWikiWordSearchRequest::downloadFinished()
@@ -227,7 +226,7 @@ void MediaWikiWordSearchRequest::downloadFinished()
         }
       }
     }
-    GD_DPRINTF( "done.\n" );
+    qDebug( "done." );
   }
   else {
     setErrorString( netReply->errorString() );
@@ -258,11 +257,11 @@ public:
 
     QDomElement const sectionsElement = parseNode.firstChildElement( "sections" );
     if ( sectionsElement.isNull() ) {
-      gdWarning( "MediaWiki: empty table of contents and missing sections element." );
+      qWarning( "MediaWiki: empty table of contents and missing sections element." );
       return;
     }
 
-    gdDebug( "MediaWiki: generating table of contents from the sections element." );
+    qDebug( "MediaWiki: generating table of contents from the sections element." );
     MediaWikiSectionsParser parser;
     parser.generateTableOfContents( sectionsElement );
     articleString.replace( emptyTocPos, emptyTocIndicator.size(), parser.tableOfContents );
@@ -343,17 +342,17 @@ bool MediaWikiSectionsParser::addListLevel( QString const & levelString )
   int const level = levelString.toInt( &convertedToInt );
 
   if ( !convertedToInt ) {
-    gdWarning( "MediaWiki: sections level is not an integer: %s", levelString.toUtf8().constData() );
+    qWarning( "MediaWiki: sections level is not an integer: %s", levelString.toUtf8().constData() );
     return false;
   }
   if ( level <= 0 ) {
-    gdWarning( "MediaWiki: unsupported nonpositive sections level: %s", levelString.toUtf8().constData() );
+    qWarning( "MediaWiki: unsupported nonpositive sections level: %s", levelString.toUtf8().constData() );
     return false;
   }
   if ( level > previousLevel + 1 ) {
-    gdWarning( "MediaWiki: unsupported sections level increase by more than one: from %d to %s",
-               previousLevel,
-               levelString.toUtf8().constData() );
+    qWarning( "MediaWiki: unsupported sections level increase by more than one: from %d to %s",
+              previousLevel,
+              levelString.toUtf8().constData() );
     return false;
   }
 
@@ -466,7 +465,7 @@ MediaWikiArticleRequest::MediaWikiArticleRequest( wstring const & str,
 
 void MediaWikiArticleRequest::addQuery( QNetworkAccessManager & mgr, wstring const & str )
 {
-  gdDebug( "MediaWiki: requesting article %s\n", QString::fromStdU32String( str ).toUtf8().data() );
+  qDebug( "MediaWiki: requesting article %s", QString::fromStdU32String( str ).toUtf8().data() );
 
   QUrl reqUrl( url + "/api.php?action=parse&prop=text|revid|sections&format=xml&redirects" );
 
@@ -490,7 +489,7 @@ void MediaWikiArticleRequest::addQuery( QNetworkAccessManager & mgr, wstring con
 
 void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
 {
-  GD_DPRINTF( "Finished.\n" );
+  qDebug( "Finished." );
 
   if ( isFinished() ) { // Was cancelled
     return;
@@ -693,7 +692,7 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
           }
         }
       }
-      GD_DPRINTF( "done.\n" );
+      qDebug( "done." );
     }
     else {
       setErrorString( netReply->errorString() );
