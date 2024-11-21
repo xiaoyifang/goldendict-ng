@@ -283,7 +283,7 @@ void ZimDictionary::loadIcon() noexcept
     return;
   }
   catch ( zim::EntryNotFound & e ) {
-    qDebug( "ZIM icon not loaded for: %s", dictionaryName.c_str() );
+    qDebug( "ZIM icon not loaded for: %s", dictionaryName );
   }
 }
 
@@ -485,7 +485,7 @@ void ZimDictionary::makeFTSIndex( QAtomicInt & isCancelled )
     return;
   }
 
-  qDebug( "Zim: Building the full-text index for dictionary: %s", getName().c_str() );
+  qDebug( "Zim: Building the full-text index for dictionary: %s", getName() );
   try {
     FtsHelpers::makeFTSIndex( this, isCancelled );
     FTS_index_completed.ref();
@@ -810,7 +810,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
     try {
       //only check zim file.
       if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
-        qDebug( "Zim: Building the index for dictionary: %s", fileName.c_str() );
+        qDebug( "Zim: Building the index for dictionary: %s", fileName );
 
         unsigned articleCount = df.getArticleCount();
         unsigned wordCount    = 0;

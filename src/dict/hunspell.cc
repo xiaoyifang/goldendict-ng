@@ -395,7 +395,7 @@ QList< wstring > suggest( wstring & word, QMutex & hunspellMutex, Hunspell & hun
           suggestion.chop( suggestion.length() - n );
         }
 
-        qDebug( ">>>Sugg: %s", suggestion.toLocal8Bit().data() );
+        qDebug( ">>>Sugg: %s", suggestion );
 
         auto match = cutStem.match( suggestion.trimmed() );
         if ( match.hasMatch() ) {

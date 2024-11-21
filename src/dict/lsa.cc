@@ -572,7 +572,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
           // Remove the extension, no need for that in the index
           e.name = stripExtension( e.name );
 
-          qDebug( "Read filename %s (%u at %u)<", e.name.c_str(), e.samplesLength, e.samplesOffset );
+          qDebug( "Read filename %s (%u at %u)<", e.name, e.samplesLength, e.samplesOffset );
 
           // Insert new entry into an index
 

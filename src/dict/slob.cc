@@ -935,7 +935,7 @@ void SlobDictionary::makeFTSIndex( QAtomicInt & isCancelled )
   }
 
 
-  qDebug( "Slob: Building the full-text index for dictionary: %s", getName().c_str() );
+  qDebug( "Slob: Building the full-text index for dictionary: %s", getName() );
 
   try {
     const auto slob_dic = std::make_unique< SlobDictionary >( getId(), idxFileName, getDictionaryFilenames() );
@@ -1267,7 +1267,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
         SlobFile sf;
 
-        qDebug( "Slob: Building the index for dictionary: %s", fileName.c_str() );
+        qDebug( "Slob: Building the index for dictionary: %s", fileName );
 
         sf.open( firstName );
 

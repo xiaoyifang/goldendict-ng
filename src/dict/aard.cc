@@ -565,7 +565,7 @@ void AardDictionary::makeFTSIndex( QAtomicInt & isCancelled )
   }
 
 
-  qDebug( "Aard: Building the full-text index for dictionary: %s", getName().c_str() );
+  qDebug( "Aard: Building the full-text index for dictionary: %s", getName() );
 
   try {
     FtsHelpers::makeFTSIndex( this, isCancelled );
@@ -779,7 +779,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
     if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
       try {
 
-        qDebug( "Aard: Building the index for dictionary: %s", fileName.c_str() );
+        qDebug( "Aard: Building the index for dictionary: %s", fileName );
 
         {
           QFileInfo info( QString::fromUtf8( fileName.c_str() ) );

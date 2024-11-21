@@ -222,7 +222,7 @@ void SdictDictionary::loadIcon() noexcept
 
 string SdictDictionary::convert( string const & in )
 {
-  //    qDebug( "Source>>>>>>>>>>: %s\n\n", in.c_str() );
+  //    qDebug( "Source>>>>>>>>>>: %s\n\n", in );
 
   string inConverted;
 
@@ -373,7 +373,7 @@ void SdictDictionary::makeFTSIndex( QAtomicInt & isCancelled )
   }
 
 
-  qDebug( "SDict: Building the full-text index for dictionary: %s", getName().c_str() );
+  qDebug( "SDict: Building the full-text index for dictionary: %s", getName() );
 
   try {
     FtsHelpers::makeFTSIndex( this, isCancelled );
@@ -672,7 +672,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
     if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
       try {
-        qDebug( "SDict: Building the index for dictionary: %s", fileName.c_str() );
+        qDebug( "SDict: Building the index for dictionary: %s", fileName );
 
         File::Index df( fileName, QIODevice::ReadOnly );
 

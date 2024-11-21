@@ -25,7 +25,7 @@ ExternalViewer::ExternalViewer(
 
   tempFile.close();
 
-  qDebug( "%s", tempFile.fileName().toLocal8Bit().data() );
+  qDebug( "%s", tempFile.fileName() );
 }
 
 void ExternalViewer::start()

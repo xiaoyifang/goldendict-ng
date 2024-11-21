@@ -425,7 +425,7 @@ void BglDictionary::makeFTSIndex( QAtomicInt & isCancelled )
   }
 
 
-  qDebug( "Bgl: Building the full-text index for dictionary: %s", getName().c_str() );
+  qDebug( "Bgl: Building the full-text index for dictionary: %s", getName() );
 
   try {
     FtsHelpers::makeFTSIndex( this, isCancelled );
@@ -992,7 +992,7 @@ protected:
 
 void ResourceHandler::handleBabylonResource( string const & filename, char const * data, size_t size )
 {
-  //qDebug( "Handling resource file %s (%u bytes)", filename.c_str(), size );
+  //qDebug( "Handling resource file %s (%u bytes)", filename, size );
 
   vector< unsigned char > compressedData( compressBound( size ) );
 
@@ -1050,7 +1050,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
     if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
       // Building the index
 
-      qDebug( "Bgl: Building the index for dictionary: %s", fileName.c_str() );
+      qDebug( "Bgl: Building the index for dictionary: %s", fileName );
 
       try {
         Babylon b( fileName );

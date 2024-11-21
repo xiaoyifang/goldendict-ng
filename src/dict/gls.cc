@@ -553,7 +553,7 @@ void GlsDictionary::makeFTSIndex( QAtomicInt & isCancelled )
   }
 
 
-  qDebug( "Gls: Building the full-text index for dictionary: %s", getName().c_str() );
+  qDebug( "Gls: Building the full-text index for dictionary: %s", getName() );
 
   try {
     FtsHelpers::makeFTSIndex( this, isCancelled );
@@ -1081,7 +1081,7 @@ void GlsResourceRequest::run()
   try {
     string n = dict.getContainingFolder().toStdString() + Utils::Fs::separator() + resourceName;
 
-    qDebug( "gls resource name is %s", n.c_str() );
+    qDebug( "gls resource name is %s", n );
 
     try {
       QMutexLocker _( &dataMutex );

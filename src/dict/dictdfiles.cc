@@ -455,7 +455,7 @@ void DictdDictionary::makeFTSIndex( QAtomicInt & isCancelled )
   }
 
 
-  qDebug( "DictD: Building the full-text index for dictionary: %s", getName().c_str() );
+  qDebug( "DictD: Building the full-text index for dictionary: %s", getName() );
 
   try {
     FtsHelpers::makeFTSIndex( this, isCancelled );
@@ -588,7 +588,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         // Building the index
         string dictionaryName = nameFromFileName( dictFiles[ 0 ] );
 
-        qDebug( "DictD: Building the index for dictionary: %s", dictionaryName.c_str() );
+        qDebug( "DictD: Building the index for dictionary: %s", dictionaryName );
 
         initializing.indexingDictionary( dictionaryName );
 

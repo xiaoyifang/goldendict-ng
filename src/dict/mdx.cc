@@ -447,7 +447,7 @@ void MdxDictionary::makeFTSIndex( QAtomicInt & isCancelled )
   //    return;
 
 
-  qDebug( "MDict: Building the full-text index for dictionary: %s", getName().c_str() );
+  qDebug( "MDict: Building the full-text index for dictionary: %s", getName() );
 
   try {
     auto _dict = std::make_shared< MdxDictionary >( this->getId(), idxFileName, this->getDictionaryFilenames() );
@@ -1342,7 +1342,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
     if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( dictFiles, indexFile ) ) {
       // Building the index
 
-      qDebug( "MDict: Building the index for dictionary: %s", fileName.c_str() );
+      qDebug( "MDict: Building the index for dictionary: %s", fileName );
 
       MdictParser parser;
       list< sptr< MdictParser > > mddParsers;

@@ -1105,7 +1105,7 @@ void DslDictionary::makeFTSIndex( QAtomicInt & isCancelled )
   }
 
 
-  qDebug( "Dsl: Building the full-text index for dictionary: %s", getName().c_str() );
+  qDebug( "Dsl: Building the full-text index for dictionary: %s", getName() );
 
   try {
     FtsHelpers::makeFTSIndex( this, isCancelled );
@@ -1608,7 +1608,7 @@ void DslResourceRequest::run()
 
   string n = dict.getContainingFolder().toStdString() + Utils::Fs::separator() + resourceName;
 
-  qDebug( "dsl resource name is %s", n.c_str() );
+  qDebug( "dsl resource name is %s", n );
 
   try {
     try {
@@ -1874,7 +1874,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
               chunks.addToBlock( &sz, sizeof( uint32_t ) );
 
               for ( const auto & i : abrv ) {
-                //              qDebug( "%s:%s", i->first.c_str(), i->second.c_str() );
+                //              qDebug( "%s:%s", i->first.c_str(), i->second );
 
                 sz = i.first.size();
                 chunks.addToBlock( &sz, sizeof( uint32_t ) );
@@ -1931,7 +1931,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
             uint32_t articleOffset = curOffset;
 
-            //qDebug( "Headword: %ls", curString.c_str() );
+            //qDebug( "Headword: %ls", curString );
 
             // More headwords may follow
 

@@ -413,7 +413,7 @@ void EpwingDictionary::makeFTSIndex( QAtomicInt & isCancelled )
     return;
 
 
-  qDebug( "Epwing: Building the full-text index for dictionary: %s", getName().c_str() );
+  qDebug( "Epwing: Building the full-text index for dictionary: %s", getName() );
 
   try {
     FtsHelpers::makeFTSIndex( this, isCancelled );

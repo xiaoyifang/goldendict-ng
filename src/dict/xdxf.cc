@@ -376,7 +376,7 @@ void XdxfDictionary::makeFTSIndex( QAtomicInt & isCancelled )
   }
 
 
-  qDebug( "Xdxf: Building the full-text index for dictionary: %s", getName().c_str() );
+  qDebug( "Xdxf: Building the full-text index for dictionary: %s", getName() );
 
   try {
     FtsHelpers::makeFTSIndex( this, isCancelled );
@@ -957,7 +957,7 @@ void XdxfResourceRequest::run()
 
   string n = dict.getContainingFolder().toStdString() + Utils::Fs::separator() + resourceName;
 
-  qDebug( "xdxf resource name is %s", n.c_str() );
+  qDebug( "xdxf resource name is %s", n );
 
   try {
     try {
@@ -1057,7 +1057,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
         // Building the index
 
-        qDebug( "Xdxf: Building the index for dictionary: %s", fileName.c_str() );
+        qDebug( "Xdxf: Building the index for dictionary: %s", fileName );
 
         //initializing.indexingDictionary( nameFromFileName( dictFiles[ 0 ] ) );
 
@@ -1146,7 +1146,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
                       chunks.addToBlock( n.data(), n.size() );
                     }
                     else {
-                      qDebug( "Warning: duplicate full_name in %s", dictFiles[ 0 ].c_str() );
+                      qDebug( "Warning: duplicate full_name in %s", dictFiles[ 0 ] );
                     }
                   }
                   else if ( stream.name() == u"description" ) {
@@ -1170,7 +1170,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
                       chunks.addToBlock( n.data(), n.size() );
                     }
                     else {
-                      qDebug( "Warning: duplicate description in %s", dictFiles[ 0 ].c_str() );
+                      qDebug( "Warning: duplicate description in %s", dictFiles[ 0 ] );
                     }
                   }
                   else if ( stream.name() == u"languages" ) {

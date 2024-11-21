@@ -399,7 +399,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       string indexFile = indicesDir + dictId;
 
       if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
-        qDebug( "Zips: Building the index for dictionary: %s", fileName.c_str() );
+        qDebug( "Zips: Building the index for dictionary: %s", fileName );
 
         File::Index idx( indexFile, QIODevice::WriteOnly );
         IdxHeader idxHeader;
