@@ -3,7 +3,6 @@
 
 #pragma once
 
-#include <vector>
 #include "dictionary.hh"
 
 // Support for Belarusian transliteration

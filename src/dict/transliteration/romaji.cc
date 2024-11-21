@@ -1,7 +1,9 @@
 #include "romaji.hh"
 #include <QCoreApplication>
 
-namespace Romaji {
+namespace RomajiTranslit {
+
+using std::vector;
 
 class HepburnHiragana: public Transliteration::Table
 {

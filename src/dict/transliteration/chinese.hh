@@ -3,8 +3,6 @@
 
 #pragma once
 
-#include <map>
-#include "config.hh"
 #include "dictionary.hh"
 
 /// Chinese character conversion support.

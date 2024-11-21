@@ -1,7 +1,6 @@
 #pragma once
 
 
-#include <vector>
 #include "transliteration.hh"
 
 // Support for Belarusian transliteration
