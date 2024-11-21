@@ -198,24 +198,22 @@ public:
 
   ~X11GrabUngrabErrorHandler()
   {
-    #if QT_VERSION < 0x060000
-    Display * displayID = QX11Info::display();
-    #else
+
     QNativeInterface::QX11Application * x11AppInfo = qApp->nativeInterface< QNativeInterface::QX11Application >();
-    Display * displayID                            = x11AppInfo->display();
-    #endif
+
+    Display * displayID  = x11AppInfo->display();
+
     XFlush( displayID );
     (void)XSetErrorHandler( previousErrorHandler_ );
   }
 
   bool isError() const
   {
-    #if QT_VERSION < 0x060000
-    Display * displayID = QX11Info::display();
-    #else
+
     QNativeInterface::QX11Application * x11AppInfo = qApp->nativeInterface< QNativeInterface::QX11Application >();
-    Display * displayID                            = x11AppInfo->display();
-    #endif
+
+    Display * displayID = x11AppInfo->display();
+
     XFlush( displayID );
     return error;
   }
@@ -235,12 +233,11 @@ HotkeyWrapper::GrabbedKeys::iterator HotkeyWrapper::grabKey( quint32 keyCode, qu
 
 
   if ( result.second ) {
-    #if QT_VERSION < 0x060000
-    Display * displayID = QX11Info::display();
-    #else
+
     QNativeInterface::QX11Application * x11AppInfo = qApp->nativeInterface< QNativeInterface::QX11Application >();
-    Display * displayID                            = x11AppInfo->display();
-    #endif
+
+    Display * displayID = x11AppInfo->display();
+
     X11GrabUngrabErrorHandler errorHandler;
     XGrabKey( displayID, keyCode, modifiers, DefaultRootWindow( displayID ), True, GrabModeAsync, GrabModeAsync );
 
@@ -255,12 +252,10 @@ HotkeyWrapper::GrabbedKeys::iterator HotkeyWrapper::grabKey( quint32 keyCode, qu
 
 void HotkeyWrapper::ungrabKey( GrabbedKeys::iterator i )
 {
-    #if QT_VERSION < 0x060000
-  Display * displayID = QX11Info::display();
-    #else
+
   QNativeInterface::QX11Application * x11AppInfo = qApp->nativeInterface< QNativeInterface::QX11Application >();
-  Display * displayID                            = x11AppInfo->display();
-    #endif
+
+  Display * displayID = x11AppInfo->display();
   X11GrabUngrabErrorHandler errorHandler;
   XUngrabKey( displayID, i->first, i->second, XDefaultRootWindow( displayID ) );
 
@@ -283,25 +278,17 @@ quint32 HotkeyWrapper::nativeKey( int key )
       keySymName = QKeySequence( key ).toString();
       break;
   }
-    #if QT_VERSION < 0x060000
-  Display * displayID = QX11Info::display();
-    #else
+
   QNativeInterface::QX11Application * x11AppInfo = qApp->nativeInterface< QNativeInterface::QX11Application >();
-  Display * displayID                            = x11AppInfo->display();
-    #endif
-  Display * display = displayID;
+
+  Display * display = x11AppInfo->display();
   return XKeysymToKeycode( display, XStringToKeysym( keySymName.toLatin1().data() ) );
 }
 
 void HotkeyWrapper::unregister()
 {
-    #if QT_VERSION < 0x060000
-  Display * displayID = QX11Info::display();
-    #else
   QNativeInterface::QX11Application * x11AppInfo = qApp->nativeInterface< QNativeInterface::QX11Application >();
-  Display * displayID                            = x11AppInfo->display();
-    #endif
-  Display * display = displayID;
+  Display * display = x11AppInfo->display();
 
   XRecordDisableContext( display, recordContext );
   XSync( display, False );
