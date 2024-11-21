@@ -930,9 +930,7 @@ void StardictDictionary::loadArticle( uint32_t address, string & headword, strin
         entrySize = size;
       }
       else if ( !size ) {
-        qWarning( "Stardict: short entry for the word %s encountered in \"%s\".",
-                  headword.c_str(),
-                  getName().c_str() );
+        qWarning( "Stardict: short entry for the word %s encountered in \"%s\".", headword.c_str(), getName().c_str() );
         break;
       }
 
@@ -1132,9 +1130,7 @@ void StardictDictionary::makeFTSIndex( QAtomicInt & isCancelled )
     FTS_index_completed.ref();
   }
   catch ( std::exception & ex ) {
-    qWarning( "Stardict: Failed building full-text search index for \"%s\", reason: %s",
-              getName().c_str(),
-              ex.what() );
+    qWarning( "Stardict: Failed building full-text search index for \"%s\", reason: %s", getName().c_str(), ex.what() );
     QFile::remove( ftsIdxName.c_str() );
   }
 }
