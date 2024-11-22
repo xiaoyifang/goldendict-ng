@@ -510,7 +510,7 @@ int main( int argc, char ** argv )
 
   if ( gdcl.notts ) {
     cfg.notts = true;
-#ifndef NO_TTS_SUPPORT
+#ifdef TTS_SUPPORT
     cfg.voiceEngines.clear();
 #endif
   }

@@ -800,7 +800,7 @@ Class load()
     // Upgrading
     c.dictServers = makeDefaultDictServers();
   }
-#ifndef NO_TTS_SUPPORT
+#ifdef TTS_SUPPORT
   QDomNode ves = root.namedItem( "voiceEngines" );
 
   if ( !ves.isNull() ) {
@@ -1684,7 +1684,7 @@ void save( Class const & c )
       p.setAttributeNode( icon );
     }
   }
-#ifndef NO_TTS_SUPPORT
+#ifdef TTS_SUPPORT
   {
     QDomNode ves = dd.createElement( "voiceEngines" );
     root.appendChild( ves );

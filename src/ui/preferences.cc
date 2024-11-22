@@ -390,7 +390,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 #ifndef MAKE_ZIM_SUPPORT
   ui.allowZim->hide();
 #endif
-#ifdef NO_EPWING_SUPPORT
+#ifndef EPWING_SUPPORT
   ui.allowEpwing->hide();
 #endif
   ui.maxDictionarySize->setValue( p.fts.maxDictionarySize );

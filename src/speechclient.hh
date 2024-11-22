@@ -1,5 +1,5 @@
 #pragma once
-#ifndef NO_TTS_SUPPORT
+#ifdef TTS_SUPPORT
 
   #include <QObject>
   #include "config.hh"

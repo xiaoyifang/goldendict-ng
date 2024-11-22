@@ -1,7 +1,7 @@
 /* This file is (c) 2013 Timon Wong <timon86.wang@gmail.com>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 #pragma once
-#ifndef NO_TTS_SUPPORT
+#ifdef TTS_SUPPORT
 
   #include "dictionary.hh"
   #include "config.hh"

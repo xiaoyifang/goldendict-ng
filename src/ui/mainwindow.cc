@@ -3,7 +3,7 @@
 
 #include <Qt>
 #include <QScopeGuard>
-#ifndef NO_EPWING_SUPPORT
+#ifdef EPWING_SUPPORT
   #include "dict/epwing_book.hh"
 #endif
 
@@ -209,7 +209,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
                                                            + " GoldenDict/WebEngine" );
   }
 
-#ifndef NO_EPWING_SUPPORT
+#ifdef EPWING_SUPPORT
   Epwing::initialize();
 #endif
 
@@ -1173,7 +1173,7 @@ MainWindow::~MainWindow()
     scanPopup = nullptr;
   }
 
-#ifndef NO_EPWING_SUPPORT
+#ifdef EPWING_SUPPORT
   Epwing::finalize();
 #endif
 }

@@ -16,7 +16,7 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg ):
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
   chineseConversion( new ChineseConversion( this, cfg.transliteration.chinese ) ),
 #endif
-#ifndef NO_TTS_SUPPORT
+#ifdef TTS_SUPPORT
   textToSpeechSource( nullptr ),
 #endif
   itemDelegate( new QItemDelegate( this ) ),
@@ -129,7 +129,7 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg ):
   ui.forvoLanguageCodes->setText( forvo.languageCodes );
 
   // Text to speech
-#ifndef NO_TTS_SUPPORT
+#ifdef TTS_SUPPORT
   if ( !cfg.notts ) {
     textToSpeechSource = new TextToSpeechSource( this, cfg.voiceEngines );
     ui.tabWidget->addTab( textToSpeechSource, QIcon( ":/icons/text2speech.svg" ), tr( "Text to Speech" ) );
@@ -325,7 +325,7 @@ void Sources::on_removeProgram_clicked()
   }
 }
 
-#ifndef NO_TTS_SUPPORT
+#ifdef TTS_SUPPORT
 Config::VoiceEngines Sources::getVoiceEngines() const
 {
   if ( !textToSpeechSource )

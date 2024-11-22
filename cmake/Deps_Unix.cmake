@@ -1,5 +1,4 @@
 #### Various workarounds
-
 if (APPLE)
     # old & new homebrew's include paths
     target_include_directories(${GOLDENDICT} PRIVATE /usr/local/include /opt/homebrew/include)
@@ -29,25 +28,20 @@ endif ()
 ##### Finding packages from package manager
 
 find_package(PkgConfig REQUIRED)
-find_package(ZLIB REQUIRED)
 find_package(BZip2 REQUIRED)
-
-# Consider all PkgConfig dependencies as one
-pkg_check_modules(PKGCONFIG_DEPS IMPORTED_TARGET
+# Import all PkgConfig dependencies as one
+pkg_check_modules(DEPS REQUIRED IMPORTED_TARGET
         hunspell
+        liblzma
         lzo2
         opencc
         vorbis # .ogg
         vorbisfile
-        liblzma
         xapian-core
+        zlib
 )
 
-target_link_libraries(${GOLDENDICT} PRIVATE
-        PkgConfig::PKGCONFIG_DEPS
-        BZip2::BZip2
-        ZLIB::ZLIB
-)
+target_link_libraries(${GOLDENDICT} PRIVATE PkgConfig::DEPS BZip2::BZip2)
 
 # On FreeBSD, there are two iconv, libc iconv & GNU libiconv.
 # The system one is good enough, the following is a workaround to use libc iconv on freeBSD.
@@ -88,7 +82,7 @@ if (WITH_ZIM)
                 COMMAND_ERROR_IS_FATAL ANY)
         message(STATUS "Found correct homebrew icu path -> ${ICU_REQUIRED_BY_ZIM_PREFIX}")
         set(ENV{PKG_CONFIG_PATH} "$ENV{PKG_CONFIG_PATH}:${ICU_REQUIRED_BY_ZIM_PREFIX}/lib/pkgconfig")
-        message(STATUS "Updated pkg_config_path -> $ENV{PKG_CONFIG_PATH}:${ICU_REQUIRED_BY_ZIM_PREFIX}/lib/pkgconfig")
+        message(STATUS "Updated pkg_config_path -> $ENV{PKG_CONFIG_PATH}")
 
         # icu4c as transitive dependency of libzim may not be automatically copied into app bundle
         # so we manually discover the icu4c from homebrew, then find the relevent dylibs
