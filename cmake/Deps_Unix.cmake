@@ -28,7 +28,7 @@ endif ()
 ##### Finding packages from package manager
 
 find_package(PkgConfig REQUIRED)
-
+find_package(BZip2 REQUIRED)
 # Import all PkgConfig dependencies as one
 pkg_check_modules(DEPS REQUIRED IMPORTED_TARGET
         bzip2
@@ -42,7 +42,7 @@ pkg_check_modules(DEPS REQUIRED IMPORTED_TARGET
         zlib
 )
 
-target_link_libraries(${GOLDENDICT} PRIVATE PkgConfig::DEPS)
+target_link_libraries(${GOLDENDICT} PRIVATE PkgConfig::DEPS BZip2::BZip2)
 
 # On FreeBSD, there are two iconv, libc iconv & GNU libiconv.
 # The system one is good enough, the following is a workaround to use libc iconv on freeBSD.
