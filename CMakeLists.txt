@@ -9,17 +9,12 @@ option(WITH_TTS "enable QTexttoSpeech support" OFF)
 option(USE_SYSTEM_FMT "use system fmt instead of bundled one" OFF)
 option(USE_SYSTEM_TOML "use system toml++ instead of bundled one" OFF)
 
-## Change binary & resources folder to parallel install with original GD.
-## This flag should be avoided because it leads to small regressions:
-## 1. There are personal scripts assuming the binary name to be "goldendict" -> require everyone to change the name in their script
-## 2. There are icon themes that assuming the icon name to be "goldendict" -> invalidate the GD icon when using a icon theme
-## 3. There are dictionary packages that install files to "/usr/share/goldendict/content" -> nullify the auto dict discovery
-option(USE_ALTERNATIVE_NAME "Force the name goldendict-ng " OFF)
-
-option(WITH_VCPKG_BREAKPAD "build with Breakpad support for VCPKG build only" OFF)
+## This should be avoided because of small regressions, as some scripts and icons themes assume the binary name and resources folder to be `goldendict`
+option(USE_ALTERNATIVE_NAME "For Linux, change the binary name and resource folder to goldendict-ng to parallel install with the original GD" OFF)
 
 # vcpkg handling code, must be placed before project()
 if (WIN32)
+    option(WITH_VCPKG_BREAKPAD "build with Breakpad support for VCPKG build only" OFF)
     if (DEFINED CMAKE_TOOLCHAIN_FILE)
         message(STATUS "Using toolchain file: ${CMAKE_TOOLCHAIN_FILE}")
     else ()
@@ -34,11 +29,9 @@ if (WIN32)
         set(VCPKG_MANIFEST_MODE OFF CACHE BOOL "disable existing manifest mode caused by the existrance of vcpkg.json" FORCE)
         set(CMAKE_TOOLCHAIN_FILE "${CMAKE_BINARY_DIR}/_deps/vcpkg-export-src/scripts/buildsystems/vcpkg.cmake")
     endif ()
-endif ()
-
-
-if (WITH_VCPKG_BREAKPAD)
-    list(APPEND VCPKG_MANIFEST_FEATURES "breakpad")
+    if (WITH_VCPKG_BREAKPAD)
+        list(APPEND VCPKG_MANIFEST_FEATURES "breakpad")
+    endif ()
 endif ()
 
 include(FeatureSummary)
