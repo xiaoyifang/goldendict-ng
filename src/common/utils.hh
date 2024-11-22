@@ -371,6 +371,7 @@ const QMap< QStringConverter::Encoding, QTextCodec::Encoding > encodingMap = {
 };
 }
 
-QTextCodec::Encoding detectEncoding( QByteArray & ba, char16_t expectedFirstCharacter = 0 );
+QTextCodec::Encoding detectCodec( QByteArray & ba, char16_t expectedFirstCharacter = 0 );
+QStringConverter::Encoding detectEncoding( QByteArray & ba, char16_t expectedFirstCharacter = 0 );
 
 } // namespace Utils

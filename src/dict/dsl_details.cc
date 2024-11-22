@@ -873,7 +873,7 @@ DslScanner::DslScanner( string const & fileName ):
 
   // Note that .dsl format always starts with "#NAME"
 
-  codec = Utils::detectEncoding( { firstBytes, firstBytesSize }, '#' );
+  codec = Utils::detectCodec( { firstBytes, firstBytesSize }, '#' );
 
   qDebug() << "DSL encoding ->" << codec->name();
 

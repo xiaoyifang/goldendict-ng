@@ -48,7 +48,7 @@ QString unescapeAmps( QString const & str )
   return result;
 }
 
-QTextCodec::Encoding detectEncoding( QByteArray & ba, char16_t expectedFirstCharacter = 0 )
+QTextCodec::Encoding detectCodec( QByteArray & ba, char16_t expectedFirstCharacter = 0 )
 {
   QStringConverter::Encoding detectedEncoding = QStringConverter::encodingForData( data, expectedFirstCharacter );
   // mapping the encoding
@@ -57,6 +57,17 @@ QTextCodec::Encoding detectEncoding( QByteArray & ba, char16_t expectedFirstChar
   }
   // default utf8
   return QTextCodec::Utf8;
+}
+
+QStringConverter::Encoding detectEncoding( QByteArray & ba, char16_t expectedFirstCharacter = 0 )
+{
+  QStringConverter::Encoding detectedEncoding = QStringConverter::encodingForData( data, expectedFirstCharacter );
+  // mapping the encoding
+  if ( detectedEncoding.has_value() ) {
+    return detectedEncoding.value();
+  }
+  // default utf8
+  return QStringConverter::Utf8;
 }
 } // namespace Utils
 
