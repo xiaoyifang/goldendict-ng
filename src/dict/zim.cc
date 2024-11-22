@@ -161,11 +161,6 @@ public:
   ~ZimDictionary() = default;
 
 
-  map< Dictionary::Property, string > getProperties() noexcept override
-  {
-    return {};
-  }
-
   unsigned long getArticleCount() noexcept override
   {
     return idxHeader.articleCount;

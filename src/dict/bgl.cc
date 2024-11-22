@@ -173,11 +173,6 @@ public:
 
   BglDictionary( string const & id, string const & indexFile, string const & dictionaryFile );
 
-  map< Dictionary::Property, string > getProperties() noexcept override
-  {
-    return map< Dictionary::Property, string >();
-  }
-
   unsigned long getArticleCount() noexcept override
   {
     return idxHeader.articleCount;

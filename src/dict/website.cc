@@ -52,12 +52,6 @@ public:
     dictionaryDescription = urlTemplate_;
   }
 
-
-  map< Property, string > getProperties() noexcept override
-  {
-    return map< Property, string >();
-  }
-
   unsigned long getArticleCount() noexcept override
   {
     return 0;
