@@ -30,13 +30,6 @@ using std::string;
 using gd::wstring;
 using std::map;
 
-enum Property {
-  Author,
-  Copyright,
-  Description,
-  Email
-};
-
 DEF_EX( Ex, "Dictionary error", std::exception )
 DEF_EX( exIndexOutOfRange, "The supplied index is out of range", Ex )
 DEF_EX( exSliceOutOfRange, "The requested data slice is out of range", Ex )
@@ -379,10 +372,6 @@ public:
   {
     metadata_enable_fts = _enable_FTS;
   }
-
-  /// Returns all the available properties, like the author's name, copyright,
-  /// description etc. All strings are in utf8.
-  virtual map< Property, string > getProperties() noexcept = 0;
 
   /// Returns the features the dictionary possess. See the Feature enum for
   /// their list.

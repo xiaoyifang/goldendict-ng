@@ -165,12 +165,6 @@ WHERE {
     }
   }
 
-
-  map< Property, string > getProperties() noexcept override
-  {
-    return {};
-  }
-
   unsigned long getArticleCount() noexcept override
   {
     return 0;

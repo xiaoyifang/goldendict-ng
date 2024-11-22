@@ -28,8 +28,6 @@ public:
 
   virtual string getName() noexcept;
 
-  virtual map< Dictionary::Property, string > getProperties() noexcept;
-
   virtual unsigned long getArticleCount() noexcept;
 
   virtual unsigned long getWordCount() noexcept;

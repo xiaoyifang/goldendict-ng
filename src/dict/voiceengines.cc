@@ -47,10 +47,6 @@ public:
     return voiceEngine.name.toUtf8().data();
   }
 
-  map< Property, string > getProperties() noexcept override
-  {
-    return map< Property, string >();
-  }
 
   unsigned long getArticleCount() noexcept override
   {

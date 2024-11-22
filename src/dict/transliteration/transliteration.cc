@@ -26,11 +26,6 @@ string BaseTransliterationDictionary::getName() noexcept
   return name;
 }
 
-map< Dictionary::Property, string > BaseTransliterationDictionary::getProperties() noexcept
-{
-  return map< Dictionary::Property, string >();
-}
-
 unsigned long BaseTransliterationDictionary::getArticleCount() noexcept
 {
   return 0;
