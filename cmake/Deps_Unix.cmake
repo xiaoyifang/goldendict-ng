@@ -31,7 +31,6 @@ find_package(PkgConfig REQUIRED)
 find_package(BZip2 REQUIRED)
 # Import all PkgConfig dependencies as one
 pkg_check_modules(DEPS REQUIRED IMPORTED_TARGET
-        bzip2
         hunspell
         liblzma
         lzo2
