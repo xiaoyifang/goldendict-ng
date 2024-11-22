@@ -34,7 +34,7 @@
 #include "dict/transliteration/romaji.hh"
 #include "dict/transliteration/russian.hh"
 
-#ifndef NO_EPWING_SUPPORT
+#ifdef EPWING_SUPPORT
   #include "dict/epwing.hh"
 #endif
 
@@ -83,7 +83,7 @@ LoadDictionaries::LoadDictionaries( Config::Class const & cfg ):
               << "*.zim"
               << "*.zimaa"
 #endif
-#ifndef NO_EPWING_SUPPORT
+#ifdef EPWING_SUPPORT
               << "*catalogs"
 #endif
     ;
@@ -181,7 +181,7 @@ void LoadDictionaries::handlePath( Config::Path const & path )
 #ifdef MAKE_ZIM_SUPPORT
   addDicts( Zim::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this, maxHeadwordToExpand ) );
 #endif
-#ifndef NO_EPWING_SUPPORT
+#ifdef EPWING_SUPPORT
   addDicts( Epwing::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
 #endif
 }
@@ -274,7 +274,7 @@ void loadDictionaries( QWidget * parent,
   addDicts( Forvo::makeDictionaries( loadDicts, cfg.forvo, dictNetMgr ) );
   addDicts( Lingua::makeDictionaries( loadDicts, cfg.lingua, dictNetMgr ) );
   addDicts( Programs::makeDictionaries( cfg.programs ) );
-#ifndef NO_TTS_SUPPORT
+#ifdef TTS_SUPPORT
   addDicts( VoiceEngines::makeDictionaries( cfg.voiceEngines ) );
 #endif
   addDicts( DictServer::makeDictionaries( cfg.dictServers ) );

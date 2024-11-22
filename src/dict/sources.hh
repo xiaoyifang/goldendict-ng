@@ -295,7 +295,7 @@ public:
   {
     return programsModel.getCurrentPrograms();
   }
-#ifndef NO_TTS_SUPPORT
+#ifdef TTS_SUPPORT
   Config::VoiceEngines getVoiceEngines() const;
 #endif
   Config::Hunspell getHunspell() const;
@@ -317,7 +317,7 @@ private:
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
   ChineseConversion * chineseConversion;
 #endif
-#ifndef NO_TTS_SUPPORT
+#ifdef TTS_SUPPORT
   TextToSpeechSource * textToSpeechSource;
 #endif
   QItemDelegate * itemDelegate;

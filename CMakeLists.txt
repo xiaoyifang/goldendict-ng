@@ -197,12 +197,12 @@ if (WITH_FFMPEG_PLAYER)
     target_compile_definitions(${GOLDENDICT} PUBLIC MAKE_FFMPEG_PLAYER)
 endif ()
 
-if (NOT WITH_TTS)
-    target_compile_definitions(${GOLDENDICT} PUBLIC NO_TTS_SUPPORT)
+if (WITH_TTS)
+    target_compile_definitions(${GOLDENDICT} PUBLIC TTS_SUPPORT)
 endif ()
 
-if (NOT WITH_EPWING_SUPPORT)
-    target_compile_definitions(${GOLDENDICT} PUBLIC NO_EPWING_SUPPORT)
+if (WITH_EPWING_SUPPORT)
+    target_compile_definitions(${GOLDENDICT} PUBLIC EPWING_SUPPORT)
 endif ()
 
 if (WITH_ZIM)
