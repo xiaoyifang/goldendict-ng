@@ -122,7 +122,7 @@ class StardictDictionary: public BtreeIndexing::BtreeDictionary
   File::Index idx;
   IdxHeader idxHeader;
   string sameTypeSequence;
-  std::unique_ptr<ChunkedStorage::Reader> chunks;
+  std::unique_ptr< ChunkedStorage::Reader > chunks;
   QMutex dzMutex;
   dictData * dz;
   QMutex resourceZipMutex;
