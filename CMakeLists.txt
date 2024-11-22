@@ -151,11 +151,9 @@ target_link_libraries(${GOLDENDICT} PRIVATE
         Qt6::WebEngineWidgets
         Qt6::Widgets
         Qt6::Svg
+        $<$<BOOL:${WITH_TTS}>:Qt6::TextToSpeech>
 )
 
-if (WITH_TTS)
-    target_link_libraries(${GOLDENDICT} PRIVATE Qt6::TextToSpeech)
-endif ()
 
 target_include_directories(${GOLDENDICT} PRIVATE
         ${PROJECT_SOURCE_DIR}/thirdparty/qtsingleapplication/src
@@ -185,33 +183,14 @@ target_compile_definitions(${GOLDENDICT} PRIVATE
 target_compile_definitions(${GOLDENDICT} PUBLIC
         MAKE_QTMULTIMEDIA_PLAYER
         MAKE_CHINESE_CONVERSION_SUPPORT
+        $<$<BOOL:${WIN32}>:__WIN32>
+        $<$<BOOL:WITH_FFMPEG_PLAYER>:MAKE_FFMPEG_PLAYER>
+        $<$<BOOL:WITH_TTS>:TTS_SUPPORT>
+        $<$<BOOL:WITH_EPWING_SUPPORT>:EPWING_SUPPORT>
+        $<$<BOOL:WITH_ZIM>:MAKE_ZIM_SUPPORT>
+        $<$<BOOL:WITH_VCPKG_BREAKPAD>:USE_BREAKPAD>
 )
 
-if (WIN32)
-    target_compile_definitions(${GOLDENDICT} PUBLIC
-            __WIN32
-    )
-endif ()
-
-if (WITH_FFMPEG_PLAYER)
-    target_compile_definitions(${GOLDENDICT} PUBLIC MAKE_FFMPEG_PLAYER)
-endif ()
-
-if (WITH_TTS)
-    target_compile_definitions(${GOLDENDICT} PUBLIC TTS_SUPPORT)
-endif ()
-
-if (WITH_EPWING_SUPPORT)
-    target_compile_definitions(${GOLDENDICT} PUBLIC EPWING_SUPPORT)
-endif ()
-
-if (WITH_ZIM)
-    target_compile_definitions(${GOLDENDICT} PUBLIC MAKE_ZIM_SUPPORT)
-endif ()
-
-if (WITH_VCPKG_BREAKPAD)
-    target_compile_definitions(${GOLDENDICT} PUBLIC USE_BREAKPAD)
-endif ()
 
 #### libraries linking && includes for Win or Unix
 
