@@ -1,4 +1,4 @@
-#ifndef NO_TTS_SUPPORT
+#ifdef TTS_SUPPORT
 
   #include "speechclient.hh"
 

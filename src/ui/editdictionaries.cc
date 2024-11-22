@@ -173,7 +173,7 @@ bool EditDictionaries::isSourcesChanged() const
     || sources.getLingua() != cfg.lingua || sources.getForvo() != cfg.forvo || sources.getMediaWikis() != cfg.mediawikis
     || sources.getWebSites() != cfg.webSites || sources.getDictServers() != cfg.dictServers
     || sources.getPrograms() != cfg.programs
-#ifndef NO_TTS_SUPPORT
+#ifdef TTS_SUPPORT
     || sources.getVoiceEngines() != cfg.voiceEngines
 #endif
     ;
@@ -197,7 +197,7 @@ void EditDictionaries::acceptChangedSources( bool rebuildGroups )
   cfg.webSites        = sources.getWebSites();
   cfg.dictServers     = sources.getDictServers();
   cfg.programs        = sources.getPrograms();
-#ifndef NO_TTS_SUPPORT
+#ifdef TTS_SUPPORT
   cfg.voiceEngines = sources.getVoiceEngines();
 #endif
   setUpdatesEnabled( false );

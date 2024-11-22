@@ -67,7 +67,7 @@ endif ()
 
 find_package(Qt6 REQUIRED COMPONENTS ${GD_QT_COMPONENTS})
 
-qt_standard_project_setup() # availiable after find_package(Qt6 .... Core
+qt_standard_project_setup()
 set(CMAKE_AUTORCC ON) # not included in the qt_standard_project_setup
 
 #### Things required during configuration
@@ -154,7 +154,6 @@ target_link_libraries(${GOLDENDICT} PRIVATE
         $<$<BOOL:${WITH_TTS}>:Qt6::TextToSpeech>
 )
 
-
 target_include_directories(${GOLDENDICT} PRIVATE
         ${PROJECT_SOURCE_DIR}/thirdparty/qtsingleapplication/src
         ${PROJECT_SOURCE_DIR}/src/
@@ -184,13 +183,12 @@ target_compile_definitions(${GOLDENDICT} PUBLIC
         MAKE_QTMULTIMEDIA_PLAYER
         MAKE_CHINESE_CONVERSION_SUPPORT
         $<$<BOOL:${WIN32}>:__WIN32>
-        $<$<BOOL:WITH_FFMPEG_PLAYER>:MAKE_FFMPEG_PLAYER>
-        $<$<BOOL:WITH_TTS>:TTS_SUPPORT>
-        $<$<BOOL:WITH_EPWING_SUPPORT>:EPWING_SUPPORT>
-        $<$<BOOL:WITH_ZIM>:MAKE_ZIM_SUPPORT>
-        $<$<BOOL:WITH_VCPKG_BREAKPAD>:USE_BREAKPAD>
+        $<$<BOOL:${WITH_FFMPEG_PLAYER}>:MAKE_FFMPEG_PLAYER>
+        $<$<BOOL:${WITH_TTS}>:TTS_SUPPORT>
+        $<$<BOOL:${WITH_EPWING_SUPPORT}>:EPWING_SUPPORT>
+        $<$<BOOL:${WITH_ZIM}>:MAKE_ZIM_SUPPORT>
+        $<$<BOOL:${WITH_VCPKG_BREAKPAD}>:USE_BREAKPAD>
 )
-
 
 #### libraries linking && includes for Win or Unix
 

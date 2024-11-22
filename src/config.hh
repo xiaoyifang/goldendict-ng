@@ -725,7 +725,7 @@ struct Program
 
 using Programs = QList< Program >;
 
-#ifndef NO_TTS_SUPPORT
+#ifdef TTS_SUPPORT
 struct VoiceEngine
 {
   bool enabled;
@@ -818,7 +818,7 @@ struct Class
   Lingua lingua;
   Forvo forvo;
   Programs programs;
-#ifndef NO_TTS_SUPPORT
+#ifdef TTS_SUPPORT
   VoiceEngines voiceEngines;
 #endif
 

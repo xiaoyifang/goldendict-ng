@@ -1048,7 +1048,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
     QMessageBox::critical( this, "GoldenDict", tr( "The referenced audio program doesn't exist." ) );
   }
   else if ( url.scheme() == "gdtts" ) {
-#ifndef NO_TTS_SUPPORT
+#ifdef TTS_SUPPORT
     // Text to speech
     QString md5Id = Utils::Url::queryItemValue( url, "engine" );
     QString text( url.path().mid( 1 ) );
