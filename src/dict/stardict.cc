@@ -121,6 +121,7 @@ class StardictDictionary: public BtreeIndexing::BtreeDictionary
   QMutex idxMutex;
   File::Index idx;
   IdxHeader idxHeader;
+  string bookName;
   string sameTypeSequence;
   ChunkedStorage::Reader chunks;
   QMutex dzMutex;
@@ -217,10 +218,11 @@ StardictDictionary::StardictDictionary( string const & id,
   BtreeDictionary( id, dictionaryFiles ),
   idx( indexFile, QIODevice::ReadOnly ),
   idxHeader( idx.read< IdxHeader >() ),
+  bookName( loadString( idxHeader.bookNameSize ) ),
   sameTypeSequence( loadString( idxHeader.sameTypeSequenceSize ) ),
   chunks( idx, idxHeader.chunksOffset )
 {
-  dictionaryName = loadString( idxHeader.bookNameSize );
+  dictionaryName = bookName;
   // Open the .dict file
 
   DZ_ERRORS error;
