@@ -872,30 +872,8 @@ DslScanner::DslScanner( string const & fileName ):
   bool needExactEncoding = false;
 
   // Note that .dsl format always starts with "#NAME"
-  if ( auto guessedEncoding = QStringConverter::encodingForData( { firstBytes, firstBytesSize }, '#' );
-       guessedEncoding.has_value() ) {
-    switch ( guessedEncoding.value() ) {
-      case QStringConverter::Utf8:
-        encoding = Utf8::Utf8;
-        break;
-      case QStringConverter::Utf16LE:
-        encoding = Utf8::Utf16LE;
-        break;
-      case QStringConverter::Utf16BE:
-        encoding = Utf8::Utf16BE;
-        break;
-      case QStringConverter::Utf32LE:
-        encoding = Utf8::Utf16LE;
-        break;
-      case QStringConverter::Utf32BE:
-        encoding = Utf8::Utf32BE;
-        break;
-      default:
-        break;
-    }
-  }
 
-  codec = QTextCodec::codecForName( getEncodingNameFor( encoding ) );
+  codec = Utils::detectEncoding( { firstBytes, firstBytesSize }, '#' );
 
   qDebug() << "DSL encoding ->" << codec->name();
 

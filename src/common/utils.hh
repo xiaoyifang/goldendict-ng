@@ -11,6 +11,9 @@
 #include <QUrl>
 #include <QUrlQuery>
 #include <QWidget>
+#include <QStringConverter>
+#include <QTextCodec>
+#include <QMap>
 #include "filetype.hh"
 #include <string>
 using std::string;
@@ -352,5 +355,22 @@ QString urlReplaceWord( const QString url, QString word );
 QString escapeAmps( QString const & str );
 
 QString unescapeAmps( QString const & str );
+
+//restrict scope to this very file.
+namespace{
+// encoding mappings between QStringConverter::Encoding and QTextCodec::Encoding
+const QMap< QStringConverter::Encoding, QTextCodec::Encoding > encodingMap = {
+  { QStringConverter::Latin1, QTextCodec::Latin1 },
+  { QStringConverter::Utf8, QTextCodec::Utf8 },
+  { QStringConverter::Utf16, QTextCodec::Utf16 },
+  { QStringConverter::Utf16LE , QTextCodec::Utf16LE },
+  { QStringConverter::Utf16BE , QTextCodec::Utf16BE },
+  { QStringConverter::Utf32LE , QTextCodec::Utf32LE },
+  { QStringConverter::Utf32BE , QTextCodec::Utf32BE },
+  // others
+};
+}
+
+QTextCodec::Encoding detectEncoding( QByteArray & ba, char16_t expectedFirstCharacter = 0 );
 
 } // namespace Utils

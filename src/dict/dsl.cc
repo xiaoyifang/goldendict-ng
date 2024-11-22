@@ -1042,6 +1042,8 @@ QString const & DslDictionary::getDescription()
     QString data, str;
 
     str = annStream.readLine();
+    auto codec = Utils::detectEncoding( str );
+    annStream.setCodec( codec );
 
     if ( str.left( 10 ).compare( "#LANGUAGE " ) != 0 ) {
       annStream.seek( 0 );

@@ -47,6 +47,17 @@ QString unescapeAmps( QString const & str )
   result.replace( "&&", "&" );
   return result;
 }
+
+QTextCodec::Encoding detectEncoding( QByteArray & ba, char16_t expectedFirstCharacter = 0 )
+{
+  QStringConverter::Encoding detectedEncoding = QStringConverter::encodingForData( data, expectedFirstCharacter );
+  // mapping the encoding
+  if ( detectedEncoding.has_value() && encodingMap.contains( detectedEncoding.value() ) ) {
+    return encodingMap[ encoding ];
+  }
+  // default utf8
+  return QTextCodec::Utf8;
+}
 } // namespace Utils
 
 QString Utils::Path::combine( const QString & path1, const QString & path2 )
