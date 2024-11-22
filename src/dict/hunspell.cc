@@ -15,12 +15,7 @@
 #include <set>
 #include "utils.hh"
 #include <QtConcurrentRun>
-
-#ifndef INCLUDE_LIBRARY_PATH
-  #include <hunspell.hxx>
-#else
-  #include <hunspell/hunspell.hxx>
-#endif
+#include <hunspell/hunspell.hxx>
 
 namespace HunspellMorpho {
 
