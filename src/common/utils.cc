@@ -50,9 +50,10 @@ QString unescapeAmps( QString const & str )
 
 QTextCodec::Encoding detectCodec( QByteArray & ba, char16_t expectedFirstCharacter = 0 )
 {
-  QStringConverter::Encoding detectedEncoding = QStringConverter::encodingForData( data, expectedFirstCharacter );
+  QStringConverter::Encoding detectedEncoding = detectEncoding( ba, expectedFirstCharacter );
   // mapping the encoding
-  if ( detectedEncoding.has_value() && encodingMap.contains( detectedEncoding.value() ) ) {
+  if (encodingMap.contains( detectedEncoding ) )
+  {
     return encodingMap[ encoding ];
   }
   // default utf8
@@ -62,7 +63,6 @@ QTextCodec::Encoding detectCodec( QByteArray & ba, char16_t expectedFirstCharact
 QStringConverter::Encoding detectEncoding( QByteArray & ba, char16_t expectedFirstCharacter = 0 )
 {
   QStringConverter::Encoding detectedEncoding = QStringConverter::encodingForData( data, expectedFirstCharacter );
-  // mapping the encoding
   if ( detectedEncoding.has_value() ) {
     return detectedEncoding.value();
   }
