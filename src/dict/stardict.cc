@@ -121,9 +121,8 @@ class StardictDictionary: public BtreeIndexing::BtreeDictionary
   QMutex idxMutex;
   File::Index idx;
   IdxHeader idxHeader;
-  string bookName;
   string sameTypeSequence;
-  ChunkedStorage::Reader chunks;
+  std::unique_ptr<ChunkedStorage::Reader> chunks;
   QMutex dzMutex;
   dictData * dz;
   QMutex resourceZipMutex;
@@ -216,13 +215,14 @@ StardictDictionary::StardictDictionary( string const & id,
                                         string const & indexFile,
                                         vector< string > const & dictionaryFiles ):
   BtreeDictionary( id, dictionaryFiles ),
-  idx( indexFile, QIODevice::ReadOnly ),
-  idxHeader( idx.read< IdxHeader >() ),
-  bookName( loadString( idxHeader.bookNameSize ) ),
-  sameTypeSequence( loadString( idxHeader.sameTypeSequenceSize ) ),
-  chunks( idx, idxHeader.chunksOffset )
+  idx( indexFile, QIODevice::ReadOnly )
 {
-  dictionaryName = bookName;
+  // reading headers, note that reading order matters
+  idxHeader        = idx.read< IdxHeader >();
+  dictionaryName   = loadString( idxHeader.bookNameSize );
+  sameTypeSequence = loadString( idxHeader.sameTypeSequenceSize );
+  chunks           = std::make_unique< ChunkedStorage::Reader >( idx, idxHeader.chunksOffset );
+
   // Open the .dict file
 
   DZ_ERRORS error;
@@ -303,7 +303,7 @@ void StardictDictionary::getArticleProps( uint32_t articleAddress,
 
   QMutexLocker _( &idxMutex );
 
-  char * articleData = chunks.getBlock( articleAddress, chunk );
+  char * articleData = chunks->getBlock( articleAddress, chunk );
 
   memcpy( &offset, articleData, sizeof( uint32_t ) );
   articleData += sizeof( uint32_t );
