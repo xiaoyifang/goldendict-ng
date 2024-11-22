@@ -52,8 +52,7 @@ QTextCodec::Encoding detectCodec( QByteArray & ba, char16_t expectedFirstCharact
 {
   QStringConverter::Encoding detectedEncoding = detectEncoding( ba, expectedFirstCharacter );
   // mapping the encoding
-  if (encodingMap.contains( detectedEncoding ) )
-  {
+  if ( encodingMap.contains( detectedEncoding ) ) {
     return encodingMap[ encoding ];
   }
   // default utf8
