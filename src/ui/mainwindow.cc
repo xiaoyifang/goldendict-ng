@@ -1374,10 +1374,8 @@ void MainWindow::updateAppearances( QString const & addonStyle,
   }
 #endif
 
-  QFile builtInCssFile( ":qt-style.css" );
-  builtInCssFile.open( QFile::ReadOnly );
-  QByteArray css = builtInCssFile.readAll();
 
+  QByteArray css{};
 #if defined( Q_OS_WIN )
   QFile winCssFile( ":qt-style-win.css" );
   winCssFile.open( QFile::ReadOnly );
