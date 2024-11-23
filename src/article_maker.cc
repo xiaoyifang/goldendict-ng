@@ -161,7 +161,10 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word, QString const & 
 
 #if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
   if ( GlobalBroadcaster::instance()->getPreference()->darkReaderMode == Config::Dark::Auto
-       && QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark ) {
+  #if !defined( Q_OS_WINDOWS ) // not properly works on Windows.
+       && QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark
+  #endif
+       && GlobalBroadcaster::instance()->getPreference()->darkMode == Config::Dark::On ) {
     darkReaderModeEnabled = true;
   }
 #endif
