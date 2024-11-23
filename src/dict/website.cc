@@ -2,8 +2,7 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "website.hh"
-#include "wstring_qt.hh"
-#include "utf8.hh"
+#include "text.hh"
 #include <QUrl>
 #include <QTextCodec>
 #include <QDir>
@@ -62,10 +61,12 @@ public:
     return 0;
   }
 
-  sptr< WordSearchRequest > prefixMatch( wstring const & word, unsigned long ) override;
+  sptr< WordSearchRequest > prefixMatch( std::u32string const & word, unsigned long ) override;
 
-  sptr< DataRequest >
-  getArticle( wstring const &, vector< wstring > const & alts, wstring const & context, bool ) override;
+  sptr< DataRequest > getArticle( std::u32string const &,
+                                  vector< std::u32string > const & alts,
+                                  std::u32string const & context,
+                                  bool ) override;
 
   sptr< Dictionary::DataRequest > getResource( string const & name ) override;
 
@@ -90,7 +91,7 @@ protected slots:
   virtual void requestFinished( QNetworkReply * ) {}
 };
 
-sptr< WordSearchRequest > WebSiteDictionary::prefixMatch( wstring const & /*word*/, unsigned long )
+sptr< WordSearchRequest > WebSiteDictionary::prefixMatch( std::u32string const & /*word*/, unsigned long )
 {
   sptr< WordSearchRequestInstant > sr = std::make_shared< WordSearchRequestInstant >();
 
@@ -308,9 +309,9 @@ void WebSiteArticleRequest::requestFinished( QNetworkReply * r )
   finish();
 }
 
-sptr< DataRequest > WebSiteDictionary::getArticle( wstring const & str,
-                                                   vector< wstring > const & /*alts*/,
-                                                   wstring const & context,
+sptr< DataRequest > WebSiteDictionary::getArticle( std::u32string const & str,
+                                                   vector< std::u32string > const & /*alts*/,
+                                                   std::u32string const & context,
                                                    bool /*ignoreDiacritics*/ )
 {
   QString urlString = Utils::WebSite::urlReplaceWord( QString( urlTemplate ), QString::fromStdU32String( str ) );

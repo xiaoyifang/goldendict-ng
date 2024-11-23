@@ -1,5 +1,5 @@
 #include "lingualibre.hh"
-#include "utf8.hh"
+#include "text.hh"
 #include "audiolink.hh"
 
 #include <QJsonArray>
@@ -40,8 +40,8 @@ class LinguaArticleRequest: public Dictionary::DataRequest
 
 public:
 
-  LinguaArticleRequest( wstring const & word,
-                        vector< wstring > const & alts,
+  LinguaArticleRequest( std::u32string const & word,
+                        vector< std::u32string > const & alts,
                         QString const & languageCode_,
                         QString const & langWikipediaID_,
                         string const & dictionaryId_,
@@ -51,7 +51,7 @@ public:
 
 private:
 
-  void addQuery( QNetworkAccessManager & mgr, wstring const & word );
+  void addQuery( QNetworkAccessManager & mgr, std::u32string const & word );
 
 private slots:
   virtual void requestFinished( QNetworkReply * );
@@ -175,7 +175,7 @@ WHERE {
     return 0;
   }
 
-  sptr< WordSearchRequest > prefixMatch( wstring const & /*word*/, unsigned long /*maxResults*/ ) override
+  sptr< WordSearchRequest > prefixMatch( std::u32string const & /*word*/, unsigned long /*maxResults*/ ) override
   {
     sptr< WordSearchRequestInstant > sr = std::make_shared< WordSearchRequestInstant >();
 
@@ -184,7 +184,10 @@ WHERE {
     return sr;
   }
 
-  sptr< DataRequest > getArticle( wstring const & word, vector< wstring > const & alts, wstring const &, bool ) override
+  sptr< DataRequest > getArticle( std::u32string const & word,
+                                  vector< std::u32string > const & alts,
+                                  std::u32string const &,
+                                  bool ) override
   {
     if ( word.size() < 50 ) {
       return std::make_shared< LinguaArticleRequest >( word, alts, languageCode, langWikipediaID, getId(), netMgr );
@@ -231,8 +234,8 @@ void LinguaArticleRequest::cancel()
   finish();
 }
 
-LinguaArticleRequest::LinguaArticleRequest( const wstring & str,
-                                            const vector< wstring > & alts,
+LinguaArticleRequest::LinguaArticleRequest( const std::u32string & str,
+                                            const vector< std::u32string > & alts,
                                             const QString & languageCode_,
                                             const QString & langWikipediaID,
                                             const string & dictionaryId_,
@@ -245,7 +248,7 @@ LinguaArticleRequest::LinguaArticleRequest( const wstring & str,
   addQuery( mgr, str );
 }
 
-void LinguaArticleRequest::addQuery( QNetworkAccessManager & mgr, const wstring & word )
+void LinguaArticleRequest::addQuery( QNetworkAccessManager & mgr, const std::u32string & word )
 {
 
   // Doc of the <https://www.mediawiki.org/wiki/API:Query>
@@ -273,7 +276,7 @@ void LinguaArticleRequest::addQuery( QNetworkAccessManager & mgr, const wstring 
   auto netReply = std::shared_ptr< QNetworkReply >( mgr.get( netRequest ) );
 
 
-  netReplies.emplace_back( netReply, Utf8::encode( word ) );
+  netReplies.emplace_back( netReply, Text::toUtf8( word ) );
 }
 
 

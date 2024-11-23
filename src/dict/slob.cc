@@ -6,7 +6,7 @@
 #include "btreeidx.hh"
 
 #include "folding.hh"
-#include "utf8.hh"
+#include "text.hh"
 #include "decompress.hh"
 #include "langcoder.hh"
 #include "ftshelpers.hh"
@@ -40,7 +40,6 @@ using std::vector;
 using std::multimap;
 using std::pair;
 using std::set;
-using gd::wstring;
 
 using BtreeIndexing::WordArticleLink;
 using BtreeIndexing::IndexedWords;
@@ -630,8 +629,10 @@ public:
     return idxHeader.langTo;
   }
 
-  sptr< Dictionary::DataRequest >
-  getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ignoreDiacritics ) override;
+  sptr< Dictionary::DataRequest > getArticle( std::u32string const &,
+                                              vector< std::u32string > const & alts,
+                                              std::u32string const &,
+                                              bool ignoreDiacritics ) override;
 
   sptr< Dictionary::DataRequest > getResource( string const & name ) override;
 
@@ -853,7 +854,7 @@ void SlobDictionary::loadResource( std::string & resourceName, string & data )
   vector< WordArticleLink > link;
   RefEntry entry;
 
-  link = resourceIndex.findArticles( Utf8::decode( resourceName ) );
+  link = resourceIndex.findArticles( Text::toUtf32( resourceName ) );
 
   if ( link.empty() ) {
     return;
@@ -989,8 +990,8 @@ SlobDictionary::getSearchResults( QString const & searchString, int searchMode, 
 class SlobArticleRequest: public Dictionary::DataRequest
 {
 
-  wstring word;
-  vector< wstring > alts;
+  std::u32string word;
+  vector< std::u32string > alts;
   SlobDictionary & dict;
   bool ignoreDiacritics;
 
@@ -999,8 +1000,8 @@ class SlobArticleRequest: public Dictionary::DataRequest
 
 public:
 
-  SlobArticleRequest( wstring const & word_,
-                      vector< wstring > const & alts_,
+  SlobArticleRequest( std::u32string const & word_,
+                      vector< std::u32string > const & alts_,
                       SlobDictionary & dict_,
                       bool ignoreDiacritics_ ):
     word( word_ ),
@@ -1045,13 +1046,13 @@ void SlobArticleRequest::run()
     chain.insert( chain.end(), altChain.begin(), altChain.end() );
   }
 
-  multimap< wstring, pair< string, string > > mainArticles, alternateArticles;
+  multimap< std::u32string, pair< string, string > > mainArticles, alternateArticles;
 
   set< quint64 > articlesIncluded; // Some synonims make it that the articles
                                    // appear several times. We combat this
                                    // by only allowing them to appear once.
 
-  wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
+  std::u32string wordCaseFolded = Folding::applySimpleCaseOnly( word );
   if ( ignoreDiacritics ) {
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
   }
@@ -1084,12 +1085,12 @@ void SlobArticleRequest::run()
 
     // We do the case-folded comparison here.
 
-    wstring headwordStripped = Folding::applySimpleCaseOnly( headword );
+    std::u32string headwordStripped = Folding::applySimpleCaseOnly( headword );
     if ( ignoreDiacritics ) {
       headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
     }
 
-    multimap< wstring, pair< string, string > > & mapToUse =
+    multimap< std::u32string, pair< string, string > > & mapToUse =
       ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
 
     mapToUse.insert( pair( Folding::applySimpleCaseOnly( headword ), pair( headword, articleText ) ) );
@@ -1105,7 +1106,7 @@ void SlobArticleRequest::run()
 
   string result;
 
-  multimap< wstring, pair< string, string > >::const_iterator i;
+  multimap< std::u32string, pair< string, string > >::const_iterator i;
 
   for ( i = mainArticles.begin(); i != mainArticles.end(); ++i ) {
     result += R"(<div class="slobdict"><h3 class="slobdict_headword">)";
@@ -1128,9 +1129,9 @@ void SlobArticleRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > SlobDictionary::getArticle( wstring const & word,
-                                                            vector< wstring > const & alts,
-                                                            wstring const &,
+sptr< Dictionary::DataRequest > SlobDictionary::getArticle( std::u32string const & word,
+                                                            vector< std::u32string > const & alts,
+                                                            std::u32string const &,
                                                             bool ignoreDiacritics )
 
 {

@@ -4,8 +4,7 @@
 #include "programs.hh"
 #include "audiolink.hh"
 #include "htmlescape.hh"
-#include "utf8.hh"
-#include "wstring_qt.hh"
+#include "text.hh"
 #include "iconv.hh"
 #include "utils.hh"
 #include "globalbroadcaster.hh"
@@ -46,16 +45,17 @@ public:
     return 0;
   }
 
-  sptr< WordSearchRequest > prefixMatch( wstring const & word, unsigned long maxResults ) override;
+  sptr< WordSearchRequest > prefixMatch( std::u32string const & word, unsigned long maxResults ) override;
 
-  sptr< DataRequest > getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ) override;
+  sptr< DataRequest >
+  getArticle( std::u32string const &, vector< std::u32string > const & alts, std::u32string const &, bool ) override;
 
 protected:
 
   void loadIcon() noexcept override;
 };
 
-sptr< WordSearchRequest > ProgramsDictionary::prefixMatch( wstring const & word, unsigned long /*maxResults*/ )
+sptr< WordSearchRequest > ProgramsDictionary::prefixMatch( std::u32string const & word, unsigned long /*maxResults*/ )
 
 {
   if ( prg.type == Config::Program::PrefixMatch ) {
@@ -70,8 +70,10 @@ sptr< WordSearchRequest > ProgramsDictionary::prefixMatch( wstring const & word,
   }
 }
 
-sptr< Dictionary::DataRequest >
-ProgramsDictionary::getArticle( wstring const & word, vector< wstring > const &, wstring const &, bool )
+sptr< Dictionary::DataRequest > ProgramsDictionary::getArticle( std::u32string const & word,
+                                                                vector< std::u32string > const &,
+                                                                std::u32string const &,
+                                                                bool )
 
 {
   switch ( prg.type ) {
@@ -79,7 +81,7 @@ ProgramsDictionary::getArticle( wstring const & word, vector< wstring > const &,
       // Audio results are instantaneous
       string result;
 
-      string wordUtf8( Utf8::encode( word ) );
+      string wordUtf8( Text::toUtf8( word ) );
 
       result += "<table class=\"programs_play\"><tr>";
 

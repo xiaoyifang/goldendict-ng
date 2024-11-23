@@ -2,7 +2,7 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "hunspell.hh"
-#include "utf8.hh"
+#include "text.hh"
 #include "htmlescape.hh"
 #include "iconv.hh"
 #include "folding.hh"
@@ -21,7 +21,6 @@ namespace HunspellMorpho {
 
 using namespace Dictionary;
 
-using gd::wchar;
 
 namespace {
 
@@ -60,18 +59,19 @@ public:
     return 0;
   }
 
-  sptr< WordSearchRequest > prefixMatch( wstring const &, unsigned long maxResults ) override;
+  sptr< WordSearchRequest > prefixMatch( std::u32string const &, unsigned long maxResults ) override;
 
-  sptr< WordSearchRequest > findHeadwordsForSynonym( wstring const & ) override;
+  sptr< WordSearchRequest > findHeadwordsForSynonym( std::u32string const & ) override;
 
-  sptr< DataRequest > getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ) override;
+  sptr< DataRequest >
+  getArticle( std::u32string const &, vector< std::u32string > const & alts, std::u32string const &, bool ) override;
 
   bool isLocalDictionary() override
   {
     return true;
   }
 
-  vector< wstring > getAlternateWritings( const wstring & word ) noexcept override;
+  vector< std::u32string > getAlternateWritings( const std::u32string & word ) noexcept override;
 
 protected:
 
@@ -94,25 +94,25 @@ private:
 
 /// Encodes the given string to be passed to the hunspell object. May throw
 /// Iconv::Ex
-string encodeToHunspell( Hunspell &, wstring const & );
+string encodeToHunspell( Hunspell &, std::u32string const & );
 
 /// Decodes the given string returned by the hunspell object. May throw
 /// Iconv::Ex
-wstring decodeFromHunspell( Hunspell &, char const * );
+std::u32string decodeFromHunspell( Hunspell &, char const * );
 
 /// Generates suggestions via hunspell
-QList< wstring > suggest( wstring & word, QMutex & hunspellMutex, Hunspell & hunspell );
+QList< std::u32string > suggest( std::u32string & word, QMutex & hunspellMutex, Hunspell & hunspell );
 
 /// Generates suggestions for compound expression
-void getSuggestionsForExpression( wstring const & expression,
-                                  vector< wstring > & suggestions,
+void getSuggestionsForExpression( std::u32string const & expression,
+                                  vector< std::u32string > & suggestions,
                                   QMutex & hunspellMutex,
                                   Hunspell & hunspell );
 
 /// Returns true if the string contains whitespace, false otherwise
-bool containsWhitespace( wstring const & str )
+bool containsWhitespace( std::u32string const & str )
 {
-  wchar const * next = str.c_str();
+  char32_t const * next = str.c_str();
 
   for ( ; *next; ++next ) {
     if ( Folding::isWhitespace( *next ) ) {
@@ -142,9 +142,9 @@ void HunspellDictionary::loadIcon() noexcept
   dictionaryIconLoaded = true;
 }
 
-vector< wstring > HunspellDictionary::getAlternateWritings( wstring const & word ) noexcept
+vector< std::u32string > HunspellDictionary::getAlternateWritings( std::u32string const & word ) noexcept
 {
-  vector< wstring > results;
+  vector< std::u32string > results;
 
   if ( containsWhitespace( word ) ) {
     getSuggestionsForExpression( word, results, getHunspellMutex(), hunspell );
@@ -160,14 +160,14 @@ class HunspellArticleRequest: public Dictionary::DataRequest
 
   QMutex & hunspellMutex;
   Hunspell & hunspell;
-  wstring word;
+  std::u32string word;
 
   QAtomicInt isCancelled;
   QFuture< void > f;
 
 public:
 
-  HunspellArticleRequest( wstring const & word_, QMutex & hunspellMutex_, Hunspell & hunspell_ ):
+  HunspellArticleRequest( std::u32string const & word_, QMutex & hunspellMutex_, Hunspell & hunspell_ ):
     hunspellMutex( hunspellMutex_ ),
     hunspell( hunspell_ ),
     word( word_ )
@@ -201,7 +201,7 @@ void HunspellArticleRequest::run()
   vector< string > suggestions;
 
   try {
-    wstring trimmedWord = Folding::trimWhitespaceOrPunct( word );
+    std::u32string trimmedWord = Folding::trimWhitespaceOrPunct( word );
 
     if ( containsWhitespace( trimmedWord ) ) {
       // For now we don't analyze whitespace-containing phrases
@@ -226,10 +226,10 @@ void HunspellArticleRequest::run()
       string result = "<div class=\"gdspellsuggestion\">"
         + Html::escape( QCoreApplication::translate( "Hunspell", "Spelling suggestions: " ).toUtf8().data() );
 
-      wstring lowercasedWord = Folding::applySimpleCaseOnly( word );
+      std::u32string lowercasedWord = Folding::applySimpleCaseOnly( word );
 
       for ( vector< string >::size_type x = 0; x < suggestions.size(); ++x ) {
-        wstring suggestion = decodeFromHunspell( hunspell, suggestions[ x ].c_str() );
+        std::u32string suggestion = decodeFromHunspell( hunspell, suggestions[ x ].c_str() );
 
         if ( Folding::applySimpleCaseOnly( suggestion ) == lowercasedWord ) {
           // If among suggestions we see the same word just with the different
@@ -240,7 +240,7 @@ void HunspellArticleRequest::run()
 
           return;
         }
-        string suggestionUtf8 = Utf8::encode( suggestion );
+        string suggestionUtf8 = Text::toUtf8( suggestion );
 
         result += "<a href=\"bword:";
         result += Html::escape( suggestionUtf8 ) + "\">";
@@ -268,8 +268,10 @@ void HunspellArticleRequest::run()
   finish();
 }
 
-sptr< DataRequest >
-HunspellDictionary::getArticle( wstring const & word, vector< wstring > const &, wstring const &, bool )
+sptr< DataRequest > HunspellDictionary::getArticle( std::u32string const & word,
+                                                    vector< std::u32string > const &,
+                                                    std::u32string const &,
+                                                    bool )
 
 {
   return std::make_shared< HunspellArticleRequest >( word, getHunspellMutex(), hunspell );
@@ -282,7 +284,7 @@ class HunspellHeadwordsRequest: public Dictionary::WordSearchRequest
 
   QMutex & hunspellMutex;
   Hunspell & hunspell;
-  wstring word;
+  std::u32string word;
 
   QAtomicInt isCancelled;
   QFuture< void > f;
@@ -290,7 +292,7 @@ class HunspellHeadwordsRequest: public Dictionary::WordSearchRequest
 
 public:
 
-  HunspellHeadwordsRequest( wstring const & word_, QMutex & hunspellMutex_, Hunspell & hunspell_ ):
+  HunspellHeadwordsRequest( std::u32string const & word_, QMutex & hunspellMutex_, Hunspell & hunspell_ ):
     hunspellMutex( hunspellMutex_ ),
     hunspell( hunspell_ ),
     word( word_ )
@@ -322,7 +324,7 @@ void HunspellHeadwordsRequest::run()
     return;
   }
 
-  wstring trimmedWord = Folding::trimWhitespaceOrPunct( word );
+  std::u32string trimmedWord = Folding::trimWhitespaceOrPunct( word );
 
   if ( trimmedWord.size() > 80 ) {
     // We won't do anything for overly long sentences since that would probably
@@ -332,7 +334,7 @@ void HunspellHeadwordsRequest::run()
   }
 
   if ( containsWhitespace( trimmedWord ) ) {
-    vector< wstring > results;
+    vector< std::u32string > results;
 
     getSuggestionsForExpression( trimmedWord, results, hunspellMutex, hunspell );
 
@@ -342,7 +344,7 @@ void HunspellHeadwordsRequest::run()
     }
   }
   else {
-    QList< wstring > suggestions = suggest( trimmedWord, hunspellMutex, hunspell );
+    QList< std::u32string > suggestions = suggest( trimmedWord, hunspellMutex, hunspell );
 
     if ( !suggestions.empty() ) {
       QMutexLocker _( &dataMutex );
@@ -356,9 +358,9 @@ void HunspellHeadwordsRequest::run()
   finish();
 }
 
-QList< wstring > suggest( wstring & word, QMutex & hunspellMutex, Hunspell & hunspell )
+QList< std::u32string > suggest( std::u32string & word, QMutex & hunspellMutex, Hunspell & hunspell )
 {
-  QList< wstring > result;
+  QList< std::u32string > result;
 
   vector< string > suggestions;
 
@@ -371,7 +373,7 @@ QList< wstring > suggest( wstring & word, QMutex & hunspellMutex, Hunspell & hun
     if ( !suggestions.empty() ) {
       // There were some suggestions made for us. Make an appropriate output.
 
-      wstring lowercasedWord = Folding::applySimpleCaseOnly( word );
+      std::u32string lowercasedWord = Folding::applySimpleCaseOnly( word );
 
       static QRegularExpression cutStem( R"(^\s*st:(((\s+(?!\w{2}:)(?!-)(?!\+))|\S+)+))" );
 
@@ -388,7 +390,7 @@ QList< wstring > suggest( wstring & word, QMutex & hunspellMutex, Hunspell & hun
 
         auto match = cutStem.match( suggestion.trimmed() );
         if ( match.hasMatch() ) {
-          wstring alt = match.captured( 1 ).toStdU32String();
+          std::u32string alt = match.captured( 1 ).toStdU32String();
 
           if ( Folding::applySimpleCaseOnly( alt ) != lowercasedWord ) // No point in providing same word
           {
@@ -406,7 +408,7 @@ QList< wstring > suggest( wstring & word, QMutex & hunspellMutex, Hunspell & hun
 }
 
 
-sptr< WordSearchRequest > HunspellDictionary::findHeadwordsForSynonym( wstring const & word )
+sptr< WordSearchRequest > HunspellDictionary::findHeadwordsForSynonym( std::u32string const & word )
 
 {
   return std::make_shared< HunspellHeadwordsRequest >( word, getHunspellMutex(), hunspell );
@@ -420,14 +422,14 @@ class HunspellPrefixMatchRequest: public Dictionary::WordSearchRequest
 
   QMutex & hunspellMutex;
   Hunspell & hunspell;
-  wstring word;
+  std::u32string word;
 
   QAtomicInt isCancelled;
   QFuture< void > f;
 
 public:
 
-  HunspellPrefixMatchRequest( wstring const & word_, QMutex & hunspellMutex_, Hunspell & hunspell_ ):
+  HunspellPrefixMatchRequest( std::u32string const & word_, QMutex & hunspellMutex_, Hunspell & hunspell_ ):
     hunspellMutex( hunspellMutex_ ),
     hunspell( hunspell_ ),
     word( word_ )
@@ -460,7 +462,7 @@ void HunspellPrefixMatchRequest::run()
   }
 
   try {
-    wstring trimmedWord = Folding::trimWhitespaceOrPunct( word );
+    std::u32string trimmedWord = Folding::trimWhitespaceOrPunct( word );
 
     if ( trimmedWord.empty() || containsWhitespace( trimmedWord ) ) {
       // For now we don't analyze whitespace-containing phrases
@@ -487,14 +489,14 @@ void HunspellPrefixMatchRequest::run()
   finish();
 }
 
-sptr< WordSearchRequest > HunspellDictionary::prefixMatch( wstring const & word, unsigned long /*maxResults*/ )
+sptr< WordSearchRequest > HunspellDictionary::prefixMatch( std::u32string const & word, unsigned long /*maxResults*/ )
 
 {
   return std::make_shared< HunspellPrefixMatchRequest >( word, getHunspellMutex(), hunspell );
 }
 
-void getSuggestionsForExpression( wstring const & expression,
-                                  vector< wstring > & suggestions,
+void getSuggestionsForExpression( std::u32string const & expression,
+                                  vector< std::u32string > & suggestions,
                                   QMutex & hunspellMutex,
                                   Hunspell & hunspell )
 {
@@ -502,15 +504,15 @@ void getSuggestionsForExpression( wstring const & expression,
   // This is useful for compound expressions where some words is
   // in different form, e.g. "dozing off" -> "doze off".
 
-  wstring trimmedWord = Folding::trimWhitespaceOrPunct( expression );
-  wstring word, punct;
-  QList< wstring > words;
+  std::u32string trimmedWord = Folding::trimWhitespaceOrPunct( expression );
+  std::u32string word, punct;
+  QList< std::u32string > words;
 
   suggestions.clear();
 
   // Parse string to separate words
 
-  for ( wchar const * c = trimmedWord.c_str();; ++c ) {
+  for ( char32_t const * c = trimmedWord.c_str();; ++c ) {
     if ( !*c || Folding::isPunct( *c ) || Folding::isWhitespace( *c ) ) {
       if ( word.size() ) {
         words.push_back( word );
@@ -541,7 +543,7 @@ void getSuggestionsForExpression( wstring const & expression,
 
   // Combine result strings from suggestions
 
-  QList< wstring > results;
+  QList< std::u32string > results;
 
   for ( const auto & i : words ) {
     word = i;
@@ -551,13 +553,13 @@ void getSuggestionsForExpression( wstring const & expression,
       }
     }
     else {
-      QList< wstring > sugg = suggest( word, hunspellMutex, hunspell );
+      QList< std::u32string > sugg = suggest( word, hunspellMutex, hunspell );
       int suggNum           = sugg.size() + 1;
       if ( suggNum > 3 ) {
         suggNum = 3;
       }
       int resNum = results.size();
-      wstring resultStr;
+      std::u32string resultStr;
 
       if ( resNum == 0 ) {
         for ( int k = 0; k < suggNum; k++ ) {
@@ -587,12 +589,12 @@ void getSuggestionsForExpression( wstring const & expression,
   }
 }
 
-string encodeToHunspell( Hunspell & hunspell, wstring const & str )
+string encodeToHunspell( Hunspell & hunspell, std::u32string const & str )
 {
   Iconv conv( Iconv::GdWchar );
 
   void const * in = str.data();
-  size_t inLeft   = str.size() * sizeof( wchar );
+  size_t inLeft   = str.size() * sizeof( char32_t );
 
   vector< char > result( str.size() * 4 + 1 ); // +1 isn't actually needed,
                                                // but then iconv complains on empty
@@ -605,17 +607,17 @@ string encodeToHunspell( Hunspell & hunspell, wstring const & str )
   return convStr.toStdString();
 }
 
-wstring decodeFromHunspell( Hunspell & hunspell, char const * str )
+std::u32string decodeFromHunspell( Hunspell & hunspell, char const * str )
 {
   Iconv conv( hunspell.get_dic_encoding() );
 
   void const * in = str;
   size_t inLeft   = strlen( str );
 
-  vector< wchar > result( inLeft + 1 ); // +1 isn't needed, but see above
+  vector< char32_t > result( inLeft + 1 ); // +1 isn't needed, but see above
 
   void * out     = &result.front();
-  size_t outLeft = result.size() * sizeof( wchar );
+  size_t outLeft = result.size() * sizeof( char32_t );
 
   QString convStr = conv.convert( in, inLeft );
   return convStr.toStdU32String();

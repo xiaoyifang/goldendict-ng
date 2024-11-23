@@ -2,7 +2,6 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "mediawiki.hh"
-#include "wstring_qt.hh"
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QUrl>
@@ -66,9 +65,10 @@ public:
     return 0;
   }
 
-  sptr< WordSearchRequest > prefixMatch( wstring const &, unsigned long maxResults ) override;
+  sptr< WordSearchRequest > prefixMatch( std::u32string const &, unsigned long maxResults ) override;
 
-  sptr< DataRequest > getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ) override;
+  sptr< DataRequest >
+  getArticle( std::u32string const &, vector< std::u32string > const & alts, std::u32string const &, bool ) override;
 
   quint32 getLangFrom() const override
   {
@@ -133,7 +133,10 @@ class MediaWikiWordSearchRequest: public MediaWikiWordSearchRequestSlots
 
 public:
 
-  MediaWikiWordSearchRequest( wstring const &, QString const & url, QString const & lang, QNetworkAccessManager & mgr );
+  MediaWikiWordSearchRequest( std::u32string const &,
+                              QString const & url,
+                              QString const & lang,
+                              QNetworkAccessManager & mgr );
 
   ~MediaWikiWordSearchRequest();
 
@@ -144,7 +147,7 @@ private:
   void downloadFinished() override;
 };
 
-MediaWikiWordSearchRequest::MediaWikiWordSearchRequest( wstring const & str,
+MediaWikiWordSearchRequest::MediaWikiWordSearchRequest( std::u32string const & str,
                                                         QString const & url,
                                                         QString const & lang,
                                                         QNetworkAccessManager & mgr ):
@@ -390,8 +393,8 @@ class MediaWikiArticleRequest: public MediaWikiDataRequestSlots
 
 public:
 
-  MediaWikiArticleRequest( wstring const & word,
-                           vector< wstring > const & alts,
+  MediaWikiArticleRequest( std::u32string const & word,
+                           vector< std::u32string > const & alts,
                            QString const & url,
                            QString const & lang,
                            QNetworkAccessManager & mgr,
@@ -401,7 +404,7 @@ public:
 
 private:
 
-  void addQuery( QNetworkAccessManager & mgr, wstring const & word );
+  void addQuery( QNetworkAccessManager & mgr, std::u32string const & word );
 
   void requestFinished( QNetworkReply * ) override;
 
@@ -435,8 +438,8 @@ void MediaWikiArticleRequest::cancel()
   finish();
 }
 
-MediaWikiArticleRequest::MediaWikiArticleRequest( wstring const & str,
-                                                  vector< wstring > const & alts,
+MediaWikiArticleRequest::MediaWikiArticleRequest( std::u32string const & str,
+                                                  vector< std::u32string > const & alts,
                                                   QString const & url_,
                                                   QString const & lang_,
                                                   QNetworkAccessManager & mgr,
@@ -458,7 +461,7 @@ MediaWikiArticleRequest::MediaWikiArticleRequest( wstring const & str,
   }
 }
 
-void MediaWikiArticleRequest::addQuery( QNetworkAccessManager & mgr, wstring const & str )
+void MediaWikiArticleRequest::addQuery( QNetworkAccessManager & mgr, std::u32string const & str )
 {
   qDebug( "MediaWiki: requesting article %s", QString::fromStdU32String( str ).toUtf8().data() );
 
@@ -705,7 +708,7 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
   }
 }
 
-sptr< WordSearchRequest > MediaWikiDictionary::prefixMatch( wstring const & word, unsigned long maxResults )
+sptr< WordSearchRequest > MediaWikiDictionary::prefixMatch( std::u32string const & word, unsigned long maxResults )
 
 {
   (void)maxResults;
@@ -719,8 +722,10 @@ sptr< WordSearchRequest > MediaWikiDictionary::prefixMatch( wstring const & word
   }
 }
 
-sptr< DataRequest >
-MediaWikiDictionary::getArticle( wstring const & word, vector< wstring > const & alts, wstring const &, bool )
+sptr< DataRequest > MediaWikiDictionary::getArticle( std::u32string const & word,
+                                                     vector< std::u32string > const & alts,
+                                                     std::u32string const &,
+                                                     bool )
 
 {
   if ( word.size() > 80 ) {

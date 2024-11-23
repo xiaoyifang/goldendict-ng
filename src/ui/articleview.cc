@@ -10,7 +10,6 @@
 #include "utils.hh"
 #include "webmultimediadownload.hh"
 #include "wildcard.hh"
-#include "wstring_qt.hh"
 #include <QBuffer>
 #include <QClipboard>
 #include <QCryptographicHash>

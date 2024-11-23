@@ -5,16 +5,13 @@
 
   #include "dictionary.hh"
   #include "config.hh"
-  #include "wstring.hh"
-
+  #include "text.hh"
   #include <QCryptographicHash>
-
 
 namespace VoiceEngines {
 
 using std::vector;
 using std::string;
-using gd::wstring;
 
 vector< sptr< Dictionary::Class > > makeDictionaries( Config::VoiceEngines const & voiceEngines );
 

@@ -3,7 +3,7 @@
 
 #include "folding.hh"
 
-#include "utf8.hh"
+#include "text.hh"
 #include "globalregex.hh"
 #include "inc_case_folding.hh"
 
@@ -13,12 +13,12 @@ namespace Folding {
 /// caught by the diacritics folding table, but they are only handled there
 /// when they come with their main characters, not by themselves. The rest
 /// are caught here.
-bool isCombiningMark( wchar ch )
+bool isCombiningMark( char32_t ch )
 {
   return QChar::isMark( ch );
 }
 
-wstring apply( wstring const & in, bool preserveWildcards )
+std::u32string apply( std::u32string const & in, bool preserveWildcards )
 {
   // remove diacritics (normalization), white space, punt,
   auto temp = QString::fromStdU32String( in )
@@ -32,7 +32,7 @@ wstring apply( wstring const & in, bool preserveWildcards )
   // case folding
   std::u32string caseFolded;
   caseFolded.reserve( temp.size() );
-  wchar buf[ foldCaseMaxOut ];
+  char32_t buf[ foldCaseMaxOut ];
   for ( const char32_t ch : temp ) {
     auto n = foldCase( ch, buf );
     caseFolded.append( buf, n );
@@ -40,11 +40,11 @@ wstring apply( wstring const & in, bool preserveWildcards )
   return caseFolded;
 }
 
-wstring applySimpleCaseOnly( wstring const & in )
+std::u32string applySimpleCaseOnly( std::u32string const & in )
 {
-  wchar const * nextChar = in.data();
+  char32_t const * nextChar = in.data();
 
-  wstring out;
+  std::u32string out;
 
   out.reserve( in.size() );
 
@@ -55,27 +55,27 @@ wstring applySimpleCaseOnly( wstring const & in )
   return out;
 }
 
-wstring applySimpleCaseOnly( QString const & in )
+std::u32string applySimpleCaseOnly( QString const & in )
 {
   //qt only support simple case folding.
   return in.toCaseFolded().toStdU32String();
 }
 
-wstring applySimpleCaseOnly( std::string const & in )
+std::u32string applySimpleCaseOnly( std::string const & in )
 {
-  return applySimpleCaseOnly( Utf8::decode( in ) );
+  return applySimpleCaseOnly( Text::toUtf32( in ) );
   // return QString::fromStdString( in ).toCaseFolded().toStdU32String();
 }
 
-wstring applyFullCaseOnly( wstring const & in )
+std::u32string applyFullCaseOnly( std::u32string const & in )
 {
-  wstring caseFolded;
+  std::u32string caseFolded;
 
   caseFolded.reserve( in.size() * foldCaseMaxOut );
 
-  wchar const * nextChar = in.data();
+  char32_t const * nextChar = in.data();
 
-  wchar buf[ foldCaseMaxOut ];
+  char32_t buf[ foldCaseMaxOut ];
 
   for ( size_t left = in.size(); left--; ) {
     caseFolded.append( buf, foldCase( *nextChar++, buf ) );
@@ -84,17 +84,17 @@ wstring applyFullCaseOnly( wstring const & in )
   return caseFolded;
 }
 
-wstring applyDiacriticsOnly( wstring const & in )
+std::u32string applyDiacriticsOnly( std::u32string const & in )
 {
   auto noAccent = QString::fromStdU32String( in ).normalized( QString::NormalizationForm_KD ).remove( RX::accentMark );
   return noAccent.toStdU32String();
 }
 
-wstring applyPunctOnly( wstring const & in )
+std::u32string applyPunctOnly( std::u32string const & in )
 {
-  wchar const * nextChar = in.data();
+  char32_t const * nextChar = in.data();
 
-  wstring out;
+  std::u32string out;
 
   out.reserve( in.size() );
 
@@ -119,11 +119,11 @@ QString applyPunctOnly( QString const & in )
   return out;
 }
 
-wstring applyWhitespaceOnly( wstring const & in )
+std::u32string applyWhitespaceOnly( std::u32string const & in )
 {
-  wchar const * nextChar = in.data();
+  char32_t const * nextChar = in.data();
 
-  wstring out;
+  std::u32string out;
 
   out.reserve( in.size() );
 
@@ -136,11 +136,11 @@ wstring applyWhitespaceOnly( wstring const & in )
   return out;
 }
 
-wstring applyWhitespaceAndPunctOnly( wstring const & in )
+std::u32string applyWhitespaceAndPunctOnly( std::u32string const & in )
 {
-  wchar const * nextChar = in.data();
+  char32_t const * nextChar = in.data();
 
-  wstring out;
+  std::u32string out;
 
   out.reserve( in.size() );
 
@@ -153,26 +153,26 @@ wstring applyWhitespaceAndPunctOnly( wstring const & in )
   return out;
 }
 
-bool isWhitespace( wchar ch )
+bool isWhitespace( char32_t ch )
 {
   //invisible character should be treated as whitespace as well.
   return QChar::isSpace( ch ) || !QChar::isPrint( ch );
 }
 
-bool isWhitespaceOrPunct( wchar ch )
+bool isWhitespaceOrPunct( char32_t ch )
 {
   return isWhitespace( ch ) || QChar::isPunct( ch );
 }
 
-bool isPunct( wchar ch )
+bool isPunct( char32_t ch )
 {
   return QChar::isPunct( ch );
 }
 
-wstring trimWhitespaceOrPunct( wstring const & in )
+std::u32string trimWhitespaceOrPunct( std::u32string const & in )
 {
-  wchar const * wordBegin     = in.c_str();
-  wstring::size_type wordSize = in.size();
+  char32_t const * wordBegin         = in.c_str();
+  std::u32string::size_type wordSize = in.size();
 
   // Skip any leading whitespace
   while ( *wordBegin && Folding::isWhitespaceOrPunct( *wordBegin ) ) {
@@ -185,7 +185,7 @@ wstring trimWhitespaceOrPunct( wstring const & in )
     --wordSize;
   }
 
-  return wstring( wordBegin, wordSize );
+  return std::u32string( wordBegin, wordSize );
 }
 
 QString trimWhitespaceOrPunct( QString const & in )
@@ -209,13 +209,13 @@ QString trimWhitespaceOrPunct( QString const & in )
   return in.mid( wordBegin, wordSize );
 }
 
-wstring trimWhitespace( wstring const & in )
+std::u32string trimWhitespace( std::u32string const & in )
 {
   if ( in.empty() ) {
     return in;
   }
-  wchar const * wordBegin     = in.c_str();
-  wstring::size_type wordSize = in.size();
+  char32_t const * wordBegin         = in.c_str();
+  std::u32string::size_type wordSize = in.size();
 
   // Skip any leading whitespace
   while ( *wordBegin && Folding::isWhitespace( *wordBegin ) ) {
@@ -228,7 +228,7 @@ wstring trimWhitespace( wstring const & in )
     --wordSize;
   }
 
-  return wstring( wordBegin, wordSize );
+  return std::u32string( wordBegin, wordSize );
 }
 
 QString trimWhitespace( QString const & in )

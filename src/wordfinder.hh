@@ -48,11 +48,11 @@ private:
 
   std::vector< sptr< Dictionary::Class > > const * inputDicts;
 
-  std::vector< gd::wstring > allWordWritings; // All writings of the inputWord
+  std::vector< std::u32string > allWordWritings; // All writings of the inputWord
 
   struct OneResult
   {
-    gd::wstring word;
+    std::u32string word;
     int rank;
     bool wasSuggested;
   };
@@ -60,7 +60,7 @@ private:
   // Maps lowercased string to the original one. This catches all duplicates
   // without case sensitivity. Made as an array and a map indexing that array.
   using ResultsArray = std::list< OneResult >;
-  using ResultsIndex = std::map< gd::wstring, ResultsArray::iterator >;
+  using ResultsIndex = std::map< std::u32string, ResultsArray::iterator >;
   ResultsArray resultsArray;
   ResultsIndex resultsIndex;
 

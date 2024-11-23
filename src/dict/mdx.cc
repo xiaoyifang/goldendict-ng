@@ -4,10 +4,9 @@
 #include "mdx.hh"
 #include "btreeidx.hh"
 #include "folding.hh"
-#include "utf8.hh"
+#include "text.hh"
 #include "dictfile.hh"
-#include "wstring.hh"
-#include "wstring_qt.hh"
+#include "text.hh"
 #include "chunkedstorage.hh"
 #include "langcoder.hh"
 #include "audiolink.hh"
@@ -37,8 +36,6 @@ namespace Mdx {
 using std::map;
 using std::multimap;
 using std::set;
-using gd::wstring;
-using gd::wchar;
 using std::list;
 using std::pair;
 using std::string;
@@ -129,7 +126,7 @@ public:
 
   /// Checks whether the given file exists in the mdd file or not.
   /// Note that this function is thread-safe, since it does not access mdd file.
-  bool hasFile( gd::wstring const & name )
+  bool hasFile( std::u32string const & name )
   {
     if ( !isFileOpen ) {
       return false;
@@ -140,7 +137,7 @@ public:
 
   /// Attempts loading the given file into the given vector. Returns true on
   /// success, false otherwise.
-  bool loadFile( gd::wstring const & name, std::vector< char > & result )
+  bool loadFile( std::u32string const & name, std::vector< char > & result )
   {
     if ( !isFileOpen ) {
       return false;
@@ -232,8 +229,10 @@ public:
     return idxHeader.langTo;
   }
 
-  sptr< Dictionary::DataRequest >
-  getArticle( wstring const & word, vector< wstring > const & alts, wstring const &, bool ignoreDiacritics ) override;
+  sptr< Dictionary::DataRequest > getArticle( std::u32string const & word,
+                                              vector< std::u32string > const & alts,
+                                              std::u32string const &,
+                                              bool ignoreDiacritics ) override;
   sptr< Dictionary::DataRequest > getResource( string const & name ) override;
   QString const & getDescription() override;
 
@@ -281,7 +280,7 @@ private:
 
   friend class MdxArticleRequest;
   friend class MddResourceRequest;
-  void loadResourceFile( const wstring & resourceName, vector< char > & data );
+  void loadResourceFile( const std::u32string & resourceName, vector< char > & data );
 };
 
 MdxDictionary::MdxDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles ):
@@ -488,8 +487,8 @@ sptr< Dictionary::DataRequest > MdxDictionary::getSearchResults( QString const &
 
 class MdxArticleRequest: public Dictionary::DataRequest
 {
-  wstring word;
-  vector< wstring > alts;
+  std::u32string word;
+  vector< std::u32string > alts;
   MdxDictionary & dict;
   bool ignoreDiacritics;
 
@@ -498,8 +497,8 @@ class MdxArticleRequest: public Dictionary::DataRequest
 
 public:
 
-  MdxArticleRequest( wstring const & word_,
-                     vector< wstring > const & alts_,
+  MdxArticleRequest( std::u32string const & word_,
+                     vector< std::u32string > const & alts_,
                      MdxDictionary & dict_,
                      bool ignoreDiacritics_ ):
     word( word_ ),
@@ -602,8 +601,8 @@ void MdxArticleRequest::run()
 
     // Handle internal redirects
     if ( strncmp( articleBody.c_str(), "@@@LINK=", 8 ) == 0 ) {
-      wstring target = Utf8::decode( articleBody.c_str() + 8 );
-      target         = Folding::trimWhitespace( target );
+      std::u32string target = Text::toUtf32( articleBody.c_str() + 8 );
+      target                = Folding::trimWhitespace( target );
       // Make an additional query for this redirection
       vector< WordArticleLink > altChain = dict.findArticles( target );
       chain.insert( chain.end(), altChain.begin(), altChain.end() );
@@ -626,9 +625,9 @@ void MdxArticleRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > MdxDictionary::getArticle( const wstring & word,
-                                                           const vector< wstring > & alts,
-                                                           const wstring &,
+sptr< Dictionary::DataRequest > MdxDictionary::getArticle( const std::u32string & word,
+                                                           const vector< std::u32string > & alts,
+                                                           const std::u32string &,
                                                            bool ignoreDiacritics )
 {
   return std::make_shared< MdxArticleRequest >( word, alts, *this, ignoreDiacritics );
@@ -638,7 +637,7 @@ sptr< Dictionary::DataRequest > MdxDictionary::getArticle( const wstring & word,
 class MddResourceRequest: public Dictionary::DataRequest
 {
   MdxDictionary & dict;
-  wstring resourceName;
+  std::u32string resourceName;
   QAtomicInt isCancelled;
   QFuture< void > f;
 
@@ -647,7 +646,7 @@ public:
   MddResourceRequest( MdxDictionary & dict_, string const & resourceName_ ):
     Dictionary::DataRequest( &dict_ ),
     dict( dict_ ),
-    resourceName( Utf8::decode( resourceName_ ) )
+    resourceName( Text::toUtf32( resourceName_ ) )
   {
     f = QtConcurrent::run( [ this ]() {
       this->run();
@@ -722,7 +721,7 @@ void MddResourceRequest::run()
   }
 
   // In order to prevent recursive internal redirection...
-  set< wstring, std::less<> > resourceIncluded;
+  set< std::u32string, std::less<> > resourceIncluded;
 
   for ( ;; ) {
     // Some runnables linger enough that they are cancelled before they start
@@ -730,7 +729,7 @@ void MddResourceRequest::run()
       finish();
       return;
     }
-    string u8ResourceName = Utf8::encode( resourceName );
+    string u8ResourceName = Text::toUtf8( resourceName );
     if ( !resourceIncluded.insert( resourceName ).second ) {
       finish();
       return;
@@ -1151,11 +1150,11 @@ QString MdxDictionary::getCachedFileName( QString filename )
     qWarning( R"(Mdx: file "%s" creating error: "%s")", fullName.toUtf8().data(), f.errorString().toUtf8().data() );
     return QString();
   }
-  gd::wstring resourceName = filename.toStdU32String();
+  std::u32string resourceName = filename.toStdU32String();
   vector< char > data;
 
   // In order to prevent recursive internal redirection...
-  set< wstring, std::less<> > resourceIncluded;
+  set< std::u32string, std::less<> > resourceIncluded;
 
   for ( ;; ) {
     if ( !resourceIncluded.insert( resourceName ).second ) {
@@ -1194,10 +1193,10 @@ QString MdxDictionary::getCachedFileName( QString filename )
   return fullName;
 }
 
-void MdxDictionary::loadResourceFile( const wstring & resourceName, vector< char > & data )
+void MdxDictionary::loadResourceFile( const std::u32string & resourceName, vector< char > & data )
 {
-  wstring newResourceName = resourceName;
-  string u8ResourceName   = Utf8::encode( resourceName );
+  std::u32string newResourceName = resourceName;
+  string u8ResourceName          = Text::toUtf8( resourceName );
 
   // Convert to the Windows separator
   std::replace( newResourceName.begin(), newResourceName.end(), '/', '\\' );

@@ -5,7 +5,7 @@
 #include "dictfile.hh"
 #include "iconv.hh"
 #include "folding.hh"
-#include "utf8.hh"
+#include "text.hh"
 #include "btreeidx.hh"
 
 #include "audiolink.hh"
@@ -24,7 +24,6 @@
 namespace Lsa {
 
 using std::string;
-using gd::wstring;
 using std::map;
 using std::multimap;
 using std::set;
@@ -169,8 +168,10 @@ public:
     return getArticleCount();
   }
 
-  sptr< Dictionary::DataRequest >
-  getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ignoreDiacritics ) override;
+  sptr< Dictionary::DataRequest > getArticle( std::u32string const &,
+                                              vector< std::u32string > const & alts,
+                                              std::u32string const &,
+                                              bool ignoreDiacritics ) override;
 
   sptr< Dictionary::DataRequest > getResource( string const & name ) override;
 
@@ -199,9 +200,9 @@ LsaDictionary::LsaDictionary( string const & id, string const & indexFile, vecto
   openIndex( IndexInfo( idxHeader.indexBtreeMaxElements, idxHeader.indexRootOffset ), idx, idxMutex );
 }
 
-sptr< Dictionary::DataRequest > LsaDictionary::getArticle( wstring const & word,
-                                                           vector< wstring > const & alts,
-                                                           wstring const &,
+sptr< Dictionary::DataRequest > LsaDictionary::getArticle( std::u32string const & word,
+                                                           vector< std::u32string > const & alts,
+                                                           std::u32string const &,
                                                            bool ignoreDiacritics )
 
 {
@@ -215,13 +216,13 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( wstring const & word,
     chain.insert( chain.end(), altChain.begin(), altChain.end() );
   }
 
-  multimap< wstring, string > mainArticles, alternateArticles;
+  multimap< std::u32string, string > mainArticles, alternateArticles;
 
   set< uint32_t > articlesIncluded; // Some synonims make it that the articles
                                     // appear several times. We combat this
                                     // by only allowing them to appear once.
 
-  wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
+  std::u32string wordCaseFolded = Folding::applySimpleCaseOnly( word );
   if ( ignoreDiacritics ) {
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
   }
@@ -236,12 +237,13 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( wstring const & word,
 
     // We do the case-folded comparison here.
 
-    wstring headwordStripped = Folding::applySimpleCaseOnly( x.word );
+    std::u32string headwordStripped = Folding::applySimpleCaseOnly( x.word );
     if ( ignoreDiacritics ) {
       headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
     }
 
-    multimap< wstring, string > & mapToUse = ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
+    multimap< std::u32string, string > & mapToUse =
+      ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
 
     mapToUse.insert( std::pair( Folding::applySimpleCaseOnly( x.word ), x.word ) );
 
@@ -254,7 +256,7 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( wstring const & word,
 
   string result;
 
-  multimap< wstring, string >::const_iterator i;
+  multimap< std::u32string, string >::const_iterator i;
 
   result += "<table class=\"lsa_play\">";
   for ( i = mainArticles.begin(); i != mainArticles.end(); ++i ) {
@@ -389,7 +391,7 @@ sptr< Dictionary::DataRequest > LsaDictionary::getResource( string const & name 
 
   string strippedName = Utils::endsWithIgnoreCase( name, ".wav" ) ? string( name, 0, name.size() - 4 ) : name;
 
-  vector< WordArticleLink > chain = findArticles( Utf8::decode( strippedName ) );
+  vector< WordArticleLink > chain = findArticles( Text::toUtf32( strippedName ) );
 
   if ( chain.empty() ) {
     return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such resource
@@ -572,7 +574,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
           // Insert new entry into an index
 
-          indexedWords.addWord( Utf8::decode( e.name ), offset );
+          indexedWords.addWord( Text::toUtf32( e.name ), offset );
         }
 
         idxHeader.vorbisOffset = f.tell();

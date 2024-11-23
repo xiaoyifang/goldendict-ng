@@ -4,7 +4,7 @@
 #include "dictdfiles.hh"
 #include "btreeidx.hh"
 #include "folding.hh"
-#include "utf8.hh"
+#include "text.hh"
 #include "dictzip.hh"
 #include "htmlescape.hh"
 #include "langcoder.hh"
@@ -29,7 +29,6 @@ using std::multimap;
 using std::pair;
 using std::set;
 using std::string;
-using gd::wstring;
 using std::vector;
 using std::list;
 
@@ -113,8 +112,10 @@ public:
     return idxHeader.langTo;
   }
 
-  sptr< Dictionary::DataRequest >
-  getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ignoreDiacritics ) override;
+  sptr< Dictionary::DataRequest > getArticle( std::u32string const &,
+                                              vector< std::u32string > const & alts,
+                                              std::u32string const &,
+                                              bool ignoreDiacritics ) override;
 
   QString const & getDescription() override;
 
@@ -234,9 +235,9 @@ uint32_t decodeBase64( string const & str )
   return number;
 }
 
-sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & word,
-                                                             vector< wstring > const & alts,
-                                                             wstring const &,
+sptr< Dictionary::DataRequest > DictdDictionary::getArticle( std::u32string const & word,
+                                                             vector< std::u32string > const & alts,
+                                                             std::u32string const &,
                                                              bool ignoreDiacritics )
 
 {
@@ -251,13 +252,13 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
       chain.insert( chain.end(), altChain.begin(), altChain.end() );
     }
 
-    multimap< wstring, string > mainArticles, alternateArticles;
+    multimap< std::u32string, string > mainArticles, alternateArticles;
 
     set< uint32_t > articlesIncluded; // Some synonyms make it that the articles
                                       // appear several times. We combat this
                                       // by only allowing them to appear once.
 
-    wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
+    std::u32string wordCaseFolded = Folding::applySimpleCaseOnly( word );
     if ( ignoreDiacritics ) {
       wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
     }
@@ -377,12 +378,12 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
 
       // We do the case-folded comparison here.
 
-      wstring headwordStripped = Folding::applySimpleCaseOnly( x.word );
+      std::u32string headwordStripped = Folding::applySimpleCaseOnly( x.word );
       if ( ignoreDiacritics ) {
         headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
       }
 
-      multimap< wstring, string > & mapToUse =
+      multimap< std::u32string, string > & mapToUse =
         ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
 
       mapToUse.insert( pair( Folding::applySimpleCaseOnly( x.word ), articleText ) );
@@ -396,7 +397,7 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
 
     string result;
 
-    multimap< wstring, string >::const_iterator i;
+    multimap< std::u32string, string >::const_iterator i;
 
     for ( i = mainArticles.begin(); i != mainArticles.end(); ++i ) {
       result += i->second;
@@ -422,7 +423,8 @@ QString const & DictdDictionary::getDescription()
     return dictionaryDescription;
   }
 
-  sptr< Dictionary::DataRequest > req = getArticle( U"00databaseinfo", vector< wstring >(), wstring(), false );
+  sptr< Dictionary::DataRequest > req =
+    getArticle( U"00databaseinfo", vector< std::u32string >(), std::u32string(), false );
 
   if ( req->dataSize() > 0 ) {
     dictionaryDescription = QString::fromUtf8( req->getFullData().data(), req->getFullData().size() );
@@ -629,10 +631,10 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
                 // Handle the forth entry, if it exists. From dictfmt man:
                 // When --index-keep-orig option is used fourth column is created
                 // (if necessary) in .index file.
-                indexedWords.addWord( Utf8::decode( string( tab3 + 1, strlen( tab3 + 1 ) ) ), curOffset );
+                indexedWords.addWord( Text::toUtf32( string( tab3 + 1, strlen( tab3 + 1 ) ) ), curOffset );
                 ++idxHeader.wordCount;
               }
-              indexedWords.addWord( Utf8::decode( string( buf, strchr( buf, '\t' ) - buf ) ), curOffset );
+              indexedWords.addWord( Text::toUtf32( string( buf, strchr( buf, '\t' ) - buf ) ), curOffset );
               ++idxHeader.wordCount;
               ++idxHeader.articleCount;
 
@@ -657,7 +659,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
                       eol = articleBody; // No headword itself
                     }
                     if ( eol ) {
-                      while ( *eol && Utf8::isspace( *eol ) ) {
+                      while ( *eol && Text::isspace( *eol ) ) {
                         ++eol; // skip spaces
                       }
 

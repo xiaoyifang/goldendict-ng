@@ -4,9 +4,8 @@
 #include "indexedzip.hh"
 #include "zipfile.hh"
 #include <zlib.h>
-#include "utf8.hh"
+#include "text.hh"
 #include "iconv.hh"
-#include "wstring_qt.hh"
 #include <QtCore5Compat/QTextCodec>
 
 #include <QMutexLocker>
@@ -23,7 +22,7 @@ bool IndexedZip::openZipFile( QString const & name )
   return zipIsOpen;
 }
 
-bool IndexedZip::hasFile( gd::wstring const & name )
+bool IndexedZip::hasFile( std::u32string const & name )
 {
   if ( !zipIsOpen ) {
     return false;
@@ -34,7 +33,7 @@ bool IndexedZip::hasFile( gd::wstring const & name )
   return !links.empty();
 }
 
-bool IndexedZip::loadFile( gd::wstring const & name, vector< char > & data )
+bool IndexedZip::loadFile( std::u32string const & name, vector< char > & data )
 {
   if ( !zipIsOpen ) {
     return false;
@@ -180,7 +179,7 @@ bool IndexedZip::indexFile( BtreeIndexing::IndexedWords & zipFileNames, quint32 
     if ( !hasNonAscii ) {
       // Add entry as is
 
-      zipFileNames.addSingleWord( Utf8::decode( entry.fileName.data() ), entry.localHeaderOffset );
+      zipFileNames.addSingleWord( Text::toUtf32( entry.fileName.data() ), entry.localHeaderOffset );
       if ( filesCount ) {
         *filesCount += 1;
       }
@@ -192,7 +191,7 @@ bool IndexedZip::indexFile( BtreeIndexing::IndexedWords & zipFileNames, quint32 
 
       // Utf8
       try {
-        wstring decoded = Utf8::decode( entry.fileName.constData() );
+        std::u32string decoded = Text::toUtf32( entry.fileName.constData() );
 
         zipFileNames.addSingleWord( decoded, entry.localHeaderOffset );
         if ( filesCount != 0 && !alreadyCounted ) {
@@ -200,12 +199,12 @@ bool IndexedZip::indexFile( BtreeIndexing::IndexedWords & zipFileNames, quint32 
           alreadyCounted = true;
         }
       }
-      catch ( Utf8::exCantDecode & ) {
+      catch ( Text::exCantDecode & ) {
         // Failed to decode
       }
 
       if ( !entry.fileNameInUTF8 ) {
-        wstring nameInSystemLocale;
+        std::u32string nameInSystemLocale;
 
         // System locale
         if ( localeCodec ) {
@@ -224,7 +223,7 @@ bool IndexedZip::indexFile( BtreeIndexing::IndexedWords & zipFileNames, quint32 
 
         // CP866
         try {
-          wstring decoded = Iconv::toWstring( "CP866", entry.fileName.constData(), entry.fileName.size() );
+          std::u32string decoded = Iconv::toWstring( "CP866", entry.fileName.constData(), entry.fileName.size() );
 
           if ( nameInSystemLocale != decoded ) {
             zipFileNames.addSingleWord( decoded, entry.localHeaderOffset );
@@ -241,7 +240,7 @@ bool IndexedZip::indexFile( BtreeIndexing::IndexedWords & zipFileNames, quint32 
 
         // CP1251
         try {
-          wstring decoded = Iconv::toWstring( "CP1251", entry.fileName.constData(), entry.fileName.size() );
+          std::u32string decoded = Iconv::toWstring( "CP1251", entry.fileName.constData(), entry.fileName.size() );
 
           if ( nameInSystemLocale != decoded ) {
             zipFileNames.addSingleWord( decoded, entry.localHeaderOffset );

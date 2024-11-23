@@ -9,7 +9,6 @@
 namespace Transliteration {
 
 using std::map;
-using gd::wstring;
 using std::string;
 using std::vector;
 
@@ -32,18 +31,18 @@ public:
 
   virtual unsigned long getWordCount() noexcept;
 
-  virtual vector< wstring > getAlternateWritings( wstring const & ) noexcept = 0;
+  virtual vector< std::u32string > getAlternateWritings( std::u32string const & ) noexcept = 0;
 
-  virtual sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( wstring const & );
+  virtual sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( std::u32string const & );
 
-  virtual sptr< Dictionary::WordSearchRequest > prefixMatch( wstring const &, unsigned long );
+  virtual sptr< Dictionary::WordSearchRequest > prefixMatch( std::u32string const &, unsigned long );
 
   virtual sptr< Dictionary::DataRequest >
-  getArticle( wstring const &, vector< wstring > const &, wstring const &, bool );
+  getArticle( std::u32string const &, vector< std::u32string > const &, std::u32string const &, bool );
 };
 
 
-class Table: public map< wstring, wstring >
+class Table: public map< std::u32string, std::u32string >
 {
   unsigned maxEntrySize;
 
@@ -77,7 +76,7 @@ public:
   TransliterationDictionary(
     string const & id, string const & name, QIcon icon, Table const & table, bool caseSensitive = true );
 
-  virtual vector< wstring > getAlternateWritings( wstring const & ) noexcept;
+  virtual vector< std::u32string > getAlternateWritings( std::u32string const & ) noexcept;
 };
 
 } // namespace Transliteration

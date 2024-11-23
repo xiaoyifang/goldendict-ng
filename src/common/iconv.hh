@@ -5,7 +5,7 @@
 
 #include <QString>
 
-#include "wstring.hh"
+#include "text.hh"
 #include "ex.hh"
 
 #include <iconv.h>
@@ -35,7 +35,7 @@ public:
   QString convert( void const *& inBuf, size_t & inBytesLeft );
 
   // Converts a given block of data from the given encoding to a wide string.
-  static gd::wstring toWstring( char const * fromEncoding, void const * fromData, size_t dataSize );
+  static std::u32string toWstring( char const * fromEncoding, void const * fromData, size_t dataSize );
 
   // Converts a given block of data from the given encoding to an utf8-encoded
   // string.

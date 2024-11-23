@@ -5,7 +5,6 @@
 #include <cstdlib>
 #include "fulltextsearch.hh"
 #include "ftshelpers.hh"
-#include "wstring_qt.hh"
 #include "dictfile.hh"
 #include "folding.hh"
 #include "utils.hh"
