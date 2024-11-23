@@ -7,7 +7,7 @@
 #include <opencc/opencc.h>
 #include "folding.hh"
 #include "transliteration.hh"
-#include "utf8.hh"
+#include "text.hh"
 
 namespace ChineseTranslit {
 
@@ -27,7 +27,7 @@ public:
                                  QString const & openccConfig );
   ~CharacterConversionDictionary();
 
-  std::vector< gd::wstring > getAlternateWritings( gd::wstring const & ) noexcept override;
+  std::vector< std::u32string > getAlternateWritings( std::u32string const & ) noexcept override;
 };
 
 CharacterConversionDictionary::CharacterConversionDictionary( std::string const & id,
@@ -68,15 +68,15 @@ CharacterConversionDictionary::~CharacterConversionDictionary()
   // #endif
 }
 
-std::vector< gd::wstring > CharacterConversionDictionary::getAlternateWritings( gd::wstring const & str ) noexcept
+std::vector< std::u32string > CharacterConversionDictionary::getAlternateWritings( std::u32string const & str ) noexcept
 {
-  std::vector< gd::wstring > results;
+  std::vector< std::u32string > results;
 
   if ( converter != NULL ) {
-    gd::wstring folded = Folding::applySimpleCaseOnly( str );
-    std::string input  = Utf8::encode( folded );
+    std::u32string folded = Folding::applySimpleCaseOnly( str );
+    std::string input     = Text::toUtf8( folded );
     std::string output;
-    gd::wstring result;
+    std::u32string result;
 
     try {
       // #ifdef Q_OS_MAC
@@ -93,7 +93,7 @@ std::vector< gd::wstring > CharacterConversionDictionary::getAlternateWritings( 
       // #else
       //       output = converter->Convert( input );
       // #endif
-      result = Utf8::decode( output );
+      result = Text::toUtf32( output );
     }
     catch ( std::exception & ex ) {
       qWarning( "OpenCC: conversion failed %s", ex.what() );

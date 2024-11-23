@@ -2,14 +2,13 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "forvo.hh"
-#include "wstring_qt.hh"
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QtXml>
 #include <list>
 #include "audiolink.hh"
 #include "htmlescape.hh"
-#include "utf8.hh"
+#include "text.hh"
 
 namespace Forvo {
 
@@ -48,7 +47,7 @@ public:
     return 0;
   }
 
-  sptr< WordSearchRequest > prefixMatch( wstring const & /*word*/, unsigned long /*maxResults*/ ) override
+  sptr< WordSearchRequest > prefixMatch( std::u32string const & /*word*/, unsigned long /*maxResults*/ ) override
   {
     sptr< WordSearchRequestInstant > sr = std::make_shared< WordSearchRequestInstant >();
 
@@ -57,7 +56,8 @@ public:
     return sr;
   }
 
-  sptr< DataRequest > getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ) override;
+  sptr< DataRequest >
+  getArticle( std::u32string const &, vector< std::u32string > const & alts, std::u32string const &, bool ) override;
 
 protected:
 
@@ -89,8 +89,8 @@ class ForvoArticleRequest: public Dictionary::DataRequest
 
 public:
 
-  ForvoArticleRequest( wstring const & word,
-                       vector< wstring > const & alts,
+  ForvoArticleRequest( std::u32string const & word,
+                       vector< std::u32string > const & alts,
                        QString const & apiKey_,
                        QString const & languageCode_,
                        string const & dictionaryId_,
@@ -100,14 +100,16 @@ public:
 
 private:
 
-  void addQuery( QNetworkAccessManager & mgr, wstring const & word );
+  void addQuery( QNetworkAccessManager & mgr, std::u32string const & word );
 
 private slots:
   virtual void requestFinished( QNetworkReply * );
 };
 
-sptr< DataRequest >
-ForvoDictionary::getArticle( wstring const & word, vector< wstring > const & alts, wstring const &, bool )
+sptr< DataRequest > ForvoDictionary::getArticle( std::u32string const & word,
+                                                 vector< std::u32string > const & alts,
+                                                 std::u32string const &,
+                                                 bool )
 
 {
   if ( word.size() > 80 || apiKey.isEmpty() ) {
@@ -137,8 +139,8 @@ void ForvoArticleRequest::cancel()
   finish();
 }
 
-ForvoArticleRequest::ForvoArticleRequest( wstring const & str,
-                                          vector< wstring > const & alts,
+ForvoArticleRequest::ForvoArticleRequest( std::u32string const & str,
+                                          vector< std::u32string > const & alts,
                                           QString const & apiKey_,
                                           QString const & languageCode_,
                                           string const & dictionaryId_,
@@ -156,7 +158,7 @@ ForvoArticleRequest::ForvoArticleRequest( wstring const & str,
   }
 }
 
-void ForvoArticleRequest::addQuery( QNetworkAccessManager & mgr, wstring const & str )
+void ForvoArticleRequest::addQuery( QNetworkAccessManager & mgr, std::u32string const & str )
 {
   qDebug( "Forvo: requesting article %s", QString::fromStdU32String( str ).toUtf8().data() );
 
@@ -177,7 +179,7 @@ void ForvoArticleRequest::addQuery( QNetworkAccessManager & mgr, wstring const &
 
   sptr< QNetworkReply > netReply = std::shared_ptr< QNetworkReply >( mgr.get( QNetworkRequest( reqUrl ) ) );
 
-  netReplies.push_back( NetReply( netReply, Utf8::encode( str ) ) );
+  netReplies.push_back( NetReply( netReply, Text::toUtf8( str ) ) );
 }
 
 void ForvoArticleRequest::requestFinished( QNetworkReply * r )

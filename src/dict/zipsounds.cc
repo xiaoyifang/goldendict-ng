@@ -4,7 +4,7 @@
 #include "zipsounds.hh"
 #include "dictfile.hh"
 #include "folding.hh"
-#include "utf8.hh"
+#include "text.hh"
 #include "btreeidx.hh"
 
 #include "audiolink.hh"
@@ -24,7 +24,6 @@
 namespace ZipSounds {
 
 using std::string;
-using gd::wstring;
 using std::map;
 using std::multimap;
 using std::set;
@@ -64,19 +63,19 @@ bool indexIsOldOrBad( string const & indexFile )
     || header.formatVersion != CurrentFormatVersion;
 }
 
-wstring stripExtension( string const & str )
+std::u32string stripExtension( string const & str )
 {
-  wstring name;
+  std::u32string name;
   try {
-    name = Utf8::decode( str );
+    name = Text::toUtf32( str );
   }
-  catch ( Utf8::exCantDecode & ) {
+  catch ( Text::exCantDecode & ) {
     return name;
   }
 
   if ( Filetype::isNameOfSound( str ) ) {
-    wstring::size_type pos = name.rfind( L'.' );
-    if ( pos != wstring::npos ) {
+    std::u32string::size_type pos = name.rfind( L'.' );
+    if ( pos != std::u32string::npos ) {
       name.erase( pos );
     }
 
@@ -118,8 +117,10 @@ public:
     return getArticleCount();
   }
 
-  sptr< Dictionary::DataRequest >
-  getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ignoreDiacritics ) override;
+  sptr< Dictionary::DataRequest > getArticle( std::u32string const &,
+                                              vector< std::u32string > const & alts,
+                                              std::u32string const &,
+                                              bool ignoreDiacritics ) override;
 
   sptr< Dictionary::DataRequest > getResource( string const & name ) override;
 
@@ -157,9 +158,9 @@ string ZipSoundsDictionary::getName() noexcept
   return result;
 }
 
-sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const & word,
-                                                                 vector< wstring > const & alts,
-                                                                 wstring const &,
+sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( std::u32string const & word,
+                                                                 vector< std::u32string > const & alts,
+                                                                 std::u32string const &,
                                                                  bool ignoreDiacritics )
 
 {
@@ -173,13 +174,13 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const &
     chain.insert( chain.end(), altChain.begin(), altChain.end() );
   }
 
-  multimap< wstring, uint32_t > mainArticles, alternateArticles;
+  multimap< std::u32string, uint32_t > mainArticles, alternateArticles;
 
   set< uint32_t > articlesIncluded; // Some synonims make it that the articles
                                     // appear several times. We combat this
                                     // by only allowing them to appear once.
 
-  wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
+  std::u32string wordCaseFolded = Folding::applySimpleCaseOnly( word );
   if ( ignoreDiacritics ) {
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
   }
@@ -194,12 +195,12 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const &
 
     // We do the case-folded comparison here.
 
-    wstring headwordStripped = Folding::applySimpleCaseOnly( x.word );
+    std::u32string headwordStripped = Folding::applySimpleCaseOnly( x.word );
     if ( ignoreDiacritics ) {
       headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
     }
 
-    multimap< wstring, uint32_t > & mapToUse =
+    multimap< std::u32string, uint32_t > & mapToUse =
       ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
 
     mapToUse.insert( std::pair( Folding::applySimpleCaseOnly( x.word ), x.articleOffset ) );
@@ -213,7 +214,7 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const &
 
   string result;
 
-  multimap< wstring, uint32_t >::const_iterator i;
+  multimap< std::u32string, uint32_t >::const_iterator i;
 
   result += "<table class=\"lsa_play\">";
 
@@ -244,7 +245,7 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const &
     nameBlock += sz;
 
     string displayedName =
-      mainArticles.size() + alternateArticles.size() > 1 ? name : Utf8::encode( stripExtension( name ) );
+      mainArticles.size() + alternateArticles.size() > 1 ? name : Text::toUtf8( stripExtension( name ) );
 
     result += "<tr>";
 
@@ -286,7 +287,7 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const &
     nameBlock += sz;
 
     string displayedName =
-      mainArticles.size() + alternateArticles.size() > 1 ? name : Utf8::encode( stripExtension( name ) );
+      mainArticles.size() + alternateArticles.size() > 1 ? name : Text::toUtf8( stripExtension( name ) );
 
     result += "<tr>";
 
@@ -316,7 +317,7 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getResource( string const &
 {
   // Remove extension for sound files (like in sound dirs)
 
-  wstring strippedName = stripExtension( name );
+  std::u32string strippedName = stripExtension( name );
 
   vector< WordArticleLink > chain = findArticles( strippedName );
 
@@ -430,7 +431,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
               // Remove extension for sound files (like in sound dirs)
 
-              wstring word = stripExtension( link.word );
+              std::u32string word = stripExtension( link.word );
               if ( !word.empty() ) {
                 names.addWord( word, offset );
               }

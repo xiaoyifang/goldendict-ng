@@ -9,7 +9,6 @@
 #include "htmlescape.hh"
 #include "langcoder.hh"
 #include "utils.hh"
-#include "wstring_qt.hh"
 #include <QDir>
 #include <QFile>
 #include <QTextDocumentFragment>
@@ -21,7 +20,6 @@
 
 using std::vector;
 using std::string;
-using gd::wstring;
 using std::set;
 using std::list;
 
@@ -484,7 +482,7 @@ ArticleRequest::ArticleRequest( QString const & word,
 
   // Accumulate main forms
   for ( const auto & activeDict : activeDicts ) {
-    auto const s = activeDict->findHeadwordsForSynonym( gd::removeTrailingZero( word ) );
+    auto const s = activeDict->findHeadwordsForSynonym( Text::removeTrailingZero( word ) );
 
     connect( s.get(), &Dictionary::Request::finished, this, &ArticleRequest::altSearchFinished, Qt::QueuedConnection );
 
@@ -521,9 +519,9 @@ void ArticleRequest::altSearchFinished()
 
     altsDone = true; // So any pending signals in queued mode won't mess us up
 
-    vector< wstring > altsVector( alts.begin(), alts.end() );
+    vector< std::u32string > altsVector( alts.begin(), alts.end() );
 
-    wstring wordStd = word.toStdU32String();
+    std::u32string wordStd = word.toStdU32String();
 
     if ( activeDicts.size() <= 1 ) {
       articleSizeLimit = -1; // Don't collapse article if only one dictionary presented
@@ -534,7 +532,7 @@ void ArticleRequest::altSearchFinished()
         sptr< Dictionary::DataRequest > r = activeDict->getArticle(
           wordStd,
           altsVector,
-          gd::removeTrailingZero( contexts.value( QString::fromStdString( activeDict->getId() ) ) ),
+          Text::removeTrailingZero( contexts.value( QString::fromStdString( activeDict->getId() ) ) ),
           ignoreDiacritics );
 
         connect( r.get(), &Dictionary::Request::finished, this, &ArticleRequest::bodyFinished, Qt::QueuedConnection );
@@ -1008,7 +1006,7 @@ void ArticleRequest::individualWordFinished()
   WordFinder::SearchResults const & results = stemmedWordFinder->getResults();
 
   if ( results.size() ) {
-    wstring source = Folding::applySimpleCaseOnly( currentSplittedWordCompound );
+    std::u32string source = Folding::applySimpleCaseOnly( currentSplittedWordCompound );
 
     bool hadSomething = false;
 
@@ -1022,7 +1020,7 @@ void ArticleRequest::individualWordFinished()
 
       // Prefix match found. Check if the aliases are acceptable.
 
-      wstring result( Folding::applySimpleCaseOnly( results[ x ].first ) );
+      std::u32string result( Folding::applySimpleCaseOnly( results[ x ].first ) );
 
       if ( source.size() <= result.size() && result.compare( 0, source.size(), source ) == 0 ) {
         // The resulting string begins with the source one

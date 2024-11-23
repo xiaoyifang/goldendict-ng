@@ -2,7 +2,7 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "filetype.hh"
-#include "utf8.hh"
+#include "text.hh"
 #include <ctype.h>
 
 namespace Filetype {
@@ -26,13 +26,13 @@ string simplifyString( string const & str, bool lowercase )
 
   size_t beginPos = 0;
 
-  while ( beginPos < str.size() && Utf8::isspace( str[ beginPos ] ) ) {
+  while ( beginPos < str.size() && Text::isspace( str[ beginPos ] ) ) {
     ++beginPos;
   }
 
   size_t endPos = str.size();
 
-  while ( endPos && Utf8::isspace( str[ endPos - 1 ] ) ) {
+  while ( endPos && Text::isspace( str[ endPos - 1 ] ) ) {
     --endPos;
   }
 

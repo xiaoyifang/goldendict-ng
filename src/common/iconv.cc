@@ -5,7 +5,6 @@
 #include <vector>
 #include <errno.h>
 #include <string.h>
-#include "wstring_qt.hh"
 
 char const * const Iconv::GdWchar = "UTF-32LE";
 char const * const Iconv::Utf16Le = "UTF-16LE";
@@ -80,7 +79,7 @@ QString Iconv::convert( void const *& inBuf, size_t & inBytesLeft )
   return QString::fromUtf8( &outBuf.front(), datasize );
 }
 
-gd::wstring Iconv::toWstring( char const * fromEncoding, void const * fromData, size_t dataSize )
+std::u32string Iconv::toWstring( char const * fromEncoding, void const * fromData, size_t dataSize )
 
 {
   /// Special-case the dataSize == 0 to avoid any kind of iconv-specific

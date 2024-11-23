@@ -3,8 +3,7 @@
 
 #include "xdxf2html.hh"
 #include <QtXml>
-#include "utf8.hh"
-#include "wstring_qt.hh"
+#include "text.hh"
 #include "folding.hh"
 
 #include "audiolink.hh"
@@ -442,7 +441,7 @@ string convert( string const & in,
       if ( i != pAbrv->end() ) {
         string title;
 
-        if ( Utf8::decode( i->second ).size() < 70 ) {
+        if ( Text::toUtf32( i->second ).size() < 70 ) {
           // Replace all spaces with non-breakable ones, since that's how Lingvo shows tooltips
           title.reserve( i->second.size() );
 
@@ -466,7 +465,7 @@ string convert( string const & in,
         else {
           title = i->second;
         }
-        el.setAttribute( "title", QString::fromStdU32String( Utf8::decode( title ) ) );
+        el.setAttribute( "title", QString::fromStdU32String( Text::toUtf32( title ) ) );
       }
     }
   }
@@ -628,7 +627,7 @@ string convert( string const & in,
 
     //    if( type == XDXF && dictPtr != NULL && !el.hasAttribute( "start" ) )
     if ( dictPtr != NULL && !el.hasAttribute( "start" ) ) {
-      string filename = Utf8::encode( el.text().toStdU32String() );
+      string filename = Text::toUtf8( el.text().toStdU32String() );
 
       if ( Filetype::isNameOfPicture( filename ) ) {
         QUrl url;

@@ -1,5 +1,4 @@
 #include "headwordsmodel.hh"
-#include "wstring_qt.hh"
 
 HeadwordListModel::HeadwordListModel( QObject * parent ):
   QAbstractListModel( parent ),
@@ -67,7 +66,7 @@ void HeadwordListModel::setFilter( const QRegularExpression & reg )
     }
   }
   filterWords.clear();
-  auto sr = _dict->prefixMatch( gd::removeTrailingZero( reg.pattern() ), maxFilterResults );
+  auto sr = _dict->prefixMatch( Text::removeTrailingZero( reg.pattern() ), maxFilterResults );
   connect( sr.get(), &Dictionary::Request::finished, this, &HeadwordListModel::requestFinished, Qt::QueuedConnection );
   queuedRequests.push_back( sr );
 }

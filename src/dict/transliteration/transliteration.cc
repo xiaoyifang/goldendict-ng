@@ -2,12 +2,11 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "transliteration.hh"
-#include "utf8.hh"
+#include "text.hh"
 #include "folding.hh"
 
 namespace Transliteration {
 
-using gd::wchar;
 
 BaseTransliterationDictionary::BaseTransliterationDictionary( string const & id,
                                                               string const & name_,
@@ -36,24 +35,28 @@ unsigned long BaseTransliterationDictionary::getWordCount() noexcept
   return 0;
 }
 
-sptr< Dictionary::WordSearchRequest > BaseTransliterationDictionary::prefixMatch( wstring const &, unsigned long )
+sptr< Dictionary::WordSearchRequest > BaseTransliterationDictionary::prefixMatch( std::u32string const &,
+                                                                                  unsigned long )
 {
   return std::make_shared< Dictionary::WordSearchRequestInstant >();
 }
 
-sptr< Dictionary::DataRequest >
-BaseTransliterationDictionary::getArticle( wstring const &, vector< wstring > const &, wstring const &, bool )
+sptr< Dictionary::DataRequest > BaseTransliterationDictionary::getArticle( std::u32string const &,
+                                                                           vector< std::u32string > const &,
+                                                                           std::u32string const &,
+                                                                           bool )
 
 {
   return std::make_shared< Dictionary::DataRequestInstant >( false );
 }
 
-sptr< Dictionary::WordSearchRequest > BaseTransliterationDictionary::findHeadwordsForSynonym( wstring const & str )
+sptr< Dictionary::WordSearchRequest >
+BaseTransliterationDictionary::findHeadwordsForSynonym( std::u32string const & str )
 
 {
   sptr< Dictionary::WordSearchRequestInstant > result = std::make_shared< Dictionary::WordSearchRequestInstant >();
 
-  vector< wstring > alts = getAlternateWritings( str );
+  vector< std::u32string > alts = getAlternateWritings( str );
 
   qDebug( "alts = %u", (unsigned)alts.size() );
 
@@ -67,13 +70,13 @@ sptr< Dictionary::WordSearchRequest > BaseTransliterationDictionary::findHeadwor
 
 void Table::ins( char const * from, char const * to )
 {
-  wstring fr = Utf8::decode( std::string( from ) );
+  std::u32string fr = Text::toUtf32( std::string( from ) );
 
   if ( fr.size() > maxEntrySize ) {
     maxEntrySize = fr.size();
   }
 
-  insert( std::pair< wstring, wstring >( fr, Utf8::decode( std::string( to ) ) ) );
+  insert( std::pair< std::u32string, std::u32string >( fr, Text::toUtf32( std::string( to ) ) ) );
 }
 
 
@@ -84,12 +87,12 @@ TransliterationDictionary::TransliterationDictionary(
 {
 }
 
-vector< wstring > TransliterationDictionary::getAlternateWritings( wstring const & str ) noexcept
+vector< std::u32string > TransliterationDictionary::getAlternateWritings( std::u32string const & str ) noexcept
 {
-  vector< wstring > results;
+  vector< std::u32string > results;
 
-  wstring result, folded;
-  wstring const * target;
+  std::u32string result, folded;
+  std::u32string const * target;
 
   if ( caseSensitive ) {
     // Don't do any transform -- the transliteration is case-sensitive
@@ -100,8 +103,8 @@ vector< wstring > TransliterationDictionary::getAlternateWritings( wstring const
     target = &folded;
   }
 
-  wchar const * ptr = target->c_str();
-  size_t left       = target->size();
+  char32_t const * ptr = target->c_str();
+  size_t left          = target->size();
 
   Table::const_iterator i;
 
@@ -110,7 +113,7 @@ vector< wstring > TransliterationDictionary::getAlternateWritings( wstring const
 
     for ( x = table.getMaxEntrySize(); x >= 1; --x ) {
       if ( left >= x ) {
-        i = table.find( wstring( ptr, x ) );
+        i = table.find( std::u32string( ptr, x ) );
 
         if ( i != table.end() ) {
           result.append( i->second );

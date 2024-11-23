@@ -4,7 +4,6 @@
 #pragma once
 
 #include <QString>
-#include "wstring_qt.hh"
 /// Language-specific stuff - codes, names, ids etc.
 namespace Language {
 
@@ -47,5 +46,5 @@ struct BabylonLang
   const char * localizedName;
 };
 BabylonLang getBabylonLangByIndex( int index );
-quint32 findBlgLangIDByEnglishName( gd::wstring const & lang );
+quint32 findBlgLangIDByEnglishName( std::u32string const & lang );
 } // namespace Language

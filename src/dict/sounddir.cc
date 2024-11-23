@@ -3,13 +3,12 @@
 
 #include "sounddir.hh"
 #include "folding.hh"
-#include "utf8.hh"
+#include "text.hh"
 #include "btreeidx.hh"
 #include "chunkedstorage.hh"
 #include "filetype.hh"
 #include "htmlescape.hh"
 #include "audiolink.hh"
-#include "wstring_qt.hh"
 
 #include "utils.hh"
 
@@ -21,7 +20,6 @@
 namespace SoundDir {
 
 using std::string;
-using gd::wstring;
 using std::map;
 using std::multimap;
 using std::set;
@@ -85,8 +83,10 @@ public:
     return getArticleCount();
   }
 
-  sptr< Dictionary::DataRequest >
-  getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ignoreDiacritics ) override;
+  sptr< Dictionary::DataRequest > getArticle( std::u32string const &,
+                                              vector< std::u32string > const & alts,
+                                              std::u32string const &,
+                                              bool ignoreDiacritics ) override;
 
   sptr< Dictionary::DataRequest > getResource( string const & name ) override;
 
@@ -114,9 +114,9 @@ SoundDirDictionary::SoundDirDictionary( string const & id,
   openIndex( IndexInfo( idxHeader.indexBtreeMaxElements, idxHeader.indexRootOffset ), idx, idxMutex );
 }
 
-sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( wstring const & word,
-                                                                vector< wstring > const & alts,
-                                                                wstring const &,
+sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( std::u32string const & word,
+                                                                vector< std::u32string > const & alts,
+                                                                std::u32string const &,
                                                                 bool ignoreDiacritics )
 {
   vector< WordArticleLink > chain = findArticles( word, ignoreDiacritics );
@@ -130,13 +130,13 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( wstring const & 
   }
 
   // maps to the chain number
-  multimap< wstring, unsigned > mainArticles, alternateArticles;
+  multimap< std::u32string, unsigned > mainArticles, alternateArticles;
 
   set< uint32_t > articlesIncluded; // Some synonims make it that the articles
                                     // appear several times. We combat this
                                     // by only allowing them to appear once.
 
-  wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
+  std::u32string wordCaseFolded = Folding::applySimpleCaseOnly( word );
   if ( ignoreDiacritics ) {
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
   }
@@ -151,12 +151,12 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( wstring const & 
 
     // We do the case-folded comparison here.
 
-    wstring headwordStripped = Folding::applySimpleCaseOnly( chain[ x ].word );
+    std::u32string headwordStripped = Folding::applySimpleCaseOnly( chain[ x ].word );
     if ( ignoreDiacritics ) {
       headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
     }
 
-    multimap< wstring, unsigned > & mapToUse =
+    multimap< std::u32string, unsigned > & mapToUse =
       ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
 
     mapToUse.insert( std::pair( Folding::applySimpleCaseOnly( chain[ x ].word ), x ) );
@@ -170,7 +170,7 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( wstring const & 
 
   string result;
 
-  multimap< wstring, uint32_t >::const_iterator i;
+  multimap< std::u32string, uint32_t >::const_iterator i;
 
   string displayedName;
   vector< char > chunk;
@@ -399,11 +399,11 @@ void addDir( QDir const & baseDir,
       const uint32_t articleOffset = chunks.startNewBlock();
       chunks.addToBlock( fileName.c_str(), fileName.size() + 1 );
 
-      wstring name = i->fileName().toStdU32String();
+      std::u32string name = i->fileName().toStdU32String();
 
-      const wstring::size_type pos = name.rfind( L'.' );
+      const std::u32string::size_type pos = name.rfind( L'.' );
 
-      if ( pos != wstring::npos ) {
+      if ( pos != std::u32string::npos ) {
         name.erase( pos );
       }
 

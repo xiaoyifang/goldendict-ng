@@ -465,7 +465,7 @@ BabylonLang getBabylonLangByIndex( int index )
   return BabylonDb[ index ];
 }
 
-quint32 findBlgLangIDByEnglishName( gd::wstring const & lang )
+quint32 findBlgLangIDByEnglishName( std::u32string const & lang )
 {
   QString enName = QString::fromStdU32String( lang );
   for ( const auto & idx : BabylonDb ) {

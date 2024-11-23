@@ -4,7 +4,7 @@
 #include "xdxf.hh"
 #include "btreeidx.hh"
 #include "folding.hh"
-#include "utf8.hh"
+#include "text.hh"
 #include "chunkedstorage.hh"
 #include "dictzip.hh"
 #include "htmlescape.hh"
@@ -39,7 +39,6 @@ using std::multimap;
 using std::pair;
 using std::set;
 using std::string;
-using gd::wstring;
 using std::vector;
 using std::list;
 
@@ -160,8 +159,10 @@ public:
     return idxHeader.langTo;
   }
 
-  sptr< Dictionary::DataRequest >
-  getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ignoreDiacritics ) override;
+  sptr< Dictionary::DataRequest > getArticle( std::u32string const &,
+                                              vector< std::u32string > const & alts,
+                                              std::u32string const &,
+                                              bool ignoreDiacritics ) override;
 
   sptr< Dictionary::DataRequest > getResource( string const & name ) override;
 
@@ -411,8 +412,8 @@ XdxfDictionary::getSearchResults( QString const & searchString, int searchMode, 
 class XdxfArticleRequest: public Dictionary::DataRequest
 {
 
-  wstring word;
-  vector< wstring > alts;
+  std::u32string word;
+  vector< std::u32string > alts;
   XdxfDictionary & dict;
   bool ignoreDiacritics;
 
@@ -421,8 +422,8 @@ class XdxfArticleRequest: public Dictionary::DataRequest
 
 public:
 
-  XdxfArticleRequest( wstring const & word_,
-                      vector< wstring > const & alts_,
+  XdxfArticleRequest( std::u32string const & word_,
+                      vector< std::u32string > const & alts_,
                       XdxfDictionary & dict_,
                       bool ignoreDiacritics_ ):
     word( word_ ),
@@ -467,13 +468,13 @@ void XdxfArticleRequest::run()
     chain.insert( chain.end(), altChain.begin(), altChain.end() );
   }
 
-  multimap< wstring, pair< string, string > > mainArticles, alternateArticles;
+  multimap< std::u32string, pair< string, string > > mainArticles, alternateArticles;
 
   set< uint32_t > articlesIncluded; // Some synonims make it that the articles
                                     // appear several times. We combat this
                                     // by only allowing them to appear once.
 
-  wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
+  std::u32string wordCaseFolded = Folding::applySimpleCaseOnly( word );
   if ( ignoreDiacritics ) {
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
   }
@@ -502,12 +503,12 @@ void XdxfArticleRequest::run()
 
       // We do the case-folded comparison here.
 
-      wstring headwordStripped = Folding::applySimpleCaseOnly( headword );
+      std::u32string headwordStripped = Folding::applySimpleCaseOnly( headword );
       if ( ignoreDiacritics ) {
         headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
       }
 
-      multimap< wstring, pair< string, string > > & mapToUse =
+      multimap< std::u32string, pair< string, string > > & mapToUse =
         ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
 
       mapToUse.insert( pair( Folding::applySimpleCaseOnly( headword ), pair( headword, articleText ) ) );
@@ -527,7 +528,7 @@ void XdxfArticleRequest::run()
 
   string result;
 
-  multimap< wstring, pair< string, string > >::const_iterator i;
+  multimap< std::u32string, pair< string, string > >::const_iterator i;
 
   string cleaner = Utils::Html::getHtmlCleaner();
 
@@ -554,9 +555,9 @@ void XdxfArticleRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > XdxfDictionary::getArticle( wstring const & word,
-                                                            vector< wstring > const & alts,
-                                                            wstring const &,
+sptr< Dictionary::DataRequest > XdxfDictionary::getArticle( std::u32string const & word,
+                                                            vector< std::u32string > const & alts,
+                                                            std::u32string const &,
                                                             bool ignoreDiacritics )
 
 {
@@ -973,7 +974,7 @@ void XdxfResourceRequest::run()
         if ( dict.resourceZip.isOpen() ) {
           QMutexLocker _( &dataMutex );
 
-          if ( !dict.resourceZip.loadFile( Utf8::decode( resourceName ), data ) ) {
+          if ( !dict.resourceZip.loadFile( Text::toUtf32( resourceName ), data ) ) {
             throw; // Make it fail since we couldn't read the archive
           }
         }
@@ -1194,7 +1195,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
                   else if ( stream.name() == u"abbreviations" ) {
                     QString s;
                     string value;
-                    list< wstring > keys;
+                    list< std::u32string > keys;
                     while ( !( stream.isEndElement() && stream.name() == u"abbreviations" ) && !stream.atEnd() ) {
                       if ( !stream.readNextStartElement() ) {
                         break;
@@ -1210,7 +1211,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
                             s     = readElementText( stream );
                             value = Folding::trimWhitespace( s ).toStdString();
                             for ( const auto & key : keys ) {
-                              abrv[ Utf8::encode( Folding::trimWhitespace( key ) ) ] = value;
+                              abrv[ Text::toUtf8( Folding::trimWhitespace( key ) ) ] = value;
                             }
                             keys.clear();
                           }
@@ -1230,7 +1231,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
                             s     = readElementText( stream );
                             value = Folding::trimWhitespace( s ).toStdString();
                             for ( const auto & key : keys ) {
-                              abrv[ Utf8::encode( Folding::trimWhitespace( key ) ) ] = value;
+                              abrv[ Text::toUtf8( Folding::trimWhitespace( key ) ) ] = value;
                             }
                             keys.clear();
                           }

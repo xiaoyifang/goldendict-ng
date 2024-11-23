@@ -10,8 +10,7 @@
   #include <QTextDocumentFragment>
   #include <QHash>
   #include "audiolink.hh"
-  #include "wstring.hh"
-  #include "wstring_qt.hh"
+  #include "text.hh"
   #include "folding.hh"
   #include "epwing_charmap.hh"
   #include "htmlescape.hh"
@@ -1135,7 +1134,7 @@ void EpwingBook::fixHeadword( QString & headword )
   //  return;
   //}
 
-  gd::wstring folded = Folding::applyPunctOnly( fixed.toStdU32String() );
+  std::u32string folded = Folding::applyPunctOnly( fixed.toStdU32String() );
   //fixed = QString::fromStdU32String( folded );
 
   //if( isHeadwordCorrect( fixed ) )

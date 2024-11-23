@@ -7,7 +7,6 @@
 #include "btreeidx.hh"
 #include "fulltextsearch.hh"
 #include "folding.hh"
-#include "wstring_qt.hh"
 
 namespace FtsHelpers {
 
@@ -44,7 +43,7 @@ public:
   {
     if ( ignoreDiacritics_ )
       searchString =
-        QString::fromStdU32String( Folding::applyDiacriticsOnly( gd::removeTrailingZero( searchString_ ) ) );
+        QString::fromStdU32String( Folding::applyDiacriticsOnly( Text::removeTrailingZero( searchString_ ) ) );
 
     foundHeadwords = new QList< FTS::FtsHeadword >;
     results        = 0;

@@ -2,7 +2,6 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "dictserver.hh"
-#include "wstring_qt.hh"
 #include <QTimer>
 #include <QUrl>
 #include <QTcpSocket>
@@ -314,9 +313,10 @@ public:
     return 0;
   }
 
-  sptr< WordSearchRequest > prefixMatch( wstring const &, unsigned long maxResults ) override;
+  sptr< WordSearchRequest > prefixMatch( std::u32string const &, unsigned long maxResults ) override;
 
-  sptr< DataRequest > getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ) override;
+  sptr< DataRequest >
+  getArticle( std::u32string const &, vector< std::u32string > const & alts, std::u32string const &, bool ) override;
 
   quint32 getLangFrom() const override
   {
@@ -387,7 +387,7 @@ class DictServerWordSearchRequest: public Dictionary::WordSearchRequest
 {
   Q_OBJECT
   QAtomicInt isCancelled;
-  wstring word;
+  std::u32string word;
   QString errorString;
   DictServerDictionary & dict;
 
@@ -402,7 +402,7 @@ class DictServerWordSearchRequest: public Dictionary::WordSearchRequest
 
 public:
 
-  DictServerWordSearchRequest( wstring word_, DictServerDictionary & dict_ ):
+  DictServerWordSearchRequest( std::u32string word_, DictServerDictionary & dict_ ):
     word( std::move( word_ ) ),
     dict( dict_ ),
     dictImpl( new DictServerImpl( this, dict_.url, "GoldenDict-w" ) )
@@ -562,7 +562,7 @@ void DictServer::DictServerWordSearchRequest::addMatchedWord( const QString & st
 class DictServerArticleRequest: public Dictionary::DataRequest
 {
   QAtomicInt isCancelled;
-  wstring word;
+  std::u32string word;
   QString errorString;
   DictServerDictionary & dict;
   string articleData;
@@ -578,7 +578,7 @@ class DictServerArticleRequest: public Dictionary::DataRequest
 public:
 
   DictServerImpl * dictImpl;
-  DictServerArticleRequest( wstring word_, DictServerDictionary & dict_ ):
+  DictServerArticleRequest( std::u32string word_, DictServerDictionary & dict_ ):
     word( std::move( word_ ) ),
     dict( dict_ ),
     dictImpl( new DictServerImpl( this, dict_.url, "GoldenDict-t" ) )
@@ -870,7 +870,7 @@ void DictServerArticleRequest::cancel()
   finish();
 }
 
-sptr< WordSearchRequest > DictServerDictionary::prefixMatch( wstring const & word, unsigned long maxResults )
+sptr< WordSearchRequest > DictServerDictionary::prefixMatch( std::u32string const & word, unsigned long maxResults )
 {
   (void)maxResults;
   if ( word.size() > 80 ) {
@@ -883,8 +883,10 @@ sptr< WordSearchRequest > DictServerDictionary::prefixMatch( wstring const & wor
   }
 }
 
-sptr< DataRequest >
-DictServerDictionary::getArticle( wstring const & word, vector< wstring > const &, wstring const &, bool )
+sptr< DataRequest > DictServerDictionary::getArticle( std::u32string const & word,
+                                                      vector< std::u32string > const &,
+                                                      std::u32string const &,
+                                                      bool )
 
 {
   if ( word.size() > 80 ) {

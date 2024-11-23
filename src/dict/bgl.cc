@@ -11,7 +11,7 @@
 #include "htmlescape.hh"
 #include "langcoder.hh"
 #include "language.hh"
-#include "utf8.hh"
+#include "text.hh"
 #include "utils.hh"
 #include <ctype.h>
 #include <list>
@@ -30,8 +30,6 @@ namespace Bgl {
 using std::map;
 using std::multimap;
 using std::set;
-using gd::wstring;
-using gd::wchar;
 using std::list;
 using std::pair;
 using std::string;
@@ -111,7 +109,7 @@ void trimWs( string & word )
   if ( word.size() ) {
     unsigned begin = 0;
 
-    while ( begin < word.size() && Utf8::isspace( word[ begin ] ) ) {
+    while ( begin < word.size() && Text::isspace( word[ begin ] ) ) {
       ++begin;
     }
 
@@ -123,7 +121,7 @@ void trimWs( string & word )
 
       // Doesn't consist of ws entirely, so must end with just isspace()
       // condition.
-      while ( Utf8::isspace( word[ end - 1 ] ) ) {
+      while ( Text::isspace( word[ end - 1 ] ) ) {
         --end;
       }
 
@@ -137,7 +135,7 @@ void trimWs( string & word )
 void addEntryToIndex( string & word,
                       uint32_t articleOffset,
                       IndexedWords & indexedWords,
-                      vector< wchar > & wcharBuffer )
+                      vector< char32_t > & wcharBuffer )
 {
   // Strip any leading or trailing whitespaces
   trimWs( word );
@@ -159,7 +157,7 @@ void addEntryToIndex( string & word,
   }
 
   // Convert the word from utf8 to wide chars
-  indexedWords.addWord( Utf8::decode( word ), articleOffset );
+  indexedWords.addWord( Text::toUtf32( word ), articleOffset );
 }
 
 class BglDictionary: public BtreeIndexing::BtreeDictionary
@@ -193,10 +191,12 @@ public:
     return idxHeader.langTo;
   }
 
-  sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( wstring const & ) override;
+  sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( std::u32string const & ) override;
 
-  sptr< Dictionary::DataRequest >
-  getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ignoreDiacritics ) override;
+  sptr< Dictionary::DataRequest > getArticle( std::u32string const &,
+                                              vector< std::u32string > const & alts,
+                                              std::u32string const &,
+                                              bool ignoreDiacritics ) override;
 
   sptr< Dictionary::DataRequest > getResource( string const & name ) override;
 
@@ -387,7 +387,7 @@ void BglDictionary::getArticleText( uint32_t articleAddress, QString & headword,
 
     headword = QString::fromUtf8( headwordStr.data(), headwordStr.size() );
 
-    wstring wstr = Utf8::decode( articleStr );
+    std::u32string wstr = Text::toUtf32( articleStr );
 
     if ( getLangTo() == LangCoder::code2toInt( "he" ) ) {
       for ( char32_t & i : wstr ) {
@@ -436,7 +436,7 @@ void BglDictionary::makeFTSIndex( QAtomicInt & isCancelled )
 
 class BglHeadwordsRequest: public Dictionary::WordSearchRequest
 {
-  wstring str;
+  std::u32string str;
   BglDictionary & dict;
 
   QAtomicInt isCancelled;
@@ -444,7 +444,7 @@ class BglHeadwordsRequest: public Dictionary::WordSearchRequest
 
 public:
 
-  BglHeadwordsRequest( wstring const & word_, BglDictionary & dict_ ):
+  BglHeadwordsRequest( std::u32string const & word_, BglDictionary & dict_ ):
     str( word_ ),
     dict( dict_ )
   {
@@ -476,7 +476,7 @@ void BglHeadwordsRequest::run()
 
   vector< WordArticleLink > chain = dict.findArticles( str );
 
-  wstring caseFolded = Folding::applySimpleCaseOnly( str );
+  std::u32string caseFolded = Folding::applySimpleCaseOnly( str );
 
   for ( auto & x : chain ) {
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
@@ -488,11 +488,11 @@ void BglHeadwordsRequest::run()
 
     dict.loadArticle( x.articleOffset, headword, displayedHeadword, articleText );
 
-    wstring headwordDecoded;
+    std::u32string headwordDecoded;
     try {
-      headwordDecoded = Utf8::decode( removePostfix( headword ) );
+      headwordDecoded = Text::toUtf32( removePostfix( headword ) );
     }
-    catch ( Utf8::exCantDecode & ) {
+    catch ( Text::exCantDecode & ) {
     }
 
     if ( caseFolded != Folding::applySimpleCaseOnly( headwordDecoded ) && !headwordDecoded.empty() ) {
@@ -507,7 +507,7 @@ void BglHeadwordsRequest::run()
   finish();
 }
 
-sptr< Dictionary::WordSearchRequest > BglDictionary::findHeadwordsForSynonym( wstring const & word )
+sptr< Dictionary::WordSearchRequest > BglDictionary::findHeadwordsForSynonym( std::u32string const & word )
 
 {
   return synonymSearchEnabled ? std::make_shared< BglHeadwordsRequest >( word, *this ) :
@@ -547,8 +547,8 @@ string postfixToSuperscript( string const & in )
 
 class BglArticleRequest: public Dictionary::DataRequest
 {
-  wstring word;
-  vector< wstring > alts;
+  std::u32string word;
+  vector< std::u32string > alts;
   BglDictionary & dict;
 
   QAtomicInt isCancelled;
@@ -557,8 +557,8 @@ class BglArticleRequest: public Dictionary::DataRequest
 
 public:
 
-  BglArticleRequest( wstring const & word_,
-                     vector< wstring > const & alts_,
+  BglArticleRequest( std::u32string const & word_,
+                     vector< std::u32string > const & alts_,
                      BglDictionary & dict_,
                      bool ignoreDiacritics_ ):
     word( word_ ),
@@ -590,11 +590,11 @@ public:
 
 void BglArticleRequest::fixHebString( string & hebStr ) // Hebrew support - convert non-unicode to unicode
 {
-  wstring hebWStr;
+  std::u32string hebWStr;
   try {
-    hebWStr = Utf8::decode( hebStr );
+    hebWStr = Text::toUtf32( hebStr );
   }
-  catch ( Utf8::exCantDecode & ) {
+  catch ( Text::exCantDecode & ) {
     hebStr = "Utf-8 decoding error";
     return;
   }
@@ -608,7 +608,7 @@ void BglArticleRequest::fixHebString( string & hebStr ) // Hebrew support - conv
       i += 1488 - 224;    // Convert to Hebrew unicode
     }
   }
-  hebStr = Utf8::encode( hebWStr );
+  hebStr = Text::toUtf8( hebWStr );
 }
 
 void BglArticleRequest::fixHebArticle( string & hebArticle ) // Hebrew support - remove extra chars at the end
@@ -644,7 +644,7 @@ void BglArticleRequest::run()
     chain.insert( chain.end(), altChain.begin(), altChain.end() );
   }
 
-  multimap< wstring, pair< string, string > > mainArticles, alternateArticles;
+  multimap< std::u32string, pair< string, string > > mainArticles, alternateArticles;
 
   set< uint32_t > articlesIncluded; // Some synonims make it that the articles
                                     // appear several times. We combat this
@@ -653,7 +653,7 @@ void BglArticleRequest::run()
   // the bodies to account for this.
   set< QByteArray > articleBodiesIncluded;
 
-  wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
+  std::u32string wordCaseFolded = Folding::applySimpleCaseOnly( word );
   if ( ignoreDiacritics ) {
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
   }
@@ -681,7 +681,7 @@ void BglArticleRequest::run()
 
       // We do the case-folded and postfix-less comparison here.
 
-      wstring headwordStripped = Folding::applySimpleCaseOnly( removePostfix( headword ) );
+      std::u32string headwordStripped = Folding::applySimpleCaseOnly( removePostfix( headword ) );
       if ( ignoreDiacritics ) {
         headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
       }
@@ -704,7 +704,7 @@ void BglArticleRequest::run()
         continue; // Already had this body
       }
 
-      multimap< wstring, pair< string, string > > & mapToUse =
+      multimap< std::u32string, pair< string, string > > & mapToUse =
         ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
 
       mapToUse.insert( pair( Folding::applySimpleCaseOnly( headword ), pair( targetHeadword, articleText ) ) );
@@ -725,7 +725,7 @@ void BglArticleRequest::run()
 
   string result;
 
-  multimap< wstring, pair< string, string > >::const_iterator i;
+  multimap< std::u32string, pair< string, string > >::const_iterator i;
 
   string cleaner = Utils::Html::getHtmlCleaner();
   for ( i = mainArticles.begin(); i != mainArticles.end(); ++i ) {
@@ -802,9 +802,9 @@ void BglArticleRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > BglDictionary::getArticle( wstring const & word,
-                                                           vector< wstring > const & alts,
-                                                           wstring const &,
+sptr< Dictionary::DataRequest > BglDictionary::getArticle( std::u32string const & word,
+                                                           vector< std::u32string > const & alts,
+                                                           std::u32string const &,
                                                            bool ignoreDiacritics )
 
 {
@@ -1085,7 +1085,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         IndexedWords indexedWords;
 
         // We use this buffer to decode utf8 into it.
-        vector< wchar > wcharBuffer;
+        vector< char32_t > wcharBuffer;
 
         ChunkedStorage::Writer chunks( idx );
 

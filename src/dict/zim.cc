@@ -6,7 +6,7 @@
   #include "zim.hh"
   #include "btreeidx.hh"
   #include "folding.hh"
-  #include "utf8.hh"
+  #include "text.hh"
   #include "langcoder.hh"
   #include "filetype.hh"
   #include "dictfile.hh"
@@ -38,12 +38,12 @@
 namespace Zim {
 
 using std::string;
+using std::u32string;
 using std::map;
 using std::vector;
 using std::multimap;
 using std::pair;
 using std::set;
-using gd::wstring;
 
 using BtreeIndexing::WordArticleLink;
 using BtreeIndexing::IndexedWords;
@@ -182,7 +182,7 @@ public:
   }
 
   sptr< Dictionary::DataRequest >
-  getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ignoreDiacritics ) override;
+  getArticle( u32string const &, vector< u32string > const & alts, u32string const &, bool ignoreDiacritics ) override;
 
   sptr< Dictionary::DataRequest > getResource( string const & name ) override;
 
@@ -519,8 +519,8 @@ ZimDictionary::getSearchResults( QString const & searchString, int searchMode, b
 
 class ZimArticleRequest: public Dictionary::DataRequest
 {
-  wstring word;
-  vector< wstring > alts;
+  u32string word;
+  vector< u32string > alts;
   ZimDictionary & dict;
   bool ignoreDiacritics;
 
@@ -529,7 +529,10 @@ class ZimArticleRequest: public Dictionary::DataRequest
 
 public:
 
-  ZimArticleRequest( wstring word_, vector< wstring > const & alts_, ZimDictionary & dict_, bool ignoreDiacritics_ ):
+  ZimArticleRequest( u32string word_,
+                     vector< u32string > const & alts_,
+                     ZimDictionary & dict_,
+                     bool ignoreDiacritics_ ):
     word( std::move( word_ ) ),
     alts( alts_ ),
     dict( dict_ ),
@@ -571,13 +574,13 @@ void ZimArticleRequest::run()
     chain.insert( chain.end(), altChain.begin(), altChain.end() );
   }
 
-  multimap< wstring, pair< string, string > > mainArticles, alternateArticles;
+  multimap< u32string, pair< string, string > > mainArticles, alternateArticles;
 
   set< quint32 > articlesIncluded; // Some synonyms make it that the articles
                                    // appear several times. We combat this
                                    // by only allowing them to appear once.
 
-  wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
+  u32string wordCaseFolded = Folding::applySimpleCaseOnly( word );
   if ( ignoreDiacritics ) {
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
   }
@@ -614,12 +617,12 @@ void ZimArticleRequest::run()
 
     // We do the case-folded comparison here.
 
-    wstring headwordStripped = Folding::applySimpleCaseOnly( headword );
+    u32string headwordStripped = Folding::applySimpleCaseOnly( headword );
     if ( ignoreDiacritics ) {
       headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
     }
 
-    multimap< wstring, pair< string, string > > & mapToUse =
+    multimap< u32string, pair< string, string > > & mapToUse =
       ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
 
     mapToUse.insert( pair( Folding::applySimpleCaseOnly( headword ), pair( headword, articleText ) ) );
@@ -638,7 +641,7 @@ void ZimArticleRequest::run()
   // See Issue #271: A mechanism to clean-up invalid HTML cards.
   string cleaner = Utils::Html::getHtmlCleaner();
 
-  multimap< wstring, pair< string, string > >::const_iterator i;
+  multimap< u32string, pair< string, string > >::const_iterator i;
 
 
   for ( i = mainArticles.begin(); i != mainArticles.end(); ++i ) {
@@ -666,9 +669,9 @@ void ZimArticleRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > ZimDictionary::getArticle( wstring const & word,
-                                                           vector< wstring > const & alts,
-                                                           wstring const &,
+sptr< Dictionary::DataRequest > ZimDictionary::getArticle( u32string const & word,
+                                                           vector< u32string > const & alts,
+                                                           u32string const &,
                                                            bool ignoreDiacritics )
 
 {
@@ -766,7 +769,7 @@ sptr< Dictionary::DataRequest > ZimDictionary::getResource( string const & name 
   return std::make_shared< ZimResourceRequest >( *this, noLeadingDot.toStdString() );
 }
 
-wstring normalizeWord( const std::string & url );
+u32string normalizeWord( const std::string & url );
 vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & fileNames,
                                                       string const & indicesDir,
                                                       Dictionary::Initializing & initializing,
@@ -849,7 +852,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
           if ( maxHeadwordsToExpand > 0 && ( articleCount >= maxHeadwordsToExpand ) ) {
             if ( !title.empty() ) {
-              wstring word = Utf8::decode( title );
+              u32string word = Text::toUtf32( title );
               indexedWords.addSingleWord( word, index );
             }
             else if ( !url.empty() ) {
@@ -858,7 +861,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
           }
           else {
             if ( !title.empty() ) {
-              auto word = Utf8::decode( title );
+              auto word = Text::toUtf32( title );
               indexedWords.addWord( word, index );
               wordCount++;
             }
@@ -903,7 +906,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
   }
   return dictionaries;
 }
-wstring normalizeWord( const std::string & url )
+u32string normalizeWord( const std::string & url )
 {
   auto formattedUrl = QString::fromStdString( url ).remove( RX::Zim::leadingDotSlash );
   return formattedUrl.toStdU32String();

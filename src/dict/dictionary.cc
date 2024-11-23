@@ -177,7 +177,7 @@ void Class::deferredInit()
   //base method.
 }
 
-sptr< WordSearchRequest > Class::stemmedMatch( wstring const & /*str*/,
+sptr< WordSearchRequest > Class::stemmedMatch( std::u32string const & /*str*/,
                                                unsigned /*minLength*/,
                                                unsigned /*maxSuffixVariation*/,
                                                unsigned long /*maxResults*/ )
@@ -185,12 +185,12 @@ sptr< WordSearchRequest > Class::stemmedMatch( wstring const & /*str*/,
   return std::make_shared< WordSearchRequestInstant >();
 }
 
-sptr< WordSearchRequest > Class::findHeadwordsForSynonym( wstring const & )
+sptr< WordSearchRequest > Class::findHeadwordsForSynonym( std::u32string const & )
 {
   return std::make_shared< WordSearchRequestInstant >();
 }
 
-vector< wstring > Class::getAlternateWritings( wstring const & ) noexcept
+vector< std::u32string > Class::getAlternateWritings( std::u32string const & ) noexcept
 {
   return {};
 }

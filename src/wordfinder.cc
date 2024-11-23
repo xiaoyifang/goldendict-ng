@@ -3,14 +3,11 @@
 
 #include "wordfinder.hh"
 #include "folding.hh"
-#include "wstring_qt.hh"
 #include <map>
 
 
 using std::vector;
 using std::list;
-using gd::wstring;
-using gd::wchar;
 using std::map;
 using std::pair;
 
@@ -134,7 +131,7 @@ void WordFinder::startSearch()
   allWordWritings[ 0 ] = inputWord.toStdU32String();
 
   for ( const auto & inputDict : *inputDicts ) {
-    vector< wstring > writings = inputDict->getAlternateWritings( allWordWritings[ 0 ] );
+    vector< std::u32string > writings = inputDict->getAlternateWritings( allWordWritings[ 0 ] );
 
     allWordWritings.insert( allWordWritings.end(), writings.begin(), writings.end() );
   }
@@ -255,7 +252,9 @@ unsigned saturated( unsigned x )
 /// both sides by either whitespace, punctuation or begin/end of string.
 /// If true is returned, pos holds the offset in the haystack. If the offset
 /// is larger than 255, it is set to 255.
-bool hasSurroundedWithWs( wstring const & haystack, wstring const & needle, wstring::size_type & pos )
+bool hasSurroundedWithWs( std::u32string const & haystack,
+                          std::u32string const & needle,
+                          std::u32string::size_type & pos )
 {
   if ( haystack.size() < needle.size() ) {
     return false; // Needle won't even fit into a haystack
@@ -264,7 +263,7 @@ bool hasSurroundedWithWs( wstring const & haystack, wstring const & needle, wstr
   for ( pos = 0;; ++pos ) {
     pos = haystack.find( needle, pos );
 
-    if ( pos == wstring::npos ) {
+    if ( pos == std::u32string::npos ) {
       return false; // Not found
     }
 
@@ -290,13 +289,13 @@ void WordFinder::updateResults()
     updateResultsTimer.stop(); // Can happen when we were done before it'd expire
   }
 
-  wstring original = Folding::applySimpleCaseOnly( allWordWritings[ 0 ] );
+  std::u32string original = Folding::applySimpleCaseOnly( allWordWritings[ 0 ] );
 
   for ( auto i = finishedRequests.begin(); i != finishedRequests.end(); ) {
     for ( size_t count = ( *i )->matchesCount(), x = 0; x < count; ++x ) {
-      wstring match      = ( **i )[ x ].word;
-      int weight         = ( **i )[ x ].weight;
-      wstring lowerCased = Folding::applySimpleCaseOnly( match );
+      std::u32string match      = ( **i )[ x ].word;
+      int weight                = ( **i )[ x ].weight;
+      std::u32string lowerCased = Folding::applySimpleCaseOnly( match );
 
       if ( searchType == ExpressionMatch ) {
         unsigned ws;
@@ -320,7 +319,7 @@ void WordFinder::updateResults()
         weight = ws;
       }
       auto insertResult =
-        resultsIndex.insert( pair< wstring, ResultsArray::iterator >( lowerCased, resultsArray.end() ) );
+        resultsIndex.insert( pair< std::u32string, ResultsArray::iterator >( lowerCased, resultsArray.end() ) );
 
       if ( !insertResult.second ) {
         // Wasn't inserted since there was already an item -- check the case
@@ -369,16 +368,16 @@ void WordFinder::updateResults()
       };
 
       for ( const auto & allWordWriting : allWordWritings ) {
-        wstring target           = Folding::applySimpleCaseOnly( allWordWriting );
-        wstring targetNoFullCase = Folding::applyFullCaseOnly( target );
-        wstring targetNoDia      = Folding::applyDiacriticsOnly( targetNoFullCase );
-        wstring targetNoPunct    = Folding::applyPunctOnly( targetNoDia );
-        wstring targetNoWs       = Folding::applyWhitespaceOnly( targetNoPunct );
+        std::u32string target           = Folding::applySimpleCaseOnly( allWordWriting );
+        std::u32string targetNoFullCase = Folding::applyFullCaseOnly( target );
+        std::u32string targetNoDia      = Folding::applyDiacriticsOnly( targetNoFullCase );
+        std::u32string targetNoPunct    = Folding::applyPunctOnly( targetNoDia );
+        std::u32string targetNoWs       = Folding::applyWhitespaceOnly( targetNoPunct );
 
-        wstring::size_type matchPos = 0;
+        std::u32string::size_type matchPos = 0;
 
         for ( const auto & i : resultsIndex ) {
-          wstring resultNoFullCase, resultNoDia, resultNoPunct, resultNoWs;
+          std::u32string resultNoFullCase, resultNoDia, resultNoPunct, resultNoWs;
 
           int rank;
 
@@ -441,14 +440,14 @@ void WordFinder::updateResults()
       // only the first one, storing it in rank. Then we sort the results using
       // SortByRankAndLength.
       for ( const auto & allWordWriting : allWordWritings ) {
-        wstring target = Folding::apply( allWordWriting );
+        std::u32string target = Folding::apply( allWordWriting );
 
         for ( const auto & i : resultsIndex ) {
-          wstring resultFolded = Folding::apply( i.first );
+          std::u32string resultFolded = Folding::apply( i.first );
 
           int charsInCommon = 0;
 
-          for ( wchar const *t = target.c_str(), *r = resultFolded.c_str(); *t && *t == *r;
+          for ( char32_t const *t = target.c_str(), *r = resultFolded.c_str(); *t && *t == *r;
                 ++t, ++r, ++charsInCommon ) {
             ;
           }

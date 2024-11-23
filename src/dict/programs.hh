@@ -6,14 +6,13 @@
 #include <QProcess>
 #include "dictionary.hh"
 #include "config.hh"
-#include "wstring.hh"
+#include "text.hh"
 
 /// Support for arbitrary programs.
 namespace Programs {
 
 using std::vector;
 using std::string;
-using gd::wstring;
 
 vector< sptr< Dictionary::Class > > makeDictionaries( Config::Programs const & );
 

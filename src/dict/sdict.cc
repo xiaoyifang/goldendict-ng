@@ -9,7 +9,7 @@
 #include "htmlescape.hh"
 #include "langcoder.hh"
 #include "sdict.hh"
-#include "utf8.hh"
+#include "text.hh"
 #include <map>
 #include <QAtomicInt>
 #include <QDir>
@@ -26,7 +26,6 @@ using std::multimap;
 using std::pair;
 using std::set;
 using std::string;
-using gd::wstring;
 
 using BtreeIndexing::WordArticleLink;
 using BtreeIndexing::IndexedWords;
@@ -133,8 +132,10 @@ public:
     return idxHeader.langTo;
   }
 
-  sptr< Dictionary::DataRequest >
-  getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ignoreDiacritics ) override;
+  sptr< Dictionary::DataRequest > getArticle( std::u32string const &,
+                                              vector< std::u32string > const & alts,
+                                              std::u32string const &,
+                                              bool ignoreDiacritics ) override;
 
   QString const & getDescription() override;
 
@@ -416,8 +417,8 @@ SdictDictionary::getSearchResults( QString const & searchString, int searchMode,
 class SdictArticleRequest: public Dictionary::DataRequest
 {
 
-  wstring word;
-  vector< wstring > alts;
+  std::u32string word;
+  vector< std::u32string > alts;
   SdictDictionary & dict;
   bool ignoreDiacritics;
 
@@ -427,8 +428,8 @@ class SdictArticleRequest: public Dictionary::DataRequest
 
 public:
 
-  SdictArticleRequest( wstring const & word_,
-                       vector< wstring > const & alts_,
+  SdictArticleRequest( std::u32string const & word_,
+                       vector< std::u32string > const & alts_,
                        SdictDictionary & dict_,
                        bool ignoreDiacritics_ ):
     word( word_ ),
@@ -472,13 +473,13 @@ void SdictArticleRequest::run()
     chain.insert( chain.end(), altChain.begin(), altChain.end() );
   }
 
-  multimap< wstring, pair< string, string > > mainArticles, alternateArticles;
+  multimap< std::u32string, pair< string, string > > mainArticles, alternateArticles;
 
   set< uint32_t > articlesIncluded; // Some synonims make it that the articles
                                     // appear several times. We combat this
                                     // by only allowing them to appear once.
 
-  wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
+  std::u32string wordCaseFolded = Folding::applySimpleCaseOnly( word );
   if ( ignoreDiacritics ) {
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
   }
@@ -507,12 +508,12 @@ void SdictArticleRequest::run()
 
       // We do the case-folded comparison here.
 
-      wstring headwordStripped = Folding::applySimpleCaseOnly( headword );
+      std::u32string headwordStripped = Folding::applySimpleCaseOnly( headword );
       if ( ignoreDiacritics ) {
         headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
       }
 
-      multimap< wstring, pair< string, string > > & mapToUse =
+      multimap< std::u32string, pair< string, string > > & mapToUse =
         ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
 
       mapToUse.insert( pair( Folding::applySimpleCaseOnly( headword ), pair( headword, articleText ) ) );
@@ -532,7 +533,7 @@ void SdictArticleRequest::run()
 
   string result;
 
-  multimap< wstring, pair< string, string > >::const_iterator i;
+  multimap< std::u32string, pair< string, string > >::const_iterator i;
 
   for ( i = mainArticles.begin(); i != mainArticles.end(); ++i ) {
     result += dict.isFromLanguageRTL() ? "<h3 dir=\"rtl\">" : "<h3>";
@@ -561,9 +562,9 @@ void SdictArticleRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > SdictDictionary::getArticle( wstring const & word,
-                                                             vector< wstring > const & alts,
-                                                             wstring const &,
+sptr< Dictionary::DataRequest > SdictDictionary::getArticle( std::u32string const & word,
+                                                             vector< std::u32string > const & alts,
+                                                             std::u32string const &,
                                                              bool ignoreDiacritics )
 
 {
@@ -741,7 +742,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
           // Insert new entry
 
-          indexedWords.addWord( Utf8::decode( string( data.data(), size ) ), articleOffset );
+          indexedWords.addWord( Text::toUtf32( string( data.data(), size ) ), articleOffset );
 
           pos += el.nextWord;
         }

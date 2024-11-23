@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include "wstring.hh"
+#include "text.hh"
 #include <QString>
 
 /// Folding provides means to translate several possible ways to write a
@@ -17,8 +17,6 @@
 
 namespace Folding {
 
-using gd::wstring;
-using gd::wchar;
 
 /// The algorithm's version.
 enum {
@@ -27,48 +25,48 @@ enum {
 
 /// Applies the folding algorithm to each character in the given string,
 /// making another one as a result.
-wstring apply( wstring const &, bool preserveWildcards = false );
+std::u32string apply( std::u32string const &, bool preserveWildcards = false );
 
 /// Applies only simple case folding algorithm. Since many dictionaries have
 /// different case style, we interpret words differing only by case as synonyms.
-wstring applySimpleCaseOnly( wstring const & );
-wstring applySimpleCaseOnly( QString const & in );
-wstring applySimpleCaseOnly( std::string const & in );
+std::u32string applySimpleCaseOnly( std::u32string const & );
+std::u32string applySimpleCaseOnly( QString const & in );
+std::u32string applySimpleCaseOnly( std::string const & in );
 
 /// Applies only full case folding algorithm. This includes simple case, but also
 /// decomposing ligatures and complex letters.
-wstring applyFullCaseOnly( wstring const & );
+std::u32string applyFullCaseOnly( std::u32string const & );
 
 /// Applies only diacritics folding algorithm.
-wstring applyDiacriticsOnly( wstring const & );
+std::u32string applyDiacriticsOnly( std::u32string const & );
 
 /// Applies only punctuation folding algorithm.
-wstring applyPunctOnly( wstring const & );
+std::u32string applyPunctOnly( std::u32string const & );
 QString applyPunctOnly( QString const & in );
 /// Applies only whitespace folding algorithm.
-wstring applyWhitespaceOnly( wstring const & );
+std::u32string applyWhitespaceOnly( std::u32string const & );
 
 /// Applies only whitespace&punctuation folding algorithm.
-wstring applyWhitespaceAndPunctOnly( wstring const & );
+std::u32string applyWhitespaceAndPunctOnly( std::u32string const & );
 
 /// Returns true if the given character is any form of whitespace, false
 /// otherwise. Whitespace corresponds to Zl/Zp/Zs Unicode classes, and also
 /// includes \n, \r and \t.
-bool isWhitespace( wchar ch );
-bool isWhitespaceOrPunct( wchar ch );
+bool isWhitespace( char32_t ch );
+bool isWhitespaceOrPunct( char32_t ch );
 
 /// Returns true if the given character is any form of punctuation, false
 /// otherwise. Punctuation corresponds to Pc/Pd/Pe/Pf/Pi/Po/Ps classes.
-bool isPunct( wchar ch );
+bool isPunct( char32_t ch );
 
 /// Removes any whitespace or punctuation from the beginning and the end of
 /// the word.
-wstring trimWhitespaceOrPunct( wstring const & );
+std::u32string trimWhitespaceOrPunct( std::u32string const & );
 QString trimWhitespaceOrPunct( QString const & in );
 
 /// Removes any whitespace from the beginning and the end of
 /// the word.
-wstring trimWhitespace( wstring const & );
+std::u32string trimWhitespace( std::u32string const & );
 QString trimWhitespace( QString const & in );
 
 /// Same as apply( wstring ), but without any heap operations, therefore
@@ -86,6 +84,6 @@ QString unescapeWildcardSymbols( QString const & );
 QString escapeWildcardSymbols( QString const & );
 
 /// Tests if the given char is one of the Unicode combining marks.
-bool isCombiningMark( wchar ch );
+bool isCombiningMark( char32_t ch );
 
 } // namespace Folding

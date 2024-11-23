@@ -3,11 +3,10 @@
 
 #include "btreeidx.hh"
 #include "folding.hh"
-#include "utf8.hh"
+#include "text.hh"
 #include <math.h>
 #include <string.h>
 #include <stdlib.h>
-#include "wstring_qt.hh"
 #include "utils.hh"
 
 #include <QRegularExpression>
@@ -19,8 +18,6 @@
 
 namespace BtreeIndexing {
 
-using gd::wstring;
-using gd::wchar;
 using std::pair;
 
 enum {
@@ -59,14 +56,14 @@ void BtreeIndex::openIndex( IndexInfo const & indexInfo, File::Index & file, QMu
 }
 
 vector< WordArticleLink >
-BtreeIndex::findArticles( wstring const & search_word, bool ignoreDiacritics, uint32_t maxMatchCount )
+BtreeIndex::findArticles( std::u32string const & search_word, bool ignoreDiacritics, uint32_t maxMatchCount )
 {
   //First trim ending zero
-  wstring word = gd::removeTrailingZero( search_word );
+  std::u32string word = Text::removeTrailingZero( search_word );
   vector< WordArticleLink > result;
 
   try {
-    wstring folded = Folding::apply( word );
+    std::u32string folded = Folding::apply( word );
     if ( folded.empty() ) {
       folded = Folding::applyWhitespaceOnly( word );
     }
@@ -100,7 +97,7 @@ BtreeIndex::findArticles( wstring const & search_word, bool ignoreDiacritics, ui
 
 
 BtreeWordSearchRequest::BtreeWordSearchRequest( BtreeDictionary & dict_,
-                                                wstring const & str_,
+                                                std::u32string const & str_,
                                                 unsigned minLength_,
                                                 int maxSuffixVariation_,
                                                 bool allowMiddleMatches_,
@@ -137,11 +134,11 @@ void BtreeWordSearchRequest::findMatches()
 
   bool useWildcards = false;
   if ( allowMiddleMatches ) {
-    useWildcards = ( str.find( '*' ) != wstring::npos || str.find( '?' ) != wstring::npos
-                     || str.find( '[' ) != wstring::npos || str.find( ']' ) != wstring::npos );
+    useWildcards = ( str.find( '*' ) != std::u32string::npos || str.find( '?' ) != std::u32string::npos
+                     || str.find( '[' ) != std::u32string::npos || str.find( ']' ) != std::u32string::npos );
   }
 
-  wstring folded = Folding::apply( str );
+  std::u32string folded = Folding::apply( str );
 
   int minMatchLength = 0;
 
@@ -154,7 +151,7 @@ void BtreeWordSearchRequest::findMatches()
     regexp.setPatternOptions( QRegularExpression::CaseInsensitiveOption );
 
     bool bNoLetters = folded.empty();
-    wstring foldedWithWildcards;
+    std::u32string foldedWithWildcards;
 
     if ( bNoLetters ) {
       foldedWithWildcards = Folding::applyWhitespaceOnly( str );
@@ -268,9 +265,9 @@ void BtreeWordSearchRequest::findMatches()
 
           vector< WordArticleLink > chain = dict.readChain( chainOffset );
 
-          wstring chainHead = Utf8::decode( chain[ 0 ].word );
+          std::u32string chainHead = Text::toUtf32( chain[ 0 ].word );
 
-          wstring resultFolded = Folding::apply( chainHead );
+          std::u32string resultFolded = Folding::apply( chainHead );
           if ( resultFolded.empty() ) {
             resultFolded = Folding::applyWhitespaceOnly( chainHead );
           }
@@ -286,9 +283,9 @@ void BtreeWordSearchRequest::findMatches()
                 break;
               }
               if ( useWildcards ) {
-                wstring word   = Utf8::decode( x.prefix + x.word );
-                wstring result = Folding::applyDiacriticsOnly( word );
-                if ( result.size() >= (wstring::size_type)minMatchLength ) {
+                std::u32string word   = Text::toUtf32( x.prefix + x.word );
+                std::u32string result = Folding::applyDiacriticsOnly( word );
+                if ( result.size() >= (std::u32string::size_type)minMatchLength ) {
                   QRegularExpressionMatch match = regexp.match( QString::fromStdU32String( result ) );
                   if ( match.hasMatch() && match.capturedStart() == 0 ) {
                     addMatch( word );
@@ -298,10 +295,10 @@ void BtreeWordSearchRequest::findMatches()
               else {
                 // Skip middle matches, if requested. If suffix variation is specified,
                 // make sure the string isn't larger than requested.
-                if ( ( allowMiddleMatches || Folding::apply( Utf8::decode( x.prefix ) ).empty() )
+                if ( ( allowMiddleMatches || Folding::apply( Text::toUtf32( x.prefix ) ).empty() )
                      && ( maxSuffixVariation < 0
                           || (int)resultFolded.size() - initialFoldedSize <= maxSuffixVariation ) ) {
-                  addMatch( Utf8::decode( x.prefix + x.word ) );
+                  addMatch( Text::toUtf32( x.prefix + x.word ) );
                 }
               }
               if ( matches.size() >= maxResults ) {
@@ -393,13 +390,14 @@ BtreeWordSearchRequest::~BtreeWordSearchRequest()
   f.waitForFinished();
 }
 
-sptr< Dictionary::WordSearchRequest > BtreeDictionary::prefixMatch( wstring const & str, unsigned long maxResults )
+sptr< Dictionary::WordSearchRequest > BtreeDictionary::prefixMatch( std::u32string const & str,
+                                                                    unsigned long maxResults )
 
 {
   return std::make_shared< BtreeWordSearchRequest >( *this, str, 0, -1, true, maxResults );
 }
 
-sptr< Dictionary::WordSearchRequest > BtreeDictionary::stemmedMatch( wstring const & str,
+sptr< Dictionary::WordSearchRequest > BtreeDictionary::stemmedMatch( std::u32string const & str,
                                                                      unsigned minLength,
                                                                      unsigned maxSuffixVariation,
                                                                      unsigned long maxResults )
@@ -437,8 +435,11 @@ void BtreeIndex::readNode( uint32_t offset, vector< char > & out )
   }
 }
 
-char const * BtreeIndex::findChainOffsetExactOrPrefix(
-  wstring const & target, bool & exactMatch, vector< char > & extLeaf, uint32_t & nextLeaf, char const *& leafEnd )
+char const * BtreeIndex::findChainOffsetExactOrPrefix( std::u32string const & target,
+                                                       bool & exactMatch,
+                                                       vector< char > & extLeaf,
+                                                       uint32_t & nextLeaf,
+                                                       char const *& leafEnd )
 {
   if ( !idxFile ) {
     throw exIndexWasNotOpened();
@@ -449,7 +450,7 @@ char const * BtreeIndex::findChainOffsetExactOrPrefix(
   // Lookup the index by traversing the index btree
 
   // vector< wchar > wcharBuffer;
-  wstring w_word;
+  std::u32string w_word;
   exactMatch = false;
 
   // Read a node
@@ -530,7 +531,7 @@ char const * BtreeIndex::findChainOffsetExactOrPrefix(
 
         size_t wordSize = strlen( closestString );
 
-        w_word = Utf8::decode( string( closestString, wordSize ) );
+        w_word = Text::toUtf32( string( closestString, wordSize ) );
 
         compareResult = target.compare( w_word );
 
@@ -649,9 +650,9 @@ char const * BtreeIndex::findChainOffsetExactOrPrefix(
 
         size_t wordSize = strlen( ptr );
 
-        w_word = Utf8::decode( string( ptr, wordSize ) );
+        w_word = Text::toUtf32( string( ptr, wordSize ) );
 
-        wstring foldedWord = Folding::apply( w_word );
+        std::u32string foldedWord = Folding::apply( w_word );
         if ( foldedWord.empty() ) {
           foldedWord = Folding::applyWhitespaceOnly( w_word );
         }
@@ -750,9 +751,9 @@ vector< WordArticleLink > BtreeIndex::readChain( char const *& ptr, uint32_t max
   return result;
 }
 
-void BtreeIndex::antialias( wstring const & str, vector< WordArticleLink > & chain, bool ignoreDiacritics )
+void BtreeIndex::antialias( std::u32string const & str, vector< WordArticleLink > & chain, bool ignoreDiacritics )
 {
-  wstring caseFolded = Folding::applySimpleCaseOnly( gd::normalize( str ) );
+  std::u32string caseFolded = Folding::applySimpleCaseOnly( Text::normalize( str ) );
   if ( ignoreDiacritics ) {
     caseFolded = Folding::applyDiacriticsOnly( caseFolded );
   }
@@ -764,8 +765,8 @@ void BtreeIndex::antialias( wstring const & str, vector< WordArticleLink > & cha
   for ( unsigned x = chain.size(); x--; ) {
     // If after applying case folding to each word they wouldn't match, we
     // drop the entry.
-    wstring entry =
-      Folding::applySimpleCaseOnly( gd::normalize( Utf8::decode( chain[ x ].prefix + chain[ x ].word ) ) );
+    std::u32string entry =
+      Folding::applySimpleCaseOnly( Text::normalize( Text::toUtf32( chain[ x ].prefix + chain[ x ].word ) ) );
     if ( ignoreDiacritics ) {
       entry = Folding::applyDiacriticsOnly( entry );
     }
@@ -923,9 +924,9 @@ static uint32_t buildBtreeNode( IndexedWords::const_iterator & nextIndex,
   return offset;
 }
 
-void IndexedWords::addWord( wstring const & index_word, uint32_t articleOffset, unsigned int maxHeadwordSize )
+void IndexedWords::addWord( std::u32string const & index_word, uint32_t articleOffset, unsigned int maxHeadwordSize )
 {
-  wstring word               = gd::removeTrailingZero( index_word );
+  std::u32string word        = Text::removeTrailingZero( index_word );
   string::size_type wordSize = word.size();
 
   // Safeguard us against various bugs here. Don't attempt adding words
@@ -945,7 +946,7 @@ void IndexedWords::addWord( wstring const & index_word, uint32_t articleOffset, 
 
     wordSize = word.size();
   }
-  wchar const * wordBegin = word.c_str();
+  char32_t const * wordBegin = word.c_str();
 
   // Skip any leading whitespace
   while ( *wordBegin && Folding::isWhitespace( *wordBegin ) ) {
@@ -958,7 +959,7 @@ void IndexedWords::addWord( wstring const & index_word, uint32_t articleOffset, 
     --wordSize;
   }
 
-  wchar const * nextChar = wordBegin;
+  char32_t const * nextChar = wordBegin;
 
   vector< char > utfBuffer( wordSize * 4 );
 
@@ -970,11 +971,11 @@ void IndexedWords::addWord( wstring const & index_word, uint32_t articleOffset, 
       if ( !*nextChar ) // End of string ends everything
       {
         if ( wordsAdded == 0 ) {
-          wstring folded = Folding::applyWhitespaceOnly( wstring( wordBegin, wordSize ) );
+          std::u32string folded = Folding::applyWhitespaceOnly( std::u32string( wordBegin, wordSize ) );
           if ( !folded.empty() ) {
-            auto i = insert( { Utf8::encode( folded ), vector< WordArticleLink >() } ).first;
+            auto i = insert( { Text::toUtf8( folded ), vector< WordArticleLink >() } ).first;
 
-            string utfWord = Utf8::encode( wstring( wordBegin, wordSize ) );
+            string utfWord = Text::toUtf8( std::u32string( wordBegin, wordSize ) );
             string utfPrefix;
             i->second.emplace_back( utfWord, articleOffset, utfPrefix );
           }
@@ -988,15 +989,15 @@ void IndexedWords::addWord( wstring const & index_word, uint32_t articleOffset, 
     }
 
     // Insert this word
-    wstring folded = Folding::apply( nextChar );
-    auto name      = Utf8::encode( folded );
+    std::u32string folded = Folding::apply( nextChar );
+    auto name             = Text::toUtf8( folded );
 
     auto i = insert( { std::move( name ), vector< WordArticleLink >() } ).first;
 
     if ( ( i->second.size() < 1024 ) || ( nextChar == wordBegin ) ) // Don't overpopulate chains with middle matches
     {
-      string utfWord   = Utf8::encode( wstring( nextChar, wordSize - ( nextChar - wordBegin ) ) );
-      string utfPrefix = Utf8::encode( wstring( wordBegin, nextChar - wordBegin ) );
+      string utfWord   = Text::toUtf8( std::u32string( nextChar, wordSize - ( nextChar - wordBegin ) ) );
+      string utfPrefix = Text::toUtf8( std::u32string( wordBegin, nextChar - wordBegin ) );
 
       i->second.emplace_back( std::move( utfWord ), articleOffset, std::move( utfPrefix ) );
       // reduce the vector reallocation.
@@ -1020,14 +1021,14 @@ void IndexedWords::addWord( wstring const & index_word, uint32_t articleOffset, 
   }
 }
 
-void IndexedWords::addSingleWord( wstring const & index_word, uint32_t articleOffset )
+void IndexedWords::addSingleWord( std::u32string const & index_word, uint32_t articleOffset )
 {
-  wstring const & word = gd::removeTrailingZero( index_word );
-  wstring folded       = Folding::apply( word );
+  std::u32string const & word = Text::removeTrailingZero( index_word );
+  std::u32string folded       = Folding::apply( word );
   if ( folded.empty() ) {
     folded = Folding::applyWhitespaceOnly( word );
   }
-  operator[]( Utf8::encode( folded ) ).emplace_back( Utf8::encode( word ), articleOffset );
+  operator[]( Text::toUtf8( folded ) ).emplace_back( Text::toUtf8( word ), articleOffset );
 }
 
 IndexInfo buildIndex( IndexedWords const & indexedWords, File::Index & file )
