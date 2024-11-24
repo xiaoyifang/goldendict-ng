@@ -92,10 +92,6 @@ private:
   //  QMutex hunspellMutex;
 };
 
-/// Encodes the given string to be passed to the hunspell object. May throw
-/// Iconv::Ex
-string encodeToHunspell( Hunspell &, std::u32string const & );
-
 /// Decodes the given string returned by the hunspell object. May throw
 /// Iconv::Ex
 std::u32string decodeFromHunspell( Hunspell &, char const * );
@@ -211,15 +207,15 @@ void HunspellArticleRequest::run()
 
     QMutexLocker _( &hunspellMutex );
 
-    string encodedWord = encodeToHunspell( hunspell, trimmedWord );
+    string trimmedWord_utf8 = Iconv::toUtf8( Iconv::GdWchar, trimmedWord.data(), trimmedWord.size() );
 
-    if ( hunspell.spell( encodedWord ) ) {
+    if ( hunspell.spell( trimmedWord_utf8 ) ) {
       // Good word -- no spelling suggestions then.
       finish();
       return;
     }
 
-    suggestions = hunspell.suggest( encodedWord );
+    suggestions = hunspell.suggest( trimmedWord_utf8 );
     if ( !suggestions.empty() ) {
       // There were some suggestions made for us. Make an appropriate output.
 
@@ -362,14 +358,10 @@ QList< std::u32string > suggest( std::u32string & word, QMutex & hunspellMutex, 
 {
   QList< std::u32string > result;
 
-  vector< string > suggestions;
-
   try {
     QMutexLocker _( &hunspellMutex );
 
-    string encodedWord = encodeToHunspell( hunspell, word );
-
-    suggestions = hunspell.analyze( encodedWord );
+    auto suggestions = hunspell.analyze( Iconv::toUtf8( Iconv::GdWchar, word.data(), word.size() ) );
     if ( !suggestions.empty() ) {
       // There were some suggestions made for us. Make an appropriate output.
 
@@ -472,9 +464,7 @@ void HunspellPrefixMatchRequest::run()
 
     QMutexLocker _( &hunspellMutex );
 
-    string encodedWord = encodeToHunspell( hunspell, trimmedWord );
-
-    if ( hunspell.spell( encodedWord ) ) {
+    if ( hunspell.spell( Iconv::toUtf8( Iconv::GdWchar, trimmedWord.data(), trimmedWord.size() ) ) ) {
       // Known word -- add it to the result
 
       QMutexLocker _( &dataMutex );
@@ -587,24 +577,6 @@ void getSuggestionsForExpression( std::u32string const & expression,
       suggestions.push_back( result );
     }
   }
-}
-
-string encodeToHunspell( Hunspell & hunspell, std::u32string const & str )
-{
-  Iconv conv( Iconv::GdWchar );
-
-  void const * in = str.data();
-  size_t inLeft   = str.size() * sizeof( char32_t );
-
-  vector< char > result( str.size() * 4 + 1 ); // +1 isn't actually needed,
-                                               // but then iconv complains on empty
-                                               // words
-
-  void * out     = &result.front();
-  size_t outLeft = result.size();
-
-  QString convStr = conv.convert( in, inLeft );
-  return convStr.toStdString();
 }
 
 std::u32string decodeFromHunspell( Hunspell & hunspell, char const * str )
