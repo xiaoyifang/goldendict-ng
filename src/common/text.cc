@@ -60,7 +60,7 @@ Encoding getEncodingForName( const QByteArray & name )
     return Encoding::Windows1251;
   }
   if ( n == windows_1250 ) {
-    return Encoding::Windows1251;
+    return Encoding::Windows1250;
   }
   return Encoding::Utf8;
 }
