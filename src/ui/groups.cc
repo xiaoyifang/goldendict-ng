@@ -64,6 +64,24 @@ Groups::Groups( QWidget * parent,
   countChanged();
 }
 
+void Groups::rebuild( vector< sptr< Dictionary::Class > > const & dicts_,
+                      Config::Groups const & groups_,
+                      Config::Group const & order )
+{
+  this->setUpdatesEnabled( false );
+  dicts  = dicts_;
+  groups = groups_;
+
+  ui.dictionaries->setAsSource();
+  ui.dictionaries->populate( Instances::Group( order, dicts, Config::Group() ).dictionaries, dicts );
+
+  // Populate groups' widget
+  ui.groups->populate( groups, dicts, ui.dictionaries->getCurrentDictionaries() );
+
+  countChanged();
+  this->setUpdatesEnabled( true );
+}
+
 void Groups::editGroup( unsigned id )
 {
   for ( int x = 0; x < groups.size(); ++x ) {

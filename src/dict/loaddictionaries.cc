@@ -224,7 +224,7 @@ void loadDictionaries( QWidget * parent,
 
   loadDicts.wait();
 
-  if ( loadDicts.getExceptionText().size() ) {
+  if ( !loadDicts.getExceptionText().empty() ) {
     QMessageBox::critical( parent,
                            QCoreApplication::translate( "LoadDictionaries", "Error loading dictionaries" ),
                            QString::fromUtf8( loadDicts.getExceptionText().c_str() ) );
