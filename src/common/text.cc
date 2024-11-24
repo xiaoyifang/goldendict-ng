@@ -10,9 +10,9 @@
 
 namespace Text {
 
-constexpr const char * getEncodingNameFor( Encoding e )
+const char * getEncodingNameFor( Encoding e )
 {
-  switch ( e ) {
+   switch ( e ) {
     case Encoding::Utf32LE:
       return utf32_le;
     case Encoding::Utf32BE:
@@ -276,12 +276,9 @@ LineFeed initLineFeed( const Encoding e )
       lf.length   = 2;
       break;
     case Encoding::Windows1252:
-
     case Encoding::Windows1251:
-
-    case Encoding::Utf8:
-
     case Encoding::Windows1250:
+    case Encoding::Utf8:
     default:
       lf.length   = 1;
       lf.lineFeed = new char[ 1 ]{ 0x0A };

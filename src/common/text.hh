@@ -2,10 +2,9 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 #pragma once
 
-#include <cstdio>
+#include "ex.hh"
 #include <QByteArray>
 #include <string>
-#include "ex.hh"
 
 /// Facilities to process Text, focusing on Unicode
 namespace Text {
@@ -35,7 +34,7 @@ inline constexpr auto windows_1250 = "WINDOWS-1250";
 inline constexpr auto windows_1251 = "WINDOWS-1251";
 inline constexpr auto windows_1252 = "WINDOWS-1252";
 
-constexpr const char * getEncodingNameFor( Encoding e );
+const char * getEncodingNameFor( Encoding e );
 Encoding getEncodingForName( const QByteArray & name );
 
 /// utf32 -> utf8
