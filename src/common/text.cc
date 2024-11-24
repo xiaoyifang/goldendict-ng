@@ -10,7 +10,7 @@
 
 namespace Text {
 
-constexpr const char* getEncodingNameFor( Encoding e )
+constexpr const char * getEncodingNameFor( Encoding e )
 {
   switch ( e ) {
     case Encoding::Utf32LE:

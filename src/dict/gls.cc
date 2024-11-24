@@ -1259,7 +1259,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
           idx.write( (uint32_t)dictionaryName.size() );
           idx.write( dictionaryName.data(), dictionaryName.size() );
 
-          idxHeader.glsEncoding = static_cast<uint32_t>(scanner.getEncoding());
+          idxHeader.glsEncoding = static_cast< uint32_t >( scanner.getEncoding() );
 
           IndexedWords indexedWords;
 
