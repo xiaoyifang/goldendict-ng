@@ -12,7 +12,7 @@ namespace Text {
 
 const char * getEncodingNameFor( Encoding e )
 {
-   switch ( e ) {
+  switch ( e ) {
     case Encoding::Utf32LE:
       return utf32_le;
     case Encoding::Utf32BE:
