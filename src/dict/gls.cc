@@ -123,7 +123,7 @@ public:
 };
 
 GlsScanner::GlsScanner( string const & fileName ):
-  encoding( Text::Utf8 ),
+  encoding( Encoding::Utf8 ),
   readBufferPtr( readBuffer ),
   readBufferLeft( 0 ),
   linesRead( 0 )
@@ -149,10 +149,10 @@ GlsScanner::GlsScanner( string const & fileName ):
   // If the file begins with the dedicated Unicode marker, we just consume
   // it. If, on the other hand, it's not, we return the bytes back
   if ( firstBytes[ 0 ] == 0xFF && firstBytes[ 1 ] == 0xFE ) {
-    encoding = Text::Utf16LE;
+    encoding = Encoding::Utf16LE;
   }
   else if ( firstBytes[ 0 ] == 0xFE && firstBytes[ 1 ] == 0xFF ) {
-    encoding = Text::Utf16BE;
+    encoding = Encoding::Utf16BE;
   }
   else if ( firstBytes[ 0 ] == 0xEF && firstBytes[ 1 ] == 0xBB ) {
     // Looks like Utf8, read one more byte
@@ -161,14 +161,14 @@ GlsScanner::GlsScanner( string const & fileName ):
       gzclose( f );
       throw exMalformedGlsFile( fileName );
     }
-    encoding = Text::Utf8;
+    encoding = Encoding::Utf8;
   }
   else {
     if ( gzrewind( f ) ) {
       gzclose( f );
       throw exCantOpen( fileName );
     }
-    encoding = Text::Utf8;
+    encoding = Encoding::Utf8;
   }
 
   codec = QTextCodec::codecForName( Text::getEncodingNameFor( encoding ) );
@@ -1259,7 +1259,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
           idx.write( (uint32_t)dictionaryName.size() );
           idx.write( dictionaryName.data(), dictionaryName.size() );
 
-          idxHeader.glsEncoding = scanner.getEncoding();
+          idxHeader.glsEncoding = static_cast< uint32_t >( scanner.getEncoding() );
 
           IndexedWords indexedWords;
 

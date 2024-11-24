@@ -207,8 +207,8 @@ void stripComments( std::u32string &, bool & );
 inline size_t DslScanner::distanceToBytes( size_t x ) const
 {
   switch ( encoding ) {
-    case Text::Utf16LE:
-    case Text::Utf16BE:
+    case Encoding::Utf16LE:
+    case Encoding::Utf16BE:
       return x * 2;
     default:
       return x;

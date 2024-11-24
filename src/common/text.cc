@@ -10,6 +10,60 @@
 
 namespace Text {
 
+const char * getEncodingNameFor( Encoding e )
+{
+  switch ( e ) {
+    case Encoding::Utf32LE:
+      return utf32_le;
+    case Encoding::Utf32BE:
+      return utf32_be;
+    case Encoding::Utf32:
+      return utf32;
+    case Encoding::Utf16LE:
+      return utf16_le;
+    case Encoding::Utf16BE:
+      return utf16_be;
+    case Encoding::Windows1252:
+      return windows_1252;
+    case Encoding::Windows1251:
+      return windows_1251;
+    case Encoding::Windows1250:
+      return windows_1250;
+    case Encoding::Utf8:
+    default:
+      return utf8;
+  }
+}
+
+Encoding getEncodingForName( const QByteArray & name )
+{
+  auto const n = name.toUpper();
+  if ( n == utf32_le ) {
+    return Encoding::Utf32LE;
+  }
+  if ( n == utf32_be ) {
+    return Encoding::Utf32BE;
+  }
+  if ( n == utf32 ) {
+    return Encoding::Utf32;
+  }
+  if ( n == utf16_le ) {
+    return Encoding::Utf16LE;
+  }
+  if ( n == utf16_be ) {
+    return Encoding::Utf16BE;
+  }
+  if ( n == windows_1252 ) {
+    return Encoding::Windows1252;
+  }
+  if ( n == windows_1251 ) {
+    return Encoding::Windows1251;
+  }
+  if ( n == windows_1250 ) {
+    return Encoding::Windows1250;
+  }
+  return Encoding::Utf8;
+}
 
 /// Encodes the given UTF-32 into UTF-8. The inSize specifies the number
 /// of wide characters the 'in' pointer points to. The 'out' buffer must be
@@ -200,87 +254,31 @@ int findFirstLinePosition( char * s1, int s1length, const char * s2, int s2lengt
   return pos - s1 + s2length;
 }
 
-char const * getEncodingNameFor( Encoding e )
-{
-  switch ( e ) {
-    case Utf32LE:
-      return "UTF-32LE";
-    case Utf32BE:
-      return "UTF-32BE";
-    case Utf16LE:
-      return "UTF-16LE";
-    case Utf16BE:
-      return "UTF-16BE";
-    case Windows1252:
-      return "WINDOWS-1252";
-    case Windows1251:
-      return "WINDOWS-1251";
-    case Utf8:
-      return "UTF-8";
-    case Windows1250:
-      return "WINDOWS-1250";
-    default:
-      return "UTF-8";
-  }
-}
-
-Encoding getEncodingForName( const QByteArray & _name )
-{
-  const auto name = _name.toUpper();
-  if ( name == "UTF-32LE" ) {
-    return Utf32LE;
-  }
-  if ( name == "UTF-32BE" ) {
-    return Utf32BE;
-  }
-  if ( name == "UTF-16LE" ) {
-    return Utf16LE;
-  }
-  if ( name == "UTF-16BE" ) {
-    return Utf16BE;
-  }
-  if ( name == "WINDOWS-1252" ) {
-    return Windows1252;
-  }
-  if ( name == "WINDOWS-1251" ) {
-    return Windows1251;
-  }
-  if ( name == "UTF-8" ) {
-    return Utf8;
-  }
-  if ( name == "WINDOWS-1250" ) {
-    return Windows1250;
-  }
-  return Utf8;
-}
 
 LineFeed initLineFeed( const Encoding e )
 {
   LineFeed lf{};
   switch ( e ) {
-    case Utf32LE:
+    case Encoding::Utf32LE:
       lf.lineFeed = new char[ 4 ]{ 0x0A, 0, 0, 0 };
       lf.length   = 4;
       break;
-    case Utf32BE:
+    case Encoding::Utf32BE:
       lf.lineFeed = new char[ 4 ]{ 0, 0, 0, 0x0A };
       lf.length   = 4;
       break;
-    case Utf16LE:
+    case Encoding::Utf16LE:
       lf.lineFeed = new char[ 2 ]{ 0x0A, 0 };
       lf.length   = 2;
       break;
-    case Utf16BE:
+    case Encoding::Utf16BE:
       lf.lineFeed = new char[ 2 ]{ 0, 0x0A };
       lf.length   = 2;
       break;
-    case Windows1252:
-
-    case Windows1251:
-
-    case Utf8:
-
-    case Windows1250:
+    case Encoding::Windows1252:
+    case Encoding::Windows1251:
+    case Encoding::Windows1250:
+    case Encoding::Utf8:
     default:
       lf.length   = 1;
       lf.lineFeed = new char[ 1 ]{ 0x0A };
