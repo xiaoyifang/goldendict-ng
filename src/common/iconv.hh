@@ -3,13 +3,10 @@
 
 #pragma once
 
-#include <QString>
-
-#include "text.hh"
 #include "ex.hh"
-
+#include "text.hh"
+#include <QString>
 #include <iconv.h>
-
 
 /// "Internationalization conversion" for char encoding conversion, currently implemented with iconv()
 /// Only supports converting from a known "from" to UTF8
@@ -21,12 +18,6 @@ public:
 
   DEF_EX( Ex, "Iconv exception", std::exception )
   DEF_EX_STR( exCantInit, "Can't initialize iconv conversion:", Ex )
-
-  // Some predefined character sets' names
-
-  static char const * const GdWchar;
-  static char const * const Utf16Le;
-  static char const * const Utf8;
 
   explicit Iconv( char const * from );
 

@@ -143,7 +143,7 @@ Entry::Entry( File::Index & f )
   // Read the size of the recording, in samples
   samplesLength = f.read< uint32_t >();
 
-  name = Iconv::toUtf8( Iconv::Utf16Le, &filenameBuffer.front(), read * sizeof( uint16_t ) );
+  name = Iconv::toUtf8( Text::utf16_le, &filenameBuffer.front(), read * sizeof( uint16_t ) );
 }
 
 class LsaDictionary: public BtreeIndexing::BtreeDictionary

@@ -1144,8 +1144,9 @@ void DslDictionary::getArticleText( uint32_t articleAddress, QString & headword,
   }
   else {
     try {
-      articleData =
-        Iconv::toWstring( getEncodingNameFor( Encoding( idxHeader.dslEncoding ) ), articleBody, articleSize );
+      articleData = Iconv::toWstring( getEncodingNameFor( static_cast< Encoding >( idxHeader.dslEncoding ) ),
+                                      articleBody,
+                                      articleSize );
       free( articleBody );
 
       // Strip DSL comments
@@ -1789,7 +1790,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
             idx.write( soundDictName.data(), soundDictName.size() );
           }
 
-          idxHeader.dslEncoding = scanner.getEncoding();
+          idxHeader.dslEncoding = static_cast< uint32_t >( scanner.getEncoding() );
 
           IndexedWords indexedWords;
 

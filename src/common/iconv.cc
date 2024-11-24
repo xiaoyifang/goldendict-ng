@@ -6,12 +6,8 @@
 #include <errno.h>
 #include <string.h>
 
-char const * const Iconv::GdWchar = "UTF-32LE";
-char const * const Iconv::Utf16Le = "UTF-16LE";
-char const * const Iconv::Utf8    = "UTF-8";
-
 Iconv::Iconv( char const * from ):
-  state( iconv_open( Utf8, from ) )
+  state( iconv_open( Text::utf8, from ) )
 {
   if ( state == (iconv_t)-1 ) {
     throw exCantInit( strerror( errno ) );

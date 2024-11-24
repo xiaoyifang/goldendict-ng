@@ -11,9 +11,10 @@
 namespace Text {
 DEF_EX_STR( exCantDecode, "Can't decode the given string from Utf8:", std::exception )
 
-// Those are possible encodings for .dsl files
-enum Encoding {
-  Utf16LE,
+/// Encoding names. Ref -> IANA's encoding names https://www.iana.org/assignments/character-sets/character-sets.xhtml
+/// Notice: The ordering must not be changed before Utf32LE. The current .dsl format index file depends on it.
+enum class Encoding {
+  Utf16LE = 0,
   Utf16BE,
   Windows1252,
   Windows1251,
@@ -21,9 +22,25 @@ enum Encoding {
   Utf8,
   Utf32BE,
   Utf32LE,
+  Utf32,
 };
 
+inline constexpr auto utf16_be     = "UTF-16BE";
+inline constexpr auto utf16_le     = "UTF-16LE";
+inline constexpr auto utf32        = "UTF-32";
+inline constexpr auto utf32_be     = "UTF-32BE";
+inline constexpr auto utf32_le     = "UTF-32LE";
+inline constexpr auto utf8         = "UTF-8";
+inline constexpr auto windows_1250 = "WINDOWS-1250";
+inline constexpr auto windows_1251 = "WINDOWS-1251";
+inline constexpr auto windows_1252 = "WINDOWS-1252";
+
+constexpr const char * getEncodingNameFor( Encoding e );
+Encoding getEncodingForName( const QByteArray & name );
+
+/// utf32 -> utf8
 std::string toUtf8( std::u32string const & ) noexcept;
+/// utf8 -> utf32
 std::u32string toUtf32( std::string const & );
 
 /// Since the standard isspace() is locale-specific, we need something
@@ -33,8 +50,6 @@ bool isspace( int c );
 
 //get the first line in string s1. -1 if not found
 int findFirstLinePosition( char * s1, int s1length, const char * s2, int s2length );
-char const * getEncodingNameFor( Encoding e );
-Encoding getEncodingForName( const QByteArray & name );
 
 struct LineFeed
 {

@@ -844,7 +844,7 @@ bool ArticleDom::atSignFirstInLine()
 /////////////// DslScanner
 
 DslScanner::DslScanner( string const & fileName ):
-  encoding( Text::Utf8 ),
+  encoding( Text::Encoding::Utf8 ),
   readBufferPtr( readBuffer ),
   readBufferLeft( 0 ),
   linesRead( 0 )
@@ -875,19 +875,19 @@ DslScanner::DslScanner( string const & fileName ):
        guessedEncoding.has_value() ) {
     switch ( guessedEncoding.value() ) {
       case QStringConverter::Utf8:
-        encoding = Text::Utf8;
+        encoding = Text::Encoding::Utf8;
         break;
       case QStringConverter::Utf16LE:
-        encoding = Text::Utf16LE;
+        encoding = Text::Encoding::Utf16LE;
         break;
       case QStringConverter::Utf16BE:
-        encoding = Text::Utf16BE;
+        encoding = Text::Encoding::Utf16BE;
         break;
       case QStringConverter::Utf32LE:
-        encoding = Text::Utf16LE;
+        encoding = Text::Encoding::Utf16LE;
         break;
       case QStringConverter::Utf32BE:
-        encoding = Text::Utf32BE;
+        encoding = Text::Encoding::Utf32BE;
         break;
       default:
         break;
@@ -976,13 +976,13 @@ DslScanner::DslScanner( string const & fileName ):
         qWarning( "Warning: encoding was specified in a Unicode file, ignoring." );
       }
       else if ( !arg.compare( U"Latin" ) ) {
-        encoding = Text::Windows1252;
+        encoding = Text::Encoding::Windows1252;
       }
       else if ( !arg.compare( U"Cyrillic" ) ) {
-        encoding = Text::Windows1251;
+        encoding = Text::Encoding::Windows1251;
       }
       else if ( !arg.compare( U"EasternEuropean" ) ) {
-        encoding = Text::Windows1250;
+        encoding = Text::Encoding::Windows1250;
       }
       else {
         gzclose( f );
