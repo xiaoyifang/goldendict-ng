@@ -5,11 +5,11 @@
 
 #include "config.hh"
 #include "dict/dictionary.hh"
-#include "dict/sources.hh"
-#include "groups.hh"
+#include "edit_sources_models.hh"
+#include "edit_groups.hh"
 #include "instances.hh"
-#include "orderandprops.hh"
-#include "ui_editdictionaries.h"
+#include "edit_orderandprops.hh"
+#include "ui_edit_dictionaries.h"
 #include <QAction>
 #include <QNetworkAccessManager>
 #include <QPointer>

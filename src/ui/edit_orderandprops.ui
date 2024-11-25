@@ -261,12 +261,12 @@
   <customwidget>
    <class>DictListWidget</class>
    <extends>QListWidget</extends>
-   <header>groups_widgets.hh</header>
+   <header>edit_groups_widgets.hh</header>
   </customwidget>
   <customwidget>
    <class>QuickFilterLine</class>
    <extends>QLineEdit</extends>
-   <header>groups_widgets.hh</header>
+   <header>edit_groups_widgets.hh</header>
   </customwidget>
  </customwidgets>
  <tabstops>

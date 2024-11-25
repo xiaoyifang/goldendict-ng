@@ -1,7 +1,7 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#include "groups_widgets.hh"
+#include "edit_groups_widgets.hh"
 
 #include "instances.hh"
 #include "config.hh"
@@ -647,7 +647,7 @@ int DictGroupsWidget::addNewGroup( QString const & name )
 
   Config::Group newGroup;
 
-  newGroup.id = nextId++;
+  newGroup.id   = nextId++;
   newGroup.name = name;
 
   const auto gr = new DictGroupWidget( this, *allDicts, newGroup );
