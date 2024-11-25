@@ -3,8 +3,8 @@
 
 #pragma once
 
-#include "ui_orderandprops.h"
-#include "groups_widgets.hh"
+#include "ui_edit_orderandprops.h"
+#include "edit_groups_widgets.hh"
 #include <QSortFilterProxyModel>
 
 class OrderAndProps: public QWidget

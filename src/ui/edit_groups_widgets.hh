@@ -3,15 +3,12 @@
 
 #pragma once
 
-// Various custom widgets used in the Groups dialog
-
+/// Various custom widgets used in the Groups dialog
 #include <vector>
-
 #include <QAction>
 #include <QListWidget>
 #include <QLineEdit>
 #include <QSortFilterProxyModel>
-
 #include "config.hh"
 #include "dict/dictionary.hh"
 
@@ -110,7 +107,7 @@ private:
   DictListModel model;
 };
 
-#include "ui_dictgroupwidget.h"
+#include "ui_edit_group_tab.h"
 
 /// A widget that is placed into each tab in the Groups dialog.
 class DictGroupWidget: public QWidget

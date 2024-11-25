@@ -1,7 +1,7 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#include "groups.hh"
+#include "edit_groups.hh"
 #include "instances.hh"
 #include "dict/dictionary.hh"
 #include <QMessageBox>

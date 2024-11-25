@@ -9,7 +9,7 @@
 
 #include "mainwindow.hh"
 #include <QWebEngineProfile>
-#include "editdictionaries.hh"
+#include "edit_dictionaries.hh"
 #include "dict/loaddictionaries.hh"
 #include "preferences.hh"
 #include "about.hh"

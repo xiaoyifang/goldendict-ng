@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include "ui_groups.h"
+#include "ui_edit_groups.h"
 #include "config.hh"
 #include "dict/dictionary.hh"
 #include <QToolButton>

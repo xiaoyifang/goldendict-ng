@@ -2,10 +2,9 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #pragma once
-
-#include "ui_sources.h"
+#include "ui_edit_sources.h"
 #include "config.hh"
-#include "hunspell.hh"
+#include "dict/hunspell.hh"
 #include <QAbstractItemModel>
 #include <QComboBox>
 #include <QItemDelegate>

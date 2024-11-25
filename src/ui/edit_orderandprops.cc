@@ -1,14 +1,12 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#include "orderandprops.hh"
+#include "edit_orderandprops.hh"
 #include "instances.hh"
 #include "langcoder.hh"
 #include "language.hh"
-
 #include <algorithm>
 #include <utility>
-
 #include <QMenu>
 
 using std::vector;

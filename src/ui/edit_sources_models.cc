@@ -1,7 +1,7 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#include "sources.hh"
+#include "edit_sources_models.hh"
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QStandardItemModel>
