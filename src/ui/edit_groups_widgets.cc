@@ -647,7 +647,7 @@ int DictGroupsWidget::addNewGroup( QString const & name )
 
   Config::Group newGroup;
 
-  newGroup.id = nextId++;
+  newGroup.id   = nextId++;
   newGroup.name = name;
 
   const auto gr = new DictGroupWidget( this, *allDicts, newGroup );
