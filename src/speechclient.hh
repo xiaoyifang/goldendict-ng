@@ -1,6 +1,6 @@
 #pragma once
 #ifdef TTS_SUPPORT
-
+  #include "fixx11h.h"
   #include <QObject>
   #include "config.hh"
   #include <QTextToSpeech>
