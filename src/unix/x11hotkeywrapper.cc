@@ -303,7 +303,6 @@ void HotkeyWrapper::unregister()
   while ( grabbedKeys.size() )
     ungrabKey( grabbedKeys.begin() );
 
-  ( static_cast< QHotkeyApplication * >( qApp ) )->unregisterWrapper( this );
 }
 
 #endif

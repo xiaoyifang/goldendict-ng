@@ -18,8 +18,6 @@
 #include <stdio.h>
 #include <QStyleFactory>
 
-#include "hotkeywrapper.hh" // X11 headers & fixer causes this file must be included last
-
 #if defined( Q_OS_UNIX )
   #include <clocale>
   #include "unix/ksignalhandler.hh"

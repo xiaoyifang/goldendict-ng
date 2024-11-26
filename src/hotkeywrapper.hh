@@ -198,16 +198,15 @@ private slots:
   void hotkeyAppCommitData( QSessionManager & );
 
   void hotkeyAppSaveState( QSessionManager & );
-
+#ifdef Q_OS_WIN
 protected:
   void registerWrapper( HotkeyWrapper * wrapper );
   void unregisterWrapper( HotkeyWrapper * wrapper );
 
-#ifdef Q_OS_WIN
   virtual bool nativeEventFilter( const QByteArray & eventType, void * message, qintptr * result );
-#endif
 
   QList< HotkeyWrapper * > hotkeyWrappers;
+#endif
 };
 
 //////////////////////////////////////////////////////////////////////////
