@@ -591,7 +591,7 @@ int main( int argc, char ** argv )
     &app,
     &QGuiApplication::commitDataRequest,
     &m,
-    [ &m ]( auto & ) {
+    [ &m ]( QSessionManager & ) {
       m.commitData();
     },
     Qt::DirectConnection );
@@ -600,7 +600,7 @@ int main( int argc, char ** argv )
     &app,
     &QGuiApplication::saveStateRequest,
     &app,
-    []( auto & mgr ) {
+    []( QSessionManager & mgr ) {
       mgr.setRestartHint( QSessionManager::RestartNever );
     },
     Qt::DirectConnection );
