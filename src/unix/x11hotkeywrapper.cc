@@ -302,7 +302,6 @@ void HotkeyWrapper::unregister()
 
   while ( grabbedKeys.size() )
     ungrabKey( grabbedKeys.begin() );
-
 }
 
 #endif

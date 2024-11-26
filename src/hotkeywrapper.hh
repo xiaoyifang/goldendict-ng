@@ -199,6 +199,7 @@ private slots:
 
   void hotkeyAppSaveState( QSessionManager & );
 #ifdef Q_OS_WIN
+
 protected:
   void registerWrapper( HotkeyWrapper * wrapper );
   void unregisterWrapper( HotkeyWrapper * wrapper );
