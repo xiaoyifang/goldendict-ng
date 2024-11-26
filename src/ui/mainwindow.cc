@@ -1213,11 +1213,6 @@ void MainWindow::removeGroupComboBoxActionsFromDialog( QDialog * dialog, GroupCo
   }
 }
 
-void MainWindow::commitData( QSessionManager & )
-{
-  commitData();
-}
-
 void MainWindow::commitData()
 {
   if ( cfg.preferences.clearNetworkCacheOnExit ) {

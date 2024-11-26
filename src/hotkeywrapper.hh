@@ -166,13 +166,6 @@ signals:
 
 //////////////////////////////////////////////////////////////////////////
 
-class DataCommitter
-{
-public:
-
-  virtual void commitData( QSessionManager & ) = 0;
-  virtual ~DataCommitter() {}
-};
 
 class QHotkeyApplication: public QtSingleApplication
 #if defined( Q_OS_WIN )
@@ -184,20 +177,9 @@ class QHotkeyApplication: public QtSingleApplication
 
   friend class HotkeyWrapper;
 
-  QList< DataCommitter * > dataCommitters;
-
 public:
-  QHotkeyApplication( int & argc, char ** argv );
   QHotkeyApplication( QString const & id, int & argc, char ** argv );
 
-  void addDataCommiter( DataCommitter & );
-  void removeDataCommiter( DataCommitter & );
-
-private slots:
-  /// This calls all data committers.
-  void hotkeyAppCommitData( QSessionManager & );
-
-  void hotkeyAppSaveState( QSessionManager & );
 #ifdef Q_OS_WIN
 
 protected:

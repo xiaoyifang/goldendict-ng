@@ -8,66 +8,13 @@
 
 //////////////////////////////////////////////////////////////////////////
 
-QHotkeyApplication::QHotkeyApplication( int & argc, char ** argv ):
-  QtSingleApplication( argc, argv )
-{
-  connect( this,
-           &QGuiApplication::commitDataRequest,
-           this,
-           &QHotkeyApplication::hotkeyAppCommitData,
-           Qt::DirectConnection );
-
-  connect( this,
-           &QGuiApplication::saveStateRequest,
-           this,
-           &QHotkeyApplication::hotkeyAppSaveState,
-           Qt::DirectConnection );
-
-#if defined( Q_OS_WIN )
-  installNativeEventFilter( this );
-#endif
-}
-
 QHotkeyApplication::QHotkeyApplication( QString const & id, int & argc, char ** argv ):
   QtSingleApplication( id, argc, argv )
 {
-  connect( this,
-           &QGuiApplication::commitDataRequest,
-           this,
-           &QHotkeyApplication::hotkeyAppCommitData,
-           Qt::DirectConnection );
-
-  connect( this,
-           &QGuiApplication::saveStateRequest,
-           this,
-           &QHotkeyApplication::hotkeyAppSaveState,
-           Qt::DirectConnection );
 
 #if defined( Q_OS_WIN )
   installNativeEventFilter( this );
 #endif
-}
-
-void QHotkeyApplication::addDataCommiter( DataCommitter & d )
-{
-  dataCommitters.append( &d );
-}
-
-void QHotkeyApplication::removeDataCommiter( DataCommitter & d )
-{
-  dataCommitters.removeAll( &d );
-}
-
-void QHotkeyApplication::hotkeyAppCommitData( QSessionManager & mgr )
-{
-  for ( int x = 0; x < dataCommitters.size(); ++x ) {
-    dataCommitters[ x ]->commitData( mgr );
-  }
-}
-
-void QHotkeyApplication::hotkeyAppSaveState( QSessionManager & mgr )
-{
-  mgr.setRestartHint( QSessionManager::RestartNever );
 }
 
 #ifdef Q_OS_WIN
