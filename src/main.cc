@@ -585,6 +585,7 @@ int main( int argc, char ** argv )
 
   MainWindow m( cfg );
 
+  /// Session manager things.
   // Redirect commit data request to Mainwindow's handler.
   QObject::connect(
     &app,

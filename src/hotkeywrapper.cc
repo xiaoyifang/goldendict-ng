@@ -8,15 +8,6 @@
 
 //////////////////////////////////////////////////////////////////////////
 
-QHotkeyApplication::QHotkeyApplication( int & argc, char ** argv ):
-  QtSingleApplication( argc, argv )
-{
-
-#if defined( Q_OS_WIN )
-  installNativeEventFilter( this );
-#endif
-}
-
 QHotkeyApplication::QHotkeyApplication( QString const & id, int & argc, char ** argv ):
   QtSingleApplication( id, argc, argv )
 {

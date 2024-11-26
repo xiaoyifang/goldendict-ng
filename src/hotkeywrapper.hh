@@ -177,7 +177,6 @@ class QHotkeyApplication: public QtSingleApplication
 
   friend class HotkeyWrapper;
 public:
-  QHotkeyApplication( int & argc, char ** argv );
   QHotkeyApplication( QString const & id, int & argc, char ** argv );
 
 #ifdef Q_OS_WIN
