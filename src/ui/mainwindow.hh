@@ -44,7 +44,7 @@
 using std::string;
 using std::vector;
 
-class MainWindow: public QMainWindow, public DataCommitter
+class MainWindow: public QMainWindow
 {
   Q_OBJECT
 
@@ -53,7 +53,6 @@ public:
   MainWindow( Config::Class & cfg );
   ~MainWindow();
 
-  virtual void commitData( QSessionManager & );
 
   /// Set group for main/popup window
   void setGroupByName( QString const & name, bool main_window );
@@ -68,6 +67,8 @@ public slots:
   void showStatusBarMessage( QString const &, int, QPixmap const & );
   void wordReceived( QString const & );
   void headwordFromFavorites( QString const &, QString const & );
+  /// Save config and states...
+  void commitData();
   void quitApp();
 
 private:
@@ -76,7 +77,6 @@ private:
   void addGroupComboBoxActionsToDialog( QDialog * dialog, GroupComboBox * pGroupComboBox );
   void removeGroupComboBoxActionsFromDialog( QDialog * dialog, GroupComboBox * pGroupComboBox );
 
-  void commitData();
 
   QSystemTrayIcon * trayIcon;
 

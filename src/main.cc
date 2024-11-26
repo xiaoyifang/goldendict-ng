@@ -12,6 +12,7 @@
 #include <QIcon>
 #include <QMessageBox>
 #include <QMutex>
+#include <QSessionManager>
 #include <QString>
 #include <QStringBuilder>
 #include <QtWebEngineCore/QWebEngineUrlScheme>
@@ -584,7 +585,24 @@ int main( int argc, char ** argv )
 
   MainWindow m( cfg );
 
-  app.addDataCommiter( m );
+  // Redirect commit data request to Mainwindow's handler.
+  QObject::connect(
+    &app,
+    &QGuiApplication::commitDataRequest,
+    &m,
+    [ &m ]( auto & ) {
+      m.commitData();
+    },
+    Qt::DirectConnection );
+  // Just don't restart. This probably isn't really needed.
+  QObject::connect(
+    &app,
+    &QGuiApplication::saveStateRequest,
+    &app,
+    []( auto & mgr ) {
+      mgr.setRestartHint( QSessionManager::RestartNever );
+    },
+    Qt::DirectConnection );
 
   QObject::connect( &app, &QtSingleApplication::messageReceived, &m, &MainWindow::messageFromAnotherInstanceReceived );
 
@@ -607,8 +625,6 @@ int main( int argc, char ** argv )
   QObject::connect( KSignalHandler::self(), &KSignalHandler::signalReceived, &m, &MainWindow::quitApp );
 #endif
   int r = app.exec();
-
-  app.removeDataCommiter( m );
 
   if ( logFilePtr->isOpen() ) {
     logFilePtr->close();
