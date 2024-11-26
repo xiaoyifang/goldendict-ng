@@ -207,7 +207,7 @@ void HunspellArticleRequest::run()
 
     QMutexLocker _( &hunspellMutex );
 
-    string trimmedWord_utf8 = Iconv::toUtf8( Text::utf32, trimmedWord.data(), trimmedWord.size() );
+    string trimmedWord_utf8 = Iconv::toUtf8( Text::utf32_le, trimmedWord );
 
     if ( hunspell.spell( trimmedWord_utf8 ) ) {
       // Good word -- no spelling suggestions then.
@@ -361,7 +361,7 @@ QList< std::u32string > suggest( std::u32string & word, QMutex & hunspellMutex, 
   try {
     QMutexLocker _( &hunspellMutex );
 
-    auto suggestions = hunspell.analyze( Iconv::toUtf8( Text::utf32, word.data(), word.size() ) );
+    auto suggestions = hunspell.analyze( Iconv::toUtf8( Text::utf32_le, word ) );
     if ( !suggestions.empty() ) {
       // There were some suggestions made for us. Make an appropriate output.
 
@@ -464,7 +464,7 @@ void HunspellPrefixMatchRequest::run()
 
     QMutexLocker _( &hunspellMutex );
 
-    if ( hunspell.spell( Iconv::toUtf8( Text::utf32, trimmedWord.data(), trimmedWord.size() ) ) ) {
+    if ( hunspell.spell( Iconv::toUtf8( Text::utf32_le, trimmedWord ) ) ) {
       // Known word -- add it to the result
 
       QMutexLocker _( &dataMutex );

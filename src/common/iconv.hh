@@ -31,6 +31,7 @@ public:
   // Converts a given block of data from the given encoding to an utf8-encoded
   // string.
   static std::string toUtf8( char const * fromEncoding, void const * fromData, size_t dataSize );
+  static std::string toUtf8( char const * fromEncoding, std::u32string_view str );
 
   static QString toQString( char const * fromEncoding, void const * fromData, size_t dataSize );
 
