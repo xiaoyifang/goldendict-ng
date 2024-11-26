@@ -70,6 +70,7 @@ void QHotkeyApplication::hotkeyAppSaveState( QSessionManager & mgr )
   mgr.setRestartHint( QSessionManager::RestartNever );
 }
 
+#ifdef Q_OS_WIN
 void QHotkeyApplication::registerWrapper( HotkeyWrapper * wrapper )
 {
   if ( wrapper && !hotkeyWrappers.contains( wrapper ) ) {
@@ -83,6 +84,7 @@ void QHotkeyApplication::unregisterWrapper( HotkeyWrapper * wrapper )
     hotkeyWrappers.removeAll( wrapper );
   }
 }
+#endif
 
 //////////////////////////////////////////////////////////////////////////
 
@@ -103,7 +105,9 @@ HotkeyWrapper::HotkeyWrapper( QObject * parent ):
   state2( false )
 {
   init();
+  #ifdef Q_OS_WIN
   ( static_cast< QHotkeyApplication * >( qApp ) )->registerWrapper( this );
+  #endif
 }
 
 HotkeyWrapper::~HotkeyWrapper()
