@@ -329,7 +329,7 @@ struct Preferences
   // Whether the word should be pronounced on page load, in main window/popup
   bool pronounceOnLoadMain, pronounceOnLoadPopup;
   bool useInternalPlayer;
-  InternalPlayerBackend internalPlayerBackend;
+  InternalPlayerBackend internalPlayerBackend{};
   QString audioPlaybackProgram;
 
   ProxyServer proxyServer;

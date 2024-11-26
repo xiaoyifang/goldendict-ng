@@ -180,7 +180,6 @@ Preferences::Preferences():
   pronounceOnLoadMain( false ),
   pronounceOnLoadPopup( false ),
   useInternalPlayer( InternalPlayerBackend::anyAvailable() ),
-  internalPlayerBackend( InternalPlayerBackend::defaultBackend() ),
   checkForNewReleases( true ),
   disallowContentFromOtherSites( false ),
   hideGoldenDictHeader( false ),
@@ -947,7 +946,7 @@ Class load()
     }
 
     if ( !preferences.namedItem( "internalPlayerBackend" ).isNull() ) {
-      c.preferences.internalPlayerBackend.setUiName(
+      c.preferences.internalPlayerBackend.setName(
         preferences.namedItem( "internalPlayerBackend" ).toElement().text() );
     }
 
@@ -1914,7 +1913,7 @@ void save( Class const & c )
     preferences.appendChild( opt );
 
     opt = dd.createElement( "internalPlayerBackend" );
-    opt.appendChild( dd.createTextNode( c.preferences.internalPlayerBackend.uiName() ) );
+    opt.appendChild( dd.createTextNode( c.preferences.internalPlayerBackend.getName() ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "audioPlaybackProgram" );
