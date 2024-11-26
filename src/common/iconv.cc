@@ -106,6 +106,12 @@ std::string Iconv::toUtf8( char const * fromEncoding, void const * fromData, siz
   return outStr.toStdString();
 }
 
+std::string Iconv::toUtf8( char const * fromEncoding, std::u32string_view str )
+{
+  // u32string::size -> returns the number of char32_t instead of the length of bytes
+  return toUtf8( fromEncoding, str.data(), str.size() * sizeof( char32_t ) );
+}
+
 QString Iconv::toQString( char const * fromEncoding, void const * fromData, size_t dataSize )
 {
   if ( dataSize == 0 ) {
