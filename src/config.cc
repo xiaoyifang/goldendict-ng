@@ -497,10 +497,6 @@ Class load()
       c.paths.push_back( Path( getPortableVersionDictionaryDir(), true ) );
     }
 
-#ifndef Q_OS_WIN32
-    c.preferences.audioPlaybackProgram = "mplayer";
-#endif
-
     QString possibleMorphologyPath = getProgramDataDir() + "/content/morphology";
 
     if ( QDir( possibleMorphologyPath ).exists() ) {
@@ -959,7 +955,7 @@ Class load()
       c.preferences.audioPlaybackProgram = preferences.namedItem( "audioPlaybackProgram" ).toElement().text();
     }
     else {
-      c.preferences.audioPlaybackProgram = "mplayer";
+      c.preferences.audioPlaybackProgram = "vlc --intf dummy --play-and-exit";
     }
 
     QDomNode proxy = preferences.namedItem( "proxyserver" );
