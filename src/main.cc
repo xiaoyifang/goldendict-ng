@@ -595,6 +595,7 @@ int main( int argc, char ** argv )
       m.commitData();
     },
     Qt::DirectConnection );
+
   // Just don't restart. This probably isn't really needed.
   QObject::connect(
     &app,
