@@ -1,4 +1,8 @@
 #pragma once
+#include "audioplayerinterface.hh"
+#include "ffmpegaudioplayer.hh"
+#include "multimediaaudioplayer.hh"
+#include <QScopedPointer>
 #include <QStringList>
 
 /// Overly engineered dummy/helper/wrapper "backend", which is not, to manage backends.
@@ -7,22 +11,17 @@ class InternalPlayerBackend
 public:
   /// Returns true if at least one backend is available.
   static bool anyAvailable();
-  /// Returns the default backend or null backend if none is available.
-  static InternalPlayerBackend defaultBackend();
+  AudioPlayerInterface * getActualPlayer();
   /// Returns the name list of supported backends.
-  static QStringList nameList();
+  /// The first one willl be the default one
+  static QStringList availableBackends();
 
-  /// Returns true if built with FFmpeg player support and the name matches.
-  bool isFfmpeg() const;
-  /// Returns true if built with Qt Multimedia player support and the name matches.
-  bool isQtmultimedia() const;
-
-  QString const & uiName() const
+  QString const & getName() const
   {
     return name;
   }
 
-  void setUiName( QString const & name_ )
+  void setName( QString const & name_ )
   {
     name = name_;
   }
@@ -38,24 +37,5 @@ public:
   }
 
 private:
-#ifdef MAKE_FFMPEG_PLAYER
-  static InternalPlayerBackend ffmpeg()
-  {
-    return InternalPlayerBackend( "FFmpeg" );
-  }
-#endif
-
-#ifdef MAKE_QTMULTIMEDIA_PLAYER
-  static InternalPlayerBackend qtmultimedia()
-  {
-    return InternalPlayerBackend( "Qt Multimedia" );
-  }
-#endif
-
-  explicit InternalPlayerBackend( QString const & name_ ):
-    name( name_ )
-  {
-  }
-
   QString name;
 };

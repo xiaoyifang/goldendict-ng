@@ -294,7 +294,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.pronounceOnLoadMain->setChecked( p.pronounceOnLoadMain );
   ui.pronounceOnLoadPopup->setChecked( p.pronounceOnLoadPopup );
 
-  ui.internalPlayerBackend->addItems( InternalPlayerBackend::nameList() );
+  ui.internalPlayerBackend->addItems( InternalPlayerBackend::availableBackends() );
 
   // Make sure that exactly one radio button in the group is checked and that
   // on_useExternalPlayer_toggled() is called.
@@ -304,12 +304,13 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
     // Checking ui.useInternalPlayer automatically unchecks ui.useExternalPlayer.
     ui.useInternalPlayer->setChecked( p.useInternalPlayer );
 
-    int index = ui.internalPlayerBackend->findText( p.internalPlayerBackend.uiName() );
-    if ( index < 0 ) { // The specified backend is unavailable.
-      index = ui.internalPlayerBackend->findText( InternalPlayerBackend::defaultBackend().uiName() );
+    int index = ui.internalPlayerBackend->findText( p.internalPlayerBackend.getName() );
+    if ( index >= 0 ) {
+      ui.internalPlayerBackend->setCurrentIndex( index );
     }
-    Q_ASSERT( index >= 0 && "Logic error: the default backend must be present in the backend name list." );
-    ui.internalPlayerBackend->setCurrentIndex( index );
+    else {
+      // Find no backend, just do nothing and let just let Qt select the first one.
+    }
   }
   else {
     ui.useInternalPlayer->hide();
@@ -493,7 +494,7 @@ Config::Preferences Preferences::getPreferences()
   p.pronounceOnLoadMain  = ui.pronounceOnLoadMain->isChecked();
   p.pronounceOnLoadPopup = ui.pronounceOnLoadPopup->isChecked();
   p.useInternalPlayer    = ui.useInternalPlayer->isChecked();
-  p.internalPlayerBackend.setUiName( ui.internalPlayerBackend->currentText() );
+  p.internalPlayerBackend.setName( ui.internalPlayerBackend->currentText() );
   p.audioPlaybackProgram = ui.audioPlaybackProgram->text();
 
   p.proxyServer.enabled        = ui.useProxyServer->isChecked();

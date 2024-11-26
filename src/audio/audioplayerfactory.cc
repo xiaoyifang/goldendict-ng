@@ -5,8 +5,6 @@
 #include <QObject>
 #include <utility>
 #include "audioplayerfactory.hh"
-#include "ffmpegaudioplayer.hh"
-#include "multimediaaudioplayer.hh"
 #include "externalaudioplayer.hh"
 
 AudioPlayerFactory::AudioPlayerFactory( bool useInternalPlayer,
@@ -48,29 +46,8 @@ void AudioPlayerFactory::setPreferences( bool new_useInternalPlayer,
 void AudioPlayerFactory::reset()
 {
   if ( useInternalPlayer ) {
-    // qobject_cast checks below account for the case when an unsupported backend
-    // is stored in config. After this backend is replaced with the default one
-    // upon preferences saving, the code below does not reset playerPtr with
-    // another object of the same type.
-
-#ifdef MAKE_FFMPEG_PLAYER
-    Q_ASSERT( InternalPlayerBackend::defaultBackend().isFfmpeg()
-              && "Adjust the code below after changing the default backend." );
-
-    if ( !internalPlayerBackend.isQtmultimedia() ) {
-      if ( !playerPtr || !qobject_cast< Ffmpeg::AudioPlayer * >( playerPtr.data() ) ) {
-        playerPtr.reset( new Ffmpeg::AudioPlayer );
-      }
-      return;
-    }
-#endif
-
-#ifdef MAKE_QTMULTIMEDIA_PLAYER
-    if ( !playerPtr || !qobject_cast< MultimediaAudioPlayer * >( playerPtr.data() ) ) {
-      playerPtr.reset( new MultimediaAudioPlayer );
-    }
+    playerPtr.reset( internalPlayerBackend.getActualPlayer() );
     return;
-#endif
   }
 
   std::unique_ptr< ExternalAudioPlayer > externalPlayer( new ExternalAudioPlayer );
