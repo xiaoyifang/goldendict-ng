@@ -956,7 +956,7 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
         if ( match.hasMatch() ) {
           articleNewText += QString( QStringLiteral( "gdOnReady(()=>{%1});</script>" ) )
                               .arg( article.mid( linkPos, match.capturedStart() - linkPos ) );
-          linkPos += articleNewText.size();
+          linkPos += match.capturedEnd();
         }
         continue;
       }
