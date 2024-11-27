@@ -953,8 +953,11 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
         articleNewText += linkTxt;
         match = RX::Mdx::closeScriptTagRe.match( article, linkPos );
         if ( match.hasMatch() ) {
-          articleNewText += article.mid( linkPos, match.capturedEnd() - linkPos );
-          linkPos = match.capturedEnd();
+          articleNewText += "gdDeferOnReady(() => {";
+          articleNewText += article.mid( linkPos, match.capturedStart() - linkPos );
+          QString endtag = "});</script>";
+          articleNewText += endtag;
+          linkPos = match.capturedEnd() + endtag.size();
         }
         continue;
       }
