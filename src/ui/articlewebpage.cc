@@ -8,14 +8,16 @@ ArticleWebPage::ArticleWebPage( QObject * parent ):
 bool ArticleWebPage::acceptNavigationRequest( const QUrl & resUrl, NavigationType type, bool isMainFrame )
 {
   QUrl url = resUrl;
+  QUrlQuery urlQuery{ url };
   if ( url.scheme() == "bword" || url.scheme() == "entry" ) {
     url.setScheme( "gdlookup" );
     url.setHost( "localhost" );
     url.setPath( "" );
     auto [ valid, word ] = Utils::Url::getQueryWord( resUrl );
-    Utils::Url::addQueryItem( url, "word", word );
-    Utils::Url::addQueryItem( url, "group", lastReq.group );
-    Utils::Url::addQueryItem( url, "muted", lastReq.mutedDicts );
+    urlQuery.addQueryItem( "word", word );
+    urlQuery.addQueryItem( "group", lastReq.group );
+    urlQuery.addQueryItem( "muted", lastReq.mutedDicts );
+    url.setQuery( urlQuery );
     setUrl( url );
     return false;
   }
