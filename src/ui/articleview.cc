@@ -330,13 +330,13 @@ void ArticleView::showDefinition( QString const & word,
     stream << contexts;
     buf.close();
 
-    reqQuery.addQueryItem("contexts", QString::fromLatin1( buf.buffer().toBase64() ));
+    reqQuery.addQueryItem( "contexts", QString::fromLatin1( buf.buffer().toBase64() ) );
   }
 
   QString mutedDicts = getMutedForGroup( group );
 
   if ( mutedDicts.size() ) {
-    reqQuery.addQueryItem("muted", mutedDicts);
+    reqQuery.addQueryItem( "muted", mutedDicts );
   }
 
   req.setQuery( reqQuery );
@@ -377,17 +377,17 @@ void ArticleView::showDefinition( QString const & word,
   req.setScheme( "gdlookup" );
   req.setHost( "localhost" );
 
-  reqQuery.addQueryItem(  "word", word );
-  reqQuery.addQueryItem(  "dictionaries", dictIDs.join( "," ) );
-  reqQuery.addQueryItem(  "regexp", searchRegExp.pattern() );
+  reqQuery.addQueryItem( "word", word );
+  reqQuery.addQueryItem( "dictionaries", dictIDs.join( "," ) );
+  reqQuery.addQueryItem( "regexp", searchRegExp.pattern() );
   if ( !searchRegExp.patternOptions().testFlag( QRegularExpression::CaseInsensitiveOption ) ) {
-    reqQuery.addQueryItem(  "matchcase", "1" );
+    reqQuery.addQueryItem( "matchcase", "1" );
   }
   //  if ( searchRegExp.patternSyntax() == QRegExp::WildcardUnix )
   //    Utils::Url::addQueryItem( req, "wildcards", "1" );
-  reqQuery.addQueryItem(  "group", QString::number( group ) );
+  reqQuery.addQueryItem( "group", QString::number( group ) );
   if ( ignoreDiacritics ) {
-    reqQuery.addQueryItem(  "ignore_diacritics", "1" );
+    reqQuery.addQueryItem( "ignore_diacritics", "1" );
   }
 
   req.setQuery( reqQuery );
