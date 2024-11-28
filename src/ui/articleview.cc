@@ -298,27 +298,28 @@ void ArticleView::showDefinition( QString const & word,
   audioLink_.clear();
 
   QUrl req;
+  QUrlQuery reqQuery;
   Contexts contexts( contexts_ );
 
   req.setScheme( "gdlookup" );
   req.setHost( "localhost" );
-  Utils::Url::addQueryItem( req, "word", word );
-  Utils::Url::addQueryItem( req, "group", QString::number( group ) );
+  reqQuery.addQueryItem( "word", word );
+  reqQuery.addQueryItem( "group", QString::number( group ) );
   if ( cfg.preferences.ignoreDiacritics ) {
-    Utils::Url::addQueryItem( req, "ignore_diacritics", "1" );
+    reqQuery.addQueryItem( "ignore_diacritics", "1" );
   }
 
   if ( scrollTo.size() ) {
-    Utils::Url::addQueryItem( req, "scrollto", scrollTo );
+    reqQuery.addQueryItem( "scrollto", scrollTo );
   }
 
   if ( delayedHighlightText.size() ) {
-    Utils::Url::addQueryItem( req, "regexp", delayedHighlightText );
+    reqQuery.addQueryItem( "regexp", delayedHighlightText );
     delayedHighlightText.clear();
   }
 
   if ( Contexts::Iterator pos = contexts.find( "gdanchor" ); pos != contexts.end() ) {
-    Utils::Url::addQueryItem( req, "gdanchor", contexts[ "gdanchor" ] );
+    reqQuery.addQueryItem( "gdanchor", contexts[ "gdanchor" ] );
     contexts.erase( pos );
   }
 
@@ -329,14 +330,16 @@ void ArticleView::showDefinition( QString const & word,
     stream << contexts;
     buf.close();
 
-    Utils::Url::addQueryItem( req, "contexts", QString::fromLatin1( buf.buffer().toBase64() ) );
+    reqQuery.addQueryItem("contexts", QString::fromLatin1( buf.buffer().toBase64() ));
   }
 
   QString mutedDicts = getMutedForGroup( group );
 
   if ( mutedDicts.size() ) {
-    Utils::Url::addQueryItem( req, "muted", mutedDicts );
+    reqQuery.addQueryItem("muted", mutedDicts);
   }
+
+  req.setQuery( reqQuery );
 
   // Any search opened is probably irrelevant now
   closeSearch();
@@ -369,21 +372,25 @@ void ArticleView::showDefinition( QString const & word,
   audioLink_.clear();
 
   QUrl req;
+  QUrlQuery reqQuery;
 
   req.setScheme( "gdlookup" );
   req.setHost( "localhost" );
-  Utils::Url::addQueryItem( req, "word", word );
-  Utils::Url::addQueryItem( req, "dictionaries", dictIDs.join( "," ) );
-  Utils::Url::addQueryItem( req, "regexp", searchRegExp.pattern() );
+
+  reqQuery.addQueryItem(  "word", word );
+  reqQuery.addQueryItem(  "dictionaries", dictIDs.join( "," ) );
+  reqQuery.addQueryItem(  "regexp", searchRegExp.pattern() );
   if ( !searchRegExp.patternOptions().testFlag( QRegularExpression::CaseInsensitiveOption ) ) {
-    Utils::Url::addQueryItem( req, "matchcase", "1" );
+    reqQuery.addQueryItem(  "matchcase", "1" );
   }
   //  if ( searchRegExp.patternSyntax() == QRegExp::WildcardUnix )
   //    Utils::Url::addQueryItem( req, "wildcards", "1" );
-  Utils::Url::addQueryItem( req, "group", QString::number( group ) );
+  reqQuery.addQueryItem(  "group", QString::number( group ) );
   if ( ignoreDiacritics ) {
-    Utils::Url::addQueryItem( req, "ignore_diacritics", "1" );
+    reqQuery.addQueryItem(  "ignore_diacritics", "1" );
   }
+
+  req.setQuery( reqQuery );
 
   // Any search opened is probably irrelevant now
   closeSearch();
