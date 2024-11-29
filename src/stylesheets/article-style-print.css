@@ -12,9 +12,8 @@ body,
   display: none;
 }
 
-
 /* hide collapse area*/
 
-.collapse_expand_area{
+.collapse_expand_area {
   display: none;
 }
