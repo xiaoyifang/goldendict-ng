@@ -133,19 +133,6 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word, QString const & 
       R"(<link rel="icon" type="image/png" href="qrc:///flags/)" + Html::escape( icon.toUtf8().data() ) + "\" >\n";
   }
 
-  result += QString::fromUtf8( R"(
-<script>
-     function tr(key) {
-            var tr_map = {
-                "Expand article": "%1", "Collapse article": "%2"
-            };
-            return tr_map[key] || '';
-        }
-</script>
-)" )
-              .arg( tr( "Expand article" ), tr( "Collapse article" ) )
-              .toStdString();
-
   result += R"(<script src="qrc:///scripts/gd-builtin.js"></script>)";
   result += R"(<script src="qrc:///scripts/mark.min.js"></script>)";
 
@@ -676,11 +663,11 @@ void ArticleRequest::bodyFinished()
                      </div>)" ),
           dictId,
           collapse ? R"(style="cursor:pointer;")" : "",
-          collapse ? tr( "Expand article" ).toStdString() : "",
+          "",
           Html::escape( tr( "From " ).toStdString() ),
           Html::escape( activeDict->getName() ),
           collapse ? "gdexpandicon" : "gdcollapseicon",
-          collapse ? "" : tr( "Collapse article" ).toStdString() );
+          "" );
 
         head += R"(<div class="gddictnamebodyseparator"></div>)";
 
