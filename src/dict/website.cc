@@ -2,13 +2,11 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "website.hh"
-#include "wstring_qt.hh"
-#include "utf8.hh"
+#include "text.hh"
 #include <QUrl>
 #include <QTextCodec>
 #include <QDir>
 #include <QFileInfo>
-#include "gddebug.hh"
 #include "globalbroadcaster.hh"
 #include "fmt/compile.h"
 
@@ -22,7 +20,6 @@ namespace {
 
 class WebSiteDictionary: public Dictionary::Class
 {
-  string name;
   QByteArray urlTemplate;
   bool experimentalIframe;
   QString iconFilename;
@@ -38,12 +35,13 @@ public:
                      bool inside_iframe_,
                      QNetworkAccessManager & netMgr_ ):
     Dictionary::Class( id, vector< string >() ),
-    name( name_ ),
     iconFilename( iconFilename_ ),
     inside_iframe( inside_iframe_ ),
     netMgr( netMgr_ ),
     experimentalIframe( false )
   {
+    dictionaryName = name_;
+
     if ( urlTemplate_.startsWith( "http://" ) || urlTemplate_.startsWith( "https://" ) ) {
       experimentalIframe = true;
     }
@@ -51,16 +49,6 @@ public:
 
     urlTemplate           = QUrl( urlTemplate_ ).toEncoded();
     dictionaryDescription = urlTemplate_;
-  }
-
-  string getName() noexcept override
-  {
-    return name;
-  }
-
-  map< Property, string > getProperties() noexcept override
-  {
-    return map< Property, string >();
   }
 
   unsigned long getArticleCount() noexcept override
@@ -73,10 +61,12 @@ public:
     return 0;
   }
 
-  sptr< WordSearchRequest > prefixMatch( wstring const & word, unsigned long ) override;
+  sptr< WordSearchRequest > prefixMatch( std::u32string const & word, unsigned long ) override;
 
-  sptr< DataRequest >
-  getArticle( wstring const &, vector< wstring > const & alts, wstring const & context, bool ) override;
+  sptr< DataRequest > getArticle( std::u32string const &,
+                                  vector< std::u32string > const & alts,
+                                  std::u32string const & context,
+                                  bool ) override;
 
   sptr< Dictionary::DataRequest > getResource( string const & name ) override;
 
@@ -101,7 +91,7 @@ protected slots:
   virtual void requestFinished( QNetworkReply * ) {}
 };
 
-sptr< WordSearchRequest > WebSiteDictionary::prefixMatch( wstring const & /*word*/, unsigned long )
+sptr< WordSearchRequest > WebSiteDictionary::prefixMatch( std::u32string const & /*word*/, unsigned long )
 {
   sptr< WordSearchRequestInstant > sr = std::make_shared< WordSearchRequestInstant >();
 
@@ -304,9 +294,9 @@ void WebSiteArticleRequest::requestFinished( QNetworkReply * r )
   }
   else {
     if ( netReply->url().scheme() == "file" ) {
-      gdWarning( "WebSites: Failed loading article from \"%s\", reason: %s\n",
-                 dictPtr->getName().c_str(),
-                 netReply->errorString().toUtf8().data() );
+      qWarning( "WebSites: Failed loading article from \"%s\", reason: %s",
+                dictPtr->getName().c_str(),
+                netReply->errorString().toUtf8().data() );
     }
     else {
       setErrorString( netReply->errorString() );
@@ -319,9 +309,9 @@ void WebSiteArticleRequest::requestFinished( QNetworkReply * r )
   finish();
 }
 
-sptr< DataRequest > WebSiteDictionary::getArticle( wstring const & str,
-                                                   vector< wstring > const & /*alts*/,
-                                                   wstring const & context,
+sptr< DataRequest > WebSiteDictionary::getArticle( std::u32string const & str,
+                                                   vector< std::u32string > const & /*alts*/,
+                                                   std::u32string const & context,
                                                    bool /*ignoreDiacritics*/ )
 {
   QString urlString = Utils::WebSite::urlReplaceWord( QString( urlTemplate ), QString::fromStdU32String( str ) );
@@ -478,7 +468,8 @@ void WebSiteDictionary::loadIcon() noexcept
       loadIconFromFile( fInfo.absoluteFilePath(), true );
     }
   }
-  if ( dictionaryIcon.isNull() && !loadIconFromText( ":/icons/webdict.svg", QString::fromStdString( name ) ) ) {
+  if ( dictionaryIcon.isNull()
+       && !loadIconFromText( ":/icons/webdict.svg", QString::fromStdString( dictionaryName ) ) ) {
     dictionaryIcon = QIcon( ":/icons/webdict.svg" );
   }
   dictionaryIconLoaded = true;

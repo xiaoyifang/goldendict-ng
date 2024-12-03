@@ -1,12 +1,11 @@
 /* This file is (c) 2013 Timon Wong <timon86.wang@gmail.com>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
-#ifndef NO_TTS_SUPPORT
+#ifdef TTS_SUPPORT
 
   #include "voiceengines.hh"
   #include "audiolink.hh"
   #include "htmlescape.hh"
-  #include "utf8.hh"
-  #include "wstring_qt.hh"
+  #include "text.hh"
 
   #include <string>
   #include <map>
@@ -21,6 +20,7 @@ namespace VoiceEngines {
 
 using namespace Dictionary;
 using std::string;
+using std::u32string;
 using std::map;
 
 inline string toMd5( QByteArray const & b )
@@ -47,10 +47,6 @@ public:
     return voiceEngine.name.toUtf8().data();
   }
 
-  map< Property, string > getProperties() noexcept override
-  {
-    return map< Property, string >();
-  }
 
   unsigned long getArticleCount() noexcept override
   {
@@ -62,16 +58,18 @@ public:
     return 0;
   }
 
-  sptr< WordSearchRequest > prefixMatch( wstring const & word, unsigned long maxResults ) override;
+  sptr< WordSearchRequest > prefixMatch( u32string const & word, unsigned long maxResults ) override;
 
-  sptr< DataRequest > getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ) override;
+  sptr< DataRequest >
+  getArticle( u32string const &, vector< u32string > const & alts, u32string const &, bool ) override;
 
 protected:
 
   void loadIcon() noexcept override;
 };
 
-sptr< WordSearchRequest > VoiceEnginesDictionary::prefixMatch( wstring const & /*word*/, unsigned long /*maxResults*/ )
+sptr< WordSearchRequest > VoiceEnginesDictionary::prefixMatch( u32string const & /*word*/,
+                                                               unsigned long /*maxResults*/ )
 
 {
   WordSearchRequestInstant * sr = new WordSearchRequestInstant();
@@ -80,11 +78,11 @@ sptr< WordSearchRequest > VoiceEnginesDictionary::prefixMatch( wstring const & /
 }
 
 sptr< Dictionary::DataRequest >
-VoiceEnginesDictionary::getArticle( wstring const & word, vector< wstring > const &, wstring const &, bool )
+VoiceEnginesDictionary::getArticle( u32string const & word, vector< u32string > const &, u32string const &, bool )
 
 {
   string result;
-  string wordUtf8( Utf8::encode( word ) );
+  string wordUtf8( Text::toUtf8( word ) );
 
   result += "<table class=\"voiceengines_play\"><tr>";
 

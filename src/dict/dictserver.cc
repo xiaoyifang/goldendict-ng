@@ -2,16 +2,16 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "dictserver.hh"
-#include "wstring_qt.hh"
 #include <QTimer>
 #include <QUrl>
 #include <QTcpSocket>
 #include <QString>
-#include <list>
 #include "htmlescape.hh"
-
+#include <QCryptographicHash>
+#include <QDir>
+#include <QFileInfo>
 #include <QRegularExpression>
-#include <QtConcurrent>
+#include <QtConcurrentRun>
 
 namespace DictServer {
 
@@ -176,7 +176,6 @@ class DictServerDictionary: public Dictionary::Class
 {
   Q_OBJECT
 
-  string name;
   QString url, icon;
   quint32 langId;
   QString errorString;
@@ -196,11 +195,13 @@ public:
                         QString const & strategies_,
                         QString const & icon_ ):
     Dictionary::Class( id, vector< string >() ),
-    name( name_ ),
     url( url_ ),
     icon( icon_ ),
     langId( 0 )
   {
+
+    dictionaryName = name_;
+
     int pos = url.indexOf( "://" );
     if ( pos < 0 ) {
       url = "dict://" + url;
@@ -301,15 +302,6 @@ public:
     disconnectFromServer( socket );
   }
 
-  string getName() noexcept override
-  {
-    return name;
-  }
-
-  map< Property, string > getProperties() noexcept override
-  {
-    return {};
-  }
 
   unsigned long getArticleCount() noexcept override
   {
@@ -321,9 +313,10 @@ public:
     return 0;
   }
 
-  sptr< WordSearchRequest > prefixMatch( wstring const &, unsigned long maxResults ) override;
+  sptr< WordSearchRequest > prefixMatch( std::u32string const &, unsigned long maxResults ) override;
 
-  sptr< DataRequest > getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ) override;
+  sptr< DataRequest >
+  getArticle( std::u32string const &, vector< std::u32string > const & alts, std::u32string const &, bool ) override;
 
   quint32 getLangFrom() const override
   {
@@ -394,7 +387,7 @@ class DictServerWordSearchRequest: public Dictionary::WordSearchRequest
 {
   Q_OBJECT
   QAtomicInt isCancelled;
-  wstring word;
+  std::u32string word;
   QString errorString;
   DictServerDictionary & dict;
 
@@ -409,7 +402,7 @@ class DictServerWordSearchRequest: public Dictionary::WordSearchRequest
 
 public:
 
-  DictServerWordSearchRequest( wstring word_, DictServerDictionary & dict_ ):
+  DictServerWordSearchRequest( std::u32string word_, DictServerDictionary & dict_ ):
     word( std::move( word_ ) ),
     dict( dict_ ),
     dictImpl( new DictServerImpl( this, dict_.url, "GoldenDict-w" ) )
@@ -486,7 +479,7 @@ void DictServerWordSearchRequest::run()
       qDebug() << "receive match:" << reply;
       auto code = reply.left( 3 );
 
-      if ( reply.left( 3 ) != "152" ) {
+      if ( code != "152" ) {
 
         matchNext();
       }
@@ -569,31 +562,41 @@ void DictServer::DictServerWordSearchRequest::addMatchedWord( const QString & st
 class DictServerArticleRequest: public Dictionary::DataRequest
 {
   QAtomicInt isCancelled;
-  wstring word;
+  std::u32string word;
   QString errorString;
   DictServerDictionary & dict;
   string articleData;
 
+  QString articleText;
+
   int currentDatabase = 0;
   DictServerState state;
+  QTimer * timer;
   bool contentInHtml = false;
 
 
 public:
 
   DictServerImpl * dictImpl;
-  DictServerArticleRequest( wstring word_, DictServerDictionary & dict_ ):
+  DictServerArticleRequest( std::u32string word_, DictServerDictionary & dict_ ):
     word( std::move( word_ ) ),
     dict( dict_ ),
     dictImpl( new DictServerImpl( this, dict_.url, "GoldenDict-t" ) )
   {
+    timer = new QTimer( this );
+    timer->setInterval( 5000 );
+    timer->setSingleShot( true );
+    qDebug() << "receive data:" << QDateTime::currentDateTime();
+    connect( timer, &QTimer::timeout, this, [ this ]() {
+      qDebug() << "Server takes too much time to response" << QDateTime::currentDateTime();
+      cancel();
+    } );
+
     connect( this, &DictServerArticleRequest::finishedArticle, this, [ this ]( QString articleText ) {
       if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
         cancel();
         return;
       }
-
-      qDebug() << articleText;
 
       static QRegularExpression phonetic( R"(\\([^\\]+)\\)",
                                           QRegularExpression::CaseInsensitiveOption ); // phonetics: \stuff\ ...
@@ -687,10 +690,7 @@ public:
       defineNext();
     } );
 
-    QTimer::singleShot( 5000, this, [ this ]() {
-      qDebug() << "Server takes too much time to response";
-      cancel();
-    } );
+    timer->start();
   }
 
   void run();
@@ -723,9 +723,9 @@ void DictServerArticleRequest::run()
     return;
   }
 
-
   connect( &dictImpl->socket, &QTcpSocket::readyRead, this, [ this ]() {
     QMutexLocker const _( &dictImpl->mutex );
+    timer->start();
     if ( state == DictServerState::DEFINE ) {
       QByteArray reply = dictImpl->socket.readLine();
       qDebug() << "receive define:" << reply;
@@ -748,34 +748,19 @@ void DictServerArticleRequest::run()
       if ( reply.left( 3 ) == "150" ) {
         // Articles found
         int countPos = reply.indexOf( ' ', 4 );
-
-        QString articleText;
-
-        // Get articles count
+        // Get articles count,
+        // todo ,how to use this count?
         int count = reply.mid( 4, countPos > 4 ? countPos - 4 : -1 ).toInt();
 
         // Read articles
-        for ( int x = 0; x < count; x++ ) {
-          reply = dictImpl->socket.readLine();
-          if ( reply.isEmpty() ) {
-            state = DictServerState::DEFINE_DATA;
-            return;
-          }
-          readData( reply );
-        }
+        readData( reply );
         state = DictServerState::DEFINE_DATA;
       }
     }
     else if ( state == DictServerState::DEFINE_DATA ) {
       QByteArray reply = dictImpl->socket.readLine();
-      qDebug() << "receive define data:" << reply;
-      while ( true ) {
-        if ( reply.isEmpty() ) {
-          return;
-        }
-        readData( reply );
-        reply = dictImpl->socket.readLine();
-      }
+      qDebug() << "receive define data:" << reply << QDateTime::currentDateTime();
+      readData( reply );
     }
   } );
 
@@ -814,7 +799,8 @@ void DictServerArticleRequest::readData( QByteArray reply )
 
     pos = endPos + 1;
 
-    QString dbID, dbName;
+    QString dbID;
+    QString dbName;
 
     // Retrieve database ID
     endPos = reply.indexOf( ' ', pos );
@@ -827,8 +813,7 @@ void DictServerArticleRequest::readData( QByteArray reply )
     dbID = reply.mid( pos, endPos - pos );
 
     // Retrieve database ID
-    pos    = endPos + 1;
-    endPos = reply.indexOf( ' ', pos );
+    pos = endPos + 1;
     if ( reply[ pos ] == '\"' ) {
       endPos = reply.indexOf( '\"', pos + 1 ) + 1;
     }
@@ -852,47 +837,30 @@ void DictServerArticleRequest::readData( QByteArray reply )
     articleData += string( "<div class=\"dictserver_from\">" ) + dbName.toUtf8().data() + "[" + dbID.toUtf8().data()
       + "]" + "</div>";
 
-    // Retreive MIME headers if any
+    reply = dictImpl->socket.readAll();
 
-    static QRegularExpression contentTypeExpr( "Content-Type\\s*:\\s*text/html",
-                                               QRegularExpression::CaseInsensitiveOption );
-
-    for ( ;; ) {
-      reply = dictImpl->socket.readLine();
-      if ( reply.isEmpty() ) {
-        return;
-      }
-
-      if ( reply == "\r\n" ) {
-        break;
-      }
-
-      QRegularExpressionMatch match = contentTypeExpr.match( reply );
-      if ( match.hasMatch() ) {
-        contentInHtml = true;
-      }
-    }
-    QString articleText;
-    // Retrieve article text
-
-    articleText.clear();
-    for ( ;; ) {
-      reply = dictImpl->socket.readLine();
-      if ( reply.isEmpty() ) {
-        return;
-      }
-
-      qDebug() << "reply data:" << reply;
-      if ( reply == ".\r\n" ) {
-        //discard all left message.
-        while ( !dictImpl->socket.readLine().isEmpty() ) {}
-        emit finishedArticle( articleText );
-        return;
-      }
-
-      articleText += reply;
+    articleText += reply;
+    qDebug() << "reply data:" << reply << QDateTime::currentDateTime();
+    if ( articleText.contains( "\r\n.\r\n" ) ) {
+      //discard all left message.
+      emit finishedArticle( articleText );
+      return;
     }
   }
+  else {
+    articleText += reply;
+    reply = dictImpl->socket.readAll();
+    qDebug() << "reply data:" << reply << QDateTime::currentDateTime();
+
+    articleText += reply;
+    if ( reply.contains( "\r\n.\r\n" ) ) {
+      //discard all left message. maybe delete all the remaining data after `.\r\n`
+      emit finishedArticle( articleText );
+      return;
+    }
+  }
+  //restart.
+  timer->start();
 }
 
 void DictServerArticleRequest::cancel()
@@ -902,7 +870,7 @@ void DictServerArticleRequest::cancel()
   finish();
 }
 
-sptr< WordSearchRequest > DictServerDictionary::prefixMatch( wstring const & word, unsigned long maxResults )
+sptr< WordSearchRequest > DictServerDictionary::prefixMatch( std::u32string const & word, unsigned long maxResults )
 {
   (void)maxResults;
   if ( word.size() > 80 ) {
@@ -915,8 +883,10 @@ sptr< WordSearchRequest > DictServerDictionary::prefixMatch( wstring const & wor
   }
 }
 
-sptr< DataRequest >
-DictServerDictionary::getArticle( wstring const & word, vector< wstring > const &, wstring const &, bool )
+sptr< DataRequest > DictServerDictionary::getArticle( std::u32string const & word,
+                                                      vector< std::u32string > const &,
+                                                      std::u32string const &,
+                                                      bool )
 
 {
   if ( word.size() > 80 ) {

@@ -3,15 +3,12 @@
 
 #include "langcoder.hh"
 #include "language.hh"
-#include "utf8.hh"
+#include "text.hh"
 
 #include <QFileInfo>
 #include <QLocale>
 #include <QRegularExpression>
 
-#ifdef _MSC_VER
-  #include <stub_msvc.h>
-#endif
 // Language codes
 
 QMap< QString, GDLangCode > LangCoder::LANG_CODE_MAP = {
@@ -229,12 +226,12 @@ QString LangCoder::intToCode2( quint32 val )
   return QString::fromLatin1( ba );
 }
 
-quint32 LangCoder::findIdForLanguage( gd::wstring const & lang )
+quint32 LangCoder::findIdForLanguage( std::u32string const & lang )
 {
-  const auto langFolded = Utf8::encode( lang );
+  const auto langFolded = QByteArrayView( Text::toUtf8( lang ) );
 
   for ( auto const & lc : LANG_CODE_MAP ) {
-    if ( strcasecmp( langFolded.c_str(), lc.lang.c_str() ) == 0 ) {
+    if ( langFolded.compare( lc.lang, Qt::CaseInsensitive ) == 0 ) {
       return code2toInt( lc.code2.toStdString().c_str() );
     }
   }

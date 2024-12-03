@@ -2,14 +2,12 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "mediawiki.hh"
-#include "wstring_qt.hh"
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QUrl>
 #include <QtXml>
 #include <algorithm>
 #include <list>
-#include "gddebug.hh"
 #include "audiolink.hh"
 #include "langcoder.hh"
 #include "utils.hh"
@@ -57,11 +55,6 @@ public:
     return name;
   }
 
-  map< Property, string > getProperties() noexcept override
-  {
-    return map< Property, string >();
-  }
-
   unsigned long getArticleCount() noexcept override
   {
     return 0;
@@ -72,9 +65,10 @@ public:
     return 0;
   }
 
-  sptr< WordSearchRequest > prefixMatch( wstring const &, unsigned long maxResults ) override;
+  sptr< WordSearchRequest > prefixMatch( std::u32string const &, unsigned long maxResults ) override;
 
-  sptr< DataRequest > getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ) override;
+  sptr< DataRequest >
+  getArticle( std::u32string const &, vector< std::u32string > const & alts, std::u32string const &, bool ) override;
 
   quint32 getLangFrom() const override
   {
@@ -139,7 +133,10 @@ class MediaWikiWordSearchRequest: public MediaWikiWordSearchRequestSlots
 
 public:
 
-  MediaWikiWordSearchRequest( wstring const &, QString const & url, QString const & lang, QNetworkAccessManager & mgr );
+  MediaWikiWordSearchRequest( std::u32string const &,
+                              QString const & url,
+                              QString const & lang,
+                              QNetworkAccessManager & mgr );
 
   ~MediaWikiWordSearchRequest();
 
@@ -150,13 +147,13 @@ private:
   void downloadFinished() override;
 };
 
-MediaWikiWordSearchRequest::MediaWikiWordSearchRequest( wstring const & str,
+MediaWikiWordSearchRequest::MediaWikiWordSearchRequest( std::u32string const & str,
                                                         QString const & url,
                                                         QString const & lang,
                                                         QNetworkAccessManager & mgr ):
   isCancelling( false )
 {
-  GD_DPRINTF( "wiki request begin\n" );
+  qDebug( "wiki request begin" );
   QUrl reqUrl( url + "/api.php?action=query&list=allpages&aplimit=40&format=xml" );
 
   GlobalBroadcaster::instance()->addWhitelist( reqUrl.host() );
@@ -180,7 +177,7 @@ MediaWikiWordSearchRequest::MediaWikiWordSearchRequest( wstring const & str,
 
 MediaWikiWordSearchRequest::~MediaWikiWordSearchRequest()
 {
-  GD_DPRINTF( "request end\n" );
+  qDebug( "request end" );
 }
 
 void MediaWikiWordSearchRequest::cancel()
@@ -194,7 +191,7 @@ void MediaWikiWordSearchRequest::cancel()
 
   finish();
 
-  GD_DPRINTF( "cancel the request" );
+  qDebug( "cancel the request" );
 }
 
 void MediaWikiWordSearchRequest::downloadFinished()
@@ -227,7 +224,7 @@ void MediaWikiWordSearchRequest::downloadFinished()
         }
       }
     }
-    GD_DPRINTF( "done.\n" );
+    qDebug( "done." );
   }
   else {
     setErrorString( netReply->errorString() );
@@ -258,11 +255,11 @@ public:
 
     QDomElement const sectionsElement = parseNode.firstChildElement( "sections" );
     if ( sectionsElement.isNull() ) {
-      gdWarning( "MediaWiki: empty table of contents and missing sections element." );
+      qWarning( "MediaWiki: empty table of contents and missing sections element." );
       return;
     }
 
-    gdDebug( "MediaWiki: generating table of contents from the sections element." );
+    qDebug( "MediaWiki: generating table of contents from the sections element." );
     MediaWikiSectionsParser parser;
     parser.generateTableOfContents( sectionsElement );
     articleString.replace( emptyTocPos, emptyTocIndicator.size(), parser.tableOfContents );
@@ -343,17 +340,17 @@ bool MediaWikiSectionsParser::addListLevel( QString const & levelString )
   int const level = levelString.toInt( &convertedToInt );
 
   if ( !convertedToInt ) {
-    gdWarning( "MediaWiki: sections level is not an integer: %s", levelString.toUtf8().constData() );
+    qWarning( "MediaWiki: sections level is not an integer: %s", levelString.toUtf8().constData() );
     return false;
   }
   if ( level <= 0 ) {
-    gdWarning( "MediaWiki: unsupported nonpositive sections level: %s", levelString.toUtf8().constData() );
+    qWarning( "MediaWiki: unsupported nonpositive sections level: %s", levelString.toUtf8().constData() );
     return false;
   }
   if ( level > previousLevel + 1 ) {
-    gdWarning( "MediaWiki: unsupported sections level increase by more than one: from %d to %s",
-               previousLevel,
-               levelString.toUtf8().constData() );
+    qWarning( "MediaWiki: unsupported sections level increase by more than one: from %d to %s",
+              previousLevel,
+              levelString.toUtf8().constData() );
     return false;
   }
 
@@ -396,8 +393,8 @@ class MediaWikiArticleRequest: public MediaWikiDataRequestSlots
 
 public:
 
-  MediaWikiArticleRequest( wstring const & word,
-                           vector< wstring > const & alts,
+  MediaWikiArticleRequest( std::u32string const & word,
+                           vector< std::u32string > const & alts,
                            QString const & url,
                            QString const & lang,
                            QNetworkAccessManager & mgr,
@@ -407,7 +404,7 @@ public:
 
 private:
 
-  void addQuery( QNetworkAccessManager & mgr, wstring const & word );
+  void addQuery( QNetworkAccessManager & mgr, std::u32string const & word );
 
   void requestFinished( QNetworkReply * ) override;
 
@@ -441,8 +438,8 @@ void MediaWikiArticleRequest::cancel()
   finish();
 }
 
-MediaWikiArticleRequest::MediaWikiArticleRequest( wstring const & str,
-                                                  vector< wstring > const & alts,
+MediaWikiArticleRequest::MediaWikiArticleRequest( std::u32string const & str,
+                                                  vector< std::u32string > const & alts,
                                                   QString const & url_,
                                                   QString const & lang_,
                                                   QNetworkAccessManager & mgr,
@@ -464,9 +461,9 @@ MediaWikiArticleRequest::MediaWikiArticleRequest( wstring const & str,
   }
 }
 
-void MediaWikiArticleRequest::addQuery( QNetworkAccessManager & mgr, wstring const & str )
+void MediaWikiArticleRequest::addQuery( QNetworkAccessManager & mgr, std::u32string const & str )
 {
-  gdDebug( "MediaWiki: requesting article %s\n", QString::fromStdU32String( str ).toUtf8().data() );
+  qDebug( "MediaWiki: requesting article %s", QString::fromStdU32String( str ).toUtf8().data() );
 
   QUrl reqUrl( url + "/api.php?action=parse&prop=text|revid|sections&format=xml&redirects" );
 
@@ -490,7 +487,7 @@ void MediaWikiArticleRequest::addQuery( QNetworkAccessManager & mgr, wstring con
 
 void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
 {
-  GD_DPRINTF( "Finished.\n" );
+  qDebug( "Finished." );
 
   if ( isFinished() ) { // Was cancelled
     return;
@@ -693,7 +690,7 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
           }
         }
       }
-      GD_DPRINTF( "done.\n" );
+      qDebug( "done." );
     }
     else {
       setErrorString( netReply->errorString() );
@@ -711,7 +708,7 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
   }
 }
 
-sptr< WordSearchRequest > MediaWikiDictionary::prefixMatch( wstring const & word, unsigned long maxResults )
+sptr< WordSearchRequest > MediaWikiDictionary::prefixMatch( std::u32string const & word, unsigned long maxResults )
 
 {
   (void)maxResults;
@@ -725,8 +722,10 @@ sptr< WordSearchRequest > MediaWikiDictionary::prefixMatch( wstring const & word
   }
 }
 
-sptr< DataRequest >
-MediaWikiDictionary::getArticle( wstring const & word, vector< wstring > const & alts, wstring const &, bool )
+sptr< DataRequest > MediaWikiDictionary::getArticle( std::u32string const & word,
+                                                     vector< std::u32string > const & alts,
+                                                     std::u32string const &,
+                                                     bool )
 
 {
   if ( word.size() > 80 ) {

@@ -5,9 +5,8 @@
 
 #include "folding.hh"
 #include "langcoder.hh"
-#include "gddebug.hh"
 #include "ufile.hh"
-#include "utf8.hh"
+#include "text.hh"
 
 #include <exception>
 #include <stdio.h>
@@ -18,9 +17,8 @@
 namespace Dsl {
 namespace Details {
 
-using gd::wstring;
 using std::list;
-using Utf8::Encoding;
+using Text::Encoding;
 
 static QMap< int, string > lang_codes = {
   { 1, "en" },    { 1033, "en" }, { 2, "ru" },    { 1049, "ru" }, { 1068, "az" }, { 1025, "ar" }, { 1067, "am" },
@@ -41,7 +39,7 @@ string findCodeForDslId( int id )
   return lang_codes[ id ];
 }
 
-bool isAtSignFirst( wstring const & str )
+bool isAtSignFirst( std::u32string const & str )
 {
   // Test if '@' is first in string except spaces and dsl tags
   QRegularExpression reg( R"([ \t]*(?:\[[^\]]+\][ \t]*)*@)", QRegularExpression::PatternOption::CaseInsensitiveOption );
@@ -50,13 +48,13 @@ bool isAtSignFirst( wstring const & str )
 
 /////////////// ArticleDom
 
-wstring ArticleDom::Node::renderAsText( bool stripTrsTag ) const
+std::u32string ArticleDom::Node::renderAsText( bool stripTrsTag ) const
 {
   if ( !isTag ) {
     return text;
   }
 
-  wstring result;
+  std::u32string result;
 
   for ( const auto & i : *this ) {
     if ( !stripTrsTag || i.tagName != U"!trs" ) {
@@ -70,17 +68,17 @@ wstring ArticleDom::Node::renderAsText( bool stripTrsTag ) const
 namespace {
 
 /// @return true if @p tagName equals "mN" where N is a digit
-bool is_mN( wstring const & tagName )
+bool is_mN( std::u32string const & tagName )
 {
   return tagName.size() == 2 && tagName[ 0 ] == U'm' && iswdigit( tagName[ 1 ] );
 }
 
-bool isAnyM( wstring const & tagName )
+bool isAnyM( std::u32string const & tagName )
 {
   return tagName == U"m" || is_mN( tagName );
 }
 
-bool checkM( wstring const & dest, wstring const & src )
+bool checkM( std::u32string const & dest, std::u32string const & src )
 {
   return src == U"m" && is_mN( dest );
 }
@@ -98,8 +96,8 @@ struct MustTagBeClosed
 
 } // unnamed namespace
 
-ArticleDom::ArticleDom( wstring const & str, string const & dictName, wstring const & headword_ ):
-  root( Node::Tag(), wstring(), wstring() ),
+ArticleDom::ArticleDom( std::u32string const & str, string const & dictName, std::u32string const & headword_ ):
+  root( Node::Tag(), std::u32string(), std::u32string() ),
   stringPos( str.c_str() ),
   lineStartPos( str.c_str() ),
   transcriptionCount( 0 ),
@@ -119,15 +117,15 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName, wstring co
         if ( !atSignFirstInLine() ) {
           // Not insided card
           if ( dictName.empty() ) {
-            gdWarning( "Unescaped '@' symbol found" );
+            qWarning( "Unescaped '@' symbol found" );
           }
           else {
-            gdWarning( "Unescaped '@' symbol found in \"%s\"", dictName.c_str() );
+            qWarning( "Unescaped '@' symbol found in \"%s\"", dictName.c_str() );
           }
         }
         else {
           // Insided card
-          wstring linkTo;
+          std::u32string linkTo;
           nextChar();
           for ( ;; nextChar() ) {
             if ( ch == L'\n' ) {
@@ -143,13 +141,13 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName, wstring co
           linkTo = Folding::trimWhitespace( linkTo );
 
           if ( !linkTo.empty() ) {
-            list< wstring > allLinkEntries;
+            list< std::u32string > allLinkEntries;
             processUnsortedParts( linkTo, true );
             expandOptionalParts( linkTo, &allLinkEntries );
 
             for ( auto entry = allLinkEntries.begin(); entry != allLinkEntries.end(); ) {
               if ( !textNode ) {
-                Node text = Node( Node::Text(), wstring() );
+                Node text = Node( Node::Text(), std::u32string() );
 
                 if ( stack.empty() ) {
                   root.push_back( text );
@@ -169,10 +167,10 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName, wstring co
               stack.pop_back();
               textNode = 0;
 
-              wstring linkText = Folding::trimWhitespace( *entry );
+              std::u32string linkText = Folding::trimWhitespace( *entry );
               ArticleDom nodeDom( linkText, dictName, headword_ );
 
-              Node link( Node::Tag(), U"@", wstring() );
+              Node link( Node::Tag(), U"@", std::u32string() );
               for ( auto & n : nodeDom.root ) {
                 link.push_back( n );
               }
@@ -182,13 +180,13 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName, wstring co
               if ( stack.empty() ) {
                 root.push_back( link );
                 if ( entry != allLinkEntries.end() ) { // Add line break before next entry
-                  root.push_back( Node( Node::Tag(), U"br", wstring() ) );
+                  root.push_back( Node( Node::Tag(), U"br", std::u32string() ) );
                 }
               }
               else {
                 stack.back()->push_back( link );
                 if ( entry != allLinkEntries.end() ) {
-                  stack.back()->push_back( Node( Node::Tag(), U"br", wstring() ) );
+                  stack.back()->push_back( Node( Node::Tag(), U"br", std::u32string() ) );
                 }
               }
             }
@@ -209,8 +207,8 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName, wstring co
       if ( ch == L'[' && !escaped ) {
         // Beginning of a tag.
         bool isClosing;
-        wstring name;
-        wstring attrs;
+        std::u32string name;
+        std::u32string attrs;
 
         try {
           do {
@@ -246,16 +244,16 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName, wstring co
         }
         catch ( std::exception & ex ) {
           if ( !dictionaryName.empty() ) {
-            gdWarning( R"(DSL: Unfinished tag "%s" with attributes "%s" found in "%s", article "%s".)",
-                       QString::fromStdU32String( name ).toUtf8().data(),
-                       QString::fromStdU32String( attrs ).toUtf8().data(),
-                       dictionaryName.c_str(),
-                       QString::fromStdU32String( headword ).toUtf8().data() );
+            qWarning( R"(DSL: Unfinished tag "%s" with attributes "%s" found in "%s", article "%s".)",
+                      QString::fromStdU32String( name ).toUtf8().data(),
+                      QString::fromStdU32String( attrs ).toUtf8().data(),
+                      dictionaryName.c_str(),
+                      QString::fromStdU32String( headword ).toUtf8().data() );
           }
           else {
-            gdWarning( R"(DSL: Unfinished tag "%s" with attributes "%s" found)",
-                       QString::fromStdU32String( name ).toUtf8().data(),
-                       QString::fromStdU32String( attrs ).toUtf8().data() );
+            qWarning( R"(DSL: Unfinished tag "%s" with attributes "%s" found)",
+                      QString::fromStdU32String( name ).toUtf8().data(),
+                      QString::fromStdU32String( attrs ).toUtf8().data() );
           }
 
           throw ex;
@@ -331,7 +329,7 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName, wstring co
             nextChar();
           } while ( Folding::isWhitespace( ch ) );
 
-          wstring linkTo, linkText;
+          std::u32string linkTo, linkText;
 
           for ( ;; nextChar() ) {
             // Is it the end?
@@ -374,7 +372,7 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName, wstring co
           processUnsortedParts( linkText, true );
           ArticleDom nodeDom( linkText, dictName, headword_ );
 
-          Node link( Node::Tag(), U"ref", wstring() );
+          Node link( Node::Tag(), U"ref", std::u32string() );
           for ( auto & n : nodeDom.root ) {
             link.push_back( n );
           }
@@ -428,7 +426,7 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName, wstring co
 
       // If there's currently no text node, open one
       if ( !textNode ) {
-        Node text = Node( Node::Text(), wstring() );
+        Node text = Node( Node::Text(), std::u32string() );
 
         if ( stack.empty() ) {
           root.push_back( text );
@@ -678,21 +676,21 @@ ArticleDom::ArticleDom( wstring const & str, string const & dictName, wstring co
     unsigned const unclosedTagCount = 1 + std::count_if( it, stack.end(), MustTagBeClosed() );
 
     if ( dictName.empty() ) {
-      gdWarning( "Warning: %u tag(s) were unclosed, first tag name \"%s\".\n",
-                 unclosedTagCount,
-                 firstTagName.constData() );
+      qWarning( "Warning: %u tag(s) were unclosed, first tag name \"%s\".",
+                unclosedTagCount,
+                firstTagName.constData() );
     }
     else {
-      gdWarning( "Warning: %u tag(s) were unclosed in \"%s\", article \"%s\", first tag name \"%s\".\n",
-                 unclosedTagCount,
-                 dictName.c_str(),
-                 QString::fromStdU32String( headword ).toUtf8().constData(),
-                 firstTagName.constData() );
+      qWarning( "Warning: %u tag(s) were unclosed in \"%s\", article \"%s\", first tag name \"%s\".",
+                unclosedTagCount,
+                dictName.c_str(),
+                QString::fromStdU32String( headword ).toUtf8().constData(),
+                firstTagName.constData() );
     }
   }
 }
 
-void ArticleDom::openTag( wstring const & name, wstring const & attrs, list< Node * > & stack )
+void ArticleDom::openTag( std::u32string const & name, std::u32string const & attrs, list< Node * > & stack )
 {
   list< Node > nodesToReopen;
 
@@ -747,7 +745,7 @@ void ArticleDom::openTag( wstring const & name, wstring const & attrs, list< Nod
   }
 }
 
-void ArticleDom::closeTag( wstring const & name, list< Node * > & stack, bool warn )
+void ArticleDom::closeTag( std::u32string const & name, list< Node * > & stack, bool warn )
 {
   // Find the tag which is to be closed
 
@@ -787,14 +785,14 @@ void ArticleDom::closeTag( wstring const & name, list< Node * > & stack, bool wa
   }
   else if ( warn ) {
     if ( !dictionaryName.empty() ) {
-      gdWarning( R"(No corresponding opening tag for closing tag "%s" found in "%s", article "%s".)",
-                 QString::fromStdU32String( name ).toUtf8().data(),
-                 dictionaryName.c_str(),
-                 QString::fromStdU32String( headword ).toUtf8().data() );
+      qWarning( R"(No corresponding opening tag for closing tag "%s" found in "%s", article "%s".)",
+                QString::fromStdU32String( name ).toUtf8().data(),
+                dictionaryName.c_str(),
+                QString::fromStdU32String( headword ).toUtf8().data() );
     }
     else {
-      gdWarning( "No corresponding opening tag for closing tag \"%s\" found.",
-                 QString::fromStdU32String( name ).toUtf8().data() );
+      qWarning( "No corresponding opening tag for closing tag \"%s\" found.",
+                QString::fromStdU32String( name ).toUtf8().data() );
     }
   }
 }
@@ -840,13 +838,13 @@ bool ArticleDom::atSignFirstInLine()
     return true;
   }
 
-  return isAtSignFirst( wstring( lineStartPos ) );
+  return isAtSignFirst( std::u32string( lineStartPos ) );
 }
 
 /////////////// DslScanner
 
 DslScanner::DslScanner( string const & fileName ):
-  encoding( Utf8::Utf8 ),
+  encoding( Text::Encoding::Utf8 ),
   readBufferPtr( readBuffer ),
   readBufferLeft( 0 ),
   linesRead( 0 )
@@ -877,19 +875,19 @@ DslScanner::DslScanner( string const & fileName ):
        guessedEncoding.has_value() ) {
     switch ( guessedEncoding.value() ) {
       case QStringConverter::Utf8:
-        encoding = Utf8::Utf8;
+        encoding = Text::Encoding::Utf8;
         break;
       case QStringConverter::Utf16LE:
-        encoding = Utf8::Utf16LE;
+        encoding = Text::Encoding::Utf16LE;
         break;
       case QStringConverter::Utf16BE:
-        encoding = Utf8::Utf16BE;
+        encoding = Text::Encoding::Utf16BE;
         break;
       case QStringConverter::Utf32LE:
-        encoding = Utf8::Utf16LE;
+        encoding = Text::Encoding::Utf16LE;
         break;
       case QStringConverter::Utf32BE:
-        encoding = Utf8::Utf32BE;
+        encoding = Text::Encoding::Utf32BE;
         break;
       default:
         break;
@@ -906,10 +904,10 @@ DslScanner::DslScanner( string const & fileName ):
   }
 
   //iconv.reinit( encoding );
-  lineFeed = Utf8::initLineFeed( encoding );
+  lineFeed = Text::initLineFeed( encoding );
   // We now can use our own readNextLine() function
 
-  wstring str;
+  std::u32string str;
   size_t offset;
 
   for ( ;; ) {
@@ -947,7 +945,7 @@ DslScanner::DslScanner( string const & fileName ):
 
     size_t beg = str.find_first_of( L'"' );
 
-    if ( beg == wstring::npos ) {
+    if ( beg == std::u32string::npos ) {
       throw exMalformedDslFile( fileName );
     }
 
@@ -957,7 +955,7 @@ DslScanner::DslScanner( string const & fileName ):
       throw exMalformedDslFile( fileName );
     }
 
-    wstring arg( str, beg + 1, end - beg - 1 );
+    std::u32string arg( str, beg + 1, end - beg - 1 );
 
     if ( isName ) {
       dictionaryName = arg;
@@ -975,16 +973,16 @@ DslScanner::DslScanner( string const & fileName ):
       // The encoding
       if ( !needExactEncoding ) {
         // We don't need that!
-        GD_FDPRINTF( stderr, "Warning: encoding was specified in a Unicode file, ignoring.\n" );
+        qWarning( "Warning: encoding was specified in a Unicode file, ignoring." );
       }
       else if ( !arg.compare( U"Latin" ) ) {
-        encoding = Utf8::Windows1252;
+        encoding = Text::Encoding::Windows1252;
       }
       else if ( !arg.compare( U"Cyrillic" ) ) {
-        encoding = Utf8::Windows1251;
+        encoding = Text::Encoding::Windows1251;
       }
       else if ( !arg.compare( U"EasternEuropean" ) ) {
-        encoding = Utf8::Windows1250;
+        encoding = Text::Encoding::Windows1250;
       }
       else {
         gzclose( f );
@@ -1010,7 +1008,7 @@ DslScanner::~DslScanner() noexcept
   gzclose( f );
 }
 
-bool DslScanner::readNextLine( wstring & out, size_t & offset, bool only_head_word )
+bool DslScanner::readNextLine( std::u32string & out, size_t & offset, bool only_head_word )
 {
   offset = gztell( f ) - readBufferLeft /*+pos*/;
 
@@ -1037,7 +1035,7 @@ bool DslScanner::readNextLine( wstring & out, size_t & offset, bool only_head_wo
       return false;
     }
 
-    int pos = Utf8::findFirstLinePosition( readBufferPtr, readBufferLeft, lineFeed.lineFeed, lineFeed.length );
+    int pos = Text::findFirstLinePosition( readBufferPtr, readBufferLeft, lineFeed.lineFeed, lineFeed.length );
     if ( pos == -1 ) {
       return false;
     }
@@ -1058,9 +1056,9 @@ bool DslScanner::readNextLine( wstring & out, size_t & offset, bool only_head_wo
   }
 }
 
-bool DslScanner::readNextLineWithoutComments( wstring & out, size_t & offset, bool only_headword )
+bool DslScanner::readNextLineWithoutComments( std::u32string & out, size_t & offset, bool only_headword )
 {
-  wstring str;
+  std::u32string str;
   bool commentToNextLine = false;
   size_t currentOffset;
 
@@ -1088,14 +1086,14 @@ bool DslScanner::readNextLineWithoutComments( wstring & out, size_t & offset, bo
 
 /////////////// DslScanner
 
-void processUnsortedParts( wstring & str, bool strip )
+void processUnsortedParts( std::u32string & str, bool strip )
 {
   int refCount = 0;
 
   size_t startPos = 0;
 
   for ( size_t x = 0; x < str.size(); ) {
-    wchar ch = str[ x ];
+    char32_t ch = str[ x ];
 
     if ( ch == L'\\' ) {
       // Escape code
@@ -1121,7 +1119,7 @@ void processUnsortedParts( wstring & str, bool strip )
       --refCount;
 
       if ( refCount < 0 ) {
-        GD_FDPRINTF( stderr, "Warning: an unmatched closing brace was encountered.\n" );
+        qWarning( "Warning: an unmatched closing brace was encountered." );
         refCount = 0;
         // But we remove that thing either way
         str.erase( x, 1 );
@@ -1146,23 +1144,23 @@ void processUnsortedParts( wstring & str, bool strip )
   }
 
   if ( strip && refCount ) {
-    GD_FDPRINTF( stderr, "Warning: unclosed brace(s) encountered.\n" );
+    qWarning( "Warning: unclosed brace(s) encountered." );
     str.erase( startPos );
   }
 }
 
-void expandOptionalParts( wstring & str, list< wstring > * result, size_t x, bool inside_recurse )
+void expandOptionalParts( std::u32string & str, list< std::u32string > * result, size_t x, bool inside_recurse )
 {
   // if str is too long ,it can never be headwords.
   if ( str.size() > 100 ) {
     return;
   }
-  list< wstring > expanded;
-  list< wstring > * headwords;
+  list< std::u32string > expanded;
+  list< std::u32string > * headwords;
   headwords = inside_recurse ? result : &expanded;
 
   for ( ; x < str.size(); ) {
-    wchar ch = str[ x ];
+    char32_t ch = str[ x ];
 
     if ( ch == L'\\' ) {
       // Escape code
@@ -1175,7 +1173,7 @@ void expandOptionalParts( wstring & str, list< wstring > * result, size_t x, boo
         int refCount = 1;
 
         for ( size_t y = x + 1; y < str.size(); ++y ) {
-          wchar ch = str[ y ];
+          char32_t ch = str[ y ];
 
           if ( ch == L'\\' ) {
             // Escape code
@@ -1191,7 +1189,7 @@ void expandOptionalParts( wstring & str, list< wstring > * result, size_t x, boo
 
               if ( y != x + 1 ) // Only do for non-empty cases
               {
-                wstring removed( str, 0, x );
+                std::u32string removed( str, 0, x );
                 removed.append( str, y + 1, str.size() - y - 1 );
 
                 expandOptionalParts( removed, headwords, x, true );
@@ -1205,7 +1203,7 @@ void expandOptionalParts( wstring & str, list< wstring > * result, size_t x, boo
         if ( refCount && x != str.size() - 1 ) {
           // Closing paren not found? Chop it.
 
-          wstring removed( str, 0, x );
+          std::u32string removed( str, 0, x );
 
           // Limit the amount of results to avoid excessive resource consumption
           if ( headwords->size() < 32 ) {
@@ -1243,10 +1241,10 @@ void expandOptionalParts( wstring & str, list< wstring > * result, size_t x, boo
   }
 }
 
-static const wstring openBraces( U"{{" );
-static const wstring closeBraces( U"}}" );
+static const std::u32string openBraces( U"{{" );
+static const std::u32string closeBraces( U"}}" );
 
-void stripComments( wstring & str, bool & nextLine )
+void stripComments( std::u32string & str, bool & nextLine )
 {
   string::size_type n = 0, n2 = 0;
 
@@ -1270,9 +1268,9 @@ void stripComments( wstring & str, bool & nextLine )
   }
 }
 
-void expandTildes( wstring & str, wstring const & tildeReplacement )
+void expandTildes( std::u32string & str, std::u32string const & tildeReplacement )
 {
-  wstring tildeValue = Folding::trimWhitespace( tildeReplacement );
+  std::u32string tildeValue = Folding::trimWhitespace( tildeReplacement );
   for ( size_t x = 0; x < str.size(); ) {
     if ( str[ x ] == L'\\' ) {
       x += 2;
@@ -1295,7 +1293,7 @@ void expandTildes( wstring & str, wstring const & tildeReplacement )
   }
 }
 
-void unescapeDsl( wstring & str )
+void unescapeDsl( std::u32string & str )
 {
   for ( size_t x = 0; x < str.size(); ++x ) {
     if ( str[ x ] == L'\\' ) {
@@ -1304,7 +1302,7 @@ void unescapeDsl( wstring & str )
   }
 }
 
-void normalizeHeadword( wstring & str )
+void normalizeHeadword( std::u32string & str )
 {
   for ( size_t x = str.size(); x-- > 1; ) // >1 -- Don't test the first char
   {
@@ -1332,7 +1330,7 @@ void normalizeHeadword( wstring & str )
 }
 
 namespace {
-void cutEnding( wstring & where, wstring const & ending )
+void cutEnding( std::u32string & where, std::u32string const & ending )
 {
   if ( where.size() > ending.size() && where.compare( where.size() - ending.size(), ending.size(), ending ) == 0 ) {
     where.erase( where.size() - ending.size() );
@@ -1340,17 +1338,17 @@ void cutEnding( wstring & where, wstring const & ending )
 }
 } // namespace
 
-quint32 dslLanguageToId( wstring const & name )
+quint32 dslLanguageToId( std::u32string const & name )
 {
-  static wstring newSp( U"newspelling" );
-  static wstring st( U"standard" );
-  static wstring ms( U"modernsort" );
-  static wstring ts( U"traditionalsort" );
-  static wstring prc( U"prc" );
+  static std::u32string newSp( U"newspelling" );
+  static std::u32string st( U"standard" );
+  static std::u32string ms( U"modernsort" );
+  static std::u32string ts( U"traditionalsort" );
+  static std::u32string prc( U"prc" );
 
   // Any of those endings are to be removed
 
-  wstring nameStripped = Folding::apply( name );
+  std::u32string nameStripped = Folding::apply( name );
 
   cutEnding( nameStripped, newSp );
   cutEnding( nameStripped, st );

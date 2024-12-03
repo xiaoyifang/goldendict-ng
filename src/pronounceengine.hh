@@ -21,7 +21,7 @@ class PronounceEngine: public QObject
 public:
   explicit PronounceEngine( QObject * parent = nullptr );
   void reset();
-  void sendAudio( std::string dictId, QString audioLink );
+  void sendAudio( const std::string & dictId, const QString & audioLink );
   void finishDictionary( std::string dictId );
 signals:
   void emitAudio( QString audioLink );

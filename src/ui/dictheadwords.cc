@@ -2,7 +2,6 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "dictheadwords.hh"
-#include "gddebug.hh"
 #include "headwordsmodel.hh"
 #include <QDir>
 #include <QFileDialog>
@@ -255,7 +254,7 @@ QRegularExpression DictHeadwords::getFilterRegex() const
   QRegularExpression regExp = QRegularExpression( pattern, options );
 
   if ( !regExp.isValid() ) {
-    gdWarning( "Invalid regexp pattern: %s\n", pattern.toUtf8().data() );
+    qWarning( "Invalid regexp pattern: %s", pattern.toUtf8().data() );
   }
   return regExp;
 }
@@ -428,7 +427,7 @@ void DictHeadwords::saveHeadersToFile()
   progress.setValue( progress.maximum() );
   if ( progress.wasCanceled() ) {
     QMessageBox::warning( this, "GoldenDict", tr( "Export process is interrupted" ) );
-    gdWarning( "Headers export error: %s", file.errorString().toUtf8().data() );
+    qWarning( "Headers export error: %s", file.errorString().toUtf8().data() );
   }
   else {
     //completed.

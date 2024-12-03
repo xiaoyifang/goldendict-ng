@@ -1,35 +1,28 @@
 #pragma once
 
 /// @file
-/// Handling global hotkeys and some tricks
-/// Part of this header are implmented in
-/// + `winhotkeywrapper.cc`
-/// + `machotkeywrapper.hh`
-///
+/// Handling global hotkeys and some trick
+/// Part of this header is implemented in
+/// + `winhotkeywrapper`
+/// + `machotkeywrapper`
+/// + `x11hotkeywrapper`
 
 #include <QGuiApplication>
 #include <QThread>
-
 #include "config.hh"
 #include "ex.hh"
 #include "qtsingleapplication.h"
 #include "utils.hh"
 
 #ifdef HAVE_X11
-
+  #include <fixx11h.h>
   #include <set>
-
   #include <X11/Xlib.h>
   #include <X11/extensions/record.h>
-  #if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
-    #include <QX11Info>
-  #endif
   #include <X11/Xlibint.h>
-
   #undef Bool
   #undef min
   #undef max
-
 #endif
 
 #ifdef Q_OS_WIN
@@ -130,7 +123,7 @@ private:
   /// Called by recordEventCallback()
   void handleRecordEvent( XRecordInterceptData * );
 
-  void run(); // QThread
+  void run() override; // QThread
 
   // We do one-time init of those, translating keysyms to keycodes
   KeyCode lShiftCode, rShiftCode, lCtrlCode, rCtrlCode, lAltCode, rAltCode, cCode, insertCode, kpInsertCode, lMetaCode,
@@ -173,13 +166,6 @@ signals:
 
 //////////////////////////////////////////////////////////////////////////
 
-class DataCommitter
-{
-public:
-
-  virtual void commitData( QSessionManager & ) = 0;
-  virtual ~DataCommitter() {}
-};
 
 class QHotkeyApplication: public QtSingleApplication
 #if defined( Q_OS_WIN )
@@ -191,30 +177,19 @@ class QHotkeyApplication: public QtSingleApplication
 
   friend class HotkeyWrapper;
 
-  QList< DataCommitter * > dataCommitters;
-
 public:
-  QHotkeyApplication( int & argc, char ** argv );
   QHotkeyApplication( QString const & id, int & argc, char ** argv );
 
-  void addDataCommiter( DataCommitter & );
-  void removeDataCommiter( DataCommitter & );
-
-private slots:
-  /// This calls all data committers.
-  void hotkeyAppCommitData( QSessionManager & );
-
-  void hotkeyAppSaveState( QSessionManager & );
+#ifdef Q_OS_WIN
 
 protected:
   void registerWrapper( HotkeyWrapper * wrapper );
   void unregisterWrapper( HotkeyWrapper * wrapper );
 
-#ifdef Q_OS_WIN
   virtual bool nativeEventFilter( const QByteArray & eventType, void * message, qintptr * result );
-#endif
 
   QList< HotkeyWrapper * > hotkeyWrappers;
+#endif
 };
 
 //////////////////////////////////////////////////////////////////////////

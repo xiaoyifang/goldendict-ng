@@ -3,7 +3,7 @@
 
 #pragma once
 
-#ifndef NO_TTS_SUPPORT
+#ifdef TTS_SUPPORT
 
   #include "ui_texttospeechsource.h"
   #include "config.hh"

@@ -11,17 +11,10 @@
 #include "dict/sounddir.hh"
 #include "dict/hunspell.hh"
 #include "dictdfiles.hh"
-#include "dict/romaji.hh"
-#include "dict/customtransliteration.hh"
-#include "dict/russiantranslit.hh"
-#include "dict/german.hh"
-#include "dict/greektranslit.hh"
-#include "dict/belarusiantranslit.hh"
 #include "dict/website.hh"
 #include "dict/forvo.hh"
 #include "dict/programs.hh"
 #include "dict/voiceengines.hh"
-#include "gddebug.hh"
 #include "dict/xdxf.hh"
 #include "dict/sdict.hh"
 #include "dict/aard.hh"
@@ -34,12 +27,19 @@
 #include "dict/lingualibre.hh"
 #include "metadata.hh"
 
-#ifndef NO_EPWING_SUPPORT
+#include "dict/transliteration/belarusian.hh"
+#include "dict/transliteration/custom.hh"
+#include "dict/transliteration/german.hh"
+#include "dict/transliteration/greek.hh"
+#include "dict/transliteration/romaji.hh"
+#include "dict/transliteration/russian.hh"
+
+#ifdef EPWING_SUPPORT
   #include "dict/epwing.hh"
 #endif
 
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
-  #include "dict/chinese.hh"
+  #include "dict/transliteration/chinese.hh"
 #endif
 
 #include <QMessageBox>
@@ -83,7 +83,7 @@ LoadDictionaries::LoadDictionaries( Config::Class const & cfg ):
               << "*.zim"
               << "*.zimaa"
 #endif
-#ifndef NO_EPWING_SUPPORT
+#ifdef EPWING_SUPPORT
               << "*catalogs"
 #endif
     ;
@@ -181,7 +181,7 @@ void LoadDictionaries::handlePath( Config::Path const & path )
 #ifdef MAKE_ZIM_SUPPORT
   addDicts( Zim::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this, maxHeadwordToExpand ) );
 #endif
-#ifndef NO_EPWING_SUPPORT
+#ifdef EPWING_SUPPORT
   addDicts( Epwing::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
 #endif
 }
@@ -243,10 +243,10 @@ void loadDictionaries( QWidget * parent,
   ///// We create transliterations synchronously since they are very simple
 
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
-  addDicts( Chinese::makeDictionaries( cfg.transliteration.chinese ) );
+  addDicts( ChineseTranslit::makeDictionaries( cfg.transliteration.chinese ) );
 #endif
 
-  addDicts( Romaji::makeDictionaries( cfg.transliteration.romaji ) );
+  addDicts( RomajiTranslit::makeDictionaries( cfg.transliteration.romaji ) );
   addDicts( CustomTranslit::makeDictionaries( cfg.transliteration.customTrans ) );
 
   // Make Russian transliteration
@@ -274,13 +274,13 @@ void loadDictionaries( QWidget * parent,
   addDicts( Forvo::makeDictionaries( loadDicts, cfg.forvo, dictNetMgr ) );
   addDicts( Lingua::makeDictionaries( loadDicts, cfg.lingua, dictNetMgr ) );
   addDicts( Programs::makeDictionaries( cfg.programs ) );
-#ifndef NO_TTS_SUPPORT
+#ifdef TTS_SUPPORT
   addDicts( VoiceEngines::makeDictionaries( cfg.voiceEngines ) );
 #endif
   addDicts( DictServer::makeDictionaries( cfg.dictServers ) );
 
 
-  GD_DPRINTF( "Load done\n" );
+  qDebug( "Load done" );
 
   // Remove any stale index files
 
@@ -290,12 +290,12 @@ void loadDictionaries( QWidget * parent,
   for ( unsigned x = dictionaries.size(); x--; ) {
     ret = ids.insert( dictionaries[ x ]->getId() );
     if ( !ret.second ) {
-      gdWarning( R"(Duplicate dictionary ID found: ID=%s, name="%s", path="%s")",
-                 dictionaries[ x ]->getId().c_str(),
-                 dictionaries[ x ]->getName().c_str(),
-                 dictionaries[ x ]->getDictionaryFilenames().empty() ?
-                   "" :
-                   dictionaries[ x ]->getDictionaryFilenames()[ 0 ].c_str() );
+      qWarning( R"(Duplicate dictionary ID found: ID=%s, name="%s", path="%s")",
+                dictionaries[ x ]->getId().c_str(),
+                dictionaries[ x ]->getName().c_str(),
+                dictionaries[ x ]->getDictionaryFilenames().empty() ?
+                  "" :
+                  dictionaries[ x ]->getDictionaryFilenames()[ 0 ].c_str() );
     }
   }
 

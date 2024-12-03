@@ -1,3 +1,11 @@
+function gdOnReady(func) {
+  if (document.readyState !== "loading") {
+    func();
+  } else {
+    document.addEventListener("DOMContentLoaded", func);
+  }
+}
+
 function gdMakeArticleActive(newId, noEvent) {
   const gdCurrentArticle =
     document.querySelector(".gdactivearticle").attributes.id;
@@ -90,7 +98,6 @@ function gdExpandArticle(id) {
     nm = document.getElementById("gddictname-" + id);
     nm.style.cursor = "pointer";
     if (ev) ev.stopPropagation();
-    ico.title = tr("Expand article");
     nm.title = "";
     articleview.collapseInHtml(id, true);
   } else if (elem.style.display == "none") {
@@ -100,7 +107,6 @@ function gdExpandArticle(id) {
     nm = document.getElementById("gddictname-" + id);
     nm.style.cursor = "default";
     nm.title = "";
-    ico.title = tr("Collapse article");
     articleview.collapseInHtml(id, false);
   }
 }

@@ -3,9 +3,7 @@
 
 #include "xdxf2html.hh"
 #include <QtXml>
-#include "gddebug.hh"
-#include "utf8.hh"
-#include "wstring_qt.hh"
+#include "text.hh"
 #include "folding.hh"
 
 #include "audiolink.hh"
@@ -131,21 +129,21 @@ string convert( string const & in,
 
 #if ( QT_VERSION < QT_VERSION_CHECK( 6, 5, 0 ) )
   if ( !dd.setContent( QByteArray( in_data.c_str() ), false, &errorStr, &errorLine, &errorColumn ) ) {
-    qWarning( "Xdxf2html error, xml parse failed: %s at %d,%d\n",
+    qWarning( "Xdxf2html error, xml parse failed: %s at %d,%d",
               errorStr.toLocal8Bit().constData(),
               errorLine,
               errorColumn );
-    gdWarning( "The input was: %s\n", in_data.c_str() );
+    qWarning( "The input was: %s", in_data.c_str() );
     return in;
   }
 #else
   auto setContentResult = dd.setContent( QByteArray::fromStdString( in_data ) );
   if ( !setContentResult ) {
-    qWarning( "Xdxf2html error, xml parse failed: %s at %lld,%lld\n",
+    qWarning( "Xdxf2html error, xml parse failed: %s at %lld,%lld",
               setContentResult.errorMessage.toStdString().c_str(),
               setContentResult.errorLine,
               setContentResult.errorColumn );
-    gdWarning( "The input was: %s\n", in_data.c_str() );
+    qWarning( "The input was: %s", in_data.c_str() );
     return in;
   }
 #endif
@@ -443,7 +441,7 @@ string convert( string const & in,
       if ( i != pAbrv->end() ) {
         string title;
 
-        if ( Utf8::decode( i->second ).size() < 70 ) {
+        if ( Text::toUtf32( i->second ).size() < 70 ) {
           // Replace all spaces with non-breakable ones, since that's how Lingvo shows tooltips
           title.reserve( i->second.size() );
 
@@ -467,7 +465,7 @@ string convert( string const & in,
         else {
           title = i->second;
         }
-        el.setAttribute( "title", QString::fromStdU32String( Utf8::decode( title ) ) );
+        el.setAttribute( "title", QString::fromStdU32String( Text::toUtf32( title ) ) );
       }
     }
   }
@@ -629,7 +627,7 @@ string convert( string const & in,
 
     //    if( type == XDXF && dictPtr != NULL && !el.hasAttribute( "start" ) )
     if ( dictPtr != NULL && !el.hasAttribute( "start" ) ) {
-      string filename = Utf8::encode( el.text().toStdU32String() );
+      string filename = Text::toUtf8( el.text().toStdU32String() );
 
       if ( Filetype::isNameOfPicture( filename ) ) {
         QUrl url;

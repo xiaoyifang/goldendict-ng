@@ -6,33 +6,25 @@
 #include "btreeidx.hh"
 
 #include "folding.hh"
-#include "gddebug.hh"
-#include "utf8.hh"
+#include "text.hh"
 #include "decompress.hh"
 #include "langcoder.hh"
-#include "wstring_qt.hh"
 #include "ftshelpers.hh"
 #include "htmlescape.hh"
 #include "filetype.hh"
 #include "tiff.hh"
 #include "utils.hh"
-
-#ifdef _MSC_VER
-  #include <stub_msvc.h>
-#endif
-
 #include "iconv.hh"
-
 #include <QString>
+#include <QStringBuilder>
 #include <QFile>
 #include <QFileInfo>
 #include <QDir>
 #include <QMap>
 #include <QProcess>
 #include <QList>
-
+#include <QtEndian>
 #include <QRegularExpression>
-
 #include <string>
 #include <vector>
 #include <utility>
@@ -48,7 +40,6 @@ using std::vector;
 using std::multimap;
 using std::pair;
 using std::set;
-using gd::wstring;
 
 using BtreeIndexing::WordArticleLink;
 using BtreeIndexing::IndexedWords;
@@ -97,7 +88,7 @@ struct RefEntry
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Index idx( indexFile, "rb" );
+  File::Index idx( indexFile, QIODevice::ReadOnly );
 
   IdxHeader header;
 
@@ -618,16 +609,6 @@ public:
 
   ~SlobDictionary();
 
-  string getName() noexcept override
-  {
-    return dictionaryName;
-  }
-
-  map< Dictionary::Property, string > getProperties() noexcept override
-  {
-    return map< Dictionary::Property, string >();
-  }
-
   unsigned long getArticleCount() noexcept override
   {
     return idxHeader.articleCount;
@@ -648,8 +629,10 @@ public:
     return idxHeader.langTo;
   }
 
-  sptr< Dictionary::DataRequest >
-  getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ignoreDiacritics ) override;
+  sptr< Dictionary::DataRequest > getArticle( std::u32string const &,
+                                              vector< std::u32string > const & alts,
+                                              std::u32string const &,
+                                              bool ignoreDiacritics ) override;
 
   sptr< Dictionary::DataRequest > getResource( string const & name ) override;
 
@@ -702,7 +685,7 @@ private:
 SlobDictionary::SlobDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles ):
   BtreeDictionary( id, dictionaryFiles ),
   idxFileName( indexFile ),
-  idx( indexFile, "rb" ),
+  idx( indexFile, QIODevice::ReadOnly ),
   idxHeader( idx.read< IdxHeader >() )
 {
   // Open data file
@@ -871,7 +854,7 @@ void SlobDictionary::loadResource( std::string & resourceName, string & data )
   vector< WordArticleLink > link;
   RefEntry entry;
 
-  link = resourceIndex.findArticles( Utf8::decode( resourceName ) );
+  link = resourceIndex.findArticles( Text::toUtf32( resourceName ) );
 
   if ( link.empty() ) {
     return;
@@ -947,7 +930,7 @@ void SlobDictionary::makeFTSIndex( QAtomicInt & isCancelled )
   }
 
 
-  gdDebug( "Slob: Building the full-text index for dictionary: %s\n", getName().c_str() );
+  qDebug( "Slob: Building the full-text index for dictionary: %s", getName().c_str() );
 
   try {
     const auto slob_dic = std::make_unique< SlobDictionary >( getId(), idxFileName, getDictionaryFilenames() );
@@ -955,7 +938,7 @@ void SlobDictionary::makeFTSIndex( QAtomicInt & isCancelled )
     FTS_index_completed.ref();
   }
   catch ( std::exception & ex ) {
-    gdWarning( "Slob: Failed building full-text search index for \"%s\", reason: %s\n", getName().c_str(), ex.what() );
+    qWarning( "Slob: Failed building full-text search index for \"%s\", reason: %s", getName().c_str(), ex.what() );
     QFile::remove( ftsIdxName.c_str() );
   }
 }
@@ -985,7 +968,7 @@ void SlobDictionary::getArticleText( uint32_t articleAddress, QString & headword
     }
   }
   catch ( std::exception & ex ) {
-    gdWarning( "Slob: Failed retrieving article from \"%s\", reason: %s\n", getName().c_str(), ex.what() );
+    qWarning( "Slob: Failed retrieving article from \"%s\", reason: %s", getName().c_str(), ex.what() );
   }
 }
 
@@ -1007,8 +990,8 @@ SlobDictionary::getSearchResults( QString const & searchString, int searchMode, 
 class SlobArticleRequest: public Dictionary::DataRequest
 {
 
-  wstring word;
-  vector< wstring > alts;
+  std::u32string word;
+  vector< std::u32string > alts;
   SlobDictionary & dict;
   bool ignoreDiacritics;
 
@@ -1017,8 +1000,8 @@ class SlobArticleRequest: public Dictionary::DataRequest
 
 public:
 
-  SlobArticleRequest( wstring const & word_,
-                      vector< wstring > const & alts_,
+  SlobArticleRequest( std::u32string const & word_,
+                      vector< std::u32string > const & alts_,
                       SlobDictionary & dict_,
                       bool ignoreDiacritics_ ):
     word( word_ ),
@@ -1063,13 +1046,13 @@ void SlobArticleRequest::run()
     chain.insert( chain.end(), altChain.begin(), altChain.end() );
   }
 
-  multimap< wstring, pair< string, string > > mainArticles, alternateArticles;
+  multimap< std::u32string, pair< string, string > > mainArticles, alternateArticles;
 
   set< quint64 > articlesIncluded; // Some synonims make it that the articles
                                    // appear several times. We combat this
                                    // by only allowing them to appear once.
 
-  wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
+  std::u32string wordCaseFolded = Folding::applySimpleCaseOnly( word );
   if ( ignoreDiacritics ) {
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
   }
@@ -1102,12 +1085,12 @@ void SlobArticleRequest::run()
 
     // We do the case-folded comparison here.
 
-    wstring headwordStripped = Folding::applySimpleCaseOnly( headword );
+    std::u32string headwordStripped = Folding::applySimpleCaseOnly( headword );
     if ( ignoreDiacritics ) {
       headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
     }
 
-    multimap< wstring, pair< string, string > > & mapToUse =
+    multimap< std::u32string, pair< string, string > > & mapToUse =
       ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
 
     mapToUse.insert( pair( Folding::applySimpleCaseOnly( headword ), pair( headword, articleText ) ) );
@@ -1123,7 +1106,7 @@ void SlobArticleRequest::run()
 
   string result;
 
-  multimap< wstring, pair< string, string > >::const_iterator i;
+  multimap< std::u32string, pair< string, string > >::const_iterator i;
 
   for ( i = mainArticles.begin(); i != mainArticles.end(); ++i ) {
     result += R"(<div class="slobdict"><h3 class="slobdict_headword">)";
@@ -1146,9 +1129,9 @@ void SlobArticleRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > SlobDictionary::getArticle( wstring const & word,
-                                                            vector< wstring > const & alts,
-                                                            wstring const &,
+sptr< Dictionary::DataRequest > SlobDictionary::getArticle( std::u32string const & word,
+                                                            vector< std::u32string > const & alts,
+                                                            std::u32string const &,
                                                             bool ignoreDiacritics )
 
 {
@@ -1233,10 +1216,10 @@ void SlobResourceRequest::run()
     hasAnyData = true;
   }
   catch ( std::exception & ex ) {
-    gdWarning( "SLOB: Failed loading resource \"%s\" from \"%s\", reason: %s\n",
-               resourceName.c_str(),
-               dict.getName().c_str(),
-               ex.what() );
+    qWarning( "SLOB: Failed loading resource \"%s\" from \"%s\", reason: %s",
+              resourceName.c_str(),
+              dict.getName().c_str(),
+              ex.what() );
     // Resource not loaded -- we don't set the hasAnyData flag then
   }
 
@@ -1279,13 +1262,13 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
         SlobFile sf;
 
-        gdDebug( "Slob: Building the index for dictionary: %s\n", fileName.c_str() );
+        qDebug( "Slob: Building the index for dictionary: %s", fileName.c_str() );
 
         sf.open( firstName );
 
         initializing.indexingDictionary( sf.getDictionaryName().toUtf8().constData() );
 
-        File::Index idx( indexFile, "wb" );
+        File::Index idx( indexFile, QIODevice::WriteOnly );
         IdxHeader idxHeader;
         memset( &idxHeader, 0, sizeof( idxHeader ) );
 
@@ -1373,11 +1356,11 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       dictionaries.push_back( std::make_shared< SlobDictionary >( dictId, indexFile, dictFiles ) );
     }
     catch ( std::exception & e ) {
-      gdWarning( "Slob dictionary initializing failed: %s, error: %s\n", fileName.c_str(), e.what() );
+      qWarning( "Slob dictionary initializing failed: %s, error: %s", fileName.c_str(), e.what() );
       continue;
     }
     catch ( ... ) {
-      qWarning( "Slob dictionary initializing failed\n" );
+      qWarning( "Slob dictionary initializing failed" );
       continue;
     }
   }

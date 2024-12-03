@@ -4,13 +4,11 @@
 #include "article_maker.hh"
 #include "config.hh"
 #include "folding.hh"
-#include "gddebug.hh"
 #include "globalbroadcaster.hh"
 #include "globalregex.hh"
 #include "htmlescape.hh"
 #include "langcoder.hh"
 #include "utils.hh"
-#include "wstring_qt.hh"
 #include <QDir>
 #include <QFile>
 #include <QTextDocumentFragment>
@@ -22,7 +20,6 @@
 
 using std::vector;
 using std::string;
-using gd::wstring;
 using std::set;
 using std::list;
 
@@ -136,19 +133,6 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word, QString const & 
       R"(<link rel="icon" type="image/png" href="qrc:///flags/)" + Html::escape( icon.toUtf8().data() ) + "\" >\n";
   }
 
-  result += QString::fromUtf8( R"(
-<script>
-     function tr(key) {
-            var tr_map = {
-                "Expand article": "%1", "Collapse article": "%2"
-            };
-            return tr_map[key] || '';
-        }
-</script>
-)" )
-              .arg( tr( "Expand article" ), tr( "Collapse article" ) )
-              .toStdString();
-
   result += R"(<script src="qrc:///scripts/gd-builtin.js"></script>)";
   result += R"(<script src="qrc:///scripts/mark.min.js"></script>)";
 
@@ -162,7 +146,10 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word, QString const & 
 
 #if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
   if ( GlobalBroadcaster::instance()->getPreference()->darkReaderMode == Config::Dark::Auto
-       && QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark ) {
+  #if !defined( Q_OS_WINDOWS ) // not properly works on Windows.
+       && QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark
+  #endif
+       && GlobalBroadcaster::instance()->getPreference()->darkMode == Config::Dark::On ) {
     darkReaderModeEnabled = true;
   }
 #endif
@@ -482,7 +469,7 @@ ArticleRequest::ArticleRequest( QString const & word,
 
   // Accumulate main forms
   for ( const auto & activeDict : activeDicts ) {
-    auto const s = activeDict->findHeadwordsForSynonym( gd::removeTrailingZero( word ) );
+    auto const s = activeDict->findHeadwordsForSynonym( Text::removeTrailingZero( word ) );
 
     connect( s.get(), &Dictionary::Request::finished, this, &ArticleRequest::altSearchFinished, Qt::QueuedConnection );
 
@@ -519,9 +506,9 @@ void ArticleRequest::altSearchFinished()
 
     altsDone = true; // So any pending signals in queued mode won't mess us up
 
-    vector< wstring > altsVector( alts.begin(), alts.end() );
+    vector< std::u32string > altsVector( alts.begin(), alts.end() );
 
-    wstring wordStd = word.toStdU32String();
+    std::u32string wordStd = word.toStdU32String();
 
     if ( activeDicts.size() <= 1 ) {
       articleSizeLimit = -1; // Don't collapse article if only one dictionary presented
@@ -532,7 +519,7 @@ void ArticleRequest::altSearchFinished()
         sptr< Dictionary::DataRequest > r = activeDict->getArticle(
           wordStd,
           altsVector,
-          gd::removeTrailingZero( contexts.value( QString::fromStdString( activeDict->getId() ) ) ),
+          Text::removeTrailingZero( contexts.value( QString::fromStdString( activeDict->getId() ) ) ),
           ignoreDiacritics );
 
         connect( r.get(), &Dictionary::Request::finished, this, &ArticleRequest::bodyFinished, Qt::QueuedConnection );
@@ -540,7 +527,7 @@ void ArticleRequest::altSearchFinished()
         bodyRequests.push_back( r );
       }
       catch ( std::exception & e ) {
-        gdWarning( "getArticle request error (%s) in \"%s\"\n", e.what(), activeDict->getName().c_str() );
+        qWarning( "getArticle request error (%s) in \"%s\"", e.what(), activeDict->getName().c_str() );
       }
     }
 
@@ -618,7 +605,7 @@ void ArticleRequest::bodyFinished()
     return;
   }
 
-  GD_DPRINTF( "some body finished" );
+  qDebug( "some body finished" );
 
   bool wasUpdated = false;
 
@@ -628,7 +615,7 @@ void ArticleRequest::bodyFinished()
     if ( bodyRequests.front()->isFinished() ) {
       // Good
 
-      GD_DPRINTF( "one finished." );
+      qDebug( "one finished." );
 
       Dictionary::DataRequest & req = *bodyRequests.front();
 
@@ -676,11 +663,11 @@ void ArticleRequest::bodyFinished()
                      </div>)" ),
           dictId,
           collapse ? R"(style="cursor:pointer;")" : "",
-          collapse ? tr( "Expand article" ).toStdString() : "",
+          "",
           Html::escape( tr( "From " ).toStdString() ),
           Html::escape( activeDict->getName() ),
           collapse ? "gdexpandicon" : "gdcollapseicon",
-          collapse ? "" : tr( "Collapse article" ).toStdString() );
+          "" );
 
         head += R"(<div class="gddictnamebodyseparator"></div>)";
 
@@ -718,7 +705,7 @@ void ArticleRequest::bodyFinished()
           }
         }
         catch ( std::exception & e ) {
-          gdWarning( "getDataSlice error: %s\n", e.what() );
+          qWarning( "getDataSlice error: %s", e.what() );
         }
 
         wasUpdated = true;
@@ -728,12 +715,12 @@ void ArticleRequest::bodyFinished()
         //signal finished dictionary for pronounciation
         GlobalBroadcaster::instance()->pronounce_engine.finishDictionary( dictId );
       }
-      GD_DPRINTF( "erasing.." );
+      qDebug( "erasing.." );
       bodyRequests.pop_front();
-      GD_DPRINTF( "erase done.." );
+      qDebug( "erase done.." );
     }
     else {
-      GD_DPRINTF( "one not finished." );
+      qDebug( "one not finished." );
       break;
     }
   }
@@ -976,7 +963,7 @@ void ArticleRequest::compoundSearchNextStep( bool lastSearchSucceeded )
 
   // Look it up
 
-  //  GD_DPRINTF( "Looking up %s\n", qPrintable( currentSplittedWordCompound ) );
+  //  qDebug( "Looking up %s", qPrintable( currentSplittedWordCompound ) );
 
   stemmedWordFinder->expressionMatch( currentSplittedWordCompound,
                                       activeDicts,
@@ -1006,7 +993,7 @@ void ArticleRequest::individualWordFinished()
   WordFinder::SearchResults const & results = stemmedWordFinder->getResults();
 
   if ( results.size() ) {
-    wstring source = Folding::applySimpleCaseOnly( currentSplittedWordCompound );
+    std::u32string source = Folding::applySimpleCaseOnly( currentSplittedWordCompound );
 
     bool hadSomething = false;
 
@@ -1020,7 +1007,7 @@ void ArticleRequest::individualWordFinished()
 
       // Prefix match found. Check if the aliases are acceptable.
 
-      wstring result( Folding::applySimpleCaseOnly( results[ x ].first ) );
+      std::u32string result( Folding::applySimpleCaseOnly( results[ x ].first ) );
 
       if ( source.size() <= result.size() && result.compare( 0, source.size(), source ) == 0 ) {
         // The resulting string begins with the source one

@@ -2,7 +2,7 @@
 
 #include <QString>
 #include <QIcon>
-#include "wstring.hh"
+#include "text.hh"
 
 struct GDLangCode
 {
@@ -34,7 +34,7 @@ public:
 
   /// Finds the id for the given language name, written in english. The search
   /// is case- and punctuation insensitive.
-  static quint32 findIdForLanguage( gd::wstring const & );
+  static quint32 findIdForLanguage( std::u32string const & );
 
   static quint32 findIdForLanguageCode3( std::string const & );
 

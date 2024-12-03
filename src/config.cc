@@ -8,7 +8,6 @@
 #include <QtXml>
 #include <QApplication>
 #include <QStyle>
-#include "gddebug.hh"
 
 #ifdef Q_OS_WIN32
   //this is a windows header file.
@@ -119,57 +118,6 @@ QKeySequence HotKey::toKeySequence() const
   ;
 }
 
-
-bool InternalPlayerBackend::anyAvailable()
-{
-#if defined( MAKE_FFMPEG_PLAYER ) || defined( MAKE_QTMULTIMEDIA_PLAYER )
-  return true;
-#else
-  return false;
-#endif
-}
-
-InternalPlayerBackend InternalPlayerBackend::defaultBackend()
-{
-#if defined( MAKE_FFMPEG_PLAYER )
-  return ffmpeg();
-#elif defined( MAKE_QTMULTIMEDIA_PLAYER )
-  return qtmultimedia();
-#else
-  return InternalPlayerBackend( QString() );
-#endif
-}
-
-QStringList InternalPlayerBackend::nameList()
-{
-  QStringList result;
-#ifdef MAKE_FFMPEG_PLAYER
-  result.push_back( ffmpeg().uiName() );
-#endif
-#ifdef MAKE_QTMULTIMEDIA_PLAYER
-  result.push_back( qtmultimedia().uiName() );
-#endif
-  return result;
-}
-
-bool InternalPlayerBackend::isFfmpeg() const
-{
-#ifdef MAKE_FFMPEG_PLAYER
-  return *this == ffmpeg();
-#else
-  return false;
-#endif
-}
-
-bool InternalPlayerBackend::isQtmultimedia() const
-{
-#ifdef MAKE_QTMULTIMEDIA_PLAYER
-  return *this == qtmultimedia();
-#else
-  return false;
-#endif
-}
-
 QString Preferences::sanitizeInputPhrase( QString const & inputWord ) const
 {
   QString result = inputWord;
@@ -181,9 +129,9 @@ QString Preferences::sanitizeInputPhrase( QString const & inputWord ) const
   }
 
   if ( limitInputPhraseLength && result.size() > inputPhraseLengthLimit ) {
-    gdDebug( "Ignoring an input phrase %lld symbols long. The configured maximum input phrase length is %d symbols.",
-             result.size(),
-             inputPhraseLengthLimit );
+    qDebug( "Ignoring an input phrase %lld symbols long. The configured maximum input phrase length is %d symbols.",
+            result.size(),
+            inputPhraseLengthLimit );
     return {};
   }
 
@@ -232,7 +180,6 @@ Preferences::Preferences():
   pronounceOnLoadMain( false ),
   pronounceOnLoadPopup( false ),
   useInternalPlayer( InternalPlayerBackend::anyAvailable() ),
-  internalPlayerBackend( InternalPlayerBackend::defaultBackend() ),
   checkForNewReleases( true ),
   disallowContentFromOtherSites( false ),
   hideGoldenDictHeader( false ),
@@ -549,10 +496,6 @@ Class load()
       c.paths.push_back( Path( getPortableVersionDictionaryDir(), true ) );
     }
 
-#ifndef Q_OS_WIN32
-    c.preferences.audioPlaybackProgram = "mplayer";
-#endif
-
     QString possibleMorphologyPath = getProgramDataDir() + "/content/morphology";
 
     if ( QDir( possibleMorphologyPath ).exists() ) {
@@ -592,7 +535,7 @@ Class load()
   if ( !loadFromTemplate ) {
     // Load the config as usual
     if ( !dd.setContent( &configFile, false, &errorStr, &errorLine, &errorColumn ) ) {
-      GD_DPRINTF( "Error: %s at %d,%d\n", errorStr.toLocal8Bit().constData(), errorLine, errorColumn );
+      qDebug( "Error: %s at %d,%d", errorStr.toLocal8Bit().constData(), errorLine, errorColumn );
       throw exMalformedConfigFile();
     }
   }
@@ -605,7 +548,7 @@ Class load()
     QBuffer bufferedData( &data );
 
     if ( !dd.setContent( &bufferedData, false, &errorStr, &errorLine, &errorColumn ) ) {
-      GD_DPRINTF( "Error: %s at %d,%d\n", errorStr.toLocal8Bit().constData(), errorLine, errorColumn );
+      qDebug( "Error: %s at %d,%d", errorStr.toLocal8Bit().constData(), errorLine, errorColumn );
       throw exMalformedConfigFile();
     }
   }
@@ -852,7 +795,7 @@ Class load()
     // Upgrading
     c.dictServers = makeDefaultDictServers();
   }
-#ifndef NO_TTS_SUPPORT
+#ifdef TTS_SUPPORT
   QDomNode ves = root.namedItem( "voiceEngines" );
 
   if ( !ves.isNull() ) {
@@ -1003,7 +946,7 @@ Class load()
     }
 
     if ( !preferences.namedItem( "internalPlayerBackend" ).isNull() ) {
-      c.preferences.internalPlayerBackend.setUiName(
+      c.preferences.internalPlayerBackend.setName(
         preferences.namedItem( "internalPlayerBackend" ).toElement().text() );
     }
 
@@ -1011,7 +954,7 @@ Class load()
       c.preferences.audioPlaybackProgram = preferences.namedItem( "audioPlaybackProgram" ).toElement().text();
     }
     else {
-      c.preferences.audioPlaybackProgram = "mplayer";
+      c.preferences.audioPlaybackProgram = "vlc --intf dummy --play-and-exit";
     }
 
     QDomNode proxy = preferences.namedItem( "proxyserver" );
@@ -1736,7 +1679,7 @@ void save( Class const & c )
       p.setAttributeNode( icon );
     }
   }
-#ifndef NO_TTS_SUPPORT
+#ifdef TTS_SUPPORT
   {
     QDomNode ves = dd.createElement( "voiceEngines" );
     root.appendChild( ves );
@@ -1970,7 +1913,7 @@ void save( Class const & c )
     preferences.appendChild( opt );
 
     opt = dd.createElement( "internalPlayerBackend" );
-    opt.appendChild( dd.createTextNode( c.preferences.internalPlayerBackend.uiName() ) );
+    opt.appendChild( dd.createTextNode( c.preferences.internalPlayerBackend.getName() ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "audioPlaybackProgram" );

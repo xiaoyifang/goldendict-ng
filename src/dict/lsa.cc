@@ -5,18 +5,13 @@
 #include "dictfile.hh"
 #include "iconv.hh"
 #include "folding.hh"
-#include "utf8.hh"
+#include "text.hh"
 #include "btreeidx.hh"
 
 #include "audiolink.hh"
-#include "gddebug.hh"
 
 #include <set>
 #include <string>
-
-#ifdef _MSC_VER
-  #include <stub_msvc.h>
-#endif
 
 #define OV_EXCLUDE_STATIC_CALLBACKS
 #include <vorbis/vorbisfile.h>
@@ -29,7 +24,6 @@
 namespace Lsa {
 
 using std::string;
-using gd::wstring;
 using std::map;
 using std::multimap;
 using std::set;
@@ -65,7 +59,7 @@ static_assert( alignof( IdxHeader ) == 1 );
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Index idx( indexFile, "rb" );
+  File::Index idx( indexFile, QIODevice::ReadOnly );
 
   IdxHeader header;
 
@@ -149,7 +143,7 @@ Entry::Entry( File::Index & f )
   // Read the size of the recording, in samples
   samplesLength = f.read< uint32_t >();
 
-  name = Iconv::toUtf8( Iconv::Utf16Le, &filenameBuffer.front(), read * sizeof( uint16_t ) );
+  name = Iconv::toUtf8( Text::utf16_le, &filenameBuffer.front(), read * sizeof( uint16_t ) );
 }
 
 class LsaDictionary: public BtreeIndexing::BtreeDictionary
@@ -164,11 +158,6 @@ public:
 
   string getName() noexcept override;
 
-  map< Dictionary::Property, string > getProperties() noexcept override
-  {
-    return map< Dictionary::Property, string >();
-  }
-
   unsigned long getArticleCount() noexcept override
   {
     return idxHeader.soundsCount;
@@ -179,8 +168,10 @@ public:
     return getArticleCount();
   }
 
-  sptr< Dictionary::DataRequest >
-  getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ignoreDiacritics ) override;
+  sptr< Dictionary::DataRequest > getArticle( std::u32string const &,
+                                              vector< std::u32string > const & alts,
+                                              std::u32string const &,
+                                              bool ignoreDiacritics ) override;
 
   sptr< Dictionary::DataRequest > getResource( string const & name ) override;
 
@@ -201,7 +192,7 @@ string LsaDictionary::getName() noexcept
 
 LsaDictionary::LsaDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles ):
   BtreeDictionary( id, dictionaryFiles ),
-  idx( indexFile, "rb" ),
+  idx( indexFile, QIODevice::ReadOnly ),
   idxHeader( idx.read< IdxHeader >() )
 {
   // Initialize the index
@@ -209,9 +200,9 @@ LsaDictionary::LsaDictionary( string const & id, string const & indexFile, vecto
   openIndex( IndexInfo( idxHeader.indexBtreeMaxElements, idxHeader.indexRootOffset ), idx, idxMutex );
 }
 
-sptr< Dictionary::DataRequest > LsaDictionary::getArticle( wstring const & word,
-                                                           vector< wstring > const & alts,
-                                                           wstring const &,
+sptr< Dictionary::DataRequest > LsaDictionary::getArticle( std::u32string const & word,
+                                                           vector< std::u32string > const & alts,
+                                                           std::u32string const &,
                                                            bool ignoreDiacritics )
 
 {
@@ -225,13 +216,13 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( wstring const & word,
     chain.insert( chain.end(), altChain.begin(), altChain.end() );
   }
 
-  multimap< wstring, string > mainArticles, alternateArticles;
+  multimap< std::u32string, string > mainArticles, alternateArticles;
 
   set< uint32_t > articlesIncluded; // Some synonims make it that the articles
                                     // appear several times. We combat this
                                     // by only allowing them to appear once.
 
-  wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
+  std::u32string wordCaseFolded = Folding::applySimpleCaseOnly( word );
   if ( ignoreDiacritics ) {
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
   }
@@ -246,12 +237,13 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( wstring const & word,
 
     // We do the case-folded comparison here.
 
-    wstring headwordStripped = Folding::applySimpleCaseOnly( x.word );
+    std::u32string headwordStripped = Folding::applySimpleCaseOnly( x.word );
     if ( ignoreDiacritics ) {
       headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
     }
 
-    multimap< wstring, string > & mapToUse = ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
+    multimap< std::u32string, string > & mapToUse =
+      ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
 
     mapToUse.insert( std::pair( Folding::applySimpleCaseOnly( x.word ), x.word ) );
 
@@ -264,7 +256,7 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( wstring const & word,
 
   string result;
 
-  multimap< wstring, string >::const_iterator i;
+  multimap< std::u32string, string >::const_iterator i;
 
   result += "<table class=\"lsa_play\">";
   for ( i = mainArticles.begin(); i != mainArticles.end(); ++i ) {
@@ -399,13 +391,13 @@ sptr< Dictionary::DataRequest > LsaDictionary::getResource( string const & name 
 
   string strippedName = Utils::endsWithIgnoreCase( name, ".wav" ) ? string( name, 0, name.size() - 4 ) : name;
 
-  vector< WordArticleLink > chain = findArticles( Utf8::decode( strippedName ) );
+  vector< WordArticleLink > chain = findArticles( Text::toUtf32( strippedName ) );
 
   if ( chain.empty() ) {
     return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such resource
   }
 
-  File::Index f( getDictionaryFilenames()[ 0 ], "rb" );
+  File::Index f( getDictionaryFilenames()[ 0 ], QIODevice::ReadOnly );
 
   f.seek( chain[ 0 ].articleOffset );
   Entry e( f );
@@ -468,13 +460,13 @@ sptr< Dictionary::DataRequest > LsaDictionary::getResource( string const & name 
     long result = ov_read( &vf, ptr, left, 0, 2, 1, &bitstream );
 
     if ( result <= 0 ) {
-      gdWarning( "Failed to read Vorbis data (code = %ld)\n", result );
+      qWarning( "Failed to read Vorbis data (code = %ld)", result );
       memset( ptr, 0, left );
       break;
     }
 
     if ( result > left ) {
-      GD_FDPRINTF( stderr, "Warning: Vorbis decode returned more data than requested.\n" );
+      qWarning( "Warning: Vorbis decode returned more data than requested." );
 
       result = left;
     }
@@ -522,7 +514,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
     }
 
     try {
-      File::Index f( *i, "rb" );
+      File::Index f( *i, QIODevice::ReadOnly );
 
       /// Check the signature
 
@@ -543,11 +535,11 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
         // Building the index
 
-        gdDebug( "Lsa: Building the index for dictionary: %s\n", i->c_str() );
+        qDebug( "Lsa: Building the index for dictionary: %s", i->c_str() );
 
         initializing.indexingDictionary( Utils::Fs::basename( *i ) );
 
-        File::Index idx( indexFile, "wb" );
+        File::Index idx( indexFile, QIODevice::WriteOnly );
 
         IdxHeader idxHeader;
 
@@ -563,7 +555,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         /// XXX handle big-endian machines here!
         auto entriesCount = f.read< uint32_t >();
 
-        GD_DPRINTF( "%s: %u entries\n", i->c_str(), entriesCount );
+        qDebug( "%s: %u entries", i->c_str(), entriesCount );
 
         idxHeader.soundsCount = entriesCount;
 
@@ -578,11 +570,11 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
           // Remove the extension, no need for that in the index
           e.name = stripExtension( e.name );
 
-          GD_DPRINTF( "Read filename %s (%u at %u)<\n", e.name.c_str(), e.samplesLength, e.samplesOffset );
+          qDebug( "Read filename %s (%u at %u)<", e.name.c_str(), e.samplesLength, e.samplesOffset );
 
           // Insert new entry into an index
 
-          indexedWords.addWord( Utf8::decode( e.name ), offset );
+          indexedWords.addWord( Text::toUtf32( e.name ), offset );
         }
 
         idxHeader.vorbisOffset = f.tell();
@@ -617,7 +609,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       dictionaries.push_back( std::make_shared< LsaDictionary >( dictId, indexFile, dictFiles ) );
     }
     catch ( std::exception & e ) {
-      gdWarning( "Lingvo's LSA reading failed: %s, error: %s\n", i->c_str(), e.what() );
+      qWarning( "Lingvo's LSA reading failed: %s, error: %s", i->c_str(), e.what() );
     }
   }
 

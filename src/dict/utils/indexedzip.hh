@@ -37,11 +37,11 @@ public:
 
   /// Checks whether the given file exists in the zip file or not.
   /// Note that this function is thread-safe, since it does not access zip file.
-  bool hasFile( gd::wstring const & name );
+  bool hasFile( std::u32string const & name );
 
   /// Attempts loading the given file into the given vector. Returns true on
   /// success, false otherwise.
-  bool loadFile( gd::wstring const & name, std::vector< char > & );
+  bool loadFile( std::u32string const & name, std::vector< char > & );
   bool loadFile( uint32_t offset, std::vector< char > & );
 
   /// Index compressed files in zip file

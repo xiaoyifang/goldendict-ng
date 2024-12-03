@@ -1,16 +1,23 @@
 ﻿/* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#include <stdio.h>
-#include <QIcon>
-#include "mainwindow.hh"
 #include "config.hh"
-#include <QWebEngineProfile>
-#include "hotkeywrapper.hh"
+#include "logfileptr.hh"
+#include "mainwindow.hh"
+#include "termination.hh"
 #include "version.hh"
-#ifdef HAVE_X11
-  #include <fixx11h.h>
-#endif
+#include <QByteArray>
+#include <QCommandLineParser>
+#include <QFile>
+#include <QIcon>
+#include <QMessageBox>
+#include <QMutex>
+#include <QSessionManager>
+#include <QString>
+#include <QStringBuilder>
+#include <QtWebEngineCore/QWebEngineUrlScheme>
+#include <stdio.h>
+#include <QStyleFactory>
 
 #if defined( Q_OS_UNIX )
   #include <clocale>
@@ -20,19 +27,6 @@
 #ifdef Q_OS_WIN32
   #include <windows.h>
 #endif
-
-#include "termination.hh"
-#include <QByteArray>
-#include <QCommandLineParser>
-#include <QFile>
-#include <QMessageBox>
-#include <QString>
-#include <QStringBuilder>
-#include <QtWebEngineCore/QWebEngineUrlScheme>
-
-#include "gddebug.hh"
-#include <QMutex>
-#include <QStyleFactory>
 
 #if defined( USE_BREAKPAD )
   #if defined( Q_OS_MAC )
@@ -368,7 +362,7 @@ int main( int argc, char ** argv )
 
 #ifdef Q_OS_WIN
   // TODO: Force fusion because Qt6.7's "ModernStyle"'s dark theme have problems, need to test / reconsider in future
-  QHotkeyApplication::setStyle( QStyleFactory::create( "Fusion" ) );
+  QHotkeyApplication::setStyle( QStyleFactory::create( "WindowsVista" ) );
 #endif
 
 
@@ -515,7 +509,7 @@ int main( int argc, char ** argv )
 
   if ( gdcl.notts ) {
     cfg.notts = true;
-#ifndef NO_TTS_SUPPORT
+#ifdef TTS_SUPPORT
     cfg.voiceEngines.clear();
 #endif
   }
@@ -591,7 +585,26 @@ int main( int argc, char ** argv )
 
   MainWindow m( cfg );
 
-  app.addDataCommiter( m );
+  /// Session manager things.
+  // Redirect commit data request to Mainwindow's handler.
+  QObject::connect(
+    &app,
+    &QGuiApplication::commitDataRequest,
+    &m,
+    [ &m ]( QSessionManager & ) {
+      m.commitData();
+    },
+    Qt::DirectConnection );
+
+  // Just don't restart. This probably isn't really needed.
+  QObject::connect(
+    &app,
+    &QGuiApplication::saveStateRequest,
+    &app,
+    []( QSessionManager & mgr ) {
+      mgr.setRestartHint( QSessionManager::RestartNever );
+    },
+    Qt::DirectConnection );
 
   QObject::connect( &app, &QtSingleApplication::messageReceived, &m, &MainWindow::messageFromAnotherInstanceReceived );
 
@@ -614,8 +627,6 @@ int main( int argc, char ** argv )
   QObject::connect( KSignalHandler::self(), &KSignalHandler::signalReceived, &m, &MainWindow::quitApp );
 #endif
   int r = app.exec();
-
-  app.removeDataCommiter( m );
 
   if ( logFilePtr->isOpen() ) {
     logFilePtr->close();

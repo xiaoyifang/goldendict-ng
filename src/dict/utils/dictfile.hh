@@ -43,7 +43,7 @@ public:
   QMutex lock;
 
   // Create QFile Object and open() it.
-  Index( std::string_view filename, char const * mode );
+  Index( std::string_view filename, QIODevice::OpenMode mode );
 
   /// QFile::read  & QFile::write , but with exception throwing
   void read( void * buf, qint64 size );
@@ -81,6 +81,18 @@ public:
   /// Like the above, but uses its own local internal buffer and strips newlines by default.
   std::string gets( bool stripNl = true );
 
+  /// Read 32bit as uint, then reading the subsequent data into a container
+  template< typename T >
+  void readU32SizeAndData( T & container )
+  {
+    uint32_t size = 0;
+    read( &size, sizeof( uint32_t ) );
+    if ( size > 0 ) {
+      container.resize( size );
+      read( container.data(), size );
+    }
+  };
+
   /// export QFile::readall
   QByteArray readall();
 
@@ -113,8 +125,6 @@ public:
   ~Index() noexcept;
 
 private:
-  // QFile::open but with fopen-like mode settings.
-  void open( char const * mode );
 
   template< typename T >
   void readType( T & value )

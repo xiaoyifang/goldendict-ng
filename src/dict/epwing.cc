@@ -1,26 +1,18 @@
 /* This file is (c) 2014 Abs62
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
-#ifndef NO_EPWING_SUPPORT
+#include <QDir>
+#ifdef EPWING_SUPPORT
 
   #include "epwing_book.hh"
   #include "epwing.hh"
-
   #include <QByteArray>
-  #include <QDir>
-  #include <QRunnable>
-  #include <QSemaphore>
-
   #include <map>
-  #include <QtConcurrent>
+  #include <QtConcurrentRun>
   #include <set>
   #include <string>
-
   #include "btreeidx.hh"
   #include "folding.hh"
-  #include "gddebug.hh"
-
   #include "chunkedstorage.hh"
-  #include "wstring_qt.hh"
   #include "filetype.hh"
   #include "ftshelpers.hh"
   #include "globalregex.hh"
@@ -37,7 +29,7 @@ using std::multimap;
 using std::vector;
 using std::set;
 using std::pair;
-using gd::wstring;
+using std::u32string;
 
 namespace {
 
@@ -66,7 +58,7 @@ static_assert( alignof( IdxHeader ) == 1 );
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Index idx( indexFile, "rb" );
+  File::Index idx( indexFile, QIODevice::ReadOnly );
 
   IdxHeader header;
 
@@ -82,7 +74,6 @@ class EpwingDictionary: public BtreeIndexing::BtreeDictionary
   QMutex idxMutex;
   File::Index idx;
   IdxHeader idxHeader;
-  string bookName;
   ChunkedStorage::Reader chunks;
   Epwing::Book::EpwingBook eBook;
   QString cacheDirectory;
@@ -95,21 +86,6 @@ public:
                     int subBook );
 
   ~EpwingDictionary();
-
-  string getName() noexcept override
-  {
-    return bookName;
-  }
-
-  void setName( string _name ) noexcept override
-  {
-    bookName = _name;
-  }
-
-  map< Dictionary::Property, string > getProperties() noexcept override
-  {
-    return map< Dictionary::Property, string >();
-  }
 
   unsigned long getArticleCount() noexcept override
   {
@@ -133,10 +109,10 @@ public:
 
   QString const & getDescription() override;
 
-  void getHeadwordPos( wstring const & word_, QList< int > & pg, QList< int > & off );
+  void getHeadwordPos( u32string const & word_, QList< int > & pg, QList< int > & off );
 
   sptr< Dictionary::DataRequest >
-  getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ignoreDiacritics ) override;
+  getArticle( u32string const &, vector< u32string > const & alts, u32string const &, bool ignoreDiacritics ) override;
 
   sptr< Dictionary::DataRequest > getResource( string const & name ) override;
 
@@ -158,16 +134,16 @@ public:
         && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
   }
 
-  static int japaneseWriting( gd::wchar ch );
+  static int japaneseWriting( char32_t ch );
 
-  static bool isSign( gd::wchar ch );
+  static bool isSign( char32_t ch );
 
-  static bool isJapanesePunctiation( gd::wchar ch );
+  static bool isJapanesePunctiation( char32_t ch );
 
-  sptr< Dictionary::WordSearchRequest > prefixMatch( wstring const &, unsigned long ) override;
+  sptr< Dictionary::WordSearchRequest > prefixMatch( u32string const &, unsigned long ) override;
 
   sptr< Dictionary::WordSearchRequest >
-  stemmedMatch( wstring const &, unsigned minLength, unsigned maxSuffixVariation, unsigned long maxResults ) override;
+  stemmedMatch( u32string const &, unsigned minLength, unsigned maxSuffixVariation, unsigned long maxResults ) override;
 
 protected:
 
@@ -180,7 +156,7 @@ private:
     quint32 address, string & articleHeadword, string & articleText, int & articlePage, int & articleOffset );
 
 
-  sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( wstring const & word ) override;
+  sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( u32string const & word ) override;
 
   void loadArticleNextPage( string & articleHeadword, string & articleText, int & articlePage, int & articleOffset );
   void
@@ -219,7 +195,7 @@ EpwingDictionary::EpwingDictionary( string const & id,
                                     vector< string > const & dictionaryFiles,
                                     int subBook ):
   BtreeDictionary( id, dictionaryFiles ),
-  idx( indexFile, "rb" ),
+  idx( indexFile, QIODevice::ReadOnly ),
   idxHeader( idx.read< IdxHeader >() ),
   chunks( idx, idxHeader.chunksOffset )
 {
@@ -227,7 +203,7 @@ EpwingDictionary::EpwingDictionary( string const & id,
   idx.seek( sizeof( idxHeader ) );
   if ( data.size() > 0 ) {
     idx.read( &data.front(), idxHeader.nameSize );
-    bookName = string( &data.front(), idxHeader.nameSize );
+    dictionaryName = string( &data.front(), idxHeader.nameSize );
   }
 
   // Initialize eBook
@@ -431,16 +407,14 @@ void EpwingDictionary::makeFTSIndex( QAtomicInt & isCancelled )
     return;
 
 
-  gdDebug( "Epwing: Building the full-text index for dictionary: %s\n", getName().c_str() );
+  qDebug( "Epwing: Building the full-text index for dictionary: %s", getName().c_str() );
 
   try {
     FtsHelpers::makeFTSIndex( this, isCancelled );
     FTS_index_completed.ref();
   }
   catch ( std::exception & ex ) {
-    gdWarning( "Epwing: Failed building full-text search index for \"%s\", reason: %s\n",
-               getName().c_str(),
-               ex.what() );
+    qWarning( "Epwing: Failed building full-text search index for \"%s\", reason: %s", getName().c_str(), ex.what() );
     QFile::remove( QString::fromStdString( ftsIdxName ) );
   }
 }
@@ -475,7 +449,7 @@ void EpwingDictionary::getArticleText( uint32_t articleAddress, QString & headwo
 
 class EpwingHeadwordsRequest: public Dictionary::WordSearchRequest
 {
-  wstring str;
+  u32string str;
   EpwingDictionary & dict;
 
   QAtomicInt isCancelled;
@@ -483,7 +457,7 @@ class EpwingHeadwordsRequest: public Dictionary::WordSearchRequest
 
 public:
 
-  EpwingHeadwordsRequest( wstring const & word_, EpwingDictionary & dict_ ):
+  EpwingHeadwordsRequest( u32string const & word_, EpwingDictionary & dict_ ):
     str( word_ ),
     dict( dict_ )
   {
@@ -559,7 +533,7 @@ void EpwingHeadwordsRequest::run()
 
   finish();
 }
-sptr< Dictionary::WordSearchRequest > EpwingDictionary::findHeadwordsForSynonym( wstring const & word )
+sptr< Dictionary::WordSearchRequest > EpwingDictionary::findHeadwordsForSynonym( u32string const & word )
 {
   return synonymSearchEnabled ? std::make_shared< EpwingHeadwordsRequest >( word, *this ) :
                                 Class::findHeadwordsForSynonym( word );
@@ -568,8 +542,8 @@ sptr< Dictionary::WordSearchRequest > EpwingDictionary::findHeadwordsForSynonym(
 
 class EpwingArticleRequest: public Dictionary::DataRequest
 {
-  wstring word;
-  vector< wstring > alts;
+  u32string word;
+  vector< u32string > alts;
   EpwingDictionary & dict;
   bool ignoreDiacritics;
 
@@ -578,8 +552,8 @@ class EpwingArticleRequest: public Dictionary::DataRequest
 
 public:
 
-  EpwingArticleRequest( wstring const & word_,
-                        vector< wstring > const & alts_,
+  EpwingArticleRequest( u32string const & word_,
+                        vector< u32string > const & alts_,
                         EpwingDictionary & dict_,
                         bool ignoreDiacritics_ ):
     word( word_ ),
@@ -594,10 +568,10 @@ public:
 
   void run();
 
-  void getBuiltInArticle( wstring const & word_,
+  void getBuiltInArticle( u32string const & word_,
                           QList< int > & pages,
                           QList< int > & offsets,
-                          multimap< wstring, pair< string, string > > & mainArticles );
+                          multimap< u32string, pair< string, string > > & mainArticles );
 
   void cancel() override
   {
@@ -627,13 +601,13 @@ void EpwingArticleRequest::run()
     chain.insert( chain.end(), altChain.begin(), altChain.end() );
   }
 
-  multimap< wstring, pair< string, string > > mainArticles, alternateArticles;
+  multimap< u32string, pair< string, string > > mainArticles, alternateArticles;
 
   set< quint32 > articlesIncluded; // Some synonims make it that the articles
                                    // appear several times. We combat this
                                    // by only allowing them to appear once.
 
-  wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
+  u32string wordCaseFolded = Folding::applySimpleCaseOnly( word );
   if ( ignoreDiacritics )
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
 
@@ -667,11 +641,11 @@ void EpwingArticleRequest::run()
 
     // We do the case-folded comparison here.
 
-    wstring headwordStripped = Folding::applySimpleCaseOnly( headword );
+    u32string headwordStripped = Folding::applySimpleCaseOnly( headword );
     if ( ignoreDiacritics )
       headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
 
-    multimap< wstring, pair< string, string > > & mapToUse =
+    multimap< u32string, pair< string, string > > & mapToUse =
       ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
 
     mapToUse.insert( pair( Folding::applySimpleCaseOnly( headword ), pair( headword, articleText ) ) );
@@ -696,7 +670,7 @@ void EpwingArticleRequest::run()
 
   string result = "<div class=\"epwing_article\">";
 
-  multimap< wstring, pair< string, string > >::const_iterator i;
+  multimap< u32string, pair< string, string > >::const_iterator i;
 
   for ( i = mainArticles.begin(); i != mainArticles.end(); ++i ) {
     result += "<h3>";
@@ -745,10 +719,10 @@ void EpwingArticleRequest::run()
   finish();
 }
 
-void EpwingArticleRequest::getBuiltInArticle( wstring const & word_,
+void EpwingArticleRequest::getBuiltInArticle( u32string const & word_,
                                               QList< int > & pages,
                                               QList< int > & offsets,
-                                              multimap< wstring, pair< string, string > > & mainArticles )
+                                              multimap< u32string, pair< string, string > > & mainArticles )
 {
   try {
     string headword, articleText;
@@ -782,7 +756,7 @@ void EpwingArticleRequest::getBuiltInArticle( wstring const & word_,
   }
 }
 
-void EpwingDictionary::getHeadwordPos( wstring const & word_, QList< int > & pg, QList< int > & off )
+void EpwingDictionary::getHeadwordPos( u32string const & word_, QList< int > & pg, QList< int > & off )
 {
   try {
     QMutexLocker _( &eBook.getLibMutex() );
@@ -793,9 +767,9 @@ void EpwingDictionary::getHeadwordPos( wstring const & word_, QList< int > & pg,
   }
 }
 
-sptr< Dictionary::DataRequest > EpwingDictionary::getArticle( wstring const & word,
-                                                              vector< wstring > const & alts,
-                                                              wstring const &,
+sptr< Dictionary::DataRequest > EpwingDictionary::getArticle( u32string const & word,
+                                                              vector< u32string > const & alts,
+                                                              u32string const &,
                                                               bool ignoreDiacritics )
 
 {
@@ -879,10 +853,10 @@ void EpwingResourceRequest::run()
     }
   }
   catch ( std::exception & ex ) {
-    gdWarning( "Epwing: Failed loading resource \"%s\" for \"%s\", reason: %s\n",
-               resourceName.c_str(),
-               dict.getName().c_str(),
-               ex.what() );
+    qWarning( "Epwing: Failed loading resource \"%s\" for \"%s\", reason: %s",
+              resourceName.c_str(),
+              dict.getName().c_str(),
+              ex.what() );
     // Resource not loaded -- we don't set the hasAnyData flag then
   }
 
@@ -908,7 +882,7 @@ sptr< Dictionary::DataRequest > EpwingDictionary::getSearchResults( QString cons
                                                             ignoreDiacritics );
 }
 
-int EpwingDictionary::japaneseWriting( gd::wchar ch )
+int EpwingDictionary::japaneseWriting( char32_t ch )
 {
   if ( ( ch >= 0x30A0 && ch <= 0x30FF ) || ( ch >= 0x31F0 && ch <= 0x31FF ) || ( ch >= 0x3200 && ch <= 0x32FF )
        || ( ch >= 0xFF00 && ch <= 0xFFEF ) || ( ch == 0x1B000 ) )
@@ -921,7 +895,7 @@ int EpwingDictionary::japaneseWriting( gd::wchar ch )
   return 0;
 }
 
-bool EpwingDictionary::isSign( gd::wchar ch )
+bool EpwingDictionary::isSign( char32_t ch )
 {
   switch ( ch ) {
     case 0x002B: // PLUS SIGN
@@ -941,7 +915,7 @@ bool EpwingDictionary::isSign( gd::wchar ch )
   }
 }
 
-bool EpwingDictionary::isJapanesePunctiation( gd::wchar ch )
+bool EpwingDictionary::isJapanesePunctiation( char32_t ch )
 {
   return ch >= 0x3000 && ch <= 0x303F;
 }
@@ -955,7 +929,7 @@ class EpwingWordSearchRequest: public BtreeIndexing::BtreeWordSearchRequest
 public:
 
   EpwingWordSearchRequest( EpwingDictionary & dict_,
-                           wstring const & str_,
+                           u32string const & str_,
                            unsigned minLength_,
                            int maxSuffixVariation_,
                            bool allowMiddleMatches_,
@@ -1002,13 +976,13 @@ void EpwingWordSearchRequest::findMatches()
   finish();
 }
 
-sptr< Dictionary::WordSearchRequest > EpwingDictionary::prefixMatch( wstring const & str, unsigned long maxResults )
+sptr< Dictionary::WordSearchRequest > EpwingDictionary::prefixMatch( u32string const & str, unsigned long maxResults )
 
 {
   return std::make_shared< EpwingWordSearchRequest >( *this, str, 0, -1, true, maxResults );
 }
 
-sptr< Dictionary::WordSearchRequest > EpwingDictionary::stemmedMatch( wstring const & str,
+sptr< Dictionary::WordSearchRequest > EpwingDictionary::stemmedMatch( u32string const & str,
                                                                       unsigned minLength,
                                                                       unsigned maxSuffixVariation,
                                                                       unsigned long maxResults )
@@ -1047,20 +1021,20 @@ void addWordToChunks( Epwing::Book::EpwingHeadword & head,
     chunks.addToBlock( &head.page, sizeof( head.page ) );
     chunks.addToBlock( &head.offset, sizeof( head.offset ) );
 
-    wstring hw = head.headword.toStdU32String();
+    u32string hw = head.headword.toStdU32String();
 
     indexedWords.addWord( hw, offset );
     wordCount++;
     articleCount++;
 
-    vector< wstring > words;
+    vector< u32string > words;
 
     // Parse combined kanji/katakana/hiragana headwords
 
     int w_prev = 0;
-    wstring word;
-    for ( wstring::size_type n = 0; n < hw.size(); n++ ) {
-      gd::wchar ch = hw[ n ];
+    u32string word;
+    for ( u32string::size_type n = 0; n < hw.size(); n++ ) {
+      char32_t ch = hw[ n ];
 
       if ( Folding::isPunct( ch ) || Folding::isWhitespace( ch ) || EpwingDictionary::isSign( ch )
            || EpwingDictionary::isJapanesePunctiation( ch ) )
@@ -1070,7 +1044,7 @@ void addWordToChunks( Epwing::Book::EpwingHeadword & head,
 
       if ( w > 0 ) {
         // Store only separated words
-        gd::wchar ch_prev = 0;
+        char32_t ch_prev = 0;
         if ( n )
           ch_prev = hw[ n - 1 ];
         bool needStore = ( n == 0 || Folding::isPunct( ch_prev ) || Folding::isWhitespace( ch_prev )
@@ -1078,7 +1052,7 @@ void addWordToChunks( Epwing::Book::EpwingHeadword & head,
 
         word.push_back( ch );
         w_prev = w;
-        wstring::size_type i;
+        u32string::size_type i;
         for ( i = n + 1; i < hw.size(); i++ ) {
           ch = hw[ i ];
           if ( Folding::isPunct( ch ) || Folding::isWhitespace( ch ) || EpwingDictionary::isJapanesePunctiation( ch ) )
@@ -1156,7 +1130,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       subBooksNumber = dict.setBook( mainDirectory );
     }
     catch ( std::exception & e ) {
-      gdWarning( "Epwing dictionary initializing failed: %s, error: %s\n", mainDirectory.c_str(), e.what() );
+      qWarning( "Epwing dictionary initializing failed: %s, error: %s", mainDirectory.c_str(), e.what() );
       continue;
     }
 
@@ -1191,13 +1165,13 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         string indexFile = indicesDir + dictId;
 
         if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
-          gdDebug( "Epwing: Building the index for dictionary in directory %s\n", dir.toUtf8().data() );
+          qDebug( "Epwing: Building the index for dictionary in directory %s", dir.toUtf8().data() );
 
           QString str         = dict.title();
           QByteArray nameData = str.toUtf8();
           initializing.indexingDictionary( nameData.data() );
 
-          File::Index idx( indexFile, "wb" );
+          File::Index idx( indexFile, QIODevice::WriteOnly );
 
           IdxHeader idxHeader{};
 
@@ -1271,7 +1245,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         dictionaries.push_back( std::make_shared< EpwingDictionary >( dictId, indexFile, dictFiles, sb ) );
       }
       catch ( std::exception & e ) {
-        gdWarning( "Epwing dictionary initializing failed: %s, error: %s\n", dir.toUtf8().data(), e.what() );
+        qWarning( "Epwing dictionary initializing failed: %s, error: %s", dir.toUtf8().data(), e.what() );
         continue;
       }
     }

@@ -206,8 +206,6 @@ void HotkeyWrapper::unregister()
             UnregisterEventHotKey(hk.hkRef2);
         }
     }
-
-    (static_cast<QHotkeyApplication*>(qApp))->unregisterWrapper(this);
 }
 
 bool HotkeyWrapper::setGlobalKey(QKeySequence const& seq, int handle)

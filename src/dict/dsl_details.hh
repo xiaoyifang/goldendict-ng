@@ -11,23 +11,21 @@
 #include "iconv.hh"
 #include <QtCore5Compat/QTextCodec>
 #include <QByteArray>
-#include "utf8.hh"
+#include "text.hh"
 
 // Implementation details for Dsl, not part of its interface
 namespace Dsl {
 namespace Details {
 
 using std::string;
-using gd::wstring;
-using gd::wchar;
 using std::list;
 using std::vector;
-using Utf8::Encoding;
-using Utf8::LineFeed;
+using Text::Encoding;
+using Text::LineFeed;
 
 string findCodeForDslId( int id );
 
-bool isAtSignFirst( wstring const & str );
+bool isAtSignFirst( std::u32string const & str );
 
 /// Parses the DSL language, representing it in its structural DOM form.
 struct ArticleDom
@@ -37,23 +35,23 @@ struct ArticleDom
     bool isTag; // true if it is a tag with subnodes, false if it's a leaf text
                 // data.
     // Those are only used if isTag is true
-    wstring tagName;
-    wstring tagAttrs;
-    wstring text; // This is only used if isTag is false
+    std::u32string tagName;
+    std::u32string tagAttrs;
+    std::u32string text; // This is only used if isTag is false
 
     class Text
     {};
     class Tag
     {};
 
-    Node( Tag, wstring const & name, wstring const & attrs ):
+    Node( Tag, std::u32string const & name, std::u32string const & attrs ):
       isTag( true ),
       tagName( name ),
       tagAttrs( attrs )
     {
     }
 
-    Node( Text, wstring const & text_ ):
+    Node( Text, std::u32string const & text_ ):
       isTag( false ),
       text( text_ )
     {
@@ -61,30 +59,32 @@ struct ArticleDom
 
     /// Concatenates all childen text nodes recursively to form all text
     /// the node contains stripped of any markup.
-    wstring renderAsText( bool stripTrsTag = false ) const;
+    std::u32string renderAsText( bool stripTrsTag = false ) const;
   };
 
   /// Does the parse at construction. Refer to the 'root' member variable
   /// afterwards.
-  explicit ArticleDom( wstring const &, string const & dictName = string(), wstring const & headword_ = wstring() );
+  explicit ArticleDom( std::u32string const &,
+                       string const & dictName          = string(),
+                       std::u32string const & headword_ = std::u32string() );
 
   /// Root of DOM's tree
   Node root;
 
 private:
 
-  void openTag( wstring const & name, wstring const & attr, list< Node * > & stack );
+  void openTag( std::u32string const & name, std::u32string const & attr, list< Node * > & stack );
 
-  void closeTag( wstring const & name, list< Node * > & stack, bool warn = true );
+  void closeTag( std::u32string const & name, list< Node * > & stack, bool warn = true );
 
   bool atSignFirstInLine();
 
-  wchar const *stringPos, *lineStartPos;
+  char32_t const *stringPos, *lineStartPos;
 
   class eot: std::exception
   {};
 
-  wchar ch;
+  char32_t ch;
   bool escaped;
   unsigned transcriptionCount; // >0 = inside a [t] tag
   unsigned mediaCount;         // >0 = inside a [s] tag
@@ -93,7 +93,7 @@ private:
 
   /// Information for diagnostic purposes
   string dictionaryName;
-  wstring headword;
+  std::u32string headword;
 };
 
 /// Opens the .dsl or .dsl.dz file and allows line-by-line reading. Auto-detects
@@ -103,9 +103,9 @@ class DslScanner
   gzFile f;
   Encoding encoding;
   QTextCodec * codec;
-  wstring dictionaryName;
-  wstring langFrom, langTo;
-  wstring soundDictionary;
+  std::u32string dictionaryName;
+  std::u32string langFrom, langTo;
+  std::u32string soundDictionary;
   char readBuffer[ 65536 ];
   char * readBufferPtr;
   LineFeed lineFeed;
@@ -132,25 +132,25 @@ public:
   }
 
   /// Returns the dictionary's name, as was read from file's headers.
-  wstring const & getDictionaryName() const
+  std::u32string const & getDictionaryName() const
   {
     return dictionaryName;
   }
 
   /// Returns the dictionary's source language, as was read from file's headers.
-  wstring const & getLangFrom() const
+  std::u32string const & getLangFrom() const
   {
     return langFrom;
   }
 
   /// Returns the dictionary's target language, as was read from file's headers.
-  wstring const & getLangTo() const
+  std::u32string const & getLangTo() const
   {
     return langTo;
   }
 
   /// Returns the preferred external dictionary with sounds, as was read from file's headers.
-  wstring const & getSoundDictionaryName() const
+  std::u32string const & getSoundDictionaryName() const
   {
     return soundDictionary;
   }
@@ -161,10 +161,10 @@ public:
   /// If end of file is reached, false is returned.
   /// Reading begins from the first line after the headers (ones which start
   /// with #).
-  bool readNextLine( wstring &, size_t & offset, bool only_head_word = false );
+  bool readNextLine( std::u32string &, size_t & offset, bool only_head_word = false );
 
   /// Similar readNextLine but strip all DSL comments {{...}}
-  bool readNextLineWithoutComments( wstring &, size_t & offset, bool only_headword = false );
+  bool readNextLineWithoutComments( std::u32string &, size_t & offset, bool only_headword = false );
 
   /// Returns the number of lines read so far from the file.
   unsigned getLinesRead() const
@@ -180,32 +180,35 @@ public:
 
 /// This function either removes parts of string enclosed in braces, or leaves
 /// them intact. The braces themselves are removed always, though.
-void processUnsortedParts( wstring & str, bool strip );
+void processUnsortedParts( std::u32string & str, bool strip );
 
 /// Expands optional parts of a headword (ones marked with parentheses),
 /// producing all possible combinations where they are present or absent.
-void expandOptionalParts( wstring & str, list< wstring > * result, size_t x = 0, bool inside_recurse = false );
+void expandOptionalParts( std::u32string & str,
+                          list< std::u32string > * result,
+                          size_t x            = 0,
+                          bool inside_recurse = false );
 
 /// Expands all unescaped tildes, inserting tildeReplacement text instead of
 /// them.
-void expandTildes( wstring & str, wstring const & tildeReplacement );
+void expandTildes( std::u32string & str, std::u32string const & tildeReplacement );
 
 /// Unescapes any escaped chars. Be sure to handle all their special meanings
 /// before unescaping them.
-void unescapeDsl( wstring & str );
+void unescapeDsl( std::u32string & str );
 
 /// Normalizes the headword. Currently turns any sequences of consecutive spaces
 /// into a single space.
-void normalizeHeadword( wstring & );
+void normalizeHeadword( std::u32string & );
 
 /// Strip DSL {{...}} comments
-void stripComments( wstring &, bool & );
+void stripComments( std::u32string &, bool & );
 
 inline size_t DslScanner::distanceToBytes( size_t x ) const
 {
   switch ( encoding ) {
-    case Utf8::Utf16LE:
-    case Utf8::Utf16BE:
+    case Encoding::Utf16LE:
+    case Encoding::Utf16BE:
       return x * 2;
     default:
       return x;
@@ -214,7 +217,7 @@ inline size_t DslScanner::distanceToBytes( size_t x ) const
 
 /// Converts the given language name taken from Dsl header (i.e. getLangFrom(),
 /// getLangTo()) to its proper language id.
-quint32 dslLanguageToId( wstring const & name );
+quint32 dslLanguageToId( std::u32string const & name );
 
 } // namespace Details
 } // namespace Dsl

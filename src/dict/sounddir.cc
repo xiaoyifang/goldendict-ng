@@ -3,13 +3,12 @@
 
 #include "sounddir.hh"
 #include "folding.hh"
-#include "utf8.hh"
+#include "text.hh"
 #include "btreeidx.hh"
 #include "chunkedstorage.hh"
 #include "filetype.hh"
 #include "htmlescape.hh"
 #include "audiolink.hh"
-#include "wstring_qt.hh"
 
 #include "utils.hh"
 
@@ -21,7 +20,6 @@
 namespace SoundDir {
 
 using std::string;
-using gd::wstring;
 using std::map;
 using std::multimap;
 using std::set;
@@ -51,7 +49,7 @@ static_assert( alignof( IdxHeader ) == 1 );
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Index idx( indexFile, "rb" );
+  File::Index idx( indexFile, QIODevice::ReadOnly );
 
   IdxHeader header;
 
@@ -61,7 +59,6 @@ bool indexIsOldOrBad( string const & indexFile )
 
 class SoundDirDictionary: public BtreeIndexing::BtreeDictionary
 {
-  string name;
   QMutex idxMutex;
   File::Index idx;
   IdxHeader idxHeader;
@@ -76,16 +73,6 @@ public:
                       vector< string > const & dictionaryFiles,
                       QString const & iconFilename_ );
 
-  string getName() noexcept override
-  {
-    return name;
-  }
-
-  map< Dictionary::Property, string > getProperties() noexcept override
-  {
-    return map< Dictionary::Property, string >();
-  }
-
   unsigned long getArticleCount() noexcept override
   {
     return idxHeader.soundsCount;
@@ -96,8 +83,10 @@ public:
     return getArticleCount();
   }
 
-  sptr< Dictionary::DataRequest >
-  getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ignoreDiacritics ) override;
+  sptr< Dictionary::DataRequest > getArticle( std::u32string const &,
+                                              vector< std::u32string > const & alts,
+                                              std::u32string const &,
+                                              bool ignoreDiacritics ) override;
 
   sptr< Dictionary::DataRequest > getResource( string const & name ) override;
 
@@ -113,20 +102,21 @@ SoundDirDictionary::SoundDirDictionary( string const & id,
                                         vector< string > const & dictionaryFiles,
                                         QString const & iconFilename_ ):
   BtreeDictionary( id, dictionaryFiles ),
-  name( name_ ),
-  idx( indexFile, "rb" ),
+  idx( indexFile, QIODevice::ReadOnly ),
   idxHeader( idx.read< IdxHeader >() ),
   chunks( idx, idxHeader.chunksOffset ),
   iconFilename( iconFilename_ )
 {
+  dictionaryName = name_;
+
   // Initialize the index
 
   openIndex( IndexInfo( idxHeader.indexBtreeMaxElements, idxHeader.indexRootOffset ), idx, idxMutex );
 }
 
-sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( wstring const & word,
-                                                                vector< wstring > const & alts,
-                                                                wstring const &,
+sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( std::u32string const & word,
+                                                                vector< std::u32string > const & alts,
+                                                                std::u32string const &,
                                                                 bool ignoreDiacritics )
 {
   vector< WordArticleLink > chain = findArticles( word, ignoreDiacritics );
@@ -140,13 +130,13 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( wstring const & 
   }
 
   // maps to the chain number
-  multimap< wstring, unsigned > mainArticles, alternateArticles;
+  multimap< std::u32string, unsigned > mainArticles, alternateArticles;
 
   set< uint32_t > articlesIncluded; // Some synonims make it that the articles
                                     // appear several times. We combat this
                                     // by only allowing them to appear once.
 
-  wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
+  std::u32string wordCaseFolded = Folding::applySimpleCaseOnly( word );
   if ( ignoreDiacritics ) {
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
   }
@@ -161,12 +151,12 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( wstring const & 
 
     // We do the case-folded comparison here.
 
-    wstring headwordStripped = Folding::applySimpleCaseOnly( chain[ x ].word );
+    std::u32string headwordStripped = Folding::applySimpleCaseOnly( chain[ x ].word );
     if ( ignoreDiacritics ) {
       headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
     }
 
-    multimap< wstring, unsigned > & mapToUse =
+    multimap< std::u32string, unsigned > & mapToUse =
       ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
 
     mapToUse.insert( std::pair( Folding::applySimpleCaseOnly( chain[ x ].word ), x ) );
@@ -180,7 +170,7 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( wstring const & 
 
   string result;
 
-  multimap< wstring, uint32_t >::const_iterator i;
+  multimap< std::u32string, uint32_t >::const_iterator i;
 
   string displayedName;
   vector< char > chunk;
@@ -370,7 +360,7 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( string const & 
   // Now try loading that file
 
   try {
-    File::Index f( fileName.toStdString(), "rb" );
+    File::Index f( fileName.toStdString(), QIODevice::ReadOnly );
 
     sptr< Dictionary::DataRequestInstant > dr = std::make_shared< Dictionary::DataRequestInstant >( true );
 
@@ -409,11 +399,11 @@ void addDir( QDir const & baseDir,
       const uint32_t articleOffset = chunks.startNewBlock();
       chunks.addToBlock( fileName.c_str(), fileName.size() + 1 );
 
-      wstring name = i->fileName().toStdU32String();
+      std::u32string name = i->fileName().toStdU32String();
 
-      const wstring::size_type pos = name.rfind( L'.' );
+      const std::u32string::size_type pos = name.rfind( L'.' );
 
-      if ( pos != wstring::npos ) {
+      if ( pos != std::u32string::npos ) {
         name.erase( pos );
       }
 
@@ -479,7 +469,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::SoundDirs const & 
 
       initializing.indexingDictionary( soundDir.name.toUtf8().data() );
 
-      File::Index idx( indexFile, "wb" );
+      File::Index idx( indexFile, QIODevice::WriteOnly );
 
       IdxHeader idxHeader;
 
