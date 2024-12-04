@@ -877,8 +877,7 @@ QString & MdxDictionary::filterResource( QString & article )
 void MdxDictionary::replaceLinks( QString & id, QString & article )
 {
   QString articleNewText;
-  qsizetype linkPos = 0;
-
+  int linkPos                        = 0;
   QRegularExpressionMatchIterator it = RX::Mdx::allLinksRe.globalMatch( article );
   while ( it.hasNext() ) {
     QRegularExpressionMatch allLinksMatch = it.next();
@@ -954,14 +953,13 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
         articleNewText += linkTxt;
         match = RX::Mdx::closeScriptTagRe.match( article, linkPos );
         if ( match.hasMatch() ) {
-          articleNewText += QString( QStringLiteral( "gdOnReady(()=>{%1});</script>" ) )
-                              .arg( article.mid( linkPos, match.capturedStart() - linkPos ) );
+          articleNewText += article.mid( linkPos, match.capturedEnd() - linkPos );
           linkPos = match.capturedEnd();
         }
         continue;
       }
       else {
-        //audio ,script,video ,html5 tags fall here.
+        //audio ,video ,html5 tags fall here.
         match = RX::Mdx::srcRe.match( linkTxt );
         if ( match.hasMatch() ) {
           QString newText;
@@ -973,14 +971,8 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
           else {
             scheme = "bres://";
           }
-
           newText =
             match.captured( 1 ) + match.captured( 2 ) + scheme + id + "/" + match.captured( 3 ) + match.captured( 2 );
-
-          //add defer to script tag
-          if ( linkType.compare( "script" ) == 0 ) {
-            newText = newText + " defer ";
-          }
 
           newLink = linkTxt.replace( match.capturedStart(), match.capturedLength(), newText );
         }
