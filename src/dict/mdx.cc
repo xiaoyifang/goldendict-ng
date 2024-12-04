@@ -877,8 +877,7 @@ QString & MdxDictionary::filterResource( QString & article )
 void MdxDictionary::replaceLinks( QString & id, QString & article )
 {
   QString articleNewText;
-  qsizetype linkPos = 0;
-
+  int linkPos                        = 0;
   QRegularExpressionMatchIterator it = RX::Mdx::allLinksRe.globalMatch( article );
   while ( it.hasNext() ) {
     QRegularExpressionMatch allLinksMatch = it.next();
@@ -954,8 +953,7 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
         articleNewText += linkTxt;
         match = RX::Mdx::closeScriptTagRe.match( article, linkPos );
         if ( match.hasMatch() ) {
-          articleNewText += QString( QStringLiteral( "gdOnReady(()=>{%1});</script>" ) )
-                              .arg( article.mid( linkPos, match.capturedStart() - linkPos ) );
+          articleNewText += article.mid( linkPos, match.capturedEnd() - linkPos );
           linkPos = match.capturedEnd();
         }
         continue;
