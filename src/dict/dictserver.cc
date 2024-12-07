@@ -604,12 +604,12 @@ public:
       QStringList resultStr;
 
       // proccess the line
-      QRegularExpression re( "^\\d{3} " );
+      static QRegularExpression leadingRespCode( "^\\d{3} " );
       uint32_t leadingSpaceCount = 0;
       uint32_t firstLeadingSpaceCount = 0;
       for ( const QString & line : lines ) {
         //ignore 15X lines
-        if ( re.match( line ).hasMatch() ) {
+        if ( leadingRespCode.match( line ).hasMatch() ) {
           continue;
         }
         // ignore . endline
