@@ -599,35 +599,34 @@ public:
       }
 
       //modify the articleText,remove extra lines[start with 15X etc.]
-      QList<QString> lines = articleText.split("\n", Qt::SkipEmptyParts);
+      QList< QString > lines = articleText.split( "\n", Qt::SkipEmptyParts );
 
       QStringList resultStr;
 
       // proccess the line
-      QRegularExpression re("^\\d{3} ");
+      QRegularExpression re( "^\\d{3} " );
       uint32_t leadingSpaceCount = 0;
       for ( const QString & line : lines ) {
         //ignore 15X lines
-          if (re.match(line).hasMatch()) {
-              continue;
-          }
-          // ignore . endline
-          if(line.trimmed()=="."){
-            break;
-          }
+        if ( re.match( line ).hasMatch() ) {
+          continue;
+        }
+        // ignore . endline
+        if ( line.trimmed() == "." ) {
+          break;
+        }
 
-          auto lsc = Utils::leadingSpaceCount( line );
+        auto lsc = Utils::leadingSpaceCount( line );
 
 
-          if ( lsc >= leadingSpaceCount && lsc > 4 ) {
-            resultStr.append( line.trimmed() );
-          }
-          else{
-            resultStr.append( "\n" );
-            resultStr.append( line );
-          }
-          leadingSpaceCount = lsc;
-
+        if ( lsc >= leadingSpaceCount && lsc > 4 ) {
+          resultStr.append( line.trimmed() );
+        }
+        else {
+          resultStr.append( "\n" );
+          resultStr.append( line );
+        }
+        leadingSpaceCount = lsc;
       }
 
       static QRegularExpression phonetic( R"(\\([^\\]+)\\)",
