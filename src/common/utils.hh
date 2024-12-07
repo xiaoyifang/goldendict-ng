@@ -39,6 +39,19 @@ inline QString rstrip( const QString & str )
   return {};
 }
 
+inline uint32_t leadingSpaceCount( const QString & str )
+{
+  for ( int i = 0; i < str.size(); i++ ) {
+    if ( str.at( i ).isSpace() ) {
+      continue;
+    }
+    else{
+      return i;
+    }
+  }
+  return 0;
+}
+
 std::string c_string( const QString & str );
 bool endsWithIgnoreCase( QByteArrayView str, QByteArrayView extension );
 /**

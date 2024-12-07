@@ -598,6 +598,38 @@ public:
         return;
       }
 
+      //modify the articleText,remove extra lines[start with 15X etc.]
+      QList<QString> lines = articleText.split("\n", Qt::SkipEmptyParts);
+
+      QStringList resultStr;
+
+      // proccess the line
+      QRegularExpression re("^\\d{3} ");
+      uint32_t leadingSpaceCount = 0;
+      for ( const QString & line : lines ) {
+        //ignore 15X lines
+          if (re.match(line).hasMatch()) {
+              continue;
+          }
+          // ignore . endline
+          if(line.trimmed()=="."){
+            break;
+          }
+
+          auto lsc = Utils::leadingSpaceCount( line );
+
+
+          if ( lsc >= leadingSpaceCount && lsc > 4 ) {
+            resultStr.append( line.trimmed() );
+          }
+          else{
+            resultStr.append( "\n" );
+            resultStr.append( line );
+          }
+          leadingSpaceCount = lsc;
+
+      }
+
       static QRegularExpression phonetic( R"(\\([^\\]+)\\)",
                                           QRegularExpression::CaseInsensitiveOption ); // phonetics: \stuff\ ...
       static QRegularExpression divs_inside_phonetic( "</div([^>]*)><div([^>]*)>",
@@ -610,10 +642,10 @@ public:
 
       string articleStr;
       if ( contentInHtml ) {
-        articleStr = articleText.toUtf8().data();
+        articleStr = resultStr.toUtf8().data();
       }
       else {
-        articleStr = Html::preformat( articleText.toUtf8().data() );
+        articleStr = Html::preformat( resultStr.toUtf8().data() );
       }
 
       articleText = QString::fromUtf8( articleStr.c_str(), articleStr.size() );
