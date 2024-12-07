@@ -45,7 +45,7 @@ inline uint32_t leadingSpaceCount( const QString & str )
     if ( str.at( i ).isSpace() ) {
       continue;
     }
-    else{
+    else {
       return i;
     }
   }
