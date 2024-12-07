@@ -606,6 +606,7 @@ public:
       // proccess the line
       QRegularExpression re( "^\\d{3} " );
       uint32_t leadingSpaceCount = 0;
+      uint32_t firstLeadingSpaceCount = 0;
       for ( const QString & line : lines ) {
         //ignore 15X lines
         if ( re.match( line ).hasMatch() ) {
@@ -618,8 +619,11 @@ public:
 
         auto lsc = Utils::leadingSpaceCount( line );
 
+        if ( firstLeadingSpaceCount == 0 && lsc > firstLeadingSpaceCount ) {
+          firstLeadingSpaceCount = lsc;
+        }
 
-        if ( lsc >= leadingSpaceCount && lsc > 4 ) {
+        if ( lsc >= leadingSpaceCount && lsc > firstLeadingSpaceCount ) {
           resultStr.append( line.trimmed() );
         }
         else {
