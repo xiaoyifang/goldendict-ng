@@ -605,7 +605,7 @@ public:
 
       // proccess the line
       static QRegularExpression leadingRespCode( "^\\d{3} " );
-      uint32_t leadingSpaceCount = 0;
+      uint32_t leadingSpaceCount      = 0;
       uint32_t firstLeadingSpaceCount = 0;
       for ( const QString & line : lines ) {
         //ignore 15X lines
