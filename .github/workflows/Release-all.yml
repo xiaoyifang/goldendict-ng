@@ -31,7 +31,7 @@ jobs:
           brew update
       - name: Install dependencies
         run: |
-          brew install \
+          brew install --force \
             bzip2  \
             create-dmg \
             hunspell \
