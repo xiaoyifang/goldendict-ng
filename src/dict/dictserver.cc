@@ -592,10 +592,47 @@ public:
       cancel();
     } );
 
-    connect( this, &DictServerArticleRequest::finishedArticle, this, [ this ]( QString articleText ) {
+    connect( this, &DictServerArticleRequest::finishedArticle, this, [ this ]( QString _articleText ) {
       if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
         cancel();
         return;
+      }
+
+      //modify the _articleText,remove extra lines[start with 15X etc.]
+      QList< QString > lines = _articleText.split( "\n", Qt::SkipEmptyParts );
+
+      QString resultStr;
+
+      // process the line
+      static QRegularExpression leadingRespCode( "^\\d{3} " );
+      uint32_t leadingSpaceCount      = 0;
+      uint32_t firstLeadingSpaceCount = 0;
+      for ( const QString & line : lines ) {
+        //ignore 15X lines
+        if ( leadingRespCode.match( line ).hasMatch() ) {
+          continue;
+        }
+        // ignore dot(.),the end line character
+        if ( line.trimmed() == "." ) {
+          break;
+        }
+
+        auto lsc = Utils::leadingSpaceCount( line );
+
+        if ( firstLeadingSpaceCount == 0 && lsc > firstLeadingSpaceCount ) {
+          firstLeadingSpaceCount = lsc;
+        }
+
+        if ( lsc >= leadingSpaceCount && lsc > firstLeadingSpaceCount ) {
+          //extra space
+          resultStr.append( " " );
+          resultStr.append( line.trimmed() );
+        }
+        else {
+          resultStr.append( "\n" );
+          resultStr.append( line );
+        }
+        leadingSpaceCount = lsc;
       }
 
       static QRegularExpression phonetic( R"(\\([^\\]+)\\)",
@@ -610,26 +647,26 @@ public:
 
       string articleStr;
       if ( contentInHtml ) {
-        articleStr = articleText.toUtf8().data();
+        articleStr = resultStr.toUtf8().data();
       }
       else {
-        articleStr = Html::preformat( articleText.toUtf8().data() );
+        articleStr = Html::preformat( resultStr.toUtf8().data() );
       }
 
-      articleText = QString::fromUtf8( articleStr.c_str(), articleStr.size() );
+      _articleText = QString::fromUtf8( articleStr.c_str(), articleStr.size() );
       int pos;
       if ( !contentInHtml ) {
-        articleText = articleText.replace( refs, R"(<a href="gdlookup://localhost/\1">\1</a>)" );
+        _articleText = _articleText.replace( refs, R"(<a href="gdlookup://localhost/\1">\1</a>)" );
 
         pos = 0;
         QString articleNewText;
 
         // Handle phonetics
 
-        QRegularExpressionMatchIterator it = phonetic.globalMatch( articleText );
+        QRegularExpressionMatchIterator it = phonetic.globalMatch( _articleText );
         while ( it.hasNext() ) {
           QRegularExpressionMatch match = it.next();
-          articleNewText += articleText.mid( pos, match.capturedStart() - pos );
+          articleNewText += _articleText.mid( pos, match.capturedStart() - pos );
           pos = match.capturedEnd();
 
           QString phonetic_text = match.captured( 1 );
@@ -638,18 +675,18 @@ public:
           articleNewText += R"(<span class="dictd_phonetic">)" + phonetic_text + "</span>";
         }
         if ( pos ) {
-          articleNewText += articleText.mid( pos );
-          articleText = articleNewText;
+          articleNewText += _articleText.mid( pos );
+          _articleText = articleNewText;
           articleNewText.clear();
         }
 
         // Handle links
 
         pos = 0;
-        it  = links.globalMatch( articleText );
+        it  = links.globalMatch( _articleText );
         while ( it.hasNext() ) {
           QRegularExpressionMatch match = it.next();
-          articleNewText += articleText.mid( pos, match.capturedStart() - pos );
+          articleNewText += _articleText.mid( pos, match.capturedStart() - pos );
           pos = match.capturedEnd();
 
           QString link = match.captured( 1 );
@@ -663,13 +700,13 @@ public:
           articleNewText += newLink;
         }
         if ( pos ) {
-          articleNewText += articleText.mid( pos );
-          articleText = articleNewText;
+          articleNewText += _articleText.mid( pos );
+          _articleText = articleNewText;
           articleNewText.clear();
         }
       }
 
-      articleData += string( "<div class=\"dictd_article\">" ) + articleText.toUtf8().data() + "<br></div>";
+      articleData += string( "<div class=\"dictd_article\">" ) + _articleText.toUtf8().data() + "<br></div>";
 
 
       if ( !articleData.empty() ) {
