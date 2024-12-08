@@ -56,7 +56,7 @@ jobs:
           brew update
       - name: Install dependencies
         run: |
-          brew install \
+          brew install --force --overwrite \
           ninja \
           opencc \
           ffmpeg \
@@ -68,7 +68,7 @@ jobs:
           hunspell \
           xapian \
           libzim \
-          qt
+          qt || true
       - name: Install eb
         run: |
           wget https://github.com/mistydemeo/eb/releases/download/v4.4.3/eb-4.4.3.tar.bz2
