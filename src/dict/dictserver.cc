@@ -624,6 +624,8 @@ public:
         }
 
         if ( lsc >= leadingSpaceCount && lsc > firstLeadingSpaceCount ) {
+          //extra space
+          resultStr.append( " " );
           resultStr.append( line.trimmed() );
         }
         else {
