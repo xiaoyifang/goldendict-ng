@@ -42,7 +42,7 @@ jobs:
             lzip \
             ninja \
             opencc \
-            xapian
+            xapian || true
       - name: Install eb
         run: |
           git clone https://github.com/xiaoyifang/eb.git
