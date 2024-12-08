@@ -56,7 +56,7 @@ jobs:
           brew update
       - name: Install dependencies
         run: |
-          brew install --force \
+          brew install --force --overwrite \
           ninja \
           opencc \
           ffmpeg \
