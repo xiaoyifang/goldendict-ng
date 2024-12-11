@@ -72,7 +72,7 @@ const static QRegularExpression accentMark( R"(\p{M})", QRegularExpression::UseU
 const static QRegularExpression markPuncSpace( R"([\p{M}\p{Z}\p{C}\p{P}])",
                                                QRegularExpression::UseUnicodePropertiesOption );
 //contain unicode space and mark.invisible
-const static QRegularExpression markSpace( R"([\p{M}\p{Z}\p{C}])", QRegularExpression::UseUnicodePropertiesOption );
+const static QRegularExpression markSpace( R"([\p{M}\p{Z}])", QRegularExpression::UseUnicodePropertiesOption );
 
 const static QRegularExpression whiteSpace( "\\s+" );
 
