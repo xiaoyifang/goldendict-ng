@@ -299,17 +299,23 @@ std::u32string removeTrailingZero( std::u32string const & v )
 
 std::u32string removeTrailingZero( QString const & in )
 {
-  QList< unsigned int > v = in.toUcs4();
+  auto v = in.toUtf8();
 
   int n = v.size();
   while ( n > 0 && v[ n - 1 ] == 0 ) {
     n--;
   }
+
+  int i = 0;
+  while ( i<n && v[ i ] == 0 ) {
+    i++;
+  }
+
   if ( n != v.size() ) {
     v.resize( n );
   }
 
-  return std::u32string( (const char32_t *)v.constData(), v.size() );
+  return toUtf32(string(v.data() + i, v.size() - i ));
 }
 
 std::u32string normalize( const std::u32string & str )
