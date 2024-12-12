@@ -22,8 +22,8 @@ std::u32string apply( std::u32string const & in, bool preserveWildcards )
 {
   // remove diacritics (normalization), white space, punt,
   auto temp = QString::fromStdU32String( in )
-                .normalized( QString::NormalizationForm_KD )
                 .remove( RX::markSpace )
+                .normalized( QString::NormalizationForm_KD )
                 .removeIf( [ preserveWildcards ]( const QChar & ch ) -> bool {
                   return ch.isPunct()
                     && !( preserveWildcards && ( ch == '\\' || ch == '?' || ch == '*' || ch == '[' || ch == ']' ) );
@@ -155,8 +155,7 @@ std::u32string applyWhitespaceAndPunctOnly( std::u32string const & in )
 
 bool isWhitespace( char32_t ch )
 {
-  //invisible character should be treated as whitespace as well.
-  return QChar::isSpace( ch ) || !QChar::isPrint( ch );
+  return QChar::isSpace( ch );
 }
 
 bool isWhitespaceOrPunct( char32_t ch )
