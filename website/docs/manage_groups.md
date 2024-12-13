@@ -10,9 +10,9 @@ Additionally, multiple strategies of automatic grouping are provided:
 
 ## Auto groups by dictionary language
 
-For formats like DSL, which has embedded language from / to metadata, GoldenDict will use the dictionary's built-in metadata.
+For formats like DSL, which has embedded language from / to metadata, GD will use the dictionary's built-in metadata.
 
-For other formats, GoldenDict will try to extract languages from the dictionary's name or its file name by finding `{id}-{id}` pair. The `{id}` is 2 or 3 letters ISO 639 codes. For example, if a dictionary named `some name en-zh`, it will be automatically grouped into `en-zh`.
+For other formats, GD will try finding the last `{id}-{id}` pair delimited by non-alphabets in dictionary name or main file name to extract languages. The `{id}` is 2 or 3 letters ISO 639 codes. For example, if a dictionary named `some name en-zh`, it will be automatically grouped into `en-zh`.
 
 Groups created in this method also include a context menu when right-click the group name, in which you can do additional dictionaries grouping by source or target language and combine dictionaries in more large groups.
 
