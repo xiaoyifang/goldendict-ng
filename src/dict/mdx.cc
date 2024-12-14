@@ -22,6 +22,7 @@
 #include "globalregex.hh"
 #include "tiff.hh"
 #include "utils.hh"
+#include "XapianIdx.h"
 #include <QAtomicInt>
 #include <QCryptographicHash>
 #include <QDir>
@@ -48,7 +49,7 @@ using namespace Mdict;
 
 enum {
   kSignature            = 0x4349444d, // MDIC
-  kCurrentFormatVersion = 11 + BtreeIndexing::FormatVersion + Folding::Version
+  kCurrentFormatVersion = 12 + BtreeIndexing::FormatVersion + Folding::Version
 };
 
 DEF_EX( exCorruptDictionary, "dictionary file was tampered or corrupted", std::exception )
@@ -85,6 +86,7 @@ struct IdxHeader
 
   uint32_t mddIndexInfosOffset; // address of IndexInfos for resource files (.mdd)
   uint32_t mddIndexInfosCount;  // count of IndexInfos for resource files
+  uint32_t finished;            //used to indicate the finished tag.
 };
 static_assert( alignof( IdxHeader ) == 1 );
 #pragma pack( pop )
@@ -384,7 +386,7 @@ void MdxDictionary::doDeferredInit()
       }
 
       // Initialize the index
-      openIndex( IndexInfo( idxHeader.indexBtreeMaxElements, idxHeader.indexRootOffset ), idx, idxMutex );
+      //      openIndex( IndexInfo( idxHeader.indexBtreeMaxElements, idxHeader.indexRootOffset ), idx, idxMutex );
 
       vector< string > mddFileNames;
       vector< IndexInfo > mddIndexInfos;
@@ -1229,24 +1231,29 @@ static void addEntryToIndexSingle( QString const & word, uint32_t offset, Indexe
 class ArticleHandler: public MdictParser::RecordHandler
 {
 public:
-  ArticleHandler( ChunkedStorage::Writer & chunks, IndexedWords & indexedWords ):
+  ArticleHandler( ChunkedStorage::Writer & chunks, map< string, string > & indexedWords ):
     chunks( chunks ),
-    indexedWords( indexedWords )
+    headwords( indexedWords )
   {
   }
 
   void handleRecord( QString const & headWord, MdictParser::RecordInfo const & recordInfo ) override
   {
-    // Save the article's record info
-    uint32_t articleAddress = chunks.startNewBlock();
-    chunks.addToBlock( &recordInfo, sizeof( recordInfo ) );
-    // Add entries to the index
-    addEntryToIndex( headWord, articleAddress, indexedWords );
+    //    // Save the article's record info
+    //    uint32_t articleAddress = chunks.startNewBlock();
+    //    chunks.addToBlock( &recordInfo, sizeof( recordInfo ) );
+    //    // Add entries to the index
+    //    addEntryToIndex( headWord, articleAddress, indexedWords );
+    QByteArray data;
+    memcpy( data.data(), &recordInfo, sizeof( recordInfo ) );
+    auto data_ = data.toBase64().toStdString();
+    headwords.emplace( headWord.toStdString(), data_ );
   }
 
 private:
   ChunkedStorage::Writer & chunks;
-  IndexedWords & indexedWords;
+  //  IndexedWords & indexedWords;
+  map< string, string > headwords;
 };
 
 class ResourceHandler: public MdictParser::RecordHandler
@@ -1285,7 +1292,7 @@ static bool indexIsOldOrBad( vector< string > const & dictFiles, string const & 
 static void findResourceFiles( string const & mdx, vector< string > & dictFiles )
 {
   string base( mdx, 0, mdx.size() - 4 );
-  // Check if there' is any file end with .mdd, which is the resource file for the dictionary
+  // Check if there's any file end with .mdd, which is the resource file for the dictionary
   string resFile;
   if ( File::tryPossibleName( base + ".mdd", resFile ) ) {
     dictFiles.push_back( resFile );
@@ -1325,6 +1332,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
     string dictId    = Dictionary::makeDictionaryId( dictFiles );
     string indexFile = indicesDir + dictId;
+    string headwordsIndexFile = indicesDir + dictId + ".hw.x";
 
     if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( dictFiles, indexFile ) ) {
       // Building the index
@@ -1353,6 +1361,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       }
 
       File::Index idx( indexFile, QIODevice::WriteOnly );
+      XapianIdx xapianidx;
+
       IdxHeader idxHeader;
       memset( &idxHeader, 0, sizeof( idxHeader ) );
       // We write a dummy header first. At the end of the process the header
@@ -1375,7 +1385,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       // immediately, inserting the word itself and its offset in this map.
       // This map maps folded words to the original words and the corresponding
       // articles' offsets.
-      IndexedWords indexedWords;
+      //      IndexedWords indexedWords;
+      map< string, string > headwords;
       ChunkedStorage::Writer chunks( idx );
 
       idxHeader.isRightToLeft = parser.isRightToLeft();
@@ -1388,7 +1399,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         idxHeader.descriptionSize = description.size() + 1;
       }
 
-      ArticleHandler articleHandler( chunks, indexedWords );
+      ArticleHandler articleHandler( chunks, headwords );
       MdictParser::HeadWordIndex headWordIndex;
 
       // enumerating word and its definition
@@ -1423,9 +1434,10 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       qDebug( "Writing index..." );
 
       // Good. Now build the index
-      IndexInfo idxInfo               = BtreeIndexing::buildIndex( indexedWords, idx );
-      idxHeader.indexBtreeMaxElements = idxInfo.btreeMaxElements;
-      idxHeader.indexRootOffset       = idxInfo.rootOffset;
+      xapianidx.buildIdx( headwordsIndexFile, headwords );
+      //      IndexInfo idxInfo               = BtreeIndexing::buildIndex( indexedWords, idx );
+      idxHeader.indexBtreeMaxElements = 0; // idxInfo.btreeMaxElements;
+      idxHeader.indexRootOffset       = 0; // idxInfo.rootOffset;
 
       // Save dictionary stylesheets
       {

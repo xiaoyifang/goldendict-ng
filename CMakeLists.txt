@@ -119,7 +119,11 @@ set(QSINGLEAPP_SOURCE_FILES
         thirdparty/qtsingleapplication/src/qtsingleapplication.h
 )
 
-qt_add_executable(${GOLDENDICT})
+qt_add_executable(${GOLDENDICT}
+        src/dict/XapianIdx.cpp
+        src/dict/XapianIdx.h
+        src/dict/xapianidxreader.cc
+        src/dict/xapianidxreader.hh)
 
 target_sources(${GOLDENDICT} PRIVATE
         icons/flags.qrc
