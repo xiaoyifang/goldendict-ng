@@ -318,7 +318,7 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
     //select a single char.
     auto abbrName = getAbbrName( text );
 
-    painter.setPen( intToFixedColor(abbrName.at(1)) );
+    painter.setPen( intToFixedColor( abbrName.mid( 1 ).toInt() ) );
 
     // Draw first character
     QFontMetrics fm0(font);
@@ -328,10 +328,12 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
     font.setPixelSize( iconSize * 0.3 );
 
     QFontMetrics fm1(font);
-    int firstCharWidth1 = fm1.horizontalAdvance(abbrName.mid(1));
+    int orderNumberWidth = fm1.horizontalAdvance( abbrName.mid( 1 ) );
 
     painter.setFont( font );
-    painter.drawText( rectangle.x()+rectangle.width()- firstCharWidth1, rectangle.y()+rectangle.height() - fm1.ascent(), abbrName.at(1) );
+    painter.drawText( rectangle.x() + rectangle.width() - orderNumberWidth,
+                      rectangle.y() + rectangle.height() - fm1.ascent(),
+                      abbrName.mid( 1 ) );
 
     painter.end();
 

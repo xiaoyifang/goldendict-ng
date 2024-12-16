@@ -5,20 +5,20 @@
 #include <vector>
 #include <mutex>
 #include <QString>
+#include <QMutex>
 
 namespace Icons {
-using namespace std;
-//use dictionary name's (first character + the order number) represent the dictionary name
+//use dictionary name's (first character + the order number) to represent the dictionary name in the icon image.
 class DictionaryIconName
 {
   //map icon name to dictionary names;
-  map< QString, vector< QString > > _iconDictionaryNames;
+  std::map< QString, std::vector< QString > > _iconDictionaryNames;
   //map dictionary name to icon name;
-  map<QString,QString> _dictionaryIconNames;
+  std::map< QString, QString > _dictionaryIconNames;
 
-  std::mutex _mutex;
+  QMutex _mutex;
 
 public:
-  QString getIconName( const QString & dictionaryName ) const;
-}
+  QString getIconName( const QString & dictionaryName );
+};
 } // namespace Icons
