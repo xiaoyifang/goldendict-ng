@@ -19,6 +19,11 @@ QString Icons::DictionaryIconName::getIconName( const QString & dictionaryName )
     if ( it1 != _iconDictionaryNames.end() ) {
       it1->second.push_back( dictionaryName );
     }
+    else{
+        _iconDictionaryNames.insert( std::make_pair( name, std::vector< QString >(){
+            dictionaryName
+        } ) );)
+    }
 
     name                                          = name + it1->second.size();
     return _dictionaryIconNames[ dictionaryName ] = name;
