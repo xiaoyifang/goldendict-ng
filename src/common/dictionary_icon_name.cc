@@ -20,7 +20,7 @@ QString Icons::DictionaryIconName::getIconName( const QString & dictionaryName )
       it1->second.push_back( dictionaryName );
     }
     else{
-        _iconDictionaryNames.insert( std::make_pair( name, std::vector< QString >(){
+        _iconDictionaryNames.insert( std::make_pair( name, std::vector< QString >{
             dictionaryName
         } ) );)
     }
