@@ -325,14 +325,14 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
     painter.drawText(  rectangle.x(), rectangle.y() + fm0.ascent(), abbrName.at(0) );
 
     //the text should be a little smaller than the icon
-    font.setPixelSize( iconSize * 0.3 );
+    font.setPixelSize( iconSize * 0.5 );
 
     QFontMetrics fm1(font);
     int orderNumberWidth = fm1.horizontalAdvance( abbrName.mid( 1 ) );
 
     painter.setFont( font );
     painter.drawText( rectangle.x() + rectangle.width() - orderNumberWidth,
-                      rectangle.y() + rectangle.height() - fm1.ascent(),
+                      rectangle.y() + rectangle.height(),
                       abbrName.mid( 1 ) );
 
     painter.end();
@@ -347,16 +347,17 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
 QColor Class::intToFixedColor(int index) {
     // Predefined list of colors
     static const std::vector<QColor> colors = {
-        QColor(255, 0, 0),    // Red
-        QColor(0, 255, 0),    // Green
-        QColor(0, 0, 255),    // Blue
-        QColor(255, 255, 0),  // Yellow
-        QColor(0, 255, 255),  // Cyan
-        QColor(255, 0, 255),  // Magenta
-        QColor(192, 192, 192),// Gray
-        QColor(255, 165, 0),  // Orange
-        QColor(128, 0, 128),  // Violet
-        QColor(128, 128, 0)   // Olive
+      QColor( 255, 0, 0, 200 ),     // Red
+      QColor( 4, 57, 108, 200 ),    //Custom
+      QColor( 0, 255, 0, 200 ),     // Green
+      QColor( 0, 0, 255, 200 ),     // Blue
+      QColor( 255, 255, 0, 200 ),   // Yellow
+      QColor( 0, 255, 255, 200 ),   // Cyan
+      QColor( 255, 0, 255, 200 ),   // Magenta
+      QColor( 192, 192, 192, 200 ), // Gray
+      QColor( 255, 165, 0, 200 ),   // Orange
+      QColor( 128, 0, 128, 200 ),   // Violet
+      QColor( 128, 128, 0, 200 )    // Olive
     };
 
     // Use modulo operation to ensure index is within the range of the color list
