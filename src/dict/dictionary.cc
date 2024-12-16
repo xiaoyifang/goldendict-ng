@@ -318,8 +318,20 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
     //select a single char.
     auto abbrName = getAbbrName( text );
 
-    painter.setPen( QColor( 4, 57, 108, 200 ) );
-    painter.drawText( rectangle, Qt::AlignCenter, abbrName );
+    painter.setPen( intToFixedColor(abbrName.at(1)) );
+
+    // Draw first character
+    QFontMetrics fm0(font);
+    painter.drawText(  rectangle.x(), rectangle.y() + fm0.ascent(), abbrName.at(0) );
+
+    //the text should be a little smaller than the icon
+    font.setPixelSize( iconSize * 0.3 );
+
+    QFontMetrics fm1(font);
+    int firstCharWidth1 = fm1.horizontalAdvance(abbrName.at(1));
+
+    painter.setFont( font );
+    painter.drawText( rectangle.x()+rectangle.width()- firstCharWidth1, rectangle.y() + fm1.ascent(), abbrName.at(1) );
 
     painter.end();
 
@@ -330,35 +342,28 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
   return false;
 }
 
+QColor Class::intToFixedColor(int index) {
+    // Predefined list of colors
+    static const std::vector<QColor> colors = {
+        QColor(255, 0, 0),    // Red
+        QColor(0, 255, 0),    // Green
+        QColor(0, 0, 255),    // Blue
+        QColor(255, 255, 0),  // Yellow
+        QColor(0, 255, 255),  // Cyan
+        QColor(255, 0, 255),  // Magenta
+        QColor(192, 192, 192),// Gray
+        QColor(255, 165, 0),  // Orange
+        QColor(128, 0, 128),  // Violet
+        QColor(128, 128, 0)   // Olive
+    };
+
+    // Use modulo operation to ensure index is within the range of the color list
+    return colors[index % colors.size()];
+}
+
 QString Class::getAbbrName( QString const & text )
 {
-  if ( text.isEmpty() ) {
-    return {};
-  }
-  //remove whitespace,number,mark,puncuation,symbol
-  QString simplified = text;
-  simplified.remove(
-    QRegularExpression( R"([\p{Z}\p{N}\p{M}\p{P}\p{S}])", QRegularExpression::UseUnicodePropertiesOption ) );
-
-  if ( simplified.isEmpty() ) {
-    return {};
-  }
-  int index = qHash( simplified ) % simplified.size();
-
-  QString abbrName;
-  if ( !Utils::isCJKChar( simplified.at( index ).unicode() ) ) {
-    // take two chars.
-    abbrName = simplified.mid( index, 2 );
-    if ( abbrName.size() == 1 ) {
-      //make up two characters.
-      abbrName = abbrName + simplified.at( 0 );
-    }
-  }
-  else {
-    abbrName = simplified.mid( index, 1 );
-  }
-
-  return abbrName;
+  return GlobalBroadcaster::instance()->getAbbrName( text );
 }
 
 void Class::isolateCSS( QString & css, QString const & wrapperSelector )

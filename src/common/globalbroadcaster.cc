@@ -38,4 +38,24 @@ bool GlobalBroadcaster::existedInWhitelist( QString url ) const
 {
   return whitelist.contains( url );
 }
+
+
+QString GlobalBroadcaster::getAbbrName( QString const & text )
+{
+  if ( text.isEmpty() ) {
+    return {};
+  }
+  //remove whitespace,number,mark,puncuation,symbol
+  QString simplified = text;
+  simplified.remove(
+    QRegularExpression( R"([\p{Z}\p{N}\p{M}\p{P}\p{S}])", QRegularExpression::UseUnicodePropertiesOption ) );
+
+  if ( simplified.isEmpty() ) {
+    return {};
+  }
+  
+  auto iconName = _icon_names.getIconName(simplified.toStdString());
+
+  return QString::fromStdString( iconName );
+}
 // namespace global

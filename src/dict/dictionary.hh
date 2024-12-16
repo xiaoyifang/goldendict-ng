@@ -321,7 +321,7 @@ protected:
   bool loadIconFromText( QString iconUrl, QString const & text );
 
   QString getAbbrName( QString const & text );
-
+  QColor intToFixedColor( int index );
   /// Make css content usable only for articles from this dictionary
   void isolateCSS( QString & css, QString const & wrapperSelector = QString() );
 
