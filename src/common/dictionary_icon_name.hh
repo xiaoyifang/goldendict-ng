@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include <map>
+#include <QMap>
 #include <vector>
 #include <mutex>
 #include <QString>
@@ -12,9 +12,9 @@ namespace Icons {
 class DictionaryIconName
 {
   //map icon name to dictionary names;
-  std::map< QString, std::vector< QString > > _iconDictionaryNames;
+  QMap< QString, std::vector< QString > > _iconDictionaryNames;
   //map dictionary name to icon name;
-  std::map< QString, QString > _dictionaryIconNames;
+  QMap< QString, QString > _dictionaryIconNames;
 
   QMutex _mutex;
 
