@@ -4,6 +4,7 @@
 #include <map>
 #include <vector>
 #include <mutex>
+#include <QString>
 
 namespace Icons {
 using namespace std;
@@ -11,13 +12,13 @@ using namespace std;
 class DictionaryIconName
 {
   //map icon name to dictionary names;
-  map< string, vector< string > > _iconDictionaryNames;
+  map< QString, vector< QString > > _iconDictionaryNames;
   //map dictionary name to icon name;
-  map<string,string> _dictionaryIconNames;
+  map<QString,QString> _dictionaryIconNames;
 
   std::mutex _mutex;
 
 public:
-  std::string getIconName( const std::string & dictionaryName ) const;
+  QString getIconName( const QString & dictionaryName ) const;
 }
 } // namespace Icons

@@ -328,7 +328,7 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
     font.setPixelSize( iconSize * 0.3 );
 
     QFontMetrics fm1(font);
-    int firstCharWidth1 = fm1.horizontalAdvance(abbrName.at(1));
+    int firstCharWidth1 = fm1.horizontalAdvance(abbrName.mid(1));
 
     painter.setFont( font );
     painter.drawText( rectangle.x()+rectangle.width()- firstCharWidth1, rectangle.y()+rectangle.height() - fm1.ascent(), abbrName.at(1) );

@@ -54,8 +54,8 @@ QString GlobalBroadcaster::getAbbrName( QString const & text )
     return {};
   }
   
-  auto iconName = _icon_names.getIconName(simplified.toStdString());
+  auto iconName = _icon_names.getIconName(simplified);
 
-  return QString::fromStdString( iconName );
+  return iconName;
 }
 // namespace global

@@ -1,7 +1,7 @@
 #include "dictionary_icon_name.hh"
 
 
-std::string Icons::DictionaryIconName::getIconName( const std::string & dictionaryName ) const
+QString Icons::DictionaryIconName::getIconName( const QString & dictionaryName ) const
 {
     if (dictionaryName.empty()) {
         return {};
@@ -13,7 +13,7 @@ std::string Icons::DictionaryIconName::getIconName( const std::string & dictiona
         return it->second;
     } else {
         //get the first character of the dictionary name
-        std::string name = dictionaryName.substr(0,1);
+        QString name = dictionaryName.at(0).toUpper();
         auto it1         = _iconDictionaryNames.find( name );
         if (it1 != _iconDictionaryNames.end()) {
             it1->second.push_back( dictionaryName );
