@@ -3,7 +3,7 @@
 
 QString Icons::DictionaryIconName::getIconName( const QString & dictionaryName ) const
 {
-    if (dictionaryName.empty()) {
+    if (dictionaryName.isEmpty()) {
         return {};
     }
     std::lock_guard<std::mutex> lock(_mutex);
