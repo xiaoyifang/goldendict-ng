@@ -4025,7 +4025,7 @@ void MainWindow::on_importFavorites_triggered()
   QString fileName = QFileDialog::getOpenFileName( this,
                                                    tr( "Import Favorites from file" ),
                                                    importPath,
-                                                   tr( "XML files (*.xml);;Txt files (*.txt);;All files (*.*)" ) );
+                                                   tr( "Text and XML files (*.txt *.xml)" ) );
   if ( fileName.size() == 0 ) {
     return;
   }
