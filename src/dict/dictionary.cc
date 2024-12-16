@@ -331,7 +331,7 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
     int firstCharWidth1 = fm1.horizontalAdvance(abbrName.at(1));
 
     painter.setFont( font );
-    painter.drawText( rectangle.x()+rectangle.width()- firstCharWidth1, rectangle.y() + fm1.ascent(), abbrName.at(1) );
+    painter.drawText( rectangle.x()+rectangle.width()- firstCharWidth1, rectangle.y()+rectangle.height() - fm1.ascent(), abbrName.at(1) );
 
     painter.end();
 
