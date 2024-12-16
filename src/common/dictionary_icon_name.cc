@@ -22,7 +22,7 @@ QString Icons::DictionaryIconName::getIconName( const QString & dictionaryName )
     else{
         _iconDictionaryNames.insert( std::make_pair( name, std::vector< QString >{
             dictionaryName
-        } ) );)
+        } ) );
     }
 
     name                                          = name + it1->second.size();
