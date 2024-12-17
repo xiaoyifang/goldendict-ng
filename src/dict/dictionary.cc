@@ -324,8 +324,8 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
     painter.drawText( rectangle, Qt::AlignCenter, abbrName.at( 0 ) );
 
     //the text should be a little smaller than the icon
-    font.setPixelSize( iconSize * 0.5 );
-
+    font.setPixelSize( iconSize * 0.4 );
+    font.setWeight( QFont::Normal );
     QFontMetrics fm1( font );
     int orderNumberWidth = fm1.horizontalAdvance( abbrName.mid( 1 ) );
 
