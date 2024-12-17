@@ -346,7 +346,7 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
 QColor Class::intToFixedColor( int index )
 {
   // Predefined list of colors
-  static const std::vector< QColor > colors = {
+  static const std::array< QColor > colors = {
     QColor( 255, 0, 0, 200 ),     // Red
     QColor( 4, 57, 108, 200 ),    //Custom
     QColor( 0, 255, 0, 200 ),     // Green
