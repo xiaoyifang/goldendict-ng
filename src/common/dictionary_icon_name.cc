@@ -16,14 +16,17 @@ QString Icons::DictionaryIconName::getIconName( const QString & dictionaryName )
   //get the first character of the dictionary name
   QString name = dictionaryName.at( 0 ).toUpper();
   auto it1     = _iconDictionaryNames.contains( name );
+  std::vector< QString > vector = {};
   if ( it1 ) {
-    _iconDictionaryNames.value( name ).push_back( dictionaryName );
+    vector = _iconDictionaryNames.value( name );
+    vector.emplace_back( dictionaryName );
   }
   else {
-    _iconDictionaryNames.insert( name, std::vector< QString >{ dictionaryName } );
+    vector.emplace_back( dictionaryName );
+    _iconDictionaryNames.insert( name, vector );
   }
 
-  name = name + QString::number( _iconDictionaryNames.value( name ).size() );
+  name = name + QString::number( vector.size() );
   _dictionaryIconNames.insert( dictionaryName, name );
   return name;
 }

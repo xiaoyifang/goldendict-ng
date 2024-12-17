@@ -318,9 +318,9 @@ protected:
   // Load icon from filename directly if isFullName == true
   // else treat filename as name without extension
   bool loadIconFromFile( QString const & filename, bool isFullName = false );
-  bool loadIconFromText( QString iconUrl, QString const & text );
+  bool loadIconFromText( const QString & iconUrl, QString const & text );
 
-  QString getAbbrName( QString const & text );
+  static QString getAbbrName( QString const & text );
   static QColor intToFixedColor( int index );
   /// Make css content usable only for articles from this dictionary
   void isolateCSS( QString & css, QString const & wrapperSelector = QString() );

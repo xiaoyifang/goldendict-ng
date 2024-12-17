@@ -19,6 +19,7 @@
 #include <QRegularExpression>
 #include "utils.hh"
 #include "zipfile.hh"
+#include <array>
 
 namespace Dictionary {
 
@@ -291,7 +292,7 @@ bool Class::loadIconFromFile( QString const & _filename, bool isFullName )
   return false;
 }
 
-bool Class::loadIconFromText( QString iconUrl, QString const & text )
+bool Class::loadIconFromText( const QString & iconUrl, QString const & text )
 {
   if ( text.isEmpty() ) {
     return false;
@@ -308,7 +309,7 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
     painter.setCompositionMode( QPainter::CompositionMode_SourceAtop );
 
     QFont font = painter.font();
-    //the text should be a little smaller than the icon
+    //the orderNum should be a little smaller than the icon
     font.setPixelSize( iconSize * 0.6 );
     font.setWeight( QFont::Bold );
     painter.setFont( font );
@@ -323,16 +324,16 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
     // Draw first character
     painter.drawText( rectangle, Qt::AlignCenter, abbrName.at( 0 ) );
 
-    //the text should be a little smaller than the icon
+    //the orderNum should be a little smaller than the icon
     font.setPixelSize( iconSize * 0.4 );
-    font.setWeight( QFont::Normal );
     QFontMetrics fm1( font );
-    int orderNumberWidth = fm1.horizontalAdvance( abbrName.mid( 1 ) );
+    const QString & orderNum = abbrName.mid( 1 );
+    int orderNumberWidth     = fm1.horizontalAdvance( orderNum );
 
     painter.setFont( font );
-    painter.drawText( rectangle.x() + rectangle.width() - orderNumberWidth,
+    painter.drawText( rectangle.x() + rectangle.width() - orderNumberWidth * 1.2,
                       rectangle.y() + rectangle.height(),
-                      abbrName.mid( 1 ) );
+                      orderNum );
 
     painter.end();
 
@@ -346,7 +347,7 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
 QColor Class::intToFixedColor( int index )
 {
   // Predefined list of colors
-  static const std::array< QColor > colors = {
+  static const std::array colors = {
     QColor( 255, 0, 0, 200 ),     // Red
     QColor( 4, 57, 108, 200 ),    //Custom
     QColor( 0, 255, 0, 200 ),     // Green
