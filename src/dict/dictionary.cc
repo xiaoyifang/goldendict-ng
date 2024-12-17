@@ -321,7 +321,7 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
     painter.setPen( intToFixedColor( abbrName.mid( 1 ).toInt() ) );
 
     // Draw first character
-    painter.drawText( rectangle, Qt::AlignCenter, abbrName.at(0) );
+    painter.drawText( rectangle, Qt::AlignCenter, abbrName.at( 0 ) );
 
     //the text should be a little smaller than the icon
     font.setPixelSize( iconSize * 0.5 );
