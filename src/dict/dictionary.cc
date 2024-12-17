@@ -19,6 +19,7 @@
 #include <QRegularExpression>
 #include "utils.hh"
 #include "zipfile.hh"
+#include <array>
 
 namespace Dictionary {
 
@@ -291,7 +292,7 @@ bool Class::loadIconFromFile( QString const & _filename, bool isFullName )
   return false;
 }
 
-bool Class::loadIconFromText( QString iconUrl, QString const & text )
+bool Class::loadIconFromText( const QString & iconUrl, QString const & text )
 {
   if ( text.isEmpty() ) {
     return false;
@@ -308,7 +309,7 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
     painter.setCompositionMode( QPainter::CompositionMode_SourceAtop );
 
     QFont font = painter.font();
-    //the text should be a little smaller than the icon
+    //the orderNum should be a little smaller than the icon
     font.setPixelSize( iconSize * 0.6 );
     font.setWeight( QFont::Bold );
     painter.setFont( font );
@@ -318,8 +319,21 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
     //select a single char.
     auto abbrName = getAbbrName( text );
 
-    painter.setPen( QColor( 4, 57, 108, 200 ) );
-    painter.drawText( rectangle, Qt::AlignCenter, abbrName );
+    painter.setPen( intToFixedColor( qHash( abbrName ) ) );
+
+    // Draw first character
+    painter.drawText( rectangle, Qt::AlignCenter, abbrName.at( 0 ) );
+
+    //the orderNum should be a little smaller than the icon
+    font.setPixelSize( iconSize * 0.4 );
+    QFontMetrics fm1( font );
+    const QString & orderNum = abbrName.mid( 1 );
+    int orderNumberWidth     = fm1.horizontalAdvance( orderNum );
+
+    painter.setFont( font );
+    painter.drawText( rectangle.x() + rectangle.width() - orderNumberWidth * 1.2,
+                      rectangle.y() + rectangle.height(),
+                      orderNum );
 
     painter.end();
 
@@ -330,35 +344,30 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
   return false;
 }
 
+QColor Class::intToFixedColor( int index )
+{
+  // Predefined list of colors
+  static const std::array colors = {
+    QColor( 255, 0, 0, 200 ),     // Red
+    QColor( 4, 57, 108, 200 ),    //Custom
+    QColor( 0, 255, 0, 200 ),     // Green
+    QColor( 0, 0, 255, 200 ),     // Blue
+    QColor( 255, 255, 0, 200 ),   // Yellow
+    QColor( 0, 255, 255, 200 ),   // Cyan
+    QColor( 255, 0, 255, 200 ),   // Magenta
+    QColor( 192, 192, 192, 200 ), // Gray
+    QColor( 255, 165, 0, 200 ),   // Orange
+    QColor( 128, 0, 128, 200 ),   // Violet
+    QColor( 128, 128, 0, 200 )    // Olive
+  };
+
+  // Use modulo operation to ensure index is within the range of the color list
+  return colors[ index % colors.size() ];
+}
+
 QString Class::getAbbrName( QString const & text )
 {
-  if ( text.isEmpty() ) {
-    return {};
-  }
-  //remove whitespace,number,mark,puncuation,symbol
-  QString simplified = text;
-  simplified.remove(
-    QRegularExpression( R"([\p{Z}\p{N}\p{M}\p{P}\p{S}])", QRegularExpression::UseUnicodePropertiesOption ) );
-
-  if ( simplified.isEmpty() ) {
-    return {};
-  }
-  int index = qHash( simplified ) % simplified.size();
-
-  QString abbrName;
-  if ( !Utils::isCJKChar( simplified.at( index ).unicode() ) ) {
-    // take two chars.
-    abbrName = simplified.mid( index, 2 );
-    if ( abbrName.size() == 1 ) {
-      //make up two characters.
-      abbrName = abbrName + simplified.at( 0 );
-    }
-  }
-  else {
-    abbrName = simplified.mid( index, 1 );
-  }
-
-  return abbrName;
+  return GlobalBroadcaster::instance()->getAbbrName( text );
 }
 
 void Class::isolateCSS( QString & css, QString const & wrapperSelector )

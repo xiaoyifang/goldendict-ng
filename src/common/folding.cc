@@ -155,8 +155,7 @@ std::u32string applyWhitespaceAndPunctOnly( std::u32string const & in )
 
 bool isWhitespace( char32_t ch )
 {
-  //invisible character should be treated as whitespace as well.
-  return QChar::isSpace( ch ) || !QChar::isPrint( ch );
+  return QChar::isSpace( ch );
 }
 
 bool isWhitespaceOrPunct( char32_t ch )

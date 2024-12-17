@@ -1,11 +1,3 @@
-function gdOnReady(func) {
-  if (document.readyState !== "loading") {
-    func();
-  } else {
-    document.addEventListener("DOMContentLoaded", func);
-  }
-}
-
 function gdMakeArticleActive(newId, noEvent) {
   const gdCurrentArticle =
     document.querySelector(".gdactivearticle").attributes.id;

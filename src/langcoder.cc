@@ -275,14 +275,18 @@ quint32 LangCoder::guessId( const QString & lang )
 
 std::pair< quint32, quint32 > LangCoder::findLangIdPairFromName( QString const & name )
 {
-  static QRegularExpression reg( "(?=([a-z]{2,3})-([a-z]{2,3}))", QRegularExpression::CaseInsensitiveOption );
+  static QRegularExpression reg( "(^|[^a-z])((?<lang1>[a-z]{2,3})-(?<lang2>[a-z]{2,3}))($|[^a-z])",
+                                 QRegularExpression::CaseInsensitiveOption );
 
   auto matches = reg.globalMatch( name );
   while ( matches.hasNext() ) {
     auto m = matches.next();
+    if ( matches.hasNext() ) {
+      continue; // We use only the last match, skip previous ones
+    }
 
-    auto fromId = guessId( m.captured( 1 ).toLower() );
-    auto toId   = guessId( m.captured( 2 ).toLower() );
+    auto fromId = guessId( m.captured( "lang1" ).toLower() );
+    auto toId   = guessId( m.captured( "lang2" ).toLower() );
 
     if ( code2Exists( intToCode2( fromId ) ) && code2Exists( intToCode2( toId ) ) ) {
       return { fromId, toId };
