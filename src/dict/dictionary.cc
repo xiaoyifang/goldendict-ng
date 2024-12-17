@@ -318,7 +318,7 @@ bool Class::loadIconFromText( QString iconUrl, QString const & text )
     //select a single char.
     auto abbrName = getAbbrName( text );
 
-    painter.setPen( intToFixedColor( abbrName.mid( 1 ).toInt() ) );
+    painter.setPen( intToFixedColor( qHash(abbrName) ) );
 
     // Draw first character
     painter.drawText( rectangle, Qt::AlignCenter, abbrName.at( 0 ) );
