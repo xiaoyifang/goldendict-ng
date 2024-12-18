@@ -3144,6 +3144,11 @@ void MainWindow::iconSizeActionTriggered( QAction * /*action*/ )
   updateDictionaryBar();
 
   scanPopup->setDictionaryIconSize();
+
+  //ajust the font size as well
+  auto font = translateLine->font();
+  font.setPixelSize( extent );
+  translateBox->completerWidget()->setFont( font );
 }
 
 void MainWindow::toggleMenuBarTriggered( bool announce )
