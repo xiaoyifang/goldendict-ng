@@ -3148,6 +3148,7 @@ void MainWindow::iconSizeActionTriggered( QAction * /*action*/ )
   //ajust the font size as well
   auto font = translateLine->font();
   font.setPixelSize( extent );
+  translateLine->setFont( font );
   translateBox->completerWidget()->setFont( font );
 }
 
