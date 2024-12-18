@@ -3351,8 +3351,8 @@ void MainWindow::on_saveArticle_triggered()
   QFileDialog::Options options = QFileDialog::HideNameFilterDetails;
   QString selectedFilter;
   QStringList filters;
-  filters.push_back( tr( "Article, Complete (*.html *.htm)" ) );
-  filters.push_back( tr( "Article, HTML Only (*.html *.htm)" ) );
+  filters.push_back( tr( "Complete Html (*.html *.htm)" ) );
+  filters.push_back( tr( "Single Html (*.html *.htm)" ) );
   filters.push_back( tr( "Pdf (*.pdf)" ) );
   filters.push_back( tr( "Mime Html (*.mhtml)" ) );
 
