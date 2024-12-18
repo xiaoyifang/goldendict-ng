@@ -3373,11 +3373,6 @@ void MainWindow::on_saveArticle_triggered()
 
   //Pdf
   if ( filters.at( 2 ).startsWith( selectedFilter ) ) {
-    QPageLayout pageLayout( QPageSize( QPageSize::A4 ), QPageLayout::Portrait, QMarginsF() );
-
-    // Set resolution to improve PDF quality
-    pageLayout.setResolution( 300 ); // 300 DPI
-
     // Create a QWebEnginePage object
     QWebEnginePage * page = view->page();
 
@@ -3392,7 +3387,7 @@ void MainWindow::on_saveArticle_triggered()
     } );
 
     // Print to PDF file
-    page->printToPdf( fileName, pageLayout );
+    page->printToPdf( fileName );
 
     return;
   }
