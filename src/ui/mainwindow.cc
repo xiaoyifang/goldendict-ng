@@ -1309,6 +1309,8 @@ QPrinter & MainWindow::getPrinter()
   }
 
   printer = std::make_shared< QPrinter >( QPrinter::HighResolution );
+  printer->setFontEmbeddingEnabled( true );
+  printer->setOutputFormat( QPrinter::PdfFormat );
 
   return *printer;
 }
