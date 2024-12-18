@@ -3353,6 +3353,7 @@ void MainWindow::on_saveArticle_triggered()
   QStringList filters;
   filters.push_back( tr( "Article, Complete (*.html)" ) );
   filters.push_back( tr( "Article, HTML Only (*.html)" ) );
+  filters.push_back( tr( "Pdf (*.pdf)" ) );
 
   fileName = savePath + "/" + fileName;
   fileName = QFileDialog::getSaveFileName( this,
@@ -3362,10 +3363,37 @@ void MainWindow::on_saveArticle_triggered()
                                            &selectedFilter,
                                            options );
 
+  qDebug()<<"seleccted filter: " << selectedFilter;
   // The " (*.html)" part of filters[i] is absent from selectedFilter in Qt 5.
   bool const complete = filters.at( 0 ).startsWith( selectedFilter );
 
   if ( fileName.isEmpty() ) {
+    return;
+  }
+
+  //Pdf
+  if ( filters.at( 2 ).startsWith( selectedFilter ) ) {
+    QPageLayout pageLayout( QPageSize( QPageSize::A4 ), QPageLayout::Portrait, QMarginsF() );
+
+    // Set resolution to improve PDF quality
+    pageLayout.setResolution( 300 ); // 300 DPI
+
+    // Create a QWebEnginePage object
+    QWebEnginePage * page = view->page();
+
+    // Connect the printFinished signal to handle operations after printing is complete
+    QObject::connect( page, &QWebEnginePage::printFinished, [ = ]( bool success ) {
+      if ( success ) {
+        qDebug() << "PDF exported successfully to:" << filePath;
+      }
+      else {
+        qDebug() << "Failed to export PDF.";
+      }
+    } );
+
+    // Print to PDF file
+    page->printToPdf( filePath, pageLayout );
+
     return;
   }
 
