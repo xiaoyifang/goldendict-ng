@@ -3363,7 +3363,7 @@ void MainWindow::on_saveArticle_triggered()
                                            &selectedFilter,
                                            options );
 
-  qDebug()<<"seleccted filter: " << selectedFilter;
+  qDebug() << "selected filter: " << selectedFilter;
   // The " (*.html)" part of filters[i] is absent from selectedFilter in Qt 5.
   bool const complete = filters.at( 0 ).startsWith( selectedFilter );
 
@@ -3377,9 +3377,9 @@ void MainWindow::on_saveArticle_triggered()
     QWebEnginePage * page = view->page();
 
     // Connect the printFinished signal to handle operations after printing is complete
-    QObject::connect( page, &QWebEnginePage::printFinished, [ = ]( bool success ) {
+    connect( page, &QWebEnginePage::pdfPrintingFinished, [ = ]( const QString & filePath, bool success ) {
       if ( success ) {
-        qDebug() << "PDF exported successfully to:" << fileName;
+        qDebug() << "PDF exported successfully to:" << filePath;
       }
       else {
         qDebug() << "Failed to export PDF.";
