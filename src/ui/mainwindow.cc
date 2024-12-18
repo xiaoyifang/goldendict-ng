@@ -3384,7 +3384,7 @@ void MainWindow::on_saveArticle_triggered()
     // Connect the printFinished signal to handle operations after printing is complete
     QObject::connect( page, &QWebEnginePage::printFinished, [ = ]( bool success ) {
       if ( success ) {
-        qDebug() << "PDF exported successfully to:" << filePath;
+        qDebug() << "PDF exported successfully to:" << fileName;
       }
       else {
         qDebug() << "Failed to export PDF.";
@@ -3392,7 +3392,7 @@ void MainWindow::on_saveArticle_triggered()
     } );
 
     // Print to PDF file
-    page->printToPdf( filePath, pageLayout );
+    page->printToPdf( fileName, pageLayout );
 
     return;
   }
