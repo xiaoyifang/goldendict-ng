@@ -3354,6 +3354,7 @@ void MainWindow::on_saveArticle_triggered()
   filters.push_back( tr( "Article, Complete (*.html)" ) );
   filters.push_back( tr( "Article, HTML Only (*.html)" ) );
   filters.push_back( tr( "Pdf (*.pdf)" ) );
+  filters.push_back( tr( "Mime Html (*.mhtml)" ) );
 
   fileName = savePath + "/" + fileName;
   fileName = QFileDialog::getSaveFileName( this,
@@ -3388,6 +3389,15 @@ void MainWindow::on_saveArticle_triggered()
 
     // Print to PDF file
     page->printToPdf( fileName );
+
+    return;
+  }
+
+  //mime html
+  if ( filters.at( 3 ).startsWith( selectedFilter ) ) {
+    // Create a QWebEnginePage object
+    QWebEnginePage * page = view->page();
+    page->save( fileName, QWebEngineDownloadRequest::MimeHtmlSaveFormat );
 
     return;
   }
