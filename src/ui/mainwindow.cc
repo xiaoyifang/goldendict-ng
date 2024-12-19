@@ -3372,8 +3372,10 @@ void MainWindow::on_saveArticle_triggered()
   QFileDialog::Options options = QFileDialog::HideNameFilterDetails;
   QString selectedFilter;
   QStringList filters;
-  filters.push_back( tr( "Article, Complete (*.html)" ) );
-  filters.push_back( tr( "Article, HTML Only (*.html)" ) );
+  filters.push_back( tr( "Complete Html (*.html *.htm)" ) );
+  filters.push_back( tr( "Single Html (*.html *.htm)" ) );
+  filters.push_back( tr( "Pdf (*.pdf)" ) );
+  filters.push_back( tr( "Mime Html (*.mhtml)" ) );
 
   fileName = savePath + "/" + fileName;
   fileName = QFileDialog::getSaveFileName( this,
@@ -3383,10 +3385,41 @@ void MainWindow::on_saveArticle_triggered()
                                            &selectedFilter,
                                            options );
 
+  qDebug() << "selected filter: " << selectedFilter;
   // The " (*.html)" part of filters[i] is absent from selectedFilter in Qt 5.
   bool const complete = filters.at( 0 ).startsWith( selectedFilter );
 
   if ( fileName.isEmpty() ) {
+    return;
+  }
+
+  //Pdf
+  if ( filters.at( 2 ).startsWith( selectedFilter ) ) {
+    // Create a QWebEnginePage object
+    QWebEnginePage * page = view->page();
+
+    // Connect the printFinished signal to handle operations after printing is complete
+    connect( page, &QWebEnginePage::pdfPrintingFinished, [ = ]( const QString & filePath, bool success ) {
+      if ( success ) {
+        qDebug() << "PDF exported successfully to:" << filePath;
+      }
+      else {
+        qDebug() << "Failed to export PDF.";
+      }
+    } );
+
+    // Print to PDF file
+    page->printToPdf( fileName );
+
+    return;
+  }
+
+  //mime html
+  if ( filters.at( 3 ).startsWith( selectedFilter ) ) {
+    // Create a QWebEnginePage object
+    QWebEnginePage * page = view->page();
+    page->save( fileName, QWebEngineDownloadRequest::MimeHtmlSaveFormat );
+
     return;
   }
 

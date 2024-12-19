@@ -1286,6 +1286,11 @@ void ArticleView::toHtml( const std::function< void( QString & ) > & callback )
   } );
 }
 
+QWebEnginePage * ArticleView::page()
+{
+  return webview->page();
+}
+
 void ArticleView::setHtml( const QString & content, const QUrl & baseUrl )
 {
   webview->page()->setHtml( content, baseUrl );
