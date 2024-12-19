@@ -3912,7 +3912,7 @@ void MainWindow::on_exportFavorites_triggered()
   QString fileName = QFileDialog::getSaveFileName( this,
                                                    tr( "Export Favorites to file" ),
                                                    exportPath,
-                                                   tr( "Text files (*.txt);;XML files (*.xml);;All files (*.*)" ) );
+                                                   tr( "Text files (*.txt);;XML files (*.xml)" ) );
   if ( fileName.size() == 0 ) {
     return;
   }
