@@ -430,7 +430,6 @@ private slots:
 
   void on_exportFavorites_triggered();
   void on_importFavorites_triggered();
-  void on_ExportFavoritesToList_triggered();
 
   void updateSearchPaneAndBar( bool searchInDock );
 

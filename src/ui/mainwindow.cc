@@ -3945,80 +3945,46 @@ void MainWindow::on_exportFavorites_triggered()
   QString fileName = QFileDialog::getSaveFileName( this,
                                                    tr( "Export Favorites to file" ),
                                                    exportPath,
-                                                   tr( "XML files (*.xml);;All files (*.*)" ) );
+                                                   tr( "Text files (*.txt);;XML files (*.xml)" ) );
   if ( fileName.size() == 0 ) {
     return;
   }
-
   cfg.historyExportPath = QDir::toNativeSeparators( QFileInfo( fileName ).absoluteDir().absolutePath() );
   QFile file( fileName );
-
-
   if ( !file.open( QFile::WriteOnly | QIODevice::Text ) ) {
     errorMessageOnStatusBar( QString( tr( "Export error: " ) ) + file.errorString() );
     return;
   }
+  if ( fileName.endsWith( ".xml", Qt::CaseInsensitive ) ) {
+    QByteArray data;
+    ui.favoritesPaneWidget->getDataInXml( data );
 
-  QByteArray data;
-  ui.favoritesPaneWidget->getDataInXml( data );
-
-  if ( file.write( data ) != data.size() ) {
-    errorMessageOnStatusBar( QString( tr( "Export error: " ) ) + file.errorString() );
-    return;
-  }
-
-  file.close();
-  mainStatusBar->showMessage( tr( "Favorites export complete" ), 5000 );
-}
-
-void MainWindow::on_ExportFavoritesToList_triggered()
-{
-  QString exportPath;
-  if ( cfg.historyExportPath.isEmpty() ) {
-    exportPath = QDir::homePath();
-  }
-  else {
-    exportPath = QDir::fromNativeSeparators( cfg.historyExportPath );
-    if ( !QDir( exportPath ).exists() ) {
-      exportPath = QDir::homePath();
+    if ( file.write( data ) != data.size() ) {
+      errorMessageOnStatusBar( QString( tr( "Export error: " ) ) + file.errorString() );
+      return;
     }
   }
+  else {
+    // Write UTF-8 BOM
+    QByteArray line;
+    line.append( 0xEF ).append( 0xBB ).append( 0xBF );
+    if ( file.write( line ) != line.size() ) {
+      errorMessageOnStatusBar( QString( tr( "Export error: " ) ) + file.errorString() );
+      return;
+    }
 
-  QString fileName = QFileDialog::getSaveFileName( this,
-                                                   tr( "Export Favorites to file as plain list" ),
-                                                   exportPath,
-                                                   tr( "Text files (*.txt);;All files (*.*)" ) );
-  if ( fileName.size() == 0 ) {
-    return;
+    // Write Favorites
+    QString data;
+    ui.favoritesPaneWidget->getDataInPlainText( data );
+
+    line = data.toUtf8();
+    if ( file.write( line ) != line.size() ) {
+      errorMessageOnStatusBar( QString( tr( "Export error: " ) ) + file.errorString() );
+      return;
+    }
   }
-
-  cfg.historyExportPath = QDir::toNativeSeparators( QFileInfo( fileName ).absoluteDir().absolutePath() );
-  QFile file( fileName );
-
-  if ( !file.open( QFile::WriteOnly | QIODevice::Text ) ) {
-    errorMessageOnStatusBar( QString( tr( "Export error: " ) ) + file.errorString() );
-    return;
-  }
-
-  // Write UTF-8 BOM
-  QByteArray line;
-  line.append( 0xEF ).append( 0xBB ).append( 0xBF );
-  if ( file.write( line ) != line.size() ) {
-    errorMessageOnStatusBar( QString( tr( "Export error: " ) ) + file.errorString() );
-    return;
-  }
-
-  // Write Favorites
-  QString data;
-  ui.favoritesPaneWidget->getDataInPlainText( data );
-
-  line = data.toUtf8();
-  if ( file.write( line ) != line.size() ) {
-    errorMessageOnStatusBar( QString( tr( "Export error: " ) ) + file.errorString() );
-    return;
-  }
-
   file.close();
+
   mainStatusBar->showMessage( tr( "Favorites export complete" ), 5000 );
 }
 
