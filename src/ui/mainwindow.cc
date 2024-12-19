@@ -3122,17 +3122,31 @@ void MainWindow::showDictBarNamesTriggered()
   cfg.showingDictBarNames = show;
 }
 
-void MainWindow::iconSizeActionTriggered( QAction * /*action*/ )
+int MainWindow::getIconSize()
 {
   bool useLargeIcons = useLargeIconsInToolbarsAction.isChecked();
   int extent         = QApplication::style()->pixelMetric( QStyle::PM_ToolBarIconSize );
   if ( useLargeIcons ) {
+    extent = QApplication::style()->pixelMetric( QStyle::PM_LargeIconSize );
+  }
+  else if ( useSmallIconsInToolbarsAction.isChecked() ) {
+    extent = QApplication::style()->pixelMetric( QStyle::PM_SmallIconSize );
+  }
+  else {
+    //empty
+  }
+  return extent;
+}
+
+void MainWindow::iconSizeActionTriggered( QAction * /*action*/ )
+{
+  bool useLargeIcons = useLargeIconsInToolbarsAction.isChecked();
+  int extent         = getIconSize();
+  if ( useLargeIcons ) {
     cfg.usingToolbarsIconSize = Config::ToolbarsIconSize::Large;
-    extent                    = QApplication::style()->pixelMetric( QStyle::PM_LargeIconSize );
   }
   else if ( useSmallIconsInToolbarsAction.isChecked() ) {
     cfg.usingToolbarsIconSize = Config::ToolbarsIconSize::Small;
-    extent                    = QApplication::style()->pixelMetric( QStyle::PM_SmallIconSize );
   }
   else {
     cfg.usingToolbarsIconSize = Config::ToolbarsIconSize::Normal;
@@ -3144,6 +3158,13 @@ void MainWindow::iconSizeActionTriggered( QAction * /*action*/ )
   updateDictionaryBar();
 
   scanPopup->setDictionaryIconSize();
+
+  //ajust the font size as well
+  auto font = translateLine->font();
+  font.setPixelSize( extent );
+  translateLine->setFont( font );
+  translateBox->completerWidget()->setFont( font );
+  groupList->setFont( font );
 }
 
 void MainWindow::toggleMenuBarTriggered( bool announce )
@@ -3592,67 +3613,26 @@ void MainWindow::doWordsZoomBase()
 
 void MainWindow::applyWordsZoomLevel()
 {
-  QFont font( wordListDefaultFont );
+  QFont font = translateLine->font();
 
-  int ps = font.pointSize();
+  int ps = getIconSize();
 
-  if ( cfg.preferences.wordsZoomLevel != 0 ) {
-    ps += cfg.preferences.wordsZoomLevel;
-
-    if ( ps < 1 ) {
-      ps = 1;
-    }
-
-    font.setPointSize( ps );
+  ps += cfg.preferences.wordsZoomLevel;
+  if ( ps < 1 ) {
+    ps = 1;
   }
+  font.setPixelSize( ps );
+  ui.wordList->setFont( font );
+  translateLine->setFont( font );
+  translateBox->completerWidget()->setFont( font );
 
-  if ( ui.wordList->font().pointSize() != ps ) {
-    ui.wordList->setFont( font );
-  }
-
-  font = translateLineDefaultFont;
-
-  ps = font.pointSize();
-
-  if ( cfg.preferences.wordsZoomLevel != 0 ) {
-    ps += cfg.preferences.wordsZoomLevel;
-
-    if ( ps < 1 ) {
-      ps = 1;
-    }
-
-    font.setPointSize( ps );
-  }
-
-  if ( translateLine->font().pointSize() != ps ) {
-    translateLine->setFont( font );
-
-    translateBox->completerWidget()->setFont( font );
-  }
-
-  font = groupListDefaultFont;
-
-  ps = font.pointSize();
-
-  if ( cfg.preferences.wordsZoomLevel != 0 ) {
-    ps += cfg.preferences.wordsZoomLevel;
-
-    if ( ps < 1 ) {
-      ps = 1;
-    }
-
-    font.setPointSize( ps );
-  }
-
-  if ( groupList->font().pointSize() != ps ) {
-    disconnect( groupList, &GroupComboBox::currentIndexChanged, this, &MainWindow::currentGroupChanged );
-    int n = groupList->currentIndex();
-    groupList->clear();
-    groupList->setFont( font );
-    groupList->fill( groupInstances );
-    groupList->setCurrentIndex( n );
-    connect( groupList, &GroupComboBox::currentIndexChanged, this, &MainWindow::currentGroupChanged );
-  }
+  disconnect( groupList, &GroupComboBox::currentIndexChanged, this, &MainWindow::currentGroupChanged );
+  int n = groupList->currentIndex();
+  groupList->clear();
+  groupList->setFont( font );
+  groupList->fill( groupInstances );
+  groupList->setCurrentIndex( n );
+  connect( groupList, &GroupComboBox::currentIndexChanged, this, &MainWindow::currentGroupChanged );
 
   wordsZoomBase->setEnabled( cfg.preferences.wordsZoomLevel != 0 );
 

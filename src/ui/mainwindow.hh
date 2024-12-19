@@ -267,6 +267,7 @@ private:
   void changeWebEngineViewFont() const;
   bool isWordPresentedInFavorites( QString const & word, unsigned groupId );
   void errorMessageOnStatusBar( const QString & errStr );
+  int getIconSize();
 
 private slots:
 
