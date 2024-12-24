@@ -11,6 +11,8 @@
 #include "ui_scanpopup.h"
 #include <QDialog>
 #include <QClipboard>
+#include <QToolBar>
+#include <QActionGroup>
 #include "history.hh"
 #include "dictionarybar.hh"
 #include "mainstatusbar.hh"
@@ -136,7 +138,8 @@ private:
   WordFinder wordFinder;
   Config::Events configEvents;
   DictionaryBar dictionaryBar;
-  QToolBar * toolBar;
+  QToolBar * toolbar;
+  QActionGroup *actionGroup;
   MainStatusBar * mainStatusBar;
   /// Fonts saved before words zooming is in effect, so it could be reset back.
   QFont wordListDefaultFont, translateLineDefaultFont, groupListDefaultFont;
