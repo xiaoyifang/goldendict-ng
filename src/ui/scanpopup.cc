@@ -293,6 +293,15 @@ ScanPopup::ScanPopup( QWidget * parent,
   applyWordsZoomLevel();
 }
 
+void ScanPopup::onActionTriggered() {
+    QAction *action = qobject_cast<QAction *>(sender());
+    if (action) {
+      auto dictId = action->data().toString();
+      qDebug() << "Action triggered:" << dictId;
+      definition->jumpToDictionary(dictId);
+    }
+}
+
 void ScanPopup::updateFoundInDictsList()
 {
   if ( !toolbar->isVisible() ) {
@@ -325,6 +334,7 @@ void ScanPopup::updateFoundInDictsList()
         if ( id == activeId ) {
           action->setChecked( true );
         }
+        connect(action, &QAction::triggered, this, &ScanPopup::onActionTriggered);
         toolbar->addAction( action );
         actionGroup->addAction( action );
         break;
