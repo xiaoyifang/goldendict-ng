@@ -136,6 +136,7 @@ private:
   WordFinder wordFinder;
   Config::Events configEvents;
   DictionaryBar dictionaryBar;
+  QToolBar * toolBar;
   MainStatusBar * mainStatusBar;
   /// Fonts saved before words zooming is in effect, so it could be reset back.
   QFont wordListDefaultFont, translateLineDefaultFont, groupListDefaultFont;
@@ -227,4 +228,5 @@ private slots:
   void alwaysOnTopClicked( bool checked );
 
   void titleChanged( ArticleView *, QString const & title ) const;
+  void updateFoundInDictsList();
 };

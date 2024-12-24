@@ -77,6 +77,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   hideTimer( this )
 {
   ui.setupUi( this );
+  toolBar = new QToolBar("Dictionaries Toolbar" this );
 
   if ( layoutDirection() == Qt::RightToLeft ) {
     // Adjust button icons for Right-To-Left layout
@@ -104,6 +105,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( this, &ScanPopup::closeMenu, definition, &ArticleView::closePopupMenu );
   connect( definition, &ArticleView::sendWordToHistory, this, &ScanPopup::sendWordToHistory );
   connect( definition, &ArticleView::typingEvent, this, &ScanPopup::typingEvent );
+  connect( definition, &ArticleView::updateFoundInDictsList, this, &ScanPopup::updateFoundInDictsList );
 
   openSearchAction.setShortcut( QKeySequence( "Ctrl+F" ) );
   openSearchAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
@@ -148,7 +150,8 @@ ScanPopup::ScanPopup( QWidget * parent,
     dictionaryBar.setMutedDictionaries( grp ? &grp->popupMutedDictionaries : nullptr );
   }
 
-  addToolBar( Qt::RightToolBarArea, &dictionaryBar );
+  addToolBar( Qt::TopToolBarArea, &dictionaryBar );
+  addToolBar( Qt::RightToolBarArea, toolBar );
 
   connect( &dictionaryBar, &DictionaryBar::editGroupRequested, this, &ScanPopup::editGroupRequested );
   connect( this, &ScanPopup::closeMenu, &dictionaryBar, &DictionaryBar::closePopupMenu );
@@ -287,6 +290,48 @@ ScanPopup::ScanPopup( QWidget * parent,
 
   applyZoomFactor();
   applyWordsZoomLevel();
+}
+
+void ScanPopup::updateFoundInDictsList()
+{
+  if ( !toolbar->isVisible() ) {
+    // nothing to do, the list is not visible
+    return;
+  }
+  toolbar->setUpdatesEnabled( false );
+
+  unsigned currentId           = ui.groupList->getCurrentGroup();
+  Instances::Group const * grp = groups.findGroup( currentId );
+
+  auto dictionaries = !grp ? grp->dictionaries : allDictionaries;
+  QStringList ids   = definition->getArticlesList();
+  QString activeId  = definition->getActiveArticleId();
+
+  for ( QStringList::const_iterator i = ids.constBegin(); i != ids.constEnd(); ++i ) {
+    // Find this dictionary
+
+    for ( unsigned x = dictionaries.size(); x--; ) {
+      if ( dictionaries[ x ]->getId() == i->toUtf8().data() ) {
+
+        auto dictionary = dictionaries[ x ];
+        QIcon icon = dictionary->getIcon();
+        QString dictName = QString::fromUtf8( dictionary->getName().c_str() );
+        QAction * action = addAction( icon, elideDictName( dictName ) );
+        action->setToolTip( dictName ); // Tooltip need not be shortened
+        QString id = QString::fromStdString( dictionary->getId() );
+        action->setData( id );
+
+        if ( id == activeId ) {
+          action->setChecked( true );
+        }
+        toolbar->addAction( action );
+
+        break;
+      }
+    }
+  }
+
+  toolbar->setUpdatesEnabled( true );
 }
 
 void ScanPopup::refresh()
