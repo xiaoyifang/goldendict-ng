@@ -232,4 +232,5 @@ private slots:
 
   void titleChanged( ArticleView *, QString const & title ) const;
   void updateFoundInDictsList();
+  void onActionTriggered();
 };
