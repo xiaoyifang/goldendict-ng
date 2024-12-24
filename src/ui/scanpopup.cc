@@ -77,8 +77,9 @@ ScanPopup::ScanPopup( QWidget * parent,
   hideTimer( this )
 {
   ui.setupUi( this );
-  toolBar = new QToolBar("Dictionaries Toolbar" this );
-
+  toolbar = new QToolBar("Dictionaries Toolbar" this );
+  actionGroup = new QActionGroup(this);
+  actionGroup->setExclusive(true);
   if ( layoutDirection() == Qt::RightToLeft ) {
     // Adjust button icons for Right-To-Left layout
     ui.goBackButton->setIcon( QIcon( ":/icons/next.svg" ) );
@@ -151,7 +152,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   }
 
   addToolBar( Qt::TopToolBarArea, &dictionaryBar );
-  addToolBar( Qt::RightToolBarArea, toolBar );
+  addToolBar( Qt::RightToolBarArea, toolbar );
 
   connect( &dictionaryBar, &DictionaryBar::editGroupRequested, this, &ScanPopup::editGroupRequested );
   connect( this, &ScanPopup::closeMenu, &dictionaryBar, &DictionaryBar::closePopupMenu );
@@ -325,7 +326,7 @@ void ScanPopup::updateFoundInDictsList()
           action->setChecked( true );
         }
         toolbar->addAction( action );
-
+        actionGroup->addAction( action );
         break;
       }
     }
