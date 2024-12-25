@@ -77,7 +77,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   hideTimer( this )
 {
   ui.setupUi( this );
-  toolbar = new QToolBar("Dictionaries Toolbar" this );
+  toolbar = new QToolBar("Dictionaries Toolbar", this );
   actionGroup = new QActionGroup(this);
   actionGroup->setExclusive(true);
   if ( layoutDirection() == Qt::RightToLeft ) {
@@ -298,7 +298,7 @@ void ScanPopup::onActionTriggered() {
     if (action) {
       auto dictId = action->data().toString();
       qDebug() << "Action triggered:" << dictId;
-      definition->jumpToDictionary(dictId);
+      definition->jumpToDictionary(dictId,false);
     }
 }
 
@@ -326,7 +326,7 @@ void ScanPopup::updateFoundInDictsList()
         auto dictionary = dictionaries[ x ];
         QIcon icon = dictionary->getIcon();
         QString dictName = QString::fromUtf8( dictionary->getName().c_str() );
-        QAction * action = addAction( icon, elideDictName( dictName ) );
+        QAction * action = addAction( icon, dictName );
         action->setToolTip( dictName ); // Tooltip need not be shortened
         QString id = QString::fromStdString( dictionary->getId() );
         action->setData( id );
