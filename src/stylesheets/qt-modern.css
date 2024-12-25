@@ -23,16 +23,3 @@ QMainWindow::separator {
   width: 1px; /* when vertical */
   height: 1px; /* when horizontal */
 }
-
-ScanPopup #goBackButtonAA,
-/* ScanPopup #queryError,        */
-ScanPopup #goForwardButtonAA,
-ScanPopup #wordListButtonXX,
-ScanPopup #pronounceButtonAA,
-ScanPopup #sendWordButtonXX
-/* ScanPopup #showDictionaryBar, */
-/* ScanPopup #pinButton */ {
-  width: 0px;
-  height: 0px;
-  margin: -4px;
-}
