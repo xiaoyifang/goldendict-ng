@@ -317,7 +317,7 @@ void ScanPopup::updateFoundInDictsList()
   QStringList ids   = definition->getArticlesList();
   QString activeId  = definition->getActiveArticleId();
   toolbar->clear();
-  actionGroup->clear();
+  //  actionGroup->removeAllActions();
   for ( QStringList::const_iterator i = ids.constBegin(); i != ids.constEnd(); ++i ) {
     // Find this dictionary
 
