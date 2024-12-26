@@ -1605,7 +1605,7 @@ void DslResourceRequest::run()
   string n = dict.getContainingFolder().toStdString() + Utils::Fs::separator() + resourceName;
 
   auto fp =
-    Utls::Fs::findFirstExistingFile( n, dict.getResourceDir1() + resourceName, dict.getResourceDir2() + resourceName );
+    Utils::Fs::findFirstExistingFile( n, dict.getResourceDir1() + resourceName, dict.getResourceDir2() + resourceName );
   qDebug( "found dsl resource name is %s", fp.c_str() );
   try {
     try {
@@ -1707,7 +1707,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       string baseName = ( fileName[ fileName.size() - 4 ] == '.' ) ? string( fileName, 0, fileName.size() - 4 ) :
                                                                      string( fileName, 0, fileName.size() - 7 );
 
-      string abrvFileName = Utls::Fs::findFirstExistingFile( baseName + "_abrv.dsl",
+      string abrvFileName = Utils::Fs::findFirstExistingFile( baseName + "_abrv.dsl",
                                                              baseName + "_abrv.dsl.dz",
                                                              baseName + "_ABRV.DSL",
                                                              baseName + "_ABRV.DSL.DZ",
@@ -1724,7 +1724,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
       // See if there's a zip file with resources present. If so, include it.
 
-      string zipFileName = Utls::Fs::findFirstExistingFile( baseName + ".dsl.files.zip",
+      string zipFileName = Utils::Fs::findFirstExistingFile( baseName + ".dsl.files.zip",
                                                             baseName + ".dsl.dz.files.zip",
                                                             baseName + ".DSL.FILES.ZIP",
                                                             baseName + ".DSL.DZ.FILES.ZIP" );
