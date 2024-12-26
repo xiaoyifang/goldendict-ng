@@ -78,8 +78,7 @@ ScanPopup::ScanPopup( QWidget * parent,
 {
   ui.setupUi( this );
   toolbar = new QToolBar("Dictionaries Toolbar", this );
-  actionGroup = new QActionGroup(this);
-  actionGroup->setExclusive(true);
+
   if ( layoutDirection() == Qt::RightToLeft ) {
     // Adjust button icons for Right-To-Left layout
     ui.goBackButton->setIcon( QIcon( ":/icons/next.svg" ) );
@@ -320,7 +319,8 @@ void ScanPopup::updateFoundInDictsList()
   if( actionGroup ){
     delete actionGroup;
   }
-  actionGroup = new ActionGroup( this );
+  actionGroup = new QActionGroup( this );
+  actionGroup->setExclusive(true);
   for ( QStringList::const_iterator i = ids.constBegin(); i != ids.constEnd(); ++i ) {
     // Find this dictionary
 
