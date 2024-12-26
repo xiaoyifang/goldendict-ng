@@ -108,7 +108,8 @@ bool IndexedZip::loadFile( uint32_t offset, vector< char > & data )
 
       int ret = inflate( &stream, Z_FINISH );
       if ( ret != Z_STREAM_END ) {
-        qDebug() << "Not zstream end! Stream total_in:" << stream.total_in << "total_out:" << stream.total_out << "msg:" << (stream.msg ? stream.msg : "none");
+        qDebug() << "Not zstream end! Stream total_in:" << stream.total_in << "total_out:" << stream.total_out
+                 << "msg:" << ( stream.msg ? stream.msg : "none" );
 
         data.clear();
 
