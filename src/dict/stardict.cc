@@ -1658,21 +1658,21 @@ static void findCorrespondingFiles( string const & ifo, string & idx, string & d
 {
   string base( ifo, 0, ifo.size() - 3 );
 
-  auto ret = Utils::Fs::anyExistingFile(
+  idx = Utils::Fs::findFirstExistingFile(
     { base + "idx", base + "idx.gz", base + "idx.dz", base + "IDX", base + "IDX.GZ", base + "IDX.DZ" } );
-  if ( !ret ) {
+  if ( idx.empty() ) {
     throw exNoIdxFile( ifo );
   }
 
-  ret = Utils::Fs::anyExistingFile( { base + "dict", base + "dict.dz", base + "DICT", base + "dict.DZ" } );
-  if ( !ret ) {
+  dict = Utils::Fs::findFirstExistingFile( { base + "dict", base + "dict.dz", base + "DICT", base + "dict.DZ" } );
+  if ( dict.empty() ) {
     throw exNoDictFile( ifo );
   }
 
-  ret = Utils::Fs::anyExistingFile(
+  syn = Utils::Fs::findFirstExistingFile(
     { base + "syn", base + "syn.gz", base + "syn.dz", base + "SYN", base + "SYN.GZ", base + "SYN.DZ" } );
 
-  if ( !ret ) {
+  if ( syn.empty() ) {
     syn.clear();
   }
 }
