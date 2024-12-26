@@ -328,7 +328,6 @@ bool Class::loadIconFromText( const QString & iconUrl, QString const & text )
     font.setPixelSize( iconSize * 0.4 );
     QFontMetrics fm1( font );
     const QString & orderNum = abbrName.mid( 1 );
-    int orderNumberWidth     = fm1.horizontalAdvance( orderNum );
 
     painter.setFont( font );
     painter.drawText( rectangle, Qt::AlignRight | Qt::AlignBottom, orderNum );
