@@ -377,6 +377,24 @@ inline std::string findFirstExistingFile( std::initializer_list< std::string > f
   }
   return {};
 }
+
+inline bool anyExistingFile( std::initializer_list< std::string > filePaths )
+{
+  for ( const std::string & filePath : filePaths ) {
+    auto fp = QString::fromStdString( filePath );
+    if ( QFile::exists( fp ) ) {
+      return true;
+    }
+  }
+  return false;
+}
+
+// QFileInfo::exists but used for std::string and char*
+inline bool exists( std::string_view filename ) noexcept
+{
+  return QFileInfo::exists( QString::fromUtf8( filename.data(), filename.size() ) );
+}
+
 } // namespace Fs
 
 namespace WebSite {
