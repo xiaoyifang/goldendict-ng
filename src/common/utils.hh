@@ -361,7 +361,7 @@ void removeDirectory( string const & directory );
 inline QString findFirstExistingFile( std::initializer_list< QString > filePaths )
 {
   for ( const QString & filePath : filePaths ) {
-    if ( QFile::exists( filePath ) ) {
+    if ( QFileInfo::exists( filePath ) ) {
       return filePath;
     }
   }
@@ -372,7 +372,7 @@ inline std::string findFirstExistingFile( std::initializer_list< std::string > f
 {
   for ( const std::string & filePath : filePaths ) {
     auto fp = QString::fromStdString( filePath );
-    if ( QFile::exists( fp ) ) {
+    if ( QFileInfo::exists( fp ) ) {
       return filePath;
     }
   }
@@ -383,7 +383,7 @@ inline bool anyExistingFile( std::initializer_list< std::string > filePaths )
 {
   for ( const std::string & filePath : filePaths ) {
     auto fp = QString::fromStdString( filePath );
-    if ( QFile::exists( fp ) ) {
+    if ( QFileInfo::exists( fp ) ) {
       return true;
     }
   }
