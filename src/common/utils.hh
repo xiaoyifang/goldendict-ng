@@ -10,6 +10,7 @@
 #include <QTextDocument>
 #include <QUrl>
 #include <QUrlQuery>
+#include <QFileInfo>
 #include <QWidget>
 #include "filetype.hh"
 #include <string>
@@ -392,7 +393,7 @@ inline bool anyExistingFile( std::initializer_list< std::string > filePaths )
 // used for std::string and char*
 inline bool exists( std::string_view filename ) noexcept
 {
-  return QFile::exists( QString::fromUtf8( filename.data(), filename.size() ) );
+  return QFileInfo::exists( QString::fromUtf8( filename.data(), filename.size() ) );
 }
 
 } // namespace Fs
