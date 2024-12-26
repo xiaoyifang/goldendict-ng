@@ -350,7 +350,7 @@ void ScanPopup::applyWordsZoomLevel()
 {
   QFont font = ui.translateBox->translateLine()->font();
 
-  int ps = dictionaryBar->iconSize().width();
+  int ps = dictionaryBar->iconSize().height();
 
   if ( cfg.preferences.wordsZoomLevel != 0 ) {
     ps += cfg.preferences.wordsZoomLevel;
