@@ -1658,7 +1658,8 @@ static void findCorrespondingFiles( string const & ifo, string & idx, string & d
 {
   string base( ifo, 0, ifo.size() - 3 );
 
-  auto ret = Utils::Fs::anyExistingFile( { base + "idx", base + "idx.gz", base + "idx.dz", base + "IDX", base + "IDX.GZ", base + "IDX.DZ" } );
+  auto ret = Utils::Fs::anyExistingFile(
+    { base + "idx", base + "idx.gz", base + "idx.dz", base + "IDX", base + "IDX.GZ", base + "IDX.DZ" } );
   if ( !ret ) {
     throw exNoIdxFile( ifo );
   }
@@ -1668,7 +1669,8 @@ static void findCorrespondingFiles( string const & ifo, string & idx, string & d
     throw exNoDictFile( ifo );
   }
 
-  ret = Utils::Fs::anyExistingFile( { base + "syn", base + "syn.gz", base + "syn.dz", base + "SYN", base + "SYN.GZ", base + "SYN.DZ" } );
+  ret = Utils::Fs::anyExistingFile(
+    { base + "syn", base + "syn.gz", base + "syn.dz", base + "SYN", base + "SYN.GZ", base + "SYN.DZ" } );
 
   if ( !ret ) {
     syn.clear();
