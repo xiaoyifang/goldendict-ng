@@ -99,6 +99,12 @@
              <property name="enabled">
               <bool>true</bool>
              </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="text">
               <string/>
              </property>
@@ -109,6 +115,12 @@
            </item>
            <item>
             <widget class="QToolButton" name="goBackButton">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="toolTip">
               <string>Back</string>
              </property>
@@ -120,6 +132,12 @@
            </item>
            <item>
             <widget class="QToolButton" name="goForwardButton">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="toolTip">
               <string>Forward</string>
              </property>
@@ -131,6 +149,12 @@
            </item>
            <item>
             <widget class="QToolButton" name="pronounceButton">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="toolTip">
               <string>Pronounce Word (Alt+S)</string>
              </property>
@@ -148,6 +172,12 @@
            </item>
            <item>
             <widget class="QToolButton" name="sendWordButton">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="toolTip">
               <string>Send word to main window (Alt+W)</string>
              </property>
@@ -162,6 +192,12 @@
            </item>
            <item>
             <widget class="QToolButton" name="sendWordToFavoritesButton">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="toolTip">
               <string>Add word to Favorites (Ctrl+E)</string>
              </property>
@@ -189,6 +225,12 @@
            </item>
            <item>
             <widget class="QToolButton" name="showDictionaryBar">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="toolTip">
               <string>Shows or hides the dictionary bar</string>
              </property>
@@ -209,6 +251,12 @@
            </item>
            <item>
             <widget class="QToolButton" name="onTopButton">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="toolTip">
               <string>Always stay on top of all other windows</string>
              </property>
@@ -226,6 +274,12 @@
            </item>
            <item>
             <widget class="QToolButton" name="pinButton">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="toolTip">
               <string>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</string>
