@@ -1668,7 +1668,7 @@ static void findCorrespondingFiles( string const & ifo, string & idx, string & d
 
   vector< string > dictFiles = { base + "dict", base + "dict.dz", base + "DICT", base + "dict.DZ" };
 
-  ret = Utils::Fs::findFirstExistingFile( dictFiles );
+  ret = Utils::Fs::anyExistingFile( dictFiles );
   if ( !ret ) {
     throw exNoDictFile( ifo );
   }
@@ -1676,7 +1676,7 @@ static void findCorrespondingFiles( string const & ifo, string & idx, string & d
   vector< string > synFiles =
     { base + "syn", base + "syn.gz", base + "syn.dz", base + "SYN", base + "SYN.GZ", base + "SYN.DZ" };
 
-  ret = Utils::Fs::findFirstExistingFile( synFiles );
+  ret = Utils::Fs::anyExistingFile( synFiles );
 
   if ( !ret ) {
     syn.clear();
