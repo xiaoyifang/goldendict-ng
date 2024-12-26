@@ -1604,43 +1604,27 @@ void DslResourceRequest::run()
 
   string n = dict.getContainingFolder().toStdString() + Utils::Fs::separator() + resourceName;
 
-  qDebug( "dsl resource name is %s", n.c_str() );
-
+  auto fp =
+    Fs::findFirstExistingFile( n, dict.getResourceDir1() + resourceName, dict.getResourceDir2() + resourceName );
+  qDebug( "found dsl resource name is %s", fp.c_str() );
   try {
     try {
       QMutexLocker _( &dataMutex );
 
-      File::loadFromFile( n, data );
+      File::loadFromFile( fp, data );
     }
     catch ( File::exCantOpen & ) {
-      n = dict.getResourceDir1() + resourceName;
-      try {
+      // Try reading from zip file
+
+      if ( dict.resourceZip.isOpen() ) {
         QMutexLocker _( &dataMutex );
 
-        File::loadFromFile( n, data );
+        if ( !dict.resourceZip.loadFile( Text::toUtf32( resourceName ), data ) ) {
+          throw; // Make it fail since we couldn't read the archive
+        }
       }
-      catch ( File::exCantOpen & ) {
-        n = dict.getResourceDir2() + resourceName;
-
-        try {
-          QMutexLocker _( &dataMutex );
-
-          File::loadFromFile( n, data );
-        }
-        catch ( File::exCantOpen & ) {
-          // Try reading from zip file
-
-          if ( dict.resourceZip.isOpen() ) {
-            QMutexLocker _( &dataMutex );
-
-            if ( !dict.resourceZip.loadFile( Text::toUtf32( resourceName ), data ) ) {
-              throw; // Make it fail since we couldn't read the archive
-            }
-          }
-          else {
-            throw;
-          }
-        }
+      else {
+        throw;
       }
     }
 

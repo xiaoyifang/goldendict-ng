@@ -356,6 +356,25 @@ string basename( string const & );
 void removeDirectory( QString const & directory );
 
 void removeDirectory( string const & directory );
+
+inline QString findFirstExistingFile(std::initializer_list<QString> filePaths) {
+    for (const QString &filePath : filePaths) {
+        if (QFile::exists(filePath)) {
+            return filePath;
+        }
+    }
+    return QString(); 
+}
+
+inline std::string findFirstExistingFile(std::initializer_list<std::string> filePaths) {
+    for (const std::string &filePath : filePaths) {
+        auto fp=QString::fromStdString(filePath);
+        if (QFile::exists(fp)) {
+            return filePath;
+        }
+    }
+    return {}; 
+}
 } // namespace Fs
 
 namespace WebSite {
