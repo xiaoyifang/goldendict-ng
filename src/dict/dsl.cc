@@ -1605,7 +1605,7 @@ void DslResourceRequest::run()
   string n = dict.getContainingFolder().toStdString() + Utils::Fs::separator() + resourceName;
 
   auto fp =
-    Utils::Fs::findFirstExistingFile( n, dict.getResourceDir1() + resourceName, dict.getResourceDir2() + resourceName );
+    Utils::Fs::findFirstExistingFile( {n, dict.getResourceDir1() + resourceName, dict.getResourceDir2() + resourceName} );
   qDebug( "found dsl resource name is %s", fp.c_str() );
   try {
     try {
@@ -1707,11 +1707,11 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       string baseName = ( fileName[ fileName.size() - 4 ] == '.' ) ? string( fileName, 0, fileName.size() - 4 ) :
                                                                      string( fileName, 0, fileName.size() - 7 );
 
-      string abrvFileName = Utils::Fs::findFirstExistingFile( baseName + "_abrv.dsl",
+      string abrvFileName = Utils::Fs::findFirstExistingFile( {baseName + "_abrv.dsl",
                                                               baseName + "_abrv.dsl.dz",
                                                               baseName + "_ABRV.DSL",
                                                               baseName + "_ABRV.DSL.DZ",
-                                                              baseName + "_ABRV.DSL.dz" );
+                                                             baseName + "_ABRV.DSL.dz" });
 
       //check empty string
       if ( abrvFileName.size() ) {
@@ -1724,10 +1724,10 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
       // See if there's a zip file with resources present. If so, include it.
 
-      string zipFileName = Utils::Fs::findFirstExistingFile( baseName + ".dsl.files.zip",
+      string zipFileName = Utils::Fs::findFirstExistingFile( {baseName + ".dsl.files.zip",
                                                              baseName + ".dsl.dz.files.zip",
                                                              baseName + ".DSL.FILES.ZIP",
-                                                             baseName + ".DSL.DZ.FILES.ZIP" );
+                                                            baseName + ".DSL.DZ.FILES.ZIP" });
 
       if ( !zipFileName.empty() ) {
         dictFiles.push_back( zipFileName );
