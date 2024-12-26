@@ -946,16 +946,8 @@ QModelIndex FavoritesModel::addNewFolder( const QModelIndex & idx )
 
   QString name = baseName;
   if ( findItemInFolder( name, TreeItem::Folder, parentIdx ).isValid() ) {
-    int i;
-    for ( i = 1; i < 1000; i++ ) {
-      name = baseName + QString::number( i );
-      if ( !findItemInFolder( name, TreeItem::Folder, parentIdx ).isValid() ) {
-        break;
-      }
-    }
-    if ( i >= 1000 ) {
-      return QModelIndex();
-    }
+    //name, with date as part of the name
+    name = baseName + QString::number( QDateTime::currentDateTime().toSecsSinceEpoch() );
   }
 
   // Create folder with unique name
