@@ -109,16 +109,26 @@ bool IndexedZip::loadFile( uint32_t offset, vector< char > & data )
       int ret = inflate( &stream, Z_FINISH );
       if ( ret != Z_STREAM_END ) {
         qDebug() << "Not zstream end! Stream total_in:" << stream.total_in << "total_out:" << stream.total_out
-                 << "msg:" << ( stream.msg ? stream.msg : "none" );
+             << "msg:" << ( stream.msg ? stream.msg : "none" );
 
         data.clear();
 
-        inflateEnd( &stream );
+        int endRet = inflateEnd( &stream );
+        if ( endRet != Z_OK ) {
+          qDebug() << "inflateEnd failed after inflate! msg:" << ( stream.msg ? stream.msg : "none" );
+        }
 
         return false;
       }
 
-      inflateEnd( &stream );
+      ret = inflateEnd( &stream );
+      if ( ret != Z_OK ) {
+        qDebug() << "inflateEnd failed! msg:" << ( stream.msg ? stream.msg : "none" );
+
+        data.clear();
+
+        return false;
+      }
 
       return true;
     }
