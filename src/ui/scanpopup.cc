@@ -317,7 +317,10 @@ void ScanPopup::updateFoundInDictsList()
   QStringList ids   = definition->getArticlesList();
   QString activeId  = definition->getActiveArticleId();
   toolbar->clear();
-  //  actionGroup->removeAllActions();
+  if( actionGroup ){
+    delete actionGroup;
+  }
+  actionGroup = new ActionGroup( this );
   for ( QStringList::const_iterator i = ids.constBegin(); i != ids.constEnd(); ++i ) {
     // Find this dictionary
 
@@ -327,11 +330,11 @@ void ScanPopup::updateFoundInDictsList()
         auto dictionary = dictionaries[ x ];
         QIcon icon = dictionary->getIcon();
         QString dictName = QString::fromUtf8( dictionary->getName().c_str() );
-        QAction * action = addAction( icon, dictName );
-        action->setToolTip( dictName ); // Tooltip need not be shortened
+        QAction * action = new QAction( dictName,this );
+        action->setIcon( icon );
         QString id = QString::fromStdString( dictionary->getId() );
         action->setData( id );
-
+        action->setCheckable(true);
         if ( id == activeId ) {
           action->setChecked( true );
         }
