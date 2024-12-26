@@ -389,10 +389,10 @@ inline bool anyExistingFile( std::initializer_list< std::string > filePaths )
   return false;
 }
 
-// QFileInfo::exists but used for std::string and char*
+// used for std::string and char*
 inline bool exists( std::string_view filename ) noexcept
 {
-  return QFileInfo::exists( QString::fromUtf8( filename.data(), filename.size() ) );
+  return QFile::exists( QString::fromUtf8( filename.data(), filename.size() ) );
 }
 
 } // namespace Fs
