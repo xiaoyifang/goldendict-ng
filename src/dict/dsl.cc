@@ -1725,9 +1725,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       // See if there's a zip file with resources present. If so, include it.
 
       string zipFileName = Fs::findFirstExistingFile( baseName + ".dsl.files.zip",
-                      baseName + ".dsl.dz.files.zip",
-                      baseName + ".DSL.FILES.ZIP",
-                      baseName + ".DSL.DZ.FILES.ZIP" );
+                                                      baseName + ".dsl.dz.files.zip",
+                                                      baseName + ".DSL.FILES.ZIP",
+                                                      baseName + ".DSL.DZ.FILES.ZIP" );
 
       if ( !zipFileName.empty() ) {
         dictFiles.push_back( zipFileName );
