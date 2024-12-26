@@ -1658,32 +1658,25 @@ static void findCorrespondingFiles( string const & ifo, string & idx, string & d
 {
   string base( ifo, 0, ifo.size() - 3 );
 
-  vector<string> idxFiles = {
-    base + "idx", base + "idx.gz", base + "idx.dz", 
-    base + "IDX", base + "IDX.GZ", base + "IDX.DZ"
-  };
-  
-  auto ret = Utils::Fs::anyExistingFile(idxFiles);
-  if(!ret) {
-    throw exNoIdxFile(ifo);
+  vector< string > idxFiles =
+    { base + "idx", base + "idx.gz", base + "idx.dz", base + "IDX", base + "IDX.GZ", base + "IDX.DZ" };
+
+  auto ret = Utils::Fs::anyExistingFile( idxFiles );
+  if ( !ret ) {
+    throw exNoIdxFile( ifo );
   }
 
-  vector<string> dictFiles = {
-    base + "dict", base + "dict.dz",
-    base + "DICT", base + "dict.DZ" 
-  };
-  
-  ret = Utils::Fs::findFirstExistingFile(dictFiles);
-  if(!ret) {
+  vector< string > dictFiles = { base + "dict", base + "dict.dz", base + "DICT", base + "dict.DZ" };
+
+  ret = Utils::Fs::findFirstExistingFile( dictFiles );
+  if ( !ret ) {
     throw exNoDictFile( ifo );
   }
 
-  vector<string> synFiles = {
-    base + "syn", base + "syn.gz", base + "syn.dz",
-    base + "SYN", base + "SYN.GZ", base + "SYN.DZ"
-  };
+  vector< string > synFiles =
+    { base + "syn", base + "syn.gz", base + "syn.dz", base + "SYN", base + "SYN.GZ", base + "SYN.DZ" };
 
-  ret = Utils::Fs::findFirstExistingFile(synFiles);
+  ret = Utils::Fs::findFirstExistingFile( synFiles );
 
   if ( !ret ) {
     syn.clear();

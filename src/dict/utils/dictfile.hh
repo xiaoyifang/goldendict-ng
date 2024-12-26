@@ -29,7 +29,6 @@ bool tryPossibleZipName( std::string const & name, std::string & copyTo );
 void loadFromFile( std::string const & filename, std::vector< char > & data );
 
 
-
 /// Exclusivly used for processing GD's index files
 class Index
 {
