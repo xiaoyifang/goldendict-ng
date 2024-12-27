@@ -3140,10 +3140,10 @@ int MainWindow::getIconSize()
 
 void MainWindow::iconSizeActionTriggered( QAction * /*action*/ )
 {
-  //reset word zoom 
+  //reset word zoom
   cfg.preferences.wordsZoomLevel = 0;
   wordsZoomBase->setEnabled( false );
-  
+
   bool useLargeIcons = useLargeIconsInToolbarsAction.isChecked();
   int extent         = getIconSize();
   if ( useLargeIcons ) {
