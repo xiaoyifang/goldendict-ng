@@ -2889,9 +2889,8 @@ void MainWindow::toggleMainWindow( bool ensureShow )
 
   if ( !isVisible() ) {
     show();
-
-    activateWindow();
     raise();
+    activateWindow();
     shown = true;
   }
   else if ( isMinimized() ) {
@@ -2901,17 +2900,12 @@ void MainWindow::toggleMainWindow( bool ensureShow )
     else {
       showNormal();
     }
-    activateWindow();
     raise();
+    activateWindow();
     shown = true;
   }
   else if ( !isActiveWindow() ) {
-    if ( wasMaximized ) {
-      showMaximized();
-    }
-    else {
-      showNormal();
-    }
+    show();
     if ( cfg.preferences.raiseWindowOnSearch ) {
       raise();
     }
