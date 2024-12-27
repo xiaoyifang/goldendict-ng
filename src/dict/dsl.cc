@@ -1604,54 +1604,28 @@ void DslResourceRequest::run()
 
   string n = dict.getContainingFolder().toStdString() + Utils::Fs::separator() + resourceName;
 
-  qDebug( "dsl resource name is %s", n.c_str() );
-
+  auto fp = Utils::Fs::findFirstExistingFile(
+    { n, dict.getResourceDir1() + resourceName, dict.getResourceDir2() + resourceName } );
+  qDebug( "found dsl resource name is %s", fp.c_str() );
   try {
-    try {
-      QMutexLocker _( &dataMutex );
+    QMutexLocker _( &dataMutex );
 
-      File::loadFromFile( n, data );
+    if ( !fp.empty() ) {
+      File::loadFromFile( fp, data );
     }
-    catch ( File::exCantOpen & ) {
-      n = dict.getResourceDir1() + resourceName;
-      try {
-        QMutexLocker _( &dataMutex );
-
-        File::loadFromFile( n, data );
+    else if ( dict.resourceZip.isOpen() ) {
+      if ( !dict.resourceZip.loadFile( Text::toUtf32( resourceName ), data ) ) {
+        throw std::runtime_error( "Failed to load file from resource zip" );
       }
-      catch ( File::exCantOpen & ) {
-        n = dict.getResourceDir2() + resourceName;
-
-        try {
-          QMutexLocker _( &dataMutex );
-
-          File::loadFromFile( n, data );
-        }
-        catch ( File::exCantOpen & ) {
-          // Try reading from zip file
-
-          if ( dict.resourceZip.isOpen() ) {
-            QMutexLocker _( &dataMutex );
-
-            if ( !dict.resourceZip.loadFile( Text::toUtf32( resourceName ), data ) ) {
-              throw; // Make it fail since we couldn't read the archive
-            }
-          }
-          else {
-            throw;
-          }
-        }
-      }
+    }
+    else {
+      throw std::runtime_error( "Resource zip not opened" );
     }
 
     if ( Filetype::isNameOfTiff( resourceName ) ) {
       // Convert it
-
-      QMutexLocker _( &dataMutex );
       GdTiff::tiff2img( data );
     }
-
-    QMutexLocker _( &dataMutex );
 
     hasAnyData = true;
   }
@@ -1723,13 +1697,14 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       string baseName = ( fileName[ fileName.size() - 4 ] == '.' ) ? string( fileName, 0, fileName.size() - 4 ) :
                                                                      string( fileName, 0, fileName.size() - 7 );
 
-      string abrvFileName;
+      string abrvFileName = Utils::Fs::findFirstExistingFile( { baseName + "_abrv.dsl",
+                                                                baseName + "_abrv.dsl.dz",
+                                                                baseName + "_ABRV.DSL",
+                                                                baseName + "_ABRV.DSL.DZ",
+                                                                baseName + "_ABRV.DSL.dz" } );
 
-      if ( File::tryPossibleName( baseName + "_abrv.dsl", abrvFileName )
-           || File::tryPossibleName( baseName + "_abrv.dsl.dz", abrvFileName )
-           || File::tryPossibleName( baseName + "_ABRV.DSL", abrvFileName )
-           || File::tryPossibleName( baseName + "_ABRV.DSL.DZ", abrvFileName )
-           || File::tryPossibleName( baseName + "_ABRV.DSL.dz", abrvFileName ) ) {
+      //check empty string
+      if ( abrvFileName.size() ) {
         dictFiles.push_back( abrvFileName );
       }
 
@@ -1739,12 +1714,12 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
       // See if there's a zip file with resources present. If so, include it.
 
-      string zipFileName;
+      string zipFileName = Utils::Fs::findFirstExistingFile( { baseName + ".dsl.files.zip",
+                                                               baseName + ".dsl.dz.files.zip",
+                                                               baseName + ".DSL.FILES.ZIP",
+                                                               baseName + ".DSL.DZ.FILES.ZIP" } );
 
-      if ( File::tryPossibleZipName( baseName + ".dsl.files.zip", zipFileName )
-           || File::tryPossibleZipName( baseName + ".dsl.dz.files.zip", zipFileName )
-           || File::tryPossibleZipName( baseName + ".DSL.FILES.ZIP", zipFileName )
-           || File::tryPossibleZipName( baseName + ".DSL.DZ.FILES.ZIP", zipFileName ) ) {
+      if ( !zipFileName.empty() ) {
         dictFiles.push_back( zipFileName );
       }
 

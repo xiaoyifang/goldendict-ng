@@ -28,11 +28,6 @@ bool tryPossibleZipName( std::string const & name, std::string & copyTo );
 
 void loadFromFile( std::string const & filename, std::vector< char > & data );
 
-// QFileInfo::exists but used for std::string and char*
-inline bool exists( std::string_view filename ) noexcept
-{
-  return QFileInfo::exists( QString::fromUtf8( filename.data(), filename.size() ) );
-};
 
 /// Exclusivly used for processing GD's index files
 class Index

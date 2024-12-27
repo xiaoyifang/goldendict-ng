@@ -10,6 +10,7 @@
 #include <QTextDocument>
 #include <QUrl>
 #include <QUrlQuery>
+#include <QFileInfo>
 #include <QWidget>
 #include "filetype.hh"
 #include <string>
@@ -356,6 +357,45 @@ string basename( string const & );
 void removeDirectory( QString const & directory );
 
 void removeDirectory( string const & directory );
+
+inline QString findFirstExistingFile( std::initializer_list< QString > filePaths )
+{
+  for ( const QString & filePath : filePaths ) {
+    if ( QFileInfo::exists( filePath ) ) {
+      return filePath;
+    }
+  }
+  return QString();
+}
+
+inline std::string findFirstExistingFile( std::initializer_list< std::string > filePaths )
+{
+  for ( const std::string & filePath : filePaths ) {
+    auto fp = QString::fromStdString( filePath );
+    if ( QFileInfo::exists( fp ) ) {
+      return filePath;
+    }
+  }
+  return {};
+}
+
+inline bool anyExistingFile( std::initializer_list< std::string > filePaths )
+{
+  for ( const std::string & filePath : filePaths ) {
+    auto fp = QString::fromStdString( filePath );
+    if ( QFileInfo::exists( fp ) ) {
+      return true;
+    }
+  }
+  return false;
+}
+
+// used for std::string and char*
+inline bool exists( std::string_view filename ) noexcept
+{
+  return QFileInfo::exists( QString::fromUtf8( filename.data(), filename.size() ) );
+}
+
 } // namespace Fs
 
 namespace WebSite {
