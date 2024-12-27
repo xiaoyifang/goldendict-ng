@@ -1617,11 +1617,11 @@ void DslResourceRequest::run()
       QMutexLocker _( &dataMutex );
 
       if ( !dict.resourceZip.loadFile( Text::toUtf32( resourceName ), data ) ) {
-      throw std::runtime_error("Failed to load file from resource zip");
+        throw std::runtime_error( "Failed to load file from resource zip" );
       }
     }
     else {
-      throw std::runtime_error("Resource zip not opened");
+      throw std::runtime_error( "Resource zip not opened" );
     }
 
     if ( Filetype::isNameOfTiff( resourceName ) ) {
