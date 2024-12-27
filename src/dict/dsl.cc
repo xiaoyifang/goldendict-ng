@@ -1608,24 +1608,20 @@ void DslResourceRequest::run()
     { n, dict.getResourceDir1() + resourceName, dict.getResourceDir2() + resourceName } );
   qDebug( "found dsl resource name is %s", fp.c_str() );
   try {
-    try {
-      QMutexLocker _( &dataMutex );
+    QMutexLocker _( &dataMutex );
 
+    if ( !fp.empty() ) {
       File::loadFromFile( fp, data );
     }
-    catch ( File::exCantOpen & ) {
-      // Try reading from zip file
+    else if ( dict.resourceZip.isOpen() ) {
+      QMutexLocker _( &dataMutex );
 
-      if ( dict.resourceZip.isOpen() ) {
-        QMutexLocker _( &dataMutex );
-
-        if ( !dict.resourceZip.loadFile( Text::toUtf32( resourceName ), data ) ) {
-          throw; // Make it fail since we couldn't read the archive
-        }
+      if ( !dict.resourceZip.loadFile( Text::toUtf32( resourceName ), data ) ) {
+      throw std::runtime_error("Failed to load file from resource zip");
       }
-      else {
-        throw;
-      }
+    }
+    else {
+      throw std::runtime_error("Resource zip not opened");
     }
 
     if ( Filetype::isNameOfTiff( resourceName ) ) {
