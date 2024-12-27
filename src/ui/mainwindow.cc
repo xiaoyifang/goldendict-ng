@@ -2883,6 +2883,10 @@ void MainWindow::toggleMainWindow( bool ensureShow )
     translateBox->setPopupEnabled( false );
   }
 
+  qDebug() << "current windows state,visible:" << isVisible() << ",minimized:" << isMinimized()
+           << ",active:" << isActiveWindow() << ",ensureShow:" << ensureShow << ",wasMaximized:" << wasMaximized
+           << ",preference focus:" << cfg.preferences.raiseWindowOnSearch;
+
   if ( !isVisible() ) {
     show();
 
