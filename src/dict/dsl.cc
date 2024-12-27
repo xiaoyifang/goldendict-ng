@@ -1608,9 +1608,9 @@ void DslResourceRequest::run()
     { n, dict.getResourceDir1() + resourceName, dict.getResourceDir2() + resourceName } );
   qDebug( "found dsl resource name is %s", fp.c_str() );
   try {
-    QMutexLocker _( &dataMutex );
 
     if ( !fp.empty() ) {
+      QMutexLocker _( &dataMutex );
       File::loadFromFile( fp, data );
     }
     else if ( dict.resourceZip.isOpen() ) {
