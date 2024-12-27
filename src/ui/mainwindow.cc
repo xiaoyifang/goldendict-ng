@@ -2906,10 +2906,12 @@ void MainWindow::toggleMainWindow( bool ensureShow )
     shown = true;
   }
   else if ( !isActiveWindow() ) {
-    activateWindow();
+    showNormal();
     if ( cfg.preferences.raiseWindowOnSearch ) {
       raise();
     }
+    activateWindow();
+
     shown = true;
   }
   else if ( !ensureShow ) {
