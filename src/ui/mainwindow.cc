@@ -2906,7 +2906,12 @@ void MainWindow::toggleMainWindow( bool ensureShow )
     shown = true;
   }
   else if ( !isActiveWindow() ) {
-    showNormal();
+    if ( wasMaximized ) {
+      showMaximized();
+    }
+    else {
+      showNormal();
+    }
     if ( cfg.preferences.raiseWindowOnSearch ) {
       raise();
     }
