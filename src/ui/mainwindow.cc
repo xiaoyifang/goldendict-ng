@@ -2905,20 +2905,11 @@ void MainWindow::toggleMainWindow( bool ensureShow )
     shown = true;
   }
   else if ( !isActiveWindow() ) {
+    setWindowState( (windowState() & ~Qt::WindowMinimized) | Qt::WindowActive);
     if ( cfg.preferences.raiseWindowOnSearch ) {
       raise();
     }
     activateWindow();
-
-    // Rare cases, on Windows, the window can not be brought to the front.
-    auto flags = windowFlags();
-    setWindowFlags( flags | Qt::CustomizeWindowHint | Qt::WindowStaysOnTopHint );
-
-    QTimer::singleShot( 10, this, [ this ]() {
-      auto flags = windowFlags();
-      setWindowFlags( flags ^ ( Qt::CustomizeWindowHint | Qt::WindowStaysOnTopHint ) );
-    } );
-
     shown = true;
   }
   else if ( !ensureShow ) {
