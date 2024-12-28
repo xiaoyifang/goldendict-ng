@@ -46,9 +46,10 @@ void GroupComboBox::fill( Instances::Groups const & groups )
 
   shortcuts.clear();
 
-  QFontMetrics metrics( font() );
-  int size = metrics.height();
-  setIconSize( QSize( size, size ) );
+  int size = height();
+  if ( size > 0 ) {
+    setIconSize( QSize( size, size ) );
+  }
   for ( unsigned x = 0; x < groups.size(); ++x ) {
     addItem( groups[ x ].makeIcon(), groups[ x ].name, groups[ x ].id );
 
