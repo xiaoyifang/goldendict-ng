@@ -242,12 +242,12 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   groupListInToolbar = new GroupComboBox( navToolbar );
   groupListInToolbar->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
   groupListInToolbar->setSizeAdjustPolicy( QComboBox::AdjustToContents );
-  groupListInToolbar->setStyleSheet("QComboBox { padding: 0px; margin: 0px; }");
+  groupListInToolbar->setStyleSheet( "QComboBox { padding: 0px; margin: 0px; }" );
   translateBoxLayout->addWidget( groupListInToolbar );
 
   translateBox = new TranslateBox( navToolbar );
   translateBox->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
-  translateBox->setStyleSheet("QComboBox { padding: 0px; margin: 0px; }");
+  translateBox->setStyleSheet( "QComboBox { padding: 0px; margin: 0px; }" );
   translateBoxLayout->addWidget( translateBox );
   translateBoxToolBarAction = navToolbar->addWidget( translateBoxWidget );
 
