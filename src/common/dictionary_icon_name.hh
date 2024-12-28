@@ -12,7 +12,7 @@ namespace Icons {
 class DictionaryIconName
 {
   //map icon name to dictionary names;
-  QMap< QString, std::vector< QString > > _iconDictionaryNames;
+  QMap< QString, int > _iconDictionaryNames;
   //map dictionary name to icon name;
   QMap< QString, QString > _dictionaryIconNames;
 
