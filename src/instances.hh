@@ -40,7 +40,7 @@ struct Group
   Config::Group makeConfigGroup();
 
   /// Makes an icon object for this group, based on the icon's name or iconData.
-  QIcon makeIcon() const;
+  QIcon makeIcon(int size=-1) const;
 
   /// Remove id's if not presented in group dictionaries
   void checkMutedDictionaries( Config::MutedDictionaries * mutedDictionaries ) const;
