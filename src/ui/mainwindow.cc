@@ -240,12 +240,14 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   // translate box
   groupListInToolbar = new GroupComboBox( navToolbar );
-  groupListInToolbar->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::MinimumExpanding );
+  groupListInToolbar->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Preferred );
   groupListInToolbar->setSizeAdjustPolicy( QComboBox::AdjustToContents );
+  groupListInToolbar->setStyleSheet( "QComboBox { padding: 0px; margin: 0px; }" );
   translateBoxLayout->addWidget( groupListInToolbar );
 
   translateBox = new TranslateBox( navToolbar );
-  translateBox->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding );
+  translateBox->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Preferred );
+  translateBox->setStyleSheet( "QComboBox { padding: 0px; margin: 0px; }" );
   translateBoxLayout->addWidget( translateBox );
   translateBoxToolBarAction = navToolbar->addWidget( translateBoxWidget );
 
@@ -3140,6 +3142,10 @@ int MainWindow::getIconSize()
 
 void MainWindow::iconSizeActionTriggered( QAction * /*action*/ )
 {
+  //reset word zoom
+  cfg.preferences.wordsZoomLevel = 0;
+  wordsZoomBase->setEnabled( false );
+
   bool useLargeIcons = useLargeIconsInToolbarsAction.isChecked();
   int extent         = getIconSize();
   if ( useLargeIcons ) {
@@ -3159,9 +3165,11 @@ void MainWindow::iconSizeActionTriggered( QAction * /*action*/ )
 
   scanPopup->setDictionaryIconSize();
 
-  //ajust the font size as well
+  //adjust the font size as well
   auto font = translateLine->font();
-  font.setPixelSize( extent );
+  font.setWeight( QFont::Normal );
+  //arbitrary value to make it look good
+  font.setPixelSize( extent * 0.8 );
   translateLine->setFont( font );
   translateBox->completerWidget()->setFont( font );
   groupList->setFont( font );
@@ -3654,7 +3662,8 @@ void MainWindow::applyWordsZoomLevel()
   if ( ps < 1 ) {
     ps = 1;
   }
-  font.setPixelSize( ps );
+
+  font.setPixelSize( ps * 0.8 );
   ui.wordList->setFont( font );
   translateLine->setFont( font );
   translateBox->completerWidget()->setFont( font );

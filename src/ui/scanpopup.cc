@@ -348,56 +348,27 @@ void ScanPopup::applyZoomFactor() const
 
 void ScanPopup::applyWordsZoomLevel()
 {
-  QFont font( wordListDefaultFont );
-  int ps = font.pointSize();
+  QFont font = ui.translateBox->translateLine()->font();
+
+  int ps = dictionaryBar.iconSize().height();
 
   if ( cfg.preferences.wordsZoomLevel != 0 ) {
     ps += cfg.preferences.wordsZoomLevel;
     if ( ps < 1 ) {
       ps = 1;
     }
-    font.setPointSize( ps );
+    font.setPixelSize( ps * 0.8 );
   }
+  ui.translateBox->completerWidget()->setFont( font );
+  ui.translateBox->translateLine()->setFont( font );
 
-  if ( ui.translateBox->completerWidget()->font().pointSize() != ps ) {
-    ui.translateBox->completerWidget()->setFont( font );
-  }
-
-  font = translateLineDefaultFont;
-  ps   = font.pointSize();
-
-  if ( cfg.preferences.wordsZoomLevel != 0 ) {
-    ps += cfg.preferences.wordsZoomLevel;
-    if ( ps < 1 ) {
-      ps = 1;
-    }
-    font.setPointSize( ps );
-  }
-
-  if ( ui.translateBox->translateLine()->font().pointSize() != ps ) {
-    ui.translateBox->translateLine()->setFont( font );
-  }
-
-  font = groupListDefaultFont;
-  ps   = font.pointSize();
-
-  if ( cfg.preferences.wordsZoomLevel != 0 ) {
-    ps += cfg.preferences.wordsZoomLevel;
-    if ( ps < 1 ) {
-      ps = 1;
-    }
-    font.setPointSize( ps );
-  }
-
-  if ( ui.groupList->font().pointSize() != ps ) {
-    disconnect( ui.groupList, &GroupComboBox::currentIndexChanged, this, &ScanPopup::currentGroupChanged );
-    int n = ui.groupList->currentIndex();
-    ui.groupList->clear();
-    ui.groupList->setFont( font );
-    ui.groupList->fill( groups );
-    ui.groupList->setCurrentIndex( n );
-    connect( ui.groupList, &GroupComboBox::currentIndexChanged, this, &ScanPopup::currentGroupChanged );
-  }
+  disconnect( ui.groupList, &GroupComboBox::currentIndexChanged, this, &ScanPopup::currentGroupChanged );
+  int n = ui.groupList->currentIndex();
+  ui.groupList->clear();
+  ui.groupList->setFont( font );
+  ui.groupList->fill( groups );
+  ui.groupList->setCurrentIndex( n );
+  connect( ui.groupList, &GroupComboBox::currentIndexChanged, this, &ScanPopup::currentGroupChanged );
 
   ui.outerFrame->layout()->activate();
 }
@@ -1151,6 +1122,8 @@ void ScanPopup::setDictionaryIconSize()
   else if ( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::Large ) {
     dictionaryBar.setDictionaryIconSize( DictionaryBar::IconSize::Large );
   }
+
+  applyWordsZoomLevel();
 }
 
 
