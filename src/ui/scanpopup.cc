@@ -1124,7 +1124,7 @@ void ScanPopup::setDictionaryIconSize()
     dictionaryBar.setDictionaryIconSize( DictionaryBar::IconSize::Large );
   }
 
-  scanPopup->applyWordsZoomLevel();
+  applyWordsZoomLevel();
 }
 
 
