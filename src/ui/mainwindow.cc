@@ -2915,7 +2915,7 @@ void MainWindow::toggleMainWindow( bool ensureShow )
     auto flags = windowFlags();
     setWindowFlags( flags | Qt::WindowStaysOnTopHint );
 
-    QTimer::singleShot( 10, this, [this]() {
+    QTimer::singleShot( 10, this, [ this ]() {
       auto flags = windowFlags();
       setWindowFlags( flags & ~Qt::WindowStaysOnTopHint );
     } );
