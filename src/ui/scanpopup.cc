@@ -361,7 +361,6 @@ void ScanPopup::applyWordsZoomLevel()
   }
   ui.translateBox->completerWidget()->setFont( font );
   ui.translateBox->translateLine()->setFont( font );
-  ui.groupList->setFixedHeight( ps );
 
   disconnect( ui.groupList, &GroupComboBox::currentIndexChanged, this, &ScanPopup::currentGroupChanged );
   int n = ui.groupList->currentIndex();
