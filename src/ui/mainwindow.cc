@@ -3172,8 +3172,7 @@ void MainWindow::iconSizeActionTriggered( QAction * /*action*/ )
   translateBox->completerWidget()->setFont( font );
   groupList->setFont( font );
 
-  groupList->setFixedHeight(extent);
-  translateBox->setFixedHeight(extent);
+  translateBoxWidget->setFixedHeight(extent);
 }
 
 void MainWindow::toggleMenuBarTriggered( bool announce )
