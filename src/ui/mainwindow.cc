@@ -2905,7 +2905,6 @@ void MainWindow::toggleMainWindow( bool ensureShow )
     shown = true;
   }
   else if ( !isActiveWindow() ) {
-    show();
     if ( cfg.preferences.raiseWindowOnSearch ) {
       raise();
     }
@@ -2913,11 +2912,11 @@ void MainWindow::toggleMainWindow( bool ensureShow )
 
     // Rare cases, on Windows, the window can not be brought to the front.
     auto flags = windowFlags();
-    setWindowFlags( flags | Qt::WindowStaysOnTopHint );
+    setWindowFlags( flags | Qt::CustomizeWindowHint | Qt::WindowStaysOnTopHint );
 
     QTimer::singleShot( 10, this, [ this ]() {
       auto flags = windowFlags();
-      setWindowFlags( flags & ~Qt::WindowStaysOnTopHint );
+      setWindowFlags( flags ^ ( Qt::CustomizeWindowHint | Qt::WindowStaysOnTopHint ) );
     } );
 
     shown = true;
