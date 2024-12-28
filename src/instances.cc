@@ -88,7 +88,7 @@ Config::Group Group::makeConfigGroup()
   return result;
 }
 
-QIcon Group::makeIcon(int size) const
+QIcon Group::makeIcon( int size ) const
 {
   if ( !iconData.isNull() ) {
     return iconData;
@@ -96,8 +96,8 @@ QIcon Group::makeIcon(int size) const
 
   QIcon i = icon.size() ? QIcon( ":/flags/" + icon ) : QIcon();
 
-  if(size>0){
-    return i.pixmap(size, size);
+  if ( size > 0 ) {
+    return i.pixmap( size, size );
   }
 
   return i;
