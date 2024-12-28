@@ -3169,7 +3169,7 @@ void MainWindow::iconSizeActionTriggered( QAction * /*action*/ )
   auto font = translateLine->font();
   font.setWeight( QFont::Normal );
   //arbitrary value to make it look good
-  font.setPixelSize( extent*0.8 );
+  font.setPixelSize( extent * 0.8 );
   translateLine->setFont( font );
   translateBox->completerWidget()->setFont( font );
   groupList->setFont( font );
