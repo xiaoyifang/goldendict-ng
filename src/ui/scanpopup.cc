@@ -1122,6 +1122,8 @@ void ScanPopup::setDictionaryIconSize()
   else if ( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::Large ) {
     dictionaryBar.setDictionaryIconSize( DictionaryBar::IconSize::Large );
   }
+
+  scanPopup->applyWordsZoomLevel();
 }
 
 
