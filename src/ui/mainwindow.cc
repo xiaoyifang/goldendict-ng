@@ -240,13 +240,13 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   // translate box
   groupListInToolbar = new GroupComboBox( navToolbar );
-  groupListInToolbar->setSizePolicy( QSizePolicy::Preferred, QSizePolicy::Preferred );
+  groupListInToolbar->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Preferred );
   groupListInToolbar->setSizeAdjustPolicy( QComboBox::AdjustToContents );
   groupListInToolbar->setStyleSheet( "QComboBox { padding: 0px; margin: 0px; }" );
   translateBoxLayout->addWidget( groupListInToolbar );
 
   translateBox = new TranslateBox( navToolbar );
-  translateBox->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Preferred );
+  translateBox->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Preferred );
   translateBox->setStyleSheet( "QComboBox { padding: 0px; margin: 0px; }" );
   translateBoxLayout->addWidget( translateBox );
   translateBoxToolBarAction = navToolbar->addWidget( translateBoxWidget );
@@ -3662,6 +3662,7 @@ void MainWindow::applyWordsZoomLevel()
   if ( ps < 1 ) {
     ps = 1;
   }
+
   font.setPixelSize( ps * 0.8 );
   ui.wordList->setFont( font );
   translateLine->setFont( font );
