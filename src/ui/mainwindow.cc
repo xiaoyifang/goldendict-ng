@@ -3665,7 +3665,7 @@ void MainWindow::applyWordsZoomLevel()
   if ( ps < 1 ) {
     ps = 1;
   }
-  font.setPixelSize( ps );
+  font.setPixelSize( ps*0.8 );
   ui.wordList->setFont( font );
   translateLine->setFont( font );
   translateBox->completerWidget()->setFont( font );
