@@ -240,13 +240,13 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   // translate box
   groupListInToolbar = new GroupComboBox( navToolbar );
-  groupListInToolbar->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
+  groupListInToolbar->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Preferred );
   groupListInToolbar->setSizeAdjustPolicy( QComboBox::AdjustToContents );
   groupListInToolbar->setStyleSheet( "QComboBox { padding: 0px; margin: 0px; }" );
   translateBoxLayout->addWidget( groupListInToolbar );
 
   translateBox = new TranslateBox( navToolbar );
-  translateBox->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Expanding );
+  translateBox->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Preferred );
   translateBox->setStyleSheet( "QComboBox { padding: 0px; margin: 0px; }" );
   translateBoxLayout->addWidget( translateBox );
   translateBoxToolBarAction = navToolbar->addWidget( translateBoxWidget );
