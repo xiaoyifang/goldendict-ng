@@ -2905,7 +2905,7 @@ void MainWindow::toggleMainWindow( bool ensureShow )
     shown = true;
   }
   else if ( !isActiveWindow() ) {
-    setWindowState( (windowState() & ~Qt::WindowMinimized) | Qt::WindowActive);
+    setWindowState( ( windowState() & ~Qt::WindowMinimized ) | Qt::WindowActive );
     if ( cfg.preferences.raiseWindowOnSearch ) {
       raise();
     }
