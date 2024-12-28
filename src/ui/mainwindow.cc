@@ -2911,6 +2911,15 @@ void MainWindow::toggleMainWindow( bool ensureShow )
     }
     activateWindow();
 
+    // Rare cases, on Windows, the window can not be brought to the front.
+    auto flags = windowFlags();
+    setWindowFlags( flags | Qt::WindowStaysOnTopHint );
+
+    QTimer::singleShot( 10, this, [this]() {
+      auto flags = windowFlags();
+      setWindowFlags( flags & ~Qt::WindowStaysOnTopHint );
+    } );
+
     shown = true;
   }
   else if ( !ensureShow ) {
