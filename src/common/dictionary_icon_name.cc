@@ -18,7 +18,8 @@ QString Icons::DictionaryIconName::getIconName( const QString & dictionaryName )
   auto it1                      = _iconDictionaryNames.contains( name );
   if ( it1 ) {
     auto vector = _iconDictionaryNames.value( name );
-    _iconDictionaryNames.insert( name, vector++ );
+    vector++;
+    _iconDictionaryNames.insert( name, vector );
   }
   else {
     _iconDictionaryNames.insert( name, 1 );
