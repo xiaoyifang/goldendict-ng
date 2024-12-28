@@ -48,8 +48,9 @@ void GroupComboBox::fill( Instances::Groups const & groups )
 
   QFontMetrics metrics( font() );
   int size = metrics.height();
+  setIconSize( QSize( size, size ) );
   for ( unsigned x = 0; x < groups.size(); ++x ) {
-    addItem( groups[ x ].makeIcon( size ), groups[ x ].name, groups[ x ].id );
+    addItem( groups[ x ].makeIcon(), groups[ x ].name, groups[ x ].id );
 
     if ( prevId == groups[ x ].id ) {
       setCurrentIndex( x );
