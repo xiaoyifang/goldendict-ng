@@ -240,7 +240,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   // translate box
   groupListInToolbar = new GroupComboBox( navToolbar );
-  groupListInToolbar->setSizePolicy( QSizePolicy::Expanding, QSizePolicy::Preferred );
+  groupListInToolbar->setSizePolicy( QSizePolicy::Preferred, QSizePolicy::Preferred );
   groupListInToolbar->setSizeAdjustPolicy( QComboBox::AdjustToContents );
   groupListInToolbar->setStyleSheet( "QComboBox { padding: 0px; margin: 0px; }" );
   translateBoxLayout->addWidget( groupListInToolbar );
