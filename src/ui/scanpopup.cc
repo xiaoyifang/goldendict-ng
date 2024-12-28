@@ -357,7 +357,7 @@ void ScanPopup::applyWordsZoomLevel()
     if ( ps < 1 ) {
       ps = 1;
     }
-    font.setPixelSize( ps );
+    font.setPixelSize( ps*0.8 );
   }
   ui.translateBox->completerWidget()->setFont( font );
   ui.translateBox->translateLine()->setFont( font );

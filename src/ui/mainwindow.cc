@@ -3165,12 +3165,15 @@ void MainWindow::iconSizeActionTriggered( QAction * /*action*/ )
 
   scanPopup->setDictionaryIconSize();
 
-  //ajust the font size as well
+  //adjust the font size as well
   auto font = translateLine->font();
-  font.setPixelSize( extent );
+  font.setWeight( QFont::Normal );
+  //arbitrary value to make it look good
+  font.setPixelSize( extent*0.8 );
   translateLine->setFont( font );
   translateBox->completerWidget()->setFont( font );
   groupList->setFont( font );
+  groupList->setFixedHeight( extent );
 
   translateBoxWidget->setFixedHeight( extent );
 }
