@@ -3166,13 +3166,13 @@ void MainWindow::iconSizeActionTriggered( QAction * /*action*/ )
   scanPopup->setDictionaryIconSize();
 
   //adjust the font size as well
-  auto font = translateLine->font();
+  auto font = translateBox->translateLine()->font();
   font.setWeight( QFont::Normal );
   //arbitrary value to make it look good
   font.setPixelSize( extent * 0.8 );
   //  translateBox->completerWidget()->setFont( font );
   //only set the font in toolbar
-  translateLine->setFont( font );
+  translateBox->translateLine()->setFont( font );
 }
 
 void MainWindow::toggleMenuBarTriggered( bool announce )
@@ -3654,7 +3654,7 @@ void MainWindow::doWordsZoomBase()
 
 void MainWindow::applyWordsZoomLevel()
 {
-  QFont font = translateLine->font();
+  QFont font = translateBox->translateLine()->font();
 
   int ps = getIconSize();
 
@@ -3665,7 +3665,7 @@ void MainWindow::applyWordsZoomLevel()
 
   font.setPixelSize( ps * 0.8 );
   font.setWeight( QFont::Normal );
-  translateLine->setFont( font );
+  translateBox->translateLine()->setFont( font );
   //  translateBox->completerWidget()->setFont( font );
   wordsZoomBase->setEnabled( cfg.preferences.wordsZoomLevel != 0 );
 
