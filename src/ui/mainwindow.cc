@@ -3166,13 +3166,13 @@ void MainWindow::iconSizeActionTriggered( QAction * /*action*/ )
   scanPopup->setDictionaryIconSize();
 
   //adjust the font size as well
-  auto font = translateLine->font();
+  auto font = ui.translateLine->font();
   font.setWeight( QFont::Normal );
   //arbitrary value to make it look good
   font.setPixelSize( extent * 0.8 );
-  translateLine->setFont( font );
-  translateBox->completerWidget()->setFont( font );
-  groupList->setFont( font );
+  //  translateBox->completerWidget()->setFont( font );
+  //only set the font in toolbar
+  ui.translateLine->setFont( font );
 }
 
 void MainWindow::toggleMenuBarTriggered( bool announce )
@@ -3664,18 +3664,8 @@ void MainWindow::applyWordsZoomLevel()
   }
 
   font.setPixelSize( ps * 0.8 );
-  ui.wordList->setFont( font );
   translateLine->setFont( font );
-  translateBox->completerWidget()->setFont( font );
-
-  disconnect( groupList, &GroupComboBox::currentIndexChanged, this, &MainWindow::currentGroupChanged );
-  int n = groupList->currentIndex();
-  groupList->clear();
-  groupList->setFont( font );
-  groupList->fill( groupInstances );
-  groupList->setCurrentIndex( n );
-  connect( groupList, &GroupComboBox::currentIndexChanged, this, &MainWindow::currentGroupChanged );
-
+  //  translateBox->completerWidget()->setFont( font );
   wordsZoomBase->setEnabled( cfg.preferences.wordsZoomLevel != 0 );
 
   if ( !cfg.preferences.searchInDock ) {

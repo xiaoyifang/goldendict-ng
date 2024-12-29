@@ -360,15 +360,7 @@ void ScanPopup::applyWordsZoomLevel()
     font.setPixelSize( ps * 0.8 );
   }
   ui.translateBox->completerWidget()->setFont( font );
-  ui.translateBox->translateLine()->setFont( font );
-
-  disconnect( ui.groupList, &GroupComboBox::currentIndexChanged, this, &ScanPopup::currentGroupChanged );
-  int n = ui.groupList->currentIndex();
-  ui.groupList->clear();
-  ui.groupList->setFont( font );
-  ui.groupList->fill( groups );
-  ui.groupList->setCurrentIndex( n );
-  connect( ui.groupList, &GroupComboBox::currentIndexChanged, this, &ScanPopup::currentGroupChanged );
+  //  ui.translateBox->translateLine()->setFont( font );
 
   ui.outerFrame->layout()->activate();
 }
