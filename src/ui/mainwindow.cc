@@ -3166,13 +3166,13 @@ void MainWindow::iconSizeActionTriggered( QAction * /*action*/ )
   scanPopup->setDictionaryIconSize();
 
   //adjust the font size as well
-  auto font = ui.translateLine->font();
+  auto font = translateLine->font();
   font.setWeight( QFont::Normal );
   //arbitrary value to make it look good
   font.setPixelSize( extent * 0.8 );
   //  translateBox->completerWidget()->setFont( font );
   //only set the font in toolbar
-  ui.translateLine->setFont( font );
+  translateLine->setFont( font );
 }
 
 void MainWindow::toggleMenuBarTriggered( bool announce )
