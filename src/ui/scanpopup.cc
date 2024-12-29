@@ -354,8 +354,8 @@ void ScanPopup::applyWordsZoomLevel()
 
   if ( cfg.preferences.wordsZoomLevel != 0 ) {
     ps += cfg.preferences.wordsZoomLevel;
-    if ( ps < 1 ) {
-      ps = 1;
+    if ( ps < 12 ) {
+      ps = 12;
     }
     font.setPixelSize( ps * 0.8 );
   }

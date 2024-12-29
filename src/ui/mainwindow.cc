@@ -3633,14 +3633,14 @@ void MainWindow::scaleArticlesByCurrentZoomFactor()
 
 void MainWindow::doWordsZoomIn()
 {
-  ++cfg.preferences.wordsZoomLevel;
+  cfg.preferences.wordsZoomLevel = cfg.preferences.wordsZoomLevel + 2;
 
   applyWordsZoomLevel();
 }
 
 void MainWindow::doWordsZoomOut()
 {
-  --cfg.preferences.wordsZoomLevel;
+  cfg.preferences.wordsZoomLevel = cfg.preferences.wordsZoomLevel - 2;
 
   applyWordsZoomLevel();
 }
@@ -3659,11 +3659,12 @@ void MainWindow::applyWordsZoomLevel()
   int ps = getIconSize();
 
   ps += cfg.preferences.wordsZoomLevel;
-  if ( ps < 1 ) {
-    ps = 1;
+  if ( ps < 12 ) {
+    ps = 12;
   }
 
   font.setPixelSize( ps * 0.8 );
+  font.setWeight( QFont::Normal );
   translateLine->setFont( font );
   //  translateBox->completerWidget()->setFont( font );
   wordsZoomBase->setEnabled( cfg.preferences.wordsZoomLevel != 0 );
