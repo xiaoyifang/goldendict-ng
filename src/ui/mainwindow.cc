@@ -3166,13 +3166,13 @@ void MainWindow::iconSizeActionTriggered( QAction * /*action*/ )
   scanPopup->setDictionaryIconSize();
 
   //adjust the font size as well
-  auto font = translateLine->font();
+  auto font = translateBox->translateLine()->font();
   font.setWeight( QFont::Normal );
   //arbitrary value to make it look good
   font.setPixelSize( extent * 0.8 );
-  translateLine->setFont( font );
-  translateBox->completerWidget()->setFont( font );
-  groupList->setFont( font );
+  //  translateBox->completerWidget()->setFont( font );
+  //only set the font in toolbar
+  translateBox->translateLine()->setFont( font );
 }
 
 void MainWindow::toggleMenuBarTriggered( bool announce )
@@ -3633,14 +3633,14 @@ void MainWindow::scaleArticlesByCurrentZoomFactor()
 
 void MainWindow::doWordsZoomIn()
 {
-  ++cfg.preferences.wordsZoomLevel;
+  cfg.preferences.wordsZoomLevel = cfg.preferences.wordsZoomLevel + 2;
 
   applyWordsZoomLevel();
 }
 
 void MainWindow::doWordsZoomOut()
 {
-  --cfg.preferences.wordsZoomLevel;
+  cfg.preferences.wordsZoomLevel = cfg.preferences.wordsZoomLevel - 2;
 
   applyWordsZoomLevel();
 }
@@ -3654,28 +3654,19 @@ void MainWindow::doWordsZoomBase()
 
 void MainWindow::applyWordsZoomLevel()
 {
-  QFont font = translateLine->font();
+  QFont font = translateBox->translateLine()->font();
 
   int ps = getIconSize();
 
   ps += cfg.preferences.wordsZoomLevel;
-  if ( ps < 1 ) {
-    ps = 1;
+  if ( ps < 12 ) {
+    ps = 12;
   }
 
   font.setPixelSize( ps * 0.8 );
-  ui.wordList->setFont( font );
-  translateLine->setFont( font );
-  translateBox->completerWidget()->setFont( font );
-
-  disconnect( groupList, &GroupComboBox::currentIndexChanged, this, &MainWindow::currentGroupChanged );
-  int n = groupList->currentIndex();
-  groupList->clear();
-  groupList->setFont( font );
-  groupList->fill( groupInstances );
-  groupList->setCurrentIndex( n );
-  connect( groupList, &GroupComboBox::currentIndexChanged, this, &MainWindow::currentGroupChanged );
-
+  font.setWeight( QFont::Normal );
+  translateBox->translateLine()->setFont( font );
+  //  translateBox->completerWidget()->setFont( font );
   wordsZoomBase->setEnabled( cfg.preferences.wordsZoomLevel != 0 );
 
   if ( !cfg.preferences.searchInDock ) {
