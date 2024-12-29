@@ -267,6 +267,7 @@ private:
   void changeWebEngineViewFont() const;
   bool isWordPresentedInFavorites( QString const & word, unsigned groupId );
   void errorMessageOnStatusBar( const QString & errStr );
+  int getIconSize();
 
 private slots:
 
@@ -429,7 +430,6 @@ private slots:
 
   void on_exportFavorites_triggered();
   void on_importFavorites_triggered();
-  void on_ExportFavoritesToList_triggered();
 
   void updateSearchPaneAndBar( bool searchInDock );
 

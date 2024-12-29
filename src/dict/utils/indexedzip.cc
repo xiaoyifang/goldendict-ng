@@ -84,7 +84,7 @@ bool IndexedZip::loadFile( uint32_t offset, vector< char > & data )
       return (size_t)zip.read( &data.front(), data.size() ) == data.size();
 
     case ZipFile::Deflated: {
-      // Now do the deflation
+      // Decompress the data using the zlib library
 
       QByteArray compressedData = zip.read( header.compressedSize );
 
@@ -94,9 +94,7 @@ bool IndexedZip::loadFile( uint32_t offset, vector< char > & data )
 
       data.resize( header.uncompressedSize );
 
-      z_stream stream;
-
-      memset( &stream, 0, sizeof( stream ) );
+      z_stream stream = {};
 
       stream.next_in   = (Bytef *)compressedData.data();
       stream.avail_in  = compressedData.size();
@@ -108,17 +106,29 @@ bool IndexedZip::loadFile( uint32_t offset, vector< char > & data )
         return false;
       }
 
-      if ( inflate( &stream, Z_FINISH ) != Z_STREAM_END ) {
-        qDebug( "Not zstream end!" );
+      int ret = inflate( &stream, Z_FINISH );
+      if ( ret != Z_STREAM_END ) {
+        qDebug() << "Not zstream end! Stream total_in:" << stream.total_in << "total_out:" << stream.total_out
+                 << "msg:" << ( stream.msg ? stream.msg : "none" );
 
         data.clear();
 
-        inflateEnd( &stream );
+        int endRet = inflateEnd( &stream );
+        if ( endRet != Z_OK ) {
+          qDebug() << "inflateEnd failed after inflate! msg:" << ( stream.msg ? stream.msg : "none" );
+        }
 
         return false;
       }
 
-      inflateEnd( &stream );
+      ret = inflateEnd( &stream );
+      if ( ret != Z_OK ) {
+        qDebug() << "inflateEnd failed! msg:" << ( stream.msg ? stream.msg : "none" );
+
+        data.clear();
+
+        return false;
+      }
 
       return true;
     }

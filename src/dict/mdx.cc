@@ -1201,7 +1201,8 @@ void MdxDictionary::loadResourceFile( const std::u32string & resourceName, vecto
     newResourceName.insert( 0, 1, '\\' );
   }
   // local file takes precedence
-  if ( string fn = getContainingFolder().toStdString() + Utils::Fs::separator() + u8ResourceName; File::exists( fn ) ) {
+  if ( string fn = getContainingFolder().toStdString() + Utils::Fs::separator() + u8ResourceName;
+       Utils::Fs::exists( fn ) ) {
     File::loadFromFile( fn, data );
     return;
   }
@@ -1342,7 +1343,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       initializing.indexingDictionary( title );
 
       for ( vector< string >::const_iterator mddIter = dictFiles.begin() + 1; mddIter != dictFiles.end(); ++mddIter ) {
-        if ( File::exists( *mddIter ) ) {
+        if ( Utils::Fs::exists( *mddIter ) ) {
           sptr< MdictParser > mddParser = std::make_shared< MdictParser >();
           if ( !mddParser->open( mddIter->c_str() ) ) {
             qWarning( "Broken mdd (resource) file: %s", mddIter->c_str() );

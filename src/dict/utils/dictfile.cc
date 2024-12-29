@@ -6,16 +6,16 @@
 #include "zipfile.hh"
 
 #include <string>
-#include <QFileInfo>
 #ifdef __WIN32
   #include <windows.h>
 #endif
+#include "utils.hh"
 
 namespace File {
 
 bool tryPossibleName( std::string const & name, std::string & copyTo )
 {
-  if ( File::exists( name ) ) {
+  if ( Utils::Fs::exists( name ) ) {
     copyTo = name;
     return true;
   }

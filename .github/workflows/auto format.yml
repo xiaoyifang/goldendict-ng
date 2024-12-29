@@ -38,6 +38,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 2
-      - run: npm ci
+      - run: |
+          npm install -g prettier
       - run: npx prettier . --write
       - uses: autofix-ci/action@ff86a557419858bb967097bfc916833f5647fa8c

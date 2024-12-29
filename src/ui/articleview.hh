@@ -217,6 +217,7 @@ public:
   void toHtml( const std::function< void( QString & ) > & callback );
 
   void setHtml( const QString & content, const QUrl & baseUrl );
+  QWebEnginePage * page();
   void setContent( const QByteArray & data, const QString & mimeType = QString(), const QUrl & baseUrl = QUrl() );
 
   /// Returns current article's title

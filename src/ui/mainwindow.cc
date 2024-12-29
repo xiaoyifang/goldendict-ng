@@ -240,12 +240,14 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   // translate box
   groupListInToolbar = new GroupComboBox( navToolbar );
-  groupListInToolbar->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::MinimumExpanding );
+  groupListInToolbar->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Preferred );
   groupListInToolbar->setSizeAdjustPolicy( QComboBox::AdjustToContents );
+  groupListInToolbar->setStyleSheet( "QComboBox { padding: 0px; margin: 0px; }" );
   translateBoxLayout->addWidget( groupListInToolbar );
 
   translateBox = new TranslateBox( navToolbar );
-  translateBox->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding );
+  translateBox->setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Preferred );
+  translateBox->setStyleSheet( "QComboBox { padding: 0px; margin: 0px; }" );
   translateBoxLayout->addWidget( translateBox );
   translateBoxToolBarAction = navToolbar->addWidget( translateBoxWidget );
 
@@ -3122,17 +3124,35 @@ void MainWindow::showDictBarNamesTriggered()
   cfg.showingDictBarNames = show;
 }
 
-void MainWindow::iconSizeActionTriggered( QAction * /*action*/ )
+int MainWindow::getIconSize()
 {
   bool useLargeIcons = useLargeIconsInToolbarsAction.isChecked();
   int extent         = QApplication::style()->pixelMetric( QStyle::PM_ToolBarIconSize );
   if ( useLargeIcons ) {
+    extent = QApplication::style()->pixelMetric( QStyle::PM_LargeIconSize );
+  }
+  else if ( useSmallIconsInToolbarsAction.isChecked() ) {
+    extent = QApplication::style()->pixelMetric( QStyle::PM_SmallIconSize );
+  }
+  else {
+    //empty
+  }
+  return extent;
+}
+
+void MainWindow::iconSizeActionTriggered( QAction * /*action*/ )
+{
+  //reset word zoom
+  cfg.preferences.wordsZoomLevel = 0;
+  wordsZoomBase->setEnabled( false );
+
+  bool useLargeIcons = useLargeIconsInToolbarsAction.isChecked();
+  int extent         = getIconSize();
+  if ( useLargeIcons ) {
     cfg.usingToolbarsIconSize = Config::ToolbarsIconSize::Large;
-    extent                    = QApplication::style()->pixelMetric( QStyle::PM_LargeIconSize );
   }
   else if ( useSmallIconsInToolbarsAction.isChecked() ) {
     cfg.usingToolbarsIconSize = Config::ToolbarsIconSize::Small;
-    extent                    = QApplication::style()->pixelMetric( QStyle::PM_SmallIconSize );
   }
   else {
     cfg.usingToolbarsIconSize = Config::ToolbarsIconSize::Normal;
@@ -3144,6 +3164,15 @@ void MainWindow::iconSizeActionTriggered( QAction * /*action*/ )
   updateDictionaryBar();
 
   scanPopup->setDictionaryIconSize();
+
+  //adjust the font size as well
+  auto font = translateBox->translateLine()->font();
+  font.setWeight( QFont::Normal );
+  //arbitrary value to make it look good
+  font.setPixelSize( extent * 0.8 );
+  //  translateBox->completerWidget()->setFont( font );
+  //only set the font in toolbar
+  translateBox->translateLine()->setFont( font );
 }
 
 void MainWindow::toggleMenuBarTriggered( bool announce )
@@ -3351,8 +3380,10 @@ void MainWindow::on_saveArticle_triggered()
   QFileDialog::Options options = QFileDialog::HideNameFilterDetails;
   QString selectedFilter;
   QStringList filters;
-  filters.push_back( tr( "Article, Complete (*.html)" ) );
-  filters.push_back( tr( "Article, HTML Only (*.html)" ) );
+  filters.push_back( tr( "Complete Html (*.html *.htm)" ) );
+  filters.push_back( tr( "Single Html (*.html *.htm)" ) );
+  filters.push_back( tr( "Pdf (*.pdf)" ) );
+  filters.push_back( tr( "Mime Html (*.mhtml)" ) );
 
   fileName = savePath + "/" + fileName;
   fileName = QFileDialog::getSaveFileName( this,
@@ -3362,10 +3393,41 @@ void MainWindow::on_saveArticle_triggered()
                                            &selectedFilter,
                                            options );
 
+  qDebug() << "selected filter: " << selectedFilter;
   // The " (*.html)" part of filters[i] is absent from selectedFilter in Qt 5.
   bool const complete = filters.at( 0 ).startsWith( selectedFilter );
 
   if ( fileName.isEmpty() ) {
+    return;
+  }
+
+  //Pdf
+  if ( filters.at( 2 ).startsWith( selectedFilter ) ) {
+    // Create a QWebEnginePage object
+    QWebEnginePage * page = view->page();
+
+    // Connect the printFinished signal to handle operations after printing is complete
+    connect( page, &QWebEnginePage::pdfPrintingFinished, [ = ]( const QString & filePath, bool success ) {
+      if ( success ) {
+        qDebug() << "PDF exported successfully to:" << filePath;
+      }
+      else {
+        qDebug() << "Failed to export PDF.";
+      }
+    } );
+
+    // Print to PDF file
+    page->printToPdf( fileName );
+
+    return;
+  }
+
+  //mime html
+  if ( filters.at( 3 ).startsWith( selectedFilter ) ) {
+    // Create a QWebEnginePage object
+    QWebEnginePage * page = view->page();
+    page->save( fileName, QWebEngineDownloadRequest::MimeHtmlSaveFormat );
+
     return;
   }
 
@@ -3571,14 +3633,14 @@ void MainWindow::scaleArticlesByCurrentZoomFactor()
 
 void MainWindow::doWordsZoomIn()
 {
-  ++cfg.preferences.wordsZoomLevel;
+  cfg.preferences.wordsZoomLevel = cfg.preferences.wordsZoomLevel + 2;
 
   applyWordsZoomLevel();
 }
 
 void MainWindow::doWordsZoomOut()
 {
-  --cfg.preferences.wordsZoomLevel;
+  cfg.preferences.wordsZoomLevel = cfg.preferences.wordsZoomLevel - 2;
 
   applyWordsZoomLevel();
 }
@@ -3592,68 +3654,19 @@ void MainWindow::doWordsZoomBase()
 
 void MainWindow::applyWordsZoomLevel()
 {
-  QFont font( wordListDefaultFont );
+  QFont font = translateBox->translateLine()->font();
 
-  int ps = font.pointSize();
+  int ps = getIconSize();
 
-  if ( cfg.preferences.wordsZoomLevel != 0 ) {
-    ps += cfg.preferences.wordsZoomLevel;
-
-    if ( ps < 1 ) {
-      ps = 1;
-    }
-
-    font.setPointSize( ps );
+  ps += cfg.preferences.wordsZoomLevel;
+  if ( ps < 12 ) {
+    ps = 12;
   }
 
-  if ( ui.wordList->font().pointSize() != ps ) {
-    ui.wordList->setFont( font );
-  }
-
-  font = translateLineDefaultFont;
-
-  ps = font.pointSize();
-
-  if ( cfg.preferences.wordsZoomLevel != 0 ) {
-    ps += cfg.preferences.wordsZoomLevel;
-
-    if ( ps < 1 ) {
-      ps = 1;
-    }
-
-    font.setPointSize( ps );
-  }
-
-  if ( translateLine->font().pointSize() != ps ) {
-    translateLine->setFont( font );
-
-    translateBox->completerWidget()->setFont( font );
-  }
-
-  font = groupListDefaultFont;
-
-  ps = font.pointSize();
-
-  if ( cfg.preferences.wordsZoomLevel != 0 ) {
-    ps += cfg.preferences.wordsZoomLevel;
-
-    if ( ps < 1 ) {
-      ps = 1;
-    }
-
-    font.setPointSize( ps );
-  }
-
-  if ( groupList->font().pointSize() != ps ) {
-    disconnect( groupList, &GroupComboBox::currentIndexChanged, this, &MainWindow::currentGroupChanged );
-    int n = groupList->currentIndex();
-    groupList->clear();
-    groupList->setFont( font );
-    groupList->fill( groupInstances );
-    groupList->setCurrentIndex( n );
-    connect( groupList, &GroupComboBox::currentIndexChanged, this, &MainWindow::currentGroupChanged );
-  }
-
+  font.setPixelSize( ps * 0.8 );
+  font.setWeight( QFont::Normal );
+  translateBox->translateLine()->setFont( font );
+  //  translateBox->completerWidget()->setFont( font );
   wordsZoomBase->setEnabled( cfg.preferences.wordsZoomLevel != 0 );
 
   if ( !cfg.preferences.searchInDock ) {
@@ -3932,80 +3945,46 @@ void MainWindow::on_exportFavorites_triggered()
   QString fileName = QFileDialog::getSaveFileName( this,
                                                    tr( "Export Favorites to file" ),
                                                    exportPath,
-                                                   tr( "XML files (*.xml);;All files (*.*)" ) );
+                                                   tr( "Text files (*.txt);;XML files (*.xml)" ) );
   if ( fileName.size() == 0 ) {
     return;
   }
-
   cfg.historyExportPath = QDir::toNativeSeparators( QFileInfo( fileName ).absoluteDir().absolutePath() );
   QFile file( fileName );
-
-
   if ( !file.open( QFile::WriteOnly | QIODevice::Text ) ) {
     errorMessageOnStatusBar( QString( tr( "Export error: " ) ) + file.errorString() );
     return;
   }
+  if ( fileName.endsWith( ".xml", Qt::CaseInsensitive ) ) {
+    QByteArray data;
+    ui.favoritesPaneWidget->getDataInXml( data );
 
-  QByteArray data;
-  ui.favoritesPaneWidget->getDataInXml( data );
-
-  if ( file.write( data ) != data.size() ) {
-    errorMessageOnStatusBar( QString( tr( "Export error: " ) ) + file.errorString() );
-    return;
-  }
-
-  file.close();
-  mainStatusBar->showMessage( tr( "Favorites export complete" ), 5000 );
-}
-
-void MainWindow::on_ExportFavoritesToList_triggered()
-{
-  QString exportPath;
-  if ( cfg.historyExportPath.isEmpty() ) {
-    exportPath = QDir::homePath();
-  }
-  else {
-    exportPath = QDir::fromNativeSeparators( cfg.historyExportPath );
-    if ( !QDir( exportPath ).exists() ) {
-      exportPath = QDir::homePath();
+    if ( file.write( data ) != data.size() ) {
+      errorMessageOnStatusBar( QString( tr( "Export error: " ) ) + file.errorString() );
+      return;
     }
   }
+  else {
+    // Write UTF-8 BOM
+    QByteArray line;
+    line.append( 0xEF ).append( 0xBB ).append( 0xBF );
+    if ( file.write( line ) != line.size() ) {
+      errorMessageOnStatusBar( QString( tr( "Export error: " ) ) + file.errorString() );
+      return;
+    }
 
-  QString fileName = QFileDialog::getSaveFileName( this,
-                                                   tr( "Export Favorites to file as plain list" ),
-                                                   exportPath,
-                                                   tr( "Text files (*.txt);;All files (*.*)" ) );
-  if ( fileName.size() == 0 ) {
-    return;
+    // Write Favorites
+    QString data;
+    ui.favoritesPaneWidget->getDataInPlainText( data );
+
+    line = data.toUtf8();
+    if ( file.write( line ) != line.size() ) {
+      errorMessageOnStatusBar( QString( tr( "Export error: " ) ) + file.errorString() );
+      return;
+    }
   }
-
-  cfg.historyExportPath = QDir::toNativeSeparators( QFileInfo( fileName ).absoluteDir().absolutePath() );
-  QFile file( fileName );
-
-  if ( !file.open( QFile::WriteOnly | QIODevice::Text ) ) {
-    errorMessageOnStatusBar( QString( tr( "Export error: " ) ) + file.errorString() );
-    return;
-  }
-
-  // Write UTF-8 BOM
-  QByteArray line;
-  line.append( 0xEF ).append( 0xBB ).append( 0xBF );
-  if ( file.write( line ) != line.size() ) {
-    errorMessageOnStatusBar( QString( tr( "Export error: " ) ) + file.errorString() );
-    return;
-  }
-
-  // Write Favorites
-  QString data;
-  ui.favoritesPaneWidget->getDataInPlainText( data );
-
-  line = data.toUtf8();
-  if ( file.write( line ) != line.size() ) {
-    errorMessageOnStatusBar( QString( tr( "Export error: " ) ) + file.errorString() );
-    return;
-  }
-
   file.close();
+
   mainStatusBar->showMessage( tr( "Favorites export complete" ), 5000 );
 }
 
