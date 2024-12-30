@@ -317,7 +317,7 @@ void ScanPopup::updateFoundInDictsList()
   QStringList ids   = definition->getArticlesList();
   QString activeId  = definition->getActiveArticleId();
   toolbar->clear();
-  if ( actionGroup!= nullptr ) {
+  if ( actionGroup != nullptr ) {
     actionGroup->deleteLater();
   }
   actionGroup = new QActionGroup( this );
