@@ -77,7 +77,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   hideTimer( this )
 {
   ui.setupUi( this );
-  toolbar = new QToolBar( "Dictionaries Toolbar", this );
+  toolbar = new QToolBar( "Found Dictionary", this );
 
   if ( layoutDirection() == Qt::RightToLeft ) {
     // Adjust button icons for Right-To-Left layout
@@ -295,10 +295,10 @@ ScanPopup::ScanPopup( QWidget * parent,
 void ScanPopup::onActionTriggered()
 {
   QAction * action = qobject_cast< QAction * >( sender() );
-  if ( action ) {
+  if ( action != nullptr ) {
     auto dictId = action->data().toString();
     qDebug() << "Action triggered:" << dictId;
-    definition->jumpToDictionary( dictId, false );
+    definition->jumpToDictionary( dictId, true );
   }
 }
 
@@ -313,12 +313,12 @@ void ScanPopup::updateFoundInDictsList()
   unsigned currentId           = ui.groupList->getCurrentGroup();
   Instances::Group const * grp = groups.findGroup( currentId );
 
-  auto dictionaries = !grp ? grp->dictionaries : allDictionaries;
+  auto dictionaries = grp ? grp->dictionaries : allDictionaries;
   QStringList ids   = definition->getArticlesList();
   QString activeId  = definition->getActiveArticleId();
   toolbar->clear();
-  if ( actionGroup ) {
-    delete actionGroup;
+  if ( actionGroup!= nullptr ) {
+    actionGroup->deleteLater();
   }
   actionGroup = new QActionGroup( this );
   actionGroup->setExclusive( true );
