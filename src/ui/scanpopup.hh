@@ -12,13 +12,14 @@
 #include <QDialog>
 #include <QClipboard>
 #include <QToolBar>
-#include <QActionGroup>
 #include "history.hh"
 #include "dictionarybar.hh"
 #include "mainstatusbar.hh"
 #ifdef HAVE_X11
   #include "scanflag.hh"
 #endif
+
+#include <QActionGroup>
 
 /// This is a popup dialog to show translations when clipboard scanning mode
 /// is enabled.
