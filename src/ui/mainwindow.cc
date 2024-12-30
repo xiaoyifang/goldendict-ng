@@ -392,11 +392,11 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   ui.menuZoom->addSeparator();
 
-  wordsZoomIn = ui.menuZoom->addAction( QIcon( ":/icons/icon32_zoomin.png" ), tr( "Words Zoom In" ) );
+  wordsZoomIn = new QAction( tr( "Words Zoom In" ), this );
   wordsZoomIn->setShortcuts( QList< QKeySequence >() << QKeySequence( "Alt++" ) << QKeySequence( "Alt+=" ) );
-  wordsZoomOut = ui.menuZoom->addAction( QIcon( ":/icons/icon32_zoomout.png" ), tr( "Words Zoom Out" ) );
+  wordsZoomOut = new QAction( tr( "Words Zoom Out" ), this );
   wordsZoomOut->setShortcut( QKeySequence( "Alt+-" ) );
-  wordsZoomBase = ui.menuZoom->addAction( QIcon( ":/icons/icon32_zoombase.png" ), tr( "Words Normal Size" ) );
+  wordsZoomBase = new QAction( tr( "Words Normal Size" ), this );
   wordsZoomBase->setShortcut( QKeySequence( "Alt+0" ) );
 
   connect( wordsZoomIn, &QAction::triggered, this, &MainWindow::doWordsZoomIn );
