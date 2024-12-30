@@ -77,7 +77,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   hideTimer( this )
 {
   ui.setupUi( this );
-  toolbar = new QToolBar("Dictionaries Toolbar", this );
+  toolbar = new QToolBar( "Dictionaries Toolbar", this );
 
   if ( layoutDirection() == Qt::RightToLeft ) {
     // Adjust button icons for Right-To-Left layout
@@ -292,13 +292,14 @@ ScanPopup::ScanPopup( QWidget * parent,
   applyWordsZoomLevel();
 }
 
-void ScanPopup::onActionTriggered() {
-    QAction *action = qobject_cast<QAction *>(sender());
-    if (action) {
-      auto dictId = action->data().toString();
-      qDebug() << "Action triggered:" << dictId;
-      definition->jumpToDictionary(dictId,false);
-    }
+void ScanPopup::onActionTriggered()
+{
+  QAction * action = qobject_cast< QAction * >( sender() );
+  if ( action ) {
+    auto dictId = action->data().toString();
+    qDebug() << "Action triggered:" << dictId;
+    definition->jumpToDictionary( dictId, false );
+  }
 }
 
 void ScanPopup::updateFoundInDictsList()
@@ -316,29 +317,29 @@ void ScanPopup::updateFoundInDictsList()
   QStringList ids   = definition->getArticlesList();
   QString activeId  = definition->getActiveArticleId();
   toolbar->clear();
-  if( actionGroup ){
+  if ( actionGroup ) {
     delete actionGroup;
   }
   actionGroup = new QActionGroup( this );
-  actionGroup->setExclusive(true);
+  actionGroup->setExclusive( true );
   for ( QStringList::const_iterator i = ids.constBegin(); i != ids.constEnd(); ++i ) {
     // Find this dictionary
 
     for ( unsigned x = dictionaries.size(); x--; ) {
       if ( dictionaries[ x ]->getId() == i->toUtf8().data() ) {
 
-        auto dictionary = dictionaries[ x ];
-        QIcon icon = dictionary->getIcon();
+        auto dictionary  = dictionaries[ x ];
+        QIcon icon       = dictionary->getIcon();
         QString dictName = QString::fromUtf8( dictionary->getName().c_str() );
-        QAction * action = new QAction( dictName,this );
+        QAction * action = new QAction( dictName, this );
         action->setIcon( icon );
         QString id = QString::fromStdString( dictionary->getId() );
         action->setData( id );
-        action->setCheckable(true);
+        action->setCheckable( true );
         if ( id == activeId ) {
           action->setChecked( true );
         }
-        connect(action, &QAction::triggered, this, &ScanPopup::onActionTriggered);
+        connect( action, &QAction::triggered, this, &ScanPopup::onActionTriggered );
         toolbar->addAction( action );
         actionGroup->addAction( action );
         break;

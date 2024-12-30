@@ -139,7 +139,7 @@ private:
   Config::Events configEvents;
   DictionaryBar dictionaryBar;
   QToolBar * toolbar;
-  QActionGroup *actionGroup;
+  QActionGroup * actionGroup;
   MainStatusBar * mainStatusBar;
   /// Fonts saved before words zooming is in effect, so it could be reset back.
   QFont wordListDefaultFont, translateLineDefaultFont, groupListDefaultFont;
