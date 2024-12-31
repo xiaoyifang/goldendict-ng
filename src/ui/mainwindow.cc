@@ -394,15 +394,15 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   ui.menuZoom->addSeparator();
 
   wordsZoomIn = new QShortcut( this );
-  wordsZoomIn->setKey( QKeySequence( "Alt++" ) );
+  wordsZoomIn->setKey( QKeySequence( "Alt+=" ) );
   wordsZoomOut = new QShortcut( this );
   wordsZoomOut->setKey( QKeySequence( "Alt+-" ) );
   wordsZoomBase = new QShortcut( this );
   wordsZoomBase->setKey( QKeySequence( "Alt+0" ) );
 
-  connect( wordsZoomIn, &QShortcut::triggered, this, &MainWindow::doWordsZoomIn );
-  connect( wordsZoomOut, &QShortcut::triggered, this, &MainWindow::doWordsZoomOut );
-  connect( wordsZoomBase, &QShortcut::triggered, this, &MainWindow::doWordsZoomBase );
+  connect( wordsZoomIn, &QShortcut::activated, this, &MainWindow::doWordsZoomIn );
+  connect( wordsZoomOut, &QShortcut::activated, this, &MainWindow::doWordsZoomOut );
+  connect( wordsZoomBase, &QShortcut::activated, this, &MainWindow::doWordsZoomBase );
 
 // tray icon
 #ifndef Q_OS_MACOS // macOS uses the dock menu instead of the tray icon
