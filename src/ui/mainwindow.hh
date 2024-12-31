@@ -17,7 +17,6 @@
 #include "audio/audioplayerfactory.hh"
 #include "instances.hh"
 #include "article_maker.hh"
-#include "scanpopup.hh"
 #include "ui/articleview.hh"
 #include "wordfinder.hh"
 #include "dictionarybar.hh"
@@ -34,6 +33,7 @@
 #ifdef HAVE_X11
   #include <fixx11h.h>
 #endif
+#include "scanpopup.hh"
 
 #if defined( Q_OS_MAC )
   #include "macos/gd_clipboard.hh"
