@@ -2,7 +2,9 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #pragma once
-
+#ifdef HAVE_X11
+  #include <fixx11h.h>
+#endif
 #include <QMainWindow>
 #include <QThread>
 #include <QToolButton>
@@ -31,9 +33,7 @@
 #include "hotkeywrapper.hh"
 #include "resourceschemehandler.hh"
 #include "iframeschemehandler.hh"
-#ifdef HAVE_X11
-  #include <fixx11h.h>
-#endif
+
 
 #if defined( Q_OS_MAC )
   #include "macos/gd_clipboard.hh"

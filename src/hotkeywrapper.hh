@@ -6,14 +6,6 @@
 /// + `winhotkeywrapper`
 /// + `machotkeywrapper`
 /// + `x11hotkeywrapper`
-
-#include <QGuiApplication>
-#include <QThread>
-#include "config.hh"
-#include "ex.hh"
-#include "qtsingleapplication.h"
-#include "utils.hh"
-
 #ifdef HAVE_X11
   #include <fixx11h.h>
   #include <set>
@@ -24,6 +16,12 @@
   #undef min
   #undef max
 #endif
+#include <QGuiApplication>
+#include <QThread>
+#include "config.hh"
+#include "ex.hh"
+#include "qtsingleapplication.h"
+#include "utils.hh"
 
 #ifdef Q_OS_WIN
   #include <QAbstractNativeEventFilter>
