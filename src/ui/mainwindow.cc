@@ -65,6 +65,7 @@
 #include <QGuiApplication>
 #include <QWebEngineSettings>
 #include <QProxyStyle>
+#include <QShortcut>
 
 #ifdef HAVE_X11
   #if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
