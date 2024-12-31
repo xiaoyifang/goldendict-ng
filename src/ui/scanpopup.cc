@@ -150,7 +150,6 @@ ScanPopup::ScanPopup( QWidget * parent,
     dictionaryBar.setMutedDictionaries( grp ? &grp->popupMutedDictionaries : nullptr );
   }
 
-  addToolBar( Qt::TopToolBarArea, &dictionaryBar );
   addToolBar( Qt::RightToolBarArea, toolbar );
 
   connect( &dictionaryBar, &DictionaryBar::editGroupRequested, this, &ScanPopup::editGroupRequested );
@@ -179,6 +178,9 @@ ScanPopup::ScanPopup( QWidget * parent,
     restoreState( cfg.popupWindowState );
   }
 
+  //fix this toolbar
+  addToolBar( Qt::TopToolBarArea, &dictionaryBar );
+
   ui.onTopButton->setChecked( cfg.popupWindowAlwaysOnTop );
   ui.onTopButton->setVisible( cfg.pinPopupWindow );
   connect( ui.onTopButton, &QAbstractButton::clicked, this, &ScanPopup::alwaysOnTopClicked );
@@ -186,7 +188,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   ui.pinButton->setChecked( cfg.pinPopupWindow );
 
   if ( cfg.pinPopupWindow ) {
-    dictionaryBar.setMovable( true );
+    dictionaryBar.setMovable( false );
     Qt::WindowFlags flags = pinnedWindowFlags;
     if ( cfg.popupWindowAlwaysOnTop ) {
       flags |= Qt::WindowStaysOnTopHint;
@@ -959,7 +961,7 @@ void ScanPopup::pinButtonClicked( bool checked )
 #endif
 
     setWindowTitle( QString( "%1 - GoldenDict-ng" ).arg( elideInputWord() ) );
-    dictionaryBar.setMovable( true );
+    dictionaryBar.setMovable( false );
     hideTimer.stop();
   }
   else {
