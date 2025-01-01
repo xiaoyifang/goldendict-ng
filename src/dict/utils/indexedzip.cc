@@ -92,6 +92,12 @@ bool IndexedZip::loadFile( uint32_t offset, vector< char > & data )
         return false;
       }
 
+      if ( header.uncompressedSize == 0 ) {
+        //the compress data should have some issue.
+        qDebug() << "uncompressed size is 0;";
+        return false;
+      }
+
       data.resize( header.uncompressedSize );
 
       z_stream stream = {};
