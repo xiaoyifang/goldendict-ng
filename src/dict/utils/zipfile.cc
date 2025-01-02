@@ -212,6 +212,8 @@ bool readLocalHeader( SplitZipFile & zip, LocalFileHeader & entry )
   quint16 gpBits = qFromLittleEndian( record.gpBits );
 
   //bit 3 means the data descriptor is present ,which usually in stream files.
+  //the data descriptor follows the real file data. skip the file data and check the data descriptor signature,
+  //from the zlib format description ,the signature is optional!
   bool hasDataDescriptor = ( gpBits & 0x0008 ) != 0;
 
   if ( hasDataDescriptor ) {
