@@ -17,7 +17,6 @@
 #include "audio/audioplayerfactory.hh"
 #include "instances.hh"
 #include "article_maker.hh"
-#include "scanpopup.hh"
 #include "ui/articleview.hh"
 #include "wordfinder.hh"
 #include "dictionarybar.hh"
@@ -34,12 +33,14 @@
 #ifdef HAVE_X11
   #include <fixx11h.h>
 #endif
+#include "scanpopup.hh"
 
 #if defined( Q_OS_MAC )
   #include "macos/gd_clipboard.hh"
 #endif
 //must place the qactiongroup after fixx11h.h, None in QActionGroup conflict with X.h's macro None.
 #include <QActionGroup>
+#include <QShortcut>
 
 using std::string;
 using std::vector;
@@ -118,7 +119,7 @@ private:
   QAction *navBack, *navForward, *navPronounce, *enableScanningAction;
   QAction * beforeOptionsSeparator;
   QAction *zoomIn, *zoomOut, *zoomBase;
-  QAction *wordsZoomIn, *wordsZoomOut, *wordsZoomBase;
+  QShortcut *wordsZoomIn, *wordsZoomOut, *wordsZoomBase;
   QAction *addToFavorites, *beforeAddToFavoritesSeparator;
   QMenu trayIconMenu;
   QMenu * tabMenu;

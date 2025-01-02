@@ -65,6 +65,7 @@
 #include <QGuiApplication>
 #include <QWebEngineSettings>
 #include <QProxyStyle>
+#include <QShortcut>
 
 #ifdef HAVE_X11
   #if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
@@ -392,16 +393,16 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   ui.menuZoom->addSeparator();
 
-  wordsZoomIn = ui.menuZoom->addAction( QIcon( ":/icons/icon32_zoomin.png" ), tr( "Words Zoom In" ) );
-  wordsZoomIn->setShortcuts( QList< QKeySequence >() << QKeySequence( "Alt++" ) << QKeySequence( "Alt+=" ) );
-  wordsZoomOut = ui.menuZoom->addAction( QIcon( ":/icons/icon32_zoomout.png" ), tr( "Words Zoom Out" ) );
-  wordsZoomOut->setShortcut( QKeySequence( "Alt+-" ) );
-  wordsZoomBase = ui.menuZoom->addAction( QIcon( ":/icons/icon32_zoombase.png" ), tr( "Words Normal Size" ) );
-  wordsZoomBase->setShortcut( QKeySequence( "Alt+0" ) );
+  wordsZoomIn = new QShortcut( this );
+  wordsZoomIn->setKey( QKeySequence( "Alt+=" ) );
+  wordsZoomOut = new QShortcut( this );
+  wordsZoomOut->setKey( QKeySequence( "Alt+-" ) );
+  wordsZoomBase = new QShortcut( this );
+  wordsZoomBase->setKey( QKeySequence( "Alt+0" ) );
 
-  connect( wordsZoomIn, &QAction::triggered, this, &MainWindow::doWordsZoomIn );
-  connect( wordsZoomOut, &QAction::triggered, this, &MainWindow::doWordsZoomOut );
-  connect( wordsZoomBase, &QAction::triggered, this, &MainWindow::doWordsZoomBase );
+  connect( wordsZoomIn, &QShortcut::activated, this, &MainWindow::doWordsZoomIn );
+  connect( wordsZoomOut, &QShortcut::activated, this, &MainWindow::doWordsZoomOut );
+  connect( wordsZoomBase, &QShortcut::activated, this, &MainWindow::doWordsZoomBase );
 
 // tray icon
 #ifndef Q_OS_MACOS // macOS uses the dock menu instead of the tray icon
