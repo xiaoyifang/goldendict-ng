@@ -85,7 +85,16 @@ bool IndexedZip::loadFile( uint32_t offset, vector< char > & data )
 
     case ZipFile::Deflated: {
       // Decompress the data using the zlib library
-
+      // Check for unusually large compressed size
+      if ( header.compressedSize > 1000000000 ) { // Example threshold
+        qDebug() << "Unusually large compressed size:" << header.compressedSize;
+        return false;
+      }
+      if ( header.uncompressedSize == 0 ) {
+        //the compress data should have some issue.
+        qDebug() << "uncompressed size is 0;";
+        return false;
+      }
       QByteArray compressedData = zip.read( header.compressedSize );
 
       if ( compressedData.size() != (int)header.compressedSize ) {
