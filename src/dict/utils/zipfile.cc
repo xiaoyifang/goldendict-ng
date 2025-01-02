@@ -272,8 +272,7 @@ bool readLocalHeader( SplitZipFile & zip, LocalFileHeader & entry )
     entry.compressedSize   = qFromLittleEndian( record.compressedSize );
     entry.uncompressedSize = qFromLittleEndian( record.uncompressedSize );
   }
-  //  entry.compressedSize    = qFromLittleEndian( record.compressedSize );
-  //  entry.uncompressedSize  = qFromLittleEndian( record.uncompressedSize );
+
   entry.compressionMethod = getCompressionMethod( record.compressionMethod );
 
   return true;
