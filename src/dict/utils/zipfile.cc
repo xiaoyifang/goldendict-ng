@@ -228,10 +228,7 @@ bool readLocalHeader( SplitZipFile & zip, LocalFileHeader & entry )
         }
         buffer.append( byte );
 
-        qsizetype buffer_size = buffer.size();
-        qDebug() << ( buffer_size >= dataDescriptorSignature.size() ) << sizeof( dataDescriptorSignature )
-                 << buffer_size;
-        if ( buffer_size >= dataDescriptorSignature.size() ) {
+        if ( buffer.size() >= dataDescriptorSignature.size() ) {
           QByteArray lastBytes = buffer.right( sizeof( dataDescriptorSignature ) );
           if ( lastBytes == dataDescriptorSignature ) {
             // Found the data descriptor signature
