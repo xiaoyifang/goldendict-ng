@@ -77,6 +77,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   hideTimer( this )
 {
   ui.setupUi( this );
+  toolbar = new QToolBar( "Found Dictionary", this );
 
   if ( layoutDirection() == Qt::RightToLeft ) {
     // Adjust button icons for Right-To-Left layout
@@ -104,6 +105,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( this, &ScanPopup::closeMenu, definition, &ArticleView::closePopupMenu );
   connect( definition, &ArticleView::sendWordToHistory, this, &ScanPopup::sendWordToHistory );
   connect( definition, &ArticleView::typingEvent, this, &ScanPopup::typingEvent );
+  connect( definition, &ArticleView::updateFoundInDictsList, this, &ScanPopup::updateFoundInDictsList );
 
   openSearchAction.setShortcut( QKeySequence( "Ctrl+F" ) );
   openSearchAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
@@ -148,7 +150,7 @@ ScanPopup::ScanPopup( QWidget * parent,
     dictionaryBar.setMutedDictionaries( grp ? &grp->popupMutedDictionaries : nullptr );
   }
 
-  addToolBar( Qt::RightToolBarArea, &dictionaryBar );
+  addToolBar( Qt::RightToolBarArea, toolbar );
 
   connect( &dictionaryBar, &DictionaryBar::editGroupRequested, this, &ScanPopup::editGroupRequested );
   connect( this, &ScanPopup::closeMenu, &dictionaryBar, &DictionaryBar::closePopupMenu );
@@ -176,6 +178,9 @@ ScanPopup::ScanPopup( QWidget * parent,
     restoreState( cfg.popupWindowState );
   }
 
+  //fix this toolbar
+  addToolBar( Qt::TopToolBarArea, &dictionaryBar );
+
   ui.onTopButton->setChecked( cfg.popupWindowAlwaysOnTop );
   ui.onTopButton->setVisible( cfg.pinPopupWindow );
   connect( ui.onTopButton, &QAbstractButton::clicked, this, &ScanPopup::alwaysOnTopClicked );
@@ -183,7 +188,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   ui.pinButton->setChecked( cfg.pinPopupWindow );
 
   if ( cfg.pinPopupWindow ) {
-    dictionaryBar.setMovable( true );
+    dictionaryBar.setMovable( false );
     Qt::WindowFlags flags = pinnedWindowFlags;
     if ( cfg.popupWindowAlwaysOnTop ) {
       flags |= Qt::WindowStaysOnTopHint;
@@ -287,6 +292,64 @@ ScanPopup::ScanPopup( QWidget * parent,
 
   applyZoomFactor();
   applyWordsZoomLevel();
+}
+
+void ScanPopup::onActionTriggered()
+{
+  QAction * action = qobject_cast< QAction * >( sender() );
+  if ( action != nullptr ) {
+    auto dictId = action->data().toString();
+    qDebug() << "Action triggered:" << dictId;
+    definition->jumpToDictionary( dictId, true );
+  }
+}
+
+void ScanPopup::updateFoundInDictsList()
+{
+  if ( !toolbar->isVisible() ) {
+    // nothing to do, the list is not visible
+    return;
+  }
+  toolbar->setUpdatesEnabled( false );
+
+  unsigned currentId           = ui.groupList->getCurrentGroup();
+  Instances::Group const * grp = groups.findGroup( currentId );
+
+  auto dictionaries = grp ? grp->dictionaries : allDictionaries;
+  QStringList ids   = definition->getArticlesList();
+  QString activeId  = definition->getActiveArticleId();
+  toolbar->clear();
+  if ( actionGroup != nullptr ) {
+    actionGroup->deleteLater();
+  }
+  actionGroup = new QActionGroup( this );
+  actionGroup->setExclusive( true );
+  for ( QStringList::const_iterator i = ids.constBegin(); i != ids.constEnd(); ++i ) {
+    // Find this dictionary
+
+    for ( unsigned x = dictionaries.size(); x--; ) {
+      if ( dictionaries[ x ]->getId() == i->toUtf8().data() ) {
+
+        auto dictionary  = dictionaries[ x ];
+        QIcon icon       = dictionary->getIcon();
+        QString dictName = QString::fromUtf8( dictionary->getName().c_str() );
+        QAction * action = new QAction( dictName, this );
+        action->setIcon( icon );
+        QString id = QString::fromStdString( dictionary->getId() );
+        action->setData( id );
+        action->setCheckable( true );
+        if ( id == activeId ) {
+          action->setChecked( true );
+        }
+        connect( action, &QAction::triggered, this, &ScanPopup::onActionTriggered );
+        toolbar->addAction( action );
+        actionGroup->addAction( action );
+        break;
+      }
+    }
+  }
+
+  toolbar->setUpdatesEnabled( true );
 }
 
 void ScanPopup::refresh()
@@ -898,7 +961,7 @@ void ScanPopup::pinButtonClicked( bool checked )
 #endif
 
     setWindowTitle( QString( "%1 - GoldenDict-ng" ).arg( elideInputWord() ) );
-    dictionaryBar.setMovable( true );
+    dictionaryBar.setMovable( false );
     hideTimer.stop();
   }
   else {

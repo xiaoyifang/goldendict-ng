@@ -11,12 +11,15 @@
 #include "ui_scanpopup.h"
 #include <QDialog>
 #include <QClipboard>
+#include <QToolBar>
 #include "history.hh"
 #include "dictionarybar.hh"
 #include "mainstatusbar.hh"
 #ifdef HAVE_X11
   #include "scanflag.hh"
 #endif
+
+#include <QActionGroup>
 
 /// This is a popup dialog to show translations when clipboard scanning mode
 /// is enabled.
@@ -136,6 +139,8 @@ private:
   WordFinder wordFinder;
   Config::Events configEvents;
   DictionaryBar dictionaryBar;
+  QToolBar * toolbar;
+  QActionGroup * actionGroup = nullptr;
   MainStatusBar * mainStatusBar;
   /// Fonts saved before words zooming is in effect, so it could be reset back.
   QFont wordListDefaultFont, translateLineDefaultFont, groupListDefaultFont;
@@ -227,4 +232,6 @@ private slots:
   void alwaysOnTopClicked( bool checked );
 
   void titleChanged( ArticleView *, QString const & title ) const;
+  void updateFoundInDictsList();
+  void onActionTriggered();
 };
