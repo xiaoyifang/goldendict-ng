@@ -48,11 +48,23 @@ __attribute__( ( packed ) )
 #endif
 ;
 
+struct DataDescriptor
+{
+  quint32 crc32;
+  quint32 compressedSize;
+  quint32 uncompressedSize;
+}
+#ifndef _MSC_VER
+__attribute__( ( packed ) )
+#endif
+;
+
 #pragma pack( pop )
 
 static quint32 const endOfCdirRecordSignatureValue = qToLittleEndian( 0x06054b50 );
 static quint32 const centralFileHeaderSignature    = qToLittleEndian( 0x02014b50 );
 static quint32 const localFileHeaderSignature      = qToLittleEndian( 0x04034b50 );
+static quint32 const dataDescriptorHeaderSignature = qToLittleEndian( 0x08074b50 );
 
 static CompressionMethod getCompressionMethod( quint16 compressionMethod )
 {
@@ -196,9 +208,54 @@ bool readLocalHeader( SplitZipFile & zip, LocalFileHeader & entry )
   if ( !zip.seek( zip.pos() + qFromLittleEndian( record.extraFieldLength ) ) ) {
     return false;
   }
+  // Check if the data descriptor is present
+  quint16 gpBits = qFromLittleEndian( record.gpBits );
 
-  entry.compressedSize    = qFromLittleEndian( record.compressedSize );
-  entry.uncompressedSize  = qFromLittleEndian( record.uncompressedSize );
+  //bit 3 means the data descriptor is present ,which usually in stream files.
+  //the data descriptor follows the real file data. skip the file data and check the data descriptor signature,
+  //from the zlib format description ,the signature is optional!
+  bool hasDataDescriptor = ( gpBits & 0x0008 ) != 0;
+
+  if ( hasDataDescriptor && ( record.compressedSize == 0 ) ) {
+    auto current_pos = zip.pos();
+    // If compressedSize is 0, we need to find the data descriptor
+    QByteArray dataDescriptorSignature( (char const *)&dataDescriptorHeaderSignature, sizeof( quint32 ) );
+
+    QByteArray buffer;
+    while ( true ) {
+      char byte;
+      if ( zip.read( &byte, sizeof( byte ) ) != sizeof( byte ) ) {
+        return false;
+      }
+      buffer.append( byte );
+
+      if ( buffer.size() >= dataDescriptorSignature.size() ) {
+        QByteArray lastBytes = buffer.right( sizeof( dataDescriptorSignature ) );
+        if ( lastBytes == dataDescriptorSignature ) {
+          // Found the data descriptor signature
+          break;
+        }
+        buffer.remove( 0, 1 );
+      }
+    }
+
+    DataDescriptor dataDescriptor;
+
+    if ( zip.read( (char *)&dataDescriptor, sizeof( dataDescriptor ) ) != sizeof( dataDescriptor ) ) {
+      return false;
+    }
+
+    entry.compressedSize   = qFromLittleEndian( dataDescriptor.compressedSize );
+    entry.uncompressedSize = qFromLittleEndian( dataDescriptor.uncompressedSize );
+
+    //restore
+    zip.seek( current_pos );
+  }
+  else {
+    entry.compressedSize   = qFromLittleEndian( record.compressedSize );
+    entry.uncompressedSize = qFromLittleEndian( record.uncompressedSize );
+  }
+
   entry.compressionMethod = getCompressionMethod( record.compressionMethod );
 
   return true;
