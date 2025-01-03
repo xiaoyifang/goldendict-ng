@@ -195,6 +195,6 @@ bool IndexedZip::indexFile( BtreeIndexing::IndexedWords & zipFileNames, quint32 
         // Failed to decode
       }
     }
-    return true;
   }
+  return true;
 }
