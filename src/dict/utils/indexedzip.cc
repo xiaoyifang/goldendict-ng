@@ -6,8 +6,6 @@
 #include <zlib.h>
 #include "text.hh"
 #include "iconv.hh"
-#include <QtCore5Compat/QTextCodec>
-
 #include <QMutexLocker>
 
 using namespace BtreeIndexing;
@@ -160,10 +158,6 @@ bool IndexedZip::indexFile( BtreeIndexing::IndexedWords & zipFileNames, quint32 
   }
 
   // File seems to be a valid zip file
-
-
-  QTextCodec * localeCodec = QTextCodec::codecForLocale();
-
   ZipFile::CentralDirEntry entry;
 
   bool alreadyCounted;
