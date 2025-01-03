@@ -894,7 +894,7 @@ DslScanner::DslScanner( string const & fileName ):
     }
   }
 
-  qDebug() << "DSL encoding ->" << encoding;
+  qDebug() << "DSL encoding:" << getEncodingNameFor( encoding );
 
   if ( gzrewind( f ) ) {
     gzclose( f );
