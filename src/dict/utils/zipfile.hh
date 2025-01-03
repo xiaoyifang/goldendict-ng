@@ -66,10 +66,7 @@ bool positionAtCentralDir( SplitZipFile & );
 /// Returns true on success, false otherwise.
 bool readNextEntry( SplitZipFile &, CentralDirEntry & );
 
-/// Reads loca file header from the zip at its current offset. The file gets
-/// advanced by the size of entry and starts pointing to file data.
-/// Returns true on success, false otherwise.
-bool readLocalHeader( SplitZipFile &, LocalFileHeader & );
+/// Skips the local header of the file at the current position. the file data follows the header.
 bool skipLocalHeader( SplitZipFile & zip );
 bool readLocalHeaderFromCentral( SplitZipFile &, LocalFileHeader & );
 
