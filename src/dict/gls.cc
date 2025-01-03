@@ -169,7 +169,6 @@ GlsScanner::GlsScanner( string const & fileName ):
     encoding = Encoding::Utf8;
   }
 
-  auto encoding = Text::getEncodingNameFor( encoding );
   // We now can use our own readNextLine() function
   lineFeed = Text::initLineFeed( encoding );
 
@@ -255,7 +254,8 @@ bool GlsScanner::readNextLine( std::u32string & out, size_t & offset )
     if ( pos == -1 ) {
       return false;
     }
-    QString line = Iconv::toQString( encoding, readBufferPtr, pos );
+
+    QString line = Iconv::toQString( Text::getEncodingNameFor( encoding ), readBufferPtr, pos );
 
     line = Utils::rstrip( line );
 
