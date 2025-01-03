@@ -6,6 +6,7 @@
 #include "ex.hh"
 #include "text.hh"
 #include <QString>
+#include <QStringList>
 #include <iconv.h>
 
 /// "Internationalization conversion" for char encoding conversion, currently implemented with iconv()
