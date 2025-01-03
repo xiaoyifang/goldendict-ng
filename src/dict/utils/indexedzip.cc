@@ -180,7 +180,11 @@ bool IndexedZip::indexFile( BtreeIndexing::IndexedWords & zipFileNames, quint32 
     else {
       try {
         //detect encoding.
-        auto encoding = Iconv::findValidEncoding( { "LOCAL", "IBM437", "CP866", "CP1251" } );
+        auto encoding = Iconv::findValidEncoding( { "LOCAL", "IBM437", "CP866", "CP1251", "UTF-8" } );
+        if ( encoding.isEmpty() ) {
+          qWarning() << "Zip warning: failed to detect encoding -- skipping file" << entry.fileName.data();
+          continue;
+        }
         std::u32string nameInSystemLocale =
           Iconv::toWstring( encoding.toUtf8().constData(), entry.fileName.constData(), entry.fileName.size() );
         if ( !nameInSystemLocale.empty() ) {

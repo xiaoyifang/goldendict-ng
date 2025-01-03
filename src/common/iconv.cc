@@ -130,6 +130,5 @@ QString Iconv::findValidEncoding( const QStringList & encodings )
       return encoding;
     }
   }
-  // Return utf-8 as fallback.
-  return QString( "UTF-8" );
+  return {};
 }
