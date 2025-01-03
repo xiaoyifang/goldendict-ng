@@ -90,9 +90,9 @@ bool IndexedZip::loadFile( uint32_t offset, vector< char > & data )
         qDebug() << "Unusually large compressed size:" << header.compressedSize;
         return false;
       }
-      if ( header.uncompressedSize == 0 ) {
+      if ( header.compressedSize == 0 ) {
         //the compress data should have some issue.
-        qDebug() << "uncompressed size is 0;";
+        qDebug() << "compressed size is 0;";
         return false;
       }
       QByteArray compressedData = zip.read( header.compressedSize );

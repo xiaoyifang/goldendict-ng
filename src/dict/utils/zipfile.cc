@@ -216,55 +216,38 @@ bool readLocalHeader( SplitZipFile & zip, LocalFileHeader & entry )
   //from the zlib format description ,the signature is optional!
   bool hasDataDescriptor = ( gpBits & 0x0008 ) != 0;
 
-  if ( hasDataDescriptor ) {
+  if ( hasDataDescriptor && ( record.compressedSize == 0 ) ) {
     auto current_pos = zip.pos();
-    if ( record.compressedSize == 0 ) {
-      // If compressedSize is 0, we need to find the data descriptor
-      QByteArray dataDescriptorSignature( (char const *)&dataDescriptorHeaderSignature, sizeof( quint32 ) );
+    // If compressedSize is 0, we need to find the data descriptor
+    QByteArray dataDescriptorSignature( (char const *)&dataDescriptorHeaderSignature, sizeof( quint32 ) );
 
-      QByteArray buffer;
-      while ( true ) {
-        char byte;
-        if ( zip.read( &byte, sizeof( byte ) ) != sizeof( byte ) ) {
-          return false;
+    QByteArray buffer;
+    while ( true ) {
+      char byte;
+      if ( zip.read( &byte, sizeof( byte ) ) != sizeof( byte ) ) {
+        return false;
+      }
+      buffer.append( byte );
+
+      if ( buffer.size() >= dataDescriptorSignature.size() ) {
+        QByteArray lastBytes = buffer.right( sizeof( dataDescriptorSignature ) );
+        if ( lastBytes == dataDescriptorSignature ) {
+          // Found the data descriptor signature
+          break;
         }
-        buffer.append( byte );
-
-        if ( buffer.size() >= dataDescriptorSignature.size() ) {
-          QByteArray lastBytes = buffer.right( sizeof( dataDescriptorSignature ) );
-          if ( lastBytes == dataDescriptorSignature ) {
-            // Found the data descriptor signature
-            break;
-          }
-          buffer.remove( 0, 1 );
-        }
+        buffer.remove( 0, 1 );
       }
-
-      DataDescriptor dataDescriptor;
-
-      if ( zip.read( (char *)&dataDescriptor, sizeof( dataDescriptor ) ) != sizeof( dataDescriptor ) ) {
-        return false;
-      }
-
-      entry.compressedSize   = qFromLittleEndian( dataDescriptor.compressedSize );
-      entry.uncompressedSize = qFromLittleEndian( dataDescriptor.uncompressedSize );
     }
-    else {
-      QByteArray fileData = zip.read( record.compressedSize );
 
-      if ( fileData.size() != (int)record.compressedSize ) {
-        return false;
-      }
+    DataDescriptor dataDescriptor;
 
-      DataDescriptor dataDescriptor;
-
-      if ( zip.read( (char *)&dataDescriptor, sizeof( dataDescriptor ) ) != sizeof( dataDescriptor ) ) {
-        return false;
-      }
-
-      entry.compressedSize   = qFromLittleEndian( dataDescriptor.compressedSize );
-      entry.uncompressedSize = qFromLittleEndian( dataDescriptor.uncompressedSize );
+    if ( zip.read( (char *)&dataDescriptor, sizeof( dataDescriptor ) ) != sizeof( dataDescriptor ) ) {
+      return false;
     }
+
+    entry.compressedSize   = qFromLittleEndian( dataDescriptor.compressedSize );
+    entry.uncompressedSize = qFromLittleEndian( dataDescriptor.uncompressedSize );
+
     //restore
     zip.seek( current_pos );
   }
