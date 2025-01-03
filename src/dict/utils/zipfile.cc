@@ -175,7 +175,6 @@ bool readNextEntry( SplitZipFile & zip, CentralDirEntry & entry )
   }
 
   entry.centralHeaderOffset = zip.calcAbsoluteOffset( centralDirOffset, qFromLittleEndian( record.diskNumberStart ) );
-  ;
   entry.localHeaderOffset = zip.calcAbsoluteOffset( qFromLittleEndian( record.offsetOfLocalHeader ),
                                                     qFromLittleEndian( record.diskNumberStart ) );
   entry.compressedSize    = qFromLittleEndian( record.compressedSize );
