@@ -34,7 +34,8 @@ public:
   static std::string toUtf8( char const * fromEncoding, std::u32string_view str );
 
   static QString toQString( char const * fromEncoding, void const * fromData, size_t dataSize );
-
+  // tries to find a valid encoding from the given list of encodings.
+  static QString findValidEncoding(const QStringList &encodings);
   // Copying/assigning isn't supported
   Q_DISABLE_COPY_MOVE( Iconv );
 };

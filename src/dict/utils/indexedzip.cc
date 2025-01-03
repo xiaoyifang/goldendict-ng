@@ -181,100 +181,29 @@ bool IndexedZip::indexFile( BtreeIndexing::IndexedWords & zipFileNames, quint32 
 
     unsigned char const * ptr = (unsigned char const *)entry.fileName.constData();
 
-    bool hasNonAscii = false;
-
-    for ( ;; ) {
-      if ( *ptr & 0x80 ) {
-        hasNonAscii = true;
-        break;
-      }
-      else if ( !*ptr++ ) {
-        break;
-      }
-    }
-
-    alreadyCounted = false;
-
-    if ( !hasNonAscii ) {
-      // Add entry as is
-
+    if ( entry.fileNameInUTF8 ) {
       zipFileNames.addSingleWord( Text::toUtf32( entry.fileName.data() ), entry.localHeaderOffset );
       if ( filesCount ) {
         *filesCount += 1;
       }
     }
     else {
-      // Try assuming different encodings. Those are UTF8, system locale and two
-      // Russian ones (Windows and Windows OEM). Unfortunately, zip
-      // files do not say which encoding they utilize.
-
-      // Utf8
       try {
-        std::u32string decoded = Text::toUtf32( entry.fileName.constData() );
+        //detect encoding.
+        auto encoding = Iconv::findValidEncoding( { "LOCAL", "IBM437", "CP866", "CP1251" } );
+        std::u32string nameInSystemLocale =
+          Iconv::toWstring( encoding.toUtf8().constData(), entry.fileName.constData(), entry.fileName.size() );
+        if ( !nameInSystemLocale.empty() ) {
+          zipFileNames.addSingleWord( nameInSystemLocale, entry.localHeaderOffset );
 
-        zipFileNames.addSingleWord( decoded, entry.localHeaderOffset );
-        if ( filesCount != 0 && !alreadyCounted ) {
-          *filesCount += 1;
-          alreadyCounted = true;
+          if ( filesCount != 0 ) {
+            *filesCount += 1;
+          }
         }
       }
-      catch ( Text::exCantDecode & ) {
+      catch ( Iconv::Ex & ) {
         // Failed to decode
       }
-
-      if ( !entry.fileNameInUTF8 ) {
-        std::u32string nameInSystemLocale;
-
-        // System locale
-        if ( localeCodec ) {
-          QString name       = localeCodec->toUnicode( entry.fileName.constData(), entry.fileName.size() );
-          nameInSystemLocale = name.toStdU32String();
-          if ( !nameInSystemLocale.empty() ) {
-            zipFileNames.addSingleWord( nameInSystemLocale, entry.localHeaderOffset );
-
-            if ( filesCount != 0 && !alreadyCounted ) {
-              *filesCount += 1;
-              alreadyCounted = true;
-            }
-          }
-        }
-
-
-        // CP866
-        try {
-          std::u32string decoded = Iconv::toWstring( "CP866", entry.fileName.constData(), entry.fileName.size() );
-
-          if ( nameInSystemLocale != decoded ) {
-            zipFileNames.addSingleWord( decoded, entry.localHeaderOffset );
-
-            if ( filesCount != 0 && !alreadyCounted ) {
-              *filesCount += 1;
-              alreadyCounted = true;
-            }
-          }
-        }
-        catch ( Iconv::Ex & ) {
-          // Failed to decode
-        }
-
-        // CP1251
-        try {
-          std::u32string decoded = Iconv::toWstring( "CP1251", entry.fileName.constData(), entry.fileName.size() );
-
-          if ( nameInSystemLocale != decoded ) {
-            zipFileNames.addSingleWord( decoded, entry.localHeaderOffset );
-
-            if ( filesCount != 0 && !alreadyCounted ) {
-              *filesCount += 1;
-              alreadyCounted = true;
-            }
-          }
-        }
-        catch ( Iconv::Ex & ) {
-          // Failed to decode
-        }
-      }
     }
-  }
   return true;
 }

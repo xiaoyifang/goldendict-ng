@@ -121,3 +121,15 @@ QString Iconv::toQString( char const * fromEncoding, void const * fromData, size
   Iconv ic( fromEncoding );
   return ic.convert( fromData, dataSize );
 }
+QString Iconv::findValidEncoding( const QStringList & encodings )
+{
+  for ( const QString & encoding : encodings ) {
+    iconv_t cd = iconv_open( "UTF-8", encoding.toUtf8().constData() );
+    if ( cd != (iconv_t)-1 ) {
+      iconv_close( cd );
+      return encoding;
+    }
+  }
+  // Return utf-8 as fallback.
+  return QString("UTF-8"); 
+}
