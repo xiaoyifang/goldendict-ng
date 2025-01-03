@@ -9,7 +9,6 @@
 #include <zlib.h>
 #include "dictionary.hh"
 #include "iconv.hh"
-#include <QtCore5Compat/QTextCodec>
 #include <QByteArray>
 #include "text.hh"
 
@@ -102,7 +101,6 @@ class DslScanner
 {
   gzFile f;
   Encoding encoding;
-  QTextCodec * codec;
   std::u32string dictionaryName;
   std::u32string langFrom, langTo;
   std::u32string soundDictionary;
