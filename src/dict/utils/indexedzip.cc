@@ -171,10 +171,6 @@ bool IndexedZip::indexFile( BtreeIndexing::IndexedWords & zipFileNames, quint32 
       continue;
     }
 
-    // Check if the file name has some non-ascii letters.
-
-    unsigned char const * ptr = (unsigned char const *)entry.fileName.constData();
-
     if ( entry.fileNameInUTF8 ) {
       zipFileNames.addSingleWord( Text::toUtf32( entry.fileName.data() ), entry.localHeaderOffset );
       if ( filesCount ) {
@@ -199,5 +195,6 @@ bool IndexedZip::indexFile( BtreeIndexing::IndexedWords & zipFileNames, quint32 
         // Failed to decode
       }
     }
-  return true;
+    return true;
+  }
 }
