@@ -48,23 +48,11 @@ __attribute__( ( packed ) )
 #endif
 ;
 
-struct DataDescriptor
-{
-  quint32 crc32;
-  quint32 compressedSize;
-  quint32 uncompressedSize;
-}
-#ifndef _MSC_VER
-__attribute__( ( packed ) )
-#endif
-;
-
 #pragma pack( pop )
 
 static quint32 const endOfCdirRecordSignatureValue = qToLittleEndian( 0x06054b50 );
 static quint32 const centralFileHeaderSignature    = qToLittleEndian( 0x02014b50 );
 static quint32 const localFileHeaderSignature      = qToLittleEndian( 0x04034b50 );
-static quint32 const dataDescriptorHeaderSignature = qToLittleEndian( 0x08074b50 );
 
 static CompressionMethod getCompressionMethod( quint16 compressionMethod )
 {
