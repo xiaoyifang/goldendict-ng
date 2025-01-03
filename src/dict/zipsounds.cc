@@ -37,7 +37,7 @@ DEF_EX( exInvalidData, "Invalid data encountered", Dictionary::Ex )
 
 enum {
   Signature            = 0x5350495a, // ZIPS on little-endian, SPIZ on big-endian
-  CurrentFormatVersion = 6 + BtreeIndexing::FormatVersion
+  CurrentFormatVersion = 6 + BtreeIndexing::FormatVersion + BtreeIndexing::ZipParseLogicVersion
 };
 
 #pragma pack( push, 1 )

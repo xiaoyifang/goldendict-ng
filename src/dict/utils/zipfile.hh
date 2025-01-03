@@ -37,7 +37,7 @@ enum CompressionMethod {
 struct CentralDirEntry
 {
   QByteArray fileName;
-
+  quint32 centralHeaderOffset;
   quint32 localHeaderOffset, compressedSize, uncompressedSize;
   CompressionMethod compressionMethod;
   bool fileNameInUTF8;
@@ -51,6 +51,7 @@ struct LocalFileHeader
 
   quint32 compressedSize, uncompressedSize;
   CompressionMethod compressionMethod;
+  quint32 offset;
 };
 
 /// Finds the central directory in the given file and positions it at its
@@ -69,5 +70,7 @@ bool readNextEntry( SplitZipFile &, CentralDirEntry & );
 /// advanced by the size of entry and starts pointing to file data.
 /// Returns true on success, false otherwise.
 bool readLocalHeader( SplitZipFile &, LocalFileHeader & );
+bool skipLocalHeader( SplitZipFile & zip );
+bool readLocalHeaderFromCentral( SplitZipFile &, LocalFileHeader & );
 
 } // namespace ZipFile

@@ -58,12 +58,13 @@ bool IndexedZip::loadFile( uint32_t offset, vector< char > & data )
     return false;
   }
 
+  //the offset is central dir header position.
   ZipFile::LocalFileHeader header;
 
-  if ( !ZipFile::readLocalHeader( zip, header ) ) {
+  if ( !ZipFile::readLocalHeaderFromCentral( zip, header ) ) {
     vector< string > zipFileNames;
     zip.getFilenames( zipFileNames );
-    qDebug( "Failed to load header" );
+    qDebug() << "Failed to load header";
     string filename;
     if ( zip.getCurrentFile() < zipFileNames.size() ) {
       filename = zipFileNames.at( zip.getCurrentFile() );
@@ -73,11 +74,16 @@ bool IndexedZip::loadFile( uint32_t offset, vector< char > & data )
     return false;
   }
 
-  // Which algorithm was used?
+  zip.seek( header.offset );
+  if ( !ZipFile::skipLocalHeader( zip ) ) {
+    qDebug() << "Failed to skip local header";
+    return false;
+  }
 
+  // Which algorithm was used?
   switch ( header.compressionMethod ) {
     case ZipFile::Uncompressed:
-      qDebug( "Uncompressed" );
+      qDebug() << "Uncompressed";
       data.resize( header.uncompressedSize );
       return (size_t)zip.read( &data.front(), data.size() ) == data.size();
 
@@ -172,7 +178,7 @@ bool IndexedZip::indexFile( BtreeIndexing::IndexedWords & zipFileNames, quint32 
     }
 
     if ( entry.fileNameInUTF8 ) {
-      zipFileNames.addSingleWord( Text::toUtf32( entry.fileName.data() ), entry.localHeaderOffset );
+      zipFileNames.addSingleWord( Text::toUtf32( entry.fileName.data() ), entry.centralHeaderOffset );
       if ( filesCount ) {
         *filesCount += 1;
       }
@@ -188,7 +194,7 @@ bool IndexedZip::indexFile( BtreeIndexing::IndexedWords & zipFileNames, quint32 
         std::u32string nameInSystemLocale =
           Iconv::toWstring( encoding.toUtf8().constData(), entry.fileName.constData(), entry.fileName.size() );
         if ( !nameInSystemLocale.empty() ) {
-          zipFileNames.addSingleWord( nameInSystemLocale, entry.localHeaderOffset );
+          zipFileNames.addSingleWord( nameInSystemLocale, entry.centralHeaderOffset );
 
           if ( filesCount != 0 ) {
             *filesCount += 1;
