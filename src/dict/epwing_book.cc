@@ -476,9 +476,6 @@ int EpwingBook::setBook( string const & directory )
     setErrorString( "eb_appendix_subbook_list", ret );
   }
 
-  //  if ( !codec_Euc || ( book.character_code == EB_CHARCODE_ISO8859_1 && !codec_ISO )
-  //       || ( book.character_code == EB_CHARCODE_JISX0208_GB2312 && !codec_GB ) )
-  //    throw exEpwing( "No required codec to decode dictionary" );
 
   rootDir = QString::fromStdString( directory );
 
