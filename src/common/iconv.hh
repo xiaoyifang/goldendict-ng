@@ -23,6 +23,7 @@ public:
   explicit Iconv( char const * from );
 
   ~Iconv();
+  static QByteArray fromUnicode( const QString & input, const char * toEncoding );
 
   QString convert( void const *& inBuf, size_t & inBytesLeft );
 

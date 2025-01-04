@@ -32,12 +32,11 @@
 #include <QDomDocument>
 #include <QTextDocumentFragment>
 #include <QDataStream>
-#include <QtCore5Compat/QTextCodec>
-
 #include "decompress.hh"
 #include "ripemd.hh"
 #include "utils.hh"
 #include "htmlescape.hh"
+#include "iconv.hh"
 
 namespace Mdict {
 
@@ -187,8 +186,7 @@ QString MdictParser::toUtf16( const char * fromCode, const char * from, size_t f
     return QString();
   }
 
-  QTextCodec * codec = QTextCodec::codecForName( fromCode );
-  return codec->toUnicode( from, fromSize );
+  return Iconv::toQString( fromCode, from, fromSize );
 }
 
 bool MdictParser::decryptHeadWordIndex( char * buffer, qint64 len )

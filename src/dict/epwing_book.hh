@@ -16,7 +16,6 @@
 #endif
 
 #include <QString>
-#include <QtCore5Compat/QTextCodec>
 
 // POSIX symbol unavailable on Windows needed for eb headers
 #ifdef Q_OS_WIN
@@ -72,7 +71,6 @@ class EpwingBook
   QString mainCacheDir, rootDir;
   QString cacheImagesDir, cacheSoundsDir, cacheMoviesDir, cacheFontsDir;
   QString dictID;
-  QTextCodec *codec_ISO, *codec_GB, *codec_Euc;
   QStack< unsigned int > decorationStack;
   int monoWidth, monoHeight;
   QStringList imageCacheList, soundsCacheList, moviesCacheList, fontsCacheList;
@@ -110,6 +108,7 @@ class EpwingBook
   QByteArray codeToUnicode( QString const & code );
 
 public:
+  const char *codec_ISO_name, *codec_GB_name, *codec_Euc_name;
 
   enum DecorationCodes {
     UNKNOWN     = 0,
@@ -131,21 +130,6 @@ public:
   QString const & errorString() const
   {
     return error_string;
-  }
-
-  QTextCodec * codecISO()
-  {
-    return codec_ISO;
-  }
-
-  QTextCodec * codecGB()
-  {
-    return codec_GB;
-  }
-
-  QTextCodec * codecEuc()
-  {
-    return codec_Euc;
   }
 
   int getSubBookCount()
