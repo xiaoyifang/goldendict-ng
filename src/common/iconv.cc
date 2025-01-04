@@ -10,7 +10,9 @@ Iconv::Iconv( char const * from ):
   state( iconv_open( Text::utf8, from ) )
 {
   if ( state == (iconv_t)-1 ) {
-    throw exCantInit( strerror( errno ) );
+    char buffer[ 256 ];
+    strerror_s( buffer, sizeof( buffer ), errno );
+    throw exCantInit( buffer );
   }
 }
 
@@ -38,10 +40,21 @@ QByteArray Iconv::fromUnicode( const QString & input, const char * toEncoding )
   char * outBufPtr = outBuf.data();
 
   // Perform conversion
-  size_t result = iconv( cd, const_cast< char ** >( &inBuf ), &inBytesLeft, &outBufPtr, &outBytesLeft );
-  if ( result == (size_t)-1 ) {
-    iconv_close( cd );
-    throw std::runtime_error( "iconv conversion failed" );
+  while ( inBytesLeft > 0 ) {
+    size_t result = iconv( cd, const_cast< char ** >( &inBuf ), &inBytesLeft, &outBufPtr, &outBytesLeft );
+    if ( result == (size_t)-1 ) {
+      if ( errno == E2BIG ) {
+        // Grow the buffer and retry
+        size_t offset = outBufPtr - outBuf.data();
+        outBuf.resize( outBuf.size() + inBytesLeft * 4 );
+        outBufPtr = outBuf.data() + offset;
+        outBytesLeft += inBytesLeft * 4;
+      }
+      else {
+        iconv_close( cd );
+        throw std::runtime_error( "iconv conversion failed" );
+      }
+    }
   }
 
   // Clean up
