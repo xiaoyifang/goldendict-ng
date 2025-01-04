@@ -362,6 +362,23 @@
         darkColorScheme: "Default",
         immediateModify: false
     };
+    function enable({
+        darkSchemeBackgroundColor = DEFAULT_THEME.darkSchemeBackgroundColor,
+        darkSchemeTextColor = DEFAULT_THEME.darkSchemeTextColor,
+        ...themeOptions
+    } = {}, fixes = null) {
+        const theme = {
+            ...DEFAULT_THEME,
+            ...themeOptions,
+            darkSchemeBackgroundColor,
+            darkSchemeTextColor
+        };
+        if (theme.engine !== ThemeEngine.dynamicTheme) {
+            throw new Error("Theme engine is not supported.");
+            }
+        createOrUpdateDynamicThemeInternal(theme, fixes, isIFrame);
+        isDarkReaderEnabled = true;
+    }
     ({
         schemeVersion: 0,
         enabled: true,
