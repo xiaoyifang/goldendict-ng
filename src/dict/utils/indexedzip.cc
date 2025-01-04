@@ -166,14 +166,13 @@ bool IndexedZip::indexFile( BtreeIndexing::IndexedWords & zipFileNames, quint32 
   // File seems to be a valid zip file
   ZipFile::CentralDirEntry entry;
 
-  bool alreadyCounted;
   if ( filesCount ) {
     *filesCount = 0;
   }
 
   while ( ZipFile::readNextEntry( zip, entry ) ) {
     if ( entry.compressionMethod == ZipFile::Unsupported ) {
-      qWarning( "Zip warning: compression method unsupported -- skipping file \"%s\"", entry.fileName.data() );
+      qWarning() << "Zip warning: compression method unsupported -- skipping file" << entry.fileName.data();
       continue;
     }
 
