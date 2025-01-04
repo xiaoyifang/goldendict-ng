@@ -78,7 +78,7 @@ struct Ifo
 
 enum {
   Signature            = 0x58444953, // SIDX on little-endian, XDIS on big-endian
-  CurrentFormatVersion = 9 + BtreeIndexing::FormatVersion + Folding::Version
+  CurrentFormatVersion = 9 + BtreeIndexing::FormatVersion + Folding::Version + BtreeIndexing::ZipParseLogicVersion
 };
 
 #pragma pack( push, 1 )
