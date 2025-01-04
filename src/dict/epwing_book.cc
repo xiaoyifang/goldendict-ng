@@ -174,15 +174,12 @@ hook_narrow_jisx0208( EB_Book * book, EB_Appendix *, void * container, EB_Hook_C
 
     if ( out_code == 0 ) {
       EContainer * cont = static_cast< EContainer * >( container );
-      if ( cont->book->codec_Euc_name ) {
-        QByteArray str = Iconv::toQString( cont->book->codec_Euc_name, (const char *)buf, 2 ).toUtf8();
-        eb_write_text( book, str.data(), str.size() );
-      }
-      else
-        eb_write_text( book, (const char *)buf, 2 );
+      QByteArray str    = Iconv::toQString( cont->book->codec_Euc_name, (const char *)buf, 2 ).toUtf8();
+      eb_write_text( book, str.data(), str.size() );
     }
-    else
+    else {
       eb_write_text_byte1( book, out_code );
+    }
   }
 
   return EB_SUCCESS;
