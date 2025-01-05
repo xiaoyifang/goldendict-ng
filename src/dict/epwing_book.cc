@@ -14,6 +14,7 @@
   #include "folding.hh"
   #include "epwing_charmap.hh"
   #include "htmlescape.hh"
+  #include "iconv.hh"
   #if defined( Q_OS_WIN32 ) || defined( Q_OS_MAC )
     #define _FILE_OFFSET_BITS 64
   #endif
@@ -146,10 +147,8 @@ EB_Error_Code
 hook_iso8859_1( EB_Book * book, EB_Appendix *, void * container, EB_Hook_Code, int, const unsigned int * argv )
 {
   EpwingBook * ebook = static_cast< EpwingBook * >( container );
-  if ( ebook->codecISO() ) {
-    QByteArray b = ebook->codecISO()->toUnicode( (const char *)argv, 1 ).toUtf8();
-    eb_write_text( book, b.data(), b.size() );
-  }
+  QByteArray b       = Iconv::toQString( ebook->codec_ISO_name, (const char *)argv, 1 ).toUtf8();
+  eb_write_text( book, b.data(), b.size() );
   return EB_SUCCESS;
 }
 
@@ -175,15 +174,12 @@ hook_narrow_jisx0208( EB_Book * book, EB_Appendix *, void * container, EB_Hook_C
 
     if ( out_code == 0 ) {
       EContainer * cont = static_cast< EContainer * >( container );
-      if ( cont->book->codecEuc() ) {
-        QByteArray str = cont->book->codecEuc()->toUnicode( (const char *)buf, 2 ).toUtf8();
-        eb_write_text( book, str.data(), str.size() );
-      }
-      else
-        eb_write_text( book, (const char *)buf, 2 );
+      QByteArray str    = Iconv::toQString( cont->book->codec_Euc_name, (const char *)buf, 2 ).toUtf8();
+      eb_write_text( book, str.data(), str.size() );
     }
-    else
+    else {
       eb_write_text_byte1( book, out_code );
+    }
   }
 
   return EB_SUCCESS;
@@ -198,12 +194,8 @@ hook_wide_jisx0208( EB_Book * book, EB_Appendix *, void * ptr, EB_Hook_Code, int
   buf[ 1 ] = *argv & 0xFF;
   buf[ 0 ] = ( *argv & 0xFF00 ) >> 8;
 
-  if ( ebook->codecEuc() ) {
-    QByteArray b = ebook->codecEuc()->toUnicode( buf, 2 ).toUtf8();
-    eb_write_text( book, b.data(), b.size() );
-  }
-  else
-    eb_write_text_byte2( book, buf[ 0 ], buf[ 1 ] );
+  QByteArray b = Iconv::toQString( ebook->codec_Euc_name, buf, 2 ).toUtf8();
+  eb_write_text( book, b.data(), b.size() );
 
   return EB_SUCCESS;
 }
@@ -217,12 +209,8 @@ hook_gb2312( EB_Book * book, EB_Appendix *, void * container, EB_Hook_Code, int,
   buf[ 1 ] = *argv & 0xFF;
   buf[ 0 ] = ( *argv & 0xFF00 ) >> 8;
 
-  if ( ebook->codecGB() ) {
-    QByteArray b = ebook->codecGB()->toUnicode( buf, 2 ).toUtf8();
-    eb_write_text( book, b.data(), b.size() );
-  }
-  else
-    eb_write_text_byte2( book, buf[ 0 ], buf[ 1 ] );
+  QByteArray b = Iconv::toQString( ebook->codec_GB_name, buf, 2 ).toUtf8();
+  eb_write_text( book, b.data(), b.size() );
 
   return EB_SUCCESS;
 }
@@ -397,9 +385,9 @@ hook_candidate( EB_Book * book, EB_Appendix *, void * container, EB_Hook_Code co
 EpwingBook::EpwingBook():
   currentSubBook( -1 )
 {
-  codec_ISO = QTextCodec::codecForName( "ISO8859-1" );
-  codec_GB  = QTextCodec::codecForName( "GB2312" );
-  codec_Euc = QTextCodec::codecForName( "EUC-JP" );
+  codec_ISO_name = "ISO8859-1";
+  codec_GB_name  = "GB2312";
+  codec_Euc_name = "EUC-JP";
 
   eb_initialize_book( &book );
   eb_initialize_appendix( &appendix );
@@ -422,8 +410,8 @@ void EpwingBook::setErrorString( QString const & func, EB_Error_Code code )
 {
   error_string = QString( "EB \"%1\" function error: %2 (%3)" )
                    .arg( func )
-                   .arg( QTextCodec::codecForLocale()->toUnicode( eb_error_string( code ) ) )
-                   .arg( QTextCodec::codecForLocale()->toUnicode( eb_error_message( code ) ) );
+                   .arg( QString::fromLocal8Bit( eb_error_string( code ) ) )
+                   .arg( QString::fromLocal8Bit( eb_error_message( code ) ) );
 
   if ( currentPosition.page != 0 )
     error_string += QString( " on page %1, offset %2" )
@@ -488,9 +476,6 @@ int EpwingBook::setBook( string const & directory )
     setErrorString( "eb_appendix_subbook_list", ret );
   }
 
-  if ( !codec_Euc || ( book.character_code == EB_CHARCODE_ISO8859_1 && !codec_ISO )
-       || ( book.character_code == EB_CHARCODE_JISX0208_GB2312 && !codec_GB ) )
-    throw exEpwing( "No required codec to decode dictionary" );
 
   rootDir = QString::fromStdString( directory );
 
@@ -657,10 +642,7 @@ QString EpwingBook::title()
   }
 
   buf[ EB_MAX_TITLE_LENGTH ] = 0;
-  if ( codec_Euc )
-    return codec_Euc->toUnicode( buf );
-
-  return {};
+  return Iconv::toQString( codec_Euc_name, buf, strlen( buf ) );
 }
 
 QString EpwingBook::copyright()
@@ -1086,14 +1068,12 @@ bool EpwingBook::isHeadwordCorrect( QString const & headword )
   if ( headword.isEmpty() )
     return false;
 
-  if ( book.character_code == EB_CHARCODE_ISO8859_1 && codec_ISO )
-    buf = codec_ISO->fromUnicode( headword );
-  else if ( ( book.character_code == EB_CHARCODE_JISX0208 || book.character_code == EB_CHARCODE_JISX0208_GB2312 )
-            && codec_Euc )
-    buf = codec_Euc->fromUnicode( headword );
-
-  if ( book.character_code == EB_CHARCODE_JISX0208_GB2312 && codec_GB )
-    buf2 = codec_GB->fromUnicode( headword );
+  if ( book.character_code == EB_CHARCODE_ISO8859_1 )
+    buf = Iconv::fromUnicode( headword, codec_ISO_name );
+  else if ( ( book.character_code == EB_CHARCODE_JISX0208 || book.character_code == EB_CHARCODE_JISX0208_GB2312 ) )
+    buf = Iconv::fromUnicode( headword, codec_Euc_name );
+  if ( book.character_code == EB_CHARCODE_JISX0208_GB2312 )
+    buf2 = Iconv::fromUnicode( headword, codec_GB_name );
 
   if ( !buf.isEmpty() && eb_search_exactword( &book, buf.data() ) == EB_SUCCESS ) {
     ret = eb_hit_list( &book, 2, hits, &hit_count );
@@ -1846,9 +1826,7 @@ QString EpwingBook::currentCandidate()
   const char * s = eb_current_candidate( &book );
   if ( book.character_code == EB_CHARCODE_ISO8859_1 )
     return QString::fromLatin1( s );
-  if ( codec_Euc )
-    return codec_Euc->toUnicode( s );
-  return QString{};
+  return Iconv::toQString( codec_Euc_name, s, strlen( s ) );
 }
 
 bool EpwingBook::getMatches( QString word, QList< QString > & matches )
@@ -1857,14 +1835,13 @@ bool EpwingBook::getMatches( QString word, QList< QString > & matches )
   EB_Hit hits[ HitsBufferSize ];
   int hitCount = 0;
 
-  if ( book.character_code == EB_CHARCODE_ISO8859_1 && codec_ISO )
-    bword = codec_ISO->fromUnicode( word );
-  else if ( ( book.character_code == EB_CHARCODE_JISX0208 || book.character_code == EB_CHARCODE_JISX0208_GB2312 )
-            && codec_Euc )
-    bword = codec_Euc->fromUnicode( word );
+  if ( book.character_code == EB_CHARCODE_ISO8859_1 )
+    bword = Iconv::fromUnicode( word, codec_ISO_name );
+  else if ( ( book.character_code == EB_CHARCODE_JISX0208 || book.character_code == EB_CHARCODE_JISX0208_GB2312 ) )
+    bword = Iconv::fromUnicode( word, codec_Euc_name );
 
-  if ( book.character_code == EB_CHARCODE_JISX0208_GB2312 && codec_GB )
-    bword2 = codec_GB->fromUnicode( word );
+  if ( book.character_code == EB_CHARCODE_JISX0208_GB2312 )
+    bword2 = Iconv::fromUnicode( word, codec_GB_name );
 
   if ( !bword.isEmpty() ) {
     EB_Error_Code ret = eb_search_word( &book, bword.data() );
@@ -1928,14 +1905,13 @@ bool EpwingBook::getArticlePos( QString word, QList< int > & pages, QList< int >
   EB_Hit hits[ HitsBufferSize ];
   int hitCount = 0;
 
-  if ( book.character_code == EB_CHARCODE_ISO8859_1 && codec_ISO )
-    bword = codec_ISO->fromUnicode( word );
-  else if ( ( book.character_code == EB_CHARCODE_JISX0208 || book.character_code == EB_CHARCODE_JISX0208_GB2312 )
-            && codec_Euc )
-    bword = codec_Euc->fromUnicode( word );
+  if ( book.character_code == EB_CHARCODE_ISO8859_1 )
+    bword = Iconv::fromUnicode( word, codec_ISO_name );
+  else if ( ( book.character_code == EB_CHARCODE_JISX0208 || book.character_code == EB_CHARCODE_JISX0208_GB2312 ) )
+    bword = Iconv::fromUnicode( word, codec_Euc_name );
 
-  if ( book.character_code == EB_CHARCODE_JISX0208_GB2312 && codec_GB )
-    bword2 = codec_GB->fromUnicode( word );
+  if ( book.character_code == EB_CHARCODE_JISX0208_GB2312 )
+    bword2 = Iconv::fromUnicode( word, codec_GB_name );
 
   if ( !bword.isEmpty() ) {
     EB_Error_Code ret = eb_search_exactword( &book, bword.data() );

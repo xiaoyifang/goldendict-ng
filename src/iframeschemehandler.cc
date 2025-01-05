@@ -1,6 +1,6 @@
 #include "iframeschemehandler.hh"
 
-#include <QTextCodec>
+#include "iconv.hh"
 
 IframeSchemeHandler::IframeSchemeHandler( QObject * parent ):
   QWebEngineUrlSchemeHandler( parent )
@@ -36,9 +36,9 @@ void IframeSchemeHandler::requestStarted( QWebEngineUrlRequestJob * requestJob )
     QByteArray replyData = reply->readAll();
     QString articleString;
 
-    QTextCodec * codec = QTextCodec::codecForUtfText( replyData, QTextCodec::codecForName( codecName.toUtf8() ) );
-    if ( codec ) {
-      articleString = codec->toUnicode( replyData );
+    auto encoding = Iconv::findValidEncoding( { codecName } );
+    if ( !encoding.isEmpty() ) {
+      articleString = Iconv::toQString( encoding.toUtf8().constData(), replyData.data(), replyData.size() );
     }
     else {
       articleString = QString::fromUtf8( replyData );

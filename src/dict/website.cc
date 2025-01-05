@@ -122,7 +122,6 @@ public:
 private:
 
   void requestFinished( QNetworkReply * ) override;
-  static QTextCodec * codecForHtml( QByteArray const & ba );
 };
 
 void WebSiteArticleRequest::cancel()
@@ -150,11 +149,6 @@ WebSiteArticleRequest::WebSiteArticleRequest( QString const & url_, QNetworkAcce
 #ifndef QT_NO_SSL
   connect( netReply, SIGNAL( sslErrors( QList< QSslError > ) ), netReply, SLOT( ignoreSslErrors() ) );
 #endif
-}
-
-QTextCodec * WebSiteArticleRequest::codecForHtml( QByteArray const & ba )
-{
-  return QTextCodec::codecForHtml( ba, 0 );
 }
 
 void WebSiteArticleRequest::requestFinished( QNetworkReply * r )
@@ -188,7 +182,7 @@ void WebSiteArticleRequest::requestFinished( QNetworkReply * r )
     QByteArray replyData = netReply->readAll();
     QString articleString;
 
-    QTextCodec * codec = WebSiteArticleRequest::codecForHtml( replyData );
+    QTextCodec * codec = QTextCodec::codecForHtml( replyData, 0 );
     if ( codec ) {
       articleString = codec->toUnicode( replyData );
     }
