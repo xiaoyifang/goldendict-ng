@@ -718,6 +718,12 @@ div.xdxf {
   display: none;
 }
 
+/* Hide empty list items */
+.mwiki .mw-empty-li,
+.mwiki .mw-empty-elt {
+  display: none;
+}
+
 /************ common.css **************/
 
 /**
