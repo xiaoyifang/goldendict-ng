@@ -10,9 +10,7 @@ Iconv::Iconv( char const * from ):
   state( iconv_open( Text::utf8, from ) )
 {
   if ( state == (iconv_t)-1 ) {
-    char buffer[ 256 ];
-    strerror_s( buffer, sizeof( buffer ), errno );
-    throw exCantInit( buffer );
+    throw exCantInit( strerror( errno ) );
   }
 }
 
