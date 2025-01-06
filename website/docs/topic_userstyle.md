@@ -21,7 +21,7 @@ DarkReader.enable({
     grayscale: 0,
     darkSchemeBackgroundColor: "#181a1b",
     darkSchemeTextColor: "#e8e6e3",
-    lightSchemeBackgroundColor: "#dcdad7#,
+    lightSchemeBackgroundColor: "#dcdad7,
     lightSchemeTextColor: "#181a1b",
 });
 ```
