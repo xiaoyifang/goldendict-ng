@@ -53,12 +53,7 @@ Target word can be inserted into url in next encodings::
 | Target word template   | Encoding                                |
 |------------------------|-----------------------------------------|
 | %GDWORD%               | UTF-8                                   |
-| %GD1251%               | Windows-1251                            |
-| %GDISO1% ... %GDISO16% | ISO 8859-1 ... ISO 8859-16 respectively |
-| %GDBIG5%               | Big-5                                   |
-| %GDBIG5HKSCS%          | Big5-HKSCS                              |
-| %GDGBK%                | GBK and GB 18030                        |
-| %GDSHIFTJIS%           | Shift-JIS                               |
+
 
 ## DICT servers
 
