@@ -20,7 +20,8 @@ Choose either
 
 If Qt's version is not changed, you can also download a single `goldendict.exe` and drop it into previous installation's folder (If uncertain, don't do this).
 
-Requires Windows 10 (1809 or later).
+Requires Windows 10 (1809 or later) with [MSVC runtime](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170#latest-microsoft-visual-c-redistributable-version) installed.
+
 
 ## Linux
 
