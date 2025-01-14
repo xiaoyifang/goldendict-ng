@@ -75,21 +75,9 @@ size_t MdictParser::RecordIndex::bsearch( const vector< MdictParser::RecordIndex
     return (size_t)( -1 );
   }
 
-  size_t lo = 0;
-  size_t hi = offsets.size() - 1;
-
-  while ( lo <= hi ) {
-    size_t mid            = ( lo + hi ) >> 1;
-    RecordIndex const & p = offsets[ mid ];
-    if ( p == val ) {
-      return mid;
-    }
-    else if ( p < val ) {
-      lo = mid + 1;
-    }
-    else {
-      hi = mid - 1;
-    }
+  auto it = std::lower_bound( offsets.begin(), offsets.end(), val );
+  if ( it != offsets.end() && *it == val ) {
+    return std::distance( offsets.begin(), it );
   }
 
   return (size_t)( -1 );
