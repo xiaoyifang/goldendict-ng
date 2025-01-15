@@ -677,18 +677,20 @@ div.xdxf {
 /************* Programs **************/
 
 /* A table which contains a play icon and a word's link */
-.programs_play {
-  margin-top: 8px;
-  margin-left: 8px;
+.programs-play {
+  display: flex;
+  align-items: center;
 }
-
-.programs_play a {
+.programs-play a {
   text-decoration: none;
+  color: inherit;
+  margin-right: 10px;
 }
-
-.programs_plaintext,
-.programs_html {
-  margin-top: 15px;
+.programs-play img {
+  border: 0;
+  vertical-align: middle;
+  width: 24px;
+  height: 24px;
 }
 
 /************* Voice engines **************/
