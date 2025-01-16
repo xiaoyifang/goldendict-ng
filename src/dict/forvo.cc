@@ -314,7 +314,7 @@ void ForvoArticleRequest::requestFinished( QNetworkReply * r )
         if ( !errors.isNull() ) {
           QString text( errors.namedItem( "error" ).toElement().text() );
 
-          if ( text == "Limit/day reached." && apiKey.simplified().isEmpty() ) {
+          if ( text == "Limit/day reached." ) {
             // Give a hint that the user should apply for his own key.
 
             text +=
