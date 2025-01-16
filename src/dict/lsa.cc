@@ -258,9 +258,9 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( std::u32string const 
 
   multimap< std::u32string, string >::const_iterator i;
 
-  result += "<div class=\"lsa-play\">";
+  result += "<div class=\"audio-play\">";
   for ( i = mainArticles.begin(); i != mainArticles.end(); ++i ) {
-    result += "<div class=\"lsa-play-item\">";
+    result += "<div class=\"audio-play-item\">";
 
     QUrl url;
     url.setScheme( "gdau" );
@@ -277,7 +277,7 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( std::u32string const 
   }
 
   for ( i = alternateArticles.begin(); i != alternateArticles.end(); ++i ) {
-    result += "<div class=\"lsa-play-item\">";
+    result += "<div class=\"audio-play-item\">";
 
     QUrl url;
     url.setScheme( "gdau" );

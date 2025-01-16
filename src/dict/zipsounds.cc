@@ -216,7 +216,7 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( std::u32string 
 
   multimap< std::u32string, uint32_t >::const_iterator i;
 
-  result += "<div class=\"lsa-play\">";
+  result += "<div class=\"audio-play\">";
 
   vector< char > chunk;
   char * nameBlock;
@@ -247,7 +247,7 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( std::u32string 
     string displayedName =
       mainArticles.size() + alternateArticles.size() > 1 ? name : Text::toUtf8( stripExtension( name ) );
 
-    result += "<div class=\"lsa-play-item\">";
+    result += "<div class=\"audio-play-item\">";
 
     QUrl url;
     url.setScheme( "gdau" );
@@ -289,7 +289,7 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( std::u32string 
     string displayedName =
       mainArticles.size() + alternateArticles.size() > 1 ? name : Text::toUtf8( stripExtension( name ) );
 
-    result += "<div class=\"lsa-play-item\">";
+    result += "<div class=\"audio-play-item\">";
 
     QUrl url;
     url.setScheme( "gdau" );

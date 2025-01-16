@@ -84,7 +84,7 @@ VoiceEnginesDictionary::getArticle( u32string const & word, vector< u32string > 
   string result;
   string wordUtf8( Text::toUtf8( word ) );
 
-  result += "<div class=\"voiceengines-play\">";
+  result += "<div class=\"audio-play\"><div class=\"audio-play-item\">";
 
   QUrl url;
   url.setScheme( "gdtts" );
@@ -100,7 +100,7 @@ VoiceEnginesDictionary::getArticle( u32string const & word, vector< u32string > 
 
   result += "<a href=" + ref + R"(><img src="qrc:///icons/playsound.png" border="0" alt="Play"/></a>)";
   result += "<a href=" + ref + ">" + Html::escape( wordUtf8 ) + "</a>";
-  result += "</div>";
+  result += "</div></div>";
 
   auto ret = std::make_shared< DataRequestInstant >( true );
   ret->appendString( result );

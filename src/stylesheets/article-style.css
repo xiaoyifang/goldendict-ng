@@ -376,25 +376,24 @@ div.xdxf {
   font-weight: bold;
 }
 
-/************* LSA audio archives **************/
+/************* audio archives **************/
 
-/* A table which contains a play icon and a word's link */
-.lsa-play {
+.audio-play {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
 }
-.lsa-play-item {
+.audio-play-item {
   display: flex;
   align-items: center;
 }
-.lsa-play-item a {
+.audio-play-item a {
   text-decoration: none;
   color: inherit;
   margin-right: 10px;
 }
-.lsa-play-item img {
+.audio-play-item img {
   border: 0;
   vertical-align: middle;
   width: 24px;
@@ -687,42 +686,6 @@ div.xdxf {
   color: red;
 }
 
-/************* Programs **************/
-
-/* A table which contains a play icon and a word's link */
-.programs-play {
-  display: flex;
-  align-items: center;
-}
-.programs-play a {
-  text-decoration: none;
-  color: inherit;
-  margin-right: 10px;
-}
-.programs-play img {
-  border: 0;
-  vertical-align: middle;
-  width: 24px;
-  height: 24px;
-}
-
-/************* Voice engines **************/
-
-.voiceengines-play {
-  display: flex;
-  align-items: center;
-}
-.voiceengines-play a {
-  text-decoration: none;
-  color: inherit;
-  margin-right: 10px;
-}
-.voiceengines-play img {
-  border: 0;
-  vertical-align: middle;
-  width: 24px;
-  height: 24px;
-}
 
 /************* MediaWiki articles *****************
  The following consist of excerpts from different .css files edited

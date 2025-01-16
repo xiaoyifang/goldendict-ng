@@ -176,7 +176,7 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( std::u32string c
   vector< char > chunk;
   char * nameBlock;
 
-  result += "<div class=\"lsa-play\">";
+  result += "<div class=\"audio-play\">";
 
   for ( i = mainArticles.begin(); i != mainArticles.end(); ++i ) {
     uint32_t address = chain[ i->second ].articleOffset;
@@ -204,7 +204,7 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( std::u32string c
       }
     }
 
-    result += "<div class=\"lsa-play-item\">";
+    result += "<div class=\"audio-play-item\">";
     auto _displayName = Html::escape( displayedName );
     QString file_name;
     if ( !get_file_name( address, file_name ) ) {
@@ -252,7 +252,7 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( std::u32string c
       }
     }
 
-    result += "<div class=\"lsa-play-item\">";
+    result += "<div class=\"audio-play-item\">";
     auto _displayName = Html::escape( displayedName );
     QString file_name;
     if ( !get_file_name( address, file_name ) ) {
