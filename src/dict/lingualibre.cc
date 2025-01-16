@@ -352,11 +352,13 @@ void LinguaArticleRequest::requestFinished( QNetworkReply * r )
       addAudioLink( audiolink, dictionaryId );
 
       articleBody += "<div class=\"audio-play-item\">";
+      //play icon
       articleBody += R"(<a href=")";
       articleBody += audiolink;
       articleBody += R"(" role="button">)";
       articleBody += R"(<img src="qrc:///icons/playsound.png" border="0" alt="Play"/>)";
       articleBody += "</a>";
+      //text
       articleBody += R"(<a href=")";
       articleBody += audiolink;
       articleBody += R"(" role="link">)";
