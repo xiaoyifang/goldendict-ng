@@ -37,6 +37,7 @@
 #include <QSslConfiguration>
 #include <QStyleFactory>
 #include <QStyleHints>
+#include <QNetworkProxyFactory>
 
 #include "weburlrequestinterceptor.hh"
 #include "folding.hh"
@@ -1506,12 +1507,7 @@ void MainWindow::quitApp()
 void MainWindow::applyProxySettings()
 {
   if ( cfg.preferences.proxyServer.enabled && cfg.preferences.proxyServer.useSystemProxy ) {
-    QList< QNetworkProxy > proxies = QNetworkProxyFactory::systemProxyForQuery();
-    if ( !cfg.preferences.proxyServer.systemProxyUser.isEmpty() ) {
-      proxies.first().setUser( cfg.preferences.proxyServer.systemProxyUser );
-      proxies.first().setPassword( cfg.preferences.proxyServer.systemProxyPassword );
-    }
-    QNetworkProxy::setApplicationProxy( proxies.first() );
+    QNetworkProxyFactory::setUseSystemConfiguration( true );
     return;
   }
 
@@ -4257,45 +4253,18 @@ void MainWindow::proxyAuthentication( const QNetworkProxy &, QAuthenticator * au
 {
   QNetworkProxy proxy = QNetworkProxy::applicationProxy();
 
-  QString *userStr, *passwordStr;
-  if ( cfg.preferences.proxyServer.useSystemProxy ) {
-    userStr     = &cfg.preferences.proxyServer.systemProxyUser;
-    passwordStr = &cfg.preferences.proxyServer.systemProxyPassword;
+  if ( proxy.type() == QNetworkProxy::DefaultProxy ) {
+    qDebug() << "Current proxy is the system proxy.";
   }
   else {
-    userStr     = &cfg.preferences.proxyServer.user;
-    passwordStr = &cfg.preferences.proxyServer.password;
+    qDebug() << "Current proxy is not the system proxy.";
   }
 
-  if ( proxy.user().isEmpty() && !userStr->isEmpty() ) {
-    authenticator->setUser( *userStr );
-    authenticator->setPassword( *passwordStr );
-
-    proxy.setUser( *userStr );
-    proxy.setPassword( *passwordStr );
-    QNetworkProxy::setApplicationProxy( proxy );
-  }
-  else {
-    QDialog dlg;
-    Ui::Dialog ui;
-    ui.setupUi( &dlg );
-    dlg.adjustSize();
-
-    ui.userEdit->setText( *userStr );
-    ui.passwordEdit->setText( *passwordStr );
-
-    if ( dlg.exec() == QDialog::Accepted ) {
-      *userStr     = ui.userEdit->text();
-      *passwordStr = ui.passwordEdit->text();
-
-      authenticator->setUser( *userStr );
-      authenticator->setPassword( *passwordStr );
-
-      proxy.setUser( *userStr );
-      proxy.setPassword( *passwordStr );
-      QNetworkProxy::setApplicationProxy( proxy );
-    }
-  }
+  qDebug() << "Proxy Type:" << proxy.type();
+  qDebug() << "Proxy Host Name:" << proxy.hostName();
+  qDebug() << "Proxy Port:" << proxy.port();
+  qDebug() << "Proxy User:" << proxy.user();
+  qDebug() << "Proxy Password:" << ( proxy.password().isEmpty() ? "Not set" : "Set" );
 }
 
 void MainWindow::showFullTextSearchDialog()
