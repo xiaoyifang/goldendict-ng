@@ -335,7 +335,6 @@ void ForvoArticleRequest::requestFinished( QNetworkReply * r )
           setErrorString( text );
         }
       }
-
     }
   }
 
