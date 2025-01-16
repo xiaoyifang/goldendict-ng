@@ -966,7 +966,7 @@ Class load()
       c.preferences.proxyServer.host     = proxy.namedItem( "host" ).toElement().text();
       c.preferences.proxyServer.port     = proxy.namedItem( "port" ).toElement().text().toULong();
       c.preferences.proxyServer.user     = proxy.namedItem( "user" ).toElement().text();
-      c.preferences.proxyServer.password = proxy.namedItem( "password" ).toElement().text();
+      c.preferences.proxyServer.password       = proxy.namedItem( "password" ).toElement().text();
     }
 
     QDomNode ankiConnectServer = preferences.namedItem( "ankiConnectServer" );
