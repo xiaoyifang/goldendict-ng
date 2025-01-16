@@ -313,16 +313,6 @@ void ForvoArticleRequest::requestFinished( QNetworkReply * r )
 
         if ( !errors.isNull() ) {
           QString text( errors.namedItem( "error" ).toElement().text() );
-
-          if ( text == "Limit/day reached." ) {
-            // Give a hint that the user should apply for his own key.
-
-            text +=
-              "\n"
-              + tr(
-                "Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear." );
-          }
-
           setErrorString( text );
         }
       }
