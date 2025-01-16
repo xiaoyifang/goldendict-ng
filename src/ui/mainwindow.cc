@@ -2279,9 +2279,6 @@ void MainWindow::editPreferences()
     p.searchInDock   = cfg.preferences.searchInDock;
     p.alwaysOnTop    = cfg.preferences.alwaysOnTop;
 
-    p.proxyServer.systemProxyUser     = cfg.preferences.proxyServer.systemProxyUser;
-    p.proxyServer.systemProxyPassword = cfg.preferences.proxyServer.systemProxyPassword;
-
     p.fts.dialogGeometry = cfg.preferences.fts.dialogGeometry;
 
     p.fts.searchMode = cfg.preferences.fts.searchMode;
