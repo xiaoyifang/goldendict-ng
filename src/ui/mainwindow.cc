@@ -4251,6 +4251,7 @@ void MainWindow::storeResourceSavePath( const QString & newPath )
 
 void MainWindow::proxyAuthentication( const QNetworkProxy &, QAuthenticator * authenticator )
 {
+  qDebug() << "Proxy Authentication Required";
   QNetworkProxy proxy = QNetworkProxy::applicationProxy();
 
   if ( proxy.type() == QNetworkProxy::DefaultProxy ) {
