@@ -329,7 +329,23 @@ void ForvoArticleRequest::requestFinished( QNetworkReply * r )
       qDebug( "done." );
     }
     else {
-      setErrorString( netReply->errorString() );
+      //forvo return the error message with http status code=400.
+      QDomDocument dd;
+
+      QString errorStr;
+      int errorLine, errorColumn;
+
+      if ( !dd.setContent( netReply.get(), false, &errorStr, &errorLine, &errorColumn ) ) {
+        setErrorString( netReply->errorString() );
+      }
+      else {
+        QDomNode errors = dd.namedItem( "errors" );
+        if ( !errors.isNull() ) {
+          QString text( errors.namedItem( "error" ).toElement().text() );
+          setErrorString( text );
+        }
+      }
+
     }
   }
 
