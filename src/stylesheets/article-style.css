@@ -708,13 +708,20 @@ div.xdxf {
 
 /************* Voice engines **************/
 
-.voiceengines_play {
-  margin-top: 8px;
-  margin-left: 8px;
+.voiceengines-play {
+  display: flex;
+  align-items: center;
 }
-
-.voiceengines_play a {
+.voiceengines-play a {
   text-decoration: none;
+  color: inherit;
+  margin-right: 10px;
+}
+.voiceengines-play img {
+  border: 0;
+  vertical-align: middle;
+  width: 24px;
+  height: 24px;
 }
 
 /************* MediaWiki articles *****************
