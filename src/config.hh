@@ -164,7 +164,6 @@ struct ProxyServer
   QString host;
   unsigned port;
   QString user, password;
-  QString systemProxyUser, systemProxyPassword;
 
   ProxyServer();
 };
