@@ -273,7 +273,7 @@ inline bool isAudioUrl( QUrl const & url )
     return false;
 
   // gdau links are known to be audios, (sometimes they may not have file extension).
-  if ( url.scheme() == "gdau" || url.scheme() == "gdprg" ) {
+  if ( url.scheme() == "gdau" || url.scheme() == "gdprg" || url.scheme() == "gdtts" ) {
     return true;
   }
 
