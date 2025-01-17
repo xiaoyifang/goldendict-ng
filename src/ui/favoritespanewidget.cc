@@ -1215,6 +1215,7 @@ void FavoritesModel::clearAllItems()
 
   if ( rootItem ) {
     delete rootItem;
+    rootItem = new TreeItem( QVariant(), 0, TreeItem::Root );
   }
 
   endResetModel();
