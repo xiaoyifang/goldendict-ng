@@ -1094,7 +1094,6 @@ void ArticleView::playAudio( QUrl const & url )
       qDebug() << "gdtts:// is not supported due to missing TTS support";
 #endif
     }
-
   }
 }
 
