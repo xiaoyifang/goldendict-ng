@@ -746,9 +746,12 @@ void FavoritesModel::addFolder( TreeItem * parent, QDomNode & node )
     if ( el.nodeName() == "folder" ) {
       // New subfolder
       QString name    = el.attribute( "name", "" );
-      TreeItem * item = new TreeItem( name, parent, TreeItem::Folder );
-      item->setExpanded( el.attribute( "expanded", "0" ) == "1" );
-      parent->appendChild( item );
+      TreeItem * existingItem = findFolderByName( parent, name );
+      TreeItem * item         = existingItem ? existingItem : new TreeItem( name, parent, TreeItem::Folder );
+      if ( !existingItem ) {
+        item->setExpanded( el.attribute( "expanded", "0" ) == "1" );
+        parent->appendChild( item );
+      }
       addFolder( item, el );
     }
     else {
@@ -892,6 +895,17 @@ QModelIndex FavoritesModel::findItemInFolder( const QString & itemName, int item
     }
   }
   return QModelIndex();
+}
+
+TreeItem *FavoritesPaneWidget::findFolderByName(TreeItem *parent, const QString &name)
+{
+    for (int i = 0; i < parent->childCount(); i++) {
+        TreeItem *child = parent->child(i);
+        if (child->type() == TreeItem::Folder && child->data().toString() == name) {
+            return child;
+        }
+    }
+    return nullptr;
 }
 
 TreeItem * FavoritesModel::getItem( const QModelIndex & index ) const
@@ -1170,11 +1184,9 @@ bool FavoritesModel::setDataFromXml( QString const & dataStr )
 
   beginResetModel();
 
-  if ( rootItem ) {
-    delete rootItem;
+  if ( !rootItem ) {
+      rootItem = new TreeItem( QVariant(), 0, TreeItem::Root );
   }
-
-  rootItem = new TreeItem( QVariant(), 0, TreeItem::Root );
 
   QDomNode rootNode = dom.documentElement();
   addFolder( rootItem, rootNode );
@@ -1192,11 +1204,9 @@ bool FavoritesModel::setDataFromTxt( QString const & dataStr )
 
   beginResetModel();
 
-  if ( rootItem ) {
-    delete rootItem;
+  if ( !rootItem ) {
+    rootItem = new TreeItem( QVariant(), 0, TreeItem::Root );
   }
-
-  rootItem = new TreeItem( QVariant(), 0, TreeItem::Root );
 
   for ( auto const & word : words ) {
     rootItem->appendChild( new TreeItem( word, rootItem, TreeItem::Word ) );
