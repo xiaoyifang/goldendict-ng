@@ -52,6 +52,10 @@ void FavoritesPaneWidget::setUp( Config::Class * cfg, QMenu * menu )
   addAction( m_addFolder );
   connect( m_addFolder, &QAction::triggered, this, &FavoritesPaneWidget::addFolder );
 
+  m_clearAll = new QAction( this );
+  m_clearAll->setText( tr( "Clear All" ) );
+  addAction( m_clearAll );
+  connect( m_clearAll, &QAction::triggered, this, &FavoritesPaneWidget::clearAllItems );
 
   // Handle context menu, reusing some of the top-level window's History menu
   m_favoritesMenu = new QMenu( this );
@@ -182,6 +186,7 @@ void FavoritesPaneWidget::showCustomMenu( QPoint const & pos )
   m_favoritesMenu->removeAction( m_copySelectedToClipboard );
   m_favoritesMenu->removeAction( m_deleteSelectedAction );
   m_favoritesMenu->removeAction( m_addFolder );
+  m_favoritesMenu->removeAction( m_clearAll );
 
   m_separator->setVisible( !selectedIdxs.isEmpty() );
 
@@ -192,6 +197,7 @@ void FavoritesPaneWidget::showCustomMenu( QPoint const & pos )
 
   if ( selectedIdxs.size() <= 1 ) {
     m_favoritesMenu->insertAction( m_separator, m_addFolder );
+    m_favoritesMenu->insertAction( m_separator, m_clearAll );
     m_separator->setVisible( true );
   }
 
@@ -250,6 +256,25 @@ void FavoritesPaneWidget::addFolder()
 
   if ( folderIdx.isValid() ) {
     m_favoritesTree->edit( folderIdx );
+  }
+}
+
+void FavoritesPaneWidget::clearAllItems()
+{
+  QMessageBox::StandardButton reply;
+  reply = QMessageBox::question( this,
+                                 tr( "Clear All Items" ),
+                                 tr( "Are you sure you want to clear all items?" ),
+                                 QMessageBox::Yes | QMessageBox::No );
+  if ( reply == QMessageBox::Yes ) {
+    // m_favoritesModel->removeRows( 0, m_model->rowCount() );
+    beginResetModel();
+
+    if ( rootItem ) {
+      delete rootItem;
+    }
+
+    endResetModel();
   }
 }
 

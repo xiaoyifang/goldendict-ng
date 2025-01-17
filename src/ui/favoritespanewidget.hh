@@ -80,6 +80,7 @@ private slots:
   void deleteSelectedItems();
   void copySelectedItems();
   void addFolder();
+  void clearAllItems();
 
 private:
   virtual bool eventFilter( QObject *, QEvent * );
@@ -91,6 +92,7 @@ private:
   QAction * m_separator               = nullptr;
   QAction * m_copySelectedToClipboard = nullptr;
   QAction * m_addFolder               = nullptr;
+  QAction * m_clearAll                = nullptr;
 
   QWidget favoritesPaneTitleBar;
   QHBoxLayout favoritesPaneTitleBarLayout;
