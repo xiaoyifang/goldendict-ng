@@ -376,16 +376,28 @@ div.xdxf {
   font-weight: bold;
 }
 
-/************* LSA audio archives **************/
+/************* audio archives **************/
 
-/* A table which contains a play icon and a word's link */
-.lsa_play {
-  margin-top: 8px;
-  margin-left: 8px;
+.audio-play {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
 }
-
-.lsa_play a {
+.audio-play-item {
+  display: flex;
+  align-items: center;
+}
+.audio-play-item a {
   text-decoration: none;
+  color: inherit;
+  margin-right: 10px;
+}
+.audio-play-item img {
+  border: 0;
+  vertical-align: middle;
+  width: 24px;
+  height: 24px;
 }
 
 /************* DSL dictionaries **************/
@@ -672,34 +684,6 @@ div.xdxf {
 .forvo_negative_votes {
   font-weight: bold;
   color: red;
-}
-
-/************* Programs **************/
-
-/* A table which contains a play icon and a word's link */
-.programs_play {
-  margin-top: 8px;
-  margin-left: 8px;
-}
-
-.programs_play a {
-  text-decoration: none;
-}
-
-.programs_plaintext,
-.programs_html {
-  margin-top: 15px;
-}
-
-/************* Voice engines **************/
-
-.voiceengines_play {
-  margin-top: 8px;
-  margin-left: 8px;
-}
-
-.voiceengines_play a {
-  text-decoration: none;
 }
 
 /************* MediaWiki articles *****************

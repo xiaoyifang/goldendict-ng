@@ -216,7 +216,7 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( std::u32string 
 
   multimap< std::u32string, uint32_t >::const_iterator i;
 
-  result += "<table class=\"lsa_play\">";
+  result += "<div class=\"audio-play\">";
 
   vector< char > chunk;
   char * nameBlock;
@@ -247,7 +247,7 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( std::u32string 
     string displayedName =
       mainArticles.size() + alternateArticles.size() > 1 ? name : Text::toUtf8( stripExtension( name ) );
 
-    result += "<tr>";
+    result += "<div class=\"audio-play-item\">";
 
     QUrl url;
     url.setScheme( "gdau" );
@@ -258,9 +258,9 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( std::u32string 
 
     result += addAudioLink( url.toEncoded(), getId() );
 
-    result += "<td><a href=" + ref + R"(><img src="qrc:///icons/playsound.png" border="0" alt="Play"/></a></td>)";
-    result += "<td><a href=" + ref + ">" + Html::escape( displayedName ) + "</a></td>";
-    result += "</tr>";
+    result += "<a href=" + ref + R"(><img src="qrc:///icons/playsound.png" border="0" alt="Play"/></a>)";
+    result += "<a href=" + ref + ">" + Html::escape( displayedName ) + "</a>";
+    result += "</div>";
   }
 
   for ( i = alternateArticles.begin(); i != alternateArticles.end(); ++i ) {
@@ -289,7 +289,7 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( std::u32string 
     string displayedName =
       mainArticles.size() + alternateArticles.size() > 1 ? name : Text::toUtf8( stripExtension( name ) );
 
-    result += "<tr>";
+    result += "<div class=\"audio-play-item\">";
 
     QUrl url;
     url.setScheme( "gdau" );
@@ -298,14 +298,14 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( std::u32string 
 
     string ref = string( "\"" ) + url.toEncoded().data() + "\"";
 
-    result += addAudioLink( url.toEncoded(), getId() );
+    addAudioLink( url.toEncoded(), getId() );
 
-    result += "<td><a href=" + ref + R"(><img src="qrc:///icons/playsound.png" border="0" alt="Play"/></a></td>)";
-    result += "<td><a href=" + ref + ">" + Html::escape( displayedName ) + "</a></td>";
-    result += "</tr>";
+    result += "<a href=" + ref + R"(><img src="qrc:///icons/playsound.png" border="0" alt="Play"/></a>)";
+    result += "<a href=" + ref + ">" + Html::escape( displayedName ) + "</a>";
+    result += "</div>";
   }
 
-  result += "</table>";
+  result += "</div>";
 
   auto ret = std::make_shared< Dictionary::DataRequestInstant >( true );
   ret->appendString( result );
