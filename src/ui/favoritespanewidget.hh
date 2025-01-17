@@ -20,6 +20,7 @@
 
 class FavoritesModel;
 
+class TreeItem;
 class FavoritesPaneWidget: public QWidget
 {
   Q_OBJECT
@@ -84,7 +85,6 @@ private slots:
 
 private:
   virtual bool eventFilter( QObject *, QEvent * );
-  TreeItem * findFolderByName( TreeItem * parent, const QString & name );
   Config::Class * m_cfg               = nullptr;
   QTreeView * m_favoritesTree         = nullptr;
   QMenu * m_favoritesMenu             = nullptr;
@@ -182,6 +182,7 @@ class FavoritesModel: public QAbstractItemModel
 public:
   explicit FavoritesModel( QString favoritesFilename, QObject * parent = 0 );
   ~FavoritesModel();
+  void clearAllItems();
 
   QVariant data( const QModelIndex & index, int role ) const;
   Qt::ItemFlags flags( const QModelIndex & index ) const;
@@ -251,6 +252,7 @@ protected:
   void readData();
   void addFolder( TreeItem * parent, QDomNode & node );
   void storeFolder( TreeItem * folder, QDomNode & node );
+  TreeItem * findFolderByName( TreeItem * parent, const QString & name );
 
   // Find item in folder
   QModelIndex findItemInFolder( QString const & itemName, int itemType, QModelIndex const & parentIdx );

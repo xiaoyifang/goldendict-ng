@@ -267,14 +267,7 @@ void FavoritesPaneWidget::clearAllItems()
                                  tr( "Are you sure you want to clear all items?" ),
                                  QMessageBox::Yes | QMessageBox::No );
   if ( reply == QMessageBox::Yes ) {
-    // m_favoritesModel->removeRows( 0, m_model->rowCount() );
-    beginResetModel();
-
-    if ( rootItem ) {
-      delete rootItem;
-    }
-
-    endResetModel();
+    m_favoritesModel->clearAllItems();
   }
 }
 
@@ -897,7 +890,7 @@ QModelIndex FavoritesModel::findItemInFolder( const QString & itemName, int item
   return QModelIndex();
 }
 
-TreeItem * FavoritesPaneWidget::findFolderByName( TreeItem * parent, const QString & name )
+TreeItem * FavoritesModel::findFolderByName( TreeItem * parent, const QString & name )
 {
   for ( int i = 0; i < parent->childCount(); i++ ) {
     TreeItem * child = parent->child( i );
@@ -1215,4 +1208,14 @@ bool FavoritesModel::setDataFromTxt( QString const & dataStr )
 
   dirty = true;
   return true;
+}
+void FavoritesModel::clearAllItems()
+{
+  beginResetModel();
+
+  if ( rootItem ) {
+    delete rootItem;
+  }
+
+  endResetModel();
 }
