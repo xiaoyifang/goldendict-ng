@@ -897,15 +897,15 @@ QModelIndex FavoritesModel::findItemInFolder( const QString & itemName, int item
   return QModelIndex();
 }
 
-TreeItem *FavoritesPaneWidget::findFolderByName(TreeItem *parent, const QString &name)
+TreeItem * FavoritesPaneWidget::findFolderByName( TreeItem * parent, const QString & name )
 {
-    for (int i = 0; i < parent->childCount(); i++) {
-        TreeItem *child = parent->child(i);
-        if (child->type() == TreeItem::Folder && child->data().toString() == name) {
-            return child;
-        }
+  for ( int i = 0; i < parent->childCount(); i++ ) {
+    TreeItem * child = parent->child( i );
+    if ( child->type() == TreeItem::Folder && child->data().toString() == name ) {
+      return child;
     }
-    return nullptr;
+  }
+  return nullptr;
 }
 
 TreeItem * FavoritesModel::getItem( const QModelIndex & index ) const
@@ -1185,7 +1185,7 @@ bool FavoritesModel::setDataFromXml( QString const & dataStr )
   beginResetModel();
 
   if ( !rootItem ) {
-      rootItem = new TreeItem( QVariant(), 0, TreeItem::Root );
+    rootItem = new TreeItem( QVariant(), 0, TreeItem::Root );
   }
 
   QDomNode rootNode = dom.documentElement();

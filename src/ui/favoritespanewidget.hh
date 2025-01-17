@@ -84,7 +84,7 @@ private slots:
 
 private:
   virtual bool eventFilter( QObject *, QEvent * );
-  TreeItem *findFolderByName(TreeItem *parent, const QString &name);
+  TreeItem * findFolderByName( TreeItem * parent, const QString & name );
   Config::Class * m_cfg               = nullptr;
   QTreeView * m_favoritesTree         = nullptr;
   QMenu * m_favoritesMenu             = nullptr;
