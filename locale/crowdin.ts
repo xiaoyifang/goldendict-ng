@@ -61,14 +61,6 @@
 <context>
     <name>ArticleMaker</name>
     <message>
-        <source>Expand article</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Collapse article</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -96,15 +88,7 @@
 <context>
     <name>ArticleRequest</name>
     <message>
-        <source>Expand article</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>From </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Collapse article</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -857,6 +841,31 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <source>All selected items will be deleted. Continue?</source>
+    < translation type = "unfinished" > </translation>
+    < /message>
+    < message >
+    <source>Clear
+All < /source>
+< translation
+type = "unfinished" > </translation>
+    < /message>
+    < message >
+    <source>Clear
+All
+Items < /source>
+< translation
+type = "unfinished" > </translation>
+    < /message>
+    < message >
+    <source>Are
+you
+sure
+you
+want
+to
+clear
+all
+items ? </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -884,10 +893,6 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <source>from</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2404,10 +2409,6 @@ between classic and school orthography in cyrillic)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Export to list</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Show Names in Dictionary &amp;Bar</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2445,18 +2446,6 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <source>Found in Dictionaries:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Words Zoom In</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Words Zoom Out</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Words Normal Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2561,14 +2550,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Article, Complete (*.html)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Article, HTML Only (*.html)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Save Article As</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2633,23 +2614,11 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>XML files (*.xml);;All files (*.*)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Favorites export complete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Export Favorites to file as plain list</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Import Favorites from file</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2696,6 +2665,83 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
         <source>Toggle clipboard monitoring</source>
         <translation type="unfinished"></translation>
     </message>
+    < message >
+    <source>Complete
+Html( *
+.
+html *
+.
+htm
+)
+</source>
+< translation
+type = "unfinished" > </translation>
+    < /message>
+    < message >
+    <source>Single
+Html( *
+.
+html *
+.
+htm
+)
+</source>
+< translation
+type = "unfinished" > </translation>
+    < /message>
+    < message >
+    <source>Pdf( *
+.
+pdf
+)
+</source>
+< translation
+type = "unfinished" > </translation>
+    < /message>
+    < message >
+    <source>Mime
+Html( *
+.
+mhtml
+)
+</source>
+< translation
+type = "unfinished" > </translation>
+    < /message>
+    < message >
+    <source>Text
+files( *
+.
+txt
+)
+;
+;XML
+files( *
+.
+xml
+)
+</source>
+< translation
+type = "unfinished" > </translation>
+    < /message>
+    < message >
+    <source>Text
+and
+XML
+files( *
+.
+txt *
+.
+xml
+)
+;
+;All
+files( *
+.*)
+</source>
+< translation
+type = "unfinished" > </translation>
+    < /message>
 </context>
 <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3529,6 +3575,31 @@ from Stardict, Babylon and GLS dictionaries</source>
         <source>Auto-pronounce words in the popup</source>
         <translation type="unfinished"></translation>
     </message>
+    < message >
+    <source>On < /source>
+    < translation
+type = "unfinished" > </translation>
+    < /message>
+    < message >
+    <source>Off < /source>
+    < translation
+type = "unfinished" > </translation>
+    < /message>
+    < message >
+    <source>Auto < /source>
+    < translation
+type = "unfinished" > </translation>
+    < /message>
+    < message >
+    <source>Auto
+does
+nothing
+on
+some
+systems. < /source>
+< translation
+type = "unfinished" > </translation>
+    < /message>
 </context>
 <context>
     <name>ProgramTypeEditor</name>
@@ -3885,11 +3956,6 @@ of the appropriate groups to use them.</source>
     </message>
     <message>
         <source>Any websites. A string %GDWORD% will be replaced with the query word:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
