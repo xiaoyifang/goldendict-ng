@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="eo_UY" sourcelanguage="en">
+<TS version="2.1" language="eo" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
@@ -61,14 +61,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Expand article</source>
-      <translation>Etendi artikolon</translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Maletendi artikolon</translation>
-    </message>
-    <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
       <translation>Neniu traduko por &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; estis trovita en grupo &lt;b&gt;%2&lt;/b&gt;.</translation>
     </message>
@@ -96,16 +88,8 @@
   <context>
     <name>ArticleRequest</name>
     <message>
-      <source>Expand article</source>
-      <translation>Etendi artikolon</translation>
-    </message>
-    <message>
       <source>From </source>
       <translation>El </translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Maletendi artikolon</translation>
     </message>
     <message>
       <source>Make a new Anki note</source>
@@ -155,12 +139,12 @@
       <translation>Risurco</translation>
     </message>
     <message>
-      <source>Audio</source>
-      <translation>Aŭdio</translation>
-    </message>
-    <message>
       <source>TTS Voice</source>
       <translation>Parolsintezo</translation>
+    </message>
+    <message>
+      <source>Audio</source>
+      <translation>Aŭdio</translation>
     </message>
     <message>
       <source>Video</source>
@@ -183,12 +167,12 @@
       <translation>ERARO: %1</translation>
     </message>
     <message>
-      <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>La referencita rimedo ne ekzistas.</translation>
-    </message>
-    <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>La referencita sonprogramo ne ekzistas.</translation>
+    </message>
+    <message>
+      <source>The referenced resource doesn&apos;t exist.</source>
+      <translation>La referencita rimedo ne ekzistas.</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
@@ -855,12 +839,24 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <translation>Aldonu dosierujon</translation>
     </message>
     <message>
+      <source>Clear All</source>
+      <translation type="unfinished">Clear All</translation>
+    </message>
+    <message>
       <source>Favorites:</source>
       <translation>Plej ŝatataj:</translation>
     </message>
     <message>
       <source>All selected items will be deleted. Continue?</source>
       <translation>Ĉiuj elektitaj eroj estos forigitaj. Ĉu daŭrigi?</translation>
+    </message>
+    <message>
+      <source>Clear All Items</source>
+      <translation type="unfinished">Clear All Items</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all items?</source>
+      <translation type="unfinished">Are you sure you want to clear all items?</translation>
     </message>
   </context>
   <context>
@@ -888,10 +884,6 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     <message>
       <source>from</source>
       <translation>el</translation>
-    </message>
-    <message>
-      <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
-      <translation>Iru al Redaktu|Vortaroj|Fontoj|Forvo kaj petu nian propran API-ŝlosilon por malaperi ĉi tiun eraron.</translation>
     </message>
   </context>
   <context>
@@ -2167,10 +2159,6 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
   <context>
     <name>MainWindow</name>
     <message>
-      <source>Welcome!</source>
-      <translation>Bonvenon!</translation>
-    </message>
-    <message>
       <source>&amp;File</source>
       <translation>&amp;Dosiero</translation>
     </message>
@@ -2407,12 +2395,20 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <translation>Ctrl+E</translation>
     </message>
     <message>
-      <source>Export to list</source>
-      <translation>Eksportu al listo</translation>
-    </message>
-    <message>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>Montri Nomojn en Vortaro &amp; Trinkejo</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>Montri &amp;Malgrandajn Ikonojn en Ilobretoj</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>Montri &amp;Grandajn piktogramojn en Ilobretoj</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>Montri &amp;Normalajn piktogramojn en Ilobretoj</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
@@ -2429,6 +2425,10 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     <message>
       <source>Forward</source>
       <translation>Antaŭen</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>Ŝaltigi monitoradon de tondujo</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2449,18 +2449,6 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     <message>
       <source>Found in Dictionaries:</source>
       <translation>Trovita en Vortaroj:</translation>
-    </message>
-    <message>
-      <source>Words Zoom In</source>
-      <translation>Vortoj Zomi</translation>
-    </message>
-    <message>
-      <source>Words Zoom Out</source>
-      <translation>Vortoj Zoom Out</translation>
-    </message>
-    <message>
-      <source>Words Normal Size</source>
-      <translation>Vortoj Normala Grandeco</translation>
     </message>
     <message>
       <source>Show &amp;Main Window</source>
@@ -2489,6 +2477,10 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     <message>
       <source>New Tab</source>
       <translation>Nova langeto</translation>
+    </message>
+    <message>
+      <source>Welcome!</source>
+      <translation>Bonvenon!</translation>
     </message>
     <message>
       <source>Accessibility API is not enabled</source>
@@ -2565,12 +2557,20 @@ Por trovi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simboloj uz
       <translation>Presi artikolon</translation>
     </message>
     <message>
-      <source>Article, Complete (*.html)</source>
-      <translation>Artikolo, Kompleta (*.html)</translation>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Article, HTML Only (*.html)</source>
-      <translation>Artikolo, HTML Nur (*.html)</translation>
+      <source>Single Html (*.html *.htm)</source>
+      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Pdf (*.pdf)</source>
+      <translation type="unfinished">Pdf (*.pdf)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation type="unfinished">Mime Html (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2637,24 +2637,20 @@ Por trovi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simboloj uz
       <translation>Eksportu Favoritojn al dosiero</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;All files (*.*)</source>
-      <translation>XML-dosieroj (*.xml);;Ĉiuj dosieroj (*.*)</translation>
+      <source>Text files (*.txt);;XML files (*.xml)</source>
+      <translation type="unfinished">Text files (*.txt);;XML files (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
       <translation>Plej ŝatataj eksportado</translation>
     </message>
     <message>
-      <source>Export Favorites to file as plain list</source>
-      <translation>Eksportu Favoritojn al dosiero kiel simpla listo</translation>
-    </message>
-    <message>
       <source>Import Favorites from file</source>
       <translation>Importu Favoritojn el dosiero</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation>XML-dosieroj (*.xml);;Txt-dosieroj (*.txt);;Ĉiuj dosieroj (*.*)</translation>
+      <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
+      <translation type="unfinished">Text and XML files (*.txt *.xml);;All files (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -2683,22 +2679,6 @@ Por trovi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simboloj uz
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Ĉu forigi kapvorton &quot;%1&quot; el Favoritoj?</translation>
-    </message>
-    <message>
-      <source>Show &amp;Small Icons in Toolbars</source>
-      <translation>Montri &amp;Malgrandajn Ikonojn en Ilobretoj</translation>
-    </message>
-    <message>
-      <source>Show &amp;Large Icons in Toolbars</source>
-      <translation>Montri &amp;Grandajn piktogramojn en Ilobretoj</translation>
-    </message>
-    <message>
-      <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation>Montri &amp;Normalajn piktogramojn en Ilobretoj</translation>
-    </message>
-    <message>
-      <source>Toggle clipboard monitoring</source>
-      <translation>Ŝaltigi monitoradon de tondujo</translation>
     </message>
   </context>
   <context>
@@ -3043,6 +3023,14 @@ la aplikaĵon.</translation>
       <translation>&amp;Skani Ŝprucfenestron</translation>
     </message>
     <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>Elektas ĉu la monitorado de la tondujo estos ŝaltita defaŭlte ĉe la ekfunkciigo de la programo&apos;.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>Komencu kun monitorado de tondujo ŝaltita</translation>
+    </message>
+    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Sendu tradukitan vorton al ĉefa fenestro anstataŭ montri ĝin en ŝprucfenestro</translation>
     </message>
@@ -3155,6 +3143,10 @@ en la premita stato kiam la vortelekto ŝanĝiĝas.</translation>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Aŭtomate prononcu vortojn en ĉefa fenestro</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>Aŭtomate prononcu vortojn en la ŝprucfenestro</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3531,6 +3523,22 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
       <translation> MB</translation>
     </message>
     <message>
+      <source>On</source>
+      <translation type="unfinished">On</translation>
+    </message>
+    <message>
+      <source>Off</source>
+      <translation type="unfinished">Off</translation>
+    </message>
+    <message>
+      <source>Auto</source>
+      <translation type="unfinished">Auto</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation type="unfinished">Auto does nothing on some systems.</translation>
+    </message>
+    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Rekomencu la programon por apliki la lingvoŝanĝon.</translation>
     </message>
@@ -3545,18 +3553,6 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
     <message>
       <source>Restart needed</source>
       <translation>Rekomenco necesas</translation>
-    </message>
-    <message>
-      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation>Elektas ĉu la monitorado de la tondujo estos ŝaltita defaŭlte ĉe la ekfunkciigo de la programo&apos;.</translation>
-    </message>
-    <message>
-      <source>Start with clipboard monitoring turned on</source>
-      <translation>Komencu kun monitorado de tondujo ŝaltita</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in the popup</source>
-      <translation>Aŭtomate prononcu vortojn en la ŝprucfenestro</translation>
     </message>
   </context>
   <context>
@@ -3921,12 +3917,6 @@ de la taŭgaj grupoj por uzi ilin.</translation>
     <message>
       <source>Any websites. A string %GDWORD% will be replaced with the query word:</source>
       <translation>Ajna retejoj. Ŝnuro %GDWORD% estos anstataŭigita per la demandvorto:</translation>
-    </message>
-    <message>
-      <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
-      <translation>Alternative, uzu %GD1251% por CP1251, %GDISO1%...%GDISO16% por ISO 8859-1...ISO 8859-16 respektive,
-%GDBIG5% por Big-5, %GDBIG5HKSCS% por Big5-HKSCS, %GDGBK% por GBK kaj GB18030, %GDSHIFTJIS% por Shift-JIS .</translation>
     </message>
     <message>
       <source>DICT servers</source>
