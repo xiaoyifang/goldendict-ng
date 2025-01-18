@@ -840,7 +840,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Clear All</source>
-      <translation type="unfinished">Clear All</translation>
+      <translation>모두 지우기</translation>
     </message>
     <message>
       <source>Favorites:</source>
@@ -852,11 +852,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Clear All Items</source>
-      <translation type="unfinished">Clear All Items</translation>
+      <translation>모든 항목 지우기</translation>
     </message>
     <message>
       <source>Are you sure you want to clear all items?</source>
-      <translation type="unfinished">Are you sure you want to clear all items?</translation>
+      <translation>모든 항목을 지우시겠습니까?</translation>
     </message>
   </context>
   <context>
@@ -2558,19 +2558,19 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
-      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
+      <translation>완전한 HTML(*.html *.htm)</translation>
     </message>
     <message>
       <source>Single Html (*.html *.htm)</source>
-      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+      <translation>단일 HTML(*.html *.htm)</translation>
     </message>
     <message>
       <source>Pdf (*.pdf)</source>
-      <translation type="unfinished">Pdf (*.pdf)</translation>
+      <translation>PDF(*.pdf)</translation>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
-      <translation type="unfinished">Mime Html (*.mhtml)</translation>
+      <translation>MIME HTML(*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2638,7 +2638,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Text files (*.txt);;XML files (*.xml)</source>
-      <translation type="unfinished">Text files (*.txt);;XML files (*.xml)</translation>
+      <translation>텍스트 파일(*.txt);;XML 파일(*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
@@ -2650,7 +2650,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
-      <translation type="unfinished">Text and XML files (*.txt *.xml);;All files (*.*)</translation>
+      <translation>텍스트 및 XML 파일(*.txt *.xml);;모든 파일(*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -3519,20 +3519,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation> MB</translation>
     </message>
     <message>
-      <source>On</source>
-      <translation type="unfinished">On</translation>
-    </message>
-    <message>
-      <source>Off</source>
-      <translation type="unfinished">Off</translation>
-    </message>
-    <message>
-      <source>Auto</source>
-      <translation type="unfinished">Auto</translation>
-    </message>
-    <message>
       <source>Auto does nothing on some systems.</source>
-      <translation type="unfinished">Auto does nothing on some systems.</translation>
+      <translation>일부 시스템에서는 자동이 아무 작업도 수행하지 않습니다.</translation>
     </message>
     <message>
       <source>Restart the program to apply the language change.</source>
@@ -3549,6 +3537,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Restart needed</source>
       <translation>재시작 필요</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation type="unfinished">Enable</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation type="unfinished">Disable</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation type="unfinished">Automatic</translation>
     </message>
   </context>
   <context>
