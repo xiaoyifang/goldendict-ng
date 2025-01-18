@@ -739,7 +739,7 @@ void FavoritesModel::addFolder( TreeItem * parent, QDomNode & node )
     if ( el.nodeName() == "folder" ) {
       // New subfolder
       QString name    = el.attribute( "name", "" );
-      TreeItem * existingItem = findFolderByName( parent, name );
+      TreeItem * existingItem = findFolderByName( parent, name, TreeItem::Folder );
       TreeItem * item         = existingItem ? existingItem : new TreeItem( name, parent, TreeItem::Folder );
       if ( !existingItem ) {
         item->setExpanded( el.attribute( "expanded", "0" ) == "1" );
@@ -749,6 +749,10 @@ void FavoritesModel::addFolder( TreeItem * parent, QDomNode & node )
     }
     else {
       QString word = el.text();
+      TreeItem * existingItem = findFolderByName( parent, word, TreeItem::Word );
+      if ( existingItem ) {
+        continue;
+      }
       parent->appendChild( new TreeItem( word, parent, TreeItem::Word ) );
 
       GlobalBroadcaster::instance()->folderFavoritesMap[ parent->data().toString() ].insert( word );
@@ -890,11 +894,11 @@ QModelIndex FavoritesModel::findItemInFolder( const QString & itemName, int item
   return QModelIndex();
 }
 
-TreeItem * FavoritesModel::findFolderByName( TreeItem * parent, const QString & name )
+TreeItem * FavoritesModel::findFolderByName( TreeItem * parent, const QString & name, TreeItem::Type type )
 {
   for ( int i = 0; i < parent->childCount(); i++ ) {
     TreeItem * child = parent->child( i );
-    if ( child->type() == TreeItem::Folder && child->data().toString() == name ) {
+    if ( child->type() == type && child->data().toString() == name ) {
       return child;
     }
   }

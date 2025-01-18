@@ -252,7 +252,7 @@ protected:
   void readData();
   void addFolder( TreeItem * parent, QDomNode & node );
   void storeFolder( TreeItem * folder, QDomNode & node );
-  TreeItem * findFolderByName( TreeItem * parent, const QString & name );
+  TreeItem * findFolderByName( TreeItem * parent, const QString & name, TreeItem::Type type );
 
   // Find item in folder
   QModelIndex findItemInFolder( QString const & itemName, int itemType, QModelIndex const & parentIdx );
