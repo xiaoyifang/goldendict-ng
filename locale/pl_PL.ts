@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="pl_PL" sourcelanguage="en">
+<TS version="2.1" language="pl" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
@@ -61,14 +61,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Expand article</source>
-      <translation>Rozwiń artykuł</translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Zwiń artykuł</translation>
-    </message>
-    <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
       <translation>W grupie &lt;b&gt;%2&lt;/b&gt;nie znaleziono tłumaczenia dla &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt;.</translation>
     </message>
@@ -96,16 +88,8 @@
   <context>
     <name>ArticleRequest</name>
     <message>
-      <source>Expand article</source>
-      <translation>Rozwiń artykuł</translation>
-    </message>
-    <message>
       <source>From </source>
       <translation>Źródło: </translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Zwiń artykuł</translation>
     </message>
     <message>
       <source>Make a new Anki note</source>
@@ -155,12 +139,12 @@
       <translation>Zasób</translation>
     </message>
     <message>
-      <source>Audio</source>
-      <translation>Dźwięk</translation>
-    </message>
-    <message>
       <source>TTS Voice</source>
       <translation>Głos TTS</translation>
+    </message>
+    <message>
+      <source>Audio</source>
+      <translation>Dźwięk</translation>
     </message>
     <message>
       <source>Video</source>
@@ -183,12 +167,12 @@
       <translation>BŁĄD: %1</translation>
     </message>
     <message>
-      <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>Wskazywany zasób nie istnieje.</translation>
-    </message>
-    <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>Wskazywany program obsługi audio nie istnieje.</translation>
+    </message>
+    <message>
+      <source>The referenced resource doesn&apos;t exist.</source>
+      <translation>Wskazywany zasób nie istnieje.</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
@@ -855,12 +839,24 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
       <translation>Dodaj folder</translation>
     </message>
     <message>
+      <source>Clear All</source>
+      <translation type="unfinished">Clear All</translation>
+    </message>
+    <message>
       <source>Favorites:</source>
       <translation>Ulubione:</translation>
     </message>
     <message>
       <source>All selected items will be deleted. Continue?</source>
       <translation>Wszystkie zaznaczone elementy zostaną usunięte. Kontynuować?</translation>
+    </message>
+    <message>
+      <source>Clear All Items</source>
+      <translation type="unfinished">Clear All Items</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all items?</source>
+      <translation type="unfinished">Are you sure you want to clear all items?</translation>
     </message>
   </context>
   <context>
@@ -888,10 +884,6 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     <message>
       <source>from</source>
       <translation>z</translation>
-    </message>
-    <message>
-      <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
-      <translation>Wybierz opcję Edycja|Słowniki|Forvo i postaraj się o nasz klucz API, aby wyeliminować wyświetlanie tego błędu.</translation>
     </message>
   </context>
   <context>
@@ -2167,10 +2159,6 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
   <context>
     <name>MainWindow</name>
     <message>
-      <source>Welcome!</source>
-      <translation>Witamy!</translation>
-    </message>
-    <message>
       <source>&amp;File</source>
       <translation>&amp;Plik</translation>
     </message>
@@ -2407,12 +2395,20 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
       <translation>Ctrl+E</translation>
     </message>
     <message>
-      <source>Export to list</source>
-      <translation>Eksportuj do listy</translation>
-    </message>
-    <message>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>Pokaż nazwy w pas&amp;ku słowników</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>Pokaż &amp;małe ikony na paskach narzędzi</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>Pokaż &amp;duże ikony na paskach narzędzi</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>Pokaż &amp;normalne ikony na paskach narzędzi</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
@@ -2429,6 +2425,10 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     <message>
       <source>Forward</source>
       <translation>Dalej</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>Przełącz monitorowanie schowka</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2449,18 +2449,6 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     <message>
       <source>Found in Dictionaries:</source>
       <translation>Znaleziono w słownikach:</translation>
-    </message>
-    <message>
-      <source>Words Zoom In</source>
-      <translation>Zwiększ słowa</translation>
-    </message>
-    <message>
-      <source>Words Zoom Out</source>
-      <translation>Zmniejsz słowa</translation>
-    </message>
-    <message>
-      <source>Words Normal Size</source>
-      <translation>Normalna wielkość słów</translation>
     </message>
     <message>
       <source>Show &amp;Main Window</source>
@@ -2489,6 +2477,10 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     <message>
       <source>New Tab</source>
       <translation>Nowa karta</translation>
+    </message>
+    <message>
+      <source>Welcome!</source>
+      <translation>Witamy!</translation>
     </message>
     <message>
       <source>Accessibility API is not enabled</source>
@@ -2565,12 +2557,20 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
       <translation>Drukuj artykuł</translation>
     </message>
     <message>
-      <source>Article, Complete (*.html)</source>
-      <translation>Artykuł, pełny (*.html)</translation>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Article, HTML Only (*.html)</source>
-      <translation>Artykuł, tylko HTML (*.html)</translation>
+      <source>Single Html (*.html *.htm)</source>
+      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Pdf (*.pdf)</source>
+      <translation type="unfinished">Pdf (*.pdf)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation type="unfinished">Mime Html (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2637,24 +2637,20 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
       <translation>Eksportuj Ulubione do pliku</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;All files (*.*)</source>
-      <translation>Pliki XML (*.xml);;Wszystkie pliki (*.*)</translation>
+      <source>Text files (*.txt);;XML files (*.xml)</source>
+      <translation type="unfinished">Text files (*.txt);;XML files (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
       <translation>Eksport ulubionych zakończony</translation>
     </message>
     <message>
-      <source>Export Favorites to file as plain list</source>
-      <translation>Eksportuj Ulubione do pliku jako zwykłą listę</translation>
-    </message>
-    <message>
       <source>Import Favorites from file</source>
       <translation>Importuj ulubione z pliku</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation>Pliki XML (*.xml);;Pliki Txt (*.txt);;Wszystkie pliki (*.*)</translation>
+      <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
+      <translation type="unfinished">Text and XML files (*.txt *.xml);;All files (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -2683,22 +2679,6 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Usunąć słowo nagłówka &quot;%1&quot; z Ulubionych?</translation>
-    </message>
-    <message>
-      <source>Show &amp;Small Icons in Toolbars</source>
-      <translation>Pokaż &amp;małe ikony na paskach narzędzi</translation>
-    </message>
-    <message>
-      <source>Show &amp;Large Icons in Toolbars</source>
-      <translation>Pokaż &amp;duże ikony na paskach narzędzi</translation>
-    </message>
-    <message>
-      <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation>Pokaż &amp;normalne ikony na paskach narzędzi</translation>
-    </message>
-    <message>
-      <source>Toggle clipboard monitoring</source>
-      <translation>Przełącz monitorowanie schowka</translation>
     </message>
   </context>
   <context>
@@ -3041,6 +3021,14 @@ prowadzi do jego ukrycia, a nie do zamknięcia aplikacji.</translation>
       <translation>&amp;Skanowanie automatyczne</translation>
     </message>
     <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>Wybiera, czy monitorowanie schowka będzie domyślnie włączone podczas uruchamiania programu&apos;s.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>Rozpocznij z włączonym monitorowaniem schowka</translation>
+    </message>
+    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Wyślij przetłumaczone słowo do okna głównego, a nie wyświetlaj w okienku wyskakującym</translation>
     </message>
@@ -3153,6 +3141,10 @@ kiedy zaznaczenie słowa ulega zmianie przy naciśniętych wszystkich wybranych 
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Automatycznie wymawiaj słowa znajdujące się w oknie głównym</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>Automatyczne wymawianie słów w oknie podręcznym</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3530,6 +3522,22 @@ ze słowników Stardict, Babylon i GLS</translation>
       <translation> MB</translation>
     </message>
     <message>
+      <source>On</source>
+      <translation type="unfinished">On</translation>
+    </message>
+    <message>
+      <source>Off</source>
+      <translation type="unfinished">Off</translation>
+    </message>
+    <message>
+      <source>Auto</source>
+      <translation type="unfinished">Auto</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation type="unfinished">Auto does nothing on some systems.</translation>
+    </message>
+    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Uruchom ponownie program, aby zastosować zmianę języka.</translation>
     </message>
@@ -3544,18 +3552,6 @@ ze słowników Stardict, Babylon i GLS</translation>
     <message>
       <source>Restart needed</source>
       <translation>Potrzebne ponowne uruchomienie</translation>
-    </message>
-    <message>
-      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation>Wybiera, czy monitorowanie schowka będzie domyślnie włączone podczas uruchamiania programu&apos;s.</translation>
-    </message>
-    <message>
-      <source>Start with clipboard monitoring turned on</source>
-      <translation>Rozpocznij z włączonym monitorowaniem schowka</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in the popup</source>
-      <translation>Automatyczne wymawianie słów w oknie podręcznym</translation>
     </message>
   </context>
   <context>
@@ -3921,12 +3917,6 @@ właściwej grupy.</translation>
     <message>
       <source>Any websites. A string %GDWORD% will be replaced with the query word:</source>
       <translation>Dowolne witryny. Ciąg znaków %GDWORD% zostaje zastąpiony wyszukiwanym słowem:</translation>
-    </message>
-    <message>
-      <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
-      <translation>Można też użyć ciągu znaków %GD1251% dla słów w stronie kodowej CP1251, %GDISO1%...%GDISO16% odpowiednio dla ISO 8859-1...ISO 8859-16,
-%GDBIG5% dla Big-5, %GDBIG5HKSCS% dla Big5-HKSCS, %GDGBK% dla GBK i GB18030, %GDSHIFTJIS% dla Shift-JIS.</translation>
     </message>
     <message>
       <source>DICT servers</source>
