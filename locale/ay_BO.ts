@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="ay_BO" sourcelanguage="en">
+<TS version="2.1" language="ay" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
@@ -61,14 +61,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Expand article</source>
-      <translation>Qillqa janatataña</translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Qillqa suk&apos;aña</translation>
-    </message>
-    <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
       <translation>&lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; ukatakix janiw jaqukipäwix &lt;b&gt;%2&lt;/b&gt;qutunx jikxataskiti.</translation>
     </message>
@@ -97,16 +89,8 @@ No se ha encontrado la palabra en el grupo &lt;b&gt;%1&lt;/b&gt;.</translation>
   <context>
     <name>ArticleRequest</name>
     <message>
-      <source>Expand article</source>
-      <translation>Qillqa janatataña</translation>
-    </message>
-    <message>
       <source>From </source>
       <translation>Ukata </translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Qillqa suk&apos;aña</translation>
     </message>
     <message>
       <source>Make a new Anki note</source>
@@ -156,12 +140,12 @@ No se ha encontrado la palabra en el grupo &lt;b&gt;%1&lt;/b&gt;.</translation>
       <translation>Yatiyawi jalsu</translation>
     </message>
     <message>
-      <source>Audio</source>
-      <translation>Ist&apos;añataki</translation>
-    </message>
-    <message>
       <source>TTS Voice</source>
       <translation>TTS Aru</translation>
+    </message>
+    <message>
+      <source>Audio</source>
+      <translation>Ist&apos;añataki</translation>
     </message>
     <message>
       <source>Video</source>
@@ -184,12 +168,12 @@ No se ha encontrado la palabra en el grupo &lt;b&gt;%1&lt;/b&gt;.</translation>
       <translation>PANTJATA: %1</translation>
     </message>
     <message>
-      <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>Janiw Chiqanchata wakiskirix utjkiti.</translation>
-    </message>
-    <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>Uka referenciado audio programa ukaxa&apos;t ukankiwa.</translation>
+    </message>
+    <message>
+      <source>The referenced resource doesn&apos;t exist.</source>
+      <translation>Janiw Chiqanchata wakiskirix utjkiti.</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
@@ -861,6 +845,10 @@ Se han modificado algunas fuentes.
       <translation>Q&apos;ipi yapaña</translation>
     </message>
     <message>
+      <source>Clear All</source>
+      <translation type="unfinished">Clear All</translation>
+    </message>
+    <message>
       <source>Favorites:</source>
       <translation>Munat arunaka:</translation>
     </message>
@@ -869,6 +857,14 @@ Se han modificado algunas fuentes.
       <translation>Ajllit mantañakax chhaqtayataniwa. ¿Saraskakiñ muntati?
 
 Todos los items seleccionados serán borrados. ¿Quiere continuar?</translation>
+    </message>
+    <message>
+      <source>Clear All Items</source>
+      <translation type="unfinished">Clear All Items</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all items?</source>
+      <translation type="unfinished">Are you sure you want to clear all items?</translation>
     </message>
   </context>
   <context>
@@ -896,14 +892,6 @@ Todos los items seleccionados serán borrados. ¿Quiere continuar?</translation>
     <message>
       <source>from</source>
       <translation>ukata</translation>
-    </message>
-    <message>
-      <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
-      <translation>Askichaña&gt;Aru-pirwanaka&gt;Yatiyaw jalsunaka&gt;Forvo ukar saram,
-ukat API chimpuma churam, aka pantjawi chhaqtayañataki.
-
-Vaya a Askichaña&gt;Aru-pirwanaka&gt;Yatiyaw jalsunaka&gt;Forvo y solicite
-su propia clave de la API para que este error desaparezca.</translation>
     </message>
   </context>
   <context>
@@ -2203,10 +2191,6 @@ Error en el archivo de configuración. ¿Continuar con la configuración por def
   <context>
     <name>MainWindow</name>
     <message>
-      <source>Welcome!</source>
-      <translation>¡Aski jutawi!</translation>
-    </message>
-    <message>
       <source>&amp;File</source>
       <translation>&amp;Wayaqa</translation>
     </message>
@@ -2447,12 +2431,20 @@ Añadir la pestaña actual a favoritos</translation>
       <translation>Ctrl+E ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
-      <source>Export to list</source>
-      <translation>&amp;Tanta arunak anqar apsuña</translation>
-    </message>
-    <message>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>Aru-pirwanak wak&apos;an &amp;sutinak uñachayaña</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>Uñacht’ayaña &amp;Jisk’a Iconos ukanakax Barras de Herramientas ukan uñacht’ayatawa</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>Uñacht’ayaña &amp;Jach’a Iconos Barras de Herramientas ukan</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>Uñacht’ayaña &amp;Normal Iconos ukanakax Barras de Herramientas ukan uñacht’ayatawa</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
@@ -2475,6 +2467,10 @@ Anterior</translation>
 Posterior</translation>
     </message>
     <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>Toggle portapapeles uñakipaña</translation>
+    </message>
+    <message>
       <source>Pronounce Word (Alt+S)</source>
       <translation>Aru arst&apos;aña (Alt+S)
 
@@ -2495,18 +2491,6 @@ Pronunciar palabra (Alt+S)</translation>
     <message>
       <source>Found in Dictionaries:</source>
       <translation>Aka aru-pirwanakan jikita:</translation>
-    </message>
-    <message>
-      <source>Words Zoom In</source>
-      <translation>Arunak jach&apos;aptaña</translation>
-    </message>
-    <message>
-      <source>Words Zoom Out</source>
-      <translation>Arunak jisk&apos;aptaña</translation>
-    </message>
-    <message>
-      <source>Words Normal Size</source>
-      <translation>Arunaka qawqhch&apos;akansa ukhamraki</translation>
     </message>
     <message>
       <source>Show &amp;Main Window</source>
@@ -2537,6 +2521,10 @@ Pronunciar palabra (Alt+S)</translation>
       <translation>Machaq phichhu
 
 Pestaña nueva</translation>
+    </message>
+    <message>
+      <source>Welcome!</source>
+      <translation>¡Aski jutawi!</translation>
     </message>
     <message>
       <source>Accessibility API is not enabled</source>
@@ -2628,12 +2616,20 @@ instale una primero.</translation>
       <translation>Laphin qillqata liq&apos;suña</translation>
     </message>
     <message>
-      <source>Article, Complete (*.html)</source>
-      <translation>Qillqata, Taqi kunaniwa (*.hmtl)</translation>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Article, HTML Only (*.html)</source>
-      <translation>Qillqata, HTML ukampiki (*.html)</translation>
+      <source>Single Html (*.html *.htm)</source>
+      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Pdf (*.pdf)</source>
+      <translation type="unfinished">Pdf (*.pdf)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation type="unfinished">Mime Html (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2702,24 +2698,20 @@ Error de importación: datos incorrectos en el fichero.</translation>
       <translation>Munat arunak wayaqar apsuña</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;All files (*.*)</source>
-      <translation>XML wayaqanaka (*.txt);;Taqpacha wayaqanaka (*.*)</translation>
+      <source>Text files (*.txt);;XML files (*.xml)</source>
+      <translation type="unfinished">Text files (*.txt);;XML files (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
       <translation>Munata arunak imañxa tukuyatawa</translation>
     </message>
     <message>
-      <source>Export Favorites to file as plain list</source>
-      <translation>Munat arunak wayaqar apsuña, ukja q&apos;ala qillqjama</translation>
-    </message>
-    <message>
       <source>Import Favorites from file</source>
       <translation>Munat arunak wayaqat apaniña</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation>XML qillqatanaka (*.xml);;Txt qillqatanaka (*.txt);;Taqi qillqatanaka (*.*)</translation>
+      <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
+      <translation type="unfinished">Text and XML files (*.txt *.xml);;All files (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -2750,22 +2742,6 @@ Error de importación: datos incorrectos en el fichero.</translation>
       <translation>Munat arunakatxa &quot;%1&quot; chhaqtayañ muntati?
 
 ¿Eliminar la palabra &quot;%1&quot; de favoritos?</translation>
-    </message>
-    <message>
-      <source>Show &amp;Small Icons in Toolbars</source>
-      <translation>Uñacht’ayaña &amp;Jisk’a Iconos ukanakax Barras de Herramientas ukan uñacht’ayatawa</translation>
-    </message>
-    <message>
-      <source>Show &amp;Large Icons in Toolbars</source>
-      <translation>Uñacht’ayaña &amp;Jach’a Iconos Barras de Herramientas ukan</translation>
-    </message>
-    <message>
-      <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation>Uñacht’ayaña &amp;Normal Iconos ukanakax Barras de Herramientas ukan uñacht’ayatawa</translation>
-    </message>
-    <message>
-      <source>Toggle clipboard monitoring</source>
-      <translation>Toggle portapapeles uñakipaña</translation>
     </message>
   </context>
   <context>
@@ -3126,6 +3102,14 @@ Aka jakhu mayjacham jach&apos;a menus jithiqañataki.</translation>
       <translation>&amp;Uñstir wintanampi ullaña</translation>
     </message>
     <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>Ajlliñawa, portapapeles uñakipañaxa wakichawi&apos;s qalltawipanxa nayraqata uñakipatawa.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>Qalltañatakix portapapeles ukan uñjañax ch’amanchatawa</translation>
+    </message>
+    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Enviar palabra traducida a la ventana principal
 
@@ -3246,6 +3230,10 @@ Uñstir wintana uñachañatakixa salta ukan mä klik luram. </translation>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Nayrir wintanan justupak arunak arst&apos;awi</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>Uka popup ukanx arunakax auto-pronunciar sañ muni</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3651,6 +3639,22 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
       <translation> MB</translation>
     </message>
     <message>
+      <source>On</source>
+      <translation type="unfinished">On</translation>
+    </message>
+    <message>
+      <source>Off</source>
+      <translation type="unfinished">Off</translation>
+    </message>
+    <message>
+      <source>Auto</source>
+      <translation type="unfinished">Auto</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation type="unfinished">Auto does nothing on some systems.</translation>
+    </message>
+    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Mayat programa aktayan sun apñaqañataki.</translation>
     </message>
@@ -3665,18 +3669,6 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     <message>
       <source>Restart needed</source>
       <translation>Wasitat qalltañaw wakisi</translation>
-    </message>
-    <message>
-      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation>Ajlliñawa, portapapeles uñakipañaxa wakichawi&apos;s qalltawipanxa nayraqata uñakipatawa.</translation>
-    </message>
-    <message>
-      <source>Start with clipboard monitoring turned on</source>
-      <translation>Qalltañatakix portapapeles ukan uñjañax ch’amanchatawa</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in the popup</source>
-      <translation>Uka popup ukanx arunakax auto-pronunciar sañ muni</translation>
     </message>
   </context>
   <context>
@@ -4051,15 +4043,6 @@ de los grupos apropiados para utilizarlos.</translation>
     <message>
       <source>Any websites. A string %GDWORD% will be replaced with the query word:</source>
       <translation>Web laphi kawkirsa. Mä qillqata %GDWORD% aru thaqhata ukampiwa turkasini:</translation>
-    </message>
-    <message>
-      <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
-      <translation>Jan ukjax apnaqam %GD1251% aka lanti CP1251, %GDISO1%...%GDISO16% aka lanti ISO-8859-1...ISO-8859-16, %GDBIG5% aka lanti Big-5,
-%GDBIG5HKSCS% aka lanti Big5-HKSCS, %GDGBK% aka lanti GBK ukhamaraki GB18030, %GDSHIFTJIS% aka lanti Shift-JIS.
-
-También puede usar %GD1251% para CP1251, %GDISO1%...%GDISO16% para ISO 8859-1...ISO 8859-16, %GDBIG5% para Big-5,
-%GDBIG5HKSCS% para Big5-HKSCS, %GDGBK% para GBK y GB18030, y %GDSHIFTJIS% para Shift-JIS.</translation>
     </message>
     <message>
       <source>DICT servers</source>
