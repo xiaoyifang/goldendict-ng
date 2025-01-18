@@ -323,16 +323,6 @@ div.xdxf {
 
 /************* LSA audio archives **************/
 
-/* A table which contains a play icon and a word's link */
-.lsa_play {
-  margin-top: 8px;
-  margin-left: 8px;
-}
-
-.lsa_play a {
-  text-decoration: none;
-}
-
 /************* DSL dictionaries **************/
 
 .dsl_u {
@@ -591,34 +581,6 @@ div.xdxf {
 .forvo_negative_votes {
   font-weight: bold;
   color: red;
-}
-
-/************* Programs **************/
-
-/* A table which contains a play icon and a word's link */
-.programs_play {
-  margin-top: 8px;
-  margin-left: 8px;
-}
-
-.programs_play a {
-  text-decoration: none;
-}
-
-.programs_plaintext,
-.programs_html {
-  margin-top: 15px;
-}
-
-/************* Voice engines **************/
-
-.voiceengines_play {
-  margin-top: 8px;
-  margin-left: 8px;
-}
-
-.voiceengines_play a {
-  text-decoration: none;
 }
 
 /************* MediaWiki articles *****************

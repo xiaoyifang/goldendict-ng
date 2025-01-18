@@ -821,12 +821,13 @@ void ArticleView::linkHovered( const QString & link )
   if ( url.scheme() == "bres" ) {
     msg = tr( "Resource" );
   }
-  else if ( url.scheme() == "gdau" || Utils::Url::isAudioUrl( url ) ) {
-    msg = tr( "Audio" );
-  }
   else if ( url.scheme() == "gdtts" ) {
     msg = tr( "TTS Voice" );
   }
+  else if ( url.scheme() == "gdau" || Utils::Url::isAudioUrl( url ) ) {
+    msg = tr( "Audio" );
+  }
+
   else if ( url.scheme() == "gdvideo" ) {
     if ( url.path().isEmpty() ) {
       msg = tr( "Video" );
@@ -994,87 +995,8 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
   }
   else if ( url.scheme() == "bres" || url.scheme() == "gdau" || url.scheme() == "gdvideo"
             || Utils::Url::isAudioUrl( url ) ) {
-    // Download it
-
-    if ( Utils::Url::isWebAudioUrl( url ) ) {
-      sptr< Dictionary::DataRequest > req = std::make_shared< Dictionary::WebMultimediaDownload >( url, articleNetMgr );
-
-      connect( req.get(), &Dictionary::Request::finished, this, [ req, url, this ]() {
-        resourceDownloadFinished( req, url );
-      } );
-    }
-    else {
-      // Normal resource download
-      QString contentType;
-
-      sptr< Dictionary::DataRequest > req = articleNetMgr.getResource( url, contentType );
-
-      if ( !req.get() ) {
-        qDebug() << "request failed: " << url;
-        // Request failed, fail
-      }
-      else if ( req->isFinished() && req->dataSize() >= 0 ) {
-        // Have data ready, handle it
-        resourceDownloadFinished( req, url );
-
-        return;
-      }
-      else if ( !req->isFinished() ) {
-        connect( req.get(), &Dictionary::Request::finished, this, [ req, url, this ]() {
-          resourceDownloadFinished( req, url );
-        } );
-      }
-    }
+    playAudio( url );
   }
-  else if ( url.scheme() == "gdprg" ) {
-    // Program. Run it.
-    QString id( url.host() );
-
-    for ( const auto & program : cfg.programs ) {
-      if ( program.id == id ) {
-        // Found the corresponding program.
-        Programs::RunInstance * req = new Programs::RunInstance;
-
-        connect( req, &Programs::RunInstance::finished, req, &QObject::deleteLater );
-
-        QString error;
-
-        // Delete the request if it fails to start
-        if ( !req->start( program, url.path().mid( 1 ), error ) ) {
-          delete req;
-
-          QMessageBox::critical( this, "GoldenDict", error );
-        }
-
-        return;
-      }
-    }
-
-    // Still here? No such program exists.
-    QMessageBox::critical( this, "GoldenDict", tr( "The referenced audio program doesn't exist." ) );
-  }
-  else if ( url.scheme() == "gdtts" ) {
-#ifdef TTS_SUPPORT
-    // Text to speech
-    QString md5Id = Utils::Url::queryItemValue( url, "engine" );
-    QString text( url.path().mid( 1 ) );
-
-    for ( const auto & voiceEngine : cfg.voiceEngines ) {
-      QString itemMd5Id =
-        QString( QCryptographicHash::hash( voiceEngine.name.toUtf8(), QCryptographicHash::Md5 ).toHex() );
-
-      if ( itemMd5Id == md5Id ) {
-        SpeechClient * speechClient = new SpeechClient( voiceEngine, this );
-        connect( speechClient, SIGNAL( finished() ), speechClient, SLOT( deleteLater() ) );
-        speechClient->tell( text );
-        break;
-      }
-    }
-#else
-    qDebug() << "gdtts:// is not supported due to missing TTS support";
-#endif
-  }
-
   else if ( Utils::isExternalLink( url ) ) {
     // Use the system handler for the conventional external links
     QDesktopServices::openUrl( url );
@@ -1123,6 +1045,54 @@ void ArticleView::playAudio( QUrl const & url )
           emit statusBarMessage( tr( "ERROR: %1" ).arg( e.what() ), 10000, QPixmap( ":/icons/error.svg" ) );
         }
       }
+    }
+    else if ( url.scheme() == "gdprg" ) {
+      // Program. Run it.
+      QString id( url.host() );
+
+      for ( const auto & program : cfg.programs ) {
+        if ( program.id == id ) {
+          // Found the corresponding program.
+          Programs::RunInstance * req = new Programs::RunInstance;
+
+          connect( req, &Programs::RunInstance::finished, req, &QObject::deleteLater );
+
+          QString error;
+
+          // Delete the request if it fails to start
+          if ( !req->start( program, url.path().mid( 1 ), error ) ) {
+            delete req;
+
+            QMessageBox::critical( this, "GoldenDict", error );
+          }
+
+          return;
+        }
+      }
+
+      // Still here? No such program exists.
+      QMessageBox::critical( this, "GoldenDict", tr( "The referenced audio program doesn't exist." ) );
+    }
+    else if ( url.scheme() == "gdtts" ) {
+#ifdef TTS_SUPPORT
+      // Text to speech
+      QString md5Id = Utils::Url::queryItemValue( url, "engine" );
+      QString text( url.path().mid( 1 ) );
+
+      for ( const auto & voiceEngine : cfg.voiceEngines ) {
+        QString itemMd5Id =
+          QString( QCryptographicHash::hash( voiceEngine.name.toUtf8(), QCryptographicHash::Md5 ).toHex() );
+
+        if ( itemMd5Id == md5Id ) {
+          SpeechClient * speechClient = new SpeechClient( voiceEngine, this );
+          connect( speechClient, SIGNAL( finished() ), speechClient, SLOT( deleteLater() ) );
+          speechClient->tell( text );
+          break;
+        }
+      }
+#else
+      qDebug() << "gdtts:// is not supported due to missing TTS support";
+#endif
     }
   }
 }

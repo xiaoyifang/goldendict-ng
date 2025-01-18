@@ -258,9 +258,9 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( std::u32string const 
 
   multimap< std::u32string, string >::const_iterator i;
 
-  result += "<table class=\"lsa_play\">";
+  result += "<div class=\"audio-play\">";
   for ( i = mainArticles.begin(); i != mainArticles.end(); ++i ) {
-    result += "<tr>";
+    result += "<div class=\"audio-play-item\">";
 
     QUrl url;
     url.setScheme( "gdau" );
@@ -269,15 +269,15 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( std::u32string const 
 
     string ref = string( "\"" ) + url.toEncoded().data() + "\"";
 
-    result += addAudioLink( url.toEncoded(), getId() );
+    addAudioLink( url.toEncoded(), getId() );
 
-    result += "<td><a href=" + ref + R"(><img src="qrc:///icons/playsound.png" border="0" alt="Play"/></a></td>)";
-    result += "<td><a href=" + ref + ">" + i->second + "</a></td>";
-    result += "</tr>";
+    result += "<a href=" + ref + R"(><img src="qrc:///icons/playsound.png" border="0" alt="Play"/></a>)";
+    result += "<a href=" + ref + ">" + i->second + "</a>";
+    result += "</div>";
   }
 
   for ( i = alternateArticles.begin(); i != alternateArticles.end(); ++i ) {
-    result += "<tr>";
+    result += "<div class=\"audio-play-item\">";
 
     QUrl url;
     url.setScheme( "gdau" );
@@ -288,12 +288,12 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( std::u32string const 
 
     result += addAudioLink( url.toEncoded(), getId() );
 
-    result += "<td><a href=" + ref + R"(><img src="qrc:///icons/playsound.png" border="0" alt="Play"/></a></td>)";
-    result += "<td><a href=" + ref + ">" + i->second + "</a></td>";
-    result += "</tr>";
+    result += "<a href=" + ref + R"(><img src="qrc:///icons/playsound.png" border="0" alt="Play"/></a>)";
+    result += "<a href=" + ref + ">" + i->second + "</a>";
+    result += "</div>";
   }
 
-  result += "</table>";
+  result += "</div>";
 
   auto * ret = new Dictionary::DataRequestInstant( true );
 

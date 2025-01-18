@@ -136,6 +136,8 @@ bool readNextEntry( SplitZipFile & zip, CentralDirEntry & entry )
 {
   CentralFileHeaderRecord record;
 
+  auto centralDirOffset = zip.pos();
+
   if ( zip.read( (char *)&record, sizeof( record ) ) != sizeof( record ) ) {
     return false;
   }
@@ -160,6 +162,7 @@ bool readNextEntry( SplitZipFile & zip, CentralDirEntry & entry )
     return false;
   }
 
+  entry.centralHeaderOffset = zip.calcAbsoluteOffset( centralDirOffset, qFromLittleEndian( record.diskNumberStart ) );
   entry.localHeaderOffset = zip.calcAbsoluteOffset( qFromLittleEndian( record.offsetOfLocalHeader ),
                                                     qFromLittleEndian( record.diskNumberStart ) );
   entry.compressedSize    = qFromLittleEndian( record.compressedSize );
@@ -170,7 +173,7 @@ bool readNextEntry( SplitZipFile & zip, CentralDirEntry & entry )
   return true;
 }
 
-bool readLocalHeader( SplitZipFile & zip, LocalFileHeader & entry )
+bool skipLocalHeader( SplitZipFile & zip )
 {
   LocalFileHeaderRecord record;
 
@@ -182,8 +185,25 @@ bool readLocalHeader( SplitZipFile & zip, LocalFileHeader & entry )
     return false;
   }
 
-  // Read file name
+  // skip file name
+  int fileNameLength = qFromLittleEndian( record.fileNameLength );
+  // Skip extra field
+  return zip.seek( zip.pos() + fileNameLength + qFromLittleEndian( record.extraFieldLength ) );
+}
 
+bool readLocalHeaderFromCentral( SplitZipFile & zip, LocalFileHeader & entry )
+{
+  CentralFileHeaderRecord record;
+
+  if ( zip.read( (char *)&record, sizeof( record ) ) != sizeof( record ) ) {
+    return false;
+  }
+
+  if ( record.signature != centralFileHeaderSignature ) {
+    return false;
+  }
+
+  // Read file name
   int fileNameLength = qFromLittleEndian( record.fileNameLength );
   entry.fileName     = zip.read( fileNameLength );
 
@@ -191,15 +211,11 @@ bool readLocalHeader( SplitZipFile & zip, LocalFileHeader & entry )
     return false;
   }
 
-  // Skip extra field
-
-  if ( !zip.seek( zip.pos() + qFromLittleEndian( record.extraFieldLength ) ) ) {
-    return false;
-  }
-
   entry.compressedSize    = qFromLittleEndian( record.compressedSize );
   entry.uncompressedSize  = qFromLittleEndian( record.uncompressedSize );
   entry.compressionMethod = getCompressionMethod( record.compressionMethod );
+  entry.offset            = zip.calcAbsoluteOffset( qFromLittleEndian( record.offsetOfLocalHeader ),
+                                         qFromLittleEndian( record.diskNumberStart ) );
 
   return true;
 }

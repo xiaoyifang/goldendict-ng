@@ -6,8 +6,6 @@
 #include <zlib.h>
 #include "text.hh"
 #include "iconv.hh"
-#include <QtCore5Compat/QTextCodec>
-
 #include <QMutexLocker>
 
 using namespace BtreeIndexing;
@@ -60,12 +58,13 @@ bool IndexedZip::loadFile( uint32_t offset, vector< char > & data )
     return false;
   }
 
+  //the offset is central dir header position.
   ZipFile::LocalFileHeader header;
 
-  if ( !ZipFile::readLocalHeader( zip, header ) ) {
+  if ( !ZipFile::readLocalHeaderFromCentral( zip, header ) ) {
     vector< string > zipFileNames;
     zip.getFilenames( zipFileNames );
-    qDebug( "Failed to load header" );
+    qDebug() << "Failed to load header";
     string filename;
     if ( zip.getCurrentFile() < zipFileNames.size() ) {
       filename = zipFileNames.at( zip.getCurrentFile() );
@@ -75,26 +74,34 @@ bool IndexedZip::loadFile( uint32_t offset, vector< char > & data )
     return false;
   }
 
-  // Which algorithm was used?
+  zip.seek( header.offset );
+  if ( !ZipFile::skipLocalHeader( zip ) ) {
+    qDebug() << "Failed to skip local header";
+    return false;
+  }
 
+  // Which algorithm was used?
   switch ( header.compressionMethod ) {
     case ZipFile::Uncompressed:
-      qDebug( "Uncompressed" );
+      qDebug() << "Uncompressed";
       data.resize( header.uncompressedSize );
       return (size_t)zip.read( &data.front(), data.size() ) == data.size();
 
     case ZipFile::Deflated: {
       // Decompress the data using the zlib library
-
+      // Check for unusually large compressed size,100MB
+      if ( header.compressedSize > 100000000 ) { // Example threshold
+        qDebug() << "Unusually large compressed size:" << header.compressedSize;
+        return false;
+      }
+      if ( header.compressedSize == 0 ) {
+        //the compress data should have some issue.
+        qDebug() << "compressed size is 0;";
+        return false;
+      }
       QByteArray compressedData = zip.read( header.compressedSize );
 
       if ( compressedData.size() != (int)header.compressedSize ) {
-        return false;
-      }
-
-      if ( header.uncompressedSize == 0 ) {
-        //the compress data should have some issue.
-        qDebug() << "uncompressed size is 0;";
         return false;
       }
 
@@ -157,119 +164,44 @@ bool IndexedZip::indexFile( BtreeIndexing::IndexedWords & zipFileNames, quint32 
   }
 
   // File seems to be a valid zip file
-
-
-  QTextCodec * localeCodec = QTextCodec::codecForLocale();
-
   ZipFile::CentralDirEntry entry;
 
-  bool alreadyCounted;
   if ( filesCount ) {
     *filesCount = 0;
   }
 
   while ( ZipFile::readNextEntry( zip, entry ) ) {
     if ( entry.compressionMethod == ZipFile::Unsupported ) {
-      qWarning( "Zip warning: compression method unsupported -- skipping file \"%s\"", entry.fileName.data() );
+      qWarning() << "Zip warning: compression method unsupported -- skipping file" << entry.fileName.data();
       continue;
     }
 
-    // Check if the file name has some non-ascii letters.
-
-    unsigned char const * ptr = (unsigned char const *)entry.fileName.constData();
-
-    bool hasNonAscii = false;
-
-    for ( ;; ) {
-      if ( *ptr & 0x80 ) {
-        hasNonAscii = true;
-        break;
-      }
-      else if ( !*ptr++ ) {
-        break;
-      }
-    }
-
-    alreadyCounted = false;
-
-    if ( !hasNonAscii ) {
-      // Add entry as is
-
-      zipFileNames.addSingleWord( Text::toUtf32( entry.fileName.data() ), entry.localHeaderOffset );
+    if ( entry.fileNameInUTF8 ) {
+      zipFileNames.addSingleWord( Text::toUtf32( entry.fileName.data() ), entry.centralHeaderOffset );
       if ( filesCount ) {
         *filesCount += 1;
       }
     }
     else {
-      // Try assuming different encodings. Those are UTF8, system locale and two
-      // Russian ones (Windows and Windows OEM). Unfortunately, zip
-      // files do not say which encoding they utilize.
-
-      // Utf8
       try {
-        std::u32string decoded = Text::toUtf32( entry.fileName.constData() );
+        //detect encoding.
+        auto encoding = Iconv::findValidEncoding( { "LOCAL", "IBM437", "CP866", "CP1251", "UTF-8" } );
+        if ( encoding.isEmpty() ) {
+          qWarning() << "Zip warning: failed to detect encoding -- skipping file" << entry.fileName.data();
+          continue;
+        }
+        std::u32string nameInSystemLocale =
+          Iconv::toWstring( encoding.toUtf8().constData(), entry.fileName.constData(), entry.fileName.size() );
+        if ( !nameInSystemLocale.empty() ) {
+          zipFileNames.addSingleWord( nameInSystemLocale, entry.centralHeaderOffset );
 
-        zipFileNames.addSingleWord( decoded, entry.localHeaderOffset );
-        if ( filesCount != 0 && !alreadyCounted ) {
-          *filesCount += 1;
-          alreadyCounted = true;
+          if ( filesCount != 0 ) {
+            *filesCount += 1;
+          }
         }
       }
-      catch ( Text::exCantDecode & ) {
+      catch ( Iconv::Ex & ) {
         // Failed to decode
-      }
-
-      if ( !entry.fileNameInUTF8 ) {
-        std::u32string nameInSystemLocale;
-
-        // System locale
-        if ( localeCodec ) {
-          QString name       = localeCodec->toUnicode( entry.fileName.constData(), entry.fileName.size() );
-          nameInSystemLocale = name.toStdU32String();
-          if ( !nameInSystemLocale.empty() ) {
-            zipFileNames.addSingleWord( nameInSystemLocale, entry.localHeaderOffset );
-
-            if ( filesCount != 0 && !alreadyCounted ) {
-              *filesCount += 1;
-              alreadyCounted = true;
-            }
-          }
-        }
-
-
-        // CP866
-        try {
-          std::u32string decoded = Iconv::toWstring( "CP866", entry.fileName.constData(), entry.fileName.size() );
-
-          if ( nameInSystemLocale != decoded ) {
-            zipFileNames.addSingleWord( decoded, entry.localHeaderOffset );
-
-            if ( filesCount != 0 && !alreadyCounted ) {
-              *filesCount += 1;
-              alreadyCounted = true;
-            }
-          }
-        }
-        catch ( Iconv::Ex & ) {
-          // Failed to decode
-        }
-
-        // CP1251
-        try {
-          std::u32string decoded = Iconv::toWstring( "CP1251", entry.fileName.constData(), entry.fileName.size() );
-
-          if ( nameInSystemLocale != decoded ) {
-            zipFileNames.addSingleWord( decoded, entry.localHeaderOffset );
-
-            if ( filesCount != 0 && !alreadyCounted ) {
-              *filesCount += 1;
-              alreadyCounted = true;
-            }
-          }
-        }
-        catch ( Iconv::Ex & ) {
-          // Failed to decode
-        }
       }
     }
   }

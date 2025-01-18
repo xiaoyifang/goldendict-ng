@@ -1042,9 +1042,6 @@ for all program's network requests.</string>
                </item>
                <item>
                 <widget class="QLabel" name="label_3">
-                 <property name="enabled">
-                  <bool>false</bool>
-                 </property>
                  <property name="text">
                   <string>Host:</string>
                  </property>

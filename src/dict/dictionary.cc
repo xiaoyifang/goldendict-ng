@@ -606,16 +606,13 @@ string getFtsSuffix()
 
 QString generateRandomDictionaryId()
 {
-  return QString(
-    QCryptographicHash::hash( QDateTime::currentDateTime().toString( "\"Random\"dd.MM.yyyy hh:mm:ss.zzz" ).toUtf8(),
-                              QCryptographicHash::Md5 )
-      .toHex() );
+  return QCryptographicHash::hash( QUuid::createUuid().toString().toUtf8(), QCryptographicHash::Md5 ).toHex();
 }
 
 QMap< std::string, sptr< Dictionary::Class > > dictToMap( std::vector< sptr< Dictionary::Class > > const & dicts )
 {
   QMap< std::string, sptr< Dictionary::Class > > dictMap;
-  for ( auto & dict : dicts ) {
+  for ( const auto & dict : dicts ) {
     if ( !dict ) {
       continue;
     }

@@ -58,7 +58,7 @@ DEF_EX_STR( exDictzipError, "DICTZIP error", Dictionary::Ex )
 
 enum {
   Signature                = 0x584c5344, // DSLX on little-endian, XLSD on big-endian
-  CurrentFormatVersion     = 23 + BtreeIndexing::FormatVersion + Folding::Version,
+  CurrentFormatVersion     = 23 + BtreeIndexing::FormatVersion + Folding::Version + BtreeIndexing::ZipParseLogicVersion,
   CurrentZipSupportVersion = 2,
   CurrentFtsIndexVersion   = 7
 };

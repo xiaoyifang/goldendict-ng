@@ -348,7 +348,10 @@ int main( int argc, char ** argv )
 
 
   //high dpi screen support
-  qputenv( "QT_ENABLE_HIGHDPI_SCALING", "1" );
+  if ( !qEnvironmentVariableIsSet( "QT_ENABLE_HIGHDPI_SCALING" )
+       || qEnvironmentVariableIsEmpty( "QT_ENABLE_HIGHDPI_SCALING" ) ) {
+    qputenv( "QT_ENABLE_HIGHDPI_SCALING", "1" );
+  }
   QApplication::setHighDpiScaleFactorRoundingPolicy( Qt::HighDpiScaleFactorRoundingPolicy::PassThrough );
 
   QHotkeyApplication app( "GoldenDict-ng", argc, argv );

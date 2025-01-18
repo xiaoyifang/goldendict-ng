@@ -72,7 +72,7 @@ DEF_EX_STR( exDictzipError, "DICTZIP error", Dictionary::Ex )
 
 enum {
   Signature            = 0x46584458, // XDXF on little-endian, FXDX on big-endian
-  CurrentFormatVersion = 6 + BtreeIndexing::FormatVersion + Folding::Version
+  CurrentFormatVersion = 6 + BtreeIndexing::FormatVersion + Folding::Version + BtreeIndexing::ZipParseLogicVersion
 };
 
 enum ArticleFormat {

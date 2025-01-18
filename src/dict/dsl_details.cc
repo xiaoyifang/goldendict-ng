@@ -894,9 +894,7 @@ DslScanner::DslScanner( string const & fileName ):
     }
   }
 
-  codec = QTextCodec::codecForName( getEncodingNameFor( encoding ) );
-
-  qDebug() << "DSL encoding ->" << codec->name();
+  qDebug() << "DSL encoding:" << getEncodingNameFor( encoding );
 
   if ( gzrewind( f ) ) {
     gzclose( f );
@@ -1039,7 +1037,7 @@ bool DslScanner::readNextLine( std::u32string & out, size_t & offset, bool only_
     if ( pos == -1 ) {
       return false;
     }
-    QString line = codec->toUnicode( readBufferPtr, pos );
+    QString line = Iconv::toQString( getEncodingNameFor( encoding ), readBufferPtr, pos );
     line         = Utils::rstrip( line );
 
     if ( pos > readBufferLeft ) {

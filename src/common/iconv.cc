@@ -19,6 +19,50 @@ Iconv::~Iconv()
   iconv_close( state );
 }
 
+QByteArray Iconv::fromUnicode( const QString & input, const char * toEncoding )
+{
+  // Convert QString to UTF-8
+  QByteArray utf8Data = input.toUtf8();
+  const char * inBuf  = utf8Data.constData();
+  size_t inBytesLeft  = utf8Data.size();
+
+  // Initialize iconv
+  iconv_t cd = iconv_open( toEncoding, "UTF-8" );
+  if ( cd == (iconv_t)-1 ) {
+    throw std::runtime_error( "iconv_open failed" );
+  }
+
+  // Prepare output buffer
+  size_t outBytesLeft = inBytesLeft * 4; // Allocate enough space
+  std::vector< char > outBuf( outBytesLeft );
+  char * outBufPtr = outBuf.data();
+
+  // Perform conversion
+  while ( inBytesLeft > 0 ) {
+    size_t result = iconv( cd, const_cast< char ** >( &inBuf ), &inBytesLeft, &outBufPtr, &outBytesLeft );
+    if ( result == (size_t)-1 ) {
+      if ( errno == E2BIG ) {
+        // Grow the buffer and retry
+        size_t offset = outBufPtr - outBuf.data();
+        outBuf.resize( outBuf.size() + inBytesLeft * 4 );
+        outBufPtr = outBuf.data() + offset;
+        outBytesLeft += inBytesLeft * 4;
+      }
+      else {
+        iconv_close( cd );
+        throw std::runtime_error( "iconv conversion failed" );
+      }
+    }
+  }
+
+  // Clean up
+  iconv_close( cd );
+
+  // Resize output buffer to actual size
+  outBuf.resize( outBuf.size() - outBytesLeft );
+  return QByteArray( outBuf.data(), outBuf.size() );
+}
+
 QString Iconv::convert( void const *& inBuf, size_t & inBytesLeft )
 {
   size_t dsz = inBytesLeft;
@@ -120,4 +164,15 @@ QString Iconv::toQString( char const * fromEncoding, void const * fromData, size
 
   Iconv ic( fromEncoding );
   return ic.convert( fromData, dataSize );
+}
+QString Iconv::findValidEncoding( const QStringList & encodings )
+{
+  for ( const QString & encoding : encodings ) {
+    iconv_t cd = iconv_open( "UTF-8", encoding.toUtf8().constData() );
+    if ( cd != (iconv_t)-1 ) {
+      iconv_close( cd );
+      return encoding;
+    }
+  }
+  return {};
 }

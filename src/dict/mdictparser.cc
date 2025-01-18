@@ -32,12 +32,11 @@
 #include <QDomDocument>
 #include <QTextDocumentFragment>
 #include <QDataStream>
-#include <QtCore5Compat/QTextCodec>
-
 #include "decompress.hh"
 #include "ripemd.hh"
 #include "utils.hh"
 #include "htmlescape.hh"
+#include "iconv.hh"
 
 namespace Mdict {
 
@@ -76,21 +75,9 @@ size_t MdictParser::RecordIndex::bsearch( const vector< MdictParser::RecordIndex
     return (size_t)( -1 );
   }
 
-  size_t lo = 0;
-  size_t hi = offsets.size() - 1;
-
-  while ( lo <= hi ) {
-    size_t mid            = ( lo + hi ) >> 1;
-    RecordIndex const & p = offsets[ mid ];
-    if ( p == val ) {
-      return mid;
-    }
-    else if ( p < val ) {
-      lo = mid + 1;
-    }
-    else {
-      hi = mid - 1;
-    }
+  auto it = std::lower_bound( offsets.begin(), offsets.end(), val );
+  if ( it != offsets.end() && *it == val ) {
+    return std::distance( offsets.begin(), it );
   }
 
   return (size_t)( -1 );
@@ -187,8 +174,7 @@ QString MdictParser::toUtf16( const char * fromCode, const char * from, size_t f
     return QString();
   }
 
-  QTextCodec * codec = QTextCodec::codecForName( fromCode );
-  return codec->toUnicode( from, fromSize );
+  return Iconv::toQString( fromCode, from, fromSize );
 }
 
 bool MdictParser::decryptHeadWordIndex( char * buffer, qint64 len )
