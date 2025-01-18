@@ -52,6 +52,10 @@ void FavoritesPaneWidget::setUp( Config::Class * cfg, QMenu * menu )
   addAction( m_addFolder );
   connect( m_addFolder, &QAction::triggered, this, &FavoritesPaneWidget::addFolder );
 
+  m_clearAll = new QAction( this );
+  m_clearAll->setText( tr( "Clear All" ) );
+  addAction( m_clearAll );
+  connect( m_clearAll, &QAction::triggered, this, &FavoritesPaneWidget::clearAllItems );
 
   // Handle context menu, reusing some of the top-level window's History menu
   m_favoritesMenu = new QMenu( this );
@@ -182,6 +186,7 @@ void FavoritesPaneWidget::showCustomMenu( QPoint const & pos )
   m_favoritesMenu->removeAction( m_copySelectedToClipboard );
   m_favoritesMenu->removeAction( m_deleteSelectedAction );
   m_favoritesMenu->removeAction( m_addFolder );
+  m_favoritesMenu->removeAction( m_clearAll );
 
   m_separator->setVisible( !selectedIdxs.isEmpty() );
 
@@ -192,6 +197,7 @@ void FavoritesPaneWidget::showCustomMenu( QPoint const & pos )
 
   if ( selectedIdxs.size() <= 1 ) {
     m_favoritesMenu->insertAction( m_separator, m_addFolder );
+    m_favoritesMenu->insertAction( m_separator, m_clearAll );
     m_separator->setVisible( true );
   }
 
@@ -250,6 +256,18 @@ void FavoritesPaneWidget::addFolder()
 
   if ( folderIdx.isValid() ) {
     m_favoritesTree->edit( folderIdx );
+  }
+}
+
+void FavoritesPaneWidget::clearAllItems()
+{
+  QMessageBox::StandardButton reply;
+  reply = QMessageBox::question( this,
+                                 tr( "Clear All Items" ),
+                                 tr( "Are you sure you want to clear all items?" ),
+                                 QMessageBox::Yes | QMessageBox::No );
+  if ( reply == QMessageBox::Yes ) {
+    m_favoritesModel->clearAllItems();
   }
 }
 
@@ -326,7 +344,13 @@ TreeItem::TreeItem( const QVariant & data, TreeItem * parent, Type type ):
 
 TreeItem::~TreeItem()
 {
+  clearChildren();
+}
+
+void TreeItem::clearChildren()
+{
   qDeleteAll( childItems );
+  childItems.clear();
 }
 
 void TreeItem::appendChild( TreeItem * item )
@@ -721,13 +745,20 @@ void FavoritesModel::addFolder( TreeItem * parent, QDomNode & node )
     if ( el.nodeName() == "folder" ) {
       // New subfolder
       QString name    = el.attribute( "name", "" );
-      TreeItem * item = new TreeItem( name, parent, TreeItem::Folder );
-      item->setExpanded( el.attribute( "expanded", "0" ) == "1" );
-      parent->appendChild( item );
+      TreeItem * existingItem = findFolderByName( parent, name, TreeItem::Folder );
+      TreeItem * item         = existingItem != nullptr ? existingItem : new TreeItem( name, parent, TreeItem::Folder );
+      if ( existingItem == nullptr ) {
+        item->setExpanded( el.attribute( "expanded", "0" ) == "1" );
+        parent->appendChild( item );
+      }
       addFolder( item, el );
     }
     else {
       QString word = el.text();
+      TreeItem * existingItem = findFolderByName( parent, word, TreeItem::Word );
+      if ( existingItem != nullptr ) {
+        continue;
+      }
       parent->appendChild( new TreeItem( word, parent, TreeItem::Word ) );
 
       GlobalBroadcaster::instance()->folderFavoritesMap[ parent->data().toString() ].insert( word );
@@ -867,6 +898,17 @@ QModelIndex FavoritesModel::findItemInFolder( const QString & itemName, int item
     }
   }
   return QModelIndex();
+}
+
+TreeItem * FavoritesModel::findFolderByName( TreeItem * parent, const QString & name, TreeItem::Type type )
+{
+  for ( int i = 0; i < parent->childCount(); i++ ) {
+    TreeItem * child = parent->child( i );
+    if ( child->type() == type && child->data().toString() == name ) {
+      return child;
+    }
+  }
+  return nullptr;
 }
 
 TreeItem * FavoritesModel::getItem( const QModelIndex & index ) const
@@ -1145,11 +1187,9 @@ bool FavoritesModel::setDataFromXml( QString const & dataStr )
 
   beginResetModel();
 
-  if ( rootItem ) {
-    delete rootItem;
+  if ( !rootItem ) {
+    rootItem = new TreeItem( QVariant(), 0, TreeItem::Root );
   }
-
-  rootItem = new TreeItem( QVariant(), 0, TreeItem::Root );
 
   QDomNode rootNode = dom.documentElement();
   addFolder( rootItem, rootNode );
@@ -1167,11 +1207,9 @@ bool FavoritesModel::setDataFromTxt( QString const & dataStr )
 
   beginResetModel();
 
-  if ( rootItem ) {
-    delete rootItem;
+  if ( !rootItem ) {
+    rootItem = new TreeItem( QVariant(), 0, TreeItem::Root );
   }
-
-  rootItem = new TreeItem( QVariant(), 0, TreeItem::Root );
 
   for ( auto const & word : words ) {
     rootItem->appendChild( new TreeItem( word, rootItem, TreeItem::Word ) );
@@ -1180,4 +1218,14 @@ bool FavoritesModel::setDataFromTxt( QString const & dataStr )
 
   dirty = true;
   return true;
+}
+void FavoritesModel::clearAllItems()
+{
+  beginResetModel();
+
+  if ( rootItem ) {
+    rootItem->clearChildren();
+  }
+
+  endResetModel();
 }

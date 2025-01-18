@@ -20,6 +20,7 @@
 
 class FavoritesModel;
 
+class TreeItem;
 class FavoritesPaneWidget: public QWidget
 {
   Q_OBJECT
@@ -80,10 +81,10 @@ private slots:
   void deleteSelectedItems();
   void copySelectedItems();
   void addFolder();
+  void clearAllItems();
 
 private:
   virtual bool eventFilter( QObject *, QEvent * );
-
   Config::Class * m_cfg               = nullptr;
   QTreeView * m_favoritesTree         = nullptr;
   QMenu * m_favoritesMenu             = nullptr;
@@ -91,6 +92,7 @@ private:
   QAction * m_separator               = nullptr;
   QAction * m_copySelectedToClipboard = nullptr;
   QAction * m_addFolder               = nullptr;
+  QAction * m_clearAll                = nullptr;
 
   QWidget favoritesPaneTitleBar;
   QHBoxLayout favoritesPaneTitleBarLayout;
@@ -164,6 +166,7 @@ public:
 
   // Retrieve text from all childs
   QStringList getTextFromAllChilds() const;
+  void clearChildren();
 
 private:
   QList< TreeItem * > childItems;
@@ -180,6 +183,7 @@ class FavoritesModel: public QAbstractItemModel
 public:
   explicit FavoritesModel( QString favoritesFilename, QObject * parent = 0 );
   ~FavoritesModel();
+  void clearAllItems();
 
   QVariant data( const QModelIndex & index, int role ) const;
   Qt::ItemFlags flags( const QModelIndex & index ) const;
@@ -249,6 +253,7 @@ protected:
   void readData();
   void addFolder( TreeItem * parent, QDomNode & node );
   void storeFolder( TreeItem * folder, QDomNode & node );
+  TreeItem * findFolderByName( TreeItem * parent, const QString & name, TreeItem::Type type );
 
   // Find item in folder
   QModelIndex findItemInFolder( QString const & itemName, int itemType, QModelIndex const & parentIdx );
