@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN" sourcelanguage="en">
+<TS version="2.1">
 <context>
     <name>About</name>
     <message>
@@ -139,11 +139,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Audio</source>
+        <source>TTS Voice</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>TTS Voice</source>
+        <source>Audio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -167,11 +167,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>The referenced resource doesn&apos;t exist.</source>
+        <source>The referenced audio program doesn&apos;t exist.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>The referenced audio program doesn&apos;t exist.</source>
+        <source>The referenced resource doesn&apos;t exist.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -836,36 +836,23 @@ between classic and school orthography in cyrillic)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Clear All</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Favorites:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>All selected items will be deleted. Continue?</source>
-    < translation type = "unfinished" > </translation>
-    < /message>
-    < message >
-    <source>Clear
-All < /source>
-< translation
-type = "unfinished" > </translation>
-    < /message>
-    < message >
-    <source>Clear
-All
-Items < /source>
-< translation
-type = "unfinished" > </translation>
-    < /message>
-    < message >
-    <source>Are
-you
-sure
-you
-want
-to
-clear
-all
-items ? </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clear All Items</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Are you sure you want to clear all items?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2169,10 +2156,6 @@ items ? </source>
 <context>
     <name>MainWindow</name>
     <message>
-        <source>Welcome!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;File</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2413,6 +2396,18 @@ items ? </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Show &amp;Small Icons in Toolbars</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show &amp;Large Icons in Toolbars</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show &amp;Normal Icons in Toolbars</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>&amp;Menubar</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2426,6 +2421,10 @@ items ? </source>
     </message>
     <message>
         <source>Forward</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Toggle clipboard monitoring</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2474,6 +2473,10 @@ items ? </source>
     </message>
     <message>
         <source>New Tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Welcome!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2550,6 +2553,22 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Complete Html (*.html *.htm)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Single Html (*.html *.htm)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pdf (*.pdf)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mime Html (*.mhtml)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Save Article As</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2614,11 +2633,19 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Text files (*.txt);;XML files (*.xml)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Favorites export complete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Import Favorites from file</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2649,99 +2676,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
         <source>Remove headword &quot;%1&quot; from Favorites?</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Show &amp;Small Icons in Toolbars</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Show &amp;Large Icons in Toolbars</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Show &amp;Normal Icons in Toolbars</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Toggle clipboard monitoring</source>
-        <translation type="unfinished"></translation>
-    </message>
-    < message >
-    <source>Complete
-Html( *
-.
-html *
-.
-htm
-)
-</source>
-< translation
-type = "unfinished" > </translation>
-    < /message>
-    < message >
-    <source>Single
-Html( *
-.
-html *
-.
-htm
-)
-</source>
-< translation
-type = "unfinished" > </translation>
-    < /message>
-    < message >
-    <source>Pdf( *
-.
-pdf
-)
-</source>
-< translation
-type = "unfinished" > </translation>
-    < /message>
-    < message >
-    <source>Mime
-Html( *
-.
-mhtml
-)
-</source>
-< translation
-type = "unfinished" > </translation>
-    < /message>
-    < message >
-    <source>Text
-files( *
-.
-txt
-)
-;
-;XML
-files( *
-.
-xml
-)
-</source>
-< translation
-type = "unfinished" > </translation>
-    < /message>
-    < message >
-    <source>Text
-and
-XML
-files( *
-.
-txt *
-.
-xml
-)
-;
-;All
-files( *
-.*)
-</source>
-< translation
-type = "unfinished" > </translation>
-    < /message>
 </context>
 <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -3074,6 +3008,14 @@ the application.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start with clipboard monitoring turned on</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Send translated word to main window instead of to show it in popup window</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3184,6 +3126,10 @@ in the pressed state when the word selection changes.</source>
     </message>
     <message>
         <source>Auto-pronounce words in main window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto-pronounce words in the popup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3548,6 +3494,22 @@ from Stardict, Babylon and GLS dictionaries</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>On</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Off</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto does nothing on some systems.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Restart the program to apply the language change.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3563,43 +3525,6 @@ from Stardict, Babylon and GLS dictionaries</source>
         <source>Restart needed</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Start with clipboard monitoring turned on</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Auto-pronounce words in the popup</source>
-        <translation type="unfinished"></translation>
-    </message>
-    < message >
-    <source>On < /source>
-    < translation
-type = "unfinished" > </translation>
-    < /message>
-    < message >
-    <source>Off < /source>
-    < translation
-type = "unfinished" > </translation>
-    < /message>
-    < message >
-    <source>Auto < /source>
-    < translation
-type = "unfinished" > </translation>
-    < /message>
-    < message >
-    <source>Auto
-does
-nothing
-on
-some
-systems. < /source>
-< translation
-type = "unfinished" > </translation>
-    < /message>
 </context>
 <context>
     <name>ProgramTypeEditor</name>
