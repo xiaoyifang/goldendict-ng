@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="sr_SP" sourcelanguage="en">
+<TS version="2.1" language="sr" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
@@ -61,14 +61,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Expand article</source>
-      <translation>Прошири чланак</translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Скупи чланак</translation>
-    </message>
-    <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
       <translation>Није пронађен превод за &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; у групи &lt;b&gt;%2&lt;/b&gt;.</translation>
     </message>
@@ -96,16 +88,8 @@
   <context>
     <name>ArticleRequest</name>
     <message>
-      <source>Expand article</source>
-      <translation>Прошири чланак</translation>
-    </message>
-    <message>
       <source>From </source>
       <translation>Из: </translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Скупи чланак</translation>
     </message>
     <message>
       <source>Make a new Anki note</source>
@@ -155,12 +139,12 @@
       <translation>Ресурс</translation>
     </message>
     <message>
-      <source>Audio</source>
-      <translation>Аудио</translation>
-    </message>
-    <message>
       <source>TTS Voice</source>
       <translation>TTS глас</translation>
+    </message>
+    <message>
+      <source>Audio</source>
+      <translation>Аудио</translation>
     </message>
     <message>
       <source>Video</source>
@@ -183,12 +167,12 @@
       <translation>ГРЕШКА: %1</translation>
     </message>
     <message>
-      <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>Тражени ресурс није пронађен.</translation>
-    </message>
-    <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>Одређени аудио програм није пронађен.</translation>
+    </message>
+    <message>
+      <source>The referenced resource doesn&apos;t exist.</source>
+      <translation>Тражени ресурс није пронађен.</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
@@ -855,12 +839,24 @@ between classic and school orthography in cyrillic)</source>
       <translation>Додај фолдер</translation>
     </message>
     <message>
+      <source>Clear All</source>
+      <translation type="unfinished">Clear All</translation>
+    </message>
+    <message>
       <source>Favorites:</source>
       <translation>Фаворити:</translation>
     </message>
     <message>
       <source>All selected items will be deleted. Continue?</source>
       <translation>Све изабране ставке ће бити избрисане. Настави?</translation>
+    </message>
+    <message>
+      <source>Clear All Items</source>
+      <translation type="unfinished">Clear All Items</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all items?</source>
+      <translation type="unfinished">Are you sure you want to clear all items?</translation>
     </message>
   </context>
   <context>
@@ -888,10 +884,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>from</source>
       <translation>из</translation>
-    </message>
-    <message>
-      <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
-      <translation>Иди на Уреди|Речници|Извори|Forvo и примени на ваш кључ API, да бисте решили овај проблем.</translation>
     </message>
   </context>
   <context>
@@ -2167,10 +2159,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>MainWindow</name>
     <message>
-      <source>Welcome!</source>
-      <translation>Добро дошли!</translation>
-    </message>
-    <message>
       <source>&amp;File</source>
       <translation>&amp;Датотека</translation>
     </message>
@@ -2407,12 +2395,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>Цтрл+Е</translation>
     </message>
     <message>
-      <source>Export to list</source>
-      <translation>Извези на листу</translation>
-    </message>
-    <message>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>Прикажи називе у картици &amp;речника</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>Прикажи &amp;мале иконе на тракама са алаткама</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>Прикажи &amp;велике иконе на тракама са алаткама</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>Прикажи &amp;нормалне иконе на тракама са алаткама</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
@@ -2429,6 +2425,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Forward</source>
       <translation>Напред</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>Укључите праћење међуспремника</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2449,18 +2449,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Found in Dictionaries:</source>
       <translation>Пронађено у речницима:</translation>
-    </message>
-    <message>
-      <source>Words Zoom In</source>
-      <translation>Увећај листу речи</translation>
-    </message>
-    <message>
-      <source>Words Zoom Out</source>
-      <translation>Умањи листу речи</translation>
-    </message>
-    <message>
-      <source>Words Normal Size</source>
-      <translation>Уобичајена величина слова</translation>
     </message>
     <message>
       <source>Show &amp;Main Window</source>
@@ -2489,6 +2477,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>New Tab</source>
       <translation>Нова картица</translation>
+    </message>
+    <message>
+      <source>Welcome!</source>
+      <translation>Добро дошли!</translation>
     </message>
     <message>
       <source>Accessibility API is not enabled</source>
@@ -2566,12 +2558,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Штампај чланак</translation>
     </message>
     <message>
-      <source>Article, Complete (*.html)</source>
-      <translation>Чланак, целовит (*.html)</translation>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Article, HTML Only (*.html)</source>
-      <translation>Чланак, само HTML (*.html)</translation>
+      <source>Single Html (*.html *.htm)</source>
+      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Pdf (*.pdf)</source>
+      <translation type="unfinished">Pdf (*.pdf)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation type="unfinished">Mime Html (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2638,24 +2638,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Извезите фаворите у датотеку</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;All files (*.*)</source>
-      <translation>КСМЛ датотеке (*.кмл);; Све датотеке (*.*)</translation>
+      <source>Text files (*.txt);;XML files (*.xml)</source>
+      <translation type="unfinished">Text files (*.txt);;XML files (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
       <translation>Извоз омиљених је завршен</translation>
     </message>
     <message>
-      <source>Export Favorites to file as plain list</source>
-      <translation>Извезите фаворите у датотеку као обичну листу</translation>
-    </message>
-    <message>
       <source>Import Favorites from file</source>
       <translation>Увезите фаворите из датотеке</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation>КСМЛ датотеке (*.кмл);;Ткт датотеке (*.ткт);;Све датотеке (*.*)</translation>
+      <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
+      <translation type="unfinished">Text and XML files (*.txt *.xml);;All files (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -2684,22 +2680,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Уклонити насловну реч &quot;%1&quot; из омиљених?</translation>
-    </message>
-    <message>
-      <source>Show &amp;Small Icons in Toolbars</source>
-      <translation>Прикажи &amp;мале иконе на тракама са алаткама</translation>
-    </message>
-    <message>
-      <source>Show &amp;Large Icons in Toolbars</source>
-      <translation>Прикажи &amp;велике иконе на тракама са алаткама</translation>
-    </message>
-    <message>
-      <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation>Прикажи &amp;нормалне иконе на тракама са алаткама</translation>
-    </message>
-    <message>
-      <source>Toggle clipboard monitoring</source>
-      <translation>Укључите праћење међуспремника</translation>
     </message>
   </context>
   <context>
@@ -3045,6 +3025,14 @@ the application.</source>
       <translation>&amp;Искачући прозор</translation>
     </message>
     <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>Бира да ли ће праћење међуспремника бити укључено подразумевано при покретању програма&apos;.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>Почните са укљученим праћењем међуспремника</translation>
+    </message>
+    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Пошаљите преведену реч на главни прозор уместо да га прикаже у искачућем прозору</translation>
     </message>
@@ -3157,6 +3145,10 @@ in the pressed state when the word selection changes.</source>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Аутоматски изговари речи у главном прозору</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>Аутоматски изговор речи у искачућем прозору</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3534,6 +3526,22 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation> МБ</translation>
     </message>
     <message>
+      <source>On</source>
+      <translation type="unfinished">On</translation>
+    </message>
+    <message>
+      <source>Off</source>
+      <translation type="unfinished">Off</translation>
+    </message>
+    <message>
+      <source>Auto</source>
+      <translation type="unfinished">Auto</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation type="unfinished">Auto does nothing on some systems.</translation>
+    </message>
+    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Поново покрените програм за промену језика.</translation>
     </message>
@@ -3548,18 +3556,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Restart needed</source>
       <translation>Потребан је рестарт</translation>
-    </message>
-    <message>
-      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation>Бира да ли ће праћење међуспремника бити укључено подразумевано при покретању програма&apos;.</translation>
-    </message>
-    <message>
-      <source>Start with clipboard monitoring turned on</source>
-      <translation>Почните са укљученим праћењем међуспремника</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in the popup</source>
-      <translation>Аутоматски изговор речи у искачућем прозору</translation>
     </message>
   </context>
   <context>
@@ -3926,12 +3922,6 @@ of the appropriate groups to use them.</source>
     <message>
       <source>Any websites. A string %GDWORD% will be replaced with the query word:</source>
       <translation>Било који веб-сајт. Низ %GDWORD% биће замењен речју упита:</translation>
-    </message>
-    <message>
-      <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
-      <translation>Алтернативно, користите %GD1251% за CP1251, %GDISO1%...%GDISO16% за ISO 8859-1...ISO 8859-16 односно,
-%GDBIG5% за Big-5, %GDBIG5HKSCS% за Big5-HKSCS, %GDGBK% за GBK и GB18030, %GDSHIFTJIS% за Shift-JIS.</translation>
     </message>
     <message>
       <source>DICT servers</source>
