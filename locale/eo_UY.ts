@@ -840,7 +840,7 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     </message>
     <message>
       <source>Clear All</source>
-      <translation type="unfinished">Clear All</translation>
+      <translation>Forigi Ĉion</translation>
     </message>
     <message>
       <source>Favorites:</source>
@@ -852,11 +852,11 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     </message>
     <message>
       <source>Clear All Items</source>
-      <translation type="unfinished">Clear All Items</translation>
+      <translation>Forigi Ĉiujn Erojn</translation>
     </message>
     <message>
       <source>Are you sure you want to clear all items?</source>
-      <translation type="unfinished">Are you sure you want to clear all items?</translation>
+      <translation>Ĉu vi certas, ke vi volas forigi ĉiujn erojn?</translation>
     </message>
   </context>
   <context>
@@ -2558,19 +2558,19 @@ Por trovi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simboloj uz
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
-      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
+      <translation>Kompleta HTML (*.html *.htm)</translation>
     </message>
     <message>
       <source>Single Html (*.html *.htm)</source>
-      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+      <translation>Ununura HTML (*.html *.htm)</translation>
     </message>
     <message>
       <source>Pdf (*.pdf)</source>
-      <translation type="unfinished">Pdf (*.pdf)</translation>
+      <translation>Pdf (*.pdf)</translation>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
-      <translation type="unfinished">Mime Html (*.mhtml)</translation>
+      <translation>Mime Html (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2638,7 +2638,7 @@ Por trovi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simboloj uz
     </message>
     <message>
       <source>Text files (*.txt);;XML files (*.xml)</source>
-      <translation type="unfinished">Text files (*.txt);;XML files (*.xml)</translation>
+      <translation>Tekstaj dosieroj (*.txt);;XML-dosieroj (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
@@ -2650,7 +2650,7 @@ Por trovi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simboloj uz
     </message>
     <message>
       <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
-      <translation type="unfinished">Text and XML files (*.txt *.xml);;All files (*.*)</translation>
+      <translation>Tekstaj kaj XML-dosieroj (*.txt *.xml);;Ĉiuj dosieroj (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -3523,20 +3523,8 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
       <translation> MB</translation>
     </message>
     <message>
-      <source>On</source>
-      <translation type="unfinished">On</translation>
-    </message>
-    <message>
-      <source>Off</source>
-      <translation type="unfinished">Off</translation>
-    </message>
-    <message>
-      <source>Auto</source>
-      <translation type="unfinished">Auto</translation>
-    </message>
-    <message>
       <source>Auto does nothing on some systems.</source>
-      <translation type="unfinished">Auto does nothing on some systems.</translation>
+      <translation>Aŭtomo faras nenion en iuj sistemoj.</translation>
     </message>
     <message>
       <source>Restart the program to apply the language change.</source>
@@ -3553,6 +3541,18 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
     <message>
       <source>Restart needed</source>
       <translation>Rekomenco necesas</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation type="unfinished">Enable</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation type="unfinished">Disable</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation type="unfinished">Automatic</translation>
     </message>
   </context>
   <context>
