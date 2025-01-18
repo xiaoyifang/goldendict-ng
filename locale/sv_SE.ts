@@ -840,7 +840,7 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     </message>
     <message>
       <source>Clear All</source>
-      <translation type="unfinished">Clear All</translation>
+      <translation>Rensa alla</translation>
     </message>
     <message>
       <source>Favorites:</source>
@@ -852,11 +852,11 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     </message>
     <message>
       <source>Clear All Items</source>
-      <translation type="unfinished">Clear All Items</translation>
+      <translation>Rensa alla objekt</translation>
     </message>
     <message>
       <source>Are you sure you want to clear all items?</source>
-      <translation type="unfinished">Are you sure you want to clear all items?</translation>
+      <translation>Är du säker på att du vill rensa alla objekt?</translation>
     </message>
   </context>
   <context>
@@ -2558,19 +2558,19 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
-      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
+      <translation>Komplett HTML (*.html *.htm)</translation>
     </message>
     <message>
       <source>Single Html (*.html *.htm)</source>
-      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+      <translation>Enkel HTML (*.html *.html)</translation>
     </message>
     <message>
       <source>Pdf (*.pdf)</source>
-      <translation type="unfinished">Pdf (*.pdf)</translation>
+      <translation>Pdf (*.pdf)</translation>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
-      <translation type="unfinished">Mime Html (*.mhtml)</translation>
+      <translation>Mime HTML (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2638,7 +2638,7 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
     </message>
     <message>
       <source>Text files (*.txt);;XML files (*.xml)</source>
-      <translation type="unfinished">Text files (*.txt);;XML files (*.xml)</translation>
+      <translation>Textfiler (*.txt);;XML-filer (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
@@ -2650,7 +2650,7 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
     </message>
     <message>
       <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
-      <translation type="unfinished">Text and XML files (*.txt *.xml);;All files (*.*)</translation>
+      <translation>Text- och XML-filer (*.txt *.xml);;Alla filer (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -3525,20 +3525,8 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <translation> MB</translation>
     </message>
     <message>
-      <source>On</source>
-      <translation type="unfinished">On</translation>
-    </message>
-    <message>
-      <source>Off</source>
-      <translation type="unfinished">Off</translation>
-    </message>
-    <message>
-      <source>Auto</source>
-      <translation type="unfinished">Auto</translation>
-    </message>
-    <message>
       <source>Auto does nothing on some systems.</source>
-      <translation type="unfinished">Auto does nothing on some systems.</translation>
+      <translation>Auto gör ingenting på vissa system.</translation>
     </message>
     <message>
       <source>Restart the program to apply the language change.</source>
@@ -3555,6 +3543,18 @@ från Stardict, Babylon och GLS ordböcker</translation>
     <message>
       <source>Restart needed</source>
       <translation>Omstart behövs</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation type="unfinished">Enable</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation type="unfinished">Disable</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation type="unfinished">Automatic</translation>
     </message>
   </context>
   <context>
