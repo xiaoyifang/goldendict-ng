@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="qu_PE" sourcelanguage="en">
+<TS version="2.1" language="qu" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
@@ -61,14 +61,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Expand article</source>
-      <translation>Qillqasqata mastariy</translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Colapso nisqa qillqasqa</translation>
-    </message>
-    <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
       <translation>&lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; nisqapaqqa manam tikrayqa tarikurqachu &lt;b&gt;%2&lt;/b&gt;huñupi.</translation>
     </message>
@@ -96,16 +88,8 @@
   <context>
     <name>ArticleRequest</name>
     <message>
-      <source>Expand article</source>
-      <translation>Qillqasqata mastariy</translation>
-    </message>
-    <message>
       <source>From </source>
       <translation> </translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Colapso nisqa qillqasqa</translation>
     </message>
     <message>
       <source>Make a new Anki note</source>
@@ -155,12 +139,12 @@
       <translation>Recurso nisqa</translation>
     </message>
     <message>
-      <source>Audio</source>
-      <translation>Audio nisqa</translation>
-    </message>
-    <message>
       <source>TTS Voice</source>
       <translation>TTS Kunka</translation>
+    </message>
+    <message>
+      <source>Audio</source>
+      <translation>Audio nisqa</translation>
     </message>
     <message>
       <source>Video</source>
@@ -183,12 +167,12 @@
       <translation>PATACHA: %1</translation>
     </message>
     <message>
-      <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>El recurso referido no existe.</translation>
-    </message>
-    <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>Chay referenciasqa uyarina programaqa manan kanchu.</translation>
+    </message>
+    <message>
+      <source>The referenced resource doesn&apos;t exist.</source>
+      <translation>El recurso referido no existe.</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
@@ -855,12 +839,24 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>Carpeta yapay</translation>
     </message>
     <message>
+      <source>Clear All</source>
+      <translation type="unfinished">Clear All</translation>
+    </message>
+    <message>
       <source>Favorites:</source>
       <translation>Munasqakuna:</translation>
     </message>
     <message>
       <source>All selected items will be deleted. Continue?</source>
       <translation>Llapan akllasqa kaqkunam qullusqa kanqa. Qatiq?</translation>
+    </message>
+    <message>
+      <source>Clear All Items</source>
+      <translation type="unfinished">Clear All Items</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all items?</source>
+      <translation type="unfinished">Are you sure you want to clear all items?</translation>
     </message>
   </context>
   <context>
@@ -888,10 +884,6 @@ chiqan kayninta sumaqyachin)</translation>
     <message>
       <source>from</source>
       <translation>imamanta</translation>
-    </message>
-    <message>
-      <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
-      <translation>Vaya a Editar|Diccionarios|Fuentes|Forvo y solicitar su propia clave de API para hacer desaparecer este error.</translation>
     </message>
   </context>
   <context>
@@ -2167,10 +2159,6 @@ chiqan kayninta sumaqyachin)</translation>
   <context>
     <name>MainWindow</name>
     <message>
-      <source>Welcome!</source>
-      <translation>¡Bienvenido!</translation>
-    </message>
-    <message>
       <source>&amp;File</source>
       <translation>&amp;Archiwu</translation>
     </message>
@@ -2407,12 +2395,20 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>Ctrl+E nisqa</translation>
     </message>
     <message>
-      <source>Export to list</source>
-      <translation>Listaman hawaman apachiy</translation>
-    </message>
-    <message>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>Sutikunata Diccionariopi rikuchiy &amp;Bar</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>&amp;Uchuy Iconokuna Llamkanakuna Barras nisqapi rikuchiy</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>&amp;Hatun Iconokuna Llamkanakuna Barras nisqapi rikuchiy</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>&amp;Normal Iconos nisqakunata rikuchiy Barras de herramientas nisqapi</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
@@ -2429,6 +2425,10 @@ chiqan kayninta sumaqyachin)</translation>
     <message>
       <source>Forward</source>
       <translation>Qhipa</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>Portapapeles nisqa qhawayta tikray</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2449,18 +2449,6 @@ chiqan kayninta sumaqyachin)</translation>
     <message>
       <source>Found in Dictionaries:</source>
       <translation>Diccionariokunapi tarisqa:</translation>
-    </message>
-    <message>
-      <source>Words Zoom In</source>
-      <translation>Simikunata jatunyachiy</translation>
-    </message>
-    <message>
-      <source>Words Zoom Out</source>
-      <translation>Simikunata juch&apos;uyyachiy</translation>
-    </message>
-    <message>
-      <source>Words Normal Size</source>
-      <translation>Mana aqllasqa chhikanpa simikunan</translation>
     </message>
     <message>
       <source>Show &amp;Main Window</source>
@@ -2489,6 +2477,10 @@ chiqan kayninta sumaqyachin)</translation>
     <message>
       <source>New Tab</source>
       <translation>Musuq Tab</translation>
+    </message>
+    <message>
+      <source>Welcome!</source>
+      <translation>¡Bienvenido!</translation>
     </message>
     <message>
       <source>Accessibility API is not enabled</source>
@@ -2565,12 +2557,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Raphipi articulota ñit&apos;iy</translation>
     </message>
     <message>
-      <source>Article, Complete (*.html)</source>
-      <translation>Artículo, Completo (*.html) .</translation>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Article, HTML Only (*.html)</source>
-      <translation>Artículo, HTML nisqalla (*.html)</translation>
+      <source>Single Html (*.html *.htm)</source>
+      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Pdf (*.pdf)</source>
+      <translation type="unfinished">Pdf (*.pdf)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation type="unfinished">Mime Html (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2637,24 +2637,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Favoritos nisqakunata willañiqiman hawaman apachiy</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;All files (*.*)</source>
-      <translation>XML willañiqikuna (*.xml);;Llapan willañiqikuna (*.*)</translation>
+      <source>Text files (*.txt);;XML files (*.xml)</source>
+      <translation type="unfinished">Text files (*.txt);;XML files (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
       <translation>Favoritos exportación hunt'asqa</translation>
     </message>
     <message>
-      <source>Export Favorites to file as plain list</source>
-      <translation>Munasqakunata ch'uya lista hina willañiqiman hawaman apachiy</translation>
-    </message>
-    <message>
       <source>Import Favorites from file</source>
       <translation>Willañiqimanta Munasqakunata apamuy</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation>XML willañiqikuna (*.xml);;Txt willañiqikuna (*.txt);;Llapan willañiqikuna (*.*)</translation>
+      <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
+      <translation type="unfinished">Text and XML files (*.txt *.xml);;All files (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -2683,22 +2679,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>¿Munasqakunamanta &quot;%1&quot; umalliq simita hurquy?</translation>
-    </message>
-    <message>
-      <source>Show &amp;Small Icons in Toolbars</source>
-      <translation>&amp;Uchuy Iconokuna Llamkanakuna Barras nisqapi rikuchiy</translation>
-    </message>
-    <message>
-      <source>Show &amp;Large Icons in Toolbars</source>
-      <translation>&amp;Hatun Iconokuna Llamkanakuna Barras nisqapi rikuchiy</translation>
-    </message>
-    <message>
-      <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation>&amp;Normal Iconos nisqakunata rikuchiy Barras de herramientas nisqapi</translation>
-    </message>
-    <message>
-      <source>Toggle clipboard monitoring</source>
-      <translation>Portapapeles nisqa qhawayta tikray</translation>
     </message>
   </context>
   <context>
@@ -3041,6 +3021,14 @@ cerrar la aplicación.</translation>
       <translation>&amp;Juch&apos;uy qhawanapi mask&apos;ay</translation>
     </message>
     <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>Akllan sichus portapapeles qhawayqa ñawpaqmanta llamk'achisqa kanqa programa&apos;s qallariypi.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>Qallarina portapapeles qhawayta llank’achisqawan</translation>
+    </message>
+    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>T'ikrasqa simita hatun ventanata apachiy, popup ventanata qhawachinamantaqa</translation>
     </message>
@@ -3153,6 +3141,10 @@ seleccionadas estén oprimidas cuando la selección de la palabra cambie.</trans
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Qhapaq qhawanapi kunanpacha simikunata parlachiy</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>Chay popup nisqapi simikunata kikillanmanta t’oqyachiy</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3527,6 +3519,22 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
       <translation> MB</translation>
     </message>
     <message>
+      <source>On</source>
+      <translation type="unfinished">On</translation>
+    </message>
+    <message>
+      <source>Off</source>
+      <translation type="unfinished">Off</translation>
+    </message>
+    <message>
+      <source>Auto</source>
+      <translation type="unfinished">Auto</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation type="unfinished">Auto does nothing on some systems.</translation>
+    </message>
+    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Musuq simita jap&apos;ikunanpaq hukmanta programata qallarichiy.</translation>
     </message>
@@ -3541,18 +3549,6 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
     <message>
       <source>Restart needed</source>
       <translation>Wakmanta qallariy necesitakun</translation>
-    </message>
-    <message>
-      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation>Akllan sichus portapapeles qhawayqa ñawpaqmanta llamk'achisqa kanqa programa&apos;s qallariypi.</translation>
-    </message>
-    <message>
-      <source>Start with clipboard monitoring turned on</source>
-      <translation>Qallarina portapapeles qhawayta llank’achisqawan</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in the popup</source>
-      <translation>Chay popup nisqapi simikunata kikillanmanta t’oqyachiy</translation>
     </message>
   </context>
   <context>
@@ -3916,12 +3912,6 @@ fondos de grupos apropriados para utilizarlos.</translation>
     <message>
       <source>Any websites. A string %GDWORD% will be replaced with the query word:</source>
       <translation>Ima web nisqakunapas. Huk watiqa %GDWORD% tapuy simiwanmi tikrasqa kanqa:</translation>
-    </message>
-    <message>
-      <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
-      <translation>Hukninpiqa, %GD1251% CP1251 kaqpaq, %GDISO1%...%GDISO16% ISO 8859-1 kaqpaq...ISO 8859-16 kaqpaq,
-%GDBIG5% Big-5 kaqpaq, %GDBIG5HKSCS% Big5-HKSCS kaqpaq, %GDGBK% GBK kaqpaq chaymanta GB18030 kaqpaq, %GDSHIFTJIS% Shift-JIS kaqpaq .</translation>
     </message>
     <message>
       <source>DICT servers</source>
