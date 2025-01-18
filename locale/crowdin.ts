@@ -3494,18 +3494,6 @@ from Stardict, Babylon and GLS dictionaries</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>On</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Off</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Auto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Auto does nothing on some systems.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3523,6 +3511,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
         <source>Restart needed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Automatic</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
