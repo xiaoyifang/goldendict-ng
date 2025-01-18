@@ -842,7 +842,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Clear All</source>
-      <translation type="unfinished">Clear All</translation>
+      <translation>Очистить все</translation>
     </message>
     <message>
       <source>Favorites:</source>
@@ -854,11 +854,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Clear All Items</source>
-      <translation type="unfinished">Clear All Items</translation>
+      <translation>Очистить все элементы</translation>
     </message>
     <message>
       <source>Are you sure you want to clear all items?</source>
-      <translation type="unfinished">Are you sure you want to clear all items?</translation>
+      <translation>Вы уверены, что хотите очистить все элементы?</translation>
     </message>
   </context>
   <context>
@@ -2561,19 +2561,19 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
-      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
+      <translation>Полный HTML (*.html *.htm)</translation>
     </message>
     <message>
       <source>Single Html (*.html *.htm)</source>
-      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+      <translation>Один HTML (*.html *.htm)</translation>
     </message>
     <message>
       <source>Pdf (*.pdf)</source>
-      <translation type="unfinished">Pdf (*.pdf)</translation>
+      <translation>PDF-файл (*.pdf)</translation>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
-      <translation type="unfinished">Mime Html (*.mhtml)</translation>
+      <translation>Mime-HTML (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2641,7 +2641,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Text files (*.txt);;XML files (*.xml)</source>
-      <translation type="unfinished">Text files (*.txt);;XML files (*.xml)</translation>
+      <translation>Текстовые файлы (*.txt);;XML-файлы (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
@@ -2653,7 +2653,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
-      <translation type="unfinished">Text and XML files (*.txt *.xml);;All files (*.*)</translation>
+      <translation>Текстовые и XML-файлы (*.txt *.xml);;Все файлы (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -3530,20 +3530,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>MB</translation>
     </message>
     <message>
-      <source>On</source>
-      <translation type="unfinished">On</translation>
-    </message>
-    <message>
-      <source>Off</source>
-      <translation type="unfinished">Off</translation>
-    </message>
-    <message>
-      <source>Auto</source>
-      <translation type="unfinished">Auto</translation>
-    </message>
-    <message>
       <source>Auto does nothing on some systems.</source>
-      <translation type="unfinished">Auto does nothing on some systems.</translation>
+      <translation>В некоторых системах функция Auto не выполняет никаких действий.</translation>
     </message>
     <message>
       <source>Restart the program to apply the language change.</source>
@@ -3560,6 +3548,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Restart needed</source>
       <translation>Требуется перезагрузка</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation type="unfinished">Enable</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation type="unfinished">Disable</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation type="unfinished">Automatic</translation>
     </message>
   </context>
   <context>
