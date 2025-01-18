@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="tk_TM" sourcelanguage="en">
+<TS version="2.1" language="tk" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
@@ -61,14 +61,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Expand article</source>
-      <translation>Makalany giňelt</translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Makalany kiçelt</translation>
-    </message>
-    <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
       <translation>&lt;b&gt;%2&lt;/b&gt;toparda &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; üçin terjime tapylmady.</translation>
     </message>
@@ -96,16 +88,8 @@
   <context>
     <name>ArticleRequest</name>
     <message>
-      <source>Expand article</source>
-      <translation>Makalany giňelt</translation>
-    </message>
-    <message>
       <source>From </source>
       <translation>Sözlük  </translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Makalany kiçelt</translation>
     </message>
     <message>
       <source>Make a new Anki note</source>
@@ -155,12 +139,12 @@
       <translation>Çeşme</translation>
     </message>
     <message>
-      <source>Audio</source>
-      <translation>Ses</translation>
-    </message>
-    <message>
       <source>TTS Voice</source>
       <translation>TTS sesi</translation>
+    </message>
+    <message>
+      <source>Audio</source>
+      <translation>Ses</translation>
     </message>
     <message>
       <source>Video</source>
@@ -183,12 +167,12 @@
       <translation>ÝALŇYŞLYK: %1</translation>
     </message>
     <message>
-      <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>Salgylanan çeşme ýok.</translation>
-    </message>
-    <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>Salgylanan audio programa ýok.</translation>
+    </message>
+    <message>
+      <source>The referenced resource doesn&apos;t exist.</source>
+      <translation>Salgylanan çeşme ýok.</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
@@ -854,12 +838,24 @@ between classic and school orthography in cyrillic)</source>
       <translation>Papka goşuň</translation>
     </message>
     <message>
+      <source>Clear All</source>
+      <translation type="unfinished">Clear All</translation>
+    </message>
+    <message>
       <source>Favorites:</source>
       <translation>Halanýanlar:</translation>
     </message>
     <message>
       <source>All selected items will be deleted. Continue?</source>
       <translation>Selectedhli saýlanan elementler pozular. Dowam et?</translation>
+    </message>
+    <message>
+      <source>Clear All Items</source>
+      <translation type="unfinished">Clear All Items</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all items?</source>
+      <translation type="unfinished">Are you sure you want to clear all items?</translation>
     </message>
   </context>
   <context>
@@ -887,10 +883,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>from</source>
       <translation>kimden</translation>
-    </message>
-    <message>
-      <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
-      <translation>Redkatirle|Dictionaries|Çeşmeler|Forvo açyň we öz API açaryňyzy soraň, şeýlelikde bu ýalňyşlyk ýok bolar.</translation>
     </message>
   </context>
   <context>
@@ -2166,10 +2158,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>MainWindow</name>
     <message>
-      <source>Welcome!</source>
-      <translation>Hoş geldiňiz!</translation>
-    </message>
-    <message>
       <source>&amp;File</source>
       <translation>&amp;Faýl</translation>
     </message>
@@ -2406,12 +2394,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ctrl + E.</translation>
     </message>
     <message>
-      <source>Export to list</source>
-      <translation>Sanaw üçin eksport</translation>
-    </message>
-    <message>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>Sözlük &amp;tagtasynda atlary görkez</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>Gurallar panelinde görkeziň we kiçi nyşanlary görkeziň</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>Gurallar panelinde uly nyşanlary görkeziň</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>Gurallar panelinde adaty nyşanlary görkeziň</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
@@ -2428,6 +2424,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Forward</source>
       <translation>Ugrukdyr</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>Paneli gözegçiligini üýtgediň</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2448,18 +2448,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Found in Dictionaries:</source>
       <translation>Sözlüklerden tapylan:</translation>
-    </message>
-    <message>
-      <source>Words Zoom In</source>
-      <translation>Sözleri ulalt</translation>
-    </message>
-    <message>
-      <source>Words Zoom Out</source>
-      <translation>Sözleri kiçelt</translation>
-    </message>
-    <message>
-      <source>Words Normal Size</source>
-      <translation>Sözleriň normal ululygy</translation>
     </message>
     <message>
       <source>Show &amp;Main Window</source>
@@ -2488,6 +2476,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>New Tab</source>
       <translation>Täze wkladka</translation>
+    </message>
+    <message>
+      <source>Welcome!</source>
+      <translation>Hoş geldiňiz!</translation>
     </message>
     <message>
       <source>Accessibility API is not enabled</source>
@@ -2564,12 +2556,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Makalany çap et</translation>
     </message>
     <message>
-      <source>Article, Complete (*.html)</source>
-      <translation>Makala, taýýar (*.html)</translation>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Article, HTML Only (*.html)</source>
-      <translation>Makala, HTML diňe (*.html)</translation>
+      <source>Single Html (*.html *.htm)</source>
+      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Pdf (*.pdf)</source>
+      <translation type="unfinished">Pdf (*.pdf)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation type="unfinished">Mime Html (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2636,24 +2636,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Halanýanlary faýl etmek üçin eksport ediň</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;All files (*.*)</source>
-      <translation>XML faýllary (* .xml) ;; fileshli faýllar (*. *)</translation>
+      <source>Text files (*.txt);;XML files (*.xml)</source>
+      <translation type="unfinished">Text files (*.txt);;XML files (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
       <translation>Halanýanlar eksporty doly</translation>
     </message>
     <message>
-      <source>Export Favorites to file as plain list</source>
-      <translation>Saýlanan sanaw hökmünde faýl üçin halanýanlary eksport ediň</translation>
-    </message>
-    <message>
       <source>Import Favorites from file</source>
       <translation>Halanýanlary faýldan import ediň</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation>XML faýllary (* .xml) ;; Txt faýllary (* .txt) ;; fileshli faýllar (*. *)</translation>
+      <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
+      <translation type="unfinished">Text and XML files (*.txt *.xml);;All files (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -2682,22 +2678,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Halanýanlardan &quot;%1&quot; söz sözüni aýyryň?</translation>
-    </message>
-    <message>
-      <source>Show &amp;Small Icons in Toolbars</source>
-      <translation>Gurallar panelinde görkeziň we kiçi nyşanlary görkeziň</translation>
-    </message>
-    <message>
-      <source>Show &amp;Large Icons in Toolbars</source>
-      <translation>Gurallar panelinde uly nyşanlary görkeziň</translation>
-    </message>
-    <message>
-      <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation>Gurallar panelinde adaty nyşanlary görkeziň</translation>
-    </message>
-    <message>
-      <source>Toggle clipboard monitoring</source>
-      <translation>Paneli gözegçiligini üýtgediň</translation>
     </message>
   </context>
   <context>
@@ -3042,6 +3022,14 @@ programmany ýapmagyň ýerine ony gizlärdi.</translation>
       <translation>&amp;Skan popup</translation>
     </message>
     <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>Paneli gözegçilik bilen açyň</translation>
+    </message>
+    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Terjime edilen sözleri ýüze çykýan penjireden görkezmän olary baş penjirä iber</translation>
     </message>
@@ -3154,6 +3142,10 @@ basylan ýagdaýynda görkeziler.</translation>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Baş penjirede sözleriň awto-aýdylyşy</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>Açylýan ýerdäki sözleri awtomatiki aýdyň</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3530,6 +3522,22 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
       <translation> MB</translation>
     </message>
     <message>
+      <source>On</source>
+      <translation type="unfinished">On</translation>
+    </message>
+    <message>
+      <source>Off</source>
+      <translation type="unfinished">Off</translation>
+    </message>
+    <message>
+      <source>Auto</source>
+      <translation type="unfinished">Auto</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation type="unfinished">Auto does nothing on some systems.</translation>
+    </message>
+    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Diliň çalşmagyny işe girizmek üçin programmany täzeden işlet.</translation>
     </message>
@@ -3544,18 +3552,6 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
     <message>
       <source>Restart needed</source>
       <translation>Gaýtadan açmaly</translation>
-    </message>
-    <message>
-      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
-    </message>
-    <message>
-      <source>Start with clipboard monitoring turned on</source>
-      <translation>Paneli gözegçilik bilen açyň</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in the popup</source>
-      <translation>Açylýan ýerdäki sözleri awtomatiki aýdyň</translation>
     </message>
   </context>
   <context>
@@ -3918,12 +3914,6 @@ Laýyk gelýän sözlükleri degişli toparlaryň aşagyna goşup ulan.</transla
     <message>
       <source>Any websites. A string %GDWORD% will be replaced with the query word:</source>
       <translation>Islendik websaýt %GDWORD% setiri soralýan söz bilen çalşyrylar:</translation>
-    </message>
-    <message>
-      <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
-      <translation>Ýogsam, degişlilikde ulan %GD1251% -  CP1251 üçin, %GDISO1%...%GDISO16% -  ISO 8859-1...ISO 8859-16 üçin,
-%GDBIG5% - Big-5 üçin, %GDBIG5HKSCS% - Big5-HKSCS üçin, %GDGBK% - GBK and GB18030 üçin, %GDSHIFTJIS% - Shift-JIS üçin.</translation>
     </message>
     <message>
       <source>DICT servers</source>
