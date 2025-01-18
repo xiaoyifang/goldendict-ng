@@ -166,6 +166,7 @@ public:
 
   // Retrieve text from all childs
   QStringList getTextFromAllChilds() const;
+  void clearChildren();
 
 private:
   QList< TreeItem * > childItems;

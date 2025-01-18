@@ -344,7 +344,13 @@ TreeItem::TreeItem( const QVariant & data, TreeItem * parent, Type type ):
 
 TreeItem::~TreeItem()
 {
+  clearChildren();
+}
+
+void TreeItem::clearChildren()
+{
   qDeleteAll( childItems );
+  childItems.clear();
 }
 
 void TreeItem::appendChild( TreeItem * item )
@@ -1218,8 +1224,7 @@ void FavoritesModel::clearAllItems()
   beginResetModel();
 
   if ( rootItem ) {
-    delete rootItem;
-    rootItem = new TreeItem( QVariant(), 0, TreeItem::Root );
+    rootItem->clearChildren();
   }
 
   endResetModel();
