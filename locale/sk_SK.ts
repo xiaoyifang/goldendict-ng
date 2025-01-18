@@ -840,7 +840,7 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
     </message>
     <message>
       <source>Clear All</source>
-      <translation type="unfinished">Clear All</translation>
+      <translation>Vymazať všetko</translation>
     </message>
     <message>
       <source>Favorites:</source>
@@ -852,11 +852,11 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
     </message>
     <message>
       <source>Clear All Items</source>
-      <translation type="unfinished">Clear All Items</translation>
+      <translation>Vymazať všetky položky</translation>
     </message>
     <message>
       <source>Are you sure you want to clear all items?</source>
-      <translation type="unfinished">Are you sure you want to clear all items?</translation>
+      <translation>Naozaj chcete vymazať všetky položky?</translation>
     </message>
   </context>
   <context>
@@ -2559,19 +2559,19 @@ Pre vyhľadanie znakov &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
-      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
+      <translation>Kompletný HTML (*.html *.htm)</translation>
     </message>
     <message>
       <source>Single Html (*.html *.htm)</source>
-      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+      <translation>Jeden HTML (*.html *.htm)</translation>
     </message>
     <message>
       <source>Pdf (*.pdf)</source>
-      <translation type="unfinished">Pdf (*.pdf)</translation>
+      <translation>PDF (*.pdf)</translation>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
-      <translation type="unfinished">Mime Html (*.mhtml)</translation>
+      <translation>Mime HTML (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2639,7 +2639,7 @@ Pre vyhľadanie znakov &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos
     </message>
     <message>
       <source>Text files (*.txt);;XML files (*.xml)</source>
-      <translation type="unfinished">Text files (*.txt);;XML files (*.xml)</translation>
+      <translation>Textové súbory (*.txt);;Súbory XML (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
@@ -2651,7 +2651,7 @@ Pre vyhľadanie znakov &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos
     </message>
     <message>
       <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
-      <translation type="unfinished">Text and XML files (*.txt *.xml);;All files (*.*)</translation>
+      <translation>Textové a XML súbory (*.txt *.xml);;Všetky súbory (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -3516,20 +3516,8 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
       <translation> MB</translation>
     </message>
     <message>
-      <source>On</source>
-      <translation type="unfinished">On</translation>
-    </message>
-    <message>
-      <source>Off</source>
-      <translation type="unfinished">Off</translation>
-    </message>
-    <message>
-      <source>Auto</source>
-      <translation type="unfinished">Auto</translation>
-    </message>
-    <message>
       <source>Auto does nothing on some systems.</source>
-      <translation type="unfinished">Auto does nothing on some systems.</translation>
+      <translation>Auto na niektorých systémoch nerobí nič.</translation>
     </message>
     <message>
       <source>Restart the program to apply the language change.</source>
@@ -3546,6 +3534,18 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
     <message>
       <source>Restart needed</source>
       <translation>Je potrebný reštart</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation type="unfinished">Enable</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation type="unfinished">Disable</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation type="unfinished">Automatic</translation>
     </message>
   </context>
   <context>
