@@ -740,8 +740,8 @@ void FavoritesModel::addFolder( TreeItem * parent, QDomNode & node )
       // New subfolder
       QString name    = el.attribute( "name", "" );
       TreeItem * existingItem = findFolderByName( parent, name, TreeItem::Folder );
-      TreeItem * item         = existingItem ? existingItem : new TreeItem( name, parent, TreeItem::Folder );
-      if ( !existingItem ) {
+      TreeItem * item         = existingItem != nullptr ? existingItem : new TreeItem( name, parent, TreeItem::Folder );
+      if ( existingItem == nullptr ) {
         item->setExpanded( el.attribute( "expanded", "0" ) == "1" );
         parent->appendChild( item );
       }
@@ -750,7 +750,7 @@ void FavoritesModel::addFolder( TreeItem * parent, QDomNode & node )
     else {
       QString word = el.text();
       TreeItem * existingItem = findFolderByName( parent, word, TreeItem::Word );
-      if ( existingItem ) {
+      if ( existingItem != nullptr ) {
         continue;
       }
       parent->appendChild( new TreeItem( word, parent, TreeItem::Word ) );
