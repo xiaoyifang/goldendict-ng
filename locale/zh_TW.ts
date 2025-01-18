@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_TW" sourcelanguage="en">
+<TS version="2.1" language="zh-TW" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
@@ -61,14 +61,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Expand article</source>
-      <translation>展開條目</translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>摺疊條目</translation>
-    </message>
-    <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
       <translation>在組 &lt;b&gt;%2&lt;/b&gt;中未找到 &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; 的翻譯。</translation>
     </message>
@@ -96,16 +88,8 @@
   <context>
     <name>ArticleRequest</name>
     <message>
-      <source>Expand article</source>
-      <translation>展開條目</translation>
-    </message>
-    <message>
       <source>From </source>
       <translation>來自</translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>摺疊條目</translation>
     </message>
     <message>
       <source>Make a new Anki note</source>
@@ -155,12 +139,12 @@
       <translation>資源</translation>
     </message>
     <message>
-      <source>Audio</source>
-      <translation>音訊</translation>
-    </message>
-    <message>
       <source>TTS Voice</source>
       <translation>文字轉語音聲音</translation>
+    </message>
+    <message>
+      <source>Audio</source>
+      <translation>音訊</translation>
     </message>
     <message>
       <source>Video</source>
@@ -183,12 +167,12 @@
       <translation>錯誤：%1</translation>
     </message>
     <message>
-      <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>所引用的資源不存在。</translation>
-    </message>
-    <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>引用的音訊程式不存在。</translation>
+    </message>
+    <message>
+      <source>The referenced resource doesn&apos;t exist.</source>
+      <translation>所引用的資源不存在。</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
@@ -854,12 +838,24 @@ between classic and school orthography in cyrillic)</source>
       <translation>新增資料夾</translation>
     </message>
     <message>
+      <source>Clear All</source>
+      <translation type="unfinished">Clear All</translation>
+    </message>
+    <message>
       <source>Favorites:</source>
       <translation>我的最愛：</translation>
     </message>
     <message>
       <source>All selected items will be deleted. Continue?</source>
       <translation>所有選擇的項目都會被刪除。是否繼續？</translation>
+    </message>
+    <message>
+      <source>Clear All Items</source>
+      <translation type="unfinished">Clear All Items</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all items?</source>
+      <translation type="unfinished">Are you sure you want to clear all items?</translation>
     </message>
   </context>
   <context>
@@ -887,10 +883,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>from</source>
       <translation>來自</translation>
-    </message>
-    <message>
-      <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
-      <translation>進入 編輯|字典|字典來源|Forvo, 申請自己的 API-key 來消除此錯誤。</translation>
     </message>
   </context>
   <context>
@@ -2166,10 +2158,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>MainWindow</name>
     <message>
-      <source>Welcome!</source>
-      <translation>歡迎使用！</translation>
-    </message>
-    <message>
       <source>&amp;File</source>
       <translation>檔案(&amp;F)</translation>
     </message>
@@ -2406,12 +2394,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ctrl+E</translation>
     </message>
     <message>
-      <source>Export to list</source>
-      <translation>匯出到清單</translation>
-    </message>
-    <message>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>在字典列中顯示字典名稱(&amp;B)</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>在工具列中顯示小圖示(&amp;S)</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>在工具列中顯示大圖示(&amp;L)</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>在工具列中顯示普通圖示(&amp;N)</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
@@ -2428,6 +2424,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Forward</source>
       <translation>下一頁</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>切換剪貼簿監控</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2448,18 +2448,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Found in Dictionaries:</source>
       <translation>在下列字典中找到：</translation>
-    </message>
-    <message>
-      <source>Words Zoom In</source>
-      <translation>單字清單 - 放大</translation>
-    </message>
-    <message>
-      <source>Words Zoom Out</source>
-      <translation>單字清單 - 縮小</translation>
-    </message>
-    <message>
-      <source>Words Normal Size</source>
-      <translation>單字清單 - 正常大小</translation>
     </message>
     <message>
       <source>Show &amp;Main Window</source>
@@ -2488,6 +2476,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>New Tab</source>
       <translation>新增分頁</translation>
+    </message>
+    <message>
+      <source>Welcome!</source>
+      <translation>歡迎使用！</translation>
     </message>
     <message>
       <source>Accessibility API is not enabled</source>
@@ -2565,12 +2557,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>列印條目</translation>
     </message>
     <message>
-      <source>Article, Complete (*.html)</source>
-      <translation>條目，完整 (*.html)</translation>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Article, HTML Only (*.html)</source>
-      <translation>條目，僅HTML部分 (*.html)</translation>
+      <source>Single Html (*.html *.htm)</source>
+      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Pdf (*.pdf)</source>
+      <translation type="unfinished">Pdf (*.pdf)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation type="unfinished">Mime Html (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2637,24 +2637,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>匯出我的最愛</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;All files (*.*)</source>
-      <translation>XML 檔案 (*.xml);;所有檔案 (*.*)</translation>
+      <source>Text files (*.txt);;XML files (*.xml)</source>
+      <translation type="unfinished">Text files (*.txt);;XML files (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
       <translation>我的最愛匯出完成</translation>
     </message>
     <message>
-      <source>Export Favorites to file as plain list</source>
-      <translation>以純文字清單方式匯出我的最愛</translation>
-    </message>
-    <message>
       <source>Import Favorites from file</source>
       <translation>從檔案匯入我的最愛</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation>XML 檔案 (*.csv);;文字檔案 (*.txt);;所有檔案 (*)</translation>
+      <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
+      <translation type="unfinished">Text and XML files (*.txt *.xml);;All files (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -2683,22 +2679,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>確定要將詞條 &quot;%1&quot; 從我的最愛中移除嗎？</translation>
-    </message>
-    <message>
-      <source>Show &amp;Small Icons in Toolbars</source>
-      <translation>在工具列中顯示小圖示(&amp;S)</translation>
-    </message>
-    <message>
-      <source>Show &amp;Large Icons in Toolbars</source>
-      <translation>在工具列中顯示大圖示(&amp;L)</translation>
-    </message>
-    <message>
-      <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation>在工具列中顯示普通圖示(&amp;N)</translation>
-    </message>
-    <message>
-      <source>Toggle clipboard monitoring</source>
-      <translation>切換剪貼簿監控</translation>
     </message>
   </context>
   <context>
@@ -3037,6 +3017,14 @@ the application.</source>
       <translation>螢幕取詞(&amp;S)</translation>
     </message>
     <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>選擇程式&apos;啟動時是否預設開啟剪貼簿監控。</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>從開啟剪貼簿監控開始</translation>
+    </message>
+    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>將翻譯的文字傳送至主視窗，而非顯示在彈出式視窗中</translation>
     </message>
@@ -3148,6 +3136,10 @@ in the pressed state when the word selection changes.</source>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>自動朗讀主視窗中的單字</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>自動發音彈出視窗中的單字</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3521,6 +3513,22 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation> MB</translation>
     </message>
     <message>
+      <source>On</source>
+      <translation type="unfinished">On</translation>
+    </message>
+    <message>
+      <source>Off</source>
+      <translation type="unfinished">Off</translation>
+    </message>
+    <message>
+      <source>Auto</source>
+      <translation type="unfinished">Auto</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation type="unfinished">Auto does nothing on some systems.</translation>
+    </message>
+    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>變更介面語言需要重新啟動程式才能生效。</translation>
     </message>
@@ -3535,18 +3543,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Restart needed</source>
       <translation>需要重啟</translation>
-    </message>
-    <message>
-      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation>選擇程式&apos;啟動時是否預設開啟剪貼簿監控。</translation>
-    </message>
-    <message>
-      <source>Start with clipboard monitoring turned on</source>
-      <translation>從開啟剪貼簿監控開始</translation>
-    </message>
-    <message>
-      <source>Auto-pronounce words in the popup</source>
-      <translation>自動發音彈出視窗中的單字</translation>
     </message>
   </context>
   <context>
@@ -3909,12 +3905,6 @@ of the appropriate groups to use them.</source>
     <message>
       <source>Any websites. A string %GDWORD% will be replaced with the query word:</source>
       <translation>任意網站。%GDWORD% 字串將會被搜尋關鍵詞取代：</translation>
-    </message>
-    <message>
-      <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
-      <translation>此外，CP1251也可使用 %GD1251%， ISO 8859-1...ISO 8859-16 分別可使用 %GDISO1%...%GDISO16%
-Big-5 使用%GDBIG5%，Big5-HKSCS 使用 %GDBIG5HKSCS% ，GBK 和 GB18030 使用 %GDGBK%，Shift-JIS 使用 %GDSHIFTJIS%。</translation>
     </message>
     <message>
       <source>DICT servers</source>
