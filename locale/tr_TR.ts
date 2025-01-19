@@ -3539,15 +3539,15 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     </message>
     <message>
       <source>Enable</source>
-      <translation type="unfinished">Enable</translation>
+      <translation>Olanak vermek</translation>
     </message>
     <message>
       <source>Disable</source>
-      <translation type="unfinished">Disable</translation>
+      <translation>Devre dışı bırakmak</translation>
     </message>
     <message>
       <source>Automatic</source>
-      <translation type="unfinished">Automatic</translation>
+      <translation>Otomatik</translation>
     </message>
   </context>
   <context>
