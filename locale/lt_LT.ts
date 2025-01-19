@@ -3541,15 +3541,15 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Enable</source>
-      <translation type="unfinished">Enable</translation>
+      <translation>Įgalinti</translation>
     </message>
     <message>
       <source>Disable</source>
-      <translation type="unfinished">Disable</translation>
+      <translation>Išjungti</translation>
     </message>
     <message>
       <source>Automatic</source>
-      <translation type="unfinished">Automatic</translation>
+      <translation>Automatinis</translation>
     </message>
   </context>
   <context>
