@@ -3527,15 +3527,15 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Enable</source>
-      <translation type="unfinished">Enable</translation>
+      <translation>सक्षम</translation>
     </message>
     <message>
       <source>Disable</source>
-      <translation type="unfinished">Disable</translation>
+      <translation>अक्षम करना</translation>
     </message>
     <message>
       <source>Automatic</source>
-      <translation type="unfinished">Automatic</translation>
+      <translation>स्वचालित</translation>
     </message>
   </context>
   <context>
