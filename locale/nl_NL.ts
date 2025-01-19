@@ -3540,15 +3540,15 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     </message>
     <message>
       <source>Enable</source>
-      <translation type="unfinished">Enable</translation>
+      <translation>Inschakelen</translation>
     </message>
     <message>
       <source>Disable</source>
-      <translation type="unfinished">Disable</translation>
+      <translation>Uitzetten</translation>
     </message>
     <message>
       <source>Automatic</source>
-      <translation type="unfinished">Automatic</translation>
+      <translation>Automatisch</translation>
     </message>
   </context>
   <context>
