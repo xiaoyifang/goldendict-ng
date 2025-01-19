@@ -3543,15 +3543,15 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     </message>
     <message>
       <source>Enable</source>
-      <translation type="unfinished">Enable</translation>
+      <translation>Engedélyezés</translation>
     </message>
     <message>
       <source>Disable</source>
-      <translation type="unfinished">Disable</translation>
+      <translation>Letiltás</translation>
     </message>
     <message>
       <source>Automatic</source>
-      <translation type="unfinished">Automatic</translation>
+      <translation>Automatikus</translation>
     </message>
   </context>
   <context>
