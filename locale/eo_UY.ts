@@ -3544,15 +3544,15 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
     </message>
     <message>
       <source>Enable</source>
-      <translation type="unfinished">Enable</translation>
+      <translation>Ebligu</translation>
     </message>
     <message>
       <source>Disable</source>
-      <translation type="unfinished">Disable</translation>
+      <translation>Malebligu</translation>
     </message>
     <message>
       <source>Automatic</source>
-      <translation type="unfinished">Automatic</translation>
+      <translation>Aŭtomata</translation>
     </message>
   </context>
   <context>
