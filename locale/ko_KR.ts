@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="ko_KR" sourcelanguage="en">
+<TS version="2.1" language="ko" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
@@ -61,14 +61,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Expand article</source>
-      <translation>사전 펼치기</translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>사전 감추기</translation>
-    </message>
-    <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
       <translation>그룹 &lt;b&gt;%2&lt;/b&gt;에서 &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; 에 대한 번역을 찾을 수 없습니다.</translation>
     </message>
@@ -96,16 +88,8 @@
   <context>
     <name>ArticleRequest</name>
     <message>
-      <source>Expand article</source>
-      <translation>사전 펼치기</translation>
-    </message>
-    <message>
       <source>From </source>
       <translation>에서 </translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>사전 감추기</translation>
     </message>
     <message>
       <source>Make a new Anki note</source>
@@ -155,12 +139,12 @@
       <translation>리소스</translation>
     </message>
     <message>
-      <source>Audio</source>
-      <translation>오디오</translation>
-    </message>
-    <message>
       <source>TTS Voice</source>
       <translation>TTS 음성</translation>
+    </message>
+    <message>
+      <source>Audio</source>
+      <translation>오디오</translation>
     </message>
     <message>
       <source>Video</source>
@@ -183,12 +167,12 @@
       <translation>오류: %1</translation>
     </message>
     <message>
-      <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>참조할 리소스가 존재하지 않습니다.</translation>
-    </message>
-    <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>참조할 오디오 프로그램이 존재하지 않습니다.</translation>
+    </message>
+    <message>
+      <source>The referenced resource doesn&apos;t exist.</source>
+      <translation>참조할 리소스가 존재하지 않습니다.</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
@@ -855,12 +839,24 @@ between classic and school orthography in cyrillic)</source>
       <translation>폴더 추가</translation>
     </message>
     <message>
+      <source>Clear All</source>
+      <translation>모두 지우기</translation>
+    </message>
+    <message>
       <source>Favorites:</source>
       <translation>즐겨찾기:</translation>
     </message>
     <message>
       <source>All selected items will be deleted. Continue?</source>
       <translation>선택한 모든 항목이 삭제됩니다. 계속하다?</translation>
+    </message>
+    <message>
+      <source>Clear All Items</source>
+      <translation>모든 항목 지우기</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all items?</source>
+      <translation>모든 항목을 지우시겠습니까?</translation>
     </message>
   </context>
   <context>
@@ -888,10 +884,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>from</source>
       <translation>~에서</translation>
-    </message>
-    <message>
-      <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
-      <translation>이 오류를 없애기 위해서는 편집|사전|소스|Forvo 메뉴로 가서, 자신의 API-key를 신청하십시오.</translation>
     </message>
   </context>
   <context>
@@ -2167,10 +2159,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>MainWindow</name>
     <message>
-      <source>Welcome!</source>
-      <translation>환영합니다!</translation>
-    </message>
-    <message>
       <source>&amp;File</source>
       <translation>파일(&amp;F)</translation>
     </message>
@@ -2407,12 +2395,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ctrl+E</translation>
     </message>
     <message>
-      <source>Export to list</source>
-      <translation>목록으로 내보내기</translation>
-    </message>
-    <message>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>사전모음에 이름 보이기(&amp;B)</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>도구 모음에 작은 아이콘 표시</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>도구 모음에 큰 아이콘 표시</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>도구 모음에 일반 아이콘 표시</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
@@ -2429,6 +2425,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Forward</source>
       <translation>앞으로</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>클립보드 모니터링 전환</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2449,18 +2449,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Found in Dictionaries:</source>
       <translation>검색된 사전:</translation>
-    </message>
-    <message>
-      <source>Words Zoom In</source>
-      <translation>검색어 확대</translation>
-    </message>
-    <message>
-      <source>Words Zoom Out</source>
-      <translation>검색어 축소</translation>
-    </message>
-    <message>
-      <source>Words Normal Size</source>
-      <translation>검색어 보통 </translation>
     </message>
     <message>
       <source>Show &amp;Main Window</source>
@@ -2489,6 +2477,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>New Tab</source>
       <translation>새 탭</translation>
+    </message>
+    <message>
+      <source>Welcome!</source>
+      <translation>환영합니다!</translation>
     </message>
     <message>
       <source>Accessibility API is not enabled</source>
@@ -2565,12 +2557,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>항목 인쇄</translation>
     </message>
     <message>
-      <source>Article, Complete (*.html)</source>
-      <translation>항목, 전부 (*.html)</translation>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>완전한 HTML(*.html *.htm)</translation>
     </message>
     <message>
-      <source>Article, HTML Only (*.html)</source>
-      <translation>항목, HTML 만 (*.html)</translation>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>단일 HTML(*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Pdf (*.pdf)</source>
+      <translation>PDF(*.pdf)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>MIME HTML(*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2637,24 +2637,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>즐겨찾기를 파일로 내보내기</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;All files (*.*)</source>
-      <translation>XML 파일(*.xml);;모든 파일(*.*)</translation>
+      <source>Text files (*.txt);;XML files (*.xml)</source>
+      <translation>텍스트 파일(*.txt);;XML 파일(*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
       <translation>즐겨찾기 내보내기 완료</translation>
     </message>
     <message>
-      <source>Export Favorites to file as plain list</source>
-      <translation>즐겨찾기를 일반 목록으로 파일로 내보내기</translation>
-    </message>
-    <message>
       <source>Import Favorites from file</source>
       <translation>파일에서 즐겨찾기 가져오기</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation>XML 파일(*.xml);;Txt 파일(*.txt);;모든 파일(*.*)</translation>
+      <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
+      <translation>텍스트 및 XML 파일(*.txt *.xml);;모든 파일(*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -2683,22 +2679,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>즐겨찾기에서 제목 &quot;%1&quot; 를 제거하시겠습니까?</translation>
-    </message>
-    <message>
-      <source>Show &amp;Small Icons in Toolbars</source>
-      <translation>도구 모음에 작은 아이콘 표시</translation>
-    </message>
-    <message>
-      <source>Show &amp;Large Icons in Toolbars</source>
-      <translation>도구 모음에 큰 아이콘 표시</translation>
-    </message>
-    <message>
-      <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation>도구 모음에 일반 아이콘 표시</translation>
-    </message>
-    <message>
-      <source>Toggle clipboard monitoring</source>
-      <translation>클립보드 모니터링 전환</translation>
     </message>
   </context>
   <context>
@@ -3041,6 +3021,14 @@ the application.</source>
       <translation>스캔팝업(&amp;S)</translation>
     </message>
     <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>클립보드 모니터링을 켜서 시작하세요</translation>
+    </message>
+    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>검색내용을 팝업창에 표시하지 않고 메인창으로 보냅니다</translation>
     </message>
@@ -3153,6 +3141,10 @@ in the pressed state when the word selection changes.</source>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>메인창에서 발음 자동 재생</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>팝업에서 단어를 자동 발음합니다</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3527,6 +3519,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation> MB</translation>
     </message>
     <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>일부 시스템에서는 자동이 아무 작업도 수행하지 않습니다.</translation>
+    </message>
+    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>언어변경을 적용하려면 프로그램을 다시 시작하십시오.</translation>
     </message>
@@ -3543,16 +3539,16 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>재시작 필요</translation>
     </message>
     <message>
-      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+      <source>Enable</source>
+      <translation>할 수 있게 하다</translation>
     </message>
     <message>
-      <source>Start with clipboard monitoring turned on</source>
-      <translation>클립보드 모니터링을 켜서 시작하세요</translation>
+      <source>Disable</source>
+      <translation>장애를 입히다</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in the popup</source>
-      <translation>팝업에서 단어를 자동 발음합니다</translation>
+      <source>Automatic</source>
+      <translation>오토매틱</translation>
     </message>
   </context>
   <context>
@@ -3918,13 +3914,6 @@ of the appropriate groups to use them.</source>
     <message>
       <source>Any websites. A string %GDWORD% will be replaced with the query word:</source>
       <translation>검색어가 위치할 자리에 문자열 %GDWORD%를 입력합니다:</translation>
-    </message>
-    <message>
-      <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
-      <translation>≪언어코드형식에 따라 개별지정하는 방법≫
-CP1251 → %GD1251%, ISO 8859-1 → %GDISO1%, ISO 8859-16 → %GDISO16%, Big-5 → %GDBIG5, Big5-HKSCS → %GDBIG5HKSCS%,
-GBK와 GB18030 → %GDGBK%, Shift-JIS → %GDSHIFTJIS%</translation>
     </message>
     <message>
       <source>DICT servers</source>

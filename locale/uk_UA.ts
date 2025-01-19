@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="uk_UA" sourcelanguage="en">
+<TS version="2.1" language="uk" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
@@ -61,14 +61,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Expand article</source>
-      <translation>Розкрити статтю</translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Згорнути статтю</translation>
-    </message>
-    <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
       <translation>Немає перекладу для &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; у групі &lt;b&gt;%2&lt;/b&gt;.</translation>
     </message>
@@ -96,16 +88,8 @@
   <context>
     <name>ArticleRequest</name>
     <message>
-      <source>Expand article</source>
-      <translation>Розкрити статтю</translation>
-    </message>
-    <message>
       <source>From </source>
       <translation>Зі словника</translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Згорнути статтю</translation>
     </message>
     <message>
       <source>Make a new Anki note</source>
@@ -155,12 +139,12 @@
       <translation>Ресурс</translation>
     </message>
     <message>
-      <source>Audio</source>
-      <translation>Аудіо</translation>
-    </message>
-    <message>
       <source>TTS Voice</source>
       <translation>Голос TTS</translation>
+    </message>
+    <message>
+      <source>Audio</source>
+      <translation>Аудіо</translation>
     </message>
     <message>
       <source>Video</source>
@@ -183,12 +167,12 @@
       <translation>Помилка:%1 </translation>
     </message>
     <message>
-      <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>Вказаного ресурсу не існує.</translation>
-    </message>
-    <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>Вказана аудіо програма не існує.</translation>
+    </message>
+    <message>
+      <source>The referenced resource doesn&apos;t exist.</source>
+      <translation>Вказаного ресурсу не існує.</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
@@ -855,12 +839,24 @@ between classic and school orthography in cyrillic)</source>
       <translation>Додати теку</translation>
     </message>
     <message>
+      <source>Clear All</source>
+      <translation>Очистити все</translation>
+    </message>
+    <message>
       <source>Favorites:</source>
       <translation>Обране:</translation>
     </message>
     <message>
       <source>All selected items will be deleted. Continue?</source>
       <translation>Всі вибрані елементи буде видалено. Продовжити?</translation>
+    </message>
+    <message>
+      <source>Clear All Items</source>
+      <translation>Очистити всі елементи</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all items?</source>
+      <translation>Ви впевнені, що бажаєте очистити всі елементи?</translation>
     </message>
   </context>
   <context>
@@ -888,10 +884,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>from</source>
       <translation>з</translation>
-    </message>
-    <message>
-      <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
-      <translation>Перейдіть до меню &lt;b&gt;Зміни|Словники|Джерела|Forvo&lt;/b&gt; та застосуйте наш власний ключ API, щоб усунути цю проблему.</translation>
     </message>
   </context>
   <context>
@@ -2168,10 +2160,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>MainWindow</name>
     <message>
-      <source>Welcome!</source>
-      <translation>Ласкаво просимо!</translation>
-    </message>
-    <message>
       <source>&amp;File</source>
       <translation>&amp;Файл</translation>
     </message>
@@ -2408,12 +2396,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ctrl+E</translation>
     </message>
     <message>
-      <source>Export to list</source>
-      <translation>Експортувати у список</translation>
-    </message>
-    <message>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>Відображувати назви у &amp;Рядку словника</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>Показати &amp;маленькі значки на панелях інструментів</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>Показати &amp;великі значки на панелях інструментів</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>Показати &amp;звичайні значки на панелях інструментів</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
@@ -2430,6 +2426,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Forward</source>
       <translation>Вперед</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>Увімкнути моніторинг буфера обміну</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2450,18 +2450,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Found in Dictionaries:</source>
       <translation>Знайдено у словниках:</translation>
-    </message>
-    <message>
-      <source>Words Zoom In</source>
-      <translation>Зблизити слова</translation>
-    </message>
-    <message>
-      <source>Words Zoom Out</source>
-      <translation>Віддалити слова</translation>
-    </message>
-    <message>
-      <source>Words Normal Size</source>
-      <translation>Звичайний розмір слів</translation>
     </message>
     <message>
       <source>Show &amp;Main Window</source>
@@ -2490,6 +2478,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>New Tab</source>
       <translation>Нова вкладка</translation>
+    </message>
+    <message>
+      <source>Welcome!</source>
+      <translation>Ласкаво просимо!</translation>
     </message>
     <message>
       <source>Accessibility API is not enabled</source>
@@ -2566,12 +2558,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Надрукувати статтю</translation>
     </message>
     <message>
-      <source>Article, Complete (*.html)</source>
-      <translation>Стаття, Повна (*.html)</translation>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Повний Html (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Article, HTML Only (*.html)</source>
-      <translation>Стаття, тільки HTML (*.html)</translation>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Один Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Pdf (*.pdf)</source>
+      <translation>PDF (*.pdf)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime Html (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2638,24 +2638,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Експорт уподобань до файлу</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;All files (*.*)</source>
-      <translation>XML файли (*.xml);;Всі файли (*.*)</translation>
+      <source>Text files (*.txt);;XML files (*.xml)</source>
+      <translation>Текстові файли (*.txt);;файли XML (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
       <translation>Експорт уподобань завершено</translation>
     </message>
     <message>
-      <source>Export Favorites to file as plain list</source>
-      <translation>Експорт уподобань до файлу як звичайний список</translation>
-    </message>
-    <message>
       <source>Import Favorites from file</source>
       <translation>Імпорт уподобань із файлу</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation>XML файли (*.xml);;Txt файли (*.txt);Всі файли (*.*)</translation>
+      <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
+      <translation>Текстові та XML-файли (*.txt *.xml);;Усі файли (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -2684,22 +2680,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Видалити заголовки &quot;%1&quot; з вибраного?</translation>
-    </message>
-    <message>
-      <source>Show &amp;Small Icons in Toolbars</source>
-      <translation>Показати &amp;маленькі значки на панелях інструментів</translation>
-    </message>
-    <message>
-      <source>Show &amp;Large Icons in Toolbars</source>
-      <translation>Показати &amp;великі значки на панелях інструментів</translation>
-    </message>
-    <message>
-      <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation>Показати &amp;звичайні значки на панелях інструментів</translation>
-    </message>
-    <message>
-      <source>Toggle clipboard monitoring</source>
-      <translation>Увімкнути моніторинг буфера обміну</translation>
     </message>
   </context>
   <context>
@@ -3043,6 +3023,14 @@ the application.</source>
       <translation>&amp;Контекстне вікно</translation>
     </message>
     <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>Вибирає, чи буде моніторинг буфера обміну ввімкнено за замовчуванням під час запуску програми&apos;.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>Почніть із увімкненого моніторингу буфера обміну</translation>
+    </message>
+    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Послилати перекладене слово до головного вікна, замість того аби показувати його у виринаючому вікні</translation>
     </message>
@@ -3156,6 +3144,10 @@ in the pressed state when the word selection changes.</source>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Автоматично вимовляти слово в головному меню</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>Автоматичне вимовляння слів у спливаючому вікні</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3532,6 +3524,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation> МБ</translation>
     </message>
     <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Auto нічого не робить у деяких системах.</translation>
+    </message>
+    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Перезапустіть програму, щоб змінити мову.</translation>
     </message>
@@ -3548,16 +3544,16 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Потрібен перезапуск</translation>
     </message>
     <message>
-      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation>Вибирає, чи буде моніторинг буфера обміну ввімкнено за замовчуванням під час запуску програми&apos;.</translation>
+      <source>Enable</source>
+      <translation>Увімкнути</translation>
     </message>
     <message>
-      <source>Start with clipboard monitoring turned on</source>
-      <translation>Почніть із увімкненого моніторингу буфера обміну</translation>
+      <source>Disable</source>
+      <translation>Вимкнути</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in the popup</source>
-      <translation>Автоматичне вимовляння слів у спливаючому вікні</translation>
+      <source>Automatic</source>
+      <translation>Автоматичний</translation>
     </message>
   </context>
   <context>
@@ -3921,12 +3917,6 @@ of the appropriate groups to use them.</source>
     <message>
       <source>Any websites. A string %GDWORD% will be replaced with the query word:</source>
       <translation>Будь-які сайти. Рядок %GDWORD% буде замінено на потрібне слово:</translation>
-    </message>
-    <message>
-      <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
-      <translation>Інакше, використовуйте %GD1251% для CP1251, %GDISO1%...%GDISO16% для ISO 8859-1...ISO 8859-16 відповідно,
-%GDBIG5% для Big-5, %GDBIG5HKSCS% для Big5-HKSCS, %GDGBK% для GBK та GB18030, %GDSHIFTJIS% для Shift-JIS.</translation>
     </message>
     <message>
       <source>DICT servers</source>
