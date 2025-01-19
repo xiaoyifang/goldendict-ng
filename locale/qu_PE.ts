@@ -3540,15 +3540,15 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
     </message>
     <message>
       <source>Enable</source>
-      <translation type="unfinished">Enable</translation>
+      <translation>Kawsarichisqa</translation>
     </message>
     <message>
       <source>Disable</source>
-      <translation type="unfinished">Disable</translation>
+      <translation>Wañuchisqa</translation>
     </message>
     <message>
       <source>Automatic</source>
-      <translation type="unfinished">Automatic</translation>
+      <translation>Kikinmanta</translation>
     </message>
   </context>
   <context>
