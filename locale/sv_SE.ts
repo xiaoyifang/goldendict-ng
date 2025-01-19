@@ -3546,15 +3546,15 @@ från Stardict, Babylon och GLS ordböcker</translation>
     </message>
     <message>
       <source>Enable</source>
-      <translation type="unfinished">Enable</translation>
+      <translation>Aktivera</translation>
     </message>
     <message>
       <source>Disable</source>
-      <translation type="unfinished">Disable</translation>
+      <translation>Inaktivera</translation>
     </message>
     <message>
       <source>Automatic</source>
-      <translation type="unfinished">Automatic</translation>
+      <translation>Automatisk</translation>
     </message>
   </context>
   <context>
