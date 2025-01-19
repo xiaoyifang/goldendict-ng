@@ -1646,10 +1646,10 @@ void MainWindow::updateGroupList( bool reload )
     groupInstances.push_back( g );
   }
 
-  GlobalBroadcaster::instance()->groupFolderMap.clear();
+  GlobalBroadcaster::instance()->groupFavoriteMap.clear();
   for ( auto & group : cfg.groups ) {
     groupInstances.push_back( Instances::Group( group, dictionaries, cfg.inactiveDictionaries ) );
-    GlobalBroadcaster::instance()->groupFolderMap.insert( group.id, group.favoritesFolder );
+    GlobalBroadcaster::instance()->groupFavoriteMap.insert( group.id, group.favoritesFolder );
   }
 
   // Update names for dictionaries that are present, so that they could be

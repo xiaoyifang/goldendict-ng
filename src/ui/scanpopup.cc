@@ -1137,7 +1137,7 @@ void ScanPopup::on_sendWordToFavoritesButton_clicked()
     return;
   }
   unsigned groupId   = ui.groupList->getCurrentGroup();
-  auto current_exist = isWordPresentedInFavorites( definition->getTitle(), groupId );
+  auto current_exist = isWordPresentedInFavorites( definition->getTitle() );
   //if current_exist=false( not exist ),  after click ,the word should be in the favorite which is blueStar
   ui.sendWordToFavoritesButton->setIcon( !current_exist ? blueStarIcon : starIcon );
   emit sendWordToFavorites( definition->getTitle(), cfg.lastPopupGroupId, current_exist );
@@ -1223,14 +1223,12 @@ void ScanPopup::titleChanged( ArticleView *, QString const & title ) const
   unsigned groupId = ui.groupList->getCurrentGroup();
 
   // Set icon for "Add to Favorites" button
-  ui.sendWordToFavoritesButton->setIcon( isWordPresentedInFavorites( title, groupId ) ? blueStarIcon : starIcon );
+  ui.sendWordToFavoritesButton->setIcon( isWordPresentedInFavorites( title ) ? blueStarIcon : starIcon );
 }
 
-bool ScanPopup::isWordPresentedInFavorites( QString const & word, unsigned groupId ) const
+bool ScanPopup::isWordPresentedInFavorites( QString const & word )
 {
-  QString folder = GlobalBroadcaster::instance()->groupFolderMap[ groupId ];
-
-  return GlobalBroadcaster::instance()->folderFavoritesMap[ folder ].contains( word );
+  return GlobalBroadcaster::instance()->favoriteWords.contains( word );
 }
 
 #ifdef HAVE_X11

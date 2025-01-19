@@ -123,7 +123,7 @@ private:
 
   void updateDictionaryBar();
   /// Check is word already presented in Favorites
-  bool isWordPresentedInFavorites( QString const & word, unsigned groupId ) const;
+  static bool isWordPresentedInFavorites( QString const & word );
 
   Config::Class & cfg;
   std::vector< sptr< Dictionary::Class > > const & allDictionaries;

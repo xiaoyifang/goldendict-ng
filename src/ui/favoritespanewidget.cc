@@ -274,12 +274,12 @@ void FavoritesPaneWidget::clearAllItems()
 void FavoritesPaneWidget::addHeadword( QString const & path, QString const & headword )
 {
   m_favoritesModel->addNewHeadword( path, headword );
-  GlobalBroadcaster::instance()->folderFavoritesMap[ path ].insert( headword );
+  GlobalBroadcaster::instance()->favoriteWords.insert( headword );
 }
 
 bool FavoritesPaneWidget::removeHeadword( QString const & path, QString const & headword )
 {
-  GlobalBroadcaster::instance()->folderFavoritesMap[ path ].remove( headword );
+  GlobalBroadcaster::instance()->favoriteWords.remove( headword );
 
   return m_favoritesModel->removeHeadword( path, headword );
 }
@@ -761,7 +761,7 @@ void FavoritesModel::addFolder( TreeItem * parent, QDomNode & node )
       }
       parent->appendChild( new TreeItem( word, parent, TreeItem::Word ) );
 
-      GlobalBroadcaster::instance()->folderFavoritesMap[ parent->data().toString() ].insert( word );
+      GlobalBroadcaster::instance()->favoriteWords.insert( word );
     }
   }
   dirty = true;

@@ -39,8 +39,9 @@ public:
   QString translateLineText{};
   //hold the dictionary id;
   QSet< QString > collapsedDicts;
-  QMap< QString, QSet< QString > > folderFavoritesMap;
-  QMap< unsigned, QString > groupFolderMap;
+  QSet< QString > favoriteWords;
+  //map group id to favorite folder
+  QMap< unsigned, QString > groupFavoriteMap;
   PronounceEngine pronounce_engine;
   QString getAbbrName( QString const & text );
 signals:
