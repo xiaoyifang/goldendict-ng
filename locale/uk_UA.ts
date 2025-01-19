@@ -3545,15 +3545,15 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Enable</source>
-      <translation type="unfinished">Enable</translation>
+      <translation>Увімкнути</translation>
     </message>
     <message>
       <source>Disable</source>
-      <translation type="unfinished">Disable</translation>
+      <translation>Вимкнути</translation>
     </message>
     <message>
       <source>Automatic</source>
-      <translation type="unfinished">Automatic</translation>
+      <translation>Автоматичний</translation>
     </message>
   </context>
   <context>
