@@ -3543,15 +3543,15 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Enable</source>
-      <translation type="unfinished">Enable</translation>
+      <translation>Активирайте</translation>
     </message>
     <message>
       <source>Disable</source>
-      <translation type="unfinished">Disable</translation>
+      <translation>Деактивиране</translation>
     </message>
     <message>
       <source>Automatic</source>
-      <translation type="unfinished">Automatic</translation>
+      <translation>Автоматично</translation>
     </message>
   </context>
   <context>
