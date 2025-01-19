@@ -3537,15 +3537,15 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     </message>
     <message>
       <source>Enable</source>
-      <translation type="unfinished">Enable</translation>
+      <translation>Cho phép</translation>
     </message>
     <message>
       <source>Disable</source>
-      <translation type="unfinished">Disable</translation>
+      <translation>Vô hiệu hóa</translation>
     </message>
     <message>
       <source>Automatic</source>
-      <translation type="unfinished">Automatic</translation>
+      <translation>Tự động</translation>
     </message>
   </context>
   <context>
