@@ -6,6 +6,7 @@
 #include <QNetworkReply>
 #include <QUrl>
 #include <QtXml>
+#include <QSet>
 #include <algorithm>
 #include <list>
 #include "audiolink.hh"
