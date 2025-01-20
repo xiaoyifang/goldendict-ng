@@ -82,7 +82,8 @@ public:
   template< typename T >
   void readU32SizeAndData( T & container )
   {
-    static_assert( std::is_same< T, std::vector< unsigned char > >::value || std::is_same< T, std::vector< char > >::value || std::is_same< T, std::string >::value,
+    static_assert( std::is_same< T, std::vector< unsigned char > >::value
+                     || std::is_same< T, std::vector< char > >::value || std::is_same< T, std::string >::value,
                    "T must be either std::vector<char> or std::string" );
     uint32_t size = 0;
     read( &size, sizeof( uint32_t ) );
