@@ -510,12 +510,14 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
       else {
         QDomNode parseNode = dd.namedItem( "api" ).namedItem( "parse" );
 
-        auto pageId = parseNode.toElement().attribute( "pageid" ).toLongLong();
-        if ( !parseNode.isNull()
-             && parseNode.toElement().attribute( "revid" ) != "0"
-             // Don't show the same article more than once:
-             && !addedPageIds.contains( pageId ) ) {
+        long long pageId = 0;
+        if ( !parseNode.isNull() && parseNode.toElement().attribute( "revid" ) != "0" ) {
+          pageId = parseNode.toElement().attribute( "pageid" ).toLongLong();
+        }
+
+        if ( pageId != 0 && !addedPageIds.contains( pageId ) ) {
           addedPageIds.insert( pageId );
+
           QDomNode textNode = parseNode.namedItem( "text" );
 
           if ( !textNode.isNull() ) {
