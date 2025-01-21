@@ -116,11 +116,20 @@ void ArticleWebView::singleClickAction( QMouseEvent * event )
   }
 
   if ( selectionBySingleClick ) {
-    findText( "" ); // clear the selection first, if any
-    //send dbl click event twice? send one time seems not work .weird really.  need further investigate.
-    sendCustomMouseEvent( QEvent::MouseButtonDblClick );
-    sendCustomMouseEvent( QEvent::MouseButtonDblClick );
+    // clear the selection first, if any
+    findText( "" );
+    simulateMouseDbClick();
   }
+}
+
+//simulate the mouse double click action.
+void ArticleWebView::simulateMouseDbClick()
+{
+  sendCustomMouseEvent( QEvent::MouseButtonPress );
+  sendCustomMouseEvent( QEvent::MouseButtonRelease );
+  sendCustomMouseEvent( QEvent::MouseButtonPress );
+  sendCustomMouseEvent( QEvent::MouseButtonRelease );
+  sendCustomMouseEvent( QEvent::MouseButtonDblClick );
 }
 
 void ArticleWebView::sendCustomMouseEvent( QEvent::Type type )

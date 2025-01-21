@@ -54,6 +54,7 @@ protected:
   bool event( QEvent * event ) override;
   void singleClickAction( QMouseEvent * event );
   void sendCustomMouseEvent( QEvent::Type type );
+  void simulateMouseDbClick();
   void doubleClickAction( QMouseEvent * event );
   void wheelEvent( QWheelEvent * event ) override;
 
