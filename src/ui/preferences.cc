@@ -527,7 +527,7 @@ Config::Preferences Preferences::getPreferences()
   p.clearNetworkCacheOnExit       = ui.clearNetworkCacheOnExit->isChecked();
 
   p.removeInvalidIndexOnExit = ui.removeInvalidIndexOnExit->isChecked();
-  p.enableApplicationLog = ui.enableApplicationLog->isChecked();
+  p.enableApplicationLog     = ui.enableApplicationLog->isChecked();
 
   p.addonStyle = ui.addonStyles->getCurrentStyle();
 
