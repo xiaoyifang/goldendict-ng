@@ -739,13 +739,6 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
           <bool>true</bool>
          </property>
          <layout class="QGridLayout" name="gridLayout">
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_7">
-            <property name="text">
-             <string>Systems:</string>
-            </property>
-           </widget>
-          </item>
           <item row="0" column="1">
            <widget class="QCheckBox" name="enableHepburn">
             <property name="toolTip">
@@ -757,26 +750,27 @@ based on English phonology</string>
             </property>
            </widget>
           </item>
-          <item row="0" column="2">
-           
-          </item>
-          <item row="0" column="3">
-           
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_8">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_7">
             <property name="text">
-             <string>Syllabaries:</string>
+             <string>Systems:</string>
             </property>
            </widget>
           </item>
-          <item row="1" column="2">
+          <item row="1" column="1">
            <widget class="QCheckBox" name="enableHiragana">
             <property name="toolTip">
              <string>Hiragana Japanese syllabary</string>
             </property>
             <property name="text">
              <string>Hiragana</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_8">
+            <property name="text">
+             <string>Syllabaries:</string>
             </property>
            </widget>
           </item>
@@ -837,7 +831,6 @@ based on English phonology</string>
   <tabstop>enableGermanTransliteration</tabstop>
   <tabstop>enableRomaji</tabstop>
   <tabstop>enableHepburn</tabstop>
-  <tabstop>enableHiragana</tabstop>
   <tabstop>enableKatakana</tabstop>
   <tabstop>hunspellPath</tabstop>
   <tabstop>changeHunspellPath</tabstop>
