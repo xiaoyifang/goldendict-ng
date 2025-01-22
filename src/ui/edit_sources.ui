@@ -831,6 +831,7 @@ based on English phonology</string>
   <tabstop>enableGermanTransliteration</tabstop>
   <tabstop>enableRomaji</tabstop>
   <tabstop>enableHepburn</tabstop>
+  <tabstop>enableHiragana</tabstop>
   <tabstop>enableKatakana</tabstop>
   <tabstop>hunspellPath</tabstop>
   <tabstop>changeHunspellPath</tabstop>
