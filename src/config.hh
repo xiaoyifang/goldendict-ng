@@ -584,8 +584,7 @@ struct Romaji
 
   bool operator==( Romaji const & other ) const
   {
-    return enable == other.enable && enableHepburn == other.enableHepburn
-      && enableHiragana == other.enableHiragana
+    return enable == other.enable && enableHepburn == other.enableHepburn && enableHiragana == other.enableHiragana
       && enableKatakana == other.enableKatakana;
   }
 
