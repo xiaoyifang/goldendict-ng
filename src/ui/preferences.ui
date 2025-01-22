@@ -1935,6 +1935,13 @@ from Stardict, Babylon and GLS dictionaries</string>
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QCheckBox" name="enableApplicationLog">
+            <property name="text">
+             <string>Enable application log</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>

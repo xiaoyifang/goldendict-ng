@@ -488,6 +488,9 @@ int main( int argc, char ** argv )
   for ( ;; ) {
     try {
       cfg = Config::load();
+
+      //enabled through command line or preference
+      gdcl.logFile = gdcl.logFile || cfg.preferences.enableApplicationLog;
     }
     catch ( Config::exError & ) {
       QMessageBox mb(
