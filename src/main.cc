@@ -544,7 +544,7 @@ int main( int argc, char ** argv )
     QTranslator translator;
     if ( !cfg.preferences.interfaceLanguage.isEmpty() && localeName != cfg.preferences.interfaceLanguage ) {
       localeName = cfg.preferences.interfaceLanguage;
-  }
+    }
 
   //System Font
   auto font = QApplication::font();
