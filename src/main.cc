@@ -86,6 +86,10 @@ QMutex logMutex;
 
 void gdMessageHandler( QtMsgType type, const QMessageLogContext & context, const QString & mess )
 {
+  if(GlobalBroadcaster::instance()->getPreference()==nullptr||!GlobalBroadcaster::instance()->getPreference()->enableApplicationLog)
+  {
+    return;
+  }
   QString strTime = QDateTime::currentDateTime().toString( "MM-dd hh:mm:ss" );
   QString message = QString( "%1 %2\r\n" ).arg( strTime, mess );
 
@@ -522,7 +526,6 @@ int main( int argc, char ** argv )
 
   cfg.resetState = gdcl.resetState;
 
-  if ( gdcl.needLogFile() ) {
     // Open log file
     logFilePtr->setFileName( Config::getConfigDir() + "gd_log.txt" );
     logFilePtr->remove();
@@ -535,7 +538,6 @@ int main( int argc, char ** argv )
 
     // Install message handler
     qInstallMessageHandler( gdMessageHandler );
-  }
 
   // Reload translations for user selected locale is nesessary
   QTranslator qtTranslator;
