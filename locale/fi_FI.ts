@@ -347,25 +347,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     </message>
   </context>
   <context>
-    <name>Dialog</name>
-    <message>
-      <source>Proxy authentication required</source>
-      <translation>Välityspalvelimen todennus vaaditaan</translation>
-    </message>
-    <message>
-      <source>You need to supply a Username and a Password to access via proxy</source>
-      <translation>Sinun täytyy antaa käyttäjätunnus ja salasana, jotta voit käyttää välityspalvelinta</translation>
-    </message>
-    <message>
-      <source>Username:</source>
-      <translation>Käyttäjänimi:</translation>
-    </message>
-    <message>
-      <source>Password:</source>
-      <translation>Salasana:</translation>
-    </message>
-  </context>
-  <context>
     <name>DictGroupWidget</name>
     <message>
       <source>Form</source>
@@ -3554,6 +3535,10 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <source>Automatic</source>
       <translation>Automaattinen</translation>
     </message>
+    <message>
+      <source>Enable application log</source>
+      <translation type="unfinished">Enable application log</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -4035,34 +4020,6 @@ perustuu Englanti fonologia</translation>
     <message>
       <source>Hepburn</source>
       <translation>Hepburn</translation>
-    </message>
-    <message>
-      <source>The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Kaikkein säännöllisin järjestelmä, jolla on yksi suhde
-kanan kirjoitusjärjestelmiin. Standardoitu ISO 3602
-
-Ei vielä toteutettu GoldenDictissä.</translation>
-    </message>
-    <message>
-      <source>Nihon-shiki</source>
-      <translation>Nihon-shiki</translation>
-    </message>
-    <message>
-      <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Perustuu Nihon-shiki järjestelmään, mutta muokattu moderni Japani.
-Standardoitu ISO 3602
-
-Ei vielä käytössä GoldenDict.</translation>
-    </message>
-    <message>
-      <source>Kunrei-shiki</source>
-      <translation>Kunrei-shiki</translation>
     </message>
     <message>
       <source>Syllabaries:</source>
