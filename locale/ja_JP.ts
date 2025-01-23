@@ -347,25 +347,6 @@ between classic and school orthography in cyrillic)</source>
     </message>
   </context>
   <context>
-    <name>Dialog</name>
-    <message>
-      <source>Proxy authentication required</source>
-      <translation>プロキシ認証が必要です</translation>
-    </message>
-    <message>
-      <source>You need to supply a Username and a Password to access via proxy</source>
-      <translation>プロキシ経由でアクセスするにはユーザー名とパスワードを入力する必要があります</translation>
-    </message>
-    <message>
-      <source>Username:</source>
-      <translation>ユーザー名:</translation>
-    </message>
-    <message>
-      <source>Password:</source>
-      <translation>パスワード:</translation>
-    </message>
-  </context>
-  <context>
     <name>DictGroupWidget</name>
     <message>
       <source>Form</source>
@@ -3553,6 +3534,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Automatic</source>
       <translation>自動</translation>
     </message>
+    <message>
+      <source>Enable application log</source>
+      <translation type="unfinished">Enable application log</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -4028,34 +4013,6 @@ based on English phonology</source>
     <message>
       <source>Hepburn</source>
       <translation>ヘボン式</translation>
-    </message>
-    <message>
-      <source>The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>仮名の表記法に 1 対 1 の関係を持つ、最も規則的な表記法です。
-ISO 3602 として標準化されています
-
-GoldenDict にはまだ実装されていません。</translation>
-    </message>
-    <message>
-      <source>Nihon-shiki</source>
-      <translation>日本式</translation>
-    </message>
-    <message>
-      <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>日本式に基づいていますが、現代の標準的な日本語に合わせて変更されています。
-ISO 3602 として標準化されています
-
-GoldenDict にはまだ実装されていません。</translation>
-    </message>
-    <message>
-      <source>Kunrei-shiki</source>
-      <translation>訓令式</translation>
     </message>
     <message>
       <source>Syllabaries:</source>
