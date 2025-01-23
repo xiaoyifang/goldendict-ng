@@ -347,25 +347,6 @@ between classic and school orthography in cyrillic)</source>
     </message>
   </context>
   <context>
-    <name>Dialog</name>
-    <message>
-      <source>Proxy authentication required</source>
-      <translation>Прокси-Сървъра изисква авторизация</translation>
-    </message>
-    <message>
-      <source>You need to supply a Username and a Password to access via proxy</source>
-      <translation>За достъп към прокси-Сървъра се въвежда име и парола</translation>
-    </message>
-    <message>
-      <source>Username:</source>
-      <translation>Имя:</translation>
-    </message>
-    <message>
-      <source>Password:</source>
-      <translation>Парола:</translation>
-    </message>
-  </context>
-  <context>
     <name>DictGroupWidget</name>
     <message>
       <source>Form</source>
@@ -3553,6 +3534,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Automatic</source>
       <translation>Автоматично</translation>
     </message>
+    <message>
+      <source>Enable application log</source>
+      <translation type="unfinished">Enable application log</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -4038,34 +4023,6 @@ based on English phonology</source>
     <message>
       <source>Hepburn</source>
       <translation>Хепбърн</translation>
-    </message>
-    <message>
-      <source>The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Най използваната система, имаща непосредственно отношение към
-устройства за запис kana. Стандартизирано по ISO 3602
-
-В GoldenDict засега не реализирано.</translation>
-    </message>
-    <message>
-      <source>Nihon-shiki</source>
-      <translation>Нихон-шики</translation>
-    </message>
-    <message>
-      <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Базирано на система Nihon-shiki, но осъвременено за стандарта на японски език.
-Стандартизирано по ISO 3602
-
-В GoldenDict засега не реализирано.</translation>
-    </message>
-    <message>
-      <source>Kunrei-shiki</source>
-      <translation>Кунрей-шики</translation>
     </message>
     <message>
       <source>Syllabaries:</source>
