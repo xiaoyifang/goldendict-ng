@@ -86,8 +86,8 @@ QMutex logMutex;
 
 void gdMessageHandler( QtMsgType type, const QMessageLogContext & context, const QString & mess )
 {
-  if(GlobalBroadcaster::instance()->getPreference()==nullptr||!GlobalBroadcaster::instance()->getPreference()->enableApplicationLog)
-  {
+  if ( GlobalBroadcaster::instance()->getPreference() == nullptr
+       || !GlobalBroadcaster::instance()->getPreference()->enableApplicationLog ) {
     return;
   }
   QString strTime = QDateTime::currentDateTime().toString( "MM-dd hh:mm:ss" );
@@ -539,11 +539,11 @@ int main( int argc, char ** argv )
     // Install message handler
     qInstallMessageHandler( gdMessageHandler );
 
-  // Reload translations for user selected locale is nesessary
-  QTranslator qtTranslator;
-  QTranslator translator;
-  if ( !cfg.preferences.interfaceLanguage.isEmpty() && localeName != cfg.preferences.interfaceLanguage ) {
-    localeName = cfg.preferences.interfaceLanguage;
+    // Reload translations for user selected locale is nesessary
+    QTranslator qtTranslator;
+    QTranslator translator;
+    if ( !cfg.preferences.interfaceLanguage.isEmpty() && localeName != cfg.preferences.interfaceLanguage ) {
+      localeName = cfg.preferences.interfaceLanguage;
   }
 
   //System Font
