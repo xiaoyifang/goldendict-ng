@@ -528,8 +528,7 @@ int main( int argc, char ** argv )
 
   // Open log file
   logFilePtr->setFileName( Config::getConfigDir() + "gd_log.txt" );
-  logFilePtr->remove();
-  logFilePtr->open( QFile::ReadWrite );
+  logFilePtr->open( QFile::WriteOnly );
 
   // Write UTF-8 BOM
   QByteArray line;
