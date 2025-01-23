@@ -526,25 +526,25 @@ int main( int argc, char ** argv )
 
   cfg.resetState = gdcl.resetState;
 
-    // Open log file
-    logFilePtr->setFileName( Config::getConfigDir() + "gd_log.txt" );
-    logFilePtr->remove();
-    logFilePtr->open( QFile::ReadWrite );
+  // Open log file
+  logFilePtr->setFileName( Config::getConfigDir() + "gd_log.txt" );
+  logFilePtr->remove();
+  logFilePtr->open( QFile::ReadWrite );
 
-    // Write UTF-8 BOM
-    QByteArray line;
-    line.append( 0xEF ).append( 0xBB ).append( 0xBF );
-    logFilePtr->write( line );
+  // Write UTF-8 BOM
+  QByteArray line;
+  line.append( 0xEF ).append( 0xBB ).append( 0xBF );
+  logFilePtr->write( line );
 
-    // Install message handler
-    qInstallMessageHandler( gdMessageHandler );
+  // Install message handler
+  qInstallMessageHandler( gdMessageHandler );
 
-    // Reload translations for user selected locale is nesessary
-    QTranslator qtTranslator;
-    QTranslator translator;
-    if ( !cfg.preferences.interfaceLanguage.isEmpty() && localeName != cfg.preferences.interfaceLanguage ) {
-      localeName = cfg.preferences.interfaceLanguage;
-    }
+  // Reload translations for user selected locale is nesessary
+  QTranslator qtTranslator;
+  QTranslator translator;
+  if ( !cfg.preferences.interfaceLanguage.isEmpty() && localeName != cfg.preferences.interfaceLanguage ) {
+    localeName = cfg.preferences.interfaceLanguage;
+  }
 
   //System Font
   auto font = QApplication::font();
