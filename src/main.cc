@@ -530,10 +530,6 @@ int main( int argc, char ** argv )
   logFilePtr->setFileName( Config::getConfigDir() + "gd_log.txt" );
   logFilePtr->open( QFile::WriteOnly );
 
-  // Write UTF-8 BOM
-  QByteArray line;
-  line.append( 0xEF ).append( 0xBB ).append( 0xBF );
-  logFilePtr->write( line );
 
   // Install message handler
   qInstallMessageHandler( gdMessageHandler );
