@@ -346,25 +346,6 @@ between classic and school orthography in cyrillic)</source>
     </message>
   </context>
   <context>
-    <name>Dialog</name>
-    <message>
-      <source>Proxy authentication required</source>
-      <translation>مطلوب مصادقة الوكيل</translation>
-    </message>
-    <message>
-      <source>You need to supply a Username and a Password to access via proxy</source>
-      <translation>تحتاج إلى توفير اسم مستخدم وكلمة مرور للوصول عبر الوكيل</translation>
-    </message>
-    <message>
-      <source>Username:</source>
-      <translation>اسم المستخدم:</translation>
-    </message>
-    <message>
-      <source>Password:</source>
-      <translation>كلمة المرور:</translation>
-    </message>
-  </context>
-  <context>
     <name>DictGroupWidget</name>
     <message>
       <source>Form</source>
@@ -3552,6 +3533,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Automatic</source>
       <translation type="unfinished">Automatic</translation>
     </message>
+    <message>
+      <source>Enable application log</source>
+      <translation type="unfinished">Enable application log</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -4034,34 +4019,6 @@ based on English phonology</source>
     <message>
       <source>Hepburn</source>
       <translation>هِپ‌بيرن</translation>
-    </message>
-    <message>
-      <source>The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>النظام الأكثر اعتيادية، لهُ علاقة واحد إلى واحد لأنظمة
-كتابة الكانا، موحّدة كـ ISO 3602
-
-لم يُنفَّذ حتى الآن في القاموس الذهبي.</translation>
-    </message>
-    <message>
-      <source>Nihon-shiki</source>
-      <translation>نيهون-شيكي</translation>
-    </message>
-    <message>
-      <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>مبني على نيهون-شيكي، لكن مُعدَّل لليابانية العصرية القياسية.
-موحّدة كـ ISO 3602
-
-لم يُنفَّذ حتى الآن في القاموس الذهبي.</translation>
-    </message>
-    <message>
-      <source>Kunrei-shiki</source>
-      <translation>كنريه-شيكي</translation>
     </message>
     <message>
       <source>Syllabaries:</source>
