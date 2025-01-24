@@ -1,6 +1,6 @@
 {
   "name": "goldendict-ng",
-  "version": "24.5.5",
+  "version": "25.02.0",
   "dependencies": [
     "bzip2",
     "hunspell",
