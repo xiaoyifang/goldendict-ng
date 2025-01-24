@@ -3534,7 +3534,7 @@ ze Stardict, Babylon a GLS slovníků</translation>
     </message>
     <message>
       <source>Enable application log</source>
-      <translation type="unfinished">Enable application log</translation>
+      <translation>Povolit protokol aplikace</translation>
     </message>
   </context>
   <context>
