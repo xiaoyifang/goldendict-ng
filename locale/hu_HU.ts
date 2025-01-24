@@ -347,25 +347,6 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
     </message>
   </context>
   <context>
-    <name>Dialog</name>
-    <message>
-      <source>Proxy authentication required</source>
-      <translation>Proxy hitelesítés szükséges</translation>
-    </message>
-    <message>
-      <source>You need to supply a Username and a Password to access via proxy</source>
-      <translation>Proxyn keresztüli eléréshez meg kell adnia egy felhasználónevet és jelszót</translation>
-    </message>
-    <message>
-      <source>Username:</source>
-      <translation>Felhasználónév:</translation>
-    </message>
-    <message>
-      <source>Password:</source>
-      <translation>Jelszó:</translation>
-    </message>
-  </context>
-  <context>
     <name>DictGroupWidget</name>
     <message>
       <source>Form</source>
@@ -3553,6 +3534,10 @@ is felhasználja további szócikkek felfedezéséhez</translation>
       <source>Automatic</source>
       <translation>Automatikus</translation>
     </message>
+    <message>
+      <source>Enable application log</source>
+      <translation>Alkalmazásnapló engedélyezése</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -4034,34 +4019,6 @@ fonológián alapul</translation>
     <message>
       <source>Hepburn</source>
       <translation>Hepburn</translation>
-    </message>
-    <message>
-      <source>The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>A legszabályosabb rendszer, egy az egyben kapcsolható a 
-kana írási rendszerhez. Az ISO-3602-es szabvány írja le.
-
-A GoldenDict még nem támogatja.</translation>
-    </message>
-    <message>
-      <source>Nihon-shiki</source>
-      <translation>Nihon-shiki</translation>
-    </message>
-    <message>
-      <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>A Nihon-shiki rendszeren alapul, de a modern szabályos japánhoz igazítva.
-Az ISO-3602-es szabvány írja le.
-
-A GoldenDict még nem támogatja.</translation>
-    </message>
-    <message>
-      <source>Kunrei-shiki</source>
-      <translation>Kunrei-shiki</translation>
     </message>
     <message>
       <source>Syllabaries:</source>

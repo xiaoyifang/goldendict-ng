@@ -346,25 +346,6 @@ between classic and school orthography in cyrillic)</source>
     </message>
   </context>
   <context>
-    <name>Dialog</name>
-    <message>
-      <source>Proxy authentication required</source>
-      <translation>परोक्षी प्रमाणीकरण आवश्यक है</translation>
-    </message>
-    <message>
-      <source>You need to supply a Username and a Password to access via proxy</source>
-      <translation>आपको परोक्षी के द्वारा अभिगम करने के लिए उपयोगकर्ता नाम तथा पारण शब्द को भरना होगा</translation>
-    </message>
-    <message>
-      <source>Username:</source>
-      <translation>उपयोगकर्ता नाम :</translation>
-    </message>
-    <message>
-      <source>Password:</source>
-      <translation>पारण शब्द:</translation>
-    </message>
-  </context>
-  <context>
     <name>DictGroupWidget</name>
     <message>
       <source>Form</source>
@@ -3537,6 +3518,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Automatic</source>
       <translation>स्वचालित</translation>
     </message>
+    <message>
+      <source>Enable application log</source>
+      <translation>एप्लिकेशन लॉग सक्षम करें</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -4012,34 +3997,6 @@ based on English phonology</source>
     <message>
       <source>Hepburn</source>
       <translation>हेपबर्न</translation>
-    </message>
-    <message>
-      <source>The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>सबसे नियमित प्रणाली, एक-से-एक संबंध वाली
-काना लेखन प्रणाली। आईएसओ 3602 के रूप में मानकीकृत
-
-गोल्डनडिक्ट में अभी तक लागू नहीं किया गया है।</translation>
-    </message>
-    <message>
-      <source>Nihon-shiki</source>
-      <translation>निहोन-शिकी</translation>
-    </message>
-    <message>
-      <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>निहोन-शिकी प्रणाली पर आधारित, लेकिन आधुनिक मानक जापानी के लिए संशोधित।
-आईएसओ 3602 के रूप में मानकीकृत
-
-गोल्डनडिक्ट में अभी तक लागू नहीं किया गया है।</translation>
-    </message>
-    <message>
-      <source>Kunrei-shiki</source>
-      <translation>कुनरेई-शिकी</translation>
     </message>
     <message>
       <source>Syllabaries:</source>

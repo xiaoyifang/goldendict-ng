@@ -346,25 +346,6 @@ between classic and school orthography in cyrillic)</source>
     </message>
   </context>
   <context>
-    <name>Dialog</name>
-    <message>
-      <source>Proxy authentication required</source>
-      <translation>Yêu cầu xác thực proxy</translation>
-    </message>
-    <message>
-      <source>You need to supply a Username and a Password to access via proxy</source>
-      <translation>Cung cấp Tài khoản và Mật khẩu truy cập proxy</translation>
-    </message>
-    <message>
-      <source>Username:</source>
-      <translation>Tài khoản:</translation>
-    </message>
-    <message>
-      <source>Password:</source>
-      <translation>Mật khẩu:</translation>
-    </message>
-  </context>
-  <context>
     <name>DictGroupWidget</name>
     <message>
       <source>Form</source>
@@ -3547,6 +3528,10 @@ từ các từ điển Stardict, Babylon và GLS</translation>
       <source>Automatic</source>
       <translation>Tự động</translation>
     </message>
+    <message>
+      <source>Enable application log</source>
+      <translation>Bật nhật ký ứng dụng</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -4027,33 +4012,6 @@ Nhật, dựa trên hệ thống âm vị Anh ngữ</translation>
     <message>
       <source>Hepburn</source>
       <translation>Hepburn</translation>
-    </message>
-    <message>
-      <source>The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Hệ thống thông dụng nhất, có mối quan hệ tương ứng tới hệ viết kana. Tiêu chuẩn ISO 3602
-
-Chưa được bổ sung trong Từ điển Vàng.</translation>
-    </message>
-    <message>
-      <source>Nihon-shiki</source>
-      <translation>Nihon-shiki</translation>
-    </message>
-    <message>
-      <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Dựa trên hệ Nihon-shiki, nhưng đã thay đổi cho tiếng Nhật chuẩn hiện đại.
-Tiêu chuẩn ISO 3602
-
-Chưa được bổ sung trong Từ điển Vàng.</translation>
-    </message>
-    <message>
-      <source>Kunrei-shiki</source>
-      <translation>Kunrei-shiki</translation>
     </message>
     <message>
       <source>Syllabaries:</source>

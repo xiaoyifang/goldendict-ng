@@ -347,25 +347,6 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     </message>
   </context>
   <context>
-    <name>Dialog</name>
-    <message>
-      <source>Proxy authentication required</source>
-      <translation>Proxy autentisering krävs</translation>
-    </message>
-    <message>
-      <source>You need to supply a Username and a Password to access via proxy</source>
-      <translation>Du måste ange ett användarnamn och ett lösenord för att komma åt via proxy</translation>
-    </message>
-    <message>
-      <source>Username:</source>
-      <translation>Användarnamn:</translation>
-    </message>
-    <message>
-      <source>Password:</source>
-      <translation>Lösenord:</translation>
-    </message>
-  </context>
-  <context>
     <name>DictGroupWidget</name>
     <message>
       <source>Form</source>
@@ -3556,6 +3537,10 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <source>Automatic</source>
       <translation>Automatisk</translation>
     </message>
+    <message>
+      <source>Enable application log</source>
+      <translation>Aktivera programlogg</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -4037,34 +4022,6 @@ baserad på engelsk fonologi.</translation>
     <message>
       <source>Hepburn</source>
       <translation>Hepburn</translation>
-    </message>
-    <message>
-      <source>The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Det regelbundnaste systemet, med direkta motsvarigheter i
-stavelseskriftsystemet kana. Standardiserat som ISO 3602.
-
-Har ännu inte implementerats i  GoldenDict.</translation>
-    </message>
-    <message>
-      <source>Nihon-shiki</source>
-      <translation>Nihon-shiki</translation>
-    </message>
-    <message>
-      <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Baserat på Nihon-shiki, men anpassat till modern standardjapanska.
-Standardiserat som ISO 3602.
-
-Har ännu inte implementerats i  GoldenDict.</translation>
-    </message>
-    <message>
-      <source>Kunrei-shiki</source>
-      <translation>Kunrei-shiki</translation>
     </message>
     <message>
       <source>Syllabaries:</source>

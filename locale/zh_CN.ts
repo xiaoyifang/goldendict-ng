@@ -346,25 +346,6 @@ between classic and school orthography in cyrillic)</source>
     </message>
   </context>
   <context>
-    <name>Dialog</name>
-    <message>
-      <source>Proxy authentication required</source>
-      <translation>代理服务器要求身份验证</translation>
-    </message>
-    <message>
-      <source>You need to supply a Username and a Password to access via proxy</source>
-      <translation>您需要提供代理服务器的用户名和密码</translation>
-    </message>
-    <message>
-      <source>Username:</source>
-      <translation>用户名：</translation>
-    </message>
-    <message>
-      <source>Password:</source>
-      <translation>密码：</translation>
-    </message>
-  </context>
-  <context>
     <name>DictGroupWidget</name>
     <message>
       <source>Form</source>
@@ -851,7 +832,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Clear All Items</source>
-      <translation>清除所有项目</translation>
+      <translation>清除所有条目</translation>
     </message>
     <message>
       <source>Are you sure you want to clear all items?</source>
@@ -3539,6 +3520,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Automatic</source>
       <translation>自动</translation>
     </message>
+    <message>
+      <source>Enable application log</source>
+      <translation>启用应用程序日志</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -4016,34 +4001,6 @@ based on English phonology</source>
     <message>
       <source>Hepburn</source>
       <translation>黑本式</translation>
-    </message>
-    <message>
-      <source>The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>最常用的方案，跟假名系统一一对应。
-标准化为 ISO 3602。
-
-GoldenDict 尚不支持此方案。</translation>
-    </message>
-    <message>
-      <source>Nihon-shiki</source>
-      <translation>日本式</translation>
-    </message>
-    <message>
-      <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>以日本式为基础，针对现代日语做了一些修改。
-标准化为 ISO 3602。
-
-GoldenDict 尚不支持此方案。</translation>
-    </message>
-    <message>
-      <source>Kunrei-shiki</source>
-      <translation>训令式</translation>
     </message>
     <message>
       <source>Syllabaries:</source>

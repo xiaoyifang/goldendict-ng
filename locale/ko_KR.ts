@@ -347,25 +347,6 @@ between classic and school orthography in cyrillic)</source>
     </message>
   </context>
   <context>
-    <name>Dialog</name>
-    <message>
-      <source>Proxy authentication required</source>
-      <translation>프록시 인증이 필요함</translation>
-    </message>
-    <message>
-      <source>You need to supply a Username and a Password to access via proxy</source>
-      <translation>프록시를 통해 접근하기 위해서는 사용자명과 암호를 입력해야 합니다</translation>
-    </message>
-    <message>
-      <source>Username:</source>
-      <translation>사용자 이름:</translation>
-    </message>
-    <message>
-      <source>Password:</source>
-      <translation>암호:</translation>
-    </message>
-  </context>
-  <context>
     <name>DictGroupWidget</name>
     <message>
       <source>Form</source>
@@ -3550,6 +3531,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Automatic</source>
       <translation>오토매틱</translation>
     </message>
+    <message>
+      <source>Enable application log</source>
+      <translation>애플리케이션 로그 활성화</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -4035,34 +4020,6 @@ based on English phonology</source>
     <message>
       <source>Hepburn</source>
       <translation>헵번식</translation>
-    </message>
-    <message>
-      <source>The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>가잠 표준적인 표기법으로 가나의 철자법과 일대일 대응관계를 가지고
-ISO 3602에서 표준으로 승인되었습니다.
-
-골든딕에는 아직 도입되어 있지 않습니다.</translation>
-    </message>
-    <message>
-      <source>Nihon-shiki</source>
-      <translation>일본식</translation>
-    </message>
-    <message>
-      <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>일본식 표기법을 기본으로 하지만 현대표준어를 위해 수정된 표기법으로서,
- ISO 3602로 표준으로 승인되었습니다.
-
-골든딕에는 아직 도입되어 있지 않습니다.</translation>
-    </message>
-    <message>
-      <source>Kunrei-shiki</source>
-      <translation>훈령식</translation>
     </message>
     <message>
       <source>Syllabaries:</source>
