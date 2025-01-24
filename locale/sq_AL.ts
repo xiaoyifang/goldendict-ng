@@ -3529,7 +3529,7 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     </message>
     <message>
       <source>Enable application log</source>
-      <translation type="unfinished">Enable application log</translation>
+      <translation>Aktivizo regjistrin e aplikacionit</translation>
     </message>
   </context>
   <context>
