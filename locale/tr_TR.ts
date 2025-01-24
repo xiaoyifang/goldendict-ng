@@ -3532,7 +3532,7 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     </message>
     <message>
       <source>Enable application log</source>
-      <translation type="unfinished">Enable application log</translation>
+      <translation>Uygulama günlüğünü etkinleştir</translation>
     </message>
   </context>
   <context>
