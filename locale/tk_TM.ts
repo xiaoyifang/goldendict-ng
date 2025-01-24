@@ -3536,7 +3536,7 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
     </message>
     <message>
       <source>Enable application log</source>
-      <translation type="unfinished">Enable application log</translation>
+      <translation>Programma gündeligini açyň</translation>
     </message>
   </context>
   <context>
