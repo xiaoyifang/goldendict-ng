@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="sv_SE" sourcelanguage="en">
+<TS version="2.1" language="sv-SE" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
@@ -61,14 +61,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Expand article</source>
-      <translation>Visa artikel</translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Dölj artikel</translation>
-    </message>
-    <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
       <translation>Ingen översättning för &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; hittades i grupp &lt;b&gt;%2&lt;/b&gt;.</translation>
     </message>
@@ -96,16 +88,8 @@
   <context>
     <name>ArticleRequest</name>
     <message>
-      <source>Expand article</source>
-      <translation>Visa artikel</translation>
-    </message>
-    <message>
       <source>From </source>
       <translation>Från </translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Dölj artikel</translation>
     </message>
     <message>
       <source>Make a new Anki note</source>
@@ -155,12 +139,12 @@
       <translation>Resurs</translation>
     </message>
     <message>
-      <source>Audio</source>
-      <translation>Ljud</translation>
-    </message>
-    <message>
       <source>TTS Voice</source>
       <translation>Text till tal-modul</translation>
+    </message>
+    <message>
+      <source>Audio</source>
+      <translation>Ljud</translation>
     </message>
     <message>
       <source>Video</source>
@@ -183,12 +167,12 @@
       <translation>FEL: %1</translation>
     </message>
     <message>
-      <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>Den refererade resursen finns inte.</translation>
-    </message>
-    <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>Det refererade ljudprogrammet finns inte.</translation>
+    </message>
+    <message>
+      <source>The referenced resource doesn&apos;t exist.</source>
+      <translation>Den refererade resursen finns inte.</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
@@ -360,25 +344,6 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <message>
       <source>custom transliteration</source>
       <translation>anpassad translitterering</translation>
-    </message>
-  </context>
-  <context>
-    <name>Dialog</name>
-    <message>
-      <source>Proxy authentication required</source>
-      <translation>Proxy autentisering krävs</translation>
-    </message>
-    <message>
-      <source>You need to supply a Username and a Password to access via proxy</source>
-      <translation>Du måste ange ett användarnamn och ett lösenord för att komma åt via proxy</translation>
-    </message>
-    <message>
-      <source>Username:</source>
-      <translation>Användarnamn:</translation>
-    </message>
-    <message>
-      <source>Password:</source>
-      <translation>Lösenord:</translation>
     </message>
   </context>
   <context>
@@ -855,12 +820,24 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <translation>Lägg till mapp</translation>
     </message>
     <message>
+      <source>Clear All</source>
+      <translation>Rensa alla</translation>
+    </message>
+    <message>
       <source>Favorites:</source>
       <translation>Favoriter:</translation>
     </message>
     <message>
       <source>All selected items will be deleted. Continue?</source>
       <translation>Alla markerade objekt tas bort. Fortsätt?</translation>
+    </message>
+    <message>
+      <source>Clear All Items</source>
+      <translation>Rensa alla objekt</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all items?</source>
+      <translation>Är du säker på att du vill rensa alla objekt?</translation>
     </message>
   </context>
   <context>
@@ -888,10 +865,6 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <message>
       <source>from</source>
       <translation>från</translation>
-    </message>
-    <message>
-      <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
-      <translation>Gå till Redigera|Ordlistor|Källor|Forvo och ansök om att få vår egen API-nyckel för att få problemet att försvinna.</translation>
     </message>
   </context>
   <context>
@@ -2167,10 +2140,6 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
   <context>
     <name>MainWindow</name>
     <message>
-      <source>Welcome!</source>
-      <translation>Välkommen!</translation>
-    </message>
-    <message>
       <source>&amp;File</source>
       <translation>&amp;Arkiv</translation>
     </message>
@@ -2407,12 +2376,20 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <translation>Ctrl+E</translation>
     </message>
     <message>
-      <source>Export to list</source>
-      <translation>Exportera till lista</translation>
-    </message>
-    <message>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>Visa namn i ordliste&amp;fältet</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>Visa &amp;små ikoner i verktygsfält</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>Visa &amp;stora ikoner i verktygsfält</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>Visa &amp;normala ikoner i verktygsfält</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
@@ -2429,6 +2406,10 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <message>
       <source>Forward</source>
       <translation>Framåt</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>Växla urklippsövervakning</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2449,18 +2430,6 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <message>
       <source>Found in Dictionaries:</source>
       <translation>Träffar hittades i följande ordlistor:</translation>
-    </message>
-    <message>
-      <source>Words Zoom In</source>
-      <translation>Zooma in ord</translation>
-    </message>
-    <message>
-      <source>Words Zoom Out</source>
-      <translation>Zooma ut ord</translation>
-    </message>
-    <message>
-      <source>Words Normal Size</source>
-      <translation>Normal storlek på ord</translation>
     </message>
     <message>
       <source>Show &amp;Main Window</source>
@@ -2489,6 +2458,10 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <message>
       <source>New Tab</source>
       <translation>Ny flik</translation>
+    </message>
+    <message>
+      <source>Welcome!</source>
+      <translation>Välkommen!</translation>
     </message>
     <message>
       <source>Accessibility API is not enabled</source>
@@ -2565,12 +2538,20 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
       <translation>Skriv ut artikel</translation>
     </message>
     <message>
-      <source>Article, Complete (*.html)</source>
-      <translation>Artikel, fullständig (*.html)</translation>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Komplett HTML (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Article, HTML Only (*.html)</source>
-      <translation>Artikel, endast HTML (*.html)</translation>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Enkel HTML (*.html *.html)</translation>
+    </message>
+    <message>
+      <source>Pdf (*.pdf)</source>
+      <translation>Pdf (*.pdf)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime HTML (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2637,24 +2618,20 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
       <translation>Exportera Favoriter till fil</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;All files (*.*)</source>
-      <translation>XML-filer (*.xml);;Alla filer (*.*)</translation>
+      <source>Text files (*.txt);;XML files (*.xml)</source>
+      <translation>Textfiler (*.txt);;XML-filer (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
       <translation>Favoriter exportera komplett</translation>
     </message>
     <message>
-      <source>Export Favorites to file as plain list</source>
-      <translation>Exportera Favoriter till fil som vanlig lista</translation>
-    </message>
-    <message>
       <source>Import Favorites from file</source>
       <translation>Importera Favoriter från fil</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation>XML-filer (*.xml);;Txt-filer (*.txt);;Alla filer (*.*)</translation>
+      <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
+      <translation>Text- och XML-filer (*.txt *.xml);;Alla filer (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -2683,22 +2660,6 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Ta bort huvudord &quot;%1&quot; från Favoriter?</translation>
-    </message>
-    <message>
-      <source>Show &amp;Small Icons in Toolbars</source>
-      <translation>Visa &amp;små ikoner i verktygsfält</translation>
-    </message>
-    <message>
-      <source>Show &amp;Large Icons in Toolbars</source>
-      <translation>Visa &amp;stora ikoner i verktygsfält</translation>
-    </message>
-    <message>
-      <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation>Visa &amp;normala ikoner i verktygsfält</translation>
-    </message>
-    <message>
-      <source>Toggle clipboard monitoring</source>
-      <translation>Växla urklippsövervakning</translation>
     </message>
   </context>
   <context>
@@ -3042,6 +3003,14 @@ minimera fönstret till meddelandefältet istället för att avsluta programmet.
       <translation>&amp;Sökpopupruta</translation>
     </message>
     <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>Väljer om urklippsövervakningen ska aktiveras som standard vid uppstart av programmet&apos;.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>Börja med urklippsövervakning påslagen</translation>
+    </message>
+    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Skicka översatta ord till huvudfönstret istället för att visa dem i popuprutan.</translation>
     </message>
@@ -3154,6 +3123,10 @@ angivna tangenterna är nedtryckta när ordet markeras.</translation>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Läs automatiskt upp ord i huvudfönstret</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>Uttala ord automatiskt i popup-fönstret</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3533,6 +3506,10 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <translation> MB</translation>
     </message>
     <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Auto gör ingenting på vissa system.</translation>
+    </message>
+    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Starta om programmet för att verkställa bytet av språk.</translation>
     </message>
@@ -3549,16 +3526,20 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <translation>Omstart behövs</translation>
     </message>
     <message>
-      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation>Väljer om urklippsövervakningen ska aktiveras som standard vid uppstart av programmet&apos;.</translation>
+      <source>Enable</source>
+      <translation>Aktivera</translation>
     </message>
     <message>
-      <source>Start with clipboard monitoring turned on</source>
-      <translation>Börja med urklippsövervakning påslagen</translation>
+      <source>Disable</source>
+      <translation>Inaktivera</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in the popup</source>
-      <translation>Uttala ord automatiskt i popup-fönstret</translation>
+      <source>Automatic</source>
+      <translation>Automatisk</translation>
+    </message>
+    <message>
+      <source>Enable application log</source>
+      <translation>Aktivera programlogg</translation>
     </message>
   </context>
   <context>
@@ -3925,12 +3906,6 @@ använda dem.</translation>
       <translation>Ange de webbplatser du vill använda. Strängen %GDWORD% ersätts av sökordet vid sökning:</translation>
     </message>
     <message>
-      <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
-      <translation>Du kan också använda %GD1251% för Windows-1251, %GDISO1%-%GDISO16% för ISO 8859-1 till ISO 8859-16,
-%GDBIG5% för Big5, %GDBIG5HKSCS% för Big5-HKSCS, %GDGBK% för GBK och GB18030, samt %GDSHIFTJIS% för Shift JIS.</translation>
-    </message>
-    <message>
       <source>DICT servers</source>
       <translation>DICT-servrar</translation>
     </message>
@@ -4047,34 +4022,6 @@ baserad på engelsk fonologi.</translation>
     <message>
       <source>Hepburn</source>
       <translation>Hepburn</translation>
-    </message>
-    <message>
-      <source>The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Det regelbundnaste systemet, med direkta motsvarigheter i
-stavelseskriftsystemet kana. Standardiserat som ISO 3602.
-
-Har ännu inte implementerats i  GoldenDict.</translation>
-    </message>
-    <message>
-      <source>Nihon-shiki</source>
-      <translation>Nihon-shiki</translation>
-    </message>
-    <message>
-      <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Baserat på Nihon-shiki, men anpassat till modern standardjapanska.
-Standardiserat som ISO 3602.
-
-Har ännu inte implementerats i  GoldenDict.</translation>
-    </message>
-    <message>
-      <source>Kunrei-shiki</source>
-      <translation>Kunrei-shiki</translation>
     </message>
     <message>
       <source>Syllabaries:</source>

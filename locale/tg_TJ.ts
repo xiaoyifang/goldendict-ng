@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="tg_TJ" sourcelanguage="en">
+<TS version="2.1" language="tg" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
@@ -61,14 +61,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Expand article</source>
-      <translation>Баркушодани мақола</translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Печондани мақола</translation>
-    </message>
-    <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
       <translation>Дар гурӯҳи &lt;b&gt;%2&lt;/b&gt;тарҷумаи &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; ёфт нашуд.</translation>
     </message>
@@ -96,16 +88,8 @@
   <context>
     <name>ArticleRequest</name>
     <message>
-      <source>Expand article</source>
-      <translation>Баркушодани мақола</translation>
-    </message>
-    <message>
       <source>From </source>
       <translation>Аз </translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Печондани мақола</translation>
     </message>
     <message>
       <source>Make a new Anki note</source>
@@ -155,12 +139,12 @@
       <translation>Манбаъ</translation>
     </message>
     <message>
-      <source>Audio</source>
-      <translation>Аудио</translation>
-    </message>
-    <message>
       <source>TTS Voice</source>
       <translation>Овози TTS (Матн ба талаффуз)</translation>
+    </message>
+    <message>
+      <source>Audio</source>
+      <translation>Аудио</translation>
     </message>
     <message>
       <source>Video</source>
@@ -183,12 +167,12 @@
       <translation>ХАТОГӢ: %1</translation>
     </message>
     <message>
-      <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>Манбаъи ишорашуда вуҷуд надорад.</translation>
-    </message>
-    <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>Барномаи аудиоии ишорашуда вуҷуд надорад.</translation>
+    </message>
+    <message>
+      <source>The referenced resource doesn&apos;t exist.</source>
+      <translation>Манбаъи ишорашуда вуҷуд надорад.</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
@@ -360,25 +344,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>custom transliteration</source>
       <translation>транслитератсияи фармоишӣ</translation>
-    </message>
-  </context>
-  <context>
-    <name>Dialog</name>
-    <message>
-      <source>Proxy authentication required</source>
-      <translation>Санҷиши ҳаққонияти прокси лозим аст</translation>
-    </message>
-    <message>
-      <source>You need to supply a Username and a Password to access via proxy</source>
-      <translation>Барои пайдо кардани дастрасӣ тавассути прокси, шумо бояд номи корбар ва паролро ваорид кунед</translation>
-    </message>
-    <message>
-      <source>Username:</source>
-      <translation>Номи корбар:</translation>
-    </message>
-    <message>
-      <source>Password:</source>
-      <translation>Парол:</translation>
     </message>
   </context>
   <context>
@@ -855,12 +820,24 @@ between classic and school orthography in cyrillic)</source>
       <translation>Илова кардани папка</translation>
     </message>
     <message>
+      <source>Clear All</source>
+      <translation>Ҳамаро тоза кунед</translation>
+    </message>
+    <message>
       <source>Favorites:</source>
       <translation>Дӯстдоштаҳо:</translation>
     </message>
     <message>
       <source>All selected items will be deleted. Continue?</source>
       <translation>Ҳамаи ҷузъҳои интихобшуда нест карда мешаванд. Давом додан?</translation>
+    </message>
+    <message>
+      <source>Clear All Items</source>
+      <translation>Ҳама ҷузъҳоро тоза кунед</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all items?</source>
+      <translation>Шумо мутмаин ҳастед, ки мехоҳед ҳамаи ҷузъҳоро тоза кунед?</translation>
     </message>
   </context>
   <context>
@@ -888,10 +865,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>from</source>
       <translation>аз</translation>
-    </message>
-    <message>
-      <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
-      <translation>Ба Танзимот|Луғатҳо|Сарчашмаҳо||Forvo гузаред ва барои ҳал кардани ин хато калиди API-и худро татбиқ кунед.</translation>
     </message>
   </context>
   <context>
@@ -2167,10 +2140,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>MainWindow</name>
     <message>
-      <source>Welcome!</source>
-      <translation>Хуш омадед!</translation>
-    </message>
-    <message>
       <source>&amp;File</source>
       <translation>&amp;Файл</translation>
     </message>
@@ -2407,12 +2376,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ctrl+E</translation>
     </message>
     <message>
-      <source>Export to list</source>
-      <translation>Ба рӯйхат содирот кунед</translation>
-    </message>
-    <message>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>Номҳоро дар &amp;лавҳаи луғат намоиш додан</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>Нишонаҳои &amp;хурдро дар панели асбобҳо нишон диҳед</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>Нишонаҳои &amp;калонро дар панели асбобҳо нишон диҳед</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>Нишон додани &amp;Нормӣ дар панели асбобҳо</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
@@ -2429,6 +2406,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Forward</source>
       <translation>Ба пеш</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>Мониторинги буферро иваз кунед</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2449,18 +2430,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Found in Dictionaries:</source>
       <translation>Натиҷа дар луғатҳои зерин дарёфт шуд:</translation>
-    </message>
-    <message>
-      <source>Words Zoom In</source>
-      <translation>Калимаҳоро бузург кардан</translation>
-    </message>
-    <message>
-      <source>Words Zoom Out</source>
-      <translation>Калимаҳоро хурд кардан</translation>
-    </message>
-    <message>
-      <source>Words Normal Size</source>
-      <translation>Андозаи муқаррарӣ</translation>
     </message>
     <message>
       <source>Show &amp;Main Window</source>
@@ -2489,6 +2458,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>New Tab</source>
       <translation>Варақаи нав</translation>
+    </message>
+    <message>
+      <source>Welcome!</source>
+      <translation>Хуш омадед!</translation>
     </message>
     <message>
       <source>Accessibility API is not enabled</source>
@@ -2565,12 +2538,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Мақоларо чоп кардан</translation>
     </message>
     <message>
-      <source>Article, Complete (*.html)</source>
-      <translation>Мақола, Пурра (*.html)</translation>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Html-ро пурра кунед (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Article, HTML Only (*.html)</source>
-      <translation>Мақола, танҳо HTML (*.html)</translation>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Html ягона (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Pdf (*.pdf)</source>
+      <translation>PDF (*.pdf)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime Html (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2637,24 +2618,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Файлҳои дӯстдоштаро ба файл содир кунед</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;All files (*.*)</source>
-      <translation>Файлҳои XML (*.xml);; Ҳама файлҳо (*.*)</translation>
+      <source>Text files (*.txt);;XML files (*.xml)</source>
+      <translation>Файлҳои матнӣ (*.txt);;файлҳои XML (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
       <translation>Содироти дӯстдоштаҳо анҷом ёфт</translation>
     </message>
     <message>
-      <source>Export Favorites to file as plain list</source>
-      <translation>Содироти мунтахаб ба файл ҳамчун рӯйхати оддӣ</translation>
-    </message>
-    <message>
       <source>Import Favorites from file</source>
       <translation>Воридоти мунтахаб аз файл</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation>Файлҳои XML (*.xml);; Файлҳои Txt (*.txt);; Ҳама файлҳо (*.*)</translation>
+      <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
+      <translation>Файлҳои матнӣ ва XML (*.txt *.xml);; Ҳама файлҳо (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -2683,22 +2660,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Сарлавҳаи &quot;%1&quot; аз дӯстдоштаҳо хориҷ карда шавад?</translation>
-    </message>
-    <message>
-      <source>Show &amp;Small Icons in Toolbars</source>
-      <translation>Нишонаҳои &amp;хурдро дар панели асбобҳо нишон диҳед</translation>
-    </message>
-    <message>
-      <source>Show &amp;Large Icons in Toolbars</source>
-      <translation>Нишонаҳои &amp;калонро дар панели асбобҳо нишон диҳед</translation>
-    </message>
-    <message>
-      <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation>Нишон додани &amp;Нормӣ дар панели асбобҳо</translation>
-    </message>
-    <message>
-      <source>Toggle clipboard monitoring</source>
-      <translation>Мониторинги буферро иваз кунед</translation>
     </message>
   </context>
   <context>
@@ -3043,6 +3004,14 @@ the application.</source>
       <translation>&amp;Тарҷумаи пайдошаванда</translation>
     </message>
     <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>Интихоб мекунад, ки мониторинги буфер ба таври нобаёнӣ ҳангоми оғози барнома&apos;фаъол мешавад ё на.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>Бо фаъол кардани мониторинги буфер оғоз кунед</translation>
+    </message>
+    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Калимаи тарҷумашударо ба ҷои равзанаи пайдошаванда дар равзанаи асосӣ нишон диҳед</translation>
     </message>
@@ -3155,6 +3124,10 @@ in the pressed state when the word selection changes.</source>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Талаффузи худкори калимаҳо дар равзанаи асосӣ</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>Калимаҳоро дар равзанаи пайдошуда худкор талаффуз кунед</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3531,6 +3504,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation> МБ</translation>
     </message>
     <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Автомат дар баъзе системаҳо ҳеҷ кор намекунад.</translation>
+    </message>
+    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Барои татбиқ кардани забони интихобшуда барномаро аз нав оғоз кунед.</translation>
     </message>
@@ -3547,16 +3524,20 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Аз нав оғоз кардан лозим аст</translation>
     </message>
     <message>
-      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation>Интихоб мекунад, ки мониторинги буфер ба таври нобаёнӣ ҳангоми оғози барнома&apos;фаъол мешавад ё на.</translation>
+      <source>Enable</source>
+      <translation>Фаъол кардан</translation>
     </message>
     <message>
-      <source>Start with clipboard monitoring turned on</source>
-      <translation>Бо фаъол кардани мониторинги буфер оғоз кунед</translation>
+      <source>Disable</source>
+      <translation>Хомӯш кардан</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in the popup</source>
-      <translation>Калимаҳоро дар равзанаи пайдошуда худкор талаффуз кунед</translation>
+      <source>Automatic</source>
+      <translation>Автоматӣ</translation>
+    </message>
+    <message>
+      <source>Enable application log</source>
+      <translation>Рӯйхати барномаҳоро фаъол созед</translation>
     </message>
   </context>
   <context>
@@ -3923,12 +3904,6 @@ of the appropriate groups to use them.</source>
       <translation>Тамоми вебсайтҳо. Сатри %GDWORD% бо калимаи воридшуда ҷойгузин карда мешавад:</translation>
     </message>
     <message>
-      <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
-      <translation>Шумо инчунин метавонед инҳоро истифода баред: %GD1251% барои CP1251, %GDISO1%...%GDISO16% барои ISO 8859-1...ISO 8859-16 ба таври мувофиқ,
-%GDBIG5% барои Big-5, %GDBIG5HKSCS% барои Big5-HKSCS, %GDGBK% барои GBK ва GB18030, %GDSHIFTJIS% барои Shift-JIS.</translation>
-    </message>
-    <message>
       <source>DICT servers</source>
       <translation>Серверҳои DICT</translation>
     </message>
@@ -4045,34 +4020,6 @@ based on English phonology</source>
     <message>
       <source>Hepburn</source>
       <translation>Хэпбёрн</translation>
-    </message>
-    <message>
-      <source>The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Системаи мувофиқтарин барои навиштан бо скриптҳои Кана.
-Дар асоси стандарти ISO 3602 эҷод шудааст.
-
-Системаи дар боло зикршуда ҳоло дар луғати GoldenDict вуҷуд надорад.</translation>
-    </message>
-    <message>
-      <source>Nihon-shiki</source>
-      <translation>Ниҳон-шикӣ</translation>
-    </message>
-    <message>
-      <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Дорои системаи Нихон-шикӣ мебошад, вале барои забони Ҷопонии стандартии
-ҳозиразамон тағйир дода шуд. Дар асоси стандарти ISO 3602 эҷод шудааст.
-
-Системаи дар боло зикршуда ҳоло дар луғати GoldenDict вуҷуд надорад.</translation>
-    </message>
-    <message>
-      <source>Kunrei-shiki</source>
-      <translation>Канрей-шикӣ</translation>
     </message>
     <message>
       <source>Syllabaries:</source>

@@ -86,6 +86,10 @@ QMutex logMutex;
 
 void gdMessageHandler( QtMsgType type, const QMessageLogContext & context, const QString & mess )
 {
+  if ( GlobalBroadcaster::instance()->getPreference() == nullptr
+       || !GlobalBroadcaster::instance()->getPreference()->enableApplicationLog ) {
+    return;
+  }
   QString strTime = QDateTime::currentDateTime().toString( "MM-dd hh:mm:ss" );
   QString message = QString( "%1 %2\r\n" ).arg( strTime, mess );
 
@@ -488,6 +492,9 @@ int main( int argc, char ** argv )
   for ( ;; ) {
     try {
       cfg = Config::load();
+
+      //enabled through command line or preference
+      gdcl.logFile = gdcl.logFile || cfg.preferences.enableApplicationLog;
     }
     catch ( Config::exError & ) {
       QMessageBox mb(
@@ -519,20 +526,13 @@ int main( int argc, char ** argv )
 
   cfg.resetState = gdcl.resetState;
 
-  if ( gdcl.needLogFile() ) {
-    // Open log file
-    logFilePtr->setFileName( Config::getConfigDir() + "gd_log.txt" );
-    logFilePtr->remove();
-    logFilePtr->open( QFile::ReadWrite );
+  // Open log file
+  logFilePtr->setFileName( Config::getConfigDir() + "gd_log.txt" );
+  logFilePtr->open( QFile::WriteOnly );
 
-    // Write UTF-8 BOM
-    QByteArray line;
-    line.append( 0xEF ).append( 0xBB ).append( 0xBF );
-    logFilePtr->write( line );
 
-    // Install message handler
-    qInstallMessageHandler( gdMessageHandler );
-  }
+  // Install message handler
+  qInstallMessageHandler( gdMessageHandler );
 
   // Reload translations for user selected locale is nesessary
   QTranslator qtTranslator;

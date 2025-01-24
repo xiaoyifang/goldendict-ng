@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="sq_AL" sourcelanguage="en">
+<TS version="2.1" language="sq" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
@@ -61,14 +61,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Expand article</source>
-      <translation>Zgjeroj artikullin</translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Mbledh artikullin</translation>
-    </message>
-    <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
       <translation>Asnjë përkthim për &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; nuk u gjet në grupin &lt;b&gt;%2&lt;/b&gt;.</translation>
     </message>
@@ -96,16 +88,8 @@
   <context>
     <name>ArticleRequest</name>
     <message>
-      <source>Expand article</source>
-      <translation>Zgjeroj artikullin</translation>
-    </message>
-    <message>
       <source>From </source>
       <translation>Nga </translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Mbledh artikullin</translation>
     </message>
     <message>
       <source>Make a new Anki note</source>
@@ -155,12 +139,12 @@
       <translation>Resursi</translation>
     </message>
     <message>
-      <source>Audio</source>
-      <translation>Audio</translation>
-    </message>
-    <message>
       <source>TTS Voice</source>
       <translation>TTS Voice</translation>
+    </message>
+    <message>
+      <source>Audio</source>
+      <translation>Audio</translation>
     </message>
     <message>
       <source>Video</source>
@@ -183,12 +167,12 @@
       <translation>GABIM: %1</translation>
     </message>
     <message>
-      <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>Nuk ekziston resursi i referuar.</translation>
-    </message>
-    <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>Programi audio i referuar nuk ekziston.</translation>
+    </message>
+    <message>
+      <source>The referenced resource doesn&apos;t exist.</source>
+      <translation>Nuk ekziston resursi i referuar.</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
@@ -359,25 +343,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>custom transliteration</source>
       <translation>transliterim i personalizuar</translation>
-    </message>
-  </context>
-  <context>
-    <name>Dialog</name>
-    <message>
-      <source>Proxy authentication required</source>
-      <translation>Kërkohet vërtetimi i përfaqësuesit</translation>
-    </message>
-    <message>
-      <source>You need to supply a Username and a Password to access via proxy</source>
-      <translation>Ju duhet të jepni një emër përdoruesi dhe një fjalëkalim për të hyrë përmes përfaqësuesit</translation>
-    </message>
-    <message>
-      <source>Username:</source>
-      <translation>Emri i përdoruesit:</translation>
-    </message>
-    <message>
-      <source>Password:</source>
-      <translation>Fjalëkalimi:</translation>
     </message>
   </context>
   <context>
@@ -854,12 +819,24 @@ between classic and school orthography in cyrillic)</source>
       <translation>Shto dosje</translation>
     </message>
     <message>
+      <source>Clear All</source>
+      <translation>Pastro të gjitha</translation>
+    </message>
+    <message>
       <source>Favorites:</source>
       <translation>Të preferuarat:</translation>
     </message>
     <message>
       <source>All selected items will be deleted. Continue?</source>
       <translation>Të gjithë artikujt e zgjedhur do të fshihen. Të vazhdohet?</translation>
+    </message>
+    <message>
+      <source>Clear All Items</source>
+      <translation>Pastro të gjithë artikujt</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all items?</source>
+      <translation>Jeni i sigurt që dëshironi të pastroni të gjithë artikujt?</translation>
     </message>
   </context>
   <context>
@@ -887,10 +864,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>from</source>
       <translation>nga</translation>
-    </message>
-    <message>
-      <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
-      <translation>Shkon te Editoj|Fjalorët|Burime|Forvo dhe zbaton kodin tonë API për ta zhdukur këtë gabimin.</translation>
     </message>
   </context>
   <context>
@@ -2166,10 +2139,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>MainWindow</name>
     <message>
-      <source>Welcome!</source>
-      <translation>Mirë se erdhët!</translation>
-    </message>
-    <message>
       <source>&amp;File</source>
       <translation>&amp;Skedar</translation>
     </message>
@@ -2406,12 +2375,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ctrl+E</translation>
     </message>
     <message>
-      <source>Export to list</source>
-      <translation>Eksporto në listë</translation>
-    </message>
-    <message>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>Tregoj emrat e &amp;fjalorëve</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>Shfaq ikonat e &amp;të vogla në shiritat e veglave</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>Shfaq ikona &amp;të mëdha në shiritat e veglave</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>Shfaq ikonat &amp;Normale në shiritat e veglave</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
@@ -2428,6 +2405,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Forward</source>
       <translation>Para</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>Ndrysho monitorimin e kujtesës së fragmenteve</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2448,18 +2429,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Found in Dictionaries:</source>
       <translation>Gjetjet në fjalorë:</translation>
-    </message>
-    <message>
-      <source>Words Zoom In</source>
-      <translation>Zmadhoj fjalët</translation>
-    </message>
-    <message>
-      <source>Words Zoom Out</source>
-      <translation>Zvogëloj fjalët</translation>
-    </message>
-    <message>
-      <source>Words Normal Size</source>
-      <translation>Fjalët në përmasat normale</translation>
     </message>
     <message>
       <source>Show &amp;Main Window</source>
@@ -2488,6 +2457,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>New Tab</source>
       <translation>Fushë e re</translation>
+    </message>
+    <message>
+      <source>Welcome!</source>
+      <translation>Mirë se erdhët!</translation>
     </message>
     <message>
       <source>Accessibility API is not enabled</source>
@@ -2564,12 +2537,20 @@ Për të gjetur &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simbo
       <translation>Printoj artikullin</translation>
     </message>
     <message>
-      <source>Article, Complete (*.html)</source>
-      <translation>Artikull, i plotë (*.html)</translation>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Plotësoni Html (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Article, HTML Only (*.html)</source>
-      <translation>Artikull, vetëm HTML (*.html)</translation>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Html e vetme (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Pdf (*.pdf)</source>
+      <translation>PDF (*.pdf)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime Html (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2636,24 +2617,20 @@ Për të gjetur &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simbo
       <translation>Eksporto të preferuarat në skedar</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;All files (*.*)</source>
-      <translation>Skedarët XML (*.xml);;Të gjithë skedarët (*.*)</translation>
+      <source>Text files (*.txt);;XML files (*.xml)</source>
+      <translation>Skedarët e tekstit (*.txt);;skedarët XML (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
       <translation>Eksporti i të preferuarave përfundoi</translation>
     </message>
     <message>
-      <source>Export Favorites to file as plain list</source>
-      <translation>Eksporto të preferuarat për të paraqitur si listë të thjeshtë</translation>
-    </message>
-    <message>
       <source>Import Favorites from file</source>
       <translation>Importoni të preferuarat nga skedari</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation>Skedarët XML (*.xml);;Skedarët Txt (*.txt);;Të gjithë skedarët (*.*)</translation>
+      <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
+      <translation>Skedarët e tekstit dhe XML (*.txt *.xml);;Të gjithë skedarët (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -2682,22 +2659,6 @@ Për të gjetur &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simbo
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Të hiqet kryefjala &quot;%1&quot; nga Të preferuarat?</translation>
-    </message>
-    <message>
-      <source>Show &amp;Small Icons in Toolbars</source>
-      <translation>Shfaq ikonat e &amp;të vogla në shiritat e veglave</translation>
-    </message>
-    <message>
-      <source>Show &amp;Large Icons in Toolbars</source>
-      <translation>Shfaq ikona &amp;të mëdha në shiritat e veglave</translation>
-    </message>
-    <message>
-      <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation>Shfaq ikonat &amp;Normale në shiritat e veglave</translation>
-    </message>
-    <message>
-      <source>Toggle clipboard monitoring</source>
-      <translation>Ndrysho monitorimin e kujtesës së fragmenteve</translation>
     </message>
   </context>
   <context>
@@ -3037,6 +2998,14 @@ the application.</source>
       <translation>&amp;Skanimi i jashtëm</translation>
     </message>
     <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>Zgjedh nëse monitorimi i kujtesës së fragmenteve do të aktivizohet si parazgjedhje në nisjen e programit&apos;.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>Filloni me monitorimin e kujtesës së fragmenteve të aktivizuar</translation>
+    </message>
+    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Dërgon fjalën e përkthyer te dritarja kryesore, jo te dritarja kërcyese</translation>
     </message>
@@ -3149,6 +3118,10 @@ janë në gjendjen e shtypur.</translation>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Autoshqiptoj fjalët në dritaren kryesore</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>Shqiptoni automatikisht fjalët në dritaren kërcyese</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3523,6 +3496,10 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
       <translation> MB</translation>
     </message>
     <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Auto nuk bën asgjë në disa sisteme.</translation>
+    </message>
+    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Riniseni programin për të zbatuar ndryshimin e gjuhës.</translation>
     </message>
@@ -3539,16 +3516,20 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
       <translation>Nevojitet rinisja</translation>
     </message>
     <message>
-      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation>Zgjedh nëse monitorimi i kujtesës së fragmenteve do të aktivizohet si parazgjedhje në nisjen e programit&apos;.</translation>
+      <source>Enable</source>
+      <translation>Aktivizo</translation>
     </message>
     <message>
-      <source>Start with clipboard monitoring turned on</source>
-      <translation>Filloni me monitorimin e kujtesës së fragmenteve të aktivizuar</translation>
+      <source>Disable</source>
+      <translation>Çaktivizo</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in the popup</source>
-      <translation>Shqiptoni automatikisht fjalët në dritaren kërcyese</translation>
+      <source>Automatic</source>
+      <translation>Automatik</translation>
+    </message>
+    <message>
+      <source>Enable application log</source>
+      <translation>Aktivizo regjistrin e aplikacionit</translation>
     </message>
   </context>
   <context>
@@ -3914,12 +3895,6 @@ të caktuara për t&apos;i përdorur.</translation>
       <translation>Çdo faqe në internet. Radha %GDWORD% do zëvendësohet me fjalën e kërkuar:</translation>
     </message>
     <message>
-      <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
-      <translation>Ndryshe, përdorni %GD1251% për CP1251, %GDISO1%...%GDISO16% për ISO 8859-1...ISO 8859-16 përkatësisht,
-%GDBIG5% për Big-5, %GDBIG5HKSCS% për Big5-HKSCS, %GDGBK% për GBK and GB18030, %GDSHIFTJIS% për Shift-JIS.</translation>
-    </message>
-    <message>
       <source>DICT servers</source>
       <translation>Serverët DICT</translation>
     </message>
@@ -4036,34 +4011,6 @@ e bazuar në fonologjinë japoneze</translation>
     <message>
       <source>Hepburn</source>
       <translation>Hepburn</translation>
-    </message>
-    <message>
-      <source>The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Sistemi më i rregullt, që ka rrotullimin e veçantë për sistemet e shkrimit kana. 
-I standardizuar si ISO 3602.
-
-Akoma i pafutur në GoldenDict.</translation>
-    </message>
-    <message>
-      <source>Nihon-shiki</source>
-      <translation>Nihon-shiki</translation>
-    </message>
-    <message>
-      <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Bazohet në sistemin Nihon-shiki, por është modifikuar për japonishten standarde moderne.
-I standardizuar si ISO 3602.
-
-Akoma i pafutur në GoldenDict.</translation>
-    </message>
-    <message>
-      <source>Kunrei-shiki</source>
-      <translation>Kunrei-shiki</translation>
     </message>
     <message>
       <source>Syllabaries:</source>

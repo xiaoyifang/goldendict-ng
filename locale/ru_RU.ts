@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="ru_RU" sourcelanguage="en">
+<TS version="2.1" language="ru" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
@@ -61,14 +61,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Expand article</source>
-      <translation>Развернуть статью</translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Свернуть статью</translation>
-    </message>
-    <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
       <translation>В группе &lt;b&gt;%2&lt;/b&gt; не было найдено перевода для &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt;.</translation>
     </message>
@@ -96,16 +88,8 @@
   <context>
     <name>ArticleRequest</name>
     <message>
-      <source>Expand article</source>
-      <translation>Развернуть статью</translation>
-    </message>
-    <message>
       <source>From </source>
       <translation>Из словаря </translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Свернуть статью</translation>
     </message>
     <message>
       <source>Make a new Anki note</source>
@@ -155,12 +139,12 @@
       <translation>Ресурс</translation>
     </message>
     <message>
-      <source>Audio</source>
-      <translation>Аудио</translation>
-    </message>
-    <message>
       <source>TTS Voice</source>
       <translation>Синтезатор голоса</translation>
+    </message>
+    <message>
+      <source>Audio</source>
+      <translation>Аудио</translation>
     </message>
     <message>
       <source>Video</source>
@@ -183,12 +167,12 @@
       <translation>ОШИБКА: %1</translation>
     </message>
     <message>
-      <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>Запрошенный ресурс не найден.</translation>
-    </message>
-    <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>Указанная аудио-программа не найдена.</translation>
+    </message>
+    <message>
+      <source>The referenced resource doesn&apos;t exist.</source>
+      <translation>Запрошенный ресурс не найден.</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
@@ -360,25 +344,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>custom transliteration</source>
       <translation>Другая транслитерация</translation>
-    </message>
-  </context>
-  <context>
-    <name>Dialog</name>
-    <message>
-      <source>Proxy authentication required</source>
-      <translation>Прокси-сервер требует авторизацию</translation>
-    </message>
-    <message>
-      <source>You need to supply a Username and a Password to access via proxy</source>
-      <translation>Для доступа к прокси-серверу необходимо ввести имя и пароль</translation>
-    </message>
-    <message>
-      <source>Username:</source>
-      <translation>Имя:</translation>
-    </message>
-    <message>
-      <source>Password:</source>
-      <translation>Пароль:</translation>
     </message>
   </context>
   <context>
@@ -857,12 +822,24 @@ between classic and school orthography in cyrillic)</source>
       <translation>Добавить папку</translation>
     </message>
     <message>
+      <source>Clear All</source>
+      <translation>Очистить все</translation>
+    </message>
+    <message>
       <source>Favorites:</source>
       <translation>Избранное:</translation>
     </message>
     <message>
       <source>All selected items will be deleted. Continue?</source>
       <translation>Все выбранные элементы будут удалены. Продолжить?</translation>
+    </message>
+    <message>
+      <source>Clear All Items</source>
+      <translation>Очистить все элементы</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all items?</source>
+      <translation>Вы уверены, что хотите очистить все элементы?</translation>
     </message>
   </context>
   <context>
@@ -890,10 +867,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>from</source>
       <translation>из</translation>
-    </message>
-    <message>
-      <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
-      <translation>Перейдите в Правка|Словари|Источники|Forvo и подайте заявку на свой собственный ключ API, чтобы устранить данную проблему.</translation>
     </message>
   </context>
   <context>
@@ -2169,10 +2142,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>MainWindow</name>
     <message>
-      <source>Welcome!</source>
-      <translation>Добро пожаловать!</translation>
-    </message>
-    <message>
       <source>&amp;File</source>
       <translation>&amp;Файл</translation>
     </message>
@@ -2409,12 +2378,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ctrl + E</translation>
     </message>
     <message>
-      <source>Export to list</source>
-      <translation>Экспортировать в простой список</translation>
-    </message>
-    <message>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>По&amp;казывать названия в панели словарей</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>Показывать &amp;мелкие значки на панелях инструментов</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>Показывать &amp;крупные значки на панелях инструментов</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>Показывать обычные значки на панелях инструментов</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
@@ -2431,6 +2408,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Forward</source>
       <translation>Вперёд</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>Включить мониторинг буфера обмена</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2451,18 +2432,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Found in Dictionaries:</source>
       <translation>Найдено в словарях:</translation>
-    </message>
-    <message>
-      <source>Words Zoom In</source>
-      <translation>Увеличить список слов</translation>
-    </message>
-    <message>
-      <source>Words Zoom Out</source>
-      <translation>Уменьшить список слов</translation>
-    </message>
-    <message>
-      <source>Words Normal Size</source>
-      <translation>Обычный размер для списка слов</translation>
     </message>
     <message>
       <source>Show &amp;Main Window</source>
@@ -2491,6 +2460,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>New Tab</source>
       <translation>Новая вкладка</translation>
+    </message>
+    <message>
+      <source>Welcome!</source>
+      <translation>Добро пожаловать!</translation>
     </message>
     <message>
       <source>Accessibility API is not enabled</source>
@@ -2568,12 +2541,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Печать статьи</translation>
     </message>
     <message>
-      <source>Article, Complete (*.html)</source>
-      <translation>Статья полностью (*.html)</translation>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Полный HTML (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Article, HTML Only (*.html)</source>
-      <translation>Статья, только HTML (*.html)</translation>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Один HTML (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Pdf (*.pdf)</source>
+      <translation>PDF-файл (*.pdf)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime-HTML (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2640,24 +2621,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Экспортировать Избранное в файл</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;All files (*.*)</source>
-      <translation>Файлы XML (*.xml);;Все файлы (*.*)</translation>
+      <source>Text files (*.txt);;XML files (*.xml)</source>
+      <translation>Текстовые файлы (*.txt);;XML-файлы (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
       <translation>Экспорт Избранного завершён</translation>
     </message>
     <message>
-      <source>Export Favorites to file as plain list</source>
-      <translation>Экспортировать Избранное в файл как простой список</translation>
-    </message>
-    <message>
       <source>Import Favorites from file</source>
       <translation>Импортировать Избранное из файла</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation>XML-файлы (*.xml);;Txt файлы (*.txt);;Все файлы (*.*)</translation>
+      <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
+      <translation>Текстовые и XML-файлы (*.txt *.xml);;Все файлы (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -2686,22 +2663,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Удалить заголовок &quot;%1&quot; из Избранного?</translation>
-    </message>
-    <message>
-      <source>Show &amp;Small Icons in Toolbars</source>
-      <translation>Показывать &amp;мелкие значки на панелях инструментов</translation>
-    </message>
-    <message>
-      <source>Show &amp;Large Icons in Toolbars</source>
-      <translation>Показывать &amp;крупные значки на панелях инструментов</translation>
-    </message>
-    <message>
-      <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation>Показывать обычные значки на панелях инструментов</translation>
-    </message>
-    <message>
-      <source>Toggle clipboard monitoring</source>
-      <translation>Включить мониторинг буфера обмена</translation>
     </message>
   </context>
   <context>
@@ -3048,6 +3009,14 @@ the application.</source>
       <translation>&amp;Всплывающее окно</translation>
     </message>
     <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>Выбирает, будет ли мониторинг буфера обмена включен по умолчанию при запуске программы&apos;.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>Начните с включенного мониторинга буфера обмена</translation>
+    </message>
+    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Отправлять переводимое слово в главное окно программы вместо перевода его во всплывающем окне</translation>
     </message>
@@ -3160,6 +3129,10 @@ in the pressed state when the word selection changes.</source>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Автоматически произносить слова в главном окне</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>Автоматическое произнесение слов во всплывающем окне</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3538,6 +3511,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>MB</translation>
     </message>
     <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>В некоторых системах функция Auto не выполняет никаких действий.</translation>
+    </message>
+    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Перезапустите программу, чтобы изменение языка вошло в силу.</translation>
     </message>
@@ -3554,16 +3531,20 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Требуется перезагрузка</translation>
     </message>
     <message>
-      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation>Выбирает, будет ли мониторинг буфера обмена включен по умолчанию при запуске программы&apos;.</translation>
+      <source>Enable</source>
+      <translation>Давать возможность</translation>
     </message>
     <message>
-      <source>Start with clipboard monitoring turned on</source>
-      <translation>Начните с включенного мониторинга буфера обмена</translation>
+      <source>Disable</source>
+      <translation>Запрещать</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in the popup</source>
-      <translation>Автоматическое произнесение слов во всплывающем окне</translation>
+      <source>Automatic</source>
+      <translation>Автоматический</translation>
+    </message>
+    <message>
+      <source>Enable application log</source>
+      <translation>Включить журнал приложений</translation>
     </message>
   </context>
   <context>
@@ -3933,12 +3914,6 @@ of the appropriate groups to use them.</source>
       <translation>Любые веб-сайты. Строка %GDWORD% будет заменена на запрашиваемое слово:</translation>
     </message>
     <message>
-      <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
-      <translation>Также можно использовать %GD1251% для кодировки CP1251, %GDISO1%...%GDISO16% для ISO 8859-1...ISO 8859-16 соответственно,
-%GDBIG5% для Big-5, %GDBIG5HKSCS% для Big5-HKSCS, %GDGBK% для GBK и GB18030, %GDSHIFTJIS% для Shift-JIS.</translation>
-    </message>
-    <message>
       <source>DICT servers</source>
       <translation>Серверы DICT</translation>
     </message>
@@ -4055,34 +4030,6 @@ based on English phonology</source>
     <message>
       <source>Hepburn</source>
       <translation>Хэпбёрн</translation>
-    </message>
-    <message>
-      <source>The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Система, передающая отображения на знаки каны наиболее точно.
-Стандартизована в ISO 3602.
-
-В GoldenDict пока не реализована.</translation>
-    </message>
-    <message>
-      <source>Nihon-shiki</source>
-      <translation>Nihon-shiki</translation>
-    </message>
-    <message>
-      <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Основана на системе Nihon-shiki, но модицирована в соответствии с
-современным Японским. Стандартизована в ISO 3602.
-
-В GoldenDict пока не реализована.</translation>
-    </message>
-    <message>
-      <source>Kunrei-shiki</source>
-      <translation>Kunrei-shiki</translation>
     </message>
     <message>
       <source>Syllabaries:</source>

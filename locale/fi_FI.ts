@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="fi_FI" sourcelanguage="en">
+<TS version="2.1" language="fi" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
@@ -61,14 +61,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Expand article</source>
-      <translation>Laajenna artikkeli</translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Piilota artikkeli</translation>
-    </message>
-    <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
       <translation>Ryhmästä &lt;b&gt;%2&lt;/b&gt;ei löytynyt käännöstä sanalle &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt;.</translation>
     </message>
@@ -96,16 +88,8 @@
   <context>
     <name>ArticleRequest</name>
     <message>
-      <source>Expand article</source>
-      <translation>Laajenna artikkeli</translation>
-    </message>
-    <message>
       <source>From </source>
       <translation>Sanakirjasta </translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Piilota artikkeli</translation>
     </message>
     <message>
       <source>Make a new Anki note</source>
@@ -155,12 +139,12 @@
       <translation>Resurssi</translation>
     </message>
     <message>
-      <source>Audio</source>
-      <translation>Ääni</translation>
-    </message>
-    <message>
       <source>TTS Voice</source>
       <translation>TTS-ääni</translation>
+    </message>
+    <message>
+      <source>Audio</source>
+      <translation>Ääni</translation>
     </message>
     <message>
       <source>Video</source>
@@ -183,12 +167,12 @@
       <translation>VIRHE: %1</translation>
     </message>
     <message>
-      <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>Viittattu resurssi ei ole&apos;t olemassa.</translation>
-    </message>
-    <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>Viittattu ääniohjelma ei ole&apos;t olemassa.</translation>
+    </message>
+    <message>
+      <source>The referenced resource doesn&apos;t exist.</source>
+      <translation>Viittattu resurssi ei ole&apos;t olemassa.</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
@@ -360,25 +344,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>custom transliteration</source>
       <translation>mukautettu translitterointi</translation>
-    </message>
-  </context>
-  <context>
-    <name>Dialog</name>
-    <message>
-      <source>Proxy authentication required</source>
-      <translation>Välityspalvelimen todennus vaaditaan</translation>
-    </message>
-    <message>
-      <source>You need to supply a Username and a Password to access via proxy</source>
-      <translation>Sinun täytyy antaa käyttäjätunnus ja salasana, jotta voit käyttää välityspalvelinta</translation>
-    </message>
-    <message>
-      <source>Username:</source>
-      <translation>Käyttäjänimi:</translation>
-    </message>
-    <message>
-      <source>Password:</source>
-      <translation>Salasana:</translation>
     </message>
   </context>
   <context>
@@ -855,12 +820,24 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Lisää kansio</translation>
     </message>
     <message>
+      <source>Clear All</source>
+      <translation>Tyhjennä kaikki</translation>
+    </message>
+    <message>
       <source>Favorites:</source>
       <translation>Suosikit:</translation>
     </message>
     <message>
       <source>All selected items will be deleted. Continue?</source>
       <translation>Kaikki valitut kohteet poistetaan. Jatketaanko?</translation>
+    </message>
+    <message>
+      <source>Clear All Items</source>
+      <translation>Tyhjennä kaikki kohteet</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all items?</source>
+      <translation>Haluatko varmasti tyhjentää kaikki kohteet?</translation>
     </message>
   </context>
   <context>
@@ -888,10 +865,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>from</source>
       <translation>alkaen</translation>
-    </message>
-    <message>
-      <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
-      <translation>Siirry Muokkaus: Sanakirjat. Lähteet Forvo ja hakea oman API avain jotta tämä virhe katoaa.</translation>
     </message>
   </context>
   <context>
@@ -2167,10 +2140,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
   <context>
     <name>MainWindow</name>
     <message>
-      <source>Welcome!</source>
-      <translation>Tervetuloa!</translation>
-    </message>
-    <message>
       <source>&amp;File</source>
       <translation>&amp;Tiedosto</translation>
     </message>
@@ -2407,12 +2376,20 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Ctrl+E</translation>
     </message>
     <message>
-      <source>Export to list</source>
-      <translation>Vie listana</translation>
-    </message>
-    <message>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>Näytä nimet sanakirjassa &amp;palkki</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>Näytä &amp;pienet kuvakkeet työkalupalkeissa</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>Näytä &amp;suuret kuvakkeet työkalupalkeissa</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>Näytä &amp;normaalit kuvakkeet työkalupalkissa</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
@@ -2429,6 +2406,10 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>Forward</source>
       <translation>Eteenpäin</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>Vaihda leikepöydän valvontaa</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2449,18 +2430,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>Found in Dictionaries:</source>
       <translation>Löytyi sanakirjoista:</translation>
-    </message>
-    <message>
-      <source>Words Zoom In</source>
-      <translation>Sanojen Lähennys</translation>
-    </message>
-    <message>
-      <source>Words Zoom Out</source>
-      <translation>Sanat Lähennä Loitonna</translation>
-    </message>
-    <message>
-      <source>Words Normal Size</source>
-      <translation>Sanojen Normaali Koko</translation>
     </message>
     <message>
       <source>Show &amp;Main Window</source>
@@ -2489,6 +2458,10 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>New Tab</source>
       <translation>Uusi välilehti</translation>
+    </message>
+    <message>
+      <source>Welcome!</source>
+      <translation>Tervetuloa!</translation>
     </message>
     <message>
       <source>Accessibility API is not enabled</source>
@@ -2565,12 +2538,20 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <translation>Tulosta artikkeli</translation>
     </message>
     <message>
-      <source>Article, Complete (*.html)</source>
-      <translation>Artikkeli, Täydellinen (*.html)</translation>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Täydellinen HTML (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Article, HTML Only (*.html)</source>
-      <translation>Vain Artikkeli, Html (*.html)</translation>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Yksittäinen HTML (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Pdf (*.pdf)</source>
+      <translation>Pdf (*.pdf)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime-HTML (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2637,24 +2618,20 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <translation>Vie suosikit tiedostoon</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;All files (*.*)</source>
-      <translation>XML-tiedostot (*.xml);;Kaikki tiedostot (*.*)</translation>
+      <source>Text files (*.txt);;XML files (*.xml)</source>
+      <translation>Tekstitiedostot (*.txt);;XML-tiedostot (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
       <translation>Suosikkien vienti valmis</translation>
     </message>
     <message>
-      <source>Export Favorites to file as plain list</source>
-      <translation>Vie suosikit tiedostoon pelkkänä listana</translation>
-    </message>
-    <message>
       <source>Import Favorites from file</source>
       <translation>Tuo suosikit tiedostosta</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation>XML-tiedostot (*.xml);;Txt tiedostot (*.txt);;Kaikki tiedostot (*.*)</translation>
+      <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
+      <translation>Teksti- ja XML-tiedostot (*.txt *.xml);;Kaikki tiedostot (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -2683,22 +2660,6 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Poista otsikkosana &quot;%1&quot; suosikeista?</translation>
-    </message>
-    <message>
-      <source>Show &amp;Small Icons in Toolbars</source>
-      <translation>Näytä &amp;pienet kuvakkeet työkalupalkeissa</translation>
-    </message>
-    <message>
-      <source>Show &amp;Large Icons in Toolbars</source>
-      <translation>Näytä &amp;suuret kuvakkeet työkalupalkeissa</translation>
-    </message>
-    <message>
-      <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation>Näytä &amp;normaalit kuvakkeet työkalupalkissa</translation>
-    </message>
-    <message>
-      <source>Toggle clipboard monitoring</source>
-      <translation>Vaihda leikepöydän valvontaa</translation>
     </message>
   </context>
   <context>
@@ -3043,6 +3004,14 @@ sovellus.</translation>
       <translation>&amp;Kartoita Ponnahdusikkuna</translation>
     </message>
     <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>Valitsee, otetaanko leikepöydän valvonta oletusarvoisesti käyttöön ohjelman&apos;käynnistyessä.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>Aloita leikepöydän valvonnalla</translation>
+    </message>
+    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Lähetä käännetty sana pääikkunaan sen sijaan, että se näytetään ponnahdusikkunassa</translation>
     </message>
@@ -3155,6 +3124,10 @@ painettuna tilassa, kun sana valinta muuttuu.</translation>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Ääntää sanat automaattisesti pääikkunassa</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>Äännä sanat automaattisesti ponnahdusikkunassa</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3531,6 +3504,10 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <translation> Mt</translation>
     </message>
     <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Auto ei tee mitään joissain järjestelmissä.</translation>
+    </message>
+    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Ohjelma pitää käynnistää uudelleen jotta kieli voidaan vaihtaa.</translation>
     </message>
@@ -3547,16 +3524,20 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <translation>Uudelleenkäynnistys tarvitaan</translation>
     </message>
     <message>
-      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation>Valitsee, otetaanko leikepöydän valvonta oletusarvoisesti käyttöön ohjelman&apos;käynnistyessä.</translation>
+      <source>Enable</source>
+      <translation>Ota käyttöön</translation>
     </message>
     <message>
-      <source>Start with clipboard monitoring turned on</source>
-      <translation>Aloita leikepöydän valvonnalla</translation>
+      <source>Disable</source>
+      <translation>Poista käytöstä</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in the popup</source>
-      <translation>Äännä sanat automaattisesti ponnahdusikkunassa</translation>
+      <source>Automatic</source>
+      <translation>Automaattinen</translation>
+    </message>
+    <message>
+      <source>Enable application log</source>
+      <translation>Ota sovellusloki käyttöön</translation>
     </message>
   </context>
   <context>
@@ -3923,12 +3904,6 @@ niiden käyttämiseksi.</translation>
       <translation>Kaikki sivustot. Merkkijono %GDWORD% korvataan kyselyn sanalla:</translation>
     </message>
     <message>
-      <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
-      <translation>Vaihtoehtoisesti, käytä %GD1251% CP1251, %GDISO1%...%GDISO16% ISO 8859-1... SO 8859-16 vastaavasti,
-%GDBIG5% Big-5, %GDBIG5HKSCS% Big5-HKSCS:lle, %GDGBK% GBK:lle ja GB18030, %GDSHIFTJIS% Shift-JIS:lle.</translation>
-    </message>
-    <message>
       <source>DICT servers</source>
       <translation>DICT-palvelimet</translation>
     </message>
@@ -4045,34 +4020,6 @@ perustuu Englanti fonologia</translation>
     <message>
       <source>Hepburn</source>
       <translation>Hepburn</translation>
-    </message>
-    <message>
-      <source>The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Kaikkein säännöllisin järjestelmä, jolla on yksi suhde
-kanan kirjoitusjärjestelmiin. Standardoitu ISO 3602
-
-Ei vielä toteutettu GoldenDictissä.</translation>
-    </message>
-    <message>
-      <source>Nihon-shiki</source>
-      <translation>Nihon-shiki</translation>
-    </message>
-    <message>
-      <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Perustuu Nihon-shiki järjestelmään, mutta muokattu moderni Japani.
-Standardoitu ISO 3602
-
-Ei vielä käytössä GoldenDict.</translation>
-    </message>
-    <message>
-      <source>Kunrei-shiki</source>
-      <translation>Kunrei-shiki</translation>
     </message>
     <message>
       <source>Syllabaries:</source>

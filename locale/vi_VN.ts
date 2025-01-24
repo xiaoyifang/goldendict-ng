@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="vi_VN" sourcelanguage="en">
+<TS version="2.1" language="vi" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
@@ -61,14 +61,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Expand article</source>
-      <translation>Mở rộng bài viết</translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Thu gọn bài viết</translation>
-    </message>
-    <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
       <translation>Không tìm thấy bản dịch nào cho &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; trong nhóm &lt;b&gt;%2&lt;/b&gt;.</translation>
     </message>
@@ -96,16 +88,8 @@
   <context>
     <name>ArticleRequest</name>
     <message>
-      <source>Expand article</source>
-      <translation>Mở rộng bài viết</translation>
-    </message>
-    <message>
       <source>From </source>
       <translation>Từ </translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Thu gọn bài viết</translation>
     </message>
     <message>
       <source>Make a new Anki note</source>
@@ -155,12 +139,12 @@
       <translation>Nguồn</translation>
     </message>
     <message>
-      <source>Audio</source>
-      <translation>Âm thanh</translation>
-    </message>
-    <message>
       <source>TTS Voice</source>
       <translation>Giọng nói TTS</translation>
+    </message>
+    <message>
+      <source>Audio</source>
+      <translation>Âm thanh</translation>
     </message>
     <message>
       <source>Video</source>
@@ -183,12 +167,12 @@
       <translation>LỖI: %1</translation>
     </message>
     <message>
-      <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>Nguồn tham chiếu không tồn tại.</translation>
-    </message>
-    <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>Chương trình âm thanh tham chiếu không có.</translation>
+    </message>
+    <message>
+      <source>The referenced resource doesn&apos;t exist.</source>
+      <translation>Nguồn tham chiếu không tồn tại.</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
@@ -359,25 +343,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>custom transliteration</source>
       <translation>phiên âm tùy chỉnh</translation>
-    </message>
-  </context>
-  <context>
-    <name>Dialog</name>
-    <message>
-      <source>Proxy authentication required</source>
-      <translation>Yêu cầu xác thực proxy</translation>
-    </message>
-    <message>
-      <source>You need to supply a Username and a Password to access via proxy</source>
-      <translation>Cung cấp Tài khoản và Mật khẩu truy cập proxy</translation>
-    </message>
-    <message>
-      <source>Username:</source>
-      <translation>Tài khoản:</translation>
-    </message>
-    <message>
-      <source>Password:</source>
-      <translation>Mật khẩu:</translation>
     </message>
   </context>
   <context>
@@ -854,12 +819,24 @@ between classic and school orthography in cyrillic)</source>
       <translation>Thêm thư mục</translation>
     </message>
     <message>
+      <source>Clear All</source>
+      <translation>Xóa tất cả</translation>
+    </message>
+    <message>
       <source>Favorites:</source>
       <translation>yêu thích:</translation>
     </message>
     <message>
       <source>All selected items will be deleted. Continue?</source>
       <translation>Tất cả các mục đã chọn sẽ bị xóa. Tiếp tục?</translation>
+    </message>
+    <message>
+      <source>Clear All Items</source>
+      <translation>Xóa tất cả các mục</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all items?</source>
+      <translation>Bạn có chắc chắn muốn xóa tất cả các mục không?</translation>
     </message>
   </context>
   <context>
@@ -887,10 +864,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>from</source>
       <translation>từ</translation>
-    </message>
-    <message>
-      <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
-      <translation>Hãy vào Biên tập|Từ điển|Nguồn|Forvo và nhập khóa API riêng để tắt lỗi này.</translation>
     </message>
   </context>
   <context>
@@ -2166,10 +2139,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>MainWindow</name>
     <message>
-      <source>Welcome!</source>
-      <translation>Chào mừng!</translation>
-    </message>
-    <message>
       <source>&amp;File</source>
       <translation>&amp;Tệp</translation>
     </message>
@@ -2406,12 +2375,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ctrl+E</translation>
     </message>
     <message>
-      <source>Export to list</source>
-      <translation>Xuất sang danh sách</translation>
-    </message>
-    <message>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>Hiện tên từ điển trên Thanh &amp;Từ điển</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>Hiển thị &amp;Biểu tượng nhỏ trong Thanh công cụ</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>Hiển thị &amp;Biểu tượng lớn trong Thanh công cụ</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>Hiển thị &amp;Biểu tượng bình thường trong Thanh công cụ</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
@@ -2428,6 +2405,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Forward</source>
       <translation>Tiếp tục</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>Bật/tắt giám sát clipboard</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2448,18 +2429,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Found in Dictionaries:</source>
       <translation>Từ điển tìm thấy:</translation>
-    </message>
-    <message>
-      <source>Words Zoom In</source>
-      <translation>Phóng to Từ</translation>
-    </message>
-    <message>
-      <source>Words Zoom Out</source>
-      <translation>Thu nhỏ Từ</translation>
-    </message>
-    <message>
-      <source>Words Normal Size</source>
-      <translation>Cỡ Từ bình thường</translation>
     </message>
     <message>
       <source>Show &amp;Main Window</source>
@@ -2488,6 +2457,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>New Tab</source>
       <translation>Thẻ mới</translation>
+    </message>
+    <message>
+      <source>Welcome!</source>
+      <translation>Chào mừng!</translation>
     </message>
     <message>
       <source>Accessibility API is not enabled</source>
@@ -2564,12 +2537,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>In Bài viết</translation>
     </message>
     <message>
-      <source>Article, Complete (*.html)</source>
-      <translation>Bài viết, Toàn bộ (*.html)</translation>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Hoàn thành Html (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Article, HTML Only (*.html)</source>
-      <translation>Bài viết, chỉ HTML (*.html)</translation>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Html đơn (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Pdf (*.pdf)</source>
+      <translation>Tệp PDF (*.pdf)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime Html (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2636,24 +2617,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Xuất yêu thích sang tệp</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;All files (*.*)</source>
-      <translation>Tệp XML (*.xml);;Tất cả tệp (*.*)</translation>
+      <source>Text files (*.txt);;XML files (*.xml)</source>
+      <translation>Tệp văn bản (*.txt);; Tệp XML (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
       <translation>Hoàn tất xuất yêu thích</translation>
     </message>
     <message>
-      <source>Export Favorites to file as plain list</source>
-      <translation>Xuất Mục ưa thích sang tệp dưới dạng danh sách thuần túy</translation>
-    </message>
-    <message>
       <source>Import Favorites from file</source>
       <translation>Nhập Mục ưa thích từ tệp</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation>Tệp XML (*.xml);;Tệp Txt (*.txt);;Tất cả tệp (*.*)</translation>
+      <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
+      <translation>Tệp văn bản và XML (*.txt *.xml);;Tất cả các tệp (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -2682,22 +2659,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Xóa tiêu đề &quot;%1&quot; khỏi Mục ưa thích?</translation>
-    </message>
-    <message>
-      <source>Show &amp;Small Icons in Toolbars</source>
-      <translation>Hiển thị &amp;Biểu tượng nhỏ trong Thanh công cụ</translation>
-    </message>
-    <message>
-      <source>Show &amp;Large Icons in Toolbars</source>
-      <translation>Hiển thị &amp;Biểu tượng lớn trong Thanh công cụ</translation>
-    </message>
-    <message>
-      <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation>Hiển thị &amp;Biểu tượng bình thường trong Thanh công cụ</translation>
-    </message>
-    <message>
-      <source>Toggle clipboard monitoring</source>
-      <translation>Bật/tắt giám sát clipboard</translation>
     </message>
   </context>
   <context>
@@ -3040,6 +3001,14 @@ the application.</source>
       <translation>&amp;Quét Popup</translation>
     </message>
     <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>Chọn xem tính năng giám sát bảng tạm có được bật theo mặc định khi chương trình&apos;khởi động hay không.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>Bắt đầu với chức năng giám sát clipboard được bật</translation>
+    </message>
+    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Hiện từ đã dịch trên cửa sổ chính thay vì cửa sổ popup</translation>
     </message>
@@ -3151,6 +3120,10 @@ in the pressed state when the word selection changes.</source>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Tự động phát âm trong cửa sổ chính</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>Tự động phát âm các từ trong cửa sổ bật lên</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3524,6 +3497,10 @@ từ các từ điển Stardict, Babylon và GLS</translation>
       <translation> MB</translation>
     </message>
     <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Chế độ tự động không có tác dụng gì trên một số hệ thống.</translation>
+    </message>
+    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Khởi động lại chương trình để áp dụng thay đổi ngôn ngữ.</translation>
     </message>
@@ -3540,16 +3517,20 @@ từ các từ điển Stardict, Babylon và GLS</translation>
       <translation>khởi động lại cần thiết</translation>
     </message>
     <message>
-      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation>Chọn xem tính năng giám sát bảng tạm có được bật theo mặc định khi chương trình&apos;khởi động hay không.</translation>
+      <source>Enable</source>
+      <translation>Cho phép</translation>
     </message>
     <message>
-      <source>Start with clipboard monitoring turned on</source>
-      <translation>Bắt đầu với chức năng giám sát clipboard được bật</translation>
+      <source>Disable</source>
+      <translation>Vô hiệu hóa</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in the popup</source>
-      <translation>Tự động phát âm các từ trong cửa sổ bật lên</translation>
+      <source>Automatic</source>
+      <translation>Tự động</translation>
+    </message>
+    <message>
+      <source>Enable application log</source>
+      <translation>Bật nhật ký ứng dụng</translation>
     </message>
   </context>
   <context>
@@ -3915,12 +3896,6 @@ phù hợp để sử dụng chúng.</translation>
       <translation>Có thể dùng bất kỳ trang nào. Chuỗi %GDWORD% sẽ được thay thế bởi từ truy vấn:</translation>
     </message>
     <message>
-      <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
-      <translation>Lựa chọn dùng %GD1251% for CP1251, %GDISO1%...%GDISO16% với ISO 8859-1...ISO 8859-16 tương ứng,
-%GDBIG5% với Big-5, %GDBIG5HKSCS% với Big5-HKSCS, %GDGBK% với GBK và GB18030, %GDSHIFTJIS% với Shift-JIS.</translation>
-    </message>
-    <message>
       <source>DICT servers</source>
       <translation>Máy chủ DICT</translation>
     </message>
@@ -4037,33 +4012,6 @@ Nhật, dựa trên hệ thống âm vị Anh ngữ</translation>
     <message>
       <source>Hepburn</source>
       <translation>Hepburn</translation>
-    </message>
-    <message>
-      <source>The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Hệ thống thông dụng nhất, có mối quan hệ tương ứng tới hệ viết kana. Tiêu chuẩn ISO 3602
-
-Chưa được bổ sung trong Từ điển Vàng.</translation>
-    </message>
-    <message>
-      <source>Nihon-shiki</source>
-      <translation>Nihon-shiki</translation>
-    </message>
-    <message>
-      <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Dựa trên hệ Nihon-shiki, nhưng đã thay đổi cho tiếng Nhật chuẩn hiện đại.
-Tiêu chuẩn ISO 3602
-
-Chưa được bổ sung trong Từ điển Vàng.</translation>
-    </message>
-    <message>
-      <source>Kunrei-shiki</source>
-      <translation>Kunrei-shiki</translation>
     </message>
     <message>
       <source>Syllabaries:</source>

@@ -739,13 +739,6 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
           <bool>true</bool>
          </property>
          <layout class="QGridLayout" name="gridLayout">
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_7">
-            <property name="text">
-             <string>Systems:</string>
-            </property>
-           </widget>
-          </item>
           <item row="0" column="1">
            <widget class="QCheckBox" name="enableHepburn">
             <property name="toolTip">
@@ -757,35 +750,20 @@ based on English phonology</string>
             </property>
            </widget>
           </item>
-          <item row="0" column="2">
-           <widget class="QCheckBox" name="enableNihonShiki">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-            <property name="toolTip">
-             <string>The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</string>
-            </property>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_7">
             <property name="text">
-             <string>Nihon-shiki</string>
+             <string>Systems:</string>
             </property>
            </widget>
           </item>
-          <item row="0" column="3">
-           <widget class="QCheckBox" name="enableKunreiShiki">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
+          <item row="1" column="1">
+           <widget class="QCheckBox" name="enableHiragana">
             <property name="toolTip">
-             <string>Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</string>
+             <string>Hiragana Japanese syllabary</string>
             </property>
             <property name="text">
-             <string>Kunrei-shiki</string>
+             <string>Hiragana</string>
             </property>
            </widget>
           </item>
@@ -793,16 +771,6 @@ Not implemented yet in GoldenDict.</string>
            <widget class="QLabel" name="label_8">
             <property name="text">
              <string>Syllabaries:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="2">
-           <widget class="QCheckBox" name="enableHiragana">
-            <property name="toolTip">
-             <string>Hiragana Japanese syllabary</string>
-            </property>
-            <property name="text">
-             <string>Hiragana</string>
             </property>
            </widget>
           </item>
@@ -863,8 +831,6 @@ Not implemented yet in GoldenDict.</string>
   <tabstop>enableGermanTransliteration</tabstop>
   <tabstop>enableRomaji</tabstop>
   <tabstop>enableHepburn</tabstop>
-  <tabstop>enableNihonShiki</tabstop>
-  <tabstop>enableKunreiShiki</tabstop>
   <tabstop>enableHiragana</tabstop>
   <tabstop>enableKatakana</tabstop>
   <tabstop>hunspellPath</tabstop>

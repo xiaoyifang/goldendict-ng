@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="fa_IR" sourcelanguage="en">
+<TS version="2.1" language="fa" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
@@ -61,14 +61,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Expand article</source>
-      <translation>گستراندن بند</translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>جمع‌کردن بند</translation>
-    </message>
-    <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
       <translation>هیچ ترجمه ای برای &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; در گروه &lt;b&gt;%2&lt;/b&gt;یافت نشد.</translation>
     </message>
@@ -96,16 +88,8 @@
   <context>
     <name>ArticleRequest</name>
     <message>
-      <source>Expand article</source>
-      <translation>گستراندن بند</translation>
-    </message>
-    <message>
       <source>From </source>
       <translation>از </translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>جمع‌کردن بند</translation>
     </message>
     <message>
       <source>Make a new Anki note</source>
@@ -155,12 +139,12 @@
       <translation>منبع</translation>
     </message>
     <message>
-      <source>Audio</source>
-      <translation>شنیداری</translation>
-    </message>
-    <message>
       <source>TTS Voice</source>
       <translation>گفتار TTS</translation>
+    </message>
+    <message>
+      <source>Audio</source>
+      <translation>شنیداری</translation>
     </message>
     <message>
       <source>Video</source>
@@ -183,12 +167,12 @@
       <translation>خطای: %1</translation>
     </message>
     <message>
-      <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>منبع ارجاع شده وجود ندارد.</translation>
-    </message>
-    <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>برنامه شنیداری ارجاع شده وجود ندارد.</translation>
+    </message>
+    <message>
+      <source>The referenced resource doesn&apos;t exist.</source>
+      <translation>منبع ارجاع شده وجود ندارد.</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
@@ -360,25 +344,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>custom transliteration</source>
       <translation>نویسه‌گردانی سفارشی</translation>
-    </message>
-  </context>
-  <context>
-    <name>Dialog</name>
-    <message>
-      <source>Proxy authentication required</source>
-      <translation>احراز هویت پروکسی مورد نیاز است</translation>
-    </message>
-    <message>
-      <source>You need to supply a Username and a Password to access via proxy</source>
-      <translation>برای دسترسی از طریق پروکسی باید یک نام کاربری و یک رمز عبور وارد کنید</translation>
-    </message>
-    <message>
-      <source>Username:</source>
-      <translation>نام کاربری:</translation>
-    </message>
-    <message>
-      <source>Password:</source>
-      <translation>گذرواژه:</translation>
     </message>
   </context>
   <context>
@@ -855,12 +820,24 @@ between classic and school orthography in cyrillic)</source>
       <translation>افزودن پوشه</translation>
     </message>
     <message>
+      <source>Clear All</source>
+      <translation>پاک کردن همه</translation>
+    </message>
+    <message>
       <source>Favorites:</source>
       <translation>پسندیده‌ها:</translation>
     </message>
     <message>
       <source>All selected items will be deleted. Continue?</source>
       <translation>تمام موارد برگزیده حذف خواهند شد. ادامه می‌دهید؟</translation>
+    </message>
+    <message>
+      <source>Clear All Items</source>
+      <translation>پاک کردن همه موارد</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all items?</source>
+      <translation>آیا مطمئن هستید که می خواهید همه موارد را پاک کنید؟</translation>
     </message>
   </context>
   <context>
@@ -888,10 +865,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>from</source>
       <translation>از</translation>
-    </message>
-    <message>
-      <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
-      <translation>به ویرایش|واژه‌نامه‌ها|منابع|فوروُ بروید و کلید API مربوط به ما را بپذیرید تا این خطا ناپدید شود.</translation>
     </message>
   </context>
   <context>
@@ -2167,10 +2140,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>MainWindow</name>
     <message>
-      <source>Welcome!</source>
-      <translation>خوش آمدید!</translation>
-    </message>
-    <message>
       <source>&amp;File</source>
       <translation>&amp;پرونده</translation>
     </message>
@@ -2407,12 +2376,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ctrl+E</translation>
     </message>
     <message>
-      <source>Export to list</source>
-      <translation>صادرات به لیست</translation>
-    </message>
-    <message>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>نمایش نا&amp;م‌ها در نوار واژه‌نامه</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>نمایش نمادهای &amp;کوچک در نوار ابزار</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>نمایش نمادهای &amp;بزرگ در نوار ابزار</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>نمایش نمادهای &amp;عادی در نوار ابزار</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
@@ -2429,6 +2406,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Forward</source>
       <translation>پیش</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>تغییر وضعیت نظارت بر کلیپ بورد</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2449,18 +2430,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Found in Dictionaries:</source>
       <translation>در این واژه‌نامه‌ها یافت شد:</translation>
-    </message>
-    <message>
-      <source>Words Zoom In</source>
-      <translation>بزرگ‌نمایی به درون واژه‌ها</translation>
-    </message>
-    <message>
-      <source>Words Zoom Out</source>
-      <translation>بزرگ‌نمایی به بیرون واژه‌ها</translation>
-    </message>
-    <message>
-      <source>Words Normal Size</source>
-      <translation>اندازه عادی واژه‌ها</translation>
     </message>
     <message>
       <source>Show &amp;Main Window</source>
@@ -2489,6 +2458,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>New Tab</source>
       <translation>زبانه تازه</translation>
+    </message>
+    <message>
+      <source>Welcome!</source>
+      <translation>خوش آمدید!</translation>
     </message>
     <message>
       <source>Accessibility API is not enabled</source>
@@ -2565,12 +2538,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>چاپ بند</translation>
     </message>
     <message>
-      <source>Article, Complete (*.html)</source>
-      <translation>بند، کامل (*.html)</translation>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Html کامل (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Article, HTML Only (*.html)</source>
-      <translation>بند HTML تنها (*.html)</translation>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Html تکی (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Pdf (*.pdf)</source>
+      <translation>پی دی اف (*.pdf)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime Html (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2637,24 +2618,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>برون‌ریزی پسندیده‌ها به پرونده</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;All files (*.*)</source>
-      <translation>فایل های XML (*.xml)؛؛ همه فایل ها (*.*)</translation>
+      <source>Text files (*.txt);;XML files (*.xml)</source>
+      <translation>فایل های متنی (*.txt)؛؛ فایل های XML (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
       <translation>برون‌ریزی پسندیده‌ها کامل شد</translation>
     </message>
     <message>
-      <source>Export Favorites to file as plain list</source>
-      <translation>برون‌ریزی پسندیده‌ها به پرونده به عنوان متن ساده</translation>
-    </message>
-    <message>
       <source>Import Favorites from file</source>
       <translation>درون‌ریزی پسندیده‌ها از پرونده</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation>فایل های XML (*.xml)؛؛ فایل های Txt (*.txt)؛؛ همه فایل ها (*.*)</translation>
+      <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
+      <translation>فایل های متنی و XML (*.txt *.xml)؛؛ همه فایل ها (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -2683,22 +2660,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>عنوان &quot;%1&quot; از موارد دلخواه حذف شود؟</translation>
-    </message>
-    <message>
-      <source>Show &amp;Small Icons in Toolbars</source>
-      <translation>نمایش نمادهای &amp;کوچک در نوار ابزار</translation>
-    </message>
-    <message>
-      <source>Show &amp;Large Icons in Toolbars</source>
-      <translation>نمایش نمادهای &amp;بزرگ در نوار ابزار</translation>
-    </message>
-    <message>
-      <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation>نمایش نمادهای &amp;عادی در نوار ابزار</translation>
-    </message>
-    <message>
-      <source>Toggle clipboard monitoring</source>
-      <translation>تغییر وضعیت نظارت بر کلیپ بورد</translation>
     </message>
   </context>
   <context>
@@ -3042,6 +3003,14 @@ the application.</source>
       <translation>پویش &amp;واشو</translation>
     </message>
     <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>انتخاب می کند که آیا هنگام راه اندازی برنامه&apos;نظارت بر کلیپ بورد به طور پیش فرض روشن شود یا خیر.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>با روشن بودن نظارت بر کلیپ بورد شروع کنید</translation>
+    </message>
+    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>واژه ترجمه شده را به‌جای نمایش در پنجره واشو به پنجره اصلی بفرست</translation>
     </message>
@@ -3154,6 +3123,10 @@ in the pressed state when the word selection changes.</source>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>بیان خودکار واژه‌ها در پنجره اصلی</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>تلفظ خودکار کلمات در پنجره بازشو</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3529,6 +3502,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation> MB</translation>
     </message>
     <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>خودکار در برخی از سیستم ها هیچ کاری نمی کند.</translation>
+    </message>
+    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>برای به‌کار برده شدن تغییر زبان برنامه را دوباره راه‌اندازی کنید.</translation>
     </message>
@@ -3545,16 +3522,20 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>نیاز به راه اندازی مجدد</translation>
     </message>
     <message>
-      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation>انتخاب می کند که آیا هنگام راه اندازی برنامه&apos;نظارت بر کلیپ بورد به طور پیش فرض روشن شود یا خیر.</translation>
+      <source>Enable</source>
+      <translation>فعال کردن</translation>
     </message>
     <message>
-      <source>Start with clipboard monitoring turned on</source>
-      <translation>با روشن بودن نظارت بر کلیپ بورد شروع کنید</translation>
+      <source>Disable</source>
+      <translation>غیر فعال کردن</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in the popup</source>
-      <translation>تلفظ خودکار کلمات در پنجره بازشو</translation>
+      <source>Automatic</source>
+      <translation>خودکار</translation>
+    </message>
+    <message>
+      <source>Enable application log</source>
+      <translation>فعال کردن گزارش برنامه</translation>
     </message>
   </context>
   <context>
@@ -3921,12 +3902,6 @@ of the appropriate groups to use them.</source>
       <translation>هر پایگاه وبی. یک رشته %GDWORD% با واژه درخواستی جای‌گزین می‌شود:</translation>
     </message>
     <message>
-      <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
-      <translation>به‌نوبت، به‌کار می‌برد %GD1251% برای CP1251،و %GDISO1%...%GDISO16% برای ISO 8859-1...ISO 8859-16 را به‌ترتیب برای،
-%GDBIG5% برای Big-5، و %GDBIG5HKSCS% برای Big5-HKSCS، و %GDGBK% برای GBK و GB18030، و %GDSHIFTJIS% برای Shift-JIS.</translation>
-    </message>
-    <message>
       <source>DICT servers</source>
       <translation>سرورهای DICT</translation>
     </message>
@@ -4043,34 +4018,6 @@ based on English phonology</source>
     <message>
       <source>Hepburn</source>
       <translation>هپ‌برن</translation>
-    </message>
-    <message>
-      <source>The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>منظم‌ترین سامانه، یک رابطه یک-به-یک با سامانه‌های
-نوشتاری کانا. استاندارد شده در ISO 3602
-
-هنوز در گلدن‌دیکت پیاده‌سازی نشده است.</translation>
-    </message>
-    <message>
-      <source>Nihon-shiki</source>
-      <translation>نیهون-شیکی</translation>
-    </message>
-    <message>
-      <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>برپایه سامانه نیهون-شیکی، ولی برای استاندارد نوین ژاپنی پیراسته شده است.
-استاندارد شده در ISO 3602
-
-هنوز در گلدن‌دیکت پیاده‌سازی نشده است.</translation>
-    </message>
-    <message>
-      <source>Kunrei-shiki</source>
-      <translation>کنری-شیکی</translation>
     </message>
     <message>
       <source>Syllabaries:</source>

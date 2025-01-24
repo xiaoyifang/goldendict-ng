@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="lt_LT" sourcelanguage="en">
+<TS version="2.1" language="lt" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
@@ -61,14 +61,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Expand article</source>
-      <translation>Išplėsti</translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Suskleisti</translation>
-    </message>
-    <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
       <translation>&lt;b&gt;%2&lt;/b&gt;grupėje nerastas &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; vertimas.</translation>
     </message>
@@ -96,16 +88,8 @@
   <context>
     <name>ArticleRequest</name>
     <message>
-      <source>Expand article</source>
-      <translation>Išplėsti</translation>
-    </message>
-    <message>
       <source>From </source>
       <translation> </translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Suskleisti</translation>
     </message>
     <message>
       <source>Make a new Anki note</source>
@@ -155,12 +139,12 @@
       <translation>Šaltinis</translation>
     </message>
     <message>
-      <source>Audio</source>
-      <translation>Garsas</translation>
-    </message>
-    <message>
       <source>TTS Voice</source>
       <translation>TTS balsas</translation>
+    </message>
+    <message>
+      <source>Audio</source>
+      <translation>Garsas</translation>
     </message>
     <message>
       <source>Video</source>
@@ -183,12 +167,12 @@
       <translation>Klaida: %1</translation>
     </message>
     <message>
-      <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>Nurodyto šaltinio nėra.</translation>
-    </message>
-    <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>Nėra nurodytos garso programos.</translation>
+    </message>
+    <message>
+      <source>The referenced resource doesn&apos;t exist.</source>
+      <translation>Nurodyto šaltinio nėra.</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
@@ -359,25 +343,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>custom transliteration</source>
       <translation>pasirinktinė transliteracija</translation>
-    </message>
-  </context>
-  <context>
-    <name>Dialog</name>
-    <message>
-      <source>Proxy authentication required</source>
-      <translation>Reikia prisijungti per įgaliotąjį serverį</translation>
-    </message>
-    <message>
-      <source>You need to supply a Username and a Password to access via proxy</source>
-      <translation>Norėdami naudotis įgaliotuoju serveriu, įveskite naudotojo vardą  ir slaptažodį</translation>
-    </message>
-    <message>
-      <source>Username:</source>
-      <translation>Naudotojo vardas:</translation>
-    </message>
-    <message>
-      <source>Password:</source>
-      <translation>Slaptažodis:</translation>
     </message>
   </context>
   <context>
@@ -854,12 +819,24 @@ between classic and school orthography in cyrillic)</source>
       <translation>Pridėti aplanką</translation>
     </message>
     <message>
+      <source>Clear All</source>
+      <translation>Išvalyti viską</translation>
+    </message>
+    <message>
       <source>Favorites:</source>
       <translation>Žymelės:</translation>
     </message>
     <message>
       <source>All selected items will be deleted. Continue?</source>
       <translation>Ištrinsimos visos pažymėtos žymelės. Tęsti?</translation>
+    </message>
+    <message>
+      <source>Clear All Items</source>
+      <translation>Išvalyti visus elementus</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all items?</source>
+      <translation>Ar tikrai norite išvalyti visus elementus?</translation>
     </message>
   </context>
   <context>
@@ -887,10 +864,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>from</source>
       <translation>iš</translation>
-    </message>
-    <message>
-      <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
-      <translation>Jei nenorite matyti šios klaidos, eikite į meniu Taisa &gt; Žodynai &gt; Ištekliai &gt; Forvo ir nurodykite nuosavą API raktą.</translation>
     </message>
   </context>
   <context>
@@ -2166,10 +2139,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>MainWindow</name>
     <message>
-      <source>Welcome!</source>
-      <translation>Jus sveikina GoldenDict!</translation>
-    </message>
-    <message>
       <source>&amp;File</source>
       <translation>&amp;Failas</translation>
     </message>
@@ -2406,12 +2375,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>Vald+E</translation>
     </message>
     <message>
-      <source>Export to list</source>
-      <translation>Eksportuoti paprastai</translation>
-    </message>
-    <message>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>&amp;Pavadinimai žodynų juostoje</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>Rodyti &amp;mažas piktogramas įrankių juostose</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>Rodyti &amp;dideles piktogramas įrankių juostose</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>Rodyti &amp;įprastas piktogramas įrankių juostose</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
@@ -2428,6 +2405,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Forward</source>
       <translation>Pirmyn</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>Perjungti iškarpinės stebėjimą</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2448,18 +2429,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Found in Dictionaries:</source>
       <translation>Rasta žodynuose:</translation>
-    </message>
-    <message>
-      <source>Words Zoom In</source>
-      <translation>Padidinti žodžius</translation>
-    </message>
-    <message>
-      <source>Words Zoom Out</source>
-      <translation>Sumažinti žodžius</translation>
-    </message>
-    <message>
-      <source>Words Normal Size</source>
-      <translation>Įprastas žodžių dydis</translation>
     </message>
     <message>
       <source>Show &amp;Main Window</source>
@@ -2488,6 +2457,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>New Tab</source>
       <translation>Nauja kortelė</translation>
+    </message>
+    <message>
+      <source>Welcome!</source>
+      <translation>Jus sveikina GoldenDict!</translation>
     </message>
     <message>
       <source>Accessibility API is not enabled</source>
@@ -2565,12 +2538,20 @@ Norėdami atverti parsisiuntimo puslapį, spauskite &lt;b&gt;Parsisiųsti&lt;/b&
       <translation>Spausdinti straipsnį</translation>
     </message>
     <message>
-      <source>Article, Complete (*.html)</source>
-      <translation>Visas straipsnis (*.html)</translation>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Pilnas HTML (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Article, HTML Only (*.html)</source>
-      <translation>Straipsnis, tik HTML (*.html)</translation>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Vienas HTML (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Pdf (*.pdf)</source>
+      <translation>Pdf (*.pdf)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>MIM HTML (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2637,24 +2618,20 @@ Norėdami atverti parsisiuntimo puslapį, spauskite &lt;b&gt;Parsisiųsti&lt;/b&
       <translation>Eksportuoti žymeles</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;All files (*.*)</source>
-      <translation>XML failai (*.xml);;Visi failai (*.*)</translation>
+      <source>Text files (*.txt);;XML files (*.xml)</source>
+      <translation>Tekstiniai failai (*.txt);;XML failai (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
       <translation>Žymelių eksportavimas baigtas</translation>
     </message>
     <message>
-      <source>Export Favorites to file as plain list</source>
-      <translation>Eksportuoti žymeles kaip sąrašą į paprastą tekstinį failą</translation>
-    </message>
-    <message>
       <source>Import Favorites from file</source>
       <translation>Importuoti žymeles iš failo</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation>XML failai (*.xml);;Txt failai (*.txt);;Visi failai (*.*)</translation>
+      <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
+      <translation>Teksto ir XML failai (*.txt *.xml);;Visi failai (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -2683,22 +2660,6 @@ Norėdami atverti parsisiuntimo puslapį, spauskite &lt;b&gt;Parsisiųsti&lt;/b&
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Pašalinti antraštinį žodį „%1“ iš žymelių?</translation>
-    </message>
-    <message>
-      <source>Show &amp;Small Icons in Toolbars</source>
-      <translation>Rodyti &amp;mažas piktogramas įrankių juostose</translation>
-    </message>
-    <message>
-      <source>Show &amp;Large Icons in Toolbars</source>
-      <translation>Rodyti &amp;dideles piktogramas įrankių juostose</translation>
-    </message>
-    <message>
-      <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation>Rodyti &amp;įprastas piktogramas įrankių juostose</translation>
-    </message>
-    <message>
-      <source>Toggle clipboard monitoring</source>
-      <translation>Perjungti iškarpinės stebėjimą</translation>
     </message>
   </context>
   <context>
@@ -3043,6 +3004,14 @@ tiesiog paslepiama.</translation>
       <translation>&amp;Iškylantis langas</translation>
     </message>
     <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>Pasirenkama, ar iškarpinės stebėjimas bus įjungtas pagal numatytuosius nustatymus paleidžiant programą&apos;.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>Pradėkite įjungę iškarpinės stebėjimą</translation>
+    </message>
+    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Žodžio vertimas pagrindiniame lange, o ne iškylančiame lange</translation>
     </message>
@@ -3155,6 +3124,10 @@ po to, kai pasikeis pažymėtas žodis.</translation>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Automatiškai ištarti pagrindinio lango žodžius</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>Automatiškai ištarti žodžius iššokančiajame lange</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3528,6 +3501,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation> MB</translation>
     </message>
     <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Automatinis kai kuriose sistemose nieko nedaro.</translation>
+    </message>
+    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Naująją kalbą programa naudos po to, kai ją atversite iš naujo.</translation>
     </message>
@@ -3544,16 +3521,20 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Reikia paleisti iš naujo</translation>
     </message>
     <message>
-      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation>Pasirenkama, ar iškarpinės stebėjimas bus įjungtas pagal numatytuosius nustatymus paleidžiant programą&apos;.</translation>
+      <source>Enable</source>
+      <translation>Įgalinti</translation>
     </message>
     <message>
-      <source>Start with clipboard monitoring turned on</source>
-      <translation>Pradėkite įjungę iškarpinės stebėjimą</translation>
+      <source>Disable</source>
+      <translation>Išjungti</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in the popup</source>
-      <translation>Automatiškai ištarti žodžius iššokančiajame lange</translation>
+      <source>Automatic</source>
+      <translation>Automatinis</translation>
+    </message>
+    <message>
+      <source>Enable application log</source>
+      <translation>Įgalinti programų žurnalą</translation>
     </message>
   </context>
   <context>
@@ -3919,12 +3900,6 @@ rašybos spėjimus.
       <translation>Bet kokios svetainės. %GDWORD% rašykite vietoj užklausos žodžio:</translation>
     </message>
     <message>
-      <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
-      <translation>Arba naudokite %GD1251% – CP1251, %GDISO1%...%GDISO16% – ISO 8859-1...ISO 8859-16 atitinkamai koduotei,
-%GDBIG5% – Big-5, %GDBIG5HKSCS% – Big5-HKSCS, %GDGBK% – GBK ir GB18030, %GDSHIFTJIS% – Shift-JIS.</translation>
-    </message>
-    <message>
       <source>DICT servers</source>
       <translation>DICT serveriai</translation>
     </message>
@@ -4041,34 +4016,6 @@ anglų kalbos fonologijos pagrindu</translation>
     <message>
       <source>Hepburn</source>
       <translation>Hepburnas</translation>
-    </message>
-    <message>
-      <source>The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Taisyklingiausia sistema, turinti tiesioginį ryšį su
-kana rašto sistemomis. Standartizuota kaip ISO 3602
-
-Dar neįtraukta į GoldenDict.</translation>
-    </message>
-    <message>
-      <source>Nihon-shiki</source>
-      <translation>Nihon-shiki</translation>
-    </message>
-    <message>
-      <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Sukurta Nihon-shiki sistemos pagrindu, bet pritaikyta šiuolaikinei japponų kalbai.
-Standartizuota kaip ISO 3602
-
-Dar įtraukta į GoldenDict.</translation>
-    </message>
-    <message>
-      <source>Kunrei-shiki</source>
-      <translation>Kunrei-šiki</translation>
     </message>
     <message>
       <source>Syllabaries:</source>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="hu_HU" sourcelanguage="en">
+<TS version="2.1" language="hu" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
@@ -61,14 +61,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Expand article</source>
-      <translation>Szócikk kibontása</translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Szócikk összecsukása</translation>
-    </message>
-    <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
       <translation>Nem található fordítás ehhez: &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt;, a(z) &lt;b&gt;%2&lt;/b&gt; csoportban.</translation>
     </message>
@@ -96,16 +88,8 @@
   <context>
     <name>ArticleRequest</name>
     <message>
-      <source>Expand article</source>
-      <translation>Szócikk kibontása</translation>
-    </message>
-    <message>
       <source>From </source>
       <translation>Forrás </translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Szócikk összecsukása</translation>
     </message>
     <message>
       <source>Make a new Anki note</source>
@@ -155,12 +139,12 @@
       <translation>Erőforrás</translation>
     </message>
     <message>
-      <source>Audio</source>
-      <translation>Hang</translation>
-    </message>
-    <message>
       <source>TTS Voice</source>
       <translation>TTS hang</translation>
+    </message>
+    <message>
+      <source>Audio</source>
+      <translation>Hang</translation>
     </message>
     <message>
       <source>Video</source>
@@ -183,12 +167,12 @@
       <translation>HIBA: %1</translation>
     </message>
     <message>
-      <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>A hivatkozott erőforrás nem létezik.</translation>
-    </message>
-    <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>A hivatkozott hanglejátszó program nem található.</translation>
+    </message>
+    <message>
+      <source>The referenced resource doesn&apos;t exist.</source>
+      <translation>A hivatkozott erőforrás nem létezik.</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
@@ -360,25 +344,6 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
     <message>
       <source>custom transliteration</source>
       <translation>egyéni átbetűzés</translation>
-    </message>
-  </context>
-  <context>
-    <name>Dialog</name>
-    <message>
-      <source>Proxy authentication required</source>
-      <translation>Proxy hitelesítés szükséges</translation>
-    </message>
-    <message>
-      <source>You need to supply a Username and a Password to access via proxy</source>
-      <translation>Proxyn keresztüli eléréshez meg kell adnia egy felhasználónevet és jelszót</translation>
-    </message>
-    <message>
-      <source>Username:</source>
-      <translation>Felhasználónév:</translation>
-    </message>
-    <message>
-      <source>Password:</source>
-      <translation>Jelszó:</translation>
     </message>
   </context>
   <context>
@@ -855,12 +820,24 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
       <translation>Új mappa</translation>
     </message>
     <message>
+      <source>Clear All</source>
+      <translation>Összes törlése</translation>
+    </message>
+    <message>
       <source>Favorites:</source>
       <translation>Kedvencek:</translation>
     </message>
     <message>
       <source>All selected items will be deleted. Continue?</source>
       <translation>Biztos, hogy töröl minden kijelölt elemet?</translation>
+    </message>
+    <message>
+      <source>Clear All Items</source>
+      <translation>Minden elem törlése</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all items?</source>
+      <translation>Biztosan törölni szeretné az összes elemet?</translation>
     </message>
   </context>
   <context>
@@ -888,10 +865,6 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
     <message>
       <source>from</source>
       <translation>hely</translation>
-    </message>
-    <message>
-      <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
-      <translation>A hiba megszüntetéséhez nyissa meg a Szerkesztés|Szótárak|Források|Forvo menüt és adja meg a saját API kulcsát.</translation>
     </message>
   </context>
   <context>
@@ -2167,10 +2140,6 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
   <context>
     <name>MainWindow</name>
     <message>
-      <source>Welcome!</source>
-      <translation>Üdvözöljük!</translation>
-    </message>
-    <message>
       <source>&amp;File</source>
       <translation>&amp;Fájl</translation>
     </message>
@@ -2407,12 +2376,20 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
       <translation>Ctrl+E</translation>
     </message>
     <message>
-      <source>Export to list</source>
-      <translation>Exportálás listába</translation>
-    </message>
-    <message>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>Nevek megjelenítése a szótár &amp;gombokon</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>&amp;Kis ikonok megjelenítése az eszköztáron</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>&amp;Nagy ikonok megjelenítése az eszköztáron</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>&amp;Normál ikonok megjelenítése az eszköztáron</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
@@ -2429,6 +2406,10 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
     <message>
       <source>Forward</source>
       <translation>Előre</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>Vágólap-figyelés be- és kikapcsolása</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2449,18 +2430,6 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
     <message>
       <source>Found in Dictionaries:</source>
       <translation>Találat a szótárakban:</translation>
-    </message>
-    <message>
-      <source>Words Zoom In</source>
-      <translation>Szavak nagyítása</translation>
-    </message>
-    <message>
-      <source>Words Zoom Out</source>
-      <translation>Szavak kicsinyítése</translation>
-    </message>
-    <message>
-      <source>Words Normal Size</source>
-      <translation>Szavak alapértelmezett méretben</translation>
     </message>
     <message>
       <source>Show &amp;Main Window</source>
@@ -2489,6 +2458,10 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
     <message>
       <source>New Tab</source>
       <translation>Új lap</translation>
+    </message>
+    <message>
+      <source>Welcome!</source>
+      <translation>Üdvözöljük!</translation>
     </message>
     <message>
       <source>Accessibility API is not enabled</source>
@@ -2565,12 +2538,20 @@ A &apos;*&apos;, &apos;?&apos;, &apos;[&apos; és &apos;]&apos; karakterek keres
       <translation>Szócikk nyomtatása</translation>
     </message>
     <message>
-      <source>Article, Complete (*.html)</source>
-      <translation>Szócikk, Teljes (*.html)</translation>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Teljes HTML (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Article, HTML Only (*.html)</source>
-      <translation>Szócikk, Csak HTML (*.html)</translation>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Egyetlen HTML (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Pdf (*.pdf)</source>
+      <translation>Pdf (*.pdf)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime HTML (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2637,24 +2618,20 @@ A &apos;*&apos;, &apos;?&apos;, &apos;[&apos; és &apos;]&apos; karakterek keres
       <translation>Kedvencek exportálása fájlba</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;All files (*.*)</source>
-      <translation>XML fájlok (*.xml);;Minden fájl (*.*)</translation>
+      <source>Text files (*.txt);;XML files (*.xml)</source>
+      <translation>Szöveges fájlok (*.txt); XML fájlok (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
       <translation>Kedvencek exportálása kész</translation>
     </message>
     <message>
-      <source>Export Favorites to file as plain list</source>
-      <translation>Kedvencek exportálása fájlba egyszerű listaként</translation>
-    </message>
-    <message>
       <source>Import Favorites from file</source>
       <translation>Kedvencek importálása fájlból</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation>XML fájlok (*.xml);;Szövegfájlok (*.txt);;Minden fájl (*.*)</translation>
+      <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
+      <translation>Szöveges és XML fájlok (*.txt *.xml);;Minden fájl (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -2683,22 +2660,6 @@ A &apos;*&apos;, &apos;?&apos;, &apos;[&apos; és &apos;]&apos; karakterek keres
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Eltávolítja a címszót a kedvencekből: &quot;%1&quot;?</translation>
-    </message>
-    <message>
-      <source>Show &amp;Small Icons in Toolbars</source>
-      <translation>&amp;Kis ikonok megjelenítése az eszköztáron</translation>
-    </message>
-    <message>
-      <source>Show &amp;Large Icons in Toolbars</source>
-      <translation>&amp;Nagy ikonok megjelenítése az eszköztáron</translation>
-    </message>
-    <message>
-      <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation>&amp;Normál ikonok megjelenítése az eszköztáron</translation>
-    </message>
-    <message>
-      <source>Toggle clipboard monitoring</source>
-      <translation>Vágólap-figyelés be- és kikapcsolása</translation>
     </message>
   </context>
   <context>
@@ -3043,6 +3004,14 @@ való kilépés helyett.</translation>
       <translation>Fordító felugró&amp;ablak</translation>
     </message>
     <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>Kiválasztja, hogy a vágólap figyelése alapértelmezés szerint be legyen-e kapcsolva a&apos;program indításakor.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>Kezdje a vágólap-felügyelet bekapcsolásával</translation>
+    </message>
+    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>A lefordított szót a program főablakában keresi ki, a felugróablak megjelenítése helyett</translation>
     </message>
@@ -3155,6 +3124,10 @@ kijelölésekor, ha a kiválasztott billentyűk mindegyike le van nyomva.</trans
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Szavak automatikus kimondása a főablakban</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>Szavak automatikus kiejtése a felugró ablakban</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3530,6 +3503,10 @@ is felhasználja további szócikkek felfedezéséhez</translation>
       <translation> MB</translation>
     </message>
     <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Az Auto nem csinál semmit egyes rendszereken.</translation>
+    </message>
+    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Indítsa újra a programot a kiválasztott nyelv alkalmazásához.</translation>
     </message>
@@ -3546,16 +3523,20 @@ is felhasználja további szócikkek felfedezéséhez</translation>
       <translation>Újraindítás szükséges</translation>
     </message>
     <message>
-      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation>Kiválasztja, hogy a vágólap figyelése alapértelmezés szerint be legyen-e kapcsolva a&apos;program indításakor.</translation>
+      <source>Enable</source>
+      <translation>Engedélyezés</translation>
     </message>
     <message>
-      <source>Start with clipboard monitoring turned on</source>
-      <translation>Kezdje a vágólap-felügyelet bekapcsolásával</translation>
+      <source>Disable</source>
+      <translation>Letiltás</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in the popup</source>
-      <translation>Szavak automatikus kiejtése a felugró ablakban</translation>
+      <source>Automatic</source>
+      <translation>Automatikus</translation>
+    </message>
+    <message>
+      <source>Enable application log</source>
+      <translation>Alkalmazásnapló engedélyezése</translation>
     </message>
   </context>
   <context>
@@ -3922,12 +3903,6 @@ csoportok aljához.</translation>
       <translation>Bármilyen weboldal. A %GDWORD% kifejezés a keresett szóra cserélődik:</translation>
     </message>
     <message>
-      <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
-      <translation>Alternatívaként használhatja a %GD1251% értéket CP1251-hez, %GDISO1%...%GDISO16% értékeket, rendre ISO 8859-1...ISO 8859-16-hoz,
-%GDBIG5% Big-5-höz, %GDBIG5HKSCS% Big5-HKSCS-hez, %GDGBK% GBK-hoz és GB18030-hoz, %GDSHIFTJIS% a Shift-JIS-hez.</translation>
-    </message>
-    <message>
       <source>DICT servers</source>
       <translation>DICT szerverek</translation>
     </message>
@@ -4044,34 +4019,6 @@ fonológián alapul</translation>
     <message>
       <source>Hepburn</source>
       <translation>Hepburn</translation>
-    </message>
-    <message>
-      <source>The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>A legszabályosabb rendszer, egy az egyben kapcsolható a 
-kana írási rendszerhez. Az ISO-3602-es szabvány írja le.
-
-A GoldenDict még nem támogatja.</translation>
-    </message>
-    <message>
-      <source>Nihon-shiki</source>
-      <translation>Nihon-shiki</translation>
-    </message>
-    <message>
-      <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>A Nihon-shiki rendszeren alapul, de a modern szabályos japánhoz igazítva.
-Az ISO-3602-es szabvány írja le.
-
-A GoldenDict még nem támogatja.</translation>
-    </message>
-    <message>
-      <source>Kunrei-shiki</source>
-      <translation>Kunrei-shiki</translation>
     </message>
     <message>
       <source>Syllabaries:</source>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="pt_PT" sourcelanguage="en">
+<TS version="2.1" language="pt-PT" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
@@ -61,14 +61,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Expand article</source>
-      <translation>Expandir artigo</translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Recolher artigo</translation>
-    </message>
-    <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
       <translation>Nenhuma tradução para &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; foi encontrada no grupo &lt;b&gt;%2&lt;/b&gt;.</translation>
     </message>
@@ -96,16 +88,8 @@
   <context>
     <name>ArticleRequest</name>
     <message>
-      <source>Expand article</source>
-      <translation>Expandir artigo</translation>
-    </message>
-    <message>
       <source>From </source>
       <translation>De </translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Recolher artigo</translation>
     </message>
     <message>
       <source>Make a new Anki note</source>
@@ -155,12 +139,12 @@
       <translation>Recurso</translation>
     </message>
     <message>
-      <source>Audio</source>
-      <translation>Áudio</translation>
-    </message>
-    <message>
       <source>TTS Voice</source>
       <translation>Voz TTS</translation>
+    </message>
+    <message>
+      <source>Audio</source>
+      <translation>Áudio</translation>
     </message>
     <message>
       <source>Video</source>
@@ -183,12 +167,12 @@
       <translation>ERRO: %1</translation>
     </message>
     <message>
-      <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>O recurso referenciado não existe.</translation>
-    </message>
-    <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>O programa de áudio referenciado não existe.</translation>
+    </message>
+    <message>
+      <source>The referenced resource doesn&apos;t exist.</source>
+      <translation>O recurso referenciado não existe.</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
@@ -360,25 +344,6 @@ entre ortografia clássica e escolar em ciílico)</translation>
     <message>
       <source>custom transliteration</source>
       <translation>transliteração personalizada</translation>
-    </message>
-  </context>
-  <context>
-    <name>Dialog</name>
-    <message>
-      <source>Proxy authentication required</source>
-      <translation>Autenticação de proxy necessária</translation>
-    </message>
-    <message>
-      <source>You need to supply a Username and a Password to access via proxy</source>
-      <translation>Você precisa fornecer um nome de usuário e uma senha para acessar via proxy</translation>
-    </message>
-    <message>
-      <source>Username:</source>
-      <translation>Usuário:</translation>
-    </message>
-    <message>
-      <source>Password:</source>
-      <translation>Senha:</translation>
     </message>
   </context>
   <context>
@@ -855,12 +820,24 @@ entre ortografia clássica e escolar em ciílico)</translation>
       <translation>Adicionar pasta</translation>
     </message>
     <message>
+      <source>Clear All</source>
+      <translation>Limpar tudo</translation>
+    </message>
+    <message>
       <source>Favorites:</source>
       <translation>Favoritos:</translation>
     </message>
     <message>
       <source>All selected items will be deleted. Continue?</source>
       <translation>Todos os itens selecionados serão excluídos. Continuar?</translation>
+    </message>
+    <message>
+      <source>Clear All Items</source>
+      <translation>Limpar todos os itens</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all items?</source>
+      <translation>Tem certeza de que deseja limpar todos os itens?</translation>
     </message>
   </context>
   <context>
@@ -888,10 +865,6 @@ entre ortografia clássica e escolar em ciílico)</translation>
     <message>
       <source>from</source>
       <translation>De</translation>
-    </message>
-    <message>
-      <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
-      <translation>Vá para Editar (Dictionaries/2002) Sources├Forvo e inscreva-se para nossa própria chave de API para fazer este erro desaparecer.</translation>
     </message>
   </context>
   <context>
@@ -2167,10 +2140,6 @@ entre ortografia clássica e escolar em ciílico)</translation>
   <context>
     <name>MainWindow</name>
     <message>
-      <source>Welcome!</source>
-      <translation>Bem-vindo!</translation>
-    </message>
-    <message>
       <source>&amp;File</source>
       <translation>&amp;Arquivo</translation>
     </message>
@@ -2407,12 +2376,20 @@ entre ortografia clássica e escolar em ciílico)</translation>
       <translation>Ctrl+E</translation>
     </message>
     <message>
-      <source>Export to list</source>
-      <translation>Exportar para lista</translation>
-    </message>
-    <message>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>Mostrar nomes na Barra de Dicionário</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>Mostrar ícones pequenos nas barras de ferramentas</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>Mostrar ícones grandes nas barras de ferramentas</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>Mostrar ícones normais nas barras de ferramentas</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
@@ -2429,6 +2406,10 @@ entre ortografia clássica e escolar em ciílico)</translation>
     <message>
       <source>Forward</source>
       <translation>Encaminhar</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>Alternar monitoramento da área de transferência</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2449,18 +2430,6 @@ entre ortografia clássica e escolar em ciílico)</translation>
     <message>
       <source>Found in Dictionaries:</source>
       <translation>Encontrado nos Dicionários:</translation>
-    </message>
-    <message>
-      <source>Words Zoom In</source>
-      <translation>Palavras aumentando em</translation>
-    </message>
-    <message>
-      <source>Words Zoom Out</source>
-      <translation>Diminuir o zoom</translation>
-    </message>
-    <message>
-      <source>Words Normal Size</source>
-      <translation>Tamanho Normal das Palavras</translation>
     </message>
     <message>
       <source>Show &amp;Main Window</source>
@@ -2489,6 +2458,10 @@ entre ortografia clássica e escolar em ciílico)</translation>
     <message>
       <source>New Tab</source>
       <translation>New Tab</translation>
+    </message>
+    <message>
+      <source>Welcome!</source>
+      <translation>Bem-vindo!</translation>
     </message>
     <message>
       <source>Accessibility API is not enabled</source>
@@ -2565,12 +2538,20 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
       <translation>Imprimir artigo</translation>
     </message>
     <message>
-      <source>Article, Complete (*.html)</source>
-      <translation>Artigo, Completo (*.html)</translation>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Html completo (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Article, HTML Only (*.html)</source>
-      <translation>Artigo, Apenas HTML (*.html)</translation>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>HTML único (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Pdf (*.pdf)</source>
+      <translation>PDF (*.pdf)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mímica Html (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2637,24 +2618,20 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
       <translation>Exportar Favoritos para Arquivo</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;All files (*.*)</source>
-      <translation>Arquivos XML (*.xml);;Todos os arquivos (*.*)</translation>
+      <source>Text files (*.txt);;XML files (*.xml)</source>
+      <translation>Arquivos de texto (*.txt);;Arquivos XML (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
       <translation>Exportação de favoritos concluída</translation>
     </message>
     <message>
-      <source>Export Favorites to file as plain list</source>
-      <translation>Exportar Favoritos para arquivo como lista simples</translation>
-    </message>
-    <message>
       <source>Import Favorites from file</source>
       <translation>Importar Favoritos do arquivo</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation>Arquivos XML (*.xml);;Arquivos Txt (*.txt);;Todos os arquivos (*.*)</translation>
+      <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
+      <translation>Arquivos de texto e XML (*.txt *.xml);;Todos os arquivos (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -2683,22 +2660,6 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Remover headword &quot;%1&quot; dos favoritos?</translation>
-    </message>
-    <message>
-      <source>Show &amp;Small Icons in Toolbars</source>
-      <translation>Mostrar ícones pequenos nas barras de ferramentas</translation>
-    </message>
-    <message>
-      <source>Show &amp;Large Icons in Toolbars</source>
-      <translation>Mostrar ícones grandes nas barras de ferramentas</translation>
-    </message>
-    <message>
-      <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation>Mostrar ícones normais nas barras de ferramentas</translation>
-    </message>
-    <message>
-      <source>Toggle clipboard monitoring</source>
-      <translation>Alternar monitoramento da área de transferência</translation>
     </message>
   </context>
   <context>
@@ -3043,6 +3004,14 @@ a aplicação.</translation>
       <translation>&amp;Escanear pop-up</translation>
     </message>
     <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>Escolhe se o monitoramento da área de transferência será ativado por padrão na inicialização do programa&apos;.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>Comece com o monitoramento da área de transferência ativado</translation>
+    </message>
+    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Enviar palavra traduzida para a janela principal em vez de mostrá-la na janela popup</translation>
     </message>
@@ -3155,6 +3124,10 @@ no estado pressionado quando a seleção de palavras mudar.</translation>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Auto-pronunciar palavras na janela principal</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>Pronuncie palavras automaticamente no pop-up</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3531,6 +3504,10 @@ no Stardict, Babilônia e dicionários GLS</translation>
       <translation> MB</translation>
     </message>
     <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>O Auto não faz nada em alguns sistemas.</translation>
+    </message>
+    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Reinicie o programa para aplicar a mudança de idioma.</translation>
     </message>
@@ -3547,16 +3524,20 @@ no Stardict, Babilônia e dicionários GLS</translation>
       <translation>Reiniciar necessário</translation>
     </message>
     <message>
-      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation>Escolhe se o monitoramento da área de transferência será ativado por padrão na inicialização do programa&apos;.</translation>
+      <source>Enable</source>
+      <translation>Habilitar</translation>
     </message>
     <message>
-      <source>Start with clipboard monitoring turned on</source>
-      <translation>Comece com o monitoramento da área de transferência ativado</translation>
+      <source>Disable</source>
+      <translation>Desabilitar</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in the popup</source>
-      <translation>Pronuncie palavras automaticamente no pop-up</translation>
+      <source>Automatic</source>
+      <translation>Automático</translation>
+    </message>
+    <message>
+      <source>Enable application log</source>
+      <translation>Habilitar log do aplicativo</translation>
     </message>
   </context>
   <context>
@@ -3923,12 +3904,6 @@ dos grupos apropriados para usá-los.</translation>
       <translation>Qualquer website. Uma string %GDWORD% será substituída pela palavra de consulta:</translation>
     </message>
     <message>
-      <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
-      <translation>Alternativamente, use %GD1251% para CP1251, %GDISO1%...%GDISO16% para ISO 8859-1... SO 8859-16 respectivamente,
-%GDBIG5% para Big-5, %GDBIG5HKSCS% para Big5-HKSCS, %GDGBK% para GBK e GB18030, %GDSHIFTJIS% para Shift-JIS.</translation>
-    </message>
-    <message>
       <source>DICT servers</source>
       <translation>Servidores DICT</translation>
     </message>
@@ -4045,34 +4020,6 @@ baseado na fonologia em inglês</translation>
     <message>
       <source>Hepburn</source>
       <translation>Hepburn</translation>
-    </message>
-    <message>
-      <source>The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>O sistema mais regular, tendo uma relação individual com os
-sistemas de escrita do kana. Normalizado como ISO 3602
-
-não implementado ainda em GoldenDict.</translation>
-    </message>
-    <message>
-      <source>Nihon-shiki</source>
-      <translation>Nihon-shiki</translation>
-    </message>
-    <message>
-      <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Baseado no sistema Nihon-shiki, mas modificado para o moderno padrão japonês.
-padronizado como ISO 3602
-
-não implementado ainda em GoldenDict.</translation>
-    </message>
-    <message>
-      <source>Kunrei-shiki</source>
-      <translation>Kunrei-shiki</translation>
     </message>
     <message>
       <source>Syllabaries:</source>

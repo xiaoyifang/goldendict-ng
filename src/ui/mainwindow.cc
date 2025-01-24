@@ -49,7 +49,6 @@
 #include "historypanewidget.hh"
 #include "utils.hh"
 #include "help.hh"
-#include "ui_authentication.h"
 #include "resourceschemehandler.hh"
 #include <QListWidgetItem>
 

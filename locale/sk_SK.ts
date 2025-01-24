@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="sk_SK" sourcelanguage="en">
+<TS version="2.1" language="sk" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
@@ -61,14 +61,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Expand article</source>
-      <translation>Rozbaliť článok</translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Skrátiť článok</translation>
-    </message>
-    <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
       <translation>V skupine &lt;b&gt;%2&lt;/b&gt;sa nenašiel žiadny preklad pre &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt;.</translation>
     </message>
@@ -96,16 +88,8 @@
   <context>
     <name>ArticleRequest</name>
     <message>
-      <source>Expand article</source>
-      <translation>Rozbaliť článok</translation>
-    </message>
-    <message>
       <source>From </source>
       <translation>Z </translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Skrátiť článok</translation>
     </message>
     <message>
       <source>Make a new Anki note</source>
@@ -155,12 +139,12 @@
       <translation>Zdroj</translation>
     </message>
     <message>
-      <source>Audio</source>
-      <translation>Zvuk</translation>
-    </message>
-    <message>
       <source>TTS Voice</source>
       <translation>TTS Hlas</translation>
+    </message>
+    <message>
+      <source>Audio</source>
+      <translation>Zvuk</translation>
     </message>
     <message>
       <source>Video</source>
@@ -183,12 +167,12 @@
       <translation>CHYBA: %1</translation>
     </message>
     <message>
-      <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>Referencovaný zdroj neexistuje.</translation>
-    </message>
-    <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>Odkazovaný audio program neexistuje.</translation>
+    </message>
+    <message>
+      <source>The referenced resource doesn&apos;t exist.</source>
+      <translation>Referencovaný zdroj neexistuje.</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
@@ -360,25 +344,6 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
     <message>
       <source>custom transliteration</source>
       <translation>vlastný prepis</translation>
-    </message>
-  </context>
-  <context>
-    <name>Dialog</name>
-    <message>
-      <source>Proxy authentication required</source>
-      <translation>Vyžadovaná proxy autentizácia</translation>
-    </message>
-    <message>
-      <source>You need to supply a Username and a Password to access via proxy</source>
-      <translation>Pre prístup k proxy musíte zadať meno používateľa a heslo</translation>
-    </message>
-    <message>
-      <source>Username:</source>
-      <translation>Meno používateľa:</translation>
-    </message>
-    <message>
-      <source>Password:</source>
-      <translation>Heslo:</translation>
     </message>
   </context>
   <context>
@@ -855,12 +820,24 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
       <translation>Pridať priečinok</translation>
     </message>
     <message>
+      <source>Clear All</source>
+      <translation>Vymazať všetko</translation>
+    </message>
+    <message>
       <source>Favorites:</source>
       <translation>Obľúbené:</translation>
     </message>
     <message>
       <source>All selected items will be deleted. Continue?</source>
       <translation>Všetky označené položky budú odstránené. Pokračovať?</translation>
+    </message>
+    <message>
+      <source>Clear All Items</source>
+      <translation>Vymazať všetky položky</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all items?</source>
+      <translation>Naozaj chcete vymazať všetky položky?</translation>
     </message>
   </context>
   <context>
@@ -888,10 +865,6 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
     <message>
       <source>from</source>
       <translation>z</translation>
-    </message>
-    <message>
-      <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
-      <translation>Prejsť na Upraviť | Slovníky | Zdroje | Forvo a aplikovať náš vlastný API kľúč, aby táto chyba zmizla.</translation>
     </message>
   </context>
   <context>
@@ -2167,10 +2140,6 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
   <context>
     <name>MainWindow</name>
     <message>
-      <source>Welcome!</source>
-      <translation>Vitajte!</translation>
-    </message>
-    <message>
       <source>&amp;File</source>
       <translation>&amp;Súbor</translation>
     </message>
@@ -2407,12 +2376,20 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
       <translation>Ctrl+E</translation>
     </message>
     <message>
-      <source>Export to list</source>
-      <translation>Exportovať ako zoznam</translation>
-    </message>
-    <message>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>Zobraziť názvy v &amp;paneli slovníka</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>Zobraziť &amp;malé ikony na paneloch s nástrojmi</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>Zobraziť &amp;veľké ikony na paneloch s nástrojmi</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>Zobraziť &amp;normálne ikony na paneloch s nástrojmi</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
@@ -2429,6 +2406,10 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
     <message>
       <source>Forward</source>
       <translation>Vpred</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>Prepnúť monitorovanie schránky</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2449,18 +2430,6 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
     <message>
       <source>Found in Dictionaries:</source>
       <translation>Nájdené v slovníkoch:</translation>
-    </message>
-    <message>
-      <source>Words Zoom In</source>
-      <translation>Zväčšiť slová</translation>
-    </message>
-    <message>
-      <source>Words Zoom Out</source>
-      <translation>Zmenšiť slová</translation>
-    </message>
-    <message>
-      <source>Words Normal Size</source>
-      <translation>Bežná veľkosť slov</translation>
     </message>
     <message>
       <source>Show &amp;Main Window</source>
@@ -2489,6 +2458,10 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
     <message>
       <source>New Tab</source>
       <translation>Nová karta</translation>
+    </message>
+    <message>
+      <source>Welcome!</source>
+      <translation>Vitajte!</translation>
     </message>
     <message>
       <source>Accessibility API is not enabled</source>
@@ -2566,12 +2539,20 @@ Pre vyhľadanie znakov &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos
       <translation>Vytlačiť článok</translation>
     </message>
     <message>
-      <source>Article, Complete (*.html)</source>
-      <translation>Článok, Kompletný (*.html)</translation>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Kompletný HTML (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Article, HTML Only (*.html)</source>
-      <translation>Článok, iba HTML (*.html)</translation>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Jeden HTML (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Pdf (*.pdf)</source>
+      <translation>PDF (*.pdf)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime HTML (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2638,24 +2619,20 @@ Pre vyhľadanie znakov &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos
       <translation>Exportovať Obľúbené do súboru</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;All files (*.*)</source>
-      <translation>Súbory XML (*.xml);;Všetky súbory (*.*)</translation>
+      <source>Text files (*.txt);;XML files (*.xml)</source>
+      <translation>Textové súbory (*.txt);;Súbory XML (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
       <translation>Export Obľúbených dokončený</translation>
     </message>
     <message>
-      <source>Export Favorites to file as plain list</source>
-      <translation>Exportovať Obľúbené do súboru ako jednoduchý zoznam</translation>
-    </message>
-    <message>
       <source>Import Favorites from file</source>
       <translation>Importovať Obľúbené zo súboru</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation>Súbory XML (*.xml);;Súbory TXT (*.txt);;Všetky súbory (*.*)</translation>
+      <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
+      <translation>Textové a XML súbory (*.txt *.xml);;Všetky súbory (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -2684,22 +2661,6 @@ Pre vyhľadanie znakov &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Odstrániť heslové slovo &quot;%1&quot; z Obľúbených?</translation>
-    </message>
-    <message>
-      <source>Show &amp;Small Icons in Toolbars</source>
-      <translation>Zobraziť &amp;malé ikony na paneloch s nástrojmi</translation>
-    </message>
-    <message>
-      <source>Show &amp;Large Icons in Toolbars</source>
-      <translation>Zobraziť &amp;veľké ikony na paneloch s nástrojmi</translation>
-    </message>
-    <message>
-      <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation>Zobraziť &amp;normálne ikony na paneloch s nástrojmi</translation>
-    </message>
-    <message>
-      <source>Toggle clipboard monitoring</source>
-      <translation>Prepnúť monitorovanie schránky</translation>
     </message>
   </context>
   <context>
@@ -3039,6 +3000,14 @@ skryje program namiesto jeho ukončenia.</translation>
       <translation>Vys&amp;kakovacie okno</translation>
     </message>
     <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>Určuje, či bude pri spustení programu&apos;štandardne zapnuté sledovanie schránky.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>Začnite so zapnutým monitorovaním schránky</translation>
+    </message>
+    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Odoslať preložené slovo do hlavného okna namiesto jeho zobrazenia vo vyskakovacom okne</translation>
     </message>
@@ -3150,6 +3119,10 @@ in the pressed state when the word selection changes.</source>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Automaticky vysloviť slová v hlavnom okne</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>Automaticky vyslovovať slová vo vyskakovacom okne</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3524,6 +3497,10 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
       <translation> MB</translation>
     </message>
     <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Auto na niektorých systémoch nerobí nič.</translation>
+    </message>
+    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Reštartovať program pre aplikovanie zmeny jazyka.</translation>
     </message>
@@ -3540,16 +3517,20 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
       <translation>Je potrebný reštart</translation>
     </message>
     <message>
-      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation>Určuje, či bude pri spustení programu&apos;štandardne zapnuté sledovanie schránky.</translation>
+      <source>Enable</source>
+      <translation>Povoliť</translation>
     </message>
     <message>
-      <source>Start with clipboard monitoring turned on</source>
-      <translation>Začnite so zapnutým monitorovaním schránky</translation>
+      <source>Disable</source>
+      <translation>Zakázať</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in the popup</source>
-      <translation>Automaticky vyslovovať slová vo vyskakovacom okne</translation>
+      <source>Automatic</source>
+      <translation>Automaticky</translation>
+    </message>
+    <message>
+      <source>Enable application log</source>
+      <translation>Povoliť denník aplikácie</translation>
     </message>
   </context>
   <context>
@@ -3914,12 +3895,6 @@ vhodné slovníky dole k vhodným skupinám.</translation>
       <translation>Akákoľvek webová stránka. Reťazec %GDWORD% bude nahradený hľadaným slovom:</translation>
     </message>
     <message>
-      <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
-      <translation>Alternatívne použite %GD1251% pre CP1251, %GDISO1%...%GDISO16% pre ISO 8859-1...ISO 8859-16 respektíve
-%GDBIG5% pre Big-5, %GDBIG5HKSCS% pre Big5-HKSCS, %GDGBK% pre GBK a GB18030, %GDSHIFTJIS% pre Shift-JIS.</translation>
-    </message>
-    <message>
       <source>DICT servers</source>
       <translation>DICT servery</translation>
     </message>
@@ -4036,34 +4011,6 @@ založený na anglickej fonológií</translation>
     <message>
       <source>Hepburn</source>
       <translation>Hepburn</translation>
-    </message>
-    <message>
-      <source>The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Najobvyklejší systém majúci vzťah jedna ku jednej
-k systému písania kana. Štandardizovaný ako ISO 3602.
-
-Zatiaľ nie je implementovaný v GoldenDict.</translation>
-    </message>
-    <message>
-      <source>Nihon-shiki</source>
-      <translation>Nihon-shiki</translation>
-    </message>
-    <message>
-      <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Na základe Nihon-Shiki systému, ale upravený pre štandardnú modernú japončinu.
-Štandardizovaný ako ISO 3602
-
-Zatiaľ nie je implementovaný v GoldenDict.</translation>
-    </message>
-    <message>
-      <source>Kunrei-shiki</source>
-      <translation>Kunrei-shiki</translation>
     </message>
     <message>
       <source>Syllabaries:</source>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="el_GR" sourcelanguage="en">
+<TS version="2.1" language="el" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
@@ -61,14 +61,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Expand article</source>
-      <translation>Εμφάνιση άρθρου</translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Απόκρυψη άρθρου</translation>
-    </message>
-    <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
       <translation>Δεν βρέθηκε μετάφραση για &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; στην ομάδα &lt;b&gt;%2&lt;/b&gt;.</translation>
     </message>
@@ -96,16 +88,8 @@
   <context>
     <name>ArticleRequest</name>
     <message>
-      <source>Expand article</source>
-      <translation>Εμφάνιση άρθρου</translation>
-    </message>
-    <message>
       <source>From </source>
       <translation>Από </translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Απόκρυψη άρθρου</translation>
     </message>
     <message>
       <source>Make a new Anki note</source>
@@ -155,12 +139,12 @@
       <translation>Πόρος</translation>
     </message>
     <message>
-      <source>Audio</source>
-      <translation>Ήχος</translation>
-    </message>
-    <message>
       <source>TTS Voice</source>
       <translation>Φωνή TTS</translation>
+    </message>
+    <message>
+      <source>Audio</source>
+      <translation>Ήχος</translation>
     </message>
     <message>
       <source>Video</source>
@@ -183,12 +167,12 @@
       <translation>ΣΦΑΛΜΑ: %1</translation>
     </message>
     <message>
-      <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>Δεν υπάρχει ο ζητούμενος πόρος.</translation>
-    </message>
-    <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>Δεν υπάρχει το ζητούμενο πρόγραμμα ήχου.</translation>
+    </message>
+    <message>
+      <source>The referenced resource doesn&apos;t exist.</source>
+      <translation>Δεν υπάρχει ο ζητούμενος πόρος.</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
@@ -362,25 +346,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>custom transliteration</source>
       <translation>προσαρμοσμένη μεταγραφή</translation>
-    </message>
-  </context>
-  <context>
-    <name>Dialog</name>
-    <message>
-      <source>Proxy authentication required</source>
-      <translation>Απαιτείται έλεγχος ταυτότητας διακομιστή μεσολάβησης</translation>
-    </message>
-    <message>
-      <source>You need to supply a Username and a Password to access via proxy</source>
-      <translation>Πρέπει να δώσετε ένα όνομα χρήστη και έναν κωδικό πρόσβασης για πρόσβαση μέσω διακομιστή μεσολάβησης</translation>
-    </message>
-    <message>
-      <source>Username:</source>
-      <translation>Όνομα Χρήστη:</translation>
-    </message>
-    <message>
-      <source>Password:</source>
-      <translation>Κωδικός:</translation>
     </message>
   </context>
   <context>
@@ -857,12 +822,24 @@ between classic and school orthography in cyrillic)</source>
       <translation>Προσθήκη φακέλου</translation>
     </message>
     <message>
+      <source>Clear All</source>
+      <translation>Εκκαθάριση όλων</translation>
+    </message>
+    <message>
       <source>Favorites:</source>
       <translation>Αγαπημένα:</translation>
     </message>
     <message>
       <source>All selected items will be deleted. Continue?</source>
       <translation>Όλα τα επιλεγμένα στοιχεία θα διαγραφούν. Συνέχεια?</translation>
+    </message>
+    <message>
+      <source>Clear All Items</source>
+      <translation>Εκκαθάριση όλων των αντικειμένων</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all items?</source>
+      <translation>Είστε βέβαιοι ότι θέλετε να διαγράψετε όλα τα στοιχεία;</translation>
     </message>
   </context>
   <context>
@@ -890,10 +867,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>from</source>
       <translation>από</translation>
-    </message>
-    <message>
-      <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
-      <translation>Πηγαίνετε στο Επεξεργασία|Λεξικά|Πηγές|Forvo και εισάγετε το δικό σας κλειδί API για πάψει να εμφανίζεται το σφάλμα.</translation>
     </message>
   </context>
   <context>
@@ -2169,10 +2142,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>MainWindow</name>
     <message>
-      <source>Welcome!</source>
-      <translation>Καλώς ήλθατε!</translation>
-    </message>
-    <message>
       <source>&amp;File</source>
       <translation>&amp;Αρχείο</translation>
     </message>
@@ -2409,12 +2378,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ctrl+E</translation>
     </message>
     <message>
-      <source>Export to list</source>
-      <translation>Εξαγωγή στη λίστα</translation>
-    </message>
-    <message>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>Εμφάνιση &amp;ονομάτων λεξικών</translation>
+    </message>
+    <message>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>Εμφάνιση &amp;μικρών εικονιδίων στις γραμμές εργαλείων</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>Εμφάνιση &amp;μεγάλων εικονιδίων στις γραμμές εργαλείων</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>Εμφάνιση &amp;Κανονικών εικονιδίων στις γραμμές εργαλείων</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
@@ -2431,6 +2408,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Forward</source>
       <translation>Μπροστά</translation>
+    </message>
+    <message>
+      <source>Toggle clipboard monitoring</source>
+      <translation>Εναλλαγή παρακολούθησης προχείρου</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2451,18 +2432,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Found in Dictionaries:</source>
       <translation>Λεξικά:</translation>
-    </message>
-    <message>
-      <source>Words Zoom In</source>
-      <translation>Μεγέθυνση λημμάτων</translation>
-    </message>
-    <message>
-      <source>Words Zoom Out</source>
-      <translation>Σμίκρυνση λημμάτων</translation>
-    </message>
-    <message>
-      <source>Words Normal Size</source>
-      <translation>Κανονικό μέγεθος λημμάτων</translation>
     </message>
     <message>
       <source>Show &amp;Main Window</source>
@@ -2491,6 +2460,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>New Tab</source>
       <translation>Νέα καρτέλα</translation>
+    </message>
+    <message>
+      <source>Welcome!</source>
+      <translation>Καλώς ήλθατε!</translation>
     </message>
     <message>
       <source>Accessibility API is not enabled</source>
@@ -2567,12 +2540,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Εκτύπωση αποτελέσματος</translation>
     </message>
     <message>
-      <source>Article, Complete (*.html)</source>
-      <translation>Άρθρο, πλήρες (*.html)</translation>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Ολοκληρώστε το Html (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Article, HTML Only (*.html)</source>
-      <translation>Άρθρο, μόνο HTML (*.html)</translation>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Μονό Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Pdf (*.pdf)</source>
+      <translation>Pdf (*.pdf)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime Html (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2639,24 +2620,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Εξαγωγή αγαπημένων σε αρχείο</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;All files (*.*)</source>
-      <translation>XML αρχεία (*.xml);;Όλα τα αρχεία (*.*)</translation>
+      <source>Text files (*.txt);;XML files (*.xml)</source>
+      <translation>Αρχεία κειμένου (*.txt);;Αρχεία XML (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
       <translation>Η εξαγωγή αγαπημένων ολοκληρώθηκε</translation>
     </message>
     <message>
-      <source>Export Favorites to file as plain list</source>
-      <translation>Εξαγωγή Αγαπημένων σε αρχείο ως απλή λίστα</translation>
-    </message>
-    <message>
       <source>Import Favorites from file</source>
       <translation>Εισαγωγή αγαπημένων από αρχείο</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation>XML αρχεία (*.xml);;Txt αρχεία (*.txt);;;Όλα τα αρχεία (*.*)</translation>
+      <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
+      <translation>Αρχεία κειμένου και XML (*.txt *.xml);;Όλα τα αρχεία (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -2685,22 +2662,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Αφαίρεση κεφαλίδας &quot;%1&quot; από τα Αγαπημένα?</translation>
-    </message>
-    <message>
-      <source>Show &amp;Small Icons in Toolbars</source>
-      <translation>Εμφάνιση &amp;μικρών εικονιδίων στις γραμμές εργαλείων</translation>
-    </message>
-    <message>
-      <source>Show &amp;Large Icons in Toolbars</source>
-      <translation>Εμφάνιση &amp;μεγάλων εικονιδίων στις γραμμές εργαλείων</translation>
-    </message>
-    <message>
-      <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation>Εμφάνιση &amp;Κανονικών εικονιδίων στις γραμμές εργαλείων</translation>
-    </message>
-    <message>
-      <source>Toggle clipboard monitoring</source>
-      <translation>Εναλλαγή παρακολούθησης προχείρου</translation>
     </message>
   </context>
   <context>
@@ -3044,6 +3005,14 @@ the application.</source>
       <translation>Ανα&amp;δυόμενο παράθυρο</translation>
     </message>
     <message>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>Επιλέγει εάν η παρακολούθηση του προχείρου θα ενεργοποιείται από προεπιλογή κατά την εκκίνηση του προγράμματος&apos;.</translation>
+    </message>
+    <message>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>Ξεκινήστε με ενεργοποιημένη την παρακολούθηση του προχείρου</translation>
+    </message>
+    <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
       <translation>Εμφάνιση της μετάφρασης στο κύριο παράθυρο αντί για το αναδυόμενο</translation>
     </message>
@@ -3156,6 +3125,10 @@ in the pressed state when the word selection changes.</source>
     <message>
       <source>Auto-pronounce words in main window</source>
       <translation>Αυτόματη εκφώνηση λημμάτων στο κύριο παράθυρο</translation>
+    </message>
+    <message>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>Αυτόματη προφορά λέξεων στο αναδυόμενο παράθυρο</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3533,6 +3506,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation> MB</translation>
     </message>
     <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Το Auto δεν κάνει τίποτα σε ορισμένα συστήματα.</translation>
+    </message>
+    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Απαιτείται επανεκκίνηση του προγράμματος για να εφαρμοστεί η αλλαγή γλώσσας.</translation>
     </message>
@@ -3549,16 +3526,20 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Απαιτείται επανεκκίνηση</translation>
     </message>
     <message>
-      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation>Επιλέγει εάν η παρακολούθηση του προχείρου θα ενεργοποιείται από προεπιλογή κατά την εκκίνηση του προγράμματος&apos;.</translation>
+      <source>Enable</source>
+      <translation>Καθιστώ ικανό</translation>
     </message>
     <message>
-      <source>Start with clipboard monitoring turned on</source>
-      <translation>Ξεκινήστε με ενεργοποιημένη την παρακολούθηση του προχείρου</translation>
+      <source>Disable</source>
+      <translation>Καθιστώ ανίκανο</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in the popup</source>
-      <translation>Αυτόματη προφορά λέξεων στο αναδυόμενο παράθυρο</translation>
+      <source>Automatic</source>
+      <translation>Αυτόματο</translation>
+    </message>
+    <message>
+      <source>Enable application log</source>
+      <translation>Ενεργοποίηση αρχείου καταγραφής εφαρμογής</translation>
     </message>
   </context>
   <context>
@@ -3923,12 +3904,6 @@ of the appropriate groups to use them.</source>
       <translation>Προσθέστε οποιαδήποτε ιστοσελίδα. Οι χαρακτήρες %GDWORD% αντικαθίστανται από τη ζητούμενη λέξη:</translation>
     </message>
     <message>
-      <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
-      <translation>Εναλλακτικά, χρησιμοποιήστε %GD1253% για κωδικοποίηση CP1253, %GDISO1%...%GDISO16% για ISO 8859-1...ISO 8859-16 αντιστοίχως,
-%GDBIG5% για Big-5, %GDBIG5HKSCS% για Big5-HKSCS, %GDGBK% για GBK και GB18030, %GDSHIFTJIS% για Shift-JIS.</translation>
-    </message>
-    <message>
       <source>DICT servers</source>
       <translation>Διακομιστές DICT</translation>
     </message>
@@ -4045,34 +4020,6 @@ based on English phonology</source>
     <message>
       <source>Hepburn</source>
       <translation>Hepburn</translation>
-    </message>
-    <message>
-      <source>The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Το πιο κανονικό σύστημα, με αντιστοιχία ένα προς ένα των kana.
-Πρότυπο ISO 3602
-
-Δεν υποστηρίζεται ακόμη από το GoldenDict.</translation>
-    </message>
-    <message>
-      <source>Nihon-shiki</source>
-      <translation>Nihon-shiki</translation>
-    </message>
-    <message>
-      <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Βασίζεται στο Nihon-shiki, αλλά έχει προσαρμοστεί στα σύγχρονα Ιαπωνικά.
-Πρότυπο ISO 3602
-
-Δεν υποστηρίζεται ακόμη από το GoldenDict.</translation>
-    </message>
-    <message>
-      <source>Kunrei-shiki</source>
-      <translation>Kunrei-shiki</translation>
     </message>
     <message>
       <source>Syllabaries:</source>

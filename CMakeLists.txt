@@ -22,8 +22,8 @@ if (WIN32)
         include(FetchContent)
         FetchContent_Declare(
                 vcpkg-export
-                URL https://github.com/xiaoyifang/goldendict-ng/releases/download/vcpkg_240711_3d72d8c930e1b6a1b2432b262c61af7d3287dcd0/goldendict-ng-vcpkg-export.tar.zst
-                URL_HASH SHA512=CB7AB20F03CE1BB1D46FE5DF25C9B9F4E365B72CE0A817B3C9E39BD0C85DC571F992363A1A5E8DD1E31C44FF88C51E9A88A537688C6070B4E58FF8FA2585EAB7
+                URL https://github.com/xiaoyifang/goldendict-ng/releases/download/vcpkg_250123_b588ddc8230705392c53448597f5892966a8db15/goldendict-ng-vcpkg-export.tar.zst
+                URL_HASH SHA512=E8286C6C08BEE93F01E63A1BEAAC0FD88157B9F3AD7C2AABC172BD2F33834AF08A07321AB1823AD167DA4F82320DCE0EC56C75BB19A38402831D126068F8888E
         )
         FetchContent_MakeAvailable(vcpkg-export)
         set(VCPKG_MANIFEST_MODE OFF CACHE BOOL "disable existing manifest mode caused by the existrance of vcpkg.json" FORCE)

@@ -187,17 +187,17 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.autoScrollToTargetArticle->setChecked( p.autoScrollToTargetArticle );
   ui.escKeyHidesMainWindow->setChecked( p.escKeyHidesMainWindow );
 
-  ui.darkMode->addItem( tr( "On" ), QVariant::fromValue( Config::Dark::On ) );
-  ui.darkMode->addItem( tr( "Off" ), QVariant::fromValue( Config::Dark::Off ) );
+  ui.darkMode->addItem( tr( "Enable" ), QVariant::fromValue( Config::Dark::On ) );
+  ui.darkMode->addItem( tr( "Disable" ), QVariant::fromValue( Config::Dark::Off ) );
 
   if ( auto i = ui.darkMode->findData( QVariant::fromValue( p.darkMode ) ); i != -1 ) {
     ui.darkMode->setCurrentIndex( i );
   }
 
-  ui.darkReaderMode->addItem( tr( "Auto" ), QVariant::fromValue( Config::Dark::Auto ) );
+  ui.darkReaderMode->addItem( tr( "Automatic" ), QVariant::fromValue( Config::Dark::Auto ) );
   ui.darkReaderMode->setItemData( 0, tr( "Auto does nothing on some systems." ), Qt::ToolTipRole );
-  ui.darkReaderMode->addItem( tr( "On" ), QVariant::fromValue( Config::Dark::On ) );
-  ui.darkReaderMode->addItem( tr( "Off" ), QVariant::fromValue( Config::Dark::Off ) );
+  ui.darkReaderMode->addItem( tr( "Enable" ), QVariant::fromValue( Config::Dark::On ) );
+  ui.darkReaderMode->addItem( tr( "Disable" ), QVariant::fromValue( Config::Dark::Off ) );
 
   if ( auto i = ui.darkReaderMode->findData( QVariant::fromValue( p.darkReaderMode ) ); i != -1 ) {
     ui.darkReaderMode->setCurrentIndex( i );
@@ -367,6 +367,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 
   //Misc
   ui.removeInvalidIndexOnExit->setChecked( p.removeInvalidIndexOnExit );
+  ui.enableApplicationLog->setChecked( p.enableApplicationLog );
 
   // Add-on styles
   ui.addonStylesLabel->setVisible( ui.addonStyles->count() > 1 );
@@ -526,6 +527,7 @@ Config::Preferences Preferences::getPreferences()
   p.clearNetworkCacheOnExit       = ui.clearNetworkCacheOnExit->isChecked();
 
   p.removeInvalidIndexOnExit = ui.removeInvalidIndexOnExit->isChecked();
+  p.enableApplicationLog     = ui.enableApplicationLog->isChecked();
 
   p.addonStyle = ui.addonStyles->getCurrentStyle();
 
