@@ -17,7 +17,6 @@ Checks: >
   portability-*,
   readability-*,
   -bugprone-easily-swappable-parameters,
-  -bugprone-reserved-identifier,
   -cppcoreguidelines-owning-memory,
   -cppcoreguidelines-prefer-member-initializer,
   -cppcoreguidelines-pro-bounds-array-to-pointer-decay,
@@ -26,13 +25,16 @@ Checks: >
   -google-default-arguments,
   -google-readability-casting,
   -hicpp-deprecated-headers,
+  -hicpp-no-array-decay,
+  -misc-confusable-identifiers,
   -misc-const-correctness,
+  -misc-include-cleaner,
   -misc-non-private-member-variables-in-classes,
   -modernize-avoid-c-arrays,
   -modernize-deprecated-headers,
   -modernize-use-nodiscard,
   -modernize-use-trailing-return-type,
-  -readability-braces-around-statements,
+  -performance-enum-size,
   -readability-function-cognitive-complexity,
   -readability-identifier-length,
   -readability-magic-numbers,
@@ -42,6 +44,12 @@ CheckOptions:
   - key: modernize-use-override.IgnoreDestructors
     value: 1
   - key: cppcoreguidelines-explicit-virtual-functions.IgnoreDestructors
+    value: 1
+  - key: modernize-avoid-c-arrays.AllowStringArrays
+    value: 1
+  - key: cppcoreguidelines-avoid-c-arrays.AllowStringArrays
+    value: 1
+  - key: hicpp-avoid-c-arrays.AllowStringArrays
     value: 1
 ...
 

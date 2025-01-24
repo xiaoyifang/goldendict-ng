@@ -41,25 +41,6 @@
       <property name="elideMode">
        <enum>Qt::ElideRight</enum>
       </property>
-      <widget class="QWidget" name="tab">
-       <attribute name="title">
-        <string>Welcome!</string>
-       </attribute>
-       <layout class="QHBoxLayout" name="horizontalLayout_4">
-        <property name="leftMargin">
-         <number>0</number>
-        </property>
-        <property name="topMargin">
-         <number>0</number>
-        </property>
-        <property name="rightMargin">
-         <number>0</number>
-        </property>
-        <property name="bottomMargin">
-         <number>0</number>
-        </property>
-       </layout>
-      </widget>
      </widget>
     </item>
    </layout>
@@ -144,7 +125,6 @@
     </property>
     <addaction name="showHideFavorites"/>
     <addaction name="exportFavorites"/>
-    <addaction name="ExportFavoritesToList"/>
     <addaction name="importFavorites"/>
     <addaction name="separator"/>
     <addaction name="actionAddToFavorites"/>
@@ -574,11 +554,6 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+E</string>
-   </property>
-  </action>
-  <action name="ExportFavoritesToList">
-   <property name="text">
-    <string>Export to list</string>
    </property>
   </action>
  </widget>

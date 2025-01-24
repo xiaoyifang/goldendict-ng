@@ -1,16 +1,20 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __HISTORY_HH_INCLUDED__
-#define __HISTORY_HH_INCLUDED__
+#pragma once
 
 #include <QObject>
 #include <QList>
 #include <QString>
 
-#define DEFAULT_MAX_HISTORY_ITEM_LENGTH 256
+constexpr unsigned DEFAULT_MAX_HISTORY_ITEM_LENGTH = 256;
+
 
 /// Search history
+///
+/// To work with the original GD's history file,
+/// every entry starts with a number like "123 word"
+///
 class History: public QObject
 {
   Q_OBJECT
@@ -20,43 +24,17 @@ public:
   /// An item in history
   struct Item
   {
-    /// Group the search was performed in
-    unsigned groupId;
-    /// The word that was searched
     QString word;
 
-    Item():
-      groupId( 0 )
-    {
-    }
-
-    Item( unsigned groupId_, QString const & word_ ):
-      groupId( groupId_ ),
-      word( word_ )
-    {
-    }
-
+    // For assisting QList::contains & QList::removeOne
     bool operator==( Item const & other ) const
     {
-      return QString::compare( word, other.word, Qt::CaseInsensitive ) == 0 && groupId == other.groupId;
-    }
-
-    bool operator!=( Item const & other ) const
-    {
-      return !operator==( other );
+      return QString::compare( word, other.word, Qt::CaseInsensitive ) == 0;
     }
   };
 
-  /// Indicates an intention to load -- see the relevant History constructor.
-  struct Load
-  {};
-
-  /// Constructs an empty history which can hold at most "size" items.
-  History( unsigned size = 20, unsigned maxItemLength = DEFAULT_MAX_HISTORY_ITEM_LENGTH );
-
-  /// Loads history from its file. If load fails, the result would be an empty
-  /// history. The size parameter is same as in other constructor.
-  explicit History( Load, unsigned size = 20, unsigned maxItemLength = DEFAULT_MAX_HISTORY_ITEM_LENGTH );
+  /// Loads history from its file. If the loading fails, the result would be an empty history.
+  explicit History( unsigned size = 256, unsigned maxItemLength = DEFAULT_MAX_HISTORY_ITEM_LENGTH );
 
   /// Adds new item. The item is always added at the beginning of the list.
   /// If there was such an item already somewhere on the list, it gets removed
@@ -135,5 +113,3 @@ private:
 protected:
   virtual void timerEvent( QTimerEvent * );
 };
-
-#endif

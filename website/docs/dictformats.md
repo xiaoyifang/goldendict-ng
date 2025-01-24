@@ -34,7 +34,7 @@ Various special "dictionaries" can be added, such as Programs, TTS, Morphology, 
 
 ### Converting between formats
 
-Goldendict does not provide any dictionary modification functionality.
+GoldenDict-ng does not provide any dictionary modification functionality.
 
 To convert between formats, try tools like [pyglossary](https://github.com/ilius/pyglossary).
 

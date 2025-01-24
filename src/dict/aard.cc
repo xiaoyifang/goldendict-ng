@@ -4,11 +4,10 @@
 #include "aard.hh"
 #include "btreeidx.hh"
 #include "folding.hh"
-#include "utf8.hh"
+#include "text.hh"
 #include "chunkedstorage.hh"
 #include "langcoder.hh"
 #include "decompress.hh"
-#include "gddebug.hh"
 #include "ftshelpers.hh"
 #include "htmlescape.hh"
 
@@ -16,19 +15,11 @@
 #include <set>
 #include <string>
 
-#ifdef _MSC_VER
-  #include <stub_msvc.h>
-#endif
-
+#include <QDir>
 #include <QString>
-#include <QSemaphore>
-#include <QThreadPool>
 #include <QAtomicInt>
-#include <QDomDocument>
 #include <QtEndian>
 #include <QRegularExpression>
-#include "ufile.hh"
-#include "wstring_qt.hh"
 #include "utils.hh"
 
 namespace Aard {
@@ -38,17 +29,12 @@ using std::multimap;
 using std::pair;
 using std::set;
 using std::string;
-using gd::wstring;
 
 using BtreeIndexing::WordArticleLink;
 using BtreeIndexing::IndexedWords;
 using BtreeIndexing::IndexInfo;
 
 namespace {
-
-DEF_EX_STR( exNotAardFile, "Not an AARD file", Dictionary::Ex )
-DEF_EX_STR( exWordIsTooLarge, "Enountered a word that is too large:", Dictionary::Ex )
-DEF_EX_STR( exSuddenEndOfFile, "Sudden end of file", Dictionary::Ex )
 
 #pragma pack( push, 1 )
 
@@ -67,31 +53,23 @@ struct AAR_header
   char indexItemFormat[ 4 ];
   char keyLengthFormat[ 2 ];
   char articleLengthFormat[ 2 ];
-}
-#ifndef _MSC_VER
-__attribute__( ( packed ) )
-#endif
-;
+};
+static_assert( alignof( AAR_header ) == 1 );
 
 struct IndexElement
 {
   quint32 wordOffset;
   quint32 articleOffset;
-}
-#ifndef _MSC_VER
-__attribute__( ( packed ) )
-#endif
-;
+};
+static_assert( alignof( IndexElement ) == 1 );
 
 struct IndexElement64
 {
   quint32 wordOffset;
   quint64 articleOffset;
-}
-#ifndef _MSC_VER
-__attribute__( ( packed ) )
-#endif
-;
+};
+static_assert( alignof( IndexElement64 ) == 1 );
+
 
 enum {
   Signature            = 0x58524141, // AARX on little-endian, XRAA on big-endian
@@ -109,17 +87,13 @@ struct IdxHeader
   quint32 articleCount;
   quint32 langFrom; // Source language
   quint32 langTo;   // Target language
-}
-#ifndef _MSC_VER
-__attribute__( ( packed ) )
-#endif
-;
-
+};
+static_assert( alignof( IdxHeader ) == 1 );
 #pragma pack( pop )
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Index idx( indexFile, "rb" );
+  File::Index idx( indexFile, QIODevice::ReadOnly );
 
   IdxHeader header;
 
@@ -132,16 +106,19 @@ void readJSONValue( string const & source, string & str, string::size_type & pos
   int level = 1;
   char endChar;
   str.push_back( source[ pos ] );
-  if ( source[ pos ] == '{' )
+  if ( source[ pos ] == '{' ) {
     endChar = '}';
-  else if ( source[ pos ] == '[' )
+  }
+  else if ( source[ pos ] == '[' ) {
     endChar = ']';
+  }
   else if ( source[ pos ] == '\"' ) {
     str.clear();
     endChar = '\"';
   }
-  else
+  else {
     endChar = ',';
+  }
 
   pos++;
   char ch     = 0;
@@ -149,13 +126,16 @@ void readJSONValue( string const & source, string & str, string::size_type & pos
   while ( !( ch == endChar && lastCh != '\\' && level == 0 ) && pos < source.size() ) {
     lastCh = ch;
     ch     = source[ pos++ ];
-    if ( ( ch == '{' || ch == '[' ) && lastCh != '\\' )
+    if ( ( ch == '{' || ch == '[' ) && lastCh != '\\' ) {
       level++;
-    if ( ( ch == '}' || ch == ']' ) && lastCh != '\\' )
+    }
+    if ( ( ch == '}' || ch == ']' ) && lastCh != '\\' ) {
       level--;
+    }
 
-    if ( ch == endChar && ( ( ch == '\"' && lastCh != '\\' ) || ch == ',' ) && level == 1 )
+    if ( ch == endChar && ( ( ch == '\"' && lastCh != '\\' ) || ch == ',' ) && level == 1 ) {
       break;
+    }
     str.push_back( ch );
   }
 }
@@ -167,36 +147,45 @@ map< string, string > parseMetaData( string const & metaData )
   string name, value;
   string::size_type n = 0;
 
-  while ( n < metaData.length() && metaData[ n ] != '{' )
+  while ( n < metaData.length() && metaData[ n ] != '{' ) {
     n++;
+  }
   while ( n < metaData.length() ) {
     // Skip to '"'
-    while ( n < metaData.length() && metaData[ n ] != '\"' )
+    while ( n < metaData.length() && metaData[ n ] != '\"' ) {
       n++;
-    if ( ++n >= metaData.length() )
+    }
+    if ( ++n >= metaData.length() ) {
       break;
+    }
 
     // Read name
     while ( n < metaData.length()
-            && !( ( metaData[ n ] == '\"' || metaData[ n ] == '{' ) && metaData[ n - 1 ] != '\\' ) )
+            && !( ( metaData[ n ] == '\"' || metaData[ n ] == '{' ) && metaData[ n - 1 ] != '\\' ) ) {
       name.push_back( metaData[ n++ ] );
+    }
 
     // Skip to ':'
-    if ( ++n >= metaData.length() )
+    if ( ++n >= metaData.length() ) {
       break;
-    while ( n < metaData.length() && metaData[ n ] != ':' )
+    }
+    while ( n < metaData.length() && metaData[ n ] != ':' ) {
       n++;
-    if ( ++n >= metaData.length() )
+    }
+    if ( ++n >= metaData.length() ) {
       break;
+    }
 
     // Find value start after ':'
     while ( n < metaData.length()
             && !( ( metaData[ n ] == '\"' || metaData[ n ] == '{' || metaData[ n ] == '['
                     || ( metaData[ n ] >= '0' && metaData[ n ] <= '9' ) )
-                  && metaData[ n - 1 ] != '\\' ) )
+                  && metaData[ n - 1 ] != '\\' ) ) {
       n++;
-    if ( n >= metaData.length() )
+    }
+    if ( n >= metaData.length() ) {
       break;
+    }
 
     readJSONValue( metaData, value, n );
 
@@ -204,8 +193,9 @@ map< string, string > parseMetaData( string const & metaData )
 
     name.clear();
     value.clear();
-    if ( ++n >= metaData.length() )
+    if ( ++n >= metaData.length() ) {
       break;
+    }
   }
   return data;
 }
@@ -224,11 +214,6 @@ public:
   AardDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles );
 
   ~AardDictionary();
-
-  map< Dictionary::Property, string > getProperties() noexcept override
-  {
-    return map< Dictionary::Property, string >();
-  }
 
   unsigned long getArticleCount() noexcept override
   {
@@ -250,8 +235,10 @@ public:
     return idxHeader.langTo;
   }
 
-  sptr< Dictionary::DataRequest >
-  getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ignoreDiacritics ) override;
+  sptr< Dictionary::DataRequest > getArticle( std::u32string const &,
+                                              vector< std::u32string > const & alts,
+                                              std::u32string const &,
+                                              bool ignoreDiacritics ) override;
 
   QString const & getDescription() override;
 
@@ -287,19 +274,15 @@ private:
 
 AardDictionary::AardDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles ):
   BtreeDictionary( id, dictionaryFiles ),
-  idx( indexFile, "rb" ),
+  idx( indexFile, QIODevice::ReadOnly ),
   idxHeader( idx.read< IdxHeader >() ),
   chunks( idx, idxHeader.chunksOffset ),
-  df( dictionaryFiles[ 0 ], "rb" )
+  df( dictionaryFiles[ 0 ], QIODevice::ReadOnly )
 {
   // Read dictionary name
 
   idx.seek( sizeof( idxHeader ) );
-  vector< char > dName( idx.read< quint32 >() );
-  if ( dName.size() ) {
-    idx.read( &dName.front(), dName.size() );
-    dictionaryName = string( &dName.front(), dName.size() );
-  }
+  idx.readU32SizeAndData<>( dictionaryName );
 
   // Initialize the index
 
@@ -317,8 +300,9 @@ AardDictionary::~AardDictionary()
 
 void AardDictionary::loadIcon() noexcept
 {
-  if ( dictionaryIconLoaded )
+  if ( dictionaryIconLoaded ) {
     return;
+  }
 
   QString fileName = QDir::fromNativeSeparators( QString::fromStdString( getDictionaryFilenames()[ 0 ] ) );
 
@@ -349,15 +333,17 @@ string AardDictionary::convert( const string & in )
         afterEol = true;
         continue;
       }
-      else if ( inCh == 'r' )
+      else if ( inCh == 'r' ) {
         continue;
+      }
     }
     else if ( inCh == ' ' && afterEol ) {
       inConverted.append( "&nbsp;" );
       continue;
     }
-    else
+    else {
       lastCh = inCh;
+    }
     afterEol = false;
     inConverted.push_back( inCh );
   }
@@ -407,37 +393,43 @@ void AardDictionary::loadArticle( quint32 address, string & articleText, bool ra
 
       // Don't try to read and decode too big articles,
       // it is most likely error in dictionary
-      if ( articleSize > 1048576 )
+      if ( articleSize > 1048576 ) {
         break;
+      }
 
       articleBody.resize( articleSize );
       df.read( &articleBody.front(), articleSize );
     }
     catch ( std::exception & ex ) {
-      gdWarning( "AARD: Failed loading article from \"%s\", reason: %s\n", getName().c_str(), ex.what() );
+      qWarning( "AARD: Failed loading article from \"%s\", reason: %s", getName().c_str(), ex.what() );
       break;
     }
     catch ( ... ) {
       break;
     }
 
-    if ( articleBody.empty() )
+    if ( articleBody.empty() ) {
       break;
+    }
 
     articleText.clear();
 
     string text = decompressBzip2( articleBody.data(), articleSize );
-    if ( text.empty() )
+    if ( text.empty() ) {
       text = decompressZlib( articleBody.data(), articleSize );
-    if ( text.empty() )
+    }
+    if ( text.empty() ) {
       text = string( articleBody.data(), articleSize );
+    }
 
-    if ( text.empty() || text[ 0 ] != '[' )
+    if ( text.empty() || text[ 0 ] != '[' ) {
       break;
+    }
 
     string::size_type n = text.find( '\"' );
-    if ( n == string::npos )
+    if ( n == string::npos ) {
       break;
+    }
 
     readJSONValue( text, articleText, n );
 
@@ -445,8 +437,9 @@ void AardDictionary::loadArticle( quint32 address, string & articleText, bool ra
       n = text.find( "\"r\"" );
       if ( n != string::npos && n + 3 < text.size() ) {
         n = text.find( '\"', n + 3 );
-        if ( n == string::npos )
+        if ( n == string::npos ) {
           break;
+        }
 
         string link;
         readJSONValue( text, link, n );
@@ -475,20 +468,23 @@ void AardDictionary::loadArticle( quint32 address, string & articleText, bool ra
   }
 
   if ( !articleText.empty() ) {
-    if ( rawText )
+    if ( rawText ) {
       return;
+    }
 
     articleText = convert( articleText );
   }
-  else
+  else {
     articleText = QObject::tr( "Article decoding error" ).toStdString();
+  }
 
   // See Issue #271: A mechanism to clean-up invalid HTML cards.
   const string cleaner = Utils::Html::getHtmlCleaner();
 
   string prefix( "<div class=\"aard\"" );
-  if ( isToLanguageRTL() )
+  if ( isToLanguageRTL() ) {
     prefix += " dir=\"rtl\"";
+  }
   prefix += ">";
 
   articleText = prefix + articleText + cleaner + "</div>";
@@ -496,8 +492,9 @@ void AardDictionary::loadArticle( quint32 address, string & articleText, bool ra
 
 QString const & AardDictionary::getDescription()
 {
-  if ( !dictionaryDescription.isEmpty() )
+  if ( !dictionaryDescription.isEmpty() ) {
     return dictionaryDescription;
+  }
 
   AAR_header dictHeader;
   quint32 size;
@@ -513,21 +510,24 @@ QString const & AardDictionary::getDescription()
   }
 
   string metaStr = decompressBzip2( data.data(), size );
-  if ( metaStr.empty() )
+  if ( metaStr.empty() ) {
     metaStr = decompressZlib( data.data(), size );
+  }
 
   map< string, string > meta = parseMetaData( metaStr );
 
   if ( !meta.empty() ) {
     map< string, string >::const_iterator iter = meta.find( "copyright" );
-    if ( iter != meta.end() )
+    if ( iter != meta.end() ) {
       dictionaryDescription =
         QObject::tr( "Copyright: %1%2" ).arg( QString::fromUtf8( iter->second.c_str() ) ).arg( "\n\n" );
+    }
 
     iter = meta.find( "version" );
-    if ( iter != meta.end() )
+    if ( iter != meta.end() ) {
       dictionaryDescription =
         QObject::tr( "Version: %1%2" ).arg( QString::fromUtf8( iter->second.c_str() ) ).arg( "\n\n" );
+    }
 
     iter = meta.find( "description" );
     if ( iter != meta.end() ) {
@@ -538,8 +538,9 @@ QString const & AardDictionary::getDescription()
     }
   }
 
-  if ( dictionaryDescription.isEmpty() )
+  if ( dictionaryDescription.isEmpty() ) {
     dictionaryDescription = "NONE";
+  }
 
   return dictionaryDescription;
 }
@@ -547,24 +548,27 @@ QString const & AardDictionary::getDescription()
 void AardDictionary::makeFTSIndex( QAtomicInt & isCancelled )
 {
   if ( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
-          || FtsHelpers::ftsIndexIsOldOrBad( this ) ) )
+          || FtsHelpers::ftsIndexIsOldOrBad( this ) ) ) {
     FTS_index_completed.ref();
+  }
 
-  if ( haveFTSIndex() )
+  if ( haveFTSIndex() ) {
     return;
+  }
 
-  if ( ensureInitDone().size() )
+  if ( ensureInitDone().size() ) {
     return;
+  }
 
 
-  gdDebug( "Aard: Building the full-text index for dictionary: %s\n", getName().c_str() );
+  qDebug( "Aard: Building the full-text index for dictionary: %s", getName().c_str() );
 
   try {
     FtsHelpers::makeFTSIndex( this, isCancelled );
     FTS_index_completed.ref();
   }
   catch ( std::exception & ex ) {
-    gdWarning( "Aard: Failed building full-text search index for \"%s\", reason: %s\n", getName().c_str(), ex.what() );
+    qWarning( "Aard: Failed building full-text search index for \"%s\", reason: %s", getName().c_str(), ex.what() );
     QFile::remove( QString::fromStdString( ftsIdxName ) );
   }
 }
@@ -580,7 +584,7 @@ void AardDictionary::getArticleText( uint32_t articleAddress, QString & headword
     text = Html::unescape( QString::fromUtf8( articleText.data(), articleText.size() ) );
   }
   catch ( std::exception & ex ) {
-    gdWarning( "Aard: Failed retrieving article from \"%s\", reason: %s\n", getName().c_str(), ex.what() );
+    qWarning( "Aard: Failed retrieving article from \"%s\", reason: %s", getName().c_str(), ex.what() );
   }
 }
 
@@ -598,8 +602,8 @@ AardDictionary::getSearchResults( QString const & searchString, int searchMode, 
 
 class AardArticleRequest: public Dictionary::DataRequest
 {
-  wstring word;
-  vector< wstring > alts;
+  std::u32string word;
+  vector< std::u32string > alts;
   AardDictionary & dict;
   bool ignoreDiacritics;
 
@@ -608,8 +612,8 @@ class AardArticleRequest: public Dictionary::DataRequest
 
 public:
 
-  AardArticleRequest( wstring const & word_,
-                      vector< wstring > const & alts_,
+  AardArticleRequest( std::u32string const & word_,
+                      vector< std::u32string > const & alts_,
                       AardDictionary & dict_,
                       bool ignoreDiacritics_ ):
     word( word_ ),
@@ -653,15 +657,16 @@ void AardArticleRequest::run()
     chain.insert( chain.end(), altChain.begin(), altChain.end() );
   }
 
-  multimap< wstring, pair< string, string > > mainArticles, alternateArticles;
+  multimap< std::u32string, pair< string, string > > mainArticles, alternateArticles;
 
   set< quint32 > articlesIncluded; // Some synonims make it that the articles
                                    // appear several times. We combat this
                                    // by only allowing them to appear once.
 
-  wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
-  if ( ignoreDiacritics )
+  std::u32string wordCaseFolded = Folding::applySimpleCaseOnly( word );
+  if ( ignoreDiacritics ) {
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
+  }
 
   for ( auto & x : chain ) {
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
@@ -669,8 +674,9 @@ void AardArticleRequest::run()
       return;
     }
 
-    if ( articlesIncluded.find( x.articleOffset ) != articlesIncluded.end() )
+    if ( articlesIncluded.find( x.articleOffset ) != articlesIncluded.end() ) {
       continue; // We already have this article in the body.
+    }
 
     // Now grab that article
 
@@ -688,11 +694,12 @@ void AardArticleRequest::run()
 
     // We do the case-folded comparison here.
 
-    wstring headwordStripped = Folding::applySimpleCaseOnly( headword );
-    if ( ignoreDiacritics )
+    std::u32string headwordStripped = Folding::applySimpleCaseOnly( headword );
+    if ( ignoreDiacritics ) {
       headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
+    }
 
-    multimap< wstring, pair< string, string > > & mapToUse =
+    multimap< std::u32string, pair< string, string > > & mapToUse =
       ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
 
     mapToUse.insert( pair( Folding::applySimpleCaseOnly( headword ), pair( headword, articleText ) ) );
@@ -708,7 +715,7 @@ void AardArticleRequest::run()
 
   string result;
 
-  multimap< wstring, pair< string, string > >::const_iterator i;
+  multimap< std::u32string, pair< string, string > >::const_iterator i;
 
   for ( i = mainArticles.begin(); i != mainArticles.end(); ++i ) {
     result += "<h3>";
@@ -731,9 +738,9 @@ void AardArticleRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > AardDictionary::getArticle( wstring const & word,
-                                                            vector< wstring > const & alts,
-                                                            wstring const &,
+sptr< Dictionary::DataRequest > AardDictionary::getArticle( std::u32string const & word,
+                                                            vector< std::u32string > const & alts,
+                                                            std::u32string const &,
                                                             bool ignoreDiacritics )
 
 {
@@ -753,8 +760,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
   for ( const auto & fileName : fileNames ) {
     // Skip files with the extensions different to .aar to speed up the
     // scanning
-    if ( !Utils::endsWithIgnoreCase( fileName, ".aar" ) )
+    if ( !Utils::endsWithIgnoreCase( fileName, ".aar" ) ) {
       continue;
+    }
 
     // Got the file -- check if we need to rebuid the index
 
@@ -767,17 +775,17 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
     if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
       try {
 
-        gdDebug( "Aard: Building the index for dictionary: %s\n", fileName.c_str() );
+        qDebug( "Aard: Building the index for dictionary: %s", fileName.c_str() );
 
         {
           QFileInfo info( QString::fromUtf8( fileName.c_str() ) );
           if ( static_cast< quint64 >( info.size() ) > ULONG_MAX ) {
-            gdWarning( "File %s is too large\n", fileName.c_str() );
+            qWarning( "File %s is too large", fileName.c_str() );
             continue;
           }
         }
 
-        File::Index df( fileName, "rb" );
+        File::Index df( fileName, QIODevice::ReadOnly );
 
         AAR_header dictHeader;
 
@@ -786,7 +794,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         if ( strncmp( dictHeader.signature, "aard", 4 )
              || ( !has64bitIndex && strncmp( dictHeader.indexItemFormat, ">LL", 4 ) )
              || strncmp( dictHeader.keyLengthFormat, ">H", 2 ) || strncmp( dictHeader.articleLengthFormat, ">L", 2 ) ) {
-          gdWarning( "File %s is not in supported aard format\n", fileName.c_str() );
+          qWarning( "File %s is not in supported aard format", fileName.c_str() );
           continue;
         }
 
@@ -794,37 +802,41 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         quint32 size = qFromBigEndian( dictHeader.metaLength );
 
         if ( size == 0 ) {
-          gdWarning( "File %s has invalid metadata", fileName.c_str() );
+          qWarning( "File %s has invalid metadata", fileName.c_str() );
           continue;
         }
 
         data.resize( size );
         df.read( &data.front(), size );
         string metaStr = decompressBzip2( data.data(), size );
-        if ( metaStr.empty() )
+        if ( metaStr.empty() ) {
           metaStr = decompressZlib( data.data(), size );
+        }
 
         map< string, string > meta = parseMetaData( metaStr );
 
         if ( meta.empty() ) {
-          gdWarning( "File %s has invalid metadata", fileName.c_str() );
+          qWarning( "File %s has invalid metadata", fileName.c_str() );
           continue;
         }
 
         string dictName;
         map< string, string >::const_iterator iter = meta.find( "title" );
-        if ( iter != meta.end() )
+        if ( iter != meta.end() ) {
           dictName = iter->second;
+        }
 
         string langFrom;
         iter = meta.find( "index_language" );
-        if ( iter != meta.end() )
+        if ( iter != meta.end() ) {
           langFrom = iter->second;
+        }
 
         string langTo;
         iter = meta.find( "article_language" );
-        if ( iter != meta.end() )
+        if ( iter != meta.end() ) {
           langTo = iter->second;
+        }
 
         if ( ( dictName.compare( "Wikipedia" ) == 0 || dictName.compare( "Wikiquote" ) == 0
                || dictName.compare( "Wiktionary" ) == 0 )
@@ -842,7 +854,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         initializing.indexingDictionary( dictName );
 
-        File::Index idx( indexFile, "wb" );
+        File::Index idx( indexFile, QIODevice::WriteOnly );
         IdxHeader idxHeader;
         memset( &idxHeader, 0, sizeof( idxHeader ) );
 
@@ -852,8 +864,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         idx.write( idxHeader );
 
         idx.write( (quint32)dictName.size() );
-        if ( !dictName.empty() )
+        if ( !dictName.empty() ) {
           idx.write( dictName.data(), dictName.size() );
+        }
 
         IndexedWords indexedWords;
 
@@ -893,19 +906,23 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
           quint16 sizeBE;
           df.read( &sizeBE, sizeof( sizeBE ) );
           quint16 wordSize = qFromBigEndian( sizeBE );
-          if ( data.size() < wordSize )
+          if ( data.size() < wordSize ) {
             data.resize( wordSize );
+          }
           df.read( &data.front(), wordSize );
 
-          if ( articleOffsets.find( articleOffset ) == articleOffsets.end() )
+          if ( articleOffsets.find( articleOffset ) == articleOffsets.end() ) {
             articleOffsets.insert( articleOffset );
+          }
 
           // Insert new entry
-          wstring word = Utf8::decode( string( data.data(), wordSize ) );
-          if ( maxHeadwordsToExpand && dictHeader.wordsCount >= maxHeadwordsToExpand )
+          std::u32string word = Text::toUtf32( string( data.data(), wordSize ) );
+          if ( maxHeadwordsToExpand && dictHeader.wordsCount >= maxHeadwordsToExpand ) {
             indexedWords.addSingleWord( word, articleOffset );
-          else
+          }
+          else {
             indexedWords.addWord( word, articleOffset );
+          }
 
           pos += has64bitIndex ? sizeof( IndexElement64 ) : sizeof( IndexElement );
         }
@@ -934,26 +951,30 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         idxHeader.wordCount = wordCount;
 
-        if ( langFrom.size() == 3 )
+        if ( langFrom.size() == 3 ) {
           idxHeader.langFrom = LangCoder::findIdForLanguageCode3( langFrom );
-        else if ( langFrom.size() == 2 )
+        }
+        else if ( langFrom.size() == 2 ) {
           idxHeader.langFrom = LangCoder::code2toInt( langFrom.c_str() );
+        }
 
-        if ( langTo.size() == 3 )
+        if ( langTo.size() == 3 ) {
           idxHeader.langTo = LangCoder::findIdForLanguageCode3( langTo );
-        else if ( langTo.size() == 2 )
+        }
+        else if ( langTo.size() == 2 ) {
           idxHeader.langTo = LangCoder::code2toInt( langTo.c_str() );
+        }
 
         idx.rewind();
 
         idx.write( &idxHeader, sizeof( idxHeader ) );
       }
       catch ( std::exception & e ) {
-        gdWarning( "Aard dictionary indexing failed: %s, error: %s\n", fileName.c_str(), e.what() );
+        qWarning( "Aard dictionary indexing failed: %s, error: %s", fileName.c_str(), e.what() );
         continue;
       }
       catch ( ... ) {
-        gdWarning( "Aard dictionary indexing failed\n" );
+        qWarning( "Aard dictionary indexing failed" );
         continue;
       }
     } // if need to rebuild
@@ -961,7 +982,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       dictionaries.push_back( std::make_shared< AardDictionary >( dictId, indexFile, dictFiles ) );
     }
     catch ( std::exception & e ) {
-      gdWarning( "Aard dictionary initializing failed: %s, error: %s\n", fileName.c_str(), e.what() );
+      qWarning( "Aard dictionary initializing failed: %s, error: %s", fileName.c_str(), e.what() );
       continue;
     }
   }

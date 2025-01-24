@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN" sourcelanguage="en">
+<TS version="2.1" language="zh-CN" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
@@ -61,14 +61,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Expand article</source>
-      <translation>展开文章</translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>收起文章</translation>
-    </message>
-    <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
       <translation>在组 &lt;b&gt;%2&lt;/b&gt;中未找到 &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; 的翻译。</translation>
     </message>
@@ -96,16 +88,8 @@
   <context>
     <name>ArticleRequest</name>
     <message>
-      <source>Expand article</source>
-      <translation>展开文章</translation>
-    </message>
-    <message>
       <source>From </source>
       <translation>来自</translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>收起文章</translation>
     </message>
     <message>
       <source>Make a new Anki note</source>
@@ -155,12 +139,12 @@
       <translation>资源</translation>
     </message>
     <message>
-      <source>Audio</source>
-      <translation>音频</translation>
-    </message>
-    <message>
       <source>TTS Voice</source>
       <translation>TTS 音频</translation>
+    </message>
+    <message>
+      <source>Audio</source>
+      <translation>音频</translation>
     </message>
     <message>
       <source>Video</source>
@@ -183,12 +167,12 @@
       <translation>错误：%1</translation>
     </message>
     <message>
-      <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>所引用的资源不存在。</translation>
-    </message>
-    <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>引用的音频播放程序不存在。</translation>
+    </message>
+    <message>
+      <source>The referenced resource doesn&apos;t exist.</source>
+      <translation>所引用的资源不存在。</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
@@ -359,25 +343,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>custom transliteration</source>
       <translation>自定义转写</translation>
-    </message>
-  </context>
-  <context>
-    <name>Dialog</name>
-    <message>
-      <source>Proxy authentication required</source>
-      <translation>代理服务器要求身份验证</translation>
-    </message>
-    <message>
-      <source>You need to supply a Username and a Password to access via proxy</source>
-      <translation>您需要提供代理服务器的用户名和密码</translation>
-    </message>
-    <message>
-      <source>Username:</source>
-      <translation>用户名：</translation>
-    </message>
-    <message>
-      <source>Password:</source>
-      <translation>密码：</translation>
     </message>
   </context>
   <context>
@@ -596,10 +561,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictInfo</name>
     <message>
-      <source>Edit dictionary</source>
-      <translation>编辑词典信息</translation>
-    </message>
-    <message>
       <source>Open index folder</source>
       <translation>打开索引文件夹</translation>
     </message>
@@ -650,11 +611,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Full-text search disabled</source>
       <translation>全文搜索已禁用</translation>
-    </message>
-    <message>
-      <source>Edit the dictionary via command:
-%1</source>
-      <translation>编辑词典信息的命令行：%1</translation>
     </message>
   </context>
   <context>
@@ -747,10 +703,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>打开词典文件夹</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>编辑词典信息</translation>
     </message>
   </context>
   <context>
@@ -867,12 +819,24 @@ between classic and school orthography in cyrillic)</source>
       <translation>添加文件夹</translation>
     </message>
     <message>
+      <source>Clear All</source>
+      <translation>清除全部</translation>
+    </message>
+    <message>
       <source>Favorites:</source>
       <translation>收藏：</translation>
     </message>
     <message>
       <source>All selected items will be deleted. Continue?</source>
       <translation>所有选中项将被删除。是否继续？</translation>
+    </message>
+    <message>
+      <source>Clear All Items</source>
+      <translation>清除所有条目</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all items?</source>
+      <translation>您确实要清除所有项目吗？</translation>
     </message>
   </context>
   <context>
@@ -900,10 +864,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>from</source>
       <translation>来自</translation>
-    </message>
-    <message>
-      <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
-      <translation>进入 编辑|词典|词典来源|Forvo, 申请自己的 API-key 来消除此错误。</translation>
     </message>
   </context>
   <context>
@@ -2179,10 +2139,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>MainWindow</name>
     <message>
-      <source>Welcome!</source>
-      <translation>欢迎使用！</translation>
-    </message>
-    <message>
       <source>&amp;File</source>
       <translation>文件(&amp;F)</translation>
     </message>
@@ -2419,16 +2375,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ctrl+E</translation>
     </message>
     <message>
-      <source>Export to list</source>
-      <translation>导出至列表</translation>
-    </message>
-    <message>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>在词典栏中显示词典名称(&amp;B)</translation>
     </message>
     <message>
-      <source>Show Small Icons in &amp;Toolbars</source>
-      <translation>在工具栏上显示小图标(&amp;T)</translation>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>在工具栏中显示小图标(&amp;S)</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>在工具栏中显示大图标(&amp;L)</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>在工具栏中显示常规图标(&amp;N)</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
@@ -2447,8 +2407,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>前进</translation>
     </message>
     <message>
-      <source>Enable Scanning</source>
-      <translation>取词弹窗</translation>
+      <source>Toggle clipboard monitoring</source>
+      <translation>切换剪贴板监控</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2469,18 +2429,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Found in Dictionaries:</source>
       <translation>在以下词典中找到：</translation>
-    </message>
-    <message>
-      <source>Words Zoom In</source>
-      <translation>单词列表 - 放大</translation>
-    </message>
-    <message>
-      <source>Words Zoom Out</source>
-      <translation>单词列表 - 缩小</translation>
-    </message>
-    <message>
-      <source>Words Normal Size</source>
-      <translation>单词列表 - 正常大小</translation>
     </message>
     <message>
       <source>Show &amp;Main Window</source>
@@ -2509,6 +2457,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>New Tab</source>
       <translation>新建标签页</translation>
+    </message>
+    <message>
+      <source>Welcome!</source>
+      <translation>欢迎使用！</translation>
     </message>
     <message>
       <source>Accessibility API is not enabled</source>
@@ -2543,10 +2495,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Remove current tab from Favorites</source>
       <translation>从收藏中删除当前标签页</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
@@ -2590,12 +2538,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>打印文章</translation>
     </message>
     <message>
-      <source>Article, Complete (*.html)</source>
-      <translation>文章, 完整 (*.html)</translation>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>完整的 HTML (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Article, HTML Only (*.html)</source>
-      <translation>文章, 仅 HTML (*.html)</translation>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>单个 HTML (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Pdf (*.pdf)</source>
+      <translation>PDF（*.pdf）</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime Html (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2662,24 +2618,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>导出收藏记录到文件</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;All files (*.*)</source>
-      <translation>XML 文件 (*.xml);;所有文件 (*.*)</translation>
+      <source>Text files (*.txt);;XML files (*.xml)</source>
+      <translation>文本文件（*.txt）；XML 文件（*.xml）</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
       <translation>收藏导出完成</translation>
     </message>
     <message>
-      <source>Export Favorites to file as plain list</source>
-      <translation>以纯列表形式导出收藏列表到文件</translation>
-    </message>
-    <message>
       <source>Import Favorites from file</source>
       <translation>导入收藏文件</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation>XML 文件(*.xml);;文本文件(*.txt);;所有文件(*.*)</translation>
+      <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
+      <translation>文本和 XML 文件 (*.txt *.xml);;所有文件 (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -2700,10 +2652,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Open dictionary folder</source>
       <translation>打开词典文件夹</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>编辑词典信息</translation>
     </message>
     <message>
       <source>Now indexing for full-text search: </source>
@@ -3044,17 +2992,16 @@ the application.</source>
       <translation>等宽字体</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>屏幕取词(&amp;S)</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
-      <translation>选择是否默认启用屏幕取词模式。如果选中，程序启动时将会自动激活屏幕取词功能。</translation>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>选择在程序&apos;启动时是否默认打开剪贴板监视。</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
-      <translation>启动程序时同时启动屏幕取词</translation>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>从打开剪贴板监视开始</translation>
     </message>
     <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
@@ -3170,8 +3117,8 @@ in the pressed state when the word selection changes.</source>
       <translation>自动朗读主窗口中的词条</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
-      <translation>自动朗读屏幕取词弹出窗口中的词条</translation>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>在弹出窗口中自动发音</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3542,6 +3489,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation> MB</translation>
     </message>
     <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>在某些系统上，自动不执行任何操作。</translation>
+    </message>
+    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>变更界面语言需要重新启动程序才能生效。</translation>
     </message>
@@ -3556,6 +3507,22 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Restart needed</source>
       <translation>需要重启</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>启用</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>禁用</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>自动</translation>
+    </message>
+    <message>
+      <source>Enable application log</source>
+      <translation>启用应用程序日志</translation>
     </message>
   </context>
   <context>
@@ -3694,7 +3661,7 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>强制在主窗口中翻译该单词</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>切换扫描弹出窗口。</translation>
     </message>
     <message>
@@ -3796,10 +3763,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
       <translation>使用此按钮可以固定窗口，以便它能停留在屏幕上进行改变大小等相关窗口管理操作。</translation>
-    </message>
-    <message>
-      <source>%1 - GoldenDict-ng</source>
-      <translation>%1 - GoldenDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
@@ -3923,12 +3886,6 @@ of the appropriate groups to use them.</source>
       <translation>任意网站。%GDWORD% 字符串将会被搜索关键词替换：</translation>
     </message>
     <message>
-      <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
-      <translation>%GD1251% 对应 CP1251, %GDISO1%...%GDISO16% 依次对应 ISO 8859-1...ISO 8859-16,
-%GDBIG5% 对应 Big-5, %GDBIG5HKSCS% 对应 Big5-HKSCS, %GDGBK% 对应 GBK 及 GB18030, %GDSHIFTJIS% 对应 Shift-JIS.</translation>
-    </message>
-    <message>
       <source>DICT servers</source>
       <translation>词典服务器</translation>
     </message>
@@ -4044,34 +4001,6 @@ based on English phonology</source>
     <message>
       <source>Hepburn</source>
       <translation>黑本式</translation>
-    </message>
-    <message>
-      <source>The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>最常用的方案，跟假名系统一一对应。
-标准化为 ISO 3602。
-
-GoldenDict 尚不支持此方案。</translation>
-    </message>
-    <message>
-      <source>Nihon-shiki</source>
-      <translation>日本式</translation>
-    </message>
-    <message>
-      <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>以日本式为基础，针对现代日语做了一些修改。
-标准化为 ISO 3602。
-
-GoldenDict 尚不支持此方案。</translation>
-    </message>
-    <message>
-      <source>Kunrei-shiki</source>
-      <translation>训令式</translation>
     </message>
     <message>
       <source>Syllabaries:</source>

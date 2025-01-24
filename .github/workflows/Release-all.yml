@@ -1,0 +1,275 @@
+name: Release All
+env: 
+  version: 24.11.0
+  prerelease: ${{ !contains(github.ref_name,'master') }}
+  versionSuffix: ${{ !contains(github.ref_name,'master') && 'alpha' || 'Release' }}
+on: 
+  workflow_dispatch:
+  push:
+    branches:
+      - dev
+      - master
+      - experimental
+    paths-ignore:
+      - 'docs/**'
+      - "howto/**"
+      - "*.md"
+      - ".clang-format"
+jobs:
+  build_macOS:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-13,macos-14]
+        qt_ver: [ 6.6.3, 6.7.2 ]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+      - name: Update brew
+        run: |
+          brew update
+      - name: Install dependencies
+        run: |
+          brew install --force --overwrite \
+            bzip2  \
+            create-dmg \
+            hunspell \
+            libiconv \
+            libogg \
+            libvorbis \
+            libzim \
+            lzip \
+            ninja \
+            opencc \
+            xapian || true
+      - name: Install eb
+        run: |
+          git clone https://github.com/xiaoyifang/eb.git
+          cd eb && ./configure && make -j 8 && sudo make install && cd ..         
+      - uses: jurplel/install-qt-action@v4
+        with:
+          version: ${{ matrix.qt_ver }}
+          arch: clang_64
+          modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech      
+      - name: Build
+        run: |
+          mkdir build_dir
+          cmake -S . -B build_dir \
+            -G Ninja \
+            -DWITH_FFMPEG_PLAYER=OFF \
+            -DWITH_TTS=OFF \
+            -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+            -DCMAKE_OSX_DEPLOYMENT_TARGET="12.0"
+          cmake --build build_dir
+      - name: Package
+        run: |
+          cmake --install build_dir/
+      - name: Print package content
+        run: |
+          ls -Rl ./build_dir/redist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: macOS-${{ matrix.os }}-Qt${{ matrix.qt_ver }}
+          if-no-files-found: error
+          retention-days: 7
+          path: '*.dmg'
+
+  build_Windows:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-2022]
+        qt_ver: [ 6.6.3, 6.7.2 ]
+    steps:
+      - uses: jurplel/install-qt-action@v4
+        with:
+          version: ${{ matrix.qt_ver }}
+          arch: win64_msvc2019_64
+          modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
+          setup-python: 'false'
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+      - name: Build
+        id: build
+        run: |
+          # Launch-VsDevShell also provides Ninja
+          & 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\Launch-VsDevShell.ps1' `
+            -SkipAutomaticLocation -Arch amd64 -HostArch amd64
+          New-Item -Path './build_dir' -ItemType Directory
+          
+          # RelWithDebInfo + msvc's = .pdb file beside program file.
+          cmake -S . -B "./build_dir" `
+            -G Ninja `
+            -DCMAKE_C_COMPILER="cl.exe" -DCMAKE_CXX_COMPILER="cl.exe" `
+            -DCMAKE_BUILD_TYPE=RelWithDebInfo `
+            -DWITH_FFMPEG_PLAYER=OFF `
+            -DWITH_VCPKG_BREAKPAD=ON
+          cmake --build "./build_dir"
+      - name: Package
+        run: |
+          cd './build_dir'
+          cpack --verbose --trace
+          cd ..
+      - name: Move files
+        shell: bash
+        run: |
+          namePrefix=$(basename "$(ls ./build_dir/*.7z)" .7z)
+
+          # note the name will ensure `installer` ranked higher after sorting
+          cd ./build_dir
+          mv "${namePrefix}.7z" "${namePrefix}-Windows-installer.7z"
+          mv "${namePrefix}.exe" "${namePrefix}-Windows-installer.exe"
+          mv ./goldendict/goldendict.exe "./${namePrefix}-Windows-main-exe-file-only.exe" 
+          mv ./goldendict/goldendict.pdb "./${namePrefix}-Windows-pdb-debug-file.pdb"
+          cd ..
+          ls -R
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Windows-Qt${{ matrix.qt_ver }}
+          if-no-files-found: error
+          retention-days: 7
+          path: |
+            ./build_dir/*.exe
+            ./build_dir/*.7z
+            ./build_dir/*.pdb
+  
+  generate_other_staffs:
+    runs-on: ubuntu-latest
+    outputs:
+      newTag: ${{ steps.getNewTag.outputs.newTag }}
+      releaseTitle: ${{steps.getReleaseTitle.outputs.releaseTitle}}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # need all tags to genearte changelog
+      - name: Get git short SHA
+        id: shortSHA
+        run: |
+          echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+      - name: Get previous tag
+        id: changelogTags
+        run: |
+          if [[ '${{env.prerelease}}' == 'true' ]]
+          then
+            echo "This is a pre-release"
+            previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v "Release" | head -n 1)
+          else 
+            echo "This is not a pre-release"
+            previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v "alpha" | head -n 1)
+          fi
+
+          echo "prev_tag=$previousTag" >> $GITHUB_OUTPUT
+          echo "previousTag : $previousTag"
+      - name: Get new tag
+        id: getNewTag
+        run: |
+          echo "newTag=v${{ env.version }}-${{ env.versionSuffix }}.${{ steps.shortSHA.outputs.sha_short }}" >> $GITHUB_OUTPUT
+      - name: Build Changelog
+        id: build_changelog
+        uses: mikepenz/release-changelog-builder-action@v5
+        with:
+          commitMode: false
+          fromTag: ${{ steps.changelogTags.outputs.prev_tag }}
+          toTag:  ${{ github.sha }}
+          configurationJson: |
+            {
+              "template": "#{{CHANGELOG}}\n\n<details>\n<summary>🔴 Uncategorized</summary>\n\n#{{UNCATEGORIZED}}\n</details>",
+              "categories": [
+                {
+                    "title": "#### 🚀 Features",
+                    "labels": ["feature","feat"]
+                },
+                {
+                    "title": "#### 🔧 Fixes and Optimizations",
+                    "labels": ["fix","bug", "opt"]
+                }
+                ,
+                {
+                    "title": "#### 🤖 DevOps",
+                    "labels": ["action"]
+                }
+                ,
+                {
+                    "title": "#### 🧼 Clean Code",
+                    "labels": ["clean","refactor"]
+                }
+
+              ],
+              "label_extractor": [
+              {
+                "pattern": "([^:]*):.*",
+                "target": "$1",
+                "on_property": "title",
+                "flags": "gu"
+              }
+            ]
+            }
+      - name: Get changelog.txt
+        run: |
+          # HEREDOC must be quoted to avoid Bash substitution
+          cat <<'HEREDOC' > changelog.txt
+          [Install instructions for Windows, macOS and Linux](https://xiaoyifang.github.io/goldendict-ng/install/).
+          
+          Filename pattern: GoldenDict-ng-[version]-[Qt version]-[system name]...
+          
+          For Linux, the released version is on Flathub → [io.github.xiaoyifang.goldendict_ng](https://flathub.org/apps/io.github.xiaoyifang.goldendict_ng).
+
+          Based on branch: ${{ github.ref_name }}
+          ### Changes
+          ${{ steps.build_changelog.outputs.changelog }}
+          HEREDOC
+      - name: Get release title
+        id: getReleaseTitle
+        run: |
+          if [[ '${{ env.prerelease }}' == 'true' ]]
+          then
+            echo "releaseTitle=Daily build v${{env.version}}-${{ steps.shortSHA.outputs.sha_short }}" >> $GITHUB_OUTPUT
+          else
+            echo "releaseTitle=v${{ env.version }}-${{ env.versionSuffix }}.${{ steps.shortSHA.outputs.sha_short }}" >> $GITHUB_OUTPUT
+          fi
+          
+      - uses: actions/upload-artifact@v4
+        with:
+          name: changelog.txt
+          if-no-files-found: error
+          retention-days: 7
+          path: ./changelog.txt
+
+  publish:
+    needs: [build_macOS, build_Windows, generate_other_staffs]
+    runs-on: ubuntu-24.04
+    env:
+        newTag: ${{ needs.generate_other_staffs.outputs.newTag }}
+        releaseTitle: ${{ needs.generate_other_staffs.outputs.releaseTitle }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          merge-multiple: true
+      - name: List all files
+        run: ls -R
+      - name: Create new tag
+        run: |
+          if [[ '${{ env.prerelease }}' == 'true' ]]
+          then
+            gh release create '${{ env.newTag }}' \
+              -t '${{ env.releaseTitle }}' \
+              --target '${{ github.ref_name }}' \
+              --notes-file=./changelog.txt \
+              --latest=false \
+              --prerelease \
+              --repo ${GITHUB_REPOSITORY}
+          else
+            gh release create '${{ env.newTag }}' \
+              -t '${{ env.releaseTitle }}' \
+              --target '${{ github.ref_name }}' \
+              --notes-file=./changelog.txt \
+              --latest=true \
+              --repo ${GITHUB_REPOSITORY}
+          fi 
+      - name: Upload artifacts
+        run: |
+          gh release upload '${{ env.newTag }}' --repo ${GITHUB_REPOSITORY} --clobber \
+            *.7z *.exe *.pdb *.dmg 

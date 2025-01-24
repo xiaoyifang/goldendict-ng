@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="hi_IN" sourcelanguage="en">
+<TS version="2.1" language="hi" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
@@ -61,14 +61,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Expand article</source>
-      <translation>लेख का विस्तार करें</translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>लेख को संक्षिप्त करें</translation>
-    </message>
-    <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
       <translation>समूह &lt;b&gt;%2&lt;/b&gt;में &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; का कोई अनुवाद नहीं मिला।</translation>
     </message>
@@ -96,16 +88,8 @@
   <context>
     <name>ArticleRequest</name>
     <message>
-      <source>Expand article</source>
-      <translation>लेख का विस्तार करें</translation>
-    </message>
-    <message>
       <source>From </source>
       <translation>से </translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>लेख को संक्षिप्त करें</translation>
     </message>
     <message>
       <source>Make a new Anki note</source>
@@ -155,12 +139,12 @@
       <translation>संसाधन</translation>
     </message>
     <message>
-      <source>Audio</source>
-      <translation>श्रव्य</translation>
-    </message>
-    <message>
       <source>TTS Voice</source>
       <translation>टी.टीए.एस. ध्वनि</translation>
+    </message>
+    <message>
+      <source>Audio</source>
+      <translation>श्रव्य</translation>
     </message>
     <message>
       <source>Video</source>
@@ -183,12 +167,12 @@
       <translation>त्रुटि : %1</translation>
     </message>
     <message>
-      <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>संदर्भित संसाधन विद्यमान नहीं है।</translation>
-    </message>
-    <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>संदर्भित श्रव्य प्रोग्राम विद्यमान नहीं है।</translation>
+    </message>
+    <message>
+      <source>The referenced resource doesn&apos;t exist.</source>
+      <translation>संदर्भित संसाधन विद्यमान नहीं है।</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
@@ -359,25 +343,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>custom transliteration</source>
       <translation>कस्टम लिप्यंतरण</translation>
-    </message>
-  </context>
-  <context>
-    <name>Dialog</name>
-    <message>
-      <source>Proxy authentication required</source>
-      <translation>परोक्षी प्रमाणीकरण आवश्यक है</translation>
-    </message>
-    <message>
-      <source>You need to supply a Username and a Password to access via proxy</source>
-      <translation>आपको परोक्षी के द्वारा अभिगम करने के लिए उपयोगकर्ता नाम तथा पारण शब्द को भरना होगा</translation>
-    </message>
-    <message>
-      <source>Username:</source>
-      <translation>उपयोगकर्ता नाम :</translation>
-    </message>
-    <message>
-      <source>Password:</source>
-      <translation>पारण शब्द:</translation>
     </message>
   </context>
   <context>
@@ -596,10 +561,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictInfo</name>
     <message>
-      <source>Edit dictionary</source>
-      <translation>शब्दकोश संपादित करें</translation>
-    </message>
-    <message>
       <source>Open index folder</source>
       <translation>इंडेक्स फ़ोल्डर खोलें</translation>
     </message>
@@ -650,12 +611,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Full-text search disabled</source>
       <translation>पूर्ण-पाठ खोज अक्षम की गई</translation>
-    </message>
-    <message>
-      <source>Edit the dictionary via command:
-%1</source>
-      <translation>शब्दकोश को समादेश के माध्यम से संपादित करें:
-%1</translation>
     </message>
   </context>
   <context>
@@ -748,10 +703,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>शब्दकोश फ़ोल्डर खोलें</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>शब्दकोश संपादित करें</translation>
     </message>
   </context>
   <context>
@@ -868,12 +819,24 @@ between classic and school orthography in cyrillic)</source>
       <translation>फ़ोल्डर जोड़ें</translation>
     </message>
     <message>
+      <source>Clear All</source>
+      <translation>सभी साफ करें</translation>
+    </message>
+    <message>
       <source>Favorites:</source>
       <translation>पसंदीदा:</translation>
     </message>
     <message>
       <source>All selected items will be deleted. Continue?</source>
       <translation>सभी चयनित मद हटा दिए जाएंगे। जारी रखें?</translation>
+    </message>
+    <message>
+      <source>Clear All Items</source>
+      <translation>सभी आइटम साफ़ करें</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all items?</source>
+      <translation>क्या आप वाकई सभी आइटम साफ़ करना चाहते हैं?</translation>
     </message>
   </context>
   <context>
@@ -901,10 +864,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>from</source>
       <translation>से</translation>
-    </message>
-    <message>
-      <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
-      <translation>इस त्रुटि को मिटाने के लिए, सम्पादित करें|शब्दकोश|स्रोत|फोर्वो| पर जाएं और  हमारे स्वयं के API के लिए आवेदन करें</translation>
     </message>
   </context>
   <context>
@@ -2180,10 +2139,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>MainWindow</name>
     <message>
-      <source>Welcome!</source>
-      <translation>Bienvenue !</translation>
-    </message>
-    <message>
       <source>&amp;File</source>
       <translation>&amp;Fichier</translation>
     </message>
@@ -2420,16 +2375,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ctrl+E</translation>
     </message>
     <message>
-      <source>Export to list</source>
-      <translation>सूची में निर्यात करें</translation>
-    </message>
-    <message>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>Afficher les noms dans la &amp;barre de dictionnaire</translation>
     </message>
     <message>
-      <source>Show Small Icons in &amp;Toolbars</source>
-      <translation>Afficher de petites icônes dans les barres d&apos;ou&amp;tils</translation>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>टूलबार में छोटे चिह्न दिखाएं</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>टूलबार में बड़े चिह्न दिखाएं</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>टूलबार में &amp;सामान्य चिह्न दिखाएँ</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
@@ -2448,8 +2407,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>Suivant</translation>
     </message>
     <message>
-      <source>Enable Scanning</source>
-      <translation>स्कैनिंग सक्षम करें</translation>
+      <source>Toggle clipboard monitoring</source>
+      <translation>क्लिपबोर्ड मॉनिटरिंग टॉगल करें</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2470,18 +2429,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Found in Dictionaries:</source>
       <translation>Trouvé dans les dictionnaires :</translation>
-    </message>
-    <message>
-      <source>Words Zoom In</source>
-      <translation>Zoomer</translation>
-    </message>
-    <message>
-      <source>Words Zoom Out</source>
-      <translation>Dézoomer</translation>
-    </message>
-    <message>
-      <source>Words Normal Size</source>
-      <translation>Taille normale</translation>
     </message>
     <message>
       <source>Show &amp;Main Window</source>
@@ -2510,6 +2457,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>New Tab</source>
       <translation>Nouvel onglet</translation>
+    </message>
+    <message>
+      <source>Welcome!</source>
+      <translation>Bienvenue !</translation>
     </message>
     <message>
       <source>Accessibility API is not enabled</source>
@@ -2544,10 +2495,6 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     <message>
       <source>Remove current tab from Favorites</source>
       <translation>पसंदीदा से वर्तमान टैब हटाएँ</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
@@ -2590,12 +2537,20 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
       <translation>Imprimer l&apos;article</translation>
     </message>
     <message>
-      <source>Article, Complete (*.html)</source>
-      <translation>Article, Complet (*.html)</translation>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>पूर्ण HTML (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Article, HTML Only (*.html)</source>
-      <translation>Article, HTML uniquement (*.html)</translation>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>एकल HTML (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Pdf (*.pdf)</source>
+      <translation>पीडीएफ (*.pdf)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>माइम HTML (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2662,24 +2617,20 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
       <translation>फ़ाइल में पसंदीदा निर्यात करें</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;All files (*.*)</source>
-      <translation>XML फ़ाइलें (*.xml);;सभी फ़ाइलें (*.*)</translation>
+      <source>Text files (*.txt);;XML files (*.xml)</source>
+      <translation>पाठ फ़ाइलें (*.txt);; XML फ़ाइलें (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
       <translation>पसंदीदा निर्यात पूर्ण</translation>
     </message>
     <message>
-      <source>Export Favorites to file as plain list</source>
-      <translation>पसंदीदा को सादी सूची के रूप में फ़ाइल करने के लिए निर्यात करें</translation>
-    </message>
-    <message>
       <source>Import Favorites from file</source>
       <translation>फ़ाइल से पसंदीदा आयात करें</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation>XML फ़ाइलें (*.xml);;Txt फ़ाइलें (*.txt);;सभी फ़ाइलें (*.*)</translation>
+      <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
+      <translation>पाठ और XML फ़ाइलें (*.txt *.xml);;सभी फ़ाइलें (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -2700,10 +2651,6 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     <message>
       <source>Open dictionary folder</source>
       <translation>Ouvrir le dossier des dictionnaires</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>Éditer le dictionnaire</translation>
     </message>
     <message>
       <source>Now indexing for full-text search: </source>
@@ -3045,19 +2992,16 @@ the application.</source>
       <translation>मोनोस्पेस फ़ॉन्ट</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>&amp;स्कैन पॉपअप</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
-      <translation>यह चुनता है कि स्कैन पॉपअप पद्धति औत्सर्गिक रूप से चालू है या नहीं। अगर जाँचा हुआ हो,
-तो प्रोग्राम हमेशा स्कैन पॉपअप सक्रिय के साथ शुरू होगा।
-</translation>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>यह चुनता है कि प्रोग्राम&apos;के प्रारंभ होने पर क्लिपबोर्ड मॉनिटरिंग डिफ़ॉल्ट रूप से चालू होगी या नहीं।</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
-      <translation>स्कैन पॉपअप चालू के साथ शुरू करें</translation>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>क्लिपबोर्ड मॉनिटरिंग चालू करके प्रारंभ करें</translation>
     </message>
     <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
@@ -3173,8 +3117,8 @@ in the pressed state when the word selection changes.</source>
       <translation>मुख्य खिडकी में शब्दों का स्वतः उच्चारण करें</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
-      <translation>स्कैन पॉपअप में शब्दों का स्वतः उच्चारण करें</translation>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>पॉपअप में शब्दों का स्वतः उच्चारण</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3543,6 +3487,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation> एमबी</translation>
     </message>
     <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>कुछ प्रणालियों पर ऑटो कुछ भी नहीं करता।</translation>
+    </message>
+    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>भाषा परिवर्तन लागू करने के लिए प्रोग्राम को पुनरारंभ करें।</translation>
     </message>
@@ -3557,6 +3505,22 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Restart needed</source>
       <translation>पुनः प्रारंभ करने की आवश्यकता है</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>सक्षम</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>अक्षम करना</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>स्वचालित</translation>
+    </message>
+    <message>
+      <source>Enable application log</source>
+      <translation>एप्लिकेशन लॉग सक्षम करें</translation>
     </message>
   </context>
   <context>
@@ -3695,7 +3659,7 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>शब्द को मुख्य विंडो में अनुवादित करने के लिए बाध्य करें</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>स्कैन पॉपअप टॉगल करें.</translation>
     </message>
     <message>
@@ -3798,10 +3762,6 @@ from Stardict, Babylon and GLS dictionaries</source>
 could be resized or managed in other ways.</source>
       <translation>खिड़की को पिन करने के लिए इसका उपयोग करें जिससे कि यह स्क्रीन पर बना रहे,
 अन्य विधियों से आकार बदला या प्रबंधित किया जा सकता है</translation>
-    </message>
-    <message>
-      <source>%1 - GoldenDict-ng</source>
-      <translation>%1 - गोल्डनडिक्ट-एनजी</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
@@ -3922,11 +3882,6 @@ of the appropriate groups to use them.</source>
       <translation>कोई भी वेबसाइट।एक स्ट्रिंग %GDWORD% को पूँछताछ शब्द से बदल दिया जाएगा:</translation>
     </message>
     <message>
-      <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
-      <translation>वैकल्पिक रूप से, CP1251 के लिए %GD1251%, ISO 8859-1...ISO 8859-16 के लिए %GDISO1%...%GDISO16% क्रमश:, Big-5 के लिए %GDBIG5%, Big5-HKSCS के लिए %GDBIG5HKSCS%, GBK और GB18030 के लिए %GDGBK%, Shift-JIS के लिए %GDSHIFTJIS% उपयोग करें</translation>
-    </message>
-    <message>
       <source>DICT servers</source>
       <translation>डिक्टवितरक</translation>
     </message>
@@ -4042,34 +3997,6 @@ based on English phonology</source>
     <message>
       <source>Hepburn</source>
       <translation>हेपबर्न</translation>
-    </message>
-    <message>
-      <source>The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>सबसे नियमित प्रणाली, एक-से-एक संबंध वाली
-काना लेखन प्रणाली। आईएसओ 3602 के रूप में मानकीकृत
-
-गोल्डनडिक्ट में अभी तक लागू नहीं किया गया है।</translation>
-    </message>
-    <message>
-      <source>Nihon-shiki</source>
-      <translation>निहोन-शिकी</translation>
-    </message>
-    <message>
-      <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>निहोन-शिकी प्रणाली पर आधारित, लेकिन आधुनिक मानक जापानी के लिए संशोधित।
-आईएसओ 3602 के रूप में मानकीकृत
-
-गोल्डनडिक्ट में अभी तक लागू नहीं किया गया है।</translation>
-    </message>
-    <message>
-      <source>Kunrei-shiki</source>
-      <translation>कुनरेई-शिकी</translation>
     </message>
     <message>
       <source>Syllabaries:</source>

@@ -1,20 +1,10 @@
-#ifndef __FULLTEXTSEARCH_HH_INCLUDED__
-#define __FULLTEXTSEARCH_HH_INCLUDED__
+#pragma once
 
-#include <QAbstractListModel>
-#include <QAction>
-#include <QList>
 #include <QTimer>
-#include <QThread>
 #include <QRunnable>
 #include <QSemaphore>
-#include <QStringList>
-
-#include <QRegularExpression>
-
 #include "dict/dictionary.hh"
 #include "ui_fulltextsearch.h"
-
 #include "config.hh"
 #include "instances.hh"
 #include "delegate.hh"
@@ -261,5 +251,3 @@ signals:
 
 
 } // namespace FTS
-
-#endif // __FULLTEXTSEARCH_HH_INCLUDED__

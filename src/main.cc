@@ -1,16 +1,23 @@
 ﻿/* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#include <stdio.h>
-#include <QIcon>
-#include "mainwindow.hh"
 #include "config.hh"
-#include <QWebEngineProfile>
-#include "hotkeywrapper.hh"
+#include "logfileptr.hh"
+#include "mainwindow.hh"
+#include "termination.hh"
 #include "version.hh"
-#ifdef HAVE_X11
-  #include <fixx11h.h>
-#endif
+#include <QByteArray>
+#include <QCommandLineParser>
+#include <QFile>
+#include <QIcon>
+#include <QMessageBox>
+#include <QMutex>
+#include <QSessionManager>
+#include <QString>
+#include <QStringBuilder>
+#include <QtWebEngineCore/QWebEngineUrlScheme>
+#include <stdio.h>
+#include <QStyleFactory>
 
 #if defined( Q_OS_UNIX )
   #include <clocale>
@@ -20,19 +27,6 @@
 #ifdef Q_OS_WIN32
   #include <windows.h>
 #endif
-
-#include "termination.hh"
-#include <QByteArray>
-#include <QCommandLineParser>
-#include <QFile>
-#include <QMessageBox>
-#include <QString>
-#include <QStringBuilder>
-#include <QtWebEngineCore/QWebEngineUrlScheme>
-
-#include "gddebug.hh"
-#include <QMutex>
-#include <QStyleFactory>
 
 #if defined( USE_BREAKPAD )
   #if defined( Q_OS_MAC )
@@ -92,6 +86,10 @@ QMutex logMutex;
 
 void gdMessageHandler( QtMsgType type, const QMessageLogContext & context, const QString & mess )
 {
+  if ( GlobalBroadcaster::instance()->getPreference() == nullptr
+       || !GlobalBroadcaster::instance()->getPreference()->enableApplicationLog ) {
+    return;
+  }
   QString strTime = QDateTime::currentDateTime().toString( "MM-dd hh:mm:ss" );
   QString message = QString( "%1 %2\r\n" ).arg( strTime, mess );
 
@@ -232,8 +230,8 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
                                               QObject::tr( "Force the word to be translated in the mainwindow" ) );
 
   QCommandLineOption togglePopupOption( QStringList() << "t"
-                                                      << "toggle-scan-popup",
-                                        QObject::tr( "Toggle scan popup." ) );
+                                                      << "toggle-popup",
+                                        QObject::tr( "Toggle popup." ) );
 
   QCommandLineOption printVersion( QStringList() << "v"
                                                  << "version",
@@ -307,15 +305,7 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
     // Handle cases where we get encoded URL
     if ( result->word.startsWith( QStringLiteral( "xn--" ) ) ) {
       // For `kde-open` or `gio` or others, URL are encoded into ACE or Punycode
-  #if QT_VERSION >= QT_VERSION_CHECK( 6, 3, 0 )
       result->word = QUrl::fromAce( result->word.toLatin1(), QUrl::IgnoreIDNWhitelist );
-  #else
-      // Old Qt's fromAce only applies to whitelisted domains, so we add .com to bypass this restriction :)
-      // https://bugreports.qt.io/browse/QTBUG-29080
-      result->word.append( QStringLiteral( ".com" ) );
-      result->word = QUrl::fromAce( result->word.toLatin1() );
-      result->word.chop( 4 );
-  #endif
     }
     else if ( result->word.startsWith( QStringLiteral( "%" ) ) ) {
       // For Firefox or other browsers where URL are percent encoded
@@ -349,8 +339,11 @@ int main( int argc, char ** argv )
   // attach the new console to this application's process
   if ( AttachConsole( ATTACH_PARENT_PROCESS ) ) {
     // reopen the std I/O streams to redirect I/O to the new console
-    freopen( "CON", "w", stdout );
-    freopen( "CON", "w", stderr );
+    auto ret1 = freopen( "CON", "w", stdout );
+    auto ret2 = freopen( "CON", "w", stderr );
+    if ( ret1 == nullptr || ret2 == nullptr ) {
+      qDebug() << "Attaching console stdout or stderr failed";
+    }
   }
 
   qputenv( "QT_QPA_PLATFORM", "windows:darkmode=1" );
@@ -359,11 +352,10 @@ int main( int argc, char ** argv )
 
 
   //high dpi screen support
-#if ( QT_VERSION < QT_VERSION_CHECK( 6, 0, 0 ) )
-  QApplication::setAttribute( Qt::AA_EnableHighDpiScaling );
-  QApplication::setAttribute( Qt::AA_UseHighDpiPixmaps );
-#endif
-  qputenv( "QT_ENABLE_HIGHDPI_SCALING", "1" );
+  if ( !qEnvironmentVariableIsSet( "QT_ENABLE_HIGHDPI_SCALING" )
+       || qEnvironmentVariableIsEmpty( "QT_ENABLE_HIGHDPI_SCALING" ) ) {
+    qputenv( "QT_ENABLE_HIGHDPI_SCALING", "1" );
+  }
   QApplication::setHighDpiScaleFactorRoundingPolicy( Qt::HighDpiScaleFactorRoundingPolicy::PassThrough );
 
   QHotkeyApplication app( "GoldenDict-ng", argc, argv );
@@ -377,7 +369,7 @@ int main( int argc, char ** argv )
 
 #ifdef Q_OS_WIN
   // TODO: Force fusion because Qt6.7's "ModernStyle"'s dark theme have problems, need to test / reconsider in future
-  QHotkeyApplication::setStyle( QStyleFactory::create( "Fusion" ) );
+  QHotkeyApplication::setStyle( QStyleFactory::create( "WindowsVista" ) );
 #endif
 
 
@@ -481,8 +473,9 @@ int main( int argc, char ** argv )
       wasMessage = true;
     }
 
-    if ( !wasMessage )
+    if ( !wasMessage ) {
       app.sendMessage( "bringToFront" );
+    }
 
     return 0; // Another instance is running
   }
@@ -499,6 +492,9 @@ int main( int argc, char ** argv )
   for ( ;; ) {
     try {
       cfg = Config::load();
+
+      //enabled through command line or preference
+      gdcl.logFile = gdcl.logFile || cfg.preferences.enableApplicationLog;
     }
     catch ( Config::exError & ) {
       QMessageBox mb(
@@ -507,8 +503,9 @@ int main( int argc, char ** argv )
         QHotkeyApplication::translate( "Main", "Error in configuration file. Continue with default settings?" ),
         QMessageBox::Yes | QMessageBox::No );
       mb.exec();
-      if ( mb.result() != QMessageBox::Yes )
+      if ( mb.result() != QMessageBox::Yes ) {
         return -1;
+      }
 
       QString configFile = Config::getConfigFileName();
       QFile::rename( configFile,
@@ -522,27 +519,20 @@ int main( int argc, char ** argv )
 
   if ( gdcl.notts ) {
     cfg.notts = true;
-#ifndef NO_TTS_SUPPORT
+#ifdef TTS_SUPPORT
     cfg.voiceEngines.clear();
 #endif
   }
 
   cfg.resetState = gdcl.resetState;
 
-  if ( gdcl.needLogFile() ) {
-    // Open log file
-    logFilePtr->setFileName( Config::getConfigDir() + "gd_log.txt" );
-    logFilePtr->remove();
-    logFilePtr->open( QFile::ReadWrite );
+  // Open log file
+  logFilePtr->setFileName( Config::getConfigDir() + "gd_log.txt" );
+  logFilePtr->open( QFile::WriteOnly );
 
-    // Write UTF-8 BOM
-    QByteArray line;
-    line.append( 0xEF ).append( 0xBB ).append( 0xBF );
-    logFilePtr->write( line );
 
-    // Install message handler
-    qInstallMessageHandler( gdMessageHandler );
-  }
+  // Install message handler
+  qInstallMessageHandler( gdMessageHandler );
 
   // Reload translations for user selected locale is nesessary
   QTranslator qtTranslator;
@@ -562,37 +552,76 @@ int main( int argc, char ** argv )
   QLocale::setDefault( locale );
   QApplication::setLayoutDirection( locale.textDirection() );
 
-  if ( !qtTranslator.load( "qt_extra_" + localeName, Config::getLocDir() ) ) {
-    qtTranslator.load( "qt_extra_" + localeName, QLibraryInfo::location( QLibraryInfo::TranslationsPath ) );
+  // Load Qt translators
+  // For Windows, windeployqt will combine multiple qt modules translations into `qt_*`
+  // Thus, after deployment, loading `qtwebengine_*` is guaranteed to fail on Windows.
+  if ( qtTranslator.load( locale, "qt", "_", QLibraryInfo::path( QLibraryInfo::TranslationsPath ) ) ) {
     app.installTranslator( &qtTranslator );
+    qDebug() << "qt translator loaded: " << qtTranslator.filePath();
   }
-
-  translator.load( Config::getLocDir() + "/" + localeName );
-  app.installTranslator( &translator );
+  else {
+    qDebug() << "qt translator didn't load anything.";
+  }
 
   QTranslator webengineTs;
-  if ( webengineTs.load( "qtwebengine_" + localeName, Config::getLocDir() ) ) {
+  if ( webengineTs.load( locale, "qtwebengine", "_", QLibraryInfo::path( QLibraryInfo::TranslationsPath ) ) ) {
     app.installTranslator( &webengineTs );
+    qDebug() << "qt webengine translator loaded: " << webengineTs.filePath();
+  }
+  else {
+    qDebug() << "qt webengine translator may or may not be loaded.";
   }
 
-  // Prevent app from quitting spontaneously when it works with scan popup
+  // Load GD's translations, note GD has local names beyond what's supported by QLocal
+  if ( translator.load( localeName, Config::getLocDir() ) ) {
+    app.installTranslator( &translator );
+    qDebug() << "gd translator loaded: " << translator.filePath();
+  }
+  else {
+    qDebug() << "gd translator didn't load anything";
+  }
+
+
+  // Prevent app from quitting spontaneously when it works with popup
   // and with the main window closed.
   app.setQuitOnLastWindowClosed( false );
 
   MainWindow m( cfg );
 
-  app.addDataCommiter( m );
+  /// Session manager things.
+  // Redirect commit data request to Mainwindow's handler.
+  QObject::connect(
+    &app,
+    &QGuiApplication::commitDataRequest,
+    &m,
+    [ &m ]( QSessionManager & ) {
+      m.commitData();
+    },
+    Qt::DirectConnection );
+
+  // Just don't restart. This probably isn't really needed.
+  QObject::connect(
+    &app,
+    &QGuiApplication::saveStateRequest,
+    &app,
+    []( QSessionManager & mgr ) {
+      mgr.setRestartHint( QSessionManager::RestartNever );
+    },
+    Qt::DirectConnection );
 
   QObject::connect( &app, &QtSingleApplication::messageReceived, &m, &MainWindow::messageFromAnotherInstanceReceived );
 
-  if ( gdcl.needSetGroup() )
+  if ( gdcl.needSetGroup() ) {
     m.setGroupByName( gdcl.getGroupName(), true );
+  }
 
-  if ( gdcl.needSetPopupGroup() )
+  if ( gdcl.needSetPopupGroup() ) {
     m.setGroupByName( gdcl.getPopupGroupName(), false );
+  }
 
-  if ( gdcl.needTranslateWord() )
+  if ( gdcl.needTranslateWord() ) {
     m.wordReceived( gdcl.wordToTranslate() );
+  }
 
 #ifdef Q_OS_UNIX
   // handle Unix's shutdown signals for graceful exit
@@ -602,10 +631,9 @@ int main( int argc, char ** argv )
 #endif
   int r = app.exec();
 
-  app.removeDataCommiter( m );
-
-  if ( logFilePtr->isOpen() )
+  if ( logFilePtr->isOpen() ) {
     logFilePtr->close();
+  }
 
   return r;
 }

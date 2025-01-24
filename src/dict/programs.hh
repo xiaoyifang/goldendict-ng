@@ -1,20 +1,18 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __PROGRAMS_HH_INCLUDED__
-#define __PROGRAMS_HH_INCLUDED__
+#pragma once
 
 #include <QProcess>
 #include "dictionary.hh"
 #include "config.hh"
-#include "wstring.hh"
+#include "text.hh"
 
 /// Support for arbitrary programs.
 namespace Programs {
 
 using std::vector;
 using std::string;
-using gd::wstring;
 
 vector< sptr< Dictionary::Class > > makeDictionaries( Config::Programs const & );
 
@@ -79,5 +77,3 @@ private slots:
 };
 
 } // namespace Programs
-
-#endif

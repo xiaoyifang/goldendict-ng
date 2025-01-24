@@ -231,10 +231,11 @@ QString QtSingleApplication::appId() const
 void QtSingleApplication::setActivationWindow(QWidget* aw, bool activateOnMessage)
 {
     actWin = aw;
-    if (activateOnMessage)
+    if (activateOnMessage) {
       connect( peer, &QtLocalPeer::messageReceived, this, &QtSingleApplication::activateWindow );
-    else
+    } else {
       disconnect( peer, &QtLocalPeer::messageReceived, this, &QtSingleApplication::activateWindow );
+}
 }
 
 

@@ -5,22 +5,62 @@
 #include <vector>
 #include <errno.h>
 #include <string.h>
-#include "wstring_qt.hh"
-
-char const * const Iconv::GdWchar = "UTF-32LE";
-char const * const Iconv::Utf16Le = "UTF-16LE";
-char const * const Iconv::Utf8    = "UTF-8";
 
 Iconv::Iconv( char const * from ):
-  state( iconv_open( Utf8, from ) )
+  state( iconv_open( Text::utf8, from ) )
 {
-  if ( state == (iconv_t)-1 )
+  if ( state == (iconv_t)-1 ) {
     throw exCantInit( strerror( errno ) );
+  }
 }
 
 Iconv::~Iconv()
 {
   iconv_close( state );
+}
+
+QByteArray Iconv::fromUnicode( const QString & input, const char * toEncoding )
+{
+  // Convert QString to UTF-8
+  QByteArray utf8Data = input.toUtf8();
+  const char * inBuf  = utf8Data.constData();
+  size_t inBytesLeft  = utf8Data.size();
+
+  // Initialize iconv
+  iconv_t cd = iconv_open( toEncoding, "UTF-8" );
+  if ( cd == (iconv_t)-1 ) {
+    throw std::runtime_error( "iconv_open failed" );
+  }
+
+  // Prepare output buffer
+  size_t outBytesLeft = inBytesLeft * 4; // Allocate enough space
+  std::vector< char > outBuf( outBytesLeft );
+  char * outBufPtr = outBuf.data();
+
+  // Perform conversion
+  while ( inBytesLeft > 0 ) {
+    size_t result = iconv( cd, const_cast< char ** >( &inBuf ), &inBytesLeft, &outBufPtr, &outBytesLeft );
+    if ( result == (size_t)-1 ) {
+      if ( errno == E2BIG ) {
+        // Grow the buffer and retry
+        size_t offset = outBufPtr - outBuf.data();
+        outBuf.resize( outBuf.size() + inBytesLeft * 4 );
+        outBufPtr = outBuf.data() + offset;
+        outBytesLeft += inBytesLeft * 4;
+      }
+      else {
+        iconv_close( cd );
+        throw std::runtime_error( "iconv conversion failed" );
+      }
+    }
+  }
+
+  // Clean up
+  iconv_close( cd );
+
+  // Resize output buffer to actual size
+  outBuf.resize( outBuf.size() - outBytesLeft );
+  return QByteArray( outBuf.data(), outBuf.size() );
 }
 
 QString Iconv::convert( void const *& inBuf, size_t & inBytesLeft )
@@ -79,7 +119,7 @@ QString Iconv::convert( void const *& inBuf, size_t & inBytesLeft )
   return QString::fromUtf8( &outBuf.front(), datasize );
 }
 
-gd::wstring Iconv::toWstring( char const * fromEncoding, void const * fromData, size_t dataSize )
+std::u32string Iconv::toWstring( char const * fromEncoding, void const * fromData, size_t dataSize )
 
 {
   /// Special-case the dataSize == 0 to avoid any kind of iconv-specific
@@ -92,7 +132,7 @@ gd::wstring Iconv::toWstring( char const * fromEncoding, void const * fromData, 
   Iconv ic( fromEncoding );
 
   QString outStr = ic.convert( fromData, dataSize );
-  return gd::toWString( outStr );
+  return outStr.toStdU32String();
 }
 
 std::string Iconv::toUtf8( char const * fromEncoding, void const * fromData, size_t dataSize )
@@ -110,6 +150,12 @@ std::string Iconv::toUtf8( char const * fromEncoding, void const * fromData, siz
   return outStr.toStdString();
 }
 
+std::string Iconv::toUtf8( char const * fromEncoding, std::u32string_view str )
+{
+  // u32string::size -> returns the number of char32_t instead of the length of bytes
+  return toUtf8( fromEncoding, str.data(), str.size() * sizeof( char32_t ) );
+}
+
 QString Iconv::toQString( char const * fromEncoding, void const * fromData, size_t dataSize )
 {
   if ( dataSize == 0 ) {
@@ -118,4 +164,15 @@ QString Iconv::toQString( char const * fromEncoding, void const * fromData, size
 
   Iconv ic( fromEncoding );
   return ic.convert( fromData, dataSize );
+}
+QString Iconv::findValidEncoding( const QStringList & encodings )
+{
+  for ( const QString & encoding : encodings ) {
+    iconv_t cd = iconv_open( "UTF-8", encoding.toUtf8().constData() );
+    if ( cd != (iconv_t)-1 ) {
+      iconv_close( cd );
+      return encoding;
+    }
+  }
+  return {};
 }

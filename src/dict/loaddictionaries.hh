@@ -1,8 +1,7 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __LOADDICTIONARIES_HH_INCLUDED__
-#define __LOADDICTIONARIES_HH_INCLUDED__
+#pragma once
 
 #include "initializing.hh"
 #include "config.hh"
@@ -67,7 +66,6 @@ signals:
 /// If doDeferredInit is true (default), doDeferredInit() is done on all
 /// dictionaries at the end.
 void loadDictionaries( QWidget * parent,
-                       bool showInitially,
                        Config::Class const & cfg,
                        std::vector< sptr< Dictionary::Class > > &,
                        QNetworkAccessManager & dictNetMgr,
@@ -76,4 +74,3 @@ void loadDictionaries( QWidget * parent,
 /// Runs deferredInit() on all the given dictionaries. Useful when
 /// loadDictionaries() was previously called with doDeferredInit = false.
 void doDeferredInit( std::vector< sptr< Dictionary::Class > > & );
-#endif

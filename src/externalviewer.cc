@@ -4,7 +4,6 @@
 #include <QDir>
 #include <QTimer>
 #include "externalviewer.hh"
-#include "gddebug.hh"
 
 ExternalViewer::ExternalViewer(
   const char * data, int size, QString const & extension, QString const & viewerCmdLine_, QObject * parent ):
@@ -13,8 +12,9 @@ ExternalViewer::ExternalViewer(
   viewer( this ),
   viewerCmdLine( viewerCmdLine_ )
 {
-  if ( !tempFile.open() || tempFile.write( data, size ) != size )
+  if ( !tempFile.open() || tempFile.write( data, size ) != size ) {
     throw exCantCreateTempFile();
+  }
 
   tempFileName = tempFile.fileName(); // For some reason it loses it after it was closed()
 
@@ -25,7 +25,7 @@ ExternalViewer::ExternalViewer(
 
   tempFile.close();
 
-  GD_DPRINTF( "%s\n", tempFile.fileName().toLocal8Bit().data() );
+  qDebug( "%s", tempFile.fileName().toLocal8Bit().data() );
 }
 
 void ExternalViewer::start()
@@ -49,8 +49,9 @@ void ExternalViewer::start()
 
 bool ExternalViewer::stop()
 {
-  if ( viewer.state() == QProcess::NotRunning )
+  if ( viewer.state() == QProcess::NotRunning ) {
     return true;
+  }
   viewer.terminate();
   QTimer::singleShot( 1000, &viewer, &QProcess::kill ); // In case terminate() fails.
   return false;
@@ -59,16 +60,18 @@ bool ExternalViewer::stop()
 void ExternalViewer::stopSynchronously()
 {
   // This implementation comes straight from QProcess::~QProcess().
-  if ( viewer.state() == QProcess::NotRunning )
+  if ( viewer.state() == QProcess::NotRunning ) {
     return;
+  }
   viewer.kill();
   viewer.waitForFinished();
 }
 
 void stopAndDestroySynchronously( ExternalViewer * viewer )
 {
-  if ( !viewer )
+  if ( !viewer ) {
     return;
+  }
   viewer->stopSynchronously();
   delete viewer;
 }

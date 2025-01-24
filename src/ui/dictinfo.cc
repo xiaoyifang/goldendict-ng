@@ -10,8 +10,9 @@ DictInfo::DictInfo( Config::Class & cfg_, QWidget * parent ):
   cfg( cfg_ )
 {
   ui.setupUi( this );
-  if ( cfg.dictInfoGeometry.size() > 0 )
+  if ( cfg.dictInfoGeometry.size() > 0 ) {
     restoreGeometry( cfg.dictInfoGeometry );
+  }
   connect( this, &QDialog::finished, this, &DictInfo::savePos );
 }
 
@@ -27,14 +28,13 @@ void DictInfo::showInfo( sptr< Dictionary::Class > dict )
   ui.dictionaryTranslatesTo->setText( Language::localizedStringForId( dict->getLangTo() ) );
 
   ui.openFolder->setVisible( dict->isLocalDictionary() );
-  ui.editDictionary->setVisible( dict->isLocalDictionary() && !dict->getMainFilename().isEmpty()
-                                 && !cfg.editDictionaryCommandLine.isEmpty() );
-  ui.editDictionary->setToolTip( tr( "Edit the dictionary via command:\n%1" ).arg( cfg.editDictionaryCommandLine ) );
 
-  if ( dict->getWordCount() == 0 )
+  if ( dict->getWordCount() == 0 ) {
     ui.headwordsButton->setVisible( false );
-  else
+  }
+  else {
     ui.buttonsLayout->insertSpacerItem( 0, new QSpacerItem( 40, 20, QSizePolicy::Expanding ) );
+  }
 
   std::vector< std::string > const & filenames = dict->getDictionaryFilenames();
 
@@ -52,8 +52,9 @@ void DictInfo::showInfo( sptr< Dictionary::Class > dict )
     info.remove( QRegularExpression( R"(<link[^>]*>)", QRegularExpression::CaseInsensitiveOption ) );
     ui.infoLabel->setHtml( info );
   }
-  else
+  else {
     ui.infoLabel->clear();
+  }
 
   setWindowIcon( dict->getIcon() );
 }
@@ -61,11 +62,6 @@ void DictInfo::showInfo( sptr< Dictionary::Class > dict )
 void DictInfo::savePos( int )
 {
   cfg.dictInfoGeometry = saveGeometry();
-}
-
-void DictInfo::on_editDictionary_clicked()
-{
-  done( EDIT_DICTIONARY );
 }
 
 void DictInfo::on_openFolder_clicked()

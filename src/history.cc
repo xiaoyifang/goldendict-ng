@@ -14,72 +14,61 @@ History::History( unsigned size, unsigned maxItemLength_ ):
   dirty( false ),
   timerId( 0 )
 {
-}
-
-History::History( Load, unsigned size, unsigned maxItemLength_ ):
-  maxSize( size ),
-  maxItemLength( maxItemLength_ ),
-  addingEnabled( true ),
-  dirty( false ),
-  timerId( 0 )
-{
   QFile file( Config::getHistoryFileName() );
 
-  if ( !file.open( QFile::ReadOnly | QIODevice::Text ) )
+  if ( !file.open( QFile::ReadOnly | QIODevice::Text ) ) {
     return; // No file -- no history
+  }
 
-  for ( unsigned count = 0; count < maxSize; ++count ) {
-    QByteArray lineUtf8 = file.readLine( 4096 );
+  QTextStream in( &file );
+  while ( !in.atEnd() && items.size() <= maxSize ) {
+    QString line = in.readLine( 4096 );
 
-    if ( lineUtf8.endsWith( '\n' ) )
-      lineUtf8.chop( 1 );
+    auto firstSpace = line.indexOf( ' ' );
 
-    if ( lineUtf8.isEmpty() )
+    if ( firstSpace < 0 || firstSpace == line.size() ) {
       break;
+    }
 
-    QString line = QString::fromUtf8( lineUtf8 );
+    QString t = line.right( line.size() - firstSpace - 1 ).trimmed();
 
-    int firstSpace = line.indexOf( ' ' );
-
-    if ( firstSpace < 0 || firstSpace + 1 == line.size() )
-      // No spaces or value? Bad line. End this.
-      break;
-
-    bool isNumber;
-
-    unsigned groupId = line.left( firstSpace ).toUInt( &isNumber, 10 );
-
-    if ( !isNumber )
-      break; // That's not right
-
-    items.push_back( Item( groupId, line.right( line.size() - firstSpace - 1 ) ) );
+    if ( !t.isEmpty() ) {
+      items.push_back( Item{ line.right( line.size() - firstSpace - 1 ).trimmed() } );
+    }
   }
 }
 
 History::Item History::getItem( int index )
 {
   if ( index < 0 || index >= items.size() ) {
-    return Item();
+    return {};
   }
   return items.at( index );
 }
 
 void History::addItem( Item const & item )
 {
-  if ( !enabled() )
+  if ( !enabled() ) {
     return;
+  }
 
-  if ( item.word.isEmpty() ) {
+  if ( item.word.isEmpty() || item.word.size() > maxItemLength ) {
     // The search looks bogus. Don't save it.
     return;
   }
 
   //from the normal operation ,there should be only one item in the history at a time.
-  if ( items.contains( item ) )
+  if ( items.contains( item ) ) {
     items.removeOne( item );
+  }
 
-  //TODO : The groupid has not used at all.
   items.push_front( item );
+
+  Item & addedItem = items.first();
+
+  // remove \n and \r to avoid destroying the history file
+  addedItem.word.replace( QChar::LineFeed, QChar::Space );
+  addedItem.word.replace( QChar::CarriageReturn, QChar::Space );
 
   ensureSizeConstraints();
 
@@ -115,26 +104,19 @@ int History::size() const
 
 bool History::save()
 {
-  if ( !dirty )
+  if ( !dirty ) {
     return true;
+  }
 
   QSaveFile file( Config::getHistoryFileName() );
-
-  if ( !file.open( QFile::WriteOnly | QIODevice::Text ) )
+  if ( !file.open( QFile::WriteOnly | QIODevice::Text ) ) {
     return false;
+  }
 
-  for ( QList< Item >::const_iterator i = items.constBegin(); i != items.constEnd(); ++i ) {
-    QByteArray line = i->word.toUtf8();
-
-    // Those could ruin our format, so we replace them by spaces. They shouldn't
-    // be there anyway.
-    line.replace( '\n', ' ' );
-    line.replace( '\r', ' ' );
-
-    line = QByteArray::number( i->groupId ) + " " + line + "\n";
-
-    if ( file.write( line ) != line.size() )
-      return false;
+  QTextStream out( &file );
+  for ( const auto & i : items ) {
+    // "0 " is to keep compatibility with the original GD (an unused number)
+    out << "0 " << i.word.trimmed() << '\n';
   }
 
   if ( file.commit() ) {
@@ -156,13 +138,14 @@ void History::clear()
 
 void History::setSaveInterval( unsigned interval )
 {
-  if ( timerId ) {
+  if ( timerId != 0 ) {
     killTimer( timerId );
     timerId = 0;
   }
-  if ( interval ) {
-    if ( dirty )
+  if ( interval != 0 ) {
+    if ( dirty ) {
       save();
+    }
     timerId = startTimer( interval * 60000 );
   }
 }

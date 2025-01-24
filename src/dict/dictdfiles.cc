@@ -4,10 +4,9 @@
 #include "dictdfiles.hh"
 #include "btreeidx.hh"
 #include "folding.hh"
-#include "utf8.hh"
+#include "text.hh"
 #include "dictzip.hh"
 #include "htmlescape.hh"
-
 #include "langcoder.hh"
 #include <map>
 #include <set>
@@ -16,16 +15,12 @@
 #include <list>
 #include <wctype.h>
 #include <stdlib.h>
-#include "gddebug.hh"
 #include "ftshelpers.hh"
+#include <QDir>
 #include <QUrl>
 
 
 #include <QRegularExpression>
-
-#ifdef _MSC_VER
-  #include <stub_msvc.h>
-#endif
 
 namespace DictdFiles {
 
@@ -34,7 +29,6 @@ using std::multimap;
 using std::pair;
 using std::set;
 using std::string;
-using gd::wstring;
 using std::vector;
 using std::list;
 
@@ -55,6 +49,8 @@ enum {
   CurrentFormatVersion = 5 + BtreeIndexing::FormatVersion + Folding::Version
 };
 
+#pragma pack( push, 1 )
+
 struct IdxHeader
 {
   uint32_t signature;             // First comes the signature, DCDX
@@ -65,15 +61,14 @@ struct IdxHeader
   uint32_t indexRootOffset;
   uint32_t langFrom; // Source language
   uint32_t langTo;   // Target language
-}
-#ifndef _MSC_VER
-__attribute__( ( packed ) )
-#endif
-;
+};
+static_assert( alignof( IdxHeader ) == 1 );
+#pragma pack( pop )
+
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Index idx( indexFile, "rb" );
+  File::Index idx( indexFile, QIODevice::ReadOnly );
 
   IdxHeader header;
 
@@ -94,16 +89,6 @@ public:
   DictdDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles );
 
   ~DictdDictionary();
-
-  string getName() noexcept override
-  {
-    return dictionaryName;
-  }
-
-  map< Dictionary::Property, string > getProperties() noexcept override
-  {
-    return map< Dictionary::Property, string >();
-  }
 
   unsigned long getArticleCount() noexcept override
   {
@@ -127,8 +112,10 @@ public:
     return idxHeader.langTo;
   }
 
-  sptr< Dictionary::DataRequest >
-  getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ignoreDiacritics ) override;
+  sptr< Dictionary::DataRequest > getArticle( std::u32string const &,
+                                              vector< std::u32string > const & alts,
+                                              std::u32string const &,
+                                              bool ignoreDiacritics ) override;
 
   QString const & getDescription() override;
 
@@ -143,9 +130,10 @@ public:
     if ( metadata_enable_fts.has_value() ) {
       can_FTS = fts.enabled && metadata_enable_fts.value();
     }
-    else
+    else {
       can_FTS = fts.enabled && !fts.disabledTypes.contains( "DICTD", Qt::CaseInsensitive )
         && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
+    }
   }
 };
 
@@ -153,27 +141,24 @@ DictdDictionary::DictdDictionary( string const & id,
                                   string const & indexFile,
                                   vector< string > const & dictionaryFiles ):
   BtreeDictionary( id, dictionaryFiles ),
-  idx( indexFile, "rb" ),
-  indexFile( dictionaryFiles[ 0 ], "rb" ),
+  idx( indexFile, QIODevice::ReadOnly ),
+  indexFile( dictionaryFiles[ 0 ], QIODevice::ReadOnly ),
   idxHeader( idx.read< IdxHeader >() )
 {
 
   // Read the dictionary name
   idx.seek( sizeof( idxHeader ) );
 
-  vector< char > dName( idx.read< uint32_t >() );
-  if ( dName.size() > 0 ) {
-    idx.read( &dName.front(), dName.size() );
-    dictionaryName = string( &dName.front(), dName.size() );
-  }
+  idx.readU32SizeAndData<>( dictionaryName );
 
   // Open the .dict file
 
   DZ_ERRORS error;
   dz = dict_data_open( dictionaryFiles[ 1 ].c_str(), &error, 0 );
 
-  if ( !dz )
+  if ( !dz ) {
     throw exDictzipError( string( dz_error_str( error ) ) + "(" + getDictionaryFilenames()[ 1 ] + ")" );
+  }
 
   // Initialize the index
 
@@ -182,37 +167,41 @@ DictdDictionary::DictdDictionary( string const & id,
   // Full-text search parameters
 
   ftsIdxName = indexFile + Dictionary::getFtsSuffix();
-
 }
 
 DictdDictionary::~DictdDictionary()
 {
-  if ( dz )
+  if ( dz ) {
     dict_data_close( dz );
+  }
 }
 
 string nameFromFileName( string const & indexFileName )
 {
-  if ( indexFileName.empty() )
+  if ( indexFileName.empty() ) {
     return string();
+  }
 
   char const * sep = strrchr( indexFileName.c_str(), Utils::Fs::separator() );
 
-  if ( !sep )
+  if ( !sep ) {
     sep = indexFileName.c_str();
+  }
 
   char const * dot = strrchr( sep, '.' );
 
-  if ( !dot )
+  if ( !dot ) {
     dot = indexFileName.c_str() + indexFileName.size();
+  }
 
   return string( sep + 1, dot - sep - 1 );
 }
 
 void DictdDictionary::loadIcon() noexcept
 {
-  if ( dictionaryIconLoaded )
+  if ( dictionaryIconLoaded ) {
     return;
+  }
 
   QString fileName = QDir::fromNativeSeparators( QString::fromStdString( getDictionaryFilenames()[ 0 ] ) );
 
@@ -236,8 +225,9 @@ uint32_t decodeBase64( string const & str )
   for ( char const * next = str.c_str(); *next; ++next ) {
     char const * d = strchr( digits, *next );
 
-    if ( !d )
+    if ( !d ) {
       throw exInvalidBase64();
+    }
 
     number = number * 64 + ( d - digits );
   }
@@ -245,9 +235,9 @@ uint32_t decodeBase64( string const & str )
   return number;
 }
 
-sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & word,
-                                                             vector< wstring > const & alts,
-                                                             wstring const &,
+sptr< Dictionary::DataRequest > DictdDictionary::getArticle( std::u32string const & word,
+                                                             vector< std::u32string > const & alts,
+                                                             std::u32string const &,
                                                              bool ignoreDiacritics )
 
 {
@@ -262,21 +252,23 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
       chain.insert( chain.end(), altChain.begin(), altChain.end() );
     }
 
-    multimap< wstring, string > mainArticles, alternateArticles;
+    multimap< std::u32string, string > mainArticles, alternateArticles;
 
     set< uint32_t > articlesIncluded; // Some synonyms make it that the articles
                                       // appear several times. We combat this
                                       // by only allowing them to appear once.
 
-    wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
-    if ( ignoreDiacritics )
+    std::u32string wordCaseFolded = Folding::applySimpleCaseOnly( word );
+    if ( ignoreDiacritics ) {
       wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
+    }
 
     char buf[ 16384 ];
 
     for ( auto & x : chain ) {
-      if ( articlesIncluded.find( x.articleOffset ) != articlesIncluded.end() )
+      if ( articlesIncluded.find( x.articleOffset ) != articlesIncluded.end() ) {
         continue; // We already have this article in the body.
+      }
 
       // Now load that article
 
@@ -284,19 +276,22 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
         QMutexLocker _( &indexFileMutex );
         indexFile.seek( x.articleOffset );
 
-        if ( !indexFile.gets( buf, sizeof( buf ), true ) )
+        if ( !indexFile.gets( buf, sizeof( buf ), true ) ) {
           throw exFailedToReadLineFromIndex();
+        }
       }
 
       char * tab1 = strchr( buf, '\t' );
 
-      if ( !tab1 )
+      if ( !tab1 ) {
         throw exMalformedIndexFileLine();
+      }
 
       char * tab2 = strchr( tab1 + 1, '\t' );
 
-      if ( !tab2 )
+      if ( !tab2 ) {
         throw exMalformedIndexFileLine();
+      }
 
       // After tab1 should be article offset, after tab2 -- article size
 
@@ -334,8 +329,9 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
 
 
         articleText = string( "<div class=\"dictd_article\"" );
-        if ( isToLanguageRTL() )
+        if ( isToLanguageRTL() ) {
           articleText += " dir=\"rtl\"";
+        }
         articleText += ">";
 
         string convertedText = Html::preformat( articleBody, isToLanguageRTL() );
@@ -382,11 +378,12 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
 
       // We do the case-folded comparison here.
 
-      wstring headwordStripped = Folding::applySimpleCaseOnly( x.word );
-      if ( ignoreDiacritics )
+      std::u32string headwordStripped = Folding::applySimpleCaseOnly( x.word );
+      if ( ignoreDiacritics ) {
         headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
+      }
 
-      multimap< wstring, string > & mapToUse =
+      multimap< std::u32string, string > & mapToUse =
         ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
 
       mapToUse.insert( pair( Folding::applySimpleCaseOnly( x.word ), articleText ) );
@@ -394,18 +391,21 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
       articlesIncluded.insert( x.articleOffset );
     }
 
-    if ( mainArticles.empty() && alternateArticles.empty() )
+    if ( mainArticles.empty() && alternateArticles.empty() ) {
       return std::make_shared< Dictionary::DataRequestInstant >( false );
+    }
 
     string result;
 
-    multimap< wstring, string >::const_iterator i;
+    multimap< std::u32string, string >::const_iterator i;
 
-    for ( i = mainArticles.begin(); i != mainArticles.end(); ++i )
+    for ( i = mainArticles.begin(); i != mainArticles.end(); ++i ) {
       result += i->second;
+    }
 
-    for ( i = alternateArticles.begin(); i != alternateArticles.end(); ++i )
+    for ( i = alternateArticles.begin(); i != alternateArticles.end(); ++i ) {
       result += i->second;
+    }
 
     auto ret = std::make_shared< Dictionary::DataRequestInstant >( true );
     ret->appendString( result );
@@ -419,14 +419,15 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( wstring const & wor
 
 QString const & DictdDictionary::getDescription()
 {
-  if ( !dictionaryDescription.isEmpty() )
+  if ( !dictionaryDescription.isEmpty() ) {
     return dictionaryDescription;
+  }
 
-  sptr< Dictionary::DataRequest > req = getArticle( U"00databaseinfo", vector< wstring >(), wstring(), false );
+  sptr< Dictionary::DataRequest > req =
+    getArticle( U"00databaseinfo", vector< std::u32string >(), std::u32string(), false );
 
   if ( req->dataSize() > 0 ) {
-    dictionaryDescription = Html::unescape( QString::fromUtf8( req->getFullData().data(), req->getFullData().size() ),
-                                            Html::HtmlOption::Keep );
+    dictionaryDescription = QString::fromUtf8( req->getFullData().data(), req->getFullData().size() );
   }
   else {
     dictionaryDescription = "NONE";
@@ -438,24 +439,27 @@ QString const & DictdDictionary::getDescription()
 void DictdDictionary::makeFTSIndex( QAtomicInt & isCancelled )
 {
   if ( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
-          || FtsHelpers::ftsIndexIsOldOrBad( this ) ) )
+          || FtsHelpers::ftsIndexIsOldOrBad( this ) ) ) {
     FTS_index_completed.ref();
+  }
 
-  if ( haveFTSIndex() )
+  if ( haveFTSIndex() ) {
     return;
+  }
 
-  if ( ensureInitDone().size() )
+  if ( ensureInitDone().size() ) {
     return;
+  }
 
 
-  gdDebug( "DictD: Building the full-text index for dictionary: %s\n", getName().c_str() );
+  qDebug( "DictD: Building the full-text index for dictionary: %s", getName().c_str() );
 
   try {
     FtsHelpers::makeFTSIndex( this, isCancelled );
     FTS_index_completed.ref();
   }
   catch ( std::exception & ex ) {
-    gdWarning( "DictD: Failed building full-text search index for \"%s\", reason: %s\n", getName().c_str(), ex.what() );
+    qWarning( "DictD: Failed building full-text search index for \"%s\", reason: %s", getName().c_str(), ex.what() );
     QFile::remove( QString::fromStdString( ftsIdxName ) );
   }
 }
@@ -468,21 +472,24 @@ void DictdDictionary::getArticleText( uint32_t articleAddress, QString & headwor
       QMutexLocker _( &indexFileMutex );
       indexFile.seek( articleAddress );
 
-      if ( !indexFile.gets( buf, sizeof( buf ), true ) )
+      if ( !indexFile.gets( buf, sizeof( buf ), true ) ) {
         throw exFailedToReadLineFromIndex();
+      }
     }
 
     char * tab1 = strchr( buf, '\t' );
 
-    if ( !tab1 )
+    if ( !tab1 ) {
       throw exMalformedIndexFileLine();
+    }
 
     headword = QString::fromUtf8( buf, tab1 - buf );
 
     char * tab2 = strchr( tab1 + 1, '\t' );
 
-    if ( !tab2 )
+    if ( !tab2 ) {
       throw exMalformedIndexFileLine();
+    }
 
     // After tab1 should be article offset, after tab2 -- article size
 
@@ -526,7 +533,7 @@ void DictdDictionary::getArticleText( uint32_t articleAddress, QString & headwor
     }
   }
   catch ( std::exception & ex ) {
-    gdWarning( "DictD: Failed retrieving article from \"%s\", reason: %s\n", getName().c_str(), ex.what() );
+    qWarning( "DictD: Failed retrieving article from \"%s\", reason: %s", getName().c_str(), ex.what() );
   }
 }
 
@@ -552,8 +559,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
   for ( const auto & fileName : fileNames ) {
     // Only allow .index suffixes
 
-    if ( !Utils::endsWithIgnoreCase( fileName, ".index" ) )
+    if ( !Utils::endsWithIgnoreCase( fileName, ".index" ) ) {
       continue;
+    }
 
     try {
       vector< string > dictFiles( 1, fileName );
@@ -577,11 +585,11 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         // Building the index
         string dictionaryName = nameFromFileName( dictFiles[ 0 ] );
 
-        gdDebug( "DictD: Building the index for dictionary: %s\n", dictionaryName.c_str() );
+        qDebug( "DictD: Building the index for dictionary: %s", dictionaryName.c_str() );
 
         initializing.indexingDictionary( dictionaryName );
 
-        File::Index idx( indexFile, "wb" );
+        File::Index idx( indexFile, QIODevice::WriteOnly );
 
         IdxHeader idxHeader;
 
@@ -594,7 +602,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         IndexedWords indexedWords;
 
-        File::Index indexFile( dictFiles[ 0 ], "rb" );
+        File::Index indexFile( dictFiles[ 0 ], QIODevice::ReadOnly );
 
         // Read words from index until none's left.
 
@@ -603,8 +611,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         do {
           uint32_t curOffset = indexFile.tell();
 
-          if ( !indexFile.gets( buf, sizeof( buf ), true ) )
+          if ( !indexFile.gets( buf, sizeof( buf ), true ) ) {
             break;
+          }
 
           // Check that there are exactly two or three tabs in the record.
           char * tab1 = strchr( buf, '\t' );
@@ -615,17 +624,17 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
               if ( tab3 ) {
                 char * tab4 = strchr( tab3 + 1, '\t' );
                 if ( tab4 ) {
-                  GD_DPRINTF( "Warning: too many tabs present, skipping: %s\n", buf );
+                  qDebug( "Warning: too many tabs present, skipping: %s", buf );
                   continue;
                 }
 
                 // Handle the forth entry, if it exists. From dictfmt man:
                 // When --index-keep-orig option is used fourth column is created
                 // (if necessary) in .index file.
-                indexedWords.addWord( Utf8::decode( string( tab3 + 1, strlen( tab3 + 1 ) ) ), curOffset );
+                indexedWords.addWord( Text::toUtf32( string( tab3 + 1, strlen( tab3 + 1 ) ) ), curOffset );
                 ++idxHeader.wordCount;
               }
-              indexedWords.addWord( Utf8::decode( string( buf, strchr( buf, '\t' ) - buf ) ), curOffset );
+              indexedWords.addWord( Text::toUtf32( string( buf, strchr( buf, '\t' ) - buf ) ), curOffset );
               ++idxHeader.wordCount;
               ++idxHeader.articleCount;
 
@@ -643,36 +652,41 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
                   if ( articleBody ) {
                     char * eol;
                     if ( !strncmp( articleBody, "00databaseshort", 15 )
-                         || !strncmp( articleBody, "00-database-short", 17 ) )
+                         || !strncmp( articleBody, "00-database-short", 17 ) ) {
                       eol = strchr( articleBody, '\n' ); // skip the first line (headword itself)
-                    else
+                    }
+                    else {
                       eol = articleBody; // No headword itself
+                    }
                     if ( eol ) {
-                      while ( *eol && Utf8::isspace( *eol ) )
+                      while ( *eol && Text::isspace( *eol ) ) {
                         ++eol; // skip spaces
+                      }
 
                       // use only the single line for the dictionary title
                       char * endEol = strchr( eol, '\n' );
-                      if ( endEol )
+                      if ( endEol ) {
                         *endEol = 0;
+                      }
 
-                      GD_DPRINTF( "DICT NAME: '%s'\n", eol );
+                      qDebug( "DICT NAME: '%s'", eol );
                       dictionaryName = eol;
                     }
                   }
                   dict_data_close( dz );
                 }
-                else
+                else {
                   throw exDictzipError( string( dz_error_str( error ) ) + "(" + dictFiles[ 1 ] + ")" );
+                }
               }
             }
             else {
-              GD_DPRINTF( "Warning: only a single tab present, skipping: %s\n", buf );
+              qDebug( "Warning: only a single tab present, skipping: %s", buf );
               continue;
             }
           }
           else {
-            GD_DPRINTF( "Warning: no tabs present, skipping: %s\n", buf );
+            qDebug( "Warning: no tabs present, skipping: %s", buf );
             continue;
           }
 
@@ -716,7 +730,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       dictionaries.push_back( std::make_shared< DictdDictionary >( dictId, indexFile, dictFiles ) );
     }
     catch ( std::exception & e ) {
-      gdWarning( "Dictd dictionary \"%s\" reading failed, error: %s\n", fileName.c_str(), e.what() );
+      qWarning( "Dictd dictionary \"%s\" reading failed, error: %s", fileName.c_str(), e.what() );
     }
   }
 

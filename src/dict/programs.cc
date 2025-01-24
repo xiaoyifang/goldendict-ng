@@ -4,8 +4,7 @@
 #include "programs.hh"
 #include "audiolink.hh"
 #include "htmlescape.hh"
-#include "utf8.hh"
-#include "wstring_qt.hh"
+#include "text.hh"
 #include "iconv.hh"
 #include "utils.hh"
 #include "globalbroadcaster.hh"
@@ -36,11 +35,6 @@ public:
     return prg.name.toUtf8().data();
   }
 
-  map< Property, string > getProperties() noexcept override
-  {
-    return map< Property, string >();
-  }
-
   unsigned long getArticleCount() noexcept override
   {
     return 0;
@@ -51,20 +45,22 @@ public:
     return 0;
   }
 
-  sptr< WordSearchRequest > prefixMatch( wstring const & word, unsigned long maxResults ) override;
+  sptr< WordSearchRequest > prefixMatch( std::u32string const & word, unsigned long maxResults ) override;
 
-  sptr< DataRequest > getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ) override;
+  sptr< DataRequest >
+  getArticle( std::u32string const &, vector< std::u32string > const & alts, std::u32string const &, bool ) override;
 
 protected:
 
   void loadIcon() noexcept override;
 };
 
-sptr< WordSearchRequest > ProgramsDictionary::prefixMatch( wstring const & word, unsigned long /*maxResults*/ )
+sptr< WordSearchRequest > ProgramsDictionary::prefixMatch( std::u32string const & word, unsigned long /*maxResults*/ )
 
 {
-  if ( prg.type == Config::Program::PrefixMatch )
+  if ( prg.type == Config::Program::PrefixMatch ) {
     return std::make_shared< ProgramWordSearchRequest >( QString::fromStdU32String( word ), prg );
+  }
   else {
     sptr< WordSearchRequestInstant > sr = std::make_shared< WordSearchRequestInstant >();
 
@@ -74,8 +70,10 @@ sptr< WordSearchRequest > ProgramsDictionary::prefixMatch( wstring const & word,
   }
 }
 
-sptr< Dictionary::DataRequest >
-ProgramsDictionary::getArticle( wstring const & word, vector< wstring > const &, wstring const &, bool )
+sptr< Dictionary::DataRequest > ProgramsDictionary::getArticle( std::u32string const & word,
+                                                                vector< std::u32string > const &,
+                                                                std::u32string const &,
+                                                                bool )
 
 {
   switch ( prg.type ) {
@@ -83,9 +81,9 @@ ProgramsDictionary::getArticle( wstring const & word, vector< wstring > const &,
       // Audio results are instantaneous
       string result;
 
-      string wordUtf8( Utf8::encode( word ) );
+      string wordUtf8( Text::toUtf8( word ) );
 
-      result += "<table class=\"programs_play\"><tr>";
+      result += "<div class=\"audio-play\"><div class=\"audio-play-item\">";
 
       QUrl url;
       url.setScheme( "gdprg" );
@@ -94,11 +92,11 @@ ProgramsDictionary::getArticle( wstring const & word, vector< wstring > const &,
 
       string ref = string( "\"" ) + url.toEncoded().data() + "\"";
 
-      result += addAudioLink( ref, getId() );
+      addAudioLink( url.toEncoded(), getId() );
 
-      result += "<td><a href=" + ref + R"(><img src="qrc:///icons/playsound.png" border="0" alt="Play"/></a></td>)";
-      result += "<td><a href=" + ref + ">" + Html::escape( wordUtf8 ) + "</a></td>";
-      result += "</tr></table>";
+      result += "<a href=" + ref + R"(><img src="qrc:///icons/playsound.png" border="0" alt="Play"/></a>)";
+      result += "<a href=" + ref + ">" + Html::escape( wordUtf8 ) + "</a>";
+      result += "</div></div>";
 
       auto ret = std::make_shared< DataRequestInstant >( true );
       ret->appendString( result );
@@ -116,16 +114,19 @@ ProgramsDictionary::getArticle( wstring const & word, vector< wstring > const &,
 
 void ProgramsDictionary::loadIcon() noexcept
 {
-  if ( dictionaryIconLoaded )
+  if ( dictionaryIconLoaded ) {
     return;
+  }
 
   if ( !prg.iconFilename.isEmpty() ) {
     QFileInfo fInfo( QDir( Config::getConfigDir() ), prg.iconFilename );
-    if ( fInfo.isFile() )
+    if ( fInfo.isFile() ) {
       loadIconFromFile( fInfo.absoluteFilePath(), true );
+    }
   }
-  if ( dictionaryIcon.isNull() )
+  if ( dictionaryIcon.isNull() ) {
     dictionaryIcon = QIcon( ":/icons/programdict.svg" );
+  }
   dictionaryIconLoaded = true;
 }
 
@@ -185,16 +186,19 @@ void RunInstance::handleProcessFinished()
   QByteArray output = process.readAllStandardOutput();
 
   QString error;
-  if ( process.exitStatus() != QProcess::NormalExit )
+  if ( process.exitStatus() != QProcess::NormalExit ) {
     error = tr( "The program has crashed." );
-  else if ( int code = process.exitCode() )
+  }
+  else if ( int code = process.exitCode() ) {
     error = tr( "The program has returned exit code %1." ).arg( code );
+  }
 
   if ( !error.isEmpty() ) {
     QByteArray err = process.readAllStandardError();
 
-    if ( !err.isEmpty() )
-      error += "\n\n" + QString::fromLocal8Bit( err );
+    if ( !err.isEmpty() ) {
+      error += "\n\n" + QString::fromUtf8( err );
+    }
   }
 
   emit finished( output, error );
@@ -227,15 +231,17 @@ void ProgramDataRequest::instanceFinished( QByteArray output, QString error )
             unsigned char * uchars = reinterpret_cast< unsigned char * >( output.data() );
             if ( output.length() >= 2 && uchars[ 0 ] == 0xFF && uchars[ 1 ] == 0xFE ) {
               int size = output.length() - 2;
-              if ( size & 1 )
+              if ( size & 1 ) {
                 size -= 1;
+              }
               string res  = Iconv::toUtf8( "UTF-16LE", output.data() + 2, size );
               prog_output = QString::fromUtf8( res.c_str(), res.size() );
             }
             else if ( output.length() >= 2 && uchars[ 0 ] == 0xFE && uchars[ 1 ] == 0xFF ) {
               int size = output.length() - 2;
-              if ( size & 1 )
+              if ( size & 1 ) {
                 size -= 1;
+              }
               string res  = Iconv::toUtf8( "UTF-16BE", output.data() + 2, size );
               prog_output = QString::fromUtf8( res.c_str(), res.size() );
             }
@@ -243,8 +249,8 @@ void ProgramDataRequest::instanceFinished( QByteArray output, QString error )
               prog_output = QString::fromUtf8( output.data() + 3, output.length() - 3 );
             }
             else {
-              // No BOM, assume local 8-bit encoding
-              prog_output = QString::fromLocal8Bit( output );
+              // No BOM, assume UTF-8 encoding
+              prog_output = QString::fromUtf8( output );
             }
           }
           catch ( std::exception & e ) {
@@ -259,14 +265,16 @@ void ProgramDataRequest::instanceFinished( QByteArray output, QString error )
             unsigned char * uchars = reinterpret_cast< unsigned char * >( output.data() );
             if ( output.length() >= 2 && uchars[ 0 ] == 0xFF && uchars[ 1 ] == 0xFE ) {
               int size = output.length() - 2;
-              if ( size & 1 )
+              if ( size & 1 ) {
                 size -= 1;
+              }
               result += Iconv::toUtf8( "UTF-16LE", output.data() + 2, size );
             }
             else if ( output.length() >= 2 && uchars[ 0 ] == 0xFE && uchars[ 1 ] == 0xFF ) {
               int size = output.length() - 2;
-              if ( size & 1 )
+              if ( size & 1 ) {
                 size -= 1;
+              }
               result += Iconv::toUtf8( "UTF-16BE", output.data() + 2, size );
             }
             else if ( output.length() >= 3 && uchars[ 0 ] == 0xEF && uchars[ 1 ] == 0xBB && uchars[ 2 ] == 0xBF ) {
@@ -290,8 +298,9 @@ void ProgramDataRequest::instanceFinished( QByteArray output, QString error )
       hasAnyData = true;
     }
 
-    if ( !error.isEmpty() )
+    if ( !error.isEmpty() ) {
       setErrorString( error );
+    }
 
     finish();
   }
@@ -321,11 +330,13 @@ void ProgramWordSearchRequest::instanceFinished( QByteArray output, QString erro
     output.replace( "\r\n", "\n" );
     QStringList result = QString::fromUtf8( output ).split( "\n", Qt::SkipEmptyParts );
 
-    for ( const auto & x : result )
-      matches.push_back( Dictionary::WordMatch( gd::toWString( x ) ) );
+    for ( const auto & x : result ) {
+      matches.push_back( Dictionary::WordMatch( x.toStdU32String() ) );
+    }
 
-    if ( !error.isEmpty() )
+    if ( !error.isEmpty() ) {
       setErrorString( error );
+    }
 
     finish();
   }
@@ -341,9 +352,11 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::Programs const & p
 {
   vector< sptr< Dictionary::Class > > result;
 
-  for ( const auto & program : programs )
-    if ( program.enabled )
+  for ( const auto & program : programs ) {
+    if ( program.enabled ) {
       result.push_back( std::make_shared< ProgramsDictionary >( program ) );
+    }
+  }
 
   return result;
 }

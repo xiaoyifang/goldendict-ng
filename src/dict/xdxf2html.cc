@@ -3,13 +3,11 @@
 
 #include "xdxf2html.hh"
 #include <QtXml>
-#include "gddebug.hh"
-#include "utf8.hh"
-#include "wstring_qt.hh"
+#include "text.hh"
 #include "folding.hh"
 
 #include "audiolink.hh"
-#include "file.hh"
+#include "dictfile.hh"
 #include "filetype.hh"
 #include "htmlescape.hh"
 #include "utils.hh"
@@ -48,10 +46,12 @@ string convertToRoman( int input, int lower_case )
   for ( int i = 0; i < 13; i++ ) {
     while ( input >= decimal[ i ] ) {
       input -= decimal[ i ];
-      if ( lower_case == 1 )
+      if ( lower_case == 1 ) {
         romanvalue += roman[ i + 13 ];
-      else
+      }
+      else {
         romanvalue += roman[ i ];
+      }
     }
   }
   return romanvalue;
@@ -68,7 +68,6 @@ string convert( string const & in,
                 DICT_TYPE type,
                 map< string, string > const * pAbrv,
                 Dictionary::Class * dictPtr,
-                IndexedZip * resourceZip,
                 bool isLogicalFormat,
                 unsigned revisionNumber,
                 QString * headword )
@@ -86,8 +85,9 @@ string convert( string const & in,
     switch ( i ) {
       case '\n':
         afterEol = true;
-        if ( !isLogicalFormat )
+        if ( !isLogicalFormat ) {
           inConverted.append( "<br/>" );
+        }
         break;
 
       case '\r':
@@ -95,12 +95,12 @@ string convert( string const & in,
 
       case ' ':
         if ( afterEol ) {
-          if ( !isLogicalFormat )
+          if ( !isLogicalFormat ) {
             inConverted.append( "&#160;" ); // xml don't have &nbsp;
+          }
           break;
         }
-        // Fall-through
-
+        [[fallthrough]];
       default:
         inConverted.push_back( i );
         afterEol = false;
@@ -116,32 +116,34 @@ string convert( string const & in,
   string in_data;
   if ( type == XDXF ) {
     in_data = "<div class=\"xdxf\"";
-    if ( dictPtr->isToLanguageRTL() )
+    if ( dictPtr->isToLanguageRTL() ) {
       in_data += " dir=\"rtl\"";
+    }
     in_data += ">";
   }
-  else
+  else {
     in_data = "<div class=\"sdct_x\">";
+  }
   in_data += inConverted + "</div>";
 
 
 #if ( QT_VERSION < QT_VERSION_CHECK( 6, 5, 0 ) )
   if ( !dd.setContent( QByteArray( in_data.c_str() ), false, &errorStr, &errorLine, &errorColumn ) ) {
-    qWarning( "Xdxf2html error, xml parse failed: %s at %d,%d\n",
+    qWarning( "Xdxf2html error, xml parse failed: %s at %d,%d",
               errorStr.toLocal8Bit().constData(),
               errorLine,
               errorColumn );
-    gdWarning( "The input was: %s\n", in_data.c_str() );
+    qWarning( "The input was: %s", in_data.c_str() );
     return in;
   }
 #else
   auto setContentResult = dd.setContent( QByteArray::fromStdString( in_data ) );
   if ( !setContentResult ) {
-    qWarning( "Xdxf2html error, xml parse failed: %s at %lld,%lld\n",
+    qWarning( "Xdxf2html error, xml parse failed: %s at %lld,%lld",
               setContentResult.errorMessage.toStdString().c_str(),
               setContentResult.errorLine,
               setContentResult.errorColumn );
-    gdWarning( "The input was: %s\n", in_data.c_str() );
+    qWarning( "The input was: %s", in_data.c_str() );
     return in;
   }
 #endif
@@ -174,8 +176,9 @@ string convert( string const & in,
       el2.setAttribute( "class", "xdxf_ex_source" );
       QString text = author;
       if ( !source.isEmpty() ) {
-        if ( !text.isEmpty() )
+        if ( !text.isEmpty() ) {
           text += ", ";
+        }
         text += source;
       }
       QDomText txtNode = dd.createTextNode( text );
@@ -183,14 +186,17 @@ string convert( string const & in,
       el.appendChild( el2 );
     }
 
-    if ( el.text().isEmpty() && el.childNodes().isEmpty() )
+    if ( el.text().isEmpty() && el.childNodes().isEmpty() ) {
       el.appendChild( fakeElement( dd ) );
+    }
 
     el.setTagName( "span" );
-    if ( isLogicalFormat )
+    if ( isLogicalFormat ) {
       el.setAttribute( "class", "xdxf_ex" );
-    else
+    }
+    else {
       el.setAttribute( "class", "xdxf_ex_old" );
+    }
   }
 
   nodes = dd.elementsByTagName( "mrkd" ); // marked out words in translations/examples of usage
@@ -198,8 +204,9 @@ string convert( string const & in,
   while ( nodes.size() ) {
     QDomElement el = nodes.at( 0 ).toElement();
 
-    if ( el.text().isEmpty() && el.childNodes().isEmpty() )
+    if ( el.text().isEmpty() && el.childNodes().isEmpty() ) {
       el.appendChild( fakeElement( dd ) );
+    }
 
     el.setTagName( "span" );
     el.setAttribute( "class", "xdxf_ex_markd" );
@@ -207,22 +214,25 @@ string convert( string const & in,
 
   nodes = dd.elementsByTagName( "k" ); // Key
 
-  if ( headword )
+  if ( headword ) {
     headword->clear();
+  }
 
   while ( nodes.size() ) {
     QDomElement el = nodes.at( 0 ).toElement();
 
-    if ( el.text().isEmpty() && el.childNodes().isEmpty() )
+    if ( el.text().isEmpty() && el.childNodes().isEmpty() ) {
       el.appendChild( fakeElement( dd ) );
+    }
 
     if ( type == STARDICT ) {
       el.setTagName( "span" );
       el.setAttribute( "class", "xdxf_k" );
     }
     else {
-      if ( headword && headword->isEmpty() )
+      if ( headword && headword->isEmpty() ) {
         *headword = el.text();
+      }
 
       el.setTagName( "div" );
       el.setAttribute( "class", "xdxf_headwords" );
@@ -234,11 +244,13 @@ string convert( string const & in,
         el.setAttribute( "lang", lang );
 
         quint32 langID = Xdxf::getLanguageId( lang );
-        if ( langID )
+        if ( langID ) {
           isLanguageRtl = LangCoder::isLanguageRTL( langID );
+        }
       }
-      if ( isLanguageRtl != dictPtr->isToLanguageRTL() )
+      if ( isLanguageRtl != dictPtr->isToLanguageRTL() ) {
         el.setAttribute( "dir", isLanguageRtl ? "rtl" : "ltr" );
+      }
     }
   }
 
@@ -260,8 +272,9 @@ string convert( string const & in,
         nestingCount++;
         nestingNode = nestingNode.parentNode().toElement();
       }
-      if ( nestingCount > maxNestingDepth )
+      if ( nestingCount > maxNestingDepth ) {
         maxNestingDepth = nestingCount;
+      }
     }
     // 2. in this loop we go layer-by-layer through all <def> and insert proper numbers according to its structure
     for ( int j = maxNestingDepth; j > 0; j-- ) // j symbolizes special depth to be processed at this iteration
@@ -285,20 +298,26 @@ string convert( string const & in,
             numberText = numberText.setNum( siblingCount ) + ". ";
           }
           else if ( maxNestingDepth == 2 ) {
-            if ( nestingDepth == 1 )
+            if ( nestingDepth == 1 ) {
               numberText = numberText.setNum( siblingCount ) + ". ";
-            if ( nestingDepth == 2 )
+            }
+            if ( nestingDepth == 2 ) {
               numberText = numberText.setNum( siblingCount ) + ") ";
+            }
           }
           else {
-            if ( nestingDepth == 1 )
+            if ( nestingDepth == 1 ) {
               numberText = QString::fromStdString( convertToRoman( siblingCount, 0 ) + ". " );
-            if ( nestingDepth == 2 )
+            }
+            if ( nestingDepth == 2 ) {
               numberText = numberText.setNum( siblingCount ) + ". ";
-            if ( nestingDepth == 3 )
+            }
+            if ( nestingDepth == 3 ) {
               numberText = numberText.setNum( siblingCount ) + ") ";
-            if ( nestingDepth == 4 )
+            }
+            if ( nestingDepth == 4 ) {
               numberText = QString::fromStdString( convertToRoman( siblingCount, 1 ) + ") " );
+            }
           }
           QDomElement numberNode = dd.createElement( "span" );
           numberNode.setAttribute( "class", "xdxf_num" );
@@ -314,8 +333,9 @@ string convert( string const & in,
             el.insertAfter( cmtNode, el.firstChild() );
           }
         }
-        else if ( nestingDepth < j ) // if it goes one level up @siblingCount needs to be reset
+        else if ( nestingDepth < j ) { // if it goes one level up @siblingCount needs to be reset
           siblingCount = 0;
+        }
       }
     }
     // we finally change all <def> tags into 'xdxf_def' <span>s
@@ -331,11 +351,13 @@ string convert( string const & in,
         el.setAttribute( "lang", lang );
 
         quint32 langID = Xdxf::getLanguageId( lang );
-        if ( langID )
+        if ( langID ) {
           isLanguageRtl = LangCoder::isLanguageRTL( langID );
+        }
       }
-      if ( isLanguageRtl != dictPtr->isToLanguageRTL() )
+      if ( isLanguageRtl != dictPtr->isToLanguageRTL() ) {
         el.setAttribute( "dir", isLanguageRtl ? "rtl" : "ltr" );
+      }
     }
   }
 
@@ -344,8 +366,9 @@ string convert( string const & in,
   while ( nodes.size() ) {
     QDomElement el = nodes.at( 0 ).toElement();
 
-    if ( el.text().isEmpty() && el.childNodes().isEmpty() )
+    if ( el.text().isEmpty() && el.childNodes().isEmpty() ) {
       el.appendChild( fakeElement( dd ) );
+    }
 
     el.setTagName( "span" );
     el.setAttribute( "class", "xdxf_opt" );
@@ -356,8 +379,9 @@ string convert( string const & in,
   while ( nodes.size() ) {
     QDomElement el = nodes.at( 0 ).toElement();
 
-    if ( el.text().isEmpty() && el.childNodes().isEmpty() )
+    if ( el.text().isEmpty() && el.childNodes().isEmpty() ) {
       el.appendChild( fakeElement( dd ) );
+    }
 
     el.setTagName( "a" );
     el.setAttribute( "href", QString( "bword:" ) + el.text() );
@@ -377,28 +401,33 @@ string convert( string const & in,
   while ( nodes.size() ) {
     QDomElement el = nodes.at( 0 ).toElement();
 
-    if ( el.text().isEmpty() && el.childNodes().isEmpty() )
+    if ( el.text().isEmpty() && el.childNodes().isEmpty() ) {
       el.appendChild( fakeElement( dd ) );
+    }
 
     QString ref = el.attribute( "href" );
-    if ( ref.isEmpty() )
+    if ( ref.isEmpty() ) {
       ref = el.text();
+    }
 
     el.setAttribute( "href", ref );
     el.setTagName( "a" );
   }
 
   // Abbreviations
-  if ( revisionNumber < 29 )
+  if ( revisionNumber < 29 ) {
     nodes = dd.elementsByTagName( "abr" );
-  else
+  }
+  else {
     nodes = dd.elementsByTagName( "abbr" );
+  }
 
   while ( nodes.size() ) {
     QDomElement el = nodes.at( 0 ).toElement();
 
-    if ( el.text().isEmpty() && el.childNodes().isEmpty() )
+    if ( el.text().isEmpty() && el.childNodes().isEmpty() ) {
       el.appendChild( fakeElement( dd ) );
+    }
 
     el.setTagName( "span" );
     el.setAttribute( "class", "xdxf_abbr" );
@@ -412,7 +441,7 @@ string convert( string const & in,
       if ( i != pAbrv->end() ) {
         string title;
 
-        if ( Utf8::decode( i->second ).size() < 70 ) {
+        if ( Text::toUtf32( i->second ).size() < 70 ) {
           // Replace all spaces with non-breakable ones, since that's how Lingvo shows tooltips
           title.reserve( i->second.size() );
 
@@ -428,13 +457,15 @@ string convert( string const & in,
               title.push_back( 0x80 );
               title.push_back( 0x91 );
             }
-            else
+            else {
               title.push_back( *c );
+            }
           }
         }
-        else
+        else {
           title = i->second;
-        el.setAttribute( "title", QString::fromStdU32String( Utf8::decode( title ) ) );
+        }
+        el.setAttribute( "title", QString::fromStdU32String( Text::toUtf32( title ) ) );
       }
     }
   }
@@ -444,8 +475,9 @@ string convert( string const & in,
   while ( nodes.size() ) {
     QDomElement el = nodes.at( 0 ).toElement();
 
-    if ( el.text().isEmpty() && el.childNodes().isEmpty() )
+    if ( el.text().isEmpty() && el.childNodes().isEmpty() ) {
       el.appendChild( fakeElement( dd ) );
+    }
 
     el.setTagName( "span" );
     el.setAttribute( "class", "xdxf_dtrn" );
@@ -456,8 +488,9 @@ string convert( string const & in,
   while ( nodes.size() ) {
     QDomElement el = nodes.at( 0 ).toElement();
 
-    if ( el.text().isEmpty() && el.childNodes().isEmpty() )
+    if ( el.text().isEmpty() && el.childNodes().isEmpty() ) {
       el.appendChild( fakeElement( dd ) );
+    }
 
     el.setTagName( "span" );
 
@@ -465,8 +498,9 @@ string convert( string const & in,
       el.setAttribute( "style", "color:" + el.attribute( "c" ) );
       el.removeAttribute( "c" );
     }
-    else
+    else {
       el.setAttribute( "style", "color:blue" );
+    }
   }
 
   nodes = dd.elementsByTagName( "co" ); // Editorial comment
@@ -474,14 +508,17 @@ string convert( string const & in,
   while ( nodes.size() ) {
     QDomElement el = nodes.at( 0 ).toElement();
 
-    if ( el.text().isEmpty() && el.childNodes().isEmpty() )
+    if ( el.text().isEmpty() && el.childNodes().isEmpty() ) {
       el.appendChild( fakeElement( dd ) );
+    }
 
     el.setTagName( "span" );
-    if ( isLogicalFormat )
+    if ( isLogicalFormat ) {
       el.setAttribute( "class", "xdxf_co" );
-    else
+    }
+    else {
       el.setAttribute( "class", "xdxf_co_old" );
+    }
   }
 
   /* grammar information */
@@ -489,40 +526,49 @@ string convert( string const & in,
   while ( nodes.size() ) {
     QDomElement el = nodes.at( 0 ).toElement();
 
-    if ( el.text().isEmpty() && el.childNodes().isEmpty() )
+    if ( el.text().isEmpty() && el.childNodes().isEmpty() ) {
       el.appendChild( fakeElement( dd ) );
+    }
 
     el.setTagName( "span" );
-    if ( isLogicalFormat )
+    if ( isLogicalFormat ) {
       el.setAttribute( "class", "xdxf_gr" );
-    else
+    }
+    else {
       el.setAttribute( "class", "xdxf_gr_old" );
+    }
   }
   nodes = dd.elementsByTagName( "pos" ); // deprecated grammar tag
   while ( nodes.size() ) {
     QDomElement el = nodes.at( 0 ).toElement();
 
-    if ( el.text().isEmpty() && el.childNodes().isEmpty() )
+    if ( el.text().isEmpty() && el.childNodes().isEmpty() ) {
       el.appendChild( fakeElement( dd ) );
+    }
 
     el.setTagName( "span" );
-    if ( isLogicalFormat )
+    if ( isLogicalFormat ) {
       el.setAttribute( "class", "xdxf_gr" );
-    else
+    }
+    else {
       el.setAttribute( "class", "xdxf_gr_old" );
+    }
   }
   nodes = dd.elementsByTagName( "tense" ); // deprecated grammar tag
   while ( nodes.size() ) {
     QDomElement el = nodes.at( 0 ).toElement();
 
-    if ( el.text().isEmpty() && el.childNodes().isEmpty() )
+    if ( el.text().isEmpty() && el.childNodes().isEmpty() ) {
       el.appendChild( fakeElement( dd ) );
+    }
 
     el.setTagName( "span" );
-    if ( isLogicalFormat )
+    if ( isLogicalFormat ) {
       el.setAttribute( "class", "xdxf_gr" );
-    else
+    }
+    else {
       el.setAttribute( "class", "xdxf_gr_old" );
+    }
   }
   /* end of grammar generation */
 
@@ -531,14 +577,17 @@ string convert( string const & in,
   while ( nodes.size() ) {
     QDomElement el = nodes.at( 0 ).toElement();
 
-    if ( el.text().isEmpty() && el.childNodes().isEmpty() )
+    if ( el.text().isEmpty() && el.childNodes().isEmpty() ) {
       el.appendChild( fakeElement( dd ) );
+    }
 
     el.setTagName( "span" );
-    if ( isLogicalFormat )
+    if ( isLogicalFormat ) {
       el.setAttribute( "class", "xdxf_tr" );
-    else
+    }
+    else {
       el.setAttribute( "class", "xdxf_tr_old" );
+    }
   }
 
   // Ensure that ArticleNetworkAccessManager can deal with XDXF images.
@@ -550,8 +599,9 @@ string convert( string const & in,
   for ( int i = 0; i < nodes.size(); i++ ) {
     QDomElement el = nodes.at( i ).toElement();
 
-    if ( el.text().isEmpty() && el.childNodes().isEmpty() )
+    if ( el.text().isEmpty() && el.childNodes().isEmpty() ) {
       el.appendChild( fakeElement( dd ) );
+    }
 
     if ( el.hasAttribute( "src" ) ) {
       fixLink( el, dictPtr->getId(), "src" );
@@ -571,12 +621,13 @@ string convert( string const & in,
   while ( nodes.size() ) {
     QDomElement el = nodes.at( 0 ).toElement();
 
-    if ( el.text().isEmpty() && el.childNodes().isEmpty() )
+    if ( el.text().isEmpty() && el.childNodes().isEmpty() ) {
       el.appendChild( fakeElement( dd ) );
+    }
 
     //    if( type == XDXF && dictPtr != NULL && !el.hasAttribute( "start" ) )
     if ( dictPtr != NULL && !el.hasAttribute( "start" ) ) {
-      string filename = Utf8::encode( gd::toWString( el.text() ) );
+      string filename = Text::toUtf8( el.text().toStdU32String() );
 
       if ( Filetype::isNameOfPicture( filename ) ) {
         QUrl url;
@@ -599,32 +650,15 @@ string convert( string const & in,
         QDomElement el_script = dd.createElement( "script" );
         QDomNode parent       = el.parentNode();
         if ( !parent.isNull() ) {
-          bool search = false;
-          if ( type == STARDICT ) {
-            string n = dictPtr->getContainingFolder().toStdString() + Utils::Fs::separator() + string( "res" )
-              + Utils::Fs::separator() + filename;
-            search = !File::exists( n )
-              && ( !resourceZip || !resourceZip->isOpen() || !resourceZip->hasFile( Utf8::decode( filename ) ) );
-          }
-          else {
-            string n = dictPtr->getDictionaryFilenames()[ 0 ] + ".files" + Utils::Fs::separator() + filename;
-            search   = !File::exists( n )
-              && !File::exists( dictPtr->getContainingFolder().toStdString() + Utils::Fs::separator() + filename )
-              && ( !resourceZip || !resourceZip->isOpen() || !resourceZip->hasFile( Utf8::decode( filename ) ) );
-          }
-
-
           QUrl url;
           url.setScheme( "gdau" );
-          url.setHost( QString::fromUtf8( search ? "search" : dictPtr->getId().c_str() ) );
+          url.setHost( QString::fromUtf8( dictPtr->getId().c_str() ) );
           url.setPath( Utils::Url::ensureLeadingSlash( QString::fromUtf8( filename.c_str() ) ) );
 
           el_script.setAttribute( "type", "text/javascript" );
           parent.replaceChild( el_script, el );
 
-          QDomText el_txt = dd.createTextNode(
-            makeAudioLinkScript( string( "\"" ) + url.toEncoded().data() + "\"", dictPtr->getId() ).c_str() );
-          el_script.appendChild( el_txt );
+          addAudioLink( string( "\"" ) + url.toEncoded().data() + "\"", dictPtr->getId() );
 
           QDomElement el_span = dd.createElement( "span" );
           el_span.setAttribute( "class", "xdxf_wav" );

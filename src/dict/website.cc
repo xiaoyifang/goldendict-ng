@@ -2,14 +2,13 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "website.hh"
-#include "wstring_qt.hh"
-#include "utf8.hh"
+#include "text.hh"
 #include <QUrl>
 #include <QTextCodec>
 #include <QDir>
 #include <QFileInfo>
-#include "gddebug.hh"
 #include "globalbroadcaster.hh"
+#include "fmt/compile.h"
 
 #include <QRegularExpression>
 
@@ -21,7 +20,6 @@ namespace {
 
 class WebSiteDictionary: public Dictionary::Class
 {
-  string name;
   QByteArray urlTemplate;
   bool experimentalIframe;
   QString iconFilename;
@@ -37,12 +35,13 @@ public:
                      bool inside_iframe_,
                      QNetworkAccessManager & netMgr_ ):
     Dictionary::Class( id, vector< string >() ),
-    name( name_ ),
     iconFilename( iconFilename_ ),
     inside_iframe( inside_iframe_ ),
     netMgr( netMgr_ ),
     experimentalIframe( false )
   {
+    dictionaryName = name_;
+
     if ( urlTemplate_.startsWith( "http://" ) || urlTemplate_.startsWith( "https://" ) ) {
       experimentalIframe = true;
     }
@@ -50,16 +49,6 @@ public:
 
     urlTemplate           = QUrl( urlTemplate_ ).toEncoded();
     dictionaryDescription = urlTemplate_;
-  }
-
-  string getName() noexcept override
-  {
-    return name;
-  }
-
-  map< Property, string > getProperties() noexcept override
-  {
-    return map< Property, string >();
   }
 
   unsigned long getArticleCount() noexcept override
@@ -72,14 +61,21 @@ public:
     return 0;
   }
 
-  sptr< WordSearchRequest > prefixMatch( wstring const & word, unsigned long ) override;
+  sptr< WordSearchRequest > prefixMatch( std::u32string const & word, unsigned long ) override;
 
-  sptr< DataRequest >
-  getArticle( wstring const &, vector< wstring > const & alts, wstring const & context, bool ) override;
+  sptr< DataRequest > getArticle( std::u32string const &,
+                                  vector< std::u32string > const & alts,
+                                  std::u32string const & context,
+                                  bool ) override;
 
   sptr< Dictionary::DataRequest > getResource( string const & name ) override;
 
   void isolateWebCSS( QString & css );
+
+  Features getFeatures() const noexcept override
+  {
+    return Dictionary::WebSite;
+  }
 
 protected:
 
@@ -95,7 +91,7 @@ protected slots:
   virtual void requestFinished( QNetworkReply * ) {}
 };
 
-sptr< WordSearchRequest > WebSiteDictionary::prefixMatch( wstring const & /*word*/, unsigned long )
+sptr< WordSearchRequest > WebSiteDictionary::prefixMatch( std::u32string const & /*word*/, unsigned long )
 {
   sptr< WordSearchRequestInstant > sr = std::make_shared< WordSearchRequestInstant >();
 
@@ -126,7 +122,6 @@ public:
 private:
 
   void requestFinished( QNetworkReply * ) override;
-  static QTextCodec * codecForHtml( QByteArray const & ba );
 };
 
 void WebSiteArticleRequest::cancel()
@@ -156,15 +151,11 @@ WebSiteArticleRequest::WebSiteArticleRequest( QString const & url_, QNetworkAcce
 #endif
 }
 
-QTextCodec * WebSiteArticleRequest::codecForHtml( QByteArray const & ba )
-{
-  return QTextCodec::codecForHtml( ba, 0 );
-}
-
 void WebSiteArticleRequest::requestFinished( QNetworkReply * r )
 {
-  if ( isFinished() ) // Was cancelled
+  if ( isFinished() ) { // Was cancelled
     return;
+  }
 
   if ( r != netReply ) {
     // Well, that's not our reply, don't do anything
@@ -191,18 +182,21 @@ void WebSiteArticleRequest::requestFinished( QNetworkReply * r )
     QByteArray replyData = netReply->readAll();
     QString articleString;
 
-    QTextCodec * codec = WebSiteArticleRequest::codecForHtml( replyData );
-    if ( codec )
+    QTextCodec * codec = QTextCodec::codecForHtml( replyData, 0 );
+    if ( codec ) {
       articleString = codec->toUnicode( replyData );
-    else
+    }
+    else {
       articleString = QString::fromUtf8( replyData );
+    }
 
     // Change links from relative to absolute
 
     QString root = netReply->url().scheme() + "://" + netReply->url().host();
     QString base = root + netReply->url().path();
-    while ( !base.isEmpty() && !base.endsWith( "/" ) )
+    while ( !base.isEmpty() && !base.endsWith( "/" ) ) {
       base.chop( 1 );
+    }
 
     QRegularExpression tags( R"(<\s*(a|link|img|script)\s+[^>]*(src|href)\s*=\s*['"][^>]+>)",
                              QRegularExpression::CaseInsensitiveOption );
@@ -233,12 +227,15 @@ void WebSiteArticleRequest::requestFinished( QNetworkReply * r )
       }
 
       QString newUrl = match_links.captured( 1 ) + "=" + match_links.captured( 2 );
-      if ( url.startsWith( "//" ) )
+      if ( url.startsWith( "//" ) ) {
         newUrl += netReply->url().scheme() + ":";
-      else if ( url.startsWith( "/" ) )
+      }
+      else if ( url.startsWith( "/" ) ) {
         newUrl += root;
-      else
+      }
+      else {
         newUrl += base;
+      }
       newUrl += match_links.captured( 3 );
 
       tag.replace( match_links.capturedStart(), match_links.capturedLength(), newUrl );
@@ -291,74 +288,32 @@ void WebSiteArticleRequest::requestFinished( QNetworkReply * r )
   }
   else {
     if ( netReply->url().scheme() == "file" ) {
-      gdWarning( "WebSites: Failed loading article from \"%s\", reason: %s\n",
-                 dictPtr->getName().c_str(),
-                 netReply->errorString().toUtf8().data() );
+      qWarning( "WebSites: Failed loading article from \"%s\", reason: %s",
+                dictPtr->getName().c_str(),
+                netReply->errorString().toUtf8().data() );
     }
     else {
       setErrorString( netReply->errorString() );
     }
   }
 
-  disconnect( netReply, 0, 0, 0 );
+  disconnect( netReply, nullptr, 0, 0 );
   netReply->deleteLater();
 
   finish();
 }
 
-sptr< DataRequest >
-WebSiteDictionary::getArticle( wstring const & str, vector< wstring > const &, wstring const & context, bool )
-
+sptr< DataRequest > WebSiteDictionary::getArticle( std::u32string const & str,
+                                                   vector< std::u32string > const & /*alts*/,
+                                                   std::u32string const & context,
+                                                   bool /*ignoreDiacritics*/ )
 {
-  QByteArray urlString;
-
-  // Context contains the right url to go to
-  if ( context.size() )
-    urlString = Utf8::encode( context ).c_str();
-  else {
-    urlString = urlTemplate;
-
-    QString inputWord = QString::fromStdU32String( str );
-
-    urlString.replace( "%25GDWORD%25", inputWord.toUtf8().toPercentEncoding() );
-
-    QTextCodec * codec = QTextCodec::codecForName( "Windows-1251" );
-    if ( codec )
-      urlString.replace( "%25GD1251%25", codec->fromUnicode( inputWord ).toPercentEncoding() );
-
-    codec = QTextCodec::codecForName( "Big-5" );
-    if ( codec )
-      urlString.replace( "%25GDBIG5%25", codec->fromUnicode( inputWord ).toPercentEncoding() );
-
-    codec = QTextCodec::codecForName( "Big5-HKSCS" );
-    if ( codec )
-      urlString.replace( "%25GDBIG5HKSCS%25", codec->fromUnicode( inputWord ).toPercentEncoding() );
-
-    codec = QTextCodec::codecForName( "Shift-JIS" );
-    if ( codec )
-      urlString.replace( "%25GDSHIFTJIS%25", codec->fromUnicode( inputWord ).toPercentEncoding() );
-
-    codec = QTextCodec::codecForName( "GB18030" );
-    if ( codec )
-      urlString.replace( "%25GDGBK%25", codec->fromUnicode( inputWord ).toPercentEncoding() );
-
-
-    // Handle all ISO-8859 encodings
-    for ( int x = 1; x <= 16; ++x ) {
-      codec = QTextCodec::codecForName( QString( "ISO 8859-%1" ).arg( x ).toLatin1() );
-      if ( codec )
-        urlString.replace( QString( "%25GDISO%1%25" ).arg( x ).toUtf8(),
-                           codec->fromUnicode( inputWord ).toPercentEncoding() );
-
-      if ( x == 10 )
-        x = 12; // Skip encodings 11..12, they don't exist
-    }
-  }
+  QString urlString = Utils::WebSite::urlReplaceWord( QString( urlTemplate ), QString::fromStdU32String( str ) );
 
   if ( inside_iframe ) {
     // Just insert link in <iframe> tag
 
-    string result = "<div class=\"website_padding\"></div>";
+    string result = R"(<div class="website_padding"></div>)";
 
     //heuristic add url to global whitelist.
     QUrl url( urlString );
@@ -372,14 +327,15 @@ WebSiteDictionary::getArticle( wstring const & str, vector< wstring > const &, w
       encodeUrl = urlString;
     }
 
-
-    result += string( "<iframe id=\"gdexpandframe-" ) + getId() +
-                      "\" src=\""+encodeUrl.toStdString() +
-                      "\" onmouseover=\"processIframeMouseOver('gdexpandframe-" + getId() + "');\" "
-                      "onmouseout=\"processIframeMouseOut();\" "
-                      "scrolling=\"no\" "
-                      "style=\"overflow:visible; width:100%; display:block; border:none;\" sandbox=\"allow-same-origin allow-scripts allow-popups\">"
-                      "</iframe>";
+    fmt::format_to( std::back_inserter( result ),
+                    R"(<iframe id="gdexpandframe-{}" src="{}"
+onmouseover="processIframeMouseOver('gdexpandframe-{}');"
+onmouseout="processIframeMouseOut();" scrolling="no"
+style="overflow:visible; width:100%; display:block; border:none;"
+sandbox="allow-same-origin allow-scripts allow-popups"></iframe>)",
+                    getId(),
+                    encodeUrl.toStdString(),
+                    getId() );
 
     auto dr = std::make_shared< DataRequestInstant >( true );
     dr->appendString( result );
@@ -439,8 +395,9 @@ void WebSiteResourceRequest::cancel()
 
 void WebSiteResourceRequest::requestFinished( QNetworkReply * r )
 {
-  if ( isFinished() ) // Was cancelled
+  if ( isFinished() ) { // Was cancelled
     return;
+  }
 
   if ( r != netReply ) {
     // Well, that's not our reply, don't do anything
@@ -473,8 +430,9 @@ void WebSiteResourceRequest::requestFinished( QNetworkReply * r )
 
     hasAnyData = true;
   }
-  else
+  else {
     setErrorString( netReply->errorString() );
+  }
 
   disconnect( netReply, 0, 0, 0 );
   netReply->deleteLater();
@@ -486,23 +444,28 @@ sptr< Dictionary::DataRequest > WebSiteDictionary::getResource( string const & n
 {
   QString link = QString::fromUtf8( name.c_str() );
   int pos      = link.indexOf( '/' );
-  if ( pos > 0 )
+  if ( pos > 0 ) {
     link.replace( pos, 1, "://" );
+  }
   return std::make_shared< WebSiteResourceRequest >( link, netMgr, this );
 }
 
 void WebSiteDictionary::loadIcon() noexcept
 {
-  if ( dictionaryIconLoaded )
+  if ( dictionaryIconLoaded ) {
     return;
+  }
 
   if ( !iconFilename.isEmpty() ) {
     QFileInfo fInfo( QDir( Config::getConfigDir() ), iconFilename );
-    if ( fInfo.isFile() )
+    if ( fInfo.isFile() ) {
       loadIconFromFile( fInfo.absoluteFilePath(), true );
+    }
   }
-  if ( dictionaryIcon.isNull() && !loadIconFromText( ":/icons/webdict.svg", QString::fromStdString( name ) ) )
+  if ( dictionaryIcon.isNull()
+       && !loadIconFromText( ":/icons/webdict.svg", QString::fromStdString( dictionaryName ) ) ) {
     dictionaryIcon = QIcon( ":/icons/webdict.svg" );
+  }
   dictionaryIconLoaded = true;
 }
 
@@ -514,13 +477,14 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::WebSites const & w
   vector< sptr< Dictionary::Class > > result;
 
   for ( const auto & w : ws ) {
-    if ( w.enabled )
+    if ( w.enabled ) {
       result.push_back( std::make_shared< WebSiteDictionary >( w.id.toUtf8().data(),
                                                                w.name.toUtf8().data(),
                                                                w.url,
                                                                w.iconFilename,
                                                                w.inside_iframe,
                                                                mgr ) );
+    }
   }
 
   return result;

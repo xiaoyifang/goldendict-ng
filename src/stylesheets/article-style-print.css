@@ -11,3 +11,9 @@ body,
 .dsl_s_wav {
   display: none;
 }
+
+/* hide collapse area*/
+
+.collapse_expand_area {
+  display: none;
+}

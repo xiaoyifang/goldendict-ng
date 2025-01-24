@@ -18,8 +18,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.          *
  ***************************************************************************/
 
-#ifndef BABYLON_H
-#define BABYLON_H
+#pragma once
 
 #include <stdlib.h>
 #include <zlib.h>
@@ -115,20 +114,20 @@ const std::vector< std::string > bgl_charset = { "WINDOWS-1252", /*Default*/
 const std::array< std::string, 11 > partOfSpeech = {
   "n.", "adj.", "v.", "adv.", "interj.", "pron.", "prep.", "conj.", "suff.", "pref.", "art." };
 
-typedef struct
+struct bgl_block
 {
   unsigned type;
   unsigned length;
   char * data;
-} bgl_block;
+};
 
-typedef struct
+struct bgl_entry
 {
   std::string headword;
   std::string definition;
   std::string displayedHeadword;
   std::vector< std::string > alternates;
-} bgl_entry;
+};
 
 class Babylon
 {
@@ -229,5 +228,3 @@ private:
     BGL_TARGET_CHARSET
   };
 };
-
-#endif // BABYLON_H

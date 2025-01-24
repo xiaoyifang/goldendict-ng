@@ -1,9 +1,8 @@
-#ifndef LANGCODER_H
-#define LANGCODER_H
+#pragma once
 
 #include <QString>
 #include <QIcon>
-#include "wstring.hh"
+#include "text.hh"
 
 struct GDLangCode
 {
@@ -35,7 +34,7 @@ public:
 
   /// Finds the id for the given language name, written in english. The search
   /// is case- and punctuation insensitive.
-  static quint32 findIdForLanguage( gd::wstring const & );
+  static quint32 findIdForLanguage( std::u32string const & );
 
   static quint32 findIdForLanguageCode3( std::string const & );
 
@@ -47,8 +46,6 @@ public:
 
   /// Returns decoded name of language or empty string if not found.
   static QString decode( quint32 _code );
-  /// Returns icon for language or empty string if not found.
-  static QIcon icon( quint32 code );
 
   /// Return true for RTL languages
   static bool isLanguageRTL( quint32 code );
@@ -61,6 +58,3 @@ private:
 ///////////////////////////////////////////////////////////////////////////////
 
 #define LangCodeRole Qt::UserRole
-
-
-#endif // LANGCODER_H

@@ -1,5 +1,4 @@
-#ifndef RESOURCESCHEMEHANDLER_H
-#define RESOURCESCHEMEHANDLER_H
+#pragma once
 
 #include "article_netmgr.hh"
 
@@ -18,5 +17,3 @@ private:
   ArticleNetworkAccessManager & mManager;
   QMimeDatabase db;
 };
-
-#endif // RESOURCESCHEMEHANDLER_H

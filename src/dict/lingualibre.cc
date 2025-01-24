@@ -1,5 +1,5 @@
 #include "lingualibre.hh"
-#include "utf8.hh"
+#include "text.hh"
 #include "audiolink.hh"
 
 #include <QJsonArray>
@@ -33,25 +33,25 @@ class LinguaArticleRequest: public Dictionary::DataRequest
     }
   };
 
-  typedef std::list< NetReply > NetReplies;
+  using NetReplies = std::list< NetReply >;
   NetReplies netReplies;
   QString languageCode, langWikipediaID;
   string dictionaryId;
 
 public:
 
-  LinguaArticleRequest( wstring const & word,
-                        vector< wstring > const & alts,
+  LinguaArticleRequest( std::u32string const & word,
+                        vector< std::u32string > const & alts,
                         QString const & languageCode_,
                         QString const & langWikipediaID_,
                         string const & dictionaryId_,
                         QNetworkAccessManager & mgr );
 
-  virtual void cancel();
+  void cancel() override;
 
 private:
 
-  void addQuery( QNetworkAccessManager & mgr, wstring const & word );
+  void addQuery( QNetworkAccessManager & mgr, std::u32string const & word );
 
 private slots:
   virtual void requestFinished( QNetworkReply * );
@@ -60,7 +60,6 @@ private slots:
 class LinguaDictionary: public Dictionary::Class
 {
 
-  string name;
   QString languageCode;
   QString langWikipediaID;
   QNetworkAccessManager & netMgr;
@@ -68,10 +67,10 @@ class LinguaDictionary: public Dictionary::Class
 public:
   LinguaDictionary( string const & id, string name_, QString languageCode_, QNetworkAccessManager & netMgr_ ):
     Dictionary::Class( id, vector< string >() ),
-    name( std::move( name_ ) ),
     languageCode( std::move( languageCode_ ) ),
     netMgr( netMgr_ )
   {
+    dictionaryName = name_;
     /* map of iso lang code to wikipedia lang id
 
 Data was obtained by this query on https://commons-query.wikimedia.org/
@@ -166,16 +165,6 @@ WHERE {
     }
   }
 
-  string getName() noexcept override
-  {
-    return name;
-  }
-
-  map< Property, string > getProperties() noexcept override
-  {
-    return {};
-  }
-
   unsigned long getArticleCount() noexcept override
   {
     return 0;
@@ -186,7 +175,7 @@ WHERE {
     return 0;
   }
 
-  sptr< WordSearchRequest > prefixMatch( wstring const & /*word*/, unsigned long /*maxResults*/ ) override
+  sptr< WordSearchRequest > prefixMatch( std::u32string const & /*word*/, unsigned long /*maxResults*/ ) override
   {
     sptr< WordSearchRequestInstant > sr = std::make_shared< WordSearchRequestInstant >();
 
@@ -195,7 +184,10 @@ WHERE {
     return sr;
   }
 
-  sptr< DataRequest > getArticle( wstring const & word, vector< wstring > const & alts, wstring const &, bool ) override
+  sptr< DataRequest > getArticle( std::u32string const & word,
+                                  vector< std::u32string > const & alts,
+                                  std::u32string const &,
+                                  bool ) override
   {
     if ( word.size() < 50 ) {
       return std::make_shared< LinguaArticleRequest >( word, alts, languageCode, langWikipediaID, getId(), netMgr );
@@ -208,8 +200,9 @@ WHERE {
 protected:
   void loadIcon() noexcept override
   {
-    if ( dictionaryIconLoaded )
+    if ( dictionaryIconLoaded ) {
       return;
+    }
 
     dictionaryIcon       = QIcon( ":/icons/lingualibre.svg" );
     dictionaryIconLoaded = true;
@@ -241,8 +234,8 @@ void LinguaArticleRequest::cancel()
   finish();
 }
 
-LinguaArticleRequest::LinguaArticleRequest( const wstring & str,
-                                            const vector< wstring > & alts,
+LinguaArticleRequest::LinguaArticleRequest( const std::u32string & str,
+                                            const vector< std::u32string > & alts,
                                             const QString & languageCode_,
                                             const QString & langWikipediaID,
                                             const string & dictionaryId_,
@@ -255,7 +248,7 @@ LinguaArticleRequest::LinguaArticleRequest( const wstring & str,
   addQuery( mgr, str );
 }
 
-void LinguaArticleRequest::addQuery( QNetworkAccessManager & mgr, const wstring & word )
+void LinguaArticleRequest::addQuery( QNetworkAccessManager & mgr, const std::u32string & word )
 {
 
   // Doc of the <https://www.mediawiki.org/wiki/API:Query>
@@ -283,7 +276,7 @@ void LinguaArticleRequest::addQuery( QNetworkAccessManager & mgr, const wstring 
   auto netReply = std::shared_ptr< QNetworkReply >( mgr.get( netRequest ) );
 
 
-  netReplies.emplace_back( netReply, Utf8::encode( word ) );
+  netReplies.emplace_back( netReply, Text::toUtf8( word ) );
 }
 
 
@@ -349,23 +342,32 @@ void LinguaArticleRequest::requestFinished( QNetworkReply * r )
 
   if ( resultJson.contains( "query" ) ) {
 
-    string articleBody = "<p>";
+    string articleBody = "<div class=\"audio-play\">";
 
     for ( auto pageJsonVal : resultJson[ "query" ].toObject()[ "pages" ].toObject() ) {
       auto pageJsonObj = pageJsonVal.toObject();
       string title     = pageJsonObj[ "title" ].toString().toHtmlEscaped().toStdString();
       string audiolink =
         pageJsonObj[ "imageinfo" ].toArray().at( 0 ).toObject()[ "url" ].toString().toHtmlEscaped().toStdString();
-      articleBody += addAudioLink( "\"" + audiolink + "\"", dictionaryId );
+      addAudioLink( audiolink, dictionaryId );
+
+      articleBody += "<div class=\"audio-play-item\">";
+      //play icon
       articleBody += R"(<a href=")";
       articleBody += audiolink;
-      articleBody += R"(">)";
+      articleBody += R"(" role="button">)";
       articleBody += R"(<img src="qrc:///icons/playsound.png" border="0" alt="Play"/>)";
+      articleBody += "</a>";
+      //text
+      articleBody += R"(<a href=")";
+      articleBody += audiolink;
+      articleBody += R"(" role="link">)";
       articleBody += title;
-      articleBody += "</a><br>";
+      articleBody += "</a>";
+      articleBody += "</div>";
     }
 
-    articleBody += "</p>";
+    articleBody += "</div>";
 
     appendString( articleBody );
 

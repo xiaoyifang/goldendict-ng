@@ -4,11 +4,10 @@
 #include "xdxf.hh"
 #include "btreeidx.hh"
 #include "folding.hh"
-#include "utf8.hh"
+#include "text.hh"
 #include "chunkedstorage.hh"
 #include "dictzip.hh"
 #include "htmlescape.hh"
-
 #include <map>
 #include <set>
 #include <string>
@@ -16,30 +15,19 @@
 #include <list>
 #include <wctype.h>
 #include <stdlib.h>
-#include "gddebug.hh"
-#include "wstring_qt.hh"
 #include "xdxf2html.hh"
 #include "ufile.hh"
-#include "dictzip.hh"
 #include "langcoder.hh"
 #include "indexedzip.hh"
 #include "filetype.hh"
 #include "tiff.hh"
 #include "ftshelpers.hh"
-
-#ifdef _MSC_VER
-  #include <stub_msvc.h>
-#endif
-
 #include <QIODevice>
 #include <QXmlStreamReader>
-#include <QTextDocument>
 #include <QFileInfo>
 #include <QDir>
 #include <QPainter>
 #include <QRegularExpression>
-#include <QSemaphore>
-#include <QThreadPool>
 #include <QAtomicInt>
 
 #include "utils.hh"
@@ -51,7 +39,6 @@ using std::multimap;
 using std::pair;
 using std::set;
 using std::string;
-using gd::wstring;
 using std::vector;
 using std::list;
 
@@ -63,8 +50,9 @@ quint32 getLanguageId( const QString & lang )
 {
   QString lstr = lang.left( 3 );
 
-  if ( lstr.endsWith( QChar( '-' ) ) )
+  if ( lstr.endsWith( QChar( '-' ) ) ) {
     lstr.chop( 1 );
+  }
 
   switch ( lstr.size() ) {
     case 2:
@@ -80,12 +68,11 @@ namespace {
 
 using Dictionary::exCantReadFile;
 DEF_EX_STR( exNotXdxfFile, "The file is not an XDXF file:", Dictionary::Ex )
-DEF_EX( exCorruptedIndex, "The index file is corrupted", Dictionary::Ex )
 DEF_EX_STR( exDictzipError, "DICTZIP error", Dictionary::Ex )
 
 enum {
   Signature            = 0x46584458, // XDXF on little-endian, FXDX on big-endian
-  CurrentFormatVersion = 6 + BtreeIndexing::FormatVersion + Folding::Version
+  CurrentFormatVersion = 6 + BtreeIndexing::FormatVersion + Folding::Version + BtreeIndexing::ZipParseLogicVersion
 };
 
 enum ArticleFormat {
@@ -94,6 +81,7 @@ enum ArticleFormat {
   Logical = 2
 };
 
+#pragma pack( push, 1 )
 struct IdxHeader
 {
   uint32_t signature;             // First comes the signature, XDXF
@@ -118,15 +106,13 @@ struct IdxHeader
                                      // resource index.
   uint32_t zipIndexRootOffset;
   uint32_t revisionNumber; // Format revision
-}
-#ifndef _MSC_VER
-__attribute__( ( packed ) )
-#endif
-;
+};
+static_assert( alignof( IdxHeader ) == 1 );
+#pragma pack( pop )
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Index idx( indexFile, "rb" );
+  File::Index idx( indexFile, QIODevice::ReadOnly );
 
   IdxHeader header;
 
@@ -153,16 +139,6 @@ public:
 
   ~XdxfDictionary();
 
-  string getName() noexcept override
-  {
-    return dictionaryName;
-  }
-
-  map< Dictionary::Property, string > getProperties() noexcept override
-  {
-    return map< Dictionary::Property, string >();
-  }
-
   unsigned long getArticleCount() noexcept override
   {
     return idxHeader.articleCount;
@@ -183,8 +159,10 @@ public:
     return idxHeader.langTo;
   }
 
-  sptr< Dictionary::DataRequest >
-  getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ignoreDiacritics ) override;
+  sptr< Dictionary::DataRequest > getArticle( std::u32string const &,
+                                              vector< std::u32string > const & alts,
+                                              std::u32string const &,
+                                              bool ignoreDiacritics ) override;
 
   sptr< Dictionary::DataRequest > getResource( string const & name ) override;
 
@@ -203,9 +181,10 @@ public:
     if ( metadata_enable_fts.has_value() ) {
       can_FTS = fts.enabled && metadata_enable_fts.value();
     }
-    else
+    else {
       can_FTS = fts.enabled && !fts.disabledTypes.contains( "XDXF", Qt::CaseInsensitive )
         && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
+    }
   }
 
   uint32_t getFtsIndexVersion() override
@@ -228,7 +207,7 @@ private:
 
 XdxfDictionary::XdxfDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles ):
   BtreeDictionary( id, dictionaryFiles ),
-  idx( indexFile, "rb" ),
+  idx( indexFile, QIODevice::ReadOnly ),
   idxHeader( idx.read< IdxHeader >() )
 {
   // Read the dictionary name
@@ -246,8 +225,9 @@ XdxfDictionary::XdxfDictionary( string const & id, string const & indexFile, vec
   DZ_ERRORS error;
   dz = dict_data_open( dictionaryFiles[ 0 ].c_str(), &error, 0 );
 
-  if ( !dz )
+  if ( !dz ) {
     throw exDictzipError( string( dz_error_str( error ) ) + "(" + dictionaryFiles[ 0 ] + ")" );
+  }
 
   // Read the abrv, if any
 
@@ -287,8 +267,9 @@ XdxfDictionary::XdxfDictionary( string const & id, string const & indexFile, vec
 
       QString zipName = QDir::fromNativeSeparators( getDictionaryFilenames().back().c_str() );
 
-      if ( zipName.endsWith( ".zip", Qt::CaseInsensitive ) ) // Sanity check
+      if ( zipName.endsWith( ".zip", Qt::CaseInsensitive ) ) { // Sanity check
         resourceZip.openZipFile( zipName );
+      }
     }
   }
 
@@ -303,14 +284,16 @@ XdxfDictionary::XdxfDictionary( string const & id, string const & indexFile, vec
 
 XdxfDictionary::~XdxfDictionary()
 {
-  if ( dz )
+  if ( dz ) {
     dict_data_close( dz );
+  }
 }
 
 void XdxfDictionary::loadIcon() noexcept
 {
-  if ( dictionaryIconLoaded )
+  if ( dictionaryIconLoaded ) {
     return;
+  }
 
   QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
 
@@ -329,8 +312,9 @@ void XdxfDictionary::loadIcon() noexcept
     info     = QFileInfo( fileName );
   }
 
-  if ( info.isFile() )
+  if ( info.isFile() ) {
     loadIconFromFile( fileName, true );
+  }
 
   if ( dictionaryIcon.isNull() ) {
     // Load failed -- use default icons
@@ -343,11 +327,13 @@ void XdxfDictionary::loadIcon() noexcept
 
 QString const & XdxfDictionary::getDescription()
 {
-  if ( !dictionaryDescription.isEmpty() )
+  if ( !dictionaryDescription.isEmpty() ) {
     return dictionaryDescription;
+  }
 
-  if ( idxHeader.descriptionAddress == 0 )
+  if ( idxHeader.descriptionAddress == 0 ) {
     dictionaryDescription = "NONE";
+  }
   else {
     try {
       vector< char > chunk;
@@ -372,24 +358,27 @@ QString XdxfDictionary::getMainFilename()
 void XdxfDictionary::makeFTSIndex( QAtomicInt & isCancelled )
 {
   if ( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
-          || FtsHelpers::ftsIndexIsOldOrBad( this ) ) )
+          || FtsHelpers::ftsIndexIsOldOrBad( this ) ) ) {
     FTS_index_completed.ref();
+  }
 
-  if ( haveFTSIndex() )
+  if ( haveFTSIndex() ) {
     return;
+  }
 
-  if ( ensureInitDone().size() )
+  if ( ensureInitDone().size() ) {
     return;
+  }
 
 
-  gdDebug( "Xdxf: Building the full-text index for dictionary: %s\n", getName().c_str() );
+  qDebug( "Xdxf: Building the full-text index for dictionary: %s", getName().c_str() );
 
   try {
     FtsHelpers::makeFTSIndex( this, isCancelled );
     FTS_index_completed.ref();
   }
   catch ( std::exception & ex ) {
-    gdWarning( "Xdxf: Failed building full-text search index for \"%s\", reason: %s\n", getName().c_str(), ex.what() );
+    qWarning( "Xdxf: Failed building full-text search index for \"%s\", reason: %s", getName().c_str(), ex.what() );
     QFile::remove( ftsIdxName.c_str() );
   }
 }
@@ -403,7 +392,7 @@ void XdxfDictionary::getArticleText( uint32_t articleAddress, QString & headword
     text = Html::unescape( QString::fromStdString( articleStr ) );
   }
   catch ( std::exception & ex ) {
-    gdWarning( "Xdxf: Failed retrieving article from \"%s\", reason: %s\n", getName().c_str(), ex.what() );
+    qWarning( "Xdxf: Failed retrieving article from \"%s\", reason: %s", getName().c_str(), ex.what() );
   }
 }
 
@@ -423,8 +412,8 @@ XdxfDictionary::getSearchResults( QString const & searchString, int searchMode, 
 class XdxfArticleRequest: public Dictionary::DataRequest
 {
 
-  wstring word;
-  vector< wstring > alts;
+  std::u32string word;
+  vector< std::u32string > alts;
   XdxfDictionary & dict;
   bool ignoreDiacritics;
 
@@ -433,8 +422,8 @@ class XdxfArticleRequest: public Dictionary::DataRequest
 
 public:
 
-  XdxfArticleRequest( wstring const & word_,
-                      vector< wstring > const & alts_,
+  XdxfArticleRequest( std::u32string const & word_,
+                      vector< std::u32string > const & alts_,
                       XdxfDictionary & dict_,
                       bool ignoreDiacritics_ ):
     word( word_ ),
@@ -479,15 +468,16 @@ void XdxfArticleRequest::run()
     chain.insert( chain.end(), altChain.begin(), altChain.end() );
   }
 
-  multimap< wstring, pair< string, string > > mainArticles, alternateArticles;
+  multimap< std::u32string, pair< string, string > > mainArticles, alternateArticles;
 
   set< uint32_t > articlesIncluded; // Some synonims make it that the articles
                                     // appear several times. We combat this
                                     // by only allowing them to appear once.
 
-  wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
-  if ( ignoreDiacritics )
+  std::u32string wordCaseFolded = Folding::applySimpleCaseOnly( word );
+  if ( ignoreDiacritics ) {
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
+  }
 
   for ( const auto & x : chain ) {
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
@@ -495,8 +485,9 @@ void XdxfArticleRequest::run()
       return;
     }
 
-    if ( articlesIncluded.find( x.articleOffset ) != articlesIncluded.end() )
+    if ( articlesIncluded.find( x.articleOffset ) != articlesIncluded.end() ) {
       continue; // We already have this article in the body.
+    }
 
     // Now grab that article
 
@@ -512,11 +503,12 @@ void XdxfArticleRequest::run()
 
       // We do the case-folded comparison here.
 
-      wstring headwordStripped = Folding::applySimpleCaseOnly( headword );
-      if ( ignoreDiacritics )
+      std::u32string headwordStripped = Folding::applySimpleCaseOnly( headword );
+      if ( ignoreDiacritics ) {
         headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
+      }
 
-      multimap< wstring, pair< string, string > > & mapToUse =
+      multimap< std::u32string, pair< string, string > > & mapToUse =
         ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
 
       mapToUse.insert( pair( Folding::applySimpleCaseOnly( headword ), pair( headword, articleText ) ) );
@@ -524,7 +516,7 @@ void XdxfArticleRequest::run()
       articlesIncluded.insert( x.articleOffset );
     }
     catch ( std::exception & ex ) {
-      gdWarning( "XDXF: Failed loading article from \"%s\", reason: %s\n", dict.getName().c_str(), ex.what() );
+      qWarning( "XDXF: Failed loading article from \"%s\", reason: %s", dict.getName().c_str(), ex.what() );
     }
   }
 
@@ -536,7 +528,7 @@ void XdxfArticleRequest::run()
 
   string result;
 
-  multimap< wstring, pair< string, string > >::const_iterator i;
+  multimap< std::u32string, pair< string, string > >::const_iterator i;
 
   string cleaner = Utils::Html::getHtmlCleaner();
 
@@ -563,9 +555,9 @@ void XdxfArticleRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > XdxfDictionary::getArticle( wstring const & word,
-                                                            vector< wstring > const & alts,
-                                                            wstring const &,
+sptr< Dictionary::DataRequest > XdxfDictionary::getArticle( std::u32string const & word,
+                                                            vector< std::u32string > const & alts,
+                                                            std::u32string const &,
                                                             bool ignoreDiacritics )
 
 {
@@ -619,7 +611,6 @@ void XdxfDictionary::loadArticle( uint32_t address, string & articleText, QStrin
                                     Xdxf2Html::XDXF,
                                     idxHeader.hasAbrv ? &abrv : NULL,
                                     this,
-                                    &resourceZip,
                                     fType == Logical,
                                     idxHeader.revisionNumber,
                                     headword );
@@ -673,8 +664,9 @@ protected:
 GzippedFile::GzippedFile( char const * fileName )
 {
   gz = gd_gzopen( fileName );
-  if ( !gz )
+  if ( !gz ) {
     throw exCantReadFile( fileName );
+  }
 
   DZ_ERRORS error;
   dz = dict_data_open( fileName, &error, 0 );
@@ -683,8 +675,9 @@ GzippedFile::GzippedFile( char const * fileName )
 GzippedFile::~GzippedFile()
 {
   gzclose( gz );
-  if ( dz )
+  if ( dz ) {
     dict_data_close( dz );
+  }
 }
 
 bool GzippedFile::atEnd() const
@@ -701,8 +694,9 @@ size_t GzippedFile::gzTell()
 
 qint64 GzippedFile::readData( char * data, qint64 maxSize )
 {
-  if ( maxSize > 1 )
+  if ( maxSize > 1 ) {
     maxSize = 1;
+  }
 
   // The returning value translates directly to QIODevice semantics
   int n = gzread( gz, data, maxSize );
@@ -714,16 +708,20 @@ qint64 GzippedFile::readData( char * data, qint64 maxSize )
     char ch      = *data;
     int addBytes = 0;
     if ( ch & 0x80 ) {
-      if ( ( ch & 0xF8 ) == 0xF0 )
+      if ( ( ch & 0xF8 ) == 0xF0 ) {
         addBytes = 3;
-      else if ( ( ch & 0xF0 ) == 0xE0 )
+      }
+      else if ( ( ch & 0xF0 ) == 0xE0 ) {
         addBytes = 2;
-      else if ( ( ch & 0xE0 ) == 0xC0 )
+      }
+      else if ( ( ch & 0xE0 ) == 0xC0 ) {
         addBytes = 1;
+      }
     }
 
-    if ( addBytes )
+    if ( addBytes ) {
       n += gzread( gz, data + 1, addBytes );
+    }
   }
 
   return n;
@@ -731,8 +729,9 @@ qint64 GzippedFile::readData( char * data, qint64 maxSize )
 
 char * GzippedFile::readDataArray( unsigned long startPos, unsigned long size )
 {
-  if ( dz == NULL )
+  if ( dz == NULL ) {
     return NULL;
+  }
   return dict_data_read_( dz, startPos, size, 0, 0 );
 }
 
@@ -764,8 +763,9 @@ QString readXhtmlData( QXmlStreamReader & stream )
     else if ( stream.isCharacters() || stream.isWhitespace() || stream.isCDATA() ) {
       result += stream.text();
     }
-    else if ( stream.isEndElement() )
+    else if ( stream.isEndElement() ) {
       break;
+    }
   }
 
   return result;
@@ -793,23 +793,27 @@ void addAllKeyTags( QXmlStreamReader & stream, list< QString > & words )
   while ( !stream.atEnd() ) {
     stream.readNext();
 
-    if ( stream.isStartElement() )
+    if ( stream.isStartElement() ) {
       addAllKeyTags( stream, words );
-    else if ( stream.isEndElement() )
+    }
+    else if ( stream.isEndElement() ) {
       return;
+    }
   }
 }
 
 void checkArticlePosition( GzippedFile & gzFile, uint32_t * pOffset, uint32_t * pSize )
 {
   char * data = gzFile.readDataArray( *pOffset, *pSize );
-  if ( data == NULL )
+  if ( data == NULL ) {
     return;
+  }
   QString s = QString::fromUtf8( data );
   free( data );
   int n = s.lastIndexOf( "</ar" );
-  if ( n > 0 )
+  if ( n > 0 ) {
     *pSize -= s.size() - n;
+  }
   if ( s.at( 0 ) == '>' ) {
     *pOffset += 1;
     *pSize -= 1;
@@ -828,12 +832,15 @@ void indexArticle( GzippedFile & gzFile,
 
   QStringView formatValue = stream.attributes().value( "f" );
 
-  if ( formatValue == u"v" )
+  if ( formatValue == u"v" ) {
     format = Visual;
-  else if ( formatValue == u"l" )
+  }
+  else if ( formatValue == u"l" ) {
     format = Logical;
-  if ( format == Default )
+  }
+  if ( format == Default ) {
     format = defaultFormat;
+  }
   size_t articleOffset = gzFile.pos() - 1; // stream.characterOffset() is loony
 
   // uint32_t lineNumber = stream.lineNumber();
@@ -850,7 +857,7 @@ void indexArticle( GzippedFile & gzFile,
 
       if ( words.empty() ) {
         // Nothing to index, this article didn't have any tags
-        gdWarning( "No <k> tags found in an article at offset 0x%x, article skipped.\n", (unsigned)articleOffset );
+        qWarning( "No <k> tags found in an article at offset 0x%x, article skipped.", (unsigned)articleOffset );
       }
       else {
         // Add an entry
@@ -870,12 +877,13 @@ void indexArticle( GzippedFile & gzFile,
         // Add also first header - it's needed for full-text search
         chunks.addToBlock( words.begin()->toUtf8().data(), words.begin()->toUtf8().length() + 1 );
 
-        //        GD_DPRINTF( "%x: %s\n", articleOffset, words.begin()->toUtf8().data() );
+        //        qDebug( "%x: %s", articleOffset, words.begin()->toUtf8().data() );
 
         // Add words to index
 
-        for ( const auto & word : words )
-          indexedWords.addWord( gd::toWString( word ), offset );
+        for ( const auto & word : words ) {
+          indexedWords.addWord( word.toStdU32String(), offset );
+        }
 
         ++articleCount;
 
@@ -944,7 +952,7 @@ void XdxfResourceRequest::run()
 
   string n = dict.getContainingFolder().toStdString() + Utils::Fs::separator() + resourceName;
 
-  GD_DPRINTF( "xdxf resource name is %s\n", n.c_str() );
+  qDebug( "xdxf resource name is %s", n.c_str() );
 
   try {
     try {
@@ -966,11 +974,13 @@ void XdxfResourceRequest::run()
         if ( dict.resourceZip.isOpen() ) {
           QMutexLocker _( &dataMutex );
 
-          if ( !dict.resourceZip.loadFile( Utf8::decode( resourceName ), data ) )
+          if ( !dict.resourceZip.loadFile( Text::toUtf32( resourceName ), data ) ) {
             throw; // Make it fail since we couldn't read the archive
+          }
         }
-        else
+        else {
           throw;
+        }
       }
     }
 
@@ -985,10 +995,10 @@ void XdxfResourceRequest::run()
     hasAnyData = true;
   }
   catch ( std::exception & ex ) {
-    gdWarning( "XDXF: Failed loading resource \"%s\" for \"%s\", reason: %s\n",
-               resourceName.c_str(),
-               dict.getName().c_str(),
-               ex.what() );
+    qWarning( "XDXF: Failed loading resource \"%s\" for \"%s\", reason: %s",
+              resourceName.c_str(),
+              dict.getName().c_str(),
+              ex.what() );
     // Resource not loaded -- we don't set the hasAnyData flag then
   }
 
@@ -1014,8 +1024,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
   for ( const auto & fileName : fileNames ) {
     // Only allow .xdxf and .xdxf.dz suffixes
 
-    if ( !Utils::endsWithIgnoreCase( fileName, ".xdxf" ) && !Utils::endsWithIgnoreCase( fileName, ".xdxf.dz" ) )
+    if ( !Utils::endsWithIgnoreCase( fileName, ".xdxf" ) && !Utils::endsWithIgnoreCase( fileName, ".xdxf.dz" ) ) {
       continue;
+    }
 
     try {
       vector< string > dictFiles( 1, fileName );
@@ -1030,8 +1041,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       if ( File::tryPossibleZipName( baseName + ".xdxf.files.zip", zipFileName )
            || File::tryPossibleZipName( baseName + ".xdxf.dz.files.zip", zipFileName )
            || File::tryPossibleZipName( baseName + ".XDXF.FILES.ZIP", zipFileName )
-           || File::tryPossibleZipName( baseName + ".XDXF.DZ.FILES.ZIP", zipFileName ) )
+           || File::tryPossibleZipName( baseName + ".XDXF.DZ.FILES.ZIP", zipFileName ) ) {
         dictFiles.push_back( zipFileName );
+      }
 
       string dictId = Dictionary::makeDictionaryId( dictFiles );
 
@@ -1040,11 +1052,11 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
         // Building the index
 
-        gdDebug( "Xdxf: Building the index for dictionary: %s\n", fileName.c_str() );
+        qDebug( "Xdxf: Building the index for dictionary: %s", fileName.c_str() );
 
         //initializing.indexingDictionary( nameFromFileName( dictFiles[ 0 ] ) );
 
-        File::Index idx( indexFile, "wb" );
+        File::Index idx( indexFile, QIODevice::WriteOnly );
 
         IdxHeader idxHeader;
         map< string, string > abrv;
@@ -1060,8 +1072,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         GzippedFile gzFile( dictFiles[ 0 ].c_str() );
 
-        if ( !gzFile.open( QIODevice::ReadOnly ) )
+        if ( !gzFile.open( QIODevice::ReadOnly ) ) {
           throw exCantReadFile( dictFiles[ 0 ] );
+        }
 
         QXmlStreamReader stream( &gzFile );
 
@@ -1077,18 +1090,21 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
           stream.readNext();
 
           if ( stream.isStartElement() ) {
-            if ( stream.name() != u"xdxf" )
+            if ( stream.name() != u"xdxf" ) {
               throw exNotXdxfFile( dictFiles[ 0 ] );
+            }
             else {
               // Read the xdxf
 
               string str = stream.attributes().value( "lang_from" ).toString().toLatin1().data();
-              if ( !str.empty() )
+              if ( !str.empty() ) {
                 idxHeader.langFrom = getLanguageId( str.c_str() );
+              }
 
               str = stream.attributes().value( "lang_to" ).toString().toLatin1().data();
-              if ( !str.empty() )
+              if ( !str.empty() ) {
                 idxHeader.langTo = getLanguageId( str.c_str() );
+              }
 
               QRegularExpression regNum( "\\d+" );
               auto match               = regNum.match( stream.attributes().value( "revision" ).toString() );
@@ -1125,7 +1141,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
                       chunks.addToBlock( n.data(), n.size() );
                     }
                     else {
-                      GD_DPRINTF( "Warning: duplicate full_name in %s\n", dictFiles[ 0 ].c_str() );
+                      qDebug( "Warning: duplicate full_name in %s", dictFiles[ 0 ].c_str() );
                     }
                   }
                   else if ( stream.name() == u"description" ) {
@@ -1149,13 +1165,14 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
                       chunks.addToBlock( n.data(), n.size() );
                     }
                     else {
-                      GD_DPRINTF( "Warning: duplicate description in %s\n", dictFiles[ 0 ].c_str() );
+                      qDebug( "Warning: duplicate description in %s", dictFiles[ 0 ].c_str() );
                     }
                   }
                   else if ( stream.name() == u"languages" ) {
                     while ( !( stream.isEndElement() && stream.name() == u"languages" ) && !stream.atEnd() ) {
-                      if ( !stream.readNext() )
+                      if ( !stream.readNext() ) {
                         break;
+                      }
                       if ( stream.isStartElement() ) {
                         if ( stream.name() == u"from" ) {
                           if ( idxHeader.langFrom == 0 ) {
@@ -1170,34 +1187,37 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
                           }
                         }
                       }
-                      else if ( stream.isEndElement() && stream.name() == u"languages" )
+                      else if ( stream.isEndElement() && stream.name() == u"languages" ) {
                         break;
+                      }
                     }
                   }
                   else if ( stream.name() == u"abbreviations" ) {
                     QString s;
                     string value;
-                    list< wstring > keys;
+                    list< std::u32string > keys;
                     while ( !( stream.isEndElement() && stream.name() == u"abbreviations" ) && !stream.atEnd() ) {
-                      if ( !stream.readNextStartElement() )
+                      if ( !stream.readNextStartElement() ) {
                         break;
+                      }
                       // abbreviations tag set switch at format revision = 30
                       if ( idxHeader.revisionNumber >= 30 ) {
                         while ( !( stream.isEndElement() && stream.name() == u"abbr_def" ) || !stream.atEnd() ) {
                           if ( stream.isStartElement() && stream.name() == u"abbr_k" ) {
                             s = readElementText( stream );
-                            keys.push_back( gd::toWString( s ) );
+                            keys.push_back( s.toStdU32String() );
                           }
                           else if ( stream.isStartElement() && stream.name() == u"abbr_v" ) {
                             s     = readElementText( stream );
                             value = Folding::trimWhitespace( s ).toStdString();
                             for ( const auto & key : keys ) {
-                              abrv[ Utf8::encode( Folding::trimWhitespace( key ) ) ] = value;
+                              abrv[ Text::toUtf8( Folding::trimWhitespace( key ) ) ] = value;
                             }
                             keys.clear();
                           }
-                          else if ( stream.isEndElement() && stream.name() == u"abbreviations" )
+                          else if ( stream.isEndElement() && stream.name() == u"abbreviations" ) {
                             break;
+                          }
                           stream.readNext();
                         }
                       }
@@ -1205,18 +1225,19 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
                         while ( !( stream.isEndElement() && stream.name() == u"abr_def" ) || !stream.atEnd() ) {
                           if ( stream.isStartElement() && stream.name() == u"k" ) {
                             s = readElementText( stream );
-                            keys.push_back( gd::toWString( s ) );
+                            keys.push_back( s.toStdU32String() );
                           }
                           else if ( stream.isStartElement() && stream.name() == u"v" ) {
                             s     = readElementText( stream );
                             value = Folding::trimWhitespace( s ).toStdString();
                             for ( const auto & key : keys ) {
-                              abrv[ Utf8::encode( Folding::trimWhitespace( key ) ) ] = value;
+                              abrv[ Text::toUtf8( Folding::trimWhitespace( key ) ) ] = value;
                             }
                             keys.clear();
                           }
-                          else if ( stream.isEndElement() && stream.name() == u"abbreviations" )
+                          else if ( stream.isEndElement() && stream.name() == u"abbreviations" ) {
                             break;
+                          }
                           stream.readNext();
                         }
                       }
@@ -1270,14 +1291,15 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
               // If there was a zip file, index it too
 
               if ( zipFileName.size() ) {
-                GD_DPRINTF( "Indexing zip file\n" );
+                qDebug( "Indexing zip file" );
 
                 idxHeader.hasZipFile = 1;
 
                 IndexedWords zipFileNames;
                 IndexedZip zipFile;
-                if ( zipFile.openZipFile( QDir::fromNativeSeparators( zipFileName.c_str() ) ) )
+                if ( zipFile.openZipFile( QDir::fromNativeSeparators( zipFileName.c_str() ) ) ) {
                   zipFile.indexFile( zipFileNames );
+                }
 
                 if ( !zipFileNames.empty() ) {
                   // Build the resulting zip file index
@@ -1294,8 +1316,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
                   idxHeader.zipIndexRootOffset       = 0;
                 }
               }
-              else
+              else {
                 idxHeader.hasZipFile = 0;
+              }
               // That concludes it. Update the header.
 
               idxHeader.signature     = Signature;
@@ -1314,21 +1337,22 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
           }
         }
 
-        if ( !hadXdxf )
+        if ( !hadXdxf ) {
           throw exNotXdxfFile( dictFiles[ 0 ] );
+        }
 
         if ( stream.hasError() ) {
-          gdWarning( "%s had a parse error %s at line %lu, and therefore was indexed only up to the point of error.",
-                     dictFiles[ 0 ].c_str(),
-                     stream.errorString().toUtf8().data(),
-                     (unsigned long)stream.lineNumber() );
+          qWarning( "%s had a parse error %s at line %lu, and therefore was indexed only up to the point of error.",
+                    dictFiles[ 0 ].c_str(),
+                    stream.errorString().toUtf8().data(),
+                    (unsigned long)stream.lineNumber() );
         }
       }
 
       dictionaries.push_back( std::make_shared< XdxfDictionary >( dictId, indexFile, dictFiles ) );
     }
     catch ( std::exception & e ) {
-      gdWarning( "Xdxf dictionary initializing failed: %s, error: %s\n", fileName.c_str(), e.what() );
+      qWarning( "Xdxf dictionary initializing failed: %s, error: %s", fileName.c_str(), e.what() );
     }
   }
 

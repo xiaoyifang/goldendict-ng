@@ -1,11 +1,11 @@
-#ifndef GLOBAL_GLOBALBROADCASTER_H
-#define GLOBAL_GLOBALBROADCASTER_H
+#pragma once
 
 #include <QObject>
 #include <vector>
 #include "config.hh"
 #include "pronounceengine.hh"
 #include <QCache>
+#include "dictionary_icon_name.hh"
 
 struct ActiveDictIds
 {
@@ -26,6 +26,7 @@ class GlobalBroadcaster: public QObject
 
   Config::Preferences * preference;
   QSet< QString > whitelist;
+  Icons::DictionaryIconName _icon_names;
 
 public:
   void setPreference( Config::Preferences * _pre );
@@ -41,11 +42,10 @@ public:
   QMap< QString, QSet< QString > > folderFavoritesMap;
   QMap< unsigned, QString > groupFolderMap;
   PronounceEngine pronounce_engine;
+  QString getAbbrName( QString const & text );
 signals:
   void dictionaryChanges( ActiveDictIds ad );
   void dictionaryClear( ActiveDictIds ad );
 
   void indexingDictionary( QString );
 };
-
-#endif // GLOBAL_GLOBALBROADCASTER_H

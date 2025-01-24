@@ -1,8 +1,7 @@
 /* This file is (c) 2017 Abs62
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __FAVORITIESPANEWIDGET_HH__INCLUDED__
-#define __FAVORITIESPANEWIDGET_HH__INCLUDED__
+#pragma once
 
 #include <QWidget>
 #include <QSize>
@@ -21,6 +20,7 @@
 
 class FavoritesModel;
 
+class TreeItem;
 class FavoritesPaneWidget: public QWidget
 {
   Q_OBJECT
@@ -81,17 +81,18 @@ private slots:
   void deleteSelectedItems();
   void copySelectedItems();
   void addFolder();
+  void clearAllItems();
 
 private:
   virtual bool eventFilter( QObject *, QEvent * );
-
-  Config::Class * m_cfg;
-  QTreeView * m_favoritesTree;
-  QMenu * m_favoritesMenu;
-  QAction * m_deleteSelectedAction;
-  QAction * m_separator;
-  QAction * m_copySelectedToClipboard;
-  QAction * m_addFolder;
+  Config::Class * m_cfg               = nullptr;
+  QTreeView * m_favoritesTree         = nullptr;
+  QMenu * m_favoritesMenu             = nullptr;
+  QAction * m_deleteSelectedAction    = nullptr;
+  QAction * m_separator               = nullptr;
+  QAction * m_copySelectedToClipboard = nullptr;
+  QAction * m_addFolder               = nullptr;
+  QAction * m_clearAll                = nullptr;
 
   QWidget favoritesPaneTitleBar;
   QHBoxLayout favoritesPaneTitleBarLayout;
@@ -165,6 +166,7 @@ public:
 
   // Retrieve text from all childs
   QStringList getTextFromAllChilds() const;
+  void clearChildren();
 
 private:
   QList< TreeItem * > childItems;
@@ -181,6 +183,7 @@ class FavoritesModel: public QAbstractItemModel
 public:
   explicit FavoritesModel( QString favoritesFilename, QObject * parent = 0 );
   ~FavoritesModel();
+  void clearAllItems();
 
   QVariant data( const QModelIndex & index, int role ) const;
   Qt::ItemFlags flags( const QModelIndex & index ) const;
@@ -250,6 +253,7 @@ protected:
   void readData();
   void addFolder( TreeItem * parent, QDomNode & node );
   void storeFolder( TreeItem * folder, QDomNode & node );
+  TreeItem * findFolderByName( TreeItem * parent, const QString & name, TreeItem::Type type );
 
   // Find item in folder
   QModelIndex findItemInFolder( QString const & itemName, int itemType, QModelIndex const & parentIdx );
@@ -310,5 +314,3 @@ private:
   QStringList mimeFormats;
   QModelIndexList indexes;
 };
-
-#endif // __FAVORITIESPANEWIDGET_HH__INCLUDED__

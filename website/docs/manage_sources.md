@@ -1,4 +1,4 @@
-Dictionaries management dialog can be opened via menu `Edit` -> `Dictionaries`.
+Dictionary management dialog can be opened via menu `Edit` -> `Dictionaries`.
 
 To use local dictionaries, add them via `Sources` -> `Files`.
 
@@ -24,7 +24,7 @@ GoldenDict will scan these folders and add found dictionaries into dictionaries 
 
 Similar to Files, you can either add a folder which contains sound files or a `.zip` archive which contains the sound files.
 
-Goldendict will search through the sound file names when querying words.
+GD will search through the sound file names when querying words.
 
 ## Morphology
 
@@ -34,7 +34,7 @@ Morphology dictionary uses Hunspell's morphological analysis to obtain word's va
 
 You can specify a path that includes Hunspell format data files (`.aff` + `.dic`). GoldenDict scan this folder and create a list of available dictionaries.
 
-One possible source of Hunspell dictionaries is Libreoffice's [dictionaries](https://github.com/LibreOffice/dictionaries).
+One possible source of Hunspell dictionaries is LibreOffice's [dictionaries](https://github.com/LibreOffice/dictionaries).
 
 The detailed document about the affix file (`.aff`) and the dict file (`.dic`) can be found at [hunspell.5](https://man.archlinux.org/man/hunspell.5.en).
 
@@ -53,12 +53,7 @@ Target word can be inserted into url in next encodings::
 | Target word template   | Encoding                                |
 |------------------------|-----------------------------------------|
 | %GDWORD%               | UTF-8                                   |
-| %GD1251%               | Windows-1251                            |
-| %GDISO1% ... %GDISO16% | ISO 8859-1 ... ISO 8859-16 respectively |
-| %GDBIG5%               | Big-5                                   |
-| %GDBIG5HKSCS%          | Big5-HKSCS                              |
-| %GDGBK%                | GBK and GB 18030                        |
-| %GDSHIFTJIS%           | Shift-JIS                               |
+
 
 ## DICT servers
 

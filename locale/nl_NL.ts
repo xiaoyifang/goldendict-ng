@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="nl_NL" sourcelanguage="en">
+<TS version="2.1" language="nl" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
@@ -61,14 +61,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Expand article</source>
-      <translation>Artikel uitvouwen</translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Artikel samenvouwen</translation>
-    </message>
-    <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
       <translation>In groep &lt;b&gt;%2&lt;/b&gt;is geen vertaling voor &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; gevonden.</translation>
     </message>
@@ -96,16 +88,8 @@
   <context>
     <name>ArticleRequest</name>
     <message>
-      <source>Expand article</source>
-      <translation>Artikel uitvouwen</translation>
-    </message>
-    <message>
       <source>From </source>
       <translation>Uit </translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Artikel samenvouwen</translation>
     </message>
     <message>
       <source>Make a new Anki note</source>
@@ -155,12 +139,12 @@
       <translation>Bron</translation>
     </message>
     <message>
-      <source>Audio</source>
-      <translation>Geluid</translation>
-    </message>
-    <message>
       <source>TTS Voice</source>
       <translation>TTS Stem</translation>
+    </message>
+    <message>
+      <source>Audio</source>
+      <translation>Geluid</translation>
     </message>
     <message>
       <source>Video</source>
@@ -183,12 +167,12 @@
       <translation>FOUT: %1</translation>
     </message>
     <message>
-      <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>De bron waarnaar wordt verwezen bestaat niet.</translation>
-    </message>
-    <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>Dit programma voor afspelen van geluiden bestaat niet.</translation>
+    </message>
+    <message>
+      <source>The referenced resource doesn&apos;t exist.</source>
+      <translation>De bron waarnaar wordt verwezen bestaat niet.</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
@@ -360,25 +344,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>custom transliteration</source>
       <translation>aangepaste transliteratie</translation>
-    </message>
-  </context>
-  <context>
-    <name>Dialog</name>
-    <message>
-      <source>Proxy authentication required</source>
-      <translation>Proxy-verificatie vereist</translation>
-    </message>
-    <message>
-      <source>You need to supply a Username and a Password to access via proxy</source>
-      <translation>U moet een gebruikersnaam en wachtwoord invoeren om toegang te krijgen via een proxy</translation>
-    </message>
-    <message>
-      <source>Username:</source>
-      <translation>Gebruikersnaam:</translation>
-    </message>
-    <message>
-      <source>Password:</source>
-      <translation>Wachtwoord:</translation>
     </message>
   </context>
   <context>
@@ -597,10 +562,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
   <context>
     <name>DictInfo</name>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Woordenboek bewerken</translation>
-    </message>
-    <message>
       <source>Open index folder</source>
       <translation>Indexmap openen</translation>
     </message>
@@ -651,12 +612,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>Full-text search disabled</source>
       <translation>Zoeken in volledige tekst uitgeschakeld</translation>
-    </message>
-    <message>
-      <source>Edit the dictionary via command:
-%1</source>
-      <translation>Woordenboek bewerken via opdracht:
-%1</translation>
     </message>
   </context>
   <context>
@@ -749,10 +704,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>Open dictionary folder</source>
       <translation>Woordenboekmap openen</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>Woordenboek bewerken</translation>
     </message>
   </context>
   <context>
@@ -869,12 +820,24 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Map toevoegen</translation>
     </message>
     <message>
+      <source>Clear All</source>
+      <translation>Alles wissen</translation>
+    </message>
+    <message>
       <source>Favorites:</source>
       <translation>Favorieten:</translation>
     </message>
     <message>
       <source>All selected items will be deleted. Continue?</source>
       <translation>Alle geselecteerde items worden verwijderd. Doorgaan?</translation>
+    </message>
+    <message>
+      <source>Clear All Items</source>
+      <translation>Alle items wissen</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all items?</source>
+      <translation>Weet u zeker dat u alle items wilt wissen?</translation>
     </message>
   </context>
   <context>
@@ -902,10 +865,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>from</source>
       <translation>uit</translation>
-    </message>
-    <message>
-      <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
-      <translation>Om deze fout te herstellen kiest u Bewerken &gt; Woordenboeken &gt; Forvo en geeft u de standaard API-sleutel op.</translation>
     </message>
   </context>
   <context>
@@ -2181,10 +2140,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
   <context>
     <name>MainWindow</name>
     <message>
-      <source>Welcome!</source>
-      <translation>Welkom!</translation>
-    </message>
-    <message>
       <source>&amp;File</source>
       <translation>&amp;Bestand</translation>
     </message>
@@ -2421,16 +2376,20 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Ctrl+E</translation>
     </message>
     <message>
-      <source>Export to list</source>
-      <translation>Exporteren naar lijst</translation>
-    </message>
-    <message>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>Woordenboekwerkbalk met &amp;tekst</translation>
     </message>
     <message>
-      <source>Show Small Icons in &amp;Toolbars</source>
-      <translation>Werkbalken met &amp;kleine pictogrammen</translation>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>&amp;Kleine pictogrammen weergeven in werkbalken</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>Grote pictogrammen weergeven in werkbalken</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>&amp;Normale pictogrammen weergeven in werkbalken</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
@@ -2449,8 +2408,8 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Vooruit</translation>
     </message>
     <message>
-      <source>Enable Scanning</source>
-      <translation>Scannen inschakelen</translation>
+      <source>Toggle clipboard monitoring</source>
+      <translation>Klembordbewaking in-/uitschakelen</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2471,18 +2430,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>Found in Dictionaries:</source>
       <translation>Gevonden in woordenboeken:</translation>
-    </message>
-    <message>
-      <source>Words Zoom In</source>
-      <translation>Zoekwoorden vergroten</translation>
-    </message>
-    <message>
-      <source>Words Zoom Out</source>
-      <translation>Zoekwoorden verkleinen</translation>
-    </message>
-    <message>
-      <source>Words Normal Size</source>
-      <translation>Zoekwoorden normale grootte</translation>
     </message>
     <message>
       <source>Show &amp;Main Window</source>
@@ -2511,6 +2458,10 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>New Tab</source>
       <translation>Nieuw tabblad</translation>
+    </message>
+    <message>
+      <source>Welcome!</source>
+      <translation>Welkom!</translation>
     </message>
     <message>
       <source>Accessibility API is not enabled</source>
@@ -2545,10 +2496,6 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
     <message>
       <source>Remove current tab from Favorites</source>
       <translation>Huidige tab uit favorieten verwijderen</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
@@ -2591,12 +2538,20 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
       <translation>Artikel afdrukken</translation>
     </message>
     <message>
-      <source>Article, Complete (*.html)</source>
-      <translation>Artikel, compleet (*.html)</translation>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Volledige HTML (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Article, HTML Only (*.html)</source>
-      <translation>Artikel, alleen HTML (*.html)</translation>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Enkele Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Pdf (*.pdf)</source>
+      <translation>Pdf-bestand (*.pdf)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime-HTML (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2663,24 +2618,20 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
       <translation>Favorieten exporteren naar bestand</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;All files (*.*)</source>
-      <translation>XML-bestanden (*.xml);;Alle bestanden (*. *)</translation>
+      <source>Text files (*.txt);;XML files (*.xml)</source>
+      <translation>Tekstbestanden (*.txt);;XML-bestanden (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
       <translation>Favorieten exporteren voltooid</translation>
     </message>
     <message>
-      <source>Export Favorites to file as plain list</source>
-      <translation>Favorieten exporteren naar bestand als platte lijst</translation>
-    </message>
-    <message>
       <source>Import Favorites from file</source>
       <translation>Favorieten importeren uit bestand</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation>XML-bestanden (*.xml);;Txt bestanden (*.txt);;Alle bestanden (*. *)</translation>
+      <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
+      <translation>Tekst- en XML-bestanden (*.txt *.xml);;Alle bestanden (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -2701,10 +2652,6 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
     <message>
       <source>Open dictionary folder</source>
       <translation>Woordenboekmap openen</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>Woordenboek bewerken</translation>
     </message>
     <message>
       <source>Now indexing for full-text search: </source>
@@ -3052,18 +2999,16 @@ the application.</source>
       <translation>Monospace-lettertype</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>Scan &amp;Popup</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
-      <translation>Hier kunt u aangeven of de Scan Popup modus standaard in- of uitgeschakeld is.
-Het programma start met de Scan Popup modus ingeschakeld als dit geselecteerd is.</translation>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>Hiermee kiest u of de klembordbewaking standaard wordt ingeschakeld bij het opstarten van het programma&apos;.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
-      <translation>Starten met Scan Popup ingeschakeld</translation>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>Begin met klembordbewaking ingeschakeld</translation>
     </message>
     <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
@@ -3180,8 +3125,8 @@ toetsen zijn ingedrukt wanneer de woordselectie verandert.</translation>
       <translation>Woorden in hoofdvenster automatisch uitspreken</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
-      <translation>Woorden in Scan Popup automatisch uitspreken</translation>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>Woorden automatisch uitspreken in de pop-up</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3555,6 +3500,10 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <translation> Mb</translation>
     </message>
     <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Auto doet niets op sommige systemen.</translation>
+    </message>
+    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Start het programma opnieuw om de toepassingstaal te wijzigen.</translation>
     </message>
@@ -3569,6 +3518,22 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>Restart needed</source>
       <translation>Opnieuw opstarten nodig</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Inschakelen</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Uitzetten</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>Automatisch</translation>
+    </message>
+    <message>
+      <source>Enable application log</source>
+      <translation>Toepassingslogboek inschakelen</translation>
     </message>
   </context>
   <context>
@@ -3707,8 +3672,8 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <translation>Forceer dat het woord in het hoofdvenster wordt vertaald</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
-      <translation>Toggle scan popup.</translation>
+      <source>Toggle popup.</source>
+      <translation>Pop-up weergeven/verbergen.</translation>
     </message>
     <message>
       <source>Print version and diagnosis info.</source>
@@ -3810,10 +3775,6 @@ van Stardict, Babylon en GLS woordenboeken</translation>
 could be resized or managed in other ways.</source>
       <translation>Hiermee vergrendelt u het venster zodat het zichtbaar blijft
 en u het in grootte of anderszins kunt aanpassen.</translation>
-    </message>
-    <message>
-      <source>%1 - GoldenDict-ng</source>
-      <translation>%1 - GoldenDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
@@ -3939,12 +3900,6 @@ groep om ze te gebruiken.</translation>
       <translation>Alle websites. De tekenreeks %GDWORD% wordt automatisch vervangen door het zoekwoord:</translation>
     </message>
     <message>
-      <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
-      <translation>Gebruik als alternatief %GD1251% voor CP1251, %GDISO1%...%GDISO16% voor ISO 8859-1...ISO 8859-16 resp.,
-%GDBIG5% voor Big-5, %GDBIG5HKSCS% voor Big5-HKSCS, %GDGBK% voor GBK en GB18030, %GDSHIFTJIS% voor Shift-JIS.</translation>
-    </message>
-    <message>
       <source>DICT servers</source>
       <translation>DICT-servers</translation>
     </message>
@@ -4061,34 +4016,6 @@ gebaseerd op Engelse klankleer</translation>
     <message>
       <source>Hepburn</source>
       <translation>Hepburn</translation>
-    </message>
-    <message>
-      <source>The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Het meest reguliere systeem met een één-op-één relatie tot
-de kana-schrijfmethoden. Gestandaardiseerd als ISO 3602
-
-Nog niet geïmplementeerd in GoldenDict.</translation>
-    </message>
-    <message>
-      <source>Nihon-shiki</source>
-      <translation>Nihon-shiki</translation>
-    </message>
-    <message>
-      <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Gebaseerd op het Hihon-shiki systeem, maar aangepast aan modern standaard Japans.
-Gestandaardiseerd als ISO 3602
-
-Nog niet geïmplementeerd in GoldenDict.</translation>
-    </message>
-    <message>
-      <source>Kunrei-shiki</source>
-      <translation>Kunrei-shiki</translation>
     </message>
     <message>
       <source>Syllabaries:</source>

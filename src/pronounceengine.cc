@@ -8,7 +8,6 @@ PronounceEngine::PronounceEngine( QObject * parent ):
 {
 }
 
-
 void PronounceEngine::reset()
 {
   QMutexLocker _( &mutex );
@@ -18,32 +17,37 @@ void PronounceEngine::reset()
 }
 
 
-void PronounceEngine::sendAudio( std::string dictId, QString audioLink )
+void PronounceEngine::sendAudio( const std::string & dictId, const QString & audioLink )
 {
-  if ( state == PronounceState::OCCUPIED )
+  if ( state == PronounceState::OCCUPIED ) {
     return;
+  }
 
-  if ( !Utils::Url::isAudioUrl( QUrl( audioLink ) ) )
+  if ( !Utils::Url::isAudioUrl( QUrl( audioLink ) ) ) {
     return;
+  }
 
   QMutexLocker _( &mutex );
 
-  dictAudioMap.operator[]( dictId ).push_back( audioLink );
+  dictAudioMap[ dictId ].append( audioLink );
 }
 
 void PronounceEngine::finishDictionary( std::string dictId )
 {
-  if ( state == PronounceState::OCCUPIED )
+  if ( state == PronounceState::OCCUPIED ) {
     return;
+  }
 
   if ( dictAudioMap.contains( dictId ) ) {
     {
       //limit the mutex scope.
       QMutexLocker _( &mutex );
-      if ( state == PronounceState::OCCUPIED )
+      if ( state == PronounceState::OCCUPIED ) {
         return;
+      }
       state = PronounceState::OCCUPIED;
     }
-    emit emitAudio( dictAudioMap[ dictId ].first() );
+    auto link = dictAudioMap[ dictId ].first();
+    emit emitAudio( link );
   }
 }

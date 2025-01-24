@@ -23,16 +23,6 @@
       <string/>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="1" column="4">
-       <widget class="QPushButton" name="editDictionary">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="text">
-         <string>Edit dictionary</string>
-        </property>
-       </widget>
-      </item>
       <item row="1" column="3">
        <widget class="QLabel" name="dictionaryTranslatesTo">
         <property name="text">

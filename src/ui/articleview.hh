@@ -1,8 +1,7 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef GOLDENDICT_ARTICLEVIEW_H
-#define GOLDENDICT_ARTICLEVIEW_H
+#pragma once
 
 #include <QAction>
 #include <QMap>
@@ -11,7 +10,7 @@
 #include <QWebEngineView>
 #include <list>
 #include "article_netmgr.hh"
-#include "audioplayerinterface.hh"
+#include "audio/audioplayerinterface.hh"
 #include "instances.hh"
 #include "groupcombobox.hh"
 #include "globalbroadcaster.hh"
@@ -52,13 +51,6 @@ class ArticleView: public QWidget
   /// An action used to create Anki notes.
   QAction sendToAnkiAction{ tr( "&Create Anki note" ), this };
 
-  /// Any resource we've decided to download off the dictionary gets stored here.
-  /// Full vector capacity is used for search requests, where we have to make
-  /// a multitude of requests.
-  std::list< sptr< Dictionary::DataRequest > > resourceDownloadRequests;
-  /// Url of the resourceDownloadRequests
-  QUrl resourceDownloadUrl;
-
   /// For resources opened via desktop services
   QSet< QString > desktopOpenedTempFiles;
 
@@ -77,6 +69,8 @@ class ArticleView: public QWidget
 
   //current active dictionary id;
   QString activeDictId;
+
+  QString audioLink_;
 
   /// Search in results of full-text search
   QString firstAvailableText;
@@ -106,7 +100,10 @@ public:
   void setCurrentGroupId( unsigned currengGrgId );
   unsigned getCurrentGroupId();
 
-  virtual QSize minimumSizeHint() const;
+  void setAudioLink( QString audioLink );
+  QString getAudioLink() const;
+
+  QSize minimumSizeHint() const override;
   void clearContent();
 
   ~ArticleView();
@@ -152,6 +149,8 @@ public:
                  QUrl const & referrer,
                  QString const & scrollTo  = QString(),
                  Contexts const & contexts = Contexts() );
+  void playAudio( QUrl const & url );
+  void audioDownloadFinished( const sptr< Dictionary::DataRequest > & req );
 
   /// Called when the state of dictionary bar changes and the view is active.
   /// The function reloads content if the change affects it.
@@ -218,6 +217,7 @@ public:
   void toHtml( const std::function< void( QString & ) > & callback );
 
   void setHtml( const QString & content, const QUrl & baseUrl );
+  QWebEnginePage * page();
   void setContent( const QByteArray & data, const QString & mimeType = QString(), const QUrl & baseUrl = QUrl() );
 
   /// Returns current article's title
@@ -248,7 +248,6 @@ public:
   void setActiveArticleId( QString const & );
 
   ResourceToSaveHandler * saveResource( const QUrl & url, const QString & fileName );
-  ResourceToSaveHandler * saveResource( const QUrl & url, const QUrl & ref, const QString & fileName );
 
   void findText( QString & text,
                  const QWebEnginePage::FindFlags & f,
@@ -341,7 +340,7 @@ private slots:
     return ( targetUrl.scheme() == "gdau" || Utils::Url::isAudioUrl( targetUrl ) );
   }
 
-  void resourceDownloadFinished();
+  void resourceDownloadFinished( const sptr< Dictionary::DataRequest > & req, const QUrl & resourceDownloadUrl );
 
   /// We handle pasting by attempting to define the word in clipboard.
   void pasteTriggered();
@@ -454,5 +453,3 @@ public slots:
   Q_INVOKABLE void linkClickedInHtml( QUrl const & );
   Q_INVOKABLE void collapseInHtml( QString const & dictId, bool on = true ) const;
 };
-
-#endif

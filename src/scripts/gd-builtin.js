@@ -1,20 +1,12 @@
-// seperate from cpp code.
-var gdAudioLinks = {
-  first: null,
-  current: null,
-};
-
-//store dictionary audio link.
-var gdAudioMap = new Map();
-
 function gdMakeArticleActive(newId, noEvent) {
-  var gdCurrentArticle = $_$(".gdactivearticle").attr("id");
+  const gdCurrentArticle =
+    document.querySelector(".gdactivearticle").attributes.id;
   if (gdCurrentArticle !== "gdfrom-" + newId) {
-    $_$(".gdactivearticle").removeClass("gdactivearticle");
-    var newFormId = "gdfrom-" + newId;
-    $_$("#" + newFormId).addClass("gdactivearticle");
-    gdCurrentArticle = "gdfrom-" + newId;
-    gdAudioLinks.current = newId;
+    document
+      .querySelector(".gdactivearticle")
+      .classList.remove("gdactivearticle");
+    const newFormId = "gdfrom-" + newId;
+    document.querySelector(`#${newFormId}`).classList.add("gdactivearticle");
     if (!noEvent) articleview.onJsActiveArticleChanged("gdfrom-" + newId);
   }
 }
@@ -98,7 +90,6 @@ function gdExpandArticle(id) {
     nm = document.getElementById("gddictname-" + id);
     nm.style.cursor = "pointer";
     if (ev) ev.stopPropagation();
-    ico.title = tr("Expand article");
     nm.title = "";
     articleview.collapseInHtml(id, true);
   } else if (elem.style.display == "none") {
@@ -108,7 +99,6 @@ function gdExpandArticle(id) {
     nm = document.getElementById("gddictname-" + id);
     nm.style.cursor = "default";
     nm.title = "";
-    ico.title = tr("Collapse article");
     articleview.collapseInHtml(id, false);
   }
 }

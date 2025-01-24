@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="jbo_EN" sourcelanguage="en">
+<TS version="2.1" language="jbo" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
@@ -61,14 +61,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Expand article</source>
-      <translation>viska pa notci</translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>mipri pa notci</translation>
-    </message>
-    <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
       <translation type="unfinished">No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</translation>
     </message>
@@ -96,16 +88,8 @@
   <context>
     <name>ArticleRequest</name>
     <message>
-      <source>Expand article</source>
-      <translation>viska pa notci</translation>
-    </message>
-    <message>
       <source>From </source>
       <translation>vreji </translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>mipri pa notci</translation>
     </message>
     <message>
       <source>Make a new Anki note</source>
@@ -155,12 +139,12 @@
       <translation type="unfinished">Resource</translation>
     </message>
     <message>
-      <source>Audio</source>
-      <translation>snavi</translation>
-    </message>
-    <message>
       <source>TTS Voice</source>
       <translation type="unfinished">TTS Voice</translation>
+    </message>
+    <message>
+      <source>Audio</source>
+      <translation>snavi</translation>
     </message>
     <message>
       <source>Video</source>
@@ -183,12 +167,12 @@
       <translation>.i nabmi fa la&apos;o zoi. %1 .zoi</translation>
     </message>
     <message>
-      <source>The referenced resource doesn&apos;t exist.</source>
-      <translation type="unfinished">The referenced resource doesn&apos;t exist.</translation>
-    </message>
-    <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation type="unfinished">The referenced audio program doesn&apos;t exist.</translation>
+    </message>
+    <message>
+      <source>The referenced resource doesn&apos;t exist.</source>
+      <translation type="unfinished">The referenced resource doesn&apos;t exist.</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
@@ -360,25 +344,6 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>custom transliteration</source>
       <translation type="unfinished">custom transliteration</translation>
-    </message>
-  </context>
-  <context>
-    <name>Dialog</name>
-    <message>
-      <source>Proxy authentication required</source>
-      <translation type="unfinished">Proxy authentication required</translation>
-    </message>
-    <message>
-      <source>You need to supply a Username and a Password to access via proxy</source>
-      <translation type="unfinished">You need to supply a Username and a Password to access via proxy</translation>
-    </message>
-    <message>
-      <source>Username:</source>
-      <translation>plicme</translation>
-    </message>
-    <message>
-      <source>Password:</source>
-      <translation>se mipri jaspu</translation>
     </message>
   </context>
   <context>
@@ -597,10 +562,6 @@ between classic and school orthography in cyrillic)</translation>
   <context>
     <name>DictInfo</name>
     <message>
-      <source>Edit dictionary</source>
-      <translation>pa vlacku cu binxo</translation>
-    </message>
-    <message>
       <source>Open index folder</source>
       <translation type="unfinished">Open index folder</translation>
     </message>
@@ -651,12 +612,6 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>Full-text search disabled</source>
       <translation type="unfinished">Full-text search disabled</translation>
-    </message>
-    <message>
-      <source>Edit the dictionary via command:
-%1</source>
-      <translation type="unfinished">Edit the dictionary via command:
-%1</translation>
     </message>
   </context>
   <context>
@@ -749,10 +704,6 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>Open dictionary folder</source>
       <translation type="unfinished">Open dictionary folder</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>pa vlacku cu binxo</translation>
     </message>
   </context>
   <context>
@@ -869,12 +820,24 @@ between classic and school orthography in cyrillic)</translation>
       <translation type="unfinished">Add folder</translation>
     </message>
     <message>
+      <source>Clear All</source>
+      <translation type="unfinished">Clear All</translation>
+    </message>
+    <message>
       <source>Favorites:</source>
       <translation type="unfinished">Favorites:</translation>
     </message>
     <message>
       <source>All selected items will be deleted. Continue?</source>
       <translation type="unfinished">All selected items will be deleted. Continue?</translation>
+    </message>
+    <message>
+      <source>Clear All Items</source>
+      <translation type="unfinished">Clear All Items</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all items?</source>
+      <translation type="unfinished">Are you sure you want to clear all items?</translation>
     </message>
   </context>
   <context>
@@ -902,10 +865,6 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>from</source>
       <translation type="unfinished">from</translation>
-    </message>
-    <message>
-      <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
-      <translation type="unfinished">Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</translation>
     </message>
   </context>
   <context>
@@ -2181,10 +2140,6 @@ between classic and school orthography in cyrillic)</translation>
   <context>
     <name>MainWindow</name>
     <message>
-      <source>Welcome!</source>
-      <translation>rinsa</translation>
-    </message>
-    <message>
       <source>&amp;File</source>
       <translation>datnyvei</translation>
     </message>
@@ -2421,16 +2376,20 @@ between classic and school orthography in cyrillic)</translation>
       <translation type="unfinished">Ctrl+E</translation>
     </message>
     <message>
-      <source>Export to list</source>
-      <translation>pa liste co&apos;a vreji</translation>
-    </message>
-    <message>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>ciska ro cmene lo vlacku kajna</translation>
     </message>
     <message>
-      <source>Show Small Icons in &amp;Toolbars</source>
-      <translation>ro pixra poi zvati pa kajna cu cmalu</translation>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Small Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Large Icons in Toolbars</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation type="unfinished">Show &amp;Normal Icons in Toolbars</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
@@ -2449,8 +2408,8 @@ between classic and school orthography in cyrillic)</translation>
       <translation>bavla&apos;i</translation>
     </message>
     <message>
-      <source>Enable Scanning</source>
-      <translation type="unfinished">Enable Scanning</translation>
+      <source>Toggle clipboard monitoring</source>
+      <translation type="unfinished">Toggle clipboard monitoring</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2471,18 +2430,6 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>Found in Dictionaries:</source>
       <translation type="unfinished">Found in Dictionaries:</translation>
-    </message>
-    <message>
-      <source>Words Zoom In</source>
-      <translation>ro valsi cu banri</translation>
-    </message>
-    <message>
-      <source>Words Zoom Out</source>
-      <translation>ro valsi cu tolba&apos;o</translation>
-    </message>
-    <message>
-      <source>Words Normal Size</source>
-      <translation>ro valsi cu no&apos;e barda</translation>
     </message>
     <message>
       <source>Show &amp;Main Window</source>
@@ -2511,6 +2458,10 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>New Tab</source>
       <translation>cupra pa vanbi poi sepli</translation>
+    </message>
+    <message>
+      <source>Welcome!</source>
+      <translation>rinsa</translation>
     </message>
     <message>
       <source>Accessibility API is not enabled</source>
@@ -2545,10 +2496,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Remove current tab from Favorites</source>
       <translation>pa se vanbi be lo sepli poi ca se cuxna co&apos;u nelci se tcita</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>zoi zoi. %1 .zoi - la&apos;o zoi. %2 .zoi</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
@@ -2591,12 +2538,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>prina je cu vreji fi pa notci</translation>
     </message>
     <message>
-      <source>Article, Complete (*.html)</source>
-      <translation>notci je cu mulno (*.html)</translation>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Article, HTML Only (*.html)</source>
-      <translation>notci je cu se bangu la .xetmel. (*.html)</translation>
+      <source>Single Html (*.html *.htm)</source>
+      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Pdf (*.pdf)</source>
+      <translation type="unfinished">Pdf (*.pdf)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation type="unfinished">Mime Html (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2663,24 +2618,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>co&apos;a datnyvei fi lo&apos;i nelci se tcita</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;All files (*.*)</source>
-      <translation>datnyvei je cu te bangu fi la .xemel. (*.xml);;datnyvei (*.*)</translation>
+      <source>Text files (*.txt);;XML files (*.xml)</source>
+      <translation type="unfinished">Text files (*.txt);;XML files (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
       <translation>.i mo&apos;u co&apos;a vreji fi lo&apos;i nelci se tcita</translation>
     </message>
     <message>
-      <source>Export Favorites to file as plain list</source>
-      <translation type="unfinished">Export Favorites to file as plain list</translation>
-    </message>
-    <message>
       <source>Import Favorites from file</source>
       <translation>samymo&apos;i pa se datnyvei be fi lo&apos;i nelci se tcita</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation type="unfinished">XML files (*.xml);;Txt files (*.txt);;All files (*.*)</translation>
+      <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
+      <translation type="unfinished">Text and XML files (*.txt *.xml);;All files (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -2701,10 +2652,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Open dictionary folder</source>
       <translation type="unfinished">Open dictionary folder</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>pa vlacku cu binxo</translation>
     </message>
     <message>
       <source>Now indexing for full-text search: </source>
@@ -3053,18 +3000,16 @@ the application.</translation>
       <translation type="unfinished">Monospace Font</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
-      <translation type="unfinished">&amp;Scan Popup</translation>
+      <source>&amp;Popup</source>
+      <translation type="unfinished">&amp;Popup</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
-      <translation type="unfinished">Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</translation>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
-      <translation type="unfinished">Start with scan popup turned on</translation>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation type="unfinished">Start with clipboard monitoring turned on</translation>
     </message>
     <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
@@ -3181,8 +3126,8 @@ in the pressed state when the word selection changes.</translation>
       <translation type="unfinished">Auto-pronounce words in main window</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
-      <translation type="unfinished">Auto-pronounce words in scan popup</translation>
+      <source>Auto-pronounce words in the popup</source>
+      <translation type="unfinished">Auto-pronounce words in the popup</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3559,6 +3504,10 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <translation type="unfinished"> MB</translation>
     </message>
     <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation type="unfinished">Auto does nothing on some systems.</translation>
+    </message>
+    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>.i pa nu do za&apos;u re&apos;u katcygau lo samtci cu rinka pa nu mo&apos;u basti fi lo ka bangu</translation>
     </message>
@@ -3573,6 +3522,22 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <source>Restart needed</source>
       <translation type="unfinished">Restart needed</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation type="unfinished">Enable</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation type="unfinished">Disable</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation type="unfinished">Automatic</translation>
+    </message>
+    <message>
+      <source>Enable application log</source>
+      <translation type="unfinished">Enable application log</translation>
     </message>
   </context>
   <context>
@@ -3711,8 +3676,8 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <translation type="unfinished">Force the word to be translated in the mainwindow</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
-      <translation type="unfinished">Toggle scan popup.</translation>
+      <source>Toggle popup.</source>
+      <translation type="unfinished">Toggle popup.</translation>
     </message>
     <message>
       <source>Print version and diagnosis info.</source>
@@ -3814,10 +3779,6 @@ from Stardict, Babylon and GLS dictionaries</translation>
 could be resized or managed in other ways.</source>
       <translation type="unfinished">Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</translation>
-    </message>
-    <message>
-      <source>%1 - GoldenDict-ng</source>
-      <translation type="unfinished">%1 - GoldenDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
@@ -3943,12 +3904,6 @@ of the appropriate groups to use them.</translation>
       <translation>kibystu da .i ro se sisku valsi cu basti zoi zoi. %GDWORD% .zoi</translation>
     </message>
     <message>
-      <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
-      <translation type="unfinished">Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</translation>
-    </message>
-    <message>
       <source>DICT servers</source>
       <translation>samtcise&apos;u fi la .dikt.</translation>
     </message>
@@ -4065,34 +4020,6 @@ based on English phonology</translation>
     <message>
       <source>Hepburn</source>
       <translation type="unfinished">Hepburn</translation>
-    </message>
-    <message>
-      <source>The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation type="unfinished">The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</translation>
-    </message>
-    <message>
-      <source>Nihon-shiki</source>
-      <translation type="unfinished">Nihon-shiki</translation>
-    </message>
-    <message>
-      <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation type="unfinished">Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</translation>
-    </message>
-    <message>
-      <source>Kunrei-shiki</source>
-      <translation type="unfinished">Kunrei-shiki</translation>
     </message>
     <message>
       <source>Syllabaries:</source>

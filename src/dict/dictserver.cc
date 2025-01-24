@@ -2,16 +2,16 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "dictserver.hh"
-#include "wstring_qt.hh"
 #include <QTimer>
 #include <QUrl>
 #include <QTcpSocket>
 #include <QString>
-#include <list>
 #include "htmlescape.hh"
-
+#include <QCryptographicHash>
+#include <QDir>
+#include <QFileInfo>
 #include <QRegularExpression>
-#include <QtConcurrent>
+#include <QtConcurrentRun>
 
 namespace DictServer {
 
@@ -45,8 +45,9 @@ enum class DictServerState {
 
 void disconnectFromServer( QTcpSocket & socket )
 {
-  if ( socket.state() == QTcpSocket::ConnectedState )
+  if ( socket.state() == QTcpSocket::ConnectedState ) {
     socket.write( QByteArray( "QUIT\r\n" ) );
+  }
 
   socket.disconnectFromHost();
 }
@@ -79,8 +80,9 @@ public:
   void run( std::function< void() > callback )
   {
     int pos = url.indexOf( "://" );
-    if ( pos < 0 )
+    if ( pos < 0 ) {
       url = "dict://" + url;
+    }
 
     QUrl serverUrl( url );
     quint16 port = serverUrl.port( DefaultPort );
@@ -124,8 +126,9 @@ public:
             authCommand += serverUrl.userInfo().left( pos );
             authString += serverUrl.userInfo().mid( pos + 1 );
           }
-          else
+          else {
             authCommand += serverUrl.userInfo();
+          }
 
           authCommand += " ";
           authCommand += QCryptographicHash::hash( authString.toUtf8(), QCryptographicHash::Md5 ).toHex();
@@ -173,7 +176,6 @@ class DictServerDictionary: public Dictionary::Class
 {
   Q_OBJECT
 
-  string name;
   QString url, icon;
   quint32 langId;
   QString errorString;
@@ -193,22 +195,27 @@ public:
                         QString const & strategies_,
                         QString const & icon_ ):
     Dictionary::Class( id, vector< string >() ),
-    name( name_ ),
     url( url_ ),
     icon( icon_ ),
     langId( 0 )
   {
+
+    dictionaryName = name_;
+
     int pos = url.indexOf( "://" );
-    if ( pos < 0 )
+    if ( pos < 0 ) {
       url = "dict://" + url;
+    }
 
     databases = database_.split( QRegularExpression( "[ ,;]" ), Qt::SkipEmptyParts );
-    if ( databases.isEmpty() )
+    if ( databases.isEmpty() ) {
       databases.append( "*" );
+    }
 
     strategies = strategies_.split( QRegularExpression( "[ ,;]" ), Qt::SkipEmptyParts );
-    if ( strategies.isEmpty() )
+    if ( strategies.isEmpty() ) {
       strategies.append( "prefix" );
+    }
     QUrl serverUrl( url );
     quint16 port = serverUrl.port( DefaultPort );
     QString reply;
@@ -257,8 +264,9 @@ public:
               return;
             }
 
-            if ( !reply.isEmpty() )
+            if ( !reply.isEmpty() ) {
               serverDatabases.append( reply );
+            }
           }
 
           qDebug() << "db count:" << x;
@@ -279,8 +287,9 @@ public:
 
           reply = reply.trimmed();
 
-          if ( !reply.isEmpty() )
+          if ( !reply.isEmpty() ) {
             serverDatabases.append( reply );
+          }
 
           reply = socket.readLine();
         }
@@ -293,15 +302,6 @@ public:
     disconnectFromServer( socket );
   }
 
-  string getName() noexcept override
-  {
-    return name;
-  }
-
-  map< Property, string > getProperties() noexcept override
-  {
-    return {};
-  }
 
   unsigned long getArticleCount() noexcept override
   {
@@ -313,9 +313,10 @@ public:
     return 0;
   }
 
-  sptr< WordSearchRequest > prefixMatch( wstring const &, unsigned long maxResults ) override;
+  sptr< WordSearchRequest > prefixMatch( std::u32string const &, unsigned long maxResults ) override;
 
-  sptr< DataRequest > getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ) override;
+  sptr< DataRequest >
+  getArticle( std::u32string const &, vector< std::u32string > const & alts, std::u32string const &, bool ) override;
 
   quint32 getLangFrom() const override
   {
@@ -343,16 +344,19 @@ signals:
 
 void DictServerDictionary::loadIcon() noexcept
 {
-  if ( dictionaryIconLoaded )
+  if ( dictionaryIconLoaded ) {
     return;
+  }
 
   if ( !icon.isEmpty() ) {
     QFileInfo fInfo( QDir( Config::getConfigDir() ), icon );
-    if ( fInfo.isFile() )
+    if ( fInfo.isFile() ) {
       loadIconFromFile( fInfo.absoluteFilePath(), true );
+    }
   }
-  if ( dictionaryIcon.isNull() )
+  if ( dictionaryIcon.isNull() ) {
     dictionaryIcon = QIcon( ":/icons/network.svg" );
+  }
   dictionaryIconLoaded = true;
 }
 
@@ -361,16 +365,18 @@ QString const & DictServerDictionary::getDescription()
   if ( dictionaryDescription.isEmpty() ) {
     dictionaryDescription = QCoreApplication::translate( "DictServer", "Url: " ) + url + "<br>";
     dictionaryDescription += QCoreApplication::translate( "DictServer", "Databases: " ) + "<br>";
-    for ( const auto & serverDatabase : databases )
+    for ( const auto & serverDatabase : databases ) {
       dictionaryDescription += serverDatabase + "<br>";
+    }
     dictionaryDescription +=
       QCoreApplication::translate( "DictServer", "Search strategies: " ) + strategies.join( ", " );
     if ( !serverDatabases.isEmpty() ) {
       dictionaryDescription += "<br><br>";
       dictionaryDescription += QCoreApplication::translate( "DictServer", "Server databases" ) + " ("
         + QString::number( serverDatabases.size() ) + "):" + "<br>";
-      for ( const auto & serverDatabase : serverDatabases )
+      for ( const auto & serverDatabase : serverDatabases ) {
         dictionaryDescription += serverDatabase + "<br>";
+      }
     }
   }
   return dictionaryDescription;
@@ -381,7 +387,7 @@ class DictServerWordSearchRequest: public Dictionary::WordSearchRequest
 {
   Q_OBJECT
   QAtomicInt isCancelled;
-  wstring word;
+  std::u32string word;
   QString errorString;
   DictServerDictionary & dict;
 
@@ -396,7 +402,7 @@ class DictServerWordSearchRequest: public Dictionary::WordSearchRequest
 
 public:
 
-  DictServerWordSearchRequest( wstring word_, DictServerDictionary & dict_ ):
+  DictServerWordSearchRequest( std::u32string word_, DictServerDictionary & dict_ ):
     word( std::move( word_ ) ),
     dict( dict_ ),
     dictImpl( new DictServerImpl( this, dict_.url, "GoldenDict-w" ) )
@@ -410,8 +416,9 @@ public:
 
       if ( countn ) {
         QMutexLocker _( &dataMutex );
-        for ( int x = 0; x < countn; x++ )
-          matches.emplace_back( gd::toWString( matchesList.at( x ) ) );
+        for ( int x = 0; x < countn; x++ ) {
+          matches.emplace_back( matchesList.at( x ).toStdU32String() );
+        }
       }
       finish();
     } );
@@ -472,7 +479,7 @@ void DictServerWordSearchRequest::run()
       qDebug() << "receive match:" << reply;
       auto code = reply.left( 3 );
 
-      if ( reply.left( 3 ) != "152" ) {
+      if ( code != "152" ) {
 
         matchNext();
       }
@@ -521,12 +528,16 @@ void DictServerWordSearchRequest::readMatchData( QByteArray & reply )
     int pos = reply.indexOf( ' ' );
     if ( pos >= 0 ) {
       QString word = reply.mid( pos + 1 );
-      if ( word.endsWith( '\"' ) )
+      if ( word.endsWith( '\"' ) ) {
         word.chop( 1 );
-      if ( word[ 0 ] == '\"' )
-        word = word.mid( 1 );
+      }
+      if ( word.startsWith( '\"' ) ) {
+        word = word.remove( 0, 1 );
+      }
 
-      this->addMatchedWord( word );
+      if ( !word.isEmpty() ) {
+        this->addMatchedWord( word );
+      }
     }
 
     reply = this->dictImpl->socket.readLine();
@@ -551,31 +562,78 @@ void DictServer::DictServerWordSearchRequest::addMatchedWord( const QString & st
 class DictServerArticleRequest: public Dictionary::DataRequest
 {
   QAtomicInt isCancelled;
-  wstring word;
+  std::u32string word;
   QString errorString;
   DictServerDictionary & dict;
   string articleData;
 
+  QString articleText;
+
   int currentDatabase = 0;
   DictServerState state;
+  QTimer * timer;
   bool contentInHtml = false;
 
 
 public:
 
   DictServerImpl * dictImpl;
-  DictServerArticleRequest( wstring word_, DictServerDictionary & dict_ ):
+  DictServerArticleRequest( std::u32string word_, DictServerDictionary & dict_ ):
     word( std::move( word_ ) ),
     dict( dict_ ),
     dictImpl( new DictServerImpl( this, dict_.url, "GoldenDict-t" ) )
   {
-    connect( this, &DictServerArticleRequest::finishedArticle, this, [ this ]( QString articleText ) {
+    timer = new QTimer( this );
+    timer->setInterval( 5000 );
+    timer->setSingleShot( true );
+    qDebug() << "receive data:" << QDateTime::currentDateTime();
+    connect( timer, &QTimer::timeout, this, [ this ]() {
+      qDebug() << "Server takes too much time to response" << QDateTime::currentDateTime();
+      cancel();
+    } );
+
+    connect( this, &DictServerArticleRequest::finishedArticle, this, [ this ]( QString _articleText ) {
       if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
         cancel();
         return;
       }
 
-      qDebug() << articleText;
+      //modify the _articleText,remove extra lines[start with 15X etc.]
+      QList< QString > lines = _articleText.split( "\n", Qt::SkipEmptyParts );
+
+      QString resultStr;
+
+      // process the line
+      static QRegularExpression leadingRespCode( "^\\d{3} " );
+      uint32_t leadingSpaceCount      = 0;
+      uint32_t firstLeadingSpaceCount = 0;
+      for ( const QString & line : lines ) {
+        //ignore 15X lines
+        if ( leadingRespCode.match( line ).hasMatch() ) {
+          continue;
+        }
+        // ignore dot(.),the end line character
+        if ( line.trimmed() == "." ) {
+          break;
+        }
+
+        auto lsc = Utils::leadingSpaceCount( line );
+
+        if ( firstLeadingSpaceCount == 0 && lsc > firstLeadingSpaceCount ) {
+          firstLeadingSpaceCount = lsc;
+        }
+
+        if ( lsc >= leadingSpaceCount && lsc > firstLeadingSpaceCount ) {
+          //extra space
+          resultStr.append( " " );
+          resultStr.append( line.trimmed() );
+        }
+        else {
+          resultStr.append( "\n" );
+          resultStr.append( line );
+        }
+        leadingSpaceCount = lsc;
+      }
 
       static QRegularExpression phonetic( R"(\\([^\\]+)\\)",
                                           QRegularExpression::CaseInsensitiveOption ); // phonetics: \stuff\ ...
@@ -588,25 +646,27 @@ public:
       static QRegularExpression tags( "<[^>]*>", QRegularExpression::CaseInsensitiveOption );
 
       string articleStr;
-      if ( contentInHtml )
-        articleStr = articleText.toUtf8().data();
-      else
-        articleStr = Html::preformat( articleText.toUtf8().data() );
+      if ( contentInHtml ) {
+        articleStr = resultStr.toUtf8().data();
+      }
+      else {
+        articleStr = Html::preformat( resultStr.toUtf8().data() );
+      }
 
-      articleText = QString::fromUtf8( articleStr.c_str(), articleStr.size() );
+      _articleText = QString::fromUtf8( articleStr.c_str(), articleStr.size() );
       int pos;
       if ( !contentInHtml ) {
-        articleText = articleText.replace( refs, R"(<a href="gdlookup://localhost/\1">\1</a>)" );
+        _articleText = _articleText.replace( refs, R"(<a href="gdlookup://localhost/\1">\1</a>)" );
 
         pos = 0;
         QString articleNewText;
 
         // Handle phonetics
 
-        QRegularExpressionMatchIterator it = phonetic.globalMatch( articleText );
+        QRegularExpressionMatchIterator it = phonetic.globalMatch( _articleText );
         while ( it.hasNext() ) {
           QRegularExpressionMatch match = it.next();
-          articleNewText += articleText.mid( pos, match.capturedStart() - pos );
+          articleNewText += _articleText.mid( pos, match.capturedStart() - pos );
           pos = match.capturedEnd();
 
           QString phonetic_text = match.captured( 1 );
@@ -615,18 +675,18 @@ public:
           articleNewText += R"(<span class="dictd_phonetic">)" + phonetic_text + "</span>";
         }
         if ( pos ) {
-          articleNewText += articleText.mid( pos );
-          articleText = articleNewText;
+          articleNewText += _articleText.mid( pos );
+          _articleText = articleNewText;
           articleNewText.clear();
         }
 
         // Handle links
 
         pos = 0;
-        it  = links.globalMatch( articleText );
+        it  = links.globalMatch( _articleText );
         while ( it.hasNext() ) {
           QRegularExpressionMatch match = it.next();
-          articleNewText += articleText.mid( pos, match.capturedStart() - pos );
+          articleNewText += _articleText.mid( pos, match.capturedStart() - pos );
           pos = match.capturedEnd();
 
           QString link = match.captured( 1 );
@@ -640,13 +700,13 @@ public:
           articleNewText += newLink;
         }
         if ( pos ) {
-          articleNewText += articleText.mid( pos );
-          articleText = articleNewText;
+          articleNewText += _articleText.mid( pos );
+          _articleText = articleNewText;
           articleNewText.clear();
         }
       }
 
-      articleData += string( "<div class=\"dictd_article\">" ) + articleText.toUtf8().data() + "<br></div>";
+      articleData += string( "<div class=\"dictd_article\">" ) + _articleText.toUtf8().data() + "<br></div>";
 
 
       if ( !articleData.empty() ) {
@@ -667,10 +727,7 @@ public:
       defineNext();
     } );
 
-    QTimer::singleShot( 5000, this, [ this ]() {
-      qDebug() << "Server takes too much time to response";
-      cancel();
-    } );
+    timer->start();
   }
 
   void run();
@@ -703,9 +760,9 @@ void DictServerArticleRequest::run()
     return;
   }
 
-
   connect( &dictImpl->socket, &QTcpSocket::readyRead, this, [ this ]() {
     QMutexLocker const _( &dictImpl->mutex );
+    timer->start();
     if ( state == DictServerState::DEFINE ) {
       QByteArray reply = dictImpl->socket.readLine();
       qDebug() << "receive define:" << reply;
@@ -728,33 +785,19 @@ void DictServerArticleRequest::run()
       if ( reply.left( 3 ) == "150" ) {
         // Articles found
         int countPos = reply.indexOf( ' ', 4 );
-
-        QString articleText;
-
-        // Get articles count
+        // Get articles count,
+        // todo ,how to use this count?
         int count = reply.mid( 4, countPos > 4 ? countPos - 4 : -1 ).toInt();
 
         // Read articles
-        for ( int x = 0; x < count; x++ ) {
-          reply = dictImpl->socket.readLine();
-          if ( reply.isEmpty() ) {
-            state = DictServerState::DEFINE_DATA;
-            return;
-          }
-          readData( reply );
-        }
+        readData( reply );
         state = DictServerState::DEFINE_DATA;
       }
     }
     else if ( state == DictServerState::DEFINE_DATA ) {
       QByteArray reply = dictImpl->socket.readLine();
-      qDebug() << "receive define data:" << reply;
-      while ( true ) {
-        if ( reply.isEmpty() )
-          return;
-        readData( reply );
-        reply = dictImpl->socket.readLine();
-      }
+      qDebug() << "receive define data:" << reply << QDateTime::currentDateTime();
+      readData( reply );
     }
   } );
 
@@ -766,21 +809,25 @@ void DictServerArticleRequest::run()
 
 void DictServerArticleRequest::readData( QByteArray reply )
 {
-  if ( reply.isEmpty() )
+  if ( reply.isEmpty() ) {
     return;
+  }
 
-  if ( reply.left( 3 ) == "250" )
+  if ( reply.left( 3 ) == "250" ) {
     return;
+  }
 
   if ( reply.left( 3 ) == "151" ) {
     int pos = 4;
     int endPos;
 
     // Skip requested word
-    if ( reply[ pos ] == '\"' )
+    if ( reply[ pos ] == '\"' ) {
       endPos = reply.indexOf( '\"', pos + 1 ) + 1;
-    else
+    }
+    else {
       endPos = reply.indexOf( ' ', pos );
+    }
 
     if ( endPos < pos ) {
       // It seems mailformed string
@@ -789,7 +836,8 @@ void DictServerArticleRequest::readData( QByteArray reply )
 
     pos = endPos + 1;
 
-    QString dbID, dbName;
+    QString dbID;
+    QString dbName;
 
     // Retrieve database ID
     endPos = reply.indexOf( ' ', pos );
@@ -802,12 +850,13 @@ void DictServerArticleRequest::readData( QByteArray reply )
     dbID = reply.mid( pos, endPos - pos );
 
     // Retrieve database ID
-    pos    = endPos + 1;
-    endPos = reply.indexOf( ' ', pos );
-    if ( reply[ pos ] == '\"' )
+    pos = endPos + 1;
+    if ( reply[ pos ] == '\"' ) {
       endPos = reply.indexOf( '\"', pos + 1 ) + 1;
-    else
+    }
+    else {
       endPos = reply.indexOf( ' ', pos );
+    }
 
     if ( endPos < pos ) {
       // It seems mailformed string
@@ -815,51 +864,40 @@ void DictServerArticleRequest::readData( QByteArray reply )
     }
 
     dbName = reply.mid( pos, endPos - pos );
-    if ( dbName.endsWith( '\"' ) )
+    if ( dbName.endsWith( '\"' ) ) {
       dbName.chop( 1 );
-    if ( dbName[ 0 ] == '\"' )
+    }
+    if ( dbName[ 0 ] == '\"' ) {
       dbName = dbName.mid( 1 );
+    }
 
     articleData += string( "<div class=\"dictserver_from\">" ) + dbName.toUtf8().data() + "[" + dbID.toUtf8().data()
       + "]" + "</div>";
 
-    // Retreive MIME headers if any
+    reply = dictImpl->socket.readAll();
 
-    static QRegularExpression contentTypeExpr( "Content-Type\\s*:\\s*text/html",
-                                               QRegularExpression::CaseInsensitiveOption );
-
-    for ( ;; ) {
-      reply = dictImpl->socket.readLine();
-      if ( reply.isEmpty() )
-        return;
-
-      if ( reply == "\r\n" )
-        break;
-
-      QRegularExpressionMatch match = contentTypeExpr.match( reply );
-      if ( match.hasMatch() )
-        contentInHtml = true;
-    }
-    QString articleText;
-    // Retrieve article text
-
-    articleText.clear();
-    for ( ;; ) {
-      reply = dictImpl->socket.readLine();
-      if ( reply.isEmpty() )
-        return;
-
-      qDebug() << "reply data:" << reply;
-      if ( reply == ".\r\n" ) {
-        //discard all left message.
-        while ( !dictImpl->socket.readLine().isEmpty() ) {}
-        emit finishedArticle( articleText );
-        return;
-      }
-
-      articleText += reply;
+    articleText += reply;
+    qDebug() << "reply data:" << reply << QDateTime::currentDateTime();
+    if ( articleText.contains( "\r\n.\r\n" ) ) {
+      //discard all left message.
+      emit finishedArticle( articleText );
+      return;
     }
   }
+  else {
+    articleText += reply;
+    reply = dictImpl->socket.readAll();
+    qDebug() << "reply data:" << reply << QDateTime::currentDateTime();
+
+    articleText += reply;
+    if ( reply.contains( "\r\n.\r\n" ) ) {
+      //discard all left message. maybe delete all the remaining data after `.\r\n`
+      emit finishedArticle( articleText );
+      return;
+    }
+  }
+  //restart.
+  timer->start();
 }
 
 void DictServerArticleRequest::cancel()
@@ -869,7 +907,7 @@ void DictServerArticleRequest::cancel()
   finish();
 }
 
-sptr< WordSearchRequest > DictServerDictionary::prefixMatch( wstring const & word, unsigned long maxResults )
+sptr< WordSearchRequest > DictServerDictionary::prefixMatch( std::u32string const & word, unsigned long maxResults )
 {
   (void)maxResults;
   if ( word.size() > 80 ) {
@@ -877,12 +915,15 @@ sptr< WordSearchRequest > DictServerDictionary::prefixMatch( wstring const & wor
 
     return std::make_shared< WordSearchRequestInstant >();
   }
-  else
+  else {
     return std::make_shared< DictServerWordSearchRequest >( word, *this );
+  }
 }
 
-sptr< DataRequest >
-DictServerDictionary::getArticle( wstring const & word, vector< wstring > const &, wstring const &, bool )
+sptr< DataRequest > DictServerDictionary::getArticle( std::u32string const & word,
+                                                      vector< std::u32string > const &,
+                                                      std::u32string const &,
+                                                      bool )
 
 {
   if ( word.size() > 80 ) {
@@ -890,8 +931,9 @@ DictServerDictionary::getArticle( wstring const & word, vector< wstring > const 
 
     return std::make_shared< DataRequestInstant >( false );
   }
-  else
+  else {
     return std::make_shared< DictServerArticleRequest >( word, *this );
+  }
 }
 
 } // namespace
@@ -902,13 +944,14 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::DictServers const 
   vector< sptr< Dictionary::Class > > result;
 
   for ( const auto & server : servers ) {
-    if ( server.enabled )
+    if ( server.enabled ) {
       result.push_back( std::make_shared< DictServerDictionary >( server.id.toStdString(),
                                                                   server.name.toUtf8().data(),
                                                                   server.url,
                                                                   server.databases,
                                                                   server.strategies,
                                                                   server.iconFilename ) );
+    }
   }
 
   return result;

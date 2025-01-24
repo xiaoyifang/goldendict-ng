@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="tr_TR" sourcelanguage="en">
+<TS version="2.1" language="tr" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
@@ -61,14 +61,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Expand article</source>
-      <translation>Maddeyi genişlet</translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Maddeyi daralt</translation>
-    </message>
-    <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
       <translation>Grup &lt;b&gt;%2&lt;/b&gt;&lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; için çeviri bulunamadı .</translation>
     </message>
@@ -96,16 +88,8 @@
   <context>
     <name>ArticleRequest</name>
     <message>
-      <source>Expand article</source>
-      <translation>Maddeyi genişlet</translation>
-    </message>
-    <message>
       <source>From </source>
       <translation> </translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Maddeyi daralt</translation>
     </message>
     <message>
       <source>Make a new Anki note</source>
@@ -155,12 +139,12 @@
       <translation>Kaynağı yenile</translation>
     </message>
     <message>
-      <source>Audio</source>
-      <translation>Ses</translation>
-    </message>
-    <message>
       <source>TTS Voice</source>
       <translation>TTS Ses</translation>
+    </message>
+    <message>
+      <source>Audio</source>
+      <translation>Ses</translation>
     </message>
     <message>
       <source>Video</source>
@@ -183,12 +167,12 @@
       <translation>HATA %1</translation>
     </message>
     <message>
-      <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>İlgili kaynak yok.</translation>
-    </message>
-    <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>Referans gösterilen ses programı yok.</translation>
+    </message>
+    <message>
+      <source>The referenced resource doesn&apos;t exist.</source>
+      <translation>İlgili kaynak yok.</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
@@ -360,25 +344,6 @@ arasındaki farkı giderir)</translation>
     <message>
       <source>custom transliteration</source>
       <translation>özel harf çevirisi</translation>
-    </message>
-  </context>
-  <context>
-    <name>Dialog</name>
-    <message>
-      <source>Proxy authentication required</source>
-      <translation>Proxy kimlik doğrulaması gerekli</translation>
-    </message>
-    <message>
-      <source>You need to supply a Username and a Password to access via proxy</source>
-      <translation>Proxy üzerinden erişmek için bir Kullanıcı Adı ve Parola girmeniz gerekir</translation>
-    </message>
-    <message>
-      <source>Username:</source>
-      <translation>Kullanıcı adı:</translation>
-    </message>
-    <message>
-      <source>Password:</source>
-      <translation>Parola:</translation>
     </message>
   </context>
   <context>
@@ -597,10 +562,6 @@ arasındaki farkı giderir)</translation>
   <context>
     <name>DictInfo</name>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Sözlüğü düzenle</translation>
-    </message>
-    <message>
       <source>Open index folder</source>
       <translation>İndeks klasörünü aç</translation>
     </message>
@@ -651,12 +612,6 @@ arasındaki farkı giderir)</translation>
     <message>
       <source>Full-text search disabled</source>
       <translation>Tam metin arama devre dışı</translation>
-    </message>
-    <message>
-      <source>Edit the dictionary via command:
-%1</source>
-      <translation>Sözlüğü komut ile düzenleyin:
-%1</translation>
     </message>
   </context>
   <context>
@@ -749,10 +704,6 @@ arasındaki farkı giderir)</translation>
     <message>
       <source>Open dictionary folder</source>
       <translation>Sözlük klasörünü aç</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>Sözlüğü düzenle</translation>
     </message>
   </context>
   <context>
@@ -869,12 +820,24 @@ arasındaki farkı giderir)</translation>
       <translation>Klasöre ekle</translation>
     </message>
     <message>
+      <source>Clear All</source>
+      <translation>Tümünü Temizle</translation>
+    </message>
+    <message>
       <source>Favorites:</source>
       <translation>Favoriler:</translation>
     </message>
     <message>
       <source>All selected items will be deleted. Continue?</source>
       <translation>Seçilen bütün öğeler silinecek. Devam edilsin mi?</translation>
+    </message>
+    <message>
+      <source>Clear All Items</source>
+      <translation>Tüm Öğeleri Temizle</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all items?</source>
+      <translation>Tüm öğeleri temizlemek istediğinizden emin misiniz?</translation>
     </message>
   </context>
   <context>
@@ -902,10 +865,6 @@ arasındaki farkı giderir)</translation>
     <message>
       <source>from</source>
       <translation>bundan</translation>
-    </message>
-    <message>
-      <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
-      <translation> Bu hatanın gitmesi için Düzen|Sözlükler|Kaynaklar|Forvo seçeneğine gidip kendi API anahtarınızı uygulayın.</translation>
     </message>
   </context>
   <context>
@@ -2181,10 +2140,6 @@ arasındaki farkı giderir)</translation>
   <context>
     <name>MainWindow</name>
     <message>
-      <source>Welcome!</source>
-      <translation>Hoşgeldiniz!</translation>
-    </message>
-    <message>
       <source>&amp;File</source>
       <translation>&amp;Dosya</translation>
     </message>
@@ -2421,16 +2376,20 @@ arasındaki farkı giderir)</translation>
       <translation>Ctrl+E</translation>
     </message>
     <message>
-      <source>Export to list</source>
-      <translation>Listeye aktar</translation>
-    </message>
-    <message>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>Sözlük Çubuğunda Adları Göster</translation>
     </message>
     <message>
-      <source>Show Small Icons in &amp;Toolbars</source>
-      <translation>Araç Çubuklarında Küçük İkonlar Göster</translation>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>Araç Çubuklarında &amp;Küçük Simgeleri Göster</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>Araç Çubuklarında &amp;Büyük Simgeleri Göster</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>&amp;Normal Simgeleri Araç Çubuklarında Göster</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
@@ -2449,8 +2408,8 @@ arasındaki farkı giderir)</translation>
       <translation>Sonraki</translation>
     </message>
     <message>
-      <source>Enable Scanning</source>
-      <translation>Taramayı Etkinleştir</translation>
+      <source>Toggle clipboard monitoring</source>
+      <translation>Pano izlemeyi aç/kapat</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2471,18 +2430,6 @@ arasındaki farkı giderir)</translation>
     <message>
       <source>Found in Dictionaries:</source>
       <translation>Bu Sözlüklerde Bulundu:</translation>
-    </message>
-    <message>
-      <source>Words Zoom In</source>
-      <translation>Sözcükleri Büyüt</translation>
-    </message>
-    <message>
-      <source>Words Zoom Out</source>
-      <translation>Sözcükleri Küçült</translation>
-    </message>
-    <message>
-      <source>Words Normal Size</source>
-      <translation>Normal Sözcük Boyutu</translation>
     </message>
     <message>
       <source>Show &amp;Main Window</source>
@@ -2511,6 +2458,10 @@ arasındaki farkı giderir)</translation>
     <message>
       <source>New Tab</source>
       <translation>Yeni Sekme</translation>
+    </message>
+    <message>
+      <source>Welcome!</source>
+      <translation>Hoşgeldiniz!</translation>
     </message>
     <message>
       <source>Accessibility API is not enabled</source>
@@ -2545,10 +2496,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Remove current tab from Favorites</source>
       <translation>Geçerli sekmeyi favorilerden kaldır</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
@@ -2591,12 +2538,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Maddeyi Yazdır</translation>
     </message>
     <message>
-      <source>Article, Complete (*.html)</source>
-      <translation>Madde, Tam (*.html)</translation>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Tam Html (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Article, HTML Only (*.html)</source>
-      <translation>Madde, Yalnızca HTML (*.html)</translation>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Tek Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Pdf (*.pdf)</source>
+      <translation>PDF (*.pdf)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mim Html (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2663,24 +2618,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Favorileri dosyaya aktar</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;All files (*.*)</source>
-      <translation>XML dosyaları (*.xml);;Bütün dosyalar (*.*)</translation>
+      <source>Text files (*.txt);;XML files (*.xml)</source>
+      <translation>Metin dosyaları (*.txt);;XML dosyaları (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
       <translation>Favorilerin aktarılması tamamlandı</translation>
     </message>
     <message>
-      <source>Export Favorites to file as plain list</source>
-      <translation>Favorileri düz metin olarak aktar</translation>
-    </message>
-    <message>
       <source>Import Favorites from file</source>
       <translation>Favorileri dosyadan aktar</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation>XML dosyaları (*.xml);;Txt dosyaları (*.txt);;Tüm dosyalar (*.*)</translation>
+      <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
+      <translation>Metin ve XML dosyaları (*.txt *.xml);;Tüm dosyalar (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -2701,10 +2652,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Open dictionary folder</source>
       <translation>Sözlük klasörünü açın</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>Sözlüğü düzenle</translation>
     </message>
     <message>
       <source>Now indexing for full-text search: </source>
@@ -3050,18 +2997,16 @@ yerine onu gizler.</translation>
       <translation>Tek Aralıklı Yazı Tipi</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>&amp;Ekranda Kelime Yakala</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
-      <translation>Ekranda kelime yakala kipinin öntanımlı olarak etkin olup olmadığını gösterir.
-Etkinse, program her zaman aktif kip ile başlar.</translation>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>Program&apos;başlatıldığında pano izleme özelliğinin varsayılan olarak açılıp açılmayacağını seçer.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
-      <translation>Ekranda Kelime Yakala&apos;mayı açık olarak başlat</translation>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>Pano izlemeyi açarak başlayın</translation>
     </message>
     <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
@@ -3178,8 +3123,8 @@ Aksi halde fare, sözcüğün üzerine geldiğinde çeviri yapılır.</translati
       <translation>Ana penceredeki kelimeleri otomatik telaffuz et</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
-      <translation>Ekranda Kelime Yakalarken kelimeleri otomatik seslendir</translation>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>Açılır pencerede kelimeleri otomatik telaffuz et</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3554,6 +3499,10 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
       <translation> MB</translation>
     </message>
     <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Bazı sistemlerde Auto hiçbir şey yapmaz.</translation>
+    </message>
+    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Dil değişikliğini tamamlamak için programı yeniden başlatın.</translation>
     </message>
@@ -3568,6 +3517,22 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     <message>
       <source>Restart needed</source>
       <translation>Yeniden başlatma gerekli</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Olanak vermek</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Devre dışı bırakmak</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>Otomatik</translation>
+    </message>
+    <message>
+      <source>Enable application log</source>
+      <translation>Uygulama günlüğünü etkinleştir</translation>
     </message>
   </context>
   <context>
@@ -3706,7 +3671,7 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
       <translation>Ana pencerede çevrilecek kelimeyi zorla</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>Tarama açılır penceresini aç / kapat.</translation>
     </message>
     <message>
@@ -3809,10 +3774,6 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
 could be resized or managed in other ways.</source>
       <translation>Bu ekranda kalır ve böylece bu pencere, sabitlenebilir.
 Yeniden boyutlandırma, ya da başka bir şekilde yönetilebilir.</translation>
-    </message>
-    <message>
-      <source>%1 - GoldenDict-ng</source>
-      <translation>%1 - AltınDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
@@ -3937,12 +3898,6 @@ uygun grupların altlarına ekleyin.</translation>
       <translation>Herhangi bir web sitesi. Metin, %GDWORD% arama kelimesi ile değiştirilecektir:</translation>
     </message>
     <message>
-      <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
-      <translation>Alternatif olarak, sırasıyla CP1251 için %GD1251% , ISO 8859-1...ISO 8859-16 için %GDISO1%...%GDISO16% , Big-5 için
-%GDBIG5% , Big5-HKSCS için %GDBIG5HKSCS% , GBK için %GDGBK% ve Shift-JIS için GB18030, %GDSHIFTJIS% kullanın. .</translation>
-    </message>
-    <message>
       <source>DICT servers</source>
       <translation>DICT sunucuları</translation>
     </message>
@@ -4058,34 +4013,6 @@ based on English phonology</source>
     <message>
       <source>Hepburn</source>
       <translation>Hepburn</translation>
-    </message>
-    <message>
-      <source>The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>En düzenli sistem, kana yazı sistemleri için bire bir
-ISO 3602 gibi standart.
-
-GoldenDict için henüz uygulanmadı.</translation>
-    </message>
-    <message>
-      <source>Nihon-shiki</source>
-      <translation>Nihon-shiki</translation>
-    </message>
-    <message>
-      <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Nippon sistemine dayalı, çağdaş Japon için değiştirilmiş.
-ISO 3602 gibi standart
-
-Henüz GoldenDict uygulanmadı.</translation>
-    </message>
-    <message>
-      <source>Kunrei-shiki</source>
-      <translation>Kunrei-shiki</translation>
     </message>
     <message>
       <source>Syllabaries:</source>

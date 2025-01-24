@@ -2,15 +2,13 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "forvo.hh"
-#include "wstring_qt.hh"
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QtXml>
 #include <list>
 #include "audiolink.hh"
 #include "htmlescape.hh"
-#include "utf8.hh"
-#include "gddebug.hh"
+#include "text.hh"
 
 namespace Forvo {
 
@@ -20,7 +18,6 @@ namespace {
 
 class ForvoDictionary: public Dictionary::Class
 {
-  string name;
   QString apiKey, languageCode;
   QNetworkAccessManager & netMgr;
 
@@ -32,22 +29,13 @@ public:
                    QString const & languageCode_,
                    QNetworkAccessManager & netMgr_ ):
     Dictionary::Class( id, vector< string >() ),
-    name( name_ ),
     apiKey( apiKey_ ),
     languageCode( languageCode_ ),
     netMgr( netMgr_ )
   {
+    dictionaryName = name_;
   }
 
-  string getName() noexcept override
-  {
-    return name;
-  }
-
-  map< Property, string > getProperties() noexcept override
-  {
-    return map< Property, string >();
-  }
 
   unsigned long getArticleCount() noexcept override
   {
@@ -59,7 +47,7 @@ public:
     return 0;
   }
 
-  sptr< WordSearchRequest > prefixMatch( wstring const & /*word*/, unsigned long /*maxResults*/ ) override
+  sptr< WordSearchRequest > prefixMatch( std::u32string const & /*word*/, unsigned long /*maxResults*/ ) override
   {
     sptr< WordSearchRequestInstant > sr = std::make_shared< WordSearchRequestInstant >();
 
@@ -68,7 +56,8 @@ public:
     return sr;
   }
 
-  sptr< DataRequest > getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ) override;
+  sptr< DataRequest >
+  getArticle( std::u32string const &, vector< std::u32string > const & alts, std::u32string const &, bool ) override;
 
 protected:
 
@@ -93,32 +82,34 @@ class ForvoArticleRequest: public Dictionary::DataRequest
     }
   };
 
-  typedef std::list< NetReply > NetReplies;
+  using NetReplies = std::list< NetReply >;
   NetReplies netReplies;
   QString apiKey, languageCode;
   string dictionaryId;
 
 public:
 
-  ForvoArticleRequest( wstring const & word,
-                       vector< wstring > const & alts,
+  ForvoArticleRequest( std::u32string const & word,
+                       vector< std::u32string > const & alts,
                        QString const & apiKey_,
                        QString const & languageCode_,
                        string const & dictionaryId_,
                        QNetworkAccessManager & mgr );
 
-  virtual void cancel();
+  void cancel() override;
 
 private:
 
-  void addQuery( QNetworkAccessManager & mgr, wstring const & word );
+  void addQuery( QNetworkAccessManager & mgr, std::u32string const & word );
 
 private slots:
   virtual void requestFinished( QNetworkReply * );
 };
 
-sptr< DataRequest >
-ForvoDictionary::getArticle( wstring const & word, vector< wstring > const & alts, wstring const &, bool )
+sptr< DataRequest > ForvoDictionary::getArticle( std::u32string const & word,
+                                                 vector< std::u32string > const & alts,
+                                                 std::u32string const &,
+                                                 bool )
 
 {
   if ( word.size() > 80 || apiKey.isEmpty() ) {
@@ -133,8 +124,9 @@ ForvoDictionary::getArticle( wstring const & word, vector< wstring > const & alt
 
 void ForvoDictionary::loadIcon() noexcept
 {
-  if ( dictionaryIconLoaded )
+  if ( dictionaryIconLoaded ) {
     return;
+  }
 
   dictionaryIcon       = QIcon( ":/icons/forvo.png" );
   dictionaryIconLoaded = true;
@@ -147,8 +139,8 @@ void ForvoArticleRequest::cancel()
   finish();
 }
 
-ForvoArticleRequest::ForvoArticleRequest( wstring const & str,
-                                          vector< wstring > const & alts,
+ForvoArticleRequest::ForvoArticleRequest( std::u32string const & str,
+                                          vector< std::u32string > const & alts,
                                           QString const & apiKey_,
                                           QString const & languageCode_,
                                           string const & dictionaryId_,
@@ -161,13 +153,14 @@ ForvoArticleRequest::ForvoArticleRequest( wstring const & str,
 
   addQuery( mgr, str );
 
-  for ( const auto & alt : alts )
+  for ( const auto & alt : alts ) {
     addQuery( mgr, alt );
+  }
 }
 
-void ForvoArticleRequest::addQuery( QNetworkAccessManager & mgr, wstring const & str )
+void ForvoArticleRequest::addQuery( QNetworkAccessManager & mgr, std::u32string const & str )
 {
-  gdDebug( "Forvo: requesting article %s\n", QString::fromStdU32String( str ).toUtf8().data() );
+  qDebug( "Forvo: requesting article %s", QString::fromStdU32String( str ).toUtf8().data() );
 
   QString key = apiKey;
 
@@ -182,19 +175,20 @@ void ForvoArticleRequest::addQuery( QNetworkAccessManager & mgr, wstring const &
                                 + "/language/" + languageCode + "/order/rate-desc" )
                          .toUtf8() );
 
-  //  GD_DPRINTF( "req: %s\n", reqUrl.toEncoded().data() );
+  //  qDebug( "req: %s", reqUrl.toEncoded().data() );
 
   sptr< QNetworkReply > netReply = std::shared_ptr< QNetworkReply >( mgr.get( QNetworkRequest( reqUrl ) ) );
 
-  netReplies.push_back( NetReply( netReply, Utf8::encode( str ) ) );
+  netReplies.push_back( NetReply( netReply, Text::toUtf8( str ) ) );
 }
 
 void ForvoArticleRequest::requestFinished( QNetworkReply * r )
 {
-  GD_DPRINTF( "Finished.\n" );
+  qDebug( "Finished." );
 
-  if ( isFinished() ) // Was cancelled
+  if ( isFinished() ) { // Was cancelled
     return;
+  }
 
   // Find this reply
 
@@ -203,7 +197,7 @@ void ForvoArticleRequest::requestFinished( QNetworkReply * r )
   for ( auto & netReplie : netReplies ) {
     if ( netReplie.reply.get() == r ) {
       netReplie.finished = true; // Mark as finished
-      found       = true;
+      found              = true;
       break;
     }
   }
@@ -229,7 +223,7 @@ void ForvoArticleRequest::requestFinished( QNetworkReply * r )
           QString( tr( "XML parse error: %1 at %2,%3" ).arg( errorStr ).arg( errorLine ).arg( errorColumn ) ) );
       }
       else {
-        //        GD_DPRINTF( "%s\n", dd.toByteArray().data() );
+        //        qDebug( "%s", dd.toByteArray().data() );
 
         QDomNode items = dd.namedItem( "items" );
 
@@ -257,7 +251,7 @@ void ForvoArticleRequest::requestFinished( QNetworkReply * r )
 
                 string ref = string( "\"" ) + url.toEncoded().data() + "\"";
 
-                articleBody += addAudioLink( ref, dictionaryId ).c_str();
+                articleBody += addAudioLink( url.toEncoded(), dictionaryId ).c_str();
 
                 bool isMale = ( item.namedItem( "sex" ).toElement().text().toLower() != "f" );
 
@@ -283,8 +277,9 @@ void ForvoArticleRequest::requestFinished( QNetworkReply * r )
                   }
 
                   if ( negativeVotes ) {
-                    if ( positiveVotes )
+                    if ( positiveVotes ) {
                       votes += " ";
+                    }
 
                     votes += "<span class='forvo_negative_votes'>-";
                     votes += QByteArray::number( negativeVotes ).data();
@@ -318,29 +313,37 @@ void ForvoArticleRequest::requestFinished( QNetworkReply * r )
 
         if ( !errors.isNull() ) {
           QString text( errors.namedItem( "error" ).toElement().text() );
-
-          if ( text == "Limit/day reached." && apiKey.simplified().isEmpty() ) {
-            // Give a hint that the user should apply for his own key.
-
-            text +=
-              "\n"
-              + tr(
-                "Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear." );
-          }
-
           setErrorString( text );
         }
       }
-      GD_DPRINTF( "done.\n" );
+      qDebug( "done." );
     }
-    else
-      setErrorString( netReply->errorString() );
+    else {
+      //forvo return the error message with http status code=400.
+      QDomDocument dd;
+
+      QString errorStr;
+      int errorLine, errorColumn;
+
+      if ( !dd.setContent( netReply.get(), false, &errorStr, &errorLine, &errorColumn ) ) {
+        setErrorString( netReply->errorString() );
+      }
+      else {
+        QDomNode errors = dd.namedItem( "errors" );
+        if ( !errors.isNull() ) {
+          QString text( errors.namedItem( "error" ).toElement().text() );
+          setErrorString( text );
+        }
+      }
+    }
   }
 
-  if ( netReplies.empty() )
+  if ( netReplies.empty() ) {
     finish();
-  else if ( updated )
+  }
+  else if ( updated ) {
     update();
+  }
 }
 
 vector< sptr< Dictionary::Class > >
@@ -367,8 +370,9 @@ makeDictionaries( Dictionary::Initializing &, Config::Forvo const & forvo, QNetw
 
         QString displayedCode( code.toLower() );
 
-        if ( displayedCode.size() )
+        if ( displayedCode.size() ) {
           displayedCode[ 0 ] = displayedCode[ 0 ].toUpper();
+        }
 
         result.push_back(
           std::make_shared< ForvoDictionary >( hash.result().toHex().data(),

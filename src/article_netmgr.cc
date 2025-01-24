@@ -4,7 +4,6 @@
 #include <stdint.h>
 #include <QUrl>
 #include "article_netmgr.hh"
-#include "gddebug.hh"
 #include "utils.hh"
 #include <QNetworkAccessManager>
 #include "globalbroadcaster.hh"
@@ -22,9 +21,11 @@ AllowFrameReply::AllowFrameReply( QNetworkReply * _reply ):
   setRequest( baseReply->request() );
   setUrl( baseReply->url() );
 
-  // Signals to own slots
-
-  connect( baseReply, &QNetworkReply::metaDataChanged, this, &AllowFrameReply::applyMetaData );
+  QList< QByteArray > rawHeaders = baseReply->rawHeaderList();
+  for ( const auto & header : rawHeaders ) {
+    if ( header.toLower() != "x-frame-options" )
+      setRawHeader( header, baseReply->rawHeader( header ) );
+  }
 
   connect( baseReply, &QNetworkReply::errorOccurred, this, &AllowFrameReply::applyError );
 
@@ -32,43 +33,9 @@ AllowFrameReply::AllowFrameReply( QNetworkReply * _reply ):
 
   // Redirect QNetworkReply signals
 
-  connect( baseReply, &QNetworkReply::downloadProgress, this, &QNetworkReply::downloadProgress );
-
-  connect( baseReply, &QNetworkReply::encrypted, this, &QNetworkReply::encrypted );
-
   connect( baseReply, &QNetworkReply::finished, this, &QNetworkReply::finished );
 
-  connect( baseReply,
-           &QNetworkReply::preSharedKeyAuthenticationRequired,
-           this,
-           &QNetworkReply::preSharedKeyAuthenticationRequired );
-
-  connect( baseReply, &QNetworkReply::redirected, this, &QNetworkReply::redirected );
-
-  connect( baseReply, &QNetworkReply::sslErrors, this, &QNetworkReply::sslErrors );
-
-  connect( baseReply, &QNetworkReply::uploadProgress, this, &QNetworkReply::uploadProgress );
-
-  // Redirect QIODevice signals
-
-  connect( baseReply, &QIODevice::aboutToClose, this, &QIODevice::aboutToClose );
-
-  connect( baseReply, &QIODevice::bytesWritten, this, &QIODevice::bytesWritten );
-
-  connect( baseReply, &QIODevice::readChannelFinished, this, &QIODevice::readChannelFinished );
-
   setOpenMode( QIODevice::ReadOnly );
-}
-
-void AllowFrameReply::applyMetaData()
-{
-  // The webengine does not support to customize the headers right now ,maybe until Qt6.7 there should be some api supports
-}
-
-void AllowFrameReply::setReadBufferSize( qint64 size )
-{
-  QNetworkReply::setReadBufferSize( size );
-  baseReply->setReadBufferSize( size );
 }
 
 qint64 AllowFrameReply::bytesAvailable() const
@@ -88,11 +55,6 @@ qint64 AllowFrameReply::readData( char * data, qint64 maxSize )
   qint64 size         = qMin( maxSize, bytesAvailable );
   baseReply->read( data, size );
   return size;
-}
-void AllowFrameReply::finishedSlot()
-{
-  setFinished( true );
-  emit finished();
 }
 
 QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest const & req )
@@ -120,8 +82,9 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest co
 
   auto dr = getResource( url, contentType );
 
-  if ( dr.get() )
+  if ( dr.get() ) {
     return new ArticleResourceReply( this, req, dr, contentType );
+  }
 
   //dr.get() can be null. code continue to execute.
 
@@ -129,7 +92,7 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest co
   //if not external url,can be blocked from here. no need to continue execute the following code.
   //such as bres://upload.wikimedia....  etc .
   if ( !Utils::isExternalLink( url ) ) {
-    gdWarning( R"(Blocking element "%s" as built-in link )", req.url().toEncoded().data() );
+    qWarning( R"(Blocking element "%s" as built-in link )", req.url().toEncoded().data() );
     return new BlockedNetworkReply( this );
   }
 
@@ -144,7 +107,7 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( QNetworkRequest co
     if ( !url.host().endsWith( refererUrl.host() )
          && Utils::Url::getHostBaseFromUrl( url ) != Utils::Url::getHostBaseFromUrl( refererUrl )
          && !url.scheme().startsWith( "data" ) ) {
-      gdWarning( R"(Blocking element "%s" due to not same domain)", url.toEncoded().data() );
+      qWarning( R"(Blocking element "%s" due to not same domain)", url.toEncoded().data() );
 
       return new BlockedNetworkReply( this );
     }
@@ -214,8 +177,9 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( QUrl c
 
     contentType = "text/html";
 
-    if ( Utils::Url::queryItemValue( url, "blank" ) == "1" )
+    if ( Utils::Url::queryItemValue( url, "blank" ) == "1" ) {
       return articleMaker.makeEmptyPage();
+    }
 
     QString word = Utils::Url::queryItemValue( url, "word" ).trimmed();
 
@@ -243,8 +207,9 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( QUrl c
 
     bool ignoreDiacritics = Utils::Url::queryItemValue( url, "ignore_diacritics" ) == "1";
 
-    if ( groupIsValid && !word.isEmpty() ) // Require group and phrase to be passed
+    if ( groupIsValid && !word.isEmpty() ) { // Require group and phrase to be passed
       return articleMaker.makeDefinitionFor( word, group, contexts, mutedDicts, QStringList(), ignoreDiacritics );
+    }
   }
 
   if ( ( url.scheme() == "bres" || url.scheme() == "gdau" || url.scheme() == "gdvideo" || url.scheme() == "gico" )
@@ -253,32 +218,29 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( QUrl c
 
     QMimeType mineType = db.mimeTypeForUrl( url );
     contentType        = mineType.name();
-    string id = url.host().toStdString();
+    string id          = url.host().toStdString();
 
-    bool search = ( id == "search" );
-
-    if ( !search ) {
-      for ( const auto & dictionary : dictionaries )
-        if ( dictionary->getId() == id ) {
-          if ( url.scheme() == "gico" ) {
-            QByteArray bytes;
-            QBuffer buffer( &bytes );
-            buffer.open( QIODevice::WriteOnly );
-            dictionary->getIcon().pixmap( 64 ).save( &buffer, "PNG" );
-            buffer.close();
-            sptr< Dictionary::DataRequestInstant > ico = std::make_shared< Dictionary::DataRequestInstant >( true );
-            ico->getData().resize( bytes.size() );
-            memcpy( &( ico->getData().front() ), bytes.data(), bytes.size() );
-            return ico;
-          }
-          try {
-            return dictionary->getResource( Utils::Url::path( url ).mid( 1 ).toUtf8().data() );
-          }
-          catch ( std::exception & e ) {
-            gdWarning( "getResource request error (%s) in \"%s\"\n", e.what(), dictionary->getName().c_str() );
-            return {};
-          }
+    for ( const auto & dictionary : dictionaries ) {
+      if ( dictionary->getId() == id ) {
+        if ( url.scheme() == "gico" ) {
+          QByteArray bytes;
+          QBuffer buffer( &bytes );
+          buffer.open( QIODevice::WriteOnly );
+          dictionary->getIcon().pixmap( 64 ).save( &buffer, "PNG" );
+          buffer.close();
+          sptr< Dictionary::DataRequestInstant > ico = std::make_shared< Dictionary::DataRequestInstant >( true );
+          ico->getData().resize( bytes.size() );
+          memcpy( &( ico->getData().front() ), bytes.data(), bytes.size() );
+          return ico;
         }
+        try {
+          return dictionary->getResource( Utils::Url::path( url ).mid( 1 ).toUtf8().data() );
+        }
+        catch ( std::exception & e ) {
+          qWarning( "getResource request error (%s) in \"%s\"", e.what(), dictionary->getName().c_str() );
+          return {};
+        }
+      }
     }
   }
 
@@ -297,8 +259,9 @@ ArticleResourceReply::ArticleResourceReply( QObject * parent,
   setOpenMode( ReadOnly );
   setUrl( netReq.url() );
 
-  if ( contentType.size() )
+  if ( contentType.size() ) {
     setHeader( QNetworkRequest::ContentTypeHeader, contentType );
+  }
 
   connect( req.get(), &Dictionary::Request::updated, this, &ArticleResourceReply::reqUpdated );
 
@@ -320,7 +283,7 @@ ArticleResourceReply::ArticleResourceReply( QObject * parent,
 
     if ( req->isFinished() ) {
       emit finishedSignal();
-      GD_DPRINTF( "In-place finish.\n" );
+      qDebug( "In-place finish." );
     }
   }
 }
@@ -345,8 +308,9 @@ qint64 ArticleResourceReply::bytesAvailable() const
 {
   qint64 const avail = req->dataSize();
 
-  if ( avail < 0 )
+  if ( avail < 0 ) {
     return 0;
+  }
 
   qint64 const availBytes = avail - alreadyRead + QNetworkReply::bytesAvailable();
   if ( availBytes == 0 && !req->isFinished() ) {
@@ -366,23 +330,33 @@ qint64 ArticleResourceReply::readData( char * out, qint64 maxSize )
 {
   // From the doc: "This function might be called with a maxSize of 0,
   // which can be used to perform post-reading operations".
-  if ( maxSize == 0 )
+  if ( maxSize == 0 ) {
     return 0;
+  }
 
   bool const finished = req->isFinished();
 
   qint64 const avail = req->dataSize();
 
-  if ( avail < 0 )
+  if ( avail < 0 ) {
     return finished ? -1 : 0;
-
+  }
 
   qint64 const left = avail - alreadyRead;
 
   qint64 const toRead = maxSize < left ? maxSize : left;
-  if ( !toRead && finished )
+  if ( !toRead && finished ) {
     return -1;
-  GD_DPRINTF( "====reading  %d of (%lld) bytes . Finished: %d", (int)toRead, avail, finished );
+  }
+  if ( toRead == 0 ) {
+    return 0;
+  }
+
+  qDebug( "====reading  %lld of (%lld) bytes, %lld bytes readed . Finish status: %d",
+          toRead,
+          avail,
+          alreadyRead,
+          finished );
 
   try {
     req->getDataSlice( alreadyRead, toRead, out );
@@ -393,10 +367,12 @@ qint64 ArticleResourceReply::readData( char * out, qint64 maxSize )
 
   alreadyRead += toRead;
 
-  if ( !toRead && finished )
+  if ( !toRead && finished ) {
     return -1;
-  else
+  }
+  else {
     return toRead;
+  }
 }
 
 void ArticleResourceReply::readyReadSlot()

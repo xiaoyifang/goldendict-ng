@@ -1,15 +1,12 @@
-#ifndef __FTSHELPERS_HH_INCLUDED__
-#define __FTSHELPERS_HH_INCLUDED__
+#pragma once
 
 #include <QString>
 #include <QList>
-#include <QtConcurrent>
-
+#include <QtConcurrentRun>
 #include "dict/dictionary.hh"
 #include "btreeidx.hh"
 #include "fulltextsearch.hh"
 #include "folding.hh"
-#include "wstring_qt.hh"
 
 namespace FtsHelpers {
 
@@ -46,7 +43,7 @@ public:
   {
     if ( ignoreDiacritics_ )
       searchString =
-        QString::fromStdU32String( Folding::applyDiacriticsOnly( gd::removeTrailingZero( searchString_ ) ) );
+        QString::fromStdU32String( Folding::applyDiacriticsOnly( Text::removeTrailingZero( searchString_ ) ) );
 
     foundHeadwords = new QList< FTS::FtsHeadword >;
     results        = 0;
@@ -71,5 +68,3 @@ public:
 };
 
 } // namespace FtsHelpers
-
-#endif // __FTSHELPERS_HH_INCLUDED__

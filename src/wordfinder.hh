@@ -1,8 +1,7 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __WORDFINDER_HH_INCLUDED__
-#define __WORDFINDER_HH_INCLUDED__
+#pragma once
 
 #include <list>
 #include <map>
@@ -49,19 +48,19 @@ private:
 
   std::vector< sptr< Dictionary::Class > > const * inputDicts;
 
-  std::vector< gd::wstring > allWordWritings; // All writings of the inputWord
+  std::vector< std::u32string > allWordWritings; // All writings of the inputWord
 
   struct OneResult
   {
-    gd::wstring word;
+    std::u32string word;
     int rank;
     bool wasSuggested;
   };
 
   // Maps lowercased string to the original one. This catches all duplicates
   // without case sensitivity. Made as an array and a map indexing that array.
-  typedef std::list< OneResult > ResultsArray;
-  typedef std::map< gd::wstring, ResultsArray::iterator > ResultsIndex;
+  using ResultsArray = std::list< OneResult >;
+  using ResultsIndex = std::map< std::u32string, ResultsArray::iterator >;
   ResultsArray resultsArray;
   ResultsIndex resultsIndex;
 
@@ -196,5 +195,3 @@ private:
     }
   };
 };
-
-#endif

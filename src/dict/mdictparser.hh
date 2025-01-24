@@ -18,8 +18,7 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
 
-#ifndef __MDICTPARSER_HH_INCLUDED__
-#define __MDICTPARSER_HH_INCLUDED__
+#pragma once
 
 #include <string>
 #include <vector>
@@ -112,9 +111,9 @@ public:
     virtual void handleRecord( QString const & name, RecordInfo const & recordInfo ) = 0;
   };
 
-  typedef vector< pair< qint64, qint64 > > BlockInfoVector;
-  typedef vector< pair< qint64, QString > > HeadWordIndex;
-  typedef map< qint32, pair< QString, QString > > StyleSheets;
+  using BlockInfoVector = vector< pair< qint64, qint64 > >;
+  using HeadWordIndex   = vector< pair< qint64, QString > >;
+  using StyleSheets     = map< qint32, pair< QString, QString > >;
 
   inline QString const & title() const
   {
@@ -215,5 +214,3 @@ protected:
 };
 
 } // namespace Mdict
-
-#endif // __MDICTPARSER_HH_INCLUDED__

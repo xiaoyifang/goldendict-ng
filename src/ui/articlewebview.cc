@@ -111,8 +111,9 @@ bool ArticleWebView::eventFilter( QObject * obj, QEvent * ev )
 
 void ArticleWebView::singleClickAction( QMouseEvent * event )
 {
-  if ( !singleClickToDbClick )
+  if ( !singleClickToDbClick ) {
     return;
+  }
 
   if ( selectionBySingleClick ) {
     findText( "" ); // clear the selection first, if any

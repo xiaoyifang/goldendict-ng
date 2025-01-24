@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="bg_BG" sourcelanguage="en">
+<TS version="2.1" language="bg" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
@@ -61,14 +61,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Expand article</source>
-      <translation>Разгъни статията</translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Свий статията</translation>
-    </message>
-    <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
       <translation>Няма превод за &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; в група &lt;b&gt;%2&lt;/b&gt;.</translation>
     </message>
@@ -96,16 +88,8 @@
   <context>
     <name>ArticleRequest</name>
     <message>
-      <source>Expand article</source>
-      <translation>Разгъни статията</translation>
-    </message>
-    <message>
       <source>From </source>
       <translation>От </translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>Свий статията</translation>
     </message>
     <message>
       <source>Make a new Anki note</source>
@@ -155,12 +139,12 @@
       <translation>Ресурс</translation>
     </message>
     <message>
-      <source>Audio</source>
-      <translation>Аудио</translation>
-    </message>
-    <message>
       <source>TTS Voice</source>
       <translation>Синтезатор глас</translation>
+    </message>
+    <message>
+      <source>Audio</source>
+      <translation>Аудио</translation>
     </message>
     <message>
       <source>Video</source>
@@ -183,12 +167,12 @@
       <translation>ГРЕШКА: %1</translation>
     </message>
     <message>
-      <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>Даденият ресурс не съществува.</translation>
-    </message>
-    <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>Указаната аудио-програма липсва.</translation>
+    </message>
+    <message>
+      <source>The referenced resource doesn&apos;t exist.</source>
+      <translation>Даденият ресурс не съществува.</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
@@ -360,25 +344,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>custom transliteration</source>
       <translation>персонализирана транслитерация</translation>
-    </message>
-  </context>
-  <context>
-    <name>Dialog</name>
-    <message>
-      <source>Proxy authentication required</source>
-      <translation>Прокси-Сървъра изисква авторизация</translation>
-    </message>
-    <message>
-      <source>You need to supply a Username and a Password to access via proxy</source>
-      <translation>За достъп към прокси-Сървъра се въвежда име и парола</translation>
-    </message>
-    <message>
-      <source>Username:</source>
-      <translation>Имя:</translation>
-    </message>
-    <message>
-      <source>Password:</source>
-      <translation>Парола:</translation>
     </message>
   </context>
   <context>
@@ -597,10 +562,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictInfo</name>
     <message>
-      <source>Edit dictionary</source>
-      <translation>Редактирай речника</translation>
-    </message>
-    <message>
       <source>Open index folder</source>
       <translation>Отворете индексната папка</translation>
     </message>
@@ -651,12 +612,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Full-text search disabled</source>
       <translation>Търсенето в пълен текст е деактивирано</translation>
-    </message>
-    <message>
-      <source>Edit the dictionary via command:
-%1</source>
-      <translation>Редакция на речник чрез команда:
-%1</translation>
     </message>
   </context>
   <context>
@@ -749,10 +704,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>Отвори папката на речника</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>Редактирай речника</translation>
     </message>
   </context>
   <context>
@@ -869,12 +820,24 @@ between classic and school orthography in cyrillic)</source>
       <translation>Добави папка</translation>
     </message>
     <message>
+      <source>Clear All</source>
+      <translation>Изчистване на всички</translation>
+    </message>
+    <message>
       <source>Favorites:</source>
       <translation>Любими:</translation>
     </message>
     <message>
       <source>All selected items will be deleted. Continue?</source>
       <translation>Всички избрани елементи ще бъдат изтрити. Да продължи?</translation>
+    </message>
+    <message>
+      <source>Clear All Items</source>
+      <translation>Изчистване на всички елементи</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all items?</source>
+      <translation>Сигурни ли сте, че искате да изчистите всички елементи?</translation>
     </message>
   </context>
   <context>
@@ -902,10 +865,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>from</source>
       <translation>от</translation>
-    </message>
-    <message>
-      <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
-      <translation>Премини към Редакция|Речници|Източници|Forvo и ззаявете свой собствен ключ API, за решаване на проблема.</translation>
     </message>
   </context>
   <context>
@@ -2181,10 +2140,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>MainWindow</name>
     <message>
-      <source>Welcome!</source>
-      <translation>Добре дошли!</translation>
-    </message>
-    <message>
       <source>&amp;File</source>
       <translation>&amp;Файл</translation>
     </message>
@@ -2421,16 +2376,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ctrl+E</translation>
     </message>
     <message>
-      <source>Export to list</source>
-      <translation>Експортирай в обикнов. списък</translation>
-    </message>
-    <message>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>По&amp;казвай името в панел речници</translation>
     </message>
     <message>
-      <source>Show Small Icons in &amp;Toolbars</source>
-      <translation>&amp;Малки икони в панел инструменти</translation>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>Показване на &amp;малки икони в лентите с инструменти</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>Показване на &amp;големи икони в лентите с инструменти</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>Показване на &amp;нормални икони в лентите с инструменти</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
@@ -2449,8 +2408,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>Напред</translation>
     </message>
     <message>
-      <source>Enable Scanning</source>
-      <translation>Активиране на сканирането</translation>
+      <source>Toggle clipboard monitoring</source>
+      <translation>Превключване на наблюдението на клипборда</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2471,18 +2430,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Found in Dictionaries:</source>
       <translation>Намерено в речници:</translation>
-    </message>
-    <message>
-      <source>Words Zoom In</source>
-      <translation>Увеличаване на думите</translation>
-    </message>
-    <message>
-      <source>Words Zoom Out</source>
-      <translation>Намаляване на думите</translation>
-    </message>
-    <message>
-      <source>Words Normal Size</source>
-      <translation>Нормален размер на думите</translation>
     </message>
     <message>
       <source>Show &amp;Main Window</source>
@@ -2511,6 +2458,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>New Tab</source>
       <translation>Нов подпрозорец</translation>
+    </message>
+    <message>
+      <source>Welcome!</source>
+      <translation>Добре дошли!</translation>
     </message>
     <message>
       <source>Accessibility API is not enabled</source>
@@ -2545,10 +2496,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Remove current tab from Favorites</source>
       <translation>Изтрий текущия подпрозорец от Любими</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
@@ -2591,12 +2538,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Печат на статията</translation>
     </message>
     <message>
-      <source>Article, Complete (*.html)</source>
-      <translation>Статията цялостно (*.html)</translation>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Пълен Html (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Article, HTML Only (*.html)</source>
-      <translation>Статия, само в HTML (*.html)</translation>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Един Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Pdf (*.pdf)</source>
+      <translation>PDF (*.pdf)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime Html (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2663,24 +2618,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Експортирай Любими в файл</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;All files (*.*)</source>
-      <translation>Файлове XML (*.xml);;Всички файлове (*.*)</translation>
+      <source>Text files (*.txt);;XML files (*.xml)</source>
+      <translation>Текстови файлове (*.txt);;XML файлове (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
       <translation>Експорта на Любими завърши</translation>
     </message>
     <message>
-      <source>Export Favorites to file as plain list</source>
-      <translation>Експортирай Любими във файл като обикнов. списък</translation>
-    </message>
-    <message>
       <source>Import Favorites from file</source>
       <translation>Импортирай Любими от файл</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation>XML файлове (*.xml);;Txt файлове (*.txt);;Всички файлове (*.*)</translation>
+      <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
+      <translation>Текстови и XML файлове (*.txt *.xml);;Всички файлове (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -2701,10 +2652,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Open dictionary folder</source>
       <translation>Отвори папката на речника</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>Редактирай речник</translation>
     </message>
     <message>
       <source>Now indexing for full-text search: </source>
@@ -3053,18 +3000,16 @@ the application.</source>
       <translation>Монопространствен шрифт</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>&amp;Изскачащ прозорец</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
-      <translation>Избран ли е, Изкачащ прозорец по подразб. или не. Ако е проверено,
-програмата винаги ще стартира с активен Изкачащ прозорец.</translation>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation>Избира дали наблюдението на клипборда да бъде включено по подразбиране при стартиране на програмата&apos;.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
-      <translation>Пускане с включен изскачащ прозорец</translation>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>Започнете с включен мониторинг на клипборда</translation>
     </message>
     <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
@@ -3181,8 +3126,8 @@ in the pressed state when the word selection changes.</source>
       <translation>Автоматично произнасяне на думите в главния прозорец</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
-      <translation>Автоматично произнасяне на думите в изскачащия прозорец</translation>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>Автоматично произнасяне на думи в изскачащия прозорец</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3558,6 +3503,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation> MB</translation>
     </message>
     <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Auto не прави нищо на някои системи.</translation>
+    </message>
+    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>Рестартирайте програмата, за да се приложи смяната на езика.</translation>
     </message>
@@ -3572,6 +3521,22 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Restart needed</source>
       <translation>Необходимо е рестартиране</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Активирайте</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Деактивиране</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>Автоматично</translation>
+    </message>
+    <message>
+      <source>Enable application log</source>
+      <translation>Активиране на регистрационния файл на приложението</translation>
     </message>
   </context>
   <context>
@@ -3710,7 +3675,7 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Принудете думата да бъде преведена в главния прозорец</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>Превключване на изскачащия прозорец за сканиране.</translation>
     </message>
     <message>
@@ -3813,10 +3778,6 @@ from Stardict, Babylon and GLS dictionaries</source>
 could be resized or managed in other ways.</source>
       <translation>Използвайте да закрепи отдолу прозореца, да бъде на екрана,
 като променен или аранжиран по друг начин.</translation>
-    </message>
-    <message>
-      <source>%1 - GoldenDict-ng</source>
-      <translation>%1 - GoldenDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
@@ -3946,12 +3907,6 @@ of the appropriate groups to use them.</source>
       <translation>Произволни уеб страници. Низът %GDWORD% ще бъде заменен с думата за търсене:</translation>
     </message>
     <message>
-      <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
-      <translation>Алтернативно използва %GD1251% за CP1251, %GDISO1%...%GDISO16% за ISO 8859-1...ISO 8859-16 съответно,
-%GDBIG5% за Big-5, %GDBIG5HKSCS% за Big5-HKSCS, %GDGBK% за GBK и GB18030, %GDSHIFTJIS% за Shift-JIS.</translation>
-    </message>
-    <message>
       <source>DICT servers</source>
       <translation>Сървъри DICT</translation>
     </message>
@@ -4068,34 +4023,6 @@ based on English phonology</source>
     <message>
       <source>Hepburn</source>
       <translation>Хепбърн</translation>
-    </message>
-    <message>
-      <source>The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Най използваната система, имаща непосредственно отношение към
-устройства за запис kana. Стандартизирано по ISO 3602
-
-В GoldenDict засега не реализирано.</translation>
-    </message>
-    <message>
-      <source>Nihon-shiki</source>
-      <translation>Нихон-шики</translation>
-    </message>
-    <message>
-      <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>Базирано на система Nihon-shiki, но осъвременено за стандарта на японски език.
-Стандартизирано по ISO 3602
-
-В GoldenDict засега не реализирано.</translation>
-    </message>
-    <message>
-      <source>Kunrei-shiki</source>
-      <translation>Кунрей-шики</translation>
     </message>
     <message>
       <source>Syllabaries:</source>

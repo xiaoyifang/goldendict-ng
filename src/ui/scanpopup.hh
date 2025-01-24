@@ -1,8 +1,7 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef __SCANPOPUP_HH_INCLUDED__
-#define __SCANPOPUP_HH_INCLUDED__
+#pragma once
 
 #include "article_netmgr.hh"
 #include "ui/articleview.hh"
@@ -12,12 +11,15 @@
 #include "ui_scanpopup.h"
 #include <QDialog>
 #include <QClipboard>
+#include <QToolBar>
 #include "history.hh"
 #include "dictionarybar.hh"
 #include "mainstatusbar.hh"
 #ifdef HAVE_X11
   #include "scanflag.hh"
 #endif
+
+#include <QActionGroup>
 
 /// This is a popup dialog to show translations when clipboard scanning mode
 /// is enabled.
@@ -137,6 +139,8 @@ private:
   WordFinder wordFinder;
   Config::Events configEvents;
   DictionaryBar dictionaryBar;
+  QToolBar * toolbar;
+  QActionGroup * actionGroup = nullptr;
   MainStatusBar * mainStatusBar;
   /// Fonts saved before words zooming is in effect, so it could be reset back.
   QFont wordListDefaultFont, translateLineDefaultFont, groupListDefaultFont;
@@ -148,7 +152,7 @@ private:
   bool mouseEnteredOnce = false;
   bool mouseIntercepted = false;
 
-  QPoint startPos; // For window moving
+  QPointF startPos; // For window moving
   QByteArray pinnedGeometry;
 
   QTimer hideTimer; // When mouse leaves the window, a grace period is
@@ -169,17 +173,13 @@ private:
 
   /// Called from event filter or from mouseGrabPoll to handle mouse event
   /// while it is being intercepted.
-  void reactOnMouseMove( QPoint const & p );
+  void reactOnMouseMove( QPointF const & p );
 
   virtual void mousePressEvent( QMouseEvent * );
   virtual void mouseMoveEvent( QMouseEvent * );
   virtual void mouseReleaseEvent( QMouseEvent * );
   virtual void leaveEvent( QEvent * event );
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
   virtual void enterEvent( QEnterEvent * event );
-#else
-  virtual void enterEvent( QEvent * event );
-#endif
   virtual void showEvent( QShowEvent * );
   virtual void closeEvent( QCloseEvent * );
   virtual void moveEvent( QMoveEvent * );
@@ -232,6 +232,6 @@ private slots:
   void alwaysOnTopClicked( bool checked );
 
   void titleChanged( ArticleView *, QString const & title ) const;
+  void updateFoundInDictsList();
+  void onActionTriggered();
 };
-
-#endif

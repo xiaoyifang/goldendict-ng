@@ -46,14 +46,17 @@ jobs:
           cmake --build ./build_dir 
   job_macos_build_check:
     name: macos Build and analyze
-    runs-on: macos-12
+    runs-on: macos-13
     steps:             
       - uses: actions/checkout@v4
         with:
           submodules: false
+      - name: Update brew
+        run: |
+          brew update
       - name: Install dependencies
         run: |
-          brew install \
+          brew install --force --overwrite \
           ninja \
           opencc \
           ffmpeg \
@@ -65,12 +68,12 @@ jobs:
           hunspell \
           xapian \
           libzim \
-          qt
-
-          wget ftp://ftp.sra.co.jp/pub/misc/eb/eb-4.4.3.tar.bz2
+          qt || true
+      - name: Install eb
+        run: |
+          wget https://github.com/mistydemeo/eb/releases/download/v4.4.3/eb-4.4.3.tar.bz2
           tar xvjf eb-4.4.3.tar.bz2
           cd eb-4.4.3 && ./configure && make -j 8 && sudo make install && cd ..
-
       - name: Run build
         run: |
           mkdir build_dir
@@ -86,7 +89,7 @@ jobs:
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
         with:
-          version: 6.7.2
+          version: 6.7.3
           arch: win64_msvc2019_64
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech 
           setup-python: 'false'
@@ -106,3 +109,57 @@ jobs:
             -DCMAKE_C_COMPILER="cl.exe" -DCMAKE_CXX_COMPILER="cl.exe" `
             -DWITH_FFMPEG_PLAYER=OFF
           cmake --build "./build_dir"
+
+  job_archlinux_build_check:
+    name: archlinux Build and analyze
+    runs-on: ubuntu-24.04
+    container:
+      image: ghcr.io/archlinux/archlinux:base-devel
+    steps:
+      - name: Print Version
+        run: |
+          if [[ -f /etc/os-release ]]; then
+            cat /etc/os-release
+          fi
+      - name: Install dependencies
+        run: |
+          # https://github.com/archlinux/archlinux-docker
+          # base-devel is already included in the `base-devel` image
+          pacman --noconfirm -Syuu \
+          cmake \
+          ffmpeg \
+          fmt \
+          hunspell \
+          libvorbis \
+          libxtst \
+          libzim \
+          lzo \
+          ninja \
+          opencc \
+          qt6-5compat \
+          qt6-base \
+          qt6-multimedia \
+          qt6-speech \
+          qt6-svg \
+          qt6-tools \
+          qt6-webengine \
+          tomlplusplus \
+          xapian-core
+
+      - uses: actions/checkout@v4
+        with:
+          submodules: false
+      - name: Run build
+        run: |
+          mkdir build_dir
+          # eb is only available in AUR, so it is disabled
+          cmake -S . \
+            -B ./build_dir \
+            -G Ninja \
+            -DWITH_EPWING_SUPPORT=OFF \
+            -DWITH_FFMPEG_PLAYER=ON \
+            -DWITH_TTS=ON \
+            -DUSE_SYSTEM_FMT=ON \
+            -DUSE_SYSTEM_TOML=ON
+
+          cmake --build ./build_dir

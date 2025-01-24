@@ -1,5 +1,4 @@
-#ifndef __EPWING_BOOK_HH_INCLUDED__
-#define __EPWING_BOOK_HH_INCLUDED__
+#pragma once
 
 #include "dict/dictionary.hh"
 #include "ex.hh"
@@ -17,15 +16,13 @@
 #endif
 
 #include <QString>
-#if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-  #include <QtCore5Compat/QTextCodec>
-#else
-  #include <QTextCodec>
-#endif
 
-
-#ifdef _MSC_VER
-  #include <stub_msvc.h>
+// POSIX symbol unavailable on Windows needed for eb headers
+#ifdef Q_OS_WIN
+  #ifndef _SSIZE_T
+    #define _SSIZE_T
+    #define ssize_t long
+  #endif
 #endif
 
 #include <eb/eb.h>
@@ -58,7 +55,7 @@ struct EpwingHeadword
 
 class EpwingBook
 {
-  typedef std::pair< int, int > EWPos;
+  using EWPos = std::pair< int, int >;
 
   void setErrorString( QString const & func, EB_Error_Code code );
 
@@ -74,7 +71,6 @@ class EpwingBook
   QString mainCacheDir, rootDir;
   QString cacheImagesDir, cacheSoundsDir, cacheMoviesDir, cacheFontsDir;
   QString dictID;
-  QTextCodec *codec_ISO, *codec_GB, *codec_Euc;
   QStack< unsigned int > decorationStack;
   int monoWidth, monoHeight;
   QStringList imageCacheList, soundsCacheList, moviesCacheList, fontsCacheList;
@@ -112,6 +108,7 @@ class EpwingBook
   QByteArray codeToUnicode( QString const & code );
 
 public:
+  const char *codec_ISO_name, *codec_GB_name, *codec_Euc_name;
 
   enum DecorationCodes {
     UNKNOWN     = 0,
@@ -133,21 +130,6 @@ public:
   QString const & errorString() const
   {
     return error_string;
-  }
-
-  QTextCodec * codecISO()
-  {
-    return codec_ISO;
-  }
-
-  QTextCodec * codecGB()
-  {
-    return codec_GB;
-  }
-
-  QTextCodec * codecEuc()
-  {
-    return codec_Euc;
   }
 
   int getSubBookCount()
@@ -270,6 +252,3 @@ struct EContainer
 } // namespace Book
 
 } // namespace Epwing
-
-
-#endif // __EPWING_BOOK_HH_INCLUDED__

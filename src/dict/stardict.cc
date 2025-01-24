@@ -4,46 +4,36 @@
 #include "stardict.hh"
 #include "btreeidx.hh"
 #include "folding.hh"
-#include "utf8.hh"
+#include "text.hh"
 #include "chunkedstorage.hh"
 #include "dictzip.hh"
 #include "xdxf2html.hh"
 #include "htmlescape.hh"
 #include "langcoder.hh"
-#include "gddebug.hh"
-
 #include "filetype.hh"
 #include "indexedzip.hh"
 #include "tiff.hh"
 #include "ftshelpers.hh"
 #include "audiolink.hh"
-
 #include <zlib.h>
 #include <map>
 #include <set>
 #include <string>
+#include <QString>
+#include <QAtomicInt>
+#include <QDomDocument>
+#include "ufile.hh"
+#include "utils.hh"
+#include <QRegularExpression>
+#include "globalregex.hh"
+#include <QDir>
+#include <stdlib.h>
 
 #ifndef Q_OS_WIN
   #include <arpa/inet.h>
 #else
   #include <winsock.h>
 #endif
-#include <stdlib.h>
-
-#ifdef _MSC_VER
-  #include <stub_msvc.h>
-#endif
-
-#include <QString>
-#include <QSemaphore>
-#include <QAtomicInt>
-#include <QStringList>
-#include <QDomDocument>
-#include "ufile.hh"
-#include "utils.hh"
-
-#include <QRegularExpression>
-#include "globalregex.hh"
 
 namespace Stardict {
 
@@ -52,7 +42,6 @@ using std::multimap;
 using std::pair;
 using std::set;
 using std::string;
-using gd::wstring;
 
 using BtreeIndexing::WordArticleLink;
 using BtreeIndexing::IndexedWords;
@@ -64,14 +53,11 @@ DEF_EX( exNotAnIfoFile, "Not an .ifo file", Dictionary::Ex )
 DEF_EX_STR( exBadFieldInIfo, "Bad field in .ifo file encountered:", Dictionary::Ex )
 DEF_EX_STR( exNoIdxFile, "No corresponding .idx file was found for", Dictionary::Ex )
 DEF_EX_STR( exNoDictFile, "No corresponding .dict file was found for", Dictionary::Ex )
-DEF_EX_STR( exNoSynFile, "No corresponding .syn file was found for", Dictionary::Ex )
 
 DEF_EX( ex64BitsNotSupported, "64-bit indices are not presently supported, sorry", Dictionary::Ex )
 DEF_EX( exDicttypeNotSupported, "Dictionaries with dicttypes are not supported, sorry", Dictionary::Ex )
 
 using Dictionary::exCantReadFile;
-DEF_EX_STR( exWordIsTooLarge, "Enountered a word that is too large:", Dictionary::Ex )
-DEF_EX_STR( exSuddenEndOfFile, "Sudden end of file", Dictionary::Ex )
 DEF_EX_STR( exDictzipError, "DICTZIP error", Dictionary::Ex )
 
 DEF_EX_STR( exIncorrectOffset, "Incorrect offset encountered in file", Dictionary::Ex )
@@ -79,20 +65,23 @@ DEF_EX_STR( exIncorrectOffset, "Incorrect offset encountered in file", Dictionar
 /// Contents of an ifo file
 struct Ifo
 {
-  string version;
   string bookname;
-  uint32_t wordcount, synwordcount, idxfilesize, idxoffsetbits;
+  uint32_t wordcount     = 0;
+  uint32_t synwordcount  = 0;
+  uint32_t idxfilesize   = 0;
+  uint32_t idxoffsetbits = 32;
   string sametypesequence, dicttype, description;
   string copyright, author, email, website, date;
 
-  explicit Ifo( File::Index & );
+  explicit Ifo( const QString & fileName );
 };
 
 enum {
   Signature            = 0x58444953, // SIDX on little-endian, XDIS on big-endian
-  CurrentFormatVersion = 9 + BtreeIndexing::FormatVersion + Folding::Version
+  CurrentFormatVersion = 9 + BtreeIndexing::FormatVersion + Folding::Version + BtreeIndexing::ZipParseLogicVersion
 };
 
+#pragma pack( push, 1 )
 struct IdxHeader
 {
   uint32_t signature;             // First comes the signature, SIDX
@@ -110,15 +99,15 @@ struct IdxHeader
   uint32_t zipIndexBtreeMaxElements; // Two fields from IndexInfo of the zip
                                      // resource index.
   uint32_t zipIndexRootOffset;
-}
-#ifndef _MSC_VER
-__attribute__( ( packed ) )
-#endif
+};
+static_assert( alignof( IdxHeader ) == 1 );
+#pragma pack( pop )
+
 ;
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Index idx( indexFile, "rb" );
+  File::Index idx( indexFile, QIODevice::ReadOnly );
 
   IdxHeader header;
 
@@ -131,9 +120,8 @@ class StardictDictionary: public BtreeIndexing::BtreeDictionary
   QMutex idxMutex;
   File::Index idx;
   IdxHeader idxHeader;
-  string bookName;
   string sameTypeSequence;
-  ChunkedStorage::Reader chunks;
+  std::unique_ptr< ChunkedStorage::Reader > chunks;
   QMutex dzMutex;
   dictData * dz;
   QMutex resourceZipMutex;
@@ -144,22 +132,6 @@ public:
   StardictDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles );
 
   ~StardictDictionary();
-
-  string getName() noexcept override
-  {
-    return bookName;
-  }
-
-  void setName( string _name ) noexcept override
-  {
-    bookName = _name;
-  }
-
-
-  map< Dictionary::Property, string > getProperties() noexcept override
-  {
-    return map< Dictionary::Property, string >();
-  }
 
   unsigned long getArticleCount() noexcept override
   {
@@ -181,10 +153,12 @@ public:
     return idxHeader.langTo;
   }
 
-  sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( wstring const & ) override;
+  sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( std::u32string const & ) override;
 
-  sptr< Dictionary::DataRequest >
-  getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ignoreDiacritics ) override;
+  sptr< Dictionary::DataRequest > getArticle( std::u32string const &,
+                                              vector< std::u32string > const & alts,
+                                              std::u32string const &,
+                                              bool ignoreDiacritics ) override;
 
   sptr< Dictionary::DataRequest > getResource( string const & name ) override;
 
@@ -203,9 +177,10 @@ public:
     if ( metadata_enable_fts.has_value() ) {
       can_FTS = fts.enabled && metadata_enable_fts.value();
     }
-    else
+    else {
       can_FTS = fts.enabled && !fts.disabledTypes.contains( "STARDICT", Qt::CaseInsensitive )
         && ( fts.maxDictionarySize == 0 || getArticleCount() <= fts.maxDictionarySize );
+    }
   }
 
 protected:
@@ -236,19 +211,22 @@ StardictDictionary::StardictDictionary( string const & id,
                                         string const & indexFile,
                                         vector< string > const & dictionaryFiles ):
   BtreeDictionary( id, dictionaryFiles ),
-  idx( indexFile, "rb" ),
-  idxHeader( idx.read< IdxHeader >() ),
-  bookName( loadString( idxHeader.bookNameSize ) ),
-  sameTypeSequence( loadString( idxHeader.sameTypeSequenceSize ) ),
-  chunks( idx, idxHeader.chunksOffset )
+  idx( indexFile, QIODevice::ReadOnly )
 {
+  // reading headers, note that reading order matters
+  idxHeader        = idx.read< IdxHeader >();
+  dictionaryName   = loadString( idxHeader.bookNameSize );
+  sameTypeSequence = loadString( idxHeader.sameTypeSequenceSize );
+  chunks           = std::make_unique< ChunkedStorage::Reader >( idx, idxHeader.chunksOffset );
+
   // Open the .dict file
 
   DZ_ERRORS error;
   dz = dict_data_open( dictionaryFiles[ 2 ].c_str(), &error, 0 );
 
-  if ( !dz )
+  if ( !dz ) {
     throw exDictzipError( string( dz_error_str( error ) ) + "(" + dictionaryFiles[ 2 ] + ")" );
+  }
 
   // Initialize the index
 
@@ -263,8 +241,9 @@ StardictDictionary::StardictDictionary( string const & id,
 
     QString zipName = QDir::fromNativeSeparators( getDictionaryFilenames().back().c_str() );
 
-    if ( zipName.endsWith( ".zip", Qt::CaseInsensitive ) ) // Sanity check
+    if ( zipName.endsWith( ".zip", Qt::CaseInsensitive ) ) { // Sanity check
       resourceZip.openZipFile( zipName );
+    }
   }
 
   // Full-text search parameters
@@ -274,14 +253,16 @@ StardictDictionary::StardictDictionary( string const & id,
 
 StardictDictionary::~StardictDictionary()
 {
-  if ( dz )
+  if ( dz ) {
     dict_data_close( dz );
+  }
 }
 
 void StardictDictionary::loadIcon() noexcept
 {
-  if ( dictionaryIconLoaded )
+  if ( dictionaryIconLoaded ) {
     return;
+  }
 
   QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
 
@@ -298,8 +279,9 @@ void StardictDictionary::loadIcon() noexcept
 
 string StardictDictionary::loadString( size_t size )
 {
-  if ( size == 0 )
+  if ( size == 0 ) {
     return string();
+  }
 
   vector< char > data( size );
 
@@ -317,7 +299,7 @@ void StardictDictionary::getArticleProps( uint32_t articleAddress,
 
   QMutexLocker _( &idxMutex );
 
-  char * articleData = chunks.getBlock( articleAddress, chunk );
+  char * articleData = chunks->getBlock( articleAddress, chunk );
 
   memcpy( &offset, articleData, sizeof( uint32_t ) );
   articleData += sizeof( uint32_t );
@@ -449,7 +431,7 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
   // See "Type identifiers" at http://www.huzheng.org/stardict/StarDictFileFormat
   switch ( type ) {
     case 'x': // Xdxf content
-      return Xdxf2Html::convert( string( resource, size ), Xdxf2Html::STARDICT, NULL, this, &resourceZip );
+      return Xdxf2Html::convert( string( resource, size ), Xdxf2Html::STARDICT, NULL, this );
     case 'h': // Html content
     {
       QString articleText = QString( "<div class=\"sdct_h\">" ) + QString::fromUtf8( resource, size ) + "</div>";
@@ -486,8 +468,9 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
           }
 
           QString newLink;
-          if ( link.indexOf( '#' ) < 0 )
+          if ( link.indexOf( '#' ) < 0 ) {
             newLink = QString( "<a" ) + match.captured( 1 ) + "href=\"bword:" + link + "\"";
+          }
 
 
           // Anchors
@@ -500,11 +483,13 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
           if ( !newLink.isEmpty() ) {
             articleNewText += newLink;
           }
-          else
+          else {
             articleNewText += match.captured();
+          }
         }
-        else
+        else {
           articleNewText += match.captured();
+        }
       }
       if ( pos ) {
         articleNewText += articleText.mid( pos );
@@ -533,8 +518,9 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
           articleNewText += match.captured();
         }
         else {
-          std::string href   = "\"gdau://" + getId() + "/" + src.toUtf8().data() + "\"";
-          std::string newTag = addAudioLink( href, getId() ) + "<span class=\"sdict_h_wav\"><a href=" + href + ">";
+          std::string audioLink = "gdau://" + getId() + "/" + src.toUtf8().data();
+          std::string href      = "\"" + audioLink + "\"";
+          std::string newTag = addAudioLink( audioLink, getId() ) + "<span class=\"sdict_h_wav\"><a href=" + href + ">";
           newTag += match.captured( 4 ).toUtf8().constData();
           if ( match.captured( 4 ).indexOf( "<img " ) < 0 ) {
             newTag += R"( <img src="qrc:///icons/playsound.png" border="0" alt="Play">)";
@@ -608,8 +594,9 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
     return string( "<b>Unknown textual entry type " ) + string( 1, type ) + ":</b> "
       + Html::escape( string( resource, size ) ) + "<br>";
   }
-  else
+  else {
     return string( "<b>Unknown blob entry type " ) + string( 1, type ) + "</b><br>";
+  }
 }
 
 void StardictDictionary::pangoToHtml( QString & text )
@@ -660,8 +647,9 @@ void StardictDictionary::pangoToHtml( QString & text )
               if ( str.compare( "normal", Qt::CaseInsensitive ) == 0
                    || str.compare( "oblique", Qt::CaseInsensitive ) == 0
                    || str.compare( "italic", Qt::CaseInsensitive ) == 0 ) {
-                if ( !stylesStr.contains( "font-style:" ) )
+                if ( !stylesStr.contains( "font-style:" ) ) {
                   stylesStr += QString( "font-style:" ) + str + ";";
+                }
                 continue;
               }
 
@@ -738,8 +726,9 @@ void StardictDictionary::pangoToHtml( QString & text )
             if ( n >= 0 ) {
               familiesStr = QString( "font-family:" );
               for ( int i = 0; i <= n; i++ ) {
-                if ( i > 0 && !familiesStr.endsWith( ',' ) )
+                if ( i > 0 && !familiesStr.endsWith( ',' ) ) {
                   familiesStr += ",";
+                }
                 familiesStr += list.at( i );
               }
               familiesStr += ";";
@@ -748,111 +737,143 @@ void StardictDictionary::pangoToHtml( QString & text )
             newSpan += familiesStr + stylesStr + sizeStr;
           }
           else if ( style.compare( "font_family", Qt::CaseInsensitive ) == 0
-                    || style.compare( "face", Qt::CaseInsensitive ) == 0 )
+                    || style.compare( "face", Qt::CaseInsensitive ) == 0 ) {
             newSpan += QString( "font-family:" ) + cap2 + ";";
+          }
           else if ( style.compare( "font_size", Qt::CaseInsensitive ) == 0
                     || style.compare( "size", Qt::CaseInsensitive ) == 0 ) {
             if ( cap2[ 0 ].isLetter() || cap2.endsWith( "px", Qt::CaseInsensitive )
                  || cap2.endsWith( "pt", Qt::CaseInsensitive ) || cap2.endsWith( "em", Qt::CaseInsensitive )
-                 || cap2.endsWith( "%" ) )
+                 || cap2.endsWith( "%" ) ) {
               newSpan += QString( "font-size:" ) + cap2 + ";";
+            }
             else {
               int size = cap2.toInt();
-              if ( size )
+              if ( size ) {
                 newSpan += QString( "font-size:%1pt;" ).arg( size / 1024.0, 0, 'f', 3 );
+              }
             }
           }
           else if ( style.compare( "font_style", Qt::CaseInsensitive ) == 0
-                    || style.compare( "style", Qt::CaseInsensitive ) == 0 )
+                    || style.compare( "style", Qt::CaseInsensitive ) == 0 ) {
             newSpan += QString( "font-style:" ) + cap2 + ";";
+          }
           else if ( style.compare( "font_weight", Qt::CaseInsensitive ) == 0
                     || style.compare( "weight", Qt::CaseInsensitive ) == 0 ) {
             QString str = cap2;
-            if ( str.compare( "ultralight", Qt::CaseInsensitive ) == 0 )
+            if ( str.compare( "ultralight", Qt::CaseInsensitive ) == 0 ) {
               newSpan += QString( "font-weight:100;" );
-            else if ( str.compare( "light", Qt::CaseInsensitive ) == 0 )
+            }
+            else if ( str.compare( "light", Qt::CaseInsensitive ) == 0 ) {
               newSpan += QString( "font-weight:200;" );
-            else if ( str.compare( "ultrabold", Qt::CaseInsensitive ) == 0 )
+            }
+            else if ( str.compare( "ultrabold", Qt::CaseInsensitive ) == 0 ) {
               newSpan += QString( "font-weight:800;" );
-            else if ( str.compare( "heavy", Qt::CaseInsensitive ) == 0 )
+            }
+            else if ( str.compare( "heavy", Qt::CaseInsensitive ) == 0 ) {
               newSpan += QString( "font-weight:900" );
-            else
+            }
+            else {
               newSpan += QString( "font-weight:" ) + str + ";";
+            }
           }
           else if ( style.compare( "font_variant", Qt::CaseInsensitive ) == 0
                     || style.compare( "variant", Qt::CaseInsensitive ) == 0 ) {
-            if ( cap2.compare( "smallcaps", Qt::CaseInsensitive ) == 0 )
+            if ( cap2.compare( "smallcaps", Qt::CaseInsensitive ) == 0 ) {
               newSpan += QString( "font-variant:small-caps" );
-            else
+            }
+            else {
               newSpan += QString( "font-variant:" ) + cap2 + ";";
+            }
           }
           else if ( style.compare( "font_stretch", Qt::CaseInsensitive ) == 0
                     || style.compare( "stretch", Qt::CaseInsensitive ) == 0 ) {
             QString str = cap2;
-            if ( str.compare( "ultracondensed", Qt::CaseInsensitive ) == 0 )
+            if ( str.compare( "ultracondensed", Qt::CaseInsensitive ) == 0 ) {
               newSpan += QString( "font-stretch:ultra-condensed;" );
-            else if ( str.compare( "extracondensed", Qt::CaseInsensitive ) == 0 )
+            }
+            else if ( str.compare( "extracondensed", Qt::CaseInsensitive ) == 0 ) {
               newSpan += QString( "font-stretch:extra-condensed;" );
-            else if ( str.compare( "semicondensed", Qt::CaseInsensitive ) == 0 )
+            }
+            else if ( str.compare( "semicondensed", Qt::CaseInsensitive ) == 0 ) {
               newSpan += QString( "font-stretch:semi-condensed;" );
-            else if ( str.compare( "semiexpanded", Qt::CaseInsensitive ) == 0 )
+            }
+            else if ( str.compare( "semiexpanded", Qt::CaseInsensitive ) == 0 ) {
               newSpan += QString( "font-stretch:semi-expanded;" );
-            else if ( str.compare( "extraexpanded", Qt::CaseInsensitive ) == 0 )
+            }
+            else if ( str.compare( "extraexpanded", Qt::CaseInsensitive ) == 0 ) {
               newSpan += QString( "font-stretch:extra-expanded;" );
-            else if ( str.compare( "ultraexpanded", Qt::CaseInsensitive ) == 0 )
+            }
+            else if ( str.compare( "ultraexpanded", Qt::CaseInsensitive ) == 0 ) {
               newSpan += QString( "font-stretch:ultra-expanded;" );
-            else
+            }
+            else {
               newSpan += QString( "font-stretch:" ) + str + ";";
+            }
           }
           else if ( style.compare( "foreground", Qt::CaseInsensitive ) == 0
                     || style.compare( "fgcolor", Qt::CaseInsensitive ) == 0
-                    || style.compare( "color", Qt::CaseInsensitive ) == 0 )
+                    || style.compare( "color", Qt::CaseInsensitive ) == 0 ) {
             newSpan += QString( "color:" ) + cap2 + ";";
+          }
           else if ( style.compare( "background", Qt::CaseInsensitive ) == 0
-                    || style.compare( "bgcolor", Qt::CaseInsensitive ) == 0 )
+                    || style.compare( "bgcolor", Qt::CaseInsensitive ) == 0 ) {
             newSpan += QString( "background-color:" ) + cap2 + ";";
+          }
           else if ( style.compare( "underline_color", Qt::CaseInsensitive ) == 0
-                    || style.compare( "strikethrough_color", Qt::CaseInsensitive ) == 0 )
+                    || style.compare( "strikethrough_color", Qt::CaseInsensitive ) == 0 ) {
             newSpan += QString( "text-decoration-color:" ) + cap2 + ";";
+          }
           else if ( style.compare( "underline", Qt::CaseInsensitive ) == 0 ) {
-            if ( cap2.compare( "none", Qt::CaseInsensitive ) )
+            if ( cap2.compare( "none", Qt::CaseInsensitive ) ) {
               newSpan += QString( "text-decoration-line:none;" );
+            }
             else {
               newSpan += QString( "text-decoration-line:underline; " );
-              if ( cap2.compare( "low", Qt::CaseInsensitive ) )
+              if ( cap2.compare( "low", Qt::CaseInsensitive ) ) {
                 newSpan += QString( "text-decoration-style:dotted;" );
-              else if ( cap2.compare( "single", Qt::CaseInsensitive ) )
+              }
+              else if ( cap2.compare( "single", Qt::CaseInsensitive ) ) {
                 newSpan += QString( "text-decoration-style:solid;" );
-              else if ( cap2.compare( "error", Qt::CaseInsensitive ) )
+              }
+              else if ( cap2.compare( "error", Qt::CaseInsensitive ) ) {
                 newSpan += QString( "text-decoration-style:wavy;" );
-              else
+              }
+              else {
                 newSpan += QString( "text-decoration-style:" ) + cap2 + ";";
+              }
             }
           }
           else if ( style.compare( "strikethrough", Qt::CaseInsensitive ) == 0 ) {
-            if ( cap2.compare( "true", Qt::CaseInsensitive ) )
+            if ( cap2.compare( "true", Qt::CaseInsensitive ) ) {
               newSpan += QString( "text-decoration-line:line-through;" );
-            else
+            }
+            else {
               newSpan += QString( "text-decoration-line:none;" );
+            }
           }
           else if ( style.compare( "rise", Qt::CaseInsensitive ) == 0 ) {
             if ( cap2.endsWith( "px", Qt::CaseInsensitive ) || cap2.endsWith( "pt", Qt::CaseInsensitive )
-                 || cap2.endsWith( "em", Qt::CaseInsensitive ) || cap2.endsWith( "%" ) )
+                 || cap2.endsWith( "em", Qt::CaseInsensitive ) || cap2.endsWith( "%" ) ) {
               newSpan += QString( "vertical-align:" ) + cap2 + ";";
+            }
             else {
               int riseValue = cap2.toInt();
-              if ( riseValue )
+              if ( riseValue ) {
                 newSpan += QString( "vertical-align:%1pt;" ).arg( riseValue / 1024.0, 0, 'f', 3 );
+              }
             }
           }
           else if ( style.compare( "letter_spacing", Qt::CaseInsensitive ) == 0 ) {
             if ( cap2.endsWith( "px", Qt::CaseInsensitive ) || cap2.endsWith( "pt", Qt::CaseInsensitive )
-                 || cap2.endsWith( "em", Qt::CaseInsensitive ) || cap2.endsWith( "%" ) )
+                 || cap2.endsWith( "em", Qt::CaseInsensitive ) || cap2.endsWith( "%" ) ) {
               newSpan += QString( "letter-spacing:" ) + cap2 + ";";
+            }
             else {
               int spacing = cap2.toInt();
-              if ( spacing )
+              if ( spacing ) {
                 newSpan += QString( "letter-spacing:%1pt;" ).arg( spacing / 1024.0, 0, 'f', 3 );
+              }
             }
           }
 
@@ -903,12 +924,11 @@ void StardictDictionary::loadArticle( uint32_t address, string & headword, strin
 
       uint32_t entrySize = 0;
 
-      if ( entrySizeKnown )
+      if ( entrySizeKnown ) {
         entrySize = size;
+      }
       else if ( !size ) {
-        gdWarning( "Stardict: short entry for the word %s encountered in \"%s\".\n",
-                   headword.c_str(),
-                   getName().c_str() );
+        qWarning( "Stardict: short entry for the word %s encountered in \"%s\".", headword.c_str(), getName().c_str() );
         break;
       }
 
@@ -916,20 +936,22 @@ void StardictDictionary::loadArticle( uint32_t address, string & headword, strin
 
       if ( islower( type ) ) {
         // Zero-terminated entry, unless it's the last one
-        if ( !entrySizeKnown )
+        if ( !entrySizeKnown ) {
           entrySize = strlen( ptr );
+        }
 
         if ( size < entrySize ) {
-          gdWarning( "Stardict: malformed entry for the word %s encountered in \"%s\".\n",
-                     headword.c_str(),
-                     getName().c_str() );
+          qWarning( "Stardict: malformed entry for the word %s encountered in \"%s\".",
+                    headword.c_str(),
+                    getName().c_str() );
           break;
         }
 
         articleText += handleResource( type, ptr, entrySize );
 
-        if ( !entrySizeKnown )
+        if ( !entrySizeKnown ) {
           ++entrySize; // Need to skip the zero byte
+        }
 
         ptr += entrySize;
         size -= entrySize;
@@ -939,9 +961,9 @@ void StardictDictionary::loadArticle( uint32_t address, string & headword, strin
 
         if ( !entrySizeKnown ) {
           if ( size < sizeof( uint32_t ) ) {
-            gdWarning( "Stardict: malformed entry for the word %s encountered in \"%s\".\n",
-                       headword.c_str(),
-                       getName().c_str() );
+            qWarning( "Stardict: malformed entry for the word %s encountered in \"%s\".",
+                      headword.c_str(),
+                      getName().c_str() );
             break;
           }
 
@@ -954,9 +976,9 @@ void StardictDictionary::loadArticle( uint32_t address, string & headword, strin
         }
 
         if ( size < entrySize ) {
-          gdWarning( "Stardict: malformed entry for the word %s encountered in \"%s\".\n",
-                     headword.c_str(),
-                     getName().c_str() );
+          qWarning( "Stardict: malformed entry for the word %s encountered in \"%s\".",
+                    headword.c_str(),
+                    getName().c_str() );
           break;
         }
 
@@ -966,10 +988,10 @@ void StardictDictionary::loadArticle( uint32_t address, string & headword, strin
         size -= entrySize;
       }
       else {
-        gdWarning( "Stardict: non-alpha entry type 0x%x for the word %s encountered in \"%s\".\n",
-                   type,
-                   headword.c_str(),
-                   getName().c_str() );
+        qWarning( "Stardict: non-alpha entry type 0x%x for the word %s encountered in \"%s\".",
+                  type,
+                  headword.c_str(),
+                  getName().c_str() );
         break;
       }
     }
@@ -982,9 +1004,9 @@ void StardictDictionary::loadArticle( uint32_t address, string & headword, strin
         size_t len = strlen( ptr + 1 );
 
         if ( size < len + 2 ) {
-          gdWarning( "Stardict: malformed entry for the word %s encountered in \"%s\".\n",
-                     headword.c_str(),
-                     getName().c_str() );
+          qWarning( "Stardict: malformed entry for the word %s encountered in \"%s\".",
+                    headword.c_str(),
+                    getName().c_str() );
           break;
         }
 
@@ -996,9 +1018,9 @@ void StardictDictionary::loadArticle( uint32_t address, string & headword, strin
       else if ( isupper( *ptr ) ) {
         // An entry which havs its size before contents
         if ( size < sizeof( uint32_t ) + 1 ) {
-          gdWarning( "Stardict: malformed entry for the word %s encountered in \"%s\".\n",
-                     headword.c_str(),
-                     getName().c_str() );
+          qWarning( "Stardict: malformed entry for the word %s encountered in \"%s\".",
+                    headword.c_str(),
+                    getName().c_str() );
           break;
         }
 
@@ -1009,9 +1031,9 @@ void StardictDictionary::loadArticle( uint32_t address, string & headword, strin
         entrySize = ntohl( entrySize );
 
         if ( size < sizeof( uint32_t ) + 1 + entrySize ) {
-          gdWarning( "Stardict: malformed entry for the word %s encountered in \"%s\".\n",
-                     headword.c_str(),
-                     getName().c_str() );
+          qWarning( "Stardict: malformed entry for the word %s encountered in \"%s\".",
+                    headword.c_str(),
+                    getName().c_str() );
           break;
         }
 
@@ -1021,10 +1043,10 @@ void StardictDictionary::loadArticle( uint32_t address, string & headword, strin
         size -= sizeof( uint32_t ) + 1 + entrySize;
       }
       else {
-        gdWarning( "Stardict: non-alpha entry type 0x%x for the word %s encountered in \"%s\".\n",
-                   (unsigned)*ptr,
-                   headword.c_str(),
-                   getName().c_str() );
+        qWarning( "Stardict: non-alpha entry type 0x%x for the word %s encountered in \"%s\".",
+                  (unsigned)*ptr,
+                  headword.c_str(),
+                  getName().c_str() );
         break;
       }
     }
@@ -1035,47 +1057,45 @@ void StardictDictionary::loadArticle( uint32_t address, string & headword, strin
 
 QString const & StardictDictionary::getDescription()
 {
-  if ( !dictionaryDescription.isEmpty() )
+  if ( !dictionaryDescription.isEmpty() ) {
     return dictionaryDescription;
+  }
 
-  File::Index ifoFile( getDictionaryFilenames()[ 0 ], "r" );
-  Ifo ifo( ifoFile );
+  Ifo ifo( QString::fromStdString( getDictionaryFilenames()[ 0 ] ) );
 
   if ( !ifo.copyright.empty() ) {
-    QString copyright = QString::fromUtf8( ifo.copyright.c_str() ).replace( "<br>", "\n", Qt::CaseInsensitive );
-    dictionaryDescription += QObject::tr( "Copyright: %1%2" ).arg( copyright ).arg( "\n\n" );
+    QString copyright = QString::fromUtf8( ifo.copyright.c_str() );
+    dictionaryDescription += QObject::tr( "Copyright: %1%2" ).arg( copyright ).arg( "<br><br>" );
   }
 
   if ( !ifo.author.empty() ) {
     QString author = QString::fromUtf8( ifo.author.c_str() );
-    dictionaryDescription += QObject::tr( "Author: %1%2" ).arg( author ).arg( "\n\n" );
+    dictionaryDescription += QObject::tr( "Author: %1%2" ).arg( author ).arg( "<br><br>" );
   }
 
   if ( !ifo.email.empty() ) {
     QString email = QString::fromUtf8( ifo.email.c_str() );
-    dictionaryDescription += QObject::tr( "E-mail: %1%2" ).arg( email ).arg( "\n\n" );
+    dictionaryDescription += QObject::tr( "E-mail: %1%2" ).arg( email ).arg( "<br><br>" );
   }
 
   if ( !ifo.website.empty() ) {
     QString website = QString::fromUtf8( ifo.website.c_str() );
-    dictionaryDescription += QObject::tr( "Website: %1%2" ).arg( website ).arg( "\n\n" );
+    dictionaryDescription += QObject::tr( "Website: %1%2" ).arg( website ).arg( "<br><br>" );
   }
 
   if ( !ifo.date.empty() ) {
     QString date = QString::fromUtf8( ifo.date.c_str() );
-    dictionaryDescription += QObject::tr( "Date: %1%2" ).arg( date ).arg( "\n\n" );
+    dictionaryDescription += QObject::tr( "Date: %1%2" ).arg( date ).arg( "<br><br>" );
   }
 
   if ( !ifo.description.empty() ) {
     QString desc = QString::fromUtf8( ifo.description.c_str() );
-    desc.replace( "\t", "<br/>" );
-    desc.replace( "\\n", "<br/>" );
-    desc.replace( "<br>", "<br/>", Qt::CaseInsensitive );
-    dictionaryDescription += Html::unescape( desc, Html::HtmlOption::Keep );
+    dictionaryDescription += desc;
   }
 
-  if ( dictionaryDescription.isEmpty() )
+  if ( dictionaryDescription.isEmpty() ) {
     dictionaryDescription = "NONE";
+  }
 
   return dictionaryDescription;
 }
@@ -1088,26 +1108,27 @@ QString StardictDictionary::getMainFilename()
 void StardictDictionary::makeFTSIndex( QAtomicInt & isCancelled )
 {
   if ( !( Dictionary::needToRebuildIndex( getDictionaryFilenames(), ftsIdxName )
-          || FtsHelpers::ftsIndexIsOldOrBad( this ) ) )
+          || FtsHelpers::ftsIndexIsOldOrBad( this ) ) ) {
     FTS_index_completed.ref();
+  }
 
-  if ( haveFTSIndex() )
+  if ( haveFTSIndex() ) {
     return;
+  }
 
-  if ( ensureInitDone().size() )
+  if ( ensureInitDone().size() ) {
     return;
+  }
 
 
-  gdDebug( "Stardict: Building the full-text index for dictionary: %s\n", getName().c_str() );
+  qDebug( "Stardict: Building the full-text index for dictionary: %s", getName().c_str() );
 
   try {
     FtsHelpers::makeFTSIndex( this, isCancelled );
     FTS_index_completed.ref();
   }
   catch ( std::exception & ex ) {
-    gdWarning( "Stardict: Failed building full-text search index for \"%s\", reason: %s\n",
-               getName().c_str(),
-               ex.what() );
+    qWarning( "Stardict: Failed building full-text search index for \"%s\", reason: %s", getName().c_str(), ex.what() );
     QFile::remove( ftsIdxName.c_str() );
   }
 }
@@ -1123,7 +1144,7 @@ void StardictDictionary::getArticleText( uint32_t articleAddress, QString & head
     text = Html::unescape( QString::fromStdString( articleStr ) );
   }
   catch ( std::exception & ex ) {
-    gdWarning( "Stardict: Failed retrieving article from \"%s\", reason: %s\n", getName().c_str(), ex.what() );
+    qWarning( "Stardict: Failed retrieving article from \"%s\", reason: %s", getName().c_str(), ex.what() );
   }
 }
 
@@ -1144,7 +1165,7 @@ sptr< Dictionary::DataRequest > StardictDictionary::getSearchResults( QString co
 class StardictHeadwordsRequest: public Dictionary::WordSearchRequest
 {
 
-  wstring word;
+  std::u32string word;
   StardictDictionary & dict;
 
   QAtomicInt isCancelled;
@@ -1152,7 +1173,7 @@ class StardictHeadwordsRequest: public Dictionary::WordSearchRequest
 
 public:
 
-  StardictHeadwordsRequest( wstring const & word_, StardictDictionary & dict_ ):
+  StardictHeadwordsRequest( std::u32string const & word_, StardictDictionary & dict_ ):
     word( word_ ),
     dict( dict_ )
   {
@@ -1187,7 +1208,7 @@ void StardictHeadwordsRequest::run()
     //limited the synomys to at most 10 entries
     vector< WordArticleLink > chain = dict.findArticles( word, false, 10 );
 
-    wstring caseFolded = Folding::applySimpleCaseOnly( word );
+    std::u32string caseFolded = Folding::applySimpleCaseOnly( word );
 
     for ( auto & x : chain ) {
       if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
@@ -1199,7 +1220,7 @@ void StardictHeadwordsRequest::run()
 
       dict.loadArticle( x.articleOffset, headword, articleText );
 
-      wstring headwordDecoded = Utf8::decode( headword );
+      std::u32string headwordDecoded = Text::toUtf32( headword );
 
       if ( caseFolded != Folding::applySimpleCaseOnly( headwordDecoded ) ) {
         // The headword seems to differ from the input word, which makes the
@@ -1217,7 +1238,7 @@ void StardictHeadwordsRequest::run()
   finish();
 }
 
-sptr< Dictionary::WordSearchRequest > StardictDictionary::findHeadwordsForSynonym( wstring const & word )
+sptr< Dictionary::WordSearchRequest > StardictDictionary::findHeadwordsForSynonym( std::u32string const & word )
 {
   return synonymSearchEnabled ? std::make_shared< StardictHeadwordsRequest >( word, *this ) :
                                 Class::findHeadwordsForSynonym( word );
@@ -1230,8 +1251,8 @@ sptr< Dictionary::WordSearchRequest > StardictDictionary::findHeadwordsForSynony
 class StardictArticleRequest: public Dictionary::DataRequest
 {
 
-  wstring word;
-  vector< wstring > alts;
+  std::u32string word;
+  vector< std::u32string > alts;
   StardictDictionary & dict;
   bool ignoreDiacritics;
 
@@ -1241,8 +1262,8 @@ class StardictArticleRequest: public Dictionary::DataRequest
 
 public:
 
-  StardictArticleRequest( wstring const & word_,
-                          vector< wstring > const & alts_,
+  StardictArticleRequest( std::u32string const & word_,
+                          vector< std::u32string > const & alts_,
                           StardictDictionary & dict_,
                           bool ignoreDiacritics_ ):
     word( word_ ),
@@ -1292,15 +1313,16 @@ void StardictArticleRequest::run()
       }
     }
 
-    multimap< wstring, pair< string, string > > mainArticles, alternateArticles;
+    multimap< std::u32string, pair< string, string > > mainArticles, alternateArticles;
 
     set< uint32_t > articlesIncluded; // Some synonyms make it that the articles
                                       // appear several times. We combat this
                                       // by only allowing them to appear once.
 
-    wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
-    if ( ignoreDiacritics )
+    std::u32string wordCaseFolded = Folding::applySimpleCaseOnly( word );
+    if ( ignoreDiacritics ) {
       wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
+    }
 
     //if the chain is too large, it is more likely has some dictionary making or parsing issue.
     for ( unsigned x = 0; x < qMin( 10, (int)chain.size() ); ++x ) {
@@ -1309,8 +1331,9 @@ void StardictArticleRequest::run()
         return;
       }
 
-      if ( articlesIncluded.find( chain[ x ].articleOffset ) != articlesIncluded.end() )
+      if ( articlesIncluded.find( chain[ x ].articleOffset ) != articlesIncluded.end() ) {
         continue; // We already have this article in the body.
+      }
 
       // Now grab that article
 
@@ -1323,11 +1346,12 @@ void StardictArticleRequest::run()
 
       // We do the case-folded comparison here.
 
-      wstring headwordStripped = Folding::applySimpleCaseOnly( headword );
-      if ( ignoreDiacritics )
+      std::u32string headwordStripped = Folding::applySimpleCaseOnly( headword );
+      if ( ignoreDiacritics ) {
         headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
+      }
 
-      multimap< wstring, pair< string, string > > & mapToUse =
+      multimap< std::u32string, pair< string, string > > & mapToUse =
         ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
 
       mapToUse.insert( pair( Folding::applySimpleCaseOnly( headword ), pair( headword, articleText ) ) );
@@ -1343,7 +1367,7 @@ void StardictArticleRequest::run()
 
     string result;
 
-    multimap< wstring, pair< string, string > >::const_iterator i;
+    multimap< std::u32string, pair< string, string > >::const_iterator i;
 
     string cleaner = Utils::Html::getHtmlCleaner();
 
@@ -1351,24 +1375,28 @@ void StardictArticleRequest::run()
       result += dict.isFromLanguageRTL() ? R"(<h3 class="sdct_headwords" dir="rtl">)" : "<h3 class=\"sdct_headwords\">";
       result += i->second.first;
       result += "</h3>";
-      if ( dict.isToLanguageRTL() )
+      if ( dict.isToLanguageRTL() ) {
         result += R"(<div style="display:inline;" dir="rtl">)";
+      }
       result += i->second.second;
       result += cleaner;
-      if ( dict.isToLanguageRTL() )
+      if ( dict.isToLanguageRTL() ) {
         result += "</div>";
+      }
     }
 
     for ( i = alternateArticles.begin(); i != alternateArticles.end(); ++i ) {
       result += dict.isFromLanguageRTL() ? R"(<h3 class="sdct_headwords" dir="rtl">)" : "<h3 class=\"sdct_headwords\">";
       result += i->second.first;
       result += "</h3>";
-      if ( dict.isToLanguageRTL() )
+      if ( dict.isToLanguageRTL() ) {
         result += R"(<div style="display:inline;" dir="rtl">)";
+      }
       result += i->second.second;
       result += cleaner;
-      if ( dict.isToLanguageRTL() )
+      if ( dict.isToLanguageRTL() ) {
         result += "</div>";
+      }
     }
 
     appendString( result );
@@ -1382,9 +1410,9 @@ void StardictArticleRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > StardictDictionary::getArticle( wstring const & word,
-                                                                vector< wstring > const & alts,
-                                                                wstring const &,
+sptr< Dictionary::DataRequest > StardictDictionary::getArticle( std::u32string const & word,
+                                                                vector< std::u32string > const & alts,
+                                                                std::u32string const &,
                                                                 bool ignoreDiacritics )
 
 {
@@ -1399,69 +1427,76 @@ static char const * beginsWith( char const * substr, char const * str )
   return strncmp( str, substr, len ) == 0 ? str + len : 0;
 }
 
-Ifo::Ifo( File::Index & f ):
-  wordcount( 0 ),
-  synwordcount( 0 ),
-  idxfilesize( 0 ),
-  idxoffsetbits( 32 )
+Ifo::Ifo( const QString & fileName )
 {
-  static string const versionEq( "version=" );
+  QFile f( fileName );
+  if ( !f.open( QIODevice::ReadOnly ) ) {
+    throw exCantReadFile( "Cannot open IFO file -> " + fileName.toStdString() );
+  };
 
-  static string const booknameEq( "bookname=" );
-
-  //GD_DPRINTF( "%s<\n", f.gets().c_str() );
-  //GD_DPRINTF( "%s<\n", f.gets().c_str() );
-
-  if ( QString::fromUtf8( f.gets().c_str() ) != "StarDict's dict ifo file"
-       || f.gets().compare( 0, versionEq.size(), versionEq ) )
+  if ( !f.readLine().startsWith( "StarDict's dict ifo file" ) || !f.readLine().startsWith( "version=" ) ) {
     throw exNotAnIfoFile();
+  }
 
   /// Now go through the file and parse options
+  {
+    while ( !f.atEnd() ) {
+      auto line   = f.readLine();
+      auto option = QByteArrayView( line ).trimmed();
+      // Empty lines are allowed in .ifo file
 
-  try {
-    char option[ 16384 ];
+      if ( option.isEmpty() ) {
+        continue;
+      }
 
-    for ( ;; ) {
-      if ( !f.gets( option, sizeof( option ), true ) )
-        break;
-
-      if ( char const * val = beginsWith( "bookname=", option ) )
+      if ( char const * val = beginsWith( "bookname=", option.data() ) ) {
         bookname = val;
-      else if ( char const * val = beginsWith( "wordcount=", option ) ) {
-        if ( sscanf( val, "%u", &wordcount ) != 1 )
-          throw exBadFieldInIfo( option );
       }
-      else if ( char const * val = beginsWith( "synwordcount=", option ) ) {
-        if ( sscanf( val, "%u", &synwordcount ) != 1 )
-          throw exBadFieldInIfo( option );
+      else if ( char const * val = beginsWith( "wordcount=", option.data() ) ) {
+        if ( sscanf( val, "%u", &wordcount ) != 1 ) {
+          throw exBadFieldInIfo( option.data() );
+        }
       }
-      else if ( char const * val = beginsWith( "idxfilesize=", option ) ) {
-        if ( sscanf( val, "%u", &idxfilesize ) != 1 )
-          throw exBadFieldInIfo( option );
+      else if ( char const * val = beginsWith( "synwordcount=", option.data() ) ) {
+        if ( sscanf( val, "%u", &synwordcount ) != 1 ) {
+          throw exBadFieldInIfo( option.data() );
+        }
       }
-      else if ( char const * val = beginsWith( "idxoffsetbits=", option ) ) {
-        if ( sscanf( val, "%u", &idxoffsetbits ) != 1 || ( idxoffsetbits != 32 && idxoffsetbits != 64 ) )
-          throw exBadFieldInIfo( option );
+      else if ( char const * val = beginsWith( "idxfilesize=", option.data() ) ) {
+        if ( sscanf( val, "%u", &idxfilesize ) != 1 ) {
+          throw exBadFieldInIfo( option.data() );
+        }
       }
-      else if ( char const * val = beginsWith( "sametypesequence=", option ) )
+      else if ( char const * val = beginsWith( "idxoffsetbits=", option.data() ) ) {
+        if ( sscanf( val, "%u", &idxoffsetbits ) != 1 || ( idxoffsetbits != 32 && idxoffsetbits != 64 ) ) {
+          throw exBadFieldInIfo( option.data() );
+        }
+      }
+      else if ( char const * val = beginsWith( "sametypesequence=", option.data() ) ) {
         sametypesequence = val;
-      else if ( char const * val = beginsWith( "dicttype=", option ) )
+      }
+      else if ( char const * val = beginsWith( "dicttype=", option.data() ) ) {
         dicttype = val;
-      else if ( char const * val = beginsWith( "description=", option ) )
+      }
+      else if ( char const * val = beginsWith( "description=", option.data() ) ) {
         description = val;
-      else if ( char const * val = beginsWith( "copyright=", option ) )
+      }
+      else if ( char const * val = beginsWith( "copyright=", option.data() ) ) {
         copyright = val;
-      else if ( char const * val = beginsWith( "author=", option ) )
+      }
+      else if ( char const * val = beginsWith( "author=", option.data() ) ) {
         author = val;
-      else if ( char const * val = beginsWith( "email=", option ) )
+      }
+      else if ( char const * val = beginsWith( "email=", option.data() ) ) {
         email = val;
-      else if ( char const * val = beginsWith( "website=", option ) )
+      }
+      else if ( char const * val = beginsWith( "website=", option.data() ) ) {
         website = val;
-      else if ( char const * val = beginsWith( "date=", option ) )
+      }
+      else if ( char const * val = beginsWith( "date=", option.data() ) ) {
         date = val;
+      }
     }
-  }
-  catch ( File::exReadError & ) {
   }
 }
 
@@ -1512,15 +1547,17 @@ void StardictResourceRequest::run()
   }
 
   try {
-    if ( resourceName.at( 0 ) == '\x1E' )
+    if ( resourceName.at( 0 ) == '\x1E' ) {
       resourceName = resourceName.erase( 0, 1 );
-    if ( resourceName.at( resourceName.length() - 1 ) == '\x1F' )
+    }
+    if ( resourceName.at( resourceName.length() - 1 ) == '\x1F' ) {
       resourceName.erase( resourceName.length() - 1, 1 );
+    }
 
     string n =
       dict.getContainingFolder().toStdString() + Utils::Fs::separator() + "res" + Utils::Fs::separator() + resourceName;
 
-    GD_DPRINTF( "startdict resource name is %s\n", n.c_str() );
+    qDebug( "startdict resource name is %s", n.c_str() );
 
     try {
       QMutexLocker _( &dataMutex );
@@ -1533,11 +1570,13 @@ void StardictResourceRequest::run()
       if ( dict.resourceZip.isOpen() ) {
         QMutexLocker _( &dataMutex );
 
-        if ( !dict.resourceZip.loadFile( Utf8::decode( resourceName ), data ) )
+        if ( !dict.resourceZip.loadFile( Text::toUtf32( resourceName ), data ) ) {
           throw; // Make it fail since we couldn't read the archive
+        }
       }
-      else
+      else {
         throw;
+      }
     }
 
     if ( Filetype::isNameOfTiff( resourceName ) ) {
@@ -1595,10 +1634,10 @@ void StardictResourceRequest::run()
     hasAnyData = true;
   }
   catch ( std::exception & ex ) {
-    gdWarning( "Stardict: Failed loading resource \"%s\" for \"%s\", reason: %s\n",
-               resourceName.c_str(),
-               dict.getName().c_str(),
-               ex.what() );
+    qWarning( "Stardict: Failed loading resource \"%s\" for \"%s\", reason: %s",
+              resourceName.c_str(),
+              dict.getName().c_str(),
+              ex.what() );
     // Resource not loaded -- we don't set the hasAnyData flag then
   }
   catch ( ... ) {
@@ -1619,19 +1658,23 @@ static void findCorrespondingFiles( string const & ifo, string & idx, string & d
 {
   string base( ifo, 0, ifo.size() - 3 );
 
-  if ( !( File::tryPossibleName( base + "idx", idx ) || File::tryPossibleName( base + "idx.gz", idx )
-          || File::tryPossibleName( base + "idx.dz", idx ) || File::tryPossibleName( base + "IDX", idx )
-          || File::tryPossibleName( base + "IDX.GZ", idx ) || File::tryPossibleName( base + "IDX.DZ", idx ) ) )
+  idx = Utils::Fs::findFirstExistingFile(
+    { base + "idx", base + "idx.gz", base + "idx.dz", base + "IDX", base + "IDX.GZ", base + "IDX.DZ" } );
+  if ( idx.empty() ) {
     throw exNoIdxFile( ifo );
+  }
 
-  if ( !( File::tryPossibleName( base + "dict", dict ) || File::tryPossibleName( base + "dict.dz", dict )
-          || File::tryPossibleName( base + "DICT", dict ) || File::tryPossibleName( base + "dict.DZ", dict ) ) )
+  dict = Utils::Fs::findFirstExistingFile( { base + "dict", base + "dict.dz", base + "DICT", base + "dict.DZ" } );
+  if ( dict.empty() ) {
     throw exNoDictFile( ifo );
+  }
 
-  if ( !( File::tryPossibleName( base + "syn", syn ) || File::tryPossibleName( base + "syn.gz", syn )
-          || File::tryPossibleName( base + "syn.dz", syn ) || File::tryPossibleName( base + "SYN", syn )
-          || File::tryPossibleName( base + "SYN.GZ", syn ) || File::tryPossibleName( base + "SYN.DZ", syn ) ) )
+  syn = Utils::Fs::findFirstExistingFile(
+    { base + "syn", base + "syn.gz", base + "syn.dz", base + "SYN", base + "SYN.GZ", base + "SYN.DZ" } );
+
+  if ( syn.empty() ) {
     syn.clear();
+  }
 }
 
 static void handleIdxSynFile( string const & fileName,
@@ -1642,8 +1685,9 @@ static void handleIdxSynFile( string const & fileName,
                               bool parseHeadwords )
 {
   gzFile stardictIdx = gd_gzopen( fileName.c_str() );
-  if ( !stardictIdx )
+  if ( !stardictIdx ) {
     throw exCantReadFile( fileName );
+  }
 
   vector< char > image;
 
@@ -1676,7 +1720,7 @@ static void handleIdxSynFile( string const & fileName,
     size_t wordLen = strlen( ptr );
 
     if ( ptr + wordLen + 1 + ( isSynFile ? sizeof( uint32_t ) : sizeof( uint32_t ) * 2 ) > &image.back() ) {
-      GD_FDPRINTF( stderr, "Warning: sudden end of file %s\n", fileName.c_str() );
+      qWarning( "Warning: sudden end of file %s", fileName.c_str() );
       break;
     }
 
@@ -1709,8 +1753,9 @@ static void handleIdxSynFile( string const & fileName,
 
       offset = chunks.startNewBlock();
 
-      if ( articleOffsets )
+      if ( articleOffsets ) {
         articleOffsets->push_back( offset );
+      }
 
       chunks.addToBlock( &articleOffset, sizeof( uint32_t ) );
       chunks.addToBlock( &articleSize, sizeof( uint32_t ) );
@@ -1725,8 +1770,9 @@ static void handleIdxSynFile( string const & fileName,
 
       offsetInIndex = ntohl( offsetInIndex );
 
-      if ( offsetInIndex >= articleOffsets->size() )
+      if ( offsetInIndex >= articleOffsets->size() ) {
         throw exIncorrectOffset( fileName );
+      }
 
       offset = ( *articleOffsets )[ offsetInIndex ];
 
@@ -1738,12 +1784,14 @@ static void handleIdxSynFile( string const & fileName,
       // synonyms which really start from slash and contain dollar signs, or
       // end with dollar and contain slashes.
       if ( *word == '/' ) {
-        if ( strchr( word, '$' ) )
+        if ( strchr( word, '$' ) ) {
           continue; // Skip this entry
+        }
       }
       else if ( wordLen && word[ wordLen - 1 ] == '$' ) {
-        if ( strchr( word, '/' ) )
+        if ( strchr( word, '/' ) ) {
           continue; // Skip this entry
+        }
       }
 
       // if the entry is hypen, skip
@@ -1754,13 +1802,15 @@ static void handleIdxSynFile( string const & fileName,
 
     // Insert new entry into an index
 
-    if ( parseHeadwords )
-      indexedWords.addWord( Utf8::decode( word ), offset );
-    else
-      indexedWords.addSingleWord( Utf8::decode( word ), offset );
+    if ( parseHeadwords ) {
+      indexedWords.addWord( Text::toUtf32( word ), offset );
+    }
+    else {
+      indexedWords.addSingleWord( Text::toUtf32( word ), offset );
+    }
   }
 
-  GD_DPRINTF( "%u entires made\n", (unsigned)indexedWords.size() );
+  qDebug( "%u entires made", (unsigned)indexedWords.size() );
 }
 
 
@@ -1773,8 +1823,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
   vector< sptr< Dictionary::Class > > dictionaries;
 
   for ( const auto & fileName : fileNames ) {
-    if ( !Utils::endsWithIgnoreCase( fileName, ".ifo" ) )
+    if ( !Utils::endsWithIgnoreCase( fileName, ".ifo" ) ) {
       continue;
+    }
 
     try {
       vector< string > dictFiles( 1, fileName );
@@ -1786,8 +1837,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       dictFiles.push_back( idxFileName );
       dictFiles.push_back( dictFileName );
 
-      if ( synFileName.size() )
+      if ( synFileName.size() ) {
         dictFiles.push_back( synFileName );
+      }
 
       // See if there's a zip file with resources present. If so, include it.
 
@@ -1797,8 +1849,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
       if ( File::tryPossibleZipName( baseName + "res.zip", zipFileName )
            || File::tryPossibleZipName( baseName + "RES.ZIP", zipFileName )
-           || File::tryPossibleZipName( baseName + "res" + Utils::Fs::separator() + "res.zip", zipFileName ) )
+           || File::tryPossibleZipName( baseName + "res" + Utils::Fs::separator() + "res.zip", zipFileName ) ) {
         dictFiles.push_back( zipFileName );
+      }
 
       string dictId = Dictionary::makeDictionaryId( dictFiles );
 
@@ -1807,38 +1860,38 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
         // Building the index
 
-        File::Index ifoFile( fileName, "r" );
+        Ifo ifo( QString::fromStdString( fileName ) );
 
-        Ifo ifo( ifoFile );
+        qDebug( "Stardict: Building the index for dictionary: %s", ifo.bookname.c_str() );
 
-        gdDebug( "Stardict: Building the index for dictionary: %s\n", ifo.bookname.c_str() );
-
-        if ( ifo.idxoffsetbits == 64 )
+        if ( ifo.idxoffsetbits == 64 ) {
           throw ex64BitsNotSupported();
+        }
 
-        if ( ifo.dicttype.size() )
+        if ( ifo.dicttype.size() ) {
           throw exDicttypeNotSupported();
+        }
 
         if ( synFileName.empty() ) {
           if ( ifo.synwordcount ) {
-            GD_DPRINTF(
+            qDebug(
               "Warning: dictionary has synwordcount specified, but no "
               "corresponding .syn file was found\n" );
             ifo.synwordcount = 0; // Pretend it wasn't there
           }
         }
         else if ( !ifo.synwordcount ) {
-          GD_DPRINTF( "Warning: ignoring .syn file %s, since there's no synwordcount in .ifo specified\n",
-                      synFileName.c_str() );
+          qDebug( "Warning: ignoring .syn file %s, since there's no synwordcount in .ifo specified",
+                  synFileName.c_str() );
         }
 
 
-        GD_DPRINTF( "bookname = %s\n", ifo.bookname.c_str() );
-        GD_DPRINTF( "wordcount = %u\n", ifo.wordcount );
+        qDebug( "bookname = %s", ifo.bookname.c_str() );
+        qDebug( "wordcount = %u", ifo.wordcount );
 
         initializing.indexingDictionary( ifo.bookname );
 
-        File::Index idx( indexFile, "wb" );
+        File::Index idx( indexFile, QIODevice::WriteOnly );
 
         IdxHeader idxHeader;
 
@@ -1857,13 +1910,14 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         ChunkedStorage::Writer chunks( idx );
 
         // Load indices
-        if ( !ifo.synwordcount )
+        if ( !ifo.synwordcount ) {
           handleIdxSynFile( idxFileName,
                             indexedWords,
                             chunks,
                             0,
                             false,
                             !maxHeadwordsToExpand || ifo.wordcount < maxHeadwordsToExpand );
+        }
         else {
           vector< uint32_t > articleOffsets;
 
@@ -1918,14 +1972,15 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         // If there was a zip file, index it too
 
         if ( zipFileName.size() ) {
-          GD_DPRINTF( "Indexing zip file\n" );
+          qDebug( "Indexing zip file" );
 
           idxHeader.hasZipFile = 1;
 
           IndexedWords zipFileNames;
           IndexedZip zipFile;
-          if ( zipFile.openZipFile( QDir::fromNativeSeparators( zipFileName.c_str() ) ) )
+          if ( zipFile.openZipFile( QDir::fromNativeSeparators( zipFileName.c_str() ) ) ) {
             zipFile.indexFile( zipFileNames );
+          }
 
           if ( !zipFileNames.empty() ) {
             // Build the resulting zip file index
@@ -1942,8 +1997,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
             idxHeader.zipIndexRootOffset       = 0;
           }
         }
-        else
+        else {
           idxHeader.hasZipFile = 0;
+        }
 
         // That concludes it. Update the header.
 
@@ -1955,7 +2011,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       dictionaries.push_back( std::make_shared< StardictDictionary >( dictId, indexFile, dictFiles ) );
     }
     catch ( std::exception & e ) {
-      gdWarning( "Stardict dictionary initializing failed: %s, error: %s\n", fileName.c_str(), e.what() );
+      qWarning( "Stardict dictionary initializing failed: %s, error: %s", fileName.c_str(), e.what() );
     }
   }
 

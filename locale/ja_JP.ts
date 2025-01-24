@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="ja_JP" sourcelanguage="en">
+<TS version="2.1" language="ja" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
@@ -61,14 +61,6 @@
   <context>
     <name>ArticleMaker</name>
     <message>
-      <source>Expand article</source>
-      <translation>記事を展開</translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>記事を折りたたむ</translation>
-    </message>
-    <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
       <translation>グループ &lt;b&gt;%2&lt;/b&gt;では &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; の翻訳が見つかりませんでした。</translation>
     </message>
@@ -96,16 +88,8 @@
   <context>
     <name>ArticleRequest</name>
     <message>
-      <source>Expand article</source>
-      <translation>記事を展開</translation>
-    </message>
-    <message>
       <source>From </source>
       <translation>から: </translation>
-    </message>
-    <message>
-      <source>Collapse article</source>
-      <translation>記事を折りたたむ</translation>
     </message>
     <message>
       <source>Make a new Anki note</source>
@@ -155,12 +139,12 @@
       <translation>資源</translation>
     </message>
     <message>
-      <source>Audio</source>
-      <translation>音楽</translation>
-    </message>
-    <message>
       <source>TTS Voice</source>
       <translation>TTS音声</translation>
+    </message>
+    <message>
+      <source>Audio</source>
+      <translation>音楽</translation>
     </message>
     <message>
       <source>Video</source>
@@ -183,11 +167,11 @@
       <translation>エラー: %1</translation>
     </message>
     <message>
-      <source>The referenced resource doesn&apos;t exist.</source>
+      <source>The referenced audio program doesn&apos;t exist.</source>
       <translation>参照されたりソースが存在しません。</translation>
     </message>
     <message>
-      <source>The referenced audio program doesn&apos;t exist.</source>
+      <source>The referenced resource doesn&apos;t exist.</source>
       <translation>参照されたりソースが存在しません。</translation>
     </message>
     <message>
@@ -360,25 +344,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>custom transliteration</source>
       <translation>カスタム音訳</translation>
-    </message>
-  </context>
-  <context>
-    <name>Dialog</name>
-    <message>
-      <source>Proxy authentication required</source>
-      <translation>プロキシ認証が必要です</translation>
-    </message>
-    <message>
-      <source>You need to supply a Username and a Password to access via proxy</source>
-      <translation>プロキシ経由でアクセスするにはユーザー名とパスワードを入力する必要があります</translation>
-    </message>
-    <message>
-      <source>Username:</source>
-      <translation>ユーザー名:</translation>
-    </message>
-    <message>
-      <source>Password:</source>
-      <translation>パスワード:</translation>
     </message>
   </context>
   <context>
@@ -597,10 +562,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>DictInfo</name>
     <message>
-      <source>Edit dictionary</source>
-      <translation>辞書を編集</translation>
-    </message>
-    <message>
       <source>Open index folder</source>
       <translation>インデックスフォルダーを開く</translation>
     </message>
@@ -651,12 +612,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Full-text search disabled</source>
       <translation>全文検索が無効になっています</translation>
-    </message>
-    <message>
-      <source>Edit the dictionary via command:
-%1</source>
-      <translation>コマンドで辞書を編集します:
-%1</translation>
     </message>
   </context>
   <context>
@@ -749,10 +704,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>辞書フォルダを開く</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>辞書を編集</translation>
     </message>
   </context>
   <context>
@@ -869,12 +820,24 @@ between classic and school orthography in cyrillic)</source>
       <translation>フォルダを追加</translation>
     </message>
     <message>
+      <source>Clear All</source>
+      <translation>すべてクリア</translation>
+    </message>
+    <message>
       <source>Favorites:</source>
       <translation>お気に入り:</translation>
     </message>
     <message>
       <source>All selected items will be deleted. Continue?</source>
       <translation>選択したすべてのアイテムが削除されます。続行しますか？</translation>
+    </message>
+    <message>
+      <source>Clear All Items</source>
+      <translation>すべての項目をクリア</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to clear all items?</source>
+      <translation>すべての項目をクリアしてもよろしいですか?</translation>
     </message>
   </context>
   <context>
@@ -902,10 +865,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>from</source>
       <translation>from</translation>
-    </message>
-    <message>
-      <source>Go to Edit|Dictionaries|Sources|Forvo and apply for our own API key to make this error disappear.</source>
-      <translation>このエラーを解消するには [編集|辞書|ソース|Forvo] で私たちの API キーを適用してください。</translation>
     </message>
   </context>
   <context>
@@ -2181,10 +2140,6 @@ between classic and school orthography in cyrillic)</source>
   <context>
     <name>MainWindow</name>
     <message>
-      <source>Welcome!</source>
-      <translation>ようこそ!</translation>
-    </message>
-    <message>
       <source>&amp;File</source>
       <translation>ファイル(&amp;F)</translation>
     </message>
@@ -2421,16 +2376,20 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ctrl+E</translation>
     </message>
     <message>
-      <source>Export to list</source>
-      <translation>リストにエクスポート</translation>
-    </message>
-    <message>
       <source>Show Names in Dictionary &amp;Bar</source>
       <translation>辞書バーに名前を表示(&amp;B)</translation>
     </message>
     <message>
-      <source>Show Small Icons in &amp;Toolbars</source>
-      <translation>ツールバーに小さなアイコンを表示(&amp;T)</translation>
+      <source>Show &amp;Small Icons in Toolbars</source>
+      <translation>ツールバーに小さいアイコンを表示する(&amp;S)</translation>
+    </message>
+    <message>
+      <source>Show &amp;Large Icons in Toolbars</source>
+      <translation>ツールバーに大きいアイコンを表示する(&amp;L)</translation>
+    </message>
+    <message>
+      <source>Show &amp;Normal Icons in Toolbars</source>
+      <translation>ツールバーに通常アイコンを表示する(&amp;N)</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
@@ -2449,8 +2408,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>進む</translation>
     </message>
     <message>
-      <source>Enable Scanning</source>
-      <translation>スキャンを有効化</translation>
+      <source>Toggle clipboard monitoring</source>
+      <translation>クリップボード監視の切り替え</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2471,18 +2430,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Found in Dictionaries:</source>
       <translation>辞書で見つかりました:</translation>
-    </message>
-    <message>
-      <source>Words Zoom In</source>
-      <translation>単語の拡大</translation>
-    </message>
-    <message>
-      <source>Words Zoom Out</source>
-      <translation>単語の縮小</translation>
-    </message>
-    <message>
-      <source>Words Normal Size</source>
-      <translation>通常の単語のサイズ</translation>
     </message>
     <message>
       <source>Show &amp;Main Window</source>
@@ -2511,6 +2458,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>New Tab</source>
       <translation>New Tab</translation>
+    </message>
+    <message>
+      <source>Welcome!</source>
+      <translation>ようこそ!</translation>
     </message>
     <message>
       <source>Accessibility API is not enabled</source>
@@ -2545,10 +2496,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Remove current tab from Favorites</source>
       <translation>お気に入りから現在のタブを削除</translation>
-    </message>
-    <message>
-      <source>%1 - %2</source>
-      <translation>%1 - %2</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
@@ -2591,12 +2538,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>記事の印刷</translation>
     </message>
     <message>
-      <source>Article, Complete (*.html)</source>
-      <translation>記事, Complete (*.html)</translation>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>完全な HTML (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Article, HTML Only (*.html)</source>
-      <translation>記事、HTML のみ (*.html)</translation>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>単一の HTML (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Pdf (*.pdf)</source>
+      <translation>PDF (*.pdf)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>MIME HTML (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2663,24 +2618,20 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>お気に入りをファイルにエクスポート</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;All files (*.*)</source>
-      <translation>XML ファイル (*.xml);;すべてのファイル (*.*)</translation>
+      <source>Text files (*.txt);;XML files (*.xml)</source>
+      <translation>テキスト ファイル (*.txt);;XML ファイル (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
       <translation>お気に入りのエクスポートが完了</translation>
     </message>
     <message>
-      <source>Export Favorites to file as plain list</source>
-      <translation>お気に入りをプレーンリストとしてファイルにエクスポート</translation>
-    </message>
-    <message>
       <source>Import Favorites from file</source>
       <translation>ファイルからお気に入りをインポート</translation>
     </message>
     <message>
-      <source>XML files (*.xml);;Txt files (*.txt);;All files (*.*)</source>
-      <translation>XML ファイル (*.xml);;Txtファイル (*.txt);すべてのファイル (*.*)</translation>
+      <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
+      <translation>テキストおよび XML ファイル (*.txt *.xml);;すべてのファイル (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -2701,10 +2652,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Open dictionary folder</source>
       <translation>辞書フォルダを開く</translation>
-    </message>
-    <message>
-      <source>Edit dictionary</source>
-      <translation>辞書を編集</translation>
     </message>
     <message>
       <source>Now indexing for full-text search: </source>
@@ -3053,18 +3000,16 @@ the application.</source>
       <translation>等幅フォント</translation>
     </message>
     <message>
-      <source>&amp;Scan Popup</source>
+      <source>&amp;Popup</source>
       <translation>スキャン ポップアップ(&amp;S)</translation>
     </message>
     <message>
-      <source>Chooses whether the scan popup mode is on by default or not. If checked,
-the program would always start with the scan popup active.</source>
-      <translation>スキャン ポップアップ モードを既定でオンにするかを選択します。チェックされている場合、
-プログラムは常にスキャン ポップアップがアクティブで起動します。</translation>
+      <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
     </message>
     <message>
-      <source>Start with scan popup turned on</source>
-      <translation>スキャン ポップアップをオンにして起動する</translation>
+      <source>Start with clipboard monitoring turned on</source>
+      <translation>クリップボード監視をオンにして開始します</translation>
     </message>
     <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
@@ -3181,8 +3126,8 @@ in the pressed state when the word selection changes.</source>
       <translation>メイン ウィンドウで単語を自動的に発音する</translation>
     </message>
     <message>
-      <source>Auto-pronounce words in scan popup</source>
-      <translation>スキャン ポップアップで単語を自動的に発音する</translation>
+      <source>Auto-pronounce words in the popup</source>
+      <translation>ポップアップで単語を自動発音する</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3558,6 +3503,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation> MB</translation>
     </message>
     <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>一部のシステムでは自動では何も実行されません。</translation>
+    </message>
+    <message>
       <source>Restart the program to apply the language change.</source>
       <translation>言語の変更を適用するにはプログラムを再起動します。</translation>
     </message>
@@ -3572,6 +3521,22 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Restart needed</source>
       <translation>再起動が必要です</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>有効にする</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>無効にする</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>自動</translation>
+    </message>
+    <message>
+      <source>Enable application log</source>
+      <translation>アプリケーションログを有効にする</translation>
     </message>
   </context>
   <context>
@@ -3710,7 +3675,7 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>メインウィンドウで単語を強制的に翻訳する</translation>
     </message>
     <message>
-      <source>Toggle scan popup.</source>
+      <source>Toggle popup.</source>
       <translation>スキャンポップアップの切り替え。</translation>
     </message>
     <message>
@@ -3813,10 +3778,6 @@ from Stardict, Babylon and GLS dictionaries</source>
 could be resized or managed in other ways.</source>
       <translation>ウィンドウを画面に固定してサイズの変更ができる
 ようにするにはこのピンを使用します。</translation>
-    </message>
-    <message>
-      <source>%1 - GoldenDict-ng</source>
-      <translation>%1 - GoldenDict-ng</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
@@ -3937,12 +3898,6 @@ of the appropriate groups to use them.</source>
       <translation>どんな Web サイトでも。文字列 %GDWORD% がクエリの単語に置換されます:</translation>
     </message>
     <message>
-      <source>Alternatively, use %GD1251% for CP1251, %GDISO1%...%GDISO16% for ISO 8859-1...ISO 8859-16 respectively,
-%GDBIG5% for Big-5, %GDBIG5HKSCS% for Big5-HKSCS, %GDGBK% for GBK and GB18030, %GDSHIFTJIS% for Shift-JIS.</source>
-      <translation>あるいは、CP1251 には %GD1251% 、ISO 8859-1...ISO 8859-16 にはそれぞれ %GDISO1%...%GDISO16% 、Big-5 には
-%GDBIG5% 、Big5-HKSCS には %GDBIG5HKSCS% 、GBK および GB18030 には %GDGBK% 、Shift-JIS には %GDSHIFTJIS% を使用します。 。</translation>
-    </message>
-    <message>
       <source>DICT servers</source>
       <translation>DICTサーバー</translation>
     </message>
@@ -4058,34 +4013,6 @@ based on English phonology</source>
     <message>
       <source>Hepburn</source>
       <translation>ヘボン式</translation>
-    </message>
-    <message>
-      <source>The most regular system, having a one-to-one relation to the
-kana writing systems. Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>仮名の表記法に 1 対 1 の関係を持つ、最も規則的な表記法です。
-ISO 3602 として標準化されています
-
-GoldenDict にはまだ実装されていません。</translation>
-    </message>
-    <message>
-      <source>Nihon-shiki</source>
-      <translation>日本式</translation>
-    </message>
-    <message>
-      <source>Based on Nihon-shiki system, but modified for modern standard Japanese.
-Standardized as ISO 3602
-
-Not implemented yet in GoldenDict.</source>
-      <translation>日本式に基づいていますが、現代の標準的な日本語に合わせて変更されています。
-ISO 3602 として標準化されています
-
-GoldenDict にはまだ実装されていません。</translation>
-    </message>
-    <message>
-      <source>Kunrei-shiki</source>
-      <translation>訓令式</translation>
     </message>
     <message>
       <source>Syllabaries:</source>

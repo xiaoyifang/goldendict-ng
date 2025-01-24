@@ -11,17 +11,10 @@
 #include "dict/sounddir.hh"
 #include "dict/hunspell.hh"
 #include "dictdfiles.hh"
-#include "dict/romaji.hh"
-#include "dict/customtransliteration.hh"
-#include "dict/russiantranslit.hh"
-#include "dict/german.hh"
-#include "dict/greektranslit.hh"
-#include "dict/belarusiantranslit.hh"
 #include "dict/website.hh"
 #include "dict/forvo.hh"
 #include "dict/programs.hh"
 #include "dict/voiceengines.hh"
-#include "gddebug.hh"
 #include "dict/xdxf.hh"
 #include "dict/sdict.hh"
 #include "dict/aard.hh"
@@ -34,12 +27,19 @@
 #include "dict/lingualibre.hh"
 #include "metadata.hh"
 
-#ifndef NO_EPWING_SUPPORT
+#include "dict/transliteration/belarusian.hh"
+#include "dict/transliteration/custom.hh"
+#include "dict/transliteration/german.hh"
+#include "dict/transliteration/greek.hh"
+#include "dict/transliteration/romaji.hh"
+#include "dict/transliteration/russian.hh"
+
+#ifdef EPWING_SUPPORT
   #include "dict/epwing.hh"
 #endif
 
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
-  #include "dict/chinese.hh"
+  #include "dict/transliteration/chinese.hh"
 #endif
 
 #include <QMessageBox>
@@ -83,7 +83,7 @@ LoadDictionaries::LoadDictionaries( Config::Class const & cfg ):
               << "*.zim"
               << "*.zimaa"
 #endif
-#ifndef NO_EPWING_SUPPORT
+#ifdef EPWING_SUPPORT
               << "*catalogs"
 #endif
     ;
@@ -115,8 +115,9 @@ void LoadDictionaries::run()
     //handle the custom dictionary name&fts option
     for ( const auto & dict : dictionaries ) {
       auto baseDir = dict->getContainingFolder();
-      if ( baseDir.isEmpty() )
+      if ( baseDir.isEmpty() ) {
         continue;
+      }
 
       auto filePath = Utils::Path::combine( baseDir, "metadata.toml" );
 
@@ -155,12 +156,14 @@ void LoadDictionaries::handlePath( Config::Path const & path )
     if ( path.recursive && i->isDir() ) {
       // Make sure the path doesn't look like with dsl resources
       if ( !fullName.endsWith( ".dsl.files", Qt::CaseInsensitive )
-           && !fullName.endsWith( ".dsl.dz.files", Qt::CaseInsensitive ) )
+           && !fullName.endsWith( ".dsl.dz.files", Qt::CaseInsensitive ) ) {
         handlePath( Config::Path( fullName, true ) );
+      }
     }
 
-    if ( !i->isDir() )
+    if ( !i->isDir() ) {
       allFiles.push_back( QDir::toNativeSeparators( fullName ).toStdString() );
+    }
   }
 
   addDicts( Bgl::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
@@ -178,7 +181,7 @@ void LoadDictionaries::handlePath( Config::Path const & path )
 #ifdef MAKE_ZIM_SUPPORT
   addDicts( Zim::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this, maxHeadwordToExpand ) );
 #endif
-#ifndef NO_EPWING_SUPPORT
+#ifdef EPWING_SUPPORT
   addDicts( Epwing::makeDictionaries( allFiles, Config::getIndexDir().toStdString(), *this ) );
 #endif
 }
@@ -195,7 +198,6 @@ void LoadDictionaries::loadingDictionary( string const & dictionaryName ) noexce
 
 
 void loadDictionaries( QWidget * parent,
-                       bool showInitially,
                        Config::Class const & cfg,
                        std::vector< sptr< Dictionary::Class > > & dictionaries,
                        QNetworkAccessManager & dictNetMgr,
@@ -203,7 +205,7 @@ void loadDictionaries( QWidget * parent,
 {
   dictionaries.clear();
 
-  ::Initializing init( parent, showInitially );
+  ::Initializing init( parent );
 
   // Start a thread to load all the dictionaries
 
@@ -241,23 +243,26 @@ void loadDictionaries( QWidget * parent,
   ///// We create transliterations synchronously since they are very simple
 
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
-  addDicts( Chinese::makeDictionaries( cfg.transliteration.chinese ) );
+  addDicts( ChineseTranslit::makeDictionaries( cfg.transliteration.chinese ) );
 #endif
 
-  addDicts( Romaji::makeDictionaries( cfg.transliteration.romaji ) );
+  addDicts( RomajiTranslit::makeDictionaries( cfg.transliteration.romaji ) );
   addDicts( CustomTranslit::makeDictionaries( cfg.transliteration.customTrans ) );
 
   // Make Russian transliteration
-  if ( cfg.transliteration.enableRussianTransliteration )
+  if ( cfg.transliteration.enableRussianTransliteration ) {
     dictionaries.push_back( RussianTranslit::makeDictionary() );
+  }
 
   // Make German transliteration
-  if ( cfg.transliteration.enableGermanTransliteration )
+  if ( cfg.transliteration.enableGermanTransliteration ) {
     dictionaries.push_back( GermanTranslit::makeDictionary() );
+  }
 
   // Make Greek transliteration
-  if ( cfg.transliteration.enableGreekTransliteration )
+  if ( cfg.transliteration.enableGreekTransliteration ) {
     dictionaries.push_back( GreekTranslit::makeDictionary() );
+  }
 
   // Make Belarusian transliteration
   if ( cfg.transliteration.enableBelarusianTransliteration ) {
@@ -269,13 +274,13 @@ void loadDictionaries( QWidget * parent,
   addDicts( Forvo::makeDictionaries( loadDicts, cfg.forvo, dictNetMgr ) );
   addDicts( Lingua::makeDictionaries( loadDicts, cfg.lingua, dictNetMgr ) );
   addDicts( Programs::makeDictionaries( cfg.programs ) );
-#ifndef NO_TTS_SUPPORT
+#ifdef TTS_SUPPORT
   addDicts( VoiceEngines::makeDictionaries( cfg.voiceEngines ) );
 #endif
   addDicts( DictServer::makeDictionaries( cfg.dictServers ) );
 
 
-  GD_DPRINTF( "Load done\n" );
+  qDebug( "Load done" );
 
   // Remove any stale index files
 
@@ -285,23 +290,25 @@ void loadDictionaries( QWidget * parent,
   for ( unsigned x = dictionaries.size(); x--; ) {
     ret = ids.insert( dictionaries[ x ]->getId() );
     if ( !ret.second ) {
-      gdWarning( R"(Duplicate dictionary ID found: ID=%s, name="%s", path="%s")",
-                 dictionaries[ x ]->getId().c_str(),
-                 dictionaries[ x ]->getName().c_str(),
-                 dictionaries[ x ]->getDictionaryFilenames().empty() ?
-                   "" :
-                   dictionaries[ x ]->getDictionaryFilenames()[ 0 ].c_str() );
+      qWarning( R"(Duplicate dictionary ID found: ID=%s, name="%s", path="%s")",
+                dictionaries[ x ]->getId().c_str(),
+                dictionaries[ x ]->getName().c_str(),
+                dictionaries[ x ]->getDictionaryFilenames().empty() ?
+                  "" :
+                  dictionaries[ x ]->getDictionaryFilenames()[ 0 ].c_str() );
     }
   }
 
   // Run deferred inits
 
-  if ( doDeferredInit_ )
+  if ( doDeferredInit_ ) {
     doDeferredInit( dictionaries );
+  }
 }
 
 void doDeferredInit( std::vector< sptr< Dictionary::Class > > & dictionaries )
 {
-  for ( const auto & dictionarie : dictionaries )
+  for ( const auto & dictionarie : dictionaries ) {
     dictionarie->deferredInit();
+  }
 }

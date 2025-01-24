@@ -4,9 +4,6 @@
 #include <QStyle>
 #include <QMessageBox>
 #include <string>
-#ifdef _MSC_VER
-  #include <stub_msvc.h>
-#endif
 #include <QBuffer>
 
 using std::string;
@@ -30,10 +27,10 @@ std::string c_string( const QString & str )
   return std::string( str.toUtf8().constData() );
 }
 
-bool endsWithIgnoreCase( const string & str1, string str2 )
+bool endsWithIgnoreCase( QByteArrayView str, QByteArrayView extension )
 {
-  return ( str1.size() >= (unsigned)str2.size() )
-    && ( strcasecmp( str1.c_str() + ( str1.size() - str2.size() ), str2.data() ) == 0 );
+  return ( str.size() >= extension.size() )
+    && ( str.last( extension.size() ).compare( extension, Qt::CaseInsensitive ) == 0 );
 }
 
 QString escapeAmps( QString const & str )
@@ -100,8 +97,9 @@ std::string basename( std::string const & str )
 {
   size_t x = str.rfind( separator() );
 
-  if ( x == std::string::npos )
+  if ( x == std::string::npos ) {
     return str;
+  }
 
   return std::string( str, x + 1 );
 }
@@ -118,3 +116,15 @@ void removeDirectory( string const & directory )
 }
 
 } // namespace Utils::Fs
+
+namespace Utils::WebSite {
+QString urlReplaceWord( const QString url, QString inputWord )
+{
+  //copy temp url
+  auto urlString = url;
+
+  urlString.replace( "%25GDWORD%25", inputWord.toUtf8().toPercentEncoding() );
+
+  return urlString;
+}
+} // namespace Utils::WebSite

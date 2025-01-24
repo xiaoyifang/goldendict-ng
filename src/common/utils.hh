@@ -1,7 +1,6 @@
 /* Thin wrappers for retaining compatibility for both Qt6.x and Qt5.x */
 
-#ifndef UTILS_HH
-#define UTILS_HH
+#pragma once
 
 #include <QAtomicInt>
 #include <QJsonDocument>
@@ -11,6 +10,7 @@
 #include <QTextDocument>
 #include <QUrl>
 #include <QUrlQuery>
+#include <QFileInfo>
 #include <QWidget>
 #include "filetype.hh"
 #include <string>
@@ -40,8 +40,21 @@ inline QString rstrip( const QString & str )
   return {};
 }
 
+inline uint32_t leadingSpaceCount( const QString & str )
+{
+  for ( int i = 0; i < str.size(); i++ ) {
+    if ( str.at( i ).isSpace() ) {
+      continue;
+    }
+    else {
+      return i;
+    }
+  }
+  return 0;
+}
+
 std::string c_string( const QString & str );
-bool endsWithIgnoreCase( const string & str1, string str2 );
+bool endsWithIgnoreCase( QByteArrayView str, QByteArrayView extension );
 /**
  * remove punctuation , space, symbol
  *
@@ -258,9 +271,14 @@ inline bool isAudioUrl( QUrl const & url )
 {
   if ( !url.isValid() )
     return false;
-  // Note: we check for forvo sound links explicitly, as they don't have extensions
 
-  return ( url.scheme() == "http" || url.scheme() == "https" || url.scheme() == "gdau" )
+  // gdau links are known to be audios, (sometimes they may not have file extension).
+  if ( url.scheme() == "gdau" || url.scheme() == "gdprg" || url.scheme() == "gdtts" ) {
+    return true;
+  }
+
+  // Note: we check for forvo sound links explicitly, as they don't have extensions
+  return ( url.scheme() == "http" || url.scheme() == "https" )
     && ( Filetype::isNameOfSound( url.path().toUtf8().data() ) || url.host() == "apifree.forvo.com" );
 }
 
@@ -339,12 +357,53 @@ string basename( string const & );
 void removeDirectory( QString const & directory );
 
 void removeDirectory( string const & directory );
+
+inline QString findFirstExistingFile( std::initializer_list< QString > filePaths )
+{
+  for ( const QString & filePath : filePaths ) {
+    if ( QFileInfo::exists( filePath ) ) {
+      return filePath;
+    }
+  }
+  return QString();
+}
+
+inline std::string findFirstExistingFile( std::initializer_list< std::string > filePaths )
+{
+  for ( const std::string & filePath : filePaths ) {
+    auto fp = QString::fromStdString( filePath );
+    if ( QFileInfo::exists( fp ) ) {
+      return filePath;
+    }
+  }
+  return {};
+}
+
+inline bool anyExistingFile( std::initializer_list< std::string > filePaths )
+{
+  for ( const std::string & filePath : filePaths ) {
+    auto fp = QString::fromStdString( filePath );
+    if ( QFileInfo::exists( fp ) ) {
+      return true;
+    }
+  }
+  return false;
+}
+
+// used for std::string and char*
+inline bool exists( std::string_view filename ) noexcept
+{
+  return QFileInfo::exists( QString::fromUtf8( filename.data(), filename.size() ) );
+}
+
 } // namespace Fs
+
+namespace WebSite {
+QString urlReplaceWord( const QString url, QString word );
+}
 
 QString escapeAmps( QString const & str );
 
 QString unescapeAmps( QString const & str );
 
 } // namespace Utils
-
-#endif // UTILS_HH

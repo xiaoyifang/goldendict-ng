@@ -21,6 +21,7 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+  - pymdownx.keys
 
 nav:
   - Getting started: index.md
@@ -33,7 +34,7 @@ nav:
       - Popup Window: ui_popup.md
       - Headwords Dialog: ui_headwords.md
       - Full Text Search: ui_fulltextsearch.md
-      - ToolBar & DictBar: ui_toolbar.md
+      - Tool & Dictionary Bar: ui_toolbar.md
       - Favorites: ui_favorites.md
       - Shortcuts: ui_shortcuts.md
   - Advanced Usages:
@@ -50,15 +51,12 @@ nav:
   - Related tools:
       - Anki Integration: topic_anki.md
       - OCR Integration: howto/ocr.md
-      - gd-tools: topic_gd-tools.md
   - Report Bugs & Feedbacks: feedbacks.md
   - Development Info:
     - Start develop: developer.md
     - Build from source: howto/build_from_source.md
     - Architecture: architecture.md
     - Customize the opencc: howto/how to customize the opencc.md
-    - Use .clang-format: howto/how to use .clang-format to format the code.md
     - Breadpad crash analysis: howto/how to use breadpad crash analysis.md
-    - Build ffmpeg on Windows: howto/how to build ffmpeg for visual studio.md
     - Update the crowdin.ts file: howto/how to update crowdin.ts file.md
 

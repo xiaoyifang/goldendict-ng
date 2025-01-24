@@ -4,9 +4,7 @@
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=xiaoyifang_goldendict&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=xiaoyifang_goldendict)
 [![Build](https://github.com/xiaoyifang/goldendict-ng/actions/workflows/PR-check-cmake.yml/badge.svg)](https://github.com/xiaoyifang/goldendict-ng/actions/workflows/PR-check-cmake.yml)
 
-The Next Generation GoldenDict. A feature-rich open-source dictionary lookup program,
-supporting [multiple dictionary formats](https://xiaoyifang.github.io/goldendict-ng/dictformats/) and online
-dictionaries.
+GoldenDict-ng is an advanced dictionary lookup program, supporting [many formats](https://xiaoyifang.github.io/goldendict-ng/dictformats/).
 
 | Linux | Windows | macOS |
 |--|--|--|
@@ -20,7 +18,7 @@ dictionaries.
 
 [General discussions](https://github.com/xiaoyifang/goldendict-ng/discussions)
 
-# Some significant features of this fork
+# Some features compared to the original GoldenDict
 
 - webengine with latest html/css feature support
 - support >4GB dictionary

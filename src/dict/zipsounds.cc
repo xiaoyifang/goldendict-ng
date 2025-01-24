@@ -2,15 +2,14 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "zipsounds.hh"
-#include "file.hh"
+#include "dictfile.hh"
 #include "folding.hh"
-#include "utf8.hh"
+#include "text.hh"
 #include "btreeidx.hh"
 
 #include "audiolink.hh"
 #include "indexedzip.hh"
 #include "filetype.hh"
-#include "gddebug.hh"
 #include "chunkedstorage.hh"
 #include "htmlescape.hh"
 
@@ -19,16 +18,12 @@
 #include <QFile>
 #include <QDir>
 
-#ifdef _MSC_VER
-  #include <stub_msvc.h>
-#endif
 
 #include "utils.hh"
 
 namespace ZipSounds {
 
 using std::string;
-using gd::wstring;
 using std::map;
 using std::multimap;
 using std::set;
@@ -42,9 +37,10 @@ DEF_EX( exInvalidData, "Invalid data encountered", Dictionary::Ex )
 
 enum {
   Signature            = 0x5350495a, // ZIPS on little-endian, SPIZ on big-endian
-  CurrentFormatVersion = 6 + BtreeIndexing::FormatVersion
+  CurrentFormatVersion = 6 + BtreeIndexing::FormatVersion + BtreeIndexing::ZipParseLogicVersion
 };
 
+#pragma pack( push, 1 )
 struct IdxHeader
 {
   uint32_t signature;             // First comes the signature, ZIPS
@@ -53,15 +49,13 @@ struct IdxHeader
   uint32_t indexBtreeMaxElements; // Two fields from IndexInfo
   uint32_t indexRootOffset;
   uint32_t chunksOffset; // The offset to chunks' storage
-}
-#ifndef _MSC_VER
-__attribute__( ( packed ) )
-#endif
-;
+};
+static_assert( alignof( IdxHeader ) == 1 );
+#pragma pack( pop )
 
 bool indexIsOldOrBad( string const & indexFile )
 {
-  File::Index idx( indexFile, "rb" );
+  File::Index idx( indexFile, QIODevice::ReadOnly );
 
   IdxHeader header;
 
@@ -69,28 +63,31 @@ bool indexIsOldOrBad( string const & indexFile )
     || header.formatVersion != CurrentFormatVersion;
 }
 
-wstring stripExtension( string const & str )
+std::u32string stripExtension( string const & str )
 {
-  wstring name;
+  std::u32string name;
   try {
-    name = Utf8::decode( str );
+    name = Text::toUtf32( str );
   }
-  catch ( Utf8::exCantDecode & ) {
+  catch ( Text::exCantDecode & ) {
     return name;
   }
 
   if ( Filetype::isNameOfSound( str ) ) {
-    wstring::size_type pos = name.rfind( L'.' );
-    if ( pos != wstring::npos )
+    std::u32string::size_type pos = name.rfind( L'.' );
+    if ( pos != std::u32string::npos ) {
       name.erase( pos );
+    }
 
     // Strip spaces at the end of name
     string::size_type n = name.length();
-    while ( n && name.at( n - 1 ) == L' ' )
+    while ( n && name.at( n - 1 ) == L' ' ) {
       n--;
+    }
 
-    if ( n != name.length() )
+    if ( n != name.length() ) {
       name.erase( n );
+    }
   }
   return name;
 }
@@ -109,10 +106,6 @@ public:
 
   string getName() noexcept override;
 
-  map< Dictionary::Property, string > getProperties() noexcept override
-  {
-    return map< Dictionary::Property, string >();
-  }
 
   unsigned long getArticleCount() noexcept override
   {
@@ -124,8 +117,10 @@ public:
     return getArticleCount();
   }
 
-  sptr< Dictionary::DataRequest >
-  getArticle( wstring const &, vector< wstring > const & alts, wstring const &, bool ignoreDiacritics ) override;
+  sptr< Dictionary::DataRequest > getArticle( std::u32string const &,
+                                              vector< std::u32string > const & alts,
+                                              std::u32string const &,
+                                              bool ignoreDiacritics ) override;
 
   sptr< Dictionary::DataRequest > getResource( string const & name ) override;
 
@@ -138,7 +133,7 @@ ZipSoundsDictionary::ZipSoundsDictionary( string const & id,
                                           string const & indexFile,
                                           vector< string > const & dictionaryFiles ):
   BtreeDictionary( id, dictionaryFiles ),
-  idx( indexFile, "rb" ),
+  idx( indexFile, QIODevice::ReadOnly ),
   idxHeader( idx.read< IdxHeader >() )
 {
   chunks = std::shared_ptr< ChunkedStorage::Reader >( new ChunkedStorage::Reader( idx, idxHeader.chunksOffset ) );
@@ -163,9 +158,9 @@ string ZipSoundsDictionary::getName() noexcept
   return result;
 }
 
-sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const & word,
-                                                                 vector< wstring > const & alts,
-                                                                 wstring const &,
+sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( std::u32string const & word,
+                                                                 vector< std::u32string > const & alts,
+                                                                 std::u32string const &,
                                                                  bool ignoreDiacritics )
 
 {
@@ -179,30 +174,33 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const &
     chain.insert( chain.end(), altChain.begin(), altChain.end() );
   }
 
-  multimap< wstring, uint32_t > mainArticles, alternateArticles;
+  multimap< std::u32string, uint32_t > mainArticles, alternateArticles;
 
   set< uint32_t > articlesIncluded; // Some synonims make it that the articles
                                     // appear several times. We combat this
                                     // by only allowing them to appear once.
 
-  wstring wordCaseFolded = Folding::applySimpleCaseOnly( word );
-  if ( ignoreDiacritics )
+  std::u32string wordCaseFolded = Folding::applySimpleCaseOnly( word );
+  if ( ignoreDiacritics ) {
     wordCaseFolded = Folding::applyDiacriticsOnly( wordCaseFolded );
+  }
 
   for ( auto & x : chain ) {
-    if ( articlesIncluded.find( x.articleOffset ) != articlesIncluded.end() )
+    if ( articlesIncluded.find( x.articleOffset ) != articlesIncluded.end() ) {
       continue; // We already have this article in the body.
+    }
 
     // Ok. Now, does it go to main articles, or to alternate ones? We list
     // main ones first, and alternates after.
 
     // We do the case-folded comparison here.
 
-    wstring headwordStripped = Folding::applySimpleCaseOnly( x.word );
-    if ( ignoreDiacritics )
+    std::u32string headwordStripped = Folding::applySimpleCaseOnly( x.word );
+    if ( ignoreDiacritics ) {
       headwordStripped = Folding::applyDiacriticsOnly( headwordStripped );
+    }
 
-    multimap< wstring, uint32_t > & mapToUse =
+    multimap< std::u32string, uint32_t > & mapToUse =
       ( wordCaseFolded == headwordStripped ) ? mainArticles : alternateArticles;
 
     mapToUse.insert( std::pair( Folding::applySimpleCaseOnly( x.word ), x.articleOffset ) );
@@ -210,14 +208,15 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const &
     articlesIncluded.insert( x.articleOffset );
   }
 
-  if ( mainArticles.empty() && alternateArticles.empty() )
+  if ( mainArticles.empty() && alternateArticles.empty() ) {
     return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such word
+  }
 
   string result;
 
-  multimap< wstring, uint32_t >::const_iterator i;
+  multimap< std::u32string, uint32_t >::const_iterator i;
 
-  result += "<table class=\"lsa_play\">";
+  result += "<div class=\"audio-play\">";
 
   vector< char > chunk;
   char * nameBlock;
@@ -246,9 +245,9 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const &
     nameBlock += sz;
 
     string displayedName =
-      mainArticles.size() + alternateArticles.size() > 1 ? name : Utf8::encode( stripExtension( name ) );
+      mainArticles.size() + alternateArticles.size() > 1 ? name : Text::toUtf8( stripExtension( name ) );
 
-    result += "<tr>";
+    result += "<div class=\"audio-play-item\">";
 
     QUrl url;
     url.setScheme( "gdau" );
@@ -257,11 +256,11 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const &
 
     string ref = string( "\"" ) + url.toEncoded().data() + "\"";
 
-    result += addAudioLink( ref, getId() );
+    result += addAudioLink( url.toEncoded(), getId() );
 
-    result += "<td><a href=" + ref + R"(><img src="qrc:///icons/playsound.png" border="0" alt="Play"/></a></td>)";
-    result += "<td><a href=" + ref + ">" + Html::escape( displayedName ) + "</a></td>";
-    result += "</tr>";
+    result += "<a href=" + ref + R"(><img src="qrc:///icons/playsound.png" border="0" alt="Play"/></a>)";
+    result += "<a href=" + ref + ">" + Html::escape( displayedName ) + "</a>";
+    result += "</div>";
   }
 
   for ( i = alternateArticles.begin(); i != alternateArticles.end(); ++i ) {
@@ -288,9 +287,9 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const &
     nameBlock += sz;
 
     string displayedName =
-      mainArticles.size() + alternateArticles.size() > 1 ? name : Utf8::encode( stripExtension( name ) );
+      mainArticles.size() + alternateArticles.size() > 1 ? name : Text::toUtf8( stripExtension( name ) );
 
-    result += "<tr>";
+    result += "<div class=\"audio-play-item\">";
 
     QUrl url;
     url.setScheme( "gdau" );
@@ -299,14 +298,14 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( wstring const &
 
     string ref = string( "\"" ) + url.toEncoded().data() + "\"";
 
-    result += addAudioLink( ref, getId() );
+    addAudioLink( url.toEncoded(), getId() );
 
-    result += "<td><a href=" + ref + R"(><img src="qrc:///icons/playsound.png" border="0" alt="Play"/></a></td>)";
-    result += "<td><a href=" + ref + ">" + Html::escape( displayedName ) + "</a></td>";
-    result += "</tr>";
+    result += "<a href=" + ref + R"(><img src="qrc:///icons/playsound.png" border="0" alt="Play"/></a>)";
+    result += "<a href=" + ref + ">" + Html::escape( displayedName ) + "</a>";
+    result += "</div>";
   }
 
-  result += "</table>";
+  result += "</div>";
 
   auto ret = std::make_shared< Dictionary::DataRequestInstant >( true );
   ret->appendString( result );
@@ -318,12 +317,13 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getResource( string const &
 {
   // Remove extension for sound files (like in sound dirs)
 
-  wstring strippedName = stripExtension( name );
+  std::u32string strippedName = stripExtension( name );
 
   vector< WordArticleLink > chain = findArticles( strippedName );
 
-  if ( chain.empty() )
+  if ( chain.empty() ) {
     return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such resource
+  }
 
   // Find sound
 
@@ -341,22 +341,25 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getResource( string const &
 
     memcpy( &dataOffset, nameBlock, sizeof( uint32_t ) );
 
-    if ( name.compare( fileName ) == 0 )
+    if ( name.compare( fileName ) == 0 ) {
       break;
+    }
   }
 
   sptr< Dictionary::DataRequestInstant > dr = std::make_shared< Dictionary::DataRequestInstant >( true );
 
-  if ( zipsFile.loadFile( dataOffset, dr->getData() ) )
+  if ( zipsFile.loadFile( dataOffset, dr->getData() ) ) {
     return dr;
+  }
 
   return std::make_shared< Dictionary::DataRequestInstant >( false );
 }
 
 void ZipSoundsDictionary::loadIcon() noexcept
 {
-  if ( dictionaryIconLoaded )
+  if ( dictionaryIconLoaded ) {
     return;
+  }
 
   QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
 
@@ -383,8 +386,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
   for ( const auto & fileName : fileNames ) {
     /// Only allow .zips extension
-    if ( !Utils::endsWithIgnoreCase( fileName, ".zips" ) )
+    if ( !Utils::endsWithIgnoreCase( fileName, ".zips" ) ) {
       continue;
+    }
 
     try {
       vector< string > dictFiles( 1, fileName );
@@ -392,9 +396,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       string indexFile = indicesDir + dictId;
 
       if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
-        gdDebug( "Zips: Building the index for dictionary: %s\n", fileName.c_str() );
+        qDebug( "Zips: Building the index for dictionary: %s", fileName.c_str() );
 
-        File::Index idx( indexFile, "wb" );
+        File::Index idx( indexFile, QIODevice::WriteOnly );
         IdxHeader idxHeader;
 
         memset( &idxHeader, 0, sizeof( idxHeader ) );
@@ -409,8 +413,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         quint32 namesCount = 0;
 
         IndexedZip zipFile;
-        if ( zipFile.openZipFile( QDir::fromNativeSeparators( fileName.c_str() ) ) )
+        if ( zipFile.openZipFile( QDir::fromNativeSeparators( fileName.c_str() ) ) ) {
           zipFile.indexFile( zipFileNames, &namesCount );
+        }
 
         if ( !zipFileNames.empty() ) {
           for ( auto & zipFileName : zipFileNames ) {
@@ -426,9 +431,10 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
               // Remove extension for sound files (like in sound dirs)
 
-              wstring word = stripExtension( link.word );
-              if ( !word.empty() )
+              std::u32string word = stripExtension( link.word );
+              if ( !word.empty() ) {
                 names.addWord( word, offset );
+              }
             }
           }
 
@@ -464,7 +470,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       dictionaries.push_back( std::make_shared< ZipSoundsDictionary >( dictId, indexFile, dictFiles ) );
     }
     catch ( std::exception & e ) {
-      gdWarning( "Zipped sounds pack reading failed: %s, error: %s\n", fileName.c_str(), e.what() );
+      qWarning( "Zipped sounds pack reading failed: %s, error: %s", fileName.c_str(), e.what() );
     }
   }
 

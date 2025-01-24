@@ -1,5 +1,4 @@
-#ifndef HEADWORDSMODEL_H
-#define HEADWORDSMODEL_H
+#pragma once
 
 #include "dict/dictionary.hh"
 
@@ -53,5 +52,3 @@ private:
   QMutex lock;
   std::list< sptr< Dictionary::WordSearchRequest > > queuedRequests;
 };
-
-#endif // HEADWORDSMODEL_H

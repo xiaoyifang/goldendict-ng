@@ -8,7 +8,6 @@
 #include <QtXml>
 #include <QApplication>
 #include <QStyle>
-#include "gddebug.hh"
 
 #ifdef Q_OS_WIN32
   //this is a windows header file.
@@ -50,8 +49,9 @@ QString portableHomeDirPath()
 
 QDir getHomeDir()
 {
-  if ( isPortableVersion() )
+  if ( isPortableVersion() ) {
     return QDir( portableHomeDirPath() );
+  }
 
   QDir result;
 
@@ -74,8 +74,9 @@ QDir getHomeDir()
 
   result.mkpath( pathInHome );
 
-  if ( !result.cd( pathInHome ) )
+  if ( !result.cd( pathInHome ) ) {
     throw exCantUseHomeDir();
+  }
 
   return result;
 }
@@ -100,80 +101,21 @@ AnkiConnectServer::AnkiConnectServer():
 {
 }
 
-HotKey::HotKey():
-  modifiers( 0 ),
-  key1( 0 ),
-  key2( 0 )
-{
-}
-
-// Does anyone know how to separate modifiers from the keycode? We'll
-// use our own mask.
-
-uint32_t const keyMask = 0x01FFFFFF;
-
 HotKey::HotKey( QKeySequence const & seq ):
-  modifiers( seq[ 0 ] & ~keyMask ),
-  key1( seq[ 0 ] & keyMask ),
-  key2( seq[ 1 ] & keyMask )
+  modifiers( seq[ 0 ].keyboardModifiers() ),
+  key1( seq[ 0 ].key() ),
+  key2( seq[ 1 ].key() )
 {
 }
 
 QKeySequence HotKey::toKeySequence() const
 {
-  int v2 = key2 ? ( key2 | modifiers ) : 0;
-
-  return QKeySequence( key1 | modifiers, v2 );
-}
-
-bool InternalPlayerBackend::anyAvailable()
-{
-#if defined( MAKE_FFMPEG_PLAYER ) || defined( MAKE_QTMULTIMEDIA_PLAYER )
-  return true;
-#else
-  return false;
-#endif
-}
-
-InternalPlayerBackend InternalPlayerBackend::defaultBackend()
-{
-#if defined( MAKE_FFMPEG_PLAYER )
-  return ffmpeg();
-#elif defined( MAKE_QTMULTIMEDIA_PLAYER )
-  return qtmultimedia();
-#else
-  return InternalPlayerBackend( QString() );
-#endif
-}
-
-QStringList InternalPlayerBackend::nameList()
-{
-  QStringList result;
-#ifdef MAKE_FFMPEG_PLAYER
-  result.push_back( ffmpeg().uiName() );
-#endif
-#ifdef MAKE_QTMULTIMEDIA_PLAYER
-  result.push_back( qtmultimedia().uiName() );
-#endif
-  return result;
-}
-
-bool InternalPlayerBackend::isFfmpeg() const
-{
-#ifdef MAKE_FFMPEG_PLAYER
-  return *this == ffmpeg();
-#else
-  return false;
-#endif
-}
-
-bool InternalPlayerBackend::isQtmultimedia() const
-{
-#ifdef MAKE_QTMULTIMEDIA_PLAYER
-  return *this == qtmultimedia();
-#else
-  return false;
-#endif
+  if ( key2 != 0 && key2 != Qt::Key::Key_unknown ) {
+    return { QKeyCombination( modifiers, static_cast< Qt::Key >( key1 ) ),
+             QKeyCombination( modifiers, static_cast< Qt::Key >( key2 ) ) };
+  }
+  return { QKeyCombination( modifiers, static_cast< Qt::Key >( key1 ) ) };
+  ;
 }
 
 QString Preferences::sanitizeInputPhrase( QString const & inputWord ) const
@@ -187,9 +129,9 @@ QString Preferences::sanitizeInputPhrase( QString const & inputWord ) const
   }
 
   if ( limitInputPhraseLength && result.size() > inputPhraseLengthLimit ) {
-    gdDebug( "Ignoring an input phrase %lld symbols long. The configured maximum input phrase length is %d symbols.",
-             result.size(),
-             inputPhraseLengthLimit );
+    qDebug( "Ignoring an input phrase %lld symbols long. The configured maximum input phrase length is %d symbols.",
+            result.size(),
+            inputPhraseLengthLimit );
     return {};
   }
 
@@ -203,16 +145,11 @@ Preferences::Preferences():
   hideSingleTab( false ),
   mruTabOrder( false ),
   hideMenubar( false ),
-  enableTrayIcon( true ),
-  startToTray( false ),
-  closeToTray( true ),
   autoStart( false ),
   doubleClickTranslates( true ),
   selectWordBySingleClick( false ),
   autoScrollToTargetArticle( true ),
   escKeyHidesMainWindow( false ),
-  darkMode( false ),
-  darkReaderMode( false ),
   alwaysOnTop( false ),
   searchInDock( false ),
 // on macOS, register hotkeys will override system shortcuts, disabled for now to avoid troubles.
@@ -223,8 +160,8 @@ Preferences::Preferences():
   enableMainWindowHotkey( true ),
   enableClipboardHotkey( true ),
 #endif
-  mainWindowHotkey( QKeySequence( "Ctrl+F11,F11" ) ),
-  clipboardHotkey( QKeySequence( "Ctrl+C,C" ) ),
+  mainWindowHotkey( QKeySequence( "Ctrl+F11, Ctrl+F11" ) ),
+  clipboardHotkey( QKeySequence( "Ctrl+C, Ctrl+C" ) ),
   startWithScanPopupOn( false ),
   enableScanPopupModifiers( false ),
   scanPopupModifiers( 0 ),
@@ -243,7 +180,6 @@ Preferences::Preferences():
   pronounceOnLoadMain( false ),
   pronounceOnLoadPopup( false ),
   useInternalPlayer( InternalPlayerBackend::anyAvailable() ),
-  internalPlayerBackend( InternalPlayerBackend::defaultBackend() ),
   checkForNewReleases( true ),
   disallowContentFromOtherSites( false ),
   hideGoldenDictHeader( false ),
@@ -255,8 +191,6 @@ Preferences::Preferences():
   maxStringsInHistory( 500 ),
   storeHistory( 1 ),
   alwaysExpandOptionalParts( true ),
-  historyStoreInterval( 0 ),
-  favoritesStoreInterval( 0 ),
   confirmFavoritesDeletion( true ),
   collapseBigArticles( false ),
   articleSizeLimit( 2000 ),
@@ -283,8 +217,6 @@ Chinese::Chinese():
 Romaji::Romaji():
   enable( false ),
   enableHepburn( true ),
-  enableNihonShiki( false ),
-  enableKunreiShiki( false ),
   enableHiragana( true ),
   enableKatakana( true )
 {
@@ -292,17 +224,21 @@ Romaji::Romaji():
 
 Group * Class::getGroup( unsigned id )
 {
-  for ( auto & group : groups )
-    if ( group.id == id )
+  for ( auto & group : groups ) {
+    if ( group.id == id ) {
       return &group;
+    }
+  }
   return 0;
 }
 
 Group const * Class::getGroup( unsigned id ) const
 {
-  for ( const auto & group : groups )
-    if ( group.id == id )
+  for ( const auto & group : groups ) {
+    if ( group.id == id ) {
       return &group;
+    }
+  }
   return 0;
 }
 
@@ -434,45 +370,54 @@ void applyBoolOption( bool & option, QDomNode const & node )
 {
   QString value = node.toElement().text();
 
-  if ( value == "1" )
+  if ( value == "1" ) {
     option = true;
-  else if ( value == "0" )
+  }
+  else if ( value == "0" ) {
     option = false;
+  }
 }
 
 Group loadGroup( QDomElement grp, unsigned * nextId = 0 )
 {
   Group g;
 
-  if ( grp.hasAttribute( "id" ) )
+  if ( grp.hasAttribute( "id" ) ) {
     g.id = grp.attribute( "id" ).toUInt();
-  else
+  }
+  else {
     g.id = nextId ? ( *nextId )++ : 0;
+  }
 
   g.name            = grp.attribute( "name" );
   g.icon            = grp.attribute( "icon" );
   g.favoritesFolder = grp.attribute( "favoritesFolder" );
 
-  if ( !grp.attribute( "iconData" ).isEmpty() )
+  if ( !grp.attribute( "iconData" ).isEmpty() ) {
     g.iconData = QByteArray::fromBase64( grp.attribute( "iconData" ).toLatin1() );
+  }
 
-  if ( !grp.attribute( "shortcut" ).isEmpty() )
+  if ( !grp.attribute( "shortcut" ).isEmpty() ) {
     g.shortcut = QKeySequence::fromString( grp.attribute( "shortcut" ) );
+  }
 
   QDomNodeList dicts = grp.elementsByTagName( "dictionary" );
 
-  for ( int y = 0; y < dicts.length(); ++y )
+  for ( int y = 0; y < dicts.length(); ++y ) {
     g.dictionaries.push_back(
       DictionaryRef( dicts.item( y ).toElement().text(), dicts.item( y ).toElement().attribute( "name" ) ) );
+  }
 
   QDomNode muted = grp.namedItem( "mutedDictionaries" );
   dicts          = muted.toElement().elementsByTagName( "mutedDictionary" );
-  for ( int x = 0; x < dicts.length(); ++x )
+  for ( int x = 0; x < dicts.length(); ++x ) {
     g.mutedDictionaries.insert( dicts.item( x ).toElement().text() );
+  }
 
   dicts = muted.toElement().elementsByTagName( "popupMutedDictionary" );
-  for ( int x = 0; x < dicts.length(); ++x )
+  for ( int x = 0; x < dicts.length(); ++x ) {
     g.popupMutedDictionaries.insert( dicts.item( x ).toElement().text() );
+  }
 
   return g;
 }
@@ -484,8 +429,9 @@ MutedDictionaries loadMutedDictionaries( const QDomNode & mutedDictionaries )
   if ( !mutedDictionaries.isNull() ) {
     QDomNodeList nl = mutedDictionaries.toElement().elementsByTagName( "mutedDictionary" );
 
-    for ( int x = 0; x < nl.length(); ++x )
+    for ( int x = 0; x < nl.length(); ++x ) {
       result.insert( nl.item( x ).toElement().text() );
+    }
   }
 
   return result;
@@ -506,8 +452,9 @@ void saveMutedDictionaries( QDomDocument & dd, QDomElement & muted, MutedDiction
 
 bool fromConfig2Preference( const QDomNode & node, const QString & expectedValue, bool defaultValue = false )
 {
-  if ( !node.isNull() )
+  if ( !node.isNull() ) {
     return ( node.toElement().text() == expectedValue );
+  }
   return defaultValue;
 }
 
@@ -539,18 +486,19 @@ Class load()
 
     if ( QDir( "/usr/share/myspell/dicts" ).exists() )
       c.hunspell.dictionariesPath = "/usr/share/myspell/dicts";
-
 #endif
 
-
-#ifndef Q_OS_WIN32
-    c.preferences.audioPlaybackProgram = "mplayer";
-#endif
+    // Put portable hard-code directory the the config for the first time.
+    if ( isPortableVersion() ) {
+      // For portable version, hardcode some settings
+      c.paths.push_back( Path( getPortableVersionDictionaryDir(), true ) );
+    }
 
     QString possibleMorphologyPath = getProgramDataDir() + "/content/morphology";
 
-    if ( QDir( possibleMorphologyPath ).exists() )
+    if ( QDir( possibleMorphologyPath ).exists() ) {
       c.hunspell.dictionariesPath = possibleMorphologyPath;
+    }
 
     c.mediawikis  = makeDefaultMediaWikis( true );
     c.webSites    = makeDefaultWebSites();
@@ -573,8 +521,9 @@ Class load()
 
   QFile configFile( configName );
 
-  if ( !configFile.open( QFile::ReadOnly ) )
+  if ( !configFile.open( QFile::ReadOnly ) ) {
     throw exCantReadConfigFile();
+  }
 
   QDomDocument dd;
 
@@ -584,7 +533,7 @@ Class load()
   if ( !loadFromTemplate ) {
     // Load the config as usual
     if ( !dd.setContent( &configFile, false, &errorStr, &errorLine, &errorColumn ) ) {
-      GD_DPRINTF( "Error: %s at %d,%d\n", errorStr.toLocal8Bit().constData(), errorLine, errorColumn );
+      qDebug( "Error: %s at %d,%d", errorStr.toLocal8Bit().constData(), errorLine, errorColumn );
       throw exMalformedConfigFile();
     }
   }
@@ -597,7 +546,7 @@ Class load()
     QBuffer bufferedData( &data );
 
     if ( !dd.setContent( &bufferedData, false, &errorStr, &errorLine, &errorColumn ) ) {
-      GD_DPRINTF( "Error: %s at %d,%d\n", errorStr.toLocal8Bit().constData(), errorLine, errorColumn );
+      qDebug( "Error: %s at %d,%d", errorStr.toLocal8Bit().constData(), errorLine, errorColumn );
       throw exMalformedConfigFile();
     }
   }
@@ -608,19 +557,22 @@ Class load()
 
   Class c;
 
+  // Put the hard-code portable directory to the first.
+  // To allow additional directories, this path should not be saved.
+  if ( isPortableVersion() ) {
+    // For portable version, hardcode some settings
+    c.paths.push_back( Path( getPortableVersionDictionaryDir(), true ) );
+  }
+
   QDomNode paths = root.namedItem( "paths" );
 
   if ( !paths.isNull() ) {
     QDomNodeList nl = paths.toElement().elementsByTagName( "path" );
 
-    for ( int x = 0; x < nl.length(); ++x )
+    for ( int x = 0; x < nl.length(); ++x ) {
       c.paths.push_back(
         Path( nl.item( x ).toElement().text(), nl.item( x ).toElement().attribute( "recursive" ) == "1" ) );
-  }
-
-  if ( Config::isPortableVersion() && c.paths.empty() ) {
-    // For portable version, hardcode some settings
-    c.paths.push_back( Config::Path( Config::getPortableVersionDictionaryDir(), true ) );
+    }
   }
 
   QDomNode soundDirs = root.namedItem( "sounddirs" );
@@ -628,21 +580,24 @@ Class load()
   if ( !soundDirs.isNull() ) {
     QDomNodeList nl = soundDirs.toElement().elementsByTagName( "sounddir" );
 
-    for ( int x = 0; x < nl.length(); ++x )
+    for ( int x = 0; x < nl.length(); ++x ) {
       c.soundDirs.push_back( SoundDir( nl.item( x ).toElement().text(),
                                        nl.item( x ).toElement().attribute( "name" ),
                                        nl.item( x ).toElement().attribute( "icon" ) ) );
+    }
   }
 
   QDomNode dictionaryOrder = root.namedItem( "dictionaryOrder" );
 
-  if ( !dictionaryOrder.isNull() )
+  if ( !dictionaryOrder.isNull() ) {
     c.dictionaryOrder = loadGroup( dictionaryOrder.toElement() );
+  }
 
   QDomNode inactiveDictionaries = root.namedItem( "inactiveDictionaries" );
 
-  if ( !inactiveDictionaries.isNull() )
+  if ( !inactiveDictionaries.isNull() ) {
     c.inactiveDictionaries = loadGroup( inactiveDictionaries.toElement() );
+  }
 
   QDomNode groups = root.namedItem( "groups" );
 
@@ -665,8 +620,9 @@ Class load()
 
     QDomNodeList nl = hunspell.toElement().elementsByTagName( "enabled" );
 
-    for ( int x = 0; x < nl.length(); ++x )
+    for ( int x = 0; x < nl.length(); ++x ) {
       c.hunspell.enabledDictionaries.push_back( nl.item( x ).toElement().text() );
+    }
   }
 
   QDomNode transliteration = root.namedItem( "transliteration" );
@@ -703,8 +659,6 @@ Class load()
     if ( !romaji.isNull() ) {
       applyBoolOption( c.transliteration.romaji.enable, romaji.namedItem( "enable" ) );
       applyBoolOption( c.transliteration.romaji.enableHepburn, romaji.namedItem( "enableHepburn" ) );
-      applyBoolOption( c.transliteration.romaji.enableNihonShiki, romaji.namedItem( "enableNihonShiki" ) );
-      applyBoolOption( c.transliteration.romaji.enableKunreiShiki, romaji.namedItem( "enableKunreiShiki" ) );
       applyBoolOption( c.transliteration.romaji.enableHiragana, romaji.namedItem( "enableHiragana" ) );
       applyBoolOption( c.transliteration.romaji.enableKatakana, romaji.namedItem( "enableKatakana" ) );
     }
@@ -733,8 +687,9 @@ Class load()
     c.forvo.apiKey        = forvo.namedItem( "apiKey" ).toElement().text();
     c.forvo.languageCodes = forvo.namedItem( "languageCodes" ).toElement().text();
   }
-  else
+  else {
     c.forvo.languageCodes = "en, ru"; // Default demo values
+  }
 
   QDomNode programs = root.namedItem( "programs" );
 
@@ -836,7 +791,7 @@ Class load()
     // Upgrading
     c.dictServers = makeDefaultDictServers();
   }
-#ifndef NO_TTS_SUPPORT
+#ifdef TTS_SUPPORT
   QDomNode ves = root.namedItem( "voiceEngines" );
 
   if ( !ves.isNull() ) {
@@ -884,10 +839,11 @@ Class load()
     c.preferences.hideSingleTab = ( preferences.namedItem( "hideSingleTab" ).toElement().text() == "1" );
     c.preferences.mruTabOrder   = ( preferences.namedItem( "mruTabOrder" ).toElement().text() == "1" );
     c.preferences.hideMenubar   = ( preferences.namedItem( "hideMenubar" ).toElement().text() == "1" );
-
+#ifndef Q_OS_MACOS // // macOS uses the dock menu instead of the tray icon
     c.preferences.enableTrayIcon = ( preferences.namedItem( "enableTrayIcon" ).toElement().text() == "1" );
     c.preferences.startToTray    = ( preferences.namedItem( "startToTray" ).toElement().text() == "1" );
     c.preferences.closeToTray    = ( preferences.namedItem( "closeToTray" ).toElement().text() == "1" );
+#endif
     c.preferences.autoStart      = ( preferences.namedItem( "autoStart" ).toElement().text() == "1" );
     c.preferences.alwaysOnTop    = ( preferences.namedItem( "alwaysOnTop" ).toElement().text() == "1" );
     c.preferences.searchInDock   = ( preferences.namedItem( "searchInDock" ).toElement().text() == "1" );
@@ -897,45 +853,57 @@ Class load()
       c.preferences.customFonts = fonts;
     }
 
-    if ( !preferences.namedItem( "doubleClickTranslates" ).isNull() )
+    if ( !preferences.namedItem( "doubleClickTranslates" ).isNull() ) {
       c.preferences.doubleClickTranslates =
         ( preferences.namedItem( "doubleClickTranslates" ).toElement().text() == "1" );
+    }
 
-    if ( !preferences.namedItem( "selectWordBySingleClick" ).isNull() )
+    if ( !preferences.namedItem( "selectWordBySingleClick" ).isNull() ) {
       c.preferences.selectWordBySingleClick =
         ( preferences.namedItem( "selectWordBySingleClick" ).toElement().text() == "1" );
+    }
 
-    if ( !preferences.namedItem( "autoScrollToTargetArticle" ).isNull() )
+    if ( !preferences.namedItem( "autoScrollToTargetArticle" ).isNull() ) {
       c.preferences.autoScrollToTargetArticle =
         ( preferences.namedItem( "autoScrollToTargetArticle" ).toElement().text() == "1" );
+    }
 
-    if ( !preferences.namedItem( "escKeyHidesMainWindow" ).isNull() )
+    if ( !preferences.namedItem( "escKeyHidesMainWindow" ).isNull() ) {
       c.preferences.escKeyHidesMainWindow =
         ( preferences.namedItem( "escKeyHidesMainWindow" ).toElement().text() == "1" );
+    }
 
-    if ( !preferences.namedItem( "darkMode" ).isNull() )
-      c.preferences.darkMode = ( preferences.namedItem( "darkMode" ).toElement().text() == "1" );
+    if ( !preferences.namedItem( "darkMode" ).isNull() ) {
+      c.preferences.darkMode = static_cast< Dark >( preferences.namedItem( "darkMode" ).toElement().text().toInt() );
+    }
 
-    if ( !preferences.namedItem( "darkReaderMode" ).isNull() )
-      c.preferences.darkReaderMode = ( preferences.namedItem( "darkReaderMode" ).toElement().text() == "1" );
+    if ( !preferences.namedItem( "darkReaderMode" ).isNull() ) {
+      c.preferences.darkReaderMode =
+        static_cast< Dark >( preferences.namedItem( "darkReaderMode" ).toElement().text().toInt() );
+    }
 
-    if ( !preferences.namedItem( "zoomFactor" ).isNull() )
+    if ( !preferences.namedItem( "zoomFactor" ).isNull() ) {
       c.preferences.zoomFactor = preferences.namedItem( "zoomFactor" ).toElement().text().toDouble();
+    }
 
-    if ( !preferences.namedItem( "helpZoomFactor" ).isNull() )
+    if ( !preferences.namedItem( "helpZoomFactor" ).isNull() ) {
       c.preferences.helpZoomFactor = preferences.namedItem( "helpZoomFactor" ).toElement().text().toDouble();
+    }
 
-    if ( !preferences.namedItem( "wordsZoomLevel" ).isNull() )
+    if ( !preferences.namedItem( "wordsZoomLevel" ).isNull() ) {
       c.preferences.wordsZoomLevel = preferences.namedItem( "wordsZoomLevel" ).toElement().text().toInt();
+    }
 
     applyBoolOption( c.preferences.enableMainWindowHotkey, preferences.namedItem( "enableMainWindowHotkey" ) );
-    if ( !preferences.namedItem( "mainWindowHotkey" ).isNull() )
+    if ( !preferences.namedItem( "mainWindowHotkey" ).isNull() ) {
       c.preferences.mainWindowHotkey =
         QKeySequence::fromString( preferences.namedItem( "mainWindowHotkey" ).toElement().text() );
+    }
     applyBoolOption( c.preferences.enableClipboardHotkey, preferences.namedItem( "enableClipboardHotkey" ) );
-    if ( !preferences.namedItem( "clipboardHotkey" ).isNull() )
+    if ( !preferences.namedItem( "clipboardHotkey" ).isNull() ) {
       c.preferences.clipboardHotkey =
         QKeySequence::fromString( preferences.namedItem( "clipboardHotkey" ).toElement().text() );
+    }
 
     c.preferences.startWithScanPopupOn = ( preferences.namedItem( "startWithScanPopupOn" ).toElement().text() == "1" );
     c.preferences.enableScanPopupModifiers =
@@ -945,8 +913,9 @@ Class load()
       ( preferences.namedItem( "ignoreOwnClipboardChanges" ).toElement().text() == "1" );
     c.preferences.scanToMainWindow = ( preferences.namedItem( "scanToMainWindow" ).toElement().text() == "1" );
     c.preferences.ignoreDiacritics = ( preferences.namedItem( "ignoreDiacritics" ).toElement().text() == "1" );
-    if ( !preferences.namedItem( "ignorePunctuation" ).isNull() )
+    if ( !preferences.namedItem( "ignorePunctuation" ).isNull() ) {
       c.preferences.ignorePunctuation = ( preferences.namedItem( "ignorePunctuation" ).toElement().text() == "1" );
+    }
 
     if ( !preferences.namedItem( "sessionCollapse" ).isNull() ) {
       c.preferences.sessionCollapse = ( preferences.namedItem( "sessionCollapse" ).toElement().text() == "1" );
@@ -964,20 +933,25 @@ Class load()
     c.preferences.pronounceOnLoadPopup = ( preferences.namedItem( "pronounceOnLoadPopup" ).toElement().text() == "1" );
 
     if ( InternalPlayerBackend::anyAvailable() ) {
-      if ( !preferences.namedItem( "useInternalPlayer" ).isNull() )
+      if ( !preferences.namedItem( "useInternalPlayer" ).isNull() ) {
         c.preferences.useInternalPlayer = ( preferences.namedItem( "useInternalPlayer" ).toElement().text() == "1" );
+      }
     }
-    else
+    else {
       c.preferences.useInternalPlayer = false;
+    }
 
-    if ( !preferences.namedItem( "internalPlayerBackend" ).isNull() )
-      c.preferences.internalPlayerBackend.setUiName(
+    if ( !preferences.namedItem( "internalPlayerBackend" ).isNull() ) {
+      c.preferences.internalPlayerBackend.setName(
         preferences.namedItem( "internalPlayerBackend" ).toElement().text() );
+    }
 
-    if ( !preferences.namedItem( "audioPlaybackProgram" ).isNull() )
+    if ( !preferences.namedItem( "audioPlaybackProgram" ).isNull() ) {
       c.preferences.audioPlaybackProgram = preferences.namedItem( "audioPlaybackProgram" ).toElement().text();
-    else
-      c.preferences.audioPlaybackProgram = "mplayer";
+    }
+    else {
+      c.preferences.audioPlaybackProgram = "vlc --intf dummy --play-and-exit";
+    }
 
     QDomNode proxy = preferences.namedItem( "proxyserver" );
 
@@ -988,9 +962,7 @@ Class load()
       c.preferences.proxyServer.host     = proxy.namedItem( "host" ).toElement().text();
       c.preferences.proxyServer.port     = proxy.namedItem( "port" ).toElement().text().toULong();
       c.preferences.proxyServer.user     = proxy.namedItem( "user" ).toElement().text();
-      c.preferences.proxyServer.password = proxy.namedItem( "password" ).toElement().text();
-      c.preferences.proxyServer.systemProxyUser     = proxy.namedItem( "systemProxyUser" ).toElement().text();
-      c.preferences.proxyServer.systemProxyPassword = proxy.namedItem( "systemProxyPassword" ).toElement().text();
+      c.preferences.proxyServer.password       = proxy.namedItem( "password" ).toElement().text();
     }
 
     QDomNode ankiConnectServer = preferences.namedItem( "ankiConnectServer" );
@@ -1007,102 +979,134 @@ Class load()
       c.preferences.ankiConnectServer.sentence = ankiConnectServer.namedItem( "sentence" ).toElement().text();
     }
 
-    if ( !preferences.namedItem( "checkForNewReleases" ).isNull() )
+    if ( !preferences.namedItem( "checkForNewReleases" ).isNull() ) {
       c.preferences.checkForNewReleases = ( preferences.namedItem( "checkForNewReleases" ).toElement().text() == "1" );
+    }
 
-    if ( !preferences.namedItem( "disallowContentFromOtherSites" ).isNull() )
+    if ( !preferences.namedItem( "disallowContentFromOtherSites" ).isNull() ) {
       c.preferences.disallowContentFromOtherSites =
         ( preferences.namedItem( "disallowContentFromOtherSites" ).toElement().text() == "1" );
+    }
 
-    if ( !preferences.namedItem( "hideGoldenDictHeader" ).isNull() )
+    if ( !preferences.namedItem( "hideGoldenDictHeader" ).isNull() ) {
       c.preferences.hideGoldenDictHeader =
         ( preferences.namedItem( "hideGoldenDictHeader" ).toElement().text() == "1" );
+    }
 
-    if ( !preferences.namedItem( "maxNetworkCacheSize" ).isNull() )
+    if ( !preferences.namedItem( "maxNetworkCacheSize" ).isNull() ) {
       c.preferences.maxNetworkCacheSize = preferences.namedItem( "maxNetworkCacheSize" ).toElement().text().toInt();
+    }
 
-    if ( !preferences.namedItem( "clearNetworkCacheOnExit" ).isNull() )
+    if ( !preferences.namedItem( "clearNetworkCacheOnExit" ).isNull() ) {
       c.preferences.clearNetworkCacheOnExit =
         ( preferences.namedItem( "clearNetworkCacheOnExit" ).toElement().text() == "1" );
+    }
 
 
-    if ( !preferences.namedItem( "removeInvalidIndexOnExit" ).isNull() )
+    if ( !preferences.namedItem( "removeInvalidIndexOnExit" ).isNull() ) {
       c.preferences.removeInvalidIndexOnExit =
         ( preferences.namedItem( "removeInvalidIndexOnExit" ).toElement().text() == "1" );
+    }
 
-    if ( !preferences.namedItem( "maxStringsInHistory" ).isNull() )
+    if ( !preferences.namedItem( "enableApplicationLog" ).isNull() ) {
+      c.preferences.enableApplicationLog =
+        ( preferences.namedItem( "enableApplicationLog" ).toElement().text() == "1" );
+    }
+
+    if ( !preferences.namedItem( "maxStringsInHistory" ).isNull() ) {
       c.preferences.maxStringsInHistory = preferences.namedItem( "maxStringsInHistory" ).toElement().text().toUInt();
+    }
 
-    if ( !preferences.namedItem( "storeHistory" ).isNull() )
+    if ( !preferences.namedItem( "storeHistory" ).isNull() ) {
       c.preferences.storeHistory = preferences.namedItem( "storeHistory" ).toElement().text().toUInt();
+    }
 
-    if ( !preferences.namedItem( "alwaysExpandOptionalParts" ).isNull() )
+    if ( !preferences.namedItem( "alwaysExpandOptionalParts" ).isNull() ) {
       c.preferences.alwaysExpandOptionalParts =
         preferences.namedItem( "alwaysExpandOptionalParts" ).toElement().text().toUInt();
+    }
 
-    if ( !preferences.namedItem( "addonStyle" ).isNull() )
+    if ( !preferences.namedItem( "addonStyle" ).isNull() ) {
       c.preferences.addonStyle = preferences.namedItem( "addonStyle" ).toElement().text();
+    }
 
-    if ( !preferences.namedItem( "historyStoreInterval" ).isNull() )
+    if ( !preferences.namedItem( "historyStoreInterval" ).isNull() ) {
       c.preferences.historyStoreInterval = preferences.namedItem( "historyStoreInterval" ).toElement().text().toUInt();
+    }
 
-    if ( !preferences.namedItem( "favoritesStoreInterval" ).isNull() )
+    if ( !preferences.namedItem( "favoritesStoreInterval" ).isNull() ) {
       c.preferences.favoritesStoreInterval =
         preferences.namedItem( "favoritesStoreInterval" ).toElement().text().toUInt();
+    }
 
-    if ( !preferences.namedItem( "confirmFavoritesDeletion" ).isNull() )
+    if ( !preferences.namedItem( "confirmFavoritesDeletion" ).isNull() ) {
       c.preferences.confirmFavoritesDeletion =
         ( preferences.namedItem( "confirmFavoritesDeletion" ).toElement().text() == "1" );
+    }
 
-    if ( !preferences.namedItem( "collapseBigArticles" ).isNull() )
+    if ( !preferences.namedItem( "collapseBigArticles" ).isNull() ) {
       c.preferences.collapseBigArticles = ( preferences.namedItem( "collapseBigArticles" ).toElement().text() == "1" );
+    }
 
-    if ( !preferences.namedItem( "articleSizeLimit" ).isNull() )
+    if ( !preferences.namedItem( "articleSizeLimit" ).isNull() ) {
       c.preferences.articleSizeLimit = preferences.namedItem( "articleSizeLimit" ).toElement().text().toInt();
+    }
 
-    if ( !preferences.namedItem( "limitInputPhraseLength" ).isNull() )
+    if ( !preferences.namedItem( "limitInputPhraseLength" ).isNull() ) {
       c.preferences.limitInputPhraseLength =
         ( preferences.namedItem( "limitInputPhraseLength" ).toElement().text() == "1" );
+    }
 
-    if ( !preferences.namedItem( "inputPhraseLengthLimit" ).isNull() )
+    if ( !preferences.namedItem( "inputPhraseLengthLimit" ).isNull() ) {
       c.preferences.inputPhraseLengthLimit =
         preferences.namedItem( "inputPhraseLengthLimit" ).toElement().text().toInt();
+    }
 
-    if ( !preferences.namedItem( "maxDictionaryRefsInContextMenu" ).isNull() )
+    if ( !preferences.namedItem( "maxDictionaryRefsInContextMenu" ).isNull() ) {
       c.preferences.maxDictionaryRefsInContextMenu =
         preferences.namedItem( "maxDictionaryRefsInContextMenu" ).toElement().text().toUShort();
+    }
 
-    if ( !preferences.namedItem( "synonymSearchEnabled" ).isNull() )
+    if ( !preferences.namedItem( "synonymSearchEnabled" ).isNull() ) {
       c.preferences.synonymSearchEnabled =
         ( preferences.namedItem( "synonymSearchEnabled" ).toElement().text() == "1" );
+    }
 
-    if ( !preferences.namedItem( "stripClipboard" ).isNull() )
+    if ( !preferences.namedItem( "stripClipboard" ).isNull() ) {
       c.preferences.stripClipboard = ( preferences.namedItem( "stripClipboard" ).toElement().text() == "1" );
+    }
 
-    if ( !preferences.namedItem( "raiseWindowOnSearch" ).isNull() )
+    if ( !preferences.namedItem( "raiseWindowOnSearch" ).isNull() ) {
       c.preferences.raiseWindowOnSearch = ( preferences.namedItem( "raiseWindowOnSearch" ).toElement().text() == "1" );
+    }
 
     QDomNode fts = preferences.namedItem( "fullTextSearch" );
 
     if ( !fts.isNull() ) {
-      if ( !fts.namedItem( "searchMode" ).isNull() )
+      if ( !fts.namedItem( "searchMode" ).isNull() ) {
         c.preferences.fts.searchMode = fts.namedItem( "searchMode" ).toElement().text().toInt();
+      }
 
-      if ( !fts.namedItem( "dialogGeometry" ).isNull() )
+      if ( !fts.namedItem( "dialogGeometry" ).isNull() ) {
         c.preferences.fts.dialogGeometry =
           QByteArray::fromBase64( fts.namedItem( "dialogGeometry" ).toElement().text().toLatin1() );
+      }
 
-      if ( !fts.namedItem( "disabledTypes" ).isNull() )
+      if ( !fts.namedItem( "disabledTypes" ).isNull() ) {
         c.preferences.fts.disabledTypes = fts.namedItem( "disabledTypes" ).toElement().text();
+      }
 
-      if ( !fts.namedItem( "enabled" ).isNull() )
+      if ( !fts.namedItem( "enabled" ).isNull() ) {
         c.preferences.fts.enabled = ( fts.namedItem( "enabled" ).toElement().text() == "1" );
+      }
 
-      if ( !fts.namedItem( "maxDictionarySize" ).isNull() )
+      if ( !fts.namedItem( "maxDictionarySize" ).isNull() ) {
         c.preferences.fts.maxDictionarySize = fts.namedItem( "maxDictionarySize" ).toElement().text().toUInt();
+      }
 
-      if ( !fts.namedItem( "parallelThreads" ).isNull() )
+      if ( !fts.namedItem( "parallelThreads" ).isNull() ) {
         c.preferences.fts.parallelThreads = fts.namedItem( "parallelThreads" ).toElement().text().toUInt();
+      }
     }
   }
 
@@ -1111,13 +1115,15 @@ Class load()
 
   QDomNode popupWindowState = root.namedItem( "popupWindowState" );
 
-  if ( !popupWindowState.isNull() )
+  if ( !popupWindowState.isNull() ) {
     c.popupWindowState = QByteArray::fromBase64( popupWindowState.toElement().text().toLatin1() );
+  }
 
   QDomNode popupWindowGeometry = root.namedItem( "popupWindowGeometry" );
 
-  if ( !popupWindowGeometry.isNull() )
+  if ( !popupWindowGeometry.isNull() ) {
     c.popupWindowGeometry = QByteArray::fromBase64( popupWindowGeometry.toElement().text().toLatin1() );
+  }
 
   c.pinPopupWindow = ( root.namedItem( "pinPopupWindow" ).toElement().text() == "1" );
 
@@ -1125,51 +1131,60 @@ Class load()
 
   QDomNode mainWindowState = root.namedItem( "mainWindowState" );
 
-  if ( !mainWindowState.isNull() )
+  if ( !mainWindowState.isNull() ) {
     c.mainWindowState = QByteArray::fromBase64( mainWindowState.toElement().text().toLatin1() );
+  }
 
   QDomNode mainWindowGeometry = root.namedItem( "mainWindowGeometry" );
 
-  if ( !mainWindowGeometry.isNull() )
+  if ( !mainWindowGeometry.isNull() ) {
     c.mainWindowGeometry = QByteArray::fromBase64( mainWindowGeometry.toElement().text().toLatin1() );
+  }
 
   QDomNode dictInfoGeometry = root.namedItem( "dictInfoGeometry" );
 
-  if ( !dictInfoGeometry.isNull() )
+  if ( !dictInfoGeometry.isNull() ) {
     c.dictInfoGeometry = QByteArray::fromBase64( dictInfoGeometry.toElement().text().toLatin1() );
+  }
 
   QDomNode inspectorGeometry = root.namedItem( "inspectorGeometry" );
 
-  if ( !inspectorGeometry.isNull() )
+  if ( !inspectorGeometry.isNull() ) {
     c.inspectorGeometry = QByteArray::fromBase64( inspectorGeometry.toElement().text().toLatin1() );
+  }
 
   QDomNode dictionariesDialogGeometry = root.namedItem( "dictionariesDialogGeometry" );
 
-  if ( !dictionariesDialogGeometry.isNull() )
+  if ( !dictionariesDialogGeometry.isNull() ) {
     c.dictionariesDialogGeometry = QByteArray::fromBase64( dictionariesDialogGeometry.toElement().text().toLatin1() );
+  }
 
   QDomNode timeForNewReleaseCheck = root.namedItem( "timeForNewReleaseCheck" );
 
-  if ( !timeForNewReleaseCheck.isNull() )
+  if ( !timeForNewReleaseCheck.isNull() ) {
     c.timeForNewReleaseCheck = QDateTime::fromString( timeForNewReleaseCheck.toElement().text(), Qt::ISODate );
+  }
 
   c.skippedRelease = root.namedItem( "skippedRelease" ).toElement().text();
 
   c.showingDictBarNames = ( root.namedItem( "showingDictBarNames" ).toElement().text() == "1" );
 
-  c.usingSmallIconsInToolbars = ( root.namedItem( "usingSmallIconsInToolbars" ).toElement().text() == "1" );
+  QDomNode usingToolbarsIconSize = root.namedItem( "usingToolbarsIconSize" );
+  if ( !usingToolbarsIconSize.isNull() ) {
+    c.usingToolbarsIconSize = static_cast< ToolbarsIconSize >( usingToolbarsIconSize.toElement().text().toInt() );
+  }
 
-  if ( !root.namedItem( "historyExportPath" ).isNull() )
+  if ( !root.namedItem( "historyExportPath" ).isNull() ) {
     c.historyExportPath = root.namedItem( "historyExportPath" ).toElement().text();
+  }
 
-  if ( !root.namedItem( "resourceSavePath" ).isNull() )
+  if ( !root.namedItem( "resourceSavePath" ).isNull() ) {
     c.resourceSavePath = root.namedItem( "resourceSavePath" ).toElement().text();
+  }
 
-  if ( !root.namedItem( "articleSavePath" ).isNull() )
+  if ( !root.namedItem( "articleSavePath" ).isNull() ) {
     c.articleSavePath = root.namedItem( "articleSavePath" ).toElement().text();
-
-  if ( !root.namedItem( "editDictionaryCommandLine" ).isNull() )
-    c.editDictionaryCommandLine = root.namedItem( "editDictionaryCommandLine" ).toElement().text();
+  }
 
   if ( !root.namedItem( "maxHeadwordSize" ).isNull() ) {
     unsigned int value = root.namedItem( "maxHeadwordSize" ).toElement().text().toUInt();
@@ -1179,27 +1194,33 @@ Class load()
     }
   }
 
-  if ( !root.namedItem( "maxHeadwordsToExpand" ).isNull() )
+  if ( !root.namedItem( "maxHeadwordsToExpand" ).isNull() ) {
     c.maxHeadwordsToExpand = root.namedItem( "maxHeadwordsToExpand" ).toElement().text().toUInt();
+  }
 
   QDomNode headwordsDialog = root.namedItem( "headwordsDialog" );
 
   if ( !headwordsDialog.isNull() ) {
-    if ( !headwordsDialog.namedItem( "searchMode" ).isNull() )
+    if ( !headwordsDialog.namedItem( "searchMode" ).isNull() ) {
       c.headwordsDialog.searchMode = headwordsDialog.namedItem( "searchMode" ).toElement().text().toInt();
+    }
 
-    if ( !headwordsDialog.namedItem( "matchCase" ).isNull() )
+    if ( !headwordsDialog.namedItem( "matchCase" ).isNull() ) {
       c.headwordsDialog.matchCase = ( headwordsDialog.namedItem( "matchCase" ).toElement().text() == "1" );
+    }
 
-    if ( !headwordsDialog.namedItem( "autoApply" ).isNull() )
+    if ( !headwordsDialog.namedItem( "autoApply" ).isNull() ) {
       c.headwordsDialog.autoApply = ( headwordsDialog.namedItem( "autoApply" ).toElement().text() == "1" );
+    }
 
-    if ( !headwordsDialog.namedItem( "headwordsExportPath" ).isNull() )
+    if ( !headwordsDialog.namedItem( "headwordsExportPath" ).isNull() ) {
       c.headwordsDialog.headwordsExportPath = headwordsDialog.namedItem( "headwordsExportPath" ).toElement().text();
+    }
 
-    if ( !headwordsDialog.namedItem( "headwordsDialogGeometry" ).isNull() )
+    if ( !headwordsDialog.namedItem( "headwordsDialogGeometry" ).isNull() ) {
       c.headwordsDialog.headwordsDialogGeometry =
         QByteArray::fromBase64( headwordsDialog.namedItem( "headwordsDialogGeometry" ).toElement().text().toLatin1() );
+    }
   }
 
   return c;
@@ -1294,8 +1315,9 @@ void save( Class const & c )
 {
   QSaveFile configFile( getConfigFileName() );
 
-  if ( !configFile.open( QFile::WriteOnly ) )
+  if ( !configFile.open( QFile::WriteOnly ) ) {
     throw exCantWriteConfigFile();
+  }
 
   QDomDocument dd;
 
@@ -1306,7 +1328,11 @@ void save( Class const & c )
     QDomElement paths = dd.createElement( "paths" );
     root.appendChild( paths );
 
-    for ( const auto & i : c.paths ) {
+    // Save all paths except the hard-code portable path,
+    // which is stored in the first element of list.
+    qsizetype pos = Config::isPortableVersion();
+
+    for ( const auto & i : c.paths.mid( pos ) ) {
       QDomElement path = dd.createElement( "path" );
       paths.appendChild( path );
 
@@ -1448,14 +1474,6 @@ void save( Class const & c )
 
     opt = dd.createElement( "enableHepburn" );
     opt.appendChild( dd.createTextNode( c.transliteration.romaji.enableHepburn ? "1" : "0" ) );
-    romaji.appendChild( opt );
-
-    opt = dd.createElement( "enableNihonShiki" );
-    opt.appendChild( dd.createTextNode( c.transliteration.romaji.enableNihonShiki ? "1" : "0" ) );
-    romaji.appendChild( opt );
-
-    opt = dd.createElement( "enableKunreiShiki" );
-    opt.appendChild( dd.createTextNode( c.transliteration.romaji.enableKunreiShiki ? "1" : "0" ) );
     romaji.appendChild( opt );
 
     opt = dd.createElement( "enableHiragana" );
@@ -1652,7 +1670,7 @@ void save( Class const & c )
       p.setAttributeNode( icon );
     }
   }
-#ifndef NO_TTS_SUPPORT
+#ifdef TTS_SUPPORT
   {
     QDomNode ves = dd.createElement( "voiceEngines" );
     root.appendChild( ves );
@@ -1787,11 +1805,11 @@ void save( Class const & c )
     preferences.appendChild( opt );
 
     opt = dd.createElement( "darkMode" );
-    opt.appendChild( dd.createTextNode( c.preferences.darkMode ? "1" : "0" ) );
+    opt.appendChild( dd.createTextNode( QString::number( static_cast< int >( c.preferences.darkMode ) ) ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "darkReaderMode" );
-    opt.appendChild( dd.createTextNode( c.preferences.darkReaderMode ? "1" : "0" ) );
+    opt.appendChild( dd.createTextNode( QString::number( static_cast< int >( c.preferences.darkReaderMode ) ) ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "zoomFactor" );
@@ -1886,7 +1904,7 @@ void save( Class const & c )
     preferences.appendChild( opt );
 
     opt = dd.createElement( "internalPlayerBackend" );
-    opt.appendChild( dd.createTextNode( c.preferences.internalPlayerBackend.uiName() ) );
+    opt.appendChild( dd.createTextNode( c.preferences.internalPlayerBackend.getName() ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "audioPlaybackProgram" );
@@ -1943,14 +1961,6 @@ void save( Class const & c )
 
       opt = dd.createElement( "password" );
       opt.appendChild( dd.createTextNode( c.preferences.proxyServer.password ) );
-      proxy.appendChild( opt );
-
-      opt = dd.createElement( "systemProxyUser" );
-      opt.appendChild( dd.createTextNode( c.preferences.proxyServer.systemProxyUser ) );
-      proxy.appendChild( opt );
-
-      opt = dd.createElement( "systemProxyPassword" );
-      opt.appendChild( dd.createTextNode( c.preferences.proxyServer.systemProxyPassword ) );
       proxy.appendChild( opt );
     }
 
@@ -2014,6 +2024,10 @@ void save( Class const & c )
 
     opt = dd.createElement( "removeInvalidIndexOnExit" );
     opt.appendChild( dd.createTextNode( c.preferences.removeInvalidIndexOnExit ? "1" : "0" ) );
+    preferences.appendChild( opt );
+
+    opt = dd.createElement( "enableApplicationLog" );
+    opt.appendChild( dd.createTextNode( c.preferences.enableApplicationLog ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "maxStringsInHistory" );
@@ -2151,8 +2165,8 @@ void save( Class const & c )
     opt.appendChild( dd.createTextNode( c.showingDictBarNames ? "1" : "0" ) );
     root.appendChild( opt );
 
-    opt = dd.createElement( "usingSmallIconsInToolbars" );
-    opt.appendChild( dd.createTextNode( c.usingSmallIconsInToolbars ? "1" : "0" ) );
+    opt = dd.createElement( "usingToolbarsIconSize" );
+    opt.appendChild( dd.createTextNode( QString::number( static_cast< int >( c.usingToolbarsIconSize ) ) ) );
     root.appendChild( opt );
 
     if ( !c.historyExportPath.isEmpty() ) {
@@ -2172,10 +2186,6 @@ void save( Class const & c )
       opt.appendChild( dd.createTextNode( c.articleSavePath ) );
       root.appendChild( opt );
     }
-
-    opt = dd.createElement( "editDictionaryCommandLine" );
-    opt.appendChild( dd.createTextNode( c.editDictionaryCommandLine ) );
-    root.appendChild( opt );
 
     opt = dd.createElement( "maxHeadwordSize" );
     opt.appendChild( dd.createTextNode( QString::number( c.maxHeadwordSize ) ) );
@@ -2212,8 +2222,9 @@ void save( Class const & c )
   }
 
   configFile.write( dd.toByteArray() );
-  if ( !configFile.commit() )
+  if ( !configFile.commit() ) {
     throw exCantWriteConfigFile();
+  }
 }
 
 QString getConfigFileName()
@@ -2240,8 +2251,9 @@ QString getIndexDir()
 
   result.mkpath( "index" );
 
-  if ( !result.cd( "index" ) )
+  if ( !result.cd( "index" ) ) {
     throw exCantUseIndexDir();
+  }
 
   return result.path() + QDir::separator();
 }
@@ -2299,9 +2311,10 @@ QString getUserQtCssFileName()
 
 QString getProgramDataDir() noexcept
 {
-  if ( isPortableVersion() )
+  if ( isPortableVersion() ) {
     return QCoreApplication::applicationDirPath();
-    // TODO: rewrite this in QStandardPaths::AppDataLocation
+  }
+  // TODO: rewrite this in QStandardPaths::AppDataLocation
 #ifdef PROGRAM_DATA_DIR
   return PROGRAM_DATA_DIR;
 #else
@@ -2311,18 +2324,22 @@ QString getProgramDataDir() noexcept
 
 QString getLocDir() noexcept
 {
-  if ( QDir( getProgramDataDir() ).cd( "locale" ) )
+  if ( QDir( getProgramDataDir() ).cd( "locale" ) ) {
     return getProgramDataDir() + "/locale";
-  else
+  }
+  else {
     return QCoreApplication::applicationDirPath() + "/locale";
+  }
 }
 
 QString getHelpDir() noexcept
 {
-  if ( QDir( getProgramDataDir() ).cd( "help" ) )
+  if ( QDir( getProgramDataDir() ).cd( "help" ) ) {
     return getProgramDataDir() + "/help";
-  else
+  }
+  else {
     return QCoreApplication::applicationDirPath() + "/help";
+  }
 }
 
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
@@ -2335,8 +2352,9 @@ QString getOpenCCDir() noexcept
     return QCoreApplication::applicationDirPath() + "/opencc";
   #elif defined( Q_OS_MAC )
   QString path = QCoreApplication::applicationDirPath() + "/opencc";
-  if ( QDir( path ).exists() )
+  if ( QDir( path ).exists() ) {
     return path;
+  }
 
   return QString();
   #else
@@ -2364,18 +2382,22 @@ bool isPortableVersion() noexcept
 
 QString getPortableVersionDictionaryDir() noexcept
 {
-  if ( isPortableVersion() )
+  if ( isPortableVersion() ) {
     return getProgramDataDir() + "/content";
-  else
+  }
+  else {
     return QString();
+  }
 }
 
 QString getPortableVersionMorphoDir() noexcept
 {
-  if ( isPortableVersion() )
+  if ( isPortableVersion() ) {
     return getPortableVersionDictionaryDir() + "/morphology";
-  else
+  }
+  else {
     return QString();
+  }
 }
 
 QString getStylesDir()
@@ -2384,8 +2406,9 @@ QString getStylesDir()
 
   result.mkpath( "styles" );
 
-  if ( !result.cd( "styles" ) )
+  if ( !result.cd( "styles" ) ) {
     return QString();
+  }
 
   return result.path() + QDir::separator();
 }

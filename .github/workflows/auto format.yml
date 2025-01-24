@@ -29,8 +29,7 @@ jobs:
           eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
           brew install clang-format
           (/home/linuxbrew/.linuxbrew/opt/clang-format/bin/git-clang-format --binary=/home/linuxbrew/.linuxbrew/opt/clang-format/bin/clang-format --style=file HEAD^) || true
-
-      - uses: autofix-ci/action@89762f9c25dd85f6b78cd40e521232e403357ec0    
+      - uses: autofix-ci/action@ff86a557419858bb967097bfc916833f5647fa8c
 
 
   css-js-html-format:
@@ -39,16 +38,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 2
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 16
-
-      - run: npm ci
-      - run: npx prettier  --write src/stylesheets src/scripts/gd-*.js
-      # Optimize all PNGs with https://pngquant.org/
-      # - run: sudo apt-get update && sudo apt-get install -y pngquant
-      # - name: Run pngquant
-      #   run: |
-      #     shopt -s globstar
-      #     pngquant -f --ext .png --skip-if-larger -- **/*.png
-      - uses: autofix-ci/action@89762f9c25dd85f6b78cd40e521232e403357ec0
+      - run: |
+          npm install -g prettier
+      - run: npx prettier . --write
+      - uses: autofix-ci/action@ff86a557419858bb967097bfc916833f5647fa8c

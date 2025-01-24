@@ -8,7 +8,7 @@ Report any bugs & dysfunctions to [issues list](<https://github.com/xiaoyifang/g
 
 Attach your version info in menu "About" -> "Copy version info".
 
-Goldendict can be started with "--log-to-file" that will creates "gd_log.txt" in configuration folder and store various warnings, errors and debug messages.
+GoldenDict-ng can be started with "--log-to-file" that will creates "gd_log.txt" in configuration folder and store various warnings, errors and debug messages.
 
 On windows, try open command line and starts goldendict with `goldendict --log-to-file`.
 
