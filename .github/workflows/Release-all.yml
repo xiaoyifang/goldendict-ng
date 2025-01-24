@@ -1,6 +1,6 @@
 name: Release All
 env: 
-  version: 24.11.0
+  version: 25.02.0
   prerelease: ${{ !contains(github.ref_name,'master') }}
   versionSuffix: ${{ !contains(github.ref_name,'master') && 'alpha' || 'Release' }}
 on: 
