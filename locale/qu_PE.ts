@@ -3533,7 +3533,7 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
     </message>
     <message>
       <source>Enable application log</source>
-      <translation type="unfinished">Enable application log</translation>
+      <translation>Yanapakuypa registronta atichiy</translation>
     </message>
   </context>
   <context>
