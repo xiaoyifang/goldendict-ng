@@ -3530,7 +3530,7 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
     </message>
     <message>
       <source>Enable application log</source>
-      <translation type="unfinished">Enable application log</translation>
+      <translation>Povoliť denník aplikácie</translation>
     </message>
   </context>
   <context>
