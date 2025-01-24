@@ -3536,7 +3536,7 @@ ze słowników Stardict, Babylon i GLS</translation>
     </message>
     <message>
       <source>Enable application log</source>
-      <translation type="unfinished">Enable application log</translation>
+      <translation>Włącz dziennik aplikacji</translation>
     </message>
   </context>
   <context>
