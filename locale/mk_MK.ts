@@ -3540,7 +3540,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Enable application log</source>
-      <translation type="unfinished">Enable application log</translation>
+      <translation>Овозможи дневник на апликација</translation>
     </message>
   </context>
   <context>
