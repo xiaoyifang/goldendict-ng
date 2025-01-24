@@ -3533,7 +3533,7 @@ des dictionnaires Stardict, Babylon et GLS</translation>
     </message>
     <message>
       <source>Enable application log</source>
-      <translation type="unfinished">Enable application log</translation>
+      <translation>Activer le journal des applications</translation>
     </message>
   </context>
   <context>
