@@ -3536,7 +3536,7 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     </message>
     <message>
       <source>Enable application log</source>
-      <translation type="unfinished">Enable application log</translation>
+      <translation>Alkalmazásnapló engedélyezése</translation>
     </message>
   </context>
   <context>
