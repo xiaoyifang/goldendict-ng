@@ -3533,7 +3533,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Enable application log</source>
-      <translation type="unfinished">Enable application log</translation>
+      <translation>애플리케이션 로그 활성화</translation>
     </message>
   </context>
   <context>
