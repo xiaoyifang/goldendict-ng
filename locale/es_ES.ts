@@ -3534,7 +3534,7 @@ de diccionarios Stardict, Babylon y GLS</translation>
     </message>
     <message>
       <source>Enable application log</source>
-      <translation type="unfinished">Enable application log</translation>
+      <translation>Habilitar el registro de aplicaciones</translation>
     </message>
   </context>
   <context>
