@@ -3544,7 +3544,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Enable application log</source>
-      <translation type="unfinished">Enable application log</translation>
+      <translation>Включить журнал приложений</translation>
     </message>
   </context>
   <context>
