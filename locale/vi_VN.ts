@@ -3530,7 +3530,7 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     </message>
     <message>
       <source>Enable application log</source>
-      <translation type="unfinished">Enable application log</translation>
+      <translation>Bật nhật ký ứng dụng</translation>
     </message>
   </context>
   <context>
