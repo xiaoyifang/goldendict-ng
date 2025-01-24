@@ -3537,7 +3537,7 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
     </message>
     <message>
       <source>Enable application log</source>
-      <translation type="unfinished">Enable application log</translation>
+      <translation>Ebligu protokolon de aplikaĵo</translation>
     </message>
   </context>
   <context>
