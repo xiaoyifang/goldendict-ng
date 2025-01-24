@@ -3539,7 +3539,7 @@ från Stardict, Babylon och GLS ordböcker</translation>
     </message>
     <message>
       <source>Enable application log</source>
-      <translation type="unfinished">Enable application log</translation>
+      <translation>Aktivera programlogg</translation>
     </message>
   </context>
   <context>
