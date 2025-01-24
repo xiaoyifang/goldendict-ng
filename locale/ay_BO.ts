@@ -3653,7 +3653,7 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     </message>
     <message>
       <source>Enable application log</source>
-      <translation type="unfinished">Enable application log</translation>
+      <translation>Aplicación registro ukar ch’amanchaña</translation>
     </message>
   </context>
   <context>
