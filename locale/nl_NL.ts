@@ -3533,7 +3533,7 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     </message>
     <message>
       <source>Enable application log</source>
-      <translation type="unfinished">Enable application log</translation>
+      <translation>Toepassingslogboek inschakelen</translation>
     </message>
   </context>
   <context>
