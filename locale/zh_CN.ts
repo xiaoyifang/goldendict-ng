@@ -832,7 +832,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Clear All Items</source>
-      <translation>清除所有项目</translation>
+      <translation>清除所有条目</translation>
     </message>
     <message>
       <source>Are you sure you want to clear all items?</source>
@@ -3522,7 +3522,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Enable application log</source>
-      <translation type="unfinished">Enable application log</translation>
+      <translation>启用应用程序日志</translation>
     </message>
   </context>
   <context>
