@@ -3537,7 +3537,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Enable application log</source>
-      <translation type="unfinished">Enable application log</translation>
+      <translation>Рӯйхати барномаҳоро фаъол созед</translation>
     </message>
   </context>
   <context>
