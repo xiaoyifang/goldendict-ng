@@ -3537,7 +3537,7 @@ no Stardict, Babilônia e dicionários GLS</translation>
     </message>
     <message>
       <source>Enable application log</source>
-      <translation type="unfinished">Enable application log</translation>
+      <translation>Habilitar log do aplicativo</translation>
     </message>
   </context>
   <context>
