@@ -17,8 +17,8 @@ QString version()
 QString everything()
 {
   return QStringLiteral( "Version: " ) + Version::version() + "\n" + "Qt " + QLatin1String( qVersion() ) + " "
-    + Version::compiler + "\n" + QSysInfo::productType() + " " + QSysInfo::kernelType() + " " + QSysInfo::kernelVersion()
-    + " " + QSysInfo::buildAbi() + "\nFlags: " + flags;
+    + Version::compiler + "\n" + QSysInfo::productType() + " " + QSysInfo::kernelType() + " "
+    + QSysInfo::kernelVersion() + " " + QSysInfo::buildAbi() + "\nFlags: " + flags;
 }
 
 } // namespace Version

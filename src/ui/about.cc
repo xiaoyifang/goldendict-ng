@@ -7,7 +7,7 @@
 #include <QClipboard>
 #include <QPushButton>
 
-About::About( QWidget * parent):
+About::About( QWidget * parent ):
   QDialog( parent )
 {
   ui.setupUi( this );
@@ -17,5 +17,4 @@ About::About( QWidget * parent):
   connect( ui.copyInfoBtn, &QPushButton::clicked, [] {
     QGuiApplication::clipboard()->setText( Version::everything() );
   } );
-
 }
