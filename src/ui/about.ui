@@ -93,7 +93,7 @@
          <item>
           <widget class="QLabel" name="label">
            <property name="text">
-            <string>GoldenDict-ng</string>
+            <string notr="true">GoldenDict-ng</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -115,14 +115,14 @@
        <item>
         <widget class="QLabel" name="label_4">
          <property name="text">
-          <string>© 2009-2023 GoldenDict Developers</string>
+          <string notr="true">© 2009-2023 GoldenDict Developers</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QLabel" name="label_5">
          <property name="text">
-          <string>© 2021–2025 GoldenDict-ng Community</string>
+          <string notr="true">© 2021–2025 GoldenDict-ng Community</string>
          </property>
         </widget>
        </item>
