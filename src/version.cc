@@ -16,9 +16,9 @@ QString version()
 
 QString everything()
 {
-  return QStringLiteral( "Goldendict-ng " ) + Version::version() + "\n" + "Qt " + QLatin1String( qVersion() ) + " "
-    + Version::compiler + " " + QSysInfo::productType() + " " + QSysInfo::kernelType() + " " + QSysInfo::kernelVersion()
-    + " " + QSysInfo::buildAbi() + "\n" + "Flags:" + flags;
+  return QStringLiteral( "Version: " ) + Version::version() + "\n" + "Qt " + QLatin1String( qVersion() ) + " "
+    + Version::compiler + "\n" + QSysInfo::productType() + " " + QSysInfo::kernelType() + " "
+    + QSysInfo::kernelVersion() + " " + QSysInfo::buildAbi() + "\nFlags: " + flags;
 }
 
 } // namespace Version
