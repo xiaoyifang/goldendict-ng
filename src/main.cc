@@ -170,11 +170,6 @@ struct GDOptions
     return popupGroupName;
   }
 
-  inline bool needLogFile() const
-  {
-    return logFile;
-  }
-
   inline bool needTranslateWord() const
   {
     return !word.isEmpty();
@@ -204,7 +199,7 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
 
   QCommandLineOption logFileOption( QStringList() << "l"
                                                   << "log-to-file",
-                                    QObject::tr( "Save debug messages to gd_log.txt in the config folder." ) );
+                                    QObject::tr( "Save debug messages to gd_log.txt in the config folder" ) + '.' );
 
   QCommandLineOption resetState( QStringList() << "r"
                                                << "reset-window-state",
@@ -492,9 +487,6 @@ int main( int argc, char ** argv )
   for ( ;; ) {
     try {
       cfg = Config::load();
-
-      //enabled through command line or preference
-      gdcl.logFile = gdcl.logFile || cfg.preferences.enableApplicationLog;
     }
     catch ( Config::exError & ) {
       QMessageBox mb(
@@ -526,13 +518,12 @@ int main( int argc, char ** argv )
 
   cfg.resetState = gdcl.resetState;
 
-  // Open log file
-  logFilePtr->setFileName( Config::getConfigDir() + "gd_log.txt" );
-  logFilePtr->open( QFile::WriteOnly );
-
-
-  // Install message handler
-  qInstallMessageHandler( gdMessageHandler );
+  // Log to file enabled through command line or preference
+  if ( gdcl.logFile || cfg.preferences.enableApplicationLog ) {
+    logFilePtr->setFileName( Config::getConfigDir() + "gd_log.txt" );
+    logFilePtr->open( QFile::WriteOnly );
+    qInstallMessageHandler( gdMessageHandler );
+  }
 
   // Reload translations for user selected locale is nesessary
   QTranslator qtTranslator;

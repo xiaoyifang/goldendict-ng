@@ -1938,7 +1938,7 @@ from Stardict, Babylon and GLS dictionaries</string>
           <item>
            <widget class="QCheckBox" name="enableApplicationLog">
             <property name="text">
-             <string>Enable application log</string>
+             <string>Save debug messages to gd_log.txt in the config folder</string>
             </property>
            </widget>
           </item>
