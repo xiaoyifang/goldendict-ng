@@ -1,11 +1,7 @@
 #pragma once
-#include <QFile>
-#include <QMutex>
 
 /// Manage Logging, mainly for switching to log-to-file because of Windows
-struct Logger
-{
-  static void switchLoggingMethod( bool logToFile );
-  static void closeLogFile();
-  QFile logFile;
-};
+namespace Logger {
+static void switchLoggingMethod( bool logToFile );
+static void closeLogFile();
+}; // namespace Logger
