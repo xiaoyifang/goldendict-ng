@@ -546,6 +546,7 @@ int main( int argc, char ** argv )
   QObject::connect( KSignalHandler::self(), &KSignalHandler::signalReceived, &m, &MainWindow::quitApp );
 #endif
   int r = app.exec();
+  Logger::closeLogFile();
 
   return r;
 }
