@@ -457,7 +457,7 @@ int main( int argc, char ** argv )
     QApplication::setFont( font );
   }
 
-  // Update locale if user's option disagrees with system
+  // Update locale if the user's choice disagrees with the system
   QLocale locale = QLocale::system();
   if ( !cfg.preferences.interfaceLanguage.isEmpty() && locale.name() != cfg.preferences.interfaceLanguage ) {
     locale = QLocale( cfg.preferences.interfaceLanguage );
@@ -466,31 +466,40 @@ int main( int argc, char ** argv )
   QLocale::setDefault( locale );
   QApplication::setLayoutDirection( locale.textDirection() );
 
-  qDebug() << locale;
-  // Load Qt translators based on locale using QLocale-based API
+  // Load translations, note some quirks:
+  // * For Windows, windeployqt will combine multiple qt modules translations into `qt_*` thus no `qtwebengine_*` exists
+  // * Only try loading qt & webengine translator GD's translations success to avoid inconsistency
+  // * Use the QLocale based loading QTranslator::load
+
+  QTranslator gd_ts;
+
+  QTranslator qt_ts;
+  QTranslator webengine_ts;
+
   auto loadTranslation = [ &locale ]( QTranslator & qtranslator,
                                       const QString & filename,
                                       const QString & prefix,
-                                      const QString & directory ) {
-    if ( qtranslator.load( locale, filename, prefix, directory, ".qm" ) ) {
-      QCoreApplication::installTranslator( &qtranslator );
+                                      const QString & directory ) -> bool {
+    if ( qtranslator.load( locale, filename, prefix, directory ) ) {
       qDebug() << "Loaded translator: " << qtranslator.filePath();
+      return true;
     }
     else {
       qDebug() << "Failed to load: " << filename << prefix << " from " << directory;
+      return false;
     }
   };
 
-  // Load translations
-  QTranslator qt_ts;
-  QTranslator webengine_ts;
-  QTranslator gd_ts;
+  if ( loadTranslation( gd_ts, QString(), QString(), Config::getLocDir() ) ) {
+    QCoreApplication::installTranslator( &gd_ts );
 
-  // For Windows, windeployqt will combine multiple qt modules translations into `qt_*`
-  // Thus, after deployment, loading `qtwebengine_*` is guaranteed to fail on Windows.
-  loadTranslation( gd_ts, QString(), QString(), Config::getLocDir() );
-  loadTranslation( qt_ts, "qt", "_", QLibraryInfo::path( QLibraryInfo::TranslationsPath ) );
-  loadTranslation( webengine_ts, "qtwebengine", "_", QLibraryInfo::path( QLibraryInfo::TranslationsPath ) );
+    if ( loadTranslation( qt_ts, "qt", "_", QLibraryInfo::path( QLibraryInfo::TranslationsPath ) ) ) {
+      QCoreApplication::installTranslator( &qt_ts );
+    }
+    if ( loadTranslation( webengine_ts, "qtwebengine", "_", QLibraryInfo::path( QLibraryInfo::TranslationsPath ) ) ) {
+      QCoreApplication::installTranslator( &webengine_ts );
+    }
+  }
 
   // Prevent app from quitting spontaneously when it works with popup
   // and with the main window closed.
