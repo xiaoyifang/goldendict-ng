@@ -447,8 +447,6 @@ int main( int argc, char ** argv )
 
   cfg.resetState = gdcl.resetState;
 
-  Logger::retainDefaultMessageHandler( qInstallMessageHandler( nullptr ) );
-
   // Log to file enabled through command line or preference
   Logger::switchLoggingMethod( gdcl.logFile || cfg.preferences.enableApplicationLog );
 

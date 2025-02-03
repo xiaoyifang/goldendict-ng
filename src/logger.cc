@@ -42,13 +42,9 @@ void logToFileMessageHander( QtMsgType type, const QMessageLogContext & context,
     return;
   }
   else {
-    throw std::runtime_error( "logToFileMessageHandler fatal error!" );
+    fprintf(stderr,"log file failed to open\n!");
+    fprintf(stderr,"%s\n",message.toUtf8().constData());
   }
-}
-
-void Logger::retainDefaultMessageHandler( QtMessageHandler handler )
-{
-  gd_logger->defaultMessageHandler = handler;
 }
 
 void Logger::switchLoggingMethod( bool logToFile )
@@ -67,7 +63,7 @@ void Logger::switchLoggingMethod( bool logToFile )
     if ( gd_logger->logFile.isOpen() ) {
       gd_logger->logFile.flush();
     }
-    qInstallMessageHandler( gd_logger->defaultMessageHandler );
+    qInstallMessageHandler( nullptr ); // restore the default one
   }
 }
 
