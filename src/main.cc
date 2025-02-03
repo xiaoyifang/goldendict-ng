@@ -466,13 +466,13 @@ int main( int argc, char ** argv )
   QLocale::setDefault( locale );
   QApplication::setLayoutDirection( locale.textDirection() );
 
-  qDebug()<<locale;
+  qDebug() << locale;
   // Load Qt translators based on locale using QLocale-based API
   auto loadTranslation = [ &locale ]( QTranslator & qtranslator,
                                       const QString & filename,
                                       const QString & prefix,
                                       const QString & directory ) {
-    if ( qtranslator.load( locale, filename, prefix, directory,".qm" ) ) {
+    if ( qtranslator.load( locale, filename, prefix, directory, ".qm" ) ) {
       QCoreApplication::installTranslator( &qtranslator );
       qDebug() << "Loaded translator: " << qtranslator.filePath();
     }
