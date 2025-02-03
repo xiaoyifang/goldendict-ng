@@ -1,5 +1,5 @@
 #include "config.hh"
-#include "logging.hh"
+#include "logger.hh"
 #include <QGlobalStatic>
 #include <QMutexLocker>
 #include <QDateTime>

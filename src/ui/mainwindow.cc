@@ -8,7 +8,7 @@
 #endif
 
 #include "mainwindow.hh"
-#include "logging.hh"
+#include "logger.hh"
 #include <QWebEngineProfile>
 #include "edit_dictionaries.hh"
 #include "dict/loaddictionaries.hh"
@@ -2367,7 +2367,7 @@ void MainWindow::editPreferences()
 
     ui.fullTextSearchAction->setEnabled( cfg.preferences.fts.enabled );
 
-    Logging::switchLoggingMethod( cfg.preferences.enableApplicationLog );
+    Logger::switchLoggingMethod( cfg.preferences.enableApplicationLog );
 
     Config::save( cfg );
   }

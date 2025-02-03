@@ -2,7 +2,7 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "config.hh"
-#include "logging.hh"
+#include "logger.hh"
 #include "mainwindow.hh"
 #include "termination.hh"
 #include "version.hh"
@@ -447,10 +447,10 @@ int main( int argc, char ** argv )
 
   cfg.resetState = gdcl.resetState;
 
-  Logging::retainDefaultMessageHandler( qInstallMessageHandler( nullptr ) );
+  Logger::retainDefaultMessageHandler( qInstallMessageHandler( nullptr ) );
 
   // Log to file enabled through command line or preference
-  Logging::switchLoggingMethod( gdcl.logFile || cfg.preferences.enableApplicationLog );
+  Logger::switchLoggingMethod( gdcl.logFile || cfg.preferences.enableApplicationLog );
 
   // Reload translations for user selected locale is nesessary
   QTranslator qtTranslator;

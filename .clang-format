@@ -81,6 +81,7 @@ IndentExternBlock: AfterExternBlock
 IndentWidth: 2
 IndentWrappedFunctionNames: false
 # InsertBraces: false
+InsertNewlineAtEOF: true
 InsertTrailingCommas: None
 KeepEmptyLinesAtTheStartOfBlocks: true
 LambdaBodyIndentation: Signature
