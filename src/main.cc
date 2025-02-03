@@ -2,7 +2,7 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "config.hh"
-#include "logfileptr.hh"
+#include "logger.hh"
 #include "mainwindow.hh"
 #include "termination.hh"
 #include "version.hh"
@@ -14,11 +14,9 @@
 #include <QMutex>
 #include <QSessionManager>
 #include <QString>
-#include <QStringBuilder>
 #include <QtWebEngineCore/QWebEngineUrlScheme>
 #include <stdio.h>
 #include <QStyleFactory>
-
 #if defined( Q_OS_UNIX )
   #include <clocale>
   #include "unix/ksignalhandler.hh"
@@ -82,66 +80,6 @@ bool callback( const char * dump_dir, const char * minidump_id, void * context, 
   #endif
 #endif
 
-QMutex logMutex;
-
-void gdMessageHandler( QtMsgType type, const QMessageLogContext & context, const QString & mess )
-{
-  if ( GlobalBroadcaster::instance()->getPreference() == nullptr
-       || !GlobalBroadcaster::instance()->getPreference()->enableApplicationLog ) {
-    return;
-  }
-  QString strTime = QDateTime::currentDateTime().toString( "MM-dd hh:mm:ss" );
-  QString message = QString( "%1 %2\r\n" ).arg( strTime, mess );
-
-  if ( ( logFilePtr != nullptr ) && logFilePtr->isOpen() ) {
-    //without the lock ,on multithread,there would be assert error.
-    QMutexLocker _( &logMutex );
-    switch ( type ) {
-      case QtDebugMsg:
-        message.insert( 0, "Debug: " );
-        break;
-      case QtWarningMsg:
-        message.insert( 0, "Warning: " );
-        break;
-      case QtCriticalMsg:
-        message.insert( 0, "Critical: " );
-        break;
-      case QtFatalMsg:
-        message.insert( 0, "Fatal: " );
-        logFilePtr->write( message.toUtf8() );
-        logFilePtr->flush();
-        abort();
-      case QtInfoMsg:
-        message.insert( 0, "Info: " );
-        break;
-    }
-
-    logFilePtr->write( message.toUtf8() );
-    logFilePtr->flush();
-
-    return;
-  }
-
-  //the following code lines actually will have no chance to run, schedule to remove in the future.
-  QByteArray msg = mess.toUtf8().constData();
-  switch ( type ) {
-    case QtDebugMsg:
-      fprintf( stderr, "Debug: %s\n", msg.constData() );
-      break;
-    case QtWarningMsg:
-      fprintf( stderr, "Warning: %s\n", msg.constData() );
-      break;
-    case QtCriticalMsg:
-      fprintf( stderr, "Critical: %s\n", msg.constData() );
-      break;
-    case QtFatalMsg:
-      fprintf( stderr, "Fatal: %s\n", msg.constData() );
-      abort();
-    case QtInfoMsg:
-      fprintf( stderr, "Info: %s\n", msg.constData() );
-      break;
-  }
-}
 
 struct GDOptions
 {
@@ -168,11 +106,6 @@ struct GDOptions
   inline QString getPopupGroupName() const
   {
     return popupGroupName;
-  }
-
-  inline bool needLogFile() const
-  {
-    return logFile;
   }
 
   inline bool needTranslateWord() const
@@ -204,7 +137,7 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
 
   QCommandLineOption logFileOption( QStringList() << "l"
                                                   << "log-to-file",
-                                    QObject::tr( "Save debug messages to gd_log.txt in the config folder." ) );
+                                    QObject::tr( "Save debug messages to gd_log.txt in the config folder" ) + '.' );
 
   QCommandLineOption resetState( QStringList() << "r"
                                                << "reset-window-state",
@@ -431,15 +364,6 @@ int main( int argc, char ** argv )
     QWebEngineUrlScheme::registerScheme( webUiScheme );
   }
 
-  QFile file;
-  logFilePtr = &file;
-  auto guard = qScopeGuard( [ &file ]() {
-    logFilePtr = nullptr;
-    file.close();
-  } );
-
-  Q_UNUSED( guard )
-
   QFont f = QApplication::font();
   f.setStyleStrategy( QFont::PreferAntialias );
   QApplication::setFont( f );
@@ -492,9 +416,6 @@ int main( int argc, char ** argv )
   for ( ;; ) {
     try {
       cfg = Config::load();
-
-      //enabled through command line or preference
-      gdcl.logFile = gdcl.logFile || cfg.preferences.enableApplicationLog;
     }
     catch ( Config::exError & ) {
       QMessageBox mb(
@@ -526,13 +447,8 @@ int main( int argc, char ** argv )
 
   cfg.resetState = gdcl.resetState;
 
-  // Open log file
-  logFilePtr->setFileName( Config::getConfigDir() + "gd_log.txt" );
-  logFilePtr->open( QFile::WriteOnly );
-
-
-  // Install message handler
-  qInstallMessageHandler( gdMessageHandler );
+  // Log to file enabled through command line or preference
+  Logger::switchLoggingMethod( gdcl.logFile || cfg.preferences.enableApplicationLog );
 
   // Reload translations for user selected locale is nesessary
   QTranslator qtTranslator;
@@ -630,10 +546,7 @@ int main( int argc, char ** argv )
   QObject::connect( KSignalHandler::self(), &KSignalHandler::signalReceived, &m, &MainWindow::quitApp );
 #endif
   int r = app.exec();
-
-  if ( logFilePtr->isOpen() ) {
-    logFilePtr->close();
-  }
+  Logger::closeLogFile();
 
   return r;
 }
