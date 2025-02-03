@@ -41,12 +41,12 @@ void logToFileMessageHander( QtMsgType type, const QMessageLogContext & context,
     return;
   }
   else {
-    fprintf(stderr,"log file failed to open\n!");
-    fprintf(stderr,"%s\n",message.toUtf8().constData());
+    fprintf( stderr, "log file failed to open\n!" );
+    fprintf( stderr, "%s\n", message.toUtf8().constData() );
   }
 }
 
-namespace Logger{
+namespace Logger {
 void switchLoggingMethod( bool logToFile )
 {
   QMutexLocker _( &logFileMutex );
@@ -75,4 +75,4 @@ void closeLogFile()
     logFile.close();
   }
 }
-}
+} // namespace Logger
