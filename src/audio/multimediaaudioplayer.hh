@@ -10,7 +10,6 @@
   #include <QBuffer>
   #include <QMediaDevices>
   #include <QMediaPlayer>
-  #include <QPointer>
 
 class MultimediaAudioPlayer: public AudioPlayerInterface
 {
