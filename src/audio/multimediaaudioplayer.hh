@@ -28,7 +28,7 @@ private slots:
 
 
 private:
-  QPointer< QBuffer > audioBuffer;
+  QBuffer audioBuffer;
   QMediaPlayer player; ///< Depends on audioBuffer.
   QAudioOutput audioOutput;
   QMediaDevices mediaDevices;
