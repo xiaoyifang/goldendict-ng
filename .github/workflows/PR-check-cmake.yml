@@ -69,6 +69,7 @@ jobs:
           xapian \
           libzim \
           qt || true
+          
       - name: Install eb
         run: |
           wget https://github.com/mistydemeo/eb/releases/download/v4.4.3/eb-4.4.3.tar.bz2
@@ -76,10 +77,12 @@ jobs:
           cd eb-4.4.3 && ./configure && make -j 8 && sudo make install && cd ..
       - name: Run build
         run: |
+          brew info qt
+
           mkdir build_dir
           cmake -S . \
             -B ./build_dir \
-            -G Ninja
+            -G Ninja -DCMAKE_PREFIX_PATH=$(brew --prefix qt)
           cmake --build ./build_dir
               
   job_window_build_check:
