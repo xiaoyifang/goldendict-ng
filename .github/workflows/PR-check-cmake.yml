@@ -46,7 +46,7 @@ jobs:
           cmake --build ./build_dir 
   job_macos_build_check:
     name: macos Build and analyze
-    runs-on: macos-13
+    runs-on: macos-14
     steps:             
       - uses: actions/checkout@v4
         with:
