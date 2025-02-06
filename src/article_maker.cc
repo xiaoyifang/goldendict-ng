@@ -164,9 +164,6 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word, QString const & 
     result += R"(
 <script src="qrc:///scripts/darkreader.js"></script>
 <style>
-body { background: #242525; }
-.gdarticle { background: initial;}
-
 .gdarticlebody img{
   background: white !important;
 }
