@@ -607,7 +607,7 @@ QString & MdictParser::substituteStylesheet( QString & article, MdictParser::Sty
   QString articleNewText;
 
   QString endStyle;
-  int pos = 0;
+  qsizetype pos = 0;
 
   QRegularExpressionMatchIterator it = rx.globalMatch( article );
   while ( it.hasNext() ) {

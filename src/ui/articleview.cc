@@ -1739,7 +1739,7 @@ void ArticleView::moveOneArticleUp()
   if ( current.size() ) {
     QStringList lst = getArticlesList();
 
-    int idx = lst.indexOf( dictionaryIdFromScrollTo( current ) );
+    auto idx = lst.indexOf( dictionaryIdFromScrollTo( current ) );
 
     if ( idx != -1 ) {
       --idx;
@@ -1762,7 +1762,7 @@ void ArticleView::moveOneArticleDown()
     currentDictId = lst[ 0 ];
   }
 
-  int idx = lst.indexOf( currentDictId );
+  auto idx = lst.indexOf( currentDictId );
 
   if ( idx != -1 ) {
     idx = ( idx + 1 ) % lst.size();

@@ -140,11 +140,11 @@ void complementDictionaryOrder( Group & group,
 {
   set< string, std::less<> > presentIds;
 
-  for ( unsigned x = group.dictionaries.size(); x--; ) {
+  for ( auto x = group.dictionaries.size(); x--; ) {
     presentIds.insert( group.dictionaries[ x ]->getId() );
   }
 
-  for ( unsigned x = inactiveDictionaries.dictionaries.size(); x--; ) {
+  for ( auto x = inactiveDictionaries.dictionaries.size(); x--; ) {
     presentIds.insert( inactiveDictionaries.dictionaries[ x ]->getId() );
   }
 
@@ -158,10 +158,10 @@ void complementDictionaryOrder( Group & group,
 void updateNames( Config::Group & group, vector< sptr< Dictionary::Class > > const & allDictionaries )
 {
 
-  for ( unsigned x = group.dictionaries.size(); x--; ) {
+  for ( auto x = group.dictionaries.size(); x--; ) {
     std::string const id = group.dictionaries[ x ].id.toStdString();
 
-    for ( unsigned y = allDictionaries.size(); y--; ) {
+    for ( auto y = allDictionaries.size(); y--; ) {
       if ( allDictionaries[ y ]->getId() == id ) {
         group.dictionaries[ x ].name = QString::fromUtf8( allDictionaries[ y ]->getName().c_str() );
         break;

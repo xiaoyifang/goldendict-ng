@@ -694,7 +694,7 @@ QString & GlsDictionary::filterResource( QString & article )
   QRegularExpression linksReg( R"(<a(\s+[^>]*)href\s*=\s*['"](bword://)?([^'"]+)['"])",
                                QRegularExpression::CaseInsensitiveOption );
 
-  int pos = 0;
+  qsizetype pos = 0;
   QString articleNewText;
   QRegularExpressionMatchIterator it = linksReg.globalMatch( article );
   while ( it.hasNext() ) {
@@ -1119,7 +1119,8 @@ void GlsResourceRequest::run()
       // Correct some url's
 
       QString id = QString::fromUtf8( dict.getId().c_str() );
-      int pos    = 0;
+
+      qsizetype pos = 0;
 
       QRegularExpression links( R"(url\(\s*(['"]?)([^'"]*)(['"]?)\s*\))", QRegularExpression::CaseInsensitiveOption );
 

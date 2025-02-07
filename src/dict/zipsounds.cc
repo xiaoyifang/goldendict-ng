@@ -328,7 +328,7 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getResource( string const &
   // Find sound
 
   uint32_t dataOffset = 0;
-  for ( int x = chain.size() - 1; x >= 0; x-- ) {
+  for ( std::size_t x = chain.size() - 1; x >= 0; x-- ) {
     vector< char > chunk;
     char * nameBlock = chunks->getBlock( chain[ x ].articleOffset, chunk );
 

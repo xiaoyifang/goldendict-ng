@@ -45,7 +45,7 @@ public:
     netMgr( netMgr_ ),
     langId( 0 )
   {
-    int n = url.indexOf( "." );
+    auto n = url.indexOf( "." );
     if ( n == 2 || ( n > 3 && url[ n - 3 ] == '/' ) ) {
       langId = LangCoder::code2toInt( url.mid( n - 2, 2 ).toLatin1().data() );
     }
@@ -249,7 +249,7 @@ public:
   static void generateTableOfContentsIfEmpty( QDomNode const & parseNode, QString & articleString )
   {
     QString const emptyTocIndicator = "<meta property=\"mw:PageProp/toc\" />";
-    int const emptyTocPos           = articleString.indexOf( emptyTocIndicator );
+    auto const emptyTocPos          = articleString.indexOf( emptyTocIndicator );
     if ( emptyTocPos == -1 ) {
       return; // The ToC must be absent or nonempty => nothing to do.
     }
@@ -524,7 +524,7 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
             QString articleString = textNode.toElement().text();
 
             // Replace all ":" in links, remove '#' part in links to other articles
-            int pos = 0;
+            qsizetype pos = 0;
             QRegularExpression regLinks( "<a\\s+href=\"/([^\"]+)\"" );
             QString articleNewString;
             QRegularExpressionMatchIterator it = regLinks.globalMatch( articleString );
@@ -546,7 +546,7 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
                 link.replace( ':', "%3A" );
               }
 
-              int n = link.indexOf( '#', 1 );
+              auto n = link.indexOf( '#', 1 );
               if ( n > 0 ) {
                 QString anchor = link.mid( n + 1 ).replace( '_', "%5F" );
                 link.truncate( n );
@@ -620,7 +620,7 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
             it = rxLink.globalMatch( articleString );
             while ( it.hasNext() ) {
               QRegularExpressionMatch match = it.next();
-              for ( int i = match.capturedStart() + 9; i < match.capturedEnd(); i++ ) {
+              for ( auto i = match.capturedStart() + 9; i < match.capturedEnd(); i++ ) {
                 if ( articleString.at( i ) == QChar( '_' ) ) {
                   articleString[ i ] = ' ';
                 }

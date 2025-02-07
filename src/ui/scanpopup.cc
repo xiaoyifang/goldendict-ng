@@ -327,7 +327,7 @@ void ScanPopup::updateFoundInDictsList()
   for ( QStringList::const_iterator i = ids.constBegin(); i != ids.constEnd(); ++i ) {
     // Find this dictionary
 
-    for ( unsigned x = dictionaries.size(); x--; ) {
+    for ( auto x = dictionaries.size(); x--; ) {
       if ( dictionaries[ x ]->getId() == i->toUtf8().data() ) {
 
         auto dictionary  = dictionaries[ x ];

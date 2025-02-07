@@ -263,7 +263,7 @@ string SdictDictionary::convert( string const & in )
 
   // Links handling
 
-  int n = 0;
+  qsizetype n = 0;
   for ( ;; ) {
     QRegularExpression start_link_tag( "<\\s*r\\s*>", QRegularExpression::CaseInsensitiveOption );
     QRegularExpression end_link_tag( "<\\s*/r\\s*>", QRegularExpression::CaseInsensitiveOption );
@@ -273,13 +273,13 @@ string SdictDictionary::convert( string const & in )
       break;
     }
 
-    int end = result.indexOf( end_link_tag, n );
+    auto end = result.indexOf( end_link_tag, n );
     if ( end < 0 ) {
       break;
     }
 
     QRegularExpressionMatch m = start_link_tag.match( result, 0, QRegularExpression::PartialPreferFirstMatch );
-    int tag_len               = m.captured().length();
+    auto tag_len              = m.captured().length();
     QString link_text         = result.mid( n + tag_len, end - n - tag_len );
 
     m = end_link_tag.match( result, 0, QRegularExpression::PartialPreferFirstMatch );
@@ -292,7 +292,7 @@ string SdictDictionary::convert( string const & in )
   n      = 0;
   bool b = true;
   while ( b ) {
-    int next = result.indexOf( "<br/>", n );
+    auto next = result.indexOf( "<br/>", n );
     if ( next < 0 ) {
       next = result.length();
       b    = false;
