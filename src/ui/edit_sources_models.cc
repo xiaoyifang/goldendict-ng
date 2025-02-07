@@ -87,7 +87,7 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg ):
 
   ui.paths->setTabKeyNavigation( true );
   ui.paths->setModel( &pathsModel );
-  
+
   fitPathsColumns();
 
   ui.soundDirs->setTabKeyNavigation( true );
