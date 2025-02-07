@@ -35,6 +35,7 @@ Checks: >
   -modernize-use-nodiscard,
   -modernize-use-trailing-return-type,
   -performance-enum-size,
+  -readability-else-after-return,
   -readability-function-cognitive-complexity,
   -readability-identifier-length,
   -readability-magic-numbers,
