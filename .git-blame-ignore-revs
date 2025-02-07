@@ -24,3 +24,6 @@ c8af0450f1f7f8188004db96e3f53e7e33e2ccad
 
 # wstring & wchar -> std::u32string & char32_t
 f1e158578f62c96059bef1a616b75495adb6e2c6
+
+# (q)size_type
+932bfa123c94efc5817a87e772cce559cdaebdb8
