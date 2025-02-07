@@ -201,7 +201,7 @@ void WebSiteArticleRequest::requestFinished( QNetworkReply * r )
     QRegularExpression tags( R"(<\s*(a|link|img|script)\s+[^>]*(src|href)\s*=\s*['"][^>]+>)",
                              QRegularExpression::CaseInsensitiveOption );
     QRegularExpression links( R"(\b(src|href)\s*=\s*(['"])([^'"]+['"]))", QRegularExpression::CaseInsensitiveOption );
-    int pos = 0;
+    qsizetype pos = 0;
     QString articleNewString;
     QRegularExpressionMatchIterator it = tags.globalMatch( articleString );
     while ( it.hasNext() ) {
@@ -443,7 +443,7 @@ void WebSiteResourceRequest::requestFinished( QNetworkReply * r )
 sptr< Dictionary::DataRequest > WebSiteDictionary::getResource( string const & name )
 {
   QString link = QString::fromUtf8( name.c_str() );
-  int pos      = link.indexOf( '/' );
+  auto pos     = link.indexOf( '/' );
   if ( pos > 0 ) {
     link.replace( pos, 1, "://" );
   }

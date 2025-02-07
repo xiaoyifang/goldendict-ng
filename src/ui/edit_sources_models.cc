@@ -1466,7 +1466,7 @@ QVariant HunspellDictsModel::data( QModelIndex const & index, int role ) const
   }
 
   if ( role == Qt::CheckStateRole && !index.column() ) {
-    for ( unsigned x = enabledDictionaries.size(); x--; ) {
+    for ( qsizetype x = enabledDictionaries.size(); x--; ) {
       if ( enabledDictionaries[ x ] == dataFiles[ index.row() ].dictId ) {
         return Qt::Checked;
       }
@@ -1485,7 +1485,7 @@ bool HunspellDictsModel::setData( QModelIndex const & index, const QVariant & /*
   }
 
   if ( role == Qt::CheckStateRole && !index.column() ) {
-    for ( unsigned x = enabledDictionaries.size(); x--; ) {
+    for ( qsizetype x = enabledDictionaries.size(); x--; ) {
       if ( enabledDictionaries[ x ] == dataFiles[ index.row() ].dictId ) {
         // Remove it now
         enabledDictionaries.erase( enabledDictionaries.begin() + x );

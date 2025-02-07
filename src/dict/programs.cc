@@ -230,7 +230,7 @@ void ProgramDataRequest::instanceFinished( QByteArray output, QString error )
             // Check BOM if present
             unsigned char * uchars = reinterpret_cast< unsigned char * >( output.data() );
             if ( output.length() >= 2 && uchars[ 0 ] == 0xFF && uchars[ 1 ] == 0xFE ) {
-              int size = output.length() - 2;
+              qsizetype size = output.length() - 2;
               if ( size & 1 ) {
                 size -= 1;
               }
@@ -238,7 +238,7 @@ void ProgramDataRequest::instanceFinished( QByteArray output, QString error )
               prog_output = QString::fromUtf8( res.c_str(), res.size() );
             }
             else if ( output.length() >= 2 && uchars[ 0 ] == 0xFE && uchars[ 1 ] == 0xFF ) {
-              int size = output.length() - 2;
+              qsizetype size = output.length() - 2;
               if ( size & 1 ) {
                 size -= 1;
               }
@@ -264,14 +264,14 @@ void ProgramDataRequest::instanceFinished( QByteArray output, QString error )
             // Check BOM if present
             unsigned char * uchars = reinterpret_cast< unsigned char * >( output.data() );
             if ( output.length() >= 2 && uchars[ 0 ] == 0xFF && uchars[ 1 ] == 0xFE ) {
-              int size = output.length() - 2;
+              qsizetype size = output.length() - 2;
               if ( size & 1 ) {
                 size -= 1;
               }
               result += Iconv::toUtf8( "UTF-16LE", output.data() + 2, size );
             }
             else if ( output.length() >= 2 && uchars[ 0 ] == 0xFE && uchars[ 1 ] == 0xFF ) {
-              int size = output.length() - 2;
+              qsizetype size = output.length() - 2;
               if ( size & 1 ) {
                 size -= 1;
               }

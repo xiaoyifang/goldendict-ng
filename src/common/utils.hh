@@ -31,8 +31,7 @@ inline bool isCJKChar( ushort ch )
  */
 inline QString rstrip( const QString & str )
 {
-  int n = str.size() - 1;
-  for ( ; n >= 0; --n ) {
+  for ( auto n = str.size() - 1; n >= 0; --n ) {
     if ( !str.at( n ).isSpace() ) {
       return str.left( n + 1 );
     }
@@ -64,8 +63,7 @@ bool endsWithIgnoreCase( QByteArrayView str, QByteArrayView extension );
 inline QString trimNonChar( const QString & str )
 {
   QString remain;
-  int n = str.size() - 1;
-  for ( ; n >= 0; --n ) {
+  for ( auto n = str.size() - 1; n >= 0; --n ) {
     auto c = str.at( n );
     if ( !c.isSpace() && !c.isSymbol() && !c.isNonCharacter() && !c.isPunct() && !c.isNull() ) {
       remain = str.left( n + 1 );
@@ -73,8 +71,7 @@ inline QString trimNonChar( const QString & str )
     }
   }
 
-  n = 0;
-  for ( ; n < remain.size(); n++ ) {
+  for ( auto n = 0; n < remain.size(); n++ ) {
     auto c = remain.at( n );
     if ( !c.isSpace() && !c.isSymbol() && !c.isNonCharacter() && !c.isPunct() ) {
       return remain.mid( n );
@@ -92,8 +89,7 @@ inline QString trimNonChar( const QString & str )
  */
 inline QString rstripnull( const QString & str )
 {
-  int n = str.size() - 1;
-  for ( ; n >= 0; --n ) {
+  for ( auto n = str.size() - 1; n >= 0; --n ) {
     auto c = str.at( n );
     if ( !c.isSpace() && !c.isNull() ) {
       return str.left( n + 1 );
@@ -298,7 +294,7 @@ inline QString getHostBase( QString const & host )
 {
   QStringList domains = host.split( '.' );
 
-  int left = domains.size();
+  auto left = domains.size();
 
   // Skip last <=3-letter domain name
   if ( left && domains[ left - 1 ].size() <= 3 )
