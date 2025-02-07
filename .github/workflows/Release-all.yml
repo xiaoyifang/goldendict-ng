@@ -176,9 +176,7 @@ jobs:
           # HEREDOC must be quoted to avoid Bash substitution
           # append the branch name to the changelog
           cat <<'HEREDOC' >> changelog.txt
-          
           Based on branch: ${{ github.ref_name }}
-          
           HEREDOC
       - name: Print changelog.txt
         run: |

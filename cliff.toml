@@ -14,7 +14,6 @@ Filename pattern: GoldenDict-ng-[version]-[Qt version]-[system name]...
 
 For Linux, the released version is on Flathub → [io.github.xiaoyifang.goldendict_ng](https://flathub.org/apps/io.github.xiaoyifang.goldendict_ng).
 
-# Changelog\n
 """
 # template for the changelog body
 # https://keats.github.io/tera/docs/#introduction
@@ -32,13 +31,12 @@ body = """
 
 {% if version %}\
     {% if previous.version %}\
-        ## [{{ version | trim_start_matches(pat="v") }}]\
-          ({{ self::remote_url() }}/compare/{{ previous.version }}..{{ version }}) - {{ timestamp | date(format="%Y-%m-%d") }}
+        ## [{{ timestamp | date(format="%Y-%m-%d") }}]\
+          ({{ self::remote_url() }}/compare/{{ previous.version }}..{{ version }})
     {% else %}\
-        ## [{{ version | trim_start_matches(pat="v") }}] - {{ timestamp | date(format="%Y-%m-%d") }}
+        ## {{ timestamp | date(format="%Y-%m-%d") }}
     {% endif %}\
 {% else %}\
-    ## [unreleased]
 {% endif %}\
 
 {% for group, commits in commits | group_by(attribute="group") %}
@@ -56,7 +54,7 @@ body = """
 {% endfor -%}
 {%- if github -%}
 {% if github.contributors | filter(attribute="is_first_time", value=true) | length != 0 %}
-  ## New Contributors ❤️
+    ### New Contributors ❤️
 {% endif %}\
 {% for contributor in github.contributors | filter(attribute="is_first_time", value=true) %}
   * @{{ contributor.username }} made their first contribution
@@ -101,16 +99,13 @@ commit_parsers = [
   { message = "^feat", group = "<!-- 0 -->🚀 Features" },
   { message = "^(fix|bug)", group = "<!-- 1 -->🐛 Bug Fixes" },
   { message = "^doc", group = "<!-- 3 -->📚 Documentation" },
-  { message = "^opt", group = "<!-- 4 -->⚡ Optimizations" },
+  { message = "^opt", group = "<!-- 4 -->🆙 Improvements" },  
   { message = "^perf", group = "<!-- 4 -->⚡ Performance" },
-  { message = "^clean", group = "<!-- 4 -->🧼 Clean code" },
   { message = "^refactor", group = "<!-- 2 -->🚜 Refactor" },
+  { message = "^clean", group = "<!-- 4 -->🧼 Clean code" },
   { message = "^style", group = "<!-- 5 -->🎨 Styling" },
   { message = "^test", group = "<!-- 6 -->🧪 Testing" },
-  { message = "^chore\\(release\\): prepare for", skip = true },
-  { message = "^chore\\(deps.*\\)", skip = true },
-  { message = "^chore\\(pr\\)", skip = true },
-  { message = "^chore\\(pull\\)", skip = true },
+  { message = "^(dev|ignore)", skip = true },
   { message = "^chore|^ci", group = "<!-- 7 -->⚙️ Miscellaneous Tasks" },
   { body = ".*security", group = "<!-- 8 -->🛡️ Security" },
   { message = "^revert", group = "<!-- 9 -->◀️ Revert" },
