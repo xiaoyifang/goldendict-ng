@@ -180,6 +180,9 @@ jobs:
           Based on branch: ${{ github.ref_name }}
           
           HEREDOC
+      - name: Print changelog.txt
+        run: |
+          cat changelog.txt
       - name: Get release title
         id: getReleaseTitle
         run: |
