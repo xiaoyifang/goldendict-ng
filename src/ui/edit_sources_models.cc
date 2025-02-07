@@ -420,7 +420,7 @@ void MediaWikisModel::addNewWiki()
 
 Qt::ItemFlags MediaWikisModel::flags( QModelIndex const & index ) const
 {
-  Qt::ItemFlags result = QAbstractItemModel::flags( index );
+  Qt::ItemFlags result = QAbstractTableModel::flags( index );
 
   if ( index.isValid() ) {
     if ( !index.column() ) {
@@ -582,7 +582,7 @@ void WebSitesModel::addNewSite()
 
 Qt::ItemFlags WebSitesModel::flags( QModelIndex const & index ) const
 {
-  Qt::ItemFlags result = QAbstractItemModel::flags( index );
+  Qt::ItemFlags result = QAbstractTableModel::flags( index );
 
   if ( index.isValid() ) {
     if ( index.column() <= 1 ) {
@@ -761,7 +761,7 @@ void DictServersModel::addNewServer()
 
 Qt::ItemFlags DictServersModel::flags( QModelIndex const & index ) const
 {
-  Qt::ItemFlags result = QAbstractItemModel::flags( index );
+  Qt::ItemFlags result = QAbstractTableModel::flags( index );
 
   if ( index.isValid() ) {
     if ( !index.column() ) {
@@ -933,7 +933,7 @@ void ProgramsModel::addNewProgram()
 
 Qt::ItemFlags ProgramsModel::flags( QModelIndex const & index ) const
 {
-  Qt::ItemFlags result = QAbstractItemModel::flags( index );
+  Qt::ItemFlags result = QAbstractTableModel::flags( index );
 
   if ( index.isValid() ) {
     if ( !index.column() ) {
@@ -1229,7 +1229,7 @@ void SoundDirsModel::addNewSoundDir( QString const & path, QString const & name 
 
 Qt::ItemFlags SoundDirsModel::flags( QModelIndex const & index ) const
 {
-  Qt::ItemFlags result = QAbstractItemModel::flags( index );
+  Qt::ItemFlags result = QAbstractTableModel::flags( index );
 
   if ( index.isValid() && index.column() < 3 ) {
     result |= Qt::ItemIsEditable;
@@ -1340,7 +1340,7 @@ void HunspellDictsModel::changePath( QString const & newPath )
 
 Qt::ItemFlags HunspellDictsModel::flags( QModelIndex const & index ) const
 {
-  Qt::ItemFlags result = QAbstractItemModel::flags( index );
+  Qt::ItemFlags result = QAbstractTableModel::flags( index );
 
   if ( index.isValid() ) {
     if ( !index.column() ) {
