@@ -33,7 +33,10 @@ const QLatin1String compiler = QLatin1String(
   "Unknown complier"
 #endif
 );
+/// Version string from the version.txt
+QString version();
 
+/// Full report of version & various information
 QString everything();
 
 } // namespace Version

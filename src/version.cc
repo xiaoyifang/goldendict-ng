@@ -1,12 +1,22 @@
-#include "build_config.hh"
 #include "version.hh"
 #include <QFile>
 
 namespace Version {
+QString version()
+{
+  QFile versionFile( ":/version.txt" );
+
+  if ( !versionFile.open( QFile::ReadOnly ) ) {
+    return QStringLiteral( "[Unknown Version]" );
+  }
+  else {
+    return versionFile.readAll().trimmed();
+  }
+}
 
 QString everything()
 {
-  return QStringLiteral( "Version: " ) + GD_VERSION_STRING + "\n" + "Qt " + QLatin1String( qVersion() ) + " "
+  return QStringLiteral( "Version: " ) + Version::version() + "\n" + "Qt " + QLatin1String( qVersion() ) + " "
     + Version::compiler + "\n" + QSysInfo::productType() + " " + QSysInfo::kernelType() + " "
     + QSysInfo::kernelVersion() + " " + QSysInfo::buildAbi() + "\nFlags: " + flags;
 }
