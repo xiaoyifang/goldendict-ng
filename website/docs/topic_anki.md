@@ -53,5 +53,3 @@ On your Anki card's template, you can add the code below to have a "1 click open
 ```
 <a href="goldendict://{{Front}}">{{Front}}</a>
 ```
-
-Note that this feature doesn't available on macOS 
