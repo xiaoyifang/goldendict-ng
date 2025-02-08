@@ -1,0 +1,7 @@
+#pragma once
+#include <QtGlobal>
+constexpr auto GD_VERSION_NUMBER = "@PROJECT_VERSION@";
+constexpr auto GD_VERSION_STRING = "@GD_VERSION_FULL@";
+#if !defined( Q_OS_WIN ) && !defined( Q_OS_MACOS )
+  constexpr auto GD_PROGRAM_DATA_DIR = @GD_PROGRAM_DATA_DIR@;
+#endif

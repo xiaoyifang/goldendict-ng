@@ -71,7 +71,7 @@ qt_standard_project_setup()
 set(CMAKE_AUTORCC ON) # not included in the qt_standard_project_setup
 
 #### Things required during configuration
-block() # generate version.txt
+block(PROPAGATE GD_VERSION_FULL)
     string(TIMESTAMP build_time UTC)
     find_package(Git)
     if (EXISTS "${CMAKE_SOURCE_DIR}/.git" AND GIT_FOUND)
@@ -79,9 +79,9 @@ block() # generate version.txt
                 COMMAND ${GIT_EXECUTABLE} -C "${CMAKE_SOURCE_DIR}" rev-parse --short HEAD
                 OUTPUT_STRIP_TRAILING_WHITESPACE
                 OUTPUT_VARIABLE GIT_HASH)
-        file(WRITE "${CMAKE_SOURCE_DIR}/version.txt" "${PROJECT_VERSION}.${GIT_HASH} at ${build_time}")
+        set(GD_VERSION_FULL "${PROJECT_VERSION}.${GIT_HASH} at ${build_time}")
     else () # not built in a git repo
-        file(WRITE "${CMAKE_SOURCE_DIR}/version.txt" "${PROJECT_VERSION} at ${build_time}")
+        set(GD_VERSION_FULL "${PROJECT_VERSION} at ${build_time}")
     endif ()
 endblock()
 
@@ -138,10 +138,6 @@ if (NOT USE_SYSTEM_FMT)
 endif ()
 
 ### Common parts amount all platforms
-
-# Note: used as c++ string thus need surrounding " "
-add_compile_definitions(PROGRAM_VERSION="${PROJECT_VERSION}")
-
 target_link_libraries(${GOLDENDICT} PRIVATE
         Qt6::Xml
         Qt6::Concurrent
@@ -226,4 +222,5 @@ elseif (WIN32)
     include(cmake/Package_Windows.cmake)
 endif ()
 
+configure_file("${CMAKE_SOURCE_DIR}/src/build_config.hh.in" "${CMAKE_SOURCE_DIR}/src/build_config.hh")
 feature_summary(WHAT ALL DESCRIPTION "Build configuration:")
