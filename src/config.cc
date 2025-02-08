@@ -2314,11 +2314,12 @@ QString getProgramDataDir() noexcept
   if ( isPortableVersion() ) {
     return QCoreApplication::applicationDirPath();
   }
-  // TODO: rewrite this in QStandardPaths::AppDataLocation
-#ifdef PROGRAM_DATA_DIR
-  return PROGRAM_DATA_DIR;
-#else
+#if defined( Q_OS_WIN ) || defined( Q_OS_MACOS )
   return QCoreApplication::applicationDirPath();
+#else
+  // Hardcode a `$PREFIX/share/goldendict` instead of QStandardPaths::AppDataLocation
+  // to avoid unnecessary downstream packaging changes
+  return PROGRAM_DATA_DIR;
 #endif
 }
 
