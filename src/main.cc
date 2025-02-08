@@ -8,6 +8,7 @@
 #include "version.hh"
 #include <QByteArray>
 #include <QCommandLineParser>
+#include <QDesktopServices>
 #include <QFile>
 #include <QIcon>
 #include <QMessageBox>
@@ -20,6 +21,10 @@
 #if defined( Q_OS_UNIX )
   #include <clocale>
   #include "unix/ksignalhandler.hh"
+#endif
+
+#ifdef Q_OS_MACOS
+  #include "macos/mac_url_handler.hh"
 #endif
 
 #ifdef Q_OS_WIN32
@@ -529,6 +534,15 @@ int main( int argc, char ** argv )
     Qt::DirectConnection );
 
   QObject::connect( &app, &QtSingleApplication::messageReceived, &m, &MainWindow::messageFromAnotherInstanceReceived );
+
+#ifdef Q_OS_MACOS
+  auto macUrlHandler = std::make_unique< MacUrlHandler >( &m );
+  QDesktopServices::setUrlHandler( "goldendict", macUrlHandler.get(), "processURL" );
+  QObject::connect( macUrlHandler.get(),
+                    &MacUrlHandler::wordReceived,
+                    &m,
+                    &MainWindow::messageFromAnotherInstanceReceived );
+#endif
 
   if ( gdcl.needSetGroup() ) {
     m.setGroupByName( gdcl.getGroupName(), true );

@@ -1,6 +1,6 @@
-#ifdef __APPLE__
-  #pragma once
+#pragma once
 
+#ifdef __APPLE__
   #include <QClipboard>
   #include <QObject>
   #include <QString>
