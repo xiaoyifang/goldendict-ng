@@ -222,5 +222,7 @@ elseif (WIN32)
     include(cmake/Package_Windows.cmake)
 endif ()
 
-configure_file("${CMAKE_SOURCE_DIR}/src/build_config.hh.in" "${CMAKE_SOURCE_DIR}/src/build_config.hh")
+if (NOT EXISTS "${CMAKE_SOURCE_DIR}/src/build_config.hh")
+    configure_file("${CMAKE_SOURCE_DIR}/src/build_config.hh.in" "${CMAKE_SOURCE_DIR}/src/build_config.hh")
+endif ()
 feature_summary(WHAT ALL DESCRIPTION "Build configuration:")
