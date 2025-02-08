@@ -8,5 +8,4 @@ void MacUrlHandler::processURL( const QUrl & url )
   emit wordReceived( QStringLiteral( "translateWord: " )
                      + QUrl::fromAce( url.authority().toLatin1(), QUrl::IgnoreIDNWhitelist ) );
 }
-
 #endif
