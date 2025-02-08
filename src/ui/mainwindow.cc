@@ -17,7 +17,6 @@
 #include "mruqmenu.hh"
 #include "gestures.hh"
 #include "dictheadwords.hh"
-#include "build_config.hh"
 #include <QTextStream>
 #include <QDir>
 #include <QUrl>
@@ -3035,7 +3034,7 @@ void MainWindow::checkNewRelease()
           QString latestVersion = tag_name.toString().mid( 1, 8 );
           QString downloadUrl   = html_url.toString();
 
-          if ( latestVersion > GD_VERSION_NUMBER && latestVersion != cfg.skippedRelease ) {
+          if ( latestVersion > PROGRAM_VERSION && latestVersion != cfg.skippedRelease ) {
             QMessageBox msg( QMessageBox::Information,
                              tr( "New Release Available" ),
                              tr( "Version <b>%1</b> of GoldenDict is now available for download.<br>"

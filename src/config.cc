@@ -1,7 +1,6 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#include "build_config.hh"
 #include "config.hh"
 #include "folding.hh"
 #include <QSaveFile>
@@ -2320,7 +2319,7 @@ QString getProgramDataDir() noexcept
 #else
   // Hardcode a `$PREFIX/share/goldendict` instead of QStandardPaths::AppDataLocation
   // to avoid unnecessary downstream packaging changes
-  return GD_PROGRAM_DATA_DIR;
+  return PROGRAM_DATA_DIR;
 #endif
 }
 
