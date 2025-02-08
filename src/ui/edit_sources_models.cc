@@ -37,11 +37,8 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg ):
   Config::Lingua const & lingua = cfg.lingua;
   Config::Forvo const & forvo   = cfg.forvo;
 
-  // TODO: will programTypeEditorCreator and itemEditorFactory be destroyed by
-  // anyone?
-  QItemEditorCreatorBase * programTypeEditorCreator = new QStandardItemEditorCreator< ProgramTypeEditor >();
-
-  itemEditorFactory->registerEditor( QMetaType::Int, programTypeEditorCreator );
+  // itemEditorFactory owns the ProgramTypeEditor
+  itemEditorFactory->registerEditor( QMetaType::Int, new QStandardItemEditorCreator< ProgramTypeEditor >() );
 
   itemDelegate->setItemEditorFactory( itemEditorFactory.get() );
 
