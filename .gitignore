@@ -19,7 +19,7 @@ hotkeys.pro.user.*
 object_script.goldendict.Debug
 object_script.goldendict.Release
 
-version.txt
+src/build_config.hh
 
 *.dmg
 
