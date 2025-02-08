@@ -703,9 +703,7 @@ SlobDictionary::SlobDictionary( string const & id, string const & indexFile, vec
 
   dictionaryName = sf.getDictionaryName().toStdString();
   if ( dictionaryName.empty() ) {
-    QString name   = QDir::fromNativeSeparators( dictionaryFiles[ 0 ].c_str() );
-    auto n         = name.lastIndexOf( '/' );
-    dictionaryName = name.mid( n + 1 ).toStdString();
+    dictionaryName = QFileInfo( QString::fromStdString( dictionaryFiles[ 0 ] ) ).fileName().toStdString();
   }
 
   // Full-text search parameters
