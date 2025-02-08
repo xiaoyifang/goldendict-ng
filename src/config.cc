@@ -2321,6 +2321,7 @@ QString getProgramDataDir() noexcept
   // Hardcode a `$PREFIX/share/goldendict` instead of QStandardPaths::AppDataLocation
   // to avoid unnecessary downstream packaging changes
   return GD_PROGRAM_DATA_DIR;
+#endif
 }
 
 QString getLocDir() noexcept
