@@ -297,19 +297,17 @@ void XdxfDictionary::loadIcon() noexcept
 
   const QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
 
+  const QDir dir = QFileInfo( fileName ).dir();
   for ( const auto & possibleName : { "icon16.png", "icon32.png", "dict.bmp" } ) {
-    QDir dir = QFileInfo( fileName ).dir();
-    if ( dir.exists( possibleName ) ) {
-      loadIconFromFilePath( dir.absoluteFilePath( possibleName ) );
+    if ( dir.exists( possibleName ) && loadIconFromFilePath( dir.absoluteFilePath( possibleName ) ) ) {
+      break;
     }
   }
 
   if ( dictionaryIcon.isNull() ) {
-    loadIconFromFileName( fileName );
-  }
-
-  if ( dictionaryIcon.isNull() ) {
-    dictionaryIcon = QIcon( ":/icons/icon32_xdxf.png" );
+    if ( !loadIconFromFileName( fileName ) ) {
+      dictionaryIcon = QIcon( ":/icons/icon32_xdxf.png" );
+    }
   }
 
   dictionaryIconLoaded = true;
