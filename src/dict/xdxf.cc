@@ -295,25 +295,13 @@ void XdxfDictionary::loadIcon() noexcept
     return;
   }
 
-  QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
+  const QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
 
-  QFileInfo baseInfo( fileName );
-
-  fileName = baseInfo.absoluteDir().absoluteFilePath( "icon32.png" );
-  QFileInfo info( fileName );
-
-  if ( !info.isFile() ) {
-    fileName = baseInfo.absoluteDir().absoluteFilePath( "icon16.png" );
-    info     = QFileInfo( fileName );
-  }
-
-  if ( !info.isFile() ) {
-    fileName = baseInfo.absoluteDir().absoluteFilePath( "dict.bmp" );
-    info     = QFileInfo( fileName );
-  }
-
-  if ( info.isFile() ) {
-    loadIconFromFilePath( fileName );
+  for ( const auto & possibleName : { "icon16.png", "icon32.png", "dict.bmp" } ) {
+    QDir dir = QFileInfo( fileName ).dir();
+    if ( dir.exists( possibleName ) ) {
+      loadIconFromFilePath( dir.absoluteFilePath( possibleName ) );
+    }
   }
 
   if ( dictionaryIcon.isNull() ) {
@@ -321,8 +309,6 @@ void XdxfDictionary::loadIcon() noexcept
   }
 
   if ( dictionaryIcon.isNull() ) {
-    // Load failed -- use default icons
-
     dictionaryIcon = QIcon( ":/icons/icon32_xdxf.png" );
   }
 
