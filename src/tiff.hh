@@ -4,6 +4,6 @@
 #include <vector>
 namespace GdTiff {
 
-void tiff2img( std::vector< char > & data, const char * format = "webp" );
+void tiff2img( std::vector< char > & data );
 
 }
