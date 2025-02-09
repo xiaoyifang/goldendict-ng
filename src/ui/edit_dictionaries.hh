@@ -23,7 +23,7 @@ public:
   EditDictionaries( QWidget * parent,
                     Config::Class & cfg,
                     std::vector< sptr< Dictionary::Class > > & dictionaries,
-                    Instances::Groups & groupInstances, // We only clear those on rescan
+                    Instances::GroupInstances & groupInstances, // We only clear those on rescan
                     QNetworkAccessManager & dictNetMgr );
 
   ~EditDictionaries();
@@ -74,7 +74,7 @@ private:
 
   Config::Class & cfg;
   std::vector< sptr< Dictionary::Class > > & dictionaries;
-  Instances::Groups & groupInstances;
+  Instances::GroupInstances & groupInstances;
   QNetworkAccessManager & dictNetMgr;
 
   // Backed up to decide later if something was changed or not

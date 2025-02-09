@@ -66,7 +66,7 @@ struct Group
   static QIcon iconFromData( QByteArray const & );
 };
 
-struct Groups: public vector< Group >
+struct GroupInstances: public vector< Group >
 {
   /// Tries finding the given group by its id. Returns the group found, or
   /// 0 if there's no such group.

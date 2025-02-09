@@ -60,7 +60,7 @@ ScanPopup::ScanPopup( QWidget * parent,
                       ArticleNetworkAccessManager & articleNetMgr,
                       AudioPlayerPtr const & audioPlayer_,
                       std::vector< sptr< Dictionary::Class > > const & allDictionaries_,
-                      Instances::Groups const & groups_,
+                      Instances::GroupInstances const & groups_,
                       History & history_ ):
   QMainWindow( parent ),
   cfg( cfg_ ),

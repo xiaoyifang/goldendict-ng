@@ -34,7 +34,7 @@ public:
              ArticleNetworkAccessManager &,
              AudioPlayerPtr const &,
              std::vector< sptr< Dictionary::Class > > const & allDictionaries,
-             Instances::Groups const &,
+             Instances::GroupInstances const &,
              History & );
 
   ~ScanPopup();
@@ -128,7 +128,7 @@ private:
   Config::Class & cfg;
   std::vector< sptr< Dictionary::Class > > const & allDictionaries;
   std::vector< sptr< Dictionary::Class > > dictionariesUnmuted;
-  Instances::Groups const & groups;
+  Instances::GroupInstances const & groups;
   History & history;
   Ui::ScanPopup ui;
   ArticleView * definition;

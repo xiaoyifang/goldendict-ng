@@ -112,7 +112,7 @@ void Group::checkMutedDictionaries( Config::MutedDictionaries * mutedDictionarie
   *mutedDictionaries = temp;
 }
 
-Group * Groups::findGroup( unsigned id )
+Group * GroupInstances::findGroup( unsigned id )
 {
   for ( unsigned x = 0; x < size(); ++x ) {
     if ( operator[]( x ).id == id ) {
@@ -123,7 +123,7 @@ Group * Groups::findGroup( unsigned id )
   return nullptr;
 }
 
-Group const * Groups::findGroup( unsigned id ) const
+Group const * GroupInstances::findGroup( unsigned id ) const
 {
   for ( unsigned x = 0; x < size(); ++x ) {
     if ( operator[]( x ).id == id ) {

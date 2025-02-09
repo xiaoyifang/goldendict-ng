@@ -12,7 +12,7 @@ using std::vector;
 EditDictionaries::EditDictionaries( QWidget * parent,
                                     Config::Class & cfg_,
                                     vector< sptr< Dictionary::Class > > & dictionaries_,
-                                    Instances::Groups & groupInstances_,
+                                    Instances::GroupInstances & groupInstances_,
                                     QNetworkAccessManager & dictNetMgr_ ):
   QDialog( parent, Qt::WindowSystemMenuHint | Qt::WindowMaximizeButtonHint | Qt::WindowCloseButtonHint ),
   cfg( cfg_ ),

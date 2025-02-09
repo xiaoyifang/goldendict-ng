@@ -10,7 +10,7 @@ class DictionaryGroup
 {
 public:
   DictionaryGroup( std::vector< sptr< Dictionary::Class > > const & allDictionaries_,
-                   Instances::Groups const & groups_ ):
+                   Instances::GroupInstances const & groups_ ):
     allDictionaries( allDictionaries_ ),
     groups( groups_ )
   {
@@ -27,5 +27,5 @@ public:
 
 private:
   std::vector< sptr< Dictionary::Class > > const & allDictionaries;
-  Instances::Groups const & groups;
+  Instances::GroupInstances const & groups;
 };

@@ -4444,7 +4444,7 @@ void MainWindow::headwordFromFavorites( QString const & headword, QString const 
 {
   if ( !favoritesFolder.isEmpty() ) {
     // Find group by it Favorites folder
-    for ( Instances::Groups::size_type i = 0; i < groupInstances.size(); i++ ) {
+    for ( Instances::GroupInstances::size_type i = 0; i < groupInstances.size(); i++ ) {
       if ( groupInstances[ i ].favoritesFolder == favoritesFolder ) {
         // Group found. Select it and stop search.
         if ( groupList->currentIndex() != (int)i ) {
