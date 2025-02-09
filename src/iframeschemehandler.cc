@@ -74,7 +74,7 @@ void IframeSchemeHandler::requestStarted( QWebEngineUrlRequestJob * requestJob )
 
 
     if ( const auto match = baseTag.match( articleString ); match.hasMatch() ) {
-      base = reply->url().resolved( match.captured( 1 ) ).url();
+      base = reply->url().resolved( QUrl( match.captured( 1 ) ) ).url();
     }
 
     QString baseTagHtml = QString( R"(<base href="%1">)" ).arg( base );

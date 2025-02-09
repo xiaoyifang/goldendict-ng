@@ -36,7 +36,7 @@ void CustomTransTable::parse( const QString & content )
       continue;
     }
 
-    ins( parts[ 0 ].toUtf8(), parts[ 1 ].toUtf8() );
+    ins( parts[ 0 ].toStdString().c_str(), parts[ 1 ].toStdString().c_str() );
   }
 }
 

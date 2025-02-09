@@ -352,9 +352,7 @@ public:
       QStringList sl;
       walkNode( doc.firstChild(), sl );
 
-      QStringListIterator itr( sl );
-      while ( itr.hasNext() ) {
-        QString s = itr.next();
+      for ( auto s : sl ) {
         translatePW( s );
         ss += s;
         ss += "<br>";

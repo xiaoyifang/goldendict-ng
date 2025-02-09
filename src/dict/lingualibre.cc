@@ -270,7 +270,7 @@ void LinguaArticleRequest::addQuery( QNetworkAccessManager & mgr, const std::u32
 
   qDebug() << "lingualibre query " << reqUrl;
 
-  auto netRequest = QNetworkRequest( reqUrl );
+  auto netRequest = QNetworkRequest( QUrl( reqUrl ) );
   netRequest.setTransferTimeout( 3000 );
 
   auto netReply = std::shared_ptr< QNetworkReply >( mgr.get( netRequest ) );
