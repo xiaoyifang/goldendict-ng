@@ -248,48 +248,45 @@ int Class::getOptimalIconSize()
   return 64 * qGuiApp->devicePixelRatio();
 }
 
-bool Class::loadIconFromFile( QString const & _filename, bool isFullName )
+bool Class::loadIconFromFileName( QString const & mainDictFileName )
 {
-  QFileInfo info;
-  QString fileName( _filename );
+  const QFileInfo info( mainDictFileName );
+  const QString basename = info.baseName();
+  QDir dir               = info.absoluteDir();
 
-  if ( isFullName ) {
-    info = QFileInfo( fileName );
-  }
-  else {
-    fileName += "bmp";
-    info = QFileInfo( fileName );
-    if ( !info.isFile() ) {
-      fileName.chop( 3 );
-      fileName += "png";
-      info = QFileInfo( fileName );
-    }
-    if ( !info.isFile() ) {
-      fileName.chop( 3 );
-      fileName += "jpg";
-      info = QFileInfo( fileName );
-    }
-    if ( !info.isFile() ) {
-      fileName.chop( 3 );
-      fileName += "ico";
-      info = QFileInfo( fileName );
-    }
-  }
+  dir.setFilter( QDir::Files );
+  dir.setNameFilters( QStringList() << basename + ".bmp"  //
+                                    << basename + ".png"  //
+                                    << basename + ".jpg"  //
+                                    << basename + ".ico"  // below are GD-ng only
+                                    << basename + ".jpeg" //
+                                    << basename + ".gif"  //
+                                    << basename + ".webp" //
+                                    << basename + ".svgz" //
+                                    << basename + ".svg" );
 
-  if ( info.isFile() ) {
-    auto iconSize = getOptimalIconSize();
-    QPixmap img( fileName );
-
-    if ( !img.isNull() ) {
-      // Load successful
-
-      auto result    = img.scaled( { iconSize, iconSize }, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation );
-      dictionaryIcon = QIcon( result );
-
-      return !dictionaryIcon.isNull();
+  for ( const auto & f : dir.entryInfoList() ) {
+    if ( loadIconFromFilePath( f.absoluteFilePath() ) ) {
+      return true;
     }
   }
   return false;
+}
+
+bool Class::loadIconFromFilePath( QString const & filename )
+{
+  auto iconSize = getOptimalIconSize();
+  QImage img( filename );
+
+  if ( img.isNull() ) {
+    return false;
+  }
+  else {
+    auto result    = img.scaled( { iconSize, iconSize }, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation );
+    dictionaryIcon = QIcon( QPixmap::fromImage( result ) );
+
+    return !dictionaryIcon.isNull();
+  }
 }
 
 bool Class::loadIconFromText( const QString & iconUrl, QString const & text )

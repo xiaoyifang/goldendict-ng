@@ -313,7 +313,11 @@ void XdxfDictionary::loadIcon() noexcept
   }
 
   if ( info.isFile() ) {
-    loadIconFromFile( fileName, true );
+    loadIconFromFilePath( fileName );
+  }
+
+  if ( dictionaryIcon.isNull() ) {
+    loadIconFromFileName( fileName );
   }
 
   if ( dictionaryIcon.isNull() ) {

@@ -252,9 +252,8 @@ void ZimDictionary::loadIcon() noexcept
 
   // Try to load Original GD's user provided icon
   QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
-  // Remove the extension
-  fileName.chop( 3 );
-  if ( loadIconFromFile( fileName ) ) {
+
+  if ( loadIconFromFileName( fileName ) ) {
     dictionaryIconLoaded = true;
     return;
   }

@@ -38,17 +38,23 @@ GoldenDict-ng does not provide any dictionary modification functionality.
 
 To convert between formats, try tools like [pyglossary](https://github.com/ilius/pyglossary).
 
-### Individual Dictionary Icons
+### Custom Dictionary Icon
 
-Every local dictionary can have individual icon. BMP, PNG, JPG or ICO files can be used for this icon.
+Every local dictionary can have a custom icon.
+Supported formats are PNG, JPEG, GIF, SVG, WebP, ICO and BMP.
 
-For Babylon, StarDict, DictD, ABBYY Lingvo, AardDictionary, SDictionary, Zim, MDict, Lsa, Zips, Slob, Gls dictionaries such graphics file must be named by main dictionary file name and places beside one. That is if main file of your dictionary, for example, named "My_best_dictionary.dsl" therefore icon file must be named "My_best_dictionary.bmp" (.png, .jpg etc.).
+For most dictionary formats, a dictionary's icon file should have the same basename as the main dictionary file and be placed beside the main dictionary file. For example:
 
-For XDXF dictionaries, the icon file must be named "icon16.png" (for 16х16 images) or "icon32.png" (for 32х32 images) or "dict.bmp" and placed into the dictionary folder.
+```
+.
+├── My_best_dictionary.mdx <- the main dictionary file
+└── My_best_dictionary.svg <- the icon
+```
 
-For Epwing dictionaries icon file must be named by name of folder with dictionary data beside "catalogs" file (a few folders can be presented, every folder is separate dictionary) and placed beside "catalogs" file.
+For XDXF, GD will prioritize to use `icon16.png`, `icon32.png` or `dict.bmp` in the dictionary folder as icon.
 
-If individual icon is not presented the default icon for this type of dictionaries will be used.
+For Epwing, the icon file should be placed beside the `catalogs` file and have the same name as the parent folder that contains `catalogs` file.
+
 
 ### Stardict
 

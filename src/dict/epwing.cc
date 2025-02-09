@@ -235,11 +235,11 @@ void EpwingDictionary::loadIcon() noexcept
   if ( dictionaryIconLoaded )
     return;
 
-  QString fileName = QString::fromStdString( getDictionaryFilenames()[ 0 ] ) + QDir::separator()
-    + eBook.getCurrentSubBookDirectory() + ".";
+  QString fileName =
+    QString::fromStdString( getDictionaryFilenames()[ 0 ] ) + QDir::separator() + eBook.getCurrentSubBookDirectory();
 
   if ( !fileName.isEmpty() )
-    loadIconFromFile( fileName );
+    loadIconFromFileName( fileName );
 
   if ( dictionaryIcon.isNull() ) {
     // Load failed -- use default icons
