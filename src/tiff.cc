@@ -25,6 +25,7 @@ void tiff2img( std::vector< char > & data )
 
     memcpy( data.data(), ba.data(), ba.size() );
     data.resize( ba.size() );
+    buffer.close();
   }
 }
 
