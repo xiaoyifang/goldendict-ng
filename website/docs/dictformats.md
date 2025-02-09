@@ -41,9 +41,9 @@ To convert between formats, try tools like [pyglossary](https://github.com/ilius
 ### Custom Dictionary Icon
 
 Every local dictionary can have a custom icon.
-PNG, JPG, GIF, SVG, WebP, ICO and BMP can be used.
+Supported formats are PNG, JPEG, GIF, SVG, WebP, ICO and BMP.
 
-The most dictionary formats, the image file must be named after its main dictionary file name and placed beside the main dictionary file. For example:
+For most dictionary formats, a dictionary's icon file should have the same basename as the main dictionary file and be placed beside the main dictionary file. For example:
 
 ```
 .
