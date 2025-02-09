@@ -9,8 +9,7 @@
 class DictionaryGroup
 {
 public:
-  DictionaryGroup( std::vector< sptr< Dictionary::Class > > const & allDictionaries_,
-                   GroupInstances const & groups_ ):
+  DictionaryGroup( std::vector< sptr< Dictionary::Class > > const & allDictionaries_, GroupInstances const & groups_ ):
     allDictionaries( allDictionaries_ ),
     groups( groups_ )
   {

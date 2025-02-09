@@ -1636,8 +1636,8 @@ void MainWindow::updateGroupList( bool reload )
 
     // Add any missing entries to dictionary order
     Group::complementDictionaryOrder( g,
-                                          Group( cfg.inactiveDictionaries, dictionaries, Config::Group() ),
-                                          dictionaries );
+                                      Group( cfg.inactiveDictionaries, dictionaries, Config::Group() ),
+                                      dictionaries );
 
     g.name = tr( "All" );
     g.id   = GroupId::AllGroupId;
@@ -1681,7 +1681,7 @@ void MainWindow::updateDictionaryBar()
   }
 
   unsigned currentId     = groupList->getCurrentGroup();
-  Group * grp = groupInstances.findGroup( currentId );
+  Group * grp            = groupInstances.findGroup( currentId );
 
   dictionaryBar.setMutedDictionaries( nullptr );
   if ( grp ) { // Should always be !0, but check as a safeguard
@@ -2383,7 +2383,7 @@ void MainWindow::currentGroupChanged( int )
 {
   unsigned grg_id               = groupList->getCurrentGroup();
   cfg.lastMainGroupId           = grg_id;
-  Group const * igrp = groupInstances.findGroup( grg_id );
+  Group const * igrp            = groupInstances.findGroup( grg_id );
   if ( grg_id == GroupId::AllGroupId ) {
     if ( igrp ) {
       igrp->checkMutedDictionaries( &cfg.mutedDictionaries );

@@ -306,13 +306,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( QString const &
 
     string header = makeHtmlHeader( word, QString(), true );
 
-    return std::make_shared< ArticleRequest >( word,
-                                               Group{ groupId, "" },
-                                               contexts,
-                                               dicts,
-                                               header,
-                                               -1,
-                                               true );
+    return std::make_shared< ArticleRequest >( word, Group{ groupId, "" }, contexts, dicts, header, -1, true );
   }
 
   if ( groupId == GroupId::HelpGroupId ) {

@@ -42,8 +42,8 @@ struct Group
   /// inactiveDictionaires to its end. Meant to be used with dictionaryOrder
   /// special group.
   static void complementDictionaryOrder( Group & dictionaryOrder,
-                                  Group const & inactiveDictionaries,
-                                  std::vector< sptr< Dictionary::Class > > const & allDictionaries );
+                                         Group const & inactiveDictionaries,
+                                         std::vector< sptr< Dictionary::Class > > const & allDictionaries );
 
   /// For any dictionaries present in the group, updates their names to match
   /// the dictionaries they refer to in their current form, if they exist.
@@ -66,4 +66,3 @@ struct GroupInstances: std::vector< Group >
   Group * findGroup( unsigned id );
   Group const * findGroup( unsigned id ) const;
 };
-

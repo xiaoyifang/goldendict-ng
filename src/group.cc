@@ -134,8 +134,8 @@ Group const * GroupInstances::findGroup( unsigned id ) const
 }
 
 void Group::complementDictionaryOrder( Group & group,
-                                Group const & inactiveDictionaries,
-                                vector< sptr< Dictionary::Class > > const & dicts )
+                                       Group const & inactiveDictionaries,
+                                       vector< sptr< Dictionary::Class > > const & dicts )
 {
   set< string, std::less<> > presentIds;
 

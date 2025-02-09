@@ -313,7 +313,7 @@ void ScanPopup::updateFoundInDictsList()
   toolbar->setUpdatesEnabled( false );
 
   unsigned currentId           = ui.groupList->getCurrentGroup();
-  Group const * grp = groups.findGroup( currentId );
+  Group const * grp            = groups.findGroup( currentId );
 
   auto dictionaries = grp ? grp->dictionaries : allDictionaries;
   QStringList ids   = definition->getArticlesList();
@@ -610,7 +610,7 @@ QString ScanPopup::elideInputWord()
 void ScanPopup::currentGroupChanged( int )
 {
   cfg.lastPopupGroupId          = ui.groupList->getCurrentGroup();
-  Group const * igrp = groups.findGroup( cfg.lastPopupGroupId );
+  Group const * igrp            = groups.findGroup( cfg.lastPopupGroupId );
   if ( cfg.lastPopupGroupId == GroupId::AllGroupId ) {
     if ( igrp ) {
       igrp->checkMutedDictionaries( &cfg.popupMutedDictionaries );
@@ -1094,7 +1094,7 @@ void ScanPopup::updateDictionaryBar()
   }
 
   unsigned currentId           = ui.groupList->getCurrentGroup();
-  Group const * grp = groups.findGroup( currentId );
+  Group const * grp            = groups.findGroup( currentId );
 
   if ( grp ) { // Should always be !0, but check as a safeguard
     dictionaryBar.setDictionaries( grp->dictionaries );
