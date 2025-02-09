@@ -22,13 +22,11 @@ TextToSpeechSource::TextToSpeechSource( QWidget * parent, Config::VoiceEngines v
   ui.selectedVoiceEngines->setItemDelegateForColumn( VoiceEnginesModel::kColumnEngineDName,
                                                      new VoiceEngineItemDelegate( engines, this ) );
 
-  for ( const auto & ve : voiceEngines )
-  {
+  for ( const auto & ve : voiceEngines ) {
     occupiedEngines.insert( ve.name );
   }
 
-  for ( const auto & engine : engines )
-  {
+  for ( const auto & engine : engines ) {
     QMap< QString, QVariant > map;
     map[ "engine_name" ] = engine.engine_name;
     map[ "locale" ]      = engine.locale;
