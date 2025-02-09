@@ -4,7 +4,7 @@
 
 #include "sptr.hh"
 #include "dict/dictionary.hh"
-#include "instances.hh"
+#include "group.hh"
 
 class DictionaryGroup
 {

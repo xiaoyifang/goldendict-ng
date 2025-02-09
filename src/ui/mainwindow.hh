@@ -15,7 +15,7 @@
 #include "dict/dictionary.hh"
 #include "article_netmgr.hh"
 #include "audio/audioplayerfactory.hh"
-#include "instances.hh"
+#include "group.hh"
 #include "article_maker.hh"
 #include "ui/articleview.hh"
 #include "wordfinder.hh"

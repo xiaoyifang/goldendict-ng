@@ -7,7 +7,7 @@
 #include <QAction>
 #include <QSize>
 #include <QList>
-#include "instances.hh"
+#include "group.hh"
 
 /// This is a combo box which is for choosing the dictionary group
 class GroupComboBox: public QComboBox

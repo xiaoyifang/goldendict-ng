@@ -6,7 +6,7 @@
 #include "dict/dictionary.hh"
 #include "ui_fulltextsearch.h"
 #include "config.hh"
-#include "instances.hh"
+#include "group.hh"
 #include "delegate.hh"
 
 namespace FTS {

@@ -2,7 +2,7 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "edit_groups.hh"
-#include "instances.hh"
+#include "group.hh"
 #include "dict/dictionary.hh"
 #include <QMessageBox>
 #include <QInputDialog>

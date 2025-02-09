@@ -9,7 +9,7 @@
 #include <list>
 #include "config.hh"
 #include "dict/dictionary.hh"
-#include "instances.hh"
+#include "group.hh"
 #include "wordfinder.hh"
 
 /// This class generates the article's body for the given lookup request

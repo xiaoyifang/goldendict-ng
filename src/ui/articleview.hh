@@ -11,7 +11,7 @@
 #include <list>
 #include "article_netmgr.hh"
 #include "audio/audioplayerinterface.hh"
-#include "instances.hh"
+#include "group.hh"
 #include "groupcombobox.hh"
 #include "globalbroadcaster.hh"
 #include "article_inspect.hh"

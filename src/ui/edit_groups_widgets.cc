@@ -3,7 +3,7 @@
 
 #include "edit_groups_widgets.hh"
 
-#include "instances.hh"
+#include "group.hh"
 #include "config.hh"
 #include "langcoder.hh"
 #include "language.hh"

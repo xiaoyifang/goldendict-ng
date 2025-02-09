@@ -7,7 +7,7 @@
 #include "dict/dictionary.hh"
 #include "edit_sources_models.hh"
 #include "edit_groups.hh"
-#include "instances.hh"
+#include "group.hh"
 #include "edit_orderandprops.hh"
 #include "ui_edit_dictionaries.h"
 #include <QAction>
