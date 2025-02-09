@@ -14,7 +14,7 @@ About::About( QWidget * parent ):
 
   ui.versionInfo->setText( Version::everything() );
 
-  connect( ui.copyInfoBtn, &QPushButton::clicked, [] {
+  connect( ui.copyInfoBtn, &QPushButton::clicked, this, [] {
     QGuiApplication::clipboard()->setText( Version::everything() );
   } );
 }

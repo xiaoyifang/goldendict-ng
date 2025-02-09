@@ -30,7 +30,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   helpAction.setShortcut( QKeySequence( "F1" ) );
   helpAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
 
-  connect( &helpAction, &QAction::triggered, [ this ]() {
+  connect( &helpAction, &QAction::triggered, this, [ this ]() {
     const auto * currentTab = ui.tabWidget->currentWidget();
     if ( ui.tab_popup == currentTab ) {
       Help::openHelpWebpage( Help::section::ui_popup );

@@ -19,11 +19,8 @@ void tiff2img( std::vector< char > & data, const char * format )
     QSize screenSize = QApplication::primaryScreen()->availableSize();
     QSize imgSize    = img.size();
     int scaleSize    = qMin( imgSize.width(), screenSize.width() );
-
     img.scaledToWidth( scaleSize ).save( &buffer, format );
-
-    data.resize( buffer.size() );
-    memcpy( &data.front(), buffer.data(), data.size() );
+    buffer.setData( data.data(),data.size() );
     buffer.close();
   }
 }

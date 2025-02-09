@@ -267,7 +267,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   navPronounce->setEnabled( false );
   navToolbar->widgetForAction( navPronounce )->setObjectName( "soundButton" );
 
-  connect( navPronounce, &QAction::triggered, [ this ]() {
+  connect( navPronounce, &QAction::triggered, this, [ this ]() {
     getCurrentArticleView()->playSound();
   } );
 
@@ -642,7 +642,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   connect( &addTab, &QAbstractButton::clicked, this, &MainWindow::addNewTab );
 
-  connect( ui.tabWidget, &MainTabWidget::tabBarDoubleClicked, [ this ]( const int index ) {
+  connect( ui.tabWidget, &MainTabWidget::tabBarDoubleClicked, this, [ this ]( const int index ) {
     if ( -1 == index ) { // empty space at tabbar clicked.
       this->addNewTab();
     }
@@ -666,7 +666,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( ui.visitForum, &QAction::triggered, this, &MainWindow::visitForum );
   connect( ui.openConfigFolder, &QAction::triggered, this, &MainWindow::openConfigFolder );
   connect( ui.about, &QAction::triggered, this, &MainWindow::showAbout );
-  connect( ui.showReference, &QAction::triggered, []() {
+  connect( ui.showReference, &QAction::triggered, this, []() {
     Help::openHelpWebpage();
   } );
 
@@ -678,10 +678,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   connect( translateBox->translateLine(), &QLineEdit::textEdited, this, &MainWindow::translateInputChanged );
 
-  connect( ui.translateLine, &QLineEdit::returnPressed, [ this ]() {
+  connect( ui.translateLine, &QLineEdit::returnPressed, this, [ this ]() {
     translateInputFinished( true );
   } );
-  connect( translateBox, &TranslateBox::returnPressed, [ this ]() {
+  connect( translateBox, &TranslateBox::returnPressed, this, [ this ]() {
     translateInputFinished( true );
   } );
 
@@ -3020,7 +3020,7 @@ void MainWindow::checkNewRelease()
 
   auto * github_reply = dictNetMgr.get( github_release_api ); // will be marked as deleteLater when reply finished.
 
-  QObject::connect( github_reply, &QNetworkReply::finished, [ github_reply, this ]() {
+  QObject::connect( github_reply, &QNetworkReply::finished, github_reply, [ github_reply, this ]() {
     if ( github_reply->error() != QNetworkReply::NoError ) {
       qWarning() << "Version check failed: " << github_reply->errorString();
     }
@@ -3089,7 +3089,7 @@ void MainWindow::trayIconActivated( QSystemTrayIcon::ActivationReason r )
 
 void MainWindow::visitHomepage()
 {
-  QDesktopServices::openUrl( QApplication::organizationDomain() );
+  QDesktopServices::openUrl( QUrl( QApplication::organizationDomain() ) );
 }
 
 void MainWindow::openConfigFolder()
@@ -3191,13 +3191,9 @@ void MainWindow::toggleMenuBarTriggered( bool announce )
   // depending on the menubar state.
 
   QList< QMenu * > allMenus = menuBar()->findChildren< QMenu * >();
-  QListIterator< QMenu * > menuIter( allMenus );
-  while ( menuIter.hasNext() ) {
-    QMenu * menu                      = menuIter.next();
+  for ( const auto & menu : allMenus ) {
     QList< QAction * > allMenuActions = menu->actions();
-    QListIterator< QAction * > actionsIter( allMenuActions );
-    while ( actionsIter.hasNext() ) {
-      QAction * action = actionsIter.next();
+    for ( const auto & action : allMenuActions ) {
       if ( !action->shortcut().isEmpty() ) {
         if ( cfg.preferences.hideMenubar ) {
           // add all menubar actions to the main window,
@@ -3401,7 +3397,7 @@ void MainWindow::on_saveArticle_triggered()
     QWebEnginePage * page = view->page();
 
     // Connect the printFinished signal to handle operations after printing is complete
-    connect( page, &QWebEnginePage::pdfPrintingFinished, [ = ]( const QString & filePath, bool success ) {
+    connect( page, &QWebEnginePage::pdfPrintingFinished, page, [ = ]( const QString & filePath, bool success ) {
       if ( success ) {
         qDebug() << "PDF exported successfully to:" << filePath;
       }

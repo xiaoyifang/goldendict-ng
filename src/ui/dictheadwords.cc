@@ -92,7 +92,7 @@ DictHeadwords::DictHeadwords( QWidget * parent, Config::Class & cfg_, Dictionary
     helpAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
 
     connect( ui.helpButton, &QAbstractButton::clicked, &helpAction, &QAction::trigger );
-    connect( &helpAction, &QAction::triggered, []() {
+    connect( &helpAction, &QAction::triggered, this, []() {
       Help::openHelpWebpage( Help::section::ui_headwords );
     } );
 

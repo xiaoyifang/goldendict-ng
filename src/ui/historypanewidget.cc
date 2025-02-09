@@ -37,9 +37,8 @@ void HistoryPaneWidget::setUp( Config::Class * cfg, History * history, QMenu * m
   // Handle context menu, reusing some of the top-level window's History menu
   m_historyMenu = new QMenu( this );
   m_separator   = m_historyMenu->addSeparator();
-  QListIterator< QAction * > actionsIter( menu->actions() );
-  while ( actionsIter.hasNext() ) {
-    m_historyMenu->addAction( actionsIter.next() );
+  for ( const auto & a : menu->actions() ) {
+    m_historyMenu->addAction( a );
   }
 
   // Make the history pane's titlebar
@@ -105,9 +104,8 @@ void HistoryPaneWidget::copySelectedItems()
   }
 
   QStringList selectedStrings;
-  QListIterator< QModelIndex > i( selectedIdxs );
-  while ( i.hasNext() ) {
-    selectedStrings << m_historyList->model()->data( i.next() ).toString();
+  for ( const auto & id : selectedIdxs ) {
+    selectedStrings << m_historyList->model()->data( id ).toString();
   }
 
   QApplication::clipboard()->setText( selectedStrings.join( QString::fromLatin1( "\n" ) ) );
@@ -124,18 +122,16 @@ void HistoryPaneWidget::deleteSelectedItems()
 
   QList< int > idxsToDelete;
 
-  QListIterator< QModelIndex > i( selectedIdxs );
-  while ( i.hasNext() ) {
-    idxsToDelete << i.next().row();
+  for ( const auto & id : selectedIdxs ) {
+    idxsToDelete << id.row();
   }
 
   // Need to sort indexes in the decreasing order so that
   // the first deletions won't affect the indexes for subsequent deletions.
   std::sort( idxsToDelete.begin(), idxsToDelete.end(), std::greater< int >() );
 
-  QListIterator< int > idxs( idxsToDelete );
-  while ( idxs.hasNext() ) {
-    m_history->removeItem( idxs.next() );
+  for ( const auto & id : idxsToDelete ) {
+    m_history->removeItem( id );
   }
 
   if ( idxsToDelete.size() == 1 ) {

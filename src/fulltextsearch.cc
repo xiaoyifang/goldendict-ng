@@ -248,7 +248,7 @@ FullTextSearchDialog::FullTextSearchDialog( QWidget * parent,
   helpAction.setShortcut( QKeySequence( "F1" ) );
   helpAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
 
-  connect( &helpAction, &QAction::triggered, []() {
+  connect( &helpAction, &QAction::triggered, this, []() {
     Help::openHelpWebpage( Help::section::ui_fulltextserch );
   } );
   connect( ui.helpButton, &QAbstractButton::clicked, &helpAction, &QAction::trigger );

@@ -60,9 +60,9 @@ void FavoritesPaneWidget::setUp( Config::Class * cfg, QMenu * menu )
   // Handle context menu, reusing some of the top-level window's History menu
   m_favoritesMenu = new QMenu( this );
   m_separator     = m_favoritesMenu->addSeparator();
-  QListIterator< QAction * > actionsIter( menu->actions() );
-  while ( actionsIter.hasNext() ) {
-    m_favoritesMenu->addAction( actionsIter.next() );
+
+  for ( const auto & a : menu->actions() ) {
+    m_favoritesMenu->addAction( a );
   }
 
   // Make the favorites pane's titlebar
