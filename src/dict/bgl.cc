@@ -263,8 +263,6 @@ void BglDictionary::loadIcon() noexcept
 
   QString fileName = QDir::fromNativeSeparators( QString::fromStdString( getDictionaryFilenames()[ 0 ] ) );
 
-  // Remove the extension
-  fileName.chop( 3 );
 
   if ( !loadIconFromFile( fileName ) ) {
     if ( idxHeader.iconSize ) {

@@ -315,9 +315,11 @@ protected:
 
   static int getOptimalIconSize();
 
-  // Load icon from filename directly if isFullName == true
-  // else treat filename as name without extension
-  bool loadIconFromFile( QString const & filename, bool isFullName = false );
+  /// Try load icon based on the main dict file name
+  bool loadIconFromFile( QString const & mainDictFileName);
+  /// Load an icon using a full image file path
+  bool loadIconFromFullFileName( QString const & filename);
+  /// Generate icon based on a text
   bool loadIconFromText( const QString & iconUrl, QString const & text );
 
   static QString getAbbrName( QString const & text );

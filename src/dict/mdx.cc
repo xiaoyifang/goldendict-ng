@@ -816,8 +816,6 @@ void MdxDictionary::loadIcon() noexcept
 
   QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
 
-  // Remove the extension
-  fileName.chop( 3 );
   QString text = QString::fromStdString( dictionaryName );
 
   if ( !loadIconFromFile( fileName ) && !loadIconFromText( ":/icons/mdict-bg.png", text ) ) {

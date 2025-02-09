@@ -248,48 +248,47 @@ int Class::getOptimalIconSize()
   return 64 * qGuiApp->devicePixelRatio();
 }
 
-bool Class::loadIconFromFile( QString const & _filename, bool isFullName )
+bool Class::loadIconFromFile( QString const & mainDictFileName )
 {
-  QFileInfo info;
-  QString fileName( _filename );
+  const QFileInfo info( mainDictFileName );
+  const QString basename = info.fileName();
+  QDir dir               = info.absoluteDir();
+  QStringList ImageNameFilter;
+  ImageNameFilter << basename + ".bmp"  //
+                  << basename + ".png"  //
+                  << basename + ".jpg"  //
+                  << basename + ".ico"  // below are not supported by original GD
+                  << basename + ".jpeg" //
+                  << basename + ".gif"  //
+                  << basename + ".webp" //
+                  << basename + ".svgz" //
+                  << basename + ".svg";
+  dir.setNameFilters( ImageNameFilter );
+  dir.setFilter( QDir::Files );
 
-  if ( isFullName ) {
-    info = QFileInfo( fileName );
-  }
-  else {
-    fileName += "bmp";
-    info = QFileInfo( fileName );
-    if ( !info.isFile() ) {
-      fileName.chop( 3 );
-      fileName += "png";
-      info = QFileInfo( fileName );
-    }
-    if ( !info.isFile() ) {
-      fileName.chop( 3 );
-      fileName += "jpg";
-      info = QFileInfo( fileName );
-    }
-    if ( !info.isFile() ) {
-      fileName.chop( 3 );
-      fileName += "ico";
-      info = QFileInfo( fileName );
-    }
-  }
-
-  if ( info.isFile() ) {
-    auto iconSize = getOptimalIconSize();
-    QPixmap img( fileName );
-
-    if ( !img.isNull() ) {
-      // Load successful
-
-      auto result    = img.scaled( { iconSize, iconSize }, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation );
-      dictionaryIcon = QIcon( result );
-
-      return !dictionaryIcon.isNull();
+  for ( const auto & f : dir.entryList() ) {
+    if ( loadIconFromFullFileName( f ) ) {
+      return true;
     }
   }
   return false;
+}
+
+bool Class::loadIconFromFullFileName( QString const & filename )
+{
+  auto iconSize = getOptimalIconSize();
+  QPixmap img( filename );
+
+  if ( img.isNull() ) {
+    return false;
+  }
+  else {
+    // Load successful
+    auto result    = img.scaled( { iconSize, iconSize }, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation );
+    dictionaryIcon = QIcon( result );
+
+    return !dictionaryIcon.isNull();
+  }
 }
 
 bool Class::loadIconFromText( const QString & iconUrl, QString const & text )

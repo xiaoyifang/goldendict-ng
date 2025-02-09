@@ -721,8 +721,6 @@ void SlobDictionary::loadIcon() noexcept
 
   QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
 
-  // Remove the extension
-  fileName.chop( 4 );
 
   if ( !loadIconFromFile( fileName ) ) {
     // Load failed -- use default icons

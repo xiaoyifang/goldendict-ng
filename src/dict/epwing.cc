@@ -236,7 +236,7 @@ void EpwingDictionary::loadIcon() noexcept
     return;
 
   QString fileName = QString::fromStdString( getDictionaryFilenames()[ 0 ] ) + QDir::separator()
-    + eBook.getCurrentSubBookDirectory() + ".";
+    + eBook.getCurrentSubBookDirectory()  d;
 
   if ( !fileName.isEmpty() )
     loadIconFromFile( fileName );

@@ -205,9 +205,6 @@ void DictdDictionary::loadIcon() noexcept
 
   QString fileName = QDir::fromNativeSeparators( QString::fromStdString( getDictionaryFilenames()[ 0 ] ) );
 
-  // Remove the extension
-  fileName.chop( 5 );
-
   if ( !loadIconFromFile( fileName ) ) {
     // Load failed -- use default icons
     dictionaryIcon = QIcon( ":/icons/icon32_dictd.png" );

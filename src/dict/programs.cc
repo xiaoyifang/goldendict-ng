@@ -121,7 +121,7 @@ void ProgramsDictionary::loadIcon() noexcept
   if ( !prg.iconFilename.isEmpty() ) {
     QFileInfo fInfo( QDir( Config::getConfigDir() ), prg.iconFilename );
     if ( fInfo.isFile() ) {
-      loadIconFromFile( fInfo.absoluteFilePath(), true );
+      loadIconFromFullFileName( fInfo.absoluteFilePath() );
     }
   }
   if ( dictionaryIcon.isNull() ) {
