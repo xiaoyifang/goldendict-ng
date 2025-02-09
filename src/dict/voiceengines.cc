@@ -115,7 +115,7 @@ void VoiceEnginesDictionary::loadIcon() noexcept
   if ( !voiceEngine.iconFilename.isEmpty() ) {
     QFileInfo fInfo( QDir( Config::getConfigDir() ), voiceEngine.iconFilename );
     if ( fInfo.isFile() )
-      loadIconFromFullFileName( fInfo.absoluteFilePath() );
+      loadIconFromFilePath( fInfo.absoluteFilePath() );
   }
   if ( dictionaryIcon.isNull() )
     dictionaryIcon = QIcon( ":/icons/text2speech.svg" );
