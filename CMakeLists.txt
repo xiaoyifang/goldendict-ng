@@ -180,7 +180,7 @@ target_compile_definitions(${GOLDENDICT} PRIVATE
 )
 
 # make life harder https://doc.qt.io/qt-6/qtglobal.html#QT_ENABLE_STRICT_MODE_UP_TO
-if (Qt6Widgets_VERSION VERSION_GREATER_EQUAL "6.8.2")
+if (Qt6Widgets_VERSION VERSION_GREATER_EQUAL 6.8.2)
     target_compile_definitions(${GOLDENDICT} PRIVATE
             QT_ENABLE_STRICT_MODE_UP_TO=0x060800
     )
