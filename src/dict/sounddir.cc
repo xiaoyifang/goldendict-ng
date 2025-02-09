@@ -292,7 +292,7 @@ void SoundDirDictionary::loadIcon() noexcept
   if ( !iconFilename.isEmpty() ) {
     const QFileInfo fInfo( QDir( Config::getConfigDir() ), iconFilename );
     if ( fInfo.isFile() ) {
-      loadIconFromFullFileName( fInfo.absoluteFilePath() );
+      loadIconFromFilePath( fInfo.absoluteFilePath() );
     }
   }
   if ( dictionaryIcon.isNull() ) {

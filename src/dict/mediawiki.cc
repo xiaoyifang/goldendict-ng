@@ -113,7 +113,7 @@ void MediaWikiDictionary::loadIcon() noexcept
   if ( !icon.isEmpty() ) {
     QFileInfo fInfo( QDir( Config::getConfigDir() ), icon );
     if ( fInfo.isFile() ) {
-      loadIconFromFullFileName( fInfo.absoluteFilePath() );
+      loadIconFromFilePath( fInfo.absoluteFilePath() );
     }
   }
   if ( dictionaryIcon.isNull() ) {

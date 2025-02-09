@@ -818,7 +818,7 @@ void MdxDictionary::loadIcon() noexcept
 
   QString text = QString::fromStdString( dictionaryName );
 
-  if ( !loadIconFromFile( fileName ) && !loadIconFromText( ":/icons/mdict-bg.png", text ) ) {
+  if ( !loadIconFromFileName( fileName ) && !loadIconFromText( ":/icons/mdict-bg.png", text ) ) {
     // Use default icons
     dictionaryIcon = QIcon( ":/icons/mdict.png" );
   }

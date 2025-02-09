@@ -248,44 +248,42 @@ int Class::getOptimalIconSize()
   return 64 * qGuiApp->devicePixelRatio();
 }
 
-bool Class::loadIconFromFile( QString const & mainDictFileName )
+bool Class::loadIconFromFileName( QString const & mainDictFileName )
 {
   const QFileInfo info( mainDictFileName );
-  const QString basename = info.fileName();
+  const QString basename = info.baseName();
   QDir dir               = info.absoluteDir();
-  QStringList ImageNameFilter;
-  ImageNameFilter << basename + ".bmp"  //
-                  << basename + ".png"  //
-                  << basename + ".jpg"  //
-                  << basename + ".ico"  // below are not supported by original GD
-                  << basename + ".jpeg" //
-                  << basename + ".gif"  //
-                  << basename + ".webp" //
-                  << basename + ".svgz" //
-                  << basename + ".svg";
-  dir.setNameFilters( ImageNameFilter );
-  dir.setFilter( QDir::Files );
 
-  for ( const auto & f : dir.entryList() ) {
-    if ( loadIconFromFullFileName( f ) ) {
+  dir.setFilter( QDir::Files );
+  dir.setNameFilters( QStringList() << basename + ".bmp"  //
+                                    << basename + ".png"  //
+                                    << basename + ".jpg"  //
+                                    << basename + ".ico"  // below are not supported by original GD
+                                    << basename + ".jpeg" //
+                                    << basename + ".gif"  //
+                                    << basename + ".webp" //
+                                    << basename + ".svgz" //
+                                    << basename + ".svg" );
+
+  for ( const auto & f : dir.entryInfoList() ) {
+    if ( loadIconFromFilePath( f.absoluteFilePath() ) ) {
       return true;
     }
   }
   return false;
 }
 
-bool Class::loadIconFromFullFileName( QString const & filename )
+bool Class::loadIconFromFilePath( QString const & filename )
 {
   auto iconSize = getOptimalIconSize();
-  QPixmap img( filename );
+  QImage img( filename );
 
   if ( img.isNull() ) {
     return false;
   }
   else {
-    // Load successful
     auto result    = img.scaled( { iconSize, iconSize }, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation );
-    dictionaryIcon = QIcon( result );
+    dictionaryIcon = QIcon( QPixmap::fromImage( result ) );
 
     return !dictionaryIcon.isNull();
   }
@@ -407,7 +405,7 @@ void Class::isolateCSS( QString & css, QString const & wrapperSelector )
            || css.mid( currentPos, 10 ).compare( "@namespace", Qt::CaseInsensitive ) == 0
            || css.mid( currentPos, 8 ).compare( "@charset", Qt::CaseInsensitive ) == 0 ) {
         // Copy rule as is.
-        n      = css.indexOf( ';', currentPos );
+        n       = css.indexOf( ';', currentPos );
         auto n2 = css.indexOf( '{', currentPos );
         if ( n2 > 0 && n > n2 ) {
           n = n2 - 1;

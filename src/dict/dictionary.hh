@@ -316,9 +316,9 @@ protected:
   static int getOptimalIconSize();
 
   /// Try load icon based on the main dict file name
-  bool loadIconFromFile( QString const & mainDictFileName );
+  bool loadIconFromFileName( QString const & mainDictFileName );
   /// Load an icon using a full image file path
-  bool loadIconFromFullFileName( QString const & filename );
+  bool loadIconFromFilePath( QString const & filename );
   /// Generate icon based on a text
   bool loadIconFromText( const QString & iconUrl, QString const & text );
 

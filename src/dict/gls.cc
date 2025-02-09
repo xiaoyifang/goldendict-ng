@@ -476,7 +476,7 @@ void GlsDictionary::loadIcon() noexcept
 
   QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
 
-  if ( !loadIconFromFile( fileName ) ) {
+  if ( !loadIconFromFileName( fileName ) ) {
     // Load failed -- use default icon
     dictionaryIcon = QIcon( ":/icons/icon32_gls.png" );
   }

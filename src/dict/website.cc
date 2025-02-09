@@ -459,7 +459,7 @@ void WebSiteDictionary::loadIcon() noexcept
   if ( !iconFilename.isEmpty() ) {
     QFileInfo fInfo( QDir( Config::getConfigDir() ), iconFilename );
     if ( fInfo.isFile() ) {
-      loadIconFromFullFileName( fInfo.absoluteFilePath() );
+      loadIconFromFilePath( fInfo.absoluteFilePath() );
     }
   }
   if ( dictionaryIcon.isNull()

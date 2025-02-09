@@ -435,7 +435,7 @@ void DslDictionary::loadIcon() noexcept
     fileName.chop( 3 );
   }
 
-  if ( !loadIconFromFile( fileName ) ) {
+  if ( !loadIconFromFileName( fileName ) ) {
     // Load failed -- use default icons
     dictionaryIcon = QIcon( ":/icons/icon32_dsl.png" );
   }
