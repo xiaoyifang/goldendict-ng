@@ -351,7 +351,7 @@ void DictServerDictionary::loadIcon() noexcept
   if ( !icon.isEmpty() ) {
     QFileInfo fInfo( QDir( Config::getConfigDir() ), icon );
     if ( fInfo.isFile() ) {
-      loadIconFromFullFileName( fInfo.absoluteFilePath());
+      loadIconFromFullFileName( fInfo.absoluteFilePath() );
     }
   }
   if ( dictionaryIcon.isNull() ) {
