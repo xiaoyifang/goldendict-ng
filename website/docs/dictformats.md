@@ -51,9 +51,10 @@ For most dictionary formats, a dictionary's icon file should have the same basen
 └── My_best_dictionary.svg <- the icon
 ```
 
-For XDXF dictionaries, GD will prioritize to use `icon16.png`, `icon32.png` or `dict.bmp` in the dictionary folder as icon.
+For XDXF, GD will prioritize to use `icon16.png`, `icon32.png` or `dict.bmp` in the dictionary folder as icon.
 
-For Epwing dictionaries icon file must be named by name of folder with dictionary data beside "catalogs" file (a few folders can be presented, every folder is separate dictionary) and placed beside "catalogs" file.
+For Epwing, the icon file should be placed beside the `catalogs` file and have the same name as the parent folder that contains `catalogs` file.
+
 
 ### Stardict
 

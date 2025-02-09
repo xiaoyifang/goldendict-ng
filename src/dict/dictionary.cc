@@ -258,7 +258,7 @@ bool Class::loadIconFromFileName( QString const & mainDictFileName )
   dir.setNameFilters( QStringList() << basename + ".bmp"  //
                                     << basename + ".png"  //
                                     << basename + ".jpg"  //
-                                    << basename + ".ico"  // below are not supported by original GD
+                                    << basename + ".ico"  // below are GD-ng only
                                     << basename + ".jpeg" //
                                     << basename + ".gif"  //
                                     << basename + ".webp" //
@@ -405,7 +405,7 @@ void Class::isolateCSS( QString & css, QString const & wrapperSelector )
            || css.mid( currentPos, 10 ).compare( "@namespace", Qt::CaseInsensitive ) == 0
            || css.mid( currentPos, 8 ).compare( "@charset", Qt::CaseInsensitive ) == 0 ) {
         // Copy rule as is.
-        n       = css.indexOf( ';', currentPos );
+        n      = css.indexOf( ';', currentPos );
         auto n2 = css.indexOf( '{', currentPos );
         if ( n2 > 0 && n > n2 ) {
           n = n2 - 1;
