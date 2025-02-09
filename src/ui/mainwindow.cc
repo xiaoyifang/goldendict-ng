@@ -1635,7 +1635,7 @@ void MainWindow::updateGroupList( bool reload )
     Instances::Group g( cfg.dictionaryOrder, dictionaries, Config::Group() );
 
     // Add any missing entries to dictionary order
-    Instances::complementDictionaryOrder( g,
+    Instances::Group::complementDictionaryOrder( g,
                                           Instances::Group( cfg.inactiveDictionaries, dictionaries, Config::Group() ),
                                           dictionaries );
 
@@ -1654,7 +1654,7 @@ void MainWindow::updateGroupList( bool reload )
 
   // Update names for dictionaries that are present, so that they could be
   // found in case they got moved.
-  Instances::updateNames( cfg, dictionaries );
+  Instances::Group::updateNames( cfg, dictionaries );
 
   groupList->fill( groupInstances );
   groupList->setCurrentGroup( cfg.lastMainGroupId );

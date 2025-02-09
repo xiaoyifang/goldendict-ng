@@ -134,7 +134,7 @@ Group const * Groups::findGroup( unsigned id ) const
   return nullptr;
 }
 
-void complementDictionaryOrder( Group & group,
+void Group::complementDictionaryOrder( Group & group,
                                 Group const & inactiveDictionaries,
                                 vector< sptr< Dictionary::Class > > const & dicts )
 {
@@ -155,7 +155,7 @@ void complementDictionaryOrder( Group & group,
   }
 }
 
-void updateNames( Config::Group & group, vector< sptr< Dictionary::Class > > const & allDictionaries )
+void Group::updateNames( Config::Group & group, vector< sptr< Dictionary::Class > > const & allDictionaries )
 {
 
   for ( auto x = group.dictionaries.size(); x--; ) {
@@ -170,21 +170,16 @@ void updateNames( Config::Group & group, vector< sptr< Dictionary::Class > > con
   }
 }
 
-void updateNames( Config::Groups & groups, vector< sptr< Dictionary::Class > > const & allDictionaries )
+void Group::updateNames( Config::Class & cfg, vector< sptr< Dictionary::Class > > const & allDictionaries )
 {
-  for ( auto & group : groups ) {
+  updateNames( cfg.dictionaryOrder, allDictionaries );
+  updateNames( cfg.inactiveDictionaries, allDictionaries );
+  for ( auto & group : cfg.groups ) {
     updateNames( group, allDictionaries );
   }
 }
 
-void updateNames( Config::Class & cfg, vector< sptr< Dictionary::Class > > const & allDictionaries )
-{
-  updateNames( cfg.dictionaryOrder, allDictionaries );
-  updateNames( cfg.inactiveDictionaries, allDictionaries );
-  updateNames( cfg.groups, allDictionaries );
-}
-
-QIcon iconFromData( QByteArray const & iconData )
+QIcon Group::iconFromData( QByteArray const & iconData )
 {
   QDataStream stream( iconData );
 
