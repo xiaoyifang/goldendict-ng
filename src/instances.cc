@@ -6,10 +6,9 @@
 #include <QBuffer>
 #include <utility>
 
-namespace Instances {
-
 using std::set;
 using std::string;
+using std::vector;
 
 Group::Group( Config::Group const & cfgGroup,
               std::vector< sptr< Dictionary::Class > > const & allDictionaries,
@@ -189,5 +188,3 @@ QIcon Group::iconFromData( QByteArray const & iconData )
 
   return result;
 }
-
-} // namespace Instances

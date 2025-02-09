@@ -194,7 +194,7 @@ void addSortedHeadwords( QList< FtsHeadword > & base_list, QList< FtsHeadword > 
 FullTextSearchDialog::FullTextSearchDialog( QWidget * parent,
                                             Config::Class & cfg_,
                                             std::vector< sptr< Dictionary::Class > > const & dictionaries_,
-                                            std::vector< Instances::Group > const & groups_,
+                                            std::vector< Group > const & groups_,
                                             FtsIndexing & ftsidx ):
   QDialog( parent ),
   cfg( cfg_ ),
@@ -475,7 +475,7 @@ void FullTextSearchDialog::updateDictionaries()
 
   // Find the given group
 
-  Instances::Group const * activeGroup = 0;
+  Group const * activeGroup = 0;
 
   for ( unsigned x = 0; x < groups.size(); ++x ) {
     if ( groups[ x ].id == group ) {

@@ -33,7 +33,7 @@ DictGroupWidget::DictGroupWidget( QWidget * parent,
   groupName( group.name )
 {
   ui.setupUi( this );
-  ui.dictionaries->populate( Instances::Group( group, dicts, Config::Group() ).dictionaries, dicts );
+  ui.dictionaries->populate( Group( group, dicts, Config::Group() ).dictionaries, dicts );
 
 #if QT_VERSION >= QT_VERSION_CHECK( 6, 4, 0 )
   ui.shortcut->setClearButtonEnabled( true );
@@ -122,7 +122,7 @@ void DictGroupWidget::groupIconActivated( int index )
 
 Config::Group DictGroupWidget::makeGroup() const
 {
-  Instances::Group g;
+  Group g;
 
   g.id = groupId;
 
@@ -336,7 +336,7 @@ bool DictListModel::setData( QModelIndex const & index, const QVariant & value, 
 
     g.dictionaries.push_back( Config::DictionaryRef( value.toString(), QString() ) );
 
-    const Instances::Group i( g, *allDicts, Config::Group() );
+    const Group i( g, *allDicts, Config::Group() );
 
     if ( i.dictionaries.size() == 1 ) {
       // Found that dictionary

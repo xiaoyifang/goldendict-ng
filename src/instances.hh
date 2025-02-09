@@ -8,14 +8,7 @@
 #include <QIcon>
 #include <limits.h>
 
-// This complements Config, providing instances for the stored configurations.
-// Simply put, it can convert groups to ones which hold references to
-// dictionaries directly, instead of only having their ids, and can also convert
-// them back.
-
-namespace Instances {
-
-using std::vector;
+// Note that a group hold references to dictionaries directly instead of only having their ids
 
 struct Group
 {
@@ -23,7 +16,7 @@ struct Group
   QString name, icon, favoritesFolder;
   QIcon iconData;
   QKeySequence shortcut;
-  vector< sptr< Dictionary::Class > > dictionaries;
+  std::vector< sptr< Dictionary::Class > > dictionaries;
 
   /// Instantiates the given group from its configuration. If some dictionary
   /// wasn't found, it just skips it.
@@ -50,23 +43,23 @@ struct Group
   /// special group.
   static void complementDictionaryOrder( Group & dictionaryOrder,
                                   Group const & inactiveDictionaries,
-                                  vector< sptr< Dictionary::Class > > const & allDictionaries );
+                                  std::vector< sptr< Dictionary::Class > > const & allDictionaries );
 
   /// For any dictionaries present in the group, updates their names to match
   /// the dictionaries they refer to in their current form, if they exist.
   /// If the dictionary instance can't be located, the name is left untouched.
-  static void updateNames( Config::Group &, vector< sptr< Dictionary::Class > > const & allDictionaries );
+  static void updateNames( Config::Group &, std::vector< sptr< Dictionary::Class > > const & allDictionaries );
 
   /// Does updateNames() for any relevant dictionary groups present in the
   /// configuration.
-  static void updateNames( Config::Class &, vector< sptr< Dictionary::Class > > const & allDictionaries );
+  static void updateNames( Config::Class &, std::vector< sptr< Dictionary::Class > > const & allDictionaries );
 
   /// Creates icon from icon data. Used by Group, but also by others who work
   /// with icon data directly.
   static QIcon iconFromData( QByteArray const & );
 };
 
-struct GroupInstances: public vector< Group >
+struct GroupInstances: std::vector< Group >
 {
   /// Tries finding the given group by its id. Returns the group found, or
   /// 0 if there's no such group.
@@ -74,5 +67,3 @@ struct GroupInstances: public vector< Group >
   Group const * findGroup( unsigned id ) const;
 };
 
-
-} // namespace Instances

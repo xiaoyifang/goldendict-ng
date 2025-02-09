@@ -12,7 +12,7 @@ using std::vector;
 EditDictionaries::EditDictionaries( QWidget * parent,
                                     Config::Class & cfg_,
                                     vector< sptr< Dictionary::Class > > & dictionaries_,
-                                    Instances::GroupInstances & groupInstances_,
+                                    GroupInstances & groupInstances_,
                                     QNetworkAccessManager & dictNetMgr_ ):
   QDialog( parent, Qt::WindowSystemMenuHint | Qt::WindowMaximizeButtonHint | Qt::WindowCloseButtonHint ),
   cfg( cfg_ ),
@@ -209,9 +209,9 @@ void EditDictionaries::acceptChangedSources( bool rebuildGroups )
 
   loadDictionaries( this, cfg, dictionaries, dictNetMgr );
 
-  Instances::Group::updateNames( savedGroups, dictionaries );
-  Instances::Group::updateNames( savedOrder, dictionaries );
-  Instances::Group::updateNames( savedInactive, dictionaries );
+  Group::updateNames( savedGroups, dictionaries );
+  Group::updateNames( savedOrder, dictionaries );
+  Group::updateNames( savedInactive, dictionaries );
 
   if ( rebuildGroups ) {
     ui.tabs->removeTab( 1 );

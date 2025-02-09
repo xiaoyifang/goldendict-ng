@@ -82,7 +82,7 @@ ArticleView::ArticleView( QWidget * parent,
                           ArticleNetworkAccessManager & nm,
                           AudioPlayerPtr const & audioPlayer_,
                           std::vector< sptr< Dictionary::Class > > const & allDictionaries_,
-                          Instances::GroupInstances const & groups_,
+                          GroupInstances const & groups_,
                           bool popupView_,
                           Config::Class const & cfg_,
                           QLineEdit const * translateLine_,
@@ -780,7 +780,7 @@ QStringList ArticleView::getMutedDictionaries( unsigned group )
 {
   if ( dictionaryBarToggled && dictionaryBarToggled->isChecked() ) {
     // Dictionary bar is active -- mute the muted dictionaries
-    Instances::Group const * groupInstance = dictionaryGroup->getGroupById( group );
+    Group const * groupInstance = dictionaryGroup->getGroupById( group );
 
     // Find muted dictionaries for current group
     Config::Group const * grp = cfg.getGroup( group );
@@ -1391,7 +1391,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
     addWordToHistoryAction = new QAction( tr( "&Add \"%1\" to history" ).arg( text ), &menu );
     menu.addAction( addWordToHistoryAction );
 
-    Instances::Group const * altGroup =
+    Group const * altGroup =
       ( currentGroupId != getGroup( webview->url() ) ) ? dictionaryGroup->getGroupById( currentGroupId ) : nullptr;
 
     if ( altGroup ) {

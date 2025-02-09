@@ -560,7 +560,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   // Dictionary bar
 
-  Instances::Group const * igrp = groupInstances.findGroup( cfg.lastMainGroupId );
+  Group const * igrp = groupInstances.findGroup( cfg.lastMainGroupId );
   if ( cfg.lastMainGroupId == GroupId::AllGroupId ) {
     if ( igrp ) {
       igrp->checkMutedDictionaries( &cfg.mutedDictionaries );
@@ -1632,11 +1632,11 @@ void MainWindow::updateGroupList( bool reload )
 
   // Add dictionaryOrder first, as the 'All' group.
   {
-    Instances::Group g( cfg.dictionaryOrder, dictionaries, Config::Group() );
+    Group g( cfg.dictionaryOrder, dictionaries, Config::Group() );
 
     // Add any missing entries to dictionary order
-    Instances::Group::complementDictionaryOrder( g,
-                                          Instances::Group( cfg.inactiveDictionaries, dictionaries, Config::Group() ),
+    Group::complementDictionaryOrder( g,
+                                          Group( cfg.inactiveDictionaries, dictionaries, Config::Group() ),
                                           dictionaries );
 
     g.name = tr( "All" );
@@ -1648,13 +1648,13 @@ void MainWindow::updateGroupList( bool reload )
 
   GlobalBroadcaster::instance()->groupFolderMap.clear();
   for ( auto & group : cfg.groups ) {
-    groupInstances.push_back( Instances::Group( group, dictionaries, cfg.inactiveDictionaries ) );
+    groupInstances.push_back( Group( group, dictionaries, cfg.inactiveDictionaries ) );
     GlobalBroadcaster::instance()->groupFolderMap.insert( group.id, group.favoritesFolder );
   }
 
   // Update names for dictionaries that are present, so that they could be
   // found in case they got moved.
-  Instances::Group::updateNames( cfg, dictionaries );
+  Group::updateNames( cfg, dictionaries );
 
   groupList->fill( groupInstances );
   groupList->setCurrentGroup( cfg.lastMainGroupId );
@@ -1681,7 +1681,7 @@ void MainWindow::updateDictionaryBar()
   }
 
   unsigned currentId     = groupList->getCurrentGroup();
-  Instances::Group * grp = groupInstances.findGroup( currentId );
+  Group * grp = groupInstances.findGroup( currentId );
 
   dictionaryBar.setMutedDictionaries( nullptr );
   if ( grp ) { // Should always be !0, but check as a safeguard
@@ -2383,7 +2383,7 @@ void MainWindow::currentGroupChanged( int )
 {
   unsigned grg_id               = groupList->getCurrentGroup();
   cfg.lastMainGroupId           = grg_id;
-  Instances::Group const * igrp = groupInstances.findGroup( grg_id );
+  Group const * igrp = groupInstances.findGroup( grg_id );
   if ( grg_id == GroupId::AllGroupId ) {
     if ( igrp ) {
       igrp->checkMutedDictionaries( &cfg.mutedDictionaries );
@@ -4327,7 +4327,7 @@ QString MainWindow::unescapeTabHeader( QString const & header )
 void MainWindow::addCurrentTabToFavorites()
 {
   QString folder;
-  Instances::Group const * igrp = groupInstances.findGroup( cfg.lastMainGroupId );
+  Group const * igrp = groupInstances.findGroup( cfg.lastMainGroupId );
   if ( igrp ) {
     folder = igrp->favoritesFolder;
   }
@@ -4343,7 +4343,7 @@ void MainWindow::addCurrentTabToFavorites()
 void MainWindow::handleAddToFavoritesButton()
 {
   QString folder;
-  Instances::Group const * igrp = groupInstances.findGroup( cfg.lastMainGroupId );
+  Group const * igrp = groupInstances.findGroup( cfg.lastMainGroupId );
   if ( igrp ) {
     folder = igrp->favoritesFolder;
   }
@@ -4372,7 +4372,7 @@ void MainWindow::handleAddToFavoritesButton()
 void MainWindow::addWordToFavorites( QString const & word, unsigned groupId, bool exist )
 {
   QString folder;
-  Instances::Group const * igrp = groupInstances.findGroup( groupId );
+  Group const * igrp = groupInstances.findGroup( groupId );
   if ( igrp ) {
     folder = igrp->favoritesFolder;
   }
@@ -4397,7 +4397,7 @@ void MainWindow::addBookmarkToFavorite( QString const & text )
 void MainWindow::addAllTabsToFavorites()
 {
   QString folder;
-  Instances::Group const * igrp = groupInstances.findGroup( cfg.lastMainGroupId );
+  Group const * igrp = groupInstances.findGroup( cfg.lastMainGroupId );
   if ( igrp ) {
     folder = igrp->favoritesFolder;
   }
@@ -4413,7 +4413,7 @@ void MainWindow::addAllTabsToFavorites()
 bool MainWindow::isWordPresentedInFavorites( QString const & word, unsigned groupId )
 {
   QString folder;
-  Instances::Group const * igrp = groupInstances.findGroup( groupId );
+  Group const * igrp = groupInstances.findGroup( groupId );
   if ( igrp ) {
     folder = igrp->favoritesFolder;
   }
@@ -4444,7 +4444,7 @@ void MainWindow::headwordFromFavorites( QString const & headword, QString const 
 {
   if ( !favoritesFolder.isEmpty() ) {
     // Find group by it Favorites folder
-    for ( Instances::GroupInstances::size_type i = 0; i < groupInstances.size(); i++ ) {
+    for ( GroupInstances::size_type i = 0; i < groupInstances.size(); i++ ) {
       if ( groupInstances[ i ].favoritesFolder == favoritesFolder ) {
         // Group found. Select it and stop search.
         if ( groupList->currentIndex() != (int)i ) {

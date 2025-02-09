@@ -29,7 +29,7 @@ inline bool ankiConnectEnabled()
 }
 
 ArticleMaker::ArticleMaker( vector< sptr< Dictionary::Class > > const & dictionaries_,
-                            vector< Instances::Group > const & groups_,
+                            vector< Group > const & groups_,
                             const Config::Preferences & cfg_ ):
   dictionaries( dictionaries_ ),
   groups( groups_ ),
@@ -64,10 +64,10 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word, QString const & 
     result += R"(
     <script>
       function gd_init_QtWebChannel(){
-         console.log("webchannel ready..."); 
-         new QWebChannel(qt.webChannelTransport, function(channel) { 
-             window.articleview = channel.objects.articleview; 
-       }); 
+         console.log("webchannel ready...");
+         new QWebChannel(qt.webChannelTransport, function(channel) {
+             window.articleview = channel.objects.articleview;
+       });
       };
 
       if (document.readyState !== "loading") {
@@ -307,7 +307,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( QString const &
     string header = makeHtmlHeader( word, QString(), true );
 
     return std::make_shared< ArticleRequest >( word,
-                                               Instances::Group{ groupId, "" },
+                                               Group{ groupId, "" },
                                                contexts,
                                                dicts,
                                                header,
@@ -331,7 +331,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( QString const &
 
   // Find the given group
 
-  Instances::Group const * activeGroup = 0;
+  Group const * activeGroup = 0;
 
   for ( const auto & group : groups ) {
     if ( group.id == groupId ) {
@@ -361,7 +361,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( QString const &
 
     return std::make_shared< ArticleRequest >(
       word,
-      Instances::Group{ activeGroup ? activeGroup->id : 0, activeGroup ? activeGroup->name : "" },
+      Group{ activeGroup ? activeGroup->id : 0, activeGroup ? activeGroup->name : "" },
       contexts,
       unmutedDicts,
       header,
@@ -372,7 +372,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( QString const &
   else {
     return std::make_shared< ArticleRequest >(
       word,
-      Instances::Group{ activeGroup ? activeGroup->id : 0, activeGroup ? activeGroup->name : "" },
+      Group{ activeGroup ? activeGroup->id : 0, activeGroup ? activeGroup->name : "" },
       contexts,
       activeDicts,
       header,
@@ -440,7 +440,7 @@ string ArticleMaker::makeBlankHtml() const
 //////// ArticleRequest
 
 ArticleRequest::ArticleRequest( QString const & word,
-                                Instances::Group const & group_,
+                                Group const & group_,
                                 QMap< QString, QString > const & contexts_,
                                 vector< sptr< Dictionary::Class > > const & activeDicts_,
                                 string const & header,

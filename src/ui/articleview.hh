@@ -89,7 +89,7 @@ public:
                ArticleNetworkAccessManager &,
                AudioPlayerPtr const &,
                std::vector< sptr< Dictionary::Class > > const & allDictionaries,
-               Instances::GroupInstances const &,
+               GroupInstances const &,
                bool popupView,
                Config::Class const & cfg,
                QLineEdit const * translateLine,

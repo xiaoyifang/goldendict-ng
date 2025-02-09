@@ -22,7 +22,7 @@ Groups::Groups( QWidget * parent,
   // Populate the dictionaries' list
 
   ui.dictionaries->setAsSource();
-  ui.dictionaries->populate( Instances::Group( order, dicts, Config::Group() ).dictionaries, dicts );
+  ui.dictionaries->populate( Group( order, dicts, Config::Group() ).dictionaries, dicts );
 
   ui.searchLine->applyTo( ui.dictionaries );
   addAction( ui.searchLine->getFocusAction() );
@@ -78,7 +78,7 @@ void Groups::editGroup( unsigned id )
 void Groups::updateDictionaryOrder( Config::Group const & order )
 {
   // Make sure it differs from what we have
-  Instances::Group newOrder( order, dicts, Config::Group() );
+  Group newOrder( order, dicts, Config::Group() );
 
   if ( ui.dictionaries->getCurrentDictionaries() != newOrder.dictionaries ) {
     // Repopulate

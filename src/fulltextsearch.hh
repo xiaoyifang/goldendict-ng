@@ -190,7 +190,7 @@ class FullTextSearchDialog: public QDialog
 
   Config::Class & cfg;
   std::vector< sptr< Dictionary::Class > > const & dictionaries;
-  std::vector< Instances::Group > const & groups;
+  std::vector< Group > const & groups;
   unsigned group;
   std::vector< sptr< Dictionary::Class > > activeDicts;
 
@@ -205,7 +205,7 @@ public:
   FullTextSearchDialog( QWidget * parent,
                         Config::Class & cfg_,
                         std::vector< sptr< Dictionary::Class > > const & dictionaries_,
-                        std::vector< Instances::Group > const & groups_,
+                        std::vector< Group > const & groups_,
                         FtsIndexing & ftsidx );
   virtual ~FullTextSearchDialog();
 

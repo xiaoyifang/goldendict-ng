@@ -19,7 +19,7 @@ class ArticleMaker: public QObject
   // We make it QObject to use tr() conveniently
 
   std::vector< sptr< Dictionary::Class > > const & dictionaries;
-  std::vector< Instances::Group > const & groups;
+  std::vector< Group > const & groups;
   const Config::Preferences & cfg;
 
 public:
@@ -29,7 +29,7 @@ public:
   /// references, and as such, any changes to them would reflect on the results
   /// of the inquiries, although those changes are perfectly legal.
   ArticleMaker( std::vector< sptr< Dictionary::Class > > const & dictionaries,
-                std::vector< Instances::Group > const & groups,
+                std::vector< Group > const & groups,
                 const Config::Preferences & cfg );
 
   /// Looks up the given phrase within the given group, and creates a full html
@@ -84,7 +84,7 @@ class ArticleRequest: public Dictionary::DataRequest
   Q_OBJECT
 
   QString word;
-  Instances::Group group;
+  Group group;
   QMap< QString, QString > contexts;
   std::vector< sptr< Dictionary::Class > > activeDicts;
 
@@ -119,7 +119,7 @@ class ArticleRequest: public Dictionary::DataRequest
 public:
 
   ArticleRequest( QString const & phrase,
-                  Instances::Group const & group,
+                  Group const & group,
                   QMap< QString, QString > const & contexts,
                   std::vector< sptr< Dictionary::Class > > const & activeDicts,
                   std::string const & header,

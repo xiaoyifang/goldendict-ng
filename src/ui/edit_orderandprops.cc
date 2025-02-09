@@ -95,10 +95,10 @@ OrderAndProps::OrderAndProps( QWidget * parent,
   QWidget( parent )
 {
   ui.setupUi( this );
-  Instances::Group order( dictionaryOrder, allDictionaries, Config::Group() );
-  Instances::Group inactive( inactiveDictionaries, allDictionaries, Config::Group() );
+  Group order( dictionaryOrder, allDictionaries, Config::Group() );
+  Group inactive( inactiveDictionaries, allDictionaries, Config::Group() );
 
-  Instances::Group::complementDictionaryOrder( order, inactive, allDictionaries );
+  Group::complementDictionaryOrder( order, inactive, allDictionaries );
 
   ui.dictionaryOrder->populate( order.dictionaries, allDictionaries );
   ui.inactiveDictionaries->populate( inactive.dictionaries, allDictionaries );
@@ -133,7 +133,7 @@ OrderAndProps::OrderAndProps( QWidget * parent,
 
 Config::Group OrderAndProps::getCurrentDictionaryOrder() const
 {
-  Instances::Group g;
+  Group g;
 
   g.dictionaries = ui.dictionaryOrder->getCurrentDictionaries();
 
@@ -142,7 +142,7 @@ Config::Group OrderAndProps::getCurrentDictionaryOrder() const
 
 Config::Group OrderAndProps::getCurrentInactiveDictionaries() const
 {
-  Instances::Group g;
+  Group g;
 
   g.dictionaries = ui.inactiveDictionaries->getCurrentDictionaries();
 

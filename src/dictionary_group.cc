@@ -46,7 +46,7 @@ sptr< Dictionary::Class > DictionaryGroup::getDictionaryById( const std::string 
   return nullptr;
 }
 
-Instances::Group const * DictionaryGroup::getGroupById( unsigned groupId )
+Group const * DictionaryGroup::getGroupById( unsigned groupId )
 {
   return groups.findGroup( groupId );
 }
