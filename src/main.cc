@@ -11,7 +11,6 @@
 #include <QDesktopServices>
 #include <QFile>
 #include <QIcon>
-#include <QImageReader>
 #include <QMessageBox>
 #include <QMutex>
 #include <QSessionManager>
@@ -256,7 +255,6 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
 
 int main( int argc, char ** argv )
 {
-  qDebug()<<QImageReader::supportedImageFormats();
 #if defined( Q_OS_UNIX ) && !defined( Q_OS_MACOS )
   // GoldenDict use lots of X11 functions and it currently cannot work
   // natively on Wayland. This workaround will force GoldenDict to use
