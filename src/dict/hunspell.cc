@@ -342,7 +342,7 @@ void HunspellHeadwordsRequest::run()
     if ( !suggestions.empty() ) {
       QMutexLocker _( &dataMutex );
 
-      for ( const auto & suggestion : suggestions ) {
+      for ( const auto & suggestion : std::as_const(suggestions) ) {
         matches.push_back( suggestion );
       }
     }
@@ -570,7 +570,7 @@ void getSuggestionsForExpression( std::u32string const & expression,
     }
   }
 
-  for ( const auto & result : results ) {
+  for ( const auto & result : std::as_const(results) ) {
     if ( result != trimmedWord ) {
       suggestions.push_back( result );
     }

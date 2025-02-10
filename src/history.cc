@@ -114,7 +114,7 @@ bool History::save()
   }
 
   QTextStream out( &file );
-  for ( const auto & i : items ) {
+  for ( const auto & i : std::as_const(items) ) {
     // "0 " is to keep compatibility with the original GD (an unused number)
     out << "0 " << i.word.trimmed() << '\n';
   }

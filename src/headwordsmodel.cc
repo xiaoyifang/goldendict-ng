@@ -196,7 +196,7 @@ QSet< QString > HeadwordListModel::getRemainRows( int & nodeIndex )
   _dict->findHeadWordsWithLenth( nodeIndex, &headword, 10000 );
 
   QSet< QString > filtered;
-  for ( const auto & word : headword ) {
+  for ( const auto & word : std::as_const(headword) ) {
     if ( !containWord( word ) ) {
       filtered.insert( word );
     }

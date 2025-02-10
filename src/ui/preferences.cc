@@ -56,7 +56,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   // We need to sort by language name -- otherwise list looks really weird
   QMultiMap< QString, QString > sortedLocs;
   sortedLocs.insert( Language::languageForLocale( "en_US" ), "en_US" );
-  for ( const auto & availLoc : availLocs ) {
+  for ( const auto & availLoc : std::as_const(availLocs) ) {
     // Here we assume the xx_YY naming, where xx is language and YY is region.
     //remove .qm suffix.
     QString locale = availLoc.left( availLoc.size() - 3 );

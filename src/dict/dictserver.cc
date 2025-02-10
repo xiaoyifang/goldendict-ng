@@ -365,7 +365,7 @@ QString const & DictServerDictionary::getDescription()
   if ( dictionaryDescription.isEmpty() ) {
     dictionaryDescription = QCoreApplication::translate( "DictServer", "Url: " ) + url + "<br>";
     dictionaryDescription += QCoreApplication::translate( "DictServer", "Databases: " ) + "<br>";
-    for ( const auto & serverDatabase : databases ) {
+    for ( const auto & serverDatabase : std::as_const(databases) ) {
       dictionaryDescription += serverDatabase + "<br>";
     }
     dictionaryDescription +=
@@ -374,7 +374,7 @@ QString const & DictServerDictionary::getDescription()
       dictionaryDescription += "<br><br>";
       dictionaryDescription += QCoreApplication::translate( "DictServer", "Server databases" ) + " ("
         + QString::number( serverDatabases.size() ) + "):" + "<br>";
-      for ( const auto & serverDatabase : serverDatabases ) {
+      for ( const auto & serverDatabase : std::as_const(serverDatabases) ) {
         dictionaryDescription += serverDatabase + "<br>";
       }
     }
@@ -607,7 +607,7 @@ public:
       static QRegularExpression leadingRespCode( "^\\d{3} " );
       uint32_t leadingSpaceCount      = 0;
       uint32_t firstLeadingSpaceCount = 0;
-      for ( const QString & line : lines ) {
+      for ( const QString & line : std::as_const(lines) ) {
         //ignore 15X lines
         if ( leadingRespCode.match( line ).hasMatch() ) {
           continue;

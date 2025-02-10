@@ -52,7 +52,7 @@ public:
   #endif
       sp->setLocale( e.locale );
       auto voices = sp->availableVoices();
-      for ( const auto & voice : voices ) {
+      for ( const auto & voice : std::as_const(voices) ) {
         if ( voice.name() == e.voice_name ) {
           sp->setVoice( voice );
 
