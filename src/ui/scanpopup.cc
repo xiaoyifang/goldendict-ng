@@ -414,14 +414,14 @@ void ScanPopup::applyWordsZoomLevel()
 {
   QFont font = ui.translateBox->translateLine()->font();
 
-  int ps = dictionaryBar.iconSize().height();
+  int ps = QApplication::font().pointSize();
 
   if ( cfg.preferences.wordsZoomLevel != 0 ) {
     ps += cfg.preferences.wordsZoomLevel;
-    if ( ps < 12 ) {
-      ps = 12;
+    if ( ps < 1 ) {
+      ps = 1;
     }
-    font.setPixelSize( ps * 0.8 );
+    font.setPointSize( ps );
   }
   ui.translateBox->completerWidget()->setFont( font );
   //  ui.translateBox->translateLine()->setFont( font );

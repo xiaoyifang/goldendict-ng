@@ -459,6 +459,12 @@ int main( int argc, char ** argv )
     QApplication::setFont( font );
   }
 
+  //system font size
+  if ( cfg.preferences.interfaceFontSize > 0 ) {
+    font.setPointSize( cfg.preferences.interfaceFontSize );
+    QApplication::setFont( font );
+  }
+
   // Update locale if the user's choice disagrees with the system
   QLocale locale = QLocale::system();
   if ( !cfg.preferences.interfaceLanguage.isEmpty() && locale.name() != cfg.preferences.interfaceLanguage ) {

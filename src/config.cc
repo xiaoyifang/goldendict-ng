@@ -829,6 +829,7 @@ Class load()
     c.preferences.interfaceLanguage = preferences.namedItem( "interfaceLanguage" ).toElement().text();
     c.preferences.displayStyle      = preferences.namedItem( "displayStyle" ).toElement().text();
     c.preferences.interfaceFont     = preferences.namedItem( "interfaceFont" ).toElement().text();
+    c.preferences.interfaceFontSize = preferences.namedItem( "interfaceFontSize" ).toElement().text().toInt();
 #if !defined( Q_OS_WIN )
     c.preferences.interfaceStyle = preferences.namedItem( "interfaceStyle" ).toElement().text();
 #endif
@@ -1736,6 +1737,10 @@ void save( Class const & c )
 
     opt = dd.createElement( "interfaceFont" );
     opt.appendChild( dd.createTextNode( c.preferences.interfaceFont ) );
+    preferences.appendChild( opt );
+
+    opt = dd.createElement( "interfaceFontSize" );
+    opt.appendChild( dd.createTextNode( QString::number( c.preferences.interfaceFontSize ) ) );
     preferences.appendChild( opt );
 
     opt             = dd.createElement( "customFonts" );

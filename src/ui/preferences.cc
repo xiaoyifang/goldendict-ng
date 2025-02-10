@@ -91,9 +91,17 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
     ui.systemFont->setCurrentText( p.interfaceFont );
   }
 
+  if ( p.interfaceFontSize > 0 ) {
+    ui.interfaceFontSize->setValue( p.interfaceFontSize );
+  }
+  else {
+    ui.interfaceFontSize->setValue( QApplication::font().pointSize() );
+  }
+
 
   prevWebFontFamily = p.customFonts;
   prevSysFont       = p.interfaceFont;
+  prevFontSize      = p.interfaceFontSize;
 
   if ( !p.customFonts.standard.isEmpty() ) {
     ui.font_standard->setCurrentText( p.customFonts.standard );
@@ -418,6 +426,7 @@ Config::Preferences Preferences::getPreferences()
   p.interfaceLanguage = ui.interfaceLanguage->itemData( ui.interfaceLanguage->currentIndex() ).toString();
 
   p.interfaceFont = ui.systemFont->currentText();
+  p.interfaceFontSize = ui.interfaceFontSize->value();
 
   Config::CustomFonts c;
   c.standard    = ui.font_standard->currentText();
@@ -592,7 +601,7 @@ void Preferences::on_buttonBox_accepted()
   }
 #endif
 
-  if ( ui.systemFont->currentText() != prevSysFont ) {
+  if ( ui.systemFont->currentText() != prevSysFont || ui.interfaceFontSize->value() != prevFontSize ) {
     promptText += tr( "Restart to apply the interface font change." );
   }
 
@@ -612,6 +621,11 @@ void Preferences::on_buttonBox_accepted()
                                                                     c.customFonts.monospace );
   }
 
+  if ( ui.interfaceFontSize->value() != prevFontSize ) {
+    auto font = QApplication::font();
+    font.setPointSize( ui.interfaceFontSize->value() );
+    QApplication::setFont( font );
+  }
   //change interface font.
   if ( ui.systemFont->currentText() != prevSysFont ) {
     auto font = QApplication::font();

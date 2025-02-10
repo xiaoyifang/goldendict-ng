@@ -3139,10 +3139,6 @@ int MainWindow::getIconSize()
 
 void MainWindow::iconSizeActionTriggered( QAction * /*action*/ )
 {
-  //reset word zoom
-  cfg.preferences.wordsZoomLevel = 0;
-  wordsZoomBase->setEnabled( false );
-
   bool useLargeIcons = useLargeIconsInToolbarsAction.isChecked();
   int extent         = getIconSize();
   if ( useLargeIcons ) {
@@ -3161,15 +3157,6 @@ void MainWindow::iconSizeActionTriggered( QAction * /*action*/ )
   updateDictionaryBar();
 
   scanPopup->setDictionaryIconSize();
-
-  //adjust the font size as well
-  auto font = translateBox->translateLine()->font();
-  font.setWeight( QFont::Normal );
-  //arbitrary value to make it look good
-  font.setPixelSize( extent * 0.8 );
-  //  translateBox->completerWidget()->setFont( font );
-  //only set the font in toolbar
-  translateBox->translateLine()->setFont( font );
 }
 
 void MainWindow::toggleMenuBarTriggered( bool announce )
@@ -3626,14 +3613,14 @@ void MainWindow::scaleArticlesByCurrentZoomFactor()
 
 void MainWindow::doWordsZoomIn()
 {
-  cfg.preferences.wordsZoomLevel = cfg.preferences.wordsZoomLevel + 2;
+  ++cfg.preferences.wordsZoomLevel;
 
   applyWordsZoomLevel();
 }
 
 void MainWindow::doWordsZoomOut()
 {
-  cfg.preferences.wordsZoomLevel = cfg.preferences.wordsZoomLevel - 2;
+  --cfg.preferences.wordsZoomLevel;
 
   applyWordsZoomLevel();
 }
@@ -3649,14 +3636,14 @@ void MainWindow::applyWordsZoomLevel()
 {
   QFont font = translateBox->translateLine()->font();
 
-  int ps = getIconSize();
+  int ps = QApplication::font().pointSize();
 
   ps += cfg.preferences.wordsZoomLevel;
-  if ( ps < 12 ) {
-    ps = 12;
+  if ( ps < 1 ) {
+    ps = 1;
   }
 
-  font.setPixelSize( ps * 0.8 );
+  font.setPointSize( ps );
   font.setWeight( QFont::Normal );
   translateBox->translateLine()->setFont( font );
   //  translateBox->completerWidget()->setFont( font );

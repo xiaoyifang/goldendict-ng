@@ -299,11 +299,32 @@ the application.</string>
            </layout>
           </item>
           <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_19">
+            <item>
+             <widget class="QLabel" name="label_30">
+              <property name="text">
+               <string>Interface Font Size</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="interfaceFontSize">
+              <property name="minimum">
+               <number>8</number>
+              </property>
+              <property name="maximum">
+               <number>32</number>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
            <layout class="QHBoxLayout" name="horizontalLayout_4">
             <item>
              <widget class="QLabel" name="label_6">
               <property name="text">
-               <string>Interface language:</string>
+               <string>Interface language</string>
               </property>
              </widget>
             </item>
@@ -333,7 +354,7 @@ the application.</string>
             <item>
              <widget class="QLabel" name="label_9">
               <property name="text">
-               <string>Article Display style:</string>
+               <string>Article Display style</string>
               </property>
              </widget>
             </item>
@@ -360,7 +381,7 @@ the application.</string>
             <item>
              <widget class="QLabel" name="addonStylesLabel">
               <property name="text">
-               <string>Add-on style:</string>
+               <string>Add-on style</string>
               </property>
              </widget>
             </item>
@@ -387,7 +408,7 @@ the application.</string>
             <item>
              <widget class="QLabel" name="interfaceStyleLabel">
               <property name="text">
-               <string>Interface Style:</string>
+               <string>Interface Style</string>
               </property>
              </widget>
             </item>
