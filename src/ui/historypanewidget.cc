@@ -104,7 +104,7 @@ void HistoryPaneWidget::copySelectedItems()
   }
 
   QStringList selectedStrings;
-  for ( const auto & id : selectedIdxs ) {
+  for ( const auto & id : std::as_const( selectedIdxs ) ) {
     selectedStrings << m_historyList->model()->data( id ).toString();
   }
 
@@ -122,7 +122,7 @@ void HistoryPaneWidget::deleteSelectedItems()
 
   QList< int > idxsToDelete;
 
-  for ( const auto & id : selectedIdxs ) {
+  for ( const auto & id : std::as_const( selectedIdxs ) ) {
     idxsToDelete << id.row();
   }
 
@@ -130,7 +130,7 @@ void HistoryPaneWidget::deleteSelectedItems()
   // the first deletions won't affect the indexes for subsequent deletions.
   std::sort( idxsToDelete.begin(), idxsToDelete.end(), std::greater< int >() );
 
-  for ( const auto & id : idxsToDelete ) {
+  for ( const auto & id : std::as_const( idxsToDelete ) ) {
     m_history->removeItem( id );
   }
 

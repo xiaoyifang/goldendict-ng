@@ -352,7 +352,7 @@ public:
       QStringList sl;
       walkNode( doc.firstChild(), sl );
 
-      for ( auto s : sl ) {
+      for ( auto s : std::as_const( sl ) ) {
         translatePW( s );
         ss += s;
         ss += "<br>";

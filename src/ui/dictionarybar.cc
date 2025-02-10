@@ -147,7 +147,7 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
 
   unsigned refsAdded = 0;
 
-  for ( const auto & dictAction : dictActions ) {
+  for ( const auto & dictAction : std::as_const( dictActions ) ) {
 
     // Enough! Or the menu would become too large.
     if ( refsAdded++ >= maxDictionaryRefsInContextMenu && !extended ) {
@@ -220,7 +220,7 @@ void DictionaryBar::mutedDictionariesChanged()
 
   setUpdatesEnabled( false );
 
-  for ( const auto & dictAction : dictActions ) {
+  for ( const auto & dictAction : std::as_const( dictActions ) ) {
     bool const isUnmuted = !mutedDictionaries->contains( dictAction->data().toString() );
 
     if ( isUnmuted != dictAction->isChecked() ) {
@@ -253,7 +253,7 @@ void DictionaryBar::actionWasTriggered( QAction * action )
     // For solo, all dictionaries must be unchecked, since we're handling
     // the result of the dictionary being (un)checked, and in case we were
     // in solo, now we would end up with no dictionaries being checked at all.
-    for ( const auto & dictAction : dictActions ) {
+    for ( const auto & dictAction : std::as_const( dictActions ) ) {
       if ( dictAction->isChecked() ) {
         isSolo = false;
         break;
@@ -275,13 +275,13 @@ void DictionaryBar::actionWasTriggered( QAction * action )
       }
 
       if ( isSolo ) {
-        for ( const auto & dictAction : dictActions ) {
+        for ( const auto & dictAction : std::as_const( dictActions ) ) {
           mutedDictionaries->remove( dictAction->data().toString() );
         }
       }
       else {
         // Make dictionary solo
-        for ( const auto & dictAction : dictActions ) {
+        for ( const auto & dictAction : std::as_const( dictActions ) ) {
           QString const dictId = dictAction->data().toString();
 
           if ( dictId == id ) {
@@ -325,7 +325,7 @@ void DictionaryBar::dictsPaneClicked( const QString & id )
     return;
   }
 
-  for ( const auto & dictAction : dictActions ) {
+  for ( const auto & dictAction : std::as_const( dictActions ) ) {
     QString const dictId = dictAction->data().toString();
     if ( dictId == id ) {
       dictAction->activate( QAction::Trigger );

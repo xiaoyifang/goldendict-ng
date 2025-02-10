@@ -330,7 +330,7 @@ void ProgramWordSearchRequest::instanceFinished( QByteArray output, QString erro
     output.replace( "\r\n", "\n" );
     QStringList result = QString::fromUtf8( output ).split( "\n", Qt::SkipEmptyParts );
 
-    for ( const auto & x : result ) {
+    for ( const auto & x : std::as_const( result ) ) {
       matches.push_back( Dictionary::WordMatch( x.toStdU32String() ) );
     }
 
