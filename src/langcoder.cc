@@ -230,7 +230,7 @@ quint32 LangCoder::findIdForLanguage( std::u32string const & lang )
 {
   const auto langFolded = QByteArrayView( Text::toUtf8( lang ) );
 
-  for ( auto const & lc : std::as_const(LANG_CODE_MAP) ) {
+  for ( auto const & lc : std::as_const( LANG_CODE_MAP ) ) {
     if ( langFolded.compare( lc.lang, Qt::CaseInsensitive ) == 0 ) {
       return code2toInt( lc.code2.toStdString().c_str() );
     }
@@ -241,7 +241,7 @@ quint32 LangCoder::findIdForLanguage( std::u32string const & lang )
 
 quint32 LangCoder::findIdForLanguageCode3( std::string const & code )
 {
-  for ( auto const & lc : std::as_const(LANG_CODE_MAP) ) {
+  for ( auto const & lc : std::as_const( LANG_CODE_MAP ) ) {
     if ( code == lc.code3 ) {
       return code2toInt( lc.code2 );
     }
@@ -261,7 +261,7 @@ quint32 LangCoder::guessId( const QString & lang )
 
   // check if it could be the whole language name
   if ( lstr.size() >= 3 ) {
-    for ( auto const & lc : std::as_const(LANG_CODE_MAP) ) {
+    for ( auto const & lc : std::as_const( LANG_CODE_MAP ) ) {
       if ( lstr == ( lstr.size() == 3 ? QString::fromStdString( lc.code3 ) : QString::fromStdString( lc.lang ) ) ) {
         return code2toInt( lc.code2 );
       }

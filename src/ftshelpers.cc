@@ -227,7 +227,7 @@ void FTSResultsRequest::run()
         QMutexLocker _( &dataMutex );
         QString id = QString::fromUtf8( dict.getId().c_str() );
         dict.getHeadwordsFromOffsets( offsetsForHeadwords, headwords, &isCancelled );
-        for ( const auto & headword : std::as_const(headwords) ) {
+        for ( const auto & headword : std::as_const( headwords ) ) {
           foundHeadwords->append( FTS::FtsHeadword( headword, id, QStringList(), matchCase ) );
         }
       }

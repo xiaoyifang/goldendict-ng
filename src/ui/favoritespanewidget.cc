@@ -1211,7 +1211,7 @@ bool FavoritesModel::setDataFromTxt( QString const & dataStr )
     rootItem = new TreeItem( QVariant(), 0, TreeItem::Root );
   }
 
-  for ( auto const & word : std::as_const(words) ) {
+  for ( auto const & word : std::as_const( words ) ) {
     rootItem->appendChild( new TreeItem( word, rootItem, TreeItem::Word ) );
   }
   endResetModel();

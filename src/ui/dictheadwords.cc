@@ -340,7 +340,7 @@ void DictHeadwords::exportAllWords( QProgressDialog & progress, QTextStream & ou
       break;
     }
 
-    for ( const auto & item : std::as_const(headwords) ) {
+    for ( const auto & item : std::as_const( headwords ) ) {
       progress.setValue( totalCount++ );
 
       writeWordToFile( out, item );
