@@ -58,8 +58,6 @@ BaseTransliterationDictionary::findHeadwordsForSynonym( std::u32string const & s
 
   vector< std::u32string > alts = getAlternateWritings( str );
 
-  qDebug( "alts = %u", (unsigned)alts.size() );
-
   for ( const auto & alt : alts ) {
     result->getMatches().push_back( alt );
   }
