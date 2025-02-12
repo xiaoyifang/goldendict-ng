@@ -4,6 +4,7 @@
 #include "wordfinder.hh"
 #include "folding.hh"
 #include <map>
+#include <QMutexLocker>
 
 
 using std::vector;
@@ -112,6 +113,7 @@ void WordFinder::startSearch()
     return; // Search was probably cancelled
   }
 
+  QMutexLocker locker( &mutex );
   // Clear the requests just in case
   queuedRequests.clear();
   finishedRequests.clear();
@@ -177,6 +179,7 @@ void WordFinder::cancel()
 
 void WordFinder::clear()
 {
+  QMutexLocker locker( &mutex );
   cancel();
   queuedRequests.clear();
   finishedRequests.clear();
@@ -184,6 +187,7 @@ void WordFinder::clear()
 
 void WordFinder::requestFinished()
 {
+  QMutexLocker locker( &mutex );
   bool newResults = false;
 
   // See how many new requests have finished, and if we have any new results
@@ -288,6 +292,7 @@ void WordFinder::updateResults()
   if ( updateResultsTimer.isActive() ) {
     updateResultsTimer.stop(); // Can happen when we were done before it'd expire
   }
+  QMutexLocker locker( &mutex );
 
   std::u32string original = Folding::applySimpleCaseOnly( allWordWritings[ 0 ] );
 

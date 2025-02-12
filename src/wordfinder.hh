@@ -30,6 +30,7 @@ private:
   bool searchResultsUncertain;
   std::list< sptr< Dictionary::WordSearchRequest > > queuedRequests, finishedRequests;
   bool searchInProgress;
+  QMutex mutex;
 
   QTimer updateResultsTimer;
 
