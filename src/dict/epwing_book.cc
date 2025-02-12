@@ -612,8 +612,6 @@ QString EpwingBook::repairSubBookDirectory( QString subBookDir )
     return subBookDir;
   }
 
-  qDebug() << "Epwing: can not found subbook directory,try to fix automatically, dir=>" << subBookDir;
-
   for ( const auto & file : allIdxFiles ) {
     if ( file.compare( subBookDir, Qt::CaseInsensitive ) == 0 ) {
       qDebug() << "Epwing: found " << file;
