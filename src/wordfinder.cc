@@ -177,9 +177,11 @@ void WordFinder::cancel()
 
 void WordFinder::clear()
 {
+  qDebug()<<"WordFinder::cancel() begin";
   cancel();
-  queuedRequests.clear();
+  qDebug()<<"WordFinder::cancel() finished";
   finishedRequests.clear();
+  qDebug()<<"finishedRequests::clear() finished";
 }
 
 void WordFinder::requestFinished()
@@ -493,7 +495,13 @@ void WordFinder::updateResults()
 
 void WordFinder::cancelSearches()
 {
-  for ( auto & queuedRequest : queuedRequests ) {
-    queuedRequest->cancel();
+  try {
+    for ( auto & queuedRequest : queuedRequests ) {
+      queuedRequest->cancel();
+    }
   }
+  catch ( std::exception & e ) {
+    qDebug() << "cancelSearches() error:" << e.what();
+  }
+  queuedRequests.clear();
 }
