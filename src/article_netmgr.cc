@@ -166,8 +166,6 @@ string ArticleNetworkAccessManager::getHtml( ResourceType resourceType )
 sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( QUrl const & url, QString & contentType )
 {
   qDebug() << "getResource:" << url.toString();
-  qDebug() << "scheme:" << url.scheme();
-  qDebug() << "host:" << url.host();
 
   if ( url.scheme() == "gdlookup" ) {
     if ( !url.host().isEmpty() && url.host() != "localhost" ) {

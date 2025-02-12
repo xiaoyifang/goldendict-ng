@@ -408,7 +408,7 @@ EpwingBook::~EpwingBook()
 
 void EpwingBook::setErrorString( QString const & func, EB_Error_Code code )
 {
-  error_string = QString( "EB \"%1\" function error: %2 (%3)" )
+  error_string = QString( "Epwing: (%1) function error. %2 (%3)" )
                    .arg( func )
                    .arg( QString::fromLocal8Bit( eb_error_string( code ) ) )
                    .arg( QString::fromLocal8Bit( eb_error_message( code ) ) );
@@ -611,8 +611,6 @@ QString EpwingBook::repairSubBookDirectory( QString subBookDir )
   if ( allIdxFiles.contains( subBookDir ) ) {
     return subBookDir;
   }
-
-  qDebug() << "Epwing: can not found subbook directory,try to fix automatically, dir=>" << subBookDir;
 
   for ( const auto & file : allIdxFiles ) {
     if ( file.compare( subBookDir, Qt::CaseInsensitive ) == 0 ) {
