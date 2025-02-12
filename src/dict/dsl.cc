@@ -368,7 +368,7 @@ void DslDictionary::doDeferredInit()
         memcpy( &total, abrvBlock, sizeof( uint32_t ) );
         abrvBlock += sizeof( uint32_t );
 
-        qDebug( "DSL: %s Loading %u abbrv", getName().c_str(), total );
+        qDebug( "DSL: %s loading %u abbrv", getName().c_str(), total );
 
         while ( total-- ) {
           uint32_t keySz;
