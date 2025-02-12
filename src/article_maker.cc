@@ -621,7 +621,7 @@ void ArticleRequest::bodyFinished()
 
         string dictId = activeDict->getId();
 
-        qDebug() << "dictId:" << dictId.c_str() << " finished.";
+        qDebug() << "dict:" << activeDict->getName().c_str() << " finished.";
 
         dictIds << QString::fromStdString( dictId );
         string head;
