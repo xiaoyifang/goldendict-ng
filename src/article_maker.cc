@@ -602,7 +602,7 @@ void ArticleRequest::bodyFinished()
     return;
   }
 
-  qDebug( "some body finished" );
+  qDebug( "body finshed signal received" );
 
   bool wasUpdated = false;
 
@@ -611,8 +611,6 @@ void ArticleRequest::bodyFinished()
     // Since requests should go in order, check the first one first
     if ( bodyRequests.front()->isFinished() ) {
       // Good
-
-      qDebug( "one finished." );
 
       Dictionary::DataRequest & req = *bodyRequests.front();
 
@@ -623,6 +621,7 @@ void ArticleRequest::bodyFinished()
 
         string dictId = activeDict->getId();
 
+        qDebug()<<"dictId:"<<dictId.c_str()<<" finished.";
 
         dictIds << QString::fromStdString( dictId );
         string head;
@@ -712,12 +711,10 @@ void ArticleRequest::bodyFinished()
         //signal finished dictionary for pronounciation
         GlobalBroadcaster::instance()->pronounce_engine.finishDictionary( dictId );
       }
-      qDebug( "erasing.." );
       bodyRequests.pop_front();
-      qDebug( "erase done.." );
     }
     else {
-      qDebug( "one not finished." );
+      qDebug( "the top one has not finished yet." );
       break;
     }
   }

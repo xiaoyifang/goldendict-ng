@@ -412,9 +412,7 @@ void FullTextSearchDialog::searchReqFinished()
       }
     }
     if ( it != searchReqs.end() ) {
-      qDebug( "erasing.." );
       searchReqs.erase( it );
-      qDebug( "erase done.." );
       continue;
     }
     else {
