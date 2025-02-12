@@ -177,11 +177,11 @@ void WordFinder::cancel()
 
 void WordFinder::clear()
 {
-  qDebug()<<"WordFinder::cancel() begin";
+  qDebug() << "WordFinder::cancel() begin";
   cancel();
-  qDebug()<<"WordFinder::cancel() finished";
+  qDebug() << "WordFinder::cancel() finished";
   finishedRequests.clear();
-  qDebug()<<"finishedRequests::clear() finished";
+  qDebug() << "finishedRequests::clear() finished";
 }
 
 void WordFinder::requestFinished()
