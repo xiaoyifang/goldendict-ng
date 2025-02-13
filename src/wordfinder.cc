@@ -139,7 +139,9 @@ void WordFinder::startSearch()
           inputDict->prefixMatch( allWordWriting, requestedMaxResults ) :
           inputDict->stemmedMatch( allWordWriting, stemmedMinLength, stemmedMaxSuffixVariation, requestedMaxResults );
 
-        connect( sr.get(), &Dictionary::Request::finished, this, &WordFinder::requestFinished, Qt::QueuedConnection );
+        connect( sr.get(), &Dictionary::Request::finished, this, [ this, sr ]() {
+          requestFinished( sr );
+        } );
 
         {
           QMutexLocker locker( &mutex );
@@ -204,6 +206,41 @@ void WordFinder::requestFinished()
       }
       else {
         ++i;
+      }
+    }
+  }
+
+  if ( !searchInProgress.load() ) {
+    return;
+  }
+
+  if ( queuedRequests.empty() ) {
+    // Search is finished.
+    updateResults();
+  }
+}
+
+void WordFinder::requestFinished( const sptr< Dictionary::WordSearchRequest > & req )
+{
+  if ( !searchInProgress.load() ) {
+    return;
+  }
+  {
+    QMutexLocker locker( &mutex );
+    queuedRequests.remove( req );
+
+    if ( req->isFinished() ) {
+      if ( !req->getErrorString().isEmpty() ) {
+        searchErrorString = tr( "Failed to query some dictionaries." );
+      }
+
+      if ( req->isUncertain() ) {
+        searchResultsUncertain = true;
+      }
+
+      if ( req->matchesCount() > 0u ) {
+        // This list is handled by updateResults()
+        finishedRequests.push_back( req );
       }
     }
   }

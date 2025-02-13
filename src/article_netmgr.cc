@@ -288,7 +288,17 @@ ArticleResourceReply::ArticleResourceReply( QObject * parent,
 
 ArticleResourceReply::~ArticleResourceReply()
 {
-  req->cancel();
+  try {
+    if ( req ) {
+      req->cancel();
+    }
+  }
+  catch ( const std::exception & e ) {
+    qWarning() << "Exception caught in ~ArticleResourceReply: " << e.what();
+  }
+  catch ( ... ) {
+    qWarning() << "Unknown exception caught in ~ArticleResourceReply";
+  }
 }
 
 void ArticleResourceReply::reqUpdated()
