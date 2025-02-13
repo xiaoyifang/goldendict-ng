@@ -175,8 +175,9 @@ void WordFinder::cancel()
 
 void WordFinder::clear()
 {
-  QMutexLocker locker( &mutex );
   cancel();
+  QMutexLocker locker( &mutex );
+
   queuedRequests.clear();
   finishedRequests.clear();
 }
@@ -501,6 +502,8 @@ void WordFinder::updateResults()
 
 void WordFinder::cancelSearches()
 {
+  QMutexLocker locker( &mutex );
+
   for ( auto & queuedRequest : queuedRequests ) {
     queuedRequest->cancel();
   }
