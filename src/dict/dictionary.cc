@@ -376,7 +376,7 @@ void Class::isolateCSS( QString & css, QString const & wrapperSelector )
   QRegularExpression reg3( "[,;\\{]" );
 
 
-  qsizetype currentPos = 0;
+  int currentPos = 0;
   QString newCSS;
   QString prefix( "#gdfrom-" );
   prefix += QString::fromLatin1( getId().c_str() );
@@ -399,14 +399,14 @@ void Class::isolateCSS( QString & css, QString const & wrapperSelector )
     if ( ch == '@' ) {
       // @ rules
 
-      qsizetype n = currentPos;
+      int n = currentPos;
       if ( css.mid( currentPos, 7 ).compare( "@import", Qt::CaseInsensitive ) == 0
            || css.mid( currentPos, 10 ).compare( "@font-face", Qt::CaseInsensitive ) == 0
            || css.mid( currentPos, 10 ).compare( "@namespace", Qt::CaseInsensitive ) == 0
            || css.mid( currentPos, 8 ).compare( "@charset", Qt::CaseInsensitive ) == 0 ) {
         // Copy rule as is.
         n      = css.indexOf( ';', currentPos );
-        auto n2 = css.indexOf( '{', currentPos );
+        int n2 = css.indexOf( '{', currentPos );
         if ( n2 > 0 && n > n2 ) {
           n = n2 - 1;
         }
@@ -444,7 +444,7 @@ void Class::isolateCSS( QString & css, QString const & wrapperSelector )
       // Selector declaration block.
       // We copy it up to '}' as is.
 
-      auto n = css.indexOf( '}', currentPos );
+      int n = css.indexOf( '}', currentPos );
       newCSS.append( css.mid( currentPos, n == -1 ? n : n - currentPos + 1 ) );
       if ( n < 0 ) {
         break;
@@ -457,7 +457,7 @@ void Class::isolateCSS( QString & css, QString const & wrapperSelector )
       if ( ch.isLetter() || ch == '*' ) {
         // Check for namespace prefix
         QChar chr;
-        for ( auto i = currentPos; i < css.length(); i++ ) {
+        for ( int i = currentPos; i < css.length(); i++ ) {
           chr = css[ i ];
           if ( chr.isLetterOrNumber() || chr.isMark() || chr == '_' || chr == '-'
                || ( chr == '*' && i == currentPos ) ) {
@@ -479,7 +479,7 @@ void Class::isolateCSS( QString & css, QString const & wrapperSelector )
       // This is some selector.
       // We must to add the isolate prefix to it.
 
-      auto n    = css.indexOf( reg2, currentPos + 1 );
+      int n     = css.indexOf( reg2, currentPos + 1 );
       QString s = css.mid( currentPos, n < 0 ? n : n - currentPos );
       if ( n < 0 ) {
         newCSS.append( s );

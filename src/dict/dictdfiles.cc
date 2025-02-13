@@ -339,7 +339,7 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( std::u32string cons
                                   .replace( refs, R"(<a href="gdlookup://localhost/\1">\1</a>)" );
         convertedText.erase();
 
-        qsizetype pos = 0;
+        int pos = 0;
 
         QString articleNewString;
         QRegularExpressionMatchIterator it = links.globalMatch( articleString );

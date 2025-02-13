@@ -231,7 +231,7 @@ void BtreeWordSearchRequest::findMatches()
     }
   }
 
-  auto initialFoldedSize = folded.size();
+  int initialFoldedSize = folded.size();
 
   int charsLeftToChop = 0;
 
@@ -637,7 +637,7 @@ char const * BtreeIndex::findChainOffsetExactOrPrefix( std::u32string const & ta
       // string lands.
 
       char const ** window = &chainOffsets.front();
-      auto windowSize      = chainOffsets.size();
+      unsigned windowSize  = chainOffsets.size();
 
       for ( ;; ) {
         //qDebug( "window = %u, ws = %u", window - &chainOffsets.front(), windowSize );
@@ -762,7 +762,7 @@ void BtreeIndex::antialias( std::u32string const & str, vector< WordArticleLink 
     caseFolded = Folding::trimWhitespaceOrPunct( caseFolded );
   }
 
-  for ( auto x = chain.size(); x--; ) {
+  for ( unsigned x = chain.size(); x--; ) {
     // If after applying case folding to each word they wouldn't match, we
     // drop the entry.
     std::u32string entry =
@@ -896,7 +896,7 @@ static uint32_t buildBtreeNode( IndexedWords::const_iterator & nextIndex,
     abort();
   }
 
-  auto offset = file.tell();
+  uint32_t offset = file.tell();
 
   file.write< uint32_t >( uncompressedData.size() );
   file.write< uint32_t >( compressedSize );
@@ -908,7 +908,7 @@ static uint32_t buildBtreeNode( IndexedWords::const_iterator & nextIndex,
 
     file.write( (uint32_t)0 );
 
-    auto here = file.tell();
+    uint32_t here = file.tell();
 
     if ( lastLeafLinkOffset ) {
       // Update the previous leaf to have the offset of this one.

@@ -235,7 +235,7 @@ QString SlobFile::readString( unsigned length )
   }
 
   char term = 0;
-  auto n    = str.indexOf( term );
+  int n     = str.indexOf( term );
   if ( n >= 0 ) {
     str.resize( n );
   }
@@ -788,9 +788,7 @@ string SlobDictionary::convert( const string & in, RefEntry const & entry )
   QRegularExpression rxLink(
     R"lit(<\s*a\s+([^>]*)href="(?!(?:\w+://|#|mailto:|tel:))(/|)([^"]*)"\s*(title="[^"]*")?[^>]*>)lit" );
   QRegularExpressionMatchIterator it = rxLink.globalMatch( text );
-
-  qsizetype pos = 0;
-
+  int pos                            = 0;
   QString newText;
   while ( it.hasNext() ) {
     QRegularExpressionMatch match = it.next();
@@ -810,7 +808,7 @@ string SlobDictionary::convert( const string & in, RefEntry const & entry )
     }
 
     // Find anchor
-    auto n = list[ 3 ].indexOf( '#' );
+    int n = list[ 3 ].indexOf( '#' );
     if ( n > 0 ) {
       anchor = QString( "?gdanchor=" ) + list[ 3 ].mid( n + 1 );
       tag.remove( list[ 3 ].mid( n ) );

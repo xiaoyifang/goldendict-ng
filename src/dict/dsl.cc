@@ -724,9 +724,9 @@ string DslDictionary::getNodeLink( ArticleDom::Node const & node )
   string link;
   if ( !node.tagAttrs.empty() ) {
     QString attrs = QString::fromStdU32String( node.tagAttrs );
-    auto n        = attrs.indexOf( "target=\"" );
+    int n         = attrs.indexOf( "target=\"" );
     if ( n >= 0 ) {
-      auto n_end     = attrs.indexOf( '\"', n + 8 );
+      int n_end      = attrs.indexOf( '\"', n + 8 );
       QString target = attrs.mid( n + 8, n_end > n + 8 ? n_end - ( n + 8 ) : -1 );
       link           = Html::escape( Filetype::simplifyString( string( target.toUtf8().data() ), false ) );
     }
@@ -916,7 +916,7 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
       // Find ISO 639-1 code
       string langcode;
       QString attr = QString::fromStdU32String( node.tagAttrs );
-      auto n       = attr.indexOf( "id=" );
+      int n        = attr.indexOf( "id=" );
       if ( n >= 0 ) {
         int id = attr.mid( n + 3 ).toInt();
         if ( id ) {
@@ -926,7 +926,7 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
       else {
         n = attr.indexOf( "name=\"" );
         if ( n >= 0 ) {
-          auto n2 = attr.indexOf( '\"', n + 6 );
+          int n2 = attr.indexOf( '\"', n + 6 );
           if ( n2 > 0 ) {
             quint32 id = dslLanguageToId( attr.mid( n + 6, n2 - n - 6 ).toStdU32String() );
             langcode   = LangCoder::intToCode2( id ).toStdString();
@@ -950,7 +950,7 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
     url.setPath( Utils::Url::ensureLeadingSlash( QString::fromStdU32String( nodeStr ) ) );
     if ( !node.tagAttrs.empty() ) {
       QString attr = QString::fromStdU32String( node.tagAttrs ).remove( '\"' );
-      auto n       = attr.indexOf( '=' );
+      int n        = attr.indexOf( '=' );
       if ( n > 0 ) {
         QList< std::pair< QString, QString > > query;
         query.append( std::pair< QString, QString >( attr.left( n ), attr.mid( n + 1 ) ) );
@@ -1295,7 +1295,7 @@ void DslDictionary::getArticleText( uint32_t articleAddress, QString & headword,
     static QString stripTags[ stripTagsNumber ]    = { "s", "url", "!trs", "video", "preview" };
     static QString stripEndTags[ stripTagsNumber ] = { "[/s]", "[/url]", "[/!trs]", "[/video]", "[/preview]" };
 
-    qsizetype pos = 0;
+    int pos = 0;
     while ( pos >= 0 ) {
       pos = text.indexOf( '[', pos, Qt::CaseInsensitive );
       if ( pos >= 0 ) {
@@ -1305,7 +1305,7 @@ void DslDictionary::getArticleText( uint32_t articleAddress, QString & headword,
           continue;
         }
 
-        auto pos2 = text.indexOf( ']', pos + 1, Qt::CaseInsensitive );
+        int pos2 = text.indexOf( ']', pos + 1, Qt::CaseInsensitive );
         if ( pos2 < 0 ) {
           break;
         }
@@ -1840,17 +1840,17 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
               idxHeader.hasAbrv     = 1;
               idxHeader.abrvAddress = chunks.startNewBlock();
 
-              uint32_t sz = (uint32_t)abrv.size();
+              uint32_t sz = abrv.size();
 
               chunks.addToBlock( &sz, sizeof( uint32_t ) );
 
               for ( const auto & i : abrv ) {
                 //              qDebug( "%s:%s", i->first.c_str(), i->second.c_str() );
 
-                sz = (uint32_t)i.first.size();
+                sz = i.first.size();
                 chunks.addToBlock( &sz, sizeof( uint32_t ) );
                 chunks.addToBlock( i.first.data(), sz );
-                sz = (uint32_t)i.second.size();
+                sz = i.second.size();
                 chunks.addToBlock( &sz, sizeof( uint32_t ) );
                 chunks.addToBlock( i.second.data(), sz );
               }

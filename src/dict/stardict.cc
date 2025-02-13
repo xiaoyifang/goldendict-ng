@@ -445,7 +445,7 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
                                           QRegularExpression::CaseInsensitiveOption );
 
 
-      qsizetype pos = 0;
+      int pos = 0;
       QString articleNewText;
       QRegularExpressionMatchIterator it = linksReg.globalMatch( articleText );
       while ( it.hasNext() ) {
@@ -606,14 +606,14 @@ void StardictDictionary::pangoToHtml( QString & text )
 
   text.replace( "\n", "<br>" );
 
-  qsizetype pos = 0;
+  int pos = 0;
   do {
     auto match = spanRegex.match( text, pos );
     pos        = match.capturedStart();
     if ( pos >= 0 ) {
       QString styles = match.captured( 1 );
       QString newSpan( "<span style=\"" );
-      qsizetype stylePos = 0;
+      int stylePos = 0;
       do {
         auto styleMatch = styleRegex.match( styles, stylePos );
 
@@ -627,7 +627,7 @@ void StardictDictionary::pangoToHtml( QString & text )
             // Parse font description
 
             QStringList list = styleMatch.captured( 2 ).split( " ", Qt::SkipEmptyParts );
-            qsizetype n;
+            int n;
             QString sizeStr, stylesStr, familiesStr;
             for ( n = list.size() - 1; n >= 0; n-- ) {
               QString str = list.at( n );
@@ -1589,7 +1589,7 @@ void StardictResourceRequest::run()
       // Correct some url's
 
       QString id = QString::fromUtf8( dict.getId().c_str() );
-      qsizetype pos = 0;
+      int pos    = 0;
 
       static QRegularExpression links( R"(url\(\s*(['"]?)([^'"]*)(['"]?)\s*\))",
                                        QRegularExpression::CaseInsensitiveOption );

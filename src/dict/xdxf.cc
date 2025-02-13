@@ -798,7 +798,7 @@ void checkArticlePosition( GzippedFile & gzFile, uint32_t * pOffset, uint32_t * 
   }
   QString s = QString::fromUtf8( data );
   free( data );
-  auto n = s.lastIndexOf( "</ar" );
+  int n = s.lastIndexOf( "</ar" );
   if ( n > 0 ) {
     *pSize -= s.size() - n;
   }
@@ -1249,15 +1249,15 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
                 idxHeader.hasAbrv     = 1;
                 idxHeader.abrvAddress = chunks.startNewBlock();
 
-                uint32_t sz = (uint32_t)abrv.size();
+                uint32_t sz = abrv.size();
 
                 chunks.addToBlock( &sz, sizeof( uint32_t ) );
 
                 for ( const auto & i : abrv ) {
-                  sz = (uint32_t)i.first.size();
+                  sz = i.first.size();
                   chunks.addToBlock( &sz, sizeof( uint32_t ) );
                   chunks.addToBlock( i.first.data(), sz );
-                  sz = (uint32_t)i.second.size();
+                  sz = i.second.size();
                   chunks.addToBlock( &sz, sizeof( uint32_t ) );
                   chunks.addToBlock( i.second.data(), sz );
                 }
