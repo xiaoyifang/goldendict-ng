@@ -117,7 +117,7 @@ void trimWs( string & word )
       word.clear();
     }
     else {
-      auto end = word.size();
+      unsigned end = word.size();
 
       // Doesn't consist of ws entirely, so must end with just isspace()
       // condition.
@@ -611,7 +611,8 @@ void BglArticleRequest::fixHebString( string & hebStr ) // Hebrew support - conv
 
 void BglArticleRequest::fixHebArticle( string & hebArticle ) // Hebrew support - remove extra chars at the end
 {
-  std::size_t nulls;
+  unsigned nulls;
+
   for ( nulls = hebArticle.size(); nulls > 0
         && ( ( hebArticle[ nulls - 1 ] <= 32 && hebArticle[ nulls - 1 ] >= 0 )
              || ( hebArticle[ nulls - 1 ] >= 65 && hebArticle[ nulls - 1 ] <= 90 ) );
@@ -937,7 +938,7 @@ void BglDictionary::replaceCharsetEntities( string & text )
 
   QRegularExpression oneValueExp( "\\s*([0-9a-fA-F]+)\\s*;" );
   QString result;
-  qsizetype pos = 0;
+  int pos = 0;
 
   QRegularExpressionMatchIterator it = charsetExp.globalMatch( str );
   while ( it.hasNext() ) {

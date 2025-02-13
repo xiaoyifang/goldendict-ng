@@ -535,13 +535,13 @@ void ArticleRequest::altSearchFinished()
 int ArticleRequest::findEndOfCloseDiv( const QString & str, int pos )
 {
   for ( ;; ) {
-    const auto n1 = str.indexOf( "</div>", pos );
+    const int n1 = str.indexOf( "</div>", pos );
     if ( n1 <= 0 ) {
       return n1;
     }
 
     // will there be some custom tags starts with <div but not <div> ,such as <divider>
-    const auto n2 = str.indexOf( RX::Html::startDivTag, pos );
+    const int n2 = str.indexOf( RX::Html::startDivTag, pos );
     if ( n2 <= 0 || n2 > n1 ) {
       return n1 + 6;
     }
@@ -569,7 +569,7 @@ bool ArticleRequest::isCollapsable( Dictionary::DataRequest & req, QString const
       if ( !needExpandOptionalParts ) {
         // Strip DSL optional parts
         for ( ;; ) {
-          const auto pos = text.indexOf( "<div class=\"dsl_opt\"" );
+          const int pos = text.indexOf( "<div class=\"dsl_opt\"" );
           if ( pos > 0 ) {
             const int endPos = findEndOfCloseDiv( text, pos + 1 );
             if ( endPos > pos ) {
@@ -792,7 +792,7 @@ int ArticleRequest::htmlTextSize( QString html )
     html.remove( QRegularExpression( "<link\\s*[^>]*>", QRegularExpression::CaseInsensitiveOption ) )
       .remove( QRegularExpression( R"(<script[\s\S]*?>[\s\S]*?<\/script>)",
                                    QRegularExpression::CaseInsensitiveOption | QRegularExpression::MultilineOption ) );
-  auto size = QTextDocumentFragment::fromHtml( stripStyleSheet ).toPlainText().length();
+  int size = QTextDocumentFragment::fromHtml( stripStyleSheet ).toPlainText().length();
 
   return size;
 }

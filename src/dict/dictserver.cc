@@ -79,7 +79,7 @@ public:
 
   void run( std::function< void() > callback )
   {
-    auto pos = url.indexOf( "://" );
+    int pos = url.indexOf( "://" );
     if ( pos < 0 ) {
       url = "dict://" + url;
     }
@@ -121,7 +121,7 @@ public:
           QString authCommand = QString( "AUTH " );
           QString authString  = msgId;
 
-          auto pos = serverUrl.userInfo().indexOf( QRegularExpression( "[:;]" ) );
+          int pos = serverUrl.userInfo().indexOf( QRegularExpression( "[:;]" ) );
           if ( pos > 0 ) {
             authCommand += serverUrl.userInfo().left( pos );
             authString += serverUrl.userInfo().mid( pos + 1 );
@@ -202,7 +202,7 @@ public:
 
     dictionaryName = name_;
 
-    auto pos = url.indexOf( "://" );
+    int pos = url.indexOf( "://" );
     if ( pos < 0 ) {
       url = "dict://" + url;
     }
@@ -242,7 +242,7 @@ public:
 
         if ( reply.left( 3 ) == "110" ) {
           state        = DictServerState::DB_DATA;
-          auto countPos = reply.indexOf( ' ', 4 );
+          int countPos = reply.indexOf( ' ', 4 );
           // Get databases count
           int count = reply.mid( 4, countPos > 4 ? countPos - 4 : -1 ).toInt();
 
@@ -525,7 +525,7 @@ void DictServerWordSearchRequest::readMatchData( QByteArray & reply )
       continue;
     }
 
-    auto pos = reply.indexOf( ' ' );
+    int pos = reply.indexOf( ' ' );
     if ( pos >= 0 ) {
       QString word = reply.mid( pos + 1 );
       if ( word.endsWith( '\"' ) ) {
@@ -654,7 +654,7 @@ public:
       }
 
       _articleText = QString::fromUtf8( articleStr.c_str(), articleStr.size() );
-      qsizetype pos;
+      int pos;
       if ( !contentInHtml ) {
         _articleText = _articleText.replace( refs, R"(<a href="gdlookup://localhost/\1">\1</a>)" );
 
@@ -784,7 +784,7 @@ void DictServerArticleRequest::run()
       auto code = reply.left( 3 );
       if ( reply.left( 3 ) == "150" ) {
         // Articles found
-        auto countPos = reply.indexOf( ' ', 4 );
+        int countPos = reply.indexOf( ' ', 4 );
         // Get articles count,
         // todo ,how to use this count?
         int count = reply.mid( 4, countPos > 4 ? countPos - 4 : -1 ).toInt();
@@ -818,8 +818,8 @@ void DictServerArticleRequest::readData( QByteArray reply )
   }
 
   if ( reply.left( 3 ) == "151" ) {
-    qsizetype pos = 4;
-    qsizetype endPos;
+    int pos = 4;
+    int endPos;
 
     // Skip requested word
     if ( reply[ pos ] == '\"' ) {

@@ -1606,7 +1606,7 @@ void MainWindow::updateStatusLine()
 {
   unsigned articleCount = 0, wordCount = 0;
 
-  for ( auto x = dictionaries.size(); x--; ) {
+  for ( unsigned x = dictionaries.size(); x--; ) {
     articleCount += dictionaries[ x ]->getArticleCount();
     wordCount += dictionaries[ x ]->getWordCount();
   }
@@ -2067,7 +2067,7 @@ void MainWindow::tabSwitched( int )
   updateFoundInDictsList();
   updateWindowTitle();
   if ( mruList.size() > 1 ) {
-    auto from = mruList.indexOf( ui.tabWidget->widget( ui.tabWidget->currentIndex() ) );
+    int from = mruList.indexOf( ui.tabWidget->widget( ui.tabWidget->currentIndex() ) );
     if ( from > 0 ) {
       mruList.move( from, 0 );
     }
@@ -2140,7 +2140,7 @@ void MainWindow::updateFoundInDictsList()
     for ( QStringList::const_iterator i = ids.constBegin(); i != ids.constEnd(); ++i ) {
       // Find this dictionary
 
-      for ( auto x = dictionaries.size(); x--; ) {
+      for ( unsigned x = dictionaries.size(); x--; ) {
         if ( dictionaries[ x ]->getId() == i->toUtf8().data() ) {
           QString dictName = QString::fromUtf8( dictionaries[ x ]->getName().c_str() );
           QString dictId   = QString::fromUtf8( dictionaries[ x ]->getId().c_str() );
@@ -3311,7 +3311,7 @@ static void filterAndCollectResources( QString & html,
                                        set< QByteArray > & resourceIncluded,
                                        vector< pair< QUrl, QString > > & downloadResources )
 {
-  qsizetype pos = 0;
+  int pos = 0;
 
   auto match = rx.match( html, pos );
   while ( match.hasMatch() ) {
@@ -3433,7 +3433,7 @@ void MainWindow::on_saveArticle_triggered()
       // Convert internal links
 
       static QRegularExpression rx3( R"lit(href="(bword:|gdlookup://localhost/)([^"]+)")lit" );
-      qsizetype pos = 0;
+      int pos = 0;
       QRegularExpression anchorRx( "(g[0-9a-f]{32}_)[0-9a-f]+_" );
       auto match = rx3.match( html, pos );
       while ( match.hasMatch() ) {
@@ -3441,7 +3441,7 @@ void MainWindow::on_saveArticle_triggered()
         QString name = QUrl::fromPercentEncoding( match.captured( 2 ).simplified().toLatin1() );
         QString anchor;
         name.replace( "?gdanchor=", "#" );
-        auto n = name.indexOf( '#' );
+        int n = name.indexOf( '#' );
         if ( n > 0 ) {
           anchor = name.mid( n );
           name.truncate( n );

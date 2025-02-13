@@ -287,7 +287,7 @@ void loadDictionaries( QWidget * parent,
   set< string > ids;
   std::pair< std::set< string >::iterator, bool > ret;
 
-  for ( auto x = dictionaries.size(); x--; ) {
+  for ( unsigned x = dictionaries.size(); x--; ) {
     ret = ids.insert( dictionaries[ x ]->getId() );
     if ( !ret.second ) {
       qWarning( R"(Duplicate dictionary ID found: ID=%s, name="%s", path="%s")",

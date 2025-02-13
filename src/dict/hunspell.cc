@@ -370,7 +370,7 @@ QList< std::u32string > suggest( std::u32string & word, QMutex & hunspellMutex, 
         QString suggestion = QString::fromStdU32String( decodeFromHunspell( hunspell, x.c_str() ) );
 
         // Strip comments
-        auto n = suggestion.indexOf( '#' );
+        int n = suggestion.indexOf( '#' );
         if ( n >= 0 ) {
           suggestion.chop( suggestion.length() - n );
         }
@@ -541,12 +541,11 @@ void getSuggestionsForExpression( std::u32string const & expression,
     }
     else {
       QList< std::u32string > sugg = suggest( word, hunspellMutex, hunspell );
-
-      qsizetype suggNum = sugg.size() + 1;
+      int suggNum           = sugg.size() + 1;
       if ( suggNum > 3 ) {
         suggNum = 3;
       }
-      auto resNum = results.size();
+      int resNum = results.size();
       std::u32string resultStr;
 
       if ( resNum == 0 ) {
@@ -603,7 +602,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::Hunspell const & c
 
 
   for ( const auto & enabledDictionarie : cfg.enabledDictionaries ) {
-    for ( auto d = dataFiles.size(); d--; ) {
+    for ( unsigned d = dataFiles.size(); d--; ) {
       if ( dataFiles[ d ].dictId == enabledDictionarie ) {
         // Found it
 

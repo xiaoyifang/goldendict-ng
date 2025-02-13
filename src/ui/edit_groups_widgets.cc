@@ -368,7 +368,7 @@ void DictListModel::removeSelectedRows( QItemSelectionModel * source )
     return;
   }
 
-  for ( qsizetype i = rows.count() - 1; i >= 0; --i ) {
+  for ( int i = rows.count() - 1; i >= 0; --i ) {
     dictionaries.erase( dictionaries.begin() + rows.at( i ).row() );
   }
 

@@ -675,7 +675,7 @@ QByteArray MddResourceRequest::isolate_css()
 
   QString css = QString::fromUtf8( data.data(), data.size() );
 
-  qsizetype pos = 0;
+  int pos = 0;
 
   QString newCSS;
   QRegularExpressionMatchIterator it = RX::Mdx::links.globalMatch( css );
@@ -875,7 +875,7 @@ QString & MdxDictionary::filterResource( QString & article )
 void MdxDictionary::replaceLinks( QString & id, QString & article )
 {
   QString articleNewText;
-  qsizetype linkPos                  = 0;
+  int linkPos                        = 0;
   QRegularExpressionMatchIterator it = RX::Mdx::allLinksRe.globalMatch( article );
   while ( it.hasNext() ) {
     QRegularExpressionMatch allLinksMatch = it.next();
@@ -1042,7 +1042,7 @@ void MdxDictionary::replaceStyleInHtml( QString & id, QString & article )
 {
   //article = article.replace( RX::Mdx::fontFace, "src:url(\"bres://" + id + "/" + "\\1\")" );
   QString articleNewText;
-  qsizetype linkPos                  = 0;
+  int linkPos                        = 0;
   QRegularExpressionMatchIterator it = RX::Mdx::styleElement.globalMatch( article );
   while ( it.hasNext() ) {
     QRegularExpressionMatch allLinksMatch = it.next();
@@ -1072,8 +1072,7 @@ void MdxDictionary::replaceFontLinks( QString & id, QString & article )
 {
   //article = article.replace( RX::Mdx::fontFace, "src:url(\"bres://" + id + "/" + "\\1\")" );
   QString articleNewText;
-  qsizetype linkPos = 0;
-
+  int linkPos                        = 0;
   QRegularExpressionMatchIterator it = RX::Mdx::fontFace.globalMatch( article );
   while ( it.hasNext() ) {
     QRegularExpressionMatch allLinksMatch = it.next();
@@ -1117,7 +1116,7 @@ QString MdxDictionary::getCachedFileName( QString filename )
   QString name = filename;
   name.replace( '/', '\\' );
   QStringList list = name.split( '\\' );
-  qsizetype subFolders = list.size() - 1;
+  int subFolders   = list.size() - 1;
   if ( subFolders > 0 ) {
     QString dirName = cacheDirName;
     for ( int i = 0; i < subFolders; i++ ) {
