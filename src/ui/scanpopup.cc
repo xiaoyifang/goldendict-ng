@@ -78,6 +78,7 @@ ScanPopup::ScanPopup( QWidget * parent,
 {
   ui.setupUi( this );
   toolbar = new QToolBar( "Found Dictionary", this );
+  toolbar->setObjectName( "foundDictionary" );
 
   if ( layoutDirection() == Qt::RightToLeft ) {
     // Adjust button icons for Right-To-Left layout
