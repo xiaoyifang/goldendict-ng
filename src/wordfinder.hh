@@ -128,7 +128,7 @@ public:
   /// requests exist, and hence no dictionaries are used anymore. Unlike
   /// cancel(), this may take some time to finish.
   void clear();
-  void requestFinished(sptr< Dictionary::WordSearchRequest >);
+  void requestFinished( sptr< Dictionary::WordSearchRequest > );
 signals:
 
   /// Indicates that the search has got some more results, and continues

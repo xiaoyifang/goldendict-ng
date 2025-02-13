@@ -71,7 +71,6 @@ void WordFinder::stemmedMatch( QString const & str,
   searchResults.clear();
 
   startSearch();
-
 }
 
 void WordFinder::expressionMatch( QString const & str,
@@ -144,7 +143,7 @@ void WordFinder::startSearch()
           &Dictionary::Request::finished,
           this,
           [ this, sr ]() {
-            requestFinished(sr);
+            requestFinished( sr );
           },
           Qt::QueuedConnection );
 
@@ -225,11 +224,11 @@ void WordFinder::requestFinished()
   }
 }
 
-void WordFinder::requestFinished(sptr< Dictionary::WordSearchRequest > req)
+void WordFinder::requestFinished( sptr< Dictionary::WordSearchRequest > req )
 {
   QMutexLocker locker( &mutex );
   queuedRequests.remove( req );
-  
+
   if ( req->isFinished() ) {
     if ( searchInProgress && !req->getErrorString().isEmpty() ) {
       searchErrorString = tr( "Failed to query some dictionaries." );
@@ -296,62 +295,62 @@ void WordFinder::updateResults()
   }
 
   std::u32string original = Folding::applySimpleCaseOnly( allWordWritings[ 0 ] );
-{
-  QMutexLocker locker( &mutex );
+  {
+    QMutexLocker locker( &mutex );
 
-  for ( auto i = finishedRequests.begin(); i != finishedRequests.end(); ) {
-    for ( size_t count = ( *i )->matchesCount(), x = 0; x < count; ++x ) {
-      std::u32string match      = ( **i )[ x ].word;
-      int weight                = ( **i )[ x ].weight;
-      std::u32string lowerCased = Folding::applySimpleCaseOnly( match );
+    for ( auto i = finishedRequests.begin(); i != finishedRequests.end(); ) {
+      for ( size_t count = ( *i )->matchesCount(), x = 0; x < count; ++x ) {
+        std::u32string match      = ( **i )[ x ].word;
+        int weight                = ( **i )[ x ].weight;
+        std::u32string lowerCased = Folding::applySimpleCaseOnly( match );
 
-      if ( searchType == ExpressionMatch ) {
-        unsigned ws;
+        if ( searchType == ExpressionMatch ) {
+          unsigned ws;
 
-        for ( ws = 0; ws < allWordWritings.size(); ws++ ) {
-          if ( ws == 0 ) {
-            // Check for prefix match with original expression
-            if ( lowerCased.compare( 0, original.size(), original ) == 0 ) {
+          for ( ws = 0; ws < allWordWritings.size(); ws++ ) {
+            if ( ws == 0 ) {
+              // Check for prefix match with original expression
+              if ( lowerCased.compare( 0, original.size(), original ) == 0 ) {
+                break;
+              }
+            }
+            else if ( lowerCased == Folding::applySimpleCaseOnly( allWordWritings[ ws ] ) ) {
               break;
             }
           }
-          else if ( lowerCased == Folding::applySimpleCaseOnly( allWordWritings[ ws ] ) ) {
-            break;
+
+          if ( ws >= allWordWritings.size() ) {
+            // No exact matches found
+            continue;
+          }
+          weight = ws;
+        }
+        auto insertResult =
+          resultsIndex.insert( pair< std::u32string, ResultsArray::iterator >( lowerCased, resultsArray.end() ) );
+
+        if ( !insertResult.second ) {
+          // Wasn't inserted since there was already an item -- check the case
+          if ( insertResult.first->second->word != match ) {
+            // The case is different -- agree on a lowercase version
+            insertResult.first->second->word = lowerCased;
+          }
+          if ( !weight && insertResult.first->second->wasSuggested ) {
+            insertResult.first->second->wasSuggested = false;
           }
         }
+        else {
+          resultsArray.emplace_back();
 
-        if ( ws >= allWordWritings.size() ) {
-          // No exact matches found
-          continue;
-        }
-        weight = ws;
-      }
-      auto insertResult =
-        resultsIndex.insert( pair< std::u32string, ResultsArray::iterator >( lowerCased, resultsArray.end() ) );
+          resultsArray.back().word         = match;
+          resultsArray.back().rank         = INT_MAX;
+          resultsArray.back().wasSuggested = ( weight != 0 );
 
-      if ( !insertResult.second ) {
-        // Wasn't inserted since there was already an item -- check the case
-        if ( insertResult.first->second->word != match ) {
-          // The case is different -- agree on a lowercase version
-          insertResult.first->second->word = lowerCased;
-        }
-        if ( !weight && insertResult.first->second->wasSuggested ) {
-          insertResult.first->second->wasSuggested = false;
+          insertResult.first->second = --resultsArray.end();
         }
       }
-      else {
-        resultsArray.emplace_back();
-
-        resultsArray.back().word         = match;
-        resultsArray.back().rank         = INT_MAX;
-        resultsArray.back().wasSuggested = ( weight != 0 );
-
-        insertResult.first->second = --resultsArray.end();
-      }
+      finishedRequests.erase( i++ );
     }
-    finishedRequests.erase( i++ );
   }
-}
 
   size_t maxSearchResults = 500;
 
