@@ -15,11 +15,11 @@ using std::pair;
 WordFinder::WordFinder( QObject * parent ):
   QObject( parent ),
   searchInProgress( false ),
-  updateResultsTimer( this ),
-  searchQueued( false )
+  updateResultsTimer( this )
 {
   updateResultsTimer.setInterval( 1000 ); // We use a one second update timer
   updateResultsTimer.setSingleShot( true );
+  updateResultsTimer.start();
 
   connect( &updateResultsTimer, &QTimer::timeout, this, &WordFinder::updateResults, Qt::QueuedConnection );
 }
@@ -36,7 +36,6 @@ void WordFinder::prefixMatch( QString const & str,
 {
   cancel();
 
-  searchQueued        = true;
   searchType          = PrefixMatch;
   inputWord           = str;
   inputDicts          = &dicts;
@@ -47,14 +46,8 @@ void WordFinder::prefixMatch( QString const & str,
   resultsIndex.clear();
   searchResults.clear();
 
-  if ( queuedRequests.empty() ) {
-    // No requests are queued, no need to wait for them to finish.
-    startSearch();
-  }
-
-  // Else some requests are still queued, last one to finish would trigger
-  // new search. This shouldn't take a lot of time, since they were all
-  // cancelled, but still it could take some time.
+  // queuedRequests is empty, so we can safely call startSearch()
+  startSearch();
 }
 void WordFinder::stemmedMatch( QString const & str,
                                std::vector< sptr< Dictionary::Class > > const & dicts,
@@ -65,7 +58,6 @@ void WordFinder::stemmedMatch( QString const & str,
 {
   cancel();
 
-  searchQueued              = true;
   searchType                = StemmedMatch;
   inputWord                 = str;
   inputDicts                = &dicts;
@@ -78,9 +70,8 @@ void WordFinder::stemmedMatch( QString const & str,
   resultsIndex.clear();
   searchResults.clear();
 
-  if ( queuedRequests.empty() ) {
-    startSearch();
-  }
+  startSearch();
+
 }
 
 void WordFinder::expressionMatch( QString const & str,
@@ -90,7 +81,6 @@ void WordFinder::expressionMatch( QString const & str,
 {
   cancel();
 
-  searchQueued        = true;
   searchType          = ExpressionMatch;
   inputWord           = str;
   inputDicts          = &dicts;
@@ -101,28 +91,26 @@ void WordFinder::expressionMatch( QString const & str,
   resultsIndex.clear();
   searchResults.clear();
 
-  if ( queuedRequests.empty() ) {
-    // No requests are queued, no need to wait for them to finish.
-    startSearch();
-  }
+  startSearch();
 }
 
 void WordFinder::startSearch()
 {
-  if ( !searchQueued ) {
-    return; // Search was probably cancelled
+  if ( searchInProgress ) {
+    return; // Search was probably processing
   }
 
-  QMutexLocker locker( &mutex );
-  // Clear the requests just in case
-  queuedRequests.clear();
-  finishedRequests.clear();
+  {
+    QMutexLocker locker( &mutex );
+    // Clear the requests just in case
+    queuedRequests.clear();
+    finishedRequests.clear();
 
-  searchErrorString.clear();
-  searchResultsUncertain = false;
+    searchErrorString.clear();
+    searchResultsUncertain = false;
 
-  searchQueued     = false;
-  searchInProgress = true;
+    searchInProgress = true;
+  }
 
   // Gather all writings of the word
 
@@ -151,9 +139,19 @@ void WordFinder::startSearch()
           inputDict->prefixMatch( allWordWriting, requestedMaxResults ) :
           inputDict->stemmedMatch( allWordWriting, stemmedMinLength, stemmedMaxSuffixVariation, requestedMaxResults );
 
-        connect( sr.get(), &Dictionary::Request::finished, this, &WordFinder::requestFinished, Qt::QueuedConnection );
+        connect(
+          sr.get(),
+          &Dictionary::Request::finished,
+          this,
+          [ this, sr ]() {
+            requestFinished(sr);
+          },
+          Qt::QueuedConnection );
 
-        queuedRequests.push_back( sr );
+        {
+          QMutexLocker locker( &mutex );
+          queuedRequests.push_back( sr );
+        }
       }
       catch ( std::exception & e ) {
         qWarning( "Word \"%s\" search error (%s) in \"%s\"",
@@ -171,7 +169,6 @@ void WordFinder::startSearch()
 
 void WordFinder::cancel()
 {
-  searchQueued     = false;
   searchInProgress = false;
 
   cancelSearches();
@@ -187,60 +184,65 @@ void WordFinder::clear()
 
 void WordFinder::requestFinished()
 {
-  QMutexLocker locker( &mutex );
   bool newResults = false;
 
-  // See how many new requests have finished, and if we have any new results
-  for ( auto i = queuedRequests.begin(); i != queuedRequests.end(); ) {
-    if ( ( *i )->isFinished() ) {
-      if ( searchInProgress && !( *i )->getErrorString().isEmpty() ) {
-        searchErrorString = tr( "Failed to query some dictionaries." );
-      }
+  {
+    QMutexLocker locker( &mutex );
+    // See how many new requests have finished, and if we have any new results
+    for ( auto i = queuedRequests.begin(); i != queuedRequests.end(); ) {
+      if ( ( *i )->isFinished() ) {
+        if ( searchInProgress && !( *i )->getErrorString().isEmpty() ) {
+          searchErrorString = tr( "Failed to query some dictionaries." );
+        }
 
-      if ( ( *i )->isUncertain() ) {
-        searchResultsUncertain = true;
-      }
+        if ( ( *i )->isUncertain() ) {
+          searchResultsUncertain = true;
+        }
 
-      if ( ( *i )->matchesCount() ) {
-        newResults = true;
+        if ( ( *i )->matchesCount() ) {
+          newResults = true;
 
-        // This list is handled by updateResults()
-        finishedRequests.splice( finishedRequests.end(), queuedRequests, i++ );
+          // This list is handled by updateResults()
+          finishedRequests.splice( finishedRequests.end(), queuedRequests, i++ );
+        }
+        else { // We won't do anything with it anymore, so we erase it
+          i = queuedRequests.erase( i );
+        }
       }
-      else { // We won't do anything with it anymore, so we erase it
-        queuedRequests.erase( i++ );
+      else {
+        ++i;
       }
-    }
-    else {
-      ++i;
     }
   }
 
   if ( !searchInProgress ) {
-    // There is no search in progress, so we just wait until there's
-    // no requests left
-
-    if ( queuedRequests.empty() ) {
-      // We got rid of all queries, queued search can now start
-      finishedRequests.clear();
-
-      if ( searchQueued ) {
-        startSearch();
-      }
-    }
-
     return;
-  }
-
-  if ( newResults && !queuedRequests.empty() && !updateResultsTimer.isActive() ) {
-    // If we have got some new results, but not all of them, we would start a
-    // timer to update a user some time in the future
-    updateResultsTimer.start();
   }
 
   if ( queuedRequests.empty() ) {
     // Search is finished.
     updateResults();
+  }
+}
+
+void WordFinder::requestFinished(sptr< Dictionary::WordSearchRequest > req)
+{
+  QMutexLocker locker( &mutex );
+  queuedRequests.remove( req );
+  
+  if ( req->isFinished() ) {
+    if ( searchInProgress && !req->getErrorString().isEmpty() ) {
+      searchErrorString = tr( "Failed to query some dictionaries." );
+    }
+
+    if ( req->isUncertain() ) {
+      searchResultsUncertain = true;
+    }
+
+    if ( req->matchesCount() ) {
+      // This list is handled by updateResults()
+      finishedRequests.push_back( req );
+    }
   }
 }
 
@@ -292,9 +294,10 @@ void WordFinder::updateResults()
   if ( updateResultsTimer.isActive() ) {
     updateResultsTimer.stop(); // Can happen when we were done before it'd expire
   }
-  QMutexLocker locker( &mutex );
 
   std::u32string original = Folding::applySimpleCaseOnly( allWordWritings[ 0 ] );
+{
+  QMutexLocker locker( &mutex );
 
   for ( auto i = finishedRequests.begin(); i != finishedRequests.end(); ) {
     for ( size_t count = ( *i )->matchesCount(), x = 0; x < count; ++x ) {
@@ -348,6 +351,7 @@ void WordFinder::updateResults()
     }
     finishedRequests.erase( i++ );
   }
+}
 
   size_t maxSearchResults = 500;
 
