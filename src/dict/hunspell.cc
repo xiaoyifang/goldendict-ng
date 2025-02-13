@@ -541,7 +541,7 @@ void getSuggestionsForExpression( std::u32string const & expression,
     }
     else {
       QList< std::u32string > sugg = suggest( word, hunspellMutex, hunspell );
-      int suggNum           = sugg.size() + 1;
+      int suggNum                  = sugg.size() + 1;
       if ( suggNum > 3 ) {
         suggNum = 3;
       }
