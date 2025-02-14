@@ -519,6 +519,8 @@ void WordFinder::cancelSearches()
   QMutexLocker locker( &mutex );
 
   for ( auto & queuedRequest : queuedRequests ) {
-    queuedRequest->cancel();
+    if ( queuedRequest ) {
+      queuedRequest->cancel();
+    }
   }
 }
