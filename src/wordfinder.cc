@@ -185,8 +185,6 @@ void WordFinder::clear()
 
 void WordFinder::requestFinished()
 {
-  bool newResults = false;
-
   {
     QMutexLocker locker( &mutex );
     // See how many new requests have finished, and if we have any new results
@@ -204,8 +202,6 @@ void WordFinder::requestFinished()
         }
 
         if ( ( *i )->matchesCount() ) {
-          newResults = true;
-
           // This list is handled by updateResults()
           finishedRequests.splice( finishedRequests.end(), queuedRequests, i++ );
         }
@@ -234,21 +230,23 @@ void WordFinder::requestFinished( sptr< Dictionary::WordSearchRequest > req )
   if ( !searchInProgress.load() ) {
     return;
   }
-  QMutexLocker locker( &mutex );
-  queuedRequests.remove( req );
+  {
+    QMutexLocker locker( &mutex );
+    queuedRequests.remove( req );
 
-  if ( req->isFinished() ) {
-    if ( !req->getErrorString().isEmpty() ) {
-      searchErrorString = tr( "Failed to query some dictionaries." );
-    }
+    if ( req->isFinished() ) {
+      if ( !req->getErrorString().isEmpty() ) {
+        searchErrorString = tr( "Failed to query some dictionaries." );
+      }
 
-    if ( req->isUncertain() ) {
-      searchResultsUncertain = true;
-    }
+      if ( req->isUncertain() ) {
+        searchResultsUncertain = true;
+      }
 
-    if ( req->matchesCount() ) {
-      // This list is handled by updateResults()
-      finishedRequests.push_back( req );
+      if ( req->matchesCount() ) {
+        // This list is handled by updateResults()
+        finishedRequests.push_back( req );
+      }
     }
   }
 
