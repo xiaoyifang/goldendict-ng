@@ -190,8 +190,11 @@ void WordFinder::requestFinished()
     QMutexLocker locker( &mutex );
     // See how many new requests have finished, and if we have any new results
     for ( auto i = queuedRequests.begin(); i != queuedRequests.end(); ) {
+      if( !searchInProgress ){
+        break;
+      }
       if ( ( *i )->isFinished() ) {
-        if ( searchInProgress && !( *i )->getErrorString().isEmpty() ) {
+        if ( !( *i )->getErrorString().isEmpty() ) {
           searchErrorString = tr( "Failed to query some dictionaries." );
         }
 
@@ -227,11 +230,14 @@ void WordFinder::requestFinished()
 
 void WordFinder::requestFinished( sptr< Dictionary::WordSearchRequest > req )
 {
+  if ( !searchInProgress ) {
+    return;
+  }
   QMutexLocker locker( &mutex );
   queuedRequests.remove( req );
 
   if ( req->isFinished() ) {
-    if ( searchInProgress && !req->getErrorString().isEmpty() ) {
+    if ( !req->getErrorString().isEmpty() ) {
       searchErrorString = tr( "Failed to query some dictionaries." );
     }
 
