@@ -5,6 +5,11 @@ env:
   versionSuffix: ${{ !contains(github.ref_name,'master') && 'alpha' || 'Release' }}
 on: 
   workflow_dispatch:
+    inputs:
+      build_platform:
+        description: 'Platform to build (windows, macos, all)'
+        required: true
+        default: 'all'
   push:
     branches:
       - dev
@@ -22,6 +27,7 @@ jobs:
       matrix:
         os: [macos-13,macos-14]
         qt_ver: [ 6.6.3, 6.7.2 ]
+    if: github.event.inputs.build_platform == 'all' || github.event.inputs.build_platform == 'macos'
     steps:
       - uses: actions/checkout@v4
         with:
@@ -81,6 +87,7 @@ jobs:
       matrix:
         os: [windows-2022]
         qt_ver: [ 6.6.3, 6.7.2 ]
+    if: github.event.inputs.build_platform == 'all' || github.event.inputs.build_platform == 'windows'
     steps:
       - uses: jurplel/install-qt-action@v4
         with:
