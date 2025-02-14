@@ -129,7 +129,7 @@ jobs:
           mv "${namePrefix}.7z" "${namePrefix}-Windows-installer.7z"
           mv "${namePrefix}.exe" "${namePrefix}-Windows-installer.exe"
           mv ./goldendict/goldendict.exe "./${namePrefix}-Windows-main-exe-file-only.exe" 
-          mv ./goldendict/goldendict.pdb "./${namePrefix}-Windows-pdb-debug-file.pdb"
+          mv ./goldendict/goldendict.pdb "./${namePrefix}-Windows.pdb"
           cd ..
           ls -R
       - uses: actions/upload-artifact@v4
@@ -141,6 +141,13 @@ jobs:
             ./build_dir/*.exe
             ./build_dir/*.7z
             ./build_dir/*.pdb
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Windows-exe-Qt${{ matrix.qt_ver }}
+          if-no-files-found: error
+          retention-days: 7
+          path: |
+            ./build_dir/*only.exe         
   
   generate_other_staffs:
     runs-on: ubuntu-latest
