@@ -190,7 +190,7 @@ void WordFinder::requestFinished()
     QMutexLocker locker( &mutex );
     // See how many new requests have finished, and if we have any new results
     for ( auto i = queuedRequests.begin(); i != queuedRequests.end(); ) {
-      if( !searchInProgress ){
+      if ( !searchInProgress ) {
         break;
       }
       if ( ( *i )->isFinished() ) {
