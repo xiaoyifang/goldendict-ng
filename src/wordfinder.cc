@@ -244,6 +244,15 @@ void WordFinder::requestFinished( sptr< Dictionary::WordSearchRequest > req )
       finishedRequests.push_back( req );
     }
   }
+
+  if ( !searchInProgress ) {
+    return;
+  }
+
+  if ( queuedRequests.empty() ) {
+    // Search is finished.
+    updateResults();
+  }
 }
 
 namespace {
