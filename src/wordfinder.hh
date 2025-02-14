@@ -5,6 +5,7 @@
 
 #include <list>
 #include <map>
+#include <atomic>
 #include <QObject>
 #include <QTimer>
 #include <QMutex>
@@ -29,7 +30,7 @@ private:
   QString searchErrorString;
   bool searchResultsUncertain;
   std::list< sptr< Dictionary::WordSearchRequest > > queuedRequests, finishedRequests;
-  bool searchInProgress;
+  std::atomic_bool searchInProgress;
   QMutex mutex;
 
   QTimer updateResultsTimer;

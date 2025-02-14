@@ -95,7 +95,7 @@ void WordFinder::expressionMatch( QString const & str,
 
 void WordFinder::startSearch()
 {
-  if ( searchInProgress ) {
+  if ( searchInProgress.load() ) {
     return; // Search was probably processing
   }
 
@@ -190,7 +190,7 @@ void WordFinder::requestFinished()
     QMutexLocker locker( &mutex );
     // See how many new requests have finished, and if we have any new results
     for ( auto i = queuedRequests.begin(); i != queuedRequests.end(); ) {
-      if ( !searchInProgress ) {
+      if ( !searchInProgress.load() ) {
         break;
       }
       if ( ( *i )->isFinished() ) {
@@ -218,7 +218,7 @@ void WordFinder::requestFinished()
     }
   }
 
-  if ( !searchInProgress ) {
+  if ( !searchInProgress.load() ) {
     return;
   }
 
@@ -230,7 +230,7 @@ void WordFinder::requestFinished()
 
 void WordFinder::requestFinished( sptr< Dictionary::WordSearchRequest > req )
 {
-  if ( !searchInProgress ) {
+  if ( !searchInProgress.load() ) {
     return;
   }
   QMutexLocker locker( &mutex );
@@ -251,7 +251,7 @@ void WordFinder::requestFinished( sptr< Dictionary::WordSearchRequest > req )
     }
   }
 
-  if ( !searchInProgress ) {
+  if ( !searchInProgress.load() ) {
     return;
   }
 
@@ -302,7 +302,7 @@ bool hasSurroundedWithWs( std::u32string const & haystack,
 
 void WordFinder::updateResults()
 {
-  if ( !searchInProgress ) {
+  if ( !searchInProgress.load() ) {
     return; // Old queued signal
   }
 
