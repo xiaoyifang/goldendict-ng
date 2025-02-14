@@ -19,7 +19,6 @@ WordFinder::WordFinder( QObject * parent ):
 {
   updateResultsTimer.setInterval( 1000 ); // We use a one second update timer
   updateResultsTimer.setSingleShot( true );
-  updateResultsTimer.start();
 
   connect( &updateResultsTimer, &QTimer::timeout, this, &WordFinder::updateResults, Qt::QueuedConnection );
 }
@@ -110,6 +109,8 @@ void WordFinder::startSearch()
 
     searchInProgress = true;
   }
+
+  updateResultsTimer.start();
 
   // Gather all writings of the word
 
