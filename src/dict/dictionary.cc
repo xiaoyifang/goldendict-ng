@@ -251,22 +251,22 @@ int Class::getOptimalIconSize()
 bool Class::loadIconFromFileName( QString const & mainDictFileName )
 {
   const QFileInfo info( mainDictFileName );
-  const QString basename = info.baseName();
-  QDir dir               = info.absoluteDir();
+  QDir dir = info.absoluteDir();
 
   dir.setFilter( QDir::Files );
-  dir.setNameFilters( QStringList() << basename + ".bmp"  //
-                                    << basename + ".png"  //
-                                    << basename + ".jpg"  //
-                                    << basename + ".ico"  // below are GD-ng only
-                                    << basename + ".jpeg" //
-                                    << basename + ".gif"  //
-                                    << basename + ".webp" //
-                                    << basename + ".svgz" //
-                                    << basename + ".svg" );
+  dir.setNameFilters( QStringList() << "*.bmp"  //
+                                    << "*.png"  //
+                                    << "*.jpg"  //
+                                    << "*.ico"  // below are GD-ng only
+                                    << "*.jpeg" //
+                                    << "*.gif"  //
+                                    << "*.webp" //
+                                    << "*.svg"  //
+                                    << "*.svgz" );
 
+  const QString basename = info.baseName();
   for ( const auto & f : dir.entryInfoList() ) {
-    if ( loadIconFromFilePath( f.absoluteFilePath() ) ) {
+    if ( f.baseName() == basename && loadIconFromFilePath( f.absoluteFilePath() ) ) {
       return true;
     }
   }
