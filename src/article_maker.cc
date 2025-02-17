@@ -602,7 +602,7 @@ void ArticleRequest::bodyFinished()
     return;
   }
 
-  qDebug( "body finshed signal received" );
+  qDebug() << ">>>>";
 
   bool wasUpdated = false;
 
@@ -714,7 +714,7 @@ void ArticleRequest::bodyFinished()
       bodyRequests.pop_front();
     }
     else {
-      qDebug( "the top one has not finished yet." );
+      // qDebug() << "--- top not finished";
       break;
     }
   }
