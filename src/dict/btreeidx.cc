@@ -134,8 +134,7 @@ void BtreeWordSearchRequest::findMatches()
 
   bool useWildcards = false;
   if ( allowMiddleMatches ) {
-    useWildcards = ( str.find( '*' ) != std::u32string::npos || str.find( '?' ) != std::u32string::npos
-                     || str.find( '[' ) != std::u32string::npos || str.find( ']' ) != std::u32string::npos );
+    useWildcards = ( str.find( '*' ) != std::u32string::npos || str.find( '?' ) != std::u32string::npos );
   }
 
   std::u32string folded = Folding::apply( str );
