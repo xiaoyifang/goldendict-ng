@@ -284,7 +284,12 @@ string StardictDictionary::loadString( size_t size )
 
   idx.read( &data.front(), data.size() );
 
-  return string( &data.front(), data.size() );
+  string result( &data.front(), data.size() );
+  //trim the string
+  result.erase( result.find_last_not_of( " \n\r\t" ) + 1 );
+  result.erase( 0, result.find_first_not_of( " \n\r\t" ) );
+
+  return result;
 }
 
 void StardictDictionary::getArticleProps( uint32_t articleAddress,
