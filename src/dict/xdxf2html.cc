@@ -658,6 +658,8 @@ string convert( string const & in,
           el_script.setAttribute( "type", "text/javascript" );
           parent.replaceChild( el_script, el );
 
+          el_script.appendChild( dd.createTextNode( "" ) );
+
           addAudioLink( string( "\"" ) + url.toEncoded().data() + "\"", dictPtr->getId() );
 
           QDomElement el_span = dd.createElement( "span" );
