@@ -154,6 +154,7 @@ jobs:
     outputs:
       newTag: ${{ steps.getNewTag.outputs.newTag }}
       releaseTitle: ${{steps.getReleaseTitle.outputs.releaseTitle}}
+    if: github.event.inputs.build_platform == 'all'
     steps:
       - uses: actions/checkout@v4
         with:
