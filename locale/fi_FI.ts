@@ -3521,7 +3521,7 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
+      <translation>Tallenna debug viestit gd_log.txt asetuskansioon</translation>
     </message>
   </context>
   <context>
@@ -3665,7 +3665,7 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
+      <translation>Tallenna debug viestit gd_log.txt asetuskansioon</translation>
     </message>
   </context>
   <context>
