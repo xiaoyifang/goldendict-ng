@@ -3522,7 +3522,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
+      <translation>Зберігати повідомлення налагодження в gd_log.txt в теці налаштувань</translation>
     </message>
   </context>
   <context>
@@ -3666,7 +3666,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
+      <translation>Зберігати повідомлення налагодження в gd_log.txt в теці налаштувань</translation>
     </message>
   </context>
   <context>
