@@ -8,28 +8,12 @@
       <translation>Over</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>GoldenDict-ng woordenboek zoekprogramma, versie</translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>Gebruiksrecht verleend onder GNU GPLv3 of nieuwer</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Versie info kopiëren</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Woordenboeken lijst kopiëren</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Dankbetuigingen:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Gebaseerd op Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -3532,8 +3516,8 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <translation>Automatisch</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>Toepassingslogboek inschakelen</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
@@ -3644,10 +3628,6 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <translation>Woord of zin om te vragen.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Foutopsporingsberichten opslaan in gd_log.txt in de configuratiemap.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Vensterstatus resetten.</translation>
     </message>
@@ -3678,6 +3658,10 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Printversie en diagnose-info.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
