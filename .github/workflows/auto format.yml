@@ -52,7 +52,7 @@ jobs:
       - name: Install Qt using aqt
         run: |
           pip install aqtinstall
-          aqt install-tool 6.7.2 linux desktop qttools
+          aqt install-tool linux desktop qttools
       - name: Add Qt bin to PATH
         run: |
           echo "/home/runner/.local/share/aqtinstall/6.7.2/linux/desktop/qttools/bin" >> $GITHUB_PATH
