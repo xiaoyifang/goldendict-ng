@@ -2987,7 +2987,7 @@ en lugar de cerrrarse.</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+      <translation>Selecciona si la monitorización del portapapeles se activará por defecto en el inicio del programa&apos;s.</translation>
     </message>
     <message>
       <source>Start with clipboard monitoring turned on</source>
@@ -3518,7 +3518,7 @@ de diccionarios Stardict, Babylon y GLS</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
+      <translation>Guardar mensajes de depuración en gd_log.txt en la carpeta de configuración</translation>
     </message>
   </context>
   <context>
@@ -3662,7 +3662,7 @@ de diccionarios Stardict, Babylon y GLS</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
+      <translation>Guardar mensajes de depuración en gd_log.txt en la carpeta de configuración</translation>
     </message>
   </context>
   <context>
