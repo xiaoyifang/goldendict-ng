@@ -8,28 +8,12 @@
       <translation>Περί</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>GoldenDict, πρόγραμμα αναζήτησης σε λεξικά, έκδοση </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>Διανέμεται υπό τους όρους της GNU GPLv3 ή νεότερης</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Αντιγραφή πληροφοριών έκδοσης</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Αντιγραφή λίστας λεξικών</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Μνεία:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Βασισμένο στο Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -3538,8 +3522,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Αυτόματο</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>Ενεργοποίηση αρχείου καταγραφής εφαρμογής</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
@@ -3650,10 +3634,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Λέξη ή πρόταση για ερώτηση.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Αποθήκευση μηνυμάτων αποσφαλμάτωσης στο gd_log.txt στο φάκελο ρυθμίσεων.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Επαναφορά κατάστασης παραθύρου.</translation>
     </message>
@@ -3684,6 +3664,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Εκτυπωμένη έκδοση και πληροφορίες διάγνωσης.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
