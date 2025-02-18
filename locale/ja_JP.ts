@@ -2989,7 +2989,7 @@ the application.</source>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+      <translation>プログラム&apos;の起動時にクリップボードのモニタリングがデフォルトでオンになるかどうかを選択します。</translation>
     </message>
     <message>
       <source>Start with clipboard monitoring turned on</source>
@@ -3520,7 +3520,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
+      <translation>設定フォルダ内のgd_log.txtにデバッグメッセージを保存します</translation>
     </message>
   </context>
   <context>
@@ -3664,7 +3664,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
+      <translation>設定フォルダ内のgd_log.txtにデバッグメッセージを保存します</translation>
     </message>
   </context>
   <context>
