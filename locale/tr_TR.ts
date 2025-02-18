@@ -8,28 +8,12 @@
       <translation>Hakkında</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>GoldenDict, sözlük arama programı, sürüm </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>GNU GPLv3 veya daha üst lisanslıdır</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Sürüm bilgisini kopyala</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Sözlük listesini kopyala</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Teşekkürler:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Qt %1 göre (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -3531,8 +3515,8 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
       <translation>Otomatik</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>Uygulama günlüğünü etkinleştir</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
@@ -3643,10 +3627,6 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
       <translation>Sorgulanacak kelime veya cümle.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Hata ayıklama mesajlarını yapılandırma klasöründeki gd_log.txt dosyasına kaydedin.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Pencere durumunu sıfırla.</translation>
     </message>
@@ -3677,6 +3657,10 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Sürümü ve teşhis bilgilerini yazdırın.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
