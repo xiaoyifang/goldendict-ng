@@ -256,7 +256,7 @@ protected:
   TreeItem * findFolderByName( TreeItem * parent, const QString & name, TreeItem::Type type );
 
   // Find item in folder
-  QModelIndex findItemInFolder( QString const & itemName, int itemType, QModelIndex const & parentIdx );
+  QModelIndex findItemInFolder( QString const & itemName, TreeItem::Type itemType, QModelIndex const & parentIdx );
 
   TreeItem * getItem( const QModelIndex & index ) const;
 
