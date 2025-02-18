@@ -3523,7 +3523,7 @@ från Stardict, Babylon och GLS ordböcker</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
+      <translation>Spara felsökningsmeddelanden till gd_log.txt i konfigurationsmappen</translation>
     </message>
   </context>
   <context>
@@ -3667,7 +3667,7 @@ från Stardict, Babylon och GLS ordböcker</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
+      <translation>Spara felsökningsmeddelanden till gd_log.txt i konfigurationsmappen</translation>
     </message>
   </context>
   <context>
