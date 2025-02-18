@@ -3518,7 +3518,7 @@ ze Stardict, Babylon a GLS slovníků</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
+      <translation>Ukládat zprávy ladění do gd_log.txt do složky s konfigurací</translation>
     </message>
   </context>
   <context>
@@ -3662,7 +3662,7 @@ ze Stardict, Babylon a GLS slovníků</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
+      <translation>Ukládat zprávy ladění do gd_log.txt do složky s konfigurací</translation>
     </message>
   </context>
   <context>
