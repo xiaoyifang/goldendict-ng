@@ -8,28 +8,12 @@
       <translation>關於</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>GoldenDict-ng 字典查詢程式，版本 </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>授權基於 GNU 公共授權 GPLv3 或更高版本</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>複製版本信息</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>複製詞典列表</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>致謝名單：</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>基於Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -3526,8 +3510,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>自動</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>啟用應用程式日誌</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
@@ -3638,10 +3622,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>要查詢的單詞或句子。</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>將偵錯訊息儲存到 config 資料夾中的 gd_log.txt。</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>重置窗口狀態。</translation>
     </message>
@@ -3672,6 +3652,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>打印版本和診斷信息。</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
