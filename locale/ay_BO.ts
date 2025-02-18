@@ -8,28 +8,12 @@
       <translation>Uka jak&apos;atxa</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>GoldenDict, aru pirwa electrónico, jakhu uñjawi </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>Licencia GNU GPLv3 jan ukax qhipata</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Copia versión info ukax mä jach’a uñacht’äwiwa</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Diccionarios ukanakan listap copiaña</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Yanapirinaka:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Ukax Qt %1 (%2, %3) ukarjam luratawa.</translation>
     </message>
   </context>
   <context>
@@ -3652,8 +3636,8 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
       <translation>Automático ukhamawa</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>Aplicación registro ukar ch’amanchaña</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
@@ -3764,10 +3748,6 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
       <translation>Aru jan ukax aruchja jiskt’añataki.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Debug yatiyawinak gd_log.txt ukar config carpeta ukan imaña.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Ventana estado ukar kutt’ayaña.</translation>
     </message>
@@ -3798,6 +3778,10 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Imprimir versión ukat diagnóstico info.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>

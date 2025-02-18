@@ -8,28 +8,12 @@
       <translation>Über</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>GoldenDict-ng Programm-Version: </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>Lizensiert unter der GNU GPLv3 oder neuer.</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Versionsinfo kopieren</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Wörterbücher kopieren</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Danksagungen:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Basierend auf Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -3519,11 +3503,11 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
     </message>
     <message>
       <source>Automatic</source>
-      <translation type="unfinished">Automatic</translation>
+      <translation>Automatisch</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation type="unfinished">Enable application log</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Speichere Debug Meldungen zu &quot;gd_log.txt&quot;, innerhalb des Config Ordners</translation>
     </message>
   </context>
   <context>
@@ -3634,10 +3618,6 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
       <translation>Wort oder Satz zur Abfrage.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Speichere Debug Meldungen zu &quot;gd_log.txt&quot;, innerhalb des Config Ordners.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Fensterzustand zurücksetzen.</translation>
     </message>
@@ -3668,6 +3648,10 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Version und Diagnoseinformationen drucken.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Speichere Debug Meldungen zu &quot;gd_log.txt&quot;, innerhalb des Config Ordners</translation>
     </message>
   </context>
   <context>

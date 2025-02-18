@@ -8,28 +8,12 @@
       <translation>О программе</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>Словарь GoldenDict, версия </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>Лицензия: GNU GPLv3 или более поздняя версия</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Скопировать информацию о версии</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Копировать список словарей</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Список участников:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>На основе Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -3543,8 +3527,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Автоматический</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>Включить журнал приложений</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Сохранить отладочные сообщения в gd_log.txt в папке конфигурации</translation>
     </message>
   </context>
   <context>
@@ -3655,10 +3639,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Слово или фраза для запроса.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Сохранить отладочные сообщения в gd_log.txt в папке конфигурации.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Сбросить состояние окна.</translation>
     </message>
@@ -3689,6 +3669,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Версия для печати и диагностическая информация.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Сохранить отладочные сообщения в gd_log.txt в папке конфигурации</translation>
     </message>
   </context>
   <context>

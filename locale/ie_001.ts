@@ -8,28 +8,12 @@
       <translation>Pri li application</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>Programma de sercha in dictionariums GoldenDict, v. </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation type="unfinished">Licensed under GNU GPLv3 or later</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Copiar li version pri li version</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Copiar li liste de dictionariums</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation type="unfinished">Credits:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation type="unfinished">Based on Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -3536,8 +3520,8 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <translation type="unfinished">Automatic</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation type="unfinished">Enable application log</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
@@ -3648,10 +3632,6 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <translation type="unfinished">Word or sentence to query.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation type="unfinished">Reset window state.</translation>
     </message>
@@ -3682,6 +3662,10 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation type="unfinished">Print version and diagnosis info.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>

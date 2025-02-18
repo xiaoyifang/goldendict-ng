@@ -8,28 +8,12 @@
       <translation>Info</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>GoldenDict, dizionario elettronico, versione </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>Licenza GNU GPLv3 o successiva</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Copia informazioni sulla versione</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Copia l'elenco dei dizionari</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Riconoscimenti:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Basato su Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -3533,8 +3517,8 @@ dai dizionari di Stardict, Babylon e GLS</translation>
       <translation>Automatico</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>Abilita registro applicazione</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Salva i messaggi di debug su gd_log.txt nella cartella di configurazione</translation>
     </message>
   </context>
   <context>
@@ -3645,10 +3629,6 @@ dai dizionari di Stardict, Babylon e GLS</translation>
       <translation>Parola o frase da interrogare.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Salva i messaggi di debug su gd_log.txt nella cartella di configurazione.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Ripristina lo stato della finestra.</translation>
     </message>
@@ -3679,6 +3659,10 @@ dai dizionari di Stardict, Babylon e GLS</translation>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Stampa la versione e le informazioni sulla diagnosi.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Salva i messaggi di debug su gd_log.txt nella cartella di configurazione</translation>
     </message>
   </context>
   <context>

@@ -8,28 +8,12 @@
       <translation>GoldenDictmanta</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>GoldenDict-ng simi-pirwapi mask&apos;ana, versión </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>GNU GPL kamachiyuq, versión 3 qhipamantataq</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Versión info nisqamanta copiay</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Diccionariokuna listata copiay</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Yanapaqkuna:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Qt %1 (%2, %3) nisqapi hapipakuspa.</translation>
     </message>
   </context>
   <context>
@@ -3532,8 +3516,8 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
       <translation>Kikinmanta</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>Yanapakuypa registronta atichiy</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
@@ -3644,10 +3628,6 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
       <translation>Tapukunapaq simi utaq rimay.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Pantasqa allichay willakuykunata gd_log.txt kaqman waqaychay config qillqana mayt'upi.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Ventana estadota musuqmanta churay.</translation>
     </message>
@@ -3678,6 +3658,10 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Imprimir versión y diagnóstico info.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>

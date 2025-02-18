@@ -8,28 +8,12 @@
       <translation>Om</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>Ordliste- och uppslagsverksprogrammet GoldenDict, version </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>Licensierat under GNU GPLv3 eller senare</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Kopiera versionsinformation</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Kopiera ordlista</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Tack till:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Baserat på Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -3538,8 +3522,8 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <translation>Automatisk</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>Aktivera programlogg</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Spara felsökningsmeddelanden till gd_log.txt i konfigurationsmappen</translation>
     </message>
   </context>
   <context>
@@ -3650,10 +3634,6 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <translation>Ord eller mening att söka.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Spara felsökningsmeddelanden till gd_log.txt i konfigurationsmappen.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Återställ fönstertillstånd.</translation>
     </message>
@@ -3684,6 +3664,10 @@ från Stardict, Babylon och GLS ordböcker</translation>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Utskriftsversion och diagnosinformation.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Spara felsökningsmeddelanden till gd_log.txt i konfigurationsmappen</translation>
     </message>
   </context>
   <context>
