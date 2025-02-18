@@ -3521,7 +3521,7 @@ no Stardict, Babilônia e dicionários GLS</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
+      <translation>Salvar mensagens de depuração no gd_log.txt na pasta config</translation>
     </message>
   </context>
   <context>
@@ -3665,7 +3665,7 @@ no Stardict, Babilônia e dicionários GLS</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
+      <translation>Salvar mensagens de depuração no gd_log.txt na pasta config</translation>
     </message>
   </context>
   <context>
