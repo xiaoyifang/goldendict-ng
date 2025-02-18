@@ -3513,7 +3513,7 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
+      <translation>Ruani mesazhet e korrigjimit në gd_log.txt në dosjen e konfigurimit</translation>
     </message>
   </context>
   <context>
@@ -3657,7 +3657,7 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
+      <translation>Ruani mesazhet e korrigjimit në gd_log.txt në dosjen e konfigurimit</translation>
     </message>
   </context>
   <context>
