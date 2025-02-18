@@ -8,28 +8,12 @@
       <translation>Acerca de</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>GoldenDict, diccionario electrónico, versión </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>Licencia GNU GPLv3 o después </translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Copiar información de la versión</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Copiar lista de diccionarios</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Créditos:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Basado en Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -3531,8 +3515,8 @@ de los diccionarios Stardict, Babylon y GLS.</translation>
       <translation type="unfinished">Automatic</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation type="unfinished">Enable application log</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
@@ -3643,10 +3627,6 @@ de los diccionarios Stardict, Babylon y GLS.</translation>
       <translation>Palabra u oración a consultar.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Guarde los mensajes de depuración en gd_log.txt en la carpeta de configuración.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Restablecer el estado de la ventana.</translation>
     </message>
@@ -3677,6 +3657,10 @@ de los diccionarios Stardict, Babylon y GLS.</translation>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Versión impresa e información de diagnóstico.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
