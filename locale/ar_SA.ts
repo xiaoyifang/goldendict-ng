@@ -8,28 +8,12 @@
       <translation>حول</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>برنامج القاموس الذهبي للبحث في القواميس، الإصدار </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>مرخص وفق الإصدار الثّالث من رُخصة غنّو أو أحدث</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>نسخ معلومات الإصدار</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>نسخ قائمة القواميس</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>إشادات:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>بناءً على كيو تي %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -3534,8 +3518,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation type="unfinished">Automatic</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation type="unfinished">Enable application log</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
@@ -3646,10 +3630,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>كلمة أو جملة للاستعلام.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>حفظ رسائل التصحيح إلى gd_log.txt في مجلد التكييف.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>إعادة ضبط حالة النافذة.</translation>
     </message>
@@ -3680,6 +3660,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>طباعة النسخة ومعلومات التشخيص.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
