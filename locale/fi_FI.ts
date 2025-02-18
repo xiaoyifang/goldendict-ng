@@ -8,28 +8,12 @@
       <translation>Tietoja</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>GoldenDict-sanakirjaohjelma, versio </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>Lisensoitu GNU GPLv3:n mukaan tai myöhemmin</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Kopioi version tiedot</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Kopioi sanakirjaluettelo</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Avustajat:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Perustuu Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -3536,8 +3520,8 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <translation>Automaattinen</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>Ota sovellusloki käyttöön</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
@@ -3648,10 +3632,6 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <translation>Kyselyyn käytettävä sana tai lause.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Tallenna debug viestit gd_log.txt config kansioon.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Palauta ikkunan tila.</translation>
     </message>
@@ -3682,6 +3662,10 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Tulostusversio ja diagnoositiedot.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
