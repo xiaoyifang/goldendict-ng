@@ -52,7 +52,7 @@ jobs:
       - uses: jurplel/install-qt-action@v4
         with:
           version: 6.7.2
-          modules: qtbase
+          no-qt-binaries: true
           archives: 'qttranslations qttools'
       - name: update crowdin.ts
         run: |
