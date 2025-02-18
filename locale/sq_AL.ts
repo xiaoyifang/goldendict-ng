@@ -8,28 +8,12 @@
       <translation>Për</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>GoldenDict, programi i fjalorëve, versioni</translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>Licencuar sipas GNU GPLv3 a më i vonë</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Kopjo informacionin e versionit</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Kopjoni listën e fjalorëve</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Meritat:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Bazuar në Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -3528,8 +3512,8 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
       <translation>Automatik</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>Aktivizo regjistrin e aplikacionit</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
@@ -3640,10 +3624,6 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
       <translation>Fjalë ose fjali për të pyetur.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Ruani mesazhet e korrigjimit në gd_log.txt në dosjen e konfigurimit.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Rivendos gjendjen e dritares.</translation>
     </message>
@@ -3674,6 +3654,10 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Versioni i printuar dhe informacioni i diagnozës.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
