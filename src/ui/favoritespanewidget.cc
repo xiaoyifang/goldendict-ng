@@ -888,7 +888,8 @@ bool FavoritesModel::dropMimeData(
   return false;
 }
 
-QModelIndex FavoritesModel::findItemInFolder( const QString & itemName, TreeItem::Type itemType, const QModelIndex & parentIdx )
+QModelIndex
+FavoritesModel::findItemInFolder( const QString & itemName, TreeItem::Type itemType, const QModelIndex & parentIdx )
 {
   TreeItem * parentItem = getItem( parentIdx );
   for ( int i = 0; i < parentItem->childCount(); i++ ) {
