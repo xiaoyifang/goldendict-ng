@@ -245,8 +245,6 @@ private:
   ArticleView * getCurrentArticleView();
   void ctrlTabPressed();
 
-  QString unescapeTabHeader( QString const & header );
-
   void respondToTranslationRequest( QString const & word,
                                     bool checkModifiers,
                                     QString const & scrollTo = QString(),

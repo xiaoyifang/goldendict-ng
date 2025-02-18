@@ -2074,8 +2074,9 @@ void MainWindow::tabSwitched( int )
   }
 
   // Set icon for "Add to Favorites" action
-  QString headword = ui.tabWidget->tabText( ui.tabWidget->currentIndex() );
-  if ( isWordPresentedInFavorites( unescapeTabHeader( headword ), cfg.lastMainGroupId ) ) {
+  auto & view = dynamic_cast< ArticleView * >( ui.tabWidget->currentWidget() );
+  auto headword    = view->getCurrentWord();
+  if ( isWordPresentedInFavorites( headword, cfg.lastMainGroupId ) ) {
     addToFavorites->setIcon( blueStarIcon );
     addToFavorites->setToolTip( tr( "Remove current tab from Favorites" ) );
   }
@@ -4314,12 +4315,6 @@ void MainWindow::showFTSIndexingName( QString const & name )
   }
 }
 
-QString MainWindow::unescapeTabHeader( QString const & header )
-{
-  // Reset table header to original headword
-  return Utils::unescapeAmps( header );
-}
-
 void MainWindow::addCurrentTabToFavorites()
 {
   QString folder;
@@ -4328,9 +4323,10 @@ void MainWindow::addCurrentTabToFavorites()
     folder = igrp->favoritesFolder;
   }
 
-  QString headword = ui.tabWidget->tabText( ui.tabWidget->currentIndex() );
+  auto & view = dynamic_cast< ArticleView * >( ui.tabWidget->currentWidget() );
+  auto headword    = view->getCurrentWord();
 
-  ui.favoritesPaneWidget->addHeadword( folder, unescapeTabHeader( headword ) );
+  ui.favoritesPaneWidget->addHeadword( folder, headword );
 
   addToFavorites->setIcon( blueStarIcon );
   addToFavorites->setToolTip( tr( "Remove current tab from Favorites" ) );
@@ -4343,7 +4339,8 @@ void MainWindow::handleAddToFavoritesButton()
   if ( igrp ) {
     folder = igrp->favoritesFolder;
   }
-  QString headword = unescapeTabHeader( ui.tabWidget->tabText( ui.tabWidget->currentIndex() ) );
+  auto & view = dynamic_cast< ArticleView * >( ui.tabWidget->currentWidget() );
+  auto headword    = view->getCurrentWord();
 
   if ( ui.favoritesPaneWidget->isHeadwordPresent( folder, headword ) ) {
     QMessageBox mb( QMessageBox::Question,
@@ -4384,7 +4381,8 @@ void MainWindow::addWordToFavorites( QString const & word, unsigned groupId, boo
 void MainWindow::addBookmarkToFavorite( QString const & text )
 {
   // get current tab word.
-  QString word        = unescapeTabHeader( ui.tabWidget->tabText( ui.tabWidget->currentIndex() ) );
+  auto & view = dynamic_cast< ArticleView * >( ui.tabWidget->currentWidget() );
+  auto word    = view->getCurrentWord();
   const auto bookmark = QString( "%1~~~%2" ).arg( word, text );
 
   ui.favoritesPaneWidget->addHeadword( nullptr, bookmark );
@@ -4399,8 +4397,9 @@ void MainWindow::addAllTabsToFavorites()
   }
 
   for ( int i = 0; i < ui.tabWidget->count(); i++ ) {
-    QString headword = ui.tabWidget->tabText( i );
-    ui.favoritesPaneWidget->addHeadword( folder, unescapeTabHeader( headword ) );
+    auto & view = dynamic_cast< ArticleView * >( ui.tabWidget->widget(i) );
+    auto headword    = view->getCurrentWord();
+    ui.favoritesPaneWidget->addHeadword( folder, headword );
   }
   addToFavorites->setIcon( blueStarIcon );
   addToFavorites->setToolTip( tr( "Remove current tab from Favorites" ) );

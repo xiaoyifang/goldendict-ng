@@ -1195,6 +1195,10 @@ void ArticleView::syncBackgroundColorWithCfgDarkReader() const
 #endif
 }
 
+QString ArticleView::getCurrentWord(){
+  return currentWord;
+}
+
 
 void ArticleView::back()
 {
