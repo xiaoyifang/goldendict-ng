@@ -8,28 +8,12 @@
       <translation>Про програму</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>GoldenDict-ng — програма для роботи зі словниками, версія </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>Ліцензовано за GNU GPLv3 або пізніше</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Копіювати інформацію про версію</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Копіювати список словників</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Подяки:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>На основі Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -3537,8 +3521,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Автоматичний</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>Увімкнути журнал програми</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
@@ -3649,10 +3633,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Слово або речення запиту.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Зберігати повідомлення налагодження в gd_log.txt в теці конфігурації.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Скинути стан вікна.</translation>
     </message>
@@ -3683,6 +3663,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Друкована версія та інформація про діагностику.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
