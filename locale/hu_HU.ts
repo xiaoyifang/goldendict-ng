@@ -8,28 +8,12 @@
       <translation>Névjegy</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>GoldenDict-ng szótári keresőprogram, verzió </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>Licenc: GNU GPLv3 vagy újabb</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Verzió infó másolása</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Szótárlista másolása</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Készítők:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Qt %1 alapokon (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -3535,8 +3519,8 @@ is felhasználja további szócikkek felfedezéséhez</translation>
       <translation>Automatikus</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>Alkalmazásnapló engedélyezése</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
@@ -3647,10 +3631,6 @@ is felhasználja további szócikkek felfedezéséhez</translation>
       <translation>A keresendő szó vagy kifejezés.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Hibakeresési üzenetek mentése a gd_log.txt fájlba a beállítási mappában.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Ablak állapotának visszaállítása.</translation>
     </message>
@@ -3681,6 +3661,10 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Verzió is diagnosztikai információk megjelenítése.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>

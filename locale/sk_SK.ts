@@ -8,28 +8,12 @@
       <translation>O programe</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>GoldenDict-ng - prehliadač slovníkov, verzia</translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>Vydané pod licenciou GNU GPLv3 alebo novšou</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Kopírovať informácie o verzii</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Kopírovať zoznam slovníkov</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Poďakovanie:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Na základe Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -3529,8 +3513,8 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
       <translation>Automaticky</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>Povoliť denník aplikácie</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
@@ -3641,10 +3625,6 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
       <translation>Slovo alebo veta na dotaz.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Uložte ladiace správy do gd_log.txt v konfiguračnom priečinku.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Obnoviť stav okna.</translation>
     </message>
@@ -3675,6 +3655,10 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Vytlačiť verziu a diagnostické informácie.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>

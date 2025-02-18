@@ -8,28 +8,12 @@
       <translation>Giới thiệu</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>Chương trình tra từ điển Từ điển Vàng, phiên bản </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>Cấp phép theo GNU GPLv3 hoặc mới hơn</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Copy thông tin phiên bản</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Copy danh sách từ điển</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Công trạng:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Dựa trên Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -3529,8 +3513,8 @@ từ các từ điển Stardict, Babylon và GLS</translation>
       <translation>Tự động</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>Bật nhật ký ứng dụng</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
@@ -3641,10 +3625,6 @@ từ các từ điển Stardict, Babylon và GLS</translation>
       <translation>Từ hoặc câu để truy vấn.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Lưu thông báo gỡ lỗi vào gd_log.txt trong thư mục cấu hình.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Đặt lại trạng thái cửa sổ.</translation>
     </message>
@@ -3675,6 +3655,10 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Phiên bản in và thông tin chẩn đoán.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>

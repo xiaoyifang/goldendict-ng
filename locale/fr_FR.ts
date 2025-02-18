@@ -8,28 +8,12 @@
       <translation>À propos</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>Logiciel de recherche de dictionnaires GoldenDict, version </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>Sous licence GPLv3 ou ultérieure</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Copier les informations de version</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Copier la liste des dictionnaires</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Crédits :</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Basé sur Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -3532,8 +3516,8 @@ des dictionnaires Stardict, Babylon et GLS</translation>
       <translation>Automatique</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>Activer le journal des applications</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Enregistrer les messages de débogage dans gd_log.txt dans le dossier de configuration</translation>
     </message>
   </context>
   <context>
@@ -3644,10 +3628,6 @@ des dictionnaires Stardict, Babylon et GLS</translation>
       <translation>Mot ou phrase à requêter.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Enregistrer les messages de débogage dans gd_log.txt dans le dossier de configuration.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Réinitialiser l'état de la fenêtre.</translation>
     </message>
@@ -3678,6 +3658,10 @@ des dictionnaires Stardict, Babylon et GLS</translation>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Version imprimée et informations de diagnostic.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Enregistrer les messages de débogage dans gd_log.txt dans le dossier de configuration</translation>
     </message>
   </context>
   <context>

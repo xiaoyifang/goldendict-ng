@@ -8,28 +8,12 @@
       <translation>정보</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>골든딕 사전검색 프로그램，버전 </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>GNU GPLv3 이상 라이선스</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>버전 정보 복사</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>사전 목록 복사</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>개발진:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Qt %1 (%2, %3) 기준</translation>
     </message>
   </context>
   <context>
@@ -3532,8 +3516,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>오토매틱</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>애플리케이션 로그 활성화</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
@@ -3644,10 +3628,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>쿼리할 단어 또는 문장입니다.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>config 폴더의 gd_log.txt에 디버그 메시지를 저장합니다.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>창 상태를 재설정합니다.</translation>
     </message>
@@ -3678,6 +3658,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>버전 및 진단 정보를 인쇄합니다.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>

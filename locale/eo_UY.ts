@@ -8,28 +8,12 @@
       <translation>Pri</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>La vortaro-programo GoldenDict, versio </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>Disponebla laŭ la permesilo GNU GPLv3 kaj poste</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Kopiu informoj pri versio</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Kopii liston de vortaroj</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Kontribuantoj:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Surbaze de Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -3536,8 +3520,8 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
       <translation>Aŭtomata</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>Ebligu protokolon de aplikaĵo</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
@@ -3648,10 +3632,6 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
       <translation>Vorto aŭ frazo por pridemandi.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Konservu sencimigajn mesaĝojn al gd_log.txt en la agorda dosierujo.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Restarigi fenestrostaton.</translation>
     </message>
@@ -3682,6 +3662,10 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Presa versio kaj diagnozaj informoj.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>

@@ -8,28 +8,12 @@
       <translation>О programu</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>Prohledávač slovníků GoldenDict, verze </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>Licencováno pod GNU GPLv3 nebo novější</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Kopírovat informace o verzi</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Kopírovat seznam slovníků</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Zásluhy:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Na základě Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -3533,8 +3517,8 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <translation>Automatický</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>Povolit protokol aplikace</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Ukládat zprávy ladění do gd_log.txt do složky s konfigurací</translation>
     </message>
   </context>
   <context>
@@ -3645,10 +3629,6 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <translation>Slovo nebo věta k dotazu.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Uložte zprávy ladění do gd_log.txt do složky konfigurace.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Resetovat stav okna.</translation>
     </message>
@@ -3679,6 +3659,10 @@ ze Stardict, Babylon a GLS slovníků</translation>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Tisk verze a diagnostické informace.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Ukládat zprávy ladění do gd_log.txt do složky s konfigurací</translation>
     </message>
   </context>
   <context>

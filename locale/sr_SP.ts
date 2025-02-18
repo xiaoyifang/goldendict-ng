@@ -8,28 +8,12 @@
       <translation>О програму</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>Речник GoldenDict, издање </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>Лиценца: GNU GPLv3 или новија</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Копирај информације о верзији</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Копирај листу речника</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Заслуге:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>На основу Кт %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -3539,8 +3523,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Аутоматски</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>Омогући дневник апликације</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
@@ -3651,10 +3635,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Реч или реченица за упит.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Сачувајте поруке за отклањање грешака у гд_лог.ткт у фасцикли за конфигурацију.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Ресетујте стање прозора.</translation>
     </message>
@@ -3685,6 +3665,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Верзија за штампање и информације о дијагнози.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>

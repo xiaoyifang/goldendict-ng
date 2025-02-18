@@ -8,28 +8,12 @@
       <translation>درباره</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>برنامه جست‌وجوگر واژه‌نامه گلدن‌دیکت، نسخه </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>تحت مجوز گنو GPLv3 یا بالاتر</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>کپی اطلاعات نسخه</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>فهرست لغت نامه ها را کپی کنید</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>دست اندرکاران:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>بر اساس Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -3534,8 +3518,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>خودکار</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>فعال کردن گزارش برنامه</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
@@ -3646,10 +3630,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>کلمه یا جمله به پرس و جو.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>پیام های اشکال زدایی را در gd_log.txt در پوشه پیکربندی ذخیره کنید.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>بازنشانی وضعیت پنجره</translation>
     </message>
@@ -3680,6 +3660,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>نسخه چاپی و اطلاعات تشخیص</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>

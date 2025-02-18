@@ -8,28 +8,12 @@
       <translation>Apie</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>GoldenDict-ng paieškos žodyne programa, versija </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>Licencija: GNU GPLv3 arba vėlesnė</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Nukopijuokite informaciją apie versiją</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Nukopijuokite žodynų sąrašą</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Padėkos:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Remiantis Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -3533,8 +3517,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Automatinis</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>Įgalinti programų žurnalą</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
@@ -3645,10 +3629,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Žodis ar sakinys užklausai.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Išsaugokite derinimo pranešimus gd_log.txt konfigūracijos aplanke.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Iš naujo nustatyti lango būseną.</translation>
     </message>
@@ -3679,6 +3659,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Spausdinimo versija ir diagnostikos informacija.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>

@@ -8,28 +8,12 @@
       <translation>Hakynda</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>GoldenDict-ng - sozlükleri açmak üçin programma,  wersiýa </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>GNU GPLv3 we ondan soňky çykan lisenziýasy boýunça</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Wersiýa maglumatyny göçüriň</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Sözlükleriň sanawyny göçüriň</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Hormatlar:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Qt %1 (%2, %3) esasynda</translation>
     </message>
   </context>
   <context>
@@ -3535,8 +3519,8 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
       <translation>Awtomat</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>Programma gündeligini açyň</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
@@ -3647,10 +3631,6 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
       <translation>Talap üçin söz ýa-da söz.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Düzediş habarlaryny konfigurasiýa bukjasyndaky gd_log.txt-a ýazdyryň.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Penjiräniň ýagdaýyny täzeden düzmek.</translation>
     </message>
@@ -3681,6 +3661,10 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Wersiýa we diagnoz maglumatlary çap ediň.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>

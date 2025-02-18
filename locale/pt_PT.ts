@@ -8,28 +8,12 @@
       <translation>SOBRE</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>Programa de pesquisa do dicionário GoldenDict-ng, versão </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>Licenciado sob a GNU GPLv3 ou posterior</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Copiar informações da versão</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Copiar lista de dicionários</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Créditos:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Baseado em Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -3536,8 +3520,8 @@ no Stardict, Babilônia e dicionários GLS</translation>
       <translation>Automático</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>Habilitar log do aplicativo</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Salvar mensagens de depuração no gd_log.txt na pasta config</translation>
     </message>
   </context>
   <context>
@@ -3648,10 +3632,6 @@ no Stardict, Babilônia e dicionários GLS</translation>
       <translation>Palavra ou frase a consultar.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Salvar mensagens de depuração no gd_log.txt na pasta config.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Redefina o estado da janela.</translation>
     </message>
@@ -3682,6 +3662,10 @@ no Stardict, Babilônia e dicionários GLS</translation>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Versão impressa e informações de diagnóstico.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Salvar mensagens de depuração no gd_log.txt na pasta config</translation>
     </message>
   </context>
   <context>
