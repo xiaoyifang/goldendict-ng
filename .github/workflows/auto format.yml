@@ -49,15 +49,12 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 2
-      - name: Install Qt using aqt
-        run: |
-          pip install aqtinstall
-          aqt list-tool linux desktop
-          aqt install-tool linux desktop tools_qtcreator
-      # - name: Add Qt bin to PATH
-      #   run: |
-      #     echo "/home/runner/.local/share/aqtinstall/6.7.2/linux/desktop/qttools/bin" >> $GITHUB_PATH
-      
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v4
+        with:
+          version: '6.7.2'
+          target: 'desktop'
+          tools: 'tools_qtcreator,qt.tools.qtcreator'
       - name: update crowdin.ts
         run: |
           lupdate-pro -no-obsolete -no-ui-lines -locations none .\src\   -ts .\locale\crowdin.ts  
