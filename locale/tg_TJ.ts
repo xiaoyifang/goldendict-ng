@@ -8,28 +8,12 @@
       <translation>Дар бораи барнома</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>Луғати GoldenDict, версияи </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>Иҷозатномаи GNU GPLv3 ё навтар</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Маълумоти версияро нусхабардорӣ кунед</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Рӯйхати луғатҳоро нусхабардорӣ кунед</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Рӯйхати тарҷумонҳо:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Дар асоси Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -3536,8 +3520,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Автоматӣ</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>Рӯйхати барномаҳоро фаъол созед</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
@@ -3648,10 +3632,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Калима ё ҷумла барои пурсиш.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Паёмҳои дебагро дар gd_log.txt дар ҷузвдони танзимот захира кунед.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Ҳолати тирезаро барқарор кунед.</translation>
     </message>
@@ -3682,6 +3662,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Версияи чопӣ ва маълумоти ташхис.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
