@@ -8,28 +8,12 @@
       <translation>के सम्बन्ध में</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>गोल्डेनडिक्ट शब्दकोश अवलोकन प्रोग्राम, संस्करण</translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>GNU GPLv3 या उत्तरवर्ती अनुज्ञापत्र के अन्तर्गत </translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>संस्करण जानकारी कॉपी करें</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>शब्दकोश सूची कॉपी करें</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>आभार :</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Qt %1 (%2, %3) पर आधारित</translation>
     </message>
   </context>
   <context>
@@ -3519,8 +3503,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>स्वचालित</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>एप्लिकेशन लॉग सक्षम करें</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
@@ -3631,10 +3615,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>प्रश्न करने के लिए शब्द या वाक्य.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>डिबग संदेशों को कॉन्फ़िगरेशन फ़ोल्डर में gd_log.txt में सहेजें।</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>विंडो स्थिति रीसेट करें.</translation>
     </message>
@@ -3665,6 +3645,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>प्रिंट संस्करण और निदान जानकारी।</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
