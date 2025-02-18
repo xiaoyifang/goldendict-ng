@@ -3517,7 +3517,7 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
+      <translation>Debug berichten opslaan in gd_log.txt in de configuratie map</translation>
     </message>
   </context>
   <context>
@@ -3661,7 +3661,7 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
+      <translation>Debug berichten opslaan in gd_log.txt in de configuratie map</translation>
     </message>
   </context>
   <context>
