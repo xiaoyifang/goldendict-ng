@@ -8,27 +8,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>GoldenDict-ng dictionary lookup program, version </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Licensed under GNU GPLv3 or later</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Copy version info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Copy dictionaries list</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Credits:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Based on Qt %1 (%2, %3)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3507,7 +3491,7 @@ from Stardict, Babylon and GLS dictionaries</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Enable application log</source>
+        <source>Save debug messages to gd_log.txt in the config folder</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3619,10 +3603,6 @@ from Stardict, Babylon and GLS dictionaries</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Save debug messages to gd_log.txt in the config folder.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Reset window state.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3652,6 +3632,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
         <source>Print version and diagnosis info.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save debug messages to gd_log.txt in the config folder</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
