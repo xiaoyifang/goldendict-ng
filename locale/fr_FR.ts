@@ -3517,7 +3517,7 @@ des dictionnaires Stardict, Babylon et GLS</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
+      <translation>Enregistrer les messages de débogage dans gd_log.txt dans le dossier de configuration</translation>
     </message>
   </context>
   <context>
@@ -3661,7 +3661,7 @@ des dictionnaires Stardict, Babylon et GLS</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
+      <translation>Enregistrer les messages de débogage dans gd_log.txt dans le dossier de configuration</translation>
     </message>
   </context>
   <context>
