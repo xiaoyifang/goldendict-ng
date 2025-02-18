@@ -8,28 +8,12 @@
       <translation>关于</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>GoldenDict-ng 电子词典程序，版本 </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>授权基于 GNU 公共授权 GPLv3 或更高版本</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>复制版本信息</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>复制词典列表</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>致谢名单：</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>基于 Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -3521,8 +3505,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>自动</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>启用应用程序日志</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
@@ -3633,10 +3617,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>单词或句子查询。</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>在配置文件夹中将调试消息保存到 gd_log.txt。</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>重置窗口状态。</translation>
     </message>
@@ -3667,6 +3647,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>打印版本和诊断信息。</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
