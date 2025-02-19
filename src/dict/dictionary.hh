@@ -214,7 +214,7 @@ public:
   vector< char > & getFullData();
 
   DataRequest( QObject * parent = 0 ):
-    Request( parent ),
+    Request( 0 ),
     hasAnyData( false )
   {
   }
