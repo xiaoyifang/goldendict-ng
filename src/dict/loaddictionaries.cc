@@ -57,7 +57,6 @@ LoadDictionaries::LoadDictionaries( Config::Class const & cfg ):
   soundDirs( cfg.soundDirs ),
   hunspell( cfg.hunspell ),
   transliteration( cfg.transliteration ),
-  exceptionText( "Load did not finish" ), // Will be cleared upon success
   maxHeadwordSize( cfg.maxHeadwordSize ),
   maxHeadwordToExpand( cfg.maxHeadwordsToExpand )
 {
@@ -94,7 +93,14 @@ void LoadDictionaries::run()
   try {
     for ( const auto & path : paths ) {
       qDebug() << "handle path:" << path.path;
-      handlePath( path );
+      try {
+        handlePath( path );
+      }
+      catch ( const std::exception & e ) {
+        qWarning() << "Error handling path:" << path.path << "-" << e.what();
+        //hold last exception message.
+        exceptionText = "[" + path.path + "]" + e.what();
+      }
     }
 
     // Make soundDirs
@@ -129,8 +135,6 @@ void LoadDictionaries::run()
         dict->setFtsEnable( dictMetaData->fullindex.value() );
       }
     }
-
-    exceptionText.clear();
   }
   catch ( std::exception & e ) {
     exceptionText = e.what();
@@ -229,7 +233,6 @@ void loadDictionaries( QWidget * parent,
                            QCoreApplication::translate( "LoadDictionaries", "Error loading dictionaries" ),
                            QString::fromUtf8( loadDicts.getExceptionText().c_str() ) );
 
-    return;
   }
 
   dictionaries = loadDicts.getDictionaries();
