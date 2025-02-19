@@ -39,6 +39,7 @@ public:
   QString translateLineText{};
   //hold the dictionary id;
   QSet< QString > collapsedDicts;
+  //key hold the headword,  value holds the folders.
   QMap< QString, QSet< QString > > folderFavoritesMap;
   QMap< unsigned, QString > groupFolderMap;
   PronounceEngine pronounce_engine;

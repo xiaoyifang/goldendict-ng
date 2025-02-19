@@ -1209,7 +1209,7 @@ bool ScanPopup::isWordPresentedInFavorites( QString const & word, unsigned group
 {
   QString folder = GlobalBroadcaster::instance()->groupFolderMap[ groupId ];
 
-  return GlobalBroadcaster::instance()->folderFavoritesMap[ folder ].contains( word );
+  return GlobalBroadcaster::instance()->folderFavoritesMap[ word ].contains( folder );
 }
 
 #ifdef HAVE_X11
