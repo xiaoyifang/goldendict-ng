@@ -232,7 +232,6 @@ void loadDictionaries( QWidget * parent,
     QMessageBox::critical( parent,
                            QCoreApplication::translate( "LoadDictionaries", "Error loading dictionaries" ),
                            QString::fromUtf8( loadDicts.getExceptionText().c_str() ) );
-
   }
 
   dictionaries = loadDicts.getDictionaries();
