@@ -4,7 +4,6 @@
 #include "config.hh"
 #include "logger.hh"
 #include "mainwindow.hh"
-#include "termination.hh"
 #include "version.hh"
 #include <QByteArray>
 #include <QCommandLineParser>
@@ -347,8 +346,6 @@ int main( int argc, char ** argv )
   if ( argc > 1 ) {
     processCommandLine( &app, &gdcl );
   }
-
-  installTerminationHandler();
 
 #ifdef __WIN32
 
