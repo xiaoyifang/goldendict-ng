@@ -4408,7 +4408,7 @@ void MainWindow::addAllTabsToFavorites()
   }
 
   for ( int i = 0; i < ui.tabWidget->count(); i++ ) {
-    auto view = dynamic_cast< ArticleView * >( ui.tabWidget->widget( i ) );
+    auto view = qobject_cast< ArticleView * >( ui.tabWidget->widget( i ) );
     if ( !view ) {
       continue;
     }
