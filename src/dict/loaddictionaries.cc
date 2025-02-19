@@ -99,7 +99,7 @@ void LoadDictionaries::run()
       catch ( const std::exception & e ) {
         qWarning() << "Error handling path:" << path.path << "-" << e.what();
         //hold last exception message.
-        exceptionText = "[" + path.path + "]" + e.what();
+        exceptionText = "[" + path.path + "]:" + e.what();
       }
     }
 
