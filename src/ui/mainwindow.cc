@@ -54,6 +54,7 @@
 #include <QListWidgetItem>
 
 #include "globalregex.hh"
+#include "favoritemanager.hh"
 
 #ifdef Q_OS_MAC
   #include "macos/macmouseover.hh"
@@ -176,8 +177,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   headwordsDlg( nullptr ),
   ftsIndexing( dictionaries ),
   ftsDlg( nullptr ),
-  starIcon( ":/icons/star.svg" ),
-  blueStarIcon( ":/icons/star_blue.svg" )
+  emptyStarIcon( ":/icons/star.svg" ),
+  fullStarIcon( ":/icons/star_blue.svg" ),
+  emptyOtherStarIcon( ":/icons/star_other.svg" ),
+  fullOtherStarIcon( ":/icons/star_blue_other.svg" )
 {
   if ( QThreadPool::globalInstance()->maxThreadCount() < MIN_THREAD_COUNT ) {
     QThreadPool::globalInstance()->setMaxThreadCount( MIN_THREAD_COUNT );
@@ -298,7 +301,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   navToolbar->widgetForAction( navToolbar->addSeparator() )->setObjectName( "separatorBeforeAddToFavorites" );
 
-  addToFavorites = navToolbar->addAction( starIcon, tr( "Add current tab to Favorites" ) );
+  addToFavorites = navToolbar->addAction( emptyStarIcon, tr( "Add current tab to Favorites" ) );
   navToolbar->widgetForAction( addToFavorites )->setObjectName( "addToFavoritesButton" );
 
   connect( addToFavorites, &QAction::triggered, this, &MainWindow::handleAddToFavoritesButton );
@@ -1997,16 +2000,31 @@ void MainWindow::titleChanged( ArticleView * view, QString const & title )
 
   if ( index == ui.tabWidget->currentIndex() ) {
     // Set icon for "Add to Favorites" action
-    if ( isWordPresentedInFavorites( title, cfg.lastMainGroupId ) ) {
-      addToFavorites->setIcon( blueStarIcon );
-      addToFavorites->setToolTip( tr( "Remove current tab from Favorites" ) );
-    }
-    else {
-      addToFavorites->setIcon( starIcon );
-      addToFavorites->setToolTip( tr( "Add current tab to Favorites" ) );
-    }
+    updateFavoriteIcon( title );
 
     updateWindowTitle();
+  }
+}
+void MainWindow::updateFavoriteIcon( const QString & title )
+{
+  auto favoriteType = FavoriteManager::determineFavoriteType( title, this->cfg.lastMainGroupId );
+  switch ( favoriteType ) {
+    case FavoriteType::EMPTY:
+      this->addToFavorites->setIcon( this->emptyStarIcon );
+      this->addToFavorites->setToolTip( tr( "Add current tab to Favorites" ) );
+      break;
+    case FavoriteType::FULL:
+      this->addToFavorites->setIcon( this->fullStarIcon );
+      this->addToFavorites->setToolTip( tr( "Remove current tab from Favorites" ) );
+      break;
+    case FavoriteType::EMPTY_OTHER:
+      this->addToFavorites->setIcon( this->emptyOtherStarIcon );
+      this->addToFavorites->setToolTip( tr( "Add current tab to Favorites" ) );
+      break;
+    case FavoriteType::FULL_OTHER:
+      this->addToFavorites->setIcon( this->fullOtherStarIcon );
+      this->addToFavorites->setToolTip( tr( "Remove current tab from Favorites" ) );
+      break;
   }
 }
 
@@ -2066,14 +2084,7 @@ void MainWindow::tabSwitched( int )
   if ( view ) {
     headword = view->getCurrentWord();
   }
-  if ( isWordPresentedInFavorites( headword, cfg.lastMainGroupId ) ) {
-    addToFavorites->setIcon( blueStarIcon );
-    addToFavorites->setToolTip( tr( "Remove current tab from Favorites" ) );
-  }
-  else {
-    addToFavorites->setIcon( starIcon );
-    addToFavorites->setToolTip( tr( "Add current tab to Favorites" ) );
-  }
+  updateFavoriteIcon( headword );
 
   if ( view ) {
     groupList->setCurrentGroup( view->getCurrentGroupId() );
@@ -4259,7 +4270,7 @@ void MainWindow::addCurrentTabToFavorites()
 
   ui.favoritesPaneWidget->addHeadword( folder, headword );
 
-  addToFavorites->setIcon( blueStarIcon );
+  addToFavorites->setIcon( fullStarIcon );
   addToFavorites->setToolTip( tr( "Remove current tab from Favorites" ) );
 }
 
@@ -4275,8 +4286,9 @@ void MainWindow::handleAddToFavoritesButton()
     return;
   }
   auto headword = view->getCurrentWord();
+  auto favoriteType = FavoriteManager::determineFavoriteType( headword, folder );
 
-  if ( ui.favoritesPaneWidget->isHeadwordPresent( folder, headword ) ) {
+  if ( favoriteType == FavoriteType::FULL || favoriteType == FavoriteType::FULL_OTHER ) {
     QMessageBox mb( QMessageBox::Question,
                     "GoldenDict",
                     tr( "Remove headword \"%1\" from Favorites?" ).arg( headword ),
@@ -4284,14 +4296,24 @@ void MainWindow::handleAddToFavoritesButton()
                     this );
     if ( mb.exec() == QMessageBox::Yes ) {
       if ( ui.favoritesPaneWidget->removeHeadword( folder, headword ) ) {
-        addToFavorites->setIcon( starIcon );
+        if ( favoriteType == FavoriteType::FULL ) {
+          addToFavorites->setIcon( emptyStarIcon );
+        }
+        else {
+          addToFavorites->setIcon( emptyOtherStarIcon );
+        }
         addToFavorites->setToolTip( tr( "Add current tab to Favorites" ) );
       }
     }
   }
   else {
     ui.favoritesPaneWidget->addHeadword( folder, headword );
-    addToFavorites->setIcon( blueStarIcon );
+    if ( favoriteType == FavoriteType::EMPTY ) {
+      addToFavorites->setIcon( fullStarIcon );
+    }
+    else {
+      addToFavorites->setIcon( fullOtherStarIcon );
+    }
     addToFavorites->setToolTip( tr( "Remove current tab from Favorites" ) );
   }
 }
@@ -4341,7 +4363,7 @@ void MainWindow::addAllTabsToFavorites()
     auto headword = view->getCurrentWord();
     ui.favoritesPaneWidget->addHeadword( folder, headword );
   }
-  addToFavorites->setIcon( blueStarIcon );
+  addToFavorites->setIcon( fullStarIcon );
   addToFavorites->setToolTip( tr( "Remove current tab from Favorites" ) );
 }
 

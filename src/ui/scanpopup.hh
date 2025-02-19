@@ -160,8 +160,10 @@ private:
 
   QTimer mouseGrabPollTimer;
 
-  QIcon starIcon     = QIcon( ":/icons/star.svg" );
-  QIcon blueStarIcon = QIcon( ":/icons/star_blue.svg" );
+  QIcon emptyIcon     = QIcon( ":/icons/star.svg" );
+  QIcon fullIcon      = QIcon( ":/icons/star_blue.svg" );
+  QIcon emptyFullIcon = QIcon( ":/icons/star_other.svg" );
+  QIcon fullFullIcon  = QIcon( ":/icons/star_blue_other.svg" );
 
   void handleInputWord( QString const &, bool forcePopup = false );
   void engagePopup( bool forcePopup, bool giveFocus = false );
