@@ -141,7 +141,7 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
 
   QCommandLineOption logFileOption( QStringList() << "l"
                                                   << "log-to-file",
-                                    QObject::tr( "Save debug messages to gd_log.txt in the config folder" ) + '.' );
+                                    QObject::tr( "Save debug messages to gd_log.txt in the config folder" ) );
 
   QCommandLineOption resetState( QStringList() << "r"
                                                << "reset-window-state",
