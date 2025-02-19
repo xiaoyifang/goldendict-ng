@@ -644,7 +644,6 @@ class MddResourceRequest: public Dictionary::DataRequest
 public:
 
   MddResourceRequest( MdxDictionary & dict_, string const & resourceName_ ):
-    Dictionary::DataRequest( &dict_ ),
     dict( dict_ ),
     resourceName( Text::toUtf32( resourceName_ ) )
   {

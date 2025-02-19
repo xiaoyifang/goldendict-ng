@@ -53,10 +53,6 @@ class Request: public QObject
   Q_OBJECT
 
 public:
-  Request( QObject * parent = nullptr ):
-    QObject( parent )
-  {
-  }
   /// Returns whether the request has been processed in full and finished.
   /// This means that the data accumulated is final and won't change anymore.
   bool isFinished();
@@ -213,16 +209,11 @@ public:
   /// done, this can only be called after the request has finished.
   vector< char > & getFullData();
 
-  DataRequest( QObject * parent = 0 ):
-    Request( parent ),
-    hasAnyData( false )
-  {
-  }
 signals:
   void finishedArticle( QString articleText );
 
 protected:
-  bool hasAnyData; // With this being false, dataSize() always returns -1
+  bool hasAnyData = false; // With this being false, dataSize() always returns -1
   vector< char > data;
 };
 
