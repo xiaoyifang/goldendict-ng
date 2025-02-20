@@ -5,6 +5,7 @@
 
 #include <list>
 #include <map>
+#include <atomic>
 #include <QObject>
 #include <QTimer>
 #include <QMutex>
@@ -29,12 +30,12 @@ private:
   QString searchErrorString;
   bool searchResultsUncertain;
   std::list< sptr< Dictionary::WordSearchRequest > > queuedRequests, finishedRequests;
-  bool searchInProgress;
+  std::atomic_bool searchInProgress;
+  QMutex mutex;
 
   QTimer updateResultsTimer;
 
   // Saved search params
-  bool searchQueued;
   QString inputWord;
   enum SearchType {
     PrefixMatch,
@@ -128,7 +129,6 @@ public:
   /// requests exist, and hence no dictionaries are used anymore. Unlike
   /// cancel(), this may take some time to finish.
   void clear();
-
 signals:
 
   /// Indicates that the search has got some more results, and continues
