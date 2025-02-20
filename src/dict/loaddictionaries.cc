@@ -44,6 +44,7 @@
 
 #include <QMessageBox>
 #include <QDir>
+#include <QString>
 
 #include <set>
 

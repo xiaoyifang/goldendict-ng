@@ -9,6 +9,7 @@
 
 #include <QThread>
 #include <QNetworkAccessManager>
+#include <QStringList>
 
 /// Use loadDictionaries() function below -- this is a helper thread class
 class LoadDictionaries: public QThread, public Dictionary::Initializing
