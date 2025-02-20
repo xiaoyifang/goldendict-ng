@@ -288,7 +288,9 @@ ArticleResourceReply::ArticleResourceReply( QObject * parent,
 
 ArticleResourceReply::~ArticleResourceReply()
 {
-  req->cancel();
+  if ( req ) {
+    req->cancel();
+  }
 }
 
 void ArticleResourceReply::reqUpdated()
