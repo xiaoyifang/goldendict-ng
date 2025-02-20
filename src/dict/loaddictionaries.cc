@@ -101,7 +101,7 @@ void LoadDictionaries::run()
         qWarning() << "Error handling path:" << path.path << "-" << e.what();
         //hold last exception message.
         auto exception = "[" + path.path.toStdString() + "]:" + e.what();
-        exceptionTexts << QString.fromUtf8( exception );
+        exceptionTexts << QString::fromUtf8( exception );
       }
     }
 
@@ -139,7 +139,7 @@ void LoadDictionaries::run()
     }
   }
   catch ( std::exception & e ) {
-    exceptionTexts << QString.fromUtf8( e.what() );
+    exceptionTexts << QString::fromUtf8( e.what() );
   }
 }
 
