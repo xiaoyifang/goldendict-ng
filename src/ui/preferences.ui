@@ -460,6 +460,29 @@ the application.</string>
            </layout>
           </item>
           <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_23">
+            <item>
+             <widget class="QGroupBox" name="groupBox_8">
+              <property name="title">
+               <string>Preview Font</string>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_22">
+               <item>
+                <widget class="QLabel" name="previewFont">
+                 <property name="text">
+                  <string>Goldendict-ng is a dictionary software</string>
+                 </property>
+                 <property name="wordWrap">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
            <spacer name="verticalSpacer_5">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -2033,8 +2056,8 @@ from Stardict, Babylon and GLS dictionaries</string>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
+     <x>257</x>
+     <y>720</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -2049,8 +2072,8 @@ from Stardict, Babylon and GLS dictionaries</string>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
+     <x>325</x>
+     <y>720</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
