@@ -44,19 +44,19 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   } );
   connect( ui.buttonBox, &QDialogButtonBox::helpRequested, &helpAction, &QAction::trigger );
 
-  connect(ui.systemFont,&QFontComboBox::currentTextChanged,this,[this](const QString &font){
+  connect( ui.systemFont, &QFontComboBox::currentTextChanged, this, [ this ]( const QString & font ) {
     QFont f = QApplication::font();
-    f.setFamily(font);
-    f.setPointSize(ui.interfaceFontSize->value());
-    ui.previewFont->setFont(f);
-  });
+    f.setFamily( font );
+    f.setPointSize( ui.interfaceFontSize->value() );
+    ui.previewFont->setFont( f );
+  } );
 
-  connect(ui.interfaceFontSize, &QSpinBox::valueChanged, this, [this](int size){
+  connect( ui.interfaceFontSize, &QSpinBox::valueChanged, this, [ this ]( int size ) {
     QFont f = QApplication::font();
-    f.setFamily(ui.systemFont->currentText());
-    f.setPointSize(size);
-    ui.previewFont->setFont(f);
-  });
+    f.setFamily( ui.systemFont->currentText() );
+    f.setPointSize( size );
+    ui.previewFont->setFont( f );
+  } );
 
   addAction( &helpAction );
 
