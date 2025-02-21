@@ -2928,22 +2928,6 @@ the application.</source>
       <translation>Шрифти интерфейс</translation>
     </message>
     <message>
-      <source>Interface language:</source>
-      <translation>Забони интерфейс:</translation>
-    </message>
-    <message>
-      <source>Article Display style:</source>
-      <translation>Услуби намоиши мақола:</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>Сабки иловагӣ:</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>Услуби интерфейс:</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>UI-ро ба торик табдил диҳед.</translation>
     </message>
@@ -3522,6 +3506,34 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
+    </message>
+    <message>
+      <source>Interface Font Size</source>
+      <translation type="unfinished">Interface Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation type="unfinished">Interface language</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation type="unfinished">Article Display style</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation type="unfinished">Add-on style</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation type="unfinished">Interface Style</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation type="unfinished">Preview Font</translation>
+    </message>
+    <message>
+      <source>Goldendict-ng is a dictionary software</source>
+      <translation type="unfinished">Goldendict-ng is a dictionary software</translation>
     </message>
   </context>
   <context>
