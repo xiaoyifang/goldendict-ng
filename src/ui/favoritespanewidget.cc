@@ -1229,4 +1229,6 @@ void FavoritesModel::clearAllItems()
   }
 
   endResetModel();
+
+  dirty = true;
 }
