@@ -23,7 +23,7 @@ class Preferences: public QDialog
 
   Config::Class & cfg;
   QAction helpAction;
-  void previewInterfaceFont(QString family, int size );
+  void previewInterfaceFont( QString family, int size );
 
 public:
 

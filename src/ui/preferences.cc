@@ -417,12 +417,12 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.parallelThreads->setMaximum( QThread::idealThreadCount() );
   ui.parallelThreads->setValue( p.fts.parallelThreads );
 }
-void Preferences::previewInterfaceFont( QString family,int size )
+void Preferences::previewInterfaceFont( QString family, int size )
 {
   QFont f = QApplication::font();
-  f.setFamily( family);
-  f.setPointSize(size);
-  this->ui.previewFont->setFont(f);
+  f.setFamily( family );
+  f.setPointSize( size );
+  this->ui.previewFont->setFont( f );
 }
 
 void Preferences::buildDisabledTypes( QString & disabledTypes, bool is_checked, QString name )
