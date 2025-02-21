@@ -45,18 +45,13 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   connect( ui.buttonBox, &QDialogButtonBox::helpRequested, &helpAction, &QAction::trigger );
 
   connect( ui.systemFont, &QFontComboBox::currentTextChanged, this, [ this ]( const QString & font ) {
-    QFont f = QApplication::font();
-    f.setFamily( font );
-    f.setPointSize( ui.interfaceFontSize->value() );
-    ui.previewFont->setFont( f );
+    previewInterfaceFont( font, ui.interfaceFontSize->value() );
   } );
 
   connect( ui.interfaceFontSize, &QSpinBox::valueChanged, this, [ this ]( int size ) {
-    QFont f = QApplication::font();
-    f.setFamily( ui.systemFont->currentText() );
-    f.setPointSize( size );
-    ui.previewFont->setFont( f );
+    previewInterfaceFont( ui.systemFont->currentText(), size );
   } );
+  previewInterfaceFont( ui.systemFont->currentText(), ui.interfaceFontSize->value() );
 
   addAction( &helpAction );
 
@@ -421,6 +416,13 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 
   ui.parallelThreads->setMaximum( QThread::idealThreadCount() );
   ui.parallelThreads->setValue( p.fts.parallelThreads );
+}
+void Preferences::previewInterfaceFont( QString family,int size )
+{
+  QFont f = QApplication::font();
+  f.setFamily( family);
+  f.setPointSize(size);
+  this->ui.previewFont->setFont(f);
 }
 
 void Preferences::buildDisabledTypes( QString & disabledTypes, bool is_checked, QString name )
