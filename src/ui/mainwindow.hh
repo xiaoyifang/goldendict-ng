@@ -170,7 +170,7 @@ private:
 
   FTS::FullTextSearchDialog * ftsDlg;
 
-  QIcon starIcon, blueStarIcon;
+  QIcon emptyStarIcon, fullStarIcon, emptyOtherStarIcon, fullOtherStarIcon;
 
   LocalSchemeHandler * localSchemeHandler;
   IframeSchemeHandler * iframeSchemeHandler;
@@ -266,6 +266,7 @@ private:
   bool isWordPresentedInFavorites( QString const & word, unsigned groupId );
   void errorMessageOnStatusBar( const QString & errStr );
   int getIconSize();
+  void updateFavoriteIcon( const QString & title );
 
 private slots:
 

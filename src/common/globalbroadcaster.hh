@@ -40,7 +40,7 @@ public:
   //hold the dictionary id;
   QSet< QString > collapsedDicts;
   //key hold the headword,  value holds the folders.
-  QMap< QString, QSet< QString > > folderFavoritesMap;
+  QMap< QString, QSet< QString > > wordFavoriteFolderMap;
   QMap< unsigned, QString > groupFolderMap;
   PronounceEngine pronounce_engine;
   QString getAbbrName( QString const & text );
