@@ -2926,22 +2926,6 @@ prowadzi do jego ukrycia, a nie do zamknięcia aplikacji.</translation>
       <translation>Czcionka interfejsu</translation>
     </message>
     <message>
-      <source>Interface language:</source>
-      <translation>Język interfejsu:</translation>
-    </message>
-    <message>
-      <source>Article Display style:</source>
-      <translation>Styl wyświetlania artykułu:</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>Styl dodatku:</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>Styl interfejsu:</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Zmień interfejs użytkownika na ciemny.</translation>
     </message>
@@ -3521,6 +3505,34 @@ ze słowników Stardict, Babylon i GLS</translation>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Zapisz wiadomości debugowania do gd_log.txt w folderze konfiguracyjnym</translation>
+    </message>
+    <message>
+      <source>Interface Font Size</source>
+      <translation>Rozmiar czcionki interfejsu</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Język interfejsu</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Styl wyświetlania artykułu</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Styl dodatku</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Styl interfejsu</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Podgląd czcionki</translation>
+    </message>
+    <message>
+      <source>Goldendict-ng is a dictionary software</source>
+      <translation>Goldendict-ng to oprogramowanie słownikowe</translation>
     </message>
   </context>
   <context>
