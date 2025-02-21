@@ -2928,22 +2928,6 @@ tiesiog paslepiama.</translation>
       <translation>Sąsajos šriftas</translation>
     </message>
     <message>
-      <source>Interface language:</source>
-      <translation>Sąsajos kalba:</translation>
-    </message>
-    <message>
-      <source>Article Display style:</source>
-      <translation>Straipsnio rodymo stilius:</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>Papildomas stilius:</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>Sąsajos stilius:</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Pasukite vartotojo sąsają į tamsią.</translation>
     </message>
@@ -3519,6 +3503,34 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
+    </message>
+    <message>
+      <source>Interface Font Size</source>
+      <translation type="unfinished">Interface Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation type="unfinished">Interface language</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation type="unfinished">Article Display style</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation type="unfinished">Add-on style</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation type="unfinished">Interface Style</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation type="unfinished">Preview Font</translation>
+    </message>
+    <message>
+      <source>Goldendict-ng is a dictionary software</source>
+      <translation type="unfinished">Goldendict-ng is a dictionary software</translation>
     </message>
   </context>
   <context>
