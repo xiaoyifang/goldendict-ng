@@ -2926,22 +2926,6 @@ en lugar de cerrrarse.</translation>
       <translation>Fuente de interfaz</translation>
     </message>
     <message>
-      <source>Interface language:</source>
-      <translation>Idioma de la interfaz de usuario:</translation>
-    </message>
-    <message>
-      <source>Article Display style:</source>
-      <translation>Estilo de visualización del artículo:</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>Estilo suplementario add-on):</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>Estilo de interfaz:</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Convierte la IU en la oscuridad.</translation>
     </message>
@@ -3519,6 +3503,34 @@ de diccionarios Stardict, Babylon y GLS</translation>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Guardar mensajes de depuración en gd_log.txt en la carpeta de configuración</translation>
+    </message>
+    <message>
+      <source>Interface Font Size</source>
+      <translation>Tamaño de fuente de interfaz</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Idioma de la interfaz</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Estilo de visualización de artículo</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Estilo de complemento</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Estilo de interfaz</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Previsualizar fuente</translation>
+    </message>
+    <message>
+      <source>Goldendict-ng is a dictionary software</source>
+      <translation>Goldendict-ng es un software de diccionario</translation>
     </message>
   </context>
   <context>
