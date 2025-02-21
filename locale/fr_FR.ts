@@ -2926,22 +2926,6 @@ the application.</source>
       <translation>Police de l'interface</translation>
     </message>
     <message>
-      <source>Interface language:</source>
-      <translation>Langue de l&apos;interface :</translation>
-    </message>
-    <message>
-      <source>Article Display style:</source>
-      <translation>Style d'affichage de l'article :</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>Style d&apos;add-on :</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>Style d'interface :</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Tourne l'interface utilisateur vers l'obscurité.</translation>
     </message>
@@ -3518,6 +3502,34 @@ des dictionnaires Stardict, Babylon et GLS</translation>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Enregistrer les messages de débogage dans gd_log.txt dans le dossier de configuration</translation>
+    </message>
+    <message>
+      <source>Interface Font Size</source>
+      <translation>Taille de police de l'interface</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Langue de l'interface</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Style d'affichage de l'article</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Style du module</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Style de l'interface</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Aperçu de la police</translation>
+    </message>
+    <message>
+      <source>Goldendict-ng is a dictionary software</source>
+      <translation>Goldendict-ng est un logiciel de dictionnaire</translation>
     </message>
   </context>
   <context>
