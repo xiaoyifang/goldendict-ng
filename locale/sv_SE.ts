@@ -2927,22 +2927,6 @@ minimera fönstret till meddelandefältet istället för att avsluta programmet.
       <translation>Gränssnittets teckensnitt</translation>
     </message>
     <message>
-      <source>Interface language:</source>
-      <translation>Språk för användargränssnittet:</translation>
-    </message>
-    <message>
-      <source>Article Display style:</source>
-      <translation>Artikelns visningsstil:</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>Tilläggsformat:</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>Gränssnittsstil:</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Vänd UI till mörk.</translation>
     </message>
@@ -3524,6 +3508,34 @@ från Stardict, Babylon och GLS ordböcker</translation>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Spara felsökningsmeddelanden till gd_log.txt i konfigurationsmappen</translation>
+    </message>
+    <message>
+      <source>Interface Font Size</source>
+      <translation>Gränssnittets teckenstorlek</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Gränssnittets språk</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Artikelns visningsstil</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Stil på tillägg</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Gränssnitt stil</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Förhandsgranska typsnitt</translation>
+    </message>
+    <message>
+      <source>Goldendict-ng is a dictionary software</source>
+      <translation>Goldendict-ng är en ordbok programvara</translation>
     </message>
   </context>
   <context>
