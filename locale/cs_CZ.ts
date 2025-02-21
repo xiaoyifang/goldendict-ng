@@ -2926,22 +2926,6 @@ ukončení aplikace.</translation>
       <translation>Písmo rozhraní</translation>
     </message>
     <message>
-      <source>Interface language:</source>
-      <translation>Jazyk rozhraní:</translation>
-    </message>
-    <message>
-      <source>Article Display style:</source>
-      <translation>Styl zobrazení článku:</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>Styl doplňku:</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>Styl rozhraní:</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Otočit UI a ztmavit.</translation>
     </message>
@@ -3519,6 +3503,34 @@ ze Stardict, Babylon a GLS slovníků</translation>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Ukládat zprávy ladění do gd_log.txt do složky s konfigurací</translation>
+    </message>
+    <message>
+      <source>Interface Font Size</source>
+      <translation>Velikost písma rozhraní</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Jazyk rozhraní</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Styl zobrazení článku</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Styl doplňku</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Styl rozhraní</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Náhled písma</translation>
+    </message>
+    <message>
+      <source>Goldendict-ng is a dictionary software</source>
+      <translation>Goldendict-ng je slovníkový software</translation>
     </message>
   </context>
   <context>
