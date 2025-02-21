@@ -299,11 +299,32 @@ the application.</string>
            </layout>
           </item>
           <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_19">
+            <item>
+             <widget class="QLabel" name="label_30">
+              <property name="text">
+               <string>Interface Font Size</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="interfaceFontSize">
+              <property name="minimum">
+               <number>8</number>
+              </property>
+              <property name="maximum">
+               <number>32</number>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
            <layout class="QHBoxLayout" name="horizontalLayout_4">
             <item>
              <widget class="QLabel" name="label_6">
               <property name="text">
-               <string>Interface language:</string>
+               <string>Interface language</string>
               </property>
              </widget>
             </item>
@@ -333,7 +354,7 @@ the application.</string>
             <item>
              <widget class="QLabel" name="label_9">
               <property name="text">
-               <string>Article Display style:</string>
+               <string>Article Display style</string>
               </property>
              </widget>
             </item>
@@ -360,7 +381,7 @@ the application.</string>
             <item>
              <widget class="QLabel" name="addonStylesLabel">
               <property name="text">
-               <string>Add-on style:</string>
+               <string>Add-on style</string>
               </property>
              </widget>
             </item>
@@ -387,7 +408,7 @@ the application.</string>
             <item>
              <widget class="QLabel" name="interfaceStyleLabel">
               <property name="text">
-               <string>Interface Style:</string>
+               <string>Interface Style</string>
               </property>
              </widget>
             </item>
@@ -434,6 +455,29 @@ the application.</string>
               <property name="toolTip">
                <string>Turn the article display style to dark.</string>
               </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_23">
+            <item>
+             <widget class="QGroupBox" name="groupBox_8">
+              <property name="title">
+               <string>Preview Font</string>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_22">
+               <item>
+                <widget class="QLabel" name="previewFont">
+                 <property name="text">
+                  <string>Goldendict-ng is a dictionary software</string>
+                 </property>
+                 <property name="wordWrap">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </widget>
             </item>
            </layout>
@@ -2012,8 +2056,8 @@ from Stardict, Babylon and GLS dictionaries</string>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
+     <x>257</x>
+     <y>720</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -2028,8 +2072,8 @@ from Stardict, Babylon and GLS dictionaries</string>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
+     <x>325</x>
+     <y>720</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>

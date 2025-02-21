@@ -292,7 +292,6 @@ ScanPopup::ScanPopup( QWidget * parent,
 #endif
 
   applyZoomFactor();
-  applyWordsZoomLevel();
 }
 
 void ScanPopup::onActionTriggered()
@@ -408,25 +407,6 @@ void ScanPopup::inspectElementWhenPinned( QWebEnginePage * page )
 void ScanPopup::applyZoomFactor() const
 {
   definition->setZoomFactor( cfg.preferences.zoomFactor );
-}
-
-void ScanPopup::applyWordsZoomLevel()
-{
-  QFont font = ui.translateBox->translateLine()->font();
-
-  int ps = dictionaryBar.iconSize().height();
-
-  if ( cfg.preferences.wordsZoomLevel != 0 ) {
-    ps += cfg.preferences.wordsZoomLevel;
-    if ( ps < 12 ) {
-      ps = 12;
-    }
-    font.setPixelSize( ps * 0.8 );
-  }
-  ui.translateBox->completerWidget()->setFont( font );
-  //  ui.translateBox->translateLine()->setFont( font );
-
-  ui.outerFrame->layout()->activate();
 }
 
 Qt::WindowFlags ScanPopup::unpinnedWindowFlags() const
@@ -1178,8 +1158,6 @@ void ScanPopup::setDictionaryIconSize()
   else if ( cfg.usingToolbarsIconSize == Config::ToolbarsIconSize::Large ) {
     dictionaryBar.setDictionaryIconSize( DictionaryBar::IconSize::Large );
   }
-
-  applyWordsZoomLevel();
 }
 
 

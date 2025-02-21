@@ -392,17 +392,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   ui.menuZoom->addSeparator();
 
-  wordsZoomIn = new QShortcut( this );
-  wordsZoomIn->setKey( QKeySequence( "Alt+=" ) );
-  wordsZoomOut = new QShortcut( this );
-  wordsZoomOut->setKey( QKeySequence( "Alt+-" ) );
-  wordsZoomBase = new QShortcut( this );
-  wordsZoomBase->setKey( QKeySequence( "Alt+0" ) );
-
-  connect( wordsZoomIn, &QShortcut::activated, this, &MainWindow::doWordsZoomIn );
-  connect( wordsZoomOut, &QShortcut::activated, this, &MainWindow::doWordsZoomOut );
-  connect( wordsZoomBase, &QShortcut::activated, this, &MainWindow::doWordsZoomBase );
-
 // tray icon
 #ifndef Q_OS_MACOS // macOS uses the dock menu instead of the tray icon
   connect( trayIconMenu.addAction( tr( "Show &Main Window" ) ), &QAction::triggered, this, [ this ] {
@@ -868,7 +857,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // Update zoomers
   adjustCurrentZoomFactor();
   scaleArticlesByCurrentZoomFactor();
-  applyWordsZoomLevel();
 
   // Update autostart info
   setAutostart( cfg.preferences.autoStart );
@@ -1123,7 +1111,6 @@ void MainWindow::updateSearchPaneAndBar( bool searchInDock )
   wordListSelChanged = false;
 
   updateGroupList( false );
-  applyWordsZoomLevel();
 
   setInputLineText( text, WildcardPolicy::WildcardsAreAlreadyEscaped, DisablePopup );
   focusTranslateLine();
@@ -2277,7 +2264,6 @@ void MainWindow::editPreferences()
     // These parameters are not set in dialog
     p.zoomFactor     = cfg.preferences.zoomFactor;
     p.helpZoomFactor = cfg.preferences.helpZoomFactor;
-    p.wordsZoomLevel = cfg.preferences.wordsZoomLevel;
     p.hideMenubar    = cfg.preferences.hideMenubar;
     p.searchInDock   = cfg.preferences.searchInDock;
     p.alwaysOnTop    = cfg.preferences.alwaysOnTop;
@@ -3139,10 +3125,6 @@ int MainWindow::getIconSize()
 
 void MainWindow::iconSizeActionTriggered( QAction * /*action*/ )
 {
-  //reset word zoom
-  cfg.preferences.wordsZoomLevel = 0;
-  wordsZoomBase->setEnabled( false );
-
   bool useLargeIcons = useLargeIconsInToolbarsAction.isChecked();
   int extent         = getIconSize();
   if ( useLargeIcons ) {
@@ -3161,15 +3143,6 @@ void MainWindow::iconSizeActionTriggered( QAction * /*action*/ )
   updateDictionaryBar();
 
   scanPopup->setDictionaryIconSize();
-
-  //adjust the font size as well
-  auto font = translateBox->translateLine()->font();
-  font.setWeight( QFont::Normal );
-  //arbitrary value to make it look good
-  font.setPixelSize( extent * 0.8 );
-  //  translateBox->completerWidget()->setFont( font );
-  //only set the font in toolbar
-  translateBox->translateLine()->setFont( font );
 }
 
 void MainWindow::toggleMenuBarTriggered( bool announce )
@@ -3622,53 +3595,6 @@ void MainWindow::scaleArticlesByCurrentZoomFactor()
   }
 
   scanPopup->applyZoomFactor();
-}
-
-void MainWindow::doWordsZoomIn()
-{
-  cfg.preferences.wordsZoomLevel = cfg.preferences.wordsZoomLevel + 2;
-
-  applyWordsZoomLevel();
-}
-
-void MainWindow::doWordsZoomOut()
-{
-  cfg.preferences.wordsZoomLevel = cfg.preferences.wordsZoomLevel - 2;
-
-  applyWordsZoomLevel();
-}
-
-void MainWindow::doWordsZoomBase()
-{
-  cfg.preferences.wordsZoomLevel = 0;
-
-  applyWordsZoomLevel();
-}
-
-void MainWindow::applyWordsZoomLevel()
-{
-  QFont font = translateBox->translateLine()->font();
-
-  int ps = getIconSize();
-
-  ps += cfg.preferences.wordsZoomLevel;
-  if ( ps < 12 ) {
-    ps = 12;
-  }
-
-  font.setPixelSize( ps * 0.8 );
-  font.setWeight( QFont::Normal );
-  translateBox->translateLine()->setFont( font );
-  //  translateBox->completerWidget()->setFont( font );
-  wordsZoomBase->setEnabled( cfg.preferences.wordsZoomLevel != 0 );
-
-  if ( !cfg.preferences.searchInDock ) {
-    // Invalidating navToolbar's layout displays translateBoxWidget w/o the need to press the toolbar
-    // extension button when Words Zoom level decreases enough for translateBoxWidget to fit in the toolbar.
-    navToolbar->layout()->invalidate();
-  }
-
-  scanPopup->applyWordsZoomLevel();
 }
 
 void MainWindow::messageFromAnotherInstanceReceived( QString const & message )

@@ -187,7 +187,6 @@ Preferences::Preferences():
   clearNetworkCacheOnExit( true ),
   zoomFactor( 1 ),
   helpZoomFactor( 1 ),
-  wordsZoomLevel( 0 ),
   maxStringsInHistory( 500 ),
   storeHistory( 1 ),
   alwaysExpandOptionalParts( true ),
@@ -829,6 +828,7 @@ Class load()
     c.preferences.interfaceLanguage = preferences.namedItem( "interfaceLanguage" ).toElement().text();
     c.preferences.displayStyle      = preferences.namedItem( "displayStyle" ).toElement().text();
     c.preferences.interfaceFont     = preferences.namedItem( "interfaceFont" ).toElement().text();
+    c.preferences.interfaceFontSize = preferences.namedItem( "interfaceFontSize" ).toElement().text().toInt();
 #if !defined( Q_OS_WIN )
     c.preferences.interfaceStyle = preferences.namedItem( "interfaceStyle" ).toElement().text();
 #endif
@@ -888,10 +888,6 @@ Class load()
 
     if ( !preferences.namedItem( "helpZoomFactor" ).isNull() ) {
       c.preferences.helpZoomFactor = preferences.namedItem( "helpZoomFactor" ).toElement().text().toDouble();
-    }
-
-    if ( !preferences.namedItem( "wordsZoomLevel" ).isNull() ) {
-      c.preferences.wordsZoomLevel = preferences.namedItem( "wordsZoomLevel" ).toElement().text().toInt();
     }
 
     applyBoolOption( c.preferences.enableMainWindowHotkey, preferences.namedItem( "enableMainWindowHotkey" ) );
@@ -1738,6 +1734,10 @@ void save( Class const & c )
     opt.appendChild( dd.createTextNode( c.preferences.interfaceFont ) );
     preferences.appendChild( opt );
 
+    opt = dd.createElement( "interfaceFontSize" );
+    opt.appendChild( dd.createTextNode( QString::number( c.preferences.interfaceFontSize ) ) );
+    preferences.appendChild( opt );
+
     opt             = dd.createElement( "customFonts" );
     auto customFont = c.preferences.customFonts.toElement( dd );
     preferences.appendChild( customFont );
@@ -1818,10 +1818,6 @@ void save( Class const & c )
 
     opt = dd.createElement( "helpZoomFactor" );
     opt.appendChild( dd.createTextNode( QString::number( c.preferences.helpZoomFactor ) ) );
-    preferences.appendChild( opt );
-
-    opt = dd.createElement( "wordsZoomLevel" );
-    opt.appendChild( dd.createTextNode( QString::number( c.preferences.wordsZoomLevel ) ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "enableMainWindowHotkey" );

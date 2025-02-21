@@ -44,6 +44,15 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   } );
   connect( ui.buttonBox, &QDialogButtonBox::helpRequested, &helpAction, &QAction::trigger );
 
+  connect( ui.systemFont, &QFontComboBox::currentTextChanged, this, [ this ]( const QString & font ) {
+    previewInterfaceFont( font, ui.interfaceFontSize->value() );
+  } );
+
+  connect( ui.interfaceFontSize, &QSpinBox::valueChanged, this, [ this ]( int size ) {
+    previewInterfaceFont( ui.systemFont->currentText(), size );
+  } );
+  previewInterfaceFont( ui.systemFont->currentText(), ui.interfaceFontSize->value() );
+
   addAction( &helpAction );
 
   // Load values into form
@@ -91,9 +100,17 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
     ui.systemFont->setCurrentText( p.interfaceFont );
   }
 
+  if ( p.interfaceFontSize > 0 ) {
+    ui.interfaceFontSize->setValue( p.interfaceFontSize );
+  }
+  else {
+    ui.interfaceFontSize->setValue( QApplication::font().pointSize() );
+  }
+
 
   prevWebFontFamily = p.customFonts;
   prevSysFont       = p.interfaceFont;
+  prevFontSize      = p.interfaceFontSize;
 
   if ( !p.customFonts.standard.isEmpty() ) {
     ui.font_standard->setCurrentText( p.customFonts.standard );
@@ -400,6 +417,13 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.parallelThreads->setMaximum( QThread::idealThreadCount() );
   ui.parallelThreads->setValue( p.fts.parallelThreads );
 }
+void Preferences::previewInterfaceFont( QString family, int size )
+{
+  QFont f = QApplication::font();
+  f.setFamily( family );
+  f.setPointSize( size );
+  this->ui.previewFont->setFont( f );
+}
 
 void Preferences::buildDisabledTypes( QString & disabledTypes, bool is_checked, QString name )
 {
@@ -418,6 +442,7 @@ Config::Preferences Preferences::getPreferences()
   p.interfaceLanguage = ui.interfaceLanguage->itemData( ui.interfaceLanguage->currentIndex() ).toString();
 
   p.interfaceFont = ui.systemFont->currentText();
+  p.interfaceFontSize = ui.interfaceFontSize->value();
 
   Config::CustomFonts c;
   c.standard    = ui.font_standard->currentText();
@@ -592,7 +617,7 @@ void Preferences::on_buttonBox_accepted()
   }
 #endif
 
-  if ( ui.systemFont->currentText() != prevSysFont ) {
+  if ( ui.systemFont->currentText() != prevSysFont || ui.interfaceFontSize->value() != prevFontSize ) {
     promptText += tr( "Restart to apply the interface font change." );
   }
 
@@ -612,6 +637,11 @@ void Preferences::on_buttonBox_accepted()
                                                                     c.customFonts.monospace );
   }
 
+  if ( ui.interfaceFontSize->value() != prevFontSize ) {
+    auto font = QApplication::font();
+    font.setPointSize( ui.interfaceFontSize->value() );
+    QApplication::setFont( font );
+  }
   //change interface font.
   if ( ui.systemFont->currentText() != prevSysFont ) {
     auto font = QApplication::font();

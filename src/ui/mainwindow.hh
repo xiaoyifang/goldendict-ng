@@ -119,7 +119,6 @@ private:
   QAction *navBack, *navForward, *navPronounce, *enableScanningAction;
   QAction * beforeOptionsSeparator;
   QAction *zoomIn, *zoomOut, *zoomBase;
-  QShortcut *wordsZoomIn, *wordsZoomOut, *wordsZoomBase;
   QAction *addToFavorites, *beforeAddToFavoritesSeparator;
   QMenu trayIconMenu;
   QMenu * tabMenu;
@@ -333,12 +332,6 @@ private slots:
   void unzoom();
 
   void scaleArticlesByCurrentZoomFactor();
-
-  void doWordsZoomIn();
-  void doWordsZoomOut();
-  void doWordsZoomBase();
-
-  void applyWordsZoomLevel();
 
   /// If editDictionaryGroup is specified, the dialog positions on that group
   /// initially.

@@ -274,6 +274,7 @@ struct Preferences
 {
   QString interfaceLanguage; // Empty value corresponds to system default
   QString interfaceFont;     //Empty as default value.
+  int interfaceFontSize;
 
   CustomFonts customFonts;
   bool newTabsOpenAfterCurrentOne;
@@ -344,7 +345,6 @@ struct Preferences
 
   qreal zoomFactor;
   qreal helpZoomFactor;
-  int wordsZoomLevel;
 
   unsigned maxStringsInHistory;
   unsigned storeHistory;

@@ -45,7 +45,6 @@ public:
   /// Applies current zoom factor to the popup's view. Should be called when
   /// it's changed.
   void applyZoomFactor() const;
-  void applyWordsZoomLevel();
   /// Translate the word
   void translateWord( QString const & word );
 
