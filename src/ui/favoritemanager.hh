@@ -19,7 +19,7 @@ class FavoriteManager
 
 public:
   static FavoriteType determineFavoriteType( QString const & word, unsigned group );
-  static FavoriteType determineFavoriteType( const QString & word, const QString & folder )
+  static FavoriteType determineFavoriteType( const QString & word, const QString & folder );
 };
 
 

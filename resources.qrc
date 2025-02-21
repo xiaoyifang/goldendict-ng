@@ -75,6 +75,8 @@
         <file>icons/sources.png</file>
         <file>icons/star.svg</file>
         <file>icons/star_blue.svg</file>
+        <file>icons/star_other.svg</file>
+        <file>icons/star_blue_other.svg</file>
         <file>icons/system-search.svg</file>
         <file>icons/windows-list.svg</file>
         <file>icons/wizard.svg</file>
