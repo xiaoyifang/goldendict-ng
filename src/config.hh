@@ -345,7 +345,6 @@ struct Preferences
 
   qreal zoomFactor;
   qreal helpZoomFactor;
-  int wordsZoomLevel;
 
   unsigned maxStringsInHistory;
   unsigned storeHistory;
