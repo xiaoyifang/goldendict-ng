@@ -1119,22 +1119,22 @@ void ScanPopup::on_sendWordToFavoritesButton_clicked()
     return;
   }
   unsigned groupId   = ui.groupList->getCurrentGroup();
-  auto favoriteType = FavoriteManager::determineFavoriteType( definition->getTitle(), groupId );
-  bool current_exist =false;
-  switch (favoriteType) {
+  auto favoriteType  = FavoriteManager::determineFavoriteType( definition->getTitle(), groupId );
+  bool current_exist = false;
+  switch ( favoriteType ) {
     case FavoriteType::EMPTY:
-      ui.sendWordToFavoritesButton->setIcon(  fullIcon );
+      ui.sendWordToFavoritesButton->setIcon( fullIcon );
       break;
     case FavoriteType::EMPTY_OTHER:
-      ui.sendWordToFavoritesButton->setIcon(  fullFullIcon );
+      ui.sendWordToFavoritesButton->setIcon( fullFullIcon );
       break;
     case FavoriteType::FULL:
-      current_exist=true;
-      ui.sendWordToFavoritesButton->setIcon(  emptyIcon );
+      current_exist = true;
+      ui.sendWordToFavoritesButton->setIcon( emptyIcon );
       break;
     case FavoriteType::FULL_OTHER:
-      current_exist=true;
-      ui.sendWordToFavoritesButton->setIcon(  emptyFullIcon );
+      current_exist = true;
+      ui.sendWordToFavoritesButton->setIcon( emptyFullIcon );
       break;
   }
   emit sendWordToFavorites( definition->getTitle(), cfg.lastPopupGroupId, current_exist );
@@ -1220,20 +1220,20 @@ void ScanPopup::titleChanged( ArticleView *, QString const & title ) const
   // Set icon for "Add to Favorites" button
 
   auto favoriteType = FavoriteManager::determineFavoriteType( title, groupId );
-  switch (favoriteType) {
-  case FavoriteType::EMPTY:
-    ui.sendWordToFavoritesButton->setIcon(  emptyIcon );
+  switch ( favoriteType ) {
+    case FavoriteType::EMPTY:
+      ui.sendWordToFavoritesButton->setIcon( emptyIcon );
 
-    break;
-  case FavoriteType::EMPTY_OTHER:
-    ui.sendWordToFavoritesButton->setIcon(  emptyFullIcon );
-    break;
-  case FavoriteType::FULL:
-    ui.sendWordToFavoritesButton->setIcon(  fullIcon );
-    break;
-  case FavoriteType::FULL_OTHER:
-    ui.sendWordToFavoritesButton->setIcon(  fullFullIcon );
-    break;
+      break;
+    case FavoriteType::EMPTY_OTHER:
+      ui.sendWordToFavoritesButton->setIcon( emptyFullIcon );
+      break;
+    case FavoriteType::FULL:
+      ui.sendWordToFavoritesButton->setIcon( fullIcon );
+      break;
+    case FavoriteType::FULL_OTHER:
+      ui.sendWordToFavoritesButton->setIcon( fullFullIcon );
+      break;
   }
 }
 
