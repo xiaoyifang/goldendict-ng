@@ -2924,22 +2924,6 @@ the application.</source>
       <translation>Schnittstellenschriftart</translation>
     </message>
     <message>
-      <source>Interface language:</source>
-      <translation>Sprache der Oberfläche:</translation>
-    </message>
-    <message>
-      <source>Article Display style:</source>
-      <translation>Artikel-Anzeige-Stil:</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>Add-on-Stil:</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>Interface-Stil:</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Drehe das UI in Dunkelheit.</translation>
     </message>
@@ -3514,6 +3498,34 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Debug-Nachrichten in gd_log.txt im Konfigurationsordner speichern</translation>
+    </message>
+    <message>
+      <source>Interface Font Size</source>
+      <translation>Schnittstellen-Schriftgröße</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Schnittstellensprache</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Artikel-Anzeigestil</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on-Stil</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Schnittstellenstil</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Vorschau der Schriftart</translation>
+    </message>
+    <message>
+      <source>Goldendict-ng is a dictionary software</source>
+      <translation>Goldendict-ng ist eine Wörterbuch-Software</translation>
     </message>
   </context>
   <context>
