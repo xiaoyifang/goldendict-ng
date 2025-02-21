@@ -3498,6 +3498,14 @@ from Stardict, Babylon and GLS dictionaries</source>
         <source>Interface Style</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Preview Font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Goldendict-ng is a dictionary software</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ProgramTypeEditor</name>
