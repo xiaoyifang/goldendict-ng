@@ -1,7 +1,7 @@
 # Shortcuts
 
 | Shortcut              | Action                                                                                                                           |
-|-----------------------|----------------------------------------------------------------------------------------------------------------------------------|                                                                                       |
+|-----------------------|----------------------------------------------------------------------------------------------------------------------------------|                                                                                       
 | Alt+Left, Backspace   | (In main and popup windows) history navigation: show previous founded results                                                    |
 | Alt+Right             | (In main and popup windows) history navigation: show next founded results                                                        |
 | Alt+Down              | Jump to article from next dictionary                                                                                             |
