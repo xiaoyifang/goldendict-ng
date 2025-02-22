@@ -3501,7 +3501,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
+      <translation>config 폴더의 gd_log.txt에 디버그 메시지를 저장합니다</translation>
     </message>
     <message>
       <source>Interface Font Size</source>
@@ -3509,23 +3509,23 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Interface language</source>
-      <translation type="unfinished">Interface language</translation>
+      <translation>인터페이스 언어</translation>
     </message>
     <message>
       <source>Article Display style</source>
-      <translation type="unfinished">Article Display style</translation>
+      <translation>기사 표시 스타일</translation>
     </message>
     <message>
       <source>Add-on style</source>
-      <translation type="unfinished">Add-on style</translation>
+      <translation>Add-on 스타일</translation>
     </message>
     <message>
       <source>Interface Style</source>
-      <translation type="unfinished">Interface Style</translation>
+      <translation>인터페이스 스타일</translation>
     </message>
     <message>
       <source>Preview Font</source>
-      <translation type="unfinished">Preview Font</translation>
+      <translation>글꼴 미리보기</translation>
     </message>
     <message>
       <source>Goldendict-ng is a dictionary software</source>
@@ -3673,7 +3673,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
+      <translation>config 폴더의 gd_log.txt에 디버그 메시지를 저장합니다</translation>
     </message>
   </context>
   <context>
