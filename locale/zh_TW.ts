@@ -2919,7 +2919,7 @@ the application.</source>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation>界面字體</translation>
+      <translation>介面用字型</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -3499,11 +3499,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Interface Font Size</source>
-      <translation type="unfinished">Interface Font Size</translation>
+      <translation>介面字型大小</translation>
     </message>
     <message>
       <source>Interface language</source>
-      <translation type="unfinished">Interface language</translation>
+      <translation>介面語言</translation>
     </message>
     <message>
       <source>Article Display style</source>
@@ -3515,7 +3515,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Interface Style</source>
-      <translation type="unfinished">Interface Style</translation>
+      <translation>介面樣式</translation>
     </message>
     <message>
       <source>Preview Font</source>
