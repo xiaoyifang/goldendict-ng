@@ -40,6 +40,9 @@ bool FavoriteManager::isHeadwordPresent( const QString & word, const QString & f
 
 bool FavoriteManager::isHeadwordPresent( const QString & word, unsigned groupId )
 {
+  if(word.isEmpty()){
+    return false;
+  }
   QString folder = GlobalBroadcaster::instance()->groupFolderMap[ groupId ];
   return isHeadwordPresent( word, folder );
 }
