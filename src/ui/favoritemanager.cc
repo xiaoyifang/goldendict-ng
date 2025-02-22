@@ -1,6 +1,5 @@
-//
-// Created by xiaoyifang on 2025/2/21.
-//
+/* This file is (c) 2025 gd-ng community
+* Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "favoritemanager.hh"
 #include "globalbroadcaster.hh"
