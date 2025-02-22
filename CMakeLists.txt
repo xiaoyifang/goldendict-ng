@@ -119,9 +119,7 @@ set(QSINGLEAPP_SOURCE_FILES
         thirdparty/qtsingleapplication/src/qtsingleapplication.h
 )
 
-qt_add_executable(${GOLDENDICT}
-        src/ui/favoritemanager.cc
-        src/ui/favoritemanager.hh)
+qt_add_executable(${GOLDENDICT})
 
 target_sources(${GOLDENDICT} PRIVATE
         icons/flags.qrc
