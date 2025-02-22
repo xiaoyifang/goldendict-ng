@@ -15,7 +15,6 @@
   #define MouseOver MacMouseOver
 #endif
 #include "base_type.hh"
-#include "favoritemanager.hh"
 
 
 static const Qt::WindowFlags defaultUnpinnedWindowFlags =
@@ -1119,24 +1118,9 @@ void ScanPopup::on_sendWordToFavoritesButton_clicked()
     return;
   }
   unsigned groupId   = ui.groupList->getCurrentGroup();
-  auto favoriteType  = FavoriteManager::determineFavoriteType( definition->getTitle(), groupId );
-  bool current_exist = false;
-  switch ( favoriteType ) {
-    case FavoriteType::EMPTY:
-      ui.sendWordToFavoritesButton->setIcon( fullIcon );
-      break;
-    case FavoriteType::EMPTY_OTHER:
-      ui.sendWordToFavoritesButton->setIcon( fullFullIcon );
-      break;
-    case FavoriteType::FULL:
-      current_exist = true;
-      ui.sendWordToFavoritesButton->setIcon( emptyIcon );
-      break;
-    case FavoriteType::FULL_OTHER:
-      current_exist = true;
-      ui.sendWordToFavoritesButton->setIcon( emptyFullIcon );
-      break;
-  }
+  auto current_exist = isWordPresentedInFavorites( definition->getTitle(), groupId );
+  //if current_exist=false( not exist ),  after click ,the word should be in the favorite which is blueStar
+  ui.sendWordToFavoritesButton->setIcon( !current_exist ? blueStarIcon : starIcon );
   emit sendWordToFavorites( definition->getTitle(), cfg.lastPopupGroupId, current_exist );
 }
 
@@ -1218,30 +1202,14 @@ void ScanPopup::titleChanged( ArticleView *, QString const & title ) const
   unsigned groupId = ui.groupList->getCurrentGroup();
 
   // Set icon for "Add to Favorites" button
-
-  auto favoriteType = FavoriteManager::determineFavoriteType( title, groupId );
-  switch ( favoriteType ) {
-    case FavoriteType::EMPTY:
-      ui.sendWordToFavoritesButton->setIcon( emptyIcon );
-
-      break;
-    case FavoriteType::EMPTY_OTHER:
-      ui.sendWordToFavoritesButton->setIcon( emptyFullIcon );
-      break;
-    case FavoriteType::FULL:
-      ui.sendWordToFavoritesButton->setIcon( fullIcon );
-      break;
-    case FavoriteType::FULL_OTHER:
-      ui.sendWordToFavoritesButton->setIcon( fullFullIcon );
-      break;
-  }
+  ui.sendWordToFavoritesButton->setIcon( isWordPresentedInFavorites( title, groupId ) ? blueStarIcon : starIcon );
 }
 
 bool ScanPopup::isWordPresentedInFavorites( QString const & word, unsigned groupId ) const
 {
   QString folder = GlobalBroadcaster::instance()->groupFolderMap[ groupId ];
 
-  return GlobalBroadcaster::instance()->wordFavoriteFolderMap[ word ].contains( folder );
+  return GlobalBroadcaster::instance()->folderFavoritesMap[ folder ].contains( word );
 }
 
 #ifdef HAVE_X11
