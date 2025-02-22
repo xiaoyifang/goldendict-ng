@@ -58,7 +58,7 @@
     </message>
     <message>
       <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Chào mừng đến với &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Để bắt đầu làm việc với chương trình, trước tiên hãy truy cập &lt;em&gt;Chỉnh sửa | Dictionaries&lt;/em&gt; thêm một số đường dẫn thư mục để tìm kiếm các tập tin từ điển, thiết lập các trang Wikipedia khác nhau hoặc các nguồn khác, điều chỉnh thứ tự từ điển hoặc tạo các nhóm từ điển.&lt;p&gt;Và sau đó bạn đã sẵn sàng tra cứu từ cần tìm! Bạn có thể làm điều đó trong cửa sổ này bằng cách sử dụng khung bên trái hoặc bạn có thể &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;cứu các từ từ các ứng dụng đang hoạt động khác&lt;/a&gt;. &lt;p&gt;Để tùy chỉnh chương trình, hãy xem các tùy chọn có sẵn tại &lt;em&gt;Chỉnh sửa | Tùy chọn&lt;/em&gt;. Tất cả các cài đặt ở đó đều có chú giải công cụ, hãy nhớ đọc chúng nếu bạn nghi ngờ về bất kỳ điều gì.&lt;p&gt;Nếu bạn cần trợ giúp thêm, có bất kỳ câu hỏi, đề xuất nào hoặc chỉ thắc mắc người khác nghĩ gì, bạn đều được chào đón tại diễn đàn chương trình &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;&lt;/a&gt;.&lt;p&gt;Kiểm tra chương trình &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;trang web&lt;/a&gt; để biết thông tin cập nhật. &lt;p&gt;(c) 2008-2013 Konstantin Iskov. Được cấp phép theo GPLv3 trở lên.</translation>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;Chào mừng đến với &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Để bắt đầu làm việc với chương trình, trước tiên hãy truy cập &lt;em&gt;Chỉnh sửa | Dictionaries&lt;/em&gt; thêm một số đường dẫn thư mục để tìm kiếm các tập tin từ điển, thiết lập các trang Wikipedia khác nhau hoặc các nguồn khác, điều chỉnh thứ tự từ điển hoặc tạo các nhóm từ điển.&lt;p&gt;Và sau đó bạn&apos;sẵn sàng tra cứu từ ngữ của mình! Bạn có thể làm điều đó trong cửa sổ này bằng cách sử dụng khung bên trái hoặc bạn có thể &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;cứu các từ từ các ứng dụng đang hoạt động khác&lt;/a&gt;. &lt;p&gt;Để tùy chỉnh chương trình, hãy xem các tùy chọn có sẵn tại &lt;em&gt;Chỉnh sửa | Sở thích&lt;/em&gt;. Tất cả các cài đặt ở đó đều có chú giải công cụ, hãy nhớ đọc chúng nếu bạn nghi ngờ về bất kỳ điều gì.&lt;p&gt;Nếu bạn cần trợ giúp thêm, có bất kỳ câu hỏi, đề xuất nào hoặc chỉ thắc mắc người khác nghĩ gì, bạn đều được chào đón tại diễn đàn chương trình&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;&lt;/a&gt;.&lt;p&gt;Kiểm tra chương trình&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;trang web&lt;/a&gt; để biết thông tin cập nhật. &lt;p&gt;(c) 2008-2013 Konstantin Iskov. Được cấp phép theo GPLv3 trở lên.</translation>
     </message>
     <message>
       <source>(untitled)</source>
@@ -196,7 +196,7 @@
     </message>
     <message>
       <source>&amp;Add &quot;%1&quot; to history</source>
-      <translation>&amp;Thêm &quot;%1&quot; vào lịch sử</translation>
+      <translation>&amp;Thêm &quot;%1&quot; vào lược sử</translation>
     </message>
     <message>
       <source>Look up &quot;%1&quot; in %2</source>
@@ -341,7 +341,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Shortcut:</source>
-      <translation>Phím tắt:</translation>
+      <translation>Lối tắt:</translation>
     </message>
     <message>
       <source>Favorites folder:</source>
@@ -1068,7 +1068,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>History:</source>
-      <translation>Lịch sử:</translation>
+      <translation>Lược sử:</translation>
     </message>
     <message>
       <source>%1/%2</source>
@@ -1076,7 +1076,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>History size: %1 entries out of maximum %2</source>
-      <translation>Số lịch sử: %1 mục trên tối đa %2</translation>
+      <translation>Số lược sử: %1 mục trên tối đa %2</translation>
     </message>
   </context>
   <context>
@@ -1132,51 +1132,51 @@ between classic and school orthography in cyrillic)</source>
     <name>Language</name>
     <message>
       <source>Afar</source>
-      <translation>Tiếng Afar</translation>
+      <translation>Xa</translation>
     </message>
     <message>
       <source>Abkhazian</source>
-      <translation>Tiếng Abkhazia</translation>
+      <translation>tiếng Abkhazia</translation>
     </message>
     <message>
       <source>Avestan</source>
-      <translation>Tiếng Avestan</translation>
+      <translation>Avestan</translation>
     </message>
     <message>
       <source>Afrikaans</source>
-      <translation>Tiếng Nam Phi</translation>
+      <translation>tiếng Nam Phi</translation>
     </message>
     <message>
       <source>Akan</source>
-      <translation>Tiếng Akan</translation>
+      <translation>tiếng Akan</translation>
     </message>
     <message>
       <source>Amharic</source>
-      <translation>Tiếng Amharic</translation>
+      <translation>tiếng Amharic</translation>
     </message>
     <message>
       <source>Aragonese</source>
-      <translation>Tiếng Aragon</translation>
+      <translation>tiếng Aragon</translation>
     </message>
     <message>
       <source>Arabic</source>
-      <translation>Tiếng Ả Rập</translation>
+      <translation>tiếng Ả Rập</translation>
     </message>
     <message>
       <source>Assamese</source>
-      <translation>Tiếng Assam</translation>
+      <translation>tiếng Assam</translation>
     </message>
     <message>
       <source>Avaric</source>
-      <translation>Tiếng Avaric</translation>
+      <translation>Avaric</translation>
     </message>
     <message>
       <source>Aymara</source>
-      <translation>Tiếng Aymara</translation>
+      <translation>Aymara</translation>
     </message>
     <message>
       <source>Azerbaijani</source>
-      <translation>Tiếng azerbaijan</translation>
+      <translation>tiếng azerbaijan</translation>
     </message>
     <message>
       <source>Bashkir</source>
@@ -1184,99 +1184,99 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Belarusian</source>
-      <translation>Tiếng Belarus</translation>
+      <translation>Người Belarus</translation>
     </message>
     <message>
       <source>Bulgarian</source>
-      <translation>Tiếng Bungari</translation>
+      <translation>tiếng Bungari</translation>
     </message>
     <message>
       <source>Bihari</source>
-      <translation>Tiếng Bihari</translation>
+      <translation>Bihari</translation>
     </message>
     <message>
       <source>Bislama</source>
-      <translation>Tiếng Bislama</translation>
+      <translation>Hồi giáo</translation>
     </message>
     <message>
       <source>Bambara</source>
-      <translation>Tiếng Bambara</translation>
+      <translation>Bambara</translation>
     </message>
     <message>
       <source>Bengali</source>
-      <translation>Tiếng Bengali</translation>
+      <translation>tiếng Bengali</translation>
     </message>
     <message>
       <source>Tibetan</source>
-      <translation>Tiếng Tây Tạng</translation>
+      <translation>Tây Tạng</translation>
     </message>
     <message>
       <source>Breton</source>
-      <translation>Tiếng Breton</translation>
+      <translation>Breton</translation>
     </message>
     <message>
       <source>Bosnian</source>
-      <translation>Tiếng Bosnia</translation>
+      <translation>người Bosnia</translation>
     </message>
     <message>
       <source>Catalan</source>
-      <translation>Tiếng Catalunya</translation>
+      <translation>tiếng Catalunya</translation>
     </message>
     <message>
       <source>Chechen</source>
-      <translation>Tiếng Chechen</translation>
+      <translation>Chechnya</translation>
     </message>
     <message>
       <source>Chamorro</source>
-      <translation>Tiếng Chamorro</translation>
+      <translation>Chamorro</translation>
     </message>
     <message>
       <source>Corsican</source>
-      <translation>Tiếng Corsican</translation>
+      <translation>Corsican</translation>
     </message>
     <message>
       <source>Cree</source>
-      <translation>Tiếng Cree</translation>
+      <translation>Cree</translation>
     </message>
     <message>
       <source>Czech</source>
-      <translation>Tiếng séc</translation>
+      <translation>tiếng séc</translation>
     </message>
     <message>
       <source>Church Slavic</source>
-      <translation>Tiếng nhà thờ Slavic</translation>
+      <translation>nhà thờ Slavic</translation>
     </message>
     <message>
       <source>Chuvash</source>
-      <translation>Tiếng Chuvash</translation>
+      <translation>Chuvash</translation>
     </message>
     <message>
       <source>Welsh</source>
-      <translation>Tiếng xứ Wales</translation>
+      <translation>người xứ Wales</translation>
     </message>
     <message>
       <source>Danish</source>
-      <translation>Tiếng Đan Mạch</translation>
+      <translation>người Đan Mạch</translation>
     </message>
     <message>
       <source>German</source>
-      <translation>Tiếng Đức</translation>
+      <translation>tiếng Đức</translation>
     </message>
     <message>
       <source>Divehi</source>
-      <translation>Tiếng Divehi</translation>
+      <translation>lặn</translation>
     </message>
     <message>
       <source>Dzongkha</source>
-      <translation>Tiếng Dzongkha</translation>
+      <translation>Dzongkha</translation>
     </message>
     <message>
       <source>Ewe</source>
-      <translation>Tiếng Ewe</translation>
+      <translation>Cừu cái</translation>
     </message>
     <message>
       <source>Greek</source>
-      <translation>Tiếng  Hy Lạp</translation>
+      <translation>người Hy Lạp</translation>
     </message>
     <message>
       <source>English</source>
@@ -1284,51 +1284,51 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Esperanto</source>
-      <translation>Quốc tế ngữ</translation>
+      <translation>quốc tế ngữ</translation>
     </message>
     <message>
       <source>Spanish</source>
-      <translation>Tiếng  Tây Ban Nha</translation>
+      <translation>người Tây Ban Nha</translation>
     </message>
     <message>
       <source>Estonian</source>
-      <translation>Tiếng  Estonia</translation>
+      <translation>tiếng Estonia</translation>
     </message>
     <message>
       <source>Basque</source>
-      <translation>Tiếng xứ Basque</translation>
+      <translation>xứ Basque</translation>
     </message>
     <message>
       <source>Persian</source>
-      <translation>Tiếng Ba Tư</translation>
+      <translation>Ba Tư</translation>
     </message>
     <message>
       <source>Fulah</source>
-      <translation>Tiếng Fulah</translation>
+      <translation>Phúc âm</translation>
     </message>
     <message>
       <source>Finnish</source>
-      <translation>Tiếng Phần Lan</translation>
+      <translation>Phần Lan</translation>
     </message>
     <message>
       <source>Fijian</source>
-      <translation>Tiếng Fiji</translation>
+      <translation>người Fiji</translation>
     </message>
     <message>
       <source>Faroese</source>
-      <translation>Tiếng Faroe</translation>
+      <translation>tiếng Faroe</translation>
     </message>
     <message>
       <source>French</source>
-      <translation>Tiếng Pháp</translation>
+      <translation>người Pháp</translation>
     </message>
     <message>
       <source>Western Frisian</source>
-      <translation>Tiếng Tây Frisia</translation>
+      <translation>Tây Frisia</translation>
     </message>
     <message>
       <source>Irish</source>
-      <translation>Tiếng Ireland</translation>
+      <translation>người Ireland</translation>
     </message>
     <message>
       <source>Scottish Gaelic</source>
@@ -1336,95 +1336,95 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Galician</source>
-      <translation>Tiếng Galicia</translation>
+      <translation>tiếng Galicia</translation>
     </message>
     <message>
       <source>Guarani</source>
-      <translation>Tiếng Guarani</translation>
+      <translation>Guarani</translation>
     </message>
     <message>
       <source>Gujarati</source>
-      <translation>Tiếng Gujarati</translation>
+      <translation>Gujarati</translation>
     </message>
     <message>
       <source>Manx</source>
-      <translation>Tiếng Manx</translation>
+      <translation>Manx</translation>
     </message>
     <message>
       <source>Hausa</source>
-      <translation>Tiếng Hausa</translation>
+      <translation>Hausa</translation>
     </message>
     <message>
       <source>Hebrew</source>
-      <translation>Tiếng Do Thái</translation>
+      <translation>tiếng Do Thái</translation>
     </message>
     <message>
       <source>Hindi</source>
-      <translation>Tiếng Hin-ddi</translation>
+      <translation>tiếng Hin-ddi</translation>
     </message>
     <message>
       <source>Hiri Motu</source>
-      <translation>Tiếng Hiri Motu</translation>
+      <translation>Hiri Motu</translation>
     </message>
     <message>
       <source>Croatian</source>
-      <translation>Tiếng Croatia</translation>
+      <translation>tiếng Croatia</translation>
     </message>
     <message>
       <source>Haitian</source>
-      <translation>Tiếng Haiti</translation>
+      <translation>Haiti</translation>
     </message>
     <message>
       <source>Hungarian</source>
-      <translation>Tiếng Hungary</translation>
+      <translation>người Hungary</translation>
     </message>
     <message>
       <source>Armenian</source>
-      <translation>Tiếng Armenia</translation>
+      <translation>người Armenia</translation>
     </message>
     <message>
       <source>Herero</source>
-      <translation>Tiếng Herero</translation>
+      <translation>Herero</translation>
     </message>
     <message>
       <source>Interlingua</source>
-      <translation>Liên ngôn ngữ</translation>
+      <translation>liên ngôn ngữ</translation>
     </message>
     <message>
       <source>Indonesian</source>
-      <translation>Tiếng Indonesia</translation>
+      <translation>tiếng Indonesia</translation>
     </message>
     <message>
       <source>Interlingue</source>
-      <translation>Tiếng xen kẽ</translation>
+      <translation>xen kẽ</translation>
     </message>
     <message>
       <source>Igbo</source>
-      <translation>Tiếng Igbo</translation>
+      <translation>tiếng Igbo</translation>
     </message>
     <message>
       <source>Sichuan Yi</source>
-      <translation>Tiếng Tứ Xuyên Yi</translation>
+      <translation>Tứ Xuyên Yi</translation>
     </message>
     <message>
       <source>Inupiaq</source>
-      <translation>Tiếng Inupiaq</translation>
+      <translation>Inupiaq</translation>
     </message>
     <message>
       <source>Ido</source>
-      <translation>Tiếng Ido</translation>
+      <translation>Tôi làm</translation>
     </message>
     <message>
       <source>Icelandic</source>
-      <translation>Tiếng Iceland</translation>
+      <translation>tiếng Iceland</translation>
     </message>
     <message>
       <source>Italian</source>
-      <translation>Tiếng Ý</translation>
+      <translation>người Ý</translation>
     </message>
     <message>
       <source>Inuktitut</source>
-      <translation>Tiếng Inuktitut</translation>
+      <translation>Inuktitut</translation>
     </message>
     <message>
       <source>Japanese</source>
@@ -1432,59 +1432,59 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Javanese</source>
-      <translation>Tiếng Java</translation>
+      <translation>người Java</translation>
     </message>
     <message>
       <source>Georgian</source>
-      <translation>Tiếng Gruzia</translation>
+      <translation>Gruzia</translation>
     </message>
     <message>
       <source>Kongo</source>
-      <translation>Tiếng Kongo</translation>
+      <translation>Kongo</translation>
     </message>
     <message>
       <source>Kikuyu</source>
-      <translation>Tiếng Kikuyu</translation>
+      <translation>Kikuyu</translation>
     </message>
     <message>
       <source>Kwanyama</source>
-      <translation>Tiếng Kwanyama</translation>
+      <translation>Kwanyama</translation>
     </message>
     <message>
       <source>Kazakh</source>
-      <translation>Tiếng Kazakh</translation>
+      <translation>tiếng Kazakh</translation>
     </message>
     <message>
       <source>Kalaallisut</source>
-      <translation>Tiếng Kalaallisut</translation>
+      <translation>kalaallisut</translation>
     </message>
     <message>
       <source>Khmer</source>
-      <translation>Tiếng Khmer</translation>
+      <translation>khmer</translation>
     </message>
     <message>
       <source>Kannada</source>
-      <translation>Tiếng Kannada</translation>
+      <translation>tiếng Kannada</translation>
     </message>
     <message>
       <source>Korean</source>
-      <translation>Tiếng Hàn Quốc</translation>
+      <translation>Hàn Quốc</translation>
     </message>
     <message>
       <source>Kanuri</source>
-      <translation>Tiếng Kanuri</translation>
+      <translation>Kanuri</translation>
     </message>
     <message>
       <source>Kashmiri</source>
-      <translation>Tiếng Kashmir</translation>
+      <translation>người Kashmir</translation>
     </message>
     <message>
       <source>Kurdish</source>
-      <translation>Tiếng Kurd</translation>
+      <translation>người Kurd</translation>
     </message>
     <message>
       <source>Komi</source>
-      <translation>Tiếng Komi</translation>
+      <translation>komi</translation>
     </message>
     <message>
       <source>Cornish</source>
@@ -1492,71 +1492,71 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Kirghiz</source>
-      <translation>Tiếng Ki-ri-gít</translation>
+      <translation>Ki-ri-gít</translation>
     </message>
     <message>
       <source>Latin</source>
-      <translation>Tiếng Latin</translation>
+      <translation>Latin</translation>
     </message>
     <message>
       <source>Luxembourgish</source>
-      <translation>Tiếng Luxembourg</translation>
+      <translation>tiếng Luxembourg</translation>
     </message>
     <message>
       <source>Ganda</source>
-      <translation>Tiếng Ganda</translation>
+      <translation>Ganda</translation>
     </message>
     <message>
       <source>Limburgish</source>
-      <translation>Tiếng Limburgish</translation>
+      <translation>Limburgish</translation>
     </message>
     <message>
       <source>Lingala</source>
-      <translation>Tiếng Lingala</translation>
+      <translation>Lingala</translation>
     </message>
     <message>
       <source>Lao</source>
-      <translation>Tiếng Lào</translation>
+      <translation>Lào</translation>
     </message>
     <message>
       <source>Lithuanian</source>
-      <translation>Tiếng Litva</translation>
+      <translation>Litva</translation>
     </message>
     <message>
       <source>Luba-Katanga</source>
-      <translation>Tiếng Luba-Katanga</translation>
+      <translation>Luba-Katanga</translation>
     </message>
     <message>
       <source>Latvian</source>
-      <translation>Tiếng Latvia</translation>
+      <translation>tiếng Latvia</translation>
     </message>
     <message>
       <source>Malagasy</source>
-      <translation>Tiếng Malagasy</translation>
+      <translation>Malagasy</translation>
     </message>
     <message>
       <source>Marshallese</source>
-      <translation>Tiếng Marshall</translation>
+      <translation>người Marshall</translation>
     </message>
     <message>
       <source>Maori</source>
-      <translation>Tiếng Maori</translation>
+      <translation>người Maori</translation>
     </message>
     <message>
       <source>Macedonian</source>
-      <translation>Tiếng Macedonia</translation>
+      <translation>tiếng Macedonia</translation>
     </message>
     <message>
       <source>Malayalam</source>
-      <translation>Tiếng Malayalam</translation>
+      <translation>tiếng Malayalam</translation>
     </message>
     <message>
       <source>Mongolian</source>
-      <translation>Tiếng Mông Cổ</translation>
+      <translation>Mông Cổ</translation>
     </message>
     <message>
       <source>Marathi</source>
-      <translation>Tiếng Marathi</translation>
+      <translation>tiếng Marathi</translation>
     </message>
     <message>
       <source>Malay</source>
@@ -1564,55 +1564,55 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Maltese</source>
-      <translation>Tiếng Maltese</translation>
+      <translation>cây nho</translation>
     </message>
     <message>
       <source>Burmese</source>
-      <translation>Tiếng Miến Điện</translation>
+      <translation>người Miến Điện</translation>
     </message>
     <message>
       <source>Nauru</source>
-      <translation>Tiếng Nauru</translation>
+      <translation>Nauru</translation>
     </message>
     <message>
       <source>Norwegian Bokmal</source>
-      <translation>Tiếng Na Uy Bokmal</translation>
+      <translation>Na Uy Bokmal</translation>
     </message>
     <message>
       <source>North Ndebele</source>
-      <translation>Tiếng Bắc Ndebele</translation>
+      <translation>Bắc Ndebele</translation>
     </message>
     <message>
       <source>Nepali</source>
-      <translation>Tiếng Nepal</translation>
+      <translation>tiếng Nepal</translation>
     </message>
     <message>
       <source>Ndonga</source>
-      <translation>Tiếng Ndonga</translation>
+      <translation>Ndonga</translation>
     </message>
     <message>
       <source>Dutch</source>
-      <translation>Tiếng Hà Lan</translation>
+      <translation>tiếng Hà Lan</translation>
     </message>
     <message>
       <source>Norwegian Nynorsk</source>
-      <translation>Tiếng Na Uy Nynorsk</translation>
+      <translation>Na Uy Nynorsk</translation>
     </message>
     <message>
       <source>Norwegian</source>
-      <translation>Tiếng Na Uy</translation>
+      <translation>tiếng na uy</translation>
     </message>
     <message>
       <source>South Ndebele</source>
-      <translation>Tiếng Nam Ndebele</translation>
+      <translation>Nam Ndebele</translation>
     </message>
     <message>
       <source>Navajo</source>
-      <translation>Tiếng Navajo</translation>
+      <translation>Navajo</translation>
     </message>
     <message>
       <source>Chichewa</source>
-      <translation>Tiếng Chichewa</translation>
+      <translation>Chichewa</translation>
     </message>
     <message>
       <source>Occitan</source>
@@ -1620,75 +1620,75 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Ojibwa</source>
-      <translation>Tiếng Ojibwa</translation>
+      <translation>Ojibwa</translation>
     </message>
     <message>
       <source>Oromo</source>
-      <translation>Tiếng Oromo</translation>
+      <translation>tiếng Oromo</translation>
     </message>
     <message>
       <source>Oriya</source>
-      <translation>Tiếng Oriya</translation>
+      <translation>Oriya</translation>
     </message>
     <message>
       <source>Ossetian</source>
-      <translation>Tiếng Ossetia</translation>
+      <translation>Ossetia</translation>
     </message>
     <message>
       <source>Panjabi</source>
-      <translation>Tiếng Panjabi</translation>
+      <translation>Panjabi</translation>
     </message>
     <message>
       <source>Pali</source>
-      <translation>Tiếng Pali</translation>
+      <translation>tiếng Pali</translation>
     </message>
     <message>
       <source>Polish</source>
-      <translation>Tiếng Ba Lan</translation>
+      <translation>Đánh bóng</translation>
     </message>
     <message>
       <source>Pashto</source>
-      <translation>Tiếng Pashto</translation>
+      <translation>pashto</translation>
     </message>
     <message>
       <source>Portuguese</source>
-      <translation>Tiếng Bồ Đào Nha</translation>
+      <translation>tiếng Bồ Đào Nha</translation>
     </message>
     <message>
       <source>Quechua</source>
-      <translation>Tiếng Quechua</translation>
+      <translation>quechua</translation>
     </message>
     <message>
       <source>Raeto-Romance</source>
-      <translation>Tiếng Raeto-Lãng Mạn</translation>
+      <translation>Raeto-Lãng Mạn</translation>
     </message>
     <message>
       <source>Kirundi</source>
-      <translation>Tiếng Kirundi</translation>
+      <translation>Kirundi</translation>
     </message>
     <message>
       <source>Romanian</source>
-      <translation>Tiếng Rumani</translation>
+      <translation>Rumani</translation>
     </message>
     <message>
       <source>Russian</source>
-      <translation>Tiếng Nga</translation>
+      <translation>tiếng Nga</translation>
     </message>
     <message>
       <source>Kinyarwanda</source>
-      <translation>Tiếng Kinyarwanda</translation>
+      <translation>Kinyarwanda</translation>
     </message>
     <message>
       <source>Sanskrit</source>
-      <translation>Tiếng Phạn</translation>
+      <translation>tiếng Phạn</translation>
     </message>
     <message>
       <source>Sardinian</source>
-      <translation>Tiếng Sardinia</translation>
+      <translation>Sardinia</translation>
     </message>
     <message>
       <source>Sindhi</source>
-      <translation>Tiếng Sindhi</translation>
+      <translation>Sindhi</translation>
     </message>
     <message>
       <source>Northern Sami</source>
@@ -1696,7 +1696,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Sango</source>
-      <translation>Tiếng Sango</translation>
+      <translation>sango</translation>
     </message>
     <message>
       <source>Serbo-Croatian</source>
@@ -1704,131 +1704,131 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Sinhala</source>
-      <translation>Tiếng Sinhala</translation>
+      <translation>Sinhala</translation>
     </message>
     <message>
       <source>Slovak</source>
-      <translation>Tiếng Slovak</translation>
+      <translation>tiếng Slovak</translation>
     </message>
     <message>
       <source>Slovenian</source>
-      <translation>Tiếng Slovenia</translation>
+      <translation>tiếng Slovenia</translation>
     </message>
     <message>
       <source>Samoan</source>
-      <translation>Tiếng Samoa</translation>
+      <translation>tiếng Samoa</translation>
     </message>
     <message>
       <source>Shona</source>
-      <translation>Tiếng Shona</translation>
+      <translation>Shona</translation>
     </message>
     <message>
       <source>Somali</source>
-      <translation>Tiếng Somali</translation>
+      <translation>người Somali</translation>
     </message>
     <message>
       <source>Albanian</source>
-      <translation>Tiếng Albania</translation>
+      <translation>tiếng Albania</translation>
     </message>
     <message>
       <source>Serbian</source>
-      <translation>Tiếng Serbia</translation>
+      <translation>tiếng Serbia</translation>
     </message>
     <message>
       <source>Swati</source>
-      <translation>Tiếng Swati</translation>
+      <translation>chữ Swati</translation>
     </message>
     <message>
       <source>Southern Sotho</source>
-      <translation>Tiếng Nam Sotho</translation>
+      <translation>Nam Sotho</translation>
     </message>
     <message>
       <source>Sundanese</source>
-      <translation>Tiếng Sundan</translation>
+      <translation>tiếng Sundan</translation>
     </message>
     <message>
       <source>Swedish</source>
-      <translation>Tiếng Thụy Điển</translation>
+      <translation>Thụy Điển</translation>
     </message>
     <message>
       <source>Swahili</source>
-      <translation>Tiếng Swahili</translation>
+      <translation>tiếng Swahili</translation>
     </message>
     <message>
       <source>Tamil</source>
-      <translation>Tiếng Tamil</translation>
+      <translation>tiếng Tamil</translation>
     </message>
     <message>
       <source>Telugu</source>
-      <translation>Tiếng Telugu</translation>
+      <translation>tiếng Telugu</translation>
     </message>
     <message>
       <source>Tajik</source>
-      <translation>Tiếng Tajik</translation>
+      <translation>tajik</translation>
     </message>
     <message>
       <source>Thai</source>
-      <translation>Tiếng Thái</translation>
+      <translation>tiếng Thái</translation>
     </message>
     <message>
       <source>Tigrinya</source>
-      <translation>Tiếng Tigrinya</translation>
+      <translation>tigrinya</translation>
     </message>
     <message>
       <source>Turkmen</source>
-      <translation>Tiếng Turkmenistan</translation>
+      <translation>người Turkmenistan</translation>
     </message>
     <message>
       <source>Tagalog</source>
-      <translation>Tiếng Tagalog</translation>
+      <translation>Tagalog</translation>
     </message>
     <message>
       <source>Tswana</source>
-      <translation>Tiếng Tswana</translation>
+      <translation>Tswana</translation>
     </message>
     <message>
       <source>Tonga</source>
-      <translation>Tiếng Tonga</translation>
+      <translation>tonga</translation>
     </message>
     <message>
       <source>Turkish</source>
-      <translation>Tiếng Thổ Nhĩ Kỳ</translation>
+      <translation>Thổ Nhĩ Kỳ</translation>
     </message>
     <message>
       <source>Tsonga</source>
-      <translation>Tiếng Tsonga</translation>
+      <translation>Tsonga</translation>
     </message>
     <message>
       <source>Tatar</source>
-      <translation>Tiếng Tatar</translation>
+      <translation>tatar</translation>
     </message>
     <message>
       <source>Twi</source>
-      <translation>Tiếng Twi</translation>
+      <translation>Twi</translation>
     </message>
     <message>
       <source>Tahitian</source>
-      <translation>Tiếng Tahiti</translation>
+      <translation>Tahiti</translation>
     </message>
     <message>
       <source>Uighur</source>
-      <translation>Tiếng Duy Ngô Nhĩ</translation>
+      <translation>người Duy Ngô Nhĩ</translation>
     </message>
     <message>
       <source>Ukrainian</source>
-      <translation>Tiếng Ukraina</translation>
+      <translation>tiếng Ukraina</translation>
     </message>
     <message>
       <source>Urdu</source>
-      <translation>Tiếng Urdu</translation>
+      <translation>tiếng Urdu</translation>
     </message>
     <message>
       <source>Uzbek</source>
-      <translation>Tiếng Uzbek</translation>
+      <translation>tiếng Uzbek</translation>
     </message>
     <message>
       <source>Venda</source>
-      <translation>Tiếng Venda</translation>
+      <translation>Venda</translation>
     </message>
     <message>
       <source>Vietnamese</source>
@@ -1836,47 +1836,47 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Volapuk</source>
-      <translation>Tiếng Volapuk</translation>
+      <translation>Volapuk</translation>
     </message>
     <message>
       <source>Walloon</source>
-      <translation>Tiếng Wallonie</translation>
+      <translation>Wallonie</translation>
     </message>
     <message>
       <source>Wolof</source>
-      <translation>Tiếng Wolof</translation>
+      <translation>chó sói</translation>
     </message>
     <message>
       <source>Xhosa</source>
-      <translation>Tiếng Xhosa</translation>
+      <translation>Xhosa</translation>
     </message>
     <message>
       <source>Yiddish</source>
-      <translation>Tiếng Yiddish</translation>
+      <translation>tiếng Yiddish</translation>
     </message>
     <message>
       <source>Yoruba</source>
-      <translation>Tiếng Yoruba</translation>
+      <translation>Yoruba</translation>
     </message>
     <message>
       <source>Zhuang</source>
-      <translation>Tiếng Choang</translation>
+      <translation>Choang</translation>
     </message>
     <message>
       <source>Chinese</source>
-      <translation>Tiếng Trung Quốc</translation>
+      <translation>người Trung Quốc</translation>
     </message>
     <message>
       <source>Zulu</source>
-      <translation>Tiếng Zulu</translation>
+      <translation>Zulu</translation>
     </message>
     <message>
       <source>Lojban</source>
-      <translation>Tiếng Lojban</translation>
+      <translation>Lojban</translation>
     </message>
     <message>
       <source>Traditional Chinese</source>
-      <translation>Tiếng Trung Quốc Truyền thống</translation>
+      <translation>Truyền thống Trung Quốc</translation>
     </message>
     <message>
       <source>Simplified Chinese</source>
@@ -1932,30 +1932,30 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Tamazight</source>
-      <translation>Tiếng Tamazight</translation>
+      <translation>tamazight</translation>
     </message>
   </context>
   <context>
     <name>Language::Db</name>
     <message>
       <source>French</source>
-      <translation>Tiếng Pháp</translation>
+      <translation>người Pháp</translation>
     </message>
     <message>
       <source>Spanish</source>
-      <translation>Tiếng Tây Ban Nha</translation>
+      <translation>người Tây Ban Nha</translation>
     </message>
     <message>
       <source>Belarusian</source>
-      <translation>Tiếng Belarus</translation>
+      <translation>Người Belarus</translation>
     </message>
     <message>
       <source>Bulgarian</source>
-      <translation>Tiếng Bungari</translation>
+      <translation>tiếng Bungari</translation>
     </message>
     <message>
       <source>Czech</source>
-      <translation>Tiếng séc</translation>
+      <translation>tiếng séc</translation>
     </message>
     <message>
       <source>German</source>
@@ -1963,15 +1963,15 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Greek</source>
-      <translation>Tiếng Hy Lạp</translation>
+      <translation>người Hy Lạp</translation>
     </message>
     <message>
       <source>Finnish</source>
-      <translation>Tiếng Phần Lan</translation>
+      <translation>Phần Lan</translation>
     </message>
     <message>
       <source>Italian</source>
-      <translation>Tiếng Ý</translation>
+      <translation>người Ý</translation>
     </message>
     <message>
       <source>Japanese</source>
@@ -1979,39 +1979,39 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Korean</source>
-      <translation>Tiếng Hàn Quốc</translation>
+      <translation>Hàn Quốc</translation>
     </message>
     <message>
       <source>Lithuanian</source>
-      <translation>Tiếng Litva</translation>
+      <translation>Litva</translation>
     </message>
     <message>
       <source>Macedonian</source>
-      <translation>Tiếng Macedonia</translation>
+      <translation>tiếng Macedonia</translation>
     </message>
     <message>
       <source>Dutch</source>
-      <translation>Tiếng Hà Lan</translation>
+      <translation>tiếng Hà Lan</translation>
     </message>
     <message>
       <source>Polish</source>
-      <translation>Tiếng Ba Lan</translation>
+      <translation>Đánh bóng</translation>
     </message>
     <message>
       <source>Portuguese</source>
-      <translation>Tiếng Bồ Đào Nha</translation>
+      <translation>tiếng Bồ Đào Nha</translation>
     </message>
     <message>
       <source>Russian</source>
-      <translation>Tiếng Nga</translation>
+      <translation>tiếng Nga</translation>
     </message>
     <message>
       <source>Slovak</source>
-      <translation>Tiếng Slovak</translation>
+      <translation>tiếng Slovak</translation>
     </message>
     <message>
       <source>Albanian</source>
-      <translation>Tiếng Albania</translation>
+      <translation>tiếng Albania</translation>
     </message>
     <message>
       <source>Serbian (Cyrillic)</source>
@@ -2019,23 +2019,23 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Swedish</source>
-      <translation>Tiếng Thụy Điển</translation>
+      <translation>Thụy Điển</translation>
     </message>
     <message>
       <source>Turkish</source>
-      <translation>Tiếng Thổ Nhĩ Kỳ</translation>
+      <translation>Thổ Nhĩ Kỳ</translation>
     </message>
     <message>
       <source>Ukrainian</source>
-      <translation>Tiếng Ukraina</translation>
+      <translation>tiếng Ukraina</translation>
     </message>
     <message>
       <source>Chinese Simplified</source>
-      <translation>tiếng Trung giản thể</translation>
+      <translation>tiếng trung giản thể</translation>
     </message>
     <message>
       <source>Chinese Traditional</source>
-      <translation>Tiếng Trung Hoa Truyền thống</translation>
+      <translation>Truyền thống Trung Hoa</translation>
     </message>
     <message>
       <source>Vietnamese</source>
@@ -2043,59 +2043,59 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Portuguese, Brazilian</source>
-      <translation>Tiếng Bồ Đào Nha, Brazil</translation>
+      <translation>Bồ Đào Nha, Brazil</translation>
     </message>
     <message>
       <source>Persian</source>
-      <translation>Tiếng Ba Tư</translation>
+      <translation>Ba Tư</translation>
     </message>
     <message>
       <source>Spanish, Argentina</source>
-      <translation>Tiếng Tây Ban Nha, Argentina</translation>
+      <translation>Tây Ban Nha, Argentina</translation>
     </message>
     <message>
       <source>Hindi</source>
-      <translation>Tiếng Hin-ddi</translation>
+      <translation>tiếng Hin-ddi</translation>
     </message>
     <message>
       <source>Esperanto</source>
-      <translation>Quốc tế ngữ</translation>
+      <translation>quốc tế ngữ</translation>
     </message>
     <message>
       <source>German, Switzerland</source>
-      <translation>Tiếng Đức, Thụy Sĩ</translation>
+      <translation>Đức, Thụy Sĩ</translation>
     </message>
     <message>
       <source>Spanish, Bolivia</source>
-      <translation>Tiếng Tây Ban Nha, Bôlivia</translation>
+      <translation>Tây Ban Nha, Bôlivia</translation>
     </message>
     <message>
       <source>Tajik</source>
-      <translation>Tiếng Tajik</translation>
+      <translation>tajik</translation>
     </message>
     <message>
       <source>Quechua</source>
-      <translation>Tiếng Quechua</translation>
+      <translation>quechua</translation>
     </message>
     <message>
       <source>Aymara</source>
-      <translation>Tiếng Aymara</translation>
+      <translation>Aymara</translation>
     </message>
     <message>
       <source>Arabic, Saudi Arabia</source>
-      <translation>Tiếng Ả Rập, Ả Rập Saudi</translation>
+      <translation>Ả Rập, Ả Rập Saudi</translation>
     </message>
     <message>
       <source>Turkmen</source>
-      <translation>Tiếng Turkmenistan</translation>
+      <translation>người Turkmenistan</translation>
     </message>
     <message>
       <source>Interlingue</source>
-      <translation>Tiếng xen kẽ</translation>
+      <translation>xen kẽ</translation>
     </message>
     <message>
       <source>Lojban</source>
-      <translation>Tiếng Lojban</translation>
+      <translation>Lojban</translation>
     </message>
     <message>
       <source>Hungarian</source>
@@ -2144,7 +2144,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>H&amp;istory</source>
-      <translation>&amp;Lịch sử</translation>
+      <translation>&amp;Lược sử</translation>
     </message>
     <message>
       <source>Search</source>
@@ -2152,15 +2152,15 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Favo&amp;rites</source>
-      <translation>&amp;Yêu thích</translation>
+      <translation>&amp;yêu thích</translation>
     </message>
     <message>
       <source>&amp;Search Pane</source>
-      <translation>Ngăn Tìm &amp;kiếm</translation>
+      <translation>Ô Tìm &amp;kiếm</translation>
     </message>
     <message>
       <source>&amp;Results Navigation Pane</source>
-      <translation>Ngăn Điều hướng Kết &amp;quả</translation>
+      <translation>Ô Điều hướng Kết &amp;quả</translation>
     </message>
     <message>
       <source>Favor&amp;ites Pane</source>
@@ -2168,7 +2168,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>&amp;History Pane</source>
-      <translation>Ngăn Lược &amp;sử</translation>
+      <translation>Thanh Lược &amp;sử</translation>
     </message>
     <message>
       <source>&amp;Dictionaries...</source>
@@ -2344,7 +2344,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Import</source>
-      <translation>Nhập</translation>
+      <translation>Nhập khẩu</translation>
     </message>
     <message>
       <source>Add</source>
@@ -2522,7 +2522,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
-      <translation>Hoàn thành Html (*.html *.htm)</translation>
+      <translation>Html đầy đủ (*.html *.htm)</translation>
     </message>
     <message>
       <source>Single Html (*.html *.htm)</source>
@@ -2566,7 +2566,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Export history to file</source>
-      <translation>Xuất lịch sử sang tệp</translation>
+      <translation>Xuất lược sử sang tệp</translation>
     </message>
     <message>
       <source>Text files (*.txt);;All files (*.*)</source>
@@ -2578,11 +2578,11 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>History export complete</source>
-      <translation>Hoàn tất xuất lịch sử</translation>
+      <translation>Hoàn tất xuất lược sử</translation>
     </message>
     <message>
       <source>Import history from file</source>
-      <translation>Nhập lịch sử từ tệp</translation>
+      <translation>Nhập lược sử từ tệp</translation>
     </message>
     <message>
       <source>Import error: </source>
@@ -2594,7 +2594,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>History import complete</source>
-      <translation>Hoàn tất nhập lịch sử</translation>
+      <translation>Hoàn tất nhập lược sử</translation>
     </message>
     <message>
       <source>Export Favorites to file</source>
@@ -2914,7 +2914,7 @@ the application.</source>
     </message>
     <message>
       <source>Context menu dictionaries limit:</source>
-      <translation>Giới hạn từ điển trong trình đơn ngữ cảnh:</translation>
+      <translation>Trình đơn ngữ cảnh các từ điển giới hạn:</translation>
     </message>
     <message>
       <source>Appearance</source>
@@ -2958,7 +2958,7 @@ the application.</source>
     </message>
     <message>
       <source>Sans-serif Font</source>
-      <translation>Phông chữ không chân</translation>
+      <translation>Phông chữ Sans-serif</translation>
     </message>
     <message>
       <source>Monospace Font</source>
@@ -3011,7 +3011,7 @@ in the pressed state when the word selection changes.</source>
     </message>
     <message>
       <source>Alt</source>
-      <translation>Alt</translation>
+      <translation>thay thế</translation>
     </message>
     <message>
       <source>Ctrl key</source>
@@ -3019,7 +3019,7 @@ in the pressed state when the word selection changes.</source>
     </message>
     <message>
       <source>Ctrl</source>
-      <translation>Ctrl</translation>
+      <translation>Điều khiển</translation>
     </message>
     <message>
       <source>Shift key</source>
@@ -3027,7 +3027,7 @@ in the pressed state when the word selection changes.</source>
     </message>
     <message>
       <source>Shift</source>
-      <translation>Shift</translation>
+      <translation>Sự thay đổi</translation>
     </message>
     <message>
       <source>Windows key or Meta key</source>
@@ -3035,7 +3035,7 @@ in the pressed state when the word selection changes.</source>
     </message>
     <message>
       <source>Win/Meta</source>
-      <translation>Win/Meta</translation>
+      <translation>Thắng/Meta</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
@@ -3177,11 +3177,11 @@ cho tất cả các yêu cầu mạng của chương trình.</translation>
     </message>
     <message>
       <source>Deck:</source>
-      <translation>Deck:</translation>
+      <translation>Bộ bài:</translation>
     </message>
     <message>
       <source>Model:</source>
-      <translation>Mô hình:</translation>
+      <translation>Người mẫu:</translation>
     </message>
     <message>
       <source>Word</source>
@@ -3294,27 +3294,27 @@ download page.</source>
     </message>
     <message>
       <source>History</source>
-      <translation>Lịch sử</translation>
+      <translation>Lược sử</translation>
     </message>
     <message>
       <source>Turn this option on to store history of the translated words</source>
-      <translation>Lưu lịch sử các từ đã tra</translation>
+      <translation>Lưu lược sử các từ đã tra</translation>
     </message>
     <message>
       <source>Store &amp;history</source>
-      <translation>Lưu &amp;lịch sử</translation>
+      <translation>Lưu &amp;Lược sử</translation>
     </message>
     <message>
       <source>Specify the maximum number of entries to keep in history.</source>
-      <translation>Xác định tối đa số mục lưu trong lịch sử.</translation>
+      <translation>Xác định tối đa số mục lưu trong lược sử.</translation>
     </message>
     <message>
       <source>Maximum history size:</source>
-      <translation>Số lịch sử tối đa:</translation>
+      <translation>Số lược sử tối đa:</translation>
     </message>
     <message>
       <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Tần suất lưu lịch sử. Nếu đặt giá trị 0, lịch sử sẽ được lưu khi thoát chương trình.</translation>
+      <translation>Tần suất lưu lược sử. Nếu đặt giá trị 0, lược sử sẽ được lưu khi thoát chương trình.</translation>
     </message>
     <message>
       <source>Save every</source>
@@ -3326,7 +3326,7 @@ download page.</source>
     </message>
     <message>
       <source>Favorites</source>
-      <translation>Yêu thích</translation>
+      <translation>yêu thích</translation>
     </message>
     <message>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
@@ -3446,7 +3446,7 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     </message>
     <message>
       <source>Lingvo</source>
-      <translation>Lingvo</translation>
+      <translation>linh vo</translation>
     </message>
     <message>
       <source>Babylon</source>
@@ -3454,11 +3454,11 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     </message>
     <message>
       <source>Lingoes</source>
-      <translation>Lingoes</translation>
+      <translation>tiếng lóng</translation>
     </message>
     <message>
       <source>Lingoes-Blue</source>
-      <translation>Lingoes-Blue</translation>
+      <translation>Lingoes-Xanh</translation>
     </message>
     <message>
       <source> MB</source>
@@ -3518,15 +3518,15 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     </message>
     <message>
       <source>Interface Style</source>
-      <translation type="unfinished">Interface Style</translation>
+      <translation>Phong cách giao diện</translation>
     </message>
     <message>
       <source>Preview Font</source>
-      <translation type="unfinished">Preview Font</translation>
+      <translation>Xem trước phông chữ</translation>
     </message>
     <message>
       <source>Goldendict-ng is a dictionary software</source>
-      <translation type="unfinished">Goldendict-ng is a dictionary software</translation>
+      <translation>Goldendict-ng là một phần mềm từ điển</translation>
     </message>
   </context>
   <context>
@@ -3794,7 +3794,7 @@ quản lý theo nhiều cách khác.</translation>
     </message>
     <message>
       <source>&amp;Case Sensitive</source>
-      <translation>&amp;Phân biệt chữ hoa chữ thường</translation>
+      <translation>&amp;Trường hợp nhạy cảm</translation>
     </message>
     <message>
       <source>Find:</source>
@@ -3860,7 +3860,7 @@ quản lý theo nhiều cách khác.</translation>
     </message>
     <message>
       <source>Available morphology dictionaries:</source>
-      <translation>Các từ điển hình thái học có sẵn:</translation>
+      <translation>Các từ điển hình thái học sẵn sàng:</translation>
     </message>
     <message>
       <source>Each morphology dictionary appears as a
@@ -3871,7 +3871,7 @@ Add appropriate dictionaries to the bottoms
 of the appropriate groups to use them.</source>
       <translation>Mỗi từ điển hình thái học sẽ hiển thị như một 
 từ điển bổ trợ riêng rẽ cung cấp thân từ cho
-tìm kiếm và gợi ý chính tả cho những từ viết sai.
+ tìm kiếm và gợi ý chính tả cho những từ viết sai.
 Thêm các từ điển phù hợp vào cuối những nhóm
 phù hợp để sử dụng chúng.</translation>
     </message>
@@ -3909,7 +3909,7 @@ phù hợp để sử dụng chúng.</translation>
     </message>
     <message>
       <source>Lingua Libre</source>
-      <translation>Lingua Libre</translation>
+      <translation>ngôn ngữ tự do</translation>
     </message>
     <message>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pronunciations provided by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
@@ -4089,7 +4089,7 @@ Nhật, dựa trên hệ thống âm vị Anh ngữ</translation>
     </message>
     <message>
       <source>Preferences</source>
-      <translation>Tuỳ thích</translation>
+      <translation>Tùy thích</translation>
     </message>
     <message>
       <source>Volume:</source>
@@ -4105,7 +4105,7 @@ Nhật, dựa trên hệ thống âm vị Anh ngữ</translation>
     </message>
     <message>
       <source>Available voice engines:</source>
-      <translation>Các phương tiện giọng nói có sẵn:</translation>
+      <translation>Các phương tiện giọng nói có thể:</translation>
     </message>
     <message>
       <source>Text to be previewed:</source>
@@ -4178,7 +4178,7 @@ Nhật, dựa trên hệ thống âm vị Anh ngữ</translation>
     </message>
     <message>
       <source>As link</source>
-      <translation>Dưới dạng liên kết</translation>
+      <translation>dưới dạng liên kết</translation>
     </message>
     <message>
       <source>Name</source>
@@ -4197,7 +4197,7 @@ Nhật, dựa trên hệ thống âm vị Anh ngữ</translation>
     <name>WordFinder</name>
     <message>
       <source>Failed to query some dictionaries.</source>
-      <translation>Lỗi truy vấn một vài từ điển.</translation>
+      <translation>Lỗi truy vấn một vài từ điểni.</translation>
     </message>
   </context>
 </TS>
