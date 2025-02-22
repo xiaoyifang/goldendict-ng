@@ -19,5 +19,5 @@ public:
   static FavoriteType determineFavoriteType( QString const & word, unsigned group );
   static FavoriteType determineFavoriteType( const QString & word, const QString & folder );
   static bool isHeadwordPresent( const QString & word, const QString & folder );
-  static bool isHeadwordPresent( const QString & word, unsigned group );
+  static bool isHeadwordPresent( const QString & word, unsigned groupId );
 };
