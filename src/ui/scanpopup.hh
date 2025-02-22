@@ -121,8 +121,6 @@ private:
   void uninterceptMouse();
 
   void updateDictionaryBar();
-  /// Check is word already presented in Favorites
-  bool isWordPresentedInFavorites( QString const & word, unsigned groupId ) const;
 
   Config::Class & cfg;
   std::vector< sptr< Dictionary::Class > > const & allDictionaries;

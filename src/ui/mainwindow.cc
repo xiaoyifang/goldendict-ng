@@ -54,6 +54,7 @@
 #include <QListWidgetItem>
 
 #include "globalregex.hh"
+#include "favoritemanager.hh"
 
 #ifdef Q_OS_MAC
   #include "macos/macmouseover.hh"
@@ -1997,7 +1998,7 @@ void MainWindow::titleChanged( ArticleView * view, QString const & title )
 
   if ( index == ui.tabWidget->currentIndex() ) {
     // Set icon for "Add to Favorites" action
-    if ( isWordPresentedInFavorites( title, cfg.lastMainGroupId ) ) {
+    if ( FavoriteManager::isHeadwordPresent( title, cfg.lastMainGroupId ) ) {
       addToFavorites->setIcon( blueStarIcon );
       addToFavorites->setToolTip( tr( "Remove current tab from Favorites" ) );
     }
@@ -2066,7 +2067,7 @@ void MainWindow::tabSwitched( int )
   if ( view ) {
     headword = view->getCurrentWord();
   }
-  if ( isWordPresentedInFavorites( headword, cfg.lastMainGroupId ) ) {
+  if ( FavoriteManager::isHeadwordPresent( headword, cfg.lastMainGroupId ) ) {
     addToFavorites->setIcon( blueStarIcon );
     addToFavorites->setToolTip( tr( "Remove current tab from Favorites" ) );
   }
@@ -4276,7 +4277,7 @@ void MainWindow::handleAddToFavoritesButton()
   }
   auto headword = view->getCurrentWord();
 
-  if ( ui.favoritesPaneWidget->isHeadwordPresent( folder, headword ) ) {
+  if ( FavoriteManager::isHeadwordPresent( headword, folder ) ) {
     QMessageBox mb( QMessageBox::Question,
                     "GoldenDict",
                     tr( "Remove headword \"%1\" from Favorites?" ).arg( headword ),
@@ -4343,20 +4344,6 @@ void MainWindow::addAllTabsToFavorites()
   }
   addToFavorites->setIcon( blueStarIcon );
   addToFavorites->setToolTip( tr( "Remove current tab from Favorites" ) );
-}
-
-bool MainWindow::isWordPresentedInFavorites( QString const & word, unsigned groupId )
-{
-  if ( word.isEmpty() ) {
-    return false;
-  }
-  QString folder;
-  Instances::Group const * igrp = groupInstances.findGroup( groupId );
-  if ( igrp ) {
-    folder = igrp->favoritesFolder;
-  }
-
-  return ui.favoritesPaneWidget->isHeadwordPresent( folder, word );
 }
 
 void MainWindow::setGroupByName( QString const & name, bool main_window )

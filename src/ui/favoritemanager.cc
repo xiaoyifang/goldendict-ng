@@ -26,3 +26,20 @@ FavoriteType FavoriteManager::determineFavoriteType( const QString & word, const
   }
   return FavoriteType::EMPTY_OTHER;
 }
+
+bool FavoriteManager::isHeadwordPresent( const QString & word, const QString & folder )
+{
+  if ( !GlobalBroadcaster::instance()->wordFavoriteFolderMap.contains( word ) ) {
+    return false;
+  }
+  if ( GlobalBroadcaster::instance()->wordFavoriteFolderMap[ word ].contains( folder ) ) {
+    return true;
+  }
+  return false;
+}
+
+bool FavoriteManager::isHeadwordPresent( const QString & word, unsigned groupId )
+{
+  QString folder = GlobalBroadcaster::instance()->groupFolderMap[ groupId ];
+  return isHeadwordPresent( word, folder );
+}

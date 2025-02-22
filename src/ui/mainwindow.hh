@@ -263,7 +263,6 @@ private:
   void setInputLineText( QString text, WildcardPolicy wildcardPolicy, TranslateBoxPopup popupAction );
 
   void changeWebEngineViewFont() const;
-  bool isWordPresentedInFavorites( QString const & word, unsigned groupId );
   void errorMessageOnStatusBar( const QString & errStr );
   int getIconSize();
 
