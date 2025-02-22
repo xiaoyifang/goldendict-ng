@@ -820,7 +820,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Are you sure you want to clear all items?</source>
-      <translation>您确实要清除所有项目吗？</translation>
+      <translation>您确实要清除所有条目吗？</translation>
     </message>
   </context>
   <context>
@@ -3494,11 +3494,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Interface Font Size</source>
-      <translation>接口字体大小</translation>
+      <translation>界面字体大小</translation>
     </message>
     <message>
       <source>Interface language</source>
-      <translation>接口语言</translation>
+      <translation>界面语言</translation>
     </message>
     <message>
       <source>Article Display style</source>
@@ -3510,7 +3510,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Interface Style</source>
-      <translation>接口样式</translation>
+      <translation>界面风格</translation>
     </message>
     <message>
       <source>Preview Font</source>
