@@ -4,20 +4,11 @@
 #pragma once
 
 #include <QString>
-enum class FavoriteType {
-  EMPTY,
-  //current group is empty while other group is not empty
-  EMPTY_OTHER,
-  FULL,
-  FULL_OTHER
-};
 
 class FavoriteManager
 {
 
 public:
-  static FavoriteType determineFavoriteType( QString const & word, unsigned group );
-  static FavoriteType determineFavoriteType( const QString & word, const QString & folder );
   static bool isHeadwordPresent( const QString & word, const QString & folder );
   static bool isHeadwordPresent( const QString & word, unsigned groupId );
 };
