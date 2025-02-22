@@ -15,9 +15,6 @@ FavoriteType FavoriteManager::determineFavoriteType( const QString & word, const
   if ( !GlobalBroadcaster::instance()->wordFavoriteFolderMap.contains( word ) ) {
     return FavoriteType::EMPTY;
   }
-  if ( folder.isEmpty() ) {
-    return FavoriteType::FULL;
-  }
 
   if ( GlobalBroadcaster::instance()->wordFavoriteFolderMap[ word ].contains( folder ) ) {
     if ( GlobalBroadcaster::instance()->wordFavoriteFolderMap[ word ].size() == 1 ) {
