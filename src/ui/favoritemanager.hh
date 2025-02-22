@@ -1,9 +1,7 @@
-//
-// Created by xiaoyifang on 2025/2/21.
-//
+/* This file is (c) 2025 gd-ng community
+* Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#ifndef GOLDENDICT_NG_FAVORITEMANAGER_HH
-#define GOLDENDICT_NG_FAVORITEMANAGER_HH
+#pragma once
 
 #include <QString>
 enum class FavoriteType {
@@ -22,5 +20,3 @@ public:
   static FavoriteType determineFavoriteType( const QString & word, const QString & folder );
 };
 
-
-#endif //GOLDENDICT_NG_FAVORITEMANAGER_HH
