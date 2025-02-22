@@ -2970,7 +2970,7 @@ the application.</source>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation>Chọn xem tính năng giám sát bảng tạm có được bật theo mặc định khi chương trình&apos;khởi động hay không.</translation>
+      <translation>Chọn xem tính năng giám sát clipboard có được bật mặc định khi chương trình khởi động hay không.</translation>
     </message>
     <message>
       <source>Start with clipboard monitoring turned on</source>
@@ -3498,7 +3498,7 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
+      <translation>Lưu thông điệp gỡ lỗi vào gd_log.txt trong thư mục cấu hình</translation>
     </message>
     <message>
       <source>Interface Font Size</source>
@@ -3670,7 +3670,7 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
+      <translation>Lưu thông điệp gỡ lỗi vào gd_log.txt trong thư mục cấu hình</translation>
     </message>
   </context>
   <context>
