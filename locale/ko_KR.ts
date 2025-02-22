@@ -2926,22 +2926,6 @@ the application.</source>
       <translation>인터페이스 글꼴</translation>
     </message>
     <message>
-      <source>Interface language:</source>
-      <translation>언어:</translation>
-    </message>
-    <message>
-      <source>Article Display style:</source>
-      <translation>기사 표시 스타일:</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>Add-on 스타일:</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>인터페이스 스타일:</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>UI를 어둡게 합니다.</translation>
     </message>
@@ -3517,7 +3501,35 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
+      <translation>config 폴더의 gd_log.txt에 디버그 메시지를 저장합니다</translation>
+    </message>
+    <message>
+      <source>Interface Font Size</source>
+      <translation type="unfinished">Interface Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>인터페이스 언어</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>기사 표시 스타일</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on 스타일</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>인터페이스 스타일</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>글꼴 미리보기</translation>
+    </message>
+    <message>
+      <source>Goldendict-ng is a dictionary software</source>
+      <translation type="unfinished">Goldendict-ng is a dictionary software</translation>
     </message>
   </context>
   <context>
@@ -3661,7 +3673,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
+      <translation>config 폴더의 gd_log.txt에 디버그 메시지를 저장합니다</translation>
     </message>
   </context>
   <context>

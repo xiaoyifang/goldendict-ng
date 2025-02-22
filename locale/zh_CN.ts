@@ -820,7 +820,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Are you sure you want to clear all items?</source>
-      <translation>您确实要清除所有项目吗？</translation>
+      <translation>您确实要清除所有条目吗？</translation>
     </message>
   </context>
   <context>
@@ -2920,22 +2920,6 @@ the application.</source>
       <translation>界面字体</translation>
     </message>
     <message>
-      <source>Interface language:</source>
-      <translation>界面语言：</translation>
-    </message>
-    <message>
-      <source>Article Display style:</source>
-      <translation>文章显示风格</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>附加样式：</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>界面风格：</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>启用暗色界面</translation>
     </message>
@@ -3507,6 +3491,34 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>在配置文件夹中将调试消息保存到 gd_log.txt</translation>
+    </message>
+    <message>
+      <source>Interface Font Size</source>
+      <translation>界面字体大小</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>界面语言</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>文章显示样式</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>附加组件样式</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>界面风格</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>预览字体</translation>
+    </message>
+    <message>
+      <source>Goldendict-ng is a dictionary software</source>
+      <translation>Goldendict-ng 是字典软件</translation>
     </message>
   </context>
   <context>

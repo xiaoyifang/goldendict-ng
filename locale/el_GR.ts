@@ -2929,22 +2929,6 @@ the application.</source>
       <translation>Γραμματοσειρά Διεπαφής</translation>
     </message>
     <message>
-      <source>Interface language:</source>
-      <translation>Γλώσσα εφαρμογής:</translation>
-    </message>
-    <message>
-      <source>Article Display style:</source>
-      <translation>Στυλ εμφάνισης άρθρου:</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>Στιλ πρόσθετων:</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>Στυλ διεπαφής:</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Στρίψτε την διεπαφή στο σκοτάδι.</translation>
     </message>
@@ -3524,6 +3508,34 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Αποθήκευση μηνυμάτων αποσφαλμάτωσης στο gd_log.txt στο φάκελο ρυθμίσεων</translation>
+    </message>
+    <message>
+      <source>Interface Font Size</source>
+      <translation>Μέγεθος Γραμματοσειράς Διεπαφής</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Γλώσσα διεπαφής</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Στυλ εμφάνισης άρθρου</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Στυλ πρόσθετου</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Στυλ Διεπαφής</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Προεπισκόπηση Γραμματοσειράς</translation>
+    </message>
+    <message>
+      <source>Goldendict-ng is a dictionary software</source>
+      <translation>Το Goldendict-ng είναι ένα λεξικό λογισμικό</translation>
     </message>
   </context>
   <context>

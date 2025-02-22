@@ -2928,22 +2928,6 @@ sovellus.</translation>
       <translation>Käyttöliittymän Kirjasin</translation>
     </message>
     <message>
-      <source>Interface language:</source>
-      <translation>Käyttöliittymän kieli:</translation>
-    </message>
-    <message>
-      <source>Article Display style:</source>
-      <translation>Artikkelin esitystyyli:</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>Lisäosan tyyli:</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>Käyttöliittymän tyyli:</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Käännä käyttöliittymä pimeäksi.</translation>
     </message>
@@ -3522,6 +3506,34 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Tallenna debug viestit gd_log.txt asetuskansioon</translation>
+    </message>
+    <message>
+      <source>Interface Font Size</source>
+      <translation>Käyttöliittymän Kirjasimen Koko</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Käyttöliittymän kieli</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Artikkelin esitystyyli</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Lisäosan tyyli</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Käyttöliittymän Tyyli</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Esikatsele Kirjasinta</translation>
+    </message>
+    <message>
+      <source>Goldendict-ng is a dictionary software</source>
+      <translation>Goldendict-ng on sanakirja ohjelmisto</translation>
     </message>
   </context>
   <context>

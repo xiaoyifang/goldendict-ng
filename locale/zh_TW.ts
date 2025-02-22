@@ -2919,23 +2919,7 @@ the application.</source>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation>界面字體</translation>
-    </message>
-    <message>
-      <source>Interface language:</source>
-      <translation>介面語言：</translation>
-    </message>
-    <message>
-      <source>Article Display style:</source>
-      <translation>文章顯示樣式：</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>擴充風格：</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>界面風格：</translation>
+      <translation>介面用字型</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -3512,6 +3496,34 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>將調試消息保存到配置文件夾中的 gd_log.txt</translation>
+    </message>
+    <message>
+      <source>Interface Font Size</source>
+      <translation>介面字型大小</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>介面語言</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation type="unfinished">Article Display style</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation type="unfinished">Add-on style</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>介面樣式</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation type="unfinished">Preview Font</translation>
+    </message>
+    <message>
+      <source>Goldendict-ng is a dictionary software</source>
+      <translation type="unfinished">Goldendict-ng is a dictionary software</translation>
     </message>
   </context>
   <context>

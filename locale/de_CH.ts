@@ -2920,22 +2920,6 @@ the application.</source>
       <translation>Interface-Schriftart</translation>
     </message>
     <message>
-      <source>Interface language:</source>
-      <translation>Sprache der Oberfläche:</translation>
-    </message>
-    <message>
-      <source>Article Display style:</source>
-      <translation>Artikel-Anzeige-Stil:</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>Add-on Stil:</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>Interface-Stil:</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Drehe das UI in Dunkelheit.</translation>
     </message>
@@ -3508,6 +3492,34 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Speichere Debug Meldungen zu &quot;gd_log.txt&quot;, innerhalb des Config Ordners</translation>
+    </message>
+    <message>
+      <source>Interface Font Size</source>
+      <translation type="unfinished">Interface Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation type="unfinished">Interface language</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation type="unfinished">Article Display style</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation type="unfinished">Add-on style</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation type="unfinished">Interface Style</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation type="unfinished">Preview Font</translation>
+    </message>
+    <message>
+      <source>Goldendict-ng is a dictionary software</source>
+      <translation type="unfinished">Goldendict-ng is a dictionary software</translation>
     </message>
   </context>
   <context>

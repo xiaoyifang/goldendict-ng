@@ -2928,22 +2928,6 @@ a aplicação.</translation>
       <translation>Fonte da Interface</translation>
     </message>
     <message>
-      <source>Interface language:</source>
-      <translation>Idioma da interface:</translation>
-    </message>
-    <message>
-      <source>Article Display style:</source>
-      <translation>Estilo de exibição do artigo:</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>Estilo do complemento:</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>Estilo de interface:</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Vire a interface para escurecer.</translation>
     </message>
@@ -3522,6 +3506,34 @@ no Stardict, Babilônia e dicionários GLS</translation>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Salvar mensagens de depuração no gd_log.txt na pasta config</translation>
+    </message>
+    <message>
+      <source>Interface Font Size</source>
+      <translation>Tamanho da Fonte da Interface</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Idioma da interface</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Estilo de Exibição do Artigo</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Estilo do complemento</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Estilo da interface</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Visualizar Fonte</translation>
+    </message>
+    <message>
+      <source>Goldendict-ng is a dictionary software</source>
+      <translation>Goldendit-ng é um software de dicionário</translation>
     </message>
   </context>
   <context>

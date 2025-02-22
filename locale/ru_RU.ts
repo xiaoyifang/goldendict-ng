@@ -2933,22 +2933,6 @@ the application.</source>
       <translation>Шрифт интерфейса</translation>
     </message>
     <message>
-      <source>Interface language:</source>
-      <translation>Язык программы:</translation>
-    </message>
-    <message>
-      <source>Article Display style:</source>
-      <translation>Стиль отображения статьи:</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>Дополнительный стиль:</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>Стиль интерфейса:</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Повернуть пользовательский интерфейс в темное состояние.</translation>
     </message>
@@ -3529,6 +3513,34 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Сохранить отладочные сообщения в gd_log.txt в папке конфигурации</translation>
+    </message>
+    <message>
+      <source>Interface Font Size</source>
+      <translation>Размер шрифта интерфейса</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Язык интерфейса</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Стиль отображения статьи</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Стиль дополнения</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Стиль интерфейса</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Предпросмотр шрифта</translation>
+    </message>
+    <message>
+      <source>Goldendict-ng is a dictionary software</source>
+      <translation>Goldendict-ng - это словарь</translation>
     </message>
   </context>
   <context>

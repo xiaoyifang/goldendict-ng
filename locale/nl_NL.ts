@@ -2927,22 +2927,6 @@ the application.</source>
       <translation>Lettertype interface</translation>
     </message>
     <message>
-      <source>Interface language:</source>
-      <translation>Toepassingstaal:</translation>
-    </message>
-    <message>
-      <source>Article Display style:</source>
-      <translation>Weergave stijl van artikel:</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>Add-on stijl:</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>Interfacestijl:</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Draai de UI donker.</translation>
     </message>
@@ -3518,6 +3502,34 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Debug berichten opslaan in gd_log.txt in de configuratie map</translation>
+    </message>
+    <message>
+      <source>Interface Font Size</source>
+      <translation>Tekengrootte interface</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Interface taal</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Weergavestijl artikel</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on stijl</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Interface Stijl</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Voorbeeld lettertype</translation>
+    </message>
+    <message>
+      <source>Goldendict-ng is a dictionary software</source>
+      <translation>Goldendict-ng is een woordenboek software</translation>
     </message>
   </context>
   <context>
