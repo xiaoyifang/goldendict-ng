@@ -821,10 +821,6 @@ between classic and school orthography in cyrillic)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Active folder</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Make this folder the target of adding/removing words actions.</source>
         <translation type="unfinished"></translation>
     </message>
