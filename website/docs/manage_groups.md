@@ -7,8 +7,8 @@ Additionally, multiple strategies of automatic grouping are provided:
 * based on the language info embedded within dictionary files
 * based on the folder structure
 * based on customizable metadata files
-## Auto grouping
-### Auto groups by dictionary language
+
+## Auto groups by dictionary language
 
 For formats like DSL, which has embedded language from / to metadata, GD will use the dictionary's built-in metadata.
 
@@ -16,7 +16,7 @@ For other formats, GD will try finding the last `{id}-{id}` pair delimited by no
 
 Groups created in this method also include a context menu when right-click the group name, in which you can do additional dictionaries grouping by source or target language and combine dictionaries in more large groups.
 
-### Auto groups by folders
+## Auto groups by folders
 
 Click the "Group by folders" will group your dicts based on folder structure.
 
@@ -69,7 +69,7 @@ More levels of folder nesting are not supported.
 |          └─ DictB Files
 ```
 
-### Auto groups by `metadata.toml`
+## Auto groups by `metadata.toml`
 
 Click the "group by metadata" will group your dicts based on `metadata.toml`.
 
@@ -121,13 +121,3 @@ The structure above will be auto grouped into three groups:
 * `汉英词典` with `Cambridge`,`Collins`
 
 Note: Dictionaries without `metadata.toml` won't be auto-grouped.
-
-## Favoriates folder
-
-A group can have an existing folder as target for saving favoriates.
-
-When switching groups, the target folder will be automatically activated.
-
-For simple use cases, just type the name of an existing folder name.
-
-If a folder is nested, then use `/` as a separator, such as `english/food/spicy` or `spanish/greetings`.

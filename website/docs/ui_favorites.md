@@ -1,20 +1,24 @@
 ![favoriates](img/fav.webp)
 
-Favorites is a hierarchical structure of folders and words in them.
+Favorites is a hierarchical structure of folders and words in them. You could create folders manually via context menu.
 
-You could create folders manually via context menu.
+By default, the ⭐ icon on the toolbar will indiciate if word is in top most level.
 
-By default the ⭐icon on the toolbar will add/remove word from the top most level.
+You can "active" a folder via context menu. Then the ⭐ icon will indiciate if a word is in this folder and clicking the ⭐ icon will add/remove words to/from this folder.
 
-To add/remove word from a specific folder, you can "active" a folder via context menu,
-then clicking the ⭐icon will add/remove words from this folder.
+A group can have a associated folder.
+When switching groups, the associated folder will be automatically activated. For simple use cases, just use the name of an existing folder.
+If a folder is nested, then use `/` as a separator, such as `english/food/spicy` or `spanish/greetings`.
 
-Group can be associated with specific folders.
-When switching groups, the associated folder will be automatically activated.
+The entries can be moved simply by dragging and dropping. The entries can be deleted via context menu or by pressing the "Delete" key.
 
-The entries can be moved simply by dragging and dropping. The entries can be deleted via context menu or by pressing the "Del" key.
+## Import & Export
 
 In addition to adding and removing items to/from the Favorites you can perform the following operations via context menu or the main menu:
 
-* "Export" - the Favorites contents will be exported to the specified XML file while preserving the entire structure.
-* "Export to plain list" - all headwords stored in the Favorites will be saved to the specified text file as plain list without saving the folder structure.* * "Import" - the current contents of the Favorites will be replaced by the contents of the specified XML file.
+* "Export" - Export the all favoriates to a plain text or XML file.
+* "Import" - The current favorites will be **replaced** by the content of XML or plain text.
+
+!!! info
+    Currently, XML will perserve folder structure but plain text won't!
+
