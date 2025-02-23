@@ -122,12 +122,12 @@ The structure above will be auto grouped into three groups:
 
 Note: Dictionaries without `metadata.toml` won't be auto-grouped.
 
-## Active favoriate folder
+## Favoriates folder
 
-A group can have a specified target folder for saving favvoriates.
+A group can have an existing folder as target for saving favoriates.
 
-When stiching groups, the target folder will be automatically activated.
+When switching groups, the target folder will be automatically activated.
 
 For simple use cases, just type the name of an existing folder name.
 
-If folder is nested, then use `/` as seprator, such as `english/food/spicy` or `spanish/greetings`.
+If a folder is nested, then use `/` as a separator, such as `english/food/spicy` or `spanish/greetings`.
