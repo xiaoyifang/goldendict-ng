@@ -825,7 +825,7 @@ between classic and school orthography in cyrillic)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Make this folder the target adding/removing words actions.</source>
+        <source>Make this folder the target of adding/removing words actions.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2643,6 +2643,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
         <source>Remove headword &quot;%1&quot; from Favorites?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
