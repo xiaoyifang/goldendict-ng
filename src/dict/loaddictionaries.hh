@@ -38,7 +38,7 @@ public:
   }
 
   /// Empty string means to exception occurred
-  std::string const & getExceptionText() const
+  std::string getExceptionText() const
   {
     return exceptionTexts.join( "\n" ).toStdString();
   }
