@@ -587,7 +587,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   // Favorites
 
-  ui.favoritesPaneWidget->setUp( &cfg, ui.menuFavorites );
+  ui.favoritesPaneWidget->setUp( &cfg, { ui.showHideFavorites, ui.importFavorites, ui.exportFavorites } );
   ui.favoritesPaneWidget->setSaveInterval( cfg.preferences.favoritesStoreInterval );
 
   connect( ui.favoritesPane, &QDockWidget::visibilityChanged, this, &MainWindow::updateFavoritesMenu );

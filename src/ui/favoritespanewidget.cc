@@ -23,7 +23,7 @@
 
 /************************************************** FavoritesPaneWidget *********************************************/
 
-void FavoritesPaneWidget::setUp( Config::Class * cfg, QMenu * mainMenuFav )
+void FavoritesPaneWidget::setUp( Config::Class * cfg, std::initializer_list< QAction * > actionsFromMainWindow )
 {
   m_cfg                       = cfg;
   m_favoritesTree             = findChild< QTreeView * >( "favoritesTree" );
@@ -70,7 +70,7 @@ void FavoritesPaneWidget::setUp( Config::Class * cfg, QMenu * mainMenuFav )
   m_favoritesMenu = new QMenu( this );
   m_separator     = m_favoritesMenu->addSeparator();
 
-  for ( const auto & a : mainMenuFav->actions() ) {
+  for ( const auto & a : actionsFromMainWindow ) {
     m_favoritesMenu->addAction( a );
   }
 
