@@ -42,7 +42,7 @@ public:
     return QSize( 204, 204 );
   }
 
-  void setUp( Config::Class * cfg, std::initializer_list<QAction *> actionsFromMainWindow);
+  void setUp( Config::Class * cfg, std::initializer_list< QAction * > actionsFromMainWindow );
 
   void addWordToActiveFav( const QString & word );
   bool removeWordFromActiveFav( const QString & word );
