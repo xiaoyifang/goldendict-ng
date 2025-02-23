@@ -820,6 +820,14 @@ between classic and school orthography in cyrillic)</source>
         <source>Are you sure you want to clear all items?</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Active folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Make this folder the target adding/removing words actions.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -2330,10 +2338,6 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <source>F1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Show</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

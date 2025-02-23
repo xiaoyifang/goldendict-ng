@@ -23,12 +23,21 @@
 
 /************************************************** FavoritesPaneWidget *********************************************/
 
-void FavoritesPaneWidget::setUp( Config::Class * cfg, QMenu * menu )
+void FavoritesPaneWidget::setUp( Config::Class * cfg, QMenu * mainMenuFav )
 {
   m_cfg                       = cfg;
   m_favoritesTree             = findChild< QTreeView * >( "favoritesTree" );
   QDockWidget * favoritesPane = qobject_cast< QDockWidget * >( parentWidget() );
   m_favoritesTree->setHeaderHidden( true );
+
+  // Active the current folder for favoriate controlling
+  m_activeFolderForFav = new QAction( this );
+  m_activeFolderForFav->setText( tr( "Active folder" ) );
+  m_activeFolderForFav->setToolTip( tr( "Make this folder the target of adding/removing words actions." ) );
+  m_activeFolderForFav->setShortcutContext( Qt::WidgetWithChildrenShortcut );
+  addAction( m_activeFolderForFav );
+  connect( m_activeFolderForFav, &QAction::triggered, this, &FavoritesPaneWidget::folderActivation );
+
 
   // Delete selected items action
   m_deleteSelectedAction = new QAction( this );
@@ -61,7 +70,7 @@ void FavoritesPaneWidget::setUp( Config::Class * cfg, QMenu * menu )
   m_favoritesMenu = new QMenu( this );
   m_separator     = m_favoritesMenu->addSeparator();
 
-  for ( const auto & a : menu->actions() ) {
+  for ( const auto & a : mainMenuFav->actions() ) {
     m_favoritesMenu->addAction( a );
   }
 
@@ -179,16 +188,45 @@ void FavoritesPaneWidget::deleteSelectedItems()
   m_favoritesModel->removeItemsForIndexes( selectedIdxs );
 }
 
+void FavoritesPaneWidget::folderActivation()
+{
+  QModelIndexList selectedIdxs = m_favoritesTree->selectionModel()->selectedIndexes();
+
+  const auto & curSelectFullPath = m_favoritesModel->getItem( selectedIdxs.first() )->fullPath();
+
+  if ( selectedIdxs.size() == 1 && m_favoritesModel->itemType( selectedIdxs.first() ) == TreeItem::Folder ) {
+    if ( m_favoritesModel->activeFolderFullPath == curSelectFullPath ) {
+      m_favoritesModel->activeFolderFullPath.clear();
+    }
+    else {
+      m_favoritesModel->activeFolderFullPath = curSelectFullPath;
+    }
+  }
+  emit activeFavChange();
+}
+
 void FavoritesPaneWidget::showCustomMenu( QPoint const & pos )
 {
   QModelIndexList selectedIdxs = m_favoritesTree->selectionModel()->selectedIndexes();
 
+  m_favoritesMenu->removeAction( m_activeFolderForFav );
   m_favoritesMenu->removeAction( m_copySelectedToClipboard );
   m_favoritesMenu->removeAction( m_deleteSelectedAction );
   m_favoritesMenu->removeAction( m_addFolder );
   m_favoritesMenu->removeAction( m_clearAll );
 
   m_separator->setVisible( !selectedIdxs.isEmpty() );
+
+  if ( selectedIdxs.size() == 1 && m_favoritesModel->itemType( selectedIdxs.first() ) == TreeItem::Folder ) {
+    m_favoritesMenu->addAction( m_activeFolderForFav );
+
+    if ( m_favoritesModel->getItem( selectedIdxs.first() )->fullPath() == m_favoritesModel->activeFolderFullPath ) {
+      m_activeFolderForFav->setText( "Deactive folder" );
+    }
+    else {
+      m_activeFolderForFav->setText( "Active folder" );
+    }
+  }
 
   if ( !selectedIdxs.isEmpty() ) {
     m_favoritesMenu->insertAction( m_separator, m_copySelectedToClipboard );
@@ -271,23 +309,45 @@ void FavoritesPaneWidget::clearAllItems()
   }
 }
 
-void FavoritesPaneWidget::addHeadword( QString const & path, QString const & headword )
+
+void FavoritesPaneWidget::addWordToActiveFav( QString const & word )
 {
-  m_favoritesModel->addNewHeadword( path, headword );
-  GlobalBroadcaster::instance()->folderFavoritesMap[ path ].insert( headword );
+  m_favoritesModel->addNewWordFullPath( word );
 }
 
-bool FavoritesPaneWidget::removeHeadword( QString const & path, QString const & headword )
-{
-  GlobalBroadcaster::instance()->folderFavoritesMap[ path ].remove( headword );
 
-  return m_favoritesModel->removeHeadword( path, headword );
+bool FavoritesPaneWidget::removeWordFromActiveFav( const QString & word )
+{
+  return m_favoritesModel->removeWordFullPath( word );
 }
 
-bool FavoritesPaneWidget::isHeadwordPresent( const QString & path, const QString & headword )
+void FavoritesPaneWidget::addRemoveWordInActiveFav( const QString & word )
 {
-  return m_favoritesModel->isHeadwordPresent( path, headword );
+  if ( m_favoritesModel->isWordPresentFullPath( word ) ) {
+    m_favoritesModel->removeWordFullPath( word );
+  }
+  else {
+    m_favoritesModel->addNewWordFullPath( word );
+  }
 }
+
+bool FavoritesPaneWidget::trySetCurrentActiveFav( const QStringList & fullpath )
+{
+  TreeItem * v = m_favoritesModel->getItemByFullPath( fullpath );
+  if ( v != nullptr ) {
+    m_favoritesModel->activeFolderFullPath = fullpath;
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+bool FavoritesPaneWidget::isWordPresentInActiveFolder( const QString & headword )
+{
+  return m_favoritesModel->isWordPresentFullPath( headword );
+}
+
 
 void FavoritesPaneWidget::getDataInXml( QByteArray & dataStr )
 {
@@ -424,17 +484,20 @@ Qt::ItemFlags TreeItem::flags() const
   return f;
 }
 
-QString TreeItem::fullPath() const
+QStringList TreeItem::fullPath() const
 {
   // Get full path from root item
-  QString path;
-  TreeItem * par = parentItem;
+  QStringList path = { data().toString() };
+  TreeItem * par   = parentItem;
+
   for ( ;; ) {
     if ( !par ) {
       break;
     }
-    path = par->data().toString() + "/" + path;
-    par  = par->parentItem;
+    if ( par->type() != TreeItem::Root ) {
+      path.prepend( par->data().toString() );
+    }
+    par = par->parentItem;
   }
   return path;
 }
@@ -634,7 +697,12 @@ QVariant FavoritesModel::data( QModelIndex const & index, int role ) const
   }
   else if ( role == Qt::DecorationRole ) {
     if ( item->type() == TreeItem::Folder || item->type() == TreeItem::Root ) {
-      return QIcon( ":/icons/folder.svg" );
+      if ( item->fullPath() == activeFolderFullPath ) {
+        return QIcon( ":/icons/folder_active" );
+      }
+      else {
+        return QIcon( ":/icons/folder.svg" );
+      }
     }
 
     return QVariant();
@@ -760,8 +828,6 @@ void FavoritesModel::addFolder( TreeItem * parent, QDomNode & node )
         continue;
       }
       parent->appendChild( new TreeItem( word, parent, TreeItem::Word ) );
-
-      GlobalBroadcaster::instance()->folderFavoritesMap[ parent->data().toString() ].insert( word );
     }
   }
   dirty = true;
@@ -923,6 +989,54 @@ TreeItem * FavoritesModel::getItem( const QModelIndex & index ) const
   return rootItem;
 }
 
+TreeItem * FavoritesModel::getItemByFullPath( const QStringList & fullPath ) const
+{
+  TreeItem * targetFolder = nullptr;
+  TreeItem * parentItem   = getItem( QModelIndex() );
+  for ( qsizetype fullPathPos = 0; fullPathPos < fullPath.count(); ++fullPathPos ) {
+    for ( int i = 0; i < parentItem->childCount(); i++ ) {
+      TreeItem * item = parentItem->child( i );
+      if ( item->type() == TreeItem::Folder ) {
+        if ( item->data().toString() == fullPath[ fullPathPos ] ) {
+          if ( fullPathPos == ( fullPath.count() - 1 ) ) {
+            targetFolder = item;
+          }
+          else {
+            parentItem = item;
+            break;
+          }
+        }
+      }
+    }
+  }
+  return targetFolder;
+}
+
+QModelIndex FavoritesModel::getModelIndexByFullPath( const QStringList & fullPath_ ) const
+{
+  QModelIndex targetIndex = QModelIndex();
+  QStringList fullPath    = fullPath_;
+  fullPath.prepend( "" );
+
+  for ( qsizetype fullPathPos = 0; fullPathPos < fullPath.count(); ++fullPathPos ) {
+    for ( int i = 0; i < rowCount( targetIndex ); ++i ) {
+      TreeItem * item = getItem( targetIndex )->child( i );
+      if ( item->type() == TreeItem::Folder || item->type() == TreeItem::Root ) {
+        if ( item->data().toString() == fullPath[ fullPathPos ] ) {
+          if ( fullPathPos == ( fullPath.count() - 1 ) ) {
+            return createIndex( i, 0, item );
+          }
+          else {
+            targetIndex = createIndex( i, 0, item );
+            break;
+          }
+        }
+      }
+    }
+  }
+  return {};
+}
+
 QStringList FavoritesModel::getTextForIndexes( const QModelIndexList & idxList ) const
 {
   QStringList list;
@@ -1017,73 +1131,49 @@ QModelIndex FavoritesModel::addNewFolder( const QModelIndex & idx )
   return createIndex( row, 0, newFolder );
 }
 
-bool FavoritesModel::addNewHeadword( const QString & path, const QString & headword )
+
+bool FavoritesModel::addNewWordFullPath( const QString & headword )
 {
-  QModelIndex parentIdx;
-
-  // Find or create target folder
-
-  QStringList folders            = path.split( "/", Qt::SkipEmptyParts );
-  QStringList::const_iterator it = folders.begin();
-  for ( ; it != folders.end(); ++it ) {
-    parentIdx = forceFolder( *it, parentIdx );
-  }
-
-  // Add headword
-
-  return addHeadword( headword, parentIdx );
+  QModelIndex index = getModelIndexByFullPath( activeFolderFullPath );
+  return addHeadword( headword, index );
 }
 
-bool FavoritesModel::removeHeadword( const QString & path, const QString & headword )
+
+bool FavoritesModel::removeWordFullPath( const QString & headword )
 {
-  QModelIndex idx;
-
-  // Find target folder
-
-  QStringList folders            = path.split( "/", Qt::SkipEmptyParts );
-  QStringList::const_iterator it = folders.begin();
-  for ( ; it != folders.end(); ++it ) {
-    idx = findItemInFolder( *it, TreeItem::Folder, idx );
-    if ( !idx.isValid() ) {
-      break;
-    }
+  QModelIndex parentIndex{};
+  if ( !activeFolderFullPath.empty() ) {
+    parentIndex = getModelIndexByFullPath( activeFolderFullPath );
   }
-
-  if ( path.isEmpty() || idx.isValid() ) {
-    idx = findItemInFolder( headword, TreeItem::Word, idx );
-    if ( idx.isValid() ) {
-      QModelIndexList list;
-      list.append( idx );
-      removeItemsForIndexes( list );
+  for ( int i = 0; i < rowCount( parentIndex ); ++i ) {
+    TreeItem * c = getItem( index( i, 0, parentIndex ) );
+    if ( c->type() == TreeItem::Word && c->data().toString() == headword ) {
+      removeRows( i, 1, parentIndex );
       return true;
     }
   }
-
   return false;
 }
 
-bool FavoritesModel::isHeadwordPresent( const QString & path, const QString & headword )
+bool FavoritesModel::isWordPresentFullPath( const QString & headword )
 {
-  QModelIndex idx;
+  TreeItem * targetFolder =
+    activeFolderFullPath.empty() ? getItem( QModelIndex() ) : getItemByFullPath( activeFolderFullPath );
 
-  // Find target folder
-
-  QStringList folders            = path.split( "/", Qt::SkipEmptyParts );
-  QStringList::const_iterator it = folders.begin();
-  for ( ; it != folders.end(); ++it ) {
-    idx = findItemInFolder( *it, TreeItem::Folder, idx );
-    if ( !idx.isValid() ) {
-      break;
+  if ( targetFolder != nullptr ) {
+    for ( int i = 0; i < targetFolder->childCount(); i++ ) {
+      TreeItem * item = targetFolder->child( i );
+      if ( item->type() == TreeItem::Word ) {
+        if ( item->data().toString() == headword ) {
+          return true;
+        }
+      }
     }
   }
 
-  if ( path.isEmpty() || idx.isValid() ) {
-    idx = findItemInFolder( headword, TreeItem::Word, idx );
-    return idx.isValid();
-  }
-
   return false;
-}
+};
+
 
 QModelIndex FavoritesModel::forceFolder( QString const & name, const QModelIndex & parentIdx )
 {

@@ -1,8 +1,18 @@
 ![favoriates](img/fav.webp)
 
-Favorites is a hierarchical structure of folders and headers in them. Folders can be bound to specific groups of dictionaries. The folder is bound to the group if it is specified in the settings of the corresponding group. The headwords opened in that group will be stored to this folder. Accordingly headwords from this folder will be opened in that group. If the folder is not bound to any group of dictionaries then headwords from it will be opened in the current group.
+Favorites is a hierarchical structure of folders and words in them.
 
-Favorites allows you to create folders manually via context menu, to move/add items to them simply by dragging and dropping as well as to delete selected items via context menu or by pressing the "Del" key.
+You could create folders manually via context menu.
+
+By default the ⭐icon on the toolbar will add/remove word from the top most level.
+
+To add/remove word from a specific folder, you can "active" a folder via context menu,
+then clicking the ⭐icon will add/remove words from this folder.
+
+Group can be associated with specific folders.
+When switching groups, the associated folder will be automatically activated.
+
+The entries can be moved simply by dragging and dropping. The entries can be deleted via context menu or by pressing the "Del" key.
 
 In addition to adding and removing items to/from the Favorites you can perform the following operations via context menu or the main menu:
 

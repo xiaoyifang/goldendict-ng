@@ -7,8 +7,8 @@ Additionally, multiple strategies of automatic grouping are provided:
 * based on the language info embedded within dictionary files
 * based on the folder structure
 * based on customizable metadata files
-
-## Auto groups by dictionary language
+## Auto grouping
+### Auto groups by dictionary language
 
 For formats like DSL, which has embedded language from / to metadata, GD will use the dictionary's built-in metadata.
 
@@ -16,7 +16,7 @@ For other formats, GD will try finding the last `{id}-{id}` pair delimited by no
 
 Groups created in this method also include a context menu when right-click the group name, in which you can do additional dictionaries grouping by source or target language and combine dictionaries in more large groups.
 
-## Auto groups by folders
+### Auto groups by folders
 
 Click the "Group by folders" will group your dicts based on folder structure.
 
@@ -66,10 +66,10 @@ More levels of folder nesting are not supported.
 ├─Mastameta
 │   └─Japanese   <- Group
 |       └─DictB  <- Dict Files's container folder
-|          └─ DictB Files  
+|          └─ DictB Files
 ```
 
-## Auto groups by `metadata.toml`
+### Auto groups by `metadata.toml`
 
 Click the "group by metadata" will group your dicts based on `metadata.toml`.
 
@@ -96,11 +96,11 @@ For example,
 │    ├── Cambridge.idx
 │    ├── Cambridge.info
 │    ├── Cambridge.syn
-│    └── Cambridge.dict.dz    
+│    └── Cambridge.dict.dz
 └── Collins
      ├── metadata.toml
      ├── res.zip
-     └── Collins.dsl       (B)  
+     └── Collins.dsl       (B)
 
 ```
 
@@ -121,3 +121,13 @@ The structure above will be auto grouped into three groups:
 * `汉英词典` with `Cambridge`,`Collins`
 
 Note: Dictionaries without `metadata.toml` won't be auto-grouped.
+
+## Active favoriate folder
+
+A group can have a specified target folder for saving favvoriates.
+
+When stiching groups, the target folder will be automatically activated.
+
+For simple use cases, just type the name of an existing folder name.
+
+If folder is nested, then use `/` as seprator, such as `english/food/spicy` or `spanish/greetings`.
