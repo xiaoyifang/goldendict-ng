@@ -4360,12 +4360,12 @@ void MainWindow::setGroupByName( QString const & name, bool main_window )
   }
 }
 
-void MainWindow::headwordFromFavorites( QString const & headword, QString const & favoritesFolder )
+void MainWindow::headwordFromFavorites( QString const & headword, QString const & favFolderFullPath )
 {
-  if ( !favoritesFolder.isEmpty() ) {
+  if ( !favFolderFullPath.isEmpty() ) {
     // Find group by it Favorites folder
     for ( Instances::Groups::size_type i = 0; i < groupInstances.size(); i++ ) {
-      if ( groupInstances[ i ].favoritesFolder == favoritesFolder ) {
+      if ( groupInstances[ i ].favoritesFolder == favFolderFullPath ) {
         // Group found. Select it and stop search.
         if ( groupList->currentIndex() != (int)i ) {
           groupList->setCurrentIndex( i );

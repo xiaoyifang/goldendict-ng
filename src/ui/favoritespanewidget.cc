@@ -269,8 +269,11 @@ void FavoritesPaneWidget::emitFavoritesItemRequested( QModelIndex const & idx )
     return;
   }
 
-  QString headword = m_favoritesModel->data( idx, Qt::DisplayRole ).toString();
-  QString path     = m_favoritesModel->pathToItem( idx );
+  // User will set group->folder in format of "a/b/c"
+  QString headword     = m_favoritesModel->data( idx, Qt::DisplayRole ).toString();
+  QStringList fullpath = m_favoritesModel->getItem( idx )->fullPath();
+  fullpath.removeLast();
+  QString path = fullpath.join( "/" );
 
   if ( !headword.isEmpty() ) {
     emit favoritesItemRequested( headword, path );
@@ -991,47 +994,54 @@ TreeItem * FavoritesModel::getItem( const QModelIndex & index ) const
 
 TreeItem * FavoritesModel::getItemByFullPath( const QStringList & fullPath ) const
 {
-  TreeItem * targetFolder = nullptr;
-  TreeItem * parentItem   = getItem( QModelIndex() );
-  for ( qsizetype fullPathPos = 0; fullPathPos < fullPath.count(); ++fullPathPos ) {
-    for ( int i = 0; i < parentItem->childCount(); i++ ) {
-      TreeItem * item = parentItem->child( i );
-      if ( item->type() == TreeItem::Folder ) {
-        if ( item->data().toString() == fullPath[ fullPathPos ] ) {
-          if ( fullPathPos == ( fullPath.count() - 1 ) ) {
-            targetFolder = item;
-            return targetFolder;
-          }
-          else {
-            parentItem = item;
-            break;
-          }
-        }
+  TreeItem * parentItem = getItem( QModelIndex() );
+  for ( auto pathPart = fullPath.begin(); pathPart != fullPath.end(); pathPart++ ) {
+
+    QList< TreeItem * > & childItems = parentItem->children();
+    auto folder_found = std::find_if( childItems.begin(), childItems.end(), [ &pathPart ]( TreeItem * item ) {
+      return ( item->type() == TreeItem::Folder && item->data().toString() == *pathPart );
+    } );
+
+    if ( folder_found == childItems.end() ) {
+      return nullptr; // early return as no match found and no need to loop further
+    }
+    else {
+      if ( pathPart == fullPath.end() - 1 ) {
+        return *folder_found; // the last item of fullPath, happy end reached
+      }
+      else {
+        parentItem = *folder_found;
+        continue; // go deeper level
       }
     }
   }
-  return targetFolder;
+  return nullptr; // no match
 }
 
-QModelIndex FavoritesModel::getModelIndexByFullPath( const QStringList & fullPath_ ) const
+QModelIndex FavoritesModel::getModelIndexByFullPath( const QStringList & fullPath ) const
 {
   QModelIndex targetIndex = QModelIndex();
-  QStringList fullPath    = fullPath_;
-  fullPath.prepend( "" );
 
-  for ( qsizetype fullPathPos = 0; fullPathPos < fullPath.count(); ++fullPathPos ) {
-    for ( int i = 0; i < rowCount( targetIndex ); ++i ) {
-      TreeItem * item = getItem( targetIndex )->child( i );
-      if ( item->type() == TreeItem::Folder || item->type() == TreeItem::Root ) {
-        if ( item->data().toString() == fullPath[ fullPathPos ] ) {
-          if ( fullPathPos == ( fullPath.count() - 1 ) ) {
-            return createIndex( i, 0, item );
-          }
-          else {
-            targetIndex = createIndex( i, 0, item );
-            break;
-          }
-        }
+  for ( auto pathPart = fullPath.begin(); pathPart != fullPath.end(); pathPart++ ) {
+    QList< TreeItem * > childItems = getItem( targetIndex )->children();
+    auto folder_found = std::find_if( childItems.begin(), childItems.end(), [ &pathPart ]( TreeItem * item ) {
+      return ( item->type() == TreeItem::Folder || item->type() == TreeItem::Root )
+        && item->data().toString() == *pathPart;
+    } );
+
+    if ( folder_found == childItems.end() ) {
+      return {}; // early return as no match found and no need to loop further
+    }
+    else {
+      qsizetype rowIndex           = std::distance( childItems.begin(), folder_found );
+      QModelIndex found_modelIndex = createIndex( rowIndex, 0, *folder_found );
+
+      if ( pathPart == fullPath.end() - 1 ) {
+        return found_modelIndex; // the last item of fullPath, happy end reached
+      }
+      else {
+        targetIndex = found_modelIndex;
+        continue; //go deeper level
       }
     }
   }

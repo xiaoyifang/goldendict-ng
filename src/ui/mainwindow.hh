@@ -67,7 +67,7 @@ public slots:
   void messageFromAnotherInstanceReceived( QString const & );
   void showStatusBarMessage( QString const &, int, QPixmap const & );
   void wordReceived( QString const & );
-  void headwordFromFavorites( QString const &, QString const & );
+  void headwordFromFavorites( QString const & word, QString const & favFolderFullPath );
   /// Save config and states...
   void commitData();
   void quitApp();

@@ -138,6 +138,10 @@ public:
   void deleteChild( int row );
 
   TreeItem * child( int row ) const;
+  QList< TreeItem * > & children()
+  {
+    return childItems;
+  };
   int childCount() const;
   QVariant data() const;
   void setData( const QVariant & newData );
