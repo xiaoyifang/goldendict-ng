@@ -1000,6 +1000,7 @@ TreeItem * FavoritesModel::getItemByFullPath( const QStringList & fullPath ) con
         if ( item->data().toString() == fullPath[ fullPathPos ] ) {
           if ( fullPathPos == ( fullPath.count() - 1 ) ) {
             targetFolder = item;
+            return targetFolder;
           }
           else {
             parentItem = item;
