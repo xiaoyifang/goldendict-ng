@@ -270,6 +270,7 @@ public slots:
 
 signals:
   void expandItem( const QModelIndex & index );
+  void itemDropped();
 
 protected:
   void readData();

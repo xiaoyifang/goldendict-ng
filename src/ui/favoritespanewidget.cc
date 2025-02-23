@@ -32,7 +32,6 @@ void FavoritesPaneWidget::setUp( Config::Class * cfg, std::initializer_list< QAc
 
   // Active the current folder for favoriate controlling
   m_activeFolderForFav = new QAction( this );
-  m_activeFolderForFav->setText( tr( "Active folder" ) );
   m_activeFolderForFav->setToolTip( tr( "Make this folder the target of adding/removing words actions." ) );
   m_activeFolderForFav->setShortcutContext( Qt::WidgetWithChildrenShortcut );
   addAction( m_activeFolderForFav );
@@ -135,6 +134,10 @@ void FavoritesPaneWidget::setUp( Config::Class * cfg, std::initializer_list< QAc
            &FavoritesPaneWidget::onSelectionChanged );
 
   connect( m_favoritesTree, &QWidget::customContextMenuRequested, this, &FavoritesPaneWidget::showCustomMenu );
+
+  connect( m_favoritesModel, &FavoritesModel::itemDropped, this, [ this ] {
+    emit activeFavChange();
+  } );
 }
 
 FavoritesPaneWidget::~FavoritesPaneWidget()
@@ -221,10 +224,10 @@ void FavoritesPaneWidget::showCustomMenu( QPoint const & pos )
     m_favoritesMenu->addAction( m_activeFolderForFav );
 
     if ( m_favoritesModel->getItem( selectedIdxs.first() )->fullPath() == m_favoritesModel->activeFolderFullPath ) {
-      m_activeFolderForFav->setText( "Deactive folder" );
+      m_activeFolderForFav->setText( "Deactivate folder" );
     }
     else {
-      m_activeFolderForFav->setText( "Active folder" );
+      m_activeFolderForFav->setText( "Activate folder" );
     }
   }
 
@@ -949,6 +952,7 @@ bool FavoritesModel::dropMimeData(
         endInsertRows();
 
         dirty = true;
+        emit itemDropped();
 
         return true;
       }

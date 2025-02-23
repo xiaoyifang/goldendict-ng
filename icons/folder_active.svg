@@ -20,9 +20,9 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="3.3145684"
-     inkscape:cx="46.159857"
-     inkscape:cy="40.578436"
+     inkscape:zoom="7.2873674"
+     inkscape:cx="33.757047"
+     inkscape:cy="37.119029"
      inkscape:current-layer="layer2" />
   <defs
      id="defs15">
@@ -393,7 +393,7 @@
      inkscape:label="star">
     <g
        id="g38"
-       transform="translate(-0.60339682,1.508492)">
+       transform="matrix(1.1559684,0,0,1.1559684,-7.4038015,-2.2652448)">
       <path
          d="m 40.387738,34.130524 -9.559112,-4.803958 -9.570628,4.783372 1.838618,-10.150798 -7.729348,-7.198846 10.695695,-1.469857 4.793161,-9.232317 4.771493,9.242395 10.692097,1.492748 -7.746625,7.182144 1.814721,10.155117 z"
          fill="url(#b)"

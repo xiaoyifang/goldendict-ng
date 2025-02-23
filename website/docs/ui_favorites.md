@@ -4,7 +4,7 @@ Favorites is a hierarchical structure of folders and words in them. You could cr
 
 By default, the ⭐ icon on the toolbar will indiciate if word is in top most level.
 
-You can "active" a folder via context menu. Then the ⭐ icon will indiciate if a word is in this folder and clicking the ⭐ icon will add/remove words to/from this folder.
+You can "activate" a folder via context menu. Then the ⭐ icon will indiciate if a word is in this folder and clicking the ⭐ icon will add/remove words to/from this folder.
 
 A group can have a associated folder.
 When switching groups, the associated folder will be automatically activated. For simple use cases, just use the name of an existing folder.
