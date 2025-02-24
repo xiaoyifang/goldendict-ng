@@ -823,6 +823,10 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
       <source>Are you sure you want to clear all items?</source>
       <translation>Naozaj chcete vymazať všetky položky?</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -2336,10 +2340,6 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
       <translation>F1</translation>
     </message>
     <message>
-      <source>Show</source>
-      <translation>Zobraziť</translation>
-    </message>
-    <message>
       <source>Export</source>
       <translation>Exportovať</translation>
     </message>
@@ -2645,6 +2645,10 @@ Pre vyhľadanie znakov &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Odstrániť heslové slovo &quot;%1&quot; z Obľúbených?</translation>
+    </message>
+    <message>
+      <source>Show</source>
+      <translation>Zobraziť</translation>
     </message>
   </context>
   <context>
