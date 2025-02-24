@@ -168,10 +168,13 @@ jobs:
           echo "newTag=v${{ env.version }}-${{ env.versionSuffix }}.${{ steps.shortSHA.outputs.sha_short }}" >> $GITHUB_OUTPUT
       - name: Build Changelog
         id: build_changelog
-        run: |
-          npm install git-cliff -g
-          git-cliff --context
-          git-cliff ${{ steps.changelogTags.outputs.prev_tag }}..HEAD -o changelog.txt
+        uses: orhun/git-cliff-action@v4
+        with:
+          config: cliff.toml
+          args: ${{ steps.changelogTags.outputs.prev_tag }}..HEAD
+        env:
+          OUTPUT: changelog.txt
+      
       - name: Get changelog.txt
         run: |
           # HEREDOC must be quoted to avoid Bash substitution
