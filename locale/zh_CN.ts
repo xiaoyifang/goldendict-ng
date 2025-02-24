@@ -824,7 +824,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
-      <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
+      <translation>将此文件夹作为添加/删除单词操作的目标。</translation>
     </message>
   </context>
   <context>
