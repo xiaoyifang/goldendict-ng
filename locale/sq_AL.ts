@@ -822,6 +822,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Are you sure you want to clear all items?</source>
       <translation>Jeni i sigurt që dëshironi të pastroni të gjithë artikujt?</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -2335,10 +2339,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>F1</translation>
     </message>
     <message>
-      <source>Show</source>
-      <translation>Shfaqje</translation>
-    </message>
-    <message>
       <source>Export</source>
       <translation>Eksporto</translation>
     </message>
@@ -2643,6 +2643,10 @@ Për të gjetur &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simbo
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Të hiqet kryefjala &quot;%1&quot; nga Të preferuarat?</translation>
+    </message>
+    <message>
+      <source>Show</source>
+      <translation>Shfaqje</translation>
     </message>
   </context>
   <context>
