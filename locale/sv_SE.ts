@@ -823,6 +823,10 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <source>Are you sure you want to clear all items?</source>
       <translation>Är du säker på att du vill rensa alla objekt?</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -2336,10 +2340,6 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <translation>F1</translation>
     </message>
     <message>
-      <source>Show</source>
-      <translation>Visa</translation>
-    </message>
-    <message>
       <source>Export</source>
       <translation>Exportera</translation>
     </message>
@@ -2644,6 +2644,10 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Ta bort huvudord &quot;%1&quot; från Favoriter?</translation>
+    </message>
+    <message>
+      <source>Show</source>
+      <translation>Visa</translation>
     </message>
   </context>
   <context>
