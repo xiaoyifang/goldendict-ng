@@ -14,7 +14,7 @@ Filename pattern: GoldenDict-ng-[version]-[Qt version]-[system name]...
 
 For Linux, the released version is on Flathub → [io.github.xiaoyifang.goldendict_ng](https://flathub.org/apps/io.github.xiaoyifang.goldendict_ng).
 
-Based on branch: ${{ remote.github.ref_name }}
+Based on branch: ${{ remote.github.ref }}
 
 """
 # template for the changelog body
