@@ -823,6 +823,10 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
       <source>Are you sure you want to clear all items?</source>
       <translation>Czy na pewno chcesz usunąć wszystkie elementy?</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -2336,10 +2340,6 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
       <translation>F1</translation>
     </message>
     <message>
-      <source>Show</source>
-      <translation>Pokaż</translation>
-    </message>
-    <message>
       <source>Export</source>
       <translation>Eksportuj</translation>
     </message>
@@ -2644,6 +2644,10 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Usunąć słowo nagłówka &quot;%1&quot; z Ulubionych?</translation>
+    </message>
+    <message>
+      <source>Show</source>
+      <translation>Pokaż</translation>
     </message>
   </context>
   <context>
