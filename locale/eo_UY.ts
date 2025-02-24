@@ -823,6 +823,10 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <source>Are you sure you want to clear all items?</source>
       <translation>Ĉu vi certas, ke vi volas forigi ĉiujn erojn?</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -2336,10 +2340,6 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <translation>F1</translation>
     </message>
     <message>
-      <source>Show</source>
-      <translation>Montru</translation>
-    </message>
-    <message>
       <source>Export</source>
       <translation>Eksporto</translation>
     </message>
@@ -2644,6 +2644,10 @@ Por trovi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simboloj uz
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Ĉu forigi kapvorton &quot;%1&quot; el Favoritoj?</translation>
+    </message>
+    <message>
+      <source>Show</source>
+      <translation>Montru</translation>
     </message>
   </context>
   <context>
