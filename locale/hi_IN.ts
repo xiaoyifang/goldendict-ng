@@ -822,6 +822,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Are you sure you want to clear all items?</source>
       <translation>क्या आप वाकई सभी आइटम साफ़ करना चाहते हैं?</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -2335,10 +2339,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>एफ1</translation>
     </message>
     <message>
-      <source>Show</source>
-      <translation>दिखाना</translation>
-    </message>
-    <message>
       <source>Export</source>
       <translation>Exporter</translation>
     </message>
@@ -2643,6 +2643,10 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>पसंदीदा से हेडवर्ड &quot;%1&quot; हटाएं?</translation>
+    </message>
+    <message>
+      <source>Show</source>
+      <translation>दिखाना</translation>
     </message>
   </context>
   <context>
