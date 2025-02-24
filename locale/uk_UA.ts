@@ -823,6 +823,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Are you sure you want to clear all items?</source>
       <translation>Ви впевнені, що бажаєте очистити всі елементи?</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -2337,10 +2341,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ф1</translation>
     </message>
     <message>
-      <source>Show</source>
-      <translation>Показати</translation>
-    </message>
-    <message>
       <source>Export</source>
       <translation>Експорт</translation>
     </message>
@@ -2645,6 +2645,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Видалити заголовки &quot;%1&quot; з вибраного?</translation>
+    </message>
+    <message>
+      <source>Show</source>
+      <translation>Показати</translation>
     </message>
   </context>
   <context>
