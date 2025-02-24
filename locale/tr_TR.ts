@@ -823,6 +823,10 @@ arasındaki farkı giderir)</translation>
       <source>Are you sure you want to clear all items?</source>
       <translation>Tüm öğeleri temizlemek istediğinizden emin misiniz?</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -2336,10 +2340,6 @@ arasındaki farkı giderir)</translation>
       <translation>F1</translation>
     </message>
     <message>
-      <source>Show</source>
-      <translation>Göster</translation>
-    </message>
-    <message>
       <source>Export</source>
       <translation>Dışa aktar</translation>
     </message>
@@ -2644,6 +2644,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>&quot;%1&quot; madde başı favorilerden çıkarılsın mı?</translation>
+    </message>
+    <message>
+      <source>Show</source>
+      <translation>Göster</translation>
     </message>
   </context>
   <context>
