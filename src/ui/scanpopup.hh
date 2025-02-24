@@ -80,7 +80,7 @@ signals:
   /// Put translated word into history
   void sendWordToHistory( QString const & word );
   /// Put translated word into Favorites
-  void sendWordToFavorites( QString const & word, unsigned groupId, bool );
+  void sendWordToFavorites( QString const & word );
 
 #ifdef Q_OS_WIN32
   /// Ask for source window is current translate tab
@@ -122,7 +122,7 @@ private:
 
   void updateDictionaryBar();
   /// Check is word already presented in Favorites
-  bool isWordPresentedInFavorites( QString const & word, unsigned groupId ) const;
+  bool isWordPresentedInFavorites( QString const & word ) const;
 
   Config::Class & cfg;
   std::vector< sptr< Dictionary::Class > > const & allDictionaries;

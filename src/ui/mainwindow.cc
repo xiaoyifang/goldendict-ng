@@ -587,7 +587,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   // Favorites
 
-  ui.favoritesPaneWidget->setUp( &cfg, ui.menuFavorites );
+  ui.favoritesPaneWidget->setUp( &cfg, { ui.showHideFavorites, ui.importFavorites, ui.exportFavorites } );
   ui.favoritesPaneWidget->setSaveInterval( cfg.preferences.favoritesStoreInterval );
 
   connect( ui.favoritesPane, &QDockWidget::visibilityChanged, this, &MainWindow::updateFavoritesMenu );
@@ -597,6 +597,12 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
            &FavoritesPaneWidget::favoritesItemRequested,
            this,
            &MainWindow::headwordFromFavorites );
+
+  connect( ui.favoritesPaneWidget, &FavoritesPaneWidget::activeFavChange, this, &MainWindow::updateFavIconSlot );
+
+  GlobalBroadcaster::instance()->isWordPresentedInFavorites = [ this ]( const QString & word ) {
+    return this->ui.favoritesPaneWidget->isWordPresentInActiveFolder( word );
+  };
 
   // History
   ui.historyPaneWidget->setUp( &cfg, &history, ui.menuHistory );
@@ -806,7 +812,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( scanPopup, &ScanPopup::openDictionaryFolder, this, &MainWindow::openDictionaryFolder );
   connect( scanPopup, &ScanPopup::sendWordToHistory, this, &MainWindow::addWordToHistory );
   connect( this, &MainWindow::setPopupGroupByName, scanPopup, &ScanPopup::setGroupByName );
-  connect( scanPopup, &ScanPopup::sendWordToFavorites, this, &MainWindow::addWordToFavorites );
+  connect( scanPopup,
+           &ScanPopup::sendWordToFavorites,
+           ui.favoritesPaneWidget,
+           &FavoritesPaneWidget::addRemoveWordInActiveFav );
 
 #ifdef Q_OS_MAC
   macClipboard = new gd_clipboard( this );
@@ -1633,10 +1642,8 @@ void MainWindow::updateGroupList( bool reload )
     groupInstances.push_back( g );
   }
 
-  GlobalBroadcaster::instance()->groupFolderMap.clear();
   for ( auto & group : cfg.groups ) {
     groupInstances.push_back( Instances::Group( group, dictionaries, cfg.inactiveDictionaries ) );
-    GlobalBroadcaster::instance()->groupFolderMap.insert( group.id, group.favoritesFolder );
   }
 
   // Update names for dictionaries that are present, so that they could be
@@ -1996,15 +2003,7 @@ void MainWindow::titleChanged( ArticleView * view, QString const & title )
   }
 
   if ( index == ui.tabWidget->currentIndex() ) {
-    // Set icon for "Add to Favorites" action
-    if ( isWordPresentedInFavorites( title, cfg.lastMainGroupId ) ) {
-      addToFavorites->setIcon( blueStarIcon );
-      addToFavorites->setToolTip( tr( "Remove current tab from Favorites" ) );
-    }
-    else {
-      addToFavorites->setIcon( starIcon );
-      addToFavorites->setToolTip( tr( "Add current tab to Favorites" ) );
-    }
+    updateFavIcon( title );
 
     updateWindowTitle();
   }
@@ -2066,14 +2065,8 @@ void MainWindow::tabSwitched( int )
   if ( view ) {
     headword = view->getCurrentWord();
   }
-  if ( isWordPresentedInFavorites( headword, cfg.lastMainGroupId ) ) {
-    addToFavorites->setIcon( blueStarIcon );
-    addToFavorites->setToolTip( tr( "Remove current tab from Favorites" ) );
-  }
-  else {
-    addToFavorites->setIcon( starIcon );
-    addToFavorites->setToolTip( tr( "Add current tab to Favorites" ) );
-  }
+
+  updateFavIcon( headword );
 
   if ( view ) {
     groupList->setCurrentGroup( view->getCurrentGroupId() );
@@ -2416,6 +2409,10 @@ void MainWindow::currentGroupChanged( int )
 
   if ( ftsDlg ) {
     ftsDlg->setCurrentGroup( grg_id );
+  }
+
+  if ( igrp ) {
+    ui.favoritesPaneWidget->trySetCurrentActiveFav( igrp->favoritesFolder.split( '/' ) );
   }
 }
 
@@ -4245,19 +4242,13 @@ void MainWindow::showFTSIndexingName( QString const & name )
 
 void MainWindow::addCurrentTabToFavorites()
 {
-  QString folder;
-  Instances::Group const * igrp = groupInstances.findGroup( cfg.lastMainGroupId );
-  if ( igrp ) {
-    folder = igrp->favoritesFolder;
-  }
-
   auto view = getCurrentArticleView();
   if ( !view ) {
     return;
   }
   auto headword = view->getCurrentWord();
 
-  ui.favoritesPaneWidget->addHeadword( folder, headword );
+  ui.favoritesPaneWidget->addWordToActiveFav( headword );
 
   addToFavorites->setIcon( blueStarIcon );
   addToFavorites->setToolTip( tr( "Remove current tab from Favorites" ) );
@@ -4265,52 +4256,32 @@ void MainWindow::addCurrentTabToFavorites()
 
 void MainWindow::handleAddToFavoritesButton()
 {
-  QString folder;
-  Instances::Group const * igrp = groupInstances.findGroup( cfg.lastMainGroupId );
-  if ( igrp ) {
-    folder = igrp->favoritesFolder;
-  }
   auto view = getCurrentArticleView();
   if ( !view ) {
     return;
   }
   auto headword = view->getCurrentWord();
 
-  if ( ui.favoritesPaneWidget->isHeadwordPresent( folder, headword ) ) {
+  if ( ui.favoritesPaneWidget->isWordPresentInActiveFolder( headword ) ) {
     QMessageBox mb( QMessageBox::Question,
                     "GoldenDict",
                     tr( "Remove headword \"%1\" from Favorites?" ).arg( headword ),
                     QMessageBox::Yes | QMessageBox::No,
                     this );
     if ( mb.exec() == QMessageBox::Yes ) {
-      if ( ui.favoritesPaneWidget->removeHeadword( folder, headword ) ) {
+      if ( ui.favoritesPaneWidget->removeWordFromActiveFav( headword ) ) {
         addToFavorites->setIcon( starIcon );
         addToFavorites->setToolTip( tr( "Add current tab to Favorites" ) );
       }
     }
   }
   else {
-    ui.favoritesPaneWidget->addHeadword( folder, headword );
+    ui.favoritesPaneWidget->addWordToActiveFav( headword );
     addToFavorites->setIcon( blueStarIcon );
     addToFavorites->setToolTip( tr( "Remove current tab from Favorites" ) );
   }
 }
 
-void MainWindow::addWordToFavorites( QString const & word, unsigned groupId, bool exist )
-{
-  QString folder;
-  Instances::Group const * igrp = groupInstances.findGroup( groupId );
-  if ( igrp ) {
-    folder = igrp->favoritesFolder;
-  }
-
-  if ( !exist ) {
-    ui.favoritesPaneWidget->addHeadword( folder, word );
-  }
-  else {
-    ui.favoritesPaneWidget->removeHeadword( folder, word );
-  }
-}
 
 void MainWindow::addBookmarkToFavorite( QString const & text )
 {
@@ -4322,7 +4293,7 @@ void MainWindow::addBookmarkToFavorite( QString const & text )
   auto word           = view->getCurrentWord();
   const auto bookmark = QString( "%1~~~%2" ).arg( word, text );
 
-  ui.favoritesPaneWidget->addHeadword( nullptr, bookmark );
+  ui.favoritesPaneWidget->addWordToActiveFav( bookmark );
 }
 
 void MainWindow::addAllTabsToFavorites()
@@ -4339,24 +4310,35 @@ void MainWindow::addAllTabsToFavorites()
       continue;
     }
     auto headword = view->getCurrentWord();
-    ui.favoritesPaneWidget->addHeadword( folder, headword );
+    ui.favoritesPaneWidget->addWordToActiveFav( headword );
   }
   addToFavorites->setIcon( blueStarIcon );
   addToFavorites->setToolTip( tr( "Remove current tab from Favorites" ) );
 }
 
-bool MainWindow::isWordPresentedInFavorites( QString const & word, unsigned groupId )
+bool MainWindow::updateFavIcon( QString const & word )
 {
+
+  if ( ui.favoritesPaneWidget->isWordPresentInActiveFolder( word ) ) {
+    addToFavorites->setIcon( blueStarIcon );
+    addToFavorites->setToolTip( tr( "Remove current tab from Favorites" ) );
+  }
+  else {
+    addToFavorites->setIcon( starIcon );
+    addToFavorites->setToolTip( tr( "Add current tab to Favorites" ) );
+  }
+
   if ( word.isEmpty() ) {
     return false;
   }
-  QString folder;
-  Instances::Group const * igrp = groupInstances.findGroup( groupId );
-  if ( igrp ) {
-    folder = igrp->favoritesFolder;
-  }
 
-  return ui.favoritesPaneWidget->isHeadwordPresent( folder, word );
+  return ui.favoritesPaneWidget->isWordPresentInActiveFolder( word );
+}
+
+
+void MainWindow::updateFavIconSlot()
+{
+  updateFavIcon( getCurrentArticleView()->getCurrentWord() );
 }
 
 void MainWindow::setGroupByName( QString const & name, bool main_window )
@@ -4378,12 +4360,12 @@ void MainWindow::setGroupByName( QString const & name, bool main_window )
   }
 }
 
-void MainWindow::headwordFromFavorites( QString const & headword, QString const & favoritesFolder )
+void MainWindow::headwordFromFavorites( QString const & headword, QString const & favFolderFullPath )
 {
-  if ( !favoritesFolder.isEmpty() ) {
+  if ( !favFolderFullPath.isEmpty() ) {
     // Find group by it Favorites folder
     for ( Instances::Groups::size_type i = 0; i < groupInstances.size(); i++ ) {
-      if ( groupInstances[ i ].favoritesFolder == favoritesFolder ) {
+      if ( groupInstances[ i ].favoritesFolder == favFolderFullPath ) {
         // Group found. Select it and stop search.
         if ( groupList->currentIndex() != (int)i ) {
           groupList->setCurrentIndex( i );
