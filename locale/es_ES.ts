@@ -823,6 +823,10 @@ entre ortografía clásica y escolar en cirílico)</translation>
       <source>Are you sure you want to clear all items?</source>
       <translation>¿Está seguro de que desea borrar todos los elementos?</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -2336,10 +2340,6 @@ entre ortografía clásica y escolar en cirílico)</translation>
       <translation>F1</translation>
     </message>
     <message>
-      <source>Show</source>
-      <translation>Mostrar</translation>
-    </message>
-    <message>
       <source>Export</source>
       <translation>Exportar</translation>
     </message>
@@ -2644,6 +2644,10 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>¿Eliminar el encabezado &quot;%1&quot; de Favoritos?</translation>
+    </message>
+    <message>
+      <source>Show</source>
+      <translation>Mostrar</translation>
     </message>
   </context>
   <context>
