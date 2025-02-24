@@ -822,6 +822,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Are you sure you want to clear all items?</source>
       <translation type="unfinished">Are you sure you want to clear all items?</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -2336,10 +2340,6 @@ Reordene los grupos usando el mouse sobre las pestañas con los nombres de los m
       <translation>F1</translation>
     </message>
     <message>
-      <source>Show</source>
-      <translation>Espectáculo</translation>
-    </message>
-    <message>
       <source>Export</source>
       <translation>Exportar</translation>
     </message>
@@ -2644,6 +2644,10 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; uso de
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>¿Eliminar el encabezado &quot;%1&quot; de Favoritos?</translation>
+    </message>
+    <message>
+      <source>Show</source>
+      <translation>Espectáculo</translation>
     </message>
   </context>
   <context>
