@@ -823,6 +823,10 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <source>Are you sure you want to clear all items?</source>
       <translation>Haluatko varmasti tyhjentää kaikki kohteet?</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -2336,10 +2340,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>F1</translation>
     </message>
     <message>
-      <source>Show</source>
-      <translation>Näytä</translation>
-    </message>
-    <message>
       <source>Export</source>
       <translation>Vie</translation>
     </message>
@@ -2644,6 +2644,10 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Poista otsikkosana &quot;%1&quot; suosikeista?</translation>
+    </message>
+    <message>
+      <source>Show</source>
+      <translation>Näytä</translation>
     </message>
   </context>
   <context>
