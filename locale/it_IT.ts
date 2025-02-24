@@ -823,6 +823,10 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
       <source>Are you sure you want to clear all items?</source>
       <translation>Vuoi davvero cancellare tutti gli elementi?</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -2336,10 +2340,6 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
       <translation>F1</translation>
     </message>
     <message>
-      <source>Show</source>
-      <translation>Mostra</translation>
-    </message>
-    <message>
       <source>Export</source>
       <translation>Esporta</translation>
     </message>
@@ -2645,6 +2645,10 @@ Clicca &lt;b&gt;Scarica&lt;/b&gt; per accedere alla pagina di scaricamento.</tra
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Rimuovere il  lemma  &quot;%1&quot; dai Preferiti?</translation>
+    </message>
+    <message>
+      <source>Show</source>
+      <translation>Mostra</translation>
     </message>
   </context>
   <context>
