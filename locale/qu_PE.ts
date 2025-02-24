@@ -823,6 +823,10 @@ chiqan kayninta sumaqyachin)</translation>
       <source>Are you sure you want to clear all items?</source>
       <translation>¿Segurochu kanki llapa imakunatapas chuyanchayta munasqaykimanta?</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -2336,10 +2340,6 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>F1</translation>
     </message>
     <message>
-      <source>Show</source>
-      <translation>Qawachiy</translation>
-    </message>
-    <message>
       <source>Export</source>
       <translation>Hawaman apachiy</translation>
     </message>
@@ -2644,6 +2644,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>¿Munasqakunamanta &quot;%1&quot; umalliq simita hurquy?</translation>
+    </message>
+    <message>
+      <source>Show</source>
+      <translation>Qawachiy</translation>
     </message>
   </context>
   <context>
