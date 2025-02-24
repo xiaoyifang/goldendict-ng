@@ -823,6 +823,10 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
       <source>Are you sure you want to clear all items?</source>
       <translation>Biztosan törölni szeretné az összes elemet?</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -2336,10 +2340,6 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
       <translation>F1</translation>
     </message>
     <message>
-      <source>Show</source>
-      <translation>Megjelenítés</translation>
-    </message>
-    <message>
       <source>Export</source>
       <translation>Exportálás</translation>
     </message>
@@ -2644,6 +2644,10 @@ A &apos;*&apos;, &apos;?&apos;, &apos;[&apos; és &apos;]&apos; karakterek keres
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Eltávolítja a címszót a kedvencekből: &quot;%1&quot;?</translation>
+    </message>
+    <message>
+      <source>Show</source>
+      <translation>Megjelenítés</translation>
     </message>
   </context>
   <context>
