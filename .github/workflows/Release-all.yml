@@ -170,6 +170,7 @@ jobs:
         id: build_changelog
         run: |
           npm install git-cliff -g
+          git-cliff --context
           git-cliff ${{ steps.changelogTags.outputs.prev_tag }}..HEAD -o changelog.txt
       - name: Get changelog.txt
         run: |
