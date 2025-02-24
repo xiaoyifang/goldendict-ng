@@ -831,6 +831,10 @@ Todos los items seleccionados serán borrados. ¿Quiere continuar?</translation>
       <source>Are you sure you want to clear all items?</source>
       <translation>¿Taqi yänak q’umachañ munasmati?</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -2370,10 +2374,6 @@ Guardar artículo</translation>
       <translation>F1</translation>
     </message>
     <message>
-      <source>Show</source>
-      <translation>Uñachayaña</translation>
-    </message>
-    <message>
       <source>Export</source>
       <translation>&amp;Anqar apsuña</translation>
     </message>
@@ -2707,6 +2707,10 @@ Error de importación: datos incorrectos en el fichero.</translation>
       <translation>Munat arunakatxa &quot;%1&quot; chhaqtayañ muntati?
 
 ¿Eliminar la palabra &quot;%1&quot; de favoritos?</translation>
+    </message>
+    <message>
+      <source>Show</source>
+      <translation>Uñachayaña</translation>
     </message>
   </context>
   <context>
