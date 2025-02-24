@@ -823,6 +823,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Are you sure you want to clear all items?</source>
       <translation>모든 항목을 지우시겠습니까?</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -2336,10 +2340,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>F1</translation>
     </message>
     <message>
-      <source>Show</source>
-      <translation>보여주다</translation>
-    </message>
-    <message>
       <source>Export</source>
       <translation>내보내기</translation>
     </message>
@@ -2644,6 +2644,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>즐겨찾기에서 제목 &quot;%1&quot; 를 제거하시겠습니까?</translation>
+    </message>
+    <message>
+      <source>Show</source>
+      <translation>보여주다</translation>
     </message>
   </context>
   <context>
@@ -2971,7 +2975,7 @@ the application.</source>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+      <translation>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
     </message>
     <message>
       <source>Start with clipboard monitoring turned on</source>
@@ -3505,7 +3509,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Interface Font Size</source>
-      <translation type="unfinished">Interface Font Size</translation>
+      <translation>Interface Font Size</translation>
     </message>
     <message>
       <source>Interface language</source>
@@ -3529,7 +3533,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Goldendict-ng is a dictionary software</source>
-      <translation type="unfinished">Goldendict-ng is a dictionary software</translation>
+      <translation>Goldendict-ng is a dictionary software</translation>
     </message>
   </context>
   <context>

@@ -823,6 +823,10 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
       <source>Are you sure you want to clear all items?</source>
       <translation>Biztosan törölni szeretné az összes elemet?</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -2336,10 +2340,6 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
       <translation>F1</translation>
     </message>
     <message>
-      <source>Show</source>
-      <translation>Megjelenítés</translation>
-    </message>
-    <message>
       <source>Export</source>
       <translation>Exportálás</translation>
     </message>
@@ -2644,6 +2644,10 @@ A &apos;*&apos;, &apos;?&apos;, &apos;[&apos; és &apos;]&apos; karakterek keres
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Eltávolítja a címszót a kedvencekből: &quot;%1&quot;?</translation>
+    </message>
+    <message>
+      <source>Show</source>
+      <translation>Megjelenítés</translation>
     </message>
   </context>
   <context>
@@ -3504,35 +3508,35 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
+      <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
     <message>
       <source>Interface Font Size</source>
-      <translation type="unfinished">Interface Font Size</translation>
+      <translation>Interface Font Size</translation>
     </message>
     <message>
       <source>Interface language</source>
-      <translation type="unfinished">Interface language</translation>
+      <translation>Interface language</translation>
     </message>
     <message>
       <source>Article Display style</source>
-      <translation type="unfinished">Article Display style</translation>
+      <translation>Article Display style</translation>
     </message>
     <message>
       <source>Add-on style</source>
-      <translation type="unfinished">Add-on style</translation>
+      <translation>Add-on style</translation>
     </message>
     <message>
       <source>Interface Style</source>
-      <translation type="unfinished">Interface Style</translation>
+      <translation>Interface Style</translation>
     </message>
     <message>
       <source>Preview Font</source>
-      <translation type="unfinished">Preview Font</translation>
+      <translation>Preview Font</translation>
     </message>
     <message>
       <source>Goldendict-ng is a dictionary software</source>
-      <translation type="unfinished">Goldendict-ng is a dictionary software</translation>
+      <translation>Goldendict-ng is a dictionary software</translation>
     </message>
   </context>
   <context>
@@ -3676,7 +3680,7 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
+      <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>

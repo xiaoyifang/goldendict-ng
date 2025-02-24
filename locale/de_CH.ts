@@ -802,7 +802,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Clear All</source>
-      <translation type="unfinished">Clear All</translation>
+      <translation>Clear All</translation>
     </message>
     <message>
       <source>Favorites:</source>
@@ -814,11 +814,15 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Clear All Items</source>
-      <translation type="unfinished">Clear All Items</translation>
+      <translation>Clear All Items</translation>
     </message>
     <message>
       <source>Are you sure you want to clear all items?</source>
-      <translation type="unfinished">Are you sure you want to clear all items?</translation>
+      <translation>Are you sure you want to clear all items?</translation>
+    </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
     </message>
   </context>
   <context>
@@ -2333,10 +2337,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>F1</translation>
     </message>
     <message>
-      <source>Show</source>
-      <translation>Zeige</translation>
-    </message>
-    <message>
       <source>Export</source>
       <translation>&amp;Exportieren</translation>
     </message>
@@ -2362,15 +2362,15 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Show &amp;Small Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Small Icons in Toolbars</translation>
+      <translation>Show &amp;Small Icons in Toolbars</translation>
     </message>
     <message>
       <source>Show &amp;Large Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Large Icons in Toolbars</translation>
+      <translation>Show &amp;Large Icons in Toolbars</translation>
     </message>
     <message>
       <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Normal Icons in Toolbars</translation>
+      <translation>Show &amp;Normal Icons in Toolbars</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
@@ -2390,7 +2390,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Toggle clipboard monitoring</source>
-      <translation type="unfinished">Toggle clipboard monitoring</translation>
+      <translation>Toggle clipboard monitoring</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2520,19 +2520,19 @@ Um folgende Symbole zu finden &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
-      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
+      <translation>Complete Html (*.html *.htm)</translation>
     </message>
     <message>
       <source>Single Html (*.html *.htm)</source>
-      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+      <translation>Single Html (*.html *.htm)</translation>
     </message>
     <message>
       <source>Pdf (*.pdf)</source>
-      <translation type="unfinished">Pdf (*.pdf)</translation>
+      <translation>Pdf (*.pdf)</translation>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
-      <translation type="unfinished">Mime Html (*.mhtml)</translation>
+      <translation>Mime Html (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2600,7 +2600,7 @@ Um folgende Symbole zu finden &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos
     </message>
     <message>
       <source>Text files (*.txt);;XML files (*.xml)</source>
-      <translation type="unfinished">Text files (*.txt);;XML files (*.xml)</translation>
+      <translation>Text files (*.txt);;XML files (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
@@ -2612,7 +2612,7 @@ Um folgende Symbole zu finden &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos
     </message>
     <message>
       <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
-      <translation type="unfinished">Text and XML files (*.txt *.xml);;All files (*.*)</translation>
+      <translation>Text and XML files (*.txt *.xml);;All files (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
@@ -2641,6 +2641,10 @@ Um folgende Symbole zu finden &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Entferne Überschrift &quot;%1&quot; von Lesezeichen ?</translation>
+    </message>
+    <message>
+      <source>Show</source>
+      <translation>Zeige</translation>
     </message>
   </context>
   <context>
@@ -2965,11 +2969,11 @@ the application.</source>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+      <translation>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
     </message>
     <message>
       <source>Start with clipboard monitoring turned on</source>
-      <translation type="unfinished">Start with clipboard monitoring turned on</translation>
+      <translation>Start with clipboard monitoring turned on</translation>
     </message>
     <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
@@ -3086,7 +3090,7 @@ in the pressed state when the word selection changes.</source>
     </message>
     <message>
       <source>Auto-pronounce words in the popup</source>
-      <translation type="unfinished">Auto-pronounce words in the popup</translation>
+      <translation>Auto-pronounce words in the popup</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3459,7 +3463,7 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
     </message>
     <message>
       <source>Auto does nothing on some systems.</source>
-      <translation type="unfinished">Auto does nothing on some systems.</translation>
+      <translation>Auto does nothing on some systems.</translation>
     </message>
     <message>
       <source>Restart the program to apply the language change.</source>
@@ -3479,11 +3483,11 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
     </message>
     <message>
       <source>Enable</source>
-      <translation type="unfinished">Enable</translation>
+      <translation>Enable</translation>
     </message>
     <message>
       <source>Disable</source>
-      <translation type="unfinished">Disable</translation>
+      <translation>Disable</translation>
     </message>
     <message>
       <source>Automatic</source>
@@ -3495,31 +3499,31 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
     </message>
     <message>
       <source>Interface Font Size</source>
-      <translation type="unfinished">Interface Font Size</translation>
+      <translation>Interface Font Size</translation>
     </message>
     <message>
       <source>Interface language</source>
-      <translation type="unfinished">Interface language</translation>
+      <translation>Interface language</translation>
     </message>
     <message>
       <source>Article Display style</source>
-      <translation type="unfinished">Article Display style</translation>
+      <translation>Article Display style</translation>
     </message>
     <message>
       <source>Add-on style</source>
-      <translation type="unfinished">Add-on style</translation>
+      <translation>Add-on style</translation>
     </message>
     <message>
       <source>Interface Style</source>
-      <translation type="unfinished">Interface Style</translation>
+      <translation>Interface Style</translation>
     </message>
     <message>
       <source>Preview Font</source>
-      <translation type="unfinished">Preview Font</translation>
+      <translation>Preview Font</translation>
     </message>
     <message>
       <source>Goldendict-ng is a dictionary software</source>
-      <translation type="unfinished">Goldendict-ng is a dictionary software</translation>
+      <translation>Goldendict-ng is a dictionary software</translation>
     </message>
   </context>
   <context>

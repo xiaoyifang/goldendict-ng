@@ -823,6 +823,10 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <source>Are you sure you want to clear all items?</source>
       <translation>Weet u zeker dat u alle items wilt wissen?</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -2336,10 +2340,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>F1</translation>
     </message>
     <message>
-      <source>Show</source>
-      <translation>Weergeven</translation>
-    </message>
-    <message>
       <source>Export</source>
       <translation>Exporteren</translation>
     </message>
@@ -2644,6 +2644,10 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Hoofdwoord &quot;%1&quot; uit favorieten verwijderen?</translation>
+    </message>
+    <message>
+      <source>Show</source>
+      <translation>Weergeven</translation>
     </message>
   </context>
   <context>

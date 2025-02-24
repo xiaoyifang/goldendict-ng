@@ -822,6 +822,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Are you sure you want to clear all items?</source>
       <translation>Jeni i sigurt që dëshironi të pastroni të gjithë artikujt?</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -2335,10 +2339,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>F1</translation>
     </message>
     <message>
-      <source>Show</source>
-      <translation>Shfaqje</translation>
-    </message>
-    <message>
       <source>Export</source>
       <translation>Eksporto</translation>
     </message>
@@ -2643,6 +2643,10 @@ Për të gjetur &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simbo
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Të hiqet kryefjala &quot;%1&quot; nga Të preferuarat?</translation>
+    </message>
+    <message>
+      <source>Show</source>
+      <translation>Shfaqje</translation>
     </message>
   </context>
   <context>
@@ -3501,31 +3505,31 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     </message>
     <message>
       <source>Interface Font Size</source>
-      <translation type="unfinished">Interface Font Size</translation>
+      <translation>Interface Font Size</translation>
     </message>
     <message>
       <source>Interface language</source>
-      <translation type="unfinished">Interface language</translation>
+      <translation>Interface language</translation>
     </message>
     <message>
       <source>Article Display style</source>
-      <translation type="unfinished">Article Display style</translation>
+      <translation>Article Display style</translation>
     </message>
     <message>
       <source>Add-on style</source>
-      <translation type="unfinished">Add-on style</translation>
+      <translation>Add-on style</translation>
     </message>
     <message>
       <source>Interface Style</source>
-      <translation type="unfinished">Interface Style</translation>
+      <translation>Interface Style</translation>
     </message>
     <message>
       <source>Preview Font</source>
-      <translation type="unfinished">Preview Font</translation>
+      <translation>Preview Font</translation>
     </message>
     <message>
       <source>Goldendict-ng is a dictionary software</source>
-      <translation type="unfinished">Goldendict-ng is a dictionary software</translation>
+      <translation>Goldendict-ng is a dictionary software</translation>
     </message>
   </context>
   <context>

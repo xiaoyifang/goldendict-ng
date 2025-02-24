@@ -9,7 +9,7 @@
     </message>
     <message>
       <source>Licensed under GNU GPLv3 or later</source>
-      <translation type="unfinished">Licensed under GNU GPLv3 or later</translation>
+      <translation>Licensed under GNU GPLv3 or later</translation>
     </message>
     <message>
       <source>Copy version info</source>
@@ -24,15 +24,15 @@
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
-      <translation type="unfinished">Anki search: AnkiConnect is not enabled.</translation>
+      <translation>Anki search: AnkiConnect is not enabled.</translation>
     </message>
     <message>
       <source>anki: post to anki failed</source>
-      <translation type="unfinished">anki: post to anki failed</translation>
+      <translation>anki: post to anki failed</translation>
     </message>
     <message>
       <source>anki: post to anki success</source>
-      <translation type="unfinished">anki: post to anki success</translation>
+      <translation>anki: post to anki success</translation>
     </message>
   </context>
   <context>
@@ -46,7 +46,7 @@
     <name>ArticleMaker</name>
     <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
-      <translation type="unfinished">No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</translation>
+      <translation>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</translation>
     </message>
     <message>
       <source>No translation was found in group &lt;b&gt;%1&lt;/b&gt;.</source>
@@ -58,7 +58,7 @@
     </message>
     <message>
       <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation type="unfinished">&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</translation>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</translation>
     </message>
     <message>
       <source>(untitled)</source>
@@ -77,7 +77,7 @@
     </message>
     <message>
       <source>Make a new Anki note</source>
-      <translation type="unfinished">Make a new Anki note</translation>
+      <translation>Make a new Anki note</translation>
     </message>
     <message>
       <source>Query error: %1</source>
@@ -104,7 +104,7 @@
     </message>
     <message>
       <source>%1 of %2 matches</source>
-      <translation type="unfinished">%1 of %2 matches</translation>
+      <translation>%1 of %2 matches</translation>
     </message>
     <message>
       <source>Select Current Article</source>
@@ -124,7 +124,7 @@
     </message>
     <message>
       <source>TTS Voice</source>
-      <translation type="unfinished">TTS Voice</translation>
+      <translation>TTS Voice</translation>
     </message>
     <message>
       <source>Audio</source>
@@ -152,11 +152,11 @@
     </message>
     <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
-      <translation type="unfinished">The referenced audio program doesn&apos;t exist.</translation>
+      <translation>The referenced audio program doesn&apos;t exist.</translation>
     </message>
     <message>
       <source>The referenced resource doesn&apos;t exist.</source>
-      <translation type="unfinished">The referenced resource doesn&apos;t exist.</translation>
+      <translation>The referenced resource doesn&apos;t exist.</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
@@ -176,7 +176,7 @@
     </message>
     <message>
       <source>Open image in system viewer...</source>
-      <translation type="unfinished">Open image in system viewer...</translation>
+      <translation>Open image in system viewer...</translation>
     </message>
     <message>
       <source>Save s&amp;ound...</source>
@@ -192,7 +192,7 @@
     </message>
     <message>
       <source>Send &quot;%1&quot; to input line</source>
-      <translation type="unfinished">Send &quot;%1&quot; to input line</translation>
+      <translation>Send &quot;%1&quot; to input line</translation>
     </message>
     <message>
       <source>&amp;Add &quot;%1&quot; to history</source>
@@ -216,7 +216,7 @@
     </message>
     <message>
       <source>&amp;Send selected text to Anki</source>
-      <translation type="unfinished">&amp;Send selected text to Anki</translation>
+      <translation>&amp;Send selected text to Anki</translation>
     </message>
     <message>
       <source>Save sound</source>
@@ -240,11 +240,11 @@
     </message>
     <message>
       <source>Failed to create temporary file.</source>
-      <translation type="unfinished">Failed to create temporary file.</translation>
+      <translation>Failed to create temporary file.</translation>
     </message>
     <message>
       <source>Failed to auto-open resource file, try opening manually: %1.</source>
-      <translation type="unfinished">Failed to auto-open resource file, try opening manually: %1.</translation>
+      <translation>Failed to auto-open resource file, try opening manually: %1.</translation>
     </message>
     <message>
       <source>WARNING: Audio Player: %1</source>
@@ -252,23 +252,23 @@
     </message>
     <message>
       <source>&amp;Create Anki note</source>
-      <translation type="unfinished">&amp;Create Anki note</translation>
+      <translation>&amp;Create Anki note</translation>
     </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
     <message>
       <source>Belarusian transliteration from latin to cyrillic (classic orthography)</source>
-      <translation type="unfinished">Belarusian transliteration from latin to cyrillic (classic orthography)</translation>
+      <translation>Belarusian transliteration from latin to cyrillic (classic orthography)</translation>
     </message>
     <message>
       <source>Belarusian transliteration from latin to cyrillic (school orthography)</source>
-      <translation type="unfinished">Belarusian transliteration from latin to cyrillic (school orthography)</translation>
+      <translation>Belarusian transliteration from latin to cyrillic (school orthography)</translation>
     </message>
     <message>
       <source>Belarusian transliteration (smoothes out the difference
 between classic and school orthography in cyrillic)</source>
-      <translation type="unfinished">Belarusian transliteration (smoothes out the difference
+      <translation>Belarusian transliteration (smoothes out the difference
 between classic and school orthography in cyrillic)</translation>
     </message>
   </context>
@@ -280,7 +280,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation type="unfinished">Enable conversion between simplified and traditional Chinese characters</translation>
+      <translation>Enable conversion between simplified and traditional Chinese characters</translation>
     </message>
     <message>
       <source>Chinese Con&amp;version</source>
@@ -288,7 +288,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation type="unfinished">Enable conversion from simplified characters to traditional (Taiwan variant) characters</translation>
+      <translation>Enable conversion from simplified characters to traditional (Taiwan variant) characters</translation>
     </message>
     <message>
       <source>SC to TC (Taiwan variant)</source>
@@ -296,7 +296,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation type="unfinished">Enable conversion from simplified characters to traditional (Hong Kong variant) characters</translation>
+      <translation>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</translation>
     </message>
     <message>
       <source>SC to TC (Hong Kong variant)</source>
@@ -304,7 +304,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation type="unfinished">Enable conversion from traditional characters to simplified characters</translation>
+      <translation>Enable conversion from traditional characters to simplified characters</translation>
     </message>
     <message>
       <source>TC to SC</source>
@@ -312,29 +312,29 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation type="unfinished">Simplified to traditional Chinese (Taiwan variant) conversion</translation>
+      <translation>Simplified to traditional Chinese (Taiwan variant) conversion</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation type="unfinished">Simplified to traditional Chinese (Hong Kong variant) conversion</translation>
+      <translation>Simplified to traditional Chinese (Hong Kong variant) conversion</translation>
     </message>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
-      <translation type="unfinished">Traditional to simplified Chinese conversion</translation>
+      <translation>Traditional to simplified Chinese conversion</translation>
     </message>
   </context>
   <context>
     <name>CustomTranslit</name>
     <message>
       <source>custom transliteration</source>
-      <translation type="unfinished">custom transliteration</translation>
+      <translation>custom transliteration</translation>
     </message>
   </context>
   <context>
     <name>DictGroupWidget</name>
     <message>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Form</translation>
     </message>
     <message>
       <source>Group icon:</source>
@@ -358,11 +358,11 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Choose a file to use as group icon</source>
-      <translation type="unfinished">Choose a file to use as group icon</translation>
+      <translation>Choose a file to use as group icon</translation>
     </message>
     <message>
       <source>Images</source>
-      <translation type="unfinished">Images</translation>
+      <translation>Images</translation>
     </message>
     <message>
       <source>All files</source>
@@ -385,11 +385,11 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Confirmation</source>
-      <translation type="unfinished">Confirmation</translation>
+      <translation>Confirmation</translation>
     </message>
     <message>
       <source>Are you sure you want to generate a set of groups based on language pairs?</source>
-      <translation type="unfinished">Are you sure you want to generate a set of groups based on language pairs?</translation>
+      <translation>Are you sure you want to generate a set of groups based on language pairs?</translation>
     </message>
     <message>
       <source>Unassigned</source>
@@ -397,31 +397,31 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Auto group by folder failed.</source>
-      <translation type="unfinished">Auto group by folder failed.</translation>
+      <translation>Auto group by folder failed.</translation>
     </message>
     <message>
       <source>The parent directory of %1 can not be reached.</source>
-      <translation type="unfinished">The parent directory of %1 can not be reached.</translation>
+      <translation>The parent directory of %1 can not be reached.</translation>
     </message>
     <message>
       <source>Are you sure you want to generate a set of groups based on containing folders?</source>
-      <translation type="unfinished">Are you sure you want to generate a set of groups based on containing folders?</translation>
+      <translation>Are you sure you want to generate a set of groups based on containing folders?</translation>
     </message>
     <message>
       <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation type="unfinished">Are you sure you want to generate a set of groups based on metadata.toml?</translation>
+      <translation>Are you sure you want to generate a set of groups based on metadata.toml?</translation>
     </message>
     <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
-      <translation type="unfinished">Combine groups by source language to &quot;%1-&gt;&quot;</translation>
+      <translation>Combine groups by source language to &quot;%1-&gt;&quot;</translation>
     </message>
     <message>
       <source>Combine groups by target language to &quot;-&gt;%1&quot;</source>
-      <translation type="unfinished">Combine groups by target language to &quot;-&gt;%1&quot;</translation>
+      <translation>Combine groups by target language to &quot;-&gt;%1&quot;</translation>
     </message>
     <message>
       <source>Make two-side translate group &quot;%1-%2-%1&quot;</source>
-      <translation type="unfinished">Make two-side translate group &quot;%1-%2-%1&quot;</translation>
+      <translation>Make two-side translate group &quot;%1-%2-%1&quot;</translation>
     </message>
     <message>
       <source>Combine groups with &quot;%1&quot;</source>
@@ -432,7 +432,7 @@ between classic and school orthography in cyrillic)</translation>
     <name>DictHeadwords</name>
     <message>
       <source>If checked any filter changes will we immediately applied to headwords list</source>
-      <translation type="unfinished">If checked any filter changes will we immediately applied to headwords list</translation>
+      <translation>If checked any filter changes will we immediately applied to headwords list</translation>
     </message>
     <message>
       <source>Auto apply</source>
@@ -440,7 +440,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Press this button to apply filter to headwords list</source>
-      <translation type="unfinished">Press this button to apply filter to headwords list</translation>
+      <translation>Press this button to apply filter to headwords list</translation>
     </message>
     <message>
       <source>Apply</source>
@@ -448,7 +448,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Filter string (fixed string, wildcards or regular expression)</source>
-      <translation type="unfinished">Filter string (fixed string, wildcards or regular expression)</translation>
+      <translation>Filter string (fixed string, wildcards or regular expression)</translation>
     </message>
     <message>
       <source>Filter:</source>
@@ -460,11 +460,11 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>This element determines how filter string will be interpreted</source>
-      <translation type="unfinished">This element determines how filter string will be interpreted</translation>
+      <translation>This element determines how filter string will be interpreted</translation>
     </message>
     <message>
       <source>If checked on the symbols case will be take in account when filtering</source>
-      <translation type="unfinished">If checked on the symbols case will be take in account when filtering</translation>
+      <translation>If checked on the symbols case will be take in account when filtering</translation>
     </message>
     <message>
       <source>Match case</source>
@@ -472,7 +472,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Exports headwords to file</source>
-      <translation type="unfinished">Exports headwords to file</translation>
+      <translation>Exports headwords to file</translation>
     </message>
     <message>
       <source>Export</source>
@@ -480,11 +480,11 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
-      <translation type="unfinished">Specify the maximum filtered headwords returned.</translation>
+      <translation>Specify the maximum filtered headwords returned.</translation>
     </message>
     <message>
       <source>Filter max results:</source>
-      <translation type="unfinished">Filter max results:</translation>
+      <translation>Filter max results:</translation>
     </message>
     <message>
       <source>Help</source>
@@ -492,7 +492,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>OK</source>
-      <translation type="unfinished">OK</translation>
+      <translation>OK</translation>
     </message>
     <message>
       <source>Text</source>
@@ -508,15 +508,15 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Unique headwords total: %1.</source>
-      <translation type="unfinished">Unique headwords total: %1.</translation>
+      <translation>Unique headwords total: %1.</translation>
     </message>
     <message>
       <source>Unique headwords total: %1, filtered(limited): %2</source>
-      <translation type="unfinished">Unique headwords total: %1, filtered(limited): %2</translation>
+      <translation>Unique headwords total: %1, filtered(limited): %2</translation>
     </message>
     <message>
       <source>Save headwords to file</source>
-      <translation type="unfinished">Save headwords to file</translation>
+      <translation>Save headwords to file</translation>
     </message>
     <message>
       <source>Text files (*.txt);;All files (*.*)</source>
@@ -524,11 +524,11 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Can not open exported file</source>
-      <translation type="unfinished">Can not open exported file</translation>
+      <translation>Can not open exported file</translation>
     </message>
     <message>
       <source>Export headwords...</source>
-      <translation type="unfinished">Export headwords...</translation>
+      <translation>Export headwords...</translation>
     </message>
     <message>
       <source>Cancel</source>
@@ -536,7 +536,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Export process is interrupted</source>
-      <translation type="unfinished">Export process is interrupted</translation>
+      <translation>Export process is interrupted</translation>
     </message>
     <message>
       <source>Export finished</source>
@@ -547,7 +547,7 @@ between classic and school orthography in cyrillic)</translation>
     <name>DictInfo</name>
     <message>
       <source>Open index folder</source>
-      <translation type="unfinished">Open index folder</translation>
+      <translation>Open index folder</translation>
     </message>
     <message>
       <source>Total articles:</source>
@@ -555,7 +555,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Index filename:</source>
-      <translation type="unfinished">Index filename:</translation>
+      <translation>Index filename:</translation>
     </message>
     <message>
       <source>Total words:</source>
@@ -591,11 +591,11 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Full-text search enabled</source>
-      <translation type="unfinished">Full-text search enabled</translation>
+      <translation>Full-text search enabled</translation>
     </message>
     <message>
       <source>Full-text search disabled</source>
-      <translation type="unfinished">Full-text search disabled</translation>
+      <translation>Full-text search disabled</translation>
     </message>
   </context>
   <context>
@@ -621,7 +621,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Server databases</source>
-      <translation type="unfinished">Server databases</translation>
+      <translation>Server databases</translation>
     </message>
   </context>
   <context>
@@ -653,13 +653,13 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>Comma-delimited list of databases
 (empty string or &quot;*&quot; matches all databases)</source>
-      <translation type="unfinished">Comma-delimited list of databases
+      <translation>Comma-delimited list of databases
 (empty string or &quot;*&quot; matches all databases)</translation>
     </message>
     <message>
       <source>Comma-delimited list of search strategies
 (empty string mean &quot;prefix&quot; strategy)</source>
-      <translation type="unfinished">Comma-delimited list of search strategies
+      <translation>Comma-delimited list of search strategies
 (empty string mean &quot;prefix&quot; strategy)</translation>
     </message>
   </context>
@@ -671,7 +671,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Extended menu with all dictionaries...</source>
-      <translation type="unfinished">Extended menu with all dictionaries...</translation>
+      <translation>Extended menu with all dictionaries...</translation>
     </message>
     <message>
       <source>Edit this group</source>
@@ -710,11 +710,11 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Sources changed</source>
-      <translation type="unfinished">Sources changed</translation>
+      <translation>Sources changed</translation>
     </message>
     <message>
       <source>Some sources were changed. Would you like to accept the changes?</source>
-      <translation type="unfinished">Some sources were changed. Would you like to accept the changes?</translation>
+      <translation>Some sources were changed. Would you like to accept the changes?</translation>
     </message>
     <message>
       <source>Accept</source>
@@ -751,7 +751,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Default</source>
-      <translation type="unfinished">Default</translation>
+      <translation>Default</translation>
     </message>
     <message>
       <source>Wildcards</source>
@@ -759,7 +759,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Support xapian search syntax, such as AND OR +/- etc.</source>
-      <translation type="unfinished">Support xapian search syntax, such as AND OR +/- etc.</translation>
+      <translation>Support xapian search syntax, such as AND OR +/- etc.</translation>
     </message>
     <message>
       <source>Articles found: </source>
@@ -775,7 +775,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>The querying word can not be empty.</source>
-      <translation type="unfinished">The querying word can not be empty.</translation>
+      <translation>The querying word can not be empty.</translation>
     </message>
     <message>
       <source>No dictionaries for full-text search</source>
@@ -805,7 +805,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Clear All</source>
-      <translation type="unfinished">Clear All</translation>
+      <translation>Clear All</translation>
     </message>
     <message>
       <source>Favorites:</source>
@@ -817,11 +817,15 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Clear All Items</source>
-      <translation type="unfinished">Clear All Items</translation>
+      <translation>Clear All Items</translation>
     </message>
     <message>
       <source>Are you sure you want to clear all items?</source>
-      <translation type="unfinished">Are you sure you want to clear all items?</translation>
+      <translation>Are you sure you want to clear all items?</translation>
+    </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
     </message>
   </context>
   <context>
@@ -886,7 +890,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Total:</source>
-      <translation type="unfinished">Total:</translation>
+      <translation>Total:</translation>
     </message>
     <message>
       <source>Indexed:</source>
@@ -934,7 +938,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Add selected dictionaries to group (Ins)</source>
-      <translation type="unfinished">Add selected dictionaries to group (Ins)</translation>
+      <translation>Add selected dictionaries to group (Ins)</translation>
     </message>
     <message>
       <source>&gt;</source>
@@ -946,7 +950,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Remove selected dictionaries from group (Del)</source>
-      <translation type="unfinished">Remove selected dictionaries from group (Del)</translation>
+      <translation>Remove selected dictionaries from group (Del)</translation>
     </message>
     <message>
       <source>&lt;</source>
@@ -962,7 +966,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Tab 2</source>
-      <translation type="unfinished">Tab 2</translation>
+      <translation>Tab 2</translation>
     </message>
     <message>
       <source>Create new dictionary group</source>
@@ -1002,19 +1006,19 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Group by Languages</source>
-      <translation type="unfinished">Group by Languages</translation>
+      <translation>Group by Languages</translation>
     </message>
     <message>
       <source>Create folder-based groups.</source>
-      <translation type="unfinished">Create folder-based groups.</translation>
+      <translation>Create folder-based groups.</translation>
     </message>
     <message>
       <source>Group by Folders</source>
-      <translation type="unfinished">Group by Folders</translation>
+      <translation>Group by Folders</translation>
     </message>
     <message>
       <source>Group by Metadata</source>
-      <translation type="unfinished">Group by Metadata</translation>
+      <translation>Group by Metadata</translation>
     </message>
     <message>
       <source>Drag&amp;drop dictionaries to and from the groups, move them inside the groups, reorder the groups using your mouse.</source>
@@ -1110,7 +1114,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Indexing: </source>
-      <translation type="unfinished">Indexing: </translation>
+      <translation>Indexing: </translation>
     </message>
     <message>
       <source>Dictionary Name</source>
@@ -1122,42 +1126,42 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Indexing...</source>
-      <translation type="unfinished">Indexing...</translation>
+      <translation>Indexing...</translation>
     </message>
     <message>
       <source>Loading...</source>
-      <translation type="unfinished">Loading...</translation>
+      <translation>Loading...</translation>
     </message>
   </context>
   <context>
     <name>Language</name>
     <message>
       <source>Afar</source>
-      <translation type="unfinished">Afar</translation>
+      <translation>Afar</translation>
     </message>
     <message>
       <source>Abkhazian</source>
-      <translation type="unfinished">Abkhazian</translation>
+      <translation>Abkhazian</translation>
     </message>
     <message>
       <source>Avestan</source>
-      <translation type="unfinished">Avestan</translation>
+      <translation>Avestan</translation>
     </message>
     <message>
       <source>Afrikaans</source>
-      <translation type="unfinished">Afrikaans</translation>
+      <translation>Afrikaans</translation>
     </message>
     <message>
       <source>Akan</source>
-      <translation type="unfinished">Akan</translation>
+      <translation>Akan</translation>
     </message>
     <message>
       <source>Amharic</source>
-      <translation type="unfinished">Amharic</translation>
+      <translation>Amharic</translation>
     </message>
     <message>
       <source>Aragonese</source>
-      <translation type="unfinished">Aragonese</translation>
+      <translation>Aragonese</translation>
     </message>
     <message>
       <source>Arabic</source>
@@ -1165,27 +1169,27 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Assamese</source>
-      <translation type="unfinished">Assamese</translation>
+      <translation>Assamese</translation>
     </message>
     <message>
       <source>Avaric</source>
-      <translation type="unfinished">Avaric</translation>
+      <translation>Avaric</translation>
     </message>
     <message>
       <source>Aymara</source>
-      <translation type="unfinished">Aymara</translation>
+      <translation>Aymara</translation>
     </message>
     <message>
       <source>Azerbaijani</source>
-      <translation type="unfinished">Azerbaijani</translation>
+      <translation>Azerbaijani</translation>
     </message>
     <message>
       <source>Bashkir</source>
-      <translation type="unfinished">Bashkir</translation>
+      <translation>Bashkir</translation>
     </message>
     <message>
       <source>Belarusian</source>
-      <translation type="unfinished">Belarusian</translation>
+      <translation>Belarusian</translation>
     </message>
     <message>
       <source>Bulgarian</source>
@@ -1193,31 +1197,31 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Bihari</source>
-      <translation type="unfinished">Bihari</translation>
+      <translation>Bihari</translation>
     </message>
     <message>
       <source>Bislama</source>
-      <translation type="unfinished">Bislama</translation>
+      <translation>Bislama</translation>
     </message>
     <message>
       <source>Bambara</source>
-      <translation type="unfinished">Bambara</translation>
+      <translation>Bambara</translation>
     </message>
     <message>
       <source>Bengali</source>
-      <translation type="unfinished">Bengali</translation>
+      <translation>Bengali</translation>
     </message>
     <message>
       <source>Tibetan</source>
-      <translation type="unfinished">Tibetan</translation>
+      <translation>Tibetan</translation>
     </message>
     <message>
       <source>Breton</source>
-      <translation type="unfinished">Breton</translation>
+      <translation>Breton</translation>
     </message>
     <message>
       <source>Bosnian</source>
-      <translation type="unfinished">Bosnian</translation>
+      <translation>Bosnian</translation>
     </message>
     <message>
       <source>Catalan</source>
@@ -1225,19 +1229,19 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Chechen</source>
-      <translation type="unfinished">Chechen</translation>
+      <translation>Chechen</translation>
     </message>
     <message>
       <source>Chamorro</source>
-      <translation type="unfinished">Chamorro</translation>
+      <translation>Chamorro</translation>
     </message>
     <message>
       <source>Corsican</source>
-      <translation type="unfinished">Corsican</translation>
+      <translation>Corsican</translation>
     </message>
     <message>
       <source>Cree</source>
-      <translation type="unfinished">Cree</translation>
+      <translation>Cree</translation>
     </message>
     <message>
       <source>Czech</source>
@@ -1245,15 +1249,15 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Church Slavic</source>
-      <translation type="unfinished">Church Slavic</translation>
+      <translation>Church Slavic</translation>
     </message>
     <message>
       <source>Chuvash</source>
-      <translation type="unfinished">Chuvash</translation>
+      <translation>Chuvash</translation>
     </message>
     <message>
       <source>Welsh</source>
-      <translation type="unfinished">Welsh</translation>
+      <translation>Welsh</translation>
     </message>
     <message>
       <source>Danish</source>
@@ -1265,15 +1269,15 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Divehi</source>
-      <translation type="unfinished">Divehi</translation>
+      <translation>Divehi</translation>
     </message>
     <message>
       <source>Dzongkha</source>
-      <translation type="unfinished">Dzongkha</translation>
+      <translation>Dzongkha</translation>
     </message>
     <message>
       <source>Ewe</source>
-      <translation type="unfinished">Ewe</translation>
+      <translation>Ewe</translation>
     </message>
     <message>
       <source>Greek</source>
@@ -1297,15 +1301,15 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Basque</source>
-      <translation type="unfinished">Basque</translation>
+      <translation>Basque</translation>
     </message>
     <message>
       <source>Persian</source>
-      <translation type="unfinished">Persian</translation>
+      <translation>Persian</translation>
     </message>
     <message>
       <source>Fulah</source>
-      <translation type="unfinished">Fulah</translation>
+      <translation>Fulah</translation>
     </message>
     <message>
       <source>Finnish</source>
@@ -1313,11 +1317,11 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Fijian</source>
-      <translation type="unfinished">Fijian</translation>
+      <translation>Fijian</translation>
     </message>
     <message>
       <source>Faroese</source>
-      <translation type="unfinished">Faroese</translation>
+      <translation>Faroese</translation>
     </message>
     <message>
       <source>French</source>
@@ -1333,7 +1337,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Scottish Gaelic</source>
-      <translation type="unfinished">Scottish Gaelic</translation>
+      <translation>Scottish Gaelic</translation>
     </message>
     <message>
       <source>Galician</source>
@@ -1341,19 +1345,19 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Guarani</source>
-      <translation type="unfinished">Guarani</translation>
+      <translation>Guarani</translation>
     </message>
     <message>
       <source>Gujarati</source>
-      <translation type="unfinished">Gujarati</translation>
+      <translation>Gujarati</translation>
     </message>
     <message>
       <source>Manx</source>
-      <translation type="unfinished">Manx</translation>
+      <translation>Manx</translation>
     </message>
     <message>
       <source>Hausa</source>
-      <translation type="unfinished">Hausa</translation>
+      <translation>Hausa</translation>
     </message>
     <message>
       <source>Hebrew</source>
@@ -1361,31 +1365,31 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Hindi</source>
-      <translation type="unfinished">Hindi</translation>
+      <translation>Hindi</translation>
     </message>
     <message>
       <source>Hiri Motu</source>
-      <translation type="unfinished">Hiri Motu</translation>
+      <translation>Hiri Motu</translation>
     </message>
     <message>
       <source>Croatian</source>
-      <translation type="unfinished">Croatian</translation>
+      <translation>Croatian</translation>
     </message>
     <message>
       <source>Haitian</source>
-      <translation type="unfinished">Haitian</translation>
+      <translation>Haitian</translation>
     </message>
     <message>
       <source>Hungarian</source>
-      <translation type="unfinished">Hungarian</translation>
+      <translation>Hungarian</translation>
     </message>
     <message>
       <source>Armenian</source>
-      <translation type="unfinished">Armenian</translation>
+      <translation>Armenian</translation>
     </message>
     <message>
       <source>Herero</source>
-      <translation type="unfinished">Herero</translation>
+      <translation>Herero</translation>
     </message>
     <message>
       <source>Interlingua</source>
@@ -1393,7 +1397,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Indonesian</source>
-      <translation type="unfinished">Indonesian</translation>
+      <translation>Indonesian</translation>
     </message>
     <message>
       <source>Interlingue</source>
@@ -1401,15 +1405,15 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Igbo</source>
-      <translation type="unfinished">Igbo</translation>
+      <translation>Igbo</translation>
     </message>
     <message>
       <source>Sichuan Yi</source>
-      <translation type="unfinished">Sichuan Yi</translation>
+      <translation>Sichuan Yi</translation>
     </message>
     <message>
       <source>Inupiaq</source>
-      <translation type="unfinished">Inupiaq</translation>
+      <translation>Inupiaq</translation>
     </message>
     <message>
       <source>Ido</source>
@@ -1421,127 +1425,127 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Italian</source>
-      <translation type="unfinished">Italian</translation>
+      <translation>Italian</translation>
     </message>
     <message>
       <source>Inuktitut</source>
-      <translation type="unfinished">Inuktitut</translation>
+      <translation>Inuktitut</translation>
     </message>
     <message>
       <source>Japanese</source>
-      <translation type="unfinished">Japanese</translation>
+      <translation>Japanese</translation>
     </message>
     <message>
       <source>Javanese</source>
-      <translation type="unfinished">Javanese</translation>
+      <translation>Javanese</translation>
     </message>
     <message>
       <source>Georgian</source>
-      <translation type="unfinished">Georgian</translation>
+      <translation>Georgian</translation>
     </message>
     <message>
       <source>Kongo</source>
-      <translation type="unfinished">Kongo</translation>
+      <translation>Kongo</translation>
     </message>
     <message>
       <source>Kikuyu</source>
-      <translation type="unfinished">Kikuyu</translation>
+      <translation>Kikuyu</translation>
     </message>
     <message>
       <source>Kwanyama</source>
-      <translation type="unfinished">Kwanyama</translation>
+      <translation>Kwanyama</translation>
     </message>
     <message>
       <source>Kazakh</source>
-      <translation type="unfinished">Kazakh</translation>
+      <translation>Kazakh</translation>
     </message>
     <message>
       <source>Kalaallisut</source>
-      <translation type="unfinished">Kalaallisut</translation>
+      <translation>Kalaallisut</translation>
     </message>
     <message>
       <source>Khmer</source>
-      <translation type="unfinished">Khmer</translation>
+      <translation>Khmer</translation>
     </message>
     <message>
       <source>Kannada</source>
-      <translation type="unfinished">Kannada</translation>
+      <translation>Kannada</translation>
     </message>
     <message>
       <source>Korean</source>
-      <translation type="unfinished">Korean</translation>
+      <translation>Korean</translation>
     </message>
     <message>
       <source>Kanuri</source>
-      <translation type="unfinished">Kanuri</translation>
+      <translation>Kanuri</translation>
     </message>
     <message>
       <source>Kashmiri</source>
-      <translation type="unfinished">Kashmiri</translation>
+      <translation>Kashmiri</translation>
     </message>
     <message>
       <source>Kurdish</source>
-      <translation type="unfinished">Kurdish</translation>
+      <translation>Kurdish</translation>
     </message>
     <message>
       <source>Komi</source>
-      <translation type="unfinished">Komi</translation>
+      <translation>Komi</translation>
     </message>
     <message>
       <source>Cornish</source>
-      <translation type="unfinished">Cornish</translation>
+      <translation>Cornish</translation>
     </message>
     <message>
       <source>Kirghiz</source>
-      <translation type="unfinished">Kirghiz</translation>
+      <translation>Kirghiz</translation>
     </message>
     <message>
       <source>Latin</source>
-      <translation type="unfinished">Latin</translation>
+      <translation>Latin</translation>
     </message>
     <message>
       <source>Luxembourgish</source>
-      <translation type="unfinished">Luxembourgish</translation>
+      <translation>Luxembourgish</translation>
     </message>
     <message>
       <source>Ganda</source>
-      <translation type="unfinished">Ganda</translation>
+      <translation>Ganda</translation>
     </message>
     <message>
       <source>Limburgish</source>
-      <translation type="unfinished">Limburgish</translation>
+      <translation>Limburgish</translation>
     </message>
     <message>
       <source>Lingala</source>
-      <translation type="unfinished">Lingala</translation>
+      <translation>Lingala</translation>
     </message>
     <message>
       <source>Lao</source>
-      <translation type="unfinished">Lao</translation>
+      <translation>Lao</translation>
     </message>
     <message>
       <source>Lithuanian</source>
-      <translation type="unfinished">Lithuanian</translation>
+      <translation>Lithuanian</translation>
     </message>
     <message>
       <source>Luba-Katanga</source>
-      <translation type="unfinished">Luba-Katanga</translation>
+      <translation>Luba-Katanga</translation>
     </message>
     <message>
       <source>Latvian</source>
-      <translation type="unfinished">Latvian</translation>
+      <translation>Latvian</translation>
     </message>
     <message>
       <source>Malagasy</source>
-      <translation type="unfinished">Malagasy</translation>
+      <translation>Malagasy</translation>
     </message>
     <message>
       <source>Marshallese</source>
-      <translation type="unfinished">Marshallese</translation>
+      <translation>Marshallese</translation>
     </message>
     <message>
       <source>Maori</source>
-      <translation type="unfinished">Maori</translation>
+      <translation>Maori</translation>
     </message>
     <message>
       <source>Macedonian</source>
@@ -1549,47 +1553,47 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Malayalam</source>
-      <translation type="unfinished">Malayalam</translation>
+      <translation>Malayalam</translation>
     </message>
     <message>
       <source>Mongolian</source>
-      <translation type="unfinished">Mongolian</translation>
+      <translation>Mongolian</translation>
     </message>
     <message>
       <source>Marathi</source>
-      <translation type="unfinished">Marathi</translation>
+      <translation>Marathi</translation>
     </message>
     <message>
       <source>Malay</source>
-      <translation type="unfinished">Malay</translation>
+      <translation>Malay</translation>
     </message>
     <message>
       <source>Maltese</source>
-      <translation type="unfinished">Maltese</translation>
+      <translation>Maltese</translation>
     </message>
     <message>
       <source>Burmese</source>
-      <translation type="unfinished">Burmese</translation>
+      <translation>Burmese</translation>
     </message>
     <message>
       <source>Nauru</source>
-      <translation type="unfinished">Nauru</translation>
+      <translation>Nauru</translation>
     </message>
     <message>
       <source>Norwegian Bokmal</source>
-      <translation type="unfinished">Norwegian Bokmal</translation>
+      <translation>Norwegian Bokmal</translation>
     </message>
     <message>
       <source>North Ndebele</source>
-      <translation type="unfinished">North Ndebele</translation>
+      <translation>North Ndebele</translation>
     </message>
     <message>
       <source>Nepali</source>
-      <translation type="unfinished">Nepali</translation>
+      <translation>Nepali</translation>
     </message>
     <message>
       <source>Ndonga</source>
-      <translation type="unfinished">Ndonga</translation>
+      <translation>Ndonga</translation>
     </message>
     <message>
       <source>Dutch</source>
@@ -1597,51 +1601,51 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Norwegian Nynorsk</source>
-      <translation type="unfinished">Norwegian Nynorsk</translation>
+      <translation>Norwegian Nynorsk</translation>
     </message>
     <message>
       <source>Norwegian</source>
-      <translation type="unfinished">Norwegian</translation>
+      <translation>Norwegian</translation>
     </message>
     <message>
       <source>South Ndebele</source>
-      <translation type="unfinished">South Ndebele</translation>
+      <translation>South Ndebele</translation>
     </message>
     <message>
       <source>Navajo</source>
-      <translation type="unfinished">Navajo</translation>
+      <translation>Navajo</translation>
     </message>
     <message>
       <source>Chichewa</source>
-      <translation type="unfinished">Chichewa</translation>
+      <translation>Chichewa</translation>
     </message>
     <message>
       <source>Occitan</source>
-      <translation type="unfinished">Occitan</translation>
+      <translation>Occitan</translation>
     </message>
     <message>
       <source>Ojibwa</source>
-      <translation type="unfinished">Ojibwa</translation>
+      <translation>Ojibwa</translation>
     </message>
     <message>
       <source>Oromo</source>
-      <translation type="unfinished">Oromo</translation>
+      <translation>Oromo</translation>
     </message>
     <message>
       <source>Oriya</source>
-      <translation type="unfinished">Oriya</translation>
+      <translation>Oriya</translation>
     </message>
     <message>
       <source>Ossetian</source>
-      <translation type="unfinished">Ossetian</translation>
+      <translation>Ossetian</translation>
     </message>
     <message>
       <source>Panjabi</source>
-      <translation type="unfinished">Panjabi</translation>
+      <translation>Panjabi</translation>
     </message>
     <message>
       <source>Pali</source>
-      <translation type="unfinished">Pali</translation>
+      <translation>Pali</translation>
     </message>
     <message>
       <source>Polish</source>
@@ -1649,7 +1653,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Pashto</source>
-      <translation type="unfinished">Pashto</translation>
+      <translation>Pashto</translation>
     </message>
     <message>
       <source>Portuguese</source>
@@ -1657,15 +1661,15 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Quechua</source>
-      <translation type="unfinished">Quechua</translation>
+      <translation>Quechua</translation>
     </message>
     <message>
       <source>Raeto-Romance</source>
-      <translation type="unfinished">Raeto-Romance</translation>
+      <translation>Raeto-Romance</translation>
     </message>
     <message>
       <source>Kirundi</source>
-      <translation type="unfinished">Kirundi</translation>
+      <translation>Kirundi</translation>
     </message>
     <message>
       <source>Romanian</source>
@@ -1677,35 +1681,35 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Kinyarwanda</source>
-      <translation type="unfinished">Kinyarwanda</translation>
+      <translation>Kinyarwanda</translation>
     </message>
     <message>
       <source>Sanskrit</source>
-      <translation type="unfinished">Sanskrit</translation>
+      <translation>Sanskrit</translation>
     </message>
     <message>
       <source>Sardinian</source>
-      <translation type="unfinished">Sardinian</translation>
+      <translation>Sardinian</translation>
     </message>
     <message>
       <source>Sindhi</source>
-      <translation type="unfinished">Sindhi</translation>
+      <translation>Sindhi</translation>
     </message>
     <message>
       <source>Northern Sami</source>
-      <translation type="unfinished">Northern Sami</translation>
+      <translation>Northern Sami</translation>
     </message>
     <message>
       <source>Sango</source>
-      <translation type="unfinished">Sango</translation>
+      <translation>Sango</translation>
     </message>
     <message>
       <source>Serbo-Croatian</source>
-      <translation type="unfinished">Serbo-Croatian</translation>
+      <translation>Serbo-Croatian</translation>
     </message>
     <message>
       <source>Sinhala</source>
-      <translation type="unfinished">Sinhala</translation>
+      <translation>Sinhala</translation>
     </message>
     <message>
       <source>Slovak</source>
@@ -1713,39 +1717,39 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Slovenian</source>
-      <translation type="unfinished">Slovenian</translation>
+      <translation>Slovenian</translation>
     </message>
     <message>
       <source>Samoan</source>
-      <translation type="unfinished">Samoan</translation>
+      <translation>Samoan</translation>
     </message>
     <message>
       <source>Shona</source>
-      <translation type="unfinished">Shona</translation>
+      <translation>Shona</translation>
     </message>
     <message>
       <source>Somali</source>
-      <translation type="unfinished">Somali</translation>
+      <translation>Somali</translation>
     </message>
     <message>
       <source>Albanian</source>
-      <translation type="unfinished">Albanian</translation>
+      <translation>Albanian</translation>
     </message>
     <message>
       <source>Serbian</source>
-      <translation type="unfinished">Serbian</translation>
+      <translation>Serbian</translation>
     </message>
     <message>
       <source>Swati</source>
-      <translation type="unfinished">Swati</translation>
+      <translation>Swati</translation>
     </message>
     <message>
       <source>Southern Sotho</source>
-      <translation type="unfinished">Southern Sotho</translation>
+      <translation>Southern Sotho</translation>
     </message>
     <message>
       <source>Sundanese</source>
-      <translation type="unfinished">Sundanese</translation>
+      <translation>Sundanese</translation>
     </message>
     <message>
       <source>Swedish</source>
@@ -1753,43 +1757,43 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Swahili</source>
-      <translation type="unfinished">Swahili</translation>
+      <translation>Swahili</translation>
     </message>
     <message>
       <source>Tamil</source>
-      <translation type="unfinished">Tamil</translation>
+      <translation>Tamil</translation>
     </message>
     <message>
       <source>Telugu</source>
-      <translation type="unfinished">Telugu</translation>
+      <translation>Telugu</translation>
     </message>
     <message>
       <source>Tajik</source>
-      <translation type="unfinished">Tajik</translation>
+      <translation>Tajik</translation>
     </message>
     <message>
       <source>Thai</source>
-      <translation type="unfinished">Thai</translation>
+      <translation>Thai</translation>
     </message>
     <message>
       <source>Tigrinya</source>
-      <translation type="unfinished">Tigrinya</translation>
+      <translation>Tigrinya</translation>
     </message>
     <message>
       <source>Turkmen</source>
-      <translation type="unfinished">Turkmen</translation>
+      <translation>Turkmen</translation>
     </message>
     <message>
       <source>Tagalog</source>
-      <translation type="unfinished">Tagalog</translation>
+      <translation>Tagalog</translation>
     </message>
     <message>
       <source>Tswana</source>
-      <translation type="unfinished">Tswana</translation>
+      <translation>Tswana</translation>
     </message>
     <message>
       <source>Tonga</source>
-      <translation type="unfinished">Tonga</translation>
+      <translation>Tonga</translation>
     </message>
     <message>
       <source>Turkish</source>
@@ -1797,39 +1801,39 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Tsonga</source>
-      <translation type="unfinished">Tsonga</translation>
+      <translation>Tsonga</translation>
     </message>
     <message>
       <source>Tatar</source>
-      <translation type="unfinished">Tatar</translation>
+      <translation>Tatar</translation>
     </message>
     <message>
       <source>Twi</source>
-      <translation type="unfinished">Twi</translation>
+      <translation>Twi</translation>
     </message>
     <message>
       <source>Tahitian</source>
-      <translation type="unfinished">Tahitian</translation>
+      <translation>Tahitian</translation>
     </message>
     <message>
       <source>Uighur</source>
-      <translation type="unfinished">Uighur</translation>
+      <translation>Uighur</translation>
     </message>
     <message>
       <source>Ukrainian</source>
-      <translation type="unfinished">Ukrainian</translation>
+      <translation>Ukrainian</translation>
     </message>
     <message>
       <source>Urdu</source>
-      <translation type="unfinished">Urdu</translation>
+      <translation>Urdu</translation>
     </message>
     <message>
       <source>Uzbek</source>
-      <translation type="unfinished">Uzbek</translation>
+      <translation>Uzbek</translation>
     </message>
     <message>
       <source>Venda</source>
-      <translation type="unfinished">Venda</translation>
+      <translation>Venda</translation>
     </message>
     <message>
       <source>Vietnamese</source>
@@ -1841,35 +1845,35 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Walloon</source>
-      <translation type="unfinished">Walloon</translation>
+      <translation>Walloon</translation>
     </message>
     <message>
       <source>Wolof</source>
-      <translation type="unfinished">Wolof</translation>
+      <translation>Wolof</translation>
     </message>
     <message>
       <source>Xhosa</source>
-      <translation type="unfinished">Xhosa</translation>
+      <translation>Xhosa</translation>
     </message>
     <message>
       <source>Yiddish</source>
-      <translation type="unfinished">Yiddish</translation>
+      <translation>Yiddish</translation>
     </message>
     <message>
       <source>Yoruba</source>
-      <translation type="unfinished">Yoruba</translation>
+      <translation>Yoruba</translation>
     </message>
     <message>
       <source>Zhuang</source>
-      <translation type="unfinished">Zhuang</translation>
+      <translation>Zhuang</translation>
     </message>
     <message>
       <source>Chinese</source>
-      <translation type="unfinished">Chinese</translation>
+      <translation>Chinese</translation>
     </message>
     <message>
       <source>Zulu</source>
-      <translation type="unfinished">Zulu</translation>
+      <translation>Zulu</translation>
     </message>
     <message>
       <source>Lojban</source>
@@ -1877,11 +1881,11 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Traditional Chinese</source>
-      <translation type="unfinished">Traditional Chinese</translation>
+      <translation>Traditional Chinese</translation>
     </message>
     <message>
       <source>Simplified Chinese</source>
-      <translation type="unfinished">Simplified Chinese</translation>
+      <translation>Simplified Chinese</translation>
     </message>
     <message>
       <source>Other</source>
@@ -1889,27 +1893,27 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Other Simplified Chinese dialects</source>
-      <translation type="unfinished">Other Simplified Chinese dialects</translation>
+      <translation>Other Simplified Chinese dialects</translation>
     </message>
     <message>
       <source>Other Traditional Chinese dialects</source>
-      <translation type="unfinished">Other Traditional Chinese dialects</translation>
+      <translation>Other Traditional Chinese dialects</translation>
     </message>
     <message>
       <source>Other Eastern-European languages</source>
-      <translation type="unfinished">Other Eastern-European languages</translation>
+      <translation>Other Eastern-European languages</translation>
     </message>
     <message>
       <source>Other Western-European languages</source>
-      <translation type="unfinished">Other Western-European languages</translation>
+      <translation>Other Western-European languages</translation>
     </message>
     <message>
       <source>Other Russian languages</source>
-      <translation type="unfinished">Other Russian languages</translation>
+      <translation>Other Russian languages</translation>
     </message>
     <message>
       <source>Other Japanese languages</source>
-      <translation type="unfinished">Other Japanese languages</translation>
+      <translation>Other Japanese languages</translation>
     </message>
     <message>
       <source>Other Baltic languages</source>
@@ -1917,23 +1921,23 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Other Greek languages</source>
-      <translation type="unfinished">Other Greek languages</translation>
+      <translation>Other Greek languages</translation>
     </message>
     <message>
       <source>Other Korean dialects</source>
-      <translation type="unfinished">Other Korean dialects</translation>
+      <translation>Other Korean dialects</translation>
     </message>
     <message>
       <source>Other Turkish dialects</source>
-      <translation type="unfinished">Other Turkish dialects</translation>
+      <translation>Other Turkish dialects</translation>
     </message>
     <message>
       <source>Other Thai dialects</source>
-      <translation type="unfinished">Other Thai dialects</translation>
+      <translation>Other Thai dialects</translation>
     </message>
     <message>
       <source>Tamazight</source>
-      <translation type="unfinished">Tamazight</translation>
+      <translation>Tamazight</translation>
     </message>
   </context>
   <context>
@@ -1948,7 +1952,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Belarusian</source>
-      <translation type="unfinished">Belarusian</translation>
+      <translation>Belarusian</translation>
     </message>
     <message>
       <source>Bulgarian</source>
@@ -1980,15 +1984,15 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Korean</source>
-      <translation type="unfinished">Korean</translation>
+      <translation>Korean</translation>
     </message>
     <message>
       <source>Lithuanian</source>
-      <translation type="unfinished">Lithuanian</translation>
+      <translation>Lithuanian</translation>
     </message>
     <message>
       <source>Macedonian</source>
-      <translation type="unfinished">Macedonian</translation>
+      <translation>Macedonian</translation>
     </message>
     <message>
       <source>Dutch</source>
@@ -2008,19 +2012,19 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Slovak</source>
-      <translation type="unfinished">Slovak</translation>
+      <translation>Slovak</translation>
     </message>
     <message>
       <source>Albanian</source>
-      <translation type="unfinished">Albanian</translation>
+      <translation>Albanian</translation>
     </message>
     <message>
       <source>Serbian (Cyrillic)</source>
-      <translation type="unfinished">Serbian (Cyrillic)</translation>
+      <translation>Serbian (Cyrillic)</translation>
     </message>
     <message>
       <source>Swedish</source>
-      <translation type="unfinished">Swedish</translation>
+      <translation>Swedish</translation>
     </message>
     <message>
       <source>Turkish</source>
@@ -2028,35 +2032,35 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Ukrainian</source>
-      <translation type="unfinished">Ukrainian</translation>
+      <translation>Ukrainian</translation>
     </message>
     <message>
       <source>Chinese Simplified</source>
-      <translation type="unfinished">Chinese Simplified</translation>
+      <translation>Chinese Simplified</translation>
     </message>
     <message>
       <source>Chinese Traditional</source>
-      <translation type="unfinished">Chinese Traditional</translation>
+      <translation>Chinese Traditional</translation>
     </message>
     <message>
       <source>Vietnamese</source>
-      <translation type="unfinished">Vietnamese</translation>
+      <translation>Vietnamese</translation>
     </message>
     <message>
       <source>Portuguese, Brazilian</source>
-      <translation type="unfinished">Portuguese, Brazilian</translation>
+      <translation>Portuguese, Brazilian</translation>
     </message>
     <message>
       <source>Persian</source>
-      <translation type="unfinished">Persian</translation>
+      <translation>Persian</translation>
     </message>
     <message>
       <source>Spanish, Argentina</source>
-      <translation type="unfinished">Spanish, Argentina</translation>
+      <translation>Spanish, Argentina</translation>
     </message>
     <message>
       <source>Hindi</source>
-      <translation type="unfinished">Hindi</translation>
+      <translation>Hindi</translation>
     </message>
     <message>
       <source>Esperanto</source>
@@ -2072,23 +2076,23 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Tajik</source>
-      <translation type="unfinished">Tajik</translation>
+      <translation>Tajik</translation>
     </message>
     <message>
       <source>Quechua</source>
-      <translation type="unfinished">Quechua</translation>
+      <translation>Quechua</translation>
     </message>
     <message>
       <source>Aymara</source>
-      <translation type="unfinished">Aymara</translation>
+      <translation>Aymara</translation>
     </message>
     <message>
       <source>Arabic, Saudi Arabia</source>
-      <translation type="unfinished">Arabic, Saudi Arabia</translation>
+      <translation>Arabic, Saudi Arabia</translation>
     </message>
     <message>
       <source>Turkmen</source>
-      <translation type="unfinished">Turkmen</translation>
+      <translation>Turkmen</translation>
     </message>
     <message>
       <source>Interlingue</source>
@@ -2100,7 +2104,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Hungarian</source>
-      <translation type="unfinished">Hungarian</translation>
+      <translation>Hungarian</translation>
     </message>
     <message>
       <source>English</source>
@@ -2209,7 +2213,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Ctrl+Q</source>
-      <translation type="unfinished">Ctrl+Q</translation>
+      <translation>Ctrl+Q</translation>
     </message>
     <message>
       <source>&amp;Forum</source>
@@ -2217,11 +2221,11 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>&amp;Close To Tray</source>
-      <translation type="unfinished">&amp;Close To Tray</translation>
+      <translation>&amp;Close To Tray</translation>
     </message>
     <message>
       <source>Minimizes the window to tray</source>
-      <translation type="unfinished">Minimizes the window to tray</translation>
+      <translation>Minimizes the window to tray</translation>
     </message>
     <message>
       <source>Ctrl+F4</source>
@@ -2245,15 +2249,15 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Ctrl+P</source>
-      <translation type="unfinished">Ctrl+P</translation>
+      <translation>Ctrl+P</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
-      <translation type="unfinished">Page Set&amp;up</translation>
+      <translation>Page Set&amp;up</translation>
     </message>
     <message>
       <source>Print Pre&amp;view</source>
-      <translation type="unfinished">Print Pre&amp;view</translation>
+      <translation>Print Pre&amp;view</translation>
     </message>
     <message>
       <source>&amp;Rescan Files</source>
@@ -2273,7 +2277,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Ctrl+T</source>
-      <translation type="unfinished">Ctrl+T</translation>
+      <translation>Ctrl+T</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2285,7 +2289,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Ctrl+H</source>
-      <translation type="unfinished">Ctrl+H</translation>
+      <translation>Ctrl+H</translation>
     </message>
     <message>
       <source>&amp;Export</source>
@@ -2305,7 +2309,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Ctrl+O</source>
-      <translation type="unfinished">Ctrl+O</translation>
+      <translation>Ctrl+O</translation>
     </message>
     <message>
       <source>Menu Button</source>
@@ -2317,7 +2321,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Ctrl+F</source>
-      <translation type="unfinished">Ctrl+F</translation>
+      <translation>Ctrl+F</translation>
     </message>
     <message>
       <source>Full-text search</source>
@@ -2325,7 +2329,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Ctrl+Shift+F</source>
-      <translation type="unfinished">Ctrl+Shift+F</translation>
+      <translation>Ctrl+Shift+F</translation>
     </message>
     <message>
       <source>GoldenDict reference</source>
@@ -2334,10 +2338,6 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>F1</source>
       <translation>F1</translation>
-    </message>
-    <message>
-      <source>Show</source>
-      <translation>Monstrar</translation>
     </message>
     <message>
       <source>Export</source>
@@ -2357,7 +2357,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Ctrl+E</source>
-      <translation type="unfinished">Ctrl+E</translation>
+      <translation>Ctrl+E</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
@@ -2365,15 +2365,15 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Show &amp;Small Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Small Icons in Toolbars</translation>
+      <translation>Show &amp;Small Icons in Toolbars</translation>
     </message>
     <message>
       <source>Show &amp;Large Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Large Icons in Toolbars</translation>
+      <translation>Show &amp;Large Icons in Toolbars</translation>
     </message>
     <message>
       <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation type="unfinished">Show &amp;Normal Icons in Toolbars</translation>
+      <translation>Show &amp;Normal Icons in Toolbars</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
@@ -2393,7 +2393,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Toggle clipboard monitoring</source>
-      <translation type="unfinished">Toggle clipboard monitoring</translation>
+      <translation>Toggle clipboard monitoring</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -2453,12 +2453,12 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
-      <translation type="unfinished">WARNING: %1</translation>
+      <translation>WARNING: %1</translation>
     </message>
     <message>
       <source>String to search in dictionaries. The wildcards &apos;*&apos;, &apos;?&apos; and sets of symbols &apos;[...]&apos; are allowed.
 To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos; respectively</source>
-      <translation type="unfinished">String to search in dictionaries. The wildcards &apos;*&apos;, &apos;?&apos; and sets of symbols &apos;[...]&apos; are allowed.
+      <translation>String to search in dictionaries. The wildcards &apos;*&apos;, &apos;?&apos; and sets of symbols &apos;[...]&apos; are allowed.
 To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos; respectively</translation>
     </message>
     <message>
@@ -2483,11 +2483,11 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
-      <translation type="unfinished">Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</translation>
+      <translation>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</translation>
     </message>
     <message>
       <source>New Release Available</source>
-      <translation type="unfinished">New Release Available</translation>
+      <translation>New Release Available</translation>
     </message>
     <message>
       <source>Version &lt;b&gt;%1&lt;/b&gt; of GoldenDict is now available for download.&lt;br&gt;Click &lt;b&gt;Download&lt;/b&gt; to get to the download page.</source>
@@ -2499,15 +2499,15 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Skip This Release</source>
-      <translation type="unfinished">Skip This Release</translation>
+      <translation>Skip This Release</translation>
     </message>
     <message>
       <source>You have chosen to hide a menubar. Use %1 to show it back.</source>
-      <translation type="unfinished">You have chosen to hide a menubar. Use %1 to show it back.</translation>
+      <translation>You have chosen to hide a menubar. Use %1 to show it back.</translation>
     </message>
     <message>
       <source>Ctrl+M</source>
-      <translation type="unfinished">Ctrl+M</translation>
+      <translation>Ctrl+M</translation>
     </message>
     <message>
       <source>Page Setup</source>
@@ -2515,7 +2515,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>No printer is available. Please install one first.</source>
-      <translation type="unfinished">No printer is available. Please install one first.</translation>
+      <translation>No printer is available. Please install one first.</translation>
     </message>
     <message>
       <source>Print Article</source>
@@ -2523,19 +2523,19 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
-      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
+      <translation>Complete Html (*.html *.htm)</translation>
     </message>
     <message>
       <source>Single Html (*.html *.htm)</source>
-      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+      <translation>Single Html (*.html *.htm)</translation>
     </message>
     <message>
       <source>Pdf (*.pdf)</source>
-      <translation type="unfinished">Pdf (*.pdf)</translation>
+      <translation>Pdf (*.pdf)</translation>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
-      <translation type="unfinished">Mime Html (*.mhtml)</translation>
+      <translation>Mime Html (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
@@ -2555,11 +2555,11 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Save article complete</source>
-      <translation type="unfinished">Save article complete</translation>
+      <translation>Save article complete</translation>
     </message>
     <message>
       <source>The main window is set to be always on top.</source>
-      <translation type="unfinished">The main window is set to be always on top.</translation>
+      <translation>The main window is set to be always on top.</translation>
     </message>
     <message>
       <source>&amp;Hide</source>
@@ -2567,7 +2567,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Export history to file</source>
-      <translation type="unfinished">Export history to file</translation>
+      <translation>Export history to file</translation>
     </message>
     <message>
       <source>Text files (*.txt);;All files (*.*)</source>
@@ -2579,11 +2579,11 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>History export complete</source>
-      <translation type="unfinished">History export complete</translation>
+      <translation>History export complete</translation>
     </message>
     <message>
       <source>Import history from file</source>
-      <translation type="unfinished">Import history from file</translation>
+      <translation>Import history from file</translation>
     </message>
     <message>
       <source>Import error: </source>
@@ -2591,11 +2591,11 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Import error: invalid data in file</source>
-      <translation type="unfinished">Import error: invalid data in file</translation>
+      <translation>Import error: invalid data in file</translation>
     </message>
     <message>
       <source>History import complete</source>
-      <translation type="unfinished">History import complete</translation>
+      <translation>History import complete</translation>
     </message>
     <message>
       <source>Export Favorites to file</source>
@@ -2603,11 +2603,11 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Text files (*.txt);;XML files (*.xml)</source>
-      <translation type="unfinished">Text files (*.txt);;XML files (*.xml)</translation>
+      <translation>Text files (*.txt);;XML files (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
-      <translation type="unfinished">Favorites export complete</translation>
+      <translation>Favorites export complete</translation>
     </message>
     <message>
       <source>Import Favorites from file</source>
@@ -2615,15 +2615,15 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
-      <translation type="unfinished">Text and XML files (*.txt *.xml);;All files (*.*)</translation>
+      <translation>Text and XML files (*.txt *.xml);;All files (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
-      <translation type="unfinished">Data parsing error</translation>
+      <translation>Data parsing error</translation>
     </message>
     <message>
       <source>Favorites import complete</source>
-      <translation type="unfinished">Favorites import complete</translation>
+      <translation>Favorites import complete</translation>
     </message>
     <message>
       <source>Dictionary info</source>
@@ -2645,12 +2645,16 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Remover li parol «%1» ex li Preferet?</translation>
     </message>
+    <message>
+      <source>Show</source>
+      <translation>Monstrar</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
     <message>
       <source>Dictionary file was tampered or corrupted</source>
-      <translation type="unfinished">Dictionary file was tampered or corrupted</translation>
+      <translation>Dictionary file was tampered or corrupted</translation>
     </message>
     <message>
       <source>Failed loading article from %1, reason: %2</source>
@@ -2691,21 +2695,21 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Language Variant</source>
-      <translation type="unfinished">Language Variant</translation>
+      <translation>Language Variant</translation>
     </message>
   </context>
   <context>
     <name>MultimediaAudioPlayer</name>
     <message>
       <source>Couldn&apos;t open audio buffer for reading.</source>
-      <translation type="unfinished">Couldn&apos;t open audio buffer for reading.</translation>
+      <translation>Couldn&apos;t open audio buffer for reading.</translation>
     </message>
   </context>
   <context>
     <name>OrderAndProps</name>
     <message>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Form</translation>
     </message>
     <message>
       <source>Dictionary order:</source>
@@ -2749,7 +2753,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
-      <translation type="unfinished">Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</translation>
+      <translation>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</translation>
     </message>
     <message>
       <source>Dictionary headwords</source>
@@ -2801,7 +2805,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Normally, opening a new tab switches to it immediately.
 With this on however, new tabs will be opened without
 switching to them.</source>
-      <translation type="unfinished">Normally, opening a new tab switches to it immediately.
+      <translation>Normally, opening a new tab switches to it immediately.
 With this on however, new tabs will be opened without
 switching to them.</translation>
     </message>
@@ -2813,7 +2817,7 @@ switching to them.</translation>
       <source>With this on, new tabs are opened just after the
 current, active one. Otherwise they are added to
 be the last ones.</source>
-      <translation type="unfinished">With this on, new tabs are opened just after the
+      <translation>With this on, new tabs are opened just after the
 current, active one. Otherwise they are added to
 be the last ones.</translation>
     </message>
@@ -2823,7 +2827,7 @@ be the last ones.</translation>
     </message>
     <message>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</translation>
+      <translation>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</translation>
     </message>
     <message>
       <source>Hide single tab</source>
@@ -2831,16 +2835,16 @@ be the last ones.</translation>
     </message>
     <message>
       <source>MRU order: Most recently used order.</source>
-      <translation type="unfinished">MRU order: Most recently used order.</translation>
+      <translation>MRU order: Most recently used order.</translation>
     </message>
     <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
-      <translation type="unfinished">Ctrl-Tab navigates tabs in MRU order</translation>
+      <translation>Ctrl-Tab navigates tabs in MRU order</translation>
     </message>
     <message>
       <source>Normally, pressing ESC key moves focus to the translation line.
 With this on however, it will hide the main window.</source>
-      <translation type="unfinished">Normally, pressing ESC key moves focus to the translation line.
+      <translation>Normally, pressing ESC key moves focus to the translation line.
 With this on however, it will hide the main window.</translation>
     </message>
     <message>
@@ -2849,7 +2853,7 @@ With this on however, it will hide the main window.</translation>
     </message>
     <message>
       <source>Turn this option on if you want to select words by single mouse click</source>
-      <translation type="unfinished">Turn this option on if you want to select words by single mouse click</translation>
+      <translation>Turn this option on if you want to select words by single mouse click</translation>
     </message>
     <message>
       <source>Select word by single click</source>
@@ -2861,7 +2865,7 @@ With this on however, it will hide the main window.</translation>
     </message>
     <message>
       <source>Automatically starts GoldenDict after operation system bootup.</source>
-      <translation type="unfinished">Automatically starts GoldenDict after operation system bootup.</translation>
+      <translation>Automatically starts GoldenDict after operation system bootup.</translation>
     </message>
     <message>
       <source>Start with system</source>
@@ -2872,48 +2876,48 @@ With this on however, it will hide the main window.</translation>
 selection in an article loads the translation and almost immediately
 scrolls to the article from the same dictionary. With this option off,
 however, the article from the topmost dictionary is shown.</source>
-      <translation type="unfinished">Normally, clicking on a link, double-clicking on a word or looking up
+      <translation>Normally, clicking on a link, double-clicking on a word or looking up
 selection in an article loads the translation and almost immediately
 scrolls to the article from the same dictionary. With this option off,
 however, the article from the topmost dictionary is shown.</translation>
     </message>
     <message>
       <source>Automatically scroll to target article</source>
-      <translation type="unfinished">Automatically scroll to target article</translation>
+      <translation>Automatically scroll to target article</translation>
     </message>
     <message>
       <source>When enabled, an icon appears in the system tray area which can be used
 to open main window and perform other tasks.</source>
-      <translation type="unfinished">When enabled, an icon appears in the system tray area which can be used
+      <translation>When enabled, an icon appears in the system tray area which can be used
 to open main window and perform other tasks.</translation>
     </message>
     <message>
       <source>Enable system tray icon</source>
-      <translation type="unfinished">Enable system tray icon</translation>
+      <translation>Enable system tray icon</translation>
     </message>
     <message>
       <source>With this on, the application starts directly to system tray without showing
 its main window.</source>
-      <translation type="unfinished">With this on, the application starts directly to system tray without showing
+      <translation>With this on, the application starts directly to system tray without showing
 its main window.</translation>
     </message>
     <message>
       <source>Start to system tray</source>
-      <translation type="unfinished">Start to system tray</translation>
+      <translation>Start to system tray</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
 the application.</source>
-      <translation type="unfinished">With this on, an attempt to close main window would hide it instead of closing
+      <translation>With this on, an attempt to close main window would hide it instead of closing
 the application.</translation>
     </message>
     <message>
       <source>Close to system tray</source>
-      <translation type="unfinished">Close to system tray</translation>
+      <translation>Close to system tray</translation>
     </message>
     <message>
       <source>Adjust this value to avoid huge context menus.</source>
-      <translation type="unfinished">Adjust this value to avoid huge context menus.</translation>
+      <translation>Adjust this value to avoid huge context menus.</translation>
     </message>
     <message>
       <source>Context menu dictionaries limit:</source>
@@ -2921,15 +2925,15 @@ the application.</translation>
     </message>
     <message>
       <source>Appearance</source>
-      <translation type="unfinished">Appearance</translation>
+      <translation>Appearance</translation>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation type="unfinished">Interface Font</translation>
+      <translation>Interface Font</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
-      <translation type="unfinished">Turn the UI to dark.</translation>
+      <translation>Turn the UI to dark.</translation>
     </message>
     <message>
       <source>Dark Mode</source>
@@ -2937,35 +2941,35 @@ the application.</translation>
     </message>
     <message>
       <source>Turn the article display style to dark.</source>
-      <translation type="unfinished">Turn the article display style to dark.</translation>
+      <translation>Turn the article display style to dark.</translation>
     </message>
     <message>
       <source>Dark Reader Mode</source>
-      <translation type="unfinished">Dark Reader Mode</translation>
+      <translation>Dark Reader Mode</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
-      <translation type="unfinished">These fonts will be applied when the fonts specified by a dictionary are not found.</translation>
+      <translation>These fonts will be applied when the fonts specified by a dictionary are not found.</translation>
     </message>
     <message>
       <source>Fallback Fonts</source>
-      <translation type="unfinished">Fallback Fonts</translation>
+      <translation>Fallback Fonts</translation>
     </message>
     <message>
       <source>Standard Font</source>
-      <translation type="unfinished">Standard Font</translation>
+      <translation>Standard Font</translation>
     </message>
     <message>
       <source>Serif Font</source>
-      <translation type="unfinished">Serif Font</translation>
+      <translation>Serif Font</translation>
     </message>
     <message>
       <source>Sans-serif Font</source>
-      <translation type="unfinished">Sans-serif Font</translation>
+      <translation>Sans-serif Font</translation>
     </message>
     <message>
       <source>Monospace Font</source>
-      <translation type="unfinished">Monospace Font</translation>
+      <translation>Monospace Font</translation>
     </message>
     <message>
       <source>&amp;Popup</source>
@@ -2973,15 +2977,15 @@ the application.</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+      <translation>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
     </message>
     <message>
       <source>Start with clipboard monitoring turned on</source>
-      <translation type="unfinished">Start with clipboard monitoring turned on</translation>
+      <translation>Start with clipboard monitoring turned on</translation>
     </message>
     <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
-      <translation type="unfinished">Send translated word to main window instead of to show it in popup window</translation>
+      <translation>Send translated word to main window instead of to show it in popup window</translation>
     </message>
     <message>
       <source>Send translated word to main window</source>
@@ -2989,25 +2993,25 @@ the application.</translation>
     </message>
     <message>
       <source>Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</source>
-      <translation type="unfinished">Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</translation>
+      <translation>Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</translation>
     </message>
     <message>
       <source>Track Clipboard change</source>
-      <translation type="unfinished">Track Clipboard change</translation>
+      <translation>Track Clipboard change</translation>
     </message>
     <message>
       <source>Track Selection change</source>
-      <translation type="unfinished">Track Selection change</translation>
+      <translation>Track Selection change</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
 in the pressed state when the word selection changes.</source>
-      <translation type="unfinished">With this enabled, the popup would only show up if all chosen keys are
+      <translation>With this enabled, the popup would only show up if all chosen keys are
 in the pressed state when the word selection changes.</translation>
     </message>
     <message>
       <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation type="unfinished">Only tack selection when all selected keys are kept pressed:</translation>
+      <translation>Only tack selection when all selected keys are kept pressed:</translation>
     </message>
     <message>
       <source>Alt key</source>
@@ -3035,7 +3039,7 @@ in the pressed state when the word selection changes.</translation>
     </message>
     <message>
       <source>Windows key or Meta key</source>
-      <translation type="unfinished">Windows key or Meta key</translation>
+      <translation>Windows key or Meta key</translation>
     </message>
     <message>
       <source>Win/Meta</source>
@@ -3043,7 +3047,7 @@ in the pressed state when the word selection changes.</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
-      <translation type="unfinished">Show a flag window before showing popup window, click the flag to show popup window. </translation>
+      <translation>Show a flag window before showing popup window, click the flag to show popup window. </translation>
     </message>
     <message>
       <source>Show scan flag when word is selected</source>
@@ -3051,7 +3055,7 @@ in the pressed state when the word selection changes.</translation>
     </message>
     <message>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation type="unfinished">Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</translation>
+      <translation>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</translation>
     </message>
     <message>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
@@ -3059,7 +3063,7 @@ in the pressed state when the word selection changes.</translation>
     </message>
     <message>
       <source>Delay time</source>
-      <translation type="unfinished">Delay time</translation>
+      <translation>Delay time</translation>
     </message>
     <message>
       <source> ms</source>
@@ -3087,7 +3091,7 @@ in the pressed state when the word selection changes.</translation>
     </message>
     <message>
       <source>Pronunciation</source>
-      <translation type="unfinished">Pronunciation</translation>
+      <translation>Pronunciation</translation>
     </message>
     <message>
       <source>Auto-pronounce words in main window</source>
@@ -3095,7 +3099,7 @@ in the pressed state when the word selection changes.</translation>
     </message>
     <message>
       <source>Auto-pronounce words in the popup</source>
-      <translation type="unfinished">Auto-pronounce words in the popup</translation>
+      <translation>Auto-pronounce words in the popup</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3103,7 +3107,7 @@ in the pressed state when the word selection changes.</translation>
     </message>
     <message>
       <source>Play audio files via built-in audio support</source>
-      <translation type="unfinished">Play audio files via built-in audio support</translation>
+      <translation>Play audio files via built-in audio support</translation>
     </message>
     <message>
       <source>Use internal player:</source>
@@ -3132,7 +3136,7 @@ in the pressed state when the word selection changes.</translation>
     <message>
       <source>Enable if you wish to use a proxy server
 for all program&apos;s network requests.</source>
-      <translation type="unfinished">Enable if you wish to use a proxy server
+      <translation>Enable if you wish to use a proxy server
 for all program&apos;s network requests.</translation>
     </message>
     <message>
@@ -3145,7 +3149,7 @@ for all program&apos;s network requests.</translation>
     </message>
     <message>
       <source>Custom proxy</source>
-      <translation type="unfinished">Custom proxy</translation>
+      <translation>Custom proxy</translation>
     </message>
     <message>
       <source>Custom settings</source>
@@ -3157,7 +3161,7 @@ for all program&apos;s network requests.</translation>
     </message>
     <message>
       <source>Host:</source>
-      <translation type="unfinished">Host:</translation>
+      <translation>Host:</translation>
     </message>
     <message>
       <source>Port:</source>
@@ -3181,7 +3185,7 @@ for all program&apos;s network requests.</translation>
     </message>
     <message>
       <source>Deck:</source>
-      <translation type="unfinished">Deck:</translation>
+      <translation>Deck:</translation>
     </message>
     <message>
       <source>Model:</source>
@@ -3193,7 +3197,7 @@ for all program&apos;s network requests.</translation>
     </message>
     <message>
       <source>Vocabulary field...</source>
-      <translation type="unfinished">Vocabulary field...</translation>
+      <translation>Vocabulary field...</translation>
     </message>
     <message>
       <source>Text</source>
@@ -3201,7 +3205,7 @@ for all program&apos;s network requests.</translation>
     </message>
     <message>
       <source>Definition field...</source>
-      <translation type="unfinished">Definition field...</translation>
+      <translation>Definition field...</translation>
     </message>
     <message>
       <source>Sentence</source>
@@ -3209,13 +3213,13 @@ for all program&apos;s network requests.</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
-      <translation type="unfinished">Sentence field (can be empty)...</translation>
+      <translation>Sentence field (can be empty)...</translation>
     </message>
     <message>
       <source>Enabling this would make GoldenDict block most advertisements
 by disallowing content (images, frames) not originating from the site
 you are browsing. If some site breaks because of this, try disabling this.</source>
-      <translation type="unfinished">Enabling this would make GoldenDict block most advertisements
+      <translation>Enabling this would make GoldenDict block most advertisements
 by disallowing content (images, frames) not originating from the site
 you are browsing. If some site breaks because of this, try disabling this.</translation>
     </message>
@@ -3226,22 +3230,22 @@ you are browsing. If some site breaks because of this, try disabling this.</tran
     <message>
       <source>Some sites detect GoldenDict via HTTP headers and block the requests.
 Enable this option to workaround the problem.</source>
-      <translation type="unfinished">Some sites detect GoldenDict via HTTP headers and block the requests.
+      <translation>Some sites detect GoldenDict via HTTP headers and block the requests.
 Enable this option to workaround the problem.</translation>
     </message>
     <message>
       <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation type="unfinished">Do not identify GoldenDict in HTTP headers</translation>
+      <translation>Do not identify GoldenDict in HTTP headers</translation>
     </message>
     <message>
       <source>Maximum network cache size:</source>
-      <translation type="unfinished">Maximum network cache size:</translation>
+      <translation>Maximum network cache size:</translation>
     </message>
     <message>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation type="unfinished">Maximum disk space occupied by GoldenDict&apos;s network cache in
+      <translation>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</translation>
     </message>
@@ -3252,12 +3256,12 @@ If set to 0 the network disk cache will be disabled.</translation>
     <message>
       <source>When this option is enabled, GoldenDict
 clears its network cache from disk during exit.</source>
-      <translation type="unfinished">When this option is enabled, GoldenDict
+      <translation>When this option is enabled, GoldenDict
 clears its network cache from disk during exit.</translation>
     </message>
     <message>
       <source>Clear network cache on exit</source>
-      <translation type="unfinished">Clear network cache on exit</translation>
+      <translation>Clear network cache on exit</translation>
     </message>
     <message>
       <source>When this is enabled, the program periodically
@@ -3265,7 +3269,7 @@ checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
 informs the user about it and prompts to open a
 download page.</source>
-      <translation type="unfinished">When this is enabled, the program periodically
+      <translation>When this is enabled, the program periodically
 checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
 informs the user about it and prompts to open a
@@ -3273,7 +3277,7 @@ download page.</translation>
     </message>
     <message>
       <source>Check for new program releases periodically</source>
-      <translation type="unfinished">Check for new program releases periodically</translation>
+      <translation>Check for new program releases periodically</translation>
     </message>
     <message>
       <source>Full-text search</source>
@@ -3293,7 +3297,7 @@ download page.</translation>
     </message>
     <message>
       <source>Create fulltext index with parallel threads </source>
-      <translation type="unfinished">Create fulltext index with parallel threads </translation>
+      <translation>Create fulltext index with parallel threads </translation>
     </message>
     <message>
       <source>Ad&amp;vanced</source>
@@ -3305,7 +3309,7 @@ download page.</translation>
     </message>
     <message>
       <source>Turn this option on to store history of the translated words</source>
-      <translation type="unfinished">Turn this option on to store history of the translated words</translation>
+      <translation>Turn this option on to store history of the translated words</translation>
     </message>
     <message>
       <source>Store &amp;history</source>
@@ -3313,7 +3317,7 @@ download page.</translation>
     </message>
     <message>
       <source>Specify the maximum number of entries to keep in history.</source>
-      <translation type="unfinished">Specify the maximum number of entries to keep in history.</translation>
+      <translation>Specify the maximum number of entries to keep in history.</translation>
     </message>
     <message>
       <source>Maximum history size:</source>
@@ -3321,7 +3325,7 @@ download page.</translation>
     </message>
     <message>
       <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation type="unfinished">History saving interval. If set to 0 history will be saved only during exit.</translation>
+      <translation>History saving interval. If set to 0 history will be saved only during exit.</translation>
     </message>
     <message>
       <source>Save every</source>
@@ -3337,11 +3341,11 @@ download page.</translation>
     </message>
     <message>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
-      <translation type="unfinished">Favorites saving interval. If set to 0 Favorites will be saved only during exit.</translation>
+      <translation>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
-      <translation type="unfinished">Turn this option on to confirm every operation of items deletion</translation>
+      <translation>Turn this option on to confirm every operation of items deletion</translation>
     </message>
     <message>
       <source>Confirmation for items deletion</source>
@@ -3353,11 +3357,11 @@ download page.</translation>
     </message>
     <message>
       <source>Ignore punctuation while searching</source>
-      <translation type="unfinished">Ignore punctuation while searching</translation>
+      <translation>Ignore punctuation while searching</translation>
     </message>
     <message>
       <source>Input phrases longer than this size will be ignored</source>
-      <translation type="unfinished">Input phrases longer than this size will be ignored</translation>
+      <translation>Input phrases longer than this size will be ignored</translation>
     </message>
     <message>
       <source>symbols</source>
@@ -3374,20 +3378,20 @@ download page.</translation>
     <message>
       <source>Turn this option on to ignore unreasonably long input text
 from mouse-over, selection, clipboard or command line</source>
-      <translation type="unfinished">Turn this option on to ignore unreasonably long input text
+      <translation>Turn this option on to ignore unreasonably long input text
 from mouse-over, selection, clipboard or command line</translation>
     </message>
     <message>
       <source>Ignore input phrases longer than</source>
-      <translation type="unfinished">Ignore input phrases longer than</translation>
+      <translation>Ignore input phrases longer than</translation>
     </message>
     <message>
       <source>Articles longer than this size will be collapsed</source>
-      <translation type="unfinished">Articles longer than this size will be collapsed</translation>
+      <translation>Articles longer than this size will be collapsed</translation>
     </message>
     <message>
       <source>Turn this option on to always expand optional parts of articles</source>
-      <translation type="unfinished">Turn this option on to always expand optional parts of articles</translation>
+      <translation>Turn this option on to always expand optional parts of articles</translation>
     </message>
     <message>
       <source>Expand optional &amp;parts</source>
@@ -3395,7 +3399,7 @@ from mouse-over, selection, clipboard or command line</translation>
     </message>
     <message>
       <source>Turn this option on to ignore diacritics while searching articles</source>
-      <translation type="unfinished">Turn this option on to ignore diacritics while searching articles</translation>
+      <translation>Turn this option on to ignore diacritics while searching articles</translation>
     </message>
     <message>
       <source>Ignore diacritics while searching</source>
@@ -3403,16 +3407,16 @@ from mouse-over, selection, clipboard or command line</translation>
     </message>
     <message>
       <source>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</source>
-      <translation type="unfinished">During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</translation>
+      <translation>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</translation>
     </message>
     <message>
       <source>Session collapse</source>
-      <translation type="unfinished">Session collapse</translation>
+      <translation>Session collapse</translation>
     </message>
     <message>
       <source>Turn this option on to enable extra articles search via synonym lists
 from Stardict, Babylon and GLS dictionaries</source>
-      <translation type="unfinished">Turn this option on to enable extra articles search via synonym lists
+      <translation>Turn this option on to enable extra articles search via synonym lists
 from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
@@ -3421,19 +3425,19 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>When using clipboard, strip everything after newline</source>
-      <translation type="unfinished">When using clipboard, strip everything after newline</translation>
+      <translation>When using clipboard, strip everything after newline</translation>
     </message>
     <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation type="unfinished">On a new search, focus the main or popup window even if it&apos;s visible</translation>
+      <translation>On a new search, focus the main or popup window even if it&apos;s visible</translation>
     </message>
     <message>
       <source>Miscellaneous</source>
-      <translation type="unfinished">Miscellaneous</translation>
+      <translation>Miscellaneous</translation>
     </message>
     <message>
       <source>Remove invalid index on exit</source>
-      <translation type="unfinished">Remove invalid index on exit</translation>
+      <translation>Remove invalid index on exit</translation>
     </message>
     <message>
       <source>System default</source>
@@ -3457,15 +3461,15 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Babylon</source>
-      <translation type="unfinished">Babylon</translation>
+      <translation>Babylon</translation>
     </message>
     <message>
       <source>Lingoes</source>
-      <translation type="unfinished">Lingoes</translation>
+      <translation>Lingoes</translation>
     </message>
     <message>
       <source>Lingoes-Blue</source>
-      <translation type="unfinished">Lingoes-Blue</translation>
+      <translation>Lingoes-Blue</translation>
     </message>
     <message>
       <source> MB</source>
@@ -3473,7 +3477,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Auto does nothing on some systems.</source>
-      <translation type="unfinished">Auto does nothing on some systems.</translation>
+      <translation>Auto does nothing on some systems.</translation>
     </message>
     <message>
       <source>Restart the program to apply the language change.</source>
@@ -3481,59 +3485,59 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Restart to apply the interface style change.</source>
-      <translation type="unfinished">Restart to apply the interface style change.</translation>
+      <translation>Restart to apply the interface style change.</translation>
     </message>
     <message>
       <source>Restart to apply the interface font change.</source>
-      <translation type="unfinished">Restart to apply the interface font change.</translation>
+      <translation>Restart to apply the interface font change.</translation>
     </message>
     <message>
       <source>Restart needed</source>
-      <translation type="unfinished">Restart needed</translation>
+      <translation>Restart needed</translation>
     </message>
     <message>
       <source>Enable</source>
-      <translation type="unfinished">Enable</translation>
+      <translation>Enable</translation>
     </message>
     <message>
       <source>Disable</source>
-      <translation type="unfinished">Disable</translation>
+      <translation>Disable</translation>
     </message>
     <message>
       <source>Automatic</source>
-      <translation type="unfinished">Automatic</translation>
+      <translation>Automatic</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
+      <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
     <message>
       <source>Interface Font Size</source>
-      <translation type="unfinished">Interface Font Size</translation>
+      <translation>Interface Font Size</translation>
     </message>
     <message>
       <source>Interface language</source>
-      <translation type="unfinished">Interface language</translation>
+      <translation>Interface language</translation>
     </message>
     <message>
       <source>Article Display style</source>
-      <translation type="unfinished">Article Display style</translation>
+      <translation>Article Display style</translation>
     </message>
     <message>
       <source>Add-on style</source>
-      <translation type="unfinished">Add-on style</translation>
+      <translation>Add-on style</translation>
     </message>
     <message>
       <source>Interface Style</source>
-      <translation type="unfinished">Interface Style</translation>
+      <translation>Interface Style</translation>
     </message>
     <message>
       <source>Preview Font</source>
-      <translation type="unfinished">Preview Font</translation>
+      <translation>Preview Font</translation>
     </message>
     <message>
       <source>Goldendict-ng is a dictionary software</source>
-      <translation type="unfinished">Goldendict-ng is a dictionary software</translation>
+      <translation>Goldendict-ng is a dictionary software</translation>
     </message>
   </context>
   <context>
@@ -3544,7 +3548,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Plain Text</source>
-      <translation type="unfinished">Plain Text</translation>
+      <translation>Plain Text</translation>
     </message>
     <message>
       <source>Html</source>
@@ -3629,7 +3633,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Website: %1%2</source>
-      <translation type="unfinished">Website: %1%2</translation>
+      <translation>Website: %1%2</translation>
     </message>
     <message>
       <source>Date: %1%2</source>
@@ -3641,43 +3645,43 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Word or sentence to query.</source>
-      <translation type="unfinished">Word or sentence to query.</translation>
+      <translation>Word or sentence to query.</translation>
     </message>
     <message>
       <source>Reset window state.</source>
-      <translation type="unfinished">Reset window state.</translation>
+      <translation>Reset window state.</translation>
     </message>
     <message>
       <source>Disable tts.</source>
-      <translation type="unfinished">Disable tts.</translation>
+      <translation>Disable tts.</translation>
     </message>
     <message>
       <source>Change the group of main window.</source>
-      <translation type="unfinished">Change the group of main window.</translation>
+      <translation>Change the group of main window.</translation>
     </message>
     <message>
       <source>Change the group of popup.</source>
-      <translation type="unfinished">Change the group of popup.</translation>
+      <translation>Change the group of popup.</translation>
     </message>
     <message>
       <source>Force the word to be translated in scanpopup</source>
-      <translation type="unfinished">Force the word to be translated in scanpopup</translation>
+      <translation>Force the word to be translated in scanpopup</translation>
     </message>
     <message>
       <source>Force the word to be translated in the mainwindow</source>
-      <translation type="unfinished">Force the word to be translated in the mainwindow</translation>
+      <translation>Force the word to be translated in the mainwindow</translation>
     </message>
     <message>
       <source>Toggle popup.</source>
-      <translation type="unfinished">Toggle popup.</translation>
+      <translation>Toggle popup.</translation>
     </message>
     <message>
       <source>Print version and diagnosis info.</source>
-      <translation type="unfinished">Print version and diagnosis info.</translation>
+      <translation>Print version and diagnosis info.</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
+      <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
@@ -3699,7 +3703,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Resource saving error: </source>
-      <translation type="unfinished">Resource saving error: </translation>
+      <translation>Resource saving error: </translation>
     </message>
     <message>
       <source>WARNING: %1</source>
@@ -3707,7 +3711,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>The referenced resource failed to download.</source>
-      <translation type="unfinished">The referenced resource failed to download.</translation>
+      <translation>The referenced resource failed to download.</translation>
     </message>
   </context>
   <context>
@@ -3732,7 +3736,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <name>ScanPopup</name>
     <message>
       <source>Dialog</source>
-      <translation type="unfinished">Dialog</translation>
+      <translation>Dialog</translation>
     </message>
     <message>
       <source>Back</source>
@@ -3748,7 +3752,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Alt+S</source>
-      <translation type="unfinished">Alt+S</translation>
+      <translation>Alt+S</translation>
     </message>
     <message>
       <source>Send word to main window (Alt+W)</source>
@@ -3756,7 +3760,7 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Alt+W</source>
-      <translation type="unfinished">Alt+W</translation>
+      <translation>Alt+W</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>
@@ -3773,12 +3777,12 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation type="unfinished">Use this to pin down the window so it would stay on screen,
+      <translation>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
-      <translation type="unfinished">WARNING: %1</translation>
+      <translation>WARNING: %1</translation>
     </message>
   </context>
   <context>
@@ -3789,23 +3793,23 @@ could be resized or managed in other ways.</translation>
     </message>
     <message>
       <source>Ctrl+Shift+G</source>
-      <translation type="unfinished">Ctrl+Shift+G</translation>
+      <translation>Ctrl+Shift+G</translation>
     </message>
     <message>
       <source>&amp;Next</source>
-      <translation type="unfinished">&amp;Next</translation>
+      <translation>&amp;Next</translation>
     </message>
     <message>
       <source>Ctrl+G</source>
-      <translation type="unfinished">Ctrl+G</translation>
+      <translation>Ctrl+G</translation>
     </message>
     <message>
       <source>&amp;Case Sensitive</source>
-      <translation type="unfinished">&amp;Case Sensitive</translation>
+      <translation>&amp;Case Sensitive</translation>
     </message>
     <message>
       <source>Find:</source>
-      <translation type="unfinished">Find:</translation>
+      <translation>Find:</translation>
     </message>
   </context>
   <context>
@@ -3827,7 +3831,7 @@ could be resized or managed in other ways.</translation>
     <name>Sources</name>
     <message>
       <source>Files</source>
-      <translation type="unfinished">Files</translation>
+      <translation>Files</translation>
     </message>
     <message>
       <source>Paths to search for the dictionary files:</source>
@@ -3851,7 +3855,7 @@ could be resized or managed in other ways.</translation>
     </message>
     <message>
       <source>Make dictionaries from bunches of audiofiles by adding paths here:</source>
-      <translation type="unfinished">Make dictionaries from bunches of audiofiles by adding paths here:</translation>
+      <translation>Make dictionaries from bunches of audiofiles by adding paths here:</translation>
     </message>
     <message>
       <source>Morphology</source>
@@ -3876,7 +3880,7 @@ provides stem words for searches and
 spelling suggestions for mistyped words.
 Add appropriate dictionaries to the bottoms
 of the appropriate groups to use them.</source>
-      <translation type="unfinished">Each morphology dictionary appears as a
+      <translation>Each morphology dictionary appears as a
 separate auxiliary dictionary which
 provides stem words for searches and
 spelling suggestions for mistyped words.
@@ -3885,7 +3889,7 @@ of the appropriate groups to use them.</translation>
     </message>
     <message>
       <source>Wikipedia</source>
-      <translation type="unfinished">Wikipedia</translation>
+      <translation>Wikipedia</translation>
     </message>
     <message>
       <source>Wikipedia (MediaWiki) sites:</source>
@@ -3893,7 +3897,7 @@ of the appropriate groups to use them.</translation>
     </message>
     <message>
       <source>Websites</source>
-      <translation type="unfinished">Websites</translation>
+      <translation>Websites</translation>
     </message>
     <message>
       <source>Any websites. A string %GDWORD% will be replaced with the query word:</source>
@@ -3913,7 +3917,7 @@ of the appropriate groups to use them.</translation>
     </message>
     <message>
       <source>Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</source>
-      <translation type="unfinished">Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</translation>
+      <translation>Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</translation>
     </message>
     <message>
       <source>Lingua Libre</source>
@@ -3921,21 +3925,21 @@ of the appropriate groups to use them.</translation>
     </message>
     <message>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pronunciations provided by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pronunciations provided by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pronunciations provided by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <source>Enable Lingua Libre</source>
-      <translation type="unfinished">Enable Lingua Libre</translation>
+      <translation>Enable Lingua Libre</translation>
     </message>
     <message>
       <source>ISO 639-3 language code</source>
-      <translation type="unfinished">ISO 639-3 language code</translation>
+      <translation>ISO 639-3 language code</translation>
     </message>
     <message>
       <source>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
 
 Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</source>
-      <translation type="unfinished">Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
+      <translation>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
 
 Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</translation>
     </message>
@@ -3945,7 +3949,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>Live pronunciations from &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. The site allows people to record and share word pronunciations. You can listen to them from GoldenDict.</source>
-      <translation type="unfinished">Live pronunciations from &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. The site allows people to record and share word pronunciations. You can listen to them from GoldenDict.</translation>
+      <translation>Live pronunciations from &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. The site allows people to record and share word pronunciations. You can listen to them from GoldenDict.</translation>
     </message>
     <message>
       <source>Enable pronunciations from Forvo</source>
@@ -3957,11 +3961,11 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use of Forvo currently requires an API key, register on the site to get your own key.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use of Forvo currently requires an API key, register on the site to get your own key.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use of Forvo currently requires an API key, register on the site to get your own key.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <source>Language codes (comma-separated):</source>
@@ -3977,7 +3981,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>Transliteration</source>
-      <translation type="unfinished">Transliteration</translation>
+      <translation>Transliteration</translation>
     </message>
     <message>
       <source>Greek transliteration</source>
@@ -3989,15 +3993,15 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>German transliteration</source>
-      <translation type="unfinished">German transliteration</translation>
+      <translation>German transliteration</translation>
     </message>
     <message>
       <source>Belarusian transliteration</source>
-      <translation type="unfinished">Belarusian transliteration</translation>
+      <translation>Belarusian transliteration</translation>
     </message>
     <message>
       <source>Enables to use the Latin alphabet to write the Japanese language</source>
-      <translation type="unfinished">Enables to use the Latin alphabet to write the Japanese language</translation>
+      <translation>Enables to use the Latin alphabet to write the Japanese language</translation>
     </message>
     <message>
       <source>Japanese Romaji</source>
@@ -4010,7 +4014,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>The most widely used method of transcription of Japanese,
 based on English phonology</source>
-      <translation type="unfinished">The most widely used method of transcription of Japanese,
+      <translation>The most widely used method of transcription of Japanese,
 based on English phonology</translation>
     </message>
     <message>
@@ -4027,7 +4031,7 @@ based on English phonology</translation>
     </message>
     <message>
       <source>Hiragana</source>
-      <translation type="unfinished">Hiragana</translation>
+      <translation>Hiragana</translation>
     </message>
     <message>
       <source>Katakana Japanese syllabary</source>
@@ -4039,15 +4043,15 @@ based on English phonology</translation>
     </message>
     <message>
       <source>Custom transliteration</source>
-      <translation type="unfinished">Custom transliteration</translation>
+      <translation>Custom transliteration</translation>
     </message>
     <message>
       <source>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</source>
-      <translation type="unfinished">This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</translation>
+      <translation>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</translation>
     </message>
     <message>
       <source>ae;æ #this is an example</source>
-      <translation type="unfinished">ae;æ #this is an example</translation>
+      <translation>ae;æ #this is an example</translation>
     </message>
     <message>
       <source>Text to Speech</source>
@@ -4059,7 +4063,7 @@ based on English phonology</translation>
     </message>
     <message>
       <source>Confirm removal</source>
-      <translation type="unfinished">Confirm removal</translation>
+      <translation>Confirm removal</translation>
     </message>
     <message>
       <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
@@ -4085,7 +4089,7 @@ based on English phonology</translation>
     <name>TextToSpeechSource</name>
     <message>
       <source>Selected voice engines:</source>
-      <translation type="unfinished">Selected voice engines:</translation>
+      <translation>Selected voice engines:</translation>
     </message>
     <message>
       <source>&amp;Add</source>
@@ -4113,15 +4117,15 @@ based on English phonology</translation>
     </message>
     <message>
       <source>Available voice engines:</source>
-      <translation type="unfinished">Available voice engines:</translation>
+      <translation>Available voice engines:</translation>
     </message>
     <message>
       <source>Text to be previewed:</source>
-      <translation type="unfinished">Text to be previewed:</translation>
+      <translation>Text to be previewed:</translation>
     </message>
     <message>
       <source>Type text to be previewed here.</source>
-      <translation type="unfinished">Type text to be previewed here.</translation>
+      <translation>Type text to be previewed here.</translation>
     </message>
     <message>
       <source>&amp;Preview</source>
@@ -4129,19 +4133,19 @@ based on English phonology</translation>
     </message>
     <message>
       <source>No TTS voice available</source>
-      <translation type="unfinished">No TTS voice available</translation>
+      <translation>No TTS voice available</translation>
     </message>
     <message>
       <source>Cannot find available TTS voice.&lt;br&gt;Please make sure that at least one TTS engine installed on your computer already.</source>
-      <translation type="unfinished">Cannot find available TTS voice.&lt;br&gt;Please make sure that at least one TTS engine installed on your computer already.</translation>
+      <translation>Cannot find available TTS voice.&lt;br&gt;Please make sure that at least one TTS engine installed on your computer already.</translation>
     </message>
     <message>
       <source>Confirm removal</source>
-      <translation type="unfinished">Confirm removal</translation>
+      <translation>Confirm removal</translation>
     </message>
     <message>
       <source>Remove voice engine &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation type="unfinished">Remove voice engine &lt;b&gt;%1&lt;/b&gt; from the list?</translation>
+      <translation>Remove voice engine &lt;b&gt;%1&lt;/b&gt; from the list?</translation>
     </message>
   </context>
   <context>
@@ -4152,7 +4156,7 @@ based on English phonology</translation>
     </message>
     <message>
       <source>Drop-down</source>
-      <translation type="unfinished">Drop-down</translation>
+      <translation>Drop-down</translation>
     </message>
   </context>
   <context>
@@ -4167,7 +4171,7 @@ based on English phonology</translation>
     </message>
     <message>
       <source>Id</source>
-      <translation type="unfinished">Id</translation>
+      <translation>Id</translation>
     </message>
     <message>
       <source>Icon</source>
@@ -4178,7 +4182,7 @@ based on English phonology</translation>
     <name>WebSitesModel</name>
     <message>
       <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation type="unfinished">Insert article as link inside &lt;iframe&gt; tag</translation>
+      <translation>Insert article as link inside &lt;iframe&gt; tag</translation>
     </message>
     <message>
       <source>Enabled</source>
@@ -4205,7 +4209,7 @@ based on English phonology</translation>
     <name>WordFinder</name>
     <message>
       <source>Failed to query some dictionaries.</source>
-      <translation type="unfinished">Failed to query some dictionaries.</translation>
+      <translation>Failed to query some dictionaries.</translation>
     </message>
   </context>
 </TS>
