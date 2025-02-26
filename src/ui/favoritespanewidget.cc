@@ -1000,14 +1000,15 @@ TreeItem * FavoritesModel::getItemByFullPath( const QStringList & fullPath ) con
 {
   TreeItem * parentItem = getItem( QModelIndex() );
   for ( const auto & pathPart : fullPath ) {
-    auto childItems = parentItem->children();
-    auto folder_found = std::find_if( childItems.begin(), childItems.end(), [&pathPart]( TreeItem * item ) {
+    auto childItems   = parentItem->children();
+    auto folder_found = std::find_if( childItems.begin(), childItems.end(), [ &pathPart ]( TreeItem * item ) {
       return item->type() == TreeItem::Folder && item->data().toString() == pathPart;
-    });
+    } );
 
     if ( folder_found == childItems.end() ) {
       return nullptr; // early return as no match found and no need to loop further
-    } else {
+    }
+    else {
       parentItem = *folder_found;
     }
   }
