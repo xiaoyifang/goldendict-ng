@@ -1117,7 +1117,7 @@ QModelIndex FavoritesModel::addNewFolder( const QModelIndex & idx )
   // Create folder with unique name
 
   TreeItem * parentItem = getItem( idx );
-  int row = parentItem->childCount();
+  int row               = parentItem->childCount();
 
   beginInsertRows( parentIdx, row, row );
   TreeItem * newFolder = new TreeItem( name, parentItem, TreeItem::Folder );
