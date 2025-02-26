@@ -1106,16 +1106,6 @@ QModelIndex FavoritesModel::addNewFolder( const QModelIndex & idx )
 {
   QString baseName = QString::fromLatin1( "New folder" );
 
-  // Create unique name
-
-  QString name = baseName;
-  if ( findItemInFolder( name, TreeItem::Folder, idx ).isValid() ) {
-    //name, with date as part of the name
-    name = baseName + QString::number( QDateTime::currentDateTime().toSecsSinceEpoch() );
-  }
-
-  // Create folder with unique name
-
   TreeItem * parentItem = getItem( idx );
   QModelIndex parentIdx = idx;
   int row;
@@ -1128,7 +1118,15 @@ QModelIndex FavoritesModel::addNewFolder( const QModelIndex & idx )
   else {
     row = parentItem->childCount();
   }
+  // Create unique name
 
+  QString name = baseName;
+  if ( findItemInFolder( name, TreeItem::Folder, parentIdx ).isValid() ) {
+    //name, with date as part of the name
+    name = baseName + QString::number( QDateTime::currentDateTime().toSecsSinceEpoch() );
+  }
+
+  // Create folder with unique name
   beginInsertRows( parentIdx, row, row );
   TreeItem * newFolder = new TreeItem( name, parentItem, TreeItem::Folder );
   parentItem->insertChild( row, newFolder );
