@@ -1104,37 +1104,20 @@ void FavoritesModel::removeItemsForIndexes( const QModelIndexList & idxList )
 
 QModelIndex FavoritesModel::addNewFolder( const QModelIndex & idx )
 {
-  QModelIndex parentIdx;
-  if ( idx.isValid() ) {
-    parentIdx = parent( idx );
-  }
-  else {
-    parentIdx = idx;
-  }
-
   QString baseName = QString::fromLatin1( "New folder" );
 
   // Create unique name
 
   QString name = baseName;
-  if ( findItemInFolder( name, TreeItem::Folder, parentIdx ).isValid() ) {
+  if ( findItemInFolder( name, TreeItem::Folder, idx ).isValid() ) {
     //name, with date as part of the name
     name = baseName + QString::number( QDateTime::currentDateTime().toSecsSinceEpoch() );
   }
 
   // Create folder with unique name
 
-  TreeItem * parentItem = getItem( parentIdx );
-  int row;
-
-  if ( idx.isValid() ) {
-    // Insert after selected element
-    row = idx.row() + 1;
-  }
-  else {
-    // No selected element - add to end of root folder
-    row = parentItem->childCount();
-  }
+  TreeItem * parentItem = getItem( idx );
+  int row = parentItem->childCount();
 
   beginInsertRows( parentIdx, row, row );
   TreeItem * newFolder = new TreeItem( name, parentItem, TreeItem::Folder );
