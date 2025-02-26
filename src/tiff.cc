@@ -22,7 +22,7 @@ void tiff2img( std::vector< char > & data )
     QSize imgSize    = img.size();
     int scaleSize    = qMin( imgSize.width(), screenSize.width() );
     img.scaledToWidth( scaleSize ).save( &buffer, "webp" );
-    
+
     data.resize( ba.size() );
     memcpy( data.data(), ba.data(), ba.size() );
     buffer.close();
