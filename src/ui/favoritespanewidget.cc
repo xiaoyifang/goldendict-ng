@@ -999,27 +999,19 @@ TreeItem * FavoritesModel::getItem( const QModelIndex & index ) const
 TreeItem * FavoritesModel::getItemByFullPath( const QStringList & fullPath ) const
 {
   TreeItem * parentItem = getItem( QModelIndex() );
-  for ( auto pathPart = fullPath.begin(); pathPart != fullPath.end(); pathPart++ ) {
-
-    QList< TreeItem * > & childItems = parentItem->children();
-    auto folder_found = std::find_if( childItems.begin(), childItems.end(), [ &pathPart ]( TreeItem * item ) {
-      return ( item->type() == TreeItem::Folder && item->data().toString() == *pathPart );
-    } );
+  for ( const auto & pathPart : fullPath ) {
+    auto childItems = parentItem->children();
+    auto folder_found = std::find_if( childItems.begin(), childItems.end(), [&pathPart]( TreeItem * item ) {
+      return item->type() == TreeItem::Folder && item->data().toString() == pathPart;
+    });
 
     if ( folder_found == childItems.end() ) {
       return nullptr; // early return as no match found and no need to loop further
-    }
-    else {
-      if ( pathPart == fullPath.end() - 1 ) {
-        return *folder_found; // the last item of fullPath, happy end reached
-      }
-      else {
-        parentItem = *folder_found;
-        continue; // go deeper level
-      }
+    } else {
+      parentItem = *folder_found;
     }
   }
-  return nullptr; // no match
+  return parentItem; // return the last matched item
 }
 
 QModelIndex FavoritesModel::getModelIndexByFullPath( const QStringList & fullPath ) const
