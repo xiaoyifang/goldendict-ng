@@ -8,23 +8,22 @@
 
 namespace GdTiff {
 
-void tiff2img( std::vector< char > & data )
+void tiff2img( std::vector< char > & data, const char * format )
 {
   QImage img = QImage::fromData( (unsigned char *)&data.front(), data.size() );
 
   if ( !img.isNull() ) {
     QByteArray ba;
-
-    QBuffer buffer( &ba ); // buffer doesn't own ba
+    QBuffer buffer( &ba );
     buffer.open( QIODevice::WriteOnly );
-
     QSize screenSize = QApplication::primaryScreen()->availableSize();
     QSize imgSize    = img.size();
     int scaleSize    = qMin( imgSize.width(), screenSize.width() );
-    img.scaledToWidth( scaleSize ).save( &buffer, "webp" );
 
-    memcpy( data.data(), ba.data(), ba.size() );
-    data.resize( ba.size() );
+    img.scaledToWidth( scaleSize ).save( &buffer, format );
+
+    data.resize( buffer.size() );
+    memcpy( &data.front(), buffer.data(), data.size() );
     buffer.close();
   }
 }
