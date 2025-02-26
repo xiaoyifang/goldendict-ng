@@ -5,5 +5,4 @@
 namespace GdTiff {
 
 void tiff2img( std::vector< char > & data, const char * format = "webp" );
-
 }
