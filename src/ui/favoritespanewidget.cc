@@ -999,38 +999,31 @@ TreeItem * FavoritesModel::getItem( const QModelIndex & index ) const
 TreeItem * FavoritesModel::getItemByFullPath( const QStringList & fullPath ) const
 {
   TreeItem * parentItem = getItem( QModelIndex() );
-  for ( auto pathPart = fullPath.begin(); pathPart != fullPath.end(); pathPart++ ) {
-
-    QList< TreeItem * > & childItems = parentItem->children();
+  for ( const auto & pathPart : fullPath ) {
+    auto childItems   = parentItem->children();
     auto folder_found = std::find_if( childItems.begin(), childItems.end(), [ &pathPart ]( TreeItem * item ) {
-      return ( item->type() == TreeItem::Folder && item->data().toString() == *pathPart );
+      return item->type() == TreeItem::Folder && item->data().toString() == pathPart;
     } );
 
     if ( folder_found == childItems.end() ) {
       return nullptr; // early return as no match found and no need to loop further
     }
     else {
-      if ( pathPart == fullPath.end() - 1 ) {
-        return *folder_found; // the last item of fullPath, happy end reached
-      }
-      else {
-        parentItem = *folder_found;
-        continue; // go deeper level
-      }
+      parentItem = *folder_found;
     }
   }
-  return nullptr; // no match
+  return parentItem; // return the last matched item
 }
 
 QModelIndex FavoritesModel::getModelIndexByFullPath( const QStringList & fullPath ) const
 {
   QModelIndex targetIndex = QModelIndex();
 
-  for ( auto pathPart = fullPath.begin(); pathPart != fullPath.end(); pathPart++ ) {
+  for ( const auto & pathPart : fullPath ) {
     QList< TreeItem * > childItems = getItem( targetIndex )->children();
     auto folder_found = std::find_if( childItems.begin(), childItems.end(), [ &pathPart ]( TreeItem * item ) {
       return ( item->type() == TreeItem::Folder || item->type() == TreeItem::Root )
-        && item->data().toString() == *pathPart;
+        && item->data().toString() == pathPart;
     } );
 
     if ( folder_found == childItems.end() ) {
@@ -1040,12 +1033,11 @@ QModelIndex FavoritesModel::getModelIndexByFullPath( const QStringList & fullPat
       qsizetype rowIndex           = std::distance( childItems.begin(), folder_found );
       QModelIndex found_modelIndex = createIndex( rowIndex, 0, *folder_found );
 
-      if ( pathPart == fullPath.end() - 1 ) {
+      if ( pathPart == fullPath.back() ) {
         return found_modelIndex; // the last item of fullPath, happy end reached
       }
       else {
         targetIndex = found_modelIndex;
-        continue; //go deeper level
       }
     }
   }
