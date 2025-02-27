@@ -1125,7 +1125,15 @@ QModelIndex FavoritesModel::addNewFolder( const QModelIndex & idx )
 
 bool FavoritesModel::addNewWordFullPath( const QString & headword )
 {
-  QModelIndex index = getModelIndexByFullPath( activeFolderFullPath );
+  QModelIndex index{};
+  QModelIndexList selectedIdx = m_favoritesTree->selectionModel()->selectedIndexes();
+  if ( selectedIdx.size() == 1 ) {
+    index = selectedIdx.front();
+  }
+  else{
+    index = getModelIndexByFullPath( activeFolderFullPath );
+  }
+
   return addHeadword( headword, index );
 }
 
@@ -1133,9 +1141,17 @@ bool FavoritesModel::addNewWordFullPath( const QString & headword )
 bool FavoritesModel::removeWordFullPath( const QString & headword )
 {
   QModelIndex parentIndex{};
-  if ( !activeFolderFullPath.empty() ) {
-    parentIndex = getModelIndexByFullPath( activeFolderFullPath );
+
+  QModelIndexList selectedIdx = m_favoritesTree->selectionModel()->selectedIndexes();
+  if ( selectedIdx.size() == 1 ) {
+    parentIndex = selectedIdx.front();
   }
+  else{
+    if ( !activeFolderFullPath.empty() ) {
+      parentIndex = getModelIndexByFullPath( activeFolderFullPath );
+    }
+  }
+
   for ( int i = 0; i < rowCount( parentIndex ); ++i ) {
     TreeItem * c = getItem( index( i, 0, parentIndex ) );
     if ( c->type() == TreeItem::Word && c->data().toString() == headword ) {
