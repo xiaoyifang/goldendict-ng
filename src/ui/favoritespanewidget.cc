@@ -1031,7 +1031,7 @@ QModelIndex FavoritesModel::getModelIndexByFullPath( const QStringList & fullPat
     }
     else {
       qsizetype rowIndex           = std::distance( childItems.begin(), folder_found );
-      targetIndex = createIndex( rowIndex, 0, *folder_found );
+      targetIndex                  = createIndex( rowIndex, 0, *folder_found );
     }
   }
   return targetIndex; // return the last matched item;
