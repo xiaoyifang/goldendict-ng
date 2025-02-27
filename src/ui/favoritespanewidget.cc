@@ -1031,17 +1031,10 @@ QModelIndex FavoritesModel::getModelIndexByFullPath( const QStringList & fullPat
     }
     else {
       qsizetype rowIndex           = std::distance( childItems.begin(), folder_found );
-      QModelIndex found_modelIndex = createIndex( rowIndex, 0, *folder_found );
-
-      if ( pathPart == fullPath.back() ) {
-        return found_modelIndex; // the last item of fullPath, happy end reached
-      }
-      else {
-        targetIndex = found_modelIndex;
-      }
+      targetIndex                  = createIndex( rowIndex, 0, *folder_found );
     }
   }
-  return {};
+  return targetIndex; // return the last matched item;
 }
 
 QStringList FavoritesModel::getTextForIndexes( const QModelIndexList & idxList ) const
