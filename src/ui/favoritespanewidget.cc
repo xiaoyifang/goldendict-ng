@@ -1147,7 +1147,7 @@ bool FavoritesModel::removeWordFullPath( const QString & headword )
 
 TreeItem * FavoritesModel::getCurrentSelectedOrActiveFolder()
 {
-  QModelIndexList selectedIdxs = m_favoritesTree->selectionModel()->selectedIndexes();
+    QModelIndexList selectedIdxs = m_favoritesModel->selectedIndexes();
 
   if ( selectedIdxs.size() == 1 ) {
     QModelIndex idx = selectedIdxs.first();
@@ -1163,7 +1163,7 @@ TreeItem * FavoritesModel::getCurrentSelectedOrActiveFolder()
 
 QModelIndex FavoritesModel::getCurrentSelectedOrActiveFolderIndex()
 {
-  QModelIndexList selectedIdxs = m_favoritesTree->selectionModel()->selectedIndexes();
+    QModelIndexList selectedIdxs = m_favoritesModel->selectedIndexes();
 
   if ( selectedIdxs.size() == 1 ) {
     QModelIndex idx = selectedIdxs.first();
