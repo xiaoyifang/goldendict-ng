@@ -236,6 +236,8 @@ public:
   // return false if failed
   bool removeWordFullPath( const QString & headword );
 
+  TreeItem * getCurrentSelectedOrActiveFolder();
+  QModelIndex getCurrentSelectedOrActiveFolderIndex();
   // Return true if headwors is already presented in Favorites
   bool isWordPresentFullPath( const QString & headword );
 

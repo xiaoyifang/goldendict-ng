@@ -1125,14 +1125,7 @@ QModelIndex FavoritesModel::addNewFolder( const QModelIndex & idx )
 
 bool FavoritesModel::addNewWordFullPath( const QString & headword )
 {
-  QModelIndex index{};
-  QModelIndexList selectedIdx = m_favoritesTree->selectionModel()->selectedIndexes();
-  if ( selectedIdx.size() == 1 ) {
-    index = selectedIdx.front();
-  }
-  else{
-    index = getModelIndexByFullPath( activeFolderFullPath );
-  }
+  QModelIndex index = getCurrentSelectedOrActiveFolderIndex();
 
   return addHeadword( headword, index );
 }
@@ -1140,17 +1133,7 @@ bool FavoritesModel::addNewWordFullPath( const QString & headword )
 
 bool FavoritesModel::removeWordFullPath( const QString & headword )
 {
-  QModelIndex parentIndex{};
-
-  QModelIndexList selectedIdx = m_favoritesTree->selectionModel()->selectedIndexes();
-  if ( selectedIdx.size() == 1 ) {
-    parentIndex = selectedIdx.front();
-  }
-  else{
-    if ( !activeFolderFullPath.empty() ) {
-      parentIndex = getModelIndexByFullPath( activeFolderFullPath );
-    }
-  }
+  QModelIndex parentIndex = getCurrentSelectedOrActiveFolderIndex();
 
   for ( int i = 0; i < rowCount( parentIndex ); ++i ) {
     TreeItem * c = getItem( index( i, 0, parentIndex ) );
@@ -1162,10 +1145,36 @@ bool FavoritesModel::removeWordFullPath( const QString & headword )
   return false;
 }
 
+TreeItem * FavoritesModel::getCurrentSelectedOrActiveFolder()
+{
+    QModelIndexList selectedIdxs = m_favoritesTree->selectionModel()->selectedIndexes();
+
+    if (selectedIdxs.size() == 1) {
+        QModelIndex idx = selectedIdxs.first();
+        TreeItem * item = m_favoritesModel->getItem(idx);
+        if (item && item->type() == TreeItem::Folder) {
+            return item;
+        }
+    }
+
+    return activeFolderFullPath.empty() ? getItem( QModelIndex() ):m_favoritesModel->getItemByFullPath(activeFolderFullPath);
+}
+
+QModelIndex FavoritesModel::getCurrentSelectedOrActiveFolderIndex()
+{
+    QModelIndexList selectedIdxs = m_favoritesTree->selectionModel()->selectedIndexes();
+
+    if (selectedIdxs.size() == 1) {
+        QModelIndex idx = selectedIdxs.first();
+        return idx;
+    }
+
+    return activeFolderFullPath.empty() ?  QModelIndex() :m_favoritesModel->getModelIndexByFullPath(activeFolderFullPath);
+}
+
 bool FavoritesModel::isWordPresentFullPath( const QString & headword )
 {
-  TreeItem * targetFolder =
-    activeFolderFullPath.empty() ? getItem( QModelIndex() ) : getItemByFullPath( activeFolderFullPath );
+  TreeItem * targetFolder = getCurrentSelectedOrActiveFolder();
 
   if ( targetFolder != nullptr ) {
     for ( int i = 0; i < targetFolder->childCount(); i++ ) {
