@@ -585,9 +585,6 @@ std::u32string decodeFromHunspell( Hunspell & hunspell, char const * str )
 
   vector< char32_t > result( inLeft + 1 ); // +1 isn't needed, but see above
 
-  void * out     = &result.front();
-  size_t outLeft = result.size() * sizeof( char32_t );
-
   QString convStr = conv.convert( in, inLeft );
   return convStr.toStdU32String();
 }

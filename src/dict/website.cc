@@ -21,7 +21,7 @@ namespace {
 class WebSiteDictionary: public Dictionary::Class
 {
   QByteArray urlTemplate;
-  bool experimentalIframe;
+  bool experimentalIframe = false;
   QString iconFilename;
   bool inside_iframe;
   QNetworkAccessManager & netMgr;
@@ -37,8 +37,7 @@ public:
     Dictionary::Class( id, vector< string >() ),
     iconFilename( iconFilename_ ),
     inside_iframe( inside_iframe_ ),
-    netMgr( netMgr_ ),
-    experimentalIframe( false )
+    netMgr( netMgr_ )
   {
     dictionaryName = name_;
 

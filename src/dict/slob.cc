@@ -684,9 +684,9 @@ private:
 
 SlobDictionary::SlobDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles ):
   BtreeDictionary( id, dictionaryFiles ),
-  idxFileName( indexFile ),
   idx( indexFile, QIODevice::ReadOnly ),
-  idxHeader( idx.read< IdxHeader >() )
+  idxHeader( idx.read< IdxHeader >() ),
+  idxFileName( indexFile )
 {
   // Open data file
   sf.open( dictionaryFiles[ 0 ].c_str() );

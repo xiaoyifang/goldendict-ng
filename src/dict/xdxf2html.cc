@@ -111,7 +111,6 @@ string convert( string const & in,
   QDomDocument dd;
 
   QString errorStr;
-  int errorLine, errorColumn;
 
   string in_data;
   if ( type == XDXF ) {

@@ -132,7 +132,6 @@ void DictHeadwords::setup( Dictionary::Class * dict_ )
 
   setWindowTitle( QString::fromUtf8( dict->getName().c_str() ) );
 
-  const auto size                            = dict->getWordCount();
   std::shared_ptr< HeadwordListModel > other = std::make_shared< HeadwordListModel >();
   model.swap( other );
   model->setMaxFilterResults( ui.filterMaxResult->value() );
@@ -353,7 +352,6 @@ void DictHeadwords::exportAllWords( QProgressDialog & progress, QTextStream & ou
 
 void DictHeadwords::loadRegex( QProgressDialog & progress, QTextStream & out )
 {
-  const int headwordsNumber = model->totalCount();
 
   QMutexLocker const _( &mutex );
   QSet< QString > allHeadwords;
