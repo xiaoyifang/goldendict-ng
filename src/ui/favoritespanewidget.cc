@@ -1147,29 +1147,31 @@ bool FavoritesModel::removeWordFullPath( const QString & headword )
 
 TreeItem * FavoritesModel::getCurrentSelectedOrActiveFolder()
 {
-    QModelIndexList selectedIdxs = m_favoritesTree->selectionModel()->selectedIndexes();
+  QModelIndexList selectedIdxs = m_favoritesTree->selectionModel()->selectedIndexes();
 
-    if (selectedIdxs.size() == 1) {
-        QModelIndex idx = selectedIdxs.first();
-        TreeItem * item = m_favoritesModel->getItem(idx);
-        if (item && item->type() == TreeItem::Folder) {
-            return item;
-        }
+  if ( selectedIdxs.size() == 1 ) {
+    QModelIndex idx = selectedIdxs.first();
+    TreeItem * item = m_favoritesModel->getItem( idx );
+    if ( item && item->type() == TreeItem::Folder ) {
+      return item;
     }
+  }
 
-    return activeFolderFullPath.empty() ? getItem( QModelIndex() ):m_favoritesModel->getItemByFullPath(activeFolderFullPath);
+  return activeFolderFullPath.empty() ? getItem( QModelIndex() ) :
+                                        m_favoritesModel->getItemByFullPath( activeFolderFullPath );
 }
 
 QModelIndex FavoritesModel::getCurrentSelectedOrActiveFolderIndex()
 {
-    QModelIndexList selectedIdxs = m_favoritesTree->selectionModel()->selectedIndexes();
+  QModelIndexList selectedIdxs = m_favoritesTree->selectionModel()->selectedIndexes();
 
-    if (selectedIdxs.size() == 1) {
-        QModelIndex idx = selectedIdxs.first();
-        return idx;
-    }
+  if ( selectedIdxs.size() == 1 ) {
+    QModelIndex idx = selectedIdxs.first();
+    return idx;
+  }
 
-    return activeFolderFullPath.empty() ?  QModelIndex() :m_favoritesModel->getModelIndexByFullPath(activeFolderFullPath);
+  return activeFolderFullPath.empty() ? QModelIndex() :
+                                        m_favoritesModel->getModelIndexByFullPath( activeFolderFullPath );
 }
 
 bool FavoritesModel::isWordPresentFullPath( const QString & headword )
