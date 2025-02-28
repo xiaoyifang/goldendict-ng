@@ -671,7 +671,7 @@ vector< sptr< Dictionary::Class > > const & ScanPopup::getActiveDicts()
 {
   int current = ui.groupList->currentIndex();
 
-  Q_ASSERT( 0 <= current || current <= groups.size() );
+  Q_ASSERT( 0 <= current || current <= (qsizetype)groups.size() );
 
   Config::MutedDictionaries const * mutedDictionaries = dictionaryBar.getMutedDictionaries();
 

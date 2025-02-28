@@ -1325,7 +1325,7 @@ void StardictArticleRequest::run()
     }
 
     //if the chain is too large, it is more likely has some dictionary making or parsing issue.
-    for ( unsigned x = 0; x < qMin( 10, (int)chain.size() ); ++x ) {
+    for ( unsigned x = 0; x < qMin( 10U, (unsigned)chain.size() ); ++x ) {
       if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
         finish();
         return;

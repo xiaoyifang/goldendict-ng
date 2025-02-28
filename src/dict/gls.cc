@@ -55,7 +55,7 @@ class GlsScanner
   std::u32string langFrom, langTo;
   char readBuffer[ 10000 ];
   char * readBufferPtr;
-  size_t readBufferLeft;
+  qsizetype readBufferLeft;
   LineFeed lineFeed;
   unsigned linesRead;
 

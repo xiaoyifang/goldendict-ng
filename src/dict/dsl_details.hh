@@ -107,7 +107,7 @@ class DslScanner
   char readBuffer[ 65536 ];
   char * readBufferPtr;
   LineFeed lineFeed;
-  size_t readBufferLeft;
+  qsizetype readBufferLeft;
   //qint64 pos;
   unsigned linesRead;
 

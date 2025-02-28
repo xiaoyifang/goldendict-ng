@@ -66,7 +66,7 @@ bool IndexedZip::loadFile( uint32_t offset, vector< char > & data )
     zip.getFilenames( zipFileNames );
     qDebug() << "Failed to load header";
     string filename;
-    if ( zip.getCurrentFile() < zipFileNames.size() ) {
+    if ( zip.getCurrentFile() < (int)zipFileNames.size() ) {
       filename = zipFileNames.at( zip.getCurrentFile() );
     }
 
