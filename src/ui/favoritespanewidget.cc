@@ -1147,23 +1147,23 @@ bool FavoritesModel::removeWordFullPath( const QString & headword )
 
 TreeItem * FavoritesModel::getCurrentSelectedOrActiveFolder()
 {
-  QModelIndexList selectedIdxs = m_favoritesModel->selectedIndexes();
+    QModelIndexList selectedIdxs = selectedIndexes();
 
   if ( selectedIdxs.size() == 1 ) {
     QModelIndex idx = selectedIdxs.first();
-    TreeItem * item = m_favoritesModel->getItem( idx );
+    TreeItem * item = getItem( idx );
     if ( item && item->type() == TreeItem::Folder ) {
       return item;
     }
   }
 
   return activeFolderFullPath.empty() ? getItem( QModelIndex() ) :
-                                        m_favoritesModel->getItemByFullPath( activeFolderFullPath );
+                                        getItemByFullPath( activeFolderFullPath );
 }
 
 QModelIndex FavoritesModel::getCurrentSelectedOrActiveFolderIndex()
 {
-  QModelIndexList selectedIdxs = m_favoritesModel->selectedIndexes();
+    QModelIndexList selectedIdxs = selectedIndexes();
 
   if ( selectedIdxs.size() == 1 ) {
     QModelIndex idx = selectedIdxs.first();
@@ -1171,7 +1171,7 @@ QModelIndex FavoritesModel::getCurrentSelectedOrActiveFolderIndex()
   }
 
   return activeFolderFullPath.empty() ? QModelIndex() :
-                                        m_favoritesModel->getModelIndexByFullPath( activeFolderFullPath );
+                                        getModelIndexByFullPath( activeFolderFullPath );
 }
 
 bool FavoritesModel::isWordPresentFullPath( const QString & headword )
