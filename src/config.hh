@@ -366,7 +366,7 @@ struct Preferences
 
   bool synonymSearchEnabled;
   bool stripClipboard;
-  bool raiseWindowOnSearch;
+  bool raiseWindowOnSearch = true;
 
   FullTextSearch fts;
 

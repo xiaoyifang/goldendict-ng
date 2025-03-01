@@ -197,11 +197,11 @@ Preferences::Preferences():
   inputPhraseLengthLimit( 1000 ),
   maxDictionaryRefsInContextMenu( 20 ),
   synonymSearchEnabled( true ),
-  stripClipboard( false ),
+  stripClipboard( false )
 #if !defined( Q_OS_WIN )
-  interfaceStyle( "Default" ),
+  ,
+  interfaceStyle( "Default" )
 #endif
-  raiseWindowOnSearch( true )
 {
 }
 

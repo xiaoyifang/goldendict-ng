@@ -20,6 +20,7 @@ protected:
 
   QList< QFile * > files;
   QList< quint64 > offsets;
+  // TODO: rename currentFile (?)
   int currentFile;
 
   void appendFile( const QString & name );

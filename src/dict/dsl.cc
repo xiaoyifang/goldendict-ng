@@ -1682,7 +1682,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
     // Make sure it's not an abbreviation file. extSize of ".dsl" or ".dsl.dz"
 
-    if ( int extSize = ( uncompressedDsl ? 4 : 7 ); ( fileName.size() >= ( 5 + extSize ) )
+    if ( size_t extSize = ( uncompressedDsl ? 4 : 7 ); ( fileName.size() >= ( 5 + extSize ) )
          && ( QByteArrayView( fileName ).chopped( extSize ).last( 5 ).compare( "_abrv", Qt::CaseInsensitive ) == 0 ) ) {
       // It is, skip it
       continue;

@@ -8,7 +8,7 @@ GlobalBroadcaster::GlobalBroadcaster( QObject * parent ):
 {
   QStringList whiteUrlHosts = { "ajax.googleapis.com" };
 
-  for ( const auto host : whiteUrlHosts ) {
+  for ( auto & host : std::as_const( whiteUrlHosts ) ) {
     addWhitelist( host );
   }
 }

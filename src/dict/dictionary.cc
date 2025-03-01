@@ -556,12 +556,12 @@ string makeDictionaryId( vector< string > const & dictionaryFiles ) noexcept
 // be fixed in the future when it's needed.
 bool needToRebuildIndex( vector< string > const & dictionaryFiles, string const & indexFile ) noexcept
 {
-  unsigned long lastModified = 0;
+  qint64 lastModified = 0;
 
   for ( const auto & dictionaryFile : dictionaryFiles ) {
     QString name = QString::fromUtf8( dictionaryFile.c_str() );
     QFileInfo fileInfo( name );
-    unsigned long ts;
+    qint64 ts;
 
     if ( fileInfo.isDir() ) {
       continue;

@@ -89,7 +89,7 @@ public:
     QString reply;
     socket.connectToHost( serverUrl.host(), port );
     state = DictServerState::CONNECT;
-    connect( &socket, &QTcpSocket::connected, this, [ this ]() {} );
+    connect( &socket, &QTcpSocket::connected, this, []() {} );
 
     connect( &socket, &QTcpSocket::errorOccurred, this, []( QAbstractSocket::SocketError error ) {
       qDebug() << "socket error message: " << error;
@@ -784,10 +784,10 @@ void DictServerArticleRequest::run()
       auto code = reply.left( 3 );
       if ( reply.left( 3 ) == "150" ) {
         // Articles found
-        int countPos = reply.indexOf( ' ', 4 );
+        // int countPos = reply.indexOf( ' ', 4 );
         // Get articles count,
         // todo ,how to use this count?
-        int count = reply.mid( 4, countPos > 4 ? countPos - 4 : -1 ).toInt();
+        // int count = reply.mid( 4, countPos > 4 ? countPos - 4 : -1 ).toInt();
 
         // Read articles
         readData( reply );

@@ -305,7 +305,9 @@ MdxDictionary::MdxDictionary( string const & id, string const & indexFile, vecto
   idx.readU32SizeAndData<>( encoding );
 
   dictFile.setFileName( QString::fromUtf8( dictionaryFiles[ 0 ].c_str() ) );
-  dictFile.open( QIODevice::ReadOnly );
+  if ( !dictFile.open( QIODevice::ReadOnly ) ) {
+    throw std::runtime_error( "mdx: failed to open main file" );
+  };
 
   // Full-text search parameters
 

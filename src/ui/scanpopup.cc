@@ -37,24 +37,6 @@ static const Qt::WindowFlags pinnedWindowFlags =
 #endif
   ;
 
-#ifdef HAVE_X11
-static bool ownsClipboardMode( QClipboard::Mode mode )
-{
-  const QClipboard & clipboard = *QApplication::clipboard();
-  switch ( mode ) {
-    case QClipboard::Clipboard:
-      return clipboard.ownsClipboard();
-    case QClipboard::Selection:
-      return clipboard.ownsSelection();
-    case QClipboard::FindBuffer:
-      return clipboard.ownsFindBuffer();
-  }
-
-  qWarning( "Unknown clipboard mode: %d", static_cast< int >( mode ) );
-  return false;
-}
-#endif
-
 ScanPopup::ScanPopup( QWidget * parent,
                       Config::Class & cfg_,
                       ArticleNetworkAccessManager & articleNetMgr,
@@ -671,7 +653,7 @@ vector< sptr< Dictionary::Class > > const & ScanPopup::getActiveDicts()
 {
   int current = ui.groupList->currentIndex();
 
-  Q_ASSERT( 0 <= current || current <= groups.size() );
+  Q_ASSERT( 0 <= current || current <= (qsizetype)groups.size() );
 
   Config::MutedDictionaries const * mutedDictionaries = dictionaryBar.getMutedDictionaries();
 
@@ -1117,7 +1099,6 @@ void ScanPopup::on_sendWordToFavoritesButton_clicked()
   if ( !isVisible() ) {
     return;
   }
-  unsigned groupId   = ui.groupList->getCurrentGroup();
   auto current_exist = isWordPresentedInFavorites( definition->getTitle() );
   //if current_exist=false( not exist ),  after click ,the word should be in the favorite which is blueStar
   ui.sendWordToFavoritesButton->setIcon( !current_exist ? blueStarIcon : starIcon );
@@ -1199,7 +1180,6 @@ void ScanPopup::alwaysOnTopClicked( bool checked )
 
 void ScanPopup::titleChanged( ArticleView *, QString const & title ) const
 {
-  unsigned groupId = ui.groupList->getCurrentGroup();
 
   // Set icon for "Add to Favorites" button
   ui.sendWordToFavoritesButton->setIcon( isWordPresentedInFavorites( title ) ? blueStarIcon : starIcon );
