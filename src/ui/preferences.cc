@@ -221,8 +221,8 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   }
 
 
-#ifndef Q_OS_WIN32
-  // TODO: make this availiable on other platforms
+#ifndef Q_OS_WIN
+  // For Linux & macOS, the interface darkMode is controlled by the platforms
   ui.darkModeLabel->hide();
   ui.darkMode->hide();
 #endif
