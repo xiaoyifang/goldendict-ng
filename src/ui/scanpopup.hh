@@ -8,18 +8,21 @@
 #include "wordfinder.hh"
 #include "keyboardstate.hh"
 #include "config.hh"
-#include "ui_scanpopup.h"
+#include "ui_scanpopup_toolbar.h"
 #include <QDialog>
 #include <QClipboard>
 #include <QToolBar>
 #include "history.hh"
 #include "dictionarybar.hh"
 #include "mainstatusbar.hh"
+#include <QMainWindow>
+#include <QActionGroup>
+#include "groupcombobox.hh"
+#include "translatebox.hh"
 #ifdef HAVE_X11
   #include "scanflag.hh"
 #endif
 
-#include <QActionGroup>
 
 /// This is a popup dialog to show translations when clipboard scanning mode
 /// is enabled.
@@ -129,7 +132,9 @@ private:
   std::vector< sptr< Dictionary::Class > > dictionariesUnmuted;
   Instances::Groups const & groups;
   History & history;
-  Ui::ScanPopup ui;
+  Ui::ScanPopupToolBar ui;
+  TranslateBox * translateBox;
+  GroupComboBox * groupList;
   ArticleView * definition;
   QAction escapeAction, switchExpandModeAction, focusTranslateLineAction;
   QAction stopAudioAction;
@@ -138,7 +143,7 @@ private:
   WordFinder wordFinder;
   Config::Events configEvents;
   DictionaryBar dictionaryBar;
-  QToolBar * toolbar;
+  QToolBar * foundBar;
   QActionGroup * actionGroup = nullptr;
   MainStatusBar * mainStatusBar;
   /// Fonts saved before words zooming is in effect, so it could be reset back.

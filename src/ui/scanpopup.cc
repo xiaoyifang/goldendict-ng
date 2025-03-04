@@ -58,9 +58,42 @@ ScanPopup::ScanPopup( QWidget * parent,
   dictionaryBar( this, configEvents, cfg.preferences.maxDictionaryRefsInContextMenu ),
   hideTimer( this )
 {
-  ui.setupUi( this );
-  toolbar = new QToolBar( "Found Dictionary", this );
-  toolbar->setObjectName( "foundDictionary" );
+  // Init UI
+  QWidget * toolBarWidget = new QWidget( this );
+  ui.setupUi( toolBarWidget );
+
+  QToolBar * toolBar   = new QToolBar( "Tool bar", this );
+  toolBar->setObjectName( "popupToolBar" );
+  toolBar->addWidget( toolBarWidget );
+
+  groupList=new GroupComboBox(this);
+  translateBox = new TranslateBox(this);
+
+  QToolBar * searchBar = new QToolBar( "Search bar", this );
+  searchBar->setObjectName( "popupSearchBar" );
+  searchBar->addWidget( groupList );
+  searchBar->addWidget( translateBox );
+  searchBar->toggleViewAction()->setEnabled(false);
+
+  foundBar = new QToolBar( "Found Dictionary", this );
+  foundBar->setObjectName( "foundDictionary" );
+
+  // UI style
+  searchBar->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Maximum );
+  searchBar->setMovable( false );
+  toolBar->setFloatable( false );
+  dictionaryBar.setFloatable( false );
+  foundBar->setFloatable( false );
+
+  searchBar->setContentsMargins( 0, 0, 0, 0 );
+  toolBar->setContentsMargins(  0, 0, 0, 0  );
+
+  // Add Bars
+  addToolBar( Qt::TopToolBarArea, searchBar );
+  addToolBar( Qt::TopToolBarArea, toolBar );
+  addToolBarBreak();
+  addToolBar( Qt::TopToolBarArea, &dictionaryBar );
+  addToolBar( Qt::RightToolBarArea, foundBar );
 
   if ( layoutDirection() == Qt::RightToLeft ) {
     // Adjust button icons for Right-To-Left layout
@@ -70,18 +103,19 @@ ScanPopup::ScanPopup( QWidget * parent,
 
   mainStatusBar = new MainStatusBar( this );
 
-  ui.queryError->hide();
 
-  definition = new ArticleView( ui.outerFrame,
+  definition = new ArticleView( this,
                                 articleNetMgr,
                                 audioPlayer_,
                                 allDictionaries,
                                 groups,
                                 true,
                                 cfg,
-                                ui.translateBox->translateLine(),
+                                translateBox->translateLine(),
                                 dictionaryBar.toggleViewAction(),
                                 cfg.lastPopupGroupId );
+
+  resize( 0, 300 );
 
   connect( definition, &ArticleView::inspectSignal, this, &ScanPopup::inspectElementWhenPinned );
   connect( definition, &ArticleView::forceAddWordToHistory, this, &ScanPopup::forceAddWordToHistory );
@@ -95,28 +129,27 @@ ScanPopup::ScanPopup( QWidget * parent,
   addAction( &openSearchAction );
   connect( &openSearchAction, &QAction::triggered, definition, &ArticleView::openSearch );
 
-  wordListDefaultFont      = ui.translateBox->completerWidget()->font();
-  translateLineDefaultFont = ui.translateBox->font();
-  groupListDefaultFont     = ui.groupList->font();
+  wordListDefaultFont      = translateBox->completerWidget()->font();
+  translateLineDefaultFont = translateBox->font();
+  groupListDefaultFont     = groupList->font();
 
-  ui.mainLayout->addWidget( definition );
+  setCentralWidget( definition );
 
-  ui.translateBox->translateLine()->installEventFilter( this );
+  translateBox->translateLine()->installEventFilter( this );
   definition->installEventFilter( this );
   this->installEventFilter( this );
 
-  connect( ui.translateBox->translateLine(), &QLineEdit::textEdited, this, &ScanPopup::translateInputChanged );
+  connect( translateBox->translateLine(), &QLineEdit::textEdited, this, &ScanPopup::translateInputChanged );
 
-  connect( ui.translateBox, &TranslateBox::returnPressed, this, &ScanPopup::translateInputFinished );
+  connect( translateBox, &TranslateBox::returnPressed, this, &ScanPopup::translateInputFinished );
 
   ui.pronounceButton->setDisabled( true );
 
-  ui.groupList->fill( groups );
-  ui.groupList->setCurrentGroup( cfg.lastPopupGroupId );
+  groupList->fill( groups );
+  groupList->setCurrentGroup( cfg.lastPopupGroupId );
 
-  definition->setCurrentGroupId( ui.groupList->getCurrentGroup() );
+  definition->setCurrentGroupId( groupList->getCurrentGroup() );
   definition->setSelectionBySingleClick( cfg.preferences.selectWordBySingleClick );
-  dictionaryBar.setFloatable( false );
 
   Instances::Group const * igrp = groups.findGroup( cfg.lastPopupGroupId );
   if ( cfg.lastPopupGroupId == GroupId::AllGroupId ) {
@@ -133,7 +166,6 @@ ScanPopup::ScanPopup( QWidget * parent,
     dictionaryBar.setMutedDictionaries( grp ? &grp->popupMutedDictionaries : nullptr );
   }
 
-  addToolBar( Qt::RightToolBarArea, toolbar );
 
   connect( &dictionaryBar, &DictionaryBar::editGroupRequested, this, &ScanPopup::editGroupRequested );
   connect( this, &ScanPopup::closeMenu, &dictionaryBar, &DictionaryBar::closePopupMenu );
@@ -161,8 +193,7 @@ ScanPopup::ScanPopup( QWidget * parent,
     restoreState( cfg.popupWindowState );
   }
 
-  //fix this toolbar
-  addToolBar( Qt::TopToolBarArea, &dictionaryBar );
+
 
   ui.onTopButton->setChecked( cfg.popupWindowAlwaysOnTop );
   ui.onTopButton->setVisible( cfg.pinPopupWindow );
@@ -171,7 +202,6 @@ ScanPopup::ScanPopup( QWidget * parent,
   ui.pinButton->setChecked( cfg.pinPopupWindow );
 
   if ( cfg.pinPopupWindow ) {
-    dictionaryBar.setMovable( false );
     Qt::WindowFlags flags = pinnedWindowFlags;
     if ( cfg.popupWindowAlwaysOnTop ) {
       flags |= Qt::WindowStaysOnTopHint;
@@ -182,7 +212,6 @@ ScanPopup::ScanPopup( QWidget * parent,
 #endif
   }
   else {
-    dictionaryBar.setMovable( false );
     setWindowFlags( unpinnedWindowFlags() );
 #ifdef Q_OS_MACOS
     setAttribute( Qt::WA_MacAlwaysShowToolWindow, false );
@@ -223,7 +252,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   addAction( &switchExpandModeAction );
   connect( &switchExpandModeAction, &QAction::triggered, this, &ScanPopup::switchExpandOptionalPartsMode );
 
-  connect( ui.groupList, &QComboBox::currentIndexChanged, this, &ScanPopup::currentGroupChanged );
+  connect( groupList, &QComboBox::currentIndexChanged, this, &ScanPopup::currentGroupChanged );
 
   connect( &wordFinder, &WordFinder::finished, this, &ScanPopup::prefixMatchFinished );
 
@@ -288,19 +317,19 @@ void ScanPopup::onActionTriggered()
 
 void ScanPopup::updateFoundInDictsList()
 {
-  if ( !toolbar->isVisible() ) {
+  if ( !foundBar->isVisible() ) {
     // nothing to do, the list is not visible
     return;
   }
-  toolbar->setUpdatesEnabled( false );
+  foundBar->setUpdatesEnabled( false );
 
-  unsigned currentId           = ui.groupList->getCurrentGroup();
+  unsigned currentId           = groupList->getCurrentGroup();
   Instances::Group const * grp = groups.findGroup( currentId );
 
   auto dictionaries = grp ? grp->dictionaries : allDictionaries;
   QStringList ids   = definition->getArticlesList();
   QString activeId  = definition->getActiveArticleId();
-  toolbar->clear();
+  foundBar->clear();
   if ( actionGroup != nullptr ) {
     actionGroup->deleteLater();
   }
@@ -324,37 +353,37 @@ void ScanPopup::updateFoundInDictsList()
           action->setChecked( true );
         }
         connect( action, &QAction::triggered, this, &ScanPopup::onActionTriggered );
-        toolbar->addAction( action );
+        foundBar->addAction( action );
         actionGroup->addAction( action );
         break;
       }
     }
   }
 
-  toolbar->setUpdatesEnabled( true );
+  foundBar->setUpdatesEnabled( true );
 }
 
 void ScanPopup::refresh()
 {
   // currentIndexChanged() signal is very trigger-happy. To avoid triggering
   // it, we disconnect it while we're clearing and filling back groups.
-  disconnect( ui.groupList, &GroupComboBox::currentIndexChanged, this, &ScanPopup::currentGroupChanged );
+  disconnect( groupList, &GroupComboBox::currentIndexChanged, this, &ScanPopup::currentGroupChanged );
 
-  auto OldGroupID = ui.groupList->getCurrentGroup();
+  auto OldGroupID = groupList->getCurrentGroup();
 
   // repopulate
-  ui.groupList->clear();
-  ui.groupList->fill( groups );
+  groupList->clear();
+  groupList->fill( groups );
 
-  ui.groupList->setCurrentGroup( OldGroupID ); // This does nothing if OldGroupID doesn't exist;
+  groupList->setCurrentGroup( OldGroupID ); // This does nothing if OldGroupID doesn't exist;
 
-  ui.groupList->setVisible( !cfg.groups.empty() );
+  groupList->setVisible( !cfg.groups.empty() );
 
   updateDictionaryBar();
 
   definition->syncBackgroundColorWithCfgDarkReader();
 
-  connect( ui.groupList, &GroupComboBox::currentIndexChanged, this, &ScanPopup::currentGroupChanged );
+  connect( groupList, &GroupComboBox::currentIndexChanged, this, &ScanPopup::currentGroupChanged );
 #ifdef HAVE_X11
   selectionDelayTimer.setInterval( cfg.preferences.selectionChangeDelayTimer );
 #endif
@@ -408,7 +437,7 @@ void ScanPopup::translateWordFromSelection()
 
 void ScanPopup::editGroupRequested()
 {
-  emit editGroupRequest( ui.groupList->getCurrentGroup() );
+  emit editGroupRequest( groupList->getCurrentGroup() );
 }
 
 void ScanPopup::translateWordFromClipboard( QClipboard::Mode m )
@@ -560,7 +589,7 @@ void ScanPopup::engagePopup( bool forcePopup, bool giveFocus )
 
   /// Too large strings make window expand which is probably not what user
   /// wants
-  ui.translateBox->setText( Folding::escapeWildcardSymbols( pendingWord ), false );
+  translateBox->setText( Folding::escapeWildcardSymbols( pendingWord ), false );
 
   showTranslationFor( pendingWord );
 }
@@ -572,7 +601,7 @@ QString ScanPopup::elideInputWord()
 
 void ScanPopup::currentGroupChanged( int )
 {
-  cfg.lastPopupGroupId          = ui.groupList->getCurrentGroup();
+  cfg.lastPopupGroupId          = groupList->getCurrentGroup();
   Instances::Group const * igrp = groups.findGroup( cfg.lastPopupGroupId );
   if ( cfg.lastPopupGroupId == GroupId::AllGroupId ) {
     if ( igrp ) {
@@ -603,7 +632,7 @@ void ScanPopup::currentGroupChanged( int )
     showTranslationFor( word );
   }
 
-  cfg.lastPopupGroupId = ui.groupList->getCurrentGroup();
+  cfg.lastPopupGroupId = groupList->getCurrentGroup();
 }
 
 void ScanPopup::translateInputChanged( QString const & text )
@@ -614,7 +643,7 @@ void ScanPopup::translateInputChanged( QString const & text )
 
 void ScanPopup::updateSuggestionList()
 {
-  updateSuggestionList( ui.translateBox->translateLine()->text() );
+  updateSuggestionList( translateBox->translateLine()->text() );
 }
 
 void ScanPopup::updateSuggestionList( QString const & text )
@@ -636,7 +665,7 @@ void ScanPopup::updateSuggestionList( QString const & text )
 
 void ScanPopup::translateInputFinished()
 {
-  pendingWord = Folding::unescapeWildcardSymbols( ui.translateBox->translateLine()->text().trimmed() );
+  pendingWord = Folding::unescapeWildcardSymbols( translateBox->translateLine()->text().trimmed() );
   showTranslationFor( pendingWord );
 }
 
@@ -644,14 +673,14 @@ void ScanPopup::showTranslationFor( QString const & word ) const
 {
   ui.pronounceButton->setDisabled( true );
 
-  unsigned groupId = ui.groupList->getCurrentGroup();
+  unsigned groupId = groupList->getCurrentGroup();
   definition->showDefinition( word, groupId );
   definition->focus();
 }
 
 vector< sptr< Dictionary::Class > > const & ScanPopup::getActiveDicts()
 {
-  int current = ui.groupList->currentIndex();
+  int current = groupList->currentIndex();
 
   Q_ASSERT( 0 <= current || current <= (qsizetype)groups.size() );
 
@@ -684,10 +713,10 @@ void ScanPopup::typingEvent( QString const & t )
     focusTranslateLine();
   }
   else {
-    ui.translateBox->translateLine()->clear();
-    ui.translateBox->translateLine()->setFocus();
-    ui.translateBox->setText( t, true );
-    ui.translateBox->translateLine()->setCursorPosition( t.size() );
+    translateBox->translateLine()->clear();
+    translateBox->translateLine()->setFocus();
+    translateBox->setText( t, true );
+    translateBox->translateLine()->setCursorPosition( t.size() );
   }
 
   updateSuggestionList();
@@ -695,7 +724,7 @@ void ScanPopup::typingEvent( QString const & t )
 
 bool ScanPopup::eventFilter( QObject * watched, QEvent * event )
 {
-  if ( watched == ui.translateBox->translateLine() && event->type() == QEvent::FocusIn ) {
+  if ( watched == translateBox->translateLine() && event->type() == QEvent::FocusIn ) {
     const QFocusEvent * focusEvent = static_cast< QFocusEvent * >( event );
 
     // select all on mouse click
@@ -714,7 +743,7 @@ bool ScanPopup::eventFilter( QObject * watched, QEvent * event )
     }
   }
 
-  if ( event->type() == QEvent::KeyPress && watched != ui.translateBox->translateLine() ) {
+  if ( event->type() == QEvent::KeyPress && watched != translateBox->translateLine() ) {
 
     if ( const auto key_event = dynamic_cast< QKeyEvent * >( event ); key_event->modifiers() == Qt::NoModifier ) {
       const QString text = key_event->text();
@@ -847,7 +876,7 @@ void ScanPopup::showEvent( QShowEvent * ev )
   QMainWindow::showEvent( ev );
 
   if ( groups.size() <= 1 ) { // Only the default group? Hide then.
-    ui.groupList->hide();
+    groupList->hide();
   }
 
   if ( ui.showDictionaryBar->isChecked() != dictionaryBar.isVisible() ) {
@@ -879,14 +908,11 @@ void ScanPopup::prefixMatchFinished()
   // Check that there's a window there at all
   if ( isVisible() ) {
     if ( wordFinder.getErrorString().size() ) {
-      ui.queryError->setToolTip( wordFinder.getErrorString() );
-      ui.queryError->show();
       showStatusBarMessage( tr( "WARNING: %1" ).arg( wordFinder.getErrorString() ),
                             20000,
                             QPixmap( ":/icons/error.svg" ) );
     }
     else {
-      ui.queryError->hide();
       auto results = wordFinder.getResults();
       QStringList _results;
       for ( auto const & [ fst, snd ] : results ) {
@@ -894,10 +920,10 @@ void ScanPopup::prefixMatchFinished()
       }
 
       // Reset the noResults mark if it's on right now
-      auto translateLine = ui.translateBox->translateLine();
+      auto translateLine = translateBox->translateLine();
 
       Utils::Widget::setNoResultColor( translateLine, _results.isEmpty() );
-      ui.translateBox->setModel( _results );
+      translateBox->setModel( _results );
     }
   }
 }
@@ -924,12 +950,10 @@ void ScanPopup::pinButtonClicked( bool checked )
 #endif
 
     setWindowTitle( QString( "%1 - GoldenDict-ng" ).arg( elideInputWord() ) );
-    dictionaryBar.setMovable( false );
     hideTimer.stop();
   }
   else {
     ui.onTopButton->setVisible( false );
-    dictionaryBar.setMovable( false );
     setWindowFlags( unpinnedWindowFlags() );
 
 #ifdef Q_OS_MACOS
@@ -953,8 +977,8 @@ void ScanPopup::focusTranslateLine()
     activateWindow();
   }
 
-  ui.translateBox->translateLine()->setFocus();
-  ui.translateBox->translateLine()->selectAll();
+  translateBox->translateLine()->setFocus();
+  translateBox->translateLine()->selectAll();
 }
 
 void ScanPopup::stopAudio() const
@@ -1010,8 +1034,8 @@ void ScanPopup::hideWindow()
   emit closeMenu();
   hideTimer.stop();
   unsetCursor();
-  ui.translateBox->setPopupEnabled( false );
-  ui.translateBox->translateLine()->deselect();
+  translateBox->setPopupEnabled( false );
+  translateBox->translateLine()->deselect();
   hide();
   definition->clearContent();
 }
@@ -1056,7 +1080,7 @@ void ScanPopup::updateDictionaryBar()
     return; // It's not enabled, therefore hidden -- don't waste time
   }
 
-  unsigned currentId           = ui.groupList->getCurrentGroup();
+  unsigned currentId           = groupList->getCurrentGroup();
   Instances::Group const * grp = groups.findGroup( currentId );
 
   if ( grp ) { // Should always be !0, but check as a safeguard
@@ -1145,13 +1169,13 @@ void ScanPopup::setDictionaryIconSize()
 void ScanPopup::setGroupByName( QString const & name ) const
 {
   int i;
-  for ( i = 0; i < ui.groupList->count(); i++ ) {
-    if ( ui.groupList->itemText( i ) == name ) {
-      ui.groupList->setCurrentIndex( i );
+  for ( i = 0; i < groupList->count(); i++ ) {
+    if ( groupList->itemText( i ) == name ) {
+      groupList->setCurrentIndex( i );
       break;
     }
   }
-  if ( i >= ui.groupList->count() ) {
+  if ( i >= groupList->count() ) {
     qWarning( "Group \"%s\" for popup window is not found", name.toUtf8().data() );
   }
 }

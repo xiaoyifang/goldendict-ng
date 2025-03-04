@@ -570,6 +570,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   connect( this, &MainWindow::clickOnDictPane, &dictionaryBar, &DictionaryBar::dictsPaneClicked );
 
+  addToolBarBreak();
   addToolBar( &dictionaryBar );
 
   connect( dictionaryBar.toggleViewAction(), &QAction::triggered, this, &MainWindow::dictionaryBarToggled );
