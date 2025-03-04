@@ -53,6 +53,25 @@ inline uint32_t leadingSpaceCount( const QString & str )
   return 0;
 }
 
+inline QString trimQuotes( QString const & str ) const
+{
+  QString trimmed( str );
+
+  int n = 0;
+  while ( n < str.length() && (str[n] == '\"' || str[n] == '\'') ) {
+    n++;
+  }
+  if ( n > 0 ) {
+    trimmed = trimmed.mid( n );
+  }
+
+  while ( trimmed.endsWith( '\"' ) || trimmed.endsWith( '\'' ) ) {
+    trimmed.chop( 1 );
+  }
+
+  return trimmed;
+}
+
 std::string c_string( const QString & str );
 bool endsWithIgnoreCase( QByteArrayView str, QByteArrayView extension );
 /**

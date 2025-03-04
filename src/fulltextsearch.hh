@@ -45,8 +45,6 @@ struct FtsHeadword
     dictIDs.append( dictid_ );
   }
 
-  QString trimQuotes( QString const & ) const;
-
   bool operator<( FtsHeadword const & other ) const;
 
   bool operator==( FtsHeadword const & other ) const
