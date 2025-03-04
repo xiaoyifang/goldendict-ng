@@ -612,7 +612,6 @@ int HeadwordsListModel::getDictIndex( QString const & id ) const
 }
 
 
-
 bool FtsHeadword::operator<( FtsHeadword const & other ) const
 {
   QString first  = Utils::trimQuotes( headword );

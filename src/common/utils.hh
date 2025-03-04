@@ -58,7 +58,7 @@ inline QString trimQuotes( QString const & str ) const
   QString trimmed( str );
 
   int n = 0;
-  while ( n < str.length() && (str[n] == '\"' || str[n] == '\'') ) {
+  while ( n < str.length() && ( str[ n ] == '\"' || str[ n ] == '\'' ) ) {
     n++;
   }
   if ( n > 0 ) {
