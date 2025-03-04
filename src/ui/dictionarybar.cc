@@ -297,9 +297,6 @@ void DictionaryBar::actionWasTriggered( QAction * action )
   }
   else {
     // Normal mode
-
-    storedMutedSet.clear();
-
     if ( action->isChecked() ) {
       // Unmute the dictionary
 
