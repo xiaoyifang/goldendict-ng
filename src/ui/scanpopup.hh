@@ -135,6 +135,7 @@ private:
   Ui::ScanPopupToolBar ui;
   TranslateBox * translateBox;
   GroupComboBox * groupList;
+  QAction * groupListAction; // for hiding it in QToolbar
   ArticleView * definition;
   QAction escapeAction, switchExpandModeAction, focusTranslateLineAction;
   QAction stopAudioAction;

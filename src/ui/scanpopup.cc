@@ -71,7 +71,7 @@ ScanPopup::ScanPopup( QWidget * parent,
 
   QToolBar * searchBar = new QToolBar( "Search bar", this );
   searchBar->setObjectName( "popupSearchBar" );
-  searchBar->addWidget( groupList );
+  groupListAction = searchBar->addWidget( groupList );
   searchBar->addWidget( translateBox );
   searchBar->toggleViewAction()->setEnabled(false);
 
@@ -378,7 +378,7 @@ void ScanPopup::refresh()
 
   groupList->setCurrentGroup( OldGroupID ); // This does nothing if OldGroupID doesn't exist;
 
-  groupList->setVisible( !cfg.groups.empty() );
+  groupListAction->setVisible( !cfg.groups.empty() );
 
   updateDictionaryBar();
 
@@ -877,7 +877,7 @@ void ScanPopup::showEvent( QShowEvent * ev )
   QMainWindow::showEvent( ev );
 
   if ( groups.size() <= 1 ) { // Only the default group? Hide then.
-    groupList->hide();
+    groupListAction->setVisible( false );
   }
 
   if ( dictionaryBar.isVisible() ) {
