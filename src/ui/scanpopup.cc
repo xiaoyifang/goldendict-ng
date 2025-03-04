@@ -62,18 +62,18 @@ ScanPopup::ScanPopup( QWidget * parent,
   QWidget * toolBarWidget = new QWidget( this );
   ui.setupUi( toolBarWidget );
 
-  QToolBar * toolBar   = new QToolBar( "Tool bar", this );
+  QToolBar * toolBar = new QToolBar( "Tool bar", this );
   toolBar->setObjectName( "popupToolBar" );
   toolBar->addWidget( toolBarWidget );
 
-  groupList=new GroupComboBox(this);
-  translateBox = new TranslateBox(this);
+  groupList    = new GroupComboBox( this );
+  translateBox = new TranslateBox( this );
 
   QToolBar * searchBar = new QToolBar( "Search bar", this );
   searchBar->setObjectName( "popupSearchBar" );
   groupListAction = searchBar->addWidget( groupList );
   searchBar->addWidget( translateBox );
-  searchBar->toggleViewAction()->setEnabled(false);
+  searchBar->toggleViewAction()->setEnabled( false );
 
   foundBar = new QToolBar( "Found Dictionary", this );
   foundBar->setObjectName( "foundDictionary" );
@@ -86,7 +86,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   foundBar->setFloatable( false );
 
   searchBar->setContentsMargins( 0, 0, 0, 0 );
-  toolBar->setContentsMargins(  0, 0, 0, 0  );
+  toolBar->setContentsMargins( 0, 0, 0, 0 );
 
   // Add Bars
   addToolBar( Qt::TopToolBarArea, searchBar );
@@ -123,13 +123,13 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( definition, &ArticleView::sendWordToHistory, this, &ScanPopup::sendWordToHistory );
   connect( definition, &ArticleView::typingEvent, this, &ScanPopup::typingEvent );
   connect( definition, &ArticleView::updateFoundInDictsList, this, &ScanPopup::updateFoundInDictsList );
-  connect( &dictionaryBar, &DictionaryBar::visibilityChanged, this, &ScanPopup::dictionaryBar_visibility_changed);
+  connect( &dictionaryBar, &DictionaryBar::visibilityChanged, this, &ScanPopup::dictionaryBar_visibility_changed );
 
-  connect(ui.goBackButton,&QToolButton::pressed,this, &ScanPopup::goBackButton_clicked);
-  connect(ui.goForwardButton,&QToolButton::pressed,this, &ScanPopup::goForwardButton_clicked);
-  connect(ui.pronounceButton,&QToolButton::pressed,this, &ScanPopup::pronounceButton_clicked);
-  connect(ui.sendWordButton,&QToolButton::pressed,this, &ScanPopup::sendWordButton_clicked);
-  connect(ui.sendWordToFavoritesButton,&QToolButton::pressed,this, &ScanPopup::sendWordToFavoritesButton_clicked);
+  connect( ui.goBackButton, &QToolButton::pressed, this, &ScanPopup::goBackButton_clicked );
+  connect( ui.goForwardButton, &QToolButton::pressed, this, &ScanPopup::goForwardButton_clicked );
+  connect( ui.pronounceButton, &QToolButton::pressed, this, &ScanPopup::pronounceButton_clicked );
+  connect( ui.sendWordButton, &QToolButton::pressed, this, &ScanPopup::sendWordButton_clicked );
+  connect( ui.sendWordToFavoritesButton, &QToolButton::pressed, this, &ScanPopup::sendWordToFavoritesButton_clicked );
 
   openSearchAction.setShortcut( QKeySequence( "Ctrl+F" ) );
   openSearchAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
@@ -199,7 +199,6 @@ ScanPopup::ScanPopup( QWidget * parent,
   if ( cfg.popupWindowState.size() ) {
     restoreState( cfg.popupWindowState );
   }
-
 
 
   ui.onTopButton->setChecked( cfg.popupWindowAlwaysOnTop );
