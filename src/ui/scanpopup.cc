@@ -123,6 +123,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( definition, &ArticleView::sendWordToHistory, this, &ScanPopup::sendWordToHistory );
   connect( definition, &ArticleView::typingEvent, this, &ScanPopup::typingEvent );
   connect( definition, &ArticleView::updateFoundInDictsList, this, &ScanPopup::updateFoundInDictsList );
+  connect( &dictionaryBar, &DictionaryBar::visibilityChanged, this, &ScanPopup::dictionaryBar_visibility_changed);
 
   openSearchAction.setShortcut( QKeySequence( "Ctrl+F" ) );
   openSearchAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
@@ -879,8 +880,7 @@ void ScanPopup::showEvent( QShowEvent * ev )
     groupList->hide();
   }
 
-  if ( ui.showDictionaryBar->isChecked() != dictionaryBar.isVisible() ) {
-    ui.showDictionaryBar->setChecked( dictionaryBar.isVisible() );
+  if ( dictionaryBar.isVisible() ) {
     updateDictionaryBar();
   }
 }
@@ -986,11 +986,12 @@ void ScanPopup::stopAudio() const
   definition->stopSound();
 }
 
-void ScanPopup::on_showDictionaryBar_clicked( bool checked )
+void ScanPopup::dictionaryBar_visibility_changed( bool visible )
 {
-  dictionaryBar.setVisible( checked );
-  updateDictionaryBar();
-  definition->updateMutedContents();
+  if ( visible ) {
+    updateDictionaryBar();
+    definition->updateMutedContents();
+  }
 }
 
 void ScanPopup::hideTimerExpired()

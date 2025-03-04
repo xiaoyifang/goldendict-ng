@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>264</width>
-    <height>26</height>
+    <width>0</width>
+    <height>0</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -93,26 +93,6 @@
      </property>
      <property name="shortcut">
       <string notr="true">Ctrl+E</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QToolButton" name="showDictionaryBar">
-     <property name="toolTip">
-      <string>Shows or hides the dictionary bar</string>
-     </property>
-     <property name="icon">
-      <iconset resource="../../resources.qrc">
-       <normaloff>:/icons/bookcase.svg</normaloff>:/icons/bookcase.svg</iconset>
-     </property>
-     <property name="checkable">
-      <bool>true</bool>
-     </property>
-     <property name="checked">
-      <bool>false</bool>
-     </property>
-     <property name="autoRaise">
-      <bool>true</bool>
      </property>
     </widget>
    </item>

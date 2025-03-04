@@ -202,7 +202,7 @@ private slots:
   void prefixMatchFinished();
   void on_pronounceButton_clicked() const;
   void pinButtonClicked( bool checked );
-  void on_showDictionaryBar_clicked( bool checked );
+  void dictionaryBar_visibility_changed( bool visible );
   void showStatusBarMessage( QString const &, int, QPixmap const & ) const;
   void on_sendWordButton_clicked();
   void on_sendWordToFavoritesButton_clicked();
