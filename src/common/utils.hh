@@ -53,7 +53,7 @@ inline uint32_t leadingSpaceCount( const QString & str )
   return 0;
 }
 
-inline QString trimQuotes( QString const & str ) const
+inline QString trimQuotes( QString const & str )
 {
   QString trimmed( str );
 
