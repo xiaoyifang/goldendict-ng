@@ -36,11 +36,9 @@ Temporally focus on a single dictionary and restore back to all dictionaries or 
 To enter solo mode:
 
 ++ctrl+left-button++ -> Select a single dictionary.
-
-To exit solo mode:
-
 ++ctrl+left-button++ -> Reselect all dictionaries.
 
+To exit solo mode:
 ++shift+left-button++ -> Reselect dictionaries that were previously selected before entering solo mode.
 
 For example, there are 4 dictionaries A,B,C,D with ABC selected.
