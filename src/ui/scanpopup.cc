@@ -125,6 +125,12 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( definition, &ArticleView::updateFoundInDictsList, this, &ScanPopup::updateFoundInDictsList );
   connect( &dictionaryBar, &DictionaryBar::visibilityChanged, this, &ScanPopup::dictionaryBar_visibility_changed);
 
+  connect(ui.goBackButton,&QToolButton::pressed,this, &ScanPopup::goBackButton_clicked);
+  connect(ui.goForwardButton,&QToolButton::pressed,this, &ScanPopup::goForwardButton_clicked);
+  connect(ui.pronounceButton,&QToolButton::pressed,this, &ScanPopup::pronounceButton_clicked);
+  connect(ui.sendWordButton,&QToolButton::pressed,this, &ScanPopup::sendWordButton_clicked);
+  connect(ui.sendWordToFavoritesButton,&QToolButton::pressed,this, &ScanPopup::sendWordToFavoritesButton_clicked);
+
   openSearchAction.setShortcut( QKeySequence( "Ctrl+F" ) );
   openSearchAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
   addAction( &openSearchAction );
@@ -928,7 +934,7 @@ void ScanPopup::prefixMatchFinished()
   }
 }
 
-void ScanPopup::on_pronounceButton_clicked() const
+void ScanPopup::pronounceButton_clicked() const
 {
   definition->playSound();
 }
@@ -1107,7 +1113,7 @@ void ScanPopup::mutedDictionariesChanged()
   }
 }
 
-void ScanPopup::on_sendWordButton_clicked()
+void ScanPopup::sendWordButton_clicked()
 {
   if ( !isVisible() ) {
     return;
@@ -1119,7 +1125,7 @@ void ScanPopup::on_sendWordButton_clicked()
   emit sendPhraseToMainWindow( definition->getWord() );
 }
 
-void ScanPopup::on_sendWordToFavoritesButton_clicked()
+void ScanPopup::sendWordToFavoritesButton_clicked()
 {
   if ( !isVisible() ) {
     return;
@@ -1143,12 +1149,12 @@ void ScanPopup::updateBackForwardButtons() const
   ui.goForwardButton->setEnabled( definition->canGoForward() );
 }
 
-void ScanPopup::on_goBackButton_clicked() const
+void ScanPopup::goBackButton_clicked() const
 {
   definition->back();
 }
 
-void ScanPopup::on_goForwardButton_clicked() const
+void ScanPopup::goForwardButton_clicked() const
 {
   definition->forward();
 }

@@ -201,14 +201,15 @@ private:
 private slots:
   void currentGroupChanged( int );
   void prefixMatchFinished();
-  void on_pronounceButton_clicked() const;
   void pinButtonClicked( bool checked );
   void dictionaryBar_visibility_changed( bool visible );
   void showStatusBarMessage( QString const &, int, QPixmap const & ) const;
-  void on_sendWordButton_clicked();
-  void on_sendWordToFavoritesButton_clicked();
-  void on_goBackButton_clicked() const;
-  void on_goForwardButton_clicked() const;
+
+  void pronounceButton_clicked() const;
+  void sendWordButton_clicked();
+  void sendWordToFavoritesButton_clicked();
+  void goBackButton_clicked() const;
+  void goForwardButton_clicked() const;
 
   void hideTimerExpired();
 
