@@ -115,7 +115,7 @@ ScanPopup::ScanPopup( QWidget * parent,
                                 dictionaryBar.toggleViewAction(),
                                 cfg.lastPopupGroupId );
 
-  resize( 0, 300 );
+  resize( 247, 400 );
 
   connect( definition, &ArticleView::inspectSignal, this, &ScanPopup::inspectElementWhenPinned );
   connect( definition, &ArticleView::forceAddWordToHistory, this, &ScanPopup::forceAddWordToHistory );
