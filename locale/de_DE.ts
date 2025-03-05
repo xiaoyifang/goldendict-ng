@@ -3727,20 +3727,23 @@ from Stardict, Babylon and GLS dictionaries</source>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>Dialog</translation>
+      <source>WARNING: %1</source>
+      <translation>WARNUNG: %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
       <translation>Zurück</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>Weiter</translation>
+      <translation>Vorwärts</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>Wort aussprechen (Alt+S)</translation>
+      <translation>Pronounce-Wort (Alt+S)</translation>
     </message>
     <message>
       <source>Alt+S</source>
@@ -3748,7 +3751,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Send word to main window (Alt+W)</source>
-      <translation>Wort an das Hauptfenster senden (Alt+W)</translation>
+      <translation>Sende Wort zum Hauptfenster (Alt+W)</translation>
     </message>
     <message>
       <source>Alt+W</source>
@@ -3759,22 +3762,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Wort zu Favoriten hinzufügen (Strg+E)</translation>
     </message>
     <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>Zeigt oder versteckt die Wörterbuchleiste</translation>
-    </message>
-    <message>
       <source>Always stay on top of all other windows</source>
-      <translation>Immer über allen anderen Fenstern anzeigen</translation>
+      <translation>Immer auf allen anderen Fenstern bleiben</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>Hiermit kann das Fenster fixiert  werden, damit es am Bildschirm bleibt,
-es in der Größe verändert, oder andersweitig verwaltet werden kann.</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>WARNUNG: %1</translation>
+      <translation>Benutzen Sie dies, um das Fenster herunterzupinnen, so dass es auf dem Bildschirm bleiben würde,
+kann auf andere Weise skaliert oder verwaltet werden.</translation>
     </message>
   </context>
   <context>
