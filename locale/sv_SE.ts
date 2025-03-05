@@ -3737,12 +3737,15 @@ från Stardict, Babylon och GLS ordböcker</translation>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>Dialog</translation>
+      <source>WARNING: %1</source>
+      <translation>VARNING: %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
-      <translation>Bakåt</translation>
+      <translation>Tillbaka</translation>
     </message>
     <message>
       <source>Forward</source>
@@ -3750,7 +3753,7 @@ från Stardict, Babylon och GLS ordböcker</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>Läs upp ord (Alt+S)</translation>
+      <translation>Uttrycka ord (Alt+S)</translation>
     </message>
     <message>
       <source>Alt+S</source>
@@ -3766,25 +3769,17 @@ från Stardict, Babylon och GLS ordböcker</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>
-      <translation>Lägg till ord i Favoriter (Ctrl + E)</translation>
-    </message>
-    <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>Visar/döljer ordlistefältet</translation>
+      <translation>Lägg till ord i favoriter (Ctrl+E)</translation>
     </message>
     <message>
       <source>Always stay on top of all other windows</source>
-      <translation>Alltid ovanpå alla andra fönster</translation>
+      <translation>Håll alltid koll på alla andra fönster</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>Klicka här för att nåla fast rutan så att den stannar kvar på skärmen.
-Rutan kan storleksändras och hanteras på andra sätt.</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>VARNING: %1</translation>
+      <translation>Använd detta för att fästa ner fönstret så att det skulle stanna på skärmen,
+kan skalas om eller hanteras på andra sätt.</translation>
     </message>
   </context>
   <context>
