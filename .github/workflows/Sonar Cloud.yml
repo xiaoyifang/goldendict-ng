@@ -43,7 +43,7 @@ jobs:
       - name: Run Build Wrapper
         run: |
           mkdir build_dir
-          cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -S . -G Ninja
+          cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -S . -B build_dir -G Ninja
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5
         env:
