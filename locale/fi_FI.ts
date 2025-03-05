@@ -3735,12 +3735,15 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>Dialogi</translation>
+      <source>WARNING: %1</source>
+      <translation>VAROITUS: %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
-      <translation>Taaksepäin</translation>
+      <translation>Takaisin</translation>
     </message>
     <message>
       <source>Forward</source>
@@ -3767,10 +3770,6 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <translation>Lisää sana suosikeihin (Ctrl+E)</translation>
     </message>
     <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>Näyttää tai piilottaa sanakirjan</translation>
-    </message>
-    <message>
       <source>Always stay on top of all other windows</source>
       <translation>Pysy aina kaikkien muiden ikkunoiden päällä</translation>
     </message>
@@ -3779,10 +3778,6 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
 could be resized or managed in other ways.</source>
       <translation>Tämän avulla voit kiinnittää ikkunan alaspäin, jotta se pysyisi ruudulla,
 voidaan muuttaa tai hallita muulla tavoin.</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>VAROITUS: %1</translation>
     </message>
   </context>
   <context>
