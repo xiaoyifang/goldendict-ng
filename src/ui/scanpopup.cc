@@ -77,6 +77,8 @@ ScanPopup::ScanPopup( QWidget * parent,
 
   foundBar = new QToolBar( "Found Dictionary", this );
   foundBar->setObjectName( "foundDictionary" );
+  // to match the articleView's vertial scrolling
+  foundBar->setAllowedAreas( Qt::LeftToolBarArea | Qt::RightToolBarArea );
 
   // UI style
   searchBar->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Maximum );
