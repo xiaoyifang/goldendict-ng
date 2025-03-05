@@ -3734,20 +3734,23 @@ ze słowników Stardict, Babylon i GLS</translation>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>Okno dialogowe</translation>
+      <source>WARNING: %1</source>
+      <translation>UWAGA: %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
-      <translation>Wstecz</translation>
+      <translation>Powrót</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>Dalej</translation>
+      <translation>Przekaż</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>Wymowa słowa (Alt+S)</translation>
+      <translation>Słowo wygłaszane (Alt+S)</translation>
     </message>
     <message>
       <source>Alt+S</source>
@@ -3755,7 +3758,7 @@ ze słowników Stardict, Babylon i GLS</translation>
     </message>
     <message>
       <source>Send word to main window (Alt+W)</source>
-      <translation>Wyślij słowo do okna głównego (Alt+W)</translation>
+      <translation>Wyślij słowo do głównego okna (Alt+W)</translation>
     </message>
     <message>
       <source>Alt+W</source>
@@ -3766,22 +3769,14 @@ ze słowników Stardict, Babylon i GLS</translation>
       <translation>Dodaj słowo do Ulubionych (Ctrl+E)</translation>
     </message>
     <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>Wyświetla lub ukrywa pasek słowników</translation>
-    </message>
-    <message>
       <source>Always stay on top of all other windows</source>
       <translation>Zawsze pozostań na górze wszystkich innych okien</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>Opcja ta umożliwia przypięcie okna na stałe do ekranu. Dzięki
-temu można zmieniać jego wielkość i zarządzać nim w inny sposób.</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>UWAGA: %1</translation>
+      <translation>Użyj tego, aby przypiąć okno, aby pozostać na ekranie,
+można było zmienić rozmiar lub zarządzać nim w inny sposób.</translation>
     </message>
   </context>
   <context>
