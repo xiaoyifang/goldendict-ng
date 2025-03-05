@@ -10,6 +10,7 @@
   #include <QBuffer>
   #include <QMediaDevices>
   #include <QMediaPlayer>
+  #include <QPointer>
 
 class MultimediaAudioPlayer: public AudioPlayerInterface
 {
@@ -27,7 +28,7 @@ private slots:
 
 
 private:
-  QBuffer audioBuffer;
+  QPointer< QBuffer > audioBuffer;
   QMediaPlayer player; ///< Depends on audioBuffer.
   QAudioOutput audioOutput;
   QMediaDevices mediaDevices;
