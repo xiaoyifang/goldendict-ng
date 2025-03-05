@@ -1109,13 +1109,13 @@ Class load()
   c.lastMainGroupId  = root.namedItem( "lastMainGroupId" ).toElement().text().toUInt();
   c.lastPopupGroupId = root.namedItem( "lastPopupGroupId" ).toElement().text().toUInt();
 
-  QDomNode popupWindowState = root.namedItem( "popupWindowState" );
+  QDomNode popupWindowState = root.namedItem( "popupWindowState2" );
 
   if ( !popupWindowState.isNull() ) {
     c.popupWindowState = QByteArray::fromBase64( popupWindowState.toElement().text().toLatin1() );
   }
 
-  QDomNode popupWindowGeometry = root.namedItem( "popupWindowGeometry" );
+  QDomNode popupWindowGeometry = root.namedItem( "popupWindowGeometry2" );
 
   if ( !popupWindowGeometry.isNull() ) {
     c.popupWindowGeometry = QByteArray::fromBase64( popupWindowGeometry.toElement().text().toLatin1() );
@@ -2113,11 +2113,11 @@ void save( Class const & c )
     opt.appendChild( dd.createTextNode( QString::number( c.lastPopupGroupId ) ) );
     root.appendChild( opt );
 
-    opt = dd.createElement( "popupWindowState" );
+    opt = dd.createElement( "popupWindowState2" );
     opt.appendChild( dd.createTextNode( QString::fromLatin1( c.popupWindowState.toBase64() ) ) );
     root.appendChild( opt );
 
-    opt = dd.createElement( "popupWindowGeometry" );
+    opt = dd.createElement( "popupWindowGeometry2" );
     opt.appendChild( dd.createTextNode( QString::fromLatin1( c.popupWindowGeometry.toBase64() ) ) );
     root.appendChild( opt );
 
