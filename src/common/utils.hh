@@ -55,21 +55,17 @@ inline uint32_t leadingSpaceCount( const QString & str )
 
 inline QString trimQuotes( QString const & str )
 {
-  QString trimmed( str );
-
-  int n = 0;
-  while ( n < str.length() && ( str[ n ] == '\"' || str[ n ] == '\'' ) ) {
-    n++;
+  const auto* begin = str.cbegin();
+  const auto* end = str.cend();
+  while (begin < end && (end[-1] == '\'' || end[-1] == '\"'))
+  {
+    --end;
   }
-  if ( n > 0 ) {
-    trimmed = trimmed.mid( n );
+  while (begin < end && (*begin == '\'' || *begin == '\"'))
+  {
+    begin++;
   }
-
-  while ( trimmed.endsWith( '\"' ) || trimmed.endsWith( '\'' ) ) {
-    trimmed.chop( 1 );
-  }
-
-  return trimmed;
+  return str.sliced(begin - str.cbegin(), end - begin);
 }
 
 std::string c_string( const QString & str );
