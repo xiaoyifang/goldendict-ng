@@ -3737,9 +3737,12 @@ from Stardict, Babylon and GLS dictionaries</source>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>Διάλογος</translation>
+      <source>WARNING: %1</source>
+      <translation>ΠΡΟΕΙΔΟΠΟΙΗΣΗ: %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
       <translation>Πίσω</translation>
@@ -3750,7 +3753,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>Εκφώνηση λήμματος (Alt+S)</translation>
+      <translation>Προφορά Λέξης (Alt+S)</translation>
     </message>
     <message>
       <source>Alt+S</source>
@@ -3758,7 +3761,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Send word to main window (Alt+W)</source>
-      <translation>Εμφάνιση στο κύριο παράθυρο (Alt+W)</translation>
+      <translation>Αποστολή λέξης στο κύριο παράθυρο (Alt+W)</translation>
     </message>
     <message>
       <source>Alt+W</source>
@@ -3769,21 +3772,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Προσθήκη λέξης στα αγαπημένα (Ctrl+E)</translation>
     </message>
     <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>Εμφάνιση ή απόκρυψη της γραμμής λεξικών</translation>
-    </message>
-    <message>
       <source>Always stay on top of all other windows</source>
       <translation>Να παραμένει πάντα στην κορυφή όλων των άλλων παραθύρων</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>Χρησιμοποιήστε το για να μετατρέψετε το αναδυόμενο σε κανονικό παράθυρο, που δεν εξαφανίζεται από την οθόνη και μπορεί π.χ. να αλλάξει μέγεθος.</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>ΠΡΟΕΙΔΟΠΟΙΗΣΗ: %1</translation>
+      <translation type="unfinished">Use this to pin down the window so it would stay on screen,
+could be resized or managed in other ways.</translation>
     </message>
   </context>
   <context>
