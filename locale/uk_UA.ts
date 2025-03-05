@@ -3736,20 +3736,23 @@ from Stardict, Babylon and GLS dictionaries</source>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>Діалог</translation>
+      <source>WARNING: %1</source>
+      <translation>ПОПЕРЕДЖЕННЯ: %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
-      <translation>Назад</translation>
+      <translation>Відмінити</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>Вперед</translation>
+      <translation>Переслати</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>Вимовити слово (Alt+S)</translation>
+      <translation>Промова слова (Alt+S)</translation>
     </message>
     <message>
       <source>Alt+S</source>
@@ -3757,7 +3760,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Send word to main window (Alt+W)</source>
-      <translation>Послати слово до основного вікна (Alt+W)</translation>
+      <translation>Відправити слово в основне вікно (Alt+W)</translation>
     </message>
     <message>
       <source>Alt+W</source>
@@ -3768,22 +3771,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Додати слово до обраного (Ctrl+E)</translation>
     </message>
     <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>Показує або ховає панель словника</translation>
-    </message>
-    <message>
       <source>Always stay on top of all other windows</source>
       <translation>Завжди залишатися поверх інших вікон</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>Використайте шпильку, щоб вікно залишалось на екрані,
-можна змінювати розмір або керувати ним у зручний вам спосіб.</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>ПОПЕРЕДЖЕННЯ: %1</translation>
+      <translation>Використовуйте для закріплення вікна, щоб воно залишалося на екрані,
+може бути змінене або кероване іншими способами.</translation>
     </message>
   </context>
   <context>
