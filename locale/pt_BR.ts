@@ -3741,20 +3741,23 @@ dos dicionários Stardict, Babylon e GLS</translation>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>Painel</translation>
+      <source>WARNING: %1</source>
+      <translation>AVISO: %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
-      <translation>Voltar</translation>
+      <translation>Anterior</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>Para Frente</translation>
+      <translation>Encaminhar</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>Pronunciar a palavra da consulta atual (Alt+S)</translation>
+      <translation>Palavra Pronunciada (Alt+S)</translation>
     </message>
     <message>
       <source>Alt+S</source>
@@ -3770,25 +3773,17 @@ dos dicionários Stardict, Babylon e GLS</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>
-      <translation>Adicionar palavra aos favoritos (Ctrl + E)</translation>
-    </message>
-    <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>Mostra ou oculta a barra de dicionários</translation>
+      <translation>Adicionar palavra aos Favoritos (Ctrl+E)</translation>
     </message>
     <message>
       <source>Always stay on top of all other windows</source>
-      <translation>Ficar sempre acima de todas as outras janelas</translation>
+      <translation>Sempre ficar em cima de todas as outras janelas</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>Use esta opção para fixar a janela do GoldenDict na frente
-das outras janelas, redimensioná-la ou geri-la à vontade.</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>AVISO: %1</translation>
+      <translation>Use isto para fixar a janela para que ela fique na tela,
+poderia ser redimensionado ou gerenciado de outras formas.</translation>
     </message>
   </context>
   <context>
