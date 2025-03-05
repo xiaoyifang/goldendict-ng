@@ -3731,54 +3731,49 @@ from Stardict, Babylon and GLS dictionaries</source>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>대화</translation>
+      <source>WARNING: %1</source>
+      <translation>경고: %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
-      <translation>뒤로</translation>
+      <translation type="unfinished">Back</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>앞으로</translation>
+      <translation type="unfinished">Forward</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>발음 듣기(Alt+S)</translation>
+      <translation type="unfinished">Pronounce Word (Alt+S)</translation>
     </message>
     <message>
       <source>Alt+S</source>
-      <translation>Alt+S</translation>
+      <translation type="unfinished">Alt+S</translation>
     </message>
     <message>
       <source>Send word to main window (Alt+W)</source>
-      <translation>단어를 메인창으로 보냅니다(Alt+W)</translation>
+      <translation type="unfinished">Send word to main window (Alt+W)</translation>
     </message>
     <message>
       <source>Alt+W</source>
-      <translation>Alt+W</translation>
+      <translation type="unfinished">Alt+W</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>
-      <translation>즐겨찾기에 단어 추가(Ctrl+E)</translation>
-    </message>
-    <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>사전도구상자를 보이거나 숨깁니다</translation>
+      <translation type="unfinished">Add word to Favorites (Ctrl+E)</translation>
     </message>
     <message>
       <source>Always stay on top of all other windows</source>
-      <translation>항상 다른 모든 창 위에 유지</translation>
+      <translation type="unfinished">Always stay on top of all other windows</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>핀 아이콘을 선택하면 창을 항상 화면 맨 위에 표시하고, 
-팝업창 크기, 사전모음의 위치 등을 조절할 수 있습니다.</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>경고: %1</translation>
+      <translation type="unfinished">Use this to pin down the window so it would stay on screen,
+could be resized or managed in other ways.</translation>
     </message>
   </context>
   <context>
