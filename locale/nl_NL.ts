@@ -3731,20 +3731,23 @@ van Stardict, Babylon en GLS woordenboeken</translation>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>Venster</translation>
+      <source>WARNING: %1</source>
+      <translation>WAARSCHUWING: %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
-      <translation>Terug</translation>
+      <translation>Achterzijde</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>Vooruit</translation>
+      <translation>Doorsturen</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>Woord uitspreken (Alt+S)</translation>
+      <translation>Pronounce woord (Alt+S)</translation>
     </message>
     <message>
       <source>Alt+S</source>
@@ -3763,22 +3766,14 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <translation>Woord aan favorieten toevoegen (Ctrl+E)</translation>
     </message>
     <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>Woordenboekwerkbalk weergeven of verbergen</translation>
-    </message>
-    <message>
       <source>Always stay on top of all other windows</source>
       <translation>Blijf altijd op de voorgrond van alle andere vensters</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>Hiermee vergrendelt u het venster zodat het zichtbaar blijft
-en u het in grootte of anderszins kunt aanpassen.</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>WAARSCHUWING: %1</translation>
+      <translation>Gebruik dit om het venster te spelden zodat het op het scherm zou blijven,
+kan op andere manieren worden aangepast of beheerd.</translation>
     </message>
   </context>
   <context>
