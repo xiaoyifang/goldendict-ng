@@ -611,29 +611,11 @@ int HeadwordsListModel::getDictIndex( QString const & id ) const
   return -1;
 }
 
-QString FtsHeadword::trimQuotes( QString const & str ) const
-{
-  QString trimmed( str );
-
-  int n = 0;
-  while ( str[ n ] == '\"' || str[ n ] == '\'' ) {
-    n++;
-  }
-  if ( n ) {
-    trimmed = trimmed.mid( n );
-  }
-
-  while ( trimmed.endsWith( '\"' ) || trimmed.endsWith( '\'' ) ) {
-    trimmed.chop( 1 );
-  }
-
-  return trimmed;
-}
 
 bool FtsHeadword::operator<( FtsHeadword const & other ) const
 {
-  QString first  = trimQuotes( headword );
-  QString second = trimQuotes( other.headword );
+  QString first  = Utils::trimQuotes( headword );
+  QString second = Utils::trimQuotes( other.headword );
 
   int result = first.localeAwareCompare( second );
   if ( result ) {
