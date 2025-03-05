@@ -3735,9 +3735,12 @@ no Stardict, Babilônia e dicionários GLS</translation>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>Diálogo</translation>
+      <source>WARNING: %1</source>
+      <translation>AVISO: %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
       <translation>Anterior</translation>
@@ -3767,22 +3770,14 @@ no Stardict, Babilônia e dicionários GLS</translation>
       <translation>Adicionar palavra aos Favoritos (Ctrl+E)</translation>
     </message>
     <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>Mostra ou oculta a barra de dicionário</translation>
-    </message>
-    <message>
       <source>Always stay on top of all other windows</source>
       <translation>Sempre ficar em cima de todas as outras janelas</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>Use isso para fixar a janela para que ela fique na tela,
+      <translation>Use isto para fixar a janela para que ela fique na tela,
 poderia ser redimensionado ou gerenciado de outras formas.</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>AVISO: %1</translation>
     </message>
   </context>
   <context>
