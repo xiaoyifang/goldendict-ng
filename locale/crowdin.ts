@@ -3706,9 +3706,12 @@ from Stardict, Babylon and GLS dictionaries</source>
 <context>
     <name>ScanPopup</name>
     <message>
-        <source>Dialog</source>
+        <source>WARNING: %1</source>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>ScanPopupToolBar</name>
     <message>
         <source>Back</source>
         <translation type="unfinished"></translation>
@@ -3738,20 +3741,12 @@ from Stardict, Babylon and GLS dictionaries</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Shows or hides the dictionary bar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Always stay on top of all other windows</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>WARNING: %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
