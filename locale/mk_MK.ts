@@ -3738,54 +3738,49 @@ from Stardict, Babylon and GLS dictionaries</source>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>Дијалог</translation>
+      <source>WARNING: %1</source>
+      <translation>ПРЕДУПРЕДУВАЊЕ: %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
-      <translation>Назад</translation>
+      <translation type="unfinished">Back</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>Напред</translation>
+      <translation type="unfinished">Forward</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>Изговори збор (Alt+S)</translation>
+      <translation type="unfinished">Pronounce Word (Alt+S)</translation>
     </message>
     <message>
       <source>Alt+S</source>
-      <translation>Alt+S</translation>
+      <translation type="unfinished">Alt+S</translation>
     </message>
     <message>
       <source>Send word to main window (Alt+W)</source>
-      <translation>Испрати збор во главен прозорец (Alt+W)</translation>
+      <translation type="unfinished">Send word to main window (Alt+W)</translation>
     </message>
     <message>
       <source>Alt+W</source>
-      <translation>Alt+W</translation>
+      <translation type="unfinished">Alt+W</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>
-      <translation>Додајте збор во Омилени (Ctrl+E)</translation>
-    </message>
-    <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>Прикажување или скривање лента на речници</translation>
+      <translation type="unfinished">Add word to Favorites (Ctrl+E)</translation>
     </message>
     <message>
       <source>Always stay on top of all other windows</source>
-      <translation>Секогаш останете на врвот на сите други прозорци</translation>
+      <translation type="unfinished">Always stay on top of all other windows</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>Кликните за да го усидрите прозорецот на екранот, промените големината
-или било која друга особина.</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>ПРЕДУПРЕДУВАЊЕ: %1</translation>
+      <translation type="unfinished">Use this to pin down the window so it would stay on screen,
+could be resized or managed in other ways.</translation>
     </message>
   </context>
   <context>
