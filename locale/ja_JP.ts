@@ -3734,20 +3734,23 @@ from Stardict, Babylon and GLS dictionaries</source>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>ダイアログ</translation>
+      <source>WARNING: %1</source>
+      <translation>警告: %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
       <translation>戻る</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>進む</translation>
+      <translation>転送</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>単語の発音 (Alt+S)</translation>
+      <translation>ワードを発音（Alt+S）</translation>
     </message>
     <message>
       <source>Alt+S</source>
@@ -3766,22 +3769,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>単語をお気に入りに追加 (Ctrl+E)</translation>
     </message>
     <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>辞書バーの表示または非表示を切り替えます</translation>
-    </message>
-    <message>
       <source>Always stay on top of all other windows</source>
       <translation>常に他のすべてのウィンドウの上にとどまります</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>ウィンドウを画面に固定してサイズの変更ができる
-ようにするにはこのピンを使用します。</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>警告: %1</translation>
+      <translation>画面に表示されたままにするためにこれを使用すると、
+のサイズを変更したり、他の方法で管理することができます。</translation>
     </message>
   </context>
   <context>
