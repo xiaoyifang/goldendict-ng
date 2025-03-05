@@ -75,8 +75,8 @@ ScanPopup::ScanPopup( QWidget * parent,
   searchBar->addWidget( translateBox );
   searchBar->toggleViewAction()->setEnabled( false );
 
-  foundBar = new QToolBar( "Found Dictionary", this );
-  foundBar->setObjectName( "foundDictionary" );
+  foundBar = new QToolBar( "Navgiation bar", this );
+  foundBar->setObjectName( "popupNavgiationBar" );
   // to match the articleView's vertial scrolling
   foundBar->setAllowedAreas( Qt::LeftToolBarArea | Qt::RightToolBarArea );
 
