@@ -3732,7 +3732,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Forward</source>
-      <translation>转发方式</translation>
+      <translation>前进</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -3756,7 +3756,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Always stay on top of all other windows</source>
-      <translation>总是在所有其他窗口的顶端</translation>
+      <translation>总是位于其它窗口上方</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
