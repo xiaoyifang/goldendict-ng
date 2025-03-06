@@ -3736,7 +3736,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>弹出单词(Alt+S)</translation>
+      <translation>朗读词条(Alt+S)</translation>
     </message>
     <message>
       <source>Alt+S</source>
