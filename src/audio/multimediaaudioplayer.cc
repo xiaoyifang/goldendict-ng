@@ -33,7 +33,7 @@ QString MultimediaAudioPlayer::play( const char * data, int size )
   if ( !audioBuffer->open( QIODevice::ReadOnly ) ) {
     return tr( "Couldn't open audio buffer for reading." );
   }
-  player.setSourceDevice( audioBuffer );
+  player.setSourceDevice( audioBuffer.get() );
 
   player.play();
   return {};
