@@ -825,7 +825,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
-      <translation>이 폴더를 단어 추가/제거 및 작업의 대상으로 만듭니다.</translation>
+      <translation>Make this folder the target of adding/removing words actions.</translation>
     </message>
   </context>
   <context>
