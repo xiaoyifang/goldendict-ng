@@ -825,7 +825,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
-      <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
+      <translation>このフォルダを単語の追加/削除アクションのターゲットにします。</translation>
     </message>
   </context>
   <context>
@@ -3746,7 +3746,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Forward</source>
-      <translation>転送</translation>
+      <translation>進む</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
