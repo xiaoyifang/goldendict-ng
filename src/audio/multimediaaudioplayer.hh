@@ -11,6 +11,7 @@
   #include <QMediaDevices>
   #include <QMediaPlayer>
   #include <QScopedPointer>
+  
 class MultimediaAudioPlayer: public AudioPlayerInterface
 {
   Q_OBJECT
