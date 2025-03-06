@@ -33,7 +33,7 @@ QString MultimediaAudioPlayer::play( const char * data, int size )
   player.setSourceDevice( &audioBuffer );
 
   audioOutput.setDevice( QMediaDevices::defaultAudioOutput() );
-  player.setAudioOutput( &audioOutput );
+  // player.setAudioOutput( &audioOutput );
 
   player.play();
   return {};
@@ -42,8 +42,9 @@ QString MultimediaAudioPlayer::play( const char * data, int size )
 void MultimediaAudioPlayer::stop()
 {
   player.stop();
-  audioBuffer.close();
+  player.setSource( QUrl() );
   audioBuffer.setData( QByteArray() ); // Free memory.
+  audioBuffer.close();
 }
 
 void MultimediaAudioPlayer::onMediaPlayerError()
