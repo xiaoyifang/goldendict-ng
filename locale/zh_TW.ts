@@ -3757,11 +3757,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>
-      <translation type="unfinished">Add word to Favorites (Ctrl+E)</translation>
+      <translation>新增單字到我的最愛 (Ctrl+E)</translation>
     </message>
     <message>
       <source>Always stay on top of all other windows</source>
-      <translation type="unfinished">Always stay on top of all other windows</translation>
+      <translation>永遠保持在所有其他視窗的頂端</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
