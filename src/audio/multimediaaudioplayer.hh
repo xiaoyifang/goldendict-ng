@@ -10,8 +10,7 @@
   #include <QBuffer>
   #include <QMediaDevices>
   #include <QMediaPlayer>
-  #include <QPointer>
-
+  #include <QScopedPointer>
 class MultimediaAudioPlayer: public AudioPlayerInterface
 {
   Q_OBJECT
@@ -28,7 +27,7 @@ private slots:
 
 
 private:
-  QPointer< QBuffer > audioBuffer;
+  QScopedPointer< QBuffer > audioBuffer;
   QMediaPlayer player; ///< Depends on audioBuffer.
   QAudioOutput audioOutput;
   QMediaDevices mediaDevices;
