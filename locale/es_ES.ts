@@ -825,7 +825,7 @@ entre ortografía clásica y escolar en cirílico)</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
-      <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
+      <translation>Make this folder the target of adding/removing words actions.</translation>
     </message>
   </context>
   <context>
