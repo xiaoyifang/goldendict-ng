@@ -43,7 +43,7 @@ void MultimediaAudioPlayer::stop()
 {
   player.stop();
 
-  if ( audioBuffer ) {
+  if ( audioBuffer.isNull() ) {
     audioBuffer->close();
     audioBuffer->setData( QByteArray() ); // Free memory.
   }
