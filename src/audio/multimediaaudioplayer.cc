@@ -11,8 +11,8 @@
 
 MultimediaAudioPlayer::MultimediaAudioPlayer()
 {
-  audioOutput.setDevice(QMediaDevices::defaultAudioOutput());
-  player.setAudioOutput(&audioOutput);
+  audioOutput.setDevice( QMediaDevices::defaultAudioOutput() );
+  player.setAudioOutput( &audioOutput );
 
   connect( &player, &QMediaPlayer::errorChanged, this, &MultimediaAudioPlayer::onMediaPlayerError );
 
@@ -22,7 +22,7 @@ MultimediaAudioPlayer::MultimediaAudioPlayer()
 void MultimediaAudioPlayer::audioOutputChange()
 {
   qDebug() << "audio device changed";
-  audioOutput.setDevice(QMediaDevices::defaultAudioOutput());
+  audioOutput.setDevice( QMediaDevices::defaultAudioOutput() );
 }
 
 QString MultimediaAudioPlayer::play( const char * data, int size )
