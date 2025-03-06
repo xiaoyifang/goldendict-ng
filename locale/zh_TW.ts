@@ -3733,15 +3733,15 @@ from Stardict, Babylon and GLS dictionaries</source>
     <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
-      <translation type="unfinished">Back</translation>
+      <translation>後去</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation type="unfinished">Forward</translation>
+      <translation>前進</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation type="unfinished">Pronounce Word (Alt+S)</translation>
+      <translation>朗讀詞條(Alt+S)</translation>
     </message>
     <message>
       <source>Alt+S</source>
@@ -3749,7 +3749,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Send word to main window (Alt+W)</source>
-      <translation type="unfinished">Send word to main window (Alt+W)</translation>
+      <translation>將單字傳送到主視窗 (Alt+W)</translation>
     </message>
     <message>
       <source>Alt+W</source>
@@ -3766,8 +3766,8 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation type="unfinished">Use this to pin down the window so it would stay on screen,
-could be resized or managed in other ways.</translation>
+      <translation>使用此按鈕可以釘選視窗，以便它能停留在螢幕上，
+調整大小等相關視窗管理操作。</translation>
     </message>
   </context>
   <context>
