@@ -45,7 +45,7 @@ void MultimediaAudioPlayer::stop()
 
   if ( audioBuffer.isNull() ) {
     audioBuffer->close();
-    audioBuffer->buffer().clear()
+    audioBuffer->buffer().clear();
   }
 }
 
