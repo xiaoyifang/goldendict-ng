@@ -60,7 +60,9 @@ For Epwing, the icon file should be placed beside the `catalogs` file and have t
 
 Main file of Stardict dictionary (.dict) can be compressed by Dictzip program to reduce its size.
 
-Additional dictionary resources (images, style sheets, etc.) placed in "res" folder also can be compressed into zip archive. This archive must be named "res.zip" and placed beside other dictionary files or inside "res" folder.
+[Resource storage](https://github.com/huzheng001/stardict-3/blob/96b96d89eab5f0ad9246c2569a807d6d7982aa84/dict/doc/StarDictFileFormat#L465-L469) folder (images, style sheets, etc.) should be named as `res` beside other dictionary files.
+
+The `res` folder can be compressed into `res.zip` or `my_name.res.zip` (for main dict filename `my_name.ifo/dict`). This zip file shuold also be placed beside other dictionary files. The internal structure of the zip file should not have a top level folder.
 
 ### ABBYY Lingvo (.dsl)
 

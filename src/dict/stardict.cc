@@ -1554,30 +1554,23 @@ void StardictResourceRequest::run()
       resourceName.erase( resourceName.length() - 1, 1 );
     }
 
-    string n =
-      dict.getContainingFolder().toStdString() + Utils::Fs::separator() + "res" + Utils::Fs::separator() + resourceName;
+    qDebug() << "startdict resource name is" << resourceName.c_str();
 
-    qDebug( "startdict resource name is %s", n.c_str() );
-
-    try {
+    {
       QMutexLocker _( &dataMutex );
-
-      File::loadFromFile( n, data );
-    }
-    catch ( File::exCantOpen & ) {
-      // Try reading from zip file
-
-      if ( dict.resourceZip.isOpen() ) {
-        QMutexLocker _( &dataMutex );
-
-        if ( !dict.resourceZip.loadFile( Text::toUtf32( resourceName ), data ) ) {
-          throw; // Make it fail since we couldn't read the archive
-        }
+      auto resFile =
+        QFile( dict.getContainingFolder() + QStringLiteral( "/res/" ) + QString::fromStdString( resourceName ) );
+      if ( resFile.open( QIODevice::ReadOnly ) ) {
+        data.resize( resFile.size() );
+        resFile.read( data.data(), data.size() );
       }
       else {
-        throw;
+        if ( !( dict.resourceZip.isOpen() && dict.resourceZip.loadFile( Text::toUtf32( resourceName ), data ) ) ) {
+          throw std::runtime_error( "Cannot read from either res folder or res.zip" );
+        }
       }
     }
+
 
     if ( Filetype::isNameOfTiff( resourceName ) ) {
       // Convert it
@@ -1841,16 +1834,16 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         dictFiles.push_back( synFileName );
       }
 
-      // See if there's a zip file with resources present. If so, include it.
-
+      // See if there's a res.zip file
       string zipFileName;
-      string baseName =
-        QDir( QString::fromStdString( idxFileName ) ).absolutePath().toStdString() + Utils::Fs::separator();
-
-      if ( File::tryPossibleZipName( baseName + "res.zip", zipFileName )
-           || File::tryPossibleZipName( baseName + "RES.ZIP", zipFileName )
-           || File::tryPossibleZipName( baseName + "res" + Utils::Fs::separator() + "res.zip", zipFileName ) ) {
-        dictFiles.push_back( zipFileName );
+      {
+        auto info = QFileInfo( QString::fromStdString( idxFileName ) );
+        for ( auto & i :
+              { QStringLiteral( "res.zip" ), info.baseName() + ".res.zip", QStringLiteral( "res/res.zip" ) } ) {
+          if ( File::tryPossibleZipName( info.absoluteDir().absoluteFilePath( i ).toStdString(), zipFileName ) ) {
+            dictFiles.push_back( zipFileName );
+          };
+        }
       }
 
       string dictId = Dictionary::makeDictionaryId( dictFiles );
@@ -1971,7 +1964,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         // If there was a zip file, index it too
 
-        if ( zipFileName.size() ) {
+        if ( !zipFileName.empty() ) {
           qDebug( "Indexing zip file" );
 
           idxHeader.hasZipFile = 1;
