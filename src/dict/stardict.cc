@@ -1837,16 +1837,12 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
       // See if there's a res.zip file
       string zipFileName;
       {
-        auto idxFileInfo = QFileInfo( QString::fromStdString( idxFileName ) );
-        QDir parentDir   = idxFileInfo.absoluteDir();
+        auto info = QFileInfo( QString::fromStdString( idxFileName ) );
         for ( auto & i :
-              { QStringLiteral( "res.zip" ), idxFileInfo.baseName() + ".res.zip", QStringLiteral( "res/res.zip" ) } ) {
-          if ( parentDir.exists( i ) ) {
-            auto p = parentDir.absoluteFilePath( i ).toStdString();
-            dictFiles.push_back( p );
-            zipFileName = p;
-            break;
-          }
+              { QStringLiteral( "res.zip" ), info.baseName() + ".res.zip", QStringLiteral( "res/res.zip" ) } ) {
+          if ( File::tryPossibleZipName( info.absoluteDir().absoluteFilePath( i ).toStdString(), zipFileName ) ) {
+            dictFiles.push_back( zipFileName );
+          };
         }
       }
 
