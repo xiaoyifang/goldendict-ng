@@ -1554,7 +1554,7 @@ void StardictResourceRequest::run()
       resourceName.erase( resourceName.length() - 1, 1 );
     }
 
-    qDebug( "startdict resource name is %s", resourceName );
+    qDebug() << QStringLiteral( "startdict resource name is" ) << resourceName;
 
     {
       QMutexLocker _( &dataMutex );
