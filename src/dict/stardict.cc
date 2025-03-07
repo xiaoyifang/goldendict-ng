@@ -1565,7 +1565,7 @@ void StardictResourceRequest::run()
         resFile.read( data.data(), data.size() );
       }
       else {
-        if ( !dict.resourceZip.isOpen() || !dict.resourceZip.loadFile( Text::toUtf32( resourceName ), data ) ) {
+        if ( !( dict.resourceZip.isOpen() && dict.resourceZip.loadFile( Text::toUtf32( resourceName ), data ) ) ) {
           throw std::runtime_error( "Cannot read from either res folder or res.zip" );
         }
       }
