@@ -208,7 +208,7 @@
     </message>
     <message>
       <source>Save &amp;Bookmark &quot;%1...&quot;</source>
-      <translation>保存为书签（&amp;S）“%1...”</translation>
+      <translation>保存为书签(&amp;B) “%1...”</translation>
     </message>
     <message>
       <source>&amp;Send Current Article to Anki</source>
