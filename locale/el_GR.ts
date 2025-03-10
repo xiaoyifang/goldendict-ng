@@ -3778,7 +3778,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation type="unfinished">Use this to pin down the window so it would stay on screen,
+      <translation>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</translation>
     </message>
   </context>
