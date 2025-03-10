@@ -3769,7 +3769,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Always stay on top of all other windows</source>
-      <translation>Always stay on top of all other windows</translation>
+      <translation>ابق دائمًا فوق جميع النوافذ الأخرى</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
