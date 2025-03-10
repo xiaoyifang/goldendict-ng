@@ -825,7 +825,7 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
-      <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
+      <translation>Make this folder the target of adding/removing words actions.</translation>
     </message>
   </context>
   <context>
@@ -3732,20 +3732,23 @@ dai dizionari di Stardict, Babylon e GLS</translation>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>Dizionario</translation>
+      <source>WARNING: %1</source>
+      <translation>ATTENZIONE: %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
-      <translation>Traduzione precedente</translation>
+      <translation>Indietro</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>Traduzione successiva</translation>
+      <translation>Avanti</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>Ascolta la pronuncia (Alt+S)</translation>
+      <translation>Parola Di Pronuncia (Alt+S)</translation>
     </message>
     <message>
       <source>Alt+S</source>
@@ -3753,7 +3756,7 @@ dai dizionari di Stardict, Babylon e GLS</translation>
     </message>
     <message>
       <source>Send word to main window (Alt+W)</source>
-      <translation>Mostra la traduzione nella finestra principale del programma (Alt+W)</translation>
+      <translation>Invia parola alla finestra principale (Alt+W)</translation>
     </message>
     <message>
       <source>Alt+W</source>
@@ -3764,22 +3767,14 @@ dai dizionari di Stardict, Babylon e GLS</translation>
       <translation>Aggiungi parola ai preferiti (Ctrl+E)</translation>
     </message>
     <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>Mostra o nasconde la barra dei dizionari</translation>
-    </message>
-    <message>
       <source>Always stay on top of all other windows</source>
-      <translation>Mostra sempre in primo piano rispetto alle altre finestre</translation>
+      <translation>Rimani sempre sopra tutte le altre finestre</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>Fissa sullo schermo la finestra dei risultati tradotti,
-in modo che possa essere ridimensionata o gestita liberamente.</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>ATTENZIONE: %1</translation>
+      <translation>Usa questo per chiudere la finestra in modo che rimanga sullo schermo,
+potrebbe essere ridimensionato o gestito in altri modi.</translation>
     </message>
   </context>
   <context>

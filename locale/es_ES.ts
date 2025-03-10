@@ -825,7 +825,7 @@ entre ortografía clásica y escolar en cirílico)</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
-      <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
+      <translation>Make this folder the target of adding/removing words actions.</translation>
     </message>
   </context>
   <context>
@@ -3732,16 +3732,19 @@ de diccionarios Stardict, Babylon y GLS</translation>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>Diálogo</translation>
+      <source>WARNING: %1</source>
+      <translation>ADVERTENCIA: %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
       <translation>Atrás</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>Adelante</translation>
+      <translation>Reenviar</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -3764,22 +3767,14 @@ de diccionarios Stardict, Babylon y GLS</translation>
       <translation>Añadir palabra a favoritos (Ctrl+E)</translation>
     </message>
     <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>Muestra u oculta la barra de diccionarios</translation>
-    </message>
-    <message>
       <source>Always stay on top of all other windows</source>
-      <translation>Mantener siempre por encima de otras ventanas</translation>
+      <translation>Permanecer siempre encima de todas las demás ventanas</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>Utilice esta opción para fijar la ventana de manera que permanezca inmóvil en la pantalla,
-se pueda redimensionar o se pueda manipular de otras maneras.</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>ADVERTENCIA: %1</translation>
+      <translation>Usa esto para fijar la ventana para que permanezca en la pantalla,
+podría redimensionarse o gestionarse de otras maneras.</translation>
     </message>
   </context>
   <context>

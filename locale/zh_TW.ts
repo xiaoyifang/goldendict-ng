@@ -3725,24 +3725,27 @@ from Stardict, Babylon and GLS dictionaries</source>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>對話方塊</translation>
+      <source>WARNING: %1</source>
+      <translation>警告： %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
-      <translation>上一頁</translation>
+      <translation>後去</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>下一頁</translation>
+      <translation>前進</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>單字發音(Alt+S)</translation>
+      <translation>朗讀詞條(Alt+S)</translation>
     </message>
     <message>
       <source>Alt+S</source>
-      <translation>Alt+S</translation>
+      <translation type="unfinished">Alt+S</translation>
     </message>
     <message>
       <source>Send word to main window (Alt+W)</source>
@@ -3750,29 +3753,21 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Alt+W</source>
-      <translation>Alt+W</translation>
+      <translation type="unfinished">Alt+W</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>
       <translation>新增單字到我的最愛 (Ctrl+E)</translation>
     </message>
     <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>顯示或隱藏字典列</translation>
-    </message>
-    <message>
       <source>Always stay on top of all other windows</source>
-      <translation>最上層顯示在其他所有視窗</translation>
+      <translation>永遠保持在所有其他視窗的頂端</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
       <translation>使用此按鈕可以釘選視窗，以便它能停留在螢幕上，
 調整大小等相關視窗管理操作。</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>警告： %1</translation>
     </message>
   </context>
   <context>

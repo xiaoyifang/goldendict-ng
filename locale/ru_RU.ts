@@ -827,7 +827,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
-      <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
+      <translation>Make this folder the target of adding/removing words actions.</translation>
     </message>
   </context>
   <context>
@@ -3742,9 +3742,12 @@ from Stardict, Babylon and GLS dictionaries</source>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>Диалог</translation>
+      <source>WARNING: %1</source>
+      <translation>ВНИМАНИЕ: %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
       <translation>Назад</translation>
@@ -3755,7 +3758,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>Произнести слово (Alt+S)</translation>
+      <translation>Произвольное слово (Alt+S)</translation>
     </message>
     <message>
       <source>Alt+S</source>
@@ -3771,25 +3774,17 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>
-      <translation>Добавить слово в Избранное</translation>
-    </message>
-    <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>Показать или спрятать словарную панель</translation>
+      <translation>Добавить слово в избранное (Ctrl+E)</translation>
     </message>
     <message>
       <source>Always stay on top of all other windows</source>
-      <translation>Оставаться поверх всех окон</translation>
+      <translation>Всегда оставаться поверх всех других окон</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>Нажмите, чтобы закрепить окно на экране, изменить его размер
-или какие-либо другие свойства.</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>ВНИМАНИЕ: %1</translation>
+      <translation>Используйте это для закрепления окна, чтобы оно оставалось на экране,
+может быть изменено или изменено другими способами.</translation>
     </message>
   </context>
   <context>

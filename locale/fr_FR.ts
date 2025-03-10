@@ -824,7 +824,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
-      <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
+      <translation>Make this folder the target of adding/removing words actions.</translation>
     </message>
   </context>
   <context>
@@ -3732,20 +3732,23 @@ Erreur lors de l&apos;enregistrement de la ressource :</translation>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>Message</translation>
+      <source>WARNING: %1</source>
+      <translation>ATTENTION : %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
       <translation>Précédent</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>Suivant</translation>
+      <translation>Transférer</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>Prononcer le mot (Alt+S)</translation>
+      <translation>Mot de Pronounce (Alt+S)</translation>
     </message>
     <message>
       <source>Alt+S</source>
@@ -3753,7 +3756,7 @@ Erreur lors de l&apos;enregistrement de la ressource :</translation>
     </message>
     <message>
       <source>Send word to main window (Alt+W)</source>
-      <translation>Envoyer le mot vers la fenêtre principale (Alt+W)</translation>
+      <translation>Envoyer un mot à la fenêtre principale (Alt+W)</translation>
     </message>
     <message>
       <source>Alt+W</source>
@@ -3764,21 +3767,14 @@ Erreur lors de l&apos;enregistrement de la ressource :</translation>
       <translation>Ajouter un mot aux favoris (Ctrl+E)</translation>
     </message>
     <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>Affiche ou masque la barre de dictionnaire</translation>
-    </message>
-    <message>
       <source>Always stay on top of all other windows</source>
       <translation>Toujours rester au-dessus de toutes les autres fenêtres</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>Utiliser pour épingler la fenêtre de manière à ce qu&apos;elle reste à l&apos;écran, puisse être redimensionnée ou gérée par d&apos;autres moyens.</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>ATTENTION : %1</translation>
+      <translation>Utilisez ceci pour épingler la fenêtre afin qu'elle reste à l'écran,
+pourrait être redimensionnée ou gérée de toute autre manière.</translation>
     </message>
   </context>
   <context>

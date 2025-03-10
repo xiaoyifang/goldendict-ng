@@ -825,7 +825,7 @@ a školní ortografií v cyrilici)</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
-      <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
+      <translation>Make this folder the target of adding/removing words actions.</translation>
     </message>
   </context>
   <context>
@@ -3732,20 +3732,23 @@ ze Stardict, Babylon a GLS slovníků</translation>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>Dialog</translation>
+      <source>WARNING: %1</source>
+      <translation>UPOZORNĚNÍ: %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
       <translation>Zpět</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>Vpřed</translation>
+      <translation>Přeposlat</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>Vyslovit slovo (Alt+S)</translation>
+      <translation>Hlasové slovo (Alt+S)</translation>
     </message>
     <message>
       <source>Alt+S</source>
@@ -3753,7 +3756,7 @@ ze Stardict, Babylon a GLS slovníků</translation>
     </message>
     <message>
       <source>Send word to main window (Alt+W)</source>
-      <translation>Poslat slovo do hlavního okna (Alt+W)</translation>
+      <translation>Odeslat slovo do hlavního okna (Alt+W)</translation>
     </message>
     <message>
       <source>Alt+W</source>
@@ -3764,22 +3767,14 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <translation>Přidat slovo do oblíbených (Ctrl + E)</translation>
     </message>
     <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>Zobrazí nebo zkryje pruh slovníků</translation>
-    </message>
-    <message>
       <source>Always stay on top of all other windows</source>
       <translation>Vždy zůstat nad všemi ostatními okny</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>Toto použijte pro připíchnutí okna, aby zůstalo na obrazovce.
-Lze měnit jeho velikost a může s ním být i jinak manipulováno.</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>UPOZORNĚNÍ: %1</translation>
+      <translation>Použij toto pro připnutí okna, takže by zůstal na obrazovce,
+by mohl být změněn nebo spravován jiným způsobem.</translation>
     </message>
   </context>
   <context>

@@ -3720,12 +3720,15 @@ from Stardict, Babylon and GLS dictionaries</source>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>对话框</translation>
+      <source>WARNING: %1</source>
+      <translation>警告： %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
-      <translation>回退</translation>
+      <translation>后退</translation>
     </message>
     <message>
       <source>Forward</source>
@@ -3741,7 +3744,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Send word to main window (Alt+W)</source>
-      <translation>将词条发送到主窗口 (Alt+W)</translation>
+      <translation>发送单词到主窗口 (Alt+W)</translation>
     </message>
     <message>
       <source>Alt+W</source>
@@ -3749,11 +3752,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>
-      <translation>将词条添加至收藏 (Ctrl+E)</translation>
-    </message>
-    <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>显示或隐藏词典栏</translation>
+      <translation>添加单词到收藏夹 (Ctrl+E)</translation>
     </message>
     <message>
       <source>Always stay on top of all other windows</source>
@@ -3762,11 +3761,8 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>使用此按钮可以固定窗口，以便它能停留在屏幕上进行改变大小等相关窗口管理操作。</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>警告： %1</translation>
+      <translation>用它来固定窗口，使它保持在屏幕上，
+可以调整大小或以其他方式管理。</translation>
     </message>
   </context>
   <context>

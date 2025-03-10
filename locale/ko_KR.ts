@@ -825,7 +825,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
-      <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
+      <translation>Make this folder the target of adding/removing words actions.</translation>
     </message>
   </context>
   <context>
@@ -3731,16 +3731,19 @@ from Stardict, Babylon and GLS dictionaries</source>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>대화</translation>
+      <source>WARNING: %1</source>
+      <translation>경고: %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
-      <translation>뒤로</translation>
+      <translation>뒤쪽에</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>앞으로</translation>
+      <translation>어서</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -3748,7 +3751,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Alt+S</source>
-      <translation>Alt+S</translation>
+      <translation type="unfinished">Alt+S</translation>
     </message>
     <message>
       <source>Send word to main window (Alt+W)</source>
@@ -3756,15 +3759,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Alt+W</source>
-      <translation>Alt+W</translation>
+      <translation type="unfinished">Alt+W</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>
       <translation>즐겨찾기에 단어 추가(Ctrl+E)</translation>
-    </message>
-    <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>사전도구상자를 보이거나 숨깁니다</translation>
     </message>
     <message>
       <source>Always stay on top of all other windows</source>
@@ -3775,10 +3774,6 @@ from Stardict, Babylon and GLS dictionaries</source>
 could be resized or managed in other ways.</source>
       <translation>핀 아이콘을 선택하면 창을 항상 화면 맨 위에 표시하고, 
 팝업창 크기, 사전모음의 위치 등을 조절할 수 있습니다.</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>경고: %1</translation>
     </message>
   </context>
   <context>
