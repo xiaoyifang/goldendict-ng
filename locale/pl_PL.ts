@@ -2157,7 +2157,7 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     </message>
     <message>
       <source>Favo&amp;rites</source>
-      <translation>Unikanie</translation>
+      <translation>&amp;Ulubione</translation>
     </message>
     <message>
       <source>&amp;Search Pane</source>
