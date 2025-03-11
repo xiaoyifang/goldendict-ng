@@ -577,7 +577,7 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
           QString filePath = file.mid( 4 );
 
           //check whether the file starts with https or data:base64;
-          if ( filePath.startsWith( "https://" ) || filePath.startsWith( "data:" ) ) {
+          if ( filePath.startsWith( "http://" ) || filePath.startsWith( "https://" ) || filePath.startsWith( "data:" ) ) {
             QString netImgTemplate( R"(<img src="%1">)" );
             result += netImgTemplate.arg( filePath ).toStdString();
           }
