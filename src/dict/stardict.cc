@@ -571,16 +571,33 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
     case 'n': // WordNet data. We don't know anything about it.
       return "<div class=\"sdct_n\">" + Html::escape( string( resource, size ) ) + "</div>";
 
-    case 'r': // Resource file list. For now, only img: is handled.
+    case 'r': // Resource file list.
     {
       string result = R"(<div class="sdct_r">)";
 
       // Handle img:example.jpg
       QString imgTemplate( R"(<img src="bres://)" + QString::fromStdString( getId() ) + R"(/%1">)" );
 
+      // Resource file list.
+      // The content can be:
+      // img:pic/example.jpg	// Image file
+      // snd:apple.wav		// Sound file
+      // vdo:film.avi		// Video file
+      // att:file.bin		// Attachment file
+
       for ( const auto & file : QString::fromUtf8( resource, size ).simplified().split( " " ) ) {
+        // Extract the part after "img:"
         if ( file.startsWith( "img:" ) ) {
-          result += imgTemplate.arg( file.right( file.size() - file.indexOf( ":" ) - 1 ) ).toStdString();
+          result += imgTemplate.arg( file.mid( 4 ) ).toStdString();
+        }
+        else if ( file.startsWith( "snd:" ) ) {
+          result += R"(<audio controls src="bres://)" + QString::fromStdString( getId() ) + R"(/)" + file.mid( 4 ) + R"("></audio>)").toStdString();
+        }
+        else if ( file.startsWith( "vdo:" ) ) {
+          result += R"(<video controls src="bres://)" + QString::fromStdString( getId() ) + R"(/)" + file.mid( 4 ) + R"("></video>)").toStdString();
+        }
+        else if ( file.startsWith( "att:" ) ) {
+          result += R"(<a href="bres://)" + QString::fromStdString( getId() ) + R"(/)" + file.mid( 4 ) + R"()">)" + Html::escape( file.mid( 4 ).toStdString() ) + R"(</a>)").toStdString();
         }
         else {
           result += Html::escape( file.toStdString() );
