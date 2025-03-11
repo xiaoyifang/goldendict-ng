@@ -574,7 +574,16 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
 
       for ( const auto & file : QString::fromUtf8( resource, size ).simplified().split( " " ) ) {
         if ( file.startsWith( "img:" ) ) {
-          result += imgTemplate.arg( file.right( file.size() - file.indexOf( ":" ) - 1 ) ).toStdString();
+          QString filePath = file.mid( 4 );
+
+          //check whether the file starts with https or data:base64;
+          if ( filePath.startsWith( "https://" ) || filePath.startsWith( "data:" ) ) {
+            QString netImgTemplate( R"(<img src="%1">)" );
+            result += netImgTemplate.arg( filePath ).toStdString();
+          }
+          else {
+            result += imgTemplate.arg( filePath ).toStdString();
+          }
         }
         else {
           result += Html::escape( file.toStdString() );
