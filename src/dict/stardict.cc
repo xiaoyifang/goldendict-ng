@@ -436,9 +436,9 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
     {
       QString articleText = QString( "<div class=\"sdct_h\">" ) + QString::fromUtf8( resource, size ) + "</div>";
 
-      static QRegularExpression imgRe( R"((<\s*(?:img|script)\s+[^>]*src\s*=\s*["']?)(?!(?:data|https?|ftp):))",
+      static QRegularExpression imgRe( R"((<\s*(?:img|script)\s+[^>]*src\s*=\s*["'])(?!(?:data|https?|ftp):))",
                                        QRegularExpression::CaseInsensitiveOption );
-      static QRegularExpression linkRe( R"((<\s*link\s+[^>]*href\s*=\s*["']?)(?!(?:data|https?|ftp):))",
+      static QRegularExpression linkRe( R"((<\s*link\s+[^>]*href\s*=\s*["'])(?!(?:data|https?|ftp):))",
                                         QRegularExpression::CaseInsensitiveOption );
 
       articleText.replace( imgRe, "\\1bres://" + QString::fromStdString( getId() ) + "/" )
