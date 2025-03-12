@@ -443,9 +443,8 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
         R"((<\s*link\s+[^>]*href\s*=\s*["']?)(?!(?:data|https?|ftp):)([^"'\s>]+)(["']?))",
         QRegularExpression::CaseInsensitiveOption );
 
-      articleText.replace( imgRe, "\\1bres://" + QString::fromStdString( getId() ) + "/\\2\\3" )
-        .replace( linkRe, "\\1bres://" + QString::fromStdString( getId() ) + "/\\2\\3" );
-
+      articleText.replace( imgRe, QString( R"(\1bres://%1/\2\3)" ).arg( QString::fromStdString( getId() ) ) )
+        .replace( linkRe, QString( R"(\1bres://%1/\2\3)" ).arg( QString::fromStdString( getId() ) ) );
       // Handle links to articles
 
       static QRegularExpression linksReg( R"(<a(\s*[^>]*)href\s*=\s*['"](bword://)?([^'"]+)['"])",
