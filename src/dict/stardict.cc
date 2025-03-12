@@ -445,7 +445,7 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
         R"((<\s*(?:img|script)\s+[^>]*src\s*=\s*["']?)(?!(?:data|https?|ftp):)([^"'\/\s>]+)(["']?))",
         QRegularExpression::CaseInsensitiveOption );
       static QRegularExpression linkRe(
-        R"((<\s*link\s+[^>]*href\s*=\s*["']?)(?!(?:data|https?):)([^"'\/\s>]+)(["']?))",
+        R"((<\s*link\s+[^>]*href\s*=\s*["']?)(?!(?:data|https?|ftp):)([^"'\/\s>]+)(["']?))",
         QRegularExpression::CaseInsensitiveOption );
 
       articleText.replace( imgRe, QString( R"(\1bres://%1/\2\3)" ).arg( QString::fromStdString( getId() ) ) )
