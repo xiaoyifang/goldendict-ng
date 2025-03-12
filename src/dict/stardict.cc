@@ -436,14 +436,20 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
     {
       QString articleText = QString( "<div class=\"sdct_h\">" ) + QString::fromUtf8( resource, size ) + "</div>";
 
-      static QRegularExpression imgRe( R"((<\s*(?:img|script)\s+[^>]*src\s*=\s*["']?)(?!(?:data|https?|ftp):))",
-                                       QRegularExpression::CaseInsensitiveOption );
-      static QRegularExpression linkRe( R"((<\s*link\s+[^>]*href\s*=\s*["']?)(?!(?:data|https?|ftp):))",
-                                        QRegularExpression::CaseInsensitiveOption );
+      // Replace urls that is relative path but not direct data or https
+      // Match: <link href=abc.png/>
+      // Match:  <img src='abc.png'/>
+      // Not Match: <link href='http://abc.png'/>
+      // Not Match: <link href='data:image/jpeg;.......'/>
+      static QRegularExpression imgRe(
+        R"((<\s*(?:img|script)\s+[^>]*src\s*=\s*["']?)(?!(?:data|https?|ftp):)([^"'\s>]+)(["']?))",
+        QRegularExpression::CaseInsensitiveOption );
+      static QRegularExpression linkRe(
+        R"((<\s*link\s+[^>]*href\s*=\s*["']?)(?!(?:data|https?|ftp):)([^"'\s>]+)(["']?))",
+        QRegularExpression::CaseInsensitiveOption );
 
-      articleText.replace( imgRe, "\\1bres://" + QString::fromStdString( getId() ) + "/" )
-        .replace( linkRe, "\\1bres://" + QString::fromStdString( getId() ) + "/" );
-
+      articleText.replace( imgRe, QString( R"(\1bres://%1/\2\3)" ).arg( QString::fromStdString( getId() ) ) )
+        .replace( linkRe, QString( R"(\1bres://%1/\2\3)" ).arg( QString::fromStdString( getId() ) ) );
       // Handle links to articles
 
       static QRegularExpression linksReg( R"(<a(\s*[^>]*)href\s*=\s*['"](bword://)?([^'"]+)['"])",
