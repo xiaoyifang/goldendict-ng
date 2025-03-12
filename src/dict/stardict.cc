@@ -436,6 +436,11 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
     {
       QString articleText = QString( "<div class=\"sdct_h\">" ) + QString::fromUtf8( resource, size ) + "</div>";
 
+      // Replace urls that is relative path but not direct data or https
+      // Match: <link href=abc.png/>
+      // Match:  <img src='abc.png'/>
+      // Not Match: <link href='http://abc.png'/>
+      // Not Match: <link href='data:image/jpeg;.......'/>
       static QRegularExpression imgRe(
         R"((<\s*(?:img|script)\s+[^>]*src\s*=\s*["']?)(?!(?:data|https?|ftp):)([^"'\s>]+)(["']?))",
         QRegularExpression::CaseInsensitiveOption );
