@@ -180,28 +180,28 @@ div.sdct_h {
 }
 
 /* StarDict type 'm' -- Pure meaning. Presented as <pre> */
-pre.sdct_m {
+.sdct_m {
 }
 
 /* StarDict type 'l' -- Pure meaning which used to be in locale encoding. */
-pre.sdct_l {
+.sdct_l {
 }
 
 /* StarDict type 'g' -- Pango Markup */
-div.sdct_g {
+.sdct_g {
 }
 
 /* StarDict type 't' -- Transcription */
-div.sdct_t {
+.sdct_t {
   font-weight: bold;
 }
 
 /* StarDict type 'y' -- Chinese YinBiao or Japanese KANA */
-div.sdct_y {
+.sdct_y {
 }
 
 /* StarDict type 'x'. Should have xdxf_*-styled elements inside */
-div.sdct_x {
+.sdct_x {
 }
 
 /* Blockquotes in XDXF-styled elements are used
