@@ -584,25 +584,23 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
       // snd:apple.wav		// Sound file
       // vdo:film.avi		// Video file
       // att:file.bin		// Attachment file
+      // Extract the part after the prefix
+      static const std::map< std::string, std::string > prefixTemplates = {
+        { "img:", R"(<img src="bres://)" + getId() + R"(/%1">)" },
+        { "snd:", R"(<audio controls src="bres://)" + getId() + R"(/%1"></audio>)" },
+        { "vdo:", R"(<video controls src="bres://)" + getId() + R"(/%1"></video>)" },
+        { "att:", R"(<a download href="bres://)" + getId() + R"(/%1">)" + Html::escape( "%1" ) + R"(</a>)" } };
 
       for ( const auto & file : QString::fromUtf8( resource, size ).simplified().split( " " ) ) {
-        // Extract the part after "img:"
-        if ( file.startsWith( "img:" ) ) {
-          result += imgTemplate.arg( file.mid( 4 ) ).toStdString();
+        for ( const auto & [ prefix, templateStr ] : prefixTemplates ) {
+          if ( file.startsWith( prefix ) ) {
+            result += QString::fromStdString( templateStr ).arg( file.mid( prefix.size() ) ).toStdString();
+            break;
+          }
         }
-        else if ( file.startsWith( "snd:" ) ) {
-          result +=
-            R"(<audio controls src="bres://)" + getId() + R"(/)" + file.mid( 4 ).toStdString() + R"("></audio>)";
-        }
-        else if ( file.startsWith( "vdo:" ) ) {
-          result +=
-            R"(<video controls src="bres://)" + getId() + R"(/)" + file.mid( 4 ).toStdString() + R"("></video>)";
-        }
-        else if ( file.startsWith( "att:" ) ) {
-          result += R"(<a download href="bres://)" + getId() + R"(/)" + file.mid( 4 ).toStdString() + R"(">)"
-            + Html::escape( file.mid( 4 ).toStdString() ) + R"(</a>)";
-        }
-        else {
+
+        // If no prefix matched, escape the file name
+        if ( result.empty() ) {
           result += Html::escape( file.toStdString() );
         }
       }
