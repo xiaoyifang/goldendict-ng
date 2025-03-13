@@ -584,7 +584,7 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
 
       // Extract the part after the prefix
       static const std::map< std::string, std::string > prefixTemplates = {
-        { "img:", R"(<img src="bres://)" + getId() + R"(/%1">)" },
+        { "img:", R"(<img src="bres://)" + getId() + R"(/%1"/>)" },
         { "snd:", R"(<audio controls src="bres://)" + getId() + R"(/%1"></audio>)" },
         { "vdo:", R"(<video controls src="bres://)" + getId() + R"(/%1"></video>)" },
         { "att:", R"(<a download href="bres://)" + getId() + R"(/%1">%1</a>)" } };
