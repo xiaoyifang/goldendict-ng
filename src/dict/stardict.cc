@@ -592,7 +592,7 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
       for ( const auto & file : QString::fromUtf8( resource, size ).simplified().split( " " ) ) {
         bool matched = false;
         for ( const auto & [ prefix, templateStr ] : prefixTemplates ) {
-          if ( file.startsWith( QString::fromStdString(prefix) ) ) {
+          if ( file.startsWith( QString::fromStdString( prefix ) ) ) {
             result += QString::fromStdString( templateStr ).arg( file.mid( prefix.size() ) ).toStdString();
             matched = true;
             break;
