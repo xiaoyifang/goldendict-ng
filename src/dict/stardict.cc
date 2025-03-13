@@ -590,15 +590,17 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
         { "att:", R"(<a download href="bres://)" + getId() + R"(/%1">%1</a>)" } };
 
       for ( const auto & file : QString::fromUtf8( resource, size ).simplified().split( " " ) ) {
+        bool matched = false;
         for ( const auto & [ prefix, templateStr ] : prefixTemplates ) {
           if ( file.startsWith( prefix ) ) {
             result += QString::fromStdString( templateStr ).arg( file.mid( prefix.size() ) ).toStdString();
+            matched = true;
             break;
           }
         }
 
         // If no prefix matched, escape the file name
-        if ( result.empty() ) {
+        if ( !matched ) {
           result += Html::escape( file.toStdString() );
         }
       }
