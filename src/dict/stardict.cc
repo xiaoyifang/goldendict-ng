@@ -591,13 +591,16 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
           result += imgTemplate.arg( file.mid( 4 ) ).toStdString();
         }
         else if ( file.startsWith( "snd:" ) ) {
-          result += R"(<audio controls src="bres://)" + getId() + R"(/)" + file.mid( 4 ).toStdString() + R"("></audio>)";
+          result +=
+            R"(<audio controls src="bres://)" + getId() + R"(/)" + file.mid( 4 ).toStdString() + R"("></audio>)";
         }
         else if ( file.startsWith( "vdo:" ) ) {
-          result += R"(<video controls src="bres://)" + getId() + R"(/)" + file.mid( 4 ).toStdString() + R"("></video>)";
+          result +=
+            R"(<video controls src="bres://)" + getId() + R"(/)" + file.mid( 4 ).toStdString() + R"("></video>)";
         }
         else if ( file.startsWith( "att:" ) ) {
-          result += R"(<a download href="bres://)" + getId() + R"(/)" + file.mid( 4 ).toStdString() + R"(">)" + Html::escape( file.mid( 4 ).toStdString() ) + R"(</a>)";
+          result += R"(<a download href="bres://)" + getId() + R"(/)" + file.mid( 4 ).toStdString() + R"(">)"
+            + Html::escape( file.mid( 4 ).toStdString() ) + R"(</a>)";
         }
         else {
           result += Html::escape( file.toStdString() );
