@@ -583,24 +583,18 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
       // att:file.bin		// Attachment file
 
       // Extract the part after the prefix
-      static const std::map< std::string, std::string > prefixTemplates = {
-        { "img:", R"(<img src="bres://)" + getId() + R"(/%1"/>)" },
-        { "snd:", R"(<audio controls src="bres://)" + getId() + R"(/%1"></audio>)" },
-        { "vdo:", R"(<video controls src="bres://)" + getId() + R"(/%1"></video>)" },
-        { "att:", R"(<a download href="bres://)" + getId() + R"(/%1">%1</a>)" } };
+      static const QMap< QString, QString > prefixTemplates = {
+        { QString( "img:" ), QString( R"(<img src="bres://%1/%2"/>)" ) },
+        { QString( "snd:" ), QString( R"(<audio controls src="bres://%1/%2"></audio>)" ) },
+        { QString( "vdo:" ), QString( R"(<video controls src="bres://%1/%2"></video>)" ) },
+        { QString( "att:" ), QString( R"(<a download href="bres://%1/%2">%1</a>)" ) } };
 
       for ( const auto & file : QString::fromUtf8( resource, size ).simplified().split( " " ) ) {
-        bool matched = false;
-        for ( const auto & [ prefix, templateStr ] : prefixTemplates ) {
-          if ( file.startsWith( QString::fromStdString( prefix ) ) ) {
-            result += QString::fromStdString( templateStr ).arg( file.mid( prefix.size() ) ).toStdString();
-            matched = true;
-            break;
-          }
+        if ( prefixTemplates.contains( file.left( 4 ) ) ) {
+          result +=
+            prefixTemplates[ file.left( 4 ) ].arg( QString::fromStdString( getId() ), file.mid( 4 ) ).toStdString();
         }
-
-        // If no prefix matched, escape the file name
-        if ( !matched ) {
+        else {
           result += Html::escape( file.toStdString() );
         }
       }
