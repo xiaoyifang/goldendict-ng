@@ -575,9 +575,6 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
     {
       string result = R"(<div class="sdct_r">)";
 
-      // Handle img:example.jpg
-      QString imgTemplate( R"(<img src="bres://)" + QString::fromStdString( getId() ) + R"(/%1">)" );
-
       // Resource file list.
       // The content can be:
       // img:pic/example.jpg	// Image file
