@@ -587,7 +587,7 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
         { "img:", R"(<img src="bres://)" + getId() + R"(/%1">)" },
         { "snd:", R"(<audio controls src="bres://)" + getId() + R"(/%1"></audio>)" },
         { "vdo:", R"(<video controls src="bres://)" + getId() + R"(/%1"></video>)" },
-        { "att:", R"(<a download href="bres://)" + getId() + R"(/%1">)" + Html::escape( "%1" ) + R"(</a>)" } };
+        { "att:", R"(<a download href="bres://)" + getId() + R"(/%1">%1</a>)" } };
 
       for ( const auto & file : QString::fromUtf8( resource, size ).simplified().split( " " ) ) {
         for ( const auto & [ prefix, templateStr ] : prefixTemplates ) {
