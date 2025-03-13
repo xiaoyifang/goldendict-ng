@@ -581,7 +581,7 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
       // snd:apple.wav		// Sound file
       // vdo:film.avi		// Video file
       // att:file.bin		// Attachment file
-      
+
       // Extract the part after the prefix
       static const std::map< std::string, std::string > prefixTemplates = {
         { "img:", R"(<img src="bres://)" + getId() + R"(/%1">)" },
