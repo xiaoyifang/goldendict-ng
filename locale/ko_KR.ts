@@ -825,7 +825,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
-      <translation>Make this folder the target of adding/removing words actions.</translation>
+      <translation>이 폴더를 단어 추가/제거 및 작업의 대상으로 만듭니다.</translation>
     </message>
   </context>
   <context>
@@ -2975,7 +2975,7 @@ the application.</source>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+      <translation>프로그램을 시작할 때 클립보드 모니터링을 기본적으로 켤지 여부를 선택합니다.</translation>
     </message>
     <message>
       <source>Start with clipboard monitoring turned on</source>
@@ -3509,7 +3509,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Interface Font Size</source>
-      <translation>Interface Font Size</translation>
+      <translation>인터페이스 글꼴 크기</translation>
     </message>
     <message>
       <source>Interface language</source>
@@ -3533,7 +3533,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Goldendict-ng is a dictionary software</source>
-      <translation>Goldendict-ng is a dictionary software</translation>
+      <translation>Goldendict-ng는 사전 소프트웨어입니다</translation>
     </message>
   </context>
   <context>
