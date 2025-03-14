@@ -503,10 +503,6 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>Sallqakuna</translation>
     </message>
     <message>
-      <source>RegExp</source>
-      <translation>RegExp</translation>
-    </message>
-    <message>
       <source>Unique headwords total: %1.</source>
       <translation>Sapaq umalliq simikuna llapanpi: %1.</translation>
     </message>
@@ -541,6 +537,10 @@ chiqan kayninta sumaqyachin)</translation>
     <message>
       <source>Export finished</source>
       <translation>Hawa llaqtakunaman apachiy tukusqa</translation>
+    </message>
+    <message>
+      <source>Regular Expression</source>
+      <translation type="unfinished">Regular Expression</translation>
     </message>
   </context>
   <context>
@@ -941,24 +941,8 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>(INS)wan juñuman aqllasqa simi-pirwakunata yapay </translation>
     </message>
     <message>
-      <source>&gt;</source>
-      <translation>&gt;</translation>
-    </message>
-    <message>
-      <source>Ins</source>
-      <translation>INS</translation>
-    </message>
-    <message>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>(SUPR)wan juñumanta aqllasqa simi-pirwakunata chinkachiy </translation>
-    </message>
-    <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
-    </message>
-    <message>
-      <source>Del</source>
-      <translation>DEL</translation>
     </message>
     <message>
       <source>Groups:</source>
@@ -2180,16 +2164,8 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>&amp;Simi-pirwakuna...</translation>
     </message>
     <message>
-      <source>F3</source>
-      <translation>F3</translation>
-    </message>
-    <message>
       <source>&amp;Preferences...</source>
       <translation>&amp;Aqllanakuna...</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>F4</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
@@ -2212,10 +2188,6 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>Programa nisqamanta lluqsiy</translation>
     </message>
     <message>
-      <source>Ctrl+Q</source>
-      <translation>Ctrl+Q</translation>
-    </message>
-    <message>
       <source>&amp;Forum</source>
       <translation>&amp;Foro (Rimanakusun)</translation>
     </message>
@@ -2228,10 +2200,6 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>Sistema nisqaqpa chumpinman programata juch&apos;uyyachin</translation>
     </message>
     <message>
-      <source>Ctrl+F4</source>
-      <translation>Ctrl+F4 nisqa</translation>
-    </message>
-    <message>
       <source>&amp;Save Article</source>
       <translation>&amp;Articulo nisqata jallch&apos;ay </translation>
     </message>
@@ -2240,16 +2208,8 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>Articulo nisqata jallch&apos;ay </translation>
     </message>
     <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
       <source>&amp;Print</source>
       <translation>&amp;Raphipi ñit&apos;iy</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Ctrl+P nisqa</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2264,20 +2224,12 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>&amp;Archivokunata musuqmanta qhaway</translation>
     </message>
     <message>
-      <source>Ctrl+F5</source>
-      <translation>Ctrl+F5 nisqa</translation>
-    </message>
-    <message>
       <source>&amp;Clear</source>
       <translation>&amp;Pichay</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
       <translation>&amp;Musuq Tab</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>Ctrl+T nisqa</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2320,24 +2272,12 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>P’anqapi maskhay</translation>
     </message>
     <message>
-      <source>Ctrl+F</source>
-      <translation>Ctrl+F nisqa</translation>
-    </message>
-    <message>
       <source>Full-text search</source>
       <translation>Tukuy qillqasqa maskay</translation>
     </message>
     <message>
-      <source>Ctrl+Shift+F</source>
-      <translation>Ctrl+Mayúscula+F</translation>
-    </message>
-    <message>
       <source>GoldenDict reference</source>
       <translation>GoldenDict nisqamanta willakuy</translation>
-    </message>
-    <message>
-      <source>F1</source>
-      <translation>F1</translation>
     </message>
     <message>
       <source>Export</source>
@@ -2354,10 +2294,6 @@ chiqan kayninta sumaqyachin)</translation>
     <message>
       <source>Add current tab to Favorites</source>
       <translation>Kunan kaq tablata Favoritos nisqaman yapay</translation>
-    </message>
-    <message>
-      <source>Ctrl+E</source>
-      <translation>Ctrl+E nisqa</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
@@ -3016,32 +2952,16 @@ seleccionadas estén oprimidas cuando la selección de la palabra cambie.</trans
       <translation>Tecla ALT</translation>
     </message>
     <message>
-      <source>Alt</source>
-      <translation>ALT</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Tecla CTRL</translation>
-    </message>
-    <message>
-      <source>Ctrl</source>
-      <translation>CTRL</translation>
     </message>
     <message>
       <source>Shift key</source>
       <translation>Tecla MAYÚSCULA</translation>
     </message>
     <message>
-      <source>Shift</source>
-      <translation>MAYÚSCULA</translation>
-    </message>
-    <message>
       <source>Windows key or Meta key</source>
       <translation>Tecla de WINDOWS o META</translation>
-    </message>
-    <message>
-      <source>Win/Meta</source>
-      <translation>WINDOWSchu METAchu</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
@@ -3466,10 +3386,6 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
     <message>
       <source>Lingoes-Blue</source>
       <translation>Lingoes-Azul</translation>
-    </message>
-    <message>
-      <source> MB</source>
-      <translation> MB</translation>
     </message>
     <message>
       <source>Auto does nothing on some systems.</source>
