@@ -74,11 +74,6 @@ ScanPopup::ScanPopup( QWidget * parent,
   groupListAction = searchBar->addWidget( groupList );
   searchBar->addWidget( translateBox );
   searchBar->toggleViewAction()->setEnabled( false );
-  // Add a placeholder button
-  QToolButton * placeholderButton = new QToolButton(this);
-  // Initially hidden
-  placeholderButton->setVisible(false);
-  searchBar->addWidget(placeholderButton);
 
   foundBar = new QToolBar( "Navgiation bar", this );
   foundBar->setObjectName( "popupNavgiationBar" );
@@ -92,7 +87,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   dictionaryBar.setFloatable( false );
   foundBar->setFloatable( false );
 
-  searchBar->setContentsMargins( 0, 0, 0, 0 );
+  searchBar->setContentsMargins( 0, 0, 2, 0 );
   toolBar->setContentsMargins( 0, 0, 0, 0 );
 
   // Add Bars
