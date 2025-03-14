@@ -731,7 +731,7 @@ in the pressed state when the word selection changes.</string>
                     <string>Alt key</string>
                    </property>
                    <property name="text">
-                    <string>Alt</string>
+                    <string notr="true">Alt</string>
                    </property>
                   </widget>
                  </item>
@@ -741,7 +741,7 @@ in the pressed state when the word selection changes.</string>
                     <string>Ctrl key</string>
                    </property>
                    <property name="text">
-                    <string>Ctrl</string>
+                    <string notr="true">Ctrl</string>
                    </property>
                   </widget>
                  </item>
@@ -751,7 +751,7 @@ in the pressed state when the word selection changes.</string>
                     <string>Shift key</string>
                    </property>
                    <property name="text">
-                    <string>Shift</string>
+                    <string notr="true">Shift</string>
                    </property>
                   </widget>
                  </item>
@@ -761,7 +761,7 @@ in the pressed state when the word selection changes.</string>
                     <string>Windows key or Meta key</string>
                    </property>
                    <property name="text">
-                    <string>Win/Meta</string>
+                    <string notr="true">Win/Meta</string>
                    </property>
                   </widget>
                  </item>

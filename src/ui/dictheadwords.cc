@@ -43,7 +43,7 @@ DictHeadwords::DictHeadwords( QWidget * parent, Config::Class & cfg_, Dictionary
 
   ui.searchModeCombo->addItem( tr( "Text" ), SearchType::FixedString );
   ui.searchModeCombo->addItem( tr( "Wildcards" ), SearchType::Wildcard );
-  ui.searchModeCombo->addItem( tr( "RegExp" ), SearchType::Regex );
+  ui.searchModeCombo->addItem( tr( "Regular Expression" ), SearchType::Regex );
   ui.searchModeCombo->setCurrentIndex( cfg.headwordsDialog.searchMode );
 
   ui.exportButton->setAutoDefault( false );

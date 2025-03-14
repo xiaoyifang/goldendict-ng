@@ -182,7 +182,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 
 #ifdef Q_OS_WIN32
   // 1 MB stands for 2^20 bytes on Windows. "MiB" is never used by this OS.
-  ui.maxNetworkCacheSize->setSuffix( tr( " MB" ) );
+  ui.maxNetworkCacheSize->setSuffix( " MB" );
 #endif
   ui.maxNetworkCacheSize->setToolTip( ui.maxNetworkCacheSize->toolTip().arg( Config::getCacheDir() ) );
 
