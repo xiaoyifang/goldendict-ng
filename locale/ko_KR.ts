@@ -503,10 +503,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>와일드카드</translation>
     </message>
     <message>
-      <source>RegExp</source>
-      <translation>정규식</translation>
-    </message>
-    <message>
       <source>Unique headwords total: %1.</source>
       <translation>고유 표제어 총계: %1.</translation>
     </message>
@@ -541,6 +537,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>내보내기 완료</translation>
+    </message>
+    <message>
+      <source>Regular Expression</source>
+      <translation type="unfinished">Regular Expression</translation>
     </message>
   </context>
   <context>
@@ -941,24 +941,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>선택한 사전들을 그룹에 추가합니다(Ins)</translation>
     </message>
     <message>
-      <source>&gt;</source>
-      <translation>&gt;</translation>
-    </message>
-    <message>
-      <source>Ins</source>
-      <translation>인</translation>
-    </message>
-    <message>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>선택한 사전들을 그룹에서 삭제합니다(Del)</translation>
-    </message>
-    <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
-    </message>
-    <message>
-      <source>Del</source>
-      <translation>델</translation>
     </message>
     <message>
       <source>Groups:</source>
@@ -2180,16 +2164,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>사전...(&amp;D)</translation>
     </message>
     <message>
-      <source>F3</source>
-      <translation>F3</translation>
-    </message>
-    <message>
       <source>&amp;Preferences...</source>
       <translation>설정...(&amp;P)</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>F4</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
@@ -2212,10 +2188,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>프로그램 종료</translation>
     </message>
     <message>
-      <source>Ctrl+Q</source>
-      <translation>Ctrl+Q</translation>
-    </message>
-    <message>
       <source>&amp;Forum</source>
       <translation>포럼(&amp;F)</translation>
     </message>
@@ -2228,10 +2200,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>창을 트레이로 최소화합니다</translation>
     </message>
     <message>
-      <source>Ctrl+F4</source>
-      <translation>Ctrl+F4</translation>
-    </message>
-    <message>
       <source>&amp;Save Article</source>
       <translation>검색항목 저장(&amp;S)</translation>
     </message>
@@ -2240,16 +2208,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>검색항목을 저장합니다</translation>
     </message>
     <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
       <source>&amp;Print</source>
       <translation>인쇄(&amp;P)</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Ctrl+P</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2264,20 +2224,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>파일 다시 읽기(&amp;R)</translation>
     </message>
     <message>
-      <source>Ctrl+F5</source>
-      <translation>Ctrl+F5</translation>
-    </message>
-    <message>
       <source>&amp;Clear</source>
       <translation>기록 비우기(&amp;C)</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
       <translation>새 탭(&amp;N)</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>Ctrl+T</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2320,24 +2272,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>페이지 내 검색</translation>
     </message>
     <message>
-      <source>Ctrl+F</source>
-      <translation>Ctrl+F</translation>
-    </message>
-    <message>
       <source>Full-text search</source>
       <translation>전문검색</translation>
     </message>
     <message>
-      <source>Ctrl+Shift+F</source>
-      <translation>Ctrl+Shift+F</translation>
-    </message>
-    <message>
       <source>GoldenDict reference</source>
       <translation>골든딕 도움말</translation>
-    </message>
-    <message>
-      <source>F1</source>
-      <translation>F1</translation>
     </message>
     <message>
       <source>Export</source>
@@ -2354,10 +2294,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Add current tab to Favorites</source>
       <translation>현재 탭을 즐겨찾기에 추가</translation>
-    </message>
-    <message>
-      <source>Ctrl+E</source>
-      <translation>Ctrl+E</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
@@ -3016,15 +2952,7 @@ in the pressed state when the word selection changes.</source>
       <translation>Alt 키</translation>
     </message>
     <message>
-      <source>Alt</source>
-      <translation>대체</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
-      <translation>Ctrl 키</translation>
-    </message>
-    <message>
-      <source>Ctrl</source>
       <translation>Ctrl 키</translation>
     </message>
     <message>
@@ -3032,16 +2960,8 @@ in the pressed state when the word selection changes.</source>
       <translation>Shift 키</translation>
     </message>
     <message>
-      <source>Shift</source>
-      <translation>옮기다</translation>
-    </message>
-    <message>
       <source>Windows key or Meta key</source>
       <translation>윈도우 단축키 또는 메타 키</translation>
-    </message>
-    <message>
-      <source>Win/Meta</source>
-      <translation>승리/메타</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
@@ -3466,10 +3386,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Lingoes-Blue</source>
       <translation>링고-블루</translation>
-    </message>
-    <message>
-      <source> MB</source>
-      <translation> MB</translation>
     </message>
     <message>
       <source>Auto does nothing on some systems.</source>
