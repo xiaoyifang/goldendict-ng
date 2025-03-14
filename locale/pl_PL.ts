@@ -503,10 +503,6 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
       <translation>Symbole wieloznaczne</translation>
     </message>
     <message>
-      <source>RegExp</source>
-      <translation>Wyrażenie regularne</translation>
-    </message>
-    <message>
       <source>Unique headwords total: %1.</source>
       <translation>Unikalne słowa w sumie: %1.</translation>
     </message>
@@ -541,6 +537,10 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     <message>
       <source>Export finished</source>
       <translation>Eksport zakończony</translation>
+    </message>
+    <message>
+      <source>Regular Expression</source>
+      <translation>Wyrażenie regularne</translation>
     </message>
   </context>
   <context>
@@ -941,24 +941,8 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
       <translation>Dodaj zaznaczone słowniki do grupy (Ins)</translation>
     </message>
     <message>
-      <source>&gt;</source>
-      <translation>&gt;</translation>
-    </message>
-    <message>
-      <source>Ins</source>
-      <translation>Ins</translation>
-    </message>
-    <message>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>Usuń zaznaczone słowniki z grupy (Del)</translation>
-    </message>
-    <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
-    </message>
-    <message>
-      <source>Del</source>
-      <translation>Del</translation>
     </message>
     <message>
       <source>Groups:</source>
@@ -2180,16 +2164,8 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
       <translation>&amp;Słowniki...</translation>
     </message>
     <message>
-      <source>F3</source>
-      <translation>F3</translation>
-    </message>
-    <message>
       <source>&amp;Preferences...</source>
       <translation>&amp;Preferencje...</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>F4</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
@@ -2212,10 +2188,6 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
       <translation>Zakończ aplikację</translation>
     </message>
     <message>
-      <source>Ctrl+Q</source>
-      <translation>Ctrl + Q</translation>
-    </message>
-    <message>
       <source>&amp;Forum</source>
       <translation>&amp;Forum</translation>
     </message>
@@ -2228,10 +2200,6 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
       <translation>Minimalizuje okno do paska zadań</translation>
     </message>
     <message>
-      <source>Ctrl+F4</source>
-      <translation>Ctrl + F4</translation>
-    </message>
-    <message>
       <source>&amp;Save Article</source>
       <translation>Zapi&amp;sz artykuł</translation>
     </message>
@@ -2240,16 +2208,8 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
       <translation>Zapisz artykuł</translation>
     </message>
     <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
       <source>&amp;Print</source>
       <translation>&amp;Drukuj</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Ctrl + P</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2264,20 +2224,12 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
       <translation>&amp;Wczytaj pliki ponownie</translation>
     </message>
     <message>
-      <source>Ctrl+F5</source>
-      <translation>Ctrl + F5</translation>
-    </message>
-    <message>
       <source>&amp;Clear</source>
       <translation>Wy&amp;czyść</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
       <translation>&amp;Nowa karta</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>Ctrl + T</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2320,24 +2272,12 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
       <translation>Szukaj na stronie</translation>
     </message>
     <message>
-      <source>Ctrl+F</source>
-      <translation>Ctrl+F</translation>
-    </message>
-    <message>
       <source>Full-text search</source>
       <translation>Wyszukiwanie pełnotekstowe</translation>
     </message>
     <message>
-      <source>Ctrl+Shift+F</source>
-      <translation>Ctrl+Shift+F</translation>
-    </message>
-    <message>
       <source>GoldenDict reference</source>
       <translation>Pomoc do programu GoldenDict-ng</translation>
-    </message>
-    <message>
-      <source>F1</source>
-      <translation>F1</translation>
     </message>
     <message>
       <source>Export</source>
@@ -2354,10 +2294,6 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     <message>
       <source>Add current tab to Favorites</source>
       <translation>Dodaj bieżącą kartę do Ulubionych</translation>
-    </message>
-    <message>
-      <source>Ctrl+E</source>
-      <translation>Ctrl+E</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
@@ -3016,32 +2952,16 @@ kiedy zaznaczenie słowa ulega zmianie przy naciśniętych wszystkich wybranych 
       <translation>Klawisz Alt</translation>
     </message>
     <message>
-      <source>Alt</source>
-      <translation>Alt</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Klawisz Ctrl</translation>
-    </message>
-    <message>
-      <source>Ctrl</source>
-      <translation>Ctrl</translation>
     </message>
     <message>
       <source>Shift key</source>
       <translation>Klawisz Shift</translation>
     </message>
     <message>
-      <source>Shift</source>
-      <translation>Zmiana</translation>
-    </message>
-    <message>
       <source>Windows key or Meta key</source>
       <translation>Klawisz Windows/Meta</translation>
-    </message>
-    <message>
-      <source>Win/Meta</source>
-      <translation>Win/Meta</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
@@ -3469,10 +3389,6 @@ ze słowników Stardict, Babylon i GLS</translation>
     <message>
       <source>Lingoes-Blue</source>
       <translation>Lingoes niebieski</translation>
-    </message>
-    <message>
-      <source> MB</source>
-      <translation> MB</translation>
     </message>
     <message>
       <source>Auto does nothing on some systems.</source>
