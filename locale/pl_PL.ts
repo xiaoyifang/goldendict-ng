@@ -512,7 +512,7 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     </message>
     <message>
       <source>Unique headwords total: %1, filtered(limited): %2</source>
-      <translation>Unikalne słowa w sumie: %1, filtrowane(ograniczone): %2</translation>
+      <translation>Unikalne hasła łącznie: %1, przefiltrowane (ograniczone): %2</translation>
     </message>
     <message>
       <source>Save headwords to file</source>
