@@ -502,10 +502,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Waýkard</translation>
     </message>
     <message>
-      <source>RegExp</source>
-      <translation>RegExp</translation>
-    </message>
-    <message>
       <source>Unique headwords total: %1.</source>
       <translation>Täsin sözleriň jemi: %1.</translation>
     </message>
@@ -540,6 +536,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>Eksport gutardy</translation>
+    </message>
+    <message>
+      <source>Regular Expression</source>
+      <translation type="unfinished">Regular Expression</translation>
     </message>
   </context>
   <context>
@@ -940,24 +940,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>Saýlanan sözlükleri topara goş (Ins)</translation>
     </message>
     <message>
-      <source>&gt;</source>
-      <translation>&gt;</translation>
-    </message>
-    <message>
-      <source>Ins</source>
-      <translation>Ins</translation>
-    </message>
-    <message>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>Saýlanan sözlükleri topardan aýyr (Del)</translation>
-    </message>
-    <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
-    </message>
-    <message>
-      <source>Del</source>
-      <translation>Del</translation>
     </message>
     <message>
       <source>Groups:</source>
@@ -2179,16 +2163,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>&amp;Sözlükler...</translation>
     </message>
     <message>
-      <source>F3</source>
-      <translation>F3</translation>
-    </message>
-    <message>
       <source>&amp;Preferences...</source>
       <translation>&amp;Saýlamalar...</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>F4</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
@@ -2211,10 +2187,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Programadan çyk</translation>
     </message>
     <message>
-      <source>Ctrl+Q</source>
-      <translation>Ctrl + Q.</translation>
-    </message>
-    <message>
       <source>&amp;Forum</source>
       <translation>&amp; Forum</translation>
     </message>
@@ -2227,10 +2199,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Penjireleri paneliň içinde gizlemek</translation>
     </message>
     <message>
-      <source>Ctrl+F4</source>
-      <translation>Ctrl + F4</translation>
-    </message>
-    <message>
       <source>&amp;Save Article</source>
       <translation>&amp;Makalany ýatda sakla</translation>
     </message>
@@ -2239,16 +2207,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ýatda sakla</translation>
     </message>
     <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
       <source>&amp;Print</source>
       <translation>&amp;Çap et</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Ctrl + P.</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2263,20 +2223,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>&amp;Faýllary täzeden gözden geçirmek</translation>
     </message>
     <message>
-      <source>Ctrl+F5</source>
-      <translation>Ctrl + F5</translation>
-    </message>
-    <message>
       <source>&amp;Clear</source>
       <translation>&amp;Arassala</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
       <translation>&amp;Täze wkladka</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>Ctrl + T.</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2319,24 +2271,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Sahypada gözläň</translation>
     </message>
     <message>
-      <source>Ctrl+F</source>
-      <translation>Ctrl + F.</translation>
-    </message>
-    <message>
       <source>Full-text search</source>
       <translation>Doly tekst gözlegi</translation>
     </message>
     <message>
-      <source>Ctrl+Shift+F</source>
-      <translation>Ctrl + Shift + F.</translation>
-    </message>
-    <message>
       <source>GoldenDict reference</source>
       <translation>GoldenDict salgylanmasy</translation>
-    </message>
-    <message>
-      <source>F1</source>
-      <translation>F1</translation>
     </message>
     <message>
       <source>Export</source>
@@ -2353,10 +2293,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Add current tab to Favorites</source>
       <translation>Halanýanlara häzirki goýmany goşuň</translation>
-    </message>
-    <message>
-      <source>Ctrl+E</source>
-      <translation>Ctrl + E.</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
@@ -3017,32 +2953,16 @@ basylan ýagdaýynda görkeziler.</translation>
       <translation>Alt düwmesi</translation>
     </message>
     <message>
-      <source>Alt</source>
-      <translation>Alt</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Ctrl düwmesi</translation>
-    </message>
-    <message>
-      <source>Ctrl</source>
-      <translation>Ctrl</translation>
     </message>
     <message>
       <source>Shift key</source>
       <translation>Shift düwmesi</translation>
     </message>
     <message>
-      <source>Shift</source>
-      <translation>Shift</translation>
-    </message>
-    <message>
       <source>Windows key or Meta key</source>
       <translation>Windows düwme ýa-da Meta düwme</translation>
-    </message>
-    <message>
-      <source>Win/Meta</source>
-      <translation>Win / Meta</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
@@ -3469,10 +3389,6 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
     <message>
       <source>Lingoes-Blue</source>
       <translation>Lingoes-Gök</translation>
-    </message>
-    <message>
-      <source> MB</source>
-      <translation> MB</translation>
     </message>
     <message>
       <source>Auto does nothing on some systems.</source>
