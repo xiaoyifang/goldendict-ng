@@ -505,10 +505,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Μπαλαντέρ</translation>
     </message>
     <message>
-      <source>RegExp</source>
-      <translation>RegExp</translation>
-    </message>
-    <message>
       <source>Unique headwords total: %1.</source>
       <translation>Μοναδικό σύνολο κεφαλών: %1.</translation>
     </message>
@@ -543,6 +539,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>Η εξαγωγή ολοκληρώθηκε</translation>
+    </message>
+    <message>
+      <source>Regular Expression</source>
+      <translation>Κανονική Έκφραση</translation>
     </message>
   </context>
   <context>
@@ -943,24 +943,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>Προσθήκη των επιλεγμένων λεξικών στην ομάδα (Ins)</translation>
     </message>
     <message>
-      <source>&gt;</source>
-      <translation>&gt;</translation>
-    </message>
-    <message>
-      <source>Ins</source>
-      <translation>Ins</translation>
-    </message>
-    <message>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>Αφαίρεση επιλεγμένων λεξικών από την ομάδα (Del)</translation>
-    </message>
-    <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
-    </message>
-    <message>
-      <source>Del</source>
-      <translation>Del</translation>
     </message>
     <message>
       <source>Groups:</source>
@@ -2182,16 +2166,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>&amp;Λεξικά...</translation>
     </message>
     <message>
-      <source>F3</source>
-      <translation>F3</translation>
-    </message>
-    <message>
       <source>&amp;Preferences...</source>
       <translation>&amp;Προτιμήσεις...</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>F4</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
@@ -2214,10 +2190,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Έξοδος εφαρμογής</translation>
     </message>
     <message>
-      <source>Ctrl+Q</source>
-      <translation>Ctrl+Q</translation>
-    </message>
-    <message>
       <source>&amp;Forum</source>
       <translation>&amp;Φόρουμ</translation>
     </message>
@@ -2230,10 +2202,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ελαχιστοποιεί το παράθυρο ως εικονίδιο στην περιοχή ειδοποιήσεων</translation>
     </message>
     <message>
-      <source>Ctrl+F4</source>
-      <translation>Ctrl+F4</translation>
-    </message>
-    <message>
       <source>&amp;Save Article</source>
       <translation>&amp;Αποθήκευση άρθρου</translation>
     </message>
@@ -2242,16 +2210,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>Αποθήκευση άρθρου</translation>
     </message>
     <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
       <source>&amp;Print</source>
       <translation>Εκ&amp;τύπωση</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Ctrl+P</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2266,20 +2226,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Νέα &amp;σάρωση αρχείων</translation>
     </message>
     <message>
-      <source>Ctrl+F5</source>
-      <translation>Ctrl+F5</translation>
-    </message>
-    <message>
       <source>&amp;Clear</source>
       <translation>Εκκα&amp;θάριση</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
       <translation>&amp;Νέα καρτέλα</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>Ctrl+T</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2322,24 +2274,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Αναζήτηση στη σελίδα</translation>
     </message>
     <message>
-      <source>Ctrl+F</source>
-      <translation>Ctrl+F</translation>
-    </message>
-    <message>
       <source>Full-text search</source>
       <translation>Αναζήτηση πλήρους κειμένου</translation>
     </message>
     <message>
-      <source>Ctrl+Shift+F</source>
-      <translation>Ctrl+Shift+F</translation>
-    </message>
-    <message>
       <source>GoldenDict reference</source>
       <translation>GoldenDict αναφορά</translation>
-    </message>
-    <message>
-      <source>F1</source>
-      <translation>F1</translation>
     </message>
     <message>
       <source>Export</source>
@@ -2356,10 +2296,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Add current tab to Favorites</source>
       <translation>Προσθήκη τρέχουσας καρτέλας στα αγαπημένα</translation>
-    </message>
-    <message>
-      <source>Ctrl+E</source>
-      <translation>Ctrl+E</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
@@ -3019,32 +2955,16 @@ in the pressed state when the word selection changes.</source>
       <translation>Πλήκτρο Alt</translation>
     </message>
     <message>
-      <source>Alt</source>
-      <translation>Alt</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Πλήκτρο Ctrl</translation>
-    </message>
-    <message>
-      <source>Ctrl</source>
-      <translation>Ctrl</translation>
     </message>
     <message>
       <source>Shift key</source>
       <translation>Πλήκτρο Shift</translation>
     </message>
     <message>
-      <source>Shift</source>
-      <translation>Shift</translation>
-    </message>
-    <message>
       <source>Windows key or Meta key</source>
       <translation>Πλήκτρο Windows ή Meta (Μενού)</translation>
-    </message>
-    <message>
-      <source>Win/Meta</source>
-      <translation>Win/Meta</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
@@ -3472,10 +3392,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Lingoes-Blue</source>
       <translation>Μπίνγκο-μπλε</translation>
-    </message>
-    <message>
-      <source> MB</source>
-      <translation> MB</translation>
     </message>
     <message>
       <source>Auto does nothing on some systems.</source>
