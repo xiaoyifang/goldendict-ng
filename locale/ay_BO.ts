@@ -505,10 +505,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Taqi kunatakis wakisi</translation>
     </message>
     <message>
-      <source>RegExp</source>
-      <translation>Expresión regular</translation>
-    </message>
-    <message>
       <source>Unique headwords total: %1.</source>
       <translation>Jan uñt’at p’iqinchäwinak taqpachax: %1.</translation>
     </message>
@@ -543,6 +539,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>Exportación ukax tukuyatawa</translation>
+    </message>
+    <message>
+      <source>Regular Expression</source>
+      <translation type="unfinished">Regular Expression</translation>
     </message>
   </context>
   <context>
@@ -953,26 +953,10 @@ Elegir un grupo (Alt+G)</translation>
 Añadir los diccionarios seleccionados al grupo (INS)</translation>
     </message>
     <message>
-      <source>&gt;</source>
-      <translation>&gt;</translation>
-    </message>
-    <message>
-      <source>Ins</source>
-      <translation>INS</translation>
-    </message>
-    <message>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>Qutu ukat ajllit aru-pirwanak chhaqtayaña (SUPR)
 
 Eliminar los diccionarios seleccionados del grupo (SUPR)</translation>
-    </message>
-    <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
-    </message>
-    <message>
-      <source>Del</source>
-      <translation>SUPR</translation>
     </message>
     <message>
       <source>Groups:</source>
@@ -2212,16 +2196,8 @@ Error en el archivo de configuración. ¿Continuar con la configuración por def
       <translation>&amp;Aru-pirwanaka...</translation>
     </message>
     <message>
-      <source>F3</source>
-      <translation>F3</translation>
-    </message>
-    <message>
       <source>&amp;Preferences...</source>
       <translation>Ajlliña&amp;naka...</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>F4</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
@@ -2244,10 +2220,6 @@ Error en el archivo de configuración. ¿Continuar con la configuración por def
       <translation>Programata mistuña</translation>
     </message>
     <message>
-      <source>Ctrl+Q</source>
-      <translation>Ctrl+Q ukax mä juk’a pachanakanwa</translation>
-    </message>
-    <message>
       <source>&amp;Forum</source>
       <translation>G&amp;oldenDictxata parlakipañataki</translation>
     </message>
@@ -2260,10 +2232,6 @@ Error en el archivo de configuración. ¿Continuar con la configuración por def
       <translation>Wintan jisk&apos;aptam wak&apos;a ukana</translation>
     </message>
     <message>
-      <source>Ctrl+F4</source>
-      <translation>Ctrl+F4 ukax mä juk’a pachanakanwa</translation>
-    </message>
-    <message>
       <source>&amp;Save Article</source>
       <translation>&amp;Qillqat imaña</translation>
     </message>
@@ -2274,16 +2242,8 @@ Error en el archivo de configuración. ¿Continuar con la configuración por def
 Guardar artículo</translation>
     </message>
     <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
       <source>&amp;Print</source>
       <translation>&amp;Laphi liq&apos;suña</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Ctrl+P ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2298,20 +2258,12 @@ Guardar artículo</translation>
       <translation>&amp;Wasitamp wayaqanak ullaña</translation>
     </message>
     <message>
-      <source>Ctrl+F5</source>
-      <translation>Ctrl+F5 ukax mä juk’a pachanakanwa</translation>
-    </message>
-    <message>
       <source>&amp;Clear</source>
       <translation>&amp;Chhaqtayaña</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
       <translation>Ma&amp;chaq phichhu</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>Ctrl+T ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2354,24 +2306,12 @@ Guardar artículo</translation>
       <translation>&amp;Laphin thaqhaña</translation>
     </message>
     <message>
-      <source>Ctrl+F</source>
-      <translation>Ctrl+F ukax mä juk’a pachanakanwa</translation>
-    </message>
-    <message>
       <source>Full-text search</source>
       <translation>&amp;Taqpach qillqan thaqhaña</translation>
     </message>
     <message>
-      <source>Ctrl+Shift+F</source>
-      <translation>Ctrl+Shift+F ukax mä juk’a pachanakanwa</translation>
-    </message>
-    <message>
       <source>GoldenDict reference</source>
       <translation>GoldenDict-ng y&amp;atichawi</translation>
-    </message>
-    <message>
-      <source>F1</source>
-      <translation>F1</translation>
     </message>
     <message>
       <source>Export</source>
@@ -2390,10 +2330,6 @@ Guardar artículo</translation>
       <translation>Jichha phichhu ukax munata arunakar yapaña
 
 Añadir la pestaña actual a favoritos</translation>
-    </message>
-    <message>
-      <source>Ctrl+E</source>
-      <translation>Ctrl+E ukax mä juk’a pachanakanwa</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
@@ -3102,32 +3038,16 @@ uñstiri wintanaxa uñstaraki, ajllit aru mayjt&apos;i ukja.</translation>
       <translation>ALT tecla</translation>
     </message>
     <message>
-      <source>Alt</source>
-      <translation>ALT</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>CTRL tecla</translation>
-    </message>
-    <message>
-      <source>Ctrl</source>
-      <translation>CTRL</translation>
     </message>
     <message>
       <source>Shift key</source>
       <translation>JACH&apos;A QILLQA tecla</translation>
     </message>
     <message>
-      <source>Shift</source>
-      <translation>JACH&apos;A QILLQA</translation>
-    </message>
-    <message>
       <source>Windows key or Meta key</source>
       <translation>Windows jan ukjax Meta tecla</translation>
-    </message>
-    <message>
-      <source>Win/Meta</source>
-      <translation>Windows jan ukjax Meta</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
@@ -3586,10 +3506,6 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     <message>
       <source>Lingoes-Blue</source>
       <translation>Lingoes-Larama</translation>
-    </message>
-    <message>
-      <source> MB</source>
-      <translation> MB</translation>
     </message>
     <message>
       <source>Auto does nothing on some systems.</source>
