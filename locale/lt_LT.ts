@@ -502,10 +502,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Pakaitos simboliai</translation>
     </message>
     <message>
-      <source>RegExp</source>
-      <translation>Reguliarusis reiškinys</translation>
-    </message>
-    <message>
       <source>Unique headwords total: %1.</source>
       <translation>Iš viso unikalių antraščių: %1.</translation>
     </message>
@@ -540,6 +536,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>Eksportas baigtas</translation>
+    </message>
+    <message>
+      <source>Regular Expression</source>
+      <translation type="unfinished">Regular Expression</translation>
     </message>
   </context>
   <context>
@@ -940,24 +940,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>Į grupę įtraukti pasirinktus žodynus (Įterpti/Ins)</translation>
     </message>
     <message>
-      <source>&gt;</source>
-      <translation>&gt;</translation>
-    </message>
-    <message>
-      <source>Ins</source>
-      <translation>Įterpti</translation>
-    </message>
-    <message>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>Iš grupės pašalinti pasirinktus žodynus (Šalinti/Del)</translation>
-    </message>
-    <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
-    </message>
-    <message>
-      <source>Del</source>
-      <translation>Šalinti</translation>
     </message>
     <message>
       <source>Groups:</source>
@@ -2179,16 +2163,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>Žo&amp;dynai...</translation>
     </message>
     <message>
-      <source>F3</source>
-      <translation>F3</translation>
-    </message>
-    <message>
       <source>&amp;Preferences...</source>
       <translation>&amp;Nuostatos...</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>F4</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
@@ -2211,10 +2187,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Užverti programą</translation>
     </message>
     <message>
-      <source>Ctrl+Q</source>
-      <translation>Vald+Q</translation>
-    </message>
-    <message>
       <source>&amp;Forum</source>
       <translation>&amp;Diskusijos internete</translation>
     </message>
@@ -2227,10 +2199,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Nuleisti į sistemos dėklą</translation>
     </message>
     <message>
-      <source>Ctrl+F4</source>
-      <translation>Vald+F4</translation>
-    </message>
-    <message>
       <source>&amp;Save Article</source>
       <translation>Į&amp;rašyti straipsnį</translation>
     </message>
@@ -2239,16 +2207,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>Įrašyti straipsnį</translation>
     </message>
     <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
       <source>&amp;Print</source>
       <translation>&amp;Spausdinti</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Vald+P</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2263,20 +2223,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Perž&amp;velgti failus</translation>
     </message>
     <message>
-      <source>Ctrl+F5</source>
-      <translation>Vald+F5</translation>
-    </message>
-    <message>
       <source>&amp;Clear</source>
       <translation>Iš&amp;valyti</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
       <translation>&amp;Nauja kortelė</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>Vald+T</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2319,24 +2271,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ieškoti puslapyje</translation>
     </message>
     <message>
-      <source>Ctrl+F</source>
-      <translation>Vald+F</translation>
-    </message>
-    <message>
       <source>Full-text search</source>
       <translation>Visatekstė paieška</translation>
     </message>
     <message>
-      <source>Ctrl+Shift+F</source>
-      <translation>Vald+Lyg2+F</translation>
-    </message>
-    <message>
       <source>GoldenDict reference</source>
       <translation>GoldenDict-ng žinynas</translation>
-    </message>
-    <message>
-      <source>F1</source>
-      <translation>F1</translation>
     </message>
     <message>
       <source>Export</source>
@@ -2353,10 +2293,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Add current tab to Favorites</source>
       <translation>Veikiamąją kortelę įtraukti į žymeles</translation>
-    </message>
-    <message>
-      <source>Ctrl+E</source>
-      <translation>Vald+E</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
@@ -3018,32 +2954,16 @@ po to, kai pasikeis pažymėtas žodis.</translation>
       <translation>Alt klavišas</translation>
     </message>
     <message>
-      <source>Alt</source>
-      <translation>Alt</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Vald klavišas</translation>
-    </message>
-    <message>
-      <source>Ctrl</source>
-      <translation>Vald</translation>
     </message>
     <message>
       <source>Shift key</source>
       <translation>Lyg2 klavišas</translation>
     </message>
     <message>
-      <source>Shift</source>
-      <translation>Lyg2</translation>
-    </message>
-    <message>
       <source>Windows key or Meta key</source>
       <translation>Windows arba Meta klavišas</translation>
-    </message>
-    <message>
-      <source>Win/Meta</source>
-      <translation>Win arba Meta</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
@@ -3467,10 +3387,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Lingoes-Blue</source>
       <translation>Lingoes mėlynas</translation>
-    </message>
-    <message>
-      <source> MB</source>
-      <translation> MB</translation>
     </message>
     <message>
       <source>Auto does nothing on some systems.</source>
