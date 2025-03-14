@@ -503,10 +503,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Шаблон</translation>
     </message>
     <message>
-      <source>RegExp</source>
-      <translation>Рег.изрази</translation>
-    </message>
-    <message>
       <source>Unique headwords total: %1.</source>
       <translation>Общо уникални заглавни думи: %1.</translation>
     </message>
@@ -541,6 +537,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>Експортирането приключи</translation>
+    </message>
+    <message>
+      <source>Regular Expression</source>
+      <translation type="unfinished">Regular Expression</translation>
     </message>
   </context>
   <context>
@@ -941,24 +941,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>Добавяне на избраните речници към групата (Ins)</translation>
     </message>
     <message>
-      <source>&gt;</source>
-      <translation>&gt;</translation>
-    </message>
-    <message>
-      <source>Ins</source>
-      <translation>Инс</translation>
-    </message>
-    <message>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>Премахване на избраните речници от групата (Del)</translation>
-    </message>
-    <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
-    </message>
-    <message>
-      <source>Del</source>
-      <translation>Дел</translation>
     </message>
     <message>
       <source>Groups:</source>
@@ -2180,16 +2164,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>&amp;Речници...</translation>
     </message>
     <message>
-      <source>F3</source>
-      <translation>F3</translation>
-    </message>
-    <message>
       <source>&amp;Preferences...</source>
       <translation>&amp;Настройки...</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>F4</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
@@ -2212,10 +2188,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Излизане от приложението</translation>
     </message>
     <message>
-      <source>Ctrl+Q</source>
-      <translation>Ctrl+Q</translation>
-    </message>
-    <message>
       <source>&amp;Forum</source>
       <translation>&amp;Форум</translation>
     </message>
@@ -2228,10 +2200,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Минимизира прозореца в системната област за известяване</translation>
     </message>
     <message>
-      <source>Ctrl+F4</source>
-      <translation>Ctrl+F4</translation>
-    </message>
-    <message>
       <source>&amp;Save Article</source>
       <translation>&amp;Запазване на статията</translation>
     </message>
@@ -2240,16 +2208,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>Запазване на статията</translation>
     </message>
     <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
       <source>&amp;Print</source>
       <translation>&amp;Печат</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Ctrl+P</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2264,20 +2224,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Пр&amp;есканирай файлове</translation>
     </message>
     <message>
-      <source>Ctrl+F5</source>
-      <translation>Ctrl+F5</translation>
-    </message>
-    <message>
       <source>&amp;Clear</source>
       <translation>Из&amp;чисти</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
       <translation>&amp;Нов подпрозорец</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>Ctrl+T</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2320,24 +2272,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Търси в страница</translation>
     </message>
     <message>
-      <source>Ctrl+F</source>
-      <translation>Ctrl+F</translation>
-    </message>
-    <message>
       <source>Full-text search</source>
       <translation>Цялотекстово търсене</translation>
     </message>
     <message>
-      <source>Ctrl+Shift+F</source>
-      <translation>Ctrl+Shift+F</translation>
-    </message>
-    <message>
       <source>GoldenDict reference</source>
       <translation>Помощ за GoldenDict-ng</translation>
-    </message>
-    <message>
-      <source>F1</source>
-      <translation>F1</translation>
     </message>
     <message>
       <source>Export</source>
@@ -2354,10 +2294,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Add current tab to Favorites</source>
       <translation>Добави текущия подпрозорец към Любими</translation>
-    </message>
-    <message>
-      <source>Ctrl+E</source>
-      <translation>Ctrl+E</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
@@ -3018,32 +2954,16 @@ in the pressed state when the word selection changes.</source>
       <translation>Клавиш Alt</translation>
     </message>
     <message>
-      <source>Alt</source>
-      <translation>Alt</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Клавиш Ctrl</translation>
-    </message>
-    <message>
-      <source>Ctrl</source>
-      <translation>Ctrl</translation>
     </message>
     <message>
       <source>Shift key</source>
       <translation>Клавиш Shift</translation>
     </message>
     <message>
-      <source>Shift</source>
-      <translation>Shift</translation>
-    </message>
-    <message>
       <source>Windows key or Meta key</source>
       <translation>Клавиш Windows или Meta</translation>
-    </message>
-    <message>
-      <source>Win/Meta</source>
-      <translation>Win/Мета</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
@@ -3469,10 +3389,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Lingoes-Blue</source>
       <translation>Lingoes-Син</translation>
-    </message>
-    <message>
-      <source> MB</source>
-      <translation> MB</translation>
     </message>
     <message>
       <source>Auto does nothing on some systems.</source>
