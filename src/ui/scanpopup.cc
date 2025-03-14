@@ -87,7 +87,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   dictionaryBar.setFloatable( false );
   foundBar->setFloatable( false );
 
-  searchBar->setContentsMargins( 0, 0, 0, 0 );
+  searchBar->setContentsMargins( 0, 0, 2, 0 );
   toolBar->setContentsMargins( 0, 0, 0, 0 );
 
   // Add Bars
