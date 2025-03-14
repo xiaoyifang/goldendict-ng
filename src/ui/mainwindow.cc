@@ -3151,7 +3151,7 @@ void MainWindow::toggleMenuBarTriggered( bool announce )
     if ( cfg.preferences.hideMenubar ) {
       mainStatusBar->showMessage( tr( "You have chosen to hide a menubar. Use %1 to show it back." )
                                     .arg( QString( "<b>%1</b>" ) )
-                                    .arg( tr( "Ctrl+M" ) ),
+                                    .arg( QT_TR_NOOP( "Ctrl+M" ) ),
                                   10000,
                                   QPixmap( ":/icons/warning.png" ) );
     }
