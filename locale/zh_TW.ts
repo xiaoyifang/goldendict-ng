@@ -3511,11 +3511,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Article Display style</source>
-      <translation>Article Display style</translation>
+      <translation>文章顯示樣式</translation>
     </message>
     <message>
       <source>Add-on style</source>
-      <translation>Add-on style</translation>
+      <translation>附加樣式</translation>
     </message>
     <message>
       <source>Interface Style</source>
@@ -3523,11 +3523,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Preview Font</source>
-      <translation>Preview Font</translation>
+      <translation>預覽字型</translation>
     </message>
     <message>
       <source>Goldendict-ng is a dictionary software</source>
-      <translation>Goldendict-ng is a dictionary software</translation>
+      <translation>Goldendict-ng是一款字典軟體</translation>
     </message>
   </context>
   <context>
