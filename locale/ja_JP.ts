@@ -825,7 +825,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
-      <translation>Make this folder the target of adding/removing words actions.</translation>
+      <translation>このフォルダを単語の追加/削除アクションのターゲットにします。</translation>
     </message>
   </context>
   <context>
@@ -852,7 +852,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>from</source>
-      <translation>from</translation>
+      <translation>から</translation>
     </message>
   </context>
   <context>
