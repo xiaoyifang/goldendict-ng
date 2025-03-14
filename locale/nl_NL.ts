@@ -503,10 +503,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Jokertekens</translation>
     </message>
     <message>
-      <source>RegExp</source>
-      <translation>RegExp</translation>
-    </message>
-    <message>
       <source>Unique headwords total: %1.</source>
       <translation>Unieke kopwoorden totaal: %1.</translation>
     </message>
@@ -541,6 +537,10 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>Export finished</source>
       <translation>Exporteren voltooid</translation>
+    </message>
+    <message>
+      <source>Regular Expression</source>
+      <translation>Reguliere expressie</translation>
     </message>
   </context>
   <context>
@@ -941,24 +941,8 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Geselecteerde woordenboeken aan groep toevoegen (Ins)</translation>
     </message>
     <message>
-      <source>&gt;</source>
-      <translation>&gt;</translation>
-    </message>
-    <message>
-      <source>Ins</source>
-      <translation>Ins</translation>
-    </message>
-    <message>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>Geselecteerde woordenboeken uit groep verwijderen (Del)</translation>
-    </message>
-    <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
-    </message>
-    <message>
-      <source>Del</source>
-      <translation>Del</translation>
     </message>
     <message>
       <source>Groups:</source>
@@ -2180,16 +2164,8 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Woorden&amp;boeken...</translation>
     </message>
     <message>
-      <source>F3</source>
-      <translation>F3</translation>
-    </message>
-    <message>
       <source>&amp;Preferences...</source>
       <translation>&amp;Instellingen...</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>F4</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
@@ -2212,10 +2188,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Programma afsluiten</translation>
     </message>
     <message>
-      <source>Ctrl+Q</source>
-      <translation>Ctrl+Q</translation>
-    </message>
-    <message>
       <source>&amp;Forum</source>
       <translation>&amp;Forum</translation>
     </message>
@@ -2228,10 +2200,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Minimaliseren naar systeemvak</translation>
     </message>
     <message>
-      <source>Ctrl+F4</source>
-      <translation>Ctrl+F4</translation>
-    </message>
-    <message>
       <source>&amp;Save Article</source>
       <translation>Artikel &amp;opslaan</translation>
     </message>
@@ -2240,16 +2208,8 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Artikel opslaan</translation>
     </message>
     <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
       <source>&amp;Print</source>
       <translation>Af&amp;drukken</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Ctrl+P</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2264,20 +2224,12 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Bestanden opnieuw &amp;inlezen</translation>
     </message>
     <message>
-      <source>Ctrl+F5</source>
-      <translation>Ctrl+F5</translation>
-    </message>
-    <message>
       <source>&amp;Clear</source>
       <translation>&amp;Wissen</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
       <translation>&amp;Nieuw tabblad</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>CTRL</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2320,24 +2272,12 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Zoeken op pagina</translation>
     </message>
     <message>
-      <source>Ctrl+F</source>
-      <translation>Ctrl+F</translation>
-    </message>
-    <message>
       <source>Full-text search</source>
       <translation>Volledige-tekst zoeken</translation>
     </message>
     <message>
-      <source>Ctrl+Shift+F</source>
-      <translation>Ctrl+Shift+F</translation>
-    </message>
-    <message>
       <source>GoldenDict reference</source>
       <translation>Referentie GoldenDict</translation>
-    </message>
-    <message>
-      <source>F1</source>
-      <translation>F1</translation>
     </message>
     <message>
       <source>Export</source>
@@ -2354,10 +2294,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>Add current tab to Favorites</source>
       <translation>Huidige tabblad aan favorieten toevoegen</translation>
-    </message>
-    <message>
-      <source>Ctrl+E</source>
-      <translation>Ctrl+E</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
@@ -3017,32 +2953,16 @@ toetsen zijn ingedrukt wanneer de woordselectie verandert.</translation>
       <translation>Alt-toets</translation>
     </message>
     <message>
-      <source>Alt</source>
-      <translation>Alt</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Ctrl-toets</translation>
-    </message>
-    <message>
-      <source>Ctrl</source>
-      <translation>Ctrl</translation>
     </message>
     <message>
       <source>Shift key</source>
       <translation>Shift-toets</translation>
     </message>
     <message>
-      <source>Shift</source>
-      <translation>Verschuiving</translation>
-    </message>
-    <message>
       <source>Windows key or Meta key</source>
       <translation>Windowstoets of Metatoets</translation>
-    </message>
-    <message>
-      <source>Win/Meta</source>
-      <translation>Win/Meta</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
@@ -3466,10 +3386,6 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>Lingoes-Blue</source>
       <translation>Lingoes-Blauw</translation>
-    </message>
-    <message>
-      <source> MB</source>
-      <translation> Mb</translation>
     </message>
     <message>
       <source>Auto does nothing on some systems.</source>
