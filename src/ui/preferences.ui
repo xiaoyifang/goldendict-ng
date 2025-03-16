@@ -49,7 +49,7 @@
       <attribute name="title">
        <string>&amp;Interface</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_2">
+      <layout class="QGridLayout" name="gridLayout_2" columnstretch="1,1">
        <property name="topMargin">
         <number>9</number>
        </property>
@@ -285,19 +285,6 @@ the application.</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_16">
           <item>
-           <spacer name="horizontalSpacer_3">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
            <layout class="QHBoxLayout" name="horizontalLayout_17">
             <item>
              <widget class="QLabel" name="label_29">
@@ -520,19 +507,6 @@ the application.</string>
           <string>Fallback Fonts</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_17">
-          <item>
-           <spacer name="horizontalSpacer_5">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
           <item>
            <widget class="QLabel" name="label_16">
             <property name="text">
