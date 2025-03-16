@@ -503,10 +503,6 @@ between classic and school orthography in cyrillic)</translation>
       <translation>Wildcards</translation>
     </message>
     <message>
-      <source>RegExp</source>
-      <translation>RegExp</translation>
-    </message>
-    <message>
       <source>Unique headwords total: %1.</source>
       <translation>Unique headwords total: %1.</translation>
     </message>
@@ -541,6 +537,10 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>Export finished</source>
       <translation>Export finished</translation>
+    </message>
+    <message>
+      <source>Regular Expression</source>
+      <translation type="unfinished">Regular Expression</translation>
     </message>
   </context>
   <context>
@@ -941,24 +941,8 @@ between classic and school orthography in cyrillic)</translation>
       <translation>ro vlacku poi ca se cuxna co&apos;a cmima (Insert)</translation>
     </message>
     <message>
-      <source>&gt;</source>
-      <translation>&gt;</translation>
-    </message>
-    <message>
-      <source>Ins</source>
-      <translation>Insert</translation>
-    </message>
-    <message>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>ro vlacku poi ca se cuxna co&apos;u cmima (Delete)</translation>
-    </message>
-    <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
-    </message>
-    <message>
-      <source>Del</source>
-      <translation>Delete</translation>
     </message>
     <message>
       <source>Groups:</source>
@@ -2180,16 +2164,8 @@ between classic and school orthography in cyrillic)</translation>
       <translation>vlacku</translation>
     </message>
     <message>
-      <source>F3</source>
-      <translation>F3</translation>
-    </message>
-    <message>
       <source>&amp;Preferences...</source>
       <translation>te tcimi&apos;e</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>F4</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
@@ -2212,10 +2188,6 @@ between classic and school orthography in cyrillic)</translation>
       <translation>sisti tu&apos;a lo samtci</translation>
     </message>
     <message>
-      <source>Ctrl+Q</source>
-      <translation>Ctrl+Q</translation>
-    </message>
-    <message>
       <source>&amp;Forum</source>
       <translation>snustu</translation>
     </message>
@@ -2228,10 +2200,6 @@ between classic and school orthography in cyrillic)</translation>
       <translation>Minimizes the window to tray</translation>
     </message>
     <message>
-      <source>Ctrl+F4</source>
-      <translation>Ctrl+F4</translation>
-    </message>
-    <message>
       <source>&amp;Save Article</source>
       <translation>co&apos;a vreji fi pa notci</translation>
     </message>
@@ -2240,16 +2208,8 @@ between classic and school orthography in cyrillic)</translation>
       <translation>co&apos;a vreji fi pa notci</translation>
     </message>
     <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
       <source>&amp;Print</source>
       <translation>prina</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Ctrl+P</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2264,20 +2224,12 @@ between classic and school orthography in cyrillic)</translation>
       <translation>ca sisku fi lo&apos;i datnyvei</translation>
     </message>
     <message>
-      <source>Ctrl+F5</source>
-      <translation>Ctrl+F5</translation>
-    </message>
-    <message>
       <source>&amp;Clear</source>
       <translation>vimcu ro cmima</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
       <translation>cupra pa vanbi poi sepli</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>Ctrl+T</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2320,24 +2272,12 @@ between classic and school orthography in cyrillic)</translation>
       <translation>sisku fi ro lerpoi pe lo papri</translation>
     </message>
     <message>
-      <source>Ctrl+F</source>
-      <translation>Ctrl+F</translation>
-    </message>
-    <message>
       <source>Full-text search</source>
       <translation>sisku fi ro lerpoi</translation>
     </message>
     <message>
-      <source>Ctrl+Shift+F</source>
-      <translation>Ctrl+Shift+F</translation>
-    </message>
-    <message>
       <source>GoldenDict reference</source>
       <translation>djunoi fo tu&apos;a la .goldendikt.</translation>
-    </message>
-    <message>
-      <source>F1</source>
-      <translation>F1</translation>
     </message>
     <message>
       <source>Export</source>
@@ -2354,10 +2294,6 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>Add current tab to Favorites</source>
       <translation>pa se vanbi be lo sepli poi ca se cuxna co&apos;a nelci se tcita</translation>
-    </message>
-    <message>
-      <source>Ctrl+E</source>
-      <translation>Ctrl+E</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
@@ -3018,32 +2954,16 @@ in the pressed state when the word selection changes.</translation>
       <translation>Alt key</translation>
     </message>
     <message>
-      <source>Alt</source>
-      <translation>Alt</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Ctrl key</translation>
-    </message>
-    <message>
-      <source>Ctrl</source>
-      <translation>Ctrl</translation>
     </message>
     <message>
       <source>Shift key</source>
       <translation>Shift key</translation>
     </message>
     <message>
-      <source>Shift</source>
-      <translation>Shift</translation>
-    </message>
-    <message>
       <source>Windows key or Meta key</source>
       <translation>Windows key or Meta key</translation>
-    </message>
-    <message>
-      <source>Win/Meta</source>
-      <translation>Win/Meta</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
@@ -3470,10 +3390,6 @@ from Stardict, Babylon and GLS dictionaries</translation>
     <message>
       <source>Lingoes-Blue</source>
       <translation>la blanu .lingos.</translation>
-    </message>
-    <message>
-      <source> MB</source>
-      <translation> MB</translation>
     </message>
     <message>
       <source>Auto does nothing on some systems.</source>

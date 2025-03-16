@@ -503,10 +503,6 @@ arasındaki farkı giderir)</translation>
       <translation>Joker karakterler</translation>
     </message>
     <message>
-      <source>RegExp</source>
-      <translation>Düzenli İfade</translation>
-    </message>
-    <message>
       <source>Unique headwords total: %1.</source>
       <translation>Benzersiz başlık kelimelerinin toplamı: %1.</translation>
     </message>
@@ -541,6 +537,10 @@ arasındaki farkı giderir)</translation>
     <message>
       <source>Export finished</source>
       <translation>Dışa aktarma tamamlandı</translation>
+    </message>
+    <message>
+      <source>Regular Expression</source>
+      <translation type="unfinished">Regular Expression</translation>
     </message>
   </context>
   <context>
@@ -941,24 +941,8 @@ arasındaki farkı giderir)</translation>
       <translation>Seçili sözlükleri gruba ekle (Insert)</translation>
     </message>
     <message>
-      <source>&gt;</source>
-      <translation>&gt;</translation>
-    </message>
-    <message>
-      <source>Ins</source>
-      <translation>Ekle (Insert)</translation>
-    </message>
-    <message>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>Seçili sözlükleri gruptan kaldır (Delete)</translation>
-    </message>
-    <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
-    </message>
-    <message>
-      <source>Del</source>
-      <translation>Sil (Delete)</translation>
     </message>
     <message>
       <source>Groups:</source>
@@ -2180,16 +2164,8 @@ arasındaki farkı giderir)</translation>
       <translation>&amp;Sözlükler...</translation>
     </message>
     <message>
-      <source>F3</source>
-      <translation>F3</translation>
-    </message>
-    <message>
       <source>&amp;Preferences...</source>
       <translation>&amp;Tercihler...</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>F4</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
@@ -2212,10 +2188,6 @@ arasındaki farkı giderir)</translation>
       <translation>Uygulamadan çık</translation>
     </message>
     <message>
-      <source>Ctrl+Q</source>
-      <translation>Ctrl+Q</translation>
-    </message>
-    <message>
       <source>&amp;Forum</source>
       <translation>&amp;Forum</translation>
     </message>
@@ -2228,10 +2200,6 @@ arasındaki farkı giderir)</translation>
       <translation>Pencereyi sistem tepsisine küçültür</translation>
     </message>
     <message>
-      <source>Ctrl+F4</source>
-      <translation>Ctrl+F4</translation>
-    </message>
-    <message>
       <source>&amp;Save Article</source>
       <translation>Maddeyi Ka&amp;ydet</translation>
     </message>
@@ -2240,16 +2208,8 @@ arasındaki farkı giderir)</translation>
       <translation>Maddeyi Kaydet</translation>
     </message>
     <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
       <source>&amp;Print</source>
       <translation>&amp;Yazdır</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Ctrl+P</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2264,20 +2224,12 @@ arasındaki farkı giderir)</translation>
       <translation>Dosyaları Yeniden Tara</translation>
     </message>
     <message>
-      <source>Ctrl+F5</source>
-      <translation>Ctrl+F5</translation>
-    </message>
-    <message>
       <source>&amp;Clear</source>
       <translation>&amp;Temizle</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
       <translation>&amp;Yeni Sekme</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>Ctrl+T</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2320,24 +2272,12 @@ arasındaki farkı giderir)</translation>
       <translation>Sayfada ara</translation>
     </message>
     <message>
-      <source>Ctrl+F</source>
-      <translation>Ctrl+F</translation>
-    </message>
-    <message>
       <source>Full-text search</source>
       <translation>Tam metin araması</translation>
     </message>
     <message>
-      <source>Ctrl+Shift+F</source>
-      <translation>Ctrl+Shift+F</translation>
-    </message>
-    <message>
       <source>GoldenDict reference</source>
       <translation>GoldenDict referansı</translation>
-    </message>
-    <message>
-      <source>F1</source>
-      <translation>F1</translation>
     </message>
     <message>
       <source>Export</source>
@@ -2354,10 +2294,6 @@ arasındaki farkı giderir)</translation>
     <message>
       <source>Add current tab to Favorites</source>
       <translation>Geçerli sekmeyi favorilere ekle</translation>
-    </message>
-    <message>
-      <source>Ctrl+E</source>
-      <translation>Ctrl+E</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
@@ -3015,32 +2951,16 @@ Aksi halde fare, sözcüğün üzerine geldiğinde çeviri yapılır.</translati
       <translation>Alt düğmesi</translation>
     </message>
     <message>
-      <source>Alt</source>
-      <translation>Alternatif</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Ctrl düğmesi</translation>
-    </message>
-    <message>
-      <source>Ctrl</source>
-      <translation>Ctrl</translation>
     </message>
     <message>
       <source>Shift key</source>
       <translation>Shift düğmesi</translation>
     </message>
     <message>
-      <source>Shift</source>
-      <translation>Vardiya</translation>
-    </message>
-    <message>
       <source>Windows key or Meta key</source>
       <translation>Windows tuşu yada Veri tuşu</translation>
-    </message>
-    <message>
-      <source>Win/Meta</source>
-      <translation>Kazan/Meta</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
@@ -3465,10 +3385,6 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     <message>
       <source>Lingoes-Blue</source>
       <translation>Lingoes-Mavi</translation>
-    </message>
-    <message>
-      <source> MB</source>
-      <translation> MB</translation>
     </message>
     <message>
       <source>Auto does nothing on some systems.</source>

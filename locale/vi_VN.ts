@@ -502,10 +502,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Wildcard</translation>
     </message>
     <message>
-      <source>RegExp</source>
-      <translation>RegExp</translation>
-    </message>
-    <message>
       <source>Unique headwords total: %1.</source>
       <translation>Tổng số từ khóa duy nhất: %1.</translation>
     </message>
@@ -540,6 +536,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>Xuất xong</translation>
+    </message>
+    <message>
+      <source>Regular Expression</source>
+      <translation type="unfinished">Regular Expression</translation>
     </message>
   </context>
   <context>
@@ -940,24 +940,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>Thêm những từ điển đã chọn vào nhóm (Ins)</translation>
     </message>
     <message>
-      <source>&gt;</source>
-      <translation>&gt;</translation>
-    </message>
-    <message>
-      <source>Ins</source>
-      <translation>trong</translation>
-    </message>
-    <message>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>Xóa những từ điển đã chọn ra khỏi nhóm (Del)</translation>
-    </message>
-    <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
-    </message>
-    <message>
-      <source>Del</source>
-      <translation>Del</translation>
     </message>
     <message>
       <source>Groups:</source>
@@ -2179,16 +2163,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>&amp;Từ điển...</translation>
     </message>
     <message>
-      <source>F3</source>
-      <translation>F3</translation>
-    </message>
-    <message>
       <source>&amp;Preferences...</source>
       <translation>Tùy thí&amp;ch...</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>F4</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
@@ -2211,10 +2187,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Thoát khỏi ứng dụng</translation>
     </message>
     <message>
-      <source>Ctrl+Q</source>
-      <translation>Ctrl+Q</translation>
-    </message>
-    <message>
       <source>&amp;Forum</source>
       <translation>&amp;Diễn đàn</translation>
     </message>
@@ -2227,10 +2199,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Thu gọn cửa sổ xuống khay hệ thống</translation>
     </message>
     <message>
-      <source>Ctrl+F4</source>
-      <translation>Ctrl+F4</translation>
-    </message>
-    <message>
       <source>&amp;Save Article</source>
       <translation>&amp;Lưu Bài viết</translation>
     </message>
@@ -2239,16 +2207,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>Lưu Bài viết</translation>
     </message>
     <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
       <source>&amp;Print</source>
       <translation>&amp;In</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Ctrl+P</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2263,20 +2223,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Q&amp;uét lại các tệp</translation>
     </message>
     <message>
-      <source>Ctrl+F5</source>
-      <translation>Ctrl+F5</translation>
-    </message>
-    <message>
       <source>&amp;Clear</source>
       <translation>Xóa sạ&amp;ch</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
       <translation>Thẻ &amp;mới</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>Ctrl+T</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2319,24 +2271,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Tìm trong trang</translation>
     </message>
     <message>
-      <source>Ctrl+F</source>
-      <translation>Ctrl+F</translation>
-    </message>
-    <message>
       <source>Full-text search</source>
       <translation>Tìm toàn văn</translation>
     </message>
     <message>
-      <source>Ctrl+Shift+F</source>
-      <translation>Ctrl+Shift+F</translation>
-    </message>
-    <message>
       <source>GoldenDict reference</source>
       <translation>Trợ giúp Từ điển Vàng</translation>
-    </message>
-    <message>
-      <source>F1</source>
-      <translation>F1</translation>
     </message>
     <message>
       <source>Export</source>
@@ -2353,10 +2293,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Add current tab to Favorites</source>
       <translation>Thêm tab hiện tại vào Mục ưa thích</translation>
-    </message>
-    <message>
-      <source>Ctrl+E</source>
-      <translation>Ctrl+E</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
@@ -3014,32 +2950,16 @@ in the pressed state when the word selection changes.</source>
       <translation>Phím Alt</translation>
     </message>
     <message>
-      <source>Alt</source>
-      <translation>Alt</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Phím Ctrl</translation>
-    </message>
-    <message>
-      <source>Ctrl</source>
-      <translation>Ctrl</translation>
     </message>
     <message>
       <source>Shift key</source>
       <translation>Phím Shift</translation>
     </message>
     <message>
-      <source>Shift</source>
-      <translation>Shift</translation>
-    </message>
-    <message>
       <source>Windows key or Meta key</source>
       <translation>Phím Windows hoặc phím Meta</translation>
-    </message>
-    <message>
-      <source>Win/Meta</source>
-      <translation>Win/Meta</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
@@ -3463,10 +3383,6 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     <message>
       <source>Lingoes-Blue</source>
       <translation>Lingoes-Blue</translation>
-    </message>
-    <message>
-      <source> MB</source>
-      <translation> MB</translation>
     </message>
     <message>
       <source>Auto does nothing on some systems.</source>

@@ -503,10 +503,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Jokerimerkit</translation>
     </message>
     <message>
-      <source>RegExp</source>
-      <translation>RegExp</translation>
-    </message>
-    <message>
       <source>Unique headwords total: %1.</source>
       <translation>Ainutlaatuiset kuulokkeet yhteensä: %1.</translation>
     </message>
@@ -541,6 +537,10 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>Export finished</source>
       <translation>Vienti valmis</translation>
+    </message>
+    <message>
+      <source>Regular Expression</source>
+      <translation>Säännöllinen Lauseke</translation>
     </message>
   </context>
   <context>
@@ -941,24 +941,8 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Lisää valitut sanakirjat ryhmään (Ins)</translation>
     </message>
     <message>
-      <source>&gt;</source>
-      <translation>&gt;</translation>
-    </message>
-    <message>
-      <source>Ins</source>
-      <translation>Ins</translation>
-    </message>
-    <message>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>Poista valitut sanakirjat ryhmästä (Del)</translation>
-    </message>
-    <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
-    </message>
-    <message>
-      <source>Del</source>
-      <translation>Del</translation>
     </message>
     <message>
       <source>Groups:</source>
@@ -2180,16 +2164,8 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Sanakirjat...</translation>
     </message>
     <message>
-      <source>F3</source>
-      <translation>F3</translation>
-    </message>
-    <message>
       <source>&amp;Preferences...</source>
       <translation>Asetukset...</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>F4</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
@@ -2212,10 +2188,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Lopeta sovellus</translation>
     </message>
     <message>
-      <source>Ctrl+Q</source>
-      <translation>Ctrl+Q</translation>
-    </message>
-    <message>
       <source>&amp;Forum</source>
       <translation>Foorumi</translation>
     </message>
@@ -2228,10 +2200,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Minimoi ikkunan ilmoitusalueelle</translation>
     </message>
     <message>
-      <source>Ctrl+F4</source>
-      <translation>Ctrl+F4</translation>
-    </message>
-    <message>
       <source>&amp;Save Article</source>
       <translation>Tallenna artikkeli</translation>
     </message>
@@ -2240,16 +2208,8 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Tallenna artikkeli</translation>
     </message>
     <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
       <source>&amp;Print</source>
       <translation>Tulosta</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Ctrl+P</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2264,20 +2224,12 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Skannaa tiedostot uudelleen</translation>
     </message>
     <message>
-      <source>Ctrl+F5</source>
-      <translation>Ctrl+F5</translation>
-    </message>
-    <message>
       <source>&amp;Clear</source>
       <translation>Tyhjennä</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
       <translation>Uusi välilehti</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>Ctrl+T</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2320,24 +2272,12 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Etsi sivulta</translation>
     </message>
     <message>
-      <source>Ctrl+F</source>
-      <translation>Ctrl+F</translation>
-    </message>
-    <message>
       <source>Full-text search</source>
       <translation>Täystekstihaku</translation>
     </message>
     <message>
-      <source>Ctrl+Shift+F</source>
-      <translation>Ctrl+Vaihto+F</translation>
-    </message>
-    <message>
       <source>GoldenDict reference</source>
       <translation>GoldenDictin viite</translation>
-    </message>
-    <message>
-      <source>F1</source>
-      <translation>F1</translation>
     </message>
     <message>
       <source>Export</source>
@@ -2354,10 +2294,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>Add current tab to Favorites</source>
       <translation>Lisää nykyinen välilehti suosikkeihin</translation>
-    </message>
-    <message>
-      <source>Ctrl+E</source>
-      <translation>Ctrl+E</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
@@ -3018,32 +2954,16 @@ painettuna tilassa, kun sana valinta muuttuu.</translation>
       <translation>Alt-näppäin</translation>
     </message>
     <message>
-      <source>Alt</source>
-      <translation>Alt</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Ctrl-näppäin</translation>
-    </message>
-    <message>
-      <source>Ctrl</source>
-      <translation>Ctrl</translation>
     </message>
     <message>
       <source>Shift key</source>
       <translation>Shift-näppäin</translation>
     </message>
     <message>
-      <source>Shift</source>
-      <translation>Vaihto</translation>
-    </message>
-    <message>
       <source>Windows key or Meta key</source>
       <translation>Windows-näppäin tai Meta-näppäin</translation>
-    </message>
-    <message>
-      <source>Win/Meta</source>
-      <translation>Win/Meta</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
@@ -3470,10 +3390,6 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <source>Lingoes-Blue</source>
       <translation>Lingo-sininen</translation>
-    </message>
-    <message>
-      <source> MB</source>
-      <translation> Mt</translation>
     </message>
     <message>
       <source>Auto does nothing on some systems.</source>

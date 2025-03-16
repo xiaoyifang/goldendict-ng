@@ -503,10 +503,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>نویسه‌های عام</translation>
     </message>
     <message>
-      <source>RegExp</source>
-      <translation>RegExp</translation>
-    </message>
-    <message>
       <source>Unique headwords total: %1.</source>
       <translation>کل سر واژه های منحصر به فرد: %1.</translation>
     </message>
@@ -541,6 +537,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>صادرات به پایان رسید</translation>
+    </message>
+    <message>
+      <source>Regular Expression</source>
+      <translation type="unfinished">Regular Expression</translation>
     </message>
   </context>
   <context>
@@ -941,24 +941,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>افزودن واژه‌نامه‌های برگزیده شده به گروه (درج)</translation>
     </message>
     <message>
-      <source>&gt;</source>
-      <translation>&gt;</translation>
-    </message>
-    <message>
-      <source>Ins</source>
-      <translation>درج</translation>
-    </message>
-    <message>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>حذف واژه‌نامه‌های برگزیده شده از گروه (حذف)</translation>
-    </message>
-    <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
-    </message>
-    <message>
-      <source>Del</source>
-      <translation>حذف</translation>
     </message>
     <message>
       <source>Groups:</source>
@@ -2180,16 +2164,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>&amp;واژه‌نامه‌ها...</translation>
     </message>
     <message>
-      <source>F3</source>
-      <translation>F3</translation>
-    </message>
-    <message>
       <source>&amp;Preferences...</source>
       <translation>&amp;ترجیحات...</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>F4</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
@@ -2212,10 +2188,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>ترک کردن برنامه</translation>
     </message>
     <message>
-      <source>Ctrl+Q</source>
-      <translation>Ctrl+Q</translation>
-    </message>
-    <message>
       <source>&amp;Forum</source>
       <translation>&amp;انجمن</translation>
     </message>
@@ -2228,10 +2200,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>کمینه کردن پنجره به سینی</translation>
     </message>
     <message>
-      <source>Ctrl+F4</source>
-      <translation>Ctrl+F4</translation>
-    </message>
-    <message>
       <source>&amp;Save Article</source>
       <translation>&amp;ذخیره بند</translation>
     </message>
@@ -2240,16 +2208,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>ذخیره بند</translation>
     </message>
     <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
       <source>&amp;Print</source>
       <translation>&amp;چاپ</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Ctrl+P</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2264,20 +2224,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>پویش &amp;دوباره پرونده‌ها</translation>
     </message>
     <message>
-      <source>Ctrl+F5</source>
-      <translation>Ctrl+F5</translation>
-    </message>
-    <message>
       <source>&amp;Clear</source>
       <translation>&amp;پاک کردن</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
       <translation>&amp;زبانه تازه</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>Ctrl+T</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2320,24 +2272,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>جستجو در صفحه</translation>
     </message>
     <message>
-      <source>Ctrl+F</source>
-      <translation>Ctrl+F</translation>
-    </message>
-    <message>
       <source>Full-text search</source>
       <translation>جستجوی متن کامل</translation>
     </message>
     <message>
-      <source>Ctrl+Shift+F</source>
-      <translation>Ctrl+Shift+F</translation>
-    </message>
-    <message>
       <source>GoldenDict reference</source>
       <translation>مرجع GoldenDict</translation>
-    </message>
-    <message>
-      <source>F1</source>
-      <translation>F1</translation>
     </message>
     <message>
       <source>Export</source>
@@ -2354,10 +2294,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Add current tab to Favorites</source>
       <translation>افزودن زبانهٔ کنونی به پسندیده‌ها</translation>
-    </message>
-    <message>
-      <source>Ctrl+E</source>
-      <translation>Ctrl+E</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
@@ -3017,32 +2953,16 @@ in the pressed state when the word selection changes.</source>
       <translation>کلید دگرساز</translation>
     </message>
     <message>
-      <source>Alt</source>
-      <translation>دگرساز</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>کلید مهار</translation>
-    </message>
-    <message>
-      <source>Ctrl</source>
-      <translation>مهار</translation>
     </message>
     <message>
       <source>Shift key</source>
       <translation>کلید تبدیل</translation>
     </message>
     <message>
-      <source>Shift</source>
-      <translation>تبدیل</translation>
-    </message>
-    <message>
       <source>Windows key or Meta key</source>
       <translation>کلید ویندوز یا کلید متا</translation>
-    </message>
-    <message>
-      <source>Win/Meta</source>
-      <translation>ویندوز/متا</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
@@ -3468,10 +3388,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Lingoes-Blue</source>
       <translation>لینگوز-آبی</translation>
-    </message>
-    <message>
-      <source> MB</source>
-      <translation> MB</translation>
     </message>
     <message>
       <source>Auto does nothing on some systems.</source>

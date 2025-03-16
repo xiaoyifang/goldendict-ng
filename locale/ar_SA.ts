@@ -502,10 +502,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>البدل</translation>
     </message>
     <message>
-      <source>RegExp</source>
-      <translation>RegExp</translation>
-    </message>
-    <message>
       <source>Unique headwords total: %1.</source>
       <translation>مجموع الكلمات الرئيسية الفريدة: %1.</translation>
     </message>
@@ -540,6 +536,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>انتهى التصدير</translation>
+    </message>
+    <message>
+      <source>Regular Expression</source>
+      <translation type="unfinished">Regular Expression</translation>
     </message>
   </context>
   <context>
@@ -940,24 +940,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>أضف القواميس المحدّدة إلى المجموعة (Ins)</translation>
     </message>
     <message>
-      <source>&gt;</source>
-      <translation>&gt;</translation>
-    </message>
-    <message>
-      <source>Ins</source>
-      <translation>Ins</translation>
-    </message>
-    <message>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>أزل القواميس المحدّدة من المجموعة (Del)</translation>
-    </message>
-    <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
-    </message>
-    <message>
-      <source>Del</source>
-      <translation>Del</translation>
     </message>
     <message>
       <source>Groups:</source>
@@ -2179,16 +2163,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>&amp;قواميس...</translation>
     </message>
     <message>
-      <source>F3</source>
-      <translation>F3</translation>
-    </message>
-    <message>
       <source>&amp;Preferences...</source>
       <translation>ت&amp;فضيلات...</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>F4</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
@@ -2211,10 +2187,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>اخرج من التطبيق</translation>
     </message>
     <message>
-      <source>Ctrl+Q</source>
-      <translation>Ctrl+Q</translation>
-    </message>
-    <message>
       <source>&amp;Forum</source>
       <translation>المن&amp;تدى</translation>
     </message>
@@ -2227,10 +2199,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>يصغّر النافذة إلى صينية النظام</translation>
     </message>
     <message>
-      <source>Ctrl+F4</source>
-      <translation>Ctrl+F4</translation>
-    </message>
-    <message>
       <source>&amp;Save Article</source>
       <translation>ا&amp;حفظ المقالة</translation>
     </message>
@@ -2239,16 +2207,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>احفظ المقالة</translation>
     </message>
     <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
       <source>&amp;Print</source>
       <translation>ا&amp;طبع</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Ctrl+P</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2263,20 +2223,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>أعد إ&amp;كتشاف الملفات</translation>
     </message>
     <message>
-      <source>Ctrl+F5</source>
-      <translation>Ctrl+F5</translation>
-    </message>
-    <message>
       <source>&amp;Clear</source>
       <translation>ا&amp;محُ</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
       <translation>لسان &amp;جديد</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>Ctrl+T</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2319,24 +2271,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>البحث في الصفحة</translation>
     </message>
     <message>
-      <source>Ctrl+F</source>
-      <translation>Ctrl+F</translation>
-    </message>
-    <message>
       <source>Full-text search</source>
       <translation>البحث في كامل النص</translation>
     </message>
     <message>
-      <source>Ctrl+Shift+F</source>
-      <translation>Ctrl+Shift+F</translation>
-    </message>
-    <message>
       <source>GoldenDict reference</source>
       <translation>مرجع GoldenDict</translation>
-    </message>
-    <message>
-      <source>F1</source>
-      <translation>F1</translation>
     </message>
     <message>
       <source>Export</source>
@@ -2353,10 +2293,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Add current tab to Favorites</source>
       <translation>إضافة علامة التبويب الحالية إلى المفضلة</translation>
-    </message>
-    <message>
-      <source>Ctrl+E</source>
-      <translation>Ctrl+E</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
@@ -3017,32 +2953,16 @@ in the pressed state when the word selection changes.</source>
       <translation>مفتاح Alt</translation>
     </message>
     <message>
-      <source>Alt</source>
-      <translation>بديل</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>مفتاح Ctrl</translation>
-    </message>
-    <message>
-      <source>Ctrl</source>
-      <translation>Ctrl</translation>
     </message>
     <message>
       <source>Shift key</source>
       <translation>مفتاح Shift</translation>
     </message>
     <message>
-      <source>Shift</source>
-      <translation>Shift</translation>
-    </message>
-    <message>
       <source>Windows key or Meta key</source>
       <translation>مفتاح الشّعار</translation>
-    </message>
-    <message>
-      <source>Win/Meta</source>
-      <translation>ويندوز/ميتا</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
@@ -3468,10 +3388,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Lingoes-Blue</source>
       <translation>لِنْغوز-بلو</translation>
-    </message>
-    <message>
-      <source> MB</source>
-      <translation> ميجابايت</translation>
     </message>
     <message>
       <source>Auto does nothing on some systems.</source>

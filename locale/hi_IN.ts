@@ -502,10 +502,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>अक्षरचिह्नम्</translation>
     </message>
     <message>
-      <source>RegExp</source>
-      <translation>नियमवचन</translation>
-    </message>
-    <message>
       <source>Unique headwords total: %1.</source>
       <translation>अद्वितीय हेडवर्ड्स कुल: %1.</translation>
     </message>
@@ -540,6 +536,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>निर्यात समाप्त</translation>
+    </message>
+    <message>
+      <source>Regular Expression</source>
+      <translation type="unfinished">Regular Expression</translation>
     </message>
   </context>
   <context>
@@ -940,24 +940,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>चयनित शब्दकोशों को समूह में जोड़ें (सम्मिलित करें)</translation>
     </message>
     <message>
-      <source>&gt;</source>
-      <translation>&gt;</translation>
-    </message>
-    <message>
-      <source>Ins</source>
-      <translation>सम्मिलित करें</translation>
-    </message>
-    <message>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>समूह से चयनित शब्दकोशों क निकालें (हटाएं)</translation>
-    </message>
-    <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
-    </message>
-    <message>
-      <source>Del</source>
-      <translation>हटाना</translation>
     </message>
     <message>
       <source>Groups:</source>
@@ -2179,16 +2163,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>&amp;Dictionnaires...</translation>
     </message>
     <message>
-      <source>F3</source>
-      <translation>F3</translation>
-    </message>
-    <message>
       <source>&amp;Preferences...</source>
       <translation>&amp;Préférences...</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>f4</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
@@ -2211,10 +2187,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Quitter à partir de l&apos;application</translation>
     </message>
     <message>
-      <source>Ctrl+Q</source>
-      <translation>Ctrl+Q</translation>
-    </message>
-    <message>
       <source>&amp;Forum</source>
       <translation>&amp;मंच</translation>
     </message>
@@ -2227,10 +2199,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Réduit la fenêtre dans la barre des tâches</translation>
     </message>
     <message>
-      <source>Ctrl+F4</source>
-      <translation>Ctrl+F4</translation>
-    </message>
-    <message>
       <source>&amp;Save Article</source>
       <translation>&amp;Sauver l&apos;article</translation>
     </message>
@@ -2239,16 +2207,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>Sauver l&apos;article</translation>
     </message>
     <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
       <source>&amp;Print</source>
       <translation>Im&amp;primer</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Ctrl+P</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2263,20 +2223,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>&amp;Rescanner les fichiers</translation>
     </message>
     <message>
-      <source>Ctrl+F5</source>
-      <translation>Ctrl+F5</translation>
-    </message>
-    <message>
       <source>&amp;Clear</source>
       <translation>E&amp;ffacer</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
       <translation>&amp;Nouvel onglet</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>Ctrl+T</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2319,24 +2271,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Rechercher dans la page</translation>
     </message>
     <message>
-      <source>Ctrl+F</source>
-      <translation>Ctrl+F</translation>
-    </message>
-    <message>
       <source>Full-text search</source>
       <translation>Recherche en texte intégral</translation>
     </message>
     <message>
-      <source>Ctrl+Shift+F</source>
-      <translation>Ctrl+Shift+F</translation>
-    </message>
-    <message>
       <source>GoldenDict reference</source>
       <translation>Référence de GoldenDict-ng</translation>
-    </message>
-    <message>
-      <source>F1</source>
-      <translation>एफ1</translation>
     </message>
     <message>
       <source>Export</source>
@@ -2353,10 +2293,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Add current tab to Favorites</source>
       <translation>वर्तमान टैब को पसंदीदा में जोड़ें</translation>
-    </message>
-    <message>
-      <source>Ctrl+E</source>
-      <translation>Ctrl+E</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
@@ -3009,32 +2945,16 @@ in the pressed state when the word selection changes.</source>
       <translation>Alt कुंजी</translation>
     </message>
     <message>
-      <source>Alt</source>
-      <translation>Alt</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>कन्ट्रोल कुंजी</translation>
-    </message>
-    <message>
-      <source>Ctrl</source>
-      <translation>कन्ट्रोल</translation>
     </message>
     <message>
       <source>Shift key</source>
       <translation>शिफ्ट कुंजी</translation>
     </message>
     <message>
-      <source>Shift</source>
-      <translation>शिफ्ट</translation>
-    </message>
-    <message>
       <source>Windows key or Meta key</source>
       <translation>खिड़की-कुंजी या मेटा-कुंजी</translation>
-    </message>
-    <message>
-      <source>Win/Meta</source>
-      <translation>खिडकी/मेटा</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
@@ -3453,10 +3373,6 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Lingoes-Blue</source>
       <translation>लिंगोज-नीला</translation>
-    </message>
-    <message>
-      <source> MB</source>
-      <translation> एमबी</translation>
     </message>
     <message>
       <source>Auto does nothing on some systems.</source>
