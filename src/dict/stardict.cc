@@ -571,16 +571,28 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
     case 'n': // WordNet data. We don't know anything about it.
       return "<div class=\"sdct_n\">" + Html::escape( string( resource, size ) ) + "</div>";
 
-    case 'r': // Resource file list. For now, only img: is handled.
+    case 'r': // Resource file list.
     {
       string result = R"(<div class="sdct_r">)";
 
-      // Handle img:example.jpg
-      QString imgTemplate( R"(<img src="bres://)" + QString::fromStdString( getId() ) + R"(/%1">)" );
+      // Resource file list.
+      // The content can be:
+      // img:pic/example.jpg	// Image file
+      // snd:apple.wav		// Sound file
+      // vdo:film.avi		// Video file
+      // att:file.bin		// Attachment file
+
+      // Extract the part after the prefix
+      static const QMap< QString, QString > prefixTemplates = {
+        { QString( "img:" ), QString( R"(<img src="bres://%1/%2"/>)" ) },
+        { QString( "snd:" ), QString( R"(<audio controls src="bres://%1/%2"></audio>)" ) },
+        { QString( "vdo:" ), QString( R"(<video controls src="bres://%1/%2"></video>)" ) },
+        { QString( "att:" ), QString( R"(<a download href="bres://%1/%2">%1</a>)" ) } };
 
       for ( const auto & file : QString::fromUtf8( resource, size ).simplified().split( " " ) ) {
-        if ( file.startsWith( "img:" ) ) {
-          result += imgTemplate.arg( file.right( file.size() - file.indexOf( ":" ) - 1 ) ).toStdString();
+        if ( prefixTemplates.contains( file.left( 4 ) ) ) {
+          result +=
+            prefixTemplates[ file.left( 4 ) ].arg( QString::fromStdString( getId() ), file.mid( 4 ) ).toStdString();
         }
         else {
           result += Html::escape( file.toStdString() );
