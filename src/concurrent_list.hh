@@ -2,17 +2,13 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #pragma once
-#include <QMutex>
-#include <QMutexLocker>
 #include <list>
-#include <map>
-#include "sptr.hh"
 using std::list;
 
 template< typename T >
 class concurrent_list
 {
-  QMutex mutex;
+  QMutex mutex{};
   std::list< T > list;
 
 public:
@@ -35,9 +31,9 @@ public:
     list.clear();
   }
 
-  bool empty() const
+  bool empty()
   {
-    QMutexLocker lock( &mutex );
+    QMutexLocker locker( &mutex );
     return list.empty();
   }
   typename std::list< T >::iterator begin()
@@ -76,7 +72,7 @@ public:
     return list.cend();
   }
 
-  std::list< T > snapshot() const
+  std::list< T > snapshot()
   {
     QMutexLocker locker( &mutex );
     return list;
