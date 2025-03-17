@@ -465,30 +465,35 @@ int main( int argc, char ** argv )
     QApplication::setFont( font );
   }
 
-  //// Locale & translators insanities
-  QTranslator gd_ts;
-  QTranslator qt_ts;
-  QTranslator webengine_ts;
-
-  // Update locale if the user's choice disagrees with the system
+  // Update default locale and translations based on user setting
   if ( !cfg.preferences.interfaceLanguage.isEmpty() ) {
 
-    // TODO: this sometimes simply don't work https://github.com/xiaoyifang/goldendict-ng/issues/2120
-    // because GD's locale names may mismatch system locale's format and region code.
-    // The return of QLocale::system().name() is slightly different across platforms and changing over time
-    if ( QLocale::system().name() != cfg.preferences.interfaceLanguage ) {
+    // TODO: this sometimes does not work https://github.com/xiaoyifang/goldendict-ng/issues/2120
+    // GD's locale names may mismatch system locale and the return of default QLocale().name() is slightly different across platforms.
+    if ( QLocale().name() != cfg.preferences.interfaceLanguage ) {
       QLocale::setDefault( QLocale( cfg.preferences.interfaceLanguage ) );
     }
+
+    auto * gd_ts        = new QTranslator( &app );
+    auto * qt_ts        = new QTranslator( &app );
+    auto * webengine_ts = new QTranslator( &app );
 
     // For GD's translations, we uses the filename based method,
     // because constructed QLocale sometimes doesn't match GD's translation file names
 
-    // We only load qt & webengine translators if GD's translation loading succeed to avoid inconsistency
-    if ( !gd_ts.load( cfg.preferences.interfaceLanguage, Config::getLocDir() ) ) {
+    if ( !gd_ts->load( cfg.preferences.interfaceLanguage, Config::getLocDir() ) ) {
       qDebug() << "Failed to load GD translation.";
     }
     else {
-      QCoreApplication::installTranslator( &gd_ts );
+      qDebug() << "Loaded gd_ts: " << gd_ts->filePath();
+      QCoreApplication::installTranslator( gd_ts );
+
+      // We only load qt & webengine translators if GD's translation loading succeed to avoid inconsistency
+
+      // For macOS bundle, the QLibraryInfo::TranslationsPath is overriden by GD.app/Contents/Resources/qt.conf
+
+      // For Windows, windeployqt will combine multiple qt modules translations into `qt_*` thus no `qtwebengine_*` exists
+      // qtwebengine loading will fail on Windows.
 
       auto loadTranslation = []( QTranslator & qtranslator,
                                  const QString & filename,
@@ -504,21 +509,19 @@ int main( int argc, char ** argv )
         }
       };
 
-      // For macOS bundle, the QLibraryInfo::TranslationsPath is overriden by GD.app/Contents/Resources/qt.conf
-
-      // For Windows, windeployqt will combine multiple qt modules translations into `qt_*` thus no `qtwebengine_*` exists
-      // qtwebengine loading will fail on Windows.
-
-      if ( loadTranslation( qt_ts, "qt", "_", QLibraryInfo::path( QLibraryInfo::TranslationsPath ) ) ) {
-        QCoreApplication::installTranslator( &qt_ts );
+      if ( loadTranslation( *qt_ts, "qt", "_", QLibraryInfo::path( QLibraryInfo::TranslationsPath ) ) ) {
+        QCoreApplication::installTranslator( qt_ts );
       }
 
-
-      if ( loadTranslation( webengine_ts, "qtwebengine", "_", QLibraryInfo::path( QLibraryInfo::TranslationsPath ) ) ) {
-        QCoreApplication::installTranslator( &webengine_ts );
+      if ( loadTranslation( *webengine_ts,
+                            "qtwebengine",
+                            "_",
+                            QLibraryInfo::path( QLibraryInfo::TranslationsPath ) ) ) {
+        QCoreApplication::installTranslator( webengine_ts );
       }
     }
   }
+
   QApplication::setLayoutDirection( QLocale().textDirection() );
 
   // Prevent app from quitting spontaneously when it works with popup
