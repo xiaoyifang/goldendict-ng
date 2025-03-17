@@ -16,10 +16,23 @@ class concurrent_list
 
 public:
 
-  void push_back( T const & v );
-  void remove( T const & v );
+  void push_back( const T & v )
+  {
+    QMutexLocker locker( &mutex );
+    list.push_back( v );
+  }
 
-  void clear();
+  void remove( const T & v )
+  {
+    QMutexLocker locker( &mutex );
+    list.remove( v );
+  }
+
+  void clear()
+  {
+    QMutexLocker locker( &mutex );
+    list.clear();
+  }
 
   bool empty() const
   {
