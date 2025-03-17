@@ -67,4 +67,4 @@ public:
     QMutexLocker locker( &mutex );
     return list;
   }
-}
+};
