@@ -70,10 +70,6 @@ void Table::ins( char const * from, char const * to )
 {
   std::u32string fr = Text::toUtf32( std::string( from ) );
 
-  if ( fr.size() > maxEntrySize ) {
-    maxEntrySize = fr.size();
-  }
-
   insert( std::pair< std::u32string, std::u32string >( fr, Text::toUtf32( std::string( to ) ) ) );
 }
 
@@ -109,7 +105,7 @@ vector< std::u32string > TransliterationDictionary::getAlternateWritings( std::u
   while ( left ) {
     unsigned x;
 
-    for ( x = table.getMaxEntrySize(); x >= 1; --x ) {
+    for ( x = table.size(); x >= 1; --x ) {
       if ( left >= x ) {
         i = table.find( std::u32string( ptr, x ) );
 
