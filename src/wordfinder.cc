@@ -310,10 +310,12 @@ void WordFinder::updateResults()
   {
     QMutexLocker locker( &mutex );
 
-    for ( auto i = finishedRequests.begin(); i != finishedRequests.end(); ) {
-      for ( size_t count = ( *i )->matchesCount(), x = 0; x < count; ++x ) {
-        std::u32string match      = ( **i )[ x ].word;
-        int weight                = ( **i )[ x ].weight;
+    for ( auto & request : finishedRequests ) {
+      size_t count = request->matchesCount();
+
+      for ( size_t x = 0; x < count; ++x ) {
+        std::u32string match      = ( *request )[ x ].word;
+        int weight                = ( *request )[ x ].weight;
         std::u32string lowerCased = Folding::applySimpleCaseOnly( match );
 
         if ( searchType == ExpressionMatch ) {
@@ -337,6 +339,7 @@ void WordFinder::updateResults()
           }
           weight = ws;
         }
+
         auto insertResult =
           resultsIndex.insert( pair< std::u32string, ResultsArray::iterator >( lowerCased, resultsArray.end() ) );
 
@@ -360,8 +363,10 @@ void WordFinder::updateResults()
           insertResult.first->second = --resultsArray.end();
         }
       }
-      finishedRequests.erase( i++ );
     }
+
+    // Clear the finishedRequests after processing
+    finishedRequests.clear();
   }
 
   size_t maxSearchResults = 500;
