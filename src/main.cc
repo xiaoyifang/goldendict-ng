@@ -478,17 +478,16 @@ int main( int argc, char ** argv )
   auto * qt_ts        = new QTranslator( &app );
   auto * webengine_ts = new QTranslator( &app );
 
-
   auto loadTranslation_qlocale = []( QTranslator & qtranslator,
                                      const QString & filename,
                                      const QString & prefix,
                                      const QString & directory ) -> bool {
     if ( qtranslator.load( QLocale(), filename, prefix, directory ) ) {
-      qDebug() << "Loaded translator: " << qtranslator.filePath();
+      qDebug() << "TS loaded: " << qtranslator.filePath();
       return true;
     }
     else {
-      qDebug() << "Failed to load: " << filename << prefix << " from " << directory;
+      qDebug() << "TS failed to load: " << QLocale().uiLanguages() << filename << prefix << " from " << directory;
       return false;
     }
   };
@@ -511,7 +510,7 @@ int main( int argc, char ** argv )
   //  only load qt & webengine translators if GD's translation loading succeed to avoid inconsistency
   if ( gd_ts_loaded ) {
     QCoreApplication::installTranslator( gd_ts );
-    qDebug() << "gd_ts loaded: " << gd_ts->filePath();
+    qDebug() << "TS loaded: " << gd_ts->filePath();
 
     // For macOS bundle, the QLibraryInfo::TranslationsPath is overriden by GD.app/Contents/Resources/qt.conf
 
@@ -528,6 +527,9 @@ int main( int argc, char ** argv )
                                   QLibraryInfo::path( QLibraryInfo::TranslationsPath ) ) ) {
       QCoreApplication::installTranslator( webengine_ts );
     }
+  }
+  else {
+    qDebug() << "GD_TS not loaded.";
   }
 
 
