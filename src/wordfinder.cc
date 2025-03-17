@@ -99,7 +99,6 @@ void WordFinder::startSearch()
   }
 
   {
-    QMutexLocker locker( &mutex );
     // Clear the requests just in case
     queuedRequests.clear();
     finishedRequests.clear();
@@ -144,7 +143,6 @@ void WordFinder::startSearch()
         } );
 
         {
-          QMutexLocker locker( &mutex );
           queuedRequests.push_back( sr );
         }
       }
@@ -172,7 +170,6 @@ void WordFinder::cancel()
 void WordFinder::clear()
 {
   cancel();
-  QMutexLocker locker( &mutex );
 
   queuedRequests.clear();
   finishedRequests.clear();
@@ -183,30 +180,36 @@ void WordFinder::requestFinished()
   {
     QMutexLocker locker( &mutex );
     // See how many new requests have finished, and if we have any new results
-    for ( auto i = queuedRequests.begin(); i != queuedRequests.end(); ) {
-      if ( !searchInProgress.load() ) {
-        break;
-      }
-      if ( ( *i )->isFinished() ) {
-        if ( !( *i )->getErrorString().isEmpty() ) {
-          searchErrorString = tr( "Failed to query some dictionaries." );
+    // Create a snapshot of queuedRequests to avoid iterator invalidation
+    auto snapshot = queuedRequests.snapshot();
+
+    // Iterate over the snapshot
+    for (auto &request : snapshot) {
+        // Break the loop if the search is no longer in progress
+        if (!searchInProgress.load()) {
+            break;
         }
 
-        if ( ( *i )->isUncertain() ) {
-          searchResultsUncertain = true;
-        }
+        // Check if the request is finished
+        if (request->isFinished()) {
+            // Set error message if the request has an error string
+            if (!request->getErrorString().isEmpty()) {
+                searchErrorString = tr("Failed to query some dictionaries.");
+            }
 
-        if ( ( *i )->matchesCount() ) {
-          // This list is handled by updateResults()
-          finishedRequests.splice( finishedRequests.end(), queuedRequests, i++ );
+            // Mark results as uncertain if the request is uncertain
+            if (request->isUncertain()) {
+                searchResultsUncertain = true;
+            }
+
+            // Add the request to finishedRequests if it has matches
+            if (request->matchesCount()) {
+                finishedRequests.push_back(request);
+            }
+
+            // Remove the finished request from the original queue
+            queuedRequests.remove(request);
         }
-        else { // We won't do anything with it anymore, so we erase it
-          i = queuedRequests.erase( i );
-        }
-      }
-      else {
-        ++i;
-      }
     }
   }
 
@@ -226,7 +229,6 @@ void WordFinder::requestFinished( const sptr< Dictionary::WordSearchRequest > & 
     return;
   }
   {
-    QMutexLocker locker( &mutex );
     queuedRequests.remove( req );
 
     if ( req->isFinished() ) {
@@ -511,9 +513,9 @@ void WordFinder::updateResults()
 
 void WordFinder::cancelSearches()
 {
-  QMutexLocker locker( &mutex );
+  auto snapshot = queuedRequests.snapshot();
 
-  for ( auto & queuedRequest : queuedRequests ) {
+  for ( auto & queuedRequest : snapshot ) {
     if ( queuedRequest ) {
       queuedRequest->cancel();
     }

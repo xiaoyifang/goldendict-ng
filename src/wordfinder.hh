@@ -12,6 +12,7 @@
 #include <QWaitCondition>
 #include <QRunnable>
 #include "dict/dictionary.hh"
+#include "concurrent_list.hh"
 
 /// This component takes care of finding words. The search is asynchronous.
 /// This means the GUI doesn't get blocked during the sometimes lenghtly
@@ -29,7 +30,7 @@ private:
   SearchResults searchResults;
   QString searchErrorString;
   bool searchResultsUncertain;
-  std::list< sptr< Dictionary::WordSearchRequest > > queuedRequests, finishedRequests;
+  concurrent_list< sptr< Dictionary::WordSearchRequest > > queuedRequests, finishedRequests;
   std::atomic_bool searchInProgress;
   QMutex mutex;
 
