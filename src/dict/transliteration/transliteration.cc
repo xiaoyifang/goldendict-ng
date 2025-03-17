@@ -109,7 +109,7 @@ vector< std::u32string > TransliterationDictionary::getAlternateWritings( std::u
   while ( left ) {
     unsigned x;
 
-    for ( x = table.getMaxEntrySize(); x >= 1; --x ) {
+    for ( x = table.size(); x >= 1; --x ) {
       if ( left >= x ) {
         i = table.find( std::u32string( ptr, x ) );
 
