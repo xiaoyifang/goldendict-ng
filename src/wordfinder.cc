@@ -184,32 +184,32 @@ void WordFinder::requestFinished()
     auto snapshot = queuedRequests.snapshot();
 
     // Iterate over the snapshot
-    for (auto &request : snapshot) {
-        // Break the loop if the search is no longer in progress
-        if (!searchInProgress.load()) {
-            break;
+    for ( auto & request : snapshot ) {
+      // Break the loop if the search is no longer in progress
+      if ( !searchInProgress.load() ) {
+        break;
+      }
+
+      // Check if the request is finished
+      if ( request->isFinished() ) {
+        // Set error message if the request has an error string
+        if ( !request->getErrorString().isEmpty() ) {
+          searchErrorString = tr( "Failed to query some dictionaries." );
         }
 
-        // Check if the request is finished
-        if (request->isFinished()) {
-            // Set error message if the request has an error string
-            if (!request->getErrorString().isEmpty()) {
-                searchErrorString = tr("Failed to query some dictionaries.");
-            }
-
-            // Mark results as uncertain if the request is uncertain
-            if (request->isUncertain()) {
-                searchResultsUncertain = true;
-            }
-
-            // Add the request to finishedRequests if it has matches
-            if (request->matchesCount()) {
-                finishedRequests.push_back(request);
-            }
-
-            // Remove the finished request from the original queue
-            queuedRequests.remove(request);
+        // Mark results as uncertain if the request is uncertain
+        if ( request->isUncertain() ) {
+          searchResultsUncertain = true;
         }
+
+        // Add the request to finishedRequests if it has matches
+        if ( request->matchesCount() ) {
+          finishedRequests.push_back( request );
+        }
+
+        // Remove the finished request from the original queue
+        queuedRequests.remove( request );
+      }
     }
   }
 

@@ -7,28 +7,28 @@
 #include <list>
 #include "sptr.hh"
 
-template <typename T>
+template< typename T >
 class concurrent_list
 {
-    QMutex mutex;
-    std::list<T> list;
+  QMutex mutex;
+  std::list< T > list;
 
 public:
-    void push_back(const T& v)
-    {
-        QMutexLocker locker(&mutex);
-        list.push_back(v);
-    }
+  void push_back( const T & v )
+  {
+    QMutexLocker locker( &mutex );
+    list.push_back( v );
+  }
 
-    void remove(const T& v)
-    {
-        QMutexLocker locker(&mutex);
-        list.remove(v);
-    }
+  void remove( const T & v )
+  {
+    QMutexLocker locker( &mutex );
+    list.remove( v );
+  }
 
-    void clear()
-    {
-        QMutexLocker locker(&mutex);
-        list.clear();
-    }
+  void clear()
+  {
+    QMutexLocker locker( &mutex );
+    list.clear();
+  }
 };

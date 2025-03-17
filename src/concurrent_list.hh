@@ -8,7 +8,7 @@
 #include "sptr.hh"
 using std::list;
 
-template < typename T >
+template< typename T >
 class concurrent_list
 {
   QMutex mutex;
@@ -26,45 +26,45 @@ public:
     QMutexLocker lock( &mutex );
     return list.empty();
   }
-  typename std::list<T>::iterator begin()
+  typename std::list< T >::iterator begin()
   {
-      QMutexLocker locker(&mutex);
-      return list.begin();
+    QMutexLocker locker( &mutex );
+    return list.begin();
   }
 
-  typename std::list<T>::iterator end()
+  typename std::list< T >::iterator end()
   {
-      QMutexLocker locker(&mutex);
-      return list.end();
+    QMutexLocker locker( &mutex );
+    return list.end();
   }
 
-  typename std::list<T>::const_iterator begin() const
+  typename std::list< T >::const_iterator begin() const
   {
-      QMutexLocker locker(&mutex);
-      return list.cbegin();
+    QMutexLocker locker( &mutex );
+    return list.cbegin();
   }
 
-  typename std::list<T>::const_iterator end() const
+  typename std::list< T >::const_iterator end() const
   {
-      QMutexLocker locker(&mutex);
-      return list.cend();
+    QMutexLocker locker( &mutex );
+    return list.cend();
   }
 
-  typename std::list<T>::const_iterator cbegin() const
+  typename std::list< T >::const_iterator cbegin() const
   {
-      QMutexLocker locker(&mutex);
-      return list.cbegin();
+    QMutexLocker locker( &mutex );
+    return list.cbegin();
   }
 
-  typename std::list<T>::const_iterator cend() const
+  typename std::list< T >::const_iterator cend() const
   {
-      QMutexLocker locker(&mutex);
-      return list.cend();
+    QMutexLocker locker( &mutex );
+    return list.cend();
   }
 
-  std::list<T> snapshot() const
+  std::list< T > snapshot() const
   {
-      QMutexLocker locker(&mutex);
-      return list;
+    QMutexLocker locker( &mutex );
+    return list;
   }
 }
