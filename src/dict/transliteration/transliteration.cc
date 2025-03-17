@@ -70,10 +70,6 @@ void Table::ins( char const * from, char const * to )
 {
   std::u32string fr = Text::toUtf32( std::string( from ) );
 
-  if ( fr.size() > maxEntrySize ) {
-    maxEntrySize = fr.size();
-  }
-
   insert( std::pair< std::u32string, std::u32string >( fr, Text::toUtf32( std::string( to ) ) ) );
 }
 
