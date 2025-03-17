@@ -539,7 +539,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Regular Expression</source>
-      <translation type="unfinished">Regular Expression</translation>
+      <translation>正規表示式</translation>
     </message>
   </context>
   <context>
