@@ -291,7 +291,9 @@ bool Class::loadIconFromFilePath( QString const & filename )
 
 bool Class::loadIconFromText( const QString & iconUrl, QString const & text )
 {
-  if ( text.isEmpty() ) {
+  //select a single char.
+  auto abbrName = getAbbrName( text );
+  if ( abbrName.isEmpty() ) {
     return false;
   }
   QImage img( iconUrl );
@@ -312,9 +314,6 @@ bool Class::loadIconFromText( const QString & iconUrl, QString const & text )
     painter.setFont( font );
 
     const QRect rectangle = QRect( 0, 0, iconSize, iconSize );
-
-    //select a single char.
-    auto abbrName = getAbbrName( text );
 
     painter.setPen( intToFixedColor( qHash( abbrName ) ) );
 
