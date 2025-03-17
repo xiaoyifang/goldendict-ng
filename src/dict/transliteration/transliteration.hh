@@ -44,7 +44,7 @@ public:
 
 class Table: public map< std::u32string, std::u32string >
 {
-  
+
 protected:
 
   /// Inserts new entry into index. from and to are UTF8-encoded strings.
