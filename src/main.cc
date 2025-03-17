@@ -477,7 +477,7 @@ int main( int argc, char ** argv )
                                        const QString & prefix,
                                        const QString & directory ) -> bool {
       if ( qtranslator.load( QLocale(), filename, prefix, directory ) ) {
-        qDebug() << "TS loaded: " << qtranslator.filePath();
+        qDebug() << "TS found: " << qtranslator.filePath();
         return true;
       }
       else {
@@ -499,21 +499,24 @@ int main( int argc, char ** argv )
            loadTranslation_qlocale( *gd_ts, QString(), QString(), Config::getLocDir() ) :
            gd_ts->load( cfg.preferences.interfaceLanguage, Config::getLocDir() ) ) {
       QCoreApplication::installTranslator( gd_ts );
-      qDebug() << "TS loaded: " << gd_ts->filePath();
+      qDebug() << "TS found: " << gd_ts->filePath();
 
       // For macOS bundle, the QLibraryInfo::TranslationsPath is overriden by GD.app/Contents/Resources/qt.conf
 
       // For Windows, windeployqt will combine multiple qt modules translations into `qt_*` thus no `qtwebengine_*` exists
       // qtwebengine loading will fail on Windows.
 
-      if ( loadTranslation_qlocale( *qt_ts, "qt", "_", QLibraryInfo::path( QLibraryInfo::TranslationsPath ) ) ) {
+      // TODO: Some `langauge`s in GD's ts uses - instead of _
+      if ( loadTranslation_qlocale( *qt_ts, "qt", "_", QLibraryInfo::path( QLibraryInfo::TranslationsPath ) )
+           && qt_ts->language() == gd_ts->language().replace( '-', '_' ) ) {
         QCoreApplication::installTranslator( qt_ts );
       }
 
       if ( loadTranslation_qlocale( *webengine_ts,
                                     "qtwebengine",
                                     "_",
-                                    QLibraryInfo::path( QLibraryInfo::TranslationsPath ) ) ) {
+                                    QLibraryInfo::path( QLibraryInfo::TranslationsPath ) )
+           && webengine_ts->language() == gd_ts->language().replace( '-', '_' ) ) {
         QCoreApplication::installTranslator( webengine_ts );
       }
     }
