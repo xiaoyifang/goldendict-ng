@@ -3,6 +3,7 @@
 
 #pragma once
 #include <QMutex>
+#include <QMutexLocker>
 #include <list>
 #include <map>
 #include "sptr.hh"
