@@ -137,7 +137,7 @@ struct WordMatch
   {
   }
 
-  bool operator==(const WordMatch& other) const
+  bool operator==( const WordMatch & other ) const
   {
     //only consider the word.
     return word == other.word;
