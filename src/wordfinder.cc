@@ -228,22 +228,20 @@ void WordFinder::requestFinished( const sptr< Dictionary::WordSearchRequest > & 
   if ( !searchInProgress.load() ) {
     return;
   }
-  {
-    queuedRequests.remove( req );
+  queuedRequests.remove( req );
 
-    if ( req->isFinished() ) {
-      if ( !req->getErrorString().isEmpty() ) {
-        searchErrorString = tr( "Failed to query some dictionaries." );
-      }
+  if ( req->isFinished() ) {
+    if ( !req->getErrorString().isEmpty() ) {
+      searchErrorString = tr( "Failed to query some dictionaries." );
+    }
 
-      if ( req->isUncertain() ) {
-        searchResultsUncertain = true;
-      }
+    if ( req->isUncertain() ) {
+      searchResultsUncertain = true;
+    }
 
-      if ( req->matchesCount() > 0u ) {
-        // This list is handled by updateResults()
-        finishedRequests.push_back( req );
-      }
+    if ( req->matchesCount() > 0u ) {
+      // This list is handled by updateResults()
+      finishedRequests.push_back( req );
     }
   }
 
