@@ -81,7 +81,7 @@ void HeadwordListModel::requestFinished()
 {
   // See how many new requests have finished, and if we have any new results
   auto snapshot = queuedRequests.snapshot();
-  for ( auto & request : snapshot ) {
+  for ( const auto & request : snapshot ) {
     if ( request->isFinished() ) {
       if ( !request->getErrorString().isEmpty() ) {
         qDebug() << "error:" << request->getErrorString();

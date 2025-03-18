@@ -184,7 +184,7 @@ void WordFinder::requestFinished()
     auto snapshot = queuedRequests.snapshot();
 
     // Iterate over the snapshot
-    for ( auto & request : snapshot ) {
+    for ( const auto & request : snapshot ) {
       // Break the loop if the search is no longer in progress
       if ( !searchInProgress.load() ) {
         break;
@@ -310,7 +310,7 @@ void WordFinder::updateResults()
 
   auto snapshot = finishedRequests.snapshot();
 
-  for ( auto & request : snapshot ) {
+  for ( const auto & request : snapshot ) {
     size_t count = request->matchesCount();
 
     for ( size_t x = 0; x < count; ++x ) {
@@ -520,7 +520,7 @@ void WordFinder::cancelSearches()
 {
   auto snapshot = queuedRequests.snapshot();
 
-  for ( auto & queuedRequest : snapshot ) {
+  for ( const auto & queuedRequest : snapshot ) {
     if ( queuedRequest ) {
       queuedRequest->cancel();
     }
