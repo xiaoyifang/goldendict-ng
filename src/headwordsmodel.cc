@@ -80,21 +80,19 @@ void HeadwordListModel::appendWord( const QString & word )
 void HeadwordListModel::requestFinished()
 {
   // See how many new requests have finished, and if we have any new results
-  for ( auto i = queuedRequests.begin(); i != queuedRequests.end(); ) {
-    if ( ( *i )->isFinished() ) {
-      if ( !( *i )->getErrorString().isEmpty() ) {
-        qDebug() << "error:" << ( *i )->getErrorString();
+  auto snapshot = queuedRequests.snapshot();
+  for ( auto & request : snapshot ) {
+    if ( request->isFinished() ) {
+      if ( !request->getErrorString().isEmpty() ) {
+        qDebug() << "error:" << request->getErrorString();
       }
-      else if ( ( *i )->matchesCount() ) {
-        auto allmatches = ( *i )->getAllMatches();
+      else if ( request->matchesCount() ) {
+        auto allmatches = request->getAllMatches();
         for ( auto & match : allmatches ) {
           filterWords.append( QString::fromStdU32String( match.word ) );
         }
       }
-      queuedRequests.erase( i++ );
-    }
-    else {
-      ++i;
+      queuedRequests.remove( request );
     }
   }
 

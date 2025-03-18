@@ -36,42 +36,10 @@ public:
     QMutexLocker locker( &mutex );
     return list.empty();
   }
-  typename std::list< T >::iterator begin()
-  {
-    QMutexLocker locker( &mutex );
-    return list.begin();
-  }
 
-  typename std::list< T >::iterator end()
-  {
-    QMutexLocker locker( &mutex );
-    return list.end();
-  }
 
-  typename std::list< T >::const_iterator begin() const
-  {
-    QMutexLocker locker( &mutex );
-    return list.cbegin();
-  }
-
-  typename std::list< T >::const_iterator end() const
-  {
-    QMutexLocker locker( &mutex );
-    return list.cend();
-  }
-
-  typename std::list< T >::const_iterator cbegin() const
-  {
-    QMutexLocker locker( &mutex );
-    return list.cbegin();
-  }
-
-  typename std::list< T >::const_iterator cend() const
-  {
-    QMutexLocker locker( &mutex );
-    return list.cend();
-  }
-
+  //use snapshot to avoid locking
+  //and then iterate over the snapshot which will not be affected by other threads
   std::list< T > snapshot()
   {
     QMutexLocker locker( &mutex );

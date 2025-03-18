@@ -1,7 +1,7 @@
 #pragma once
 
 #include "dict/dictionary.hh"
-
+#include "concurrent_list.hh"
 #include <QAbstractListModel>
 #include <QStringList>
 
@@ -50,5 +50,5 @@ private:
   int index;
   char * ptr;
   QMutex lock;
-  std::list< sptr< Dictionary::WordSearchRequest > > queuedRequests;
+  concurrent_list< sptr< Dictionary::WordSearchRequest > > queuedRequests;
 };

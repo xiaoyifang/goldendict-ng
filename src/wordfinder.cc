@@ -310,7 +310,9 @@ void WordFinder::updateResults()
   {
     QMutexLocker locker( &mutex );
 
-    for ( auto & request : finishedRequests ) {
+    auto snapshot = finishedRequests.snapshot();
+
+    for ( auto & request : snapshot ) {
       size_t count = request->matchesCount();
 
       for ( size_t x = 0; x < count; ++x ) {
