@@ -94,14 +94,10 @@ vector< WordMatch > & WordSearchRequest::getAllMatches()
 
 void WordSearchRequest::addMatch( WordMatch const & match )
 {
-  unsigned n;
-  for ( n = 0; n < matches.size(); n++ ) {
-    if ( matches[ n ].word.compare( match.word ) == 0 ) {
-      break;
-    }
-  }
+  QMutexLocker _( &dataMutex );
 
-  if ( n >= matches.size() ) {
+  // Check if the match already exists
+  if ( std::find( matches.begin(), matches.end(), match ) == matches.end() ) {
     matches.push_back( match );
   }
 }

@@ -136,6 +136,12 @@ struct WordMatch
     weight( weight_ )
   {
   }
+
+  bool operator==(const WordMatch& other) const
+  {
+    //only consider the word.
+    return word == other.word;
+  }
 };
 
 /// This request type corresponds to all types of word searching operations.
