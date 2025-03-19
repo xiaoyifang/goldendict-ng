@@ -30,7 +30,7 @@ private:
   SearchResults searchResults;
   QString searchErrorString;
   bool searchResultsUncertain;
-  concurrent_list< sptr< Dictionary::WordSearchRequest > > queuedRequests, finishedRequests;
+  concurrent_list< sptr< Dictionary::WordSearchRequest > > queuedRequests;
   std::atomic_bool searchInProgress;
   QMutex mutex;
 

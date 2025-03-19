@@ -101,7 +101,6 @@ void WordFinder::startSearch()
   {
     // Clear the requests just in case
     queuedRequests.clear();
-    finishedRequests.clear();
 
     searchErrorString.clear();
     searchResultsUncertain = false;
@@ -138,8 +137,8 @@ void WordFinder::startSearch()
           inputDict->prefixMatch( allWordWriting, requestedMaxResults ) :
           inputDict->stemmedMatch( allWordWriting, stemmedMinLength, stemmedMaxSuffixVariation, requestedMaxResults );
 
-        connect( sr.get(), &Dictionary::Request::finished, this, [ this, sr ]() {
-          requestFinished( sr );
+        connect( sr.get(), &Dictionary::Request::finished, this, [ this ]() {
+          requestFinished();
         } );
 
         {
@@ -172,7 +171,6 @@ void WordFinder::clear()
   cancel();
 
   queuedRequests.clear();
-  finishedRequests.clear();
 }
 
 void WordFinder::requestFinished()
@@ -183,32 +181,18 @@ void WordFinder::requestFinished()
     // Create a snapshot of queuedRequests to avoid iterator invalidation
     auto snapshot = queuedRequests.snapshot();
 
+    bool all_finished = true;
     // Iterate over the snapshot
     for ( const auto & request : snapshot ) {
       // Break the loop if the search is no longer in progress
       if ( !searchInProgress.load() ) {
-        break;
+        return;
       }
 
       // Check if the request is finished
-      if ( request->isFinished() ) {
-        // Set error message if the request has an error string
-        if ( !request->getErrorString().isEmpty() ) {
-          searchErrorString = tr( "Failed to query some dictionaries." );
-        }
-
-        // Mark results as uncertain if the request is uncertain
-        if ( request->isUncertain() ) {
-          searchResultsUncertain = true;
-        }
-
-        // Add the request to finishedRequests if it has matches
-        if ( request->matchesCount() ) {
-          finishedRequests.push_back( request );
-        }
-
-        // Remove the finished request from the original queue
-        queuedRequests.remove( request );
+      if ( !request->isFinished() ) {
+        all_finished = false;
+        break;
       }
     }
   }
@@ -217,39 +201,7 @@ void WordFinder::requestFinished()
     return;
   }
 
-  if ( queuedRequests.empty() ) {
-    // Search is finished.
-    updateResults();
-  }
-}
-
-void WordFinder::requestFinished( const sptr< Dictionary::WordSearchRequest > & req )
-{
-  if ( !searchInProgress.load() ) {
-    return;
-  }
-  queuedRequests.remove( req );
-
-  if ( req->isFinished() ) {
-    if ( !req->getErrorString().isEmpty() ) {
-      searchErrorString = tr( "Failed to query some dictionaries." );
-    }
-
-    if ( req->isUncertain() ) {
-      searchResultsUncertain = true;
-    }
-
-    if ( req->matchesCount() > 0u ) {
-      // This list is handled by updateResults()
-      finishedRequests.push_back( req );
-    }
-  }
-
-  if ( !searchInProgress.load() ) {
-    return;
-  }
-
-  if ( queuedRequests.empty() ) {
+  if ( all_finished ) {
     // Search is finished.
     updateResults();
   }
@@ -306,9 +258,28 @@ void WordFinder::updateResults()
 
   std::u32string original = Folding::applySimpleCaseOnly( allWordWritings[ 0 ] );
 
-  auto snapshot = finishedRequests.snapshot();
+  auto snapshot = queuedRequests.snapshot();
 
   for ( const auto & request : snapshot ) {
+
+    // Check if the request is finished
+    if ( !request->isFinished() ) {
+      continue;
+    }
+    if ( !request->matchesCount() ) {
+      continue;
+    }
+    // Set error message if the request has an error string
+    if ( !request->getErrorString().isEmpty() ) {
+      searchErrorString += tr( "Failed to query some dictionaries." );
+      continue;
+    }
+    // Mark results as uncertain if the request is uncertain
+    if ( request->isUncertain() && !searchResultsUncertain ) {
+      searchResultsUncertain = true;
+    }
+    
+
     size_t count = request->matchesCount();
 
     for ( size_t x = 0; x < count; ++x ) {
@@ -362,10 +333,6 @@ void WordFinder::updateResults()
       }
     }
   }
-
-  // Clear the finishedRequests after processing
-  finishedRequests.clear();
-
 
   size_t maxSearchResults = 500;
 
