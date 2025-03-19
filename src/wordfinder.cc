@@ -173,25 +173,22 @@ void WordFinder::clear()
 
 void WordFinder::requestFinished()
 {
-  {
-    QMutexLocker locker( &mutex );
-    // See how many new requests have finished, and if we have any new results
-    // Create a snapshot of queuedRequests to avoid iterator invalidation
-    auto snapshot = queuedRequests.snapshot();
+  // See how many new requests have finished, and if we have any new results
+  // Create a snapshot of queuedRequests to avoid iterator invalidation
+  auto snapshot = queuedRequests.snapshot();
 
-    bool all_finished = true;
-    // Iterate over the snapshot
-    for ( const auto & request : snapshot ) {
-      // Break the loop if the search is no longer in progress
-      if ( !searchInProgress.load() ) {
-        return;
-      }
+  bool all_finished = true;
+  // Iterate over the snapshot
+  for ( const auto & request : snapshot ) {
+    // Break the loop if the search is no longer in progress
+    if ( !searchInProgress.load() ) {
+      return;
+    }
 
-      // Check if the request is finished
-      if ( !request->isFinished() ) {
-        all_finished = false;
-        break;
-      }
+    // Check if the request is finished
+    if ( !request->isFinished() ) {
+      all_finished = false;
+      break;
     }
   }
 
