@@ -278,7 +278,7 @@ void WordFinder::updateResults()
     if ( request->isUncertain() && !searchResultsUncertain ) {
       searchResultsUncertain = true;
     }
-    
+
 
     size_t count = request->matchesCount();
 
