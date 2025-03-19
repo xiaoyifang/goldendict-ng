@@ -141,9 +141,7 @@ void WordFinder::startSearch()
           requestFinished();
         } );
 
-        {
-          queuedRequests.push_back( sr );
-        }
+        queuedRequests.push_back( sr );
       }
       catch ( std::exception & e ) {
         qWarning( "Word \"%s\" search error (%s) in \"%s\"",
