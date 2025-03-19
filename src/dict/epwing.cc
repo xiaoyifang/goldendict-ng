@@ -962,10 +962,9 @@ void EpwingWordSearchRequest::findMatches()
         break;
     }
 
-    QMutexLocker _( &dataMutex );
-
-    for ( const auto & headword : headwords )
+    for ( const auto & headword : headwords ) {
       addMatch( headword.toStdU32String() );
+    }
 
     break;
   }

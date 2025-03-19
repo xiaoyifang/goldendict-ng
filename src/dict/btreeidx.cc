@@ -276,7 +276,6 @@ void BtreeWordSearchRequest::findMatches()
                || ( resultFolded.size() >= folded.size() && !resultFolded.compare( 0, folded.size(), folded ) ) ) {
             // Exact or prefix match
 
-            QMutexLocker _( &dataMutex );
 
             for ( auto & x : chain ) {
               if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
