@@ -2585,6 +2585,14 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <source>Show</source>
       <translation>Näytä</translation>
     </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>Tallennus PDF-muodossa valmis</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>PDF-tiedostojen tallennus epäonnistui</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
