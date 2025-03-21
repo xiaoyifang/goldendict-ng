@@ -3371,12 +3371,14 @@ void MainWindow::on_saveArticle_triggered()
     QWebEnginePage * page = view->page();
 
     // Connect the printFinished signal to handle operations after printing is complete
-    connect( page, &QWebEnginePage::pdfPrintingFinished, page, [ = ]( const QString & filePath, bool success ) {
+    connect( page, &QWebEnginePage::pdfPrintingFinished, page, [ this ]( const QString & filePath, bool success ) {
       if ( success ) {
         qDebug() << "PDF exported successfully to:" << filePath;
+        mainStatusBar->showMessage( tr( "Save PDF complete" ), 5000 );
       }
       else {
         qDebug() << "Failed to export PDF.";
+        mainStatusBar->showMessage( tr( "Save PDF failed" ), 5000 );
       }
     } );
 
