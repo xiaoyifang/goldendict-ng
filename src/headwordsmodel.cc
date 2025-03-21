@@ -67,8 +67,9 @@ void HeadwordListModel::setFilter( const QRegularExpression & reg )
   }
   filterWords.clear();
   auto sr = _dict->prefixMatch( Text::removeTrailingZero( reg.pattern() ), maxFilterResults );
-  connect( sr.get(), &Dictionary::Request::finished, this, &HeadwordListModel::requestFinished, Qt::QueuedConnection );
-  queuedRequests.push_back( sr );
+  connect( sr.get(), &Dictionary::Request::finished, this, [ this, sr ]() {
+    requestFinished( sr );
+  } );
 }
 
 void HeadwordListModel::appendWord( const QString & word )
@@ -77,36 +78,28 @@ void HeadwordListModel::appendWord( const QString & word )
   words.append( word );
 }
 
-void HeadwordListModel::requestFinished()
+void HeadwordListModel::requestFinished( const sptr< Dictionary::WordSearchRequest > & request )
 {
-  // See how many new requests have finished, and if we have any new results
-  for ( auto i = queuedRequests.begin(); i != queuedRequests.end(); ) {
-    if ( ( *i )->isFinished() ) {
-      if ( !( *i )->getErrorString().isEmpty() ) {
-        qDebug() << "error:" << ( *i )->getErrorString();
-      }
-      else if ( ( *i )->matchesCount() ) {
-        auto allmatches = ( *i )->getAllMatches();
-        for ( auto & match : allmatches ) {
-          filterWords.append( QString::fromStdU32String( match.word ) );
-        }
-      }
-      queuedRequests.erase( i++ );
+  if ( request->isFinished() ) {
+    if ( !request->getErrorString().isEmpty() ) {
+      qDebug() << "error:" << request->getErrorString();
     }
-    else {
-      ++i;
+    else if ( request->matchesCount() ) {
+      auto allmatches = request->getAllMatches();
+      for ( auto & match : allmatches ) {
+        filterWords.append( QString::fromStdU32String( match.word ) );
+      }
     }
   }
 
-  if ( queuedRequests.empty() ) {
-    if ( filterWords.isEmpty() ) {
-      return;
-    }
-    beginResetModel();
-    words = QStringList( filterWords );
-    endResetModel();
-    emit numberPopulated( words.size() );
+
+  if ( filterWords.isEmpty() ) {
+    return;
   }
+  beginResetModel();
+  words = QStringList( filterWords );
+  endResetModel();
+  emit numberPopulated( words.size() );
 }
 
 int HeadwordListModel::wordCount() const

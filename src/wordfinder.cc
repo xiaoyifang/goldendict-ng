@@ -99,10 +99,8 @@ void WordFinder::startSearch()
   }
 
   {
-    QMutexLocker locker( &mutex );
     // Clear the requests just in case
     queuedRequests.clear();
-    finishedRequests.clear();
 
     searchErrorString.clear();
     searchResultsUncertain = false;
@@ -139,14 +137,11 @@ void WordFinder::startSearch()
           inputDict->prefixMatch( allWordWriting, requestedMaxResults ) :
           inputDict->stemmedMatch( allWordWriting, stemmedMinLength, stemmedMaxSuffixVariation, requestedMaxResults );
 
-        connect( sr.get(), &Dictionary::Request::finished, this, [ this, sr ]() {
-          requestFinished( sr );
+        connect( sr.get(), &Dictionary::Request::finished, this, [ this ]() {
+          requestFinished();
         } );
 
-        {
-          QMutexLocker locker( &mutex );
-          queuedRequests.push_back( sr );
-        }
+        queuedRequests.push_back( sr );
       }
       catch ( std::exception & e ) {
         qWarning( "Word \"%s\" search error (%s) in \"%s\"",
@@ -172,41 +167,32 @@ void WordFinder::cancel()
 void WordFinder::clear()
 {
   cancel();
-  QMutexLocker locker( &mutex );
 
   queuedRequests.clear();
-  finishedRequests.clear();
 }
 
 void WordFinder::requestFinished()
 {
-  {
-    QMutexLocker locker( &mutex );
-    // See how many new requests have finished, and if we have any new results
-    for ( auto i = queuedRequests.begin(); i != queuedRequests.end(); ) {
-      if ( !searchInProgress.load() ) {
-        break;
-      }
-      if ( ( *i )->isFinished() ) {
-        if ( !( *i )->getErrorString().isEmpty() ) {
-          searchErrorString = tr( "Failed to query some dictionaries." );
-        }
+  if ( !searchInProgress.load() ) {
+    return;
+  }
+  QMutexLocker locker( &mutex );
+  // See how many new requests have finished, and if we have any new results
+  // Create a snapshot of queuedRequests to avoid iterator invalidation
+  auto snapshot = queuedRequests.snapshot();
 
-        if ( ( *i )->isUncertain() ) {
-          searchResultsUncertain = true;
-        }
+  bool all_finished = true;
+  // Iterate over the snapshot
+  for ( const auto & request : snapshot ) {
+    // Break the loop if the search is no longer in progress
+    if ( !searchInProgress.load() ) {
+      return;
+    }
 
-        if ( ( *i )->matchesCount() ) {
-          // This list is handled by updateResults()
-          finishedRequests.splice( finishedRequests.end(), queuedRequests, i++ );
-        }
-        else { // We won't do anything with it anymore, so we erase it
-          i = queuedRequests.erase( i );
-        }
-      }
-      else {
-        ++i;
-      }
+    // Check if the request is finished
+    if ( !request->isFinished() ) {
+      all_finished = false;
+      break;
     }
   }
 
@@ -214,42 +200,7 @@ void WordFinder::requestFinished()
     return;
   }
 
-  if ( queuedRequests.empty() ) {
-    // Search is finished.
-    updateResults();
-  }
-}
-
-void WordFinder::requestFinished( const sptr< Dictionary::WordSearchRequest > & req )
-{
-  if ( !searchInProgress.load() ) {
-    return;
-  }
-  {
-    QMutexLocker locker( &mutex );
-    queuedRequests.remove( req );
-
-    if ( req->isFinished() ) {
-      if ( !req->getErrorString().isEmpty() ) {
-        searchErrorString = tr( "Failed to query some dictionaries." );
-      }
-
-      if ( req->isUncertain() ) {
-        searchResultsUncertain = true;
-      }
-
-      if ( req->matchesCount() > 0u ) {
-        // This list is handled by updateResults()
-        finishedRequests.push_back( req );
-      }
-    }
-  }
-
-  if ( !searchInProgress.load() ) {
-    return;
-  }
-
-  if ( queuedRequests.empty() ) {
+  if ( all_finished ) {
     // Search is finished.
     updateResults();
   }
@@ -305,60 +256,82 @@ void WordFinder::updateResults()
   }
 
   std::u32string original = Folding::applySimpleCaseOnly( allWordWritings[ 0 ] );
-  {
-    QMutexLocker locker( &mutex );
 
-    for ( auto i = finishedRequests.begin(); i != finishedRequests.end(); ) {
-      for ( size_t count = ( *i )->matchesCount(), x = 0; x < count; ++x ) {
-        std::u32string match      = ( **i )[ x ].word;
-        int weight                = ( **i )[ x ].weight;
-        std::u32string lowerCased = Folding::applySimpleCaseOnly( match );
+  auto snapshot = queuedRequests.snapshot();
 
-        if ( searchType == ExpressionMatch ) {
-          unsigned ws;
+  bool all_finished = true;
+  for ( const auto & request : snapshot ) {
 
-          for ( ws = 0; ws < allWordWritings.size(); ws++ ) {
-            if ( ws == 0 ) {
-              // Check for prefix match with original expression
-              if ( lowerCased.compare( 0, original.size(), original ) == 0 ) {
-                break;
-              }
-            }
-            else if ( lowerCased == Folding::applySimpleCaseOnly( allWordWritings[ ws ] ) ) {
+    // Check if the request is finished
+    if ( !request->isFinished() ) {
+      all_finished = false;
+      continue;
+    }
+    if ( !request->matchesCount() ) {
+      continue;
+    }
+    // Set error message if the request has an error string
+    if ( !request->getErrorString().isEmpty() ) {
+      searchErrorString += tr( "Failed to query some dictionaries." );
+      continue;
+    }
+    // Mark results as uncertain if the request is uncertain
+    if ( request->isUncertain() && !searchResultsUncertain ) {
+      searchResultsUncertain = true;
+    }
+
+
+    size_t count = request->matchesCount();
+
+    for ( size_t x = 0; x < count; ++x ) {
+      std::u32string match      = ( *request )[ x ].word;
+      int weight                = ( *request )[ x ].weight;
+      std::u32string lowerCased = Folding::applySimpleCaseOnly( match );
+
+      if ( searchType == ExpressionMatch ) {
+        unsigned ws;
+
+        for ( ws = 0; ws < allWordWritings.size(); ws++ ) {
+          if ( ws == 0 ) {
+            // Check for prefix match with original expression
+            if ( lowerCased.compare( 0, original.size(), original ) == 0 ) {
               break;
             }
           }
-
-          if ( ws >= allWordWritings.size() ) {
-            // No exact matches found
-            continue;
-          }
-          weight = ws;
-        }
-        auto insertResult =
-          resultsIndex.insert( pair< std::u32string, ResultsArray::iterator >( lowerCased, resultsArray.end() ) );
-
-        if ( !insertResult.second ) {
-          // Wasn't inserted since there was already an item -- check the case
-          if ( insertResult.first->second->word != match ) {
-            // The case is different -- agree on a lowercase version
-            insertResult.first->second->word = lowerCased;
-          }
-          if ( !weight && insertResult.first->second->wasSuggested ) {
-            insertResult.first->second->wasSuggested = false;
+          else if ( lowerCased == Folding::applySimpleCaseOnly( allWordWritings[ ws ] ) ) {
+            break;
           }
         }
-        else {
-          resultsArray.emplace_back();
 
-          resultsArray.back().word         = match;
-          resultsArray.back().rank         = INT_MAX;
-          resultsArray.back().wasSuggested = ( weight != 0 );
+        if ( ws >= allWordWritings.size() ) {
+          // No exact matches found
+          continue;
+        }
+        weight = ws;
+      }
 
-          insertResult.first->second = --resultsArray.end();
+      auto insertResult =
+        resultsIndex.insert( pair< std::u32string, ResultsArray::iterator >( lowerCased, resultsArray.end() ) );
+
+      if ( !insertResult.second ) {
+        // Wasn't inserted since there was already an item -- check the case
+        if ( insertResult.first->second->word != match ) {
+          // The case is different -- agree on a lowercase version
+          insertResult.first->second->word = lowerCased;
+        }
+        if ( !weight && insertResult.first->second->wasSuggested ) {
+          insertResult.first->second->wasSuggested = false;
         }
       }
-      finishedRequests.erase( i++ );
+      else {
+        resultsArray.emplace_back();
+
+        resultsArray.back().word         = match;
+        resultsArray.back().rank         = INT_MAX;
+        resultsArray.back().wasSuggested = ( weight != 0 );
+
+        insertResult.first->second = --resultsArray.end();
+      }
     }
   }
 
@@ -498,7 +471,7 @@ void WordFinder::updateResults()
     }
   }
 
-  if ( !queuedRequests.empty() ) {
+  if ( !all_finished ) {
     // There are still some unhandled results.
     emit updated();
   }
@@ -511,9 +484,9 @@ void WordFinder::updateResults()
 
 void WordFinder::cancelSearches()
 {
-  QMutexLocker locker( &mutex );
+  auto snapshot = queuedRequests.snapshot();
 
-  for ( auto & queuedRequest : queuedRequests ) {
+  for ( const auto & queuedRequest : snapshot ) {
     if ( queuedRequest ) {
       queuedRequest->cancel();
     }
