@@ -3691,8 +3691,8 @@ ze słowników Stardict, Babylon i GLS</translation>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>Użyj tego, aby przypiąć okno, aby pozostać na ekranie,
-można było zmienić rozmiar lub zarządzać nim w inny sposób.</translation>
+      <translation>Powoduje przypięcie okna, aby pozostało na ekranie, można
+było zmienić jego rozmiar lub zarządzać nim w inny sposób.</translation>
     </message>
   </context>
   <context>
@@ -3715,7 +3715,7 @@ można było zmienić rozmiar lub zarządzać nim w inny sposób.</translation>
     </message>
     <message>
       <source>&amp;Case Sensitive</source>
-      <translation>&amp;Rozmiar liter</translation>
+      <translation>&amp;Wielkość liter</translation>
     </message>
     <message>
       <source>Find:</source>
