@@ -2584,6 +2584,14 @@ Um &apos;*&apos;, &apos;zu finden?&apos;, &apos;[&apos;, &apos;]&apos; Symbole v
       <source>Show</source>
       <translation>Anzeigen</translation>
     </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>PDF speichern abgeschlossen</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>PDF speichern fehlgeschlagen</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
