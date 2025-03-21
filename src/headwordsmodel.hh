@@ -29,7 +29,7 @@ signals:
 
 public slots:
   void setDict( Dictionary::Class * dict );
-  void requestFinished(const sptr< Dictionary::WordSearchRequest > &);
+  void requestFinished( const sptr< Dictionary::WordSearchRequest > & );
 
 protected:
   bool canFetchMore( const QModelIndex & parent ) const override;

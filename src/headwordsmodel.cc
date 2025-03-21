@@ -67,9 +67,9 @@ void HeadwordListModel::setFilter( const QRegularExpression & reg )
   }
   filterWords.clear();
   auto sr = _dict->prefixMatch( Text::removeTrailingZero( reg.pattern() ), maxFilterResults );
-  connect( sr.get(), &Dictionary::Request::finished, this, [this,sr](){
+  connect( sr.get(), &Dictionary::Request::finished, this, [ this, sr ]() {
     requestFinished( sr );
-  });
+  } );
 }
 
 void HeadwordListModel::appendWord( const QString & word )
@@ -78,7 +78,7 @@ void HeadwordListModel::appendWord( const QString & word )
   words.append( word );
 }
 
-void HeadwordListModel::requestFinished(const sptr< Dictionary::WordSearchRequest > & request)
+void HeadwordListModel::requestFinished( const sptr< Dictionary::WordSearchRequest > & request )
 {
   if ( request->isFinished() ) {
     if ( !request->getErrorString().isEmpty() ) {
