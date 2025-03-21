@@ -2585,6 +2585,14 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
       <source>Show</source>
       <translation>Weergeven</translation>
     </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>PDF-bestand opslaan voltooid</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>Opslaan PDF mislukt</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
