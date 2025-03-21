@@ -2585,6 +2585,14 @@ Para encontrar os símbolos &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]
       <source>Show</source>
       <translation>Mostrar</translation>
     </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>Salvar PDF completo</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>Falha ao salvar PDF</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
