@@ -2585,6 +2585,14 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
       <source>Show</source>
       <translation>Zobrazit</translation>
     </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>Uložení PDF dokončeno</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>Uložení PDF selhalo</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
