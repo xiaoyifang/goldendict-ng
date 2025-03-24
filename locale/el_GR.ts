@@ -2587,6 +2587,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Show</source>
       <translation>Εμφάνιση</translation>
     </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>Αποθήκευση PDF ολοκληρώθηκε</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>Αποτυχία αποθήκευσης PDF</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

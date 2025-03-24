@@ -2585,6 +2585,14 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
       <source>Show</source>
       <translation>Mostrar</translation>
     </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>Guardar PDF completo</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>Fallo al guardar PDF</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

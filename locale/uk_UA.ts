@@ -2586,6 +2586,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Show</source>
       <translation>Показати</translation>
     </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>Збереження PDF завершено</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>Не вдалося зберегти PDF</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

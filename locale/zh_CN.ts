@@ -2585,6 +2585,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Show</source>
       <translation>显示</translation>
     </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>保存 PDF 完成</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>保存 PDF 失败</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

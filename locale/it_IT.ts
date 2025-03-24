@@ -2586,6 +2586,14 @@ Clicca &lt;b&gt;Scarica&lt;/b&gt; per accedere alla pagina di scaricamento.</tra
       <source>Show</source>
       <translation>Mostra</translation>
     </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>Salva PDF completato</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>Salvare PDF non riuscito</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

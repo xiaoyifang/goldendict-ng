@@ -2585,6 +2585,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Show</source>
       <translation>表示</translation>
     </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>PDFの保存が完了しました</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>PDFの保存に失敗しました</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

@@ -2585,6 +2585,14 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
       <source>Show</source>
       <translation>Visa</translation>
     </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>Spara PDF slutförd</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>Kunde inte spara PDF</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

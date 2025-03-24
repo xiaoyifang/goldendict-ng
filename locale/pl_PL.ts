@@ -2585,6 +2585,14 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
       <source>Show</source>
       <translation>Pokaż</translation>
     </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>Zapisywanie PDF zakończone</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>Zapisanie PDF nie powiodło się</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
