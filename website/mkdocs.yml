@@ -37,6 +37,7 @@ nav:
       - Tool & Dictionary Bar: ui_toolbar.md
       - Favorites: ui_favorites.md
       - Shortcuts: ui_shortcuts.md
+      - External Audio Engine: ui_audioengine.md
   - Advanced Usages:
       - Program dictionary: howto/how to add a program as dictionary.md
       - Command Lines: topic_commandline.md
