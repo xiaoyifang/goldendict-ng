@@ -1,5 +1,5 @@
 /**
- * Dark Reader v4.9.100
+ * Dark Reader v4.9.105
  * https://darkreader.org/
  */
 
@@ -371,11 +371,6 @@
         "onedrive.live.com"
     ];
     ({
-        schemeVersion: 0,
-        enabled: true,
-        fetchNews: true,
-        theme: DEFAULT_THEME,
-        presets: [],
         customThemes: filterModeSites.map((url) => {
             const engine = isChromium
                 ? ThemeEngine.svgFilter
@@ -386,31 +381,9 @@
                 builtIn: true
             };
         }),
-        enabledByDefault: true,
-        enabledFor: [],
-        disabledFor: [],
-        changeBrowserTheme: false,
-        syncSettings: true,
-        syncSitesFixes: false,
         automation: {
-            enabled: false,
-            mode: AutomationMode.NONE,
-            behavior: "OnOff"
-        },
-        time: {
-            activation: "18:00",
-            deactivation: "9:00"
-        },
-        location: {
-            latitude: null,
-            longitude: null
-        },
-        previewNewDesign: false,
-        previewNewestDesign: false,
-        enableForPDF: true,
-        enableForProtectedPages: false,
-        enableContextMenus: false,
-        detectDarkTheme: true
+            mode: AutomationMode.NONE
+        }
     });
 
     function getMatches(regex, input, group = 0) {
@@ -1000,9 +973,18 @@
     const rgbMatch = /^rgba?\([^\(\)]+\)$/;
     const hslMatch = /^hsla?\([^\(\)]+\)$/;
     const hexMatch = /^#[0-9a-f]+$/i;
+    const supportedColorFuncs = [
+        "color",
+        "color-mix",
+        "hwb",
+        "lab",
+        "lch",
+        "oklab",
+        "oklch"
+    ];
     function parse($color) {
         const c = $color.trim().toLowerCase();
-        if ($color.includes("(from ")) {
+        if (c.includes("(from ")) {
             return domParseColor(c);
         }
         if (c.match(rgbMatch)) {
@@ -1023,12 +1005,14 @@
         if (systemColors.has(c)) {
             return getSystemColor(c);
         }
-        if ($color === "transparent") {
+        if (c === "transparent") {
             return {r: 0, g: 0, b: 0, a: 0};
         }
         if (
-            (c.startsWith("color(") || c.startsWith("color-mix(")) &&
-            c.endsWith(")")
+            c.endsWith(")") &&
+            supportedColorFuncs.some(
+                (fn) => c.startsWith(fn) && c[fn.length] === "("
+            )
         ) {
             return domParseColor(c);
         }
@@ -1541,6 +1525,12 @@
 
     function logInfo(...args) {}
     function logWarn(...args) {}
+    function logAssert(...args) {}
+    function ASSERT(description, condition) {
+        if (!condition) {
+            logAssert(description);
+        }
+    }
 
     function removeNode(node) {
         node && node.parentNode && node.parentNode.removeChild(node);
@@ -1549,7 +1539,7 @@
         const MAX_ATTEMPTS_COUNT = 10;
         const RETRY_TIMEOUT = getDuration({seconds: 2});
         const ATTEMPTS_INTERVAL = getDuration({seconds: 10});
-        const prevSibling = node.previousSibling;
+        let prevSibling = node.previousSibling;
         let parent = node.parentNode;
         if (!parent) {
             throw new Error(
@@ -1574,6 +1564,11 @@
                 start = now;
             } else if (attempts >= MAX_ATTEMPTS_COUNT) {
                 if (now - start < ATTEMPTS_INTERVAL) {
+                    logWarn(
+                        `Node position watcher paused: retry in ${RETRY_TIMEOUT}ms`,
+                        node,
+                        prevSibling
+                    );
                     timeoutId = setTimeout(() => {
                         start = null;
                         attempts = 0;
@@ -1587,22 +1582,40 @@
             }
             if (mode === "head") {
                 if (prevSibling && prevSibling.parentNode !== parent) {
-                    stop();
-                    return;
+                    logWarn(
+                        "Sibling moved, moving node to the head end",
+                        node,
+                        prevSibling,
+                        parent
+                    );
+                    prevSibling = document.head.lastChild;
                 }
             }
             if (mode === "prev-sibling") {
                 if (prevSibling.parentNode == null) {
+                    logWarn(
+                        "Unable to restore node position: sibling was removed",
+                        node,
+                        prevSibling,
+                        parent
+                    );
                     stop();
                     return;
                 }
                 if (prevSibling.parentNode !== parent) {
+                    logWarn(
+                        "Style was moved to another parent",
+                        node,
+                        prevSibling,
+                        parent
+                    );
                     updateParent(prevSibling.parentNode);
                 }
             }
             if (mode === "head" && !parent.isConnected) {
                 parent = document.head;
             }
+            logWarn("Restoring node position", node, prevSibling, parent);
             parent.insertBefore(
                 node,
                 prevSibling && prevSibling.isConnected
@@ -1857,7 +1870,9 @@
                 }
             } else if (isLayerRule(rule)) {
                 iterateCSSRules(rule.cssRules, iterate, onImportError);
-            } else;
+            } else {
+                logWarn(`CSSRule type not supported`, rule);
+            }
         });
     }
     const shorthandVarDependantProperties = [
@@ -1966,6 +1981,9 @@
                 const escapedURL = absoluteURL.replaceAll("'", "\\'");
                 return `url('${escapedURL}')`;
             } catch (err) {
+                logWarn(
+                    "Not able to replace relative URL with Absolute URL, skipping"
+                );
                 return match;
             }
         });
@@ -2387,6 +2405,7 @@
             sh = image.height;
         }
         if (sw === 0 || sh === 0) {
+            logWarn("Image is empty");
             return {
                 isDark: false,
                 isLight: false,
@@ -3209,6 +3228,7 @@
         }
         const rgb = parseColorWithCache(value);
         if (!rgb) {
+            logWarn("Couldn't parse color", value);
             return null;
         }
         if (prop.includes("background")) {
@@ -3570,6 +3590,7 @@
                 return combinedResult;
             };
         } catch (err) {
+            logWarn(`Unable to parse gradient ${value}`, err);
             return null;
         }
     }
@@ -3606,6 +3627,7 @@
                 };
             };
         } catch (err) {
+            logWarn(`Unable to parse shadow ${value}`, err);
             return null;
         }
     }
@@ -3626,6 +3648,10 @@
         const thumb = parseColorWithCache(colorsMatch[1]);
         const track = parseColorWithCache(colorsMatch[3]);
         if (!thumb || !track) {
+            logWarn(
+                "Couldn't parse color",
+                ...[thumb, track].filter((c) => !c)
+            );
             return null;
         }
         return (theme) =>
@@ -4414,7 +4440,7 @@
         const {isRaw, color} = parseRawColorValue(input);
         const rgb = parseColorWithCache(color);
         if (rgb) {
-            const outputColor = modifyFunction(rgb, theme);
+            const outputColor = modifyFunction(rgb, theme, !isRaw);
             if (isRaw) {
                 const outputInRGB = parseColorWithCache(outputColor);
                 return outputInRGB
@@ -5165,10 +5191,35 @@
         }
     };
     const shorthandOverrides = {
-        background: {
+        "background": {
             customProp: "--darkreader-inline-bg",
             cssProp: "background",
             dataAttr: "data-darkreader-inline-bg"
+        },
+        "border": {
+            customProp: "--darkreader-inline-border-short",
+            cssProp: "border",
+            dataAttr: "data-darkreader-inline-border-short"
+        },
+        "border-bottom": {
+            customProp: "--darkreader-inline-border-bottom-short",
+            cssProp: "border-bottom",
+            dataAttr: "data-darkreader-inline-border-bottom-short"
+        },
+        "border-left": {
+            customProp: "--darkreader-inline-border-left-short",
+            cssProp: "border-left",
+            dataAttr: "data-darkreader-inline-border-left-short"
+        },
+        "border-right": {
+            customProp: "--darkreader-inline-border-right-short",
+            cssProp: "border-right",
+            dataAttr: "data-darkreader-inline-border-right-short"
+        },
+        "border-top": {
+            customProp: "--darkreader-inline-border-top-short",
+            cssProp: "border-top",
+            dataAttr: "data-darkreader-inline-border-top-short"
         }
     };
     const overridesList = Object.values(overrides);
@@ -5604,10 +5655,10 @@
                 ) {
                     setCustomProp(property, property, value);
                 } else if (
-                    property === "background" &&
+                    shorthandOverrides[property] &&
                     value.includes("var(")
                 ) {
-                    setCustomProp("background", "background", value);
+                    setCustomProp(property, property, value);
                 } else {
                     const overriddenProp = normalizedPropList[property];
                     if (
@@ -5653,6 +5704,7 @@
         srcMetaThemeColor = srcMetaThemeColor || meta.content;
         const color = parseColorWithCache(srcMetaThemeColor);
         if (!color) {
+            logWarn("Invalid meta color", color);
             return;
         }
         meta.content = modifyBackgroundColor(color, theme, false);
@@ -5966,6 +6018,8 @@
             if (hasImports(cssRules, true)) {
                 return null;
             }
+            !cssRules &&
+                logWarn("[getRulesSync] cssRules is null, trying again.");
             return cssRules;
         }
         function insertStyle() {
@@ -6010,6 +6064,9 @@
             let cssBasePath;
             if (element instanceof HTMLLinkElement) {
                 let [cssRules, accessError] = getRulesOrError();
+                if (accessError) {
+                    logWarn(accessError);
+                }
                 if (
                     (isSafari && !element.sheet) ||
                     (!isSafari && !cssRules && !accessError) ||
@@ -6022,12 +6079,16 @@
                         );
                         await linkLoading(element, loadingLinkId);
                     } catch (err) {
+                        logWarn(err);
                         wasLoadingError = true;
                     }
                     if (cancelAsyncOperations) {
                         return null;
                     }
                     [cssRules, accessError] = getRulesOrError();
+                    if (accessError) {
+                        logWarn(accessError);
+                    }
                 }
                 if (cssRules) {
                     if (!hasImports(cssRules, false)) {
@@ -6068,7 +6129,9 @@
                     } else {
                         corsCopy = createCORSCopy(element, fullCSSText);
                     }
-                } catch (err) {}
+                } catch (err) {
+                    logWarn(err);
+                }
                 if (corsCopy) {
                     corsCopyPositionWatcher = watchForNodePosition(
                         corsCopy,
@@ -6081,6 +6144,9 @@
             const rules = getRulesSync();
             if (!rules) {
                 if (options.secondRound) {
+                    logWarn(
+                        "Detected dead-lock at details(), returning early to prevent it."
+                    );
                     return null;
                 }
                 if (isLoadingRules || wasLoadingError) {
@@ -6097,6 +6163,7 @@
                         }
                     })
                     .catch((err) => {
+                        logWarn(err);
                         isLoadingRules = false;
                         loadingEnd();
                     });
@@ -6178,6 +6245,7 @@
         function safeGetSheetRules() {
             const [cssRules, err] = getRulesOrError();
             if (err) {
+                logWarn(err);
                 return null;
             }
             return cssRules;
@@ -6220,8 +6288,10 @@
             }
             moveCount++;
             if (moveCount > maxMoveCount) {
+                logWarn("Style sheet was moved multiple times", element);
                 return;
             }
+            logWarn("Restore style", syncStyle, element);
             insertStyle();
             corsCopyPositionWatcher && corsCopyPositionWatcher.skip();
             syncStylePositionWatcher && syncStylePositionWatcher.skip();
@@ -6288,13 +6358,14 @@
         let text;
         if (parsedURL.origin === location.origin) {
             text = await loadAsText(url, "text/css", location.origin);
+        } else {
+            text = await bgFetch({
+                url,
+                responseType: "text",
+                mimeType: "text/css",
+                origin: location.origin
+            });
         }
-        text = await bgFetch({
-            url,
-            responseType: "text",
-            mimeType: "text/css",
-            origin: location.origin
-        });
         writeCSSFetchCache(url, text);
         return text;
     }
@@ -6336,6 +6407,7 @@
                             cache
                         );
                     } catch (err) {
+                        logWarn(err);
                         importedCSS = "";
                     }
                 }
@@ -6344,7 +6416,7 @@
                 cssText.substring(0, match.offset + diff) +
                 importedCSS +
                 cssText.substring(match.offset + match.text.length + diff);
-            diff = importedCSS.length - match.text.length;
+            diff += importedCSS.length - match.text.length;
             prev = match;
         }
         cssText = cssText.trim();
@@ -6603,7 +6675,7 @@
             );
         }
         let blobURLAllowed = null;
-        async function checkBlobURLSupport() {
+        function checkBlobURLSupport() {
             if (blobURLAllowed != null) {
                 document.dispatchEvent(
                     new CustomEvent("__darkreader__blobURLCheckResponse", {
@@ -6620,17 +6692,18 @@
             }
             const blob = new Blob([bytes], {type: "image/svg+xml"});
             const objectURL = URL.createObjectURL(blob);
-            try {
-                const image = new Image();
-                await new Promise((resolve, reject) => {
-                    image.onload = () => resolve();
-                    image.onerror = () => reject();
-                    image.src = objectURL;
-                });
+            const image = new Image();
+            image.onload = () => {
                 blobURLAllowed = true;
-            } catch (err) {
+                sendBlobURLCheckResponse();
+            };
+            image.onerror = () => {
                 blobURLAllowed = false;
-            }
+                sendBlobURLCheckResponse();
+            };
+            image.src = objectURL;
+        }
+        function sendBlobURLCheckResponse() {
             document.dispatchEvent(
                 new CustomEvent("__darkreader__blobURLCheckResponse", {
                     detail: {blobURLAllowed}
@@ -6814,6 +6887,10 @@
             customElementsWhenDefined(tag).then(() => {
                 if (elementsDefinitionCallback) {
                     const elements = undefinedGroups.get(tag);
+                    ASSERT(
+                        "recordUndefinedElement() undefined groups should not be empty",
+                        elements
+                    );
                     undefinedGroups.delete(tag);
                     elementsDefinitionCallback(Array.from(elements));
                 }
@@ -6856,6 +6933,10 @@
     function handleIsDefined(e) {
         canOptimizeUsingProxy = true;
         const tag = e.detail.tag;
+        ASSERT(
+            "handleIsDefined() expects lower-case node names",
+            () => tag.toLowerCase() === tag
+        );
         definedCustomElements.add(tag);
         if (resolvers.has(tag)) {
             const r = resolvers.get(tag);
@@ -6864,6 +6945,10 @@
         }
     }
     async function customElementsWhenDefined(tag) {
+        ASSERT(
+            "customElementsWhenDefined() expects lower-case node names",
+            () => tag.toLowerCase() === tag
+        );
         if (definedCustomElements.has(tag)) {
             return;
         }
@@ -7149,14 +7234,20 @@
     let isIFrame$1 = null;
     let ignoredImageAnalysisSelectors = [];
     let ignoredInlineSelectors = [];
+    const staticStyleMap = new Map();
     function createOrUpdateStyle(className, root = document.head || document) {
         let element = root.querySelector(`.${className}`);
-        if (!element) {
+        if (element) {
+            staticStyleMap.set(className, element);
+        } else if (staticStyleMap.has(className)) {
+            element = staticStyleMap.get(className);
+        } else {
             element = document.createElement("style");
             element.classList.add("darkreader");
             element.classList.add(className);
             element.media = "screen";
             element.textContent = "";
+            staticStyleMap.set(className, element);
         }
         return element;
     }
@@ -7170,10 +7261,13 @@
         return element;
     }
     const nodePositionWatchers = new Map();
-    function setupNodePositionWatcher(node, alias) {
+    function setupNodePositionWatcher(node, alias, callback) {
         nodePositionWatchers.has(alias) &&
             nodePositionWatchers.get(alias).stop();
-        nodePositionWatchers.set(alias, watchForNodePosition(node, "head"));
+        nodePositionWatchers.set(
+            alias,
+            watchForNodePosition(node, "head", callback)
+        );
     }
     function stopStylePositionWatchers() {
         forEach(nodePositionWatchers.values(), (watcher) => watcher.stop());
@@ -7253,7 +7347,9 @@
             `}`
         ].join("\n");
         document.head.insertBefore(variableStyle, inlineStyle.nextSibling);
-        setupNodePositionWatcher(variableStyle, "variables");
+        setupNodePositionWatcher(variableStyle, "variables", () =>
+            registerVariablesSheet(variableStyle.sheet)
+        );
         registerVariablesSheet(variableStyle.sheet);
         const rootVarsStyle = createOrUpdateStyle("darkreader--root-vars");
         document.head.insertBefore(rootVarsStyle, variableStyle.nextSibling);
@@ -7341,11 +7437,14 @@
                 }
                 return modifyForegroundColor(color, theme);
             }
+            logWarn("Couldn't parse CSSTemplate's color.");
             return $color;
         });
     }
     function cleanFallbackStyle() {
-        const fallback = document.querySelector(".darkreader--fallback");
+        const fallback =
+            staticStyleMap.get("darkreader--fallback") ||
+            document.querySelector(".darkreader--fallback");
         if (fallback) {
             fallback.textContent = "";
         }
@@ -7458,8 +7557,8 @@
                 logInfo(
                     `Current amount of styles loading: ${loadingStyles.size}`
                 );
-                const fallbackStyle = document.querySelector(
-                    ".darkreader--fallback"
+                const fallbackStyle = createOrUpdateStyle(
+                    "darkreader--fallback"
                 );
                 if (!fallbackStyle.textContent) {
                     fallbackStyle.textContent = getModifiedFallbackStyle(
@@ -7519,6 +7618,10 @@
             cleanFallbackStyle();
             return;
         }
+        logWarn(
+            `DOM is ready, but still have styles being loaded.`,
+            loadingStyles
+        );
     }
     function runDynamicStyle() {
         createDynamicStyleOverrides();
@@ -7653,6 +7756,7 @@
         cleanReadyStateCompleteListeners();
     }
     let metaObserver;
+    let headObserver = null;
     function addMetaListener() {
         metaObserver = new MutationObserver(() => {
             if (document.querySelector('meta[name="darkreader-lock"]')) {
@@ -7847,11 +7951,16 @@
                     strict: true
                 });
             }
-            const headObserver = new MutationObserver(() => {
+            headObserver?.disconnect();
+            headObserver = new MutationObserver(() => {
                 if (document.head) {
-                    headObserver.disconnect();
+                    headObserver?.disconnect();
                     ready();
                 }
+            });
+            cleaners.push(() => {
+                headObserver?.disconnect();
+                headObserver = null;
             });
             headObserver.observe(document, {childList: true, subtree: true});
         }
@@ -7883,6 +7992,7 @@
             selectors.forEach((selector) =>
                 removeNode(document.head.querySelector(selector))
             );
+            staticStyleMap.clear();
             removeProxy();
         }
         shadowRootsWithOverrides.forEach((root) => {
