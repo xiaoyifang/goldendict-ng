@@ -2,6 +2,8 @@ The gd-ng support to use external engine to play the audio.
 
 Location: Preference->Audio->`Use external program`.
 
+![external audio program](img/external-audio.png)
+
 
 vlc:
 ```
