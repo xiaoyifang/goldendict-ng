@@ -265,6 +265,7 @@ void DictionaryBar::actionWasTriggered( QAction * action )
 
         storedMutedSet.clear();
         enterSoloMode = false;
+        emit soloModeChanged( false );
       }
     }
     else {
@@ -272,6 +273,7 @@ void DictionaryBar::actionWasTriggered( QAction * action )
       if ( !enterSoloMode ) {
         storedMutedSet = *mutedDictionaries;
         enterSoloMode  = true;
+        emit soloModeChanged( true );
       }
 
       if ( isSolo ) {

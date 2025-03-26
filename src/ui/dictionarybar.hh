@@ -54,6 +54,8 @@ signals:
   /// Signal for open dictionary folder from context menu
   void openDictionaryFolder( QString const & id );
 
+  void soloModeChanged( bool );
+
   /// Signal to close context menu
   void closePopupMenu();
 
