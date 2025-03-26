@@ -593,7 +593,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( &dictionaryBar, &DictionaryBar::showDictionaryHeadwords, this, &MainWindow::showDictionaryHeadwords );
 
   connect( &dictionaryBar, &DictionaryBar::openDictionaryFolder, this, &MainWindow::openDictionaryFolder );
-  connect( &dictionaryBar, &DictionaryBar::soloModeChanged, this, [ this, soloAction ]( bool soloMode ) {
+  connect( &dictionaryBar, &DictionaryBar::soloModeChanged, this, [ soloAction ]( bool soloMode ) {
     soloAction->setEnabled( soloMode );
   } );
 
