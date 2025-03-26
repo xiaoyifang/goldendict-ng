@@ -305,7 +305,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( ui.actionAddToFavorites, &QAction::triggered, this, &MainWindow::addCurrentTabToFavorites );
 
   //solo mode indicator.
-  QAction * soloAction = new QAction( QIcon( ":/icon/solo.png" ), tr( "Solo mode" ), this );
+  QAction * soloAction = new QAction( QIcon( ":/icons/solo.svg" ), tr( "Solo mode" ), this );
   soloAction->setCheckable( false );
   soloAction->setEnabled( false );
 
