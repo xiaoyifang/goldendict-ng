@@ -2589,6 +2589,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
         <source>Save PDF failed</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Solo mode</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Mdx::MdxArticleRequest</name>
