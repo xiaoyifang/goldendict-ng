@@ -304,6 +304,14 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( addToFavorites, &QAction::triggered, this, &MainWindow::handleAddToFavoritesButton );
   connect( ui.actionAddToFavorites, &QAction::triggered, this, &MainWindow::addCurrentTabToFavorites );
 
+  //solo mode indicator.
+  QAction * soloAction = new QAction( QIcon( ":/icon/solo.png" ), tr( "Solo mode" ), this );
+  soloAction->setCheckable( false );
+  soloAction->setEnabled( false );
+
+  navToolbar->addAction( soloAction );
+  navToolbar->widgetForAction( soloAction )->setObjectName( "soloAction" );
+
   beforeOptionsSeparator = navToolbar->addSeparator();
   navToolbar->widgetForAction( beforeOptionsSeparator )->setObjectName( "beforeOptionsSeparator" );
   beforeOptionsSeparator->setVisible( cfg.preferences.hideMenubar );

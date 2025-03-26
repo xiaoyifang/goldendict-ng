@@ -120,6 +120,7 @@ private:
   QAction * beforeOptionsSeparator;
   QAction *zoomIn, *zoomOut, *zoomBase;
   QAction *addToFavorites, *beforeAddToFavoritesSeparator;
+  QAction * soloMode;
   QMenu trayIconMenu;
   QMenu * tabMenu;
   QAction * menuButtonAction;
