@@ -305,9 +305,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( ui.actionAddToFavorites, &QAction::triggered, this, &MainWindow::addCurrentTabToFavorites );
 
   //solo mode indicator.
-  QAction * soloAction = new QAction( QIcon( ":/icons/solo.svg" ), tr( "Solo mode" ), this );
+  QAction * soloAction = new QAction( QIcon( ":/icons/solo.svg" ), tr( "Quick Selection mode" ), this );
   soloAction->setCheckable( false );
   soloAction->setEnabled( false );
+  soloAction->setToolTip( tr( "Ctrl+Click enter the mode,Shift+Click exit the mode and restore previous selection." ) );
 
   navToolbar->addAction( soloAction );
   navToolbar->widgetForAction( soloAction )->setObjectName( "soloAction" );
