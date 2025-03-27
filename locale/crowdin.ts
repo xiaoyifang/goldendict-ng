@@ -2594,7 +2594,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Ctrl+Click enter the mode,Shift+Click exit the mode and restore previous selection.</source>
+        <source>Ctrl+Click a dictionary to enter the mode,Shift+Click exit the mode and restore previous selection.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
