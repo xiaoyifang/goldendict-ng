@@ -308,7 +308,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   QAction * soloAction = new QAction( QIcon( ":/icons/solo.svg" ), tr( "Quick Selection mode" ), this );
   soloAction->setCheckable( false );
   soloAction->setEnabled( false );
-  soloAction->setToolTip( tr( "Ctrl+Click enter the mode,Shift+Click exit the mode and restore previous selection." ) );
+  soloAction->setToolTip( tr( "Ctrl+Click a dictionary to enter the mode,Shift+Click exit the mode and restore previous selection." ) );
 
   navToolbar->addAction( soloAction );
   navToolbar->widgetForAction( soloAction )->setObjectName( "soloAction" );

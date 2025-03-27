@@ -29,17 +29,17 @@ More information about wildcard matching can be found in [Wikipedia's glob artic
 
 The dictionary bar contains all dictionaries from the current dictionaries group. Click the icons to disable/enable them.
 
-### "Solo" mode
+### Quick Selection mode
 
 Temporally focus on a single dictionary and restore back to all dictionaries or previously selected dictionaries.
 
-To enter solo mode:
+To enter the mode:
 
 ++ctrl+left-button++ -> Select a single dictionary.
 ++ctrl+left-button++ -> Reselect all dictionaries.
 
-To exit solo mode:
-++shift+left-button++ -> Reselect dictionaries that were previously selected before entering solo mode.
+To exit the mode:
+++shift+left-button++ -> Restore all the selected dictionaries before entering the mode
 
 For example, there are 4 dictionaries A,B,C,D with ABC selected.
 
