@@ -39,7 +39,7 @@ To enter the mode:
 ++ctrl+left-button++ -> Reselect all dictionaries.
 
 To exit the mode:
-++shift+left-button++ -> Restore all the selected dictionaries before entering the mode
+++shift+left-button++ -> Reselect dictionaries that were previously selected before entering solo mode.
 
 For example, there are 4 dictionaries A,B,C,D with ABC selected.
 
