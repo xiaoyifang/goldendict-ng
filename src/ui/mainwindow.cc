@@ -308,6 +308,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   QAction * soloAction = new QAction( QIcon( ":/icons/solo.svg" ), tr( "Quick Selection mode" ), this );
   soloAction->setCheckable( false );
   soloAction->setEnabled( false );
+  soloAction->setVisible( false );
   soloAction->setToolTip(
     tr( "Ctrl+Click a dictionary to enter the mode,Shift+Click exit the mode and restore previous selection." ) );
 
@@ -597,6 +598,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( &dictionaryBar, &DictionaryBar::openDictionaryFolder, this, &MainWindow::openDictionaryFolder );
   connect( &dictionaryBar, &DictionaryBar::soloModeChanged, this, [ soloAction ]( bool soloMode ) {
     soloAction->setEnabled( soloMode );
+    soloAction->setVisible( soloMode );
   } );
 
   // Favorites
