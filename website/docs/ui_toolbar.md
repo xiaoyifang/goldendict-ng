@@ -38,15 +38,15 @@ Focus on a single dictionary temporarily.
 + ++ctrl+"Click"++ again on another unselected dictionary --> select that single dictionary.
 + ++ctrl+"Click"++ again on the selected dictionary --> reselect all dictionaries.
 
-To reselect the initially selected dictionaries before the continous clicking with ++ctrl++ or ++shift++, uses ++shift+"Click"++ instead .
+To reselect the initially selected dictionaries, use ++shift+"Click"++ instead.
 
 For example, there are 3 dictionaries A,B,C with A,B initially selected.
 
 | Clicking Sequence                                                         | Outcome                                                     |
 |---------------------------------------------------------------------------|-------------------------------------------------------------|
 | ++ctrl+"Click"++ + A                                                      | select A only                                               |
-| ++ctrl+"Click"++ + A --> ++ctrl+"Click"++ + A                             | select A first --> all A,B,C reselected                     |
-| ++shift+"Click"++ + A --> ++shift+"Click"++ + A                           | select A first --> reselect the inital selection A,B        |
+| ++ctrl+"Click"++ + A --> ++ctrl+"Click"++ + A                             | select A --> all A,B,C reselected                           |
+| ++shift+"Click"++ + A --> ++shift+"Click"++ + A                           | select A --> reselect the inital selection A,B              |
 | ++ctrl+"Click"++ + A --> ++ctrl+"Click"++ + B --> ++ctrl+"Click"++ + B    | select A --> select B --> reselect all                      |
 | ++shift+"Click"++ + A --> ++shift+"Click"++ + C --> ++shift+"Click"++ + C | select A --> select C --> reselect the inital selection A,B |
 
