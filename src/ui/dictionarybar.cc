@@ -244,53 +244,41 @@ void DictionaryBar::actionWasTriggered( QAction * action )
   }
 
   /// Handling Temporary Selection (was Solo mode)
-  /// tempSelction / -> False -> Memorize the selction
-  ///              \ -> True  -> isChecked /-> True -> Reselect all depends on Ctrl or Shift
-  ///                                      \-> False -> Change current single selection
-  if ( QApplication::keyboardModifiers() & ( Qt::ControlModifier | Qt::ShiftModifier ) ) {
-    if ( tempSelection == true ) {
+  /// Click with modifiers
+  /// tempSelction / -> no value : memorize the selction
+  ///              \ -> has value: dict already selected /-> true : reselect all depends on Ctrl or Shift
+  ///                                                    \-> false: change current single selection
+  if ( ( Qt::ControlModifier | Qt::ShiftModifier ) & QApplication::keyboardModifiers() ) {
+    if ( tempSelectionInitallyMuted.has_value() ) {
 
-      if ( mutedDictionaries->contains( id ) ) { // Ctrl/Shift+Clicked an unselected dict
-        selectSingleDict( id );
-      }
-      else { // Click/Shift+Clicked an selected dict
+      if ( !mutedDictionaries->contains( id ) ) { // clicked an selected dict
 
-        if ( QApplication::keyboardModifiers() & ( Qt::ControlModifier ) ) {
-          // Restore all selection
+        if ( Qt::ControlModifier & QApplication::keyboardModifiers() ) {
           mutedDictionaries->clear();
         }
-        else if ( QApplication::keyboardModifiers() & ( Qt::ShiftModifier ) ) {
-          //Restore the inital selection
-          *mutedDictionaries = tempSelectionInitallyMuted;
+        else if ( Qt::ShiftModifier & QApplication::keyboardModifiers() ) {
+          *mutedDictionaries = tempSelectionInitallyMuted.value();
         }
-
-        tempSelection = false;
-        tempSelectionInitallyMuted.clear();
+        tempSelectionInitallyMuted.reset();
+      }
+      else { // clicked an unselected dict
+        selectSingleDict( id );
       }
     }
-    else if ( tempSelection == false ) {
+    else {
       // Memorize selection list and focus on single dict
-      tempSelection              = true;
-      tempSelectionInitallyMuted = *mutedDictionaries;
-
+      tempSelectionInitallyMuted.emplace( *mutedDictionaries );
       selectSingleDict( id );
     }
   }
   else { // No modifiers
-    tempSelection = false;
-    tempSelectionInitallyMuted.clear();
+    tempSelectionInitallyMuted.reset();
 
     if ( action->isChecked() ) {
-      // Unmute the dictionary
-      if ( mutedDictionaries->contains( id ) ) {
-        mutedDictionaries->remove( id );
-      }
+      mutedDictionaries->remove( id );
     }
     else {
-      // Mute the dictionary
-      if ( !mutedDictionaries->contains( id ) ) {
-        mutedDictionaries->insert( id );
-      }
+      mutedDictionaries->insert( id );
     }
   }
   configEvents.signalMutedDictionariesChanged();

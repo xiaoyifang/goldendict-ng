@@ -42,13 +42,13 @@ To reselect the initially selected dictionaries before the continous clicking wi
 
 For example, there are 3 dictionaries A,B,C with A,B initially selected.
 
-| Clicking Sequence                                                       | Outcome                                                     |
-|-------------------------------------------------------------------------|-------------------------------------------------------------|
-| ++ctrl+"Click"++ + A                                                    | select A only                                               |
-| ++ctrl+"Click"++ + A --> ++ctrl+"Click"++ + A                           | select A first --> all A,B,C reselected                     |
-| ++ctrl+"Click"++ + A --> ++shift+"Click"++ + A                          | select A first --> reselect the inital selection A,B        |
-| ++ctrl+"Click"++ + A --> ++ctrl+"Click"++ + B --> ++ctrl+"Click"++ + B  | select A --> select B --> reselect all                      |
-| ++ctrl+"Click"++ + A --> ++ctrl+"Click"++ + C --> ++shift+"Click"++ + C | select A --> select C --> reselect the inital selection A,B |
+| Clicking Sequence                                                         | Outcome                                                     |
+|---------------------------------------------------------------------------|-------------------------------------------------------------|
+| ++ctrl+"Click"++ + A                                                      | select A only                                               |
+| ++ctrl+"Click"++ + A --> ++ctrl+"Click"++ + A                             | select A first --> all A,B,C reselected                     |
+| ++shift+"Click"++ + A --> ++shift+"Click"++ + A                           | select A first --> reselect the inital selection A,B        |
+| ++ctrl+"Click"++ + A --> ++ctrl+"Click"++ + B --> ++ctrl+"Click"++ + B    | select A --> select B --> reselect all                      |
+| ++shift+"Click"++ + A --> ++shift+"Click"++ + C --> ++shift+"Click"++ + C | select A --> select C --> reselect the inital selection A,B |
 
 Note: This can also be used in the "Found in dictionaries" panel.
 

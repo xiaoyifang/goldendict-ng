@@ -62,8 +62,7 @@ private:
   Config::MutedDictionaries * mutedDictionaries;
   Config::Events & configEvents;
 
-  Config::MutedDictionaries tempSelectionInitallyMuted;
-  bool tempSelection = false;
+  std::optional< Config::MutedDictionaries > tempSelectionInitallyMuted;
   void selectSingleDict( const QString & id );
 
   // how many dictionaries should be shown in the context menu:
