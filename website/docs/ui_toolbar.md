@@ -24,7 +24,6 @@ The search line can use wildcard or glob symbols for matching words.
 
 More information about wildcard matching can be found in [Wikipedia's glob article](https://en.wikipedia.org/wiki/Glob_(programming)).
 
-
 ## Dictionary Bar
 
 The dictionary bar shows dictionaries from the current group.
@@ -33,7 +32,7 @@ Click the icons to select/unselect them.
 
 ### Temporary Selection (was Solo Mode)
 
-Focus on a single dictionary temporally.
+Focus on a single dictionary temporarily.
 
 + ++ctrl+"Click"++ a dictionary --> select a single dictionary.
 + ++ctrl+"Click"++ again on another unselected dictionary --> select that single dictionary.
@@ -48,8 +47,8 @@ For example, there are 3 dictionaries A,B,C with A,B initially selected.
 | ++ctrl+"Click"++ + A                                                    | select A only                                               |
 | ++ctrl+"Click"++ + A --> ++ctrl+"Click"++ + A                           | select A first --> all A,B,C reselected                     |
 | ++ctrl+"Click"++ + A --> ++shift+"Click"++ + A                          | select A first --> reselect the inital selection A,B        |
-| ++ctrl+"Click"++ + A --> ++ctrl+"Click"++ + B --> ++ctrl+"Click"++ + B  | select A --> select B --> then reselect all                 |
-| ++ctrl+"Click"++ + A --> ++ctrl+"Click"++ + C --> ++shift+"Click"++ + A | select A --> select C --> reselect the inital selection A,B |
+| ++ctrl+"Click"++ + A --> ++ctrl+"Click"++ + B --> ++ctrl+"Click"++ + B  | select A --> select B --> reselect all                      |
+| ++ctrl+"Click"++ + A --> ++ctrl+"Click"++ + C --> ++shift+"Click"++ + C | select A --> select C --> reselect the inital selection A,B |
 
-Note: This can also be used on the "Found in dictionaries" panel.
+Note: This can also be used in the "Found in dictionaries" panel.
 

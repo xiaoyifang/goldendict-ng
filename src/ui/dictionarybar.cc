@@ -249,30 +249,31 @@ void DictionaryBar::actionWasTriggered( QAction * action )
   ///                                      \-> False -> Change current single selection
   if ( QApplication::keyboardModifiers() & ( Qt::ControlModifier | Qt::ShiftModifier ) ) {
     if ( tempSelection == true ) {
+
       if ( mutedDictionaries->contains( id ) ) { // Ctrl/Shift+Clicked an unselected dict
         selectSingleDict( id );
       }
       else { // Click/Shift+Clicked an selected dict
-        tempSelection = false;
 
-        // Restore all selection
         if ( QApplication::keyboardModifiers() & ( Qt::ControlModifier ) ) {
+          // Restore all selection
           mutedDictionaries->clear();
-          tempSelectionInitallyMuted.clear();
+        }
+        else if ( QApplication::keyboardModifiers() & ( Qt::ShiftModifier ) ) {
+          //Restore the inital selection
+          *mutedDictionaries = tempSelectionInitallyMuted;
         }
 
-        //Restore the inital selection
-        else if ( QApplication::keyboardModifiers() & ( Qt::ShiftModifier ) ) {
-          *mutedDictionaries = tempSelectionInitallyMuted;
-          tempSelectionInitallyMuted.clear();
-        }
+        tempSelection = false;
+        tempSelectionInitallyMuted.clear();
       }
     }
     else if ( tempSelection == false ) {
       // Memorize selection list and focus on single dict
+      tempSelection              = true;
       tempSelectionInitallyMuted = *mutedDictionaries;
+
       selectSingleDict( id );
-      tempSelection = true;
     }
   }
   else { // No modifiers
