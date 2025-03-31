@@ -35,9 +35,9 @@ Click the icons to select/unselect them.
 In this mode, only a single dictionary can be selected.
 
 Enter the mode:
-++ctrl+"Click"++ or ++shift+"Click"++.
+++ctrl+"Click"++ or ++shift+"Click"++ a dictionary icon.
 
-Exit the mode.
+Exit the mode:
 
 ++ctrl+"Click"++ the selected dictionary will reselect all dictionaries.
 
@@ -45,12 +45,12 @@ Exit the mode.
 
 For example, there are 3 dictionaries A,B,C with A,B initially selected.
 
-| Clicking Sequence                                                  | Outcome                                      |
-|--------------------------------------------------------------------|----------------------------------------------|
-| ++ctrl+"Click"++ + A                                               | select A only                                |
-| ++ctrl+"Click"++ + A --> ++ctrl+"Click"++ + A                      | select A --> reselect all A,B,C              |
-| ++ctrl+"Click"++ + A --> ++"Click"++ + B --> ++ctrl+"Click"++ + B  | select A --> select B --> reselect all A,B,C |
-| ++ctrl+"Click"++ + A --> ++"Click"++ + B --> ++shift+"Click"++ + B | select A --> select B --> reselect A,B       |
+| Clicking Sequence                                                   | Outcome                                      |
+|---------------------------------------------------------------------|----------------------------------------------|
+| ++ctrl+"Click"++ + A                                                | select A only                                |
+| ++ctrl+"Click"++ + A --> ++ctrl+"Click"++ + A                       | select A --> reselect all A,B,C              |
+| ++ctrl+"Click"++ + A --> ++"Click"++ + B --> ++ctrl+"Click"++ + B   | select A --> select B --> reselect all A,B,C |
+| ++shift+"Click"++ + A --> ++"Click"++ + B --> ++shift+"Click"++ + B | select A --> select B --> reselect A,B       |
 
-Note: This can also be used in the "Found in dictionaries" panel.
-
+!!! note:
+This can also be used in the "Found in dictionaries" panel to temporarily focus on a single dictionary.
