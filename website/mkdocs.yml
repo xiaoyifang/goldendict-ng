@@ -52,7 +52,9 @@ nav:
   - Related tools:
       - Anki Integration: topic_anki.md
       - OCR Integration: howto/ocr.md
-  - Report Bugs & Feedbacks: feedbacks.md
+  - Report Bugs & Feedbacks: 
+    - Feedbacks: feedbacks.md
+    - FAQs: faq.md
   - Development Info:
     - Start develop: developer.md
     - Build from source: howto/build_from_source.md
