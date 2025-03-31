@@ -243,23 +243,23 @@ void DictionaryBar::actionWasTriggered( QAction * action )
     return; // Some weird action, not our button
   }
 
-  /// Real Solo Mode
+  /// Single Selection Mode
   /// Click         (in mode)
-  /// tempSelect -> has value  -> dict was selected: reselect depends on Ctrl/Shift, discard memorized selection
-  ///                          -> dict was not selected: select a single one
-  ///             -> no value  -> has modifier: select a single dict + memorize
-  ///           (not in mode)  -> no modifier: normal
+  /// singleSelect -> has value  -> dict was selected: reselect depends on Ctrl/Shift, discard memorized selection
+  ///                           -> dict was not selected: select a single one
+  ///              -> no value  -> has modifier: select a single dict + memorize
+  ///            (not in mode)  -> no modifier: normal
   ///
 
-  if ( tempSelectionInitallyMuted.has_value() ) { // (in mode)
-    if ( !mutedDictionaries->contains( id ) ) { // dict was selected
+  if ( singleSelectionInitallyMuted.has_value() ) { // (in mode)
+    if ( !mutedDictionaries->contains( id ) ) {   // dict was selected
       if ( Qt::ControlModifier & QApplication::keyboardModifiers() ) {
         mutedDictionaries->clear();
       }
       else if ( Qt::ShiftModifier & QApplication::keyboardModifiers() ) {
-        *mutedDictionaries = tempSelectionInitallyMuted.value();
+        *mutedDictionaries = singleSelectionInitallyMuted.value();
       }
-      tempSelectionInitallyMuted.reset();
+      singleSelectionInitallyMuted.reset();
     }
     else { // dict was not selected
       selectSingleDict( id );
@@ -267,7 +267,7 @@ void DictionaryBar::actionWasTriggered( QAction * action )
   }
   else {
     if ( ( Qt::ControlModifier | Qt::ShiftModifier ) & QApplication::keyboardModifiers() ) {
-      tempSelectionInitallyMuted.emplace( *mutedDictionaries );
+      singleSelectionInitallyMuted.emplace( *mutedDictionaries );
       selectSingleDict( id );
     }
     else { // Normal
