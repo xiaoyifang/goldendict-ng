@@ -32,9 +32,12 @@ Click the icons to select/unselect them.
 
 ### Solo Mode
 
-Focus on a single dictionary temporarily.
+In this mode, only a single dictionary can be selected.
 
-++ctrl+"Click"++ or ++strl+"Click"++ will select a single dictionary and enter solo mode, then only a single dictionary will be selected.
+Enter the mode:
+++ctrl+"Click"++ or ++shift+"Click"++.
+
+Exit the mode.
 
 ++ctrl+"Click"++ the selected dictionary will reselect all dictionaries.
 
@@ -42,12 +45,12 @@ Focus on a single dictionary temporarily.
 
 For example, there are 3 dictionaries A,B,C with A,B initially selected.
 
-| Clicking Sequence                                                  | Outcome                                |
-|--------------------------------------------------------------------|----------------------------------------|
-| ++ctrl+"Click"++ + A                                               | select A only                          |
-| ++ctrl+"Click"++ + A --> ++"Click"++ + B                           | select A --> select B                  |
-| ++ctrl+"Click"++ + A --> ++"Click"++ + A                           | select A --> reselect all A,B,C        |
-| ++ctrl+"Click"++ + A --> ++"Click"++ + B --> ++shift+"Click"++ + B | select A --> select B --> reselect A,B |
+| Clicking Sequence                                                  | Outcome                                      |
+|--------------------------------------------------------------------|----------------------------------------------|
+| ++ctrl+"Click"++ + A                                               | select A only                                |
+| ++ctrl+"Click"++ + A --> ++ctrl+"Click"++ + A                      | select A --> reselect all A,B,C              |
+| ++ctrl+"Click"++ + A --> ++"Click"++ + B --> ++ctrl+"Click"++ + B  | select A --> select B --> reselect all A,B,C |
+| ++ctrl+"Click"++ + A --> ++"Click"++ + B --> ++shift+"Click"++ + B | select A --> select B --> reselect A,B       |
 
 Note: This can also be used in the "Found in dictionaries" panel.
 
