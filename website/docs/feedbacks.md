@@ -14,17 +14,25 @@ On windows, try open command line and starts goldendict with `goldendict --log-t
 
 If certain dictionary lead to problems, please attach the dict files in bug reports.
 
-## Windows/Linux
+## Crash dump file
 
 Gd-ng has built with a crash dmp handler, if you have a crash, please attach the crash dump file in bug reports.
 
-### Crash dump file
-
 ![alt text](img/crash-dmp.png)
+
+### Windows
+
+Enabled by default.
 
 upload the recent dmp file to [crash-dmp](https://github.com/xiaoyifang/goldendict/issues/new?assignees=&labels=crash-dmp&template=bug_report.md&title=crash-dmp-file)
 
-## macOS
+### Linux
+
+Not enabled by default.
+
+Maybe you should build it from source and enable this option(`-DWITH_VCPKG_BREAKPAD=ON` ) and upload the above dmp file.
+
+### macOS
 
 macOS have a built-in crash reporter, copy all the info in the crash window.
 
