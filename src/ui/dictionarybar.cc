@@ -252,7 +252,7 @@ void DictionaryBar::actionWasTriggered( QAction * action )
   ///
 
   if ( singleSelectionInitallyMuted.has_value() ) { // (in mode)
-    if ( !mutedDictionaries->contains( id ) ) {   // dict was selected
+    if ( !mutedDictionaries->contains( id ) ) {     // dict was selected
       if ( Qt::ControlModifier & QApplication::keyboardModifiers() ) {
         mutedDictionaries->clear();
       }
