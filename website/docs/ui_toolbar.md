@@ -32,13 +32,13 @@ Click the icons to select/unselect them.
 
 ### Single Selection Mode (was Solo Mode)
 
-In this mode, only a single dictionary can be selected.
+When this mode is active, only one single dictionary can be selected at a time.
 
-Enter the mode:
+Enter mode:
 
 - ++ctrl+"Click"++ or ++shift+"Click"++ a dictionary icon.
 
-Exit the mode:
+Exit mode:
 
 - ++ctrl+"Click"++ the selected dictionary will reselect all dictionaries.
 - ++shift+"Click"++ the selected dictionary will reselect dictioanries selected before entering the mode.
@@ -52,5 +52,5 @@ For example, there are 3 dictionaries A,B,C with A,B initially selected.
 | ++ctrl+"Click"++ + A --> ++"Click"++ + B --> ++ctrl+"Click"++ + B   | select A --> select B --> reselect all A,B,C                 |
 | ++shift+"Click"++ + A --> ++"Click"++ + B --> ++shift+"Click"++ + B | select A --> select B --> reselect the initally selected A,B |
 
-!!!note
+!!! note
 This can also be used in the "Found in dictionaries" panel to temporarily focus on a single dictionary.
