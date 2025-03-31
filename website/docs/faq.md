@@ -1,0 +1,13 @@
+# FAQ
+
+## Where is the ffmpeg audio player[Windows]?
+
+![alt text](img/audio-engines.png)
+
+On Linux, it still hold the ffmpeg audio player options(This option can be enabled by `-DWITH_FFMPEG_PLAYER=ON`). 
+
+On Windows, it is disabled by default.
+
+Why?
+
+From Qt6.5+, Qt has used ffmpeg as default implementation of QMultimedia. So, the ffmpeg audio player option is not needed.
