@@ -14,12 +14,18 @@ On windows, try open command line and starts goldendict with `goldendict --log-t
 
 If certain dictionary lead to problems, please attach the dict files in bug reports.
 
-## Linux/Systemd
+## Windows/Linux
 
-Most distros with systemd have systemd-coredump service enabled. Attach a core dump if possible.
+Gd-ng has built with a crash dmp handler, if you have a crash, please attach the crash dump file in bug reports.
 
-<https://wiki.archlinux.org/title/Core_dump#Making_a_core_dump>
+### Crash dump file
+
+![alt text](img/crash-dmp.png)
+
+upload the recent dmp file to [crash-dmp](https://github.com/xiaoyifang/goldendict/issues/new?assignees=&labels=crash-dmp&template=bug_report.md&title=crash-dmp-file)
 
 ## macOS
 
 macOS have a built-in crash reporter, copy all the info in the crash window.
+
+[crash-dmp](https://github.com/xiaoyifang/goldendict/issues/new?assignees=&labels=crash-dmp&template=bug_report.md&title=crash-dmp-file)
