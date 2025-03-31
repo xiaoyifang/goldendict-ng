@@ -11,3 +11,5 @@ On Windows, it is disabled by default.
 Why?
 
 From Qt6.5+, Qt has used ffmpeg as default implementation of QMultimedia. So, the ffmpeg audio player option is not needed.
+
+If you still want to use ffmpeg audio player, you can configure the external program [Configure](<https://xiaoyifang.github.io/goldendict-ng/ui_audioengine/>)
