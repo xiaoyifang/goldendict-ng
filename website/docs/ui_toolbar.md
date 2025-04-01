@@ -34,14 +34,15 @@ Click the icons to select/unselect them.
 
 When this mode is active, only one single dictionary can be selected at a time.
 
-Enter mode:
+There are two ways to use this feature:
 
-- ++ctrl+"Click"++ or ++shift+"Click"++ a dictionary icon.
+- ++shift+"Click"++ a dictionary icon to enter the mode
+- ++shift+"Click"++ the selected dictionary to reselect dictioanries selected before entering the mode.
 
-Exit mode:
+and
 
-- ++ctrl+"Click"++ the selected dictionary will reselect all dictionaries.
-- ++shift+"Click"++ the selected dictionary will reselect dictioanries selected before entering the mode.
+- ++ctrl+"Click"++ a dictionary icon to enter the mode
+- ++ctrl+"Click"++ the selected dictionary to reselect all dictionaries
 
 For example, there are 3 dictionaries A,B,C with A,B initially selected.
 
@@ -53,4 +54,4 @@ For example, there are 3 dictionaries A,B,C with A,B initially selected.
 | ++shift+"Click"++ + A --> ++"Click"++ + B --> ++shift+"Click"++ + B | select A --> select B --> reselect the initally selected A,B |
 
 !!! note
-This can also be used in the "Found in dictionaries" panel to temporarily focus on a single dictionary.
+    This can also be used in the "Found in dictionaries" panel to temporarily focus on a single dictionary.
