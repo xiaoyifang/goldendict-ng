@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+        xmlns:dc="http://purl.org/dc/elements/1.1/"
+        xmlns:cc="http://creativecommons.org/ns#"
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+        xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+        width="131.80875mm"
+        height="140.24164mm"
+        viewBox="0 0 131.80875 140.24164"
+        version="1.1"
+        id="svg8"
+        sodipodi:docname="hira.svg"
+        inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
+    <defs
+            id="defs2"/>
+    <sodipodi:namedview
+            id="base"
+            pagecolor="#ffffff"
+            bordercolor="#666666"
+            borderopacity="1.0"
+            inkscape:pageopacity="0.0"
+            inkscape:pageshadow="2"
+            inkscape:zoom="1.4"
+            inkscape:cx="262.33226"
+            inkscape:cy="206.86758"
+            inkscape:document-units="mm"
+            inkscape:current-layer="layer1"
+            showgrid="false"
+            inkscape:window-width="1920"
+            inkscape:window-height="1017"
+            inkscape:window-x="-8"
+            inkscape:window-y="-8"
+            inkscape:window-maximized="1"
+            inkscape:snap-text-baseline="true"/>
+    <metadata
+            id="metadata5">
+        <rdf:RDF>
+            <cc:Work
+                    rdf:about="">
+                <dc:format>image/svg+xml</dc:format>
+                <dc:type
+                        rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+                <dc:title/>
+            </cc:Work>
+        </rdf:RDF>
+    </metadata>
+    <g
+            inkscape:label="Layer 1"
+            inkscape:groupmode="layer"
+            id="layer1"
+            transform="translate(-41.445089,-73.781815)">
+        <path
+                style="fill:#808000;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+                d="m 41.577381,100.45238 c 0,0 14.363094,18.14286 15.119046,18.89881 0.755954,0.75595 4.535715,-25.702381 46.869043,-27.970238 42.33334,-2.267858 52.91667,23.434528 52.91667,23.434528 l -6.04762,6.04761 21.16667,-0.75595 -2.26786,-18.14286 -3.02381,5.29167 c 0,0 -2.26786,-21.166665 -41.57738,-30.994046 C 85.422617,66.434522 59.720238,90.625 59.720238,90.625 c 0,0 -18.142857,21.16667 -18.142857,9.82738 z"
+                id="path4550"
+                inkscape:connector-curvature="0"/>
+        <path
+                style="fill:#808000;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+                d="m 173.12155,187.35289 c 0,0 -14.3631,-18.14286 -15.11905,-18.89881 -0.75595,-0.75595 -4.53571,25.70238 -46.86904,27.97024 -42.33334,2.26786 -52.91667,-23.43453 -52.91667,-23.43453 l 6.04762,-6.04761 -21.16667,0.75595 2.26786,18.14286 3.02381,-5.29167 c 0,0 2.26786,21.16667 41.57738,30.99405 39.30952,9.82738 65.0119,-14.3631 65.0119,-14.3631 0,0 18.14286,-21.16667 18.14286,-9.82738 z"
+                id="path4550-3"
+                inkscape:connector-curvature="0"/>
+        <text
+                xml:space="preserve"
+                style="font-size:19.93068504px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;stroke-width:0.49826714"
+                x="46.438095"
+                y="122.5906"
+                id="text4542"
+                transform="scale(0.88140087,1.1345575)"><tspan
+         sodipodi:role="line"
+         id="tspan4540"
+         x="46.438095"
+         y="122.5906"
+         style="fill:#ff0000;stroke-width:0.49826714">Roman</tspan></text>
+        <text
+                xml:space="preserve"
+                style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:22.42477036px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;stroke-width:0.56062484;fill:#0000ff;"
+                x="84.812172"
+                y="151.8071"
+                id="text4546"
+                transform="scale(0.88656876,1.1279441)"><tspan
+         sodipodi:role="line"
+         id="tspan4544"
+         x="84.812172"
+         y="151.8071"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:22.42477036px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#0000ff;stroke-width:0.56062484;">hiragana</tspan></text>
+    </g>
+</svg>
