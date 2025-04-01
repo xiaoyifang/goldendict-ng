@@ -7,9 +7,9 @@ Holding Ctrl or Shift will display the translation result in a new tab.
 
 ### Wildcard matching
 
-The search line can use wildcard or glob symbols for matching words.
+The search line can use wildcard or glob symbols for matching words.  
 
-| Wildcard | Description                                                            |
+| Wildcard | Description                                                            | 
 |----------|------------------------------------------------------------------------|
 | `?`      | Matches any single character.                                          |
 | `*`      | Matches zero or more of any characters.                                |
@@ -24,33 +24,31 @@ The search line can use wildcard or glob symbols for matching words.
 
 More information about wildcard matching can be found in [Wikipedia's glob article](https://en.wikipedia.org/wiki/Glob_(programming)).
 
+
 ## Dictionary Bar
 
-The dictionary bar shows dictionaries from the current group.
+The dictionary bar contains all dictionaries from the current dictionaries group. Click the icons to disable/enable them.
 
-Click the icons to select/unselect them.
+### "Solo" mode
 
-### Single Selection Mode (was Solo Mode)
+Temporally focus on a single dictionary and restore back to all dictionaries or previously selected dictionaries.
 
-When this mode is active, only one single dictionary can be selected at a time.
+To enter solo mode:
 
-Enter mode:
+++ctrl+left-button++ -> Select a single dictionary.
+++ctrl+left-button++ -> Reselect all dictionaries.
 
-- ++ctrl+"Click"++ or ++shift+"Click"++ a dictionary icon.
+To exit solo mode:
+++shift+left-button++ -> Reselect dictionaries that were previously selected before entering solo mode.
 
-Exit mode:
+For example, there are 4 dictionaries A,B,C,D with ABC selected.
 
-- ++ctrl+"Click"++ the selected dictionary will reselect all dictionaries.
-- ++shift+"Click"++ the selected dictionary will reselect dictioanries selected before entering the mode.
+| Cases                                    | Note                                         |
+|------------------------------------------|----------------------------------------------|
+| Ctrl+Click A                             | select A only                                |
+| Ctrl+Click A, Ctrl+Click B               | select B only                                |
+| Ctrl+Click A, Ctrl+Click A               | A,B,C,D selected (all dictionaries selected) |
+| Ctrl+Click A, Shift+Click any dictionary | A,B,C selected                               |
 
-For example, there are 3 dictionaries A,B,C with A,B initially selected.
+Note: This can also be used on the "Found in dictionaries" panel.
 
-| Clicking Sequence                                                   | Outcome                                                      |
-|---------------------------------------------------------------------|--------------------------------------------------------------|
-| ++ctrl+"Click"++ + A                                                | select A only                                                |
-| ++ctrl+"Click"++ + A --> ++ctrl+"Click"++ + A                       | select A --> reselect all A,B,C                              |
-| ++ctrl+"Click"++ + A --> ++"Click"++ + B --> ++ctrl+"Click"++ + B   | select A --> select B --> reselect all A,B,C                 |
-| ++shift+"Click"++ + A --> ++"Click"++ + B --> ++shift+"Click"++ + B | select A --> select B --> reselect the initally selected A,B |
-
-!!! note
-This can also be used in the "Found in dictionaries" panel to temporarily focus on a single dictionary.
