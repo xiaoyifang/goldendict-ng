@@ -255,11 +255,12 @@ void DictionaryBar::actionWasTriggered( QAction * action )
     if ( !mutedDictionaries->contains( id ) ) {     // dict was selected
       if ( Qt::ControlModifier & QApplication::keyboardModifiers() ) {
         mutedDictionaries->clear();
+        singleSelectionInitallyMuted.reset();
       }
       else if ( Qt::ShiftModifier & QApplication::keyboardModifiers() ) {
         *mutedDictionaries = singleSelectionInitallyMuted.value();
+        singleSelectionInitallyMuted.reset();
       }
-      singleSelectionInitallyMuted.reset();
     }
     else { // dict was not selected
       selectSingleDict( id );
