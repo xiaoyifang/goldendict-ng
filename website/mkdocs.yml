@@ -22,13 +22,12 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.keys
-  - pymdownx.smartsymbols
 
 nav:
   - Getting started: index.md
   - Download & Install: install.md
   - Dictionary Formats: dictformats.md
-  - Manage Dictionaries:
+  - Manage Dictionaries: 
       - Sources: manage_sources.md
       - Groups: manage_groups.md
   - Interface:
