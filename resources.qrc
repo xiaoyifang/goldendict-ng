@@ -101,5 +101,7 @@
         <file>icons/hk.svg</file>
         <file>icons/hira.svg</file>
         <file>icons/kata.svg</file>
+        <file>icons/ru-trans.svg</file>
+        <file>icons/de-trans.svg</file>
     </qresource>
 </RCC>
