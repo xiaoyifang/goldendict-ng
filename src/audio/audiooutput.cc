@@ -9,6 +9,9 @@
 #include <QtGlobal>
 #include <QBuffer>
 
+// fixes #2272 issue's error on use of qWarning for compiling against qt 6.9.0
+#include <QDebug>
+
 // take reference from this file (https://github.com/valbok/QtAVPlayer/blob/6cc30e484b354d59511c9a60fabced4cb7c57c8e/src/QtAVPlayer/qavaudiooutput.cpp)
 // and make some changes.
 
