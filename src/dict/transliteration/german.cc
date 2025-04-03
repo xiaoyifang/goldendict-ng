@@ -46,7 +46,7 @@ sptr< Dictionary::Class > makeDictionary()
   return std::make_shared< Transliteration::TransliterationDictionary >(
     "cf1b74acd98adea9b2bba16af38f1081",
     QCoreApplication::translate( "GermanTranslit", "German Transliteration" ).toUtf8().data(),
-    QIcon( ":/flags/de.png" ),
+    QIcon( ":/icons/de-trans.svg" ),
     t );
 }
 
