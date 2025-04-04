@@ -260,7 +260,7 @@ void DictionaryBar::actionWasTriggered( QAction * action )
   //  Ctrl Click Single Selection
   if ( QApplication::keyboardModifiers().testFlag( Qt::ControlModifier ) ) {
     // Ctrl+Clicked the only one selected
-    if ( (dictActions.size() - mutedDictionaries->size()) == 1 && !action->isChecked() ) {
+    if ( ( dictActions.size() - mutedDictionaries->size() ) == 1 && !action->isChecked() ) {
       mutedDictionaries->clear();
     }
     else {
