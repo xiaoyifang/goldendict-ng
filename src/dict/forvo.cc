@@ -389,5 +389,8 @@ makeDictionaries( Dictionary::Initializing &, Config::Forvo const & forvo, QNetw
   return result;
 }
 
-#include "forvo.moc"
 } // namespace Forvo
+
+// fixes #2272
+// automoc include for Q_OBJECT should be at the very end of source code file, not inside a namespace
+#include "forvo.moc"

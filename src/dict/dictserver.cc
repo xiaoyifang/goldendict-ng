@@ -956,5 +956,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::DictServers const 
 
   return result;
 }
-#include "dictserver.moc"
+
 } // namespace DictServer
+
+// fixes #2272
+// automoc include for Q_OBJECT should be at the very end of source code file, not inside a namespace
+#include "dictserver.moc"

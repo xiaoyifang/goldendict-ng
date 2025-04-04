@@ -489,5 +489,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::WebSites const & w
   return result;
 }
 
-#include "website.moc"
 } // namespace WebSite
+
+// fixes #2272
+// automoc include for Q_OBJECT should be at the very end of source code file, not inside a namespace
+#include "website.moc"

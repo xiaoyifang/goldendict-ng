@@ -746,5 +746,8 @@ makeDictionaries( Dictionary::Initializing &, Config::MediaWikis const & wikis, 
   return result;
 }
 
-#include "mediawiki.moc"
 } // namespace MediaWiki
+
+// fixes #2272
+// automoc include for Q_OBJECT should be at the very end of source code file, not inside a namespace
+#include "mediawiki.moc"

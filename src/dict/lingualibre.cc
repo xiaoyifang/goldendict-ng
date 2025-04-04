@@ -382,5 +382,8 @@ void LinguaArticleRequest::requestFinished( QNetworkReply * r )
   }
 }
 
-#include "lingualibre.moc"
 } // end namespace Lingua
+
+// fixes #2272
+// automoc include for Q_OBJECT should be at the very end of source code file, not inside a namespace
+#include "lingualibre.moc"
