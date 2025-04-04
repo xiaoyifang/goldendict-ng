@@ -8,28 +8,12 @@
       <translation>Tietoja</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>GoldenDict-sanakirjaohjelma, versio </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>Lisensoitu GNU GPLv3:n mukaan tai myöhemmin</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Kopioi version tiedot</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Kopioi sanakirjaluettelo</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Avustajat:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Perustuu Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -519,10 +503,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Jokerimerkit</translation>
     </message>
     <message>
-      <source>RegExp</source>
-      <translation>RegExp</translation>
-    </message>
-    <message>
       <source>Unique headwords total: %1.</source>
       <translation>Ainutlaatuiset kuulokkeet yhteensä: %1.</translation>
     </message>
@@ -557,6 +537,10 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>Export finished</source>
       <translation>Vienti valmis</translation>
+    </message>
+    <message>
+      <source>Regular Expression</source>
+      <translation>Säännöllinen Lauseke</translation>
     </message>
   </context>
   <context>
@@ -839,6 +823,10 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <source>Are you sure you want to clear all items?</source>
       <translation>Haluatko varmasti tyhjentää kaikki kohteet?</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -953,24 +941,8 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Lisää valitut sanakirjat ryhmään (Ins)</translation>
     </message>
     <message>
-      <source>&gt;</source>
-      <translation>&gt;</translation>
-    </message>
-    <message>
-      <source>Ins</source>
-      <translation>Ins</translation>
-    </message>
-    <message>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>Poista valitut sanakirjat ryhmästä (Del)</translation>
-    </message>
-    <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
-    </message>
-    <message>
-      <source>Del</source>
-      <translation>Del</translation>
     </message>
     <message>
       <source>Groups:</source>
@@ -2192,16 +2164,8 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Sanakirjat...</translation>
     </message>
     <message>
-      <source>F3</source>
-      <translation>F3</translation>
-    </message>
-    <message>
       <source>&amp;Preferences...</source>
       <translation>Asetukset...</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>F4</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
@@ -2224,10 +2188,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Lopeta sovellus</translation>
     </message>
     <message>
-      <source>Ctrl+Q</source>
-      <translation>Ctrl+Q</translation>
-    </message>
-    <message>
       <source>&amp;Forum</source>
       <translation>Foorumi</translation>
     </message>
@@ -2240,10 +2200,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Minimoi ikkunan ilmoitusalueelle</translation>
     </message>
     <message>
-      <source>Ctrl+F4</source>
-      <translation>Ctrl+F4</translation>
-    </message>
-    <message>
       <source>&amp;Save Article</source>
       <translation>Tallenna artikkeli</translation>
     </message>
@@ -2252,16 +2208,8 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Tallenna artikkeli</translation>
     </message>
     <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
       <source>&amp;Print</source>
       <translation>Tulosta</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Ctrl+P</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2276,20 +2224,12 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Skannaa tiedostot uudelleen</translation>
     </message>
     <message>
-      <source>Ctrl+F5</source>
-      <translation>Ctrl+F5</translation>
-    </message>
-    <message>
       <source>&amp;Clear</source>
       <translation>Tyhjennä</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
       <translation>Uusi välilehti</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>Ctrl+T</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2332,28 +2272,12 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Etsi sivulta</translation>
     </message>
     <message>
-      <source>Ctrl+F</source>
-      <translation>Ctrl+F</translation>
-    </message>
-    <message>
       <source>Full-text search</source>
       <translation>Täystekstihaku</translation>
     </message>
     <message>
-      <source>Ctrl+Shift+F</source>
-      <translation>Ctrl+Vaihto+F</translation>
-    </message>
-    <message>
       <source>GoldenDict reference</source>
       <translation>GoldenDictin viite</translation>
-    </message>
-    <message>
-      <source>F1</source>
-      <translation>F1</translation>
-    </message>
-    <message>
-      <source>Show</source>
-      <translation>Näytä</translation>
     </message>
     <message>
       <source>Export</source>
@@ -2370,10 +2294,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>Add current tab to Favorites</source>
       <translation>Lisää nykyinen välilehti suosikkeihin</translation>
-    </message>
-    <message>
-      <source>Ctrl+E</source>
-      <translation>Ctrl+E</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
@@ -2661,6 +2581,18 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Poista otsikkosana &quot;%1&quot; suosikeista?</translation>
     </message>
+    <message>
+      <source>Show</source>
+      <translation>Näytä</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>Tallennus PDF-muodossa valmis</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>PDF-tiedostojen tallennus epäonnistui</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2944,22 +2876,6 @@ sovellus.</translation>
       <translation>Käyttöliittymän Kirjasin</translation>
     </message>
     <message>
-      <source>Interface language:</source>
-      <translation>Käyttöliittymän kieli:</translation>
-    </message>
-    <message>
-      <source>Article Display style:</source>
-      <translation>Artikkelin esitystyyli:</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>Lisäosan tyyli:</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>Käyttöliittymän tyyli:</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Käännä käyttöliittymä pimeäksi.</translation>
     </message>
@@ -3046,32 +2962,16 @@ painettuna tilassa, kun sana valinta muuttuu.</translation>
       <translation>Alt-näppäin</translation>
     </message>
     <message>
-      <source>Alt</source>
-      <translation>Alt</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Ctrl-näppäin</translation>
-    </message>
-    <message>
-      <source>Ctrl</source>
-      <translation>Ctrl</translation>
     </message>
     <message>
       <source>Shift key</source>
       <translation>Shift-näppäin</translation>
     </message>
     <message>
-      <source>Shift</source>
-      <translation>Vaihto</translation>
-    </message>
-    <message>
       <source>Windows key or Meta key</source>
       <translation>Windows-näppäin tai Meta-näppäin</translation>
-    </message>
-    <message>
-      <source>Win/Meta</source>
-      <translation>Win/Meta</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
@@ -3500,10 +3400,6 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <translation>Lingo-sininen</translation>
     </message>
     <message>
-      <source> MB</source>
-      <translation> Mt</translation>
-    </message>
-    <message>
       <source>Auto does nothing on some systems.</source>
       <translation>Auto ei tee mitään joissain järjestelmissä.</translation>
     </message>
@@ -3536,8 +3432,36 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <translation>Automaattinen</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>Ota sovellusloki käyttöön</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Tallenna debug viestit gd_log.txt asetuskansioon</translation>
+    </message>
+    <message>
+      <source>Interface Font Size</source>
+      <translation>Käyttöliittymän Kirjasimen Koko</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Käyttöliittymän kieli</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Artikkelin esitystyyli</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Lisäosan tyyli</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Käyttöliittymän Tyyli</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Esikatsele Kirjasinta</translation>
+    </message>
+    <message>
+      <source>Goldendict-ng is a dictionary software</source>
+      <translation>Goldendict-ng on sanakirja ohjelmisto</translation>
     </message>
   </context>
   <context>
@@ -3648,10 +3572,6 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <translation>Kyselyyn käytettävä sana tai lause.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Tallenna debug viestit gd_log.txt config kansioon.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Palauta ikkunan tila.</translation>
     </message>
@@ -3682,6 +3602,10 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Tulostusversio ja diagnoositiedot.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Tallenna debug viestit gd_log.txt asetuskansioon</translation>
     </message>
   </context>
   <context>
@@ -3735,12 +3659,15 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>Dialogi</translation>
+      <source>WARNING: %1</source>
+      <translation>VAROITUS: %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
-      <translation>Taaksepäin</translation>
+      <translation>Takaisin</translation>
     </message>
     <message>
       <source>Forward</source>
@@ -3767,10 +3694,6 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <translation>Lisää sana suosikeihin (Ctrl+E)</translation>
     </message>
     <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>Näyttää tai piilottaa sanakirjan</translation>
-    </message>
-    <message>
       <source>Always stay on top of all other windows</source>
       <translation>Pysy aina kaikkien muiden ikkunoiden päällä</translation>
     </message>
@@ -3779,10 +3702,6 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
 could be resized or managed in other ways.</source>
       <translation>Tämän avulla voit kiinnittää ikkunan alaspäin, jotta se pysyisi ruudulla,
 voidaan muuttaa tai hallita muulla tavoin.</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>VAROITUS: %1</translation>
     </message>
   </context>
   <context>

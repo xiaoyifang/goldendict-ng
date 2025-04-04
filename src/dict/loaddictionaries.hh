@@ -9,6 +9,7 @@
 
 #include <QThread>
 #include <QNetworkAccessManager>
+#include <QStringList>
 
 /// Use loadDictionaries() function below -- this is a helper thread class
 class LoadDictionaries: public QThread, public Dictionary::Initializing
@@ -21,7 +22,7 @@ class LoadDictionaries: public QThread, public Dictionary::Initializing
   Config::Hunspell const & hunspell;
   Config::Transliteration const & transliteration;
   std::vector< sptr< Dictionary::Class > > dictionaries;
-  std::string exceptionText;
+  QStringList exceptionTexts;
   unsigned int maxHeadwordSize;
   unsigned int maxHeadwordToExpand;
 
@@ -37,9 +38,9 @@ public:
   }
 
   /// Empty string means to exception occurred
-  std::string const & getExceptionText() const
+  std::string getExceptionText() const
   {
-    return exceptionText;
+    return exceptionTexts.join( "\n" ).toStdString();
   }
 
 

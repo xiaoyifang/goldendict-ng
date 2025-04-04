@@ -66,7 +66,7 @@ More levels of folder nesting are not supported.
 ├─Mastameta
 │   └─Japanese   <- Group
 |       └─DictB  <- Dict Files's container folder
-|          └─ DictB Files  
+|          └─ DictB Files
 ```
 
 ## Auto groups by `metadata.toml`
@@ -96,11 +96,11 @@ For example,
 │    ├── Cambridge.idx
 │    ├── Cambridge.info
 │    ├── Cambridge.syn
-│    └── Cambridge.dict.dz    
+│    └── Cambridge.dict.dz
 └── Collins
      ├── metadata.toml
      ├── res.zip
-     └── Collins.dsl       (B)  
+     └── Collins.dsl       (B)
 
 ```
 

@@ -67,7 +67,7 @@ public slots:
   void messageFromAnotherInstanceReceived( QString const & );
   void showStatusBarMessage( QString const &, int, QPixmap const & );
   void wordReceived( QString const & );
-  void headwordFromFavorites( QString const &, QString const & );
+  void headwordFromFavorites( QString const & word, QString const & favFolderFullPath );
   /// Save config and states...
   void commitData();
   void quitApp();
@@ -119,7 +119,6 @@ private:
   QAction *navBack, *navForward, *navPronounce, *enableScanningAction;
   QAction * beforeOptionsSeparator;
   QAction *zoomIn, *zoomOut, *zoomBase;
-  QShortcut *wordsZoomIn, *wordsZoomOut, *wordsZoomBase;
   QAction *addToFavorites, *beforeAddToFavoritesSeparator;
   QMenu trayIconMenu;
   QMenu * tabMenu;
@@ -245,8 +244,6 @@ private:
   ArticleView * getCurrentArticleView();
   void ctrlTabPressed();
 
-  QString unescapeTabHeader( QString const & header );
-
   void respondToTranslationRequest( QString const & word,
                                     bool checkModifiers,
                                     QString const & scrollTo = QString(),
@@ -266,11 +263,14 @@ private:
   void setInputLineText( QString text, WildcardPolicy wildcardPolicy, TranslateBoxPopup popupAction );
 
   void changeWebEngineViewFont() const;
-  bool isWordPresentedInFavorites( QString const & word, unsigned groupId );
+
   void errorMessageOnStatusBar( const QString & errStr );
   int getIconSize();
 
+  bool updateFavIcon( QString const & word );
+
 private slots:
+  void updateFavIconSlot();
 
   /// Try check new release, popup a dialog, and update the check time & skippedRelease version
   void checkNewRelease();
@@ -335,12 +335,6 @@ private slots:
   void unzoom();
 
   void scaleArticlesByCurrentZoomFactor();
-
-  void doWordsZoomIn();
-  void doWordsZoomOut();
-  void doWordsZoomBase();
-
-  void applyWordsZoomLevel();
 
   /// If editDictionaryGroup is specified, the dialog positions on that group
   /// initially.
@@ -442,8 +436,6 @@ private slots:
   /// Add word to history even if history is disabled in options
   void forceAddWordToHistory( const QString & word );
 
-
-  void addWordToFavorites( QString const & word, unsigned groupId, bool );
 
   void addBookmarkToFavorite( QString const & text );
 

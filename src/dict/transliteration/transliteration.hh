@@ -44,24 +44,10 @@ public:
 
 class Table: public map< std::u32string, std::u32string >
 {
-  unsigned maxEntrySize;
-
-public:
-
-  Table():
-    maxEntrySize( 0 )
-  {
-  }
-
-  unsigned getMaxEntrySize() const
-  {
-    return maxEntrySize;
-  }
 
 protected:
 
   /// Inserts new entry into index. from and to are UTF8-encoded strings.
-  /// Also updates maxEntrySize.
   void ins( char const * from, char const * to );
 };
 

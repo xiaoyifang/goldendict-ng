@@ -30,7 +30,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   helpAction.setShortcut( QKeySequence( "F1" ) );
   helpAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
 
-  connect( &helpAction, &QAction::triggered, [ this ]() {
+  connect( &helpAction, &QAction::triggered, this, [ this ]() {
     const auto * currentTab = ui.tabWidget->currentWidget();
     if ( ui.tab_popup == currentTab ) {
       Help::openHelpWebpage( Help::section::ui_popup );
@@ -44,6 +44,15 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   } );
   connect( ui.buttonBox, &QDialogButtonBox::helpRequested, &helpAction, &QAction::trigger );
 
+  connect( ui.systemFont, &QFontComboBox::currentTextChanged, this, [ this ]( const QString & font ) {
+    previewInterfaceFont( font, ui.interfaceFontSize->value() );
+  } );
+
+  connect( ui.interfaceFontSize, &QSpinBox::valueChanged, this, [ this ]( int size ) {
+    previewInterfaceFont( ui.systemFont->currentText(), size );
+  } );
+  previewInterfaceFont( ui.systemFont->currentText(), ui.interfaceFontSize->value() );
+
   addAction( &helpAction );
 
   // Load values into form
@@ -56,7 +65,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   // We need to sort by language name -- otherwise list looks really weird
   QMultiMap< QString, QString > sortedLocs;
   sortedLocs.insert( Language::languageForLocale( "en_US" ), "en_US" );
-  for ( const auto & availLoc : availLocs ) {
+  for ( const auto & availLoc : std::as_const( availLocs ) ) {
     // Here we assume the xx_YY naming, where xx is language and YY is region.
     //remove .qm suffix.
     QString locale = availLoc.left( availLoc.size() - 3 );
@@ -91,9 +100,17 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
     ui.systemFont->setCurrentText( p.interfaceFont );
   }
 
+  if ( p.interfaceFontSize > 0 ) {
+    ui.interfaceFontSize->setValue( p.interfaceFontSize );
+  }
+  else {
+    ui.interfaceFontSize->setValue( QApplication::font().pointSize() );
+  }
+
 
   prevWebFontFamily = p.customFonts;
   prevSysFont       = p.interfaceFont;
+  prevFontSize      = p.interfaceFontSize;
 
   if ( !p.customFonts.standard.isEmpty() ) {
     ui.font_standard->setCurrentText( p.customFonts.standard );
@@ -165,7 +182,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 
 #ifdef Q_OS_WIN32
   // 1 MB stands for 2^20 bytes on Windows. "MiB" is never used by this OS.
-  ui.maxNetworkCacheSize->setSuffix( tr( " MB" ) );
+  ui.maxNetworkCacheSize->setSuffix( " MB" );
 #endif
   ui.maxNetworkCacheSize->setToolTip( ui.maxNetworkCacheSize->toolTip().arg( Config::getCacheDir() ) );
 
@@ -204,8 +221,8 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   }
 
 
-#ifndef Q_OS_WIN32
-  // TODO: make this availiable on other platforms
+#ifndef Q_OS_WIN
+  // For Linux & macOS, the interface darkMode is controlled by the platforms
   ui.darkModeLabel->hide();
   ui.darkMode->hide();
 #endif
@@ -400,6 +417,13 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.parallelThreads->setMaximum( QThread::idealThreadCount() );
   ui.parallelThreads->setValue( p.fts.parallelThreads );
 }
+void Preferences::previewInterfaceFont( QString family, int size )
+{
+  QFont f = QApplication::font();
+  f.setFamily( family );
+  f.setPointSize( size );
+  this->ui.previewFont->setFont( f );
+}
 
 void Preferences::buildDisabledTypes( QString & disabledTypes, bool is_checked, QString name )
 {
@@ -418,6 +442,7 @@ Config::Preferences Preferences::getPreferences()
   p.interfaceLanguage = ui.interfaceLanguage->itemData( ui.interfaceLanguage->currentIndex() ).toString();
 
   p.interfaceFont = ui.systemFont->currentText();
+  p.interfaceFontSize = ui.interfaceFontSize->value();
 
   Config::CustomFonts c;
   c.standard    = ui.font_standard->currentText();
@@ -592,7 +617,7 @@ void Preferences::on_buttonBox_accepted()
   }
 #endif
 
-  if ( ui.systemFont->currentText() != prevSysFont ) {
+  if ( ui.systemFont->currentText() != prevSysFont || ui.interfaceFontSize->value() != prevFontSize ) {
     promptText += tr( "Restart to apply the interface font change." );
   }
 
@@ -612,6 +637,11 @@ void Preferences::on_buttonBox_accepted()
                                                                     c.customFonts.monospace );
   }
 
+  if ( ui.interfaceFontSize->value() != prevFontSize ) {
+    auto font = QApplication::font();
+    font.setPointSize( ui.interfaceFontSize->value() );
+    QApplication::setFont( font );
+  }
   //change interface font.
   if ( ui.systemFont->currentText() != prevSysFont ) {
     auto font = QApplication::font();

@@ -266,10 +266,7 @@ void StardictDictionary::loadIcon() noexcept
 
   QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
 
-  // Remove the extension
-  fileName.chop( 3 );
-
-  if ( !loadIconFromFile( fileName ) ) {
+  if ( !loadIconFromFileName( fileName ) ) {
     // Load failed -- use default icons
     dictionaryIcon = QIcon( ":/icons/icon32_stardict.png" );
   }
@@ -287,7 +284,12 @@ string StardictDictionary::loadString( size_t size )
 
   idx.read( &data.front(), data.size() );
 
-  return string( &data.front(), data.size() );
+  string result( &data.front(), data.size() );
+  //trim the string
+  result.erase( result.find_last_not_of( " \n\r\t" ) + 1 );
+  result.erase( 0, result.find_first_not_of( " \n\r\t" ) );
+
+  return result;
 }
 
 void StardictDictionary::getArticleProps( uint32_t articleAddress,
@@ -355,9 +357,7 @@ public:
       QStringList sl;
       walkNode( doc.firstChild(), sl );
 
-      QStringListIterator itr( sl );
-      while ( itr.hasNext() ) {
-        QString s = itr.next();
+      for ( auto s : std::as_const( sl ) ) {
         translatePW( s );
         ss += s;
         ss += "<br>";
@@ -436,14 +436,20 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
     {
       QString articleText = QString( "<div class=\"sdct_h\">" ) + QString::fromUtf8( resource, size ) + "</div>";
 
-      static QRegularExpression imgRe( R"((<\s*(?:img|script)\s+[^>]*src\s*=\s*["']?)(?!(?:data|https?|ftp):))",
-                                       QRegularExpression::CaseInsensitiveOption );
-      static QRegularExpression linkRe( R"((<\s*link\s+[^>]*href\s*=\s*["']?)(?!(?:data|https?|ftp):))",
-                                        QRegularExpression::CaseInsensitiveOption );
+      // Replace urls that is relative path but not direct data or https
+      // Match: <link href=abc.png/>
+      // Match:  <img src='abc.png'/>
+      // Not Match: <link href='http://abc.png'/>
+      // Not Match: <link href='data:image/jpeg;.......'/>
+      static QRegularExpression imgRe(
+        R"((<\s*(?:img|script)\s+[^>]*src\s*=\s*["']?)(?!(?:data|https?|ftp):)([^"'\s>]+)(["']?))",
+        QRegularExpression::CaseInsensitiveOption );
+      static QRegularExpression linkRe(
+        R"((<\s*link\s+[^>]*href\s*=\s*["']?)(?!(?:data|https?|ftp):)([^"'\s>]+)(["']?))",
+        QRegularExpression::CaseInsensitiveOption );
 
-      articleText.replace( imgRe, "\\1bres://" + QString::fromStdString( getId() ) + "/" )
-        .replace( linkRe, "\\1bres://" + QString::fromStdString( getId() ) + "/" );
-
+      articleText.replace( imgRe, QString( R"(\1bres://%1/\2\3)" ).arg( QString::fromStdString( getId() ) ) )
+        .replace( linkRe, QString( R"(\1bres://%1/\2\3)" ).arg( QString::fromStdString( getId() ) ) );
       // Handle links to articles
 
       static QRegularExpression linksReg( R"(<a(\s*[^>]*)href\s*=\s*['"](bword://)?([^'"]+)['"])",
@@ -565,16 +571,28 @@ string StardictDictionary::handleResource( char type, char const * resource, siz
     case 'n': // WordNet data. We don't know anything about it.
       return "<div class=\"sdct_n\">" + Html::escape( string( resource, size ) ) + "</div>";
 
-    case 'r': // Resource file list. For now, only img: is handled.
+    case 'r': // Resource file list.
     {
       string result = R"(<div class="sdct_r">)";
 
-      // Handle img:example.jpg
-      QString imgTemplate( R"(<img src="bres://)" + QString::fromStdString( getId() ) + R"(/%1">)" );
+      // Resource file list.
+      // The content can be:
+      // img:pic/example.jpg	// Image file
+      // snd:apple.wav		// Sound file
+      // vdo:film.avi		// Video file
+      // att:file.bin		// Attachment file
+
+      // Extract the part after the prefix
+      static const QMap< QString, QString > prefixTemplates = {
+        { QString( "img:" ), QString( R"(<img src="bres://%1/%2"/>)" ) },
+        { QString( "snd:" ), QString( R"(<audio controls src="bres://%1/%2"></audio>)" ) },
+        { QString( "vdo:" ), QString( R"(<video controls src="bres://%1/%2"></video>)" ) },
+        { QString( "att:" ), QString( R"(<a download href="bres://%1/%2">%1</a>)" ) } };
 
       for ( const auto & file : QString::fromUtf8( resource, size ).simplified().split( " " ) ) {
-        if ( file.startsWith( "img:" ) ) {
-          result += imgTemplate.arg( file.right( file.size() - file.indexOf( ":" ) - 1 ) ).toStdString();
+        if ( prefixTemplates.contains( file.left( 4 ) ) ) {
+          result +=
+            prefixTemplates[ file.left( 4 ) ].arg( QString::fromStdString( getId() ), file.mid( 4 ) ).toStdString();
         }
         else {
           result += Html::escape( file.toStdString() );
@@ -1325,7 +1343,7 @@ void StardictArticleRequest::run()
     }
 
     //if the chain is too large, it is more likely has some dictionary making or parsing issue.
-    for ( unsigned x = 0; x < qMin( 10, (int)chain.size() ); ++x ) {
+    for ( unsigned x = 0; x < qMin( 10U, (unsigned)chain.size() ); ++x ) {
       if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
         finish();
         return;
@@ -1554,30 +1572,23 @@ void StardictResourceRequest::run()
       resourceName.erase( resourceName.length() - 1, 1 );
     }
 
-    string n =
-      dict.getContainingFolder().toStdString() + Utils::Fs::separator() + "res" + Utils::Fs::separator() + resourceName;
+    qDebug() << "startdict resource name is" << resourceName.c_str();
 
-    qDebug( "startdict resource name is %s", n.c_str() );
-
-    try {
+    {
       QMutexLocker _( &dataMutex );
-
-      File::loadFromFile( n, data );
-    }
-    catch ( File::exCantOpen & ) {
-      // Try reading from zip file
-
-      if ( dict.resourceZip.isOpen() ) {
-        QMutexLocker _( &dataMutex );
-
-        if ( !dict.resourceZip.loadFile( Text::toUtf32( resourceName ), data ) ) {
-          throw; // Make it fail since we couldn't read the archive
-        }
+      auto resFile =
+        QFile( dict.getContainingFolder() + QStringLiteral( "/res/" ) + QString::fromStdString( resourceName ) );
+      if ( resFile.open( QIODevice::ReadOnly ) ) {
+        data.resize( resFile.size() );
+        resFile.read( data.data(), data.size() );
       }
       else {
-        throw;
+        if ( !( dict.resourceZip.isOpen() && dict.resourceZip.loadFile( Text::toUtf32( resourceName ), data ) ) ) {
+          throw std::runtime_error( "Cannot read from either res folder or res.zip" );
+        }
       }
     }
+
 
     if ( Filetype::isNameOfTiff( resourceName ) ) {
       // Convert it
@@ -1841,16 +1852,16 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         dictFiles.push_back( synFileName );
       }
 
-      // See if there's a zip file with resources present. If so, include it.
-
+      // See if there's a res.zip file
       string zipFileName;
-      string baseName =
-        QDir( QString::fromStdString( idxFileName ) ).absolutePath().toStdString() + Utils::Fs::separator();
-
-      if ( File::tryPossibleZipName( baseName + "res.zip", zipFileName )
-           || File::tryPossibleZipName( baseName + "RES.ZIP", zipFileName )
-           || File::tryPossibleZipName( baseName + "res" + Utils::Fs::separator() + "res.zip", zipFileName ) ) {
-        dictFiles.push_back( zipFileName );
+      {
+        auto info = QFileInfo( QString::fromStdString( idxFileName ) );
+        for ( auto & i :
+              { QStringLiteral( "res.zip" ), info.baseName() + ".res.zip", QStringLiteral( "res/res.zip" ) } ) {
+          if ( File::tryPossibleZipName( info.absoluteDir().absoluteFilePath( i ).toStdString(), zipFileName ) ) {
+            dictFiles.push_back( zipFileName );
+          };
+        }
       }
 
       string dictId = Dictionary::makeDictionaryId( dictFiles );
@@ -1971,7 +1982,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
         // If there was a zip file, index it too
 
-        if ( zipFileName.size() ) {
+        if ( !zipFileName.empty() ) {
           qDebug( "Indexing zip file" );
 
           idxHeader.hasZipFile = 1;

@@ -8,28 +8,12 @@
       <translation>Om</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>Ordliste- och uppslagsverksprogrammet GoldenDict, version </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>Licensierat under GNU GPLv3 eller senare</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Kopiera versionsinformation</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Kopiera ordlista</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Tack till:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Baserat på Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -519,10 +503,6 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <translation>Jokertecken</translation>
     </message>
     <message>
-      <source>RegExp</source>
-      <translation>RegExp</translation>
-    </message>
-    <message>
       <source>Unique headwords total: %1.</source>
       <translation>Unika huvudord totalt: %1.</translation>
     </message>
@@ -557,6 +537,10 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <message>
       <source>Export finished</source>
       <translation>Export slutförd</translation>
+    </message>
+    <message>
+      <source>Regular Expression</source>
+      <translation>Reguljärt uttryck</translation>
     </message>
   </context>
   <context>
@@ -839,6 +823,10 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <source>Are you sure you want to clear all items?</source>
       <translation>Är du säker på att du vill rensa alla objekt?</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -953,24 +941,8 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <translation>Lägg till markerade ordlistor i gruppen (Insert)</translation>
     </message>
     <message>
-      <source>&gt;</source>
-      <translation>&gt;</translation>
-    </message>
-    <message>
-      <source>Ins</source>
-      <translation>Insert</translation>
-    </message>
-    <message>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>Ta bort markerade ordlistor ur gruppen (Delete)</translation>
-    </message>
-    <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
-    </message>
-    <message>
-      <source>Del</source>
-      <translation>Delete</translation>
     </message>
     <message>
       <source>Groups:</source>
@@ -2192,16 +2164,8 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <translation>&amp;Ordlistor …</translation>
     </message>
     <message>
-      <source>F3</source>
-      <translation>F3</translation>
-    </message>
-    <message>
       <source>&amp;Preferences...</source>
       <translation>&amp;Inställningar …</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>F4</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
@@ -2224,10 +2188,6 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <translation>Avslutar programmet</translation>
     </message>
     <message>
-      <source>Ctrl+Q</source>
-      <translation>Ctrl+Q</translation>
-    </message>
-    <message>
       <source>&amp;Forum</source>
       <translation>&amp;Forum</translation>
     </message>
@@ -2240,10 +2200,6 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <translation>Minimerar programfönstret till meddelandefältet</translation>
     </message>
     <message>
-      <source>Ctrl+F4</source>
-      <translation>Ctrl+F4</translation>
-    </message>
-    <message>
       <source>&amp;Save Article</source>
       <translation>&amp;Spara artikel</translation>
     </message>
@@ -2252,16 +2208,8 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <translation>Spara artikel</translation>
     </message>
     <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
       <source>&amp;Print</source>
       <translation>Skriv &amp;ut</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Ctrl+P</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2276,20 +2224,12 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <translation>Sök igenom filer &amp;igen</translation>
     </message>
     <message>
-      <source>Ctrl+F5</source>
-      <translation>Ctrl+F5</translation>
-    </message>
-    <message>
       <source>&amp;Clear</source>
       <translation>&amp;Rensa</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
       <translation>&amp;Ny flik</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>Ctrl+T</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2332,28 +2272,12 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <translation>Sök på sidan</translation>
     </message>
     <message>
-      <source>Ctrl+F</source>
-      <translation>Ctrl+F</translation>
-    </message>
-    <message>
       <source>Full-text search</source>
       <translation>Fulltextsökning</translation>
     </message>
     <message>
-      <source>Ctrl+Shift+F</source>
-      <translation>Ctrl+Skift+F</translation>
-    </message>
-    <message>
       <source>GoldenDict reference</source>
       <translation>GoldenDict-referens</translation>
-    </message>
-    <message>
-      <source>F1</source>
-      <translation>F1</translation>
-    </message>
-    <message>
-      <source>Show</source>
-      <translation>Visa</translation>
     </message>
     <message>
       <source>Export</source>
@@ -2370,10 +2294,6 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <message>
       <source>Add current tab to Favorites</source>
       <translation>Lägg till aktuell flik i Favoriter</translation>
-    </message>
-    <message>
-      <source>Ctrl+E</source>
-      <translation>Ctrl+E</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
@@ -2661,6 +2581,18 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Ta bort huvudord &quot;%1&quot; från Favoriter?</translation>
     </message>
+    <message>
+      <source>Show</source>
+      <translation>Visa</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>Spara PDF slutförd</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>Kunde inte spara PDF</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2943,22 +2875,6 @@ minimera fönstret till meddelandefältet istället för att avsluta programmet.
       <translation>Gränssnittets teckensnitt</translation>
     </message>
     <message>
-      <source>Interface language:</source>
-      <translation>Språk för användargränssnittet:</translation>
-    </message>
-    <message>
-      <source>Article Display style:</source>
-      <translation>Artikelns visningsstil:</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>Tilläggsformat:</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>Gränssnittsstil:</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Vänd UI till mörk.</translation>
     </message>
@@ -3045,32 +2961,16 @@ angivna tangenterna är nedtryckta när ordet markeras.</translation>
       <translation>Alt-tangenten</translation>
     </message>
     <message>
-      <source>Alt</source>
-      <translation>Alt</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Ctrl-tangenten</translation>
-    </message>
-    <message>
-      <source>Ctrl</source>
-      <translation>Ctrl</translation>
     </message>
     <message>
       <source>Shift key</source>
       <translation>Skift-tangenten</translation>
     </message>
     <message>
-      <source>Shift</source>
-      <translation>Skift</translation>
-    </message>
-    <message>
       <source>Windows key or Meta key</source>
       <translation>Windows- eller Meta-tangenten</translation>
-    </message>
-    <message>
-      <source>Win/Meta</source>
-      <translation>Win/Meta</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
@@ -3502,10 +3402,6 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <translation>Lingoes (blå)</translation>
     </message>
     <message>
-      <source> MB</source>
-      <translation> MB</translation>
-    </message>
-    <message>
       <source>Auto does nothing on some systems.</source>
       <translation>Auto gör ingenting på vissa system.</translation>
     </message>
@@ -3538,8 +3434,36 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <translation>Automatisk</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>Aktivera programlogg</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Spara felsökningsmeddelanden till gd_log.txt i konfigurationsmappen</translation>
+    </message>
+    <message>
+      <source>Interface Font Size</source>
+      <translation>Gränssnittets teckenstorlek</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Gränssnittets språk</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Artikelns visningsstil</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Stil på tillägg</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Gränssnitt stil</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Förhandsgranska typsnitt</translation>
+    </message>
+    <message>
+      <source>Goldendict-ng is a dictionary software</source>
+      <translation>Goldendict-ng är en ordbok programvara</translation>
     </message>
   </context>
   <context>
@@ -3650,10 +3574,6 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <translation>Ord eller mening att söka.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Spara felsökningsmeddelanden till gd_log.txt i konfigurationsmappen.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Återställ fönstertillstånd.</translation>
     </message>
@@ -3684,6 +3604,10 @@ från Stardict, Babylon och GLS ordböcker</translation>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Utskriftsversion och diagnosinformation.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Spara felsökningsmeddelanden till gd_log.txt i konfigurationsmappen</translation>
     </message>
   </context>
   <context>
@@ -3737,12 +3661,15 @@ från Stardict, Babylon och GLS ordböcker</translation>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>Dialog</translation>
+      <source>WARNING: %1</source>
+      <translation>VARNING: %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
-      <translation>Bakåt</translation>
+      <translation>Tillbaka</translation>
     </message>
     <message>
       <source>Forward</source>
@@ -3750,7 +3677,7 @@ från Stardict, Babylon och GLS ordböcker</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>Läs upp ord (Alt+S)</translation>
+      <translation>Uttrycka ord (Alt+S)</translation>
     </message>
     <message>
       <source>Alt+S</source>
@@ -3766,25 +3693,17 @@ från Stardict, Babylon och GLS ordböcker</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>
-      <translation>Lägg till ord i Favoriter (Ctrl + E)</translation>
-    </message>
-    <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>Visar/döljer ordlistefältet</translation>
+      <translation>Lägg till ord i favoriter (Ctrl+E)</translation>
     </message>
     <message>
       <source>Always stay on top of all other windows</source>
-      <translation>Alltid ovanpå alla andra fönster</translation>
+      <translation>Håll alltid koll på alla andra fönster</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>Klicka här för att nåla fast rutan så att den stannar kvar på skärmen.
-Rutan kan storleksändras och hanteras på andra sätt.</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>VARNING: %1</translation>
+      <translation>Använd detta för att fästa ner fönstret så att det skulle stanna på skärmen,
+kan skalas om eller hanteras på andra sätt.</translation>
     </message>
   </context>
   <context>

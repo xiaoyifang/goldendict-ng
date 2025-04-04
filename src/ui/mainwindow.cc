@@ -8,6 +8,7 @@
 #endif
 
 #include "mainwindow.hh"
+#include "logger.hh"
 #include <QWebEngineProfile>
 #include "edit_dictionaries.hh"
 #include "dict/loaddictionaries.hh"
@@ -147,13 +148,13 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   switchToNextTabAction( this ),
   switchToPrevTabAction( this ),
   showDictBarNamesAction( tr( "Show Names in Dictionary &Bar" ), this ),
-  useSmallIconsInToolbarsAction( tr( "Show &Small Icons in Toolbars" ), this ),
-  useLargeIconsInToolbarsAction( tr( "Show &Large Icons in Toolbars" ), this ),
-  useNormalIconsInToolbarsAction( tr( "Show &Normal Icons in Toolbars" ), this ),
   toggleMenuBarAction( tr( "&Menubar" ), this ),
   focusHeadwordsDlgAction( this ),
   focusArticleViewAction( this ),
   addAllTabToFavoritesAction( this ),
+  useSmallIconsInToolbarsAction( tr( "Show &Small Icons in Toolbars" ), this ),
+  useLargeIconsInToolbarsAction( tr( "Show &Large Icons in Toolbars" ), this ),
+  useNormalIconsInToolbarsAction( tr( "Show &Normal Icons in Toolbars" ), this ),
   stopAudioAction( this ),
   trayIconMenu( this ),
   addTab( this ),
@@ -266,7 +267,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   navPronounce->setEnabled( false );
   navToolbar->widgetForAction( navPronounce )->setObjectName( "soundButton" );
 
-  connect( navPronounce, &QAction::triggered, [ this ]() {
+  connect( navPronounce, &QAction::triggered, this, [ this ]() {
     getCurrentArticleView()->playSound();
   } );
 
@@ -390,17 +391,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   ui.menuZoom->addAction( zoomBase );
 
   ui.menuZoom->addSeparator();
-
-  wordsZoomIn = new QShortcut( this );
-  wordsZoomIn->setKey( QKeySequence( "Alt+=" ) );
-  wordsZoomOut = new QShortcut( this );
-  wordsZoomOut->setKey( QKeySequence( "Alt+-" ) );
-  wordsZoomBase = new QShortcut( this );
-  wordsZoomBase->setKey( QKeySequence( "Alt+0" ) );
-
-  connect( wordsZoomIn, &QShortcut::activated, this, &MainWindow::doWordsZoomIn );
-  connect( wordsZoomOut, &QShortcut::activated, this, &MainWindow::doWordsZoomOut );
-  connect( wordsZoomBase, &QShortcut::activated, this, &MainWindow::doWordsZoomBase );
 
 // tray icon
 #ifndef Q_OS_MACOS // macOS uses the dock menu instead of the tray icon
@@ -580,6 +570,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   connect( this, &MainWindow::clickOnDictPane, &dictionaryBar, &DictionaryBar::dictsPaneClicked );
 
+  addToolBarBreak();
   addToolBar( &dictionaryBar );
 
   connect( dictionaryBar.toggleViewAction(), &QAction::triggered, this, &MainWindow::dictionaryBarToggled );
@@ -597,7 +588,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   // Favorites
 
-  ui.favoritesPaneWidget->setUp( &cfg, ui.menuFavorites );
+  ui.favoritesPaneWidget->setUp( &cfg, { ui.showHideFavorites, ui.importFavorites, ui.exportFavorites } );
   ui.favoritesPaneWidget->setSaveInterval( cfg.preferences.favoritesStoreInterval );
 
   connect( ui.favoritesPane, &QDockWidget::visibilityChanged, this, &MainWindow::updateFavoritesMenu );
@@ -607,6 +598,12 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
            &FavoritesPaneWidget::favoritesItemRequested,
            this,
            &MainWindow::headwordFromFavorites );
+
+  connect( ui.favoritesPaneWidget, &FavoritesPaneWidget::activeFavChange, this, &MainWindow::updateFavIconSlot );
+
+  GlobalBroadcaster::instance()->isWordPresentedInFavorites = [ this ]( const QString & word ) {
+    return this->ui.favoritesPaneWidget->isWordPresentInActiveFolder( word );
+  };
 
   // History
   ui.historyPaneWidget->setUp( &cfg, &history, ui.menuHistory );
@@ -641,7 +638,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   connect( &addTab, &QAbstractButton::clicked, this, &MainWindow::addNewTab );
 
-  connect( ui.tabWidget, &MainTabWidget::tabBarDoubleClicked, [ this ]( const int index ) {
+  connect( ui.tabWidget, &MainTabWidget::tabBarDoubleClicked, this, [ this ]( const int index ) {
     if ( -1 == index ) { // empty space at tabbar clicked.
       this->addNewTab();
     }
@@ -665,7 +662,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( ui.visitForum, &QAction::triggered, this, &MainWindow::visitForum );
   connect( ui.openConfigFolder, &QAction::triggered, this, &MainWindow::openConfigFolder );
   connect( ui.about, &QAction::triggered, this, &MainWindow::showAbout );
-  connect( ui.showReference, &QAction::triggered, []() {
+  connect( ui.showReference, &QAction::triggered, this, []() {
     Help::openHelpWebpage();
   } );
 
@@ -677,10 +674,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   connect( translateBox->translateLine(), &QLineEdit::textEdited, this, &MainWindow::translateInputChanged );
 
-  connect( ui.translateLine, &QLineEdit::returnPressed, [ this ]() {
+  connect( ui.translateLine, &QLineEdit::returnPressed, this, [ this ]() {
     translateInputFinished( true );
   } );
-  connect( translateBox, &TranslateBox::returnPressed, [ this ]() {
+  connect( translateBox, &TranslateBox::returnPressed, this, [ this ]() {
     translateInputFinished( true );
   } );
 
@@ -816,7 +813,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( scanPopup, &ScanPopup::openDictionaryFolder, this, &MainWindow::openDictionaryFolder );
   connect( scanPopup, &ScanPopup::sendWordToHistory, this, &MainWindow::addWordToHistory );
   connect( this, &MainWindow::setPopupGroupByName, scanPopup, &ScanPopup::setGroupByName );
-  connect( scanPopup, &ScanPopup::sendWordToFavorites, this, &MainWindow::addWordToFavorites );
+  connect( scanPopup,
+           &ScanPopup::sendWordToFavorites,
+           ui.favoritesPaneWidget,
+           &FavoritesPaneWidget::addRemoveWordInActiveFav );
 
 #ifdef Q_OS_MAC
   macClipboard = new gd_clipboard( this );
@@ -867,7 +867,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // Update zoomers
   adjustCurrentZoomFactor();
   scaleArticlesByCurrentZoomFactor();
-  applyWordsZoomLevel();
 
   // Update autostart info
   setAutostart( cfg.preferences.autoStart );
@@ -1122,7 +1121,6 @@ void MainWindow::updateSearchPaneAndBar( bool searchInDock )
   wordListSelChanged = false;
 
   updateGroupList( false );
-  applyWordsZoomLevel();
 
   setInputLineText( text, WildcardPolicy::WildcardsAreAlreadyEscaped, DisablePopup );
   focusTranslateLine();
@@ -1645,10 +1643,8 @@ void MainWindow::updateGroupList( bool reload )
     groupInstances.push_back( g );
   }
 
-  GlobalBroadcaster::instance()->groupFolderMap.clear();
   for ( auto & group : cfg.groups ) {
     groupInstances.push_back( Instances::Group( group, dictionaries, cfg.inactiveDictionaries ) );
-    GlobalBroadcaster::instance()->groupFolderMap.insert( group.id, group.favoritesFolder );
   }
 
   // Update names for dictionaries that are present, so that they could be
@@ -2008,15 +2004,7 @@ void MainWindow::titleChanged( ArticleView * view, QString const & title )
   }
 
   if ( index == ui.tabWidget->currentIndex() ) {
-    // Set icon for "Add to Favorites" action
-    if ( isWordPresentedInFavorites( title, cfg.lastMainGroupId ) ) {
-      addToFavorites->setIcon( blueStarIcon );
-      addToFavorites->setToolTip( tr( "Remove current tab from Favorites" ) );
-    }
-    else {
-      addToFavorites->setIcon( starIcon );
-      addToFavorites->setToolTip( tr( "Add current tab to Favorites" ) );
-    }
+    updateFavIcon( title );
 
     updateWindowTitle();
   }
@@ -2073,17 +2061,14 @@ void MainWindow::tabSwitched( int )
   }
 
   // Set icon for "Add to Favorites" action
-  QString headword = ui.tabWidget->tabText( ui.tabWidget->currentIndex() );
-  if ( isWordPresentedInFavorites( unescapeTabHeader( headword ), cfg.lastMainGroupId ) ) {
-    addToFavorites->setIcon( blueStarIcon );
-    addToFavorites->setToolTip( tr( "Remove current tab from Favorites" ) );
-  }
-  else {
-    addToFavorites->setIcon( starIcon );
-    addToFavorites->setToolTip( tr( "Add current tab to Favorites" ) );
+  auto view = getCurrentArticleView();
+  QString headword;
+  if ( view ) {
+    headword = view->getCurrentWord();
   }
 
-  auto view = getCurrentArticleView();
+  updateFavIcon( headword );
+
   if ( view ) {
     groupList->setCurrentGroup( view->getCurrentGroupId() );
   }
@@ -2273,7 +2258,6 @@ void MainWindow::editPreferences()
     // These parameters are not set in dialog
     p.zoomFactor     = cfg.preferences.zoomFactor;
     p.helpZoomFactor = cfg.preferences.helpZoomFactor;
-    p.wordsZoomLevel = cfg.preferences.wordsZoomLevel;
     p.hideMenubar    = cfg.preferences.hideMenubar;
     p.searchInDock   = cfg.preferences.searchInDock;
     p.alwaysOnTop    = cfg.preferences.alwaysOnTop;
@@ -2366,6 +2350,8 @@ void MainWindow::editPreferences()
 
     ui.fullTextSearchAction->setEnabled( cfg.preferences.fts.enabled );
 
+    Logger::switchLoggingMethod( cfg.preferences.enableApplicationLog );
+
     Config::save( cfg );
   }
 
@@ -2424,6 +2410,10 @@ void MainWindow::currentGroupChanged( int )
 
   if ( ftsDlg ) {
     ftsDlg->setCurrentGroup( grg_id );
+  }
+
+  if ( igrp ) {
+    ui.favoritesPaneWidget->trySetCurrentActiveFav( igrp->favoritesFolder.split( '/' ) );
   }
 }
 
@@ -3017,7 +3007,7 @@ void MainWindow::checkNewRelease()
 
   auto * github_reply = dictNetMgr.get( github_release_api ); // will be marked as deleteLater when reply finished.
 
-  QObject::connect( github_reply, &QNetworkReply::finished, [ github_reply, this ]() {
+  QObject::connect( github_reply, &QNetworkReply::finished, github_reply, [ github_reply, this ]() {
     if ( github_reply->error() != QNetworkReply::NoError ) {
       qWarning() << "Version check failed: " << github_reply->errorString();
     }
@@ -3086,7 +3076,7 @@ void MainWindow::trayIconActivated( QSystemTrayIcon::ActivationReason r )
 
 void MainWindow::visitHomepage()
 {
-  QDesktopServices::openUrl( QApplication::organizationDomain() );
+  QDesktopServices::openUrl( QUrl( QApplication::organizationDomain() ) );
 }
 
 void MainWindow::openConfigFolder()
@@ -3101,7 +3091,7 @@ void MainWindow::visitForum()
 
 void MainWindow::showAbout()
 {
-  About about( this, &dictionaries );
+  About about( this );
 
   about.show();
   about.exec();
@@ -3133,10 +3123,6 @@ int MainWindow::getIconSize()
 
 void MainWindow::iconSizeActionTriggered( QAction * /*action*/ )
 {
-  //reset word zoom
-  cfg.preferences.wordsZoomLevel = 0;
-  wordsZoomBase->setEnabled( false );
-
   bool useLargeIcons = useLargeIconsInToolbarsAction.isChecked();
   int extent         = getIconSize();
   if ( useLargeIcons ) {
@@ -3155,15 +3141,6 @@ void MainWindow::iconSizeActionTriggered( QAction * /*action*/ )
   updateDictionaryBar();
 
   scanPopup->setDictionaryIconSize();
-
-  //adjust the font size as well
-  auto font = translateBox->translateLine()->font();
-  font.setWeight( QFont::Normal );
-  //arbitrary value to make it look good
-  font.setPixelSize( extent * 0.8 );
-  //  translateBox->completerWidget()->setFont( font );
-  //only set the font in toolbar
-  translateBox->translateLine()->setFont( font );
 }
 
 void MainWindow::toggleMenuBarTriggered( bool announce )
@@ -3174,7 +3151,7 @@ void MainWindow::toggleMenuBarTriggered( bool announce )
     if ( cfg.preferences.hideMenubar ) {
       mainStatusBar->showMessage( tr( "You have chosen to hide a menubar. Use %1 to show it back." )
                                     .arg( QString( "<b>%1</b>" ) )
-                                    .arg( tr( "Ctrl+M" ) ),
+                                    .arg( QT_TR_NOOP( "Ctrl+M" ) ),
                                   10000,
                                   QPixmap( ":/icons/warning.png" ) );
     }
@@ -3188,13 +3165,9 @@ void MainWindow::toggleMenuBarTriggered( bool announce )
   // depending on the menubar state.
 
   QList< QMenu * > allMenus = menuBar()->findChildren< QMenu * >();
-  QListIterator< QMenu * > menuIter( allMenus );
-  while ( menuIter.hasNext() ) {
-    QMenu * menu                      = menuIter.next();
+  for ( const auto & menu : allMenus ) {
     QList< QAction * > allMenuActions = menu->actions();
-    QListIterator< QAction * > actionsIter( allMenuActions );
-    while ( actionsIter.hasNext() ) {
-      QAction * action = actionsIter.next();
+    for ( const auto & action : allMenuActions ) {
       if ( !action->shortcut().isEmpty() ) {
         if ( cfg.preferences.hideMenubar ) {
           // add all menubar actions to the main window,
@@ -3398,12 +3371,14 @@ void MainWindow::on_saveArticle_triggered()
     QWebEnginePage * page = view->page();
 
     // Connect the printFinished signal to handle operations after printing is complete
-    connect( page, &QWebEnginePage::pdfPrintingFinished, [ = ]( const QString & filePath, bool success ) {
+    connect( page, &QWebEnginePage::pdfPrintingFinished, page, [ this ]( const QString & filePath, bool success ) {
       if ( success ) {
         qDebug() << "PDF exported successfully to:" << filePath;
+        mainStatusBar->showMessage( tr( "Save PDF complete" ), 5000 );
       }
       else {
         qDebug() << "Failed to export PDF.";
+        mainStatusBar->showMessage( tr( "Save PDF failed" ), 5000 );
       }
     } );
 
@@ -3620,53 +3595,6 @@ void MainWindow::scaleArticlesByCurrentZoomFactor()
   }
 
   scanPopup->applyZoomFactor();
-}
-
-void MainWindow::doWordsZoomIn()
-{
-  cfg.preferences.wordsZoomLevel = cfg.preferences.wordsZoomLevel + 2;
-
-  applyWordsZoomLevel();
-}
-
-void MainWindow::doWordsZoomOut()
-{
-  cfg.preferences.wordsZoomLevel = cfg.preferences.wordsZoomLevel - 2;
-
-  applyWordsZoomLevel();
-}
-
-void MainWindow::doWordsZoomBase()
-{
-  cfg.preferences.wordsZoomLevel = 0;
-
-  applyWordsZoomLevel();
-}
-
-void MainWindow::applyWordsZoomLevel()
-{
-  QFont font = translateBox->translateLine()->font();
-
-  int ps = getIconSize();
-
-  ps += cfg.preferences.wordsZoomLevel;
-  if ( ps < 12 ) {
-    ps = 12;
-  }
-
-  font.setPixelSize( ps * 0.8 );
-  font.setWeight( QFont::Normal );
-  translateBox->translateLine()->setFont( font );
-  //  translateBox->completerWidget()->setFont( font );
-  wordsZoomBase->setEnabled( cfg.preferences.wordsZoomLevel != 0 );
-
-  if ( !cfg.preferences.searchInDock ) {
-    // Invalidating navToolbar's layout displays translateBoxWidget w/o the need to press the toolbar
-    // extension button when Words Zoom level decreases enough for translateBoxWidget to fit in the toolbar.
-    navToolbar->layout()->invalidate();
-  }
-
-  scanPopup->applyWordsZoomLevel();
 }
 
 void MainWindow::messageFromAnotherInstanceReceived( QString const & message )
@@ -4315,23 +4243,15 @@ void MainWindow::showFTSIndexingName( QString const & name )
   }
 }
 
-QString MainWindow::unescapeTabHeader( QString const & header )
-{
-  // Reset table header to original headword
-  return Utils::unescapeAmps( header );
-}
-
 void MainWindow::addCurrentTabToFavorites()
 {
-  QString folder;
-  Instances::Group const * igrp = groupInstances.findGroup( cfg.lastMainGroupId );
-  if ( igrp ) {
-    folder = igrp->favoritesFolder;
+  auto view = getCurrentArticleView();
+  if ( !view ) {
+    return;
   }
+  auto headword = view->getCurrentWord();
 
-  QString headword = ui.tabWidget->tabText( ui.tabWidget->currentIndex() );
-
-  ui.favoritesPaneWidget->addHeadword( folder, unescapeTabHeader( headword ) );
+  ui.favoritesPaneWidget->addWordToActiveFav( headword );
 
   addToFavorites->setIcon( blueStarIcon );
   addToFavorites->setToolTip( tr( "Remove current tab from Favorites" ) );
@@ -4339,56 +4259,44 @@ void MainWindow::addCurrentTabToFavorites()
 
 void MainWindow::handleAddToFavoritesButton()
 {
-  QString folder;
-  Instances::Group const * igrp = groupInstances.findGroup( cfg.lastMainGroupId );
-  if ( igrp ) {
-    folder = igrp->favoritesFolder;
+  auto view = getCurrentArticleView();
+  if ( !view ) {
+    return;
   }
-  QString headword = unescapeTabHeader( ui.tabWidget->tabText( ui.tabWidget->currentIndex() ) );
+  auto headword = view->getCurrentWord();
 
-  if ( ui.favoritesPaneWidget->isHeadwordPresent( folder, headword ) ) {
+  if ( ui.favoritesPaneWidget->isWordPresentInActiveFolder( headword ) ) {
     QMessageBox mb( QMessageBox::Question,
                     "GoldenDict",
                     tr( "Remove headword \"%1\" from Favorites?" ).arg( headword ),
                     QMessageBox::Yes | QMessageBox::No,
                     this );
     if ( mb.exec() == QMessageBox::Yes ) {
-      if ( ui.favoritesPaneWidget->removeHeadword( folder, headword ) ) {
+      if ( ui.favoritesPaneWidget->removeWordFromActiveFav( headword ) ) {
         addToFavorites->setIcon( starIcon );
         addToFavorites->setToolTip( tr( "Add current tab to Favorites" ) );
       }
     }
   }
   else {
-    ui.favoritesPaneWidget->addHeadword( folder, headword );
+    ui.favoritesPaneWidget->addWordToActiveFav( headword );
     addToFavorites->setIcon( blueStarIcon );
     addToFavorites->setToolTip( tr( "Remove current tab from Favorites" ) );
   }
 }
 
-void MainWindow::addWordToFavorites( QString const & word, unsigned groupId, bool exist )
-{
-  QString folder;
-  Instances::Group const * igrp = groupInstances.findGroup( groupId );
-  if ( igrp ) {
-    folder = igrp->favoritesFolder;
-  }
-
-  if ( !exist ) {
-    ui.favoritesPaneWidget->addHeadword( folder, word );
-  }
-  else {
-    ui.favoritesPaneWidget->removeHeadword( folder, word );
-  }
-}
 
 void MainWindow::addBookmarkToFavorite( QString const & text )
 {
   // get current tab word.
-  QString word        = unescapeTabHeader( ui.tabWidget->tabText( ui.tabWidget->currentIndex() ) );
+  auto view = getCurrentArticleView();
+  if ( !view ) {
+    return;
+  }
+  auto word           = view->getCurrentWord();
   const auto bookmark = QString( "%1~~~%2" ).arg( word, text );
 
-  ui.favoritesPaneWidget->addHeadword( nullptr, bookmark );
+  ui.favoritesPaneWidget->addWordToActiveFav( bookmark );
 }
 
 void MainWindow::addAllTabsToFavorites()
@@ -4400,22 +4308,40 @@ void MainWindow::addAllTabsToFavorites()
   }
 
   for ( int i = 0; i < ui.tabWidget->count(); i++ ) {
-    QString headword = ui.tabWidget->tabText( i );
-    ui.favoritesPaneWidget->addHeadword( folder, unescapeTabHeader( headword ) );
+    auto view = qobject_cast< ArticleView * >( ui.tabWidget->widget( i ) );
+    if ( !view ) {
+      continue;
+    }
+    auto headword = view->getCurrentWord();
+    ui.favoritesPaneWidget->addWordToActiveFav( headword );
   }
   addToFavorites->setIcon( blueStarIcon );
   addToFavorites->setToolTip( tr( "Remove current tab from Favorites" ) );
 }
 
-bool MainWindow::isWordPresentedInFavorites( QString const & word, unsigned groupId )
+bool MainWindow::updateFavIcon( QString const & word )
 {
-  QString folder;
-  Instances::Group const * igrp = groupInstances.findGroup( groupId );
-  if ( igrp ) {
-    folder = igrp->favoritesFolder;
+
+  if ( ui.favoritesPaneWidget->isWordPresentInActiveFolder( word ) ) {
+    addToFavorites->setIcon( blueStarIcon );
+    addToFavorites->setToolTip( tr( "Remove current tab from Favorites" ) );
+  }
+  else {
+    addToFavorites->setIcon( starIcon );
+    addToFavorites->setToolTip( tr( "Add current tab to Favorites" ) );
   }
 
-  return ui.favoritesPaneWidget->isHeadwordPresent( folder, word );
+  if ( word.isEmpty() ) {
+    return false;
+  }
+
+  return ui.favoritesPaneWidget->isWordPresentInActiveFolder( word );
+}
+
+
+void MainWindow::updateFavIconSlot()
+{
+  updateFavIcon( getCurrentArticleView()->getCurrentWord() );
 }
 
 void MainWindow::setGroupByName( QString const & name, bool main_window )
@@ -4437,12 +4363,12 @@ void MainWindow::setGroupByName( QString const & name, bool main_window )
   }
 }
 
-void MainWindow::headwordFromFavorites( QString const & headword, QString const & favoritesFolder )
+void MainWindow::headwordFromFavorites( QString const & headword, QString const & favFolderFullPath )
 {
-  if ( !favoritesFolder.isEmpty() ) {
+  if ( !favFolderFullPath.isEmpty() ) {
     // Find group by it Favorites folder
     for ( Instances::Groups::size_type i = 0; i < groupInstances.size(); i++ ) {
-      if ( groupInstances[ i ].favoritesFolder == favoritesFolder ) {
+      if ( groupInstances[ i ].favoritesFolder == favFolderFullPath ) {
         // Group found. Select it and stop search.
         if ( groupList->currentIndex() != (int)i ) {
           groupList->setCurrentIndex( i );

@@ -49,7 +49,7 @@ TranslateBox::TranslateBox( QWidget * parent ):
   completer->setMaxVisibleItems( 16 );
   completer->popup()->setMinimumHeight( 256 );
 
-  connect( translate_line, &QLineEdit::returnPressed, [ this ]() {
+  connect( translate_line, &QLineEdit::returnPressed, this, [ this ]() {
     emit returnPressed();
   } );
 }

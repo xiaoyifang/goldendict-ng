@@ -368,7 +368,7 @@ void DslDictionary::doDeferredInit()
         memcpy( &total, abrvBlock, sizeof( uint32_t ) );
         abrvBlock += sizeof( uint32_t );
 
-        qDebug( "Loading %u abbrv", total );
+        qDebug( "DSL: %s loading %u abbrv", getName().c_str(), total );
 
         while ( total-- ) {
           uint32_t keySz;
@@ -435,7 +435,7 @@ void DslDictionary::loadIcon() noexcept
     fileName.chop( 3 );
   }
 
-  if ( !loadIconFromFile( fileName ) ) {
+  if ( !loadIconFromFileName( fileName ) ) {
     // Load failed -- use default icons
     dictionaryIcon = QIcon( ":/icons/icon32_dsl.png" );
   }
@@ -1682,7 +1682,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
 
     // Make sure it's not an abbreviation file. extSize of ".dsl" or ".dsl.dz"
 
-    if ( int extSize = ( uncompressedDsl ? 4 : 7 ); ( fileName.size() >= ( 5 + extSize ) )
+    if ( size_t extSize = ( uncompressedDsl ? 4 : 7 ); ( fileName.size() >= ( 5 + extSize ) )
          && ( QByteArrayView( fileName ).chopped( extSize ).last( 5 ).compare( "_abrv", Qt::CaseInsensitive ) == 0 ) ) {
       // It is, skip it
       continue;

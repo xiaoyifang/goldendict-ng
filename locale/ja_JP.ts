@@ -8,28 +8,12 @@
       <translation>バージョン情報</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>GoldenDict-ng 辞書検索プログラム version </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>GNU GPLv3 以降の下でライセンスされています</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>バージョン情報をコピー</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>辞書一覧をコピー</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>クレジット:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Qt %1 (%2, %3) に基づく</translation>
     </message>
   </context>
   <context>
@@ -519,10 +503,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>ワイルドカード</translation>
     </message>
     <message>
-      <source>RegExp</source>
-      <translation>RegExp</translation>
-    </message>
-    <message>
       <source>Unique headwords total: %1.</source>
       <translation>ユニークなヘッドワードの合計: %1.</translation>
     </message>
@@ -557,6 +537,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>エクスポート完了</translation>
+    </message>
+    <message>
+      <source>Regular Expression</source>
+      <translation>正規表現</translation>
     </message>
   </context>
   <context>
@@ -839,6 +823,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Are you sure you want to clear all items?</source>
       <translation>すべての項目をクリアしてもよろしいですか?</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation>このフォルダを単語の追加/削除アクションのターゲットにします。</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -864,7 +852,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>from</source>
-      <translation>from</translation>
+      <translation>から</translation>
     </message>
   </context>
   <context>
@@ -953,24 +941,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>選択された辞書をグループに追加します (Ins)</translation>
     </message>
     <message>
-      <source>&gt;</source>
-      <translation>&gt;</translation>
-    </message>
-    <message>
-      <source>Ins</source>
-      <translation>Ins</translation>
-    </message>
-    <message>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>選択された辞書をグループから削除します (Del)</translation>
-    </message>
-    <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
-    </message>
-    <message>
-      <source>Del</source>
-      <translation>Del</translation>
     </message>
     <message>
       <source>Groups:</source>
@@ -2192,16 +2164,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>辞書(&amp;D)...</translation>
     </message>
     <message>
-      <source>F3</source>
-      <translation>(F3)</translation>
-    </message>
-    <message>
       <source>&amp;Preferences...</source>
       <translation>環境設定(&amp;P)...</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>(F4)</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
@@ -2224,10 +2188,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>アプリケーションを終了します</translation>
     </message>
     <message>
-      <source>Ctrl+Q</source>
-      <translation>Ctrl+Q</translation>
-    </message>
-    <message>
       <source>&amp;Forum</source>
       <translation>フォーラム(&amp;F)</translation>
     </message>
@@ -2240,10 +2200,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>トレイへウィンドウを最小化します</translation>
     </message>
     <message>
-      <source>Ctrl+F4</source>
-      <translation>Ctrl+F1</translation>
-    </message>
-    <message>
       <source>&amp;Save Article</source>
       <translation>記事の保存(&amp;S)</translation>
     </message>
@@ -2252,16 +2208,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>記事の保存</translation>
     </message>
     <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
       <source>&amp;Print</source>
       <translation>印刷(&amp;P)</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Ctrl+P</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2276,20 +2224,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>ファイルを再スキャン(&amp;R)</translation>
     </message>
     <message>
-      <source>Ctrl+F5</source>
-      <translation>Ctrl+F5</translation>
-    </message>
-    <message>
       <source>&amp;Clear</source>
       <translation>クリア(&amp;C)</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
       <translation>新しいタブ(&amp;N)</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>Ctrl+T</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2332,28 +2272,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>ページ内で検索</translation>
     </message>
     <message>
-      <source>Ctrl+F</source>
-      <translation>Ctrl+F</translation>
-    </message>
-    <message>
       <source>Full-text search</source>
       <translation>全文検索</translation>
     </message>
     <message>
-      <source>Ctrl+Shift+F</source>
-      <translation>Ctrl+Shift+F</translation>
-    </message>
-    <message>
       <source>GoldenDict reference</source>
       <translation>GoldenDict リファレンス</translation>
-    </message>
-    <message>
-      <source>F1</source>
-      <translation>F1</translation>
-    </message>
-    <message>
-      <source>Show</source>
-      <translation>表示</translation>
     </message>
     <message>
       <source>Export</source>
@@ -2370,10 +2294,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Add current tab to Favorites</source>
       <translation>現在のタブをお気に入りに追加</translation>
-    </message>
-    <message>
-      <source>Ctrl+E</source>
-      <translation>Ctrl+E</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
@@ -2661,6 +2581,18 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>ヘッドワード &quot;%1&quot; をお気に入りから削除しますか？</translation>
     </message>
+    <message>
+      <source>Show</source>
+      <translation>表示</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>PDFの保存が完了しました</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>PDFの保存に失敗しました</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2944,22 +2876,6 @@ the application.</source>
       <translation>インターフェースフォント</translation>
     </message>
     <message>
-      <source>Interface language:</source>
-      <translation>インターフェイス言語:</translation>
-    </message>
-    <message>
-      <source>Article Display style:</source>
-      <translation>記事表示のスタイル:</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>アドオンのスタイル:</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>インターフェイスのスタイル:</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>UIを暗くします。</translation>
     </message>
@@ -3005,7 +2921,7 @@ the application.</source>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+      <translation>プログラム&apos;の起動時にクリップボードのモニタリングがデフォルトでオンになるかどうかを選択します。</translation>
     </message>
     <message>
       <source>Start with clipboard monitoring turned on</source>
@@ -3046,32 +2962,16 @@ in the pressed state when the word selection changes.</source>
       <translation>Alt キー</translation>
     </message>
     <message>
-      <source>Alt</source>
-      <translation>Alt</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Ctrl キー</translation>
-    </message>
-    <message>
-      <source>Ctrl</source>
-      <translation>(Ctrl)</translation>
     </message>
     <message>
       <source>Shift key</source>
       <translation>Shift キー</translation>
     </message>
     <message>
-      <source>Shift</source>
-      <translation>Shift</translation>
-    </message>
-    <message>
       <source>Windows key or Meta key</source>
       <translation>Windows キーまたは Meta キー</translation>
-    </message>
-    <message>
-      <source>Win/Meta</source>
-      <translation>Win/Meta</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
@@ -3499,10 +3399,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>ランゴー・ブルー</translation>
     </message>
     <message>
-      <source> MB</source>
-      <translation> MB</translation>
-    </message>
-    <message>
       <source>Auto does nothing on some systems.</source>
       <translation>一部のシステムでは自動では何も実行されません。</translation>
     </message>
@@ -3535,8 +3431,36 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>自動</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>アプリケーションログを有効にする</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>設定フォルダ内のgd_log.txtにデバッグメッセージを保存します</translation>
+    </message>
+    <message>
+      <source>Interface Font Size</source>
+      <translation>インターフェースフォントサイズ</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>インターフェース言語</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>記事表示のスタイル</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>アドオンのスタイル</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>インターフェイスのスタイル</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>フォントをプレビュー</translation>
+    </message>
+    <message>
+      <source>Goldendict-ng is a dictionary software</source>
+      <translation>Goldendict-ng は辞書のソフトウェアです</translation>
     </message>
   </context>
   <context>
@@ -3647,10 +3571,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>クエリする単語または文。</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>configフォルダのgd_log.txtにデバッグメッセージを保存します。</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>ウィンドウの状態をリセットします。</translation>
     </message>
@@ -3681,6 +3601,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>バージョンと診断情報を印刷します。</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>設定フォルダ内のgd_log.txtにデバッグメッセージを保存します</translation>
     </message>
   </context>
   <context>
@@ -3734,9 +3658,12 @@ from Stardict, Babylon and GLS dictionaries</source>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>ダイアログ</translation>
+      <source>WARNING: %1</source>
+      <translation>警告: %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
       <translation>戻る</translation>
@@ -3747,7 +3674,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>単語の発音 (Alt+S)</translation>
+      <translation>ワードを発音（Alt+S）</translation>
     </message>
     <message>
       <source>Alt+S</source>
@@ -3766,22 +3693,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>単語をお気に入りに追加 (Ctrl+E)</translation>
     </message>
     <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>辞書バーの表示または非表示を切り替えます</translation>
-    </message>
-    <message>
       <source>Always stay on top of all other windows</source>
       <translation>常に他のすべてのウィンドウの上にとどまります</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>ウィンドウを画面に固定してサイズの変更ができる
-ようにするにはこのピンを使用します。</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>警告: %1</translation>
+      <translation>画面に表示されたままにするためにこれを使用すると、
+のサイズを変更したり、他の方法で管理することができます。</translation>
     </message>
   </context>
   <context>

@@ -43,7 +43,7 @@ DictHeadwords::DictHeadwords( QWidget * parent, Config::Class & cfg_, Dictionary
 
   ui.searchModeCombo->addItem( tr( "Text" ), SearchType::FixedString );
   ui.searchModeCombo->addItem( tr( "Wildcards" ), SearchType::Wildcard );
-  ui.searchModeCombo->addItem( tr( "RegExp" ), SearchType::Regex );
+  ui.searchModeCombo->addItem( tr( "Regular Expression" ), SearchType::Regex );
   ui.searchModeCombo->setCurrentIndex( cfg.headwordsDialog.searchMode );
 
   ui.exportButton->setAutoDefault( false );
@@ -92,7 +92,7 @@ DictHeadwords::DictHeadwords( QWidget * parent, Config::Class & cfg_, Dictionary
     helpAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
 
     connect( ui.helpButton, &QAbstractButton::clicked, &helpAction, &QAction::trigger );
-    connect( &helpAction, &QAction::triggered, []() {
+    connect( &helpAction, &QAction::triggered, this, []() {
       Help::openHelpWebpage( Help::section::ui_headwords );
     } );
 
@@ -132,7 +132,6 @@ void DictHeadwords::setup( Dictionary::Class * dict_ )
 
   setWindowTitle( QString::fromUtf8( dict->getName().c_str() ) );
 
-  const auto size                            = dict->getWordCount();
   std::shared_ptr< HeadwordListModel > other = std::make_shared< HeadwordListModel >();
   model.swap( other );
   model->setMaxFilterResults( ui.filterMaxResult->value() );
@@ -340,7 +339,7 @@ void DictHeadwords::exportAllWords( QProgressDialog & progress, QTextStream & ou
       break;
     }
 
-    for ( const auto & item : headwords ) {
+    for ( const auto & item : std::as_const( headwords ) ) {
       progress.setValue( totalCount++ );
 
       writeWordToFile( out, item );
@@ -353,7 +352,6 @@ void DictHeadwords::exportAllWords( QProgressDialog & progress, QTextStream & ou
 
 void DictHeadwords::loadRegex( QProgressDialog & progress, QTextStream & out )
 {
-  const int headwordsNumber = model->totalCount();
 
   QMutexLocker const _( &mutex );
   QSet< QString > allHeadwords;

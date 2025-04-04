@@ -111,7 +111,6 @@ string convert( string const & in,
   QDomDocument dd;
 
   QString errorStr;
-  int errorLine, errorColumn;
 
   string in_data;
   if ( type == XDXF ) {
@@ -128,6 +127,7 @@ string convert( string const & in,
 
 
 #if ( QT_VERSION < QT_VERSION_CHECK( 6, 5, 0 ) )
+  int errorLine, errorColumn;
   if ( !dd.setContent( QByteArray( in_data.c_str() ), false, &errorStr, &errorLine, &errorColumn ) ) {
     qWarning( "Xdxf2html error, xml parse failed: %s at %d,%d",
               errorStr.toLocal8Bit().constData(),
@@ -657,6 +657,8 @@ string convert( string const & in,
 
           el_script.setAttribute( "type", "text/javascript" );
           parent.replaceChild( el_script, el );
+
+          el_script.appendChild( dd.createTextNode( "" ) );
 
           addAudioLink( string( "\"" ) + url.toEncoded().data() + "\"", dictPtr->getId() );
 

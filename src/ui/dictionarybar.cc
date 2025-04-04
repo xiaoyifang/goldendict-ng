@@ -147,7 +147,7 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
 
   unsigned refsAdded = 0;
 
-  for ( const auto & dictAction : dictActions ) {
+  for ( const auto & dictAction : std::as_const( dictActions ) ) {
 
     // Enough! Or the menu would become too large.
     if ( refsAdded++ >= maxDictionaryRefsInContextMenu && !extended ) {
@@ -220,7 +220,7 @@ void DictionaryBar::mutedDictionariesChanged()
 
   setUpdatesEnabled( false );
 
-  for ( const auto & dictAction : dictActions ) {
+  for ( const auto & dictAction : std::as_const( dictActions ) ) {
     bool const isUnmuted = !mutedDictionaries->contains( dictAction->data().toString() );
 
     if ( isUnmuted != dictAction->isChecked() ) {
@@ -243,78 +243,55 @@ void DictionaryBar::actionWasTriggered( QAction * action )
     return; // Some weird action, not our button
   }
 
-  if ( QApplication::keyboardModifiers() & ( Qt::ControlModifier | Qt::ShiftModifier ) ) {
-    // Ctrl ,solo mode with single dictionary
-    // Shift,toggle back the previous dictionaries
-    // Are we solo already?
+  /// Single Selection Mode
+  /// Click         (in mode)
+  /// singleSelect -> has value  -> dict was selected: reselect depends on Ctrl/Shift, discard memorized selection
+  ///                           -> dict was not selected: select a single one
+  ///              -> no value  -> has modifier: select a single dict + memorize
+  ///            (not in mode)  -> no modifier: normal
+  ///
 
-    bool isSolo = true;
-
-    // For solo, all dictionaries must be unchecked, since we're handling
-    // the result of the dictionary being (un)checked, and in case we were
-    // in solo, now we would end up with no dictionaries being checked at all.
-    for ( const auto & dictAction : dictActions ) {
-      if ( dictAction->isChecked() ) {
-        isSolo = false;
-        break;
+  if ( singleSelectionInitallyMuted.has_value() ) { // (in mode)
+    if ( !mutedDictionaries->contains( id ) ) {     // dict was selected
+      if ( Qt::ControlModifier & QApplication::keyboardModifiers() ) {
+        mutedDictionaries->clear();
+        singleSelectionInitallyMuted.reset();
+      }
+      else if ( Qt::ShiftModifier & QApplication::keyboardModifiers() ) {
+        *mutedDictionaries = singleSelectionInitallyMuted.value();
+        singleSelectionInitallyMuted.reset();
       }
     }
-    if ( QApplication::keyboardModifiers() & Qt::ShiftModifier ) {
-      if ( enterSoloMode ) {
-        *mutedDictionaries = storedMutedSet;
-
-        storedMutedSet.clear();
-        enterSoloMode = false;
-      }
+    else { // dict was not selected
+      selectSingleDict( id );
     }
-    else {
-      // Save dictionaries state
-      if ( !enterSoloMode ) {
-        storedMutedSet = *mutedDictionaries;
-        enterSoloMode  = true;
-      }
-
-      if ( isSolo ) {
-        for ( const auto & dictAction : dictActions ) {
-          mutedDictionaries->remove( dictAction->data().toString() );
-        }
-      }
-      else {
-        // Make dictionary solo
-        for ( const auto & dictAction : dictActions ) {
-          QString const dictId = dictAction->data().toString();
-
-          if ( dictId == id ) {
-            mutedDictionaries->remove( dictId );
-          }
-          else {
-            mutedDictionaries->insert( dictId );
-          }
-        }
-      }
-    }
-    configEvents.signalMutedDictionariesChanged();
   }
   else {
-    // Normal mode
-
-    storedMutedSet.clear();
-
-    if ( action->isChecked() ) {
-      // Unmute the dictionary
-
-      if ( mutedDictionaries->contains( id ) ) {
+    if ( ( Qt::ControlModifier | Qt::ShiftModifier ) & QApplication::keyboardModifiers() ) {
+      singleSelectionInitallyMuted.emplace( *mutedDictionaries );
+      selectSingleDict( id );
+    }
+    else { // Normal
+      if ( action->isChecked() ) {
         mutedDictionaries->remove( id );
-        configEvents.signalMutedDictionariesChanged();
+      }
+      else {
+        mutedDictionaries->insert( id );
       }
     }
-    else {
-      // Mute the dictionary
+  }
+  configEvents.signalMutedDictionariesChanged();
+}
 
-      if ( !mutedDictionaries->contains( id ) ) {
-        mutedDictionaries->insert( id );
-        configEvents.signalMutedDictionariesChanged();
-      }
+void DictionaryBar::selectSingleDict( const QString & id )
+{
+  for ( auto & dictAction : std::as_const( dictActions ) ) {
+    QString const dictId = dictAction->data().toString();
+    if ( dictId == id ) {
+      mutedDictionaries->remove( dictId );
+    }
+    else {
+      mutedDictionaries->insert( dictId );
     }
   }
 }
@@ -325,7 +302,7 @@ void DictionaryBar::dictsPaneClicked( const QString & id )
     return;
   }
 
-  for ( const auto & dictAction : dictActions ) {
+  for ( const auto & dictAction : std::as_const( dictActions ) ) {
     QString const dictId = dictAction->data().toString();
     if ( dictId == id ) {
       dictAction->activate( QAction::Trigger );

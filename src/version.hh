@@ -6,22 +6,19 @@ namespace Version {
 
 const QLatin1String flags = QLatin1String(
 #ifdef MAKE_ZIM_SUPPORT
-  " MAKE_ZIM_SUPPORT"
+  "ZIM "
 #endif
 #ifdef EPWING_SUPPORT
-  " EPWING_SUPPORT"
-#endif
-#ifdef USE_ICONV
-  " USE_ICONV"
+  "EPWING "
 #endif
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
-  " MAKE_CHINESE_CONVERSION_SUPPORT"
+  "OPENCC "
 #endif
 #ifdef TTS_SUPPORT
-  " TTS_SUPPORT"
+  "TTS "
 #endif
-#ifndef MAKE_FFMPEG_PLAYER
-  " no_ffmpeg_player"
+#ifdef MAKE_FFMPEG_PLAYER
+  "FFMPEG "
 #endif
 );
 

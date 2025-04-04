@@ -8,28 +8,12 @@
       <translation>Περί</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>GoldenDict, πρόγραμμα αναζήτησης σε λεξικά, έκδοση </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>Διανέμεται υπό τους όρους της GNU GPLv3 ή νεότερης</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Αντιγραφή πληροφοριών έκδοσης</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Αντιγραφή λίστας λεξικών</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Μνεία:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Βασισμένο στο Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -521,10 +505,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Μπαλαντέρ</translation>
     </message>
     <message>
-      <source>RegExp</source>
-      <translation>RegExp</translation>
-    </message>
-    <message>
       <source>Unique headwords total: %1.</source>
       <translation>Μοναδικό σύνολο κεφαλών: %1.</translation>
     </message>
@@ -559,6 +539,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>Η εξαγωγή ολοκληρώθηκε</translation>
+    </message>
+    <message>
+      <source>Regular Expression</source>
+      <translation>Κανονική Έκφραση</translation>
     </message>
   </context>
   <context>
@@ -841,6 +825,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Are you sure you want to clear all items?</source>
       <translation>Είστε βέβαιοι ότι θέλετε να διαγράψετε όλα τα στοιχεία;</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -955,24 +943,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>Προσθήκη των επιλεγμένων λεξικών στην ομάδα (Ins)</translation>
     </message>
     <message>
-      <source>&gt;</source>
-      <translation>&gt;</translation>
-    </message>
-    <message>
-      <source>Ins</source>
-      <translation>Ins</translation>
-    </message>
-    <message>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>Αφαίρεση επιλεγμένων λεξικών από την ομάδα (Del)</translation>
-    </message>
-    <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
-    </message>
-    <message>
-      <source>Del</source>
-      <translation>Del</translation>
     </message>
     <message>
       <source>Groups:</source>
@@ -2194,16 +2166,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>&amp;Λεξικά...</translation>
     </message>
     <message>
-      <source>F3</source>
-      <translation>F3</translation>
-    </message>
-    <message>
       <source>&amp;Preferences...</source>
       <translation>&amp;Προτιμήσεις...</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>F4</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
@@ -2226,10 +2190,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Έξοδος εφαρμογής</translation>
     </message>
     <message>
-      <source>Ctrl+Q</source>
-      <translation>Ctrl+Q</translation>
-    </message>
-    <message>
       <source>&amp;Forum</source>
       <translation>&amp;Φόρουμ</translation>
     </message>
@@ -2242,10 +2202,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ελαχιστοποιεί το παράθυρο ως εικονίδιο στην περιοχή ειδοποιήσεων</translation>
     </message>
     <message>
-      <source>Ctrl+F4</source>
-      <translation>Ctrl+F4</translation>
-    </message>
-    <message>
       <source>&amp;Save Article</source>
       <translation>&amp;Αποθήκευση άρθρου</translation>
     </message>
@@ -2254,16 +2210,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>Αποθήκευση άρθρου</translation>
     </message>
     <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
       <source>&amp;Print</source>
       <translation>Εκ&amp;τύπωση</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Ctrl+P</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2278,20 +2226,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Νέα &amp;σάρωση αρχείων</translation>
     </message>
     <message>
-      <source>Ctrl+F5</source>
-      <translation>Ctrl+F5</translation>
-    </message>
-    <message>
       <source>&amp;Clear</source>
       <translation>Εκκα&amp;θάριση</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
       <translation>&amp;Νέα καρτέλα</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>Ctrl+T</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2334,28 +2274,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Αναζήτηση στη σελίδα</translation>
     </message>
     <message>
-      <source>Ctrl+F</source>
-      <translation>Ctrl+F</translation>
-    </message>
-    <message>
       <source>Full-text search</source>
       <translation>Αναζήτηση πλήρους κειμένου</translation>
     </message>
     <message>
-      <source>Ctrl+Shift+F</source>
-      <translation>Ctrl+Shift+F</translation>
-    </message>
-    <message>
       <source>GoldenDict reference</source>
       <translation>GoldenDict αναφορά</translation>
-    </message>
-    <message>
-      <source>F1</source>
-      <translation>F1</translation>
-    </message>
-    <message>
-      <source>Show</source>
-      <translation>Εμφάνιση</translation>
     </message>
     <message>
       <source>Export</source>
@@ -2372,10 +2296,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Add current tab to Favorites</source>
       <translation>Προσθήκη τρέχουσας καρτέλας στα αγαπημένα</translation>
-    </message>
-    <message>
-      <source>Ctrl+E</source>
-      <translation>Ctrl+E</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
@@ -2663,6 +2583,18 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Αφαίρεση κεφαλίδας &quot;%1&quot; από τα Αγαπημένα?</translation>
     </message>
+    <message>
+      <source>Show</source>
+      <translation>Εμφάνιση</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>Αποθήκευση PDF ολοκληρώθηκε</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>Αποτυχία αποθήκευσης PDF</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2945,22 +2877,6 @@ the application.</source>
       <translation>Γραμματοσειρά Διεπαφής</translation>
     </message>
     <message>
-      <source>Interface language:</source>
-      <translation>Γλώσσα εφαρμογής:</translation>
-    </message>
-    <message>
-      <source>Article Display style:</source>
-      <translation>Στυλ εμφάνισης άρθρου:</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>Στιλ πρόσθετων:</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>Στυλ διεπαφής:</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Στρίψτε την διεπαφή στο σκοτάδι.</translation>
     </message>
@@ -3047,32 +2963,16 @@ in the pressed state when the word selection changes.</source>
       <translation>Πλήκτρο Alt</translation>
     </message>
     <message>
-      <source>Alt</source>
-      <translation>Alt</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Πλήκτρο Ctrl</translation>
-    </message>
-    <message>
-      <source>Ctrl</source>
-      <translation>Ctrl</translation>
     </message>
     <message>
       <source>Shift key</source>
       <translation>Πλήκτρο Shift</translation>
     </message>
     <message>
-      <source>Shift</source>
-      <translation>Shift</translation>
-    </message>
-    <message>
       <source>Windows key or Meta key</source>
       <translation>Πλήκτρο Windows ή Meta (Μενού)</translation>
-    </message>
-    <message>
-      <source>Win/Meta</source>
-      <translation>Win/Meta</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
@@ -3502,10 +3402,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Μπίνγκο-μπλε</translation>
     </message>
     <message>
-      <source> MB</source>
-      <translation> MB</translation>
-    </message>
-    <message>
       <source>Auto does nothing on some systems.</source>
       <translation>Το Auto δεν κάνει τίποτα σε ορισμένα συστήματα.</translation>
     </message>
@@ -3538,8 +3434,36 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Αυτόματο</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>Ενεργοποίηση αρχείου καταγραφής εφαρμογής</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Αποθήκευση μηνυμάτων αποσφαλμάτωσης στο gd_log.txt στο φάκελο ρυθμίσεων</translation>
+    </message>
+    <message>
+      <source>Interface Font Size</source>
+      <translation>Μέγεθος Γραμματοσειράς Διεπαφής</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Γλώσσα διεπαφής</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Στυλ εμφάνισης άρθρου</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Στυλ πρόσθετου</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Στυλ Διεπαφής</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Προεπισκόπηση Γραμματοσειράς</translation>
+    </message>
+    <message>
+      <source>Goldendict-ng is a dictionary software</source>
+      <translation>Το Goldendict-ng είναι ένα λεξικό λογισμικό</translation>
     </message>
   </context>
   <context>
@@ -3650,10 +3574,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Λέξη ή πρόταση για ερώτηση.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Αποθήκευση μηνυμάτων αποσφαλμάτωσης στο gd_log.txt στο φάκελο ρυθμίσεων.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Επαναφορά κατάστασης παραθύρου.</translation>
     </message>
@@ -3684,6 +3604,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Εκτυπωμένη έκδοση και πληροφορίες διάγνωσης.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Αποθήκευση μηνυμάτων αποσφαλμάτωσης στο gd_log.txt στο φάκελο ρυθμίσεων</translation>
     </message>
   </context>
   <context>
@@ -3737,9 +3661,12 @@ from Stardict, Babylon and GLS dictionaries</source>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>Διάλογος</translation>
+      <source>WARNING: %1</source>
+      <translation>ΠΡΟΕΙΔΟΠΟΙΗΣΗ: %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
       <translation>Πίσω</translation>
@@ -3750,7 +3677,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>Εκφώνηση λήμματος (Alt+S)</translation>
+      <translation>Προφορά Λέξης (Alt+S)</translation>
     </message>
     <message>
       <source>Alt+S</source>
@@ -3758,7 +3685,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Send word to main window (Alt+W)</source>
-      <translation>Εμφάνιση στο κύριο παράθυρο (Alt+W)</translation>
+      <translation>Αποστολή λέξης στο κύριο παράθυρο (Alt+W)</translation>
     </message>
     <message>
       <source>Alt+W</source>
@@ -3769,21 +3696,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Προσθήκη λέξης στα αγαπημένα (Ctrl+E)</translation>
     </message>
     <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>Εμφάνιση ή απόκρυψη της γραμμής λεξικών</translation>
-    </message>
-    <message>
       <source>Always stay on top of all other windows</source>
       <translation>Να παραμένει πάντα στην κορυφή όλων των άλλων παραθύρων</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>Χρησιμοποιήστε το για να μετατρέψετε το αναδυόμενο σε κανονικό παράθυρο, που δεν εξαφανίζεται από την οθόνη και μπορεί π.χ. να αλλάξει μέγεθος.</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>ΠΡΟΕΙΔΟΠΟΙΗΣΗ: %1</translation>
+      <translation>Use this to pin down the window so it would stay on screen,
+could be resized or managed in other ways.</translation>
     </message>
   </context>
   <context>

@@ -1,6 +1,6 @@
 name: Release All
 env: 
-  version: 25.02.0
+  version: 25.04.0
   prerelease: ${{ !contains(github.ref_name,'master') }}
   versionSuffix: ${{ !contains(github.ref_name,'master') && 'alpha' || 'Release' }}
 on: 
@@ -154,10 +154,10 @@ jobs:
           if [[ '${{env.prerelease}}' == 'true' ]]
           then
             echo "This is a pre-release"
-            previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v "Release" | head -n 1)
+            previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v -e "Release" -e "vcpkg" | head -n 1)
           else 
             echo "This is not a pre-release"
-            previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v "alpha" | head -n 1)
+            previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v -e "alpha" -e "vcpkg" | head -n 1)
           fi
 
           echo "prev_tag=$previousTag" >> $GITHUB_OUTPUT
@@ -168,58 +168,23 @@ jobs:
           echo "newTag=v${{ env.version }}-${{ env.versionSuffix }}.${{ steps.shortSHA.outputs.sha_short }}" >> $GITHUB_OUTPUT
       - name: Build Changelog
         id: build_changelog
-        uses: mikepenz/release-changelog-builder-action@v5
+        uses: orhun/git-cliff-action@v4
         with:
-          commitMode: false
-          fromTag: ${{ steps.changelogTags.outputs.prev_tag }}
-          toTag:  ${{ github.sha }}
-          configurationJson: |
-            {
-              "template": "#{{CHANGELOG}}\n\n<details>\n<summary>🔴 Uncategorized</summary>\n\n#{{UNCATEGORIZED}}\n</details>",
-              "categories": [
-                {
-                    "title": "#### 🚀 Features",
-                    "labels": ["feature","feat"]
-                },
-                {
-                    "title": "#### 🔧 Fixes and Optimizations",
-                    "labels": ["fix","bug", "opt"]
-                }
-                ,
-                {
-                    "title": "#### 🤖 DevOps",
-                    "labels": ["action"]
-                }
-                ,
-                {
-                    "title": "#### 🧼 Clean Code",
-                    "labels": ["clean","refactor"]
-                }
-
-              ],
-              "label_extractor": [
-              {
-                "pattern": "([^:]*):.*",
-                "target": "$1",
-                "on_property": "title",
-                "flags": "gu"
-              }
-            ]
-            }
+          config: cliff.toml
+          args: ${{ steps.changelogTags.outputs.prev_tag }}..HEAD
+        env:
+          OUTPUT: changelog.txt
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Get changelog.txt
         run: |
           # HEREDOC must be quoted to avoid Bash substitution
-          cat <<'HEREDOC' > changelog.txt
-          [Install instructions for Windows, macOS and Linux](https://xiaoyifang.github.io/goldendict-ng/install/).
-          
-          Filename pattern: GoldenDict-ng-[version]-[Qt version]-[system name]...
-          
-          For Linux, the released version is on Flathub → [io.github.xiaoyifang.goldendict_ng](https://flathub.org/apps/io.github.xiaoyifang.goldendict_ng).
-
+          # append the branch name to the changelog
+          cat <<'HEREDOC' >> changelog.txt
           Based on branch: ${{ github.ref_name }}
-          ### Changes
-          ${{ steps.build_changelog.outputs.changelog }}
           HEREDOC
+      - name: Print changelog.txt
+        run: |
+          cat changelog.txt
       - name: Get release title
         id: getReleaseTitle
         run: |

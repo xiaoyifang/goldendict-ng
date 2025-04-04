@@ -8,28 +8,12 @@
       <translation>关于</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>GoldenDict-ng 电子词典程序，版本 </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>授权基于 GNU 公共授权 GPLv3 或更高版本</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>复制版本信息</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>复制词典列表</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>致谢名单：</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>基于 Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -224,7 +208,7 @@
     </message>
     <message>
       <source>Save &amp;Bookmark &quot;%1...&quot;</source>
-      <translation>保存为书签（&amp;S）“%1...”</translation>
+      <translation>保存为书签(&amp;B) “%1...”</translation>
     </message>
     <message>
       <source>&amp;Send Current Article to Anki</source>
@@ -518,10 +502,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>通配符</translation>
     </message>
     <message>
-      <source>RegExp</source>
-      <translation>正则表达式</translation>
-    </message>
-    <message>
       <source>Unique headwords total: %1.</source>
       <translation>唯一的头字总数： %1</translation>
     </message>
@@ -556,6 +536,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>导出完成</translation>
+    </message>
+    <message>
+      <source>Regular Expression</source>
+      <translation>正则表达式</translation>
     </message>
   </context>
   <context>
@@ -836,7 +820,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Are you sure you want to clear all items?</source>
-      <translation>您确实要清除所有项目吗？</translation>
+      <translation>您确实要清除所有条目吗？</translation>
+    </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation>将此文件夹作为添加/删除单词操作的目标。</translation>
     </message>
   </context>
   <context>
@@ -952,24 +940,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>将所选词典添加进群组(Ins)</translation>
     </message>
     <message>
-      <source>&gt;</source>
-      <translation>&gt;</translation>
-    </message>
-    <message>
-      <source>Ins</source>
-      <translation>Ins</translation>
-    </message>
-    <message>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>将所选词典从群组中移除(Del)</translation>
-    </message>
-    <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
-    </message>
-    <message>
-      <source>Del</source>
-      <translation>Del</translation>
     </message>
     <message>
       <source>Groups:</source>
@@ -2191,16 +2163,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>词典(&amp;D)...</translation>
     </message>
     <message>
-      <source>F3</source>
-      <translation>F3</translation>
-    </message>
-    <message>
       <source>&amp;Preferences...</source>
       <translation>首选项(&amp;P)...</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>F4</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
@@ -2223,10 +2187,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>退出程序</translation>
     </message>
     <message>
-      <source>Ctrl+Q</source>
-      <translation>Ctrl+Q</translation>
-    </message>
-    <message>
       <source>&amp;Forum</source>
       <translation>论坛(&amp;F)</translation>
     </message>
@@ -2239,10 +2199,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>最小化窗口至系统托盘</translation>
     </message>
     <message>
-      <source>Ctrl+F4</source>
-      <translation>Ctrl+F4</translation>
-    </message>
-    <message>
       <source>&amp;Save Article</source>
       <translation>保存文章(&amp;S)</translation>
     </message>
@@ -2251,16 +2207,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>保存文章</translation>
     </message>
     <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
       <source>&amp;Print</source>
       <translation>打印(&amp;P)</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Ctrl+P</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2275,20 +2223,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>重新扫描文件(&amp;R)</translation>
     </message>
     <message>
-      <source>Ctrl+F5</source>
-      <translation>Ctrl+F5</translation>
-    </message>
-    <message>
       <source>&amp;Clear</source>
       <translation>清除(&amp;C)</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
       <translation>新建标签页(&amp;N)</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>Ctrl+T</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2331,28 +2271,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>页内搜索</translation>
     </message>
     <message>
-      <source>Ctrl+F</source>
-      <translation>Ctrl+F</translation>
-    </message>
-    <message>
       <source>Full-text search</source>
       <translation>全文搜索</translation>
     </message>
     <message>
-      <source>Ctrl+Shift+F</source>
-      <translation>Ctrl+Shift+F</translation>
-    </message>
-    <message>
       <source>GoldenDict reference</source>
       <translation>GoldenDict-ng 帮助</translation>
-    </message>
-    <message>
-      <source>F1</source>
-      <translation>F1</translation>
-    </message>
-    <message>
-      <source>Show</source>
-      <translation>显示</translation>
     </message>
     <message>
       <source>Export</source>
@@ -2369,10 +2293,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Add current tab to Favorites</source>
       <translation>将当前标签页添加至收藏</translation>
-    </message>
-    <message>
-      <source>Ctrl+E</source>
-      <translation>Ctrl+E</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
@@ -2661,6 +2581,18 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>从收藏中删除标题字“%1”？</translation>
     </message>
+    <message>
+      <source>Show</source>
+      <translation>显示</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>保存 PDF 完成</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>保存 PDF 失败</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2936,22 +2868,6 @@ the application.</source>
       <translation>界面字体</translation>
     </message>
     <message>
-      <source>Interface language:</source>
-      <translation>界面语言：</translation>
-    </message>
-    <message>
-      <source>Article Display style:</source>
-      <translation>文章显示风格</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>附加样式：</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>界面风格：</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>启用暗色界面</translation>
     </message>
@@ -3037,32 +2953,16 @@ in the pressed state when the word selection changes.</source>
       <translation>Alt 键</translation>
     </message>
     <message>
-      <source>Alt</source>
-      <translation>Alt</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Ctrl 键</translation>
-    </message>
-    <message>
-      <source>Ctrl</source>
-      <translation>Ctrl</translation>
     </message>
     <message>
       <source>Shift key</source>
       <translation>Shift 键</translation>
     </message>
     <message>
-      <source>Shift</source>
-      <translation>Shift</translation>
-    </message>
-    <message>
       <source>Windows key or Meta key</source>
       <translation>Windows 键或 Meta 键</translation>
-    </message>
-    <message>
-      <source>Win/Meta</source>
-      <translation>Win/Meta</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
@@ -3485,10 +3385,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>灵格斯-蓝色调</translation>
     </message>
     <message>
-      <source> MB</source>
-      <translation> MB</translation>
-    </message>
-    <message>
       <source>Auto does nothing on some systems.</source>
       <translation>在某些系统上，自动不执行任何操作。</translation>
     </message>
@@ -3521,8 +3417,36 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>自动</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>启用应用程序日志</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>在配置文件夹中将调试消息保存到 gd_log.txt</translation>
+    </message>
+    <message>
+      <source>Interface Font Size</source>
+      <translation>界面字体大小</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>界面语言</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>文章显示样式</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>附加组件样式</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>界面风格</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>预览字体</translation>
+    </message>
+    <message>
+      <source>Goldendict-ng is a dictionary software</source>
+      <translation>Goldendict-ng 是字典软件</translation>
     </message>
   </context>
   <context>
@@ -3633,10 +3557,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>单词或句子查询。</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>在配置文件夹中将调试消息保存到 gd_log.txt。</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>重置窗口状态。</translation>
     </message>
@@ -3667,6 +3587,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>打印版本和诊断信息。</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>在配置文件夹中将调试消息保存到 gd_log.txt</translation>
     </message>
   </context>
   <context>
@@ -3720,12 +3644,15 @@ from Stardict, Babylon and GLS dictionaries</source>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>对话框</translation>
+      <source>WARNING: %1</source>
+      <translation>警告： %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
-      <translation>回退</translation>
+      <translation>后退</translation>
     </message>
     <message>
       <source>Forward</source>
@@ -3741,7 +3668,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Send word to main window (Alt+W)</source>
-      <translation>将词条发送到主窗口 (Alt+W)</translation>
+      <translation>发送单词到主窗口 (Alt+W)</translation>
     </message>
     <message>
       <source>Alt+W</source>
@@ -3749,11 +3676,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>
-      <translation>将词条添加至收藏 (Ctrl+E)</translation>
-    </message>
-    <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>显示或隐藏词典栏</translation>
+      <translation>添加单词到收藏夹 (Ctrl+E)</translation>
     </message>
     <message>
       <source>Always stay on top of all other windows</source>
@@ -3762,11 +3685,8 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>使用此按钮可以固定窗口，以便它能停留在屏幕上进行改变大小等相关窗口管理操作。</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>警告： %1</translation>
+      <translation>用它来固定窗口，使它保持在屏幕上，
+可以调整大小或以其他方式管理。</translation>
     </message>
   </context>
   <context>

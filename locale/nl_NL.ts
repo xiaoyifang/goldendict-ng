@@ -8,28 +8,12 @@
       <translation>Over</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>GoldenDict-ng woordenboek zoekprogramma, versie</translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>Gebruiksrecht verleend onder GNU GPLv3 of nieuwer</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Versie info kopiëren</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Woordenboeken lijst kopiëren</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Dankbetuigingen:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Gebaseerd op Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -519,10 +503,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Jokertekens</translation>
     </message>
     <message>
-      <source>RegExp</source>
-      <translation>RegExp</translation>
-    </message>
-    <message>
       <source>Unique headwords total: %1.</source>
       <translation>Unieke kopwoorden totaal: %1.</translation>
     </message>
@@ -557,6 +537,10 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>Export finished</source>
       <translation>Exporteren voltooid</translation>
+    </message>
+    <message>
+      <source>Regular Expression</source>
+      <translation>Reguliere expressie</translation>
     </message>
   </context>
   <context>
@@ -839,6 +823,10 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <source>Are you sure you want to clear all items?</source>
       <translation>Weet u zeker dat u alle items wilt wissen?</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -953,24 +941,8 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Geselecteerde woordenboeken aan groep toevoegen (Ins)</translation>
     </message>
     <message>
-      <source>&gt;</source>
-      <translation>&gt;</translation>
-    </message>
-    <message>
-      <source>Ins</source>
-      <translation>Ins</translation>
-    </message>
-    <message>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>Geselecteerde woordenboeken uit groep verwijderen (Del)</translation>
-    </message>
-    <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
-    </message>
-    <message>
-      <source>Del</source>
-      <translation>Del</translation>
     </message>
     <message>
       <source>Groups:</source>
@@ -2192,16 +2164,8 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Woorden&amp;boeken...</translation>
     </message>
     <message>
-      <source>F3</source>
-      <translation>F3</translation>
-    </message>
-    <message>
       <source>&amp;Preferences...</source>
       <translation>&amp;Instellingen...</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>F4</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
@@ -2224,10 +2188,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Programma afsluiten</translation>
     </message>
     <message>
-      <source>Ctrl+Q</source>
-      <translation>Ctrl+Q</translation>
-    </message>
-    <message>
       <source>&amp;Forum</source>
       <translation>&amp;Forum</translation>
     </message>
@@ -2240,10 +2200,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Minimaliseren naar systeemvak</translation>
     </message>
     <message>
-      <source>Ctrl+F4</source>
-      <translation>Ctrl+F4</translation>
-    </message>
-    <message>
       <source>&amp;Save Article</source>
       <translation>Artikel &amp;opslaan</translation>
     </message>
@@ -2252,16 +2208,8 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Artikel opslaan</translation>
     </message>
     <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
       <source>&amp;Print</source>
       <translation>Af&amp;drukken</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Ctrl+P</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2276,20 +2224,12 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Bestanden opnieuw &amp;inlezen</translation>
     </message>
     <message>
-      <source>Ctrl+F5</source>
-      <translation>Ctrl+F5</translation>
-    </message>
-    <message>
       <source>&amp;Clear</source>
       <translation>&amp;Wissen</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
       <translation>&amp;Nieuw tabblad</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>CTRL</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2332,28 +2272,12 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Zoeken op pagina</translation>
     </message>
     <message>
-      <source>Ctrl+F</source>
-      <translation>Ctrl+F</translation>
-    </message>
-    <message>
       <source>Full-text search</source>
       <translation>Volledige-tekst zoeken</translation>
     </message>
     <message>
-      <source>Ctrl+Shift+F</source>
-      <translation>Ctrl+Shift+F</translation>
-    </message>
-    <message>
       <source>GoldenDict reference</source>
       <translation>Referentie GoldenDict</translation>
-    </message>
-    <message>
-      <source>F1</source>
-      <translation>F1</translation>
-    </message>
-    <message>
-      <source>Show</source>
-      <translation>Weergeven</translation>
     </message>
     <message>
       <source>Export</source>
@@ -2370,10 +2294,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>Add current tab to Favorites</source>
       <translation>Huidige tabblad aan favorieten toevoegen</translation>
-    </message>
-    <message>
-      <source>Ctrl+E</source>
-      <translation>Ctrl+E</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
@@ -2661,6 +2581,18 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Hoofdwoord &quot;%1&quot; uit favorieten verwijderen?</translation>
     </message>
+    <message>
+      <source>Show</source>
+      <translation>Weergeven</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>PDF-bestand opslaan voltooid</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>Opslaan PDF mislukt</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2943,22 +2875,6 @@ the application.</source>
       <translation>Lettertype interface</translation>
     </message>
     <message>
-      <source>Interface language:</source>
-      <translation>Toepassingstaal:</translation>
-    </message>
-    <message>
-      <source>Article Display style:</source>
-      <translation>Weergave stijl van artikel:</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>Add-on stijl:</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>Interfacestijl:</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Draai de UI donker.</translation>
     </message>
@@ -3045,32 +2961,16 @@ toetsen zijn ingedrukt wanneer de woordselectie verandert.</translation>
       <translation>Alt-toets</translation>
     </message>
     <message>
-      <source>Alt</source>
-      <translation>Alt</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Ctrl-toets</translation>
-    </message>
-    <message>
-      <source>Ctrl</source>
-      <translation>Ctrl</translation>
     </message>
     <message>
       <source>Shift key</source>
       <translation>Shift-toets</translation>
     </message>
     <message>
-      <source>Shift</source>
-      <translation>Verschuiving</translation>
-    </message>
-    <message>
       <source>Windows key or Meta key</source>
       <translation>Windowstoets of Metatoets</translation>
-    </message>
-    <message>
-      <source>Win/Meta</source>
-      <translation>Win/Meta</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
@@ -3496,10 +3396,6 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <translation>Lingoes-Blauw</translation>
     </message>
     <message>
-      <source> MB</source>
-      <translation> Mb</translation>
-    </message>
-    <message>
       <source>Auto does nothing on some systems.</source>
       <translation>Auto doet niets op sommige systemen.</translation>
     </message>
@@ -3532,8 +3428,36 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <translation>Automatisch</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>Toepassingslogboek inschakelen</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Debug berichten opslaan in gd_log.txt in de configuratie map</translation>
+    </message>
+    <message>
+      <source>Interface Font Size</source>
+      <translation>Tekengrootte interface</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Interface taal</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Weergavestijl artikel</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on stijl</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Interface Stijl</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Voorbeeld lettertype</translation>
+    </message>
+    <message>
+      <source>Goldendict-ng is a dictionary software</source>
+      <translation>Goldendict-ng is een woordenboek software</translation>
     </message>
   </context>
   <context>
@@ -3644,10 +3568,6 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <translation>Woord of zin om te vragen.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Foutopsporingsberichten opslaan in gd_log.txt in de configuratiemap.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Vensterstatus resetten.</translation>
     </message>
@@ -3678,6 +3598,10 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Printversie en diagnose-info.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Debug berichten opslaan in gd_log.txt in de configuratie map</translation>
     </message>
   </context>
   <context>
@@ -3731,20 +3655,23 @@ van Stardict, Babylon en GLS woordenboeken</translation>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>Venster</translation>
+      <source>WARNING: %1</source>
+      <translation>WAARSCHUWING: %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
-      <translation>Terug</translation>
+      <translation>Achterzijde</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>Vooruit</translation>
+      <translation>Doorsturen</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>Woord uitspreken (Alt+S)</translation>
+      <translation>Pronounce woord (Alt+S)</translation>
     </message>
     <message>
       <source>Alt+S</source>
@@ -3763,22 +3690,14 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <translation>Woord aan favorieten toevoegen (Ctrl+E)</translation>
     </message>
     <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>Woordenboekwerkbalk weergeven of verbergen</translation>
-    </message>
-    <message>
       <source>Always stay on top of all other windows</source>
       <translation>Blijf altijd op de voorgrond van alle andere vensters</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>Hiermee vergrendelt u het venster zodat het zichtbaar blijft
-en u het in grootte of anderszins kunt aanpassen.</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>WAARSCHUWING: %1</translation>
+      <translation>Gebruik dit om het venster te spelden zodat het op het scherm zou blijven,
+kan op andere manieren worden aangepast of beheerd.</translation>
     </message>
   </context>
   <context>

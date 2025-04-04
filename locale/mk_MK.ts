@@ -8,28 +8,12 @@
       <translation>За програмот</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>Речник GoldenDict, издание </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>Лиценца: GNU GPLv3 или понова</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Копирај ги информациите за верзијата</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Копирај список со речници</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Заслуги:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Врз основа на Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -519,10 +503,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Човечки знаци</translation>
     </message>
     <message>
-      <source>RegExp</source>
-      <translation>RegExp</translation>
-    </message>
-    <message>
       <source>Unique headwords total: %1.</source>
       <translation>Вкупно уникатни наслови: %1.</translation>
     </message>
@@ -557,6 +537,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>Извозот е завршен</translation>
+    </message>
+    <message>
+      <source>Regular Expression</source>
+      <translation type="unfinished">Regular Expression</translation>
     </message>
   </context>
   <context>
@@ -839,6 +823,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Are you sure you want to clear all items?</source>
       <translation>Дали сте сигурни дека сакате да ги исчистите сите ставки?</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -953,24 +941,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>Додај го одбраните речници во група (Ins)</translation>
     </message>
     <message>
-      <source>&gt;</source>
-      <translation>&gt;</translation>
-    </message>
-    <message>
-      <source>Ins</source>
-      <translation>Инс</translation>
-    </message>
-    <message>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>Отстраните ги одбраните речници од група (Del)</translation>
-    </message>
-    <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
-    </message>
-    <message>
-      <source>Del</source>
-      <translation>Дел</translation>
     </message>
     <message>
       <source>Groups:</source>
@@ -2192,16 +2164,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>&amp;Речници...</translation>
     </message>
     <message>
-      <source>F3</source>
-      <translation>F3</translation>
-    </message>
-    <message>
       <source>&amp;Preferences...</source>
       <translation>&amp;Поставки...</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>F4</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
@@ -2224,10 +2188,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Затвори апликација</translation>
     </message>
     <message>
-      <source>Ctrl+Q</source>
-      <translation>Ctrl+Q</translation>
-    </message>
-    <message>
       <source>&amp;Forum</source>
       <translation>&amp;Форум</translation>
     </message>
@@ -2240,10 +2200,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Смали прозорец во палета</translation>
     </message>
     <message>
-      <source>Ctrl+F4</source>
-      <translation>Ctrl+F4</translation>
-    </message>
-    <message>
       <source>&amp;Save Article</source>
       <translation>&amp;Сочувај статија</translation>
     </message>
@@ -2252,16 +2208,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>Сочувајте статија</translation>
     </message>
     <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
       <source>&amp;Print</source>
       <translation>&amp;Печати</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Ctrl+P</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2276,20 +2224,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>&amp;Повторно сканирај датотеки</translation>
     </message>
     <message>
-      <source>Ctrl+F5</source>
-      <translation>Ctrl+F5</translation>
-    </message>
-    <message>
       <source>&amp;Clear</source>
       <translation>О&amp;чисти</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
       <translation>&amp;Нова картичка(таб)</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>Ctrl+T</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2332,28 +2272,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Пребарување на страницата</translation>
     </message>
     <message>
-      <source>Ctrl+F</source>
-      <translation>Ctrl+F</translation>
-    </message>
-    <message>
       <source>Full-text search</source>
       <translation>Пребарување во цел текст</translation>
     </message>
     <message>
-      <source>Ctrl+Shift+F</source>
-      <translation>Ctrl+Shift+F</translation>
-    </message>
-    <message>
       <source>GoldenDict reference</source>
       <translation>Референца GoldenDict</translation>
-    </message>
-    <message>
-      <source>F1</source>
-      <translation>Ф1</translation>
-    </message>
-    <message>
-      <source>Show</source>
-      <translation>Прикажи</translation>
     </message>
     <message>
       <source>Export</source>
@@ -2370,10 +2294,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Add current tab to Favorites</source>
       <translation>Додајте тековно јазиче во Омилени</translation>
-    </message>
-    <message>
-      <source>Ctrl+E</source>
-      <translation>Ctrl+E</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
@@ -2662,6 +2582,18 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Да се отстрани насловот &quot;%1&quot; од Омилени?</translation>
     </message>
+    <message>
+      <source>Show</source>
+      <translation>Прикажи</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation type="unfinished">Save PDF complete</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation type="unfinished">Save PDF failed</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2946,22 +2878,6 @@ the application.</source>
       <translation>Фонт за интерфејс</translation>
     </message>
     <message>
-      <source>Interface language:</source>
-      <translation>Јазик на интерфејсот:</translation>
-    </message>
-    <message>
-      <source>Article Display style:</source>
-      <translation>Стил на прикажување написи:</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>Додаток на стилот:</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>Стил на интерфејс:</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Свртете го интерфејсот на темно.</translation>
     </message>
@@ -3048,32 +2964,16 @@ in the pressed state when the word selection changes.</source>
       <translation>Тастер Alt</translation>
     </message>
     <message>
-      <source>Alt</source>
-      <translation>Алт</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Тастер Ctrl</translation>
-    </message>
-    <message>
-      <source>Ctrl</source>
-      <translation>Ctrl</translation>
     </message>
     <message>
       <source>Shift key</source>
       <translation>Тастер Shift</translation>
     </message>
     <message>
-      <source>Shift</source>
-      <translation>Смена</translation>
-    </message>
-    <message>
       <source>Windows key or Meta key</source>
       <translation>Тастер Windows или Meta</translation>
-    </message>
-    <message>
-      <source>Win/Meta</source>
-      <translation>Win или Meta</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
@@ -3503,10 +3403,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Lingoes-Blue</translation>
     </message>
     <message>
-      <source> MB</source>
-      <translation> МБ</translation>
-    </message>
-    <message>
       <source>Auto does nothing on some systems.</source>
       <translation>Автоматското не прави ништо на некои системи.</translation>
     </message>
@@ -3539,8 +3435,36 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Автоматски</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>Овозможи дневник на апликација</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Save debug messages to gd_log.txt in the config folder</translation>
+    </message>
+    <message>
+      <source>Interface Font Size</source>
+      <translation>Interface Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Interface language</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Article Display style</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on style</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Interface Style</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Preview Font</translation>
+    </message>
+    <message>
+      <source>Goldendict-ng is a dictionary software</source>
+      <translation>Goldendict-ng is a dictionary software</translation>
     </message>
   </context>
   <context>
@@ -3651,10 +3575,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Збор или реченица до барање.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Зачувајте ги пораките за отстранување грешки во gd_log.txt во папката за конфигурација.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Ресетирајте ја состојбата на прозорецот.</translation>
     </message>
@@ -3685,6 +3605,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Информации за печатена верзија и дијагноза.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
@@ -3738,54 +3662,49 @@ from Stardict, Babylon and GLS dictionaries</source>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>Дијалог</translation>
+      <source>WARNING: %1</source>
+      <translation>ПРЕДУПРЕДУВАЊЕ: %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
-      <translation>Назад</translation>
+      <translation>Back</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>Напред</translation>
+      <translation>Forward</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>Изговори збор (Alt+S)</translation>
+      <translation>Pronounce Word (Alt+S)</translation>
     </message>
     <message>
       <source>Alt+S</source>
-      <translation>Alt+S</translation>
+      <translation type="unfinished">Alt+S</translation>
     </message>
     <message>
       <source>Send word to main window (Alt+W)</source>
-      <translation>Испрати збор во главен прозорец (Alt+W)</translation>
+      <translation>Send word to main window (Alt+W)</translation>
     </message>
     <message>
       <source>Alt+W</source>
-      <translation>Alt+W</translation>
+      <translation type="unfinished">Alt+W</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>
-      <translation>Додајте збор во Омилени (Ctrl+E)</translation>
-    </message>
-    <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>Прикажување или скривање лента на речници</translation>
+      <translation>Add word to Favorites (Ctrl+E)</translation>
     </message>
     <message>
       <source>Always stay on top of all other windows</source>
-      <translation>Секогаш останете на врвот на сите други прозорци</translation>
+      <translation>Always stay on top of all other windows</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>Кликните за да го усидрите прозорецот на екранот, промените големината
-или било која друга особина.</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>ПРЕДУПРЕДУВАЊЕ: %1</translation>
+      <translation>Use this to pin down the window so it would stay on screen,
+could be resized or managed in other ways.</translation>
     </message>
   </context>
   <context>

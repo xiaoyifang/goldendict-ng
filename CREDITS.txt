@@ -1,4 +1,6 @@
-﻿Konstantin Isakov <ikm\goldendict.org>: Principal author of the program
+﻿Not updated. Some of the original GoldenDict's contributors.
+
+Konstantin Isakov <ikm\goldendict.org>: Principal author of the program
 Jennie Petoumenou <epetoumenou\gmail.com>: Greek transliteration and Greek translation
 Mindaugas Baranauskas <embar\super.lt>: Lithuanian translation
 Vit Pelcak <vit\pelcak.org>: Czech translation

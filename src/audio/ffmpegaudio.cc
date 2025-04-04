@@ -260,7 +260,6 @@ void DecoderContext::closeCodec()
   // a crash in ffmpeg
   if ( audioStream_ && codecContext_ && codec_ ) {
     audioStream_->discard = AVDISCARD_ALL;
-    avcodec_close( codecContext_ );
     avcodec_free_context( &codecContext_ );
   }
 

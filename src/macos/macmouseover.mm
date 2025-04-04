@@ -336,9 +336,5 @@ void MacMouseOver::handleRetrievedString(QString& wordSeq, int wordSeqPos)
 
 bool MacMouseOver::isAXAPIEnabled()
 {
-    if (NSFoundationVersionNumber >= 1000) { // MacOS 10.9+
-        return AXIsProcessTrusted();
-    }
-
-    return AXAPIEnabled();
+    return AXIsProcessTrusted();
 }

@@ -10,7 +10,7 @@ addtab.svg
 wizard.svg
 fulltext
 text2speech
-reload 
+reload
 icons/print.svg
 icons/programs.svg
 error
@@ -31,6 +31,7 @@ closetab
 folder
 reload
 menu.svg
+folder_active.svg is star.svg + folder.svg
 
 https://packages.debian.org/bullseye/gnome-icon-theme GPLv3
 lists:
@@ -38,10 +39,10 @@ clear
 
 https://commons.wikimedia.org/wiki/File:Accessories-dictionary.svg
 lists:
-icon32_sdict.svg 
+icon32_sdict.svg
 
 
-https://freesvg.org/pushpin-vector-image  public domain 
+https://freesvg.org/pushpin-vector-image  public domain
 lists:
 pushbin
 

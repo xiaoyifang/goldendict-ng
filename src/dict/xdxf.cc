@@ -295,31 +295,19 @@ void XdxfDictionary::loadIcon() noexcept
     return;
   }
 
-  QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
+  const QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
 
-  QFileInfo baseInfo( fileName );
-
-  fileName = baseInfo.absoluteDir().absoluteFilePath( "icon32.png" );
-  QFileInfo info( fileName );
-
-  if ( !info.isFile() ) {
-    fileName = baseInfo.absoluteDir().absoluteFilePath( "icon16.png" );
-    info     = QFileInfo( fileName );
-  }
-
-  if ( !info.isFile() ) {
-    fileName = baseInfo.absoluteDir().absoluteFilePath( "dict.bmp" );
-    info     = QFileInfo( fileName );
-  }
-
-  if ( info.isFile() ) {
-    loadIconFromFile( fileName, true );
+  const QDir dir = QFileInfo( fileName ).dir();
+  for ( const auto & possibleName : { "icon16.png", "icon32.png", "dict.bmp" } ) {
+    if ( dir.exists( possibleName ) && loadIconFromFilePath( dir.absoluteFilePath( possibleName ) ) ) {
+      break;
+    }
   }
 
   if ( dictionaryIcon.isNull() ) {
-    // Load failed -- use default icons
-
-    dictionaryIcon = QIcon( ":/icons/icon32_xdxf.png" );
+    if ( !loadIconFromFileName( fileName ) ) {
+      dictionaryIcon = QIcon( ":/icons/icon32_xdxf.png" );
+    }
   }
 
   dictionaryIconLoaded = true;
@@ -749,7 +737,7 @@ QString readXhtmlData( QXmlStreamReader & stream )
 
       QXmlStreamAttributes attrs = stream.attributes();
 
-      for ( const auto & attr : attrs ) {
+      for ( const auto & attr : std::as_const( attrs ) ) {
         result += Utils::escape( attr.name().toString() );
         result += "=\"" + Utils::escape( attr.value().toString() ) + "\"";
       }

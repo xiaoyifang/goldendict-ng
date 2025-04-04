@@ -127,10 +127,7 @@ void HunspellDictionary::loadIcon() noexcept
 
   QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
 
-  // Remove the extension
-  fileName.chop( 3 );
-
-  if ( !loadIconFromFile( fileName ) ) {
+  if ( !loadIconFromFileName( fileName ) ) {
     // Load failed -- use default icons
     dictionaryIcon = QIcon( ":/icons/icon32_hunspell.png" );
   }
@@ -345,7 +342,7 @@ void HunspellHeadwordsRequest::run()
     if ( !suggestions.empty() ) {
       QMutexLocker _( &dataMutex );
 
-      for ( const auto & suggestion : suggestions ) {
+      for ( const auto & suggestion : std::as_const( suggestions ) ) {
         matches.push_back( suggestion );
       }
     }
@@ -544,7 +541,7 @@ void getSuggestionsForExpression( std::u32string const & expression,
     }
     else {
       QList< std::u32string > sugg = suggest( word, hunspellMutex, hunspell );
-      int suggNum           = sugg.size() + 1;
+      int suggNum                  = sugg.size() + 1;
       if ( suggNum > 3 ) {
         suggNum = 3;
       }
@@ -572,7 +569,7 @@ void getSuggestionsForExpression( std::u32string const & expression,
     }
   }
 
-  for ( const auto & result : results ) {
+  for ( const auto & result : std::as_const( results ) ) {
     if ( result != trimmedWord ) {
       suggestions.push_back( result );
     }
@@ -587,9 +584,6 @@ std::u32string decodeFromHunspell( Hunspell & hunspell, char const * str )
   size_t inLeft   = strlen( str );
 
   vector< char32_t > result( inLeft + 1 ); // +1 isn't needed, but see above
-
-  void * out     = &result.front();
-  size_t outLeft = result.size() * sizeof( char32_t );
 
   QString convStr = conv.convert( in, inLeft );
   return convStr.toStdU32String();

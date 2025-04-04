@@ -120,7 +120,9 @@ private:
   QMap< QString, QString > tags;
   QList< QString > contentTypes;
   quint32 blobCount;
-  quint64 storeOffset, fileSize, refsOffset;
+  quint64 storeOffset = 0;
+  quint64 refsOffset  = 0;
+  qsizetype fileSize  = 0;
   quint32 refsCount, itemsCount;
   quint64 itemsOffset, itemsDataOffset;
   quint32 currentItem;
@@ -138,9 +140,6 @@ public:
     compression( UNKNOWN ),
     blobCount( 0 ),
     storeOffset( 0 ),
-    fileSize( 0 ),
-    refsOffset( 0 ),
-    refsCount( 0 ),
     itemsCount( 0 ),
     itemsOffset( 0 ),
     itemsDataOffset( 0 ),
@@ -684,9 +683,9 @@ private:
 
 SlobDictionary::SlobDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles ):
   BtreeDictionary( id, dictionaryFiles ),
-  idxFileName( indexFile ),
   idx( indexFile, QIODevice::ReadOnly ),
-  idxHeader( idx.read< IdxHeader >() )
+  idxHeader( idx.read< IdxHeader >() ),
+  idxFileName( indexFile )
 {
   // Open data file
   sf.open( dictionaryFiles[ 0 ].c_str() );
@@ -703,9 +702,7 @@ SlobDictionary::SlobDictionary( string const & id, string const & indexFile, vec
 
   dictionaryName = sf.getDictionaryName().toStdString();
   if ( dictionaryName.empty() ) {
-    QString name   = QDir::fromNativeSeparators( dictionaryFiles[ 0 ].c_str() );
-    int n          = name.lastIndexOf( '/' );
-    dictionaryName = name.mid( n + 1 ).toStdString();
+    dictionaryName = QFileInfo( QString::fromStdString( dictionaryFiles[ 0 ] ) ).fileName().toStdString();
   }
 
   // Full-text search parameters
@@ -723,10 +720,8 @@ void SlobDictionary::loadIcon() noexcept
 
   QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
 
-  // Remove the extension
-  fileName.chop( 4 );
 
-  if ( !loadIconFromFile( fileName ) ) {
+  if ( !loadIconFromFileName( fileName ) ) {
     // Load failed -- use default icons
     dictionaryIcon = QIcon( ":/icons/icon32_slob.png" );
   }

@@ -1,7 +1,6 @@
 #pragma once
 
 #include "dict/dictionary.hh"
-
 #include <QAbstractListModel>
 #include <QStringList>
 
@@ -30,7 +29,7 @@ signals:
 
 public slots:
   void setDict( Dictionary::Class * dict );
-  void requestFinished();
+  void requestFinished( const sptr< Dictionary::WordSearchRequest > & );
 
 protected:
   bool canFetchMore( const QModelIndex & parent ) const override;
@@ -50,5 +49,4 @@ private:
   int index;
   char * ptr;
   QMutex lock;
-  std::list< sptr< Dictionary::WordSearchRequest > > queuedRequests;
 };

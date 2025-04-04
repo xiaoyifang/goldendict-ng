@@ -55,7 +55,7 @@ EditDictionaries::EditDictionaries( QWidget * parent,
   helpAction.setShortcut( QKeySequence( "F1" ) );
   helpAction.setShortcutContext( Qt::WidgetWithChildrenShortcut );
 
-  connect( &helpAction, &QAction::triggered, [ this ]() {
+  connect( &helpAction, &QAction::triggered, this, [ this ]() {
     if ( ui.tabs->currentWidget() == this->groups ) {
       Help::openHelpWebpage( Help::section::manage_groups );
     }

@@ -8,28 +8,12 @@
       <translation>درباره</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>برنامه جست‌وجوگر واژه‌نامه گلدن‌دیکت، نسخه </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>تحت مجوز گنو GPLv3 یا بالاتر</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>کپی اطلاعات نسخه</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>فهرست لغت نامه ها را کپی کنید</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>دست اندرکاران:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>بر اساس Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -519,10 +503,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>نویسه‌های عام</translation>
     </message>
     <message>
-      <source>RegExp</source>
-      <translation>RegExp</translation>
-    </message>
-    <message>
       <source>Unique headwords total: %1.</source>
       <translation>کل سر واژه های منحصر به فرد: %1.</translation>
     </message>
@@ -557,6 +537,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>صادرات به پایان رسید</translation>
+    </message>
+    <message>
+      <source>Regular Expression</source>
+      <translation type="unfinished">Regular Expression</translation>
     </message>
   </context>
   <context>
@@ -839,6 +823,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Are you sure you want to clear all items?</source>
       <translation>آیا مطمئن هستید که می خواهید همه موارد را پاک کنید؟</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -953,24 +941,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>افزودن واژه‌نامه‌های برگزیده شده به گروه (درج)</translation>
     </message>
     <message>
-      <source>&gt;</source>
-      <translation>&gt;</translation>
-    </message>
-    <message>
-      <source>Ins</source>
-      <translation>درج</translation>
-    </message>
-    <message>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>حذف واژه‌نامه‌های برگزیده شده از گروه (حذف)</translation>
-    </message>
-    <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
-    </message>
-    <message>
-      <source>Del</source>
-      <translation>حذف</translation>
     </message>
     <message>
       <source>Groups:</source>
@@ -2192,16 +2164,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>&amp;واژه‌نامه‌ها...</translation>
     </message>
     <message>
-      <source>F3</source>
-      <translation>F3</translation>
-    </message>
-    <message>
       <source>&amp;Preferences...</source>
       <translation>&amp;ترجیحات...</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>F4</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
@@ -2224,10 +2188,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>ترک کردن برنامه</translation>
     </message>
     <message>
-      <source>Ctrl+Q</source>
-      <translation>Ctrl+Q</translation>
-    </message>
-    <message>
       <source>&amp;Forum</source>
       <translation>&amp;انجمن</translation>
     </message>
@@ -2240,10 +2200,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>کمینه کردن پنجره به سینی</translation>
     </message>
     <message>
-      <source>Ctrl+F4</source>
-      <translation>Ctrl+F4</translation>
-    </message>
-    <message>
       <source>&amp;Save Article</source>
       <translation>&amp;ذخیره بند</translation>
     </message>
@@ -2252,16 +2208,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>ذخیره بند</translation>
     </message>
     <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
       <source>&amp;Print</source>
       <translation>&amp;چاپ</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Ctrl+P</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2276,20 +2224,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>پویش &amp;دوباره پرونده‌ها</translation>
     </message>
     <message>
-      <source>Ctrl+F5</source>
-      <translation>Ctrl+F5</translation>
-    </message>
-    <message>
       <source>&amp;Clear</source>
       <translation>&amp;پاک کردن</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
       <translation>&amp;زبانه تازه</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>Ctrl+T</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2332,28 +2272,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>جستجو در صفحه</translation>
     </message>
     <message>
-      <source>Ctrl+F</source>
-      <translation>Ctrl+F</translation>
-    </message>
-    <message>
       <source>Full-text search</source>
       <translation>جستجوی متن کامل</translation>
     </message>
     <message>
-      <source>Ctrl+Shift+F</source>
-      <translation>Ctrl+Shift+F</translation>
-    </message>
-    <message>
       <source>GoldenDict reference</source>
       <translation>مرجع GoldenDict</translation>
-    </message>
-    <message>
-      <source>F1</source>
-      <translation>F1</translation>
-    </message>
-    <message>
-      <source>Show</source>
-      <translation>نمایش دهید</translation>
     </message>
     <message>
       <source>Export</source>
@@ -2370,10 +2294,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Add current tab to Favorites</source>
       <translation>افزودن زبانهٔ کنونی به پسندیده‌ها</translation>
-    </message>
-    <message>
-      <source>Ctrl+E</source>
-      <translation>Ctrl+E</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
@@ -2661,6 +2581,18 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>عنوان &quot;%1&quot; از موارد دلخواه حذف شود؟</translation>
     </message>
+    <message>
+      <source>Show</source>
+      <translation>نمایش دهید</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation type="unfinished">Save PDF complete</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation type="unfinished">Save PDF failed</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2943,22 +2875,6 @@ the application.</source>
       <translation>فونت رابط</translation>
     </message>
     <message>
-      <source>Interface language:</source>
-      <translation>زبان رابط کاربری:</translation>
-    </message>
-    <message>
-      <source>Article Display style:</source>
-      <translation>سبک نمایش مقاله:</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>سبک افزونه:</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>سبک رابط:</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>رابط کاربری را تاریک کنید.</translation>
     </message>
@@ -3045,32 +2961,16 @@ in the pressed state when the word selection changes.</source>
       <translation>کلید دگرساز</translation>
     </message>
     <message>
-      <source>Alt</source>
-      <translation>دگرساز</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>کلید مهار</translation>
-    </message>
-    <message>
-      <source>Ctrl</source>
-      <translation>مهار</translation>
     </message>
     <message>
       <source>Shift key</source>
       <translation>کلید تبدیل</translation>
     </message>
     <message>
-      <source>Shift</source>
-      <translation>تبدیل</translation>
-    </message>
-    <message>
       <source>Windows key or Meta key</source>
       <translation>کلید ویندوز یا کلید متا</translation>
-    </message>
-    <message>
-      <source>Win/Meta</source>
-      <translation>ویندوز/متا</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
@@ -3498,10 +3398,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>لینگوز-آبی</translation>
     </message>
     <message>
-      <source> MB</source>
-      <translation> MB</translation>
-    </message>
-    <message>
       <source>Auto does nothing on some systems.</source>
       <translation>خودکار در برخی از سیستم ها هیچ کاری نمی کند.</translation>
     </message>
@@ -3534,8 +3430,36 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>خودکار</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>فعال کردن گزارش برنامه</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Save debug messages to gd_log.txt in the config folder</translation>
+    </message>
+    <message>
+      <source>Interface Font Size</source>
+      <translation>Interface Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Interface language</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Article Display style</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on style</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Interface Style</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Preview Font</translation>
+    </message>
+    <message>
+      <source>Goldendict-ng is a dictionary software</source>
+      <translation>Goldendict-ng is a dictionary software</translation>
     </message>
   </context>
   <context>
@@ -3646,10 +3570,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>کلمه یا جمله به پرس و جو.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>پیام های اشکال زدایی را در gd_log.txt در پوشه پیکربندی ذخیره کنید.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>بازنشانی وضعیت پنجره</translation>
     </message>
@@ -3680,6 +3600,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>نسخه چاپی و اطلاعات تشخیص</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
@@ -3733,54 +3657,49 @@ from Stardict, Babylon and GLS dictionaries</source>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>دیالوگ</translation>
+      <source>WARNING: %1</source>
+      <translation>هشدار: %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
-      <translation>پس</translation>
+      <translation>Back</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>پیش</translation>
+      <translation>Forward</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>بیان واژه (Alt+S)</translation>
+      <translation>Pronounce Word (Alt+S)</translation>
     </message>
     <message>
       <source>Alt+S</source>
-      <translation>Alt+S</translation>
+      <translation type="unfinished">Alt+S</translation>
     </message>
     <message>
       <source>Send word to main window (Alt+W)</source>
-      <translation>فرستادن واژه به پنجره اصلی (Alt+W)</translation>
+      <translation>Send word to main window (Alt+W)</translation>
     </message>
     <message>
       <source>Alt+W</source>
-      <translation>Alt+W</translation>
+      <translation type="unfinished">Alt+W</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>
-      <translation>افزودن واژه به پسندیده‌ها (مهار+E)</translation>
-    </message>
-    <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>نمایش یا پنهان کردن نوار واژه‌نامه</translation>
+      <translation>Add word to Favorites (Ctrl+E)</translation>
     </message>
     <message>
       <source>Always stay on top of all other windows</source>
-      <translation>همیشه بالای تمام پنجره های دیگر بمانید</translation>
+      <translation>Always stay on top of all other windows</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>این سنجاق را فشار دهید تا پنجره روی صفحه بماند،
-می‌توان تغییر اندازه داد یا طور دیگری مدیریت کرد.</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>هشدار: %1</translation>
+      <translation>Use this to pin down the window so it would stay on screen,
+could be resized or managed in other ways.</translation>
     </message>
   </context>
   <context>

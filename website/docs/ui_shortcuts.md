@@ -1,10 +1,7 @@
 # Shortcuts
 
 | Shortcut              | Action                                                                                                                           |
-|-----------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| Alt++                 | Increase font size for matches list                                                                                              |
-| Alt+–                 | Decrease font size for matches list                                                                                              |
-| Alt+0                 | Restore default font size for matches list                                                                                       |
+|-----------------------|----------------------------------------------------------------------------------------------------------------------------------|                                                                                       
 | Alt+Left, Backspace   | (In main and popup windows) history navigation: show previous founded results                                                    |
 | Alt+Right             | (In main and popup windows) history navigation: show next founded results                                                        |
 | Alt+Down              | Jump to article from next dictionary                                                                                             |

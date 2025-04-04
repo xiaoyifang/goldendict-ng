@@ -167,6 +167,8 @@ public:
   /// \brief Set background as black if darkreader mode is enabled.
   void syncBackgroundColorWithCfgDarkReader() const;
 
+  QString getCurrentWord();
+
 private:
   // widgets
   ArticleWebView * webview;
