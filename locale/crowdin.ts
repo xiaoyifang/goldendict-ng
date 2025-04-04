@@ -8,27 +8,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>GoldenDict-ng dictionary lookup program, version </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Licensed under GNU GPLv3 or later</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Copy version info</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Copy dictionaries list</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Credits:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Based on Qt %1 (%2, %3)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -518,10 +502,6 @@ between classic and school orthography in cyrillic)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>RegExp</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Unique headwords total: %1.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -555,6 +535,10 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <source>Export finished</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Regular Expression</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -836,6 +820,10 @@ between classic and school orthography in cyrillic)</source>
         <source>Are you sure you want to clear all items?</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Make this folder the target of adding/removing words actions.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -950,23 +938,7 @@ between classic and school orthography in cyrillic)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ins</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Remove selected dictionaries from group (Del)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Del</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2189,15 +2161,7 @@ between classic and school orthography in cyrillic)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>F3</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Preferences...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>F4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2221,10 +2185,6 @@ between classic and school orthography in cyrillic)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Ctrl+Q</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Forum</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2237,10 +2197,6 @@ between classic and school orthography in cyrillic)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Ctrl+F4</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Save Article</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2249,15 +2205,7 @@ between classic and school orthography in cyrillic)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>F2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Print</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ctrl+P</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2273,19 +2221,11 @@ between classic and school orthography in cyrillic)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Ctrl+F5</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Clear</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&amp;New Tab</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ctrl+T</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2329,27 +2269,11 @@ between classic and school orthography in cyrillic)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Ctrl+F</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Full-text search</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Ctrl+Shift+F</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>GoldenDict reference</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>F1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Show</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2366,10 +2290,6 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <source>Add current tab to Favorites</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ctrl+E</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2657,6 +2577,18 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
         <source>Remove headword &quot;%1&quot; from Favorites?</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Show</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save PDF complete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save PDF failed</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2929,22 +2861,6 @@ the application.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Interface language:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Article Display style:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Add-on style:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Interface Style:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Turn the UI to dark.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3030,15 +2946,7 @@ in the pressed state when the word selection changes.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Alt</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Ctrl key</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ctrl</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3046,15 +2954,7 @@ in the pressed state when the word selection changes.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Shift</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Windows key or Meta key</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Win/Meta</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3471,10 +3371,6 @@ from Stardict, Babylon and GLS dictionaries</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source> MB</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Auto does nothing on some systems.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3507,7 +3403,35 @@ from Stardict, Babylon and GLS dictionaries</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Enable application log</source>
+        <source>Save debug messages to gd_log.txt in the config folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Interface Font Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Interface language</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Article Display style</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add-on style</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Interface Style</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Preview Font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Goldendict-ng is a dictionary software</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3619,10 +3543,6 @@ from Stardict, Babylon and GLS dictionaries</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Save debug messages to gd_log.txt in the config folder.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Reset window state.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3652,6 +3572,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
         <source>Print version and diagnosis info.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save debug messages to gd_log.txt in the config folder</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3706,9 +3630,12 @@ from Stardict, Babylon and GLS dictionaries</source>
 <context>
     <name>ScanPopup</name>
     <message>
-        <source>Dialog</source>
+        <source>WARNING: %1</source>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>ScanPopupToolBar</name>
     <message>
         <source>Back</source>
         <translation type="unfinished"></translation>
@@ -3738,20 +3665,12 @@ from Stardict, Babylon and GLS dictionaries</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Shows or hides the dictionary bar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Always stay on top of all other windows</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>WARNING: %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -37,11 +37,8 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg ):
   Config::Lingua const & lingua = cfg.lingua;
   Config::Forvo const & forvo   = cfg.forvo;
 
-  // TODO: will programTypeEditorCreator and itemEditorFactory be destroyed by
-  // anyone?
-  QItemEditorCreatorBase * programTypeEditorCreator = new QStandardItemEditorCreator< ProgramTypeEditor >();
-
-  itemEditorFactory->registerEditor( QMetaType::Int, programTypeEditorCreator );
+  // itemEditorFactory owns the ProgramTypeEditor
+  itemEditorFactory->registerEditor( QMetaType::Int, new QStandardItemEditorCreator< ProgramTypeEditor >() );
 
   itemDelegate->setItemEditorFactory( itemEditorFactory.get() );
 
@@ -389,7 +386,7 @@ Config::Forvo Sources::getForvo() const
 ////////// MediaWikisModel
 
 MediaWikisModel::MediaWikisModel( QWidget * parent, Config::MediaWikis const & mediawikis_ ):
-  QAbstractItemModel( parent ),
+  QAbstractTableModel( parent ),
   mediawikis( mediawikis_ )
 {
 }
@@ -417,19 +414,10 @@ void MediaWikisModel::addNewWiki()
   endInsertRows();
 }
 
-QModelIndex MediaWikisModel::index( int row, int column, QModelIndex const & /*parent*/ ) const
-{
-  return createIndex( row, column );
-}
-
-QModelIndex MediaWikisModel::parent( QModelIndex const & /*parent*/ ) const
-{
-  return QModelIndex();
-}
 
 Qt::ItemFlags MediaWikisModel::flags( QModelIndex const & index ) const
 {
-  Qt::ItemFlags result = QAbstractItemModel::flags( index );
+  Qt::ItemFlags result = QAbstractTableModel::flags( index );
 
   if ( index.isValid() ) {
     if ( !index.column() ) {
@@ -560,7 +548,7 @@ bool MediaWikisModel::setData( QModelIndex const & index, const QVariant & value
 ////////// WebSitesModel
 
 WebSitesModel::WebSitesModel( QWidget * parent, Config::WebSites const & webSites_ ):
-  QAbstractItemModel( parent ),
+  QAbstractTableModel( parent ),
   webSites( webSites_ )
 {
 }
@@ -588,19 +576,10 @@ void WebSitesModel::addNewSite()
   endInsertRows();
 }
 
-QModelIndex WebSitesModel::index( int row, int column, QModelIndex const & /*parent*/ ) const
-{
-  return createIndex( row, column );
-}
-
-QModelIndex WebSitesModel::parent( QModelIndex const & /*parent*/ ) const
-{
-  return QModelIndex();
-}
 
 Qt::ItemFlags WebSitesModel::flags( QModelIndex const & index ) const
 {
-  Qt::ItemFlags result = QAbstractItemModel::flags( index );
+  Qt::ItemFlags result = QAbstractTableModel::flags( index );
 
   if ( index.isValid() ) {
     if ( index.column() <= 1 ) {
@@ -751,7 +730,7 @@ bool WebSitesModel::setData( QModelIndex const & index, const QVariant & value, 
 ////////// DictServersModel
 
 DictServersModel::DictServersModel( QWidget * parent, Config::DictServers const & dictServers_ ):
-  QAbstractItemModel( parent ),
+  QAbstractTableModel( parent ),
   dictServers( dictServers_ )
 {
 }
@@ -777,19 +756,9 @@ void DictServersModel::addNewServer()
   endInsertRows();
 }
 
-QModelIndex DictServersModel::index( int row, int column, QModelIndex const & /*parent*/ ) const
-{
-  return createIndex( row, column );
-}
-
-QModelIndex DictServersModel::parent( QModelIndex const & /*parent*/ ) const
-{
-  return QModelIndex();
-}
-
 Qt::ItemFlags DictServersModel::flags( QModelIndex const & index ) const
 {
-  Qt::ItemFlags result = QAbstractItemModel::flags( index );
+  Qt::ItemFlags result = QAbstractTableModel::flags( index );
 
   if ( index.isValid() ) {
     if ( !index.column() ) {
@@ -933,7 +902,7 @@ bool DictServersModel::setData( QModelIndex const & index, const QVariant & valu
 ////////// ProgramsModel
 
 ProgramsModel::ProgramsModel( QWidget * parent, Config::Programs const & programs_ ):
-  QAbstractItemModel( parent ),
+  QAbstractTableModel( parent ),
   programs( programs_ )
 {
 }
@@ -959,19 +928,9 @@ void ProgramsModel::addNewProgram()
   endInsertRows();
 }
 
-QModelIndex ProgramsModel::index( int row, int column, QModelIndex const & /*parent*/ ) const
-{
-  return createIndex( row, column );
-}
-
-QModelIndex ProgramsModel::parent( QModelIndex const & /*parent*/ ) const
-{
-  return QModelIndex();
-}
-
 Qt::ItemFlags ProgramsModel::flags( QModelIndex const & index ) const
 {
-  Qt::ItemFlags result = QAbstractItemModel::flags( index );
+  Qt::ItemFlags result = QAbstractTableModel::flags( index );
 
   if ( index.isValid() ) {
     if ( !index.column() ) {
@@ -1136,7 +1095,7 @@ void ProgramTypeEditor::setType( int t )
 ////////// PathsModel
 
 PathsModel::PathsModel( QWidget * parent, Config::Paths const & paths_ ):
-  QAbstractItemModel( parent ),
+  QAbstractTableModel( parent ),
   paths( paths_ )
 {
 }
@@ -1155,19 +1114,9 @@ void PathsModel::addNewPath( QString const & path )
   endInsertRows();
 }
 
-QModelIndex PathsModel::index( int row, int column, QModelIndex const & /*parent*/ ) const
-{
-  return createIndex( row, column );
-}
-
-QModelIndex PathsModel::parent( QModelIndex const & /*parent*/ ) const
-{
-  return QModelIndex();
-}
-
 Qt::ItemFlags PathsModel::flags( QModelIndex const & index ) const
 {
-  Qt::ItemFlags result = QAbstractItemModel::flags( index );
+  Qt::ItemFlags result = QAbstractTableModel::flags( index );
 
   if ( Config::isPortableVersion() ) {
     if ( index.isValid() && index.row() == 0 ) {
@@ -1256,7 +1205,7 @@ bool PathsModel::setData( QModelIndex const & index, const QVariant & /*value*/,
 ////////// SoundDirsModel
 
 SoundDirsModel::SoundDirsModel( QWidget * parent, Config::SoundDirs const & soundDirs_ ):
-  QAbstractItemModel( parent ),
+  QAbstractTableModel( parent ),
   soundDirs( soundDirs_ )
 {
 }
@@ -1275,19 +1224,9 @@ void SoundDirsModel::addNewSoundDir( QString const & path, QString const & name 
   endInsertRows();
 }
 
-QModelIndex SoundDirsModel::index( int row, int column, QModelIndex const & /*parent*/ ) const
-{
-  return createIndex( row, column );
-}
-
-QModelIndex SoundDirsModel::parent( QModelIndex const & /*parent*/ ) const
-{
-  return QModelIndex();
-}
-
 Qt::ItemFlags SoundDirsModel::flags( QModelIndex const & index ) const
 {
-  Qt::ItemFlags result = QAbstractItemModel::flags( index );
+  Qt::ItemFlags result = QAbstractTableModel::flags( index );
 
   if ( index.isValid() && index.column() < 3 ) {
     result |= Qt::ItemIsEditable;
@@ -1383,7 +1322,7 @@ bool SoundDirsModel::setData( QModelIndex const & index, const QVariant & value,
 ////////// HunspellDictsModel
 
 HunspellDictsModel::HunspellDictsModel( QWidget * parent, Config::Hunspell const & hunspell ):
-  QAbstractItemModel( parent ),
+  QAbstractTableModel( parent ),
   enabledDictionaries( hunspell.enabledDictionaries )
 {
   changePath( hunspell.dictionariesPath );
@@ -1396,19 +1335,9 @@ void HunspellDictsModel::changePath( QString const & newPath )
   endResetModel();
 }
 
-QModelIndex HunspellDictsModel::index( int row, int column, QModelIndex const & /*parent*/ ) const
-{
-  return createIndex( row, column );
-}
-
-QModelIndex HunspellDictsModel::parent( QModelIndex const & /*parent*/ ) const
-{
-  return QModelIndex();
-}
-
 Qt::ItemFlags HunspellDictsModel::flags( QModelIndex const & index ) const
 {
-  Qt::ItemFlags result = QAbstractItemModel::flags( index );
+  Qt::ItemFlags result = QAbstractTableModel::flags( index );
 
   if ( index.isValid() ) {
     if ( !index.column() ) {

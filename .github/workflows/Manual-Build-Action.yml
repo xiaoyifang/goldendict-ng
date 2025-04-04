@@ -1,0 +1,135 @@
+name: Manual Build Action(for testing)
+
+on: 
+  workflow_dispatch:
+
+jobs:
+  build_macOS:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-14]
+        qt_ver: [ 6.7.2 ]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+      - name: Update brew
+        run: |
+          brew update
+      - name: Install dependencies
+        run: |
+          brew install --force --overwrite \
+            bzip2  \
+            create-dmg \
+            hunspell \
+            libiconv \
+            libogg \
+            libvorbis \
+            libzim \
+            lzip \
+            ninja \
+            opencc \
+            xapian || true
+      - name: Install eb
+        run: |
+          git clone https://github.com/xiaoyifang/eb.git
+          cd eb && ./configure && make -j 8 && sudo make install && cd ..         
+      - uses: jurplel/install-qt-action@v4
+        with:
+          version: ${{ matrix.qt_ver }}
+          arch: clang_64
+          modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech      
+      - name: Build
+        run: |
+          mkdir build_dir
+          cmake -S . -B build_dir \
+            -G Ninja \
+            -DWITH_FFMPEG_PLAYER=OFF \
+            -DWITH_TTS=OFF \
+            -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+            -DCMAKE_OSX_DEPLOYMENT_TARGET="12.0"
+          cmake --build build_dir
+      - name: Package
+        run: |
+          cmake --install build_dir/
+      - name: Print package content
+        run: |
+          ls -Rl ./build_dir/redist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: macOS-${{ matrix.os }}-Qt${{ matrix.qt_ver }}
+          if-no-files-found: error
+          retention-days: 7
+          path: '*.dmg'
+
+  build_Windows:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-2022]
+        qt_ver: [ 6.7.2 ]
+    steps:
+      - uses: jurplel/install-qt-action@v4
+        with:
+          version: ${{ matrix.qt_ver }}
+          arch: win64_msvc2019_64
+          modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
+          setup-python: 'false'
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+      - name: Build
+        id: build
+        run: |
+          # Launch-VsDevShell also provides Ninja
+          & 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\Launch-VsDevShell.ps1' `
+            -SkipAutomaticLocation -Arch amd64 -HostArch amd64
+          New-Item -Path './build_dir' -ItemType Directory
+          
+          # RelWithDebInfo + msvc's = .pdb file beside program file.
+          cmake -S . -B "./build_dir" `
+            -G Ninja `
+            -DCMAKE_C_COMPILER="cl.exe" -DCMAKE_CXX_COMPILER="cl.exe" `
+            -DCMAKE_BUILD_TYPE=RelWithDebInfo `
+            -DWITH_FFMPEG_PLAYER=OFF `
+            -DWITH_VCPKG_BREAKPAD=ON
+          cmake --build "./build_dir"
+      - name: Package
+        run: |
+          cd './build_dir'
+          cpack --verbose --trace
+          cd ..
+      - name: Move files
+        shell: bash
+        run: |
+          namePrefix=$(basename "$(ls ./build_dir/*.7z)" .7z)
+
+          # note the name will ensure `installer` ranked higher after sorting
+          cd ./build_dir
+          mv "${namePrefix}.7z" "${namePrefix}-Windows-installer.7z"
+          mv "${namePrefix}.exe" "${namePrefix}-Windows-installer.exe"
+          mv ./goldendict/goldendict.exe "./${namePrefix}-Windows-main-exe-file-only.exe" 
+          mv ./goldendict/goldendict.pdb "./${namePrefix}-Windows-pdb-debug-file.pdb"
+          cd ..
+          ls -R
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Windows-Qt${{ matrix.qt_ver }}
+          if-no-files-found: error
+          retention-days: 7
+          path: |
+            ./build_dir/*.exe
+            ./build_dir/*.7z
+            ./build_dir/*.pdb
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Windows-only-exe-Qt${{ matrix.qt_ver }}
+          if-no-files-found: error
+          retention-days: 7
+          path: |
+            ./build_dir/*only.exe
+         
+  
+  

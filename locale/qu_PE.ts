@@ -8,28 +8,12 @@
       <translation>GoldenDictmanta</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>GoldenDict-ng simi-pirwapi mask&apos;ana, versión </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>GNU GPL kamachiyuq, versión 3 qhipamantataq</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Versión info nisqamanta copiay</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Diccionariokuna listata copiay</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Yanapaqkuna:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Qt %1 (%2, %3) nisqapi hapipakuspa.</translation>
     </message>
   </context>
   <context>
@@ -519,10 +503,6 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>Sallqakuna</translation>
     </message>
     <message>
-      <source>RegExp</source>
-      <translation>RegExp</translation>
-    </message>
-    <message>
       <source>Unique headwords total: %1.</source>
       <translation>Sapaq umalliq simikuna llapanpi: %1.</translation>
     </message>
@@ -557,6 +537,10 @@ chiqan kayninta sumaqyachin)</translation>
     <message>
       <source>Export finished</source>
       <translation>Hawa llaqtakunaman apachiy tukusqa</translation>
+    </message>
+    <message>
+      <source>Regular Expression</source>
+      <translation type="unfinished">Regular Expression</translation>
     </message>
   </context>
   <context>
@@ -839,6 +823,10 @@ chiqan kayninta sumaqyachin)</translation>
       <source>Are you sure you want to clear all items?</source>
       <translation>¿Segurochu kanki llapa imakunatapas chuyanchayta munasqaykimanta?</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -953,24 +941,8 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>(INS)wan juñuman aqllasqa simi-pirwakunata yapay </translation>
     </message>
     <message>
-      <source>&gt;</source>
-      <translation>&gt;</translation>
-    </message>
-    <message>
-      <source>Ins</source>
-      <translation>INS</translation>
-    </message>
-    <message>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>(SUPR)wan juñumanta aqllasqa simi-pirwakunata chinkachiy </translation>
-    </message>
-    <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
-    </message>
-    <message>
-      <source>Del</source>
-      <translation>DEL</translation>
     </message>
     <message>
       <source>Groups:</source>
@@ -2192,16 +2164,8 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>&amp;Simi-pirwakuna...</translation>
     </message>
     <message>
-      <source>F3</source>
-      <translation>F3</translation>
-    </message>
-    <message>
       <source>&amp;Preferences...</source>
       <translation>&amp;Aqllanakuna...</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>F4</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
@@ -2224,10 +2188,6 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>Programa nisqamanta lluqsiy</translation>
     </message>
     <message>
-      <source>Ctrl+Q</source>
-      <translation>Ctrl+Q</translation>
-    </message>
-    <message>
       <source>&amp;Forum</source>
       <translation>&amp;Foro (Rimanakusun)</translation>
     </message>
@@ -2240,10 +2200,6 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>Sistema nisqaqpa chumpinman programata juch&apos;uyyachin</translation>
     </message>
     <message>
-      <source>Ctrl+F4</source>
-      <translation>Ctrl+F4 nisqa</translation>
-    </message>
-    <message>
       <source>&amp;Save Article</source>
       <translation>&amp;Articulo nisqata jallch&apos;ay </translation>
     </message>
@@ -2252,16 +2208,8 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>Articulo nisqata jallch&apos;ay </translation>
     </message>
     <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
       <source>&amp;Print</source>
       <translation>&amp;Raphipi ñit&apos;iy</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Ctrl+P nisqa</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2276,20 +2224,12 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>&amp;Archivokunata musuqmanta qhaway</translation>
     </message>
     <message>
-      <source>Ctrl+F5</source>
-      <translation>Ctrl+F5 nisqa</translation>
-    </message>
-    <message>
       <source>&amp;Clear</source>
       <translation>&amp;Pichay</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
       <translation>&amp;Musuq Tab</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>Ctrl+T nisqa</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2332,28 +2272,12 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>P’anqapi maskhay</translation>
     </message>
     <message>
-      <source>Ctrl+F</source>
-      <translation>Ctrl+F nisqa</translation>
-    </message>
-    <message>
       <source>Full-text search</source>
       <translation>Tukuy qillqasqa maskay</translation>
     </message>
     <message>
-      <source>Ctrl+Shift+F</source>
-      <translation>Ctrl+Mayúscula+F</translation>
-    </message>
-    <message>
       <source>GoldenDict reference</source>
       <translation>GoldenDict nisqamanta willakuy</translation>
-    </message>
-    <message>
-      <source>F1</source>
-      <translation>F1</translation>
-    </message>
-    <message>
-      <source>Show</source>
-      <translation>Qawachiy</translation>
     </message>
     <message>
       <source>Export</source>
@@ -2370,10 +2294,6 @@ chiqan kayninta sumaqyachin)</translation>
     <message>
       <source>Add current tab to Favorites</source>
       <translation>Kunan kaq tablata Favoritos nisqaman yapay</translation>
-    </message>
-    <message>
-      <source>Ctrl+E</source>
-      <translation>Ctrl+E nisqa</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
@@ -2661,6 +2581,18 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>¿Munasqakunamanta &quot;%1&quot; umalliq simita hurquy?</translation>
     </message>
+    <message>
+      <source>Show</source>
+      <translation>Qawachiy</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation type="unfinished">Save PDF complete</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation type="unfinished">Save PDF failed</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2942,22 +2874,6 @@ cerrar la aplicación.</translation>
       <translation>Interfaz nisqa Fuente</translation>
     </message>
     <message>
-      <source>Interface language:</source>
-      <translation>GoldenDictpa simin:</translation>
-    </message>
-    <message>
-      <source>Article Display style:</source>
-      <translation>Artículo Qhawachiy estilo:</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>Yanapakuq estilo:</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>Interfaz Estilo: 1.1.</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>UI nisqataqa tutayaqman tikray.</translation>
     </message>
@@ -3044,32 +2960,16 @@ seleccionadas estén oprimidas cuando la selección de la palabra cambie.</trans
       <translation>Tecla ALT</translation>
     </message>
     <message>
-      <source>Alt</source>
-      <translation>ALT</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Tecla CTRL</translation>
-    </message>
-    <message>
-      <source>Ctrl</source>
-      <translation>CTRL</translation>
     </message>
     <message>
       <source>Shift key</source>
       <translation>Tecla MAYÚSCULA</translation>
     </message>
     <message>
-      <source>Shift</source>
-      <translation>MAYÚSCULA</translation>
-    </message>
-    <message>
       <source>Windows key or Meta key</source>
       <translation>Tecla de WINDOWS o META</translation>
-    </message>
-    <message>
-      <source>Win/Meta</source>
-      <translation>WINDOWSchu METAchu</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
@@ -3496,10 +3396,6 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
       <translation>Lingoes-Azul</translation>
     </message>
     <message>
-      <source> MB</source>
-      <translation> MB</translation>
-    </message>
-    <message>
       <source>Auto does nothing on some systems.</source>
       <translation>Autoqa wakin sistemakunapiqa manam imatapas ruwanchu.</translation>
     </message>
@@ -3532,8 +3428,36 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
       <translation>Kikinmanta</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>Yanapakuypa registronta atichiy</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Save debug messages to gd_log.txt in the config folder</translation>
+    </message>
+    <message>
+      <source>Interface Font Size</source>
+      <translation>Interface Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Interface language</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Article Display style</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on style</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Interface Style</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Preview Font</translation>
+    </message>
+    <message>
+      <source>Goldendict-ng is a dictionary software</source>
+      <translation>Goldendict-ng is a dictionary software</translation>
     </message>
   </context>
   <context>
@@ -3644,10 +3568,6 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
       <translation>Tapukunapaq simi utaq rimay.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Pantasqa allichay willakuykunata gd_log.txt kaqman waqaychay config qillqana mayt'upi.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Ventana estadota musuqmanta churay.</translation>
     </message>
@@ -3678,6 +3598,10 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Imprimir versión y diagnóstico info.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
@@ -3731,53 +3655,49 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>Rimanakuy</translation>
+      <source>WARNING: %1</source>
+      <translation>YUYAYCHAY: %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
-      <translation>Ñawpaq</translation>
+      <translation>Back</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>Qhipa</translation>
+      <translation>Forward</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>Simita parlachiy (Alt+S)</translation>
+      <translation>Pronounce Word (Alt+S)</translation>
     </message>
     <message>
       <source>Alt+S</source>
-      <translation>Alt+S nisqa</translation>
+      <translation type="unfinished">Alt+S</translation>
     </message>
     <message>
       <source>Send word to main window (Alt+W)</source>
-      <translation>Hatun ventanaman simita apachiy (Alt+W) .</translation>
+      <translation>Send word to main window (Alt+W)</translation>
     </message>
     <message>
       <source>Alt+W</source>
-      <translation>Alt+W</translation>
+      <translation type="unfinished">Alt+W</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>
-      <translation>Favoritos nisqaman simita yapay (Ctrl+E)</translation>
-    </message>
-    <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>Simi-pirwakunawan chumpita rikhurichin chaymanta pakachintaq</translation>
+      <translation>Add word to Favorites (Ctrl+E)</translation>
     </message>
     <message>
       <source>Always stay on top of all other windows</source>
-      <translation>Tukuy wakin ventanakunaq hawanpipuni qhepakuy</translation>
+      <translation>Always stay on top of all other windows</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>Utilice esto para fijar la ventana en la pantalla, redimensionarla o gerenciarla en otra manera.</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>YUYAYCHAY: %1</translation>
+      <translation>Use this to pin down the window so it would stay on screen,
+could be resized or managed in other ways.</translation>
     </message>
   </context>
   <context>

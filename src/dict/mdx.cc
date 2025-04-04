@@ -305,7 +305,9 @@ MdxDictionary::MdxDictionary( string const & id, string const & indexFile, vecto
   idx.readU32SizeAndData<>( encoding );
 
   dictFile.setFileName( QString::fromUtf8( dictionaryFiles[ 0 ].c_str() ) );
-  dictFile.open( QIODevice::ReadOnly );
+  if ( !dictFile.open( QIODevice::ReadOnly ) ) {
+    throw std::runtime_error( "mdx: failed to open main file" );
+  };
 
   // Full-text search parameters
 
@@ -644,7 +646,6 @@ class MddResourceRequest: public Dictionary::DataRequest
 public:
 
   MddResourceRequest( MdxDictionary & dict_, string const & resourceName_ ):
-    Dictionary::DataRequest( &dict_ ),
     dict( dict_ ),
     resourceName( Text::toUtf32( resourceName_ ) )
   {
@@ -816,11 +817,9 @@ void MdxDictionary::loadIcon() noexcept
 
   QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
 
-  // Remove the extension
-  fileName.chop( 3 );
   QString text = QString::fromStdString( dictionaryName );
 
-  if ( !loadIconFromFile( fileName ) && !loadIconFromText( ":/icons/mdict-bg.png", text ) ) {
+  if ( !loadIconFromFileName( fileName ) && !loadIconFromText( ":/icons/mdict-bg.png", text ) ) {
     // Use default icons
     dictionaryIcon = QIcon( ":/icons/mdict.png" );
   }

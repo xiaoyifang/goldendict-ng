@@ -64,10 +64,10 @@
         <string>Add selected dictionaries to group (Ins)</string>
        </property>
        <property name="text">
-        <string>&gt;</string>
+        <string notr="true">&gt;</string>
        </property>
        <property name="shortcut">
-        <string>Ins</string>
+        <string notr="true">Ins</string>
        </property>
       </widget>
      </item>
@@ -89,10 +89,10 @@
         <string>Remove selected dictionaries from group (Del)</string>
        </property>
        <property name="text">
-        <string>&lt;</string>
+        <string notr="true">&lt;</string>
        </property>
        <property name="shortcut">
-        <string>Del</string>
+        <string notr="true">Del</string>
        </property>
       </widget>
      </item>

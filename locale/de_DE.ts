@@ -8,28 +8,12 @@
       <translation>Info</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>GoldenDict, ein Programm zum Nachschlagen in Wörterbüchern, Version </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>Lizenziert unter der GNU GPLv3 oder neuer</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Versionsinfo kopieren</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Wörterbuchliste kopieren</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Danksagungen:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Basierend auf Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -518,10 +502,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Platzhalter</translation>
     </message>
     <message>
-      <source>RegExp</source>
-      <translation>RegExp</translation>
-    </message>
-    <message>
       <source>Unique headwords total: %1.</source>
       <translation>Einzigartige Schlagworte insgesamt: %1.</translation>
     </message>
@@ -556,6 +536,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>Export abgeschlossen</translation>
+    </message>
+    <message>
+      <source>Regular Expression</source>
+      <translation>Regulärer Ausdruck</translation>
     </message>
   </context>
   <context>
@@ -838,6 +822,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Are you sure you want to clear all items?</source>
       <translation>Möchten Sie wirklich alle Elemente löschen?</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation>Diesen Ordner zum Ziel von Aktionen zum Hinzufügen/Löschen von Wörtern machen.</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -952,24 +940,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ausgewählte Wörterbücher zur Gruppe hinzufügen (Einf)</translation>
     </message>
     <message>
-      <source>&gt;</source>
-      <translation>&gt;</translation>
-    </message>
-    <message>
-      <source>Ins</source>
-      <translation>Einf</translation>
-    </message>
-    <message>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>Ausgewählte Wörterbücher von der Gruppe entfernen (Entf)</translation>
-    </message>
-    <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
-    </message>
-    <message>
-      <source>Del</source>
-      <translation>Entf</translation>
     </message>
     <message>
       <source>Groups:</source>
@@ -2191,16 +2163,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>&amp;Wörterbücher...</translation>
     </message>
     <message>
-      <source>F3</source>
-      <translation>F3</translation>
-    </message>
-    <message>
       <source>&amp;Preferences...</source>
       <translation>&amp;Einstellungen...</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>F4</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
@@ -2223,10 +2187,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Applikation beenden</translation>
     </message>
     <message>
-      <source>Ctrl+Q</source>
-      <translation>Strg+Q</translation>
-    </message>
-    <message>
       <source>&amp;Forum</source>
       <translation>&amp;Forum</translation>
     </message>
@@ -2239,10 +2199,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>In the Symbolleiste minimieren</translation>
     </message>
     <message>
-      <source>Ctrl+F4</source>
-      <translation>Strg+F4</translation>
-    </message>
-    <message>
       <source>&amp;Save Article</source>
       <translation>Artikel &amp;speichern</translation>
     </message>
@@ -2251,16 +2207,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>Artikel speichern</translation>
     </message>
     <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
       <source>&amp;Print</source>
       <translation>&amp;Drucken</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Strg+P</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2275,20 +2223,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Dateien neu ein&amp;lesen</translation>
     </message>
     <message>
-      <source>Ctrl+F5</source>
-      <translation>Strg+F5</translation>
-    </message>
-    <message>
       <source>&amp;Clear</source>
       <translation>&amp;Zurücksetzen</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
       <translation>Neuer Rei&amp;ter</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>Strg+T</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2331,28 +2271,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Tab durchsuchen</translation>
     </message>
     <message>
-      <source>Ctrl+F</source>
-      <translation>Strg+F</translation>
-    </message>
-    <message>
       <source>Full-text search</source>
       <translation>Volltextsuche</translation>
     </message>
     <message>
-      <source>Ctrl+Shift+F</source>
-      <translation>Strg+Umschalt+F</translation>
-    </message>
-    <message>
       <source>GoldenDict reference</source>
       <translation>GoldenDict-ng Referenz</translation>
-    </message>
-    <message>
-      <source>F1</source>
-      <translation>F1</translation>
-    </message>
-    <message>
-      <source>Show</source>
-      <translation>Anzeigen</translation>
     </message>
     <message>
       <source>Export</source>
@@ -2369,10 +2293,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Add current tab to Favorites</source>
       <translation>Aktuellen Tab als Lesezeichen</translation>
-    </message>
-    <message>
-      <source>Ctrl+E</source>
-      <translation>Strg+E</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
@@ -2660,6 +2580,18 @@ Um &apos;*&apos;, &apos;zu finden?&apos;, &apos;[&apos;, &apos;]&apos; Symbole v
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Schlagwort &quot;%1&quot; aus den Favoriten entfernen?</translation>
     </message>
+    <message>
+      <source>Show</source>
+      <translation>Anzeigen</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>PDF speichern abgeschlossen</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>PDF speichern fehlgeschlagen</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2940,22 +2872,6 @@ the application.</source>
       <translation>Schnittstellenschriftart</translation>
     </message>
     <message>
-      <source>Interface language:</source>
-      <translation>Sprache der Oberfläche:</translation>
-    </message>
-    <message>
-      <source>Article Display style:</source>
-      <translation>Artikel-Anzeige-Stil:</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>Add-on-Stil:</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>Interface-Stil:</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Drehe das UI in Dunkelheit.</translation>
     </message>
@@ -3041,32 +2957,16 @@ in the pressed state when the word selection changes.</source>
       <translation>Alt-Taste</translation>
     </message>
     <message>
-      <source>Alt</source>
-      <translation>Alt</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Strg-Taste</translation>
-    </message>
-    <message>
-      <source>Ctrl</source>
-      <translation>Strg</translation>
     </message>
     <message>
       <source>Shift key</source>
       <translation>Umschalttaste</translation>
     </message>
     <message>
-      <source>Shift</source>
-      <translation>Umschalttaste</translation>
-    </message>
-    <message>
       <source>Windows key or Meta key</source>
       <translation>Windows/Meta-Taste</translation>
-    </message>
-    <message>
-      <source>Win/Meta</source>
-      <translation>Win/Meta</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
@@ -3492,10 +3392,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Lingoes-Blau</translation>
     </message>
     <message>
-      <source> MB</source>
-      <translation> MN</translation>
-    </message>
-    <message>
       <source>Auto does nothing on some systems.</source>
       <translation>Auf manchen Systemen passiert bei Auto gar nichts.</translation>
     </message>
@@ -3528,8 +3424,36 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Automatisch</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>Anwendungsprotokoll aktivieren</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Debug-Nachrichten in gd_log.txt im Konfigurationsordner speichern</translation>
+    </message>
+    <message>
+      <source>Interface Font Size</source>
+      <translation>Schnittstellen-Schriftgröße</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Schnittstellensprache</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Artikel-Anzeigestil</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on-Stil</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Schnittstellenstil</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Vorschau der Schriftart</translation>
+    </message>
+    <message>
+      <source>Goldendict-ng is a dictionary software</source>
+      <translation>Goldendict-ng ist eine Wörterbuch-Software</translation>
     </message>
   </context>
   <context>
@@ -3640,10 +3564,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Wort oder Satz zum Abfragen.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Speichern Sie Debug-Meldungen in gd_log.txt im Konfigurationsordner.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Fensterzustand zurücksetzen.</translation>
     </message>
@@ -3674,6 +3594,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Version und Diagnoseinformationen drucken.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Debug-Nachrichten in gd_log.txt im Konfigurationsordner speichern</translation>
     </message>
   </context>
   <context>
@@ -3727,20 +3651,23 @@ from Stardict, Babylon and GLS dictionaries</source>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>Dialog</translation>
+      <source>WARNING: %1</source>
+      <translation>WARNUNG: %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
       <translation>Zurück</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>Weiter</translation>
+      <translation>Vorwärts</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>Wort aussprechen (Alt+S)</translation>
+      <translation>Pronounce-Wort (Alt+S)</translation>
     </message>
     <message>
       <source>Alt+S</source>
@@ -3748,7 +3675,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Send word to main window (Alt+W)</source>
-      <translation>Wort an das Hauptfenster senden (Alt+W)</translation>
+      <translation>Sende Wort zum Hauptfenster (Alt+W)</translation>
     </message>
     <message>
       <source>Alt+W</source>
@@ -3759,22 +3686,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Wort zu Favoriten hinzufügen (Strg+E)</translation>
     </message>
     <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>Zeigt oder versteckt die Wörterbuchleiste</translation>
-    </message>
-    <message>
       <source>Always stay on top of all other windows</source>
-      <translation>Immer über allen anderen Fenstern anzeigen</translation>
+      <translation>Immer auf allen anderen Fenstern bleiben</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>Hiermit kann das Fenster fixiert  werden, damit es am Bildschirm bleibt,
-es in der Größe verändert, oder andersweitig verwaltet werden kann.</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>WARNUNG: %1</translation>
+      <translation>Benutzen Sie dies, um das Fenster herunterzupinnen, so dass es auf dem Bildschirm bleiben würde,
+kann auf andere Weise skaliert oder verwaltet werden.</translation>
     </message>
   </context>
   <context>

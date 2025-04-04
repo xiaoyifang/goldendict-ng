@@ -53,10 +53,6 @@ class Request: public QObject
   Q_OBJECT
 
 public:
-  Request( QObject * parent = nullptr ):
-    QObject( parent )
-  {
-  }
   /// Returns whether the request has been processed in full and finished.
   /// This means that the data accumulated is final and won't change anymore.
   bool isFinished();
@@ -140,6 +136,12 @@ struct WordMatch
     weight( weight_ )
   {
   }
+
+  bool operator==( const WordMatch & other ) const
+  {
+    //only consider the word.
+    return word == other.word;
+  }
 };
 
 /// This request type corresponds to all types of word searching operations.
@@ -213,16 +215,11 @@ public:
   /// done, this can only be called after the request has finished.
   vector< char > & getFullData();
 
-  DataRequest( QObject * parent = 0 ):
-    Request( parent ),
-    hasAnyData( false )
-  {
-  }
 signals:
   void finishedArticle( QString articleText );
 
 protected:
-  bool hasAnyData; // With this being false, dataSize() always returns -1
+  bool hasAnyData = false; // With this being false, dataSize() always returns -1
   vector< char > data;
 };
 
@@ -315,9 +312,11 @@ protected:
 
   static int getOptimalIconSize();
 
-  // Load icon from filename directly if isFullName == true
-  // else treat filename as name without extension
-  bool loadIconFromFile( QString const & filename, bool isFullName = false );
+  /// Try load icon based on the main dict file name
+  [[nodiscard]] bool loadIconFromFileName( QString const & mainDictFileName );
+  /// Load an icon using a full image file path
+  bool loadIconFromFilePath( QString const & filename );
+  /// Generate icon based on a text
   bool loadIconFromText( const QString & iconUrl, QString const & text );
 
   static QString getAbbrName( QString const & text );

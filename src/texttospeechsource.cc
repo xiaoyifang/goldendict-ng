@@ -22,13 +22,11 @@ TextToSpeechSource::TextToSpeechSource( QWidget * parent, Config::VoiceEngines v
   ui.selectedVoiceEngines->setItemDelegateForColumn( VoiceEnginesModel::kColumnEngineDName,
                                                      new VoiceEngineItemDelegate( engines, this ) );
 
-  foreach( Config::VoiceEngine ve, voiceEngines )
-  {
+  for ( const auto & ve : voiceEngines ) {
     occupiedEngines.insert( ve.name );
   }
 
-  foreach( SpeechClient::Engine engine, engines )
-  {
+  for ( const auto & engine : std::as_const( engines ) ) {
     QMap< QString, QVariant > map;
     map[ "engine_name" ] = engine.engine_name;
     map[ "locale" ]      = engine.locale;
@@ -356,8 +354,7 @@ void VoiceEnginesModel::setEngineParams( QModelIndex idx, int volume, int rate )
 VoiceEngineEditor::VoiceEngineEditor( SpeechClient::Engines const & engines, QWidget * parent ):
   QComboBox( parent )
 {
-  foreach( SpeechClient::Engine engine, engines )
-  {
+  for ( const auto & engine : engines ) {
     addItem( engine.name, engine.engine_name );
   }
 }

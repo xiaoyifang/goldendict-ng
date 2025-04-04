@@ -8,28 +8,12 @@
       <translation>Apie</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>GoldenDict-ng paieškos žodyne programa, versija </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>Licencija: GNU GPLv3 arba vėlesnė</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Nukopijuokite informaciją apie versiją</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Nukopijuokite žodynų sąrašą</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Padėkos:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Remiantis Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -518,10 +502,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Pakaitos simboliai</translation>
     </message>
     <message>
-      <source>RegExp</source>
-      <translation>Reguliarusis reiškinys</translation>
-    </message>
-    <message>
       <source>Unique headwords total: %1.</source>
       <translation>Iš viso unikalių antraščių: %1.</translation>
     </message>
@@ -556,6 +536,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>Eksportas baigtas</translation>
+    </message>
+    <message>
+      <source>Regular Expression</source>
+      <translation type="unfinished">Regular Expression</translation>
     </message>
   </context>
   <context>
@@ -838,6 +822,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Are you sure you want to clear all items?</source>
       <translation>Ar tikrai norite išvalyti visus elementus?</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -952,24 +940,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>Į grupę įtraukti pasirinktus žodynus (Įterpti/Ins)</translation>
     </message>
     <message>
-      <source>&gt;</source>
-      <translation>&gt;</translation>
-    </message>
-    <message>
-      <source>Ins</source>
-      <translation>Įterpti</translation>
-    </message>
-    <message>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>Iš grupės pašalinti pasirinktus žodynus (Šalinti/Del)</translation>
-    </message>
-    <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
-    </message>
-    <message>
-      <source>Del</source>
-      <translation>Šalinti</translation>
     </message>
     <message>
       <source>Groups:</source>
@@ -2191,16 +2163,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>Žo&amp;dynai...</translation>
     </message>
     <message>
-      <source>F3</source>
-      <translation>F3</translation>
-    </message>
-    <message>
       <source>&amp;Preferences...</source>
       <translation>&amp;Nuostatos...</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>F4</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
@@ -2223,10 +2187,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Užverti programą</translation>
     </message>
     <message>
-      <source>Ctrl+Q</source>
-      <translation>Vald+Q</translation>
-    </message>
-    <message>
       <source>&amp;Forum</source>
       <translation>&amp;Diskusijos internete</translation>
     </message>
@@ -2239,10 +2199,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Nuleisti į sistemos dėklą</translation>
     </message>
     <message>
-      <source>Ctrl+F4</source>
-      <translation>Vald+F4</translation>
-    </message>
-    <message>
       <source>&amp;Save Article</source>
       <translation>Į&amp;rašyti straipsnį</translation>
     </message>
@@ -2251,16 +2207,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>Įrašyti straipsnį</translation>
     </message>
     <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
       <source>&amp;Print</source>
       <translation>&amp;Spausdinti</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Vald+P</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2275,20 +2223,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Perž&amp;velgti failus</translation>
     </message>
     <message>
-      <source>Ctrl+F5</source>
-      <translation>Vald+F5</translation>
-    </message>
-    <message>
       <source>&amp;Clear</source>
       <translation>Iš&amp;valyti</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
       <translation>&amp;Nauja kortelė</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>Vald+T</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2331,28 +2271,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ieškoti puslapyje</translation>
     </message>
     <message>
-      <source>Ctrl+F</source>
-      <translation>Vald+F</translation>
-    </message>
-    <message>
       <source>Full-text search</source>
       <translation>Visatekstė paieška</translation>
     </message>
     <message>
-      <source>Ctrl+Shift+F</source>
-      <translation>Vald+Lyg2+F</translation>
-    </message>
-    <message>
       <source>GoldenDict reference</source>
       <translation>GoldenDict-ng žinynas</translation>
-    </message>
-    <message>
-      <source>F1</source>
-      <translation>F1</translation>
-    </message>
-    <message>
-      <source>Show</source>
-      <translation>Rodyti</translation>
     </message>
     <message>
       <source>Export</source>
@@ -2369,10 +2293,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Add current tab to Favorites</source>
       <translation>Veikiamąją kortelę įtraukti į žymeles</translation>
-    </message>
-    <message>
-      <source>Ctrl+E</source>
-      <translation>Vald+E</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
@@ -2661,6 +2581,18 @@ Norėdami atverti parsisiuntimo puslapį, spauskite &lt;b&gt;Parsisiųsti&lt;/b&
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Pašalinti antraštinį žodį „%1“ iš žymelių?</translation>
     </message>
+    <message>
+      <source>Show</source>
+      <translation>Rodyti</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation type="unfinished">Save PDF complete</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation type="unfinished">Save PDF failed</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2944,22 +2876,6 @@ tiesiog paslepiama.</translation>
       <translation>Sąsajos šriftas</translation>
     </message>
     <message>
-      <source>Interface language:</source>
-      <translation>Sąsajos kalba:</translation>
-    </message>
-    <message>
-      <source>Article Display style:</source>
-      <translation>Straipsnio rodymo stilius:</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>Papildomas stilius:</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>Sąsajos stilius:</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Pasukite vartotojo sąsają į tamsią.</translation>
     </message>
@@ -3046,32 +2962,16 @@ po to, kai pasikeis pažymėtas žodis.</translation>
       <translation>Alt klavišas</translation>
     </message>
     <message>
-      <source>Alt</source>
-      <translation>Alt</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Vald klavišas</translation>
-    </message>
-    <message>
-      <source>Ctrl</source>
-      <translation>Vald</translation>
     </message>
     <message>
       <source>Shift key</source>
       <translation>Lyg2 klavišas</translation>
     </message>
     <message>
-      <source>Shift</source>
-      <translation>Lyg2</translation>
-    </message>
-    <message>
       <source>Windows key or Meta key</source>
       <translation>Windows arba Meta klavišas</translation>
-    </message>
-    <message>
-      <source>Win/Meta</source>
-      <translation>Win arba Meta</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
@@ -3497,10 +3397,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Lingoes mėlynas</translation>
     </message>
     <message>
-      <source> MB</source>
-      <translation> MB</translation>
-    </message>
-    <message>
       <source>Auto does nothing on some systems.</source>
       <translation>Automatinis kai kuriose sistemose nieko nedaro.</translation>
     </message>
@@ -3533,8 +3429,36 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Automatinis</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>Įgalinti programų žurnalą</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Save debug messages to gd_log.txt in the config folder</translation>
+    </message>
+    <message>
+      <source>Interface Font Size</source>
+      <translation>Interface Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Interface language</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Article Display style</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on style</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Interface Style</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Preview Font</translation>
+    </message>
+    <message>
+      <source>Goldendict-ng is a dictionary software</source>
+      <translation>Goldendict-ng is a dictionary software</translation>
     </message>
   </context>
   <context>
@@ -3645,10 +3569,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Žodis ar sakinys užklausai.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Išsaugokite derinimo pranešimus gd_log.txt konfigūracijos aplanke.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Iš naujo nustatyti lango būseną.</translation>
     </message>
@@ -3679,6 +3599,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Spausdinimo versija ir diagnostikos informacija.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
@@ -3732,54 +3656,49 @@ from Stardict, Babylon and GLS dictionaries</source>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>Langas</translation>
+      <source>WARNING: %1</source>
+      <translation>ĮSPĖJIMAS: %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
-      <translation>Atgal</translation>
+      <translation>Back</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>Pirmyn</translation>
+      <translation>Forward</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>Ištarti žodį (Alt+S)</translation>
+      <translation>Pronounce Word (Alt+S)</translation>
     </message>
     <message>
       <source>Alt+S</source>
-      <translation>Alt + S</translation>
+      <translation type="unfinished">Alt+S</translation>
     </message>
     <message>
       <source>Send word to main window (Alt+W)</source>
-      <translation>Perduoti į pagrindinį langą (Alt+W)</translation>
+      <translation>Send word to main window (Alt+W)</translation>
     </message>
     <message>
       <source>Alt+W</source>
-      <translation>Alt + W</translation>
+      <translation type="unfinished">Alt+W</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>
-      <translation>Įtraukti į žymeles (Vald+E)</translation>
-    </message>
-    <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>Parodo arba paslepia žodynų juostelę</translation>
+      <translation>Add word to Favorites (Ctrl+E)</translation>
     </message>
     <message>
       <source>Always stay on top of all other windows</source>
-      <translation>Visada rodyti virš kitų langų</translation>
+      <translation>Always stay on top of all other windows</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>Naudokite, jei norite pritvirtinti šį langą. Tuomet jis nepradigs patrukus pelę, 
-galėsite keisti lango dydį ar atlikti kitus įprastus langų tvarkymo veiksmus.</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>ĮSPĖJIMAS: %1</translation>
+      <translation>Use this to pin down the window so it would stay on screen,
+could be resized or managed in other ways.</translation>
     </message>
   </context>
   <context>

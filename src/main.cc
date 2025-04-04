@@ -2,26 +2,28 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "config.hh"
-#include "logfileptr.hh"
+#include "logger.hh"
 #include "mainwindow.hh"
-#include "termination.hh"
 #include "version.hh"
 #include <QByteArray>
 #include <QCommandLineParser>
+#include <QDesktopServices>
 #include <QFile>
 #include <QIcon>
 #include <QMessageBox>
 #include <QMutex>
 #include <QSessionManager>
 #include <QString>
-#include <QStringBuilder>
 #include <QtWebEngineCore/QWebEngineUrlScheme>
 #include <stdio.h>
 #include <QStyleFactory>
-
 #if defined( Q_OS_UNIX )
   #include <clocale>
   #include "unix/ksignalhandler.hh"
+#endif
+
+#ifdef Q_OS_MACOS
+  #include "macos/mac_url_handler.hh"
 #endif
 
 #ifdef Q_OS_WIN32
@@ -82,66 +84,6 @@ bool callback( const char * dump_dir, const char * minidump_id, void * context, 
   #endif
 #endif
 
-QMutex logMutex;
-
-void gdMessageHandler( QtMsgType type, const QMessageLogContext & context, const QString & mess )
-{
-  if ( GlobalBroadcaster::instance()->getPreference() == nullptr
-       || !GlobalBroadcaster::instance()->getPreference()->enableApplicationLog ) {
-    return;
-  }
-  QString strTime = QDateTime::currentDateTime().toString( "MM-dd hh:mm:ss" );
-  QString message = QString( "%1 %2\r\n" ).arg( strTime, mess );
-
-  if ( ( logFilePtr != nullptr ) && logFilePtr->isOpen() ) {
-    //without the lock ,on multithread,there would be assert error.
-    QMutexLocker _( &logMutex );
-    switch ( type ) {
-      case QtDebugMsg:
-        message.insert( 0, "Debug: " );
-        break;
-      case QtWarningMsg:
-        message.insert( 0, "Warning: " );
-        break;
-      case QtCriticalMsg:
-        message.insert( 0, "Critical: " );
-        break;
-      case QtFatalMsg:
-        message.insert( 0, "Fatal: " );
-        logFilePtr->write( message.toUtf8() );
-        logFilePtr->flush();
-        abort();
-      case QtInfoMsg:
-        message.insert( 0, "Info: " );
-        break;
-    }
-
-    logFilePtr->write( message.toUtf8() );
-    logFilePtr->flush();
-
-    return;
-  }
-
-  //the following code lines actually will have no chance to run, schedule to remove in the future.
-  QByteArray msg = mess.toUtf8().constData();
-  switch ( type ) {
-    case QtDebugMsg:
-      fprintf( stderr, "Debug: %s\n", msg.constData() );
-      break;
-    case QtWarningMsg:
-      fprintf( stderr, "Warning: %s\n", msg.constData() );
-      break;
-    case QtCriticalMsg:
-      fprintf( stderr, "Critical: %s\n", msg.constData() );
-      break;
-    case QtFatalMsg:
-      fprintf( stderr, "Fatal: %s\n", msg.constData() );
-      abort();
-    case QtInfoMsg:
-      fprintf( stderr, "Info: %s\n", msg.constData() );
-      break;
-  }
-}
 
 struct GDOptions
 {
@@ -168,11 +110,6 @@ struct GDOptions
   inline QString getPopupGroupName() const
   {
     return popupGroupName;
-  }
-
-  inline bool needLogFile() const
-  {
-    return logFile;
   }
 
   inline bool needTranslateWord() const
@@ -204,7 +141,7 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
 
   QCommandLineOption logFileOption( QStringList() << "l"
                                                   << "log-to-file",
-                                    QObject::tr( "Save debug messages to gd_log.txt in the config folder." ) );
+                                    QObject::tr( "Save debug messages to gd_log.txt in the config folder" ) );
 
   QCommandLineOption resetState( QStringList() << "r"
                                                << "reset-window-state",
@@ -410,8 +347,6 @@ int main( int argc, char ** argv )
     processCommandLine( &app, &gdcl );
   }
 
-  installTerminationHandler();
-
 #ifdef __WIN32
 
   // Under Windows, increase the amount of fopen()-able file descriptors from
@@ -430,15 +365,6 @@ int main( int argc, char ** argv )
                           | QWebEngineUrlScheme::CorsEnabled );
     QWebEngineUrlScheme::registerScheme( webUiScheme );
   }
-
-  QFile file;
-  logFilePtr = &file;
-  auto guard = qScopeGuard( [ &file ]() {
-    logFilePtr = nullptr;
-    file.close();
-  } );
-
-  Q_UNUSED( guard )
 
   QFont f = QApplication::font();
   f.setStyleStrategy( QFont::PreferAntialias );
@@ -492,9 +418,6 @@ int main( int argc, char ** argv )
   for ( ;; ) {
     try {
       cfg = Config::load();
-
-      //enabled through command line or preference
-      gdcl.logFile = gdcl.logFile || cfg.preferences.enableApplicationLog;
     }
     catch ( Config::exError & ) {
       QMessageBox mb(
@@ -526,20 +449,8 @@ int main( int argc, char ** argv )
 
   cfg.resetState = gdcl.resetState;
 
-  // Open log file
-  logFilePtr->setFileName( Config::getConfigDir() + "gd_log.txt" );
-  logFilePtr->open( QFile::WriteOnly );
-
-
-  // Install message handler
-  qInstallMessageHandler( gdMessageHandler );
-
-  // Reload translations for user selected locale is nesessary
-  QTranslator qtTranslator;
-  QTranslator translator;
-  if ( !cfg.preferences.interfaceLanguage.isEmpty() && localeName != cfg.preferences.interfaceLanguage ) {
-    localeName = cfg.preferences.interfaceLanguage;
-  }
+  // Log to file enabled through command line or preference
+  Logger::switchLoggingMethod( gdcl.logFile || cfg.preferences.enableApplicationLog );
 
   //System Font
   auto font = QApplication::font();
@@ -548,39 +459,71 @@ int main( int argc, char ** argv )
     QApplication::setFont( font );
   }
 
-  QLocale locale( localeName );
-  QLocale::setDefault( locale );
-  QApplication::setLayoutDirection( locale.textDirection() );
-
-  // Load Qt translators
-  // For Windows, windeployqt will combine multiple qt modules translations into `qt_*`
-  // Thus, after deployment, loading `qtwebengine_*` is guaranteed to fail on Windows.
-  if ( qtTranslator.load( locale, "qt", "_", QLibraryInfo::path( QLibraryInfo::TranslationsPath ) ) ) {
-    app.installTranslator( &qtTranslator );
-    qDebug() << "qt translator loaded: " << qtTranslator.filePath();
-  }
-  else {
-    qDebug() << "qt translator didn't load anything.";
+  //system font size
+  if ( cfg.preferences.interfaceFontSize > 0 ) {
+    font.setPointSize( cfg.preferences.interfaceFontSize );
+    QApplication::setFont( font );
   }
 
-  QTranslator webengineTs;
-  if ( webengineTs.load( locale, "qtwebengine", "_", QLibraryInfo::path( QLibraryInfo::TranslationsPath ) ) ) {
-    app.installTranslator( &webengineTs );
-    qDebug() << "qt webengine translator loaded: " << webengineTs.filePath();
+  // Update default locale
+  if ( !cfg.preferences.interfaceLanguage.isEmpty() && QLocale().name() != cfg.preferences.interfaceLanguage ) {
+    QLocale::setDefault( QLocale( cfg.preferences.interfaceLanguage ) );
   }
-  else {
-    qDebug() << "qt webengine translator may or may not be loaded.";
-  }
+  QApplication::setLayoutDirection( QLocale().textDirection() );
 
-  // Load GD's translations, note GD has local names beyond what's supported by QLocal
-  if ( translator.load( localeName, Config::getLocDir() ) ) {
-    app.installTranslator( &translator );
-    qDebug() << "gd translator loaded: " << translator.filePath();
-  }
-  else {
-    qDebug() << "gd translator didn't load anything";
-  }
+  { /// Translations
+    auto loadTranslation_qlocale = []( QTranslator & qtranslator,
+                                       const QString & filename,
+                                       const QString & prefix,
+                                       const QString & directory ) -> bool {
+      if ( qtranslator.load( QLocale(), filename, prefix, directory ) ) {
+        qDebug() << "TS found: " << qtranslator.filePath();
+        return true;
+      }
+      else {
+        qDebug() << "TS failed to load: " << QLocale().uiLanguages() << filename << prefix << " from " << directory;
+        return false;
+      }
+    };
 
+    auto * gd_ts        = new QTranslator( &app );
+    auto * qt_ts        = new QTranslator( &app );
+    auto * webengine_ts = new QTranslator( &app );
+
+    // For GD's translations,
+    // If interfaceLanguage is explictly set, uses filename based loading, because QLocale sometimes doesn't match GD's translation file name
+    // Only load qt & webengine translators if GD's translation loading succeed to avoid inconsistency
+    // TODO: The QLocale based method sometimes does not work https://github.com/xiaoyifang/goldendict-ng/issues/2120
+    // GD's locale names may mismatch system locale and the return of default QLocale().name() is slightly different across platforms.
+    if ( cfg.preferences.interfaceLanguage.isEmpty() ?
+           loadTranslation_qlocale( *gd_ts, QString(), QString(), Config::getLocDir() ) :
+           gd_ts->load( cfg.preferences.interfaceLanguage, Config::getLocDir() ) ) {
+      QCoreApplication::installTranslator( gd_ts );
+      qDebug() << "TS found: " << gd_ts->filePath();
+
+      // For macOS bundle, the QLibraryInfo::TranslationsPath is overriden by GD.app/Contents/Resources/qt.conf
+
+      // For Windows, windeployqt will combine multiple qt modules translations into `qt_*` thus no `qtwebengine_*` exists
+      // qtwebengine loading will fail on Windows.
+
+      // TODO: Some `langauge`s in GD's ts uses - instead of _
+      if ( loadTranslation_qlocale( *qt_ts, "qt", "_", QLibraryInfo::path( QLibraryInfo::TranslationsPath ) )
+           && qt_ts->language() == gd_ts->language().replace( '-', '_' ) ) {
+        QCoreApplication::installTranslator( qt_ts );
+      }
+
+      if ( loadTranslation_qlocale( *webengine_ts,
+                                    "qtwebengine",
+                                    "_",
+                                    QLibraryInfo::path( QLibraryInfo::TranslationsPath ) )
+           && webengine_ts->language() == gd_ts->language().replace( '-', '_' ) ) {
+        QCoreApplication::installTranslator( webengine_ts );
+      }
+    }
+    else {
+      qDebug() << "GD_TS not loaded.";
+    }
+  }
 
   // Prevent app from quitting spontaneously when it works with popup
   // and with the main window closed.
@@ -611,6 +554,15 @@ int main( int argc, char ** argv )
 
   QObject::connect( &app, &QtSingleApplication::messageReceived, &m, &MainWindow::messageFromAnotherInstanceReceived );
 
+#ifdef Q_OS_MACOS
+  auto macUrlHandler = std::make_unique< MacUrlHandler >( &m );
+  QDesktopServices::setUrlHandler( "goldendict", macUrlHandler.get(), "processURL" );
+  QObject::connect( macUrlHandler.get(),
+                    &MacUrlHandler::wordReceived,
+                    &m,
+                    &MainWindow::messageFromAnotherInstanceReceived );
+#endif
+
   if ( gdcl.needSetGroup() ) {
     m.setGroupByName( gdcl.getGroupName(), true );
   }
@@ -630,10 +582,7 @@ int main( int argc, char ** argv )
   QObject::connect( KSignalHandler::self(), &KSignalHandler::signalReceived, &m, &MainWindow::quitApp );
 #endif
   int r = app.exec();
-
-  if ( logFilePtr->isOpen() ) {
-    logFilePtr->close();
-  }
+  Logger::closeLogFile();
 
   return r;
 }

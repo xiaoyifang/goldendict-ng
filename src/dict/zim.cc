@@ -236,9 +236,7 @@ ZimDictionary::ZimDictionary( string const & id, string const & indexFile, vecto
 
   dictionaryName = df.getMetadata( "Title" );
   if ( dictionaryName.empty() ) {
-    QString name   = QDir::fromNativeSeparators( dictionaryFiles[ 0 ].c_str() );
-    int n          = name.lastIndexOf( '/' );
-    dictionaryName = name.mid( n + 1 ).toStdString();
+    dictionaryName = QFileInfo( QString::fromStdString( dictionaryFiles[ 0 ] ) ).fileName().toStdString();
   }
 
   // Full-text search parameters
@@ -254,9 +252,8 @@ void ZimDictionary::loadIcon() noexcept
 
   // Try to load Original GD's user provided icon
   QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
-  // Remove the extension
-  fileName.chop( 3 );
-  if ( loadIconFromFile( fileName ) ) {
+
+  if ( loadIconFromFileName( fileName ) ) {
     dictionaryIconLoaded = true;
     return;
   }

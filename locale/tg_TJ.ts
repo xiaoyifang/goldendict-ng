@@ -8,28 +8,12 @@
       <translation>Дар бораи барнома</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>Луғати GoldenDict, версияи </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>Иҷозатномаи GNU GPLv3 ё навтар</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Маълумоти версияро нусхабардорӣ кунед</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Рӯйхати луғатҳоро нусхабардорӣ кунед</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Рӯйхати тарҷумонҳо:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Дар асоси Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -519,10 +503,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Аломатҳои махсус</translation>
     </message>
     <message>
-      <source>RegExp</source>
-      <translation>Ифодаи оддӣ</translation>
-    </message>
-    <message>
       <source>Unique headwords total: %1.</source>
       <translation>Ҳама сарлавҳаҳои беназир: %1.</translation>
     </message>
@@ -557,6 +537,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>Содирот анҷом ёфт</translation>
+    </message>
+    <message>
+      <source>Regular Expression</source>
+      <translation type="unfinished">Regular Expression</translation>
     </message>
   </context>
   <context>
@@ -839,6 +823,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Are you sure you want to clear all items?</source>
       <translation>Шумо мутмаин ҳастед, ки мехоҳед ҳамаи ҷузъҳоро тоза кунед?</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -953,24 +941,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>Луғатҳои интихобшударо ба гурӯҳ илова кардан (тугмаи Ins)</translation>
     </message>
     <message>
-      <source>&gt;</source>
-      <translation>&gt;</translation>
-    </message>
-    <message>
-      <source>Ins</source>
-      <translation>Тугмаи Ins</translation>
-    </message>
-    <message>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>Луғатҳои интихобшударо аз гурӯҳ тоза кардан (тугмаи Del)</translation>
-    </message>
-    <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
-    </message>
-    <message>
-      <source>Del</source>
-      <translation>Тугмаи Del</translation>
     </message>
     <message>
       <source>Groups:</source>
@@ -2192,16 +2164,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>&amp;Луғатҳо...</translation>
     </message>
     <message>
-      <source>F3</source>
-      <translation>F3</translation>
-    </message>
-    <message>
       <source>&amp;Preferences...</source>
       <translation>&amp;Хусусиятҳо...</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>F4</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
@@ -2224,10 +2188,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Аз барнома баромадан</translation>
     </message>
     <message>
-      <source>Ctrl+Q</source>
-      <translation>Ctrl+Q</translation>
-    </message>
-    <message>
       <source>&amp;Forum</source>
       <translation>&amp;Форуми луғат</translation>
     </message>
@@ -2240,10 +2200,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Равзанаро ба панҷараки огоҳиҳо мепечонад</translation>
     </message>
     <message>
-      <source>Ctrl+F4</source>
-      <translation>Ctrl+F4</translation>
-    </message>
-    <message>
       <source>&amp;Save Article</source>
       <translation>&amp;Мақоларо захира кардан</translation>
     </message>
@@ -2252,16 +2208,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>Мақоларо захира кардан</translation>
     </message>
     <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
       <source>&amp;Print</source>
       <translation>&amp;Чоп кардан</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Ctrl+P</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2276,20 +2224,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>&amp;Файлҳоро аз нав коркард кардан</translation>
     </message>
     <message>
-      <source>Ctrl+F5</source>
-      <translation>Ctrl+F5</translation>
-    </message>
-    <message>
       <source>&amp;Clear</source>
       <translation>&amp;Пок кардан</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
       <translation>&amp;Варақаи нав</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>Ctrl+T</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2332,28 +2272,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ҷустуҷӯ дар саҳифа</translation>
     </message>
     <message>
-      <source>Ctrl+F</source>
-      <translation>Ctrl+F</translation>
-    </message>
-    <message>
       <source>Full-text search</source>
       <translation>Ҷустуҷӯ дар матни пурра</translation>
     </message>
     <message>
-      <source>Ctrl+Shift+F</source>
-      <translation>Ctrl+Shift+F</translation>
-    </message>
-    <message>
       <source>GoldenDict reference</source>
       <translation>Маълумоти GoldenDict-ng</translation>
-    </message>
-    <message>
-      <source>F1</source>
-      <translation>F1</translation>
-    </message>
-    <message>
-      <source>Show</source>
-      <translation>Намоиш</translation>
     </message>
     <message>
       <source>Export</source>
@@ -2370,10 +2294,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Add current tab to Favorites</source>
       <translation>Ҷадвали ҷорӣ ба Favorites илова кунед</translation>
-    </message>
-    <message>
-      <source>Ctrl+E</source>
-      <translation>Ctrl+E</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
@@ -2661,6 +2581,18 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Сарлавҳаи &quot;%1&quot; аз дӯстдоштаҳо хориҷ карда шавад?</translation>
     </message>
+    <message>
+      <source>Show</source>
+      <translation>Намоиш</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation type="unfinished">Save PDF complete</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation type="unfinished">Save PDF failed</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2944,22 +2876,6 @@ the application.</source>
       <translation>Шрифти интерфейс</translation>
     </message>
     <message>
-      <source>Interface language:</source>
-      <translation>Забони интерфейс:</translation>
-    </message>
-    <message>
-      <source>Article Display style:</source>
-      <translation>Услуби намоиши мақола:</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>Сабки иловагӣ:</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>Услуби интерфейс:</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>UI-ро ба торик табдил диҳед.</translation>
     </message>
@@ -3046,32 +2962,16 @@ in the pressed state when the word selection changes.</source>
       <translation>Тугмаи Alt</translation>
     </message>
     <message>
-      <source>Alt</source>
-      <translation>Alt</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Тугмаи Ctrl</translation>
-    </message>
-    <message>
-      <source>Ctrl</source>
-      <translation>Ctrl</translation>
     </message>
     <message>
       <source>Shift key</source>
       <translation>Тугмаи Shift</translation>
     </message>
     <message>
-      <source>Shift</source>
-      <translation>Шифт</translation>
-    </message>
-    <message>
       <source>Windows key or Meta key</source>
       <translation>Тугмаи Windows ё Meta</translation>
-    </message>
-    <message>
-      <source>Win/Meta</source>
-      <translation>Win/Meta</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
@@ -3500,10 +3400,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Lingoes-кабуд</translation>
     </message>
     <message>
-      <source> MB</source>
-      <translation> МБ</translation>
-    </message>
-    <message>
       <source>Auto does nothing on some systems.</source>
       <translation>Автомат дар баъзе системаҳо ҳеҷ кор намекунад.</translation>
     </message>
@@ -3536,8 +3432,36 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Автоматӣ</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>Рӯйхати барномаҳоро фаъол созед</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Save debug messages to gd_log.txt in the config folder</translation>
+    </message>
+    <message>
+      <source>Interface Font Size</source>
+      <translation>Interface Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Interface language</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Article Display style</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on style</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Interface Style</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Preview Font</translation>
+    </message>
+    <message>
+      <source>Goldendict-ng is a dictionary software</source>
+      <translation>Goldendict-ng is a dictionary software</translation>
     </message>
   </context>
   <context>
@@ -3648,10 +3572,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Калима ё ҷумла барои пурсиш.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Паёмҳои дебагро дар gd_log.txt дар ҷузвдони танзимот захира кунед.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Ҳолати тирезаро барқарор кунед.</translation>
     </message>
@@ -3682,6 +3602,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Версияи чопӣ ва маълумоти ташхис.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
@@ -3735,54 +3659,49 @@ from Stardict, Babylon and GLS dictionaries</source>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>Диалог</translation>
+      <source>WARNING: %1</source>
+      <translation>Огоҳӣ: %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
-      <translation>Ба қафо</translation>
+      <translation>Back</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>Ба пеш</translation>
+      <translation>Forward</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>Калимаро талаффуз кардан (Alt+S)</translation>
+      <translation>Pronounce Word (Alt+S)</translation>
     </message>
     <message>
       <source>Alt+S</source>
-      <translation>Alt+S</translation>
+      <translation type="unfinished">Alt+S</translation>
     </message>
     <message>
       <source>Send word to main window (Alt+W)</source>
-      <translation>Калимаро ба равзанаи асосӣ гузоштан (Alt+W)</translation>
+      <translation>Send word to main window (Alt+W)</translation>
     </message>
     <message>
       <source>Alt+W</source>
-      <translation>Alt+W</translation>
+      <translation type="unfinished">Alt+W</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>
-      <translation>Илова кардани калима ба дӯстдоштаҳо (Ctrl+E)</translation>
-    </message>
-    <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>Лавҳаи луғатро пинҳон ё нишон медиҳад</translation>
+      <translation>Add word to Favorites (Ctrl+E)</translation>
     </message>
     <message>
       <source>Always stay on top of all other windows</source>
-      <translation>Ҳамеша дар болои ҳамаи тирезаҳои дигар бимонед</translation>
+      <translation>Always stay on top of all other windows</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>Барои мустаҳкам кардан равзана дар экран, иваз кардани ҳаҷм,
-ё идоракунии хусусиятҳои дигар инро зер кунед.</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>Огоҳӣ: %1</translation>
+      <translation>Use this to pin down the window so it would stay on screen,
+could be resized or managed in other ways.</translation>
     </message>
   </context>
   <context>

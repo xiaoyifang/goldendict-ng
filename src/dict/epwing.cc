@@ -235,13 +235,10 @@ void EpwingDictionary::loadIcon() noexcept
   if ( dictionaryIconLoaded )
     return;
 
-  QString fileName = QString::fromStdString( getDictionaryFilenames()[ 0 ] ) + QDir::separator()
-    + eBook.getCurrentSubBookDirectory() + ".";
+  QString fileName =
+    QString::fromStdString( getDictionaryFilenames()[ 0 ] ) + QDir::separator() + eBook.getCurrentSubBookDirectory();
 
-  if ( !fileName.isEmpty() )
-    loadIconFromFile( fileName );
-
-  if ( dictionaryIcon.isNull() ) {
+  if ( fileName.isEmpty() || !loadIconFromFileName( fileName ) ) {
     // Load failed -- use default icons
     dictionaryIcon = QIcon( ":/icons/icon32_epwing.png" );
   }
@@ -965,10 +962,9 @@ void EpwingWordSearchRequest::findMatches()
         break;
     }
 
-    QMutexLocker _( &dataMutex );
-
-    for ( const auto & headword : headwords )
+    for ( const auto & headword : headwords ) {
       addMatch( headword.toStdU32String() );
+    }
 
     break;
   }

@@ -8,28 +8,12 @@
       <translation>Hakkında</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>GoldenDict, sözlük arama programı, sürüm </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>GNU GPLv3 veya daha üst lisanslıdır</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Sürüm bilgisini kopyala</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Sözlük listesini kopyala</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Teşekkürler:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Qt %1 göre (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -519,10 +503,6 @@ arasındaki farkı giderir)</translation>
       <translation>Joker karakterler</translation>
     </message>
     <message>
-      <source>RegExp</source>
-      <translation>Düzenli İfade</translation>
-    </message>
-    <message>
       <source>Unique headwords total: %1.</source>
       <translation>Benzersiz başlık kelimelerinin toplamı: %1.</translation>
     </message>
@@ -557,6 +537,10 @@ arasındaki farkı giderir)</translation>
     <message>
       <source>Export finished</source>
       <translation>Dışa aktarma tamamlandı</translation>
+    </message>
+    <message>
+      <source>Regular Expression</source>
+      <translation type="unfinished">Regular Expression</translation>
     </message>
   </context>
   <context>
@@ -839,6 +823,10 @@ arasındaki farkı giderir)</translation>
       <source>Are you sure you want to clear all items?</source>
       <translation>Tüm öğeleri temizlemek istediğinizden emin misiniz?</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -953,24 +941,8 @@ arasındaki farkı giderir)</translation>
       <translation>Seçili sözlükleri gruba ekle (Insert)</translation>
     </message>
     <message>
-      <source>&gt;</source>
-      <translation>&gt;</translation>
-    </message>
-    <message>
-      <source>Ins</source>
-      <translation>Ekle (Insert)</translation>
-    </message>
-    <message>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>Seçili sözlükleri gruptan kaldır (Delete)</translation>
-    </message>
-    <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
-    </message>
-    <message>
-      <source>Del</source>
-      <translation>Sil (Delete)</translation>
     </message>
     <message>
       <source>Groups:</source>
@@ -2192,16 +2164,8 @@ arasındaki farkı giderir)</translation>
       <translation>&amp;Sözlükler...</translation>
     </message>
     <message>
-      <source>F3</source>
-      <translation>F3</translation>
-    </message>
-    <message>
       <source>&amp;Preferences...</source>
       <translation>&amp;Tercihler...</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>F4</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
@@ -2224,10 +2188,6 @@ arasındaki farkı giderir)</translation>
       <translation>Uygulamadan çık</translation>
     </message>
     <message>
-      <source>Ctrl+Q</source>
-      <translation>Ctrl+Q</translation>
-    </message>
-    <message>
       <source>&amp;Forum</source>
       <translation>&amp;Forum</translation>
     </message>
@@ -2240,10 +2200,6 @@ arasındaki farkı giderir)</translation>
       <translation>Pencereyi sistem tepsisine küçültür</translation>
     </message>
     <message>
-      <source>Ctrl+F4</source>
-      <translation>Ctrl+F4</translation>
-    </message>
-    <message>
       <source>&amp;Save Article</source>
       <translation>Maddeyi Ka&amp;ydet</translation>
     </message>
@@ -2252,16 +2208,8 @@ arasındaki farkı giderir)</translation>
       <translation>Maddeyi Kaydet</translation>
     </message>
     <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
       <source>&amp;Print</source>
       <translation>&amp;Yazdır</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Ctrl+P</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2276,20 +2224,12 @@ arasındaki farkı giderir)</translation>
       <translation>Dosyaları Yeniden Tara</translation>
     </message>
     <message>
-      <source>Ctrl+F5</source>
-      <translation>Ctrl+F5</translation>
-    </message>
-    <message>
       <source>&amp;Clear</source>
       <translation>&amp;Temizle</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
       <translation>&amp;Yeni Sekme</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>Ctrl+T</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2332,28 +2272,12 @@ arasındaki farkı giderir)</translation>
       <translation>Sayfada ara</translation>
     </message>
     <message>
-      <source>Ctrl+F</source>
-      <translation>Ctrl+F</translation>
-    </message>
-    <message>
       <source>Full-text search</source>
       <translation>Tam metin araması</translation>
     </message>
     <message>
-      <source>Ctrl+Shift+F</source>
-      <translation>Ctrl+Shift+F</translation>
-    </message>
-    <message>
       <source>GoldenDict reference</source>
       <translation>GoldenDict referansı</translation>
-    </message>
-    <message>
-      <source>F1</source>
-      <translation>F1</translation>
-    </message>
-    <message>
-      <source>Show</source>
-      <translation>Göster</translation>
     </message>
     <message>
       <source>Export</source>
@@ -2370,10 +2294,6 @@ arasındaki farkı giderir)</translation>
     <message>
       <source>Add current tab to Favorites</source>
       <translation>Geçerli sekmeyi favorilere ekle</translation>
-    </message>
-    <message>
-      <source>Ctrl+E</source>
-      <translation>Ctrl+E</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
@@ -2661,6 +2581,18 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>&quot;%1&quot; madde başı favorilerden çıkarılsın mı?</translation>
     </message>
+    <message>
+      <source>Show</source>
+      <translation>Göster</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation type="unfinished">Save PDF complete</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation type="unfinished">Save PDF failed</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2941,22 +2873,6 @@ yerine onu gizler.</translation>
       <translation>Arayüz Yazı Tipi</translation>
     </message>
     <message>
-      <source>Interface language:</source>
-      <translation>Arayüz dili:</translation>
-    </message>
-    <message>
-      <source>Article Display style:</source>
-      <translation>Makale Görüntüleme stili:</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>Eklenti biçimi</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>Arayüz Stili:</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Kullanıcı arayüzünü karanlığa çevirin.</translation>
     </message>
@@ -3043,32 +2959,16 @@ Aksi halde fare, sözcüğün üzerine geldiğinde çeviri yapılır.</translati
       <translation>Alt düğmesi</translation>
     </message>
     <message>
-      <source>Alt</source>
-      <translation>Alternatif</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Ctrl düğmesi</translation>
-    </message>
-    <message>
-      <source>Ctrl</source>
-      <translation>Ctrl</translation>
     </message>
     <message>
       <source>Shift key</source>
       <translation>Shift düğmesi</translation>
     </message>
     <message>
-      <source>Shift</source>
-      <translation>Vardiya</translation>
-    </message>
-    <message>
       <source>Windows key or Meta key</source>
       <translation>Windows tuşu yada Veri tuşu</translation>
-    </message>
-    <message>
-      <source>Win/Meta</source>
-      <translation>Kazan/Meta</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
@@ -3495,10 +3395,6 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
       <translation>Lingoes-Mavi</translation>
     </message>
     <message>
-      <source> MB</source>
-      <translation> MB</translation>
-    </message>
-    <message>
       <source>Auto does nothing on some systems.</source>
       <translation>Bazı sistemlerde Auto hiçbir şey yapmaz.</translation>
     </message>
@@ -3531,8 +3427,36 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
       <translation>Otomatik</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>Uygulama günlüğünü etkinleştir</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Save debug messages to gd_log.txt in the config folder</translation>
+    </message>
+    <message>
+      <source>Interface Font Size</source>
+      <translation>Interface Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Interface language</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Article Display style</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on style</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Interface Style</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Preview Font</translation>
+    </message>
+    <message>
+      <source>Goldendict-ng is a dictionary software</source>
+      <translation>Goldendict-ng is a dictionary software</translation>
     </message>
   </context>
   <context>
@@ -3643,10 +3567,6 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
       <translation>Sorgulanacak kelime veya cümle.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Hata ayıklama mesajlarını yapılandırma klasöründeki gd_log.txt dosyasına kaydedin.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Pencere durumunu sıfırla.</translation>
     </message>
@@ -3677,6 +3597,10 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Sürümü ve teşhis bilgilerini yazdırın.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
@@ -3730,54 +3654,49 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>İletişim</translation>
+      <source>WARNING: %1</source>
+      <translation>UYARI: %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
-      <translation>Önceki</translation>
+      <translation>Back</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>Sonraki</translation>
+      <translation>Forward</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>Sözcüğü Seslendir (Alt+S)</translation>
+      <translation>Pronounce Word (Alt+S)</translation>
     </message>
     <message>
       <source>Alt+S</source>
-      <translation>alt+S</translation>
+      <translation type="unfinished">Alt+S</translation>
     </message>
     <message>
       <source>Send word to main window (Alt+W)</source>
-      <translation>Sözcüğü ana pencereye gönder (Alt+W)</translation>
+      <translation>Send word to main window (Alt+W)</translation>
     </message>
     <message>
       <source>Alt+W</source>
-      <translation>alt+W</translation>
+      <translation type="unfinished">Alt+W</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>
-      <translation>Favorilere kelime ekle (Ctrl+E)</translation>
-    </message>
-    <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>Sözlükler Çubuğu&apos;nu Göster/Gizle</translation>
+      <translation>Add word to Favorites (Ctrl+E)</translation>
     </message>
     <message>
       <source>Always stay on top of all other windows</source>
-      <translation>Her zaman bütün diğer pencerelerin üstünde dur</translation>
+      <translation>Always stay on top of all other windows</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>Bu ekranda kalır ve böylece bu pencere, sabitlenebilir.
-Yeniden boyutlandırma, ya da başka bir şekilde yönetilebilir.</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>UYARI: %1</translation>
+      <translation>Use this to pin down the window so it would stay on screen,
+could be resized or managed in other ways.</translation>
     </message>
   </context>
   <context>

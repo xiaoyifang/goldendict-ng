@@ -4,17 +4,15 @@
 #pragma once
 
 #include "ui_about.h"
-#include "sptr.hh"
 #include "dict/dictionary.hh"
 #include <QDialog>
-#include <vector>
 
 class About: public QDialog
 {
   Q_OBJECT
 
 public:
-  About( QWidget * parent, std::vector< sptr< Dictionary::Class > > * dictonaries );
+  explicit About( QWidget * parent );
 
 private:
 

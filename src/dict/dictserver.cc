@@ -89,7 +89,7 @@ public:
     QString reply;
     socket.connectToHost( serverUrl.host(), port );
     state = DictServerState::CONNECT;
-    connect( &socket, &QTcpSocket::connected, this, [ this ]() {} );
+    connect( &socket, &QTcpSocket::connected, this, []() {} );
 
     connect( &socket, &QTcpSocket::errorOccurred, this, []( QAbstractSocket::SocketError error ) {
       qDebug() << "socket error message: " << error;
@@ -351,7 +351,7 @@ void DictServerDictionary::loadIcon() noexcept
   if ( !icon.isEmpty() ) {
     QFileInfo fInfo( QDir( Config::getConfigDir() ), icon );
     if ( fInfo.isFile() ) {
-      loadIconFromFile( fInfo.absoluteFilePath(), true );
+      loadIconFromFilePath( fInfo.absoluteFilePath() );
     }
   }
   if ( dictionaryIcon.isNull() ) {
@@ -365,7 +365,7 @@ QString const & DictServerDictionary::getDescription()
   if ( dictionaryDescription.isEmpty() ) {
     dictionaryDescription = QCoreApplication::translate( "DictServer", "Url: " ) + url + "<br>";
     dictionaryDescription += QCoreApplication::translate( "DictServer", "Databases: " ) + "<br>";
-    for ( const auto & serverDatabase : databases ) {
+    for ( const auto & serverDatabase : std::as_const( databases ) ) {
       dictionaryDescription += serverDatabase + "<br>";
     }
     dictionaryDescription +=
@@ -374,7 +374,7 @@ QString const & DictServerDictionary::getDescription()
       dictionaryDescription += "<br><br>";
       dictionaryDescription += QCoreApplication::translate( "DictServer", "Server databases" ) + " ("
         + QString::number( serverDatabases.size() ) + "):" + "<br>";
-      for ( const auto & serverDatabase : serverDatabases ) {
+      for ( const auto & serverDatabase : std::as_const( serverDatabases ) ) {
         dictionaryDescription += serverDatabase + "<br>";
       }
     }
@@ -607,7 +607,7 @@ public:
       static QRegularExpression leadingRespCode( "^\\d{3} " );
       uint32_t leadingSpaceCount      = 0;
       uint32_t firstLeadingSpaceCount = 0;
-      for ( const QString & line : lines ) {
+      for ( const QString & line : std::as_const( lines ) ) {
         //ignore 15X lines
         if ( leadingRespCode.match( line ).hasMatch() ) {
           continue;
@@ -784,10 +784,10 @@ void DictServerArticleRequest::run()
       auto code = reply.left( 3 );
       if ( reply.left( 3 ) == "150" ) {
         // Articles found
-        int countPos = reply.indexOf( ' ', 4 );
+        // int countPos = reply.indexOf( ' ', 4 );
         // Get articles count,
         // todo ,how to use this count?
-        int count = reply.mid( 4, countPos > 4 ? countPos - 4 : -1 ).toInt();
+        // int count = reply.mid( 4, countPos > 4 ? countPos - 4 : -1 ).toInt();
 
         // Read articles
         readData( reply );
@@ -956,5 +956,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::DictServers const 
 
   return result;
 }
-#include "dictserver.moc"
+
 } // namespace DictServer
+
+// fixes #2272
+// automoc include for Q_OBJECT should be at the very end of source code file, not inside a namespace
+#include "dictserver.moc"

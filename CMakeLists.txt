@@ -37,7 +37,7 @@ endif ()
 include(FeatureSummary)
 
 project(goldendict-ng
-        VERSION 25.02.0
+        VERSION 25.05.0
         LANGUAGES CXX C)
 
 if (APPLE)
@@ -178,6 +178,13 @@ target_compile_definitions(${GOLDENDICT} PRIVATE
         QT_DISABLE_DEPRECATED_UP_TO=0x060700
         QT_NO_DEPRECATED_WARNINGS
 )
+
+# make life harder https://doc.qt.io/qt-6/qtglobal.html#QT_ENABLE_STRICT_MODE_UP_TO
+if (Qt6Widgets_VERSION VERSION_GREATER_EQUAL 6.8.2)
+    target_compile_definitions(${GOLDENDICT} PRIVATE
+            QT_ENABLE_STRICT_MODE_UP_TO=0x060800
+    )
+endif ()
 
 target_compile_definitions(${GOLDENDICT} PUBLIC
         MAKE_QTMULTIMEDIA_PLAYER

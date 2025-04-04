@@ -106,7 +106,7 @@ sptr< Dictionary::Class > makeDictionary()
   return std::make_shared< Transliteration::TransliterationDictionary >(
     "cf1b74acd98adea9b2bba16af38f1086",
     QCoreApplication::translate( "RussianTranslit", "Russian Transliteration" ).toUtf8().data(),
-    QIcon( ":/flags/ru.png" ),
+    QIcon( ":/icons/ru-trans.svg" ),
     t );
 }
 

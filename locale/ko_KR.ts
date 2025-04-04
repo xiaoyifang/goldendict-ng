@@ -8,28 +8,12 @@
       <translation>정보</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>골든딕 사전검색 프로그램，버전 </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>GNU GPLv3 이상 라이선스</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>버전 정보 복사</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>사전 목록 복사</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>개발진:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Qt %1 (%2, %3) 기준</translation>
     </message>
   </context>
   <context>
@@ -519,10 +503,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>와일드카드</translation>
     </message>
     <message>
-      <source>RegExp</source>
-      <translation>정규식</translation>
-    </message>
-    <message>
       <source>Unique headwords total: %1.</source>
       <translation>고유 표제어 총계: %1.</translation>
     </message>
@@ -557,6 +537,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>내보내기 완료</translation>
+    </message>
+    <message>
+      <source>Regular Expression</source>
+      <translation type="unfinished">Regular Expression</translation>
     </message>
   </context>
   <context>
@@ -839,6 +823,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Are you sure you want to clear all items?</source>
       <translation>모든 항목을 지우시겠습니까?</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation>이 폴더를 단어 추가/제거 및 작업의 대상으로 만듭니다.</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -953,24 +941,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>선택한 사전들을 그룹에 추가합니다(Ins)</translation>
     </message>
     <message>
-      <source>&gt;</source>
-      <translation>&gt;</translation>
-    </message>
-    <message>
-      <source>Ins</source>
-      <translation>인</translation>
-    </message>
-    <message>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>선택한 사전들을 그룹에서 삭제합니다(Del)</translation>
-    </message>
-    <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
-    </message>
-    <message>
-      <source>Del</source>
-      <translation>델</translation>
     </message>
     <message>
       <source>Groups:</source>
@@ -2192,16 +2164,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>사전...(&amp;D)</translation>
     </message>
     <message>
-      <source>F3</source>
-      <translation>F3</translation>
-    </message>
-    <message>
       <source>&amp;Preferences...</source>
       <translation>설정...(&amp;P)</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>F4</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
@@ -2224,10 +2188,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>프로그램 종료</translation>
     </message>
     <message>
-      <source>Ctrl+Q</source>
-      <translation>Ctrl+Q</translation>
-    </message>
-    <message>
       <source>&amp;Forum</source>
       <translation>포럼(&amp;F)</translation>
     </message>
@@ -2240,10 +2200,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>창을 트레이로 최소화합니다</translation>
     </message>
     <message>
-      <source>Ctrl+F4</source>
-      <translation>Ctrl+F4</translation>
-    </message>
-    <message>
       <source>&amp;Save Article</source>
       <translation>검색항목 저장(&amp;S)</translation>
     </message>
@@ -2252,16 +2208,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>검색항목을 저장합니다</translation>
     </message>
     <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
       <source>&amp;Print</source>
       <translation>인쇄(&amp;P)</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Ctrl+P</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2276,20 +2224,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>파일 다시 읽기(&amp;R)</translation>
     </message>
     <message>
-      <source>Ctrl+F5</source>
-      <translation>Ctrl+F5</translation>
-    </message>
-    <message>
       <source>&amp;Clear</source>
       <translation>기록 비우기(&amp;C)</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
       <translation>새 탭(&amp;N)</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>Ctrl+T</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2332,28 +2272,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>페이지 내 검색</translation>
     </message>
     <message>
-      <source>Ctrl+F</source>
-      <translation>Ctrl+F</translation>
-    </message>
-    <message>
       <source>Full-text search</source>
       <translation>전문검색</translation>
     </message>
     <message>
-      <source>Ctrl+Shift+F</source>
-      <translation>Ctrl+Shift+F</translation>
-    </message>
-    <message>
       <source>GoldenDict reference</source>
       <translation>골든딕 도움말</translation>
-    </message>
-    <message>
-      <source>F1</source>
-      <translation>F1</translation>
-    </message>
-    <message>
-      <source>Show</source>
-      <translation>보여주다</translation>
     </message>
     <message>
       <source>Export</source>
@@ -2370,10 +2294,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Add current tab to Favorites</source>
       <translation>현재 탭을 즐겨찾기에 추가</translation>
-    </message>
-    <message>
-      <source>Ctrl+E</source>
-      <translation>Ctrl+E</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
@@ -2661,6 +2581,18 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>즐겨찾기에서 제목 &quot;%1&quot; 를 제거하시겠습니까?</translation>
     </message>
+    <message>
+      <source>Show</source>
+      <translation>보여주다</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation type="unfinished">Save PDF complete</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation type="unfinished">Save PDF failed</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2942,22 +2874,6 @@ the application.</source>
       <translation>인터페이스 글꼴</translation>
     </message>
     <message>
-      <source>Interface language:</source>
-      <translation>언어:</translation>
-    </message>
-    <message>
-      <source>Article Display style:</source>
-      <translation>기사 표시 스타일:</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>Add-on 스타일:</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>인터페이스 스타일:</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>UI를 어둡게 합니다.</translation>
     </message>
@@ -3003,7 +2919,7 @@ the application.</source>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation type="unfinished">Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+      <translation>프로그램을 시작할 때 클립보드 모니터링을 기본적으로 켤지 여부를 선택합니다.</translation>
     </message>
     <message>
       <source>Start with clipboard monitoring turned on</source>
@@ -3044,15 +2960,7 @@ in the pressed state when the word selection changes.</source>
       <translation>Alt 키</translation>
     </message>
     <message>
-      <source>Alt</source>
-      <translation>대체</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
-      <translation>Ctrl 키</translation>
-    </message>
-    <message>
-      <source>Ctrl</source>
       <translation>Ctrl 키</translation>
     </message>
     <message>
@@ -3060,16 +2968,8 @@ in the pressed state when the word selection changes.</source>
       <translation>Shift 키</translation>
     </message>
     <message>
-      <source>Shift</source>
-      <translation>옮기다</translation>
-    </message>
-    <message>
       <source>Windows key or Meta key</source>
       <translation>윈도우 단축키 또는 메타 키</translation>
-    </message>
-    <message>
-      <source>Win/Meta</source>
-      <translation>승리/메타</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
@@ -3496,10 +3396,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>링고-블루</translation>
     </message>
     <message>
-      <source> MB</source>
-      <translation> MB</translation>
-    </message>
-    <message>
       <source>Auto does nothing on some systems.</source>
       <translation>일부 시스템에서는 자동이 아무 작업도 수행하지 않습니다.</translation>
     </message>
@@ -3532,8 +3428,36 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>오토매틱</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>애플리케이션 로그 활성화</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>config 폴더의 gd_log.txt에 디버그 메시지를 저장합니다</translation>
+    </message>
+    <message>
+      <source>Interface Font Size</source>
+      <translation>인터페이스 글꼴 크기</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>인터페이스 언어</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>기사 표시 스타일</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on 스타일</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>인터페이스 스타일</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>글꼴 미리보기</translation>
+    </message>
+    <message>
+      <source>Goldendict-ng is a dictionary software</source>
+      <translation>Goldendict-ng는 사전 소프트웨어입니다</translation>
     </message>
   </context>
   <context>
@@ -3644,10 +3568,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>쿼리할 단어 또는 문장입니다.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>config 폴더의 gd_log.txt에 디버그 메시지를 저장합니다.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>창 상태를 재설정합니다.</translation>
     </message>
@@ -3678,6 +3598,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>버전 및 진단 정보를 인쇄합니다.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>config 폴더의 gd_log.txt에 디버그 메시지를 저장합니다</translation>
     </message>
   </context>
   <context>
@@ -3731,16 +3655,19 @@ from Stardict, Babylon and GLS dictionaries</source>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>대화</translation>
+      <source>WARNING: %1</source>
+      <translation>경고: %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
-      <translation>뒤로</translation>
+      <translation>뒤쪽에</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>앞으로</translation>
+      <translation>어서</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
@@ -3748,7 +3675,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Alt+S</source>
-      <translation>Alt+S</translation>
+      <translation type="unfinished">Alt+S</translation>
     </message>
     <message>
       <source>Send word to main window (Alt+W)</source>
@@ -3756,15 +3683,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Alt+W</source>
-      <translation>Alt+W</translation>
+      <translation type="unfinished">Alt+W</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>
       <translation>즐겨찾기에 단어 추가(Ctrl+E)</translation>
-    </message>
-    <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>사전도구상자를 보이거나 숨깁니다</translation>
     </message>
     <message>
       <source>Always stay on top of all other windows</source>
@@ -3775,10 +3698,6 @@ from Stardict, Babylon and GLS dictionaries</source>
 could be resized or managed in other ways.</source>
       <translation>핀 아이콘을 선택하면 창을 항상 화면 맨 위에 표시하고, 
 팝업창 크기, 사전모음의 위치 등을 조절할 수 있습니다.</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>경고: %1</translation>
     </message>
   </context>
   <context>

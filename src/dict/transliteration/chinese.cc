@@ -129,7 +129,7 @@ std::vector< sptr< Dictionary::Class > > makeDictionaries( Config::Chinese const
                                      "Simplified to traditional Chinese (Taiwan variant) conversion" )
           .toUtf8()
           .data(),
-        QIcon( ":/flags/tw.png" ),
+        QIcon( ":/icons/tc.svg" ),
         configDir + "s2tw.json" ) );
     }
 
@@ -140,7 +140,7 @@ std::vector< sptr< Dictionary::Class > > makeDictionaries( Config::Chinese const
                                      "Simplified to traditional Chinese (Hong Kong variant) conversion" )
           .toUtf8()
           .data(),
-        QIcon( ":/flags/hk.png" ),
+        QIcon( ":/icons/hk.svg" ),
         configDir + "s2hk.json" ) );
     }
 
@@ -150,7 +150,7 @@ std::vector< sptr< Dictionary::Class > > makeDictionaries( Config::Chinese const
         QCoreApplication::translate( "ChineseConversion", "Traditional to simplified Chinese conversion" )
           .toUtf8()
           .data(),
-        QIcon( ":/flags/cn.png" ),
+        QIcon( ":/icons/sc.svg" ),
         configDir + "t2s.json" ) );
     }
   }

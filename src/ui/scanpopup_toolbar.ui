@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ScanPopupToolBar</class>
+ <widget class="QWidget" name="ScanPopupToolBar">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>0</width>
+    <height>0</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout_4">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QToolButton" name="goBackButton">
+     <property name="toolTip">
+      <string>Back</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../../resources.qrc">
+       <normaloff>:/icons/previous.svg</normaloff>:/icons/previous.svg</iconset>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QToolButton" name="goForwardButton">
+     <property name="toolTip">
+      <string>Forward</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../../resources.qrc">
+       <normaloff>:/icons/next.svg</normaloff>:/icons/next.svg</iconset>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QToolButton" name="pronounceButton">
+     <property name="toolTip">
+      <string>Pronounce Word (Alt+S)</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../../resources.qrc">
+       <normaloff>:/icons/playsound_full.png</normaloff>:/icons/playsound_full.png</iconset>
+     </property>
+     <property name="shortcut">
+      <string>Alt+S</string>
+     </property>
+     <property name="autoRaise">
+      <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QToolButton" name="sendWordButton">
+     <property name="toolTip">
+      <string>Send word to main window (Alt+W)</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../../resources.qrc">
+       <normaloff>:/icons/programicon.png</normaloff>:/icons/programicon.png</iconset>
+     </property>
+     <property name="shortcut">
+      <string>Alt+W</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QToolButton" name="sendWordToFavoritesButton">
+     <property name="toolTip">
+      <string>Add word to Favorites (Ctrl+E)</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../../resources.qrc">
+       <normaloff>:/icons/star.svg</normaloff>:/icons/star.svg</iconset>
+     </property>
+     <property name="shortcut">
+      <string notr="true">Ctrl+E</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QToolButton" name="onTopButton">
+     <property name="toolTip">
+      <string>Always stay on top of all other windows</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../../resources.qrc">
+       <normaloff>:/icons/ontop.svg</normaloff>:/icons/ontop.svg</iconset>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="autoRaise">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QToolButton" name="pinButton">
+     <property name="toolTip">
+      <string>Use this to pin down the window so it would stay on screen,
+could be resized or managed in other ways.</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../../resources.qrc">
+       <normaloff>:/icons/pushpin.svg</normaloff>:/icons/pushpin.svg</iconset>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="autoRaise">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../../resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>

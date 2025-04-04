@@ -8,28 +8,12 @@
       <translation>Pri</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>La vortaro-programo GoldenDict, versio </translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>Disponebla laŭ la permesilo GNU GPLv3 kaj poste</translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>Kopiu informoj pri versio</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>Kopii liston de vortaroj</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>Kontribuantoj:</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Surbaze de Qt %1 (%2, %3)</translation>
     </message>
   </context>
   <context>
@@ -519,10 +503,6 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <translation>Ĵokeroj</translation>
     </message>
     <message>
-      <source>RegExp</source>
-      <translation>RegEsp</translation>
-    </message>
-    <message>
       <source>Unique headwords total: %1.</source>
       <translation>Unika kapvortoj entute: %1.</translation>
     </message>
@@ -557,6 +537,10 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     <message>
       <source>Export finished</source>
       <translation>Eksporto finiĝis</translation>
+    </message>
+    <message>
+      <source>Regular Expression</source>
+      <translation type="unfinished">Regular Expression</translation>
     </message>
   </context>
   <context>
@@ -839,6 +823,10 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <source>Are you sure you want to clear all items?</source>
       <translation>Ĉu vi certas, ke vi volas forigi ĉiujn erojn?</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -953,24 +941,8 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <translation>Aldonu elektitajn vortarojn al grupo (Ins)</translation>
     </message>
     <message>
-      <source>&gt;</source>
-      <translation>&gt;</translation>
-    </message>
-    <message>
-      <source>Ins</source>
-      <translation>Ins</translation>
-    </message>
-    <message>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>Forigi elektitajn vortarojn el grupo (Del)</translation>
-    </message>
-    <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
-    </message>
-    <message>
-      <source>Del</source>
-      <translation>Del</translation>
     </message>
     <message>
       <source>Groups:</source>
@@ -2192,16 +2164,8 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <translation>&amp;Vortaroj...</translation>
     </message>
     <message>
-      <source>F3</source>
-      <translation>F3</translation>
-    </message>
-    <message>
       <source>&amp;Preferences...</source>
       <translation>&amp;Agordoj...</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>F4</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
@@ -2224,10 +2188,6 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <translation>Forlasu de la aplikaĵo</translation>
     </message>
     <message>
-      <source>Ctrl+Q</source>
-      <translation>Ctrl+Q</translation>
-    </message>
-    <message>
       <source>&amp;Forum</source>
       <translation>&amp;Forumo</translation>
     </message>
@@ -2240,10 +2200,6 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <translation>Minimumigas la fenestron al pleto</translation>
     </message>
     <message>
-      <source>Ctrl+F4</source>
-      <translation>Ctrl+F4</translation>
-    </message>
-    <message>
       <source>&amp;Save Article</source>
       <translation>&amp;Konservi Artikolon</translation>
     </message>
@@ -2252,16 +2208,8 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <translation>Konservi Artikolon</translation>
     </message>
     <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
       <source>&amp;Print</source>
       <translation>&amp;Presi</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Ctrl+P</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2276,20 +2224,12 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <translation>&amp;Reskani dosierojn</translation>
     </message>
     <message>
-      <source>Ctrl+F5</source>
-      <translation>Ctrl+F5</translation>
-    </message>
-    <message>
       <source>&amp;Clear</source>
       <translation>&amp;Vakigi</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
       <translation>&amp;Nova langeto</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>Ctrl+T</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2332,28 +2272,12 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <translation>Serĉi en la paĝo</translation>
     </message>
     <message>
-      <source>Ctrl+F</source>
-      <translation>Ctrl+F</translation>
-    </message>
-    <message>
       <source>Full-text search</source>
       <translation>Plenteksta serĉo</translation>
     </message>
     <message>
-      <source>Ctrl+Shift+F</source>
-      <translation>Ctrl+Shift+F</translation>
-    </message>
-    <message>
       <source>GoldenDict reference</source>
       <translation>GoldenDict referenco</translation>
-    </message>
-    <message>
-      <source>F1</source>
-      <translation>F1</translation>
-    </message>
-    <message>
-      <source>Show</source>
-      <translation>Montru</translation>
     </message>
     <message>
       <source>Export</source>
@@ -2370,10 +2294,6 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     <message>
       <source>Add current tab to Favorites</source>
       <translation>Aldonu nunan langeton al Favoritoj</translation>
-    </message>
-    <message>
-      <source>Ctrl+E</source>
-      <translation>Ctrl+E</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
@@ -2661,6 +2581,18 @@ Por trovi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simboloj uz
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>Ĉu forigi kapvorton &quot;%1&quot; el Favoritoj?</translation>
     </message>
+    <message>
+      <source>Show</source>
+      <translation>Montru</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation type="unfinished">Save PDF complete</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation type="unfinished">Save PDF failed</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2944,22 +2876,6 @@ la aplikaĵon.</translation>
       <translation>Interfaco Tiparo</translation>
     </message>
     <message>
-      <source>Interface language:</source>
-      <translation>Interfaco-lingvo:</translation>
-    </message>
-    <message>
-      <source>Article Display style:</source>
-      <translation>Artikola Montra stilo:</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>Aldonaĵa stilo:</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>Interfaca Stilo:</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Turnu la UI al mallumo.</translation>
     </message>
@@ -3046,32 +2962,16 @@ en la premita stato kiam la vortelekto ŝanĝiĝas.</translation>
       <translation>Alt-klavo</translation>
     </message>
     <message>
-      <source>Alt</source>
-      <translation>Alt</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>Ctrl-klavo</translation>
-    </message>
-    <message>
-      <source>Ctrl</source>
-      <translation>Ctrl</translation>
     </message>
     <message>
       <source>Shift key</source>
       <translation>Shift-klavo</translation>
     </message>
     <message>
-      <source>Shift</source>
-      <translation>Shift</translation>
-    </message>
-    <message>
       <source>Windows key or Meta key</source>
       <translation>Vindoza klavo aŭ Meta ŝlosilo</translation>
-    </message>
-    <message>
-      <source>Win/Meta</source>
-      <translation>Venko/Meta</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
@@ -3500,10 +3400,6 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
       <translation>Lingvoes-Blua</translation>
     </message>
     <message>
-      <source> MB</source>
-      <translation> MB</translation>
-    </message>
-    <message>
       <source>Auto does nothing on some systems.</source>
       <translation>Aŭtomo faras nenion en iuj sistemoj.</translation>
     </message>
@@ -3536,8 +3432,36 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
       <translation>Aŭtomata</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>Ebligu protokolon de aplikaĵo</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Save debug messages to gd_log.txt in the config folder</translation>
+    </message>
+    <message>
+      <source>Interface Font Size</source>
+      <translation>Interface Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Interface language</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Article Display style</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on style</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Interface Style</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Preview Font</translation>
+    </message>
+    <message>
+      <source>Goldendict-ng is a dictionary software</source>
+      <translation>Goldendict-ng is a dictionary software</translation>
     </message>
   </context>
   <context>
@@ -3648,10 +3572,6 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
       <translation>Vorto aŭ frazo por pridemandi.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Konservu sencimigajn mesaĝojn al gd_log.txt en la agorda dosierujo.</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>Restarigi fenestrostaton.</translation>
     </message>
@@ -3682,6 +3602,10 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>Presa versio kaj diagnozaj informoj.</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
@@ -3735,54 +3659,49 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>Dialogo</translation>
+      <source>WARNING: %1</source>
+      <translation>AVERTO: %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
-      <translation>Malantaŭen</translation>
+      <translation>Back</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>Antaŭen</translation>
+      <translation>Forward</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>Prononcu Vorton (Alt+S)</translation>
+      <translation>Pronounce Word (Alt+S)</translation>
     </message>
     <message>
       <source>Alt+S</source>
-      <translation>Alt+S</translation>
+      <translation type="unfinished">Alt+S</translation>
     </message>
     <message>
       <source>Send word to main window (Alt+W)</source>
-      <translation>Sendu vorton al ĉefa fenestro (Alt+W)</translation>
+      <translation>Send word to main window (Alt+W)</translation>
     </message>
     <message>
       <source>Alt+W</source>
-      <translation>Alt+W</translation>
+      <translation type="unfinished">Alt+W</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>
-      <translation>Aldonu vorton al Favoritaj (Ctrl+E)</translation>
-    </message>
-    <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>Montras aŭ kaŝas la vortarstangon</translation>
+      <translation>Add word to Favorites (Ctrl+E)</translation>
     </message>
     <message>
       <source>Always stay on top of all other windows</source>
-      <translation>Ĉiam restu super ĉiuj aliaj fenestroj</translation>
+      <translation>Always stay on top of all other windows</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>Uzu ĉi tion por fiksi la fenestron por ke ĝi restu sur ekrano,
-povus esti regrandigita aŭ administrita alimaniere.</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>AVERTO: %1</translation>
+      <translation>Use this to pin down the window so it would stay on screen,
+could be resized or managed in other ways.</translation>
     </message>
   </context>
   <context>

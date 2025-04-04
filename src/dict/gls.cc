@@ -55,7 +55,7 @@ class GlsScanner
   std::u32string langFrom, langTo;
   char readBuffer[ 10000 ];
   char * readBufferPtr;
-  size_t readBufferLeft;
+  qsizetype readBufferLeft;
   LineFeed lineFeed;
   unsigned linesRead;
 
@@ -476,15 +476,7 @@ void GlsDictionary::loadIcon() noexcept
 
   QString fileName = QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() );
 
-  // Remove the extension
-  if ( fileName.endsWith( ".gls.dz", Qt::CaseInsensitive ) ) {
-    fileName.chop( 6 );
-  }
-  else {
-    fileName.chop( 3 );
-  }
-
-  if ( !loadIconFromFile( fileName ) ) {
+  if ( !loadIconFromFileName( fileName ) ) {
     // Load failed -- use default icon
     dictionaryIcon = QIcon( ":/icons/icon32_gls.png" );
   }

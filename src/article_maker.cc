@@ -146,10 +146,14 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word, QString const & 
 
 #if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
   if ( GlobalBroadcaster::instance()->getPreference()->darkReaderMode == Config::Dark::Auto
-  #if !defined( Q_OS_WINDOWS ) // not properly works on Windows.
+  #if !defined( Q_OS_WINDOWS )
+       // For macOS & Linux, uses "System's style hint". There is no darkMode setting in GD for them.
        && QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark
+  #else
+       // For Windows, uses the setting in GD
+       && GlobalBroadcaster::instance()->getPreference()->darkMode == Config::Dark::On
   #endif
-       && GlobalBroadcaster::instance()->getPreference()->darkMode == Config::Dark::On ) {
+  ) {
     darkReaderModeEnabled = true;
   }
 #endif
@@ -164,9 +168,6 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word, QString const & 
     result += R"(
 <script src="qrc:///scripts/darkreader.js"></script>
 <style>
-body { background: #242525; }
-.gdarticle { background: initial;}
-
 .gdarticlebody img{
   background: white !important;
 }
@@ -605,7 +606,7 @@ void ArticleRequest::bodyFinished()
     return;
   }
 
-  qDebug( "some body finished" );
+  qDebug() << ">>>>";
 
   bool wasUpdated = false;
 
@@ -614,8 +615,6 @@ void ArticleRequest::bodyFinished()
     // Since requests should go in order, check the first one first
     if ( bodyRequests.front()->isFinished() ) {
       // Good
-
-      qDebug( "one finished." );
 
       Dictionary::DataRequest & req = *bodyRequests.front();
 
@@ -626,6 +625,7 @@ void ArticleRequest::bodyFinished()
 
         string dictId = activeDict->getId();
 
+        qDebug() << "dict:" << activeDict->getName().c_str() << " finished.";
 
         dictIds << QString::fromStdString( dictId );
         string head;
@@ -715,12 +715,10 @@ void ArticleRequest::bodyFinished()
         //signal finished dictionary for pronounciation
         GlobalBroadcaster::instance()->pronounce_engine.finishDictionary( dictId );
       }
-      qDebug( "erasing.." );
       bodyRequests.pop_front();
-      qDebug( "erase done.." );
     }
     else {
-      qDebug( "one not finished." );
+      // qDebug() << "--- top not finished";
       break;
     }
   }

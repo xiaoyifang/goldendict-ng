@@ -21,7 +21,7 @@ namespace {
 class WebSiteDictionary: public Dictionary::Class
 {
   QByteArray urlTemplate;
-  bool experimentalIframe;
+  bool experimentalIframe = false;
   QString iconFilename;
   bool inside_iframe;
   QNetworkAccessManager & netMgr;
@@ -37,8 +37,7 @@ public:
     Dictionary::Class( id, vector< string >() ),
     iconFilename( iconFilename_ ),
     inside_iframe( inside_iframe_ ),
-    netMgr( netMgr_ ),
-    experimentalIframe( false )
+    netMgr( netMgr_ )
   {
     dictionaryName = name_;
 
@@ -459,7 +458,7 @@ void WebSiteDictionary::loadIcon() noexcept
   if ( !iconFilename.isEmpty() ) {
     QFileInfo fInfo( QDir( Config::getConfigDir() ), iconFilename );
     if ( fInfo.isFile() ) {
-      loadIconFromFile( fInfo.absoluteFilePath(), true );
+      loadIconFromFilePath( fInfo.absoluteFilePath() );
     }
   }
   if ( dictionaryIcon.isNull()
@@ -490,5 +489,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::WebSites const & w
   return result;
 }
 
-#include "website.moc"
 } // namespace WebSite
+
+// fixes #2272
+// automoc include for Q_OBJECT should be at the very end of source code file, not inside a namespace
+#include "website.moc"

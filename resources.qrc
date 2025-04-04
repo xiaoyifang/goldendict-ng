@@ -20,7 +20,6 @@
         <file>icons/wiktionary.png</file>
         <file>icons/forvo.png</file>
         <file>icons/lingualibre.svg</file>
-        <file>CREDITS.txt</file>
         <file>icons/highlighter.png</file>
         <file>icons/icon32_sdict.png</file>
         <file>icons/icon32_aard.png</file>
@@ -54,6 +53,7 @@
         <file>icons/folder-sound.svg</file>
         <file>icons/filesave.png</file>
         <file>icons/folder.svg</file>
+        <file>icons/folder_active.svg</file>
         <file>icons/folders.svg</file>
         <file>icons/home.svg</file>
         <file>icons/hotkeys.svg</file>
@@ -96,5 +96,12 @@
         <file>icons/splash.png</file>
         <file>icons/fts_disabled.svg</file>
         <file>icons/fts_enabled.svg</file>
+        <file>icons/sc.svg</file>
+        <file>icons/tc.svg</file>
+        <file>icons/hk.svg</file>
+        <file>icons/hira.svg</file>
+        <file>icons/kata.svg</file>
+        <file>icons/ru-trans.svg</file>
+        <file>icons/de-trans.svg</file>
     </qresource>
 </RCC>

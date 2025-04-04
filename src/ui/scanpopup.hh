@@ -8,18 +8,21 @@
 #include "wordfinder.hh"
 #include "keyboardstate.hh"
 #include "config.hh"
-#include "ui_scanpopup.h"
+#include "ui_scanpopup_toolbar.h"
 #include <QDialog>
 #include <QClipboard>
 #include <QToolBar>
 #include "history.hh"
 #include "dictionarybar.hh"
 #include "mainstatusbar.hh"
+#include <QMainWindow>
+#include <QActionGroup>
+#include "groupcombobox.hh"
+#include "translatebox.hh"
 #ifdef HAVE_X11
   #include "scanflag.hh"
 #endif
 
-#include <QActionGroup>
 
 /// This is a popup dialog to show translations when clipboard scanning mode
 /// is enabled.
@@ -45,7 +48,6 @@ public:
   /// Applies current zoom factor to the popup's view. Should be called when
   /// it's changed.
   void applyZoomFactor() const;
-  void applyWordsZoomLevel();
   /// Translate the word
   void translateWord( QString const & word );
 
@@ -81,7 +83,7 @@ signals:
   /// Put translated word into history
   void sendWordToHistory( QString const & word );
   /// Put translated word into Favorites
-  void sendWordToFavorites( QString const & word, unsigned groupId, bool );
+  void sendWordToFavorites( QString const & word );
 
 #ifdef Q_OS_WIN32
   /// Ask for source window is current translate tab
@@ -123,14 +125,17 @@ private:
 
   void updateDictionaryBar();
   /// Check is word already presented in Favorites
-  bool isWordPresentedInFavorites( QString const & word, unsigned groupId ) const;
+  bool isWordPresentedInFavorites( QString const & word ) const;
 
   Config::Class & cfg;
   std::vector< sptr< Dictionary::Class > > const & allDictionaries;
   std::vector< sptr< Dictionary::Class > > dictionariesUnmuted;
   Instances::Groups const & groups;
   History & history;
-  Ui::ScanPopup ui;
+  Ui::ScanPopupToolBar ui;
+  TranslateBox * translateBox;
+  GroupComboBox * groupList;
+  QAction * groupListAction; // for hiding it in QToolbar
   ArticleView * definition;
   QAction escapeAction, switchExpandModeAction, focusTranslateLineAction;
   QAction stopAudioAction;
@@ -139,7 +144,7 @@ private:
   WordFinder wordFinder;
   Config::Events configEvents;
   DictionaryBar dictionaryBar;
-  QToolBar * toolbar;
+  QToolBar * foundBar;
   QActionGroup * actionGroup = nullptr;
   MainStatusBar * mainStatusBar;
   /// Fonts saved before words zooming is in effect, so it could be reset back.
@@ -196,14 +201,15 @@ private:
 private slots:
   void currentGroupChanged( int );
   void prefixMatchFinished();
-  void on_pronounceButton_clicked() const;
   void pinButtonClicked( bool checked );
-  void on_showDictionaryBar_clicked( bool checked );
+  void dictionaryBar_visibility_changed( bool visible );
   void showStatusBarMessage( QString const &, int, QPixmap const & ) const;
-  void on_sendWordButton_clicked();
-  void on_sendWordToFavoritesButton_clicked();
-  void on_goBackButton_clicked() const;
-  void on_goForwardButton_clicked() const;
+
+  void pronounceButton_clicked() const;
+  void sendWordButton_clicked();
+  void sendWordToFavoritesButton_clicked();
+  void goBackButton_clicked() const;
+  void goForwardButton_clicked() const;
 
   void hideTimerExpired();
 

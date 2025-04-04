@@ -94,14 +94,10 @@ vector< WordMatch > & WordSearchRequest::getAllMatches()
 
 void WordSearchRequest::addMatch( WordMatch const & match )
 {
-  unsigned n;
-  for ( n = 0; n < matches.size(); n++ ) {
-    if ( matches[ n ].word.compare( match.word ) == 0 ) {
-      break;
-    }
-  }
+  QMutexLocker _( &dataMutex );
 
-  if ( n >= matches.size() ) {
+  // Check if the match already exists
+  if ( std::find( matches.begin(), matches.end(), match ) == matches.end() ) {
     matches.push_back( match );
   }
 }
@@ -248,53 +244,52 @@ int Class::getOptimalIconSize()
   return 64 * qGuiApp->devicePixelRatio();
 }
 
-bool Class::loadIconFromFile( QString const & _filename, bool isFullName )
+bool Class::loadIconFromFileName( QString const & mainDictFileName )
 {
-  QFileInfo info;
-  QString fileName( _filename );
+  const QFileInfo info( mainDictFileName );
+  QDir dir = info.absoluteDir();
 
-  if ( isFullName ) {
-    info = QFileInfo( fileName );
-  }
-  else {
-    fileName += "bmp";
-    info = QFileInfo( fileName );
-    if ( !info.isFile() ) {
-      fileName.chop( 3 );
-      fileName += "png";
-      info = QFileInfo( fileName );
-    }
-    if ( !info.isFile() ) {
-      fileName.chop( 3 );
-      fileName += "jpg";
-      info = QFileInfo( fileName );
-    }
-    if ( !info.isFile() ) {
-      fileName.chop( 3 );
-      fileName += "ico";
-      info = QFileInfo( fileName );
-    }
-  }
+  dir.setFilter( QDir::Files );
+  dir.setNameFilters( QStringList() << "*.bmp"  //
+                                    << "*.png"  //
+                                    << "*.jpg"  //
+                                    << "*.ico"  // below are GD-ng only
+                                    << "*.jpeg" //
+                                    << "*.gif"  //
+                                    << "*.webp" //
+                                    << "*.svg"  //
+                                    << "*.svgz" );
 
-  if ( info.isFile() ) {
-    auto iconSize = getOptimalIconSize();
-    QPixmap img( fileName );
-
-    if ( !img.isNull() ) {
-      // Load successful
-
-      auto result    = img.scaled( { iconSize, iconSize }, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation );
-      dictionaryIcon = QIcon( result );
-
-      return !dictionaryIcon.isNull();
+  const QString basename = info.baseName();
+  for ( const auto & f : dir.entryInfoList() ) {
+    if ( f.baseName() == basename && loadIconFromFilePath( f.absoluteFilePath() ) ) {
+      return true;
     }
   }
   return false;
 }
 
+bool Class::loadIconFromFilePath( QString const & filename )
+{
+  auto iconSize = getOptimalIconSize();
+  QImage img( filename );
+
+  if ( img.isNull() ) {
+    return false;
+  }
+  else {
+    auto result    = img.scaled( { iconSize, iconSize }, Qt::KeepAspectRatioByExpanding, Qt::SmoothTransformation );
+    dictionaryIcon = QIcon( QPixmap::fromImage( result ) );
+
+    return !dictionaryIcon.isNull();
+  }
+}
+
 bool Class::loadIconFromText( const QString & iconUrl, QString const & text )
 {
-  if ( text.isEmpty() ) {
+  //select a single char.
+  auto abbrName = getAbbrName( text );
+  if ( abbrName.isEmpty() ) {
     return false;
   }
   QImage img( iconUrl );
@@ -315,9 +310,6 @@ bool Class::loadIconFromText( const QString & iconUrl, QString const & text )
     painter.setFont( font );
 
     const QRect rectangle = QRect( 0, 0, iconSize, iconSize );
-
-    //select a single char.
-    auto abbrName = getAbbrName( text );
 
     painter.setPen( intToFixedColor( qHash( abbrName ) ) );
 
@@ -559,12 +551,12 @@ string makeDictionaryId( vector< string > const & dictionaryFiles ) noexcept
 // be fixed in the future when it's needed.
 bool needToRebuildIndex( vector< string > const & dictionaryFiles, string const & indexFile ) noexcept
 {
-  unsigned long lastModified = 0;
+  qint64 lastModified = 0;
 
   for ( const auto & dictionaryFile : dictionaryFiles ) {
     QString name = QString::fromUtf8( dictionaryFile.c_str() );
     QFileInfo fileInfo( name );
-    unsigned long ts;
+    qint64 ts;
 
     if ( fileInfo.isDir() ) {
       continue;

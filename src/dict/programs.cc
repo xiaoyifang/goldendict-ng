@@ -121,7 +121,7 @@ void ProgramsDictionary::loadIcon() noexcept
   if ( !prg.iconFilename.isEmpty() ) {
     QFileInfo fInfo( QDir( Config::getConfigDir() ), prg.iconFilename );
     if ( fInfo.isFile() ) {
-      loadIconFromFile( fInfo.absoluteFilePath(), true );
+      loadIconFromFilePath( fInfo.absoluteFilePath() );
     }
   }
   if ( dictionaryIcon.isNull() ) {
@@ -330,7 +330,7 @@ void ProgramWordSearchRequest::instanceFinished( QByteArray output, QString erro
     output.replace( "\r\n", "\n" );
     QStringList result = QString::fromUtf8( output ).split( "\n", Qt::SkipEmptyParts );
 
-    for ( const auto & x : result ) {
+    for ( const auto & x : std::as_const( result ) ) {
       matches.push_back( Dictionary::WordMatch( x.toStdU32String() ) );
     }
 

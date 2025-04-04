@@ -18,7 +18,7 @@ class ChineseConversion;
 #endif
 
 /// A model to be projected into the mediawikis view, according to Qt's MVC model
-class MediaWikisModel: public QAbstractItemModel
+class MediaWikisModel: public QAbstractTableModel
 {
   Q_OBJECT
 
@@ -35,14 +35,12 @@ public:
     return mediawikis;
   }
 
-  QModelIndex index( int row, int column, QModelIndex const & parent ) const;
-  QModelIndex parent( QModelIndex const & parent ) const;
-  Qt::ItemFlags flags( QModelIndex const & index ) const;
-  int rowCount( QModelIndex const & parent ) const;
-  int columnCount( QModelIndex const & parent ) const;
-  QVariant headerData( int section, Qt::Orientation orientation, int role ) const;
-  QVariant data( QModelIndex const & index, int role ) const;
-  bool setData( QModelIndex const & index, const QVariant & value, int role );
+  Qt::ItemFlags flags( QModelIndex const & index ) const override;
+  int rowCount( QModelIndex const & parent ) const override;
+  int columnCount( QModelIndex const & parent ) const override;
+  QVariant headerData( int section, Qt::Orientation orientation, int role ) const override;
+  QVariant data( QModelIndex const & index, int role ) const override;
+  bool setData( QModelIndex const & index, const QVariant & value, int role ) override;
 
 private:
 
@@ -50,7 +48,7 @@ private:
 };
 
 /// A model to be projected into the webSites view, according to Qt's MVC model
-class WebSitesModel: public QAbstractItemModel
+class WebSitesModel: public QAbstractTableModel
 {
   Q_OBJECT
 
@@ -67,14 +65,12 @@ public:
     return webSites;
   }
 
-  QModelIndex index( int row, int column, QModelIndex const & parent ) const;
-  QModelIndex parent( QModelIndex const & parent ) const;
-  Qt::ItemFlags flags( QModelIndex const & index ) const;
-  int rowCount( QModelIndex const & parent ) const;
-  int columnCount( QModelIndex const & parent ) const;
-  QVariant headerData( int section, Qt::Orientation orientation, int role ) const;
-  QVariant data( QModelIndex const & index, int role ) const;
-  bool setData( QModelIndex const & index, const QVariant & value, int role );
+  Qt::ItemFlags flags( QModelIndex const & index ) const override;
+  int rowCount( QModelIndex const & parent ) const override;
+  int columnCount( QModelIndex const & parent ) const override;
+  QVariant headerData( int section, Qt::Orientation orientation, int role ) const override;
+  QVariant data( QModelIndex const & index, int role ) const override;
+  bool setData( QModelIndex const & index, const QVariant & value, int role ) override;
 
 private:
 
@@ -82,7 +78,7 @@ private:
 };
 
 /// A model to be projected into the dictServers view, according to Qt's MVC model
-class DictServersModel: public QAbstractItemModel
+class DictServersModel: public QAbstractTableModel
 {
   Q_OBJECT
 
@@ -99,14 +95,12 @@ public:
     return dictServers;
   }
 
-  QModelIndex index( int row, int column, QModelIndex const & parent ) const;
-  QModelIndex parent( QModelIndex const & parent ) const;
-  Qt::ItemFlags flags( QModelIndex const & index ) const;
-  int rowCount( QModelIndex const & parent ) const;
-  int columnCount( QModelIndex const & parent ) const;
-  QVariant headerData( int section, Qt::Orientation orientation, int role ) const;
-  QVariant data( QModelIndex const & index, int role ) const;
-  bool setData( QModelIndex const & index, const QVariant & value, int role );
+  Qt::ItemFlags flags( QModelIndex const & index ) const override;
+  int rowCount( QModelIndex const & parent ) const override;
+  int columnCount( QModelIndex const & parent ) const override;
+  QVariant headerData( int section, Qt::Orientation orientation, int role ) const override;
+  QVariant data( QModelIndex const & index, int role ) const override;
+  bool setData( QModelIndex const & index, const QVariant & value, int role ) override;
 
 private:
 
@@ -114,7 +108,7 @@ private:
 };
 
 /// A model to be projected into the programs view, according to Qt's MVC model
-class ProgramsModel: public QAbstractItemModel
+class ProgramsModel: public QAbstractTableModel
 {
   Q_OBJECT
 
@@ -131,14 +125,12 @@ public:
     return programs;
   }
 
-  QModelIndex index( int row, int column, QModelIndex const & parent ) const;
-  QModelIndex parent( QModelIndex const & parent ) const;
-  Qt::ItemFlags flags( QModelIndex const & index ) const;
-  int rowCount( QModelIndex const & parent ) const;
-  int columnCount( QModelIndex const & parent ) const;
-  QVariant headerData( int section, Qt::Orientation orientation, int role ) const;
-  QVariant data( QModelIndex const & index, int role ) const;
-  bool setData( QModelIndex const & index, const QVariant & value, int role );
+  Qt::ItemFlags flags( QModelIndex const & index ) const override;
+  int rowCount( QModelIndex const & parent ) const override;
+  int columnCount( QModelIndex const & parent ) const override;
+  QVariant headerData( int section, Qt::Orientation orientation, int role ) const override;
+  QVariant data( QModelIndex const & index, int role ) const override;
+  bool setData( QModelIndex const & index, const QVariant & value, int role ) override;
 
 private:
 
@@ -162,7 +154,7 @@ public:
 };
 
 /// A model to be projected into the paths view, according to Qt's MVC model
-class PathsModel: public QAbstractItemModel
+class PathsModel: public QAbstractTableModel
 {
   Q_OBJECT
 
@@ -179,14 +171,12 @@ public:
     return paths;
   }
 
-  QModelIndex index( int row, int column, QModelIndex const & parent ) const;
-  QModelIndex parent( QModelIndex const & parent ) const;
-  Qt::ItemFlags flags( QModelIndex const & index ) const;
-  int rowCount( QModelIndex const & parent ) const;
-  int columnCount( QModelIndex const & parent ) const;
-  QVariant headerData( int section, Qt::Orientation orientation, int role ) const;
-  QVariant data( QModelIndex const & index, int role ) const;
-  bool setData( QModelIndex const & index, const QVariant & value, int role );
+  Qt::ItemFlags flags( QModelIndex const & index ) const override;
+  int rowCount( QModelIndex const & parent ) const override;
+  int columnCount( QModelIndex const & parent ) const override;
+  QVariant headerData( int section, Qt::Orientation orientation, int role ) const override;
+  QVariant data( QModelIndex const & index, int role ) const override;
+  bool setData( QModelIndex const & index, const QVariant & value, int role ) override;
 
 private:
 
@@ -194,7 +184,7 @@ private:
 };
 
 /// A model to be projected into the soundDirs view, according to Qt's MVC model
-class SoundDirsModel: public QAbstractItemModel
+class SoundDirsModel: public QAbstractTableModel
 {
   Q_OBJECT
 
@@ -211,14 +201,12 @@ public:
     return soundDirs;
   }
 
-  QModelIndex index( int row, int column, QModelIndex const & parent ) const;
-  QModelIndex parent( QModelIndex const & parent ) const;
-  Qt::ItemFlags flags( QModelIndex const & index ) const;
-  int rowCount( QModelIndex const & parent ) const;
-  int columnCount( QModelIndex const & parent ) const;
-  QVariant headerData( int section, Qt::Orientation orientation, int role ) const;
-  QVariant data( QModelIndex const & index, int role ) const;
-  bool setData( QModelIndex const & index, const QVariant & value, int role );
+  Qt::ItemFlags flags( QModelIndex const & index ) const override;
+  int rowCount( QModelIndex const & parent ) const override;
+  int columnCount( QModelIndex const & parent ) const override;
+  QVariant headerData( int section, Qt::Orientation orientation, int role ) const override;
+  QVariant data( QModelIndex const & index, int role ) const override;
+  bool setData( QModelIndex const & index, const QVariant & value, int role ) override;
 
 private:
 
@@ -226,7 +214,7 @@ private:
 };
 
 /// A model to be projected into the hunspell dictionaries view, according to Qt's MVC model
-class HunspellDictsModel: public QAbstractItemModel
+class HunspellDictsModel: public QAbstractTableModel
 {
   Q_OBJECT
 
@@ -242,14 +230,12 @@ public:
     return enabledDictionaries;
   }
 
-  QModelIndex index( int row, int column, QModelIndex const & parent ) const;
-  QModelIndex parent( QModelIndex const & parent ) const;
-  Qt::ItemFlags flags( QModelIndex const & index ) const;
-  int rowCount( QModelIndex const & parent ) const;
-  int columnCount( QModelIndex const & parent ) const;
-  QVariant headerData( int section, Qt::Orientation orientation, int role ) const;
-  QVariant data( QModelIndex const & index, int role ) const;
-  bool setData( QModelIndex const & index, const QVariant & value, int role );
+  Qt::ItemFlags flags( QModelIndex const & index ) const override;
+  int rowCount( QModelIndex const & parent ) const override;
+  int columnCount( QModelIndex const & parent ) const override;
+  QVariant headerData( int section, Qt::Orientation orientation, int role ) const override;
+  QVariant data( QModelIndex const & index, int role ) const override;
+  bool setData( QModelIndex const & index, const QVariant & value, int role ) override;
 
 private:
 

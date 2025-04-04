@@ -42,12 +42,13 @@ public:
     return QSize( 204, 204 );
   }
 
-  void setUp( Config::Class * cfg, QMenu * menu );
+  void setUp( Config::Class * cfg, std::initializer_list< QAction * > actionsFromMainWindow );
 
-  void addHeadword( QString const & path, QString const & headword );
+  void addWordToActiveFav( const QString & word );
+  bool removeWordFromActiveFav( const QString & word );
 
-  bool removeHeadword( QString const & path, QString const & headword );
-
+  /// @return success
+  bool trySetCurrentActiveFav( const QStringList & fullpath );
   // Export/import Favorites
   void getDataInXml( QByteArray & dataStr );
   void getDataInPlainText( QString & dataStr );
@@ -63,12 +64,14 @@ public:
   void setSaveInterval( unsigned interval );
 
   // Return true if headwors is already presented in Favorites
-  bool isHeadwordPresent( QString const & path, QString const & headword );
+  // Fully specified via TreeItem::fullpath
+  bool isWordPresentInActiveFolder( QString const & headword );
 
   void saveData();
 
 signals:
   void favoritesItemRequested( QString const & word, QString const & faforitesFolder );
+  void activeFavChange();
 
 protected:
   virtual void timerEvent( QTimerEvent * ev );
@@ -79,15 +82,21 @@ private slots:
   void onItemClicked( QModelIndex const & idx );
   void showCustomMenu( QPoint const & pos );
   void deleteSelectedItems();
+  void folderActivation();
   void copySelectedItems();
   void addFolder();
   void clearAllItems();
+public slots:
+  /// Add if exist, remove if not
+  void addRemoveWordInActiveFav( const QString & word );
 
 private:
   virtual bool eventFilter( QObject *, QEvent * );
   Config::Class * m_cfg               = nullptr;
   QTreeView * m_favoritesTree         = nullptr;
+
   QMenu * m_favoritesMenu             = nullptr;
+  QAction * m_activeFolderForFav      = nullptr;
   QAction * m_deleteSelectedAction    = nullptr;
   QAction * m_separator               = nullptr;
   QAction * m_copySelectedToClipboard = nullptr;
@@ -129,6 +138,10 @@ public:
   void deleteChild( int row );
 
   TreeItem * child( int row ) const;
+  QList< TreeItem * > & children()
+  {
+    return childItems;
+  };
   int childCount() const;
   QVariant data() const;
   void setData( const QVariant & newData );
@@ -153,7 +166,7 @@ public:
   }
 
   // Full path from root folder
-  QString fullPath() const;
+  QStringList fullPath() const;
 
   // Duplicate item with all childs
   TreeItem * duplicateItem( TreeItem * newParent ) const;
@@ -217,14 +230,14 @@ public:
 
   // Add new headword to given folder
   // return false if it already exists there
-  bool addNewHeadword( QString const & path, QString const & headword );
+  bool addNewWordFullPath( const QString & headword );
 
   // Remove headword from given folder
   // return false if failed
-  bool removeHeadword( QString const & path, QString const & headword );
+  bool removeWordFullPath( const QString & headword );
 
   // Return true if headwors is already presented in Favorites
-  bool isHeadwordPresent( QString const & path, QString const & headword );
+  bool isWordPresentFullPath( const QString & headword );
 
   // Return path in the tree to item
   QString pathToItem( QModelIndex const & idx );
@@ -242,12 +255,22 @@ public:
 
   void saveData();
 
+  TreeItem * getItem( const QModelIndex & index ) const;
+  /// @return nullable!
+  TreeItem * getItemByFullPath( const QStringList & fullpath ) const;
+  /// @return check isValid!
+  QModelIndex getModelIndexByFullPath( const QStringList & fullpath ) const;
+
+  /// a fullPath -> the current active folder
+  QStringList activeFolderFullPath;
+
 public slots:
   void itemCollapsed( const QModelIndex & index );
   void itemExpanded( const QModelIndex & index );
 
 signals:
   void expandItem( const QModelIndex & index );
+  void itemDropped();
 
 protected:
   void readData();
@@ -256,9 +279,8 @@ protected:
   TreeItem * findFolderByName( TreeItem * parent, const QString & name, TreeItem::Type type );
 
   // Find item in folder
-  QModelIndex findItemInFolder( QString const & itemName, int itemType, QModelIndex const & parentIdx );
+  QModelIndex findItemInFolder( QString const & itemName, TreeItem::Type itemType, QModelIndex const & parentIdx );
 
-  TreeItem * getItem( const QModelIndex & index ) const;
 
   // Find folder with given name or create it if folder not exist
   QModelIndex forceFolder( QString const & name, QModelIndex const & parentIdx );

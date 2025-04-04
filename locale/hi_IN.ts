@@ -8,28 +8,12 @@
       <translation>के सम्बन्ध में</translation>
     </message>
     <message>
-      <source>GoldenDict-ng dictionary lookup program, version </source>
-      <translation>गोल्डेनडिक्ट शब्दकोश अवलोकन प्रोग्राम, संस्करण</translation>
-    </message>
-    <message>
       <source>Licensed under GNU GPLv3 or later</source>
       <translation>GNU GPLv3 या उत्तरवर्ती अनुज्ञापत्र के अन्तर्गत </translation>
     </message>
     <message>
       <source>Copy version info</source>
       <translation>संस्करण जानकारी कॉपी करें</translation>
-    </message>
-    <message>
-      <source>Copy dictionaries list</source>
-      <translation>शब्दकोश सूची कॉपी करें</translation>
-    </message>
-    <message>
-      <source>Credits:</source>
-      <translation>आभार :</translation>
-    </message>
-    <message>
-      <source>Based on Qt %1 (%2, %3)</source>
-      <translation>Qt %1 (%2, %3) पर आधारित</translation>
     </message>
   </context>
   <context>
@@ -518,10 +502,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>अक्षरचिह्नम्</translation>
     </message>
     <message>
-      <source>RegExp</source>
-      <translation>नियमवचन</translation>
-    </message>
-    <message>
       <source>Unique headwords total: %1.</source>
       <translation>अद्वितीय हेडवर्ड्स कुल: %1.</translation>
     </message>
@@ -556,6 +536,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Export finished</source>
       <translation>निर्यात समाप्त</translation>
+    </message>
+    <message>
+      <source>Regular Expression</source>
+      <translation type="unfinished">Regular Expression</translation>
     </message>
   </context>
   <context>
@@ -838,6 +822,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Are you sure you want to clear all items?</source>
       <translation>क्या आप वाकई सभी आइटम साफ़ करना चाहते हैं?</translation>
     </message>
+    <message>
+      <source>Make this folder the target of adding/removing words actions.</source>
+      <translation>Make this folder the target of adding/removing words actions.</translation>
+    </message>
   </context>
   <context>
     <name>Forvo::ForvoArticleRequest</name>
@@ -952,24 +940,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>चयनित शब्दकोशों को समूह में जोड़ें (सम्मिलित करें)</translation>
     </message>
     <message>
-      <source>&gt;</source>
-      <translation>&gt;</translation>
-    </message>
-    <message>
-      <source>Ins</source>
-      <translation>सम्मिलित करें</translation>
-    </message>
-    <message>
       <source>Remove selected dictionaries from group (Del)</source>
       <translation>समूह से चयनित शब्दकोशों क निकालें (हटाएं)</translation>
-    </message>
-    <message>
-      <source>&lt;</source>
-      <translation>&lt;</translation>
-    </message>
-    <message>
-      <source>Del</source>
-      <translation>हटाना</translation>
     </message>
     <message>
       <source>Groups:</source>
@@ -2191,16 +2163,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>&amp;Dictionnaires...</translation>
     </message>
     <message>
-      <source>F3</source>
-      <translation>F3</translation>
-    </message>
-    <message>
       <source>&amp;Preferences...</source>
       <translation>&amp;Préférences...</translation>
-    </message>
-    <message>
-      <source>F4</source>
-      <translation>f4</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
@@ -2223,10 +2187,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Quitter à partir de l&apos;application</translation>
     </message>
     <message>
-      <source>Ctrl+Q</source>
-      <translation>Ctrl+Q</translation>
-    </message>
-    <message>
       <source>&amp;Forum</source>
       <translation>&amp;मंच</translation>
     </message>
@@ -2239,10 +2199,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Réduit la fenêtre dans la barre des tâches</translation>
     </message>
     <message>
-      <source>Ctrl+F4</source>
-      <translation>Ctrl+F4</translation>
-    </message>
-    <message>
       <source>&amp;Save Article</source>
       <translation>&amp;Sauver l&apos;article</translation>
     </message>
@@ -2251,16 +2207,8 @@ between classic and school orthography in cyrillic)</source>
       <translation>Sauver l&apos;article</translation>
     </message>
     <message>
-      <source>F2</source>
-      <translation>F2</translation>
-    </message>
-    <message>
       <source>&amp;Print</source>
       <translation>Im&amp;primer</translation>
-    </message>
-    <message>
-      <source>Ctrl+P</source>
-      <translation>Ctrl+P</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
@@ -2275,20 +2223,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>&amp;Rescanner les fichiers</translation>
     </message>
     <message>
-      <source>Ctrl+F5</source>
-      <translation>Ctrl+F5</translation>
-    </message>
-    <message>
       <source>&amp;Clear</source>
       <translation>E&amp;ffacer</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
       <translation>&amp;Nouvel onglet</translation>
-    </message>
-    <message>
-      <source>Ctrl+T</source>
-      <translation>Ctrl+T</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
@@ -2331,28 +2271,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Rechercher dans la page</translation>
     </message>
     <message>
-      <source>Ctrl+F</source>
-      <translation>Ctrl+F</translation>
-    </message>
-    <message>
       <source>Full-text search</source>
       <translation>Recherche en texte intégral</translation>
     </message>
     <message>
-      <source>Ctrl+Shift+F</source>
-      <translation>Ctrl+Shift+F</translation>
-    </message>
-    <message>
       <source>GoldenDict reference</source>
       <translation>Référence de GoldenDict-ng</translation>
-    </message>
-    <message>
-      <source>F1</source>
-      <translation>एफ1</translation>
-    </message>
-    <message>
-      <source>Show</source>
-      <translation>दिखाना</translation>
     </message>
     <message>
       <source>Export</source>
@@ -2369,10 +2293,6 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Add current tab to Favorites</source>
       <translation>वर्तमान टैब को पसंदीदा में जोड़ें</translation>
-    </message>
-    <message>
-      <source>Ctrl+E</source>
-      <translation>Ctrl+E</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
@@ -2660,6 +2580,18 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
       <translation>पसंदीदा से हेडवर्ड &quot;%1&quot; हटाएं?</translation>
     </message>
+    <message>
+      <source>Show</source>
+      <translation>दिखाना</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation type="unfinished">Save PDF complete</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation type="unfinished">Save PDF failed</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
@@ -2936,22 +2868,6 @@ the application.</source>
       <translation>इंटरफ़ेस फ़ॉन्ट</translation>
     </message>
     <message>
-      <source>Interface language:</source>
-      <translation>अंतरफलक भाषा:</translation>
-    </message>
-    <message>
-      <source>Article Display style:</source>
-      <translation>आलेख प्रदर्शन शैली:</translation>
-    </message>
-    <message>
-      <source>Add-on style:</source>
-      <translation>Add-on शैली:</translation>
-    </message>
-    <message>
-      <source>Interface Style:</source>
-      <translation>इंटरफ़ेस शैली:</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>यूआई को अंधेरे में बदलें।</translation>
     </message>
@@ -3037,32 +2953,16 @@ in the pressed state when the word selection changes.</source>
       <translation>Alt कुंजी</translation>
     </message>
     <message>
-      <source>Alt</source>
-      <translation>Alt</translation>
-    </message>
-    <message>
       <source>Ctrl key</source>
       <translation>कन्ट्रोल कुंजी</translation>
-    </message>
-    <message>
-      <source>Ctrl</source>
-      <translation>कन्ट्रोल</translation>
     </message>
     <message>
       <source>Shift key</source>
       <translation>शिफ्ट कुंजी</translation>
     </message>
     <message>
-      <source>Shift</source>
-      <translation>शिफ्ट</translation>
-    </message>
-    <message>
       <source>Windows key or Meta key</source>
       <translation>खिड़की-कुंजी या मेटा-कुंजी</translation>
-    </message>
-    <message>
-      <source>Win/Meta</source>
-      <translation>खिडकी/मेटा</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
@@ -3483,10 +3383,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>लिंगोज-नीला</translation>
     </message>
     <message>
-      <source> MB</source>
-      <translation> एमबी</translation>
-    </message>
-    <message>
       <source>Auto does nothing on some systems.</source>
       <translation>कुछ प्रणालियों पर ऑटो कुछ भी नहीं करता।</translation>
     </message>
@@ -3519,8 +3415,36 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>स्वचालित</translation>
     </message>
     <message>
-      <source>Enable application log</source>
-      <translation>एप्लिकेशन लॉग सक्षम करें</translation>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Save debug messages to gd_log.txt in the config folder</translation>
+    </message>
+    <message>
+      <source>Interface Font Size</source>
+      <translation>Interface Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Interface language</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Article Display style</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on style</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Interface Style</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Preview Font</translation>
+    </message>
+    <message>
+      <source>Goldendict-ng is a dictionary software</source>
+      <translation>Goldendict-ng is a dictionary software</translation>
     </message>
   </context>
   <context>
@@ -3631,10 +3555,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>प्रश्न करने के लिए शब्द या वाक्य.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>डिबग संदेशों को कॉन्फ़िगरेशन फ़ोल्डर में gd_log.txt में सहेजें।</translation>
-    </message>
-    <message>
       <source>Reset window state.</source>
       <translation>विंडो स्थिति रीसेट करें.</translation>
     </message>
@@ -3665,6 +3585,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Print version and diagnosis info.</source>
       <translation>प्रिंट संस्करण और निदान जानकारी।</translation>
+    </message>
+    <message>
+      <source>Save debug messages to gd_log.txt in the config folder</source>
+      <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
   </context>
   <context>
@@ -3718,54 +3642,49 @@ from Stardict, Babylon and GLS dictionaries</source>
   <context>
     <name>ScanPopup</name>
     <message>
-      <source>Dialog</source>
-      <translation>संवाद</translation>
+      <source>WARNING: %1</source>
+      <translation>चेतावनी: %1</translation>
     </message>
+  </context>
+  <context>
+    <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
-      <translation>पीछे</translation>
+      <translation>Back</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>आगे</translation>
+      <translation>Forward</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>शब्द का उच्चारण करें(Alt + S)</translation>
+      <translation>Pronounce Word (Alt+S)</translation>
     </message>
     <message>
       <source>Alt+S</source>
-      <translation>ऑल्ट+एस</translation>
+      <translation type="unfinished">Alt+S</translation>
     </message>
     <message>
       <source>Send word to main window (Alt+W)</source>
-      <translation>मुख्य खिडकी में शब्द भेजें (Alt + W</translation>
+      <translation>Send word to main window (Alt+W)</translation>
     </message>
     <message>
       <source>Alt+W</source>
-      <translation>Alt+W</translation>
+      <translation type="unfinished">Alt+W</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>
-      <translation>पसंदीदा में शब्द जोड़ें (कन्ट्रोल+ई)</translation>
-    </message>
-    <message>
-      <source>Shows or hides the dictionary bar</source>
-      <translation>शब्दकोश रेखिका को दिखाता या छिपाता है</translation>
+      <translation>Add word to Favorites (Ctrl+E)</translation>
     </message>
     <message>
       <source>Always stay on top of all other windows</source>
-      <translation>हमेशा अन्य सभी खिड़कियों के शीर्ष पर रहें</translation>
+      <translation>Always stay on top of all other windows</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>खिड़की को पिन करने के लिए इसका उपयोग करें जिससे कि यह स्क्रीन पर बना रहे,
-अन्य विधियों से आकार बदला या प्रबंधित किया जा सकता है</translation>
-    </message>
-    <message>
-      <source>WARNING: %1</source>
-      <translation>चेतावनी: %1</translation>
+      <translation>Use this to pin down the window so it would stay on screen,
+could be resized or managed in other ways.</translation>
     </message>
   </context>
   <context>
