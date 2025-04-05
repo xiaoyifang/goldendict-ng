@@ -836,7 +836,7 @@ sptr< Dictionary::Class > makeDictionary()
   return std::make_shared< Transliteration::TransliterationDictionary >(
     "baa9e37a1aa69cdb5daca14a48ffe5ae",
     QCoreApplication::translate( "GreekTranslit", "Greek Transliteration" ).toUtf8().data(),
-    QIcon( ":/icons/gr-trans.svg" ),
+    QIcon( ":/flags/gr.png" ),
     t );
 }
 
