@@ -1386,7 +1386,7 @@ std::vector< sptr< Dictionary::Class > > makeDictionaries()
                                  "Belarusian transliteration from latin to cyrillic (classic orthography)" )
       .toUtf8()
       .data(),
-    QIcon( ":/icons/by-trans-classic.svg" ),
+    QIcon( ":/flags/by.png" ),
     t0,
     false ) );
   dicts.push_back( std::make_shared< Transliteration::TransliterationDictionary >(
@@ -1395,7 +1395,7 @@ std::vector< sptr< Dictionary::Class > > makeDictionaries()
                                  "Belarusian transliteration from latin to cyrillic (school orthography)" )
       .toUtf8()
       .data(),
-    QIcon( ":/icons/by-trans-school.svg" ),
+    QIcon( ":/flags/by.png" ),
     t1,
     false ) );
   dicts.push_back( std::make_shared< Transliteration::TransliterationDictionary >(
@@ -1405,7 +1405,7 @@ std::vector< sptr< Dictionary::Class > > makeDictionaries()
                                  "between classic and school orthography in cyrillic)" )
       .toUtf8()
       .data(),
-    QIcon( ":/icons/by-trans-cyrillic.svg" ),
+    QIcon( ":/flags/by.png" ),
     t2,
     false ) );
   return dicts;
