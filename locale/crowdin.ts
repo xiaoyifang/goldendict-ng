@@ -686,6 +686,10 @@ between classic and school orthography in cyrillic)</source>
         <source>Open dictionary folder</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Restore selection</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>EditDictionaries</name>
