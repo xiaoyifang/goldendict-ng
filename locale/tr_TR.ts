@@ -689,6 +689,10 @@ arasındaki farkı giderir)</translation>
       <source>Open dictionary folder</source>
       <translation>Sözlük klasörünü aç</translation>
     </message>
+    <message>
+      <source>Restore selection</source>
+      <translation type="unfinished">Restore selection</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
