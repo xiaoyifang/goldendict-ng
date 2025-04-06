@@ -40,8 +40,8 @@ If a dictionary is the only one selected, clicking it with ++ctrl++ will reselec
 
 Temporarily capture the selection and restore it later.
 
-- Capture Selection <-- ++shift+"Click"++
-- Restore Selection <-- Click the "Restore selection" in the context menu
+- Capture Selection <-- ++shift+"Click"++ any dictionary icons.
+- Restore Selection <-- Click the "Restore selection" in the right click context menu
 
 !!! note
     "Found in dictionaries" panel can also uses above two special operations.
