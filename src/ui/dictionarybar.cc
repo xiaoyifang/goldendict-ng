@@ -208,7 +208,7 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
 
   if ( result && result == restoreSelectionAction ) {
     *mutedDictionaries = tempSelectionCapturedMuted.value();
-    tempSelectionCapturedMuted->clear();
+    tempSelectionCapturedMuted.reset();
     configEvents.signalMutedDictionariesChanged();
   }
 
