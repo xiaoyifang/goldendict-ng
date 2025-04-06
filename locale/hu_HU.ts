@@ -689,6 +689,10 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
       <source>Open dictionary folder</source>
       <translation>Mappa megnyitása</translation>
     </message>
+    <message>
+      <source>Restore selection</source>
+      <translation type="unfinished">Restore selection</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
