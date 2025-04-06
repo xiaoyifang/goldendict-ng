@@ -110,12 +110,20 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
 {
   QMenu menu( this );
 
+  const QAction * restoreSelectionAction = nullptr;
+  if ( tempSelectionCapturedMuted.has_value() ) {
+    restoreSelectionAction = menu.addAction( tr( "Restore selection" ) );
+  }
+
   const QAction * editAction = menu.addAction( QIcon( ":/icons/bookcase.svg" ), tr( "Edit this group" ) );
 
   const QAction * infoAction           = nullptr;
   const QAction * headwordsAction      = nullptr;
   const QAction * openDictFolderAction = nullptr;
+
+
   QString dictFilename;
+
 
   const QAction * dictAction = actionAt( event->x(), event->y() );
   if ( dictAction ) {
@@ -198,6 +206,12 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
     showContextMenu( event, true );
   }
 
+  if ( result && result == restoreSelectionAction ) {
+    *mutedDictionaries = tempSelectionCapturedMuted.value();
+    tempSelectionCapturedMuted.reset();
+    configEvents.signalMutedDictionariesChanged();
+  }
+
   if ( result == editAction ) {
     emit editGroupRequested();
   }
@@ -243,41 +257,27 @@ void DictionaryBar::actionWasTriggered( QAction * action )
     return; // Some weird action, not our button
   }
 
-  /// Single Selection Mode
-  /// Click         (in mode)
-  /// singleSelect -> has value  -> dict was selected: reselect depends on Ctrl/Shift, discard memorized selection
-  ///                           -> dict was not selected: select a single one
-  ///              -> no value  -> has modifier: select a single dict + memorize
-  ///            (not in mode)  -> no modifier: normal
-  ///
-
-  if ( singleSelectionInitallyMuted.has_value() ) { // (in mode)
-    if ( !mutedDictionaries->contains( id ) ) {     // dict was selected
-      if ( Qt::ControlModifier & QApplication::keyboardModifiers() ) {
-        mutedDictionaries->clear();
-        singleSelectionInitallyMuted.reset();
-      }
-      else if ( Qt::ShiftModifier & QApplication::keyboardModifiers() ) {
-        *mutedDictionaries = singleSelectionInitallyMuted.value();
-        singleSelectionInitallyMuted.reset();
-      }
+  //  Ctrl Click Single Selection
+  if ( QApplication::keyboardModifiers().testFlag( Qt::ControlModifier ) ) {
+    // Ctrl+Clicked the only one selected
+    if ( ( dictActions.size() - mutedDictionaries->size() ) == 1 && !action->isChecked() ) {
+      mutedDictionaries->clear();
     }
-    else { // dict was not selected
+    else {
       selectSingleDict( id );
     }
   }
-  else {
-    if ( ( Qt::ControlModifier | Qt::ShiftModifier ) & QApplication::keyboardModifiers() ) {
-      singleSelectionInitallyMuted.emplace( *mutedDictionaries );
-      selectSingleDict( id );
+  ///  Shift Click Capturing
+  else if ( QApplication::keyboardModifiers().testFlag( Qt::ShiftModifier ) ) {
+    tempSelectionCapturedMuted.emplace( *mutedDictionaries );
+    selectSingleDict( id ); // Give user feedback that capturing success by select the one clicked
+  }
+  else { // Normal clicking
+    if ( action->isChecked() ) {
+      mutedDictionaries->remove( id );
     }
-    else { // Normal
-      if ( action->isChecked() ) {
-        mutedDictionaries->remove( id );
-      }
-      else {
-        mutedDictionaries->insert( id );
-      }
+    else {
+      mutedDictionaries->insert( id );
     }
   }
   configEvents.signalMutedDictionariesChanged();
