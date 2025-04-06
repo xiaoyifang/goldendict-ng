@@ -691,6 +691,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Open dictionary folder</source>
       <translation>Открыть папку словаря</translation>
     </message>
+    <message>
+      <source>Restore selection</source>
+      <translation>Восстановить выбранное</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
