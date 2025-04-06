@@ -689,6 +689,10 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <source>Open dictionary folder</source>
       <translation>Avaa sanakirjakansio</translation>
     </message>
+    <message>
+      <source>Restore selection</source>
+      <translation>Palauta valinta</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
