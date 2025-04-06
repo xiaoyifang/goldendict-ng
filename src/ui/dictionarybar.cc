@@ -111,7 +111,7 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
   QMenu menu( this );
 
   const QAction * restoreSelectionAction = nullptr;
-  if ( !tempSelectionCapturedMuted->isEmpty() ) {
+  if ( tempSelectionCapturedMuted.has_value() ) {
     restoreSelectionAction = menu.addAction( tr( "Restore selection" ) );
   }
 
