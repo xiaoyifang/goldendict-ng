@@ -689,6 +689,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Open dictionary folder</source>
       <translation>辞書フォルダを開く</translation>
     </message>
+    <message>
+      <source>Restore selection</source>
+      <translation>選択範囲を復元</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
