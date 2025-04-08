@@ -291,24 +291,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>تبدیل از نویسه های ساده شده به نویسه های سنتی (نوع تایوان) را فعال کنید</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>SC به TC (نوع تایوان)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>تبدیل نویسه های ساده شده به نویسه های سنتی (نوع هنگ کنگ) را فعال کنید</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>SC به TC (نوع هنگ کنگ)</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>تبدیل از نویسه های سنتی به نویسه های ساده شده را فعال کنید</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>TC به SC</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -321,6 +309,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>تبدیل سنتی به چینی ساده شده</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation type="unfinished">Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation type="unfinished">Hong Kong variant</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation type="unfinished">Mainland variant</translation>
     </message>
   </context>
   <context>
