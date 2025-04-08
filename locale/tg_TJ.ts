@@ -291,24 +291,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Фаъол кардани табдил аз аломатҳои оддӣ ба анъанавӣ (Варианти тайванӣ)</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>ХО ба ХА (Варианти тайванӣ)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Фаъол кардани табдил аз аломатҳои оддӣ ба анъанавӣ (Варианти ҳонконгӣ)</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>ХО ба ХА (Варианти ҳонконгӣ)</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Фаъол кардани табдил аз аломатҳои оддӣ ба аломатҳои анъанавӣ</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>ХА ба ХО</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -321,6 +309,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Табдилдиҳӣ аз хитоии оддӣ ба анъанавӣ</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation type="unfinished">Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation type="unfinished">Hong Kong variant</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation type="unfinished">Mainland variant</translation>
     </message>
   </context>
   <context>
