@@ -291,24 +291,12 @@ a školní ortografií v cyrilici)</translation>
       <translation>Povolit převod ze zjednodušených znaků na tradiční (varianta) znaky</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>SC až TC (Taiwan varianta)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Povolit převod ze zjednodušených znaků na tradiční (Hong Kong varianta) znaky</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>SC až TC (Hong Kong varianta)</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Povolit převod z tradičních znaků na zjednodušené znaky</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>TC až SC</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -321,6 +309,18 @@ a školní ortografií v cyrilici)</translation>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Tradiční zjednodušený čínský převod</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation>Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation>Varianta Hongkongu</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation>Varianta kontinentální</translation>
     </message>
   </context>
   <context>
