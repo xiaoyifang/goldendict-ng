@@ -291,24 +291,12 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Schakel conversie van vereenvoudigde tekens naar traditionele (Taiwan-variant) tekens in</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>SC naar TC (Taiwan variant)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Schakel conversie van vereenvoudigde tekens naar traditionele (Hong Kong variant) tekens in</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>SC to TC (Hong Kong variant)</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Schakel conversie van traditionele tekens naar vereenvoudigde tekens in</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>TC naar SC</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -321,6 +309,18 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Traditioneel naar vereenvoudigde Chinese conversie</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation type="unfinished">Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation type="unfinished">Hong Kong variant</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation type="unfinished">Mainland variant</translation>
     </message>
   </context>
   <context>
