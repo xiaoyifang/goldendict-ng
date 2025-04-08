@@ -689,6 +689,10 @@ a školní ortografií v cyrilici)</translation>
       <source>Open dictionary folder</source>
       <translation>Otevřít složku slovníků</translation>
     </message>
+    <message>
+      <source>Restore selection</source>
+      <translation>Obnovit výběr</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>

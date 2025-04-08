@@ -689,6 +689,10 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <source>Open dictionary folder</source>
       <translation>Malfermu vortaran dosierujon</translation>
     </message>
+    <message>
+      <source>Restore selection</source>
+      <translation type="unfinished">Restore selection</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>

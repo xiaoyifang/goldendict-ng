@@ -689,6 +689,10 @@ chiqan kayninta sumaqyachin)</translation>
       <source>Open dictionary folder</source>
       <translation>Diccionario nisqa qillqana mayt’uta kichay</translation>
     </message>
+    <message>
+      <source>Restore selection</source>
+      <translation type="unfinished">Restore selection</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>

@@ -691,6 +691,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Open dictionary folder</source>
       <translation>Άνοιγμα φακέλου λεξικού</translation>
     </message>
+    <message>
+      <source>Restore selection</source>
+      <translation>Επαναφορά επιλογής</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>

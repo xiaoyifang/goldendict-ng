@@ -689,6 +689,10 @@ entre ortografia clássica e escolar em ciílico)</translation>
       <source>Open dictionary folder</source>
       <translation>Abrir pasta do dicionário</translation>
     </message>
+    <message>
+      <source>Restore selection</source>
+      <translation>Restaurar seleção</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>

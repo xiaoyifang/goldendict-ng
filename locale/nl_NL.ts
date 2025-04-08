@@ -689,6 +689,10 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <source>Open dictionary folder</source>
       <translation>Woordenboekmap openen</translation>
     </message>
+    <message>
+      <source>Restore selection</source>
+      <translation>Herstel selectie</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>

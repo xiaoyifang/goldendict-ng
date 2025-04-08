@@ -688,6 +688,10 @@ between classic and school orthography in cyrillic)</source>
       <source>Open dictionary folder</source>
       <translation>Ouvrir le dossier des dictionnaires</translation>
     </message>
+    <message>
+      <source>Restore selection</source>
+      <translation>Restaurer la sélection</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>

@@ -689,6 +689,10 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <source>Open dictionary folder</source>
       <translation>Öppna ordlistans lagringsmapp</translation>
     </message>
+    <message>
+      <source>Restore selection</source>
+      <translation>Återställ markering</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
