@@ -291,24 +291,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Омогућите конверзију из поједностављених знакова у традиционалне (тајванска варијанта) знакова</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>СЦ до ТЦ (тајванска варијанта)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Омогућите конверзију из поједностављених знакова у традиционалне знакове (варијанта Хонг Конга).</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>СЦ до ТЦ (варијанта у Хонг Конгу)</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Омогућите конверзију традиционалних знакова у поједностављене знакове</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>ТЦ до СЦ</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -321,6 +309,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Традиционална у поједностављена кинеска конверзија</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation type="unfinished">Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation type="unfinished">Hong Kong variant</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation type="unfinished">Mainland variant</translation>
     </message>
   </context>
   <context>
