@@ -291,24 +291,12 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
       <translation>Attiva la conversione dei caratteri dal cinese semplificato a quello tradizionale (variante locale Taiwan)</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>cinese semplificato a tradizionale (variante locale Taiwan)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Attiva la conversione dei caratteri dal cinese semplificato a quello tradizionale (variante locale Hong Kong)</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>cinese semplificato a tradizionale (variante locale Hong Kong)</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Attiva la conversione dei caratteri dal cinese tradizionale a quello semplificato</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>cinese tradizionale a semplificato</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -321,6 +309,18 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Conversione cinese tradizionale a semplificato</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation type="unfinished">Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation type="unfinished">Hong Kong variant</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation type="unfinished">Mainland variant</translation>
     </message>
   </context>
   <context>
