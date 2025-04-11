@@ -291,24 +291,12 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>Sasachasqa qillqakunamanta ñawpaq (Taiwán variante) qillqakunaman tikrayta atichiy</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>SCmanta TCkama (Taiwán variante) .</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Sasachasqa qillqakunamanta ñawpaq (Hong Kong variante) qillqakunaman tikrayta atichiy</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>SCmanta TCkama (Hong Kongmanta rikch'aq) .</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Ñawpa qillqakunamanta pisiyachisqa qillqakunaman tikrayta atichiy</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>TCmanta SCkama</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -321,6 +309,18 @@ chiqan kayninta sumaqyachin)</translation>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Tradicionalmanta chino tikrayman pisiyachisqaman</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation type="unfinished">Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation type="unfinished">Hong Kong variant</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation type="unfinished">Mainland variant</translation>
     </message>
   </context>
   <context>

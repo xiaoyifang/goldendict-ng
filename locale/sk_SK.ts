@@ -291,24 +291,12 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
       <translation>Povoliť konverziu zjednodušených znakov na tradičné (Tajvanský variant)</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>ZČ na TČ (Tajvanský variant)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Povoliť konverziu zjednodušených znakov na tradičné (Hong-Kongský variant)</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>ZČ na TČ (Hong-Kongský variant)</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Povoliť konverziu tradičných znakov na zjednodušené znaky</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>TČ na ZČ</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -321,6 +309,18 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Konverzia z tradičnej do zjednodušenej čínštiny</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation type="unfinished">Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation type="unfinished">Hong Kong variant</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation type="unfinished">Mainland variant</translation>
     </message>
   </context>
   <context>

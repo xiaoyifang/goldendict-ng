@@ -291,24 +291,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ввімкнути перетворення від спрощених символів до традиційних (варіант Тайвань)</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>SC до ТК (варіант Тайвань)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Увімкнути перетворення з спрощених символів на традиційні (гонконгські варіанти) символи</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>Маш до ТК (варіант Гонконгу)</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Включити перетворення з традиційних символів на спрощені символи</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>До СК</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -321,6 +309,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Традиційне формулювання китайської конверсії</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation>Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation>Гонконзький варіант</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation>Схема материкового</translation>
     </message>
   </context>
   <context>

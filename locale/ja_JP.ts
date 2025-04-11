@@ -291,24 +291,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>簡略化された文字から従来の文字への変換を有効にする (台湾のバリアント文字)</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>SC から TC (台湾のバリアント)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>簡略化された文字から従来の文字への変換を有効にする (香港のバリアント文字)</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>SC から TC (香港変種)</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>従来の文字から簡略化された文字への変換を有効にする</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>TC to SC</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -321,6 +309,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>繁体字から簡体字への変換</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation>Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation>香港の種類</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation>本土の種類</translation>
     </message>
   </context>
   <context>

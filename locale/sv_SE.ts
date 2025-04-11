@@ -291,24 +291,12 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <translation>Aktivera konvertering från förenklade tecken till traditionella (Taiwan variant) tecken</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>FT to TT (Taiwan variant)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Aktivera konvertering från förenklade tecken till traditionella (Hong Kong variant) tecken</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>FT till TT (Hong Kong variant)</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Aktivera konvertering från traditionella tecken till förenklade tecken</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>FT till TT</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -321,6 +309,18 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Traditionell till förenklad kinesisk konvertering</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation>Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation>Hongkong variant</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation>Variant på fastlandet</translation>
     </message>
   </context>
   <context>

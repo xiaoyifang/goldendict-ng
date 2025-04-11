@@ -290,24 +290,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>قم بتمكين التحويل من الأحرف المبسطة إلى الأحرف التقليدية (البديل التايواني)</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>SC إلى TC (البديل التايواني)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>تمكين التحويل من الأحرف المبسطة إلى الأحرف التقليدية (متغير هونج كونج)</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>SC إلى TC (متغير هونغ كونغ)</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>تمكين التحويل من الأحرف التقليدية إلى الأحرف المبسطة</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>TC إلى SC</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -320,6 +308,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>التقليدية إلى الصينية المبسطة التحويل</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation type="unfinished">Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation type="unfinished">Hong Kong variant</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation type="unfinished">Mainland variant</translation>
     </message>
   </context>
   <context>

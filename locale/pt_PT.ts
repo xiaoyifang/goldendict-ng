@@ -291,24 +291,12 @@ entre ortografia clássica e escolar em ciílico)</translation>
       <translation>Ativar conversão de caracteres simplificados para caracteres tradicionais (variante de Taiwan)</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>SC a TC (variante de Taiwan)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Habilitar conversão de caracteres simplificados para caracteres tradicionais (variante Hong Kong)</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>SC a TC (variante de música Kong)</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Habilitar conversão de caracteres tradicionais para caracteres simplificados</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>TC para SC</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -321,6 +309,18 @@ entre ortografia clássica e escolar em ciílico)</translation>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Tradicional à conversão Chinesa simplificada</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation>Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation>Variante de Hong Kong</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation>Variante continental</translation>
     </message>
   </context>
   <context>

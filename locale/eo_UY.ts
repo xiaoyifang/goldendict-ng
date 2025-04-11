@@ -291,24 +291,12 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <translation>Ebligu konvertiĝon de simpligitaj signoj al tradiciaj (tajvana varianto) signoj</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>SC al TC (Tajvana variaĵo)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Ebligu konvertiĝon de simpligitaj signoj al tradiciaj (Honkonga varianto) signoj</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>SC al TC (Honkonga variaĵo)</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Ebligu konvertiĝon de tradiciaj signoj al simpligitaj signoj</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>TC al SC</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -321,6 +309,18 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Tradicia al simpligita ĉina konvertiĝo</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation type="unfinished">Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation type="unfinished">Hong Kong variant</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation type="unfinished">Mainland variant</translation>
     </message>
   </context>
   <context>
