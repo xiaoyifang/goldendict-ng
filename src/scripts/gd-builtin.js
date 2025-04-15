@@ -43,25 +43,17 @@ function init() {
 window.addEventListener("load", init, false);
 
 function gdExpandOptPart(expanderId, optionalId) {
-  var d1 = document.getElementById(expanderId);
-  var i = 0;
-  if (d1.alt == "[+]") {
-    d1.alt = "[-]";
-    d1.src = "qrc:///icons/collapse_opt.png";
-    for (i = 0; i < 1000; i++) {
-      var d2 = document.getElementById(optionalId + i);
-      if (!d2) break;
-      d2.style.display = "inline";
-    }
-  } else {
-    d1.alt = "[+]";
-    d1.src = "qrc:///icons/expand_opt.png";
-    for (i = 0; i < 1000; i++) {
-      var d2 = document.getElementById(optionalId + i);
-      if (!d2) break;
-      d2.style.display = "none";
-    }
-  }
+  const d1 = document.getElementById(expanderId);
+  const isExpanded = d1.alt === "[+]";
+
+  d1.alt = isExpanded ? "[-]" : "[+]";
+  d1.src = isExpanded
+    ? "qrc:///icons/collapse_opt.png"
+    : "qrc:///icons/expand_opt.png";
+
+  document.querySelectorAll(".dsl_opt").forEach((d2) => {
+    d2.style.display = isExpanded ? "inline" : "none";
+  });
 }
 
 function emitClickedEvent(link) {
