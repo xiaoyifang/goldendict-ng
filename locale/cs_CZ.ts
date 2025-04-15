@@ -3932,12 +3932,6 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>Systémy:</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,
-based on English phonology</source>
-      <translation>Nejčastěji používaná metoda přepisu Japonštiny,
-založená na Anglické fonologii</translation>
-    </message>
-    <message>
       <source>Hepburn</source>
       <translation>Hepburn</translation>
     </message>
@@ -3996,6 +3990,10 @@ založená na Anglické fonologii</translation>
     <message>
       <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>Odstranit program &lt;b&gt;%1&lt;/b&gt; ze seznamu?</translation>
+    </message>
+    <message>
+      <source>The most widely used method of transcription of Japanese,based on English phonology</source>
+      <translation>The Czech Republic is a West Slavic language spoken by Czechoslovakia.</translation>
     </message>
   </context>
   <context>
