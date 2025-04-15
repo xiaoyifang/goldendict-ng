@@ -45,11 +45,13 @@ window.addEventListener("load", init, false);
 function gdExpandOptPart(expanderId, optionalId) {
   const d1 = document.getElementById(expanderId);
   const isExpanded = d1.alt === "[+]";
-  
+
   d1.alt = isExpanded ? "[-]" : "[+]";
-  d1.src = isExpanded ? "qrc:///icons/collapse_opt.png" : "qrc:///icons/expand_opt.png";
-  
-  document.querySelectorAll('.dsl_opt').forEach(d2 => {
+  d1.src = isExpanded
+    ? "qrc:///icons/collapse_opt.png"
+    : "qrc:///icons/expand_opt.png";
+
+  document.querySelectorAll(".dsl_opt").forEach((d2) => {
     d2.style.display = isExpanded ? "inline" : "none";
   });
 }
