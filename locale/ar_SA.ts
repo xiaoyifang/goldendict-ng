@@ -3934,12 +3934,6 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>الأنظمة:</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,
-based on English phonology</source>
-      <translation>الطريقة الأكثر استخدامًا لنسخ اليابانية،
-مبنية على الفونولوجيا الإنجليزية</translation>
-    </message>
-    <message>
       <source>Hepburn</source>
       <translation>هِپ‌بيرن</translation>
     </message>
@@ -3998,6 +3992,10 @@ based on English phonology</source>
     <message>
       <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>أأزيل البرنامج &lt;b&gt;%1&lt;/b&gt; من القائمة؟</translation>
+    </message>
+    <message>
+      <source>The most widely used method of transcription of Japanese,based on English phonology</source>
+      <translation type="unfinished">The most widely used method of transcription of Japanese,based on English phonology</translation>
     </message>
   </context>
   <context>
