@@ -215,7 +215,6 @@ Chinese::Chinese():
 
 Romaji::Romaji():
   enable( false ),
-  enableHepburn( true ),
   enableHiragana( true ),
   enableKatakana( true )
 {
@@ -657,7 +656,6 @@ Class load()
 
     if ( !romaji.isNull() ) {
       applyBoolOption( c.transliteration.romaji.enable, romaji.namedItem( "enable" ) );
-      applyBoolOption( c.transliteration.romaji.enableHepburn, romaji.namedItem( "enableHepburn" ) );
       applyBoolOption( c.transliteration.romaji.enableHiragana, romaji.namedItem( "enableHiragana" ) );
       applyBoolOption( c.transliteration.romaji.enableKatakana, romaji.namedItem( "enableKatakana" ) );
     }
@@ -1466,10 +1464,6 @@ void save( Class const & c )
 
     opt = dd.createElement( "enable" );
     opt.appendChild( dd.createTextNode( c.transliteration.romaji.enable ? "1" : "0" ) );
-    romaji.appendChild( opt );
-
-    opt = dd.createElement( "enableHepburn" );
-    opt.appendChild( dd.createTextNode( c.transliteration.romaji.enableHepburn ? "1" : "0" ) );
     romaji.appendChild( opt );
 
     opt = dd.createElement( "enableHiragana" );

@@ -109,7 +109,6 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg ):
 #endif
 
   ui.enableRomaji->setChecked( trs.romaji.enable );
-  ui.enableHepburn->setChecked( trs.romaji.enableHepburn );
   ui.enableHiragana->setChecked( trs.romaji.enableHiragana );
   ui.enableKatakana->setChecked( trs.romaji.enableKatakana );
 
@@ -351,7 +350,6 @@ Config::Transliteration Sources::getTransliteration() const
   chineseConversion->getConfig( tr.chinese );
 #endif
   tr.romaji.enable            = ui.enableRomaji->isChecked();
-  tr.romaji.enableHepburn     = ui.enableHepburn->isChecked();
   tr.romaji.enableHiragana    = ui.enableHiragana->isChecked();
   tr.romaji.enableKatakana    = ui.enableKatakana->isChecked();
 
