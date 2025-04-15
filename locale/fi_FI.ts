@@ -3935,12 +3935,6 @@ Täydellinen luettelo saatavilla olevista kielistä löytyy &lt;a href=&quot;htt
       <translation>Järjestelmät:</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,
-based on English phonology</source>
-      <translation>Yleisimmin käytetty menetelmä transkriptio japani,
-perustuu Englanti fonologia</translation>
-    </message>
-    <message>
       <source>Hepburn</source>
       <translation>Hepburn</translation>
     </message>
@@ -3999,6 +3993,10 @@ perustuu Englanti fonologia</translation>
     <message>
       <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>Poistetaanko ohjelma &lt;b&gt;%1&lt;/b&gt; listalta?</translation>
+    </message>
+    <message>
+      <source>The most widely used method of transcription of Japanese,based on English phonology</source>
+      <translation>Yleisimmin käytetty menetelmä transkriptio Japani, perustuu Englanti fonologia</translation>
     </message>
   </context>
   <context>
