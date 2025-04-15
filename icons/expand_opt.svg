@@ -7,7 +7,7 @@
    width="14"
    height="14"
    viewBox="0 0 14 14"
-   sodipodi:docname="collapse_opt.svg"
+   sodipodi:docname="expand_opt.svg"
    inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -88,5 +88,14 @@
        x="3.0160654"
        y="5.0160656"
        rx="2.628237" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+       id="rect1"
+       width="10.032131"
+       height="4.2443633"
+       x="-12.154313"
+       y="5.9099493"
+       rx="2.628237"
+       transform="rotate(-90)" />
   </g>
 </svg>
