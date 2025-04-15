@@ -3936,12 +3936,6 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>Μέθοδοι:</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,
-based on English phonology</source>
-      <translation>Η πιο διαδεδομένη μέθοδος μεταγραφής Ιαπωνικών,
-βασισμένη στην αγγλική φωνολογία</translation>
-    </message>
-    <message>
       <source>Hepburn</source>
       <translation>Hepburn</translation>
     </message>
@@ -4000,6 +3994,10 @@ based on English phonology</source>
     <message>
       <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>Να αφαιρεθεί το πρόγραμμα &lt;b&gt;%1&lt;/b&gt; από τη λίστα;</translation>
+    </message>
+    <message>
+      <source>The most widely used method of transcription of Japanese,based on English phonology</source>
+      <translation>Η πιο ευρέως χρησιμοποιούμενη μέθοδος μεταγραφής των ιαπωνικών, με βάση την αγγλική φωνολογία</translation>
     </message>
   </context>
   <context>
