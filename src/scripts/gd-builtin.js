@@ -48,8 +48,8 @@ function gdExpandOptPart(expanderId, optionalId) {
 
   d1.alt = isExpanded ? "[-]" : "[+]";
   d1.src = isExpanded
-    ? "qrc:///icons/collapse_opt.png"
-    : "qrc:///icons/expand_opt.png";
+    ? "qrc:///icons/collapse_opt.svg"
+    : "qrc:///icons/expand_opt.svg";
 
   document.querySelectorAll(".dsl_opt").forEach((d2) => {
     d2.style.display = isExpanded ? "inline" : "none";
