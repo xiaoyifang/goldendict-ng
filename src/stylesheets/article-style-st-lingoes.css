@@ -70,8 +70,6 @@ body {
   background-repeat: no-repeat;
   background-size: contain; /* Ensure the image scales proportionally */
   vertical-align: text-bottom;
-  padding-left: -5px;
-  margin-left: 0px;
 }
 
 .gdexpandicon {
