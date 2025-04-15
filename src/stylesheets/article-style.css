@@ -513,6 +513,8 @@ div.xdxf {
   color: blue;
   cursor: pointer;
   vertical-align: text-bottom;
+  width: 16px;
+  height: auto;
 }
 
 .dsl_s_wav img {
