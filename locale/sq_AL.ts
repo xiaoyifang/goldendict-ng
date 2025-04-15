@@ -3926,12 +3926,6 @@ Lista e plotë e gjuhëve të disponueshme mund të gjendet &lt;a href=&quot;htt
       <translation>Sistemi:</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,
-based on English phonology</source>
-      <translation>Metoda më e përhapur e tejshkrimit të japonishtes,
-e bazuar në fonologjinë japoneze</translation>
-    </message>
-    <message>
       <source>Hepburn</source>
       <translation>Hepburn</translation>
     </message>
@@ -3990,6 +3984,10 @@ e bazuar në fonologjinë japoneze</translation>
     <message>
       <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>Do e hiqni programin &lt;b&gt;%1&lt;/b&gt; nga lista?</translation>
+    </message>
+    <message>
+      <source>The most widely used method of transcription of Japanese,based on English phonology</source>
+      <translation type="unfinished">The most widely used method of transcription of Japanese,based on English phonology</translation>
     </message>
   </context>
   <context>
