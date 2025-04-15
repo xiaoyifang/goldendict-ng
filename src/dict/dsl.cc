@@ -1515,7 +1515,7 @@ void DslArticleRequest::run()
       if ( dict.hasHiddenZones() ) {
         string prefix = "O" + dict.getId().substr( 0, 7 ) + "_" + QString::number( dict.articleNom ).toStdString();
         string id1    = prefix + "_expand";
-        string id2    = prefix + "_opt_";
+        string id2    = "gdarticlefrom-" + dict.getId();
         string button = R"( <img src="qrc:///icons/expand_opt.svg" class="hidden_expand_opt" id=")" + id1
           + "\" onclick=\"gdExpandOptPart('" + id1 + "','" + id2 + "')\" alt=\"[+]\"/>";
         if ( articleText.compare( articleText.size() - 4, 4, "</p>" ) == 0 ) {
