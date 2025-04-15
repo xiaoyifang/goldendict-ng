@@ -57,28 +57,31 @@ h3 {
 .gdexpandicon:hover,
 .gdcollapseicon,
 .gdcollapseicon:hover {
-  width: 15px;
+  width: auto; /* Maintain aspect ratio */
+  height: 100%; /* Set height to 100% of the container */
   background-position: center;
   background-repeat: no-repeat;
+  background-size: contain; /* Ensure the image scales proportionally */
   vertical-align: text-bottom;
   padding-left: -5px;
   margin-left: 0px;
 }
 
 .gdexpandicon {
-  content: url("qrc:///icons/expand_article.png");
+  content: url("qrc:///icons/expand_article.svg");
 }
 
 .gdexpandicon:hover {
-  content: url("qrc:///icons/expand_article_hovered.png");
+  content: url("qrc:///icons/expand_article_hovered.svg");
 }
 
+
 .gdcollapseicon {
-  content: url("qrc:///icons/collapse_article.png");
+  content: url("qrc:///icons/collapse_article.svg");
 }
 
 .gdcollapseicon:hover {
-  content: url("qrc:///icons/collapse_article_hovered.png");
+  content: url("qrc:///icons/collapse_article_hovered.svg");
 }
 
 .bglpos {
