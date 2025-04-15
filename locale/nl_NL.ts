@@ -3931,12 +3931,6 @@ De volledige lijst met beschikbare talen vindt u &lt;a href=&quot;https://lingua
       <translation>Systemen:</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,
-based on English phonology</source>
-      <translation>De meest gebruikte methode voor transcriptie van Japans,
-gebaseerd op Engelse klankleer</translation>
-    </message>
-    <message>
       <source>Hepburn</source>
       <translation>Hepburn</translation>
     </message>
@@ -3995,6 +3989,10 @@ gebaseerd op Engelse klankleer</translation>
     <message>
       <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>Het programma &lt;b&gt;%1&lt;/b&gt; uit de lijst verwijderen?</translation>
+    </message>
+    <message>
+      <source>The most widely used method of transcription of Japanese,based on English phonology</source>
+      <translation>De meest gebruikte methode van transcriptie van Japans, gebaseerd op de Engelse fonologie</translation>
     </message>
   </context>
   <context>
