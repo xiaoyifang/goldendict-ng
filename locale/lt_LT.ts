@@ -3931,12 +3931,6 @@ visą galimų kalbų sąrašą rasite &lt;a href=&quot;https://lingualibre.org/w
       <translation>Sistemos:</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,
-based on English phonology</source>
-      <translation>Dažniausiai naudojamas būdas japonų kalbai transkribuoti
-anglų kalbos fonologijos pagrindu</translation>
-    </message>
-    <message>
       <source>Hepburn</source>
       <translation>Hepburnas</translation>
     </message>
@@ -3995,6 +3989,10 @@ anglų kalbos fonologijos pagrindu</translation>
     <message>
       <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>Programą &lt;b&gt;%1&lt;/b&gt; pašalinti iš sąrašo?</translation>
+    </message>
+    <message>
+      <source>The most widely used method of transcription of Japanese,based on English phonology</source>
+      <translation type="unfinished">The most widely used method of transcription of Japanese,based on English phonology</translation>
     </message>
   </context>
   <context>
