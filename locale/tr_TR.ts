@@ -3929,11 +3929,6 @@ Mevcut dillerin tam listesi burada bulunabilir &lt;a href=&quot;https://linguali
       <translation>Sistemler:</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,
-based on English phonology</source>
-      <translation>Japon harf çevirisinde en çok kullanılan, İngilizce fonolojisi üzerine kurulmuş yöntem</translation>
-    </message>
-    <message>
       <source>Hepburn</source>
       <translation>Hepburn</translation>
     </message>
@@ -3992,6 +3987,10 @@ based on English phonology</source>
     <message>
       <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>Programı &lt;b&gt;%1&lt;/b&gt; listeden çıkar?</translation>
+    </message>
+    <message>
+      <source>The most widely used method of transcription of Japanese,based on English phonology</source>
+      <translation type="unfinished">The most widely used method of transcription of Japanese,based on English phonology</translation>
     </message>
   </context>
   <context>
