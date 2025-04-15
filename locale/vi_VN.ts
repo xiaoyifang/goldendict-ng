@@ -3927,12 +3927,6 @@ Có thể tìm thấy danh sách đầy đủ các ngôn ngữ khả dụng &lt;
       <translation>Hệ:</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,
-based on English phonology</source>
-      <translation>Phương pháp được sử dụng rộng rãi nhất để phiên âm tiếng
-Nhật, dựa trên hệ thống âm vị Anh ngữ</translation>
-    </message>
-    <message>
       <source>Hepburn</source>
       <translation>Hepburn</translation>
     </message>
@@ -3991,6 +3985,10 @@ Nhật, dựa trên hệ thống âm vị Anh ngữ</translation>
     <message>
       <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>Xoá chương trình &lt;b&gt;%1&lt;/b&gt; khỏi danh sách?</translation>
+    </message>
+    <message>
+      <source>The most widely used method of transcription of Japanese,based on English phonology</source>
+      <translation type="unfinished">The most widely used method of transcription of Japanese,based on English phonology</translation>
     </message>
   </context>
   <context>
