@@ -3923,11 +3923,6 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>方案：</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,
-based on English phonology</source>
-      <translation>以英文語音學為基礎所建立的最常用日文轉寫方案</translation>
-    </message>
-    <message>
       <source>Hepburn</source>
       <translation>黑本式</translation>
     </message>
@@ -3986,6 +3981,10 @@ based on English phonology</source>
     <message>
       <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>將程式 &lt;b&gt;%1&lt;/b&gt; 從清單移除？</translation>
+    </message>
+    <message>
+      <source>The most widely used method of transcription of Japanese,based on English phonology</source>
+      <translation type="unfinished">The most widely used method of transcription of Japanese,based on English phonology</translation>
     </message>
   </context>
   <context>
