@@ -4057,12 +4057,6 @@ Taqi lista utjki uka arunakax &lt;a href=&quot;https://lingualibre.org/wiki/Ling
       <translation>Kunjams qillqaña:</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,
-based on English phonology</source>
-      <translation>Japonés aru qillqañataki,
-ingles arusutampiwa lurata</translation>
-    </message>
-    <message>
       <source>Hepburn</source>
       <translation>Hepburn sat chachan luratawa</translation>
     </message>
@@ -4124,6 +4118,10 @@ ingles arusutampiwa lurata</translation>
       <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>¿&lt;b&gt;%1&lt;/b&gt; programa tantat apaqañ muntati?&lt;br&gt;&lt;br&gt;
 ¿Quiere eliminar el programa &lt;b&gt;%1&lt;/b&gt; de la lista?</translation>
+    </message>
+    <message>
+      <source>The most widely used method of transcription of Japanese,based on English phonology</source>
+      <translation type="unfinished">The most widely used method of transcription of Japanese,based on English phonology</translation>
     </message>
   </context>
   <context>
