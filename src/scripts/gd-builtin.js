@@ -51,9 +51,12 @@ function gdExpandOptPart(expanderId, optionalId) {
     ? "qrc:///icons/collapse_opt.png"
     : "qrc:///icons/expand_opt.png";
 
-  document.querySelectorAll(".dsl_opt").forEach((d2) => {
-    d2.style.display = isExpanded ? "inline" : "none";
-  });
+  document
+    .getElementById(optionalId)
+    ?.querySelectorAll(".dsl_opt")
+    .forEach((d2) => {
+      d2.style.display = isExpanded ? "inline" : "none";
+    });
 }
 
 function emitClickedEvent(link) {
