@@ -108,33 +108,35 @@ function gdCheckArticlesNumber() {
   }
 }
 
-
 function attachEventHandlers() {
   // Select all div elements with the class gdarticle
-  const gdArticles = document.querySelectorAll('.gdarticle');
+  const gdArticles = document.querySelectorAll(".gdarticle");
 
   // Attach event listeners to each gdarticle div
   gdArticles.forEach(function (article) {
-    article.addEventListener('click', handleArticleEvent);
-    article.addEventListener('contextmenu', handleArticleEvent);
+    article.addEventListener("click", handleArticleEvent);
+    article.addEventListener("contextmenu", handleArticleEvent);
   });
 
   function handleArticleEvent(event) {
     // Get the _id attribute
-    const articleId = event.target.getAttribute('_id');
-    if (typeof gdMakeArticleActive !== 'undefined') {
+    const articleId = event.target.getAttribute("_id");
+    if (typeof gdMakeArticleActive !== "undefined") {
       gdMakeArticleActive(articleId, false);
     }
     // Prevent default context menu for oncontextmenu
-    if (event.type === 'contextmenu') {
+    if (event.type === "contextmenu") {
       event.preventDefault();
     }
   }
 }
 
 // Check the document ready state
-if (document.readyState === 'complete' || document.readyState === 'interactive') {
+if (
+  document.readyState === "complete" ||
+  document.readyState === "interactive"
+) {
   attachEventHandlers();
 } else {
-  document.addEventListener('DOMContentLoaded', attachEventHandlers);
+  document.addEventListener("DOMContentLoaded", attachEventHandlers);
 }
