@@ -211,7 +211,9 @@ void loadDictionaries( QWidget * parent,
 {
   dictionaries.clear();
 
-  ::Initializing init( parent );
+  if ( !cfg.preferences.enableTrayIcon || !cfg.preferences.startToTray ) {
+    ::Initializing init( parent );
+  }
 
   // Start a thread to load all the dictionaries
 
