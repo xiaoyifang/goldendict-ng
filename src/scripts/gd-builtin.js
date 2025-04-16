@@ -22,7 +22,7 @@ function gdMakeArticleActive(newId, noEvent) {
       !noEvent &&
       typeof articleview.onJsActiveArticleChanged !== "undefined"
     ) {
-      articleview.onJsActiveArticleChanged("gdfrom-" + newId);
+      articleview.onJsActiveArticleChanged(newFormId);
     }
   }
 }
