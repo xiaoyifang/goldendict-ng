@@ -170,6 +170,7 @@ ArticleView::ArticleView( QWidget * parent,
   connect( webview->page(), &QWebEnginePage::linkHovered, this, &ArticleView::linkHovered );
 
   connect( webview, &ArticleWebView::doubleClicked, this, &ArticleView::doubleClicked );
+  connect( webview, &QWebEngineView::selectionChanged, this, &ArticleView::onSelectionChanged );
 
   pasteAction.setShortcut( QKeySequence::Paste );
   webview->addAction( &pasteAction );
@@ -1849,6 +1850,11 @@ void ArticleView::onJsActiveArticleChanged( QString const & id )
   QString dictId = dictionaryIdFromScrollTo( id );
   setActiveArticleId( dictId );
   emit activeArticleChanged( this, dictId );
+}
+
+void ArticleView::onSelectionChanged(){
+  //prevent too large text stored in the globalBroadcaster
+  GlobalBroadcaster::instance()->selectedText = webView->selectedText().left( 500 );
 }
 
 void ArticleView::doubleClicked( QPoint pos )

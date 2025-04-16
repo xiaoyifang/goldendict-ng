@@ -37,6 +37,7 @@ public:
   static GlobalBroadcaster * instance();
   unsigned currentGroupId;
   QString translateLineText{};
+  QString selectedText{};
   //hold the dictionary id;
   QSet< QString > collapsedDicts;
 

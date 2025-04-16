@@ -150,6 +150,8 @@ bool RunInstance::start( Config::Program const & prg, QString const & word, QStr
 
     bool writeToStdInput       = true;
     auto const & search_string = GlobalBroadcaster::instance()->translateLineText;
+    auto const & selected_text = GlobalBroadcaster::instance()->selectedText; 
+
 
     for ( auto & arg : args ) {
       if ( arg.indexOf( "%GDWORD%" ) >= 0 ) {
@@ -159,6 +161,10 @@ bool RunInstance::start( Config::Program const & prg, QString const & word, QStr
       if ( arg.indexOf( "%GDSEARCH%" ) >= 0 ) {
         writeToStdInput = false;
         arg.replace( "%GDSEARCH%", search_string );
+      }
+      if ( arg.indexOf( "%GDSELECTED%" ) >= 0 ) {
+        writeToStdInput = false;
+        arg.replace( "%GDSELECTED%", selected_text );
       }
     }
 

@@ -365,6 +365,7 @@ private slots:
 
   /// Handles the double-click from the definition.
   void doubleClicked( QPoint pos );
+  void onSelectionChanged();
 
   /// Handles audio player error message
   void audioPlayerError( QString const & message );
