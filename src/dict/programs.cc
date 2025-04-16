@@ -150,7 +150,7 @@ bool RunInstance::start( Config::Program const & prg, QString const & word, QStr
 
     bool writeToStdInput       = true;
     auto const & search_string = GlobalBroadcaster::instance()->translateLineText;
-    auto const & selected_text = GlobalBroadcaster::instance()->selectedText; 
+    auto const & selected_text = GlobalBroadcaster::instance()->selectedText;
 
 
     for ( auto & arg : args ) {

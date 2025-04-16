@@ -1852,7 +1852,8 @@ void ArticleView::onJsActiveArticleChanged( QString const & id )
   emit activeArticleChanged( this, dictId );
 }
 
-void ArticleView::onSelectionChanged(){
+void ArticleView::onSelectionChanged()
+{
   //prevent too large text stored in the globalBroadcaster
   GlobalBroadcaster::instance()->selectedText = webView->selectedText().left( 500 );
 }
