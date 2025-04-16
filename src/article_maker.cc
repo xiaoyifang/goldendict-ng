@@ -643,7 +643,7 @@ void ArticleRequest::bodyFinished()
         fmt::format_to( std::back_inserter( head ),
                         FMT_COMPILE(
                           R"( <div class="gdarticle {0} {1}" id="{2}"
-                              _id="{3}"
+                              data-gd-id="{3}"
                               >)" ),
                         closePrevSpan ? "" : " gdactivearticle",
                         collapse ? " gdcollapsedarticle" : "",

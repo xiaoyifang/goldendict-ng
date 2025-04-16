@@ -124,19 +124,19 @@ function gdCheckArticlesNumber() {
   }
 }
 
-function attachEventHandlers() {
+function gdAttachEventHandlers() {
   // Select all div elements with the class gdarticle
   const gdArticles = document.querySelectorAll(".gdarticle");
 
   // Attach event listeners to each gdarticle div
   gdArticles.forEach(function (article) {
-    article.addEventListener("click", handleArticleEvent);
-    article.addEventListener("contextmenu", handleArticleEvent);
+    article.addEventListener("click", gdHandleArticleEvent);
+    article.addEventListener("contextmenu", gdHandleArticleEvent);
   });
 
-  function handleArticleEvent(event) {
+  function gdHandleArticleEvent(event) {
     // Get the _id attribute
-    const articleId = event.target.getAttribute("_id");
+    const articleId = event.target.getAttribute("data-gd-id");
     if (typeof gdMakeArticleActive !== "undefined") {
       gdMakeArticleActive(articleId, false);
     }
@@ -148,7 +148,7 @@ if (
   document.readyState === "complete" ||
   document.readyState === "interactive"
 ) {
-  attachEventHandlers();
+  gdAttachEventHandlers();
 } else {
-  document.addEventListener("DOMContentLoaded", attachEventHandlers);
+  document.addEventListener("DOMContentLoaded", gdAttachEventHandlers);
 }
