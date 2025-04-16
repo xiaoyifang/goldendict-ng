@@ -1855,7 +1855,7 @@ void ArticleView::onJsActiveArticleChanged( QString const & id )
 void ArticleView::onSelectionChanged()
 {
   //prevent too large text stored in the globalBroadcaster
-  GlobalBroadcaster::instance()->selectedText = webView->selectedText().left( 500 );
+  GlobalBroadcaster::instance()->selectedText = webview->selectedText().left( 500 );
 }
 
 void ArticleView::doubleClicked( QPoint pos )
