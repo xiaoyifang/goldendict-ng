@@ -3979,7 +3979,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>The most widely used method of transcription of Japanese,based on English phonology</source>
-      <translation>基于英语电话学的日语翻译最广泛使用的方法</translation>
+      <translation>以英文语音学为基础建立的，最常用的日文转写方案</translation>
     </message>
   </context>
   <context>
