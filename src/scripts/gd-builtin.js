@@ -109,7 +109,7 @@ function gdCheckArticlesNumber() {
 }
 
 
-document.addEventListener('DOMContentLoaded', function() {
+function attachEventHandlers() {
   // Select all div elements with the class gdarticle
   const gdArticles = document.querySelectorAll('.gdarticle');
 
@@ -130,4 +130,11 @@ document.addEventListener('DOMContentLoaded', function() {
           event.preventDefault();
       }
   }
-});
+}
+
+// Check the document ready state
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+  attachEventHandlers();
+} else {
+  document.addEventListener('DOMContentLoaded', attachEventHandlers);
+}
