@@ -3804,10 +3804,6 @@ of the appropriate groups to use them.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Lingua Libre</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3959,6 +3955,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
         <source>The most widely used method of transcription of Japanese,based on English phonology</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The %GDWORD% will be replaced with the query word. The %GDSEARCH% will be replaced with the text in the search bar. %GDSELECTED% represents the selected text in the article. If none of the parameters are specified, the headword will be fed into standard input.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
