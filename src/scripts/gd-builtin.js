@@ -1,13 +1,23 @@
 function gdMakeArticleActive(newId, noEvent) {
-  const gdCurrentArticle =
-    document.querySelector(".gdactivearticle").attributes.id;
-  if (gdCurrentArticle !== "gdfrom-" + newId) {
-    document
-      .querySelector(".gdactivearticle")
-      .classList.remove("gdactivearticle");
+  // Find the current active article and get its id using optional chaining
+  const gdCurrentArticleId = document.querySelector(".gdactivearticle")?.attributes.id?.value;
+
+  // Check if the current active article id matches the new id
+  if (gdCurrentArticleId !== "gdfrom-" + newId) {
+    // Remove the "gdactivearticle" class from the current active article if it exists
+    document.querySelector(".gdactivearticle")?.classList.remove("gdactivearticle");
+
+    // Find the new article by id
     const newFormId = "gdfrom-" + newId;
-    document.querySelector(`#${newFormId}`).classList.add("gdactivearticle");
-    if (!noEvent) articleview.onJsActiveArticleChanged("gdfrom-" + newId);
+    const newArticle = document.querySelector(`#${newFormId}`);
+
+    // Add the "gdactivearticle" class to the new article if it exists
+    newArticle?.classList.add("gdactivearticle");
+
+    // Trigger the event if noEvent is false and articleview.onJsActiveArticleChanged is defined
+    if (!noEvent && typeof articleview.onJsActiveArticleChanged !== 'undefined') {
+      articleview.onJsActiveArticleChanged("gdfrom-" + newId);
+    }
   }
 }
 
@@ -123,10 +133,6 @@ function attachEventHandlers() {
     const articleId = event.target.getAttribute("_id");
     if (typeof gdMakeArticleActive !== "undefined") {
       gdMakeArticleActive(articleId, false);
-    }
-    // Prevent default context menu for oncontextmenu
-    if (event.type === "contextmenu") {
-      event.preventDefault();
     }
   }
 }
