@@ -1196,6 +1196,7 @@ void ArticleView::back()
   if ( canGoBack() ) {
     currentActiveDictIds.clear();
     historyMode = true;
+    GlobalBroadcaster::instance()->pronounce_engine.reset();
     webview->back();
   }
 }
@@ -1204,6 +1205,7 @@ void ArticleView::forward()
 {
   currentActiveDictIds.clear();
   historyMode = true;
+  GlobalBroadcaster::instance()->pronounce_engine.reset();
   webview->forward();
 }
 
