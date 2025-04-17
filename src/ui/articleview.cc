@@ -1208,6 +1208,7 @@ void ArticleView::back()
   if ( canGoBack() ) {
     currentActiveDictIds.clear();
     historyMode = true;
+    audioLink_.clear();
     webview->back();
   }
 }
@@ -1216,6 +1217,7 @@ void ArticleView::forward()
 {
   currentActiveDictIds.clear();
   historyMode = true;
+  audioLink_.clear();
   webview->forward();
 }
 
@@ -1238,13 +1240,21 @@ void ArticleView::reload()
 
 void ArticleView::hasSound( const std::function< void( bool ) > & callback )
 {
-  callback( !audioLink_.isEmpty() );
+  webview->page()->runJavaScript( "gd-var-audio-link", [ callback ]( const QVariant & res ) {
+    callback( !res.toString().isEmpty() );
+  } );
 }
 
 void ArticleView::playSound()
 {
   if ( !audioLink_.isEmpty() ) {
     playAudio( QUrl::fromEncoded( audioLink_.toUtf8() ) );
+  }
+  else {
+    //fallback to play the audio from the current article
+    webview->page()->runJavaScript( "gd-var-audio-link", [ this ]( const QVariant & res ) {
+      playAudio( QUrl::fromEncoded( res.toString().toUtf8() ) );
+    } );
   }
 }
 

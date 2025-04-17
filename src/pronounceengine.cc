@@ -12,8 +12,13 @@ void PronounceEngine::reset()
 {
   QMutexLocker _( &mutex );
   state = PronounceState::AVAILABLE;
-
+  firstAudioLink.clear();
   dictAudioMap.clear();
+}
+
+void PronounceEngine::getFirstAudioLink()
+{
+  return firstAudioLink;
 }
 
 
@@ -28,6 +33,10 @@ void PronounceEngine::sendAudio( const std::string & dictId, const QString & aud
   }
 
   QMutexLocker _( &mutex );
+
+  if ( firstAudioLink.isEmpty() ) {
+    firstAudioLink = audioLink;
+  }
 
   dictAudioMap[ dictId ].append( audioLink );
 }

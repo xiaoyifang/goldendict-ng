@@ -18,9 +18,13 @@ class PronounceEngine: public QObject
 
   QMap< std::string, QList< QString > > dictAudioMap;
 
+  QString firstAudioLink;
+
 public:
   explicit PronounceEngine( QObject * parent = nullptr );
   void reset();
+  QString getFirstAudioLink();
+
   void sendAudio( const std::string & dictId, const QString & audioLink );
   void finishDictionary( std::string dictId );
 signals:

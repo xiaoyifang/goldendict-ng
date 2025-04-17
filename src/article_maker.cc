@@ -760,6 +760,12 @@ void ArticleRequest::bodyFinished()
       footer += "</body></html>";
     }
 
+    // add a script tag to record the audio link, #2302
+    if ( !GlobalBroadcaster::instance()->pronounce_engine.getFirstAudioLink().isEmpty() ) {
+      footer += R"(<script>gd-var-audio-link=")" +
+        Html::escape( GlobalBroadcaster::instance()->pronounce_engine.getFirstAudioLink().toStdString() ) + R"(";</script>)";
+    }
+
     appendString( footer );
 
     if ( stemmedWordFinder.get() ) {
