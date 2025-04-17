@@ -756,15 +756,14 @@ void ArticleRequest::bodyFinished()
       stemmedWordFinder->stemmedMatch( word, activeDicts );
     }
     else {
+      // add a script tag to record the audio link, #2302
+      if ( !GlobalBroadcaster::instance()->pronounce_engine.getFirstAudioLink().isEmpty() ) {
+        footer += R"(<script>gd_var_audio_link=")"
+          + Html::escape( GlobalBroadcaster::instance()->pronounce_engine.getFirstAudioLink().toStdString() )
+          + R"(";</script>)";
+      }
       footer += R"(<div class="empty-space"></div>)";
       footer += "</body></html>";
-    }
-
-    // add a script tag to record the audio link, #2302
-    if ( !GlobalBroadcaster::instance()->pronounce_engine.getFirstAudioLink().isEmpty() ) {
-      footer += R"(<script>gd_var_audio_link=")"
-        + Html::escape( GlobalBroadcaster::instance()->pronounce_engine.getFirstAudioLink().toStdString() )
-        + R"(";</script>)";
     }
 
     appendString( footer );
