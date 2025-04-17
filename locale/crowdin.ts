@@ -3958,7 +3958,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>The most widely used method of transcription of Japanese,based on English phonology</source>
+        <source>The most widely used method of transcription of Japanese, based on English phonology</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
