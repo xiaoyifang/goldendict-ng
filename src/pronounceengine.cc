@@ -16,7 +16,7 @@ void PronounceEngine::reset()
   dictAudioMap.clear();
 }
 
-void PronounceEngine::getFirstAudioLink()
+QString PronounceEngine::getFirstAudioLink()
 {
   return firstAudioLink;
 }
