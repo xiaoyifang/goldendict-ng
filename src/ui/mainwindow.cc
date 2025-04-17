@@ -723,7 +723,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
            this,
            [ this ]( auto audioUrl ) {
              auto view = getCurrentArticleView();
-             view->setAudioLink( audioUrl );
              if ( !isActiveWindow() ) {
                return;
              }

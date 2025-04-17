@@ -260,16 +260,6 @@ unsigned ArticleView::getCurrentGroupId()
   return currentGroupId;
 }
 
-void ArticleView::setAudioLink( QString audioLink )
-{
-  audioLink_ = audioLink;
-}
-
-QString ArticleView::getAudioLink() const
-{
-  return audioLink_;
-}
-
 ArticleView::~ArticleView()
 {
   cleanupTemp();
@@ -295,7 +285,6 @@ void ArticleView::showDefinition( QString const & word,
   currentActiveDictIds.clear();
   // first, let's stop the player
   audioPlayer->stop();
-  audioLink_.clear();
 
   QUrl req;
   QUrlQuery reqQuery;
@@ -369,7 +358,6 @@ void ArticleView::showDefinition( QString const & word,
   currentActiveDictIds.clear();
   // first, let's stop the player
   audioPlayer->stop();
-  audioLink_.clear();
 
   QUrl req;
   QUrlQuery reqQuery;
@@ -1208,7 +1196,6 @@ void ArticleView::back()
   if ( canGoBack() ) {
     currentActiveDictIds.clear();
     historyMode = true;
-    audioLink_.clear();
     webview->back();
   }
 }
@@ -1217,7 +1204,6 @@ void ArticleView::forward()
 {
   currentActiveDictIds.clear();
   historyMode = true;
-  audioLink_.clear();
   webview->forward();
 }
 
@@ -1247,15 +1233,10 @@ void ArticleView::hasSound( const std::function< void( bool ) > & callback )
 
 void ArticleView::playSound()
 {
-  if ( !audioLink_.isEmpty() ) {
-    playAudio( QUrl::fromEncoded( audioLink_.toUtf8() ) );
-  }
-  else {
-    //fallback to play the audio from the current article
-    webview->page()->runJavaScript( "gd-var-audio-link", [ this ]( const QVariant & res ) {
-      playAudio( QUrl::fromEncoded( res.toString().toUtf8() ) );
-    } );
-  }
+  //fallback to play the audio from the current article
+  webview->page()->runJavaScript( "gd-var-audio-link", [ this ]( const QVariant & res ) {
+    playAudio( QUrl::fromEncoded( res.toString().toUtf8() ) );
+  } );
 }
 
 void ArticleView::stopSound()

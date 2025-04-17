@@ -70,8 +70,6 @@ class ArticleView: public QWidget
   //current active dictionary id;
   QString activeDictId;
 
-  QString audioLink_;
-
   /// Search in results of full-text search
   QString firstAvailableText;
   QStringList uniqueMatches;
@@ -99,9 +97,6 @@ public:
 
   void setCurrentGroupId( unsigned currengGrgId );
   unsigned getCurrentGroupId();
-
-  void setAudioLink( QString audioLink );
-  QString getAudioLink() const;
 
   QSize minimumSizeHint() const override;
   void clearContent();
