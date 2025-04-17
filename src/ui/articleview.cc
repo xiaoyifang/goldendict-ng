@@ -1226,7 +1226,7 @@ void ArticleView::reload()
 
 void ArticleView::hasSound( const std::function< void( bool ) > & callback )
 {
-  webview->page()->runJavaScript( "gd-var-audio-link", [ callback ]( const QVariant & res ) {
+  webview->page()->runJavaScript( "gd_var_audio_link", [ callback ]( const QVariant & res ) {
     callback( !res.toString().isEmpty() );
   } );
 }
@@ -1234,7 +1234,7 @@ void ArticleView::hasSound( const std::function< void( bool ) > & callback )
 void ArticleView::playSound()
 {
   //fallback to play the audio from the current article
-  webview->page()->runJavaScript( "gd-var-audio-link", [ this ]( const QVariant & res ) {
+  webview->page()->runJavaScript( "gd_var_audio_link", [ this ]( const QVariant & res ) {
     playAudio( QUrl::fromEncoded( res.toString().toUtf8() ) );
   } );
 }
