@@ -39,6 +39,7 @@ jobs:
         with:
           version: ${{ matrix.qt_ver }}
           arch: clang_64
+          aqtversion: ==3.2.*
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech      
       - name: Build
         run: |
