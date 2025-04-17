@@ -34,10 +34,6 @@ void PronounceEngine::sendAudio( const std::string & dictId, const QString & aud
 
   QMutexLocker _( &mutex );
 
-  if ( firstAudioLink.isEmpty() ) {
-    firstAudioLink = audioLink;
-  }
-
   dictAudioMap[ dictId ].append( audioLink );
 }
 
@@ -57,6 +53,10 @@ void PronounceEngine::finishDictionary( std::string dictId )
       state = PronounceState::OCCUPIED;
     }
     auto link = dictAudioMap[ dictId ].first();
+    //make sure that the first audio link comes from the first dictionary
+    if ( firstAudioLink.isEmpty() ) {
+      firstAudioLink = link;
+    }
     emit emitAudio( link );
   }
 }
