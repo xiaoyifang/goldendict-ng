@@ -3991,8 +3991,8 @@ Lliw simikuna tarikuq listataqa tarinki &lt;a href=&quot;https://lingualibre.org
       <translation>¿Programa &lt;b&gt;%1&lt;/b&gt; listamanta hurquy?</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,based on English phonology</source>
-      <translation type="unfinished">The most widely used method of transcription of Japanese,based on English phonology</translation>
+      <source>The most widely used method of transcription of Japanese, based on English phonology</source>
+      <translation type="unfinished">The most widely used method of transcription of Japanese, based on English phonology</translation>
     </message>
   </context>
   <context>
