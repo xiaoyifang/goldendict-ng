@@ -213,14 +213,12 @@ void loadDictionaries( QWidget * parent,
 
   bool showSplashWindow = !cfg.preferences.enableTrayIcon || !cfg.preferences.startToTray;
   // Start a thread to load all the dictionaries
+  ::Initializing init( parent, showSplashWindow );
 
   LoadDictionaries loadDicts( cfg );
-  if ( showSplashWindow ) {
-    ::Initializing init( parent );
 
-    QObject::connect( &loadDicts, &LoadDictionaries::indexingDictionarySignal, &init, &Initializing::indexing );
-    QObject::connect( &loadDicts, &LoadDictionaries::loadingDictionarySignal, &init, &Initializing::loading );
-  }
+  QObject::connect( &loadDicts, &LoadDictionaries::indexingDictionarySignal, &init, &Initializing::indexing );
+  QObject::connect( &loadDicts, &LoadDictionaries::loadingDictionarySignal, &init, &Initializing::loading );
   QEventLoop localLoop;
 
   QObject::connect( &loadDicts, &QThread::finished, &localLoop, &QEventLoop::quit );
