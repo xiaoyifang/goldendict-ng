@@ -3995,8 +3995,8 @@ Plena listo de disponeblaj lingvoj troveblas &lt;a href=&quot;https://lingualibr
       <translation>Ĉu forigi programon &lt;b&gt;%1&lt;/b&gt; el la listo?</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,based on English phonology</source>
-      <translation type="unfinished">The most widely used method of transcription of Japanese,based on English phonology</translation>
+      <source>The most widely used method of transcription of Japanese, based on English phonology</source>
+      <translation>La plej uzata metodo de transskribo de la japana, bazita sur angla fonologio</translation>
     </message>
   </context>
   <context>
