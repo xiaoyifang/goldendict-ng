@@ -1,13 +1,29 @@
 function gdMakeArticleActive(newId, noEvent) {
-  const gdCurrentArticle =
-    document.querySelector(".gdactivearticle").attributes.id;
-  if (gdCurrentArticle !== "gdfrom-" + newId) {
+  // Find the current active article and get its id using optional chaining
+  const gdCurrentArticleId =
+    document.querySelector(".gdactivearticle")?.attributes.id?.value;
+
+  // Check if the current active article id matches the new id
+  if (gdCurrentArticleId !== "gdfrom-" + newId) {
+    // Remove the "gdactivearticle" class from the current active article if it exists
     document
       .querySelector(".gdactivearticle")
-      .classList.remove("gdactivearticle");
+      ?.classList.remove("gdactivearticle");
+
+    // Find the new article by id
     const newFormId = "gdfrom-" + newId;
-    document.querySelector(`#${newFormId}`).classList.add("gdactivearticle");
-    if (!noEvent) articleview.onJsActiveArticleChanged("gdfrom-" + newId);
+    const newArticle = document.querySelector(`#${newFormId}`);
+
+    // Add the "gdactivearticle" class to the new article if it exists
+    newArticle?.classList.add("gdactivearticle");
+
+    // Trigger the event if noEvent is false and articleview.onJsActiveArticleChanged is defined
+    if (
+      !noEvent &&
+      typeof articleview.onJsActiveArticleChanged !== "undefined"
+    ) {
+      articleview.onJsActiveArticleChanged(newFormId);
+    }
   }
 }
 
@@ -106,4 +122,47 @@ function gdCheckArticlesNumber() {
     el = document.getElementById("gdfrom-" + s);
     if (el && el.className.search("gdcollapsedarticle") > 0) gdExpandArticle(s);
   }
+}
+
+function gdAttachEventHandlers() {
+  // Select all div elements with the class gdarticle
+  const gdArticles = document.querySelectorAll(".gdarticle");
+
+  // Attach event listeners to each gdarticle div
+  gdArticles.forEach(function (article) {
+    article.addEventListener("click", gdHandleArticleEvent);
+    article.addEventListener("contextmenu", gdHandleArticleEvent);
+  });
+
+  document.body.addEventListener("click", function (event) {
+    // Use closest to find the nearest parent div with the class 'gddictname'
+    const dictNameElement = event.target.closest(".gddictname");
+
+    if (dictNameElement) {
+      // Get the data-gd-id attribute from the parent div
+      const articleId = dictNameElement
+        .closest(".gdarticle")
+        ?.getAttribute("data-gd-id");
+
+      gdExpandArticle(articleId);
+    }
+  });
+
+  function gdHandleArticleEvent(event) {
+    // Get the _id attribute
+    const articleId = event.target
+      .closest(".gdarticle")
+      ?.getAttribute("data-gd-id");
+    gdMakeArticleActive(articleId, false);
+  }
+}
+
+// Check the document ready state
+if (
+  document.readyState === "complete" ||
+  document.readyState === "interactive"
+) {
+  gdAttachEventHandlers();
+} else {
+  document.addEventListener("DOMContentLoaded", gdAttachEventHandlers);
 }
