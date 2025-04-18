@@ -3986,8 +3986,8 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>Odobrať program &lt;b&gt;%1&lt;/b&gt; zo zoznamu?</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,based on English phonology</source>
-      <translation type="unfinished">The most widely used method of transcription of Japanese,based on English phonology</translation>
+      <source>The most widely used method of transcription of Japanese, based on English phonology</source>
+      <translation type="unfinished">The most widely used method of transcription of Japanese, based on English phonology</translation>
     </message>
   </context>
   <context>
