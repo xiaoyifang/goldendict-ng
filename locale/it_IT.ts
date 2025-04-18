@@ -3992,8 +3992,8 @@ L'elenco completo delle lingue disponibili può essere trovato &lt;a href=&quot;
       <translation>Rimuovere il programma &lt;b&gt;%1&lt;/b&gt; dall&apos;elenco?</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,based on English phonology</source>
-      <translation>Il metodo più ampiamente usato di trascrizione del giapponese,basato sulla fonologia inglese</translation>
+      <source>The most widely used method of transcription of Japanese, based on English phonology</source>
+      <translation>Il metodo più ampiamente usato di trascrizione del giapponese, basato sulla fonologia inglese</translation>
     </message>
   </context>
   <context>
