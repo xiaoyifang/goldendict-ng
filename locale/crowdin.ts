@@ -19,7 +19,7 @@
 <context>
     <name>AnkiConnector</name>
     <message>
-        <source>anki: can&apos;t create a card without a word</source>
+        <source>Anki: can&apos;t create a card without a word</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -27,11 +27,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>anki: post to anki failed</source>
+        <source>Anki: post to Anki failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>anki: post to anki success</source>
+        <source>Anki: post to Anki success</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -290,23 +290,11 @@ between classic and school orthography in cyrillic)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>SC to TC (Taiwan variant)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>SC to TC (Hong Kong variant)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Enable conversion from traditional characters to simplified characters</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>TC to SC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -319,6 +307,18 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <source>Traditional to simplified Chinese conversion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Taiwan variant</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hong Kong variant</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mainland variant</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -684,6 +684,10 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <source>Open dictionary folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restore selection</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3894,11 +3898,6 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>The most widely used method of transcription of Japanese,
-based on English phonology</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Hepburn</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3956,6 +3955,10 @@ based on English phonology</source>
     </message>
     <message>
         <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The most widely used method of transcription of Japanese, based on English phonology</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -19,20 +19,20 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: can&apos;t mä tarjeta jan arut luraspa</translation>
+      <source>Anki: can&apos;t create a card without a word</source>
+      <translation>Anki: can&apos;t mä tarjeta jan arut luraspa</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
       <translation>Anki thakhi: AnkiConnect ukax janiw ch’amanchatäkiti.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
-      <translation>anki: post ukax anki ukarux janiw phuqhaskiti</translation>
+      <source>Anki: post to Anki failed</source>
+      <translation>Anki: post ukax Anki ukarux janiw phuqhaskiti</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
-      <translation>anki: post ukax anki suma sarantäwipawa</translation>
+      <source>Anki: post to Anki success</source>
+      <translation>Anki: post ukax Anki suma sarantäwipawa</translation>
     </message>
   </context>
   <context>
@@ -291,24 +291,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Chino simplificado ukat chino tradicional (aru Taiwan) ukaru tukuyawi naktayaña</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>SC ukat TC ukar (aru Taiwan)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Chino simplificado ukat chino tradicional (aru Hong Kong) ukaru tukuyawi naktayaña</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>SC ukat TC ukar (aru Hong Kong)</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Chino aru tradicional uk chino aru simplificado ukar tukuyawi</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>TC ukat SC ukar</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -321,6 +309,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Chino tradicional ukat chino simplificado tukuyawi</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation type="unfinished">Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation type="unfinished">Hong Kong variant</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation type="unfinished">Mainland variant</translation>
     </message>
   </context>
   <context>
@@ -690,6 +690,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>Aru-pirwa ukat q&apos;ipi jist&apos;araña</translation>
+    </message>
+    <message>
+      <source>Restore selection</source>
+      <translation type="unfinished">Restore selection</translation>
     </message>
   </context>
   <context>

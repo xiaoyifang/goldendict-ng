@@ -26,7 +26,7 @@ GoldenDict-ng is an advanced dictionary lookup program, supporting [many formats
 - built with xapian as fulltext engine
 - support latest Qt6
 - performance optimization(eg. >10000000 headwords support) 
-- anki integration
+- Anki integration
 - dark theme
 - daily auto release support
 - lots of bug fixes and improvements

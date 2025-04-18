@@ -19,20 +19,20 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: Вы не можаце стварыць картку без слова</translation>
+      <source>Anki: can&apos;t create a card without a word</source>
+      <translation>Anki: Вы не можаце стварыць картку без слова</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
       <translation>Пошук у Anki: AnkiConnect не ўключаны.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
-      <translation>anki: не ўдалося адправіць у anki</translation>
+      <source>Anki: post to Anki failed</source>
+      <translation>Anki: не ўдалося адправіць у Anki</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
-      <translation>anki: паспяхова адпраўлена ў anki</translation>
+      <source>Anki: post to Anki success</source>
+      <translation>Anki: паспяхова адпраўлена ў Anki</translation>
     </message>
   </context>
   <context>
@@ -291,24 +291,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Уключыць канверсію са знакаў спрошчанага кітайскага пісьма ў знакі традыцыйнага пісьма (тайванскі варыянт)</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>Спрошчаныя ў традыцыйныя (тайванскі варыянт)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Уключыць канверсію са знакаў спрошчанага кітайскага пісьма ў знакі традыцыйнага пісьма (ганконгскі варыянт)</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>Спрошчаныя ў традыцыйныя (ганконгскі варыянт)</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Уключыць канверсію са знакаў традыцыйнага кітайскага пісьма ў знакі спрошчанага пісьма</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>Традыцыйныя ў спрошчаныя</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -321,6 +309,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Канверсія знакаў традыцыйнага кітайскага пісьма ў знакі спрошчанага пісьма</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation type="unfinished">Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation type="unfinished">Hong Kong variant</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation type="unfinished">Mainland variant</translation>
     </message>
   </context>
   <context>
@@ -688,6 +688,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>Адкрыць каталог слоўніка</translation>
+    </message>
+    <message>
+      <source>Restore selection</source>
+      <translation type="unfinished">Restore selection</translation>
     </message>
   </context>
   <context>

@@ -19,7 +19,7 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
+      <source>Anki: can&apos;t create a card without a word</source>
       <translation>أنكي: لا يمكن&apos;إنشاء بطاقة بدون كلمة</translation>
     </message>
     <message>
@@ -27,11 +27,11 @@
       <translation>بحث أنكي: AnkiConnect غير مفعل.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
+      <source>Anki: post to Anki failed</source>
       <translation>أنكي: فشل النشر إلى أنكي</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
+      <source>Anki: post to Anki success</source>
       <translation>أنكي: وظيفة أنكي النجاح</translation>
     </message>
   </context>
@@ -290,24 +290,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>قم بتمكين التحويل من الأحرف المبسطة إلى الأحرف التقليدية (البديل التايواني)</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>SC إلى TC (البديل التايواني)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>تمكين التحويل من الأحرف المبسطة إلى الأحرف التقليدية (متغير هونج كونج)</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>SC إلى TC (متغير هونغ كونغ)</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>تمكين التحويل من الأحرف التقليدية إلى الأحرف المبسطة</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>TC إلى SC</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -320,6 +308,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>التقليدية إلى الصينية المبسطة التحويل</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation type="unfinished">Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation type="unfinished">Hong Kong variant</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation type="unfinished">Mainland variant</translation>
     </message>
   </context>
   <context>
@@ -687,6 +687,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>افتح مجلد القاموس</translation>
+    </message>
+    <message>
+      <source>Restore selection</source>
+      <translation type="unfinished">Restore selection</translation>
     </message>
   </context>
   <context>

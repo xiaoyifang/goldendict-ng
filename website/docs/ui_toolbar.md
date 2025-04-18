@@ -30,28 +30,17 @@ The dictionary bar shows dictionaries from the current group.
 
 Click the icons to select/unselect them.
 
-### Single Selection Mode (was Solo Mode)
+### Single Selection
 
-When this mode is active, only one single dictionary can be selected at a time.
+++ctrl+"Click"++ will focus on a single dictionary.
 
-There are two ways to use this feature:
+If a dictionary is the only one selected, clicking it with ++ctrl++ will reselect all dictionaries.
+### Temporary Selection
 
-- ++shift+"Click"++ a dictionary icon to enter the mode
-- ++shift+"Click"++ the selected dictionary to reselect dictioanries selected before entering the mode.
+Temporarily capture the selection and restore it later.
 
-and
-
-- ++ctrl+"Click"++ a dictionary icon to enter the mode
-- ++ctrl+"Click"++ the selected dictionary to reselect all dictionaries
-
-For example, there are 3 dictionaries A,B,C with A,B initially selected.
-
-| Clicking Sequence                                                   | Outcome                                                      |
-|---------------------------------------------------------------------|--------------------------------------------------------------|
-| ++ctrl+"Click"++ + A                                                | select A only                                                |
-| ++ctrl+"Click"++ + A --> ++ctrl+"Click"++ + A                       | select A --> reselect all A,B,C                              |
-| ++ctrl+"Click"++ + A --> ++"Click"++ + B --> ++ctrl+"Click"++ + B   | select A --> select B --> reselect all A,B,C                 |
-| ++shift+"Click"++ + A --> ++"Click"++ + B --> ++shift+"Click"++ + B | select A --> select B --> reselect the initally selected A,B |
+- Capture Selection <-- ++shift+"Click"++ any dictionary icons.
+- Restore Selection <-- Click the "Restore selection" in the right click context menu
 
 !!! note
-    This can also be used in the "Found in dictionaries" panel to temporarily focus on a single dictionary.
+    "Found in dictionaries" panel can also uses above two special operations.

@@ -19,7 +19,7 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
+      <source>Anki: can&apos;t create a card without a word</source>
       <translation>अंकी: क्या बिना किसी शब्द के कार्ड&apos;बनाया जा सकता</translation>
     </message>
     <message>
@@ -27,11 +27,11 @@
       <translation>Anki खोज: AnkiConnect सक्षम नहीं है.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
+      <source>Anki: post to Anki failed</source>
       <translation>अंकी: अंकी को पोस्ट करना विफल रहा</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
+      <source>Anki: post to Anki success</source>
       <translation>अंकी: अंकी की सफलता के लिए पोस्ट करें</translation>
     </message>
   </context>
@@ -290,24 +290,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>सरलीकृत वर्णों से पारंपरिक (ताइवान संस्करण) वर्णों में रूपांतरण सक्षम करें</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>सरलीकृत चीनी से पारम्परिक चीनी(ताइवान संस्करण)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>सरलीकृत वर्णों से पारंपरिक (हांगकांग संस्करण) वर्णों में रूपांतरण सक्षम करें</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>सरलीकृत चीनी से पारम्परिक चीनी(हांगकांग संस्करण) रूपान्तरण</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>पारंपरिक वर्णों से सरलीकृत वर्णों में रूपांतरण सक्षम करें</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>पारम्परिक चीनी से सरलीकृत चीनी</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -320,6 +308,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>पारंपरिक से सरलीकृत चीनी में रूपांतरण</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation type="unfinished">Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation type="unfinished">Hong Kong variant</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation type="unfinished">Mainland variant</translation>
     </message>
   </context>
   <context>
@@ -687,6 +687,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>शब्दकोश फ़ोल्डर खोलें</translation>
+    </message>
+    <message>
+      <source>Restore selection</source>
+      <translation type="unfinished">Restore selection</translation>
     </message>
   </context>
   <context>

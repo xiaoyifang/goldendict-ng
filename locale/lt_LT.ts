@@ -19,20 +19,20 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: gali&apos;t sukurti kortelę be žodžio</translation>
+      <source>Anki: can&apos;t create a card without a word</source>
+      <translation>Anki: gali&apos;t sukurti kortelę be žodžio</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
       <translation>Anki paieška: AnkiConnect neįjungta.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
-      <translation>anki: išsiųsti anki nepavyko</translation>
+      <source>Anki: post to Anki failed</source>
+      <translation>Anki: išsiųsti Anki nepavyko</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
-      <translation>anki: paskelbti anki sėkmės</translation>
+      <source>Anki: post to Anki success</source>
+      <translation>Anki: paskelbti Anki sėkmės</translation>
     </message>
   </context>
   <context>
@@ -290,24 +290,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Įgalinti konvertavimą iš supaprastintų simbolių į tradicinius (Taivano variantas) simbolius</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>Iš supaprastintos į Taivano</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Įgalinti konvertavimą iš supaprastintų simbolių į tradicinius (Honkongo variantas) simbolius</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>Iš supaprastintos į Honkongo</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Įgalinti tradicinių simbolių konvertavimą į supaprastintus simbolius</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>Iš tradicinės į supaprastintą</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -320,6 +308,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Tradicinis konvertavimas į supaprastintą kinų kalbą</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation type="unfinished">Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation type="unfinished">Hong Kong variant</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation type="unfinished">Mainland variant</translation>
     </message>
   </context>
   <context>
@@ -687,6 +687,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>Atverti žodyno aplanką</translation>
+    </message>
+    <message>
+      <source>Restore selection</source>
+      <translation type="unfinished">Restore selection</translation>
     </message>
   </context>
   <context>

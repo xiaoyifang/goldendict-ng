@@ -19,20 +19,20 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: sözsiz kartoçka döredip bolmaz</translation>
+      <source>Anki: can&apos;t create a card without a word</source>
+      <translation>Anki: sözsiz kartoçka döredip bolmaz</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
       <translation>Anki gözlegi: AnkiConnect açyk däl.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
-      <translation>anki: anki ýazmak şowsuz</translation>
+      <source>Anki: post to Anki failed</source>
+      <translation>Anki: Anki ýazmak şowsuz</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
-      <translation>anki: anki üstünlik</translation>
+      <source>Anki: post to Anki success</source>
+      <translation>Anki: Anki üstünlik</translation>
     </message>
   </context>
   <context>
@@ -290,24 +290,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Simplönekeýleşdirilen nyşanlardan adaty (Taýwan warianty) nyşanlara öwrülmegi üpjün ediň</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>SC-den TC (Taýwan görnüşi)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Simplönekeýleşdirilen nyşanlardan adaty (Gonkong warianty) nyşanlara öwrülmegi üpjün ediň</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>SC-den TC (Gonkong görnüşi)</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Adaty nyşanlardan ýönekeýleşdirilen nyşanlara öwrülmegi üpjün ediň</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>TC-den SC</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -320,6 +308,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Chineseönekeýleşdirilen hytaý öwrülişigi</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation type="unfinished">Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation type="unfinished">Hong Kong variant</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation type="unfinished">Mainland variant</translation>
     </message>
   </context>
   <context>
@@ -687,6 +687,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>Sözlügiň bukjasyny aç</translation>
+    </message>
+    <message>
+      <source>Restore selection</source>
+      <translation type="unfinished">Restore selection</translation>
     </message>
   </context>
   <context>

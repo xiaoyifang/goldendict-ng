@@ -19,7 +19,7 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
+      <source>Anki: can&apos;t create a card without a word</source>
       <translation>Anki: нельзя создать карточку без слова</translation>
     </message>
     <message>
@@ -27,12 +27,12 @@
       <translation>Поиск в AnkiConnect: AnkiConnect не включен.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
-      <translation>anki: сообщение в anki не удалось</translation>
+      <source>Anki: post to Anki failed</source>
+      <translation>Anki: сообщение в Anki не удалось</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
-      <translation>anki: сообщение в anki успешно</translation>
+      <source>Anki: post to Anki success</source>
+      <translation>Anki: сообщение в Anki успешно</translation>
     </message>
   </context>
   <context>
@@ -291,24 +291,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Преобразование упрощённых иероглифов в класические (Тайваньский вариант)</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>Упрощённые в класические (Тайваньский вариант)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Преобразование упрощённых иероглифов в класические (Гонконгский вариант)</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>Упрощённые в класические (Гонконгский вариант)</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Преобразование классических иероглифов в упрощённые</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>Классические в упрощённые</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -321,6 +309,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Преобразование классических иероглифов в упрощённые</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation>Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation>Гонконг вариант</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation>Вариант материкового продукта</translation>
     </message>
   </context>
   <context>
@@ -690,6 +690,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>Открыть папку словаря</translation>
+    </message>
+    <message>
+      <source>Restore selection</source>
+      <translation>Восстановить выбранное</translation>
     </message>
   </context>
   <context>

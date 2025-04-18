@@ -19,7 +19,7 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
+      <source>Anki: can&apos;t create a card without a word</source>
       <translation>анки: не могу да креирам картицу без речи</translation>
     </message>
     <message>
@@ -27,11 +27,11 @@
       <translation>Анки претрага: АнкиЦоннецт није омогућен.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
+      <source>Anki: post to Anki failed</source>
       <translation>анки: пост за анки није успео</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
+      <source>Anki: post to Anki success</source>
       <translation>анки: пост то анки успех</translation>
     </message>
   </context>
@@ -291,24 +291,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Омогућите конверзију из поједностављених знакова у традиционалне (тајванска варијанта) знакова</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>СЦ до ТЦ (тајванска варијанта)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Омогућите конверзију из поједностављених знакова у традиционалне знакове (варијанта Хонг Конга).</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>СЦ до ТЦ (варијанта у Хонг Конгу)</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Омогућите конверзију традиционалних знакова у поједностављене знакове</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>ТЦ до СЦ</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -321,6 +309,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Традиционална у поједностављена кинеска конверзија</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation type="unfinished">Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation type="unfinished">Hong Kong variant</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation type="unfinished">Mainland variant</translation>
     </message>
   </context>
   <context>
@@ -688,6 +688,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>Отвори фасциклу речника</translation>
+    </message>
+    <message>
+      <source>Restore selection</source>
+      <translation type="unfinished">Restore selection</translation>
     </message>
   </context>
   <context>

@@ -19,20 +19,20 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: μπορεί&apos;t να δημιουργήσει μια κάρτα χωρίς μια λέξη</translation>
+      <source>Anki: can&apos;t create a card without a word</source>
+      <translation>Anki: μπορεί&apos;t να δημιουργήσει μια κάρτα χωρίς μια λέξη</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
       <translation>Αναζήτηση Anki: Το AnkiConnect δεν είναι ενεργοποιημένο.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
-      <translation>anki: η δημοσίευση στο anki απέτυχε</translation>
+      <source>Anki: post to Anki failed</source>
+      <translation>Anki: η δημοσίευση στο Anki απέτυχε</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
-      <translation>anki: post για την επιτυχία anki</translation>
+      <source>Anki: post to Anki success</source>
+      <translation>Anki: post για την επιτυχία Anki</translation>
     </message>
   </context>
   <context>
@@ -293,24 +293,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Ενεργοποίηση μετατροπής από απλοποιημένους χαρακτήρες σε παραδοσιακούς (παραλλαγή Ταϊβάν) χαρακτήρες</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>SC έως TC (παραλλαγή Ταϊβάν)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Ενεργοποίηση μετατροπής από απλοποιημένους χαρακτήρες σε παραδοσιακούς (παραλλαγή Χονγκ Κονγκ) χαρακτήρες</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>SC έως TC (παραλλαγή Χονγκ Κονγκ)</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Ενεργοποίηση μετατροπής από παραδοσιακούς χαρακτήρες σε απλοποιημένους χαρακτήρες</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>TC έως SC</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -323,6 +311,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Παραδοσιακά στην απλουστευμένη κινεζική μετατροπή</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation>Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation>Παραλλαγή του Χονγκ Κονγκ</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation>Παραλλαγή ηπειρωτικής χώρας</translation>
     </message>
   </context>
   <context>
@@ -690,6 +690,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>Άνοιγμα φακέλου λεξικού</translation>
+    </message>
+    <message>
+      <source>Restore selection</source>
+      <translation>Επαναφορά επιλογής</translation>
     </message>
   </context>
   <context>

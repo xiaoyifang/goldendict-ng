@@ -43,7 +43,7 @@ jobs:
           mkdir build_dir
           cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -S . -B build_dir -G Ninja
       - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@v5
+        uses: SonarSource/sonarqube-scan-action@v5.1.0
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:

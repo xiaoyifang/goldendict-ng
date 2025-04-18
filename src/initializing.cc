@@ -5,7 +5,7 @@
 #include "initializing.hh"
 #include <QCloseEvent>
 
-Initializing::Initializing( QWidget * parent ):
+Initializing::Initializing( QWidget * parent, bool showSplashWindow ):
   QDialog( parent )
 {
   ui.setupUi( this );
@@ -13,7 +13,7 @@ Initializing::Initializing( QWidget * parent ):
   setWindowFlags( Qt::Dialog | Qt::FramelessWindowHint );
   setWindowIcon( QIcon( ":/icons/programicon.png" ) );
 
-  if ( parent->isVisible() ) {
+  if ( showSplashWindow ) {
     ui.operation->setText( tr( "Please wait..." ) );
     ui.dictionary->setText( "" );
     show();
@@ -24,14 +24,12 @@ void Initializing::indexing( QString const & dictionaryName )
 {
   ui.operation->setText( tr( "Indexing..." ) );
   ui.dictionary->setText( dictionaryName );
-  show();
 }
 
 void Initializing::loading( QString const & dictionaryName )
 {
   ui.operation->setText( tr( "Loading..." ) );
   ui.dictionary->setText( dictionaryName );
-  show();
 }
 
 void Initializing::closeEvent( QCloseEvent * ev )

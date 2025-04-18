@@ -11,7 +11,7 @@ class Initializing: public QDialog
 
 public:
 
-  Initializing( QWidget * parent );
+  Initializing( QWidget * parent, bool showSplashWindow = true );
 
 public slots:
 

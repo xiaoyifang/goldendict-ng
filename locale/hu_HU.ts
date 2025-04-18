@@ -19,20 +19,20 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: szó nélkül nem hozható létre a kártya</translation>
+      <source>Anki: can&apos;t create a card without a word</source>
+      <translation>Anki: szó nélkül nem hozható létre a kártya</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
       <translation>Anki kereső: Az AnkiConnect nincs bekapcsolva.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
-      <translation>anki: beküldés nem sikerült</translation>
+      <source>Anki: post to Anki failed</source>
+      <translation>Anki: beküldés nem sikerült</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
-      <translation>anki: beküldés sikeres</translation>
+      <source>Anki: post to Anki success</source>
+      <translation>Anki: beküldés sikeres</translation>
     </message>
   </context>
   <context>
@@ -291,24 +291,12 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
       <translation>Átalakítás engedélyezése az egyszerűsített kínai írásról a hagyományosra (tajvani változtat)</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>SC-ről TC-re (tajvani változat)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Átalakítás engedélyezése az egyszerűsített kínai írásról a hagyományosra (hongkongi változtat)</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>SC-ről TC-re (hongkongi változat)</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Átalakítás engedélyezése a hagyományos kínai írásról az egyszerűsítettre</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>TC-ről SC-re</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -321,6 +309,18 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Átalakítás hagyományosról egyszerűsített kínai írásra</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation type="unfinished">Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation type="unfinished">Hong Kong variant</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation type="unfinished">Mainland variant</translation>
     </message>
   </context>
   <context>
@@ -688,6 +688,10 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
     <message>
       <source>Open dictionary folder</source>
       <translation>Mappa megnyitása</translation>
+    </message>
+    <message>
+      <source>Restore selection</source>
+      <translation type="unfinished">Restore selection</translation>
     </message>
   </context>
   <context>

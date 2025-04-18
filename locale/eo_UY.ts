@@ -19,20 +19,20 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: ne povas fari karton sen vorto</translation>
+      <source>Anki: can&apos;t create a card without a word</source>
+      <translation>Anki: ne povas fari karton sen vorto</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
       <translation>Anki-serĉo: AnkiConnect ne estas ebligita.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
-      <translation>anki: post al anki malsukcesis</translation>
+      <source>Anki: post to Anki failed</source>
+      <translation>Anki: post al Anki malsukcesis</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
-      <translation>anki: post al anki sukceso</translation>
+      <source>Anki: post to Anki success</source>
+      <translation>Anki: post al Anki sukceso</translation>
     </message>
   </context>
   <context>
@@ -291,24 +291,12 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <translation>Ebligu konvertiĝon de simpligitaj signoj al tradiciaj (tajvana varianto) signoj</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>SC al TC (Tajvana variaĵo)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Ebligu konvertiĝon de simpligitaj signoj al tradiciaj (Honkonga varianto) signoj</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>SC al TC (Honkonga variaĵo)</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Ebligu konvertiĝon de tradiciaj signoj al simpligitaj signoj</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>TC al SC</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -321,6 +309,18 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Tradicia al simpligita ĉina konvertiĝo</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation type="unfinished">Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation type="unfinished">Hong Kong variant</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation type="unfinished">Mainland variant</translation>
     </message>
   </context>
   <context>
@@ -688,6 +688,10 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     <message>
       <source>Open dictionary folder</source>
       <translation>Malfermu vortaran dosierujon</translation>
+    </message>
+    <message>
+      <source>Restore selection</source>
+      <translation type="unfinished">Restore selection</translation>
     </message>
   </context>
   <context>

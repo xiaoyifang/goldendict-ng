@@ -19,20 +19,20 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: kan geen kaart maken zonder een woord</translation>
+      <source>Anki: can&apos;t create a card without a word</source>
+      <translation>Anki: kan geen kaart maken zonder een woord</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
       <translation>Anki zoeken: AnkiConnect is niet ingeschakeld.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
-      <translation>anki: post op anki mislukt</translation>
+      <source>Anki: post to Anki failed</source>
+      <translation>Anki: post op Anki mislukt</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
-      <translation>anki: post op anki succes</translation>
+      <source>Anki: post to Anki success</source>
+      <translation>Anki: post op Anki succes</translation>
     </message>
   </context>
   <context>
@@ -291,24 +291,12 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Schakel conversie van vereenvoudigde tekens naar traditionele (Taiwan-variant) tekens in</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>SC naar TC (Taiwan variant)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Schakel conversie van vereenvoudigde tekens naar traditionele (Hong Kong variant) tekens in</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>SC to TC (Hong Kong variant)</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Schakel conversie van traditionele tekens naar vereenvoudigde tekens in</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>TC naar SC</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -321,6 +309,18 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Traditioneel naar vereenvoudigde Chinese conversie</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation>Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation>Hong Kong variant</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation>Hoofdland variant</translation>
     </message>
   </context>
   <context>
@@ -688,6 +688,10 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>Open dictionary folder</source>
       <translation>Woordenboekmap openen</translation>
+    </message>
+    <message>
+      <source>Restore selection</source>
+      <translation>Herstel selectie</translation>
     </message>
   </context>
   <context>

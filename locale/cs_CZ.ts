@@ -19,20 +19,20 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: Nelze vytvořit kartu beze slova</translation>
+      <source>Anki: can&apos;t create a card without a word</source>
+      <translation>Anki: Nelze vytvořit kartu beze slova</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
       <translation>Anki vyhledávání: AnkiConnect není povoleno.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
-      <translation>anki: příspěvek do anki selhal</translation>
+      <source>Anki: post to Anki failed</source>
+      <translation>Anki: příspěvek do Anki selhal</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
-      <translation>anki: post to anki úspěch</translation>
+      <source>Anki: post to Anki success</source>
+      <translation>Anki: post to Anki úspěch</translation>
     </message>
   </context>
   <context>
@@ -291,24 +291,12 @@ a školní ortografií v cyrilici)</translation>
       <translation>Povolit převod ze zjednodušených znaků na tradiční (varianta) znaky</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>SC až TC (Taiwan varianta)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Povolit převod ze zjednodušených znaků na tradiční (Hong Kong varianta) znaky</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>SC až TC (Hong Kong varianta)</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Povolit převod z tradičních znaků na zjednodušené znaky</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>TC až SC</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -321,6 +309,18 @@ a školní ortografií v cyrilici)</translation>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Tradiční zjednodušený čínský převod</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation>Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation>Varianta Hongkongu</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation>Varianta kontinentální</translation>
     </message>
   </context>
   <context>
@@ -688,6 +688,10 @@ a školní ortografií v cyrilici)</translation>
     <message>
       <source>Open dictionary folder</source>
       <translation>Otevřít složku slovníků</translation>
+    </message>
+    <message>
+      <source>Restore selection</source>
+      <translation>Obnovit výběr</translation>
     </message>
   </context>
   <context>

@@ -19,20 +19,20 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: voi&apos;t luoda kortin ilman sanaa</translation>
+      <source>Anki: can&apos;t create a card without a word</source>
+      <translation>Anki: voi&apos;t luoda kortin ilman sanaa</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
       <translation>Anki-haku: AnkiConnect ei ole käytössä.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
-      <translation>anki: post to anki epäonnistui</translation>
+      <source>Anki: post to Anki failed</source>
+      <translation>Anki: post to Anki epäonnistui</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
-      <translation>anki: post anki menestys</translation>
+      <source>Anki: post to Anki success</source>
+      <translation>Anki: post Anki menestys</translation>
     </message>
   </context>
   <context>
@@ -291,24 +291,12 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Ota käyttöön muuntaminen yksinkertaistetuista merkeistä perinteisiin (Taiwan variantti) merkkeihin</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>SC – TC (Taiwanin versio)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Ota käyttöön muuntaminen yksinkertaistetuista merkeistä perinteisiin (Hong Kong -variantti) merkkeihin</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>SC – TC (Hong Kong -variantti)</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Ota käyttöön muuntaminen perinteisistä merkeistä yksinkertaistettuihin merkkeihin</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>TC – SC</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -321,6 +309,18 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Perinteinen yksinkertaistettu Kiinan muuntaminen</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation>Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation>Hongkongin muunnos</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation>Manner-Euroopan variantti</translation>
     </message>
   </context>
   <context>
@@ -688,6 +688,10 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>Open dictionary folder</source>
       <translation>Avaa sanakirjakansio</translation>
+    </message>
+    <message>
+      <source>Restore selection</source>
+      <translation>Palauta valinta</translation>
     </message>
   </context>
   <context>

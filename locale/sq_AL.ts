@@ -19,20 +19,20 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: nuk mund të krijosh një kartë pa një fjalë</translation>
+      <source>Anki: can&apos;t create a card without a word</source>
+      <translation>Anki: nuk mund të krijosh një kartë pa një fjalë</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
       <translation>Kërkimi Anki: AnkiConnect nuk është i aktivizuar.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
-      <translation>anki: postimi në anki dështoi</translation>
+      <source>Anki: post to Anki failed</source>
+      <translation>Anki: postimi në Anki dështoi</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
-      <translation>anki: postim te suksesi anki</translation>
+      <source>Anki: post to Anki success</source>
+      <translation>Anki: postim te suksesi Anki</translation>
     </message>
   </context>
   <context>
@@ -290,24 +290,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Aktivizo konvertimin nga karaktere të thjeshtuara në karaktere tradicionale (varianti i Tajvanit).</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>SC në TC (varianti i Tajvanit)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Aktivizo konvertimin nga karaktere të thjeshtuara në karaktere tradicionale (varianti i Hong Kongut).</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>SC në TC (varianti i Hong Kongut)</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Aktivizo konvertimin nga karaktere tradicionale në karaktere të thjeshtuara</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>TC në SC</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -320,6 +308,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Konvertimi tradicional në kinezisht i thjeshtuar</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation type="unfinished">Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation type="unfinished">Hong Kong variant</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation type="unfinished">Mainland variant</translation>
     </message>
   </context>
   <context>
@@ -687,6 +687,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>Hap dosjen e fjalorit</translation>
+    </message>
+    <message>
+      <source>Restore selection</source>
+      <translation type="unfinished">Restore selection</translation>
     </message>
   </context>
   <context>

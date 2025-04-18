@@ -19,20 +19,20 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: không thể tạo thẻ mà không có từ nào</translation>
+      <source>Anki: can&apos;t create a card without a word</source>
+      <translation>Anki: không thể tạo thẻ mà không có từ nào</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
       <translation>Anki search: AnkiConnect chưa được kích hoạt.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
-      <translation>anki: lỗi khi gửi tới anki</translation>
+      <source>Anki: post to Anki failed</source>
+      <translation>Anki: lỗi khi gửi tới Anki</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
-      <translation>anki: gửi tới anki thành công</translation>
+      <source>Anki: post to Anki success</source>
+      <translation>Anki: gửi tới Anki thành công</translation>
     </message>
   </context>
   <context>
@@ -290,24 +290,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Cho phép chuyển đổi từ ký tự giản thể sang ký tự truyền thống (biến thể Đài Loan)</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>SC đến TC (biến thể Đài Loan)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Cho phép chuyển đổi từ ký tự giản thể sang ký tự truyền thống (biến thể Hồng Kông)</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>SC đến TC (biến thể Hồng Kông)</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Cho phép chuyển đổi từ chữ phồn thể sang chữ giản thể</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>TC sang SC</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -320,6 +308,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Chuyển đổi tiếng Trung phồn thể sang giản thể</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation type="unfinished">Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation type="unfinished">Hong Kong variant</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation type="unfinished">Mainland variant</translation>
     </message>
   </context>
   <context>
@@ -687,6 +687,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>Mở thư mục từ điển</translation>
+    </message>
+    <message>
+      <source>Restore selection</source>
+      <translation type="unfinished">Restore selection</translation>
     </message>
   </context>
   <context>
@@ -3101,7 +3105,7 @@ cho tất cả các yêu cầu mạng của chương trình.</translation>
     </message>
     <message>
       <source>Anki Connect</source>
-      <translation>Kết nối anki</translation>
+      <translation>Kết nối Anki</translation>
     </message>
     <message>
       <source>http://</source>

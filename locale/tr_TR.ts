@@ -19,20 +19,20 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: kelime olmadan kart oluşturulamaz</translation>
+      <source>Anki: can&apos;t create a card without a word</source>
+      <translation>Anki: kelime olmadan kart oluşturulamaz</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
       <translation>Anki araması: AnkiConnect etkin değil.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
-      <translation>anki: anki'ye gönderi başarısız oldu</translation>
+      <source>Anki: post to Anki failed</source>
+      <translation>Anki: Anki'ye gönderi başarısız oldu</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
-      <translation>anki: anki başarısına gönder</translation>
+      <source>Anki: post to Anki success</source>
+      <translation>Anki: Anki başarısına gönder</translation>
     </message>
   </context>
   <context>
@@ -291,24 +291,12 @@ arasındaki farkı giderir)</translation>
       <translation>Basitleştirilmiş karakterlerden geleneksel (Tayvan değişkeni) karakterlere dönüştürmeyi etkinleştir</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>TC&apos;den SC&apos;ye (Tayvan varyantı)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Basitleştirilmiş karakterlerden geleneksel (Hong Kong değişken) karakterlere dönüştürmeyi etkinleştir</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>TC&apos;den SC&apos;ye (Hong Kong değişkeni)</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Geleneksel karakterlerden basitleştirilmiş karakterlere dönüştürmeyi etkinleştir</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>TC&apos;den SC&apos;ye</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -321,6 +309,18 @@ arasındaki farkı giderir)</translation>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Basitleştirilmiş Çince dönüşümü için geleneksel</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation type="unfinished">Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation type="unfinished">Hong Kong variant</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation type="unfinished">Mainland variant</translation>
     </message>
   </context>
   <context>
@@ -688,6 +688,10 @@ arasındaki farkı giderir)</translation>
     <message>
       <source>Open dictionary folder</source>
       <translation>Sözlük klasörünü aç</translation>
+    </message>
+    <message>
+      <source>Restore selection</source>
+      <translation type="unfinished">Restore selection</translation>
     </message>
   </context>
   <context>

@@ -19,20 +19,20 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: kan inte skapa ett kort utan ett ord</translation>
+      <source>Anki: can&apos;t create a card without a word</source>
+      <translation>Anki: kan inte skapa ett kort utan ett ord</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
       <translation>Anki-sökning: AnkiConnect är inte aktiverat.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
-      <translation>anki: inlägg till anki misslyckades</translation>
+      <source>Anki: post to Anki failed</source>
+      <translation>Anki: inlägg till Anki misslyckades</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
-      <translation>anki: inlägg till anki framgång</translation>
+      <source>Anki: post to Anki success</source>
+      <translation>Anki: inlägg till Anki framgång</translation>
     </message>
   </context>
   <context>
@@ -291,24 +291,12 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <translation>Aktivera konvertering från förenklade tecken till traditionella (Taiwan variant) tecken</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>FT to TT (Taiwan variant)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Aktivera konvertering från förenklade tecken till traditionella (Hong Kong variant) tecken</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>FT till TT (Hong Kong variant)</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Aktivera konvertering från traditionella tecken till förenklade tecken</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>FT till TT</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -321,6 +309,18 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Traditionell till förenklad kinesisk konvertering</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation>Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation>Hongkong variant</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation>Variant på fastlandet</translation>
     </message>
   </context>
   <context>
@@ -688,6 +688,10 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <message>
       <source>Open dictionary folder</source>
       <translation>Öppna ordlistans lagringsmapp</translation>
+    </message>
+    <message>
+      <source>Restore selection</source>
+      <translation>Återställ markering</translation>
     </message>
   </context>
   <context>

@@ -19,20 +19,20 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: nie można utworzyć karty bez słowa</translation>
+      <source>Anki: can&apos;t create a card without a word</source>
+      <translation>Anki: nie można utworzyć karty bez słowa</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
       <translation>Wyszukiwanie Anki: AnkiConnect nie jest włączone.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
-      <translation>anki: wpis do anki nie powiódł się</translation>
+      <source>Anki: post to Anki failed</source>
+      <translation>Anki: wpis do Anki nie powiódł się</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
-      <translation>anki: wysłanie do anki sukcesu</translation>
+      <source>Anki: post to Anki success</source>
+      <translation>Anki: wysłanie do Anki sukcesu</translation>
     </message>
   </context>
   <context>
@@ -291,24 +291,12 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
       <translation>Włącz konwersję z uproszczonych znaków na tradycyjne (Tajwan Wariant)</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>SC do TC (wariant Taiwana)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Włącz konwersję z uproszczonych znaków na tradycyjne (wariant Hongkongu)</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>SC do TC (wariant Hongkongu)</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Włącz konwersję z tradycyjnych znaków na uproszczone znaki</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>TC do SC</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -321,6 +309,18 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Tradycyjne dla uproszczonej chińskiej konwersji</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation>Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation>Wariant Hongkongu</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation>Wariant kontynentalny</translation>
     </message>
   </context>
   <context>
@@ -688,6 +688,10 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     <message>
       <source>Open dictionary folder</source>
       <translation>Otwórz folder słownika</translation>
+    </message>
+    <message>
+      <source>Restore selection</source>
+      <translation>Przywróć zaznaczenie</translation>
     </message>
   </context>
   <context>

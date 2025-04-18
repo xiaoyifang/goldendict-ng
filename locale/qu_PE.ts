@@ -19,20 +19,20 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: mana simiyuq tarjetata&apos;t ruwayta atin</translation>
+      <source>Anki: can&apos;t create a card without a word</source>
+      <translation>Anki: mana simiyuq tarjetata&apos;t ruwayta atin</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
       <translation>Anki maskana: AnkiConnect mana atichisqachu.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
-      <translation>anki: post a anki fracasado</translation>
+      <source>Anki: post to Anki failed</source>
+      <translation>Anki: post a Anki fracasado</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
-      <translation>anki: post a anki exito</translation>
+      <source>Anki: post to Anki success</source>
+      <translation>Anki: post a Anki exito</translation>
     </message>
   </context>
   <context>
@@ -291,24 +291,12 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>Sasachasqa qillqakunamanta ñawpaq (Taiwán variante) qillqakunaman tikrayta atichiy</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>SCmanta TCkama (Taiwán variante) .</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Sasachasqa qillqakunamanta ñawpaq (Hong Kong variante) qillqakunaman tikrayta atichiy</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>SCmanta TCkama (Hong Kongmanta rikch'aq) .</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Ñawpa qillqakunamanta pisiyachisqa qillqakunaman tikrayta atichiy</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>TCmanta SCkama</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -321,6 +309,18 @@ chiqan kayninta sumaqyachin)</translation>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Tradicionalmanta chino tikrayman pisiyachisqaman</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation type="unfinished">Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation type="unfinished">Hong Kong variant</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation type="unfinished">Mainland variant</translation>
     </message>
   </context>
   <context>
@@ -688,6 +688,10 @@ chiqan kayninta sumaqyachin)</translation>
     <message>
       <source>Open dictionary folder</source>
       <translation>Diccionario nisqa qillqana mayt’uta kichay</translation>
+    </message>
+    <message>
+      <source>Restore selection</source>
+      <translation type="unfinished">Restore selection</translation>
     </message>
   </context>
   <context>

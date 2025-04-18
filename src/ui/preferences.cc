@@ -361,13 +361,13 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
     ui.customSettingsGroup->setEnabled( p.proxyServer.enabled );
   }
 
-  //anki connect
+  //Anki connect
   ui.useAnkiConnect->setChecked( p.ankiConnectServer.enabled );
   ui.ankiHost->setText( p.ankiConnectServer.host );
   ui.ankiPort->setValue( p.ankiConnectServer.port );
   ui.ankiModel->setText( p.ankiConnectServer.model );
   ui.ankiDeck->setText( p.ankiConnectServer.deck );
-  //anki connect fields
+  //Anki connect fields
   ui.ankiText->setText( p.ankiConnectServer.text );
   ui.ankiWord->setText( p.ankiConnectServer.word );
   ui.ankiSentence->setText( p.ankiConnectServer.sentence );
@@ -534,13 +534,13 @@ Config::Preferences Preferences::getPreferences()
   p.proxyServer.user     = ui.proxyUser->text();
   p.proxyServer.password = ui.proxyPassword->text();
 
-  //anki connect
+  //Anki connect
   p.ankiConnectServer.enabled = ui.useAnkiConnect->isChecked();
   p.ankiConnectServer.host    = ui.ankiHost->text();
   p.ankiConnectServer.port    = (unsigned)ui.ankiPort->value();
   p.ankiConnectServer.deck    = ui.ankiDeck->text();
   p.ankiConnectServer.model   = ui.ankiModel->text();
-  //anki connect fields
+  //Anki connect fields
   p.ankiConnectServer.text     = ui.ankiText->text();
   p.ankiConnectServer.word     = ui.ankiWord->text();
   p.ankiConnectServer.sentence = ui.ankiSentence->text();

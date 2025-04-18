@@ -19,20 +19,20 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: no se puede crear una carta sin una palabra</translation>
+      <source>Anki: can&apos;t create a card without a word</source>
+      <translation>Anki: no se puede crear una carta sin una palabra</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
       <translation>Búsqueda Anki: AnkiConnect no está habilitado.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
-      <translation>anki: mensaje a anki fallido</translation>
+      <source>Anki: post to Anki failed</source>
+      <translation>Anki: mensaje a Anki fallido</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
-      <translation>anki: post para éxito anki</translation>
+      <source>Anki: post to Anki success</source>
+      <translation>Anki: post para éxito Anki</translation>
     </message>
   </context>
   <context>
@@ -291,24 +291,12 @@ entre la ortografía clásica y la escolar en cirílico)</translation>
       <translation>Habilite la conversión de caracteres simplificados a caracteres tradicionales (variante de Taiwán)</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>SC a TC (variante de Taiwán)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Habilite la conversión de caracteres simplificados a caracteres tradicionales (variante de Hong Kong)</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>SC a TC (Variante de Hong Kong)</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Habilite la conversión de caracteres tradicionales a caracteres simplificados</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>CT a CS</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -321,6 +309,18 @@ entre la ortografía clásica y la escolar en cirílico)</translation>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Conversión de chino tradicional a chino simplificado</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation type="unfinished">Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation type="unfinished">Hong Kong variant</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation type="unfinished">Mainland variant</translation>
     </message>
   </context>
   <context>
@@ -688,6 +688,10 @@ entre la ortografía clásica y la escolar en cirílico)</translation>
     <message>
       <source>Open dictionary folder</source>
       <translation>Abrir carpeta del diccionario</translation>
+    </message>
+    <message>
+      <source>Restore selection</source>
+      <translation type="unfinished">Restore selection</translation>
     </message>
   </context>
   <context>
@@ -3102,7 +3106,7 @@ servidor proxy por todas las solicitudes de red del programa.</translation>
     </message>
     <message>
       <source>Anki Connect</source>
-      <translation>anki conectar</translation>
+      <translation>Anki conectar</translation>
     </message>
     <message>
       <source>http://</source>

@@ -19,20 +19,20 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: 단어 없이 카드를 만들 수&apos;</translation>
+      <source>Anki: can&apos;t create a card without a word</source>
+      <translation>Anki: 단어 없이 카드를 만들 수&apos;</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
       <translation>Anki 검색: AnkiConnect가 활성화되지 않았습니다.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
-      <translation>anki: anki에 게시 실패</translation>
+      <source>Anki: post to Anki failed</source>
+      <translation>Anki: anki에 게시 실패</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
-      <translation>anki: anki 성공에 게시</translation>
+      <source>Anki: post to Anki success</source>
+      <translation>Anki: Anki 성공에 게시</translation>
     </message>
   </context>
   <context>
@@ -291,24 +291,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>간체 문자에서 번체(대만 변형) 문자로 변환 가능</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>SC에서 TC로(대만 변형)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>간체 문자에서 전통(홍콩 변형) 문자로 변환 가능</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>SC에서 TC로(홍콩 변형)</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>번체 문자에서 간체 문자로 변환 가능</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>TC에서 SC로</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -321,6 +309,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>번체에서 간체로 변환</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation type="unfinished">Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation type="unfinished">Hong Kong variant</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation type="unfinished">Mainland variant</translation>
     </message>
   </context>
   <context>
@@ -540,7 +540,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Regular Expression</source>
-      <translation type="unfinished">Regular Expression</translation>
+      <translation>정규식</translation>
     </message>
   </context>
   <context>
@@ -688,6 +688,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>사전 폴더 열기</translation>
+    </message>
+    <message>
+      <source>Restore selection</source>
+      <translation>선택 항목 복원</translation>
     </message>
   </context>
   <context>
@@ -2587,11 +2591,11 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Save PDF complete</source>
-      <translation type="unfinished">Save PDF complete</translation>
+      <translation>PDF 저장 완료</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
-      <translation type="unfinished">Save PDF failed</translation>
+      <translation>PDF 저장 실패</translation>
     </message>
   </context>
   <context>

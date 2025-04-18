@@ -19,20 +19,20 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: 沒選擇詞語，無法建立卡片</translation>
+      <source>Anki: can&apos;t create a card without a word</source>
+      <translation>Anki: 沒選擇詞語，無法建立卡片</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
       <translation>Anki: AnkiConnect 沒有啟用。</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
-      <translation>anki: 調用失敗</translation>
+      <source>Anki: post to Anki failed</source>
+      <translation>Anki: 調用失敗</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
-      <translation>anki：發佈到 anki 成功</translation>
+      <source>Anki: post to Anki success</source>
+      <translation>Anki：發佈到 Anki 成功</translation>
     </message>
   </context>
   <context>
@@ -290,24 +290,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>啟用簡體字轉換為台灣繁體字</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>簡體轉為台灣繁體</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>啟用簡體字轉換為香港繁體字</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>簡體轉為香港繁體</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>啟用繁體字轉換為簡體字</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>繁體轉為簡體</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -320,6 +308,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>繁體字轉換為簡體字</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation type="unfinished">Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation type="unfinished">Hong Kong variant</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation type="unfinished">Mainland variant</translation>
     </message>
   </context>
   <context>
@@ -687,6 +687,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>開啟字典資料夾</translation>
+    </message>
+    <message>
+      <source>Restore selection</source>
+      <translation type="unfinished">Restore selection</translation>
     </message>
   </context>
   <context>
