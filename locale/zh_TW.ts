@@ -311,15 +311,15 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Taiwan variant</source>
-      <translation type="unfinished">Taiwan variant</translation>
+      <translation>台灣版本</translation>
     </message>
     <message>
       <source>Hong Kong variant</source>
-      <translation type="unfinished">Hong Kong variant</translation>
+      <translation>香港版本</translation>
     </message>
     <message>
       <source>Mainland variant</source>
-      <translation type="unfinished">Mainland variant</translation>
+      <translation>大陸版本</translation>
     </message>
   </context>
   <context>
@@ -690,7 +690,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Restore selection</source>
-      <translation type="unfinished">Restore selection</translation>
+      <translation>恢復選擇</translation>
     </message>
   </context>
   <context>
@@ -2591,11 +2591,11 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Save PDF complete</source>
-      <translation type="unfinished">Save PDF complete</translation>
+      <translation>儲存 PDF 完成</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
-      <translation type="unfinished">Save PDF failed</translation>
+      <translation>儲存 PDF 失敗</translation>
     </message>
   </context>
   <context>
@@ -3983,7 +3983,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>將程式 &lt;b&gt;%1&lt;/b&gt; 從清單移除？</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,based on English phonology</source>
+      <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>以英文語音學為基礎所建立的最常用日文轉寫方案</translation>
     </message>
   </context>
