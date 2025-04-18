@@ -655,7 +655,7 @@ void ArticleRequest::bodyFinished()
         fmt::format_to(
           std::back_inserter( head ),
           FMT_COMPILE(
-            R"(<div class="gddictname" onclick="gdExpandArticle('{0}');"  {1}  id="gddictname-{0}" title="{2}">
+            R"(<div class="gddictname" {1}  id="gddictname-{0}" title="{2}">
                       <span class="gddicticon"><img src="gico://{0}/dicticon.png"></span>
                       <span class="gdfromprefix">{3}</span>
                       <span class="gddicttitle">{4}</span>

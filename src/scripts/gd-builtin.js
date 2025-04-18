@@ -134,14 +134,26 @@ function gdAttachEventHandlers() {
     article.addEventListener("contextmenu", gdHandleArticleEvent);
   });
 
+
+  document.body.addEventListener("click", function (event) {
+    // Use closest to find the nearest parent div with the class 'gddictname'
+    const dictNameElement = event.target.closest('.gddictname');
+
+    if (dictNameElement) {
+      // Get the data-gd-id attribute from the parent div
+      const articleId = dictNameElement.closest(".gdarticle")?.getAttribute("data-gd-id");
+
+      gdExpandArticle?.(articleId);
+    }
+  });
+
   function gdHandleArticleEvent(event) {
     // Get the _id attribute
     const articleId = event.target
       .closest(".gdarticle")
       ?.getAttribute("data-gd-id");
-    if (typeof gdMakeArticleActive !== "undefined") {
-      gdMakeArticleActive(articleId, false);
-    }
+    gdMakeArticleActive?.(articleId, false);
+
   }
 }
 
@@ -154,3 +166,5 @@ if (
 } else {
   document.addEventListener("DOMContentLoaded", gdAttachEventHandlers);
 }
+
+
