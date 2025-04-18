@@ -4005,7 +4005,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>Удалить программу &lt;b&gt;%1&lt;/b&gt; из списка?</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,based on English phonology</source>
+      <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>Наиболее распространенный метод транскрипции японского языка на основе английского языка</translation>
     </message>
   </context>
