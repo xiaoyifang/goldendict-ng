@@ -144,7 +144,7 @@ function gdAttachEventHandlers() {
         .closest(".gdarticle")
         ?.getAttribute("data-gd-id");
 
-      gdExpandArticle?.(articleId);
+      gdExpandArticle(articleId);
     }
   });
 
@@ -153,7 +153,7 @@ function gdAttachEventHandlers() {
     const articleId = event.target
       .closest(".gdarticle")
       ?.getAttribute("data-gd-id");
-    gdMakeArticleActive?.(articleId, false);
+    gdMakeArticleActive(articleId, false);
   }
 }
 
