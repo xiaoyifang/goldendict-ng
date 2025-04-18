@@ -19,20 +19,20 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: can&apos;t mä tarjeta jan arut luraspa</translation>
+      <source>Anki: can&apos;t create a card without a word</source>
+      <translation type="unfinished">Anki: can&apos;t create a card without a word</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
       <translation>Anki thakhi: AnkiConnect ukax janiw ch’amanchatäkiti.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
-      <translation>anki: post ukax anki ukarux janiw phuqhaskiti</translation>
+      <source>Anki: post to Anki failed</source>
+      <translation type="unfinished">Anki: post to Anki failed</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
-      <translation>anki: post ukax anki suma sarantäwipawa</translation>
+      <source>Anki: post to Anki success</source>
+      <translation type="unfinished">Anki: post to Anki success</translation>
     </message>
   </context>
   <context>
