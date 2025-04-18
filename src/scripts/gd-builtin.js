@@ -136,7 +136,9 @@ function gdAttachEventHandlers() {
 
   function gdHandleArticleEvent(event) {
     // Get the _id attribute
-    const articleId = event.target.closest('.gdarticle')?.getAttribute("data-gd-id");
+    const articleId = event.target
+      .closest(".gdarticle")
+      ?.getAttribute("data-gd-id");
     if (typeof gdMakeArticleActive !== "undefined") {
       gdMakeArticleActive(articleId, false);
     }
