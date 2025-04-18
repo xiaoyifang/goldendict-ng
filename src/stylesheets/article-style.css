@@ -72,7 +72,7 @@ pre {
   user-select: none;
 }
 
-/* The anki plus button, which is shown if enabled. */
+/* The Anki plus button, which is shown if enabled. */
 .ankibutton {
   float: right;
   display: grid;

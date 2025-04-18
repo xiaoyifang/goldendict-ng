@@ -19,20 +19,20 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: Nemôžem vytvoriť kartu bez slova</translation>
+      <source>Anki: can&apos;t create a card without a word</source>
+      <translation>Anki: Nemôžem vytvoriť kartu bez slova</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
       <translation>Anki vyhľadávanie: AnkiConnect nie je povolené.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
-      <translation>anki: príspevok pre anki zlyhal</translation>
+      <source>Anki: post to Anki failed</source>
+      <translation>Anki: príspevok pre Anki zlyhal</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
-      <translation>anki: príspevok k úspechu anki</translation>
+      <source>Anki: post to Anki success</source>
+      <translation>Anki: príspevok k úspechu Anki</translation>
     </message>
   </context>
   <context>

@@ -19,19 +19,19 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: не може да се создаде картичка без збор</translation>
+      <source>Anki: can&apos;t create a card without a word</source>
+      <translation>Anki: не може да се создаде картичка без збор</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
       <translation>Пребарување Anki: AnkiConnect не е овозможено.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
+      <source>Anki: post to Anki failed</source>
       <translation>анки: пост до анки не успеа</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
+      <source>Anki: post to Anki success</source>
       <translation>анки: пост до успех на анки</translation>
     </message>
   </context>

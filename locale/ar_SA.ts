@@ -19,7 +19,7 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
+      <source>Anki: can&apos;t create a card without a word</source>
       <translation>أنكي: لا يمكن&apos;إنشاء بطاقة بدون كلمة</translation>
     </message>
     <message>
@@ -27,11 +27,11 @@
       <translation>بحث أنكي: AnkiConnect غير مفعل.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
+      <source>Anki: post to Anki failed</source>
       <translation>أنكي: فشل النشر إلى أنكي</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
+      <source>Anki: post to Anki success</source>
       <translation>أنكي: وظيفة أنكي النجاح</translation>
     </message>
   </context>

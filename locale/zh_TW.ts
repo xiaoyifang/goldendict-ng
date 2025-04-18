@@ -19,20 +19,20 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: 沒選擇詞語，無法建立卡片</translation>
+      <source>Anki: can&apos;t create a card without a word</source>
+      <translation>Anki: 沒選擇詞語，無法建立卡片</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
       <translation>Anki: AnkiConnect 沒有啟用。</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
-      <translation>anki: 調用失敗</translation>
+      <source>Anki: post to Anki failed</source>
+      <translation>Anki: 調用失敗</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
-      <translation>anki：發佈到 anki 成功</translation>
+      <source>Anki: post to Anki success</source>
+      <translation>Anki：發佈到 Anki 成功</translation>
     </message>
   </context>
   <context>

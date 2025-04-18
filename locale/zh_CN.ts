@@ -19,7 +19,7 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
+      <source>Anki: can&apos;t create a card without a word</source>
       <translation>Anki: 无法创建一个没有单词的卡片</translation>
     </message>
     <message>
@@ -27,12 +27,12 @@
       <translation>Anki 搜索：AnkiConnect 未启用。</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
-      <translation>anki:发布失败</translation>
+      <source>Anki: post to Anki failed</source>
+      <translation>Anki:发布失败</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
-      <translation>anki: 发布成功</translation>
+      <source>Anki: post to Anki success</source>
+      <translation>Anki: 发布成功</translation>
     </message>
   </context>
   <context>

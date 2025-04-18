@@ -19,7 +19,7 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
+      <source>Anki: can&apos;t create a card without a word</source>
       <translation>Anki: нельзя создать карточку без слова</translation>
     </message>
     <message>
@@ -27,12 +27,12 @@
       <translation>Поиск в AnkiConnect: AnkiConnect не включен.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
-      <translation>anki: сообщение в anki не удалось</translation>
+      <source>Anki: post to Anki failed</source>
+      <translation>Anki: сообщение в Anki не удалось</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
-      <translation>anki: сообщение в anki успешно</translation>
+      <source>Anki: post to Anki success</source>
+      <translation>Anki: сообщение в Anki успешно</translation>
     </message>
   </context>
   <context>

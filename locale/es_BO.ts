@@ -19,20 +19,20 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: no se puede crear una carta sin una palabra</translation>
+      <source>Anki: can&apos;t create a card without a word</source>
+      <translation>Anki: no se puede crear una carta sin una palabra</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
       <translation>Búsqueda Anki: AnkiConnect no está habilitado.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
-      <translation>anki: mensaje a anki fallido</translation>
+      <source>Anki: post to Anki failed</source>
+      <translation>Anki: mensaje a Anki fallido</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
-      <translation>anki: post para éxito anki</translation>
+      <source>Anki: post to Anki success</source>
+      <translation>Anki: post para éxito Anki</translation>
     </message>
   </context>
   <context>
@@ -3106,7 +3106,7 @@ servidor proxy por todas las solicitudes de red del programa.</translation>
     </message>
     <message>
       <source>Anki Connect</source>
-      <translation>anki conectar</translation>
+      <translation>Anki conectar</translation>
     </message>
     <message>
       <source>http://</source>

@@ -1954,7 +1954,7 @@ void save( Class const & c )
       proxy.appendChild( opt );
     }
 
-    //anki connect
+    //Anki connect
     {
       QDomElement proxy = dd.createElement( "ankiConnectServer" );
       preferences.appendChild( proxy );

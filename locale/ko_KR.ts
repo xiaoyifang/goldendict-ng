@@ -19,20 +19,20 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: 단어 없이 카드를 만들 수&apos;</translation>
+      <source>Anki: can&apos;t create a card without a word</source>
+      <translation>Anki: 단어 없이 카드를 만들 수&apos;</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
       <translation>Anki 검색: AnkiConnect가 활성화되지 않았습니다.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
-      <translation>anki: anki에 게시 실패</translation>
+      <source>Anki: post to Anki failed</source>
+      <translation>Anki: anki에 게시 실패</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
-      <translation>anki: anki 성공에 게시</translation>
+      <source>Anki: post to Anki success</source>
+      <translation>Anki: Anki 성공에 게시</translation>
     </message>
   </context>
   <context>
