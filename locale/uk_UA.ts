@@ -3995,8 +3995,8 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>Вилучити програму &lt;b&gt;%1&lt;/b&gt; зі списку?</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,based on English phonology</source>
-      <translation>Найбільш поширений метод транскрипції японської, заснований на англійській фонології</translation>
+      <source>The most widely used method of transcription of Japanese, based on English phonology</source>
+      <translation>Найбільш поширений метод транскрипції японської та базується на англійській фонології</translation>
     </message>
   </context>
   <context>
