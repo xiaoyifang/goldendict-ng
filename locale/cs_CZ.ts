@@ -3992,8 +3992,8 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>Odstranit program &lt;b&gt;%1&lt;/b&gt; ze seznamu?</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,based on English phonology</source>
-      <translation>The Czech Republic is a West Slavic language spoken by Czechoslovakia.</translation>
+      <source>The most widely used method of transcription of Japanese, based on English phonology</source>
+      <translation>The Czechoslovakia is a type of consonantal sound, used in some Speech communication languages.</translation>
     </message>
   </context>
   <context>
