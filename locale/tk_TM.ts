@@ -3992,8 +3992,8 @@ tapyp bilersiňiz &lt;/a&gt;</translation>
       <translation>&lt;b&gt;%1&lt;/b&gt; programmany sanawdan aýyrmalymy?</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,based on English phonology</source>
-      <translation type="unfinished">The most widely used method of transcription of Japanese,based on English phonology</translation>
+      <source>The most widely used method of transcription of Japanese, based on English phonology</source>
+      <translation>Iňlis fonologiýasyna esaslanýan ýapon diliniň iň giňden ulanylýan usuly</translation>
     </message>
   </context>
   <context>
