@@ -3988,7 +3988,7 @@ Eine vollständige Liste der verfügbaren Sprachen ist &lt;a href=&quot;https://
       <translation>Soll das Programm &lt;b&gt;%1&lt;/b&gt; von der Liste entfernt werden?</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,based on English phonology</source>
+      <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>Die am weitesten verbreitete Methode der Transkription von Japanisch, basierend auf der englischen Phonologie</translation>
     </message>
   </context>
