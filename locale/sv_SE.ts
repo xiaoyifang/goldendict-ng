@@ -19,20 +19,20 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: kan inte skapa ett kort utan ett ord</translation>
+      <source>Anki: can&apos;t create a card without a word</source>
+      <translation>Anki: kan&apos;t skapa ett kort utan ett ord</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
       <translation>Anki-sökning: AnkiConnect är inte aktiverat.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
-      <translation>anki: inlägg till anki misslyckades</translation>
+      <source>Anki: post to Anki failed</source>
+      <translation>Anki: inlägg till Anki misslyckades</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
-      <translation>anki: inlägg till anki framgång</translation>
+      <source>Anki: post to Anki success</source>
+      <translation>Anki: inlägg till Anki framgång</translation>
     </message>
   </context>
   <context>
