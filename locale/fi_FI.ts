@@ -3995,8 +3995,8 @@ Täydellinen luettelo saatavilla olevista kielistä löytyy &lt;a href=&quot;htt
       <translation>Poistetaanko ohjelma &lt;b&gt;%1&lt;/b&gt; listalta?</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,based on English phonology</source>
-      <translation>Yleisimmin käytetty menetelmä transkriptio Japani, perustuu Englanti fonologia</translation>
+      <source>The most widely used method of transcription of Japanese, based on English phonology</source>
+      <translation>Yleisimmin käytetty menetelmä transkriptio japani, joka perustuu Englanti fonologia</translation>
     </message>
   </context>
   <context>
