@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation>anki: không thể tạo thẻ mà không có từ nào</translation>
+      <translation>Anki: không thể tạo thẻ mà không có từ nào</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation>anki: lỗi khi gửi tới anki</translation>
+      <translation>Anki: lỗi khi gửi tới Anki</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation>anki: gửi tới anki thành công</translation>
+      <translation>Anki: gửi tới Anki thành công</translation>
     </message>
   </context>
   <context>
@@ -3105,7 +3105,7 @@ cho tất cả các yêu cầu mạng của chương trình.</translation>
     </message>
     <message>
       <source>Anki Connect</source>
-      <translation>Kết nối anki</translation>
+      <translation>Kết nối Anki</translation>
     </message>
     <message>
       <source>http://</source>

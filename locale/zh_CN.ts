@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation>anki:发布失败</translation>
+      <translation>Anki:发布失败</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation>anki: 发布成功</translation>
+      <translation>Anki: 发布成功</translation>
     </message>
   </context>
   <context>

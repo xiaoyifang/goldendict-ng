@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation>anki: نمی توان بدون کلمه کارت ایجاد کرد</translation>
+      <translation>Anki: نمی توان بدون کلمه کارت ایجاد کرد</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation>anki: ارسال به anki ناموفق بود</translation>
+      <translation>Anki: ارسال به Anki ناموفق بود</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation>anki: ارسال به موفقیت anki</translation>
+      <translation>Anki: ارسال به موفقیت Anki</translation>
     </message>
   </context>
   <context>

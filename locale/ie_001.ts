@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation>anki: impossibil a crear un carte sin un parol</translation>
+      <translation>Anki: impossibil a crear un carte sin un parol</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -212,7 +212,7 @@
     </message>
     <message>
       <source>&amp;Send Current Article to Anki</source>
-      <translation>&amp;Inviar li actual articul a anki</translation>
+      <translation>&amp;Inviar li actual articul a Anki</translation>
     </message>
     <message>
       <source>&amp;Send selected text to Anki</source>

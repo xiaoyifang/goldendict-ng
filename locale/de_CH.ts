@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation>anki: kann&apos;t eine Karte ohne Wort erstellen</translation>
+      <translation>Anki: kann&apos;t eine Karte ohne Wort erstellen</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>

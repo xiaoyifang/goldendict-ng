@@ -28,7 +28,7 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation>anki: Beitrag zu anki fehlgeschlagen</translation>
+      <translation>Anki: Beitrag zu Anki fehlgeschlagen</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
