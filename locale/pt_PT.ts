@@ -3995,8 +3995,8 @@ A lista completa de idiomas disponíveis pode ser encontrada &lt;a href=&quot;ht
       <translation>Remover programa &lt;b&gt;%1&lt;/b&gt; da lista?</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,based on English phonology</source>
-      <translation>O método de transcrição do japonês, baseado na fonologia inglesa,</translation>
+      <source>The most widely used method of transcription of Japanese, based on English phonology</source>
+      <translation>O método de transcrição de japonês mais utilizado, baseado na fonologia inglesa</translation>
     </message>
   </context>
   <context>
