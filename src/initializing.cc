@@ -24,14 +24,12 @@ void Initializing::indexing( QString const & dictionaryName )
 {
   ui.operation->setText( tr( "Indexing..." ) );
   ui.dictionary->setText( dictionaryName );
-  show();
 }
 
 void Initializing::loading( QString const & dictionaryName )
 {
   ui.operation->setText( tr( "Loading..." ) );
   ui.dictionary->setText( dictionaryName );
-  show();
 }
 
 void Initializing::closeEvent( QCloseEvent * ev )
