@@ -3991,8 +3991,8 @@ De volledige lijst met beschikbare talen vindt u &lt;a href=&quot;https://lingua
       <translation>Het programma &lt;b&gt;%1&lt;/b&gt; uit de lijst verwijderen?</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,based on English phonology</source>
-      <translation>De meest gebruikte methode van transcriptie van Japans, gebaseerd op de Engelse fonologie</translation>
+      <source>The most widely used method of transcription of Japanese, based on English phonology</source>
+      <translation>De meest gebruikte methode van transcriptie van Japans op basis van de Engelse fonologie</translation>
     </message>
   </context>
   <context>
