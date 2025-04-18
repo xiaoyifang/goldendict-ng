@@ -19,7 +19,7 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
+      <source>Anki: can&apos;t create a card without a word</source>
       <translation>anki: nuk mund të krijosh një kartë pa një fjalë</translation>
     </message>
     <message>
@@ -27,11 +27,11 @@
       <translation>Kërkimi Anki: AnkiConnect nuk është i aktivizuar.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
+      <source>Anki: post to Anki failed</source>
       <translation>anki: postimi në anki dështoi</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
+      <source>Anki: post to Anki success</source>
       <translation>anki: postim te suksesi anki</translation>
     </message>
   </context>

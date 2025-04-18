@@ -19,7 +19,7 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
+      <source>Anki: can&apos;t create a card without a word</source>
       <translation>anki: sözsiz kartoçka döredip bolmaz</translation>
     </message>
     <message>
@@ -27,11 +27,11 @@
       <translation>Anki gözlegi: AnkiConnect açyk däl.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
+      <source>Anki: post to Anki failed</source>
       <translation>anki: anki ýazmak şowsuz</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
+      <source>Anki: post to Anki success</source>
       <translation>anki: anki üstünlik</translation>
     </message>
   </context>

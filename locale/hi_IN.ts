@@ -19,7 +19,7 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
+      <source>Anki: can&apos;t create a card without a word</source>
       <translation>अंकी: क्या बिना किसी शब्द के कार्ड&apos;बनाया जा सकता</translation>
     </message>
     <message>
@@ -27,11 +27,11 @@
       <translation>Anki खोज: AnkiConnect सक्षम नहीं है.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
+      <source>Anki: post to Anki failed</source>
       <translation>अंकी: अंकी को पोस्ट करना विफल रहा</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
+      <source>Anki: post to Anki success</source>
       <translation>अंकी: अंकी की सफलता के लिए पोस्ट करें</translation>
     </message>
   </context>
