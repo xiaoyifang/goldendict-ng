@@ -3989,8 +3989,8 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>リストからプログラム &lt;b&gt;%1&lt;/b&gt; を削除しますか？</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,based on English phonology</source>
-      <translation>最も広く使用されている日本語の音韻論に基づく転写法</translation>
+      <source>The most widely used method of transcription of Japanese, based on English phonology</source>
+      <translation>最も広く使用されている日本語の音韻論に基づく表記法</translation>
     </message>
   </context>
   <context>
