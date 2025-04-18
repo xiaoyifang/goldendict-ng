@@ -311,7 +311,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Taiwan variant</source>
-      <translation>Taiwan variant</translation>
+      <translation>台湾变体</translation>
     </message>
     <message>
       <source>Hong Kong variant</source>
@@ -3978,8 +3978,8 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>从列表中删除程序 &lt;b&gt;%1&lt;/b&gt;？</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,based on English phonology</source>
-      <translation>以英文语音学为基础建立的，最常用的日文转写方案</translation>
+      <source>The most widely used method of transcription of Japanese, based on English phonology</source>
+      <translation>以英语电话学为基础的最广泛日语翻译方法</translation>
     </message>
   </context>
   <context>
