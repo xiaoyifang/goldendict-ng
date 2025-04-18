@@ -776,7 +776,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
           <item row="0" column="2">
            <widget class="QLabel" name="label_10">
             <property name="toolTip">
-             <string>The most widely used method of transcription of Japanese,based on English phonology</string>
+             <string>The most widely used method of transcription of Japanese, based on English phonology</string>
             </property>
             <property name="text">
              <string>Hepburn</string>
