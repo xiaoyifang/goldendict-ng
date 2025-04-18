@@ -1223,7 +1223,7 @@ void ArticleView::forward()
 
 void ArticleView::handleAnkiAction()
 {
-  // React to the "send *word* to anki" action.
+  // React to the "send *word* to Anki" action.
   // If selected text is empty, use the whole article as the definition.
   if ( webview->selectedText().isEmpty() ) {
     makeAnkiCardFromArticle( getActiveArticleId() );
@@ -1423,7 +1423,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
     menu.addAction( saveBookmark );
   }
 
-  // Add anki menu (if enabled)
+  // Add Anki menu (if enabled)
   // If there is no selected text, it will extract text from the current article.
   if ( cfg.preferences.ankiConnectServer.enabled ) {
     menu.addAction( &sendToAnkiAction );

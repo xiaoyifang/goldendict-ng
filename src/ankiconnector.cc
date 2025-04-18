@@ -22,7 +22,7 @@ AnkiConnector::AnkiConnector( QObject * parent, Config::Class const & _cfg ):
 void AnkiConnector::sendToAnki( QString const & word, QString text, QString const & sentence )
 {
   if ( word.isEmpty() ) {
-    emit this->errorText( tr( "anki: can't create a card without a word" ) );
+    emit this->errorText( tr( "Anki: can't create a card without a word" ) );
     return;
   }
 
@@ -91,7 +91,7 @@ void AnkiConnector::postToAnki( QString const & postData )
   auto reply = mgr->post( request, postData.toUtf8() );
   connect( reply, &QNetworkReply::errorOccurred, this, [ this ]( QNetworkReply::NetworkError e ) {
     qWarning() << e;
-    emit this->errorText( tr( "anki: post to anki failed" ) );
+    emit this->errorText( tr( "Anki: post to Anki failed" ) );
   } );
 }
 
@@ -105,17 +105,17 @@ void AnkiConnector::finishedSlot( QNetworkReply * reply )
     // Normally AnkiConnect always returns result and error,
     // unless Anki is not running.
     if ( obj.size() == 2 && obj.contains( "result" ) && obj.contains( "error" ) && obj[ "error" ].isNull() ) {
-      emit errorText( tr( "anki: post to anki success" ) );
+      emit errorText( tr( "Anki: post to Anki success" ) );
     }
     else {
-      emit errorText( tr( "anki: post to anki failed" ) );
+      emit errorText( tr( "Anki: post to Anki failed" ) );
     }
 
-    qDebug().noquote() << "anki response:" << Utils::json2String( obj );
+    qDebug().noquote() << "Anki response:" << Utils::json2String( obj );
   }
   else {
-    qDebug() << "anki connect error" << reply->errorString();
-    emit errorText( "anki:" + reply->errorString() );
+    qDebug() << "Anki connect error" << reply->errorString();
+    emit errorText( "Anki:" + reply->errorString() );
   }
 
   reply->deleteLater();
