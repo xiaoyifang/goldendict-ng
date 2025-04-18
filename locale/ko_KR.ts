@@ -3995,8 +3995,8 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>프로그램 &lt;b&gt;%1&lt;/b&gt;을 목록에서 삭제하시겠습니까?</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,based on English phonology</source>
-      <translation type="unfinished">The most widely used method of transcription of Japanese,based on English phonology</translation>
+      <source>The most widely used method of transcription of Japanese, based on English phonology</source>
+      <translation>가장 널리 사용되는 일본어 로마자 표기방법으로서,  영어 음성학을 기초로 하고 있습니다 </translation>
     </message>
   </context>
   <context>
