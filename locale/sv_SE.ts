@@ -3997,8 +3997,8 @@ Fullständig lista över tillgängliga språk finns &lt;a href=&quot;https://lin
       <translation>Vill du ta bort programmet &lt;b&gt;%1&lt;/b&gt; ur listan?</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,based on English phonology</source>
-      <translation>Den mest använda metoden av transkription av japanska, baserad på engelsk fonologi</translation>
+      <source>The most widely used method of transcription of Japanese, based on English phonology</source>
+      <translation>Den mest använda metoden av transkription av japanska, baserat på engelsk fonologi</translation>
     </message>
   </context>
   <context>
