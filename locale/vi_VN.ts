@@ -3987,8 +3987,8 @@ Có thể tìm thấy danh sách đầy đủ các ngôn ngữ khả dụng &lt;
       <translation>Xoá chương trình &lt;b&gt;%1&lt;/b&gt; khỏi danh sách?</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,based on English phonology</source>
-      <translation type="unfinished">The most widely used method of transcription of Japanese,based on English phonology</translation>
+      <source>The most widely used method of transcription of Japanese, based on English phonology</source>
+      <translation type="unfinished">The most widely used method of transcription of Japanese, based on English phonology</translation>
     </message>
   </context>
   <context>
