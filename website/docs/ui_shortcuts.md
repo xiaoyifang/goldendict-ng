@@ -50,4 +50,5 @@
 | F2                    | (In main window) save current page to html                                                                                       |
 | F3                    | Dictionaries dialog                                                                                                              |
 | F4                    | GoldenDict preferences                                                                                                           |
+| F11                   | Open configuration folder  |
 | F12                   | Inspector                                                                                                                        |

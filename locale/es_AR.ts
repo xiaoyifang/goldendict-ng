@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation type="unfinished">Anki: can&apos;t create a card without a word</translation>
+      <translation>Anki: no se puede crear una carta sin una palabra</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation type="unfinished">Anki: post to Anki failed</translation>
+      <translation>Anki: mensaje a Anki fallido</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation type="unfinished">Anki: post to Anki success</translation>
+      <translation>Anki: post para éxito Anki</translation>
     </message>
   </context>
   <context>
@@ -3110,7 +3110,7 @@ para todos los accesos a la red del programa.</translation>
     </message>
     <message>
       <source>Anki Connect</source>
-      <translation>anki conectar</translation>
+      <translation>Anki conectar</translation>
     </message>
     <message>
       <source>http://</source>

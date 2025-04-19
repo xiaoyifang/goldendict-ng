@@ -1,4 +1,7 @@
 name: Release All
+concurrency: 
+   group: ${{ github.workflow }}-${{ github.ref }}
+   cancel-in-progress: true
 env: 
   version: 25.06.0
   prerelease: ${{ !contains(github.ref_name,'master') }}

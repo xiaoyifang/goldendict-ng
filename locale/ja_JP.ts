@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation>安置：安置に失敗。</translation>
+      <translation>アンキアンキへの配置が失敗した</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation>安芸：安芸投稿成功</translation>
+      <translation>「アンキアンキ成功へのポスト」</translation>
     </message>
   </context>
   <context>

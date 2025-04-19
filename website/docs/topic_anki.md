@@ -3,10 +3,10 @@
 
 
 # prerequisite
-1. install anki
+1. install Anki
 2. install ankiconnect
 
-# configure anki
+# configure Anki
 
 ## 1. create a new model, or use an existing model
 
