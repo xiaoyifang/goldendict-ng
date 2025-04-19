@@ -3937,12 +3937,6 @@ Fullständig lista över tillgängliga språk finns &lt;a href=&quot;https://lin
       <translation>System:</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,
-based on English phonology</source>
-      <translation>Den mest utbredda metoden för transkribering av japanska,
-baserad på engelsk fonologi.</translation>
-    </message>
-    <message>
       <source>Hepburn</source>
       <translation>Hepburn</translation>
     </message>
@@ -4001,6 +3995,10 @@ baserad på engelsk fonologi.</translation>
     <message>
       <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>Vill du ta bort programmet &lt;b&gt;%1&lt;/b&gt; ur listan?</translation>
+    </message>
+    <message>
+      <source>The most widely used method of transcription of Japanese, based on English phonology</source>
+      <translation>Den mest använda metoden av transkription av japanska, baserat på engelsk fonologi</translation>
     </message>
   </context>
   <context>

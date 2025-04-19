@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation>Anki: can&apos;t mä tarjeta jan arut luraspa</translation>
+      <translation type="unfinished">Anki: can&apos;t create a card without a word</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation>Anki: post ukax Anki ukarux janiw phuqhaskiti</translation>
+      <translation type="unfinished">Anki: post to Anki failed</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation>Anki: post ukax Anki suma sarantäwipawa</translation>
+      <translation type="unfinished">Anki: post to Anki success</translation>
     </message>
   </context>
   <context>
@@ -4057,12 +4057,6 @@ Taqi lista utjki uka arunakax &lt;a href=&quot;https://lingualibre.org/wiki/Ling
       <translation>Kunjams qillqaña:</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,
-based on English phonology</source>
-      <translation>Japonés aru qillqañataki,
-ingles arusutampiwa lurata</translation>
-    </message>
-    <message>
       <source>Hepburn</source>
       <translation>Hepburn sat chachan luratawa</translation>
     </message>
@@ -4124,6 +4118,10 @@ ingles arusutampiwa lurata</translation>
       <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>¿&lt;b&gt;%1&lt;/b&gt; programa tantat apaqañ muntati?&lt;br&gt;&lt;br&gt;
 ¿Quiere eliminar el programa &lt;b&gt;%1&lt;/b&gt; de la lista?</translation>
+    </message>
+    <message>
+      <source>The most widely used method of transcription of Japanese, based on English phonology</source>
+      <translation type="unfinished">The most widely used method of transcription of Japanese, based on English phonology</translation>
     </message>
   </context>
   <context>

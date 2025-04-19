@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation>анкі: не вдалося виконати публікацію</translation>
+      <translation>Анкі: не вдалося надіслати повідомлення до Анки</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation>анкі: успішний пост</translation>
+      <translation>Анкі: успішне повідомлення до Анки</translation>
     </message>
   </context>
   <context>
@@ -3935,12 +3935,6 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>Системи:</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,
-based on English phonology</source>
-      <translation>Найпоширеніший спосіб транскрибування японської,
-яка ґрунтується на англійській фонології</translation>
-    </message>
-    <message>
       <source>Hepburn</source>
       <translation>Хепбьорн</translation>
     </message>
@@ -3999,6 +3993,10 @@ based on English phonology</source>
     <message>
       <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>Вилучити програму &lt;b&gt;%1&lt;/b&gt; зі списку?</translation>
+    </message>
+    <message>
+      <source>The most widely used method of transcription of Japanese, based on English phonology</source>
+      <translation>Найбільш поширений метод транскрипції японської та базується на англійській фонології</translation>
     </message>
   </context>
   <context>

@@ -3930,12 +3930,6 @@ La liste complète des langues disponibles peut être trouvée &lt;a href=&quot;
       <translation>Systèmes :</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,
-based on English phonology</source>
-      <translation>La méthode la plus largement utilisée pour transcrire le japonais,
-basée sur la phonologie anglaise</translation>
-    </message>
-    <message>
       <source>Hepburn</source>
       <translation>Hepburn</translation>
     </message>
@@ -3994,6 +3988,10 @@ basée sur la phonologie anglaise</translation>
     <message>
       <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>Retirer le programme &lt;b&gt;%1&lt;/b&gt; de la liste ?</translation>
+    </message>
+    <message>
+      <source>The most widely used method of transcription of Japanese, based on English phonology</source>
+      <translation>La méthode de transcription la plus utilisée du japonais, basée sur la phonologie anglaise</translation>
     </message>
   </context>
   <context>

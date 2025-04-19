@@ -3913,11 +3913,6 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>तन्त्र:</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,
-based on English phonology</source>
-      <translation>आङ्ग्ल स्वरविज्ञान पर आधारित, जापानी प्रतिलेखन में सबसे व्यापक रूप से प्रयोग किये जाने वाली पद्धति</translation>
-    </message>
-    <message>
       <source>Hepburn</source>
       <translation>हेपबर्न</translation>
     </message>
@@ -3976,6 +3971,10 @@ based on English phonology</source>
     <message>
       <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>प्रोग्राम &lt;b&gt;%1&lt;/b&gt; को सूची से निकालें?</translation>
+    </message>
+    <message>
+      <source>The most widely used method of transcription of Japanese, based on English phonology</source>
+      <translation type="unfinished">The most widely used method of transcription of Japanese, based on English phonology</translation>
     </message>
   </context>
   <context>
