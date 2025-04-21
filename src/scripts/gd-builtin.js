@@ -88,35 +88,51 @@ function emitClickedEvent(link) {
 
 function gdExpandArticle(id) {
   emitClickedEvent();
-  elem = document.getElementById("gdarticlefrom-" + id);
-  ico = document.getElementById("expandicon-" + id);
-  art = document.getElementById("gdfrom-" + id);
-  if (elem.style.display == "inline") {
-    elem.style.display = "none";
-    ico.className = "gdexpandicon";
-    art.className = art.className + " gdcollapsedarticle";
-    nm = document.getElementById("gddictname-" + id);
-    nm.style.cursor = "pointer";
-    nm.title = "";
+
+  const articleContent = document.getElementById("gdarticlefrom-" + id);
+  const expandIcon = document.getElementById("expandicon-" + id);
+  const articleElement = document.getElementById("gdfrom-" + id);
+  const dictNameElement = document.getElementById("gddictname-" + id);
+
+  if (!articleContent || !expandIcon || !articleElement || !dictNameElement) {
+    console.warn("One or more required elements not found for id:", id);
+    return;
+  }
+
+  const isExpanded = articleContent.style.display === "inline";
+
+  if (isExpanded) {
+    articleContent.style.display = "none";
+    expandIcon.className = "gdexpandicon";
+    articleElement.classList.add("gdcollapsedarticle");
+
+    dictNameElement.style.cursor = "pointer";
+    dictNameElement.title = "";
+
     articleview.collapseInHtml(id, true);
-  } else if (elem.style.display == "none") {
-    elem.style.display = "inline";
-    ico.className = "gdcollapseicon";
-    art.className = art.className.replace(" gdcollapsedarticle", "");
-    nm = document.getElementById("gddictname-" + id);
-    nm.style.cursor = "default";
-    nm.title = "";
+  } else {
+    articleContent.style.display = "inline";
+    expandIcon.className = "gdcollapseicon";
+    articleElement.classList.remove("gdcollapsedarticle");
+
+    dictNameElement.style.cursor = "default";
+    dictNameElement.title = "";
+
     articleview.collapseInHtml(id, false);
   }
 }
 
 function gdCheckArticlesNumber() {
-  elems = document.getElementsByClassName("gddictname");
-  if (elems.length == 1) {
-    el = elems.item(0);
-    s = el.id.replace("gddictname-", "");
-    el = document.getElementById("gdfrom-" + s);
-    if (el && el.className.search("gdcollapsedarticle") > 0) gdExpandArticle(s);
+  const dictNameElements = document.getElementsByClassName("gddictname");
+
+  if (dictNameElements.length === 1) {
+    const dictNameElement = dictNameElements[0];
+    const articleId = dictNameElement.id.replace("gddictname-", "");
+    const articleElement = document.getElementById("gdfrom-" + articleId);
+
+    if (articleElement && articleElement.className.includes("gdcollapsedarticle")) {
+      gdExpandArticle(articleId);
+    }
   }
 }
 
