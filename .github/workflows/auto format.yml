@@ -36,7 +36,7 @@ jobs:
 
 
   css-js-html-format:
-    name: format css, js, html
+    name: format css/js/html
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
