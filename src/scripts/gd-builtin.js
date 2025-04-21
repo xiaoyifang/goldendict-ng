@@ -130,7 +130,10 @@ function gdCheckArticlesNumber() {
     const articleId = dictNameElement.id.replace("gddictname-", "");
     const articleElement = document.getElementById("gdfrom-" + articleId);
 
-    if (articleElement && articleElement.className.includes("gdcollapsedarticle")) {
+    if (
+      articleElement &&
+      articleElement.className.includes("gdcollapsedarticle")
+    ) {
       gdExpandArticle(articleId);
     }
   }
