@@ -91,16 +91,12 @@ function gdExpandArticle(id) {
   elem = document.getElementById("gdarticlefrom-" + id);
   ico = document.getElementById("expandicon-" + id);
   art = document.getElementById("gdfrom-" + id);
-  ev = window.event;
-  t = null;
-  if (ev) t = ev.target || ev.srcElement;
   if (elem.style.display == "inline") {
     elem.style.display = "none";
     ico.className = "gdexpandicon";
     art.className = art.className + " gdcollapsedarticle";
     nm = document.getElementById("gddictname-" + id);
     nm.style.cursor = "pointer";
-    if (ev) ev.stopPropagation();
     nm.title = "";
     articleview.collapseInHtml(id, true);
   } else if (elem.style.display == "none") {
@@ -145,6 +141,8 @@ function gdAttachEventHandlers() {
         ?.getAttribute("data-gd-id");
 
       gdExpandArticle(articleId);
+
+      event.stopPropagation();
     }
   });
 
