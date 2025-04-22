@@ -90,7 +90,7 @@ jobs:
           version: ${{ matrix.qt_ver }}
           arch: win64_msvc2019_64
           modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
-          setup-python: 'false'
+          # setup-python: 'false'
       - uses: actions/checkout@v4
         with:
           submodules: true
