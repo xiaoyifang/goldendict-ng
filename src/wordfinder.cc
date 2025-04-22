@@ -246,30 +246,31 @@ bool hasSurroundedWithWs( std::u32string const & haystack,
 } // namespace
 
 
-
-int WordFinder::levenshteinDistance(const std::u32string &s1, const std::u32string &s2) {
+int WordFinder::levenshteinDistance( const std::u32string & s1, const std::u32string & s2 )
+{
   int len1 = s1.size();
   int len2 = s2.size();
-  std::vector<std::vector<int>> dp(len1 + 1, std::vector<int>(len2 + 1));
+  std::vector< std::vector< int > > dp( len1 + 1, std::vector< int >( len2 + 1 ) );
 
-  for (int i = 0; i <= len1; ++i) {
-      dp[i][0] = i;
+  for ( int i = 0; i <= len1; ++i ) {
+    dp[ i ][ 0 ] = i;
   }
-  for (int j = 0; j <= len2; ++j) {
-      dp[0][j] = j;
+  for ( int j = 0; j <= len2; ++j ) {
+    dp[ 0 ][ j ] = j;
   }
 
-  for (int i = 1; i <= len1; ++i) {
-      for (int j = 1; j <= len2; ++j) {
-          if (s1[i - 1] == s2[j - 1]) {
-              dp[i][j] = dp[i - 1][j - 1];
-          } else {
-              dp[i][j] = 1 + std::min({dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]});
-          }
+  for ( int i = 1; i <= len1; ++i ) {
+    for ( int j = 1; j <= len2; ++j ) {
+      if ( s1[ i - 1 ] == s2[ j - 1 ] ) {
+        dp[ i ][ j ] = dp[ i - 1 ][ j - 1 ];
       }
+      else {
+        dp[ i ][ j ] = 1 + std::min( { dp[ i - 1 ][ j ], dp[ i ][ j - 1 ], dp[ i - 1 ][ j - 1 ] } );
+      }
+    }
   }
 
-  return dp[len1][len2];
+  return dp[ len1 ][ len2 ];
 }
 
 void WordFinder::updateResults()
