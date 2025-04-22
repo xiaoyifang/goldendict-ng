@@ -151,7 +151,7 @@ private:
 
   // Starts the previously queued search.
   void startSearch();
-
+  int levenshteinDistance( const std::u32string & s1, const std::u32string & s2 );
   // Cancels all searches. Useful to do before destroying them all, since they
   // would cancel in parallel.
   void cancelSearches();

@@ -245,6 +245,33 @@ bool hasSurroundedWithWs( std::u32string const & haystack,
 
 } // namespace
 
+
+
+int WordFinder::levenshteinDistance(const std::u32string &s1, const std::u32string &s2) {
+  int len1 = s1.size();
+  int len2 = s2.size();
+  std::vector<std::vector<int>> dp(len1 + 1, std::vector<int>(len2 + 1));
+
+  for (int i = 0; i <= len1; ++i) {
+      dp[i][0] = i;
+  }
+  for (int j = 0; j <= len2; ++j) {
+      dp[0][j] = j;
+  }
+
+  for (int i = 1; i <= len1; ++i) {
+      for (int j = 1; j <= len2; ++j) {
+          if (s1[i - 1] == s2[j - 1]) {
+              dp[i][j] = dp[i - 1][j - 1];
+          } else {
+              dp[i][j] = 1 + std::min({dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]});
+          }
+      }
+  }
+
+  return dp[len1][len2];
+}
+
 void WordFinder::updateResults()
 {
   if ( !searchInProgress.load() ) {
@@ -341,84 +368,8 @@ void WordFinder::updateResults()
     if ( searchType == PrefixMatch ) {
       /// Assign each result a category, storing it in the rank's field
 
-      enum Category {
-        ExactMatch,
-        ExactNoFullCaseMatch,
-        ExactNoDiaMatch,
-        ExactNoPunctMatch,
-        ExactNoWsMatch,
-        ExactInsideMatch,
-        ExactNoDiaInsideMatch,
-        ExactNoPunctInsideMatch,
-        PrefixMatch,
-        PrefixNoDiaMatch,
-        PrefixNoPunctMatch,
-        PrefixNoWsMatch,
-        WorstMatch,
-        Multiplier = 256 // Categories should be multiplied by Multiplier
-      };
-
-      for ( const auto & allWordWriting : allWordWritings ) {
-        std::u32string target           = Folding::applySimpleCaseOnly( allWordWriting );
-        std::u32string targetNoFullCase = Folding::applyFullCaseOnly( target );
-        std::u32string targetNoDia      = Folding::applyDiacriticsOnly( targetNoFullCase );
-        std::u32string targetNoPunct    = Folding::applyPunctOnly( targetNoDia );
-        std::u32string targetNoWs       = Folding::applyWhitespaceOnly( targetNoPunct );
-
-        std::u32string::size_type matchPos = 0;
-
-        for ( const auto & i : resultsIndex ) {
-          std::u32string resultNoFullCase, resultNoDia, resultNoPunct, resultNoWs;
-
-          int rank;
-
-          if ( i.first == target ) {
-            rank = ExactMatch * Multiplier;
-          }
-          else if ( ( resultNoFullCase = Folding::applyFullCaseOnly( i.first ) ) == targetNoFullCase ) {
-            rank = ExactNoFullCaseMatch * Multiplier;
-          }
-          else if ( ( resultNoDia = Folding::applyDiacriticsOnly( resultNoFullCase ) ) == targetNoDia ) {
-            rank = ExactNoDiaMatch * Multiplier;
-          }
-          else if ( ( resultNoPunct = Folding::applyPunctOnly( resultNoDia ) ) == targetNoPunct ) {
-            rank = ExactNoPunctMatch * Multiplier;
-          }
-          else if ( ( resultNoWs = Folding::applyWhitespaceOnly( resultNoPunct ) ) == targetNoWs ) {
-            rank = ExactNoWsMatch * Multiplier;
-          }
-          else if ( hasSurroundedWithWs( i.first, target, matchPos ) ) {
-            rank = ExactInsideMatch * Multiplier + matchPos;
-          }
-          else if ( hasSurroundedWithWs( resultNoDia, targetNoDia, matchPos ) ) {
-            rank = ExactNoDiaInsideMatch * Multiplier + matchPos;
-          }
-          else if ( hasSurroundedWithWs( resultNoPunct, targetNoPunct, matchPos ) ) {
-            rank = ExactNoPunctInsideMatch * Multiplier + matchPos;
-          }
-          else if ( i.first.size() > target.size() && i.first.compare( 0, target.size(), target ) == 0 ) {
-            rank = PrefixMatch * Multiplier + saturated( i.first.size() );
-          }
-          else if ( resultNoDia.size() > targetNoDia.size()
-                    && resultNoDia.compare( 0, targetNoDia.size(), targetNoDia ) == 0 ) {
-            rank = PrefixNoDiaMatch * Multiplier + saturated( i.first.size() );
-          }
-          else if ( resultNoPunct.size() > targetNoPunct.size()
-                    && resultNoPunct.compare( 0, targetNoPunct.size(), targetNoPunct ) == 0 ) {
-            rank = PrefixNoPunctMatch * Multiplier + saturated( i.first.size() );
-          }
-          else if ( resultNoWs.size() > targetNoWs.size()
-                    && resultNoWs.compare( 0, targetNoWs.size(), targetNoWs ) == 0 ) {
-            rank = PrefixNoWsMatch * Multiplier + saturated( i.first.size() );
-          }
-          else {
-            rank = WorstMatch * Multiplier;
-          }
-
-          if ( i.second->rank > rank ) {
-            i.second->rank = rank; // We store the best rank of any writing
-          }
-        }
+      for ( const auto & i : resultsIndex ) {
+        i.second->rank = levenshteinDistance( allWordWriting[ 0 ], i.first );
       }
 
       resultsArray.sort( SortByRank() );
