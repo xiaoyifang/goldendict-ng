@@ -4,9 +4,19 @@ concurrency:
    cancel-in-progress: true
 on: 
   workflow_dispatch:
+    inputs:
+      build_macOS:
+        description: 'Build macOS'
+        type: boolean
+        default: false
+      build_Windows:
+        description: 'Build Windows'
+        type: boolean
+        default: true
 
 jobs:
   build_macOS:
+    if: github.event.inputs.build_macOS == 'true'
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -66,6 +76,7 @@ jobs:
           path: '*.dmg'
 
   build_Windows:
+    if: github.event.inputs.build_Windows == 'true'
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
