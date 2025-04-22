@@ -370,7 +370,7 @@ void WordFinder::updateResults()
       /// Assign each result a category, storing it in the rank's field
 
       for ( const auto & i : resultsIndex ) {
-        i.second->rank = levenshteinDistance( allWordWriting[ 0 ], i.first );
+        i.second->rank = levenshteinDistance( allWordWritings[ 0 ], i.first );
       }
 
       resultsArray.sort( SortByRank() );
