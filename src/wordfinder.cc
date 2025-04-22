@@ -206,45 +206,6 @@ void WordFinder::requestFinished()
   }
 }
 
-namespace {
-
-
-unsigned saturated( unsigned x )
-{
-  return x < 255 ? x : 255;
-}
-
-/// Checks whether the first string has the second one inside, surrounded from
-/// both sides by either whitespace, punctuation or begin/end of string.
-/// If true is returned, pos holds the offset in the haystack. If the offset
-/// is larger than 255, it is set to 255.
-bool hasSurroundedWithWs( std::u32string const & haystack,
-                          std::u32string const & needle,
-                          std::u32string::size_type & pos )
-{
-  if ( haystack.size() < needle.size() ) {
-    return false; // Needle won't even fit into a haystack
-  }
-
-  for ( pos = 0;; ++pos ) {
-    pos = haystack.find( needle, pos );
-
-    if ( pos == std::u32string::npos ) {
-      return false; // Not found
-    }
-
-    if ( ( !pos || Folding::isWhitespace( haystack[ pos - 1 ] ) || Folding::isPunct( haystack[ pos - 1 ] ) )
-         && ( ( pos + needle.size() == haystack.size() ) || Folding::isWhitespace( haystack[ pos + needle.size() ] )
-              || Folding::isPunct( haystack[ pos + needle.size() ] ) ) ) {
-      pos = saturated( pos );
-
-      return true;
-    }
-  }
-}
-
-} // namespace
-
 
 int WordFinder::levenshteinDistance( const std::u32string & s1, const std::u32string & s2 )
 {
