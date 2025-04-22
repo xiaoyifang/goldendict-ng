@@ -72,7 +72,7 @@ jobs:
         os: [windows-2022]
         qt_ver: [ 6.7.2 ]
     steps:
-      - uses: jurplel/install-qt-action@main
+      - uses: jurplel/install-qt-action@v4.2.1
         with:
           version: ${{ matrix.qt_ver }}
           arch: win64_msvc2019_64
