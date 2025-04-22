@@ -47,7 +47,7 @@ jobs:
         run: |
           git clone https://github.com/xiaoyifang/eb.git
           cd eb && ./configure && make -j 8 && sudo make install && cd ..         
-      - uses: jurplel/install-qt-action@v4
+      - uses: jurplel/install-qt-action@v4.2.1
         with:
           version: ${{ matrix.qt_ver }}
           arch: clang_64
