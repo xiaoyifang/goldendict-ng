@@ -11,7 +11,7 @@ All dictionaries must be placed in the «content» folder alongside the main pro
 
 folder structure:
 ```
-goldendict.ext
+goldendict.exe
 portable/
 content/
 ...
