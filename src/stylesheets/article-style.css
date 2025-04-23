@@ -406,11 +406,9 @@ div.xdxf {
   display: inline-block;
   width: 24px; /* Adjust the width as needed */
   height: 24px; /* Adjust the height as needed */
-  background-image: url("qrc:///icons/playsound.png");
+  background-image: url('qrc:///icons/playsound.svg');
   background-size: cover;
   background-repeat: no-repeat;
-  border: 0;
-  vertical-align: middle;
 }
 
 /************* DSL dictionaries **************/
