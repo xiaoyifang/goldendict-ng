@@ -221,7 +221,7 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( std::u32string c
 
     result += addAudioLink( url.toEncoded(), getId() );
 
-    result += "<a href=" + ref + R"(><img src="qrc:///icons/playsound.png" border="0" alt="Play"/></a>)";
+    result += "<a href=" + ref + R"( class="audio-play-icon"></a>)";
     result += "<a href=" + ref + ">" + _displayName + "</a>";
     result += "</div>";
   }
@@ -269,7 +269,7 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getArticle( std::u32string c
 
     addAudioLink( url.toEncoded(), getId() );
 
-    result += "<a href=" + ref + R"(><img src="qrc:///icons/playsound.png" border="0" alt="Play"/></a>)";
+    result += "<a href=" + ref + R"( class="audio-play-icon"></a>)";
     result += "<a href=" + ref + ">" + _displayName + "</a>";
     result += "</div>";
   }

@@ -355,8 +355,7 @@ void LinguaArticleRequest::requestFinished( QNetworkReply * r )
       //play icon
       articleBody += R"(<a href=")";
       articleBody += audiolink;
-      articleBody += R"(" role="button">)";
-      articleBody += R"(<img src="qrc:///icons/playsound.png" border="0" alt="Play"/>)";
+      articleBody += R"(" role="button" class="audio-play-icon">)";
       articleBody += "</a>";
       //text
       articleBody += R"(<a href=")";
