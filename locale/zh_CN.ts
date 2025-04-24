@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation>Anki: 无法创建一个没有单词的卡片</translation>
+      <translation>Anki:&apos;t 可以创建一个没有单词的卡</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation>Anki:发布失败</translation>
+      <translation>Anki：发布到 Anki 失败</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation>Anki: 发布成功</translation>
+      <translation>Anki：发帖至Anki 成功</translation>
     </message>
   </context>
   <context>
@@ -311,7 +311,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Taiwan variant</source>
-      <translation>Taiwan variant</translation>
+      <translation>台湾变体</translation>
     </message>
     <message>
       <source>Hong Kong variant</source>
@@ -3918,11 +3918,6 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>方案：</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,
-based on English phonology</source>
-      <translation>以英文语音学为基础建立的，最常用的日文转写方案</translation>
-    </message>
-    <message>
       <source>Hepburn</source>
       <translation>黑本式</translation>
     </message>
@@ -3981,6 +3976,10 @@ based on English phonology</source>
     <message>
       <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>从列表中删除程序 &lt;b&gt;%1&lt;/b&gt;？</translation>
+    </message>
+    <message>
+      <source>The most widely used method of transcription of Japanese, based on English phonology</source>
+      <translation>基于英语音系的日语最广泛使用的转录方法</translation>
     </message>
   </context>
   <context>

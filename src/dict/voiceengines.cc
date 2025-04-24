@@ -98,7 +98,7 @@ VoiceEnginesDictionary::getArticle( u32string const & word, vector< u32string > 
   string ref        = string( "\"" ) + encodedUrl + "\"";
   addAudioLink( encodedUrl, getId() );
 
-  result += "<a href=" + ref + R"(><img src="qrc:///icons/playsound.png" border="0" alt="Play"/></a>)";
+  result += "<a href=" + ref + R"( class="audio-play-icon"></a>)";
   result += "<a href=" + ref + ">" + Html::escape( wordUtf8 ) + "</a>";
   result += "</div></div>";
 

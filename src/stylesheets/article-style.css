@@ -402,6 +402,15 @@ div.xdxf {
   height: 24px;
 }
 
+.audio-play-icon {
+  display: inline-block;
+  width: 24px; /* Adjust the width as needed */
+  height: 24px; /* Adjust the height as needed */
+  background-image: url("qrc:///icons/playsound.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 /************* DSL dictionaries **************/
 
 .dsl_u {

@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation>Anki: нельзя создать карточку без слова</translation>
+      <translation>Анки: может&apos;t создать карту без слова</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation>Anki: сообщение в Anki не удалось</translation>
+      <translation>Анки: сообщение в Анки не удалось</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation>Anki: сообщение в Anki успешно</translation>
+      <translation>Анки: запись в Anki успеха</translation>
     </message>
   </context>
   <context>
@@ -3945,12 +3945,6 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>Системы:</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,
-based on English phonology</source>
-      <translation>Наиболее популярный метод транскрибирования Японского,
-основанный на Английской фонологии</translation>
-    </message>
-    <message>
       <source>Hepburn</source>
       <translation>Хэпбёрн</translation>
     </message>
@@ -4009,6 +4003,10 @@ based on English phonology</source>
     <message>
       <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>Удалить программу &lt;b&gt;%1&lt;/b&gt; из списка?</translation>
+    </message>
+    <message>
+      <source>The most widely used method of transcription of Japanese, based on English phonology</source>
+      <translation>Наиболее распространенный метод транскрипции японского языка на основе английского языка</translation>
     </message>
   </context>
   <context>

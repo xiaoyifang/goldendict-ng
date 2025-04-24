@@ -271,7 +271,7 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( std::u32string const 
 
     addAudioLink( url.toEncoded(), getId() );
 
-    result += "<a href=" + ref + R"(><img src="qrc:///icons/playsound.png" border="0" alt="Play"/></a>)";
+    result += "<a href=" + ref + R"( class="audio-play-icon"></a>)";
     result += "<a href=" + ref + ">" + i->second + "</a>";
     result += "</div>";
   }
@@ -288,7 +288,7 @@ sptr< Dictionary::DataRequest > LsaDictionary::getArticle( std::u32string const 
 
     result += addAudioLink( url.toEncoded(), getId() );
 
-    result += "<a href=" + ref + R"(><img src="qrc:///icons/playsound.png" border="0" alt="Play"/></a>)";
+    result += "<a href=" + ref + R"( class="audio-play-icon"></a>)";
     result += "<a href=" + ref + ">" + i->second + "</a>";
     result += "</div>";
   }

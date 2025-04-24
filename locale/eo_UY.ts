@@ -3935,12 +3935,6 @@ Plena listo de disponeblaj lingvoj troveblas &lt;a href=&quot;https://lingualibr
       <translation>Sistemoj:</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,
-based on English phonology</source>
-      <translation>La plej uzata metodo de transskribo de la japana,
-bazita sur angla fonologio</translation>
-    </message>
-    <message>
       <source>Hepburn</source>
       <translation>Hepburn</translation>
     </message>
@@ -3999,6 +3993,10 @@ bazita sur angla fonologio</translation>
     <message>
       <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>Ĉu forigi programon &lt;b&gt;%1&lt;/b&gt; el la listo?</translation>
+    </message>
+    <message>
+      <source>The most widely used method of transcription of Japanese, based on English phonology</source>
+      <translation>La plej uzata metodo de transskribo de la japana, bazita sur angla fonologio</translation>
     </message>
   </context>
   <context>

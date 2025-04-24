@@ -258,7 +258,7 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( std::u32string 
 
     result += addAudioLink( url.toEncoded(), getId() );
 
-    result += "<a href=" + ref + R"(><img src="qrc:///icons/playsound.png" border="0" alt="Play"/></a>)";
+    result += "<a href=" + ref + R"( class="audio-play-icon"></a>)";
     result += "<a href=" + ref + ">" + Html::escape( displayedName ) + "</a>";
     result += "</div>";
   }
@@ -300,7 +300,7 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( std::u32string 
 
     addAudioLink( url.toEncoded(), getId() );
 
-    result += "<a href=" + ref + R"(><img src="qrc:///icons/playsound.png" border="0" alt="Play"/></a>)";
+    result += "<a href=" + ref + R"( class="audio-play-icon"></a>)";
     result += "<a href=" + ref + ">" + Html::escape( displayedName ) + "</a>";
     result += "</div>";
   }
