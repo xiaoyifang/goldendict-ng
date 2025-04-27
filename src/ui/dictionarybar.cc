@@ -120,6 +120,7 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
   const QAction * infoAction           = nullptr;
   const QAction * headwordsAction      = nullptr;
   const QAction * openDictFolderAction = nullptr;
+  const QAction * reindexAction = nullptr;
 
 
   QString dictFilename;
@@ -145,6 +146,8 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
         }
 
         openDictFolderAction = menu.addAction( tr( "Open dictionary folder" ) );
+
+        reindexAction = menu.addAction( tr( "Open dictionary folder" ) );
       }
     }
   }
@@ -199,6 +202,17 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
   if ( result && result == openDictFolderAction ) {
     QString const id = dictAction->data().toString();
     emit openDictionaryFolder( id );
+    return;
+  }
+
+  if ( result && result == reindexAction ) {
+    std::string const id = dictAction->data().toString().toStdString();
+    for ( const auto & dict : allDictionaries ) {
+      if ( id == dict->getId() ) {
+        dict->setReIndex();
+        break;
+      }
+    }
     return;
   }
 
