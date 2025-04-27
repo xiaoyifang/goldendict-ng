@@ -176,6 +176,10 @@ public:
     return true;
   }
 
+  virtual void setReIndex(){
+    reIndex = true;
+  }
+
   virtual bool getHeadwords( QStringList & headwords );
   virtual void findHeadWordsWithLenth( int &, QSet< QString > * headwords, uint32_t length );
 
@@ -206,6 +210,8 @@ public:
 protected:
   QMutex ftsIdxMutex;
   string ftsIdxName;
+
+  bool reIndex = false;
 
   friend class BtreeWordSearchRequest;
   friend class FTSResultsRequest;
