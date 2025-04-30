@@ -172,7 +172,6 @@ void WordFinder::requestFinished()
   if ( !searchInProgress.load() ) {
     return;
   }
-  QMutexLocker locker( &mutex );
   // See how many new requests have finished, and if we have any new results
   // Create a snapshot of queuedRequests to avoid iterator invalidation
   auto snapshot = queuedRequests.snapshot();
