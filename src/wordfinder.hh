@@ -67,7 +67,7 @@ private:
   ResultsIndex resultsIndex;
 
   /// Mutex to protect the vector of allWordWritings
-  std::vector< std::u32string > allWordWritings()
+  std::vector< std::u32string > getAllWordWritings()
   {
     QMutexLocker locker( &mutex );
     return _allWordWritings;

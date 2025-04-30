@@ -251,7 +251,7 @@ void WordFinder::updateResults()
     updateResultsTimer.stop(); // Can happen when we were done before it'd expire
   }
 
-  auto allWordWritings = allWordWritings();
+  auto allWordWritings = getAllWordWritings();
 
   std::u32string original = Folding::applySimpleCaseOnly( allWordWritings[ 0 ] );
 
