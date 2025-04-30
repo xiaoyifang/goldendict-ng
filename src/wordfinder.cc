@@ -111,7 +111,7 @@ void WordFinder::startSearch()
   updateResultsTimer.start();
 
   // Gather all writings of the word
-  std::vector< std::u32string > allWordWritings; 
+  std::vector< std::u32string > allWordWritings;
   allWordWritings.resize( 1 );
 
   allWordWritings[ 0 ] = inputWord.toStdU32String();
