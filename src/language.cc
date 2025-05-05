@@ -543,7 +543,8 @@ QString languageForLocale( const QString & locale )
                                       Db::instance().locale2LanguageMap()[ locale ].toStdString().c_str() );
 }
 
-QMap<QString, QString> languageMap() {
+QMap< QString, QString > languageMap()
+{
   return Db::instance().locale2LanguageMap();
 }
 } // namespace Language

@@ -62,8 +62,8 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   // We need to sort by language name, otherwise list looks really weird
   QMultiMap< QString, QString > sortedLocs;
 
-  for (const auto &[locale, _]: Language::languageMap().asKeyValueRange()) {
-    sortedLocs.insert(Language::languageForLocale(locale), locale);
+  for ( const auto & [ locale, _ ] : Language::languageMap().asKeyValueRange() ) {
+    sortedLocs.insert( Language::languageForLocale( locale ), locale );
   }
 
   for ( auto i = sortedLocs.begin(); i != sortedLocs.end(); ++i ) {
