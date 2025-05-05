@@ -542,4 +542,8 @@ QString languageForLocale( const QString & locale )
   return QCoreApplication::translate( "Language::Db",
                                       Db::instance().locale2LanguageMap()[ locale ].toStdString().c_str() );
 }
+
+QMap<QString, QString> languageMap() {
+  return Db::instance().locale2LanguageMap();
+}
 } // namespace Language
