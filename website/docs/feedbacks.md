@@ -1,39 +1,34 @@
-## Suggestions & Ideas
-
-Send them to [Discussions](https://github.com/xiaoyifang/goldendict/discussions)
-
 ## Bugs
 
-Report any bugs & dysfunctions to [issues list](<https://github.com/xiaoyifang/goldendict/issues>)
+Report any bugs & dysfunctions to [issues](<https://github.com/xiaoyifang/goldendict/issues>)
 
-Attach your version info in menu "About" -> "Copy version info".
+If a certain dictionary leads to problems, you **must** attach the dict files or provide download links in bug reports.
 
-GoldenDict-ng can be started with "--log-to-file" that will creates "gd_log.txt" in configuration folder and store various warnings, errors and debug messages.
+Attach your version info in the menu "About" --> "Copy version info".
 
-On windows, try open command line and starts goldendict with `goldendict --log-to-file`.
+## Windows
 
-If certain dictionary lead to problems, please attach the dict files in bug reports.
+Try to gather crash dump and log files when reporting bugs.
 
-## Crash dump file
+### Crash Dump
 
-Gd-ng has built with a crash dmp handler, if you have a crash, please attach the crash dump file in bug reports.
+If GD-ng crashes, upload the `.dmp` file in the `crash` folder, which is beside the main program file.
 
-![alt text](img/crash-dmp.png)
+### Log File
 
-### Windows
+To obtain runtime log, enable Preferences --> Advanced --> "Save debug messages to gd_log.txt in the config folder", a `gd_log.txt` will be generated in the configuration folder
 
-Enabled by default.
+Alternatively, start GD-ng with `--log-to-file` so that GD will create "gd_log.txt" in configuration folder.
 
-upload the recent dmp file to [crash-dmp](https://github.com/xiaoyifang/goldendict/issues/new?assignees=&labels=crash-dmp&template=bug_report.md&title=crash-dmp-file)
+## macOS
 
-### Linux
+macOS has a built-in crash reporter, copy all the info from the bug report window.
 
-Not enabled by default.
+## Linux
 
-Maybe you should build it from source and enable this option(`-DWITH_VCPKG_BREAKPAD=ON` ) and upload the above dmp file.
+If you have no clue, search and learn how to obtain coredumps using tools provided by your distro, and/or learn how to use a debugger. Now is the time.
 
-### macOS
+Noticeably, in recent years, popular distros support new technologies such as `systemd-coredump` and [Debuginfod](https://sourceware.org/elfutils/Debuginfod.html). Traditional approaches include installing debug packages or building from source.
 
-macOS have a built-in crash reporter, copy all the info in the crash window.
+At least, you should start the program in the terminal and upload the log.
 
-[crash-dmp](https://github.com/xiaoyifang/goldendict/issues/new?assignees=&labels=crash-dmp&template=bug_report.md&title=crash-dmp-file)

@@ -9,11 +9,11 @@ The `metadata.toml` should be placed on each dictionary's root folder (beside di
 │    ├── Cambridge.idx
 │    ├── Cambridge.info
 │    ├── Cambridge.syn
-│    └── Cambridge.dict.dz    
+│    └── Cambridge.dict.dz
 └── Collins
      ├── metadata.toml < here
      ├── res.zip
-     └── Collins.dsl 
+     └── Collins.dsl
 ```
 
 ## Override display name
@@ -41,6 +41,7 @@ The `fts` field's value can be `on/off`, `1/0` ,`true/false` etc.
 ```
 fts=false
 ```
+
 will disable the current dictionary's full-text search.
 
 You can check the full-text search status on each dictionary's info dialog.

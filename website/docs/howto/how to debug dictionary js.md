@@ -1,4 +1,5 @@
 ## background
+
 When some js functions do not work as expected, this article tries to give a debug solution to pinpoint the problem.
 
 ## Web inspector (DevTools)
@@ -10,31 +11,30 @@ Screenshot:
 
 ## Navigate to the specified element
 
-Click the find element and move mouse to the specified element, click the element will navigate the source panel to the very place.
+Click the find element and move the mouse to the specified element, click the element will navigate the source panel to the very place.
 ![steps](../img/inspector-steps.png)
 
-## Modify the css style
+## Modify the CSS style
 
-you can play around with the css to modify the appearance of the html and check the results.
+you can play around with the CSS to modify the appearance of the HTML and check the results.
 
 ![style](../img/inspector-style.png)
 
 ## Check javascript events
 
 - navigate to the specified element
-- check eventlisterner panel
+- check the "Event Listeners" panel
 - pay attention to the click events
-- in the following screenshot ,there are two registered event listeners, one from the goldendict `gd-custom.js` and one from the html itself.
-- click the above event listener location will locate to the right place in the javascript.
+- in the following screenshot, there are two registered event listeners, one from the goldendict `gd-custom.js` and one from the HTML itself.
+- click the above event listener location will locate to the right place in the JavaScript.
 
 ![event](../img/inspector-event.png)
 
-
-If some desired event does not triggered , it can first check does the event listeners has been successfully registered. then set a breakpoint in the right place to check whether the event has been triggered and if it can executed successfully.
+If some desired event does not trigger, it can first check do the event listeners have been successfully registered. Then set a breakpoint in the right place to check whether the event has been triggered and if it can execute successfully.
 ![breakpoint](../img/inspector-breakpoint.png)
 
 
 ## Reproduce the issues
 
-following your normal operations and debugging the javascript code and pay attention to the console output. Whether any errors happened.
+following your normal operations and debugging the JavaScript code and pay attention to the console output. Whether any errors happened.
 ![Alt text](../img/inspector-console.png)

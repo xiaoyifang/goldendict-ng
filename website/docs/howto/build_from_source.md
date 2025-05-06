@@ -1,4 +1,4 @@
-The `release-*` and `PR-check-*` workflow files under `.github` in the source code has actual build & commands for reference.
+The `Release-*` and `PR-check-*` workflow files under `.github` in the source code has actual build and commands for reference.
 
 ## Dependencies
 
@@ -9,7 +9,7 @@ For debian/ubuntu, those packages are needed
 
 ```shell
 libavformat-dev libavutil-dev libbz2-dev libeb16-dev libhunspell-dev \
-liblzma-dev liblzo2-dev libopencc-dev libvorbis-dev \ 
+liblzma-dev liblzo2-dev libopencc-dev libvorbis-dev \
 libx11-dev libxtst-dev libzim-dev libzstd-dev qt6-5compat-dev \
 qt6-base-dev qt6-multimedia-dev qt6-speech-dev qt6-svg-dev \
 qt6-tools-dev qt6-tools-dev-tools qt6-webchannel-dev \
@@ -49,7 +49,7 @@ cmake -S . -B build_dir
 # actual build
 cmake --build build_dir
       --parallel 7  (Optional if Ninja was chosen)
- 
+
 cmake --install ./build_dir/
 ```
 
@@ -83,8 +83,7 @@ There are a few ways to use it.
 
 First, just do nothing. Without any additional CMake config options, a pre-built cached version of vcpkg will be automatically obtained and setup.
 
-Second, install vcpkg on your local machine, then set `CMAKE_TOOLCHAIN_FILE` as described [here](https://learn.microsoft.com/vcpkg/consume/manifest-mode?tabs=cmake%2Cbuild-MSBuild#2---integrate-vcpkg-with-your-build-system), which says append `-DCMAKE_TOOLCHAIN_FILE={Your vcpkg install location}/scripts/buildsystems/vcpkg.cmake` to CMake's config step. Note that this cost long time to build
-
+Second, install vcpkg on your local machine, then set `CMAKE_TOOLCHAIN_FILE` as described [here](https://learn.microsoft.com/vcpkg/consume/manifest-mode?tabs=cmake%2Cbuild-MSBuild#2---integrate-vcpkg-with-your-build-system), which says append `-DCMAKE_TOOLCHAIN_FILE={Your vcpkg install location}/scripts/buildsystems/vcpkg.cmake` to CMake's config step. Note that this costs a long time to build.
 
 ### macOS
 

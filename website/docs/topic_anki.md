@@ -1,7 +1,5 @@
 # Anki Integration
 
-
-
 # prerequisite
 1. install Anki
 2. install ankiconnect

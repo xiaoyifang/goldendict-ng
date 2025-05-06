@@ -341,7 +341,12 @@ struct Preferences
   int maxNetworkCacheSize;
   bool clearNetworkCacheOnExit;
   bool removeInvalidIndexOnExit = false;
-  bool enableApplicationLog     = false;
+  bool enableApplicationLog =
+#ifdef Q_OS_WIN
+    true;
+#else
+    false;
+#endif
 
   qreal zoomFactor;
   qreal helpZoomFactor;
