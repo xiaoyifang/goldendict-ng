@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation>Anki: 沒選擇詞語，無法建立卡片</translation>
+      <translation type="unfinished">Anki: can&apos;t create a card without a word</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation>Anki: 調用失敗</translation>
+      <translation type="unfinished">Anki: post to Anki failed</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation>Anki：發佈到 Anki 成功</translation>
+      <translation type="unfinished">Anki: post to Anki success</translation>
     </message>
   </context>
   <context>
@@ -3454,8 +3454,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>預覽字型</translation>
     </message>
     <message>
-      <source>Goldendict-ng is a dictionary software</source>
-      <translation>Goldendict-ng是一款字典軟體</translation>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
     </message>
   </context>
   <context>
@@ -3582,14 +3582,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>更改彈出窗口的詞組。</translation>
     </message>
     <message>
-      <source>Force the word to be translated in scanpopup</source>
-      <translation>強制在 scanpopup 中翻譯單字</translation>
-    </message>
-    <message>
-      <source>Force the word to be translated in the mainwindow</source>
-      <translation>強制在主視窗中翻譯該單字</translation>
-    </message>
-    <message>
       <source>Toggle popup.</source>
       <translation>切換彈出窗口。</translation>
     </message>
@@ -3598,8 +3590,16 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>打印版本和診斷信息。</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation>將調試消息保存到配置文件夾中的 gd_log.txt</translation>
+      <source>Save debug messages to gd_log.txt in the config folder.</source>
+      <translation>將偵錯訊息儲存到 config 資料夾中的 gd_log.txt。</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in Popup.</source>
+      <translation type="unfinished">Force the word to be translated in Popup.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow.</source>
+      <translation type="unfinished">Force the word to be translated in the mainwindow.</translation>
     </message>
   </context>
   <context>
