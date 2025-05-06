@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation>Anki : peut&apos;t créer une carte sans mot</translation>
+      <translation>Anki: peut&apos;t créer une carte sans mot</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -32,7 +32,7 @@
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation>Anki: message sur Anki réussi</translation>
+      <translation>Anki: message à Anki réussi</translation>
     </message>
   </context>
   <context>
@@ -3460,8 +3460,8 @@ des dictionnaires Stardict, Babylon et GLS</translation>
       <translation>Aperçu de la police</translation>
     </message>
     <message>
-      <source>Goldendict-ng is a dictionary software</source>
-      <translation>Goldendict-ng est un logiciel de dictionnaire</translation>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng est un logiciel de dictionnaire.</translation>
     </message>
   </context>
   <context>
@@ -3588,14 +3588,6 @@ des dictionnaires Stardict, Babylon et GLS</translation>
       <translation>Changer le groupe de popup.</translation>
     </message>
     <message>
-      <source>Force the word to be translated in scanpopup</source>
-      <translation>Forcer la traduction du mot dans scanpopup</translation>
-    </message>
-    <message>
-      <source>Force the word to be translated in the mainwindow</source>
-      <translation>Forcer la traduction du mot dans la fenêtre principale</translation>
-    </message>
-    <message>
       <source>Toggle popup.</source>
       <translation>Activer/désactiver la popup d'analyse.</translation>
     </message>
@@ -3604,8 +3596,16 @@ des dictionnaires Stardict, Babylon et GLS</translation>
       <translation>Version imprimée et informations de diagnostic.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation>Enregistrer les messages de débogage dans gd_log.txt dans le dossier de configuration</translation>
+      <source>Save debug messages to gd_log.txt in the config folder.</source>
+      <translation>Enregistrer les messages de débogage dans gd_log.txt dans le dossier de configuration.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in Popup.</source>
+      <translation>Forcer le mot à être traduit en popup.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow.</source>
+      <translation>Forcer la traduction du mot dans la fenêtre principale.</translation>
     </message>
   </context>
   <context>
