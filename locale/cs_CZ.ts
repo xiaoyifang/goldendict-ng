@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation>Anki: Nelze vytvořit kartu beze slova</translation>
+      <translation>Anki: může&apos;t vytvořit kartu bez slova</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -3461,8 +3461,8 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <translation>Náhled písma</translation>
     </message>
     <message>
-      <source>Goldendict-ng is a dictionary software</source>
-      <translation>Goldendict-ng je slovníkový software</translation>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng je slovníkový software.</translation>
     </message>
   </context>
   <context>
@@ -3589,14 +3589,6 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <translation>Změnit skupinu vyskakovacích oken.</translation>
     </message>
     <message>
-      <source>Force the word to be translated in scanpopup</source>
-      <translation>Vynutit překlad slova v scanpopup</translation>
-    </message>
-    <message>
-      <source>Force the word to be translated in the mainwindow</source>
-      <translation>Vynutit překlad slova v hlavním okně</translation>
-    </message>
-    <message>
       <source>Toggle popup.</source>
       <translation>Přepnout vyskakovací okno.</translation>
     </message>
@@ -3605,8 +3597,16 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <translation>Tisk verze a diagnostické informace.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation>Ukládat zprávy ladění do gd_log.txt do složky s konfigurací</translation>
+      <source>Save debug messages to gd_log.txt in the config folder.</source>
+      <translation>Uložte zprávy ladění do gd_log.txt do složky konfigurace.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in Popup.</source>
+      <translation>Vynutit překlad ve vyskakovacím okně.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow.</source>
+      <translation>Vynutit překlad slova v hlavním okně.</translation>
     </message>
   </context>
   <context>
