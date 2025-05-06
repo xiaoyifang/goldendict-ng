@@ -3471,8 +3471,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Предпросмотр шрифта</translation>
     </message>
     <message>
-      <source>Goldendict-ng is a dictionary software</source>
-      <translation>Goldendict-ng - это словарь</translation>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng это словарь программного обеспечения.</translation>
     </message>
   </context>
   <context>
@@ -3599,14 +3599,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Изменить группу всплывающих окон.</translation>
     </message>
     <message>
-      <source>Force the word to be translated in scanpopup</source>
-      <translation>Принудительно перевести слово в scanpopup</translation>
-    </message>
-    <message>
-      <source>Force the word to be translated in the mainwindow</source>
-      <translation>Принудительно перевести слово в главном окне</translation>
-    </message>
-    <message>
       <source>Toggle popup.</source>
       <translation>Переключить всплывающее окно сканирования.</translation>
     </message>
@@ -3615,8 +3607,16 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Версия для печати и диагностическая информация.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation>Сохранить отладочные сообщения в gd_log.txt в папке конфигурации</translation>
+      <source>Save debug messages to gd_log.txt in the config folder.</source>
+      <translation>Сохранить отладочные сообщения в gd_log.txt в папке конфигурации.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in Popup.</source>
+      <translation>Принудительно переводить слово во всплывающее окно.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow.</source>
+      <translation>Принудительно переводить слово в главном окне.</translation>
     </message>
   </context>
   <context>
