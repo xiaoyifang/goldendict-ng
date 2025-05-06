@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation>Anki: неможливо створити картку без слова</translation>
+      <translation>Anki: може&apos;t створювати картку без слова</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -3465,8 +3465,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Попередній перегляд шрифту</translation>
     </message>
     <message>
-      <source>Goldendict-ng is a dictionary software</source>
-      <translation>Goldendict-ng - програма для словників</translation>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>Золота Dict-ng - словникова програма.</translation>
     </message>
   </context>
   <context>
@@ -3593,14 +3593,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Змінити групу виринаючого вікна.</translation>
     </message>
     <message>
-      <source>Force the word to be translated in scanpopup</source>
-      <translation>Примусово перекласти слово у вікні сканування</translation>
-    </message>
-    <message>
-      <source>Force the word to be translated in the mainwindow</source>
-      <translation>Примусово перекласти слово в головному вікні</translation>
-    </message>
-    <message>
       <source>Toggle popup.</source>
       <translation>Увімкнути або вимкнути вікно сканування.</translation>
     </message>
@@ -3609,8 +3601,16 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Друкована версія та інформація про діагностику.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation>Зберігати повідомлення налагодження в gd_log.txt в теці налаштувань</translation>
+      <source>Save debug messages to gd_log.txt in the config folder.</source>
+      <translation>Зберігати повідомлення налагодження в gd_log.txt в теці конфігурації.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in Popup.</source>
+      <translation>Примусово перекладати слово в спливаючому вікні.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow.</source>
+      <translation>Примусово перекладати слово в головне вікно.</translation>
     </message>
   </context>
   <context>
