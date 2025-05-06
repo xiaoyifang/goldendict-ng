@@ -35,6 +35,9 @@ QString countryCodeForId( Id );
 /// If the Id is incorrect, or has Unknown/Any values, returns empty string.
 QString localizedStringForId( Id );
 QString languageForLocale( const QString & locale );
+
+QMap< QString, QString > languageMap();
+
 // All other functions are to be used from LangCoder, which is supposed to
 // be migrated here over time.
 

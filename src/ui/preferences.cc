@@ -58,29 +58,12 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   // Load values into form
 
   ui.interfaceLanguage->addItem( tr( "System default" ), QString() );
-  // See which other translations do we have
 
-  QStringList availLocs = QDir( Config::getLocDir() ).entryList( QStringList( "*.qm" ), QDir::Files );
-
-  // We need to sort by language name -- otherwise list looks really weird
+  // We need to sort by language name, otherwise list looks really weird
   QMultiMap< QString, QString > sortedLocs;
-  sortedLocs.insert( Language::languageForLocale( "en_US" ), "en_US" );
-  for ( const auto & availLoc : std::as_const( availLocs ) ) {
-    // Here we assume the xx_YY naming, where xx is language and YY is region.
-    //remove .qm suffix.
-    QString locale = availLoc.left( availLoc.size() - 3 );
 
-    if ( locale == "qt" ) {
-      continue; // We skip qt's own localizations
-    }
-
-    auto language = Language::languageForLocale( locale );
-    if ( language.isEmpty() ) {
-      qWarning() << "can not found the corresponding language from locale:" << locale;
-    }
-    else {
-      sortedLocs.insert( language, locale );
-    }
+  for ( const auto & [ locale, _ ] : Language::languageMap().asKeyValueRange() ) {
+    sortedLocs.insert( Language::languageForLocale( locale ), locale );
   }
 
   for ( auto i = sortedLocs.begin(); i != sortedLocs.end(); ++i ) {
