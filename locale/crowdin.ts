@@ -3435,7 +3435,7 @@ from Stardict, Babylon and GLS dictionaries</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Goldendict-ng is a dictionary software</source>
+        <source>GoldenDict-ng is a dictionary software.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3563,14 +3563,6 @@ from Stardict, Babylon and GLS dictionaries</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Force the word to be translated in scanpopup</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Force the word to be translated in the mainwindow</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Toggle popup.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3579,7 +3571,15 @@ from Stardict, Babylon and GLS dictionaries</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Save debug messages to gd_log.txt in the config folder</source>
+        <source>Save debug messages to gd_log.txt in the config folder.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Force the word to be translated in Popup.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Force the word to be translated in the mainwindow.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

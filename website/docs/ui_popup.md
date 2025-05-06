@@ -2,13 +2,13 @@
 
 Popup is a mini window for rapid translation.
 
-Enable it by clicking the 💡 (enable clipboard trakcing) on the toolbar or using the context menu of tray icon.
+Enable it by clicking the 💡 (enable clipboard trakcing) on the toolbar or using the context menu of the tray icon.
 
 A popup window will show up when copying text.
 
 ## Linux
 
-On linux/X11, the text selection can also trigger popup window. You have to enable it in preferences.
+On linux/X11, the text selection can also trigger a popup window. You have to enable it in preferences.
 
 ## OCR
 

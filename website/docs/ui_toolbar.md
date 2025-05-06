@@ -1,4 +1,5 @@
 ## Toolbar
+
 ![toolbar](img/toolbar.webp)
 
 Type your word in Search Box and press `Enter` to search word in the current selected group. You can also choose a variant from a matches list.
@@ -43,4 +44,4 @@ Temporarily capture the selection and restore it later.
 - Restore Selection <-- Click the "Restore selection" in the right click context menu
 
 !!! note
-    "Found in dictionaries" panel can also uses above two special operations.
+     the "Found in dictionaries" panel can also use the above two special operations.

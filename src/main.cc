@@ -33,8 +33,6 @@
 #if defined( USE_BREAKPAD )
   #if defined( Q_OS_MAC )
     #include "client/mac/handler/exception_handler.h"
-  #elif defined( Q_OS_LINUX )
-    #include "client/linux/handler/exception_handler.h"
   #elif defined( Q_OS_WIN32 )
     #include "client/windows/handler/exception_handler.h"
   #endif
@@ -48,18 +46,6 @@ bool callback( const wchar_t * dump_path,
                EXCEPTION_POINTERS * exinfo,
                MDRawAssertionInfo * assertion,
                bool succeeded )
-{
-  if ( succeeded ) {
-    qDebug() << "Create dump file success";
-  }
-  else {
-    qDebug() << "Create dump file failed";
-  }
-  return succeeded;
-}
-  #endif
-  #ifdef Q_OS_LINUX
-bool callback( const google_breakpad::MinidumpDescriptor & descriptor, void * context, bool succeeded )
 {
   if ( succeeded ) {
     qDebug() << "Create dump file success";
@@ -141,7 +127,7 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
 
   QCommandLineOption logFileOption( QStringList() << "l"
                                                   << "log-to-file",
-                                    QObject::tr( "Save debug messages to gd_log.txt in the config folder" ) );
+                                    QObject::tr( "Save debug messages to gd_log.txt in the config folder." ) );
 
   QCommandLineOption resetState( QStringList() << "r"
                                                << "reset-window-state",
@@ -159,12 +145,13 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
                                            "popupGroupName" );
 
   QCommandLineOption window_popupOption( QStringList() << "s"
-                                                       << "scanpopup",
-                                         QObject::tr( "Force the word to be translated in scanpopup" ) );
+                                                       << "scanpopup"
+                                                       << "popup",
+                                         QObject::tr( "Force the word to be translated in Popup." ) );
 
   QCommandLineOption window_mainWindowOption( QStringList() << "m"
                                                             << "main-window",
-                                              QObject::tr( "Force the word to be translated in the mainwindow" ) );
+                                              QObject::tr( "Force the word to be translated in the mainwindow." ) );
 
   QCommandLineOption togglePopupOption( QStringList() << "t"
                                                       << "toggle-popup",
@@ -326,19 +313,9 @@ int main( int argc, char ** argv )
                                         google_breakpad::ExceptionHandler::HANDLER_ALL );
   #elif defined( Q_OS_MAC )
 
-
   google_breakpad::ExceptionHandler eh( appDirPath.toStdString(), 0, callback, 0, true, NULL );
 
-  #else
-
-  google_breakpad::ExceptionHandler eh( google_breakpad::MinidumpDescriptor( appDirPath.toStdString() ),
-                                        /*FilterCallback*/ 0,
-                                        callback,
-                                        /*context*/ 0,
-                                        true,
-                                        -1 );
   #endif
-
 #endif
 
   GDOptions gdcl{};
