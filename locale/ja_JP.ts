@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation>アンキアンキへの配置が失敗した</translation>
+      <translation>安置：安置に失敗。</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation>「アンキアンキ成功へのポスト」</translation>
+      <translation>安芸：安芸投稿成功</translation>
     </message>
   </context>
   <context>
@@ -3463,8 +3463,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>フォントをプレビュー</translation>
     </message>
     <message>
-      <source>Goldendict-ng is a dictionary software</source>
-      <translation>Goldendict-ng は辞書のソフトウェアです</translation>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng は辞書ソフトウェアです。</translation>
     </message>
   </context>
   <context>
@@ -3591,14 +3591,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>ポップアップのグループを変更します</translation>
     </message>
     <message>
-      <source>Force the word to be translated in scanpopup</source>
-      <translation>scanpopup で単語を強制的に翻訳する</translation>
-    </message>
-    <message>
-      <source>Force the word to be translated in the mainwindow</source>
-      <translation>メインウィンドウで単語を強制的に翻訳する</translation>
-    </message>
-    <message>
       <source>Toggle popup.</source>
       <translation>スキャンポップアップの切り替え。</translation>
     </message>
@@ -3607,8 +3599,16 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>バージョンと診断情報を印刷します。</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation>設定フォルダ内のgd_log.txtにデバッグメッセージを保存します</translation>
+      <source>Save debug messages to gd_log.txt in the config folder.</source>
+      <translation>configフォルダのgd_log.txtにデバッグメッセージを保存します。</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in Popup.</source>
+      <translation>ポップアップで翻訳する単語を強制します。</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow.</source>
+      <translation>メインウィンドウに単語を強制的に翻訳します。</translation>
     </message>
   </context>
   <context>
