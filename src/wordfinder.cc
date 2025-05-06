@@ -111,12 +111,7 @@ void WordFinder::startSearch()
   updateResultsTimer.start();
 
   // Gather all writings of the word
-
-  if ( allWordWritings.size() != 1 ) {
-    allWordWritings.resize( 1 );
-  }
-
-  allWordWritings[ 0 ] = inputWord.toStdU32String();
+  std::vector< std::u32string > allWordWritings( 1, inputWord.toStdU32String() );
 
   for ( const auto & inputDict : *inputDicts ) {
     vector< std::u32string > writings = inputDict->getAlternateWritings( allWordWritings[ 0 ] );
@@ -124,6 +119,7 @@ void WordFinder::startSearch()
     allWordWritings.insert( allWordWritings.end(), writings.begin(), writings.end() );
   }
 
+  setAllWordWritings( allWordWritings );
   // Query each dictionary for all word writings
 
   for ( const auto & inputDict : *inputDicts ) {
@@ -176,7 +172,6 @@ void WordFinder::requestFinished()
   if ( !searchInProgress.load() ) {
     return;
   }
-  QMutexLocker locker( &mutex );
   // See how many new requests have finished, and if we have any new results
   // Create a snapshot of queuedRequests to avoid iterator invalidation
   auto snapshot = queuedRequests.snapshot();
@@ -254,6 +249,8 @@ void WordFinder::updateResults()
   if ( updateResultsTimer.isActive() ) {
     updateResultsTimer.stop(); // Can happen when we were done before it'd expire
   }
+
+  auto allWordWritings = getAllWordWritings();
 
   std::u32string original = Folding::applySimpleCaseOnly( allWordWritings[ 0 ] );
 

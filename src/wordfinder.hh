@@ -50,7 +50,7 @@ private:
 
   std::vector< sptr< Dictionary::Class > > const * inputDicts;
 
-  std::vector< std::u32string > allWordWritings; // All writings of the inputWord
+  std::vector< std::u32string > _allWordWritings; // All writings of the inputWord
 
   struct OneResult
   {
@@ -65,6 +65,19 @@ private:
   using ResultsIndex = std::map< std::u32string, ResultsArray::iterator >;
   ResultsArray resultsArray;
   ResultsIndex resultsIndex;
+
+  /// Mutex to protect the vector of allWordWritings
+  std::vector< std::u32string > getAllWordWritings()
+  {
+    QMutexLocker locker( &mutex );
+    return _allWordWritings;
+  }
+
+  void setAllWordWritings( std::vector< std::u32string > writings )
+  {
+    QMutexLocker locker( &mutex );
+    _allWordWritings = std::move( writings );
+  }
 
 public:
 
