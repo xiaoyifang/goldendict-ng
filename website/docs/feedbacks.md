@@ -1,30 +1,36 @@
-## Bugs
+## Bugs Reporting
 
-Report any bugs & dysfunctions to [issues](<https://github.com/xiaoyifang/goldendict/issues>)
+Report any bugs and dysfunctions to [issues](<https://github.com/xiaoyifang/goldendict/issues>)
 
 If a certain dictionary leads to problems, you **must** attach the dict files or provide download links in bug reports.
 
-Attach your version info in the menu "About" --> "Copy version info".
+Attach your version info from the menu "About" --> "Copy version info".
 
-## Windows
+## Windows Tips
 
-Try to gather crash dump and log files when reporting bugs.
+Gather crash dump and log files when reporting bugs.
 
 ### Crash Dump
 
-If GD-ng crashes, upload the `.dmp` file in the `crash` folder, which is beside the main program file.
+If GD-ng crashes, upload the `.dmp` file in the `crash` folder, which is in the configuration folder.
 
-### Log File
+![](img/crash-dmp.png){ width="450" }
 
-To obtain runtime log, enable Preferences --> Advanced --> "Save debug messages to gd_log.txt in the config folder", a `gd_log.txt` will be generated in the configuration folder
+### Runtime Log File
 
-Alternatively, start GD-ng with `--log-to-file` so that GD will create "gd_log.txt" in configuration folder.
+To obtain the runtime log, enable Preferences --> Advanced --> "Save debug messages to gd_log.txt in the config folder".
 
-## macOS
+A `gd_log.txt` will be generated in the configuration folder in the next time you uses GD-ng.
 
-macOS has a built-in crash reporter, copy all the info from the bug report window.
+Alternatively, start GD-ng with command line flag `--log-to-file`.
 
-## Linux
+## macOS Tips
+
+macOS has a built-in crash reporter. Copy all the info from the bug report window.
+
+Try to start GD-ng from the command line and save the logs. Alternatively, enable the option of saving log to file as in Windows Tips.
+
+## Linux Tips
 
 If you have no clue, search and learn how to obtain coredumps using tools provided by your distro, and/or learn how to use a debugger. Now is the time.
 

@@ -9,12 +9,23 @@ body:
   - type: textarea
     attributes:
       label: Describe the bug (and expected behaviour)
-      description: Describe the exact reproduction steps.
+      description: Describe the exact reproduction steps and triggering conditions.
       placeholder: "A bug happened!"
     validations:
       required: true
   - type: textarea
-    id: version
+    attributes:
+      label: Extra Info (logs, crash dumps, malfunctioning dictionaries...)
+      description: |
+        You should try gather relevant debug info. Add screenshots if needed.
+
+        For Windows, upload the dmp file and log file in the configuration folder (which be be opened through the menu help -> configuration folder).
+
+        For macOS, upload the content of macOS's crash reporter.
+
+        > [!NOTE]
+        > See [Bug report tips](https://xiaoyifang.github.io/goldendict-ng/feedbacks/) for additional instructions on gathering logs and crash dumps.
+  - type: textarea
     attributes:
       label: OS and software versions
       description: The operating system version and GD-ng's version.
@@ -22,14 +33,3 @@ body:
         Copy & paste `help` -> `about` -> `Copy version info` to here.
     validations:
       required: true
-  - type: textarea
-    attributes:
-      label: Additional info
-      description: |
-        You should try gather relevent debug info. Add screenshots if needed.
-
-        For Windows, upload the dmp file in the crash folder located in the configuration folder (can be opened through the menu help->configuration folder).
-
-        For macOS, upload the content of macOS's crash reporter
-
-        See <https://xiaoyifang.github.io/goldendict-ng/feedbacks/> for additional instructions.
