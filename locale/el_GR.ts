@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation>Anki: μπορεί&apos;t να δημιουργήσει μια κάρτα χωρίς μια λέξη</translation>
+      <translation>Άγκυρα: μπορεί να&apos;t δημιουργήσει μια κάρτα χωρίς λέξη</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation>Anki: η δημοσίευση στο Anki απέτυχε</translation>
+      <translation>Άγκυρα: η θέση στον Ανκί απέτυχε</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation>Anki: post για την επιτυχία Anki</translation>
+      <translation>Άγκυρα: μετά την επιτυχία Ανκί</translation>
     </message>
   </context>
   <context>
@@ -3466,8 +3466,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Προεπισκόπηση Γραμματοσειράς</translation>
     </message>
     <message>
-      <source>Goldendict-ng is a dictionary software</source>
-      <translation>Το Goldendict-ng είναι ένα λεξικό λογισμικό</translation>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>Το GoldenDict-ng είναι ένα λεξικό λογισμικό.</translation>
     </message>
   </context>
   <context>
@@ -3594,14 +3594,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Αλλαγή της ομάδας των αναδυόμενων παραθύρων.</translation>
     </message>
     <message>
-      <source>Force the word to be translated in scanpopup</source>
-      <translation>Αναγκάστε να μεταφραστεί η λέξη στο scanpopup</translation>
-    </message>
-    <message>
-      <source>Force the word to be translated in the mainwindow</source>
-      <translation>Αναγκάστε να μεταφραστεί η λέξη στο κύριο παράθυρο</translation>
-    </message>
-    <message>
       <source>Toggle popup.</source>
       <translation>Εναλλαγή αναδυόμενου παραθύρου σάρωσης.</translation>
     </message>
@@ -3610,8 +3602,16 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Εκτυπωμένη έκδοση και πληροφορίες διάγνωσης.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation>Αποθήκευση μηνυμάτων αποσφαλμάτωσης στο gd_log.txt στο φάκελο ρυθμίσεων</translation>
+      <source>Save debug messages to gd_log.txt in the config folder.</source>
+      <translation>Αποθήκευση μηνυμάτων αποσφαλμάτωσης στο gd_log.txt στο φάκελο ρυθμίσεων.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in Popup.</source>
+      <translation>Εξαναγκασμός μετάφρασης της λέξης στο Popup.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow.</source>
+      <translation>Εξαναγκασμός μετάφρασης της λέξης στο κύριο παράθυρο.</translation>
     </message>
   </context>
   <context>

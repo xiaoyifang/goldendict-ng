@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation>Anki: post to Anki failed</translation>
+      <translation>Anki: post su Anki fallito</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation>Anki: post to Anki success</translation>
+      <translation>Anki: post su Anki successo</translation>
     </message>
   </context>
   <context>
@@ -3461,8 +3461,8 @@ dai dizionari di Stardict, Babylon e GLS</translation>
       <translation>Anteprima Carattere</translation>
     </message>
     <message>
-      <source>Goldendict-ng is a dictionary software</source>
-      <translation>Goldendict-ng è un software di dizionario</translation>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng è un software di dizionario.</translation>
     </message>
   </context>
   <context>
@@ -3589,14 +3589,6 @@ dai dizionari di Stardict, Babylon e GLS</translation>
       <translation>Cambia il gruppo di popup.</translation>
     </message>
     <message>
-      <source>Force the word to be translated in scanpopup</source>
-      <translation>Forza la traduzione della parola in scanpopup</translation>
-    </message>
-    <message>
-      <source>Force the word to be translated in the mainwindow</source>
-      <translation>Forza la traduzione della parola nella finestra principale</translation>
-    </message>
-    <message>
       <source>Toggle popup.</source>
       <translation>Attiva/disattiva popup di scansione.</translation>
     </message>
@@ -3605,8 +3597,16 @@ dai dizionari di Stardict, Babylon e GLS</translation>
       <translation>Stampa la versione e le informazioni sulla diagnosi.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation>Salva i messaggi di debug su gd_log.txt nella cartella di configurazione</translation>
+      <source>Save debug messages to gd_log.txt in the config folder.</source>
+      <translation>Salva i messaggi di debug su gd_log.txt nella cartella di configurazione.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in Popup.</source>
+      <translation>Forza la parola da tradurre in Popup.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow.</source>
+      <translation>Forza la traduzione della parola nella finestra principale.</translation>
     </message>
   </context>
   <context>

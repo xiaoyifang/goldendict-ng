@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation>Anki: nie można utworzyć karty bez słowa</translation>
+      <translation>Anki: można&apos;t utworzyć kartę bez słowa</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation>Anki: wpis do Anki nie powiódł się</translation>
+      <translation>Anki: post do Anki nie powiódł się</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation>Anki: wysłanie do Anki sukcesu</translation>
+      <translation>Anki: post na Anki udany</translation>
     </message>
   </context>
   <context>
@@ -3463,8 +3463,8 @@ ze słowników Stardict, Babylon i GLS</translation>
       <translation>Podgląd czcionki</translation>
     </message>
     <message>
-      <source>Goldendict-ng is a dictionary software</source>
-      <translation>Goldendict-ng to oprogramowanie słownikowe</translation>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng to oprogramowanie słownikowe.</translation>
     </message>
   </context>
   <context>
@@ -3591,14 +3591,6 @@ ze słowników Stardict, Babylon i GLS</translation>
       <translation>Zmień grupę wyskakujących.</translation>
     </message>
     <message>
-      <source>Force the word to be translated in scanpopup</source>
-      <translation>Wymuś przetłumaczenie słowa w scanpopup</translation>
-    </message>
-    <message>
-      <source>Force the word to be translated in the mainwindow</source>
-      <translation>Wymuś przetłumaczenie słowa w oknie głównym</translation>
-    </message>
-    <message>
       <source>Toggle popup.</source>
       <translation>Przełącz wyskakujące okienko skanowania.</translation>
     </message>
@@ -3607,8 +3599,16 @@ ze słowników Stardict, Babylon i GLS</translation>
       <translation>Wersja do druku i informacje diagnostyczne.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation>Zapisz wiadomości debugowania do gd_log.txt w folderze konfiguracyjnym</translation>
+      <source>Save debug messages to gd_log.txt in the config folder.</source>
+      <translation>Zapisz wiadomości debugowania do gd_log.txt w folderze konfiguracyjnym.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in Popup.</source>
+      <translation>Wymuś tłumaczenie słowa w wyskakującym oknie.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow.</source>
+      <translation>Wymuś tłumaczenie słowa w głównym oknie.</translation>
     </message>
   </context>
   <context>

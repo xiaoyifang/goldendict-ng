@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation>Anki: 단어 없이 카드를 만들 수&apos;</translation>
+      <translation>Anki: 단어 없이는 카드를 만들 수 없습니다</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation>Anki: anki에 게시 실패</translation>
+      <translation>Anki: Anki에 게시하는 데 실패했습니다</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation>Anki: Anki 성공에 게시</translation>
+      <translation>Anki: Anki에 게시 성공</translation>
     </message>
   </context>
   <context>
@@ -312,15 +312,15 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Taiwan variant</source>
-      <translation type="unfinished">Taiwan variant</translation>
+      <translation>대만어 변형</translation>
     </message>
     <message>
       <source>Hong Kong variant</source>
-      <translation type="unfinished">Hong Kong variant</translation>
+      <translation>홍콩 변형</translation>
     </message>
     <message>
       <source>Mainland variant</source>
-      <translation type="unfinished">Mainland variant</translation>
+      <translation>본토 변형</translation>
     </message>
   </context>
   <context>
@@ -3460,8 +3460,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>글꼴 미리보기</translation>
     </message>
     <message>
-      <source>Goldendict-ng is a dictionary software</source>
-      <translation>Goldendict-ng는 사전 소프트웨어입니다</translation>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng는 사전 소프트웨어입니다.</translation>
     </message>
   </context>
   <context>
@@ -3588,14 +3588,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>팝업 그룹을 변경합니다.</translation>
     </message>
     <message>
-      <source>Force the word to be translated in scanpopup</source>
-      <translation>스캔팝업에서 단어를 강제로 번역</translation>
-    </message>
-    <message>
-      <source>Force the word to be translated in the mainwindow</source>
-      <translation>메인 창에서 단어가 강제로 번역되도록 합니다.</translation>
-    </message>
-    <message>
       <source>Toggle popup.</source>
       <translation>스캔 팝업을 전환합니다.</translation>
     </message>
@@ -3604,8 +3596,16 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>버전 및 진단 정보를 인쇄합니다.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation>config 폴더의 gd_log.txt에 디버그 메시지를 저장합니다</translation>
+      <source>Save debug messages to gd_log.txt in the config folder.</source>
+      <translation>config 폴더의 gd_log.txt에 디버그 메시지를 저장합니다.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in Popup.</source>
+      <translation>팝업에서 단어를 강제로 번역합니다.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow.</source>
+      <translation>메인 창에서 단어를 강제로 번역합니다.</translation>
     </message>
   </context>
   <context>

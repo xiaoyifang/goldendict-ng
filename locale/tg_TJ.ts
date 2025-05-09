@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation>Anki: паём ба Anki ноком шуд</translation>
+      <translation type="unfinished">Anki: post to Anki failed</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation>Anki: пост ба муваффақияти Anki</translation>
+      <translation type="unfinished">Anki: post to Anki success</translation>
     </message>
   </context>
   <context>
@@ -3464,8 +3464,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Preview Font</translation>
     </message>
     <message>
-      <source>Goldendict-ng is a dictionary software</source>
-      <translation>Goldendict-ng is a dictionary software</translation>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
     </message>
   </context>
   <context>
@@ -3592,14 +3592,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Гурӯҳи поп-апҳоро тағир диҳед.</translation>
     </message>
     <message>
-      <source>Force the word to be translated in scanpopup</source>
-      <translation>Маҷбур кунед, ки калимаро дар scanpopup тарҷума кунед</translation>
-    </message>
-    <message>
-      <source>Force the word to be translated in the mainwindow</source>
-      <translation>Маҷбур кардани калима дар равзанаи асосӣ тарҷума карда шавад</translation>
-    </message>
-    <message>
       <source>Toggle popup.</source>
       <translation>Ивазкунандаи поп-апаи скан.</translation>
     </message>
@@ -3608,8 +3600,16 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Версияи чопӣ ва маълумоти ташхис.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation>Save debug messages to gd_log.txt in the config folder</translation>
+      <source>Save debug messages to gd_log.txt in the config folder.</source>
+      <translation>Паёмҳои дебагро дар gd_log.txt дар ҷузвдони танзимот захира кунед.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in Popup.</source>
+      <translation type="unfinished">Force the word to be translated in Popup.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow.</source>
+      <translation type="unfinished">Force the word to be translated in the mainwindow.</translation>
     </message>
   </context>
   <context>

@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation>अंकी: क्या बिना किसी शब्द के कार्ड&apos;बनाया जा सकता</translation>
+      <translation type="unfinished">Anki: can&apos;t create a card without a word</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation>अंकी: अंकी को पोस्ट करना विफल रहा</translation>
+      <translation type="unfinished">Anki: post to Anki failed</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation>अंकी: अंकी की सफलता के लिए पोस्ट करें</translation>
+      <translation type="unfinished">Anki: post to Anki success</translation>
     </message>
   </context>
   <context>
@@ -3447,8 +3447,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Preview Font</translation>
     </message>
     <message>
-      <source>Goldendict-ng is a dictionary software</source>
-      <translation>Goldendict-ng is a dictionary software</translation>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
     </message>
   </context>
   <context>
@@ -3575,14 +3575,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>पॉपअप का समूह बदलें.</translation>
     </message>
     <message>
-      <source>Force the word to be translated in scanpopup</source>
-      <translation>शब्द को स्कैनपॉपअप में अनुवादित करने के लिए बाध्य करें</translation>
-    </message>
-    <message>
-      <source>Force the word to be translated in the mainwindow</source>
-      <translation>शब्द को मुख्य विंडो में अनुवादित करने के लिए बाध्य करें</translation>
-    </message>
-    <message>
       <source>Toggle popup.</source>
       <translation>स्कैन पॉपअप टॉगल करें.</translation>
     </message>
@@ -3591,8 +3583,16 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>प्रिंट संस्करण और निदान जानकारी।</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation>Save debug messages to gd_log.txt in the config folder</translation>
+      <source>Save debug messages to gd_log.txt in the config folder.</source>
+      <translation>डिबग संदेशों को कॉन्फ़िगरेशन फ़ोल्डर में gd_log.txt में सहेजें।</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in Popup.</source>
+      <translation type="unfinished">Force the word to be translated in Popup.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow.</source>
+      <translation type="unfinished">Force the word to be translated in the mainwindow.</translation>
     </message>
   </context>
   <context>

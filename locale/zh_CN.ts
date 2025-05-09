@@ -3449,8 +3449,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>预览字体</translation>
     </message>
     <message>
-      <source>Goldendict-ng is a dictionary software</source>
-      <translation>Goldendict-ng 是字典软件</translation>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng 是一个字典软件。</translation>
     </message>
   </context>
   <context>
@@ -3577,14 +3577,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>更改弹出窗口组。</translation>
     </message>
     <message>
-      <source>Force the word to be translated in scanpopup</source>
-      <translation>强制在取词弹窗中翻译单词</translation>
-    </message>
-    <message>
-      <source>Force the word to be translated in the mainwindow</source>
-      <translation>强制在主窗口中翻译该单词</translation>
-    </message>
-    <message>
       <source>Toggle popup.</source>
       <translation>切换扫描弹出窗口。</translation>
     </message>
@@ -3593,8 +3585,16 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>打印版本和诊断信息。</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation>在配置文件夹中将调试消息保存到 gd_log.txt</translation>
+      <source>Save debug messages to gd_log.txt in the config folder.</source>
+      <translation>在配置文件夹中将调试消息保存到 gd_log.txt。</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in Popup.</source>
+      <translation>强制在弹出窗口中翻译单词。</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow.</source>
+      <translation>强制在主窗口中翻译单词。</translation>
     </message>
   </context>
   <context>
