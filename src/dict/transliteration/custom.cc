@@ -53,7 +53,7 @@ std::vector< sptr< Dictionary::Class > > makeDictionaries( Config::CustomTrans c
       QCoreApplication::translate( "CustomTranslit", "custom transliteration" ).toUtf8().data(),
       QIcon( ":/icons/custom_trans.svg" ),
       t0,
-      false ) );
+      true ) );
   }
   return result;
 }
