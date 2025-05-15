@@ -21,7 +21,6 @@ namespace {
 class WebSiteDictionary: public Dictionary::Class
 {
   QByteArray urlTemplate;
-  bool experimentalIframe = false;
   QString iconFilename;
   bool inside_iframe;
   QNetworkAccessManager & netMgr;
@@ -313,19 +312,13 @@ sptr< DataRequest > WebSiteDictionary::getArticle( std::u32string const & str,
     QUrl url( urlString );
     GlobalBroadcaster::instance()->addWhitelist( url.host() );
 
-    QString encodeUrl;
-    if ( experimentalIframe ) {
-      encodeUrl = "ifr://localhost?url=" + QUrl::toPercentEncoding( urlString );
-    }
-    else {
-      encodeUrl = urlString;
-    }
+    QString encodeUrl = urlString;
 
     fmt::format_to( std::back_inserter( result ),
                     R"(<iframe id="gdexpandframe-{}" src="{}"
 onmouseover="processIframeMouseOver('gdexpandframe-{}');"
 onmouseout="processIframeMouseOut();" scrolling="no"
-style="overflow:visible; width:100%; display:block; border:none;"
+class="website-iframe"
 sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>)",
                     getId(),
                     encodeUrl.toStdString(),
