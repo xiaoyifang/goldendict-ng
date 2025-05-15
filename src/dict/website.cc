@@ -326,7 +326,7 @@ sptr< DataRequest > WebSiteDictionary::getArticle( std::u32string const & str,
 onmouseover="processIframeMouseOver('gdexpandframe-{}');"
 onmouseout="processIframeMouseOut();" scrolling="no"
 style="overflow:visible; width:100%; display:block; border:none;"
-sandbox="allow-same-origin allow-scripts allow-popups"></iframe>)",
+sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>)",
                     getId(),
                     encodeUrl.toStdString(),
                     getId() );
