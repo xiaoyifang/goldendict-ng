@@ -61,7 +61,7 @@ QString Utils::Url::getSchemeAndHost( QUrl const & url )
 
   QString scheme = url.scheme(); // http or https
   QString host   = url.host();   // example.com
-  quint16 port   = url.port();
+  auto port      = url.port( -1 );
 
   QString origin = scheme + "://" + host;
 
