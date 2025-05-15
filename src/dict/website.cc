@@ -41,11 +41,6 @@ public:
   {
     dictionaryName = name_;
 
-    if ( urlTemplate_.startsWith( "http://" ) || urlTemplate_.startsWith( "https://" ) ) {
-      experimentalIframe = true;
-    }
-    //else file:/// local dictionary file path
-
     urlTemplate           = QUrl( urlTemplate_ ).toEncoded();
     dictionaryDescription = urlTemplate_;
   }
