@@ -55,10 +55,23 @@ QString Utils::Path::combine( const QString & path1, const QString & path2 )
 
 QString Utils::Url::getSchemeAndHost( QUrl const & url )
 {
-  auto _url         = url.url();
-  auto index        = _url.indexOf( "://" );
-  auto hostEndIndex = _url.indexOf( "/", index + 3 );
-  return _url.mid( 0, hostEndIndex );
+  if ( !url.isValid() ) {
+    return QString();
+  }
+
+  QString scheme = url.scheme(); // http or https
+  QString host   = url.host();   // example.com
+  quint16 port   = url.port();
+
+  QString origin = scheme + "://" + host;
+
+  if ( port != -1 ) {
+    if ( ( scheme == "http" && port != 80 ) || ( scheme == "https" && port != 443 ) ) {
+      origin += ":" + QString::number( port );
+    }
+  }
+
+  return origin;
 }
 
 void Utils::Widget::setNoResultColor( QWidget * widget, bool noResult )
