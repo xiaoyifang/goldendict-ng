@@ -60,7 +60,7 @@
       maxHeight: 800,
       scrolling: true,
       warningTimeout: 0,
-      minHeight: 250,
+      minHeight: 550,
       log: true,
       autoResize: false,
     });

@@ -665,6 +665,14 @@ div.xdxf {
   clear: both;
 }
 
+.website-iframe {
+  overflow: auto;
+  width: 100%;
+  display: block;
+  border: none;
+  max-height: 800px;
+  min-height: 550px;
+}
 /************* Forvo **************/
 
 .forvo_headword {
