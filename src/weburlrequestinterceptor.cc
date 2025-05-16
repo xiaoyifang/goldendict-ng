@@ -9,15 +9,20 @@ WebUrlRequestInterceptor::WebUrlRequestInterceptor( QObject * p ):
 }
 void WebUrlRequestInterceptor::interceptRequest( QWebEngineUrlRequestInfo & info )
 {
-  info.setHttpHeader( "origin", Utils::Url::getSchemeAndHost( info.requestUrl() ).toUtf8() );
-  info.setHttpHeader( "referer", info.requestUrl().url().toUtf8() );
+  auto  url = info.requestUrl();
+  if ( url.scheme().startsWith( "iframe-" ) ) {
+    url.setScheme( url.scheme().mid( 7 ) );
+  }
+
+  info.setHttpHeader( "origin", Utils::Url::getSchemeAndHost( url ).toUtf8() );
+  info.setHttpHeader( "referer", url.url().toUtf8() );
   if ( GlobalBroadcaster::instance()->getPreference()->disallowContentFromOtherSites
-       && Utils::isExternalLink( info.requestUrl() ) ) {
+       && Utils::isExternalLink( url ) ) {
     //file:// link ,pass
-    if ( info.requestUrl().scheme() == "file" ) {
+    if ( url.scheme() == "file" ) {
       return;
     }
-    auto hostBase = Utils::Url::getHostBase( info.requestUrl().host() );
+    auto hostBase = Utils::Url::getHostBase( url.host() );
     if ( GlobalBroadcaster::instance()->existedInWhitelist( hostBase ) ) {
       //whitelist url does not block
       return;
@@ -26,7 +31,7 @@ void WebUrlRequestInterceptor::interceptRequest( QWebEngineUrlRequestInfo & info
          || info.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeFontResource
          || info.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeStylesheet
          || info.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeMedia
-         || Utils::isHtmlResources( info.requestUrl() ) ) {
+         || Utils::isHtmlResources( url ) ) {
       //let throuth the resources file.
       return;
     }
@@ -41,17 +46,17 @@ void WebUrlRequestInterceptor::interceptRequest( QWebEngineUrlRequestInfo & info
   if ( QWebEngineUrlRequestInfo::NavigationTypeLink == info.navigationType()
        && info.resourceType() == QWebEngineUrlRequestInfo::ResourceTypeMainFrame ) {
     //workaround to fix devtool "Switch devtool to chinese" interface was blocked.
-    if ( info.requestUrl().scheme() == "devtools" ) {
+    if ( url.scheme() == "devtools" ) {
       return;
     }
-    emit linkClicked( info.requestUrl() );
+    emit linkClicked( url );
     info.block( true );
   }
 
   //window.location=audio link
-  if ( Utils::Url::isAudioUrl( info.requestUrl() )
+  if ( Utils::Url::isAudioUrl( url )
        && info.navigationType() == QWebEngineUrlRequestInfo::NavigationTypeRedirect ) {
-    qDebug() << "blocked audio url from page redirect" << info.requestUrl().url();
+    qDebug() << "blocked audio url from page redirect" << url.url();
     info.block( true );
   }
 }

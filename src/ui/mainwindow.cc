@@ -196,7 +196,8 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   }
 
   iframeSchemeHandler = new IframeSchemeHandler( this );
-  QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( "ifr", iframeSchemeHandler );
+  QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( "iframe-http", iframeSchemeHandler );
+  QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( "iframe-https", iframeSchemeHandler );
 
   QStringList localSchemes = { "gdau", "gico", "qrcx", "bres", "gdprg", "gdvideo", "gdtts" };
   resourceSchemeHandler    = new ResourceSchemeHandler( articleNetMgr, this );
