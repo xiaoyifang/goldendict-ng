@@ -6,6 +6,7 @@
         <file>iframe-defer.js</file>
         <file>iframe-resizer.child.js</file>
         <file>iframe-resizer.parent.js</file>
+        <file>iframe-resizer.jquery.js</file>
         <file>jquery-3.6.0.slim.min.js</file>
         <file>mark.min.js</file>
     </qresource>

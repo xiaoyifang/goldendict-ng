@@ -51,6 +51,7 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word, QString const & 
     result += R"(<script> jQuery.noConflict(); </script>)";
 
     result += R"(<script src="qrc:///scripts/gd-custom.js"></script>)";
+    result += R"(<script src="qrc:///scripts/iframe-resizer.jquery.js"></script>)";
     result += R"(<script src="qrc:///scripts/iframe-resizer.parent.js"></script>)";
   }
 
