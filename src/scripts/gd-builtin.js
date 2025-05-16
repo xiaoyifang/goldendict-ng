@@ -183,15 +183,13 @@ function handleIframeEvents() {
     const gdId = iframe.getAttribute("data-gd-id");
 
     iframe.addEventListener("mouseover", function () {
-      processIframeMouseOver("gdexpandframe-"+gdId);
+      processIframeMouseOver("gdexpandframe-" + gdId);
     });
 
     iframe.addEventListener("mouseout", function () {
       processIframeMouseOut();
     });
-
   });
-
 }
 
 // Check the document ready state
