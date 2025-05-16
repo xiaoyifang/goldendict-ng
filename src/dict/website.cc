@@ -316,8 +316,7 @@ sptr< DataRequest > WebSiteDictionary::getArticle( std::u32string const & str,
 
     fmt::format_to( std::back_inserter( result ),
                     R"(<iframe id="gdexpandframe-{}" src="{}"
-onmouseover="processIframeMouseOver('gdexpandframe-{}');"
-onmouseout="processIframeMouseOut();" scrolling="no"
+scrolling="no" data-gd-id="{}" 
 class="website-iframe"
 sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>)",
                     getId(),
