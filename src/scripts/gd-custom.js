@@ -61,7 +61,7 @@
       scrolling: true,
       warningTimeout: 0,
       minHeight: 550,
-      log: true,
+      log: false,
       autoResize: false,
     });
   });
