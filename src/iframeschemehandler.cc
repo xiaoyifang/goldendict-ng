@@ -11,7 +11,10 @@ void IframeSchemeHandler::requestStarted( QWebEngineUrlRequestJob * requestJob )
   QUrl url = requestJob->requestUrl();
 
   // website dictionary iframe url
-  url = QUrl( Utils::Url::queryItemValue( url, "url" ) );
+  if ( url.scheme().startsWith( "iframe-" ) ) {
+    //"iframe-".length() == 7
+    url.setScheme( url.scheme().mid( 7 ) );
+  }
   QNetworkRequest request;
   request.setUrl( url );
   request.setAttribute( QNetworkRequest::RedirectPolicyAttribute,
