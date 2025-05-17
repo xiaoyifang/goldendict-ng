@@ -55,14 +55,12 @@
     });
 
     //monitor iframe height.
-    $("iframe").iFrameResize({
+    $("iframe").iframeResize({
       checkOrigin: false,
-      maxHeight: 800,
+      license: "GPLv3",
       scrolling: true,
       warningTimeout: 0,
-      minHeight: 550,
-      log: true,
-      autoResize: false,
+      log: "collapsed",
     });
   });
 })(jQuery);
