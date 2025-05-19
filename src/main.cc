@@ -438,7 +438,7 @@ int main( int argc, char ** argv )
 
   //system font size
   if ( cfg.preferences.interfaceFontSize >= 8 && cfg.preferences.interfaceFontSize <= 32 ) {
-    font.setPointSize( cfg.preferences.interfaceFontSize );
+    font.setPixelSize( cfg.preferences.interfaceFontSize );
     QApplication::setFont( font );
   }
 

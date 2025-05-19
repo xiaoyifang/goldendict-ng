@@ -87,7 +87,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
     ui.interfaceFontSize->setValue( p.interfaceFontSize );
   }
   else {
-    ui.interfaceFontSize->setValue( QApplication::font().pointSize() );
+    ui.interfaceFontSize->setValue( QApplication::font().pixelSize() );
   }
 
 
@@ -404,7 +404,7 @@ void Preferences::previewInterfaceFont( QString family, int size )
 {
   QFont f = QApplication::font();
   f.setFamily( family );
-  f.setPointSize( size );
+  f.setPixelSize( size );
   this->ui.previewFont->setFont( f );
 }
 
@@ -622,7 +622,7 @@ void Preferences::on_buttonBox_accepted()
 
   if ( ui.interfaceFontSize->value() != prevFontSize ) {
     auto font = QApplication::font();
-    font.setPointSize( ui.interfaceFontSize->value() );
+    font.setPixelSize( ui.interfaceFontSize->value() );
     QApplication::setFont( font );
   }
   //change interface font.

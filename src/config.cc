@@ -826,7 +826,7 @@ Class load()
     c.preferences.interfaceLanguage = preferences.namedItem( "interfaceLanguage" ).toElement().text();
     c.preferences.displayStyle      = preferences.namedItem( "displayStyle" ).toElement().text();
     c.preferences.interfaceFont     = preferences.namedItem( "interfaceFont" ).toElement().text();
-    auto fontSize                   = preferences.namedItem( "interfaceFontSize" );
+    auto fontSize                   = preferences.namedItem( "interfaceFontSize_0" );
     if ( !fontSize.isNull() ) {
       c.preferences.interfaceFontSize = fontSize.toElement().text().toInt();
     }
@@ -1731,7 +1731,7 @@ void save( Class const & c )
     opt.appendChild( dd.createTextNode( c.preferences.interfaceFont ) );
     preferences.appendChild( opt );
 
-    opt = dd.createElement( "interfaceFontSize" );
+    opt = dd.createElement( "interfaceFontSize_0" );
     opt.appendChild( dd.createTextNode( QString::number( c.preferences.interfaceFontSize ) ) );
     preferences.appendChild( opt );
 
