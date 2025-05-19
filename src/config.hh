@@ -28,6 +28,9 @@ enum GroupId : unsigned {
 /// GoldenDict's configuration
 namespace Config {
 
+//define a default font fize value
+constexpr int DEFAULT_FONT_SIZE = 12;
+
 // Tri states enum for Dark and Dark reader mode
 enum class Dark : std::uint8_t {
   Off = 0,

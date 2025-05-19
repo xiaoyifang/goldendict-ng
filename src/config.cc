@@ -832,7 +832,7 @@ Class load()
       c.preferences.interfaceFontSize = fontSize.toElement().text().toInt();
     }
     else {
-      c.preferences.interfaceFontSize = 12;
+      c.preferences.interfaceFontSize = Config::DEFAULT_INTERFACE_FONT_SIZE;
     }
 #if !defined( Q_OS_WIN )
     c.preferences.interfaceStyle = preferences.namedItem( "interfaceStyle" ).toElement().text();

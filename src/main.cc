@@ -70,7 +70,6 @@ bool callback( const char * dump_dir, const char * minidump_id, void * context, 
   #endif
 #endif
 
-
 struct GDOptions
 {
   bool logFile     = false;
@@ -241,40 +240,6 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
 
 int main( int argc, char ** argv )
 {
-#if defined( Q_OS_UNIX ) && !defined( Q_OS_MACOS )
-  // GoldenDict use lots of X11 functions and it currently cannot work
-  // natively on Wayland. This workaround will force GoldenDict to use
-  // XWayland.
-
-  if ( qEnvironmentVariableIsEmpty( "GOLDENDICT_FORCE_WAYLAND" ) ) {
-    char * xdg_envc     = getenv( "XDG_SESSION_TYPE" );
-    QString xdg_session = xdg_envc ? QString::fromLatin1( xdg_envc ) : QString();
-    if ( !QString::compare( xdg_session, QString( "wayland" ), Qt::CaseInsensitive ) ) {
-      setenv( "QT_QPA_PLATFORM", "xcb", 1 );
-    }
-  }
-#endif
-
-#ifdef Q_OS_MAC
-  setenv( "LANG", "en_US.UTF-8", 1 );
-#endif
-
-#ifdef Q_OS_WIN32
-  // attach the new console to this application's process
-  if ( AttachConsole( ATTACH_PARENT_PROCESS ) ) {
-    // reopen the std I/O streams to redirect I/O to the new console
-    auto ret1 = freopen( "CON", "w", stdout );
-    auto ret2 = freopen( "CON", "w", stderr );
-    if ( ret1 == nullptr || ret2 == nullptr ) {
-      qDebug() << "Attaching console stdout or stderr failed";
-    }
-  }
-
-  qputenv( "QT_QPA_PLATFORM", "windows:darkmode=1" );
-
-#endif
-
-
   //high dpi screen support
   if ( !qEnvironmentVariableIsSet( "QT_ENABLE_HIGHDPI_SCALING" )
        || qEnvironmentVariableIsEmpty( "QT_ENABLE_HIGHDPI_SCALING" ) ) {
@@ -440,6 +405,10 @@ int main( int argc, char ** argv )
   if ( cfg.preferences.interfaceFontSize >= 8 && cfg.preferences.interfaceFontSize <= 32 ) {
     font.setPixelSize( cfg.preferences.interfaceFontSize );
     QApplication::setFont( font );
+  }
+  else{
+    QDebug() << "Invalid font size, using default";
+    cfg.preferences.interfaceFontSize = Config::DEFAULT_FONT_SIZE;
   }
 
   // Update default locale
