@@ -407,7 +407,7 @@ int main( int argc, char ** argv )
     QApplication::setFont( font );
   }
   else {
-    qDebug() << "Invalid font size:" << cfg.preferences.interfaceFontSize<<", using default";
+    qDebug() << "Invalid font size:" << cfg.preferences.interfaceFontSize << ", using default";
     cfg.preferences.interfaceFontSize = Config::DEFAULT_FONT_SIZE;
   }
 
