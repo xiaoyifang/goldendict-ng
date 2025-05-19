@@ -93,7 +93,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 
   prevWebFontFamily = p.customFonts;
   prevSysFont       = p.interfaceFont;
-  prevFontSize      = p.interfaceFontSize;
+  prevFontSize      = ui.interfaceFontSize->value();
 
   if ( !p.customFonts.standard.isEmpty() ) {
     ui.font_standard->setCurrentText( p.customFonts.standard );
