@@ -49,6 +49,12 @@ protected:
 
   /// Inserts new entry into index. from and to are UTF8-encoded strings.
   void ins( char const * from, char const * to );
+
+  /// Inserts new entry into index. from and to are UTF32-encoded strings.
+  void ins( std::u32string const & from, std::u32string const & to )
+  {
+    this->insert( { from, to } );
+  }
 };
 
 
