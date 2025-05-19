@@ -406,7 +406,7 @@ int main( int argc, char ** argv )
     font.setPixelSize( cfg.preferences.interfaceFontSize );
     QApplication::setFont( font );
   }
-  else{
+  else {
     QDebug() << "Invalid font size, using default";
     cfg.preferences.interfaceFontSize = Config::DEFAULT_FONT_SIZE;
   }
