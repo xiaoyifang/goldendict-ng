@@ -830,6 +830,9 @@ Class load()
     if ( !fontSize.isNull() ) {
       c.preferences.interfaceFontSize = fontSize.toElement().text().toInt();
     }
+    else {
+      c.preferences.interfaceFontSize = QApplication::font().pixelSize();
+    }
 #if !defined( Q_OS_WIN )
     c.preferences.interfaceStyle = preferences.namedItem( "interfaceStyle" ).toElement().text();
 #endif
