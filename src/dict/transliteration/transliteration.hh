@@ -55,6 +55,10 @@ protected:
   {
     this->insert( { from, to } );
   }
+
+  /// Inserts new entry into index. from and to are std::string (UTF8-encoded).
+  void ins( std::string const & from, std::string const & to );
+
 };
 
 
