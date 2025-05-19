@@ -41,10 +41,7 @@
     <id>org.goldendict_ng.desktop</id>
   </provides>
   <releases>
-  <release version="25.05.1" date="2025-05-19" >
-    <description>Bugfix release</description>
-    <
-  </release>
+    <release version="25.05.1" date="2025-05-19" />
     <release version="25.05.0" date="2025-04-04" />
     <release version="25.02.0" date="2025-01-24" />
     <release version="24.09.1" date="2024-11-02" />
