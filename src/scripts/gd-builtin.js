@@ -172,6 +172,24 @@ function gdAttachEventHandlers() {
       ?.getAttribute("data-gd-id");
     gdMakeArticleActive(articleId, false);
   }
+
+  handleIframeEvents();
+}
+
+function handleIframeEvents() {
+  const iframes = document.querySelectorAll("iframe[data-gd-id]");
+
+  iframes.forEach((iframe) => {
+    const gdId = iframe.getAttribute("data-gd-id");
+
+    iframe.addEventListener("mouseover", function () {
+      processIframeMouseOver("gdexpandframe-" + gdId);
+    });
+
+    iframe.addEventListener("mouseout", function () {
+      processIframeMouseOut();
+    });
+  });
 }
 
 // Check the document ready state
