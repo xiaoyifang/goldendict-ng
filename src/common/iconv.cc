@@ -30,7 +30,7 @@ QByteArray Iconv::fromUnicode( const QString & input, const char * toEncoding )
   // Initialize iconv
   iconv_t cd = iconv_open( toEncoding, "UTF-8" );
   if ( cd == (iconv_t)-1 ) {
-    qDebug()<< "iconv_open failed" ;
+    qDebug() << "iconv_open failed";
     return {};
   }
 
@@ -52,7 +52,7 @@ QByteArray Iconv::fromUnicode( const QString & input, const char * toEncoding )
       }
       else {
         iconv_close( cd );
-        qDebug()<<( "iconv conversion failed" );
+        qDebug() << ( "iconv conversion failed" );
         return {};
       }
     }
