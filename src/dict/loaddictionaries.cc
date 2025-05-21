@@ -221,91 +221,96 @@ void loadDictionaries( QWidget * parent,
   QObject::connect( &loadDicts, &LoadDictionaries::indexingDictionarySignal, &init, &Initializing::indexing );
   QObject::connect( &loadDicts, &LoadDictionaries::loadingDictionarySignal, &init, &Initializing::loading );
   QFutureWatcher< void > futureWatcher;
+  // Connect the extracted function
   QObject::connect( &futureWatcher, &QFutureWatcher< void >::finished, [ & ]() {
-    if ( loadDicts.getExceptionText().size() ) {
-      QMessageBox::critical( parent,
-                             QCoreApplication::translate( "LoadDictionaries", "Error loading dictionaries" ),
-                             loadDicts.getExceptionText() );
-    }
-
-    dictionaries = loadDicts.getDictionaries();
-
-    // Helper function that will add a vector of dictionary::Class to the dictionary list
-    // Implemented as lambda to access method's `dictionaries` variable
-    auto addDicts = [ &dictionaries ]( const vector< sptr< Dictionary::Class > > & dicts ) {
-      std::move( dicts.begin(), dicts.end(), std::back_inserter( dictionaries ) );
-    };
-
-    ///// We create transliterations synchronously since they are very simple
-
-#ifdef MAKE_CHINESE_CONVERSION_SUPPORT
-    addDicts( ChineseTranslit::makeDictionaries( cfg.transliteration.chinese ) );
-#endif
-
-    addDicts( RomajiTranslit::makeDictionaries( cfg.transliteration.romaji ) );
-    addDicts( CustomTranslit::makeDictionaries( cfg.transliteration.customTrans ) );
-
-    // Make Russian transliteration
-    if ( cfg.transliteration.enableRussianTransliteration ) {
-      dictionaries.push_back( RussianTranslit::makeDictionary() );
-    }
-
-    // Make German transliteration
-    if ( cfg.transliteration.enableGermanTransliteration ) {
-      dictionaries.push_back( GermanTranslit::makeDictionary() );
-    }
-
-    // Make Greek transliteration
-    if ( cfg.transliteration.enableGreekTransliteration ) {
-      dictionaries.push_back( GreekTranslit::makeDictionary() );
-    }
-
-    // Make Belarusian transliteration
-    if ( cfg.transliteration.enableBelarusianTransliteration ) {
-      addDicts( BelarusianTranslit::makeDictionaries() );
-    }
-
-    addDicts( MediaWiki::makeDictionaries( loadDicts, cfg.mediawikis, dictNetMgr ) );
-    addDicts( WebSite::makeDictionaries( cfg.webSites, dictNetMgr ) );
-    addDicts( Forvo::makeDictionaries( loadDicts, cfg.forvo, dictNetMgr ) );
-    addDicts( Lingua::makeDictionaries( loadDicts, cfg.lingua, dictNetMgr ) );
-    addDicts( Programs::makeDictionaries( cfg.programs ) );
-#ifdef TTS_SUPPORT
-    addDicts( VoiceEngines::makeDictionaries( cfg.voiceEngines ) );
-#endif
-    addDicts( DictServer::makeDictionaries( cfg.dictServers ) );
-
-    qDebug( "Load done" );
-
-    // Remove any stale index files
-
-    set< string > ids;
-    std::pair< set< string >::iterator, bool > ret;
-
-    for ( unsigned x = dictionaries.size(); x--; ) {
-      ret = ids.insert( dictionaries[ x ]->getId() );
-      if ( !ret.second ) {
-        qWarning( R"(Duplicate dictionary ID found: ID=%s, name="%s", path="%s")",
-                  dictionaries[ x ]->getId().c_str(),
-                  dictionaries[ x ]->getName().c_str(),
-                  dictionaries[ x ]->getDictionaryFilenames().empty() ?
-                    "" :
-                    dictionaries[ x ]->getDictionaryFilenames()[ 0 ].c_str() );
-      }
-    }
-
-    // Run deferred inits
-
-    if ( doDeferredInit_ ) {
-      doDeferredInit( dictionaries );
-    }
-
-    // Close the splash window if it was shown
-    init.close();
+    loadDictionariesFinished(parent, loadDicts, cfg, dictionaries, dictNetMgr, init, doDeferredInit_);
   } );
 
   QFuture< void > future = QtConcurrent::run( &loadDicts, &LoadDictionaries::run );
   futureWatcher.setFuture( future );
+}
+
+void loadDictionariesFinished(QWidget * parent, LoadDictionaries & loadDicts, Config::Class const & cfg, std::vector< sptr< Dictionary::Class > > & dictionaries, QNetworkAccessManager & dictNetMgr, ::Initializing & init, bool doDeferredInit_) {
+  if ( loadDicts.getExceptionText().size() ) {
+      QMessageBox::critical( parent,
+                             QCoreApplication::translate( "LoadDictionaries", "Error loading dictionaries" ),
+                             loadDicts.getExceptionText() );
+  }
+
+  dictionaries = loadDicts.getDictionaries();
+
+  // Helper function that will add a vector of dictionary::Class to the dictionary list
+  // Implemented as lambda to access method's `dictionaries` variable
+  auto addDicts = [ &dictionaries ]( const std::vector< sptr< Dictionary::Class > > & dicts ) {
+      std::move( dicts.begin(), dicts.end(), std::back_inserter( dictionaries ) );
+  };
+
+  ///// We create transliterations synchronously since they are very simple
+
+#ifdef MAKE_CHINESE_CONVERSION_SUPPORT
+  addDicts( ChineseTranslit::makeDictionaries( cfg.transliteration.chinese ) );
+#endif
+
+  addDicts( RomajiTranslit::makeDictionaries( cfg.transliteration.romaji ) );
+  addDicts( CustomTranslit::makeDictionaries( cfg.transliteration.customTrans ) );
+
+  // Make Russian transliteration
+  if ( cfg.transliteration.enableRussianTransliteration ) {
+      dictionaries.push_back( RussianTranslit::makeDictionary() );
+  }
+
+  // Make German transliteration
+  if ( cfg.transliteration.enableGermanTransliteration ) {
+      dictionaries.push_back( GermanTranslit::makeDictionary() );
+  }
+
+  // Make Greek transliteration
+  if ( cfg.transliteration.enableGreekTransliteration ) {
+      dictionaries.push_back( GreekTranslit::makeDictionary() );
+  }
+
+  // Make Belarusian transliteration
+  if ( cfg.transliteration.enableBelarusianTransliteration ) {
+      addDicts( BelarusianTranslit::makeDictionaries() );
+  }
+
+  addDicts( MediaWiki::makeDictionaries( loadDicts, cfg.mediawikis, dictNetMgr ) );
+  addDicts( WebSite::makeDictionaries( cfg.webSites, dictNetMgr ) );
+  addDicts( Forvo::makeDictionaries( loadDicts, cfg.forvo, dictNetMgr ) );
+  addDicts( Lingua::makeDictionaries( loadDicts, cfg.lingua, dictNetMgr ) );
+  addDicts( Programs::makeDictionaries( cfg.programs ) );
+#ifdef TTS_SUPPORT
+  addDicts( VoiceEngines::makeDictionaries( cfg.voiceEngines ) );
+#endif
+  addDicts( DictServer::makeDictionaries( cfg.dictServers ) );
+
+  qDebug( "Load done" );
+
+  // Remove any stale index files
+
+  std::set< std::string > ids;
+  std::pair< std::set< std::string >::iterator, bool > ret;
+
+  for ( unsigned x = dictionaries.size(); x--; ) {
+      ret = ids.insert( dictionaries[ x ]->getId() );
+      if ( !ret.second ) {
+          qWarning( R"(Duplicate dictionary ID found: ID=%s, name="%s", path="%s")",
+                    dictionaries[ x ]->getId().c_str(),
+                    dictionaries[ x ]->getName().c_str(),
+                    dictionaries[ x ]->getDictionaryFilenames().empty() ?
+                      "" :
+                      dictionaries[ x ]->getDictionaryFilenames()[ 0 ].c_str() );
+      }
+  }
+
+  // Run deferred inits
+
+  if ( doDeferredInit_ ) {
+      doDeferredInit( dictionaries );
+  }
+
+  // Close the splash window if it was shown
+  init.close();
 }
 
 void doDeferredInit( std::vector< sptr< Dictionary::Class > > & dictionaries )
