@@ -48,6 +48,7 @@ nav:
       - Move index folder: topic_move_index_folder.md
       - External Audio Engine: ui_audioengine.md
       - Wayland: topic_wayland.md
+      - Manually reindex dictionary: howto/how to manually reindex dictionary.md
   - Related tools:
       - Anki Integration: topic_anki.md
       - OCR Integration: howto/ocr.md
