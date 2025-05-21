@@ -23,18 +23,6 @@ void CustomTransTable::parse( const QString & content )
     if ( parts.size() != 2 ) {
       continue;
     }
-    //check part length, normally they should all with length<=2
-    bool validState = true;
-    for ( auto & part : parts ) {
-      if ( part.trimmed().length() > 2 ) {
-        validState = false;
-        break;
-      }
-    }
-
-    if ( !validState ) {
-      continue;
-    }
 
     ins( parts[ 0 ].toStdU32String(), parts[ 1 ].toStdU32String() );
   }
