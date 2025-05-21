@@ -73,7 +73,8 @@ void Table::ins( char const * from, char const * to )
   insert( std::pair< std::u32string, std::u32string >( fr, Text::toUtf32( std::string( to ) ) ) );
 }
 
-void Table::ins( std::string const & from, std::string const & to ) {
+void Table::ins( std::string const & from, std::string const & to )
+{
   insert( std::pair< std::u32string, std::u32string >( Text::toUtf32( from ), Text::toUtf32( to ) ) );
 }
 
