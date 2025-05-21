@@ -170,11 +170,6 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
   qcmd.addOption( notts );
   qcmd.addOption( resetState );
   qcmd.addOption( printVersion );
-
-  QCommandLineOption doNothingOption( "disable-web-security" ); // ignore the --disable-web-security
-  doNothingOption.setFlags( QCommandLineOption::HiddenFromHelp );
-  qcmd.addOption( doNothingOption );
-
   qcmd.process( *app );
 
   if ( qcmd.isSet( logFileOption ) ) {
