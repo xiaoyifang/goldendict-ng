@@ -223,18 +223,25 @@ void loadDictionaries( QWidget * parent,
   QFutureWatcher< void > futureWatcher;
   // Connect the extracted function
   QObject::connect( &futureWatcher, &QFutureWatcher< void >::finished, [ & ]() {
-    loadDictionariesFinished(parent, loadDicts, cfg, dictionaries, dictNetMgr, init, doDeferredInit_);
+    loadDictionariesFinished( parent, loadDicts, cfg, dictionaries, dictNetMgr, init, doDeferredInit_ );
   } );
 
   QFuture< void > future = QtConcurrent::run( &loadDicts, &LoadDictionaries::run );
   futureWatcher.setFuture( future );
 }
 
-void loadDictionariesFinished(QWidget * parent, LoadDictionaries & loadDicts, Config::Class const & cfg, std::vector< sptr< Dictionary::Class > > & dictionaries, QNetworkAccessManager & dictNetMgr, ::Initializing & init, bool doDeferredInit_) {
+void loadDictionariesFinished( QWidget * parent,
+                               LoadDictionaries & loadDicts,
+                               Config::Class const & cfg,
+                               std::vector< sptr< Dictionary::Class > > & dictionaries,
+                               QNetworkAccessManager & dictNetMgr,
+                               ::Initializing & init,
+                               bool doDeferredInit_ )
+{
   if ( loadDicts.getExceptionText().size() ) {
-      QMessageBox::critical( parent,
-                             QCoreApplication::translate( "LoadDictionaries", "Error loading dictionaries" ),
-                             loadDicts.getExceptionText() );
+    QMessageBox::critical( parent,
+                           QCoreApplication::translate( "LoadDictionaries", "Error loading dictionaries" ),
+                           loadDicts.getExceptionText() );
   }
 
   dictionaries = loadDicts.getDictionaries();
@@ -242,7 +249,7 @@ void loadDictionariesFinished(QWidget * parent, LoadDictionaries & loadDicts, Co
   // Helper function that will add a vector of dictionary::Class to the dictionary list
   // Implemented as lambda to access method's `dictionaries` variable
   auto addDicts = [ &dictionaries ]( const std::vector< sptr< Dictionary::Class > > & dicts ) {
-      std::move( dicts.begin(), dicts.end(), std::back_inserter( dictionaries ) );
+    std::move( dicts.begin(), dicts.end(), std::back_inserter( dictionaries ) );
   };
 
   ///// We create transliterations synchronously since they are very simple
@@ -256,22 +263,22 @@ void loadDictionariesFinished(QWidget * parent, LoadDictionaries & loadDicts, Co
 
   // Make Russian transliteration
   if ( cfg.transliteration.enableRussianTransliteration ) {
-      dictionaries.push_back( RussianTranslit::makeDictionary() );
+    dictionaries.push_back( RussianTranslit::makeDictionary() );
   }
 
   // Make German transliteration
   if ( cfg.transliteration.enableGermanTransliteration ) {
-      dictionaries.push_back( GermanTranslit::makeDictionary() );
+    dictionaries.push_back( GermanTranslit::makeDictionary() );
   }
 
   // Make Greek transliteration
   if ( cfg.transliteration.enableGreekTransliteration ) {
-      dictionaries.push_back( GreekTranslit::makeDictionary() );
+    dictionaries.push_back( GreekTranslit::makeDictionary() );
   }
 
   // Make Belarusian transliteration
   if ( cfg.transliteration.enableBelarusianTransliteration ) {
-      addDicts( BelarusianTranslit::makeDictionaries() );
+    addDicts( BelarusianTranslit::makeDictionaries() );
   }
 
   addDicts( MediaWiki::makeDictionaries( loadDicts, cfg.mediawikis, dictNetMgr ) );
@@ -292,21 +299,21 @@ void loadDictionariesFinished(QWidget * parent, LoadDictionaries & loadDicts, Co
   std::pair< std::set< std::string >::iterator, bool > ret;
 
   for ( unsigned x = dictionaries.size(); x--; ) {
-      ret = ids.insert( dictionaries[ x ]->getId() );
-      if ( !ret.second ) {
-          qWarning( R"(Duplicate dictionary ID found: ID=%s, name="%s", path="%s")",
-                    dictionaries[ x ]->getId().c_str(),
-                    dictionaries[ x ]->getName().c_str(),
-                    dictionaries[ x ]->getDictionaryFilenames().empty() ?
-                      "" :
-                      dictionaries[ x ]->getDictionaryFilenames()[ 0 ].c_str() );
-      }
+    ret = ids.insert( dictionaries[ x ]->getId() );
+    if ( !ret.second ) {
+      qWarning( R"(Duplicate dictionary ID found: ID=%s, name="%s", path="%s")",
+                dictionaries[ x ]->getId().c_str(),
+                dictionaries[ x ]->getName().c_str(),
+                dictionaries[ x ]->getDictionaryFilenames().empty() ?
+                  "" :
+                  dictionaries[ x ]->getDictionaryFilenames()[ 0 ].c_str() );
+    }
   }
 
   // Run deferred inits
 
   if ( doDeferredInit_ ) {
-      doDeferredInit( dictionaries );
+    doDeferredInit( dictionaries );
   }
 
   // Close the splash window if it was shown
