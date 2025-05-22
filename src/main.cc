@@ -70,7 +70,6 @@ bool callback( const char * dump_dir, const char * minidump_id, void * context, 
   #endif
 #endif
 
-
 struct GDOptions
 {
   bool logFile     = false;
@@ -268,8 +267,6 @@ int main( int argc, char ** argv )
   qputenv( "QT_QPA_PLATFORM", "windows:darkmode=1" );
 
 #endif
-
-
   //high dpi screen support
   if ( !qEnvironmentVariableIsSet( "QT_ENABLE_HIGHDPI_SCALING" )
        || qEnvironmentVariableIsEmpty( "QT_ENABLE_HIGHDPI_SCALING" ) ) {
@@ -432,9 +429,13 @@ int main( int argc, char ** argv )
   }
 
   //system font size
-  if ( cfg.preferences.interfaceFontSize > 0 ) {
-    font.setPointSize( cfg.preferences.interfaceFontSize );
+  if ( cfg.preferences.interfaceFontSize >= 8 && cfg.preferences.interfaceFontSize <= 32 ) {
+    font.setPixelSize( cfg.preferences.interfaceFontSize );
     QApplication::setFont( font );
+  }
+  else {
+    qDebug() << "Invalid font size:" << cfg.preferences.interfaceFontSize << ", using default";
+    cfg.preferences.interfaceFontSize = Config::DEFAULT_FONT_SIZE;
   }
 
   // Update default locale
