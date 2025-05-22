@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation>أنكي: لا يمكن&apos;إنشاء بطاقة بدون كلمة</translation>
+      <translation type="unfinished">Anki: can&apos;t create a card without a word</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation>أنكي: فشل النشر إلى أنكي</translation>
+      <translation type="unfinished">Anki: post to Anki failed</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation>أنكي: وظيفة أنكي النجاح</translation>
+      <translation type="unfinished">Anki: post to Anki success</translation>
     </message>
   </context>
   <context>
@@ -3462,8 +3462,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Preview Font</translation>
     </message>
     <message>
-      <source>Goldendict-ng is a dictionary software</source>
-      <translation>Goldendict-ng is a dictionary software</translation>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
     </message>
   </context>
   <context>
@@ -3590,14 +3590,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>تغيير مجموعة النوافذ المنبثقة.</translation>
     </message>
     <message>
-      <source>Force the word to be translated in scanpopup</source>
-      <translation>فرض ترجمة الكلمة في المسح المنبثق</translation>
-    </message>
-    <message>
-      <source>Force the word to be translated in the mainwindow</source>
-      <translation>فرض ترجمة الكلمة في النافذة الرئيسية</translation>
-    </message>
-    <message>
       <source>Toggle popup.</source>
       <translation>قم بتبديل قائمة الفحص المنبثقة.</translation>
     </message>
@@ -3606,8 +3598,16 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>طباعة النسخة ومعلومات التشخيص.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation>Save debug messages to gd_log.txt in the config folder</translation>
+      <source>Save debug messages to gd_log.txt in the config folder.</source>
+      <translation>حفظ رسائل التصحيح إلى gd_log.txt في مجلد التكييف.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in Popup.</source>
+      <translation type="unfinished">Force the word to be translated in Popup.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow.</source>
+      <translation type="unfinished">Force the word to be translated in the mainwindow.</translation>
     </message>
   </context>
   <context>

@@ -1,25 +1,20 @@
-# How to add a program or script to the goldendict-ng
+## Add external programs or scripts
 
-GoldenDict has offered a program dictionary function that allow you to customize the user experience when using the this software.
+GoldenDict can use programs or scripts as dictionary.
 
-# An example
+### An example
 
-tokenize the input german sentence into words.
+Tokenize the input german sentence into words.
 
-## use python script 
+#### Install Python and SoMaJo.
 
-You can use any script language or program to implement this feature.
+You can follow the instructions in the documentation https://github.com/tsproisl/SoMaJo?tab=readme-ov-file#installation
 
+```
+pip install -U SoMaJo
+```
 
-## install python
-
-## install SoMaJo
-
-you can follow the instructions in the documentation https://github.com/tsproisl/SoMaJo?tab=readme-ov-file#installation
-
-`pip install -U SoMaJo`
-
-## create a script 
+#### Create a script
 
 ```
 from somajo import SoMaJo
@@ -36,14 +31,14 @@ for sentence in sentences:
             print(f"{token.text}")
 ```
 
-and save the script in the E:\test.py for example.
+and save the script in the `E:\test.py` for example.
 
-## add the script to the program dictionary 
+#### Add the script to the program dictionary
 
 ![Add the script as program dictionary](add-program-dictionary.png)
 `python e:\test.py %GDWORD%`
 
-## the result
+#### The result
 
 ![](program-result.png)
 

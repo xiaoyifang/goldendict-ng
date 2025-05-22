@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation>Anki: не може да се создаде картичка без збор</translation>
+      <translation type="unfinished">Anki: can&apos;t create a card without a word</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -3467,8 +3467,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Preview Font</translation>
     </message>
     <message>
-      <source>Goldendict-ng is a dictionary software</source>
-      <translation>Goldendict-ng is a dictionary software</translation>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
     </message>
   </context>
   <context>
@@ -3595,14 +3595,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Променете ја групата на скокачки прозорец.</translation>
     </message>
     <message>
-      <source>Force the word to be translated in scanpopup</source>
-      <translation>Принудете го зборот да се преведе во scanpopup</translation>
-    </message>
-    <message>
-      <source>Force the word to be translated in the mainwindow</source>
-      <translation>Принудете го зборот да се преведе во главниот прозорец</translation>
-    </message>
-    <message>
       <source>Toggle popup.</source>
       <translation>Вклучете го скокачкиот прозорец за скенирање.</translation>
     </message>
@@ -3611,8 +3603,16 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Информации за печатена верзија и дијагноза.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation>Save debug messages to gd_log.txt in the config folder</translation>
+      <source>Save debug messages to gd_log.txt in the config folder.</source>
+      <translation>Зачувајте ги пораките за отстранување грешки во gd_log.txt во папката за конфигурација.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in Popup.</source>
+      <translation type="unfinished">Force the word to be translated in Popup.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow.</source>
+      <translation type="unfinished">Force the word to be translated in the mainwindow.</translation>
     </message>
   </context>
   <context>

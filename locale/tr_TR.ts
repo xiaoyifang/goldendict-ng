@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation>Anki: kelime olmadan kart oluşturulamaz</translation>
+      <translation type="unfinished">Anki: can&apos;t create a card without a word</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation>Anki: Anki'ye gönderi başarısız oldu</translation>
+      <translation type="unfinished">Anki: post to Anki failed</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation>Anki: Anki başarısına gönder</translation>
+      <translation type="unfinished">Anki: post to Anki success</translation>
     </message>
   </context>
   <context>
@@ -3459,8 +3459,8 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
       <translation>Preview Font</translation>
     </message>
     <message>
-      <source>Goldendict-ng is a dictionary software</source>
-      <translation>Goldendict-ng is a dictionary software</translation>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
     </message>
   </context>
   <context>
@@ -3587,14 +3587,6 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
       <translation>Açılır pencere grubunu değiştirin.</translation>
     </message>
     <message>
-      <source>Force the word to be translated in scanpopup</source>
-      <translation>Scanpopup'ta çevrilecek kelimeyi zorla</translation>
-    </message>
-    <message>
-      <source>Force the word to be translated in the mainwindow</source>
-      <translation>Ana pencerede çevrilecek kelimeyi zorla</translation>
-    </message>
-    <message>
       <source>Toggle popup.</source>
       <translation>Tarama açılır penceresini aç / kapat.</translation>
     </message>
@@ -3603,8 +3595,16 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
       <translation>Sürümü ve teşhis bilgilerini yazdırın.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation>Save debug messages to gd_log.txt in the config folder</translation>
+      <source>Save debug messages to gd_log.txt in the config folder.</source>
+      <translation>Hata ayıklama mesajlarını yapılandırma klasöründeki gd_log.txt dosyasına kaydedin.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in Popup.</source>
+      <translation type="unfinished">Force the word to be translated in Popup.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow.</source>
+      <translation type="unfinished">Force the word to be translated in the mainwindow.</translation>
     </message>
   </context>
   <context>

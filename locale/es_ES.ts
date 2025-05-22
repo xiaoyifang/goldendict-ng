@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation>Anki: no se puede crear una carta sin una palabra</translation>
+      <translation>Anki: puede&apos;t crear una tarjeta sin palabra</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -3461,8 +3461,8 @@ de diccionarios Stardict, Babylon y GLS</translation>
       <translation>Previsualizar fuente</translation>
     </message>
     <message>
-      <source>Goldendict-ng is a dictionary software</source>
-      <translation>Goldendict-ng es un software de diccionario</translation>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng es un software de diccionario.</translation>
     </message>
   </context>
   <context>
@@ -3589,14 +3589,6 @@ de diccionarios Stardict, Babylon y GLS</translation>
       <translation>Cambiar el grupo de ventanas emergentes.</translation>
     </message>
     <message>
-      <source>Force the word to be translated in scanpopup</source>
-      <translation>Forzar la traducción de la palabra en el popup de escaneado</translation>
-    </message>
-    <message>
-      <source>Force the word to be translated in the mainwindow</source>
-      <translation>Forzar la traducción de la palabra en la ventana principal.</translation>
-    </message>
-    <message>
       <source>Toggle popup.</source>
       <translation>Cambiar ventana emergente de escaneo.</translation>
     </message>
@@ -3605,8 +3597,16 @@ de diccionarios Stardict, Babylon y GLS</translation>
       <translation>Imprimir versión e información de diagnóstico.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation>Guardar mensajes de depuración en gd_log.txt en la carpeta de configuración</translation>
+      <source>Save debug messages to gd_log.txt in the config folder.</source>
+      <translation>Guardar mensajes de depuración en gd_log.txt en la carpeta de configuración.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in Popup.</source>
+      <translation>Forzar la traducción de la palabra en Popup.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow.</source>
+      <translation>Forzar la traducción de la palabra en la ventana principal.</translation>
     </message>
   </context>
   <context>

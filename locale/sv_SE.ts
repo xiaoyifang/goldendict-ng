@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation>Anki: kan inte skapa ett kort utan ett ord</translation>
+      <translation>Anki: kan&apos;t skapa ett kort utan ett ord</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -3466,8 +3466,8 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <translation>Förhandsgranska typsnitt</translation>
     </message>
     <message>
-      <source>Goldendict-ng is a dictionary software</source>
-      <translation>Goldendict-ng är en ordbok programvara</translation>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng är en ordbok programvara.</translation>
     </message>
   </context>
   <context>
@@ -3594,14 +3594,6 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <translation>Ändra grupp av popup.</translation>
     </message>
     <message>
-      <source>Force the word to be translated in scanpopup</source>
-      <translation>Tvinga ordet att översättas i scanpopup</translation>
-    </message>
-    <message>
-      <source>Force the word to be translated in the mainwindow</source>
-      <translation>Tvinga ordet att översättas i huvudfönstret</translation>
-    </message>
-    <message>
       <source>Toggle popup.</source>
       <translation>Växla skanning popup.</translation>
     </message>
@@ -3610,8 +3602,16 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <translation>Utskriftsversion och diagnosinformation.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation>Spara felsökningsmeddelanden till gd_log.txt i konfigurationsmappen</translation>
+      <source>Save debug messages to gd_log.txt in the config folder.</source>
+      <translation>Spara felsökningsmeddelanden till gd_log.txt i konfigurationsmappen.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in Popup.</source>
+      <translation>Tvinga ordet som ska översättas i Popup.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow.</source>
+      <translation>Tvinga ordet som ska översättas i huvudfönstret.</translation>
     </message>
   </context>
   <context>

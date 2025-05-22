@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation>Anki: voi&apos;t luoda kortin ilman sanaa</translation>
+      <translation type="unfinished">Anki: can&apos;t create a card without a word</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation>Anki: post to Anki epäonnistui</translation>
+      <translation>Anki: Viesti Ankille epäonnistui</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation>Anki: post Anki menestys</translation>
+      <translation>Anki: Viesti Ankin menestykseen</translation>
     </message>
   </context>
   <context>
@@ -3464,8 +3464,8 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <translation>Esikatsele Kirjasinta</translation>
     </message>
     <message>
-      <source>Goldendict-ng is a dictionary software</source>
-      <translation>Goldendict-ng on sanakirja ohjelmisto</translation>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng on sanakirja ohjelmisto.</translation>
     </message>
   </context>
   <context>
@@ -3592,14 +3592,6 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <translation>Muuta ponnahdusikkunan ryhmää.</translation>
     </message>
     <message>
-      <source>Force the word to be translated in scanpopup</source>
-      <translation>Pakota sana käännettäväksi scanpopupissa</translation>
-    </message>
-    <message>
-      <source>Force the word to be translated in the mainwindow</source>
-      <translation>Pakota sana käännettäväksi pääikkunassa</translation>
-    </message>
-    <message>
       <source>Toggle popup.</source>
       <translation>Vaihda skannauksen ponnahdusikkuna.</translation>
     </message>
@@ -3608,8 +3600,16 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <translation>Tulostusversio ja diagnoositiedot.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation>Tallenna debug viestit gd_log.txt asetuskansioon</translation>
+      <source>Save debug messages to gd_log.txt in the config folder.</source>
+      <translation>Tallenna debug viestit gd_log.txt config kansioon.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in Popup.</source>
+      <translation>Pakota sana käännettäväksi ponnahdusikkunassa. @ option: check</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow.</source>
+      <translation>Pakota sana kääntämään se verkkoikkunaan.</translation>
     </message>
   </context>
   <context>

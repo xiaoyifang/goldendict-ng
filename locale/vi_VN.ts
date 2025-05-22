@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation>Anki: không thể tạo thẻ mà không có từ nào</translation>
+      <translation type="unfinished">Anki: can&apos;t create a card without a word</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation>Anki: lỗi khi gửi tới Anki</translation>
+      <translation type="unfinished">Anki: post to Anki failed</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation>Anki: gửi tới Anki thành công</translation>
+      <translation type="unfinished">Anki: post to Anki success</translation>
     </message>
   </context>
   <context>
@@ -3105,7 +3105,7 @@ cho tất cả các yêu cầu mạng của chương trình.</translation>
     </message>
     <message>
       <source>Anki Connect</source>
-      <translation>Kết nối Anki</translation>
+      <translation>Kết nối anki</translation>
     </message>
     <message>
       <source>http://</source>
@@ -3457,8 +3457,8 @@ từ các từ điển Stardict, Babylon và GLS</translation>
       <translation>Preview Font</translation>
     </message>
     <message>
-      <source>Goldendict-ng is a dictionary software</source>
-      <translation>Goldendict-ng is a dictionary software</translation>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
     </message>
   </context>
   <context>
@@ -3585,14 +3585,6 @@ từ các từ điển Stardict, Babylon và GLS</translation>
       <translation>Thay đổi nhóm cửa sổ bật lên.</translation>
     </message>
     <message>
-      <source>Force the word to be translated in scanpopup</source>
-      <translation>Buộc dịch từ đó trong scanpopup</translation>
-    </message>
-    <message>
-      <source>Force the word to be translated in the mainwindow</source>
-      <translation>Buộc dịch từ trong cửa sổ chính</translation>
-    </message>
-    <message>
       <source>Toggle popup.</source>
       <translation>Chuyển đổi cửa sổ bật lên quét.</translation>
     </message>
@@ -3601,8 +3593,16 @@ từ các từ điển Stardict, Babylon và GLS</translation>
       <translation>Phiên bản in và thông tin chẩn đoán.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation>Lưu thông điệp gỡ lỗi vào gd_log.txt trong thư mục cấu hình</translation>
+      <source>Save debug messages to gd_log.txt in the config folder.</source>
+      <translation>Lưu thông báo gỡ lỗi vào gd_log.txt trong thư mục cấu hình.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in Popup.</source>
+      <translation type="unfinished">Force the word to be translated in Popup.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow.</source>
+      <translation type="unfinished">Force the word to be translated in the mainwindow.</translation>
     </message>
   </context>
   <context>

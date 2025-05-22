@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation>Anki: mana simiyuq tarjetata&apos;t ruwayta atin</translation>
+      <translation type="unfinished">Anki: can&apos;t create a card without a word</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation>Anki: post a Anki fracasado</translation>
+      <translation type="unfinished">Anki: post to Anki failed</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation>Anki: post a Anki exito</translation>
+      <translation type="unfinished">Anki: post to Anki success</translation>
     </message>
   </context>
   <context>
@@ -3460,8 +3460,8 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
       <translation>Preview Font</translation>
     </message>
     <message>
-      <source>Goldendict-ng is a dictionary software</source>
-      <translation>Goldendict-ng is a dictionary software</translation>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
     </message>
   </context>
   <context>
@@ -3588,14 +3588,6 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
       <translation>Popup nisqa huñuta tikray.</translation>
     </message>
     <message>
-      <source>Force the word to be translated in scanpopup</source>
-      <translation>scanpopup nisqapi tikranapaq simita kallpachay</translation>
-    </message>
-    <message>
-      <source>Force the word to be translated in the mainwindow</source>
-      <translation>Hatun ventanata t’ikranapaq simita kallpachay</translation>
-    </message>
-    <message>
       <source>Toggle popup.</source>
       <translation>Toggle escaneo nisqa popup nisqa.</translation>
     </message>
@@ -3604,8 +3596,16 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
       <translation>Imprimir versión y diagnóstico info.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation>Save debug messages to gd_log.txt in the config folder</translation>
+      <source>Save debug messages to gd_log.txt in the config folder.</source>
+      <translation>Pantasqa allichay willakuykunata gd_log.txt kaqman waqaychay config qillqana mayt'upi.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in Popup.</source>
+      <translation type="unfinished">Force the word to be translated in Popup.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow.</source>
+      <translation type="unfinished">Force the word to be translated in the mainwindow.</translation>
     </message>
   </context>
   <context>

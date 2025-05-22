@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation>Anki: eine Karte ohne Wort kann nicht erstellt werden</translation>
+      <translation>Anki: kann&apos;t eine Karte ohne Wort erstellen</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation>Anki: Beitrag zu Anki fehlgeschlagen</translation>
+      <translation>Anki: Beitrag an Anki fehlgeschlagen</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation>Anki: Beitrag zu Anki erfolgreich</translation>
+      <translation>Anki: Post an Anki Erfolg</translation>
     </message>
   </context>
   <context>
@@ -3456,8 +3456,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Vorschau der Schriftart</translation>
     </message>
     <message>
-      <source>Goldendict-ng is a dictionary software</source>
-      <translation>Goldendict-ng ist eine Wörterbuch-Software</translation>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng ist eine Wörterbuch-Software.</translation>
     </message>
   </context>
   <context>
@@ -3584,14 +3584,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Ändere die Gruppe des Popups.</translation>
     </message>
     <message>
-      <source>Force the word to be translated in scanpopup</source>
-      <translation>Erzwingen Sie die Übersetzung des Wortes in scanpopup</translation>
-    </message>
-    <message>
-      <source>Force the word to be translated in the mainwindow</source>
-      <translation>Erzwingen Sie die Übersetzung des Wortes im Hauptfenster</translation>
-    </message>
-    <message>
       <source>Toggle popup.</source>
       <translation>Popup umschalten.</translation>
     </message>
@@ -3600,8 +3592,16 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Version und Diagnoseinformationen drucken.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation>Debug-Nachrichten in gd_log.txt im Konfigurationsordner speichern</translation>
+      <source>Save debug messages to gd_log.txt in the config folder.</source>
+      <translation>Speichern Sie Debug-Meldungen in gd_log.txt im Konfigurationsordner.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in Popup.</source>
+      <translation>Erzwingen Sie das Wort in Popup übersetzt zu werden.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow.</source>
+      <translation>Erzwingen Sie das Wort im Hauptfenster zu übersetzen.</translation>
     </message>
   </context>
   <context>

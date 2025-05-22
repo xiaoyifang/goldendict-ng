@@ -470,7 +470,7 @@ the application.</string>
                <item>
                 <widget class="QLabel" name="previewFont">
                  <property name="text">
-                  <string>Goldendict-ng is a dictionary software</string>
+                  <string>GoldenDict-ng is a dictionary software.</string>
                  </property>
                  <property name="wordWrap">
                   <bool>true</bool>

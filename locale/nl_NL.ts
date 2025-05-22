@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation>Anki: kan geen kaart maken zonder een woord</translation>
+      <translation>Anki: kan&apos;een kaart zonder woord maken</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -3460,8 +3460,8 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <translation>Voorbeeld lettertype</translation>
     </message>
     <message>
-      <source>Goldendict-ng is a dictionary software</source>
-      <translation>Goldendict-ng is een woordenboek software</translation>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng is een woordenboeksoftware.</translation>
     </message>
   </context>
   <context>
@@ -3588,14 +3588,6 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <translation>Wijzig de pop-upgroep.</translation>
     </message>
     <message>
-      <source>Force the word to be translated in scanpopup</source>
-      <translation>Forceer het woord om te worden vertaald in scanpopup</translation>
-    </message>
-    <message>
-      <source>Force the word to be translated in the mainwindow</source>
-      <translation>Forceer dat het woord in het hoofdvenster wordt vertaald</translation>
-    </message>
-    <message>
       <source>Toggle popup.</source>
       <translation>Pop-up weergeven/verbergen.</translation>
     </message>
@@ -3604,8 +3596,16 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <translation>Printversie en diagnose-info.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation>Debug berichten opslaan in gd_log.txt in de configuratie map</translation>
+      <source>Save debug messages to gd_log.txt in the config folder.</source>
+      <translation>Foutopsporingsberichten opslaan in gd_log.txt in de configuratiemap.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in Popup.</source>
+      <translation>Forceer het woord te vertalen in een popup.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow.</source>
+      <translation>Forceer het woord te vertalen in het hoofdvenster.</translation>
     </message>
   </context>
   <context>

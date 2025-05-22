@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation>Anki: não pode criar um cartão sem uma palavra</translation>
+      <translation type="unfinished">Anki: can&apos;t create a card without a word</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -3464,8 +3464,8 @@ no Stardict, Babilônia e dicionários GLS</translation>
       <translation>Visualizar Fonte</translation>
     </message>
     <message>
-      <source>Goldendict-ng is a dictionary software</source>
-      <translation>Goldendit-ng é um software de dicionário</translation>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng é um software de dicionário.</translation>
     </message>
   </context>
   <context>
@@ -3592,14 +3592,6 @@ no Stardict, Babilônia e dicionários GLS</translation>
       <translation>Alterar o grupo de popup.</translation>
     </message>
     <message>
-      <source>Force the word to be translated in scanpopup</source>
-      <translation>Forçar a palavra a ser traduzida no scanpopup</translation>
-    </message>
-    <message>
-      <source>Force the word to be translated in the mainwindow</source>
-      <translation>Forçar a palavra a ser traduzida na janela principal</translation>
-    </message>
-    <message>
       <source>Toggle popup.</source>
       <translation>Alternar pop-up de verificação.</translation>
     </message>
@@ -3608,8 +3600,16 @@ no Stardict, Babilônia e dicionários GLS</translation>
       <translation>Versão impressa e informações de diagnóstico.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation>Salvar mensagens de depuração no gd_log.txt na pasta config</translation>
+      <source>Save debug messages to gd_log.txt in the config folder.</source>
+      <translation>Salvar mensagens de depuração no gd_log.txt na pasta config.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in Popup.</source>
+      <translation>Força a palavra a ser traduzida no Popup.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow.</source>
+      <translation>Forçar a palavra a ser traduzida na janela principal.</translation>
     </message>
   </context>
   <context>

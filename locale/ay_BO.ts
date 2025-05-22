@@ -3580,8 +3580,8 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
       <translation>Preview Font</translation>
     </message>
     <message>
-      <source>Goldendict-ng is a dictionary software</source>
-      <translation>Goldendict-ng is a dictionary software</translation>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
     </message>
   </context>
   <context>
@@ -3708,14 +3708,6 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
       <translation>Uka grupo popup ukar mayjt’ayaña.</translation>
     </message>
     <message>
-      <source>Force the word to be translated in scanpopup</source>
-      <translation>Uka aru jaqukipañatakix scanpopup ukar ch’amanchaña</translation>
-    </message>
-    <message>
-      <source>Force the word to be translated in the mainwindow</source>
-      <translation>Jaqukipaña aru jach’a ventanana ch’amañchaña</translation>
-    </message>
-    <message>
       <source>Toggle popup.</source>
       <translation>Toggle escaneo ukax mä popup uñt’ayatawa.</translation>
     </message>
@@ -3724,8 +3716,16 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
       <translation>Imprimir versión ukat diagnóstico info.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation>Save debug messages to gd_log.txt in the config folder</translation>
+      <source>Save debug messages to gd_log.txt in the config folder.</source>
+      <translation>Debug yatiyawinak gd_log.txt ukar config carpeta ukan imaña.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in Popup.</source>
+      <translation type="unfinished">Force the word to be translated in Popup.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow.</source>
+      <translation type="unfinished">Force the word to be translated in the mainwindow.</translation>
     </message>
   </context>
   <context>

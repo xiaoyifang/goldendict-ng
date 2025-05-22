@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation>Anki: ne povas fari karton sen vorto</translation>
+      <translation type="unfinished">Anki: can&apos;t create a card without a word</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation>Anki: post al Anki malsukcesis</translation>
+      <translation type="unfinished">Anki: post to Anki failed</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation>Anki: post al Anki sukceso</translation>
+      <translation type="unfinished">Anki: post to Anki success</translation>
     </message>
   </context>
   <context>
@@ -3464,8 +3464,8 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
       <translation>Preview Font</translation>
     </message>
     <message>
-      <source>Goldendict-ng is a dictionary software</source>
-      <translation>Goldendict-ng is a dictionary software</translation>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
     </message>
   </context>
   <context>
@@ -3592,14 +3592,6 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
       <translation>Ŝanĝu la grupon de ŝprucfenestroj.</translation>
     </message>
     <message>
-      <source>Force the word to be translated in scanpopup</source>
-      <translation>Devigu la vorton esti tradukita en scanpopup</translation>
-    </message>
-    <message>
-      <source>Force the word to be translated in the mainwindow</source>
-      <translation>Devigu la vorton esti tradukita en la ĉeffenestro</translation>
-    </message>
-    <message>
       <source>Toggle popup.</source>
       <translation>Baskuligi skanadon ŝprucfenestron.</translation>
     </message>
@@ -3608,8 +3600,16 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
       <translation>Presa versio kaj diagnozaj informoj.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation>Save debug messages to gd_log.txt in the config folder</translation>
+      <source>Save debug messages to gd_log.txt in the config folder.</source>
+      <translation>Konservu sencimigajn mesaĝojn al gd_log.txt en la agorda dosierujo.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in Popup.</source>
+      <translation type="unfinished">Force the word to be translated in Popup.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow.</source>
+      <translation type="unfinished">Force the word to be translated in the mainwindow.</translation>
     </message>
   </context>
   <context>

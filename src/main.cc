@@ -33,8 +33,6 @@
 #if defined( USE_BREAKPAD )
   #if defined( Q_OS_MAC )
     #include "client/mac/handler/exception_handler.h"
-  #elif defined( Q_OS_LINUX )
-    #include "client/linux/handler/exception_handler.h"
   #elif defined( Q_OS_WIN32 )
     #include "client/windows/handler/exception_handler.h"
   #endif
@@ -58,18 +56,6 @@ bool callback( const wchar_t * dump_path,
   return succeeded;
 }
   #endif
-  #ifdef Q_OS_LINUX
-bool callback( const google_breakpad::MinidumpDescriptor & descriptor, void * context, bool succeeded )
-{
-  if ( succeeded ) {
-    qDebug() << "Create dump file success";
-  }
-  else {
-    qDebug() << "Create dump file failed";
-  }
-  return succeeded;
-}
-  #endif
   #ifdef Q_OS_MAC
 bool callback( const char * dump_dir, const char * minidump_id, void * context, bool succeeded )
 {
@@ -83,7 +69,6 @@ bool callback( const char * dump_dir, const char * minidump_id, void * context, 
 }
   #endif
 #endif
-
 
 struct GDOptions
 {
@@ -141,7 +126,7 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
 
   QCommandLineOption logFileOption( QStringList() << "l"
                                                   << "log-to-file",
-                                    QObject::tr( "Save debug messages to gd_log.txt in the config folder" ) );
+                                    QObject::tr( "Save debug messages to gd_log.txt in the config folder." ) );
 
   QCommandLineOption resetState( QStringList() << "r"
                                                << "reset-window-state",
@@ -159,12 +144,13 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
                                            "popupGroupName" );
 
   QCommandLineOption window_popupOption( QStringList() << "s"
-                                                       << "scanpopup",
-                                         QObject::tr( "Force the word to be translated in scanpopup" ) );
+                                                       << "scanpopup"
+                                                       << "popup",
+                                         QObject::tr( "Force the word to be translated in Popup." ) );
 
   QCommandLineOption window_mainWindowOption( QStringList() << "m"
                                                             << "main-window",
-                                              QObject::tr( "Force the word to be translated in the mainwindow" ) );
+                                              QObject::tr( "Force the word to be translated in the mainwindow." ) );
 
   QCommandLineOption togglePopupOption( QStringList() << "t"
                                                       << "toggle-popup",
@@ -183,11 +169,6 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
   qcmd.addOption( notts );
   qcmd.addOption( resetState );
   qcmd.addOption( printVersion );
-
-  QCommandLineOption doNothingOption( "disable-web-security" ); // ignore the --disable-web-security
-  doNothingOption.setFlags( QCommandLineOption::HiddenFromHelp );
-  qcmd.addOption( doNothingOption );
-
   qcmd.process( *app );
 
   if ( qcmd.isSet( logFileOption ) ) {
@@ -286,8 +267,6 @@ int main( int argc, char ** argv )
   qputenv( "QT_QPA_PLATFORM", "windows:darkmode=1" );
 
 #endif
-
-
   //high dpi screen support
   if ( !qEnvironmentVariableIsSet( "QT_ENABLE_HIGHDPI_SCALING" )
        || qEnvironmentVariableIsEmpty( "QT_ENABLE_HIGHDPI_SCALING" ) ) {
@@ -326,19 +305,9 @@ int main( int argc, char ** argv )
                                         google_breakpad::ExceptionHandler::HANDLER_ALL );
   #elif defined( Q_OS_MAC )
 
-
   google_breakpad::ExceptionHandler eh( appDirPath.toStdString(), 0, callback, 0, true, NULL );
 
-  #else
-
-  google_breakpad::ExceptionHandler eh( google_breakpad::MinidumpDescriptor( appDirPath.toStdString() ),
-                                        /*FilterCallback*/ 0,
-                                        callback,
-                                        /*context*/ 0,
-                                        true,
-                                        -1 );
   #endif
-
 #endif
 
   GDOptions gdcl{};
@@ -460,9 +429,13 @@ int main( int argc, char ** argv )
   }
 
   //system font size
-  if ( cfg.preferences.interfaceFontSize > 0 ) {
-    font.setPointSize( cfg.preferences.interfaceFontSize );
+  if ( cfg.preferences.interfaceFontSize >= 8 && cfg.preferences.interfaceFontSize <= 32 ) {
+    font.setPixelSize( cfg.preferences.interfaceFontSize );
     QApplication::setFont( font );
+  }
+  else {
+    qDebug() << "Invalid font size:" << cfg.preferences.interfaceFontSize << ", using default";
+    cfg.preferences.interfaceFontSize = Config::DEFAULT_FONT_SIZE;
   }
 
   // Update default locale
