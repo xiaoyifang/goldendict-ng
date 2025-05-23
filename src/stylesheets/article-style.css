@@ -3023,15 +3023,19 @@ table#sv-hooks,
 .mwiki .infl-table {
   display: none;
 }
-/****default hide dict icon ***/
+
 .gddicticon {
   display: none;
 }
 
+.gddicticon img {
+  height: 1rem;
+}
+
 .gdexpandicon {
   cursor: pointer;
-  width: 16px;
-  height: 16px;
+  width: 1rem;
+  height: 1rem;
   vertical-align: text-bottom;
   background-size: contain;
   content: url("qrc:///icons/arrow.svg");
@@ -3039,8 +3043,8 @@ table#sv-hooks,
 
 .gdcollapseicon {
   cursor: pointer;
-  width: 16px;
-  height: 16px;
+  width: 1rem;
+  height: 1rem;
   vertical-align: text-bottom;
   background-size: contain;
   content: url("qrc:///icons/downarrow.svg");
