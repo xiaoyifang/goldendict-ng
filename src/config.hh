@@ -31,7 +31,7 @@ namespace Config {
 //define a default font fize value
 constexpr int DEFAULT_FONT_SIZE = 12;
 
-constexpr QString WEBSITE_PROXY_PREFIX = "iframe-";
+const QString WEBSITE_PROXY_PREFIX = "iframe-";
 
 // Tri states enum for Dark and Dark reader mode
 enum class Dark : std::uint8_t {
