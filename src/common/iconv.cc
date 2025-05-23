@@ -52,7 +52,7 @@ QByteArray Iconv::fromUnicode( const QString & input, const char * toEncoding )
       }
       else {
         iconv_close( cd );
-        qDebug() << "iconv conversion failed" ;
+        qDebug() << "iconv conversion failed";
         return {};
       }
     }
