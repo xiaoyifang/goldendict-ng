@@ -52,7 +52,7 @@ QByteArray Iconv::fromUnicode( const QString & input, const char * toEncoding )
       }
       else {
         iconv_close( cd );
-        qDebug() << ( "iconv conversion failed" );
+        qDebug() << "iconv conversion failed";
         return {};
       }
     }
@@ -123,7 +123,6 @@ QString Iconv::convert( void const *& inBuf, size_t & inBytesLeft )
 }
 
 std::u32string Iconv::toWstring( char const * fromEncoding, void const * fromData, size_t dataSize )
-
 {
   /// Special-case the dataSize == 0 to avoid any kind of iconv-specific
   /// behaviour in that regard.

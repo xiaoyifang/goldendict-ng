@@ -2,6 +2,7 @@
 #include <QDebug>
 #include "utils.hh"
 #include "globalbroadcaster.hh"
+#include "config.hh"
 
 WebUrlRequestInterceptor::WebUrlRequestInterceptor( QObject * p ):
   QWebEngineUrlRequestInterceptor( p )
@@ -10,7 +11,7 @@ WebUrlRequestInterceptor::WebUrlRequestInterceptor( QObject * p ):
 void WebUrlRequestInterceptor::interceptRequest( QWebEngineUrlRequestInfo & info )
 {
   auto url = info.requestUrl();
-  if ( url.scheme().startsWith( "iframe-" ) ) {
+  if ( url.scheme().startsWith( Config::WEBSITE_PROXY_PREFIX ) ) {
     url.setScheme( url.scheme().mid( 7 ) );
   }
 
