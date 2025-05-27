@@ -490,16 +490,14 @@ int main( int argc, char ** argv )
       // qtwebengine loading will fail on Windows.
 
       // TODO: Some `langauge`s in GD's ts uses - instead of _
-      if ( loadTranslation_qlocale( *qt_ts, "qt", "_", QLibraryInfo::path( QLibraryInfo::TranslationsPath ) )
-           && qt_ts->language() == gd_ts->language().replace( '-', '_' ) ) {
+      auto lang = gd_ts->language().replace( '-', '_' );
+      auto translationPath = QLibraryInfo::path( QLibraryInfo::TranslationsPath );
+      qDebug() << "Loading qt translations for language:" << lang << " from:" << translationPath;
+      if ( qt_ts->load( "qt_" + lang, translationPath ) ) {
         QCoreApplication::installTranslator( qt_ts );
       }
 
-      if ( loadTranslation_qlocale( *webengine_ts,
-                                    "qtwebengine",
-                                    "_",
-                                    QLibraryInfo::path( QLibraryInfo::TranslationsPath ) )
-           && webengine_ts->language() == gd_ts->language().replace( '-', '_' ) ) {
+      if ( webengine_ts->load( "qtwebengine_" + lang, translationPath ) ) {
         QCoreApplication::installTranslator( webengine_ts );
       }
     }
