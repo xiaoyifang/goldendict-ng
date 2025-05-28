@@ -492,7 +492,8 @@ int main( int argc, char ** argv )
       // TODO: Some `langauge`s in GD's ts uses - instead of _
       auto lang            = gd_ts->language().replace( '-', '_' );
       auto translationPath = QLibraryInfo::path( QLibraryInfo::TranslationsPath );
-      qDebug() << "Loading qt/qwebengine translations for language:" << gd_ts->language() << lang << "from:" << translationPath;
+      qDebug() << "Loading qt/qwebengine translations for language:" << gd_ts->language() << lang
+               << "from:" << translationPath;
       if ( qt_ts->load( "qt_" + lang, translationPath ) ) {
         QCoreApplication::installTranslator( qt_ts );
       }
