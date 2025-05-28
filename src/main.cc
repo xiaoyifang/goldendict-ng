@@ -325,7 +325,7 @@ int main( int argc, char ** argv )
 #endif
 
   const QStringList localSchemes =
-    { "gdlookup", "gdau", "gico", "qrcx", "bres", "bword", "gdprg", "gdvideo", "gdtts", "entry" };
+    { "gdlookup", "gdau", "gico", "qrcx", "bres", "bword", "gdprg", "gdvideo", "gdtts", "entry", "iframe-http", "iframe-https" };
 
   for ( const auto & localScheme : localSchemes ) {
     QWebEngineUrlScheme webUiScheme( localScheme.toLatin1() );
