@@ -2007,10 +2007,6 @@ between classic and school orthography in cyrillic)</translation>
       <translation>Talbanit</translation>
     </message>
     <message>
-      <source>Serbian (Cyrillic)</source>
-      <translation>Serbian (Cyrillic)</translation>
-    </message>
-    <message>
       <source>Swedish</source>
       <translation>Swedish</translation>
     </message>
@@ -2075,10 +2071,6 @@ between classic and school orthography in cyrillic)</translation>
       <translation>Taymarat</translation>
     </message>
     <message>
-      <source>Arabic, Saudi Arabia</source>
-      <translation>Taɛrabt, Suɛudiya Taɛrabt</translation>
-    </message>
-    <message>
       <source>Turkmen</source>
       <translation>Taturkmant</translation>
     </message>
@@ -2097,6 +2089,18 @@ between classic and school orthography in cyrillic)</translation>
     <message>
       <source>English</source>
       <translation>Taglizit</translation>
+    </message>
+    <message>
+      <source>Arabic</source>
+      <translation>Taɛrabt</translation>
+    </message>
+    <message>
+      <source>Serbian</source>
+      <translation>Taṣirbit</translation>
+    </message>
+    <message>
+      <source>Kabyle</source>
+      <translation type="unfinished">Kabyle</translation>
     </message>
   </context>
   <context>
