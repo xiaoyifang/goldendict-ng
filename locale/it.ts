@@ -2007,10 +2007,6 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
       <translation>albanese</translation>
     </message>
     <message>
-      <source>Serbian (Cyrillic)</source>
-      <translation>serbo (cirillico)</translation>
-    </message>
-    <message>
       <source>Swedish</source>
       <translation>svedese</translation>
     </message>
@@ -2075,10 +2071,6 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
       <translation>Aymara</translation>
     </message>
     <message>
-      <source>Arabic, Saudi Arabia</source>
-      <translation>Arabo, Arabia Saudita</translation>
-    </message>
-    <message>
       <source>Turkmen</source>
       <translation>turkmeno</translation>
     </message>
@@ -2097,6 +2089,18 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
     <message>
       <source>English</source>
       <translation>Inglese</translation>
+    </message>
+    <message>
+      <source>Arabic</source>
+      <translation>Arabo</translation>
+    </message>
+    <message>
+      <source>Serbian</source>
+      <translation>Serbo</translation>
+    </message>
+    <message>
+      <source>Kabyle</source>
+      <translation>Kabyle</translation>
     </message>
   </context>
   <context>
