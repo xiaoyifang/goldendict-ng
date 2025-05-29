@@ -480,11 +480,11 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     </message>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
-      <translation>Określ maksymalny zwrócony filtrowany nagłówek.</translation>
+      <translation>Podaj maksymalną liczbę zwracanych przefiltrowanych haseł.</translation>
     </message>
     <message>
       <source>Filter max results:</source>
-      <translation>Filtr maks. wyników:</translation>
+      <translation>Maks. liczba wyników filtru:</translation>
     </message>
     <message>
       <source>Help</source>
@@ -504,7 +504,7 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     </message>
     <message>
       <source>Unique headwords total: %1.</source>
-      <translation>Unikalne słowa w sumie: %1.</translation>
+      <translation>Unikalne hasła łącznie: %1.</translation>
     </message>
     <message>
       <source>Unique headwords total: %1, filtered(limited): %2</source>
@@ -2040,7 +2040,7 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     </message>
     <message>
       <source>Spanish, Argentina</source>
-      <translation>hiszpański, argentyński</translation>
+      <translation>Hiszpański (Argentyna)</translation>
     </message>
     <message>
       <source>Hindi</source>
@@ -2052,11 +2052,11 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     </message>
     <message>
       <source>German, Switzerland</source>
-      <translation>niemiecki, szwajcarski</translation>
+      <translation>Niemiecki (Szwajcaria)</translation>
     </message>
     <message>
       <source>Spanish, Bolivia</source>
-      <translation>hiszpański, Boliwia</translation>
+      <translation>Hiszpański (Boliwia)</translation>
     </message>
     <message>
       <source>Tajik</source>
@@ -2249,7 +2249,7 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     </message>
     <message>
       <source>Ctrl+H</source>
-      <translation>Ctrl + H</translation>
+      <translation>Ctrl+H</translation>
     </message>
     <message>
       <source>&amp;Export</source>
@@ -2269,7 +2269,7 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     </message>
     <message>
       <source>Ctrl+O</source>
-      <translation>Ctrl + O</translation>
+      <translation>Ctrl+O</translation>
     </message>
     <message>
       <source>Menu Button</source>
@@ -2301,11 +2301,11 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     </message>
     <message>
       <source>Add current tab to Favorites</source>
-      <translation>Dodaj bieżącą kartę do Ulubionych</translation>
+      <translation>Dodaj bieżącą kartę do ulubionych</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
-      <translation>Pokaż nazwy w pas&amp;ku słowników</translation>
+      <translation>Pokaż nazwy na pas&amp;ku słowników</translation>
     </message>
     <message>
       <source>Show &amp;Small Icons in Toolbars</source>
@@ -2423,7 +2423,7 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
     </message>
     <message>
       <source>Remove current tab from Favorites</source>
-      <translation>Usuń bieżącą kartę z Ulubionych</translation>
+      <translation>Usuń bieżącą kartę z ulubionych</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
@@ -2531,7 +2531,7 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
     </message>
     <message>
       <source>Import error: </source>
-      <translation>&gt;Błąd importu: </translation>
+      <translation>Błąd importu: </translation>
     </message>
     <message>
       <source>Import error: invalid data in file</source>
@@ -2543,7 +2543,7 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
     </message>
     <message>
       <source>Export Favorites to file</source>
-      <translation>Eksportuj Ulubione do pliku</translation>
+      <translation>Eksportuj ulubione do pliku</translation>
     </message>
     <message>
       <source>Text files (*.txt);;XML files (*.xml)</source>
@@ -2563,7 +2563,7 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
     </message>
     <message>
       <source>Data parsing error</source>
-      <translation>Błąd przetwarzania danych</translation>
+      <translation>Błąd analizowania danych</translation>
     </message>
     <message>
       <source>Favorites import complete</source>
@@ -2587,7 +2587,7 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
     </message>
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
-      <translation>Usunąć słowo nagłówka &quot;%1&quot; z Ulubionych?</translation>
+      <translation>Usunąć hasło „%1” z ulubionych?</translation>
     </message>
     <message>
       <source>Show</source>
@@ -2927,7 +2927,7 @@ prowadzi do jego ukrycia, a nie do zamknięcia aplikacji.</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation>Wybiera, czy monitorowanie schowka będzie domyślnie włączone podczas uruchamiania programu&apos;s.</translation>
+      <translation>Wybiera, czy monitorowanie schowka będzie domyślnie włączone po uruchomieniu programu.</translation>
     </message>
     <message>
       <source>Start with clipboard monitoring turned on</source>
@@ -2943,7 +2943,7 @@ prowadzi do jego ukrycia, a nie do zamknięcia aplikacji.</translation>
     </message>
     <message>
       <source>Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</source>
-      <translation>Śledź zmiany schowka gdy skanowanie jest włączone. Uwaga! Zawsze powinieneś to włączyć, chyba że jesteś na Linuksie.</translation>
+      <translation>Śledź zmiany schowka, gdy skanowanie jest włączone. Uwaga! Opcję tę należy zawsze włączyć, chyba że pracujesz w Linuksie.</translation>
     </message>
     <message>
       <source>Track Clipboard change</source>
@@ -2951,7 +2951,7 @@ prowadzi do jego ukrycia, a nie do zamknięcia aplikacji.</translation>
     </message>
     <message>
       <source>Track Selection change</source>
-      <translation>Zmiana zaznaczenia śladu</translation>
+      <translation>Śledź zmianę zaznaczenia</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
@@ -2961,7 +2961,7 @@ kiedy zaznaczenie słowa ulega zmianie przy naciśniętych wszystkich wybranych 
     </message>
     <message>
       <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation>Zaznaczenie tosu tylko wtedy, gdy wszystkie zaznaczone klucze są wciśnięte:</translation>
+      <translation>Śledź zaznaczenie tylko wtedy, gdy wszystkie wybrane klawisze są naciśnięte:</translation>
     </message>
     <message>
       <source>Alt key</source>
@@ -2981,7 +2981,7 @@ kiedy zaznaczenie słowa ulega zmianie przy naciśniętych wszystkich wybranych 
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
-      <translation>Pokaż okno flagowe przed wyświetleniem wyskakującego okna, kliknij flagę, aby wyświetlić wyskakujące okno. </translation>
+      <translation>Pokaż okno flagi przed wyświetleniem okna wyskakującego, kliknij flagę, aby wyświetlić okno wyskakujące. </translation>
     </message>
     <message>
       <source>Show scan flag when word is selected</source>
@@ -2989,11 +2989,11 @@ kiedy zaznaczenie słowa ulega zmianie przy naciśniętych wszystkich wybranych 
     </message>
     <message>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation>Nie pokazuj wyskakującego okienka, gdy zmienia się zaznaczenie lub schowek w jednym z własnych okien GoldenDict</translation>
+      <translation>Nie pokazuj okna wyskakującego, gdy zmienia się zaznaczenie lub schowek w jednym z własnych okien GoldenDict</translation>
     </message>
     <message>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation>Ignoruj własne zaznaczenie i zmiany schowka wprowadzone przez GoldenDict</translation>
+      <translation>Ignoruj własne zmiany zaznaczenia i schowka programu GoldenDict</translation>
     </message>
     <message>
       <source>Delay time</source>
@@ -3033,7 +3033,7 @@ kiedy zaznaczenie słowa ulega zmianie przy naciśniętych wszystkich wybranych 
     </message>
     <message>
       <source>Auto-pronounce words in the popup</source>
-      <translation>Automatyczne wymawianie słów w oknie podręcznym</translation>
+      <translation>Automatycznie wymawiaj słowa znajdujące się w oknie wyskakującym</translation>
     </message>
     <message>
       <source>Playback</source>
@@ -3045,11 +3045,11 @@ kiedy zaznaczenie słowa ulega zmianie przy naciśniętych wszystkich wybranych 
     </message>
     <message>
       <source>Use internal player:</source>
-      <translation>Użyj wewnętrznego gracza:</translation>
+      <translation>Używaj wewnętrznego odtwarzacza:</translation>
     </message>
     <message>
       <source>Choose audio back end</source>
-      <translation>Wybierz koniec wstecz dźwięku</translation>
+      <translation>Wybierz zaplecze dźwięku</translation>
     </message>
     <message>
       <source>Use any external program to play audio files</source>
@@ -3119,11 +3119,11 @@ for all program&apos;s network requests.</source>
     </message>
     <message>
       <source>Deck:</source>
-      <translation>Tablia:</translation>
+      <translation>Talia:</translation>
     </message>
     <message>
       <source>Model:</source>
-      <translation>Wzór:</translation>
+      <translation>Typ notatki:</translation>
     </message>
     <message>
       <source>Word</source>
@@ -3180,9 +3180,9 @@ Włącz tę opcję, aby obejść ten problem.</translation>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation>Maksymalne miejsce na dysku zajmowane przez pamięć podręczną sieci GoldenDict w
+      <translation>Maksymalna wielkość miejsca na dysku zajmowanego przez pamięć podręczną sieci GoldenDict w
 %1
-Jeśli ustawione na 0, pamięć podręczna dysku sieciowego zostanie wyłączona.</translation>
+Ustawienie wartości 0 oznacza wyłączenie pamięci podręcznej sieci na dysku.</translation>
     </message>
     <message>
       <source> MiB</source>
@@ -3191,12 +3191,12 @@ Jeśli ustawione na 0, pamięć podręczna dysku sieciowego zostanie wyłączona
     <message>
       <source>When this option is enabled, GoldenDict
 clears its network cache from disk during exit.</source>
-      <translation>Gdy ta opcja jest włączona, GoldenDict
-czyści swoją pamięć podręczną z dysku podczas wyjścia.</translation>
+      <translation>Gdy ta opcja jest włączona, program GoldenDict czyści swoją
+pamięć podręczną sieci z dysku podczas kończenia działania.</translation>
     </message>
     <message>
       <source>Clear network cache on exit</source>
-      <translation>Wyczyść pamięć podręczną po wyjściu</translation>
+      <translation>Wyczyść pamięć podręczną przy wychodzeniu</translation>
     </message>
     <message>
       <source>When this is enabled, the program periodically
@@ -3276,7 +3276,7 @@ otwarcia strony pobierania.</translation>
     </message>
     <message>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
-      <translation>Ulubione interwał oszczędzania. Jeśli ustawione na 0 Ulubione zostaną zapisane tylko podczas wyjścia.</translation>
+      <translation>Interwał zapisywania ulubionych. Ustawienie wartości 0 oznacza, że ulubione będą zapisywane tylko podczas kończenia działania.</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3296,7 +3296,7 @@ otwarcia strony pobierania.</translation>
     </message>
     <message>
       <source>Input phrases longer than this size will be ignored</source>
-      <translation>Wprowadź frazy dłuższe niż ten rozmiar będą ignorowane</translation>
+      <translation>Frazy wejściowe dłuższe niż ta liczba symboli będą ignorowane</translation>
     </message>
     <message>
       <source>symbols</source>
@@ -3313,8 +3313,8 @@ otwarcia strony pobierania.</translation>
     <message>
       <source>Turn this option on to ignore unreasonably long input text
 from mouse-over, selection, clipboard or command line</source>
-      <translation>Włącz tę opcję, aby zignorować niesłusznie długi tekst wejściowy
-z myszki, zaznaczenia, schowka lub wiersza poleceń</translation>
+      <translation>Włącz tę opcję, aby ignorować zbyt długi tekst wejściowy wskazany
+myszą, zaznaczony, umieszczony w schowku lub w wierszu poleceń</translation>
     </message>
     <message>
       <source>Ignore input phrases longer than</source>
@@ -3334,7 +3334,7 @@ z myszki, zaznaczenia, schowka lub wiersza poleceń</translation>
     </message>
     <message>
       <source>Turn this option on to ignore diacritics while searching articles</source>
-      <translation>Włącz tę opcję, aby zignorować diakrytykę podczas wyszukiwania artykułów</translation>
+      <translation>Włącz tę opcję, aby ignorować znaki diakrytyczne podczas przeszukiwania artykułów</translation>
     </message>
     <message>
       <source>Ignore diacritics while searching</source>
@@ -3690,7 +3690,7 @@ ze słowników Stardict, Babylon i GLS</translation>
     </message>
     <message>
       <source>Send word to main window (Alt+W)</source>
-      <translation>Wyślij słowo do głównego okna (Alt+W)</translation>
+      <translation>Wyślij słowo do okna głównego (Alt+W)</translation>
     </message>
     <message>
       <source>Alt+W</source>
@@ -3698,7 +3698,7 @@ ze słowników Stardict, Babylon i GLS</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>
-      <translation>Dodaj słowo do Ulubionych (Ctrl+E)</translation>
+      <translation>Dodaj słowo do ulubionych (Ctrl+E)</translation>
     </message>
     <message>
       <source>Always stay on top of all other windows</source>
