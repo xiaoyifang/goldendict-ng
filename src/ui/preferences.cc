@@ -59,7 +59,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 
   ui.interfaceLanguage->addItem( tr( "System default" ), QString() );
   for ( const auto & [ k, v ] : Language::translationLangMap().asKeyValueRange() ) {
-    ui.interfaceLanguage->addItem(  Language::translationNameFromLangCode( v ), k );
+    ui.interfaceLanguage->addItem( Language::translationNameFromLangCode( v ), k );
   }
 
   for ( int x = 0; x < ui.interfaceLanguage->count(); ++x ) {
