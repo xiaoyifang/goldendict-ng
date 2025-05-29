@@ -2006,10 +2006,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Alban</translation>
     </message>
     <message>
-      <source>Serbian (Cyrillic)</source>
-      <translation>Serb (kiril)</translation>
-    </message>
-    <message>
       <source>Swedish</source>
       <translation>Şwesiýa</translation>
     </message>
@@ -2074,10 +2070,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Aýmara</translation>
     </message>
     <message>
-      <source>Arabic, Saudi Arabia</source>
-      <translation>Arap, Saud Arabystany</translation>
-    </message>
-    <message>
       <source>Turkmen</source>
       <translation>Türkmenler</translation>
     </message>
@@ -2096,6 +2088,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>English</source>
       <translation>Iňlis</translation>
+    </message>
+    <message>
+      <source>Arabic</source>
+      <translation>Arap</translation>
+    </message>
+    <message>
+      <source>Serbian</source>
+      <translation>Serb</translation>
+    </message>
+    <message>
+      <source>Kabyle</source>
+      <translation type="unfinished">Kabyle</translation>
     </message>
   </context>
   <context>
