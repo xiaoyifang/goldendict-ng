@@ -350,7 +350,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>None</source>
-      <translation>None</translation>
+      <translation>Ula yiwen</translation>
     </message>
     <message>
       <source>From file...</source>
