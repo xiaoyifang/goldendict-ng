@@ -486,7 +486,6 @@ int main( int argc, char ** argv )
       // For Windows, windeployqt will combine multiple qt modules translations into `qt_*` thus no `qtwebengine_*` exists
       // qtwebengine loading will fail on Windows.
 
-      // TODO: Some `langauge`s in GD's ts uses - instead of _
       if ( loadTranslation_qlocale( *qt_ts, "qt", "_", QLibraryInfo::path( QLibraryInfo::TranslationsPath ) )
            && qt_ts->language() == gd_ts->language() ) {
         QCoreApplication::installTranslator( qt_ts );
