@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation type="unfinished">Anki: can&apos;t create a card without a word</translation>
+      <translation>Anki: can&apos;t create a card without a word</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation type="unfinished">Anki: post to Anki failed</translation>
+      <translation>Anki: post to Anki failed</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation type="unfinished">Anki: post to Anki success</translation>
+      <translation>Anki: post to Anki success</translation>
     </message>
   </context>
   <context>
@@ -311,15 +311,15 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Taiwan variant</source>
-      <translation type="unfinished">Taiwan variant</translation>
+      <translation>Taiwan variant</translation>
     </message>
     <message>
       <source>Hong Kong variant</source>
-      <translation type="unfinished">Hong Kong variant</translation>
+      <translation>Hong Kong variant</translation>
     </message>
     <message>
       <source>Mainland variant</source>
-      <translation type="unfinished">Mainland variant</translation>
+      <translation>Mainland variant</translation>
     </message>
   </context>
   <context>
@@ -491,7 +491,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>OK</source>
-      <translation>نعم</translation>
+      <translation type="unfinished">OK</translation>
     </message>
     <message>
       <source>Text</source>
@@ -539,7 +539,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Regular Expression</source>
-      <translation type="unfinished">Regular Expression</translation>
+      <translation>Regular Expression</translation>
     </message>
   </context>
   <context>
@@ -690,7 +690,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Restore selection</source>
-      <translation type="unfinished">Restore selection</translation>
+      <translation>Restore selection</translation>
     </message>
   </context>
   <context>
@@ -754,7 +754,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Default</source>
-      <translation>تقصير</translation>
+      <translation>الافتراضي</translation>
     </message>
     <message>
       <source>Wildcards</source>
@@ -774,7 +774,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>None</source>
-      <translation>لا أحد</translation>
+      <translation>لا شيء</translation>
     </message>
     <message>
       <source>The querying word can not be empty.</source>
@@ -828,7 +828,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
-      <translation>Make this folder the target of adding/removing words actions.</translation>
+      <translation type="unfinished">Make this folder the target of adding/removing words actions.</translation>
     </message>
   </context>
   <context>
@@ -1086,7 +1086,7 @@ between classic and school orthography in cyrillic)</source>
     <name>HunspellDictsModel</name>
     <message>
       <source>Enabled</source>
-      <translation>مُمكّن</translation>
+      <translation>ممكن</translation>
     </message>
     <message>
       <source>Name</source>
@@ -1931,15 +1931,15 @@ between classic and school orthography in cyrillic)</source>
     <name>Language::Db</name>
     <message>
       <source>French</source>
-      <translation>فرنسي</translation>
+      <translation>الفرنسية</translation>
     </message>
     <message>
       <source>Spanish</source>
-      <translation>الأسبانية</translation>
+      <translation>الإسبانية</translation>
     </message>
     <message>
       <source>Belarusian</source>
-      <translation>البيلاروسية</translation>
+      <translation>البلاروسية</translation>
     </message>
     <message>
       <source>Bulgarian</source>
@@ -1951,7 +1951,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>German</source>
-      <translation>ألمانية</translation>
+      <translation>الألمانية</translation>
     </message>
     <message>
       <source>Greek</source>
@@ -1963,7 +1963,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Italian</source>
-      <translation>إيطالي</translation>
+      <translation>الإيطالية</translation>
     </message>
     <message>
       <source>Japanese</source>
@@ -1975,7 +1975,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Lithuanian</source>
-      <translation>الليتوانية</translation>
+      <translation>اللتوانية</translation>
     </message>
     <message>
       <source>Macedonian</source>
@@ -1983,11 +1983,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Dutch</source>
-      <translation>هولندي</translation>
+      <translation>الهولندية</translation>
     </message>
     <message>
       <source>Polish</source>
-      <translation>تلميع</translation>
+      <translation>البولندية</translation>
     </message>
     <message>
       <source>Portuguese</source>
@@ -2006,16 +2006,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>الألبانية</translation>
     </message>
     <message>
-      <source>Serbian (Cyrillic)</source>
-      <translation>الصربية (السيريلية)</translation>
-    </message>
-    <message>
       <source>Swedish</source>
       <translation>السويدية</translation>
     </message>
     <message>
       <source>Turkish</source>
-      <translation>اللغة التركية</translation>
+      <translation>التركية</translation>
     </message>
     <message>
       <source>Ukrainian</source>
@@ -2031,7 +2027,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Vietnamese</source>
-      <translation>فيتنامي</translation>
+      <translation>الفيتنامية</translation>
     </message>
     <message>
       <source>Portuguese, Brazilian</source>
@@ -2039,7 +2035,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Persian</source>
-      <translation>اللغة الفارسية</translation>
+      <translation>الفارسية</translation>
     </message>
     <message>
       <source>Spanish, Argentina</source>
@@ -2047,11 +2043,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Hindi</source>
-      <translation>هندي</translation>
+      <translation>الهندية</translation>
     </message>
     <message>
       <source>Esperanto</source>
-      <translation>اسبرانتو</translation>
+      <translation>الاسبرانتو</translation>
     </message>
     <message>
       <source>German, Switzerland</source>
@@ -2063,39 +2059,47 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Tajik</source>
-      <translation>طاجيك</translation>
+      <translation>الطاجيكية</translation>
     </message>
     <message>
       <source>Quechua</source>
-      <translation>الكيتشوا</translation>
+      <translation>الكويتشوا</translation>
     </message>
     <message>
       <source>Aymara</source>
-      <translation>ايمارا</translation>
-    </message>
-    <message>
-      <source>Arabic, Saudi Arabia</source>
-      <translation>العربية السعودية</translation>
+      <translation>الأيمارية</translation>
     </message>
     <message>
       <source>Turkmen</source>
-      <translation>التركمان</translation>
+      <translation>التركمانية</translation>
     </message>
     <message>
       <source>Interlingue</source>
-      <translation>إنترلينج</translation>
+      <translation>الإنترلينجوا</translation>
     </message>
     <message>
       <source>Lojban</source>
-      <translation>لوجبان</translation>
+      <translation>اللوجبانية</translation>
     </message>
     <message>
       <source>Hungarian</source>
-      <translation>الهنغارية</translation>
+      <translation>المجرية</translation>
     </message>
     <message>
       <source>English</source>
-      <translation>إنجليزي</translation>
+      <translation>الإنجليزية</translation>
+    </message>
+    <message>
+      <source>Arabic</source>
+      <translation>العربية</translation>
+    </message>
+    <message>
+      <source>Serbian</source>
+      <translation>الصربية</translation>
+    </message>
+    <message>
+      <source>Kabyle</source>
+      <translation>Kabyle</translation>
     </message>
   </context>
   <context>
@@ -2140,7 +2144,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Search</source>
-      <translation>البحث</translation>
+      <translation>يبحث</translation>
     </message>
     <message>
       <source>Favo&amp;rites</source>
@@ -2276,7 +2280,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Full-text search</source>
-      <translation>البحث في كامل النص</translation>
+      <translation>البحث عن نص كامل</translation>
     </message>
     <message>
       <source>GoldenDict reference</source>
@@ -2284,7 +2288,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Export</source>
-      <translation>تصدير</translation>
+      <translation>صدّر</translation>
     </message>
     <message>
       <source>Import</source>
@@ -2570,7 +2574,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Dictionary headwords</source>
-      <translation>الكلمات الرئيسية في القاموس</translation>
+      <translation>كلمات رئيسية في القاموس</translation>
     </message>
     <message>
       <source>Open dictionary folder</source>
@@ -2590,11 +2594,11 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Save PDF complete</source>
-      <translation type="unfinished">Save PDF complete</translation>
+      <translation>Save PDF complete</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
-      <translation type="unfinished">Save PDF failed</translation>
+      <translation>Save PDF failed</translation>
     </message>
   </context>
   <context>
@@ -2626,7 +2630,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <name>MediaWikisModel</name>
     <message>
       <source>Enabled</source>
-      <translation>ممكّن</translation>
+      <translation>ممكن</translation>
     </message>
     <message>
       <source>Name</source>
@@ -2638,7 +2642,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Icon</source>
-      <translation>الرّمز</translation>
+      <translation>أيقونة</translation>
     </message>
     <message>
       <source>Language Variant</source>
@@ -2656,7 +2660,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <name>OrderAndProps</name>
     <message>
       <source>Form</source>
-      <translation>النموذج</translation>
+      <translation>نموذج</translation>
     </message>
     <message>
       <source>Dictionary order:</source>
@@ -2684,11 +2688,11 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Translates from:</source>
-      <translation>الترجمات من:</translation>
+      <translation>ترجم من:</translation>
     </message>
     <message>
       <source>Translates to:</source>
-      <translation>الترجمات إلى:</translation>
+      <translation>ترجم إلى:</translation>
     </message>
     <message>
       <source>Description:</source>
@@ -3211,7 +3215,7 @@ download page.</source>
     </message>
     <message>
       <source>Full-text search</source>
-      <translation>البحث في كامل النص</translation>
+      <translation>البحث عن نص كامل</translation>
     </message>
     <message>
       <source>Allow full-text search for:</source>
@@ -3463,14 +3467,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
-      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
+      <translation>GoldenDict-ng is a dictionary software.</translation>
     </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
     <message>
       <source>Audio</source>
-      <translation>صوت</translation>
+      <translation>الصوت</translation>
     </message>
     <message>
       <source>Plain Text</source>
@@ -3508,7 +3512,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     <name>ProgramsModel</name>
     <message>
       <source>Enabled</source>
-      <translation>ممكّن</translation>
+      <translation>ممكن</translation>
     </message>
     <message>
       <source>Type</source>
@@ -3524,7 +3528,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Icon</source>
-      <translation>الرّمز</translation>
+      <translation>أيقونة</translation>
     </message>
   </context>
   <context>
@@ -3603,11 +3607,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Force the word to be translated in Popup.</source>
-      <translation type="unfinished">Force the word to be translated in Popup.</translation>
+      <translation>Force the word to be translated in Popup.</translation>
     </message>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
-      <translation type="unfinished">Force the word to be translated in the mainwindow.</translation>
+      <translation>Force the word to be translated in the mainwindow.</translation>
     </message>
   </context>
   <context>
@@ -3669,15 +3673,15 @@ from Stardict, Babylon and GLS dictionaries</source>
     <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
-      <translation>Back</translation>
+      <translation>ارجع</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>Forward</translation>
+      <translation>تقدّم</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>Pronounce Word (Alt+S)</translation>
+      <translation>انطق الكلمة (Alt+S)</translation>
     </message>
     <message>
       <source>Alt+S</source>
@@ -3745,7 +3749,7 @@ could be resized or managed in other ways.</translation>
     </message>
     <message>
       <source>Icon</source>
-      <translation>الرّمز</translation>
+      <translation>أيقونة</translation>
     </message>
   </context>
   <context>
@@ -3995,14 +3999,14 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
-      <translation type="unfinished">The most widely used method of transcription of Japanese, based on English phonology</translation>
+      <translation>The most widely used method of transcription of Japanese, based on English phonology</translation>
     </message>
   </context>
   <context>
     <name>StylesComboBox</name>
     <message>
       <source>None</source>
-      <translation>لاشيء</translation>
+      <translation>لا شيء</translation>
     </message>
   </context>
   <context>
@@ -4083,7 +4087,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <name>VoiceEnginesModel</name>
     <message>
       <source>Enabled</source>
-      <translation>ممكّن</translation>
+      <translation>ممكن</translation>
     </message>
     <message>
       <source>Name</source>
@@ -4095,7 +4099,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>Icon</source>
-      <translation>الأيقونة</translation>
+      <translation>أيقونة</translation>
     </message>
   </context>
   <context>
@@ -4106,7 +4110,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>Enabled</source>
-      <translation>ممكّن</translation>
+      <translation>ممكن</translation>
     </message>
     <message>
       <source>As link</source>
@@ -4122,7 +4126,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>Icon</source>
-      <translation>الرّمز</translation>
+      <translation>أيقونة</translation>
     </message>
   </context>
   <context>
