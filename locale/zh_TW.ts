@@ -2099,7 +2099,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Kabyle</source>
-      <translation type="unfinished">Kabyle</translation>
+      <translation>卡拜爾語</translation>
     </message>
   </context>
   <context>
