@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="pt_BR" sourcelanguage="en">
+<TS version="2.1" language="pt-BR" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation type="unfinished">Anki: can&apos;t create a card without a word</translation>
+      <translation>Anki: can&apos;t create a card without a word</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -2007,10 +2007,6 @@ entre clássico e ortografia escolar em cirílico)</translation>
       <translation>albanês</translation>
     </message>
     <message>
-      <source>Serbian (Cyrillic)</source>
-      <translation>sérvio (cirílico)</translation>
-    </message>
-    <message>
       <source>Swedish</source>
       <translation>sueco</translation>
     </message>
@@ -2075,10 +2071,6 @@ entre clássico e ortografia escolar em cirílico)</translation>
       <translation>aimará</translation>
     </message>
     <message>
-      <source>Arabic, Saudi Arabia</source>
-      <translation>Árabe, Arábia Saudita</translation>
-    </message>
-    <message>
       <source>Turkmen</source>
       <translation>turcomano</translation>
     </message>
@@ -2097,6 +2089,18 @@ entre clássico e ortografia escolar em cirílico)</translation>
     <message>
       <source>English</source>
       <translation>Inglês</translation>
+    </message>
+    <message>
+      <source>Arabic</source>
+      <translation>Árabe</translation>
+    </message>
+    <message>
+      <source>Serbian</source>
+      <translation>Sérvio</translation>
+    </message>
+    <message>
+      <source>Kabyle</source>
+      <translation>Kabyle</translation>
     </message>
   </context>
   <context>
