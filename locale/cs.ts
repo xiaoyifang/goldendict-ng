@@ -2007,10 +2007,6 @@ a školní ortografií v cyrilici)</translation>
       <translation>Albánština</translation>
     </message>
     <message>
-      <source>Serbian (Cyrillic)</source>
-      <translation>Srbština (Cyrilice)</translation>
-    </message>
-    <message>
       <source>Swedish</source>
       <translation>Švédština</translation>
     </message>
@@ -2075,10 +2071,6 @@ a školní ortografií v cyrilici)</translation>
       <translation>Aymara</translation>
     </message>
     <message>
-      <source>Arabic, Saudi Arabia</source>
-      <translation>Arabština, Saúdská Arábie</translation>
-    </message>
-    <message>
       <source>Turkmen</source>
       <translation>Turkmenština</translation>
     </message>
@@ -2097,6 +2089,18 @@ a školní ortografií v cyrilici)</translation>
     <message>
       <source>English</source>
       <translation>Angličtina</translation>
+    </message>
+    <message>
+      <source>Arabic</source>
+      <translation>Arabština</translation>
+    </message>
+    <message>
+      <source>Serbian</source>
+      <translation>Srbština</translation>
+    </message>
+    <message>
+      <source>Kabyle</source>
+      <translation>Kabyle</translation>
     </message>
   </context>
   <context>
