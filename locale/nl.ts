@@ -2007,10 +2007,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Albanees</translation>
     </message>
     <message>
-      <source>Serbian (Cyrillic)</source>
-      <translation>Servisch (Cyrillisch)</translation>
-    </message>
-    <message>
       <source>Swedish</source>
       <translation>Zweeds</translation>
     </message>
@@ -2075,10 +2071,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Aymara</translation>
     </message>
     <message>
-      <source>Arabic, Saudi Arabia</source>
-      <translation>Arabisch (Saudi-Arabië)</translation>
-    </message>
-    <message>
       <source>Turkmen</source>
       <translation>Turkmeens</translation>
     </message>
@@ -2097,6 +2089,18 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>English</source>
       <translation>Engels</translation>
+    </message>
+    <message>
+      <source>Arabic</source>
+      <translation>Arabisch</translation>
+    </message>
+    <message>
+      <source>Serbian</source>
+      <translation>Servisch</translation>
+    </message>
+    <message>
+      <source>Kabyle</source>
+      <translation>Kabyle</translation>
     </message>
   </context>
   <context>
