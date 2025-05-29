@@ -2007,10 +2007,6 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
       <translation>albánsky</translation>
     </message>
     <message>
-      <source>Serbian (Cyrillic)</source>
-      <translation>srbčina (cyrilika)</translation>
-    </message>
-    <message>
       <source>Swedish</source>
       <translation>švédsky</translation>
     </message>
@@ -2075,10 +2071,6 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
       <translation>Aymara</translation>
     </message>
     <message>
-      <source>Arabic, Saudi Arabia</source>
-      <translation>Arabčina, Saudská Arábia</translation>
-    </message>
-    <message>
       <source>Turkmen</source>
       <translation>turkménskym</translation>
     </message>
@@ -2097,6 +2089,18 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
     <message>
       <source>English</source>
       <translation>Angličtina</translation>
+    </message>
+    <message>
+      <source>Arabic</source>
+      <translation>Arabsky</translation>
+    </message>
+    <message>
+      <source>Serbian</source>
+      <translation>Srbčina</translation>
+    </message>
+    <message>
+      <source>Kabyle</source>
+      <translation type="unfinished">Kabyle</translation>
     </message>
   </context>
   <context>
