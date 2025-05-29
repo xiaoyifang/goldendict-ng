@@ -57,7 +57,7 @@ private:
     { QT_TR_NOOP( "Interlingue" ), "ie_001" },
     { QT_TR_NOOP( "Italian" ), "it" },
     { QT_TR_NOOP( "Japanese" ), "ja" },
-    { QT_TR_NOOP( "Kabyle" ), "kab"},
+    { QT_TR_NOOP( "Kabyle" ), "kab" },
     { QT_TR_NOOP( "Korean" ), "ko" },
     { QT_TR_NOOP( "Lithuanian" ), "lt" },
     { QT_TR_NOOP( "Lojban" ), "jbo" },
