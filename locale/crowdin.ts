@@ -2004,10 +2004,6 @@ between classic and school orthography in cyrillic)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Serbian (Cyrillic)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Swedish</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2072,10 +2068,6 @@ between classic and school orthography in cyrillic)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Arabic, Saudi Arabia</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Turkmen</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2093,6 +2085,14 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <source>English</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Arabic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Serbian</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
