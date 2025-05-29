@@ -2007,10 +2007,6 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <translation>Albana</translation>
     </message>
     <message>
-      <source>Serbian (Cyrillic)</source>
-      <translation>la serba (cirilskribe)</translation>
-    </message>
-    <message>
       <source>Swedish</source>
       <translation>Sveda</translation>
     </message>
@@ -2075,10 +2071,6 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <translation>Aymara</translation>
     </message>
     <message>
-      <source>Arabic, Saudi Arabia</source>
-      <translation>Araba, Saud-Arabio</translation>
-    </message>
-    <message>
       <source>Turkmen</source>
       <translation>Turkmena</translation>
     </message>
@@ -2097,6 +2089,18 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
     <message>
       <source>English</source>
       <translation>la angla</translation>
+    </message>
+    <message>
+      <source>Arabic</source>
+      <translation>Araba</translation>
+    </message>
+    <message>
+      <source>Serbian</source>
+      <translation>Serba</translation>
+    </message>
+    <message>
+      <source>Kabyle</source>
+      <translation type="unfinished">Kabyle</translation>
     </message>
   </context>
   <context>
