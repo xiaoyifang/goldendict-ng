@@ -2006,10 +2006,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>shqiptare</translation>
     </message>
     <message>
-      <source>Serbian (Cyrillic)</source>
-      <translation>serbisht (cirilike)</translation>
-    </message>
-    <message>
       <source>Swedish</source>
       <translation>suedeze</translation>
     </message>
@@ -2074,10 +2070,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Aymara</translation>
     </message>
     <message>
-      <source>Arabic, Saudi Arabia</source>
-      <translation>Arabisht, Arabia Saudite</translation>
-    </message>
-    <message>
       <source>Turkmen</source>
       <translation>turkmen</translation>
     </message>
@@ -2096,6 +2088,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>English</source>
       <translation>anglisht</translation>
+    </message>
+    <message>
+      <source>Arabic</source>
+      <translation>Arabisht</translation>
+    </message>
+    <message>
+      <source>Serbian</source>
+      <translation>Serbisht</translation>
+    </message>
+    <message>
+      <source>Kabyle</source>
+      <translation type="unfinished">Kabyle</translation>
     </message>
   </context>
   <context>
