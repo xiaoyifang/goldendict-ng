@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="sv" sourcelanguage="en">
+<TS version="2.1" language="sv-SE" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
@@ -2007,10 +2007,6 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <translation>Albanska</translation>
     </message>
     <message>
-      <source>Serbian (Cyrillic)</source>
-      <translation>Serbiska (kyrilliska)</translation>
-    </message>
-    <message>
       <source>Swedish</source>
       <translation>Svenska</translation>
     </message>
@@ -2075,10 +2071,6 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <translation>Aymara</translation>
     </message>
     <message>
-      <source>Arabic, Saudi Arabia</source>
-      <translation>Arabiska, Saudiarabien</translation>
-    </message>
-    <message>
       <source>Turkmen</source>
       <translation>Turkmeniska</translation>
     </message>
@@ -2097,6 +2089,18 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <message>
       <source>English</source>
       <translation>Engelska</translation>
+    </message>
+    <message>
+      <source>Arabic</source>
+      <translation>Arabiska</translation>
+    </message>
+    <message>
+      <source>Serbian</source>
+      <translation>Serbiska</translation>
+    </message>
+    <message>
+      <source>Kabyle</source>
+      <translation>Kabyle</translation>
     </message>
   </context>
   <context>
