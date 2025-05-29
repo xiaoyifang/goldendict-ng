@@ -35,7 +35,6 @@ private:
 
   QMap< QString, LangData > iso2LangData;
 
-  // Note: Keep this list sorted!
   QMap< QString, QString > translationLangs = {
     { QT_TR_NOOP( "Albanian" ), "sq" },
     { QT_TR_NOOP( "Arabic" ), "ar" },
@@ -49,7 +48,7 @@ private:
     { QT_TR_NOOP( "English" ), "en" },
     { QT_TR_NOOP( "Esperanto" ), "eo" },
     { QT_TR_NOOP( "Finnish" ), "fi" },
-    { QT_TR_NOOP( "French" ), "fr_FR" },
+    { QT_TR_NOOP( "French" ), "fr" },
     { QT_TR_NOOP( "German" ), "de" },
     { QT_TR_NOOP( "German, Switzerland" ), "de_CH" },
     { QT_TR_NOOP( "Greek" ), "el" },
@@ -58,6 +57,7 @@ private:
     { QT_TR_NOOP( "Interlingue" ), "ie_001" },
     { QT_TR_NOOP( "Italian" ), "it" },
     { QT_TR_NOOP( "Japanese" ), "ja" },
+    { QT_TR_NOOP( "Kabyle" ), "kab"},
     { QT_TR_NOOP( "Korean" ), "ko" },
     { QT_TR_NOOP( "Lithuanian" ), "lt" },
     { QT_TR_NOOP( "Lojban" ), "jbo" },
