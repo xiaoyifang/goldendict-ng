@@ -2100,7 +2100,7 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Kabyle</source>
-      <translation>Kabyle</translation>
+      <translation>カビル語</translation>
     </message>
   </context>
   <context>
