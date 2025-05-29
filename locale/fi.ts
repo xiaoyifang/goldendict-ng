@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation type="unfinished">Anki: can&apos;t create a card without a word</translation>
+      <translation>Anki: can&apos;t create a card without a word</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -2007,10 +2007,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>albanialainen</translation>
     </message>
     <message>
-      <source>Serbian (Cyrillic)</source>
-      <translation>serbia (kyrillinen)</translation>
-    </message>
-    <message>
       <source>Swedish</source>
       <translation>Ruotsin kieli</translation>
     </message>
@@ -2075,10 +2071,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Aymara</translation>
     </message>
     <message>
-      <source>Arabic, Saudi Arabia</source>
-      <translation>arabia, Saudi-Arabia</translation>
-    </message>
-    <message>
       <source>Turkmen</source>
       <translation>Turkmenistan</translation>
     </message>
@@ -2097,6 +2089,18 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>English</source>
       <translation>Englanti</translation>
+    </message>
+    <message>
+      <source>Arabic</source>
+      <translation>arabia</translation>
+    </message>
+    <message>
+      <source>Serbian</source>
+      <translation>serbia</translation>
+    </message>
+    <message>
+      <source>Kabyle</source>
+      <translation>Kabyle</translation>
     </message>
   </context>
   <context>
