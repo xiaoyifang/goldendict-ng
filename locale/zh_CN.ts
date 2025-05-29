@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN" sourcelanguage="en">
+<TS version="2.1" language="zh-CN" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
@@ -2006,10 +2006,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>阿尔巴尼亚语</translation>
     </message>
     <message>
-      <source>Serbian (Cyrillic)</source>
-      <translation>塞尔维亚语（西里尔文）</translation>
-    </message>
-    <message>
       <source>Swedish</source>
       <translation>瑞典语</translation>
     </message>
@@ -2074,10 +2070,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>艾马拉语</translation>
     </message>
     <message>
-      <source>Arabic, Saudi Arabia</source>
-      <translation>阿拉伯语（沙特阿拉伯）</translation>
-    </message>
-    <message>
       <source>Turkmen</source>
       <translation>土库曼语</translation>
     </message>
@@ -2096,6 +2088,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>English</source>
       <translation>英语</translation>
+    </message>
+    <message>
+      <source>Arabic</source>
+      <translation>阿拉伯语</translation>
+    </message>
+    <message>
+      <source>Serbian</source>
+      <translation>塞尔维亚语</translation>
+    </message>
+    <message>
+      <source>Kabyle</source>
+      <translation>卡拜尔语</translation>
     </message>
   </context>
   <context>

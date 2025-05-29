@@ -487,7 +487,7 @@ int main( int argc, char ** argv )
       // qtwebengine loading will fail on Windows.
 
       if ( loadTranslation_qlocale( *qt_ts, "qt", "_", QLibraryInfo::path( QLibraryInfo::TranslationsPath ) )
-           && qt_ts->language() == gd_ts->language() ) {
+           && qt_ts->language().startsWith( gd_ts->language().first( 2 ) ) ) { // Don't delete this sanity check.
         QCoreApplication::installTranslator( qt_ts );
       }
 
@@ -495,7 +495,7 @@ int main( int argc, char ** argv )
                                     "qtwebengine",
                                     "_",
                                     QLibraryInfo::path( QLibraryInfo::TranslationsPath ) )
-           && webengine_ts->language() == gd_ts->language() ) {
+           && webengine_ts->language().startsWith( gd_ts->language().first( 2 ) ) ) {
         QCoreApplication::installTranslator( webengine_ts );
       }
     }

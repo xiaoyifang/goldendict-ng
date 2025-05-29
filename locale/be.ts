@@ -2007,10 +2007,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Албанская</translation>
     </message>
     <message>
-      <source>Serbian (Cyrillic)</source>
-      <translation>Сербская (кірыліца)</translation>
-    </message>
-    <message>
       <source>Swedish</source>
       <translation>Шведская</translation>
     </message>
@@ -2075,10 +2071,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Аймара</translation>
     </message>
     <message>
-      <source>Arabic, Saudi Arabia</source>
-      <translation>Арабская, Саудаўская Аравія</translation>
-    </message>
-    <message>
       <source>Turkmen</source>
       <translation>Туркменская</translation>
     </message>
@@ -2097,6 +2089,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>English</source>
       <translation>Англійская</translation>
+    </message>
+    <message>
+      <source>Arabic</source>
+      <translation>Арабская</translation>
+    </message>
+    <message>
+      <source>Serbian</source>
+      <translation>Сербская</translation>
+    </message>
+    <message>
+      <source>Kabyle</source>
+      <translation type="unfinished">Kabyle</translation>
     </message>
   </context>
   <context>

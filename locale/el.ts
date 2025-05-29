@@ -2009,10 +2009,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Αλβανός</translation>
     </message>
     <message>
-      <source>Serbian (Cyrillic)</source>
-      <translation>Σερβικά (Κυριλλικά)</translation>
-    </message>
-    <message>
       <source>Swedish</source>
       <translation>Σουηδικά</translation>
     </message>
@@ -2077,10 +2073,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Αϊμάρα</translation>
     </message>
     <message>
-      <source>Arabic, Saudi Arabia</source>
-      <translation>Αραβικά, Σαουδική Αραβία</translation>
-    </message>
-    <message>
       <source>Turkmen</source>
       <translation>Τουρκμενιστάν</translation>
     </message>
@@ -2099,6 +2091,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>English</source>
       <translation>Αγγλικά</translation>
+    </message>
+    <message>
+      <source>Arabic</source>
+      <translation>Αραβικά</translation>
+    </message>
+    <message>
+      <source>Serbian</source>
+      <translation>Σερβικά</translation>
+    </message>
+    <message>
+      <source>Kabyle</source>
+      <translation>Kabyle</translation>
     </message>
   </context>
   <context>

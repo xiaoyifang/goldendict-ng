@@ -2007,10 +2007,6 @@ arasındaki farkı giderir)</translation>
       <translation>Arnavut</translation>
     </message>
     <message>
-      <source>Serbian (Cyrillic)</source>
-      <translation>Sırpça (Kiril)</translation>
-    </message>
-    <message>
       <source>Swedish</source>
       <translation>İsveççe</translation>
     </message>
@@ -2075,10 +2071,6 @@ arasındaki farkı giderir)</translation>
       <translation>Aymara</translation>
     </message>
     <message>
-      <source>Arabic, Saudi Arabia</source>
-      <translation>Arapça, Suudi Arabistan</translation>
-    </message>
-    <message>
       <source>Turkmen</source>
       <translation>Türkmen</translation>
     </message>
@@ -2097,6 +2089,18 @@ arasındaki farkı giderir)</translation>
     <message>
       <source>English</source>
       <translation>İngilizce</translation>
+    </message>
+    <message>
+      <source>Arabic</source>
+      <translation>Arapça</translation>
+    </message>
+    <message>
+      <source>Serbian</source>
+      <translation>Sırpça</translation>
+    </message>
+    <message>
+      <source>Kabyle</source>
+      <translation type="unfinished">Kabyle</translation>
     </message>
   </context>
   <context>

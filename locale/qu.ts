@@ -2007,10 +2007,6 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>Albanés simipi</translation>
     </message>
     <message>
-      <source>Serbian (Cyrillic)</source>
-      <translation>Serbia simi (cirílico) .</translation>
-    </message>
-    <message>
       <source>Swedish</source>
       <translation>Sueco simi</translation>
     </message>
@@ -2075,10 +2071,6 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>Aymara Simi</translation>
     </message>
     <message>
-      <source>Arabic, Saudi Arabia</source>
-      <translation>Arabe simipi, Arabia Saudita simipi</translation>
-    </message>
-    <message>
       <source>Turkmen</source>
       <translation>Turkmen</translation>
     </message>
@@ -2097,6 +2089,18 @@ chiqan kayninta sumaqyachin)</translation>
     <message>
       <source>English</source>
       <translation>Ingles Simi</translation>
+    </message>
+    <message>
+      <source>Arabic</source>
+      <translation>Arabé</translation>
+    </message>
+    <message>
+      <source>Serbian</source>
+      <translation>Serbio</translation>
+    </message>
+    <message>
+      <source>Kabyle</source>
+      <translation type="unfinished">Kabyle</translation>
     </message>
   </context>
   <context>
