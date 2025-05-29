@@ -2037,10 +2037,6 @@ Abrir una lista de grupos</translation>
       <translation>Albanés aru uñt’atawa</translation>
     </message>
     <message>
-      <source>Serbian (Cyrillic)</source>
-      <translation>Serbio (cirílico) ukat juk’ampinaka.</translation>
-    </message>
-    <message>
       <source>Swedish</source>
       <translation>Suecia markankir jaqi</translation>
     </message>
@@ -2105,10 +2101,6 @@ Abrir una lista de grupos</translation>
       <translation>Aymara</translation>
     </message>
     <message>
-      <source>Arabic, Saudi Arabia</source>
-      <translation>Árabe, Arabia Saudita uka arunaka</translation>
-    </message>
-    <message>
       <source>Turkmen</source>
       <translation>Turkmen markankir jaqinakawa</translation>
     </message>
@@ -2127,6 +2119,18 @@ Abrir una lista de grupos</translation>
     <message>
       <source>English</source>
       <translation>inklisa</translation>
+    </message>
+    <message>
+      <source>Arabic</source>
+      <translation>Arabé</translation>
+    </message>
+    <message>
+      <source>Serbian</source>
+      <translation>Serbio</translation>
+    </message>
+    <message>
+      <source>Kabyle</source>
+      <translation type="unfinished">Kabyle</translation>
     </message>
   </context>
   <context>
