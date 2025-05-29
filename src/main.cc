@@ -390,9 +390,6 @@ int main( int argc, char ** argv )
   QDir::setCurrent( Config::getProgramDataDir() );
 #endif
 
-  // Load translations for system locale
-  QString localeName = QLocale::system().name();
-
   Config::Class cfg;
   for ( ;; ) {
     try {
@@ -474,10 +471,10 @@ int main( int argc, char ** argv )
     auto * webengine_ts = new QTranslator( &app );
 
     // For GD's translations,
-    // If interfaceLanguage is explictly set, uses filename based loading, because QLocale sometimes doesn't match GD's translation file name
-    // Only load qt & webengine translators if GD's translation loading succeed to avoid inconsistency
-    // TODO: The QLocale based method sometimes does not work https://github.com/xiaoyifang/goldendict-ng/issues/2120
-    // GD's locale names may mismatch system locale and the return of default QLocale().name() is slightly different across platforms.
+    // If interfaceLanguage is explicitly set, uses filename-based loading, because GD have more languages than Qt & its locale database.
+    // If not, then let Qt's qlocale mechanism decide which one to use, because "locale" handling is different in all 3 platforms, and we don't want to deal with that.
+
+    // Only load qt & webengine translators if GD's translation loading succeeds to avoid inconsistency
     if ( cfg.preferences.interfaceLanguage.isEmpty() ?
            loadTranslation_qlocale( *gd_ts, QString(), QString(), Config::getLocDir() ) :
            gd_ts->load( cfg.preferences.interfaceLanguage, Config::getLocDir() ) ) {
