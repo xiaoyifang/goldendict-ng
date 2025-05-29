@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation type="unfinished">Anki: can&apos;t create a card without a word</translation>
+      <translation>Anki: can&apos;t create a card without a word</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation type="unfinished">Anki: post to Anki failed</translation>
+      <translation>Anki: post to Anki failed</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation type="unfinished">Anki: post to Anki success</translation>
+      <translation>Anki: post to Anki success</translation>
     </message>
   </context>
   <context>
@@ -312,15 +312,15 @@ chiqan kayninta sumaqyachin)</translation>
     </message>
     <message>
       <source>Taiwan variant</source>
-      <translation type="unfinished">Taiwan variant</translation>
+      <translation>Taiwan variant</translation>
     </message>
     <message>
       <source>Hong Kong variant</source>
-      <translation type="unfinished">Hong Kong variant</translation>
+      <translation>Hong Kong variant</translation>
     </message>
     <message>
       <source>Mainland variant</source>
-      <translation type="unfinished">Mainland variant</translation>
+      <translation>Mainland variant</translation>
     </message>
   </context>
   <context>
@@ -540,7 +540,7 @@ chiqan kayninta sumaqyachin)</translation>
     </message>
     <message>
       <source>Regular Expression</source>
-      <translation type="unfinished">Regular Expression</translation>
+      <translation>Regular Expression</translation>
     </message>
   </context>
   <context>
@@ -691,7 +691,7 @@ chiqan kayninta sumaqyachin)</translation>
     </message>
     <message>
       <source>Restore selection</source>
-      <translation type="unfinished">Restore selection</translation>
+      <translation>Restore selection</translation>
     </message>
   </context>
   <context>
@@ -2007,10 +2007,6 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>Albanés simipi</translation>
     </message>
     <message>
-      <source>Serbian (Cyrillic)</source>
-      <translation>Serbia simi (cirílico) .</translation>
-    </message>
-    <message>
       <source>Swedish</source>
       <translation>Sueco simi</translation>
     </message>
@@ -2075,10 +2071,6 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>Aymara Simi</translation>
     </message>
     <message>
-      <source>Arabic, Saudi Arabia</source>
-      <translation>Arabe simipi, Arabia Saudita simipi</translation>
-    </message>
-    <message>
       <source>Turkmen</source>
       <translation>Turkmen</translation>
     </message>
@@ -2097,6 +2089,18 @@ chiqan kayninta sumaqyachin)</translation>
     <message>
       <source>English</source>
       <translation>Ingles Simi</translation>
+    </message>
+    <message>
+      <source>Arabic</source>
+      <translation>Arabé</translation>
+    </message>
+    <message>
+      <source>Serbian</source>
+      <translation>Serbio</translation>
+    </message>
+    <message>
+      <source>Kabyle</source>
+      <translation type="unfinished">Kabyle</translation>
     </message>
   </context>
   <context>
@@ -2591,11 +2595,11 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Save PDF complete</source>
-      <translation type="unfinished">Save PDF complete</translation>
+      <translation>Save PDF complete</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
-      <translation type="unfinished">Save PDF failed</translation>
+      <translation>Save PDF failed</translation>
     </message>
   </context>
   <context>
@@ -3461,7 +3465,7 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
     </message>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
-      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
+      <translation>GoldenDict-ng is a dictionary software.</translation>
     </message>
   </context>
   <context>
@@ -3601,11 +3605,11 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
     </message>
     <message>
       <source>Force the word to be translated in Popup.</source>
-      <translation type="unfinished">Force the word to be translated in Popup.</translation>
+      <translation>Force the word to be translated in Popup.</translation>
     </message>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
-      <translation type="unfinished">Force the word to be translated in the mainwindow.</translation>
+      <translation>Force the word to be translated in the mainwindow.</translation>
     </message>
   </context>
   <context>
@@ -3992,7 +3996,7 @@ Lliw simikuna tarikuq listataqa tarinki &lt;a href=&quot;https://lingualibre.org
     </message>
     <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
-      <translation type="unfinished">The most widely used method of transcription of Japanese, based on English phonology</translation>
+      <translation>The most widely used method of transcription of Japanese, based on English phonology</translation>
     </message>
   </context>
   <context>
