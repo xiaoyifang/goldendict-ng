@@ -2095,6 +2095,10 @@ between classic and school orthography in cyrillic)</source>
         <source>Serbian</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Kabyle</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>LoadDictionaries</name>
