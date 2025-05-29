@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="pt" sourcelanguage="en">
+<TS version="2.1" language="pt-PT" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
@@ -2007,10 +2007,6 @@ entre ortografia clássica e escolar em ciílico)</translation>
       <translation>Albanês</translation>
     </message>
     <message>
-      <source>Serbian (Cyrillic)</source>
-      <translation>Sérvio (Cirílico)</translation>
-    </message>
-    <message>
       <source>Swedish</source>
       <translation>Sueco</translation>
     </message>
@@ -2075,10 +2071,6 @@ entre ortografia clássica e escolar em ciílico)</translation>
       <translation>Aymara</translation>
     </message>
     <message>
-      <source>Arabic, Saudi Arabia</source>
-      <translation>Árabe, Arábia Saudita</translation>
-    </message>
-    <message>
       <source>Turkmen</source>
       <translation>Turkmen</translation>
     </message>
@@ -2097,6 +2089,18 @@ entre ortografia clássica e escolar em ciílico)</translation>
     <message>
       <source>English</source>
       <translation>Inglês</translation>
+    </message>
+    <message>
+      <source>Arabic</source>
+      <translation>Arábico</translation>
+    </message>
+    <message>
+      <source>Serbian</source>
+      <translation>Sérvio</translation>
+    </message>
+    <message>
+      <source>Kabyle</source>
+      <translation>Kabyle</translation>
     </message>
   </context>
   <context>
