@@ -491,7 +491,7 @@ int main( int argc, char ** argv )
 
       // TODO: Some `langauge`s in GD's ts uses - instead of _
       if ( loadTranslation_qlocale( *qt_ts, "qt", "_", QLibraryInfo::path( QLibraryInfo::TranslationsPath ) )
-           && qt_ts->language() == gd_ts->language().replace( '-', '_' ) ) {
+           && qt_ts->language() == gd_ts->language() ) {
         QCoreApplication::installTranslator( qt_ts );
       }
 
@@ -499,7 +499,7 @@ int main( int argc, char ** argv )
                                     "qtwebengine",
                                     "_",
                                     QLibraryInfo::path( QLibraryInfo::TranslationsPath ) )
-           && webengine_ts->language() == gd_ts->language().replace( '-', '_' ) ) {
+           && webengine_ts->language() == gd_ts->language() ) {
         QCoreApplication::installTranslator( webengine_ts );
       }
     }
