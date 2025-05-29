@@ -34,9 +34,9 @@ QString countryCodeForId( Id );
 /// Returns name for the given Id, translated to the current UI language, wish corresponding image tag.
 /// If the Id is incorrect, or has Unknown/Any values, returns empty string.
 QString localizedStringForId( Id );
-QString languageForLocale( const QString & locale );
 
-QMap< QString, QString > languageMap();
+QMap< QString, QString > translationLangMap();
+QString translationNameFromLangCode( const QString & locale );
 
 // All other functions are to be used from LangCoder, which is supposed to
 // be migrated here over time.

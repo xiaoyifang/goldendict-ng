@@ -1,830 +1,831 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="ar-SA" sourcelanguage="en">
+<TS version="2.1" language="sv" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
       <source>About</source>
-      <translation>حول</translation>
+      <translation>Om</translation>
     </message>
     <message>
       <source>Licensed under GNU GPLv3 or later</source>
-      <translation>مرخص وفق الإصدار الثّالث من رُخصة غنّو أو أحدث</translation>
+      <translation>Licensierat under GNU GPLv3 eller senare</translation>
     </message>
     <message>
       <source>Copy version info</source>
-      <translation>نسخ معلومات الإصدار</translation>
+      <translation>Kopiera versionsinformation</translation>
     </message>
   </context>
   <context>
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation type="unfinished">Anki: can&apos;t create a card without a word</translation>
+      <translation>Anki: kan&apos;t skapa ett kort utan ett ord</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
-      <translation>بحث أنكي: AnkiConnect غير مفعل.</translation>
+      <translation>Anki-sökning: AnkiConnect är inte aktiverat.</translation>
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation type="unfinished">Anki: post to Anki failed</translation>
+      <translation>Anki: inlägg till Anki misslyckades</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation type="unfinished">Anki: post to Anki success</translation>
+      <translation>Anki: inlägg till Anki framgång</translation>
     </message>
   </context>
   <context>
     <name>ArticleInspector</name>
     <message>
       <source>Inspect</source>
-      <translation>افحص</translation>
+      <translation>Inspektera</translation>
     </message>
   </context>
   <context>
     <name>ArticleMaker</name>
     <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
-      <translation>لم يتم العثور على ترجمة لـ &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; في المجموعة &lt;b&gt;%2&lt;/b&gt;.</translation>
+      <translation>Ingen översättning för &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; hittades i grupp &lt;b&gt;%2&lt;/b&gt;.</translation>
     </message>
     <message>
       <source>No translation was found in group &lt;b&gt;%1&lt;/b&gt;.</source>
-      <translation>تعذّر إيجاد ترجمة في مجموعة &lt;b&gt;%1&lt;/b&gt;.</translation>
+      <translation>Ingen översättning hittades i gruppen &lt;b&gt;%1&lt;/b&gt;.</translation>
     </message>
     <message>
       <source>Welcome!</source>
-      <translation>مرحبًا بك!</translation>
+      <translation>Välkommen!</translation>
     </message>
     <message>
       <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;مرحبًا بك في &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;لبدء العمل مع البرنامج قم أولاً بزيارة &lt;em&gt;تحرير | القواميس&lt;/em&gt; لإضافة بعض مسارات الدليل حيث يمكنك البحث عن ملفات القاموس، أو إعداد مواقع ويكيبيديا المختلفة أو مصادر أخرى، أو ضبط ترتيب القاموس أو إنشاء مجموعات القاموس.&lt;p&gt;وبعد ذلك&apos;أنت مستعد للبحث عن كلماتك! يمكنك القيام بذلك في هذه النافذة باستخدام الجزء الموجود على اليسار، أو يمكنك &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;البحث عن كلمات من التطبيقات النشطة الأخرى&lt;/a&gt;. &lt;p&gt;لتخصيص البرنامج، تحقق من التفضيلات المتاحة في &lt;em&gt;تحرير | التفضيلات&lt;/em&gt;. تحتوي جميع الإعدادات هناك على تلميحات أدوات، تأكد من قراءتها إذا كنت تشك في أي شيء.&lt;p&gt;إذا كنت بحاجة إلى مزيد من المساعدة، أو لديك أي أسئلة أو اقتراحات أو تتساءل فقط عن رأي الآخرين، فمرحبًا بك في منتدى البرنامج&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;&lt;/a&gt;.&lt;p&gt;تحقق من موقع البرنامج&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;&lt;/a&gt; للحصول على التحديثات. &lt;p&gt;(ج) 2008-2013 كونستانتين إيزاكوف. مرخص بموجب GPLv3 أو الأحدث.</translation>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;Välkommen till &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;För att börja arbeta med programmet, besök först &lt;em&gt;Redigera | Ordböcker&lt;/em&gt; för att lägga till några katalogsökvägar där man kan söka efter ordboksfilerna, skapa olika Wikipedia-webbplatser eller andra källor, justera ordboksordningen eller skapa ordboksgrupper.&lt;p&gt;Och då är du&apos;att slå upp dina ord! Du kan göra det i det här fönstret genom att använda en ruta till vänster, eller så kan du &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;upp ord från andra aktiva applikationer&lt;/a&gt;. &lt;p&gt;För att anpassa programmet, kolla in de tillgängliga inställningarna på &lt;em&gt;Redigera | Inställningar&lt;/em&gt;. Alla inställningar där har verktygstips, se till att läsa dem om du är osäker på något.&lt;p&gt;Behöver du ytterligare hjälp, har några frågor, förslag eller bara undrar vad de andra tycker är du välkommen till programmet&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Kolla program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;hemsida&lt;/a&gt; för uppdateringarna. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensierad under GPLv3 eller senare.</translation>
     </message>
     <message>
       <source>(untitled)</source>
-      <translation>(غير معنون)</translation>
+      <translation>(namnlös)</translation>
     </message>
     <message>
       <source>(picture)</source>
-      <translation>(صورة)</translation>
+      <translation>(bild)</translation>
     </message>
   </context>
   <context>
     <name>ArticleRequest</name>
     <message>
       <source>From </source>
-      <translation>من</translation>
+      <translation>Från </translation>
     </message>
     <message>
       <source>Make a new Anki note</source>
-      <translation>قم بتدوين ملاحظة Anki الجديدة</translation>
+      <translation>Skapa en ny Anki-anteckning</translation>
     </message>
     <message>
       <source>Query error: %1</source>
-      <translation>خطأ استعلام: %1</translation>
+      <translation>Frågefel: %1</translation>
     </message>
     <message>
       <source>Close words: </source>
-      <translation>الكلمات القريبة:</translation>
+      <translation>Närliggande ord: </translation>
     </message>
     <message>
       <source>Compound expressions: </source>
-      <translation>التعابير المركّبة:</translation>
+      <translation>Sammansättningar: </translation>
     </message>
     <message>
       <source>Individual words: </source>
-      <translation>الكلمات مفردةً: </translation>
+      <translation>Enskilda ord: </translation>
     </message>
   </context>
   <context>
     <name>ArticleView</name>
     <message>
       <source>Phrase not found</source>
-      <translation>لم يتم العثور على المرحلة</translation>
+      <translation>Fras hittades inte</translation>
     </message>
     <message>
       <source>%1 of %2 matches</source>
-      <translation>%1 من %2 تطابق</translation>
+      <translation>%1 av %2 träffar</translation>
     </message>
     <message>
       <source>Select Current Article</source>
-      <translation>حدّد المقالة الحالية</translation>
+      <translation>Markera aktuell artikel</translation>
     </message>
     <message>
       <source>Copy as text</source>
-      <translation>انسخ كنص</translation>
+      <translation>Kopiera som oformaterad text</translation>
     </message>
     <message>
       <source>Inspect</source>
-      <translation>افحص</translation>
+      <translation>Granska källkod</translation>
     </message>
     <message>
       <source>Resource</source>
-      <translation>المورد</translation>
+      <translation>Resurs</translation>
     </message>
     <message>
       <source>TTS Voice</source>
-      <translation>صوت قراءة النّصوص</translation>
+      <translation>Text till tal-modul</translation>
     </message>
     <message>
       <source>Audio</source>
-      <translation>الصوت</translation>
+      <translation>Ljud</translation>
     </message>
     <message>
       <source>Video</source>
-      <translation>المرئيات</translation>
+      <translation>Video</translation>
     </message>
     <message>
       <source>Video: %1</source>
-      <translation>المقطع المرئي: %1</translation>
+      <translation>Video: %1</translation>
     </message>
     <message>
       <source>Definition from dictionary &quot;%1&quot;: %2</source>
-      <translation>التّعريف من القاموس &quot;%1&quot;: %2</translation>
+      <translation>Definition ur ordlistan &quot;%1&quot;: %2</translation>
     </message>
     <message>
       <source>Definition: %1</source>
-      <translation>تعريف: %1</translation>
+      <translation>Definition: %1</translation>
     </message>
     <message>
       <source>ERROR: %1</source>
-      <translation>خطأ: %1</translation>
+      <translation>FEL: %1</translation>
     </message>
     <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
-      <translation>برنامج الصوت المشار إليه غير موجود&apos;.</translation>
+      <translation>Det refererade ljudprogrammet finns inte.</translation>
     </message>
     <message>
       <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>المورد المشار إليه غير موجود.</translation>
+      <translation>Den refererade resursen finns inte.</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
-      <translation>افتح الرابط</translation>
+      <translation>Op&amp;nera länk</translation>
     </message>
     <message>
       <source>Open Link in New &amp;Tab</source>
-      <translation>افتح الوصلة في &amp;لسان جديد</translation>
+      <translation>Öppna länk i ny &amp;flik</translation>
     </message>
     <message>
       <source>Open Link in &amp;External Browser</source>
-      <translation>افتح الوصلة في متصفّح &amp;خارجي</translation>
+      <translation>Öppna länk i extern &amp;webbläsare</translation>
     </message>
     <message>
       <source>Save &amp;image...</source>
-      <translation>احفظ ال&amp;صّورة...</translation>
+      <translation>Spara &amp;bild …</translation>
     </message>
     <message>
       <source>Open image in system viewer...</source>
-      <translation>فتح الصورة في عارض النظام...</translation>
+      <translation>Öppna bild i systemvisaren...</translation>
     </message>
     <message>
       <source>Save s&amp;ound...</source>
-      <translation>احفظ الصّو&amp;ت...</translation>
+      <translation>Spara l&amp;jud …</translation>
     </message>
     <message>
       <source>&amp;Look up &quot;%1&quot;</source>
-      <translation>اب&amp;حث عن &quot;%1&quot;</translation>
+      <translation>&amp;Slå upp &quot;%1&quot;</translation>
     </message>
     <message>
       <source>Look up &quot;%1&quot; in &amp;New Tab</source>
-      <translation>ابحث عن &quot;%1&quot; في لسان &amp;جديد</translation>
+      <translation>Slå upp &quot;%1&quot; i &amp;ny flik</translation>
     </message>
     <message>
       <source>Send &quot;%1&quot; to input line</source>
-      <translation>أرسل &quot;%1&quot; إلى سطر الإدخال</translation>
+      <translation>Skicka &quot;%1&quot; till sökfältet</translation>
     </message>
     <message>
       <source>&amp;Add &quot;%1&quot; to history</source>
-      <translation>أ&amp;ضف &quot;%1&quot; إلى التأريخ</translation>
+      <translation>&amp;Lägg till &quot;%1&quot; i historiken</translation>
     </message>
     <message>
       <source>Look up &quot;%1&quot; in %2</source>
-      <translation>ابحث عن &quot;%1&quot; في %2</translation>
+      <translation>Slå upp &quot;%1&quot; i %2</translation>
     </message>
     <message>
       <source>Look up &quot;%1&quot; in %2 in &amp;New Tab</source>
-      <translation>ابحث عن &quot;%1&quot; في %2 في لسان &amp;جديد</translation>
+      <translation>Slå upp &quot;%1&quot; i %2 i &amp;ny flik</translation>
     </message>
     <message>
       <source>Save &amp;Bookmark &quot;%1...&quot;</source>
-      <translation>حفظ وإشارة مرجعية &quot;%1...&quot;</translation>
+      <translation>Spara &amp;bokmärke &quot;%1...&quot;</translation>
     </message>
     <message>
       <source>&amp;Send Current Article to Anki</source>
-      <translation>&amp; إرسال المقال الحالي إلى Anki</translation>
+      <translation>&amp;Skicka aktuell artikel till Anki</translation>
     </message>
     <message>
       <source>&amp;Send selected text to Anki</source>
-      <translation>&amp; إرسال النص المحدد إلى Anki</translation>
+      <translation>&amp;Skicka markerad text till Anki</translation>
     </message>
     <message>
       <source>Save sound</source>
-      <translation>احفظ الصوت</translation>
+      <translation>Spara ljud</translation>
     </message>
     <message>
       <source>Sound files (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
-      <translation>ملفات الصوت (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;جميع الملفات (*.*.*)</translation>
+      <translation>Ljudfiler (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;;Alla filer (*.*)</translation>
     </message>
     <message>
       <source>Save image</source>
-      <translation>احفظ الصّورة</translation>
+      <translation>Spara bild</translation>
     </message>
     <message>
       <source>Image files (*.bmp *.jpg *.png *.tif);;All files (*.*)</source>
-      <translation>ملفات صورة (*.bmp *.jpg *.png *.tif);;كل الملفات (*.*)</translation>
+      <translation>Bildfiler (*.bmp *.jpg *.png *.tif);;Alla filer (*.*)</translation>
     </message>
     <message>
       <source>Failed to play sound file: %1</source>
-      <translation>فشل تشغيل ملف الصوت: %1</translation>
+      <translation>Det gick inte att spela upp ljudfil: %1</translation>
     </message>
     <message>
       <source>Failed to create temporary file.</source>
-      <translation>فشل في إنشاء ملف مؤقت.</translation>
+      <translation>Det gick inte att skapa en tillfällig fil.</translation>
     </message>
     <message>
       <source>Failed to auto-open resource file, try opening manually: %1.</source>
-      <translation>فشل في فتح ملف المورد تلقائيًّا، حاول فتحه يدويًّا: %1.</translation>
+      <translation>Det gick inte att automatiskt öppna en resursfil. Försök att öppna den manuellt: %1.</translation>
     </message>
     <message>
       <source>WARNING: Audio Player: %1</source>
-      <translation>تحذير: مشغل الصوت: %1</translation>
+      <translation>VARNING: Ljudspelare: %1</translation>
     </message>
     <message>
       <source>&amp;Create Anki note</source>
-      <translation>&amp; إنشاء ملاحظة Anki</translation>
+      <translation>&amp;Skapa Anki anteckning</translation>
     </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
     <message>
       <source>Belarusian transliteration from latin to cyrillic (classic orthography)</source>
-      <translation>النّقل الحرفي البيلاروسي من اللاتينية إلى السيريلية (قواعد الإملاء التّقليدية)</translation>
+      <translation>Translitterering av vitryska från latinska till kyrilliska tecken (klassisk rättstavning)</translation>
     </message>
     <message>
       <source>Belarusian transliteration from latin to cyrillic (school orthography)</source>
-      <translation>النّقل الحرفي البيلاروسي من اللاتينية إلى السيريلية (قواعد الإملاء المدرسية)</translation>
+      <translation>Translitterering av vitryska från latinska till kyrilliska tecken (skolrättstavning)</translation>
     </message>
     <message>
       <source>Belarusian transliteration (smoothes out the difference
 between classic and school orthography in cyrillic)</source>
-      <translation>النّقل الحرفي البيلاروسي (ينعّم الفوارق بين قواعد الإملاء التّقليدية والمدرسية في السيريلية)</translation>
+      <translation>Translitterering av vitryska (jämnar ut skillnaden mellan
+klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     </message>
   </context>
   <context>
     <name>ChineseConversion</name>
     <message>
       <source>Chinese Conversion</source>
-      <translation>التحويل الصيني</translation>
+      <translation>Kinesisk konvertering</translation>
     </message>
     <message>
       <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>تمكين التحويل بين الأحرف الصينية المبسطة والتقليدية</translation>
+      <translation>Aktivera konvertering mellan förenklade och traditionella kinesiska tecken</translation>
     </message>
     <message>
       <source>Chinese Con&amp;version</source>
-      <translation>يخدع ونسخة الصينية</translation>
+      <translation>Kinesisk Con&amp;version</translation>
     </message>
     <message>
       <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>قم بتمكين التحويل من الأحرف المبسطة إلى الأحرف التقليدية (البديل التايواني)</translation>
+      <translation>Aktivera konvertering från förenklade tecken till traditionella (Taiwan variant) tecken</translation>
     </message>
     <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>تمكين التحويل من الأحرف المبسطة إلى الأحرف التقليدية (متغير هونج كونج)</translation>
+      <translation>Aktivera konvertering från förenklade tecken till traditionella (Hong Kong variant) tecken</translation>
     </message>
     <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>تمكين التحويل من الأحرف التقليدية إلى الأحرف المبسطة</translation>
+      <translation>Aktivera konvertering från traditionella tecken till förenklade tecken</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>مبسطة لتحويل الصينية التقليدية (البديل التايواني)</translation>
+      <translation>Förenklad till traditionell kinesisk (Taiwanesisk variant) konvertering</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>مبسطة لتحويل الصينية التقليدية (متغير هونج كونج)</translation>
+      <translation>Förenklad till traditionell kinesisk (Hong Kong variant) konvertering</translation>
     </message>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
-      <translation>التقليدية إلى الصينية المبسطة التحويل</translation>
+      <translation>Traditionell till förenklad kinesisk konvertering</translation>
     </message>
     <message>
       <source>Taiwan variant</source>
-      <translation type="unfinished">Taiwan variant</translation>
+      <translation>Taiwan variant</translation>
     </message>
     <message>
       <source>Hong Kong variant</source>
-      <translation type="unfinished">Hong Kong variant</translation>
+      <translation>Hongkong variant</translation>
     </message>
     <message>
       <source>Mainland variant</source>
-      <translation type="unfinished">Mainland variant</translation>
+      <translation>Variant på fastlandet</translation>
     </message>
   </context>
   <context>
     <name>CustomTranslit</name>
     <message>
       <source>custom transliteration</source>
-      <translation>تحويل صوتي مخصص</translation>
+      <translation>anpassad translitterering</translation>
     </message>
   </context>
   <context>
     <name>DictGroupWidget</name>
     <message>
       <source>Form</source>
-      <translation>نموذج</translation>
+      <translation>Formulär</translation>
     </message>
     <message>
       <source>Group icon:</source>
-      <translation>رمز المجموعة:</translation>
+      <translation>Gruppikon:</translation>
     </message>
     <message>
       <source>Shortcut:</source>
-      <translation>الاختصار:</translation>
+      <translation>Kortkommando:</translation>
     </message>
     <message>
       <source>Favorites folder:</source>
-      <translation>مجلد المفضلة:</translation>
+      <translation>Favoriter mapp:</translation>
     </message>
     <message>
       <source>None</source>
-      <translation>لا شيء</translation>
+      <translation>Ingen</translation>
     </message>
     <message>
       <source>From file...</source>
-      <translation>من ملف...</translation>
+      <translation>Från fil …</translation>
     </message>
     <message>
       <source>Choose a file to use as group icon</source>
-      <translation>اختر ملفًا لاستخدامه كرمز للمجموعة</translation>
+      <translation>Välj en fil att använda som gruppikon</translation>
     </message>
     <message>
       <source>Images</source>
-      <translation>الصور</translation>
+      <translation>Bilder</translation>
     </message>
     <message>
       <source>All files</source>
-      <translation>كل الملفات</translation>
+      <translation>Alla filer</translation>
     </message>
     <message>
       <source>Error</source>
-      <translation>خطأ</translation>
+      <translation>Fel</translation>
     </message>
     <message>
       <source>Can&apos;t read the specified image file.</source>
-      <translation>تعذّر قراءة ملف الصورة المحدّد.</translation>
+      <translation>Det gick inte att läsa den angivna bildfilen.</translation>
     </message>
   </context>
   <context>
     <name>DictGroupsWidget</name>
     <message>
       <source>Dictionaries: </source>
-      <translation>القواميس:</translation>
+      <translation>Ordlistor: </translation>
     </message>
     <message>
       <source>Confirmation</source>
-      <translation>التّأكيد</translation>
+      <translation>Bekräftelse</translation>
     </message>
     <message>
       <source>Are you sure you want to generate a set of groups based on language pairs?</source>
-      <translation>هل أنت متأكد من توليد مجموعة مجموعات مبنية على زوجي اللّغة؟</translation>
+      <translation>Är du säker på att du vill skapa en uppsättning grupper baserade på språkpar?</translation>
     </message>
     <message>
       <source>Unassigned</source>
-      <translation>غير مُعيّن</translation>
+      <translation>Ej tilldelad</translation>
     </message>
     <message>
       <source>Auto group by folder failed.</source>
-      <translation>فشل التجميع التلقائي حسب المجلد.</translation>
+      <translation>Automatisk gruppering efter mapp misslyckades.</translation>
     </message>
     <message>
       <source>The parent directory of %1 can not be reached.</source>
-      <translation>لا يمكن الوصول إلى الدليل الرئيسي لـ %1.</translation>
+      <translation>Den överordnade katalogen för %1 kan inte nås.</translation>
     </message>
     <message>
       <source>Are you sure you want to generate a set of groups based on containing folders?</source>
-      <translation>هل أنت متأكد من أنك تريد إنشاء مجموعة من المجموعات بناءً على المجلدات المحتوية؟</translation>
+      <translation>Är du säker på att du vill skapa en uppsättning grupper baserat på innehållande mappar?</translation>
     </message>
     <message>
       <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>هل أنت متأكد من أنك تريد إنشاء مجموعة من المجموعات بناءً على metadata.toml؟</translation>
+      <translation>Är du säker på att du vill skapa en uppsättning grupper baserade på metadata.toml?</translation>
     </message>
     <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
-      <translation>ادمج المجموعات باللغة المصدر إلى &quot;%1-&gt;&quot;</translation>
+      <translation>Kombinera grupper efter källspråk till &quot;%1 &gt;&quot;</translation>
     </message>
     <message>
       <source>Combine groups by target language to &quot;-&gt;%1&quot;</source>
-      <translation>ادمج المجموعات باللغة الهدف إلى &quot;-&gt;%1&quot;</translation>
+      <translation>Kombinera grupper efter målspråk till &quot;&gt; %1&quot;</translation>
     </message>
     <message>
       <source>Make two-side translate group &quot;%1-%2-%1&quot;</source>
-      <translation>أنشئ مجموعة ترجمة من جهتين &quot;%1-%2-%1&quot;</translation>
+      <translation>Skapa den dubbelsidiga språkgruppen &quot;%1-%2-%1&quot;</translation>
     </message>
     <message>
       <source>Combine groups with &quot;%1&quot;</source>
-      <translation>ادمج المجموعات بـ &quot;%1&quot;</translation>
+      <translation>Kombinera grupper med &quot;%1&quot;</translation>
     </message>
   </context>
   <context>
     <name>DictHeadwords</name>
     <message>
       <source>If checked any filter changes will we immediately applied to headwords list</source>
-      <translation>إذا تم تحديد أي تغييرات في التصفية ، فسنطبق على الفور على قائمة الكلمات الرئيسية</translation>
+      <translation>Om kontrolleras några filterändringar kommer vi omedelbart tillämpas på huvudordslistan</translation>
     </message>
     <message>
       <source>Auto apply</source>
-      <translation>تطبيق تلقائي</translation>
+      <translation>Tillämpa automatiskt</translation>
     </message>
     <message>
       <source>Press this button to apply filter to headwords list</source>
-      <translation>اضغط على هذا الزر لتطبيق عامل التصفية على قائمة الكلمات الرئيسية</translation>
+      <translation>Tryck på den här knappen för att tillämpa filter till huvudordslistan</translation>
     </message>
     <message>
       <source>Apply</source>
-      <translation>يتقدم</translation>
+      <translation>Tillämpa</translation>
     </message>
     <message>
       <source>Filter string (fixed string, wildcards or regular expression)</source>
-      <translation>سلسلة عامل التصفية (سلسلة ثابتة أو أحرف بدل أو تعبير عادي)</translation>
+      <translation>Filtersträng (fast sträng, jokertecken eller reguljärt uttryck)</translation>
     </message>
     <message>
       <source>Filter:</source>
-      <translation>منقي:</translation>
+      <translation>Filtrera:</translation>
     </message>
     <message>
       <source>Search mode</source>
-      <translation>وضع البحث</translation>
+      <translation>Sökläge</translation>
     </message>
     <message>
       <source>This element determines how filter string will be interpreted</source>
-      <translation>يحدد هذا العنصر كيفية تفسير سلسلة المرشح</translation>
+      <translation>Detta element bestämmer hur filtersträngen ska tolkas</translation>
     </message>
     <message>
       <source>If checked on the symbols case will be take in account when filtering</source>
-      <translation>إذا تم التحقق من حالة الرموز ، فسيتم أخذها في الاعتبار عند التصفية</translation>
+      <translation>Om markerad på symbolfallet kommer att beaktas vid filtrering</translation>
     </message>
     <message>
       <source>Match case</source>
-      <translation>حالات التطابق</translation>
+      <translation>Matcha skiftlägeskänslig</translation>
     </message>
     <message>
       <source>Exports headwords to file</source>
-      <translation>تصدير الكلمات الرئيسية إلى ملف</translation>
+      <translation>Exportera huvudord till fil</translation>
     </message>
     <message>
       <source>Export</source>
-      <translation>صدّر</translation>
+      <translation>Exportera</translation>
     </message>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
-      <translation>حدد الحد الأقصى للكلمات الرئيسية المصفاة التي تم إرجاعها.</translation>
+      <translation>Ange de maximalt filtrerade headwords som returnerats.</translation>
     </message>
     <message>
       <source>Filter max results:</source>
-      <translation>تصفية النتائج الأقصى:</translation>
+      <translation>Filtrera max resultat:</translation>
     </message>
     <message>
       <source>Help</source>
-      <translation>يساعد</translation>
+      <translation>Hjälp</translation>
     </message>
     <message>
       <source>OK</source>
-      <translation>نعم</translation>
+      <translation>Ok</translation>
     </message>
     <message>
       <source>Text</source>
-      <translation>نص</translation>
+      <translation>Text</translation>
     </message>
     <message>
       <source>Wildcards</source>
-      <translation>البدل</translation>
+      <translation>Jokertecken</translation>
     </message>
     <message>
       <source>Unique headwords total: %1.</source>
-      <translation>مجموع الكلمات الرئيسية الفريدة: %1.</translation>
+      <translation>Unika huvudord totalt: %1.</translation>
     </message>
     <message>
       <source>Unique headwords total: %1, filtered(limited): %2</source>
-      <translation>مجموع الكلمات الرئيسية الفريدة: %1, filtered(محدود): %2</translation>
+      <translation>Unika huvudord totalt: %1, filtrerade (begränsade): %2</translation>
     </message>
     <message>
       <source>Save headwords to file</source>
-      <translation>حفظ كلمات رئيسية في ملف</translation>
+      <translation>Spara huvudord till fil</translation>
     </message>
     <message>
       <source>Text files (*.txt);;All files (*.*)</source>
-      <translation>ملفات نص (*.txt);;كل الملفات (*.*)</translation>
+      <translation>Textfiler (*.txt);;Alla filer (*.*)</translation>
     </message>
     <message>
       <source>Can not open exported file</source>
-      <translation>لا يمكن فتح الملف المصدر</translation>
+      <translation>Kan inte öppna exporterad fil</translation>
     </message>
     <message>
       <source>Export headwords...</source>
-      <translation>تصدير كلمات رئيسية ...</translation>
+      <translation>Exportera huvudord...</translation>
     </message>
     <message>
       <source>Cancel</source>
-      <translation>ألغِ</translation>
+      <translation>Avbryt</translation>
     </message>
     <message>
       <source>Export process is interrupted</source>
-      <translation>توقفت عملية التصدير</translation>
+      <translation>Exportprocessen avbryts</translation>
     </message>
     <message>
       <source>Export finished</source>
-      <translation>انتهى التصدير</translation>
+      <translation>Export slutförd</translation>
     </message>
     <message>
       <source>Regular Expression</source>
-      <translation type="unfinished">Regular Expression</translation>
+      <translation>Reguljärt uttryck</translation>
     </message>
   </context>
   <context>
     <name>DictInfo</name>
     <message>
       <source>Open index folder</source>
-      <translation>افتح مجلد الفهرس</translation>
+      <translation>Öppna indexmappen</translation>
     </message>
     <message>
       <source>Total articles:</source>
-      <translation>مجموع المقالات:</translation>
+      <translation>Antal artiklar:</translation>
     </message>
     <message>
       <source>Index filename:</source>
-      <translation>اسم ملف الفهرس:</translation>
+      <translation>Index filnamn:</translation>
     </message>
     <message>
       <source>Total words:</source>
-      <translation>مجموع الكلمات:</translation>
+      <translation>Antal ord:</translation>
     </message>
     <message>
       <source>Open folder</source>
-      <translation>افتح المجلد</translation>
+      <translation>Öppna mapp</translation>
     </message>
     <message>
       <source>Translates from:</source>
-      <translation>ترجم من:</translation>
+      <translation>Källspråk:</translation>
     </message>
     <message>
       <source>Translates to:</source>
-      <translation>ترجم إلى:</translation>
+      <translation>Målspråk:</translation>
     </message>
     <message>
       <source>Files comprising this dictionary:</source>
-      <translation>الملفات التي تتضمن القاموس:</translation>
+      <translation>Filer som omfattas av ordlistan:</translation>
     </message>
     <message>
       <source>Description:</source>
-      <translation>الوصف:</translation>
+      <translation>Beskrivning:</translation>
     </message>
     <message>
       <source>Show all unique dictionary headwords</source>
-      <translation>عرض كل كلمات رئيسية فريدة من نوعها في القاموس</translation>
+      <translation>Visa alla unika ordlistshuvudord</translation>
     </message>
     <message>
       <source>Headwords</source>
-      <translation>كلمات رئيسية</translation>
+      <translation>Huvudord</translation>
     </message>
     <message>
       <source>Full-text search enabled</source>
-      <translation>تم تمكين البحث عن النص الكامل</translation>
+      <translation>Fulltextsökning aktiverad</translation>
     </message>
     <message>
       <source>Full-text search disabled</source>
-      <translation>تم تعطيل البحث عن النص الكامل</translation>
+      <translation>Fulltextsökning avaktiverad</translation>
     </message>
   </context>
   <context>
     <name>DictListModel</name>
     <message>
       <source>%1 entries</source>
-      <translation>%1 من المدخلات</translation>
+      <translation>%1 poster</translation>
     </message>
   </context>
   <context>
     <name>DictServer</name>
     <message>
       <source>Url: </source>
-      <translation>عنوان Url: </translation>
+      <translation>Webbadress: </translation>
     </message>
     <message>
       <source>Databases: </source>
-      <translation>قواعد بيانات: </translation>
+      <translation>Databaser: </translation>
     </message>
     <message>
       <source>Search strategies: </source>
-      <translation>استراتيجيات البحث: </translation>
+      <translation>Sökstrategier: </translation>
     </message>
     <message>
       <source>Server databases</source>
-      <translation>قواعد بيانات الخادم</translation>
+      <translation>Serverdatabaser</translation>
     </message>
   </context>
   <context>
     <name>DictServersModel</name>
     <message>
       <source>Enabled</source>
-      <translation>ممكن</translation>
+      <translation>Aktiverad</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation>الاسم</translation>
+      <translation>Namn</translation>
     </message>
     <message>
       <source>Address</source>
-      <translation>العنوان</translation>
+      <translation>Adress</translation>
     </message>
     <message>
       <source>Databases</source>
-      <translation>قواعد بيانات</translation>
+      <translation>Databaser</translation>
     </message>
     <message>
       <source>Strategies</source>
-      <translation>الاستراتيجيات</translation>
+      <translation>Strategier</translation>
     </message>
     <message>
       <source>Icon</source>
-      <translation>أيقونة</translation>
+      <translation>Ikon</translation>
     </message>
     <message>
       <source>Comma-delimited list of databases
 (empty string or &quot;*&quot; matches all databases)</source>
-      <translation>قائمة قواعد البيانات مفصولة بفواصل
-(سلسلة فارغة أو &quot;*&quot; تطابق جميع قواعد البيانات)</translation>
+      <translation>Kommaavgränsad lista över databaser
+(tom sträng eller &quot;*&quot; matchar alla databaser)</translation>
     </message>
     <message>
       <source>Comma-delimited list of search strategies
 (empty string mean &quot;prefix&quot; strategy)</source>
-      <translation>قائمة بإستراتيجيات البحث
-مفصولة بفواصل (السلسلة الفارغة تعني إستراتيجية &quot;بادئة&quot;)</translation>
+      <translation>Kommaavgränsad lista över sökstrategier
+(tom sträng betyder &quot;prefix&quot; strategi)</translation>
     </message>
   </context>
   <context>
     <name>DictionaryBar</name>
     <message>
       <source>&amp;Dictionary Bar</source>
-      <translation>شريط ال&amp;قواميس</translation>
+      <translation>&amp;Ordlistefältet</translation>
     </message>
     <message>
       <source>Extended menu with all dictionaries...</source>
-      <translation>قائمة موسّعة بكل القواميس...</translation>
+      <translation>Visa alla ordlistor i en utökad meny …</translation>
     </message>
     <message>
       <source>Edit this group</source>
-      <translation>حرّر هذه المجموعة</translation>
+      <translation>Redigera denna grupp</translation>
     </message>
     <message>
       <source>Dictionary info</source>
-      <translation>معلومات القاموس</translation>
+      <translation>Ordlisteinformation</translation>
     </message>
     <message>
       <source>Dictionary headwords</source>
-      <translation>كلمات رئيسية في القاموس</translation>
+      <translation>Ordboks huvudord</translation>
     </message>
     <message>
       <source>Open dictionary folder</source>
-      <translation>افتح مجلد القاموس</translation>
+      <translation>Öppna ordlistans lagringsmapp</translation>
     </message>
     <message>
       <source>Restore selection</source>
-      <translation type="unfinished">Restore selection</translation>
+      <translation>Återställ markering</translation>
     </message>
   </context>
   <context>
     <name>EditDictionaries</name>
     <message>
       <source>Dictionaries</source>
-      <translation>قواميس</translation>
+      <translation>Ordlistor</translation>
     </message>
     <message>
       <source>&amp;Sources</source>
-      <translation>م&amp;صادر</translation>
+      <translation>&amp;Källor</translation>
     </message>
     <message>
       <source>&amp;Dictionaries</source>
-      <translation>&amp;قواميس</translation>
+      <translation>&amp;Ordlistor</translation>
     </message>
     <message>
       <source>&amp;Groups</source>
-      <translation>م&amp;جموعات</translation>
+      <translation>&amp;Grupper</translation>
     </message>
     <message>
       <source>Sources changed</source>
-      <translation>تغيّرت المصادر</translation>
+      <translation>Källor har ändrats</translation>
     </message>
     <message>
       <source>Some sources were changed. Would you like to accept the changes?</source>
-      <translation>بعض المصادر تغيّرت. أتقبل التّغييرات؟</translation>
+      <translation>Några källor har ändrats. Godkänner du ändringarna?</translation>
     </message>
     <message>
       <source>Accept</source>
-      <translation>اقبل</translation>
+      <translation>Godkänn</translation>
     </message>
     <message>
       <source>Cancel</source>
-      <translation>ألغِ</translation>
+      <translation>Avbryt</translation>
     </message>
   </context>
   <context>
     <name>Epwing::EpwingDictionary</name>
     <message>
       <source>Previous Page</source>
-      <translation>الصفحة السابقة</translation>
+      <translation>Föregående sida</translation>
     </message>
     <message>
       <source>Next Page</source>
-      <translation>الصفحة التالية</translation>
+      <translation>Nästa sida</translation>
     </message>
   </context>
   <context>
     <name>ExternalViewer</name>
     <message>
       <source>the viewer program name is empty</source>
-      <translation>اسم برنامج العارض فارغ</translation>
+      <translation>fältet för visningsprogrammets namn är tomt</translation>
     </message>
   </context>
   <context>
     <name>FTS::FullTextSearchDialog</name>
     <message>
       <source>Full-text search</source>
-      <translation>البحث عن نص كامل</translation>
+      <translation>Fulltextsökning</translation>
     </message>
     <message>
       <source>Default</source>
-      <translation>تقصير</translation>
+      <translation>Standard</translation>
     </message>
     <message>
       <source>Wildcards</source>
-      <translation>البدل</translation>
+      <translation>Jokertecken</translation>
     </message>
     <message>
       <source>Support xapian search syntax, such as AND OR +/- etc.</source>
-      <translation>دعم صيغة البحث الصينية، مثل AND OR +/- وما إلى ذلك.</translation>
+      <translation>Stöd xapian söksyntax, såsom AND OR +/- etc.</translation>
     </message>
     <message>
       <source>Articles found: </source>
-      <translation>المقالات التي تم العثور عليها: </translation>
+      <translation>Hittade artiklar: </translation>
     </message>
     <message>
       <source>Now indexing: </source>
-      <translation>الفهرسة الآن: </translation>
+      <translation>Nu indexering: </translation>
     </message>
     <message>
       <source>None</source>
-      <translation>لا أحد</translation>
+      <translation>Ingen</translation>
     </message>
     <message>
       <source>The querying word can not be empty.</source>
-      <translation>لا يمكن أن تكون كلمة الاستعلام فارغة.</translation>
+      <translation>Frågeordet får inte vara tomt.</translation>
     </message>
     <message>
       <source>No dictionaries for full-text search</source>
-      <translation>لا توجد قواميس للبحث عن نص كامل</translation>
+      <translation>Inga ordlistor för fulltextsökning</translation>
     </message>
   </context>
   <context>
     <name>FavoritesModel</name>
     <message>
       <source>Error in favorities file</source>
-      <translation>خطأ في ملف المفضلات</translation>
+      <translation>Fel i favoriter-fil</translation>
     </message>
   </context>
   <context>
     <name>FavoritesPaneWidget</name>
     <message>
       <source>&amp;Delete Selected</source>
-      <translation>ا&amp;حذف المحدّد</translation>
+      <translation>Ta &amp;bort markerade</translation>
     </message>
     <message>
       <source>Copy Selected</source>
-      <translation>انسخ المحدّد</translation>
+      <translation>Kopiera markerade</translation>
     </message>
     <message>
       <source>Add folder</source>
-      <translation>أضف المجلد</translation>
+      <translation>Lägg till mapp</translation>
     </message>
     <message>
       <source>Clear All</source>
-      <translation>Clear All</translation>
+      <translation>Rensa alla</translation>
     </message>
     <message>
       <source>Favorites:</source>
-      <translation>المفضلة:</translation>
+      <translation>Favoriter:</translation>
     </message>
     <message>
       <source>All selected items will be deleted. Continue?</source>
-      <translation>سيتم حذف جميع العناصر المحددة. يكمل؟</translation>
+      <translation>Alla markerade objekt tas bort. Fortsätt?</translation>
     </message>
     <message>
       <source>Clear All Items</source>
-      <translation>Clear All Items</translation>
+      <translation>Rensa alla objekt</translation>
     </message>
     <message>
       <source>Are you sure you want to clear all items?</source>
-      <translation>Are you sure you want to clear all items?</translation>
+      <translation>Är du säker på att du vill rensa alla objekt?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
@@ -835,232 +836,232 @@ between classic and school orthography in cyrillic)</source>
     <name>Forvo::ForvoArticleRequest</name>
     <message>
       <source>XML parse error: %1 at %2,%3</source>
-      <translation>خطأ تحليل XML: %1 عند %2،%3</translation>
+      <translation>XML-tolkningsfel: %1 vid %2,%3</translation>
     </message>
     <message>
       <source>Added %1</source>
-      <translation>أُضيف %1</translation>
+      <translation>Lade till %1</translation>
     </message>
     <message>
       <source>by</source>
-      <translation>بواسطة</translation>
+      <translation>av</translation>
     </message>
     <message>
       <source>Male</source>
-      <translation>ذكر</translation>
+      <translation>Man</translation>
     </message>
     <message>
       <source>Female</source>
-      <translation>أنثى</translation>
+      <translation>Kvinna</translation>
     </message>
     <message>
       <source>from</source>
-      <translation>من</translation>
+      <translation>från</translation>
     </message>
   </context>
   <context>
     <name>FtsSearchPanel</name>
     <message>
       <source>&amp;Previous</source>
-      <translation>&amp;سابق</translation>
+      <translation>&amp;Föregående</translation>
     </message>
     <message>
       <source>&amp;Next</source>
-      <translation>&amp;التالي</translation>
+      <translation>&amp;Nästa</translation>
     </message>
   </context>
   <context>
     <name>FullTextSearchDialog</name>
     <message>
       <source>Search</source>
-      <translation>يبحث</translation>
+      <translation>Sök</translation>
     </message>
     <message>
       <source>Mode:</source>
-      <translation>وضع:</translation>
+      <translation>Läge:</translation>
     </message>
     <message>
       <source>Articles found:</source>
-      <translation>المقالات التي تم العثور عليها:</translation>
+      <translation>Hittade artiklar:</translation>
     </message>
     <message>
       <source>Available dictionaries in group:</source>
-      <translation>القواميس المتوفرة في المجموعة:</translation>
+      <translation>Tillgängliga ordlistor i grupp:</translation>
     </message>
     <message>
       <source>Wait for indexing:</source>
-      <translation>انتظر الفهرسة:</translation>
+      <translation>Vänta på indexering:</translation>
     </message>
     <message>
       <source>Total:</source>
-      <translation>المجموع:</translation>
+      <translation>Totalt:</translation>
     </message>
     <message>
       <source>Indexed:</source>
-      <translation>مفهرس:</translation>
+      <translation>Indexerade:</translation>
     </message>
     <message>
       <source>Now indexing: None</source>
-      <translation>الفهرسة الآن: لا شيء</translation>
+      <translation>Nu indexering: Inga</translation>
     </message>
     <message>
       <source>Cancel</source>
-      <translation>ألغِ</translation>
+      <translation>Avbryt</translation>
     </message>
     <message>
       <source>Help</source>
-      <translation>يساعد</translation>
+      <translation>Hjälp</translation>
     </message>
   </context>
   <context>
     <name>GermanTranslit</name>
     <message>
       <source>German Transliteration</source>
-      <translation>النسخ الألماني الحرفي</translation>
+      <translation>Translitterering av tyska</translation>
     </message>
   </context>
   <context>
     <name>GreekTranslit</name>
     <message>
       <source>Greek Transliteration</source>
-      <translation>النسخ اليوناني الحرفي</translation>
+      <translation>Translitterering av grekiska</translation>
     </message>
   </context>
   <context>
     <name>GroupComboBox</name>
     <message>
       <source>Choose a Group (Alt+G)</source>
-      <translation>اختر مجموعة (Alt+G)</translation>
+      <translation>Välj en grupp (Alt+G)</translation>
     </message>
   </context>
   <context>
     <name>Groups</name>
     <message>
       <source>Dictionaries available:</source>
-      <translation>القواميس المتوفرة:</translation>
+      <translation>Tillgängliga ordlistor:</translation>
     </message>
     <message>
       <source>Add selected dictionaries to group (Ins)</source>
-      <translation>أضف القواميس المحدّدة إلى المجموعة (Ins)</translation>
+      <translation>Lägg till markerade ordlistor i gruppen (Insert)</translation>
     </message>
     <message>
       <source>Remove selected dictionaries from group (Del)</source>
-      <translation>أزل القواميس المحدّدة من المجموعة (Del)</translation>
+      <translation>Ta bort markerade ordlistor ur gruppen (Delete)</translation>
     </message>
     <message>
       <source>Groups:</source>
-      <translation>المجموعات:</translation>
+      <translation>Grupper:</translation>
     </message>
     <message>
       <source>Tab 2</source>
-      <translation>لسان 2</translation>
+      <translation>Flik 2</translation>
     </message>
     <message>
       <source>Create new dictionary group</source>
-      <translation>أنشئ مجموعة قواميس جديدة</translation>
+      <translation>Skapa en ny ordlistegrupp</translation>
     </message>
     <message>
       <source>&amp;Add group</source>
-      <translation>أ&amp;ضف مجموعة</translation>
+      <translation>&amp;Lägg till grupp</translation>
     </message>
     <message>
       <source>Rename current dictionary group</source>
-      <translation>أعد تسمية مجموعة القواميس الحالية</translation>
+      <translation>Byt namn på den aktuella ordlistegruppen</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
-      <translation>أ&amp;عد تسمية المجموعة</translation>
+      <translation>Byt &amp;namn på grupp</translation>
     </message>
     <message>
       <source>Remove current dictionary group</source>
-      <translation>أزل مجموعة القواميس الحالية</translation>
+      <translation>Ta bort den aktuella ordlistegruppen</translation>
     </message>
     <message>
       <source>&amp;Remove group</source>
-      <translation>أ&amp;زل المجموعة</translation>
+      <translation>Ta &amp;bort grupp</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>
-      <translation>أزل كل مجموعات القواميس</translation>
+      <translation>Ta bort alla ordlistegrupper</translation>
     </message>
     <message>
       <source>Remove all groups</source>
-      <translation>أزل كل المجموعات</translation>
+      <translation>Ta bort alla grupper</translation>
     </message>
     <message>
       <source>Create language-based groups</source>
-      <translation>أنشئ مجموعات مبنية على اللغات</translation>
+      <translation>Skapa språkbaserade grupper</translation>
     </message>
     <message>
       <source>Group by Languages</source>
-      <translation>تجميع حسب اللغات</translation>
+      <translation>Gruppera efter språk</translation>
     </message>
     <message>
       <source>Create folder-based groups.</source>
-      <translation>إنشاء مجموعات قائمة على المجلد.</translation>
+      <translation>Skapa mappbaserade grupper.</translation>
     </message>
     <message>
       <source>Group by Folders</source>
-      <translation>تجميع حسب المجلدات</translation>
+      <translation>Gruppera efter mappar</translation>
     </message>
     <message>
       <source>Group by Metadata</source>
-      <translation>تجميع حسب البيانات الوصفية</translation>
+      <translation>Gruppera efter metadata</translation>
     </message>
     <message>
       <source>Drag&amp;drop dictionaries to and from the groups, move them inside the groups, reorder the groups using your mouse.</source>
-      <translation>اسحب وأ&amp;فلت القواميس من وإلى المجموعات، انقلها داخل المجموعات، أعد ترتيب المجموعات باستخدام الفأرة.</translation>
+      <translation>Använd musen för att dra och släppa ordlistor till och från grupperna, ändra ordlistornas ordning inom grupperna samt ändra gruppernas inbördes ordning.</translation>
     </message>
     <message>
       <source>Group tabs</source>
-      <translation>علامات تبويب المجموعة</translation>
+      <translation>Gruppflikar</translation>
     </message>
     <message>
       <source>Open groups list</source>
-      <translation>افتح قائمة المجموعات</translation>
+      <translation>Öppna grupperlista</translation>
     </message>
     <message>
       <source>Add group</source>
-      <translation>أضف مجموعة</translation>
+      <translation>Lägg till grupp</translation>
     </message>
     <message>
       <source>Give a name for the new group:</source>
-      <translation>ضع اسمًا للمجموعة الجديدة:</translation>
+      <translation>Ange ett namn på den nya gruppen:</translation>
     </message>
     <message>
       <source>Rename group</source>
-      <translation>أعد تسمية المجموعة</translation>
+      <translation>Byt namn på grupp</translation>
     </message>
     <message>
       <source>Give a new name for the group:</source>
-      <translation>ضع اسمًا جديدًا للمجموعة:</translation>
+      <translation>Ange ett nytt namn på gruppen:</translation>
     </message>
     <message>
       <source>Remove group</source>
-      <translation>أزل المجموعة</translation>
+      <translation>Ta bort grupp</translation>
     </message>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
-      <translation>هل أنت متأكد من إزالة المجموعة &lt;b&gt;%1&lt;/b&gt;؟</translation>
+      <translation>Är du säker på att du vill ta bort gruppen &lt;b&gt;%1&lt;/b&gt;?</translation>
     </message>
     <message>
       <source>Are you sure you want to remove all the groups?</source>
-      <translation>هل أنت متأكد من إزالة كل المجموعات؟</translation>
+      <translation>Är du säker på att du vill ta bort alla grupper?</translation>
     </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
     <message>
       <source>&amp;Delete Selected</source>
-      <translation>ا&amp;حذف المحدّد</translation>
+      <translation>Ta &amp;bort markerade</translation>
     </message>
     <message>
       <source>Copy Selected</source>
-      <translation>انسخ المحدّد</translation>
+      <translation>Kopiera markerade</translation>
     </message>
     <message>
       <source>History:</source>
-      <translation>التأريخ:</translation>
+      <translation>Historik:</translation>
     </message>
     <message>
       <source>%1/%2</source>
@@ -1068,1179 +1069,1179 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>History size: %1 entries out of maximum %2</source>
-      <translation>حجم التأريخ: %1 من المدخلات من أصل %2</translation>
+      <translation>Historikstorlek: %1 poster av maximalt %2</translation>
     </message>
   </context>
   <context>
     <name>Hunspell</name>
     <message>
       <source>Spelling suggestions: </source>
-      <translation>اقتراحات الإملاء:</translation>
+      <translation>Stavningsförslag: </translation>
     </message>
     <message>
       <source>%1 Morphology</source>
-      <translation>الصَرْف %1</translation>
+      <translation>Morfologi för %1</translation>
     </message>
   </context>
   <context>
     <name>HunspellDictsModel</name>
     <message>
       <source>Enabled</source>
-      <translation>مُمكّن</translation>
+      <translation>Aktiverad</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation>الاسم</translation>
+      <translation>Namn</translation>
     </message>
   </context>
   <context>
     <name>Initializing</name>
     <message>
       <source>GoldenDict-ng - Initializing</source>
-      <translation>القاموس الذهبي - يهيّئ</translation>
+      <translation>GoldenDict-ng - Initierar</translation>
     </message>
     <message>
       <source>Indexing: </source>
-      <translation>الفهرسة: </translation>
+      <translation>Indexering: </translation>
     </message>
     <message>
       <source>Dictionary Name</source>
-      <translation>اسم القامويس</translation>
+      <translation>Ordlistans namn</translation>
     </message>
     <message>
       <source>Please wait...</source>
-      <translation>فضلًا انتظر...</translation>
+      <translation>Var god vänta …</translation>
     </message>
     <message>
       <source>Indexing...</source>
-      <translation>الفهرسة...</translation>
+      <translation>Indexerar...</translation>
     </message>
     <message>
       <source>Loading...</source>
-      <translation>تحميل...</translation>
+      <translation>Läser in...</translation>
     </message>
   </context>
   <context>
     <name>Language</name>
     <message>
       <source>Afar</source>
-      <translation>العفرية</translation>
+      <translation>Afar</translation>
     </message>
     <message>
       <source>Abkhazian</source>
-      <translation>الأبخازية</translation>
+      <translation>Abchaziska</translation>
     </message>
     <message>
       <source>Avestan</source>
-      <translation>الأفستية</translation>
+      <translation>Avestiska</translation>
     </message>
     <message>
       <source>Afrikaans</source>
-      <translation>الإفريقية</translation>
+      <translation>Afrikaans</translation>
     </message>
     <message>
       <source>Akan</source>
-      <translation>الأكانية</translation>
+      <translation>Akan</translation>
     </message>
     <message>
       <source>Amharic</source>
-      <translation>الأمهرية</translation>
+      <translation>Amhariska</translation>
     </message>
     <message>
       <source>Aragonese</source>
-      <translation>الأراغونية</translation>
+      <translation>Aragonska</translation>
     </message>
     <message>
       <source>Arabic</source>
-      <translation>العربية</translation>
+      <translation>Arabiska</translation>
     </message>
     <message>
       <source>Assamese</source>
-      <translation>الأسامية</translation>
+      <translation>Assamesiska</translation>
     </message>
     <message>
       <source>Avaric</source>
-      <translation>الأفارية</translation>
+      <translation>Avariska</translation>
     </message>
     <message>
       <source>Aymara</source>
-      <translation>الأيمارية</translation>
+      <translation>Aymara</translation>
     </message>
     <message>
       <source>Azerbaijani</source>
-      <translation>الأذرية</translation>
+      <translation>Azerbajdzjanska</translation>
     </message>
     <message>
       <source>Bashkir</source>
-      <translation>الباشكيرية</translation>
+      <translation>Basjkiriska</translation>
     </message>
     <message>
       <source>Belarusian</source>
-      <translation>البلاروسية</translation>
+      <translation>Vitryska</translation>
     </message>
     <message>
       <source>Bulgarian</source>
-      <translation>البلغارية</translation>
+      <translation>Bulgariska</translation>
     </message>
     <message>
       <source>Bihari</source>
-      <translation>البيهارية</translation>
+      <translation>Bihari</translation>
     </message>
     <message>
       <source>Bislama</source>
-      <translation>البيسلامية</translation>
+      <translation>Bislama</translation>
     </message>
     <message>
       <source>Bambara</source>
-      <translation>البامبارية</translation>
+      <translation>Bambara</translation>
     </message>
     <message>
       <source>Bengali</source>
-      <translation>البنغالية</translation>
+      <translation>Bengaliska</translation>
     </message>
     <message>
       <source>Tibetan</source>
-      <translation>التبتية</translation>
+      <translation>Tibetanska</translation>
     </message>
     <message>
       <source>Breton</source>
-      <translation>البريتونية</translation>
+      <translation>Bretonska</translation>
     </message>
     <message>
       <source>Bosnian</source>
-      <translation>البوسنية</translation>
+      <translation>Bosniska</translation>
     </message>
     <message>
       <source>Catalan</source>
-      <translation>الكتالانية</translation>
+      <translation>Katalanska</translation>
     </message>
     <message>
       <source>Chechen</source>
-      <translation>الشيشانية</translation>
+      <translation>Tjetjenska</translation>
     </message>
     <message>
       <source>Chamorro</source>
-      <translation>التشامورو</translation>
+      <translation>Chamorro</translation>
     </message>
     <message>
       <source>Corsican</source>
-      <translation>الكورسيكية</translation>
+      <translation>Korsikanska</translation>
     </message>
     <message>
       <source>Cree</source>
-      <translation>الكري</translation>
+      <translation>Cree</translation>
     </message>
     <message>
       <source>Czech</source>
-      <translation>التشيكية</translation>
+      <translation>Tjeckiska</translation>
     </message>
     <message>
       <source>Church Slavic</source>
-      <translation>الكنيسة السلافية</translation>
+      <translation>Kyrkoslaviska</translation>
     </message>
     <message>
       <source>Chuvash</source>
-      <translation>التشوفاشية</translation>
+      <translation>Tjuvasjiska</translation>
     </message>
     <message>
       <source>Welsh</source>
-      <translation>الويلزية</translation>
+      <translation>Kymriska</translation>
     </message>
     <message>
       <source>Danish</source>
-      <translation>الدنماركية</translation>
+      <translation>Danska</translation>
     </message>
     <message>
       <source>German</source>
-      <translation>الألمانية</translation>
+      <translation>Tyska</translation>
     </message>
     <message>
       <source>Divehi</source>
-      <translation>الدِّيْفِيْهيّة</translation>
+      <translation>Divehi</translation>
     </message>
     <message>
       <source>Dzongkha</source>
-      <translation>الزونخاية</translation>
+      <translation>Dzongkha</translation>
     </message>
     <message>
       <source>Ewe</source>
-      <translation>اليو</translation>
+      <translation>Ewe</translation>
     </message>
     <message>
       <source>Greek</source>
-      <translation>اليونانية</translation>
+      <translation>Grekiska</translation>
     </message>
     <message>
       <source>English</source>
-      <translation>الإنجليزية</translation>
+      <translation>Engelska</translation>
     </message>
     <message>
       <source>Esperanto</source>
-      <translation>الاسبرانتو</translation>
+      <translation>Esperanto</translation>
     </message>
     <message>
       <source>Spanish</source>
-      <translation>الإسبانية</translation>
+      <translation>Spanska</translation>
     </message>
     <message>
       <source>Estonian</source>
-      <translation>الأستونية</translation>
+      <translation>Estniska</translation>
     </message>
     <message>
       <source>Basque</source>
-      <translation>الباسكية</translation>
+      <translation>Baskiska</translation>
     </message>
     <message>
       <source>Persian</source>
-      <translation>الفارسية</translation>
+      <translation>Persiska</translation>
     </message>
     <message>
       <source>Fulah</source>
-      <translation>الفولانية</translation>
+      <translation>Fula</translation>
     </message>
     <message>
       <source>Finnish</source>
-      <translation>الفنلندية</translation>
+      <translation>Finska</translation>
     </message>
     <message>
       <source>Fijian</source>
-      <translation>الفيجية</translation>
+      <translation>Fijianska</translation>
     </message>
     <message>
       <source>Faroese</source>
-      <translation>الفاروية</translation>
+      <translation>Färöiska</translation>
     </message>
     <message>
       <source>French</source>
-      <translation>الفرنسية</translation>
+      <translation>Franska</translation>
     </message>
     <message>
       <source>Western Frisian</source>
-      <translation>الفريزيان</translation>
+      <translation>Västfrisiska</translation>
     </message>
     <message>
       <source>Irish</source>
-      <translation>الأيرلندية</translation>
+      <translation>Iriska</translation>
     </message>
     <message>
       <source>Scottish Gaelic</source>
-      <translation>الغيلية الأسكتلندية</translation>
+      <translation>Skotsk gäliska</translation>
     </message>
     <message>
       <source>Galician</source>
-      <translation>الجاليكية</translation>
+      <translation>Galiciska</translation>
     </message>
     <message>
       <source>Guarani</source>
-      <translation>الغوارانية</translation>
+      <translation>Guarani</translation>
     </message>
     <message>
       <source>Gujarati</source>
-      <translation>الغوجاراتية</translation>
+      <translation>Gujarati</translation>
     </message>
     <message>
       <source>Manx</source>
-      <translation>المنكية</translation>
+      <translation>Manx</translation>
     </message>
     <message>
       <source>Hausa</source>
-      <translation>الهوساوية</translation>
+      <translation>Hausa</translation>
     </message>
     <message>
       <source>Hebrew</source>
-      <translation>العبرية</translation>
+      <translation>Hebreiska</translation>
     </message>
     <message>
       <source>Hindi</source>
-      <translation>الهندية</translation>
+      <translation>Hindi</translation>
     </message>
     <message>
       <source>Hiri Motu</source>
-      <translation>الحيري موتو</translation>
+      <translation>Hiri motu</translation>
     </message>
     <message>
       <source>Croatian</source>
-      <translation>الكرواتية</translation>
+      <translation>Kroatiska</translation>
     </message>
     <message>
       <source>Haitian</source>
-      <translation>الهايتية</translation>
+      <translation>Haitiska</translation>
     </message>
     <message>
       <source>Hungarian</source>
-      <translation>المجرية</translation>
+      <translation>Ungerska</translation>
     </message>
     <message>
       <source>Armenian</source>
-      <translation>الأرمينية</translation>
+      <translation>Armeniska</translation>
     </message>
     <message>
       <source>Herero</source>
-      <translation>الهيريرو</translation>
+      <translation>Herero</translation>
     </message>
     <message>
       <source>Interlingua</source>
-      <translation>الوسيطة</translation>
+      <translation>Interlingua</translation>
     </message>
     <message>
       <source>Indonesian</source>
-      <translation>الأندونيسية</translation>
+      <translation>Indonesiska</translation>
     </message>
     <message>
       <source>Interlingue</source>
-      <translation>الإنترلينجوا</translation>
+      <translation>Occidental</translation>
     </message>
     <message>
       <source>Igbo</source>
-      <translation>الإيبو</translation>
+      <translation>Igbo</translation>
     </message>
     <message>
       <source>Sichuan Yi</source>
-      <translation>سيتشوان يي</translation>
+      <translation>Sichuanesisk yi</translation>
     </message>
     <message>
       <source>Inupiaq</source>
-      <translation>الاينبياك</translation>
+      <translation>Iñupiaq</translation>
     </message>
     <message>
       <source>Ido</source>
-      <translation>الآيدوية</translation>
+      <translation>Ido</translation>
     </message>
     <message>
       <source>Icelandic</source>
-      <translation>الأيسلاندية</translation>
+      <translation>Isländska</translation>
     </message>
     <message>
       <source>Italian</source>
-      <translation>الإيطالية</translation>
+      <translation>Italienska</translation>
     </message>
     <message>
       <source>Inuktitut</source>
-      <translation>الإنكتيتوتية</translation>
+      <translation>Inuktitut</translation>
     </message>
     <message>
       <source>Japanese</source>
-      <translation>اليابانية</translation>
+      <translation>Japanska</translation>
     </message>
     <message>
       <source>Javanese</source>
-      <translation>الجاوية</translation>
+      <translation>Javanesiska</translation>
     </message>
     <message>
       <source>Georgian</source>
-      <translation>الجورجية</translation>
+      <translation>Georgiska</translation>
     </message>
     <message>
       <source>Kongo</source>
-      <translation>الكونغو</translation>
+      <translation>Kikongo</translation>
     </message>
     <message>
       <source>Kikuyu</source>
-      <translation>الكيكويو</translation>
+      <translation>Kikuyu</translation>
     </message>
     <message>
       <source>Kwanyama</source>
-      <translation>الكوانيامية</translation>
+      <translation>Kwanyama</translation>
     </message>
     <message>
       <source>Kazakh</source>
-      <translation>الكازاخية</translation>
+      <translation>Kazakiska</translation>
     </message>
     <message>
       <source>Kalaallisut</source>
-      <translation>الجرينلاندية</translation>
+      <translation>Grönländska</translation>
     </message>
     <message>
       <source>Khmer</source>
-      <translation>الخميرية</translation>
+      <translation>Khmer</translation>
     </message>
     <message>
       <source>Kannada</source>
-      <translation>الكانادية</translation>
+      <translation>Kannada</translation>
     </message>
     <message>
       <source>Korean</source>
-      <translation>الكورية</translation>
+      <translation>Koreanska</translation>
     </message>
     <message>
       <source>Kanuri</source>
-      <translation>الكانورية</translation>
+      <translation>Kanuri</translation>
     </message>
     <message>
       <source>Kashmiri</source>
-      <translation>الكشميرية</translation>
+      <translation>Kashmiri</translation>
     </message>
     <message>
       <source>Kurdish</source>
-      <translation>الكردية</translation>
+      <translation>Kurdiska</translation>
     </message>
     <message>
       <source>Komi</source>
-      <translation>الكومية</translation>
+      <translation>Komi</translation>
     </message>
     <message>
       <source>Cornish</source>
-      <translation>الكورنية</translation>
+      <translation>Korniska</translation>
     </message>
     <message>
       <source>Kirghiz</source>
-      <translation>القيرقيزية</translation>
+      <translation>Kirgiziska</translation>
     </message>
     <message>
       <source>Latin</source>
-      <translation>اللاتينية</translation>
+      <translation>Latin</translation>
     </message>
     <message>
       <source>Luxembourgish</source>
-      <translation>اللوكسمبرجية</translation>
+      <translation>Luxemburgiska</translation>
     </message>
     <message>
       <source>Ganda</source>
-      <translation>الغاندا</translation>
+      <translation>Luganda</translation>
     </message>
     <message>
       <source>Limburgish</source>
-      <translation>الليمبرجيشية</translation>
+      <translation>Limburgiska</translation>
     </message>
     <message>
       <source>Lingala</source>
-      <translation>اللينغالية</translation>
+      <translation>Lingala</translation>
     </message>
     <message>
       <source>Lao</source>
-      <translation>اللاوية</translation>
+      <translation>Lao</translation>
     </message>
     <message>
       <source>Lithuanian</source>
-      <translation>اللتوانية</translation>
+      <translation>Litauiska</translation>
     </message>
     <message>
       <source>Luba-Katanga</source>
-      <translation>لوبا-كاتانغا</translation>
+      <translation>Luba-katanga</translation>
     </message>
     <message>
       <source>Latvian</source>
-      <translation>اللاتفية</translation>
+      <translation>Lettiska</translation>
     </message>
     <message>
       <source>Malagasy</source>
-      <translation>المالاجاشية</translation>
+      <translation>Malagassiska</translation>
     </message>
     <message>
       <source>Marshallese</source>
-      <translation>المارشالية</translation>
+      <translation>Marshallesiska</translation>
     </message>
     <message>
       <source>Maori</source>
-      <translation>الماورية</translation>
+      <translation>Maori</translation>
     </message>
     <message>
       <source>Macedonian</source>
-      <translation>المقدونية</translation>
+      <translation>Makedonska</translation>
     </message>
     <message>
       <source>Malayalam</source>
-      <translation>المالايالامية</translation>
+      <translation>Malayalam</translation>
     </message>
     <message>
       <source>Mongolian</source>
-      <translation>المنغولية</translation>
+      <translation>Mongoliska</translation>
     </message>
     <message>
       <source>Marathi</source>
-      <translation>المهاراتية</translation>
+      <translation>Marathi</translation>
     </message>
     <message>
       <source>Malay</source>
-      <translation>المالاوية</translation>
+      <translation>Malajiska</translation>
     </message>
     <message>
       <source>Maltese</source>
-      <translation>المالطية</translation>
+      <translation>Maltesiska</translation>
     </message>
     <message>
       <source>Burmese</source>
-      <translation>البورمية</translation>
+      <translation>Burmesiska</translation>
     </message>
     <message>
       <source>Nauru</source>
-      <translation>الناورو</translation>
+      <translation>Nauruanska</translation>
     </message>
     <message>
       <source>Norwegian Bokmal</source>
-      <translation>بوكمال النرويجية</translation>
+      <translation>Norska (bokmål)</translation>
     </message>
     <message>
       <source>North Ndebele</source>
-      <translation>شمال نديبيلي</translation>
+      <translation>Nordndebele</translation>
     </message>
     <message>
       <source>Nepali</source>
-      <translation>النيبالية</translation>
+      <translation>Nepali</translation>
     </message>
     <message>
       <source>Ndonga</source>
-      <translation>الإندونجية</translation>
+      <translation>Ndonga</translation>
     </message>
     <message>
       <source>Dutch</source>
-      <translation>الهولندية</translation>
+      <translation>Nederländska</translation>
     </message>
     <message>
       <source>Norwegian Nynorsk</source>
-      <translation>النينورسك النرويجية</translation>
+      <translation>Norska (nynorsk)</translation>
     </message>
     <message>
       <source>Norwegian</source>
-      <translation>النرويجية</translation>
+      <translation>Norska</translation>
     </message>
     <message>
       <source>South Ndebele</source>
-      <translation>جنوب نديبيلي</translation>
+      <translation>Sydndebele</translation>
     </message>
     <message>
       <source>Navajo</source>
-      <translation>النافاهو</translation>
+      <translation>Navajo</translation>
     </message>
     <message>
       <source>Chichewa</source>
-      <translation>الشيشيوا</translation>
+      <translation>Chichewa</translation>
     </message>
     <message>
       <source>Occitan</source>
-      <translation>الأوكيتانية</translation>
+      <translation>Occitanska</translation>
     </message>
     <message>
       <source>Ojibwa</source>
-      <translation>الأوجيبوا</translation>
+      <translation>Ojibwa</translation>
     </message>
     <message>
       <source>Oromo</source>
-      <translation>الأورومية</translation>
+      <translation>Oromo</translation>
     </message>
     <message>
       <source>Oriya</source>
-      <translation>الأوريا</translation>
+      <translation>Oriya</translation>
     </message>
     <message>
       <source>Ossetian</source>
-      <translation>الأوسيتية</translation>
+      <translation>Ossetiska</translation>
     </message>
     <message>
       <source>Panjabi</source>
-      <translation>البنجابية</translation>
+      <translation>Punjabi</translation>
     </message>
     <message>
       <source>Pali</source>
-      <translation>البالية</translation>
+      <translation>Pali</translation>
     </message>
     <message>
       <source>Polish</source>
-      <translation>البولندية</translation>
+      <translation>Polska</translation>
     </message>
     <message>
       <source>Pashto</source>
-      <translation>البشتونية</translation>
+      <translation>Pashto</translation>
     </message>
     <message>
       <source>Portuguese</source>
-      <translation>البرتغالية</translation>
+      <translation>Portugisiska</translation>
     </message>
     <message>
       <source>Quechua</source>
-      <translation>الكويتشوا</translation>
+      <translation>Quechua</translation>
     </message>
     <message>
       <source>Raeto-Romance</source>
-      <translation>ريتو-الرومانسية</translation>
+      <translation>Rätoromanska</translation>
     </message>
     <message>
       <source>Kirundi</source>
-      <translation>الكيروندية</translation>
+      <translation>Kirundi</translation>
     </message>
     <message>
       <source>Romanian</source>
-      <translation>الرومانية</translation>
+      <translation>Rumänska</translation>
     </message>
     <message>
       <source>Russian</source>
-      <translation>الروسية</translation>
+      <translation>Ryska</translation>
     </message>
     <message>
       <source>Kinyarwanda</source>
-      <translation>الكينيارواندية</translation>
+      <translation>Rwanda</translation>
     </message>
     <message>
       <source>Sanskrit</source>
-      <translation>السنسكريتية</translation>
+      <translation>Sanskrit</translation>
     </message>
     <message>
       <source>Sardinian</source>
-      <translation>السردينية</translation>
+      <translation>Sardiska</translation>
     </message>
     <message>
       <source>Sindhi</source>
-      <translation>السندية</translation>
+      <translation>Sindhi</translation>
     </message>
     <message>
       <source>Northern Sami</source>
-      <translation>شمال سامي</translation>
+      <translation>Nordsamiska</translation>
     </message>
     <message>
       <source>Sango</source>
-      <translation>السانغو</translation>
+      <translation>Sango</translation>
     </message>
     <message>
       <source>Serbo-Croatian</source>
-      <translation>الصربية الكرواتية</translation>
+      <translation>Serbokroatiska</translation>
     </message>
     <message>
       <source>Sinhala</source>
-      <translation>السنهالية</translation>
+      <translation>Singalesiska</translation>
     </message>
     <message>
       <source>Slovak</source>
-      <translation>السلوفاكية</translation>
+      <translation>Slovakiska</translation>
     </message>
     <message>
       <source>Slovenian</source>
-      <translation>السلوفينية</translation>
+      <translation>Slovenska</translation>
     </message>
     <message>
       <source>Samoan</source>
-      <translation>الساموية</translation>
+      <translation>Samoanska</translation>
     </message>
     <message>
       <source>Shona</source>
-      <translation>الشونا</translation>
+      <translation>Shona</translation>
     </message>
     <message>
       <source>Somali</source>
-      <translation>الصومالية</translation>
+      <translation>Somaliska</translation>
     </message>
     <message>
       <source>Albanian</source>
-      <translation>الألبانية</translation>
+      <translation>Albanska</translation>
     </message>
     <message>
       <source>Serbian</source>
-      <translation>الصربية</translation>
+      <translation>Serbiska</translation>
     </message>
     <message>
       <source>Swati</source>
-      <translation>السواتية</translation>
+      <translation>SiSwati</translation>
     </message>
     <message>
       <source>Southern Sotho</source>
-      <translation>جنوب السوتو</translation>
+      <translation>Sesotho</translation>
     </message>
     <message>
       <source>Sundanese</source>
-      <translation>السوندانية</translation>
+      <translation>Sundanesiska</translation>
     </message>
     <message>
       <source>Swedish</source>
-      <translation>السويدية</translation>
+      <translation>Svenska</translation>
     </message>
     <message>
       <source>Swahili</source>
-      <translation>السواحلية</translation>
+      <translation>Swahili</translation>
     </message>
     <message>
       <source>Tamil</source>
-      <translation>التاميلية</translation>
+      <translation>Tamil</translation>
     </message>
     <message>
       <source>Telugu</source>
-      <translation>التيلجو</translation>
+      <translation>Telugu</translation>
     </message>
     <message>
       <source>Tajik</source>
-      <translation>الطاجيكية</translation>
+      <translation>Tadzjikiska</translation>
     </message>
     <message>
       <source>Thai</source>
-      <translation>التايلاندية</translation>
+      <translation>Thailändska</translation>
     </message>
     <message>
       <source>Tigrinya</source>
-      <translation>التغرينية</translation>
+      <translation>Tigrinska</translation>
     </message>
     <message>
       <source>Turkmen</source>
-      <translation>التركمانية</translation>
+      <translation>Turkmeniska</translation>
     </message>
     <message>
       <source>Tagalog</source>
-      <translation>التاجالوجية</translation>
+      <translation>Tagalog</translation>
     </message>
     <message>
       <source>Tswana</source>
-      <translation>التسوانية</translation>
+      <translation>Tswana</translation>
     </message>
     <message>
       <source>Tonga</source>
-      <translation>التونغا</translation>
+      <translation>Tonga</translation>
     </message>
     <message>
       <source>Turkish</source>
-      <translation>التركية</translation>
+      <translation>Turkiska</translation>
     </message>
     <message>
       <source>Tsonga</source>
-      <translation>التسونجا</translation>
+      <translation>Tsonga</translation>
     </message>
     <message>
       <source>Tatar</source>
-      <translation>التتارية</translation>
+      <translation>Tatariska</translation>
     </message>
     <message>
       <source>Twi</source>
-      <translation>التوي</translation>
+      <translation>Twi</translation>
     </message>
     <message>
       <source>Tahitian</source>
-      <translation>التاهيتية</translation>
+      <translation>Tahitiska</translation>
     </message>
     <message>
       <source>Uighur</source>
-      <translation>الإيغورية</translation>
+      <translation>Uiguriska</translation>
     </message>
     <message>
       <source>Ukrainian</source>
-      <translation>الأوكرانية</translation>
+      <translation>Ukrainska</translation>
     </message>
     <message>
       <source>Urdu</source>
-      <translation>الأُردية</translation>
+      <translation>Urdu</translation>
     </message>
     <message>
       <source>Uzbek</source>
-      <translation>الأوزبكية</translation>
+      <translation>Uzbekiska</translation>
     </message>
     <message>
       <source>Venda</source>
-      <translation>الفيندا</translation>
+      <translation>Venda</translation>
     </message>
     <message>
       <source>Vietnamese</source>
-      <translation>الفيتنامية</translation>
+      <translation>Vietnamesiska</translation>
     </message>
     <message>
       <source>Volapuk</source>
-      <translation>فولابوك</translation>
+      <translation>Volapük</translation>
     </message>
     <message>
       <source>Walloon</source>
-      <translation>الولونية</translation>
+      <translation>Vallonska</translation>
     </message>
     <message>
       <source>Wolof</source>
-      <translation>الوولوف</translation>
+      <translation>Wolof</translation>
     </message>
     <message>
       <source>Xhosa</source>
-      <translation>زوسا</translation>
+      <translation>Xhosa</translation>
     </message>
     <message>
       <source>Yiddish</source>
-      <translation>اليديشية</translation>
+      <translation>Jiddisch</translation>
     </message>
     <message>
       <source>Yoruba</source>
-      <translation>اليوروبية</translation>
+      <translation>Yoruba</translation>
     </message>
     <message>
       <source>Zhuang</source>
-      <translation>التشوانغية</translation>
+      <translation>Zhuang</translation>
     </message>
     <message>
       <source>Chinese</source>
-      <translation>الصينية</translation>
+      <translation>Kinesiska</translation>
     </message>
     <message>
       <source>Zulu</source>
-      <translation>الزولو</translation>
+      <translation>Zulu</translation>
     </message>
     <message>
       <source>Lojban</source>
-      <translation>اللوجبانية</translation>
+      <translation>Lojban</translation>
     </message>
     <message>
       <source>Traditional Chinese</source>
-      <translation>الصينية التقليدية</translation>
+      <translation>Kinesiska (traditionell)</translation>
     </message>
     <message>
       <source>Simplified Chinese</source>
-      <translation>الصينية المبسطة</translation>
+      <translation>Kinesiska (förenklad)</translation>
     </message>
     <message>
       <source>Other</source>
-      <translation>أخرى</translation>
+      <translation>Annat</translation>
     </message>
     <message>
       <source>Other Simplified Chinese dialects</source>
-      <translation>لهجات الصينية المبسطة الأخرى</translation>
+      <translation>Andra förenklade kinesiska dialekter</translation>
     </message>
     <message>
       <source>Other Traditional Chinese dialects</source>
-      <translation>لهجات الصينية التقليدية الأخرى</translation>
+      <translation>Andra traditionella kinesiska dialekter</translation>
     </message>
     <message>
       <source>Other Eastern-European languages</source>
-      <translation>لغات شرق أوروبا الأخرى</translation>
+      <translation>Andra östeuropeiska språk</translation>
     </message>
     <message>
       <source>Other Western-European languages</source>
-      <translation>لغات غرب أوروبا الأخرى</translation>
+      <translation>Andra västeuropeiska språk</translation>
     </message>
     <message>
       <source>Other Russian languages</source>
-      <translation>اللغات الروسية الأخرى</translation>
+      <translation>Andra ryska språk</translation>
     </message>
     <message>
       <source>Other Japanese languages</source>
-      <translation>اللغات اليابانية الأخرى</translation>
+      <translation>Andra japanska språk</translation>
     </message>
     <message>
       <source>Other Baltic languages</source>
-      <translation>اللغات البلطيقية الأخرى</translation>
+      <translation>Andra baltiska språk</translation>
     </message>
     <message>
       <source>Other Greek languages</source>
-      <translation>اللغات اليونانية الأخرى</translation>
+      <translation>Andra grekiska språk</translation>
     </message>
     <message>
       <source>Other Korean dialects</source>
-      <translation>اللهجات الكورية الأخرى</translation>
+      <translation>Andra koreanska dialekter</translation>
     </message>
     <message>
       <source>Other Turkish dialects</source>
-      <translation>اللهجات التركية الأخرى</translation>
+      <translation>Andra turkiska dialekter</translation>
     </message>
     <message>
       <source>Other Thai dialects</source>
-      <translation>اللهجات التايلاندية الأخرى</translation>
+      <translation>Andra thailändska dialekter</translation>
     </message>
     <message>
       <source>Tamazight</source>
-      <translation>الأمازيغية</translation>
+      <translation>Fantastisk</translation>
     </message>
   </context>
   <context>
     <name>Language::Db</name>
     <message>
       <source>French</source>
-      <translation>فرنسي</translation>
+      <translation>Franska</translation>
     </message>
     <message>
       <source>Spanish</source>
-      <translation>الأسبانية</translation>
+      <translation>Spanska</translation>
     </message>
     <message>
       <source>Belarusian</source>
-      <translation>البيلاروسية</translation>
+      <translation>Vitryska</translation>
     </message>
     <message>
       <source>Bulgarian</source>
-      <translation>البلغارية</translation>
+      <translation>Bulgariska</translation>
     </message>
     <message>
       <source>Czech</source>
-      <translation>التشيكية</translation>
+      <translation>Tjeckiska</translation>
     </message>
     <message>
       <source>German</source>
-      <translation>ألمانية</translation>
+      <translation>Tyska</translation>
     </message>
     <message>
       <source>Greek</source>
-      <translation>اليونانية</translation>
+      <translation>Grekisk</translation>
     </message>
     <message>
       <source>Finnish</source>
-      <translation>الفنلندية</translation>
+      <translation>Finska</translation>
     </message>
     <message>
       <source>Italian</source>
-      <translation>إيطالي</translation>
+      <translation>Italienska</translation>
     </message>
     <message>
       <source>Japanese</source>
-      <translation>اليابانية</translation>
+      <translation>Japanska</translation>
     </message>
     <message>
       <source>Korean</source>
-      <translation>الكورية</translation>
+      <translation>Koreanska</translation>
     </message>
     <message>
       <source>Lithuanian</source>
-      <translation>الليتوانية</translation>
+      <translation>Litauiska</translation>
     </message>
     <message>
       <source>Macedonian</source>
-      <translation>المقدونية</translation>
+      <translation>Makedonska</translation>
     </message>
     <message>
       <source>Dutch</source>
-      <translation>هولندي</translation>
+      <translation>Holländska</translation>
     </message>
     <message>
       <source>Polish</source>
-      <translation>تلميع</translation>
+      <translation>Putsa</translation>
     </message>
     <message>
       <source>Portuguese</source>
-      <translation>البرتغالية</translation>
+      <translation>Portugesiska</translation>
     </message>
     <message>
       <source>Russian</source>
-      <translation>الروسية</translation>
+      <translation>Ryska</translation>
     </message>
     <message>
       <source>Slovak</source>
-      <translation>السلوفاكية</translation>
+      <translation>Slovakiska</translation>
     </message>
     <message>
       <source>Albanian</source>
-      <translation>الألبانية</translation>
+      <translation>Albanska</translation>
     </message>
     <message>
       <source>Serbian (Cyrillic)</source>
-      <translation>الصربية (السيريلية)</translation>
+      <translation>Serbiska (kyrilliska)</translation>
     </message>
     <message>
       <source>Swedish</source>
-      <translation>السويدية</translation>
+      <translation>Svenska</translation>
     </message>
     <message>
       <source>Turkish</source>
-      <translation>اللغة التركية</translation>
+      <translation>Turkiska</translation>
     </message>
     <message>
       <source>Ukrainian</source>
-      <translation>الأوكرانية</translation>
+      <translation>Ukrainska</translation>
     </message>
     <message>
       <source>Chinese Simplified</source>
-      <translation>الصينية المبسطة</translation>
+      <translation>Förenklad kinesiska</translation>
     </message>
     <message>
       <source>Chinese Traditional</source>
-      <translation>تقاليد صينية</translation>
+      <translation>Kinesiska (traditionell)</translation>
     </message>
     <message>
       <source>Vietnamese</source>
-      <translation>فيتنامي</translation>
+      <translation>Vietnamesiska</translation>
     </message>
     <message>
       <source>Portuguese, Brazilian</source>
-      <translation>البرتغالية والبرازيلية</translation>
+      <translation>Portugisiska (brasiliansk)</translation>
     </message>
     <message>
       <source>Persian</source>
-      <translation>اللغة الفارسية</translation>
+      <translation>Persiska</translation>
     </message>
     <message>
       <source>Spanish, Argentina</source>
-      <translation>الإسبانية والأرجنتين</translation>
+      <translation>Spanska, Argentina</translation>
     </message>
     <message>
       <source>Hindi</source>
-      <translation>هندي</translation>
+      <translation>Hindi</translation>
     </message>
     <message>
       <source>Esperanto</source>
-      <translation>اسبرانتو</translation>
+      <translation>Esperanto</translation>
     </message>
     <message>
       <source>German, Switzerland</source>
-      <translation>الألمانية ، سويسرا</translation>
+      <translation>Tyska, Schweiz</translation>
     </message>
     <message>
       <source>Spanish, Bolivia</source>
-      <translation>الإسبانية ، بوليفيا</translation>
+      <translation>Spanska, Bolivia</translation>
     </message>
     <message>
       <source>Tajik</source>
-      <translation>طاجيك</translation>
+      <translation>Tadzjikiska</translation>
     </message>
     <message>
       <source>Quechua</source>
-      <translation>الكيتشوا</translation>
+      <translation>Quechua</translation>
     </message>
     <message>
       <source>Aymara</source>
-      <translation>ايمارا</translation>
+      <translation>Aymara</translation>
     </message>
     <message>
       <source>Arabic, Saudi Arabia</source>
-      <translation>العربية السعودية</translation>
+      <translation>Arabiska, Saudiarabien</translation>
     </message>
     <message>
       <source>Turkmen</source>
-      <translation>التركمان</translation>
+      <translation>Turkmeniska</translation>
     </message>
     <message>
       <source>Interlingue</source>
-      <translation>إنترلينج</translation>
+      <translation>Interlingue</translation>
     </message>
     <message>
       <source>Lojban</source>
-      <translation>لوجبان</translation>
+      <translation>Lojban</translation>
     </message>
     <message>
       <source>Hungarian</source>
-      <translation>الهنغارية</translation>
+      <translation>ungerska</translation>
     </message>
     <message>
       <source>English</source>
-      <translation>إنجليزي</translation>
+      <translation>Engelska</translation>
     </message>
   </context>
   <context>
     <name>LoadDictionaries</name>
     <message>
       <source>Error loading dictionaries</source>
-      <translation>خطأ في تحميل القواميس</translation>
+      <translation>Fel vid inläsning av ordlistorna</translation>
     </message>
   </context>
   <context>
     <name>Main</name>
     <message>
       <source>Error in configuration file. Continue with default settings?</source>
-      <translation>خطأ في ملف الإعداد. أأتابع بالإعدادات الافتراضية؟</translation>
+      <translation>Fel i konfigurationsfilen. Vill du använda standardinställningarna istället?</translation>
     </message>
   </context>
   <context>
     <name>MainWindow</name>
     <message>
       <source>&amp;File</source>
-      <translation>&amp;ملف</translation>
+      <translation>&amp;Arkiv</translation>
     </message>
     <message>
       <source>&amp;Edit</source>
-      <translation>&amp;حرّر</translation>
+      <translation>&amp;Redigera</translation>
     </message>
     <message>
       <source>&amp;Help</source>
-      <translation>م&amp;ساعدة</translation>
+      <translation>&amp;Hjälp</translation>
     </message>
     <message>
       <source>&amp;View</source>
-      <translation>&amp;عرض</translation>
+      <translation>&amp;Visa</translation>
     </message>
     <message>
       <source>&amp;Zoom</source>
-      <translation>ت&amp;قريب</translation>
+      <translation>&amp;Zooma</translation>
     </message>
     <message>
       <source>H&amp;istory</source>
-      <translation>&amp;تأريخ</translation>
+      <translation>&amp;Historik</translation>
     </message>
     <message>
       <source>Search</source>
-      <translation>البحث</translation>
+      <translation>Sök</translation>
     </message>
     <message>
       <source>Favo&amp;rites</source>
-      <translation>المفضلة والطقوس</translation>
+      <translation>Favo&amp;riter</translation>
     </message>
     <message>
       <source>&amp;Search Pane</source>
-      <translation>لوحة ال&amp;بحث</translation>
+      <translation>&amp;Sökpanel</translation>
     </message>
     <message>
       <source>&amp;Results Navigation Pane</source>
-      <translation>لوحة التنقّل بين النتائ&amp;ج</translation>
+      <translation>&amp;Resultatpanel</translation>
     </message>
     <message>
       <source>Favor&amp;ites Pane</source>
-      <translation>جزء ال&amp;المفضلة</translation>
+      <translation>Rutan Favor&amp;iter</translation>
     </message>
     <message>
       <source>&amp;History Pane</source>
-      <translation>لوحة التأري&amp;خ</translation>
+      <translation>&amp;Historikpanel</translation>
     </message>
     <message>
       <source>&amp;Dictionaries...</source>
-      <translation>&amp;قواميس...</translation>
+      <translation>&amp;Ordlistor …</translation>
     </message>
     <message>
       <source>&amp;Preferences...</source>
-      <translation>ت&amp;فضيلات...</translation>
+      <translation>&amp;Inställningar …</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
-      <translation>&amp;صفحة البداية</translation>
+      <translation>&amp;Webbplats</translation>
     </message>
     <message>
       <source>&amp;About</source>
-      <translation>&amp;حول</translation>
+      <translation>&amp;Om</translation>
     </message>
     <message>
       <source>About GoldenDict-ng</source>
-      <translation>حول القاموس الذهبي</translation>
+      <translation>Om GoldenDict-ng</translation>
     </message>
     <message>
       <source>&amp;Quit</source>
-      <translation>ا&amp;خرج</translation>
+      <translation>&amp;Avsluta</translation>
     </message>
     <message>
       <source>Quit from application</source>
-      <translation>اخرج من التطبيق</translation>
+      <translation>Avslutar programmet</translation>
     </message>
     <message>
       <source>&amp;Forum</source>
-      <translation>المن&amp;تدى</translation>
+      <translation>&amp;Forum</translation>
     </message>
     <message>
       <source>&amp;Close To Tray</source>
-      <translation>أ&amp;غلق إلى صينية النظام</translation>
+      <translation>&amp;Stäng till meddelandefältet</translation>
     </message>
     <message>
       <source>Minimizes the window to tray</source>
-      <translation>يصغّر النافذة إلى صينية النظام</translation>
+      <translation>Minimerar programfönstret till meddelandefältet</translation>
     </message>
     <message>
       <source>&amp;Save Article</source>
-      <translation>ا&amp;حفظ المقالة</translation>
+      <translation>&amp;Spara artikel</translation>
     </message>
     <message>
       <source>Save Article</source>
-      <translation>احفظ المقالة</translation>
+      <translation>Spara artikel</translation>
     </message>
     <message>
       <source>&amp;Print</source>
-      <translation>ا&amp;طبع</translation>
+      <translation>Skriv &amp;ut</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
-      <translation>إ&amp;عداد الصفحة</translation>
+      <translation>Utskrifts&amp;format</translation>
     </message>
     <message>
       <source>Print Pre&amp;view</source>
-      <translation>معاي&amp;نة الطباعة</translation>
+      <translation>Förhands&amp;granska</translation>
     </message>
     <message>
       <source>&amp;Rescan Files</source>
-      <translation>أعد إ&amp;كتشاف الملفات</translation>
+      <translation>Sök igenom filer &amp;igen</translation>
     </message>
     <message>
       <source>&amp;Clear</source>
-      <translation>ا&amp;محُ</translation>
+      <translation>&amp;Rensa</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
-      <translation>لسان &amp;جديد</translation>
+      <translation>&amp;Ny flik</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
-      <translation>مجلد الإ&amp;عداد</translation>
+      <translation>&amp;Konfigurationsfilmapp</translation>
     </message>
     <message>
       <source>&amp;Show</source>
-      <translation>أ&amp;ظهر</translation>
+      <translation>&amp;Visa</translation>
     </message>
     <message>
       <source>Ctrl+H</source>
@@ -2248,19 +2249,19 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>&amp;Export</source>
-      <translation>&amp;صدّر</translation>
+      <translation>&amp;Exportera</translation>
     </message>
     <message>
       <source>&amp;Import</source>
-      <translation>ا&amp;ستورد</translation>
+      <translation>&amp;Importera</translation>
     </message>
     <message>
       <source>&amp;Always on Top</source>
-      <translation>&amp;دائمًا في الأعلى</translation>
+      <translation>&amp;Alltid överst</translation>
     </message>
     <message>
       <source>Always on Top</source>
-      <translation>دائمًا في الأعلى</translation>
+      <translation>Alltid överst</translation>
     </message>
     <message>
       <source>Ctrl+O</source>
@@ -2268,205 +2269,205 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Menu Button</source>
-      <translation>زر قائمة</translation>
+      <translation>Menyknapp</translation>
     </message>
     <message>
       <source>Search in page</source>
-      <translation>البحث في الصفحة</translation>
+      <translation>Sök på sidan</translation>
     </message>
     <message>
       <source>Full-text search</source>
-      <translation>البحث في كامل النص</translation>
+      <translation>Fulltextsökning</translation>
     </message>
     <message>
       <source>GoldenDict reference</source>
-      <translation>مرجع GoldenDict</translation>
+      <translation>GoldenDict-referens</translation>
     </message>
     <message>
       <source>Export</source>
-      <translation>تصدير</translation>
+      <translation>Exportera</translation>
     </message>
     <message>
       <source>Import</source>
-      <translation>استيراد</translation>
+      <translation>Importera</translation>
     </message>
     <message>
       <source>Add</source>
-      <translation>أضف</translation>
+      <translation>Lägg till</translation>
     </message>
     <message>
       <source>Add current tab to Favorites</source>
-      <translation>إضافة علامة التبويب الحالية إلى المفضلة</translation>
+      <translation>Lägg till aktuell flik i Favoriter</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
-      <translation>أظهر الأسماء في &amp;شريط القواميس</translation>
+      <translation>Visa namn i ordliste&amp;fältet</translation>
     </message>
     <message>
       <source>Show &amp;Small Icons in Toolbars</source>
-      <translation>Show &amp;Small Icons in Toolbars</translation>
+      <translation>Visa &amp;små ikoner i verktygsfält</translation>
     </message>
     <message>
       <source>Show &amp;Large Icons in Toolbars</source>
-      <translation>Show &amp;Large Icons in Toolbars</translation>
+      <translation>Visa &amp;stora ikoner i verktygsfält</translation>
     </message>
     <message>
       <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation>Show &amp;Normal Icons in Toolbars</translation>
+      <translation>Visa &amp;normala ikoner i verktygsfält</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
-      <translation>شريط ال&amp;قوائم</translation>
+      <translation>&amp;Menyrad</translation>
     </message>
     <message>
       <source>&amp;Navigation</source>
-      <translation>التن&amp;قّل</translation>
+      <translation>&amp;Navigeringsfältet</translation>
     </message>
     <message>
       <source>Back</source>
-      <translation>ارجع</translation>
+      <translation>Bakåt</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>تقدّم</translation>
+      <translation>Framåt</translation>
     </message>
     <message>
       <source>Toggle clipboard monitoring</source>
-      <translation>Toggle clipboard monitoring</translation>
+      <translation>Växla urklippsövervakning</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>انطق الكلمة (Alt+S)</translation>
+      <translation>Läs upp ord (Alt+S)</translation>
     </message>
     <message>
       <source>Zoom In</source>
-      <translation>قرّب</translation>
+      <translation>Zooma in</translation>
     </message>
     <message>
       <source>Zoom Out</source>
-      <translation>بعّد</translation>
+      <translation>Zooma ut</translation>
     </message>
     <message>
       <source>Normal Size</source>
-      <translation>الحجم الطّبيعي</translation>
+      <translation>Normal storlek</translation>
     </message>
     <message>
       <source>Found in Dictionaries:</source>
-      <translation>اعثر في القواميس:</translation>
+      <translation>Träffar hittades i följande ordlistor:</translation>
     </message>
     <message>
       <source>Show &amp;Main Window</source>
-      <translation>أظهر النافذة ال&amp;رئيسية</translation>
+      <translation>Visa &amp;huvudfönstret</translation>
     </message>
     <message>
       <source>Opened tabs</source>
-      <translation>الألسنة المفتوحة</translation>
+      <translation>Öppnade flikar</translation>
     </message>
     <message>
       <source>Close current tab</source>
-      <translation>أغلق اللسان الحالي</translation>
+      <translation>Stäng aktuell flik</translation>
     </message>
     <message>
       <source>Close all tabs</source>
-      <translation>أغلق كل الألسنة</translation>
+      <translation>Stäng alla flikar</translation>
     </message>
     <message>
       <source>Close all tabs except current</source>
-      <translation>أغلق كل الألسنة ما عدا هذا</translation>
+      <translation>Stäng alla flikar utom aktuell flik</translation>
     </message>
     <message>
       <source>Add all tabs to Favorites</source>
-      <translation>إضافة كافة علامات التبويب إلى المفضلة</translation>
+      <translation>Lägg till alla flikar i Favoriter</translation>
     </message>
     <message>
       <source>New Tab</source>
-      <translation>لسان جديد</translation>
+      <translation>Ny flik</translation>
     </message>
     <message>
       <source>Welcome!</source>
-      <translation>مرحبًا بك!</translation>
+      <translation>Välkommen!</translation>
     </message>
     <message>
       <source>Accessibility API is not enabled</source>
-      <translation>أداة الإتاحة غير ممكّنة</translation>
+      <translation>API för hjälpmedel har inte aktiverats</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
-      <translation>تحذير: %1</translation>
+      <translation>VARNING: %1</translation>
     </message>
     <message>
       <source>String to search in dictionaries. The wildcards &apos;*&apos;, &apos;?&apos; and sets of symbols &apos;[...]&apos; are allowed.
 To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos; respectively</source>
-      <translation>سلسلة للبحث في القواميس. أحرف البدل &apos;*&apos;, &apos;?&apos; ومجموعات الرموز &apos;[...]&apos; مسموح بها.
-للعثور على &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; تستخدم الرموز &apos;\*&apos;, &apos;\ ؟&apos;، &apos;\[&apos;، &apos;\]&apos; على التوالي</translation>
+      <translation>Sträng för att söka i ordlistor. Jokertecken &apos;*&apos;, &apos;?&apos; och uppsättningar av symboler &apos;[...]&apos; är tillåtna.
+För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symboler använder &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos; respektive</translation>
     </message>
     <message>
       <source>%1 dictionaries, %2 articles, %3 words</source>
-      <translation>%1 من القواميس، %2 من المقالات، %3 من الكلمات</translation>
+      <translation>%1 ordlistor, %2 artiklar, %3 ord</translation>
     </message>
     <message>
       <source>All</source>
-      <translation>الكل</translation>
+      <translation>Alla</translation>
     </message>
     <message>
       <source>Open Tabs List</source>
-      <translation>قائمة الألسنة المفتوحة</translation>
+      <translation>Öppna lista över flikar</translation>
     </message>
     <message>
       <source>(untitled)</source>
-      <translation>(غير معنون)</translation>
+      <translation>(namnlös)</translation>
     </message>
     <message>
       <source>Remove current tab from Favorites</source>
-      <translation>إزالة علامة التبويب الحالية من المفضلة</translation>
+      <translation>Ta bort aktuell flik från Favoriter</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
-      <translation>فشل تهيئة تقنية مراقبة المفاتيح الساخنة.&lt;br&gt;تأكد من أن امتداد RECORD في XServer ممكّن.</translation>
+      <translation>Det gick inte att initiera övervakningsmekanismen för kortkommandon.&lt;br&gt;Säkerställ att tillägget RECORD för din XServer är aktiverat.</translation>
     </message>
     <message>
       <source>New Release Available</source>
-      <translation>إصدار جديد متوفّر</translation>
+      <translation>Ny version tillgänglig</translation>
     </message>
     <message>
       <source>Version &lt;b&gt;%1&lt;/b&gt; of GoldenDict is now available for download.&lt;br&gt;Click &lt;b&gt;Download&lt;/b&gt; to get to the download page.</source>
-      <translation>الإصدار &lt;b&gt;%1&lt;/b&gt; من القاموس الذهبي متوفّر الآن للتنزيل.&lt;br&gt;انقر &lt;b&gt;نزّل&lt;/b&gt; للوصول إلى صفحة التنزيل.</translation>
+      <translation>Version &lt;b&gt;%1&lt;/b&gt; av GoldenDict finns nu tillgänglig för hämtning.&lt;br&gt;Klicka på &lt;b&gt;Hämta&lt;/b&gt; för att gå till hämtningssidan.</translation>
     </message>
     <message>
       <source>Download</source>
-      <translation>نزّل</translation>
+      <translation>Hämta</translation>
     </message>
     <message>
       <source>Skip This Release</source>
-      <translation>تخطّ هذا الإصدار</translation>
+      <translation>Hoppa över denna version</translation>
     </message>
     <message>
       <source>You have chosen to hide a menubar. Use %1 to show it back.</source>
-      <translation>اخترت إخفاء شريط القوائم. استخدم %1 لإظهاره مرة أخرى.</translation>
+      <translation>Du har valt att dölja en menyrad. Använd %1 för att visa den igen.</translation>
     </message>
     <message>
       <source>Ctrl+M</source>
-      <translation>Ctrl+T</translation>
+      <translation>Ctrl+M</translation>
     </message>
     <message>
       <source>Page Setup</source>
-      <translation>إعداد الصفحة</translation>
+      <translation>Utskriftsformat</translation>
     </message>
     <message>
       <source>No printer is available. Please install one first.</source>
-      <translation>لا تتوفر طابعة. فضلًا ثبّت واحدة أولًا.</translation>
+      <translation>Inga tillgängliga skrivare. Du måste installera eller ansluta dig till en.</translation>
     </message>
     <message>
       <source>Print Article</source>
-      <translation>اطبع المقالة</translation>
+      <translation>Skriv ut artikel</translation>
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
-      <translation>Complete Html (*.html *.htm)</translation>
+      <translation>Komplett HTML (*.html *.htm)</translation>
     </message>
     <message>
       <source>Single Html (*.html *.htm)</source>
-      <translation>Single Html (*.html *.htm)</translation>
+      <translation>Enkel HTML (*.html *.html)</translation>
     </message>
     <message>
       <source>Pdf (*.pdf)</source>
@@ -2474,527 +2475,526 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
-      <translation>Mime Html (*.mhtml)</translation>
+      <translation>Mime HTML (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
-      <translation>احفظ المقالة كـ</translation>
+      <translation>Spara artikel som</translation>
     </message>
     <message>
       <source>Error</source>
-      <translation>خطأ</translation>
+      <translation>Fel</translation>
     </message>
     <message>
       <source>Can&apos;t save article: %1</source>
-      <translation>تعذّر حفظ المقالة: %1</translation>
+      <translation>Det gick inte att spara artikeln: %1</translation>
     </message>
     <message>
       <source>Saving article...</source>
-      <translation>يحفظ المقالة...</translation>
+      <translation>Sparar artikel …</translation>
     </message>
     <message>
       <source>Save article complete</source>
-      <translation>اكتمل حفظ المقال</translation>
+      <translation>Spara artikeln klar</translation>
     </message>
     <message>
       <source>The main window is set to be always on top.</source>
-      <translation>عُيّنت النافذة الرئيسية في الأعلى دائمًا.</translation>
+      <translation>Huvudfönstret har ställts in att alltid ligga överst.</translation>
     </message>
     <message>
       <source>&amp;Hide</source>
-      <translation>أ&amp;خفِ</translation>
+      <translation>&amp;Dölj</translation>
     </message>
     <message>
       <source>Export history to file</source>
-      <translation>صدّر التأريخ إلى ملف</translation>
+      <translation>Exportera historik till fil</translation>
     </message>
     <message>
       <source>Text files (*.txt);;All files (*.*)</source>
-      <translation>ملفات نص (*.txt);;كل الملفات (*.*)</translation>
+      <translation>Textfiler (*.txt);;Alla filer (*.*)</translation>
     </message>
     <message>
       <source>Export error: </source>
-      <translation>خطأ استيراد:</translation>
+      <translation>Fel vid export: </translation>
     </message>
     <message>
       <source>History export complete</source>
-      <translation>اكتمل تصدير التأريخ</translation>
+      <translation>Historiken har exporterats</translation>
     </message>
     <message>
       <source>Import history from file</source>
-      <translation>استورد التأريخ من ملف</translation>
+      <translation>Importera historik från fil</translation>
     </message>
     <message>
       <source>Import error: </source>
-      <translation>خطأ استيراد:</translation>
+      <translation>Fel vid import: </translation>
     </message>
     <message>
       <source>Import error: invalid data in file</source>
-      <translation>خطأ استيراد: بيانات غير صالحة في الملف</translation>
+      <translation>Fel vid import: felaktiga data i fil</translation>
     </message>
     <message>
       <source>History import complete</source>
-      <translation>اكتمل استيراد التأريخ</translation>
+      <translation>Historiken har importerats</translation>
     </message>
     <message>
       <source>Export Favorites to file</source>
-      <translation>تصدير المفضلة إلى ملف</translation>
+      <translation>Exportera Favoriter till fil</translation>
     </message>
     <message>
       <source>Text files (*.txt);;XML files (*.xml)</source>
-      <translation>Text files (*.txt);;XML files (*.xml)</translation>
+      <translation>Textfiler (*.txt);;XML-filer (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
-      <translation>اكتمل تصدير المفضلة</translation>
+      <translation>Favoriter exportera komplett</translation>
     </message>
     <message>
       <source>Import Favorites from file</source>
-      <translation>استيراد المفضلة من ملف</translation>
+      <translation>Importera Favoriter från fil</translation>
     </message>
     <message>
       <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
-      <translation>Text and XML files (*.txt *.xml);;All files (*.*)</translation>
+      <translation>Text- och XML-filer (*.txt *.xml);;Alla filer (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
-      <translation>خطأ في تحليل البيانات</translation>
+      <translation>Dataparseringsfel</translation>
     </message>
     <message>
       <source>Favorites import complete</source>
-      <translation>اكتمل استيراد المفضلة</translation>
+      <translation>Favoriter import komplett</translation>
     </message>
     <message>
       <source>Dictionary info</source>
-      <translation>معلومات القاموس</translation>
+      <translation>Information om ordlista</translation>
     </message>
     <message>
       <source>Dictionary headwords</source>
-      <translation>الكلمات الرئيسية في القاموس</translation>
+      <translation>Ordlistans huvudord</translation>
     </message>
     <message>
       <source>Open dictionary folder</source>
-      <translation>افتح مجلد القاموس</translation>
+      <translation>Öppna ordlistans mapp</translation>
     </message>
     <message>
       <source>Now indexing for full-text search: </source>
-      <translation>الآن الفهرسة للبحث عن النص الكامل: </translation>
+      <translation>Nu indexering för fulltextsökning: </translation>
     </message>
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
-      <translation>إزالة الكلمة الرئيسية &quot;%1&quot; من المفضلة؟</translation>
+      <translation>Ta bort huvudord &quot;%1&quot; från Favoriter?</translation>
     </message>
     <message>
       <source>Show</source>
-      <translation>عرض</translation>
+      <translation>Visa</translation>
     </message>
     <message>
       <source>Save PDF complete</source>
-      <translation type="unfinished">Save PDF complete</translation>
+      <translation>Spara PDF slutförd</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
-      <translation type="unfinished">Save PDF failed</translation>
+      <translation>Kunde inte spara PDF</translation>
     </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
     <message>
       <source>Dictionary file was tampered or corrupted</source>
-      <translation>عُبث في ملف القاموس أو أُتلف</translation>
+      <translation>Ordlistefilen har manipulerats eller är skadad</translation>
     </message>
     <message>
       <source>Failed loading article from %1, reason: %2</source>
-      <translation>فشل تحميل المقالة من %1، السبب: %2</translation>
+      <translation>Det gick inte att läsa in en artikel från %1, orsak: %2</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
       <source>XML parse error: %1 at %2,%3</source>
-      <translation>خطأ تحليل XML: %1 عند %2،%3</translation>
+      <translation>XML-tolkningsfel: %1 på %2, %3</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
       <source>XML parse error: %1 at %2,%3</source>
-      <translation>خطأ تحليل XML: %1 عند %2،%3</translation>
+      <translation>XML-tolkningsfel: %1 på %2, %3</translation>
     </message>
   </context>
   <context>
     <name>MediaWikisModel</name>
     <message>
       <source>Enabled</source>
-      <translation>ممكّن</translation>
+      <translation>Aktiverad</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation>الاسم</translation>
+      <translation>Namn</translation>
     </message>
     <message>
       <source>Address</source>
-      <translation>العنوان</translation>
+      <translation>Adress</translation>
     </message>
     <message>
       <source>Icon</source>
-      <translation>الرّمز</translation>
+      <translation>Ikon</translation>
     </message>
     <message>
       <source>Language Variant</source>
-      <translation>متغير اللغة</translation>
+      <translation>Språkvariant</translation>
     </message>
   </context>
   <context>
     <name>MultimediaAudioPlayer</name>
     <message>
       <source>Couldn&apos;t open audio buffer for reading.</source>
-      <translation>لا يمكن&apos;فتح المخزن المؤقت للصوت للقراءة.</translation>
+      <translation>Det gick inte att öppna ljudbuffert för läsning.</translation>
     </message>
   </context>
   <context>
     <name>OrderAndProps</name>
     <message>
       <source>Form</source>
-      <translation>النموذج</translation>
+      <translation>Formulär</translation>
     </message>
     <message>
       <source>Dictionary order:</source>
-      <translation>ترتيب القواميس:</translation>
+      <translation>Ordlisteordning:</translation>
     </message>
     <message>
       <source>Inactive (disabled) dictionaries:</source>
-      <translation>القواميس غير النشطة (المعطّلة):</translation>
+      <translation>Inaktiverade ordlistor:</translation>
     </message>
     <message>
       <source>Dictionary information</source>
-      <translation>معلومات القاموس</translation>
+      <translation>Information om ordlista</translation>
     </message>
     <message>
       <source>Name:</source>
-      <translation>الاسم:</translation>
+      <translation>Namn:</translation>
     </message>
     <message>
       <source>Total articles:</source>
-      <translation>مجموع المقالات:</translation>
+      <translation>Antal artiklar:</translation>
     </message>
     <message>
       <source>Total words:</source>
-      <translation>مجموع الكلمات:</translation>
+      <translation>Antal ord:</translation>
     </message>
     <message>
       <source>Translates from:</source>
-      <translation>الترجمات من:</translation>
+      <translation>Källspråk:</translation>
     </message>
     <message>
       <source>Translates to:</source>
-      <translation>الترجمات إلى:</translation>
+      <translation>Målspråk:</translation>
     </message>
     <message>
       <source>Description:</source>
-      <translation>الوصف:</translation>
+      <translation>Beskrivning:</translation>
     </message>
     <message>
       <source>Files comprising this dictionary:</source>
-      <translation>الملفات التي تتضمن القاموس:</translation>
+      <translation>Filer som omfattas av ordlistan:</translation>
     </message>
     <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
-      <translation>اضبط الترتيب بسحب العناصر إفلاتها في القائمة. أفلت القواميس في المجموعة غير النشطة لتعطيل استخدامها.</translation>
+      <translation>Ändra ordningen genom att dra och släppa objekten i listan. Släpp ordlistor i gruppen &quot;Inaktiverade ordlistor&quot; för att inaktivera dem.</translation>
     </message>
     <message>
       <source>Dictionary headwords</source>
-      <translation>كلمات رئيسية في القاموس</translation>
+      <translation>Ordlistans huvudord</translation>
     </message>
     <message>
       <source>Sort by name</source>
-      <translation>افرز بالاسم</translation>
+      <translation>Sortera efter namn</translation>
     </message>
     <message>
       <source>Sort by languages</source>
-      <translation>افرز باللغة</translation>
+      <translation>Sortera efter språk</translation>
     </message>
     <message>
       <source>Dictionaries active: %1, inactive: %2</source>
-      <translation>قواميس نشطة: %1، غير نشطة: %2</translation>
+      <translation>Ordlistor aktiva: % 1, inaktiva: % 2</translation>
     </message>
   </context>
   <context>
     <name>PathsModel</name>
     <message>
       <source>Path</source>
-      <translation>المسار</translation>
+      <translation>Sökväg</translation>
     </message>
     <message>
       <source>Recursive</source>
-      <translation>التكرارية</translation>
+      <translation>Rekursiv</translation>
     </message>
   </context>
   <context>
     <name>Preferences</name>
     <message>
       <source>Preferences</source>
-      <translation>تفضيلات</translation>
+      <translation>Inställningar</translation>
     </message>
     <message>
       <source>&amp;Interface</source>
-      <translation>ال&amp;واجهة</translation>
+      <translation>&amp;Gränssnitt</translation>
     </message>
     <message>
       <source>Double-click translates the word clicked</source>
-      <translation>النقر المزدوج يترجم الكلمة المحدّدة</translation>
+      <translation>Dubbelklick översätter det klickade ordet</translation>
     </message>
     <message>
       <source>Tabbed browsing</source>
-      <translation>التصفّح المبوّب</translation>
+      <translation>Flikar</translation>
     </message>
     <message>
       <source>Normally, opening a new tab switches to it immediately.
 With this on however, new tabs will be opened without
 switching to them.</source>
-      <translation>عادةً، عند فتح لسان، يُتبدَّل إليه تلقائيًّا.
-بهذه، على أي حال، الألسنة الجديدة ستُفتح دون
-التبديل إليها.</translation>
+      <translation>I vanliga fall fokuseras en nyöppnad flik omedelbart.
+Aktivera detta alternativ för att öppna nya flikar utan
+att växla till dem på en gång.</translation>
     </message>
     <message>
       <source>Open new tabs in background</source>
-      <translation>افتح الألسنة الجديدة في الخلفية</translation>
+      <translation>Öppna nya flikar i bakgrunden</translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
 current, active one. Otherwise they are added to
 be the last ones.</source>
-      <translation>بهذه، الألسنة ستُفتح فقط بعد
-الحاليّة، النشطة. وإلّا ستُضاف
-إلى الألسنة الأخيرة.</translation>
+      <translation>Aktivera detta alternativ för att öppna nya flikar
+bredvid den aktuella, aktiva fliken. Annars öppnas
+de efter den sista fliken i flikfältet.</translation>
     </message>
     <message>
       <source>Open new tabs after the current one</source>
-      <translation>افتح الألسنة الجديدة بعد الحاليّة</translation>
+      <translation>Öppna nya flikar bredvid den aktuella fliken</translation>
     </message>
     <message>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>اختر هذا الخيار إن لم تكن تريد رؤية شريط الألسنة الرئيسي عندما يكون لسان واحد مفتوح.</translation>
+      <translation>Välj detta alternativ om du inte fill se flikfältet när endast en flik är öppen.</translation>
     </message>
     <message>
       <source>Hide single tab</source>
-      <translation>أخفِ لسانًا واحدًا</translation>
+      <translation>Dölj fliken och flikfältet om endast en flik är öppen</translation>
     </message>
     <message>
       <source>MRU order: Most recently used order.</source>
-      <translation>ترتيب MRU: النظام المستخدم مؤخرًا.</translation>
+      <translation>MRU beställning: Senast använda beställning.</translation>
     </message>
     <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
-      <translation>Ctrl-Tab يتنقّل بين الألسنة بترتيب MRU</translation>
+      <translation>Ctrl+Tabb bläddrar igenom flikarna i den ordning de senast användes</translation>
     </message>
     <message>
       <source>Normally, pressing ESC key moves focus to the translation line.
 With this on however, it will hide the main window.</source>
-      <translation>عادةً، ضغط ESC ينقل التركيز إلى سطر الترجمة.
-بهذه، على أي حال، ستُخفي النافذة الرئيسية.</translation>
+      <translation>Vanligtvis flyttar ett tryck på Esc-tangenten fokus till sökfältet.
+Med detta alternativ aktiverat döljer den istället huvudfönstret.</translation>
     </message>
     <message>
       <source>ESC key hides main window</source>
-      <translation>مفتاح ESC يخفي النافذة الرئيسية</translation>
+      <translation>Esc-tangenten döljer huvudfönstert</translation>
     </message>
     <message>
       <source>Turn this option on if you want to select words by single mouse click</source>
-      <translation>مكّن هذا الخيار إن أردت تحديد الكلمة بنقرة فأرة واحدة</translation>
+      <translation>Aktivera detta alternativ om du vill markera ord med ett enkelklick.</translation>
     </message>
     <message>
       <source>Select word by single click</source>
-      <translation>حدّد الكلمة بنقرة مفردة</translation>
+      <translation>Markera ord med enkelklick</translation>
     </message>
     <message>
       <source>Startup</source>
-      <translation>البدء</translation>
+      <translation>Programstart</translation>
     </message>
     <message>
       <source>Automatically starts GoldenDict after operation system bootup.</source>
-      <translation>يبدأ القاموس الذهبي مباشرة بعد إقلاع النّظام .</translation>
+      <translation>Startar GoldenDict automatiskt efter att operativsystemet har startats.</translation>
     </message>
     <message>
       <source>Start with system</source>
-      <translation>ابدأ مع النظام</translation>
+      <translation>Starta automatiskt när datorn startar</translation>
     </message>
     <message>
       <source>Normally, clicking on a link, double-clicking on a word or looking up
 selection in an article loads the translation and almost immediately
 scrolls to the article from the same dictionary. With this option off,
 however, the article from the topmost dictionary is shown.</source>
-      <translation>عادةً ، يؤدي النقر فوق ارتباط أو النقر نقرًا مزدوجًا فوق كلمة أو البحث عن تحديد
-في المقالة إلى تحميل الترجمة ويتم تمرير
-على الفور تقريبًا إلى المقالة من نفس القاموس. مع إيقاف تشغيل هذا الخيار
-، ومع ذلك ، يتم عرض المقالة من القاموس الأعلى.</translation>
+      <translation>Normalt laddas översättningen genom att klicka på en länk, dubbelklicka på ett ord eller slå upp
+urval i en artikel och nästan omedelbart
+rulla till artikeln från samma ordbok. Med det här alternativet av,, visas artikeln från den översta ordboken.</translation>
     </message>
     <message>
       <source>Automatically scroll to target article</source>
-      <translation>قم بالتمرير تلقائيًا إلى المقالة المستهدفة</translation>
+      <translation>Rulla automatiskt till målartikel</translation>
     </message>
     <message>
       <source>When enabled, an icon appears in the system tray area which can be used
 to open main window and perform other tasks.</source>
-      <translation>عند تمكينه، سيظهر رمز في صينية النظام حيث يمكن استخدامها
-لفتح النافذة الرئيسية وإجراء مهامَ أخرى.</translation>
+      <translation>När detta alternativ är aktiverat visas en ikon i meddelandefältet, som kan
+användas för att öppna huvudfönstret och utföra andra uppgifter.</translation>
     </message>
     <message>
       <source>Enable system tray icon</source>
-      <translation>مكّن رمز صينية النظام</translation>
+      <translation>Visa ikon i meddelandefältet</translation>
     </message>
     <message>
       <source>With this on, the application starts directly to system tray without showing
 its main window.</source>
-      <translation>بهذه، يبدأ التطبيق تلقائيًّا في صينية النظام دون
-أن تظهر النافذة الرئيسية.</translation>
+      <translation>Aktivera detta alternativ för att öppna programmet direkt i meddelande-
+fältet, utan att visa huvudfönstret.</translation>
     </message>
     <message>
       <source>Start to system tray</source>
-      <translation>ابدأ إلى صينية النظام</translation>
+      <translation>Starta programmet minimerat i meddelandefältet</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
 the application.</source>
-      <translation>بهذه، محاولة إغلاق النافذة الرئيسية يخفي التطبيق بدلًا
-من إنهائه.</translation>
+      <translation>När detta alternativ är aktiverat kommer ett klick på stängknappen (X) att
+minimera fönstret till meddelandefältet istället för att avsluta programmet.</translation>
     </message>
     <message>
       <source>Close to system tray</source>
-      <translation>أغلق إلى صينية النظام</translation>
+      <translation>Stäng till meddelandefältet</translation>
     </message>
     <message>
       <source>Adjust this value to avoid huge context menus.</source>
-      <translation>اضبط هذه القيمة لتجنّب قوائم المحتوى الضخمة.</translation>
+      <translation>Justera detta värde för att undvika alltför stora snabbmenyer.</translation>
     </message>
     <message>
       <source>Context menu dictionaries limit:</source>
-      <translation>حد القواميس في قائمة السياق:</translation>
+      <translation>Högsta antal ordlistor i snabbmenyer:</translation>
     </message>
     <message>
       <source>Appearance</source>
-      <translation>مظهر</translation>
+      <translation>Utseende</translation>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation>واجهة الخط</translation>
+      <translation>Gränssnittets teckensnitt</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
-      <translation>تحويل واجهة المستخدم إلى الظلام.</translation>
+      <translation>Vänd UI till mörk.</translation>
     </message>
     <message>
       <source>Dark Mode</source>
-      <translation>الوضع الداكن</translation>
+      <translation>Mörkt läge</translation>
     </message>
     <message>
       <source>Turn the article display style to dark.</source>
-      <translation>تحويل نمط عرض المقالة إلى الظلام.</translation>
+      <translation>Vänd artikelns visningsstil till mörk.</translation>
     </message>
     <message>
       <source>Dark Reader Mode</source>
-      <translation>وضع القارئ الداكن</translation>
+      <translation>Mörkt läsarläge</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
-      <translation>سيتم تطبيق هذه الخطوط عند عدم العثور على الخطوط المحددة بواسطة القاموس.</translation>
+      <translation>Dessa typsnitt kommer att tillämpas när de typsnitt som anges i en ordbok inte hittas.</translation>
     </message>
     <message>
       <source>Fallback Fonts</source>
-      <translation>الخطوط الاحتياطية</translation>
+      <translation>Reservteckensnitt</translation>
     </message>
     <message>
       <source>Standard Font</source>
-      <translation>الخط القياسي</translation>
+      <translation>Standard teckensnitt</translation>
     </message>
     <message>
       <source>Serif Font</source>
-      <translation>الخط الشريف</translation>
+      <translation>Serif teckensnitt</translation>
     </message>
     <message>
       <source>Sans-serif Font</source>
-      <translation>الخط بلا الرقيق</translation>
+      <translation>Sans-serif teckensnitt</translation>
     </message>
     <message>
       <source>Monospace Font</source>
-      <translation>الخط الأحادي الفضاء</translation>
+      <translation>Monospace teckensnitt</translation>
     </message>
     <message>
       <source>&amp;Popup</source>
-      <translation>منبثقة الا&amp;ستكشاف</translation>
+      <translation>&amp;Sökpopupruta</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
+      <translation>Väljer om urklippsövervakningen ska aktiveras som standard vid uppstart av programmet&apos;.</translation>
     </message>
     <message>
       <source>Start with clipboard monitoring turned on</source>
-      <translation>Start with clipboard monitoring turned on</translation>
+      <translation>Börja med urklippsövervakning påslagen</translation>
     </message>
     <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
-      <translation>أرسل الكلمة المترجمة إلى النافذة الرئيسية بدلًا من إظهارها في نافذة منبثقة</translation>
+      <translation>Skicka översatta ord till huvudfönstret istället för att visa dem i popuprutan.</translation>
     </message>
     <message>
       <source>Send translated word to main window</source>
-      <translation>أرسل الكلمة المترجمة إلى النافذة الرئيسية</translation>
+      <translation>Skicka översatta ord till huvudfönstret</translation>
     </message>
     <message>
       <source>Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</source>
-      <translation>تتبع تغييرات الحافظة عند تمكين المسح. يلاحظ! يجب عليك دائمًا تمكين هذا إلا إذا كنت تستخدم نظام Linux.</translation>
+      <translation>Spåra urklipp ändras när skanning är aktiverad. Obs! Du bör alltid aktivera detta om du inte är på Linux.</translation>
     </message>
     <message>
       <source>Track Clipboard change</source>
-      <translation>تتبع تغيير الحافظة</translation>
+      <translation>Spåra ändring av urklipp</translation>
     </message>
     <message>
       <source>Track Selection change</source>
-      <translation>تغيير المسار التحديد</translation>
+      <translation>Ändra spårval</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
 in the pressed state when the word selection changes.</source>
-      <translation>إن كان هذا ممكّنًا، النافذة المنبثقة ستظهر فقط إن كانت كل
-المفاتيح مضغوطة عندما يتغيّر تحديد الكلمة.</translation>
+      <translation>När alternativet är aktiverat visas sökpopuprutan endast om alla de
+angivna tangenterna är nedtryckta när ordet markeras.</translation>
     </message>
     <message>
       <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation>اختيار المسار فقط عندما يتم الضغط باستمرار على جميع المفاتيح المحددة:</translation>
+      <translation>Endast tack val när alla valda nycklar hålls tryckt:</translation>
     </message>
     <message>
       <source>Alt key</source>
-      <translation>مفتاح Alt</translation>
+      <translation>Alt-tangenten</translation>
     </message>
     <message>
       <source>Ctrl key</source>
-      <translation>مفتاح Ctrl</translation>
+      <translation>Ctrl-tangenten</translation>
     </message>
     <message>
       <source>Shift key</source>
-      <translation>مفتاح Shift</translation>
+      <translation>Skift-tangenten</translation>
     </message>
     <message>
       <source>Windows key or Meta key</source>
-      <translation>مفتاح الشّعار</translation>
+      <translation>Windows- eller Meta-tangenten</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
-      <translation>إظهار نافذة العلم قبل إظهار النافذة المنبثقة ، انقر فوق العلم لإظهار النافذة المنبثقة. </translation>
+      <translation>Visa ett flaggfönster innan du visar popup-fönster klickar du på flaggan för att visa popup-fönster. </translation>
     </message>
     <message>
       <source>Show scan flag when word is selected</source>
-      <translation>إظهار علم المسح عند تحديد الكلمة</translation>
+      <translation>Visa skanningsflagga när ord är markerat</translation>
     </message>
     <message>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation>لا تظهر النافذة المنبثقة عند التحديد أو الحافظة في أحد تغييرات النوافذ الخاصة بـ GoldenDict&apos;</translation>
+      <translation>Visa inte popup när markering eller urklipp i en av GoldenDicts egna fönsterändringar</translation>
     </message>
     <message>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation>تجاهل اختيار GoldenDict&apos;وتغييرات الحافظة</translation>
+      <translation>Ignorera GoldenDicts egen markering och urklippsförändringar</translation>
     </message>
     <message>
       <source>Delay time</source>
-      <translation>وقت التأخير</translation>
+      <translation>Försening</translation>
     </message>
     <message>
       <source> ms</source>
@@ -3002,183 +3002,186 @@ in the pressed state when the word selection changes.</source>
     </message>
     <message>
       <source>Hotkeys</source>
-      <translation>المفاتيح السريعة</translation>
+      <translation>Kortkommandon</translation>
     </message>
     <message>
       <source>Use the following hotkey to show or hide the main window:</source>
-      <translation>استخدم المفتاح السّريع التالي لإظهار أو إخفاء النافذة الرئيسية:</translation>
+      <translation>Använd följande kortkommando för att visa eller dölja huvudfönstret:</translation>
     </message>
     <message>
       <source>Use the following hotkey to translate a word from clipboard:</source>
-      <translation>استخدم المفاتيح السّريع التالي لترجمة كلمة من الحافظة:</translation>
+      <translation>Använd följande kortkommando för att översätta ett ord från Urklipp:</translation>
     </message>
     <message>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
-      <translation>المفاتيح السريعة تعمل في أي مكان من الحاسوب خلال أي محتوى طالما القاموس الذهبي يعمل في الخلفية.</translation>
+      <translation>Kortkommandona är globala och fungerar inifrån alla program och i alla sammanhang, förutsatt att GoldenDict körs i bakgrunden.</translation>
     </message>
     <message>
       <source>&amp;Audio</source>
-      <translation>ال&amp;صوت</translation>
+      <translation>L&amp;jud</translation>
     </message>
     <message>
       <source>Pronunciation</source>
-      <translation>النطق</translation>
+      <translation>Text till tal</translation>
     </message>
     <message>
       <source>Auto-pronounce words in main window</source>
-      <translation>انطق تلقائيًّا الكلمات في النافذة الرئيسية</translation>
+      <translation>Läs automatiskt upp ord i huvudfönstret</translation>
     </message>
     <message>
       <source>Auto-pronounce words in the popup</source>
-      <translation>Auto-pronounce words in the popup</translation>
+      <translation>Uttala ord automatiskt i popup-fönstret</translation>
     </message>
     <message>
       <source>Playback</source>
-      <translation>التشغيل</translation>
+      <translation>Uppspelning</translation>
     </message>
     <message>
       <source>Play audio files via built-in audio support</source>
-      <translation>تشغيل ملفات الصوت عبر دعم الصوت المدمج</translation>
+      <translation>Spela upp ljudfiler via inbyggt ljudstöd</translation>
     </message>
     <message>
       <source>Use internal player:</source>
-      <translation>استخدام المشغل الداخلي:</translation>
+      <translation>Använd intern spelare:</translation>
     </message>
     <message>
       <source>Choose audio back end</source>
-      <translation>اختر نهاية خلفية الصوت</translation>
+      <translation>Välj ljud-backend</translation>
     </message>
     <message>
       <source>Use any external program to play audio files</source>
-      <translation>استخدم أي برنامج خارجي لتشغيل ملفات الصوت</translation>
+      <translation>Använd ett externt program för att spela upp ljudfiler.</translation>
     </message>
     <message>
       <source>Use external program:</source>
-      <translation>استخدم برنامجًا خارجيًا:</translation>
+      <translation>Använd externt program:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
-      <translation>أدخل سطر أوامر مشغل الصوت</translation>
+      <translation>Ange ljudspelarkommandoraden</translation>
     </message>
     <message>
       <source>&amp;Network</source>
-      <translation>ال&amp;شّبكة</translation>
+      <translation>&amp;Nätverk</translation>
     </message>
     <message>
       <source>Enable if you wish to use a proxy server
 for all program&apos;s network requests.</source>
-      <translation>مكّنه إن وددت استخدام مُلقّم
-لجميع طلبات البرنامج في الشبكة.</translation>
+      <translation>Aktivera detta alternativ om du vill använda
+en proxyserver för programmets alla nätverks-
+förfrågningar.</translation>
     </message>
     <message>
       <source>Use proxy server</source>
-      <translation>استخدم مُلقّمًا</translation>
+      <translation>Använd proxyserver</translation>
     </message>
     <message>
       <source>System proxy</source>
-      <translation>وكيل النظام</translation>
+      <translation>Systemproxy</translation>
     </message>
     <message>
       <source>Custom proxy</source>
-      <translation>وكيل مخصص</translation>
+      <translation>Anpassad proxy</translation>
     </message>
     <message>
       <source>Custom settings</source>
-      <translation>إعدادات مخصصة</translation>
+      <translation>Anpassade inställningar</translation>
     </message>
     <message>
       <source>Type:</source>
-      <translation>النّوع:</translation>
+      <translation>Typ:</translation>
     </message>
     <message>
       <source>Host:</source>
-      <translation>المضيف:</translation>
+      <translation>Värd:</translation>
     </message>
     <message>
       <source>Port:</source>
-      <translation>المنفذ:</translation>
+      <translation>Port:</translation>
     </message>
     <message>
       <source>User:</source>
-      <translation>المستخدم:</translation>
+      <translation>Användare:</translation>
     </message>
     <message>
       <source>Password:</source>
-      <translation>كلمة المرور:</translation>
+      <translation>Lösenord:</translation>
     </message>
     <message>
       <source>Anki Connect</source>
-      <translation>أنكي كونيكت</translation>
+      <translation>Anki-anslutning</translation>
     </message>
     <message>
       <source>http://</source>
-      <translation>http: //</translation>
+      <translation>http://</translation>
     </message>
     <message>
       <source>Deck:</source>
-      <translation>ظهر السفينة:</translation>
+      <translation>Däck:</translation>
     </message>
     <message>
       <source>Model:</source>
-      <translation>نموذج:</translation>
+      <translation>Modell:</translation>
     </message>
     <message>
       <source>Word</source>
-      <translation>كلمة</translation>
+      <translation>Ord</translation>
     </message>
     <message>
       <source>Vocabulary field...</source>
-      <translation>مجال المفردات ...</translation>
+      <translation>Ordförrådsfältet...</translation>
     </message>
     <message>
       <source>Text</source>
-      <translation>نص</translation>
+      <translation>Text</translation>
     </message>
     <message>
       <source>Definition field...</source>
-      <translation>مجال التعريف...</translation>
+      <translation>Definition fält...</translation>
     </message>
     <message>
       <source>Sentence</source>
-      <translation>جملة</translation>
+      <translation>Mening</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
-      <translation>حقل الجملة (يمكن أن يكون فارغاً)...</translation>
+      <translation>Meningsfält (kan vara tomt)...</translation>
     </message>
     <message>
       <source>Enabling this would make GoldenDict block most advertisements
 by disallowing content (images, frames) not originating from the site
 you are browsing. If some site breaks because of this, try disabling this.</source>
-      <translation>تمكين هذا يجعل القاموس الذهبي يمنع أغلب الإعلانات
-بعدم السماح بالمحتوى (صور، إطارات) غير المُنشأ من الموقع
-الذي تتصفّحه. إن انهارت بعض المواقع بسبب هذا، حاول تعطيله.</translation>
+      <translation>Om du aktiverar detta alternativ blockerar GoldenDict de flesta av de
+annonser som finns på olika sidor genom att blockera innehåll (bilder, ramar)
+som inte ursprungligen kommer från webbplatsen du surfar på. Om en
+webbplats slutar fungera p.g.a. det här, testa att inaktivera alternativet.</translation>
     </message>
     <message>
       <source>Disallow loading content from other sites (hides most advertisements)</source>
-      <translation>امنع تحميل المحتوى من مواقع أخرى (يخفي أغلب الإعلانات)</translation>
+      <translation>Blockera inläsning av innehåll från andra webbplatser (döljer merparten av annonserna)</translation>
     </message>
     <message>
       <source>Some sites detect GoldenDict via HTTP headers and block the requests.
 Enable this option to workaround the problem.</source>
-      <translation>بعض المواقع تكتشف القاموس الذهبي من خلال ترويسات HTTP وتمنع الطلبات.
-مكّن هذا الخيار للالتفاف حول المشكلة.</translation>
+      <translation>Vissa webbplatser identifierar GoldenDict m.h.a. HTTP-huvuden och
+blockerar alla förfrågningar. Aktivera detta alternativ för att lösa
+det problemet.</translation>
     </message>
     <message>
       <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>لا تعرّف القاموس الذهبي في ترويسات HTTP</translation>
+      <translation>Identifiera inte GoldenDict i HTTP-huvuden</translation>
     </message>
     <message>
       <source>Maximum network cache size:</source>
-      <translation>الحد الأقصى لحجم ذاكرة التخزين المؤقت للشبكة:</translation>
+      <translation>Maximal nätverkscache storlek:</translation>
     </message>
     <message>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation>الحد الأقصى لمساحة القرص الذي يشغله GoldenDict&apos;s للشبكة ذاكرة التخزين المؤقت في
+      <translation>Maximalt diskutrymme som upptas av GoldenDicts nätverkscache
 %1
-إذا تم تعيين إلى 0 سيتم تعطيل ذاكرة التخزين المؤقت لقرص الشبكة.</translation>
+Om inställt på 0 kommer nätverksdiskcachen att inaktiveras.</translation>
     </message>
     <message>
       <source> MiB</source>
@@ -3187,12 +3190,12 @@ If set to 0 the network disk cache will be disabled.</source>
     <message>
       <source>When this option is enabled, GoldenDict
 clears its network cache from disk during exit.</source>
-      <translation>عند تمكين هذا الخيار ، يقوم GoldenDict
-بمسح ذاكرة التخزين المؤقت للشبكة من القرص أثناء الخروج.</translation>
+      <translation>När det här alternativet är aktiverat rensar GoldenDict
+sin nätverkscache från disken under avslutning.</translation>
     </message>
     <message>
       <source>Clear network cache on exit</source>
-      <translation>امسح ذاكرة التخزين المؤقت للشبكة عند الخروج</translation>
+      <translation>Rensa nätverkscachen vid avslut</translation>
     </message>
     <message>
       <source>When this is enabled, the program periodically
@@ -3200,525 +3203,526 @@ checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
 informs the user about it and prompts to open a
 download page.</source>
-      <translation>عند تمكين هذا، يلتمس البرنامج
-كل فترة إن كان هناك تحديث جديد
-للبرنامج متوفّر للتنزيل. إن كان كذلك،
-سيُعلمك البرنامج عنه ويطلب فتح صفحة التنزيل.</translation>
+      <translation>När detta alternativ är aktiverat kontrollerar
+programmet med jämna mellanrum om det finns
+en ny, uppdaterad version av GoldenDict. Om så
+är fallet informerar programmet användaren om
+saken och ber denna att öppna en hämtningssida.</translation>
     </message>
     <message>
       <source>Check for new program releases periodically</source>
-      <translation>التمس عن إصدار جديد للبرنامج كل فترة</translation>
+      <translation>Sök med jämna mellanrum efter nya programversioner</translation>
     </message>
     <message>
       <source>Full-text search</source>
-      <translation>البحث في كامل النص</translation>
+      <translation>Fulltextsökning</translation>
     </message>
     <message>
       <source>Allow full-text search for:</source>
-      <translation>السماح بالبحث عن النص الكامل لـ:</translation>
+      <translation>Tillåt fulltextsökning för:</translation>
     </message>
     <message>
       <source>Don&apos;t search in dictionaries containing more than</source>
-      <translation>لا تبحث في قواميس تحتوي على أكثر من</translation>
+      <translation>Sök inte i ordlistor som innehåller mer än</translation>
     </message>
     <message>
       <source>articles (0 - unlimited)</source>
-      <translation>المقالات (0 - غير محدود)</translation>
+      <translation>artiklar (0 - obegränsat)</translation>
     </message>
     <message>
       <source>Create fulltext index with parallel threads </source>
-      <translation>إنشاء فهرس النص الكامل مع المواضيع المتوازية </translation>
+      <translation>Skapa fulltextindex med parallella trådar </translation>
     </message>
     <message>
       <source>Ad&amp;vanced</source>
-      <translation>مت&amp;قدّم</translation>
+      <translation>A&amp;vancerat</translation>
     </message>
     <message>
       <source>History</source>
-      <translation>التأريخ</translation>
+      <translation>Historik</translation>
     </message>
     <message>
       <source>Turn this option on to store history of the translated words</source>
-      <translation>مكّن هذا الخيار لتخزين تأريخ الكلمات المترجمة</translation>
+      <translation>Aktivera detta alternativ för att lagra en historik över översatta ord.</translation>
     </message>
     <message>
       <source>Store &amp;history</source>
-      <translation>خزّن ال&amp;تأريخ</translation>
+      <translation>Lagra &amp;historik</translation>
     </message>
     <message>
       <source>Specify the maximum number of entries to keep in history.</source>
-      <translation>حدّد عدد المدخلات الأقصى لإبقائها في التأريخ.</translation>
+      <translation>Ange det maximala antalet poster som får behållas i historiken.</translation>
     </message>
     <message>
       <source>Maximum history size:</source>
-      <translation>حجم التأريخ الأقصى:</translation>
+      <translation>Största historikstorlek:</translation>
     </message>
     <message>
       <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>فترة حفظ التأريخ. إن عُيِّنت إلى 0، سيُحفظ التأريخ أثناء إنهاء التطبيق فقط.</translation>
+      <translation>Sparintervall för historiken. Ange till 0 för att endast  spara historiken vid programavslut.</translation>
     </message>
     <message>
       <source>Save every</source>
-      <translation>احفظ كلّ</translation>
+      <translation>Spara var</translation>
     </message>
     <message>
       <source>minutes</source>
-      <translation>دقيقة</translation>
+      <translation>minut</translation>
     </message>
     <message>
       <source>Favorites</source>
-      <translation>المفضلة</translation>
+      <translation>Favoriter</translation>
     </message>
     <message>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
-      <translation>الفاصل الزمني لحفظ المفضلة. إذا تم التعيين على 0 المفضلة ، فسيتم حفظها أثناء الخروج فقط.</translation>
+      <translation>Favoriters sparningsintervall. Om inställd på 0 sparas Favoriter endast vid avslutning.</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
-      <translation>قم بتشغيل هذا الخيار لتأكيد كل عملية حذف للعناصر</translation>
+      <translation>Slå på detta alternativ för att bekräfta varje operation av postborttagning</translation>
     </message>
     <message>
       <source>Confirmation for items deletion</source>
-      <translation>تأكيد على حذف العناصر</translation>
+      <translation>Bekräftelse för borttagning av poster</translation>
     </message>
     <message>
       <source>Articles</source>
-      <translation>المقالات</translation>
+      <translation>Artiklar</translation>
     </message>
     <message>
       <source>Ignore punctuation while searching</source>
-      <translation>تجاهل علامات الترقيم خلال البحث</translation>
+      <translation>Ignorera skiljetecken vid sökning</translation>
     </message>
     <message>
       <source>Input phrases longer than this size will be ignored</source>
-      <translation>سيتم تجاهل عبارات الإدخال الأطول من هذا الحجم</translation>
+      <translation>Inmatningsfraser längre än denna storlek kommer att ignoreras</translation>
     </message>
     <message>
       <source>symbols</source>
-      <translation>رمز</translation>
+      <translation>tecken</translation>
     </message>
     <message>
       <source>Select this option to automatic collapse big articles</source>
-      <translation>حدّد هذا الخيار لطي المقالات الكبيرة تلقائيًّا</translation>
+      <translation>Välj detta alternativ för att automatiskt dölja stora artiklar.</translation>
     </message>
     <message>
       <source>Collapse articles more than</source>
-      <translation>اطو المقالات الأكبر من الـ</translation>
+      <translation>Dölj artiklar längre än</translation>
     </message>
     <message>
       <source>Turn this option on to ignore unreasonably long input text
 from mouse-over, selection, clipboard or command line</source>
-      <translation>قم بتشغيل هذا الخيار لتجاهل إدخال النص
-الطويل بشكل غير معقول من تمرير الماوس أو التحديد أو الحافظة أو سطر الأوامر</translation>
+      <translation>Slå på det här alternativet för att ignorera orimligt lång inmatningstext
+från mouse-over, urval, urklipp eller kommandorad</translation>
     </message>
     <message>
       <source>Ignore input phrases longer than</source>
-      <translation>تجاهل عبارات المدخلة أطول من</translation>
+      <translation>Ignorera inmatningsfraser längre än</translation>
     </message>
     <message>
       <source>Articles longer than this size will be collapsed</source>
-      <translation>المقالات الأكبر من هذا الحجم ستطوى</translation>
+      <translation>Artiklar som är längre än följande antal tecken kommer att komprimeras.</translation>
     </message>
     <message>
       <source>Turn this option on to always expand optional parts of articles</source>
-      <translation>مكّن هذا الخيار لتوسيع الأجزاء الاختيارية من المقالات دائمًا</translation>
+      <translation>Aktivera detta alternativ för att alltid visa valfria delar av artiklar.</translation>
     </message>
     <message>
       <source>Expand optional &amp;parts</source>
-      <translation>وسّع الأ&amp;قسام الاختيارية</translation>
+      <translation>Visa valfria &amp;delar</translation>
     </message>
     <message>
       <source>Turn this option on to ignore diacritics while searching articles</source>
-      <translation>تشغيل هذا الخيار لتجاهل علامات التشكيل خلال البحث عن المقالات</translation>
+      <translation>Aktivera det här alternativet om du vill ignorera diacritics när du söker artiklar</translation>
     </message>
     <message>
       <source>Ignore diacritics while searching</source>
-      <translation>تجاهل علامات التشكيل خلال البحث</translation>
+      <translation>Ignorera diacritics medan du söker</translation>
     </message>
     <message>
       <source>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</source>
-      <translation>أثناء عمليات البحث المتتالية ، إذا تم طي أحد القواميس يدويًا ، فسيظل مطويًا في البحث التالي</translation>
+      <translation>Under successiva sökningar, om en ordbok kollapsas av manuell, kommer det att förbli kollapsade i nästa sökning</translation>
     </message>
     <message>
       <source>Session collapse</source>
-      <translation>انهيار الجلسة</translation>
+      <translation>Sessionen kollapsar</translation>
     </message>
     <message>
       <source>Turn this option on to enable extra articles search via synonym lists
 from Stardict, Babylon and GLS dictionaries</source>
-      <translation>تشغيل هذا الخيار لتمكين البحث عن مقالات إضافية عبر قوائم مرادفات
-من قواميس Stardict, Babylon و GLS</translation>
+      <translation>Aktivera det här alternativet om du vill aktivera extra artiklar sök via synonymlistor
+från Stardict, Babylon och GLS ordböcker</translation>
     </message>
     <message>
       <source>Extra search via synonyms</source>
-      <translation>بحث إضافي عبر مرادفات</translation>
+      <translation>Extra sökning via synonymer</translation>
     </message>
     <message>
       <source>When using clipboard, strip everything after newline</source>
-      <translation>عند استخدام الحافظة، قم بإزالة كل شيء بعد السطر الجديد</translation>
+      <translation>När du använder urklipp, ta bort allt efter nyrad</translation>
     </message>
     <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation>في بحث جديد ، ركز على النافذة الرئيسية أو النافذة المنبثقة حتى لو كانت مرئية</translation>
+      <translation>På en ny sökning fokuserar du huvud- eller popup-fönstret även om det är synligt</translation>
     </message>
     <message>
       <source>Miscellaneous</source>
-      <translation>متنوع</translation>
+      <translation>Diverse</translation>
     </message>
     <message>
       <source>Remove invalid index on exit</source>
-      <translation>قم بإزالة الفهرس غير الصالح عند الخروج</translation>
+      <translation>Ta bort ogiltigt index vid utgång</translation>
     </message>
     <message>
       <source>System default</source>
-      <translation>افتراضي النظام</translation>
+      <translation>Systemstandard</translation>
     </message>
     <message>
       <source>Default</source>
-      <translation>الافتراضي</translation>
+      <translation>Standard</translation>
     </message>
     <message>
       <source>Classic</source>
-      <translation>كلاسيك</translation>
+      <translation>Klassisk</translation>
     </message>
     <message>
       <source>Modern</source>
-      <translation>عصري</translation>
+      <translation>Modernt</translation>
     </message>
     <message>
       <source>Lingvo</source>
-      <translation>لنغفو</translation>
+      <translation>Lingvo</translation>
     </message>
     <message>
       <source>Babylon</source>
-      <translation>بابيلون</translation>
+      <translation>Babylon</translation>
     </message>
     <message>
       <source>Lingoes</source>
-      <translation>لِنْغوز</translation>
+      <translation>Lingor</translation>
     </message>
     <message>
       <source>Lingoes-Blue</source>
-      <translation>لِنْغوز-بلو</translation>
+      <translation>Lingoes (blå)</translation>
     </message>
     <message>
       <source>Auto does nothing on some systems.</source>
-      <translation>Auto does nothing on some systems.</translation>
+      <translation>Auto gör ingenting på vissa system.</translation>
     </message>
     <message>
       <source>Restart the program to apply the language change.</source>
-      <translation>أعد تشغيل البرنامج لتطبيق تغيير اللغة.</translation>
+      <translation>Starta om programmet för att verkställa bytet av språk.</translation>
     </message>
     <message>
       <source>Restart to apply the interface style change.</source>
-      <translation>أعد التشغيل لتطبيق تغيير نمط الواجهة.</translation>
+      <translation>Starta om för att tillämpa ändringen av gränssnittsstilen.</translation>
     </message>
     <message>
       <source>Restart to apply the interface font change.</source>
-      <translation>أعد التشغيل لتطبيق تغيير خط الواجهة.</translation>
+      <translation>Starta om för att tillämpa gränssnittets teckensnittsändring.</translation>
     </message>
     <message>
       <source>Restart needed</source>
-      <translation>إعادة التشغيل مطلوبة</translation>
+      <translation>Omstart behövs</translation>
     </message>
     <message>
       <source>Enable</source>
-      <translation>Enable</translation>
+      <translation>Aktivera</translation>
     </message>
     <message>
       <source>Disable</source>
-      <translation>Disable</translation>
+      <translation>Inaktivera</translation>
     </message>
     <message>
       <source>Automatic</source>
-      <translation>Automatic</translation>
+      <translation>Automatisk</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation>Save debug messages to gd_log.txt in the config folder</translation>
+      <translation>Spara felsökningsmeddelanden till gd_log.txt i konfigurationsmappen</translation>
     </message>
     <message>
       <source>Interface Font Size</source>
-      <translation>Interface Font Size</translation>
+      <translation>Gränssnittets teckenstorlek</translation>
     </message>
     <message>
       <source>Interface language</source>
-      <translation>Interface language</translation>
+      <translation>Gränssnittets språk</translation>
     </message>
     <message>
       <source>Article Display style</source>
-      <translation>Article Display style</translation>
+      <translation>Artikelns visningsstil</translation>
     </message>
     <message>
       <source>Add-on style</source>
-      <translation>Add-on style</translation>
+      <translation>Stil på tillägg</translation>
     </message>
     <message>
       <source>Interface Style</source>
-      <translation>Interface Style</translation>
+      <translation>Gränssnitt stil</translation>
     </message>
     <message>
       <source>Preview Font</source>
-      <translation>Preview Font</translation>
+      <translation>Förhandsgranska typsnitt</translation>
     </message>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
-      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
+      <translation>GoldenDict-ng är en ordbok programvara.</translation>
     </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
     <message>
       <source>Audio</source>
-      <translation>صوت</translation>
+      <translation>Ljud</translation>
     </message>
     <message>
       <source>Plain Text</source>
-      <translation>نص مجرّد</translation>
+      <translation>Oformaterad text</translation>
     </message>
     <message>
       <source>Html</source>
-      <translation>Html</translation>
+      <translation>HTML</translation>
     </message>
     <message>
       <source>Prefix Match</source>
-      <translation>طابِق السابقة</translation>
+      <translation>Prefixmatchning</translation>
     </message>
     <message>
       <source>Unknown</source>
-      <translation>غير معروف</translation>
+      <translation>Okänd</translation>
     </message>
   </context>
   <context>
     <name>Programs::RunInstance</name>
     <message>
       <source>No program name was given.</source>
-      <translation>لم يُعطَ اسم للبرنامج.</translation>
+      <translation>Inget programnamn har angivits.</translation>
     </message>
     <message>
       <source>The program has crashed.</source>
-      <translation>انهار البرنامج.</translation>
+      <translation>Programmet har kraschat.</translation>
     </message>
     <message>
       <source>The program has returned exit code %1.</source>
-      <translation>أرجعَ البرنامج شِفرة الخروج %1.</translation>
+      <translation>Programmet returnerade avslutningskoden %1.</translation>
     </message>
   </context>
   <context>
     <name>ProgramsModel</name>
     <message>
       <source>Enabled</source>
-      <translation>ممكّن</translation>
+      <translation>Aktiverad</translation>
     </message>
     <message>
       <source>Type</source>
-      <translation>النوع</translation>
+      <translation>Typ</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation>الاسم</translation>
+      <translation>Namn</translation>
     </message>
     <message>
       <source>Command Line</source>
-      <translation>سطر الأوامر</translation>
+      <translation>Kommandorad</translation>
     </message>
     <message>
       <source>Icon</source>
-      <translation>الرّمز</translation>
+      <translation>Ikon</translation>
     </message>
   </context>
   <context>
     <name>QObject</name>
     <message>
       <source>Article loading error</source>
-      <translation>خطأ في تحميل المقالة</translation>
+      <translation>Artikelinläsningsfel</translation>
     </message>
     <message>
       <source>Article decoding error</source>
-      <translation>خطأ في فك ترميز المقالة</translation>
+      <translation>Artikelavkodningsfel</translation>
     </message>
     <message>
       <source>Copyright: %1%2</source>
-      <translation>حقوق التأليف والنشر: %1%2</translation>
+      <translation>Upphovsrätt: %1%2</translation>
     </message>
     <message>
       <source>Version: %1%2</source>
-      <translation>الإصدار: %1%2</translation>
+      <translation>Version: %1%2</translation>
     </message>
     <message>
       <source>Author: %1%2</source>
-      <translation>المؤلف: %1%2</translation>
+      <translation>Författare: %1%2</translation>
     </message>
     <message>
       <source>E-mail: %1%2</source>
-      <translation>البريد الإلكتروني: %1%2</translation>
+      <translation>E-post: %1%2</translation>
     </message>
     <message>
       <source>Title: %1%2</source>
-      <translation>العنوان: %1%2</translation>
+      <translation>Titel: %1%2</translation>
     </message>
     <message>
       <source>Website: %1%2</source>
-      <translation>موقع الويب: %1%2</translation>
+      <translation>Webbplats: %1%2</translation>
     </message>
     <message>
       <source>Date: %1%2</source>
-      <translation>التاريخ: %1%2</translation>
+      <translation>Datum: %1%2</translation>
     </message>
     <message>
       <source>A dictionary lookup program.</source>
-      <translation>برنامج البحث في القاموس.</translation>
+      <translation>En ordbok uppslagsprogram.</translation>
     </message>
     <message>
       <source>Word or sentence to query.</source>
-      <translation>كلمة أو جملة للاستعلام.</translation>
+      <translation>Ord eller mening att söka.</translation>
     </message>
     <message>
       <source>Reset window state.</source>
-      <translation>إعادة ضبط حالة النافذة.</translation>
+      <translation>Återställ fönstertillstånd.</translation>
     </message>
     <message>
       <source>Disable tts.</source>
-      <translation>تعطيل تحويل النص إلى كلام.</translation>
+      <translation>Inaktivera tts.</translation>
     </message>
     <message>
       <source>Change the group of main window.</source>
-      <translation>تغيير مجموعة النافذة الرئيسية.</translation>
+      <translation>Ändra gruppen av huvudfönstret.</translation>
     </message>
     <message>
       <source>Change the group of popup.</source>
-      <translation>تغيير مجموعة النوافذ المنبثقة.</translation>
+      <translation>Ändra grupp av popup.</translation>
     </message>
     <message>
       <source>Toggle popup.</source>
-      <translation>قم بتبديل قائمة الفحص المنبثقة.</translation>
+      <translation>Växla skanning popup.</translation>
     </message>
     <message>
       <source>Print version and diagnosis info.</source>
-      <translation>طباعة النسخة ومعلومات التشخيص.</translation>
+      <translation>Utskriftsversion och diagnosinformation.</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>حفظ رسائل التصحيح إلى gd_log.txt في مجلد التكييف.</translation>
+      <translation>Spara felsökningsmeddelanden till gd_log.txt i konfigurationsmappen.</translation>
     </message>
     <message>
       <source>Force the word to be translated in Popup.</source>
-      <translation type="unfinished">Force the word to be translated in Popup.</translation>
+      <translation>Tvinga ordet som ska översättas i Popup.</translation>
     </message>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
-      <translation type="unfinished">Force the word to be translated in the mainwindow.</translation>
+      <translation>Tvinga ordet som ska översättas i huvudfönstret.</translation>
     </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
     <message>
       <source>Dictionary search/filter (Ctrl+F)</source>
-      <translation>رشّح/ابحث في القاموس (Ctrl+F)</translation>
+      <translation>Sök i/filtrera ordlista (Ctrl+F)</translation>
     </message>
     <message>
       <source>Clear Search</source>
-      <translation>امحُ البحث</translation>
+      <translation>Rensa sökning</translation>
     </message>
   </context>
   <context>
     <name>ResourceToSaveHandler</name>
     <message>
       <source>ERROR: %1</source>
-      <translation>خطأ: %1</translation>
+      <translation>FEL: %1</translation>
     </message>
     <message>
       <source>Resource saving error: </source>
-      <translation>خطأ في حفظ المورد: </translation>
+      <translation>Fel när resurs skulle sparas: </translation>
     </message>
     <message>
       <source>WARNING: %1</source>
-      <translation>تحذير: %1</translation>
+      <translation>VARNING: %1</translation>
     </message>
     <message>
       <source>The referenced resource failed to download.</source>
-      <translation>فشل تنزيل المورد المشار إليه.</translation>
+      <translation>Det gick inte att hämta den refererade resursen.</translation>
     </message>
   </context>
   <context>
     <name>Romaji</name>
     <message>
       <source>Hepburn Romaji for Hiragana</source>
-      <translation>رومانجي هِپ‌بيرن للهيراجانا</translation>
+      <translation>Romanisering för hiragana enl. Hepburn-systemet</translation>
     </message>
     <message>
       <source>Hepburn Romaji for Katakana</source>
-      <translation>رومانجي هِپ‌بيرن للكاتاكانا</translation>
+      <translation>Romanisering för katakana enl. Hepburn-systemet</translation>
     </message>
   </context>
   <context>
     <name>RussianTranslit</name>
     <message>
       <source>Russian Transliteration</source>
-      <translation>النسخ الروسي الحرفي</translation>
+      <translation>Translitterering av ryska</translation>
     </message>
   </context>
   <context>
     <name>ScanPopup</name>
     <message>
       <source>WARNING: %1</source>
-      <translation>تحذير: %1</translation>
+      <translation>VARNING: %1</translation>
     </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
-      <translation>Back</translation>
+      <translation>Tillbaka</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>Forward</translation>
+      <translation>Framåt</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>Pronounce Word (Alt+S)</translation>
+      <translation>Uttrycka ord (Alt+S)</translation>
     </message>
     <message>
       <source>Alt+S</source>
-      <translation type="unfinished">Alt+S</translation>
+      <translation>Alt+S</translation>
     </message>
     <message>
       <source>Send word to main window (Alt+W)</source>
-      <translation>Send word to main window (Alt+W)</translation>
+      <translation>Skicka ord till huvudfönstret (Alt+W)</translation>
     </message>
     <message>
       <source>Alt+W</source>
-      <translation type="unfinished">Alt+W</translation>
+      <translation>Alt+W</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>
-      <translation>Add word to Favorites (Ctrl+E)</translation>
+      <translation>Lägg till ord i favoriter (Ctrl+E)</translation>
     </message>
     <message>
       <source>Always stay on top of all other windows</source>
-      <translation>ابق دائمًا فوق جميع النوافذ الأخرى</translation>
+      <translation>Håll alltid koll på alla andra fönster</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>Use this to pin down the window so it would stay on screen,
-could be resized or managed in other ways.</translation>
+      <translation>Använd detta för att fästa ner fönstret så att det skulle stanna på skärmen,
+kan skalas om eller hanteras på andra sätt.</translation>
     </message>
   </context>
   <context>
     <name>SearchPanel</name>
     <message>
       <source>&amp;Previous</source>
-      <translation>&amp;سابق</translation>
+      <translation>&amp;Föregående</translation>
     </message>
     <message>
       <source>Ctrl+Shift+G</source>
-      <translation>Ctrl+Shift+G</translation>
+      <translation>Ctrl+Skift+G</translation>
     </message>
     <message>
       <source>&amp;Next</source>
-      <translation>&amp;التالي</translation>
+      <translation>&amp;Nästa</translation>
     </message>
     <message>
       <source>Ctrl+G</source>
@@ -3726,73 +3730,73 @@ could be resized or managed in other ways.</translation>
     </message>
     <message>
       <source>&amp;Case Sensitive</source>
-      <translation>&amp;تحسس حالة الأحرف</translation>
+      <translation>&amp;Ärende känslig</translation>
     </message>
     <message>
       <source>Find:</source>
-      <translation>اعثر على:</translation>
+      <translation>Sök:</translation>
     </message>
   </context>
   <context>
     <name>SoundDirsModel</name>
     <message>
       <source>Path</source>
-      <translation>المسار</translation>
+      <translation>Sökväg</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation>الاسم</translation>
+      <translation>Namn</translation>
     </message>
     <message>
       <source>Icon</source>
-      <translation>الرّمز</translation>
+      <translation>Ikon</translation>
     </message>
   </context>
   <context>
     <name>Sources</name>
     <message>
       <source>Files</source>
-      <translation>الملفات</translation>
+      <translation>Filer</translation>
     </message>
     <message>
       <source>Paths to search for the dictionary files:</source>
-      <translation>المسارات للبحث فيها عن ملفات القواميس:</translation>
+      <translation>Sökvägar där programmet skall söka efter ordlistefiler:</translation>
     </message>
     <message>
       <source>&amp;Add...</source>
-      <translation>أ&amp;ضف...</translation>
+      <translation>&amp;Lägg till …</translation>
     </message>
     <message>
       <source>&amp;Remove</source>
-      <translation>أ&amp;زل</translation>
+      <translation>Ta &amp;bort</translation>
     </message>
     <message>
       <source>Re&amp;scan now</source>
-      <translation>أعد الا&amp;كتشاف الآن</translation>
+      <translation>&amp;Sök igenom</translation>
     </message>
     <message>
       <source>Sound Dirs</source>
-      <translation>أدلة الصوت</translation>
+      <translation>Ljudmappar</translation>
     </message>
     <message>
       <source>Make dictionaries from bunches of audiofiles by adding paths here:</source>
-      <translation>اعمل قواميس من مجموعات من ملفات الصوت بإضافة المسارات هنا:</translation>
+      <translation>Skapa ordlistor från samlingar av ljudfiler genom att lägga till sökvägar här:</translation>
     </message>
     <message>
       <source>Morphology</source>
-      <translation>الصَرْف</translation>
+      <translation>Morfologi</translation>
     </message>
     <message>
       <source>Path to a directory with Hunspell/Myspell dictionaries:</source>
-      <translation>المسار إلى دليل بقواميس Hunspell/Myspell:</translation>
+      <translation>Sökväg till mapp som inehåller Hunspell-/Myspell-ordlistor:</translation>
     </message>
     <message>
       <source>&amp;Change...</source>
-      <translation>&amp;غيّر...</translation>
+      <translation>&amp;Bläddra …</translation>
     </message>
     <message>
       <source>Available morphology dictionaries:</source>
-      <translation>قواميس الصَرْف المتوفّرة:</translation>
+      <translation>Tillgängliga mofologiska ordlistor:</translation>
     </message>
     <message>
       <source>Each morphology dictionary appears as a
@@ -3801,45 +3805,44 @@ provides stem words for searches and
 spelling suggestions for mistyped words.
 Add appropriate dictionaries to the bottoms
 of the appropriate groups to use them.</source>
-      <translation>كل قاموس صَرْف يظهر
-كقاموس مساعد منفصل
-حيث يقدّم جذر الكلمة للبحث
-واقتراحات الإملاء للكلمات
-الخاطئة. أضف القواميس
-المناسبة إلى أسفل المجموعات
-المناسبة لاستخدامها.</translation>
+      <translation>Varje mofologisk ordlista visas som en
+separat hjälpordlista, som tillhandahåller
+ordstammar för sök- och stavningsförslag
+till felstavade ord. Lägg till ordlistorna
+nederst i därtill passande grupper för att
+använda dem.</translation>
     </message>
     <message>
       <source>Wikipedia</source>
-      <translation>ويكيبيديا</translation>
+      <translation>Wikipedia</translation>
     </message>
     <message>
       <source>Wikipedia (MediaWiki) sites:</source>
-      <translation>مواقع ويكيبيديا (ميدياويكي):</translation>
+      <translation>Wikiwebbplatser (MediaWiki):</translation>
     </message>
     <message>
       <source>Websites</source>
-      <translation>مواقع الوِب</translation>
+      <translation>Webbplatser</translation>
     </message>
     <message>
       <source>Any websites. A string %GDWORD% will be replaced with the query word:</source>
-      <translation>أي مواقع للوِب. السلسلة %GDWORD% ستُستبدل بكلمة الاستعلام:</translation>
+      <translation>Ange de webbplatser du vill använda. Strängen %GDWORD% ersätts av sökordet vid sökning:</translation>
     </message>
     <message>
       <source>DICT servers</source>
-      <translation>خوادم DICT</translation>
+      <translation>DICT-servrar</translation>
     </message>
     <message>
       <source>DICT servers:</source>
-      <translation>خوادم DICT:</translation>
+      <translation>DICT-servrar:</translation>
     </message>
     <message>
       <source>Programs</source>
-      <translation>البرامج</translation>
+      <translation>Program</translation>
     </message>
     <message>
       <source>Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</source>
-      <translation>أي برامج خارجية. سيتم استبدال سلسلة %GDWORD% بكلمة الاستعلام. سيتم استبدال السلسلة %GDSEARCH% بالنص الموجود في شريط البحث. إذا لم يتم توفير كلا المعلمتين ، فسيتم إدخال الكلمة الرئيسية في الإدخال القياسي.</translation>
+      <translation>Alla externa program. En sträng %GDWORD% kommer att ersättas med frågeordet. En sträng %GDSEARCH% kommer att ersättas med texten i sökfältet. Om båda parametrarna inte anges, kommer huvudordet matas in i standardindata.</translation>
     </message>
     <message>
       <source>Lingua Libre</source>
@@ -3847,289 +3850,289 @@ of the appropriate groups to use them.</source>
     </message>
     <message>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pronunciations provided by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;النطق مقدمة من &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;، وهي وسيلة لغوية تعاونية مكتبة ويكيميديا فرنسا. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Uttal tillhandahålls av &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, ett samarbetande språkligt mediebibliotek från Wikimedia Frankrike. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <source>Enable Lingua Libre</source>
-      <translation>قم بتمكين Lingua Libre</translation>
+      <translation>Aktivera Lingua Libre</translation>
     </message>
     <message>
       <source>ISO 639-3 language code</source>
-      <translation>رمز لغة ISO 639-3</translation>
+      <translation>Språkkod ISO 639-3</translation>
     </message>
     <message>
       <source>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
 
 Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</source>
-      <translation>أمثلة:  &amp;quot;eng&amp;quot; للغة الإنجليزية ، &amp;quot;fra&amp;quot; للفرنسية &lt;br&gt;
+      <translation>Exempel:  &amp;quot;eng&amp;quot; för engelska, &amp;quot;fra&amp;quot; för franska &lt;br&gt;
 
-يمكن العثور على القائمة الكاملة للغات المتاحة &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; هنا &lt;/a&gt;</translation>
+Fullständig lista över tillgängliga språk finns &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; här &lt;/a&gt;</translation>
     </message>
     <message>
       <source>Forvo</source>
-      <translation>فورڤو</translation>
+      <translation>Forvo</translation>
     </message>
     <message>
       <source>Live pronunciations from &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. The site allows people to record and share word pronunciations. You can listen to them from GoldenDict.</source>
-      <translation>نطق حيّ من &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. هذا الموقع يسمح للناس بتسجيل ومشاركة نطق الكلمة. يمكنك الإستماع إليها من القاموس الذهبي.</translation>
+      <translation>Uppläsning av ord från &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;, en webbplats som låter människor spela in och dela uttal av ord. Du kan lyssna på inspelningarna inifrån GoldenDict.</translation>
     </message>
     <message>
       <source>Enable pronunciations from Forvo</source>
-      <translation>مكّن النطق من فورڤو</translation>
+      <translation>Aktivera orduppläsningar från Forvo</translation>
     </message>
     <message>
       <source>API Key:</source>
-      <translation>مفتاح API:</translation>
+      <translation>API-nyckel:</translation>
     </message>
     <message>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use of Forvo currently requires an API key, register on the site to get your own key.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;يتطلب استخدام Forvo حاليًا مفتاح API ، قم بالتسجيل في الموقع للحصول على المفتاح الخاص بك.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Användning av Forvo kräver för närvarande en API-nyckel, registrera dig på webbplatsen för att få din egen nyckel.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;احصل على مفتاحك الخاص &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;هنا&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Få din egen nyckel &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;här&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <source>Language codes (comma-separated):</source>
-      <translation>ترميزات اللغة (مقسّمة بفواصل):</translation>
+      <translation>Språkkoder:</translation>
     </message>
     <message>
       <source>List of language codes you would like to have. Example: &quot;en, ru&quot;.</source>
-      <translation>قائمة ترميزات اللغة التي تريد امتلاكها. مثال: &quot;en, ru&quot;.</translation>
+      <translation>Lista över språkkoder för de som du vill ha tillgång till. Exempel: &quot;en, fr, sv&quot;.</translation>
     </message>
     <message>
       <source>Full list of language codes is available &lt;a href=&quot;http://www.forvo.com/languages-codes/&quot;&gt;here&lt;/a&gt;.</source>
-      <translation>القائمة الكاملة من ترميزات اللغة متوفّرة &lt;a href=&quot;http://www.forvo.com/languages-codes/&quot;&gt;هنا&lt;/a&gt;.</translation>
+      <translation>Avgränsa språkkoderna med kommatecken. En fullständig lista över språkkoder finns tillgänglig &lt;a href=&quot;http://www.forvo.com/languages-codes/&quot;&gt;här&lt;/a&gt;.</translation>
     </message>
     <message>
       <source>Transliteration</source>
-      <translation>النسخ الحرفي</translation>
+      <translation>Translitterering</translation>
     </message>
     <message>
       <source>Greek transliteration</source>
-      <translation>النسخ اليوناني الحرفي</translation>
+      <translation>Translitterering av grekiska</translation>
     </message>
     <message>
       <source>Russian transliteration</source>
-      <translation>النسخ الروسي الحرفي</translation>
+      <translation>Translitterering av ryska</translation>
     </message>
     <message>
       <source>German transliteration</source>
-      <translation>النسخ الألماني الحرفي</translation>
+      <translation>Translitterering av tyska</translation>
     </message>
     <message>
       <source>Belarusian transliteration</source>
-      <translation>النسخ البلاروسي الحرفي</translation>
+      <translation>Translitterering av vitryska</translation>
     </message>
     <message>
       <source>Enables to use the Latin alphabet to write the Japanese language</source>
-      <translation>يمكّن استخدام الأبجدية اللاتينية لكتابة اللغة اليابانية</translation>
+      <translation>Låter dig använda det latinska alfabetet för att skriva på japanska</translation>
     </message>
     <message>
       <source>Japanese Romaji</source>
-      <translation>روماجي اليابانية</translation>
+      <translation>Romanisering av japanska</translation>
     </message>
     <message>
       <source>Systems:</source>
-      <translation>الأنظمة:</translation>
+      <translation>System:</translation>
     </message>
     <message>
       <source>Hepburn</source>
-      <translation>هِپ‌بيرن</translation>
+      <translation>Hepburn</translation>
     </message>
     <message>
       <source>Syllabaries:</source>
-      <translation>الكتابة المقطعية:</translation>
+      <translation>Stavelseskrifter:</translation>
     </message>
     <message>
       <source>Hiragana Japanese syllabary</source>
-      <translation>الكتابة اليابانية الهيراجانا المقطعية</translation>
+      <translation>Den japanska stavelseskriften hiragana.</translation>
     </message>
     <message>
       <source>Hiragana</source>
-      <translation>الهيراجانا</translation>
+      <translation>Hiragana</translation>
     </message>
     <message>
       <source>Katakana Japanese syllabary</source>
-      <translation>الكتابة اليابانية الكاتاكانا المقطعية</translation>
+      <translation>Den japanska stavelseskriften katakana.</translation>
     </message>
     <message>
       <source>Katakana</source>
-      <translation>الكاتاكانا</translation>
+      <translation>Katakana</translation>
     </message>
     <message>
       <source>Custom transliteration</source>
-      <translation>التحويل الصوتي المخصص</translation>
+      <translation>Anpassad translitterering</translation>
     </message>
     <message>
       <source>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</source>
-      <translation>يتم تطبيق هذا فقط في عبارة البحث ، حيث يمثل كل سطر كتابة بحروف لغة أخرى ، وفاصلة منقوطة منفصلة. على سبيل المثال ، ae ؛ æ ، يمكن للمستخدمين إدخال ae لتمثيل æ في الكلمة الهدف.</translation>
+      <translation>Detta gäller endast i sökfraser, där varje rad representerar en translitteration, separerad med semikolon. Till exempel kan ae;æ, användare mata in ae för att representera æ i målordet.</translation>
     </message>
     <message>
       <source>ae;æ #this is an example</source>
-      <translation>ae ؛ æ # هذا مثال</translation>
+      <translation>ae;æ #det här är ett exempel</translation>
     </message>
     <message>
       <source>Text to Speech</source>
-      <translation>قراءة النّصوص</translation>
+      <translation>Text till tal</translation>
     </message>
     <message>
       <source>Choose a directory</source>
-      <translation>اختر قاموسًا</translation>
+      <translation>Välj en mapp</translation>
     </message>
     <message>
       <source>Confirm removal</source>
-      <translation>تأكيد الإزالة</translation>
+      <translation>Bekräfta borttagning</translation>
     </message>
     <message>
       <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>أأزيل القاموس &lt;b&gt;%1&lt;/b&gt; من القائمة؟</translation>
+      <translation>Vill du ta bort mappen &lt;b&gt;%1&lt;/b&gt; ur listan?</translation>
     </message>
     <message>
       <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>أأزيل الموقع &lt;b&gt;%1&lt;/b&gt; من القائمة؟</translation>
+      <translation>Vill du ta bort webbplatsen &lt;b&gt;%1&lt;/b&gt; ur listan?</translation>
     </message>
     <message>
       <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>أأزيل البرنامج &lt;b&gt;%1&lt;/b&gt; من القائمة؟</translation>
+      <translation>Vill du ta bort programmet &lt;b&gt;%1&lt;/b&gt; ur listan?</translation>
     </message>
     <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
-      <translation type="unfinished">The most widely used method of transcription of Japanese, based on English phonology</translation>
+      <translation>Den mest använda metoden av transkription av japanska, baserat på engelsk fonologi</translation>
     </message>
   </context>
   <context>
     <name>StylesComboBox</name>
     <message>
       <source>None</source>
-      <translation>لاشيء</translation>
+      <translation>Ingen</translation>
     </message>
   </context>
   <context>
     <name>TextToSpeechSource</name>
     <message>
       <source>Selected voice engines:</source>
-      <translation>محركات الصوت المحدّدة:</translation>
+      <translation>Valda talmoduler:</translation>
     </message>
     <message>
       <source>&amp;Add</source>
-      <translation>أ&amp;ضف</translation>
+      <translation>&amp;Lägg till</translation>
     </message>
     <message>
       <source>&amp;Remove</source>
-      <translation>أ&amp;زل</translation>
+      <translation>Ta &amp;bort</translation>
     </message>
     <message>
       <source>Preferences</source>
-      <translation>تفضيلات</translation>
+      <translation>Inställningar</translation>
     </message>
     <message>
       <source>Volume:</source>
-      <translation>الحجم:</translation>
+      <translation>Volym:</translation>
     </message>
     <message>
       <source>Rate:</source>
-      <translation>المعدّل:</translation>
+      <translation>Hastighet:</translation>
     </message>
     <message>
       <source>Preview</source>
-      <translation>معاينة</translation>
+      <translation>Förhandsgranskning</translation>
     </message>
     <message>
       <source>Available voice engines:</source>
-      <translation>محركات الصوت المتوفّرة:</translation>
+      <translation>Tillgängliga talmoduler:</translation>
     </message>
     <message>
       <source>Text to be previewed:</source>
-      <translation>النص لمعاينته:</translation>
+      <translation>Text som skall förhandsgranskas:</translation>
     </message>
     <message>
       <source>Type text to be previewed here.</source>
-      <translation>اطبع نصًّا هنا لعرضه.</translation>
+      <translation>Skriv texten du vill förhandsgranska här.</translation>
     </message>
     <message>
       <source>&amp;Preview</source>
-      <translation>&amp;عاين</translation>
+      <translation>&amp;Förhandsgranska</translation>
     </message>
     <message>
       <source>No TTS voice available</source>
-      <translation>لم يُعثر على صوت TTS</translation>
+      <translation>Inga text till tal-moduler tillgängliga</translation>
     </message>
     <message>
       <source>Cannot find available TTS voice.&lt;br&gt;Please make sure that at least one TTS engine installed on your computer already.</source>
-      <translation>لا يمكن العثور على صوت TTS متوفر.&lt;br&gt;يرجى التأكد من تثبيت محرك TTS واحد على الأقل على جهازك.</translation>
+      <translation>Det gick inte att hitta någon tillgänglig talmodul.&lt;br&gt;Säkerställ att åtminstone en talmodul finns installerad på din dator.</translation>
     </message>
     <message>
       <source>Confirm removal</source>
-      <translation>تأكيد الإزالة</translation>
+      <translation>Bekräfta borttagning</translation>
     </message>
     <message>
       <source>Remove voice engine &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>أأزيل محرك الصوت &lt;b&gt;%1&lt;/b&gt; من القائمة؟</translation>
+      <translation>Vill du ta bort talmodulen &lt;b&gt;%1&lt;/b&gt; ur listan?</translation>
     </message>
   </context>
   <context>
     <name>TranslateBox</name>
     <message>
       <source>Type a word or phrase to search dictionaries</source>
-      <translation>اطبع كلمة أو عبارة للبحث في القواميس</translation>
+      <translation>Ange ett ord eller en fras för att söka i ordlistor</translation>
     </message>
     <message>
       <source>Drop-down</source>
-      <translation>القائمة المنسدلة</translation>
+      <translation>Rullgardinsmeny</translation>
     </message>
   </context>
   <context>
     <name>VoiceEnginesModel</name>
     <message>
       <source>Enabled</source>
-      <translation>ممكّن</translation>
+      <translation>Aktiverad</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation>الاسم</translation>
+      <translation>Namn</translation>
     </message>
     <message>
       <source>Id</source>
-      <translation>المعرّف</translation>
+      <translation>ID</translation>
     </message>
     <message>
       <source>Icon</source>
-      <translation>الأيقونة</translation>
+      <translation>Ikon</translation>
     </message>
   </context>
   <context>
     <name>WebSitesModel</name>
     <message>
       <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>إدراج المقالة كارتباط داخل علامة &lt;iframe&gt;</translation>
+      <translation>Infoga artikel som länk inuti &lt;iframe&gt; tagg</translation>
     </message>
     <message>
       <source>Enabled</source>
-      <translation>ممكّن</translation>
+      <translation>Aktiverad</translation>
     </message>
     <message>
       <source>As link</source>
-      <translation>كوصلة</translation>
+      <translation>Som länk</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation>الاسم</translation>
+      <translation>Namn</translation>
     </message>
     <message>
       <source>Address</source>
-      <translation>العنوان</translation>
+      <translation>Adress</translation>
     </message>
     <message>
       <source>Icon</source>
-      <translation>الرّمز</translation>
+      <translation>Ikon</translation>
     </message>
   </context>
   <context>
     <name>WordFinder</name>
     <message>
       <source>Failed to query some dictionaries.</source>
-      <translation>فشل الاستعلام عن بعض القواميس.</translation>
+      <translation>Det gick inte att fråga några av ordlistorna.</translation>
     </message>
   </context>
 </TS>
