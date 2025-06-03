@@ -30,8 +30,6 @@ Config::Preferences * GlobalBroadcaster::getPreference() const
 void GlobalBroadcaster::addWhitelist( QString url )
 {
   whitelist.insert( url );
-  const auto baseUrl = Utils::Url::getHostBase( url );
-  whitelist.insert( baseUrl );
 }
 
 bool GlobalBroadcaster::existedInWhitelist( QString url ) const
