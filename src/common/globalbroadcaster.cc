@@ -9,7 +9,7 @@ GlobalBroadcaster::GlobalBroadcaster( QObject * parent ):
   QStringList whiteUrlHosts = { "googleapis.com", "gstatic.com" };
 
   for ( auto & host : std::as_const( whiteUrlHosts ) ) {
-    addWhitelist( host );
+    whitelist.insert( host );
   }
 }
 
