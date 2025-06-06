@@ -22,7 +22,7 @@ void WebUrlRequestInterceptor::interceptRequest( QWebEngineUrlRequestInfo & info
     if ( url.scheme() == "file" ) {
       return;
     }
-    auto hostBase = Utils::Url::getHostBase( url.host() );
+    auto hostBase = url.host();
     if ( GlobalBroadcaster::instance()->existedInWhitelist( hostBase ) ) {
       //whitelist url does not block
       return;
