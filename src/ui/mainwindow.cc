@@ -3079,7 +3079,7 @@ void MainWindow::trayIconActivated( QSystemTrayIcon::ActivationReason r )
 
 void MainWindow::visitHomepage()
 {
-  QDesktopServices::openUrl( QUrl( QApplication::organizationDomain() ) );
+  QDesktopServices::openUrl( QUrl( "https://github.com/xiaoyifang/goldendict-ng" ) );
 }
 
 void MainWindow::openConfigFolder()
