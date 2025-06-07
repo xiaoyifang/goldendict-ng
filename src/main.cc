@@ -276,8 +276,9 @@ int main( int argc, char ** argv )
 
   QHotkeyApplication app( "GoldenDict-ng", argc, argv );
 
+  app.setDesktopFileName( "io.github.xiaoyifang.goldendict_ng" );
   QHotkeyApplication::setApplicationName( "GoldenDict-ng" );
-  QHotkeyApplication::setOrganizationDomain( "https://github.com/xiaoyifang/goldendict-ng" );
+  QHotkeyApplication::setOrganizationDomain( "xiaoyifang.github.io" );
 #ifndef Q_OS_MACOS
   // macOS icon is defined in Info.plist
   QHotkeyApplication::setWindowIcon( QIcon( ":/icons/programicon.png" ) );
