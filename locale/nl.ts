@@ -1,314 +1,314 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="pt-BR" sourcelanguage="en">
+<TS version="2.1" language="nl" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
       <source>About</source>
-      <translation>Sobre</translation>
+      <translation>Over</translation>
     </message>
     <message>
       <source>Licensed under GNU GPLv3 or later</source>
-      <translation>Licença sob os termos da GNU GPLv3 ou posterior</translation>
+      <translation>Gebruiksrecht verleend onder GNU GPLv3 of nieuwer</translation>
     </message>
     <message>
       <source>Copy version info</source>
-      <translation>Copiar informações da versão</translation>
+      <translation>Versie info kopiëren</translation>
     </message>
   </context>
   <context>
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation type="unfinished">Anki: can&apos;t create a card without a word</translation>
+      <translation>Anki: kan&apos;een kaart zonder woord maken</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
-      <translation>Busca no Anki: AnkiConnect não está habilitado.</translation>
+      <translation>Anki zoeken: AnkiConnect is niet ingeschakeld.</translation>
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation>Anki: post para Anki falhou</translation>
+      <translation>Anki: post op Anki mislukt</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation>Anki: post para Anki com sucesso</translation>
+      <translation>Anki: post op Anki succes</translation>
     </message>
   </context>
   <context>
     <name>ArticleInspector</name>
     <message>
       <source>Inspect</source>
-      <translation>Visualizar</translation>
+      <translation>Inspecteren</translation>
     </message>
   </context>
   <context>
     <name>ArticleMaker</name>
     <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
-      <translation>Nenhuma tradução para &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; foi encontrada no grupo &lt;b&gt;%2&lt;/b&gt;.</translation>
+      <translation>In groep &lt;b&gt;%2&lt;/b&gt;is geen vertaling voor &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; gevonden.</translation>
     </message>
     <message>
       <source>No translation was found in group &lt;b&gt;%1&lt;/b&gt;.</source>
-      <translation>Não achei a palavra no grupo &lt;b&gt;%1&lt;/b&gt;.</translation>
+      <translation>Geen vertaling gevonden in de groep &lt;b&gt;%1&lt;/b&gt;.</translation>
     </message>
     <message>
       <source>Welcome!</source>
-      <translation>Bem-vindo!</translation>
+      <translation>Welkom!</translation>
     </message>
     <message>
       <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Bem-vindo ao &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Para começar a trabalhar com o programa, primeiro visite &lt;em&gt;Editar | Dicionários&lt;/em&gt; para adicionar alguns caminhos de diretório onde procurar os arquivos do dicionário, configurar vários sites da Wikipedia ou outras fontes, ajustar a ordem do dicionário ou criar grupos de dicionários.&lt;p&gt;E então você&apos;pronto para procurar suas palavras! Você pode fazer isso nesta janela usando um painel à esquerda ou pode &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;procurar palavras de outros aplicativos ativos&lt;/a&gt;. &lt;p&gt;Para personalizar o programa, confira as preferências disponíveis em &lt;em&gt;Editar | Preferências&lt;/em&gt;. Todas as configurações possuem dicas de ferramentas, leia-as se tiver dúvidas sobre alguma coisa.&lt;p&gt;Caso precise de mais ajuda, tenha alguma dúvida, sugestão ou apenas queira saber o que os outros pensam, você é bem-vindo ao programa&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;fórum&lt;/a&gt;.&lt;p&gt;Verifique o programa&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;site&lt;/a&gt; para obter atualizações. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licenciado sob GPLv3 ou posterior.</translation>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;Welkom bij &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Om met het programma aan de slag te gaan, gaat u eerst naar &lt;em&gt;Bewerken | Woordenboeken&lt;/em&gt; om enkele mappaden toe te voegen waar u naar woordenboekbestanden kunt zoeken, verschillende Wikipedia-sites of andere bronnen kunt instellen, de volgorde van de woordenboeken kunt aanpassen of woordenboekgroepen kunt maken.&lt;p&gt;En dan ben je&apos;om je woorden op te zoeken! Dat kun je in dit venster doen door een venster aan de linkerkant te gebruiken, of je kunt &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;woorden opzoeken uit andere actieve applicaties&lt;/a&gt;. &lt;p&gt;Om het programma aan te passen, bekijk de beschikbare voorkeuren op &lt;em&gt;Bewerken | Voorkeuren&lt;/em&gt;. Alle instellingen daar hebben tooltips, lees deze zeker als u ergens over twijfelt.&lt;p&gt;Heeft u verdere hulp nodig, heeft u vragen, suggesties of vraagt u zich gewoon af wat anderen ervan vinden, dan bent u van harte welkom op het programma&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Kijk programma&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; voor de updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Gelicentieerd onder GPLv3 of hoger.</translation>
     </message>
     <message>
       <source>(untitled)</source>
-      <translation>(sem título)</translation>
+      <translation>(naamloos)</translation>
     </message>
     <message>
       <source>(picture)</source>
-      <translation>(imagem)</translation>
+      <translation>(afbeelding)</translation>
     </message>
   </context>
   <context>
     <name>ArticleRequest</name>
     <message>
       <source>From </source>
-      <translation>Resultados de </translation>
+      <translation>Uit </translation>
     </message>
     <message>
       <source>Make a new Anki note</source>
-      <translation>Fazer uma nova nota Anki</translation>
+      <translation>Maak een nieuwe Anki-notitie</translation>
     </message>
     <message>
       <source>Query error: %1</source>
-      <translation>Erro de Consulta: %1</translation>
+      <translation>Fout in zoekopdracht: %1</translation>
     </message>
     <message>
       <source>Close words: </source>
-      <translation>Palavras semelhantes: </translation>
+      <translation>Soortgelijke woorden: </translation>
     </message>
     <message>
       <source>Compound expressions: </source>
-      <translation>Termos compostos: </translation>
+      <translation>Samengestelde treffers: </translation>
     </message>
     <message>
       <source>Individual words: </source>
-      <translation>Palavras independentes: </translation>
+      <translation>Individuele woorden: </translation>
     </message>
   </context>
   <context>
     <name>ArticleView</name>
     <message>
       <source>Phrase not found</source>
-      <translation>Frase não encontrada</translation>
+      <translation>Zin niet gevonden</translation>
     </message>
     <message>
       <source>%1 of %2 matches</source>
-      <translation>%1 de %2 partidas</translation>
+      <translation>%1 van %2 wedstrijden</translation>
     </message>
     <message>
       <source>Select Current Article</source>
-      <translation>Selecionar o Artigo Atual</translation>
+      <translation>Huidig artikel selecteren</translation>
     </message>
     <message>
       <source>Copy as text</source>
-      <translation>Copiar como texto</translation>
+      <translation>Kopiëren als tekst</translation>
     </message>
     <message>
       <source>Inspect</source>
-      <translation>Inspecionar</translation>
+      <translation>Inspecteren</translation>
     </message>
     <message>
       <source>Resource</source>
-      <translation>Fonte de Dados</translation>
+      <translation>Bron</translation>
     </message>
     <message>
       <source>TTS Voice</source>
-      <translation>Voz TTS</translation>
+      <translation>TTS Stem</translation>
     </message>
     <message>
       <source>Audio</source>
-      <translation>Áudio</translation>
+      <translation>Geluid</translation>
     </message>
     <message>
       <source>Video</source>
-      <translation>Vídeo</translation>
+      <translation>Video</translation>
     </message>
     <message>
       <source>Video: %1</source>
-      <translation>Vídeo: %1</translation>
+      <translation>Video: %1</translation>
     </message>
     <message>
       <source>Definition from dictionary &quot;%1&quot;: %2</source>
-      <translation>Definição do dicionário &quot;%1&quot;: %2</translation>
+      <translation>Definitie uit woordenboek &quot;%1&quot;: %2</translation>
     </message>
     <message>
       <source>Definition: %1</source>
-      <translation>Definição: %1</translation>
+      <translation>Definitie: %1</translation>
     </message>
     <message>
       <source>ERROR: %1</source>
-      <translation>Erro: %1</translation>
+      <translation>FOUT: %1</translation>
     </message>
     <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
-      <translation>O programa de áudio especificado não existe.</translation>
+      <translation>Dit programma voor afspelen van geluiden bestaat niet.</translation>
     </message>
     <message>
       <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>A fonte de dados procurada não existe.</translation>
+      <translation>De bron waarnaar wordt verwezen bestaat niet.</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
-      <translation>&amp;Optar Link</translation>
+      <translation>&amp;Link openen</translation>
     </message>
     <message>
       <source>Open Link in New &amp;Tab</source>
-      <translation>Abrir Ligação em Nova Guia (&amp;G)</translation>
+      <translation>Koppeling openen in nieuw&amp;tabblad</translation>
     </message>
     <message>
       <source>Open Link in &amp;External Browser</source>
-      <translation>Abrir link em &amp;Navegador da Web Externo</translation>
+      <translation>Koppeling openen in &amp;externe browser</translation>
     </message>
     <message>
       <source>Save &amp;image...</source>
-      <translation>Salvar &amp;imagem...</translation>
+      <translation>&amp;Afbeelding opslaan...</translation>
     </message>
     <message>
       <source>Open image in system viewer...</source>
-      <translation>Abrir imagem no visualizador do sistema...</translation>
+      <translation>Afbeelding openen in systeemviewer...</translation>
     </message>
     <message>
       <source>Save s&amp;ound...</source>
-      <translation>Salvar S&amp;om...</translation>
+      <translation>&amp;Geluid opslaan...</translation>
     </message>
     <message>
       <source>&amp;Look up &quot;%1&quot;</source>
-      <translation>&amp;Procurar &quot;%1&quot;</translation>
+      <translation>&amp;Zoeken naar &quot;%1&quot;</translation>
     </message>
     <message>
       <source>Look up &quot;%1&quot; in &amp;New Tab</source>
-      <translation>Exibir resultado de &quot;%1&quot; em &amp;nova guia</translation>
+      <translation>Zoeken naar &quot;%1&quot; in een &amp;nieuw tabblad</translation>
     </message>
     <message>
       <source>Send &quot;%1&quot; to input line</source>
-      <translation>Enviar &quot;%1&quot; para o campo</translation>
+      <translation>Verzend &quot;%1&quot; naar zoekveld</translation>
     </message>
     <message>
       <source>&amp;Add &quot;%1&quot; to history</source>
-      <translation>&amp;Adicionar &quot;%1&quot; ao histórico</translation>
+      <translation>Voeg &quot;%1&quot; &amp;toe aan geschiedenis</translation>
     </message>
     <message>
       <source>Look up &quot;%1&quot; in %2</source>
-      <translation>Procurar «%1» em %2</translation>
+      <translation>Zoeken naar &quot;%1&quot; in %2</translation>
     </message>
     <message>
       <source>Look up &quot;%1&quot; in %2 in &amp;New Tab</source>
-      <translation>Exibir o resultado da consulta de &quot;%1&quot; no %2 em &amp;nova aba</translation>
+      <translation>Zoeken naar &quot;%1&quot; in %2 in een &amp;nieuw tabblad</translation>
     </message>
     <message>
       <source>Save &amp;Bookmark &quot;%1...&quot;</source>
-      <translation>Salvar &amp;Marcador &quot;%1...&quot;</translation>
+      <translation>Bladwijzer &amp;opslaan &quot;%1...&quot;</translation>
     </message>
     <message>
       <source>&amp;Send Current Article to Anki</source>
-      <translation>&amp;Enviar Artigo Atual para Anki</translation>
+      <translation>&amp;Stuur Huidig artikel naar Anki</translation>
     </message>
     <message>
       <source>&amp;Send selected text to Anki</source>
-      <translation>&amp;Enviar o texto selecionado para Anki</translation>
+      <translation>&amp;Stuur geselecteerde tekst naar Anki</translation>
     </message>
     <message>
       <source>Save sound</source>
-      <translation>Salvar som</translation>
+      <translation>Geluid opslaan</translation>
     </message>
     <message>
       <source>Sound files (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
-      <translation>Arquivos de som (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;Todos os arquivos (*.*)</translation>
+      <translation>Geluidsbestanden (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;Alle bestanden (*.*)</translation>
     </message>
     <message>
       <source>Save image</source>
-      <translation>Salvar imagem</translation>
+      <translation>Afbeelding opslaan</translation>
     </message>
     <message>
       <source>Image files (*.bmp *.jpg *.png *.tif);;All files (*.*)</source>
-      <translation>Arquivos de imagem (*.bmp *.jpg *.png *.tif);;Todos os arquivos (*.*)</translation>
+      <translation>Afbeeldingsbestanden (*.bmp *.jpg *.png *.tif);;Alle bestanden (*.*)</translation>
     </message>
     <message>
       <source>Failed to play sound file: %1</source>
-      <translation>Falha ao reproduzir som do arquivo: %1</translation>
+      <translation>Kon geluidsbestand niet afspelen: %1</translation>
     </message>
     <message>
       <source>Failed to create temporary file.</source>
-      <translation>Não foi possível criar o arquivo temporário.</translation>
+      <translation>Tijdelijk bestand kan niet worden aangemaakt.</translation>
     </message>
     <message>
       <source>Failed to auto-open resource file, try opening manually: %1.</source>
-      <translation>Não foi possível abrir a fonte de dados automaticamente. Tente abri-la manualmente: %1.</translation>
+      <translation>Kan bronbestand niet automatisch openen, probeer het handmatig te openen: %1.</translation>
     </message>
     <message>
       <source>WARNING: Audio Player: %1</source>
-      <translation>AVISO: Reprodutor de áudio: %1</translation>
+      <translation>WAARSCHUWING: Audio Player: %1</translation>
     </message>
     <message>
       <source>&amp;Create Anki note</source>
-      <translation>&amp;Criar nota Anki</translation>
+      <translation>&amp;Maak Anki-notitie</translation>
     </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
     <message>
       <source>Belarusian transliteration from latin to cyrillic (classic orthography)</source>
-      <translation>Bielorrusso transliteração do latim para o cirílico (ortografia clássica)</translation>
+      <translation>Wit-Russische transliteratie van Latijn naar cyrillisch (traditionele spelling)</translation>
     </message>
     <message>
       <source>Belarusian transliteration from latin to cyrillic (school orthography)</source>
-      <translation>Bielorrusso transliteração do latim para o cirílico (ortografia escolar)</translation>
+      <translation>Wit-Russische transliteratie van Latijn naar cyrillisch (hedendaagse spelling)</translation>
     </message>
     <message>
       <source>Belarusian transliteration (smoothes out the difference
 between classic and school orthography in cyrillic)</source>
-      <translation>Bielorrusso transliteração (atenua as diferenças
-entre clássico e ortografia escolar em cirílico)</translation>
+      <translation>Wit-Russische transliteratie (vereffent het verschil tussen
+traditionele en hedendaagse spelling in het cyrillisch)</translation>
     </message>
   </context>
   <context>
     <name>ChineseConversion</name>
     <message>
       <source>Chinese Conversion</source>
-      <translation>Conversão para chinês</translation>
+      <translation>Chinese conversie</translation>
     </message>
     <message>
       <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Habilitar conversão entre caracteres de chinês simplificado e tradicional</translation>
+      <translation>Conversie tussen vereenvoudigde en traditionele Chinese tekens inschakelen</translation>
     </message>
     <message>
       <source>Chinese Con&amp;version</source>
-      <translation>Con&amp;versão para chinês</translation>
+      <translation>Chinese Con&amp;versie</translation>
     </message>
     <message>
       <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Habilitar conversão de caracteres de chinês simplificado para tradicional (variante de Taiwan)</translation>
+      <translation>Schakel conversie van vereenvoudigde tekens naar traditionele (Taiwan-variant) tekens in</translation>
     </message>
     <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Habilitar conversão de caracteres de chinês simplificado para tradicional (variante de Hong Kong)</translation>
+      <translation>Schakel conversie van vereenvoudigde tekens naar traditionele (Hong Kong variant) tekens in</translation>
     </message>
     <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Habilitar conversão de caracteres de chinês tradicional para simplificado</translation>
+      <translation>Schakel conversie van traditionele tekens naar vereenvoudigde tekens in</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Conversão simplificada para chinês tradicional (variante de Taiwan)</translation>
+      <translation>Vereenvoudigd naar de traditionele Chinese conversie (Taiwan-variant)</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Conversão simplificada para chinês tradicional (variante de Hong Kong)</translation>
+      <translation>Vereenvoudigd naar de traditionele Chinese (Hong Kong variant) conversie</translation>
     </message>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
-      <translation>Conversão tradicional para chinês simplificado</translation>
+      <translation>Traditioneel naar vereenvoudigde Chinese conversie</translation>
     </message>
     <message>
       <source>Taiwan variant</source>
@@ -316,516 +316,516 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Hong Kong variant</source>
-      <translation>Variante de Hong Kong</translation>
+      <translation>Hong Kong variant</translation>
     </message>
     <message>
       <source>Mainland variant</source>
-      <translation>Variante continental</translation>
+      <translation>Hoofdland variant</translation>
     </message>
   </context>
   <context>
     <name>CustomTranslit</name>
     <message>
       <source>custom transliteration</source>
-      <translation>transliteração personalizada</translation>
+      <translation>aangepaste transliteratie</translation>
     </message>
   </context>
   <context>
     <name>DictGroupWidget</name>
     <message>
       <source>Form</source>
-      <translation>Formulário</translation>
+      <translation>Formulier</translation>
     </message>
     <message>
       <source>Group icon:</source>
-      <translation>Ícone do grupo:</translation>
+      <translation>Groeppictogram:</translation>
     </message>
     <message>
       <source>Shortcut:</source>
-      <translation>Atalho:</translation>
+      <translation>Snelkoppeling:</translation>
     </message>
     <message>
       <source>Favorites folder:</source>
-      <translation>Pasta de favoritos:</translation>
+      <translation>Favorieten map:</translation>
     </message>
     <message>
       <source>None</source>
-      <translation>Nenhum</translation>
+      <translation>Geen</translation>
     </message>
     <message>
       <source>From file...</source>
-      <translation>Do arquivo...</translation>
+      <translation>Uit bestand...</translation>
     </message>
     <message>
       <source>Choose a file to use as group icon</source>
-      <translation>Escolha um arquivo para usar como ícone do grupo</translation>
+      <translation>Kies een bestand om als groeppictogram te gebruiken</translation>
     </message>
     <message>
       <source>Images</source>
-      <translation>Imagens</translation>
+      <translation>Afbeeldingen</translation>
     </message>
     <message>
       <source>All files</source>
-      <translation>Todos os arquivos</translation>
+      <translation>Alle bestanden</translation>
     </message>
     <message>
       <source>Error</source>
-      <translation>Erro</translation>
+      <translation>Fout</translation>
     </message>
     <message>
       <source>Can&apos;t read the specified image file.</source>
-      <translation>Não foi possível ler o arquivo de imagem especificado.</translation>
+      <translation>Kan opgegeven afbeeldingsbestand niet lezen.</translation>
     </message>
   </context>
   <context>
     <name>DictGroupsWidget</name>
     <message>
       <source>Dictionaries: </source>
-      <translation>Dicionários: </translation>
+      <translation>Woordenboeken: </translation>
     </message>
     <message>
       <source>Confirmation</source>
-      <translation>Confirmação</translation>
+      <translation>Bevestiging</translation>
     </message>
     <message>
       <source>Are you sure you want to generate a set of groups based on language pairs?</source>
-      <translation>Quer mesmo criar um conjunto de grupos baseado em pares de idiomas?</translation>
+      <translation>Willt u werkelijk een set van groepen aanmaken gebaseerd op talenkoppels?</translation>
     </message>
     <message>
       <source>Unassigned</source>
-      <translation>Não atribuído</translation>
+      <translation>Niet toegewezen</translation>
     </message>
     <message>
       <source>Auto group by folder failed.</source>
-      <translation>Falha no agrupamento automático por pasta.</translation>
+      <translation>Automatisch groeperen op map is mislukt.</translation>
     </message>
     <message>
       <source>The parent directory of %1 can not be reached.</source>
-      <translation>O diretório pai de %1 não pode ser alcançado.</translation>
+      <translation>De bovenliggende map van %1 kan niet worden bereikt.</translation>
     </message>
     <message>
       <source>Are you sure you want to generate a set of groups based on containing folders?</source>
-      <translation>Tem certeza de que deseja gerar um conjunto de grupos com base nas pastas contidas?</translation>
+      <translation>Weet u zeker dat u een set groepen wilt genereren op basis van mappen?</translation>
     </message>
     <message>
       <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>Tem certeza de que deseja gerar um conjunto de grupos com base em metadata.toml?</translation>
+      <translation>Weet u zeker dat u een set groepen wilt genereren op basis van metadata.toml?</translation>
     </message>
     <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
-      <translation>Combinar grupos por idioma de origem para &quot;%1-&gt;&quot;</translation>
+      <translation>Groepen met dezelfde brontaal combineren tot &quot;%1-&gt;&quot;</translation>
     </message>
     <message>
       <source>Combine groups by target language to &quot;-&gt;%1&quot;</source>
-      <translation>Combinar grupos da língua-alvo para &quot;-&gt;%1&quot;</translation>
+      <translation>Groepen met dezelfde doeltaal combineren tot &quot;-&gt;%1&quot;</translation>
     </message>
     <message>
       <source>Make two-side translate group &quot;%1-%2-%1&quot;</source>
-      <translation>Faça o grupo traduzir os dois lados &quot;%1-%2-%1&quot;</translation>
+      <translation>Groep voor tweezijdig vertalen maken als &quot;%1-%2-%1&quot;</translation>
     </message>
     <message>
       <source>Combine groups with &quot;%1&quot;</source>
-      <translation>Combinar grupos com &quot;%1&quot;</translation>
+      <translation>Groepen met &quot;%1&quot; combineren</translation>
     </message>
   </context>
   <context>
     <name>DictHeadwords</name>
     <message>
       <source>If checked any filter changes will we immediately applied to headwords list</source>
-      <translation>Se marcada alguma alteração no filtro, aplicaremos imediatamente à lista de palavras-chave</translation>
+      <translation>Indien aangevinkt worden eventuele filterwijzigingen onmiddellijk toegepast op de headwords lijst</translation>
     </message>
     <message>
       <source>Auto apply</source>
-      <translation>Aplicar automaticamente</translation>
+      <translation>Automatisch toepassen</translation>
     </message>
     <message>
       <source>Press this button to apply filter to headwords list</source>
-      <translation>Pressione este botão para aplicar o filtro à lista de palavras-chave</translation>
+      <translation>Druk op deze knop om filter toe te passen op de headwords lijst</translation>
     </message>
     <message>
       <source>Apply</source>
-      <translation>Aplicar</translation>
+      <translation>Toepassen</translation>
     </message>
     <message>
       <source>Filter string (fixed string, wildcards or regular expression)</source>
-      <translation>Filtrar conjunto de caracteres (fixo, curingas ou expressão regular)</translation>
+      <translation>Filter tekenreeks (vaste tekenreeks, wildcards of reguliere expressie)</translation>
     </message>
     <message>
       <source>Filter:</source>
-      <translation>Filtro:</translation>
+      <translation>Filter:</translation>
     </message>
     <message>
       <source>Search mode</source>
-      <translation>Modo de pesquisa</translation>
+      <translation>Zoek modus</translation>
     </message>
     <message>
       <source>This element determines how filter string will be interpreted</source>
-      <translation>Este elemento determina como a sequência de filtros será interpretada</translation>
+      <translation>Dit element bepaalt hoe filterstring zal worden geïnterpreteerd</translation>
     </message>
     <message>
       <source>If checked on the symbols case will be take in account when filtering</source>
-      <translation>Se marcado na caixa de símbolos, será levado em consideração ao filtrar</translation>
+      <translation>Indien aangevinkt, zal er rekening mee worden gehouden bij het filteren van symbolen</translation>
     </message>
     <message>
       <source>Match case</source>
-      <translation>Diferenciar maiúsculas/minúsculas</translation>
+      <translation>Hoofdletter van overeenkomst</translation>
     </message>
     <message>
       <source>Exports headwords to file</source>
-      <translation>Salvar palavras-chave em arquivo</translation>
+      <translation>Hoofdwoorden exporteren naar bestand</translation>
     </message>
     <message>
       <source>Export</source>
-      <translation>Exportar</translation>
+      <translation>Exporteren</translation>
     </message>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
-      <translation>Especifique o número máximo de cabeçalhos retornados.</translation>
+      <translation>Specificeer de maximale gefilterde kopwoorden geretourneerd.</translation>
     </message>
     <message>
       <source>Filter max results:</source>
-      <translation>Filtrar resultados máximos:</translation>
+      <translation>Maximale resultaten filteren:</translation>
     </message>
     <message>
       <source>Help</source>
-      <translation>Ajuda</translation>
+      <translation>Hulp</translation>
     </message>
     <message>
       <source>OK</source>
-      <translation>Certo</translation>
+      <translation>Ok</translation>
     </message>
     <message>
       <source>Text</source>
-      <translation>Texto</translation>
+      <translation>Tekstveld</translation>
     </message>
     <message>
       <source>Wildcards</source>
-      <translation>Curingas</translation>
+      <translation>Jokertekens</translation>
     </message>
     <message>
       <source>Unique headwords total: %1.</source>
-      <translation>Total de cabeçalhos únicos: %1.</translation>
+      <translation>Unieke kopwoorden totaal: %1.</translation>
     </message>
     <message>
       <source>Unique headwords total: %1, filtered(limited): %2</source>
-      <translation>Total de cabeçalhos únicos: %1, filtrado(limitado): %2</translation>
+      <translation>Unieke hoofdwoorden totaal: %1, gefilterd (beperkt): %2</translation>
     </message>
     <message>
       <source>Save headwords to file</source>
-      <translation>Salvar palavras-chave em arquivo</translation>
+      <translation>Hoofdwoorden in bestand opslaan</translation>
     </message>
     <message>
       <source>Text files (*.txt);;All files (*.*)</source>
-      <translation>Arquivos de texto (*.txt);;Todos os arquivos (*.*)</translation>
+      <translation>Tekst bestanden (*.txt);;Alle bestanden (*.*)</translation>
     </message>
     <message>
       <source>Can not open exported file</source>
-      <translation>Não foi possível abrir o arquivo exportado</translation>
+      <translation>Kan het geëxporteerde bestand niet openen</translation>
     </message>
     <message>
       <source>Export headwords...</source>
-      <translation>Exportar palavras-chave...</translation>
+      <translation>Exporteer hoofdwoorden...</translation>
     </message>
     <message>
       <source>Cancel</source>
-      <translation>Cancelar</translation>
+      <translation>Annuleren</translation>
     </message>
     <message>
       <source>Export process is interrupted</source>
-      <translation>Processo de exportação interrompido</translation>
+      <translation>Exportproces is onderbroken</translation>
     </message>
     <message>
       <source>Export finished</source>
-      <translation>Exportação concluída</translation>
+      <translation>Exporteren voltooid</translation>
     </message>
     <message>
       <source>Regular Expression</source>
-      <translation>Expressão Regular</translation>
+      <translation>Reguliere expressie</translation>
     </message>
   </context>
   <context>
     <name>DictInfo</name>
     <message>
       <source>Open index folder</source>
-      <translation>Abrir pasta de índice</translation>
+      <translation>Indexmap openen</translation>
     </message>
     <message>
       <source>Total articles:</source>
-      <translation>Total de artigos:</translation>
+      <translation>Totaal aantal artikelen:</translation>
     </message>
     <message>
       <source>Index filename:</source>
-      <translation>Nome do arquivo de índice:</translation>
+      <translation>Index bestandsnaam:</translation>
     </message>
     <message>
       <source>Total words:</source>
-      <translation>Total de palavras:</translation>
+      <translation>Totaal aantal woorden:</translation>
     </message>
     <message>
       <source>Open folder</source>
-      <translation>Abrir pasta</translation>
+      <translation>Map openen</translation>
     </message>
     <message>
       <source>Translates from:</source>
-      <translation>Traduz de:</translation>
+      <translation>Vertaalt van:</translation>
     </message>
     <message>
       <source>Translates to:</source>
-      <translation>Traduz para:</translation>
+      <translation>Vertaalt naar:</translation>
     </message>
     <message>
       <source>Files comprising this dictionary:</source>
-      <translation>Arquivos pertencentes a este dicionário:</translation>
+      <translation>Woordenboek bestaat uit de volgende bestanden:</translation>
     </message>
     <message>
       <source>Description:</source>
-      <translation>Descrição:</translation>
+      <translation>Beschrijving:</translation>
     </message>
     <message>
       <source>Show all unique dictionary headwords</source>
-      <translation>Mostrar todas as palavras-chave exclusivas do dicionário</translation>
+      <translation>Toon alle unieke hoofdwoorden van het woordenboek</translation>
     </message>
     <message>
       <source>Headwords</source>
-      <translation>Palavras-chave</translation>
+      <translation>Hoofdwoorden</translation>
     </message>
     <message>
       <source>Full-text search enabled</source>
-      <translation>Pesquisa de texto completo ativada</translation>
+      <translation>Zoeken in volledige tekst ingeschakeld</translation>
     </message>
     <message>
       <source>Full-text search disabled</source>
-      <translation>Pesquisa de texto completo desativada</translation>
+      <translation>Zoeken in volledige tekst uitgeschakeld</translation>
     </message>
   </context>
   <context>
     <name>DictListModel</name>
     <message>
       <source>%1 entries</source>
-      <translation>%1 verbetes</translation>
+      <translation>%1 Vermeldingen</translation>
     </message>
   </context>
   <context>
     <name>DictServer</name>
     <message>
       <source>Url: </source>
-      <translation>Endereço (Url): </translation>
+      <translation>URL: </translation>
     </message>
     <message>
       <source>Databases: </source>
-      <translation>Bancos de dados: </translation>
+      <translation>Databases: </translation>
     </message>
     <message>
       <source>Search strategies: </source>
-      <translation>Estratégias de pesquisa: </translation>
+      <translation>Zoek strategieën: </translation>
     </message>
     <message>
       <source>Server databases</source>
-      <translation>Bancos de dados do servidor</translation>
+      <translation>Server databases</translation>
     </message>
   </context>
   <context>
     <name>DictServersModel</name>
     <message>
       <source>Enabled</source>
-      <translation>Habilitado</translation>
+      <translation>Ingeschakeld</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation>Nome</translation>
+      <translation>Naam</translation>
     </message>
     <message>
       <source>Address</source>
-      <translation>Endereço</translation>
+      <translation>Adres</translation>
     </message>
     <message>
       <source>Databases</source>
-      <translation>Bancos de dados</translation>
+      <translation>Databases</translation>
     </message>
     <message>
       <source>Strategies</source>
-      <translation>Estratégias</translation>
+      <translation>Strategieën</translation>
     </message>
     <message>
       <source>Icon</source>
-      <translation>Ícone</translation>
+      <translation>Pictogram</translation>
     </message>
     <message>
       <source>Comma-delimited list of databases
 (empty string or &quot;*&quot; matches all databases)</source>
-      <translation>Lista de bancos de dados delimitada por vírgulas
-(cadeia vazia ou &quot;*&quot; corresponde a todos os bancos de dados)</translation>
+      <translation>Komma-gescheiden lijst van databases
+(lege tekenreeks of &quot;*&quot; komt overeen met alle databases)</translation>
     </message>
     <message>
       <source>Comma-delimited list of search strategies
 (empty string mean &quot;prefix&quot; strategy)</source>
-      <translation>Lista delimitada por vírgula de estratégias de pesquisa
-(cadeia vazia significa estratégia &quot;prefixo&quot;)</translation>
+      <translation>Kommagescheiden lijst van zoekstrategieën
+(leeg tekenreeks betekent &quot;prefix&quot; strategie)</translation>
     </message>
   </context>
   <context>
     <name>DictionaryBar</name>
     <message>
       <source>&amp;Dictionary Bar</source>
-      <translation>&amp;Barra de Dicionário</translation>
+      <translation>&amp;Woordenboekwerkbalk</translation>
     </message>
     <message>
       <source>Extended menu with all dictionaries...</source>
-      <translation>Estender menu com todos os dicionários...</translation>
+      <translation>Menu uitbreiden met alle woordenboeken...</translation>
     </message>
     <message>
       <source>Edit this group</source>
-      <translation>Editar este grupo</translation>
+      <translation>Deze groep bewerken</translation>
     </message>
     <message>
       <source>Dictionary info</source>
-      <translation>Informações do Dicionário</translation>
+      <translation>Woordenboek informatie</translation>
     </message>
     <message>
       <source>Dictionary headwords</source>
-      <translation>Palavras-chave do dicionário</translation>
+      <translation>Woordenboek hoofdwoorden</translation>
     </message>
     <message>
       <source>Open dictionary folder</source>
-      <translation>Abrir pasta de dicionário</translation>
+      <translation>Woordenboekmap openen</translation>
     </message>
     <message>
       <source>Restore selection</source>
-      <translation>Restaurar seleção</translation>
+      <translation>Herstel selectie</translation>
     </message>
   </context>
   <context>
     <name>EditDictionaries</name>
     <message>
       <source>Dictionaries</source>
-      <translation>Dicionários</translation>
+      <translation>Woordenboeken</translation>
     </message>
     <message>
       <source>&amp;Sources</source>
-      <translation>&amp;Fontes</translation>
+      <translation>&amp;Bronnen</translation>
     </message>
     <message>
       <source>&amp;Dictionaries</source>
-      <translation>&amp;Dicionários</translation>
+      <translation>&amp;Woordenboeken</translation>
     </message>
     <message>
       <source>&amp;Groups</source>
-      <translation>&amp;Grupos</translation>
+      <translation>&amp;Groepen</translation>
     </message>
     <message>
       <source>Sources changed</source>
-      <translation>Fontes modificadas</translation>
+      <translation>Bronnen gewijzigd</translation>
     </message>
     <message>
       <source>Some sources were changed. Would you like to accept the changes?</source>
-      <translation>Algumas fontes de dados foram modificadas. Devo aceitar as modificações?</translation>
+      <translation>Enkele bronnen zijn gewijzigd. Wilt u de wijzigingen accepteren?</translation>
     </message>
     <message>
       <source>Accept</source>
-      <translation>Aceitar</translation>
+      <translation>Accepteren</translation>
     </message>
     <message>
       <source>Cancel</source>
-      <translation>Cancelar</translation>
+      <translation>Annuleren</translation>
     </message>
   </context>
   <context>
     <name>Epwing::EpwingDictionary</name>
     <message>
       <source>Previous Page</source>
-      <translation>Página anterior</translation>
+      <translation>Vorige pagina</translation>
     </message>
     <message>
       <source>Next Page</source>
-      <translation>Página seguinte</translation>
+      <translation>Volgende pagina</translation>
     </message>
   </context>
   <context>
     <name>ExternalViewer</name>
     <message>
       <source>the viewer program name is empty</source>
-      <translation>falta especificar o nome do programa de visualização</translation>
+      <translation>Naam afbeeldingsviewer is leeg</translation>
     </message>
   </context>
   <context>
     <name>FTS::FullTextSearchDialog</name>
     <message>
       <source>Full-text search</source>
-      <translation>Pesquisa de texto completo</translation>
+      <translation>Volledige-tekst zoeken</translation>
     </message>
     <message>
       <source>Default</source>
-      <translation>Padrão</translation>
+      <translation>Standaard</translation>
     </message>
     <message>
       <source>Wildcards</source>
-      <translation>Curingas</translation>
+      <translation>Jokertekens</translation>
     </message>
     <message>
       <source>Support xapian search syntax, such as AND OR +/- etc.</source>
-      <translation>Suporte à sintaxe de pesquisa xapiana, como AND OR +/- etc.</translation>
+      <translation>Ondersteunt Xapian-zoeksyntaxis, zoals AND OR +/- etc.</translation>
     </message>
     <message>
       <source>Articles found: </source>
-      <translation>Artigos encontrados: </translation>
+      <translation>Gevonden artikelen: </translation>
     </message>
     <message>
       <source>Now indexing: </source>
-      <translation>Agora indexando: </translation>
+      <translation>Nu indexeren: </translation>
     </message>
     <message>
       <source>None</source>
-      <translation>Nenhum</translation>
+      <translation>Geen</translation>
     </message>
     <message>
       <source>The querying word can not be empty.</source>
-      <translation>A palavra de consulta não pode estar vazia.</translation>
+      <translation>Het bevragende woord mag niet leeg zijn.</translation>
     </message>
     <message>
       <source>No dictionaries for full-text search</source>
-      <translation>Não há dicionários para pesquisa de texto completo</translation>
+      <translation>Geen woordenboeken voor full-text zoeken</translation>
     </message>
   </context>
   <context>
     <name>FavoritesModel</name>
     <message>
       <source>Error in favorities file</source>
-      <translation>Erro no arquivo de favoritos</translation>
+      <translation>Fout in favorietenbestand</translation>
     </message>
   </context>
   <context>
     <name>FavoritesPaneWidget</name>
     <message>
       <source>&amp;Delete Selected</source>
-      <translation>&amp;Remover selecionado</translation>
+      <translation>Selectie &amp;verwijderen</translation>
     </message>
     <message>
       <source>Copy Selected</source>
-      <translation>Copiar Selecionado</translation>
+      <translation>Selectie kopiëren</translation>
     </message>
     <message>
       <source>Add folder</source>
-      <translation>Adicionar pasta</translation>
+      <translation>Map toevoegen</translation>
     </message>
     <message>
       <source>Clear All</source>
-      <translation>Limpar tudo</translation>
+      <translation>Alles wissen</translation>
     </message>
     <message>
       <source>Favorites:</source>
-      <translation>Favoritos:</translation>
+      <translation>Favorieten:</translation>
     </message>
     <message>
       <source>All selected items will be deleted. Continue?</source>
-      <translation>Todos os itens selecionados serão excluídos. Continuar?</translation>
+      <translation>Alle geselecteerde items worden verwijderd. Doorgaan?</translation>
     </message>
     <message>
       <source>Clear All Items</source>
-      <translation>Limpar todos os itens</translation>
+      <translation>Alle items wissen</translation>
     </message>
     <message>
       <source>Are you sure you want to clear all items?</source>
-      <translation>Tem certeza de que deseja limpar todos os itens?</translation>
+      <translation>Weet u zeker dat u alle items wilt wissen?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
@@ -836,232 +836,232 @@ entre clássico e ortografia escolar em cirílico)</translation>
     <name>Forvo::ForvoArticleRequest</name>
     <message>
       <source>XML parse error: %1 at %2,%3</source>
-      <translation>Erro de análise sintática de XML: %1 al %2,%3</translation>
+      <translation>XML-parseerfout: %1 op %2,%3</translation>
     </message>
     <message>
       <source>Added %1</source>
-      <translation>Adicionado %1</translation>
+      <translation>Toegevoegd %1</translation>
     </message>
     <message>
       <source>by</source>
-      <translation>por</translation>
+      <translation>door</translation>
     </message>
     <message>
       <source>Male</source>
-      <translation>Masculino</translation>
+      <translation>Man</translation>
     </message>
     <message>
       <source>Female</source>
-      <translation>Feminino</translation>
+      <translation>Vrouw</translation>
     </message>
     <message>
       <source>from</source>
-      <translation>de</translation>
+      <translation>uit</translation>
     </message>
   </context>
   <context>
     <name>FtsSearchPanel</name>
     <message>
       <source>&amp;Previous</source>
-      <translation>&amp;Anterior</translation>
+      <translation>Vorige</translation>
     </message>
     <message>
       <source>&amp;Next</source>
-      <translation>&amp;Próximo</translation>
+      <translation>&amp;Volgende</translation>
     </message>
   </context>
   <context>
     <name>FullTextSearchDialog</name>
     <message>
       <source>Search</source>
-      <translation>Pesquisar</translation>
+      <translation>Zoeken</translation>
     </message>
     <message>
       <source>Mode:</source>
-      <translation>Modo:</translation>
+      <translation>Modus:</translation>
     </message>
     <message>
       <source>Articles found:</source>
-      <translation>Artigos encontrados:</translation>
+      <translation>Gevonden artikelen:</translation>
     </message>
     <message>
       <source>Available dictionaries in group:</source>
-      <translation>Dicionários disponíveis no grupo:</translation>
+      <translation>Beschikbare woordenboeken in groep:</translation>
     </message>
     <message>
       <source>Wait for indexing:</source>
-      <translation>Aguarde a indexação:</translation>
+      <translation>Wachten op indexeren:</translation>
     </message>
     <message>
       <source>Total:</source>
-      <translation>Total:</translation>
+      <translation>Totaal:</translation>
     </message>
     <message>
       <source>Indexed:</source>
-      <translation>Indexado:</translation>
+      <translation>Geindexeerd:</translation>
     </message>
     <message>
       <source>Now indexing: None</source>
-      <translation>A indexar agora: Nenhum</translation>
+      <translation>Nu indexeren: geen</translation>
     </message>
     <message>
       <source>Cancel</source>
-      <translation>Cancelar</translation>
+      <translation>Annuleren</translation>
     </message>
     <message>
       <source>Help</source>
-      <translation>Ajuda</translation>
+      <translation>Hulp</translation>
     </message>
   </context>
   <context>
     <name>GermanTranslit</name>
     <message>
       <source>German Transliteration</source>
-      <translation>Transliteração do Alemão</translation>
+      <translation>Duitse transliteratie</translation>
     </message>
   </context>
   <context>
     <name>GreekTranslit</name>
     <message>
       <source>Greek Transliteration</source>
-      <translation>Transliteração do Grego</translation>
+      <translation>Griekse transliteratie</translation>
     </message>
   </context>
   <context>
     <name>GroupComboBox</name>
     <message>
       <source>Choose a Group (Alt+G)</source>
-      <translation>Escolha um Grupo (Alt+G)</translation>
+      <translation>Kies een groep (Alt+G)</translation>
     </message>
   </context>
   <context>
     <name>Groups</name>
     <message>
       <source>Dictionaries available:</source>
-      <translation>Dicionários disponíveis:</translation>
+      <translation>Beschikbare woordenboeken:</translation>
     </message>
     <message>
       <source>Add selected dictionaries to group (Ins)</source>
-      <translation>Adiciona os dicionários selecionados ao grupo (Ins)</translation>
+      <translation>Geselecteerde woordenboeken aan groep toevoegen (Ins)</translation>
     </message>
     <message>
       <source>Remove selected dictionaries from group (Del)</source>
-      <translation>Remove do grupo os dicionários selecionados (Del)</translation>
+      <translation>Geselecteerde woordenboeken uit groep verwijderen (Del)</translation>
     </message>
     <message>
       <source>Groups:</source>
-      <translation>Grupos:</translation>
+      <translation>Groepen:</translation>
     </message>
     <message>
       <source>Tab 2</source>
-      <translation>Guia 2</translation>
+      <translation>Tab 2</translation>
     </message>
     <message>
       <source>Create new dictionary group</source>
-      <translation>Cria um novo grupo de dicionários</translation>
+      <translation>Nieuwe woordenboekgroep maken</translation>
     </message>
     <message>
       <source>&amp;Add group</source>
-      <translation>&amp;Adicionar</translation>
+      <translation>Groep &amp;toevoegen</translation>
     </message>
     <message>
       <source>Rename current dictionary group</source>
-      <translation>Renomeia o grupo de dicionários selecionado</translation>
+      <translation>Huidige groep hernoemen</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
-      <translation>&amp;Renomear</translation>
+      <translation>Groep &amp;hernoemen</translation>
     </message>
     <message>
       <source>Remove current dictionary group</source>
-      <translation>Remove o grupo de dicionários atual</translation>
+      <translation>Huidige groep verwijderen</translation>
     </message>
     <message>
       <source>&amp;Remove group</source>
-      <translation>R&amp;emover</translation>
+      <translation>Groep &amp;verwijderen</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>
-      <translation>Remover todos os grupos de dicionários</translation>
+      <translation>Alle woordenboekgroepen verwijderen</translation>
     </message>
     <message>
       <source>Remove all groups</source>
-      <translation>Remover todos os grupos</translation>
+      <translation>Alle groepen verwijderen</translation>
     </message>
     <message>
       <source>Create language-based groups</source>
-      <translation>Cria grupos de dicionários com base nos tipos de idioma</translation>
+      <translation>Op taal gesorteerde groepen maken</translation>
     </message>
     <message>
       <source>Group by Languages</source>
-      <translation>Agrupar por idiomas</translation>
+      <translation>Groeperen op talen</translation>
     </message>
     <message>
       <source>Create folder-based groups.</source>
-      <translation>Crie grupos baseados em pastas.</translation>
+      <translation>Maak op mappen gebaseerde groepen.</translation>
     </message>
     <message>
       <source>Group by Folders</source>
-      <translation>Agrupar por pastas</translation>
+      <translation>Groeperen op mappen</translation>
     </message>
     <message>
       <source>Group by Metadata</source>
-      <translation>Agrupar por Metadados</translation>
+      <translation>Groeperen op metagegevens</translation>
     </message>
     <message>
       <source>Drag&amp;drop dictionaries to and from the groups, move them inside the groups, reorder the groups using your mouse.</source>
-      <translation>Arraste e solte os &amp;dicionários nos grupos, organize-os e reordene-os com o ponteiro do mouse.</translation>
+      <translation>Gebruik slepen en neerzetten om woordenboeken te verplaatsen of om groepen te reorganiseren met uw muis.</translation>
     </message>
     <message>
       <source>Group tabs</source>
-      <translation>Grupo de guias</translation>
+      <translation>Groep tabbladen</translation>
     </message>
     <message>
       <source>Open groups list</source>
-      <translation>Abrir lista de grupos</translation>
+      <translation>Open groepenlijst</translation>
     </message>
     <message>
       <source>Add group</source>
-      <translation>Adicionar grupo</translation>
+      <translation>Groep toevoegen</translation>
     </message>
     <message>
       <source>Give a name for the new group:</source>
-      <translation>Digite o nome do grupo que deseja criar:</translation>
+      <translation>Voer een naam in voor de nieuwe groep:</translation>
     </message>
     <message>
       <source>Rename group</source>
-      <translation>Renomear grupo</translation>
+      <translation>Groep hernoemen</translation>
     </message>
     <message>
       <source>Give a new name for the group:</source>
-      <translation>Digite o novo nome do grupo:</translation>
+      <translation>Nieuwe naam voor de groep:</translation>
     </message>
     <message>
       <source>Remove group</source>
-      <translation>Remover grupo</translation>
+      <translation>Groep verwijderen</translation>
     </message>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
-      <translation>Tem certeza de que quer remover o grupo &lt;b&gt;%1&lt;/b&gt;?</translation>
+      <translation>Weet u zeker dat u de groep &lt;b&gt;%1&lt;/b&gt; wilt verwijderen?</translation>
     </message>
     <message>
       <source>Are you sure you want to remove all the groups?</source>
-      <translation>Tem certeza de que quer remover todos os grupos?</translation>
+      <translation>Weet u zeker dat u alle groepen wilt verwijderen?</translation>
     </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
     <message>
       <source>&amp;Delete Selected</source>
-      <translation>&amp;Remover Selecionado</translation>
+      <translation>Selectie &amp;verwijderen</translation>
     </message>
     <message>
       <source>Copy Selected</source>
-      <translation>Copiar Selecionado</translation>
+      <translation>Selectie kopiëren</translation>
     </message>
     <message>
       <source>History:</source>
-      <translation>Histórico:</translation>
+      <translation>Geschiedenis:</translation>
     </message>
     <message>
       <source>%1/%2</source>
@@ -1069,56 +1069,56 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>History size: %1 entries out of maximum %2</source>
-      <translation>Tamanho do histórico: %1 entradas de saída de no máximo %2</translation>
+      <translation>Geschiedenisgrootte: %1 items uit maximum van %2</translation>
     </message>
   </context>
   <context>
     <name>Hunspell</name>
     <message>
       <source>Spelling suggestions: </source>
-      <translation>Sugestões ortográficas: </translation>
+      <translation>Spellingsuggesties:</translation>
     </message>
     <message>
       <source>%1 Morphology</source>
-      <translation>Ortografia de %1</translation>
+      <translation>Morfologie %1</translation>
     </message>
   </context>
   <context>
     <name>HunspellDictsModel</name>
     <message>
       <source>Enabled</source>
-      <translation>Habilitado</translation>
+      <translation>Ingeschakeld</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation>Nome</translation>
+      <translation>Naam</translation>
     </message>
   </context>
   <context>
     <name>Initializing</name>
     <message>
       <source>GoldenDict-ng - Initializing</source>
-      <translation>GoldenDict-ng - Processando</translation>
+      <translation>GoldenDict-ng - Initialiseren</translation>
     </message>
     <message>
       <source>Indexing: </source>
-      <translation>Indexação: </translation>
+      <translation>Indexering: </translation>
     </message>
     <message>
       <source>Dictionary Name</source>
-      <translation>Nome do Dicionário</translation>
+      <translation>Naam woordenboek</translation>
     </message>
     <message>
       <source>Please wait...</source>
-      <translation>Favor aguardar...</translation>
+      <translation>Een ogenblik geduld...</translation>
     </message>
     <message>
       <source>Indexing...</source>
-      <translation>Indexando...</translation>
+      <translation>Indexeren...</translation>
     </message>
     <message>
       <source>Loading...</source>
-      <translation>Carregando...</translation>
+      <translation>Bezig met laden...</translation>
     </message>
   </context>
   <context>
@@ -1129,15 +1129,15 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Abkhazian</source>
-      <translation>Abcaso</translation>
+      <translation>Abchazisch</translation>
     </message>
     <message>
       <source>Avestan</source>
-      <translation>Avestico</translation>
+      <translation>Avestisch</translation>
     </message>
     <message>
       <source>Afrikaans</source>
-      <translation>Africâner</translation>
+      <translation>Afrikaanse</translation>
     </message>
     <message>
       <source>Akan</source>
@@ -1145,23 +1145,23 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Amharic</source>
-      <translation>Amarico</translation>
+      <translation>Amhaars</translation>
     </message>
     <message>
       <source>Aragonese</source>
-      <translation>Aragonês</translation>
+      <translation>Aragonees</translation>
     </message>
     <message>
       <source>Arabic</source>
-      <translation>Árabe</translation>
+      <translation>Arabisch</translation>
     </message>
     <message>
       <source>Assamese</source>
-      <translation>assamês</translation>
+      <translation>Assamees</translation>
     </message>
     <message>
       <source>Avaric</source>
-      <translation>Avaro</translation>
+      <translation>Avaars</translation>
     </message>
     <message>
       <source>Aymara</source>
@@ -1169,23 +1169,23 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Azerbaijani</source>
-      <translation>Azebaijano</translation>
+      <translation>Azerbeidzjaans</translation>
     </message>
     <message>
       <source>Bashkir</source>
-      <translation>Bashkir</translation>
+      <translation>Basjkiers</translation>
     </message>
     <message>
       <source>Belarusian</source>
-      <translation>Bielorusso</translation>
+      <translation>Wit-Russisch</translation>
     </message>
     <message>
       <source>Bulgarian</source>
-      <translation>Búlgaro</translation>
+      <translation>Bulgaars</translation>
     </message>
     <message>
       <source>Bihari</source>
-      <translation>biari</translation>
+      <translation>Bihari</translation>
     </message>
     <message>
       <source>Bislama</source>
@@ -1197,27 +1197,27 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Bengali</source>
-      <translation>Bengáli</translation>
+      <translation>Bengaals</translation>
     </message>
     <message>
       <source>Tibetan</source>
-      <translation>Tibetano</translation>
+      <translation>Tibetaans</translation>
     </message>
     <message>
       <source>Breton</source>
-      <translation>Bretone</translation>
+      <translation>Bretons</translation>
     </message>
     <message>
       <source>Bosnian</source>
-      <translation>Bósnio</translation>
+      <translation>Bosnisch</translation>
     </message>
     <message>
       <source>Catalan</source>
-      <translation>Catalão</translation>
+      <translation>Catalaans</translation>
     </message>
     <message>
       <source>Chechen</source>
-      <translation>Checheno</translation>
+      <translation>Tsjetsjeens</translation>
     </message>
     <message>
       <source>Chamorro</source>
@@ -1225,7 +1225,7 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Corsican</source>
-      <translation>Corso</translation>
+      <translation>Corsicaans</translation>
     </message>
     <message>
       <source>Cree</source>
@@ -1233,31 +1233,31 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Czech</source>
-      <translation>Checo</translation>
+      <translation>Tsjechisch</translation>
     </message>
     <message>
       <source>Church Slavic</source>
-      <translation>Eslavo</translation>
+      <translation>Kerkslavisch</translation>
     </message>
     <message>
       <source>Chuvash</source>
-      <translation>Ciuvascio</translation>
+      <translation>Tsjoevasjisch</translation>
     </message>
     <message>
       <source>Welsh</source>
-      <translation>Galês</translation>
+      <translation>Welsh</translation>
     </message>
     <message>
       <source>Danish</source>
-      <translation>Dinamarquês</translation>
+      <translation>Deens</translation>
     </message>
     <message>
       <source>German</source>
-      <translation>Alemão</translation>
+      <translation>Duits</translation>
     </message>
     <message>
       <source>Divehi</source>
-      <translation>Maldiviano</translation>
+      <translation>Divehi</translation>
     </message>
     <message>
       <source>Dzongkha</source>
@@ -1269,11 +1269,11 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Greek</source>
-      <translation>Grego</translation>
+      <translation>Grieks</translation>
     </message>
     <message>
       <source>English</source>
-      <translation>Inglês</translation>
+      <translation>Engels</translation>
     </message>
     <message>
       <source>Esperanto</source>
@@ -1281,19 +1281,19 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Spanish</source>
-      <translation>Espanhol</translation>
+      <translation>Spaans</translation>
     </message>
     <message>
       <source>Estonian</source>
-      <translation>Estoniano</translation>
+      <translation>Estisch</translation>
     </message>
     <message>
       <source>Basque</source>
-      <translation>Basco</translation>
+      <translation>Baskisch</translation>
     </message>
     <message>
       <source>Persian</source>
-      <translation>Farsì</translation>
+      <translation>Persisch</translation>
     </message>
     <message>
       <source>Fulah</source>
@@ -1301,39 +1301,39 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Finnish</source>
-      <translation>Finlandês</translation>
+      <translation>Fins</translation>
     </message>
     <message>
       <source>Fijian</source>
-      <translation>Fijiano</translation>
+      <translation>Fijisch</translation>
     </message>
     <message>
       <source>Faroese</source>
-      <translation>Faroese</translation>
+      <translation>Faeröers</translation>
     </message>
     <message>
       <source>French</source>
-      <translation>Francês</translation>
+      <translation>Frans</translation>
     </message>
     <message>
       <source>Western Frisian</source>
-      <translation>Frisone occidentale</translation>
+      <translation>Westlauwers Fries</translation>
     </message>
     <message>
       <source>Irish</source>
-      <translation>Irlandês</translation>
+      <translation>Iers</translation>
     </message>
     <message>
       <source>Scottish Gaelic</source>
-      <translation>Galês escocês</translation>
+      <translation>Schots-Gaelisch</translation>
     </message>
     <message>
       <source>Galician</source>
-      <translation>Galício</translation>
+      <translation>Galicisch</translation>
     </message>
     <message>
       <source>Guarani</source>
-      <translation>Guaraní</translation>
+      <translation>Guarani</translation>
     </message>
     <message>
       <source>Gujarati</source>
@@ -1341,7 +1341,7 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Manx</source>
-      <translation>Mannese</translation>
+      <translation>Manx-Gaelisch</translation>
     </message>
     <message>
       <source>Hausa</source>
@@ -1349,11 +1349,11 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Hebrew</source>
-      <translation>Hebraico</translation>
+      <translation>Hebreeuws</translation>
     </message>
     <message>
       <source>Hindi</source>
-      <translation>hindi</translation>
+      <translation>Hindoestani</translation>
     </message>
     <message>
       <source>Hiri Motu</source>
@@ -1361,19 +1361,19 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Croatian</source>
-      <translation>Croata</translation>
+      <translation>Kroatisch</translation>
     </message>
     <message>
       <source>Haitian</source>
-      <translation>Creolo haitiano</translation>
+      <translation>Haitiaans</translation>
     </message>
     <message>
       <source>Hungarian</source>
-      <translation>Húngaro</translation>
+      <translation>Hongaars</translation>
     </message>
     <message>
       <source>Armenian</source>
-      <translation>Armeno</translation>
+      <translation>Armeens</translation>
     </message>
     <message>
       <source>Herero</source>
@@ -1385,11 +1385,11 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Indonesian</source>
-      <translation>Indonésio</translation>
+      <translation>Indonesisch</translation>
     </message>
     <message>
       <source>Interlingue</source>
-      <translation>Interlingua</translation>
+      <translation>Interlingue</translation>
     </message>
     <message>
       <source>Igbo</source>
@@ -1401,7 +1401,7 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Inupiaq</source>
-      <translation>Inupiaq</translation>
+      <translation>Inupiak</translation>
     </message>
     <message>
       <source>Ido</source>
@@ -1409,11 +1409,11 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Icelandic</source>
-      <translation>Islandês</translation>
+      <translation>IJslands</translation>
     </message>
     <message>
       <source>Italian</source>
-      <translation>Italiano</translation>
+      <translation>Italiaans</translation>
     </message>
     <message>
       <source>Inuktitut</source>
@@ -1421,35 +1421,35 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Japanese</source>
-      <translation>Japonês</translation>
+      <translation>Japans</translation>
     </message>
     <message>
       <source>Javanese</source>
-      <translation>Javanês</translation>
+      <translation>Javaans</translation>
     </message>
     <message>
       <source>Georgian</source>
-      <translation>Georgiano</translation>
+      <translation>Georgisch</translation>
     </message>
     <message>
       <source>Kongo</source>
-      <translation>Monokutuba</translation>
+      <translation>Kongo</translation>
     </message>
     <message>
       <source>Kikuyu</source>
-      <translation>kikuyu</translation>
+      <translation>Gikuyu</translation>
     </message>
     <message>
       <source>Kwanyama</source>
-      <translation>Kwanyama</translation>
+      <translation>Oshikwanyama</translation>
     </message>
     <message>
       <source>Kazakh</source>
-      <translation>Cazaco</translation>
+      <translation>Kazachs</translation>
     </message>
     <message>
       <source>Kalaallisut</source>
-      <translation>Groenlandese</translation>
+      <translation>Groenlands</translation>
     </message>
     <message>
       <source>Khmer</source>
@@ -1461,7 +1461,7 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Korean</source>
-      <translation>Coreano</translation>
+      <translation>Koreaans</translation>
     </message>
     <message>
       <source>Kanuri</source>
@@ -1469,39 +1469,39 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Kashmiri</source>
-      <translation>Kashmiri</translation>
+      <translation>Kasjmiri</translation>
     </message>
     <message>
       <source>Kurdish</source>
-      <translation>Curdo</translation>
+      <translation>Koerdisch</translation>
     </message>
     <message>
       <source>Komi</source>
-      <translation>Komi</translation>
+      <translation>Zurjeens</translation>
     </message>
     <message>
       <source>Cornish</source>
-      <translation>Cornico</translation>
+      <translation>Cornisch</translation>
     </message>
     <message>
       <source>Kirghiz</source>
-      <translation>Chirghiso</translation>
+      <translation>Kirgizisch</translation>
     </message>
     <message>
       <source>Latin</source>
-      <translation>Latino</translation>
+      <translation>Latijn</translation>
     </message>
     <message>
       <source>Luxembourgish</source>
-      <translation>Luxemburguês</translation>
+      <translation>Luxemburgs</translation>
     </message>
     <message>
       <source>Ganda</source>
-      <translation>Ganda</translation>
+      <translation>Luganda</translation>
     </message>
     <message>
       <source>Limburgish</source>
-      <translation>Limburghese</translation>
+      <translation>Limburgs</translation>
     </message>
     <message>
       <source>Lingala</source>
@@ -1509,11 +1509,11 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Lao</source>
-      <translation>Laotiano</translation>
+      <translation>Laotiaans</translation>
     </message>
     <message>
       <source>Lithuanian</source>
-      <translation>Lituano</translation>
+      <translation>Litouws</translation>
     </message>
     <message>
       <source>Luba-Katanga</source>
@@ -1521,15 +1521,15 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Latvian</source>
-      <translation>Lituano</translation>
+      <translation>Litouws</translation>
     </message>
     <message>
       <source>Malagasy</source>
-      <translation>Malgaxe</translation>
+      <translation>Plateaumalagasi</translation>
     </message>
     <message>
       <source>Marshallese</source>
-      <translation>Marshalês</translation>
+      <translation>Marshallees</translation>
     </message>
     <message>
       <source>Maori</source>
@@ -1537,47 +1537,47 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Macedonian</source>
-      <translation>Macedônio</translation>
+      <translation>Macedonisch</translation>
     </message>
     <message>
       <source>Malayalam</source>
-      <translation>Malaio</translation>
+      <translation>Malajalam</translation>
     </message>
     <message>
       <source>Mongolian</source>
-      <translation>Mongol</translation>
+      <translation>Mongools</translation>
     </message>
     <message>
       <source>Marathi</source>
-      <translation>marata</translation>
+      <translation>Marathi</translation>
     </message>
     <message>
       <source>Malay</source>
-      <translation>Malaio</translation>
+      <translation>Maleis</translation>
     </message>
     <message>
       <source>Maltese</source>
-      <translation>Maltês</translation>
+      <translation>Malthees</translation>
     </message>
     <message>
       <source>Burmese</source>
-      <translation>Birmanês</translation>
+      <translation>Birmees</translation>
     </message>
     <message>
       <source>Nauru</source>
-      <translation>Nauruano</translation>
+      <translation>Nauruaans</translation>
     </message>
     <message>
       <source>Norwegian Bokmal</source>
-      <translation>Norvegese Bokmål</translation>
+      <translation>Bokmål</translation>
     </message>
     <message>
       <source>North Ndebele</source>
-      <translation>Ndebele del nord</translation>
+      <translation>Noord-Ndebele</translation>
     </message>
     <message>
       <source>Nepali</source>
-      <translation>Nepalese</translation>
+      <translation>Nepalees</translation>
     </message>
     <message>
       <source>Ndonga</source>
@@ -1585,19 +1585,19 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Dutch</source>
-      <translation>Holandês</translation>
+      <translation>Nederlands</translation>
     </message>
     <message>
       <source>Norwegian Nynorsk</source>
-      <translation>Norueguês</translation>
+      <translation>Nieuwnoors</translation>
     </message>
     <message>
       <source>Norwegian</source>
-      <translation>Norueguês</translation>
+      <translation>Noors</translation>
     </message>
     <message>
       <source>South Ndebele</source>
-      <translation>Ndebele do Sul</translation>
+      <translation>Zuid-Ndebele</translation>
     </message>
     <message>
       <source>Navajo</source>
@@ -1609,27 +1609,27 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Occitan</source>
-      <translation>Occitano</translation>
+      <translation>Occitaans</translation>
     </message>
     <message>
       <source>Ojibwa</source>
-      <translation>Ojibwa</translation>
+      <translation>Ojibwe</translation>
     </message>
     <message>
       <source>Oromo</source>
-      <translation>Oromo</translation>
+      <translation>Afaan Oromo</translation>
     </message>
     <message>
       <source>Oriya</source>
-      <translation>Oriya</translation>
+      <translation>Odia</translation>
     </message>
     <message>
       <source>Ossetian</source>
-      <translation>Osseto</translation>
+      <translation>Ossetisch</translation>
     </message>
     <message>
       <source>Panjabi</source>
-      <translation>Panjabi</translation>
+      <translation>Punjabi</translation>
     </message>
     <message>
       <source>Pali</source>
@@ -1637,15 +1637,15 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Polish</source>
-      <translation>Polonês</translation>
+      <translation>Pools</translation>
     </message>
     <message>
       <source>Pashto</source>
-      <translation>Pashtu</translation>
+      <translation>Pasjtoe</translation>
     </message>
     <message>
       <source>Portuguese</source>
-      <translation>Português brasileiro</translation>
+      <translation>Portugees</translation>
     </message>
     <message>
       <source>Quechua</source>
@@ -1653,7 +1653,7 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Raeto-Romance</source>
-      <translation>Reto-Romancio</translation>
+      <translation>Retro-Romaans</translation>
     </message>
     <message>
       <source>Kirundi</source>
@@ -1661,11 +1661,11 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Romanian</source>
-      <translation>Romeno</translation>
+      <translation>Roemeens</translation>
     </message>
     <message>
       <source>Russian</source>
-      <translation>Russo</translation>
+      <translation>Russisch</translation>
     </message>
     <message>
       <source>Kinyarwanda</source>
@@ -1673,11 +1673,11 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Sanskrit</source>
-      <translation>Sânscrito</translation>
+      <translation>Sanskriet</translation>
     </message>
     <message>
       <source>Sardinian</source>
-      <translation>Sardo</translation>
+      <translation>Sardijns</translation>
     </message>
     <message>
       <source>Sindhi</source>
@@ -1685,7 +1685,7 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Northern Sami</source>
-      <translation>Sami del nord</translation>
+      <translation>Noord-Samisch</translation>
     </message>
     <message>
       <source>Sango</source>
@@ -1693,59 +1693,59 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Serbo-Croatian</source>
-      <translation>Servo-Croata</translation>
+      <translation>Servo-Kroatisch</translation>
     </message>
     <message>
       <source>Sinhala</source>
-      <translation>Singalese</translation>
+      <translation>Singalees</translation>
     </message>
     <message>
       <source>Slovak</source>
-      <translation>Slovacco</translation>
+      <translation>Slowaaks</translation>
     </message>
     <message>
       <source>Slovenian</source>
-      <translation>Esloveno</translation>
+      <translation>Sloveens</translation>
     </message>
     <message>
       <source>Samoan</source>
-      <translation>Samoano</translation>
+      <translation>Samoaans</translation>
     </message>
     <message>
       <source>Shona</source>
-      <translation>Lona</translation>
+      <translation>Telefoon</translation>
     </message>
     <message>
       <source>Somali</source>
-      <translation>Somalo</translation>
+      <translation>Somalisch</translation>
     </message>
     <message>
       <source>Albanian</source>
-      <translation>Albanês</translation>
+      <translation>Albanees</translation>
     </message>
     <message>
       <source>Serbian</source>
-      <translation>Sérvio</translation>
+      <translation>Servisch</translation>
     </message>
     <message>
       <source>Swati</source>
-      <translation>swati</translation>
+      <translation>Swazi</translation>
     </message>
     <message>
       <source>Southern Sotho</source>
-      <translation>Sesotho</translation>
+      <translation>Zuid-Sotho</translation>
     </message>
     <message>
       <source>Sundanese</source>
-      <translation>Sudanês</translation>
+      <translation>Sudanees</translation>
     </message>
     <message>
       <source>Swedish</source>
-      <translation>Sueco</translation>
+      <translation>Zweeds</translation>
     </message>
     <message>
       <source>Swahili</source>
-      <translation>Suaíli</translation>
+      <translation>Moeilijk</translation>
     </message>
     <message>
       <source>Tamil</source>
@@ -1757,35 +1757,35 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Tajik</source>
-      <translation>Tagico</translation>
+      <translation>Tadzjieks</translation>
     </message>
     <message>
       <source>Thai</source>
-      <translation>Tailandês</translation>
+      <translation>Thaise</translation>
     </message>
     <message>
       <source>Tigrinya</source>
-      <translation>Tigrino</translation>
+      <translation>Tigrinya</translation>
     </message>
     <message>
       <source>Turkmen</source>
-      <translation>Turcomeno</translation>
+      <translation>Turkmeens</translation>
     </message>
     <message>
       <source>Tagalog</source>
-      <translation>Tagalogue</translation>
+      <translation>Tagalog</translation>
     </message>
     <message>
       <source>Tswana</source>
-      <translation>Tswana</translation>
+      <translation>Setswana</translation>
     </message>
     <message>
       <source>Tonga</source>
-      <translation>Tonga</translation>
+      <translation>Tongaans</translation>
     </message>
     <message>
       <source>Turkish</source>
-      <translation>Turco</translation>
+      <translation>Turks</translation>
     </message>
     <message>
       <source>Tsonga</source>
@@ -1793,7 +1793,7 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Tatar</source>
-      <translation>Tataro</translation>
+      <translation>Tataars</translation>
     </message>
     <message>
       <source>Twi</source>
@@ -1801,39 +1801,39 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Tahitian</source>
-      <translation>Tahitiano</translation>
+      <translation>Tahitiaans</translation>
     </message>
     <message>
       <source>Uighur</source>
-      <translation>Uigura</translation>
+      <translation>Oeigoers</translation>
     </message>
     <message>
       <source>Ukrainian</source>
-      <translation>Ucraniano</translation>
+      <translation>Oekraiens</translation>
     </message>
     <message>
       <source>Urdu</source>
-      <translation>urdu</translation>
+      <translation>Urdu</translation>
     </message>
     <message>
       <source>Uzbek</source>
-      <translation>Uzbeco</translation>
+      <translation>Oezbeeks</translation>
     </message>
     <message>
       <source>Venda</source>
-      <translation>venda</translation>
+      <translation>Winkel</translation>
     </message>
     <message>
       <source>Vietnamese</source>
-      <translation>Vietnamita</translation>
+      <translation>Vietnamees</translation>
     </message>
     <message>
       <source>Volapuk</source>
-      <translation>Volapuk</translation>
+      <translation>Volapük</translation>
     </message>
     <message>
       <source>Walloon</source>
-      <translation>Vallone</translation>
+      <translation>Waals</translation>
     </message>
     <message>
       <source>Wolof</source>
@@ -1845,11 +1845,11 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Yiddish</source>
-      <translation>Iídiche</translation>
+      <translation>Jiddisch</translation>
     </message>
     <message>
       <source>Yoruba</source>
-      <translation>Iorubá</translation>
+      <translation>Yoruba</translation>
     </message>
     <message>
       <source>Zhuang</source>
@@ -1857,11 +1857,11 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Chinese</source>
-      <translation>Chinês</translation>
+      <translation>Chinees</translation>
     </message>
     <message>
       <source>Zulu</source>
-      <translation>Zulu</translation>
+      <translation>Zoeloe</translation>
     </message>
     <message>
       <source>Lojban</source>
@@ -1869,198 +1869,198 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Traditional Chinese</source>
-      <translation>Chinês tradicional</translation>
+      <translation>Traditioneel Chinees</translation>
     </message>
     <message>
       <source>Simplified Chinese</source>
-      <translation>Chinês simplificado</translation>
+      <translation>Vereenvoudigd Chinees</translation>
     </message>
     <message>
       <source>Other</source>
-      <translation>Outro</translation>
+      <translation>Andere</translation>
     </message>
     <message>
       <source>Other Simplified Chinese dialects</source>
-      <translation>Outros dialetos chineses simplificados</translation>
+      <translation>Andere vereenvoudigd Chinese dialecten</translation>
     </message>
     <message>
       <source>Other Traditional Chinese dialects</source>
-      <translation>Outro dialetos chineses tradicionais</translation>
+      <translation>Andere traditioneel Chinese dialecten</translation>
     </message>
     <message>
       <source>Other Eastern-European languages</source>
-      <translation>Outros idiomas do leste europeu</translation>
+      <translation>Andere Oost-Europese talen</translation>
     </message>
     <message>
       <source>Other Western-European languages</source>
-      <translation>Outros idiomas da Europa ocidental</translation>
+      <translation>Andere West-Europese talen</translation>
     </message>
     <message>
       <source>Other Russian languages</source>
-      <translation>Outros idiomas russos</translation>
+      <translation>Andere Russische talen</translation>
     </message>
     <message>
       <source>Other Japanese languages</source>
-      <translation>Outros idiomas japoneses</translation>
+      <translation>Andere Japanse talen</translation>
     </message>
     <message>
       <source>Other Baltic languages</source>
-      <translation>Outros idiomas bálticos</translation>
+      <translation>Andere Baltische talen</translation>
     </message>
     <message>
       <source>Other Greek languages</source>
-      <translation>Outros idiomas gregos</translation>
+      <translation>Andere Griekse talen</translation>
     </message>
     <message>
       <source>Other Korean dialects</source>
-      <translation>Outros idiomas coreanos</translation>
+      <translation>Andere Koreaanse dialecten</translation>
     </message>
     <message>
       <source>Other Turkish dialects</source>
-      <translation>Outros dialetos turcos</translation>
+      <translation>Andere Turkse dialecten</translation>
     </message>
     <message>
       <source>Other Thai dialects</source>
-      <translation>Outros dialetos tailandeses</translation>
+      <translation>Andere Thaise dialecten</translation>
     </message>
     <message>
       <source>Tamazight</source>
-      <translation>Admirável</translation>
+      <translation>Berbers</translation>
     </message>
   </context>
   <context>
     <name>Language::Db</name>
     <message>
       <source>French</source>
-      <translation>Francês</translation>
+      <translation>Frans</translation>
     </message>
     <message>
       <source>Spanish</source>
-      <translation>Espanhol</translation>
+      <translation>Spaans</translation>
     </message>
     <message>
       <source>Belarusian</source>
-      <translation>bielorrusso</translation>
+      <translation>Wit-Russisch</translation>
     </message>
     <message>
       <source>Bulgarian</source>
-      <translation>búlgaro</translation>
+      <translation>Bulgaars</translation>
     </message>
     <message>
       <source>Czech</source>
-      <translation>tcheco</translation>
+      <translation>Tsjechisch</translation>
     </message>
     <message>
       <source>German</source>
-      <translation>Alemão</translation>
+      <translation>Duits</translation>
     </message>
     <message>
       <source>Greek</source>
-      <translation>grego</translation>
+      <translation>Grieks</translation>
     </message>
     <message>
       <source>Finnish</source>
-      <translation>finlandês</translation>
+      <translation>Fins</translation>
     </message>
     <message>
       <source>Italian</source>
-      <translation>italiano</translation>
+      <translation>Italiaans</translation>
     </message>
     <message>
       <source>Japanese</source>
-      <translation>japonês</translation>
+      <translation>Japans</translation>
     </message>
     <message>
       <source>Korean</source>
-      <translation>coreano</translation>
+      <translation>Koreaans</translation>
     </message>
     <message>
       <source>Lithuanian</source>
-      <translation>lituano</translation>
+      <translation>Litouws</translation>
     </message>
     <message>
       <source>Macedonian</source>
-      <translation>macedônio</translation>
+      <translation>Macedonisch</translation>
     </message>
     <message>
       <source>Dutch</source>
-      <translation>Holandês</translation>
+      <translation>Nederlands</translation>
     </message>
     <message>
       <source>Polish</source>
-      <translation>polonês</translation>
+      <translation>Pools</translation>
     </message>
     <message>
       <source>Portuguese</source>
-      <translation>Português</translation>
+      <translation>Portugees</translation>
     </message>
     <message>
       <source>Russian</source>
-      <translation>russo</translation>
+      <translation>Russisch</translation>
     </message>
     <message>
       <source>Slovak</source>
-      <translation>eslovaco</translation>
+      <translation>Slowaaks</translation>
     </message>
     <message>
       <source>Albanian</source>
-      <translation>albanês</translation>
+      <translation>Albanees</translation>
     </message>
     <message>
       <source>Swedish</source>
-      <translation>sueco</translation>
+      <translation>Zweeds</translation>
     </message>
     <message>
       <source>Turkish</source>
-      <translation>turco</translation>
+      <translation>Turks</translation>
     </message>
     <message>
       <source>Ukrainian</source>
-      <translation>ucraniano</translation>
+      <translation>Oekraïens</translation>
     </message>
     <message>
       <source>Chinese Simplified</source>
-      <translation>Chinês simplificado</translation>
+      <translation>Versimpeld Chinees</translation>
     </message>
     <message>
       <source>Chinese Traditional</source>
-      <translation>Chinês tradicional</translation>
+      <translation>Chinese traditionele</translation>
     </message>
     <message>
       <source>Vietnamese</source>
-      <translation>vietnamita</translation>
+      <translation>Vietnamees</translation>
     </message>
     <message>
       <source>Portuguese, Brazilian</source>
-      <translation>português, brasileiro</translation>
+      <translation>Portugees, Braziliaans</translation>
     </message>
     <message>
       <source>Persian</source>
-      <translation>persa</translation>
+      <translation>Perzisch</translation>
     </message>
     <message>
       <source>Spanish, Argentina</source>
-      <translation>Espanhol, Argentina</translation>
+      <translation>Spaans, Argentinië</translation>
     </message>
     <message>
       <source>Hindi</source>
-      <translation>hindi</translation>
+      <translation>Hindi</translation>
     </message>
     <message>
       <source>Esperanto</source>
-      <translation>esperanto</translation>
+      <translation>Esperanto</translation>
     </message>
     <message>
       <source>German, Switzerland</source>
-      <translation>Alemão, Suíça</translation>
+      <translation>Duits, Zwitserland</translation>
     </message>
     <message>
       <source>Spanish, Bolivia</source>
-      <translation>Espanhol, Bolívia</translation>
+      <translation>Spaans, Bolivia</translation>
     </message>
     <message>
       <source>Tajik</source>
-      <translation>tadjique</translation>
+      <translation>Tadzjieks</translation>
     </message>
     <message>
       <source>Quechua</source>
@@ -2068,15 +2068,15 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Aymara</source>
-      <translation>aimará</translation>
+      <translation>Aymara</translation>
     </message>
     <message>
       <source>Turkmen</source>
-      <translation>turcomano</translation>
+      <translation>Turkmeens</translation>
     </message>
     <message>
       <source>Interlingue</source>
-      <translation>Interlíngua</translation>
+      <translation>Interlingue</translation>
     </message>
     <message>
       <source>Lojban</source>
@@ -2084,19 +2084,19 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Hungarian</source>
-      <translation>húngaro</translation>
+      <translation>Hongaars</translation>
     </message>
     <message>
       <source>English</source>
-      <translation>Inglês</translation>
+      <translation>Engels</translation>
     </message>
     <message>
       <source>Arabic</source>
-      <translation>Árabe</translation>
+      <translation>Arabisch</translation>
     </message>
     <message>
       <source>Serbian</source>
-      <translation>Sérvio</translation>
+      <translation>Servisch</translation>
     </message>
     <message>
       <source>Kabyle</source>
@@ -2107,145 +2107,145 @@ entre clássico e ortografia escolar em cirílico)</translation>
     <name>LoadDictionaries</name>
     <message>
       <source>Error loading dictionaries</source>
-      <translation>Erro ao carregar dicionários</translation>
+      <translation>Fout bij laden woordenboeken</translation>
     </message>
   </context>
   <context>
     <name>Main</name>
     <message>
       <source>Error in configuration file. Continue with default settings?</source>
-      <translation>Erro no arquivo de configuração. Continuar com as configurações padrão?</translation>
+      <translation>Fout in configuratiebestand. Doorgaan met standaardinstellingen?</translation>
     </message>
   </context>
   <context>
     <name>MainWindow</name>
     <message>
       <source>&amp;File</source>
-      <translation>&amp;Arquivo</translation>
+      <translation>&amp;Bestand</translation>
     </message>
     <message>
       <source>&amp;Edit</source>
-      <translation>&amp;Editar</translation>
+      <translation>Be&amp;werken</translation>
     </message>
     <message>
       <source>&amp;Help</source>
-      <translation>Aj&amp;uda</translation>
+      <translation>&amp;Hulp</translation>
     </message>
     <message>
       <source>&amp;View</source>
-      <translation>Exi&amp;bir</translation>
+      <translation>Beel&amp;d</translation>
     </message>
     <message>
       <source>&amp;Zoom</source>
-      <translation>&amp;Ampliar</translation>
+      <translation>Z&amp;oomen</translation>
     </message>
     <message>
       <source>H&amp;istory</source>
-      <translation>His&amp;tórico</translation>
+      <translation>&amp;Geschiedenis</translation>
     </message>
     <message>
       <source>Search</source>
-      <translation>Pesquisar</translation>
+      <translation>Zoeken</translation>
     </message>
     <message>
       <source>Favo&amp;rites</source>
-      <translation>Favo&amp;ritos</translation>
+      <translation>&amp;Randen</translation>
     </message>
     <message>
       <source>&amp;Search Pane</source>
-      <translation>&amp;Painel de Pesquisa</translation>
+      <translation>&amp;Zoekvenster</translation>
     </message>
     <message>
       <source>&amp;Results Navigation Pane</source>
-      <translation>&amp;Painel de Navegação Resultados</translation>
+      <translation>Navigatievenster zoek&amp;resultaten</translation>
     </message>
     <message>
       <source>Favor&amp;ites Pane</source>
-      <translation>Painel de Favor&amp;itos</translation>
+      <translation>Favor&amp;ieten Schot</translation>
     </message>
     <message>
       <source>&amp;History Pane</source>
-      <translation>Painel &amp;Histórico</translation>
+      <translation>&amp;Geschiedenisvenster</translation>
     </message>
     <message>
       <source>&amp;Dictionaries...</source>
-      <translation>&amp;Dicionários...</translation>
+      <translation>Woorden&amp;boeken...</translation>
     </message>
     <message>
       <source>&amp;Preferences...</source>
-      <translation>&amp;Configurar...</translation>
+      <translation>&amp;Instellingen...</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
-      <translation>&amp;Site do programa</translation>
+      <translation>&amp;Website</translation>
     </message>
     <message>
       <source>&amp;About</source>
-      <translation>S&amp;obre</translation>
+      <translation>&amp;Over</translation>
     </message>
     <message>
       <source>About GoldenDict-ng</source>
-      <translation>Sobre o GoldenDict-ng</translation>
+      <translation>Over GoldenDict-ng</translation>
     </message>
     <message>
       <source>&amp;Quit</source>
-      <translation>&amp;Fechar o GoldenDict-ng</translation>
+      <translation>&amp;Afsluiten</translation>
     </message>
     <message>
       <source>Quit from application</source>
-      <translation>Fechar o programa</translation>
+      <translation>Programma afsluiten</translation>
     </message>
     <message>
       <source>&amp;Forum</source>
-      <translation>&amp;Fórum</translation>
+      <translation>&amp;Forum</translation>
     </message>
     <message>
       <source>&amp;Close To Tray</source>
-      <translation>&amp;Pôr na Área de Notificação</translation>
+      <translation>&amp;Sluiten naar systeemvak</translation>
     </message>
     <message>
       <source>Minimizes the window to tray</source>
-      <translation>Minimiza a janela como ícone na Área de Notificação</translation>
+      <translation>Minimaliseren naar systeemvak</translation>
     </message>
     <message>
       <source>&amp;Save Article</source>
-      <translation>&amp;Salvar verbete</translation>
+      <translation>Artikel &amp;opslaan</translation>
     </message>
     <message>
       <source>Save Article</source>
-      <translation>Salva o verbete atual</translation>
+      <translation>Artikel opslaan</translation>
     </message>
     <message>
       <source>&amp;Print</source>
-      <translation>&amp;Imprimir</translation>
+      <translation>Af&amp;drukken</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
-      <translation>&amp;Configurar Impressão</translation>
+      <translation>&amp;Pagina-instelling</translation>
     </message>
     <message>
       <source>Print Pre&amp;view</source>
-      <translation>Pré-&amp;visualizar Impressão</translation>
+      <translation>Afdruk&amp;voorbeeld</translation>
     </message>
     <message>
       <source>&amp;Rescan Files</source>
-      <translation>&amp;Re-escanear Arquivos</translation>
+      <translation>Bestanden opnieuw &amp;inlezen</translation>
     </message>
     <message>
       <source>&amp;Clear</source>
-      <translation>&amp;Limpar</translation>
+      <translation>&amp;Wissen</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
-      <translation>&amp;Nova Aba</translation>
+      <translation>&amp;Nieuw tabblad</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
-      <translation>Pasta de &amp;configuração</translation>
+      <translation>&amp;Configuratiemap</translation>
     </message>
     <message>
       <source>&amp;Show</source>
-      <translation>E&amp;xibir</translation>
+      <translation>&amp;Weergeven</translation>
     </message>
     <message>
       <source>Ctrl+H</source>
@@ -2253,19 +2253,19 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>&amp;Export</source>
-      <translation>&amp;Exportar</translation>
+      <translation>&amp;Exporteren</translation>
     </message>
     <message>
       <source>&amp;Import</source>
-      <translation>&amp;Importar</translation>
+      <translation>&amp;Importeren</translation>
     </message>
     <message>
       <source>&amp;Always on Top</source>
-      <translation>&amp;Sempre no Topo</translation>
+      <translation>&amp;Altijd op de voorgrond</translation>
     </message>
     <message>
       <source>Always on Top</source>
-      <translation>Sempre no Topo</translation>
+      <translation>Altijd op de voorgrond</translation>
     </message>
     <message>
       <source>Ctrl+O</source>
@@ -2273,181 +2273,181 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Menu Button</source>
-      <translation>Botão Menu</translation>
+      <translation>Menuknop</translation>
     </message>
     <message>
       <source>Search in page</source>
-      <translation>Pesquisar na página</translation>
+      <translation>Zoeken op pagina</translation>
     </message>
     <message>
       <source>Full-text search</source>
-      <translation>Pesquisa de texto completo</translation>
+      <translation>Volledige-tekst zoeken</translation>
     </message>
     <message>
       <source>GoldenDict reference</source>
-      <translation>Referência GoldenDict-ng</translation>
+      <translation>Referentie GoldenDict</translation>
     </message>
     <message>
       <source>Export</source>
-      <translation>Exportar</translation>
+      <translation>Exporteren</translation>
     </message>
     <message>
       <source>Import</source>
-      <translation>Importar</translation>
+      <translation>Importeren</translation>
     </message>
     <message>
       <source>Add</source>
-      <translation>Adicionar</translation>
+      <translation>Toevoegen</translation>
     </message>
     <message>
       <source>Add current tab to Favorites</source>
-      <translation>Adicionar guia atual aos Favoritos</translation>
+      <translation>Huidige tabblad aan favorieten toevoegen</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
-      <translation>Mostrar Nomes na &amp;Barra de Dicionário</translation>
+      <translation>Woordenboekwerkbalk met &amp;tekst</translation>
     </message>
     <message>
       <source>Show &amp;Small Icons in Toolbars</source>
-      <translation>Mostrar ícones pequenos nas barras de ferramentas</translation>
+      <translation>&amp;Kleine pictogrammen weergeven in werkbalken</translation>
     </message>
     <message>
       <source>Show &amp;Large Icons in Toolbars</source>
-      <translation>Mostrar ícones grandes nas barras de ferramentas</translation>
+      <translation>Grote pictogrammen weergeven in werkbalken</translation>
     </message>
     <message>
       <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation>Mostrar ícones normais nas barras de ferramentas</translation>
+      <translation>&amp;Normale pictogrammen weergeven in werkbalken</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
-      <translation>Barra de &amp;Menus</translation>
+      <translation>&amp;Menubalk</translation>
     </message>
     <message>
       <source>&amp;Navigation</source>
-      <translation>&amp;Navegação</translation>
+      <translation>&amp;Navigatiewerkbalk</translation>
     </message>
     <message>
       <source>Back</source>
-      <translation>Anterior</translation>
+      <translation>Terug</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>Seguinte</translation>
+      <translation>Vooruit</translation>
     </message>
     <message>
       <source>Toggle clipboard monitoring</source>
-      <translation>Alternar monitoramento da área de transferência</translation>
+      <translation>Klembordbewaking in-/uitschakelen</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>Pronuncia a palavra da consulta atual (Alt+S)</translation>
+      <translation>Woord uitspreken (Alt+S)</translation>
     </message>
     <message>
       <source>Zoom In</source>
-      <translation>Aumentar as letras das definições</translation>
+      <translation>Vergroten</translation>
     </message>
     <message>
       <source>Zoom Out</source>
-      <translation>Diminuir as letras das definições</translation>
+      <translation>Verkleinen</translation>
     </message>
     <message>
       <source>Normal Size</source>
-      <translation>Restaurar as letras das definições</translation>
+      <translation>Normale grootte</translation>
     </message>
     <message>
       <source>Found in Dictionaries:</source>
-      <translation>Achado nos dicionários:</translation>
+      <translation>Gevonden in woordenboeken:</translation>
     </message>
     <message>
       <source>Show &amp;Main Window</source>
-      <translation>&amp;Mostrar a janela principal</translation>
+      <translation>&amp;Hoofdvenster weergeven</translation>
     </message>
     <message>
       <source>Opened tabs</source>
-      <translation>Guias abertas</translation>
+      <translation>Geopende tabbladen</translation>
     </message>
     <message>
       <source>Close current tab</source>
-      <translation>Fechar a guia atual</translation>
+      <translation>Huidig tabblad sluiten</translation>
     </message>
     <message>
       <source>Close all tabs</source>
-      <translation>Fechar todas as guias</translation>
+      <translation>Alle tabbladen sluiten</translation>
     </message>
     <message>
       <source>Close all tabs except current</source>
-      <translation>Fechar todas as guias com exceção da atual</translation>
+      <translation>Alle andere tabbladen sluiten</translation>
     </message>
     <message>
       <source>Add all tabs to Favorites</source>
-      <translation>Adicionar todas as guias aos Favoritos</translation>
+      <translation>Alle tabbladen aan favorieten toevoegen</translation>
     </message>
     <message>
       <source>New Tab</source>
-      <translation>Nova guia</translation>
+      <translation>Nieuw tabblad</translation>
     </message>
     <message>
       <source>Welcome!</source>
-      <translation>Bem-vindo!</translation>
+      <translation>Welkom!</translation>
     </message>
     <message>
       <source>Accessibility API is not enabled</source>
-      <translation>Acessibilidade a API não está habilitada</translation>
+      <translation>Toegankelijkheid API is niet ingeschakeld</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
-      <translation>AVISO: %1</translation>
+      <translation>WAARSCHUWING: %1</translation>
     </message>
     <message>
       <source>String to search in dictionaries. The wildcards &apos;*&apos;, &apos;?&apos; and sets of symbols &apos;[...]&apos; are allowed.
 To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos; respectively</source>
-      <translation>String para pesquisar em dicionários. Os curingas &apos;*&apos;, &apos;?&apos; e conjuntos de símbolos &apos;[...]&apos; são permitidos.
-Para encontrar os símbolos &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; Use &apos;\ *&apos;, &apos;\?&apos;, &apos;\ [&apos;, &apos;\]&apos; Respectivamente</translation>
+      <translation>Te zoeken string in woordenboeken. De jokertekens &apos;*&apos;, &apos;?&apos; en sets van symbolen &apos;[...]&apos; zijn toegestaan.
+Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen gebruiken &apos;\*&apos;, &apos;\?&apos; &apos;\[&apos;, &apos;\]&apos; respectievelijk</translation>
     </message>
     <message>
       <source>%1 dictionaries, %2 articles, %3 words</source>
-      <translation>%1 dicionário, %2 verbetes, %3 palavras</translation>
+      <translation>%1 Woordenboeken, %2 Artikelen, %3 Woorden</translation>
     </message>
     <message>
       <source>All</source>
-      <translation>Todos os Dicionários</translation>
+      <translation>Alle groepen</translation>
     </message>
     <message>
       <source>Open Tabs List</source>
-      <translation>Abrir a lista de guias</translation>
+      <translation>Tabbladlijst openen</translation>
     </message>
     <message>
       <source>(untitled)</source>
-      <translation>(sem título)</translation>
+      <translation>(naamloos)</translation>
     </message>
     <message>
       <source>Remove current tab from Favorites</source>
-      <translation>Remover a guia atual dos Favoritos</translation>
+      <translation>Huidige tab uit favorieten verwijderen</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
-      <translation>Não foi possível acionar o mecanismo de monitoramento por atalho.&lt;br&gt;Veja se seu XServer está com a extensão RECORD ativada.</translation>
+      <translation>Bewakingsmechanisme voor sneltoetsen kan niet worden geïnitialiseerd.&lt;br&gt;Zorg ervoor dat de RECORD-extensie van uw XServer is ingeschakeld.</translation>
     </message>
     <message>
       <source>New Release Available</source>
-      <translation>Nova Versão Disponível</translation>
+      <translation>Nieuwe versie beschikbaar</translation>
     </message>
     <message>
       <source>Version &lt;b&gt;%1&lt;/b&gt; of GoldenDict is now available for download.&lt;br&gt;Click &lt;b&gt;Download&lt;/b&gt; to get to the download page.</source>
-      <translation>A versão &lt;b&gt;%1&lt;/b&gt; do GoldenDict está disponível para download.</translation>
+      <translation>Versie &lt;b&gt;%1&lt;/b&gt; van GoldenDict kan nu gedownload worden.&lt;br&gt;Klik op &lt;b&gt;downloaden&lt;/b&gt; om naar de downloadpagina te gaan.</translation>
     </message>
     <message>
       <source>Download</source>
-      <translation>Baixar</translation>
+      <translation>Downloaden</translation>
     </message>
     <message>
       <source>Skip This Release</source>
-      <translation>Ignorar esta versão</translation>
+      <translation>Deze versie overslaan</translation>
     </message>
     <message>
       <source>You have chosen to hide a menubar. Use %1 to show it back.</source>
-      <translation>Você optou por ocultar a barra de menus. Use %1 para exibi-la de novo.</translation>
+      <translation>U hebt ervoor gekozen om de menubalk te verbergen. Druk op %1 om deze weer zichtbaar te maken.</translation>
     </message>
     <message>
       <source>Ctrl+M</source>
@@ -2455,557 +2455,550 @@ Para encontrar os símbolos &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]
     </message>
     <message>
       <source>Page Setup</source>
-      <translation>Configuração de Página</translation>
+      <translation>Pagina-instelling</translation>
     </message>
     <message>
       <source>No printer is available. Please install one first.</source>
-      <translation>Não achei nenhuma impressora. Favor instalar uma.</translation>
+      <translation>Geen printer beschikbaar. U moet er eerst één installeren.</translation>
     </message>
     <message>
       <source>Print Article</source>
-      <translation>Imprimir Verbete</translation>
+      <translation>Artikel afdrukken</translation>
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
-      <translation>Html completo (*.html *.htm)</translation>
+      <translation>Volledige HTML (*.html *.htm)</translation>
     </message>
     <message>
       <source>Single Html (*.html *.htm)</source>
-      <translation>HTML único (*.html *.htm)</translation>
+      <translation>Enkele Html (*.html *.htm)</translation>
     </message>
     <message>
       <source>Pdf (*.pdf)</source>
-      <translation>PDF (*.pdf)</translation>
+      <translation>Pdf-bestand (*.pdf)</translation>
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
-      <translation>Mímica Html (*.mhtml)</translation>
+      <translation>Mime-HTML (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
-      <translation>Salvar Verbete como</translation>
+      <translation>Artikel opslaan als</translation>
     </message>
     <message>
       <source>Error</source>
-      <translation>Erro</translation>
+      <translation>Fout</translation>
     </message>
     <message>
       <source>Can&apos;t save article: %1</source>
-      <translation>Não foi possível salvar o verbete: %1</translation>
+      <translation>Kan artikel niet opslaan: %1</translation>
     </message>
     <message>
       <source>Saving article...</source>
-      <translation>Salvando artigo...</translation>
+      <translation>Artikel opslaan...</translation>
     </message>
     <message>
       <source>Save article complete</source>
-      <translation>Salvar artigo completo</translation>
+      <translation>Bewaar artikel voltooid</translation>
     </message>
     <message>
       <source>The main window is set to be always on top.</source>
-      <translation>A janela principal está definida para estar sempre no topo.</translation>
+      <translation>Het hoofdvenster wordt nu altijd op de voorgrond weergegeven.</translation>
     </message>
     <message>
       <source>&amp;Hide</source>
-      <translation>&amp;Ocultar</translation>
+      <translation>&amp;Verbergen</translation>
     </message>
     <message>
       <source>Export history to file</source>
-      <translation>Exportar o histórico</translation>
+      <translation>Geschiedenis opslaan als bestand</translation>
     </message>
     <message>
       <source>Text files (*.txt);;All files (*.*)</source>
-      <translation>Arquivos de texto (*.txt);;Todos os arquivos (*.*)</translation>
+      <translation>Tekst bestanden (*.txt);;Alle bestanden (*.*)</translation>
     </message>
     <message>
       <source>Export error: </source>
-      <translation>Erro de exportação: </translation>
+      <translation>Fout bij exporteren:</translation>
     </message>
     <message>
       <source>History export complete</source>
-      <translation>Feita a exportação do histórico</translation>
+      <translation>Geschiedenis exporteren voltooid</translation>
     </message>
     <message>
       <source>Import history from file</source>
-      <translation>Importar histórico de arquivo</translation>
+      <translation>Geschiedenis importeren uit bestand</translation>
     </message>
     <message>
       <source>Import error: </source>
-      <translation>Erro de importação: </translation>
+      <translation>Fout bij importeren:</translation>
     </message>
     <message>
       <source>Import error: invalid data in file</source>
-      <translation>Erro ao tentar importar: dados inválidos no arquivo</translation>
+      <translation>Fout bij importeren: bestand bevat onjuiste gegevens</translation>
     </message>
     <message>
       <source>History import complete</source>
-      <translation>Importação do histórico concluída</translation>
+      <translation>Geschiedenis importeren voltooid</translation>
     </message>
     <message>
       <source>Export Favorites to file</source>
-      <translation>Exportar Favoritos para arquivo</translation>
+      <translation>Favorieten exporteren naar bestand</translation>
     </message>
     <message>
       <source>Text files (*.txt);;XML files (*.xml)</source>
-      <translation>Arquivos de texto (*.txt);;Arquivos XML (*.xml)</translation>
+      <translation>Tekstbestanden (*.txt);;XML-bestanden (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
-      <translation>Exportação de favoritos concluída</translation>
+      <translation>Favorieten exporteren voltooid</translation>
     </message>
     <message>
       <source>Import Favorites from file</source>
-      <translation>Importar Favoritos do arquivo</translation>
+      <translation>Favorieten importeren uit bestand</translation>
     </message>
     <message>
       <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
-      <translation>Arquivos de texto e XML (*.txt *.xml);;Todos os arquivos (*.*)</translation>
+      <translation>Tekst- en XML-bestanden (*.txt *.xml);;Alle bestanden (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
-      <translation>Erro de análise de dados</translation>
+      <translation>Fout bij verwerken gegevens</translation>
     </message>
     <message>
       <source>Favorites import complete</source>
-      <translation>Importação de favoritos concluída</translation>
+      <translation>Favorieten importeren voltooid</translation>
     </message>
     <message>
       <source>Dictionary info</source>
-      <translation>Inform. do Dicionário</translation>
+      <translation>Woordenboekinformatie</translation>
     </message>
     <message>
       <source>Dictionary headwords</source>
-      <translation>Palavras-chave do dicionário</translation>
+      <translation>Woordenboek hoofdwoorden</translation>
     </message>
     <message>
       <source>Open dictionary folder</source>
-      <translation>Abrir pasta de dicionário</translation>
+      <translation>Woordenboekmap openen</translation>
     </message>
     <message>
       <source>Now indexing for full-text search: </source>
-      <translation>Indexando para pesquisa de texto completo: </translation>
+      <translation>Nu indexeren voor full-text zoeken: </translation>
     </message>
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
-      <translation>Remover a palavra-chave &quot;%1&quot; dos Favoritos?</translation>
+      <translation>Hoofdwoord &quot;%1&quot; uit favorieten verwijderen?</translation>
     </message>
     <message>
       <source>Show</source>
-      <translation>Mostrar</translation>
+      <translation>Weergeven</translation>
     </message>
     <message>
       <source>Save PDF complete</source>
-      <translation>Salvar PDF completo</translation>
+      <translation>PDF-bestand opslaan voltooid</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
-      <translation>Falha ao salvar PDF</translation>
+      <translation>Opslaan PDF mislukt</translation>
     </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
     <message>
       <source>Dictionary file was tampered or corrupted</source>
-      <translation>Arquivo dicionário foi adulterado ou corrompido</translation>
+      <translation>Woordenboekbestand is gemanipuleerd of beschadigd</translation>
     </message>
     <message>
       <source>Failed loading article from %1, reason: %2</source>
-      <translation>Falha ao carregar artigo de %1, motivo: %2</translation>
+      <translation>Kan artikel niet laden van %1, reden: %2</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
       <source>XML parse error: %1 at %2,%3</source>
-      <translation>Erro de análise sintática de XML: %1 em %2,%3</translation>
+      <translation>XML parseerfout: %1 op %2,%3</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
       <source>XML parse error: %1 at %2,%3</source>
-      <translation>Erro de análise sintática de XML: %1 em %2,%3</translation>
+      <translation>XML parseerfout: %1 op %2,%3</translation>
     </message>
   </context>
   <context>
     <name>MediaWikisModel</name>
     <message>
       <source>Enabled</source>
-      <translation>Habilitado</translation>
+      <translation>Ingeschakeld</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation>Nome</translation>
+      <translation>Naam</translation>
     </message>
     <message>
       <source>Address</source>
-      <translation>Endereço</translation>
+      <translation>Adres</translation>
     </message>
     <message>
       <source>Icon</source>
-      <translation>Ícone</translation>
+      <translation>Pictogram</translation>
     </message>
     <message>
       <source>Language Variant</source>
-      <translation>Variante de idioma</translation>
+      <translation>Taalvariant</translation>
     </message>
   </context>
   <context>
     <name>MultimediaAudioPlayer</name>
     <message>
       <source>Couldn&apos;t open audio buffer for reading.</source>
-      <translation>Não foi possível abrir o buffer de áudio para leitura.</translation>
+      <translation>Kan de audiobuffer niet openen om te lezen.</translation>
     </message>
   </context>
   <context>
     <name>OrderAndProps</name>
     <message>
       <source>Form</source>
-      <translation>Formulário</translation>
+      <translation>Formulier</translation>
     </message>
     <message>
       <source>Dictionary order:</source>
-      <translation>Ordem dos dicionários:</translation>
+      <translation>Woordenboekvolgorde:</translation>
     </message>
     <message>
       <source>Inactive (disabled) dictionaries:</source>
-      <translation>Dicionários desativados:</translation>
+      <translation>Inactieve (uitgeschakelde) woordenboeken:</translation>
     </message>
     <message>
       <source>Dictionary information</source>
-      <translation>Informações sobre dicionários</translation>
+      <translation>Informatie over dit woordenboek</translation>
     </message>
     <message>
       <source>Name:</source>
-      <translation>Nome:</translation>
+      <translation>Naam:</translation>
     </message>
     <message>
       <source>Total articles:</source>
-      <translation>Total de verbetes:</translation>
+      <translation>Totaal aantal artikelen:</translation>
     </message>
     <message>
       <source>Total words:</source>
-      <translation>Total de palavras:</translation>
+      <translation>Totaal aantal woorden:</translation>
     </message>
     <message>
       <source>Translates from:</source>
-      <translation>Traduz do:</translation>
+      <translation>Vertaalt van:</translation>
     </message>
     <message>
       <source>Translates to:</source>
-      <translation>Para o:</translation>
+      <translation>Vertaalt naar:</translation>
     </message>
     <message>
       <source>Description:</source>
-      <translation>Descrição:</translation>
+      <translation>Beschrijving:</translation>
     </message>
     <message>
       <source>Files comprising this dictionary:</source>
-      <translation>Arquivos deste dicionário:</translation>
+      <translation>Woordenboek bestaat uit de volgende bestanden:</translation>
     </message>
     <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
-      <translation>Para ordenar os dicionários, arraste-os como desejar.
-Se quiser desativar dicionários, arraste-os para o grupo de desativados.</translation>
+      <translation>Verander de volgorde door items te slepen en verplaats woordenboeken naar de inactieve groep om ze uit te schakelen.</translation>
     </message>
     <message>
       <source>Dictionary headwords</source>
-      <translation>Palavras-chave do dicionário</translation>
+      <translation>Woordenboek hoofdwoorden</translation>
     </message>
     <message>
       <source>Sort by name</source>
-      <translation>Organizar por nome</translation>
+      <translation>Sorteren op naam</translation>
     </message>
     <message>
       <source>Sort by languages</source>
-      <translation>Organizar por idiomas</translation>
+      <translation>Sorteren op taal</translation>
     </message>
     <message>
       <source>Dictionaries active: %1, inactive: %2</source>
-      <translation>Dicionários ativos: %1, inativos: %2</translation>
+      <translation>Actieve woordenboeken: %1, inactief: %2</translation>
     </message>
   </context>
   <context>
     <name>PathsModel</name>
     <message>
       <source>Path</source>
-      <translation>Caminho</translation>
+      <translation>Pad</translation>
     </message>
     <message>
       <source>Recursive</source>
-      <translation>Buscar em subpastas</translation>
+      <translation>Recursief</translation>
     </message>
   </context>
   <context>
     <name>Preferences</name>
     <message>
       <source>Preferences</source>
-      <translation>Configuração</translation>
+      <translation>Instellingen</translation>
     </message>
     <message>
       <source>&amp;Interface</source>
-      <translation>&amp;Interface</translation>
+      <translation>&amp;Weergave</translation>
     </message>
     <message>
       <source>Double-click translates the word clicked</source>
-      <translation>Traduzir palavra/expressão ou exibir definições com um clique duplo do mouse</translation>
+      <translation>Dubbelklikken vertaalt het aangeklikte woord</translation>
     </message>
     <message>
       <source>Tabbed browsing</source>
-      <translation>Navegação por guias</translation>
+      <translation>Tabbladen</translation>
     </message>
     <message>
       <source>Normally, opening a new tab switches to it immediately.
 With this on however, new tabs will be opened without
 switching to them.</source>
-      <translation>Normalmente, ao se abrir uma nova guia, o programa a exibe imediatamente.
-Porém, se está opção for habilitada, novas guias serão abertas sem que o
-programa as exiba nas frente das outras automaticamente.</translation>
+      <translation>Normaal wordt een nieuw tabblad direct geselecteerd.
+Als u deze optie inschakelt worden nieuwe tabbladen
+geopend zonder ze te selecteren.</translation>
     </message>
     <message>
       <source>Open new tabs in background</source>
-      <translation>Abrir novas guias em segundo plano</translation>
+      <translation>Nieuwe tabbladen op de achtergrond openen</translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
 current, active one. Otherwise they are added to
 be the last ones.</source>
-      <translation>Se habilitada esta opção, as novas guias abertas
-serão posicionadas ao lado da guia ativa atual.
-Do contrário, serão enfileiradas ao lado da
-última.</translation>
+      <translation>Hiermee worden nieuwe tabbladen geopend na het actieve tabblad.
+Indien uitgeschakeld worden ze als laatste toegevoegd.</translation>
     </message>
     <message>
       <source>Open new tabs after the current one</source>
-      <translation>Abrir novas guias após a atual</translation>
+      <translation>Nieuwe tabbladen na de huidige openen</translation>
     </message>
     <message>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Habilite esta opção se não quiser exibir a guia principal
-quando apenas uma delas estiver aberta.</translation>
+      <translation>Selecteer deze optie om de tabbladbalk te verbergen als slechts één tabblad geopend is.</translation>
     </message>
     <message>
       <source>Hide single tab</source>
-      <translation>Ocultar guia única</translation>
+      <translation>Enkel tabblad verbergen</translation>
     </message>
     <message>
       <source>MRU order: Most recently used order.</source>
-      <translation>Ordem MRU: Ordem usada mais recentemente.</translation>
+      <translation>MRU order: meest recent gebruikte bestelling.</translation>
     </message>
     <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
-      <translation>Usar Ctrl-Tab para navegar pelas guias de acordo com as mais recentes</translation>
+      <translation>Met Ctrl-Tab navigeren door recent gebruikte tabbladen</translation>
     </message>
     <message>
       <source>Normally, pressing ESC key moves focus to the translation line.
 With this on however, it will hide the main window.</source>
-      <translation>Normalmente, ao se premer a tecla ESC a seleção é transferida para o campo de tradução/
-pesquisa. Com isto, porém, a janela principal será ocultada.</translation>
+      <translation>Standaard verplaatst het indrukken van de Esc-toets de cursor
+naar het zoekveld, maar hiermee wordt in plaats daarvan het
+hoofdvenster verborgen.</translation>
     </message>
     <message>
       <source>ESC key hides main window</source>
-      <translation>Usar a tecla ESC para ocultar a janela principal</translation>
+      <translation>Esc-toets verbergt hoofdvenster</translation>
     </message>
     <message>
       <source>Turn this option on if you want to select words by single mouse click</source>
-      <translation>Habilite esta opção se quiser selecionar palavras com um único clique do mouse</translation>
+      <translation>Selecteer deze optie om woorden te selecteren met een enkele muisklik</translation>
     </message>
     <message>
       <source>Select word by single click</source>
-      <translation>Permitir seleção de palavra com clique único</translation>
+      <translation>Woorden selecteren met een enkele muisklik</translation>
     </message>
     <message>
       <source>Startup</source>
-      <translation>Inicialização</translation>
+      <translation>Het programma starten</translation>
     </message>
     <message>
       <source>Automatically starts GoldenDict after operation system bootup.</source>
-      <translation>Abre o GoldenDict automaticamente com o Windows (como ícone na Área de Notificação).</translation>
+      <translation>GoldenDict-ng automatisch starten wanneer het besturingssysteem opstart.</translation>
     </message>
     <message>
       <source>Start with system</source>
-      <translation>Abrir o GoldenDict com o Windows</translation>
+      <translation>Met systeem starten</translation>
     </message>
     <message>
       <source>Normally, clicking on a link, double-clicking on a word or looking up
 selection in an article loads the translation and almost immediately
 scrolls to the article from the same dictionary. With this option off,
 however, the article from the topmost dictionary is shown.</source>
-      <translation>Normalmente, clicando em um link, clicar duas vezes em uma palavra ou procurar
-seleção em um artigo carrega a tradução e
-rola para o artigo do mesmo dicionário. Com esta opção desligada,
-no entanto, o artigo do dicionário mais alto é mostrado.</translation>
+      <translation>Normaliter klikken op een link, dubbelklik op een woord of zoek een
+selectie in een artikel laadt de vertaling en
+schuift direct naar het artikel uit het hetzelfde woordenboek. Met deze optie wordt
+het artikel uit het bovenste woordenboek weergegeven.</translation>
     </message>
     <message>
       <source>Automatically scroll to target article</source>
-      <translation>Rolar automaticamente para um artigo-alvo</translation>
+      <translation>Automatisch scrollen naar doelartikel</translation>
     </message>
     <message>
       <source>When enabled, an icon appears in the system tray area which can be used
 to open main window and perform other tasks.</source>
-      <translation>Se habilitada esta opção, o programa será exibido
-na Área de Notificação como ícone, por meio do qual
-você poderá restaurar a janela principal e executar
-outros comandos.</translation>
+      <translation>Indien ingeschakeld wordt een pictogram in het systeemvak weergegeven
+waarmee u het hoofdvenster kunt openen en andere taken uit kunt voeren.</translation>
     </message>
     <message>
       <source>Enable system tray icon</source>
-      <translation>Habilitar a exibição do GoldenDict como ícone na Área de Notificação</translation>
+      <translation>Systeemvakpictogram inschakelen</translation>
     </message>
     <message>
       <source>With this on, the application starts directly to system tray without showing
 its main window.</source>
-      <translation>Com isso habilitado, o aplicativo inicia diretamente na bandeja do sistema sem mostrar
-sua janela principal.</translation>
+      <translation>Hiermee start het programma direct in het systeemvak, zonder dat het
+hoofdvenster wordt weergegeven.</translation>
     </message>
     <message>
       <source>Start to system tray</source>
-      <translation>Ao executar o GoldenDict, pô-lo na Área de Notificação</translation>
+      <translation>Starten in systeemvak</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
 the application.</source>
-      <translation>Com esta opção habilitada, ao se fechar a janela principal do programa,
-ela será exibida como ícone na Área de Notificação, em vez de o programa
-ser fechado.</translation>
+      <translation>Als dit ingeschakeld is wordt het hoofdvenster alleen verborgen in plaats van gesloten.</translation>
     </message>
     <message>
       <source>Close to system tray</source>
-      <translation>Pôr o GoldenDict na Área de Notificação ao fechá-lo</translation>
+      <translation>Sluiten naar systeemvak</translation>
     </message>
     <message>
       <source>Adjust this value to avoid huge context menus.</source>
-      <translation>Ajustar este valor para evitar menus de contexto enormes.</translation>
+      <translation>Pas deze waarde aan om zeer lange contextmenu&apos;s te voorkomen.</translation>
     </message>
     <message>
       <source>Context menu dictionaries limit:</source>
-      <translation>Limite de dicionários no menu de contexto:</translation>
+      <translation>Woordenboeken in contextmenu beperken tot:</translation>
     </message>
     <message>
       <source>Appearance</source>
-      <translation>Aparência</translation>
+      <translation>Verschijning</translation>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation>Fonte da Interface</translation>
+      <translation>Lettertype interface</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
-      <translation>Vire a interface para escurecer.</translation>
+      <translation>Draai de UI donker.</translation>
     </message>
     <message>
       <source>Dark Mode</source>
-      <translation>Modo Escuro</translation>
+      <translation>Donkere modus</translation>
     </message>
     <message>
       <source>Turn the article display style to dark.</source>
-      <translation>Torne o estilo de exibição do artigo escuro.</translation>
+      <translation>Zet de artikelweergavestijl in donker.</translation>
     </message>
     <message>
       <source>Dark Reader Mode</source>
-      <translation>Modo Dark Reader</translation>
+      <translation>Donkere lezer Modus</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
-      <translation>Essas fontes serão aplicadas quando as fontes especificadas por um dicionário não forem encontradas.</translation>
+      <translation>Deze lettertypen worden toegepast wanneer de lettertypen die door een woordenboek zijn opgegeven, niet worden gevonden.</translation>
     </message>
     <message>
       <source>Fallback Fonts</source>
-      <translation>Fontes Alternativas</translation>
+      <translation>Fallback-lettertypen</translation>
     </message>
     <message>
       <source>Standard Font</source>
-      <translation>Fonte Padrão</translation>
+      <translation>Standaard lettertype</translation>
     </message>
     <message>
       <source>Serif Font</source>
-      <translation>Fonte Serifada</translation>
+      <translation>Serif-lettertype</translation>
     </message>
     <message>
       <source>Sans-serif Font</source>
-      <translation>Fonte sem serifa</translation>
+      <translation>Sans-serif-lettertype</translation>
     </message>
     <message>
       <source>Monospace Font</source>
-      <translation>Fonte monoespaçada</translation>
+      <translation>Monospace-lettertype</translation>
     </message>
     <message>
       <source>&amp;Popup</source>
-      <translation>&amp;Janela de Definições/Tradução Semiautomáticas</translation>
+      <translation>Scan &amp;Popup</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation>Escolhe se o monitoramento da área de transferência será ativado por padrão na inicialização do programa&apos;.</translation>
+      <translation>Hiermee kiest u of de klembordbewaking standaard wordt ingeschakeld bij het opstarten van het programma&apos;.</translation>
     </message>
     <message>
       <source>Start with clipboard monitoring turned on</source>
-      <translation>Comece com o monitoramento da área de transferência ativado</translation>
+      <translation>Begin met klembordbewaking ingeschakeld</translation>
     </message>
     <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
-      <translation>Envia a palavra traduzida/consultada para a janela principal, em vez de exibi-la numa janela secundária (popup)</translation>
+      <translation>Vertaald woord niet in popup weergeven maar naar hoofdvenster verzenden</translation>
     </message>
     <message>
       <source>Send translated word to main window</source>
-      <translation>Enviar a palavra traduzida/consultada para a janela principal</translation>
+      <translation>Vertaald woord naar hoofdvenster verzenden</translation>
     </message>
     <message>
       <source>Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</source>
-      <translation>Acompanhar alterações da área de transferência quando o escaneamento está habilitado. Aviso! Você deve sempre ativar isso a menos que esteja no Linux.</translation>
+      <translation>Track-klembord verandert wanneer Scannen is ingeschakeld. Let op! U moet dit altijd inschakelen, tenzij u Linux gebruikt.</translation>
     </message>
     <message>
       <source>Track Clipboard change</source>
-      <translation>Rastrear mudança da área de transferência</translation>
+      <translation>Track Klembord wijzigen</translation>
     </message>
     <message>
       <source>Track Selection change</source>
-      <translation>Mudança de seleção</translation>
+      <translation>Nummer Selectie Wijziging</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
 in the pressed state when the word selection changes.</source>
-      <translation>Se habilitada esta opção, a janela de definições/tradução só aparecerá se todas as
-teclas do atalho estiverem premidas quando a seleção de palavra mudar.</translation>
+      <translation>Als dit ingeschakeld is wordt de popup alleen weergegeven als alle opgegeven
+toetsen zijn ingedrukt wanneer de woordselectie verandert.</translation>
     </message>
     <message>
       <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation>Apenas seleção tack quando todas as chaves selecionadas forem pressionadas:</translation>
+      <translation>Alleen tack selectie als alle geselecteerde toetsen worden ingedrukt:</translation>
     </message>
     <message>
       <source>Alt key</source>
-      <translation>Tecla Alt</translation>
+      <translation>Alt-toets</translation>
     </message>
     <message>
       <source>Ctrl key</source>
-      <translation>Tecla Ctrl</translation>
+      <translation>Ctrl-toets</translation>
     </message>
     <message>
       <source>Shift key</source>
-      <translation>Tecla Shift</translation>
+      <translation>Shift-toets</translation>
     </message>
     <message>
       <source>Windows key or Meta key</source>
-      <translation>Tecla Windows ou Tecla Meta</translation>
+      <translation>Windowstoets of Metatoets</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
-      <translation>Mostrar uma janela de sinalização antes de exibir a janela pop-up, clique na bandeira para mostrar a janela pop-up. </translation>
+      <translation>Toon een vlaggenvenster voordat het pop-upvenster wordt weergegeven, klik op de vlag om het pop-upvenster weer te geven. </translation>
     </message>
     <message>
       <source>Show scan flag when word is selected</source>
-      <translation>Mostrar sinalizador de verificação quando a palavra é selecionada</translation>
+      <translation>Toon scan-vlag wanneer een woord is geselecteerd</translation>
     </message>
     <message>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation>Não mostrar pop-up quando a seleção ou a área de transferência em uma das janelas do GoldenDict mudar</translation>
+      <translation>Toon geen pop-up wanneer selectie of klembord verandert in de eigen vensters van een GoldenDict</translation>
     </message>
     <message>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation>Ignorar as próprias alterações de seleção e área de transferência do GoldenDict-ng</translation>
+      <translation>Negeer de eigen selectie en klembordwijzigingen van GoldenDict</translation>
     </message>
     <message>
       <source>Delay time</source>
-      <translation>Tempo de atraso</translation>
+      <translation>Vertragingstijd</translation>
     </message>
     <message>
       <source> ms</source>
@@ -3013,114 +3006,112 @@ teclas do atalho estiverem premidas quando a seleção de palavra mudar.</transl
     </message>
     <message>
       <source>Hotkeys</source>
-      <translation>Atalhos de Teclado</translation>
+      <translation>Sneltoetsen</translation>
     </message>
     <message>
       <source>Use the following hotkey to show or hide the main window:</source>
-      <translation>Usar o seguinte atalho de teclado para mostrar/ocultar a janela principal:</translation>
+      <translation>De volgende sneltoets gebruiken om het hoofdvenster te tonen of te verbergen:</translation>
     </message>
     <message>
       <source>Use the following hotkey to translate a word from clipboard:</source>
-      <translation>Usar o seguinte atalho de teclado para consultar nos dicionários ou traduzir texto da Área de Transferência:</translation>
+      <translation>De volgende sneltoets gebruiken om woorden van het klembord te vertalen:</translation>
     </message>
     <message>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
-      <translation>Os atalhos de teclado são globais e funcionam a partir de qualquer programa,
-em qualquer situação ou contexto, desde que o GoldenDict esteja em execução.</translation>
+      <translation>De sneltoetsen werken systeembreed en vanuit elk programma zolang GoldenDict op de achtergrond actief is.</translation>
     </message>
     <message>
       <source>&amp;Audio</source>
-      <translation>&amp;Áudio</translation>
+      <translation>&amp;Geluid</translation>
     </message>
     <message>
       <source>Pronunciation</source>
-      <translation>Pronúncia</translation>
+      <translation>Uitspraak</translation>
     </message>
     <message>
       <source>Auto-pronounce words in main window</source>
-      <translation>Pronunciar palavras na janela principal automaticamente</translation>
+      <translation>Woorden in hoofdvenster automatisch uitspreken</translation>
     </message>
     <message>
       <source>Auto-pronounce words in the popup</source>
-      <translation>Pronuncie palavras automaticamente no pop-up</translation>
+      <translation>Woorden automatisch uitspreken in de pop-up</translation>
     </message>
     <message>
       <source>Playback</source>
-      <translation>Reprodução</translation>
+      <translation>Afspelen</translation>
     </message>
     <message>
       <source>Play audio files via built-in audio support</source>
-      <translation>Reproduzir arquivos de áudio via suporte de áudio embutido</translation>
+      <translation>Audiobestanden afspelen via ingebouwde audioondersteuning</translation>
     </message>
     <message>
       <source>Use internal player:</source>
-      <translation>Usar player interno:</translation>
+      <translation>Gebruik interne speler:</translation>
     </message>
     <message>
       <source>Choose audio back end</source>
-      <translation>Escolha o back-end de áudio</translation>
+      <translation>Kies audio terug einde</translation>
     </message>
     <message>
       <source>Use any external program to play audio files</source>
-      <translation>Usa um aplicativo externo para reproduzir arquivos de áudio</translation>
+      <translation>Een extern programma gebruiken voor het afspelen van geluidsbestanden</translation>
     </message>
     <message>
       <source>Use external program:</source>
-      <translation>Usar programa externo:</translation>
+      <translation>Extern programma gebruiken:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
-      <translation>Digite a linha de comando do reprodutor de áudio</translation>
+      <translation>Geef audio speler opdrachtregel</translation>
     </message>
     <message>
       <source>&amp;Network</source>
-      <translation>&amp;Rede</translation>
+      <translation>&amp;Netwerk</translation>
     </message>
     <message>
       <source>Enable if you wish to use a proxy server
 for all program&apos;s network requests.</source>
-      <translation>Habilite esta opção para usar um servidor proxy
-para todos os acessos à rede pelo programa.</translation>
+      <translation>Schakel dit in om een proxyserver te gebruiken voor alle netwerkaanvragen.</translation>
     </message>
     <message>
       <source>Use proxy server</source>
-      <translation>Usar servidor proxy</translation>
+      <translation>Proxyserver gebruiken</translation>
     </message>
     <message>
       <source>System proxy</source>
-      <translation>Proxy do sistema</translation>
+      <translation>Systeem proxy</translation>
     </message>
     <message>
       <source>Custom proxy</source>
-      <translation>Proxy personalizado</translation>
+      <translation>Aangepaste proxy</translation>
     </message>
     <message>
       <source>Custom settings</source>
-      <translation>Configurações personalizadas</translation>
+      <translation>Aangepaste instellingen</translation>
     </message>
     <message>
       <source>Type:</source>
-      <translation>Tipo:</translation>
+      <translation>Type</translation>
     </message>
     <message>
       <source>Host:</source>
-      <translation>Servidor:</translation>
+      <translation>Host:</translation>
     </message>
     <message>
       <source>Port:</source>
-      <translation>Porta:</translation>
+      <translation>Poort:</translation>
     </message>
     <message>
       <source>User:</source>
-      <translation>Usuário:</translation>
+      <translation>Gebruiker:</translation>
     </message>
     <message>
       <source>Password:</source>
-      <translation>Senha:</translation>
+      <translation>Wachtwoord:</translation>
     </message>
     <message>
       <source>Anki Connect</source>
-      <translation>Conectar ao Anki</translation>
+      <translation>Anki verbinding</translation>
     </message>
     <message>
       <source>http://</source>
@@ -3128,84 +3119,83 @@ para todos os acessos à rede pelo programa.</translation>
     </message>
     <message>
       <source>Deck:</source>
-      <translation>Baralho:</translation>
+      <translation>Deck:</translation>
     </message>
     <message>
       <source>Model:</source>
-      <translation>Modelo:</translation>
+      <translation>Model</translation>
     </message>
     <message>
       <source>Word</source>
-      <translation>Palavra</translation>
+      <translation>Woord</translation>
     </message>
     <message>
       <source>Vocabulary field...</source>
-      <translation>Campo de vocabulário...</translation>
+      <translation>Woordenboek velden...</translation>
     </message>
     <message>
       <source>Text</source>
-      <translation>texto</translation>
+      <translation>Tekstveld</translation>
     </message>
     <message>
       <source>Definition field...</source>
-      <translation>Campo de definição...</translation>
+      <translation>Definitie velden...</translation>
     </message>
     <message>
       <source>Sentence</source>
-      <translation>Frase</translation>
+      <translation>Zin</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
-      <translation>Campo de frase (pode estar vazio)...</translation>
+      <translation>Zin veld (kan leeg zijn)...</translation>
     </message>
     <message>
       <source>Enabling this would make GoldenDict block most advertisements
 by disallowing content (images, frames) not originating from the site
 you are browsing. If some site breaks because of this, try disabling this.</source>
-      <translation>Se habilitada esta opção, o GoldenDict bloqueará a maioria das propagadas impedindo a
-transferência de conteúdo para seu PC (de imagens, quadros de HTML etc.) originários do
-site que estiver visitando. Se alguns sites deixarem de funcionar, desative esta opção
-para ver se o problema é solucionado.</translation>
+      <translation>Hiermee blokkeert GoldenDict de meeste reclame door inhoud van
+andere dan de door u bezochte site niet toe te staan. Als een site
+onjuist functioneert moet u dit mogelijk uitschakelen.</translation>
     </message>
     <message>
       <source>Disallow loading content from other sites (hides most advertisements)</source>
-      <translation>Não permitir o carregamento de conteúdo de outros sites (oculta a maioria das propagandas)</translation>
+      <translation>Inhoud van andere sites blokkeren (verbergt de meeste reclame)</translation>
     </message>
     <message>
       <source>Some sites detect GoldenDict via HTTP headers and block the requests.
 Enable this option to workaround the problem.</source>
-      <translation>Alguns sites detectam GoldenDick via cabeçalhos HTTP e bloqueiam as solicitações.
-Ative essa opção para solucionar o problema.</translation>
+      <translation>Sommige websites detecteren GoldenDict met behulp van HTTP-headers
+en blokkeren de aanvragen. Selecteer deze optie om dit te voorkomen.</translation>
     </message>
     <message>
       <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Não identificar GoldenDict nos cabeçalhos HTTP</translation>
+      <translation>GoldenDict-ng niet identificeren in HTTP-headers</translation>
     </message>
     <message>
       <source>Maximum network cache size:</source>
-      <translation>Tamanho máximo do cache de rede:</translation>
+      <translation>Maximale netwerkcache grootte:</translation>
     </message>
     <message>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation>Espaço máximo em disco ocupado pelo cache de rede do GoldenDict em
+      <translation>Maximale schijfruimte ingenomen door de netwerkcache van GoldenDict in
 %1
-Se definido como 0, o cache do disco de rede será desabilitado.</translation>
+Indien ingesteld op 0, wordt de cache van de netwerkschijf uitgeschakeld.</translation>
     </message>
     <message>
       <source> MiB</source>
-      <translation> MB</translation>
+      <translation> MiB</translation>
     </message>
     <message>
       <source>When this option is enabled, GoldenDict
 clears its network cache from disk during exit.</source>
-      <translation>Quando esta opção estiver ativada, o GoldenDict
-apaga seu cache de rede do disco durante a saída.</translation>
+      <translation>Als deze optie is ingeschakeld, verwijdert GoldenDict
+zijn netwerkcache van schijf tijdens het afsluiten.</translation>
     </message>
     <message>
       <source>Clear network cache on exit</source>
-      <translation>Limpar cache de rede ao sair</translation>
+      <translation>Wis netwerkcache bij afsluiten</translation>
     </message>
     <message>
       <source>When this is enabled, the program periodically
@@ -3213,189 +3203,189 @@ checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
 informs the user about it and prompts to open a
 download page.</source>
-      <translation>Se habilitada esta opção, o programa procura atualizações periodicamente
-no servidor do GoldenDict. Se houver atualizações, ele informa ao usuário
-e pergunta se ele deseja visitar a página de download.</translation>
+      <translation>Indien ingeschakeld controleert het programma periodiek of er
+een nieuwe versie beschikbaar is en wordt de gebruiker zonodig
+gevraagd een downloadpagina te openen.</translation>
     </message>
     <message>
       <source>Check for new program releases periodically</source>
-      <translation>Procurar atualizações do programa periodicamente</translation>
+      <translation>Periodiek controleren op nieuwe versies</translation>
     </message>
     <message>
       <source>Full-text search</source>
-      <translation>Pesquisa de texto completo</translation>
+      <translation>Volledige-tekst zoeken</translation>
     </message>
     <message>
       <source>Allow full-text search for:</source>
-      <translation>Permitir pesquisa de texto completo para:</translation>
+      <translation>Volledige tekst zoeken toestaan:</translation>
     </message>
     <message>
       <source>Don&apos;t search in dictionaries containing more than</source>
-      <translation>Não procure em dicionários que contenham mais de</translation>
+      <translation>Zoek niet in woordenboeken met meer dan</translation>
     </message>
     <message>
       <source>articles (0 - unlimited)</source>
-      <translation>artigos (0 - ilimitado)</translation>
+      <translation>artikelen (0 - ongelimiteerd)</translation>
     </message>
     <message>
       <source>Create fulltext index with parallel threads </source>
-      <translation>Criar índice de texto completo com threads paralelos </translation>
+      <translation>Maak een volledige tekstindex met parallelle threads </translation>
     </message>
     <message>
       <source>Ad&amp;vanced</source>
-      <translation>A&amp;vançada</translation>
+      <translation>Gea&amp;vanceerd</translation>
     </message>
     <message>
       <source>History</source>
-      <translation>Histórico</translation>
+      <translation>Geschiedenis</translation>
     </message>
     <message>
       <source>Turn this option on to store history of the translated words</source>
-      <translation>Habilite esta opção se quiser gravar o histórico das palavras traduzidas/pesquisadas</translation>
+      <translation>Schakel deze optie in om de geschiedenis van vertaalde woorden op te slaan</translation>
     </message>
     <message>
       <source>Store &amp;history</source>
-      <translation>Gravar o &amp;histórico</translation>
+      <translation>&amp;Geschiedenis opslaan</translation>
     </message>
     <message>
       <source>Specify the maximum number of entries to keep in history.</source>
-      <translation>Especifique o número máximo de entradas para manter no histórico.</translation>
+      <translation>Geef het maximum aantal items op dat bewaard wordt als geschiedenis.</translation>
     </message>
     <message>
       <source>Maximum history size:</source>
-      <translation>Tamanho máximo do histórico:</translation>
+      <translation>Maximale grootte geschiedenis:</translation>
     </message>
     <message>
       <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Intervalo ao salvar o histórico. Se definido histórico como 0, será salvo apenas durante a saída.</translation>
+      <translation>Opslag-interval voor geschiedenis (instellen op 0 om alleen op te slaan bij afsluiten).</translation>
     </message>
     <message>
       <source>Save every</source>
-      <translation>Salvar tudo</translation>
+      <translation>Elke</translation>
     </message>
     <message>
       <source>minutes</source>
-      <translation>minutos</translation>
+      <translation>minuten opslaan</translation>
     </message>
     <message>
       <source>Favorites</source>
-      <translation>Favoritos</translation>
+      <translation>Favorieten</translation>
     </message>
     <message>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
-      <translation>Intervalo para salvar Favoritos. Se definido como 0, os Favoritos serão salvos apenas durante a saída.</translation>
+      <translation>Favorieten opslaan interval. Indien ingesteld op 0 favorieten zal alleen worden opgeslagen tijdens het afsluiten.</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
-      <translation>Ative esta opção para confirmar todas as operações de exclusão de itens</translation>
+      <translation>Schakel deze optie in om elke verwijdering van items te bevestigen</translation>
     </message>
     <message>
       <source>Confirmation for items deletion</source>
-      <translation>Confirmação para exclusão de itens</translation>
+      <translation>Bevestiging voor verwijdering van items</translation>
     </message>
     <message>
       <source>Articles</source>
-      <translation>Artigos</translation>
+      <translation>Artikelen</translation>
     </message>
     <message>
       <source>Ignore punctuation while searching</source>
-      <translation>Ignorar pontuação ao pesquisar</translation>
+      <translation>Leestekens negeren tijdens zoeken</translation>
     </message>
     <message>
       <source>Input phrases longer than this size will be ignored</source>
-      <translation>Frases de entrada maiores que este tamanho serão ignoradas</translation>
+      <translation>Invoer zinnen langer dan deze grootte zullen worden genegeerd</translation>
     </message>
     <message>
       <source>symbols</source>
-      <translation>símbolos</translation>
+      <translation>tekens</translation>
     </message>
     <message>
       <source>Select this option to automatic collapse big articles</source>
-      <translation>Selecione essa opção para automaticamente recolher grandes artigos</translation>
+      <translation>Selecteer deze optie om lange artikelen automatisch samen te vouwen</translation>
     </message>
     <message>
       <source>Collapse articles more than</source>
-      <translation>Recolher artigos mais de</translation>
+      <translation>Artikelen samenvouwen met meer dan</translation>
     </message>
     <message>
       <source>Turn this option on to ignore unreasonably long input text
 from mouse-over, selection, clipboard or command line</source>
-      <translation>Ligue esta opção para ignorar texto de entrada excessivamente longo
-do mouse-over, seleção, área de transferência ou linha de comando</translation>
+      <translation>Schakel deze optie in om onredelijk lange invoertekst
+van muisaanwijzing, selectie, klembord of opdrachtregel te negeren</translation>
     </message>
     <message>
       <source>Ignore input phrases longer than</source>
-      <translation>Ignorar frases inseridas maiores que</translation>
+      <translation>Negeer input zinnen langer dan</translation>
     </message>
     <message>
       <source>Articles longer than this size will be collapsed</source>
-      <translation>Artigos mais longos que esse tamanho vai ser recolhido</translation>
+      <translation>Langere artikelen automatisch samenvouwen</translation>
     </message>
     <message>
       <source>Turn this option on to always expand optional parts of articles</source>
-      <translation>Habilite esta opção se quise expandir sempre partes opcionais de artigos</translation>
+      <translation>Schakel deze optie in om optionele onderdelen van artikelen altijd uit te vouwen</translation>
     </message>
     <message>
       <source>Expand optional &amp;parts</source>
-      <translation>E&amp;xpandir partes opcionais</translation>
+      <translation>Optionele onderdelen &amp;uitvouwen</translation>
     </message>
     <message>
       <source>Turn this option on to ignore diacritics while searching articles</source>
-      <translation>Ative esta opção para ignorar sinais diacríticos ao pesquisar artigos</translation>
+      <translation>Schakel deze optie in om diakritiek te negeren tijdens het zoeken van artikelen</translation>
     </message>
     <message>
       <source>Ignore diacritics while searching</source>
-      <translation>Ignorar diacríticos durante a pesquisa</translation>
+      <translation>Negeren van diacritica tijdens zoeken</translation>
     </message>
     <message>
       <source>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</source>
-      <translation>Durante buscas sucessivas, se um dicionário for recolhido pelo manual, ele permanecerá recolhido na próxima busca</translation>
+      <translation>Bij opeenvolgende zoekopdrachten, als één woordenboek bij een handboek is ingeklapt, blijft het ingeklapt in de volgende zoekopdracht</translation>
     </message>
     <message>
       <source>Session collapse</source>
-      <translation>Colapso da sessão</translation>
+      <translation>Sessie inklappen</translation>
     </message>
     <message>
       <source>Turn this option on to enable extra articles search via synonym lists
 from Stardict, Babylon and GLS dictionaries</source>
-      <translation>Ative esta opção para habilitar a pesquisa de artigos extras por meio de listas de sinônimos
-dos dicionários Stardict, Babylon e GLS</translation>
+      <translation>Schakel deze optie in om extra artikelen te zoeken via synoniemlijsten
+van Stardict, Babylon en GLS woordenboeken</translation>
     </message>
     <message>
       <source>Extra search via synonyms</source>
-      <translation>Pesquisa extra via sinônimos</translation>
+      <translation>Extra zoeken via synoniemen</translation>
     </message>
     <message>
       <source>When using clipboard, strip everything after newline</source>
-      <translation>Ao usar a área de transferência, retire tudo após a nova linha</translation>
+      <translation>Als u het klembord gebruikt, stript u alles na de nieuwe regel</translation>
     </message>
     <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation>Em uma nova pesquisa, coloque o foco na janela principal ou pop-up, mesmo que esteja visível</translation>
+      <translation>Focus bij een nieuwe zoekopdracht op het hoofd- of pop-upvenster, zelfs als het zichtbaar is</translation>
     </message>
     <message>
       <source>Miscellaneous</source>
-      <translation>Diversos</translation>
+      <translation>Gemengd</translation>
     </message>
     <message>
       <source>Remove invalid index on exit</source>
-      <translation>Remover índice inválido ao sair</translation>
+      <translation>Verwijder ongeldige index bij afsluiten</translation>
     </message>
     <message>
       <source>System default</source>
-      <translation>Padrão do sistema</translation>
+      <translation>Systeemstandaard</translation>
     </message>
     <message>
       <source>Default</source>
-      <translation>Padrão</translation>
+      <translation>Standaard</translation>
     </message>
     <message>
       <source>Classic</source>
-      <translation>Clássico</translation>
+      <translation>Klassiek</translation>
     </message>
     <message>
       <source>Modern</source>
-      <translation>Moderno</translation>
+      <translation>Vernieuwend</translation>
     </message>
     <message>
       <source>Lingvo</source>
@@ -3403,90 +3393,90 @@ dos dicionários Stardict, Babylon e GLS</translation>
     </message>
     <message>
       <source>Babylon</source>
-      <translation>Babilônia</translation>
+      <translation>Babylon</translation>
     </message>
     <message>
       <source>Lingoes</source>
-      <translation>Lanoes</translation>
+      <translation>Bellen</translation>
     </message>
     <message>
       <source>Lingoes-Blue</source>
-      <translation>Lais-Cola</translation>
+      <translation>Lingoes-Blauw</translation>
     </message>
     <message>
       <source>Auto does nothing on some systems.</source>
-      <translation>O Auto não faz nada em alguns sistemas.</translation>
+      <translation>Auto doet niets op sommige systemen.</translation>
     </message>
     <message>
       <source>Restart the program to apply the language change.</source>
-      <translation>Reinicie o programa para aplicar a mudança de idioma.</translation>
+      <translation>Start het programma opnieuw om de toepassingstaal te wijzigen.</translation>
     </message>
     <message>
       <source>Restart to apply the interface style change.</source>
-      <translation>Reinicie para aplicar a mudança de estilo de interface.</translation>
+      <translation>Start opnieuw om de wijziging van de interfacestijl toe te passen.</translation>
     </message>
     <message>
       <source>Restart to apply the interface font change.</source>
-      <translation>Reinicie para aplicar a alteração da fonte da interface.</translation>
+      <translation>Herstart om de lettertypewijziging van de interface toe te passen.</translation>
     </message>
     <message>
       <source>Restart needed</source>
-      <translation>Reiniciar necessário</translation>
+      <translation>Opnieuw opstarten nodig</translation>
     </message>
     <message>
       <source>Enable</source>
-      <translation>Habilitar</translation>
+      <translation>Inschakelen</translation>
     </message>
     <message>
       <source>Disable</source>
-      <translation>Desabilitar</translation>
+      <translation>Uitzetten</translation>
     </message>
     <message>
       <source>Automatic</source>
-      <translation>Automático</translation>
+      <translation>Automatisch</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation>Salvar mensagens de depuração no gd_log.txt na pasta config</translation>
+      <translation>Debug berichten opslaan in gd_log.txt in de configuratie map</translation>
     </message>
     <message>
       <source>Interface Font Size</source>
-      <translation>Tamanho da Fonte da Interface</translation>
+      <translation>Tekengrootte interface</translation>
     </message>
     <message>
       <source>Interface language</source>
-      <translation>Idioma da interface</translation>
+      <translation>Interface taal</translation>
     </message>
     <message>
       <source>Article Display style</source>
-      <translation>Estilo de Exibição do Artigo</translation>
+      <translation>Weergavestijl artikel</translation>
     </message>
     <message>
       <source>Add-on style</source>
-      <translation>Estilo do complemento</translation>
+      <translation>Add-on stijl</translation>
     </message>
     <message>
       <source>Interface Style</source>
-      <translation>Estilo da interface</translation>
+      <translation>Interface Stijl</translation>
     </message>
     <message>
       <source>Preview Font</source>
-      <translation>Visualizar Fonte</translation>
+      <translation>Voorbeeld lettertype</translation>
     </message>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
-      <translation>GoldenDict-ng é um software de dicionário.</translation>
+      <translation>GoldenDict-ng is een woordenboeksoftware.</translation>
     </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
     <message>
       <source>Audio</source>
-      <translation>Áudio</translation>
+      <translation>Geluid</translation>
     </message>
     <message>
       <source>Plain Text</source>
-      <translation>Texto simples</translation>
+      <translation>Tekst zonder opmaak</translation>
     </message>
     <message>
       <source>Html</source>
@@ -3494,72 +3484,72 @@ dos dicionários Stardict, Babylon e GLS</translation>
     </message>
     <message>
       <source>Prefix Match</source>
-      <translation>Correspondência de prefixo</translation>
+      <translation>Overeenkomst op voorvoegsel</translation>
     </message>
     <message>
       <source>Unknown</source>
-      <translation>Desconhecido</translation>
+      <translation>Onbekend</translation>
     </message>
   </context>
   <context>
     <name>Programs::RunInstance</name>
     <message>
       <source>No program name was given.</source>
-      <translation>Nenhum nome de programa foi especificado.</translation>
+      <translation>Geen programmanaam opgegeven.</translation>
     </message>
     <message>
       <source>The program has crashed.</source>
-      <translation>O programa travou.</translation>
+      <translation>Het programma is vastgelopen.</translation>
     </message>
     <message>
       <source>The program has returned exit code %1.</source>
-      <translation>O programa retornou o código de fechamento %1.</translation>
+      <translation>Het programma heeft afsluitcode %1 geretourneerd.</translation>
     </message>
   </context>
   <context>
     <name>ProgramsModel</name>
     <message>
       <source>Enabled</source>
-      <translation>Habilitada</translation>
+      <translation>Ingeschakeld</translation>
     </message>
     <message>
       <source>Type</source>
-      <translation>Tipo</translation>
+      <translation>Type</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation>Nome</translation>
+      <translation>Naam</translation>
     </message>
     <message>
       <source>Command Line</source>
-      <translation>Linha de comando</translation>
+      <translation>Opdrachtregel</translation>
     </message>
     <message>
       <source>Icon</source>
-      <translation>Ícone</translation>
+      <translation>Pictogram</translation>
     </message>
   </context>
   <context>
     <name>QObject</name>
     <message>
       <source>Article loading error</source>
-      <translation>Erro ao carregar artigo</translation>
+      <translation>Fout bij laden artikel</translation>
     </message>
     <message>
       <source>Article decoding error</source>
-      <translation>Erro ao decodificar artigo</translation>
+      <translation>Fout bij decoderen artikel</translation>
     </message>
     <message>
       <source>Copyright: %1%2</source>
-      <translation>Direitos autorais: %1%2</translation>
+      <translation>Auteursrecht: %1%2</translation>
     </message>
     <message>
       <source>Version: %1%2</source>
-      <translation>Versão: %1%2</translation>
+      <translation>Versie: %1%2</translation>
     </message>
     <message>
       <source>Author: %1%2</source>
-      <translation>Autor: %1%2</translation>
+      <translation>Auteur: %1%2</translation>
     </message>
     <message>
       <source>E-mail: %1%2</source>
@@ -3567,129 +3557,129 @@ dos dicionários Stardict, Babylon e GLS</translation>
     </message>
     <message>
       <source>Title: %1%2</source>
-      <translation>Título: %1%2</translation>
+      <translation>Titel: %1%2</translation>
     </message>
     <message>
       <source>Website: %1%2</source>
-      <translation>Site: %1%2</translation>
+      <translation>Website: %1%2</translation>
     </message>
     <message>
       <source>Date: %1%2</source>
-      <translation>Data: %1%2</translation>
+      <translation>Datum: %1%2</translation>
     </message>
     <message>
       <source>A dictionary lookup program.</source>
-      <translation>Um programa de pesquisa de dicionário.</translation>
+      <translation>Een woordenboek opzoeken programma.</translation>
     </message>
     <message>
       <source>Word or sentence to query.</source>
-      <translation>Palavra ou frase a consultar.</translation>
+      <translation>Woord of zin om te vragen.</translation>
     </message>
     <message>
       <source>Reset window state.</source>
-      <translation>Redefina o estado da janela.</translation>
+      <translation>Vensterstatus resetten.</translation>
     </message>
     <message>
       <source>Disable tts.</source>
-      <translation>Desativar tts.</translation>
+      <translation>Schakel tts uit.</translation>
     </message>
     <message>
       <source>Change the group of main window.</source>
-      <translation>Altera o grupo da janela principal.</translation>
+      <translation>Wijzig de groep van het hoofdvenster.</translation>
     </message>
     <message>
       <source>Change the group of popup.</source>
-      <translation>Alterar o grupo de popup.</translation>
+      <translation>Wijzig de pop-upgroep.</translation>
     </message>
     <message>
       <source>Toggle popup.</source>
-      <translation>Alternar pop-up de verificação.</translation>
+      <translation>Pop-up weergeven/verbergen.</translation>
     </message>
     <message>
       <source>Print version and diagnosis info.</source>
-      <translation>Versão impressa e informações de diagnóstico.</translation>
+      <translation>Printversie en diagnose-info.</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Salvar mensagens de depuração no gd_log.txt na pasta config.</translation>
+      <translation>Foutopsporingsberichten opslaan in gd_log.txt in de configuratiemap.</translation>
     </message>
     <message>
       <source>Force the word to be translated in Popup.</source>
-      <translation>Força a palavra a ser traduzida no Popup.</translation>
+      <translation>Forceer het woord te vertalen in een popup.</translation>
     </message>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
-      <translation>Forçar a palavra a ser traduzida na janela principal.</translation>
+      <translation>Forceer het woord te vertalen in het hoofdvenster.</translation>
     </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
     <message>
       <source>Dictionary search/filter (Ctrl+F)</source>
-      <translation>Dicionário pesquisar/filtro (Ctrl+F)</translation>
+      <translation>Woordenboeken zoeken/filteren (Ctrl+F)</translation>
     </message>
     <message>
       <source>Clear Search</source>
-      <translation>Limpar Busca</translation>
+      <translation>Zoekresultaat wissen</translation>
     </message>
   </context>
   <context>
     <name>ResourceToSaveHandler</name>
     <message>
       <source>ERROR: %1</source>
-      <translation>Erro: %1</translation>
+      <translation>FOUT: %1</translation>
     </message>
     <message>
       <source>Resource saving error: </source>
-      <translation>Erro ao salvar recurso: </translation>
+      <translation>Fout bij opslaan bron:</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
-      <translation>AVISO: %1</translation>
+      <translation>WAARSCHUWING: %1</translation>
     </message>
     <message>
       <source>The referenced resource failed to download.</source>
-      <translation>O recurso referenciado não conseguiu baixar.</translation>
+      <translation>Kan de bron waarnaar wordt verwezen niet downloaden.</translation>
     </message>
   </context>
   <context>
     <name>Romaji</name>
     <message>
       <source>Hepburn Romaji for Hiragana</source>
-      <translation>Hepburn Romaji para Hiragana</translation>
+      <translation>Hepburn Romaji voor Hiragana</translation>
     </message>
     <message>
       <source>Hepburn Romaji for Katakana</source>
-      <translation>Hepburn Romaji para Katakana</translation>
+      <translation>Hepburn Romaji voor Katakana</translation>
     </message>
   </context>
   <context>
     <name>RussianTranslit</name>
     <message>
       <source>Russian Transliteration</source>
-      <translation>Transliteração do Russo</translation>
+      <translation>Russische transliteratie</translation>
     </message>
   </context>
   <context>
     <name>ScanPopup</name>
     <message>
       <source>WARNING: %1</source>
-      <translation>AVISO: %1</translation>
+      <translation>WAARSCHUWING: %1</translation>
     </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
-      <translation>Anterior</translation>
+      <translation>Achterzijde</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>Encaminhar</translation>
+      <translation>Doorsturen</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>Palavra Pronunciada (Alt+S)</translation>
+      <translation>Pronounce woord (Alt+S)</translation>
     </message>
     <message>
       <source>Alt+S</source>
@@ -3697,32 +3687,32 @@ dos dicionários Stardict, Babylon e GLS</translation>
     </message>
     <message>
       <source>Send word to main window (Alt+W)</source>
-      <translation>Enviar palavra para a janela principal (Alt+W)</translation>
+      <translation>Woord naar hoofdvenster verzenden (Alt+W)</translation>
     </message>
     <message>
       <source>Alt+W</source>
-      <translation>Alt+O</translation>
+      <translation>Alt+W</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>
-      <translation>Adicionar palavra aos Favoritos (Ctrl+E)</translation>
+      <translation>Woord aan favorieten toevoegen (Ctrl+E)</translation>
     </message>
     <message>
       <source>Always stay on top of all other windows</source>
-      <translation>Sempre ficar em cima de todas as outras janelas</translation>
+      <translation>Blijf altijd op de voorgrond van alle andere vensters</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>Use isto para fixar a janela para que ela fique na tela,
-poderia ser redimensionado ou gerenciado de outras formas.</translation>
+      <translation>Gebruik dit om het venster te spelden zodat het op het scherm zou blijven,
+kan op andere manieren worden aangepast of beheerd.</translation>
     </message>
   </context>
   <context>
     <name>SearchPanel</name>
     <message>
       <source>&amp;Previous</source>
-      <translation>&amp;Anterior</translation>
+      <translation>Vorige</translation>
     </message>
     <message>
       <source>Ctrl+Shift+G</source>
@@ -3730,7 +3720,7 @@ poderia ser redimensionado ou gerenciado de outras formas.</translation>
     </message>
     <message>
       <source>&amp;Next</source>
-      <translation>&amp;Próximo</translation>
+      <translation>&amp;Volgende</translation>
     </message>
     <message>
       <source>Ctrl+G</source>
@@ -3738,73 +3728,73 @@ poderia ser redimensionado ou gerenciado de outras formas.</translation>
     </message>
     <message>
       <source>&amp;Case Sensitive</source>
-      <translation>&amp;Caso sensível</translation>
+      <translation>Gevoelig &amp;Zaak</translation>
     </message>
     <message>
       <source>Find:</source>
-      <translation>Localizar:</translation>
+      <translation>Zoek:</translation>
     </message>
   </context>
   <context>
     <name>SoundDirsModel</name>
     <message>
       <source>Path</source>
-      <translation>Caminho</translation>
+      <translation>Pad</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation>Nome</translation>
+      <translation>Naam</translation>
     </message>
     <message>
       <source>Icon</source>
-      <translation>Ícone</translation>
+      <translation>Pictogram</translation>
     </message>
   </context>
   <context>
     <name>Sources</name>
     <message>
       <source>Files</source>
-      <translation>Arquivos</translation>
+      <translation>Bestanden</translation>
     </message>
     <message>
       <source>Paths to search for the dictionary files:</source>
-      <translation>Caminhos dos arquivos de dicionário:</translation>
+      <translation>Mappen waarin naar woordenboeken wordt gezocht:</translation>
     </message>
     <message>
       <source>&amp;Add...</source>
-      <translation>&amp;Adicionar...</translation>
+      <translation>&amp;Toevoegen...</translation>
     </message>
     <message>
       <source>&amp;Remove</source>
-      <translation>&amp;Remover</translation>
+      <translation>&amp;Verwijderen</translation>
     </message>
     <message>
       <source>Re&amp;scan now</source>
-      <translation>Atua&amp;lizar agora</translation>
+      <translation>&amp;Opnieuw inlezen</translation>
     </message>
     <message>
       <source>Sound Dirs</source>
-      <translation>Pronúncia</translation>
+      <translation>Geluidsmappen</translation>
     </message>
     <message>
       <source>Make dictionaries from bunches of audiofiles by adding paths here:</source>
-      <translation>Caminhos de coleções de arquivos de áudio de pronúncia:</translation>
+      <translation>Woordenboeken uit geluidsbestanden samenstellen door hier paden toe te voegen:</translation>
     </message>
     <message>
       <source>Morphology</source>
-      <translation>Ortografia</translation>
+      <translation>Morfologie</translation>
     </message>
     <message>
       <source>Path to a directory with Hunspell/Myspell dictionaries:</source>
-      <translation>Caminho da pasta dos dicionários Hunspell/Myspell:</translation>
+      <translation>Pad naar de map met Hunspell/Myspell woordenboeken:</translation>
     </message>
     <message>
       <source>&amp;Change...</source>
-      <translation>&amp;Modificar...</translation>
+      <translation>&amp;Aanpassen...</translation>
     </message>
     <message>
       <source>Available morphology dictionaries:</source>
-      <translation>Dicionários de ortografia disponíveis:</translation>
+      <translation>Beschikbare morfologische woordenboeken:</translation>
     </message>
     <message>
       <source>Each morphology dictionary appears as a
@@ -3813,46 +3803,44 @@ provides stem words for searches and
 spelling suggestions for mistyped words.
 Add appropriate dictionaries to the bottoms
 of the appropriate groups to use them.</source>
-      <translation>Cada dicionário de ortografia aparece como
-um dicionário auxiliar separado que fornece
-radicais para consultas e sugestões de
-ortografia de palavras digitadas
-incorretamente.
-
-Adicione dicionários compatíveis ao fim
-dos grupos apropriados para usá-los.</translation>
+      <translation>Elk morfologisch woordenboek verschijnt als
+hulpwoordenboek dat stamwoorden voor
+zoekopdrachten en spellingsuggesties voor
+verkeerd getypte woorden verschaft. Voeg de
+geschikte woordenboeken toe onderaan de juiste
+groep om ze te gebruiken.</translation>
     </message>
     <message>
       <source>Wikipedia</source>
-      <translation>Wikipédia</translation>
+      <translation>Wikipedia</translation>
     </message>
     <message>
       <source>Wikipedia (MediaWiki) sites:</source>
-      <translation>Sites da Wikipedia (MediaWiki):</translation>
+      <translation>Wikipedia (MediaWiki) sites:</translation>
     </message>
     <message>
       <source>Websites</source>
-      <translation>Site da Web</translation>
+      <translation>Websites</translation>
     </message>
     <message>
       <source>Any websites. A string %GDWORD% will be replaced with the query word:</source>
-      <translation>Especifique qualquer site que desejar. O demarcador %GDWORD% será substituído pela palavra da consulta do usuário:</translation>
+      <translation>Alle websites. De tekenreeks %GDWORD% wordt automatisch vervangen door het zoekwoord:</translation>
     </message>
     <message>
       <source>DICT servers</source>
-      <translation>Servidores DICT</translation>
+      <translation>DICT-servers</translation>
     </message>
     <message>
       <source>DICT servers:</source>
-      <translation>Servidores DICT:</translation>
+      <translation>DICT-servers:</translation>
     </message>
     <message>
       <source>Programs</source>
-      <translation>Programas</translation>
+      <translation>Programma&apos;s</translation>
     </message>
     <message>
       <source>Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</source>
-      <translation>Qualquer programa externo. Uma seqüência de caracteres %GDWORD% será substituída pela palavra de consulta. Uma string %GDSEARCH% será substituída pelo texto na barra de pesquisa. Se ambos os parâmetros não forem fornecidos, o headword será alimentado na entrada padrão.</translation>
+      <translation>Alle externe programma's. Een tekenreeks %GDWORD% wordt vervangen door het trefwoord. Een tekenreeks %GDSEARCH% wordt vervangen door de tekst in de zoekbalk. Als beide parameters niet worden opgegeven, zal het kopwoord worden gevoed in standaard invoer.</translation>
     </message>
     <message>
       <source>Lingua Libre</source>
@@ -3860,23 +3848,23 @@ dos grupos apropriados para usá-los.</translation>
     </message>
     <message>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pronunciations provided by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pronúncias fornecidas por &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, uma biblioteca de mídia linguística colaborativa da Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Uitspraken geleverd door &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, een gezamenlijke taalkundige mediabibliotheek van Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <source>Enable Lingua Libre</source>
-      <translation>Habilitar Lingua Livre</translation>
+      <translation>Lingua Libre inschakelen</translation>
     </message>
     <message>
       <source>ISO 639-3 language code</source>
-      <translation>Código do idioma ISO 639-3</translation>
+      <translation>ISO 639-3 taalcode</translation>
     </message>
     <message>
       <source>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
 
 Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</source>
-      <translation>Exemplos:  &amp;quot;eng&amp;quot; para inglês, &amp;quot;fra&amp;quot; para francês &lt;br&gt;
+      <translation>Voorbeelden:  &amp;quot;eng&amp;quot; voor Engels, &amp;quot;fra&amp;quot; voor Frans &lt;br&gt;
 
-A lista completa de idiomas disponíveis pode ser encontrada &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; aqui &lt;/a&gt;</translation>
+De volledige lijst met beschikbare talen vindt u &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; hier &lt;/a&gt;</translation>
     </message>
     <message>
       <source>Forvo</source>
@@ -3884,80 +3872,79 @@ A lista completa de idiomas disponíveis pode ser encontrada &lt;a href=&quot;ht
     </message>
     <message>
       <source>Live pronunciations from &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. The site allows people to record and share word pronunciations. You can listen to them from GoldenDict.</source>
-      <translation>Pronunciar palavras diretamente de &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. Este site permite gravar e compartilhar pronúncias de palavras. É possível ouvi-las no GoldenDict.</translation>
+      <translation>Live uitspraak van &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. Deze site maakt het mogelijk om uitspraak van woorden op te nemen en te delen. U kunt er via GoldenDict naar luisteren.</translation>
     </message>
     <message>
       <source>Enable pronunciations from Forvo</source>
-      <translation>Habilitar pronúncias do Forvo</translation>
+      <translation>Uitspraken van Forvo inschakelen</translation>
     </message>
     <message>
       <source>API Key:</source>
-      <translation>Chave API:</translation>
+      <translation>API-sleutel:</translation>
     </message>
     <message>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use of Forvo currently requires an API key, register on the site to get your own key.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;O uso do Forvo requer uma chave de API, registre-se no site para obter a sua própria chave.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Gebruik van Forvo vereist momenteel een API-sleutel, registreer op de site om uw eigen sleutel te verkrijgen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pegue a sua própria chave &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;aqui&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Krijg je eigen sleutel &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;hier&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <source>Language codes (comma-separated):</source>
-      <translation>Códigos de idioma
-(separar por vírgula):</translation>
+      <translation>Taalcodes (komma-gescheiden):</translation>
     </message>
     <message>
       <source>List of language codes you would like to have. Example: &quot;en, ru&quot;.</source>
-      <translation>Lista de códigos de idioma que você gostaria de ter. Por exemplo: &quot;en, ru, pt_BR&quot;.</translation>
+      <translation>Een lijst met taalcodes die u kunt gebruiken (voorbeeld: &quot;en, ru&quot;).</translation>
     </message>
     <message>
       <source>Full list of language codes is available &lt;a href=&quot;http://www.forvo.com/languages-codes/&quot;&gt;here&lt;/a&gt;.</source>
-      <translation>A lista completa de códigos de idioma está disponível &lt;a href=&quot;http://www.forvo.com/languages-codes/&quot;&gt;aqui&lt;/a&gt;.</translation>
+      <translation>De volledige lijst met taalcodes is &lt;a href=&quot;http://www.forvo.com/languages-codes/&quot;&gt;hier&lt;/a&gt; beschikbaar.</translation>
     </message>
     <message>
       <source>Transliteration</source>
-      <translation>Transliteração</translation>
+      <translation>Transliteratie</translation>
     </message>
     <message>
       <source>Greek transliteration</source>
-      <translation>Transliteração do Grego</translation>
+      <translation>Griekse transliteratie</translation>
     </message>
     <message>
       <source>Russian transliteration</source>
-      <translation>Transliteração do Russo</translation>
+      <translation>Russische transliteratie</translation>
     </message>
     <message>
       <source>German transliteration</source>
-      <translation>Transliteração do Alemão</translation>
+      <translation>Duitse transliteratie</translation>
     </message>
     <message>
       <source>Belarusian transliteration</source>
-      <translation>Bielorrusso transliteração</translation>
+      <translation>Wit-Russische transliteratie</translation>
     </message>
     <message>
       <source>Enables to use the Latin alphabet to write the Japanese language</source>
-      <translation>Habilita a romanização do japonês (palavras japonesas escritas em Latim)</translation>
+      <translation>Het gebruik van het Latijnse alfabet inschakelen om de Japanse taal te schrijven</translation>
     </message>
     <message>
       <source>Japanese Romaji</source>
-      <translation>Japonês Romanizado (ideogramas convertidos para caracteres latinos)</translation>
+      <translation>Japans Romaji</translation>
     </message>
     <message>
       <source>Systems:</source>
-      <translation>Sistemas:</translation>
+      <translation>Systemen:</translation>
     </message>
     <message>
       <source>Hepburn</source>
-      <translation>Romanização hepburn</translation>
+      <translation>Hepburn</translation>
     </message>
     <message>
       <source>Syllabaries:</source>
-      <translation>Silabários:</translation>
+      <translation>Lettergrepenschrift:</translation>
     </message>
     <message>
       <source>Hiragana Japanese syllabary</source>
-      <translation>Silabário japonês Hiragana</translation>
+      <translation>Hiragana Japans syllabisch schrift</translation>
     </message>
     <message>
       <source>Hiragana</source>
@@ -3965,7 +3952,7 @@ A lista completa de idiomas disponíveis pode ser encontrada &lt;a href=&quot;ht
     </message>
     <message>
       <source>Katakana Japanese syllabary</source>
-      <translation>Silabário japonês Katakana</translation>
+      <translation>Katakana Japans syllabisch schrift</translation>
     </message>
     <message>
       <source>Katakana</source>
@@ -3973,69 +3960,69 @@ A lista completa de idiomas disponíveis pode ser encontrada &lt;a href=&quot;ht
     </message>
     <message>
       <source>Custom transliteration</source>
-      <translation>Transliteração personalizada</translation>
+      <translation>Aangepaste transliteratie</translation>
     </message>
     <message>
       <source>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</source>
-      <translation>Isso se aplica apenas à frase de pesquisa, com cada linha representando uma transliteração, separada por ponto e vírgula. Por exemplo, ae;æ, os usuários podem inserir ae para representar æ na palavra de destino.</translation>
+      <translation>Dit was alleen van toepassing op zoektermen, waarbij elke regel een transliteratie vertegenwoordigt, gescheiden door een puntkomma. Bijvoorbeeld, ae;æ,gebruikers kunnen ae invoeren om æ weer te geven in het doelwoord.</translation>
     </message>
     <message>
       <source>ae;æ #this is an example</source>
-      <translation>ae;æ #este é um exemplo</translation>
+      <translation>ae;æ #dit is een voorbeeld</translation>
     </message>
     <message>
       <source>Text to Speech</source>
-      <translation>Texto para Fala</translation>
+      <translation>Tekst naar spraak</translation>
     </message>
     <message>
       <source>Choose a directory</source>
-      <translation>Escolha uma pasta</translation>
+      <translation>Kies een map</translation>
     </message>
     <message>
       <source>Confirm removal</source>
-      <translation>Confirmar remoção</translation>
+      <translation>Verwijderen bevestigen</translation>
     </message>
     <message>
       <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Quer mesmo remover a pasta &lt;b&gt;%1&lt;/b&gt; da lista?</translation>
+      <translation>De map &lt;b&gt;%1&lt;/b&gt; uit de lijst verwijderen?</translation>
     </message>
     <message>
       <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Quer mesmo remover o site &lt;b&gt;%1&lt;/b&gt; da lista?</translation>
+      <translation>De site &lt;b&gt;%1&lt;/b&gt; uit de lijst verwijderen?</translation>
     </message>
     <message>
       <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Quer mesmo remover o programa &lt;b&gt;%1&lt;/b&gt; da lista?</translation>
+      <translation>Het programma &lt;b&gt;%1&lt;/b&gt; uit de lijst verwijderen?</translation>
     </message>
     <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
-      <translation>O método de transcrição de japonês mais utilizado, baseado na fonologia inglesa</translation>
+      <translation>De meest gebruikte methode van transcriptie van Japans op basis van de Engelse fonologie</translation>
     </message>
   </context>
   <context>
     <name>StylesComboBox</name>
     <message>
       <source>None</source>
-      <translation>Nenhum</translation>
+      <translation>Geen</translation>
     </message>
   </context>
   <context>
     <name>TextToSpeechSource</name>
     <message>
       <source>Selected voice engines:</source>
-      <translation>Engines de voz selecionadas:</translation>
+      <translation>Geselecteerde spraakprogramma&apos;s:</translation>
     </message>
     <message>
       <source>&amp;Add</source>
-      <translation>&amp;Adicionar</translation>
+      <translation>&amp;Toevoegen</translation>
     </message>
     <message>
       <source>&amp;Remove</source>
-      <translation>&amp;Remover</translation>
+      <translation>&amp;Verwijderen</translation>
     </message>
     <message>
       <source>Preferences</source>
-      <translation>Preferências</translation>
+      <translation>Instellingen</translation>
     </message>
     <message>
       <source>Volume:</source>
@@ -4043,65 +4030,65 @@ A lista completa de idiomas disponíveis pode ser encontrada &lt;a href=&quot;ht
     </message>
     <message>
       <source>Rate:</source>
-      <translation>Taxa:</translation>
+      <translation>Snelheid:</translation>
     </message>
     <message>
       <source>Preview</source>
-      <translation>Pré-Visualizar</translation>
+      <translation>Voorbeeld</translation>
     </message>
     <message>
       <source>Available voice engines:</source>
-      <translation>Engines de voz disponíveis:</translation>
+      <translation>Beschikbare spraakprogramma&apos;s:</translation>
     </message>
     <message>
       <source>Text to be previewed:</source>
-      <translation>Texto a ser visualizado:</translation>
+      <translation>Voorbeeldtekst:</translation>
     </message>
     <message>
       <source>Type text to be previewed here.</source>
-      <translation>Digite o texto a ser visualizado aqui.</translation>
+      <translation>Typ hier een voorbeeldtekst.</translation>
     </message>
     <message>
       <source>&amp;Preview</source>
-      <translation>&amp;Pré-Visualizar</translation>
+      <translation>&amp;Voorbeeld</translation>
     </message>
     <message>
       <source>No TTS voice available</source>
-      <translation>Nenhuma voz TTS disponível</translation>
+      <translation>Geen TTS stem beschikbaar</translation>
     </message>
     <message>
       <source>Cannot find available TTS voice.&lt;br&gt;Please make sure that at least one TTS engine installed on your computer already.</source>
-      <translation>Não foi possível encontra voz TTS.&lt;br&gt;Por favor, certifique-se que pelo menos um motor TTS esteja instalado no seu computador.</translation>
+      <translation>Kan beschikbare TTS stem niet vinden.&lt;br&gt;Er moet tenminste één TTS programma geïnstalleerd zijn op uw computer.</translation>
     </message>
     <message>
       <source>Confirm removal</source>
-      <translation>Confirmar remoção</translation>
+      <translation>Verwijderen bevestigen</translation>
     </message>
     <message>
       <source>Remove voice engine &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Remover engine de voz &lt;b&gt;%1&lt;/b&gt; da lista?</translation>
+      <translation>Spraakprogramma &lt;b&gt;%1&lt;/b&gt; verwijderen uit de lijst?</translation>
     </message>
   </context>
   <context>
     <name>TranslateBox</name>
     <message>
       <source>Type a word or phrase to search dictionaries</source>
-      <translation>Digite uma palavra ou frase para pesquisar dicionários</translation>
+      <translation>Typ een woord of zin waarnaar u wilt zoeken</translation>
     </message>
     <message>
       <source>Drop-down</source>
-      <translation>Suspensa</translation>
+      <translation>Vervolgkeuzelijst</translation>
     </message>
   </context>
   <context>
     <name>VoiceEnginesModel</name>
     <message>
       <source>Enabled</source>
-      <translation>Habilitado</translation>
+      <translation>Ingeschakeld</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation>Nome</translation>
+      <translation>Naam</translation>
     </message>
     <message>
       <source>Id</source>
@@ -4109,41 +4096,41 @@ A lista completa de idiomas disponíveis pode ser encontrada &lt;a href=&quot;ht
     </message>
     <message>
       <source>Icon</source>
-      <translation>Ícone</translation>
+      <translation>Pictogram</translation>
     </message>
   </context>
   <context>
     <name>WebSitesModel</name>
     <message>
       <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Inserir artigo como link dentro da tag &lt;iframe&gt;</translation>
+      <translation>Artikel invoegen als link binnen &lt;iframe&gt; tag</translation>
     </message>
     <message>
       <source>Enabled</source>
-      <translation>Habilitado</translation>
+      <translation>Ingeschakeld</translation>
     </message>
     <message>
       <source>As link</source>
-      <translation>Como link</translation>
+      <translation>Als koppeling</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation>Nome</translation>
+      <translation>Naam</translation>
     </message>
     <message>
       <source>Address</source>
-      <translation>Endereço</translation>
+      <translation>Adres</translation>
     </message>
     <message>
       <source>Icon</source>
-      <translation>Ícone</translation>
+      <translation>Pictogram</translation>
     </message>
   </context>
   <context>
     <name>WordFinder</name>
     <message>
       <source>Failed to query some dictionaries.</source>
-      <translation>Não foi possível consultar alguns dicionários.</translation>
+      <translation>Enkele woordenboeken konden niet doorzocht worden.</translation>
     </message>
   </context>
 </TS>

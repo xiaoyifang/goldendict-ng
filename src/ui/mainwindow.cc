@@ -52,7 +52,7 @@
 #include "help.hh"
 #include "resourceschemehandler.hh"
 #include <QListWidgetItem>
-
+#include "config.hh"
 #include "globalregex.hh"
 
 #ifdef Q_OS_MAC
@@ -196,8 +196,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   }
 
   iframeSchemeHandler = new IframeSchemeHandler( this );
-  QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( "iframe-http", iframeSchemeHandler );
-  QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( "iframe-https", iframeSchemeHandler );
+  QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( ( Config::WEBSITE_PROXY_PREFIX + "http" ).toUtf8(),
+                                                                iframeSchemeHandler );
+  QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( ( Config::WEBSITE_PROXY_PREFIX + "https" ).toUtf8(),
+                                                                iframeSchemeHandler );
 
   QStringList localSchemes = { "gdau", "gico", "qrcx", "bres", "gdprg", "gdvideo", "gdtts" };
   resourceSchemeHandler    = new ResourceSchemeHandler( articleNetMgr, this );
@@ -3077,7 +3079,7 @@ void MainWindow::trayIconActivated( QSystemTrayIcon::ActivationReason r )
 
 void MainWindow::visitHomepage()
 {
-  QDesktopServices::openUrl( QUrl( QApplication::organizationDomain() ) );
+  QDesktopServices::openUrl( QUrl( "https://xiaoyifang.github.io/goldendict-ng/" ) );
 }
 
 void MainWindow::openConfigFolder()

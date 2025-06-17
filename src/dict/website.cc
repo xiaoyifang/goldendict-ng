@@ -310,7 +310,7 @@ sptr< DataRequest > WebSiteDictionary::getArticle( std::u32string const & str,
 
     //heuristic add url to global whitelist.
     QUrl url( urlString );
-    GlobalBroadcaster::instance()->addWhitelist( url.host() );
+    GlobalBroadcaster::instance()->addWhitelist( Utils::Url::getHostBase( url.host() ) );
 
     QString encodeUrl = urlString;
 

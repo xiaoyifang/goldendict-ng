@@ -276,8 +276,9 @@ int main( int argc, char ** argv )
 
   QHotkeyApplication app( "GoldenDict-ng", argc, argv );
 
+  app.setDesktopFileName( "io.github.xiaoyifang.goldendict_ng" );
   QHotkeyApplication::setApplicationName( "GoldenDict-ng" );
-  QHotkeyApplication::setOrganizationDomain( "https://github.com/xiaoyifang/goldendict-ng" );
+  QHotkeyApplication::setOrganizationDomain( "xiaoyifang.github.io" );
 #ifndef Q_OS_MACOS
   // macOS icon is defined in Info.plist
   QHotkeyApplication::setWindowIcon( QIcon( ":/icons/programicon.png" ) );
@@ -324,8 +325,18 @@ int main( int argc, char ** argv )
 
 #endif
 
-  const QStringList localSchemes =
-    { "gdlookup", "gdau", "gico", "qrcx", "bres", "bword", "gdprg", "gdvideo", "gdtts", "ifr", "entry" };
+  const QStringList localSchemes = { "gdlookup",
+                                     "gdau",
+                                     "gico",
+                                     "qrcx",
+                                     "bres",
+                                     "bword",
+                                     "gdprg",
+                                     "gdvideo",
+                                     "gdtts",
+                                     "entry",
+                                     "iframe-http",
+                                     "iframe-https" };
 
   for ( const auto & localScheme : localSchemes ) {
     QWebEngineUrlScheme webUiScheme( localScheme.toLatin1() );
@@ -379,9 +390,6 @@ int main( int argc, char ** argv )
   // OpenCC needs to load it's data files by relative path on Windows and OS X
   QDir::setCurrent( Config::getProgramDataDir() );
 #endif
-
-  // Load translations for system locale
-  QString localeName = QLocale::system().name();
 
   Config::Class cfg;
   for ( ;; ) {
@@ -464,10 +472,10 @@ int main( int argc, char ** argv )
     auto * webengine_ts = new QTranslator( &app );
 
     // For GD's translations,
-    // If interfaceLanguage is explictly set, uses filename based loading, because QLocale sometimes doesn't match GD's translation file name
-    // Only load qt & webengine translators if GD's translation loading succeed to avoid inconsistency
-    // TODO: The QLocale based method sometimes does not work https://github.com/xiaoyifang/goldendict-ng/issues/2120
-    // GD's locale names may mismatch system locale and the return of default QLocale().name() is slightly different across platforms.
+    // If interfaceLanguage is explicitly set, uses filename-based loading, because GD have more languages than Qt & its locale database.
+    // If not, then let Qt's qlocale mechanism decide which one to use, because "locale" handling is different in all 3 platforms, and we don't want to deal with that.
+
+    // Only load qt & webengine translators if GD's translation loading succeeds to avoid inconsistency
     if ( cfg.preferences.interfaceLanguage.isEmpty() ?
            loadTranslation_qlocale( *gd_ts, QString(), QString(), Config::getLocDir() ) :
            gd_ts->load( cfg.preferences.interfaceLanguage, Config::getLocDir() ) ) {
@@ -479,9 +487,8 @@ int main( int argc, char ** argv )
       // For Windows, windeployqt will combine multiple qt modules translations into `qt_*` thus no `qtwebengine_*` exists
       // qtwebengine loading will fail on Windows.
 
-      // TODO: Some `langauge`s in GD's ts uses - instead of _
       if ( loadTranslation_qlocale( *qt_ts, "qt", "_", QLibraryInfo::path( QLibraryInfo::TranslationsPath ) )
-           && qt_ts->language() == gd_ts->language().replace( '-', '_' ) ) {
+           && qt_ts->language().startsWith( gd_ts->language().first( 2 ) ) ) { // Don't delete this sanity check.
         QCoreApplication::installTranslator( qt_ts );
       }
 
@@ -489,7 +496,7 @@ int main( int argc, char ** argv )
                                     "qtwebengine",
                                     "_",
                                     QLibraryInfo::path( QLibraryInfo::TranslationsPath ) )
-           && webengine_ts->language() == gd_ts->language().replace( '-', '_' ) ) {
+           && webengine_ts->language().startsWith( gd_ts->language().first( 2 ) ) ) {
         QCoreApplication::installTranslator( webengine_ts );
       }
     }

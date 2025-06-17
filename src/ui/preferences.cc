@@ -56,18 +56,19 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   addAction( &helpAction );
 
   // Load values into form
-
   ui.interfaceLanguage->addItem( tr( "System default" ), QString() );
 
-  // We need to sort by language name, otherwise list looks really weird
-  QMultiMap< QString, QString > sortedLocs;
+  {
+    QMap< QString, QString > sortedTranslations;
 
-  for ( const auto & [ locale, _ ] : Language::languageMap().asKeyValueRange() ) {
-    sortedLocs.insert( Language::languageForLocale( locale ), locale );
-  }
+    // translate and sort languages
+    for ( const auto & [ k, v ] : Language::translationLangMap().asKeyValueRange() ) {
+      sortedTranslations.insert( Language::translationNameFromLangCode( k ), v );
+    }
 
-  for ( auto i = sortedLocs.begin(); i != sortedLocs.end(); ++i ) {
-    ui.interfaceLanguage->addItem( i.key(), i.value() );
+    for ( const auto & [ k, v ] : sortedTranslations.asKeyValueRange() ) {
+      ui.interfaceLanguage->addItem( k, v );
+    }
   }
 
   for ( int x = 0; x < ui.interfaceLanguage->count(); ++x ) {

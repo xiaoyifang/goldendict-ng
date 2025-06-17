@@ -1,314 +1,314 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="pt-BR" sourcelanguage="en">
+<TS version="2.1" language="uk" sourcelanguage="en">
   <context>
     <name>About</name>
     <message>
       <source>About</source>
-      <translation>Sobre</translation>
+      <translation>Про програму</translation>
     </message>
     <message>
       <source>Licensed under GNU GPLv3 or later</source>
-      <translation>Licença sob os termos da GNU GPLv3 ou posterior</translation>
+      <translation>Ліцензовано за GNU GPLv3 або пізніше</translation>
     </message>
     <message>
       <source>Copy version info</source>
-      <translation>Copiar informações da versão</translation>
+      <translation>Копіювати інформацію про версію</translation>
     </message>
   </context>
   <context>
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation type="unfinished">Anki: can&apos;t create a card without a word</translation>
+      <translation>Anki: може&apos;t створювати картку без слова</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
-      <translation>Busca no Anki: AnkiConnect não está habilitado.</translation>
+      <translation>Пошук Anki : AnkiConnect не ввімкнено.</translation>
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation>Anki: post para Anki falhou</translation>
+      <translation>Анкі: не вдалося надіслати повідомлення до Анки</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation>Anki: post para Anki com sucesso</translation>
+      <translation>Анкі: успішне повідомлення до Анки</translation>
     </message>
   </context>
   <context>
     <name>ArticleInspector</name>
     <message>
       <source>Inspect</source>
-      <translation>Visualizar</translation>
+      <translation>Оглянути</translation>
     </message>
   </context>
   <context>
     <name>ArticleMaker</name>
     <message>
       <source>No translation for &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; was found in group &lt;b&gt;%2&lt;/b&gt;.</source>
-      <translation>Nenhuma tradução para &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; foi encontrada no grupo &lt;b&gt;%2&lt;/b&gt;.</translation>
+      <translation>Немає перекладу для &lt;b dir=&quot;%3&quot;&gt;%1&lt;/b&gt; у групі &lt;b&gt;%2&lt;/b&gt;.</translation>
     </message>
     <message>
       <source>No translation was found in group &lt;b&gt;%1&lt;/b&gt;.</source>
-      <translation>Não achei a palavra no grupo &lt;b&gt;%1&lt;/b&gt;.</translation>
+      <translation>Нема перекладу в групі &lt;b&gt;%1&lt;/b&gt;.</translation>
     </message>
     <message>
       <source>Welcome!</source>
-      <translation>Bem-vindo!</translation>
+      <translation>Ласкаво просимо!</translation>
     </message>
     <message>
       <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Bem-vindo ao &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Para começar a trabalhar com o programa, primeiro visite &lt;em&gt;Editar | Dicionários&lt;/em&gt; para adicionar alguns caminhos de diretório onde procurar os arquivos do dicionário, configurar vários sites da Wikipedia ou outras fontes, ajustar a ordem do dicionário ou criar grupos de dicionários.&lt;p&gt;E então você&apos;pronto para procurar suas palavras! Você pode fazer isso nesta janela usando um painel à esquerda ou pode &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;procurar palavras de outros aplicativos ativos&lt;/a&gt;. &lt;p&gt;Para personalizar o programa, confira as preferências disponíveis em &lt;em&gt;Editar | Preferências&lt;/em&gt;. Todas as configurações possuem dicas de ferramentas, leia-as se tiver dúvidas sobre alguma coisa.&lt;p&gt;Caso precise de mais ajuda, tenha alguma dúvida, sugestão ou apenas queira saber o que os outros pensam, você é bem-vindo ao programa&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;fórum&lt;/a&gt;.&lt;p&gt;Verifique o programa&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;site&lt;/a&gt; para obter atualizações. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licenciado sob GPLv3 ou posterior.</translation>
+      <translation>&lt;h3 align=&quot;center&quot;&gt;Ласкаво просимо до &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Щоб розпочати роботу з програмою, спочатку відвідайте &lt;em&gt;Редагувати | Словники&lt;/em&gt; , щоб додати деякі шляхи до каталогу, де шукати файли словників, налаштувати різні сайти Вікіпедії чи інші джерела, налаштувати порядок словників або створити групи словників.&lt;p&gt;І тоді ви&apos;готові переглянути свої слова! Ви можете зробити це в цьому вікні, використовуючи панель ліворуч, або ви можете &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;шукати слова з інших активних програм&lt;/a&gt;. &lt;p&gt;Щоб налаштувати програму, перегляньте доступні налаштування на &lt;em&gt;Редагувати | Уподобання&lt;/em&gt;. До всіх налаштувань є підказки, обов’язково прочитайте їх, якщо у вас є сумніви.&lt;p&gt;Якщо вам потрібна додаткова допомога, у вас є запитання, пропозиції чи просто цікаво, що думають інші, ласкаво просимо на форум програми&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;&lt;/a&gt;.&lt;p&gt;Перевірте програму&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;веб-сайт&lt;/a&gt; на наявність оновлень. &lt;p&gt;(c) 2008-2013 Костянтин Ісаков. Ліцензовано під GPLv3 або новішої версії.</translation>
     </message>
     <message>
       <source>(untitled)</source>
-      <translation>(sem título)</translation>
+      <translation>(без назви)</translation>
     </message>
     <message>
       <source>(picture)</source>
-      <translation>(imagem)</translation>
+      <translation>(зображення)</translation>
     </message>
   </context>
   <context>
     <name>ArticleRequest</name>
     <message>
       <source>From </source>
-      <translation>Resultados de </translation>
+      <translation>Зі словника</translation>
     </message>
     <message>
       <source>Make a new Anki note</source>
-      <translation>Fazer uma nova nota Anki</translation>
+      <translation>Створити нову нотатку Анкі</translation>
     </message>
     <message>
       <source>Query error: %1</source>
-      <translation>Erro de Consulta: %1</translation>
+      <translation>Помилка запиту: %1</translation>
     </message>
     <message>
       <source>Close words: </source>
-      <translation>Palavras semelhantes: </translation>
+      <translation>Близькі за значенням: </translation>
     </message>
     <message>
       <source>Compound expressions: </source>
-      <translation>Termos compostos: </translation>
+      <translation>Словосполучення: </translation>
     </message>
     <message>
       <source>Individual words: </source>
-      <translation>Palavras independentes: </translation>
+      <translation>Окремі слова: </translation>
     </message>
   </context>
   <context>
     <name>ArticleView</name>
     <message>
       <source>Phrase not found</source>
-      <translation>Frase não encontrada</translation>
+      <translation>Фраза не знайдена</translation>
     </message>
     <message>
       <source>%1 of %2 matches</source>
-      <translation>%1 de %2 partidas</translation>
+      <translation>%1 з %2 збігів</translation>
     </message>
     <message>
       <source>Select Current Article</source>
-      <translation>Selecionar o Artigo Atual</translation>
+      <translation>Вибрати поточний об&apos;єкт</translation>
     </message>
     <message>
       <source>Copy as text</source>
-      <translation>Copiar como texto</translation>
+      <translation>Скопіювати як текст</translation>
     </message>
     <message>
       <source>Inspect</source>
-      <translation>Inspecionar</translation>
+      <translation>Дослідити</translation>
     </message>
     <message>
       <source>Resource</source>
-      <translation>Fonte de Dados</translation>
+      <translation>Ресурс</translation>
     </message>
     <message>
       <source>TTS Voice</source>
-      <translation>Voz TTS</translation>
+      <translation>Голос TTS</translation>
     </message>
     <message>
       <source>Audio</source>
-      <translation>Áudio</translation>
+      <translation>Аудіо</translation>
     </message>
     <message>
       <source>Video</source>
-      <translation>Vídeo</translation>
+      <translation>Відеозапис</translation>
     </message>
     <message>
       <source>Video: %1</source>
-      <translation>Vídeo: %1</translation>
+      <translation>Відеозапис: %1</translation>
     </message>
     <message>
       <source>Definition from dictionary &quot;%1&quot;: %2</source>
-      <translation>Definição do dicionário &quot;%1&quot;: %2</translation>
+      <translation>Визначення зі словника &quot;%1&quot;: %2</translation>
     </message>
     <message>
       <source>Definition: %1</source>
-      <translation>Definição: %1</translation>
+      <translation>Визначення: %1</translation>
     </message>
     <message>
       <source>ERROR: %1</source>
-      <translation>Erro: %1</translation>
+      <translation>Помилка:%1 </translation>
     </message>
     <message>
       <source>The referenced audio program doesn&apos;t exist.</source>
-      <translation>O programa de áudio especificado não existe.</translation>
+      <translation>Вказана аудіо програма не існує.</translation>
     </message>
     <message>
       <source>The referenced resource doesn&apos;t exist.</source>
-      <translation>A fonte de dados procurada não existe.</translation>
+      <translation>Вказаного ресурсу не існує.</translation>
     </message>
     <message>
       <source>Op&amp;en Link</source>
-      <translation>&amp;Optar Link</translation>
+      <translation>Відкрити &amp;посилання</translation>
     </message>
     <message>
       <source>Open Link in New &amp;Tab</source>
-      <translation>Abrir Ligação em Nova Guia (&amp;G)</translation>
+      <translation>Відкрити посилання в новій в&amp;кладці</translation>
     </message>
     <message>
       <source>Open Link in &amp;External Browser</source>
-      <translation>Abrir link em &amp;Navegador da Web Externo</translation>
+      <translation>Відкрити посилання у &amp;зовнішньому переглядачі</translation>
     </message>
     <message>
       <source>Save &amp;image...</source>
-      <translation>Salvar &amp;imagem...</translation>
+      <translation>Зберегти &amp;зображення…</translation>
     </message>
     <message>
       <source>Open image in system viewer...</source>
-      <translation>Abrir imagem no visualizador do sistema...</translation>
+      <translation>Відкрити зображення в системному переглядачі...</translation>
     </message>
     <message>
       <source>Save s&amp;ound...</source>
-      <translation>Salvar S&amp;om...</translation>
+      <translation>Зберегти з&amp;вук</translation>
     </message>
     <message>
       <source>&amp;Look up &quot;%1&quot;</source>
-      <translation>&amp;Procurar &quot;%1&quot;</translation>
+      <translation>&amp;Пошук «%1»</translation>
     </message>
     <message>
       <source>Look up &quot;%1&quot; in &amp;New Tab</source>
-      <translation>Exibir resultado de &quot;%1&quot; em &amp;nova guia</translation>
+      <translation>Пошук «%1» в &amp;новій вкладці</translation>
     </message>
     <message>
       <source>Send &quot;%1&quot; to input line</source>
-      <translation>Enviar &quot;%1&quot; para o campo</translation>
+      <translation>Послати &quot;%1&quot; до стрічки введення</translation>
     </message>
     <message>
       <source>&amp;Add &quot;%1&quot; to history</source>
-      <translation>&amp;Adicionar &quot;%1&quot; ao histórico</translation>
+      <translation>&amp;Додати &quot;%1&quot; до історії</translation>
     </message>
     <message>
       <source>Look up &quot;%1&quot; in %2</source>
-      <translation>Procurar «%1» em %2</translation>
+      <translation>Пошук «%1» в %2</translation>
     </message>
     <message>
       <source>Look up &quot;%1&quot; in %2 in &amp;New Tab</source>
-      <translation>Exibir o resultado da consulta de &quot;%1&quot; no %2 em &amp;nova aba</translation>
+      <translation>Пошук «%1»в %2 в &amp;новій вкладці</translation>
     </message>
     <message>
       <source>Save &amp;Bookmark &quot;%1...&quot;</source>
-      <translation>Salvar &amp;Marcador &quot;%1...&quot;</translation>
+      <translation>Зберегти Закладку &quot;%1...&quot;</translation>
     </message>
     <message>
       <source>&amp;Send Current Article to Anki</source>
-      <translation>&amp;Enviar Artigo Atual para Anki</translation>
+      <translation>&amp;Надіслати поточну статтю Анкі</translation>
     </message>
     <message>
       <source>&amp;Send selected text to Anki</source>
-      <translation>&amp;Enviar o texto selecionado para Anki</translation>
+      <translation>&amp;Надіслати текст анекдоту</translation>
     </message>
     <message>
       <source>Save sound</source>
-      <translation>Salvar som</translation>
+      <translation>Зберегти звук</translation>
     </message>
     <message>
       <source>Sound files (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;All files (*.*)</source>
-      <translation>Arquivos de som (*.wav *.opus *.ogg *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);;Todos os arquivos (*.*)</translation>
+      <translation>Звукові файли (*.wav *.oga *.oga *.mp3 *.mp4 *.aac *.flac *.mid *.wv *.ape *.spx);Всі файли (*.*)</translation>
     </message>
     <message>
       <source>Save image</source>
-      <translation>Salvar imagem</translation>
+      <translation>Зберегти малюнок</translation>
     </message>
     <message>
       <source>Image files (*.bmp *.jpg *.png *.tif);;All files (*.*)</source>
-      <translation>Arquivos de imagem (*.bmp *.jpg *.png *.tif);;Todos os arquivos (*.*)</translation>
+      <translation>Графічні файли (*.bmp *.jpg *.png *.tif);;Усі файли (*.*) </translation>
     </message>
     <message>
       <source>Failed to play sound file: %1</source>
-      <translation>Falha ao reproduzir som do arquivo: %1</translation>
+      <translation>Не вдалося відтворити звуковий файл: %1</translation>
     </message>
     <message>
       <source>Failed to create temporary file.</source>
-      <translation>Não foi possível criar o arquivo temporário.</translation>
+      <translation>Не вдалось створити тимчасовий файл.</translation>
     </message>
     <message>
       <source>Failed to auto-open resource file, try opening manually: %1.</source>
-      <translation>Não foi possível abrir a fonte de dados automaticamente. Tente abri-la manualmente: %1.</translation>
+      <translation>Не вдалось відкрити файл ресурсу, спробуйте відкрити вручну: %1.</translation>
     </message>
     <message>
       <source>WARNING: Audio Player: %1</source>
-      <translation>AVISO: Reprodutor de áudio: %1</translation>
+      <translation>ПОПЕРЕДЖЕННЯ: Аудіо-плеєр: %1</translation>
     </message>
     <message>
       <source>&amp;Create Anki note</source>
-      <translation>&amp;Criar nota Anki</translation>
+      <translation>&amp;Створити примітку</translation>
     </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
     <message>
       <source>Belarusian transliteration from latin to cyrillic (classic orthography)</source>
-      <translation>Bielorrusso transliteração do latim para o cirílico (ortografia clássica)</translation>
+      <translation>Білоруська транслітерація з латиницю у кирилицю (класична орфографія)</translation>
     </message>
     <message>
       <source>Belarusian transliteration from latin to cyrillic (school orthography)</source>
-      <translation>Bielorrusso transliteração do latim para o cirílico (ortografia escolar)</translation>
+      <translation>Білоруська транслітерація з латиницю у кирилицю (шкільна орфографія)</translation>
     </message>
     <message>
       <source>Belarusian transliteration (smoothes out the difference
 between classic and school orthography in cyrillic)</source>
-      <translation>Bielorrusso transliteração (atenua as diferenças
-entre clássico e ortografia escolar em cirílico)</translation>
+      <translation>Білоруська транслітерація (пом&apos;якшує різницю 
+між класично та шкільною кириличною орфографією)</translation>
     </message>
   </context>
   <context>
     <name>ChineseConversion</name>
     <message>
       <source>Chinese Conversion</source>
-      <translation>Conversão para chinês</translation>
+      <translation>Перетворення китайської</translation>
     </message>
     <message>
       <source>Enable conversion between simplified and traditional Chinese characters</source>
-      <translation>Habilitar conversão entre caracteres de chinês simplificado e tradicional</translation>
+      <translation>Ввімкнути перетворення між спрощеними та традиційними китайськими символами</translation>
     </message>
     <message>
       <source>Chinese Con&amp;version</source>
-      <translation>Con&amp;versão para chinês</translation>
+      <translation>Перетворення &amp;китайської</translation>
     </message>
     <message>
       <source>Enable conversion from simplified characters to traditional (Taiwan variant) characters</source>
-      <translation>Habilitar conversão de caracteres de chinês simplificado para tradicional (variante de Taiwan)</translation>
+      <translation>Ввімкнути перетворення від спрощених символів до традиційних (варіант Тайвань)</translation>
     </message>
     <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
-      <translation>Habilitar conversão de caracteres de chinês simplificado para tradicional (variante de Hong Kong)</translation>
+      <translation>Увімкнути перетворення з спрощених символів на традиційні (гонконгські варіанти) символи</translation>
     </message>
     <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
-      <translation>Habilitar conversão de caracteres de chinês tradicional para simplificado</translation>
+      <translation>Включити перетворення з традиційних символів на спрощені символи</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
-      <translation>Conversão simplificada para chinês tradicional (variante de Taiwan)</translation>
+      <translation>Спрощено до традиційного китайського (ваньського варіанту) перетворення</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Hong Kong variant) conversion</source>
-      <translation>Conversão simplificada para chinês tradicional (variante de Hong Kong)</translation>
+      <translation>Спрощено до традиційної китайської (варіант Гонконгу)</translation>
     </message>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
-      <translation>Conversão tradicional para chinês simplificado</translation>
+      <translation>Традиційне формулювання китайської конверсії</translation>
     </message>
     <message>
       <source>Taiwan variant</source>
@@ -316,516 +316,516 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Hong Kong variant</source>
-      <translation>Variante de Hong Kong</translation>
+      <translation>Гонконзький варіант</translation>
     </message>
     <message>
       <source>Mainland variant</source>
-      <translation>Variante continental</translation>
+      <translation>Схема материкового</translation>
     </message>
   </context>
   <context>
     <name>CustomTranslit</name>
     <message>
       <source>custom transliteration</source>
-      <translation>transliteração personalizada</translation>
+      <translation>спеціальна транслітерація</translation>
     </message>
   </context>
   <context>
     <name>DictGroupWidget</name>
     <message>
       <source>Form</source>
-      <translation>Formulário</translation>
+      <translation>Форма</translation>
     </message>
     <message>
       <source>Group icon:</source>
-      <translation>Ícone do grupo:</translation>
+      <translation>Піктограма групи:</translation>
     </message>
     <message>
       <source>Shortcut:</source>
-      <translation>Atalho:</translation>
+      <translation>Скорочення:</translation>
     </message>
     <message>
       <source>Favorites folder:</source>
-      <translation>Pasta de favoritos:</translation>
+      <translation>Тека Обране:</translation>
     </message>
     <message>
       <source>None</source>
-      <translation>Nenhum</translation>
+      <translation>Нема</translation>
     </message>
     <message>
       <source>From file...</source>
-      <translation>Do arquivo...</translation>
+      <translation>З файла…</translation>
     </message>
     <message>
       <source>Choose a file to use as group icon</source>
-      <translation>Escolha um arquivo para usar como ícone do grupo</translation>
+      <translation>Виберіть файл, з якого братиметься групова піктограма</translation>
     </message>
     <message>
       <source>Images</source>
-      <translation>Imagens</translation>
+      <translation>Зображення</translation>
     </message>
     <message>
       <source>All files</source>
-      <translation>Todos os arquivos</translation>
+      <translation>Усі файли</translation>
     </message>
     <message>
       <source>Error</source>
-      <translation>Erro</translation>
+      <translation>Помилка</translation>
     </message>
     <message>
       <source>Can&apos;t read the specified image file.</source>
-      <translation>Não foi possível ler o arquivo de imagem especificado.</translation>
+      <translation>Неможливо прочитати вказане зображення.</translation>
     </message>
   </context>
   <context>
     <name>DictGroupsWidget</name>
     <message>
       <source>Dictionaries: </source>
-      <translation>Dicionários: </translation>
+      <translation>Словники: </translation>
     </message>
     <message>
       <source>Confirmation</source>
-      <translation>Confirmação</translation>
+      <translation>Підтвердження</translation>
     </message>
     <message>
       <source>Are you sure you want to generate a set of groups based on language pairs?</source>
-      <translation>Quer mesmo criar um conjunto de grupos baseado em pares de idiomas?</translation>
+      <translation>Бажаєте створити групи, впорядковані за різними мовами?</translation>
     </message>
     <message>
       <source>Unassigned</source>
-      <translation>Não atribuído</translation>
+      <translation>Не призначений</translation>
     </message>
     <message>
       <source>Auto group by folder failed.</source>
-      <translation>Falha no agrupamento automático por pasta.</translation>
+      <translation>Помилка автоматичного групування за папками.</translation>
     </message>
     <message>
       <source>The parent directory of %1 can not be reached.</source>
-      <translation>O diretório pai de %1 não pode ser alcançado.</translation>
+      <translation>Батьківський каталог %1 недоступний.</translation>
     </message>
     <message>
       <source>Are you sure you want to generate a set of groups based on containing folders?</source>
-      <translation>Tem certeza de que deseja gerar um conjunto de grupos com base nas pastas contidas?</translation>
+      <translation>Ви впевнені, що хочете створити набір груп на основі папок?</translation>
     </message>
     <message>
       <source>Are you sure you want to generate a set of groups based on metadata.toml?</source>
-      <translation>Tem certeza de que deseja gerar um conjunto de grupos com base em metadata.toml?</translation>
+      <translation>Ви впевнені, що хочете створити набір груп на основі metadata.toml?</translation>
     </message>
     <message>
       <source>Combine groups by source language to &quot;%1-&gt;&quot;</source>
-      <translation>Combinar grupos por idioma de origem para &quot;%1-&gt;&quot;</translation>
+      <translation>Об&apos;єднати групи за основною мовою у &quot;%1-&gt;&quot;</translation>
     </message>
     <message>
       <source>Combine groups by target language to &quot;-&gt;%1&quot;</source>
-      <translation>Combinar grupos da língua-alvo para &quot;-&gt;%1&quot;</translation>
+      <translation>Об&apos;єднати групи за бажаною мовою у &quot;-&gt;%1&quot;</translation>
     </message>
     <message>
       <source>Make two-side translate group &quot;%1-%2-%1&quot;</source>
-      <translation>Faça o grupo traduzir os dois lados &quot;%1-%2-%1&quot;</translation>
+      <translation>Зробити двох-бокову групу перекладу &quot;%1-%2-%1&quot;</translation>
     </message>
     <message>
       <source>Combine groups with &quot;%1&quot;</source>
-      <translation>Combinar grupos com &quot;%1&quot;</translation>
+      <translation>Об&apos;єднати групи з &quot;%1&quot;</translation>
     </message>
   </context>
   <context>
     <name>DictHeadwords</name>
     <message>
       <source>If checked any filter changes will we immediately applied to headwords list</source>
-      <translation>Se marcada alguma alteração no filtro, aplicaremos imediatamente à lista de palavras-chave</translation>
+      <translation>Якщо відмічено, то будь-які зміни у фільтрі ми відразу ж будемо застосовані до списку заголовків</translation>
     </message>
     <message>
       <source>Auto apply</source>
-      <translation>Aplicar automaticamente</translation>
+      <translation>Авто застосування</translation>
     </message>
     <message>
       <source>Press this button to apply filter to headwords list</source>
-      <translation>Pressione este botão para aplicar o filtro à lista de palavras-chave</translation>
+      <translation>Натисніть цю кнопку, щоб застосувати фільтр до списку заголовків</translation>
     </message>
     <message>
       <source>Apply</source>
-      <translation>Aplicar</translation>
+      <translation>Прийняти</translation>
     </message>
     <message>
       <source>Filter string (fixed string, wildcards or regular expression)</source>
-      <translation>Filtrar conjunto de caracteres (fixo, curingas ou expressão regular)</translation>
+      <translation>Фільтр рядка (фіксована стрічка, підстановка або регулярний вираз)</translation>
     </message>
     <message>
       <source>Filter:</source>
-      <translation>Filtro:</translation>
+      <translation>Фільтр:</translation>
     </message>
     <message>
       <source>Search mode</source>
-      <translation>Modo de pesquisa</translation>
+      <translation>Режим пошуку</translation>
     </message>
     <message>
       <source>This element determines how filter string will be interpreted</source>
-      <translation>Este elemento determina como a sequência de filtros será interpretada</translation>
+      <translation>Цей елемент визначає, як буде інтерпретовано фільтром</translation>
     </message>
     <message>
       <source>If checked on the symbols case will be take in account when filtering</source>
-      <translation>Se marcado na caixa de símbolos, será levado em consideração ao filtrar</translation>
+      <translation>Якщо відмічено, то при фільтруванні буде враховано регістр символів</translation>
     </message>
     <message>
       <source>Match case</source>
-      <translation>Diferenciar maiúsculas/minúsculas</translation>
+      <translation>З урахуванням регістру</translation>
     </message>
     <message>
       <source>Exports headwords to file</source>
-      <translation>Salvar palavras-chave em arquivo</translation>
+      <translation>Експортує заголовки у файл</translation>
     </message>
     <message>
       <source>Export</source>
-      <translation>Exportar</translation>
+      <translation>Експорт</translation>
     </message>
     <message>
       <source>Specify the maximum filtered headwords returned.</source>
-      <translation>Especifique o número máximo de cabeçalhos retornados.</translation>
+      <translation>Вкажіть максимальну кількість відфільтрованих заголовків (серверів).</translation>
     </message>
     <message>
       <source>Filter max results:</source>
-      <translation>Filtrar resultados máximos:</translation>
+      <translation>Фільтрувати макс. результати:</translation>
     </message>
     <message>
       <source>Help</source>
-      <translation>Ajuda</translation>
+      <translation>Довідка</translation>
     </message>
     <message>
       <source>OK</source>
-      <translation>Certo</translation>
+      <translation>Гаразд</translation>
     </message>
     <message>
       <source>Text</source>
-      <translation>Texto</translation>
+      <translation>Текст</translation>
     </message>
     <message>
       <source>Wildcards</source>
-      <translation>Curingas</translation>
+      <translation>Шаблони</translation>
     </message>
     <message>
       <source>Unique headwords total: %1.</source>
-      <translation>Total de cabeçalhos únicos: %1.</translation>
+      <translation>Унікальний загальний заголовок: %1.</translation>
     </message>
     <message>
       <source>Unique headwords total: %1, filtered(limited): %2</source>
-      <translation>Total de cabeçalhos únicos: %1, filtrado(limitado): %2</translation>
+      <translation>Унікальний загальний заголовк: %1, відфільтрований(обмежений): %2</translation>
     </message>
     <message>
       <source>Save headwords to file</source>
-      <translation>Salvar palavras-chave em arquivo</translation>
+      <translation>Зберігати заголовки у файл</translation>
     </message>
     <message>
       <source>Text files (*.txt);;All files (*.*)</source>
-      <translation>Arquivos de texto (*.txt);;Todos os arquivos (*.*)</translation>
+      <translation>Текстові файли (*.txt);;Всі файли (*.*)</translation>
     </message>
     <message>
       <source>Can not open exported file</source>
-      <translation>Não foi possível abrir o arquivo exportado</translation>
+      <translation>Не вдалося відкрити експортований файл</translation>
     </message>
     <message>
       <source>Export headwords...</source>
-      <translation>Exportar palavras-chave...</translation>
+      <translation>Експортувати слова заголовків...</translation>
     </message>
     <message>
       <source>Cancel</source>
-      <translation>Cancelar</translation>
+      <translation>Скасувати</translation>
     </message>
     <message>
       <source>Export process is interrupted</source>
-      <translation>Processo de exportação interrompido</translation>
+      <translation>Процес експорту перервано</translation>
     </message>
     <message>
       <source>Export finished</source>
-      <translation>Exportação concluída</translation>
+      <translation>Експорт завершено</translation>
     </message>
     <message>
       <source>Regular Expression</source>
-      <translation>Expressão Regular</translation>
+      <translation>Регулярний вираз</translation>
     </message>
   </context>
   <context>
     <name>DictInfo</name>
     <message>
       <source>Open index folder</source>
-      <translation>Abrir pasta de índice</translation>
+      <translation>Відкрити індексну папку</translation>
     </message>
     <message>
       <source>Total articles:</source>
-      <translation>Total de artigos:</translation>
+      <translation>Статей загалом:</translation>
     </message>
     <message>
       <source>Index filename:</source>
-      <translation>Nome do arquivo de índice:</translation>
+      <translation>Ім'я файлу індексу:</translation>
     </message>
     <message>
       <source>Total words:</source>
-      <translation>Total de palavras:</translation>
+      <translation>Слів загалом:</translation>
     </message>
     <message>
       <source>Open folder</source>
-      <translation>Abrir pasta</translation>
+      <translation>Відкрити теку</translation>
     </message>
     <message>
       <source>Translates from:</source>
-      <translation>Traduz de:</translation>
+      <translation>Перекладає з:</translation>
     </message>
     <message>
       <source>Translates to:</source>
-      <translation>Traduz para:</translation>
+      <translation>Перекладає на:</translation>
     </message>
     <message>
       <source>Files comprising this dictionary:</source>
-      <translation>Arquivos pertencentes a este dicionário:</translation>
+      <translation>Файли,що містяться в цьому словнику:</translation>
     </message>
     <message>
       <source>Description:</source>
-      <translation>Descrição:</translation>
+      <translation>Опис:</translation>
     </message>
     <message>
       <source>Show all unique dictionary headwords</source>
-      <translation>Mostrar todas as palavras-chave exclusivas do dicionário</translation>
+      <translation>Показати всі унікальні заголовки словника</translation>
     </message>
     <message>
       <source>Headwords</source>
-      <translation>Palavras-chave</translation>
+      <translation>Заголовки</translation>
     </message>
     <message>
       <source>Full-text search enabled</source>
-      <translation>Pesquisa de texto completo ativada</translation>
+      <translation>Увімкнено повнотекстовий пошук</translation>
     </message>
     <message>
       <source>Full-text search disabled</source>
-      <translation>Pesquisa de texto completo desativada</translation>
+      <translation>Повнотекстовий пошук вимкнено</translation>
     </message>
   </context>
   <context>
     <name>DictListModel</name>
     <message>
       <source>%1 entries</source>
-      <translation>%1 verbetes</translation>
+      <translation>%1 статей</translation>
     </message>
   </context>
   <context>
     <name>DictServer</name>
     <message>
       <source>Url: </source>
-      <translation>Endereço (Url): </translation>
+      <translation>Адреса: </translation>
     </message>
     <message>
       <source>Databases: </source>
-      <translation>Bancos de dados: </translation>
+      <translation>Бази даних: </translation>
     </message>
     <message>
       <source>Search strategies: </source>
-      <translation>Estratégias de pesquisa: </translation>
+      <translation>Пошукові стратегії: </translation>
     </message>
     <message>
       <source>Server databases</source>
-      <translation>Bancos de dados do servidor</translation>
+      <translation>База даних сервера</translation>
     </message>
   </context>
   <context>
     <name>DictServersModel</name>
     <message>
       <source>Enabled</source>
-      <translation>Habilitado</translation>
+      <translation>Увімкнено</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation>Nome</translation>
+      <translation>Назва</translation>
     </message>
     <message>
       <source>Address</source>
-      <translation>Endereço</translation>
+      <translation>Адреса</translation>
     </message>
     <message>
       <source>Databases</source>
-      <translation>Bancos de dados</translation>
+      <translation>Бази даних</translation>
     </message>
     <message>
       <source>Strategies</source>
-      <translation>Estratégias</translation>
+      <translation>Стратегії</translation>
     </message>
     <message>
       <source>Icon</source>
-      <translation>Ícone</translation>
+      <translation>Іконка</translation>
     </message>
     <message>
       <source>Comma-delimited list of databases
 (empty string or &quot;*&quot; matches all databases)</source>
-      <translation>Lista de bancos de dados delimitada por vírgulas
-(cadeia vazia ou &quot;*&quot; corresponde a todos os bancos de dados)</translation>
+      <translation>Список баз даних, через кому, розділені комами
+(порожній рядок або &quot;*&quot; відповідає всім базам даних)</translation>
     </message>
     <message>
       <source>Comma-delimited list of search strategies
 (empty string mean &quot;prefix&quot; strategy)</source>
-      <translation>Lista delimitada por vírgula de estratégias de pesquisa
-(cadeia vazia significa estratégia &quot;prefixo&quot;)</translation>
+      <translation>Список запитів, розділених комами пошукових стратегій
+(порожнє значення рядка &quot;Префікс&quot; стратегія)</translation>
     </message>
   </context>
   <context>
     <name>DictionaryBar</name>
     <message>
       <source>&amp;Dictionary Bar</source>
-      <translation>&amp;Barra de Dicionário</translation>
+      <translation>&amp;Панель словника</translation>
     </message>
     <message>
       <source>Extended menu with all dictionaries...</source>
-      <translation>Estender menu com todos os dicionários...</translation>
+      <translation>Розширене меню з усіма словниками</translation>
     </message>
     <message>
       <source>Edit this group</source>
-      <translation>Editar este grupo</translation>
+      <translation>Редагувати цю групу</translation>
     </message>
     <message>
       <source>Dictionary info</source>
-      <translation>Informações do Dicionário</translation>
+      <translation>Інфа словника</translation>
     </message>
     <message>
       <source>Dictionary headwords</source>
-      <translation>Palavras-chave do dicionário</translation>
+      <translation>Словник для заголовків</translation>
     </message>
     <message>
       <source>Open dictionary folder</source>
-      <translation>Abrir pasta de dicionário</translation>
+      <translation>Відкрити словникову теку</translation>
     </message>
     <message>
       <source>Restore selection</source>
-      <translation>Restaurar seleção</translation>
+      <translation>Відновити вибране</translation>
     </message>
   </context>
   <context>
     <name>EditDictionaries</name>
     <message>
       <source>Dictionaries</source>
-      <translation>Dicionários</translation>
+      <translation>Словники</translation>
     </message>
     <message>
       <source>&amp;Sources</source>
-      <translation>&amp;Fontes</translation>
+      <translation>&amp;Джерела</translation>
     </message>
     <message>
       <source>&amp;Dictionaries</source>
-      <translation>&amp;Dicionários</translation>
+      <translation>&amp;Словники</translation>
     </message>
     <message>
       <source>&amp;Groups</source>
-      <translation>&amp;Grupos</translation>
+      <translation>&amp;Групи</translation>
     </message>
     <message>
       <source>Sources changed</source>
-      <translation>Fontes modificadas</translation>
+      <translation>Джерела змінено</translation>
     </message>
     <message>
       <source>Some sources were changed. Would you like to accept the changes?</source>
-      <translation>Algumas fontes de dados foram modificadas. Devo aceitar as modificações?</translation>
+      <translation>Деякі джерела змінено. Бажаєте прийняти ці зміни?</translation>
     </message>
     <message>
       <source>Accept</source>
-      <translation>Aceitar</translation>
+      <translation>Прийняти</translation>
     </message>
     <message>
       <source>Cancel</source>
-      <translation>Cancelar</translation>
+      <translation>Скасувати</translation>
     </message>
   </context>
   <context>
     <name>Epwing::EpwingDictionary</name>
     <message>
       <source>Previous Page</source>
-      <translation>Página anterior</translation>
+      <translation>Попередня сторінка</translation>
     </message>
     <message>
       <source>Next Page</source>
-      <translation>Página seguinte</translation>
+      <translation>Наступна сторінка</translation>
     </message>
   </context>
   <context>
     <name>ExternalViewer</name>
     <message>
       <source>the viewer program name is empty</source>
-      <translation>falta especificar o nome do programa de visualização</translation>
+      <translation>назва програми перегляду порожнє</translation>
     </message>
   </context>
   <context>
     <name>FTS::FullTextSearchDialog</name>
     <message>
       <source>Full-text search</source>
-      <translation>Pesquisa de texto completo</translation>
+      <translation>Повнотекстовий пошук</translation>
     </message>
     <message>
       <source>Default</source>
-      <translation>Padrão</translation>
+      <translation>За замовчуванням</translation>
     </message>
     <message>
       <source>Wildcards</source>
-      <translation>Curingas</translation>
+      <translation>Шаблони</translation>
     </message>
     <message>
       <source>Support xapian search syntax, such as AND OR +/- etc.</source>
-      <translation>Suporte à sintaxe de pesquisa xapiana, como AND OR +/- etc.</translation>
+      <translation>Підтримка синтаксису пошуку xapian, наприклад І АБО +/- тощо.</translation>
     </message>
     <message>
       <source>Articles found: </source>
-      <translation>Artigos encontrados: </translation>
+      <translation>Знайдено статей: </translation>
     </message>
     <message>
       <source>Now indexing: </source>
-      <translation>Agora indexando: </translation>
+      <translation>Зараз індексування: </translation>
     </message>
     <message>
       <source>None</source>
-      <translation>Nenhum</translation>
+      <translation>Без ефекту</translation>
     </message>
     <message>
       <source>The querying word can not be empty.</source>
-      <translation>A palavra de consulta não pode estar vazia.</translation>
+      <translation>Слово запиту не може бути порожнім.</translation>
     </message>
     <message>
       <source>No dictionaries for full-text search</source>
-      <translation>Não há dicionários para pesquisa de texto completo</translation>
+      <translation>Немає словників для повнотекстового пошуку</translation>
     </message>
   </context>
   <context>
     <name>FavoritesModel</name>
     <message>
       <source>Error in favorities file</source>
-      <translation>Erro no arquivo de favoritos</translation>
+      <translation>Помилка в файлі уподобань</translation>
     </message>
   </context>
   <context>
     <name>FavoritesPaneWidget</name>
     <message>
       <source>&amp;Delete Selected</source>
-      <translation>&amp;Remover selecionado</translation>
+      <translation>&amp;Вилучити виділене</translation>
     </message>
     <message>
       <source>Copy Selected</source>
-      <translation>Copiar Selecionado</translation>
+      <translation>Скопіювати виділене</translation>
     </message>
     <message>
       <source>Add folder</source>
-      <translation>Adicionar pasta</translation>
+      <translation>Додати теку</translation>
     </message>
     <message>
       <source>Clear All</source>
-      <translation>Limpar tudo</translation>
+      <translation>Очистити все</translation>
     </message>
     <message>
       <source>Favorites:</source>
-      <translation>Favoritos:</translation>
+      <translation>Обране:</translation>
     </message>
     <message>
       <source>All selected items will be deleted. Continue?</source>
-      <translation>Todos os itens selecionados serão excluídos. Continuar?</translation>
+      <translation>Всі вибрані елементи буде видалено. Продовжити?</translation>
     </message>
     <message>
       <source>Clear All Items</source>
-      <translation>Limpar todos os itens</translation>
+      <translation>Очистити всі елементи</translation>
     </message>
     <message>
       <source>Are you sure you want to clear all items?</source>
-      <translation>Tem certeza de que deseja limpar todos os itens?</translation>
+      <translation>Ви впевнені, що бажаєте очистити всі елементи?</translation>
     </message>
     <message>
       <source>Make this folder the target of adding/removing words actions.</source>
@@ -836,232 +836,232 @@ entre clássico e ortografia escolar em cirílico)</translation>
     <name>Forvo::ForvoArticleRequest</name>
     <message>
       <source>XML parse error: %1 at %2,%3</source>
-      <translation>Erro de análise sintática de XML: %1 al %2,%3</translation>
+      <translation>Помилка аналізу XML: %1 в %2,%3</translation>
     </message>
     <message>
       <source>Added %1</source>
-      <translation>Adicionado %1</translation>
+      <translation>Додано %1</translation>
     </message>
     <message>
       <source>by</source>
-      <translation>por</translation>
+      <translation> </translation>
     </message>
     <message>
       <source>Male</source>
-      <translation>Masculino</translation>
+      <translation>чоловіком</translation>
     </message>
     <message>
       <source>Female</source>
-      <translation>Feminino</translation>
+      <translation>жінкою</translation>
     </message>
     <message>
       <source>from</source>
-      <translation>de</translation>
+      <translation>з</translation>
     </message>
   </context>
   <context>
     <name>FtsSearchPanel</name>
     <message>
       <source>&amp;Previous</source>
-      <translation>&amp;Anterior</translation>
+      <translation>&amp;Попередня</translation>
     </message>
     <message>
       <source>&amp;Next</source>
-      <translation>&amp;Próximo</translation>
+      <translation>&amp;Далі</translation>
     </message>
   </context>
   <context>
     <name>FullTextSearchDialog</name>
     <message>
       <source>Search</source>
-      <translation>Pesquisar</translation>
+      <translation>Пошук</translation>
     </message>
     <message>
       <source>Mode:</source>
-      <translation>Modo:</translation>
+      <translation>Режим:</translation>
     </message>
     <message>
       <source>Articles found:</source>
-      <translation>Artigos encontrados:</translation>
+      <translation>Знайдено статей:</translation>
     </message>
     <message>
       <source>Available dictionaries in group:</source>
-      <translation>Dicionários disponíveis no grupo:</translation>
+      <translation>Доступні словники в групі:</translation>
     </message>
     <message>
       <source>Wait for indexing:</source>
-      <translation>Aguarde a indexação:</translation>
+      <translation>Чекайте індексації:</translation>
     </message>
     <message>
       <source>Total:</source>
-      <translation>Total:</translation>
+      <translation>Загалом:</translation>
     </message>
     <message>
       <source>Indexed:</source>
-      <translation>Indexado:</translation>
+      <translation>Знайдено:</translation>
     </message>
     <message>
       <source>Now indexing: None</source>
-      <translation>A indexar agora: Nenhum</translation>
+      <translation>Індексація: немає</translation>
     </message>
     <message>
       <source>Cancel</source>
-      <translation>Cancelar</translation>
+      <translation>Скасувати</translation>
     </message>
     <message>
       <source>Help</source>
-      <translation>Ajuda</translation>
+      <translation>Довідка</translation>
     </message>
   </context>
   <context>
     <name>GermanTranslit</name>
     <message>
       <source>German Transliteration</source>
-      <translation>Transliteração do Alemão</translation>
+      <translation>Німецька транслітерація</translation>
     </message>
   </context>
   <context>
     <name>GreekTranslit</name>
     <message>
       <source>Greek Transliteration</source>
-      <translation>Transliteração do Grego</translation>
+      <translation>Грецька транслітерація</translation>
     </message>
   </context>
   <context>
     <name>GroupComboBox</name>
     <message>
       <source>Choose a Group (Alt+G)</source>
-      <translation>Escolha um Grupo (Alt+G)</translation>
+      <translation>Вибрати групу (Alt+G)</translation>
     </message>
   </context>
   <context>
     <name>Groups</name>
     <message>
       <source>Dictionaries available:</source>
-      <translation>Dicionários disponíveis:</translation>
+      <translation>Доступні словники:</translation>
     </message>
     <message>
       <source>Add selected dictionaries to group (Ins)</source>
-      <translation>Adiciona os dicionários selecionados ao grupo (Ins)</translation>
+      <translation>І додати вибрані словники у групу (Ins)</translation>
     </message>
     <message>
       <source>Remove selected dictionaries from group (Del)</source>
-      <translation>Remove do grupo os dicionários selecionados (Del)</translation>
+      <translation>Вилучити вибрані словники з групи (Del)</translation>
     </message>
     <message>
       <source>Groups:</source>
-      <translation>Grupos:</translation>
+      <translation>Групи:</translation>
     </message>
     <message>
       <source>Tab 2</source>
-      <translation>Guia 2</translation>
+      <translation>Вкладка 2</translation>
     </message>
     <message>
       <source>Create new dictionary group</source>
-      <translation>Cria um novo grupo de dicionários</translation>
+      <translation>Створити нову групу словників</translation>
     </message>
     <message>
       <source>&amp;Add group</source>
-      <translation>&amp;Adicionar</translation>
+      <translation>&amp;Додати групу</translation>
     </message>
     <message>
       <source>Rename current dictionary group</source>
-      <translation>Renomeia o grupo de dicionários selecionado</translation>
+      <translation>Перейменувати поточну групу</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
-      <translation>&amp;Renomear</translation>
+      <translation>&amp;Перейменувати</translation>
     </message>
     <message>
       <source>Remove current dictionary group</source>
-      <translation>Remove o grupo de dicionários atual</translation>
+      <translation>Вилучити поточну групу</translation>
     </message>
     <message>
       <source>&amp;Remove group</source>
-      <translation>R&amp;emover</translation>
+      <translation>&amp;Вилучити групу</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>
-      <translation>Remover todos os grupos de dicionários</translation>
+      <translation>Вилучити всі групи</translation>
     </message>
     <message>
       <source>Remove all groups</source>
-      <translation>Remover todos os grupos</translation>
+      <translation>Вилучити всі групи</translation>
     </message>
     <message>
       <source>Create language-based groups</source>
-      <translation>Cria grupos de dicionários com base nos tipos de idioma</translation>
+      <translation>Створити групи, впорядковані за мовою</translation>
     </message>
     <message>
       <source>Group by Languages</source>
-      <translation>Agrupar por idiomas</translation>
+      <translation>Групування за мовами</translation>
     </message>
     <message>
       <source>Create folder-based groups.</source>
-      <translation>Crie grupos baseados em pastas.</translation>
+      <translation>Створення груп на основі папок.</translation>
     </message>
     <message>
       <source>Group by Folders</source>
-      <translation>Agrupar por pastas</translation>
+      <translation>Групування за папками</translation>
     </message>
     <message>
       <source>Group by Metadata</source>
-      <translation>Agrupar por Metadados</translation>
+      <translation>Групування за метаданими</translation>
     </message>
     <message>
       <source>Drag&amp;drop dictionaries to and from the groups, move them inside the groups, reorder the groups using your mouse.</source>
-      <translation>Arraste e solte os &amp;dicionários nos grupos, organize-os e reordene-os com o ponteiro do mouse.</translation>
+      <translation>Перено&amp;сьте словники з/в групи, переміщайте їх усередині групи, впорядковуйте використовуючи мишку.</translation>
     </message>
     <message>
       <source>Group tabs</source>
-      <translation>Grupo de guias</translation>
+      <translation>Вкладки групи</translation>
     </message>
     <message>
       <source>Open groups list</source>
-      <translation>Abrir lista de grupos</translation>
+      <translation>Відкрити список груп</translation>
     </message>
     <message>
       <source>Add group</source>
-      <translation>Adicionar grupo</translation>
+      <translation>Додати групу</translation>
     </message>
     <message>
       <source>Give a name for the new group:</source>
-      <translation>Digite o nome do grupo que deseja criar:</translation>
+      <translation>Надайте назву новій групі:</translation>
     </message>
     <message>
       <source>Rename group</source>
-      <translation>Renomear grupo</translation>
+      <translation>Перейменуйте групу</translation>
     </message>
     <message>
       <source>Give a new name for the group:</source>
-      <translation>Digite o novo nome do grupo:</translation>
+      <translation>Надайте нову назву групі:</translation>
     </message>
     <message>
       <source>Remove group</source>
-      <translation>Remover grupo</translation>
+      <translation>Вилучити групу</translation>
     </message>
     <message>
       <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
-      <translation>Tem certeza de que quer remover o grupo &lt;b&gt;%1&lt;/b&gt;?</translation>
+      <translation>Бажаєте вилучити групу &lt;b&gt;%1&lt;/b&gt;?</translation>
     </message>
     <message>
       <source>Are you sure you want to remove all the groups?</source>
-      <translation>Tem certeza de que quer remover todos os grupos?</translation>
+      <translation>Бажаєте вилучити всі групи?</translation>
     </message>
   </context>
   <context>
     <name>HistoryPaneWidget</name>
     <message>
       <source>&amp;Delete Selected</source>
-      <translation>&amp;Remover Selecionado</translation>
+      <translation>&amp;Вилучити виділене</translation>
     </message>
     <message>
       <source>Copy Selected</source>
-      <translation>Copiar Selecionado</translation>
+      <translation>Скопіювати виділене</translation>
     </message>
     <message>
       <source>History:</source>
-      <translation>Histórico:</translation>
+      <translation>Історія:</translation>
     </message>
     <message>
       <source>%1/%2</source>
@@ -1069,1034 +1069,1035 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>History size: %1 entries out of maximum %2</source>
-      <translation>Tamanho do histórico: %1 entradas de saída de no máximo %2</translation>
+      <translation>Розмір історії: %1 статей з максимальних %2</translation>
     </message>
   </context>
   <context>
     <name>Hunspell</name>
     <message>
       <source>Spelling suggestions: </source>
-      <translation>Sugestões ortográficas: </translation>
+      <translation>Орфографічні підказки: </translation>
     </message>
     <message>
       <source>%1 Morphology</source>
-      <translation>Ortografia de %1</translation>
+      <translation>Морфологія %1</translation>
     </message>
   </context>
   <context>
     <name>HunspellDictsModel</name>
     <message>
       <source>Enabled</source>
-      <translation>Habilitado</translation>
+      <translation>Увімкнено</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation>Nome</translation>
+      <translation>Назва</translation>
     </message>
   </context>
   <context>
     <name>Initializing</name>
     <message>
       <source>GoldenDict-ng - Initializing</source>
-      <translation>GoldenDict-ng - Processando</translation>
+      <translation>Запуск GoldenDict-ng</translation>
     </message>
     <message>
       <source>Indexing: </source>
-      <translation>Indexação: </translation>
+      <translation>Індексація: </translation>
     </message>
     <message>
       <source>Dictionary Name</source>
-      <translation>Nome do Dicionário</translation>
+      <translation>Назва словника</translation>
     </message>
     <message>
       <source>Please wait...</source>
-      <translation>Favor aguardar...</translation>
+      <translation>Зачекайте, будь ласка…</translation>
     </message>
     <message>
       <source>Indexing...</source>
-      <translation>Indexando...</translation>
+      <translation>Індексація...</translation>
     </message>
     <message>
       <source>Loading...</source>
-      <translation>Carregando...</translation>
+      <translation>Завантаження...</translation>
     </message>
   </context>
   <context>
     <name>Language</name>
     <message>
       <source>Afar</source>
-      <translation>Afar</translation>
+      <translation>Афар</translation>
     </message>
     <message>
       <source>Abkhazian</source>
-      <translation>Abcaso</translation>
+      <translation>Абхазька</translation>
     </message>
     <message>
       <source>Avestan</source>
-      <translation>Avestico</translation>
+      <translation>Авестан</translation>
     </message>
     <message>
       <source>Afrikaans</source>
-      <translation>Africâner</translation>
+      <translation>Африкаанс</translation>
     </message>
     <message>
       <source>Akan</source>
-      <translation>Akan</translation>
+      <translation>Акан</translation>
     </message>
     <message>
       <source>Amharic</source>
-      <translation>Amarico</translation>
+      <translation>Амхарська</translation>
     </message>
     <message>
       <source>Aragonese</source>
-      <translation>Aragonês</translation>
+      <translation>Арагонська</translation>
     </message>
     <message>
       <source>Arabic</source>
-      <translation>Árabe</translation>
+      <translation>Арабська</translation>
     </message>
     <message>
       <source>Assamese</source>
-      <translation>assamês</translation>
+      <translation>Асамійська</translation>
     </message>
     <message>
       <source>Avaric</source>
-      <translation>Avaro</translation>
+      <translation>Аварська</translation>
     </message>
     <message>
       <source>Aymara</source>
-      <translation>Aymara</translation>
+      <translation>Аймарська</translation>
     </message>
     <message>
       <source>Azerbaijani</source>
-      <translation>Azebaijano</translation>
+      <translation>Азербайджанська</translation>
     </message>
     <message>
       <source>Bashkir</source>
-      <translation>Bashkir</translation>
+      <translation>Башкирська</translation>
     </message>
     <message>
       <source>Belarusian</source>
-      <translation>Bielorusso</translation>
+      <translation>Білоруська</translation>
     </message>
     <message>
       <source>Bulgarian</source>
-      <translation>Búlgaro</translation>
+      <translation>Болгарська</translation>
     </message>
     <message>
       <source>Bihari</source>
-      <translation>biari</translation>
+      <translation>Біхарі</translation>
     </message>
     <message>
       <source>Bislama</source>
-      <translation>Bislama</translation>
+      <translation>Біслама</translation>
     </message>
     <message>
       <source>Bambara</source>
-      <translation>Bambara</translation>
+      <translation>Бенгальська</translation>
     </message>
     <message>
       <source>Bengali</source>
-      <translation>Bengáli</translation>
+      <translation>Бенгальська</translation>
     </message>
     <message>
       <source>Tibetan</source>
-      <translation>Tibetano</translation>
+      <translation>Тибетська</translation>
     </message>
     <message>
       <source>Breton</source>
-      <translation>Bretone</translation>
+      <translation>Бретонська</translation>
     </message>
     <message>
       <source>Bosnian</source>
-      <translation>Bósnio</translation>
+      <translation>Боснійська</translation>
     </message>
     <message>
       <source>Catalan</source>
-      <translation>Catalão</translation>
+      <translation>Каталонська</translation>
     </message>
     <message>
       <source>Chechen</source>
-      <translation>Checheno</translation>
+      <translation>Чеченська</translation>
     </message>
     <message>
       <source>Chamorro</source>
-      <translation>Chamorro</translation>
+      <translation>Чаморо</translation>
     </message>
     <message>
       <source>Corsican</source>
-      <translation>Corso</translation>
+      <translation>Корсиканська</translation>
     </message>
     <message>
       <source>Cree</source>
-      <translation>Cree</translation>
+      <translation>Крі</translation>
     </message>
     <message>
       <source>Czech</source>
-      <translation>Checo</translation>
+      <translation>Чеська</translation>
     </message>
     <message>
       <source>Church Slavic</source>
-      <translation>Eslavo</translation>
+      <translation>Церковнослов&apos;янська</translation>
     </message>
     <message>
       <source>Chuvash</source>
-      <translation>Ciuvascio</translation>
+      <translation>Чуваська</translation>
     </message>
     <message>
       <source>Welsh</source>
-      <translation>Galês</translation>
+      <translation>Уельська</translation>
     </message>
     <message>
       <source>Danish</source>
-      <translation>Dinamarquês</translation>
+      <translation>Данська</translation>
     </message>
     <message>
       <source>German</source>
-      <translation>Alemão</translation>
+      <translation>Німецька</translation>
     </message>
     <message>
       <source>Divehi</source>
-      <translation>Maldiviano</translation>
+      <translation>Дівехі</translation>
     </message>
     <message>
       <source>Dzongkha</source>
-      <translation>Dzongkha</translation>
+      <translation>Дзонг-ке</translation>
     </message>
     <message>
       <source>Ewe</source>
-      <translation>Ewe</translation>
+      <translation>Еве</translation>
     </message>
     <message>
       <source>Greek</source>
-      <translation>Grego</translation>
+      <translation>Грецька</translation>
     </message>
     <message>
       <source>English</source>
-      <translation>Inglês</translation>
+      <translation>Англійська</translation>
     </message>
     <message>
       <source>Esperanto</source>
-      <translation>Esperanto</translation>
+      <translation>Есперанто</translation>
     </message>
     <message>
       <source>Spanish</source>
-      <translation>Espanhol</translation>
+      <translation>Іспанська</translation>
     </message>
     <message>
       <source>Estonian</source>
-      <translation>Estoniano</translation>
+      <translation>Естонська</translation>
     </message>
     <message>
       <source>Basque</source>
-      <translation>Basco</translation>
+      <translation>Баскська</translation>
     </message>
     <message>
       <source>Persian</source>
-      <translation>Farsì</translation>
+      <translation>Перська</translation>
     </message>
     <message>
       <source>Fulah</source>
-      <translation>Fula</translation>
+      <translation>Фула</translation>
     </message>
     <message>
       <source>Finnish</source>
-      <translation>Finlandês</translation>
+      <translation>Фінська</translation>
     </message>
     <message>
       <source>Fijian</source>
-      <translation>Fijiano</translation>
+      <translation>Фіджійська</translation>
     </message>
     <message>
       <source>Faroese</source>
-      <translation>Faroese</translation>
+      <translation>Фарерська</translation>
     </message>
     <message>
       <source>French</source>
-      <translation>Francês</translation>
+      <translation>Французька</translation>
     </message>
     <message>
       <source>Western Frisian</source>
-      <translation>Frisone occidentale</translation>
+      <translation>Фризька</translation>
     </message>
     <message>
       <source>Irish</source>
-      <translation>Irlandês</translation>
+      <translation>Ірландська</translation>
     </message>
     <message>
       <source>Scottish Gaelic</source>
-      <translation>Galês escocês</translation>
+      <translation>Гаельська (Шотландія)</translation>
     </message>
     <message>
       <source>Galician</source>
-      <translation>Galício</translation>
+      <translation>Галісійська</translation>
     </message>
     <message>
       <source>Guarani</source>
-      <translation>Guaraní</translation>
+      <translation>Гуарані</translation>
     </message>
     <message>
       <source>Gujarati</source>
-      <translation>Gujarati</translation>
+      <translation>Гуджараті</translation>
     </message>
     <message>
       <source>Manx</source>
-      <translation>Mannese</translation>
+      <translation>Манкс</translation>
     </message>
     <message>
       <source>Hausa</source>
-      <translation>Hausa</translation>
+      <translation>Гауса</translation>
     </message>
     <message>
       <source>Hebrew</source>
-      <translation>Hebraico</translation>
+      <translation>Єврейська</translation>
     </message>
     <message>
       <source>Hindi</source>
-      <translation>hindi</translation>
+      <translation>Хінді</translation>
     </message>
     <message>
       <source>Hiri Motu</source>
-      <translation>Hiri Motu</translation>
+      <translation>Хірімоту</translation>
     </message>
     <message>
       <source>Croatian</source>
-      <translation>Croata</translation>
+      <translation>Хорватська</translation>
     </message>
     <message>
       <source>Haitian</source>
-      <translation>Creolo haitiano</translation>
+      <translation>Гаїтянська</translation>
     </message>
     <message>
       <source>Hungarian</source>
-      <translation>Húngaro</translation>
+      <translation>Угорська</translation>
     </message>
     <message>
       <source>Armenian</source>
-      <translation>Armeno</translation>
+      <translation>Вірменська</translation>
     </message>
     <message>
       <source>Herero</source>
-      <translation>Herero</translation>
+      <translation>Гереро</translation>
     </message>
     <message>
       <source>Interlingua</source>
-      <translation>Interlingua</translation>
+      <translation>Інтерлінгва</translation>
     </message>
     <message>
       <source>Indonesian</source>
-      <translation>Indonésio</translation>
+      <translation>Індонезійська</translation>
     </message>
     <message>
       <source>Interlingue</source>
-      <translation>Interlingua</translation>
+      <translation>Окциденталь</translation>
     </message>
     <message>
       <source>Igbo</source>
-      <translation>Igbo</translation>
+      <translation>Ігбо</translation>
     </message>
     <message>
       <source>Sichuan Yi</source>
-      <translation>Sichuan Yi</translation>
+      <translation>Сичуань</translation>
     </message>
     <message>
       <source>Inupiaq</source>
-      <translation>Inupiaq</translation>
+      <translation>Інупіак</translation>
     </message>
     <message>
       <source>Ido</source>
-      <translation>Ido</translation>
+      <translation>Ідо</translation>
     </message>
     <message>
       <source>Icelandic</source>
-      <translation>Islandês</translation>
+      <translation>Ісландська</translation>
     </message>
     <message>
       <source>Italian</source>
-      <translation>Italiano</translation>
+      <translation>Італійська</translation>
     </message>
     <message>
       <source>Inuktitut</source>
-      <translation>Inuktitut</translation>
+      <translation>Інуктітут</translation>
     </message>
     <message>
       <source>Japanese</source>
-      <translation>Japonês</translation>
+      <translation>Японська</translation>
     </message>
     <message>
       <source>Javanese</source>
-      <translation>Javanês</translation>
+      <translation>Яванська</translation>
     </message>
     <message>
       <source>Georgian</source>
-      <translation>Georgiano</translation>
+      <translation>Грузинська</translation>
     </message>
     <message>
       <source>Kongo</source>
-      <translation>Monokutuba</translation>
+      <translation>Конґолезька</translation>
     </message>
     <message>
       <source>Kikuyu</source>
-      <translation>kikuyu</translation>
+      <translation>Кікуйю</translation>
     </message>
     <message>
       <source>Kwanyama</source>
-      <translation>Kwanyama</translation>
+      <translation>Кваньяма</translation>
     </message>
     <message>
       <source>Kazakh</source>
-      <translation>Cazaco</translation>
+      <translation>Казахська</translation>
     </message>
     <message>
       <source>Kalaallisut</source>
-      <translation>Groenlandese</translation>
+      <translation>Калаалісут</translation>
     </message>
     <message>
       <source>Khmer</source>
-      <translation>Khmer</translation>
+      <translation>Кхмерська</translation>
     </message>
     <message>
       <source>Kannada</source>
-      <translation>Kannada</translation>
+      <translation>Каннада</translation>
     </message>
     <message>
       <source>Korean</source>
-      <translation>Coreano</translation>
+      <translation>Корейська</translation>
     </message>
     <message>
       <source>Kanuri</source>
-      <translation>Kanuri</translation>
+      <translation>Канурі</translation>
     </message>
     <message>
       <source>Kashmiri</source>
-      <translation>Kashmiri</translation>
+      <translation>Кашмірська</translation>
     </message>
     <message>
       <source>Kurdish</source>
-      <translation>Curdo</translation>
+      <translation>Курдська</translation>
     </message>
     <message>
       <source>Komi</source>
-      <translation>Komi</translation>
+      <translation>Комі</translation>
     </message>
     <message>
       <source>Cornish</source>
-      <translation>Cornico</translation>
+      <translation>Корнійська</translation>
     </message>
     <message>
       <source>Kirghiz</source>
-      <translation>Chirghiso</translation>
+      <translation>Киргизька</translation>
     </message>
     <message>
       <source>Latin</source>
-      <translation>Latino</translation>
+      <translation>Латинська</translation>
     </message>
     <message>
       <source>Luxembourgish</source>
-      <translation>Luxemburguês</translation>
+      <translation>Люксембурзька</translation>
     </message>
     <message>
       <source>Ganda</source>
-      <translation>Ganda</translation>
+      <translation>Ганда</translation>
     </message>
     <message>
       <source>Limburgish</source>
-      <translation>Limburghese</translation>
+      <translation>Лімбурганська</translation>
     </message>
     <message>
       <source>Lingala</source>
-      <translation>Lingala</translation>
+      <translation>Лінгала</translation>
     </message>
     <message>
       <source>Lao</source>
-      <translation>Laotiano</translation>
+      <translation>Лаоська</translation>
     </message>
     <message>
       <source>Lithuanian</source>
-      <translation>Lituano</translation>
+      <translation>Литовська</translation>
     </message>
     <message>
       <source>Luba-Katanga</source>
-      <translation>Luba-Katanga</translation>
+      <translation>Луба-катанга</translation>
     </message>
     <message>
       <source>Latvian</source>
-      <translation>Lituano</translation>
+      <translation>Латвійська</translation>
     </message>
     <message>
       <source>Malagasy</source>
-      <translation>Malgaxe</translation>
+      <translation>Малагасійська</translation>
     </message>
     <message>
       <source>Marshallese</source>
-      <translation>Marshalês</translation>
+      <translation>Маршальська</translation>
     </message>
     <message>
       <source>Maori</source>
-      <translation>Maori</translation>
+      <translation>Маорі</translation>
     </message>
     <message>
       <source>Macedonian</source>
-      <translation>Macedônio</translation>
+      <translation>Македонська</translation>
     </message>
     <message>
       <source>Malayalam</source>
-      <translation>Malaio</translation>
+      <translation>Малайська</translation>
     </message>
     <message>
       <source>Mongolian</source>
-      <translation>Mongol</translation>
+      <translation>Монгольська</translation>
     </message>
     <message>
       <source>Marathi</source>
-      <translation>marata</translation>
+      <translation>Мараті</translation>
     </message>
     <message>
       <source>Malay</source>
-      <translation>Malaio</translation>
+      <translation>Малайська</translation>
     </message>
     <message>
       <source>Maltese</source>
-      <translation>Maltês</translation>
+      <translation>Мальтійська</translation>
     </message>
     <message>
       <source>Burmese</source>
-      <translation>Birmanês</translation>
+      <translation>Бірманська</translation>
     </message>
     <message>
       <source>Nauru</source>
-      <translation>Nauruano</translation>
+      <translation>Науру</translation>
     </message>
     <message>
       <source>Norwegian Bokmal</source>
-      <translation>Norvegese Bokmål</translation>
+      <translation>Норвезька (Букмол)</translation>
     </message>
     <message>
       <source>North Ndebele</source>
-      <translation>Ndebele del nord</translation>
+      <translation>Північна Ндебелє</translation>
     </message>
     <message>
       <source>Nepali</source>
-      <translation>Nepalese</translation>
+      <translation>Непальська</translation>
     </message>
     <message>
       <source>Ndonga</source>
-      <translation>Ndonga</translation>
+      <translation>Ндонга</translation>
     </message>
     <message>
       <source>Dutch</source>
-      <translation>Holandês</translation>
+      <translation>Голландська</translation>
     </message>
     <message>
       <source>Norwegian Nynorsk</source>
-      <translation>Norueguês</translation>
+      <translation>Норвезька (Нюношк)</translation>
     </message>
     <message>
       <source>Norwegian</source>
-      <translation>Norueguês</translation>
+      <translation>Норвезька</translation>
     </message>
     <message>
       <source>South Ndebele</source>
-      <translation>Ndebele do Sul</translation>
+      <translation>Південна Ндебелє</translation>
     </message>
     <message>
       <source>Navajo</source>
-      <translation>Navajo</translation>
+      <translation>Навахо</translation>
     </message>
     <message>
       <source>Chichewa</source>
-      <translation>Chichewa</translation>
+      <translation>Чічеванська</translation>
     </message>
     <message>
       <source>Occitan</source>
-      <translation>Occitano</translation>
+      <translation>Оксітанська</translation>
     </message>
     <message>
       <source>Ojibwa</source>
-      <translation>Ojibwa</translation>
+      <translation>Оджібва</translation>
     </message>
     <message>
       <source>Oromo</source>
-      <translation>Oromo</translation>
+      <translation>Оромо
+</translation>
     </message>
     <message>
       <source>Oriya</source>
-      <translation>Oriya</translation>
+      <translation>Орія</translation>
     </message>
     <message>
       <source>Ossetian</source>
-      <translation>Osseto</translation>
+      <translation>Осетинська</translation>
     </message>
     <message>
       <source>Panjabi</source>
-      <translation>Panjabi</translation>
+      <translation>Панджабська</translation>
     </message>
     <message>
       <source>Pali</source>
-      <translation>Pali</translation>
+      <translation>Палі</translation>
     </message>
     <message>
       <source>Polish</source>
-      <translation>Polonês</translation>
+      <translation>Польська</translation>
     </message>
     <message>
       <source>Pashto</source>
-      <translation>Pashtu</translation>
+      <translation>Пуштунська</translation>
     </message>
     <message>
       <source>Portuguese</source>
-      <translation>Português brasileiro</translation>
+      <translation>Португальська</translation>
     </message>
     <message>
       <source>Quechua</source>
-      <translation>Quechua</translation>
+      <translation>Кечуа</translation>
     </message>
     <message>
       <source>Raeto-Romance</source>
-      <translation>Reto-Romancio</translation>
+      <translation>Ретороманська</translation>
     </message>
     <message>
       <source>Kirundi</source>
-      <translation>Kirundi</translation>
+      <translation>Рунді</translation>
     </message>
     <message>
       <source>Romanian</source>
-      <translation>Romeno</translation>
+      <translation>Румунська</translation>
     </message>
     <message>
       <source>Russian</source>
-      <translation>Russo</translation>
+      <translation>Російська</translation>
     </message>
     <message>
       <source>Kinyarwanda</source>
-      <translation>Kinyarwanda</translation>
+      <translation>Кіньяруанда</translation>
     </message>
     <message>
       <source>Sanskrit</source>
-      <translation>Sânscrito</translation>
+      <translation>Санскрит</translation>
     </message>
     <message>
       <source>Sardinian</source>
-      <translation>Sardo</translation>
+      <translation>Сардинська</translation>
     </message>
     <message>
       <source>Sindhi</source>
-      <translation>Sindhi</translation>
+      <translation>Синдхі</translation>
     </message>
     <message>
       <source>Northern Sami</source>
-      <translation>Sami del nord</translation>
+      <translation>Північна Саамі</translation>
     </message>
     <message>
       <source>Sango</source>
-      <translation>Sango</translation>
+      <translation>Санго</translation>
     </message>
     <message>
       <source>Serbo-Croatian</source>
-      <translation>Servo-Croata</translation>
+      <translation>Сербсько-хорватська</translation>
     </message>
     <message>
       <source>Sinhala</source>
-      <translation>Singalese</translation>
+      <translation>Сингала</translation>
     </message>
     <message>
       <source>Slovak</source>
-      <translation>Slovacco</translation>
+      <translation>Словацька</translation>
     </message>
     <message>
       <source>Slovenian</source>
-      <translation>Esloveno</translation>
+      <translation>Словенська</translation>
     </message>
     <message>
       <source>Samoan</source>
-      <translation>Samoano</translation>
+      <translation>Самоанська</translation>
     </message>
     <message>
       <source>Shona</source>
-      <translation>Lona</translation>
+      <translation>Шона</translation>
     </message>
     <message>
       <source>Somali</source>
-      <translation>Somalo</translation>
+      <translation>Сомалійська</translation>
     </message>
     <message>
       <source>Albanian</source>
-      <translation>Albanês</translation>
+      <translation>Албанська</translation>
     </message>
     <message>
       <source>Serbian</source>
-      <translation>Sérvio</translation>
+      <translation>Сербська</translation>
     </message>
     <message>
       <source>Swati</source>
-      <translation>swati</translation>
+      <translation>Свазі</translation>
     </message>
     <message>
       <source>Southern Sotho</source>
-      <translation>Sesotho</translation>
+      <translation>Південна Сото</translation>
     </message>
     <message>
       <source>Sundanese</source>
-      <translation>Sudanês</translation>
+      <translation>Сунданська</translation>
     </message>
     <message>
       <source>Swedish</source>
-      <translation>Sueco</translation>
+      <translation>Шведська</translation>
     </message>
     <message>
       <source>Swahili</source>
-      <translation>Suaíli</translation>
+      <translation>Суахілі</translation>
     </message>
     <message>
       <source>Tamil</source>
-      <translation>Tamil</translation>
+      <translation>Тамільська</translation>
     </message>
     <message>
       <source>Telugu</source>
-      <translation>Telugu</translation>
+      <translation>Телугу</translation>
     </message>
     <message>
       <source>Tajik</source>
-      <translation>Tagico</translation>
+      <translation>Таджицька</translation>
     </message>
     <message>
       <source>Thai</source>
-      <translation>Tailandês</translation>
+      <translation>Тайська</translation>
     </message>
     <message>
       <source>Tigrinya</source>
-      <translation>Tigrino</translation>
+      <translation>Тигринійська</translation>
     </message>
     <message>
       <source>Turkmen</source>
-      <translation>Turcomeno</translation>
+      <translation>Туркменська</translation>
     </message>
     <message>
       <source>Tagalog</source>
-      <translation>Tagalogue</translation>
+      <translation>Тсвана</translation>
     </message>
     <message>
       <source>Tswana</source>
-      <translation>Tswana</translation>
+      <translation>Тсвана</translation>
     </message>
     <message>
       <source>Tonga</source>
-      <translation>Tonga</translation>
+      <translation>Тонга</translation>
     </message>
     <message>
       <source>Turkish</source>
-      <translation>Turco</translation>
+      <translation>Турецька</translation>
     </message>
     <message>
       <source>Tsonga</source>
-      <translation>Tsonga</translation>
+      <translation>Цонґа</translation>
     </message>
     <message>
       <source>Tatar</source>
-      <translation>Tataro</translation>
+      <translation>Татарська</translation>
     </message>
     <message>
       <source>Twi</source>
-      <translation>Twi</translation>
+      <translation>Тві</translation>
     </message>
     <message>
       <source>Tahitian</source>
-      <translation>Tahitiano</translation>
+      <translation>Таїтянська</translation>
     </message>
     <message>
       <source>Uighur</source>
-      <translation>Uigura</translation>
+      <translation>Уйгур</translation>
     </message>
     <message>
       <source>Ukrainian</source>
-      <translation>Ucraniano</translation>
+      <translation>Українська</translation>
     </message>
     <message>
       <source>Urdu</source>
-      <translation>urdu</translation>
+      <translation>Урду</translation>
     </message>
     <message>
       <source>Uzbek</source>
-      <translation>Uzbeco</translation>
+      <translation>Узбецька</translation>
     </message>
     <message>
       <source>Venda</source>
-      <translation>venda</translation>
+      <translation>Венда</translation>
     </message>
     <message>
       <source>Vietnamese</source>
-      <translation>Vietnamita</translation>
+      <translation>В&apos;єтнамська</translation>
     </message>
     <message>
       <source>Volapuk</source>
-      <translation>Volapuk</translation>
+      <translation>Волапюк</translation>
     </message>
     <message>
       <source>Walloon</source>
-      <translation>Vallone</translation>
+      <translation>Валлонська</translation>
     </message>
     <message>
       <source>Wolof</source>
-      <translation>Wolof</translation>
+      <translation>Волоф</translation>
     </message>
     <message>
       <source>Xhosa</source>
-      <translation>Xhosa</translation>
+      <translation>Хоза</translation>
     </message>
     <message>
       <source>Yiddish</source>
-      <translation>Iídiche</translation>
+      <translation>Ідиш</translation>
     </message>
     <message>
       <source>Yoruba</source>
-      <translation>Iorubá</translation>
+      <translation>Йоруба</translation>
     </message>
     <message>
       <source>Zhuang</source>
-      <translation>Zhuang</translation>
+      <translation>Чжуань</translation>
     </message>
     <message>
       <source>Chinese</source>
-      <translation>Chinês</translation>
+      <translation>Китайська</translation>
     </message>
     <message>
       <source>Zulu</source>
-      <translation>Zulu</translation>
+      <translation>Зулуська</translation>
     </message>
     <message>
       <source>Lojban</source>
-      <translation>Lojban</translation>
+      <translation>Ложбан</translation>
     </message>
     <message>
       <source>Traditional Chinese</source>
-      <translation>Chinês tradicional</translation>
+      <translation>Традиційна китайська</translation>
     </message>
     <message>
       <source>Simplified Chinese</source>
-      <translation>Chinês simplificado</translation>
+      <translation>Спрощена китайська</translation>
     </message>
     <message>
       <source>Other</source>
-      <translation>Outro</translation>
+      <translation>Інша</translation>
     </message>
     <message>
       <source>Other Simplified Chinese dialects</source>
-      <translation>Outros dialetos chineses simplificados</translation>
+      <translation>Інша спрощена китайська</translation>
     </message>
     <message>
       <source>Other Traditional Chinese dialects</source>
-      <translation>Outro dialetos chineses tradicionais</translation>
+      <translation>Інша традиційна китайська</translation>
     </message>
     <message>
       <source>Other Eastern-European languages</source>
-      <translation>Outros idiomas do leste europeu</translation>
+      <translation>Інші східно-європейські мови</translation>
     </message>
     <message>
       <source>Other Western-European languages</source>
-      <translation>Outros idiomas da Europa ocidental</translation>
+      <translation>Інші західно-європейські мови</translation>
     </message>
     <message>
       <source>Other Russian languages</source>
-      <translation>Outros idiomas russos</translation>
+      <translation>Інші слов&apos;яньські мови</translation>
     </message>
     <message>
       <source>Other Japanese languages</source>
-      <translation>Outros idiomas japoneses</translation>
+      <translation>Інш японські мови</translation>
     </message>
     <message>
       <source>Other Baltic languages</source>
-      <translation>Outros idiomas bálticos</translation>
+      <translation>Інші балтійські мови</translation>
     </message>
     <message>
       <source>Other Greek languages</source>
-      <translation>Outros idiomas gregos</translation>
+      <translation>Інші грецькі мови</translation>
     </message>
     <message>
       <source>Other Korean dialects</source>
-      <translation>Outros idiomas coreanos</translation>
+      <translation>Інші корейські мови</translation>
     </message>
     <message>
       <source>Other Turkish dialects</source>
-      <translation>Outros dialetos turcos</translation>
+      <translation>Інші турецькі мови</translation>
     </message>
     <message>
       <source>Other Thai dialects</source>
-      <translation>Outros dialetos tailandeses</translation>
+      <translation>Інші тайські мови</translation>
     </message>
     <message>
       <source>Tamazight</source>
-      <translation>Admirável</translation>
+      <translation>Тамазит</translation>
     </message>
   </context>
   <context>
     <name>Language::Db</name>
     <message>
       <source>French</source>
-      <translation>Francês</translation>
+      <translation>французька</translation>
     </message>
     <message>
       <source>Spanish</source>
-      <translation>Espanhol</translation>
+      <translation>Іспанська</translation>
     </message>
     <message>
       <source>Belarusian</source>
-      <translation>bielorrusso</translation>
+      <translation>білоруська</translation>
     </message>
     <message>
       <source>Bulgarian</source>
-      <translation>búlgaro</translation>
+      <translation>Болгарська</translation>
     </message>
     <message>
       <source>Czech</source>
-      <translation>tcheco</translation>
+      <translation>чеська</translation>
     </message>
     <message>
       <source>German</source>
-      <translation>Alemão</translation>
+      <translation>Німецький</translation>
     </message>
     <message>
       <source>Greek</source>
-      <translation>grego</translation>
+      <translation>грецька</translation>
     </message>
     <message>
       <source>Finnish</source>
-      <translation>finlandês</translation>
+      <translation>фінська</translation>
     </message>
     <message>
       <source>Italian</source>
-      <translation>italiano</translation>
+      <translation>італійська</translation>
     </message>
     <message>
       <source>Japanese</source>
-      <translation>japonês</translation>
+      <translation>Японський</translation>
     </message>
     <message>
       <source>Korean</source>
-      <translation>coreano</translation>
+      <translation>корейська</translation>
     </message>
     <message>
       <source>Lithuanian</source>
-      <translation>lituano</translation>
+      <translation>литовський</translation>
     </message>
     <message>
       <source>Macedonian</source>
-      <translation>macedônio</translation>
+      <translation>македонська</translation>
     </message>
     <message>
       <source>Dutch</source>
-      <translation>Holandês</translation>
+      <translation>голландська</translation>
     </message>
     <message>
       <source>Polish</source>
-      <translation>polonês</translation>
+      <translation>польський</translation>
     </message>
     <message>
       <source>Portuguese</source>
-      <translation>Português</translation>
+      <translation>португальська</translation>
     </message>
     <message>
       <source>Russian</source>
-      <translation>russo</translation>
+      <translation>російський</translation>
     </message>
     <message>
       <source>Slovak</source>
-      <translation>eslovaco</translation>
+      <translation>словацький</translation>
     </message>
     <message>
       <source>Albanian</source>
-      <translation>albanês</translation>
+      <translation>албанець</translation>
     </message>
     <message>
       <source>Swedish</source>
-      <translation>sueco</translation>
+      <translation>шведська</translation>
     </message>
     <message>
       <source>Turkish</source>
-      <translation>turco</translation>
+      <translation>турецька</translation>
     </message>
     <message>
       <source>Ukrainian</source>
-      <translation>ucraniano</translation>
+      <translation>українська</translation>
     </message>
     <message>
       <source>Chinese Simplified</source>
-      <translation>Chinês simplificado</translation>
+      <translation>Китайська спрощена</translation>
     </message>
     <message>
       <source>Chinese Traditional</source>
-      <translation>Chinês tradicional</translation>
+      <translation>Китайський традиційний</translation>
     </message>
     <message>
       <source>Vietnamese</source>
-      <translation>vietnamita</translation>
+      <translation>в'єтнамська</translation>
     </message>
     <message>
       <source>Portuguese, Brazilian</source>
-      <translation>português, brasileiro</translation>
+      <translation>португальська, бразильська</translation>
     </message>
     <message>
       <source>Persian</source>
-      <translation>persa</translation>
+      <translation>перська</translation>
     </message>
     <message>
       <source>Spanish, Argentina</source>
-      <translation>Espanhol, Argentina</translation>
+      <translation>Іспанська, Аргентина</translation>
     </message>
     <message>
       <source>Hindi</source>
-      <translation>hindi</translation>
+      <translation>Хінді</translation>
     </message>
     <message>
       <source>Esperanto</source>
-      <translation>esperanto</translation>
+      <translation>Есперанто</translation>
     </message>
     <message>
       <source>German, Switzerland</source>
-      <translation>Alemão, Suíça</translation>
+      <translation>Німецька, Швейцарія</translation>
     </message>
     <message>
       <source>Spanish, Bolivia</source>
-      <translation>Espanhol, Bolívia</translation>
+      <translation>Іспанська, Болівія</translation>
     </message>
     <message>
       <source>Tajik</source>
-      <translation>tadjique</translation>
+      <translation>таджицька</translation>
     </message>
     <message>
       <source>Quechua</source>
-      <translation>Quechua</translation>
+      <translation>Кечуа</translation>
     </message>
     <message>
       <source>Aymara</source>
-      <translation>aimará</translation>
+      <translation>аймара</translation>
     </message>
     <message>
       <source>Turkmen</source>
-      <translation>turcomano</translation>
+      <translation>туркменський</translation>
     </message>
     <message>
       <source>Interlingue</source>
-      <translation>Interlíngua</translation>
+      <translation>Інтерлінгва</translation>
     </message>
     <message>
       <source>Lojban</source>
-      <translation>Lojban</translation>
+      <translation>Ложбан</translation>
     </message>
     <message>
       <source>Hungarian</source>
-      <translation>húngaro</translation>
+      <translation>угорська</translation>
     </message>
     <message>
       <source>English</source>
-      <translation>Inglês</translation>
+      <translation>англійська</translation>
     </message>
     <message>
       <source>Arabic</source>
-      <translation>Árabe</translation>
+      <translation>Арабська</translation>
     </message>
     <message>
       <source>Serbian</source>
-      <translation>Sérvio</translation>
+      <translation>Сербська</translation>
     </message>
     <message>
       <source>Kabyle</source>
@@ -2107,165 +2108,165 @@ entre clássico e ortografia escolar em cirílico)</translation>
     <name>LoadDictionaries</name>
     <message>
       <source>Error loading dictionaries</source>
-      <translation>Erro ao carregar dicionários</translation>
+      <translation>Помилка завантаження словників</translation>
     </message>
   </context>
   <context>
     <name>Main</name>
     <message>
       <source>Error in configuration file. Continue with default settings?</source>
-      <translation>Erro no arquivo de configuração. Continuar com as configurações padrão?</translation>
+      <translation>Помилка в файлі налаштувань. Продовжити з типовими параметрами?</translation>
     </message>
   </context>
   <context>
     <name>MainWindow</name>
     <message>
       <source>&amp;File</source>
-      <translation>&amp;Arquivo</translation>
+      <translation>&amp;Файл</translation>
     </message>
     <message>
       <source>&amp;Edit</source>
-      <translation>&amp;Editar</translation>
+      <translation>З&amp;міни</translation>
     </message>
     <message>
       <source>&amp;Help</source>
-      <translation>Aj&amp;uda</translation>
+      <translation>&amp;Довідка</translation>
     </message>
     <message>
       <source>&amp;View</source>
-      <translation>Exi&amp;bir</translation>
+      <translation>П&amp;ерегляд</translation>
     </message>
     <message>
       <source>&amp;Zoom</source>
-      <translation>&amp;Ampliar</translation>
+      <translation>&amp;Масштаб</translation>
     </message>
     <message>
       <source>H&amp;istory</source>
-      <translation>His&amp;tórico</translation>
+      <translation>&amp;Журнал</translation>
     </message>
     <message>
       <source>Search</source>
-      <translation>Pesquisar</translation>
+      <translation>Пошук</translation>
     </message>
     <message>
       <source>Favo&amp;rites</source>
-      <translation>Favo&amp;ritos</translation>
+      <translation>У&amp;кинути</translation>
     </message>
     <message>
       <source>&amp;Search Pane</source>
-      <translation>&amp;Painel de Pesquisa</translation>
+      <translation>&amp;Лоток пошуку</translation>
     </message>
     <message>
       <source>&amp;Results Navigation Pane</source>
-      <translation>&amp;Painel de Navegação Resultados</translation>
+      <translation>&amp;Лоток результатів</translation>
     </message>
     <message>
       <source>Favor&amp;ites Pane</source>
-      <translation>Painel de Favor&amp;itos</translation>
+      <translation>Улюблена панель</translation>
     </message>
     <message>
       <source>&amp;History Pane</source>
-      <translation>Painel &amp;Histórico</translation>
+      <translation>&amp;Лоток історії</translation>
     </message>
     <message>
       <source>&amp;Dictionaries...</source>
-      <translation>&amp;Dicionários...</translation>
+      <translation>&amp;Словники…</translation>
     </message>
     <message>
       <source>&amp;Preferences...</source>
-      <translation>&amp;Configurar...</translation>
+      <translation>&amp;Налаштування…</translation>
     </message>
     <message>
       <source>&amp;Homepage</source>
-      <translation>&amp;Site do programa</translation>
+      <translation>&amp;Сторінка проекту</translation>
     </message>
     <message>
       <source>&amp;About</source>
-      <translation>S&amp;obre</translation>
+      <translation>П&amp;ро програму</translation>
     </message>
     <message>
       <source>About GoldenDict-ng</source>
-      <translation>Sobre o GoldenDict-ng</translation>
+      <translation>Про GoldenDict-ng</translation>
     </message>
     <message>
       <source>&amp;Quit</source>
-      <translation>&amp;Fechar o GoldenDict-ng</translation>
+      <translation>&amp;Вихід</translation>
     </message>
     <message>
       <source>Quit from application</source>
-      <translation>Fechar o programa</translation>
+      <translation>Вийти з програми</translation>
     </message>
     <message>
       <source>&amp;Forum</source>
-      <translation>&amp;Fórum</translation>
+      <translation>&amp;Форум</translation>
     </message>
     <message>
       <source>&amp;Close To Tray</source>
-      <translation>&amp;Pôr na Área de Notificação</translation>
+      <translation>&amp;Сховати в лоток</translation>
     </message>
     <message>
       <source>Minimizes the window to tray</source>
-      <translation>Minimiza a janela como ícone na Área de Notificação</translation>
+      <translation>Сховати вікно в лоток</translation>
     </message>
     <message>
       <source>&amp;Save Article</source>
-      <translation>&amp;Salvar verbete</translation>
+      <translation>&amp;Зберегти статтю</translation>
     </message>
     <message>
       <source>Save Article</source>
-      <translation>Salva o verbete atual</translation>
+      <translation>Зберегти статтю</translation>
     </message>
     <message>
       <source>&amp;Print</source>
-      <translation>&amp;Imprimir</translation>
+      <translation>&amp;Надрукувати</translation>
     </message>
     <message>
       <source>Page Set&amp;up</source>
-      <translation>&amp;Configurar Impressão</translation>
+      <translation>&amp;Параметри сторінки</translation>
     </message>
     <message>
       <source>Print Pre&amp;view</source>
-      <translation>Pré-&amp;visualizar Impressão</translation>
+      <translation>Попередній перегляд дру&amp;ку</translation>
     </message>
     <message>
       <source>&amp;Rescan Files</source>
-      <translation>&amp;Re-escanear Arquivos</translation>
+      <translation>&amp;Повт. просканувати файли</translation>
     </message>
     <message>
       <source>&amp;Clear</source>
-      <translation>&amp;Limpar</translation>
+      <translation>&amp;Очистити</translation>
     </message>
     <message>
       <source>&amp;New Tab</source>
-      <translation>&amp;Nova Aba</translation>
+      <translation>&amp;Нова вкладка</translation>
     </message>
     <message>
       <source>&amp;Configuration Folder</source>
-      <translation>Pasta de &amp;configuração</translation>
+      <translation>&amp;Тека конфігурації</translation>
     </message>
     <message>
       <source>&amp;Show</source>
-      <translation>E&amp;xibir</translation>
+      <translation>&amp;Показати</translation>
     </message>
     <message>
       <source>Ctrl+H</source>
-      <translation>Ctrl+H</translation>
+      <translation>Ctrl + H</translation>
     </message>
     <message>
       <source>&amp;Export</source>
-      <translation>&amp;Exportar</translation>
+      <translation>&amp;Експортувати</translation>
     </message>
     <message>
       <source>&amp;Import</source>
-      <translation>&amp;Importar</translation>
+      <translation>&amp;Імпортувати</translation>
     </message>
     <message>
       <source>&amp;Always on Top</source>
-      <translation>&amp;Sempre no Topo</translation>
+      <translation>&amp;Завжди зверху</translation>
     </message>
     <message>
       <source>Always on Top</source>
-      <translation>Sempre no Topo</translation>
+      <translation>Завжди зверху</translation>
     </message>
     <message>
       <source>Ctrl+O</source>
@@ -2273,205 +2274,205 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Menu Button</source>
-      <translation>Botão Menu</translation>
+      <translation>Кнопка меню</translation>
     </message>
     <message>
       <source>Search in page</source>
-      <translation>Pesquisar na página</translation>
+      <translation>Пошук на сторінці</translation>
     </message>
     <message>
       <source>Full-text search</source>
-      <translation>Pesquisa de texto completo</translation>
+      <translation>Повнотекстовий пошук</translation>
     </message>
     <message>
       <source>GoldenDict reference</source>
-      <translation>Referência GoldenDict-ng</translation>
+      <translation>Посилання на золото</translation>
     </message>
     <message>
       <source>Export</source>
-      <translation>Exportar</translation>
+      <translation>Експорт</translation>
     </message>
     <message>
       <source>Import</source>
-      <translation>Importar</translation>
+      <translation>Імпорт</translation>
     </message>
     <message>
       <source>Add</source>
-      <translation>Adicionar</translation>
+      <translation>Додати</translation>
     </message>
     <message>
       <source>Add current tab to Favorites</source>
-      <translation>Adicionar guia atual aos Favoritos</translation>
+      <translation>Додати поточну вкладку до Обраного</translation>
     </message>
     <message>
       <source>Show Names in Dictionary &amp;Bar</source>
-      <translation>Mostrar Nomes na &amp;Barra de Dicionário</translation>
+      <translation>Відображувати назви у &amp;Рядку словника</translation>
     </message>
     <message>
       <source>Show &amp;Small Icons in Toolbars</source>
-      <translation>Mostrar ícones pequenos nas barras de ferramentas</translation>
+      <translation>Показати &amp;маленькі значки на панелях інструментів</translation>
     </message>
     <message>
       <source>Show &amp;Large Icons in Toolbars</source>
-      <translation>Mostrar ícones grandes nas barras de ferramentas</translation>
+      <translation>Показати &amp;великі значки на панелях інструментів</translation>
     </message>
     <message>
       <source>Show &amp;Normal Icons in Toolbars</source>
-      <translation>Mostrar ícones normais nas barras de ferramentas</translation>
+      <translation>Показати &amp;звичайні значки на панелях інструментів</translation>
     </message>
     <message>
       <source>&amp;Menubar</source>
-      <translation>Barra de &amp;Menus</translation>
+      <translation>&amp;Лоток меню</translation>
     </message>
     <message>
       <source>&amp;Navigation</source>
-      <translation>&amp;Navegação</translation>
+      <translation>&amp;Навігація</translation>
     </message>
     <message>
       <source>Back</source>
-      <translation>Anterior</translation>
+      <translation>Назад</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>Seguinte</translation>
+      <translation>Вперед</translation>
     </message>
     <message>
       <source>Toggle clipboard monitoring</source>
-      <translation>Alternar monitoramento da área de transferência</translation>
+      <translation>Увімкнути моніторинг буфера обміну</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>Pronuncia a palavra da consulta atual (Alt+S)</translation>
+      <translation>Вимовити слово (Alt+S)</translation>
     </message>
     <message>
       <source>Zoom In</source>
-      <translation>Aumentar as letras das definições</translation>
+      <translation>Зблизити</translation>
     </message>
     <message>
       <source>Zoom Out</source>
-      <translation>Diminuir as letras das definições</translation>
+      <translation>Віддалити</translation>
     </message>
     <message>
       <source>Normal Size</source>
-      <translation>Restaurar as letras das definições</translation>
+      <translation>Нормальний розмір</translation>
     </message>
     <message>
       <source>Found in Dictionaries:</source>
-      <translation>Achado nos dicionários:</translation>
+      <translation>Знайдено у словниках:</translation>
     </message>
     <message>
       <source>Show &amp;Main Window</source>
-      <translation>&amp;Mostrar a janela principal</translation>
+      <translation>Показати &amp;головне вікно</translation>
     </message>
     <message>
       <source>Opened tabs</source>
-      <translation>Guias abertas</translation>
+      <translation>Відкриті вкладки</translation>
     </message>
     <message>
       <source>Close current tab</source>
-      <translation>Fechar a guia atual</translation>
+      <translation>Закрити поточну вкладку</translation>
     </message>
     <message>
       <source>Close all tabs</source>
-      <translation>Fechar todas as guias</translation>
+      <translation>Закрити всі вкладки</translation>
     </message>
     <message>
       <source>Close all tabs except current</source>
-      <translation>Fechar todas as guias com exceção da atual</translation>
+      <translation>Закрити всі вкладки заодно з поточною</translation>
     </message>
     <message>
       <source>Add all tabs to Favorites</source>
-      <translation>Adicionar todas as guias aos Favoritos</translation>
+      <translation>Додати всі вкладки в Улюблене</translation>
     </message>
     <message>
       <source>New Tab</source>
-      <translation>Nova guia</translation>
+      <translation>Нова вкладка</translation>
     </message>
     <message>
       <source>Welcome!</source>
-      <translation>Bem-vindo!</translation>
+      <translation>Ласкаво просимо!</translation>
     </message>
     <message>
       <source>Accessibility API is not enabled</source>
-      <translation>Acessibilidade a API não está habilitada</translation>
+      <translation>API доступності не ввімкнено</translation>
     </message>
     <message>
       <source>WARNING: %1</source>
-      <translation>AVISO: %1</translation>
+      <translation>ПОПЕРЕДЖЕННЯ: %1</translation>
     </message>
     <message>
       <source>String to search in dictionaries. The wildcards &apos;*&apos;, &apos;?&apos; and sets of symbols &apos;[...]&apos; are allowed.
 To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos; respectively</source>
-      <translation>String para pesquisar em dicionários. Os curingas &apos;*&apos;, &apos;?&apos; e conjuntos de símbolos &apos;[...]&apos; são permitidos.
-Para encontrar os símbolos &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; Use &apos;\ *&apos;, &apos;\?&apos;, &apos;\ [&apos;, &apos;\]&apos; Respectivamente</translation>
+      <translation>Рядок для пошуку в словниках. Символи підстановки &apos;*&apos;, &apos;?&apos; та набори символів &apos;[...]&apos; допускаються.
+Щоб знайти &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; символи використовують &apos;\*&apos;, &apos;\?&apos;, &apos;\[&apos;, &apos;\]&apos; відповідно</translation>
     </message>
     <message>
       <source>%1 dictionaries, %2 articles, %3 words</source>
-      <translation>%1 dicionário, %2 verbetes, %3 palavras</translation>
+      <translation>%1 словників, %2 статей, %3 слів</translation>
     </message>
     <message>
       <source>All</source>
-      <translation>Todos os Dicionários</translation>
+      <translation>Усьому</translation>
     </message>
     <message>
       <source>Open Tabs List</source>
-      <translation>Abrir a lista de guias</translation>
+      <translation>Відчинити список вкладок</translation>
     </message>
     <message>
       <source>(untitled)</source>
-      <translation>(sem título)</translation>
+      <translation>(без назви)</translation>
     </message>
     <message>
       <source>Remove current tab from Favorites</source>
-      <translation>Remover a guia atual dos Favoritos</translation>
+      <translation>Вилучити поточну вкладку з Обраного</translation>
     </message>
     <message>
       <source>Failed to initialize hotkeys monitoring mechanism.&lt;br&gt;Make sure your XServer has RECORD extension turned on.</source>
-      <translation>Não foi possível acionar o mecanismo de monitoramento por atalho.&lt;br&gt;Veja se seu XServer está com a extensão RECORD ativada.</translation>
+      <translation>Не вдалось запустити механізм стеження за гарячими клавішами.&lt;br&gt;Переконайтесь, що ваш XServer має розширення RECORD увімкнутим.</translation>
     </message>
     <message>
       <source>New Release Available</source>
-      <translation>Nova Versão Disponível</translation>
+      <translation>Доступний новий випуск</translation>
     </message>
     <message>
       <source>Version &lt;b&gt;%1&lt;/b&gt; of GoldenDict is now available for download.&lt;br&gt;Click &lt;b&gt;Download&lt;/b&gt; to get to the download page.</source>
-      <translation>A versão &lt;b&gt;%1&lt;/b&gt; do GoldenDict está disponível para download.</translation>
+      <translation>Версія &lt;b&gt;%1&lt;/b&gt; GoldenDict доступна до звантаження.&lt;br&gt;Натисніть &lt;b&gt;Звантажити&lt;/b&gt;, щоб перейти до сторінки звантаження.</translation>
     </message>
     <message>
       <source>Download</source>
-      <translation>Baixar</translation>
+      <translation>Звантажити</translation>
     </message>
     <message>
       <source>Skip This Release</source>
-      <translation>Ignorar esta versão</translation>
+      <translation>Пропустити цей випуск</translation>
     </message>
     <message>
       <source>You have chosen to hide a menubar. Use %1 to show it back.</source>
-      <translation>Você optou por ocultar a barra de menus. Use %1 para exibi-la de novo.</translation>
+      <translation>Ви вирішили сховати лоток меню. Викор. %1 аби показувати його знову.</translation>
     </message>
     <message>
       <source>Ctrl+M</source>
-      <translation>Ctrl+M</translation>
+      <translation>Ctrl+М</translation>
     </message>
     <message>
       <source>Page Setup</source>
-      <translation>Configuração de Página</translation>
+      <translation>Параметри сторінки</translation>
     </message>
     <message>
       <source>No printer is available. Please install one first.</source>
-      <translation>Não achei nenhuma impressora. Favor instalar uma.</translation>
+      <translation>Не знайдено жодного принтера. Будь ласка, спершу встановіть хоч якийсь.</translation>
     </message>
     <message>
       <source>Print Article</source>
-      <translation>Imprimir Verbete</translation>
+      <translation>Надрукувати статтю</translation>
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
-      <translation>Html completo (*.html *.htm)</translation>
+      <translation>Повний Html (*.html *.htm)</translation>
     </message>
     <message>
       <source>Single Html (*.html *.htm)</source>
-      <translation>HTML único (*.html *.htm)</translation>
+      <translation>Один Html (*.html *.htm)</translation>
     </message>
     <message>
       <source>Pdf (*.pdf)</source>
@@ -2479,648 +2480,641 @@ Para encontrar os símbolos &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]
     </message>
     <message>
       <source>Mime Html (*.mhtml)</source>
-      <translation>Mímica Html (*.mhtml)</translation>
+      <translation>Mime Html (*.mhtml)</translation>
     </message>
     <message>
       <source>Save Article As</source>
-      <translation>Salvar Verbete como</translation>
+      <translation>Зберегти статтю як</translation>
     </message>
     <message>
       <source>Error</source>
-      <translation>Erro</translation>
+      <translation>Помилка</translation>
     </message>
     <message>
       <source>Can&apos;t save article: %1</source>
-      <translation>Não foi possível salvar o verbete: %1</translation>
+      <translation>Неможливо зберегти статтю: %1</translation>
     </message>
     <message>
       <source>Saving article...</source>
-      <translation>Salvando artigo...</translation>
+      <translation>Збередення статті…</translation>
     </message>
     <message>
       <source>Save article complete</source>
-      <translation>Salvar artigo completo</translation>
+      <translation>Зберегти статтю завершено</translation>
     </message>
     <message>
       <source>The main window is set to be always on top.</source>
-      <translation>A janela principal está definida para estar sempre no topo.</translation>
+      <translation>Головне меню налаштовано аби завжди бути зверху.</translation>
     </message>
     <message>
       <source>&amp;Hide</source>
-      <translation>&amp;Ocultar</translation>
+      <translation>&amp;Сховати</translation>
     </message>
     <message>
       <source>Export history to file</source>
-      <translation>Exportar o histórico</translation>
+      <translation>Експортувати файл історії</translation>
     </message>
     <message>
       <source>Text files (*.txt);;All files (*.*)</source>
-      <translation>Arquivos de texto (*.txt);;Todos os arquivos (*.*)</translation>
+      <translation>Текстові файли (*.txt);;Всі файли (*.*)</translation>
     </message>
     <message>
       <source>Export error: </source>
-      <translation>Erro de exportação: </translation>
+      <translation>Помилка експортування:</translation>
     </message>
     <message>
       <source>History export complete</source>
-      <translation>Feita a exportação do histórico</translation>
+      <translation>Експорти історії завершено</translation>
     </message>
     <message>
       <source>Import history from file</source>
-      <translation>Importar histórico de arquivo</translation>
+      <translation>Імпортувати історію з файлу</translation>
     </message>
     <message>
       <source>Import error: </source>
-      <translation>Erro de importação: </translation>
+      <translation>Помилка імпортування:</translation>
     </message>
     <message>
       <source>Import error: invalid data in file</source>
-      <translation>Erro ao tentar importar: dados inválidos no arquivo</translation>
+      <translation>Помилка імпорту: недійсна дата у файлі</translation>
     </message>
     <message>
       <source>History import complete</source>
-      <translation>Importação do histórico concluída</translation>
+      <translation>Імпорти історії завершено</translation>
     </message>
     <message>
       <source>Export Favorites to file</source>
-      <translation>Exportar Favoritos para arquivo</translation>
+      <translation>Експорт уподобань до файлу</translation>
     </message>
     <message>
       <source>Text files (*.txt);;XML files (*.xml)</source>
-      <translation>Arquivos de texto (*.txt);;Arquivos XML (*.xml)</translation>
+      <translation>Текстові файли (*.txt);;файли XML (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
-      <translation>Exportação de favoritos concluída</translation>
+      <translation>Експорт уподобань завершено</translation>
     </message>
     <message>
       <source>Import Favorites from file</source>
-      <translation>Importar Favoritos do arquivo</translation>
+      <translation>Імпорт уподобань із файлу</translation>
     </message>
     <message>
       <source>Text and XML files (*.txt *.xml);;All files (*.*)</source>
-      <translation>Arquivos de texto e XML (*.txt *.xml);;Todos os arquivos (*.*)</translation>
+      <translation>Текстові та XML-файли (*.txt *.xml);;Усі файли (*.*)</translation>
     </message>
     <message>
       <source>Data parsing error</source>
-      <translation>Erro de análise de dados</translation>
+      <translation>Помилка під час аналізу даних</translation>
     </message>
     <message>
       <source>Favorites import complete</source>
-      <translation>Importação de favoritos concluída</translation>
+      <translation>Імпорт уподобань завершено</translation>
     </message>
     <message>
       <source>Dictionary info</source>
-      <translation>Inform. do Dicionário</translation>
+      <translation>Інфа про словник</translation>
     </message>
     <message>
       <source>Dictionary headwords</source>
-      <translation>Palavras-chave do dicionário</translation>
+      <translation>Словник для заголовків</translation>
     </message>
     <message>
       <source>Open dictionary folder</source>
-      <translation>Abrir pasta de dicionário</translation>
+      <translation>Відкрити словникову теку</translation>
     </message>
     <message>
       <source>Now indexing for full-text search: </source>
-      <translation>Indexando para pesquisa de texto completo: </translation>
+      <translation>Індексування для повнотекстового пошуку: </translation>
     </message>
     <message>
       <source>Remove headword &quot;%1&quot; from Favorites?</source>
-      <translation>Remover a palavra-chave &quot;%1&quot; dos Favoritos?</translation>
+      <translation>Видалити заголовки &quot;%1&quot; з вибраного?</translation>
     </message>
     <message>
       <source>Show</source>
-      <translation>Mostrar</translation>
+      <translation>Показати</translation>
     </message>
     <message>
       <source>Save PDF complete</source>
-      <translation>Salvar PDF completo</translation>
+      <translation>Збереження PDF завершено</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
-      <translation>Falha ao salvar PDF</translation>
+      <translation>Не вдалося зберегти PDF</translation>
     </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
     <message>
       <source>Dictionary file was tampered or corrupted</source>
-      <translation>Arquivo dicionário foi adulterado ou corrompido</translation>
+      <translation>Словниковий файл пошкоджено</translation>
     </message>
     <message>
       <source>Failed loading article from %1, reason: %2</source>
-      <translation>Falha ao carregar artigo de %1, motivo: %2</translation>
+      <translation>Не вдалося завантажити статтю з%1, причина: %2</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiArticleRequest</name>
     <message>
       <source>XML parse error: %1 at %2,%3</source>
-      <translation>Erro de análise sintática de XML: %1 em %2,%3</translation>
+      <translation>Помилка аналізу XML: %1 в %2,%3</translation>
     </message>
   </context>
   <context>
     <name>MediaWiki::MediaWikiWordSearchRequest</name>
     <message>
       <source>XML parse error: %1 at %2,%3</source>
-      <translation>Erro de análise sintática de XML: %1 em %2,%3</translation>
+      <translation>Помилка аналізу XML: %1 в %2,%3</translation>
     </message>
   </context>
   <context>
     <name>MediaWikisModel</name>
     <message>
       <source>Enabled</source>
-      <translation>Habilitado</translation>
+      <translation>Увімкнено</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation>Nome</translation>
+      <translation>Назва</translation>
     </message>
     <message>
       <source>Address</source>
-      <translation>Endereço</translation>
+      <translation>Адреса</translation>
     </message>
     <message>
       <source>Icon</source>
-      <translation>Ícone</translation>
+      <translation>Наличка</translation>
     </message>
     <message>
       <source>Language Variant</source>
-      <translation>Variante de idioma</translation>
+      <translation>Варіант мови</translation>
     </message>
   </context>
   <context>
     <name>MultimediaAudioPlayer</name>
     <message>
       <source>Couldn&apos;t open audio buffer for reading.</source>
-      <translation>Não foi possível abrir o buffer de áudio para leitura.</translation>
+      <translation>Не вдалося відкрити аудіобуфер для читання.</translation>
     </message>
   </context>
   <context>
     <name>OrderAndProps</name>
     <message>
       <source>Form</source>
-      <translation>Formulário</translation>
+      <translation>Форма</translation>
     </message>
     <message>
       <source>Dictionary order:</source>
-      <translation>Ordem dos dicionários:</translation>
+      <translation>Порядок словників:</translation>
     </message>
     <message>
       <source>Inactive (disabled) dictionaries:</source>
-      <translation>Dicionários desativados:</translation>
+      <translation>Вимкнені словники:</translation>
     </message>
     <message>
       <source>Dictionary information</source>
-      <translation>Informações sobre dicionários</translation>
+      <translation>Інформація про словник</translation>
     </message>
     <message>
       <source>Name:</source>
-      <translation>Nome:</translation>
+      <translation>Назва:</translation>
     </message>
     <message>
       <source>Total articles:</source>
-      <translation>Total de verbetes:</translation>
+      <translation>Статей загалом:</translation>
     </message>
     <message>
       <source>Total words:</source>
-      <translation>Total de palavras:</translation>
+      <translation>Слів загалом:</translation>
     </message>
     <message>
       <source>Translates from:</source>
-      <translation>Traduz do:</translation>
+      <translation>Переклад з:</translation>
     </message>
     <message>
       <source>Translates to:</source>
-      <translation>Para o:</translation>
+      <translation>Переклад на:</translation>
     </message>
     <message>
       <source>Description:</source>
-      <translation>Descrição:</translation>
+      <translation>Опис:</translation>
     </message>
     <message>
       <source>Files comprising this dictionary:</source>
-      <translation>Arquivos deste dicionário:</translation>
+      <translation>Файли, які охоплює словник:</translation>
     </message>
     <message>
       <source>Adjust the order by dragging and dropping items in it. Drop dictionaries to the inactive group to disable their use.</source>
-      <translation>Para ordenar os dicionários, arraste-os como desejar.
-Se quiser desativar dicionários, arraste-os para o grupo de desativados.</translation>
+      <translation>Впорядковуйте словники, переміщуючи пункти словників. Вимикайте словники, переносячи їх у відповідну групу.</translation>
     </message>
     <message>
       <source>Dictionary headwords</source>
-      <translation>Palavras-chave do dicionário</translation>
+      <translation>Словник для заголовків</translation>
     </message>
     <message>
       <source>Sort by name</source>
-      <translation>Organizar por nome</translation>
+      <translation>Сортувати за іменем</translation>
     </message>
     <message>
       <source>Sort by languages</source>
-      <translation>Organizar por idiomas</translation>
+      <translation>Сортувати за мовою</translation>
     </message>
     <message>
       <source>Dictionaries active: %1, inactive: %2</source>
-      <translation>Dicionários ativos: %1, inativos: %2</translation>
+      <translation>Словники активні: %1, неактивний: %2</translation>
     </message>
   </context>
   <context>
     <name>PathsModel</name>
     <message>
       <source>Path</source>
-      <translation>Caminho</translation>
+      <translation>Шлях</translation>
     </message>
     <message>
       <source>Recursive</source>
-      <translation>Buscar em subpastas</translation>
+      <translation>Рекурсивно</translation>
     </message>
   </context>
   <context>
     <name>Preferences</name>
     <message>
       <source>Preferences</source>
-      <translation>Configuração</translation>
+      <translation>Налаштування</translation>
     </message>
     <message>
       <source>&amp;Interface</source>
-      <translation>&amp;Interface</translation>
+      <translation>&amp;Інтерфейс</translation>
     </message>
     <message>
       <source>Double-click translates the word clicked</source>
-      <translation>Traduzir palavra/expressão ou exibir definições com um clique duplo do mouse</translation>
+      <translation>Подвійний клац перекладе слово натиснувши</translation>
     </message>
     <message>
       <source>Tabbed browsing</source>
-      <translation>Navegação por guias</translation>
+      <translation>Вкладки</translation>
     </message>
     <message>
       <source>Normally, opening a new tab switches to it immediately.
 With this on however, new tabs will be opened without
 switching to them.</source>
-      <translation>Normalmente, ao se abrir uma nova guia, o programa a exibe imediatamente.
-Porém, se está opção for habilitada, novas guias serão abertas sem que o
-programa as exiba nas frente das outras automaticamente.</translation>
+      <translation>Зазвичай при відкритті нової вкладки перемикається на 
+неї моментально. Однак, коли це ввімкнено, нові вкладки 
+відкриватимуться без перемикання на них.</translation>
     </message>
     <message>
       <source>Open new tabs in background</source>
-      <translation>Abrir novas guias em segundo plano</translation>
+      <translation>Відкрити нові вкладки фоново</translation>
     </message>
     <message>
       <source>With this on, new tabs are opened just after the
 current, active one. Otherwise they are added to
 be the last ones.</source>
-      <translation>Se habilitada esta opção, as novas guias abertas
-serão posicionadas ao lado da guia ativa atual.
-Do contrário, serão enfileiradas ao lado da
-última.</translation>
+      <translation>Коли це ввімкнено, нові вкладки відкриватимуть 
+одразу за поточною. Інакше вони додаватимуться 
+до останніх.</translation>
     </message>
     <message>
       <source>Open new tabs after the current one</source>
-      <translation>Abrir novas guias após a atual</translation>
+      <translation>Відкрити нові вкладки за поточною</translation>
     </message>
     <message>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Habilite esta opção se não quiser exibir a guia principal
-quando apenas uma delas estiver aberta.</translation>
+      <translation>Оберіть цю опцію якщови не хочете бачити головну вкладку, у випадку якщо відкрито лише одну вкладку.</translation>
     </message>
     <message>
       <source>Hide single tab</source>
-      <translation>Ocultar guia única</translation>
+      <translation>Сховати єдину вкладку</translation>
     </message>
     <message>
       <source>MRU order: Most recently used order.</source>
-      <translation>Ordem MRU: Ordem usada mais recentemente.</translation>
+      <translation>Замовлення MRU: найдавніше використовуване замовлення.</translation>
     </message>
     <message>
       <source>Ctrl-Tab navigates tabs in MRU order</source>
-      <translation>Usar Ctrl-Tab para navegar pelas guias de acordo com as mais recentes</translation>
+      <translation>Ctrl-Tab керує вкладками у MRU порядку</translation>
     </message>
     <message>
       <source>Normally, pressing ESC key moves focus to the translation line.
 With this on however, it will hide the main window.</source>
-      <translation>Normalmente, ao se premer a tecla ESC a seleção é transferida para o campo de tradução/
-pesquisa. Com isto, porém, a janela principal será ocultada.</translation>
+      <translation>Зазвичай, коли ви натискаєте клавішу ESC то цим ви переміщуєте фокус рядка перекладу.
+ З цією ж опцією, ви просто сховаєте основне вікно.</translation>
     </message>
     <message>
       <source>ESC key hides main window</source>
-      <translation>Usar a tecla ESC para ocultar a janela principal</translation>
+      <translation>Кнопка ESC  приховує основне вікно</translation>
     </message>
     <message>
       <source>Turn this option on if you want to select words by single mouse click</source>
-      <translation>Habilite esta opção se quiser selecionar palavras com um único clique do mouse</translation>
+      <translation>Оберіть цю опцію, якщо ви волієте обирати слова одним кліком миші</translation>
     </message>
     <message>
       <source>Select word by single click</source>
-      <translation>Permitir seleção de palavra com clique único</translation>
+      <translation>Обрати слово одним кліком миші</translation>
     </message>
     <message>
       <source>Startup</source>
-      <translation>Inicialização</translation>
+      <translation>Запуск</translation>
     </message>
     <message>
       <source>Automatically starts GoldenDict after operation system bootup.</source>
-      <translation>Abre o GoldenDict automaticamente com o Windows (como ícone na Área de Notificação).</translation>
+      <translation>Автоматично запускати GoldenDict при завантаженні системи.</translation>
     </message>
     <message>
       <source>Start with system</source>
-      <translation>Abrir o GoldenDict com o Windows</translation>
+      <translation>Запускати разом із системою</translation>
     </message>
     <message>
       <source>Normally, clicking on a link, double-clicking on a word or looking up
 selection in an article loads the translation and almost immediately
 scrolls to the article from the same dictionary. With this option off,
 however, the article from the topmost dictionary is shown.</source>
-      <translation>Normalmente, clicando em um link, clicar duas vezes em uma palavra ou procurar
-seleção em um artigo carrega a tradução e
-rola para o artigo do mesmo dicionário. Com esta opção desligada,
-no entanto, o artigo do dicionário mais alto é mostrado.</translation>
+      <translation>Зазвичай клацання посиланням, подвійним клацанням слова або пошуком
+вибраного фрагмента в статті завантажує переклад і майже відразу
+прокручує статтю з того самого словника. Якщо цю опцію вимкнено,
+буде показано статтю з самого верхнього словника.</translation>
     </message>
     <message>
       <source>Automatically scroll to target article</source>
-      <translation>Rolar automaticamente para um artigo-alvo</translation>
+      <translation>Автоматичне прокручування до цільової статті</translation>
     </message>
     <message>
       <source>When enabled, an icon appears in the system tray area which can be used
 to open main window and perform other tasks.</source>
-      <translation>Se habilitada esta opção, o programa será exibido
-na Área de Notificação como ícone, por meio do qual
-você poderá restaurar a janela principal e executar
-outros comandos.</translation>
+      <translation>Коли це ввімкнено, піктограма з&apos;явиться в системному лотку, якою можна
+буде відкривати головне вікно і здійснювати інші задачі.</translation>
     </message>
     <message>
       <source>Enable system tray icon</source>
-      <translation>Habilitar a exibição do GoldenDict como ícone na Área de Notificação</translation>
+      <translation>Увімкнути піктограму системного лотка</translation>
     </message>
     <message>
       <source>With this on, the application starts directly to system tray without showing
 its main window.</source>
-      <translation>Com isso habilitado, o aplicativo inicia diretamente na bandeja do sistema sem mostrar
-sua janela principal.</translation>
+      <translation>Коли це ввімкнено, програма запускається відразу в системному лотку без 
+запуску головного вікна.</translation>
     </message>
     <message>
       <source>Start to system tray</source>
-      <translation>Ao executar o GoldenDict, pô-lo na Área de Notificação</translation>
+      <translation>Запускати в системному лотку</translation>
     </message>
     <message>
       <source>With this on, an attempt to close main window would hide it instead of closing
 the application.</source>
-      <translation>Com esta opção habilitada, ao se fechar a janela principal do programa,
-ela será exibida como ícone na Área de Notificação, em vez de o programa
-ser fechado.</translation>
+      <translation>Коли це ввімкнено, закриття головного вікна сховає програму в лоток.</translation>
     </message>
     <message>
       <source>Close to system tray</source>
-      <translation>Pôr o GoldenDict na Área de Notificação ao fechá-lo</translation>
+      <translation>Згорнути до системного лотка</translation>
     </message>
     <message>
       <source>Adjust this value to avoid huge context menus.</source>
-      <translation>Ajustar este valor para evitar menus de contexto enormes.</translation>
+      <translation>Скоригуйте це значення, щоб уникнути величезних контекстних меню.</translation>
     </message>
     <message>
       <source>Context menu dictionaries limit:</source>
-      <translation>Limite de dicionários no menu de contexto:</translation>
+      <translation>Обмеження контекстного меню для словників:</translation>
     </message>
     <message>
       <source>Appearance</source>
-      <translation>Aparência</translation>
+      <translation>Зовнішній вигляд</translation>
     </message>
     <message>
       <source>Interface Font</source>
-      <translation>Fonte da Interface</translation>
+      <translation>Шрифт інтерфейсу</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
-      <translation>Vire a interface para escurecer.</translation>
+      <translation>Перетворіть інтерфейс для затемнення.</translation>
     </message>
     <message>
       <source>Dark Mode</source>
-      <translation>Modo Escuro</translation>
+      <translation>Темний режим</translation>
     </message>
     <message>
       <source>Turn the article display style to dark.</source>
-      <translation>Torne o estilo de exibição do artigo escuro.</translation>
+      <translation>Перетворіть стиль відображення статті в темряву.</translation>
     </message>
     <message>
       <source>Dark Reader Mode</source>
-      <translation>Modo Dark Reader</translation>
+      <translation>Темний режим читання</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
-      <translation>Essas fontes serão aplicadas quando as fontes especificadas por um dicionário não forem encontradas.</translation>
+      <translation>Ці шрифти будуть застосовані, якщо шрифти, визначені словником, не знайдені.</translation>
     </message>
     <message>
       <source>Fallback Fonts</source>
-      <translation>Fontes Alternativas</translation>
+      <translation>Резервні шрифти</translation>
     </message>
     <message>
       <source>Standard Font</source>
-      <translation>Fonte Padrão</translation>
+      <translation>Стандартний шрифт</translation>
     </message>
     <message>
       <source>Serif Font</source>
-      <translation>Fonte Serifada</translation>
+      <translation>Шрифт із засічками</translation>
     </message>
     <message>
       <source>Sans-serif Font</source>
-      <translation>Fonte sem serifa</translation>
+      <translation>Шрифт без засічок</translation>
     </message>
     <message>
       <source>Monospace Font</source>
-      <translation>Fonte monoespaçada</translation>
+      <translation>Моноширинний шрифт</translation>
     </message>
     <message>
       <source>&amp;Popup</source>
-      <translation>&amp;Janela de Definições/Tradução Semiautomáticas</translation>
+      <translation>&amp;Контекстне вікно</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
-      <translation>Escolhe se o monitoramento da área de transferência será ativado por padrão na inicialização do programa&apos;.</translation>
+      <translation>Вибирає, чи буде моніторинг буфера обміну ввімкнено за замовчуванням під час запуску програми&apos;.</translation>
     </message>
     <message>
       <source>Start with clipboard monitoring turned on</source>
-      <translation>Comece com o monitoramento da área de transferência ativado</translation>
+      <translation>Почніть із увімкненого моніторингу буфера обміну</translation>
     </message>
     <message>
       <source>Send translated word to main window instead of to show it in popup window</source>
-      <translation>Envia a palavra traduzida/consultada para a janela principal, em vez de exibi-la numa janela secundária (popup)</translation>
+      <translation>Послилати перекладене слово до головного вікна, замість того аби показувати його у виринаючому вікні</translation>
     </message>
     <message>
       <source>Send translated word to main window</source>
-      <translation>Enviar a palavra traduzida/consultada para a janela principal</translation>
+      <translation>Послилати перекладене слово до головного вікна</translation>
     </message>
     <message>
       <source>Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</source>
-      <translation>Acompanhar alterações da área de transferência quando o escaneamento está habilitado. Aviso! Você deve sempre ativar isso a menos que esteja no Linux.</translation>
+      <translation>Відстежувати зміни в буфері обміну, коли ввімкнено сканування. Зверніть увагу! Ви завжди повинні увімкнути це, якщо не використовуєте Linux.</translation>
     </message>
     <message>
       <source>Track Clipboard change</source>
-      <translation>Rastrear mudança da área de transferência</translation>
+      <translation>Зміна буфера обміну</translation>
     </message>
     <message>
       <source>Track Selection change</source>
-      <translation>Mudança de seleção</translation>
+      <translation>Зміна виділення пісні</translation>
     </message>
     <message>
       <source>With this enabled, the popup would only show up if all chosen keys are
 in the pressed state when the word selection changes.</source>
-      <translation>Se habilitada esta opção, a janela de definições/tradução só aparecerá se todas as
-teclas do atalho estiverem premidas quando a seleção de palavra mudar.</translation>
+      <translation>Коли це ввімкнено, контекстні вікна будуть появлятись лише при затисненні
+всіх вибраних клавіш з виділеним словом.</translation>
     </message>
     <message>
       <source>Only tack selection when all selected keys are kept pressed:</source>
-      <translation>Apenas seleção tack quando todas as chaves selecionadas forem pressionadas:</translation>
+      <translation>Вибір буде скинуто лише коли всі вибрані ключі будуть збережені:</translation>
     </message>
     <message>
       <source>Alt key</source>
-      <translation>Tecla Alt</translation>
+      <translation>Будь-який Alt</translation>
     </message>
     <message>
       <source>Ctrl key</source>
-      <translation>Tecla Ctrl</translation>
+      <translation>Будь-яка Ctrl</translation>
     </message>
     <message>
       <source>Shift key</source>
-      <translation>Tecla Shift</translation>
+      <translation>Будь-який Shift</translation>
     </message>
     <message>
       <source>Windows key or Meta key</source>
-      <translation>Tecla Windows ou Tecla Meta</translation>
+      <translation>Будь-яка Windows або Meta</translation>
     </message>
     <message>
       <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
-      <translation>Mostrar uma janela de sinalização antes de exibir a janela pop-up, clique na bandeira para mostrar a janela pop-up. </translation>
+      <translation>Перед відображенням спливаючого вікна показувати спливаюче вікно, натисніть на прапорець, щоб показати спливаюче вікно. </translation>
     </message>
     <message>
       <source>Show scan flag when word is selected</source>
-      <translation>Mostrar sinalizador de verificação quando a palavra é selecionada</translation>
+      <translation>Показувати позначку сканування, коли вибрано слово</translation>
     </message>
     <message>
       <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
-      <translation>Não mostrar pop-up quando a seleção ou a área de transferência em uma das janelas do GoldenDict mudar</translation>
+      <translation>Не показувати спливаюче вікно, коли змінюється вибір або буфер обміну в одному з власних вікон GoldenDict</translation>
     </message>
     <message>
       <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
-      <translation>Ignorar as próprias alterações de seleção e área de transferência do GoldenDict-ng</translation>
+      <translation>Увімкніть, якщо ви бажаєте використовувати проксі-сервер
+для всіх мережевих запитів програми.</translation>
     </message>
     <message>
       <source>Delay time</source>
-      <translation>Tempo de atraso</translation>
+      <translation>Час затримки</translation>
     </message>
     <message>
       <source> ms</source>
-      <translation> ms</translation>
+      <translation> мс</translation>
     </message>
     <message>
       <source>Hotkeys</source>
-      <translation>Atalhos de Teclado</translation>
+      <translation>Гарячі клавіші</translation>
     </message>
     <message>
       <source>Use the following hotkey to show or hide the main window:</source>
-      <translation>Usar o seguinte atalho de teclado para mostrar/ocultar a janela principal:</translation>
+      <translation>Щоб показувати і ховати головне вікно, використовується така комбінація клавіш:</translation>
     </message>
     <message>
       <source>Use the following hotkey to translate a word from clipboard:</source>
-      <translation>Usar o seguinte atalho de teclado para consultar nos dicionários ou traduzir texto da Área de Transferência:</translation>
+      <translation>Щоб перекладати слово з кишені, використовується така комбінація клавіш:</translation>
     </message>
     <message>
       <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
-      <translation>Os atalhos de teclado são globais e funcionam a partir de qualquer programa,
-em qualquer situação ou contexto, desde que o GoldenDict esteja em execução.</translation>
+      <translation>Гарячі клавіші — загальні та працюють з будь-якої програми і з будь-яким текстом, поки GoldenDict працює фоново.</translation>
     </message>
     <message>
       <source>&amp;Audio</source>
-      <translation>&amp;Áudio</translation>
+      <translation>&amp;Аудіо</translation>
     </message>
     <message>
       <source>Pronunciation</source>
-      <translation>Pronúncia</translation>
+      <translation>Вимова</translation>
     </message>
     <message>
       <source>Auto-pronounce words in main window</source>
-      <translation>Pronunciar palavras na janela principal automaticamente</translation>
+      <translation>Автоматично вимовляти слово в головному меню</translation>
     </message>
     <message>
       <source>Auto-pronounce words in the popup</source>
-      <translation>Pronuncie palavras automaticamente no pop-up</translation>
+      <translation>Автоматичне вимовляння слів у спливаючому вікні</translation>
     </message>
     <message>
       <source>Playback</source>
-      <translation>Reprodução</translation>
+      <translation>Відтворення</translation>
     </message>
     <message>
       <source>Play audio files via built-in audio support</source>
-      <translation>Reproduzir arquivos de áudio via suporte de áudio embutido</translation>
+      <translation>Відтворення аудіо файлів через вбудовану підтримку аудіо</translation>
     </message>
     <message>
       <source>Use internal player:</source>
-      <translation>Usar player interno:</translation>
+      <translation>Використовувати внутрішній програвач:</translation>
     </message>
     <message>
       <source>Choose audio back end</source>
-      <translation>Escolha o back-end de áudio</translation>
+      <translation>Виберіть повернутися до кінця аудіо</translation>
     </message>
     <message>
       <source>Use any external program to play audio files</source>
-      <translation>Usa um aplicativo externo para reproduzir arquivos de áudio</translation>
+      <translation>Використовувати якусь сторонню програму для відтворення звукових файлів</translation>
     </message>
     <message>
       <source>Use external program:</source>
-      <translation>Usar programa externo:</translation>
+      <translation>Використовувати сторонню програму:</translation>
     </message>
     <message>
       <source>Enter audio player command line</source>
-      <translation>Digite a linha de comando do reprodutor de áudio</translation>
+      <translation>Введіть командний рядок аудіо програвача</translation>
     </message>
     <message>
       <source>&amp;Network</source>
-      <translation>&amp;Rede</translation>
+      <translation>&amp;Мережа</translation>
     </message>
     <message>
       <source>Enable if you wish to use a proxy server
 for all program&apos;s network requests.</source>
-      <translation>Habilite esta opção para usar um servidor proxy
-para todos os acessos à rede pelo programa.</translation>
+      <translation>Увімкніть, якщо ви бажаєте використовувати 
+проксі-сервер для всіх мережевих запитів.</translation>
     </message>
     <message>
       <source>Use proxy server</source>
-      <translation>Usar servidor proxy</translation>
+      <translation>Використати проксі-сервер</translation>
     </message>
     <message>
       <source>System proxy</source>
-      <translation>Proxy do sistema</translation>
+      <translation>Системний проксі</translation>
     </message>
     <message>
       <source>Custom proxy</source>
-      <translation>Proxy personalizado</translation>
+      <translation>Власний проксі</translation>
     </message>
     <message>
       <source>Custom settings</source>
-      <translation>Configurações personalizadas</translation>
+      <translation>Користувацькі налаштування</translation>
     </message>
     <message>
       <source>Type:</source>
-      <translation>Tipo:</translation>
+      <translation>Тип:</translation>
     </message>
     <message>
       <source>Host:</source>
-      <translation>Servidor:</translation>
+      <translation>Вузол:</translation>
     </message>
     <message>
       <source>Port:</source>
-      <translation>Porta:</translation>
+      <translation>Порт:</translation>
     </message>
     <message>
       <source>User:</source>
-      <translation>Usuário:</translation>
+      <translation>Користувач:</translation>
     </message>
     <message>
       <source>Password:</source>
-      <translation>Senha:</translation>
+      <translation>Пароль:</translation>
     </message>
     <message>
       <source>Anki Connect</source>
-      <translation>Conectar ao Anki</translation>
+      <translation>Анкі Коннехт</translation>
     </message>
     <message>
       <source>http://</source>
@@ -3128,84 +3122,83 @@ para todos os acessos à rede pelo programa.</translation>
     </message>
     <message>
       <source>Deck:</source>
-      <translation>Baralho:</translation>
+      <translation>Колода:</translation>
     </message>
     <message>
       <source>Model:</source>
-      <translation>Modelo:</translation>
+      <translation>Модель:</translation>
     </message>
     <message>
       <source>Word</source>
-      <translation>Palavra</translation>
+      <translation>Слово</translation>
     </message>
     <message>
       <source>Vocabulary field...</source>
-      <translation>Campo de vocabulário...</translation>
+      <translation>Словникове поле...</translation>
     </message>
     <message>
       <source>Text</source>
-      <translation>texto</translation>
+      <translation>Текст</translation>
     </message>
     <message>
       <source>Definition field...</source>
-      <translation>Campo de definição...</translation>
+      <translation>Поле визначення...</translation>
     </message>
     <message>
       <source>Sentence</source>
-      <translation>Frase</translation>
+      <translation>Речення</translation>
     </message>
     <message>
       <source>Sentence field (can be empty)...</source>
-      <translation>Campo de frase (pode estar vazio)...</translation>
+      <translation>Поле речення (може бути порожнім)...</translation>
     </message>
     <message>
       <source>Enabling this would make GoldenDict block most advertisements
 by disallowing content (images, frames) not originating from the site
 you are browsing. If some site breaks because of this, try disabling this.</source>
-      <translation>Se habilitada esta opção, o GoldenDict bloqueará a maioria das propagadas impedindo a
-transferência de conteúdo para seu PC (de imagens, quadros de HTML etc.) originários do
-site que estiver visitando. Se alguns sites deixarem de funcionar, desative esta opção
-para ver se o problema é solucionado.</translation>
+      <translation>Увімкнувши це, GoldenDict буде блокувати більшість реклами 
+забороняючи вмісту (малюнки, рамки) зображатись на сайті. 
+Якщо деякі сайти не працюють, вимкніть це.</translation>
     </message>
     <message>
       <source>Disallow loading content from other sites (hides most advertisements)</source>
-      <translation>Não permitir o carregamento de conteúdo de outros sites (oculta a maioria das propagandas)</translation>
+      <translation>Заборонити завантажувати вміст з інших сайтів (ховає більшість реклами)</translation>
     </message>
     <message>
       <source>Some sites detect GoldenDict via HTTP headers and block the requests.
 Enable this option to workaround the problem.</source>
-      <translation>Alguns sites detectam GoldenDick via cabeçalhos HTTP e bloqueiam as solicitações.
-Ative essa opção para solucionar o problema.</translation>
+      <translation>Деякі сайти виявлять GoldenDict через загловок HTTP і блокують запити.
+Щоб обійти цю проблему, ввімкніть цей параметр.</translation>
     </message>
     <message>
       <source>Do not identify GoldenDict in HTTP headers</source>
-      <translation>Não identificar GoldenDict nos cabeçalhos HTTP</translation>
+      <translation>Не отожнювати GoldenDict в заголовках HTTP</translation>
     </message>
     <message>
       <source>Maximum network cache size:</source>
-      <translation>Tamanho máximo do cache de rede:</translation>
+      <translation>Максимальний розмір кеша в мережі :</translation>
     </message>
     <message>
       <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
 %1
 If set to 0 the network disk cache will be disabled.</source>
-      <translation>Espaço máximo em disco ocupado pelo cache de rede do GoldenDict em
+      <translation>Максимальний дисковий простір, який займає мережевий кеш GoldenDict
 %1
-Se definido como 0, o cache do disco de rede será desabilitado.</translation>
+Якщо встановлено значення 0, кеш мережевого диска буде вимкнено.</translation>
     </message>
     <message>
       <source> MiB</source>
-      <translation> MB</translation>
+      <translation> Міб</translation>
     </message>
     <message>
       <source>When this option is enabled, GoldenDict
 clears its network cache from disk during exit.</source>
-      <translation>Quando esta opção estiver ativada, o GoldenDict
-apaga seu cache de rede do disco durante a saída.</translation>
+      <translation>Коли цю опцію ввімкнено, Золотик
+очищує з диска кеш у мережі.</translation>
     </message>
     <message>
       <source>Clear network cache on exit</source>
-      <translation>Limpar cache de rede ao sair</translation>
+      <translation>Очистити кеш мережі при виході</translation>
     </message>
     <message>
       <source>When this is enabled, the program periodically
@@ -3213,189 +3206,191 @@ checks if a new, updated version of GoldenDict
 is available for download. If it is so, the program
 informs the user about it and prompts to open a
 download page.</source>
-      <translation>Se habilitada esta opção, o programa procura atualizações periodicamente
-no servidor do GoldenDict. Se houver atualizações, ele informa ao usuário
-e pergunta se ele deseja visitar a página de download.</translation>
+      <translation>Якщо це ввімкнено, програма періодично
+перевірятиме наявність нової версії GoldenDict
+для звантаження. Якщо це так, то програма
+повідомлятиме користувача про це й запропонує
+відкрити сторінку звантаження.</translation>
     </message>
     <message>
       <source>Check for new program releases periodically</source>
-      <translation>Procurar atualizações do programa periodicamente</translation>
+      <translation>Періодично перевіряти на випуски нової версії</translation>
     </message>
     <message>
       <source>Full-text search</source>
-      <translation>Pesquisa de texto completo</translation>
+      <translation>Повнотекстовий пошук</translation>
     </message>
     <message>
       <source>Allow full-text search for:</source>
-      <translation>Permitir pesquisa de texto completo para:</translation>
+      <translation>Дозволити повнотекстовий пошук для:</translation>
     </message>
     <message>
       <source>Don&apos;t search in dictionaries containing more than</source>
-      <translation>Não procure em dicionários que contenham mais de</translation>
+      <translation>Не шукайте в словниках, які містять більше ніж</translation>
     </message>
     <message>
       <source>articles (0 - unlimited)</source>
-      <translation>artigos (0 - ilimitado)</translation>
+      <translation>Статті (0 - необмежено)</translation>
     </message>
     <message>
       <source>Create fulltext index with parallel threads </source>
-      <translation>Criar índice de texto completo com threads paralelos </translation>
+      <translation>Створіть повнотекстовий індекс із паралельними потоками </translation>
     </message>
     <message>
       <source>Ad&amp;vanced</source>
-      <translation>A&amp;vançada</translation>
+      <translation>До&amp;даткові</translation>
     </message>
     <message>
       <source>History</source>
-      <translation>Histórico</translation>
+      <translation>Історія</translation>
     </message>
     <message>
       <source>Turn this option on to store history of the translated words</source>
-      <translation>Habilite esta opção se quiser gravar o histórico das palavras traduzidas/pesquisadas</translation>
+      <translation>Увімкніть цю опцію аби зберігати історію перекладених слів</translation>
     </message>
     <message>
       <source>Store &amp;history</source>
-      <translation>Gravar o &amp;histórico</translation>
+      <translation>Зберегти &amp;Історію</translation>
     </message>
     <message>
       <source>Specify the maximum number of entries to keep in history.</source>
-      <translation>Especifique o número máximo de entradas para manter no histórico.</translation>
+      <translation>Зазначте максимальну кількість статей, що зберігають в історії.</translation>
     </message>
     <message>
       <source>Maximum history size:</source>
-      <translation>Tamanho máximo do histórico:</translation>
+      <translation>Максимальний розмір історії:</translation>
     </message>
     <message>
       <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Intervalo ao salvar o histórico. Se definido histórico como 0, será salvo apenas durante a saída.</translation>
+      <translation>Проміжок збереження історії. Якщо вказати 0, то історія зберігатиметься тільки після виходу з програми.</translation>
     </message>
     <message>
       <source>Save every</source>
-      <translation>Salvar tudo</translation>
+      <translation>Зберігати кожні</translation>
     </message>
     <message>
       <source>minutes</source>
-      <translation>minutos</translation>
+      <translation>хвилин</translation>
     </message>
     <message>
       <source>Favorites</source>
-      <translation>Favoritos</translation>
+      <translation>Вподобання</translation>
     </message>
     <message>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
-      <translation>Intervalo para salvar Favoritos. Se definido como 0, os Favoritos serão salvos apenas durante a saída.</translation>
+      <translation>Інтервал збереження уподобань. Якщо встановлено 0 Обраних буде збережено тільки під час виходу.</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
-      <translation>Ative esta opção para confirmar todas as operações de exclusão de itens</translation>
+      <translation>Увімкніть цю опцію, щоб підтвердити кожну операцію видалення елементів</translation>
     </message>
     <message>
       <source>Confirmation for items deletion</source>
-      <translation>Confirmação para exclusão de itens</translation>
+      <translation>Підтвердження видалення елементів</translation>
     </message>
     <message>
       <source>Articles</source>
-      <translation>Artigos</translation>
+      <translation>Статей</translation>
     </message>
     <message>
       <source>Ignore punctuation while searching</source>
-      <translation>Ignorar pontuação ao pesquisar</translation>
+      <translation>Ігнорувати пунктуацію при пошуку</translation>
     </message>
     <message>
       <source>Input phrases longer than this size will be ignored</source>
-      <translation>Frases de entrada maiores que este tamanho serão ignoradas</translation>
+      <translation>Вхідні фрази довші, ніж цей розмір ігнорується</translation>
     </message>
     <message>
       <source>symbols</source>
-      <translation>símbolos</translation>
+      <translation>символів</translation>
     </message>
     <message>
       <source>Select this option to automatic collapse big articles</source>
-      <translation>Selecione essa opção para automaticamente recolher grandes artigos</translation>
+      <translation>Виберіть це, щоб автоматично згортати великі статті</translation>
     </message>
     <message>
       <source>Collapse articles more than</source>
-      <translation>Recolher artigos mais de</translation>
+      <translation>Згортати статті з понад</translation>
     </message>
     <message>
       <source>Turn this option on to ignore unreasonably long input text
 from mouse-over, selection, clipboard or command line</source>
-      <translation>Ligue esta opção para ignorar texto de entrada excessivamente longo
-do mouse-over, seleção, área de transferência ou linha de comando</translation>
+      <translation>Увімкніть цю функцію, щоб ігнорувати необґрунтовано довгий текст введення
+з імені мишки, виділення, буфера обміну чи командного рядка</translation>
     </message>
     <message>
       <source>Ignore input phrases longer than</source>
-      <translation>Ignorar frases inseridas maiores que</translation>
+      <translation>Ігнорувати вхідні фрази довші, ніж</translation>
     </message>
     <message>
       <source>Articles longer than this size will be collapsed</source>
-      <translation>Artigos mais longos que esse tamanho vai ser recolhido</translation>
+      <translation>Статті довші за цей розмір буде згорнуто</translation>
     </message>
     <message>
       <source>Turn this option on to always expand optional parts of articles</source>
-      <translation>Habilite esta opção se quise expandir sempre partes opcionais de artigos</translation>
+      <translation>Увімкніть цю опцію аби завжди додаткові частини статтей</translation>
     </message>
     <message>
       <source>Expand optional &amp;parts</source>
-      <translation>E&amp;xpandir partes opcionais</translation>
+      <translation>Показувати додаткові &amp;частини</translation>
     </message>
     <message>
       <source>Turn this option on to ignore diacritics while searching articles</source>
-      <translation>Ative esta opção para ignorar sinais diacríticos ao pesquisar artigos</translation>
+      <translation>Увімкніть цю опцію, щоб ігнорувати діакритики під час пошуку статей</translation>
     </message>
     <message>
       <source>Ignore diacritics while searching</source>
-      <translation>Ignorar diacríticos durante a pesquisa</translation>
+      <translation>Ігнорувати діакритики під час пошуку</translation>
     </message>
     <message>
       <source>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</source>
-      <translation>Durante buscas sucessivas, se um dicionário for recolhido pelo manual, ele permanecerá recolhido na próxima busca</translation>
+      <translation>Під час послідовних пошуків, якщо один словник згортається вручну, він залишатиметься згорнутим у наступному пошуку</translation>
     </message>
     <message>
       <source>Session collapse</source>
-      <translation>Colapso da sessão</translation>
+      <translation>Згорнути сесію</translation>
     </message>
     <message>
       <source>Turn this option on to enable extra articles search via synonym lists
 from Stardict, Babylon and GLS dictionaries</source>
-      <translation>Ative esta opção para habilitar a pesquisa de artigos extras por meio de listas de sinônimos
-dos dicionários Stardict, Babylon e GLS</translation>
+      <translation>Увімкніть цю опцію, щоб увімкнути додаткові статті пошуку за допомогою списків синонімів
+з Stardict, Babylon та GLS словників</translation>
     </message>
     <message>
       <source>Extra search via synonyms</source>
-      <translation>Pesquisa extra via sinônimos</translation>
+      <translation>Додатковий пошук за синонімами</translation>
     </message>
     <message>
       <source>When using clipboard, strip everything after newline</source>
-      <translation>Ao usar a área de transferência, retire tudo após a nova linha</translation>
+      <translation>Під час використання буфера обміну видаляйте все після нового рядка</translation>
     </message>
     <message>
       <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
-      <translation>Em uma nova pesquisa, coloque o foco na janela principal ou pop-up, mesmo que esteja visível</translation>
+      <translation>Під час нового пошуку сфокусуйте головне або спливаюче вікно, навіть якщо воно видиме</translation>
     </message>
     <message>
       <source>Miscellaneous</source>
-      <translation>Diversos</translation>
+      <translation>Різне</translation>
     </message>
     <message>
       <source>Remove invalid index on exit</source>
-      <translation>Remover índice inválido ao sair</translation>
+      <translation>Видалити недійсний індекс під час виходу</translation>
     </message>
     <message>
       <source>System default</source>
-      <translation>Padrão do sistema</translation>
+      <translation>Системна</translation>
     </message>
     <message>
       <source>Default</source>
-      <translation>Padrão</translation>
+      <translation>Типово</translation>
     </message>
     <message>
       <source>Classic</source>
-      <translation>Clássico</translation>
+      <translation>Класичний</translation>
     </message>
     <message>
       <source>Modern</source>
-      <translation>Moderno</translation>
+      <translation>Модерн</translation>
     </message>
     <message>
       <source>Lingvo</source>
@@ -3403,293 +3398,293 @@ dos dicionários Stardict, Babylon e GLS</translation>
     </message>
     <message>
       <source>Babylon</source>
-      <translation>Babilônia</translation>
+      <translation>Вавилон</translation>
     </message>
     <message>
       <source>Lingoes</source>
-      <translation>Lanoes</translation>
+      <translation>Лінго</translation>
     </message>
     <message>
       <source>Lingoes-Blue</source>
-      <translation>Lais-Cola</translation>
+      <translation>Лінго-Блю</translation>
     </message>
     <message>
       <source>Auto does nothing on some systems.</source>
-      <translation>O Auto não faz nada em alguns sistemas.</translation>
+      <translation>Auto нічого не робить у деяких системах.</translation>
     </message>
     <message>
       <source>Restart the program to apply the language change.</source>
-      <translation>Reinicie o programa para aplicar a mudança de idioma.</translation>
+      <translation>Перезапустіть програму, щоб змінити мову.</translation>
     </message>
     <message>
       <source>Restart to apply the interface style change.</source>
-      <translation>Reinicie para aplicar a mudança de estilo de interface.</translation>
+      <translation>Перезапустіть, щоб застосувати зміну стилю інтерфейсу.</translation>
     </message>
     <message>
       <source>Restart to apply the interface font change.</source>
-      <translation>Reinicie para aplicar a alteração da fonte da interface.</translation>
+      <translation>Перезапустіть програму, щоб застосувати зміни шрифту інтерфейсу.</translation>
     </message>
     <message>
       <source>Restart needed</source>
-      <translation>Reiniciar necessário</translation>
+      <translation>Потрібен перезапуск</translation>
     </message>
     <message>
       <source>Enable</source>
-      <translation>Habilitar</translation>
+      <translation>Увімкнути</translation>
     </message>
     <message>
       <source>Disable</source>
-      <translation>Desabilitar</translation>
+      <translation>Вимкнути</translation>
     </message>
     <message>
       <source>Automatic</source>
-      <translation>Automático</translation>
+      <translation>Автоматичний</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation>Salvar mensagens de depuração no gd_log.txt na pasta config</translation>
+      <translation>Зберігати повідомлення налагодження в gd_log.txt в теці налаштувань</translation>
     </message>
     <message>
       <source>Interface Font Size</source>
-      <translation>Tamanho da Fonte da Interface</translation>
+      <translation>Розмір шрифту інтерфейсу</translation>
     </message>
     <message>
       <source>Interface language</source>
-      <translation>Idioma da interface</translation>
+      <translation>Мова інтерфейсу</translation>
     </message>
     <message>
       <source>Article Display style</source>
-      <translation>Estilo de Exibição do Artigo</translation>
+      <translation>Відображати стиль статей</translation>
     </message>
     <message>
       <source>Add-on style</source>
-      <translation>Estilo do complemento</translation>
+      <translation>Стиль додатку</translation>
     </message>
     <message>
       <source>Interface Style</source>
-      <translation>Estilo da interface</translation>
+      <translation>Стиль інтерфейсу</translation>
     </message>
     <message>
       <source>Preview Font</source>
-      <translation>Visualizar Fonte</translation>
+      <translation>Попередній перегляд шрифту</translation>
     </message>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
-      <translation>GoldenDict-ng é um software de dicionário.</translation>
+      <translation>Золота Dict-ng - словникова програма.</translation>
     </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
     <message>
       <source>Audio</source>
-      <translation>Áudio</translation>
+      <translation>Аудіо</translation>
     </message>
     <message>
       <source>Plain Text</source>
-      <translation>Texto simples</translation>
+      <translation>Звичайний текст</translation>
     </message>
     <message>
       <source>Html</source>
-      <translation>HTML</translation>
+      <translation>Html</translation>
     </message>
     <message>
       <source>Prefix Match</source>
-      <translation>Correspondência de prefixo</translation>
+      <translation>Співпадання префіксу</translation>
     </message>
     <message>
       <source>Unknown</source>
-      <translation>Desconhecido</translation>
+      <translation>Невідомий</translation>
     </message>
   </context>
   <context>
     <name>Programs::RunInstance</name>
     <message>
       <source>No program name was given.</source>
-      <translation>Nenhum nome de programa foi especificado.</translation>
+      <translation>Назва програми не була надана.</translation>
     </message>
     <message>
       <source>The program has crashed.</source>
-      <translation>O programa travou.</translation>
+      <translation>Програма зламалася.</translation>
     </message>
     <message>
       <source>The program has returned exit code %1.</source>
-      <translation>O programa retornou o código de fechamento %1.</translation>
+      <translation>Програма повідомила про код виходу %1.</translation>
     </message>
   </context>
   <context>
     <name>ProgramsModel</name>
     <message>
       <source>Enabled</source>
-      <translation>Habilitada</translation>
+      <translation>Увімкнено</translation>
     </message>
     <message>
       <source>Type</source>
-      <translation>Tipo</translation>
+      <translation>Тип</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation>Nome</translation>
+      <translation>Назва</translation>
     </message>
     <message>
       <source>Command Line</source>
-      <translation>Linha de comando</translation>
+      <translation>Командний рядок</translation>
     </message>
     <message>
       <source>Icon</source>
-      <translation>Ícone</translation>
+      <translation>Наличка</translation>
     </message>
   </context>
   <context>
     <name>QObject</name>
     <message>
       <source>Article loading error</source>
-      <translation>Erro ao carregar artigo</translation>
+      <translation>Помилка завантаження статті</translation>
     </message>
     <message>
       <source>Article decoding error</source>
-      <translation>Erro ao decodificar artigo</translation>
+      <translation>Помилка розкодування статті</translation>
     </message>
     <message>
       <source>Copyright: %1%2</source>
-      <translation>Direitos autorais: %1%2</translation>
+      <translation>Авторські права: %1%2</translation>
     </message>
     <message>
       <source>Version: %1%2</source>
-      <translation>Versão: %1%2</translation>
+      <translation>Версія: %1%2</translation>
     </message>
     <message>
       <source>Author: %1%2</source>
-      <translation>Autor: %1%2</translation>
+      <translation>Автор: %1%2</translation>
     </message>
     <message>
       <source>E-mail: %1%2</source>
-      <translation>E-mail: %1%2</translation>
+      <translation>Електронна пошта: %1%2</translation>
     </message>
     <message>
       <source>Title: %1%2</source>
-      <translation>Título: %1%2</translation>
+      <translation>Назва: %1%2</translation>
     </message>
     <message>
       <source>Website: %1%2</source>
-      <translation>Site: %1%2</translation>
+      <translation>Веб-сайт: %1%2</translation>
     </message>
     <message>
       <source>Date: %1%2</source>
-      <translation>Data: %1%2</translation>
+      <translation>Дата: %1%2</translation>
     </message>
     <message>
       <source>A dictionary lookup program.</source>
-      <translation>Um programa de pesquisa de dicionário.</translation>
+      <translation>Словник програми фільтрування.</translation>
     </message>
     <message>
       <source>Word or sentence to query.</source>
-      <translation>Palavra ou frase a consultar.</translation>
+      <translation>Слово або речення запиту.</translation>
     </message>
     <message>
       <source>Reset window state.</source>
-      <translation>Redefina o estado da janela.</translation>
+      <translation>Скинути стан вікна.</translation>
     </message>
     <message>
       <source>Disable tts.</source>
-      <translation>Desativar tts.</translation>
+      <translation>Вимкнути tts.</translation>
     </message>
     <message>
       <source>Change the group of main window.</source>
-      <translation>Altera o grupo da janela principal.</translation>
+      <translation>Змінити групу головного вікна.</translation>
     </message>
     <message>
       <source>Change the group of popup.</source>
-      <translation>Alterar o grupo de popup.</translation>
+      <translation>Змінити групу виринаючого вікна.</translation>
     </message>
     <message>
       <source>Toggle popup.</source>
-      <translation>Alternar pop-up de verificação.</translation>
+      <translation>Увімкнути або вимкнути вікно сканування.</translation>
     </message>
     <message>
       <source>Print version and diagnosis info.</source>
-      <translation>Versão impressa e informações de diagnóstico.</translation>
+      <translation>Друкована версія та інформація про діагностику.</translation>
     </message>
     <message>
       <source>Save debug messages to gd_log.txt in the config folder.</source>
-      <translation>Salvar mensagens de depuração no gd_log.txt na pasta config.</translation>
+      <translation>Зберігати повідомлення налагодження в gd_log.txt в теці конфігурації.</translation>
     </message>
     <message>
       <source>Force the word to be translated in Popup.</source>
-      <translation>Força a palavra a ser traduzida no Popup.</translation>
+      <translation>Примусово перекладати слово в спливаючому вікні.</translation>
     </message>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
-      <translation>Forçar a palavra a ser traduzida na janela principal.</translation>
+      <translation>Примусово перекладати слово в головне вікно.</translation>
     </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
     <message>
       <source>Dictionary search/filter (Ctrl+F)</source>
-      <translation>Dicionário pesquisar/filtro (Ctrl+F)</translation>
+      <translation>Словниковий пошук/фільтр (Ctrl+F)</translation>
     </message>
     <message>
       <source>Clear Search</source>
-      <translation>Limpar Busca</translation>
+      <translation>Очистити пошук</translation>
     </message>
   </context>
   <context>
     <name>ResourceToSaveHandler</name>
     <message>
       <source>ERROR: %1</source>
-      <translation>Erro: %1</translation>
+      <translation>Помилка: %1</translation>
     </message>
     <message>
       <source>Resource saving error: </source>
-      <translation>Erro ao salvar recurso: </translation>
+      <translation>Помилка зберігання ресурсів: </translation>
     </message>
     <message>
       <source>WARNING: %1</source>
-      <translation>AVISO: %1</translation>
+      <translation>ПОПЕРЕДЖЕННЯ: %1</translation>
     </message>
     <message>
       <source>The referenced resource failed to download.</source>
-      <translation>O recurso referenciado não conseguiu baixar.</translation>
+      <translation>Не вдалось звантажити поданий ресурс.</translation>
     </message>
   </context>
   <context>
     <name>Romaji</name>
     <message>
       <source>Hepburn Romaji for Hiragana</source>
-      <translation>Hepburn Romaji para Hiragana</translation>
+      <translation>Система романізації Хепбьорна для хіраґани</translation>
     </message>
     <message>
       <source>Hepburn Romaji for Katakana</source>
-      <translation>Hepburn Romaji para Katakana</translation>
+      <translation>Система романізації Хепбьорна для катакани</translation>
     </message>
   </context>
   <context>
     <name>RussianTranslit</name>
     <message>
       <source>Russian Transliteration</source>
-      <translation>Transliteração do Russo</translation>
+      <translation>Російська транслітерація</translation>
     </message>
   </context>
   <context>
     <name>ScanPopup</name>
     <message>
       <source>WARNING: %1</source>
-      <translation>AVISO: %1</translation>
+      <translation>ПОПЕРЕДЖЕННЯ: %1</translation>
     </message>
   </context>
   <context>
     <name>ScanPopupToolBar</name>
     <message>
       <source>Back</source>
-      <translation>Anterior</translation>
+      <translation>Відмінити</translation>
     </message>
     <message>
       <source>Forward</source>
-      <translation>Encaminhar</translation>
+      <translation>Переслати</translation>
     </message>
     <message>
       <source>Pronounce Word (Alt+S)</source>
-      <translation>Palavra Pronunciada (Alt+S)</translation>
+      <translation>Промова слова (Alt+S)</translation>
     </message>
     <message>
       <source>Alt+S</source>
@@ -3697,32 +3692,32 @@ dos dicionários Stardict, Babylon e GLS</translation>
     </message>
     <message>
       <source>Send word to main window (Alt+W)</source>
-      <translation>Enviar palavra para a janela principal (Alt+W)</translation>
+      <translation>Відправити слово в основне вікно (Alt+W)</translation>
     </message>
     <message>
       <source>Alt+W</source>
-      <translation>Alt+O</translation>
+      <translation>Alt+клавiша переходу</translation>
     </message>
     <message>
       <source>Add word to Favorites (Ctrl+E)</source>
-      <translation>Adicionar palavra aos Favoritos (Ctrl+E)</translation>
+      <translation>Додати слово до обраного (Ctrl+E)</translation>
     </message>
     <message>
       <source>Always stay on top of all other windows</source>
-      <translation>Sempre ficar em cima de todas as outras janelas</translation>
+      <translation>Завжди залишатися поверх інших вікон</translation>
     </message>
     <message>
       <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
-      <translation>Use isto para fixar a janela para que ela fique na tela,
-poderia ser redimensionado ou gerenciado de outras formas.</translation>
+      <translation>Використовуйте для закріплення вікна, щоб воно залишалося на екрані,
+може бути змінене або кероване іншими способами.</translation>
     </message>
   </context>
   <context>
     <name>SearchPanel</name>
     <message>
       <source>&amp;Previous</source>
-      <translation>&amp;Anterior</translation>
+      <translation>&amp;Попередня</translation>
     </message>
     <message>
       <source>Ctrl+Shift+G</source>
@@ -3730,7 +3725,7 @@ poderia ser redimensionado ou gerenciado de outras formas.</translation>
     </message>
     <message>
       <source>&amp;Next</source>
-      <translation>&amp;Próximo</translation>
+      <translation>&amp;Далі</translation>
     </message>
     <message>
       <source>Ctrl+G</source>
@@ -3738,73 +3733,73 @@ poderia ser redimensionado ou gerenciado de outras formas.</translation>
     </message>
     <message>
       <source>&amp;Case Sensitive</source>
-      <translation>&amp;Caso sensível</translation>
+      <translation>&amp;Чутливість до регістру</translation>
     </message>
     <message>
       <source>Find:</source>
-      <translation>Localizar:</translation>
+      <translation>Знайти:</translation>
     </message>
   </context>
   <context>
     <name>SoundDirsModel</name>
     <message>
       <source>Path</source>
-      <translation>Caminho</translation>
+      <translation>Шлях</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation>Nome</translation>
+      <translation>Назва</translation>
     </message>
     <message>
       <source>Icon</source>
-      <translation>Ícone</translation>
+      <translation>Піктограма</translation>
     </message>
   </context>
   <context>
     <name>Sources</name>
     <message>
       <source>Files</source>
-      <translation>Arquivos</translation>
+      <translation>Файли</translation>
     </message>
     <message>
       <source>Paths to search for the dictionary files:</source>
-      <translation>Caminhos dos arquivos de dicionário:</translation>
+      <translation>Шляхи для пошуку файлів словника:</translation>
     </message>
     <message>
       <source>&amp;Add...</source>
-      <translation>&amp;Adicionar...</translation>
+      <translation>&amp;Додати…</translation>
     </message>
     <message>
       <source>&amp;Remove</source>
-      <translation>&amp;Remover</translation>
+      <translation>&amp;Вилучити</translation>
     </message>
     <message>
       <source>Re&amp;scan now</source>
-      <translation>Atua&amp;lizar agora</translation>
+      <translation>Пере&amp;глянути зараз же</translation>
     </message>
     <message>
       <source>Sound Dirs</source>
-      <translation>Pronúncia</translation>
+      <translation>Теки зі звуками</translation>
     </message>
     <message>
       <source>Make dictionaries from bunches of audiofiles by adding paths here:</source>
-      <translation>Caminhos de coleções de arquivos de áudio de pronúncia:</translation>
+      <translation>Зробіть словники зі зв&apos;язки аудіофайлів, додавши шляхи сюди:</translation>
     </message>
     <message>
       <source>Morphology</source>
-      <translation>Ortografia</translation>
+      <translation>Морфологія</translation>
     </message>
     <message>
       <source>Path to a directory with Hunspell/Myspell dictionaries:</source>
-      <translation>Caminho da pasta dos dicionários Hunspell/Myspell:</translation>
+      <translation>Шлях до тезаурусів Hunspell/Myspell:</translation>
     </message>
     <message>
       <source>&amp;Change...</source>
-      <translation>&amp;Modificar...</translation>
+      <translation>&amp;Змінити…</translation>
     </message>
     <message>
       <source>Available morphology dictionaries:</source>
-      <translation>Dicionários de ortografia disponíveis:</translation>
+      <translation>Доступні морфологічні словники:</translation>
     </message>
     <message>
       <source>Each morphology dictionary appears as a
@@ -3813,46 +3808,43 @@ provides stem words for searches and
 spelling suggestions for mistyped words.
 Add appropriate dictionaries to the bottoms
 of the appropriate groups to use them.</source>
-      <translation>Cada dicionário de ortografia aparece como
-um dicionário auxiliar separado que fornece
-radicais para consultas e sugestões de
-ortografia de palavras digitadas
-incorretamente.
-
-Adicione dicionários compatíveis ao fim
-dos grupos apropriados para usá-los.</translation>
+      <translation>Кожен морфрологічний словник з&apos;являється як
+окремий допоміжний словник, який забезпечує
+корінь слів для пошуку і орфографічні підказки 
+для некоректно введених слів. Додайте відповідні
+словники до низу відповідних груп.</translation>
     </message>
     <message>
       <source>Wikipedia</source>
-      <translation>Wikipédia</translation>
+      <translation>Вікіпедія</translation>
     </message>
     <message>
       <source>Wikipedia (MediaWiki) sites:</source>
-      <translation>Sites da Wikipedia (MediaWiki):</translation>
+      <translation>Wikipedia (MediaWiki):</translation>
     </message>
     <message>
       <source>Websites</source>
-      <translation>Site da Web</translation>
+      <translation>Сайти</translation>
     </message>
     <message>
       <source>Any websites. A string %GDWORD% will be replaced with the query word:</source>
-      <translation>Especifique qualquer site que desejar. O demarcador %GDWORD% será substituído pela palavra da consulta do usuário:</translation>
+      <translation>Будь-які сайти. Рядок %GDWORD% буде замінено на потрібне слово:</translation>
     </message>
     <message>
       <source>DICT servers</source>
-      <translation>Servidores DICT</translation>
+      <translation>Кількість серверів DICT</translation>
     </message>
     <message>
       <source>DICT servers:</source>
-      <translation>Servidores DICT:</translation>
+      <translation>Сервер DICT:</translation>
     </message>
     <message>
       <source>Programs</source>
-      <translation>Programas</translation>
+      <translation>Програми</translation>
     </message>
     <message>
       <source>Any external programs. A string %GDWORD% will be replaced with the query word. A string %GDSEARCH% will be replaced with the text in the search bar. If both of the parameters are not provided, the headword will be fed into standard input.</source>
-      <translation>Qualquer programa externo. Uma seqüência de caracteres %GDWORD% será substituída pela palavra de consulta. Uma string %GDSEARCH% será substituída pelo texto na barra de pesquisa. Se ambos os parâmetros não forem fornecidos, o headword será alimentado na entrada padrão.</translation>
+      <translation>Будь-які зовнішні програми. Рядок %GDWORD% буде замінено словом запиту. Рядок %GDSEARCH% буде замінено на текст в рядку пошуку. Якщо обидва параметри не надано, заголовок буде передано до стандартного вводу.</translation>
     </message>
     <message>
       <source>Lingua Libre</source>
@@ -3860,23 +3852,23 @@ dos grupos apropriados para usá-los.</translation>
     </message>
     <message>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pronunciations provided by &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, a collaborative linguistic media library of Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pronúncias fornecidas por &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, uma biblioteca de mídia linguística colaborativa da Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Вимова надана &lt;a href=&quot;https://lingualibre.org&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;Lingua Libre&lt;/span&gt;&lt;/a&gt;, спільною лінгвістичною медіа-бібліотекою Wikimedia France. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <source>Enable Lingua Libre</source>
-      <translation>Habilitar Lingua Livre</translation>
+      <translation>Увімкнути Lingua Libre</translation>
     </message>
     <message>
       <source>ISO 639-3 language code</source>
-      <translation>Código do idioma ISO 639-3</translation>
+      <translation>ISO 639-3 код мови</translation>
     </message>
     <message>
       <source>Examples:  &amp;quot;eng&amp;quot; for English, &amp;quot;fra&amp;quot; for French &lt;br&gt;
 
 Full list of availiable languages can be found &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; here &lt;/a&gt;</source>
-      <translation>Exemplos:  &amp;quot;eng&amp;quot; para inglês, &amp;quot;fra&amp;quot; para francês &lt;br&gt;
+      <translation>Приклади:  &amp;quot;eng&amp;quot; для англійської, &amp;quot;fra&amp;quot; для французької &lt;br&gt;
 
-A lista completa de idiomas disponíveis pode ser encontrada &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; aqui &lt;/a&gt;</translation>
+Повний список доступних мов можна знайти &lt;a href=&quot;https://lingualibre.org/wiki/LinguaLibre:Stats/Languages&quot;&gt; тут &lt;/a&gt;</translation>
     </message>
     <message>
       <source>Forvo</source>
@@ -3884,266 +3876,265 @@ A lista completa de idiomas disponíveis pode ser encontrada &lt;a href=&quot;ht
     </message>
     <message>
       <source>Live pronunciations from &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. The site allows people to record and share word pronunciations. You can listen to them from GoldenDict.</source>
-      <translation>Pronunciar palavras diretamente de &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. Este site permite gravar e compartilhar pronúncias de palavras. É possível ouvi-las no GoldenDict.</translation>
+      <translation>Жива вимова від &lt;a href=&quot;http://www.forvo.com/&quot;&gt;forvo.com&lt;/a&gt;. Цей сайт дозволяє людям записувати і ділитись вимовою слів. Ви можете прослухати їх за допомогою GoldenDict.</translation>
     </message>
     <message>
       <source>Enable pronunciations from Forvo</source>
-      <translation>Habilitar pronúncias do Forvo</translation>
+      <translation>Увімкнути вимову з Forvo</translation>
     </message>
     <message>
       <source>API Key:</source>
-      <translation>Chave API:</translation>
+      <translation>Ключ API:</translation>
     </message>
     <message>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use of Forvo currently requires an API key, register on the site to get your own key.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;O uso do Forvo requer uma chave de API, registre-se no site para obter a sua própria chave.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Використання Forvo в даний час необхідний ключ API, зареєструйтесь на сайті, щоб отримати власний ключ.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Get your own key &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;here&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pegue a sua própria chave &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;aqui&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+      <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;отримати ваш власний ключ &lt;a href=&quot;http://api.forvo.com/key/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;тут&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <source>Language codes (comma-separated):</source>
-      <translation>Códigos de idioma
-(separar por vírgula):</translation>
+      <translation>Коди мов (виділяючи комою):</translation>
     </message>
     <message>
       <source>List of language codes you would like to have. Example: &quot;en, ru&quot;.</source>
-      <translation>Lista de códigos de idioma que você gostaria de ter. Por exemplo: &quot;en, ru, pt_BR&quot;.</translation>
+      <translation>Перелік кодів мов, які б ви воліли мати. Наприклад: &quot;en, uk&quot;.</translation>
     </message>
     <message>
       <source>Full list of language codes is available &lt;a href=&quot;http://www.forvo.com/languages-codes/&quot;&gt;here&lt;/a&gt;.</source>
-      <translation>A lista completa de códigos de idioma está disponível &lt;a href=&quot;http://www.forvo.com/languages-codes/&quot;&gt;aqui&lt;/a&gt;.</translation>
+      <translation>Повний перелік кодів мов &lt;a href=&quot;http://www.forvo.com/languages-codes/&quot;&gt;тут&lt;/a&gt;.</translation>
     </message>
     <message>
       <source>Transliteration</source>
-      <translation>Transliteração</translation>
+      <translation>Транслітерація</translation>
     </message>
     <message>
       <source>Greek transliteration</source>
-      <translation>Transliteração do Grego</translation>
+      <translation>Грецька транслітерація</translation>
     </message>
     <message>
       <source>Russian transliteration</source>
-      <translation>Transliteração do Russo</translation>
+      <translation>Російська транслітерація</translation>
     </message>
     <message>
       <source>German transliteration</source>
-      <translation>Transliteração do Alemão</translation>
+      <translation>Німецька транслітерація</translation>
     </message>
     <message>
       <source>Belarusian transliteration</source>
-      <translation>Bielorrusso transliteração</translation>
+      <translation>Білоруська транслітерація</translation>
     </message>
     <message>
       <source>Enables to use the Latin alphabet to write the Japanese language</source>
-      <translation>Habilita a romanização do japonês (palavras japonesas escritas em Latim)</translation>
+      <translation>Вмикає латинську абетку для японського письма</translation>
     </message>
     <message>
       <source>Japanese Romaji</source>
-      <translation>Japonês Romanizado (ideogramas convertidos para caracteres latinos)</translation>
+      <translation>Японська романдзі</translation>
     </message>
     <message>
       <source>Systems:</source>
-      <translation>Sistemas:</translation>
+      <translation>Системи:</translation>
     </message>
     <message>
       <source>Hepburn</source>
-      <translation>Romanização hepburn</translation>
+      <translation>Хепбьорн</translation>
     </message>
     <message>
       <source>Syllabaries:</source>
-      <translation>Silabários:</translation>
+      <translation>Складові азбуки:</translation>
     </message>
     <message>
       <source>Hiragana Japanese syllabary</source>
-      <translation>Silabário japonês Hiragana</translation>
+      <translation>Складова азбука японської хіраґани</translation>
     </message>
     <message>
       <source>Hiragana</source>
-      <translation>Hiragana</translation>
+      <translation>Хіраґана</translation>
     </message>
     <message>
       <source>Katakana Japanese syllabary</source>
-      <translation>Silabário japonês Katakana</translation>
+      <translation>Складова азбука японської катакани</translation>
     </message>
     <message>
       <source>Katakana</source>
-      <translation>Katakana</translation>
+      <translation>Катакана</translation>
     </message>
     <message>
       <source>Custom transliteration</source>
-      <translation>Transliteração personalizada</translation>
+      <translation>Спеціальна транслітерація</translation>
     </message>
     <message>
       <source>This only applied in search phrase, with each line represent a transliteration,semicolon seperated. For example, ae;æ,users can input ae to represent æ in the target word.</source>
-      <translation>Isso se aplica apenas à frase de pesquisa, com cada linha representando uma transliteração, separada por ponto e vírgula. Por exemplo, ae;æ, os usuários podem inserir ae para representar æ na palavra de destino.</translation>
+      <translation>Це стосується лише пошукової фрази, де кожен рядок представляє транслітерацію, розділену крапкою з комою. Наприклад, ae;æ, користувачі можуть ввести ae, щоб представити æ у цільовому слові.</translation>
     </message>
     <message>
       <source>ae;æ #this is an example</source>
-      <translation>ae;æ #este é um exemplo</translation>
+      <translation>ae;æ #це приклад</translation>
     </message>
     <message>
       <source>Text to Speech</source>
-      <translation>Texto para Fala</translation>
+      <translation>Текст для вимови</translation>
     </message>
     <message>
       <source>Choose a directory</source>
-      <translation>Escolha uma pasta</translation>
+      <translation>Вибрати теку</translation>
     </message>
     <message>
       <source>Confirm removal</source>
-      <translation>Confirmar remoção</translation>
+      <translation>Підтвердження вилучення</translation>
     </message>
     <message>
       <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Quer mesmo remover a pasta &lt;b&gt;%1&lt;/b&gt; da lista?</translation>
+      <translation>Вилучити теку &lt;b&gt;%1&lt;/b&gt; з переліку?</translation>
     </message>
     <message>
       <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Quer mesmo remover o site &lt;b&gt;%1&lt;/b&gt; da lista?</translation>
+      <translation>Вилучити сайт &lt;b&gt;%1&lt;/b&gt; з переліку?</translation>
     </message>
     <message>
       <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Quer mesmo remover o programa &lt;b&gt;%1&lt;/b&gt; da lista?</translation>
+      <translation>Вилучити програму &lt;b&gt;%1&lt;/b&gt; зі списку?</translation>
     </message>
     <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
-      <translation>O método de transcrição de japonês mais utilizado, baseado na fonologia inglesa</translation>
+      <translation>Найбільш поширений метод транскрипції японської та базується на англійській фонології</translation>
     </message>
   </context>
   <context>
     <name>StylesComboBox</name>
     <message>
       <source>None</source>
-      <translation>Nenhum</translation>
+      <translation>Жоден</translation>
     </message>
   </context>
   <context>
     <name>TextToSpeechSource</name>
     <message>
       <source>Selected voice engines:</source>
-      <translation>Engines de voz selecionadas:</translation>
+      <translation>Вибрані голосові рушії:</translation>
     </message>
     <message>
       <source>&amp;Add</source>
-      <translation>&amp;Adicionar</translation>
+      <translation>&amp;Додати</translation>
     </message>
     <message>
       <source>&amp;Remove</source>
-      <translation>&amp;Remover</translation>
+      <translation>&amp;Вилучити</translation>
     </message>
     <message>
       <source>Preferences</source>
-      <translation>Preferências</translation>
+      <translation>Параметри</translation>
     </message>
     <message>
       <source>Volume:</source>
-      <translation>Volume:</translation>
+      <translation>Гучність:</translation>
     </message>
     <message>
       <source>Rate:</source>
-      <translation>Taxa:</translation>
+      <translation>Частота:</translation>
     </message>
     <message>
       <source>Preview</source>
-      <translation>Pré-Visualizar</translation>
+      <translation>Огляд</translation>
     </message>
     <message>
       <source>Available voice engines:</source>
-      <translation>Engines de voz disponíveis:</translation>
+      <translation>Доступні голосові рушії:</translation>
     </message>
     <message>
       <source>Text to be previewed:</source>
-      <translation>Texto a ser visualizado:</translation>
+      <translation>Текст для огляду:</translation>
     </message>
     <message>
       <source>Type text to be previewed here.</source>
-      <translation>Digite o texto a ser visualizado aqui.</translation>
+      <translation>Введіть текст, щоб його оглянути тут.</translation>
     </message>
     <message>
       <source>&amp;Preview</source>
-      <translation>&amp;Pré-Visualizar</translation>
+      <translation>&amp;Огляд</translation>
     </message>
     <message>
       <source>No TTS voice available</source>
-      <translation>Nenhuma voz TTS disponível</translation>
+      <translation>Немає доступного голосу TTS</translation>
     </message>
     <message>
       <source>Cannot find available TTS voice.&lt;br&gt;Please make sure that at least one TTS engine installed on your computer already.</source>
-      <translation>Não foi possível encontra voz TTS.&lt;br&gt;Por favor, certifique-se que pelo menos um motor TTS esteja instalado no seu computador.</translation>
+      <translation>Неможливо знайти доступний голос TTS.&lt;br&gt;Переконайтесь, що рушій TTS хоча би встановлено на комп&apos;ютері.</translation>
     </message>
     <message>
       <source>Confirm removal</source>
-      <translation>Confirmar remoção</translation>
+      <translation>Підтвердити вилучення</translation>
     </message>
     <message>
       <source>Remove voice engine &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Remover engine de voz &lt;b&gt;%1&lt;/b&gt; da lista?</translation>
+      <translation>Вилучити голосовий рушій&lt;b&gt;%1&lt;/b&gt; з цього переліку?</translation>
     </message>
   </context>
   <context>
     <name>TranslateBox</name>
     <message>
       <source>Type a word or phrase to search dictionaries</source>
-      <translation>Digite uma palavra ou frase para pesquisar dicionários</translation>
+      <translation>Введіть слово або словосполучення шоб шукати у словниках</translation>
     </message>
     <message>
       <source>Drop-down</source>
-      <translation>Suspensa</translation>
+      <translation>Виринаючи</translation>
     </message>
   </context>
   <context>
     <name>VoiceEnginesModel</name>
     <message>
       <source>Enabled</source>
-      <translation>Habilitado</translation>
+      <translation>Увімкнено</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation>Nome</translation>
+      <translation>Назва</translation>
     </message>
     <message>
       <source>Id</source>
-      <translation>Id</translation>
+      <translation>Ідентифікатор</translation>
     </message>
     <message>
       <source>Icon</source>
-      <translation>Ícone</translation>
+      <translation>Піктограма</translation>
     </message>
   </context>
   <context>
     <name>WebSitesModel</name>
     <message>
       <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Inserir artigo como link dentro da tag &lt;iframe&gt;</translation>
+      <translation>Вставте статтю як посилання всередині тега &lt;iframe&gt;</translation>
     </message>
     <message>
       <source>Enabled</source>
-      <translation>Habilitado</translation>
+      <translation>Увімкнено</translation>
     </message>
     <message>
       <source>As link</source>
-      <translation>Como link</translation>
+      <translation>Як посилання</translation>
     </message>
     <message>
       <source>Name</source>
-      <translation>Nome</translation>
+      <translation>Назва</translation>
     </message>
     <message>
       <source>Address</source>
-      <translation>Endereço</translation>
+      <translation>Адреса</translation>
     </message>
     <message>
       <source>Icon</source>
-      <translation>Ícone</translation>
+      <translation>Наличка</translation>
     </message>
   </context>
   <context>
     <name>WordFinder</name>
     <message>
       <source>Failed to query some dictionaries.</source>
-      <translation>Não foi possível consultar alguns dicionários.</translation>
+      <translation>Не вдалось здійснити пошук по деяких словниках.</translation>
     </message>
   </context>
 </TS>
