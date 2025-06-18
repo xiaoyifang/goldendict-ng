@@ -51,7 +51,8 @@ std::string ArticleMaker::makeHtmlHeader( QString const & word, QString const & 
     result += R"(<script> jQuery.noConflict(); </script>)";
 
     result += R"(<script src="qrc:///scripts/gd-custom.js"></script>)";
-    result += R"(<script src="qrc:///scripts/iframeResizer.min.js"></script>)";
+    result += R"(<script src="qrc:///scripts/iframe-resizer.jquery.js"></script>)";
+    result += R"(<script src="qrc:///scripts/iframe-resizer.parent.js"></script>)";
   }
 
   // add qwebchannel
@@ -643,8 +644,8 @@ void ArticleRequest::bodyFinished()
         fmt::format_to( std::back_inserter( head ),
                         FMT_COMPILE(
                           R"( <div class="gdarticle {0} {1}" id="{2}"
-                              onClick="if(typeof gdMakeArticleActive !='undefined')  gdMakeArticleActive( '{3}', false );"
-                              onContextMenu="if(typeof gdMakeArticleActive !='undefined') gdMakeArticleActive( '{3}', false );">)" ),
+                              data-gd-id="{3}"
+                              >)" ),
                         closePrevSpan ? "" : " gdactivearticle",
                         collapse ? " gdcollapsedarticle" : "",
                         gdFrom,
@@ -652,22 +653,21 @@ void ArticleRequest::bodyFinished()
 
         closePrevSpan = true;
 
-        fmt::format_to(
-          std::back_inserter( head ),
-          FMT_COMPILE(
-            R"(<div class="gddictname" onclick="gdExpandArticle('{0}');"  {1}  id="gddictname-{0}" title="{2}">
+        fmt::format_to( std::back_inserter( head ),
+                        FMT_COMPILE(
+                          R"(<div class="gddictname" {1}  id="gddictname-{0}" title="{2}">
                       <span class="gddicticon"><img src="gico://{0}/dicticon.png"></span>
                       <span class="gdfromprefix">{3}</span>
                       <span class="gddicttitle">{4}</span>
                       <span class="collapse_expand_area"><img class="{5}" id="expandicon-{0}" title="{6}" ></span>
                      </div>)" ),
-          dictId,
-          collapse ? R"(style="cursor:pointer;")" : "",
-          "",
-          Html::escape( tr( "From " ).toStdString() ),
-          Html::escape( activeDict->getName() ),
-          collapse ? "gdexpandicon" : "gdcollapseicon",
-          "" );
+                        dictId,
+                        collapse ? R"(style="cursor:pointer;")" : "",
+                        "",
+                        Html::escape( tr( "From " ).toStdString() ),
+                        Html::escape( activeDict->getName() ),
+                        collapse ? "gdexpandicon" : "gdcollapseicon",
+                        "" );
 
         head += R"(<div class="gddictnamebodyseparator"></div>)";
 

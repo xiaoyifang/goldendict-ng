@@ -8,6 +8,7 @@
 #include <QtXml>
 #include <QApplication>
 #include <QStyle>
+#include <QFont>
 
 #ifdef Q_OS_WIN32
   //this is a windows header file.
@@ -215,7 +216,6 @@ Chinese::Chinese():
 
 Romaji::Romaji():
   enable( false ),
-  enableHepburn( true ),
   enableHiragana( true ),
   enableKatakana( true )
 {
@@ -657,7 +657,6 @@ Class load()
 
     if ( !romaji.isNull() ) {
       applyBoolOption( c.transliteration.romaji.enable, romaji.namedItem( "enable" ) );
-      applyBoolOption( c.transliteration.romaji.enableHepburn, romaji.namedItem( "enableHepburn" ) );
       applyBoolOption( c.transliteration.romaji.enableHiragana, romaji.namedItem( "enableHiragana" ) );
       applyBoolOption( c.transliteration.romaji.enableKatakana, romaji.namedItem( "enableKatakana" ) );
     }
@@ -828,7 +827,13 @@ Class load()
     c.preferences.interfaceLanguage = preferences.namedItem( "interfaceLanguage" ).toElement().text();
     c.preferences.displayStyle      = preferences.namedItem( "displayStyle" ).toElement().text();
     c.preferences.interfaceFont     = preferences.namedItem( "interfaceFont" ).toElement().text();
-    c.preferences.interfaceFontSize = preferences.namedItem( "interfaceFontSize" ).toElement().text().toInt();
+    auto fontSize                   = preferences.namedItem( "interfaceFontSize_0" );
+    if ( !fontSize.isNull() ) {
+      c.preferences.interfaceFontSize = fontSize.toElement().text().toInt();
+    }
+    else {
+      c.preferences.interfaceFontSize = Config::DEFAULT_FONT_SIZE;
+    }
 #if !defined( Q_OS_WIN )
     c.preferences.interfaceStyle = preferences.namedItem( "interfaceStyle" ).toElement().text();
 #endif
@@ -1468,10 +1473,6 @@ void save( Class const & c )
     opt.appendChild( dd.createTextNode( c.transliteration.romaji.enable ? "1" : "0" ) );
     romaji.appendChild( opt );
 
-    opt = dd.createElement( "enableHepburn" );
-    opt.appendChild( dd.createTextNode( c.transliteration.romaji.enableHepburn ? "1" : "0" ) );
-    romaji.appendChild( opt );
-
     opt = dd.createElement( "enableHiragana" );
     opt.appendChild( dd.createTextNode( c.transliteration.romaji.enableHiragana ? "1" : "0" ) );
     romaji.appendChild( opt );
@@ -1734,7 +1735,7 @@ void save( Class const & c )
     opt.appendChild( dd.createTextNode( c.preferences.interfaceFont ) );
     preferences.appendChild( opt );
 
-    opt = dd.createElement( "interfaceFontSize" );
+    opt = dd.createElement( "interfaceFontSize_0" );
     opt.appendChild( dd.createTextNode( QString::number( c.preferences.interfaceFontSize ) ) );
     preferences.appendChild( opt );
 
@@ -1960,7 +1961,7 @@ void save( Class const & c )
       proxy.appendChild( opt );
     }
 
-    //anki connect
+    //Anki connect
     {
       QDomElement proxy = dd.createElement( "ankiConnectServer" );
       preferences.appendChild( proxy );

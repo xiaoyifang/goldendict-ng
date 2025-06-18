@@ -72,7 +72,7 @@ pre {
   user-select: none;
 }
 
-/* The anki plus button, which is shown if enabled. */
+/* The Anki plus button, which is shown if enabled. */
 .ankibutton {
   float: right;
   display: grid;
@@ -402,6 +402,15 @@ div.xdxf {
   height: 24px;
 }
 
+.audio-play-icon {
+  display: inline-block;
+  width: 24px; /* Adjust the width as needed */
+  height: 24px; /* Adjust the height as needed */
+  background-image: url("qrc:///icons/playsound.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 /************* DSL dictionaries **************/
 
 .dsl_u {
@@ -513,6 +522,8 @@ div.xdxf {
   color: blue;
   cursor: pointer;
   vertical-align: text-bottom;
+  width: 16px;
+  height: auto;
 }
 
 .dsl_s_wav img {
@@ -654,6 +665,14 @@ div.xdxf {
   clear: both;
 }
 
+.website-iframe {
+  overflow: auto;
+  width: 100%;
+  display: block;
+  border: none;
+  max-height: 800px;
+  min-height: 550px;
+}
 /************* Forvo **************/
 
 .forvo_headword {
@@ -3004,27 +3023,31 @@ table#sv-hooks,
 .mwiki .infl-table {
   display: none;
 }
-/****default hide dict icon ***/
+
 .gddicticon {
   display: none;
 }
 
+.gddicticon img {
+  height: 1rem;
+}
+
 .gdexpandicon {
   cursor: pointer;
-  width: 16px;
-  height: 16px;
+  width: 1rem;
+  height: 1rem;
   vertical-align: text-bottom;
   background-size: contain;
-  content: url("qrc:///icons/arrow.png");
+  content: url("qrc:///icons/arrow.svg");
 }
 
 .gdcollapseicon {
   cursor: pointer;
-  width: 16px;
-  height: 16px;
+  width: 1rem;
+  height: 1rem;
   vertical-align: text-bottom;
   background-size: contain;
-  content: url("qrc:///icons/downarrow.png");
+  content: url("qrc:///icons/downarrow.svg");
 }
 
 /********** Slob dictionaries ***********/

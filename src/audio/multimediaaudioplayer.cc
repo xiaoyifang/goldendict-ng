@@ -42,7 +42,7 @@ QString MultimediaAudioPlayer::play( const char * data, int size )
 void MultimediaAudioPlayer::stop()
 {
   player.stop();
-
+  player.setSource( QUrl() );
   if ( !audioBuffer.isNull() ) {
     audioBuffer->close();
     audioBuffer.reset( nullptr );

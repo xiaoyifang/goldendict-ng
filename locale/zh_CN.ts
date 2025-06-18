@@ -19,20 +19,20 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
-      <translation>Anki: 无法创建一个没有单词的卡片</translation>
+      <source>Anki: can&apos;t create a card without a word</source>
+      <translation>Anki:&apos;t 可以创建一个没有单词的卡</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
       <translation>Anki 搜索：AnkiConnect 未启用。</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
-      <translation>anki:发布失败</translation>
+      <source>Anki: post to Anki failed</source>
+      <translation>Anki：发布到 Anki 失败</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
-      <translation>anki: 发布成功</translation>
+      <source>Anki: post to Anki success</source>
+      <translation>Anki：发帖至Anki 成功</translation>
     </message>
   </context>
   <context>
@@ -290,24 +290,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>启用从简体中文字符转换为正体中文（台湾）字符</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>简体转正体（台湾）</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>启用从简体中文字符转换为繁体中文（香港）字符</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>简体转繁体（香港）</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>启用从繁体中文字符转换为简体中文字符</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>繁体转简体</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -320,6 +308,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>繁体中文至简体中文转换</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation>台湾变体</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation>香港变体</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation>内地变体</translation>
     </message>
   </context>
   <context>
@@ -687,6 +687,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>打开词典文件夹</translation>
+    </message>
+    <message>
+      <source>Restore selection</source>
+      <translation>恢复选择</translation>
     </message>
   </context>
   <context>
@@ -2002,10 +2006,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>阿尔巴尼亚语</translation>
     </message>
     <message>
-      <source>Serbian (Cyrillic)</source>
-      <translation>塞尔维亚语（西里尔文）</translation>
-    </message>
-    <message>
       <source>Swedish</source>
       <translation>瑞典语</translation>
     </message>
@@ -2070,10 +2070,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>艾马拉语</translation>
     </message>
     <message>
-      <source>Arabic, Saudi Arabia</source>
-      <translation>阿拉伯语（沙特阿拉伯）</translation>
-    </message>
-    <message>
       <source>Turkmen</source>
       <translation>土库曼语</translation>
     </message>
@@ -2092,6 +2088,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>English</source>
       <translation>英语</translation>
+    </message>
+    <message>
+      <source>Arabic</source>
+      <translation>阿拉伯语</translation>
+    </message>
+    <message>
+      <source>Serbian</source>
+      <translation>塞尔维亚语</translation>
+    </message>
+    <message>
+      <source>Kabyle</source>
+      <translation>卡拜尔语</translation>
     </message>
   </context>
   <context>
@@ -3445,8 +3453,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>预览字体</translation>
     </message>
     <message>
-      <source>Goldendict-ng is a dictionary software</source>
-      <translation>Goldendict-ng 是字典软件</translation>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng 是一个字典软件。</translation>
     </message>
   </context>
   <context>
@@ -3573,14 +3581,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>更改弹出窗口组。</translation>
     </message>
     <message>
-      <source>Force the word to be translated in scanpopup</source>
-      <translation>强制在取词弹窗中翻译单词</translation>
-    </message>
-    <message>
-      <source>Force the word to be translated in the mainwindow</source>
-      <translation>强制在主窗口中翻译该单词</translation>
-    </message>
-    <message>
       <source>Toggle popup.</source>
       <translation>切换扫描弹出窗口。</translation>
     </message>
@@ -3589,8 +3589,16 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>打印版本和诊断信息。</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation>在配置文件夹中将调试消息保存到 gd_log.txt</translation>
+      <source>Save debug messages to gd_log.txt in the config folder.</source>
+      <translation>在配置文件夹中将调试消息保存到 gd_log.txt。</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in Popup.</source>
+      <translation>强制在弹出窗口中翻译单词。</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow.</source>
+      <translation>强制在主窗口中翻译单词。</translation>
     </message>
   </context>
   <context>
@@ -3914,11 +3922,6 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>方案：</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,
-based on English phonology</source>
-      <translation>以英文语音学为基础建立的，最常用的日文转写方案</translation>
-    </message>
-    <message>
       <source>Hepburn</source>
       <translation>黑本式</translation>
     </message>
@@ -3977,6 +3980,10 @@ based on English phonology</source>
     <message>
       <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>从列表中删除程序 &lt;b&gt;%1&lt;/b&gt;？</translation>
+    </message>
+    <message>
+      <source>The most widely used method of transcription of Japanese, based on English phonology</source>
+      <translation>基于英语音系的日语最广泛使用的转录方法</translation>
     </message>
   </context>
   <context>

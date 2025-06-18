@@ -1,12 +1,9 @@
 Introduction
 ----------------------
 
-GoldenDict-ng has provide an option to build the application with [breakpad](https://docs.sentry.io/platforms/native/guides/breakpad/)
+GoldenDict-ng provides an option to build the application with [breakpad](https://docs.sentry.io/platforms/native/guides/breakpad/)
 
-`CONFIG+=use_breakpad` to enable this feature.
-
-
-Currently only Windows release has built with breakpad support,for other platforms , you can enable the feature manually.
+Only Windows release is built with breakpad support.
 
 How to analyze the dump created by breakpad.
 ------------

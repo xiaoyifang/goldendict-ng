@@ -6,7 +6,7 @@ For technical details see [how to build from source](howto/build_from_source.md)
 
 ## 1. Install Qt
 
-To install Qt on macOS or Windows, uses the [Qt Online Installer](https://doc.qt.io/qt-6/get-and-install-qt.html). It can be downloaded from [Qt for Open Source](https://www.qt.io/download-open-source).
+To install Qt on macOS or Windows, use the [Qt Online Installer](https://doc.qt.io/qt-6/get-and-install-qt.html). It can be downloaded from [Qt for Open Source](https://www.qt.io/download-open-source).
 
 Those Qt components are needed
 
@@ -52,9 +52,9 @@ Then choose your favorite IDE/editor and load the `CMakeLists.txt`. If unsure, j
 
 Open `CMakeLists.txt` from Qt Creator, then you wil choose a "Kit" which is pretty much a Qt installation.
 
-Qt Creator usually can auto detect your Qt installation. In case it doesn't, check out "Kit" settings. Note that, the compiler must be set to MSVC on Windows.
+Qt Creator usually can auto-detect your Qt installation. In case it doesn't, check out "Kit" settings. Note that, the compiler must be set to MSVC on Windows.
 
-By default everything will be built, you can disable ffmpeg, epwing...
+By default, everything will be built but you can disable ffmpeg, epwing...
 
 ![](https://github.com/xiaoyifang/goldendict-ng/assets/20123683/49f6a85e-50ec-4467-b0e4-cf088d218053)
 

@@ -1,11 +1,15 @@
-# Portable mode
+By default, GoldenDict saves program configurations and indexes in the user's home directory.
+To save them in a single portable location, you can to create a `portable` folder next to the main program file.
+Once this folder exists, GoldenDict will launch in portable mode.
 
-Usually GoldenDict store all program settings and dictionary indexes in home folder of current user. In portable mode program settings and dictionary indexes stored in `portable` folder beside the main program file. This mode suit for using of GoldenDict with common settings directly from flash drive on different computers.
+In portable mode, the configurations and indexes are stored in the `portable` folder.
+All dictionaries must be placed in or inside the subfolders of `content` folder, which located besides the main program file.
 
-To turn on portable mode it needs only create `portable` folder beside the main program file. If such folder exists GoldenDict will launched in portable mode.
-
-In portable mode GoldenDict works with some limitations:
-
-You can't select folders with dictionaries. All dictionaries should be placed in `content` folder beside the main program file and/or its subfolders.
-You can't use sound files in separate folders.
-
+Folder structure:
+```
+.
+├── goldendict.exe
+├── portable/
+├── content/
+└── ...
+```

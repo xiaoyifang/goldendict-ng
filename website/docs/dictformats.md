@@ -24,11 +24,11 @@ Popular dictionary formats are all supported.
 * Wikipedia and Wiktionary
 * [DICT](https://en.wikipedia.org/wiki/DICT) protocol
 * LinguaLibre/Forvo pronunciations
-* Any sites which allow set target word in address line
+* Any sites which allow set target word in the address line
 
 ## Other Sources
 
-Various special "dictionaries" can be added, such as Programs, TTS, Morphology, Transliteration, etc... Their doc located at [Sources Management](manage_sources.md)
+Various special "dictionaries" can be added, such as Programs, TTS, Morphology, Transliteration, etc... Their doc is located at [Sources Management](manage_sources.md)
 
 ## Additional info
 
@@ -62,7 +62,7 @@ Main file of Stardict dictionary (.dict) can be compressed by Dictzip program to
 
 [Resource storage](https://github.com/huzheng001/stardict-3/blob/96b96d89eab5f0ad9246c2569a807d6d7982aa84/dict/doc/StarDictFileFormat#L465-L469) folder (images, style sheets, etc.) should be named as `res` beside other dictionary files.
 
-The `res` folder can be compressed into `res.zip` or `my_name.res.zip` (for main dict filename `my_name.ifo/dict`). This zip file shuold also be placed beside other dictionary files. The internal structure of the zip file should not have a top level folder.
+The `res` folder can be compressed into `res.zip` or `my_name.res.zip` (for main dict filename `my_name.ifo/dict`). This zip file should also be placed beside other dictionary files. The internal structure of the zip file should not have a top level folder.
 
 ### ABBYY Lingvo (.dsl)
 

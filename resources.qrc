@@ -5,8 +5,10 @@
         <file>icons/audio.png</file>
         <file>version.txt</file>
         <file>icons/arrow.png</file>
+        <file>icons/arrow.svg</file>
         <file>icons/prefix.png</file>
         <file>icons/playsound.png</file>
+        <file>icons/playsound.svg</file>
         <file>icons/programicon.png</file>
         <file>icons/programicon_scan.png</file>
         <file>icons/warning.png</file>
@@ -24,16 +26,23 @@
         <file>icons/icon32_sdict.png</file>
         <file>icons/icon32_aard.png</file>
         <file>icons/expand_opt.png</file>
+        <file>icons/expand_opt.svg</file>
         <file>icons/collapse_opt.png</file>
+        <file>icons/collapse_opt.svg</file>
         <file>icons/menu_button.svg</file>
         <file>icons/clear.png</file>
         <file>icons/icon32_lingoes.png</file>
         <file>icons/mdict.png</file>
         <file>icons/downarrow.png</file>
+        <file>icons/downarrow.svg</file>
         <file>icons/expand_article_hovered.png</file>
         <file>icons/expand_article.png</file>
+        <file>icons/expand_article_hovered.svg</file>
+        <file>icons/expand_article.svg</file>
         <file>icons/collapse_article_hovered.png</file>
+        <file>icons/collapse_article_hovered.svg</file>
         <file>icons/collapse_article.png</file>
+        <file>icons/collapse_article.svg</file>
         <file>icons/video.png</file>
         <file>icons/programicon_old.png</file>
         <file>icons/playsound_full.png</file>
@@ -103,5 +112,9 @@
         <file>icons/kata.svg</file>
         <file>icons/ru-trans.svg</file>
         <file>icons/de-trans.svg</file>
+        <file>icons/gr-trans.svg</file>
+        <file>icons/by-trans-classic.svg</file>
+        <file>icons/by-trans-school.svg</file>
+        <file>icons/by-trans-cyrillic.svg</file>
     </qresource>
 </RCC>

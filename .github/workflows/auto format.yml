@@ -1,5 +1,7 @@
 name: autofix.ci
-
+concurrency: 
+   group: ${{ github.workflow }}-${{ github.ref }}
+   cancel-in-progress: true
 on:
   pull_request:
     branches:
@@ -34,7 +36,7 @@ jobs:
 
 
   css-js-html-format:
-    name: format css, js, html
+    name: format css/js/html
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -53,7 +55,7 @@ jobs:
         with:
           fetch-depth: 2
       - name: Install Qt
-        uses: jurplel/install-qt-action@v4
+        uses: jurplel/install-qt-action@v4.2.1
         with:
           version: '6.7.2'
           target: 'desktop'

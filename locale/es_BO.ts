@@ -19,20 +19,20 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: no se puede crear una carta sin una palabra</translation>
+      <source>Anki: can&apos;t create a card without a word</source>
+      <translation type="unfinished">Anki: can&apos;t create a card without a word</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
       <translation>Búsqueda Anki: AnkiConnect no está habilitado.</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
-      <translation>anki: mensaje a anki fallido</translation>
+      <source>Anki: post to Anki failed</source>
+      <translation type="unfinished">Anki: post to Anki failed</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
-      <translation>anki: post para éxito anki</translation>
+      <source>Anki: post to Anki success</source>
+      <translation type="unfinished">Anki: post to Anki success</translation>
     </message>
   </context>
   <context>
@@ -291,24 +291,12 @@ entre la ortografía clásica y la escolar en cirílico)</translation>
       <translation>Habilite la conversión de caracteres simplificados a caracteres tradicionales (variante de Taiwán)</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>SC a TC (variante de Taiwán)</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>Habilite la conversión de caracteres simplificados a caracteres tradicionales (variante de Hong Kong)</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>SC a TC (Variante de Hong Kong)</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>Habilite la conversión de caracteres tradicionales a caracteres simplificados</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>CT a CS</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -321,6 +309,18 @@ entre la ortografía clásica y la escolar en cirílico)</translation>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>Conversión de chino tradicional a chino simplificado</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation type="unfinished">Taiwan variant</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation type="unfinished">Hong Kong variant</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation type="unfinished">Mainland variant</translation>
     </message>
   </context>
   <context>
@@ -688,6 +688,10 @@ entre la ortografía clásica y la escolar en cirílico)</translation>
     <message>
       <source>Open dictionary folder</source>
       <translation>Abrir carpeta del diccionario</translation>
+    </message>
+    <message>
+      <source>Restore selection</source>
+      <translation type="unfinished">Restore selection</translation>
     </message>
   </context>
   <context>
@@ -2003,10 +2007,6 @@ entre la ortografía clásica y la escolar en cirílico)</translation>
       <translation>albanés</translation>
     </message>
     <message>
-      <source>Serbian (Cyrillic)</source>
-      <translation>Serbio (cirílico)</translation>
-    </message>
-    <message>
       <source>Swedish</source>
       <translation>sueco</translation>
     </message>
@@ -2071,10 +2071,6 @@ entre la ortografía clásica y la escolar en cirílico)</translation>
       <translation>Aymara</translation>
     </message>
     <message>
-      <source>Arabic, Saudi Arabia</source>
-      <translation>Árabe, Arabia Saudita</translation>
-    </message>
-    <message>
       <source>Turkmen</source>
       <translation>turcomano</translation>
     </message>
@@ -2093,6 +2089,18 @@ entre la ortografía clásica y la escolar en cirílico)</translation>
     <message>
       <source>English</source>
       <translation>Inglés</translation>
+    </message>
+    <message>
+      <source>Arabic</source>
+      <translation>Arabé</translation>
+    </message>
+    <message>
+      <source>Serbian</source>
+      <translation>Serbio</translation>
+    </message>
+    <message>
+      <source>Kabyle</source>
+      <translation type="unfinished">Kabyle</translation>
     </message>
   </context>
   <context>
@@ -3455,8 +3463,8 @@ de los diccionarios Stardict, Babylon y GLS.</translation>
       <translation>Preview Font</translation>
     </message>
     <message>
-      <source>Goldendict-ng is a dictionary software</source>
-      <translation>Goldendict-ng is a dictionary software</translation>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
     </message>
   </context>
   <context>
@@ -3583,14 +3591,6 @@ de los diccionarios Stardict, Babylon y GLS.</translation>
       <translation>Cambiar el grupo de ventanas emergentes.</translation>
     </message>
     <message>
-      <source>Force the word to be translated in scanpopup</source>
-      <translation>Forzar la traducción de la palabra en scanpopup</translation>
-    </message>
-    <message>
-      <source>Force the word to be translated in the mainwindow</source>
-      <translation>Forzar la traducción de la palabra en la ventana principal.</translation>
-    </message>
-    <message>
       <source>Toggle popup.</source>
       <translation>Alternar ventana emergente de escaneo.</translation>
     </message>
@@ -3599,8 +3599,16 @@ de los diccionarios Stardict, Babylon y GLS.</translation>
       <translation>Versión impresa e información de diagnóstico.</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation>Save debug messages to gd_log.txt in the config folder</translation>
+      <source>Save debug messages to gd_log.txt in the config folder.</source>
+      <translation>Guarde los mensajes de depuración en gd_log.txt en la carpeta de configuración.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in Popup.</source>
+      <translation type="unfinished">Force the word to be translated in Popup.</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow.</source>
+      <translation type="unfinished">Force the word to be translated in the mainwindow.</translation>
     </message>
   </context>
   <context>
@@ -3926,12 +3934,6 @@ Lista completa de idiomas disponibles puede encontrarse &lt;a href=&quot;https:/
       <translation>Sistemas:</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,
-based on English phonology</source>
-      <translation>El sistema más utilizado para transcribir japonés,
-basado en la fonología inglesa</translation>
-    </message>
-    <message>
       <source>Hepburn</source>
       <translation>Hepburn</translation>
     </message>
@@ -3990,6 +3992,10 @@ basado en la fonología inglesa</translation>
     <message>
       <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>¿Eliminar el programa &lt;b&gt;%1&lt;/b&gt; de la lista?</translation>
+    </message>
+    <message>
+      <source>The most widely used method of transcription of Japanese, based on English phonology</source>
+      <translation type="unfinished">The most widely used method of transcription of Japanese, based on English phonology</translation>
     </message>
   </context>
   <context>

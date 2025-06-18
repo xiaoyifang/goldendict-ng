@@ -21,7 +21,6 @@ namespace {
 class WebSiteDictionary: public Dictionary::Class
 {
   QByteArray urlTemplate;
-  bool experimentalIframe = false;
   QString iconFilename;
   bool inside_iframe;
   QNetworkAccessManager & netMgr;
@@ -40,11 +39,6 @@ public:
     netMgr( netMgr_ )
   {
     dictionaryName = name_;
-
-    if ( urlTemplate_.startsWith( "http://" ) || urlTemplate_.startsWith( "https://" ) ) {
-      experimentalIframe = true;
-    }
-    //else file:/// local dictionary file path
 
     urlTemplate           = QUrl( urlTemplate_ ).toEncoded();
     dictionaryDescription = urlTemplate_;
@@ -316,22 +310,15 @@ sptr< DataRequest > WebSiteDictionary::getArticle( std::u32string const & str,
 
     //heuristic add url to global whitelist.
     QUrl url( urlString );
-    GlobalBroadcaster::instance()->addWhitelist( url.host() );
+    GlobalBroadcaster::instance()->addWhitelist( Utils::Url::getHostBase( url.host() ) );
 
-    QString encodeUrl;
-    if ( experimentalIframe ) {
-      encodeUrl = "ifr://localhost?url=" + QUrl::toPercentEncoding( urlString );
-    }
-    else {
-      encodeUrl = urlString;
-    }
+    QString encodeUrl = urlString;
 
     fmt::format_to( std::back_inserter( result ),
                     R"(<iframe id="gdexpandframe-{}" src="{}"
-onmouseover="processIframeMouseOver('gdexpandframe-{}');"
-onmouseout="processIframeMouseOut();" scrolling="no"
-style="overflow:visible; width:100%; display:block; border:none;"
-sandbox="allow-same-origin allow-scripts allow-popups"></iframe>)",
+scrolling="no" data-gd-id="{}" 
+class="website-iframe"
+sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>)",
                     getId(),
                     encodeUrl.toStdString(),
                     getId() );

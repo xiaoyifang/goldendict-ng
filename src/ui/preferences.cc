@@ -56,35 +56,19 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   addAction( &helpAction );
 
   // Load values into form
-
   ui.interfaceLanguage->addItem( tr( "System default" ), QString() );
-  // See which other translations do we have
 
-  QStringList availLocs = QDir( Config::getLocDir() ).entryList( QStringList( "*.qm" ), QDir::Files );
+  {
+    QMap< QString, QString > sortedTranslations;
 
-  // We need to sort by language name -- otherwise list looks really weird
-  QMultiMap< QString, QString > sortedLocs;
-  sortedLocs.insert( Language::languageForLocale( "en_US" ), "en_US" );
-  for ( const auto & availLoc : std::as_const( availLocs ) ) {
-    // Here we assume the xx_YY naming, where xx is language and YY is region.
-    //remove .qm suffix.
-    QString locale = availLoc.left( availLoc.size() - 3 );
-
-    if ( locale == "qt" ) {
-      continue; // We skip qt's own localizations
+    // translate and sort languages
+    for ( const auto & [ k, v ] : Language::translationLangMap().asKeyValueRange() ) {
+      sortedTranslations.insert( Language::translationNameFromLangCode( k ), v );
     }
 
-    auto language = Language::languageForLocale( locale );
-    if ( language.isEmpty() ) {
-      qWarning() << "can not found the corresponding language from locale:" << locale;
+    for ( const auto & [ k, v ] : sortedTranslations.asKeyValueRange() ) {
+      ui.interfaceLanguage->addItem( k, v );
     }
-    else {
-      sortedLocs.insert( language, locale );
-    }
-  }
-
-  for ( auto i = sortedLocs.begin(); i != sortedLocs.end(); ++i ) {
-    ui.interfaceLanguage->addItem( i.key(), i.value() );
   }
 
   for ( int x = 0; x < ui.interfaceLanguage->count(); ++x ) {
@@ -104,13 +88,13 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
     ui.interfaceFontSize->setValue( p.interfaceFontSize );
   }
   else {
-    ui.interfaceFontSize->setValue( QApplication::font().pointSize() );
+    ui.interfaceFontSize->setValue( QApplication::font().pixelSize() );
   }
 
 
   prevWebFontFamily = p.customFonts;
   prevSysFont       = p.interfaceFont;
-  prevFontSize      = p.interfaceFontSize;
+  prevFontSize      = ui.interfaceFontSize->value();
 
   if ( !p.customFonts.standard.isEmpty() ) {
     ui.font_standard->setCurrentText( p.customFonts.standard );
@@ -361,13 +345,13 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
     ui.customSettingsGroup->setEnabled( p.proxyServer.enabled );
   }
 
-  //anki connect
+  //Anki connect
   ui.useAnkiConnect->setChecked( p.ankiConnectServer.enabled );
   ui.ankiHost->setText( p.ankiConnectServer.host );
   ui.ankiPort->setValue( p.ankiConnectServer.port );
   ui.ankiModel->setText( p.ankiConnectServer.model );
   ui.ankiDeck->setText( p.ankiConnectServer.deck );
-  //anki connect fields
+  //Anki connect fields
   ui.ankiText->setText( p.ankiConnectServer.text );
   ui.ankiWord->setText( p.ankiConnectServer.word );
   ui.ankiSentence->setText( p.ankiConnectServer.sentence );
@@ -421,7 +405,7 @@ void Preferences::previewInterfaceFont( QString family, int size )
 {
   QFont f = QApplication::font();
   f.setFamily( family );
-  f.setPointSize( size );
+  f.setPixelSize( size );
   this->ui.previewFont->setFont( f );
 }
 
@@ -534,13 +518,13 @@ Config::Preferences Preferences::getPreferences()
   p.proxyServer.user     = ui.proxyUser->text();
   p.proxyServer.password = ui.proxyPassword->text();
 
-  //anki connect
+  //Anki connect
   p.ankiConnectServer.enabled = ui.useAnkiConnect->isChecked();
   p.ankiConnectServer.host    = ui.ankiHost->text();
   p.ankiConnectServer.port    = (unsigned)ui.ankiPort->value();
   p.ankiConnectServer.deck    = ui.ankiDeck->text();
   p.ankiConnectServer.model   = ui.ankiModel->text();
-  //anki connect fields
+  //Anki connect fields
   p.ankiConnectServer.text     = ui.ankiText->text();
   p.ankiConnectServer.word     = ui.ankiWord->text();
   p.ankiConnectServer.sentence = ui.ankiSentence->text();
@@ -639,7 +623,7 @@ void Preferences::on_buttonBox_accepted()
 
   if ( ui.interfaceFontSize->value() != prevFontSize ) {
     auto font = QApplication::font();
-    font.setPointSize( ui.interfaceFontSize->value() );
+    font.setPixelSize( ui.interfaceFontSize->value() );
     QApplication::setFont( font );
   }
   //change interface font.

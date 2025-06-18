@@ -60,9 +60,12 @@ signals:
 private:
 
   Config::MutedDictionaries * mutedDictionaries;
+
+  // In temporary selection, shift+click capture selections.
+  std::optional< Config::MutedDictionaries > tempSelectionCapturedMuted;
+
   Config::Events & configEvents;
 
-  std::optional< Config::MutedDictionaries > singleSelectionInitallyMuted;
   void selectSingleDict( const QString & id );
 
   // how many dictionaries should be shown in the context menu:

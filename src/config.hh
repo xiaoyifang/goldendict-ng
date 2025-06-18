@@ -28,6 +28,11 @@ enum GroupId : unsigned {
 /// GoldenDict's configuration
 namespace Config {
 
+//define a default font fize value
+constexpr int DEFAULT_FONT_SIZE = 12;
+
+const QString WEBSITE_PROXY_PREFIX = "iframe-";
+
 // Tri states enum for Dark and Dark reader mode
 enum class Dark : std::uint8_t {
   Off = 0,
@@ -341,7 +346,12 @@ struct Preferences
   int maxNetworkCacheSize;
   bool clearNetworkCacheOnExit;
   bool removeInvalidIndexOnExit = false;
-  bool enableApplicationLog     = false;
+  bool enableApplicationLog =
+#ifdef Q_OS_WIN
+    true;
+#else
+    false;
+#endif
 
   qreal zoomFactor;
   qreal helpZoomFactor;
@@ -577,7 +587,6 @@ struct Romaji
 {
   bool enable;
 
-  bool enableHepburn;
   bool enableHiragana;
   bool enableKatakana;
 
@@ -585,8 +594,7 @@ struct Romaji
 
   bool operator==( Romaji const & other ) const
   {
-    return enable == other.enable && enableHepburn == other.enableHepburn && enableHiragana == other.enableHiragana
-      && enableKatakana == other.enableKatakana;
+    return enable == other.enable && enableHiragana == other.enableHiragana && enableKatakana == other.enableKatakana;
   }
 
   bool operator!=( Romaji const & other ) const

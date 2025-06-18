@@ -437,6 +437,9 @@
    <property name="text">
     <string>&amp;Configuration Folder</string>
    </property>
+   <property name="shortcut">
+    <string notr="true">F11</string>
+   </property>
    <property name="menuRole">
     <enum>QAction::NoRole</enum>
    </property>

@@ -19,20 +19,20 @@
   <context>
     <name>AnkiConnector</name>
     <message>
-      <source>anki: can&apos;t create a card without a word</source>
-      <translation>anki: 沒選擇詞語，無法建立卡片</translation>
+      <source>Anki: can&apos;t create a card without a word</source>
+      <translation>Anki: 無法建立沒有單字的卡片</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
       <translation>Anki: AnkiConnect 沒有啟用。</translation>
     </message>
     <message>
-      <source>anki: post to anki failed</source>
-      <translation>anki: 調用失敗</translation>
+      <source>Anki: post to Anki failed</source>
+      <translation>Anki: 發送至 Anki 失敗</translation>
     </message>
     <message>
-      <source>anki: post to anki success</source>
-      <translation>anki：發佈到 anki 成功</translation>
+      <source>Anki: post to Anki success</source>
+      <translation>Anki: 發佈到 Anki 成功</translation>
     </message>
   </context>
   <context>
@@ -290,24 +290,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>啟用簡體字轉換為台灣繁體字</translation>
     </message>
     <message>
-      <source>SC to TC (Taiwan variant)</source>
-      <translation>簡體轉為台灣繁體</translation>
-    </message>
-    <message>
       <source>Enable conversion from simplified characters to traditional (Hong Kong variant) characters</source>
       <translation>啟用簡體字轉換為香港繁體字</translation>
     </message>
     <message>
-      <source>SC to TC (Hong Kong variant)</source>
-      <translation>簡體轉為香港繁體</translation>
-    </message>
-    <message>
       <source>Enable conversion from traditional characters to simplified characters</source>
       <translation>啟用繁體字轉換為簡體字</translation>
-    </message>
-    <message>
-      <source>TC to SC</source>
-      <translation>繁體轉為簡體</translation>
     </message>
     <message>
       <source>Simplified to traditional Chinese (Taiwan variant) conversion</source>
@@ -320,6 +308,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Traditional to simplified Chinese conversion</source>
       <translation>繁體字轉換為簡體字</translation>
+    </message>
+    <message>
+      <source>Taiwan variant</source>
+      <translation>台灣版本</translation>
+    </message>
+    <message>
+      <source>Hong Kong variant</source>
+      <translation>香港版本</translation>
+    </message>
+    <message>
+      <source>Mainland variant</source>
+      <translation>大陸版本</translation>
     </message>
   </context>
   <context>
@@ -687,6 +687,10 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Open dictionary folder</source>
       <translation>開啟字典資料夾</translation>
+    </message>
+    <message>
+      <source>Restore selection</source>
+      <translation>恢復選擇</translation>
     </message>
   </context>
   <context>
@@ -2002,10 +2006,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>阿爾巴尼亞文</translation>
     </message>
     <message>
-      <source>Serbian (Cyrillic)</source>
-      <translation>塞爾維亞語（西里爾語）</translation>
-    </message>
-    <message>
       <source>Swedish</source>
       <translation>瑞典語</translation>
     </message>
@@ -2070,10 +2070,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>艾馬拉語</translation>
     </message>
     <message>
-      <source>Arabic, Saudi Arabia</source>
-      <translation>阿拉伯文（沙烏地阿拉伯）</translation>
-    </message>
-    <message>
       <source>Turkmen</source>
       <translation>土庫曼語</translation>
     </message>
@@ -2092,6 +2088,18 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>English</source>
       <translation>英文</translation>
+    </message>
+    <message>
+      <source>Arabic</source>
+      <translation>阿拉伯文</translation>
+    </message>
+    <message>
+      <source>Serbian</source>
+      <translation>塞爾維亞文</translation>
+    </message>
+    <message>
+      <source>Kabyle</source>
+      <translation>卡拜爾語</translation>
     </message>
   </context>
   <context>
@@ -2587,11 +2595,11 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Save PDF complete</source>
-      <translation type="unfinished">Save PDF complete</translation>
+      <translation>儲存 PDF 完成</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
-      <translation type="unfinished">Save PDF failed</translation>
+      <translation>儲存 PDF 失敗</translation>
     </message>
   </context>
   <context>
@@ -3450,8 +3458,8 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>預覽字型</translation>
     </message>
     <message>
-      <source>Goldendict-ng is a dictionary software</source>
-      <translation>Goldendict-ng是一款字典軟體</translation>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng 是一款字典軟體。</translation>
     </message>
   </context>
   <context>
@@ -3578,14 +3586,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>更改彈出窗口的詞組。</translation>
     </message>
     <message>
-      <source>Force the word to be translated in scanpopup</source>
-      <translation>強制在 scanpopup 中翻譯單字</translation>
-    </message>
-    <message>
-      <source>Force the word to be translated in the mainwindow</source>
-      <translation>強制在主視窗中翻譯該單字</translation>
-    </message>
-    <message>
       <source>Toggle popup.</source>
       <translation>切換彈出窗口。</translation>
     </message>
@@ -3594,8 +3594,16 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>打印版本和診斷信息。</translation>
     </message>
     <message>
-      <source>Save debug messages to gd_log.txt in the config folder</source>
-      <translation>將調試消息保存到配置文件夾中的 gd_log.txt</translation>
+      <source>Save debug messages to gd_log.txt in the config folder.</source>
+      <translation>將偵錯訊息儲存到 config 資料夾中的 gd_log.txt。</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in Popup.</source>
+      <translation>強制在彈出視窗中翻譯該單字。</translation>
+    </message>
+    <message>
+      <source>Force the word to be translated in the mainwindow.</source>
+      <translation>強制在主視窗中翻譯該單字。</translation>
     </message>
   </context>
   <context>
@@ -3919,11 +3927,6 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>方案：</translation>
     </message>
     <message>
-      <source>The most widely used method of transcription of Japanese,
-based on English phonology</source>
-      <translation>以英文語音學為基礎所建立的最常用日文轉寫方案</translation>
-    </message>
-    <message>
       <source>Hepburn</source>
       <translation>黑本式</translation>
     </message>
@@ -3982,6 +3985,10 @@ based on English phonology</source>
     <message>
       <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
       <translation>將程式 &lt;b&gt;%1&lt;/b&gt; 從清單移除？</translation>
+    </message>
+    <message>
+      <source>The most widely used method of transcription of Japanese, based on English phonology</source>
+      <translation>以英文語音學為基礎所建立的最常用日文轉寫方案</translation>
     </message>
   </context>
   <context>

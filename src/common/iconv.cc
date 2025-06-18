@@ -5,6 +5,7 @@
 #include <vector>
 #include <errno.h>
 #include <string.h>
+#include <QDebug>
 
 Iconv::Iconv( char const * from ):
   state( iconv_open( Text::utf8, from ) )
@@ -29,7 +30,8 @@ QByteArray Iconv::fromUnicode( const QString & input, const char * toEncoding )
   // Initialize iconv
   iconv_t cd = iconv_open( toEncoding, "UTF-8" );
   if ( cd == (iconv_t)-1 ) {
-    throw std::runtime_error( "iconv_open failed" );
+    qDebug() << "iconv_open failed";
+    return {};
   }
 
   // Prepare output buffer
@@ -50,7 +52,8 @@ QByteArray Iconv::fromUnicode( const QString & input, const char * toEncoding )
       }
       else {
         iconv_close( cd );
-        throw std::runtime_error( "iconv conversion failed" );
+        qDebug() << "iconv conversion failed";
+        return {};
       }
     }
   }
@@ -120,7 +123,6 @@ QString Iconv::convert( void const *& inBuf, size_t & inBytesLeft )
 }
 
 std::u32string Iconv::toWstring( char const * fromEncoding, void const * fromData, size_t dataSize )
-
 {
   /// Special-case the dataSize == 0 to avoid any kind of iconv-specific
   /// behaviour in that regard.
