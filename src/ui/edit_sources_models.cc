@@ -84,6 +84,8 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg ):
 
   ui.paths->setTabKeyNavigation( true );
   ui.paths->setModel( &pathsModel );
+  ui.paths->setSelectionMode(QAbstractItemView::ExtendedSelection); 
+  ui.paths->setSelectionBehavior(QAbstractItemView::SelectRows);
 
   fitPathsColumns();
 
@@ -162,19 +164,30 @@ void Sources::on_addPath_clicked()
 
 void Sources::on_removePath_clicked()
 {
-  QModelIndex current = ui.paths->currentIndex();
+  QModelIndexList selected = ui.paths->selectionModel()->selectedRows();
 
-  if ( current.isValid()
-       && QMessageBox::question(
-            this,
-            tr( "Confirm removal" ),
-            tr( "Remove directory <b>%1</b> from the list?" ).arg( pathsModel.getCurrentPaths()[ current.row() ].path ),
-            QMessageBox::Ok,
-            QMessageBox::Cancel )
-         == QMessageBox::Ok ) {
-    pathsModel.removePath( current.row() );
-    fitPathsColumns();
+  if ( selected.isEmpty() ) {
+    return;
   }
+
+
+  // sort selected rows in reverse order to avoid invalidating indices
+  std::sort( selected.begin(), selected.end(), []( const QModelIndex & a, const QModelIndex & b ) {
+    return a.row() > b.row();
+  } );
+
+
+  if ( QMessageBox::question( this,
+                              tr( "Confirm removal" ),
+                              tr( "Remove selected directories from the list?" ),
+                              QMessageBox::Ok,
+                              QMessageBox::Cancel )
+       == QMessageBox::Ok ) {
+    for ( const QModelIndex & index : selected ) {
+      pathsModel.removePath( index.row() );
+    }
+  }
+  fitPathsColumns();
 }
 
 void Sources::on_addSoundDir_clicked()
