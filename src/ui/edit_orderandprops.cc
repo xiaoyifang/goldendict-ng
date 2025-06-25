@@ -95,7 +95,7 @@ OrderAndProps::OrderAndProps( QWidget * parent,
   QWidget( parent )
 {
   ui.setupUi( this );
-  resetData(dictionaryOrder, inactiveDictionaries, allDictionaries);
+  resetData( dictionaryOrder, inactiveDictionaries, allDictionaries );
 
   ui.searchLine->applyTo( ui.dictionaryOrder );
   addAction( ui.searchLine->getFocusAction() );
@@ -125,17 +125,17 @@ OrderAndProps::OrderAndProps( QWidget * parent,
   showDictNumbers();
 }
 
-void OrderAndProps::resetData(Config::Group const& dictionaryOrder,
-                              Config::Group const& inactiveDictionaries,
-                              std::vector<sptr<Dictionary::Class>> const& allDictionaries)
+void OrderAndProps::resetData( Config::Group const & dictionaryOrder,
+                               Config::Group const & inactiveDictionaries,
+                               std::vector< sptr< Dictionary::Class > > const & allDictionaries )
 {
-    Instances::Group order(dictionaryOrder, allDictionaries, Config::Group());
-    Instances::Group inactive(inactiveDictionaries, allDictionaries, Config::Group());
+  Instances::Group order( dictionaryOrder, allDictionaries, Config::Group() );
+  Instances::Group inactive( inactiveDictionaries, allDictionaries, Config::Group() );
 
-    Instances::complementDictionaryOrder(order, inactive, allDictionaries);
+  Instances::complementDictionaryOrder( order, inactive, allDictionaries );
 
-    ui.dictionaryOrder->populate(order.dictionaries, allDictionaries);
-    ui.inactiveDictionaries->populate(inactive.dictionaries, allDictionaries);
+  ui.dictionaryOrder->populate( order.dictionaries, allDictionaries );
+  ui.inactiveDictionaries->populate( inactive.dictionaries, allDictionaries );
 }
 
 Config::Group OrderAndProps::getCurrentDictionaryOrder() const

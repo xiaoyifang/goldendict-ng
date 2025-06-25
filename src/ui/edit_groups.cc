@@ -56,16 +56,16 @@ Groups::Groups( QWidget * parent,
   countChanged();
 }
 
-void Groups::resetData(vector<sptr<Dictionary::Class>> const& dicts_,
-                       Config::Groups const& groups_,
-                       Config::Group const& order)
+void Groups::resetData( vector< sptr< Dictionary::Class > > const & dicts_,
+                        Config::Groups const & groups_,
+                        Config::Group const & order )
 {
-    // Populate the dictionaries' list
-    ui.dictionaries->setAsSource();
-    ui.dictionaries->populate(Instances::Group(order, dicts_, Config::Group()).dictionaries, dicts_);
+  // Populate the dictionaries' list
+  ui.dictionaries->setAsSource();
+  ui.dictionaries->populate( Instances::Group( order, dicts_, Config::Group() ).dictionaries, dicts_ );
 
-    // Populate groups' widget
-    ui.groups->populate(groups_, dicts_, ui.dictionaries->getCurrentDictionaries());
+  // Populate groups' widget
+  ui.groups->populate( groups_, dicts_, ui.dictionaries->getCurrentDictionaries() );
 }
 
 void Groups::editGroup( unsigned id )
