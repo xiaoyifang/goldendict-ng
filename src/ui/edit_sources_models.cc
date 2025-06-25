@@ -195,8 +195,15 @@ void Sources::on_removePath_clicked()
   }
 
   // Use reverse iteration instead of sorting
-  for ( auto it = selected.rbegin(); it != selected.rend(); ++it ) {
-    pathsModel.removePath( it->row() );
+  QList< QPersistentModelIndex > persistentIndexes;
+  for ( const auto & idx : selected ) {
+    persistentIndexes.append( idx );
+  }
+
+  for ( const auto & persistentIdx : persistentIndexes ) {
+    if ( persistentIdx.isValid() ) {
+      pathsModel.removePath( persistentIdx.row() );
+    }
   }
 
   fitPathsColumns();
@@ -232,8 +239,15 @@ void Sources::on_removeSoundDir_clicked()
     return;
   }
 
-  for ( const QModelIndex & idx : selected ) {
-    soundDirsModel.removeSoundDir( idx.row() );
+  QList< QPersistentModelIndex > persistentIndexes;
+  for ( const auto & idx : selected ) {
+    persistentIndexes.append( idx );
+  }
+
+  for ( const auto & persistentIdx : persistentIndexes ) {
+    if ( persistentIdx.isValid() ) {
+      soundDirsModel.removeSoundDir( persistentIdx.row() );
+    }
   }
 
   fitSoundDirsColumns();
@@ -280,8 +294,15 @@ void Sources::on_removeMediaWiki_clicked()
     return;
   }
 
-  for ( const QModelIndex & idx : selected ) {
-    mediawikisModel.removeWiki( idx.row() );
+  QList< QPersistentModelIndex > persistentIndexes;
+  for ( const auto & idx : selected ) {
+    persistentIndexes.append( idx );
+  }
+
+  for ( const auto & persistentIdx : persistentIndexes ) {
+    if ( persistentIdx.isValid() ) {
+      mediawikisModel.removeWiki( persistentIdx.row() );
+    }
   }
 }
 
@@ -315,8 +336,15 @@ void Sources::on_removeWebSite_clicked()
     return;
   }
 
-  for ( const QModelIndex & idx : selected ) {
-    webSitesModel.removeSite( idx.row() );
+  QList< QPersistentModelIndex > persistentIndexes;
+  for ( const auto & idx : selected ) {
+    persistentIndexes.append( idx );
+  }
+
+  for ( const auto & persistentIdx : persistentIndexes ) {
+    if ( persistentIdx.isValid() ) {
+      webSitesModel.removeSite( persistentIdx.row() );
+    }
   }
 }
 
@@ -351,8 +379,15 @@ void Sources::on_removeDictServer_clicked()
     return;
   }
 
-  for ( const QModelIndex & idx : selected ) {
-    dictServersModel.removeServer( idx.row() );
+  QList< QPersistentModelIndex > persistentIndexes;
+  for ( const auto & idx : selected ) {
+    persistentIndexes.append( idx );
+  }
+
+  for ( const auto & persistentIdx : persistentIndexes ) {
+    if ( persistentIdx.isValid() ) {
+      dictServersModel.removeServer( persistentIdx.row() );
+    }
   }
 }
 
@@ -389,8 +424,15 @@ void Sources::on_removeProgram_clicked()
     return;
   }
 
-  for ( const QModelIndex & idx : selected ) {
-    programsModel.removeProgram( idx.row() );
+  QList< QPersistentModelIndex > persistentIndexes;
+  for ( const auto & idx : selected ) {
+    persistentIndexes.append( idx );
+  }
+
+  for ( const auto & persistentIdx : persistentIndexes ) {
+    if ( persistentIdx.isValid() ) {
+      programsModel.removeProgram( persistentIdx.row() );
+    }
   }
 }
 
