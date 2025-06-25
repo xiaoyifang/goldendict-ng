@@ -49,8 +49,8 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg ):
   ui.mediaWikis->resizeColumnToContents( 2 );
   ui.mediaWikis->resizeColumnToContents( 3 );
   ui.mediaWikis->resizeColumnToContents( 4 );
-  ui.mediaWikis->setSelectionMode(QAbstractItemView::ExtendedSelection);
-  ui.mediaWikis->setSelectionBehavior(QAbstractItemView::SelectRows);
+  ui.mediaWikis->setSelectionMode( QAbstractItemView::ExtendedSelection );
+  ui.mediaWikis->setSelectionBehavior( QAbstractItemView::SelectRows );
 
   ui.webSites->setTabKeyNavigation( true );
   ui.webSites->setModel( &webSitesModel );
@@ -61,8 +61,8 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg ):
   ui.webSites->resizeColumnToContents( 2 );
   ui.webSites->resizeColumnToContents( 3 );
   ui.webSites->resizeColumnToContents( 4 );
-  ui.webSites->setSelectionMode(QAbstractItemView::ExtendedSelection); 
-  ui.webSites->setSelectionBehavior(QAbstractItemView::SelectRows);
+  ui.webSites->setSelectionMode( QAbstractItemView::ExtendedSelection );
+  ui.webSites->setSelectionBehavior( QAbstractItemView::SelectRows );
 
   ui.dictServers->setTabKeyNavigation( true );
   ui.dictServers->setModel( &dictServersModel );
@@ -95,8 +95,8 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg ):
 
   ui.soundDirs->setTabKeyNavigation( true );
   ui.soundDirs->setModel( &soundDirsModel );
-  ui.soundDirs->setSelectionMode(QAbstractItemView::ExtendedSelection);
-  ui.soundDirs->setSelectionBehavior(QAbstractItemView::SelectRows);
+  ui.soundDirs->setSelectionMode( QAbstractItemView::ExtendedSelection );
+  ui.soundDirs->setSelectionBehavior( QAbstractItemView::SelectRows );
 
   fitSoundDirsColumns();
 
