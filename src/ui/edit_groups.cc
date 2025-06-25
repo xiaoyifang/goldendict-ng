@@ -19,14 +19,10 @@ Groups::Groups( QWidget * parent,
 {
   ui.setupUi( this );
 
-  // Populate the dictionaries' list
-
-  ui.dictionaries->setAsSource();
-  ui.dictionaries->populate( Instances::Group( order, dicts, Config::Group() ).dictionaries, dicts );
+  resetData( dicts_, groups_, order );
 
   ui.searchLine->applyTo( ui.dictionaries );
   addAction( ui.searchLine->getFocusAction() );
-
   groupsListMenu = new QMenu( tr( "Group tabs" ), ui.groups );
 
   groupsListButton = new QToolButton( ui.groups );
@@ -40,10 +36,6 @@ Groups::Groups( QWidget * parent,
 
   connect( groupsListMenu, &QMenu::aboutToShow, this, &Groups::fillGroupsMenu );
   connect( groupsListMenu, &QMenu::triggered, this, &Groups::switchToGroup );
-
-  // Populate groups' widget
-
-  ui.groups->populate( groups, dicts, ui.dictionaries->getCurrentDictionaries() );
 
   connect( ui.addGroup, &QAbstractButton::clicked, this, &Groups::addNew );
   connect( ui.renameGroup, &QAbstractButton::clicked, this, &Groups::renameCurrent );
@@ -62,6 +54,18 @@ Groups::Groups( QWidget * parent,
   connect( ui.dictionaries, &QWidget::customContextMenuRequested, this, &Groups::showDictInfo );
 
   countChanged();
+}
+
+void Groups::resetData(vector<sptr<Dictionary::Class>> const& dicts_,
+                       Config::Groups const& groups_,
+                       Config::Group const& order)
+{
+    // Populate the dictionaries' list
+    ui.dictionaries->setAsSource();
+    ui.dictionaries->populate(Instances::Group(order, dicts_, Config::Group()).dictionaries, dicts_);
+
+    // Populate groups' widget
+    ui.groups->populate(groups_, dicts_, ui.dictionaries->getCurrentDictionaries());
 }
 
 void Groups::editGroup( unsigned id )
