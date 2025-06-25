@@ -176,17 +176,19 @@ void Sources::on_removePath_clicked()
     return a.row() > b.row();
   } );
 
-
   if ( QMessageBox::question( this,
                               tr( "Confirm removal" ),
                               tr( "Remove selected directories from the list?" ),
-                              QMessageBox::Ok,
-                              QMessageBox::Cancel )
-       == QMessageBox::Ok ) {
-    for ( const QModelIndex & index : selected ) {
-      pathsModel.removePath( index.row() );
-    }
+                              QMessageBox::StandardButtons( QMessageBox::Ok | QMessageBox::Cancel ) )
+       != QMessageBox::Ok ) {
+    return;
   }
+
+  // Use reverse iteration instead of sorting
+  for ( auto it = selected.rbegin(); it != selected.rend(); ++it ) {
+    pathsModel.removePath( it->row() );
+  }
+
   fitPathsColumns();
 }
 
