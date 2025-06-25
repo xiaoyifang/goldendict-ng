@@ -49,6 +49,8 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg ):
   ui.mediaWikis->resizeColumnToContents( 2 );
   ui.mediaWikis->resizeColumnToContents( 3 );
   ui.mediaWikis->resizeColumnToContents( 4 );
+  ui.mediaWikis->setSelectionMode(QAbstractItemView::ExtendedSelection);
+  ui.mediaWikis->setSelectionBehavior(QAbstractItemView::SelectRows);
 
   ui.webSites->setTabKeyNavigation( true );
   ui.webSites->setModel( &webSitesModel );
@@ -59,6 +61,8 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg ):
   ui.webSites->resizeColumnToContents( 2 );
   ui.webSites->resizeColumnToContents( 3 );
   ui.webSites->resizeColumnToContents( 4 );
+  ui.webSites->setSelectionMode(QAbstractItemView::ExtendedSelection); 
+  ui.webSites->setSelectionBehavior(QAbstractItemView::SelectRows);
 
   ui.dictServers->setTabKeyNavigation( true );
   ui.dictServers->setModel( &dictServersModel );
@@ -91,6 +95,8 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg ):
 
   ui.soundDirs->setTabKeyNavigation( true );
   ui.soundDirs->setModel( &soundDirsModel );
+  ui.soundDirs->setSelectionMode(QAbstractItemView::ExtendedSelection);
+  ui.soundDirs->setSelectionBehavior(QAbstractItemView::SelectRows);
 
   fitSoundDirsColumns();
 
@@ -204,19 +210,29 @@ void Sources::on_addSoundDir_clicked()
 
 void Sources::on_removeSoundDir_clicked()
 {
-  QModelIndex current = ui.soundDirs->currentIndex();
-
-  if ( current.isValid()
-       && QMessageBox::question( this,
-                                 tr( "Confirm removal" ),
-                                 tr( "Remove directory <b>%1</b> from the list?" )
-                                   .arg( soundDirsModel.getCurrentSoundDirs()[ current.row() ].path ),
-                                 QMessageBox::Ok,
-                                 QMessageBox::Cancel )
-         == QMessageBox::Ok ) {
-    soundDirsModel.removeSoundDir( current.row() );
-    fitSoundDirsColumns();
+  QModelIndexList selected = ui.soundDirs->selectionModel()->selectedRows();
+  if ( selected.isEmpty() ) {
+    return;
   }
+
+  // Sort in reverse order to avoid index invalidation
+  std::sort( selected.begin(), selected.end(), []( const QModelIndex & a, const QModelIndex & b ) {
+    return a.row() > b.row();
+  } );
+
+  if ( QMessageBox::question( this,
+                              tr( "Confirm removal" ),
+                              tr( "Remove %1 directories from the list?" ).arg( selected.size() ),
+                              QMessageBox::Ok | QMessageBox::Cancel )
+       != QMessageBox::Ok ) {
+    return;
+  }
+
+  for ( const QModelIndex & idx : selected ) {
+    soundDirsModel.removeSoundDir( idx.row() );
+  }
+
+  fitSoundDirsColumns();
 }
 
 void Sources::on_changeHunspellPath_clicked()
@@ -242,17 +258,26 @@ void Sources::on_addMediaWiki_clicked()
 
 void Sources::on_removeMediaWiki_clicked()
 {
-  QModelIndex current = ui.mediaWikis->currentIndex();
+  QModelIndexList selected = ui.mediaWikis->selectionModel()->selectedRows();
+  if ( selected.isEmpty() ) {
+    return;
+  }
 
-  if ( current.isValid()
-       && QMessageBox::question(
-            this,
-            tr( "Confirm removal" ),
-            tr( "Remove site <b>%1</b> from the list?" ).arg( mediawikisModel.getCurrentWikis()[ current.row() ].name ),
-            QMessageBox::Ok,
-            QMessageBox::Cancel )
-         == QMessageBox::Ok ) {
-    mediawikisModel.removeWiki( current.row() );
+  // Sort in reverse order to avoid index invalidation
+  std::sort( selected.begin(), selected.end(), []( const QModelIndex & a, const QModelIndex & b ) {
+    return a.row() > b.row();
+  } );
+
+  if ( QMessageBox::question( this,
+                              tr( "Confirm removal" ),
+                              tr( "Remove %1 sites from the list?" ).arg( selected.size() ),
+                              QMessageBox::Ok | QMessageBox::Cancel )
+       != QMessageBox::Ok ) {
+    return;
+  }
+
+  for ( const QModelIndex & idx : selected ) {
+    mediawikisModel.removeWiki( idx.row() );
   }
 }
 
@@ -268,17 +293,26 @@ void Sources::on_addWebSite_clicked()
 
 void Sources::on_removeWebSite_clicked()
 {
-  QModelIndex current = ui.webSites->currentIndex();
+  QModelIndexList selected = ui.webSites->selectionModel()->selectedRows();
+  if ( selected.isEmpty() ) {
+    return;
+  }
 
-  if ( current.isValid()
-       && QMessageBox::question( this,
-                                 tr( "Confirm removal" ),
-                                 tr( "Remove site <b>%1</b> from the list?" )
-                                   .arg( webSitesModel.getCurrentWebSites()[ current.row() ].name ),
-                                 QMessageBox::Ok,
-                                 QMessageBox::Cancel )
-         == QMessageBox::Ok ) {
-    webSitesModel.removeSite( current.row() );
+  // Sort in reverse order to avoid index invalidation
+  std::sort( selected.begin(), selected.end(), []( const QModelIndex & a, const QModelIndex & b ) {
+    return a.row() > b.row();
+  } );
+
+  if ( QMessageBox::question( this,
+                              tr( "Confirm removal" ),
+                              tr( "Remove %1 sites from the list?" ).arg( selected.size() ),
+                              QMessageBox::Ok | QMessageBox::Cancel )
+       != QMessageBox::Ok ) {
+    return;
+  }
+
+  for ( const QModelIndex & idx : selected ) {
+    webSitesModel.removeSite( idx.row() );
   }
 }
 
