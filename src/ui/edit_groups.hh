@@ -18,7 +18,7 @@ public:
           std::vector< sptr< Dictionary::Class > > const &,
           Config::Groups const &,
           Config::Group const & order );
-  void resetData( vector< sptr< Dictionary::Class > > const & dicts_,
+  void resetData( std::vector< sptr< Dictionary::Class > > const & dicts_,
                   Config::Groups const & groups_,
                   Config::Group const & order );
   /// Instructs the dialog to position itself on editing the given group.
