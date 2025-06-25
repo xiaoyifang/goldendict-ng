@@ -3950,14 +3950,6 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>The most widely used method of transcription of Japanese, based on English phonology</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3971,6 +3963,14 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
         <source>Remove %1 sites from the list?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove %1 servers from the list?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove %1 programs from the list?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
