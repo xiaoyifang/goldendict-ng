@@ -72,8 +72,8 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg ):
   ui.dictServers->resizeColumnToContents( 3 );
   ui.dictServers->resizeColumnToContents( 4 );
   ui.dictServers->resizeColumnToContents( 5 );
-  ui.dictServers->setSelectionMode(QAbstractItemView::ExtendedSelection); 
-  ui.dictServers->setSelectionBehavior(QAbstractItemView::SelectRows);
+  ui.dictServers->setSelectionMode( QAbstractItemView::ExtendedSelection );
+  ui.dictServers->setSelectionBehavior( QAbstractItemView::SelectRows );
 
   ui.programs->setTabKeyNavigation( true );
   ui.programs->setModel( &programsModel );
@@ -87,8 +87,8 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg ):
   ui.programs->resizeColumnToContents( 3 );
   ui.programs->resizeColumnToContents( 4 );
   ui.programs->setItemDelegate( itemDelegate );
-  ui.programs->setSelectionMode(QAbstractItemView::ExtendedSelection); 
-  ui.programs->setSelectionBehavior(QAbstractItemView::SelectRows);
+  ui.programs->setSelectionMode( QAbstractItemView::ExtendedSelection );
+  ui.programs->setSelectionBehavior( QAbstractItemView::SelectRows );
 
   ui.paths->setTabKeyNavigation( true );
   ui.paths->setModel( &pathsModel );
