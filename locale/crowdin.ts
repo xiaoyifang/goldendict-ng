@@ -3965,6 +3965,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
         <source>The most widely used method of transcription of Japanese, based on English phonology</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Remove selected directories from the list?</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StylesComboBox</name>
