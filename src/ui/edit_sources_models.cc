@@ -84,8 +84,8 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg ):
 
   ui.paths->setTabKeyNavigation( true );
   ui.paths->setModel( &pathsModel );
-  ui.paths->setSelectionMode(QAbstractItemView::ExtendedSelection); 
-  ui.paths->setSelectionBehavior(QAbstractItemView::SelectRows);
+  ui.paths->setSelectionMode( QAbstractItemView::ExtendedSelection );
+  ui.paths->setSelectionBehavior( QAbstractItemView::SelectRows );
 
   fitPathsColumns();
 
