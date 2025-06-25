@@ -72,6 +72,8 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg ):
   ui.dictServers->resizeColumnToContents( 3 );
   ui.dictServers->resizeColumnToContents( 4 );
   ui.dictServers->resizeColumnToContents( 5 );
+  ui.dictServers->setSelectionMode(QAbstractItemView::ExtendedSelection); 
+  ui.dictServers->setSelectionBehavior(QAbstractItemView::SelectRows);
 
   ui.programs->setTabKeyNavigation( true );
   ui.programs->setModel( &programsModel );
@@ -85,6 +87,8 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg ):
   ui.programs->resizeColumnToContents( 3 );
   ui.programs->resizeColumnToContents( 4 );
   ui.programs->setItemDelegate( itemDelegate );
+  ui.programs->setSelectionMode(QAbstractItemView::ExtendedSelection); 
+  ui.programs->setSelectionBehavior(QAbstractItemView::SelectRows);
 
   ui.paths->setTabKeyNavigation( true );
   ui.paths->setModel( &pathsModel );
@@ -328,17 +332,27 @@ void Sources::on_addDictServer_clicked()
 
 void Sources::on_removeDictServer_clicked()
 {
-  QModelIndex current = ui.dictServers->currentIndex();
+  QModelIndexList selected = ui.dictServers->selectionModel()->selectedRows();
+  if ( selected.isEmpty() ) {
+    return;
+  }
 
-  if ( current.isValid()
-       && QMessageBox::question( this,
-                                 tr( "Confirm removal" ),
-                                 tr( "Remove site <b>%1</b> from the list?" )
-                                   .arg( dictServersModel.getCurrentDictServers()[ current.row() ].name ),
-                                 QMessageBox::Ok,
-                                 QMessageBox::Cancel )
-         == QMessageBox::Ok ) {
-    dictServersModel.removeServer( current.row() );
+  // Sort in reverse order to avoid index invalidation
+  std::sort( selected.begin(), selected.end(), []( const QModelIndex & a, const QModelIndex & b ) {
+    return a.row() > b.row();
+  } );
+
+  if ( QMessageBox::question( this,
+                              tr( "Confirm removal" ),
+                              tr( "Remove %1 servers from the list?" ).arg( selected.size() ),
+                              QMessageBox::Yes | QMessageBox::No,
+                              QMessageBox::No )
+       != QMessageBox::Yes ) {
+    return;
+  }
+
+  for ( const QModelIndex & idx : selected ) {
+    dictServersModel.removeServer( idx.row() );
   }
 }
 
@@ -354,17 +368,36 @@ void Sources::on_addProgram_clicked()
 
 void Sources::on_removeProgram_clicked()
 {
-  QModelIndex current = ui.programs->currentIndex();
+  QModelIndexList selected = ui.programs->selectionModel()->selectedRows();
+  if ( selected.isEmpty() ) {
+    return;
+  }
 
-  if ( current.isValid()
-       && QMessageBox::question( this,
-                                 tr( "Confirm removal" ),
-                                 tr( "Remove program <b>%1</b> from the list?" )
-                                   .arg( programsModel.getCurrentPrograms()[ current.row() ].name ),
-                                 QMessageBox::Ok,
-                                 QMessageBox::Cancel )
-         == QMessageBox::Ok ) {
-    programsModel.removeProgram( current.row() );
+  // Sort in reverse order to avoid index invalidation
+  std::sort( selected.begin(), selected.end(), []( const QModelIndex & a, const QModelIndex & b ) {
+    return a.row() > b.row();
+  } );
+
+  QString message;
+  if ( selected.size() == 1 ) {
+    message = tr( "Remove program <b>%1</b> from the list?" )
+                .arg( programsModel.getCurrentPrograms()[ selected.first().row() ].name );
+  }
+  else {
+    message = tr( "Remove %1 programs from the list?" ).arg( selected.size() );
+  }
+
+  if ( QMessageBox::question( this,
+                              tr( "Confirm removal" ),
+                              message,
+                              QMessageBox::Yes | QMessageBox::No,
+                              QMessageBox::No )
+       != QMessageBox::Yes ) {
+    return;
+  }
+
+  for ( const QModelIndex & idx : selected ) {
+    programsModel.removeProgram( idx.row() );
   }
 }
 
