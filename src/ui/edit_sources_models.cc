@@ -378,14 +378,7 @@ void Sources::on_removeProgram_clicked()
     return a.row() > b.row();
   } );
 
-  QString message;
-  if ( selected.size() == 1 ) {
-    message = tr( "Remove program <b>%1</b> from the list?" )
-                .arg( programsModel.getCurrentPrograms()[ selected.first().row() ].name );
-  }
-  else {
-    message = tr( "Remove %1 programs from the list?" ).arg( selected.size() );
-  }
+  QString message = tr( "Remove %1 programs from the list?" ).arg( selected.size() );
 
   if ( QMessageBox::question( this,
                               tr( "Confirm removal" ),
