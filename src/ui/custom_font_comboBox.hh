@@ -4,11 +4,11 @@
 #include <QFontComboBox>
 #include <QStringList>
 
-class CustomFontComboBox : public QFontComboBox
+class CustomFontComboBox: public QFontComboBox
 {
-    Q_OBJECT
+  Q_OBJECT
 
 public:
-    explicit CustomFontComboBox(QWidget *parent = nullptr);
-    void insertCustomItem(const QString &item,int index=0);
+  explicit CustomFontComboBox( QWidget * parent = nullptr );
+  void insertCustomItem( const QString & item, int index = 0 );
 };
