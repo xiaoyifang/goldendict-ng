@@ -47,7 +47,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   connect( ui.systemFont, &QFontComboBox::currentTextChanged, this, [ this ]( const QString & font ) {
     previewInterfaceFont( font, ui.interfaceFontSize->value() );
   } );
-
+  ui.systemFont->insertItem(0, tr("System - Default"));
   connect( ui.interfaceFontSize, &QSpinBox::valueChanged, this, [ this ]( int size ) {
     previewInterfaceFont( ui.systemFont->currentText(), size );
   } );
@@ -80,15 +80,19 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   }
 
   //System Font
-  if ( !p.interfaceFont.isEmpty() ) {
-    ui.systemFont->setCurrentText( p.interfaceFont );
+  if ( p.interfaceFont.isEmpty() ) {
+      ui.systemFont->setCurrentIndex(0); // default system font
+  }
+  else {
+      ui.systemFont->setCurrentText(p.interfaceFont);
   }
 
   if ( p.interfaceFontSize > 0 ) {
     ui.interfaceFontSize->setValue( p.interfaceFontSize );
   }
   else {
-    ui.interfaceFontSize->setValue( QApplication::font().pixelSize() );
+    QFont defaultFont = QFontDatabase::systemFont( QFontDatabase::SystemFont::GeneralFont );
+    ui.interfaceFontSize->setValue( defaultFont.pixelSize()<=0? Config::DEFAULT_FONT_SIZE : defaultFont.pixelSize() );
   }
 
 
@@ -403,8 +407,14 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 }
 void Preferences::previewInterfaceFont( QString family, int size )
 {
+  QString fontName = family;
+  // Handle special item: "System - Default"
+  if ( family == tr( "System - Default" ) ) {
+    QFont defaultFont = QFontDatabase::systemFont( QFontDatabase::SystemFont::GeneralFont );
+    fontName = defaultFont.family();
+  }
   QFont f = QApplication::font();
-  f.setFamily( family );
+  f.setFamily( fontName );
   f.setPixelSize( size );
   this->ui.previewFont->setFont( f );
 }
