@@ -2037,6 +2037,11 @@ from Stardict, Babylon and GLS dictionaries</string>
    <extends>QComboBox</extends>
    <header>stylescombobox.hh</header>
   </customwidget>
+  <customwidget>
+   <class>CustomFontComboBox</class>
+   <extends>QFontComboBox</extends>
+   <header>custom_font_combobox.hh</header>
+  </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>tabWidget</tabstop>
