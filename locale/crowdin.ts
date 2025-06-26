@@ -3442,6 +3442,10 @@ from Stardict, Babylon and GLS dictionaries</source>
         <source>GoldenDict-ng is a dictionary software.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>System - Default</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ProgramTypeEditor</name>
