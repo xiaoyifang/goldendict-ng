@@ -294,7 +294,7 @@ the application.</string>
              </widget>
             </item>
             <item>
-             <widget class="QFontComboBox" name="systemFont"/>
+             <widget class="CustomFontComboBox" name="systemFont"/>
             </item>
            </layout>
           </item>
