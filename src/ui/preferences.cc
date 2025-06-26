@@ -47,7 +47,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   connect( ui.systemFont, &QFontComboBox::currentTextChanged, this, [ this ]( const QString & font ) {
     previewInterfaceFont( font, ui.interfaceFontSize->value() );
   } );
-  ui.systemFont->insertItem( 0, tr( "System - Default" ) );
+  ui.systemFont->insertCustomItem( 0, tr( "System - Default" ) );
   connect( ui.interfaceFontSize, &QSpinBox::valueChanged, this, [ this ]( int size ) {
     previewInterfaceFont( ui.systemFont->currentText(), size );
   } );

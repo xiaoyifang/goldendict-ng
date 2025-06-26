@@ -5,7 +5,7 @@ CustomFontComboBox::CustomFontComboBox(QWidget *parent)
 {
 }
 
-void CustomFontComboBox::insertCustomItem(const QString &item,int index=0)
+void CustomFontComboBox::insertCustomItem(int index ,const QString & item)
 {
     if (index < 0 || index > this->count()) {
         index = 0; // Default to the beginning if index is out of bounds
