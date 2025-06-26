@@ -2,7 +2,7 @@
 
 
 #include <QFontComboBox>
-#include <QStringList>
+#include <QString>
 
 class CustomFontComboBox: public QFontComboBox
 {
