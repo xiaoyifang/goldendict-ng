@@ -10,5 +10,5 @@ class CustomFontComboBox: public QFontComboBox
 
 public:
   explicit CustomFontComboBox( QWidget * parent = nullptr );
-  void insertCustomItem( int index ,const QString & item );
+  void insertCustomItem( int index, const QString & item );
 };
