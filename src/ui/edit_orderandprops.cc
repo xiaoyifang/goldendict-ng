@@ -127,7 +127,8 @@ OrderAndProps::OrderAndProps( QWidget * parent,
 
 void OrderAndProps::resetData( Config::Group const & dictionaryOrder,
                                Config::Group const & inactiveDictionaries,
-                               std::vector<sptr<Dictionary::Class> > const &allDictionaries) const {
+                               std::vector< sptr< Dictionary::Class > > const & allDictionaries ) const
+{
   Instances::Group order( dictionaryOrder, allDictionaries, Config::Group() );
   Instances::Group inactive( inactiveDictionaries, allDictionaries, Config::Group() );
 
