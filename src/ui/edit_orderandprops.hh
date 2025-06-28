@@ -17,6 +17,9 @@ public:
                  Config::Group const & dictionaryOrder,
                  Config::Group const & inactiveDictionaries,
                  std::vector< sptr< Dictionary::Class > > const & allDictionaries );
+  void resetData( Config::Group const & dictionaryOrder,
+                  Config::Group const & inactiveDictionaries,
+                  std::vector< sptr< Dictionary::Class > > const & allDictionaries ) const;
 
   Config::Group getCurrentDictionaryOrder() const;
   Config::Group getCurrentInactiveDictionaries() const;
