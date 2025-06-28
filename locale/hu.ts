@@ -3470,6 +3470,10 @@ is felhasználja további szócikkek felfedezéséhez</translation>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>GoldenDict-ng is a dictionary software.</translation>
     </message>
+    <message>
+      <source>None</source>
+      <translation>Nincs</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -4000,13 +4004,6 @@ Az elérhető nyelvek teljes listája megtalálható &lt;a href=&quot;https://li
     <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>The most widely used method of transcription of Japanese, based on English phonology</translation>
-    </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
-    <message>
-      <source>None</source>
-      <translation>Nincs</translation>
     </message>
   </context>
   <context>
