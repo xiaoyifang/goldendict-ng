@@ -2879,10 +2879,6 @@ programmany ýapmagyň ýerine ony gizlärdi.</translation>
       <translation>Daş görnüşi</translation>
     </message>
     <message>
-      <source>Interface Font</source>
-      <translation>Interfeýs şrifti</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>UI-ni garaňkylyga öwüriň.</translation>
     </message>
@@ -3443,10 +3439,6 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
       <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>Interface Font Size</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3469,6 +3461,18 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation type="unfinished">Enable Interface Font</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation type="unfinished">Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation type="unfinished">Font Size</translation>
     </message>
     <message>
       <source>None</source>
