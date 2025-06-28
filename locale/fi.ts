@@ -3471,6 +3471,10 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>GoldenDict-ng on sanakirja ohjelmisto.</translation>
     </message>
+    <message>
+      <source>None</source>
+      <translation>Tyhjä</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -4001,13 +4005,6 @@ Täydellinen luettelo saatavilla olevista kielistä löytyy &lt;a href=&quot;htt
     <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>Yleisimmin käytetty menetelmä transkriptio japani, joka perustuu Englanti fonologia</translation>
-    </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
-    <message>
-      <source>None</source>
-      <translation>Tyhjä</translation>
     </message>
   </context>
   <context>
