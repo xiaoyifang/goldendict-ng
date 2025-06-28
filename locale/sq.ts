@@ -2874,10 +2874,6 @@ the application.</source>
       <translation>Pamja e jashtme</translation>
     </message>
     <message>
-      <source>Interface Font</source>
-      <translation>Fonti i ndërfaqes</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Kthejeni ndërfaqen në të errët.</translation>
     </message>
@@ -3436,10 +3432,6 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
       <translation>Ruani mesazhet e korrigjimit në gd_log.txt në dosjen e konfigurimit</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>Interface Font Size</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3462,6 +3454,18 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation type="unfinished">Enable Interface Font</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation type="unfinished">Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation type="unfinished">Font Size</translation>
     </message>
     <message>
       <source>None</source>
