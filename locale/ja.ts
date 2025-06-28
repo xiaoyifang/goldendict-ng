@@ -3985,20 +3985,28 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>削除の確認</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>一覧からディレクトリ &lt;b&gt;%1&lt;/b&gt; を削除しますか?</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>一覧からサイト &lt;b&gt;%1&lt;/b&gt; を削除しますか?</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>リストからプログラム &lt;b&gt;%1&lt;/b&gt; を削除しますか？</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>最も広く使用されている日本語の音韻論に基づく表記法</translation>
+    </message>
+    <message>
+      <source>Remove selected directories from the list?</source>
+      <translation>リストから選択したディレクトリを削除しますか？</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation>%1 ディレクトリをリストから削除しますか？</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation>%1 サイトをリストから削除しますか？</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation>%1 サーバーをリストから削除しますか？</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation>%1 プログラムをリストから削除しますか？</translation>
     </message>
   </context>
   <context>
