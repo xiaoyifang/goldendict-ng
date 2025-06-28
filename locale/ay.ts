@@ -3587,6 +3587,10 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
     </message>
+    <message>
+      <source>None</source>
+      <translation>Ni maya</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -4126,13 +4130,6 @@ Taqi lista utjki uka arunakax &lt;a href=&quot;https://lingualibre.org/wiki/Ling
     <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation type="unfinished">The most widely used method of transcription of Japanese, based on English phonology</translation>
-    </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
-    <message>
-      <source>None</source>
-      <translation>Ni maya</translation>
     </message>
   </context>
   <context>
