@@ -4000,20 +4000,28 @@ A lista completa de idiomas disponíveis pode ser encontrada &lt;a href=&quot;ht
       <translation>Confirmar remoção</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Quer mesmo remover a pasta &lt;b&gt;%1&lt;/b&gt; da lista?</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Quer mesmo remover o site &lt;b&gt;%1&lt;/b&gt; da lista?</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Quer mesmo remover o programa &lt;b&gt;%1&lt;/b&gt; da lista?</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>O método de transcrição de japonês mais utilizado, baseado na fonologia inglesa</translation>
+    </message>
+    <message>
+      <source>Remove selected directories from the list?</source>
+      <translation>Remover os diretórios selecionados da lista?</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation>Remover %1 diretórios da lista?</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation>Remover %1 sites da lista?</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation>Remover servidores %1 da lista?</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation>Remover programas %1 da lista?</translation>
     </message>
   </context>
   <context>
