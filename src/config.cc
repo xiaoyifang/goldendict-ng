@@ -834,6 +834,11 @@ Class load()
     else {
       c.preferences.interfaceFontSize = Config::DEFAULT_FONT_SIZE;
     }
+    auto enableInterfaceFont                   = preferences.namedItem( "enableInterfaceFont" );
+    if ( !enableInterfaceFont.isNull() ) {
+      c.preferences.enableInterfaceFont = enableInterfaceFont.toElement().text()=="1";
+    }
+
 #if !defined( Q_OS_WIN )
     c.preferences.interfaceStyle = preferences.namedItem( "interfaceStyle" ).toElement().text();
 #endif
@@ -1737,6 +1742,10 @@ void save( Class const & c )
 
     opt = dd.createElement( "interfaceFontSize_0" );
     opt.appendChild( dd.createTextNode( QString::number( c.preferences.interfaceFontSize ) ) );
+    preferences.appendChild( opt );
+
+    opt = dd.createElement( "enableInterfaceFont" );
+    opt.appendChild( dd.createTextNode( c.preferences.enableInterfaceFont?"1":"0" ) );
     preferences.appendChild( opt );
 
     opt             = dd.createElement( "customFonts" );

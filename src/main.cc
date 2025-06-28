@@ -431,13 +431,13 @@ int main( int argc, char ** argv )
 
   //System Font
   auto font = QApplication::font();
-  if ( !cfg.preferences.interfaceFont.isEmpty() && font.family() != cfg.preferences.interfaceFont ) {
+  if ( cfg.preferences.enableInterfaceFont && !cfg.preferences.interfaceFont.isEmpty() && font.family() != cfg.preferences.interfaceFont ) {
     font.setFamily( cfg.preferences.interfaceFont );
     QApplication::setFont( font );
   }
 
   //system font size
-  if ( cfg.preferences.interfaceFontSize >= 8 && cfg.preferences.interfaceFontSize <= 32 ) {
+  if ( cfg.preferences.enableInterfaceFont && cfg.preferences.interfaceFontSize >= 8 && cfg.preferences.interfaceFontSize <= 32 ) {
     font.setPixelSize( cfg.preferences.interfaceFontSize );
     QApplication::setFont( font );
   }

@@ -285,39 +285,51 @@ the application.</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_16">
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_17">
-            <item>
-             <widget class="QLabel" name="label_29">
-              <property name="text">
-               <string>Interface Font</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QFontComboBox" name="systemFont"/>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_19">
-            <item>
-             <widget class="QLabel" name="label_30">
-              <property name="text">
-               <string>Interface Font Size</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QSpinBox" name="interfaceFontSize">
-              <property name="minimum">
-               <number>8</number>
-              </property>
-              <property name="maximum">
-               <number>32</number>
-              </property>
-             </widget>
-            </item>
-           </layout>
+           <widget class="QGroupBox" name="enableInterfaceFont">
+            <property name="title">
+             <string>Enable Interface Font</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_23">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_17">
+               <item>
+                <widget class="QLabel" name="label_29">
+                 <property name="text">
+                  <string>Font</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFontComboBox" name="systemFont"/>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_19">
+               <item>
+                <widget class="QLabel" name="label_30">
+                 <property name="text">
+                  <string>Font Size</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSpinBox" name="interfaceFontSize">
+                 <property name="minimum">
+                  <number>8</number>
+                 </property>
+                 <property name="maximum">
+                  <number>32</number>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
           </item>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_4">
