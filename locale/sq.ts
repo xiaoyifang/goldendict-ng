@@ -3463,6 +3463,10 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
     </message>
+    <message>
+      <source>None</source>
+      <translation>Asnjë</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3992,13 +3996,6 @@ Lista e plotë e gjuhëve të disponueshme mund të gjendet &lt;a href=&quot;htt
     <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation type="unfinished">The most widely used method of transcription of Japanese, based on English phonology</translation>
-    </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
-    <message>
-      <source>None</source>
-      <translation>Asnjë</translation>
     </message>
   </context>
   <context>
