@@ -2872,10 +2872,6 @@ the application.</source>
       <translation>界面外观</translation>
     </message>
     <message>
-      <source>Interface Font</source>
-      <translation>界面字体</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>启用暗色界面</translation>
     </message>
@@ -3429,10 +3425,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>在配置文件夹中将调试消息保存到 gd_log.txt</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>界面字体大小</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>界面语言</translation>
     </message>
@@ -3455,6 +3447,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>GoldenDict-ng 是一个字典软件。</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>启用接口字体</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
     </message>
     <message>
       <source>None</source>
