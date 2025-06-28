@@ -37,7 +37,7 @@ endif ()
 include(FeatureSummary)
 
 project(goldendict-ng
-        VERSION 25.06.0
+        VERSION 25.07.0
         LANGUAGES CXX C)
 
 if (APPLE)
