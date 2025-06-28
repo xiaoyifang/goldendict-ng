@@ -3473,6 +3473,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>Το GoldenDict-ng είναι ένα λεξικό λογισμικό.</translation>
     </message>
+    <message>
+      <source>None</source>
+      <translation>Κανένα</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -4002,13 +4006,6 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>Η πιο ευρέως χρησιμοποιούμενη μέθοδος μεταγραφής ιαπωνικών, με βάση την αγγλική φωνολογία</translation>
-    </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
-    <message>
-      <source>None</source>
-      <translation>Κανένα</translation>
     </message>
   </context>
   <context>
