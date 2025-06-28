@@ -2878,10 +2878,6 @@ ne causerà soltanto l&apos;iconizzazione nella barra di notifica.</translation>
       <translation>Aspetto</translation>
     </message>
     <message>
-      <source>Interface Font</source>
-      <translation>Carattere Dell'Interfaccia</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Gira l'interfaccia utente al buio.</translation>
     </message>
@@ -3441,10 +3437,6 @@ dai dizionari di Stardict, Babylon e GLS</translation>
       <translation>Salva i messaggi di debug su gd_log.txt nella cartella di configurazione</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>Dimensione Carattere Interfaccia</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Lingua dell'interfaccia</translation>
     </message>
@@ -3467,6 +3459,18 @@ dai dizionari di Stardict, Babylon e GLS</translation>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>GoldenDict-ng è un software di dizionario.</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Abilita Carattere Dell'Interfaccia</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
     </message>
     <message>
       <source>None</source>
