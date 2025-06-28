@@ -2886,10 +2886,6 @@ ser fechado.</translation>
       <translation>Aparência</translation>
     </message>
     <message>
-      <source>Interface Font</source>
-      <translation>Fonte da Interface</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Vire a interface para escurecer.</translation>
     </message>
@@ -3450,10 +3446,6 @@ dos dicionários Stardict, Babylon e GLS</translation>
       <translation>Salvar mensagens de depuração no gd_log.txt na pasta config</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>Tamanho da Fonte da Interface</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Idioma da interface</translation>
     </message>
@@ -3476,6 +3468,18 @@ dos dicionários Stardict, Babylon e GLS</translation>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>GoldenDict-ng é um software de dicionário.</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Habilitar Fonte de Interface</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
     </message>
     <message>
       <source>None</source>
