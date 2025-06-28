@@ -2880,10 +2880,6 @@ sovellus.</translation>
       <translation>Ulkomuoto</translation>
     </message>
     <message>
-      <source>Interface Font</source>
-      <translation>Käyttöliittymän Kirjasin</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Käännä käyttöliittymä pimeäksi.</translation>
     </message>
@@ -3444,10 +3440,6 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <translation>Tallenna debug viestit gd_log.txt asetuskansioon</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>Käyttöliittymän Kirjasimen Koko</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Käyttöliittymän kieli</translation>
     </message>
@@ -3470,6 +3462,18 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>GoldenDict-ng on sanakirja ohjelmisto.</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Ota Käyttöön Käyttöliittymän Kirjasin</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
     </message>
     <message>
       <source>None</source>
