@@ -3984,20 +3984,28 @@ Eine vollständige Liste der verfügbaren Sprachen ist &lt;a href=&quot;https://
       <translation>Löschung bestätigen</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Soll das Verzeichnis &lt;b&gt;%1&lt;/b&gt; von der Liste entfernt werden?</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Soll die Seite &lt;b&gt;%1&lt;/b&gt; von der Liste entfernt werden?</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Soll das Programm &lt;b&gt;%1&lt;/b&gt; von der Liste entfernt werden?</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>Die am weitesten verbreitete Methode der Transkription von Japanisch, basierend auf der englischen Phonologie</translation>
+    </message>
+    <message>
+      <source>Remove selected directories from the list?</source>
+      <translation>Ausgewählte Verzeichnisse aus der Liste entfernen?</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation>%1 Verzeichnisse aus der Liste entfernen?</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation>%1 Sites von der Liste entfernen?</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation>%1 Server aus der Liste entfernen?</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation>%1 Programme aus der Liste entfernen?</translation>
     </message>
   </context>
   <context>
