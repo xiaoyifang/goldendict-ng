@@ -2878,10 +2878,6 @@ ukončení aplikace.</translation>
       <translation>Vzhled</translation>
     </message>
     <message>
-      <source>Interface Font</source>
-      <translation>Písmo rozhraní</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Otočit UI a ztmavit.</translation>
     </message>
@@ -3441,10 +3437,6 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <translation>Ukládat zprávy ladění do gd_log.txt do složky s konfigurací</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>Velikost písma rozhraní</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Jazyk rozhraní</translation>
     </message>
@@ -3467,6 +3459,18 @@ ze Stardict, Babylon a GLS slovníků</translation>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>GoldenDict-ng je slovníkový software.</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Povolit písmo rozhraní</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
     </message>
     <message>
       <source>None</source>
