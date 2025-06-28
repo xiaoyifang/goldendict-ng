@@ -2879,10 +2879,6 @@ the application.</source>
       <translation>Verschijning</translation>
     </message>
     <message>
-      <source>Interface Font</source>
-      <translation>Lettertype interface</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Draai de UI donker.</translation>
     </message>
@@ -3440,10 +3436,6 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <translation>Debug berichten opslaan in gd_log.txt in de configuratie map</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>Tekengrootte interface</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface taal</translation>
     </message>
@@ -3466,6 +3458,18 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>GoldenDict-ng is een woordenboeksoftware.</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Interfacetlettertype inschakelen</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
     </message>
     <message>
       <source>None</source>
