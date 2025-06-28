@@ -3993,20 +3993,28 @@ Fullständig lista över tillgängliga språk finns &lt;a href=&quot;https://lin
       <translation>Bekräfta borttagning</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Vill du ta bort mappen &lt;b&gt;%1&lt;/b&gt; ur listan?</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Vill du ta bort webbplatsen &lt;b&gt;%1&lt;/b&gt; ur listan?</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Vill du ta bort programmet &lt;b&gt;%1&lt;/b&gt; ur listan?</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>Den mest använda metoden av transkription av japanska, baserat på engelsk fonologi</translation>
+    </message>
+    <message>
+      <source>Remove selected directories from the list?</source>
+      <translation>Ta bort valda kataloger från listan?</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation>Ta bort %1 kataloger från listan?</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation>Ta bort %1 sajter från listan?</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation>Ta bort %1 servrar från listan?</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation>Ta bort %1 program från listan?</translation>
     </message>
   </context>
   <context>
