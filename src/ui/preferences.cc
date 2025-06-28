@@ -83,7 +83,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   if ( !p.interfaceFont.isEmpty() ) {
     ui.systemFont->setCurrentText( p.interfaceFont );
   }
-  ui.enableInterfaceFont->setChecked( p.enableInterfaceFont );
+  ui.enableInterfaceFont->setChecked(p.enableInterfaceFont);
 
   if ( p.interfaceFontSize > 0 ) {
     ui.interfaceFontSize->setValue( p.interfaceFontSize );

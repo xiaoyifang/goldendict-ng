@@ -279,7 +279,7 @@ struct Preferences
 {
   QString interfaceLanguage; // Empty value corresponds to system default
   QString interfaceFont;     //Empty as default value.
-  bool enableInterfaceFont=false;
+  bool enableInterfaceFont = false;
   int interfaceFontSize;
 
   CustomFonts customFonts;
