@@ -3473,6 +3473,10 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>GoldenDict-ng är en ordbok programvara.</translation>
     </message>
+    <message>
+      <source>None</source>
+      <translation>Ingen</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -4003,13 +4007,6 @@ Fullständig lista över tillgängliga språk finns &lt;a href=&quot;https://lin
     <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>Den mest använda metoden av transkription av japanska, baserat på engelsk fonologi</translation>
-    </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
-    <message>
-      <source>None</source>
-      <translation>Ingen</translation>
     </message>
   </context>
   <context>
