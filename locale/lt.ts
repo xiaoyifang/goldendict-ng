@@ -3468,6 +3468,10 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
     </message>
+    <message>
+      <source>None</source>
+      <translation>Nieko</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3997,13 +4001,6 @@ visą galimų kalbų sąrašą rasite &lt;a href=&quot;https://lingualibre.org/w
     <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation type="unfinished">The most widely used method of transcription of Japanese, based on English phonology</translation>
-    </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
-    <message>
-      <source>None</source>
-      <translation>Nieko</translation>
     </message>
   </context>
   <context>
