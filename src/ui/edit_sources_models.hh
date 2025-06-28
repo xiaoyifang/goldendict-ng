@@ -171,7 +171,8 @@ public:
   PathsModel( QWidget * parent, Config::Paths const & );
 
   void removePath( int index );
-  void addNewPath( QString const &);
+
+  void addNewPath(QString const &);
 
   void remove(const QModelIndexList &);
 
@@ -203,9 +204,11 @@ public:
   SoundDirsModel( QWidget * parent, Config::SoundDirs const & );
 
   void removeSoundDir( int index );
-  void addNewSoundDir( QString const & path, QString const & name);
+
+  void addNewSoundDir(QString const &path, QString const &name);
 
   void removeSoundDirs(const QList<QModelIndex> &indexes);
+
   /// Returns the soundDirs the model currently has listed
   Config::SoundDirs const & getCurrentSoundDirs() const
   {

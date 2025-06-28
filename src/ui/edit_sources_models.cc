@@ -1235,8 +1235,7 @@ void PathsModel::remove(const QModelIndexList & indexes) {
   endResetModel();
 }
 
-Qt::ItemFlags PathsModel::flags(QModelIndex const &index) const
-{
+Qt::ItemFlags PathsModel::flags(QModelIndex const &index) const {
   Qt::ItemFlags result = QAbstractTableModel::flags( index );
 
   if ( Config::isPortableVersion() ) {
