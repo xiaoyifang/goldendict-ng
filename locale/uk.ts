@@ -3991,20 +3991,28 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>Підтвердження вилучення</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Вилучити теку &lt;b&gt;%1&lt;/b&gt; з переліку?</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Вилучити сайт &lt;b&gt;%1&lt;/b&gt; з переліку?</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Вилучити програму &lt;b&gt;%1&lt;/b&gt; зі списку?</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>Найбільш поширений метод транскрипції японської та базується на англійській фонології</translation>
+    </message>
+    <message>
+      <source>Remove selected directories from the list?</source>
+      <translation>Видалити вибрані каталоги з списку?</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation>Видалити каталоги %1 зі списку?</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation>Видалити %1 сайтів з списку?</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation>Видалити %1 серверів з списку?</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation>Видалити %1 програми з списку?</translation>
     </message>
   </context>
   <context>
