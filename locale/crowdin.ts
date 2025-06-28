@@ -2865,10 +2865,6 @@ the application.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Interface Font</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Turn the UI to dark.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3415,10 +3411,6 @@ from Stardict, Babylon and GLS dictionaries</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Interface Font Size</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Interface language</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3440,6 +3432,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
         <source>GoldenDict-ng is a dictionary software.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable Interface Font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Font Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
