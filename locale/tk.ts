@@ -3470,6 +3470,10 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
     </message>
+    <message>
+      <source>None</source>
+      <translation>Hiç birisi</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3998,13 +4002,6 @@ tapyp bilersiňiz &lt;/a&gt;</translation>
     <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>Iňlis fonologiýasyna esaslanýan ýapon diliniň iň giňden ulanylýan usuly</translation>
-    </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
-    <message>
-      <source>None</source>
-      <translation>Hiç birisi</translation>
     </message>
   </context>
   <context>
