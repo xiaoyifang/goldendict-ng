@@ -28,7 +28,9 @@ public:
 
   void removeWiki( int index );
   void addNewWiki();
+
   void remove(const QModelIndexList &);
+
   /// Returns the wikis the model currently has listed
   Config::MediaWikis const & getCurrentWikis() const
   {
@@ -58,6 +60,7 @@ public:
 
   void removeSite( int index );
   void addNewSite();
+
   void remove(const QModelIndexList &);
 
   /// Returns the sites the model currently has listed
@@ -89,6 +92,7 @@ public:
 
   void removeServer( int index );
   void addNewServer();
+
   void remove(const QModelIndexList &);
 
   /// Returns the sites the model currently has listed
@@ -120,6 +124,7 @@ public:
 
   void removeProgram( int index );
   void addNewProgram();
+
   void remove(const QModelIndexList &);
 
   /// Returns the sites the model currently has listed
@@ -166,7 +171,8 @@ public:
   PathsModel( QWidget * parent, Config::Paths const & );
 
   void removePath( int index );
-  void addNewPath( QString const & );
+  void addNewPath( QString const &);
+
   void remove(const QModelIndexList &);
 
   /// Returns the paths the model currently has listed
@@ -197,8 +203,9 @@ public:
   SoundDirsModel( QWidget * parent, Config::SoundDirs const & );
 
   void removeSoundDir( int index );
-  void addNewSoundDir( QString const & path, QString const & name );
-  void removeSoundDirs(const QList<QModelIndex>& indexes );
+  void addNewSoundDir( QString const & path, QString const & name);
+
+  void removeSoundDirs(const QList<QModelIndex> &indexes);
   /// Returns the soundDirs the model currently has listed
   Config::SoundDirs const & getCurrentSoundDirs() const
   {

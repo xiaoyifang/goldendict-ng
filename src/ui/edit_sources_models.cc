@@ -1031,8 +1031,7 @@ void ProgramsModel::remove(const QModelIndexList &indexes) {
   endResetModel();
 }
 
-Qt::ItemFlags ProgramsModel::flags(QModelIndex const & index ) const
-{
+Qt::ItemFlags ProgramsModel::flags(QModelIndex const &index) const {
   Qt::ItemFlags result = QAbstractTableModel::flags( index );
 
   if ( index.isValid() ) {
@@ -1220,23 +1219,23 @@ void PathsModel::addNewPath( QString const & path )
 void PathsModel::remove(const QModelIndexList & indexes) {
   beginResetModel();
   QList<qsizetype> rows;
-  rows.reserve( indexes.size() );
+  rows.reserve(indexes.size());
 
-  for (auto& i :std::as_const( indexes) ) {
-    rows.push_back( i.row() );
+  for (auto &i: std::as_const(indexes)) {
+    rows.push_back(i.row());
   }
 
   decltype(paths) newSoundDirs;
-  for ( auto i = 0; i < paths.size(); ++i ) {
-    if (!rows.contains( i )) {
-      newSoundDirs.push_back( paths[i] );
+  for (auto i = 0; i < paths.size(); ++i) {
+    if (!rows.contains(i)) {
+      newSoundDirs.push_back(paths[i]);
     }
   }
-  paths.swap( newSoundDirs );
+  paths.swap(newSoundDirs);
   endResetModel();
 }
 
-Qt::ItemFlags PathsModel::flags( QModelIndex const & index ) const
+Qt::ItemFlags PathsModel::flags(QModelIndex const &index) const
 {
   Qt::ItemFlags result = QAbstractTableModel::flags( index );
 
@@ -1350,24 +1349,23 @@ void SoundDirsModel::removeSoundDirs(const QList<QModelIndex>& indexes )
 {
   beginResetModel();
   QList<qsizetype> rows;
-  rows.reserve( indexes.size() );
+  rows.reserve(indexes.size());
 
-  for (auto& i :std::as_const( indexes) ) {
-    rows.push_back( i.row() );
+  for (auto &i: std::as_const(indexes)) {
+    rows.push_back(i.row());
   }
 
   decltype(soundDirs) newSoundDirs;
-  for ( auto i = 0; i < soundDirs.size(); ++i ) {
-    if (!rows.contains( i )) {
-      newSoundDirs.push_back( soundDirs[i] );
+  for (auto i = 0; i < soundDirs.size(); ++i) {
+    if (!rows.contains(i)) {
+      newSoundDirs.push_back(soundDirs[i]);
     }
   }
-  soundDirs.swap( newSoundDirs );
+  soundDirs.swap(newSoundDirs);
   endResetModel();
 }
 
-Qt::ItemFlags SoundDirsModel::flags( QModelIndex const & index ) const
-{
+Qt::ItemFlags SoundDirsModel::flags(QModelIndex const &index) const {
   Qt::ItemFlags result = QAbstractTableModel::flags( index );
 
   if ( index.isValid() && index.column() < 3 ) {
