@@ -3471,6 +3471,10 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
     </message>
+    <message>
+      <source>None</source>
+      <translation>Nenio</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -4001,13 +4005,6 @@ Plena listo de disponeblaj lingvoj troveblas &lt;a href=&quot;https://lingualibr
     <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>La plej uzata metodo de transskribo de la japana, bazita sur angla fonologio</translation>
-    </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
-    <message>
-      <source>None</source>
-      <translation>Nenio</translation>
     </message>
   </context>
   <context>
