@@ -3991,20 +3991,28 @@ Täydellinen luettelo saatavilla olevista kielistä löytyy &lt;a href=&quot;htt
       <translation>Vahvista poistaminen</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Poistetaanko kansio &lt;b&gt;%1&lt;/b&gt; listalta?</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Poistetaanko sivusto &lt;b&gt;%1&lt;/b&gt; luettelosta?</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Poistetaanko ohjelma &lt;b&gt;%1&lt;/b&gt; listalta?</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>Yleisimmin käytetty menetelmä transkriptio japani, joka perustuu Englanti fonologia</translation>
+    </message>
+    <message>
+      <source>Remove selected directories from the list?</source>
+      <translation>Poistetaanko valitut kansiot luettelosta?</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation>Poistetaanko %1 hakemistot luettelosta?</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation>Poistetaanko %1 sivustot listalta?</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation>Poistetaanko %1 palvelimet listalta?</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation>Poistetaanko %1 ohjelmat listalta?</translation>
     </message>
   </context>
   <context>
