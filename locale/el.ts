@@ -2881,10 +2881,6 @@ the application.</source>
       <translation>Εμφάνιση</translation>
     </message>
     <message>
-      <source>Interface Font</source>
-      <translation>Γραμματοσειρά Διεπαφής</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Στρίψτε την διεπαφή στο σκοτάδι.</translation>
     </message>
@@ -3446,10 +3442,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Αποθήκευση μηνυμάτων αποσφαλμάτωσης στο gd_log.txt στο φάκελο ρυθμίσεων</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>Μέγεθος Γραμματοσειράς Διεπαφής</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Γλώσσα διεπαφής</translation>
     </message>
@@ -3472,6 +3464,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>Το GoldenDict-ng είναι ένα λεξικό λογισμικό.</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Ενεργοποίηση Γραμματοσειράς Διεπαφής</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
     </message>
     <message>
       <source>None</source>
