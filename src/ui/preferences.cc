@@ -404,6 +404,9 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 }
 void Preferences::previewInterfaceFont( QString family, int size )
 {
+  if (!cfg.preferences.enableInterfaceFont) {
+    return;
+  }
   QFont f = QApplication::font();
   f.setFamily( family );
   f.setPixelSize( size );
