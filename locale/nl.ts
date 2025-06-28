@@ -3987,20 +3987,28 @@ De volledige lijst met beschikbare talen vindt u &lt;a href=&quot;https://lingua
       <translation>Verwijderen bevestigen</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>De map &lt;b&gt;%1&lt;/b&gt; uit de lijst verwijderen?</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>De site &lt;b&gt;%1&lt;/b&gt; uit de lijst verwijderen?</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Het programma &lt;b&gt;%1&lt;/b&gt; uit de lijst verwijderen?</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>De meest gebruikte methode van transcriptie van Japans op basis van de Engelse fonologie</translation>
+    </message>
+    <message>
+      <source>Remove selected directories from the list?</source>
+      <translation>Geselecteerde mappen uit de lijst verwijderen?</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation>%1 mappen uit de lijst verwijderen?</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation>%1 sites uit de lijst verwijderen?</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation>%1 servers uit de lijst verwijderen?</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation>%1 programma's uit de lijst verwijderen?</translation>
     </message>
   </context>
   <context>
