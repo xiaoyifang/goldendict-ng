@@ -3991,20 +3991,28 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>birti tu&apos;a lo du&apos;u vimcu</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>.i xu do djica lo du&apos;u lo datnyveimei poi se judri zoi zoi. &lt;b&gt;%1&lt;/b&gt; .zoi co&apos;u cmima lo se liste</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>.i xu do djica lo du&apos;u la&apos;o zoi. &lt;b&gt;%1&lt;/b&gt; .zoi noi kibystu co&apos;u cmima lo se liste</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>.i xu do djica lo du&apos;u la&apos;o zoi. &lt;b&gt;%1&lt;/b&gt; .zoi noi samtci co&apos;u cmima lo se liste</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>The most widely used method of transcription of Japanese, based on English phonology</translation>
+    </message>
+    <message>
+      <source>Remove selected directories from the list?</source>
+      <translation type="unfinished">Remove selected directories from the list?</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation type="unfinished">Remove %1 directories from the list?</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation type="unfinished">Remove %1 sites from the list?</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation type="unfinished">Remove %1 servers from the list?</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation type="unfinished">Remove %1 programs from the list?</translation>
     </message>
   </context>
   <context>
