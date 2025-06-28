@@ -2880,10 +2880,6 @@ the application.</source>
       <translation>外観</translation>
     </message>
     <message>
-      <source>Interface Font</source>
-      <translation>インターフェースフォント</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>UIを暗くします。</translation>
     </message>
@@ -3443,10 +3439,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>設定フォルダ内のgd_log.txtにデバッグメッセージを保存します</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>インターフェースフォントサイズ</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>インターフェース言語</translation>
     </message>
@@ -3469,6 +3461,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>GoldenDict-ng は辞書ソフトウェアです。</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>インターフェースフォントを有効にする</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
     </message>
     <message>
       <source>None</source>
