@@ -398,7 +398,7 @@ the application.</string>
              </widget>
             </item>
             <item>
-             <widget class="StylesComboBox" name="addonStyles">
+             <widget class="QComboBox" name="addonStyles">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -2043,13 +2043,6 @@ from Stardict, Babylon and GLS dictionaries</string>
    </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>StylesComboBox</class>
-   <extends>QComboBox</extends>
-   <header>stylescombobox.hh</header>
-  </customwidget>
- </customwidgets>
  <tabstops>
   <tabstop>tabWidget</tabstop>
   <tabstop>buttonBox</tabstop>

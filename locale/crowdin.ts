@@ -3971,13 +3971,6 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
 </context>
 <context>
-    <name>StylesComboBox</name>
-    <message>
-        <source>None</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>TextToSpeechSource</name>
     <message>
         <source>Selected voice engines:</source>
