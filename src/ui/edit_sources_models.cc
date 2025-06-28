@@ -180,12 +180,6 @@ void Sources::on_removePath_clicked()
     return;
   }
 
-
-  // sort selected rows in reverse order to avoid invalidating indices
-  std::sort( selected.begin(), selected.end(), []( const QModelIndex & a, const QModelIndex & b ) {
-    return a.row() > b.row();
-  } );
-
   if ( QMessageBox::question( this,
                               tr( "Confirm removal" ),
                               tr( "Remove selected directories from the list?" ),
@@ -194,17 +188,7 @@ void Sources::on_removePath_clicked()
     return;
   }
 
-  // Use reverse iteration instead of sorting
-  QList< QPersistentModelIndex > persistentIndexes;
-  for ( const auto & idx : selected ) {
-    persistentIndexes.append( idx );
-  }
-
-  for ( const auto & persistentIdx : persistentIndexes ) {
-    if ( persistentIdx.isValid() ) {
-      pathsModel.removePath( persistentIdx.row() );
-    }
-  }
+  pathsModel.remove(selected);
 
   fitPathsColumns();
 }
@@ -226,11 +210,6 @@ void Sources::on_removeSoundDir_clicked()
     return;
   }
 
-  // Sort in reverse order to avoid index invalidation
-  std::sort( selected.begin(), selected.end(), []( const QModelIndex & a, const QModelIndex & b ) {
-    return a.row() > b.row();
-  } );
-
   if ( QMessageBox::question( this,
                               tr( "Confirm removal" ),
                               tr( "Remove %1 directories from the list?" ).arg( selected.size() ),
@@ -238,18 +217,7 @@ void Sources::on_removeSoundDir_clicked()
        != QMessageBox::Ok ) {
     return;
   }
-
-  QList< QPersistentModelIndex > persistentIndexes;
-  for ( const auto & idx : selected ) {
-    persistentIndexes.append( idx );
-  }
-
-  for ( const auto & persistentIdx : persistentIndexes ) {
-    if ( persistentIdx.isValid() ) {
-      soundDirsModel.removeSoundDir( persistentIdx.row() );
-    }
-  }
-
+  soundDirsModel.removeSoundDirs( selected );
   fitSoundDirsColumns();
 }
 
@@ -281,11 +249,6 @@ void Sources::on_removeMediaWiki_clicked()
     return;
   }
 
-  // Sort in reverse order to avoid index invalidation
-  std::sort( selected.begin(), selected.end(), []( const QModelIndex & a, const QModelIndex & b ) {
-    return a.row() > b.row();
-  } );
-
   if ( QMessageBox::question( this,
                               tr( "Confirm removal" ),
                               tr( "Remove %1 sites from the list?" ).arg( selected.size() ),
@@ -294,16 +257,7 @@ void Sources::on_removeMediaWiki_clicked()
     return;
   }
 
-  QList< QPersistentModelIndex > persistentIndexes;
-  for ( const auto & idx : selected ) {
-    persistentIndexes.append( idx );
-  }
-
-  for ( const auto & persistentIdx : persistentIndexes ) {
-    if ( persistentIdx.isValid() ) {
-      mediawikisModel.removeWiki( persistentIdx.row() );
-    }
-  }
+  mediawikisModel.remove(selected);
 }
 
 void Sources::on_addWebSite_clicked()
@@ -323,11 +277,6 @@ void Sources::on_removeWebSite_clicked()
     return;
   }
 
-  // Sort in reverse order to avoid index invalidation
-  std::sort( selected.begin(), selected.end(), []( const QModelIndex & a, const QModelIndex & b ) {
-    return a.row() > b.row();
-  } );
-
   if ( QMessageBox::question( this,
                               tr( "Confirm removal" ),
                               tr( "Remove %1 sites from the list?" ).arg( selected.size() ),
@@ -336,16 +285,7 @@ void Sources::on_removeWebSite_clicked()
     return;
   }
 
-  QList< QPersistentModelIndex > persistentIndexes;
-  for ( const auto & idx : selected ) {
-    persistentIndexes.append( idx );
-  }
-
-  for ( const auto & persistentIdx : persistentIndexes ) {
-    if ( persistentIdx.isValid() ) {
-      webSitesModel.removeSite( persistentIdx.row() );
-    }
-  }
+  webSitesModel.remove(selected);
 }
 
 void Sources::on_addDictServer_clicked()
@@ -365,11 +305,6 @@ void Sources::on_removeDictServer_clicked()
     return;
   }
 
-  // Sort in reverse order to avoid index invalidation
-  std::sort( selected.begin(), selected.end(), []( const QModelIndex & a, const QModelIndex & b ) {
-    return a.row() > b.row();
-  } );
-
   if ( QMessageBox::question( this,
                               tr( "Confirm removal" ),
                               tr( "Remove %1 servers from the list?" ).arg( selected.size() ),
@@ -379,16 +314,7 @@ void Sources::on_removeDictServer_clicked()
     return;
   }
 
-  QList< QPersistentModelIndex > persistentIndexes;
-  for ( const auto & idx : selected ) {
-    persistentIndexes.append( idx );
-  }
-
-  for ( const auto & persistentIdx : persistentIndexes ) {
-    if ( persistentIdx.isValid() ) {
-      dictServersModel.removeServer( persistentIdx.row() );
-    }
-  }
+  dictServersModel.remove(selected);
 }
 
 void Sources::on_addProgram_clicked()
@@ -408,11 +334,6 @@ void Sources::on_removeProgram_clicked()
     return;
   }
 
-  // Sort in reverse order to avoid index invalidation
-  std::sort( selected.begin(), selected.end(), []( const QModelIndex & a, const QModelIndex & b ) {
-    return a.row() > b.row();
-  } );
-
   QString message = tr( "Remove %1 programs from the list?" ).arg( selected.size() );
 
   if ( QMessageBox::question( this,
@@ -424,16 +345,7 @@ void Sources::on_removeProgram_clicked()
     return;
   }
 
-  QList< QPersistentModelIndex > persistentIndexes;
-  for ( const auto & idx : selected ) {
-    persistentIndexes.append( idx );
-  }
-
-  for ( const auto & persistentIdx : persistentIndexes ) {
-    if ( persistentIdx.isValid() ) {
-      programsModel.removeProgram( persistentIdx.row() );
-    }
-  }
+  programsModel.remove(selected);
 }
 
 #ifdef TTS_SUPPORT
@@ -527,6 +439,25 @@ void MediaWikisModel::addNewWiki()
   beginInsertRows( QModelIndex(), mediawikis.size(), mediawikis.size() );
   mediawikis.push_back( w );
   endInsertRows();
+}
+
+void MediaWikisModel::remove(const QModelIndexList & indexes) {
+  beginResetModel();
+  QList<qsizetype> rows;
+  rows.reserve( indexes.size() );
+
+  for (auto& i :std::as_const( indexes) ) {
+    rows.push_back( i.row() );
+  }
+
+  decltype(mediawikis) newSoundDirs;
+  for ( auto i = 0; i < mediawikis.size(); ++i ) {
+    if (!rows.contains( i )) {
+      newSoundDirs.push_back( mediawikis[i] );
+    }
+  }
+  mediawikis.swap( newSoundDirs );
+  endResetModel();
 }
 
 
@@ -689,6 +620,25 @@ void WebSitesModel::addNewSite()
   beginInsertRows( QModelIndex(), webSites.size(), webSites.size() );
   webSites.push_back( w );
   endInsertRows();
+}
+
+void WebSitesModel::remove(const QModelIndexList & indexes) {
+  beginResetModel();
+  QList<qsizetype> rows;
+  rows.reserve( indexes.size() );
+
+  for (auto& i :std::as_const( indexes) ) {
+    rows.push_back( i.row() );
+  }
+
+  decltype(webSites) newSoundDirs;
+  for ( auto i = 0; i < webSites.size(); ++i ) {
+    if (!rows.contains( i )) {
+      newSoundDirs.push_back( webSites[i] );
+    }
+  }
+  webSites.swap( newSoundDirs );
+  endResetModel();
 }
 
 
@@ -871,6 +821,25 @@ void DictServersModel::addNewServer()
   endInsertRows();
 }
 
+void DictServersModel::remove(const QModelIndexList & indexes) {
+  beginResetModel();
+  QList<qsizetype> rows;
+  rows.reserve( indexes.size() );
+
+  for (auto& i :std::as_const( indexes) ) {
+    rows.push_back( i.row() );
+  }
+
+  decltype(dictServers) newSoundDirs;
+  for ( auto i = 0; i < dictServers.size(); ++i ) {
+    if (!rows.contains( i )) {
+      newSoundDirs.push_back( dictServers[i] );
+    }
+  }
+  dictServers.swap( newSoundDirs );
+  endResetModel();
+}
+
 Qt::ItemFlags DictServersModel::flags( QModelIndex const & index ) const
 {
   Qt::ItemFlags result = QAbstractTableModel::flags( index );
@@ -1041,6 +1010,25 @@ void ProgramsModel::addNewProgram()
   beginInsertRows( QModelIndex(), programs.size(), programs.size() );
   programs.push_back( p );
   endInsertRows();
+}
+
+void ProgramsModel::remove(const QModelIndexList & indexes) {
+  beginResetModel();
+  QList<qsizetype> rows;
+  rows.reserve( indexes.size() );
+
+  for (auto& i :std::as_const( indexes) ) {
+    rows.push_back( i.row() );
+  }
+
+  decltype(programs) newSoundDirs;
+  for ( auto i = 0; i < programs.size(); ++i ) {
+    if (!rows.contains( i )) {
+      newSoundDirs.push_back( programs[i] );
+    }
+  }
+  programs.swap( newSoundDirs );
+  endResetModel();
 }
 
 Qt::ItemFlags ProgramsModel::flags( QModelIndex const & index ) const
@@ -1229,6 +1217,25 @@ void PathsModel::addNewPath( QString const & path )
   endInsertRows();
 }
 
+void PathsModel::remove(const QModelIndexList & indexes) {
+  beginResetModel();
+  QList<qsizetype> rows;
+  rows.reserve( indexes.size() );
+
+  for (auto& i :std::as_const( indexes) ) {
+    rows.push_back( i.row() );
+  }
+
+  decltype(paths) newSoundDirs;
+  for ( auto i = 0; i < paths.size(); ++i ) {
+    if (!rows.contains( i )) {
+      newSoundDirs.push_back( paths[i] );
+    }
+  }
+  paths.swap( newSoundDirs );
+  endResetModel();
+}
+
 Qt::ItemFlags PathsModel::flags( QModelIndex const & index ) const
 {
   Qt::ItemFlags result = QAbstractTableModel::flags( index );
@@ -1337,6 +1344,26 @@ void SoundDirsModel::addNewSoundDir( QString const & path, QString const & name 
   beginInsertRows( QModelIndex(), soundDirs.size(), soundDirs.size() );
   soundDirs.push_back( Config::SoundDir( path, name ) );
   endInsertRows();
+}
+
+void SoundDirsModel::removeSoundDirs(const QList<QModelIndex>& indexes )
+{
+  beginResetModel();
+  QList<qsizetype> rows;
+  rows.reserve( indexes.size() );
+
+  for (auto& i :std::as_const( indexes) ) {
+    rows.push_back( i.row() );
+  }
+
+  decltype(soundDirs) newSoundDirs;
+  for ( auto i = 0; i < soundDirs.size(); ++i ) {
+    if (!rows.contains( i )) {
+      newSoundDirs.push_back( soundDirs[i] );
+    }
+  }
+  soundDirs.swap( newSoundDirs );
+  endResetModel();
 }
 
 Qt::ItemFlags SoundDirsModel::flags( QModelIndex const & index ) const

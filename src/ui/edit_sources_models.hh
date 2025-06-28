@@ -28,7 +28,7 @@ public:
 
   void removeWiki( int index );
   void addNewWiki();
-
+  void remove(const QModelIndexList &);
   /// Returns the wikis the model currently has listed
   Config::MediaWikis const & getCurrentWikis() const
   {
@@ -58,6 +58,7 @@ public:
 
   void removeSite( int index );
   void addNewSite();
+  void remove(const QModelIndexList &);
 
   /// Returns the sites the model currently has listed
   Config::WebSites const & getCurrentWebSites() const
@@ -88,6 +89,7 @@ public:
 
   void removeServer( int index );
   void addNewServer();
+  void remove(const QModelIndexList &);
 
   /// Returns the sites the model currently has listed
   Config::DictServers const & getCurrentDictServers() const
@@ -118,6 +120,7 @@ public:
 
   void removeProgram( int index );
   void addNewProgram();
+  void remove(const QModelIndexList &);
 
   /// Returns the sites the model currently has listed
   Config::Programs const & getCurrentPrograms() const
@@ -164,6 +167,7 @@ public:
 
   void removePath( int index );
   void addNewPath( QString const & );
+  void remove(const QModelIndexList &);
 
   /// Returns the paths the model currently has listed
   Config::Paths const & getCurrentPaths() const
@@ -194,7 +198,7 @@ public:
 
   void removeSoundDir( int index );
   void addNewSoundDir( QString const & path, QString const & name );
-
+  void removeSoundDirs(const QList<QModelIndex>& indexes );
   /// Returns the soundDirs the model currently has listed
   Config::SoundDirs const & getCurrentSoundDirs() const
   {
