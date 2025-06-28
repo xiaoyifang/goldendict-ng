@@ -217,7 +217,7 @@ void Sources::on_removeSoundDir_clicked()
        != QMessageBox::Ok ) {
     return;
   }
-  soundDirsModel.removeSoundDirs( selected );
+  soundDirsModel.removeSoundDirs(selected);
   fitSoundDirsColumns();
 }
 
@@ -441,22 +441,22 @@ void MediaWikisModel::addNewWiki()
   endInsertRows();
 }
 
-void MediaWikisModel::remove(const QModelIndexList & indexes) {
+void MediaWikisModel::remove(const QModelIndexList &indexes) {
   beginResetModel();
   QList<qsizetype> rows;
-  rows.reserve( indexes.size() );
+  rows.reserve(indexes.size());
 
-  for (auto& i :std::as_const( indexes) ) {
-    rows.push_back( i.row() );
+  for (auto &i: std::as_const(indexes)) {
+    rows.push_back(i.row());
   }
 
   decltype(mediawikis) newSoundDirs;
-  for ( auto i = 0; i < mediawikis.size(); ++i ) {
-    if (!rows.contains( i )) {
-      newSoundDirs.push_back( mediawikis[i] );
+  for (auto i = 0; i < mediawikis.size(); ++i) {
+    if (!rows.contains(i)) {
+      newSoundDirs.push_back(mediawikis[i]);
     }
   }
-  mediawikis.swap( newSoundDirs );
+  mediawikis.swap(newSoundDirs);
   endResetModel();
 }
 
@@ -622,22 +622,22 @@ void WebSitesModel::addNewSite()
   endInsertRows();
 }
 
-void WebSitesModel::remove(const QModelIndexList & indexes) {
+void WebSitesModel::remove(const QModelIndexList &indexes) {
   beginResetModel();
   QList<qsizetype> rows;
-  rows.reserve( indexes.size() );
+  rows.reserve(indexes.size());
 
-  for (auto& i :std::as_const( indexes) ) {
-    rows.push_back( i.row() );
+  for (auto &i: std::as_const(indexes)) {
+    rows.push_back(i.row());
   }
 
   decltype(webSites) newSoundDirs;
-  for ( auto i = 0; i < webSites.size(); ++i ) {
-    if (!rows.contains( i )) {
-      newSoundDirs.push_back( webSites[i] );
+  for (auto i = 0; i < webSites.size(); ++i) {
+    if (!rows.contains(i)) {
+      newSoundDirs.push_back(webSites[i]);
     }
   }
-  webSites.swap( newSoundDirs );
+  webSites.swap(newSoundDirs);
   endResetModel();
 }
 
@@ -821,22 +821,22 @@ void DictServersModel::addNewServer()
   endInsertRows();
 }
 
-void DictServersModel::remove(const QModelIndexList & indexes) {
+void DictServersModel::remove(const QModelIndexList &indexes) {
   beginResetModel();
   QList<qsizetype> rows;
-  rows.reserve( indexes.size() );
+  rows.reserve(indexes.size());
 
-  for (auto& i :std::as_const( indexes) ) {
-    rows.push_back( i.row() );
+  for (auto &i: std::as_const(indexes)) {
+    rows.push_back(i.row());
   }
 
   decltype(dictServers) newSoundDirs;
-  for ( auto i = 0; i < dictServers.size(); ++i ) {
-    if (!rows.contains( i )) {
-      newSoundDirs.push_back( dictServers[i] );
+  for (auto i = 0; i < dictServers.size(); ++i) {
+    if (!rows.contains(i)) {
+      newSoundDirs.push_back(dictServers[i]);
     }
   }
-  dictServers.swap( newSoundDirs );
+  dictServers.swap(newSoundDirs);
   endResetModel();
 }
 
@@ -1012,26 +1012,26 @@ void ProgramsModel::addNewProgram()
   endInsertRows();
 }
 
-void ProgramsModel::remove(const QModelIndexList & indexes) {
+void ProgramsModel::remove(const QModelIndexList &indexes) {
   beginResetModel();
   QList<qsizetype> rows;
-  rows.reserve( indexes.size() );
+  rows.reserve(indexes.size());
 
-  for (auto& i :std::as_const( indexes) ) {
-    rows.push_back( i.row() );
+  for (auto &i: std::as_const(indexes)) {
+    rows.push_back(i.row());
   }
 
   decltype(programs) newSoundDirs;
-  for ( auto i = 0; i < programs.size(); ++i ) {
-    if (!rows.contains( i )) {
-      newSoundDirs.push_back( programs[i] );
+  for (auto i = 0; i < programs.size(); ++i) {
+    if (!rows.contains(i)) {
+      newSoundDirs.push_back(programs[i]);
     }
   }
-  programs.swap( newSoundDirs );
+  programs.swap(newSoundDirs);
   endResetModel();
 }
 
-Qt::ItemFlags ProgramsModel::flags( QModelIndex const & index ) const
+Qt::ItemFlags ProgramsModel::flags(QModelIndex const & index ) const
 {
   Qt::ItemFlags result = QAbstractTableModel::flags( index );
 
