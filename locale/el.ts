@@ -3992,20 +3992,28 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>Επιβεβαίωση αφαίρεσης</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Να αφαιρεθεί ο φάκελος &lt;b&gt;%1&lt;/b&gt; από τη λίστα;</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Να αφαιρεθεί η ιστοσελίδα &lt;b&gt;%1&lt;/b&gt; από τη λίστα;</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Να αφαιρεθεί το πρόγραμμα &lt;b&gt;%1&lt;/b&gt; από τη λίστα;</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>Η πιο ευρέως χρησιμοποιούμενη μέθοδος μεταγραφής ιαπωνικών, με βάση την αγγλική φωνολογία</translation>
+    </message>
+    <message>
+      <source>Remove selected directories from the list?</source>
+      <translation>Αφαίρεση επιλεγμένων καταλόγων από τη λίστα?</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation>Κατάργηση καταλόγων %1 από τη λίστα?</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation>Αφαιρέστε %1 sites από τη λίστα?</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation>Κατάργηση εξυπηρετητών %1 από τη λίστα?</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation>Κατάργηση προγραμμάτων %1 από τη λίστα?</translation>
     </message>
   </context>
   <context>
