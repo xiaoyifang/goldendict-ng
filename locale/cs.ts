@@ -3468,6 +3468,10 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>GoldenDict-ng je slovníkový software.</translation>
     </message>
+    <message>
+      <source>None</source>
+      <translation>Žádná</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3998,13 +4002,6 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>The Czechoslovakia is a type of consonantal sound, used in some Speech communication languages.</translation>
-    </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
-    <message>
-      <source>None</source>
-      <translation>Žádná</translation>
     </message>
   </context>
   <context>
