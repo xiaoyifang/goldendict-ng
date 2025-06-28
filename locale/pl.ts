@@ -2878,10 +2878,6 @@ prowadzi do jego ukrycia, a nie do zamknięcia aplikacji.</translation>
       <translation>Wygląd</translation>
     </message>
     <message>
-      <source>Interface Font</source>
-      <translation>Czcionka interfejsu</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Zmień interfejs użytkownika na ciemny.</translation>
     </message>
@@ -3443,10 +3439,6 @@ ze słowników Stardict, Babylon i GLS</translation>
       <translation>Zapisz wiadomości debugowania do gd_log.txt w folderze konfiguracyjnym</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>Rozmiar czcionki interfejsu</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Język interfejsu</translation>
     </message>
@@ -3469,6 +3461,18 @@ ze słowników Stardict, Babylon i GLS</translation>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>GoldenDict-ng to oprogramowanie słownikowe.</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Włącz czcionkę interfejsu</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
     </message>
     <message>
       <source>None</source>
