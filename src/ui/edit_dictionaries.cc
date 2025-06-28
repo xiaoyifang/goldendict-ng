@@ -204,9 +204,6 @@ void EditDictionaries::acceptChangedSources( bool rebuildGroups )
   // Those hold pointers to dictionaries, we need to free them.
   groupInstances.clear();
 
-  groups.clear();
-  orderAndProps.clear();
-
   loadDictionaries( this, cfg, dictionaries, dictNetMgr );
 
   Instances::updateNames( savedGroups, dictionaries );
