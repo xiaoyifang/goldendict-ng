@@ -2880,10 +2880,6 @@ the application.</source>
       <translation>Зовнішній вигляд</translation>
     </message>
     <message>
-      <source>Interface Font</source>
-      <translation>Шрифт інтерфейсу</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Перетворіть інтерфейс для затемнення.</translation>
     </message>
@@ -3445,10 +3441,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Зберігати повідомлення налагодження в gd_log.txt в теці налаштувань</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>Розмір шрифту інтерфейсу</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Мова інтерфейсу</translation>
     </message>
@@ -3471,6 +3463,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>Золота Dict-ng - словникова програма.</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Увімкнути шрифт інтерфейсу</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
     </message>
     <message>
       <source>None</source>
