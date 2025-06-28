@@ -1748,7 +1748,7 @@ void save( Class const & c )
     opt.appendChild(dd.createTextNode(c.preferences.enableInterfaceFont ? "1" : "0"));
     preferences.appendChild(opt);
 
-    opt = dd.createElement( "customFonts" );
+    opt = dd.createElement("customFonts");
     auto customFont = c.preferences.customFonts.toElement( dd );
     preferences.appendChild( customFont );
 
