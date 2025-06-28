@@ -3468,6 +3468,10 @@ de diccionarios Stardict, Babylon y GLS</translation>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>GoldenDict-ng es un software de diccionario.</translation>
     </message>
+    <message>
+      <source>None</source>
+      <translation>Ninguno</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3998,13 +4002,6 @@ Puede encontrar la lista completa de idiomas disponibles &lt;a href=&quot;https:
     <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>El método de transcripción de japonés más utilizado basado en la fonología inglesa</translation>
-    </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
-    <message>
-      <source>None</source>
-      <translation>Ninguno</translation>
     </message>
   </context>
   <context>
