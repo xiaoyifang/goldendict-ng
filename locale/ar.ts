@@ -3990,20 +3990,28 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>تأكيد الإزالة</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>أأزيل القاموس &lt;b&gt;%1&lt;/b&gt; من القائمة؟</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>أأزيل الموقع &lt;b&gt;%1&lt;/b&gt; من القائمة؟</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>أأزيل البرنامج &lt;b&gt;%1&lt;/b&gt; من القائمة؟</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>The most widely used method of transcription of Japanese, based on English phonology</translation>
+    </message>
+    <message>
+      <source>Remove selected directories from the list?</source>
+      <translation>إزالة الدلائل المحددة من القائمة؟</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation>إزالة أدلة %1 من القائمة؟</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation>إزالة مواقع %1 من القائمة؟</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation>إزالة خوادم %1 من القائمة؟</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation>إزالة برامج %1 من القائمة؟</translation>
     </message>
   </context>
   <context>
