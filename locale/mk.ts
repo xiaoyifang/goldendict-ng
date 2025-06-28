@@ -2882,10 +2882,6 @@ the application.</source>
       <translation>Изглед</translation>
     </message>
     <message>
-      <source>Interface Font</source>
-      <translation>Фонт за интерфејс</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Свртете го интерфејсот на темно.</translation>
     </message>
@@ -3447,10 +3443,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>Interface Font Size</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3473,6 +3465,18 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation type="unfinished">Enable Interface Font</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation type="unfinished">Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation type="unfinished">Font Size</translation>
     </message>
     <message>
       <source>None</source>
