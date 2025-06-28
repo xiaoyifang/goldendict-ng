@@ -3442,6 +3442,10 @@ from Stardict, Babylon and GLS dictionaries</source>
         <source>GoldenDict-ng is a dictionary software.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>None</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ProgramTypeEditor</name>
@@ -3963,13 +3967,6 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
         <source>The most widely used method of transcription of Japanese, based on English phonology</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>StylesComboBox</name>
-    <message>
-        <source>None</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
