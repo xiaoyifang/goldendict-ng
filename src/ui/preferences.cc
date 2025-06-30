@@ -428,7 +428,7 @@ void Preferences::previewInterfaceFont( QString family, int size )
   if ( !ui.enableInterfaceFont->isChecked() ) {
     QFont defaultFont = QFontDatabase::systemFont( QFontDatabase::SystemFont::GeneralFont );
     fontName          = defaultFont.family();
-    fontSize          = defaultFont.pixelSize()>-1?defaultFont.pixelSize():Config::DEFAULT_INTERFACE_FONT_SIZE;
+    fontSize          = defaultFont.pixelSize() > -1 ? defaultFont.pixelSize() : Config::DEFAULT_INTERFACE_FONT_SIZE;
   }
   QFont f = QApplication::font();
   f.setFamily( fontName );
