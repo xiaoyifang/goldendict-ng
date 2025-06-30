@@ -2879,10 +2879,6 @@ the application.</source>
       <translation>Verschijning</translation>
     </message>
     <message>
-      <source>Interface Font</source>
-      <translation>Lettertype interface</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Draai de UI donker.</translation>
     </message>
@@ -3440,10 +3436,6 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <translation>Debug berichten opslaan in gd_log.txt in de configuratie map</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>Tekengrootte interface</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface taal</translation>
     </message>
@@ -3466,6 +3458,22 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>GoldenDict-ng is een woordenboeksoftware.</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Interfacetlettertype inschakelen</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Geen</translation>
     </message>
   </context>
   <context>
@@ -3983,27 +3991,28 @@ De volledige lijst met beschikbare talen vindt u &lt;a href=&quot;https://lingua
       <translation>Verwijderen bevestigen</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>De map &lt;b&gt;%1&lt;/b&gt; uit de lijst verwijderen?</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>De site &lt;b&gt;%1&lt;/b&gt; uit de lijst verwijderen?</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Het programma &lt;b&gt;%1&lt;/b&gt; uit de lijst verwijderen?</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>De meest gebruikte methode van transcriptie van Japans op basis van de Engelse fonologie</translation>
     </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
     <message>
-      <source>None</source>
-      <translation>Geen</translation>
+      <source>Remove selected directories from the list?</source>
+      <translation>Geselecteerde mappen uit de lijst verwijderen?</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation>%1 mappen uit de lijst verwijderen?</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation>%1 sites uit de lijst verwijderen?</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation>%1 servers uit de lijst verwijderen?</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation>%1 programma's uit de lijst verwijderen?</translation>
     </message>
   </context>
   <context>

@@ -2959,10 +2959,6 @@ Aka jakhu mayjacham jach&apos;a menus jithiqañataki.</translation>
       <translation>Aparinsya</translation>
     </message>
     <message>
-      <source>Interface Font</source>
-      <translation>Interfaz ukax Fuente ukawa</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>UI ukax ch’amakt’ayatawa.</translation>
     </message>
@@ -3560,10 +3556,6 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
       <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>Interface Font Size</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3586,6 +3578,22 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation type="unfinished">Enable Interface Font</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation type="unfinished">Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation type="unfinished">Font Size</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Ni maya</translation>
     </message>
   </context>
   <context>
@@ -4109,30 +4117,28 @@ Taqi lista utjki uka arunakax &lt;a href=&quot;https://lingualibre.org/wiki/Ling
       <translation>Chhaqtayapunitati</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>¿&lt;b&gt;%1&lt;/b&gt; q&apos;ipi uk tantat chhaqtayañ muntati?&lt;br&gt;&lt;br&gt;
-¿Quiere eliminar el directorio &lt;b&gt;%1&lt;/b&gt; de la lista?</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>¿&lt;b&gt;%1&lt;/b&gt; utjawi tantat chhaqtayañ muntati?&lt;br&gt;&lt;br&gt;
-¿Quiere eliminar el sitio &lt;b&gt;%1&lt;/b&gt; de la lista?</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>¿&lt;b&gt;%1&lt;/b&gt; programa tantat apaqañ muntati?&lt;br&gt;&lt;br&gt;
-¿Quiere eliminar el programa &lt;b&gt;%1&lt;/b&gt; de la lista?</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation type="unfinished">The most widely used method of transcription of Japanese, based on English phonology</translation>
     </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
     <message>
-      <source>None</source>
-      <translation>Ni maya</translation>
+      <source>Remove selected directories from the list?</source>
+      <translation type="unfinished">Remove selected directories from the list?</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation type="unfinished">Remove %1 directories from the list?</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation type="unfinished">Remove %1 sites from the list?</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation type="unfinished">Remove %1 servers from the list?</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation type="unfinished">Remove %1 programs from the list?</translation>
     </message>
   </context>
   <context>

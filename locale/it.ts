@@ -2878,10 +2878,6 @@ ne causerà soltanto l&apos;iconizzazione nella barra di notifica.</translation>
       <translation>Aspetto</translation>
     </message>
     <message>
-      <source>Interface Font</source>
-      <translation>Carattere Dell'Interfaccia</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Gira l'interfaccia utente al buio.</translation>
     </message>
@@ -3441,10 +3437,6 @@ dai dizionari di Stardict, Babylon e GLS</translation>
       <translation>Salva i messaggi di debug su gd_log.txt nella cartella di configurazione</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>Dimensione Carattere Interfaccia</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Lingua dell'interfaccia</translation>
     </message>
@@ -3467,6 +3459,22 @@ dai dizionari di Stardict, Babylon e GLS</translation>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>GoldenDict-ng è un software di dizionario.</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Abilita Carattere Dell'Interfaccia</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Nessuno</translation>
     </message>
   </context>
   <context>
@@ -3984,27 +3992,28 @@ L'elenco completo delle lingue disponibili può essere trovato &lt;a href=&quot;
       <translation>Conferma eliminazione</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Rimuovere la cartella &lt;b&gt;%1&lt;/b&gt; dall&apos;elenco?</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Rimuovere il sito &lt;b&gt;%1&lt;/b&gt; dall&apos;elenco?</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Rimuovere il programma &lt;b&gt;%1&lt;/b&gt; dall&apos;elenco?</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>Il metodo più ampiamente usato di trascrizione del giapponese, basato sulla fonologia inglese</translation>
     </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
     <message>
-      <source>None</source>
-      <translation>Nessuno</translation>
+      <source>Remove selected directories from the list?</source>
+      <translation>Rimuovere le directory selezionate dall'elenco?</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation>Rimuovere le directory %1 dalla lista?</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation>Rimuovere %1 siti dalla lista?</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation>Rimuovere i server %1 dall'elenco?</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation>Rimuovere i programmi %1 dalla lista?</translation>
     </message>
   </context>
   <context>

@@ -2878,10 +2878,6 @@ ukončení aplikace.</translation>
       <translation>Vzhled</translation>
     </message>
     <message>
-      <source>Interface Font</source>
-      <translation>Písmo rozhraní</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Otočit UI a ztmavit.</translation>
     </message>
@@ -3441,10 +3437,6 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <translation>Ukládat zprávy ladění do gd_log.txt do složky s konfigurací</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>Velikost písma rozhraní</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Jazyk rozhraní</translation>
     </message>
@@ -3467,6 +3459,22 @@ ze Stardict, Babylon a GLS slovníků</translation>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>GoldenDict-ng je slovníkový software.</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Povolit písmo rozhraní</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Žádná</translation>
     </message>
   </context>
   <context>
@@ -3984,27 +3992,28 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>Potvrdit odebrání</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Odstranit adresář &lt;b&gt;%1&lt;/b&gt; ze seznamu?</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Odstranit stránky &lt;b&gt;%1&lt;/b&gt; ze seznamu?</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Odstranit program &lt;b&gt;%1&lt;/b&gt; ze seznamu?</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>The Czechoslovakia is a type of consonantal sound, used in some Speech communication languages.</translation>
     </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
     <message>
-      <source>None</source>
-      <translation>Žádná</translation>
+      <source>Remove selected directories from the list?</source>
+      <translation>Odstranit vybrané adresáře ze seznamu?</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation>Odstranit %1 adresáře ze seznamu?</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation>Odstranit stránky %1 ze seznamu?</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation>Odstranit %1 servery ze seznamu?</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation>Odstranit programy %1 ze seznamu?</translation>
     </message>
   </context>
   <context>

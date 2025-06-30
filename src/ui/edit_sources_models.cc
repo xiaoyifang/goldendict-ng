@@ -49,6 +49,8 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg ):
   ui.mediaWikis->resizeColumnToContents( 2 );
   ui.mediaWikis->resizeColumnToContents( 3 );
   ui.mediaWikis->resizeColumnToContents( 4 );
+  ui.mediaWikis->setSelectionMode( QAbstractItemView::ExtendedSelection );
+  ui.mediaWikis->setSelectionBehavior( QAbstractItemView::SelectRows );
 
   ui.webSites->setTabKeyNavigation( true );
   ui.webSites->setModel( &webSitesModel );
@@ -59,6 +61,8 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg ):
   ui.webSites->resizeColumnToContents( 2 );
   ui.webSites->resizeColumnToContents( 3 );
   ui.webSites->resizeColumnToContents( 4 );
+  ui.webSites->setSelectionMode( QAbstractItemView::ExtendedSelection );
+  ui.webSites->setSelectionBehavior( QAbstractItemView::SelectRows );
 
   ui.dictServers->setTabKeyNavigation( true );
   ui.dictServers->setModel( &dictServersModel );
@@ -68,6 +72,8 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg ):
   ui.dictServers->resizeColumnToContents( 3 );
   ui.dictServers->resizeColumnToContents( 4 );
   ui.dictServers->resizeColumnToContents( 5 );
+  ui.dictServers->setSelectionMode( QAbstractItemView::ExtendedSelection );
+  ui.dictServers->setSelectionBehavior( QAbstractItemView::SelectRows );
 
   ui.programs->setTabKeyNavigation( true );
   ui.programs->setModel( &programsModel );
@@ -81,14 +87,20 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg ):
   ui.programs->resizeColumnToContents( 3 );
   ui.programs->resizeColumnToContents( 4 );
   ui.programs->setItemDelegate( itemDelegate );
+  ui.programs->setSelectionMode( QAbstractItemView::ExtendedSelection );
+  ui.programs->setSelectionBehavior( QAbstractItemView::SelectRows );
 
   ui.paths->setTabKeyNavigation( true );
   ui.paths->setModel( &pathsModel );
+  ui.paths->setSelectionMode( QAbstractItemView::ExtendedSelection );
+  ui.paths->setSelectionBehavior( QAbstractItemView::SelectRows );
 
   fitPathsColumns();
 
   ui.soundDirs->setTabKeyNavigation( true );
   ui.soundDirs->setModel( &soundDirsModel );
+  ui.soundDirs->setSelectionMode( QAbstractItemView::ExtendedSelection );
+  ui.soundDirs->setSelectionBehavior( QAbstractItemView::SelectRows );
 
   fitSoundDirsColumns();
 
@@ -162,19 +174,23 @@ void Sources::on_addPath_clicked()
 
 void Sources::on_removePath_clicked()
 {
-  QModelIndex current = ui.paths->currentIndex();
+  QModelIndexList selected = ui.paths->selectionModel()->selectedRows();
 
-  if ( current.isValid()
-       && QMessageBox::question(
-            this,
-            tr( "Confirm removal" ),
-            tr( "Remove directory <b>%1</b> from the list?" ).arg( pathsModel.getCurrentPaths()[ current.row() ].path ),
-            QMessageBox::Ok,
-            QMessageBox::Cancel )
-         == QMessageBox::Ok ) {
-    pathsModel.removePath( current.row() );
-    fitPathsColumns();
+  if ( selected.isEmpty() ) {
+    return;
   }
+
+  if ( QMessageBox::question( this,
+                              tr( "Confirm removal" ),
+                              tr( "Remove selected directories from the list?" ),
+                              QMessageBox::StandardButtons( QMessageBox::Ok | QMessageBox::Cancel ) )
+       != QMessageBox::Ok ) {
+    return;
+  }
+
+  pathsModel.remove( selected );
+
+  fitPathsColumns();
 }
 
 void Sources::on_addSoundDir_clicked()
@@ -189,19 +205,20 @@ void Sources::on_addSoundDir_clicked()
 
 void Sources::on_removeSoundDir_clicked()
 {
-  QModelIndex current = ui.soundDirs->currentIndex();
-
-  if ( current.isValid()
-       && QMessageBox::question( this,
-                                 tr( "Confirm removal" ),
-                                 tr( "Remove directory <b>%1</b> from the list?" )
-                                   .arg( soundDirsModel.getCurrentSoundDirs()[ current.row() ].path ),
-                                 QMessageBox::Ok,
-                                 QMessageBox::Cancel )
-         == QMessageBox::Ok ) {
-    soundDirsModel.removeSoundDir( current.row() );
-    fitSoundDirsColumns();
+  QModelIndexList selected = ui.soundDirs->selectionModel()->selectedRows();
+  if ( selected.isEmpty() ) {
+    return;
   }
+
+  if ( QMessageBox::question( this,
+                              tr( "Confirm removal" ),
+                              tr( "Remove %1 directories from the list?" ).arg( selected.size() ),
+                              QMessageBox::Ok | QMessageBox::Cancel )
+       != QMessageBox::Ok ) {
+    return;
+  }
+  soundDirsModel.removeSoundDirs( selected );
+  fitSoundDirsColumns();
 }
 
 void Sources::on_changeHunspellPath_clicked()
@@ -227,18 +244,20 @@ void Sources::on_addMediaWiki_clicked()
 
 void Sources::on_removeMediaWiki_clicked()
 {
-  QModelIndex current = ui.mediaWikis->currentIndex();
-
-  if ( current.isValid()
-       && QMessageBox::question(
-            this,
-            tr( "Confirm removal" ),
-            tr( "Remove site <b>%1</b> from the list?" ).arg( mediawikisModel.getCurrentWikis()[ current.row() ].name ),
-            QMessageBox::Ok,
-            QMessageBox::Cancel )
-         == QMessageBox::Ok ) {
-    mediawikisModel.removeWiki( current.row() );
+  QModelIndexList selected = ui.mediaWikis->selectionModel()->selectedRows();
+  if ( selected.isEmpty() ) {
+    return;
   }
+
+  if ( QMessageBox::question( this,
+                              tr( "Confirm removal" ),
+                              tr( "Remove %1 sites from the list?" ).arg( selected.size() ),
+                              QMessageBox::Ok | QMessageBox::Cancel )
+       != QMessageBox::Ok ) {
+    return;
+  }
+
+  mediawikisModel.remove( selected );
 }
 
 void Sources::on_addWebSite_clicked()
@@ -253,18 +272,20 @@ void Sources::on_addWebSite_clicked()
 
 void Sources::on_removeWebSite_clicked()
 {
-  QModelIndex current = ui.webSites->currentIndex();
-
-  if ( current.isValid()
-       && QMessageBox::question( this,
-                                 tr( "Confirm removal" ),
-                                 tr( "Remove site <b>%1</b> from the list?" )
-                                   .arg( webSitesModel.getCurrentWebSites()[ current.row() ].name ),
-                                 QMessageBox::Ok,
-                                 QMessageBox::Cancel )
-         == QMessageBox::Ok ) {
-    webSitesModel.removeSite( current.row() );
+  QModelIndexList selected = ui.webSites->selectionModel()->selectedRows();
+  if ( selected.isEmpty() ) {
+    return;
   }
+
+  if ( QMessageBox::question( this,
+                              tr( "Confirm removal" ),
+                              tr( "Remove %1 sites from the list?" ).arg( selected.size() ),
+                              QMessageBox::Ok | QMessageBox::Cancel )
+       != QMessageBox::Ok ) {
+    return;
+  }
+
+  webSitesModel.remove( selected );
 }
 
 void Sources::on_addDictServer_clicked()
@@ -279,18 +300,21 @@ void Sources::on_addDictServer_clicked()
 
 void Sources::on_removeDictServer_clicked()
 {
-  QModelIndex current = ui.dictServers->currentIndex();
-
-  if ( current.isValid()
-       && QMessageBox::question( this,
-                                 tr( "Confirm removal" ),
-                                 tr( "Remove site <b>%1</b> from the list?" )
-                                   .arg( dictServersModel.getCurrentDictServers()[ current.row() ].name ),
-                                 QMessageBox::Ok,
-                                 QMessageBox::Cancel )
-         == QMessageBox::Ok ) {
-    dictServersModel.removeServer( current.row() );
+  QModelIndexList selected = ui.dictServers->selectionModel()->selectedRows();
+  if ( selected.isEmpty() ) {
+    return;
   }
+
+  if ( QMessageBox::question( this,
+                              tr( "Confirm removal" ),
+                              tr( "Remove %1 servers from the list?" ).arg( selected.size() ),
+                              QMessageBox::Yes | QMessageBox::No,
+                              QMessageBox::No )
+       != QMessageBox::Yes ) {
+    return;
+  }
+
+  dictServersModel.remove( selected );
 }
 
 void Sources::on_addProgram_clicked()
@@ -305,18 +329,23 @@ void Sources::on_addProgram_clicked()
 
 void Sources::on_removeProgram_clicked()
 {
-  QModelIndex current = ui.programs->currentIndex();
-
-  if ( current.isValid()
-       && QMessageBox::question( this,
-                                 tr( "Confirm removal" ),
-                                 tr( "Remove program <b>%1</b> from the list?" )
-                                   .arg( programsModel.getCurrentPrograms()[ current.row() ].name ),
-                                 QMessageBox::Ok,
-                                 QMessageBox::Cancel )
-         == QMessageBox::Ok ) {
-    programsModel.removeProgram( current.row() );
+  QModelIndexList selected = ui.programs->selectionModel()->selectedRows();
+  if ( selected.isEmpty() ) {
+    return;
   }
+
+  QString message = tr( "Remove %1 programs from the list?" ).arg( selected.size() );
+
+  if ( QMessageBox::question( this,
+                              tr( "Confirm removal" ),
+                              message,
+                              QMessageBox::Yes | QMessageBox::No,
+                              QMessageBox::No )
+       != QMessageBox::Yes ) {
+    return;
+  }
+
+  programsModel.remove( selected );
 }
 
 #ifdef TTS_SUPPORT
@@ -410,6 +439,26 @@ void MediaWikisModel::addNewWiki()
   beginInsertRows( QModelIndex(), mediawikis.size(), mediawikis.size() );
   mediawikis.push_back( w );
   endInsertRows();
+}
+
+void MediaWikisModel::remove( const QModelIndexList & indexes )
+{
+  beginResetModel();
+  QList< qsizetype > rows;
+  rows.reserve( indexes.size() );
+
+  for ( auto & i : std::as_const( indexes ) ) {
+    rows.push_back( i.row() );
+  }
+
+  decltype( mediawikis ) newSoundDirs;
+  for ( auto i = 0; i < mediawikis.size(); ++i ) {
+    if ( !rows.contains( i ) ) {
+      newSoundDirs.push_back( mediawikis[ i ] );
+    }
+  }
+  mediawikis.swap( newSoundDirs );
+  endResetModel();
 }
 
 
@@ -572,6 +621,26 @@ void WebSitesModel::addNewSite()
   beginInsertRows( QModelIndex(), webSites.size(), webSites.size() );
   webSites.push_back( w );
   endInsertRows();
+}
+
+void WebSitesModel::remove( const QModelIndexList & indexes )
+{
+  beginResetModel();
+  QList< qsizetype > rows;
+  rows.reserve( indexes.size() );
+
+  for ( auto & i : std::as_const( indexes ) ) {
+    rows.push_back( i.row() );
+  }
+
+  decltype( webSites ) newSoundDirs;
+  for ( auto i = 0; i < webSites.size(); ++i ) {
+    if ( !rows.contains( i ) ) {
+      newSoundDirs.push_back( webSites[ i ] );
+    }
+  }
+  webSites.swap( newSoundDirs );
+  endResetModel();
 }
 
 
@@ -754,6 +823,26 @@ void DictServersModel::addNewServer()
   endInsertRows();
 }
 
+void DictServersModel::remove( const QModelIndexList & indexes )
+{
+  beginResetModel();
+  QList< qsizetype > rows;
+  rows.reserve( indexes.size() );
+
+  for ( auto & i : std::as_const( indexes ) ) {
+    rows.push_back( i.row() );
+  }
+
+  decltype( dictServers ) newSoundDirs;
+  for ( auto i = 0; i < dictServers.size(); ++i ) {
+    if ( !rows.contains( i ) ) {
+      newSoundDirs.push_back( dictServers[ i ] );
+    }
+  }
+  dictServers.swap( newSoundDirs );
+  endResetModel();
+}
+
 Qt::ItemFlags DictServersModel::flags( QModelIndex const & index ) const
 {
   Qt::ItemFlags result = QAbstractTableModel::flags( index );
@@ -924,6 +1013,26 @@ void ProgramsModel::addNewProgram()
   beginInsertRows( QModelIndex(), programs.size(), programs.size() );
   programs.push_back( p );
   endInsertRows();
+}
+
+void ProgramsModel::remove( const QModelIndexList & indexes )
+{
+  beginResetModel();
+  QList< qsizetype > rows;
+  rows.reserve( indexes.size() );
+
+  for ( auto & i : std::as_const( indexes ) ) {
+    rows.push_back( i.row() );
+  }
+
+  decltype( programs ) newSoundDirs;
+  for ( auto i = 0; i < programs.size(); ++i ) {
+    if ( !rows.contains( i ) ) {
+      newSoundDirs.push_back( programs[ i ] );
+    }
+  }
+  programs.swap( newSoundDirs );
+  endResetModel();
 }
 
 Qt::ItemFlags ProgramsModel::flags( QModelIndex const & index ) const
@@ -1112,6 +1221,26 @@ void PathsModel::addNewPath( QString const & path )
   endInsertRows();
 }
 
+void PathsModel::remove( const QModelIndexList & indexes )
+{
+  beginResetModel();
+  QList< qsizetype > rows;
+  rows.reserve( indexes.size() );
+
+  for ( auto & i : std::as_const( indexes ) ) {
+    rows.push_back( i.row() );
+  }
+
+  decltype( paths ) newSoundDirs;
+  for ( auto i = 0; i < paths.size(); ++i ) {
+    if ( !rows.contains( i ) ) {
+      newSoundDirs.push_back( paths[ i ] );
+    }
+  }
+  paths.swap( newSoundDirs );
+  endResetModel();
+}
+
 Qt::ItemFlags PathsModel::flags( QModelIndex const & index ) const
 {
   Qt::ItemFlags result = QAbstractTableModel::flags( index );
@@ -1220,6 +1349,26 @@ void SoundDirsModel::addNewSoundDir( QString const & path, QString const & name 
   beginInsertRows( QModelIndex(), soundDirs.size(), soundDirs.size() );
   soundDirs.push_back( Config::SoundDir( path, name ) );
   endInsertRows();
+}
+
+void SoundDirsModel::removeSoundDirs( const QList< QModelIndex > & indexes )
+{
+  beginResetModel();
+  QList< qsizetype > rows;
+  rows.reserve( indexes.size() );
+
+  for ( auto & i : std::as_const( indexes ) ) {
+    rows.push_back( i.row() );
+  }
+
+  decltype( soundDirs ) newSoundDirs;
+  for ( auto i = 0; i < soundDirs.size(); ++i ) {
+    if ( !rows.contains( i ) ) {
+      newSoundDirs.push_back( soundDirs[ i ] );
+    }
+  }
+  soundDirs.swap( newSoundDirs );
+  endResetModel();
 }
 
 Qt::ItemFlags SoundDirsModel::flags( QModelIndex const & index ) const

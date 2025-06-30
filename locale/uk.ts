@@ -2880,10 +2880,6 @@ the application.</source>
       <translation>Зовнішній вигляд</translation>
     </message>
     <message>
-      <source>Interface Font</source>
-      <translation>Шрифт інтерфейсу</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Перетворіть інтерфейс для затемнення.</translation>
     </message>
@@ -3445,10 +3441,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Зберігати повідомлення налагодження в gd_log.txt в теці налаштувань</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>Розмір шрифту інтерфейсу</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Мова інтерфейсу</translation>
     </message>
@@ -3471,6 +3463,22 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>Золота Dict-ng - словникова програма.</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Увімкнути шрифт інтерфейсу</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Нема</translation>
     </message>
   </context>
   <context>
@@ -3987,27 +3995,28 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>Підтвердження вилучення</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Вилучити теку &lt;b&gt;%1&lt;/b&gt; з переліку?</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Вилучити сайт &lt;b&gt;%1&lt;/b&gt; з переліку?</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Вилучити програму &lt;b&gt;%1&lt;/b&gt; зі списку?</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>Найбільш поширений метод транскрипції японської та базується на англійській фонології</translation>
     </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
     <message>
-      <source>None</source>
-      <translation>Жоден</translation>
+      <source>Remove selected directories from the list?</source>
+      <translation>Видалити вибрані каталоги з списку?</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation>Видалити каталоги %1 зі списку?</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation>Видалити %1 сайтів з списку?</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation>Видалити %1 серверів з списку?</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation>Видалити %1 програми з списку?</translation>
     </message>
   </context>
   <context>

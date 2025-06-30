@@ -2878,10 +2878,6 @@ the application.</source>
       <translation>모습</translation>
     </message>
     <message>
-      <source>Interface Font</source>
-      <translation>인터페이스 글꼴</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>UI를 어둡게 합니다.</translation>
     </message>
@@ -3440,10 +3436,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>config 폴더의 gd_log.txt에 디버그 메시지를 저장합니다</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>인터페이스 글꼴 크기</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>인터페이스 언어</translation>
     </message>
@@ -3466,6 +3458,22 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>GoldenDict-ng는 사전 소프트웨어입니다.</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation type="unfinished">Enable Interface Font</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation type="unfinished">Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation type="unfinished">Font Size</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>없음</translation>
     </message>
   </context>
   <context>
@@ -3987,27 +3995,28 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>삭제 확인</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>&lt;b&gt;%1&lt;/b&gt;폴더를 목록에서 삭제하시겠습니까?</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>&lt;b&gt;%1&lt;/b&gt;사이트를 목록에서 삭제하시겠습니까?</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>프로그램 &lt;b&gt;%1&lt;/b&gt;을 목록에서 삭제하시겠습니까?</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>가장 널리 사용되는 일본어 로마자 표기방법으로서,  영어 음성학을 기초로 하고 있습니다 </translation>
     </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
     <message>
-      <source>None</source>
-      <translation>없음</translation>
+      <source>Remove selected directories from the list?</source>
+      <translation type="unfinished">Remove selected directories from the list?</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation type="unfinished">Remove %1 directories from the list?</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation type="unfinished">Remove %1 sites from the list?</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation type="unfinished">Remove %1 servers from the list?</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation type="unfinished">Remove %1 programs from the list?</translation>
     </message>
   </context>
   <context>

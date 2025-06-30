@@ -2880,10 +2880,6 @@ the application.</source>
       <translation>外観</translation>
     </message>
     <message>
-      <source>Interface Font</source>
-      <translation>インターフェースフォント</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>UIを暗くします。</translation>
     </message>
@@ -3443,10 +3439,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>設定フォルダ内のgd_log.txtにデバッグメッセージを保存します</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>インターフェースフォントサイズ</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>インターフェース言語</translation>
     </message>
@@ -3469,6 +3461,22 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>GoldenDict-ng は辞書ソフトウェアです。</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>インターフェースフォントを有効にする</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>なし</translation>
     </message>
   </context>
   <context>
@@ -3981,27 +3989,28 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>削除の確認</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>一覧からディレクトリ &lt;b&gt;%1&lt;/b&gt; を削除しますか?</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>一覧からサイト &lt;b&gt;%1&lt;/b&gt; を削除しますか?</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>リストからプログラム &lt;b&gt;%1&lt;/b&gt; を削除しますか？</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>最も広く使用されている日本語の音韻論に基づく表記法</translation>
     </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
     <message>
-      <source>None</source>
-      <translation>なし</translation>
+      <source>Remove selected directories from the list?</source>
+      <translation>リストから選択したディレクトリを削除しますか？</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation>%1 ディレクトリをリストから削除しますか？</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation>%1 サイトをリストから削除しますか？</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation>%1 サーバーをリストから削除しますか？</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation>%1 プログラムをリストから削除しますか？</translation>
     </message>
   </context>
   <context>

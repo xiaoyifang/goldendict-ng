@@ -2880,10 +2880,6 @@ sovellus.</translation>
       <translation>Ulkomuoto</translation>
     </message>
     <message>
-      <source>Interface Font</source>
-      <translation>Käyttöliittymän Kirjasin</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Käännä käyttöliittymä pimeäksi.</translation>
     </message>
@@ -3444,10 +3440,6 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <translation>Tallenna debug viestit gd_log.txt asetuskansioon</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>Käyttöliittymän Kirjasimen Koko</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Käyttöliittymän kieli</translation>
     </message>
@@ -3470,6 +3462,22 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>GoldenDict-ng on sanakirja ohjelmisto.</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Ota Käyttöön Käyttöliittymän Kirjasin</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Tyhjä</translation>
     </message>
   </context>
   <context>
@@ -3987,27 +3995,28 @@ Täydellinen luettelo saatavilla olevista kielistä löytyy &lt;a href=&quot;htt
       <translation>Vahvista poistaminen</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Poistetaanko kansio &lt;b&gt;%1&lt;/b&gt; listalta?</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Poistetaanko sivusto &lt;b&gt;%1&lt;/b&gt; luettelosta?</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Poistetaanko ohjelma &lt;b&gt;%1&lt;/b&gt; listalta?</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>Yleisimmin käytetty menetelmä transkriptio japani, joka perustuu Englanti fonologia</translation>
     </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
     <message>
-      <source>None</source>
-      <translation>Tyhjä</translation>
+      <source>Remove selected directories from the list?</source>
+      <translation>Poistetaanko valitut kansiot luettelosta?</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation>Poistetaanko %1 hakemistot luettelosta?</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation>Poistetaanko %1 sivustot listalta?</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation>Poistetaanko %1 palvelimet listalta?</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation>Poistetaanko %1 ohjelmat listalta?</translation>
     </message>
   </context>
   <context>

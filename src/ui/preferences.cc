@@ -83,6 +83,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   if ( !p.interfaceFont.isEmpty() ) {
     ui.systemFont->setCurrentText( p.interfaceFont );
   }
+  ui.enableInterfaceFont->setChecked( p.enableInterfaceFont );
 
   if ( p.interfaceFontSize > 0 ) {
     ui.interfaceFontSize->setValue( p.interfaceFontSize );
@@ -370,9 +371,23 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   ui.removeInvalidIndexOnExit->setChecked( p.removeInvalidIndexOnExit );
   ui.enableApplicationLog->setChecked( p.enableApplicationLog );
 
+  //initialize add-on styles
+  QString stylesDir = Config::getStylesDir();
+  if ( !stylesDir.isEmpty() ) {
+    ui.addonStyles->clear();
+
+    ui.addonStyles->addItem( tr( "None" ) );
+
+    QDir dir( stylesDir );
+    QStringList styles = dir.entryList( QDir::Dirs | QDir::NoDotAndDotDot, QDir::LocaleAware );
+    if ( !styles.isEmpty() ) {
+      ui.addonStyles->addItems( styles );
+    }
+  }
+  ui.addonStyles->setVisible( ui.addonStyles->count() > 1 );
   // Add-on styles
   ui.addonStylesLabel->setVisible( ui.addonStyles->count() > 1 );
-  ui.addonStyles->setCurrentStyle( p.addonStyle );
+  ui.addonStyles->setCurrentText( p.addonStyle );
 
   // Full-text search parameters
   ui.ftsGroupBox->setChecked( p.fts.enabled );
@@ -403,6 +418,9 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 }
 void Preferences::previewInterfaceFont( QString family, int size )
 {
+  if ( !ui.enableInterfaceFont->isChecked() ) {
+    return;
+  }
   QFont f = QApplication::font();
   f.setFamily( family );
   f.setPixelSize( size );
@@ -427,6 +445,7 @@ Config::Preferences Preferences::getPreferences()
 
   p.interfaceFont = ui.systemFont->currentText();
   p.interfaceFontSize = ui.interfaceFontSize->value();
+  p.enableInterfaceFont = ui.enableInterfaceFont->isChecked();
 
   Config::CustomFonts c;
   c.standard    = ui.font_standard->currentText();
@@ -538,7 +557,7 @@ Config::Preferences Preferences::getPreferences()
   p.removeInvalidIndexOnExit = ui.removeInvalidIndexOnExit->isChecked();
   p.enableApplicationLog     = ui.enableApplicationLog->isChecked();
 
-  p.addonStyle = ui.addonStyles->getCurrentStyle();
+  p.addonStyle = ui.addonStyles->currentText();
 
   p.fts.enabled           = ui.ftsGroupBox->isChecked();
   p.fts.maxDictionarySize = ui.maxDictionarySize->value();

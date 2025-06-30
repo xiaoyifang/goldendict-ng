@@ -2872,10 +2872,6 @@ the application.</source>
       <translation>界面外观</translation>
     </message>
     <message>
-      <source>Interface Font</source>
-      <translation>界面字体</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>启用暗色界面</translation>
     </message>
@@ -3429,10 +3425,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>在配置文件夹中将调试消息保存到 gd_log.txt</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>界面字体大小</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>界面语言</translation>
     </message>
@@ -3455,6 +3447,22 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>GoldenDict-ng 是一个字典软件。</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>启用接口字体</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>无</translation>
     </message>
   </context>
   <context>
@@ -3970,27 +3978,28 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>确认移除</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>确定要将&lt;b&gt;%1&lt;/b&gt;目录从列表中移除吗？</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>确定要将&lt;b&gt;%1&lt;/b&gt;网站从列表中移除吗？</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>从列表中删除程序 &lt;b&gt;%1&lt;/b&gt;？</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>基于英语音系的日语最广泛使用的转录方法</translation>
     </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
     <message>
-      <source>None</source>
-      <translation>无</translation>
+      <source>Remove selected directories from the list?</source>
+      <translation>从列表中删除选中的目录？</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation>从列表中删除 %1 目录吗？</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation>从列表中删除 %1 站点？</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation>从列表中删除 %1 服务器吗？</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation>从列表中删除 %1 程序吗？</translation>
     </message>
   </context>
   <context>

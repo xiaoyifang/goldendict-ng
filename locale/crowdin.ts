@@ -2865,10 +2865,6 @@ the application.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Interface Font</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Turn the UI to dark.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3415,10 +3411,6 @@ from Stardict, Babylon and GLS dictionaries</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Interface Font Size</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Interface language</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3440,6 +3432,22 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
         <source>GoldenDict-ng is a dictionary software.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable Interface Font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Font Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>None</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3950,26 +3958,27 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>The most widely used method of transcription of Japanese, based on English phonology</source>
         <translation type="unfinished"></translation>
     </message>
-</context>
-<context>
-    <name>StylesComboBox</name>
     <message>
-        <source>None</source>
+        <source>Remove selected directories from the list?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove %1 directories from the list?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove %1 sites from the list?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove %1 servers from the list?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove %1 programs from the list?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
