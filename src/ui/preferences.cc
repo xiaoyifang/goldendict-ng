@@ -418,7 +418,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 }
 void Preferences::previewInterfaceFont( QString family, int size )
 {
-  if ( !cfg.preferences.enableInterfaceFont ) {
+  if ( !ui.enableInterfaceFont->isChecked() ) {
     return;
   }
   QFont f = QApplication::font();
