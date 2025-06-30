@@ -51,6 +51,11 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   connect( ui.interfaceFontSize, &QSpinBox::valueChanged, this, [ this ]( int size ) {
     previewInterfaceFont( ui.systemFont->currentText(), size );
   } );
+
+  connect( ui.enableInterfaceFont, &QGroupBox::toggled, this, [ this ]( bool on ) {
+    previewInterfaceFont( ui.systemFont->currentText(), ui.interfaceFontSize->value() );
+  } );
+
   previewInterfaceFont( ui.systemFont->currentText(), ui.interfaceFontSize->value() );
 
   addAction( &helpAction );
@@ -418,12 +423,16 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 }
 void Preferences::previewInterfaceFont( QString family, int size )
 {
+  auto fontName = family;
+  auto fontSize = size;
   if ( !ui.enableInterfaceFont->isChecked() ) {
-    return;
+    QFont defaultFont = QFontDatabase::systemFont( QFontDatabase::SystemFont::GeneralFont );
+    fontName          = defaultFont.family();
+    fontSize          = defaultFont.pixelSize() > -1 ? defaultFont.pixelSize() : Config::DEFAULT_FONT_SIZE;
   }
   QFont f = QApplication::font();
-  f.setFamily( family );
-  f.setPixelSize( size );
+  f.setFamily( fontName );
+  f.setPixelSize( fontSize );
   this->ui.previewFont->setFont( f );
 }
 
