@@ -2881,10 +2881,6 @@ the application.</source>
       <translation>Εμφάνιση</translation>
     </message>
     <message>
-      <source>Interface Font</source>
-      <translation>Γραμματοσειρά Διεπαφής</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Στρίψτε την διεπαφή στο σκοτάδι.</translation>
     </message>
@@ -3446,10 +3442,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Αποθήκευση μηνυμάτων αποσφαλμάτωσης στο gd_log.txt στο φάκελο ρυθμίσεων</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>Μέγεθος Γραμματοσειράς Διεπαφής</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Γλώσσα διεπαφής</translation>
     </message>
@@ -3472,6 +3464,22 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>Το GoldenDict-ng είναι ένα λεξικό λογισμικό.</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Ενεργοποίηση Γραμματοσειράς Διεπαφής</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Κανένα</translation>
     </message>
   </context>
   <context>
@@ -3988,27 +3996,28 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>Επιβεβαίωση αφαίρεσης</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Να αφαιρεθεί ο φάκελος &lt;b&gt;%1&lt;/b&gt; από τη λίστα;</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Να αφαιρεθεί η ιστοσελίδα &lt;b&gt;%1&lt;/b&gt; από τη λίστα;</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Να αφαιρεθεί το πρόγραμμα &lt;b&gt;%1&lt;/b&gt; από τη λίστα;</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>Η πιο ευρέως χρησιμοποιούμενη μέθοδος μεταγραφής ιαπωνικών, με βάση την αγγλική φωνολογία</translation>
     </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
     <message>
-      <source>None</source>
-      <translation>Κανένα</translation>
+      <source>Remove selected directories from the list?</source>
+      <translation>Αφαίρεση επιλεγμένων καταλόγων από τη λίστα?</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation>Κατάργηση καταλόγων %1 από τη λίστα?</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation>Αφαιρέστε %1 sites από τη λίστα?</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation>Κατάργηση εξυπηρετητών %1 από τη λίστα?</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation>Κατάργηση προγραμμάτων %1 από τη λίστα?</translation>
     </message>
   </context>
   <context>

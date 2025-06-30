@@ -2879,10 +2879,6 @@ minimera fönstret till meddelandefältet istället för att avsluta programmet.
       <translation>Utseende</translation>
     </message>
     <message>
-      <source>Interface Font</source>
-      <translation>Gränssnittets teckensnitt</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>Vänd UI till mörk.</translation>
     </message>
@@ -3446,10 +3442,6 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <translation>Spara felsökningsmeddelanden till gd_log.txt i konfigurationsmappen</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>Gränssnittets teckenstorlek</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Gränssnittets språk</translation>
     </message>
@@ -3472,6 +3464,22 @@ från Stardict, Babylon och GLS ordböcker</translation>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>GoldenDict-ng är en ordbok programvara.</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Aktivera typsnitt för gränssnitt</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Ingen</translation>
     </message>
   </context>
   <context>
@@ -3989,27 +3997,28 @@ Fullständig lista över tillgängliga språk finns &lt;a href=&quot;https://lin
       <translation>Bekräfta borttagning</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Vill du ta bort mappen &lt;b&gt;%1&lt;/b&gt; ur listan?</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Vill du ta bort webbplatsen &lt;b&gt;%1&lt;/b&gt; ur listan?</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Vill du ta bort programmet &lt;b&gt;%1&lt;/b&gt; ur listan?</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>Den mest använda metoden av transkription av japanska, baserat på engelsk fonologi</translation>
     </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
     <message>
-      <source>None</source>
-      <translation>Ingen</translation>
+      <source>Remove selected directories from the list?</source>
+      <translation>Ta bort valda kataloger från listan?</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation>Ta bort %1 kataloger från listan?</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation>Ta bort %1 sajter från listan?</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation>Ta bort %1 servrar från listan?</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation>Ta bort %1 program från listan?</translation>
     </message>
   </context>
   <context>

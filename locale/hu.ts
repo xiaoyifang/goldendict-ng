@@ -2880,10 +2880,6 @@ való kilépés helyett.</translation>
       <translation>Megjelenés</translation>
     </message>
     <message>
-      <source>Interface Font</source>
-      <translation>Felület betűtípusa</translation>
-    </message>
-    <message>
       <source>Turn the UI to dark.</source>
       <translation>A felület megjelenésének átállítása sötét módra.</translation>
     </message>
@@ -3443,10 +3439,6 @@ is felhasználja további szócikkek felfedezéséhez</translation>
       <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>Interface Font Size</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3469,6 +3461,22 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>GoldenDict-ng is a dictionary software.</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation type="unfinished">Enable Interface Font</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation type="unfinished">Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation type="unfinished">Font Size</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Nincs</translation>
     </message>
   </context>
   <context>
@@ -3986,27 +3994,28 @@ Az elérhető nyelvek teljes listája megtalálható &lt;a href=&quot;https://li
       <translation>Eltávolítás megerősítése</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Eltávolítja a könyvtárat a listáról: &lt;b&gt;%1&lt;/b&gt;?</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Eltávolítja a weboldalt a listáról: &lt;b&gt;%1&lt;/b&gt;?</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Eltávolítja a programot a listáról: &lt;b&gt;%1&lt;/b&gt;?</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>The most widely used method of transcription of Japanese, based on English phonology</translation>
     </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
     <message>
-      <source>None</source>
-      <translation>Nincs</translation>
+      <source>Remove selected directories from the list?</source>
+      <translation type="unfinished">Remove selected directories from the list?</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation type="unfinished">Remove %1 directories from the list?</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation type="unfinished">Remove %1 sites from the list?</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation type="unfinished">Remove %1 servers from the list?</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation type="unfinished">Remove %1 programs from the list?</translation>
     </message>
   </context>
   <context>
