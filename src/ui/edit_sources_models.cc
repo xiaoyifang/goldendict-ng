@@ -164,10 +164,12 @@ void Sources::fitHunspellDictsColumns()
 
 void Sources::on_addPath_clicked()
 {
-  QString dir = QFileDialog::getExistingDirectory( this, tr( "Choose a directory" ) );
+  QStringList dirs = QFileDialog::getExistingDirectories( this, tr( "Choose directories" ) );
 
-  if ( !dir.isEmpty() ) {
-    pathsModel.addNewPath( dir );
+  if ( !dirs.isEmpty() ) {
+    for ( const QString & dir : dirs ) {
+      pathsModel.addNewPath( dir );
+    }
     fitPathsColumns();
   }
 }
@@ -195,10 +197,12 @@ void Sources::on_removePath_clicked()
 
 void Sources::on_addSoundDir_clicked()
 {
-  QString dir = QFileDialog::getExistingDirectory( this, tr( "Choose a directory" ) );
+  QStringList dirs = QFileDialog::getExistingDirectories( this, tr( "Choose directories" ) );
 
-  if ( !dir.isEmpty() ) {
-    soundDirsModel.addNewSoundDir( dir, QDir( dir ).dirName() );
+  if ( !dirs.isEmpty() ) {
+    for ( const QString & dir : dirs ) {
+      soundDirsModel.addNewSoundDir( dir, QDir( dir ).dirName() );
+    }
     fitSoundDirsColumns();
   }
 }
