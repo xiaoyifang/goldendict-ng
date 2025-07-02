@@ -197,14 +197,6 @@ target_compile_definitions(${GOLDENDICT} PUBLIC
         $<$<BOOL:${WITH_VCPKG_BREAKPAD}>:USE_BREAKPAD>
 )
 
-#### libraries linking && includes for Win or Unix
-
-if (WIN32)
-    include(cmake/Deps_Vcpkg.cmake)
-else ()
-    include(cmake/Deps_Unix.cmake)
-endif ()
-
 #### add translations
 
 # include all *ts files under locale
@@ -223,14 +215,17 @@ qt_add_translations(${GOLDENDICT} TS_FILES ${TRANS_FILES}
 
 add_dependencies(${GOLDENDICT} "release_translations")
 
-#### installation or assemble redistribution
+#### Dependencies and Packaging (Don't unify them. They have little in common!)
 
-if (APPLE)
-    include(cmake/Package_macOS.cmake)
-elseif (LINUX OR BSD)
+if (LINUX OR BSD)
+    include(cmake/Deps_Linux.cmake)
     include(cmake/Package_Linux.cmake)
 elseif (WIN32)
+    include(cmake/Deps_Vcpkg.cmake)
     include(cmake/Package_Windows.cmake)
+else ()
+    include(cmake/Deps_macOS.cmake)
+    include(cmake/Package_macOS.cmake)
 endif ()
 
 feature_summary(WHAT ALL DESCRIPTION "Build configuration:")
