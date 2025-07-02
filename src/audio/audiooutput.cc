@@ -111,7 +111,8 @@ public:
     if ( !audioOutput || ( fmt.isValid() && audioOutput->format() != fmt )
          || audioOutput->state() == QAudio::StoppedState ) {
       if ( audioOutput ) {
-        audioOutput->deleteLater();
+        delete audioOutput;
+        audioOutput = nullptr;
       }
       audioOutput = new AudioOutput( fmt );
       QObject::connect( audioOutput, &AudioOutput::stateChanged, audioOutput, [ & ]( QAudio::State state ) {
@@ -151,7 +152,7 @@ public:
     }
     if ( audioOutput ) {
       audioOutput->stop();
-      audioOutput->deleteLater();
+      delete audioOutput;
     }
     audioOutput = nullptr;
   }

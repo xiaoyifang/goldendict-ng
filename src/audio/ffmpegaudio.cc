@@ -308,7 +308,7 @@ void DecoderContext::stop()
 {
   if ( audioOutput ) {
     audioOutput->stop();
-    audioOutput->deleteLater();
+    delete audioOutput;
     audioOutput = nullptr;
   }
 }
