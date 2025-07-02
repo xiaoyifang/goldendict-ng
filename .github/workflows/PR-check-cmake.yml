@@ -61,7 +61,7 @@ jobs:
           brew install --force --overwrite \
           ninja \
           opencc \
-          ffmpeg \
+          ffmpeg@6 \
           libao \
           libiconv \
           bzip2 \
@@ -80,9 +80,11 @@ jobs:
         run: |
           mkdir build_dir
           export CXXFLAGS="-Wall"
+          export PKG_CONFIG_PATH="`brew --prefix ffmpeg@6`/lib/pkgconfig:$PKG_CONFIG_PATH"
           cmake -S . \
             -B ./build_dir \
             -G Ninja \
+            -DWITH_FFMPEG_PLAYER=ON \
             -DCMAKE_COMPILE_WARNING_AS_ERROR=ON
           cmake --build ./build_dir
 
