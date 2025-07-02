@@ -14,6 +14,9 @@ if (WITH_FFMPEG_PLAYER)
     list(APPEND Optional_Pkgs "libavcodec;libavformat;libavutil;libswresample")
 endif ()
 
+set(X11_Pkgs "x11;xtst") # TODO: maybe xtst only is enough.
+target_compile_definitions(${GOLDENDICT} PUBLIC HAVE_X11)
+
 pkg_check_modules(DEPS REQUIRED IMPORTED_TARGET
         hunspell
         liblzma
@@ -21,14 +24,14 @@ pkg_check_modules(DEPS REQUIRED IMPORTED_TARGET
         opencc
         vorbis # .ogg
         vorbisfile
-        x11 # TODO: maybe not needed, xtst is enough.
         xapian-core
-        xtst
         zlib
+        ${X11_Pkgs}
         ${Optional_Pkgs}
 )
 
-find_package(BZip2 REQUIRED)
+
+find_package(BZip2 REQUIRED) # FreeBSD misses .pc file https://www.freshports.org/archivers/bzip2
 target_link_libraries(${GOLDENDICT} PRIVATE PkgConfig::DEPS BZip2::BZip2)
 
 # On FreeBSD, there are two iconv, libc iconv & GNU libiconv.
