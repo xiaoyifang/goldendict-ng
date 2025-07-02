@@ -1274,6 +1274,28 @@ void MainWindow::commitData()
     }
   }
 
+  //remove reindex dictionaries
+  //loop dictionaries
+  for ( auto & dict : dictionaries ) {
+    if ( dict->reIndex ) {
+           //remove both normal index and fts index.
+      auto filePath = dict->getContainingFolder()+QDir::separator()+QString(dict->getId());
+      qDebug() << "remove invalid index files & fts dirs";
+
+      QFile::remove( filePath );
+      QDir d( filePath + "_FTS_x" );
+      if ( d.exists() ) {
+        d.removeRecursively();
+      }
+      //temp dir
+      QDir dtemp( filePath + "_FTS_x_temp" );
+      if ( dtemp.exists() ) {
+        dtemp.removeRecursively();
+      }
+    }
+  }
+  
+
 
   try {
     // Save MainWindow state and geometry
