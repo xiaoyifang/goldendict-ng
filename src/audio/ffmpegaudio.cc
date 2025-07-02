@@ -191,7 +191,6 @@ bool DecoderContext::openCodec( QString & errorString )
   }
 
 
-
   if ( !swr_ || swr_init( swr_ ) < 0 ) {
     av_log( nullptr, AV_LOG_ERROR, "Cannot create sample rate converter \n" );
     swr_free( &swr_ );
