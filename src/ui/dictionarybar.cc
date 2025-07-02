@@ -147,7 +147,7 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
 
         openDictFolderAction = menu.addAction( tr( "Open dictionary folder" ) );
 
-        reindexAction = menu.addAction( tr( "Open dictionary folder" ) );
+        reindexAction = menu.addAction( tr( "Reindex the dictionary(after restart)" ) );
       }
     }
   }
