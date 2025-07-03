@@ -192,8 +192,8 @@ bool AudioOutput::play( const uint8_t * data, qint64 len )
   }
 
   QMutexLocker locker( &d_ptr->mutex );
-  auto *cuint = const_cast< uint8_t * >( data );
-  auto *cptr  = reinterpret_cast< char * >( cuint );
+  auto * cuint = const_cast< uint8_t * >( data );
+  auto * cptr  = reinterpret_cast< char * >( cuint );
   d_ptr->buffer.append( cptr, len );
   d_ptr->cond.wakeAll();
 
