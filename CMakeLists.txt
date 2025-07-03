@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.25) # Debian 11 Ubuntu 24.04 Fedora 36
 
-option(WITH_FFMPEG_PLAYER "Enable support for FFMPEG player" ON)
+option(WITH_FFMPEG_PLAYER "Enable support for FFMPEG player. Note: This is useless for Qt >= 6.8" ON)
+option(WITH_QT_MULTIMEDIA "Enable support for Qt Multimedia player" ON)
 option(WITH_EPWING_SUPPORT "Enable epwing support" ON)
 option(WITH_ZIM "enable zim support" ON)
 option(WITH_TTS "enable QTexttoSpeech support" OFF)
@@ -187,10 +188,10 @@ if (Qt6Widgets_VERSION VERSION_GREATER_EQUAL 6.8.2)
 endif ()
 
 target_compile_definitions(${GOLDENDICT} PUBLIC
-        MAKE_QTMULTIMEDIA_PLAYER
         MAKE_CHINESE_CONVERSION_SUPPORT
         $<$<BOOL:${WIN32}>:__WIN32>
         $<$<BOOL:${WITH_FFMPEG_PLAYER}>:MAKE_FFMPEG_PLAYER>
+        $<$<BOOL:${WITH_QT_MULTIMEDIA}>:MAKE_QTMULTIMEDIA_PLAYER>
         $<$<BOOL:${WITH_TTS}>:TTS_SUPPORT>
         $<$<BOOL:${WITH_EPWING_SUPPORT}>:EPWING_SUPPORT>
         $<$<BOOL:${WITH_ZIM}>:MAKE_ZIM_SUPPORT>
