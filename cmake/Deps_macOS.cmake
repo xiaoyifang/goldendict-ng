@@ -18,6 +18,7 @@ if (WITH_ZIM)
 endif ()
 if (WITH_FFMPEG_PLAYER)
     list(APPEND Optional_Pkgs "libavcodec;libavformat;libavutil;libswresample")
+    list(APPEND Optional_Pkgs "libsharpyuv;libwebp") # transitive dependencies that macdeployqt cannot find.
 endif ()
 
 if (WITH_ZIM)
