@@ -3658,8 +3658,7 @@ ArticleView * MainWindow::getCurrentArticleView()
 
 void MainWindow::wordReceived( const QString & word )
 {
-  if ( cfg.preferences.raiseWindowOnSearch )
-  {
+  if ( cfg.preferences.raiseWindowOnSearch ) {
     toggleMainWindow( true );
   }
   setInputLineText( word, WildcardPolicy::EscapeWildcards, NoPopupChange );
