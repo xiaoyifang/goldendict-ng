@@ -3658,7 +3658,10 @@ ArticleView * MainWindow::getCurrentArticleView()
 
 void MainWindow::wordReceived( const QString & word )
 {
-  toggleMainWindow( true );
+  if ( cfg.preferences.raiseWindowOnSearch )
+  {
+    toggleMainWindow( true );
+  }
   setInputLineText( word, WildcardPolicy::EscapeWildcards, NoPopupChange );
   respondToTranslationRequest( word, false );
 }
