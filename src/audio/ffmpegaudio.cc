@@ -1,6 +1,5 @@
 #ifdef MAKE_FFMPEG_PLAYER
 
-  #include "audiooutput.hh"
   #include "ffmpegaudio.hh"
   #include "utils.hh"
   #include <QAudioDevice>
@@ -9,8 +8,6 @@
   #include <QString>
   #include <errno.h>
   #include <vector>
-
-using std::vector;
 
 namespace Ffmpeg {
 

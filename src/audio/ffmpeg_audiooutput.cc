@@ -1,4 +1,4 @@
-#include "audiooutput.hh"
+#include "ffmpeg_audiooutput.hh"
 
 #include <QtConcurrentRun>
 #include <QFuture>
@@ -37,9 +37,7 @@ public:
 
   QFuture< void > audioPlayFuture;
 
-  using AudioOutput = QAudioSink;
-
-  AudioOutput * audioOutput = nullptr;
+  QAudioSink * qAudioSink = nullptr;
   QByteArray buffer;
   qint64 offset = 0;
   bool quit     = false;
@@ -108,20 +106,20 @@ public:
 
   void init( const QAudioFormat & fmt )
   {
-    if ( !audioOutput || ( fmt.isValid() && audioOutput->format() != fmt )
-         || audioOutput->state() == QAudio::StoppedState ) {
-      if ( audioOutput ) {
-        delete audioOutput;
-        audioOutput = nullptr;
+    if ( !qAudioSink || ( fmt.isValid() && qAudioSink->format() != fmt )
+         || qAudioSink->state() == QAudio::StoppedState ) {
+      if ( qAudioSink ) {
+        delete qAudioSink;
+        qAudioSink = nullptr;
       }
-      audioOutput = new AudioOutput( fmt );
-      QObject::connect( audioOutput, &AudioOutput::stateChanged, audioOutput, [ & ]( QAudio::State state ) {
+      qAudioSink = new QAudioSink( fmt );
+      QObject::connect( qAudioSink, &QAudioSink::stateChanged, qAudioSink, [ & ]( QAudio::State state ) {
         switch ( state ) {
           case QAudio::StoppedState:
             quit = true;
 
-            if ( audioOutput->error() != QAudio::NoError ) {
-              qWarning() << "QAudioOutput stopped:" << audioOutput->error();
+            if ( qAudioSink->error() != QAudio::NoError ) {
+              qWarning() << "QAudioOutput stopped:" << qAudioSink->error();
             }
             break;
           default:
@@ -129,8 +127,8 @@ public:
         }
       } );
 
-      audioOutput->start( this );
-      if ( audioOutput && audioOutput->state() == QAudio::StoppedState ) {
+      qAudioSink->start( this );
+      if ( qAudioSink && qAudioSink->state() == QAudio::StoppedState ) {
         quit = true;
       }
     }
@@ -150,20 +148,24 @@ public:
       }
       QCoreApplication::processEvents();
     }
-    if ( audioOutput ) {
-      audioOutput->stop();
-      delete audioOutput;
+    if ( qAudioSink ) {
+      qAudioSink->stop();
+      delete qAudioSink;
     }
-    audioOutput = nullptr;
+    qAudioSink = nullptr;
+  }
+
+  void stop()
+  {
+    quit = true;
+    cond.wakeAll();
+    audioPlayFuture.waitForFinished();
   }
 };
 
 void AudioOutput::stop()
 {
-  Q_D( AudioOutput );
-  d->quit = true;
-  d->cond.wakeAll();
-  d->audioPlayFuture.waitForFinished();
+  d_ptr->stop();
 }
 
 AudioOutput::AudioOutput( QObject * parent ):
@@ -180,24 +182,20 @@ void AudioOutput::setAudioFormat( int sampleRate, int channels )
 
 AudioOutput::~AudioOutput()
 {
-  Q_D( AudioOutput );
-  d->quit = true;
-  d->cond.wakeAll();
-  d->audioPlayFuture.waitForFinished();
+  d_ptr->stop();
 }
 
 bool AudioOutput::play( const uint8_t * data, qint64 len )
 {
-  Q_D( AudioOutput );
-  if ( d->quit ) {
+  if ( d_ptr->quit ) {
     return false;
   }
 
-  QMutexLocker locker( &d->mutex );
-  auto cuint = const_cast< uint8_t * >( data );
-  auto cptr  = reinterpret_cast< char * >( cuint );
-  d->buffer.append( cptr, len );
-  d->cond.wakeAll();
+  QMutexLocker locker( &d_ptr->mutex );
+  auto *cuint = const_cast< uint8_t * >( data );
+  auto *cptr  = reinterpret_cast< char * >( cuint );
+  d_ptr->buffer.append( cptr, len );
+  d_ptr->cond.wakeAll();
 
   return true;
 }
