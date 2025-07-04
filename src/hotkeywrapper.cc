@@ -1,3 +1,5 @@
+#include <QtSystemDetection>
+#ifndef Q_OS_MACOS
 #include "hotkeywrapper.hh"
 #include <QTimer>
 #include <QSessionManager>
@@ -7,21 +9,6 @@
   #include "windows/winhotkeyapplication.hh"
 #endif
 
-
-//////////////////////////////////////////////////////////////////////////
-
-HotkeyStruct::HotkeyStruct( quint32 key_, quint32 key2_, quint32 modifier_, int handle_, int id_ ):
-  key( key_ ),
-  key2( key2_ ),
-  modifier( modifier_ ),
-  handle( handle_ ),
-  id( id_ )
-{
-}
-
-//////////////////////////////////////////////////////////////////////////
-
-#if !defined( Q_OS_MAC )
 HotkeyWrapper::HotkeyWrapper( QObject * parent ):
   QThread( parent ),
   state2( false )

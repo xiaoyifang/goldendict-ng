@@ -37,7 +37,12 @@
 struct HotkeyStruct
 {
   HotkeyStruct() = default;
-  HotkeyStruct( quint32 key, quint32 key2, quint32 modifier, int handle, int id );
+  HotkeyStruct( quint32 key, quint32 key2, quint32 modifier, int handle, int id ):
+    key( key ),
+    key2( key2 ),
+    modifier( modifier ),
+    handle( handle ),
+    id( id ) {};
 
   quint32 key      = 0;
   quint32 key2     = 0;
@@ -45,12 +50,10 @@ struct HotkeyStruct
   int handle       = 0;
   int id           = 0;
 #ifdef Q_OS_MAC
-  EventHotKeyRef hkRef  = 0;
-  EventHotKeyRef hkRef2 = 0;
+  EventHotKeyRef hkRef  = nullptr;
+  EventHotKeyRef hkRef2 = nullptr;
 #endif
 };
-
-//////////////////////////////////////////////////////////////////////////
 
 class HotkeyWrapper: public QThread // Thread is actually only used on X11
 {
@@ -62,32 +65,30 @@ public:
 
   DEF_EX( exInit, "Hotkey wrapper failed to init", std::exception )
 
-  HotkeyWrapper( QObject * parent );
-  virtual ~HotkeyWrapper();
+  explicit HotkeyWrapper( QObject * parent );
 
-  /// The handle is passed back in hotkeyActivated() to inform which hotkey
-  /// was activated.
-  bool setGlobalKey( QKeySequence const &, int );
+  /// The handle will be passed back in hotkeyActivated() to inform which hotkey was activated.
+  /// 2 possible handles:
+  /// 0 -> Invoke main window
+  /// 1 -> translate clipboard
+  bool setGlobalKey( QKeySequence const &, int handle );
 
   /// Unregisters everything
   void unregister();
 
 signals:
+  void hotkeyActivated( int handle );
 
-  void hotkeyActivated( int );
+/*
+ *
+ * Every Below should NOT be accessed from outside.
+ *
+ */
 
 protected slots:
-
   void waitKey2();
 
-#ifndef Q_OS_MAC
-private slots:
-
-  bool checkState( quint32 vk, quint32 mod );
-#endif
-
 private:
-
   void init();
   quint32 nativeKey( int key );
 
@@ -99,19 +100,22 @@ private:
 #ifdef Q_OS_WIN32
   virtual bool winEvent( MSG * message, qintptr * result );
   HWND hwnd;
+private slots:
+  bool checkState( quint32 vk, quint32 mod );
 #endif
 
 #ifdef Q_OS_MAC
-
-public:
-  void activated( int hkId );
-
 private:
   void sendCmdC();
 
   static EventHandlerUPP hotKeyFunction;
   quint32 keyC;
   EventHandlerRef handlerRef;
+
+public:
+  void activated( int hkId );
+  ~HotkeyWrapper() override;
+
 #endif
 
 #ifdef HAVE_X11
@@ -158,5 +162,7 @@ signals:
   /// Emitted from the thread
   void keyRecorded( quint32 vk, quint32 mod );
 
+private slots:
+  bool checkState( quint32 vk, quint32 mod );
 #endif
 };
