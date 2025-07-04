@@ -4,34 +4,9 @@
 #include <QWidget>
 #ifdef Q_OS_WIN
   #include <windows.h>
+  #include "windows/winhotkeyapplication.hh"
 #endif
 
-//////////////////////////////////////////////////////////////////////////
-
-QHotkeyApplication::QHotkeyApplication( QString const & id, int & argc, char ** argv ):
-  QtSingleApplication( id, argc, argv )
-{
-
-#if defined( Q_OS_WIN )
-  installNativeEventFilter( this );
-#endif
-}
-
-#ifdef Q_OS_WIN
-void QHotkeyApplication::registerWrapper( HotkeyWrapper * wrapper )
-{
-  if ( wrapper && !hotkeyWrappers.contains( wrapper ) ) {
-    hotkeyWrappers.append( wrapper );
-  }
-}
-
-void QHotkeyApplication::unregisterWrapper( HotkeyWrapper * wrapper )
-{
-  if ( wrapper && hotkeyWrappers.contains( wrapper ) ) {
-    hotkeyWrappers.removeAll( wrapper );
-  }
-}
-#endif
 
 //////////////////////////////////////////////////////////////////////////
 

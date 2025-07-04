@@ -1,6 +1,7 @@
 #include <QtGlobal>
 #ifdef Q_OS_WIN
   #include "hotkeywrapper.hh"
+  #include "winhotkeyapplication.hh"
   #include <windows.h>
   #include <QWidget>
 
@@ -89,6 +90,25 @@ bool QHotkeyApplication::nativeEventFilter( const QByteArray & /*eventType*/, vo
   return false;
 }
 
+QHotkeyApplication::QHotkeyApplication( QString const & id, int & argc, char ** argv ):
+  QtSingleApplication( id, argc, argv )
+{
+  installNativeEventFilter( this );
+}
+
+void QHotkeyApplication::registerWrapper( HotkeyWrapper * wrapper )
+{
+  if ( wrapper && !hotkeyWrappers.contains( wrapper ) ) {
+    hotkeyWrappers.append( wrapper );
+  }
+}
+
+void QHotkeyApplication::unregisterWrapper( HotkeyWrapper * wrapper )
+{
+  if ( wrapper && hotkeyWrappers.contains( wrapper ) ) {
+    hotkeyWrappers.removeAll( wrapper );
+  }
+}
 
 /// References:
 /// https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes

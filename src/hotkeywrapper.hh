@@ -11,7 +11,6 @@
 #include <QThread>
 #include "config.hh"
 #include "ex.hh"
-#include "qtsingleapplication.h"
 #include "utils.hh"
 
 #ifdef HAVE_X11
@@ -163,33 +162,3 @@ signals:
 
 #endif
 };
-
-//////////////////////////////////////////////////////////////////////////
-
-
-class QHotkeyApplication: public QtSingleApplication
-#if defined( Q_OS_WIN )
-  ,
-                          public QAbstractNativeEventFilter
-#endif
-{
-  Q_OBJECT
-
-  friend class HotkeyWrapper;
-
-public:
-  QHotkeyApplication( QString const & id, int & argc, char ** argv );
-
-#ifdef Q_OS_WIN
-
-protected:
-  void registerWrapper( HotkeyWrapper * wrapper );
-  void unregisterWrapper( HotkeyWrapper * wrapper );
-
-  virtual bool nativeEventFilter( const QByteArray & eventType, void * message, qintptr * result );
-
-  QList< HotkeyWrapper * > hotkeyWrappers;
-#endif
-};
-
-//////////////////////////////////////////////////////////////////////////
