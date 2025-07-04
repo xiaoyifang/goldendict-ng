@@ -35,7 +35,7 @@
 #include "windows/winhotkeyapplication.hh"
 using GD_QApplication = QHotkeyApplication;
 #else
-#include "qsingleapplication.h"
+#include "qtsingleapplication.h"
 using GD_QApplication = QtSingleApplication;
 #endif
 
