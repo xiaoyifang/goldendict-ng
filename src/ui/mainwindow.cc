@@ -2484,13 +2484,10 @@ void MainWindow::respondToTranslationRequest( QString const & word,
 
     showTranslationFor( word, 0, scrollTo );
 
-    if ( cfg.preferences.searchInDock ) {
-      if ( ui.searchPane->isFloating() ) {
+    if ( focus ) {
+      if ( cfg.preferences.searchInDock && ui.searchPane->isFloating() ) {
         activateWindow();
       }
-    }
-
-    if ( focus ) {
       focusArticleView();
     }
   }
@@ -3659,11 +3656,12 @@ ArticleView * MainWindow::getCurrentArticleView()
 
 void MainWindow::wordReceived( const QString & word )
 {
-  if ( cfg.preferences.raiseWindowOnSearch ) {
+  const bool shouldFocus = cfg.preferences.raiseWindowOnSearch;
+  if ( shouldFocus ) {
     toggleMainWindow( true );
   }
   setInputLineText( word, WildcardPolicy::EscapeWildcards, NoPopupChange );
-  respondToTranslationRequest( word, false );
+  respondToTranslationRequest( word, false, QString(), shouldFocus );
 }
 
 void MainWindow::updateFavoritesMenu()
