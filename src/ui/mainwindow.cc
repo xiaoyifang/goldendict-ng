@@ -2486,8 +2486,8 @@ void MainWindow::respondToTranslationRequest( QString const & word,
 
     if ( focus ) {
       if ( cfg.preferences.searchInDock && ui.searchPane->isFloating() ) {
-          activateWindow();
-        }
+        activateWindow();
+      }
       focusArticleView();
     }
   }
