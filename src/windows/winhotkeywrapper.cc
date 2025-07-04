@@ -16,8 +16,8 @@ void HotkeyWrapper::init()
 bool HotkeyWrapper::setGlobalKey( QKeySequence const & seq, int handle )
 {
   Config::HotKey hk( seq );
-  int key = hk.key1;
-  int key2 = hk.key2;
+  int key                        = hk.key1;
+  int key2                       = hk.key2;
   Qt::KeyboardModifiers modifier = hk.modifiers;
 
   if ( !key )
