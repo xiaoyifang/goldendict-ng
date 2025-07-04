@@ -1,7 +1,7 @@
 #pragma once
 #include <QtGlobal>
 #ifdef Q_OS_WIN
-#include "qtsingleapplication.h"
+  #include "qtsingleapplication.h"
 class QHotkeyApplication: public QtSingleApplication, public QAbstractNativeEventFilter
 {
   Q_OBJECT
