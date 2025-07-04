@@ -30,6 +30,15 @@
   #include <windows.h>
 #endif
 
+
+#ifdef Q_OS_WIN
+  #include "windows/winhotkeyapplication.hh"
+using GD_QApplication = QHotkeyApplication;
+#else
+  #include "qtsingleapplication.h"
+using GD_QApplication = QtSingleApplication;
+#endif
+
 #if defined( USE_BREAKPAD )
   #if defined( Q_OS_MAC )
     #include "client/mac/handler/exception_handler.h"
@@ -274,19 +283,19 @@ int main( int argc, char ** argv )
   }
   QApplication::setHighDpiScaleFactorRoundingPolicy( Qt::HighDpiScaleFactorRoundingPolicy::PassThrough );
 
-  QHotkeyApplication app( "GoldenDict-ng", argc, argv );
+  GD_QApplication app( "GoldenDict-ng", argc, argv );
 
   app.setDesktopFileName( "io.github.xiaoyifang.goldendict_ng" );
-  QHotkeyApplication::setApplicationName( "GoldenDict-ng" );
-  QHotkeyApplication::setOrganizationDomain( "xiaoyifang.github.io" );
+  GD_QApplication::setApplicationName( "GoldenDict-ng" );
+  GD_QApplication::setOrganizationDomain( "xiaoyifang.github.io" );
 #ifndef Q_OS_MACOS
   // macOS icon is defined in Info.plist
-  QHotkeyApplication::setWindowIcon( QIcon( ":/icons/programicon.png" ) );
+  GD_QApplication::setWindowIcon( QIcon( ":/icons/programicon.png" ) );
 #endif
 
 #ifdef Q_OS_WIN
   // TODO: Force fusion because Qt6.7's "ModernStyle"'s dark theme have problems, need to test / reconsider in future
-  QHotkeyApplication::setStyle( QStyleFactory::create( "WindowsVista" ) );
+  GD_QApplication::setStyle( QStyleFactory::create( "WindowsVista" ) );
 #endif
 
 
@@ -399,8 +408,8 @@ int main( int argc, char ** argv )
     catch ( Config::exError & ) {
       QMessageBox mb(
         QMessageBox::Warning,
-        QHotkeyApplication::applicationName(),
-        QHotkeyApplication::translate( "Main", "Error in configuration file. Continue with default settings?" ),
+        GD_QApplication::applicationName(),
+        GD_QApplication::translate( "Main", "Error in configuration file. Continue with default settings?" ),
         QMessageBox::Yes | QMessageBox::No );
       mb.exec();
       if ( mb.result() != QMessageBox::Yes ) {
