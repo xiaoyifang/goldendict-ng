@@ -1,4 +1,4 @@
-#include <QtSystemDetection>
+#include <QtGlobal>
 #ifndef Q_OS_MACOS
   #include "hotkeywrapper.hh"
   #include <QTimer>
