@@ -66,6 +66,7 @@ public:
   DEF_EX( exInit, "Hotkey wrapper failed to init", std::exception )
 
   explicit HotkeyWrapper( QObject * parent );
+  ~HotkeyWrapper() override;
 
   /// The handle will be passed back in hotkeyActivated() to inform which hotkey was activated.
   /// 2 possible handles:
@@ -115,7 +116,6 @@ private:
 
 public:
   void activated( int hkId );
-  ~HotkeyWrapper() override;
 
 #endif
 
