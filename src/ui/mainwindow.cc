@@ -1178,6 +1178,7 @@ MainWindow::~MainWindow()
 #ifdef EPWING_SUPPORT
   Epwing::finalize();
 #endif
+  delete ui.historyPaneWidget; // This should be deleted before shared History Object.
 }
 
 void MainWindow::addGlobalAction( QAction * action, const std::function< void() > & slotFunc )
