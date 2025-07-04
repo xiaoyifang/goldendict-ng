@@ -210,10 +210,10 @@ void HotkeyWrapper::unregister()
 
 bool HotkeyWrapper::setGlobalKey(QKeySequence const& seq, int handle)
 {
-    Config::HotKey hk(seq);
-    int key                        = hk.key1;
-    int key2                       = hk.key2;
-    Qt::KeyboardModifiers modifier = hk.modifiers;
+    Config::HotKey hotkeyParse(seq);
+    int key                        = hotkeyParse.key1;
+    int key2                       = hotkeyParse.key2;
+    Qt::KeyboardModifiers modifier = hotkeyParse.modifiers;
 
     if (!key) {
         return false; // We don't monitor empty combinations
