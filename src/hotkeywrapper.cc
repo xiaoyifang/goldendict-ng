@@ -1,13 +1,13 @@
 #include <QtSystemDetection>
 #ifndef Q_OS_MACOS
-#include "hotkeywrapper.hh"
-#include <QTimer>
-#include <QSessionManager>
-#include <QWidget>
-#ifdef Q_OS_WIN
-  #include <windows.h>
-  #include "windows/winhotkeyapplication.hh"
-#endif
+  #include "hotkeywrapper.hh"
+  #include <QTimer>
+  #include <QSessionManager>
+  #include <QWidget>
+  #ifdef Q_OS_WIN
+    #include <windows.h>
+    #include "windows/winhotkeyapplication.hh"
+  #endif
 
 HotkeyWrapper::HotkeyWrapper( QObject * parent ):
   QThread( parent ),

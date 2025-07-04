@@ -79,7 +79,7 @@ public:
 signals:
   void hotkeyActivated( int handle );
 
-/*
+  /*
  *
  * Every Below should NOT be accessed from outside.
  *
@@ -105,6 +105,7 @@ private slots:
 #endif
 
 #ifdef Q_OS_MAC
+
 private:
   void sendCmdC();
 
