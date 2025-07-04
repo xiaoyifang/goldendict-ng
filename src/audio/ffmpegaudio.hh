@@ -6,9 +6,9 @@ extern "C" {
   #include <libavcodec/avcodec.h>
   #include <libavformat/avformat.h>
   #include <libavutil/avutil.h>
-  #include "libswresample/swresample.h"
+  #include <libswresample/swresample.h>
 }
-  #include "audiooutput.hh"
+  #include "ffmpeg_audiooutput.hh"
   #include <QObject>
   #include <QMutex>
   #include <QByteArray>
@@ -19,8 +19,8 @@ extern "C" {
   #include <QString>
   #include <vector>
 
-using std::vector;
 namespace Ffmpeg {
+using std::vector;
 class DecoderThread;
 class AudioService: public QObject
 {
