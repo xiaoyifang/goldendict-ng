@@ -16,11 +16,10 @@ void HotkeyWrapper::init()
 bool HotkeyWrapper::setGlobalKey( QKeySequence const & seq, int handle )
 {
   Config::HotKey hk( seq );
-  return setGlobalKey( hk.key1, hk.key2, hk.modifiers, handle );
-}
+  int key = hk.key1;
+  int key2 = hk.key2;
+  Qt::KeyboardModifiers modifier = hk.modifiers;
 
-bool HotkeyWrapper::setGlobalKey( int key, int key2, Qt::KeyboardModifiers modifier, int handle )
-{
   if ( !key )
     return false; // We don't monitor empty combinations
 

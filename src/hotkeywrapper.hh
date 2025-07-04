@@ -67,8 +67,6 @@ public:
 
   /// The handle is passed back in hotkeyActivated() to inform which hotkey
   /// was activated.
-  bool setGlobalKey( int key, int key2, Qt::KeyboardModifiers modifier, int handle );
-
   bool setGlobalKey( QKeySequence const &, int );
 
   /// Unregisters everything
