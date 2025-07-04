@@ -1,11 +1,77 @@
 #ifdef HAVE_X11
   #include "hotkeywrapper.hh"
   #include <X11/keysym.h>
+  #include <QTimer>
 
 //
 /// Previously impletended with XGrabKey
 /// Then reimplemented with X Record Extension Library
 ///
+
+HotkeyWrapper::HotkeyWrapper( QObject * parent ):
+  QThread( parent ),
+  state2( false )
+{
+  init();
+}
+
+HotkeyWrapper::~HotkeyWrapper()
+{
+  unregister();
+}
+
+void HotkeyWrapper::waitKey2()
+{
+  state2 = false;
+
+  if ( keyToUngrab != grabbedKeys.end() ) {
+    ungrabKey( keyToUngrab );
+    keyToUngrab = grabbedKeys.end();
+  }
+}
+
+bool HotkeyWrapper::checkState( quint32 vk, quint32 mod )
+{
+  if ( state2 ) { // wait for 2nd key
+
+    waitKey2(); // Cancel the 2nd-key wait stage
+
+    if ( state2waiter.key2 == vk && state2waiter.modifier == mod ) {
+      emit hotkeyActivated( state2waiter.handle );
+      return true;
+    }
+  }
+
+  for ( int i = 0; i < hotkeys.count(); i++ ) {
+
+    const HotkeyStruct & hs = hotkeys.at( i );
+
+    if ( hs.key == vk && hs.modifier == mod ) {
+
+      if ( hs.key2 == 0 ) {
+        emit hotkeyActivated( hs.handle );
+        return true;
+      }
+
+      state2       = true;
+      state2waiter = hs;
+      QTimer::singleShot( 500, this, &HotkeyWrapper::waitKey2 );
+
+      // Grab the second key, unless it's grabbed already
+      // Note that we only grab the clipboard key only if
+      // the sequence didn't begin with it
+
+      if ( ( isCopyToClipboardKey( hs.key, hs.modifier ) || !isCopyToClipboardKey( hs.key2, hs.modifier ) )
+           && !isKeyGrabbed( hs.key2, hs.modifier ) )
+        keyToUngrab = grabKey( hs.key2, hs.modifier );
+
+      return true;
+    }
+  }
+
+  state2 = false;
+  return false;
+}
 
 void HotkeyWrapper::init()
 {
@@ -230,7 +296,6 @@ bool X11GrabUngrabErrorHandler::error = false;
 HotkeyWrapper::GrabbedKeys::iterator HotkeyWrapper::grabKey( quint32 keyCode, quint32 modifiers )
 {
   std::pair< GrabbedKeys::iterator, bool > result = grabbedKeys.insert( std::make_pair( keyCode, modifiers ) );
-
 
   if ( result.second ) {
 

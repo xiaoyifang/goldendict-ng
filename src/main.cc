@@ -32,7 +32,7 @@
 
 
 #ifdef Q_OS_WIN
-  #include "windows/winhotkeyapplication.hh"
+  #include "hotkey/winhotkeyapplication.hh"
 using GD_QApplication = QHotkeyApplication;
 #else
   #include "qtsingleapplication.h"
