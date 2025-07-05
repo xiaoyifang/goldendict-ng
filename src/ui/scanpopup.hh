@@ -123,7 +123,6 @@ private:
   // Ungrabs mouse and uninstalls global event filter.
   void uninterceptMouse();
 
-  void updateDictionaryBar();
   /// Check is word already presented in Favorites
   bool isWordPresentedInFavorites( const QString & word ) const;
 

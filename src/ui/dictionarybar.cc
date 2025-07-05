@@ -1,4 +1,5 @@
 #include "dictionarybar.hh"
+#include "instances.hh"
 #include <QAction>
 #include <QApplication>
 #include <QMenu>
@@ -76,6 +77,26 @@ void DictionaryBar::setDictionaries( const vector< sptr< Dictionary::Class > > &
 
 
   setUpdatesEnabled( true );
+}
+
+void DictionaryBar::updateToGroup( const Instances::Group * grp,
+                                   Config::MutedDictionaries * allGroupMutedDictionaries,
+                                   Config::Class & cfg )
+{
+  Q_ASSERT( grp != nullptr ); // should never occur
+  if ( !this->toggleViewAction()->isChecked() ) {
+    return; // It's not enabled, therefore hidden -- don't waste time
+  }
+
+  setMutedDictionaries( nullptr );
+  if ( grp->id == GroupId::AllGroupId ) {
+    setMutedDictionaries( allGroupMutedDictionaries );
+  }
+  else {
+    Config::Group * _grp = cfg.getGroup( grp->id );
+    setMutedDictionaries( _grp ? _grp->mutedDictionaries : nullptr );
+  }
+  setDictionaries( grp->dictionaries );
 }
 
 void DictionaryBar::setDictionaryIconSize( IconSize size )
