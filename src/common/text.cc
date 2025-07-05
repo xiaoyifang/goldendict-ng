@@ -37,7 +37,7 @@ const char * getEncodingNameFor( Encoding e )
 
 Encoding getEncodingForName( const QByteArray & name )
 {
-  auto const n = name.toUpper();
+  const auto n = name.toUpper();
   if ( n == utf32_le ) {
     return Encoding::Utf32LE;
   }
@@ -69,7 +69,7 @@ Encoding getEncodingForName( const QByteArray & name )
 /// of wide characters the 'in' pointer points to. The 'out' buffer must be
 /// at least inSize * 4 bytes long. The function returns the number of chars
 /// stored in the 'out' buffer. The result is not 0-terminated.
-size_t encode( char32_t const * in, size_t inSize, char * out_ )
+size_t encode( const char32_t * in, size_t inSize, char * out_ )
 {
   unsigned char * out = (unsigned char *)out_;
 
@@ -102,9 +102,9 @@ size_t encode( char32_t const * in, size_t inSize, char * out_ )
 /// inSize wide characters long. If the given UTF-8 is invalid, the decode
 /// function returns -1, otherwise it returns the number of wide characters
 /// stored in the 'out' buffer. The result is not 0-terminated.
-long decode( char const * in_, size_t inSize, char32_t * out_ )
+long decode( const char * in_, size_t inSize, char32_t * out_ )
 {
-  unsigned char const * in = (unsigned char const *)in_;
+  const unsigned char * in = (const unsigned char *)in_;
   char32_t * out           = out_;
 
   while ( inSize-- ) {
@@ -197,7 +197,7 @@ long decode( char const * in_, size_t inSize, char32_t * out_ )
   return out - out_;
 }
 
-std::string toUtf8( std::u32string const & in ) noexcept
+std::string toUtf8( const std::u32string & in ) noexcept
 {
   if ( in.empty() ) {
     return {};
@@ -208,7 +208,7 @@ std::string toUtf8( std::u32string const & in ) noexcept
   return { &buffer.front(), encode( in.data(), in.size(), &buffer.front() ) };
 }
 
-std::u32string toUtf32( std::string const & in )
+std::u32string toUtf32( const std::string & in )
 {
   if ( in.empty() ) {
     return {};
@@ -288,7 +288,7 @@ LineFeed initLineFeed( const Encoding e )
 
 // When convert non-BMP characters to wstring,the ending char maybe \0 .This method remove the tailing \0 from the wstring
 // as \0 is sensitive in the index.  This method will be only used with index related operations like store/query.
-std::u32string removeTrailingZero( std::u32string const & v )
+std::u32string removeTrailingZero( const std::u32string & v )
 {
   int n = v.size();
   while ( n > 0 && v[ n - 1 ] == 0 ) {
@@ -297,7 +297,7 @@ std::u32string removeTrailingZero( std::u32string const & v )
   return std::u32string( v.data(), n );
 }
 
-std::u32string removeTrailingZero( QString const & in )
+std::u32string removeTrailingZero( const QString & in )
 {
   QList< unsigned int > v = in.toUcs4();
 

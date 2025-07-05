@@ -8,5 +8,5 @@
 /// Chinese character conversion support.
 namespace ChineseTranslit {
 
-std::vector< sptr< Dictionary::Class > > makeDictionaries( Config::Chinese const & );
+std::vector< sptr< Dictionary::Class > > makeDictionaries( const Config::Chinese & );
 }

@@ -9,7 +9,7 @@ class QHotkeyApplication: public QtSingleApplication, public QAbstractNativeEven
   friend class HotkeyWrapper;
 
 public:
-  QHotkeyApplication( QString const & id, int & argc, char ** argv );
+  QHotkeyApplication( const QString & id, int & argc, char ** argv );
 
 
 protected:

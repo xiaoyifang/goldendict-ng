@@ -22,9 +22,9 @@ using std::map;
 
 /// Converts the given xdxf markup to an html one. This is currently used
 /// for Stardict's 'x' records.
-string convert( string const &,
+string convert( const string &,
                 DICT_TYPE type,
-                map< string, string > const * pAbrv,
+                const map< string, string > * pAbrv,
                 Dictionary::Class * dictPtr,
                 bool isLogicalFormat    = false,
                 unsigned revisionNumber = 0,

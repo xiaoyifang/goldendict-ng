@@ -14,12 +14,12 @@ class OrderAndProps: public QWidget
 public:
 
   OrderAndProps( QWidget * parent,
-                 Config::Group const & dictionaryOrder,
-                 Config::Group const & inactiveDictionaries,
-                 std::vector< sptr< Dictionary::Class > > const & allDictionaries );
-  void resetData( Config::Group const & dictionaryOrder,
-                  Config::Group const & inactiveDictionaries,
-                  std::vector< sptr< Dictionary::Class > > const & allDictionaries ) const;
+                 const Config::Group & dictionaryOrder,
+                 const Config::Group & inactiveDictionaries,
+                 const std::vector< sptr< Dictionary::Class > > & allDictionaries );
+  void resetData( const Config::Group & dictionaryOrder,
+                  const Config::Group & inactiveDictionaries,
+                  const std::vector< sptr< Dictionary::Class > > & allDictionaries ) const;
 
   Config::Group getCurrentDictionaryOrder() const;
   Config::Group getCurrentInactiveDictionaries() const;
@@ -28,7 +28,7 @@ private slots:
   void dictionarySelectionChanged( const QItemSelection & current, const QItemSelection & deselected );
   void inactiveDictionarySelectionChanged( const QItemSelection & current );
   void contextMenuRequested( const QPoint & pos );
-  void filterChanged( QString const & filterText );
+  void filterChanged( const QString & filterText );
   void dictListFocused();
   void inactiveDictListFocused();
   void showDictNumbers();
@@ -37,7 +37,7 @@ private:
 
   Ui::OrderAndProps ui;
   void disableDictionaryDescription();
-  void describeDictionary( DictListWidget *, QModelIndex const & );
+  void describeDictionary( DictListWidget *, const QModelIndex & );
 
 signals:
   void showDictionaryHeadwords( Dictionary::Class * dict );

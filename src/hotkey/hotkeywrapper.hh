@@ -72,7 +72,7 @@ public:
   /// 2 possible handles:
   /// 0 -> Invoke main window
   /// 1 -> translate clipboard
-  bool setGlobalKey( QKeySequence const &, int handle );
+  bool setGlobalKey( const QKeySequence &, int handle );
 
   /// Unregisters everything
   void unregister();

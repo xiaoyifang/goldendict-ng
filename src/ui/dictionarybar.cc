@@ -11,7 +11,7 @@ using std::vector;
 
 DictionaryBar::DictionaryBar( QWidget * parent,
                               Config::Events & events,
-                              unsigned short const & maxDictionaryRefsInContextMenu_ ):
+                              const unsigned short & maxDictionaryRefsInContextMenu_ ):
   QToolBar( tr( "&Dictionary Bar" ), parent ),
   mutedDictionaries( nullptr ),
   configEvents( events ),
@@ -29,22 +29,22 @@ DictionaryBar::DictionaryBar( QWidget * parent,
   connect( this, &QToolBar::actionTriggered, this, &DictionaryBar::actionWasTriggered );
 }
 
-static QString elideDictName( QString const & name )
+static QString elideDictName( const QString & name )
 {
   // Some names are way too long -- we insert an ellipsis in the middle of those
 
-  int const maxSize = 33;
+  const int maxSize = 33;
 
   if ( name.size() <= maxSize ) {
     return name;
   }
 
-  int const pieceSize = maxSize / 2 - 1;
+  const int pieceSize = maxSize / 2 - 1;
 
   return name.left( pieceSize ) + QChar( 0x2026 ) + name.right( pieceSize );
 }
 
-void DictionaryBar::setDictionaries( vector< sptr< Dictionary::Class > > const & dictionaries )
+void DictionaryBar::setDictionaries( const vector< sptr< Dictionary::Class > > & dictionaries )
 {
   setUpdatesEnabled( false );
 
@@ -128,7 +128,7 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
   const QAction * dictAction = actionAt( event->x(), event->y() );
   if ( dictAction ) {
     Dictionary::Class * pDict = nullptr;
-    QString const id          = dictAction->data().toString();
+    const QString id          = dictAction->data().toString();
     for ( const auto & dictionary : allDictionaries ) {
       if ( id.compare( dictionary->getId().c_str() ) == 0 ) {
         pDict = dictionary.get();
@@ -180,13 +180,13 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
   const QAction * result = menu.exec( event->globalPos() );
 
   if ( result && result == infoAction ) {
-    QString const id = dictAction->data().toString();
+    const QString id = dictAction->data().toString();
     emit showDictionaryInfo( id );
     return;
   }
 
   if ( result && result == headwordsAction ) {
-    std::string const id = dictAction->data().toString().toStdString();
+    const std::string id = dictAction->data().toString().toStdString();
     for ( const auto & dict : allDictionaries ) {
       if ( id == dict->getId() ) {
         emit showDictionaryHeadwords( dict.get() );
@@ -197,7 +197,7 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
   }
 
   if ( result && result == openDictFolderAction ) {
-    QString const id = dictAction->data().toString();
+    const QString id = dictAction->data().toString();
     emit openDictionaryFolder( id );
     return;
   }
@@ -235,7 +235,7 @@ void DictionaryBar::mutedDictionariesChanged()
   setUpdatesEnabled( false );
 
   for ( const auto & dictAction : std::as_const( dictActions ) ) {
-    bool const isUnmuted = !mutedDictionaries->contains( dictAction->data().toString() );
+    const bool isUnmuted = !mutedDictionaries->contains( dictAction->data().toString() );
 
     if ( isUnmuted != dictAction->isChecked() ) {
       dictAction->setChecked( isUnmuted );
@@ -251,7 +251,7 @@ void DictionaryBar::actionWasTriggered( QAction * action )
     return;
   }
 
-  QString const id = action->data().toString();
+  const QString id = action->data().toString();
 
   if ( id.isEmpty() ) {
     return; // Some weird action, not our button
@@ -286,7 +286,7 @@ void DictionaryBar::actionWasTriggered( QAction * action )
 void DictionaryBar::selectSingleDict( const QString & id )
 {
   for ( auto & dictAction : std::as_const( dictActions ) ) {
-    QString const dictId = dictAction->data().toString();
+    const QString dictId = dictAction->data().toString();
     if ( dictId == id ) {
       mutedDictionaries->remove( dictId );
     }
@@ -303,7 +303,7 @@ void DictionaryBar::dictsPaneClicked( const QString & id )
   }
 
   for ( const auto & dictAction : std::as_const( dictActions ) ) {
-    QString const dictId = dictAction->data().toString();
+    const QString dictId = dictAction->data().toString();
     if ( dictId == id ) {
       dictAction->activate( QAction::Trigger );
       break;

@@ -10,7 +10,7 @@ namespace Filetype {
 namespace {
 
 /// Checks if the given string ends with the given substring
-bool endsWith( string const & str, string const & tail )
+bool endsWith( const string & str, const string & tail )
 {
   return str.size() >= tail.size() && str.compare( str.size() - tail.size(), tail.size(), tail ) == 0;
 }
@@ -20,7 +20,7 @@ bool endsWith( string const & str, string const & tail )
 /// Removes any trailing or leading spaces and lowercases the string.
 /// The lowercasing is done simplistically, but it is enough for file
 /// extensions.
-string simplifyString( string const & str, bool lowercase )
+string simplifyString( const string & str, bool lowercase )
 {
   string result;
 
@@ -49,7 +49,7 @@ string simplifyString( string const & str, bool lowercase )
   return result;
 }
 
-bool isNameOfSound( string const & name )
+bool isNameOfSound( const string & name )
 {
   string s = simplifyString( name );
 
@@ -60,7 +60,7 @@ bool isNameOfSound( string const & name )
     || endsWith( s, ".opus" ) || endsWith( s, ".mpa" ) || endsWith( s, ".mp2" );
 }
 
-bool isNameOfVideo( string const & name )
+bool isNameOfVideo( const string & name )
 {
   string s = simplifyString( name );
 
@@ -70,7 +70,7 @@ bool isNameOfVideo( string const & name )
     || endsWith( s, ".divx" ) || endsWith( s, ".3gp" ) || endsWith( s, ".webm" ) || endsWith( s, ".mov" );
 }
 
-bool isNameOfPicture( string const & name )
+bool isNameOfPicture( const string & name )
 {
   string s = simplifyString( name );
 
@@ -80,21 +80,21 @@ bool isNameOfPicture( string const & name )
     || endsWith( s, ".svg" );
 }
 
-bool isNameOfTiff( string const & name )
+bool isNameOfTiff( const string & name )
 {
   string s = simplifyString( name );
 
   return endsWith( s, ".tif" ) || endsWith( s, ".tiff" );
 }
 
-bool isNameOfCSS( string const & name )
+bool isNameOfCSS( const string & name )
 {
   string s = simplifyString( name );
 
   return endsWith( s, ".css" );
 }
 
-bool isNameOfSvg( string const & name )
+bool isNameOfSvg( const string & name )
 {
   string s = simplifyString( name );
 

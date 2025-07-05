@@ -34,7 +34,7 @@ public:
 
 signals:
   void cancelPlaying( bool waitUntilFinished );
-  void error( QString const & message );
+  void error( const QString & message );
 
 private:
   AudioService() = default;
@@ -65,7 +65,7 @@ struct DecoderContext
 
   SwrContext * swr_;
 
-  DecoderContext( QByteArray const & audioData, QAtomicInt & isCancelled );
+  DecoderContext( const QByteArray & audioData, QAtomicInt & isCancelled );
   ~DecoderContext();
 
   bool openCodec( QString & errorString );
@@ -88,7 +88,7 @@ class DecoderThread: public QThread
   DecoderContext d;
 
 public:
-  DecoderThread( QByteArray const & audioData, QObject * parent );
+  DecoderThread( const QByteArray & audioData, QObject * parent );
   virtual ~DecoderThread();
 
 public slots:
@@ -96,7 +96,7 @@ public slots:
   void cancel( bool waitUntilFinished );
 
 signals:
-  void error( QString const & message );
+  void error( const QString & message );
 };
 
 } // namespace Ffmpeg

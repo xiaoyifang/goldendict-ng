@@ -343,7 +343,7 @@ HepburnKatakana::HepburnKatakana()
   ins( "ppyo", "ッピョ" );
 }
 
-vector< sptr< Dictionary::Class > > makeDictionaries( Config::Romaji const & r )
+vector< sptr< Dictionary::Class > > makeDictionaries( const Config::Romaji & r )
 
 {
   vector< sptr< Dictionary::Class > > result;

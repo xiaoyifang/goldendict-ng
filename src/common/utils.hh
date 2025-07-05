@@ -53,7 +53,7 @@ inline uint32_t leadingSpaceCount( const QString & str )
   return 0;
 }
 
-inline QString trimQuotes( QString const & str )
+inline QString trimQuotes( const QString & str )
 {
   const auto * begin = str.cbegin();
   const auto * end   = str.cend();
@@ -115,13 +115,13 @@ inline QString rstripnull( const QString & str )
   return "";
 }
 
-inline bool isExternalLink( QUrl const & url )
+inline bool isExternalLink( const QUrl & url )
 {
   return url.scheme() == "http" || url.scheme() == "https" || url.scheme() == "ftp" || url.scheme() == "mailto"
     || url.scheme() == "file" || url.toString().startsWith( "//" );
 }
 
-inline bool isHtmlResources( QUrl const & url )
+inline bool isHtmlResources( const QUrl & url )
 {
   auto fileName   = url.fileName();
   qsizetype index = fileName.lastIndexOf( "." );
@@ -141,7 +141,7 @@ inline bool isHtmlResources( QUrl const & url )
   return false;
 }
 
-inline QString escape( QString const & plain )
+inline QString escape( const QString & plain )
 {
   return plain.toHtmlEscaped();
 }
@@ -171,7 +171,7 @@ inline QStringList repeat( const QString str, const int times )
 
 namespace AtomicInt {
 
-inline int loadAcquire( QAtomicInt const & ref )
+inline int loadAcquire( const QAtomicInt & ref )
 {
   return ref.loadAcquire();
 }
@@ -191,43 +191,43 @@ inline QString ensureLeadingSlash( const QString & path )
   return slash + path;
 }
 
-inline bool hasQueryItem( QUrl const & url, QString const & key )
+inline bool hasQueryItem( const QUrl & url, const QString & key )
 {
   return QUrlQuery( url ).hasQueryItem( key );
 }
 
-inline QString queryItemValue( QUrl const & url, QString const & item )
+inline QString queryItemValue( const QUrl & url, const QString & item )
 {
   return QUrlQuery( url ).queryItemValue( item, QUrl::FullyDecoded );
 }
 
-inline QByteArray encodedQueryItemValue( QUrl const & url, QString const & item )
+inline QByteArray encodedQueryItemValue( const QUrl & url, const QString & item )
 {
   return QUrlQuery( url ).queryItemValue( item, QUrl::FullyEncoded ).toLatin1();
 }
 
-inline void addQueryItem( QUrl & url, QString const & key, QString const & value )
+inline void addQueryItem( QUrl & url, const QString & key, const QString & value )
 {
   QUrlQuery urlQuery( url );
   urlQuery.addQueryItem( key, value );
   url.setQuery( urlQuery );
 }
 
-inline void removeQueryItem( QUrl & url, QString const & key )
+inline void removeQueryItem( QUrl & url, const QString & key )
 {
   QUrlQuery urlQuery( url );
   urlQuery.removeQueryItem( key );
   url.setQuery( urlQuery );
 }
 
-inline void setQueryItems( QUrl & url, QList< std::pair< QString, QString > > const & query )
+inline void setQueryItems( QUrl & url, const QList< std::pair< QString, QString > > & query )
 {
   QUrlQuery urlQuery( url );
   urlQuery.setQueryItems( query );
   url.setQuery( urlQuery );
 }
 
-inline QString path( QUrl const & url )
+inline QString path( const QUrl & url )
 {
   return url.path( QUrl::FullyDecoded );
 }
@@ -244,7 +244,7 @@ inline QString fragment( const QUrl & url )
 
 // get the query word of bword and gdlookup scheme.
 // if the scheme is gdlookup or scheme ,the first value of pair is true,otherwise is false;
-inline std::pair< bool, QString > getQueryWord( QUrl const & url )
+inline std::pair< bool, QString > getQueryWord( const QUrl & url )
 {
   QString word;
   bool validScheme = false;
@@ -280,7 +280,7 @@ inline std::pair< bool, QString > getQueryWord( QUrl const & url )
   return std::make_pair( validScheme, word );
 }
 
-inline bool isAudioUrl( QUrl const & url )
+inline bool isAudioUrl( const QUrl & url )
 {
   if ( !url.isValid() )
     return false;
@@ -295,7 +295,7 @@ inline bool isAudioUrl( QUrl const & url )
     && ( Filetype::isNameOfSound( url.path().toUtf8().data() ) || url.host() == "apifree.forvo.com" );
 }
 
-inline bool isWebAudioUrl( QUrl const & url )
+inline bool isWebAudioUrl( const QUrl & url )
 {
   if ( !url.isValid() )
     return false;
@@ -307,7 +307,7 @@ inline bool isWebAudioUrl( QUrl const & url )
 
 /// Uses some heuristics to chop off the first domain name from the host name,
 /// but only if it's not too base. Returns the resulting host name.
-inline QString getHostBase( QString const & host )
+inline QString getHostBase( const QString & host )
 {
   QStringList domains = host.split( '.' );
 
@@ -331,14 +331,14 @@ inline QString getHostBase( QString const & host )
     return host;
 }
 
-inline QString getHostBaseFromUrl( QUrl const & url )
+inline QString getHostBaseFromUrl( const QUrl & url )
 {
   QString host = url.host();
 
   return getHostBase( host );
 }
 
-QString getSchemeAndHost( QUrl const & url );
+QString getSchemeAndHost( const QUrl & url );
 
 } // namespace Url
 
@@ -366,10 +366,10 @@ using std::string;
 char separator();
 
 /// Returns the name part of the given filename.
-string basename( string const & );
-void removeDirectory( QString const & directory );
+string basename( const string & );
+void removeDirectory( const QString & directory );
 
-void removeDirectory( string const & directory );
+void removeDirectory( const string & directory );
 
 inline QString findFirstExistingFile( std::initializer_list< QString > filePaths )
 {
@@ -415,8 +415,8 @@ namespace WebSite {
 QString urlReplaceWord( const QString url, QString word );
 }
 
-QString escapeAmps( QString const & str );
+QString escapeAmps( const QString & str );
 
-QString unescapeAmps( QString const & str );
+QString unescapeAmps( const QString & str );
 
 } // namespace Utils

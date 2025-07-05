@@ -13,7 +13,7 @@
 
 namespace File {
 
-bool tryPossibleName( std::string const & name, std::string & copyTo )
+bool tryPossibleName( const std::string & name, std::string & copyTo )
 {
   if ( Utils::Fs::exists( name ) ) {
     copyTo = name;
@@ -24,7 +24,7 @@ bool tryPossibleName( std::string const & name, std::string & copyTo )
   }
 }
 
-bool tryPossibleZipName( std::string const & name, std::string & copyTo )
+bool tryPossibleZipName( const std::string & name, std::string & copyTo )
 {
   if ( ZipFile::SplitZipFile( name.c_str() ).exists() ) {
     copyTo = name;
@@ -35,7 +35,7 @@ bool tryPossibleZipName( std::string const & name, std::string & copyTo )
   }
 }
 
-void loadFromFile( std::string const & filename, std::vector< char > & data )
+void loadFromFile( const std::string & filename, std::vector< char > & data )
 {
   File::Index f( filename, QIODevice::ReadOnly );
   auto size = f.file().size(); // QFile::size() obtains size via statx on Linux
@@ -64,7 +64,7 @@ size_t Index::readRecords( void * buf, qint64 size, qint64 count )
   return result < 0 ? result : result / size;
 }
 
-void Index::write( void const * buf, qint64 size )
+void Index::write( const void * buf, qint64 size )
 {
   if ( 0 == size ) {
     return;
@@ -74,10 +74,10 @@ void Index::write( void const * buf, qint64 size )
     throw exWriteError();
   }
 
-  f.write( static_cast< char const * >( buf ), size );
+  f.write( static_cast< const char * >( buf ), size );
 }
 
-size_t Index::writeRecords( void const * buf, qint64 size, qint64 count )
+size_t Index::writeRecords( const void * buf, qint64 size, qint64 count )
 {
   qint64 result = f.write( static_cast< const char * >( buf ), size * count );
   return result < 0 ? result : result / size;

@@ -101,7 +101,7 @@ bool indexIsOldOrBad( string const & indexFile )
     || header.formatVersion != CurrentFormatVersion;
 }
 
-void readJSONValue( string const & source, string & str, string::size_type & pos )
+void readJSONValue( const string & source, string & str, string::size_type & pos )
 {
   int level = 1;
   char endChar;
@@ -140,7 +140,7 @@ void readJSONValue( string const & source, string & str, string::size_type & pos
   }
 }
 
-map< string, string > parseMetaData( string const & metaData )
+map< string, string > parseMetaData( const string & metaData )
 {
   // Parsing JSON string
   map< string, string > data;
@@ -211,7 +211,7 @@ class AardDictionary: public BtreeIndexing::BtreeDictionary
 
 public:
 
-  AardDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles );
+  AardDictionary( const string & id, const string & indexFile, const vector< string > & dictionaryFiles );
 
   ~AardDictionary();
 
@@ -235,20 +235,20 @@ public:
     return idxHeader.langTo;
   }
 
-  sptr< Dictionary::DataRequest > getArticle( std::u32string const &,
-                                              vector< std::u32string > const & alts,
-                                              std::u32string const &,
+  sptr< Dictionary::DataRequest > getArticle( const std::u32string &,
+                                              const vector< std::u32string > & alts,
+                                              const std::u32string &,
                                               bool ignoreDiacritics ) override;
 
-  QString const & getDescription() override;
+  const QString & getDescription() override;
 
   sptr< Dictionary::DataRequest >
-  getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
+  getSearchResults( const QString & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
   void makeFTSIndex( QAtomicInt & isCancelled ) override;
 
-  void setFTSParameters( Config::FullTextSearch const & fts ) override
+  void setFTSParameters( const Config::FullTextSearch & fts ) override
   {
     if ( metadata_enable_fts.has_value() ) {
       can_FTS = fts.enabled && metadata_enable_fts.value();
@@ -267,12 +267,12 @@ private:
 
   /// Loads the article.
   void loadArticle( quint32 address, string & articleText, bool rawText = false );
-  string convert( string const & in_data );
+  string convert( const string & in_data );
 
   friend class AardArticleRequest;
 };
 
-AardDictionary::AardDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles ):
+AardDictionary::AardDictionary( const string & id, const string & indexFile, const vector< string > & dictionaryFiles ):
   BtreeDictionary( id, dictionaryFiles ),
   idx( indexFile, QIODevice::ReadOnly ),
   idxHeader( idx.read< IdxHeader >() ),
@@ -487,7 +487,7 @@ void AardDictionary::loadArticle( quint32 address, string & articleText, bool ra
   articleText = prefix + articleText + cleaner + "</div>";
 }
 
-QString const & AardDictionary::getDescription()
+const QString & AardDictionary::getDescription()
 {
   if ( !dictionaryDescription.isEmpty() ) {
     return dictionaryDescription;
@@ -586,7 +586,7 @@ void AardDictionary::getArticleText( uint32_t articleAddress, QString & headword
 }
 
 sptr< Dictionary::DataRequest >
-AardDictionary::getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics )
+AardDictionary::getSearchResults( const QString & searchString, int searchMode, bool matchCase, bool ignoreDiacritics )
 {
   return std::make_shared< FtsHelpers::FTSResultsRequest >( *this,
                                                             searchString,
@@ -609,8 +609,8 @@ class AardArticleRequest: public Dictionary::DataRequest
 
 public:
 
-  AardArticleRequest( std::u32string const & word_,
-                      vector< std::u32string > const & alts_,
+  AardArticleRequest( const std::u32string & word_,
+                      const vector< std::u32string > & alts_,
                       AardDictionary & dict_,
                       bool ignoreDiacritics_ ):
     word( word_ ),
@@ -735,9 +735,9 @@ void AardArticleRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > AardDictionary::getArticle( std::u32string const & word,
-                                                            vector< std::u32string > const & alts,
-                                                            std::u32string const &,
+sptr< Dictionary::DataRequest > AardDictionary::getArticle( const std::u32string & word,
+                                                            const vector< std::u32string > & alts,
+                                                            const std::u32string &,
                                                             bool ignoreDiacritics )
 
 {
@@ -746,8 +746,8 @@ sptr< Dictionary::DataRequest > AardDictionary::getArticle( std::u32string const
 
 } // anonymous namespace
 
-vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & fileNames,
-                                                      string const & indicesDir,
+vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & fileNames,
+                                                      const string & indicesDir,
                                                       Dictionary::Initializing & initializing,
                                                       unsigned maxHeadwordsToExpand )
 

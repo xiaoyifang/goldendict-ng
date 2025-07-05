@@ -25,7 +25,7 @@ public:
     // Volume vary from 0~1 and rate vary from -1 to 1
     int volume;
     int rate;
-    explicit Engine( Config::VoiceEngine const & e ):
+    explicit Engine( const Config::VoiceEngine & e ):
       engine_name( e.engine_name ),
       name( e.name ),
       voice_name( e.voice_name ),
@@ -38,7 +38,7 @@ public:
 
   struct InternalData
   {
-    explicit InternalData( Config::VoiceEngine const & e ):
+    explicit InternalData( const Config::VoiceEngine & e ):
       sp( new QTextToSpeech( e.engine_name ) ),
       engine( e )
     {
@@ -70,12 +70,12 @@ public:
 
   using Engines = QList< Engine >;
 
-  explicit SpeechClient( Config::VoiceEngine const & e, QObject * parent = nullptr );
+  explicit SpeechClient( const Config::VoiceEngine & e, QObject * parent = nullptr );
 
   static Engines availableEngines();
 
-  bool tell( QString const & text, int volume, int rate ) const;
-  bool tell( QString const & text ) const;
+  bool tell( const QString & text, int volume, int rate ) const;
+  bool tell( const QString & text ) const;
 
 private:
   QSharedPointer< InternalData > internalData;

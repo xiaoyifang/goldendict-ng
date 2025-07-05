@@ -40,9 +40,9 @@ static const Qt::WindowFlags pinnedWindowFlags =
 ScanPopup::ScanPopup( QWidget * parent,
                       Config::Class & cfg_,
                       ArticleNetworkAccessManager & articleNetMgr,
-                      AudioPlayerPtr const & audioPlayer_,
-                      std::vector< sptr< Dictionary::Class > > const & allDictionaries_,
-                      Instances::Groups const & groups_,
+                      const AudioPlayerPtr & audioPlayer_,
+                      const std::vector< sptr< Dictionary::Class > > & allDictionaries_,
+                      const Instances::Groups & groups_,
                       History & history_ ):
   QMainWindow( parent ),
   cfg( cfg_ ),
@@ -160,7 +160,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   definition->setCurrentGroupId( groupList->getCurrentGroup() );
   definition->setSelectionBySingleClick( cfg.preferences.selectWordBySingleClick );
 
-  Instances::Group const * igrp = groups.findGroup( cfg.lastPopupGroupId );
+  const Instances::Group * igrp = groups.findGroup( cfg.lastPopupGroupId );
   if ( cfg.lastPopupGroupId == GroupId::AllGroupId ) {
     if ( igrp ) {
       igrp->checkMutedDictionaries( &cfg.popupMutedDictionaries );
@@ -332,7 +332,7 @@ void ScanPopup::updateFoundInDictsList()
   foundBar->setUpdatesEnabled( false );
 
   unsigned currentId           = groupList->getCurrentGroup();
-  Instances::Group const * grp = groups.findGroup( currentId );
+  const Instances::Group * grp = groups.findGroup( currentId );
 
   auto dictionaries = grp ? grp->dictionaries : allDictionaries;
   QStringList ids   = definition->getArticlesList();
@@ -459,7 +459,7 @@ void ScanPopup::translateWordFromClipboard( QClipboard::Mode m )
   translateWord( str );
 }
 
-void ScanPopup::translateWord( QString const & word )
+void ScanPopup::translateWord( const QString & word )
 {
   pendingWord = cfg.preferences.sanitizeInputPhrase( word );
 
@@ -610,7 +610,7 @@ QString ScanPopup::elideInputWord()
 void ScanPopup::currentGroupChanged( int )
 {
   cfg.lastPopupGroupId          = groupList->getCurrentGroup();
-  Instances::Group const * igrp = groups.findGroup( cfg.lastPopupGroupId );
+  const Instances::Group * igrp = groups.findGroup( cfg.lastPopupGroupId );
   if ( cfg.lastPopupGroupId == GroupId::AllGroupId ) {
     if ( igrp ) {
       igrp->checkMutedDictionaries( &cfg.popupMutedDictionaries );
@@ -643,7 +643,7 @@ void ScanPopup::currentGroupChanged( int )
   cfg.lastPopupGroupId = groupList->getCurrentGroup();
 }
 
-void ScanPopup::translateInputChanged( QString const & text )
+void ScanPopup::translateInputChanged( const QString & text )
 {
   updateSuggestionList( text );
   GlobalBroadcaster::instance()->translateLineText = text;
@@ -654,7 +654,7 @@ void ScanPopup::updateSuggestionList()
   updateSuggestionList( translateBox->translateLine()->text() );
 }
 
-void ScanPopup::updateSuggestionList( QString const & text )
+void ScanPopup::updateSuggestionList( const QString & text )
 {
   mainStatusBar->clearMessage();
 
@@ -677,7 +677,7 @@ void ScanPopup::translateInputFinished()
   showTranslationFor( pendingWord );
 }
 
-void ScanPopup::showTranslationFor( QString const & word ) const
+void ScanPopup::showTranslationFor( const QString & word ) const
 {
   ui.pronounceButton->setDisabled( true );
 
@@ -686,19 +686,19 @@ void ScanPopup::showTranslationFor( QString const & word ) const
   definition->focus();
 }
 
-vector< sptr< Dictionary::Class > > const & ScanPopup::getActiveDicts()
+const vector< sptr< Dictionary::Class > > & ScanPopup::getActiveDicts()
 {
   int current = groupList->currentIndex();
 
   Q_ASSERT( 0 <= current || current <= (qsizetype)groups.size() );
 
-  Config::MutedDictionaries const * mutedDictionaries = dictionaryBar.getMutedDictionaries();
+  const Config::MutedDictionaries * mutedDictionaries = dictionaryBar.getMutedDictionaries();
 
   if ( !dictionaryBar.toggleViewAction()->isChecked() || mutedDictionaries == nullptr ) {
     return groups[ current ].dictionaries;
   }
 
-  vector< sptr< Dictionary::Class > > const & activeDicts = groups[ current ].dictionaries;
+  const vector< sptr< Dictionary::Class > > & activeDicts = groups[ current ].dictionaries;
 
   // Populate the special dictionariesUnmuted array with only unmuted
   // dictionaries
@@ -715,7 +715,7 @@ vector< sptr< Dictionary::Class > > const & ScanPopup::getActiveDicts()
   return dictionariesUnmuted;
 }
 
-void ScanPopup::typingEvent( QString const & t )
+void ScanPopup::typingEvent( const QString & t )
 {
   if ( t == "\n" || t == "\r" ) {
     focusTranslateLine();
@@ -771,7 +771,7 @@ bool ScanPopup::eventFilter( QObject * watched, QEvent * event )
   return QMainWindow::eventFilter( watched, event );
 }
 
-void ScanPopup::reactOnMouseMove( QPointF const & p )
+void ScanPopup::reactOnMouseMove( const QPointF & p )
 {
   if ( geometry().contains( p.toPoint() ) ) {
     //        qDebug( "got inside" );
@@ -922,7 +922,7 @@ void ScanPopup::prefixMatchFinished()
     else {
       auto results = wordFinder.getResults();
       QStringList _results;
-      for ( auto const & [ fst, snd ] : results ) {
+      for ( const auto & [ fst, snd ] : results ) {
         _results << fst;
       }
 
@@ -1023,7 +1023,7 @@ void ScanPopup::pageLoaded( ArticleView * ) const
   updateBackForwardButtons();
 }
 
-void ScanPopup::showStatusBarMessage( QString const & message, int timeout, QPixmap const & icon ) const
+void ScanPopup::showStatusBarMessage( const QString & message, int timeout, const QPixmap & icon ) const
 {
   mainStatusBar->showMessage( message, timeout, icon );
 }
@@ -1089,7 +1089,7 @@ void ScanPopup::updateDictionaryBar()
   }
 
   unsigned currentId           = groupList->getCurrentGroup();
-  Instances::Group const * grp = groups.findGroup( currentId );
+  const Instances::Group * grp = groups.findGroup( currentId );
   Q_ASSERT( grp != nullptr ); // should never be nullptr, or the code in next few lines are invalid
 
   if ( currentId == GroupId::AllGroupId ) {
@@ -1173,7 +1173,7 @@ void ScanPopup::setDictionaryIconSize()
 }
 
 
-void ScanPopup::setGroupByName( QString const & name ) const
+void ScanPopup::setGroupByName( const QString & name ) const
 {
   int i;
   for ( i = 0; i < groupList->count(); i++ ) {
@@ -1209,14 +1209,14 @@ void ScanPopup::alwaysOnTopClicked( bool checked )
   }
 }
 
-void ScanPopup::titleChanged( ArticleView *, QString const & title ) const
+void ScanPopup::titleChanged( ArticleView *, const QString & title ) const
 {
 
   // Set icon for "Add to Favorites" button
   ui.sendWordToFavoritesButton->setIcon( isWordPresentedInFavorites( title ) ? blueStarIcon : starIcon );
 }
 
-bool ScanPopup::isWordPresentedInFavorites( QString const & word ) const
+bool ScanPopup::isWordPresentedInFavorites( const QString & word ) const
 {
   return GlobalBroadcaster::instance()->isWordPresentedInFavorites( word );
 }

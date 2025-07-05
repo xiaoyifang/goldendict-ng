@@ -16,22 +16,22 @@ public:
   /// The first one willl be the default one
   static QStringList availableBackends();
 
-  QString const & getName() const
+  const QString & getName() const
   {
     return name;
   }
 
-  void setName( QString const & name_ )
+  void setName( const QString & name_ )
   {
     name = name_;
   }
 
-  bool operator==( InternalPlayerBackend const & other ) const
+  bool operator==( const InternalPlayerBackend & other ) const
   {
     return name == other.name;
   }
 
-  bool operator!=( InternalPlayerBackend const & other ) const
+  bool operator!=( const InternalPlayerBackend & other ) const
   {
     return !operator==( other );
   }

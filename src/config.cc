@@ -60,7 +60,7 @@ QDir getHomeDir()
 #ifdef Q_OS_WIN32
   if ( result.cd( "Application Data/GoldenDict" ) )
     return result;
-  char const * pathInHome = "GoldenDict";
+  const char * pathInHome = "GoldenDict";
   result                  = QDir::fromNativeSeparators( QString::fromWCharArray( _wgetenv( L"APPDATA" ) ) );
 #else
   char const * pathInHome = ".goldendict";
@@ -102,7 +102,7 @@ AnkiConnectServer::AnkiConnectServer():
 {
 }
 
-HotKey::HotKey( QKeySequence const & seq ):
+HotKey::HotKey( const QKeySequence & seq ):
   modifiers( seq[ 0 ].keyboardModifiers() ),
   key1( seq[ 0 ].key() ),
   key2( seq[ 1 ].key() )
@@ -119,7 +119,7 @@ QKeySequence HotKey::toKeySequence() const
   ;
 }
 
-QString Preferences::sanitizeInputPhrase( QString const & inputWord ) const
+QString Preferences::sanitizeInputPhrase( const QString & inputWord ) const
 {
   QString result = inputWord;
   if ( stripClipboard ) {
@@ -231,7 +231,7 @@ Group * Class::getGroup( unsigned id )
   return 0;
 }
 
-Group const * Class::getGroup( unsigned id ) const
+const Group * Class::getGroup( unsigned id ) const
 {
   for ( const auto & group : groups ) {
     if ( group.id == id ) {
@@ -365,7 +365,7 @@ Programs makeDefaultPrograms()
 
 /// Sets option to true of false if node is "1" or "0" respectively, or leaves
 /// it intact if it's neither "1" nor "0".
-void applyBoolOption( bool & option, QDomNode const & node )
+void applyBoolOption( bool & option, const QDomNode & node )
 {
   QString value = node.toElement().text();
 
@@ -436,7 +436,7 @@ MutedDictionaries loadMutedDictionaries( const QDomNode & mutedDictionaries )
   return result;
 }
 
-void saveMutedDictionaries( QDomDocument & dd, QDomElement & muted, MutedDictionaries const & mutedDictionaries )
+void saveMutedDictionaries( QDomDocument & dd, QDomElement & muted, const MutedDictionaries & mutedDictionaries )
 {
   for ( const auto & mutedDictionarie : mutedDictionaries ) {
     QDomElement dict = dd.createElement( "mutedDictionary" );
@@ -703,7 +703,7 @@ Class load()
       p.name         = pr.attribute( "name" );
       p.commandLine  = pr.attribute( "commandLine" );
       p.enabled      = ( pr.attribute( "enabled" ) == "1" );
-      p.type         = ( Program::Type )( pr.attribute( "type" ).toInt() );
+      p.type         = (Program::Type)( pr.attribute( "type" ).toInt() );
       p.iconFilename = pr.attribute( "icon" );
 
       c.programs.push_back( p );
@@ -854,9 +854,9 @@ Class load()
     c.preferences.startToTray    = ( preferences.namedItem( "startToTray" ).toElement().text() == "1" );
     c.preferences.closeToTray    = ( preferences.namedItem( "closeToTray" ).toElement().text() == "1" );
 #endif
-    c.preferences.autoStart      = ( preferences.namedItem( "autoStart" ).toElement().text() == "1" );
-    c.preferences.alwaysOnTop    = ( preferences.namedItem( "alwaysOnTop" ).toElement().text() == "1" );
-    c.preferences.searchInDock   = ( preferences.namedItem( "searchInDock" ).toElement().text() == "1" );
+    c.preferences.autoStart    = ( preferences.namedItem( "autoStart" ).toElement().text() == "1" );
+    c.preferences.alwaysOnTop  = ( preferences.namedItem( "alwaysOnTop" ).toElement().text() == "1" );
+    c.preferences.searchInDock = ( preferences.namedItem( "searchInDock" ).toElement().text() == "1" );
 
     if ( !preferences.namedItem( "customFonts" ).isNull() ) {
       CustomFonts fonts         = CustomFonts::fromElement( preferences.namedItem( "customFonts" ).toElement() );
@@ -1233,7 +1233,7 @@ Class load()
 }
 
 namespace {
-void saveGroup( Group const & data, QDomElement & group )
+void saveGroup( const Group & data, QDomElement & group )
 {
   QDomDocument dd = group.ownerDocument();
 
@@ -1317,7 +1317,7 @@ void saveGroup( Group const & data, QDomElement & group )
 
 } // namespace
 
-void save( Class const & c )
+void save( const Class & c )
 {
   QSaveFile configFile( getConfigFileName() );
 

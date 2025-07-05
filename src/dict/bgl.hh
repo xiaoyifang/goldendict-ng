@@ -19,6 +19,6 @@ using std::string;
 /// dictionary's id, made by makeDictionaryId() from the list of file names.
 /// Any exception thrown would terminate the program with an error.
 vector< sptr< Dictionary::Class > >
-makeDictionaries( vector< string > const & fileNames, string const & indicesDir, Dictionary::Initializing & );
+makeDictionaries( const vector< string > & fileNames, const string & indicesDir, Dictionary::Initializing & );
 
 } // namespace Bgl

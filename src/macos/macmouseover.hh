@@ -29,7 +29,7 @@ public:
   void disableMouseOver();
 
   /// Set pointer to program configuration
-  void setPreferencesPtr( Config::Preferences const * ppref )
+  void setPreferencesPtr( const Config::Preferences * ppref )
   {
     pPref = ppref;
   };
@@ -42,7 +42,7 @@ public:
 signals:
 
   /// Emitted when there was some text under cursor which was hovered over.
-  void hovered( QString const &, bool forcePopup );
+  void hovered( const QString &, bool forcePopup );
 
 private slots:
   void timerShot();
@@ -55,7 +55,7 @@ private:
   QString CFStringRefToQString( CFStringRef str );
   void handleRetrievedString( QString & wordSeq, int wordSeqPos );
 
-  Config::Preferences const * pPref;
+  const Config::Preferences * pPref;
   QTimer mouseTimer;
   CFMachPortRef tapRef;
   CFRunLoopSourceRef loop;

@@ -5,7 +5,7 @@
   #include <QtCore>
   #include <QLocale>
   #include <QDebug>
-SpeechClient::SpeechClient( Config::VoiceEngine const & e, QObject * parent ):
+SpeechClient::SpeechClient( const Config::VoiceEngine & e, QObject * parent ):
   QObject( parent ),
   internalData( new InternalData( e ) )
 {
@@ -53,7 +53,7 @@ SpeechClient::Engines SpeechClient::availableEngines()
   return engines;
 }
 
-bool SpeechClient::tell( QString const & text, int volume, int rate ) const
+bool SpeechClient::tell( const QString & text, int volume, int rate ) const
 {
   if ( !internalData || !internalData->sp || internalData->sp->state() != QTextToSpeech::Ready )
     return false;
@@ -65,7 +65,7 @@ bool SpeechClient::tell( QString const & text, int volume, int rate ) const
   return true;
 }
 
-bool SpeechClient::tell( QString const & text ) const
+bool SpeechClient::tell( const QString & text ) const
 {
   return tell( text, internalData->engine.volume, internalData->engine.rate );
 }

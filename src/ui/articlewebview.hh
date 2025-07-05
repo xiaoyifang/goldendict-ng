@@ -72,5 +72,5 @@ private:
 public slots:
 
   //receive signal ,a link has been clicked.
-  void linkClickedInHtml( QUrl const & url );
+  void linkClickedInHtml( const QUrl & url );
 };

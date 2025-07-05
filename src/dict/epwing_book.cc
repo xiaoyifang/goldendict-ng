@@ -406,7 +406,7 @@ EpwingBook::~EpwingBook()
   eb_finalize_book( &book );
 }
 
-void EpwingBook::setErrorString( QString const & func, EB_Error_Code code )
+void EpwingBook::setErrorString( const QString & func, EB_Error_Code code )
 {
   error_string = QString( "Epwing: (%1) function error. %2 (%3)" )
                    .arg( func )
@@ -419,7 +419,7 @@ void EpwingBook::setErrorString( QString const & func, EB_Error_Code code )
                       .arg( QString::number( currentPosition.offset ) );
 }
 
-void EpwingBook::collectFilenames( QString const & directory, vector< string > & files )
+void EpwingBook::collectFilenames( const QString & directory, vector< string > & files )
 {
   QDir dir( directory );
   QString catName;
@@ -439,7 +439,7 @@ void EpwingBook::collectFilenames( QString const & directory, vector< string > &
   }
 }
 
-int EpwingBook::setBook( string const & directory )
+int EpwingBook::setBook( const string & directory )
 {
   error_string.clear();
 
@@ -539,7 +539,7 @@ bool EpwingBook::setSubBook( int book_nom )
   return true;
 }
 
-void EpwingBook::setCacheDirectory( QString const & cacheDir )
+void EpwingBook::setCacheDirectory( const QString & cacheDir )
 {
   mainCacheDir = cacheDir;
   cacheImagesDir.clear();
@@ -553,7 +553,7 @@ void EpwingBook::setCacheDirectory( QString const & cacheDir )
   fontsCacheList.clear();
 }
 
-QString EpwingBook::createCacheDir( QString const & dirName )
+QString EpwingBook::createCacheDir( const QString & dirName )
 {
   QDir dir;
   QFileInfo info( mainCacheDir );
@@ -622,7 +622,7 @@ QString EpwingBook::repairSubBookDirectory( QString subBookDir )
   return subBookDir;
 }
 
-QString EpwingBook::makeFName( QString const & ext, int page, int offset ) const
+QString EpwingBook::makeFName( const QString & ext, int page, int offset ) const
 {
   QString name = QString::number( page ) + "x" + QString::number( offset ) + "." + ext;
   return name;
@@ -1031,7 +1031,7 @@ bool EpwingBook::getNextHeadword( EpwingHeadword & head )
   return true;
 }
 
-bool EpwingBook::readHeadword( EB_Position const & pos, QString & headword, bool text_only )
+bool EpwingBook::readHeadword( const EB_Position & pos, QString & headword, bool text_only )
 {
   EContainer container( this, text_only );
   ssize_t head_length;
@@ -1056,7 +1056,7 @@ bool EpwingBook::readHeadword( EB_Position const & pos, QString & headword, bool
   return true;
 }
 
-bool EpwingBook::isHeadwordCorrect( QString const & headword )
+bool EpwingBook::isHeadwordCorrect( const QString & headword )
 {
   QByteArray buf, buf2;
   EB_Hit hits[ 2 ];
@@ -1644,7 +1644,7 @@ QByteArray EpwingBook::handleMpeg( EB_Hook_Code code, const unsigned int * argv 
   return result;
 }
 
-QByteArray EpwingBook::codeToUnicode( QString const & code )
+QByteArray EpwingBook::codeToUnicode( const QString & code )
 {
   QString subst;
 

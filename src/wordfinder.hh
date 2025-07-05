@@ -48,7 +48,7 @@ private:
   unsigned stemmedMinLength;
   unsigned stemmedMaxSuffixVariation;
 
-  std::vector< sptr< Dictionary::Class > > const * inputDicts;
+  const std::vector< sptr< Dictionary::Class > > * inputDicts;
 
   std::vector< std::u32string > _allWordWritings; // All writings of the inputWord
 
@@ -93,15 +93,15 @@ public:
   /// the dictionaries which possess all the features requested.
   /// If there already was a prefixMatch operation underway, it gets cancelled
   /// and the new one replaces it.
-  void prefixMatch( QString const &,
-                    std::vector< sptr< Dictionary::Class > > const &,
+  void prefixMatch( const QString &,
+                    const std::vector< sptr< Dictionary::Class > > &,
                     unsigned long maxResults = 40,
                     Dictionary::Features     = Dictionary::NoFeatures );
 
   /// Do a stemmed-match search in the given list of dictionaries. All comments
   /// from prefixMatch() generally apply as well.
-  void stemmedMatch( QString const &,
-                     std::vector< sptr< Dictionary::Class > > const &,
+  void stemmedMatch( const QString &,
+                     const std::vector< sptr< Dictionary::Class > > &,
                      unsigned minLength          = 3,
                      unsigned maxSuffixVariation = 3,
                      unsigned long maxResults    = 30,
@@ -109,22 +109,22 @@ public:
 
   /// Do the expression-match search in the given list of dictionaries.
   /// Function find exact matches for one of spelling suggestions.
-  void expressionMatch( QString const &,
-                        std::vector< sptr< Dictionary::Class > > const &,
+  void expressionMatch( const QString &,
+                        const std::vector< sptr< Dictionary::Class > > &,
                         unsigned long maxResults = 40,
                         Dictionary::Features     = Dictionary::NoFeatures );
 
   /// Returns the vector containing search results from the last operation.
   /// If it didn't finish yet, the result is not final and may be changing
   /// over time.
-  SearchResults const & getResults() const
+  const SearchResults & getResults() const
   {
     return searchResults;
   }
 
   /// Returns a human-readable error string for the last finished request. Empty
   /// string means it finished without any error.
-  QString const & getErrorString()
+  const QString & getErrorString()
   {
     return searchErrorString;
   }
@@ -172,7 +172,7 @@ private:
   /// Compares results based on their ranks
   struct SortByRank
   {
-    bool operator()( OneResult const & first, OneResult const & second )
+    bool operator()( const OneResult & first, const OneResult & second )
     {
       if ( first.rank < second.rank )
         return true;
@@ -189,7 +189,7 @@ private:
   /// Compares results based on their ranks and lengths
   struct SortByRankAndLength
   {
-    bool operator()( OneResult const & first, OneResult const & second )
+    bool operator()( const OneResult & first, const OneResult & second )
     {
       if ( first.rank < second.rank )
         return true;

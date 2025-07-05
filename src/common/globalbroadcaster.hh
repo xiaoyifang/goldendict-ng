@@ -43,7 +43,7 @@ public:
   std::function< bool( const QString & ) > isWordPresentedInFavorites;
 
   PronounceEngine pronounce_engine;
-  QString getAbbrName( QString const & text );
+  QString getAbbrName( const QString & text );
 signals:
   void dictionaryChanges( ActiveDictIds ad );
   void dictionaryClear( ActiveDictIds ad );

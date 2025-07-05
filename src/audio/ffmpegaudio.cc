@@ -50,7 +50,7 @@ void AudioService::stop()
 }
 
 
-DecoderContext::DecoderContext( QByteArray const & audioData, QAtomicInt & isCancelled ):
+DecoderContext::DecoderContext( const QByteArray & audioData, QAtomicInt & isCancelled ):
   isCancelled_( isCancelled ),
   audioData_( audioData ),
   audioDataStream_( audioData_ ),
@@ -349,7 +349,7 @@ void DecoderContext::playFrame( AVFrame * frame )
   }
 }
 
-DecoderThread::DecoderThread( QByteArray const & audioData, QObject * parent ):
+DecoderThread::DecoderThread( const QByteArray & audioData, QObject * parent ):
   QThread( parent ),
   isCancelled_( 0 ),
   audioData_( audioData ),

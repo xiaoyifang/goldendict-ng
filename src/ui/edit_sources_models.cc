@@ -11,7 +11,7 @@
 #endif
 
 
-Sources::Sources( QWidget * parent, Config::Class const & cfg ):
+Sources::Sources( QWidget * parent, const Config::Class & cfg ):
   QWidget( parent ),
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
   chineseConversion( new ChineseConversion( this, cfg.transliteration.chinese ) ),
@@ -31,11 +31,11 @@ Sources::Sources( QWidget * parent, Config::Class const & cfg ):
 {
   ui.setupUi( this );
 
-  Config::Hunspell const & hunspell   = cfg.hunspell;
-  Config::Transliteration const & trs = cfg.transliteration;
+  const Config::Hunspell & hunspell   = cfg.hunspell;
+  const Config::Transliteration & trs = cfg.transliteration;
 
-  Config::Lingua const & lingua = cfg.lingua;
-  Config::Forvo const & forvo   = cfg.forvo;
+  const Config::Lingua & lingua = cfg.lingua;
+  const Config::Forvo & forvo   = cfg.forvo;
 
   // itemEditorFactory owns the ProgramTypeEditor
   itemEditorFactory->registerEditor( QMetaType::Int, new QStandardItemEditorCreator< ProgramTypeEditor >() );
@@ -378,9 +378,9 @@ Config::Transliteration Sources::getTransliteration() const
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
   chineseConversion->getConfig( tr.chinese );
 #endif
-  tr.romaji.enable            = ui.enableRomaji->isChecked();
-  tr.romaji.enableHiragana    = ui.enableHiragana->isChecked();
-  tr.romaji.enableKatakana    = ui.enableKatakana->isChecked();
+  tr.romaji.enable         = ui.enableRomaji->isChecked();
+  tr.romaji.enableHiragana = ui.enableHiragana->isChecked();
+  tr.romaji.enableKatakana = ui.enableKatakana->isChecked();
 
   tr.customTrans.enable  = ui.enableCustomTransliteration->isChecked();
   tr.customTrans.context = ui.customTransliteration->toPlainText();
@@ -412,7 +412,7 @@ Config::Forvo Sources::getForvo() const
 
 ////////// MediaWikisModel
 
-MediaWikisModel::MediaWikisModel( QWidget * parent, Config::MediaWikis const & mediawikis_ ):
+MediaWikisModel::MediaWikisModel( QWidget * parent, const Config::MediaWikis & mediawikis_ ):
   QAbstractTableModel( parent ),
   mediawikis( mediawikis_ )
 {
@@ -462,7 +462,7 @@ void MediaWikisModel::remove( const QModelIndexList & indexes )
 }
 
 
-Qt::ItemFlags MediaWikisModel::flags( QModelIndex const & index ) const
+Qt::ItemFlags MediaWikisModel::flags( const QModelIndex & index ) const
 {
   Qt::ItemFlags result = QAbstractTableModel::flags( index );
 
@@ -478,7 +478,7 @@ Qt::ItemFlags MediaWikisModel::flags( QModelIndex const & index ) const
   return result;
 }
 
-int MediaWikisModel::rowCount( QModelIndex const & parent ) const
+int MediaWikisModel::rowCount( const QModelIndex & parent ) const
 {
   if ( parent.isValid() ) {
     return 0;
@@ -488,7 +488,7 @@ int MediaWikisModel::rowCount( QModelIndex const & parent ) const
   }
 }
 
-int MediaWikisModel::columnCount( QModelIndex const & parent ) const
+int MediaWikisModel::columnCount( const QModelIndex & parent ) const
 {
   if ( parent.isValid() ) {
     return 0;
@@ -520,7 +520,7 @@ QVariant MediaWikisModel::headerData( int section, Qt::Orientation /*orientation
   return QVariant();
 }
 
-QVariant MediaWikisModel::data( QModelIndex const & index, int role ) const
+QVariant MediaWikisModel::data( const QModelIndex & index, int role ) const
 {
   if ( index.row() >= mediawikis.size() ) {
     return QVariant();
@@ -548,7 +548,7 @@ QVariant MediaWikisModel::data( QModelIndex const & index, int role ) const
   return QVariant();
 }
 
-bool MediaWikisModel::setData( QModelIndex const & index, const QVariant & value, int role )
+bool MediaWikisModel::setData( const QModelIndex & index, const QVariant & value, int role )
 {
   if ( index.row() >= mediawikis.size() ) {
     return false;
@@ -594,7 +594,7 @@ bool MediaWikisModel::setData( QModelIndex const & index, const QVariant & value
 
 ////////// WebSitesModel
 
-WebSitesModel::WebSitesModel( QWidget * parent, Config::WebSites const & webSites_ ):
+WebSitesModel::WebSitesModel( QWidget * parent, const Config::WebSites & webSites_ ):
   QAbstractTableModel( parent ),
   webSites( webSites_ )
 {
@@ -644,7 +644,7 @@ void WebSitesModel::remove( const QModelIndexList & indexes )
 }
 
 
-Qt::ItemFlags WebSitesModel::flags( QModelIndex const & index ) const
+Qt::ItemFlags WebSitesModel::flags( const QModelIndex & index ) const
 {
   Qt::ItemFlags result = QAbstractTableModel::flags( index );
 
@@ -660,7 +660,7 @@ Qt::ItemFlags WebSitesModel::flags( QModelIndex const & index ) const
   return result;
 }
 
-int WebSitesModel::rowCount( QModelIndex const & parent ) const
+int WebSitesModel::rowCount( const QModelIndex & parent ) const
 {
   if ( parent.isValid() ) {
     return 0;
@@ -670,7 +670,7 @@ int WebSitesModel::rowCount( QModelIndex const & parent ) const
   }
 }
 
-int WebSitesModel::columnCount( QModelIndex const & parent ) const
+int WebSitesModel::columnCount( const QModelIndex & parent ) const
 {
   if ( parent.isValid() ) {
     return 0;
@@ -710,7 +710,7 @@ QVariant WebSitesModel::headerData( int section, Qt::Orientation /*orientation*/
   return QVariant();
 }
 
-QVariant WebSitesModel::data( QModelIndex const & index, int role ) const
+QVariant WebSitesModel::data( const QModelIndex & index, int role ) const
 {
   if ( index.row() >= webSites.size() ) {
     return QVariant();
@@ -748,7 +748,7 @@ QVariant WebSitesModel::data( QModelIndex const & index, int role ) const
   return QVariant();
 }
 
-bool WebSitesModel::setData( QModelIndex const & index, const QVariant & value, int role )
+bool WebSitesModel::setData( const QModelIndex & index, const QVariant & value, int role )
 {
   if ( index.row() >= webSites.size() ) {
     return false;
@@ -796,7 +796,7 @@ bool WebSitesModel::setData( QModelIndex const & index, const QVariant & value, 
 
 ////////// DictServersModel
 
-DictServersModel::DictServersModel( QWidget * parent, Config::DictServers const & dictServers_ ):
+DictServersModel::DictServersModel( QWidget * parent, const Config::DictServers & dictServers_ ):
   QAbstractTableModel( parent ),
   dictServers( dictServers_ )
 {
@@ -843,7 +843,7 @@ void DictServersModel::remove( const QModelIndexList & indexes )
   endResetModel();
 }
 
-Qt::ItemFlags DictServersModel::flags( QModelIndex const & index ) const
+Qt::ItemFlags DictServersModel::flags( const QModelIndex & index ) const
 {
   Qt::ItemFlags result = QAbstractTableModel::flags( index );
 
@@ -859,7 +859,7 @@ Qt::ItemFlags DictServersModel::flags( QModelIndex const & index ) const
   return result;
 }
 
-int DictServersModel::rowCount( QModelIndex const & parent ) const
+int DictServersModel::rowCount( const QModelIndex & parent ) const
 {
   if ( parent.isValid() ) {
     return 0;
@@ -869,7 +869,7 @@ int DictServersModel::rowCount( QModelIndex const & parent ) const
   }
 }
 
-int DictServersModel::columnCount( QModelIndex const & parent ) const
+int DictServersModel::columnCount( const QModelIndex & parent ) const
 {
   if ( parent.isValid() ) {
     return 0;
@@ -903,7 +903,7 @@ QVariant DictServersModel::headerData( int section, Qt::Orientation /*orientatio
   return QVariant();
 }
 
-QVariant DictServersModel::data( QModelIndex const & index, int role ) const
+QVariant DictServersModel::data( const QModelIndex & index, int role ) const
 {
   if ( index.row() >= dictServers.size() ) {
     return QVariant();
@@ -941,7 +941,7 @@ QVariant DictServersModel::data( QModelIndex const & index, int role ) const
   return QVariant();
 }
 
-bool DictServersModel::setData( QModelIndex const & index, const QVariant & value, int role )
+bool DictServersModel::setData( const QModelIndex & index, const QVariant & value, int role )
 {
   if ( index.row() >= dictServers.size() ) {
     return false;
@@ -988,7 +988,7 @@ bool DictServersModel::setData( QModelIndex const & index, const QVariant & valu
 
 ////////// ProgramsModel
 
-ProgramsModel::ProgramsModel( QWidget * parent, Config::Programs const & programs_ ):
+ProgramsModel::ProgramsModel( QWidget * parent, const Config::Programs & programs_ ):
   QAbstractTableModel( parent ),
   programs( programs_ )
 {
@@ -1035,7 +1035,7 @@ void ProgramsModel::remove( const QModelIndexList & indexes )
   endResetModel();
 }
 
-Qt::ItemFlags ProgramsModel::flags( QModelIndex const & index ) const
+Qt::ItemFlags ProgramsModel::flags( const QModelIndex & index ) const
 {
   Qt::ItemFlags result = QAbstractTableModel::flags( index );
 
@@ -1051,7 +1051,7 @@ Qt::ItemFlags ProgramsModel::flags( QModelIndex const & index ) const
   return result;
 }
 
-int ProgramsModel::rowCount( QModelIndex const & parent ) const
+int ProgramsModel::rowCount( const QModelIndex & parent ) const
 {
   if ( parent.isValid() ) {
     return 0;
@@ -1061,7 +1061,7 @@ int ProgramsModel::rowCount( QModelIndex const & parent ) const
   }
 }
 
-int ProgramsModel::columnCount( QModelIndex const & parent ) const
+int ProgramsModel::columnCount( const QModelIndex & parent ) const
 {
   if ( parent.isValid() ) {
     return 0;
@@ -1093,7 +1093,7 @@ QVariant ProgramsModel::headerData( int section, Qt::Orientation /*orientation*/
   return QVariant();
 }
 
-QVariant ProgramsModel::data( QModelIndex const & index, int role ) const
+QVariant ProgramsModel::data( const QModelIndex & index, int role ) const
 {
   if ( index.row() >= programs.size() ) {
     return QVariant();
@@ -1126,7 +1126,7 @@ QVariant ProgramsModel::data( QModelIndex const & index, int role ) const
   return QVariant();
 }
 
-bool ProgramsModel::setData( QModelIndex const & index, const QVariant & value, int role )
+bool ProgramsModel::setData( const QModelIndex & index, const QVariant & value, int role )
 {
   if ( index.row() >= programs.size() ) {
     return false;
@@ -1201,7 +1201,7 @@ void ProgramTypeEditor::setType( int t )
 
 ////////// PathsModel
 
-PathsModel::PathsModel( QWidget * parent, Config::Paths const & paths_ ):
+PathsModel::PathsModel( QWidget * parent, const Config::Paths & paths_ ):
   QAbstractTableModel( parent ),
   paths( paths_ )
 {
@@ -1214,7 +1214,7 @@ void PathsModel::removePath( int index )
   endRemoveRows();
 }
 
-void PathsModel::addNewPath( QString const & path )
+void PathsModel::addNewPath( const QString & path )
 {
   beginInsertRows( QModelIndex(), paths.size(), paths.size() );
   paths.push_back( Config::Path( path, false ) );
@@ -1241,7 +1241,7 @@ void PathsModel::remove( const QModelIndexList & indexes )
   endResetModel();
 }
 
-Qt::ItemFlags PathsModel::flags( QModelIndex const & index ) const
+Qt::ItemFlags PathsModel::flags( const QModelIndex & index ) const
 {
   Qt::ItemFlags result = QAbstractTableModel::flags( index );
 
@@ -1259,7 +1259,7 @@ Qt::ItemFlags PathsModel::flags( QModelIndex const & index ) const
   return result;
 }
 
-int PathsModel::rowCount( QModelIndex const & parent ) const
+int PathsModel::rowCount( const QModelIndex & parent ) const
 {
   if ( parent.isValid() ) {
     return 0;
@@ -1269,7 +1269,7 @@ int PathsModel::rowCount( QModelIndex const & parent ) const
   }
 }
 
-int PathsModel::columnCount( QModelIndex const & parent ) const
+int PathsModel::columnCount( const QModelIndex & parent ) const
 {
   if ( parent.isValid() ) {
     return 0;
@@ -1295,7 +1295,7 @@ QVariant PathsModel::headerData( int section, Qt::Orientation /*orientation*/, i
   return QVariant();
 }
 
-QVariant PathsModel::data( QModelIndex const & index, int role ) const
+QVariant PathsModel::data( const QModelIndex & index, int role ) const
 {
   if ( index.row() >= paths.size() ) {
     return QVariant();
@@ -1312,7 +1312,7 @@ QVariant PathsModel::data( QModelIndex const & index, int role ) const
   return QVariant();
 }
 
-bool PathsModel::setData( QModelIndex const & index, const QVariant & /*value*/, int role )
+bool PathsModel::setData( const QModelIndex & index, const QVariant & /*value*/, int role )
 {
   if ( index.row() >= paths.size() ) {
     return false;
@@ -1331,7 +1331,7 @@ bool PathsModel::setData( QModelIndex const & index, const QVariant & /*value*/,
 
 ////////// SoundDirsModel
 
-SoundDirsModel::SoundDirsModel( QWidget * parent, Config::SoundDirs const & soundDirs_ ):
+SoundDirsModel::SoundDirsModel( QWidget * parent, const Config::SoundDirs & soundDirs_ ):
   QAbstractTableModel( parent ),
   soundDirs( soundDirs_ )
 {
@@ -1344,7 +1344,7 @@ void SoundDirsModel::removeSoundDir( int index )
   endRemoveRows();
 }
 
-void SoundDirsModel::addNewSoundDir( QString const & path, QString const & name )
+void SoundDirsModel::addNewSoundDir( const QString & path, const QString & name )
 {
   beginInsertRows( QModelIndex(), soundDirs.size(), soundDirs.size() );
   soundDirs.push_back( Config::SoundDir( path, name ) );
@@ -1371,7 +1371,7 @@ void SoundDirsModel::removeSoundDirs( const QList< QModelIndex > & indexes )
   endResetModel();
 }
 
-Qt::ItemFlags SoundDirsModel::flags( QModelIndex const & index ) const
+Qt::ItemFlags SoundDirsModel::flags( const QModelIndex & index ) const
 {
   Qt::ItemFlags result = QAbstractTableModel::flags( index );
 
@@ -1382,7 +1382,7 @@ Qt::ItemFlags SoundDirsModel::flags( QModelIndex const & index ) const
   return result;
 }
 
-int SoundDirsModel::rowCount( QModelIndex const & parent ) const
+int SoundDirsModel::rowCount( const QModelIndex & parent ) const
 {
   if ( parent.isValid() ) {
     return 0;
@@ -1392,7 +1392,7 @@ int SoundDirsModel::rowCount( QModelIndex const & parent ) const
   }
 }
 
-int SoundDirsModel::columnCount( QModelIndex const & parent ) const
+int SoundDirsModel::columnCount( const QModelIndex & parent ) const
 {
   if ( parent.isValid() ) {
     return 0;
@@ -1420,7 +1420,7 @@ QVariant SoundDirsModel::headerData( int section, Qt::Orientation /*orientation*
   return QVariant();
 }
 
-QVariant SoundDirsModel::data( QModelIndex const & index, int role ) const
+QVariant SoundDirsModel::data( const QModelIndex & index, int role ) const
 {
   if ( index.row() >= soundDirs.size() ) {
     return QVariant();
@@ -1441,7 +1441,7 @@ QVariant SoundDirsModel::data( QModelIndex const & index, int role ) const
   return QVariant();
 }
 
-bool SoundDirsModel::setData( QModelIndex const & index, const QVariant & value, int role )
+bool SoundDirsModel::setData( const QModelIndex & index, const QVariant & value, int role )
 {
   if ( index.row() >= soundDirs.size() ) {
     return false;
@@ -1468,21 +1468,21 @@ bool SoundDirsModel::setData( QModelIndex const & index, const QVariant & value,
 
 ////////// HunspellDictsModel
 
-HunspellDictsModel::HunspellDictsModel( QWidget * parent, Config::Hunspell const & hunspell ):
+HunspellDictsModel::HunspellDictsModel( QWidget * parent, const Config::Hunspell & hunspell ):
   QAbstractTableModel( parent ),
   enabledDictionaries( hunspell.enabledDictionaries )
 {
   changePath( hunspell.dictionariesPath );
 }
 
-void HunspellDictsModel::changePath( QString const & newPath )
+void HunspellDictsModel::changePath( const QString & newPath )
 {
   dataFiles = HunspellMorpho::findDataFiles( newPath );
   beginResetModel();
   endResetModel();
 }
 
-Qt::ItemFlags HunspellDictsModel::flags( QModelIndex const & index ) const
+Qt::ItemFlags HunspellDictsModel::flags( const QModelIndex & index ) const
 {
   Qt::ItemFlags result = QAbstractTableModel::flags( index );
 
@@ -1495,7 +1495,7 @@ Qt::ItemFlags HunspellDictsModel::flags( QModelIndex const & index ) const
   return result;
 }
 
-int HunspellDictsModel::rowCount( QModelIndex const & parent ) const
+int HunspellDictsModel::rowCount( const QModelIndex & parent ) const
 {
   if ( parent.isValid() ) {
     return 0;
@@ -1505,7 +1505,7 @@ int HunspellDictsModel::rowCount( QModelIndex const & parent ) const
   }
 }
 
-int HunspellDictsModel::columnCount( QModelIndex const & parent ) const
+int HunspellDictsModel::columnCount( const QModelIndex & parent ) const
 {
   if ( parent.isValid() ) {
     return 0;
@@ -1531,7 +1531,7 @@ QVariant HunspellDictsModel::headerData( int section, Qt::Orientation /*orientat
   return QVariant();
 }
 
-QVariant HunspellDictsModel::data( QModelIndex const & index, int role ) const
+QVariant HunspellDictsModel::data( const QModelIndex & index, int role ) const
 {
   if ( (unsigned)index.row() >= dataFiles.size() ) {
     return QVariant();
@@ -1554,7 +1554,7 @@ QVariant HunspellDictsModel::data( QModelIndex const & index, int role ) const
   return QVariant();
 }
 
-bool HunspellDictsModel::setData( QModelIndex const & index, const QVariant & /*value*/, int role )
+bool HunspellDictsModel::setData( const QModelIndex & index, const QVariant & /*value*/, int role )
 {
   if ( (unsigned)index.row() >= dataFiles.size() ) {
     return false;

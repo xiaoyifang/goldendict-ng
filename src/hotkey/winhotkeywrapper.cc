@@ -146,7 +146,7 @@ void HotkeyWrapper::init()
   hwnd = (HWND)( ( static_cast< QWidget * >( this->parent() ) )->winId() );
 }
 
-bool HotkeyWrapper::setGlobalKey( QKeySequence const & seq, int handle )
+bool HotkeyWrapper::setGlobalKey( const QKeySequence & seq, int handle )
 {
   Config::HotKey hk( seq );
   int key                        = hk.key1;
@@ -197,7 +197,7 @@ bool HotkeyWrapper::winEvent( MSG * message, qintptr * result )
 void HotkeyWrapper::unregister()
 {
   for ( int i = 0; i < hotkeys.count(); i++ ) {
-    HotkeyStruct const & hk = hotkeys.at( i );
+    const HotkeyStruct & hk = hotkeys.at( i );
 
     UnregisterHotKey( hwnd, hk.id );
 
@@ -222,7 +222,7 @@ bool QHotkeyApplication::nativeEventFilter( const QByteArray & /*eventType*/, vo
   return false;
 }
 
-QHotkeyApplication::QHotkeyApplication( QString const & id, int & argc, char ** argv ):
+QHotkeyApplication::QHotkeyApplication( const QString & id, int & argc, char ** argv ):
   QtSingleApplication( id, argc, argv )
 {
   installNativeEventFilter( this );

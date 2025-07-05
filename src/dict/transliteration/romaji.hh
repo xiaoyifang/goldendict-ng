@@ -8,5 +8,5 @@
 /// Japanese romanization (Romaji) support.
 namespace RomajiTranslit {
 
-std::vector< sptr< Dictionary::Class > > makeDictionaries( Config::Romaji const & );
+std::vector< sptr< Dictionary::Class > > makeDictionaries( const Config::Romaji & );
 } // namespace RomajiTranslit

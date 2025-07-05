@@ -52,8 +52,8 @@ public:
   // Export/import Favorites
   void getDataInXml( QByteArray & dataStr );
   void getDataInPlainText( QString & dataStr );
-  bool setDataFromXml( QString const & dataStr );
-  bool setDataFromTxt( QString const & dataStr );
+  bool setDataFromXml( const QString & dataStr );
+  bool setDataFromTxt( const QString & dataStr );
 
   void setFocusOnTree()
   {
@@ -65,22 +65,22 @@ public:
 
   // Return true if headwors is already presented in Favorites
   // Fully specified via TreeItem::fullpath
-  bool isWordPresentInActiveFolder( QString const & headword );
+  bool isWordPresentInActiveFolder( const QString & headword );
 
   void saveData();
 
 signals:
-  void favoritesItemRequested( QString const & word, QString const & faforitesFolder );
+  void favoritesItemRequested( const QString & word, const QString & faforitesFolder );
   void activeFavChange();
 
 protected:
   virtual void timerEvent( QTimerEvent * ev );
 
 private slots:
-  void emitFavoritesItemRequested( QModelIndex const & );
+  void emitFavoritesItemRequested( const QModelIndex & );
   void onSelectionChanged( const QItemSelection & selected, const QItemSelection & deselected );
-  void onItemClicked( QModelIndex const & idx );
-  void showCustomMenu( QPoint const & pos );
+  void onItemClicked( const QModelIndex & idx );
+  void showCustomMenu( const QPoint & pos );
   void deleteSelectedItems();
   void folderActivation();
   void copySelectedItems();
@@ -92,8 +92,8 @@ public slots:
 
 private:
   virtual bool eventFilter( QObject *, QEvent * );
-  Config::Class * m_cfg               = nullptr;
-  QTreeView * m_favoritesTree         = nullptr;
+  Config::Class * m_cfg       = nullptr;
+  QTreeView * m_favoritesTree = nullptr;
 
   QMenu * m_favoritesMenu             = nullptr;
   QAction * m_activeFolderForFav      = nullptr;
@@ -219,14 +219,14 @@ public:
   void checkAllNodesForExpand();
 
   // Retrieve text data for indexes
-  QStringList getTextForIndexes( QModelIndexList const & idxList ) const;
+  QStringList getTextForIndexes( const QModelIndexList & idxList ) const;
 
   // Delete items for indexes
-  void removeItemsForIndexes( QModelIndexList const & idxList );
+  void removeItemsForIndexes( const QModelIndexList & idxList );
 
   // Add new folder beside item and return its index
   // or empty index if fail
-  QModelIndex addNewFolder( QModelIndex const & idx );
+  QModelIndex addNewFolder( const QModelIndex & idx );
 
   // Add new headword to given folder
   // return false if it already exists there
@@ -240,9 +240,9 @@ public:
   bool isWordPresentFullPath( const QString & headword );
 
   // Return path in the tree to item
-  QString pathToItem( QModelIndex const & idx );
+  QString pathToItem( const QModelIndex & idx );
 
-  TreeItem::Type itemType( QModelIndex const & idx )
+  TreeItem::Type itemType( const QModelIndex & idx )
   {
     return getItem( idx )->type();
   }
@@ -250,8 +250,8 @@ public:
   // Export/import Favorites
   void getDataInXml( QByteArray & dataStr );
   void getDataInPlainText( QString & dataStr );
-  bool setDataFromXml( QString const & dataStr );
-  bool setDataFromTxt( QString const & dataStr );
+  bool setDataFromXml( const QString & dataStr );
+  bool setDataFromTxt( const QString & dataStr );
 
   void saveData();
 
@@ -279,18 +279,18 @@ protected:
   TreeItem * findFolderByName( TreeItem * parent, const QString & name, TreeItem::Type type );
 
   // Find item in folder
-  QModelIndex findItemInFolder( QString const & itemName, TreeItem::Type itemType, QModelIndex const & parentIdx );
+  QModelIndex findItemInFolder( const QString & itemName, TreeItem::Type itemType, const QModelIndex & parentIdx );
 
 
   // Find folder with given name or create it if folder not exist
-  QModelIndex forceFolder( QString const & name, QModelIndex const & parentIdx );
+  QModelIndex forceFolder( const QString & name, const QModelIndex & parentIdx );
 
   // Add headword to given folder
   // return false if such headwordalready exists
-  bool addHeadword( QString const & word, QModelIndex const & parentIdx );
+  bool addHeadword( const QString & word, const QModelIndex & parentIdx );
 
   // Return tree level for item
-  int level( QModelIndex const & idx );
+  int level( const QModelIndex & idx );
 
 private:
   QString m_favoritesFilename;
@@ -321,13 +321,13 @@ public:
     return mimetype.compare( QString::fromLatin1( FAVORITES_MIME_TYPE ) ) == 0;
   }
 
-  void setIndexesList( QModelIndexList const & list )
+  void setIndexesList( const QModelIndexList & list )
   {
     indexes.clear();
     indexes = list;
   }
 
-  QModelIndexList const & getIndexesList() const
+  const QModelIndexList & getIndexesList() const
   {
     return indexes;
   }
