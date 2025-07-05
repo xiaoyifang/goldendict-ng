@@ -21,19 +21,19 @@ class CharacterConversionDictionary: public Transliteration::BaseTransliteration
 
 public:
 
-  CharacterConversionDictionary( std::string const & id,
-                                 std::string const & name,
+  CharacterConversionDictionary( const std::string & id,
+                                 const std::string & name,
                                  QIcon icon,
-                                 QString const & openccConfig );
+                                 const QString & openccConfig );
   ~CharacterConversionDictionary();
 
-  std::vector< std::u32string > getAlternateWritings( std::u32string const & ) noexcept override;
+  std::vector< std::u32string > getAlternateWritings( const std::u32string & ) noexcept override;
 };
 
-CharacterConversionDictionary::CharacterConversionDictionary( std::string const & id,
-                                                              std::string const & name_,
+CharacterConversionDictionary::CharacterConversionDictionary( const std::string & id,
+                                                              const std::string & name_,
                                                               QIcon icon_,
-                                                              QString const & openccConfig ):
+                                                              const QString & openccConfig ):
   Transliteration::BaseTransliterationDictionary( id, name_, icon_, false ),
   converter( NULL )
 {
@@ -68,7 +68,7 @@ CharacterConversionDictionary::~CharacterConversionDictionary()
   // #endif
 }
 
-std::vector< std::u32string > CharacterConversionDictionary::getAlternateWritings( std::u32string const & str ) noexcept
+std::vector< std::u32string > CharacterConversionDictionary::getAlternateWritings( const std::u32string & str ) noexcept
 {
   std::vector< std::u32string > results;
 
@@ -107,7 +107,7 @@ std::vector< std::u32string > CharacterConversionDictionary::getAlternateWriting
   return results;
 }
 
-std::vector< sptr< Dictionary::Class > > makeDictionaries( Config::Chinese const & cfg )
+std::vector< sptr< Dictionary::Class > > makeDictionaries( const Config::Chinese & cfg )
 
 {
   std::vector< sptr< Dictionary::Class > > result;

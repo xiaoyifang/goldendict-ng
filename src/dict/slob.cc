@@ -86,7 +86,7 @@ struct RefEntry
   QString fragment;
 };
 
-bool indexIsOldOrBad( string const & indexFile )
+bool indexIsOldOrBad( const string & indexFile )
 {
   File::Index idx( indexFile, QIODevice::ReadOnly );
 
@@ -155,12 +155,12 @@ public:
     return compression;
   }
 
-  std::string const & getEncoding() const
+  const std::string & getEncoding() const
   {
     return encoding;
   }
 
-  QString const & getDictionaryName() const
+  const QString & getDictionaryName() const
   {
     return dictionaryName;
   }
@@ -197,7 +197,7 @@ public:
     return content_id < contentTypes.size() ? contentTypes[ content_id ] : QString();
   }
 
-  QMap< QString, QString > const & getTags() const
+  const QMap< QString, QString > & getTags() const
   {
     return tags;
   }
@@ -208,7 +208,7 @@ public:
 
   void getRefEntry( quint32 ref_nom, RefEntry & entry );
 
-  quint8 getItem( RefEntry const & entry, string * data );
+  quint8 getItem( const RefEntry & entry, string * data );
 };
 
 SlobFile::~SlobFile()
@@ -485,7 +485,7 @@ void SlobFile::getRefEntry( quint32 ref_nom, RefEntry & entry )
   throw exCantReadFile( string( error.toUtf8().data() ) );
 }
 
-quint8 SlobFile::getItem( RefEntry const & entry, string * data )
+quint8 SlobFile::getItem( const RefEntry & entry, string * data )
 {
   quint64 pos = itemsOffset + entry.itemIndex * sizeof( quint64 );
   quint64 offset, tmp;
@@ -604,7 +604,7 @@ class SlobDictionary: public BtreeIndexing::BtreeDictionary
 
 public:
 
-  SlobDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles );
+  SlobDictionary( const string & id, const string & indexFile, const vector< string > & dictionaryFiles );
 
   ~SlobDictionary();
 
@@ -628,27 +628,27 @@ public:
     return idxHeader.langTo;
   }
 
-  sptr< Dictionary::DataRequest > getArticle( std::u32string const &,
-                                              vector< std::u32string > const & alts,
-                                              std::u32string const &,
+  sptr< Dictionary::DataRequest > getArticle( const std::u32string &,
+                                              const vector< std::u32string > & alts,
+                                              const std::u32string &,
                                               bool ignoreDiacritics ) override;
 
-  sptr< Dictionary::DataRequest > getResource( string const & name ) override;
+  sptr< Dictionary::DataRequest > getResource( const string & name ) override;
 
-  QString const & getDescription() override;
+  const QString & getDescription() override;
 
   /// Loads the resource.
   void loadResource( std::string & resourceName, string & data );
 
   sptr< Dictionary::DataRequest >
-  getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
+  getSearchResults( const QString & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
   quint64 getArticlePos( uint32_t articleNumber );
 
   void makeFTSIndex( QAtomicInt & isCancelled ) override;
 
-  void setFTSParameters( Config::FullTextSearch const & fts ) override
+  void setFTSParameters( const Config::FullTextSearch & fts ) override
   {
     if ( metadata_enable_fts.has_value() ) {
       can_FTS = fts.enabled && metadata_enable_fts.value();
@@ -675,13 +675,13 @@ private:
 
   quint32 readArticle( quint32 address, string & articleText, RefEntry & entry );
 
-  string convert( string const & in_data, RefEntry const & entry );
+  string convert( const string & in_data, const RefEntry & entry );
 
   friend class SlobArticleRequest;
   friend class SlobResourceRequest;
 };
 
-SlobDictionary::SlobDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles ):
+SlobDictionary::SlobDictionary( const string & id, const string & indexFile, const vector< string > & dictionaryFiles ):
   BtreeDictionary( id, dictionaryFiles ),
   idx( indexFile, QIODevice::ReadOnly ),
   idxHeader( idx.read< IdxHeader >() ),
@@ -729,7 +729,7 @@ void SlobDictionary::loadIcon() noexcept
   dictionaryIconLoaded = true;
 }
 
-QString const & SlobDictionary::getDescription()
+const QString & SlobDictionary::getDescription()
 {
   if ( !dictionaryDescription.isEmpty() ) {
     return dictionaryDescription;
@@ -769,7 +769,7 @@ void SlobDictionary::loadArticle( quint32 address, string & articleText )
   articleText = prefix + articleText + cleaner + "</div>";
 }
 
-string SlobDictionary::convert( const string & in, RefEntry const & entry )
+string SlobDictionary::convert( const string & in, const RefEntry & entry )
 {
   QString text = QString::fromUtf8( in.c_str() );
 
@@ -969,7 +969,7 @@ void SlobDictionary::getArticleText( uint32_t articleAddress, QString & headword
 
 
 sptr< Dictionary::DataRequest >
-SlobDictionary::getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics )
+SlobDictionary::getSearchResults( const QString & searchString, int searchMode, bool matchCase, bool ignoreDiacritics )
 {
   return std::make_shared< FtsHelpers::FTSResultsRequest >( *this,
                                                             searchString,
@@ -995,8 +995,8 @@ class SlobArticleRequest: public Dictionary::DataRequest
 
 public:
 
-  SlobArticleRequest( std::u32string const & word_,
-                      vector< std::u32string > const & alts_,
+  SlobArticleRequest( const std::u32string & word_,
+                      const vector< std::u32string > & alts_,
                       SlobDictionary & dict_,
                       bool ignoreDiacritics_ ):
     word( word_ ),
@@ -1124,9 +1124,9 @@ void SlobArticleRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > SlobDictionary::getArticle( std::u32string const & word,
-                                                            vector< std::u32string > const & alts,
-                                                            std::u32string const &,
+sptr< Dictionary::DataRequest > SlobDictionary::getArticle( const std::u32string & word,
+                                                            const vector< std::u32string > & alts,
+                                                            const std::u32string &,
                                                             bool ignoreDiacritics )
 
 {
@@ -1147,7 +1147,7 @@ class SlobResourceRequest: public Dictionary::DataRequest
 
 public:
 
-  SlobResourceRequest( SlobDictionary & dict_, string const & resourceName_ ):
+  SlobResourceRequest( SlobDictionary & dict_, const string & resourceName_ ):
     dict( dict_ ),
     resourceName( resourceName_ )
   {
@@ -1221,15 +1221,15 @@ void SlobResourceRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > SlobDictionary::getResource( string const & name )
+sptr< Dictionary::DataRequest > SlobDictionary::getResource( const string & name )
 
 {
   return std::make_shared< SlobResourceRequest >( *this, name );
 }
 
 
-vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & fileNames,
-                                                      string const & indicesDir,
+vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & fileNames,
+                                                      const string & indicesDir,
                                                       Dictionary::Initializing & initializing,
                                                       unsigned maxHeadwordsToExpand )
 
@@ -1280,7 +1280,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & f
         set< quint64 > articlesPos;
         quint32 articleCount = 0, wordCount = 0;
 
-        SlobFile::RefOffsetsVector const & offsets = sf.getSortedRefOffsets();
+        const SlobFile::RefOffsetsVector & offsets = sf.getSortedRefOffsets();
 
         for ( quint32 i = 0; i < entries; i++ ) {
           sf.getRefEntryAtOffset( offsets[ i ].first, refEntry );

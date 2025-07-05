@@ -30,7 +30,7 @@ GroupComboBox::GroupComboBox( QWidget * parent ):
   setMaxVisibleItems( 30 );
 }
 
-void GroupComboBox::fill( Instances::Groups const & groups )
+void GroupComboBox::fill( const Instances::Groups & groups )
 {
   unsigned prevId = 0;
 

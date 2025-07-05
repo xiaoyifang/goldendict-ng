@@ -4,7 +4,7 @@
 #include "chineseconversion.hh"
 #include "ui_chineseconversion.h"
 
-ChineseConversion::ChineseConversion( QWidget * parent, Config::Chinese const & cfg ):
+ChineseConversion::ChineseConversion( QWidget * parent, const Config::Chinese & cfg ):
   QGroupBox( parent ),
   ui( new Ui::ChineseConversion )
 {

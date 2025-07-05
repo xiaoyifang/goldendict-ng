@@ -49,5 +49,5 @@ struct BabylonLang
   const char * localizedName;
 };
 BabylonLang getBabylonLangByIndex( int index );
-quint32 findBlgLangIDByEnglishName( std::u32string const & lang );
+quint32 findBlgLangIDByEnglishName( const std::u32string & lang );
 } // namespace Language

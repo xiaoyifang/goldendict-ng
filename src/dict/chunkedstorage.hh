@@ -40,7 +40,7 @@ public:
   uint32_t startNewBlock();
 
   /// Add data to the previously started block.
-  void addToBlock( void const * data, size_t size );
+  void addToBlock( const void * data, size_t size );
 
   /// Finishes writing chunks and returns the offset to the chunk table which
   /// gets written at the moment of finishing.

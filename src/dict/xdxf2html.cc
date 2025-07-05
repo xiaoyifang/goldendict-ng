@@ -19,7 +19,7 @@
 
 namespace Xdxf2Html {
 
-static void fixLink( QDomElement & el, string const & dictId, const char * attrName )
+static void fixLink( QDomElement & el, const string & dictId, const char * attrName )
 {
   QUrl url;
   url.setScheme( "bres" );
@@ -64,9 +64,9 @@ QDomElement fakeElement( QDomDocument & dom )
   return dom.createElement( "b" );
 }
 
-string convert( string const & in,
+string convert( const string & in,
                 DICT_TYPE type,
-                map< string, string > const * pAbrv,
+                const map< string, string > * pAbrv,
                 Dictionary::Class * dictPtr,
                 bool isLogicalFormat,
                 unsigned revisionNumber,
@@ -445,7 +445,7 @@ string convert( string const & in,
           // Replace all spaces with non-breakable ones, since that's how Lingvo shows tooltips
           title.reserve( i->second.size() );
 
-          for ( char const * c = i->second.c_str(); *c; ++c ) {
+          for ( const char * c = i->second.c_str(); *c; ++c ) {
             if ( *c == ' ' || *c == '\t' ) {
               // u00A0 in utf8
               title.push_back( 0xC2 );

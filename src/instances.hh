@@ -27,9 +27,9 @@ struct Group
 
   /// Instantiates the given group from its configuration. If some dictionary
   /// wasn't found, it just skips it.
-  Group( Config::Group const & cfgGroup,
-         std::vector< sptr< Dictionary::Class > > const & allDictionaries,
-         Config::Group const & inactiveGroup );
+  Group( const Config::Group & cfgGroup,
+         const std::vector< sptr< Dictionary::Class > > & allDictionaries,
+         const Config::Group & inactiveGroup );
 
   /// Creates an empty group.
   explicit Group();
@@ -57,23 +57,23 @@ struct Groups: vector< Group >
 /// inactiveDictionaires to its end. Meant to be used with dictionaryOrder
 /// special group.
 void complementDictionaryOrder( Group & dictionaryOrder,
-                                Group const & inactiveDictionaries,
-                                vector< sptr< Dictionary::Class > > const & allDictionaries );
+                                const Group & inactiveDictionaries,
+                                const vector< sptr< Dictionary::Class > > & allDictionaries );
 
 /// For any dictionaries present in the group, updates their names to match
 /// the dictionaries they refer to in their current form, if they exist.
 /// If the dictionary instance can't be located, the name is left untouched.
-void updateNames( Config::Group &, vector< sptr< Dictionary::Class > > const & allDictionaries );
+void updateNames( Config::Group &, const vector< sptr< Dictionary::Class > > & allDictionaries );
 
 /// Does updateNames() for a set of given groups.
-void updateNames( Config::Groups &, vector< sptr< Dictionary::Class > > const & allDictionaries );
+void updateNames( Config::Groups &, const vector< sptr< Dictionary::Class > > & allDictionaries );
 
 /// Does updateNames() for any relevant dictionary groups present in the
 /// configuration.
-void updateNames( Config::Class &, vector< sptr< Dictionary::Class > > const & allDictionaries );
+void updateNames( Config::Class &, const vector< sptr< Dictionary::Class > > & allDictionaries );
 
 /// Creates icon from icon data. Used by Group, but also by others who work
 /// with icon data directly.
-QIcon iconFromData( QByteArray const & );
+QIcon iconFromData( const QByteArray & );
 
 } // namespace Instances

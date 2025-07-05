@@ -10,9 +10,9 @@
 using std::vector;
 
 Groups::Groups( QWidget * parent,
-                vector< sptr< Dictionary::Class > > const & dicts_,
-                Config::Groups const & groups_,
-                Config::Group const & order ):
+                const vector< sptr< Dictionary::Class > > & dicts_,
+                const Config::Groups & groups_,
+                const Config::Group & order ):
   QWidget( parent ),
   dicts( dicts_ ),
   groups( groups_ )
@@ -56,9 +56,9 @@ Groups::Groups( QWidget * parent,
   countChanged();
 }
 
-void Groups::resetData( vector< sptr< Dictionary::Class > > const & dicts_,
-                        Config::Groups const & groups_,
-                        Config::Group const & order )
+void Groups::resetData( const vector< sptr< Dictionary::Class > > & dicts_,
+                        const Config::Groups & groups_,
+                        const Config::Group & order )
 {
   // Populate the dictionaries' list
   ui.dictionaries->setAsSource();
@@ -79,7 +79,7 @@ void Groups::editGroup( unsigned id )
   }
 }
 
-void Groups::updateDictionaryOrder( Config::Group const & order )
+void Groups::updateDictionaryOrder( const Config::Group & order )
 {
   // Make sure it differs from what we have
   Instances::Group newOrder( order, dicts, Config::Group() );
@@ -217,7 +217,7 @@ void Groups::removeFromGroup()
   }
 }
 
-void Groups::showDictInfo( QPoint const & pos )
+void Groups::showDictInfo( const QPoint & pos )
 {
   QVariant data =
     ui.dictionaries->getModel()->data( ui.searchLine->mapToSource( ui.dictionaries->indexAt( pos ) ), Qt::EditRole );
@@ -227,7 +227,7 @@ void Groups::showDictInfo( QPoint const & pos )
   }
 
   if ( !id.isEmpty() ) {
-    vector< sptr< Dictionary::Class > > const & dicts = ui.dictionaries->getCurrentDictionaries();
+    const vector< sptr< Dictionary::Class > > & dicts = ui.dictionaries->getCurrentDictionaries();
     unsigned n;
     for ( n = 0; n < dicts.size(); n++ ) {
       if ( id.compare( QString::fromUtf8( dicts.at( n )->getId().c_str() ) ) == 0 ) {

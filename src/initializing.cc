@@ -20,13 +20,13 @@ Initializing::Initializing( QWidget * parent, bool showSplashWindow ):
   }
 }
 
-void Initializing::indexing( QString const & dictionaryName )
+void Initializing::indexing( const QString & dictionaryName )
 {
   ui.operation->setText( tr( "Indexing..." ) );
   ui.dictionary->setText( dictionaryName );
 }
 
-void Initializing::loading( QString const & dictionaryName )
+void Initializing::loading( const QString & dictionaryName )
 {
   ui.operation->setText( tr( "Loading..." ) );
   ui.dictionary->setText( dictionaryName );

@@ -208,7 +208,7 @@ void FavoritesPaneWidget::folderActivation()
   emit activeFavChange();
 }
 
-void FavoritesPaneWidget::showCustomMenu( QPoint const & pos )
+void FavoritesPaneWidget::showCustomMenu( const QPoint & pos )
 {
   QModelIndexList selectedIdxs = m_favoritesTree->selectionModel()->selectedIndexes();
 
@@ -257,7 +257,7 @@ void FavoritesPaneWidget::onSelectionChanged( const QItemSelection & selection, 
   emitFavoritesItemRequested( selection.indexes().front() );
 }
 
-void FavoritesPaneWidget::onItemClicked( QModelIndex const & idx )
+void FavoritesPaneWidget::onItemClicked( const QModelIndex & idx )
 {
   if ( !itemSelectionChanged && m_favoritesTree->selectionModel()->selectedIndexes().size() == 1 ) {
     emitFavoritesItemRequested( idx );
@@ -265,7 +265,7 @@ void FavoritesPaneWidget::onItemClicked( QModelIndex const & idx )
   itemSelectionChanged = false;
 }
 
-void FavoritesPaneWidget::emitFavoritesItemRequested( QModelIndex const & idx )
+void FavoritesPaneWidget::emitFavoritesItemRequested( const QModelIndex & idx )
 {
   if ( m_favoritesModel->itemType( idx ) != TreeItem::Word ) {
     // Item is not headword
@@ -316,7 +316,7 @@ void FavoritesPaneWidget::clearAllItems()
 }
 
 
-void FavoritesPaneWidget::addWordToActiveFav( QString const & word )
+void FavoritesPaneWidget::addWordToActiveFav( const QString & word )
 {
   m_favoritesModel->addNewWordFullPath( word );
 }
@@ -365,12 +365,12 @@ void FavoritesPaneWidget::getDataInPlainText( QString & dataStr )
   m_favoritesModel->getDataInPlainText( dataStr );
 }
 
-bool FavoritesPaneWidget::setDataFromXml( QString const & dataStr )
+bool FavoritesPaneWidget::setDataFromXml( const QString & dataStr )
 {
   return m_favoritesModel->setDataFromXml( dataStr );
 }
 
-bool FavoritesPaneWidget::setDataFromTxt( QString const & dataStr )
+bool FavoritesPaneWidget::setDataFromTxt( const QString & dataStr )
 {
   return m_favoritesModel->setDataFromTxt( dataStr );
 }
@@ -687,7 +687,7 @@ bool FavoritesModel::setData( const QModelIndex & index, const QVariant & value,
   return true;
 }
 
-QVariant FavoritesModel::data( QModelIndex const & index, int role ) const
+QVariant FavoritesModel::data( const QModelIndex & index, int role ) const
 {
   if ( !index.isValid() ) {
     return QVariant();
@@ -818,7 +818,7 @@ void FavoritesModel::addFolder( TreeItem * parent, QDomNode & node )
     QDomElement el = nodes.at( i ).toElement();
     if ( el.nodeName() == "folder" ) {
       // New subfolder
-      QString name    = el.attribute( "name", "" );
+      QString name            = el.attribute( "name", "" );
       TreeItem * existingItem = findFolderByName( parent, name, TreeItem::Folder );
       TreeItem * item         = existingItem != nullptr ? existingItem : new TreeItem( name, parent, TreeItem::Folder );
       if ( existingItem == nullptr ) {
@@ -828,7 +828,7 @@ void FavoritesModel::addFolder( TreeItem * parent, QDomNode & node )
       addFolder( item, el );
     }
     else {
-      QString word = el.text();
+      QString word            = el.text();
       TreeItem * existingItem = findFolderByName( parent, word, TreeItem::Word );
       if ( existingItem != nullptr ) {
         continue;
@@ -913,9 +913,9 @@ bool FavoritesModel::dropMimeData(
 {
   if ( action == Qt::MoveAction || action == Qt::CopyAction ) {
     if ( data->hasFormat( FAVORITES_MIME_TYPE ) ) {
-      FavoritesMimeData const * mimeData = qobject_cast< FavoritesMimeData const * >( data );
+      const FavoritesMimeData * mimeData = qobject_cast< const FavoritesMimeData * >( data );
       if ( mimeData ) {
-        QModelIndexList const & list = mimeData->getIndexesList();
+        const QModelIndexList & list = mimeData->getIndexesList();
 
         if ( list.isEmpty() ) {
           return false;
@@ -1030,8 +1030,8 @@ QModelIndex FavoritesModel::getModelIndexByFullPath( const QStringList & fullPat
       return {}; // early return as no match found and no need to loop further
     }
     else {
-      qsizetype rowIndex           = std::distance( childItems.begin(), folder_found );
-      targetIndex                  = createIndex( rowIndex, 0, *folder_found );
+      qsizetype rowIndex = std::distance( childItems.begin(), folder_found );
+      targetIndex        = createIndex( rowIndex, 0, *folder_found );
     }
   }
   return targetIndex; // return the last matched item;
@@ -1166,7 +1166,7 @@ bool FavoritesModel::isWordPresentFullPath( const QString & headword )
 };
 
 
-QModelIndex FavoritesModel::forceFolder( QString const & name, const QModelIndex & parentIdx )
+QModelIndex FavoritesModel::forceFolder( const QString & name, const QModelIndex & parentIdx )
 {
   QModelIndex idx = findItemInFolder( name, TreeItem::Folder, parentIdx );
   if ( idx.isValid() ) {
@@ -1208,7 +1208,7 @@ bool FavoritesModel::addHeadword( const QString & word, const QModelIndex & pare
   return true;
 }
 
-int FavoritesModel::level( QModelIndex const & idx )
+int FavoritesModel::level( const QModelIndex & idx )
 {
   int n                 = 0;
   QModelIndex parentIdx = parent( idx );
@@ -1219,7 +1219,7 @@ int FavoritesModel::level( QModelIndex const & idx )
   return n;
 }
 
-QString FavoritesModel::pathToItem( QModelIndex const & idx )
+QString FavoritesModel::pathToItem( const QModelIndex & idx )
 {
   QString path;
   QModelIndex parentIdx = parent( idx );
@@ -1254,7 +1254,7 @@ void FavoritesModel::getDataInPlainText( QString & dataStr )
   dataStr = getTextForIndexes( list ).join( QString::fromLatin1( "\n" ) );
 }
 
-bool FavoritesModel::setDataFromXml( QString const & dataStr )
+bool FavoritesModel::setDataFromXml( const QString & dataStr )
 {
   QString errorStr;
   int errorLine, errorColumn;
@@ -1283,7 +1283,7 @@ bool FavoritesModel::setDataFromXml( QString const & dataStr )
   return true;
 }
 
-bool FavoritesModel::setDataFromTxt( QString const & dataStr )
+bool FavoritesModel::setDataFromTxt( const QString & dataStr )
 {
   auto words = dataStr.split( '\n', Qt::SkipEmptyParts );
 
@@ -1293,7 +1293,7 @@ bool FavoritesModel::setDataFromTxt( QString const & dataStr )
     rootItem = new TreeItem( QVariant(), 0, TreeItem::Root );
   }
 
-  for ( auto const & word : std::as_const( words ) ) {
+  for ( const auto & word : std::as_const( words ) ) {
     rootItem->appendChild( new TreeItem( word, rootItem, TreeItem::Word ) );
   }
   endResetModel();

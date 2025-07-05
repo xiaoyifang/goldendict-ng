@@ -190,7 +190,7 @@ void HotkeyWrapper::handleRecordEvent( XRecordInterceptData * data )
   XRecordFreeData( data );
 }
 
-bool HotkeyWrapper::setGlobalKey( QKeySequence const & seq, int handle )
+bool HotkeyWrapper::setGlobalKey( const QKeySequence & seq, int handle )
 {
   Config::HotKey hk( seq );
   int key                        = hk.key1;

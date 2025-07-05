@@ -21,7 +21,7 @@ ExternalAudioPlayer::~ExternalAudioPlayer()
   stopAndDestroySynchronously( exitingViewer );
 }
 
-void ExternalAudioPlayer::setPlayerCommandLine( QString const & playerCommandLine_ )
+void ExternalAudioPlayer::setPlayerCommandLine( const QString & playerCommandLine_ )
 {
   playerCommandLine = playerCommandLine_;
 }

@@ -105,7 +105,7 @@ static_assert( alignof( IdxHeader ) == 1 );
 
 ;
 
-bool indexIsOldOrBad( string const & indexFile )
+bool indexIsOldOrBad( const string & indexFile )
 {
   File::Index idx( indexFile, QIODevice::ReadOnly );
 
@@ -129,7 +129,7 @@ class StardictDictionary: public BtreeIndexing::BtreeDictionary
 
 public:
 
-  StardictDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles );
+  StardictDictionary( const string & id, const string & indexFile, const vector< string > & dictionaryFiles );
 
   ~StardictDictionary();
 
@@ -153,26 +153,26 @@ public:
     return idxHeader.langTo;
   }
 
-  sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( std::u32string const & ) override;
+  sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( const std::u32string & ) override;
 
-  sptr< Dictionary::DataRequest > getArticle( std::u32string const &,
-                                              vector< std::u32string > const & alts,
-                                              std::u32string const &,
+  sptr< Dictionary::DataRequest > getArticle( const std::u32string &,
+                                              const vector< std::u32string > & alts,
+                                              const std::u32string &,
                                               bool ignoreDiacritics ) override;
 
-  sptr< Dictionary::DataRequest > getResource( string const & name ) override;
+  sptr< Dictionary::DataRequest > getResource( const string & name ) override;
 
-  QString const & getDescription() override;
+  const QString & getDescription() override;
 
   QString getMainFilename() override;
 
   sptr< Dictionary::DataRequest >
-  getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
+  getSearchResults( const QString & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
   void makeFTSIndex( QAtomicInt & isCancelled ) override;
 
-  void setFTSParameters( Config::FullTextSearch const & fts ) override
+  void setFTSParameters( const Config::FullTextSearch & fts ) override
   {
     if ( metadata_enable_fts.has_value() ) {
       can_FTS = fts.enabled && metadata_enable_fts.value();
@@ -198,7 +198,7 @@ private:
 
   string loadString( size_t size );
 
-  string handleResource( char type, char const * resource, size_t size );
+  string handleResource( char type, const char * resource, size_t size );
 
   void pangoToHtml( QString & text );
 
@@ -207,9 +207,9 @@ private:
   friend class StardictHeadwordsRequest;
 };
 
-StardictDictionary::StardictDictionary( string const & id,
-                                        string const & indexFile,
-                                        vector< string > const & dictionaryFiles ):
+StardictDictionary::StardictDictionary( const string & id,
+                                        const string & indexFile,
+                                        const vector< string > & dictionaryFiles ):
   BtreeDictionary( id, dictionaryFiles ),
   idx( indexFile, QIODevice::ReadOnly )
 {
@@ -424,7 +424,7 @@ private:
 
 /// This function tries to make an html of the Stardict's resource typed
 /// 'type', contained in a block pointed to by 'resource', 'size' bytes long.
-string StardictDictionary::handleResource( char type, char const * resource, size_t size )
+string StardictDictionary::handleResource( char type, const char * resource, size_t size )
 {
   QString text;
 
@@ -1073,7 +1073,7 @@ void StardictDictionary::loadArticle( uint32_t address, string & headword, strin
   free( articleBody );
 }
 
-QString const & StardictDictionary::getDescription()
+const QString & StardictDictionary::getDescription()
 {
   if ( !dictionaryDescription.isEmpty() ) {
     return dictionaryDescription;
@@ -1166,7 +1166,7 @@ void StardictDictionary::getArticleText( uint32_t articleAddress, QString & head
   }
 }
 
-sptr< Dictionary::DataRequest > StardictDictionary::getSearchResults( QString const & searchString,
+sptr< Dictionary::DataRequest > StardictDictionary::getSearchResults( const QString & searchString,
                                                                       int searchMode,
                                                                       bool matchCase,
                                                                       bool ignoreDiacritics )
@@ -1191,7 +1191,7 @@ class StardictHeadwordsRequest: public Dictionary::WordSearchRequest
 
 public:
 
-  StardictHeadwordsRequest( std::u32string const & word_, StardictDictionary & dict_ ):
+  StardictHeadwordsRequest( const std::u32string & word_, StardictDictionary & dict_ ):
     word( word_ ),
     dict( dict_ )
   {
@@ -1256,7 +1256,7 @@ void StardictHeadwordsRequest::run()
   finish();
 }
 
-sptr< Dictionary::WordSearchRequest > StardictDictionary::findHeadwordsForSynonym( std::u32string const & word )
+sptr< Dictionary::WordSearchRequest > StardictDictionary::findHeadwordsForSynonym( const std::u32string & word )
 {
   return synonymSearchEnabled ? std::make_shared< StardictHeadwordsRequest >( word, *this ) :
                                 Class::findHeadwordsForSynonym( word );
@@ -1280,8 +1280,8 @@ class StardictArticleRequest: public Dictionary::DataRequest
 
 public:
 
-  StardictArticleRequest( std::u32string const & word_,
-                          vector< std::u32string > const & alts_,
+  StardictArticleRequest( const std::u32string & word_,
+                          const vector< std::u32string > & alts_,
                           StardictDictionary & dict_,
                           bool ignoreDiacritics_ ):
     word( word_ ),
@@ -1428,9 +1428,9 @@ void StardictArticleRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > StardictDictionary::getArticle( std::u32string const & word,
-                                                                vector< std::u32string > const & alts,
-                                                                std::u32string const &,
+sptr< Dictionary::DataRequest > StardictDictionary::getArticle( const std::u32string & word,
+                                                                const vector< std::u32string > & alts,
+                                                                const std::u32string &,
                                                                 bool ignoreDiacritics )
 
 {
@@ -1438,7 +1438,7 @@ sptr< Dictionary::DataRequest > StardictDictionary::getArticle( std::u32string c
 }
 
 
-static char const * beginsWith( char const * substr, char const * str )
+static const char * beginsWith( const char * substr, const char * str )
 {
   size_t len = strlen( substr );
 
@@ -1467,51 +1467,51 @@ Ifo::Ifo( const QString & fileName )
         continue;
       }
 
-      if ( char const * val = beginsWith( "bookname=", option.data() ) ) {
+      if ( const char * val = beginsWith( "bookname=", option.data() ) ) {
         bookname = val;
       }
-      else if ( char const * val = beginsWith( "wordcount=", option.data() ) ) {
+      else if ( const char * val = beginsWith( "wordcount=", option.data() ) ) {
         if ( sscanf( val, "%u", &wordcount ) != 1 ) {
           throw exBadFieldInIfo( option.data() );
         }
       }
-      else if ( char const * val = beginsWith( "synwordcount=", option.data() ) ) {
+      else if ( const char * val = beginsWith( "synwordcount=", option.data() ) ) {
         if ( sscanf( val, "%u", &synwordcount ) != 1 ) {
           throw exBadFieldInIfo( option.data() );
         }
       }
-      else if ( char const * val = beginsWith( "idxfilesize=", option.data() ) ) {
+      else if ( const char * val = beginsWith( "idxfilesize=", option.data() ) ) {
         if ( sscanf( val, "%u", &idxfilesize ) != 1 ) {
           throw exBadFieldInIfo( option.data() );
         }
       }
-      else if ( char const * val = beginsWith( "idxoffsetbits=", option.data() ) ) {
+      else if ( const char * val = beginsWith( "idxoffsetbits=", option.data() ) ) {
         if ( sscanf( val, "%u", &idxoffsetbits ) != 1 || ( idxoffsetbits != 32 && idxoffsetbits != 64 ) ) {
           throw exBadFieldInIfo( option.data() );
         }
       }
-      else if ( char const * val = beginsWith( "sametypesequence=", option.data() ) ) {
+      else if ( const char * val = beginsWith( "sametypesequence=", option.data() ) ) {
         sametypesequence = val;
       }
-      else if ( char const * val = beginsWith( "dicttype=", option.data() ) ) {
+      else if ( const char * val = beginsWith( "dicttype=", option.data() ) ) {
         dicttype = val;
       }
-      else if ( char const * val = beginsWith( "description=", option.data() ) ) {
+      else if ( const char * val = beginsWith( "description=", option.data() ) ) {
         description = val;
       }
-      else if ( char const * val = beginsWith( "copyright=", option.data() ) ) {
+      else if ( const char * val = beginsWith( "copyright=", option.data() ) ) {
         copyright = val;
       }
-      else if ( char const * val = beginsWith( "author=", option.data() ) ) {
+      else if ( const char * val = beginsWith( "author=", option.data() ) ) {
         author = val;
       }
-      else if ( char const * val = beginsWith( "email=", option.data() ) ) {
+      else if ( const char * val = beginsWith( "email=", option.data() ) ) {
         email = val;
       }
-      else if ( char const * val = beginsWith( "website=", option.data() ) ) {
+      else if ( const char * val = beginsWith( "website=", option.data() ) ) {
         website = val;
       }
-      else if ( char const * val = beginsWith( "date=", option.data() ) ) {
+      else if ( const char * val = beginsWith( "date=", option.data() ) ) {
         date = val;
       }
     }
@@ -1533,7 +1533,7 @@ class StardictResourceRequest: public Dictionary::DataRequest
 
 public:
 
-  StardictResourceRequest( StardictDictionary & dict_, string const & resourceName_ ):
+  StardictResourceRequest( StardictDictionary & dict_, const string & resourceName_ ):
     dict( dict_ ),
     resourceName( resourceName_ )
   {
@@ -1657,7 +1657,7 @@ void StardictResourceRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > StardictDictionary::getResource( string const & name )
+sptr< Dictionary::DataRequest > StardictDictionary::getResource( const string & name )
 
 {
   return std::make_shared< StardictResourceRequest >( *this, name );
@@ -1665,7 +1665,7 @@ sptr< Dictionary::DataRequest > StardictDictionary::getResource( string const & 
 
 } // anonymous namespace
 
-static void findCorrespondingFiles( string const & ifo, string & idx, string & dict, string & syn )
+static void findCorrespondingFiles( const string & ifo, string & idx, string & dict, string & syn )
 {
   string base( ifo, 0, ifo.size() - 3 );
 
@@ -1688,7 +1688,7 @@ static void findCorrespondingFiles( string const & ifo, string & idx, string & d
   }
 }
 
-static void handleIdxSynFile( string const & fileName,
+static void handleIdxSynFile( const string & fileName,
                               IndexedWords & indexedWords,
                               ChunkedStorage::Writer & chunks,
                               vector< uint32_t > * articleOffsets,
@@ -1727,7 +1727,7 @@ static void handleIdxSynFile( string const & fileName,
 
   // Now parse it
 
-  for ( char const * ptr = &image.front(); ptr != &image.back(); ) {
+  for ( const char * ptr = &image.front(); ptr != &image.back(); ) {
     size_t wordLen = strlen( ptr );
 
     if ( ptr + wordLen + 1 + ( isSynFile ? sizeof( uint32_t ) : sizeof( uint32_t ) * 2 ) > &image.back() ) {
@@ -1735,7 +1735,7 @@ static void handleIdxSynFile( string const & fileName,
       break;
     }
 
-    char const * word = ptr;
+    const char * word = ptr;
 
     ptr += wordLen + 1;
 
@@ -1825,8 +1825,8 @@ static void handleIdxSynFile( string const & fileName,
 }
 
 
-vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & fileNames,
-                                                      string const & indicesDir,
+vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & fileNames,
+                                                      const string & indicesDir,
                                                       Dictionary::Initializing & initializing,
                                                       unsigned maxHeadwordsToExpand )
 

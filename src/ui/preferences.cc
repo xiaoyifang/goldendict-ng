@@ -17,7 +17,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   cfg( cfg_ ),
   helpAction( this )
 {
-  Config::Preferences const & p = cfg_.preferences;
+  const Config::Preferences & p = cfg_.preferences;
   ui.setupUi( this );
 
   connect( ui.enableScanPopupModifiers,
@@ -452,8 +452,8 @@ Config::Preferences Preferences::getPreferences()
 
   p.interfaceLanguage = ui.interfaceLanguage->itemData( ui.interfaceLanguage->currentIndex() ).toString();
 
-  p.interfaceFont = ui.systemFont->currentText();
-  p.interfaceFontSize = ui.interfaceFontSize->value();
+  p.interfaceFont       = ui.systemFont->currentText();
+  p.interfaceFontSize   = ui.interfaceFontSize->value();
   p.enableInterfaceFont = ui.enableInterfaceFont->isChecked();
 
   Config::CustomFonts c;

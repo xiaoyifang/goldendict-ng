@@ -8,8 +8,8 @@
 namespace Transliteration {
 
 
-BaseTransliterationDictionary::BaseTransliterationDictionary( string const & id,
-                                                              string const & name_,
+BaseTransliterationDictionary::BaseTransliterationDictionary( const string & id,
+                                                              const string & name_,
                                                               QIcon icon_,
                                                               bool caseSensitive_ ):
   Dictionary::Class( id, vector< string >() ),
@@ -35,15 +35,15 @@ unsigned long BaseTransliterationDictionary::getWordCount() noexcept
   return 0;
 }
 
-sptr< Dictionary::WordSearchRequest > BaseTransliterationDictionary::prefixMatch( std::u32string const &,
+sptr< Dictionary::WordSearchRequest > BaseTransliterationDictionary::prefixMatch( const std::u32string &,
                                                                                   unsigned long )
 {
   return std::make_shared< Dictionary::WordSearchRequestInstant >();
 }
 
-sptr< Dictionary::DataRequest > BaseTransliterationDictionary::getArticle( std::u32string const &,
-                                                                           vector< std::u32string > const &,
-                                                                           std::u32string const &,
+sptr< Dictionary::DataRequest > BaseTransliterationDictionary::getArticle( const std::u32string &,
+                                                                           const vector< std::u32string > &,
+                                                                           const std::u32string &,
                                                                            bool )
 
 {
@@ -51,7 +51,7 @@ sptr< Dictionary::DataRequest > BaseTransliterationDictionary::getArticle( std::
 }
 
 sptr< Dictionary::WordSearchRequest >
-BaseTransliterationDictionary::findHeadwordsForSynonym( std::u32string const & str )
+BaseTransliterationDictionary::findHeadwordsForSynonym( const std::u32string & str )
 
 {
   sptr< Dictionary::WordSearchRequestInstant > result = std::make_shared< Dictionary::WordSearchRequestInstant >();
@@ -66,32 +66,32 @@ BaseTransliterationDictionary::findHeadwordsForSynonym( std::u32string const & s
 }
 
 
-void Table::ins( char const * from, char const * to )
+void Table::ins( const char * from, const char * to )
 {
   std::u32string fr = Text::toUtf32( std::string( from ) );
 
   insert( std::pair< std::u32string, std::u32string >( fr, Text::toUtf32( std::string( to ) ) ) );
 }
 
-void Table::ins( std::string const & from, std::string const & to )
+void Table::ins( const std::string & from, const std::string & to )
 {
   insert( std::pair< std::u32string, std::u32string >( Text::toUtf32( from ), Text::toUtf32( to ) ) );
 }
 
 
 TransliterationDictionary::TransliterationDictionary(
-  string const & id, string const & name_, QIcon icon_, Table const & table_, bool caseSensitive_ ):
+  const string & id, const string & name_, QIcon icon_, const Table & table_, bool caseSensitive_ ):
   BaseTransliterationDictionary( id, name_, icon_, caseSensitive_ ),
   table( table_ )
 {
 }
 
-vector< std::u32string > TransliterationDictionary::getAlternateWritings( std::u32string const & str ) noexcept
+vector< std::u32string > TransliterationDictionary::getAlternateWritings( const std::u32string & str ) noexcept
 {
   vector< std::u32string > results;
 
   std::u32string result, folded;
-  std::u32string const * target;
+  const std::u32string * target;
 
   if ( caseSensitive ) {
     // Don't do any transform -- the transliteration is case-sensitive
@@ -102,7 +102,7 @@ vector< std::u32string > TransliterationDictionary::getAlternateWritings( std::u
     target = &folded;
   }
 
-  char32_t const * ptr = target->c_str();
+  const char32_t * ptr = target->c_str();
   size_t left          = target->size();
 
   Table::const_iterator i;

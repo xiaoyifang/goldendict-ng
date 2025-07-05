@@ -39,7 +39,7 @@ string findCodeForDslId( int id )
   return lang_codes[ id ];
 }
 
-bool isAtSignFirst( std::u32string const & str )
+bool isAtSignFirst( const std::u32string & str )
 {
   // Test if '@' is first in string except spaces and dsl tags
   QRegularExpression reg( R"([ \t]*(?:\[[^\]]+\][ \t]*)*@)", QRegularExpression::PatternOption::CaseInsensitiveOption );
@@ -68,17 +68,17 @@ std::u32string ArticleDom::Node::renderAsText( bool stripTrsTag ) const
 namespace {
 
 /// @return true if @p tagName equals "mN" where N is a digit
-bool is_mN( std::u32string const & tagName )
+bool is_mN( const std::u32string & tagName )
 {
   return tagName.size() == 2 && tagName[ 0 ] == U'm' && iswdigit( tagName[ 1 ] );
 }
 
-bool isAnyM( std::u32string const & tagName )
+bool isAnyM( const std::u32string & tagName )
 {
   return tagName == U"m" || is_mN( tagName );
 }
 
-bool checkM( std::u32string const & dest, std::u32string const & src )
+bool checkM( const std::u32string & dest, const std::u32string & src )
 {
   return src == U"m" && is_mN( dest );
 }
@@ -87,7 +87,7 @@ bool checkM( std::u32string const & dest, std::u32string const & src )
 /// Any paragraph from this tag until the end of card or until system meets an «[/m]» (margin shift toggle off) tag
 struct MustTagBeClosed
 {
-  bool operator()( ArticleDom::Node const * tag ) const
+  bool operator()( const ArticleDom::Node * tag ) const
   {
     Q_ASSERT( tag->isTag );
     return !isAnyM( tag->tagName );
@@ -96,7 +96,7 @@ struct MustTagBeClosed
 
 } // unnamed namespace
 
-ArticleDom::ArticleDom( std::u32string const & str, string const & dictName, std::u32string const & headword_ ):
+ArticleDom::ArticleDom( const std::u32string & str, const string & dictName, const std::u32string & headword_ ):
   root( Node::Tag(), std::u32string(), std::u32string() ),
   stringPos( str.c_str() ),
   lineStartPos( str.c_str() ),
@@ -671,9 +671,9 @@ ArticleDom::ArticleDom( std::u32string const & str, string const & dictName, std
     if ( it == stack.end() ) {
       return; // no unclosed tags that must be closed => nothing to warn about
     }
-    QByteArray const firstTagName = QString::fromStdU32String( ( *it )->tagName ).toUtf8();
+    const QByteArray firstTagName = QString::fromStdU32String( ( *it )->tagName ).toUtf8();
     ++it;
-    unsigned const unclosedTagCount = 1 + std::count_if( it, stack.end(), MustTagBeClosed() );
+    const unsigned unclosedTagCount = 1 + std::count_if( it, stack.end(), MustTagBeClosed() );
 
     if ( dictName.empty() ) {
       qWarning( "Warning: %u tag(s) were unclosed, first tag name \"%s\".",
@@ -690,7 +690,7 @@ ArticleDom::ArticleDom( std::u32string const & str, string const & dictName, std
   }
 }
 
-void ArticleDom::openTag( std::u32string const & name, std::u32string const & attrs, list< Node * > & stack )
+void ArticleDom::openTag( const std::u32string & name, const std::u32string & attrs, list< Node * > & stack )
 {
   list< Node > nodesToReopen;
 
@@ -745,7 +745,7 @@ void ArticleDom::openTag( std::u32string const & name, std::u32string const & at
   }
 }
 
-void ArticleDom::closeTag( std::u32string const & name, list< Node * > & stack, bool warn )
+void ArticleDom::closeTag( const std::u32string & name, list< Node * > & stack, bool warn )
 {
   // Find the tag which is to be closed
 
@@ -843,7 +843,7 @@ bool ArticleDom::atSignFirstInLine()
 
 /////////////// DslScanner
 
-DslScanner::DslScanner( string const & fileName ):
+DslScanner::DslScanner( const string & fileName ):
   encoding( Text::Encoding::Utf8 ),
   readBufferPtr( readBuffer ),
   readBufferLeft( 0 ),
@@ -1266,7 +1266,7 @@ void stripComments( std::u32string & str, bool & nextLine )
   }
 }
 
-void expandTildes( std::u32string & str, std::u32string const & tildeReplacement )
+void expandTildes( std::u32string & str, const std::u32string & tildeReplacement )
 {
   std::u32string tildeValue = Folding::trimWhitespace( tildeReplacement );
   for ( size_t x = 0; x < str.size(); ) {
@@ -1328,7 +1328,7 @@ void normalizeHeadword( std::u32string & str )
 }
 
 namespace {
-void cutEnding( std::u32string & where, std::u32string const & ending )
+void cutEnding( std::u32string & where, const std::u32string & ending )
 {
   if ( where.size() > ending.size() && where.compare( where.size() - ending.size(), ending.size(), ending ) == 0 ) {
     where.erase( where.size() - ending.size() );
@@ -1336,7 +1336,7 @@ void cutEnding( std::u32string & where, std::u32string const & ending )
 }
 } // namespace
 
-quint32 dslLanguageToId( std::u32string const & name )
+quint32 dslLanguageToId( const std::u32string & name )
 {
   static std::u32string newSp( U"newspelling" );
   static std::u32string st( U"standard" );

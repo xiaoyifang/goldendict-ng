@@ -11,7 +11,7 @@
 using namespace BtreeIndexing;
 using std::vector;
 
-bool IndexedZip::openZipFile( QString const & name )
+bool IndexedZip::openZipFile( const QString & name )
 {
   zip.setFileName( name );
 
@@ -20,7 +20,7 @@ bool IndexedZip::openZipFile( QString const & name )
   return zipIsOpen;
 }
 
-bool IndexedZip::hasFile( std::u32string const & name )
+bool IndexedZip::hasFile( const std::u32string & name )
 {
   if ( !zipIsOpen ) {
     return false;
@@ -31,7 +31,7 @@ bool IndexedZip::hasFile( std::u32string const & name )
   return !links.empty();
 }
 
-bool IndexedZip::loadFile( std::u32string const & name, vector< char > & data )
+bool IndexedZip::loadFile( const std::u32string & name, vector< char > & data )
 {
   if ( !zipIsOpen ) {
     return false;

@@ -27,10 +27,10 @@ class WebSiteDictionary: public Dictionary::Class
 
 public:
 
-  WebSiteDictionary( string const & id,
-                     string const & name_,
-                     QString const & urlTemplate_,
-                     QString const & iconFilename_,
+  WebSiteDictionary( const string & id,
+                     const string & name_,
+                     const QString & urlTemplate_,
+                     const QString & iconFilename_,
                      bool inside_iframe_,
                      QNetworkAccessManager & netMgr_ ):
     Dictionary::Class( id, vector< string >() ),
@@ -54,14 +54,14 @@ public:
     return 0;
   }
 
-  sptr< WordSearchRequest > prefixMatch( std::u32string const & word, unsigned long ) override;
+  sptr< WordSearchRequest > prefixMatch( const std::u32string & word, unsigned long ) override;
 
-  sptr< DataRequest > getArticle( std::u32string const &,
-                                  vector< std::u32string > const & alts,
-                                  std::u32string const & context,
+  sptr< DataRequest > getArticle( const std::u32string &,
+                                  const vector< std::u32string > & alts,
+                                  const std::u32string & context,
                                   bool ) override;
 
-  sptr< Dictionary::DataRequest > getResource( string const & name ) override;
+  sptr< Dictionary::DataRequest > getResource( const string & name ) override;
 
   void isolateWebCSS( QString & css );
 
@@ -84,7 +84,7 @@ protected slots:
   virtual void requestFinished( QNetworkReply * ) {}
 };
 
-sptr< WordSearchRequest > WebSiteDictionary::prefixMatch( std::u32string const & /*word*/, unsigned long )
+sptr< WordSearchRequest > WebSiteDictionary::prefixMatch( const std::u32string & /*word*/, unsigned long )
 {
   sptr< WordSearchRequestInstant > sr = std::make_shared< WordSearchRequestInstant >();
 
@@ -107,7 +107,7 @@ class WebSiteArticleRequest: public WebSiteDataRequestSlots
 
 public:
 
-  WebSiteArticleRequest( QString const & url, QNetworkAccessManager & _mgr, Class * dictPtr_ );
+  WebSiteArticleRequest( const QString & url, QNetworkAccessManager & _mgr, Class * dictPtr_ );
   ~WebSiteArticleRequest() {}
 
   void cancel() override;
@@ -122,7 +122,7 @@ void WebSiteArticleRequest::cancel()
   finish();
 }
 
-WebSiteArticleRequest::WebSiteArticleRequest( QString const & url_, QNetworkAccessManager & _mgr, Class * dictPtr_ ):
+WebSiteArticleRequest::WebSiteArticleRequest( const QString & url_, QNetworkAccessManager & _mgr, Class * dictPtr_ ):
   url( url_ ),
   dictPtr( dictPtr_ ),
   mgr( _mgr )
@@ -296,9 +296,9 @@ void WebSiteArticleRequest::requestFinished( QNetworkReply * r )
   finish();
 }
 
-sptr< DataRequest > WebSiteDictionary::getArticle( std::u32string const & str,
-                                                   vector< std::u32string > const & /*alts*/,
-                                                   std::u32string const & context,
+sptr< DataRequest > WebSiteDictionary::getArticle( const std::u32string & str,
+                                                   const vector< std::u32string > & /*alts*/,
+                                                   const std::u32string & context,
                                                    bool /*ignoreDiacritics*/ )
 {
   QString urlString = Utils::WebSite::urlReplaceWord( QString( urlTemplate ), QString::fromStdU32String( str ) );
@@ -342,7 +342,7 @@ class WebSiteResourceRequest: public WebSiteDataRequestSlots
 
 public:
 
-  WebSiteResourceRequest( QString const & url_, QNetworkAccessManager & _mgr, WebSiteDictionary * dictPtr_ );
+  WebSiteResourceRequest( const QString & url_, QNetworkAccessManager & _mgr, WebSiteDictionary * dictPtr_ );
   ~WebSiteResourceRequest() {}
 
   void cancel() override;
@@ -352,7 +352,7 @@ private:
   void requestFinished( QNetworkReply * ) override;
 };
 
-WebSiteResourceRequest::WebSiteResourceRequest( QString const & url_,
+WebSiteResourceRequest::WebSiteResourceRequest( const QString & url_,
                                                 QNetworkAccessManager & _mgr,
                                                 WebSiteDictionary * dictPtr_ ):
   url( url_ ),
@@ -426,7 +426,7 @@ void WebSiteResourceRequest::requestFinished( QNetworkReply * r )
   finish();
 }
 
-sptr< Dictionary::DataRequest > WebSiteDictionary::getResource( string const & name )
+sptr< Dictionary::DataRequest > WebSiteDictionary::getResource( const string & name )
 {
   QString link = QString::fromUtf8( name.c_str() );
   int pos      = link.indexOf( '/' );
@@ -457,7 +457,7 @@ void WebSiteDictionary::loadIcon() noexcept
 
 } // namespace
 
-vector< sptr< Dictionary::Class > > makeDictionaries( Config::WebSites const & ws, QNetworkAccessManager & mgr )
+vector< sptr< Dictionary::Class > > makeDictionaries( const Config::WebSites & ws, QNetworkAccessManager & mgr )
 
 {
   vector< sptr< Dictionary::Class > > result;

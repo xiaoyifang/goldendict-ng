@@ -25,7 +25,7 @@ class LinguaArticleRequest: public Dictionary::DataRequest
     string word;
     bool finished;
 
-    NetReply( sptr< QNetworkReply > const & reply_, string const & word_ ):
+    NetReply( const sptr< QNetworkReply > & reply_, const string & word_ ):
       reply( reply_ ),
       word( word_ ),
       finished( false )
@@ -40,18 +40,18 @@ class LinguaArticleRequest: public Dictionary::DataRequest
 
 public:
 
-  LinguaArticleRequest( std::u32string const & word,
-                        vector< std::u32string > const & alts,
-                        QString const & languageCode_,
-                        QString const & langWikipediaID_,
-                        string const & dictionaryId_,
+  LinguaArticleRequest( const std::u32string & word,
+                        const vector< std::u32string > & alts,
+                        const QString & languageCode_,
+                        const QString & langWikipediaID_,
+                        const string & dictionaryId_,
                         QNetworkAccessManager & mgr );
 
   void cancel() override;
 
 private:
 
-  void addQuery( QNetworkAccessManager & mgr, std::u32string const & word );
+  void addQuery( QNetworkAccessManager & mgr, const std::u32string & word );
 
 private slots:
   virtual void requestFinished( QNetworkReply * );
@@ -65,7 +65,7 @@ class LinguaDictionary: public Dictionary::Class
   QNetworkAccessManager & netMgr;
 
 public:
-  LinguaDictionary( string const & id, string name_, QString languageCode_, QNetworkAccessManager & netMgr_ ):
+  LinguaDictionary( const string & id, string name_, QString languageCode_, QNetworkAccessManager & netMgr_ ):
     Dictionary::Class( id, vector< string >() ),
     languageCode( std::move( languageCode_ ) ),
     netMgr( netMgr_ )
@@ -175,7 +175,7 @@ WHERE {
     return 0;
   }
 
-  sptr< WordSearchRequest > prefixMatch( std::u32string const & /*word*/, unsigned long /*maxResults*/ ) override
+  sptr< WordSearchRequest > prefixMatch( const std::u32string & /*word*/, unsigned long /*maxResults*/ ) override
   {
     sptr< WordSearchRequestInstant > sr = std::make_shared< WordSearchRequestInstant >();
 
@@ -184,9 +184,9 @@ WHERE {
     return sr;
   }
 
-  sptr< DataRequest > getArticle( std::u32string const & word,
-                                  vector< std::u32string > const & alts,
-                                  std::u32string const &,
+  sptr< DataRequest > getArticle( const std::u32string & word,
+                                  const vector< std::u32string > & alts,
+                                  const std::u32string &,
                                   bool ) override
   {
     if ( word.size() < 50 ) {
@@ -212,7 +212,7 @@ protected:
 } // namespace
 
 vector< sptr< Dictionary::Class > >
-makeDictionaries( Dictionary::Initializing &, Config::Lingua const & lingua, QNetworkAccessManager & mgr )
+makeDictionaries( Dictionary::Initializing &, const Config::Lingua & lingua, QNetworkAccessManager & mgr )
 {
   vector< sptr< Dictionary::Class > > result;
   if ( lingua.enable and !lingua.languageCodes.isEmpty() ) {

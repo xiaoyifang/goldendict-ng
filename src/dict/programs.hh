@@ -14,7 +14,7 @@ namespace Programs {
 using std::vector;
 using std::string;
 
-vector< sptr< Dictionary::Class > > makeDictionaries( Config::Programs const & );
+vector< sptr< Dictionary::Class > > makeDictionaries( const Config::Programs & );
 
 class RunInstance: public QObject
 {
@@ -28,7 +28,7 @@ public:
   // Starts the process. Should only be used once. The finished() signal will
   // be emitted once it finishes. If there's an error, returns false and the
   // description is saved to 'error'.
-  bool start( Config::Program const &, QString const & word, QString & error );
+  bool start( const Config::Program &, const QString & word, QString & error );
 
 signals:
   // Connect to this signal to get run results
@@ -50,7 +50,7 @@ class ProgramDataRequest: public Dictionary::DataRequest
 
 public:
 
-  ProgramDataRequest( QString const & word, Config::Program const & );
+  ProgramDataRequest( const QString & word, const Config::Program & );
 
   virtual void cancel();
 
@@ -67,7 +67,7 @@ class ProgramWordSearchRequest: public Dictionary::WordSearchRequest
 
 public:
 
-  ProgramWordSearchRequest( QString const & word, Config::Program const & );
+  ProgramWordSearchRequest( const QString & word, const Config::Program & );
 
   virtual void cancel();
 

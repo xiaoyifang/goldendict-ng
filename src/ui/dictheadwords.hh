@@ -60,6 +60,6 @@ private slots:
   virtual void reject();
 
 signals:
-  void headwordSelected( QString const &, QString const & );
+  void headwordSelected( const QString &, const QString & );
   void closeDialog();
 };

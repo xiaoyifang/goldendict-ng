@@ -135,7 +135,7 @@ class XdxfDictionary: public BtreeIndexing::BtreeDictionary
 
 public:
 
-  XdxfDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles );
+  XdxfDictionary( const string & id, const string & indexFile, const vector< string > & dictionaryFiles );
 
   ~XdxfDictionary();
 
@@ -159,24 +159,24 @@ public:
     return idxHeader.langTo;
   }
 
-  sptr< Dictionary::DataRequest > getArticle( std::u32string const &,
-                                              vector< std::u32string > const & alts,
-                                              std::u32string const &,
+  sptr< Dictionary::DataRequest > getArticle( const std::u32string &,
+                                              const vector< std::u32string > & alts,
+                                              const std::u32string &,
                                               bool ignoreDiacritics ) override;
 
-  sptr< Dictionary::DataRequest > getResource( string const & name ) override;
+  sptr< Dictionary::DataRequest > getResource( const string & name ) override;
 
-  QString const & getDescription() override;
+  const QString & getDescription() override;
 
   QString getMainFilename() override;
 
   sptr< Dictionary::DataRequest >
-  getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
+  getSearchResults( const QString & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
   void makeFTSIndex( QAtomicInt & isCancelled ) override;
 
-  void setFTSParameters( Config::FullTextSearch const & fts ) override
+  void setFTSParameters( const Config::FullTextSearch & fts ) override
   {
     if ( metadata_enable_fts.has_value() ) {
       can_FTS = fts.enabled && metadata_enable_fts.value();
@@ -205,7 +205,7 @@ private:
   friend class XdxfResourceRequest;
 };
 
-XdxfDictionary::XdxfDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles ):
+XdxfDictionary::XdxfDictionary( const string & id, const string & indexFile, const vector< string > & dictionaryFiles ):
   BtreeDictionary( id, dictionaryFiles ),
   idx( indexFile, QIODevice::ReadOnly ),
   idxHeader( idx.read< IdxHeader >() )
@@ -313,7 +313,7 @@ void XdxfDictionary::loadIcon() noexcept
   dictionaryIconLoaded = true;
 }
 
-QString const & XdxfDictionary::getDescription()
+const QString & XdxfDictionary::getDescription()
 {
   if ( !dictionaryDescription.isEmpty() ) {
     return dictionaryDescription;
@@ -385,7 +385,7 @@ void XdxfDictionary::getArticleText( uint32_t articleAddress, QString & headword
 }
 
 sptr< Dictionary::DataRequest >
-XdxfDictionary::getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics )
+XdxfDictionary::getSearchResults( const QString & searchString, int searchMode, bool matchCase, bool ignoreDiacritics )
 {
   return std::make_shared< FtsHelpers::FTSResultsRequest >( *this,
                                                             searchString,
@@ -410,8 +410,8 @@ class XdxfArticleRequest: public Dictionary::DataRequest
 
 public:
 
-  XdxfArticleRequest( std::u32string const & word_,
-                      vector< std::u32string > const & alts_,
+  XdxfArticleRequest( const std::u32string & word_,
+                      const vector< std::u32string > & alts_,
                       XdxfDictionary & dict_,
                       bool ignoreDiacritics_ ):
     word( word_ ),
@@ -543,9 +543,9 @@ void XdxfArticleRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > XdxfDictionary::getArticle( std::u32string const & word,
-                                                            vector< std::u32string > const & alts,
-                                                            std::u32string const &,
+sptr< Dictionary::DataRequest > XdxfDictionary::getArticle( const std::u32string & word,
+                                                            const vector< std::u32string > & alts,
+                                                            const std::u32string &,
                                                             bool ignoreDiacritics )
 
 {
@@ -612,7 +612,7 @@ class GzippedFile: public QIODevice
 
 public:
 
-  GzippedFile( char const * fileName );
+  GzippedFile( const char * fileName );
 
   ~GzippedFile();
 
@@ -649,7 +649,7 @@ protected:
   }
 };
 
-GzippedFile::GzippedFile( char const * fileName )
+GzippedFile::GzippedFile( const char * fileName )
 {
   gz = gd_gzopen( fileName );
   if ( !gz ) {
@@ -900,7 +900,7 @@ class XdxfResourceRequest: public Dictionary::DataRequest
 
 public:
 
-  XdxfResourceRequest( XdxfDictionary & dict_, string const & resourceName_ ):
+  XdxfResourceRequest( XdxfDictionary & dict_, const string & resourceName_ ):
     dict( dict_ ),
     resourceName( resourceName_ )
   {
@@ -993,7 +993,7 @@ void XdxfResourceRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > XdxfDictionary::getResource( string const & name )
+sptr< Dictionary::DataRequest > XdxfDictionary::getResource( const string & name )
 
 {
   return std::make_shared< XdxfResourceRequest >( *this, name );
@@ -1002,8 +1002,8 @@ sptr< Dictionary::DataRequest > XdxfDictionary::getResource( string const & name
 } // namespace
 // anonymous namespace - this section of file is devoted to rebuilding of dictionary articles index
 
-vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & fileNames,
-                                                      string const & indicesDir,
+vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & fileNames,
+                                                      const string & indicesDir,
                                                       Dictionary::Initializing & initializing )
 
 {

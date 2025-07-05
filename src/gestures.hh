@@ -38,7 +38,7 @@ public:
   {
     return scaleChanged;
   }
-  QPointF const & getCenterPoint() const
+  const QPointF & getCenterPoint() const
   {
     return centerPoint;
   }

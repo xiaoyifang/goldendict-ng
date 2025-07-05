@@ -32,7 +32,7 @@ private:
   QByteArray buffer;
 
   AllowFrameReply();
-  AllowFrameReply( AllowFrameReply const & );
+  AllowFrameReply( const AllowFrameReply & );
 
 public:
   explicit AllowFrameReply( QNetworkReply * _reply );
@@ -126,19 +126,19 @@ enum class ResourceType {
 class ArticleNetworkAccessManager: public QNetworkAccessManager
 {
   Q_OBJECT
-  vector< sptr< Dictionary::Class > > const & dictionaries;
-  ArticleMaker const & articleMaker;
-  bool const & disallowContentFromOtherSites;
-  bool const & hideGoldenDictHeader;
+  const vector< sptr< Dictionary::Class > > & dictionaries;
+  const ArticleMaker & articleMaker;
+  const bool & disallowContentFromOtherSites;
+  const bool & hideGoldenDictHeader;
   QMimeDatabase db;
 
 public:
 
   ArticleNetworkAccessManager( QObject * parent,
-                               vector< sptr< Dictionary::Class > > const & dictionaries_,
-                               ArticleMaker const & articleMaker_,
-                               bool const & disallowContentFromOtherSites_,
-                               bool const & hideGoldenDictHeader_ ):
+                               const vector< sptr< Dictionary::Class > > & dictionaries_,
+                               const ArticleMaker & articleMaker_,
+                               const bool & disallowContentFromOtherSites_,
+                               const bool & hideGoldenDictHeader_ ):
     QNetworkAccessManager( parent ),
     dictionaries( dictionaries_ ),
     articleMaker( articleMaker_ ),
@@ -151,9 +151,9 @@ public:
   /// If it succeeds, the result is a dictionary request object. Otherwise, an
   /// empty pointer is returned.
   /// The function can optionally set the Content-Type header correspondingly.
-  sptr< Dictionary::DataRequest > getResource( QUrl const & url, QString & contentType );
+  sptr< Dictionary::DataRequest > getResource( const QUrl & url, QString & contentType );
 
-  virtual QNetworkReply * getArticleReply( QNetworkRequest const & req );
+  virtual QNetworkReply * getArticleReply( const QNetworkRequest & req );
   string getHtml( ResourceType resourceType );
 };
 
@@ -169,9 +169,9 @@ class ArticleResourceReply: public QNetworkReply
 public:
 
   ArticleResourceReply( QObject * parent,
-                        QNetworkRequest const &,
-                        sptr< Dictionary::DataRequest > const &,
-                        QString const & contentType );
+                        const QNetworkRequest &,
+                        const sptr< Dictionary::DataRequest > &,
+                        const QString & contentType );
 
   ~ArticleResourceReply();
 

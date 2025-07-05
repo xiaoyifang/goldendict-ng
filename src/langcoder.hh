@@ -34,13 +34,13 @@ public:
 
   /// Finds the id for the given language name, written in english. The search
   /// is case- and punctuation insensitive.
-  static quint32 findIdForLanguage( std::u32string const & );
+  static quint32 findIdForLanguage( const std::u32string & );
 
-  static quint32 findIdForLanguageCode3( std::string const & );
+  static quint32 findIdForLanguageCode3( const std::string & );
 
   /// find id pairs like en-zh in dictioanry name
-  static std::pair< quint32, quint32 > findLangIdPairFromName( QString const & );
-  static std::pair< quint32, quint32 > findLangIdPairFromPath( std::string const & );
+  static std::pair< quint32, quint32 > findLangIdPairFromName( const QString & );
+  static std::pair< quint32, quint32 > findLangIdPairFromPath( const std::string & );
 
   static quint32 guessId( const QString & lang );
 

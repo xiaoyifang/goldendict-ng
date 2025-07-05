@@ -13,6 +13,6 @@ using std::vector;
 using std::string;
 
 vector< sptr< Dictionary::Class > >
-makeDictionaries( Config::SoundDirs const &, string const & indicesDir, Dictionary::Initializing & );
+makeDictionaries( const Config::SoundDirs &, const string & indicesDir, Dictionary::Initializing & );
 
 } // namespace SoundDir

@@ -21,7 +21,7 @@ signals:
 public slots:
   void showMessage( const QString & text, int timeout = 0, const QPixmap & pixmap = QPixmap() );
   void clearMessage();
-  void setBackgroundMessage( QString const & message );
+  void setBackgroundMessage( const QString & message );
 
 protected:
   void mousePressEvent( QMouseEvent * event ) override;

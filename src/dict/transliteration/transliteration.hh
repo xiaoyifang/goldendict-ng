@@ -23,7 +23,7 @@ protected:
 
 public:
 
-  BaseTransliterationDictionary( string const & id, string const & name, QIcon icon, bool caseSensitive = true );
+  BaseTransliterationDictionary( const string & id, const string & name, QIcon icon, bool caseSensitive = true );
 
   virtual string getName() noexcept;
 
@@ -31,14 +31,14 @@ public:
 
   virtual unsigned long getWordCount() noexcept;
 
-  virtual vector< std::u32string > getAlternateWritings( std::u32string const & ) noexcept = 0;
+  virtual vector< std::u32string > getAlternateWritings( const std::u32string & ) noexcept = 0;
 
-  virtual sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( std::u32string const & );
+  virtual sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( const std::u32string & );
 
-  virtual sptr< Dictionary::WordSearchRequest > prefixMatch( std::u32string const &, unsigned long );
+  virtual sptr< Dictionary::WordSearchRequest > prefixMatch( const std::u32string &, unsigned long );
 
   virtual sptr< Dictionary::DataRequest >
-  getArticle( std::u32string const &, vector< std::u32string > const &, std::u32string const &, bool );
+  getArticle( const std::u32string &, const vector< std::u32string > &, const std::u32string &, bool );
 };
 
 
@@ -48,30 +48,30 @@ class Table: public map< std::u32string, std::u32string >
 protected:
 
   /// Inserts new entry into index. from and to are UTF8-encoded strings.
-  void ins( char const * from, char const * to );
+  void ins( const char * from, const char * to );
 
   /// Inserts new entry into index. from and to are UTF32-encoded strings.
-  void ins( std::u32string const & from, std::u32string const & to )
+  void ins( const std::u32string & from, const std::u32string & to )
   {
     this->insert( { from, to } );
   }
 
   /// Inserts new entry into index. from and to are std::string (UTF8-encoded).
-  void ins( std::string const & from, std::string const & to );
+  void ins( const std::string & from, const std::string & to );
 };
 
 
 /// A base dictionary class for table based transliteratons
 class TransliterationDictionary: public BaseTransliterationDictionary
 {
-  Table const & table;
+  const Table & table;
 
 public:
 
   TransliterationDictionary(
-    string const & id, string const & name, QIcon icon, Table const & table, bool caseSensitive = true );
+    const string & id, const string & name, QIcon icon, const Table & table, bool caseSensitive = true );
 
-  virtual vector< std::u32string > getAlternateWritings( std::u32string const & ) noexcept;
+  virtual vector< std::u32string > getAlternateWritings( const std::u32string & ) noexcept;
 };
 
 } // namespace Transliteration
