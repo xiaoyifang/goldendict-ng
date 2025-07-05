@@ -94,7 +94,7 @@ void DictionaryBar::updateToGroup( const Instances::Group * grp,
   }
   else {
     Config::Group * _grp = cfg.getGroup( grp->id );
-    setMutedDictionaries( _grp ? _grp->mutedDictionaries : nullptr );
+    setMutedDictionaries( _grp ? &_grp->mutedDictionaries : nullptr );
   }
   setDictionaries( grp->dictionaries );
 }
