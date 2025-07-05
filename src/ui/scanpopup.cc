@@ -1090,10 +1090,7 @@ void ScanPopup::updateDictionaryBar()
 
   unsigned currentId           = groupList->getCurrentGroup();
   Instances::Group const * grp = groups.findGroup( currentId );
-
-  if ( grp ) { // Should always be !0, but check as a safeguard
-    dictionaryBar.setDictionaries( grp->dictionaries );
-  }
+  Q_ASSERT( grp != nullptr ); // should never be nullptr, or the code in next few lines are invalid
 
   if ( currentId == GroupId::AllGroupId ) {
     dictionaryBar.setMutedDictionaries( &cfg.popupMutedDictionaries );
@@ -1102,6 +1099,8 @@ void ScanPopup::updateDictionaryBar()
     Config::Group * group = cfg.getGroup( currentId );
     dictionaryBar.setMutedDictionaries( group ? &group->popupMutedDictionaries : nullptr );
   }
+
+  dictionaryBar.setDictionaries( grp->dictionaries );
 
   setDictionaryIconSize();
 }
