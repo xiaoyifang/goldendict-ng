@@ -8,6 +8,10 @@
 #include "dict/dictionary.hh"
 #include "config.hh"
 
+namespace Instances {
+struct Group;
+}
+
 /// A bar containing dictionary icons of the currently chosen group.
 /// Individual dictionaries can be toggled on and off.
 class DictionaryBar: public QToolBar
@@ -38,6 +42,9 @@ public:
   };
 
   void setDictionaryIconSize( IconSize size );
+  void updateToGroup( const Instances::Group * grp,
+                      Config::MutedDictionaries * allGroupMutedDictionaries,
+                      Config::Class & cfg );
 
 signals:
 

@@ -207,7 +207,6 @@ private:
   void makeDictionaries();
   void updateStatusLine();
   void updateGroupList( bool reload = true );
-  void updateDictionaryBar();
 
   void updatePronounceAvailability();
 
@@ -266,6 +265,8 @@ private:
 
   void errorMessageOnStatusBar( const QString & errStr );
   int getIconSize();
+  DictionaryBar::IconSize getIconSizeLogical();
+
 
   bool updateFavIcon( const QString & word );
 

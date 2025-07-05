@@ -1658,7 +1658,7 @@ void MainWindow::updateGroupList( bool reload )
   groupList->fill( groupInstances );
   groupList->setCurrentGroup( cfg.lastMainGroupId );
 
-  updateDictionaryBar();
+  dictionaryBar.updateToGroup( groupInstances.findGroup( groupList->getCurrentGroup() ), &cfg.mutedDictionaries, cfg );
 
   if ( reload ) {
     qDebug() << "Reloading all the tabs...";
@@ -1671,39 +1671,6 @@ void MainWindow::updateGroupList( bool reload )
   }
 
   connect( groupList, &GroupComboBox::currentIndexChanged, this, &MainWindow::currentGroupChanged );
-}
-
-void MainWindow::updateDictionaryBar()
-{
-  if ( !dictionaryBar.toggleViewAction()->isChecked() ) {
-    return; // It's not enabled, therefore hidden -- don't waste time
-  }
-
-  unsigned currentId           = groupList->getCurrentGroup();
-  const Instances::Group * grp = groupInstances.findGroup( currentId );
-
-  dictionaryBar.setMutedDictionaries( nullptr );
-  if ( grp ) { // Should always be !0, but check as a safeguard
-    if ( currentId == GroupId::AllGroupId ) {
-      dictionaryBar.setMutedDictionaries( &cfg.mutedDictionaries );
-    }
-    else {
-      Config::Group * _grp = cfg.getGroup( currentId );
-      dictionaryBar.setMutedDictionaries( _grp ? &_grp->mutedDictionaries : nullptr );
-    }
-
-    dictionaryBar.setDictionaries( grp->dictionaries );
-
-    if ( useSmallIconsInToolbarsAction.isChecked() ) {
-      dictionaryBar.setDictionaryIconSize( DictionaryBar::IconSize::Small );
-    }
-    else if ( useLargeIconsInToolbarsAction.isChecked() ) {
-      dictionaryBar.setDictionaryIconSize( DictionaryBar::IconSize::Large );
-    }
-    else {
-      dictionaryBar.setDictionaryIconSize( DictionaryBar::IconSize::Normal );
-    }
-  }
 }
 
 const vector< sptr< Dictionary::Class > > & MainWindow::getActiveDicts()
@@ -2092,7 +2059,9 @@ void MainWindow::dictionaryBarToggled( bool )
   // From now on, only the triggered() signal is interesting to us
   disconnect( dictionaryBar.toggleViewAction(), &QAction::toggled, this, &MainWindow::dictionaryBarToggled );
 
-  updateDictionaryBar();         // Updates dictionary bar contents if it's shown
+  dictionaryBar.updateToGroup( groupInstances.findGroup( groupList->getCurrentGroup() ), &cfg.mutedDictionaries, cfg );
+  dictionaryBar.setDictionaryIconSize( this->getIconSizeLogical() );
+
   applyMutedDictionariesState(); // Visibility change affects searches and results
 }
 
@@ -2398,7 +2367,7 @@ void MainWindow::currentGroupChanged( int )
     ui.tabWidget->setTabIcon( ui.tabWidget->currentIndex(), QIcon() );
   }
 
-  updateDictionaryBar();
+  dictionaryBar.updateToGroup( groupInstances.findGroup( groupList->getCurrentGroup() ), &cfg.mutedDictionaries, cfg );
 
   // Update word search results
   translateBox->setPopupEnabled( false );
@@ -3106,6 +3075,20 @@ void MainWindow::showDictBarNamesTriggered()
   cfg.showingDictBarNames = show;
 }
 
+DictionaryBar::IconSize MainWindow::getIconSizeLogical()
+{
+  if ( useLargeIconsInToolbarsAction.isChecked() ) {
+    return DictionaryBar::IconSize::Large;
+  }
+  else if ( useSmallIconsInToolbarsAction.isChecked() ) {
+    return DictionaryBar::IconSize::Small;
+  }
+  else {
+    return DictionaryBar::IconSize::Normal;
+  }
+}
+
+
 int MainWindow::getIconSize()
 {
   bool useLargeIcons = useLargeIconsInToolbarsAction.isChecked();
@@ -3139,7 +3122,7 @@ void MainWindow::iconSizeActionTriggered( QAction * /*action*/ )
   navToolbar->setIconSize( QSize( extent, extent ) );
   menuButton->setIconSize( QSize( extent, extent ) );
 
-  updateDictionaryBar();
+  dictionaryBar.setDictionaryIconSize( getIconSizeLogical() );
 
   scanPopup->setDictionaryIconSize();
 }

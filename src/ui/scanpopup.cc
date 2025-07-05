@@ -387,7 +387,8 @@ void ScanPopup::refresh()
 
   groupListAction->setVisible( !cfg.groups.empty() );
 
-  updateDictionaryBar();
+  dictionaryBar.updateToGroup( groups.findGroup( groupList->getCurrentGroup() ), &cfg.popupMutedDictionaries, cfg );
+  setDictionaryIconSize();
 
   definition->syncBackgroundColorWithCfgDarkReader();
 
@@ -630,7 +631,7 @@ void ScanPopup::currentGroupChanged( int )
     }
   }
 
-  updateDictionaryBar();
+  dictionaryBar.updateToGroup( groups.findGroup( groupList->getCurrentGroup() ), &cfg.popupMutedDictionaries, cfg );
 
   definition->setCurrentGroupId( cfg.lastPopupGroupId );
 
@@ -888,7 +889,8 @@ void ScanPopup::showEvent( QShowEvent * ev )
   }
 
   if ( dictionaryBar.isVisible() ) {
-    updateDictionaryBar();
+    dictionaryBar.updateToGroup( groups.findGroup( groupList->getCurrentGroup() ), &cfg.popupMutedDictionaries, cfg );
+    setDictionaryIconSize();
   }
 }
 
@@ -996,7 +998,8 @@ void ScanPopup::stopAudio() const
 void ScanPopup::dictionaryBar_visibility_changed( bool visible )
 {
   if ( visible ) {
-    updateDictionaryBar();
+    dictionaryBar.updateToGroup( groups.findGroup( groupList->getCurrentGroup() ), &cfg.popupMutedDictionaries, cfg );
+    setDictionaryIconSize();
     definition->updateMutedContents();
   }
 }
@@ -1080,29 +1083,6 @@ void ScanPopup::uninterceptMouse()
 
     mouseIntercepted = false;
   }
-}
-
-void ScanPopup::updateDictionaryBar()
-{
-  if ( !dictionaryBar.toggleViewAction()->isChecked() ) {
-    return; // It's not enabled, therefore hidden -- don't waste time
-  }
-
-  unsigned currentId           = groupList->getCurrentGroup();
-  const Instances::Group * grp = groups.findGroup( currentId );
-  Q_ASSERT( grp != nullptr ); // should never be nullptr, or the code in next few lines are invalid
-
-  if ( currentId == GroupId::AllGroupId ) {
-    dictionaryBar.setMutedDictionaries( &cfg.popupMutedDictionaries );
-  }
-  else {
-    Config::Group * group = cfg.getGroup( currentId );
-    dictionaryBar.setMutedDictionaries( group ? &group->popupMutedDictionaries : nullptr );
-  }
-
-  dictionaryBar.setDictionaries( grp->dictionaries );
-
-  setDictionaryIconSize();
 }
 
 void ScanPopup::mutedDictionariesChanged()
