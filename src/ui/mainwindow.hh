@@ -27,7 +27,7 @@
 #include "dictheadwords.hh"
 #include "fulltextsearch.hh"
 #include "base_type.hh"
-#include "hotkeywrapper.hh"
+#include "hotkey/hotkeywrapper.hh"
 #include "resourceschemehandler.hh"
 #include "iframeschemehandler.hh"
 #ifdef HAVE_X11
