@@ -46,12 +46,11 @@ struct Group
   void checkMutedDictionaries( Config::MutedDictionaries * mutedDictionaries ) const;
 };
 
-struct Groups: public vector< Group >
+struct Groups: vector< Group >
 {
-  /// Tries finding the given group by its id. Returns the group found, or
-  /// 0 if there's no such group.
-  Group * findGroup( unsigned id );
-  Group const * findGroup( unsigned id ) const;
+  /// Tries finding the given group by its id.
+  /// @return The group found, or nullptr if there's no such group.
+  const Group * findGroup( unsigned id ) const;
 };
 
 /// Adds any dictionaries not already present in the given group or in
