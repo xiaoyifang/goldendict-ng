@@ -1679,8 +1679,8 @@ void MainWindow::updateDictionaryBar()
     return; // It's not enabled, therefore hidden -- don't waste time
   }
 
-  unsigned currentId     = groupList->getCurrentGroup();
-  Instances::Group * grp = groupInstances.findGroup( currentId );
+  unsigned currentId           = groupList->getCurrentGroup();
+  const Instances::Group * grp = groupInstances.findGroup( currentId );
 
   dictionaryBar.setMutedDictionaries( nullptr );
   if ( grp ) { // Should always be !0, but check as a safeguard
