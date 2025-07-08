@@ -1011,7 +1011,7 @@ void MainWindow::clipboardChange( QClipboard::Mode m )
   if ( m == QClipboard::Clipboard ) {
     if ( !cfg.preferences.trackClipboardScan )
       return;
-    scanPopup->translateWordFromClipboard();
+    scanPopup->translateWordFromPrimaryClipboard();
     return;
   }
 
