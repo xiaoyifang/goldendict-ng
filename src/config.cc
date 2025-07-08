@@ -19,10 +19,8 @@
 
 #include <QStandardPaths>
 
-#if defined( HAVE_X11 )
+#if defined( Q_OS_UNIX ) && !defined( Q_OS_MACOS )
   // Whether XDG Base Directory specification might be followed.
-  // Only Qt5 builds are supported, as Qt4 doesn't provide all functions needed
-  // to get XDG Base Directory compliant locations.
   #define XDG_BASE_DIRECTORY_COMPLIANCE
 #endif
 
@@ -170,7 +168,7 @@ Preferences::Preferences():
   scanToMainWindow( false ),
   ignoreDiacritics( false ),
   ignorePunctuation( true ),
-#ifdef HAVE_X11
+#ifdef WITH_X11
   // Enable both Clipboard and Selection by default so that X users can enjoy full
   // power and disable optionally.
   trackClipboardScan( true ),
@@ -927,7 +925,7 @@ Class load()
       c.preferences.sessionCollapse = ( preferences.namedItem( "sessionCollapse" ).toElement().text() == "1" );
     }
 
-#ifdef HAVE_X11
+#ifdef WITH_X11
     c.preferences.trackClipboardScan = ( preferences.namedItem( "trackClipboardScan" ).toElement().text() == "1" );
     c.preferences.trackSelectionScan = ( preferences.namedItem( "trackSelectionScan" ).toElement().text() == "1" );
     c.preferences.showScanFlag       = ( preferences.namedItem( "showScanFlag" ).toElement().text() == "1" );
@@ -1878,7 +1876,7 @@ void save( const Class & c )
     opt.appendChild( dd.createTextNode( c.preferences.sessionCollapse ? "1" : "0" ) );
     preferences.appendChild( opt );
 
-#ifdef HAVE_X11
+#ifdef WITH_X11
     opt = dd.createElement( "trackClipboardScan" );
     opt.appendChild( dd.createTextNode( c.preferences.trackClipboardScan ? "1" : "0" ) );
     preferences.appendChild( opt );
@@ -2423,7 +2421,7 @@ QString getStylesDir()
 QString getCacheDir() noexcept
 {
   return isPortableVersion() ? portableHomeDirPath() + "/cache"
-#ifdef HAVE_X11
+#if defined( Q_OS_UNIX ) && !defined( Q_OS_MACOS )
                                :
                                QStandardPaths::writableLocation( QStandardPaths::GenericCacheLocation ) + "/goldendict";
 #else

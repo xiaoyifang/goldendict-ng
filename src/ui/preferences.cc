@@ -283,7 +283,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 
   //Platform-specific options
 
-#ifdef HAVE_X11
+#ifdef WITH_X11
   ui.enableX11SelectionTrack->setChecked( p.trackSelectionScan );
   ui.enableClipboardTrack->setChecked( p.trackClipboardScan );
   ui.showScanFlag->setChecked( p.showScanFlag );
@@ -500,7 +500,7 @@ Config::Preferences Preferences::getPreferences()
 
   p.ignoreOwnClipboardChanges = ui.ignoreOwnClipboardChanges->isChecked();
   p.scanToMainWindow          = ui.scanToMainWindow->isChecked();
-#ifdef HAVE_X11
+#ifdef WITH_X11
   p.trackSelectionScan        = ui.enableX11SelectionTrack->isChecked();
   p.trackClipboardScan        = ui.enableClipboardTrack->isChecked();
   p.showScanFlag              = ui.showScanFlag->isChecked();

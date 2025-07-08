@@ -27,7 +27,7 @@ static const Qt::WindowFlags defaultUnpinnedWindowFlags =
   ;
 
 static const Qt::WindowFlags pinnedWindowFlags =
-#ifdef HAVE_X11
+#if defined( Q_OS_UNIX ) && !defined( Q_OS_MACOS )
   /// With the Qt::Dialog flag, popup is always on top of the main window
   /// on Linux/X11 with Qt 4, Qt 5 since version 5.12.1 (QTBUG-74309).
   /// Qt::Window allows to use the popup and the main window independently.
@@ -295,7 +295,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   grabGesture( Gestures::GDSwipeGestureType );
 #endif
 
-#ifdef HAVE_X11
+#ifdef WITH_X11
   scanFlag = new ScanFlag( this );
 
   connect( scanFlag, &ScanFlag::requestScanPopup, this, [ this ] {
@@ -393,7 +393,7 @@ void ScanPopup::refresh()
   definition->syncBackgroundColorWithCfgDarkReader();
 
   connect( groupList, &GroupComboBox::currentIndexChanged, this, &ScanPopup::currentGroupChanged );
-#ifdef HAVE_X11
+#ifdef WITH_X11
   selectionDelayTimer.setInterval( cfg.preferences.selectionChangeDelayTimer );
 #endif
 }
@@ -465,14 +465,14 @@ void ScanPopup::translateWord( const QString & word )
     return; // Nothing there
   }
 
-#ifdef HAVE_X11
+#ifdef WITH_X11
   emit hideScanFlag();
 #endif
 
   engagePopup( false, true );
 }
 
-#ifdef HAVE_X11
+#ifdef WITH_X11
 void ScanPopup::showEngagePopup()
 {
   engagePopup( false );
@@ -491,7 +491,7 @@ void ScanPopup::showEngagePopup()
 
   pendingWord = sanitizedPhrase;
 
-#ifdef HAVE_X11
+#ifdef WITH_X11
   if ( cfg.preferences.showScanFlag ) {
     emit showScanFlag();
     return;
@@ -1198,7 +1198,7 @@ bool ScanPopup::isWordPresentedInFavorites( const QString & word ) const
   return GlobalBroadcaster::instance()->isWordPresentedInFavorites( word );
 }
 
-#ifdef HAVE_X11
+#ifdef WITH_X11
 void ScanPopup::showScanFlag()
 {
   scanFlag->showScanFlag();

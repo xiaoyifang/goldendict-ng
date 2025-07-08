@@ -1,4 +1,4 @@
-#ifdef HAVE_X11
+#ifdef WITH_X11
   #include "hotkeywrapper.hh"
   #include <X11/keysym.h>
   #include <QTimer>

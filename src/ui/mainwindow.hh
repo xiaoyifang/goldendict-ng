@@ -30,7 +30,7 @@
 #include "hotkey/hotkeywrapper.hh"
 #include "resourceschemehandler.hh"
 #include "iframeschemehandler.hh"
-#ifdef HAVE_X11
+#ifdef WITH_X11
   #include <fixx11h.h>
 #endif
 #include "scanpopup.hh"

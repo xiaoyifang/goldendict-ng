@@ -19,7 +19,7 @@
 #include <QActionGroup>
 #include "groupcombobox.hh"
 #include "translatebox.hh"
-#ifdef HAVE_X11
+#ifdef WITH_X11
   #include "scanflag.hh"
 #endif
 
@@ -55,7 +55,7 @@ public:
 
   void saveConfigData() const;
 
-#ifdef HAVE_X11
+#ifdef WITH_X11
   /// Interaction with scan flag window
   void showScanFlag();
   void hideScanFlag();
@@ -102,7 +102,7 @@ public slots:
 
   void setGroupByName( const QString & name ) const;
 
-#ifdef HAVE_X11
+#ifdef WITH_X11
   void showEngagePopup();
 #endif
   void openSearch();
@@ -149,7 +149,7 @@ private:
   /// Fonts saved before words zooming is in effect, so it could be reset back.
   QFont wordListDefaultFont, translateLineDefaultFont, groupListDefaultFont;
 
-#ifdef HAVE_X11
+#ifdef WITH_X11
   ScanFlag * scanFlag;
 #endif
 

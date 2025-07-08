@@ -68,12 +68,7 @@
 #include <QProxyStyle>
 #include <QShortcut>
 
-#ifdef HAVE_X11
-  #if ( QT_VERSION >= QT_VERSION_CHECK( 6, 0, 0 ) )
-    #include <QGuiApplication>
-  #else
-    #include <QX11Info>
-  #endif
+#ifdef WITH_X11
   #include <X11/Xlib.h>
   #include <fixx11h.h>
 #endif
@@ -1007,7 +1002,7 @@ void MainWindow::clipboardChange( QClipboard::Mode m )
     return;
   }
 
-#if defined( HAVE_X11 )
+#if defined( WITH_X11 )
   if ( m == QClipboard::Clipboard ) {
     if ( !cfg.preferences.trackClipboardScan )
       return;
@@ -1469,7 +1464,7 @@ void MainWindow::closeEvent( QCloseEvent * ev )
       return;
     }
 #endif
-#ifdef HAVE_X11
+#if defined( Q_OS_UNIX ) && !defined( Q_OS_MACOS )
     // Don't ignore the close event, because doing so cancels session logout if
     // the main window is visible when the user attempts to log out.
     // The main window will be only hidden, because QApplication::quitOnLastWindowClosed
@@ -2897,7 +2892,7 @@ void MainWindow::toggleMainWindow( bool ensureShow )
 
 void MainWindow::installHotKeys()
 {
-#if defined( Q_OS_UNIX ) && !defined( Q_OS_MACOS )
+#if defined( WITH_X11 )
   if ( !qEnvironmentVariableIsEmpty( "GOLDENDICT_FORCE_WAYLAND" ) ) {
     return;
   }
@@ -2940,7 +2935,7 @@ void MainWindow::hotKeyActivated( int hk )
     toggleMainWindow( false );
   }
   else if ( scanPopup ) {
-#ifdef HAVE_X11
+#if defined( Q_OS_UNIX ) && !defined( Q_OS_MACOS )
     // When the user requests translation with the Ctrl+C+C hotkey in certain apps
     // on some GNU/Linux systems, GoldenDict appears to handle Ctrl+C+C before the
     // active application finishes handling Ctrl+C. As a result, GoldenDict finds
@@ -3187,7 +3182,7 @@ void MainWindow::setAutostart( bool autostart )
     reg.remove( ApplicationSettingName );
   }
   reg.sync();
-#elif defined HAVE_X11
+#elif defined( Q_OS_UNIX ) && !defined( Q_OS_MACOS )
   const QString destinationPath = QDir::homePath() + "/.config/autostart/goldendict-owned-by-preferences.desktop";
   if ( autostart == QFile::exists( destinationPath ) )
     return; // Nothing to do.

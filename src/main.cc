@@ -244,7 +244,7 @@ void processCommandLine( QCoreApplication * app, GDOptions * result )
 
 int main( int argc, char ** argv )
 {
-#if defined( Q_OS_UNIX ) && !defined( Q_OS_MACOS )
+#if defined( WITH_X11 )
   // GoldenDict use lots of X11 functions and it currently cannot work
   // natively on Wayland. This workaround will force GoldenDict to use
   // XWayland.

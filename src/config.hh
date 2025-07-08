@@ -325,7 +325,7 @@ struct Preferences
   bool ignoreDiacritics;
   bool ignorePunctuation;
   bool sessionCollapse = false;
-#ifdef HAVE_X11
+#ifdef WITH_X11
   bool trackClipboardScan;
   bool trackSelectionScan;
   bool showScanFlag;
