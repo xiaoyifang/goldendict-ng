@@ -2,7 +2,7 @@
 #if !defined( __APPLE__ )
   #include "clipboard/base.hh"
 
-class SimpleClipboardListener: BaseClipboardListener
+class SimpleClipboardListener: public BaseClipboardListener
 {
   Q_OBJECT
 
