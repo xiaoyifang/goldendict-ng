@@ -821,12 +821,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
            ui.favoritesPaneWidget,
            &FavoritesPaneWidget::addRemoveWordInActiveFav );
 
-#ifdef Q_OS_MAC
-  macClipboard = new gd_clipboard( this );
-  connect( macClipboard, &gd_clipboard::changed, this, &MainWindow::clipboardChange );
-#endif
+  clipboardListener = clipboardListener::get_impl( this );
+  connect( clipboardListener, &BaseClipboardListener::changed, this, &MainWindow::clipboardChange );
 
-  connect( enableScanningAction, &QAction::toggled, this, [ = ]( bool on ) {
+  connect( enableScanningAction, &QAction::toggled, this, [ this ]( bool on ) {
     if ( on ) {
       enableScanningAction->setIcon( QIcon( ":/icons/wizard-selected.svg" ) );
     }
@@ -838,21 +836,15 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
     if ( !MacMouseOver::isAXAPIEnabled() ) {
       mainStatusBar->showMessage( tr( "Accessibility API is not enabled" ), 10000, QPixmap( ":/icons/error.svg" ) );
     }
+#endif
+
 
     if ( on ) {
-      macClipboard->start();
+      clipboardListener->start();
     }
     else {
-      macClipboard->stop();
+      clipboardListener->stop();
     }
-#else
-    if ( on ) {
-      connect( QApplication::clipboard(), &QClipboard::changed, this, &MainWindow::clipboardChange );
-    }
-    else {
-      disconnect( QApplication::clipboard(), &QClipboard::changed, this, &MainWindow::clipboardChange );
-    }
-#endif
 
     installHotKeys();
     trayIconUpdateOrInit();
@@ -1054,9 +1046,9 @@ void MainWindow::clipboardChange( QClipboard::Mode m )
     scanPopup->selectionDelayTimer.start();
   }
 #elif defined( Q_OS_MAC )
-  scanPopup->translateWord( macClipboard->text() );
+  scanPopup->translateWord( clipboardListener->text() );
 #else
-  scanPopup->translateWordFromClipboard();
+  scanPopup->translateWordFromPrimaryClipboard();
 #endif
 }
 
@@ -2955,9 +2947,9 @@ void MainWindow::hotKeyActivated( int hk )
     // the clipboard empty, silently cancels the translation request, and users report
     // that Ctrl+C+C is broken in these apps. Slightly delay handling the clipboard
     // hotkey to give the active application more time and thus work around the issue.
-    QTimer::singleShot( 10, scanPopup, SLOT( translateWordFromClipboard() ) );
+    QTimer::singleShot( 10, scanPopup, &ScanPopup::translateWordFromPrimaryClipboard );
 #else
-    scanPopup->translateWordFromClipboard();
+    scanPopup->translateWordFromPrimaryClipboard();
 #endif
   }
 }

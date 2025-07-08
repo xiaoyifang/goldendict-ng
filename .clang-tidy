@@ -41,17 +41,6 @@ Checks: >
   -readability-identifier-length,
   -readability-magic-numbers,
 CheckOptions:
-  - key: modernize-loop-convert.MinConfidence
-    value: reasonable
-  - key: modernize-use-override.IgnoreDestructors
-    value: 1
-  - key: cppcoreguidelines-explicit-virtual-functions.IgnoreDestructors
-    value: 1
-  - key: modernize-avoid-c-arrays.AllowStringArrays
-    value: 1
-  - key: cppcoreguidelines-avoid-c-arrays.AllowStringArrays
-    value: 1
-  - key: hicpp-avoid-c-arrays.AllowStringArrays
-    value: 1
+  - { key: readability-identifier-naming.ClassCase, value: CamelCase }
 ...
 
