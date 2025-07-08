@@ -19,7 +19,7 @@
 
 #include <QStandardPaths>
 
-#if defined( Q_OS_UNIX ) && !defined(Q_OS_MACOS)
+#if defined( Q_OS_UNIX ) && !defined( Q_OS_MACOS )
   // Whether XDG Base Directory specification might be followed.
   #define XDG_BASE_DIRECTORY_COMPLIANCE
 #endif
