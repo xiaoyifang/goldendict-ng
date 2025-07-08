@@ -13,7 +13,7 @@
 #include "ex.hh"
 #include "utils.hh"
 
-#ifdef HAVE_X11
+#ifdef WITH_X11
   #include <fixx11h.h>
   #include <set>
   #include <X11/Xlib.h>
@@ -119,7 +119,7 @@ public:
 
 #endif
 
-#ifdef HAVE_X11
+#ifdef WITH_X11
   static void recordEventCallback( XPointer, XRecordInterceptData * );
 
   /// Called by recordEventCallback()

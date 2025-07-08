@@ -6,6 +6,8 @@ option(WITH_EPWING_SUPPORT "Enable epwing support" ON)
 option(WITH_ZIM "enable zim support" ON)
 option(WITH_TTS "enable QTexttoSpeech support" OFF)
 
+option(WITH_X11 "Experimental flag. Don't disable this. Disable means pure Wayland." ON)
+
 # options for linux packaging
 option(USE_SYSTEM_FMT "use system fmt instead of bundled one" OFF)
 option(USE_SYSTEM_TOML "use system toml++ instead of bundled one" OFF)

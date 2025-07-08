@@ -13,9 +13,10 @@ endif ()
 if (WITH_FFMPEG_PLAYER)
     list(APPEND Optional_Pkgs "libavcodec;libavformat;libavutil;libswresample")
 endif ()
-
-set(X11_Pkgs "x11;xtst")
-target_compile_definitions(${GOLDENDICT} PUBLIC HAVE_X11)
+if (WITH_X11)
+    set(X11_Pkgs "x11;xtst")
+    target_compile_definitions(${GOLDENDICT} PUBLIC WITH_X11)
+endif ()
 
 pkg_check_modules(DEPS REQUIRED IMPORTED_TARGET
         hunspell
