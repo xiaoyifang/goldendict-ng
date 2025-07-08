@@ -1,7 +1,7 @@
 #if !defined( __APPLE__ )
   #include "clipboard/simple.hh"
   #include <QGuiApplication>
-::SimpleClipboardListener( QObject * parent ):
+SimpleClipboardListener::SimpleClipboardListener( QObject * parent ):
   BaseClipboardListener( parent )
 {
   sysClipboard = qApp->clipboard();
