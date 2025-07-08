@@ -2892,7 +2892,7 @@ void MainWindow::toggleMainWindow( bool ensureShow )
 
 void MainWindow::installHotKeys()
 {
-#if defined(WITH_X11)
+#if defined( WITH_X11 )
   if ( !qEnvironmentVariableIsEmpty( "GOLDENDICT_FORCE_WAYLAND" ) ) {
     return;
   }
@@ -3182,7 +3182,7 @@ void MainWindow::setAutostart( bool autostart )
     reg.remove( ApplicationSettingName );
   }
   reg.sync();
-#elif  defined( Q_OS_UNIX ) && !defined( Q_OS_MACOS )
+#elif defined( Q_OS_UNIX ) && !defined( Q_OS_MACOS )
   const QString destinationPath = QDir::homePath() + "/.config/autostart/goldendict-owned-by-preferences.desktop";
   if ( autostart == QFile::exists( destinationPath ) )
     return; // Nothing to do.

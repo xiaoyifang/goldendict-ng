@@ -2,33 +2,27 @@
 
 
 #include <QtGlobal>
-#if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS) && !defined(WITH_X11)
+#if defined( Q_OS_UNIX ) && !defined( Q_OS_MACOS ) && !defined( WITH_X11 )
 
 
 HotkeyWrapper::HotkeyWrapper( QObject * parent ):
-QThread(parent), state2(false)
+  QThread( parent ),
+  state2( false )
 {
-  qDebug()<<"Global hotkey unimplemented";
+  qDebug() << "Global hotkey unimplemented";
 }
 
-HotkeyWrapper::~HotkeyWrapper()
-{
-}
+HotkeyWrapper::~HotkeyWrapper() {}
 
 bool HotkeyWrapper::setGlobalKey( const QKeySequence &, int handle )
 {
-  return true ;
+  return true;
 };
 
 
-void HotkeyWrapper::unregister()
-{
-};
+void HotkeyWrapper::unregister() {};
 
-void HotkeyWrapper::waitKey2(){
-}
-
+void HotkeyWrapper::waitKey2() {}
 
 
 #endif
-
