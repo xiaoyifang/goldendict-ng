@@ -34,10 +34,7 @@
   #include <fixx11h.h>
 #endif
 #include "scanpopup.hh"
-
-#if defined( Q_OS_MAC )
-  #include "macos/gd_clipboard.hh"
-#endif
+#include "clipboard/clipboardlistener.hh"
 //must place the qactiongroup after fixx11h.h, None in QActionGroup conflict with X.h's macro None.
 #include <QActionGroup>
 #include <QShortcut>
@@ -176,9 +173,7 @@ private:
   IframeSchemeHandler * iframeSchemeHandler;
   ResourceSchemeHandler * resourceSchemeHandler;
 
-#ifdef Q_OS_MAC
-  gd_clipboard * macClipboard;
-#endif
+  BaseClipboardListener * clipboardListener;
 
 #if !defined( Q_OS_WIN )
   // On Linux, this will be the style before getting overriden by custom styles

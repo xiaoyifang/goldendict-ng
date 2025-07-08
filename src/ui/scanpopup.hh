@@ -94,7 +94,7 @@ public slots:
 
   void inspectElementWhenPinned( QWebEnginePage * page );
   /// Translates the word from the clipboard, showing the window etc.
-  void translateWordFromClipboard();
+  void translateWordFromPrimaryClipboard();
   /// Translates the word from the clipboard selection
   void translateWordFromSelection();
   /// From the dictionary bar.

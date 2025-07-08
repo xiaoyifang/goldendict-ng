@@ -434,14 +434,14 @@ Qt::WindowFlags ScanPopup::unpinnedWindowFlags() const
   return defaultUnpinnedWindowFlags;
 }
 
-void ScanPopup::translateWordFromClipboard()
+void ScanPopup::translateWordFromPrimaryClipboard()
 {
-  return translateWordFromClipboard( QClipboard::Clipboard );
+  translateWordFromClipboard( QClipboard::Clipboard );
 }
 
 void ScanPopup::translateWordFromSelection()
 {
-  return translateWordFromClipboard( QClipboard::Selection );
+  translateWordFromClipboard( QClipboard::Selection );
 }
 
 void ScanPopup::editGroupRequested()
@@ -451,12 +451,9 @@ void ScanPopup::editGroupRequested()
 
 void ScanPopup::translateWordFromClipboard( QClipboard::Mode m )
 {
-  qDebug() << "translating from clipboard or selection";
-
-  QString subtype = "plain";
-
-  QString str = QApplication::clipboard()->text( subtype, m );
-  qDebug() << "clipboard data:" << str;
+  QString subtype = QStringLiteral( "plain" );
+  QString str     = QApplication::clipboard()->text( subtype, m );
+  qDebug( "Translate from clipboard %d -> %s", qToUnderlying( m ), str.toStdString().c_str() );
   translateWord( str );
 }
 
