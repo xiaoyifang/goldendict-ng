@@ -2,5 +2,5 @@
 #include "clipboard/base.hh"
 
 namespace clipboardListener {
-  BaseClipboardListener * get_impl(QObject* parent);
+BaseClipboardListener * get_impl( QObject * parent );
 }

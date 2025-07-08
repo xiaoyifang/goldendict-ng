@@ -451,9 +451,9 @@ void ScanPopup::editGroupRequested()
 
 void ScanPopup::translateWordFromClipboard( QClipboard::Mode m )
 {
-  QString subtype = QStringLiteral("plain");
-  QString str = QApplication::clipboard()->text( subtype , m );
-  qDebug("Translate from clipboard %d -> %s",qToUnderlying(m),str.toStdString().c_str());
+  QString subtype = QStringLiteral( "plain" );
+  QString str     = QApplication::clipboard()->text( subtype, m );
+  qDebug( "Translate from clipboard %d -> %s", qToUnderlying( m ), str.toStdString().c_str() );
   translateWord( str );
 }
 

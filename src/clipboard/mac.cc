@@ -7,7 +7,7 @@ MacClipboardListener::MacClipboardListener( QObject * parent ):
   sysClipboard( QGuiApplication::clipboard() )
 {
 
-  connect( &m_monitoringTimer, &QTimer::timeout, this, [ this ]{
+  connect( &m_monitoringTimer, &QTimer::timeout, this, [ this ] {
     updateClipboard();
   } );
 }
