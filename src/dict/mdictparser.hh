@@ -47,23 +47,23 @@ public:
     address( nullptr )
   {
     // Check if offset and size are valid
-    if (offset < 0 || size < 0) {
+    if ( offset < 0 || size < 0 ) {
       address = nullptr;
       return;
     }
 
     qint64 fileSize = file.size();
-    if (offset > fileSize) {
+    if ( offset > fileSize ) {
       address = nullptr; // Start offset exceeds file size
       return;
     }
 
     qint64 maxSafeSize = fileSize - offset;
-    if (size > maxSafeSize) {
+    if ( size > maxSafeSize ) {
       size = maxSafeSize; // Automatically adjust to the maximum allowed size
     }
 
-    address = file.map(offset, size);
+    address = file.map( offset, size );
   }
 
   ~ScopedMemMap()
