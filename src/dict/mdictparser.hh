@@ -44,8 +44,26 @@ class ScopedMemMap
 public:
   ScopedMemMap( QFile & file, qint64 offset, qint64 size ):
     file( file ),
-    address( file.map( offset, size ) )
+    address( nullptr )
   {
+    // Check if offset and size are valid
+    if (offset < 0 || size < 0) {
+      address = nullptr;
+      return;
+    }
+
+    qint64 fileSize = file.size();
+    if (offset > fileSize) {
+      address = nullptr; // Start offset exceeds file size
+      return;
+    }
+
+    qint64 maxSafeSize = fileSize - offset;
+    if (size > maxSafeSize) {
+      size = maxSafeSize; // Automatically adjust to the maximum allowed size
+    }
+
+    address = file.map(offset, size);
   }
 
   ~ScopedMemMap()
