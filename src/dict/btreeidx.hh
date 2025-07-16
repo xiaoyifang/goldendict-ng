@@ -82,27 +82,27 @@ public:
   /// Finds articles that match the given string. A case-insensitive search
   /// is performed.
   vector< WordArticleLink >
-  findArticles( const std::u32string &, bool ignoreDiacritics = false, uint32_t maxMatchCount = -1 );
+  findArticles( const std::u32string &, bool ignoreDiacritics = false, uint32_t maxMatchCount = -1 ) override;
 
   /// Find all unique article links in the index
-  void findAllArticleLinks( QList< WordArticleLink > & articleLinks );
+  void findAllArticleLinks( QList< WordArticleLink > & articleLinks ) override;
 
   /// Retrieve all unique headwords from index
-  void getAllHeadwords( QSet< QString > & headwords );
+  void getAllHeadwords( QSet< QString > & headwords ) override;
 
   /// Find all article links and/or headwords in the index
   void findArticleLinks( QList< WordArticleLink > * articleLinks,
                          QSet< uint32_t > * offsets,
                          QSet< QString > * headwords,
-                         QAtomicInt * isCancelled = 0 );
+                         QAtomicInt * isCancelled = 0 ) override;
 
-  void findHeadWords( QList< uint32_t > offsets, int & index, QSet< QString > * headwords, uint32_t length );
-  void findSingleNodeHeadwords( uint32_t offsets, QSet< QString > * headwords );
-  QList< uint32_t > findNodes();
+  void findHeadWords( QList< uint32_t > offsets, int & index, QSet< QString > * headwords, uint32_t length ) override;
+  void findSingleNodeHeadwords( uint32_t offsets, QSet< QString > * headwords ) override;
+  QList< uint32_t > findNodes() override;
 
   /// Retrieve headwords for presented article addresses
   void
-  getHeadwordsFromOffsets( QList< uint32_t > & offsets, QList< QString > & headwords, QAtomicInt * isCancelled = 0 );
+  getHeadwordsFromOffsets( QList< uint32_t > & offsets, QList< QString > & headwords, QAtomicInt * isCancelled = 0 ) override;
 
 protected:
 
