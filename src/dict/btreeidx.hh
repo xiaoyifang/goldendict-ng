@@ -68,7 +68,7 @@ struct IndexInfo
 /// Base btree indexing class which allows using what buildIndex() function
 /// created. It's quite low-lovel and is basically a set of 'building blocks'
 /// functions.
-class BtreeIndex
+class BtreeIndex: public BaseIndex
 {
 public:
 
@@ -77,7 +77,7 @@ public:
   /// Opens the index. The file reference is saved to be used for
   /// subsequent lookups.
   /// The mutex is the one to be locked when working with the file.
-  void openIndex( const IndexInfo &, File::Index &, QMutex & );
+  void openIndex( const IndexInfo &, File::Index &, QMutex & ) override;
 
   /// Finds articles that match the given string. A case-insensitive search
   /// is performed.
