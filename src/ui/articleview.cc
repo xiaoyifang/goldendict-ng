@@ -1032,7 +1032,7 @@ void ArticleView::playAudio( const QUrl & url )
             const auto * active_dicts = dictionaryGroup->getActiveDictionaries( getGroup( webview->url() ) );
             for ( const sptr< Dictionary::Class >& d : *active_dicts ) {
               target_dict = d;
-              target_req  = target_dict->getResource( url.path().mid( 1 ).toUtf8().data() );
+              target_req  = target_dict->getResource( sound_file_name );
               if ( target_dict && target_req->dataSize() > 0 ) {
                 audio_in_same_group_found = true;
                 break;
