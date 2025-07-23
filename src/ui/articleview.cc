@@ -1025,34 +1025,34 @@ void ArticleView::playAudio( const QUrl & url )
       // and it should've been having knowledge of the current groups, too.
 
         try {
-          sptr< Dictionary::Class > target_dict = dictionaryGroup->getDictionaryById( url.host().toStdString() );
+          sptr< Dictionary::Class > target_dict      = dictionaryGroup->getDictionaryById( url.host().toStdString() );
           sptr< Dictionary::DataRequest > target_req = target_dict->getResource( url.path().mid( 1 ).toUtf8().data() );
 
           // Note: The original GD's behavior: falling back to other audio dicts in all dicts when clicking play sound failed.
-          if (!target_dict || target_req.get()->dataSize()<0) {
-            const auto* active_dicts = dictionaryGroup->getActiveDictionaries(getGroup( webview->url() ));
-            for (sptr< Dictionary::Class > d : *active_dicts)
-            {
+          if ( !target_dict || target_req.get()->dataSize() < 0 ) {
+            const auto * active_dicts = dictionaryGroup->getActiveDictionaries( getGroup( webview->url() ) );
+            for ( sptr< Dictionary::Class > d : *active_dicts ) {
               target_dict = d;
-              target_req = target_dict->getResource( url.path().mid( 1 ).toUtf8().data() );
-              if (target_dict  && target_req->dataSize() > 0 ) {
-                goto audio_in_same_group_found;;
+              target_req  = target_dict->getResource( url.path().mid( 1 ).toUtf8().data() );
+              if ( target_dict && target_req->dataSize() > 0 ) {
+                goto audio_in_same_group_found;
+                ;
               }
             }
-            throw std::runtime_error("audio: Cannot find resources in any dict in the current group.");
+            throw std::runtime_error( "audio: Cannot find resources in any dict in the current group." );
           }
 
-          audio_in_same_group_found:
-            if ( !target_req->isFinished() ) {
-              // Queued loading
-              connect( target_req.get(), &Dictionary::Request::finished, this, [ target_req, this ]() {
-                audioDownloadFinished( target_req );
-              } );
-            }
-            else {
-              // Immediate loading
+        audio_in_same_group_found:
+          if ( !target_req->isFinished() ) {
+            // Queued loading
+            connect( target_req.get(), &Dictionary::Request::finished, this, [ target_req, this ]() {
               audioDownloadFinished( target_req );
-            }
+            } );
+          }
+          else {
+            // Immediate loading
+            audioDownloadFinished( target_req );
+          }
         }
         catch ( std::exception & e ) {
           emit statusBarMessage( tr( "ERROR: %1" ).arg( e.what() ), 10000, QPixmap( ":/icons/error.svg" ) );
