@@ -4275,12 +4275,6 @@ void MainWindow::addBookmarkToFavorite( const QString & text )
 
 void MainWindow::addAllTabsToFavorites()
 {
-  QString folder;
-  const Instances::Group * igrp = groupInstances.findGroup( cfg.lastMainGroupId );
-  if ( igrp ) {
-    folder = igrp->favoritesFolder;
-  }
-
   for ( int i = 0; i < ui.tabWidget->count(); i++ ) {
     auto view = qobject_cast< ArticleView * >( ui.tabWidget->widget( i ) );
     if ( !view ) {
