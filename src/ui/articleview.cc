@@ -1022,44 +1022,43 @@ void ArticleView::playAudio( const QUrl & url )
     else if ( url.scheme() == "gdau" ) {
       // Try the target dict first, then try all other dicts in the same group.
       // Note: The original GD's behavior: falling back to other audio dicts in all dicts when clicking play sound failed.
-        try {
-          std::string sound_file_name = url.path().mid( 1 ).toStdString();
-          sptr< Dictionary::Class > target_dict      = dictionaryGroup->getDictionaryById( url.host().toStdString() );
-          sptr< Dictionary::DataRequest > target_req = target_dict->getResource( sound_file_name );
+      try {
+        std::string sound_file_name                = url.path().mid( 1 ).toStdString();
+        sptr< Dictionary::Class > target_dict      = dictionaryGroup->getDictionaryById( url.host().toStdString() );
+        sptr< Dictionary::DataRequest > target_req = target_dict->getResource( sound_file_name );
 
-          if ( !target_dict || target_req.get()->dataSize() < 0 ) {
-            bool audio_in_same_group_found = false;
-            const auto * active_dicts = dictionaryGroup->getActiveDictionaries( getGroup( webview->url() ) );
-            for ( const sptr< Dictionary::Class >& d : *active_dicts ) {
-              target_dict = d;
-              target_req  = target_dict->getResource( sound_file_name );
-              if ( target_dict && target_req->dataSize() > 0 ) {
-                audio_in_same_group_found = true;
-                break;
-              }
-            }
-            if (!audio_in_same_group_found) {
-              throw std::runtime_error( "audio: cannot find resources in the dict or any dict in the current group." );
+        if ( !target_dict || target_req.get()->dataSize() < 0 ) {
+          bool audio_in_same_group_found = false;
+          const auto * active_dicts      = dictionaryGroup->getActiveDictionaries( getGroup( webview->url() ) );
+          for ( const sptr< Dictionary::Class > & d : *active_dicts ) {
+            target_dict = d;
+            target_req  = target_dict->getResource( sound_file_name );
+            if ( target_dict && target_req->dataSize() > 0 ) {
+              audio_in_same_group_found = true;
+              break;
             }
           }
-
-          qDebug("Play audio: %s from %s",sound_file_name.c_str(),  target_dict->getId().c_str());
-          if ( !target_req->isFinished() ) {
-            // Queued loading
-            connect( target_req.get(), &Dictionary::Request::finished, this, [ target_req, this ]() {
-              audioDownloadFinished( target_req );
-            } );
-          }
-          else {
-            // Immediate loading
-            audioDownloadFinished( target_req );
+          if ( !audio_in_same_group_found ) {
+            throw std::runtime_error( "audio: cannot find resources in the dict or any dict in the current group." );
           }
         }
-        catch ( std::exception & e ) {
-          emit statusBarMessage( tr( "ERROR: %1" ).arg( e.what() ), 10000, QPixmap( ":/icons/error.svg" ) );
+
+        qDebug( "Play audio: %s from %s", sound_file_name.c_str(), target_dict->getId().c_str() );
+        if ( !target_req->isFinished() ) {
+          // Queued loading
+          connect( target_req.get(), &Dictionary::Request::finished, this, [ target_req, this ]() {
+            audioDownloadFinished( target_req );
+          } );
+        }
+        else {
+          // Immediate loading
+          audioDownloadFinished( target_req );
         }
       }
-
+      catch ( std::exception & e ) {
+        emit statusBarMessage( tr( "ERROR: %1" ).arg( e.what() ), 10000, QPixmap( ":/icons/error.svg" ) );
+      }
+    }
     else if ( url.scheme() == "gdprg" ) {
       // Program. Run it.
       QString id( url.host() );
