@@ -60,9 +60,7 @@ public:
                                   const std::u32string & context,
                                   bool ) override;
 
-  sptr< Dictionary::DataRequest > getResource( const string & name ) override;
-
-  void isolateWebCSS( QString & css );
+  sptr< DataRequest > getResource( const string & name ) override;
 
   Features getFeatures() const noexcept override
   {
@@ -92,10 +90,7 @@ sptr< WordSearchRequest > WebSiteDictionary::prefixMatch( const std::u32string &
   return sr;
 }
 
-void WebSiteDictionary::isolateWebCSS( QString & css )
-{
-  isolateCSS( css, ".website" );
-}
+
 
 class WebSiteArticleRequest: public WebSiteDataRequestSlots
 {
