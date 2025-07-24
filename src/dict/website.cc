@@ -91,7 +91,6 @@ sptr< WordSearchRequest > WebSiteDictionary::prefixMatch( const std::u32string &
 }
 
 
-
 class WebSiteArticleRequest: public WebSiteDataRequestSlots
 {
   QNetworkReply * netReply;
@@ -328,7 +327,7 @@ sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>)",
 }
 
 
-sptr< DataRequest > WebSiteDictionary::getResource( const string &  /*name*/ )
+sptr< DataRequest > WebSiteDictionary::getResource( const string & /*name*/ )
 {
   return std::make_shared< DataRequestInstant >( false );
 }
