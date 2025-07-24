@@ -20,6 +20,7 @@
 
 #ifdef Q_OS_MACOS
   #include "macos/mac_url_handler.hh"
+  #include <QDesktopServices>
 #endif
 
 #ifdef Q_OS_WIN32
