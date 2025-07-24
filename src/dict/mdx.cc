@@ -6,7 +6,6 @@
 #include "folding.hh"
 #include "text.hh"
 #include "dictfile.hh"
-#include "text.hh"
 #include "chunkedstorage.hh"
 #include "langcoder.hh"
 #include "audiolink.hh"
@@ -27,9 +26,9 @@
 #include <QDir>
 #include <QRegularExpression>
 #include <QString>
-#include <QStringBuilder>
 #include <QThreadPool>
 #include <QtConcurrentRun>
+#include <QStringBuilder>
 
 namespace Mdx {
 

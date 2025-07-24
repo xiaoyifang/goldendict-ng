@@ -1,7 +1,4 @@
 #include "ankiconnector.hh"
-#include <QJsonDocument>
-#include <QJsonObject>
-#include <QJsonValue>
 #include "utils.hh"
 
 QString markTargetWord( const QString & sentence, const QString & word )

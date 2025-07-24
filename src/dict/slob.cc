@@ -16,7 +16,6 @@
 #include "utils.hh"
 #include "iconv.hh"
 #include <QString>
-#include <QStringBuilder>
 #include <QFile>
 #include <QFileInfo>
 #include <QDir>
@@ -31,6 +30,7 @@
 #include <map>
 #include <set>
 #include <algorithm>
+#include <QStringBuilder>
 
 namespace Slob {
 

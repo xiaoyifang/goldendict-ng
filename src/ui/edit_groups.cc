@@ -1,11 +1,12 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
+#include "dict/dictionary.hh"
 #include "edit_groups.hh"
 #include "instances.hh"
-#include "dict/dictionary.hh"
-#include <QMessageBox>
 #include <QInputDialog>
+#include <QMessageBox>
+#include <QToolButton>
 
 using std::vector;
 

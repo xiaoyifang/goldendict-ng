@@ -11,7 +11,6 @@
 #include <exception>
 #include <stdio.h>
 #include <wctype.h>
-#include <QtEndian>
 #include <algorithm>
 
 namespace Dsl {

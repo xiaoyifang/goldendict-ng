@@ -8,7 +8,6 @@
 /// + `x11hotkeywrapper`
 
 #include <QGuiApplication>
-#include <QThread>
 #include "config.hh"
 #include "ex.hh"
 #include "utils.hh"

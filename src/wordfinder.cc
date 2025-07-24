@@ -4,7 +4,6 @@
 #include "wordfinder.hh"
 #include "folding.hh"
 #include <map>
-#include <QMutexLocker>
 
 
 using std::vector;

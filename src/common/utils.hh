@@ -2,9 +2,8 @@
 
 #pragma once
 
-#include <QAtomicInt>
-#include <QJsonDocument>
 #include <QJsonObject>
+#include <QJsonDocument>
 #include <QKeyEvent>
 #include <QString>
 #include <QTextDocument>
@@ -14,6 +13,8 @@
 #include <QWidget>
 #include "filetype.hh"
 #include <string>
+
+
 using std::string;
 
 namespace Utils {

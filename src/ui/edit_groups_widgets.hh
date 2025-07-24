@@ -5,9 +5,7 @@
 
 /// Various custom widgets used in the Groups dialog
 #include <vector>
-#include <QAction>
 #include <QListWidget>
-#include <QLineEdit>
 #include <QSortFilterProxyModel>
 #include "config.hh"
 #include "dict/dictionary.hh"

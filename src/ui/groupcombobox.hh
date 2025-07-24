@@ -5,7 +5,6 @@
 
 #include <QComboBox>
 #include <QAction>
-#include <QSize>
 #include <QList>
 #include "instances.hh"
 

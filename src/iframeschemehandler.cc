@@ -1,6 +1,6 @@
-#include "iframeschemehandler.hh"
-
 #include "iconv.hh"
+#include "iframeschemehandler.hh"
+#include <QWebEngineUrlRequestJob>
 
 IframeSchemeHandler::IframeSchemeHandler( QObject * parent ):
   QWebEngineUrlSchemeHandler( parent )

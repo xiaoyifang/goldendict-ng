@@ -4,9 +4,7 @@
 #include "btreeidx.hh"
 #include "folding.hh"
 #include "text.hh"
-#include <math.h>
 #include <string.h>
-#include <stdlib.h>
 #include "utils.hh"
 
 #include <QRegularExpression>

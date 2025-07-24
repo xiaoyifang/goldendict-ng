@@ -5,7 +5,6 @@
 
 #include "ex.hh"
 #include "text.hh"
-#include <QString>
 #include <QStringList>
 #include <iconv.h>
 

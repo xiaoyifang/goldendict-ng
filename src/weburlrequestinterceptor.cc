@@ -1,5 +1,4 @@
 #include "weburlrequestinterceptor.hh"
-#include <QDebug>
 #include "utils.hh"
 #include "globalbroadcaster.hh"
 #include "config.hh"

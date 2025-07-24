@@ -8,7 +8,6 @@
 #include <vector>
 
 #include <QMutex>
-#include <QObject>
 #include <QString>
 #include <QWaitCondition>
 #include <QGuiApplication>
@@ -19,7 +18,6 @@
 #include "langcoder.hh"
 #include "sptr.hh"
 #include "utils.hh"
-#include "text.hh"
 #include <QtGlobal>
 
 /// Abstract dictionary-related stuff

@@ -5,14 +5,12 @@
 
 #include "ex.hh"
 
-#include <QFile>
 #include <QFileInfo>
 #include <cstdio>
 #include <string>
 #include <vector>
 #include <QMutex>
 #include <type_traits>
-#include <string>
 
 /// File utilities
 namespace File {

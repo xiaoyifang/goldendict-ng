@@ -3,9 +3,7 @@
 #ifndef __APPLE__
   #include <QGestureRecognizer>
   #include <QGesture>
-  #include <QTimer>
   #include <QEvent>
-  #include <QAction>
 
 namespace Gestures {
 

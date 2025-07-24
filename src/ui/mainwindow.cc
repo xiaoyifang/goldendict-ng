@@ -2,7 +2,6 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include <Qt>
-#include <QScopeGuard>
 #ifdef EPWING_SUPPORT
   #include "dict/epwing_book.hh"
 #endif
@@ -26,7 +25,6 @@
 #include <QToolBar>
 #include <QCloseEvent>
 #include <QDesktopServices>
-#include <QProcess>
 #include <QCryptographicHash>
 #include <QFileDialog>
 #include <QPrinter>

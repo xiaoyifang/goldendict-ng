@@ -3,12 +3,8 @@
 
 #include "config.hh"
 #include "folding.hh"
-#include <QSaveFile>
-#include <QFile>
 #include <QtXml>
 #include <QApplication>
-#include <QStyle>
-#include <QFont>
 
 #ifdef Q_OS_WIN32
   //this is a windows header file.

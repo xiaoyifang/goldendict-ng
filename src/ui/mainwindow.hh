@@ -3,12 +3,7 @@
 
 #pragma once
 
-#include <QMainWindow>
-#include <QThread>
-#include <QToolButton>
 #include <QSystemTrayIcon>
-#include <QNetworkAccessManager>
-#include <QProgressDialog>
 #include <functional>
 #include "ui_mainwindow.h"
 #include "config.hh"
@@ -37,7 +32,6 @@
 #include "clipboard/clipboardlistener.hh"
 //must place the qactiongroup after fixx11h.h, None in QActionGroup conflict with X.h's macro None.
 #include <QActionGroup>
-#include <QShortcut>
 
 using std::string;
 using std::vector;

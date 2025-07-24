@@ -4,10 +4,7 @@
 #pragma once
 
 #include <QtNetwork>
-#include <QSet>
-#include <QMap>
 #include <QWebEngineUrlSchemeHandler>
-#include <QWebEngineUrlRequestJob>
 #include <QNetworkAccessManager>
 
 #include <utility>

@@ -4,7 +4,6 @@
 #pragma once
 
 #include "btreeidx.hh"
-#include <QFile>
 #include "zipfile.hh"
 #include <QMutex>
 

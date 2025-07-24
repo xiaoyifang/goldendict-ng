@@ -9,9 +9,7 @@
 #include "keyboardstate.hh"
 #include "config.hh"
 #include "ui_scanpopup_toolbar.h"
-#include <QDialog>
 #include <QClipboard>
-#include <QToolBar>
 #include "history.hh"
 #include "dictionarybar.hh"
 #include "mainstatusbar.hh"

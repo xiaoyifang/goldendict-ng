@@ -12,9 +12,6 @@
 #include "htmlescape.hh"
 #include "utils.hh"
 #include "xdxf.hh"
-
-#include <QRegularExpression>
-
 #include "globalregex.hh"
 
 namespace Xdxf2Html {

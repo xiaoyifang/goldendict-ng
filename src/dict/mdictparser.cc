@@ -20,23 +20,19 @@
 
 #include "mdictparser.hh"
 
-#include <errno.h>
-#include <zlib.h>
-#include <lzo/lzo1x.h>
-
-#include <QtEndian>
-#include <QStringList>
-#include <QByteArray>
-#include <QFileInfo>
-#include <QRegularExpression>
-#include <QDomDocument>
-#include <QTextDocumentFragment>
-#include <QDataStream>
 #include "decompress.hh"
-#include "ripemd.hh"
-#include "utils.hh"
 #include "htmlescape.hh"
 #include "iconv.hh"
+#include "ripemd.hh"
+#include "utils.hh"
+#include <QByteArray>
+#include <QDataStream>
+#include <QDomDocument>
+#include <QStringList>
+#include <QTextDocumentFragment>
+#include <QtEndian>
+#include <lzo/lzo1x.h>
+#include <zlib.h>
 
 namespace Mdict {
 

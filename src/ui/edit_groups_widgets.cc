@@ -10,7 +10,6 @@
 #include "metadata.hh"
 #include "utils.hh"
 
-#include <QDir>
 #include <QFileDialog>
 #include <QFileInfo>
 #include <QIcon>
