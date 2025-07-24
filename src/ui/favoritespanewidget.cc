@@ -1,24 +1,22 @@
 /* This file is (c) 2017 Abs62
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#include <QApplication>
-#include <QDockWidget>
-#include <QKeyEvent>
-#include <QClipboard>
-#include <QDomDocument>
-#include <QMessageBox>
-#include <QtAlgorithms>
-#include <QMap>
-#include <QSaveFile>
-#include <QDebug>
-
-#include <algorithm>
-#include <functional>
-
 #include "favoritespanewidget.hh"
 #include "globalbroadcaster.hh"
-
+#include <QApplication>
+#include <QClipboard>
+#include <QDebug>
+#include <QDockWidget>
+#include <QDomDocument>
 #include <QFile>
+#include <QKeyEvent>
+#include <QMap>
+#include <QMessageBox>
+#include <QSaveFile>
+#include <QStringBuilder>
+#include <QtAlgorithms>
+#include <algorithm>
+#include <functional>
 
 /************************************************** FavoritesPaneWidget *********************************************/
 
