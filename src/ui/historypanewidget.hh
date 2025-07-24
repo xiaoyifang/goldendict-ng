@@ -5,7 +5,6 @@
 
 #include <QWidget>
 #include <QSize>
-#include <QAbstractListModel>
 #include <QListView>
 #include <QLabel>
 #include <QHBoxLayout>

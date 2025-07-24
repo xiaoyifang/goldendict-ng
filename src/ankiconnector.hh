@@ -2,7 +2,6 @@
 
 #include "config.hh"
 
-#include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QObject>
 

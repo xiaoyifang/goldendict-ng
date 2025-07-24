@@ -8,9 +8,7 @@
   #include <QDir>
   #include <QTextStream>
   #include <QTextDocumentFragment>
-  #include <QHash>
   #include "audiolink.hh"
-  #include "text.hh"
   #include "folding.hh"
   #include "epwing_charmap.hh"
   #include "htmlescape.hh"

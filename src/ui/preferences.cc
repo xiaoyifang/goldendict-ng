@@ -2,8 +2,6 @@
 #include "language.hh"
 #include "preferences.hh"
 #include "help.hh"
-
-#include <QDebug>
 #include <QDir>
 #include <QFontDatabase>
 #include <QMessageBox>

@@ -20,9 +20,7 @@
 
 #pragma once
 
-#include <stdlib.h>
 #include <zlib.h>
-
 #include <string>
 #include <vector>
 #include <qglobal.h>

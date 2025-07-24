@@ -3,7 +3,6 @@
 
 #include "sounddir.hh"
 #include "folding.hh"
-#include "text.hh"
 #include "btreeidx.hh"
 #include "chunkedstorage.hh"
 #include "filetype.hh"
@@ -13,7 +12,6 @@
 #include "utils.hh"
 
 #include <set>
-#include <QDir>
 #include <QFileInfo>
 #include <QDirIterator>
 

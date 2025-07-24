@@ -2,7 +2,6 @@
 #include "logger.hh"
 #include <QDateTime>
 #include <QFile>
-#include <QGlobalStatic>
 #include <QMutexLocker>
 
 QFile logFile;

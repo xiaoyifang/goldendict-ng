@@ -2,7 +2,6 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "website.hh"
-#include "text.hh"
 #include <QUrl>
 #include <QTextCodec>
 #include <QDir>

@@ -6,7 +6,6 @@
 #include <string>
 #include <map>
 #include "dictionary.hh"
-#include "indexedzip.hh"
 
 /// Xdxf is an xml file format. Since we display html, we'd like to be able
 /// to convert articles with such a markup to an html.

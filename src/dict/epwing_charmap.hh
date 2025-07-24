@@ -1,6 +1,5 @@
 #pragma once
 
-#include <QByteArray>
 #include <QMap>
 
 namespace Epwing {

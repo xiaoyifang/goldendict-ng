@@ -1,10 +1,8 @@
 #pragma once
-#include <QtGlobal>
 #include <QClipboard>
 #include <QObject>
 #include <QString>
 #include <QTimer>
-#include <memory>
 
 class BaseClipboardListener: public QObject
 {

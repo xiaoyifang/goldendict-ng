@@ -5,7 +5,6 @@
 #include "folding.hh"
 #include <QCursor>
 #include <QPixmap>
-#include <QBitmap>
 #include <QMenu>
 #include <QMouseEvent>
 #include "gestures.hh"
@@ -14,8 +13,6 @@
   #include "macos/macmouseover.hh"
   #define MouseOver MacMouseOver
 #endif
-#include "base_type.hh"
-
 
 static const Qt::WindowFlags defaultUnpinnedWindowFlags =
 

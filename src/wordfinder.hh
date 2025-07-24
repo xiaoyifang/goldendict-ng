@@ -6,10 +6,7 @@
 #include <list>
 #include <map>
 #include <atomic>
-#include <QObject>
 #include <QTimer>
-#include <QMutex>
-#include <QWaitCondition>
 #include <QRunnable>
 #include "dict/dictionary.hh"
 #include "concurrent_list.hh"

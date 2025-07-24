@@ -9,7 +9,6 @@
 #include <zlib.h>
 #include "dictionary.hh"
 #include "iconv.hh"
-#include <QByteArray>
 #include "text.hh"
 
 // Implementation details for Dsl, not part of its interface

@@ -1,8 +1,6 @@
 #pragma once
 #include "audioplayerinterface.hh"
 #include "ffmpegaudioplayer.hh"
-#include "multimediaaudioplayer.hh"
-#include <QScopedPointer>
 #include <QStringList>
 
 /// Overly engineered dummy/helper/wrapper "backend", which is not, to manage backends.

@@ -1,10 +1,7 @@
 #pragma once
 
-#include <QObject>
-#include <vector>
 #include "config.hh"
 #include "pronounceengine.hh"
-#include <QCache>
 #include "dictionary_icon_name.hh"
 
 struct ActiveDictIds

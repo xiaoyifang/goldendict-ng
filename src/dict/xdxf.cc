@@ -13,8 +13,6 @@
 #include <string>
 #include <vector>
 #include <list>
-#include <wctype.h>
-#include <stdlib.h>
 #include "xdxf2html.hh"
 #include "ufile.hh"
 #include "langcoder.hh"

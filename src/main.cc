@@ -7,18 +7,14 @@
 #include "version.hh"
 #include <QByteArray>
 #include <QCommandLineParser>
-#include <QDesktopServices>
 #include <QFile>
 #include <QIcon>
 #include <QMessageBox>
-#include <QMutex>
 #include <QSessionManager>
 #include <QString>
 #include <QtWebEngineCore/QWebEngineUrlScheme>
 #include <stdio.h>
-#include <QStyleFactory>
 #if defined( Q_OS_UNIX )
-  #include <clocale>
   #include "unix/ksignalhandler.hh"
 #endif
 

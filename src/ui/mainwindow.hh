@@ -3,12 +3,7 @@
 
 #pragma once
 
-#include <QMainWindow>
-#include <QThread>
-#include <QToolButton>
 #include <QSystemTrayIcon>
-#include <QNetworkAccessManager>
-#include <QProgressDialog>
 #include <functional>
 #include "ui_mainwindow.h"
 #include "config.hh"

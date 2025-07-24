@@ -1,7 +1,5 @@
 #include "utils.hh"
 #include <QDir>
-#include <QPalette>
-#include <QStyle>
 #include <QMessageBox>
 #include <string>
 #include <QBuffer>

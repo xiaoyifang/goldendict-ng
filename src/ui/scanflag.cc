@@ -1,6 +1,5 @@
 #include "scanflag.hh"
 #include <QCursor>
-#include <QGuiApplication>
 #include <QScreen>
 
 

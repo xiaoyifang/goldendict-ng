@@ -9,10 +9,8 @@
 #include "speechclient.hh"
 #include "utils.hh"
 #include "webmultimediadownload.hh"
-#include "wildcard.hh"
 #include <QBuffer>
 #include <QClipboard>
-#include <QCryptographicHash>
 #include <QDebug>
 #include <QDesktopServices>
 #include <QFileDialog>
@@ -23,7 +21,6 @@
 #include <QVariant>
 #include <QWebChannel>
 #include <QWebEngineHistory>
-#include <QWebEngineScript>
 #include <QWebEngineScriptCollection>
 #include <QWebEngineSettings>
 #include <map>

@@ -5,7 +5,6 @@
 #include <vector>
 #include <algorithm>
 #include <QByteArray>
-#include <QString>
 #include <QList>
 
 namespace Text {

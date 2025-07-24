@@ -27,7 +27,6 @@
 #include <QRegularExpression>
 #include "globalregex.hh"
 #include <QDir>
-#include <stdlib.h>
 
 #ifndef Q_OS_WIN
   #include <arpa/inet.h>

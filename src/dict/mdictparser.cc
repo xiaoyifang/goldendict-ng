@@ -20,15 +20,10 @@
 
 #include "mdictparser.hh"
 
-#include <errno.h>
 #include <zlib.h>
 #include <lzo/lzo1x.h>
-
-#include <QtEndian>
 #include <QStringList>
 #include <QByteArray>
-#include <QFileInfo>
-#include <QRegularExpression>
 #include <QDomDocument>
 #include <QTextDocumentFragment>
 #include <QDataStream>

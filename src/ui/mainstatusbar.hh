@@ -3,7 +3,6 @@
 
 #pragma once
 
-#include <QWidget>
 #include <QLabel>
 #include <QString>
 #include <QTimer>

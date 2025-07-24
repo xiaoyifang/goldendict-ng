@@ -5,14 +5,12 @@
 
 #include <QWidget>
 #include <QSize>
-#include <QAbstractItemModel>
 #include <QLabel>
 #include <QHBoxLayout>
 #include <QMenu>
 #include <QDomNode>
 #include <QList>
 #include <QMimeData>
-#include <QItemSelection>
 #include <QTreeView>
 
 #include <config.hh>

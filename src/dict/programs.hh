@@ -6,7 +6,6 @@
 #include <QProcess>
 #include "dictionary.hh"
 #include "config.hh"
-#include "text.hh"
 
 /// Support for arbitrary programs.
 namespace Programs {

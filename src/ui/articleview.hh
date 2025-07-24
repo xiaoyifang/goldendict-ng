@@ -6,8 +6,6 @@
 #include <QAction>
 #include <QMap>
 #include <QSet>
-#include <QUrl>
-#include <QWebEngineView>
 #include <list>
 #include "article_netmgr.hh"
 #include "audio/audioplayerinterface.hh"
@@ -15,7 +13,6 @@
 #include "groupcombobox.hh"
 #include "globalbroadcaster.hh"
 #include "article_inspect.hh"
-#include <QRegularExpression>
 #include "ankiconnector.hh"
 #include "webmultimediadownload.hh"
 #include "base_type.hh"

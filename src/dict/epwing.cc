@@ -7,7 +7,6 @@
   #include "epwing.hh"
   #include <QByteArray>
   #include <map>
-  #include <QtConcurrentRun>
   #include <set>
   #include <string>
   #include "btreeidx.hh"

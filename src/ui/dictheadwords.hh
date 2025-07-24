@@ -1,12 +1,6 @@
 #pragma once
 
-#include <QDialog>
-#include <QSet>
-#include <QString>
-#include <QStringList>
-#include <QStringListModel>
 #include <QSortFilterProxyModel>
-#include <QAction>
 #include <qprogressdialog.h>
 
 #include "config.hh"

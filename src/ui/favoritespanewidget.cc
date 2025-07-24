@@ -10,7 +10,6 @@
 #include <QtAlgorithms>
 #include <QMap>
 #include <QSaveFile>
-#include <QStringBuilder>
 #include <QDebug>
 
 #include <algorithm>

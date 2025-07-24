@@ -6,7 +6,6 @@
 #include "fulltextsearch.hh"
 #include "ftshelpers.hh"
 #include "dictfile.hh"
-#include "folding.hh"
 #include "utils.hh"
 
 #include <vector>

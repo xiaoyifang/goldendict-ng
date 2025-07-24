@@ -3,7 +3,6 @@
 
 #include "dictheadwords.hh"
 #include "headwordsmodel.hh"
-#include <QDir>
 #include <QFileDialog>
 #include <QTimer>
 #include <QProgressDialog>

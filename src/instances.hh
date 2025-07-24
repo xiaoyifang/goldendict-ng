@@ -6,7 +6,6 @@
 #include "config.hh"
 #include "dict/dictionary.hh"
 #include <QIcon>
-#include <limits.h>
 
 // This complements Config, providing instances for the stored configurations.
 // Simply put, it can convert groups to ones which hold references to

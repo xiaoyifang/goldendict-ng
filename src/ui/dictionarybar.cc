@@ -4,7 +4,6 @@
 #include <QApplication>
 #include <QMenu>
 #include <QContextMenuEvent>
-#include <QProcess>
 #include <QStyle>
 
 

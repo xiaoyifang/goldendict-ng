@@ -1,12 +1,13 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#include <stdint.h>
-#include <QUrl>
 #include "article_netmgr.hh"
+#include "globalbroadcaster.hh"
 #include "utils.hh"
 #include <QNetworkAccessManager>
-#include "globalbroadcaster.hh"
+#include <QUrl>
+#include <QWebEngineUrlRequestJob>
+#include <stdint.h>
 
 using std::string;
 

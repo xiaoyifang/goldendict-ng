@@ -2,8 +2,6 @@
 
 #pragma once
 
-#include <QAtomicInt>
-#include <QJsonDocument>
 #include <QJsonObject>
 #include <QKeyEvent>
 #include <QString>
