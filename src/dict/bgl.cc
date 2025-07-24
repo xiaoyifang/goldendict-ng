@@ -198,7 +198,7 @@ public:
                                               const std::u32string &,
                                               bool ignoreDiacritics ) override;
 
-  sptr< Dictionary::DataRequest > getResource( const string & name ) override;
+  sptr< ResourceRequest > getResource( const string & name ) override;
 
   sptr< Dictionary::DataRequest >
   getSearchResults( const QString & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
@@ -812,16 +812,13 @@ sptr< Dictionary::DataRequest > BglDictionary::getArticle( const std::u32string 
 
 //// BglDictionary::getResource()
 
-class BglResourceRequest: public Dictionary::DataRequest
+class BglResourceRequest: public ResourceRequest
 {
 
   QMutex & idxMutex;
   File::Index & idx;
   uint32_t resourceListOffset, resourcesCount;
   string name;
-
-  QAtomicInt isCancelled;
-  QFuture< void > f;
 
 public:
 
@@ -842,26 +839,10 @@ public:
   }
 
   void run();
-
-  void cancel() override
-  {
-    isCancelled.ref();
-  }
-
-  ~BglResourceRequest()
-  {
-    isCancelled.ref();
-    f.waitForFinished();
-  }
 };
 
 void BglResourceRequest::run()
 {
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
-    finish();
-    return;
-  }
-
   string nameLowercased = name;
 
   for ( char & i : nameLowercased ) {
@@ -873,7 +854,7 @@ void BglResourceRequest::run()
   idx.seek( resourceListOffset );
 
   for ( size_t count = resourcesCount; count--; ) {
-    if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+    if ( f.isCanceled() ) {
       break;
     }
 
@@ -920,11 +901,10 @@ void BglResourceRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > BglDictionary::getResource( const string & name )
+sptr< ResourceRequest > BglDictionary::getResource( const string & name )
 
 {
-  return std::shared_ptr< BglResourceRequest >(
-    new BglResourceRequest( idxMutex, idx, idxHeader.resourceListOffset, idxHeader.resourcesCount, name ) );
+  return std::make_shared<BglResourceRequest> ( idxMutex, idx, idxHeader.resourceListOffset, idxHeader.resourcesCount, name );
 }
 
 /// Replaces <CHARSET c="t">1234;</CHARSET> occurrences with &#x1234;

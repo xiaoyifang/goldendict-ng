@@ -205,10 +205,10 @@ QString Class::getContainingFolder() const
   return {};
 }
 
-sptr< DataRequest > Class::getResource( const string & /*name*/ )
+sptr< ResourceRequest > Class::getResource( const string & /*name*/ )
 
 {
-  return std::make_shared< DataRequestInstant >( false );
+  return ResourceRequest::NoDataFinished(false);
 }
 
 sptr< DataRequest > Class::getSearchResults( const QString &, int, bool, bool )

@@ -173,7 +173,7 @@ public:
                                               const std::u32string &,
                                               bool ignoreDiacritics ) override;
 
-  sptr< Dictionary::DataRequest > getResource( const string & name ) override;
+  sptr< ResourceRequest > getResource( const string & name ) override;
 
 protected:
 
@@ -384,7 +384,7 @@ __attribute__( ( packed ) )
 #endif
 ;
 
-sptr< Dictionary::DataRequest > LsaDictionary::getResource( const string & name )
+sptr< ResourceRequest > LsaDictionary::getResource( const string & name )
 
 {
   // See if the name ends in .wav. Remove that extension then
@@ -394,7 +394,7 @@ sptr< Dictionary::DataRequest > LsaDictionary::getResource( const string & name 
   vector< WordArticleLink > chain = findArticles( Text::toUtf32( strippedName ) );
 
   if ( chain.empty() ) {
-    return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such resource
+    return ResourceRequest::NoDataFinished(false); // No such resource
   }
 
   File::Index f( getDictionaryFilenames()[ 0 ], QIODevice::ReadOnly );
@@ -426,9 +426,10 @@ sptr< Dictionary::DataRequest > LsaDictionary::getResource( const string & name 
     throw exFailedToRetrieveVorbisInfo();
   }
 
-  sptr< Dictionary::DataRequestInstant > dr = std::make_shared< Dictionary::DataRequestInstant >( true );
+  sptr< ResourceRequest > dr = ResourceRequest::NoDataFinished(true);
+  QMutexLocker locker(&dr->dataMutex);
 
-  vector< char > & data = dr->getData();
+  vector< char > & data = dr->data;
 
   data.resize( sizeof( WavHeader ) + e.samplesLength * 2 );
 

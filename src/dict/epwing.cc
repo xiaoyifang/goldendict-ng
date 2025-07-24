@@ -113,7 +113,7 @@ public:
   sptr< Dictionary::DataRequest >
   getArticle( const u32string &, const vector< u32string > & alts, const u32string &, bool ignoreDiacritics ) override;
 
-  sptr< Dictionary::DataRequest > getResource( const string & name ) override;
+  sptr< ResourceRequest > getResource( const string & name ) override;
 
   sptr< Dictionary::DataRequest >
   getSearchResults( const QString & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
@@ -774,15 +774,11 @@ sptr< Dictionary::DataRequest > EpwingDictionary::getArticle( const u32string & 
 
 //// EpwingDictionary::getResource()
 
-class EpwingResourceRequest: public Dictionary::DataRequest
+class EpwingResourceRequest: public ResourceRequest
 {
   EpwingDictionary & dict;
 
   string resourceName;
-
-  QAtomicInt isCancelled;
-  QFuture< void > f;
-
 public:
 
   EpwingResourceRequest( EpwingDictionary & dict_, const string & resourceName_ ):
@@ -796,25 +792,10 @@ public:
 
   void run();
 
-  void cancel() override
-  {
-    isCancelled.ref();
-  }
-
-  ~EpwingResourceRequest()
-  {
-    isCancelled.ref();
-    f.waitForFinished();
-  }
 };
 
 void EpwingResourceRequest::run()
 {
-  // Some runnables linger enough that they are cancelled before they start
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
-    finish();
-    return;
-  }
 
   QString cacheDir;
   {
@@ -859,7 +840,7 @@ void EpwingResourceRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > EpwingDictionary::getResource( const string & name )
+sptr<ResourceRequest > EpwingDictionary::getResource( const string & name )
 
 {
   return std::make_shared< EpwingResourceRequest >( *this, name );

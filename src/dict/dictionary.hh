@@ -19,6 +19,7 @@
 #include "sptr.hh"
 #include "utils.hh"
 #include <QtGlobal>
+#include "dict/utils/resourcerequest.hh"
 
 /// Abstract dictionary-related stuff
 namespace Dictionary {
@@ -469,7 +470,7 @@ public:
   /// usually a picture file referenced in the article or something like that.
   /// The default implementation always returns the non-existing resource
   /// response.
-  virtual sptr< DataRequest > getResource( const string & /*name*/ );
+  virtual sptr< ResourceRequest > getResource( const string & /*name*/ );
 
   /// Returns a results of full-text search of given string similar getArticle().
   virtual sptr< DataRequest >

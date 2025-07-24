@@ -122,7 +122,7 @@ public:
                                               const std::u32string &,
                                               bool ignoreDiacritics ) override;
 
-  sptr< Dictionary::DataRequest > getResource( const string & name ) override;
+  sptr< ResourceRequest > getResource( const string & name ) override;
 
 protected:
 
@@ -312,7 +312,7 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getArticle( const std::u32s
   return ret;
 }
 
-sptr< Dictionary::DataRequest > ZipSoundsDictionary::getResource( const string & name )
+sptr< ResourceRequest > ZipSoundsDictionary::getResource( const string & name )
 
 {
   // Remove extension for sound files (like in sound dirs)
@@ -322,7 +322,7 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getResource( const string &
   vector< WordArticleLink > chain = findArticles( strippedName );
 
   if ( chain.empty() ) {
-    return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such resource
+    return ResourceRequest::NoDataFinished(false); // No such resource
   }
 
   // Find sound
@@ -346,13 +346,13 @@ sptr< Dictionary::DataRequest > ZipSoundsDictionary::getResource( const string &
     }
   }
 
-  sptr< Dictionary::DataRequestInstant > dr = std::make_shared< Dictionary::DataRequestInstant >( true );
+  auto dr = ResourceRequest::NoDataFinished(true);
 
-  if ( zipsFile.loadFile( dataOffset, dr->getData() ) ) {
+  if ( zipsFile.loadFile( dataOffset, dr->data ) ) {
     return dr;
   }
 
-  return std::make_shared< Dictionary::DataRequestInstant >( false );
+  return ResourceRequest::NoDataFinished(false);
 }
 
 void ZipSoundsDictionary::loadIcon() noexcept

@@ -1010,9 +1010,9 @@ void ArticleView::playAudio( const QUrl & url )
 
     // Download it
     if ( Utils::Url::isWebAudioUrl( url ) ) {
-      sptr< Dictionary::DataRequest > req = std::make_shared< Dictionary::WebMultimediaDownload >( url, articleNetMgr );
+      sptr< ResourceRequest > req = std::make_shared< Dictionary::WebMultimediaDownload >( url, articleNetMgr );
 
-      connect( req.get(), &Dictionary::Request::finished, this, [ req, this ]() {
+      connect( req.get(), &ResourceRequest::finished, this, [ req, this ]() {
         audioDownloadFinished( req );
       } );
     }
@@ -1025,11 +1025,11 @@ void ArticleView::playAudio( const QUrl & url )
 
       if ( dict ) {
         try {
-          sptr< Dictionary::DataRequest > req = dict->getResource( url.path().mid( 1 ).toUtf8().data() );
+          sptr<ResourceRequest > req = dict->getResource( url.path().mid( 1 ).toUtf8().data() );
 
           if ( !req->isFinished() ) {
             // Queued loading
-            connect( req.get(), &Dictionary::Request::finished, this, [ req, this ]() {
+            connect( req.get(), &ResourceRequest::finished, this, [ req, this ]() {
               audioDownloadFinished( req );
             } );
           }
@@ -1097,7 +1097,7 @@ void ArticleView::playAudio( const QUrl & url )
 ResourceToSaveHandler * ArticleView::saveResource( const QUrl & url, const QString & fileName )
 {
   ResourceToSaveHandler * handler = new ResourceToSaveHandler( this, fileName );
-  sptr< Dictionary::DataRequest > req;
+  sptr< ResourceRequest > req;
 
   if ( url.scheme() == "bres" || url.scheme() == "gico" || url.scheme() == "gdau" || url.scheme() == "gdvideo" ) {
     // Normal resource download
@@ -1690,7 +1690,7 @@ void ArticleView::resourceDownloadFinished( const sptr< Dictionary::DataRequest 
 }
 
 
-void ArticleView::audioDownloadFinished( const sptr< Dictionary::DataRequest > & req )
+void ArticleView::audioDownloadFinished( const sptr< ResourceRequest> & req )
 {
   if ( req->dataSize() >= 0 ) {
     // Ok, got one finished, all others are irrelevant now
@@ -2105,12 +2105,12 @@ ResourceToSaveHandler::ResourceToSaveHandler( ArticleView * view, QString fileNa
   connect( this, &ResourceToSaveHandler::statusBarMessage, view, &ArticleView::statusBarMessage );
 }
 
-void ResourceToSaveHandler::addRequest( const sptr< Dictionary::DataRequest > & req )
+void ResourceToSaveHandler::addRequest( const sptr< ResourceRequest > & req )
 {
   if ( !alreadyDone ) {
     downloadRequests.push_back( req );
 
-    connect( req.get(), &Dictionary::Request::finished, this, &ResourceToSaveHandler::downloadFinished );
+    connect( req.get(), &ResourceRequest::finished, this, &ResourceToSaveHandler::downloadFinished );
   }
 }
 

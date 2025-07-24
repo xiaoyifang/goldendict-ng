@@ -164,20 +164,20 @@ string ArticleNetworkAccessManager::getHtml( ResourceType resourceType )
   }
 }
 
-sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( const QUrl & url, QString & contentType )
+sptr< ResourceRequest > ArticleNetworkAccessManager::getResource( const QUrl & url, QString & contentType )
 {
   qDebug() << "getResource:" << url.toString();
 
   if ( url.scheme() == "gdlookup" ) {
     if ( !url.host().isEmpty() && url.host() != "localhost" ) {
       // Strange request - ignore it
-      return std::make_shared< Dictionary::DataRequestInstant >( false );
+      return ResourceRequest::NoDataFinished(false);
     }
 
     contentType = "text/html";
 
     if ( Utils::Url::queryItemValue( url, "blank" ) == "1" ) {
-      return articleMaker.makeEmptyPage();
+      return articleMaker.makeEmptyPageResourceRequest();
     }
 
     QString word = Utils::Url::queryItemValue( url, "word" ).trimmed();
@@ -227,9 +227,9 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( const 
           buffer.open( QIODevice::WriteOnly );
           dictionary->getIcon().pixmap( 64 ).save( &buffer, "PNG" );
           buffer.close();
-          sptr< Dictionary::DataRequestInstant > ico = std::make_shared< Dictionary::DataRequestInstant >( true );
-          ico->getData().resize( bytes.size() );
-          memcpy( &( ico->getData().front() ), bytes.data(), bytes.size() );
+          sptr<ResourceRequest > ico = ResourceRequest::NoDataFinished(true);
+          ico->data.resize( bytes.size() );
+          memcpy( &( ico->data.front() ), bytes.data(), bytes.size() );
           return ico;
         }
         try {
@@ -248,7 +248,7 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( const 
 
 ArticleResourceReply::ArticleResourceReply( QObject * parent,
                                             const QNetworkRequest & netReq,
-                                            const sptr< Dictionary::DataRequest > & req_,
+                                            const sptr< ResourceRequest > & req_,
                                             const QString & contentType ):
   QNetworkReply( parent ),
   req( req_ ),
@@ -262,9 +262,9 @@ ArticleResourceReply::ArticleResourceReply( QObject * parent,
     setHeader( QNetworkRequest::ContentTypeHeader, contentType );
   }
 
-  connect( req.get(), &Dictionary::Request::updated, this, &ArticleResourceReply::reqUpdated );
+  connect( req.get(), &ResourceRequest::updated, this, &ArticleResourceReply::reqUpdated );
 
-  connect( req.get(), &Dictionary::Request::finished, this, &ArticleResourceReply::reqFinished );
+  connect( req.get(), &ResourceRequest::updated, this, &ArticleResourceReply::reqFinished );
 
   if ( req->isFinished() || req->dataSize() > 0 ) {
     connect( this,

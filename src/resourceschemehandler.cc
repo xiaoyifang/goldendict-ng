@@ -11,7 +11,7 @@ void ResourceSchemeHandler::requestStarted( QWebEngineUrlRequestJob * requestJob
   const QUrl url = requestJob->requestUrl();
   QString content_type;
   const QMimeType mineType                    = db.mimeTypeForUrl( url );
-  const sptr< Dictionary::DataRequest > reply = this->mManager.getResource( url, content_type );
+  const sptr< ResourceRequest > reply = this->mManager.getResource( url, content_type );
   content_type                                = mineType.name();
 
   if ( reply == nullptr ) {
@@ -22,14 +22,14 @@ void ResourceSchemeHandler::requestStarted( QWebEngineUrlRequestJob * requestJob
     replyJob( reply, requestJob, content_type );
   }
   else {
-    connect( reply.get(), &Dictionary::DataRequest::finished, requestJob, [ = ]() {
+    connect( reply.get(), &ResourceRequest::finished, requestJob, [ = ]() {
       replyJob( reply, requestJob, content_type );
     } );
   }
 }
 
 
-void ResourceSchemeHandler::replyJob( sptr< Dictionary::DataRequest > reply,
+void ResourceSchemeHandler::replyJob( sptr< ResourceRequest > reply,
                                       QWebEngineUrlRequestJob * requestJob,
                                       QString content_type )
 {

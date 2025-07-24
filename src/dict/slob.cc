@@ -633,7 +633,7 @@ public:
                                               const std::u32string &,
                                               bool ignoreDiacritics ) override;
 
-  sptr< Dictionary::DataRequest > getResource( const string & name ) override;
+  sptr< ResourceRequest > getResource( const string & name ) override;
 
   const QString & getDescription() override;
 
@@ -1135,15 +1135,13 @@ sptr< Dictionary::DataRequest > SlobDictionary::getArticle( const std::u32string
 
 //// SlobDictionary::getResource()
 
-class SlobResourceRequest: public Dictionary::DataRequest
+class SlobResourceRequest: public ResourceRequest
 {
 
   SlobDictionary & dict;
 
   string resourceName;
 
-  QAtomicInt isCancelled;
-  QFuture< void > f;
 
 public:
 
@@ -1158,26 +1156,11 @@ public:
 
   void run();
 
-  void cancel() override
-  {
-    isCancelled.ref();
-  }
-
-  ~SlobResourceRequest()
-  {
-    isCancelled.ref();
-    f.waitForFinished();
-  }
 };
 
 
 void SlobResourceRequest::run()
 {
-  // Some runnables linger enough that they are cancelled before they start
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
-    finish();
-    return;
-  }
 
   try {
     string resource;
@@ -1221,7 +1204,7 @@ void SlobResourceRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > SlobDictionary::getResource( const string & name )
+sptr<ResourceRequest > SlobDictionary::getResource( const string & name )
 
 {
   return std::make_shared< SlobResourceRequest >( *this, name );

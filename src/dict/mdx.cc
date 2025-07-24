@@ -232,7 +232,7 @@ public:
                                               const vector< std::u32string > & alts,
                                               const std::u32string &,
                                               bool ignoreDiacritics ) override;
-  sptr< Dictionary::DataRequest > getResource( const string & name ) override;
+  sptr< ResourceRequest > getResource( const string & name ) override;
   const QString & getDescription() override;
 
   sptr< Dictionary::DataRequest >
@@ -635,12 +635,10 @@ sptr< Dictionary::DataRequest > MdxDictionary::getArticle( const std::u32string 
 }
 
 /// MdxDictionary::getResource
-class MddResourceRequest: public Dictionary::DataRequest
+class MddResourceRequest: public ResourceRequest
 {
   MdxDictionary & dict;
   std::u32string resourceName;
-  QAtomicInt isCancelled;
-  QFuture< void > f;
 
 public:
 
@@ -656,16 +654,7 @@ public:
   QByteArray isolate_css();
   void run();
 
-  void cancel() override
-  {
-    isCancelled.ref();
-  }
 
-  ~MddResourceRequest()
-  {
-    isCancelled.ref();
-    f.waitForFinished();
-  }
 };
 
 QByteArray MddResourceRequest::isolate_css()
@@ -709,10 +698,6 @@ QByteArray MddResourceRequest::isolate_css()
 
 void MddResourceRequest::run()
 {
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
-    finish();
-    return;
-  }
 
   if ( dict.ensureInitDone().size() ) {
     setErrorString( QString::fromUtf8( dict.ensureInitDone().c_str() ) );
@@ -725,7 +710,7 @@ void MddResourceRequest::run()
 
   for ( ;; ) {
     // Some runnables linger enough that they are cancelled before they start
-    if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+    if ( f.isCanceled() ) {
       finish();
       return;
     }
@@ -783,7 +768,7 @@ void MddResourceRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > MdxDictionary::getResource( const string & name )
+sptr< ResourceRequest > MdxDictionary::getResource( const string & name )
 {
   return std::make_shared< MddResourceRequest >( *this, name );
 }

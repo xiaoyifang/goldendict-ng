@@ -20,6 +20,8 @@
 #include "filetype.hh"
 #include "tiff.hh"
 #include "ftshelpers.hh"
+#include "resourcerequest.hh"
+
 #include <QIODevice>
 #include <QXmlStreamReader>
 #include <QFileInfo>
@@ -162,7 +164,7 @@ public:
                                               const std::u32string &,
                                               bool ignoreDiacritics ) override;
 
-  sptr< Dictionary::DataRequest > getResource( const string & name ) override;
+  sptr< ResourceRequest > getResource( const string & name ) override;
 
   const QString & getDescription() override;
 
@@ -886,7 +888,7 @@ void indexArticle( GzippedFile & gzFile,
 
 //// XdxfDictionary::getResource()
 
-class XdxfResourceRequest: public Dictionary::DataRequest
+class XdxfResourceRequest: public ResourceRequest
 {
 
   XdxfDictionary & dict;
@@ -991,7 +993,7 @@ void XdxfResourceRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > XdxfDictionary::getResource( const string & name )
+sptr<ResourceRequest > XdxfDictionary::getResource( const string & name )
 
 {
   return std::make_shared< XdxfResourceRequest >( *this, name );

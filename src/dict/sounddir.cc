@@ -86,7 +86,7 @@ public:
                                               const std::u32string &,
                                               bool ignoreDiacritics ) override;
 
-  sptr< Dictionary::DataRequest > getResource( const string & name ) override;
+  sptr< ResourceRequest > getResource( const string & name ) override;
 
 protected:
 
@@ -324,7 +324,7 @@ bool SoundDirDictionary::get_file_name( uint32_t articleOffset, QString & file_n
   return true;
 }
 
-sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( const string & name )
+sptr< ResourceRequest > SoundDirDictionary::getResource( const string & name )
 
 {
   bool isNumber = false;
@@ -342,13 +342,13 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( const string & 
 
 
   if ( !isNumber ) {
-    return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such resource
+    return ResourceRequest::NoDataFinished(false); // No such resource
   }
 
   QString file_name;
   if ( !get_file_name( articleOffset, file_name ) ) {
     // Bad address
-    return std::make_shared< Dictionary::DataRequestInstant >( false );
+    return ResourceRequest::NoDataFinished(false);
   }
 
   const QDir dir( QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() ) );
@@ -360,9 +360,10 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( const string & 
   try {
     File::Index f( fileName.toStdString(), QIODevice::ReadOnly );
 
-    sptr< Dictionary::DataRequestInstant > dr = std::make_shared< Dictionary::DataRequestInstant >( true );
+    sptr< ResourceRequest > dr = ResourceRequest::NoDataFinished(true);
 
-    vector< char > & data = dr->getData();
+    QMutexLocker locker(&dr->dataMutex);
+    vector< char > & data = dr->data;
 
     f.seekEnd();
 
@@ -374,7 +375,7 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( const string & 
     return dr;
   }
   catch ( File::Ex & ) {
-    return std::make_shared< Dictionary::DataRequestInstant >( false ); // No such resource
+    return ResourceRequest::NoDataFinished(false); // No such resource
   }
 }
 

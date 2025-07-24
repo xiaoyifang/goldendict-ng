@@ -159,7 +159,7 @@ public:
                                               const std::u32string &,
                                               bool ignoreDiacritics ) override;
 
-  sptr< Dictionary::DataRequest > getResource( const string & name ) override;
+  sptr< ResourceRequest > getResource( const string & name ) override;
 
   const QString & getDescription() override;
 
@@ -1520,15 +1520,13 @@ Ifo::Ifo( const QString & fileName )
 //// StardictDictionary::getResource()
 
 
-class StardictResourceRequest: public Dictionary::DataRequest
+class StardictResourceRequest: public ResourceRequest
 {
 
   StardictDictionary & dict;
 
   string resourceName;
 
-  QAtomicInt isCancelled;
-  QFuture< void > f;
 
 public:
 
@@ -1543,25 +1541,11 @@ public:
 
   void run();
 
-  void cancel() override
-  {
-    isCancelled.ref();
-  }
-
-  ~StardictResourceRequest()
-  {
-    isCancelled.ref();
-    f.waitForFinished();
-  }
 };
 
 void StardictResourceRequest::run()
 {
-  // Some runnables linger enough that they are cancelled before they start
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
-    finish();
-    return;
-  }
+
 
   try {
     if ( resourceName.at( 0 ) == '\x1E' ) {
@@ -1656,7 +1640,7 @@ void StardictResourceRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > StardictDictionary::getResource( const string & name )
+sptr< ResourceRequest > StardictDictionary::getResource( const string & name )
 
 {
   return std::make_shared< StardictResourceRequest >( *this, name );

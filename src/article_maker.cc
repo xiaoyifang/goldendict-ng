@@ -289,7 +289,7 @@ string ArticleMaker::makeWelcomeHtml() const
   return result;
 }
 
-sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( const QString & word,
+sptr< ResourceRequest > ArticleMaker::makeDefinitionFor( const QString & word,
                                                                  unsigned groupId,
                                                                  const QMap< QString, QString > & contexts,
                                                                  const QSet< QString > & mutedDicts,
@@ -323,14 +323,14 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( const QString &
   if ( groupId == GroupId::HelpGroupId ) {
     if ( word == tr( "Welcome!" ) ) {
       string welcome                           = makeWelcomeHtml();
-      sptr< Dictionary::DataRequestInstant > r = std::make_shared< Dictionary::DataRequestInstant >( true );
+      sptr< ResourceRequest > r = ResourceRequest::NoDataFinished(true);
 
       r->appendString( welcome );
       return r;
     }
     else {
       // Not found
-      return makeNotFoundTextFor( word, "help" );
+      return makeNotFoundTextForResourceRequest( word, "help" );
     }
   }
 
@@ -397,6 +397,15 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeNotFoundTextFor( const QString
   return r;
 }
 
+sptr< ResourceRequest > ArticleMaker::makeNotFoundTextForResourceRequest( const QString & word, const QString & group ) const
+{
+  string result = makeHtmlHeader( word, QString(), true ) + makeNotFoundBody( word, group ) + "</body></html>";
+  sptr< ResourceRequest > r = ResourceRequest::NoDataFinished(true);
+  r->appendString( result );
+  return r;
+}
+
+
 sptr< Dictionary::DataRequest > ArticleMaker::makeEmptyPage() const
 {
   string result                            = makeUntitleHtml();
@@ -405,6 +414,18 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeEmptyPage() const
   r->appendString( result );
   return r;
 }
+
+sptr< ResourceRequest > ArticleMaker::makeEmptyPageResourceRequest() const
+{
+  string result  = makeUntitleHtml();
+
+
+  sptr<ResourceRequest > r = ResourceRequest::NoDataFinished(true);
+
+  r->appendString( result );
+  return r;
+}
+
 
 string ArticleMaker::makeUntitleHtml() const
 {

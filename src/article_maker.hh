@@ -39,7 +39,7 @@ public:
   /// the keys are dictionary ids.
   /// If mutedDicts is not empty, the search would be limited only to those
   /// dictionaries in group which aren't listed there.
-  sptr< Dictionary::DataRequest > makeDefinitionFor( const QString & word,
+  sptr< ResourceRequest > makeDefinitionFor( const QString & word,
                                                      unsigned groupId,
                                                      const QMap< QString, QString > & contexts,
                                                      const QSet< QString > & mutedDicts = QSet< QString >(),
@@ -50,9 +50,11 @@ public:
   /// was found. Sometimes it's better to call this directly when it's already
   /// known that there's no translation.
   sptr< Dictionary::DataRequest > makeNotFoundTextFor( const QString & word, const QString & group ) const;
+  sptr< ResourceRequest > makeNotFoundTextForResourceRequest( const QString & word, const QString & group ) const;
 
   /// Creates an 'untitled' page. The result is guaranteed to be instant.
   sptr< Dictionary::DataRequest > makeEmptyPage() const;
+  sptr< ResourceRequest > makeEmptyPageResourceRequest() const;
 
   /// Create page with one picture
   sptr< Dictionary::DataRequest > makePicturePage( const std::string & url ) const;
@@ -77,7 +79,7 @@ private:
 
 /// The request specific to article maker. This should really be private,
 /// but we need it to be handled by moc.
-class ArticleRequest: public Dictionary::DataRequest
+class ArticleRequest: public ResourceRequest
 {
   Q_OBJECT
 

@@ -189,7 +189,7 @@ public:
                                               const std::u32string &,
                                               bool ignoreDiacritics ) override;
 
-  sptr< Dictionary::DataRequest > getResource( const string & name ) override;
+  sptr< ResourceRequest > getResource( const string & name ) override;
 
   sptr< Dictionary::DataRequest >
   getSearchResults( const QString & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
@@ -1553,14 +1553,11 @@ sptr< Dictionary::DataRequest > DslDictionary::getArticle( const std::u32string 
 
 //// DslDictionary::getResource()
 
-class DslResourceRequest: public Dictionary::DataRequest
+class DslResourceRequest: public ResourceRequest
 {
   DslDictionary & dict;
 
   string resourceName;
-
-  QAtomicInt isCancelled;
-  QFuture< void > f;
 
 public:
 
@@ -1575,26 +1572,10 @@ public:
 
   void run();
 
-  void cancel() override
-  {
-    isCancelled.ref();
-  }
-
-  ~DslResourceRequest()
-  {
-    isCancelled.ref();
-    f.waitForFinished();
-    //hasExited.acquire();
-  }
 };
 
 void DslResourceRequest::run()
 {
-  // Some runnables linger enough that they are cancelled before they start
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
-    finish();
-    return;
-  }
 
   if ( dict.ensureInitDone().size() ) {
     setErrorString( QString::fromUtf8( dict.ensureInitDone().c_str() ) );
@@ -1640,7 +1621,7 @@ void DslResourceRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > DslDictionary::getResource( const string & name )
+sptr< ResourceRequest > DslDictionary::getResource( const string & name )
 
 {
   return std::make_shared< DslResourceRequest >( *this, name );

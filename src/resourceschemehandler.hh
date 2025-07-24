@@ -11,7 +11,7 @@ public:
   void requestStarted( QWebEngineUrlRequestJob * requestJob );
 
 protected:
-  void replyJob( sptr< Dictionary::DataRequest > reply, QWebEngineUrlRequestJob * requestJob, QString content_type );
+  void replyJob( sptr< ResourceRequest > reply, QWebEngineUrlRequestJob * requestJob, QString content_type );
 
 private:
   ArticleNetworkAccessManager & mManager;

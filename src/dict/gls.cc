@@ -371,7 +371,7 @@ public:
                                               const std::u32string &,
                                               bool ignoreDiacritics ) override;
 
-  sptr< Dictionary::DataRequest > getResource( const string & name ) override;
+  sptr< ResourceRequest > getResource( const string & name ) override;
 
   const QString & getDescription() override;
 
@@ -1019,15 +1019,13 @@ sptr< Dictionary::DataRequest > GlsDictionary::getArticle( const std::u32string 
 
 //////////////// GlsDictionary::getResource()
 
-class GlsResourceRequest: public Dictionary::DataRequest
+class GlsResourceRequest: public ResourceRequest
 {
 
   GlsDictionary & dict;
 
   string resourceName;
 
-  QAtomicInt isCancelled;
-  QFuture< void > f;
 
 public:
 
@@ -1042,25 +1040,11 @@ public:
 
   void run();
 
-  void cancel() override
-  {
-    isCancelled.ref();
-  }
-
-  ~GlsResourceRequest()
-  {
-    isCancelled.ref();
-    f.waitForFinished();
-  }
 };
 
 void GlsResourceRequest::run()
 {
-  // Some runnables linger enough that they are cancelled before they start
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
-    finish();
-    return;
-  }
+
 
   try {
     string n = dict.getContainingFolder().toStdString() + Utils::Fs::separator() + resourceName;
@@ -1160,7 +1144,7 @@ void GlsResourceRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > GlsDictionary::getResource( const string & name )
+sptr<ResourceRequest > GlsDictionary::getResource( const string & name )
 
 {
   return std::make_shared< GlsResourceRequest >( *this, name );

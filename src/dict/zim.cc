@@ -184,7 +184,7 @@ public:
   sptr< Dictionary::DataRequest >
   getArticle( const u32string &, const vector< u32string > & alts, const u32string &, bool ignoreDiacritics ) override;
 
-  sptr< Dictionary::DataRequest > getResource( const string & name ) override;
+  sptr< ResourceRequest > getResource( const string & name ) override;
 
   const QString & getDescription() override;
 
@@ -677,15 +677,12 @@ sptr< Dictionary::DataRequest > ZimDictionary::getArticle( const u32string & wor
 
 //// ZimDictionary::getResource()
 
-class ZimResourceRequest: public Dictionary::DataRequest
+class ZimResourceRequest: public ResourceRequest
 {
   //the dict will outlive this object, so the reference & used here is proper.
   ZimDictionary & dict;
 
   string resourceName;
-
-  QAtomicInt isCancelled;
-  QFuture< void > f;
 
 public:
   ZimResourceRequest( ZimDictionary & dict_, string resourceName_ ):
@@ -699,25 +696,10 @@ public:
 
   void run();
 
-  void cancel() override
-  {
-    isCancelled.ref();
-  }
-
-  ~ZimResourceRequest()
-  {
-    isCancelled.ref();
-    f.waitForFinished();
-  }
 };
 
 void ZimResourceRequest::run()
 {
-  // Some runnables linger enough that they are cancelled before they start
-  if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
-    finish();
-    return;
-  }
 
   try {
     string resource;
@@ -760,7 +742,7 @@ void ZimResourceRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > ZimDictionary::getResource( const string & name )
+sptr< ResourceRequest > ZimDictionary::getResource( const string & name )
 {
   auto noLeadingDot = QString::fromStdString( name ).remove( RX::Zim::leadingDotSlash );
   return std::make_shared< ZimResourceRequest >( *this, noLeadingDot.toStdString() );
