@@ -3,6 +3,9 @@
 #pragma once
 
 #include <QJsonObject>
+#if QT_VERSION < QT_VERSION_CHECK( 6, 9, 0 )
+#include <QJsonDocument>
+#endif
 #include <QKeyEvent>
 #include <QString>
 #include <QTextDocument>
@@ -12,6 +15,10 @@
 #include <QWidget>
 #include "filetype.hh"
 #include <string>
+
+
+
+
 using std::string;
 
 namespace Utils {

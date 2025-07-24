@@ -32,7 +32,6 @@
 #include "clipboard/clipboardlistener.hh"
 //must place the qactiongroup after fixx11h.h, None in QActionGroup conflict with X.h's macro None.
 #include <QActionGroup>
-#include <QShortcut>
 
 using std::string;
 using std::vector;
