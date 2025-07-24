@@ -1571,7 +1571,6 @@ public:
   }
 
   void run();
-
 };
 
 void DslResourceRequest::run()

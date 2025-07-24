@@ -1025,7 +1025,7 @@ void ArticleView::playAudio( const QUrl & url )
 
       if ( dict ) {
         try {
-          sptr<ResourceRequest > req = dict->getResource( url.path().mid( 1 ).toUtf8().data() );
+          sptr< ResourceRequest > req = dict->getResource( url.path().mid( 1 ).toUtf8().data() );
 
           if ( !req->isFinished() ) {
             // Queued loading
@@ -1690,7 +1690,7 @@ void ArticleView::resourceDownloadFinished( const sptr< Dictionary::DataRequest 
 }
 
 
-void ArticleView::audioDownloadFinished( const sptr< ResourceRequest> & req )
+void ArticleView::audioDownloadFinished( const sptr< ResourceRequest > & req )
 {
   if ( req->dataSize() >= 0 ) {
     // Ok, got one finished, all others are irrelevant now

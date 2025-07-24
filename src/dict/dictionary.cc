@@ -208,7 +208,7 @@ QString Class::getContainingFolder() const
 sptr< ResourceRequest > Class::getResource( const string & /*name*/ )
 
 {
-  return ResourceRequest::NoDataFinished(false);
+  return ResourceRequest::NoDataFinished( false );
 }
 
 sptr< DataRequest > Class::getSearchResults( const QString &, int, bool, bool )

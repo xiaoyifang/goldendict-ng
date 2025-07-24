@@ -394,7 +394,7 @@ sptr< ResourceRequest > LsaDictionary::getResource( const string & name )
   vector< WordArticleLink > chain = findArticles( Text::toUtf32( strippedName ) );
 
   if ( chain.empty() ) {
-    return ResourceRequest::NoDataFinished(false); // No such resource
+    return ResourceRequest::NoDataFinished( false ); // No such resource
   }
 
   File::Index f( getDictionaryFilenames()[ 0 ], QIODevice::ReadOnly );
@@ -426,8 +426,8 @@ sptr< ResourceRequest > LsaDictionary::getResource( const string & name )
     throw exFailedToRetrieveVorbisInfo();
   }
 
-  sptr< ResourceRequest > dr = ResourceRequest::NoDataFinished(true);
-  QMutexLocker locker(&dr->dataMutex);
+  sptr< ResourceRequest > dr = ResourceRequest::NoDataFinished( true );
+  QMutexLocker locker( &dr->dataMutex );
 
   vector< char > & data = dr->data;
 

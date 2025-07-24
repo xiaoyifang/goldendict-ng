@@ -171,7 +171,7 @@ sptr< ResourceRequest > ArticleNetworkAccessManager::getResource( const QUrl & u
   if ( url.scheme() == "gdlookup" ) {
     if ( !url.host().isEmpty() && url.host() != "localhost" ) {
       // Strange request - ignore it
-      return ResourceRequest::NoDataFinished(false);
+      return ResourceRequest::NoDataFinished( false );
     }
 
     contentType = "text/html";
@@ -227,7 +227,7 @@ sptr< ResourceRequest > ArticleNetworkAccessManager::getResource( const QUrl & u
           buffer.open( QIODevice::WriteOnly );
           dictionary->getIcon().pixmap( 64 ).save( &buffer, "PNG" );
           buffer.close();
-          sptr<ResourceRequest > ico = ResourceRequest::NoDataFinished(true);
+          sptr< ResourceRequest > ico = ResourceRequest::NoDataFinished( true );
           ico->data.resize( bytes.size() );
           memcpy( &( ico->data.front() ), bytes.data(), bytes.size() );
           return ico;

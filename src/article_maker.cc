@@ -290,11 +290,11 @@ string ArticleMaker::makeWelcomeHtml() const
 }
 
 sptr< ResourceRequest > ArticleMaker::makeDefinitionFor( const QString & word,
-                                                                 unsigned groupId,
-                                                                 const QMap< QString, QString > & contexts,
-                                                                 const QSet< QString > & mutedDicts,
-                                                                 const QStringList & dictIDs,
-                                                                 bool ignoreDiacritics ) const
+                                                         unsigned groupId,
+                                                         const QMap< QString, QString > & contexts,
+                                                         const QSet< QString > & mutedDicts,
+                                                         const QStringList & dictIDs,
+                                                         bool ignoreDiacritics ) const
 {
   if ( !dictIDs.isEmpty() ) {
     std::vector< sptr< Dictionary::Class > > dicts;
@@ -323,7 +323,7 @@ sptr< ResourceRequest > ArticleMaker::makeDefinitionFor( const QString & word,
   if ( groupId == GroupId::HelpGroupId ) {
     if ( word == tr( "Welcome!" ) ) {
       string welcome                           = makeWelcomeHtml();
-      sptr< ResourceRequest > r = ResourceRequest::NoDataFinished(true);
+      sptr< ResourceRequest > r                = ResourceRequest::NoDataFinished( true );
 
       r->appendString( welcome );
       return r;
@@ -397,10 +397,11 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeNotFoundTextFor( const QString
   return r;
 }
 
-sptr< ResourceRequest > ArticleMaker::makeNotFoundTextForResourceRequest( const QString & word, const QString & group ) const
+sptr< ResourceRequest > ArticleMaker::makeNotFoundTextForResourceRequest( const QString & word,
+                                                                          const QString & group ) const
 {
   string result = makeHtmlHeader( word, QString(), true ) + makeNotFoundBody( word, group ) + "</body></html>";
-  sptr< ResourceRequest > r = ResourceRequest::NoDataFinished(true);
+  sptr< ResourceRequest > r = ResourceRequest::NoDataFinished( true );
   r->appendString( result );
   return r;
 }
@@ -417,10 +418,10 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeEmptyPage() const
 
 sptr< ResourceRequest > ArticleMaker::makeEmptyPageResourceRequest() const
 {
-  string result  = makeUntitleHtml();
+  string result = makeUntitleHtml();
 
 
-  sptr<ResourceRequest > r = ResourceRequest::NoDataFinished(true);
+  sptr< ResourceRequest > r = ResourceRequest::NoDataFinished( true );
 
   r->appendString( result );
   return r;

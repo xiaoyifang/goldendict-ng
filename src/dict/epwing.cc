@@ -779,6 +779,7 @@ class EpwingResourceRequest: public ResourceRequest
   EpwingDictionary & dict;
 
   string resourceName;
+
 public:
 
   EpwingResourceRequest( EpwingDictionary & dict_, const string & resourceName_ ):
@@ -791,7 +792,6 @@ public:
   }
 
   void run();
-
 };
 
 void EpwingResourceRequest::run()
@@ -840,7 +840,7 @@ void EpwingResourceRequest::run()
   finish();
 }
 
-sptr<ResourceRequest > EpwingDictionary::getResource( const string & name )
+sptr< ResourceRequest > EpwingDictionary::getResource( const string & name )
 
 {
   return std::make_shared< EpwingResourceRequest >( *this, name );

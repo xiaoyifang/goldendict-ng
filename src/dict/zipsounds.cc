@@ -322,7 +322,7 @@ sptr< ResourceRequest > ZipSoundsDictionary::getResource( const string & name )
   vector< WordArticleLink > chain = findArticles( strippedName );
 
   if ( chain.empty() ) {
-    return ResourceRequest::NoDataFinished(false); // No such resource
+    return ResourceRequest::NoDataFinished( false ); // No such resource
   }
 
   // Find sound
@@ -346,13 +346,13 @@ sptr< ResourceRequest > ZipSoundsDictionary::getResource( const string & name )
     }
   }
 
-  auto dr = ResourceRequest::NoDataFinished(true);
+  auto dr = ResourceRequest::NoDataFinished( true );
 
   if ( zipsFile.loadFile( dataOffset, dr->data ) ) {
     return dr;
   }
 
-  return ResourceRequest::NoDataFinished(false);
+  return ResourceRequest::NoDataFinished( false );
 }
 
 void ZipSoundsDictionary::loadIcon() noexcept

@@ -1155,7 +1155,6 @@ public:
   }
 
   void run();
-
 };
 
 
@@ -1204,7 +1203,7 @@ void SlobResourceRequest::run()
   finish();
 }
 
-sptr<ResourceRequest > SlobDictionary::getResource( const string & name )
+sptr< ResourceRequest > SlobDictionary::getResource( const string & name )
 
 {
   return std::make_shared< SlobResourceRequest >( *this, name );

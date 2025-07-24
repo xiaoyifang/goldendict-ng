@@ -342,13 +342,13 @@ sptr< ResourceRequest > SoundDirDictionary::getResource( const string & name )
 
 
   if ( !isNumber ) {
-    return ResourceRequest::NoDataFinished(false); // No such resource
+    return ResourceRequest::NoDataFinished( false ); // No such resource
   }
 
   QString file_name;
   if ( !get_file_name( articleOffset, file_name ) ) {
     // Bad address
-    return ResourceRequest::NoDataFinished(false);
+    return ResourceRequest::NoDataFinished( false );
   }
 
   const QDir dir( QDir::fromNativeSeparators( getDictionaryFilenames()[ 0 ].c_str() ) );
@@ -360,9 +360,9 @@ sptr< ResourceRequest > SoundDirDictionary::getResource( const string & name )
   try {
     File::Index f( fileName.toStdString(), QIODevice::ReadOnly );
 
-    sptr< ResourceRequest > dr = ResourceRequest::NoDataFinished(true);
+    sptr< ResourceRequest > dr = ResourceRequest::NoDataFinished( true );
 
-    QMutexLocker locker(&dr->dataMutex);
+    QMutexLocker locker( &dr->dataMutex );
     vector< char > & data = dr->data;
 
     f.seekEnd();
@@ -375,7 +375,7 @@ sptr< ResourceRequest > SoundDirDictionary::getResource( const string & name )
     return dr;
   }
   catch ( File::Ex & ) {
-    return ResourceRequest::NoDataFinished(false); // No such resource
+    return ResourceRequest::NoDataFinished( false ); // No such resource
   }
 }
 

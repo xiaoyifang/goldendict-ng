@@ -695,7 +695,6 @@ public:
   }
 
   void run();
-
 };
 
 void ZimResourceRequest::run()

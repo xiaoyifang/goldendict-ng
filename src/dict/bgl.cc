@@ -904,7 +904,11 @@ void BglResourceRequest::run()
 sptr< ResourceRequest > BglDictionary::getResource( const string & name )
 
 {
-  return std::make_shared<BglResourceRequest> ( idxMutex, idx, idxHeader.resourceListOffset, idxHeader.resourcesCount, name );
+  return std::make_shared< BglResourceRequest >( idxMutex,
+                                                 idx,
+                                                 idxHeader.resourceListOffset,
+                                                 idxHeader.resourcesCount,
+                                                 name );
 }
 
 /// Replaces <CHARSET c="t">1234;</CHARSET> occurrences with &#x1234;

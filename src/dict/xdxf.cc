@@ -993,7 +993,7 @@ void XdxfResourceRequest::run()
   finish();
 }
 
-sptr<ResourceRequest > XdxfDictionary::getResource( const string & name )
+sptr< ResourceRequest > XdxfDictionary::getResource( const string & name )
 
 {
   return std::make_shared< XdxfResourceRequest >( *this, name );

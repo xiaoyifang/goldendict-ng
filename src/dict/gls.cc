@@ -1039,7 +1039,6 @@ public:
   }
 
   void run();
-
 };
 
 void GlsResourceRequest::run()
@@ -1144,7 +1143,7 @@ void GlsResourceRequest::run()
   finish();
 }
 
-sptr<ResourceRequest > GlsDictionary::getResource( const string & name )
+sptr< ResourceRequest > GlsDictionary::getResource( const string & name )
 
 {
   return std::make_shared< GlsResourceRequest >( *this, name );

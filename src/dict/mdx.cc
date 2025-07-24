@@ -653,8 +653,6 @@ public:
 
   QByteArray isolate_css();
   void run();
-
-
 };
 
 QByteArray MddResourceRequest::isolate_css()

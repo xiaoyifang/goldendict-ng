@@ -1540,7 +1540,6 @@ public:
   }
 
   void run();
-
 };
 
 void StardictResourceRequest::run()

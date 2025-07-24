@@ -40,11 +40,11 @@ public:
   /// If mutedDicts is not empty, the search would be limited only to those
   /// dictionaries in group which aren't listed there.
   sptr< ResourceRequest > makeDefinitionFor( const QString & word,
-                                                     unsigned groupId,
-                                                     const QMap< QString, QString > & contexts,
-                                                     const QSet< QString > & mutedDicts = QSet< QString >(),
-                                                     const QStringList & dictIDs        = QStringList(),
-                                                     bool ignoreDiacritics              = false ) const;
+                                             unsigned groupId,
+                                             const QMap< QString, QString > & contexts,
+                                             const QSet< QString > & mutedDicts = QSet< QString >(),
+                                             const QStringList & dictIDs        = QStringList(),
+                                             bool ignoreDiacritics              = false ) const;
 
   /// Makes up a text which states that no translation for the given word
   /// was found. Sometimes it's better to call this directly when it's already

@@ -11,7 +11,7 @@ void ResourceSchemeHandler::requestStarted( QWebEngineUrlRequestJob * requestJob
   const QUrl url = requestJob->requestUrl();
   QString content_type;
   const QMimeType mineType                    = db.mimeTypeForUrl( url );
-  const sptr< ResourceRequest > reply = this->mManager.getResource( url, content_type );
+  const sptr< ResourceRequest > reply         = this->mManager.getResource( url, content_type );
   content_type                                = mineType.name();
 
   if ( reply == nullptr ) {
