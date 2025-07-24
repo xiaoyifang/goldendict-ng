@@ -1028,6 +1028,7 @@ void ArticleView::playAudio( const QUrl & url )
         sptr< Dictionary::DataRequest > target_req = target_dict->getResource( sound_file_name );
 
         if ( !target_dict || target_req.get()->dataSize() < 0 ) {
+          target_req->cancel();
           bool audio_in_same_group_found = false;
           const auto * active_dicts      = dictionaryGroup->getActiveDictionaries( getGroup( webview->url() ) );
           for ( const sptr< Dictionary::Class > & d : *active_dicts ) {
@@ -1037,9 +1038,10 @@ void ArticleView::playAudio( const QUrl & url )
               audio_in_same_group_found = true;
               break;
             }
+            target_req->cancel();
           }
           if ( !audio_in_same_group_found ) {
-            throw std::runtime_error( "audio: cannot find resources in the dict or any dict in the current group." );
+            throw std::runtime_error( "No audio found." );
           }
         }
 
