@@ -45,7 +45,8 @@ jobs:
             -B ./build_dir \
             -DCMAKE_COMPILE_WARNING_AS_ERROR=ON \
             -G Ninja
-          cmake --build ./build_dir
+          cd ./build_dir
+          ninja -k 0
   job_macos_build_check:
     name: macos Build and analyze
     runs-on: macos-14
@@ -86,7 +87,8 @@ jobs:
             -G Ninja \
             -DWITH_FFMPEG_PLAYER=ON \
             -DCMAKE_COMPILE_WARNING_AS_ERROR=ON
-          cmake --build ./build_dir
+          cd ./build_dir
+          ninja -k 0
 
   job_window_build_check:
     name: windows Build and analyze
@@ -114,7 +116,8 @@ jobs:
             -DWITH_VCPKG_BREAKPAD=ON `
             -DCMAKE_C_COMPILER="cl.exe" -DCMAKE_CXX_COMPILER="cl.exe" `
             -DWITH_FFMPEG_PLAYER=OFF
-          cmake --build "./build_dir"
+          cd "./build_dir"
+          ninja -k 0
 
   job_archlinux_build_check:
     name: archlinux Build and analyze
@@ -169,5 +172,5 @@ jobs:
             -DWITH_TTS=ON \
             -DUSE_SYSTEM_FMT=ON \
             -DUSE_SYSTEM_TOML=ON
-
-          cmake --build ./build_dir
+          cd "./build_dir"
+          ninja -k 0
