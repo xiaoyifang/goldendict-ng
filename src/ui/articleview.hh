@@ -75,6 +75,25 @@ class ArticleView: public QWidget
 
   QString delayedHighlightText;
 
+
+  struct AudioResource {
+    QString base64Data;
+    bool finished = false;
+    sptr<Dictionary::DataRequest> req;
+    std::shared_ptr<QMutex> mutex;
+  };
+
+  struct GdauTagInfo {
+    int id;
+    QString fullTag;
+    QString url;
+    AudioResource resource;
+  };
+
+  bool race=false;
+
+  bool resourceLocked=false;
+
   void highlightFTSResults();
   void performFtsFindOperation( bool backwards );
 
@@ -165,6 +184,14 @@ public:
   void syncBackgroundColorWithCfgDarkReader() const;
 
   QString getCurrentWord();
+
+  QString replaceTags(QString &html);
+
+  void ArticleViewonAudioRequestFinished(sptr<Dictionary::DataRequest> req, QVector<AudioResource> &resources, QString url);
+
+  void onAudioRequestFinished(sptr<Dictionary::DataRequest> req, std::shared_ptr<QVector<GdauTagInfo>> tags, int ,QString html);
+
+  void onAllAudioResourcesReady(std::shared_ptr<QVector<GdauTagInfo>> tags,QString & html);
 
 private:
   // widgets
