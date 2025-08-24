@@ -1010,61 +1010,6 @@ void ArticleView::onAllAudioResourcesReady(std::shared_ptr<QVector<GdauTagInfo>>
 }
 
 
-void findGdauTags(const QString& html)
-{
-  QRegularExpression tagRegex(R"(<(\w+)([^>]*?gdau://[^>]*?)>)");
-  QRegularExpressionMatchIterator i = tagRegex.globalMatch(html);
-
-  while (i.hasNext()) {
-    QRegularExpressionMatch match = i.next();
-    QString tagName = match.captured(1);   // e.g. "a"
-    QString fullTag = match.captured(0);   // the whole tag, e.g. <a ... >
-
-    qDebug() << "Found tag:" << tagName << "\nFull tag text:" << fullTag << "\n";
-  }
-}
-
-
-QString embedAudioBase64(QString html)
-{
-  // Regex to match gdau:// URLs in href or data-src-mp3 attributes
-
-  QRegularExpression regex(R"delim((href|data-src-mp3)="gdau://([^"]+)")delim");
-  QRegularExpressionMatchIterator i = regex.globalMatch(html);
-
-  while (i.hasNext()) {
-    QRegularExpressionMatch match = i.next();
-    QString attr = match.captured(1);    // href or data-src-mp3
-    QString resourcePath = match.captured(2); // path after gdau://
-
-    // Construct resource path according to your resource system
-    // For example, if resourcePath is "64b124f9ac24cfde2acffccb4523068c/media/english/breProns/ld41ai.mp3"
-    // you need to map this to your Qt resource or file path
-    QString qrcPath = QString(":/%1").arg(resourcePath); // Adjust this if needed
-
-    QFile file(qrcPath);
-    if (!file.open(QIODevice::ReadOnly)) {
-      qWarning() << "Failed to open resource:" << qrcPath;
-      continue;
-    }
-
-    QByteArray data = file.readAll();
-    QString base64Data = QString::fromLatin1(data.toBase64());
-
-    QString dataUrl = QString("data:audio/mpeg;base64,%1").arg(base64Data);
-
-    // Replace the old URL with data URL in html
-    // Note: Use exact match from captured text
-    QString oldUrl = QString("%1=\"gdau://%2\"").arg(attr, resourcePath);
-    QString newUrl = QString("%1=\"%2\"").arg(attr, dataUrl);
-
-    html.replace(oldUrl, newUrl);
-  }
-
-  return html;
-}
-
-
 void ArticleView::makeAnkiCardFromArticle( const QString & article_id )
 {
   const auto js_code = QString( R"EOF(document.getElementById("gdarticlefrom-%1").innerHTML)EOF" ).arg( article_id );
