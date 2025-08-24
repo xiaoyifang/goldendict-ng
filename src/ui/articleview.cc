@@ -971,6 +971,11 @@ void ArticleView::onAudioRequestFinished(sptr<Dictionary::DataRequest> req, std:
   }
 }
 
+void ArticleView::replaceGdLookUpToSystemHandler(QString &originalHtml)
+{
+  originalHtml.replace("gdlookup://localhost/","goldendict://");
+}
+
 void ArticleView::onAllAudioResourcesReady(std::shared_ptr<QVector<GdauTagInfo>> ptags,QString &originalHtml) {
   //return when any tag are unfinished
   for(auto & tag:*ptags) {
@@ -999,6 +1004,7 @@ void ArticleView::onAllAudioResourcesReady(std::shared_ptr<QVector<GdauTagInfo>>
     // Replace all occurrences of gdau URL with base64 URL in your HTML string
     originalHtml.replace(tag.fullTag, newTag);
   }
+  replaceGdLookUpToSystemHandler(originalHtml);
 
   sendToAnki(webview->title(), originalHtml, translateLine->text());
 }

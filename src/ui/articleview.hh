@@ -193,6 +193,7 @@ public:
 
   void onAllAudioResourcesReady(std::shared_ptr<QVector<GdauTagInfo>> tags,QString & html);
 
+  void replaceGdLookUpToSystemHandler(QString & originalHtml);
 private:
   // widgets
   ArticleWebView * webview;
