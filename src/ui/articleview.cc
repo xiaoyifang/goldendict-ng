@@ -910,22 +910,6 @@ void ArticleView::linkClickedInHtml( const QUrl & url_ )
   }
 }
 
-void findGdauUrls(const QString& html)
-{
-  // Regex to find gdau:// URLs inside any attribute
-  // This looks for something like attribute="gdau://..."
-  QRegularExpression regex(R"((\w+)=\"gdau://([^\"]+)\")");
-
-  QRegularExpressionMatchIterator i = regex.globalMatch(html);
-
-  while (i.hasNext()) {
-    QRegularExpressionMatch match = i.next();
-    QString attributeName = match.captured(1);  // e.g. href or data-src-mp3
-    QString gdauPath = match.captured(2);       // the path after gdau://
-
-    qDebug() << "Found gdau URL in attribute" << attributeName << ":" << gdauPath;
-  }
-}
 
 QString ArticleView::replaceTags(QString &html){
   auto ptags=std::make_shared<QVector<GdauTagInfo>>(  );
@@ -937,16 +921,6 @@ QString ArticleView::replaceTags(QString &html){
     id +=1;
     QRegularExpressionMatch match=i.next();
     QString fullTag=match.captured(0);
-    //QString url=match.captured(1);
-    /*
-    int beginPos=match.capturedStart(0);
-    int endPos=match.capturedEnd(0);
-    //cant use offset since multiple tags*/
-
-
-    //QString attributes = match.captured(2);
-
-    // Regex to extract gdau:// url inside the attributes string
     QRegularExpression urlRegex(R"(gdau://[^\"'\s>]+)");
     QRegularExpressionMatch urlMatch = urlRegex.match(fullTag);
 
@@ -956,7 +930,6 @@ QString ArticleView::replaceTags(QString &html){
     }
     qDebug() << urlString <<"\n";
 
-
     QUrl url(urlString);
     sptr<Dictionary::Class> dict = dictionaryGroup->getDictionaryById(url.host().toStdString());
     if (!dict) continue;
@@ -965,22 +938,7 @@ QString ArticleView::replaceTags(QString &html){
     AudioResource ar{"",false,req,std::make_shared<QMutex>(  )};
     ptags->append({id,fullTag,urlString,ar});
   }
-  //QVector<AudioResource> audioResources;
-  //QVector<sptr<Dictionary::DataRequest>> reqs;
-  //race=true;
-  /*
-  for (const auto &GdauTagInfo : tags) {
-    QString urlStr=GdauTagInfo.url;
-    QUrl url(GdauTagInfo.url);
-    sptr<Dictionary::Class> dict = dictionaryGroup->getDictionaryById(url.host().toStdString());
-    if (!dict) continue;
 
-    sptr<Dictionary::DataRequest> req = dict->getResource(url.path().mid(1).toUtf8().data());
-
-    AudioResource ar{ "", false, req, std::make_shared<QMutex>()};
-    audioResources.append(ar);
-  }
-  */
   auto tags=*ptags ;
   for (auto &tag: tags) {
     sptr<Dictionary::DataRequest> req=tag.resource.req;
@@ -988,30 +946,17 @@ QString ArticleView::replaceTags(QString &html){
     connect(req.get(), &Dictionary::Request::finished, this, [this, req, ptags, tag,html]() {
         onAudioRequestFinished(req, ptags, tag.id, html);
       });
-
   }
-  /*
-  QtConcurrent::run([audioResources]() {
-    onAllAudioResourcesReady(audioResources, html);
-  */
-  /*
-  connect(checkMechain,CM::allDone,this,[this,audioResources,html]->void {
-      return ;
-  });
-  */
 
   return QString();
 };
-
-
-
 
 void ArticleView::onAudioRequestFinished(sptr<Dictionary::DataRequest> req, std::shared_ptr<QVector<GdauTagInfo>> ptags,int tagid,QString html) {
   if (req->dataSize() > 0) {
     QByteArray data(req->getFullData().data(), static_cast<int>(req->dataSize()));
     QString base64Audio = data.toBase64();
 
-    // find resource in vector by url and update
+    // find resource in vector by id and update
     for (auto &tag : *ptags) {
       if (tag.id == tagid) {
         //tag.resource.mutex->lock();
@@ -1023,31 +968,15 @@ void ArticleView::onAudioRequestFinished(sptr<Dictionary::DataRequest> req, std:
     }
     onAllAudioResourcesReady(ptags,html);
 
-    /*
-    // Check if all finished:
-    if (!resourceLocked) {
-      resourceLocked=true;
-      bool allDone = std::all_of(resources.begin(), resources.end(), [](const AudioResource &r) { return r.finished; });
-      resourceLocked=false;
-      if (allDone && race) {
-        onAllAudioResourcesReady(resources,html);
-      }
-    }
-      */
   }
 }
 
 void ArticleView::onAllAudioResourcesReady(std::shared_ptr<QVector<GdauTagInfo>> ptags,QString &originalHtml) {
-  //let's use simple method
-  //use a spin lock
+  //return when any tag are unfinished
   for(auto & tag:*ptags) {
-      //tag.resource.mutex->lock();
       if (!tag.resource.finished) return;
-      //tag.resource.mutex->unlock();
   }
 
-  //QString modifiedHtml =originalHtml;
-  //race=false;
   auto tags=*ptags;
   for (const auto &tag : *ptags) {
     qDebug() << tag.resource.base64Data <<'\n' ;
