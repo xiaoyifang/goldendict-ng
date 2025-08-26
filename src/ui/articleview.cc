@@ -911,118 +911,126 @@ void ArticleView::linkClickedInHtml( const QUrl & url_ )
 }
 
 
-QString ArticleView::replaceTags(QString &html){
-  auto ptags=std::make_shared<QVector<GdauTagInfo>>(  );
+QString ArticleView::replaceTags( QString & html )
+{
+  auto ptags = std::make_shared< QVector< GdauTagInfo > >();
 
-  QRegularExpression tagRegex( R"(<a\b[^>]*\b(href|data-src-mp3)\s*=\s*"gdau://[^"]+"[^>]*>.*?</a>)",QRegularExpression::DotMatchesEverythingOption);
-  QRegularExpressionMatchIterator i= tagRegex.globalMatch(html);
-  int id =0;
-  while(i.hasNext()){
-    id +=1;
-    QRegularExpressionMatch match=i.next();
-    QString fullTag=match.captured(0);
-    QRegularExpression urlRegex(R"(gdau://[^\"'\s>]+)");
-    QRegularExpressionMatch urlMatch = urlRegex.match(fullTag);
+  QRegularExpression tagRegex( R"(<a\b[^>]*\b(href|data-src-mp3)\s*=\s*"gdau://[^"]+"[^>]*>.*?</a>)",
+                               QRegularExpression::DotMatchesEverythingOption );
+  QRegularExpressionMatchIterator i = tagRegex.globalMatch( html );
+  int id                            = 0;
+  while ( i.hasNext() ) {
+    id += 1;
+    QRegularExpressionMatch match = i.next();
+    QString fullTag               = match.captured( 0 );
+    QRegularExpression urlRegex( R"(gdau://[^\"'\s>]+)" );
+    QRegularExpressionMatch urlMatch = urlRegex.match( fullTag );
 
     QString urlString;
-    if (urlMatch.hasMatch()) {
-      urlString = urlMatch.captured(0);
+    if ( urlMatch.hasMatch() ) {
+      urlString = urlMatch.captured( 0 );
     }
-    qDebug() << urlString <<"\n";
+    qDebug() << urlString << "\n";
 
-    QUrl url(urlString);
-    sptr<Dictionary::Class> dict = dictionaryGroup->getDictionaryById(url.host().toStdString());
-    if (!dict) continue;
-    sptr<Dictionary::DataRequest> req = dict->getResource(url.path().mid(1).toUtf8().data());
+    QUrl url( urlString );
+    sptr< Dictionary::Class > dict = dictionaryGroup->getDictionaryById( url.host().toStdString() );
+    if ( !dict )
+      continue;
+    sptr< Dictionary::DataRequest > req = dict->getResource( url.path().mid( 1 ).toUtf8().data() );
 
-    AudioResource ar{"",false,req,std::make_shared<QMutex>(  )};
-    ptags->append({id,fullTag,urlString,ar});
+    AudioResource ar{ "", false, req, std::make_shared< QMutex >() };
+    ptags->append( { id, fullTag, urlString, ar } );
   }
 
-  auto tags=*ptags ;
-  for (auto &tag: tags) {
-    sptr<Dictionary::DataRequest> req=tag.resource.req;
-    QString urlStr =tag.url;
-    connect(req.get(), &Dictionary::Request::finished, this, [this, req, ptags, tag,html]() {
-        onAudioRequestFinished(req, ptags, tag.id, html);
-      });
+  auto tags = *ptags;
+  for ( auto & tag : tags ) {
+    sptr< Dictionary::DataRequest > req = tag.resource.req;
+    QString urlStr                      = tag.url;
+    connect( req.get(), &Dictionary::Request::finished, this, [ this, req, ptags, tag, html ]() {
+      onAudioRequestFinished( req, ptags, tag.id, html );
+    } );
   }
 
   return QString();
 };
 
-void ArticleView::onAudioRequestFinished(sptr<Dictionary::DataRequest> req, std::shared_ptr<QVector<GdauTagInfo>> ptags,int tagid,QString html) {
-  if (req->dataSize() > 0) {
-    QByteArray data(req->getFullData().data(), static_cast<int>(req->dataSize()));
+void ArticleView::onAudioRequestFinished( sptr< Dictionary::DataRequest > req,
+                                          std::shared_ptr< QVector< GdauTagInfo > > ptags,
+                                          int tagid,
+                                          QString html )
+{
+  if ( req->dataSize() > 0 ) {
+    QByteArray data( req->getFullData().data(), static_cast< int >( req->dataSize() ) );
     QString base64Audio = data.toBase64();
 
     // find resource in vector by id and update
-    for (auto &tag : *ptags) {
-      if (tag.id == tagid) {
+    for ( auto & tag : *ptags ) {
+      if ( tag.id == tagid ) {
         //tag.resource.mutex->lock();
         tag.resource.base64Data = base64Audio;
-        tag.resource.finished = true;
+        tag.resource.finished   = true;
         //tag.resource.mutex->unlock();
         break;
       }
     }
-    onAllAudioResourcesReady(ptags,html);
-
+    onAllAudioResourcesReady( ptags, html );
   }
 }
 
-void ArticleView::replaceGdLookUpToSystemHandler(QString &originalHtml)
+void ArticleView::replaceGdLookUpToSystemHandler( QString & originalHtml )
 {
-  originalHtml.replace("gdlookup://localhost/","goldendict://");
+  originalHtml.replace( "gdlookup://localhost/", "goldendict://" );
 }
 
-void ArticleView::onAllAudioResourcesReady(std::shared_ptr<QVector<GdauTagInfo>> ptags,QString &originalHtml) {
+void ArticleView::onAllAudioResourcesReady( std::shared_ptr< QVector< GdauTagInfo > > ptags, QString & originalHtml )
+{
   //return when any tag are unfinished
-  for(auto & tag:*ptags) {
-      if (!tag.resource.finished) return;
+  for ( auto & tag : *ptags ) {
+    if ( !tag.resource.finished )
+      return;
   }
 
-  auto tags=*ptags;
-  for (const auto &tag : *ptags) {
-    qDebug() << tag.resource.base64Data <<'\n' ;
-    QString base64DataUrl = QString("data:audio/mp3;base64,%1").arg(tag.resource.base64Data);
-    QString newTag=tag.fullTag;
-    int onclickPosition=newTag.indexOf("onclick=");
-    newTag.insert(onclickPosition+9,"this.querySelector('audio').play();");
+  auto tags = *ptags;
+  for ( const auto & tag : *ptags ) {
+    qDebug() << tag.resource.base64Data << '\n';
+    QString base64DataUrl = QString( "data:audio/mp3;base64,%1" ).arg( tag.resource.base64Data );
+    QString newTag        = tag.fullTag;
+    int onclickPosition   = newTag.indexOf( "onclick=" );
+    newTag.insert( onclickPosition + 9, "this.querySelector('audio').play();" );
 
-    int insertPos = newTag.indexOf('>'); // position of first '>'
-    if (insertPos != -1) {
+    int insertPos = newTag.indexOf( '>' ); // position of first '>'
+    if ( insertPos != -1 ) {
       QString audioTag = QString(
-          R"(<audio> <source src="%1" type="audio/mpeg">
+                           R"(<audio> <source src="%1" type="audio/mpeg">
                Your browser does not support the audio element.
-           </audio>)"
-      ).arg(base64DataUrl);
-      newTag.insert(insertPos+1,audioTag);
+           </audio>)" )
+                           .arg( base64DataUrl );
+      newTag.insert( insertPos + 1, audioTag );
     }
 
     qDebug() << tag.fullTag;
     // Replace all occurrences of gdau URL with base64 URL in your HTML string
-    originalHtml.replace(tag.fullTag, newTag);
+    originalHtml.replace( tag.fullTag, newTag );
   }
-  replaceGdLookUpToSystemHandler(originalHtml);
+  replaceGdLookUpToSystemHandler( originalHtml );
 
-  sendToAnki(webview->title(), originalHtml, translateLine->text());
+  sendToAnki( webview->title(), originalHtml, translateLine->text() );
 }
 
 
 void ArticleView::makeAnkiCardFromArticle( const QString & article_id )
 {
   const auto js_code = QString( R"EOF(document.getElementById("gdarticlefrom-%1").innerHTML)EOF" ).arg( article_id );
-  const auto js_css=QString(R"EOF(document.getElementsByTagName("style")[0].outerHTML)EOF" );
-  auto st = std::make_shared<QString>();
-  webview->page()->runJavaScript( js_code, [ this,st]( const QVariant & article_text ) {
-    st->append(article_text.toString());
+  const auto js_css  = QString( R"EOF(document.getElementsByTagName("style")[0].outerHTML)EOF" );
+  auto st            = std::make_shared< QString >();
+  webview->page()->runJavaScript( js_code, [ this, st ]( const QVariant & article_text ) {
+    st->append( article_text.toString() );
   } );
-  webview->page()->runJavaScript(js_css,[this,st](const QVariant &css_text){
-    st->append(css_text.toString());
-    replaceTags(*st);
-        //sendToAnki(webview->title(), embeddedHtml, translateLine->text());
-  });
+  webview->page()->runJavaScript( js_css, [ this, st ]( const QVariant & css_text ) {
+    st->append( css_text.toString() );
+    replaceTags( *st );
+    //sendToAnki(webview->title(), embeddedHtml, translateLine->text());
+  } );
 }
 
 void ArticleView::openLink( const QUrl & url, const QUrl & ref, const QString & scrollTo, const Contexts & contexts_ )

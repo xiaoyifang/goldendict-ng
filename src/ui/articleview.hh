@@ -76,23 +76,25 @@ class ArticleView: public QWidget
   QString delayedHighlightText;
 
 
-  struct AudioResource {
+  struct AudioResource
+  {
     QString base64Data;
     bool finished = false;
-    sptr<Dictionary::DataRequest> req;
-    std::shared_ptr<QMutex> mutex;
+    sptr< Dictionary::DataRequest > req;
+    std::shared_ptr< QMutex > mutex;
   };
 
-  struct GdauTagInfo {
+  struct GdauTagInfo
+  {
     int id;
     QString fullTag;
     QString url;
     AudioResource resource;
   };
 
-  bool race=false;
+  bool race = false;
 
-  bool resourceLocked=false;
+  bool resourceLocked = false;
 
   void highlightFTSResults();
   void performFtsFindOperation( bool backwards );
@@ -185,15 +187,21 @@ public:
 
   QString getCurrentWord();
 
-  QString replaceTags(QString &html);
+  QString replaceTags( QString & html );
 
-  void ArticleViewonAudioRequestFinished(sptr<Dictionary::DataRequest> req, QVector<AudioResource> &resources, QString url);
+  void ArticleViewonAudioRequestFinished( sptr< Dictionary::DataRequest > req,
+                                          QVector< AudioResource > & resources,
+                                          QString url );
 
-  void onAudioRequestFinished(sptr<Dictionary::DataRequest> req, std::shared_ptr<QVector<GdauTagInfo>> tags, int ,QString html);
+  void onAudioRequestFinished( sptr< Dictionary::DataRequest > req,
+                               std::shared_ptr< QVector< GdauTagInfo > > tags,
+                               int,
+                               QString html );
 
-  void onAllAudioResourcesReady(std::shared_ptr<QVector<GdauTagInfo>> tags,QString & html);
+  void onAllAudioResourcesReady( std::shared_ptr< QVector< GdauTagInfo > > tags, QString & html );
 
-  void replaceGdLookUpToSystemHandler(QString & originalHtml);
+  void replaceGdLookUpToSystemHandler( QString & originalHtml );
+
 private:
   // widgets
   ArticleWebView * webview;
