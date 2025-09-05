@@ -2100,7 +2100,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Kabyle</source>
-      <translation type="unfinished">Kabyle</translation>
+      <translation>Taqbaylit</translation>
     </message>
   </context>
   <context>
@@ -3469,11 +3469,11 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Font</source>
-      <translation type="unfinished">Font</translation>
+      <translation>Tasefsit</translation>
     </message>
     <message>
       <source>Font Size</source>
-      <translation type="unfinished">Font Size</translation>
+      <translation>Teɣzi n tsefsit</translation>
     </message>
     <message>
       <source>None</source>
