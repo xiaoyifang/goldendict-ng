@@ -1,7 +1,7 @@
 # GoldenDict-ng
 
 [![Crowdin](https://badges.crowdin.net/goldendict-ng/localized.svg)](https://crowdin.com/project/goldendict-ng)
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=xiaoyifang_goldendict&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=xiaoyifang_goldendict)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=xiaoyifang_goldendict-ng&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=xiaoyifang_goldendict-ng)
 [![Build](https://github.com/xiaoyifang/goldendict-ng/actions/workflows/PR-check-cmake.yml/badge.svg)](https://github.com/xiaoyifang/goldendict-ng/actions/workflows/PR-check-cmake.yml)
 
 GoldenDict-ng is an advanced dictionary lookup program, supporting [many formats](https://xiaoyifang.github.io/goldendict-ng/dictformats/).
