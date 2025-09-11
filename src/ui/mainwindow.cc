@@ -40,6 +40,7 @@
 
 #include "weburlrequestinterceptor.hh"
 #include "folding.hh"
+#include "../common/service_locator.hh"
 
 #include <set>
 #include <map>
@@ -180,7 +181,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   QThreadPool::globalInstance()->start( new InitSSLRunnable );
 #endif
 
-  GlobalBroadcaster::instance()->setPreference( &cfg.preferences );
 
   localSchemeHandler     = new LocalSchemeHandler( articleNetMgr, this );
   QStringList htmlScheme = { "gdlookup", "bword", "entry" };
@@ -210,6 +210,13 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 #ifdef EPWING_SUPPORT
   Epwing::initialize();
 #endif
+
+  // Initialize global service locator
+  ServiceLocator::instance().setNetworkManager( &articleNetMgr );
+  ServiceLocator::instance().setAudioPlayer( audioPlayerFactory.player().data() );
+  ServiceLocator::instance().setDictionaries( dictionaries );
+  ServiceLocator::instance().setGroups( groupInstances );
+  ServiceLocator::instance().setConfig( cfg );
 
   ui.setupUi( this );
 
@@ -792,8 +799,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   }
 
   // Scanpopup related
-  scanPopup =
-    new ScanPopup( nullptr, cfg, articleNetMgr, audioPlayerFactory.player(), dictionaries, groupInstances, history );
+  scanPopup = new ScanPopup( nullptr, cfg, history );
 
   scanPopup->setStyleSheet( styleSheet() );
 
@@ -1758,16 +1764,13 @@ void MainWindow::addNewTab()
 
 ArticleView * MainWindow::createNewTab( bool switchToIt, const QString & name )
 {
-  ArticleView * view = new ArticleView( this,
-                                        articleNetMgr,
-                                        audioPlayerFactory.player(),
-                                        dictionaries,
-                                        groupInstances,
-                                        false,
-                                        cfg,
-                                        translateLine,
-                                        dictionaryBar.toggleViewAction(),
-                                        groupList->getCurrentGroup() );
+  ArticleViewContext context;
+  context.popupView            = false;
+  context.translateLine        = translateLine;
+  context.dictionaryBarToggled = dictionaryBar.toggleViewAction();
+  context.currentGroupId       = groupList->getCurrentGroup();
+
+  ArticleView * view = new ArticleView( this, context );
 
   connect( view, &ArticleView::inspectSignal, this, &MainWindow::inspectElement );
 
