@@ -11,6 +11,7 @@
 #include "webmultimediadownload.hh"
 #include "htmlescape.hh"
 #include "article_maker.hh"
+#include "../common/service_locator.hh"
 #include <QBuffer>
 #include <QClipboard>
 #include <QDebug>
@@ -84,22 +85,14 @@ QString ArticleView::scrollToFromDictionaryId( const QString & dictionaryId )
   return scrollToPrefix + dictionaryId;
 }
 
-ArticleView::ArticleView( QWidget * parent,
-                          ArticleNetworkAccessManager & nm,
-                          const AudioPlayerPtr & audioPlayer_,
-                          const std::vector< sptr< Dictionary::Class > > & allDictionaries_,
-                          const Instances::Groups & groups_,
-                          bool popupView_,
-                          const Config::Class & cfg_,
-                          const QLineEdit * translateLine_,
-                          QAction * dictionaryBarToggled_,
-                          unsigned int currentGroupId_ ):
+ArticleView::ArticleView( QWidget * parent, const ArticleViewContext & context ):
   QWidget( parent ),
-  articleNetMgr( nm ),
-  audioPlayer( audioPlayer_ ),
-  dictionaryGroup( std::make_unique< DictionaryGroup >( allDictionaries_, groups_ ) ),
-  popupView( popupView_ ),
-  cfg( cfg_ ),
+  articleNetMgr( ServiceLocator::instance().getNetworkManager() ),
+  audioPlayer( ServiceLocator::instance().getAudioPlayer() ),
+  dictionaryGroup( std::make_unique< DictionaryGroup >( ServiceLocator::instance().getAllDictionaries(),
+                                                        ServiceLocator::instance().getGroups() ) ),
+  popupView( context.popupView ),
+  cfg( ServiceLocator::instance().getConfig() ),
   pasteAction( this ),
   articleUpAction( this ),
   articleDownAction( this ),
@@ -108,9 +101,9 @@ ArticleView::ArticleView( QWidget * parent,
   selectCurrentArticleAction( this ),
   copyAsTextAction( this ),
   inspectAction( this ),
-  dictionaryBarToggled( dictionaryBarToggled_ ),
-  currentGroupId( currentGroupId_ ),
-  translateLine( translateLine_ )
+  dictionaryBarToggled( context.dictionaryBarToggled ),
+  currentGroupId( context.currentGroupId ),
+  translateLine( context.translateLine )
 {
   // setup GUI
   webview        = new ArticleWebView( this );

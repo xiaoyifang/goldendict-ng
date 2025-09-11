@@ -20,6 +20,7 @@
 #include "ui/searchpanel.hh"
 #include "ui/ftssearchpanel.hh"
 #include "dictionary_group.hh"
+#include "articleview_context.hh"
 
 class ResourceToSaveHandler;
 class ArticleViewAgent;
@@ -92,16 +93,7 @@ public:
   /// The popupView flag influences contents of the context menus to be
   /// appropriate to the context of the view.
   /// The groups aren't copied -- rather than that, the reference is kept
-  ArticleView( QWidget * parent,
-               ArticleNetworkAccessManager &,
-               const AudioPlayerPtr &,
-               const std::vector< sptr< Dictionary::Class > > & allDictionaries,
-               const Instances::Groups &,
-               bool popupView,
-               const Config::Class & cfg,
-               const QLineEdit * translateLine,
-               QAction * dictionaryBarToggled = nullptr,
-               unsigned currentGroupId        = 0 );
+  ArticleView( QWidget * parent, const ArticleViewContext & context );
 
   void setCurrentGroupId( unsigned currengGrgId );
   unsigned getCurrentGroupId();

@@ -8,6 +8,8 @@
 #include <QMenu>
 #include <QMouseEvent>
 #include "gestures.hh"
+#include "articleview_context.hh"
+#include "../common/service_locator.hh"
 
 #ifdef Q_OS_MAC
   #include "macos/macmouseover.hh"
@@ -34,17 +36,9 @@ static const Qt::WindowFlags pinnedWindowFlags =
 #endif
   ;
 
-ScanPopup::ScanPopup( QWidget * parent,
-                      Config::Class & cfg_,
-                      ArticleNetworkAccessManager & articleNetMgr,
-                      const AudioPlayerPtr & audioPlayer_,
-                      const std::vector< sptr< Dictionary::Class > > & allDictionaries_,
-                      const Instances::Groups & groups_,
-                      History & history_ ):
+ScanPopup::ScanPopup( QWidget * parent, Config::Class & cfg_, History & history_ ):
   QMainWindow( parent ),
   cfg( cfg_ ),
-  allDictionaries( allDictionaries_ ),
-  groups( groups_ ),
   history( history_ ),
   escapeAction( this ),
   switchExpandModeAction( this ),
@@ -103,16 +97,13 @@ ScanPopup::ScanPopup( QWidget * parent,
   mainStatusBar = new MainStatusBar( this );
 
 
-  definition = new ArticleView( this,
-                                articleNetMgr,
-                                audioPlayer_,
-                                allDictionaries,
-                                groups,
-                                true,
-                                cfg,
-                                translateBox->translateLine(),
-                                dictionaryBar.toggleViewAction(),
-                                cfg.lastPopupGroupId );
+  ArticleViewContext context;
+  context.popupView            = true;
+  context.translateLine        = translateBox->translateLine();
+  context.dictionaryBarToggled = dictionaryBar.toggleViewAction();
+  context.currentGroupId       = cfg.lastPopupGroupId;
+
+  definition = new ArticleView( this, context );
 
   resize( 247, 400 );
 
@@ -151,13 +142,13 @@ ScanPopup::ScanPopup( QWidget * parent,
 
   ui.pronounceButton->setDisabled( true );
 
-  groupList->fill( groups );
+  groupList->fill( ServiceLocator::instance().getGroups() );
   groupList->setCurrentGroup( cfg.lastPopupGroupId );
 
   definition->setCurrentGroupId( groupList->getCurrentGroup() );
   definition->setSelectionBySingleClick( cfg.preferences.selectWordBySingleClick );
 
-  const Instances::Group * igrp = groups.findGroup( cfg.lastPopupGroupId );
+  const Instances::Group * igrp = ServiceLocator::instance().getGroups().findGroup( cfg.lastPopupGroupId );
   if ( cfg.lastPopupGroupId == GroupId::AllGroupId ) {
     if ( igrp ) {
       igrp->checkMutedDictionaries( &cfg.popupMutedDictionaries );
@@ -337,9 +328,8 @@ void ScanPopup::updateFoundInDictsList()
   foundBar->setUpdatesEnabled( false );
 
   unsigned currentId           = groupList->getCurrentGroup();
-  const Instances::Group * grp = groups.findGroup( currentId );
-
-  auto dictionaries = grp ? grp->dictionaries : allDictionaries;
+  const Instances::Group * igrp = ServiceLocator::instance().getGroups().findGroup( currentId );
+  auto dictionaries             = igrp ? igrp->dictionaries : ServiceLocator::instance().getAllDictionaries();
   QStringList ids   = definition->getArticlesList();
   QString activeId  = definition->getActiveArticleId();
   foundBar->clear();
@@ -386,13 +376,14 @@ void ScanPopup::refresh()
 
   // repopulate
   groupList->clear();
-  groupList->fill( groups );
-
+  groupList->fill( ServiceLocator::instance().getGroups() );
   groupList->setCurrentGroup( OldGroupID ); // This does nothing if OldGroupID doesn't exist;
 
-  groupListAction->setVisible( !cfg.groups.empty() );
+  groupListAction->setVisible( !ServiceLocator::instance().getGroups().empty() );
 
-  dictionaryBar.updateToGroup( groups.findGroup( groupList->getCurrentGroup() ), &cfg.popupMutedDictionaries, cfg );
+  dictionaryBar.updateToGroup( ServiceLocator::instance().getGroups().findGroup( groupList->getCurrentGroup() ),
+                               &cfg.popupMutedDictionaries,
+                               cfg );
   setDictionaryIconSize();
 
   definition->syncBackgroundColorWithCfgDarkReader();
@@ -613,7 +604,7 @@ QString ScanPopup::elideInputWord()
 void ScanPopup::currentGroupChanged( int )
 {
   cfg.lastPopupGroupId          = groupList->getCurrentGroup();
-  const Instances::Group * igrp = groups.findGroup( cfg.lastPopupGroupId );
+  const Instances::Group * igrp = ServiceLocator::instance().getGroups().findGroup( cfg.lastPopupGroupId );
   if ( cfg.lastPopupGroupId == GroupId::AllGroupId ) {
     if ( igrp ) {
       igrp->checkMutedDictionaries( &cfg.popupMutedDictionaries );
@@ -633,7 +624,9 @@ void ScanPopup::currentGroupChanged( int )
     }
   }
 
-  dictionaryBar.updateToGroup( groups.findGroup( groupList->getCurrentGroup() ), &cfg.popupMutedDictionaries, cfg );
+  dictionaryBar.updateToGroup( ServiceLocator::instance().getGroups().findGroup( groupList->getCurrentGroup() ),
+                               &cfg.popupMutedDictionaries,
+                               cfg );
 
   definition->setCurrentGroupId( cfg.lastPopupGroupId );
 
@@ -691,9 +684,13 @@ void ScanPopup::showTranslationFor( const QString & word ) const
 
 const vector< sptr< Dictionary::Class > > & ScanPopup::getActiveDicts()
 {
-  int current = groupList->currentIndex();
+  int current         = groupList->getCurrentGroup();
+  const auto & groups = ServiceLocator::instance().getGroups();
 
-  Q_ASSERT( 0 <= current || current <= (qsizetype)groups.size() );
+  if ( current < 0 || current >= (int)groups.size() ) {
+    // Invalid group selected, use all dictionaries
+    return ServiceLocator::instance().getAllDictionaries();
+  }
 
   const Config::DictionarySets * mutedDictionaries = dictionaryBar.getMutedDictionaries();
 
@@ -705,7 +702,7 @@ const vector< sptr< Dictionary::Class > > & ScanPopup::getActiveDicts()
 
   // Populate the special dictionariesUnmuted array with only unmuted
   // dictionaries
-
+  static std::vector< sptr< Dictionary::Class > > dictionariesUnmuted;
   dictionariesUnmuted.clear();
   dictionariesUnmuted.reserve( activeDicts.size() );
 
@@ -886,12 +883,14 @@ void ScanPopup::showEvent( QShowEvent * ev )
 {
   QMainWindow::showEvent( ev );
 
-  if ( groups.size() <= 1 ) { // Only the default group? Hide then.
+  if ( ServiceLocator::instance().getGroups().size() <= 1 ) { // Only the default group? Hide then.
     groupListAction->setVisible( false );
   }
 
   if ( dictionaryBar.isVisible() ) {
-    dictionaryBar.updateToGroup( groups.findGroup( groupList->getCurrentGroup() ), &cfg.popupMutedDictionaries, cfg );
+    dictionaryBar.updateToGroup( ServiceLocator::instance().getGroups().findGroup( groupList->getCurrentGroup() ),
+                                 &cfg.popupMutedDictionaries,
+                                 cfg );
     setDictionaryIconSize();
   }
 }
@@ -1000,7 +999,9 @@ void ScanPopup::stopAudio() const
 void ScanPopup::dictionaryBar_visibility_changed( bool visible )
 {
   if ( visible ) {
-    dictionaryBar.updateToGroup( groups.findGroup( groupList->getCurrentGroup() ), &cfg.popupMutedDictionaries, cfg );
+    dictionaryBar.updateToGroup( ServiceLocator::instance().getGroups().findGroup( groupList->getCurrentGroup() ),
+                                 &cfg.popupMutedDictionaries,
+                                 cfg );
     setDictionaryIconSize();
     definition->updateMutedContents();
   }

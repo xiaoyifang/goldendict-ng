@@ -4,6 +4,7 @@
 #include <QStyleHints>
 #include <Qt>
 #include "utils.hh"
+#include "service_locator.hh"
 
 Q_GLOBAL_STATIC( GlobalBroadcaster, bdcaster )
 
@@ -34,7 +35,7 @@ Config::Class * GlobalBroadcaster::getConfig() const
 
 Config::Preferences * GlobalBroadcaster::getPreference() const
 {
-  return config ? &config->preferences : nullptr;
+  return const_cast< Config::Preferences * >( &ServiceLocator::instance().getConfig().preferences );
 }
 
 void GlobalBroadcaster::addWhitelist( QString host )
