@@ -60,7 +60,7 @@ public:
                                   const std::u32string & context,
                                   bool ) override;
 
-  sptr< DataRequest > getResource( const string & name ) override;
+  sptr< ResourceRequest > getResource( const string & name ) override;
 
   Features getFeatures() const noexcept override
   {
@@ -327,9 +327,9 @@ sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>)",
 }
 
 
-sptr< DataRequest > WebSiteDictionary::getResource( const string & /*name*/ )
+sptr< ResourceRequest > WebSiteDictionary::getResource( const string & /*name*/ )
 {
-  return std::make_shared< DataRequestInstant >( false );
+  return ResourceRequest::NoDataFinished( false );
 }
 
 void WebSiteDictionary::loadIcon() noexcept

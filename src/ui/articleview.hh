@@ -147,7 +147,7 @@ public:
                  const QString & scrollTo  = QString(),
                  const Contexts & contexts = Contexts() );
   void playAudio( const QUrl & url );
-  void audioDownloadFinished( const sptr< Dictionary::DataRequest > & req );
+  void audioDownloadFinished( const sptr< ResourceRequest > & req );
 
   /// Called when the state of dictionary bar changes and the view is active.
   /// The function reloads content if the change affects it.
@@ -419,7 +419,7 @@ class ResourceToSaveHandler: public QObject
 
 public:
   explicit ResourceToSaveHandler( ArticleView * view, QString fileName );
-  void addRequest( const sptr< Dictionary::DataRequest > & req );
+  void addRequest( const sptr< ResourceRequest > & req );
   bool isEmpty()
   {
     return downloadRequests.empty();
@@ -433,7 +433,7 @@ public slots:
   void downloadFinished();
 
 private:
-  std::list< sptr< Dictionary::DataRequest > > downloadRequests;
+  std::list< sptr< ResourceRequest > > downloadRequests;
   QString fileName;
   bool alreadyDone;
 };
