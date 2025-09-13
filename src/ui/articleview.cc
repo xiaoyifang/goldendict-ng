@@ -284,7 +284,6 @@ void ArticleView::showDefinition( const QString & word,
                                   const Contexts & contexts_ )
 {
   GlobalBroadcaster::instance()->pronounce_engine.reset();
-  clearWebsiteTabs();
   currentWord = word.trimmed();
   if ( currentWord.isEmpty() ) {
     return;
