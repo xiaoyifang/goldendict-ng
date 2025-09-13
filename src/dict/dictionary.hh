@@ -376,7 +376,8 @@ public:
     return NoFeatures;
   }
 
-  virtual map<QString, QString> getProperties() noexcept {
+  virtual map< QString, QString > getProperties() noexcept
+  {
     return {};
   }
 

@@ -522,11 +522,11 @@ void ArticleRequest::altSearchFinished()
         if ( GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
           if ( ( activeDict->getFeatures() | Dictionary::WebSite ) == Dictionary::WebSite ) {
             //replace the word,and get the actual requested url
-            QString url = activeDict->getProperties()["Url"];
-            if (!url.isEmpty()) {
-              QString requestUrl = Utils::WebSite::urlReplaceWord(url, word);
+            QString url = activeDict->getProperties()[ "Url" ];
+            if ( !url.isEmpty() ) {
+              QString requestUrl = Utils::WebSite::urlReplaceWord( url, word );
               emit GlobalBroadcaster::instance()
-                  ->websiteDictionarySignal(QString::fromStdString(activeDict->getName()), requestUrl);
+                -> websiteDictionarySignal( QString::fromStdString( activeDict->getName() ), requestUrl );
             }
           }
         }

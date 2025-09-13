@@ -37,14 +37,15 @@ public:
     inside_iframe( inside_iframe_ ),
     netMgr( netMgr_ )
   {
-    dictionaryName = name_;
+    dictionaryName        = name_;
     urlTemplate           = QUrl( urlTemplate_ ).toEncoded();
     dictionaryDescription = urlTemplate_;
   }
 
-  map<QString, QString> getProperties() noexcept override {
-    map<QString, QString> properties;
-    properties.insert({"Url", urlTemplate});
+  map< QString, QString > getProperties() noexcept override
+  {
+    map< QString, QString > properties;
+    properties.insert( { "Url", urlTemplate } );
     return properties;
   }
 
@@ -296,7 +297,7 @@ void WebSiteArticleRequest::requestFinished( QNetworkReply * r )
 
 sptr< DataRequest > WebSiteDictionary::getArticle( const std::u32string & str,
                                                    const vector< std::u32string > & /*alts*/,
-                                                   std::u32string const & context,
+                                                   const std::u32string & context,
                                                    bool /*ignoreDiacritics*/ )
 {
   QString urlString = Utils::WebSite::urlReplaceWord( QString( urlTemplate ), QString::fromStdU32String( str ) );
@@ -316,14 +317,14 @@ sptr< DataRequest > WebSiteDictionary::getArticle( const std::u32string & str,
       result += string( "<div><span>this website dictionary is opened in the new tab</span></div>" );
     }
     else {
-          fmt::format_to( std::back_inserter( result ),
-                    R"(<iframe id="gdexpandframe-{}" src="{}"
+      fmt::format_to( std::back_inserter( result ),
+                      R"(<iframe id="gdexpandframe-{}" src="{}"
 scrolling="no" data-gd-id="{}" 
 class="website-iframe"
 sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>)",
-                    getId(),
-                    encodeUrl.toStdString(),
-                    getId() );
+                      getId(),
+                      encodeUrl.toStdString(),
+                      getId() );
     }
     auto dr = std::make_shared< DataRequestInstant >( true );
     dr->appendString( result );

@@ -219,13 +219,22 @@ public:
   }
 
   /// Returns whether this view is for website browsing
-  bool isWebsite() const { return isWebsiteView; }
+  bool isWebsite() const
+  {
+    return isWebsiteView;
+  }
 
   /// Sets whether this view is for website browsing
-  void setWebsiteView( bool website ) { isWebsiteView = website; }
+  void setWebsiteView( bool website )
+  {
+    isWebsiteView = website;
+  }
 
   /// Returns the website host
-  QString getWebsiteHost() const { return websiteHost; }
+  QString getWebsiteHost() const
+  {
+    return websiteHost;
+  }
 
   /// Sets website host
   void setWebsiteHost( const QString & host );
