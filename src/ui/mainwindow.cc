@@ -4241,7 +4241,7 @@ void MainWindow::openWebsiteInNewTab( QString name, QString url )
   if(view==nullptr)
   {
     view = createNewTab(false, name);
-    view->setWebsite( true );
+    view->setWebsite(true);
   }
   view->load( url );
 }
