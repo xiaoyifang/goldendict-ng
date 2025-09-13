@@ -225,7 +225,10 @@ public:
   }
 
   /// Sets whether this view is for website browsing
-  void setWebsite(bool website) { isWebsiteView = website; }
+  void setWebsite( bool website )
+  {
+    isWebsiteView = website;
+  }
 
   /// Returns the website host
   QString getWebsiteHost() const
