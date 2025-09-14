@@ -590,7 +590,7 @@ void ArticleView::tryMangleWebsiteClickedUrl( QUrl & url, Contexts & contexts )
 void ArticleView::load(const QUrl &url, const QString &customTitle) {
   // Save custom title if provided
   this->customTitle = customTitle;
-  
+
   // Auto-detect if this is a website URL
   if ( url.scheme() == "http" || url.scheme() == "https" ) {
     isWebsiteView = true;
@@ -1287,10 +1287,10 @@ void ArticleView::setContent( const QByteArray & data, const QString & mimeType,
 QString ArticleView::getTitle()
 {
   // Use custom title if it's a website view and custom title is set
-  if ( isWebsiteView && !customTitle.isEmpty() ) {
+  if (isWebsiteView && !customTitle.isEmpty()) {
     return customTitle;
   }
-  
+
   auto title = webview->title();
   if ( title.contains( "://" ) ) {
     return {};
@@ -2116,20 +2116,19 @@ void ArticleView::setWebsiteHost( const QString & host )
   websiteHost = host;
 }
 
-void ArticleView::setCustomTitle( const QString & customTitle )
-{
+void ArticleView::setCustomTitle(const QString &customTitle) {
   this->customTitle = customTitle;
   // Trigger title update if page has already been loaded
-  if ( webview->url().isValid() ) {
-    emit titleChanged( this, getTitle() );
+  if (webview->url().isValid()) {
+    emit titleChanged(this, getTitle());
   }
 }
-void ArticleView::load( QString url, const QString & customTitle )
-{
+
+void ArticleView::load(QString url, const QString &customTitle) {
   // Save custom title if provided
   this->customTitle = customTitle;
-  
-  QUrl qurl( url );
+
+  QUrl qurl(url);
   // Auto-detect if this is a website URL
   if ( qurl.scheme() == "http" || qurl.scheme() == "https" ) {
     isWebsiteView = true;

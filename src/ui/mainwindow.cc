@@ -4242,7 +4242,7 @@ void MainWindow::openWebsiteInNewTab( QString name, QString url )
     view = createNewTab( false, name );
     view->setWebsite( true );
   }
-  view->load( url, name);
+  view->load(url, name);
 }
 
 void MainWindow::addCurrentTabToFavorites()
