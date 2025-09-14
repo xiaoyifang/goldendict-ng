@@ -3624,8 +3624,18 @@ void MainWindow::messageFromAnotherInstanceReceived( const QString & message )
 
 ArticleView * MainWindow::getCurrentArticleView()
 {
+  // First try to find the first non-website tab
+  for ( int i = 0; i < ui.tabWidget->count(); i++ ) {
+    auto * view = qobject_cast< ArticleView * >( ui.tabWidget->widget( i ) );
+    if ( view && !view->isWebsite() ) {
+      return view;
+    }
+  }
+  
+  // If no non-website tab found, return current tab
   if ( QWidget * cw = ui.tabWidget->currentWidget() ) {
     auto * pView = dynamic_cast< ArticleView * >( cw );
+    pView->setWebsite( false );
     return pView;
   }
   return nullptr;
