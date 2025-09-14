@@ -525,9 +525,8 @@ void ArticleRequest::altSearchFinished()
             QString url = activeDict->getProperties()[ "Url" ];
             if ( !url.isEmpty() ) {
               QString requestUrl = Utils::WebSite::urlReplaceWord( url, word );
-              auto title = QString::fromStdString(activeDict->getName());
-              emit GlobalBroadcaster::instance()
-                  ->websiteDictionarySignal(title + "-" + word, requestUrl);
+              auto title         = QString::fromStdString( activeDict->getName() );
+              emit GlobalBroadcaster::instance() -> websiteDictionarySignal( title + "-" + word, requestUrl );
             }
           }
         }

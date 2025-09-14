@@ -111,9 +111,9 @@ public:
 
   ~ArticleView();
 
-  void load(QString url, const QString &customTitle = {});
+  void load( QString url, const QString & customTitle = {} );
 
-  void setCustomTitle(const QString &customTitle);
+  void setCustomTitle( const QString & customTitle );
 
   /// Returns "gdfrom-" + dictionaryId.
   static QString scrollToFromDictionaryId( const QString & dictionaryId );
@@ -428,7 +428,7 @@ private:
   void tryMangleWebsiteClickedUrl( QUrl & url, Contexts & contexts );
 
   /// Loads a page at @p url into view.
-  void load(const QUrl &url, const QString &customTitle = {});
+  void load( const QUrl & url, const QString & customTitle = {} );
 
   /// Attempts removing last temporary file created.
   void cleanupTemp();

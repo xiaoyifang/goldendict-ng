@@ -479,10 +479,10 @@ void ArticleView::loadFinished( bool result )
 void ArticleView::handleTitleChanged( const QString & title )
 {
   // Use custom title if it's a website view and custom title is set; otherwise use the original title
-  QString displayTitle = (isWebsiteView && !customTitle.isEmpty()) ? customTitle : title;
+  QString displayTitle = ( isWebsiteView && !customTitle.isEmpty() ) ? customTitle : title;
 
-  if (!displayTitle.isEmpty() && !displayTitle.contains("://")) {
-    emit titleChanged(this, displayTitle);
+  if ( !displayTitle.isEmpty() && !displayTitle.contains( "://" ) ) {
+    emit titleChanged( this, displayTitle );
   }
 }
 
@@ -587,7 +587,8 @@ void ArticleView::tryMangleWebsiteClickedUrl( QUrl & url, Contexts & contexts )
   }
 }
 
-void ArticleView::load(const QUrl &url, const QString &customTitle) {
+void ArticleView::load( const QUrl & url, const QString & customTitle )
+{
   // Save custom title if provided
   this->customTitle = customTitle;
 
@@ -1287,7 +1288,7 @@ void ArticleView::setContent( const QByteArray & data, const QString & mimeType,
 QString ArticleView::getTitle()
 {
   // Use custom title if it's a website view and custom title is set
-  if (isWebsiteView && !customTitle.isEmpty()) {
+  if ( isWebsiteView && !customTitle.isEmpty() ) {
     return customTitle;
   }
 
@@ -2116,19 +2117,21 @@ void ArticleView::setWebsiteHost( const QString & host )
   websiteHost = host;
 }
 
-void ArticleView::setCustomTitle(const QString &customTitle) {
+void ArticleView::setCustomTitle( const QString & customTitle )
+{
   this->customTitle = customTitle;
   // Trigger title update if page has already been loaded
-  if (webview->url().isValid()) {
-    emit titleChanged(this, getTitle());
+  if ( webview->url().isValid() ) {
+    emit titleChanged( this, getTitle() );
   }
 }
 
-void ArticleView::load(QString url, const QString &customTitle) {
+void ArticleView::load( QString url, const QString & customTitle )
+{
   // Save custom title if provided
   this->customTitle = customTitle;
 
-  QUrl qurl(url);
+  QUrl qurl( url );
   // Auto-detect if this is a website URL
   if ( qurl.scheme() == "http" || qurl.scheme() == "https" ) {
     isWebsiteView = true;
