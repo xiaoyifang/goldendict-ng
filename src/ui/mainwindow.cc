@@ -3626,7 +3626,7 @@ ArticleView * MainWindow::getCurrentArticleView()
 {
   if ( QWidget * cw = ui.tabWidget->currentWidget() ) {
     auto * pView = dynamic_cast< ArticleView * >( cw );
-    if( pView && !pView->isWebsite() ) {
+    if ( pView && !pView->isWebsite() ) {
       return pView;
     }
   }
