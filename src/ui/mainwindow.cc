@@ -3631,7 +3631,7 @@ ArticleView * MainWindow::getCurrentArticleView()
       return view;
     }
   }
-  
+
   // If no non-website tab found, return current tab
   if ( QWidget * cw = ui.tabWidget->currentWidget() ) {
     auto * pView = dynamic_cast< ArticleView * >( cw );
