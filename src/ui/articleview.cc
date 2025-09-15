@@ -628,6 +628,9 @@ void ArticleView::load( const QUrl & url, const QString & customTitle )
     isWebsiteView = true;
     setWebsiteHost( url.host() );
   }
+  else {
+    isWebsiteView = false;
+  }
   webview->load( url );
 }
 
