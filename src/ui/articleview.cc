@@ -701,6 +701,8 @@ void ArticleView::injectWebsiteJavaScript()
 
 QString ArticleView::createErrorPageHtml( const QUrl & url )
 {
+  bool darkModeEnabled = ( cfg.preferences.darkReaderMode == Config::Dark::On );
+  
   return QString(
            "<!DOCTYPE html>"
            "<html>"
@@ -719,10 +721,10 @@ QString ArticleView::createErrorPageHtml( const QUrl & url )
            ".retry-button:hover { background-color: #2980b9; }"
            "</style>"
            "<script>"
-           "// Initialize Dark Reader based on system preference or configuration"
+           "// Initialize Dark Reader based on configuration"
            "if (typeof DarkReader !== 'undefined') {"
-           "  const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;"
-           "  if (isDarkMode) {"
+           "  const darkMode = %6;"
+           "  if (darkMode) {"
            "    DarkReader.enable({"
            "      brightness: 100,"
            "      contrast: 90,"
@@ -745,7 +747,8 @@ QString ArticleView::createErrorPageHtml( const QUrl & url )
     .arg( tr( "Page Load Failed" ) )
     .arg( tr( "Unable to load the requested page content" ) )
     .arg( Html::escape( url.toString() ) )
-    .arg( tr( "Reload" ) );
+    .arg( tr( "Reload" ) )
+    .arg( darkModeEnabled ? "true" : "false" );
 }
 
 bool ArticleView::handleF3( QObject * /*obj*/, QEvent * ev )
