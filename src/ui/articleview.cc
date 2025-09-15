@@ -647,7 +647,7 @@ void ArticleView::cleanupTemp()
 void ArticleView::injectWebsiteJavaScript()
 {
   // Check if dark reader mode is enabled for website views
-  if ( cfg.preferences.darkReaderMode == Config::Dark::Off ) {
+  if ( !isDarkModeEnabled() ) {
     return;
   }
 
@@ -700,7 +700,7 @@ void ArticleView::injectWebsiteJavaScript()
   webview->page()->runJavaScript( injectionScript );
 }
 
-QString ArticleView::createErrorPageHtml( const QUrl & url )
+bool ArticleView::isDarkModeEnabled() const
 {
   bool darkModeEnabled = ( cfg.preferences.darkReaderMode == Config::Dark::On );
 
@@ -717,6 +717,12 @@ QString ArticleView::createErrorPageHtml( const QUrl & url )
     darkModeEnabled = true;
   }
 #endif
+  return darkModeEnabled;
+}
+
+QString ArticleView::createErrorPageHtml( const QUrl & url )
+{
+  bool darkModeEnabled = isDarkModeEnabled();
 
   return QString(
            "<!DOCTYPE html>"
