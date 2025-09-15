@@ -703,6 +703,20 @@ QString ArticleView::createErrorPageHtml( const QUrl & url )
 {
   bool darkModeEnabled = ( cfg.preferences.darkReaderMode == Config::Dark::On );
 
+#if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
+  if ( GlobalBroadcaster::instance()->getPreference()->darkReaderMode == Config::Dark::Auto
+  #if !defined( Q_OS_WINDOWS )
+       // For macOS & Linux, uses "System's style hint". There is no darkMode setting in GD for them.
+       && QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark
+  #else
+       // For Windows, uses the setting in GD
+       && GlobalBroadcaster::instance()->getPreference()->darkMode == Config::Dark::On
+  #endif
+  ) {
+    darkModeEnabled = true;
+  }
+#endif
+
   return QString(
            "<!DOCTYPE html>"
            "<html>"
