@@ -744,7 +744,7 @@ QString ArticleView::createErrorPageHtml( const QUrl & url )
     .arg( tr( "Error Loading" ) )
     .arg( tr( "Page Load Failed" ) )
     .arg( tr( "Unable to load the requested page content" ) )
-    .arg( Html::escape( url.toString().toUtf8().data() ) )
+    .arg( Html::escape( url.toString() ) )
     .arg( tr( "Reload" ) );
 }
 

@@ -187,4 +187,32 @@ string unescapeUtf8( const string & str, HtmlOption option )
   return string( unescape( QString::fromStdString( str ), option ).toUtf8().data() );
 }
 
+QString escape( const QString & str )
+{
+  QString result;
+  result.reserve( str.size() * 6 ); // Reserve space for worst case scenario
+
+  for ( const QChar & ch : str ) {
+    switch ( ch.unicode() ) {
+      case '&':
+        result += "&amp;";
+        break;
+      case '<':
+        result += "&lt;";
+        break;
+      case '>':
+        result += "&gt;";
+        break;
+      case '"':
+        result += "&quot;";
+        break;
+      default:
+        result += ch;
+        break;
+    }
+  }
+
+  return result;
+}
+
 } // namespace Html

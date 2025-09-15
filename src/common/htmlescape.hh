@@ -17,6 +17,7 @@ using std::string;
 // The " is not really required to be escaped in html, but is replaced anyway
 // to make the result suitable for inserting as attributes' values.
 string escape( const string & );
+QString escape( const QString & );
 
 // Converts the given preformatted text to html. Each end of line is replaced by
 // <br>, each leading space is converted to &nbsp;.
