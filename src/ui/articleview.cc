@@ -702,7 +702,7 @@ void ArticleView::injectWebsiteJavaScript()
 QString ArticleView::createErrorPageHtml( const QUrl & url )
 {
   bool darkModeEnabled = ( cfg.preferences.darkReaderMode == Config::Dark::On );
-  
+
   return QString(
            "<!DOCTYPE html>"
            "<html>"
