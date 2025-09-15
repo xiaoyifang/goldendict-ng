@@ -254,6 +254,22 @@
         <source>&amp;Create Anki note</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Error Loading</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Page Load Failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Unable to load the requested page content</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reload</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>BelarusianTranslit</name>
