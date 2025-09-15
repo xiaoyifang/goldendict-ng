@@ -728,7 +728,6 @@ QString ArticleView::createErrorPageHtml( const QUrl & url )
     "</head>"
     "<body>"
     "<div class='error-container'>"
-    "<div class='error-icon'>⚠️</div>"
     "<div class='error-title'>%2</div>"
     "<div class='error-message'>%3</div>"
     "<div class='error-url'>%4</div>"
