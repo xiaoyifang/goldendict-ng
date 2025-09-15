@@ -29,6 +29,7 @@
 #include <QRandomGenerator>
 #include <QWebEngineContextMenuRequest>
 #include <QWebEngineFindTextResult>
+#include <QStyleHints>
 #include <utility>
 #ifdef Q_OS_WIN32
   #include <windows.h>
