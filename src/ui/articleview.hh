@@ -429,6 +429,7 @@ private:
 
   /// Injects JavaScript into website views for enhanced functionality
   void injectWebsiteJavaScript();
+  QString createErrorPageHtml( const QUrl & url );
 
   /// Loads a page at @p url into view.
   void load( const QUrl & url, const QString & customTitle = {} );

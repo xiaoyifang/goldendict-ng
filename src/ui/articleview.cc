@@ -430,51 +430,13 @@ void ArticleView::loadFinished( bool result )
   setZoomFactor( cfg.preferences.zoomFactor );
   webview->unsetCursor();
   if ( !result ) {
-    qWarning() << "article loaded unsuccessful:" << url.toString();
-
+    qWarning() << "article loaded unsuccessful:" << webview->url().toString();
+    
     // Create custom error page with internationalization support
-    QString errorHtml =
-      QString(
-        "<!DOCTYPE html>"
-        "<html>"
-        "<head>"
-        "<meta charset='UTF-8'>"
-        "<title>%1</title>"
-        "<style>"
-        "body { font-family: Arial, sans-serif; margin: 0; padding: 40px; background-color: #f5f5f5; }"
-        ".error-container { max-width: 600px; margin: 50px auto; padding: 40px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; }"
-        ".error-icon { font-size: 48px; color: #e74c3c; margin-bottom: 20px; }"
-        ".error-title { font-size: 24px; color: #333; margin-bottom: 10px; }"
-        ".error-message { font-size: 16px; color: #666; margin-bottom: 20px; }"
-        ".error-url { font-size: 14px; color: #999; word-break: break-all; margin-bottom: 20px; }"
-        ".retry-button { display: inline-block; padding: 10px 20px; background-color: #3498db; color: white; text-decoration: none; border-radius: 4px; font-size: 14px; cursor: pointer; border: none; }"
-        ".retry-button:hover { background-color: #2980b9; }"
-        "/* Dark mode support */"
-        "@media (prefers-color-scheme: dark) {"
-        "  body { background-color: #1a1a1a; color: #e0e0e0; }"
-        "  .error-container { background: #2d2d2d; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }"
-        "  .error-title { color: #e0e0e0; }"
-        "  .error-message { color: #b0b0b0; }"
-        "  .error-url { color: #888; }"
-        "}"
-        "</style>"
-        "</head>"
-        "<body>"
-        "<div class='error-container'>"
-        "<div class='error-title'>%2</div>"
-        "<div class='error-message'>%3</div>"
-        "<div class='error-url'>%4</div>"
-        "<button class='retry-button' onclick='window.location.reload()'>%5</button>"
-        "</div>"
-        "</body>"
-        "</html>" )
-        .arg( tr( "Error Loading" ) )
-        .arg( tr( "Page Load Failed" ) )
-        .arg( tr( "Unable to load the requested page content" ) )
-        .arg( escapeHtml( webview->url().toString() ) )
-        .arg( tr( "Reload" ) );
+    QString errorHtml = createErrorPageHtml(webview->url());
 
-    webview->setHtml( errorHtml, webview->url() );
+    
+    webview->setHtml(errorHtml, webview->url());
     return;
   }
   QUrl url = webview->url();
@@ -735,6 +697,50 @@ void ArticleView::injectWebsiteJavaScript()
   )";
 
   webview->page()->runJavaScript( injectionScript );
+}
+
+QString ArticleView::createErrorPageHtml( const QUrl & url )
+{
+  return QString(
+    "<!DOCTYPE html>"
+    "<html>"
+    "<head>"
+    "<meta charset='UTF-8'>"
+    "<title>%1</title>"
+    "<style>"
+    "body { font-family: Arial, sans-serif; margin: 0; padding: 40px; background-color: #f5f5f5; }"
+    ".error-container { max-width: 600px; margin: 50px auto; padding: 40px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; }"
+    ".error-icon { font-size: 48px; color: #e74c3c; margin-bottom: 20px; }"
+    ".error-title { font-size: 24px; color: #333; margin-bottom: 10px; }"
+    ".error-message { font-size: 16px; color: #666; margin-bottom: 20px; }"
+    ".error-url { font-size: 14px; color: #999; word-break: break-all; margin-bottom: 20px; }"
+    ".retry-button { display: inline-block; padding: 10px 20px; background-color: #3498db; color: white; text-decoration: none; border-radius: 4px; font-size: 14px; cursor: pointer; border: none; }"
+    ".retry-button:hover { background-color: #2980b9; }"
+    "/* Dark mode support */"
+    "@media (prefers-color-scheme: dark) {"
+    "  body { background-color: #1a1a1a; color: #e0e0e0; }"
+    "  .error-container { background: #2d2d2d; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }"
+    "  .error-title { color: #e0e0e0; }"
+    "  .error-message { color: #b0b0b0; }"
+    "  .error-url { color: #888; }"
+    "}"
+    "</style>"
+    "</head>"
+    "<body>"
+    "<div class='error-container'>"
+    "<div class='error-icon'>⚠️</div>"
+    "<div class='error-title'>%2</div>"
+    "<div class='error-message'>%3</div>"
+    "<div class='error-url'>%4</div>"
+    "<button class='retry-button' onclick='window.location.reload()'>%5</button>"
+    "</div>"
+    "</body>"
+    "</html>"
+  ).arg(tr("Error Loading"))
+   .arg(tr("Page Load Failed"))
+   .arg(tr("Unable to load the requested page content"))
+   .arg(Html::escape(url.toString().toUtf8().data()))
+   .arg(tr("Reload"));
 }
 
 bool ArticleView::handleF3( QObject * /*obj*/, QEvent * ev )
