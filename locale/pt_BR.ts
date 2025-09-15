@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation type="unfinished">Anki: can&apos;t create a card without a word</translation>
+      <translation>Não é possível criar um cartão sem uma palavra</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation>Anki: post para Anki falhou</translation>
+      <translation>Anki: A postagem no Anki falhou</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation>Anki: post para Anki com sucesso</translation>
+      <translation>Anki: Postagem no Anki realizada</translation>
     </message>
   </context>
   <context>
@@ -312,7 +312,7 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Taiwan variant</source>
-      <translation>Taiwan variant</translation>
+      <translation>Variante de Taiwan</translation>
     </message>
     <message>
       <source>Hong Kong variant</source>
@@ -3467,7 +3467,7 @@ dos dicionários Stardict, Babylon e GLS</translation>
     </message>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
-      <translation>GoldenDict-ng é um software de dicionário.</translation>
+      <translation>O GoldenDict-ng é um software de dicionário.</translation>
     </message>
     <message>
       <source>Enable Interface Font</source>
