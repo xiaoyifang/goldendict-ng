@@ -187,7 +187,7 @@ string unescapeUtf8( const string & str, HtmlOption option )
   return string( unescape( QString::fromStdString( str ), option ).toUtf8().data() );
 }
 
-QString escape( const QString & str )
+QString escapeQString( const QString & str )
 {
   QString result;
   result.reserve( str.size() * 6 ); // Reserve space for worst case scenario
