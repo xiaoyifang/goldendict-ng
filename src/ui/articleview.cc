@@ -720,8 +720,7 @@ bool ArticleView::isDarkModeEnabled() const
   return darkModeEnabled;
 }
 
-QString ArticleView::createErrorPageHtml( const QUrl & url )
-{
+QString ArticleView::createErrorPageHtml(const QUrl &url) const {
   bool darkModeEnabled = isDarkModeEnabled();
 
   return QString(
@@ -744,7 +743,7 @@ QString ArticleView::createErrorPageHtml( const QUrl & url )
            "<script>"
            "// Initialize Dark Reader based on configuration"
            "if (typeof DarkReader !== 'undefined') {"
-           "  const darkMode = %6;"
+           "  const darkMode = %4;"
            "  if (darkMode) {"
            "    DarkReader.enable({"
            "      brightness: 100,"
@@ -759,16 +758,12 @@ QString ArticleView::createErrorPageHtml( const QUrl & url )
            "<div class='error-container'>"
            "<div class='error-title'>%2</div>"
            "<div class='error-message'>%3</div>"
-           "<div class='error-url'>%4</div>"
-           "<button class='retry-button' onclick='window.location.reload()'>%5</button>"
            "</div>"
            "</body>"
            "</html>" )
     .arg( tr( "Error Loading" ) )
     .arg( tr( "Page Load Failed" ) )
     .arg( tr( "Unable to load the requested page content" ) )
-    .arg( Html::escapeQString( url.toString() ) )
-    .arg( tr( "Reload" ) )
     .arg( darkModeEnabled ? "true" : "false" );
 }
 

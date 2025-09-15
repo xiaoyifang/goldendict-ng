@@ -432,7 +432,7 @@ private:
 
   bool isDarkModeEnabled() const;
 
-  QString createErrorPageHtml( const QUrl & url );
+  QString createErrorPageHtml( const QUrl & url ) const;
 
   /// Loads a page at @p url into view.
   void load( const QUrl & url, const QString & customTitle = {} );
