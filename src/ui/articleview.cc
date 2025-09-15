@@ -741,11 +741,11 @@ QString ArticleView::createErrorPageHtml( const QUrl & url )
     "</div>"
     "</body>"
     "</html>"
-  ).arg( tr( "Error Loading" ),
-          tr( "Page Load Failed" ),
-          tr( "Unable to load the requested page content" ),
-          Html::escape( url.toString().toUtf8().data() ),
-          tr( "Reload" ) );
+  ).arg(tr("Error Loading"))
+   .arg(tr("Page Load Failed"))
+   .arg(tr("Unable to load the requested page content"))
+   .arg(Html::escape(url.toString().toUtf8().data()))
+   .arg(tr("Reload"));
 }
 
 bool ArticleView::handleF3( QObject * /*obj*/, QEvent * ev )
