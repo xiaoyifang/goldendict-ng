@@ -720,7 +720,8 @@ bool ArticleView::isDarkModeEnabled() const
   return darkModeEnabled;
 }
 
-QString ArticleView::createErrorPageHtml(const QUrl &url) const {
+QString ArticleView::createErrorPageHtml( const QUrl & url ) const
+{
   bool darkModeEnabled = isDarkModeEnabled();
 
   return QString(
