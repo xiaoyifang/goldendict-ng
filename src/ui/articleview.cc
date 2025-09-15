@@ -430,44 +430,50 @@ void ArticleView::loadFinished( bool result )
   setZoomFactor( cfg.preferences.zoomFactor );
   webview->unsetCursor();
   if ( !result ) {
-    qWarning() << "article loaded unsuccessful";
-
+    qWarning() << "article loaded unsuccessful:" << url.toString();
+    
     // Create custom error page with internationalization support
-    QString errorHtml =
-      QString(
-        "<!DOCTYPE html>"
-        "<html>"
-        "<head>"
-        "<meta charset='UTF-8'>"
-        "<title>%1</title>"
-        "<style>"
-        "body { font-family: Arial, sans-serif; margin: 0; padding: 40px; background-color: #f5f5f5; }"
-        ".error-container { max-width: 600px; margin: 50px auto; padding: 40px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; }"
-        ".error-icon { font-size: 48px; color: #e74c3c; margin-bottom: 20px; }"
-        ".error-title { font-size: 24px; color: #333; margin-bottom: 10px; }"
-        ".error-message { font-size: 16px; color: #666; margin-bottom: 20px; }"
-        ".error-url { font-size: 14px; color: #999; word-break: break-all; margin-bottom: 20px; }"
-        ".retry-button { display: inline-block; padding: 10px 20px; background-color: #3498db; color: white; text-decoration: none; border-radius: 4px; font-size: 14px; cursor: pointer; }"
-        ".retry-button:hover { background-color: #2980b9; }"
-        "</style>"
-        "</head>"
-        "<body>"
-        "<div class='error-container'>"
-        "<div class='error-icon'>⚠️</div>"
-        "<div class='error-title'>%2</div>"
-        "<div class='error-message'>%3</div>"
-        "<div class='error-url'>%4</div>"
-        "<button class='retry-button' onclick='window.location.reload()'>%5</button>"
-        "</div>"
-        "</body>"
-        "</html>" )
-        .arg( tr( "Error Loading" ) )
-        .arg( tr( "Page Load Failed" ) )
-        .arg( tr( "Unable to load the requested page content" ) )
-        .arg( escapeHtml( webview->url().toString() ) )
-        .arg( tr( "Reload" ) );
-
-    webview->setHtml( errorHtml, webview->url() );
+    QString errorHtml = QString(
+      "<!DOCTYPE html>"
+      "<html>"
+      "<head>"
+      "<meta charset='UTF-8'>"
+      "<title>%1</title>"
+      "<style>"
+      "body { font-family: Arial, sans-serif; margin: 0; padding: 40px; background-color: #f5f5f5; }"
+      ".error-container { max-width: 600px; margin: 50px auto; padding: 40px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; }"
+      ".error-icon { font-size: 48px; color: #e74c3c; margin-bottom: 20px; }"
+      ".error-title { font-size: 24px; color: #333; margin-bottom: 10px; }"
+      ".error-message { font-size: 16px; color: #666; margin-bottom: 20px; }"
+      ".error-url { font-size: 14px; color: #999; word-break: break-all; margin-bottom: 20px; }"
+      ".retry-button { display: inline-block; padding: 10px 20px; background-color: #3498db; color: white; text-decoration: none; border-radius: 4px; font-size: 14px; cursor: pointer; border: none; }"
+      ".retry-button:hover { background-color: #2980b9; }"
+      "/* Dark mode support */"
+      "@media (prefers-color-scheme: dark) {"
+      "  body { background-color: #1a1a1a; color: #e0e0e0; }"
+      "  .error-container { background: #2d2d2d; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }"
+      "  .error-title { color: #e0e0e0; }"
+      "  .error-message { color: #b0b0b0; }"
+      "  .error-url { color: #888; }"
+      "}"
+      "</style>"
+      "</head>"
+      "<body>"
+      "<div class='error-container'>"
+      "<div class='error-title'>%2</div>"
+      "<div class='error-message'>%3</div>"
+      "<div class='error-url'>%4</div>"
+      "<button class='retry-button' onclick='window.location.reload()'>%5</button>"
+      "</div>"
+      "</body>"
+      "</html>"
+    ).arg(tr("Error Loading"))
+     .arg(tr("Page Load Failed"))
+     .arg(tr("Unable to load the requested page content"))
+     .arg(escapeHtml(webview->url().toString()))
+     .arg(tr("Reload"));
+    
+    webview->setHtml(errorHtml, webview->url());
     return;
   }
   QUrl url = webview->url();
@@ -476,41 +482,50 @@ void ArticleView::loadFinished( bool result )
   }
   qDebug() << "article view loaded url:" << url.url().left( 50 ) << result;
 
-  if ( cfg.preferences.autoScrollToTargetArticle ) {
-    const QString scrollTo = Utils::Url::queryItemValue( url, "scrollto" );
-    if ( isScrollTo( scrollTo ) ) {
-      setCurrentArticle( scrollTo, true );
+  // Skip dictionary-specific logic for website views
+  if ( !isWebsiteView ) {
+    if ( cfg.preferences.autoScrollToTargetArticle ) {
+      const QString scrollTo = Utils::Url::queryItemValue( url, "scrollto" );
+      if ( isScrollTo( scrollTo ) ) {
+        setCurrentArticle( scrollTo, true );
+      }
+      else {
+        setActiveArticleId( "" );
+      }
     }
     else {
+      //clear current active dictionary id;
       setActiveArticleId( "" );
+    }
+
+    // Expand collapsed article if only one loaded - only for dictionary views
+    webview->page()->runJavaScript(
+      QString( "if (typeof gdCheckArticlesNumber === 'function') { gdCheckArticlesNumber(); }" ) );
+
+    if ( !Utils::Url::queryItemValue( url, "gdanchor" ).isEmpty() ) {
+      const QString anchor = QUrl::fromPercentEncoding( Utils::Url::encodedQueryItemValue( url, "gdanchor" ) );
+
+      // Find GD anchor on page
+      url.clear();
+      url.setFragment( anchor );
+      webview->page()->runJavaScript(
+        QString( "window.location.hash = \"%1\"" ).arg( QString::fromUtf8( url.toEncoded() ) ) );
+    }
+
+    // Only highlight FTS results for dictionary views
+    if ( Utils::Url::hasQueryItem( webview->url(), "regexp" ) ) {
+      highlightFTSResults();
     }
   }
   else {
-    //clear current active dictionary id;
-    setActiveArticleId( "" );
-  }
-
-
-  // Expand collapsed article if only one loaded
-  webview->page()->runJavaScript( QString( "gdCheckArticlesNumber();" ) );
-
-  if ( !Utils::Url::queryItemValue( url, "gdanchor" ).isEmpty() ) {
-    const QString anchor = QUrl::fromPercentEncoding( Utils::Url::encodedQueryItemValue( url, "gdanchor" ) );
-
-    // Find GD anchor on page
-    url.clear();
-    url.setFragment( anchor );
-    webview->page()->runJavaScript(
-      QString( "window.location.hash = \"%1\"" ).arg( QString::fromUtf8( url.toEncoded() ) ) );
+    // Inject JavaScript for website views
+    injectWebsiteJavaScript();
   }
 
   //the click audio url such as gdau://xxxx ,webview also emit a pageLoaded signal but with the result is false.need future investigation.
   //the audio link click ,no need to emit pageLoaded signal
   if ( result ) {
     emit pageLoaded( this );
-  }
-  if ( Utils::Url::hasQueryItem( webview->url(), "regexp" ) ) {
-    highlightFTSResults();
   }
 }
 
@@ -556,6 +571,10 @@ QString ArticleView::getCurrentArticle()
 
 void ArticleView::jumpToDictionary( const QString & id, bool force )
 {
+  // Skip dictionary jump for website views
+  if ( isWebsiteView ) {
+    return;
+  }
 
   // jump only if neceessary, or when forced
   if ( const QString targetArticle = scrollToFromDictionaryId( id ); force && targetArticle != getCurrentArticle() ) {
@@ -565,6 +584,11 @@ void ArticleView::jumpToDictionary( const QString & id, bool force )
 
 bool ArticleView::setCurrentArticle( const QString & id, bool moveToIt )
 {
+  // Skip dictionary article navigation for website views
+  if ( isWebsiteView ) {
+    return false;
+  }
+
   if ( !isScrollTo( id ) ) {
     return false; // Incorrect id
   }
@@ -592,6 +616,11 @@ bool ArticleView::setCurrentArticle( const QString & id, bool moveToIt )
 
 void ArticleView::selectCurrentArticle()
 {
+  // Skip dictionary article selection for website views
+  if ( isWebsiteView ) {
+    return;
+  }
+
   webview->page()->runJavaScript(
     QString(
       "gdSelectArticle( '%1' );var elem=document.getElementById('%2'); if(elem!=undefined){elem.scrollIntoView(true);}" )
@@ -649,6 +678,62 @@ void ArticleView::cleanupTemp()
       ++it;
     }
   }
+}
+
+void ArticleView::injectWebsiteJavaScript()
+{
+  // Check if dark reader mode is enabled for website views
+  if ( cfg.preferences.darkReaderMode == Config::Dark::Off ) {
+    return;
+  }
+
+  QString injectionScript = R"(
+    (function() {
+      // Prevent duplicate injection
+      if (window.gdDarkModeInjected) return;
+      window.gdDarkModeInjected = true;
+      
+      // Function to inject Dark Reader
+      function injectDarkReader() {
+        // Check if Dark Reader is already loaded
+        if (typeof DarkReader === 'undefined') {
+          // Create script element for darkreader
+          var script = document.createElement('script');
+          script.type = 'text/javascript';
+          script.src = 'qrc:///scripts/darkreader.js';
+          script.onload = function() {
+            if (window.DarkReader) {
+              window.DarkReader.enable({
+                brightness: 100,
+                contrast: 90,
+                sepia: 10
+              });
+            }
+          };
+          script.onerror = function() {
+            console.warn('Failed to load Dark Reader');
+          };
+          document.head.appendChild(script);
+        } else {
+          // Dark Reader already exists, enable it
+          window.DarkReader.enable({
+            brightness: 100,
+            contrast: 90,
+            sepia: 10
+          });
+        }
+      }
+      
+      // Inject after page load
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', injectDarkReader);
+      } else {
+        injectDarkReader();
+      }
+    })();
+  )";
+  
+  webview->page()->runJavaScript(injectionScript);
 }
 
 bool ArticleView::handleF3( QObject * /*obj*/, QEvent * ev )
@@ -1894,6 +1979,11 @@ void ArticleView::on_searchCaseSensitive_clicked( bool checked )
 //the id start with "gdform-"
 void ArticleView::onJsActiveArticleChanged( const QString & id )
 {
+  // Skip dictionary article change handling for website views
+  if ( isWebsiteView ) {
+    return;
+  }
+
   if ( !isScrollTo( id ) ) {
     return; // Incorrect id
   }

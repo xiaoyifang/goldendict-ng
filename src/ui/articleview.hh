@@ -427,6 +427,9 @@ private:
   /// url to the appropriate "contexts" entry.
   void tryMangleWebsiteClickedUrl( QUrl & url, Contexts & contexts );
 
+  /// Injects JavaScript into website views for enhanced functionality
+  void injectWebsiteJavaScript();
+
   /// Loads a page at @p url into view.
   void load( const QUrl & url, const QString & customTitle = {} );
 
