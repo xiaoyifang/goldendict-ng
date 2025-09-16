@@ -3635,7 +3635,7 @@ ArticleView * MainWindow::getCurrentArticleView()
       return pView;
     }
   }
-  
+
   // First try to find the first non-website tab
   for ( int i = 0; i < ui.tabWidget->count(); i++ ) {
     auto * view = qobject_cast< ArticleView * >( ui.tabWidget->widget( i ) );
