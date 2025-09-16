@@ -3624,12 +3624,18 @@ void MainWindow::messageFromAnotherInstanceReceived( const QString & message )
 
 ArticleView * MainWindow::getCurrentArticleView()
 {
+  // Check if openWebsiteInNewTab is enabled, if not, return current view directly
   if ( QWidget * cw = ui.tabWidget->currentWidget() ) {
     auto * pView = dynamic_cast< ArticleView * >( cw );
+    if ( pView && !GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
+      pView->setWebsite( false );
+      return pView;
+    }
     if ( pView && !pView->isWebsite() ) {
       return pView;
     }
   }
+  
   // First try to find the first non-website tab
   for ( int i = 0; i < ui.tabWidget->count(); i++ ) {
     auto * view = qobject_cast< ArticleView * >( ui.tabWidget->widget( i ) );
