@@ -670,9 +670,14 @@ void ArticleView::injectWebsiteJavaScript()
           script.src = 'qrc:///scripts/darkreader.js';
           script.onload = function() {
             if (window.DarkReader) {
-              // Set fetch method to fix CORS issues with external resources
+              // Set fetch method with no-cors mode to bypass CORS restrictions
               if (typeof window.DarkReader.setFetchMethod !== 'undefined') {
-                window.DarkReader.setFetchMethod(window.fetch);
+                // Custom fetch wrapper with no-cors mode
+                const customFetch = (url, options = {}) => {
+                  const fetchOptions = {...options, mode: 'no-cors'};
+                  return window.fetch(url, fetchOptions);
+                };
+                window.DarkReader.setFetchMethod(customFetch);
               }
               window.DarkReader.enable({
                 brightness: 100,
@@ -687,9 +692,14 @@ void ArticleView::injectWebsiteJavaScript()
           document.head.appendChild(script);
         } else {
           // Dark Reader already exists, enable it
-          // Set fetch method to fix CORS issues with external resources
+          // Set fetch method with no-cors mode to bypass CORS restrictions
           if (typeof window.DarkReader.setFetchMethod !== 'undefined') {
-            window.DarkReader.setFetchMethod(window.fetch);
+            // Custom fetch wrapper with no-cors mode
+            const customFetch = (url, options = {}) => {
+              const fetchOptions = {...options, mode: 'no-cors'};
+              return window.fetch(url, fetchOptions);
+            };
+            window.DarkReader.setFetchMethod(customFetch);
           }
           window.DarkReader.enable({
             brightness: 100,
@@ -758,9 +768,14 @@ body { font-family: Arial, sans-serif; margin: 0; padding: 40px; background-colo
 if (typeof DarkReader !== 'undefined') {
   const darkMode = %4;
   if (darkMode) {
-    // Set fetch method to fix CORS issues with external resources
+    // Set fetch method with no-cors mode to bypass CORS restrictions
     if (typeof DarkReader.setFetchMethod !== 'undefined') {
-      DarkReader.setFetchMethod(window.fetch);
+      // Custom fetch wrapper with no-cors mode
+      const customFetch = (url, options = {}) => {
+        const fetchOptions = {...options, mode: 'no-cors'};
+        return window.fetch(url, fetchOptions);
+      };
+      DarkReader.setFetchMethod(customFetch);
     }
     DarkReader.enable({
       brightness: 100,
