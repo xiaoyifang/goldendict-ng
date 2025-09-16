@@ -433,11 +433,12 @@ void ArticleView::loadFinished( bool result )
   if ( !result ) {
     qWarning() << "article loaded unsuccessful:" << webview->url().toString();
 
-    // Create custom error page with internationalization support
-    QString errorHtml = createErrorPageHtml( webview->url() );
-
-
-    webview->setHtml( errorHtml, webview->url() );
+    // Only show custom error page if openWebsiteInNewTab is true and URL is external link
+    if ( GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab && Utils::isExternalLink( webview->url() ) ) {
+      // Create custom error page with internationalization support
+      QString errorHtml = createErrorPageHtml( webview->url() );
+      webview->setHtml( errorHtml, webview->url() );
+    }
     return;
   }
   QUrl url = webview->url();
