@@ -30,13 +30,7 @@ class ScanPopup: public QMainWindow, KeyboardState
 
 public:
 
-  ScanPopup( QWidget * parent,
-             Config::Class & cfg,
-             ArticleNetworkAccessManager &,
-             const AudioPlayerPtr &,
-             const std::vector< sptr< Dictionary::Class > > & allDictionaries,
-             const Instances::Groups &,
-             History & );
+  ScanPopup( QWidget * parent, Config::Class & cfg, History & );
 
   ~ScanPopup();
 
@@ -125,9 +119,6 @@ private:
   bool isWordPresentedInFavorites( const QString & word ) const;
 
   Config::Class & cfg;
-  const std::vector< sptr< Dictionary::Class > > & allDictionaries;
-  std::vector< sptr< Dictionary::Class > > dictionariesUnmuted;
-  const Instances::Groups & groups;
   History & history;
   Ui::ScanPopupToolBar ui;
   TranslateBox * translateBox;

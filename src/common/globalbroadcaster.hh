@@ -21,12 +21,10 @@ class GlobalBroadcaster: public QObject
 {
   Q_OBJECT
 
-  Config::Preferences * preference;
   QSet< QString > whitelist;
   Icons::DictionaryIconName _icon_names;
 
 public:
-  void setPreference( Config::Preferences * _pre );
   Config::Preferences * getPreference() const;
   GlobalBroadcaster( QObject * parent = nullptr );
   void addWhitelist( QString host );

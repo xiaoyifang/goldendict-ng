@@ -1,6 +1,7 @@
 #include "globalbroadcaster.hh"
 #include <QGlobalStatic>
 #include "utils.hh"
+#include "service_locator.hh"
 
 Q_GLOBAL_STATIC( GlobalBroadcaster, bdcaster )
 GlobalBroadcaster::GlobalBroadcaster( QObject * parent ):
@@ -18,13 +19,9 @@ GlobalBroadcaster * GlobalBroadcaster::instance()
   return bdcaster;
 }
 
-void GlobalBroadcaster::setPreference( Config::Preferences * p )
-{
-  preference = p;
-}
 Config::Preferences * GlobalBroadcaster::getPreference() const
 {
-  return preference;
+  return const_cast< Config::Preferences * >( &ServiceLocator::instance().getConfig().preferences );
 }
 
 void GlobalBroadcaster::addWhitelist( QString url )
