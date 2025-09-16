@@ -670,6 +670,10 @@ void ArticleView::injectWebsiteJavaScript()
           script.src = 'qrc:///scripts/darkreader.js';
           script.onload = function() {
             if (window.DarkReader) {
+              // Set fetch method to fix CORS issues with external resources
+              if (typeof window.DarkReader.setFetchMethod !== 'undefined') {
+                window.DarkReader.setFetchMethod(window.fetch);
+              }
               window.DarkReader.enable({
                 brightness: 100,
                 contrast: 90,
@@ -683,6 +687,10 @@ void ArticleView::injectWebsiteJavaScript()
           document.head.appendChild(script);
         } else {
           // Dark Reader already exists, enable it
+          // Set fetch method to fix CORS issues with external resources
+          if (typeof window.DarkReader.setFetchMethod !== 'undefined') {
+            window.DarkReader.setFetchMethod(window.fetch);
+          }
           window.DarkReader.enable({
             brightness: 100,
             contrast: 90,
@@ -749,6 +757,10 @@ QString ArticleView::createErrorPageHtml( const QUrl & url ) const
            "if (typeof DarkReader !== 'undefined') {"
            "  const darkMode = %4;"
            "  if (darkMode) {"
+           "    // Set fetch method to fix CORS issues with external resources"
+           "    if (typeof DarkReader.setFetchMethod !== 'undefined') {"
+           "      DarkReader.setFetchMethod(window.fetch);"
+           "    }"
            "    DarkReader.enable({"
            "      brightness: 100,"
            "      contrast: 90,"
