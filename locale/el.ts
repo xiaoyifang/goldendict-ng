@@ -254,6 +254,18 @@
       <source>&amp;Create Anki note</source>
       <translation>&amp;Δημιουργία σημείωσης Ανκί</translation>
     </message>
+    <message>
+      <source>Error Loading</source>
+      <translation>Σφάλμα Φόρτωσης</translation>
+    </message>
+    <message>
+      <source>Page Load Failed</source>
+      <translation>Αποτυχία Φόρτωσης Σελίδας</translation>
+    </message>
+    <message>
+      <source>Unable to load the requested page content</source>
+      <translation>Αδυναμία φόρτωσης του περιεχομένου της σελίδας που ζητήθηκε</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -3480,6 +3492,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>None</source>
       <translation>Κανένα</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in seperate tab</source>
+      <translation>Άνοιγμα λεξικού ιστοσελίδας σε διαχωριστική καρτέλα</translation>
     </message>
   </context>
   <context>
