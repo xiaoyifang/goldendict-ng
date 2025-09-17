@@ -254,6 +254,18 @@
       <source>&amp;Create Anki note</source>
       <translation>製作anki note</translation>
     </message>
+    <message>
+      <source>Error Loading</source>
+      <translation>載入錯誤</translation>
+    </message>
+    <message>
+      <source>Page Load Failed</source>
+      <translation type="unfinished">Page Load Failed</translation>
+    </message>
+    <message>
+      <source>Unable to load the requested page content</source>
+      <translation type="unfinished">Unable to load the requested page content</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -3459,15 +3471,19 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Font</source>
-      <translation type="unfinished">Font</translation>
+      <translation>字體</translation>
     </message>
     <message>
       <source>Font Size</source>
-      <translation type="unfinished">Font Size</translation>
+      <translation>字體大小</translation>
     </message>
     <message>
       <source>None</source>
       <translation>無</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in seperate tab</source>
+      <translation type="unfinished">Open website dictionary in seperate tab</translation>
     </message>
   </context>
   <context>

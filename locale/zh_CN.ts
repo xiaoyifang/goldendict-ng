@@ -254,6 +254,18 @@
       <source>&amp;Create Anki note</source>
       <translation>创建 Anki 笔记(&amp;C)</translation>
     </message>
+    <message>
+      <source>Error Loading</source>
+      <translation>加载错误</translation>
+    </message>
+    <message>
+      <source>Page Load Failed</source>
+      <translation>页面加载失败</translation>
+    </message>
+    <message>
+      <source>Unable to load the requested page content</source>
+      <translation>无法加载请求的页面内容</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -3463,6 +3475,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>None</source>
       <translation>无</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in seperate tab</source>
+      <translation>在分隔符中打开网站词典</translation>
     </message>
   </context>
   <context>

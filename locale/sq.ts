@@ -254,6 +254,18 @@
       <source>&amp;Create Anki note</source>
       <translation>&amp;Krijoni shënimin Anki</translation>
     </message>
+    <message>
+      <source>Error Loading</source>
+      <translation type="unfinished">Error Loading</translation>
+    </message>
+    <message>
+      <source>Page Load Failed</source>
+      <translation type="unfinished">Page Load Failed</translation>
+    </message>
+    <message>
+      <source>Unable to load the requested page content</source>
+      <translation type="unfinished">Unable to load the requested page content</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -3470,6 +3482,10 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     <message>
       <source>None</source>
       <translation>Asnjë</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in seperate tab</source>
+      <translation type="unfinished">Open website dictionary in seperate tab</translation>
     </message>
   </context>
   <context>

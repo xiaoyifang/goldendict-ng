@@ -254,6 +254,18 @@
       <source>&amp;Create Anki note</source>
       <translation>Anki-Notiz &amp;erstellen</translation>
     </message>
+    <message>
+      <source>Error Loading</source>
+      <translation>Fehler beim Laden</translation>
+    </message>
+    <message>
+      <source>Page Load Failed</source>
+      <translation>Laden der Seite fehlgeschlagen</translation>
+    </message>
+    <message>
+      <source>Unable to load the requested page content</source>
+      <translation>Der angeforderte Seiteninhalt konnte nicht geladen werden</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -3470,6 +3482,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>None</source>
       <translation>Keines</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in seperate tab</source>
+      <translation>Website-Wörterbuch in separatem Tab öffnen</translation>
     </message>
   </context>
   <context>

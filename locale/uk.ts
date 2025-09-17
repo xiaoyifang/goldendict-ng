@@ -254,6 +254,18 @@
       <source>&amp;Create Anki note</source>
       <translation>&amp;Створити примітку</translation>
     </message>
+    <message>
+      <source>Error Loading</source>
+      <translation>Помилка під час завантаження</translation>
+    </message>
+    <message>
+      <source>Page Load Failed</source>
+      <translation>Помилка завантаження сторінки</translation>
+    </message>
+    <message>
+      <source>Unable to load the requested page content</source>
+      <translation>Не вдається завантажити вміст запитаної сторінки</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -3479,6 +3491,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>None</source>
       <translation>Нема</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in seperate tab</source>
+      <translation>Відкрити словник веб-сайту в окремій вкладці</translation>
     </message>
   </context>
   <context>
