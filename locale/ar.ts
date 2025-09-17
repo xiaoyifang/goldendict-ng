@@ -254,6 +254,18 @@
       <source>&amp;Create Anki note</source>
       <translation>&amp; إنشاء ملاحظة Anki</translation>
     </message>
+    <message>
+      <source>Error Loading</source>
+      <translation>خطأ في التحميل</translation>
+    </message>
+    <message>
+      <source>Page Load Failed</source>
+      <translation>فشل تحميل الصفحة</translation>
+    </message>
+    <message>
+      <source>Unable to load the requested page content</source>
+      <translation>غير قادر على تحميل محتوى الصفحة المطلوبة</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -3476,6 +3488,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>None</source>
       <translation>لا شيء</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in seperate tab</source>
+      <translation>فتح قاموس الموقع في علامة تبويب منفصلة</translation>
     </message>
   </context>
   <context>
