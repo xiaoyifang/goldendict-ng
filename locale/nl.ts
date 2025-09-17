@@ -254,6 +254,18 @@
       <source>&amp;Create Anki note</source>
       <translation>&amp;Maak Anki-notitie</translation>
     </message>
+    <message>
+      <source>Error Loading</source>
+      <translation>Fout bij laden</translation>
+    </message>
+    <message>
+      <source>Page Load Failed</source>
+      <translation>Pagina laden mislukt</translation>
+    </message>
+    <message>
+      <source>Unable to load the requested page content</source>
+      <translation>Niet in staat om de gewenste pagina-inhoud te laden</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -3474,6 +3486,10 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>None</source>
       <translation>Geen</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in seperate tab</source>
+      <translation>Open het website-woordenboek in apart tabblad</translation>
     </message>
   </context>
   <context>
