@@ -254,6 +254,18 @@
       <source>&amp;Create Anki note</source>
       <translation>&amp;Luo Anki-muistio</translation>
     </message>
+    <message>
+      <source>Error Loading</source>
+      <translation>Virhe Ladattaessa</translation>
+    </message>
+    <message>
+      <source>Page Load Failed</source>
+      <translation>Sivun Lataus Epäonnistui</translation>
+    </message>
+    <message>
+      <source>Unable to load the requested page content</source>
+      <translation>Pyydettyä sivun sisältöä ei voitu ladata</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -3478,6 +3490,10 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <source>None</source>
       <translation>Tyhjä</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in seperate tab</source>
+      <translation>Avaa verkkosivuston sanakirja erillisessä välilehdessä</translation>
     </message>
   </context>
   <context>
