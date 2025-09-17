@@ -256,7 +256,7 @@
     </message>
     <message>
       <source>Error Loading</source>
-      <translation type="unfinished">Error Loading</translation>
+      <translation>載入錯誤</translation>
     </message>
     <message>
       <source>Page Load Failed</source>
@@ -3471,11 +3471,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Font</source>
-      <translation type="unfinished">Font</translation>
+      <translation>字體</translation>
     </message>
     <message>
       <source>Font Size</source>
-      <translation type="unfinished">Font Size</translation>
+      <translation>字體大小</translation>
     </message>
     <message>
       <source>None</source>
