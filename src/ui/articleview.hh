@@ -34,6 +34,7 @@ class ArticleView: public QWidget
   const AudioPlayerPtr & audioPlayer;
   std::unique_ptr< DictionaryGroup > dictionaryGroup;
   bool popupView;
+  QString customTitle;
   const Config::Class & cfg;
   QWebChannel * channel;
   ArticleViewAgent * agent;
@@ -75,6 +76,12 @@ class ArticleView: public QWidget
 
   QString delayedHighlightText;
 
+  /// Flag indicating if this view is dedicated for website browsing
+  bool isWebsiteView = false;
+
+  /// Host part of the website URL for identification
+  QString websiteHost;
+
   void highlightFTSResults();
   void performFtsFindOperation( bool backwards );
 
@@ -93,7 +100,6 @@ public:
                QAction * dictionaryBarToggled = nullptr,
                unsigned currentGroupId        = 0 );
 
-
   void setCurrentGroupId( unsigned currengGrgId );
   unsigned getCurrentGroupId();
 
@@ -105,6 +111,9 @@ public:
 
   ~ArticleView();
 
+  void load( QString url, const QString & customTitle = {} );
+
+  void setCustomTitle( const QString & customTitle );
 
   /// Returns "gdfrom-" + dictionaryId.
   static QString scrollToFromDictionaryId( const QString & dictionaryId );
@@ -166,6 +175,7 @@ public:
 
   QString getCurrentWord();
 
+
 private:
   // widgets
   ArticleWebView * webview;
@@ -211,6 +221,27 @@ public:
       //webview->page()->setZoomFactor(factor);
     }
   }
+
+  /// Returns whether this view is for website browsing
+  bool isWebsite() const
+  {
+    return isWebsiteView;
+  }
+
+  /// Sets whether this view is for website browsing
+  void setWebsite( bool website )
+  {
+    isWebsiteView = website;
+  }
+
+  /// Returns the website host
+  QString getWebsiteHost() const
+  {
+    return websiteHost;
+  }
+
+  /// Sets website host
+  void setWebsiteHost( const QString & host );
 
   /// Returns current article's text in .html format
   void toHtml( const std::function< void( QString & ) > & callback );
@@ -396,8 +427,15 @@ private:
   /// url to the appropriate "contexts" entry.
   void tryMangleWebsiteClickedUrl( QUrl & url, Contexts & contexts );
 
+  /// Injects JavaScript into website views for enhanced functionality
+  void injectWebsiteJavaScript();
+
+  bool isDarkModeEnabled() const;
+
+  QString createErrorPageHtml( const QUrl & url ) const;
+
   /// Loads a page at @p url into view.
-  void load( const QUrl & url );
+  void load( const QUrl & url, const QString & customTitle = {} );
 
   /// Attempts removing last temporary file created.
   void cleanupTemp();

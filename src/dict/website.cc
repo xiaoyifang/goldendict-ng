@@ -37,10 +37,16 @@ public:
     inside_iframe( inside_iframe_ ),
     netMgr( netMgr_ )
   {
-    dictionaryName = name_;
-
+    dictionaryName        = name_;
     urlTemplate           = QUrl( urlTemplate_ ).toEncoded();
     dictionaryDescription = urlTemplate_;
+  }
+
+  map< QString, QString > getProperties() noexcept override
+  {
+    map< QString, QString > properties;
+    properties.insert( { "Url", urlTemplate } );
+    return properties;
   }
 
   unsigned long getArticleCount() noexcept override
@@ -303,19 +309,23 @@ sptr< DataRequest > WebSiteDictionary::getArticle( const std::u32string & str,
 
     //heuristic add url to global whitelist.
     QUrl url( urlString );
-    GlobalBroadcaster::instance()->addWhitelist( Utils::Url::getHostBase( url.host() ) );
+    GlobalBroadcaster::instance()->addWhitelist( url.host() );
 
-    QString encodeUrl = urlString;
+    const QString & encodeUrl = urlString;
 
-    fmt::format_to( std::back_inserter( result ),
-                    R"(<iframe id="gdexpandframe-{}" src="{}"
+    if ( GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
+      result += string( "<div><span>this website dictionary is opened in the new tab</span></div>" );
+    }
+    else {
+      fmt::format_to( std::back_inserter( result ),
+                      R"(<iframe id="gdexpandframe-{}" src="{}"
 scrolling="no" data-gd-id="{}" 
 class="website-iframe"
 sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>)",
-                    getId(),
-                    encodeUrl.toStdString(),
-                    getId() );
-
+                      getId(),
+                      encodeUrl.toStdString(),
+                      getId() );
+    }
     auto dr = std::make_shared< DataRequestInstant >( true );
     dr->appendString( result );
     return dr;

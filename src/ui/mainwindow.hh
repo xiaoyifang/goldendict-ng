@@ -282,6 +282,7 @@ private slots:
   void openDictionaryFolder( const QString & id );
 
   void showFTSIndexingName( const QString & name );
+  void openWebsiteInNewTab( QString name, QString url );
 
   void handleAddToFavoritesButton();
 
@@ -357,6 +358,9 @@ private slots:
 
   /// Creates a new tab, which is to be populated then with some content.
   ArticleView * createNewTab( bool switchToIt, const QString & name );
+
+  /// Finds an existing ArticleView that has loaded a website with the given host
+  ArticleView * findArticleViewByHost( const QString & host );
 
   void openLinkInNewTab( const QUrl &, const QUrl &, const QString &, const Contexts & contexts );
   void showDefinitionInNewTab( const QString & word,
