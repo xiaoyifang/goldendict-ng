@@ -254,6 +254,18 @@
       <source>&amp;Create Anki note</source>
       <translation>&amp;Utwórz notatkę Anki</translation>
     </message>
+    <message>
+      <source>Error Loading</source>
+      <translation>Błąd ładowania</translation>
+    </message>
+    <message>
+      <source>Page Load Failed</source>
+      <translation>Ładowanie strony nie powiodło się</translation>
+    </message>
+    <message>
+      <source>Unable to load the requested page content</source>
+      <translation>Nie można załadować żądanej zawartości strony</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -3477,6 +3489,10 @@ ze słowników Stardict, Babylon i GLS</translation>
     <message>
       <source>None</source>
       <translation>Brak</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in seperate tab</source>
+      <translation>Otwórz słownik strony w osobnej karcie</translation>
     </message>
   </context>
   <context>
