@@ -48,7 +48,7 @@ void Request::finish()
   }
 }
 
-void Request::setErrorString( QString const & str )
+void Request::setErrorString( const QString & str )
 {
   QMutexLocker _( &errorStringMutex );
 
@@ -92,7 +92,7 @@ vector< WordMatch > & WordSearchRequest::getAllMatches()
   return matches;
 }
 
-void WordSearchRequest::addMatch( WordMatch const & match )
+void WordSearchRequest::addMatch( const WordMatch & match )
 {
   QMutexLocker _( &dataMutex );
 
@@ -159,7 +159,7 @@ vector< char > & DataRequest::getFullData()
   return data;
 }
 
-Class::Class( string const & id_, vector< string > const & dictionaryFiles_ ):
+Class::Class( const string & id_, const vector< string > & dictionaryFiles_ ):
   id( id_ ),
   dictionaryFiles( dictionaryFiles_ ),
   indexedFtsDoc( 0 ),
@@ -174,7 +174,7 @@ void Class::deferredInit()
   //base method.
 }
 
-sptr< WordSearchRequest > Class::stemmedMatch( std::u32string const & /*str*/,
+sptr< WordSearchRequest > Class::stemmedMatch( const std::u32string & /*str*/,
                                                unsigned /*minLength*/,
                                                unsigned /*maxSuffixVariation*/,
                                                unsigned long /*maxResults*/ )
@@ -182,12 +182,12 @@ sptr< WordSearchRequest > Class::stemmedMatch( std::u32string const & /*str*/,
   return std::make_shared< WordSearchRequestInstant >();
 }
 
-sptr< WordSearchRequest > Class::findHeadwordsForSynonym( std::u32string const & )
+sptr< WordSearchRequest > Class::findHeadwordsForSynonym( const std::u32string & )
 {
   return std::make_shared< WordSearchRequestInstant >();
 }
 
-vector< std::u32string > Class::getAlternateWritings( std::u32string const & ) noexcept
+vector< std::u32string > Class::getAlternateWritings( const std::u32string & ) noexcept
 {
   return {};
 }
@@ -205,7 +205,7 @@ QString Class::getContainingFolder() const
   return {};
 }
 
-sptr< DataRequest > Class::getResource( string const & /*name*/ )
+sptr< DataRequest > Class::getResource( const string & /*name*/ )
 
 {
   return std::make_shared< DataRequestInstant >( false );
@@ -216,7 +216,7 @@ sptr< DataRequest > Class::getSearchResults( const QString &, int, bool, bool )
   return std::make_shared< DataRequestInstant >( false );
 }
 
-QString const & Class::getDescription()
+const QString & Class::getDescription()
 {
   return dictionaryDescription;
 }
@@ -226,7 +226,7 @@ QString Class::getMainFilename()
   return {};
 }
 
-QIcon const & Class::getIcon() noexcept
+const QIcon & Class::getIcon() noexcept
 {
   if ( !dictionaryIconLoaded ) {
     loadIcon();
@@ -244,7 +244,7 @@ int Class::getOptimalIconSize()
   return 64 * qGuiApp->devicePixelRatio();
 }
 
-bool Class::loadIconFromFileName( QString const & mainDictFileName )
+bool Class::loadIconFromFileName( const QString & mainDictFileName )
 {
   const QFileInfo info( mainDictFileName );
   QDir dir = info.absoluteDir();
@@ -269,7 +269,7 @@ bool Class::loadIconFromFileName( QString const & mainDictFileName )
   return false;
 }
 
-bool Class::loadIconFromFilePath( QString const & filename )
+bool Class::loadIconFromFilePath( const QString & filename )
 {
   auto iconSize = getOptimalIconSize();
   QImage img( filename );
@@ -285,7 +285,7 @@ bool Class::loadIconFromFilePath( QString const & filename )
   }
 }
 
-bool Class::loadIconFromText( const QString & iconUrl, QString const & text )
+bool Class::loadIconFromText( const QString & iconUrl, const QString & text )
 {
   //select a single char.
   auto abbrName = getAbbrName( text );
@@ -354,12 +354,12 @@ QColor Class::intToFixedColor( int index )
   return colors[ index % colors.size() ];
 }
 
-QString Class::getAbbrName( QString const & text )
+QString Class::getAbbrName( const QString & text )
 {
   return GlobalBroadcaster::instance()->getAbbrName( text );
 }
 
-void Class::isolateCSS( QString & css, QString const & wrapperSelector )
+void Class::isolateCSS( QString & css, const QString & wrapperSelector )
 {
   if ( css.isEmpty() ) {
     return;
@@ -506,7 +506,7 @@ void Class::isolateCSS( QString & css, QString const & wrapperSelector )
   css = newCSS;
 }
 
-string makeDictionaryId( vector< string > const & dictionaryFiles ) noexcept
+string makeDictionaryId( const vector< string > & dictionaryFiles ) noexcept
 {
   std::vector< string > sortedList;
 
@@ -549,7 +549,7 @@ string makeDictionaryId( vector< string > const & dictionaryFiles ) noexcept
 // the dictionary backends, there's no platform-independent way to get hold
 // of a timestamp of the file, so we use here Qt anyway. It is supposed to
 // be fixed in the future when it's needed.
-bool needToRebuildIndex( vector< string > const & dictionaryFiles, string const & indexFile ) noexcept
+bool needToRebuildIndex( const vector< string > & dictionaryFiles, const string & indexFile ) noexcept
 {
   qint64 lastModified = 0;
 
@@ -601,7 +601,7 @@ QString generateRandomDictionaryId()
   return QCryptographicHash::hash( QUuid::createUuid().toString().toUtf8(), QCryptographicHash::Md5 ).toHex();
 }
 
-QMap< std::string, sptr< Dictionary::Class > > dictToMap( std::vector< sptr< Dictionary::Class > > const & dicts )
+QMap< std::string, sptr< Dictionary::Class > > dictToMap( const std::vector< sptr< Dictionary::Class > > & dicts )
 {
   QMap< std::string, sptr< Dictionary::Class > > dictMap;
   for ( const auto & dict : dicts ) {

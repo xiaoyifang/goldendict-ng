@@ -6,6 +6,8 @@ option(WITH_EPWING_SUPPORT "Enable epwing support" ON)
 option(WITH_ZIM "enable zim support" ON)
 option(WITH_TTS "enable QTexttoSpeech support" OFF)
 
+option(WITH_X11 "Experimental flag. Don't disable this. Disable means pure Wayland." ON)
+
 # options for linux packaging
 option(USE_SYSTEM_FMT "use system fmt instead of bundled one" OFF)
 option(USE_SYSTEM_TOML "use system toml++ instead of bundled one" OFF)
@@ -103,7 +105,7 @@ set(CMAKE_AUTOUIC_SEARCH_PATHS "${CMAKE_CURRENT_SOURCE_DIR}/src/ui/")
 file(GLOB_RECURSE ALL_SOURCE_FILES CONFIGURE_DEPENDS src/*.cc src/*.hh src/*.ui src/*.c)
 
 if (APPLE)
-    file(GLOB_RECURSE MACOS_SOURCE_FILES CONFIGURE_DEPENDS src/macos/*.mm)
+    file(GLOB_RECURSE MACOS_SOURCE_FILES CONFIGURE_DEPENDS src/**/*.mm)
 
     set(MACOS_APP_ICON ${CMAKE_SOURCE_DIR}/icons/macicon.icns)
     set_source_files_properties(${MACOS_APP_ICON} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")

@@ -45,7 +45,7 @@ struct WordArticleLink
 
   WordArticleLink() = default;
 
-  WordArticleLink( string const & word_, uint32_t articleOffset_, string const & prefix_ = string() ):
+  WordArticleLink( const string & word_, uint32_t articleOffset_, const string & prefix_ = string() ):
     word( word_ ),
     prefix( prefix_ ),
     articleOffset( articleOffset_ )
@@ -77,12 +77,12 @@ public:
   /// Opens the index. The file reference is saved to be used for
   /// subsequent lookups.
   /// The mutex is the one to be locked when working with the file.
-  void openIndex( IndexInfo const &, File::Index &, QMutex & );
+  void openIndex( const IndexInfo &, File::Index &, QMutex & );
 
   /// Finds articles that match the given string. A case-insensitive search
   /// is performed.
   vector< WordArticleLink >
-  findArticles( std::u32string const &, bool ignoreDiacritics = false, uint32_t maxMatchCount = -1 );
+  findArticles( const std::u32string &, bool ignoreDiacritics = false, uint32_t maxMatchCount = -1 );
 
   /// Find all unique article links in the index
   void findAllArticleLinks( QList< WordArticleLink > & articleLinks );
@@ -118,11 +118,11 @@ protected:
   /// case, the returned pointer wouldn't belong to 'leaf' at all. To that end,
   /// the leafEnd pointer always holds the pointer to the first byte outside
   /// the node data.
-  char const * findChainOffsetExactOrPrefix( std::u32string const & target,
+  const char * findChainOffsetExactOrPrefix( const std::u32string & target,
                                              bool & exactMatch,
                                              vector< char > & leaf,
                                              uint32_t & nextLeaf,
-                                             char const *& leafEnd );
+                                             const char *& leafEnd );
 
   /// Reads a node or leaf at the given offset. Just uncompresses its data
   /// to the given vector and does nothing more.
@@ -130,11 +130,11 @@ protected:
 
   /// Reads the word-article links' chain at the given offset. The pointer
   /// is updated to point to the next chain, if there's any.
-  vector< WordArticleLink > readChain( char const *&, uint32_t maxMatchCount = -1 );
+  vector< WordArticleLink > readChain( const char *&, uint32_t maxMatchCount = -1 );
 
   /// Drops any aliases which arose due to folding. Only case-folded aliases
   /// are left.
-  void antialias( std::u32string const &, vector< WordArticleLink > &, bool ignoreDiactitics );
+  void antialias( const std::u32string &, vector< WordArticleLink > &, bool ignoreDiactitics );
 
 protected:
 
@@ -156,7 +156,7 @@ class BtreeDictionary: public Dictionary::Class, public BtreeIndex
 {
 public:
 
-  BtreeDictionary( string const & id, vector< string > const & dictionaryFiles );
+  BtreeDictionary( const string & id, const vector< string > & dictionaryFiles );
 
   /// Btree-indexed dictionaries are usually a good source for compound searches.
   virtual Dictionary::Features getFeatures() const noexcept
@@ -166,10 +166,10 @@ public:
 
   /// This function does the search using the btree index. Derivatives usually
   /// need not to implement this function.
-  virtual sptr< Dictionary::WordSearchRequest > prefixMatch( std::u32string const &, unsigned long );
+  virtual sptr< Dictionary::WordSearchRequest > prefixMatch( const std::u32string &, unsigned long );
 
   virtual sptr< Dictionary::WordSearchRequest >
-  stemmedMatch( std::u32string const &, unsigned minLength, unsigned maxSuffixVariation, unsigned long maxResults );
+  stemmedMatch( const std::u32string &, unsigned minLength, unsigned maxSuffixVariation, unsigned long maxResults );
 
   virtual bool isLocalDictionary()
   {
@@ -181,7 +181,7 @@ public:
 
   virtual void getArticleText( uint32_t articleAddress, QString & headword, QString & text );
 
-  string const & ftsIndexName() const
+  const string & ftsIndexName() const
   {
     return ftsIdxName;
   }
@@ -201,7 +201,7 @@ public:
   /// does nothing.
   /// The function returns an empty string if the initialization is or was
   /// successful, or a human-readable error string otherwise.
-  virtual string const & ensureInitDone();
+  virtual const string & ensureInitDone();
 
 protected:
   QMutex ftsIdxMutex;
@@ -226,7 +226,7 @@ protected:
 public:
 
   BtreeWordSearchRequest( BtreeDictionary & dict_,
-                          std::u32string const & str_,
+                          const std::u32string & str_,
                           unsigned minLength_,
                           int maxSuffixVariation_,
                           bool allowMiddleMatches_,
@@ -256,16 +256,16 @@ struct IndexedWords: public map< string, vector< WordArticleLink > >
   /// Instead of adding to the map directly, use this function. It does folding
   /// itself, and for phrases/sentences it adds additional entries beginning with
   /// each new word.
-  void addWord( std::u32string const & word, uint32_t articleOffset, unsigned int maxHeadwordSize = 100U );
+  void addWord( const std::u32string & word, uint32_t articleOffset, unsigned int maxHeadwordSize = 100U );
 
   /// Differs from addWord() in that it only adds a single entry. We use this
   /// for zip's file names.
-  void addSingleWord( std::u32string const & word, uint32_t articleOffset );
+  void addSingleWord( const std::u32string & word, uint32_t articleOffset );
 };
 
 /// Builds the index, as a compressed btree. Returns IndexInfo.
 /// All the data is stored to the given file, beginning from its current
 /// position.
-IndexInfo buildIndex( IndexedWords const &, File::Index & file );
+IndexInfo buildIndex( const IndexedWords &, File::Index & file );
 
 } // namespace BtreeIndexing

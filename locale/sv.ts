@@ -254,6 +254,18 @@
       <source>&amp;Create Anki note</source>
       <translation>&amp;Skapa Anki anteckning</translation>
     </message>
+    <message>
+      <source>Error Loading</source>
+      <translation>Fel vid inläsning</translation>
+    </message>
+    <message>
+      <source>Page Load Failed</source>
+      <translation>Sidladdningen misslyckades</translation>
+    </message>
+    <message>
+      <source>Unable to load the requested page content</source>
+      <translation>Det går inte att ladda det begärda sidinnehållet</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -3480,6 +3492,10 @@ från Stardict, Babylon och GLS ordböcker</translation>
     <message>
       <source>None</source>
       <translation>Ingen</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in seperate tab</source>
+      <translation>Öppna webbplatsordbok i separat flik</translation>
     </message>
   </context>
   <context>

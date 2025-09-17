@@ -226,11 +226,11 @@ QString LangCoder::intToCode2( quint32 val )
   return QString::fromLatin1( ba );
 }
 
-quint32 LangCoder::findIdForLanguage( std::u32string const & lang )
+quint32 LangCoder::findIdForLanguage( const std::u32string & lang )
 {
   const auto langFolded = QByteArrayView( Text::toUtf8( lang ) );
 
-  for ( auto const & lc : std::as_const( LANG_CODE_MAP ) ) {
+  for ( const auto & lc : std::as_const( LANG_CODE_MAP ) ) {
     if ( langFolded.compare( lc.lang, Qt::CaseInsensitive ) == 0 ) {
       return code2toInt( lc.code2.toStdString().c_str() );
     }
@@ -239,9 +239,9 @@ quint32 LangCoder::findIdForLanguage( std::u32string const & lang )
   return Language::findBlgLangIDByEnglishName( lang );
 }
 
-quint32 LangCoder::findIdForLanguageCode3( std::string const & code )
+quint32 LangCoder::findIdForLanguageCode3( const std::string & code )
 {
-  for ( auto const & lc : std::as_const( LANG_CODE_MAP ) ) {
+  for ( const auto & lc : std::as_const( LANG_CODE_MAP ) ) {
     if ( code == lc.code3 ) {
       return code2toInt( lc.code2 );
     }
@@ -261,7 +261,7 @@ quint32 LangCoder::guessId( const QString & lang )
 
   // check if it could be the whole language name
   if ( lstr.size() >= 3 ) {
-    for ( auto const & lc : std::as_const( LANG_CODE_MAP ) ) {
+    for ( const auto & lc : std::as_const( LANG_CODE_MAP ) ) {
       if ( lstr == ( lstr.size() == 3 ? QString::fromStdString( lc.code3 ) : QString::fromStdString( lc.lang ) ) ) {
         return code2toInt( lc.code2 );
       }
@@ -273,7 +273,7 @@ quint32 LangCoder::guessId( const QString & lang )
 }
 
 
-std::pair< quint32, quint32 > LangCoder::findLangIdPairFromName( QString const & name )
+std::pair< quint32, quint32 > LangCoder::findLangIdPairFromName( const QString & name )
 {
   static QRegularExpression reg( "(^|[^a-z])((?<lang1>[a-z]{2,3})-(?<lang2>[a-z]{2,3}))($|[^a-z])",
                                  QRegularExpression::CaseInsensitiveOption );
@@ -295,7 +295,7 @@ std::pair< quint32, quint32 > LangCoder::findLangIdPairFromName( QString const &
   return { 0, 0 };
 }
 
-std::pair< quint32, quint32 > LangCoder::findLangIdPairFromPath( std::string const & p )
+std::pair< quint32, quint32 > LangCoder::findLangIdPairFromPath( const std::string & p )
 {
   return findLangIdPairFromName( QFileInfo( QString::fromStdString( p ) ).fileName() );
 }

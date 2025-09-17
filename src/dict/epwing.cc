@@ -7,7 +7,6 @@
   #include "epwing.hh"
   #include <QByteArray>
   #include <map>
-  #include <QtConcurrentRun>
   #include <set>
   #include <string>
   #include "btreeidx.hh"
@@ -80,9 +79,9 @@ class EpwingDictionary: public BtreeIndexing::BtreeDictionary
 
 public:
 
-  EpwingDictionary( string const & id,
-                    string const & indexFile,
-                    vector< string > const & dictionaryFiles,
+  EpwingDictionary( const string & id,
+                    const string & indexFile,
+                    const vector< string > & dictionaryFiles,
                     int subBook );
 
   ~EpwingDictionary();
@@ -107,22 +106,22 @@ public:
     return idxHeader.langTo;
   }
 
-  QString const & getDescription() override;
+  const QString & getDescription() override;
 
-  void getHeadwordPos( u32string const & word_, QList< int > & pg, QList< int > & off );
-
-  sptr< Dictionary::DataRequest >
-  getArticle( u32string const &, vector< u32string > const & alts, u32string const &, bool ignoreDiacritics ) override;
-
-  sptr< Dictionary::DataRequest > getResource( string const & name ) override;
+  void getHeadwordPos( const u32string & word_, QList< int > & pg, QList< int > & off );
 
   sptr< Dictionary::DataRequest >
-  getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
+  getArticle( const u32string &, const vector< u32string > & alts, const u32string &, bool ignoreDiacritics ) override;
+
+  sptr< Dictionary::DataRequest > getResource( const string & name ) override;
+
+  sptr< Dictionary::DataRequest >
+  getSearchResults( const QString & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
   void makeFTSIndex( QAtomicInt & isCancelled ) override;
 
-  void setFTSParameters( Config::FullTextSearch const & fts ) override
+  void setFTSParameters( const Config::FullTextSearch & fts ) override
   {
     if ( ensureInitDone().size() )
       return;
@@ -140,10 +139,10 @@ public:
 
   static bool isJapanesePunctiation( char32_t ch );
 
-  sptr< Dictionary::WordSearchRequest > prefixMatch( u32string const &, unsigned long ) override;
+  sptr< Dictionary::WordSearchRequest > prefixMatch( const u32string &, unsigned long ) override;
 
   sptr< Dictionary::WordSearchRequest >
-  stemmedMatch( u32string const &, unsigned minLength, unsigned maxSuffixVariation, unsigned long maxResults ) override;
+  stemmedMatch( const u32string &, unsigned minLength, unsigned maxSuffixVariation, unsigned long maxResults ) override;
 
 protected:
 
@@ -156,7 +155,7 @@ private:
     quint32 address, string & articleHeadword, string & articleText, int & articlePage, int & articleOffset );
 
 
-  sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( u32string const & word ) override;
+  sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( const u32string & word ) override;
 
   void loadArticleNextPage( string & articleHeadword, string & articleText, int & articlePage, int & articleOffset );
   void
@@ -164,17 +163,17 @@ private:
 
   void loadArticle( int articlePage, int articleOffset, string & articleHeadword, string & articleText );
 
-  QString const & getImagesCacheDir()
+  const QString & getImagesCacheDir()
   {
     return eBook.getImagesCacheDir();
   }
 
-  QString const & getSoundsCacheDir()
+  const QString & getSoundsCacheDir()
   {
     return eBook.getSoundsCacheDir();
   }
 
-  QString const & getMoviesCacheDir()
+  const QString & getMoviesCacheDir()
   {
     return eBook.getMoviesCacheDir();
   }
@@ -190,9 +189,9 @@ private:
 };
 
 
-EpwingDictionary::EpwingDictionary( string const & id,
-                                    string const & indexFile,
-                                    vector< string > const & dictionaryFiles,
+EpwingDictionary::EpwingDictionary( const string & id,
+                                    const string & indexFile,
+                                    const vector< string > & dictionaryFiles,
                                     int subBook ):
   BtreeDictionary( id, dictionaryFiles ),
   idx( indexFile, QIODevice::ReadOnly ),
@@ -374,7 +373,7 @@ void EpwingDictionary::loadArticle( int articlePage, int articleOffset, string &
   articleText = prefix + articleText + "</div>";
 }
 
-QString const & EpwingDictionary::getDescription()
+const QString & EpwingDictionary::getDescription()
 {
   if ( !dictionaryDescription.isEmpty() )
     return dictionaryDescription;
@@ -454,7 +453,7 @@ class EpwingHeadwordsRequest: public Dictionary::WordSearchRequest
 
 public:
 
-  EpwingHeadwordsRequest( u32string const & word_, EpwingDictionary & dict_ ):
+  EpwingHeadwordsRequest( const u32string & word_, EpwingDictionary & dict_ ):
     str( word_ ),
     dict( dict_ )
   {
@@ -530,7 +529,7 @@ void EpwingHeadwordsRequest::run()
 
   finish();
 }
-sptr< Dictionary::WordSearchRequest > EpwingDictionary::findHeadwordsForSynonym( u32string const & word )
+sptr< Dictionary::WordSearchRequest > EpwingDictionary::findHeadwordsForSynonym( const u32string & word )
 {
   return synonymSearchEnabled ? std::make_shared< EpwingHeadwordsRequest >( word, *this ) :
                                 Class::findHeadwordsForSynonym( word );
@@ -549,8 +548,8 @@ class EpwingArticleRequest: public Dictionary::DataRequest
 
 public:
 
-  EpwingArticleRequest( u32string const & word_,
-                        vector< u32string > const & alts_,
+  EpwingArticleRequest( const u32string & word_,
+                        const vector< u32string > & alts_,
                         EpwingDictionary & dict_,
                         bool ignoreDiacritics_ ):
     word( word_ ),
@@ -565,7 +564,7 @@ public:
 
   void run();
 
-  void getBuiltInArticle( u32string const & word_,
+  void getBuiltInArticle( const u32string & word_,
                           QList< int > & pages,
                           QList< int > & offsets,
                           multimap< u32string, pair< string, string > > & mainArticles );
@@ -716,7 +715,7 @@ void EpwingArticleRequest::run()
   finish();
 }
 
-void EpwingArticleRequest::getBuiltInArticle( u32string const & word_,
+void EpwingArticleRequest::getBuiltInArticle( const u32string & word_,
                                               QList< int > & pages,
                                               QList< int > & offsets,
                                               multimap< u32string, pair< string, string > > & mainArticles )
@@ -753,7 +752,7 @@ void EpwingArticleRequest::getBuiltInArticle( u32string const & word_,
   }
 }
 
-void EpwingDictionary::getHeadwordPos( u32string const & word_, QList< int > & pg, QList< int > & off )
+void EpwingDictionary::getHeadwordPos( const u32string & word_, QList< int > & pg, QList< int > & off )
 {
   try {
     QMutexLocker _( &eBook.getLibMutex() );
@@ -764,9 +763,9 @@ void EpwingDictionary::getHeadwordPos( u32string const & word_, QList< int > & p
   }
 }
 
-sptr< Dictionary::DataRequest > EpwingDictionary::getArticle( u32string const & word,
-                                                              vector< u32string > const & alts,
-                                                              u32string const &,
+sptr< Dictionary::DataRequest > EpwingDictionary::getArticle( const u32string & word,
+                                                              const vector< u32string > & alts,
+                                                              const u32string &,
                                                               bool ignoreDiacritics )
 
 {
@@ -786,7 +785,7 @@ class EpwingResourceRequest: public Dictionary::DataRequest
 
 public:
 
-  EpwingResourceRequest( EpwingDictionary & dict_, string const & resourceName_ ):
+  EpwingResourceRequest( EpwingDictionary & dict_, const string & resourceName_ ):
     dict( dict_ ),
     resourceName( resourceName_ )
   {
@@ -860,14 +859,14 @@ void EpwingResourceRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > EpwingDictionary::getResource( string const & name )
+sptr< Dictionary::DataRequest > EpwingDictionary::getResource( const string & name )
 
 {
   return std::make_shared< EpwingResourceRequest >( *this, name );
 }
 
 
-sptr< Dictionary::DataRequest > EpwingDictionary::getSearchResults( QString const & searchString,
+sptr< Dictionary::DataRequest > EpwingDictionary::getSearchResults( const QString & searchString,
                                                                     int searchMode,
                                                                     bool matchCase,
                                                                     bool ignoreDiacritics )
@@ -926,7 +925,7 @@ class EpwingWordSearchRequest: public BtreeIndexing::BtreeWordSearchRequest
 public:
 
   EpwingWordSearchRequest( EpwingDictionary & dict_,
-                           u32string const & str_,
+                           const u32string & str_,
                            unsigned minLength_,
                            int maxSuffixVariation_,
                            bool allowMiddleMatches_,
@@ -972,13 +971,13 @@ void EpwingWordSearchRequest::findMatches()
   finish();
 }
 
-sptr< Dictionary::WordSearchRequest > EpwingDictionary::prefixMatch( u32string const & str, unsigned long maxResults )
+sptr< Dictionary::WordSearchRequest > EpwingDictionary::prefixMatch( const u32string & str, unsigned long maxResults )
 
 {
   return std::make_shared< EpwingWordSearchRequest >( *this, str, 0, -1, true, maxResults );
 }
 
-sptr< Dictionary::WordSearchRequest > EpwingDictionary::stemmedMatch( u32string const & str,
+sptr< Dictionary::WordSearchRequest > EpwingDictionary::stemmedMatch( const u32string & str,
                                                                       unsigned minLength,
                                                                       unsigned maxSuffixVariation,
                                                                       unsigned long maxResults )
@@ -1098,8 +1097,8 @@ void addWordToChunks( Epwing::Book::EpwingHeadword & head,
   }
 }
 
-vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & fileNames,
-                                                      string const & indicesDir,
+vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & fileNames,
+                                                      const string & indicesDir,
                                                       Dictionary::Initializing & initializing )
 
 {

@@ -3,12 +3,7 @@
 
 #pragma once
 
-#include <QMainWindow>
-#include <QThread>
-#include <QToolButton>
 #include <QSystemTrayIcon>
-#include <QNetworkAccessManager>
-#include <QProgressDialog>
 #include <functional>
 #include "ui_mainwindow.h"
 #include "config.hh"
@@ -27,20 +22,16 @@
 #include "dictheadwords.hh"
 #include "fulltextsearch.hh"
 #include "base_type.hh"
-#include "hotkeywrapper.hh"
+#include "hotkey/hotkeywrapper.hh"
 #include "resourceschemehandler.hh"
 #include "iframeschemehandler.hh"
-#ifdef HAVE_X11
+#ifdef WITH_X11
   #include <fixx11h.h>
 #endif
 #include "scanpopup.hh"
-
-#if defined( Q_OS_MAC )
-  #include "macos/gd_clipboard.hh"
-#endif
+#include "clipboard/clipboardlistener.hh"
 //must place the qactiongroup after fixx11h.h, None in QActionGroup conflict with X.h's macro None.
 #include <QActionGroup>
-#include <QShortcut>
 
 using std::string;
 using std::vector;
@@ -56,7 +47,7 @@ public:
 
 
   /// Set group for main/popup window
-  void setGroupByName( QString const & name, bool main_window );
+  void setGroupByName( const QString & name, bool main_window );
 
   enum class WildcardPolicy {
     EscapeWildcards,
@@ -64,10 +55,10 @@ public:
   };
 public slots:
 
-  void messageFromAnotherInstanceReceived( QString const & );
-  void showStatusBarMessage( QString const &, int, QPixmap const & );
-  void wordReceived( QString const & );
-  void headwordFromFavorites( QString const & word, QString const & favFolderFullPath );
+  void messageFromAnotherInstanceReceived( const QString & );
+  void showStatusBarMessage( const QString &, int, const QPixmap & );
+  void wordReceived( const QString & );
+  void headwordFromFavorites( const QString & word, const QString & favFolderFullPath );
   /// Save config and states...
   void commitData();
   void quitApp();
@@ -176,9 +167,7 @@ private:
   IframeSchemeHandler * iframeSchemeHandler;
   ResourceSchemeHandler * resourceSchemeHandler;
 
-#ifdef Q_OS_MAC
-  gd_clipboard * macClipboard;
-#endif
+  BaseClipboardListener * clipboardListener;
 
 #if !defined( Q_OS_WIN )
   // On Linux, this will be the style before getting overriden by custom styles
@@ -207,7 +196,6 @@ private:
   void makeDictionaries();
   void updateStatusLine();
   void updateGroupList( bool reload = true );
-  void updateDictionaryBar();
 
   void updatePronounceAvailability();
 
@@ -223,7 +211,7 @@ private:
 
   /// Returns the reference to dictionaries stored in the currently active
   /// group, or to all dictionaries if there are no groups.
-  vector< sptr< Dictionary::Class > > const & getActiveDicts();
+  const vector< sptr< Dictionary::Class > > & getActiveDicts();
 
   /// @param ensureShow only ensure the window will be shown and no "toggling"
   void toggleMainWindow( bool ensureShow );
@@ -244,13 +232,13 @@ private:
   ArticleView * getCurrentArticleView();
   void ctrlTabPressed();
 
-  void respondToTranslationRequest( QString const & word,
+  void respondToTranslationRequest( const QString & word,
                                     bool checkModifiers,
-                                    QString const & scrollTo = QString(),
+                                    const QString & scrollTo = QString(),
                                     bool focus               = true );
 
   void updateSuggestionList();
-  void updateSuggestionList( QString const & text );
+  void updateSuggestionList( const QString & text );
 
   enum TranslateBoxPopup {
     NoPopupChange,
@@ -266,8 +254,10 @@ private:
 
   void errorMessageOnStatusBar( const QString & errStr );
   int getIconSize();
+  DictionaryBar::IconSize getIconSizeLogical();
 
-  bool updateFavIcon( QString const & word );
+
+  bool updateFavIcon( const QString & word );
 
 private slots:
   void updateFavIconSlot();
@@ -285,13 +275,14 @@ private slots:
   /// Receive right click on "Found in:" pane
   void foundDictsContextMenuRequested( const QPoint & pos );
 
-  void showDictionaryInfo( QString const & id );
+  void showDictionaryInfo( const QString & id );
 
   void showDictionaryHeadwords( Dictionary::Class * dict );
 
-  void openDictionaryFolder( QString const & id );
+  void openDictionaryFolder( const QString & id );
 
-  void showFTSIndexingName( QString const & name );
+  void showFTSIndexingName( const QString & name );
+  void openWebsiteInNewTab( QString name, QString url );
 
   void handleAddToFavoritesButton();
 
@@ -320,9 +311,9 @@ private slots:
   void forwardClicked();
 
   /// ArticleView's title has changed
-  void titleChanged( ArticleView *, QString const & );
+  void titleChanged( ArticleView *, const QString & );
   /// ArticleView's icon has changed
-  void iconChanged( ArticleView *, QIcon const & );
+  void iconChanged( ArticleView *, const QIcon & );
 
   void pageLoaded( ArticleView * );
   void tabSwitched( int );
@@ -344,7 +335,7 @@ private slots:
   void editPreferences();
 
   void currentGroupChanged( int );
-  void translateInputChanged( QString const & );
+  void translateInputChanged( const QString & );
   void translateInputFinished( bool checkModifiers );
 
   /// Closes any opened search in the article view, and focuses the translateLine/close main window to tray.
@@ -366,27 +357,30 @@ private slots:
   void dictsPaneVisibilityChanged( bool );
 
   /// Creates a new tab, which is to be populated then with some content.
-  ArticleView * createNewTab( bool switchToIt, QString const & name );
+  ArticleView * createNewTab( bool switchToIt, const QString & name );
 
-  void openLinkInNewTab( QUrl const &, QUrl const &, QString const &, Contexts const & contexts );
-  void showDefinitionInNewTab( QString const & word,
+  /// Finds an existing ArticleView that has loaded a website with the given host
+  ArticleView * findArticleViewByHost( const QString & host );
+
+  void openLinkInNewTab( const QUrl &, const QUrl &, const QString &, const Contexts & contexts );
+  void showDefinitionInNewTab( const QString & word,
                                unsigned group,
-                               QString const & fromArticle,
-                               Contexts const & contexts );
-  void typingEvent( QString const & );
+                               const QString & fromArticle,
+                               const Contexts & contexts );
+  void typingEvent( const QString & );
 
-  void activeArticleChanged( ArticleView const *, QString const & id );
+  void activeArticleChanged( const ArticleView *, const QString & id );
 
   void mutedDictionariesChanged();
 
-  void showTranslationFor( QString const &, unsigned inGroup = 0, QString const & scrollTo = QString() );
+  void showTranslationFor( const QString &, unsigned inGroup = 0, const QString & scrollTo = QString() );
 
-  void showTranslationForDicts( QString const &,
-                                QStringList const & dictIDs,
-                                QRegularExpression const & searchRegExp,
+  void showTranslationForDicts( const QString &,
+                                const QStringList & dictIDs,
+                                const QRegularExpression & searchRegExp,
                                 bool ignoreDiacritics );
 
-  void showHistoryItem( QString const & );
+  void showHistoryItem( const QString & );
 
   void trayIconActivated( QSystemTrayIcon::ActivationReason );
 
@@ -437,11 +431,11 @@ private slots:
   void forceAddWordToHistory( const QString & word );
 
 
-  void addBookmarkToFavorite( QString const & text );
+  void addBookmarkToFavorite( const QString & text );
 
-  void sendWordToInputLine( QString const & word );
+  void sendWordToInputLine( const QString & word );
 
-  void storeResourceSavePath( QString const & );
+  void storeResourceSavePath( const QString & );
 
   void closeHeadwordsDialog();
 
@@ -464,10 +458,10 @@ private slots:
   void refreshTranslateLine();
 signals:
   /// Retranslate Ctrl(Shift) + Click on dictionary pane to dictionary toolbar
-  void clickOnDictPane( QString const & id );
+  void clickOnDictPane( const QString & id );
 
   /// Set group for popup window
-  void setPopupGroupByName( QString const & name );
+  void setPopupGroupByName( const QString & name );
 };
 
 class ArticleSaveProgressDialog: public QProgressDialog

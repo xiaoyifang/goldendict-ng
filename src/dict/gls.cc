@@ -67,7 +67,7 @@ public:
   DEF_EX_STR( exMalformedGlsFile, "The .gls file is malformed:", Ex )
   DEF_EX( exEncodingError, "Encoding error", Ex ) // Should never happen really
 
-  GlsScanner( string const & fileName );
+  GlsScanner( const string & fileName );
   ~GlsScanner() noexcept;
 
   /// Returns the detected encoding of this file.
@@ -77,31 +77,31 @@ public:
   }
 
   /// Returns the dictionary's name, as was read from file's headers.
-  std::u32string const & getDictionaryName() const
+  const std::u32string & getDictionaryName() const
   {
     return dictionaryName;
   }
 
   /// Returns the dictionary's author, as was read from file's headers.
-  std::u32string const & getDictionaryAuthor() const
+  const std::u32string & getDictionaryAuthor() const
   {
     return dictionaryAuthor;
   }
 
   /// Returns the dictionary's description, as was read from file's headers.
-  std::u32string const & getDictionaryDescription() const
+  const std::u32string & getDictionaryDescription() const
   {
     return dictionaryDecription;
   }
 
   /// Returns the dictionary's source language, as was read from file's headers.
-  std::u32string const & getLangFrom() const
+  const std::u32string & getLangFrom() const
   {
     return langFrom;
   }
 
   /// Returns the dictionary's target language, as was read from file's headers.
-  std::u32string const & getLangTo() const
+  const std::u32string & getLangTo() const
   {
     return langTo;
   }
@@ -120,7 +120,7 @@ public:
   }
 };
 
-GlsScanner::GlsScanner( string const & fileName ):
+GlsScanner::GlsScanner( const string & fileName ):
   encoding( Encoding::Utf8 ),
   readBufferPtr( readBuffer ),
   readBufferLeft( 0 ),
@@ -340,7 +340,7 @@ class GlsDictionary: public BtreeIndexing::BtreeDictionary
 
 public:
 
-  GlsDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles );
+  GlsDictionary( const string & id, const string & indexFile, const vector< string > & dictionaryFiles );
 
   ~GlsDictionary();
 
@@ -364,27 +364,27 @@ public:
     return idxHeader.langTo;
   }
 
-  sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( std::u32string const & ) override;
+  sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( const std::u32string & ) override;
 
-  sptr< Dictionary::DataRequest > getArticle( std::u32string const &,
-                                              vector< std::u32string > const & alts,
-                                              std::u32string const &,
+  sptr< Dictionary::DataRequest > getArticle( const std::u32string &,
+                                              const vector< std::u32string > & alts,
+                                              const std::u32string &,
                                               bool ignoreDiacritics ) override;
 
-  sptr< Dictionary::DataRequest > getResource( string const & name ) override;
+  sptr< Dictionary::DataRequest > getResource( const string & name ) override;
 
-  QString const & getDescription() override;
+  const QString & getDescription() override;
 
   QString getMainFilename() override;
 
   sptr< Dictionary::DataRequest >
-  getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
+  getSearchResults( const QString & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
 
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
   void makeFTSIndex( QAtomicInt & isCancelled ) override;
 
-  void setFTSParameters( Config::FullTextSearch const & fts ) override
+  void setFTSParameters( const Config::FullTextSearch & fts ) override
   {
     if ( metadata_enable_fts.has_value() ) {
       can_FTS = fts.enabled && metadata_enable_fts.value();
@@ -416,7 +416,7 @@ private:
   friend class GlsHeadwordsRequest;
 };
 
-GlsDictionary::GlsDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles ):
+GlsDictionary::GlsDictionary( const string & id, const string & indexFile, const vector< string > & dictionaryFiles ):
   BtreeDictionary( id, dictionaryFiles ),
   idx( indexFile, QIODevice::ReadOnly ),
   idxHeader( idx.read< IdxHeader >() ),
@@ -484,7 +484,7 @@ void GlsDictionary::loadIcon() noexcept
   dictionaryIconLoaded = true;
 }
 
-QString const & GlsDictionary::getDescription()
+const QString & GlsDictionary::getDescription()
 {
   if ( !dictionaryDescription.isEmpty() ) {
     return dictionaryDescription;
@@ -801,7 +801,7 @@ class GlsHeadwordsRequest: public Dictionary::WordSearchRequest
 
 public:
 
-  GlsHeadwordsRequest( std::u32string const & word_, GlsDictionary & dict_ ):
+  GlsHeadwordsRequest( const std::u32string & word_, GlsDictionary & dict_ ):
     word( word_ ),
     dict( dict_ )
   {
@@ -865,7 +865,7 @@ void GlsHeadwordsRequest::run()
   finish();
 }
 
-sptr< Dictionary::WordSearchRequest > GlsDictionary::findHeadwordsForSynonym( std::u32string const & word )
+sptr< Dictionary::WordSearchRequest > GlsDictionary::findHeadwordsForSynonym( const std::u32string & word )
 
 {
   return synonymSearchEnabled ? std::make_shared< GlsHeadwordsRequest >( word, *this ) :
@@ -888,8 +888,8 @@ class GlsArticleRequest: public Dictionary::DataRequest
 
 public:
 
-  GlsArticleRequest( std::u32string const & word_,
-                     vector< std::u32string > const & alts_,
+  GlsArticleRequest( const std::u32string & word_,
+                     const vector< std::u32string > & alts_,
                      GlsDictionary & dict_,
                      bool ignoreDiacritics_ ):
     word( word_ ),
@@ -1008,9 +1008,9 @@ void GlsArticleRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > GlsDictionary::getArticle( std::u32string const & word,
-                                                           vector< std::u32string > const & alts,
-                                                           std::u32string const &,
+sptr< Dictionary::DataRequest > GlsDictionary::getArticle( const std::u32string & word,
+                                                           const vector< std::u32string > & alts,
+                                                           const std::u32string &,
                                                            bool ignoreDiacritics )
 
 {
@@ -1031,7 +1031,7 @@ class GlsResourceRequest: public Dictionary::DataRequest
 
 public:
 
-  GlsResourceRequest( GlsDictionary & dict_, string const & resourceName_ ):
+  GlsResourceRequest( GlsDictionary & dict_, const string & resourceName_ ):
     dict( dict_ ),
     resourceName( resourceName_ )
   {
@@ -1160,13 +1160,13 @@ void GlsResourceRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > GlsDictionary::getResource( string const & name )
+sptr< Dictionary::DataRequest > GlsDictionary::getResource( const string & name )
 
 {
   return std::make_shared< GlsResourceRequest >( *this, name );
 }
 
-sptr< Dictionary::DataRequest > GlsDictionary::getSearchResults( QString const & searchString,
+sptr< Dictionary::DataRequest > GlsDictionary::getSearchResults( const QString & searchString,
                                                                  int searchMode,
                                                                  bool matchCase,
 
@@ -1183,8 +1183,8 @@ sptr< Dictionary::DataRequest > GlsDictionary::getSearchResults( QString const &
 
 /// makeDictionaries
 
-vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & fileNames,
-                                                      string const & indicesDir,
+vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & fileNames,
+                                                      const string & indicesDir,
                                                       Dictionary::Initializing & initializing )
 
 {

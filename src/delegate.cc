@@ -1,5 +1,3 @@
-#include <QStyleOptionViewItem>
-
 #include "delegate.hh"
 
 WordListItemDelegate::WordListItemDelegate( QAbstractItemDelegate * delegate ):

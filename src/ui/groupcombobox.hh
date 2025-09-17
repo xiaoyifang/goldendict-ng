@@ -5,7 +5,6 @@
 
 #include <QComboBox>
 #include <QAction>
-#include <QSize>
 #include <QList>
 #include "instances.hh"
 
@@ -19,7 +18,7 @@ public:
   GroupComboBox( QWidget * parent );
 
   /// Fills combo-box with the given groups
-  void fill( Instances::Groups const & );
+  void fill( const Instances::Groups & );
 
   /// Chooses the given group in the combobox. If there's no such group,
   /// does nothing.

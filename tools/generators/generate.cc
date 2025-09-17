@@ -31,7 +31,7 @@ void indent( FILE * outf, size_t steps )
     fprintf( outf, "  " );
 }
 
-void handleForest( FILE * outf, map< char32_t, Node > const & forest, size_t prev, size_t steps )
+void handleForest( FILE * outf, const map< char32_t, Node > & forest, size_t prev, size_t steps )
 {
   indent( outf, steps );
   fprintf( outf, "if ( size > %u )\n", prev );

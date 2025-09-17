@@ -254,6 +254,18 @@
       <source>&amp;Create Anki note</source>
       <translation>アンキノートを作成(&amp;C)</translation>
     </message>
+    <message>
+      <source>Error Loading</source>
+      <translation>読み込みエラー</translation>
+    </message>
+    <message>
+      <source>Page Load Failed</source>
+      <translation>ページの読み込みに失敗しました</translation>
+    </message>
+    <message>
+      <source>Unable to load the requested page content</source>
+      <translation>要求されたページのコンテンツを読み込むことができません</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -3477,6 +3489,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>None</source>
       <translation>なし</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in seperate tab</source>
+      <translation>別タブでウェブサイト辞書を開く</translation>
     </message>
   </context>
   <context>

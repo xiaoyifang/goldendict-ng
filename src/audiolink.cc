@@ -4,12 +4,12 @@
 #include "audiolink.hh"
 #include "globalbroadcaster.hh"
 
-std::string addAudioLink( std::string const & url, std::string const & dictionaryId )
+std::string addAudioLink( const std::string & url, const std::string & dictionaryId )
 {
   return addAudioLink( QString::fromStdString( url ), dictionaryId );
 }
 
-std::string addAudioLink( QString const & url, std::string const & dictionaryId )
+std::string addAudioLink( const QString & url, const std::string & dictionaryId )
 {
   if ( url.isEmpty() ) {
     return {};

@@ -255,6 +255,18 @@ No se ha encontrado la palabra en el grupo &lt;b&gt;%1&lt;/b&gt;.</translation>
       <source>&amp;Create Anki note</source>
       <translation>&amp;Anki qillqata luraña</translation>
     </message>
+    <message>
+      <source>Error Loading</source>
+      <translation type="unfinished">Error Loading</translation>
+    </message>
+    <message>
+      <source>Page Load Failed</source>
+      <translation type="unfinished">Page Load Failed</translation>
+    </message>
+    <message>
+      <source>Unable to load the requested page content</source>
+      <translation type="unfinished">Unable to load the requested page content</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -3594,6 +3606,10 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     <message>
       <source>None</source>
       <translation>Ni maya</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in seperate tab</source>
+      <translation type="unfinished">Open website dictionary in seperate tab</translation>
     </message>
   </context>
   <context>

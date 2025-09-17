@@ -18,10 +18,7 @@
 
 #pragma once
 
-#include <stddef.h>
 #include <QtGlobal>
-
-#include <stdint.h>
 
 class RIPEMD128
 {

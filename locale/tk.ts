@@ -254,6 +254,18 @@
       <source>&amp;Create Anki note</source>
       <translation>&amp; Anki belligini dörediň</translation>
     </message>
+    <message>
+      <source>Error Loading</source>
+      <translation type="unfinished">Error Loading</translation>
+    </message>
+    <message>
+      <source>Page Load Failed</source>
+      <translation type="unfinished">Page Load Failed</translation>
+    </message>
+    <message>
+      <source>Unable to load the requested page content</source>
+      <translation type="unfinished">Unable to load the requested page content</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -3477,6 +3489,10 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
     <message>
       <source>None</source>
       <translation>Hiç birisi</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in seperate tab</source>
+      <translation type="unfinished">Open website dictionary in seperate tab</translation>
     </message>
   </context>
   <context>

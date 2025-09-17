@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation type="unfinished">Anki: can&apos;t create a card without a word</translation>
+      <translation>Não é possível criar um cartão sem uma palavra</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -28,11 +28,11 @@
     </message>
     <message>
       <source>Anki: post to Anki failed</source>
-      <translation>Anki: post para Anki falhou</translation>
+      <translation>Anki: A postagem no Anki falhou</translation>
     </message>
     <message>
       <source>Anki: post to Anki success</source>
-      <translation>Anki: post para Anki com sucesso</translation>
+      <translation>Anki: Postagem no Anki realizada</translation>
     </message>
   </context>
   <context>
@@ -254,6 +254,18 @@
       <source>&amp;Create Anki note</source>
       <translation>&amp;Criar nota Anki</translation>
     </message>
+    <message>
+      <source>Error Loading</source>
+      <translation>Erro ao Carregar</translation>
+    </message>
+    <message>
+      <source>Page Load Failed</source>
+      <translation>Falha ao carregar página</translation>
+    </message>
+    <message>
+      <source>Unable to load the requested page content</source>
+      <translation>Não foi possível carregar o conteúdo da página solicitada</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -312,7 +324,7 @@ entre clássico e ortografia escolar em cirílico)</translation>
     </message>
     <message>
       <source>Taiwan variant</source>
-      <translation>Taiwan variant</translation>
+      <translation>Variante de Taiwan</translation>
     </message>
     <message>
       <source>Hong Kong variant</source>
@@ -3467,7 +3479,7 @@ dos dicionários Stardict, Babylon e GLS</translation>
     </message>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
-      <translation>GoldenDict-ng é um software de dicionário.</translation>
+      <translation>O GoldenDict-ng é um software de dicionário.</translation>
     </message>
     <message>
       <source>Enable Interface Font</source>
@@ -3484,6 +3496,10 @@ dos dicionários Stardict, Babylon e GLS</translation>
     <message>
       <source>None</source>
       <translation>Nenhum</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in seperate tab</source>
+      <translation>Abrir o dicionário do site na guia separada</translation>
     </message>
   </context>
   <context>

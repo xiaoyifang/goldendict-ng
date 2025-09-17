@@ -38,9 +38,9 @@ const char * getEncodingNameFor( Encoding e );
 Encoding getEncodingForName( const QByteArray & name );
 
 /// utf32 -> utf8
-std::string toUtf8( std::u32string const & ) noexcept;
+std::string toUtf8( const std::u32string & ) noexcept;
 /// utf8 -> utf32
-std::u32string toUtf32( std::string const & );
+std::u32string toUtf32( const std::string & );
 
 /// Since the standard isspace() is locale-specific, we need something
 /// that would never mess up our utf8 input. The stock one worked fine under
@@ -58,7 +58,7 @@ struct LineFeed
 
 LineFeed initLineFeed( Encoding e );
 
-std::u32string removeTrailingZero( std::u32string const & v );
-std::u32string removeTrailingZero( QString const & in );
-std::u32string normalize( std::u32string const & );
+std::u32string removeTrailingZero( const std::u32string & v );
+std::u32string removeTrailingZero( const QString & in );
+std::u32string normalize( const std::u32string & );
 } // namespace Text

@@ -5,7 +5,6 @@
 
 #include <QWidget>
 #include <QSize>
-#include <QAbstractListModel>
 #include <QListView>
 #include <QLabel>
 #include <QHBoxLayout>
@@ -37,16 +36,16 @@ public:
   void setUp( Config::Class * cfg, History * history, QMenu * menu );
 
 signals:
-  void historyItemRequested( QString const & word );
+  void historyItemRequested( const QString & word );
 
 public slots:
   void updateHistoryCounts();
 
 private slots:
-  void emitHistoryItemRequested( QModelIndex const & );
+  void emitHistoryItemRequested( const QModelIndex & );
   void onSelectionChanged( const QItemSelection & selection, const QItemSelection & deselected );
-  void onItemClicked( QModelIndex const & idx );
-  void showCustomMenu( QPoint const & pos );
+  void onItemClicked( const QModelIndex & idx );
+  void showCustomMenu( const QPoint & pos );
   void deleteSelectedItems();
   void copySelectedItems();
 
@@ -80,9 +79,9 @@ class HistoryModel: public QAbstractListModel
 public:
   explicit HistoryModel( History * history, QObject * parent = 0 );
 
-  int rowCount( QModelIndex const & parent = QModelIndex() ) const;
+  int rowCount( const QModelIndex & parent = QModelIndex() ) const;
 
-  QVariant data( QModelIndex const & index, int role = Qt::DisplayRole ) const;
+  QVariant data( const QModelIndex & index, int role = Qt::DisplayRole ) const;
 
 private slots:
   void historyChanged();

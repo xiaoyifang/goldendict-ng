@@ -44,8 +44,26 @@ class ScopedMemMap
 public:
   ScopedMemMap( QFile & file, qint64 offset, qint64 size ):
     file( file ),
-    address( file.map( offset, size ) )
+    address( nullptr )
   {
+    // Check if offset and size are valid
+    if ( offset < 0 || size < 0 ) {
+      address = nullptr;
+      return;
+    }
+
+    qint64 fileSize = file.size();
+    if ( offset > fileSize ) {
+      address = nullptr; // Start offset exceeds file size
+      return;
+    }
+
+    qint64 maxSafeSize = fileSize - offset;
+    if ( size > maxSafeSize ) {
+      size = maxSafeSize; // Automatically adjust to the maximum allowed size
+    }
+
+    address = file.map( offset, size );
   }
 
   ~ScopedMemMap()
@@ -92,7 +110,7 @@ public:
       return shadowStartPos > rhs;
     }
 
-    static size_t bsearch( vector< RecordIndex > const & offsets, qint64 val );
+    static size_t bsearch( const vector< RecordIndex > & offsets, qint64 val );
   };
 
   struct RecordInfo
@@ -108,24 +126,24 @@ public:
   class RecordHandler
   {
   public:
-    virtual void handleRecord( QString const & name, RecordInfo const & recordInfo ) = 0;
+    virtual void handleRecord( const QString & name, const RecordInfo & recordInfo ) = 0;
   };
 
   using BlockInfoVector = vector< pair< qint64, qint64 > >;
   using HeadWordIndex   = vector< pair< qint64, QString > >;
   using StyleSheets     = map< qint32, pair< QString, QString > >;
 
-  inline QString const & title() const
+  inline const QString & title() const
   {
     return title_;
   }
 
-  inline QString const & description() const
+  inline const QString & description() const
   {
     return description_;
   }
 
-  inline StyleSheets const & styleSheets() const
+  inline const StyleSheets & styleSheets() const
   {
     return styleSheets_;
   }
@@ -135,12 +153,12 @@ public:
     return wordCount_;
   }
 
-  inline QString const & encoding() const
+  inline const QString & encoding() const
   {
     return encoding_;
   }
 
-  inline QString const & filename() const
+  inline const QString & filename() const
   {
     return filename_;
   }
@@ -159,7 +177,7 @@ public:
 
   // helpers
   static QString toUtf16( const char * fromCode, const char * from, size_t fromSize );
-  static inline QString toUtf16( QString const & fromCode, const char * from, size_t fromSize )
+  static inline QString toUtf16( const QString & fromCode, const char * from, size_t fromSize )
   {
     return toUtf16( fromCode.toLatin1().constData(), from, fromSize );
   }
@@ -167,8 +185,8 @@ public:
                                     const char * compressedBlockPtr,
                                     qint64 decompressedBlockSize,
                                     QByteArray & decompressedBlock );
-  static QString & substituteStylesheet( QString & article, StyleSheets const & styleSheets );
-  static inline string substituteStylesheet( string const & article, StyleSheets const & styleSheets )
+  static QString & substituteStylesheet( QString & article, const StyleSheets & styleSheets );
+  static inline string substituteStylesheet( const string & article, const StyleSheets & styleSheets )
   {
     QString s = QString::fromUtf8( article.c_str() );
     substituteStylesheet( s, styleSheets );
@@ -183,8 +201,8 @@ protected:
   bool readHeader( QDataStream & in );
   bool readHeadWordBlockInfos( QDataStream & in );
   bool readRecordBlockInfos();
-  BlockInfoVector decodeHeadWordBlockInfo( QByteArray const & headWordBlockInfo );
-  HeadWordIndex splitHeadWordBlock( QByteArray const & block );
+  BlockInfoVector decodeHeadWordBlockInfo( const QByteArray & headWordBlockInfo );
+  HeadWordIndex splitHeadWordBlock( const QByteArray & block );
 
 protected:
   QString filename_;

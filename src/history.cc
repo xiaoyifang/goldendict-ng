@@ -46,7 +46,7 @@ History::Item History::getItem( int index )
   return items.at( index );
 }
 
-void History::addItem( Item const & item )
+void History::addItem( const Item & item )
 {
   if ( !enabled() ) {
     return;

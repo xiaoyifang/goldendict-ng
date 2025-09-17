@@ -6,8 +6,6 @@
 #include <QAction>
 #include <QMap>
 #include <QSet>
-#include <QUrl>
-#include <QWebEngineView>
 #include <list>
 #include "article_netmgr.hh"
 #include "audio/audioplayerinterface.hh"
@@ -15,7 +13,6 @@
 #include "groupcombobox.hh"
 #include "globalbroadcaster.hh"
 #include "article_inspect.hh"
-#include <QRegularExpression>
 #include "ankiconnector.hh"
 #include "webmultimediadownload.hh"
 #include "base_type.hh"
@@ -34,10 +31,11 @@ class ArticleView: public QWidget
   Q_OBJECT
 
   ArticleNetworkAccessManager & articleNetMgr;
-  AudioPlayerPtr const & audioPlayer;
+  const AudioPlayerPtr & audioPlayer;
   std::unique_ptr< DictionaryGroup > dictionaryGroup;
   bool popupView;
-  Config::Class const & cfg;
+  QString customTitle;
+  const Config::Class & cfg;
   QWebChannel * channel;
   ArticleViewAgent * agent;
 
@@ -57,7 +55,7 @@ class ArticleView: public QWidget
   QAction * dictionaryBarToggled;
 
   unsigned currentGroupId;
-  QLineEdit const * translateLine;
+  const QLineEdit * translateLine;
 
   /// current searching word.
   QString currentWord;
@@ -78,6 +76,12 @@ class ArticleView: public QWidget
 
   QString delayedHighlightText;
 
+  /// Flag indicating if this view is dedicated for website browsing
+  bool isWebsiteView = false;
+
+  /// Host part of the website URL for identification
+  QString websiteHost;
+
   void highlightFTSResults();
   void performFtsFindOperation( bool backwards );
 
@@ -87,15 +91,14 @@ public:
   /// The groups aren't copied -- rather than that, the reference is kept
   ArticleView( QWidget * parent,
                ArticleNetworkAccessManager &,
-               AudioPlayerPtr const &,
-               std::vector< sptr< Dictionary::Class > > const & allDictionaries,
-               Instances::Groups const &,
+               const AudioPlayerPtr &,
+               const std::vector< sptr< Dictionary::Class > > & allDictionaries,
+               const Instances::Groups &,
                bool popupView,
-               Config::Class const & cfg,
-               QLineEdit const * translateLine,
+               const Config::Class & cfg,
+               const QLineEdit * translateLine,
                QAction * dictionaryBarToggled = nullptr,
                unsigned currentGroupId        = 0 );
-
 
   void setCurrentGroupId( unsigned currengGrgId );
   unsigned getCurrentGroupId();
@@ -108,9 +111,12 @@ public:
 
   ~ArticleView();
 
+  void load( QString url, const QString & customTitle = {} );
+
+  void setCustomTitle( const QString & customTitle );
 
   /// Returns "gdfrom-" + dictionaryId.
-  static QString scrollToFromDictionaryId( QString const & dictionaryId );
+  static QString scrollToFromDictionaryId( const QString & dictionaryId );
 
   /// Shows the definition of the given word with the given group.
   /// scrollTo can be optionally set to a "gdfrom-xxxx" identifier to position
@@ -118,26 +124,26 @@ public:
   /// contexts is an optional map of context values to be passed for dictionaries.
   /// The only values to pass here are ones obtained from showDefinitionInNewTab()
   /// signal or none at all.
-  void showDefinition( QString const & word,
+  void showDefinition( const QString & word,
                        unsigned group,
-                       QString const & scrollTo  = QString(),
-                       Contexts const & contexts = Contexts() );
+                       const QString & scrollTo  = QString(),
+                       const Contexts & contexts = Contexts() );
 
-  void showDefinition( QString const & word,
-                       QStringList const & dictIDs,
-                       QRegularExpression const & searchRegExp,
+  void showDefinition( const QString & word,
+                       const QStringList & dictIDs,
+                       const QRegularExpression & searchRegExp,
                        unsigned group,
                        bool ignoreDiacritics );
-  void showDefinition( QString const & word, QStringList const & dictIDs, unsigned group, bool ignoreDiacritics );
+  void showDefinition( const QString & word, const QStringList & dictIDs, unsigned group, bool ignoreDiacritics );
 
-  void sendToAnki( QString const & word, QString const & text, QString const & sentence );
+  void sendToAnki( const QString & word, const QString & text, const QString & sentence );
   /// Clears the view and sets the application-global waiting cursor,
   /// which will be restored when some article loads eventually.
   void showAnticipation();
 
   /// Create a new Anki card from a currently displayed article with the provided id.
   /// This function will call QWebEnginePage::runJavaScript() to fetch the corresponding HTML.
-  void makeAnkiCardFromArticle( QString const & article_id );
+  void makeAnkiCardFromArticle( const QString & article_id );
 
   /// Opens the given link. Supposed to be used in response to
   /// openLinkInNewTab() signal. The link scheme is therefore supposed to be
@@ -145,11 +151,11 @@ public:
   /// contexts is an optional map of context values to be passed for dictionaries.
   /// The only values to pass here are ones obtained from showDefinitionInNewTab()
   /// signal or none at all.
-  void openLink( QUrl const & url,
-                 QUrl const & referrer,
-                 QString const & scrollTo  = QString(),
-                 Contexts const & contexts = Contexts() );
-  void playAudio( QUrl const & url );
+  void openLink( const QUrl & url,
+                 const QUrl & referrer,
+                 const QString & scrollTo  = QString(),
+                 const Contexts & contexts = Contexts() );
+  void playAudio( const QUrl & url );
   void audioDownloadFinished( const sptr< Dictionary::DataRequest > & req );
 
   /// Called when the state of dictionary bar changes and the view is active.
@@ -162,12 +168,13 @@ public:
   /// Called when preference changes
   void setSelectionBySingleClick( bool set );
 
-  void setDelayedHighlightText( QString const & text );
+  void setDelayedHighlightText( const QString & text );
 
   /// \brief Set background as black if darkreader mode is enabled.
   void syncBackgroundColorWithCfgDarkReader() const;
 
   QString getCurrentWord();
+
 
 private:
   // widgets
@@ -215,6 +222,27 @@ public:
     }
   }
 
+  /// Returns whether this view is for website browsing
+  bool isWebsite() const
+  {
+    return isWebsiteView;
+  }
+
+  /// Sets whether this view is for website browsing
+  void setWebsite( bool website )
+  {
+    isWebsiteView = website;
+  }
+
+  /// Returns the website host
+  QString getWebsiteHost() const
+  {
+    return websiteHost;
+  }
+
+  /// Sets website host
+  void setWebsiteHost( const QString & host );
+
   /// Returns current article's text in .html format
   void toHtml( const std::function< void( QString & ) > & callback );
 
@@ -239,7 +267,7 @@ public:
 
   /// Jumps to the article specified by the dictionary id,
   /// by executing a javascript code.
-  void jumpToDictionary( QString const &, bool force );
+  void jumpToDictionary( const QString &, bool force );
 
   /// Returns all articles currently present in view, as a list of dictionary
   /// string ids.
@@ -247,7 +275,7 @@ public:
 
   /// Returns the dictionary id of the currently active article in the view.
   QString getActiveArticleId();
-  void setActiveArticleId( QString const & );
+  void setActiveArticleId( const QString & );
 
   ResourceToSaveHandler * saveResource( const QUrl & url, const QString & fileName );
 
@@ -257,26 +285,26 @@ public:
 
 signals:
 
-  void titleChanged( ArticleView *, QString const & title );
+  void titleChanged( ArticleView *, const QString & title );
 
   void pageLoaded( ArticleView * );
 
   /// Signals that the following link was requested to be opened in new tab
-  void openLinkInNewTab( QUrl const &, QUrl const & referrer, QString const & fromArticle, Contexts const & contexts );
+  void openLinkInNewTab( const QUrl &, const QUrl & referrer, const QString & fromArticle, const Contexts & contexts );
   /// Signals that the following definition was requested to be showed in new tab
-  void showDefinitionInNewTab( QString const & word,
+  void showDefinitionInNewTab( const QString & word,
                                unsigned group,
-                               QString const & fromArticle,
-                               Contexts const & contexts );
+                               const QString & fromArticle,
+                               const Contexts & contexts );
 
   /// Put translated word into history
-  void sendWordToHistory( QString const & word );
+  void sendWordToHistory( const QString & word );
 
   /// Emitted when user types a text key. This should typically be used to
   /// switch focus to word input.
-  void typingEvent( QString const & text );
+  void typingEvent( const QString & text );
 
-  void statusBarMessage( QString const & message, int timeout = 0, QPixmap const & pixmap = QPixmap() );
+  void statusBarMessage( const QString & message, int timeout = 0, const QPixmap & pixmap = QPixmap() );
 
   /// Signals that the dictionaries pane was requested to be showed
   void showDictsPane();
@@ -287,7 +315,7 @@ signals:
   /// typically in response to user actions
   /// (clicking on the article or using shortcuts).
   /// id - the dictionary id of the active article.
-  void activeArticleChanged( ArticleView const *, QString const & id );
+  void activeArticleChanged( const ArticleView *, const QString & id );
 
   /// Signal to add word to history even if history is disabled
   void forceAddWordToHistory( const QString & word );
@@ -295,9 +323,9 @@ signals:
   /// Signal to close popup menu
   void closePopupMenu();
 
-  void sendWordToInputLine( QString const & word );
+  void sendWordToInputLine( const QString & word );
 
-  void storeResourceSavePath( QString const & );
+  void storeResourceSavePath( const QString & );
 
   void zoomIn();
   void zoomOut();
@@ -317,7 +345,7 @@ public slots:
   void on_searchPrevious_clicked();
   void on_searchNext_clicked();
 
-  void onJsActiveArticleChanged( QString const & id );
+  void onJsActiveArticleChanged( const QString & id );
 
   /// Handles F3 and Shift+F3 for search navigation
   bool handleF3( QObject * obj, QEvent * ev );
@@ -325,17 +353,17 @@ public slots:
   /// Selects an entire text of the current article
   void selectCurrentArticle();
   //receive signal from weburlinterceptor.
-  void linkClicked( QUrl const & );
+  void linkClicked( const QUrl & );
   //aim to receive signal from html. the fragment url click to  navigation through page wil not be intecepted by weburlinteceptor
-  Q_INVOKABLE void linkClickedInHtml( QUrl const & );
+  Q_INVOKABLE void linkClickedInHtml( const QUrl & );
 private slots:
   void inspectElement();
   void loadFinished( bool ok );
-  void handleTitleChanged( QString const & title );
+  void handleTitleChanged( const QString & title );
   void attachWebChannelToHtml();
 
   void linkHovered( const QString & link );
-  void contextMenuRequested( QPoint const & );
+  void contextMenuRequested( const QPoint & );
 
   bool isAudioLink( QUrl & targetUrl )
   {
@@ -367,7 +395,7 @@ private slots:
   void doubleClicked( QPoint pos );
 
   /// Handles audio player error message
-  void audioPlayerError( QString const & message );
+  void audioPlayerError( const QString & message );
 
   /// Copy current selection as plain text
   void copyAsText();
@@ -380,7 +408,7 @@ private:
 
   /// Deduces group from the url. If there doesn't seem to be any group,
   /// returns 0.
-  unsigned getGroup( QUrl const & );
+  unsigned getGroup( const QUrl & );
 
   /// Returns current article in the view, in the form of "gdfrom-xxx" id.
   QString getCurrentArticle();
@@ -388,19 +416,26 @@ private:
   /// Sets the current article by executing a javascript code.
   /// If moveToIt is true, it moves the focus to it as well.
   /// Returns true in case of success, false otherwise.
-  bool setCurrentArticle( QString const &, bool moveToIt = false );
+  bool setCurrentArticle( const QString &, bool moveToIt = false );
 
   /// Checks if the given article in form of "gdfrom-xxx" is inside a "website"
   /// frame.
-  void isFramedArticle( QString const & article, const std::function< void( bool framed ) > & callback );
+  void isFramedArticle( const QString & article, const std::function< void( bool framed ) > & callback );
 
   /// Sees if the last clicked link is from a website frame. If so, changes url
   /// to point to url text translation instead, and saves the original
   /// url to the appropriate "contexts" entry.
   void tryMangleWebsiteClickedUrl( QUrl & url, Contexts & contexts );
 
+  /// Injects JavaScript into website views for enhanced functionality
+  void injectWebsiteJavaScript();
+
+  bool isDarkModeEnabled() const;
+
+  QString createErrorPageHtml( const QUrl & url ) const;
+
   /// Loads a page at @p url into view.
-  void load( QUrl const & url );
+  void load( const QUrl & url, const QString & customTitle = {} );
 
   /// Attempts removing last temporary file created.
   void cleanupTemp();
@@ -430,7 +465,7 @@ public:
 
 signals:
   void done();
-  void statusBarMessage( QString const & message, int timeout = 0, QPixmap const & pixmap = QPixmap() );
+  void statusBarMessage( const QString & message, int timeout = 0, const QPixmap & pixmap = QPixmap() );
 
 public slots:
   void downloadFinished();
@@ -451,7 +486,7 @@ public:
 
 
 public slots:
-  Q_INVOKABLE void onJsActiveArticleChanged( QString const & id );
-  Q_INVOKABLE void linkClickedInHtml( QUrl const & );
-  Q_INVOKABLE void collapseInHtml( QString const & dictId, bool on = true ) const;
+  Q_INVOKABLE void onJsActiveArticleChanged( const QString & id );
+  Q_INVOKABLE void linkClickedInHtml( const QUrl & );
+  Q_INVOKABLE void collapseInHtml( const QString & dictId, bool on = true ) const;
 };

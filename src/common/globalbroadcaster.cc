@@ -43,7 +43,7 @@ bool GlobalBroadcaster::existedInWhitelist( QString url ) const
 }
 
 
-QString GlobalBroadcaster::getAbbrName( QString const & text )
+QString GlobalBroadcaster::getAbbrName( const QString & text )
 {
   if ( text.isEmpty() ) {
     return {};

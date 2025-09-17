@@ -12,7 +12,7 @@ namespace WebSite {
 
 using std::vector;
 
-vector< sptr< Dictionary::Class > > makeDictionaries( Config::WebSites const &, QNetworkAccessManager & );
+vector< sptr< Dictionary::Class > > makeDictionaries( const Config::WebSites &, QNetworkAccessManager & );
 
 
 } // namespace WebSite

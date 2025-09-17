@@ -1,24 +1,23 @@
 #ifdef __APPLE__
-
-  #include "gd_clipboard.hh"
+  #include "clipboard/mac.hh"
   #include <QGuiApplication>
 
-gd_clipboard::gd_clipboard( QObject * parent ):
-  QObject{ parent },
+MacClipboardListener::MacClipboardListener( QObject * parent ):
+  BaseClipboardListener( parent ),
   sysClipboard( QGuiApplication::clipboard() )
 {
 
-  connect( &m_monitoringTimer, &QTimer::timeout, this, [ this ]() {
+  connect( &m_monitoringTimer, &QTimer::timeout, this, [ this ] {
     updateClipboard();
   } );
 }
 
-QString gd_clipboard::text() const
+QString MacClipboardListener::text()
 {
   return m_currentContent;
 }
 
-void gd_clipboard::updateClipboard()
+void MacClipboardListener::updateClipboard()
 {
   const QString newContent = this->sysClipboard->text().trimmed();
 
@@ -31,12 +30,12 @@ void gd_clipboard::updateClipboard()
   emit changed( QClipboard::Clipboard );
 }
 
-void gd_clipboard::stop()
+void MacClipboardListener::stop()
 {
   m_monitoringTimer.stop();
 }
 
-void gd_clipboard::start()
+void MacClipboardListener::start()
 {
   m_monitoringTimer.start( 1000 ); // 1s
 }

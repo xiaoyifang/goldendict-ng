@@ -17,7 +17,7 @@ class WebMultimediaDownload: public DataRequest
 
 public:
 
-  WebMultimediaDownload( QUrl const &, QNetworkAccessManager & );
+  WebMultimediaDownload( const QUrl &, QNetworkAccessManager & );
 
   virtual void cancel();
 

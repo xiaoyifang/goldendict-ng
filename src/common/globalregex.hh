@@ -64,7 +64,7 @@ const static QRegularExpression htmlEntity( R"(&(?:#\d+|#[xX][\da-fA-F]+|[0-9a-z
 // exclude <br/> <hr/>
 const static QRegularExpression emptyXmlTag( R"(<(?!(br|hr)\b)([^/ >]*)\s*/>)" );
 
-bool containHtmlEntity( std::string const & text );
+bool containHtmlEntity( const std::string & text );
 } // namespace Html
 
 const static QRegularExpression accentMark( R"(\p{M})", QRegularExpression::UseUnicodePropertiesOption );

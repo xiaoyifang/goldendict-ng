@@ -25,7 +25,7 @@ public:
   DEF_EX_STR( exCantRunViewer, "Couldn't run external viewer:", Ex )
 
   ExternalViewer(
-    const char * data, int size, QString const & extension, QString const & viewerCmdLine, QObject * parent = 0 );
+    const char * data, int size, const QString & extension, const QString & viewerCmdLine, QObject * parent = 0 );
 
   // Once this is called, the object will be deleted when it's done, even if
   // the function throws.

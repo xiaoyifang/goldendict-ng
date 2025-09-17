@@ -2,7 +2,6 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "maintabwidget.hh"
-#include <QEvent>
 #include <QMouseEvent>
 
 MainTabWidget::MainTabWidget( QWidget * parent ):

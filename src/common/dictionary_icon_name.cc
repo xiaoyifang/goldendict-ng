@@ -14,8 +14,8 @@ QString Icons::DictionaryIconName::getIconName( const QString & dictionaryName )
     return _dictionaryIconNames.value( dictionaryName );
   }
   //get the first character of the dictionary name
-  QString name                  = dictionaryName.at( 0 ).toUpper();
-  auto it1                      = _iconDictionaryNames.contains( name );
+  QString name = dictionaryName.at( 0 ).toUpper();
+  auto it1     = _iconDictionaryNames.contains( name );
   if ( it1 ) {
     auto vector = _iconDictionaryNames.value( name );
     vector++;

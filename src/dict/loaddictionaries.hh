@@ -3,7 +3,6 @@
 
 #pragma once
 
-#include "initializing.hh"
 #include "config.hh"
 #include "dict/dictionary.hh"
 
@@ -17,10 +16,10 @@ class LoadDictionaries: public QThread, public Dictionary::Initializing
   Q_OBJECT
 
   QStringList nameFilters;
-  Config::Paths const & paths;
-  Config::SoundDirs const & soundDirs;
-  Config::Hunspell const & hunspell;
-  Config::Transliteration const & transliteration;
+  const Config::Paths & paths;
+  const Config::SoundDirs & soundDirs;
+  const Config::Hunspell & hunspell;
+  const Config::Transliteration & transliteration;
   std::vector< sptr< Dictionary::Class > > dictionaries;
   QStringList exceptionTexts;
   unsigned int maxHeadwordSize;
@@ -28,11 +27,11 @@ class LoadDictionaries: public QThread, public Dictionary::Initializing
 
 public:
 
-  LoadDictionaries( Config::Class const & cfg );
+  LoadDictionaries( const Config::Class & cfg );
 
   virtual void run();
 
-  std::vector< sptr< Dictionary::Class > > const & getDictionaries() const
+  const std::vector< sptr< Dictionary::Class > > & getDictionaries() const
   {
     return dictionaries;
   }
@@ -46,19 +45,19 @@ public:
 
 public:
 
-  virtual void indexingDictionary( std::string const & dictionaryName ) noexcept;
-  virtual void loadingDictionary( std::string const & dictionaryName ) noexcept;
+  virtual void indexingDictionary( const std::string & dictionaryName ) noexcept;
+  virtual void loadingDictionary( const std::string & dictionaryName ) noexcept;
 
 private:
 
-  void handlePath( Config::Path const & );
+  void handlePath( const Config::Path & );
 
   // Helper function that will add a vector of dictionary::Class to the dictionary list
   void addDicts( const std::vector< sptr< Dictionary::Class > > & dicts );
 
 signals:
-  void indexingDictionarySignal( QString const & dictionaryName );
-  void loadingDictionarySignal( QString const & dictionaryName );
+  void indexingDictionarySignal( const QString & dictionaryName );
+  void loadingDictionarySignal( const QString & dictionaryName );
 };
 
 /// Loads all dictionaries mentioned in the configuration passed, into the
@@ -67,7 +66,7 @@ signals:
 /// If doDeferredInit is true (default), doDeferredInit() is done on all
 /// dictionaries at the end.
 void loadDictionaries( QWidget * parent,
-                       Config::Class const & cfg,
+                       const Config::Class & cfg,
                        std::vector< sptr< Dictionary::Class > > &,
                        QNetworkAccessManager & dictNetMgr,
                        bool doDeferredInit = true );

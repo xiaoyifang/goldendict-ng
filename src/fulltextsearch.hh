@@ -37,7 +37,7 @@ struct FtsHeadword
   QStringList foundHiliteRegExps;
   bool matchCase;
 
-  FtsHeadword( QString const & headword_, QString const & dictid_, QStringList hilites, bool match_case ):
+  FtsHeadword( const QString & headword_, const QString & dictid_, QStringList hilites, bool match_case ):
     headword( headword_ ),
     foundHiliteRegExps( hilites ),
     matchCase( match_case )
@@ -45,14 +45,14 @@ struct FtsHeadword
     dictIDs.append( dictid_ );
   }
 
-  bool operator<( FtsHeadword const & other ) const;
+  bool operator<( const FtsHeadword & other ) const;
 
-  bool operator==( FtsHeadword const & other ) const
+  bool operator==( const FtsHeadword & other ) const
   {
     return headword.compare( other.headword, Qt::CaseInsensitive ) == 0;
   }
 
-  bool operator!=( FtsHeadword const & other ) const
+  bool operator!=( const FtsHeadword & other ) const
   {
     return headword.compare( other.headword, Qt::CaseInsensitive ) != 0;
   }
@@ -63,13 +63,13 @@ class Indexing: public QObject, public QRunnable
   Q_OBJECT
 
   QAtomicInt & isCancelled;
-  std::vector< sptr< Dictionary::Class > > const & dictionaries;
+  const std::vector< sptr< Dictionary::Class > > & dictionaries;
   QSemaphore & hasExited;
   QTimer * timer;
   QThread * timerThread;
 
 public:
-  Indexing( QAtomicInt & cancelled, std::vector< sptr< Dictionary::Class > > const & dicts, QSemaphore & hasExited_ ):
+  Indexing( QAtomicInt & cancelled, const std::vector< sptr< Dictionary::Class > > & dicts, QSemaphore & hasExited_ ):
     isCancelled( cancelled ),
     dictionaries( dicts ),
     hasExited( hasExited_ ),
@@ -105,13 +105,13 @@ class FtsIndexing: public QObject
   Q_OBJECT
 
 public:
-  FtsIndexing( std::vector< sptr< Dictionary::Class > > const & dicts );
+  FtsIndexing( const std::vector< sptr< Dictionary::Class > > & dicts );
   virtual ~FtsIndexing()
   {
     stopIndexing();
   }
 
-  void setDictionaries( std::vector< sptr< Dictionary::Class > > const & dicts )
+  void setDictionaries( const std::vector< sptr< Dictionary::Class > > & dicts )
   {
     clearDictionaries();
     dictionaries = dicts;
@@ -154,29 +154,29 @@ public:
 
   HeadwordsListModel( QWidget * parent,
                       QList< FtsHeadword > & headwords_,
-                      std::vector< sptr< Dictionary::Class > > const & dicts ):
+                      const std::vector< sptr< Dictionary::Class > > & dicts ):
     QAbstractListModel( parent ),
     headwords( headwords_ ),
     dictionaries( dicts )
   {
   }
 
-  int rowCount( QModelIndex const & parent ) const;
-  QVariant data( QModelIndex const & index, int role ) const;
+  int rowCount( const QModelIndex & parent ) const;
+  QVariant data( const QModelIndex & index, int role ) const;
 
   //  bool insertRows( int row, int count, const QModelIndex & parent );
   //  bool removeRows( int row, int count, const QModelIndex & parent );
   //  bool setData( QModelIndex const & index, const QVariant & value, int role );
 
-  void addResults( const QModelIndex & parent, QList< FtsHeadword > const & headwords );
+  void addResults( const QModelIndex & parent, const QList< FtsHeadword > & headwords );
   bool clear();
 
 private:
 
   QList< FtsHeadword > & headwords;
-  std::vector< sptr< Dictionary::Class > > const & dictionaries;
+  const std::vector< sptr< Dictionary::Class > > & dictionaries;
 
-  int getDictIndex( QString const & id ) const;
+  int getDictIndex( const QString & id ) const;
 
 signals:
   void contentChanged();
@@ -187,8 +187,8 @@ class FullTextSearchDialog: public QDialog
   Q_OBJECT
 
   Config::Class & cfg;
-  std::vector< sptr< Dictionary::Class > > const & dictionaries;
-  std::vector< Instances::Group > const & groups;
+  const std::vector< sptr< Dictionary::Class > > & dictionaries;
+  const std::vector< Instances::Group > & groups;
   unsigned group;
   std::vector< sptr< Dictionary::Class > > activeDicts;
 
@@ -202,8 +202,8 @@ class FullTextSearchDialog: public QDialog
 public:
   FullTextSearchDialog( QWidget * parent,
                         Config::Class & cfg_,
-                        std::vector< sptr< Dictionary::Class > > const & dictionaries_,
-                        std::vector< Instances::Group > const & groups_,
+                        const std::vector< sptr< Dictionary::Class > > & dictionaries_,
+                        const std::vector< Instances::Group > & groups_,
                         FtsIndexing & ftsidx );
   virtual ~FullTextSearchDialog();
 
@@ -236,13 +236,13 @@ private slots:
   void searchReqFinished();
   void matchCount( int );
   void reject();
-  void itemClicked( QModelIndex const & idx );
+  void itemClicked( const QModelIndex & idx );
   void updateDictionaries();
 
 signals:
-  void showTranslationFor( QString const &,
-                           QStringList const & dictIDs,
-                           QRegularExpression const & searchRegExp,
+  void showTranslationFor( const QString &,
+                           const QStringList & dictIDs,
+                           const QRegularExpression & searchRegExp,
                            bool ignoreDiacritics );
   void closeDialog();
 };

@@ -45,7 +45,7 @@ template< typename ParentEx, const char * description >
 class defineExStr: public ParentEx
 {
 public:
-  explicit defineExStr( std::string const & message_ ):
+  explicit defineExStr( const std::string & message_ ):
     message( fmt::format( "{} {}", description, message_ ) )
   {
   }

@@ -254,6 +254,18 @@
       <source>&amp;Create Anki note</source>
       <translation>&amp;Vytvořit Anki poznámku</translation>
     </message>
+    <message>
+      <source>Error Loading</source>
+      <translation>Chyba při načítání</translation>
+    </message>
+    <message>
+      <source>Page Load Failed</source>
+      <translation>Načtení stránky se nezdařilo</translation>
+    </message>
+    <message>
+      <source>Unable to load the requested page content</source>
+      <translation>Nelze načíst požadovaný obsah stránky</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -3475,6 +3487,10 @@ ze Stardict, Babylon a GLS slovníků</translation>
     <message>
       <source>None</source>
       <translation>Žádná</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in seperate tab</source>
+      <translation>Otevřít webový slovník v samostatné záložce</translation>
     </message>
   </context>
   <context>

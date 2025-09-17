@@ -254,6 +254,18 @@
       <source>&amp;Create Anki note</source>
       <translation>&amp;Create Anki note</translation>
     </message>
+    <message>
+      <source>Error Loading</source>
+      <translation type="unfinished">Error Loading</translation>
+    </message>
+    <message>
+      <source>Page Load Failed</source>
+      <translation type="unfinished">Page Load Failed</translation>
+    </message>
+    <message>
+      <source>Unable to load the requested page content</source>
+      <translation type="unfinished">Unable to load the requested page content</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -2100,7 +2112,7 @@ between classic and school orthography in cyrillic)</translation>
     </message>
     <message>
       <source>Kabyle</source>
-      <translation type="unfinished">Kabyle</translation>
+      <translation>Taqbaylit</translation>
     </message>
   </context>
   <context>
@@ -3469,15 +3481,19 @@ from Stardict, Babylon and GLS dictionaries</translation>
     </message>
     <message>
       <source>Font</source>
-      <translation type="unfinished">Font</translation>
+      <translation>Tasefsit</translation>
     </message>
     <message>
       <source>Font Size</source>
-      <translation type="unfinished">Font Size</translation>
+      <translation>Teɣzi n tsefsit</translation>
     </message>
     <message>
       <source>None</source>
       <translation>Ula yiwen</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in seperate tab</source>
+      <translation type="unfinished">Open website dictionary in seperate tab</translation>
     </message>
   </context>
   <context>

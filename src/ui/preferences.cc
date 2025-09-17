@@ -2,8 +2,6 @@
 #include "language.hh"
 #include "preferences.hh"
 #include "help.hh"
-
-#include <QDebug>
 #include <QDir>
 #include <QFontDatabase>
 #include <QMessageBox>
@@ -17,7 +15,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   cfg( cfg_ ),
   helpAction( this )
 {
-  Config::Preferences const & p = cfg_.preferences;
+  const Config::Preferences & p = cfg_.preferences;
   ui.setupUi( this );
 
   connect( ui.enableScanPopupModifiers,
@@ -283,7 +281,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 
   //Platform-specific options
 
-#ifdef HAVE_X11
+#ifdef WITH_X11
   ui.enableX11SelectionTrack->setChecked( p.trackSelectionScan );
   ui.enableClipboardTrack->setChecked( p.trackClipboardScan );
   ui.showScanFlag->setChecked( p.showScanFlag );
@@ -375,6 +373,7 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
   //Misc
   ui.removeInvalidIndexOnExit->setChecked( p.removeInvalidIndexOnExit );
   ui.enableApplicationLog->setChecked( p.enableApplicationLog );
+  ui.openWebsiteInNewTab->setChecked( p.openWebsiteInNewTab );
 
   //initialize add-on styles
   QString stylesDir = Config::getStylesDir();
@@ -452,8 +451,8 @@ Config::Preferences Preferences::getPreferences()
 
   p.interfaceLanguage = ui.interfaceLanguage->itemData( ui.interfaceLanguage->currentIndex() ).toString();
 
-  p.interfaceFont = ui.systemFont->currentText();
-  p.interfaceFontSize = ui.interfaceFontSize->value();
+  p.interfaceFont       = ui.systemFont->currentText();
+  p.interfaceFontSize   = ui.interfaceFontSize->value();
   p.enableInterfaceFont = ui.enableInterfaceFont->isChecked();
 
   Config::CustomFonts c;
@@ -500,7 +499,7 @@ Config::Preferences Preferences::getPreferences()
 
   p.ignoreOwnClipboardChanges = ui.ignoreOwnClipboardChanges->isChecked();
   p.scanToMainWindow          = ui.scanToMainWindow->isChecked();
-#ifdef HAVE_X11
+#ifdef WITH_X11
   p.trackSelectionScan        = ui.enableX11SelectionTrack->isChecked();
   p.trackClipboardScan        = ui.enableClipboardTrack->isChecked();
   p.showScanFlag              = ui.showScanFlag->isChecked();
@@ -565,6 +564,7 @@ Config::Preferences Preferences::getPreferences()
 
   p.removeInvalidIndexOnExit = ui.removeInvalidIndexOnExit->isChecked();
   p.enableApplicationLog     = ui.enableApplicationLog->isChecked();
+  p.openWebsiteInNewTab      = ui.openWebsiteInNewTab->isChecked();
 
   p.addonStyle = ui.addonStyles->currentText();
 
