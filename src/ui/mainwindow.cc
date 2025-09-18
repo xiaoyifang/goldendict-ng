@@ -3691,7 +3691,7 @@ ArticleView * MainWindow::findArticleViewByDictId( const QString & dictId )
       }
     }
   }
-  qDebug()<<"findArticleViewByDictId() return nullptr with dictId:"<<dictId;
+  qDebug() << "findArticleViewByDictId() return nullptr with dictId:" << dictId;
   // If configuration is not enabled or no matching ArticleView found, return nullptr
   return nullptr;
 }
@@ -4297,7 +4297,7 @@ void MainWindow::openWebsiteInNewTab( QString name, QString url, QString dictId 
     view->setWebsite( true );
     // Set the dictId for the website view
     view->setActiveArticleId( dictId );
-    qDebug()<<"openWebsiteInNewTab() set dictId:"<<dictId;
+    qDebug() << "openWebsiteInNewTab() set dictId:" << dictId;
   }
 
   view->load( url, name );
