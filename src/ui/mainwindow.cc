@@ -2706,21 +2706,18 @@ void MainWindow::jumpToDictionary( QListWidgetItem * item, bool force )
 {
   auto dictId = item->data( Qt::UserRole ).toString();
 
-  // If openWebsiteInNewTab is configured, use findArticleViewByDictId to find the ArticleView containing this dictId
-  ArticleView * view;
+  // If openWebsiteInNewTab is configured, try to find existing tab first
   if ( GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
-    view = findArticleViewByDictId( dictId );
-
-    if ( view ) {
+    if ( ArticleView * view = findArticleViewByDictId( dictId ) ) {
       // Switch to the found tab
       ui.tabWidget->setCurrentWidget( view );
+      return;
     }
   }
-  else {
-    view = getCurrentArticleView();
-    if ( view ) {
-      view->jumpToDictionary( dictId, force );
-    }
+
+  // Otherwise, use current view or create new tab if needed
+  if ( ArticleView * view = getCurrentArticleView() ) {
+    view->jumpToDictionary( dictId, force );
   }
 }
 
@@ -3694,6 +3691,7 @@ ArticleView * MainWindow::findArticleViewByDictId( const QString & dictId )
       }
     }
   }
+  qDebug()<<"findArticleViewByDictId() return nullptr with dictId:"<<dictId;
   // If configuration is not enabled or no matching ArticleView found, return nullptr
   return nullptr;
 }
@@ -4297,9 +4295,11 @@ void MainWindow::openWebsiteInNewTab( QString name, QString url, QString dictId 
   if ( view == nullptr ) {
     view = createNewTab( false, name );
     view->setWebsite( true );
+    // Set the dictId for the website view
+    view->setActiveArticleId( dictId );
+    qDebug()<<"openWebsiteInNewTab() set dictId:"<<dictId;
   }
-  // Set the dictId for the website view
-  view->setActiveArticleId( dictId );
+
   view->load( url, name );
 }
 
