@@ -282,7 +282,7 @@ private slots:
   void openDictionaryFolder( const QString & id );
 
   void showFTSIndexingName( const QString & name );
-  void openWebsiteInNewTab( QString name, QString url );
+  void openWebsiteInNewTab( QString name, QString url, QString dictId );
 
   void handleAddToFavoritesButton();
 
@@ -361,6 +361,7 @@ private slots:
 
   /// Finds an existing ArticleView that has loaded a website with the given host
   ArticleView * findArticleViewByHost( const QString & host );
+  ArticleView * findArticleViewByDictId( const QString & dictId );
 
   void openLinkInNewTab( const QUrl &, const QUrl &, const QString &, const Contexts & contexts );
   void showDefinitionInNewTab( const QString & word,

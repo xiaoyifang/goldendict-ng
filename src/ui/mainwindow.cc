@@ -2704,10 +2704,24 @@ void MainWindow::dictsListSelectionChanged()
 
 void MainWindow::jumpToDictionary( QListWidgetItem * item, bool force )
 {
-  ArticleView * view = getCurrentArticleView();
-  if ( view ) {
-    view->jumpToDictionary( item->data( Qt::UserRole ).toString(), force );
+  auto dictId = item->data( Qt::UserRole ).toString();
+  
+  // If openWebsiteInNewTab is configured, use findArticleViewByDictId to find the ArticleView containing this dictId
+  ArticleView * view;
+  if ( GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
+    view = findArticleViewByDictId( dictId );
+
+    if ( view ) {
+      // Switch to the found tab
+      ui.tabWidget->setCurrentWidget( view );
+    }
+  } else {
+    view = getCurrentArticleView();
+    if ( view ) {
+      view->jumpToDictionary( dictId, force );
+    }
   }
+
 }
 
 void MainWindow::openLinkInNewTab( const QUrl & url,
@@ -3664,6 +3678,26 @@ ArticleView * MainWindow::findArticleViewByHost( const QString & host )
   return nullptr;
 }
 
+ArticleView * MainWindow::findArticleViewByDictId( const QString & dictId )
+{
+  // First check if openWebsiteInNewTab configuration is enabled
+  if ( GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
+    // Iterate through all tabs
+    for ( int i = 0; i < ui.tabWidget->count(); i++ ) {
+      auto * view = qobject_cast< ArticleView * >( ui.tabWidget->widget( i ) );
+      if ( view && view->isWebsite() ) {
+        // Check if current ArticleView's activeDictIds list contains the specified dictId
+        QString dictIdActive = view->getActiveArticleId();
+        if ( dictIdActive == dictId ) {
+          return view;
+        }
+      }
+    }
+  }
+  // If configuration is not enabled or no matching ArticleView found, return nullptr
+  return nullptr;
+}
+
 void MainWindow::wordReceived( const QString & word )
 {
   const bool shouldFocus = cfg.preferences.raiseWindowOnSearch;
@@ -4257,13 +4291,15 @@ void MainWindow::showFTSIndexingName( const QString & name )
   }
 }
 
-void MainWindow::openWebsiteInNewTab( QString name, QString url )
+void MainWindow::openWebsiteInNewTab( QString name, QString url, QString dictId )
 {
   auto view = findArticleViewByHost( QUrl( url ).host() );
   if ( view == nullptr ) {
     view = createNewTab( false, name );
     view->setWebsite( true );
   }
+  // Set the dictId for the website view
+  view->setActiveArticleId( dictId );
   view->load( url, name );
 }
 

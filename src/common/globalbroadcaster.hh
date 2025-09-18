@@ -47,5 +47,5 @@ signals:
 
   void indexingDictionary( QString );
 
-  void websiteDictionarySignal( QString, QString );
+  void websiteDictionarySignal( QString, QString, QString );
 };
