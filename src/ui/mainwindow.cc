@@ -2705,7 +2705,7 @@ void MainWindow::dictsListSelectionChanged()
 void MainWindow::jumpToDictionary( QListWidgetItem * item, bool force )
 {
   auto dictId = item->data( Qt::UserRole ).toString();
-  
+
   // If openWebsiteInNewTab is configured, use findArticleViewByDictId to find the ArticleView containing this dictId
   ArticleView * view;
   if ( GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
@@ -2715,13 +2715,13 @@ void MainWindow::jumpToDictionary( QListWidgetItem * item, bool force )
       // Switch to the found tab
       ui.tabWidget->setCurrentWidget( view );
     }
-  } else {
+  }
+  else {
     view = getCurrentArticleView();
     if ( view ) {
       view->jumpToDictionary( dictId, force );
     }
   }
-
 }
 
 void MainWindow::openLinkInNewTab( const QUrl & url,

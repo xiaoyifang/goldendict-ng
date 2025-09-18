@@ -527,7 +527,10 @@ void ArticleRequest::altSearchFinished()
               QString requestUrl = Utils::WebSite::urlReplaceWord( url, word );
               auto title         = QString::fromStdString( activeDict->getName() );
               // Pass dictId to the websiteDictionarySignal
-              emit GlobalBroadcaster::instance() -> websiteDictionarySignal( title + "-" + word, requestUrl, QString::fromStdString( activeDict->getId() ) );
+              emit GlobalBroadcaster::instance()
+                -> websiteDictionarySignal( title + "-" + word,
+                                            requestUrl,
+                                            QString::fromStdString( activeDict->getId() ) );
             }
           }
         }
