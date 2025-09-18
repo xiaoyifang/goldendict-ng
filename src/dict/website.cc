@@ -314,7 +314,10 @@ sptr< DataRequest > WebSiteDictionary::getArticle( const std::u32string & str,
     const QString & encodeUrl = urlString;
 
     if ( GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
-      result += string( "<div><span>this website dictionary is opened in the new tab</span></div>" );
+      fmt::format_to( std::back_inserter( result ),
+                      R"(<div class="website-new-tab-notice">
+                           <p>This website dictionary is opened in a new tab</p>
+                         </div>)" );
     }
     else {
       fmt::format_to( std::back_inserter( result ),
