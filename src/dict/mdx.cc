@@ -3,6 +3,7 @@
 
 #include "mdx.hh"
 #include "btreeidx.hh"
+#include "xapianidx.hh"
 #include "folding.hh"
 #include "text.hh"
 #include "dictfile.hh"
@@ -1278,7 +1279,8 @@ class ArticleHandler: public MdictParser::RecordHandler
 public:
   ArticleHandler( ChunkedStorage::Writer & chunks, IndexedWords & indexedWords ):
     chunks( chunks ),
-    indexedWords( indexedWords )
+    indexedWords( indexedWords ),
+    wordsMap()
   {
   }
 
@@ -1289,11 +1291,21 @@ public:
     chunks.addToBlock( &recordInfo, sizeof( recordInfo ) );
     // Add entries to the index
     addEntryToIndex( headWord, articleAddress, indexedWords );
+    
+    // Update the wordsMap with the current headword and article address
+    wordsMap[ headWord ] = articleAddress;
+  }
+
+  /// Returns a map of indexed words to their article offsets
+  std::map< QString, uint32_t > getIndexedWordsMap() const
+  {
+    return wordsMap;
   }
 
 private:
   ChunkedStorage::Writer & chunks;
   IndexedWords & indexedWords;
+  std::map< QString, uint32_t > wordsMap; ///< Tracks headwords and their article addresses
 };
 
 class ResourceHandler: public MdictParser::RecordHandler
@@ -1470,7 +1482,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
 
       qDebug( "Writing index..." );
 
-      BtreeIndexing::buildXapianIndex( indexedWords, headIndexFile );
+      //headword idx
+      XapianIndexing::buildXapianIndex( articleHandler.getIndexedWordsMap(), headIndexFile );
       // Good. Now build the index
       IndexInfo idxInfo               = BtreeIndexing::buildIndex( indexedWords, idx );
       idxHeader.indexBtreeMaxElements = idxInfo.btreeMaxElements;
