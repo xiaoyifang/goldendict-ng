@@ -1063,47 +1063,7 @@ IndexInfo buildIndex( const IndexedWords & indexedWords, File::Index & file )
   return IndexInfo( btreeMaxElements, rootOffset );
 }
 
-void BtreeIndex::buildXapianIndex( IndexedWords const & indexedWords, string file ) {
-  try {
-    // Open the database for update, creating a new database if necessary.
-    Xapian::WritableDatabase db( file + "_temp", Xapian::DB_CREATE_OR_OPEN );
 
-    Xapian::TermGenerator indexer;
-    //  Xapian::Stem stemmer("english");
-    //  indexer.set_stemmer(stemmer);
-    //  indexer.set_stemming_strategy(indexer.STEM_SOME_FULL_POS);
-    indexer.set_flags( Xapian::TermGenerator::FLAG_CJK_NGRAM );
-
-    for ( const auto &[ word, articleLinks ] : indexedWords ) {
-
-      for ( const auto & articleLink : articleLinks ) {
-        if ( !articleLink.prefix.empty() )
-          continue;
-        Xapian::Document doc;
-
-        indexer.set_document( doc );
-
-        indexer.index_text( word );
-
-
-        doc.set_data( std::to_string( articleLink.articleOffset ) );
-        // Add the document to the database.
-        db.add_document( doc );
-      }
-    }
-
-    db.commit();
-
-    db.compact( file );
-
-    db.close();
-
-    Utils::Fs::removeDirectory( file + "_temp" );
-  }
-  catch ( Xapian::Error & e ) {
-    qWarning() << "create xapian headword index:" << QString::fromStdString( e.get_description() );
-  }
-}
 
 void BtreeIndex::getAllHeadwords( QSet< QString > & headwords )
 {
