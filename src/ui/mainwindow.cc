@@ -3690,6 +3690,7 @@ ArticleView * MainWindow::findArticleViewByDictId( const QString & dictId )
       if ( view && view->isWebsite() ) {
         // Check if current ArticleView's activeDictIds list contains the specified dictId
         QString dictIdActive = view->getActiveArticleId();
+        qDebug()<<"findArticleViewByDictId() dictIdActive:"<<dictIdActive<<" dictId:"<<dictId;
         if ( dictIdActive == dictId ) {
           return view;
         }
