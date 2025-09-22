@@ -3658,37 +3658,37 @@ void MainWindow::messageFromAnotherInstanceReceived( const QString & message )
 
 ArticleView * MainWindow::getCurrentArticleView()
 {
-  QWidget * currentWidget = ui.tabWidget->currentWidget();
-  ArticleView * currentView = qobject_cast<ArticleView *>(currentWidget);
+  QWidget * currentWidget   = ui.tabWidget->currentWidget();
+  ArticleView * currentView = qobject_cast< ArticleView * >( currentWidget );
 
   // First check if "openWebsiteInNewTab" is disabled
-  if (!GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab) {
-    if (currentView) {
-      currentView->setWebsite(false);
+  if ( !GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
+    if ( currentView ) {
+      currentView->setWebsite( false );
       return currentView;
     }
   }
 
   //the following logic is under the condition that "openWebsiteInNewTab" is enabled.
   // If current view is already a non-website tab, return it directly
-  if (currentView && !currentView->isWebsite()) {
+  if ( currentView && !currentView->isWebsite() ) {
     return currentView;
   }
 
   // If current view is not suitable, look for the first non-website tab
-  for (int i = 0; i < ui.tabWidget->count(); i++) {
-    auto * view = qobject_cast<ArticleView *>(ui.tabWidget->widget(i));
-    if (view && !view->isWebsite()) {
+  for ( int i = 0; i < ui.tabWidget->count(); i++ ) {
+    auto * view = qobject_cast< ArticleView * >( ui.tabWidget->widget( i ) );
+    if ( view && !view->isWebsite() ) {
       return view;
     }
   }
 
   // If no non-website tab found, fall back to current view (if exists)
-  if (currentView) {
-    currentView->setWebsite(false);
+  if ( currentView ) {
+    currentView->setWebsite( false );
     return currentView;
   }
-  
+
   return nullptr;
 }
 
@@ -3713,7 +3713,7 @@ ArticleView * MainWindow::findArticleViewByDictId( const QString & dictId )
       if ( view && view->isWebsite() ) {
         // Check if current ArticleView's activeDictIds list contains the specified dictId
         QString dictIdActive = view->getActiveArticleId();
-        qDebug()<<"findArticleViewByDictId() dictIdActive:"<<dictIdActive<<" dictId:"<<dictId;
+        qDebug() << "findArticleViewByDictId() dictIdActive:" << dictIdActive << " dictId:" << dictId;
         if ( dictIdActive == dictId ) {
           return view;
         }
@@ -4058,7 +4058,7 @@ void MainWindow::forceAddWordToHistory( const QString & word )
 void MainWindow::foundDictsPaneClicked( QListWidgetItem * item )
 {
   // Since we only keep this event handler method, no reentrancy flag is needed here
-  
+
   Qt::KeyboardModifiers m = QApplication::keyboardModifiers();
   if ( ( m & ( Qt::ControlModifier | Qt::ShiftModifier ) ) || ( m == Qt::AltModifier ) ) {
     QString id = item->data( Qt::UserRole ).toString();
