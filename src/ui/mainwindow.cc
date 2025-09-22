@@ -680,9 +680,9 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   connect( ui.wordList, &QListWidget::itemClicked, this, &MainWindow::wordListItemActivated );
 
-  connect( ui.dictsList, &QListWidget::itemSelectionChanged, this, &MainWindow::dictsListSelectionChanged );
-
-  connect( ui.dictsList, &QListWidget::itemDoubleClicked, this, &MainWindow::dictsListItemActivated );
+  // Only keep itemClicked signal connection, remove itemSelectionChanged and itemDoubleClicked connections
+  // connect( ui.dictsList, &QListWidget::itemSelectionChanged, this, &MainWindow::dictsListSelectionChanged );
+  // connect( ui.dictsList, &QListWidget::itemDoubleClicked, this, &MainWindow::dictsListItemActivated );
 
   connect( &configEvents, &Config::Events::mutedDictionariesChanged, this, &MainWindow::mutedDictionariesChanged );
 
@@ -2648,6 +2648,29 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
       }
     }
   }
+  else if ( obj == ui.dictsList ) {
+    if ( ev->type() == QEvent::KeyPress ) {
+      QKeyEvent * keyEvent = dynamic_cast< QKeyEvent * >( ev );
+
+      // Handle up/down arrow key navigation
+      if ( keyEvent->matches( QKeySequence::MoveToNextLine ) && ui.dictsList->count() > 0 ) {
+        int currentRow = ui.dictsList->currentRow();
+        if ( currentRow < ui.dictsList->count() - 1 ) {
+          ui.dictsList->setCurrentRow( currentRow + 1, QItemSelectionModel::ClearAndSelect );
+          jumpToDictionary( ui.dictsList->item( currentRow + 1 ), true );
+          return true;
+        }
+      }
+      else if ( keyEvent->matches( QKeySequence::MoveToPreviousLine ) && ui.dictsList->count() > 0 ) {
+        int currentRow = ui.dictsList->currentRow();
+        if ( currentRow > 0 ) {
+          ui.dictsList->setCurrentRow( currentRow - 1, QItemSelectionModel::ClearAndSelect );
+          jumpToDictionary( ui.dictsList->item( currentRow - 1 ), true );
+          return true;
+        }
+      }
+    }
+  }
 
   if ( ev->type() == QEvent::KeyPress && obj != translateLine ) {
 
@@ -4034,6 +4057,8 @@ void MainWindow::forceAddWordToHistory( const QString & word )
 
 void MainWindow::foundDictsPaneClicked( QListWidgetItem * item )
 {
+  // Since we only keep this event handler method, no reentrancy flag is needed here
+  
   Qt::KeyboardModifiers m = QApplication::keyboardModifiers();
   if ( ( m & ( Qt::ControlModifier | Qt::ShiftModifier ) ) || ( m == Qt::AltModifier ) ) {
     QString id = item->data( Qt::UserRole ).toString();

@@ -348,8 +348,8 @@ private slots:
   void wordListItemActivated( QListWidgetItem * );
   void wordListSelectionChanged();
 
-  void dictsListItemActivated( QListWidgetItem * );
-  void dictsListSelectionChanged();
+  void dictsListItemActivated( QListWidgetItem * ); // Not used but keep method declaration
+  void dictsListSelectionChanged(); // Not used but keep method declaration
 
   void jumpToDictionary( QListWidgetItem *, bool force = false );
 
