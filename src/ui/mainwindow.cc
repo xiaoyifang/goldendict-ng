@@ -3374,7 +3374,7 @@ void MainWindow::on_saveArticle_triggered()
   QStringList filters;
   filters.push_back( tr( "Complete Html (*.html *.htm)" ) );
   filters.push_back( tr( "Single Html (*.html *.htm)" ) );
-  filters.push_back( tr( "Pdf (*.pdf)" ) );
+  filters.push_back( tr( "PDF document (*.pdf *.PDF)" ) );
   filters.push_back( tr( "Mime Html (*.mhtml)" ) );
 
   fileName = savePath + "/" + fileName;
@@ -3385,6 +3385,7 @@ void MainWindow::on_saveArticle_triggered()
                                            &selectedFilter,
                                            options );
 
+  qDebug() << "filter:" << selectedFilter;                                           
   // The " (*.html)" part of filters[i] is absent from selectedFilter in Qt 5.
   const bool complete = filters.at( 0 ).startsWith( selectedFilter );
 
