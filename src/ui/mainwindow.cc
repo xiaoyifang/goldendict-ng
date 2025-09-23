@@ -2738,8 +2738,7 @@ void MainWindow::jumpToDictionary( QListWidgetItem * item, bool force )
     }
   }
 
-  // Otherwise, use current view or create new tab if needed
-  if ( ArticleView * view = getCurrentArticleView() ) {
+  if ( ArticleView * view = getFirstNonWebSiteArticleView() ) {
     view->jumpToDictionary( dictId, force );
   }
 }
