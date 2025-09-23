@@ -2100,8 +2100,8 @@ void MainWindow::updateFoundInDictsList()
 
   ui.dictsList->clear();
 
-  QStringList ids        = view->getArticlesList();
-  QString activeId       = view->getActiveArticleId();
+  QStringList ids  = view->getArticlesList();
+  QString activeId = view->getActiveArticleId();
 
   for ( QStringList::const_iterator i = ids.constBegin(); i != ids.constEnd(); ++i ) {
     // Find this dictionary
