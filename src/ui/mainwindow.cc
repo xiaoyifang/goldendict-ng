@@ -2074,6 +2074,12 @@ void MainWindow::updateFoundInDictsList()
     return;
   }
 
+  // Record the currently selected dictionary ID
+  QString selectedDictId;
+  if ( ui.dictsList->selectedItems().size() > 0 ) {
+    selectedDictId = ui.dictsList->selectedItems().first()->data( Qt::UserRole ).toString();
+  }
+
   ui.dictsList->clear();
 
   ArticleView * view = getFirstNonWebSiteArticleView();
@@ -2081,6 +2087,7 @@ void MainWindow::updateFoundInDictsList()
   if ( view ) {
     QStringList ids  = view->getArticlesList();
     QString activeId = view->getActiveArticleId();
+    bool selectionRestored = false;
 
     for ( QStringList::const_iterator i = ids.constBegin(); i != ids.constEnd(); ++i ) {
       // Find this dictionary
@@ -2095,11 +2102,16 @@ void MainWindow::updateFoundInDictsList()
           item->setToolTip( dictName );
 
           ui.dictsList->addItem( item );
-          if ( dictId == activeId ) {
-            auto currentView = getCurrentArticleView();
-            if ( !currentView->isWebsite() ) {
-              ui.dictsList->setCurrentItem( item );
-            }
+          
+          // Try to restore the previous selection first
+          if ( !selectionRestored && !selectedDictId.isEmpty() && dictId == selectedDictId ) {
+            ui.dictsList->setCurrentItem( item );
+            selectionRestored = true;
+          }
+          // If previous selection cannot be restored, use activeId
+          else if ( !selectionRestored && dictId == activeId ) {
+            ui.dictsList->setCurrentItem( item );
+            selectionRestored = true;
           }
           break;
         }
