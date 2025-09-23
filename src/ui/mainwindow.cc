@@ -2076,9 +2076,9 @@ void MainWindow::updateFoundInDictsList()
 
   ui.dictsList->clear();
 
-  ArticleView * view = getCurrentArticleView();
+  ArticleView * view = getFirstNonWebSiteArticleView();
 
-  if ( view && !view->isWebsite() ) {
+  if ( view ) {
     QStringList ids  = view->getArticlesList();
     QString activeId = view->getActiveArticleId();
 
@@ -2096,7 +2096,9 @@ void MainWindow::updateFoundInDictsList()
 
           ui.dictsList->addItem( item );
           if ( dictId == activeId ) {
-            ui.dictsList->setCurrentItem( item );
+            if(!GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab) {
+              ui.dictsList->setCurrentItem( item );
+            }
           }
           break;
         }
