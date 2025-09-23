@@ -2482,10 +2482,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Pdf (*.pdf)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Mime Html (*.mhtml)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2607,6 +2603,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
         <source>Save PDF failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PDF document (*.pdf *.PDF)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
