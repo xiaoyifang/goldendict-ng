@@ -2545,10 +2545,6 @@ instale una primero.</translation>
       <translation>Mä sapa Html (*.html *.htm) .</translation>
     </message>
     <message>
-      <source>Pdf (*.pdf)</source>
-      <translation>Pdf (*.pdf) ukat juk’ampinaka.</translation>
-    </message>
-    <message>
       <source>Mime Html (*.mhtml)</source>
       <translation>Mime Html (*.mhtml) ukax mä juk’a pachanakanwa.</translation>
     </message>
@@ -2675,6 +2671,10 @@ Error de importación: datos incorrectos en el fichero.</translation>
     <message>
       <source>Save PDF failed</source>
       <translation type="unfinished">Save PDF failed</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
     </message>
   </context>
   <context>
