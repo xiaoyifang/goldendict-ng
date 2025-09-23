@@ -2077,14 +2077,14 @@ void MainWindow::updateFoundInDictsList()
   // Get the current view to check if it's a website
   ArticleView * view = getCurrentArticleView();
 
-  if( !view ) {
+  if ( !view ) {
     return;
   }
-  
+
   // If current view is a website, don't rebuild the list, just select the corresponding item
   if ( view->isWebsite() ) {
     QString websiteDictId = view->getActiveArticleId();
-    
+
     if ( !websiteDictId.isEmpty() ) {
       // Find and select the corresponding item in the existing list
       for ( int i = 0; i < ui.dictsList->count(); ++i ) {
@@ -2100,8 +2100,8 @@ void MainWindow::updateFoundInDictsList()
 
   ui.dictsList->clear();
 
-  QStringList ids  = view->getArticlesList();
-  QString activeId = view->getActiveArticleId();
+  QStringList ids        = view->getArticlesList();
+  QString activeId       = view->getActiveArticleId();
   bool selectionRestored = false;
 
   for ( QStringList::const_iterator i = ids.constBegin(); i != ids.constEnd(); ++i ) {
@@ -2117,7 +2117,7 @@ void MainWindow::updateFoundInDictsList()
         item->setToolTip( dictName );
 
         ui.dictsList->addItem( item );
-        
+
         if ( dictId == activeId ) {
           ui.dictsList->setCurrentItem( item );
         }
