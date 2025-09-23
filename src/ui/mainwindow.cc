@@ -2766,7 +2766,7 @@ void MainWindow::showDefinitionInNewTab( const QString & word,
 
 void MainWindow::activeArticleChanged( const ArticleView * view, const QString & id )
 {
-  if ( view != getCurrentArticleView() ) {
+  if ( view != getCurrentArticleView() || view->isWebsite()) {
     return; // It was background action
   }
 
