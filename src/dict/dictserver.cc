@@ -256,7 +256,7 @@ public:
             }
             reply = reply.trimmed();
 
-            qDebug() << "receive db:" << reply;
+            qDebug().noquote() << "receive db:" << reply;
 
             if ( reply[ 0 ] == '.' ) {
               state = DictServerState::DB_DATA_FINISHED;
