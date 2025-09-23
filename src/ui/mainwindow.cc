@@ -2096,7 +2096,8 @@ void MainWindow::updateFoundInDictsList()
 
           ui.dictsList->addItem( item );
           if ( dictId == activeId ) {
-            if ( !view->isWebsite() ) {
+            auto currentView = getCurrentArticleView();
+            if ( !currentView->isWebsite() ) {
               ui.dictsList->setCurrentItem( item );
             }
           }
@@ -3371,7 +3372,6 @@ void MainWindow::on_saveArticle_triggered()
                                            &selectedFilter,
                                            options );
 
-  qDebug() << "selected filter: " << selectedFilter;
   // The " (*.html)" part of filters[i] is absent from selectedFilter in Qt 5.
   const bool complete = filters.at( 0 ).startsWith( selectedFilter );
 
