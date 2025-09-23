@@ -2074,53 +2074,55 @@ void MainWindow::updateFoundInDictsList()
     return;
   }
 
-  // Record the currently selected dictionary ID
-  QString selectedDictId;
-  if ( ui.dictsList->selectedItems().size() > 0 ) {
-    selectedDictId = ui.dictsList->selectedItems().first()->data( Qt::UserRole ).toString();
+  // Get the current view to check if it's a website
+  ArticleView * view = getCurrentArticleView();
+
+  if( !view ) {
+    return;
+  }
+  
+  // If current view is a website, don't rebuild the list, just select the corresponding item
+  if ( view->isWebsite() ) {
+    QString websiteDictId = view->getActiveArticleId();
+    
+    if ( !websiteDictId.isEmpty() ) {
+      // Find and select the corresponding item in the existing list
+      for ( int i = 0; i < ui.dictsList->count(); ++i ) {
+        QListWidgetItem * item = ui.dictsList->item( i );
+        if ( item && item->data( Qt::UserRole ).toString() == websiteDictId ) {
+          ui.dictsList->setCurrentItem( item );
+          return; // No need to proceed further
+        }
+      }
+    }
+    return;
   }
 
   ui.dictsList->clear();
 
-  ArticleView * view = getFirstNonWebSiteArticleView();
+  QStringList ids  = view->getArticlesList();
+  QString activeId = view->getActiveArticleId();
+  bool selectionRestored = false;
 
-  if ( view ) {
-    QStringList ids  = view->getArticlesList();
-    QString activeId = view->getActiveArticleId();
-    bool selectionRestored = false;
+  for ( QStringList::const_iterator i = ids.constBegin(); i != ids.constEnd(); ++i ) {
+    // Find this dictionary
 
-    for ( QStringList::const_iterator i = ids.constBegin(); i != ids.constEnd(); ++i ) {
-      // Find this dictionary
+    for ( unsigned x = dictionaries.size(); x--; ) {
+      if ( dictionaries[ x ]->getId() == i->toUtf8().data() ) {
+        QString dictName = QString::fromUtf8( dictionaries[ x ]->getName().c_str() );
+        QString dictId   = QString::fromUtf8( dictionaries[ x ]->getId().c_str() );
+        auto * item =
+          new QListWidgetItem( dictionaries[ x ]->getIcon(), dictName, ui.dictsList, QListWidgetItem::Type );
+        item->setData( Qt::UserRole, QVariant( dictId ) );
+        item->setToolTip( dictName );
 
-      for ( unsigned x = dictionaries.size(); x--; ) {
-        if ( dictionaries[ x ]->getId() == i->toUtf8().data() ) {
-          QString dictName = QString::fromUtf8( dictionaries[ x ]->getName().c_str() );
-          QString dictId   = QString::fromUtf8( dictionaries[ x ]->getId().c_str() );
-          auto * item =
-            new QListWidgetItem( dictionaries[ x ]->getIcon(), dictName, ui.dictsList, QListWidgetItem::Type );
-          item->setData( Qt::UserRole, QVariant( dictId ) );
-          item->setToolTip( dictName );
-
-          ui.dictsList->addItem( item );
-          
-          // Try to restore the previous selection first
-          if ( !selectionRestored && !selectedDictId.isEmpty() && dictId == selectedDictId ) {
-            ui.dictsList->setCurrentItem( item );
-            selectionRestored = true;
-          }
-          // If previous selection cannot be restored, use activeId
-          else if ( !selectionRestored && dictId == activeId ) {
-            ui.dictsList->setCurrentItem( item );
-            selectionRestored = true;
-          }
-          break;
+        ui.dictsList->addItem( item );
+        
+        if ( dictId == activeId ) {
+          ui.dictsList->setCurrentItem( item );
         }
+        break;
       }
-    }
-
-    //if no item in dict List panel has been choosen ,select first one.
-    if ( ui.dictsList->count() > 0 && ui.dictsList->selectedItems().empty() ) {
-      ui.dictsList->setCurrentRow( 0 );
     }
   }
 }
