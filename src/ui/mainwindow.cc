@@ -2102,7 +2102,6 @@ void MainWindow::updateFoundInDictsList()
 
   QStringList ids        = view->getArticlesList();
   QString activeId       = view->getActiveArticleId();
-  bool selectionRestored = false;
 
   for ( QStringList::const_iterator i = ids.constBegin(); i != ids.constEnd(); ++i ) {
     // Find this dictionary
