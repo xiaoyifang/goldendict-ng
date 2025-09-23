@@ -2828,7 +2828,7 @@ void MainWindow::showHistoryItem( const QString & word )
 
 void MainWindow::showTranslationFor( const QString & word, unsigned inGroup, const QString & scrollTo )
 {
-  ArticleView * view = getCurrentArticleView();
+  ArticleView * view = getFirstNonWebSiteArticleView();
 
   navPronounce->setEnabled( false );
 
@@ -2844,7 +2844,7 @@ void MainWindow::showTranslationForDicts( const QString & inWord,
                                           const QRegularExpression & searchRegExp,
                                           bool ignoreDiacritics )
 {
-  ArticleView * view = getCurrentArticleView();
+  ArticleView * view = getFirstNonWebSiteArticleView();
 
   navPronounce->setEnabled( false );
 
@@ -3657,6 +3657,18 @@ void MainWindow::messageFromAnotherInstanceReceived( const QString & message )
 }
 
 ArticleView * MainWindow::getCurrentArticleView()
+{
+  QWidget * currentWidget   = ui.tabWidget->currentWidget();
+  ArticleView * currentView = qobject_cast< ArticleView * >( currentWidget );
+
+  if ( currentView ) {
+    return currentView;
+  }
+
+  return nullptr;
+}
+
+ArticleView * MainWindow::getFirstNonWebSiteArticleView()
 {
   QWidget * currentWidget   = ui.tabWidget->currentWidget();
   ArticleView * currentView = qobject_cast< ArticleView * >( currentWidget );

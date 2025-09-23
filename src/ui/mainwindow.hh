@@ -230,6 +230,7 @@ private:
   bool handleBackForwardMouseButtons( QMouseEvent * ev );
 
   ArticleView * getCurrentArticleView();
+  ArticleView * getFirstNonWebSiteArticleView();
   void ctrlTabPressed();
 
   void respondToTranslationRequest( const QString & word,
