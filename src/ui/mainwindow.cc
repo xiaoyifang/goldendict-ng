@@ -4339,7 +4339,6 @@ void MainWindow::openWebsiteInNewTab( QString name, QString url, QString dictId 
     view->setWebsite( true );
     // Set the dictId for the website view
     view->setActiveArticleId( dictId );
-    qDebug() << "openWebsiteInNewTab() set dictId:" << dictId;
   }
 
   view->load( url, name );
