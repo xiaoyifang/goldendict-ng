@@ -2096,7 +2096,7 @@ void MainWindow::updateFoundInDictsList()
 
           ui.dictsList->addItem( item );
           if ( dictId == activeId ) {
-            if ( !GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
+            if ( !view->isWebsite() ) {
               ui.dictsList->setCurrentItem( item );
             }
           }
