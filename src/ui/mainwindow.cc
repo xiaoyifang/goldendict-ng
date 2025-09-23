@@ -2739,6 +2739,8 @@ void MainWindow::jumpToDictionary( QListWidgetItem * item, bool force )
   }
 
   if ( ArticleView * view = getFirstNonWebSiteArticleView() ) {
+    // Switch to the found tab
+    ui.tabWidget->setCurrentWidget( view );
     view->jumpToDictionary( dictId, force );
   }
 }
