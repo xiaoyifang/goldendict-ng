@@ -680,9 +680,9 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   connect( ui.wordList, &QListWidget::itemClicked, this, &MainWindow::wordListItemActivated );
 
-  connect( ui.dictsList, &QListWidget::itemSelectionChanged, this, &MainWindow::dictsListSelectionChanged );
-
-  connect( ui.dictsList, &QListWidget::itemDoubleClicked, this, &MainWindow::dictsListItemActivated );
+  // Only keep itemClicked signal connection, remove itemSelectionChanged and itemDoubleClicked connections
+  // connect( ui.dictsList, &QListWidget::itemSelectionChanged, this, &MainWindow::dictsListSelectionChanged );
+  // connect( ui.dictsList, &QListWidget::itemDoubleClicked, this, &MainWindow::dictsListItemActivated );
 
   connect( &configEvents, &Config::Events::mutedDictionariesChanged, this, &MainWindow::mutedDictionariesChanged );
 
@@ -2074,38 +2074,54 @@ void MainWindow::updateFoundInDictsList()
     return;
   }
 
-  ui.dictsList->clear();
-
+  // Get the current view to check if it's a website
   ArticleView * view = getCurrentArticleView();
 
-  if ( view ) {
-    QStringList ids  = view->getArticlesList();
-    QString activeId = view->getActiveArticleId();
+  if ( !view ) {
+    return;
+  }
 
-    for ( QStringList::const_iterator i = ids.constBegin(); i != ids.constEnd(); ++i ) {
-      // Find this dictionary
+  // If current view is a website, don't rebuild the list, just select the corresponding item
+  if ( view->isWebsite() ) {
+    QString websiteDictId = view->getActiveArticleId();
 
-      for ( unsigned x = dictionaries.size(); x--; ) {
-        if ( dictionaries[ x ]->getId() == i->toUtf8().data() ) {
-          QString dictName = QString::fromUtf8( dictionaries[ x ]->getName().c_str() );
-          QString dictId   = QString::fromUtf8( dictionaries[ x ]->getId().c_str() );
-          auto * item =
-            new QListWidgetItem( dictionaries[ x ]->getIcon(), dictName, ui.dictsList, QListWidgetItem::Type );
-          item->setData( Qt::UserRole, QVariant( dictId ) );
-          item->setToolTip( dictName );
-
-          ui.dictsList->addItem( item );
-          if ( dictId == activeId ) {
-            ui.dictsList->setCurrentItem( item );
-          }
-          break;
+    if ( !websiteDictId.isEmpty() ) {
+      // Find and select the corresponding item in the existing list
+      for ( int i = 0; i < ui.dictsList->count(); ++i ) {
+        QListWidgetItem * item = ui.dictsList->item( i );
+        if ( item && item->data( Qt::UserRole ).toString() == websiteDictId ) {
+          ui.dictsList->setCurrentItem( item );
+          return; // No need to proceed further
         }
       }
     }
+    return;
+  }
 
-    //if no item in dict List panel has been choosen ,select first one.
-    if ( ui.dictsList->count() > 0 && ui.dictsList->selectedItems().empty() ) {
-      ui.dictsList->setCurrentRow( 0 );
+  ui.dictsList->clear();
+
+  QStringList ids  = view->getArticlesList();
+  QString activeId = view->getActiveArticleId();
+
+  for ( QStringList::const_iterator i = ids.constBegin(); i != ids.constEnd(); ++i ) {
+    // Find this dictionary
+
+    for ( unsigned x = dictionaries.size(); x--; ) {
+      if ( dictionaries[ x ]->getId() == i->toUtf8().data() ) {
+        QString dictName = QString::fromUtf8( dictionaries[ x ]->getName().c_str() );
+        QString dictId   = QString::fromUtf8( dictionaries[ x ]->getId().c_str() );
+        auto * item =
+          new QListWidgetItem( dictionaries[ x ]->getIcon(), dictName, ui.dictsList, QListWidgetItem::Type );
+        item->setData( Qt::UserRole, QVariant( dictId ) );
+        item->setToolTip( dictName );
+
+        ui.dictsList->addItem( item );
+
+        if ( dictId == activeId ) {
+          ui.dictsList->setCurrentItem( item );
+        }
+        break;
+      }
     }
   }
 }
@@ -2648,6 +2664,29 @@ bool MainWindow::eventFilter( QObject * obj, QEvent * ev )
       }
     }
   }
+  else if ( obj == ui.dictsList ) {
+    if ( ev->type() == QEvent::KeyPress ) {
+      QKeyEvent * keyEvent = dynamic_cast< QKeyEvent * >( ev );
+
+      // Handle up/down arrow key navigation
+      if ( keyEvent->matches( QKeySequence::MoveToNextLine ) && ui.dictsList->count() > 0 ) {
+        int currentRow = ui.dictsList->currentRow();
+        if ( currentRow < ui.dictsList->count() - 1 ) {
+          ui.dictsList->setCurrentRow( currentRow + 1, QItemSelectionModel::ClearAndSelect );
+          jumpToDictionary( ui.dictsList->item( currentRow + 1 ), true );
+          return true;
+        }
+      }
+      else if ( keyEvent->matches( QKeySequence::MoveToPreviousLine ) && ui.dictsList->count() > 0 ) {
+        int currentRow = ui.dictsList->currentRow();
+        if ( currentRow > 0 ) {
+          ui.dictsList->setCurrentRow( currentRow - 1, QItemSelectionModel::ClearAndSelect );
+          jumpToDictionary( ui.dictsList->item( currentRow - 1 ), true );
+          return true;
+        }
+      }
+    }
+  }
 
   if ( ev->type() == QEvent::KeyPress && obj != translateLine ) {
 
@@ -2704,9 +2743,21 @@ void MainWindow::dictsListSelectionChanged()
 
 void MainWindow::jumpToDictionary( QListWidgetItem * item, bool force )
 {
-  ArticleView * view = getCurrentArticleView();
-  if ( view ) {
-    view->jumpToDictionary( item->data( Qt::UserRole ).toString(), force );
+  auto dictId = item->data( Qt::UserRole ).toString();
+
+  // If openWebsiteInNewTab is configured, try to find existing tab first
+  if ( GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
+    if ( ArticleView * view = findArticleViewByDictId( dictId ) ) {
+      // Switch to the found tab
+      ui.tabWidget->setCurrentWidget( view );
+      return;
+    }
+  }
+
+  if ( ArticleView * view = getFirstNonWebSiteArticleView() ) {
+    // Switch to the found tab
+    ui.tabWidget->setCurrentWidget( view );
+    view->jumpToDictionary( dictId, force );
   }
 }
 
@@ -2728,7 +2779,7 @@ void MainWindow::showDefinitionInNewTab( const QString & word,
 
 void MainWindow::activeArticleChanged( const ArticleView * view, const QString & id )
 {
-  if ( view != getCurrentArticleView() ) {
+  if ( view != getCurrentArticleView() || view->isWebsite() ) {
     return; // It was background action
   }
 
@@ -2794,7 +2845,7 @@ void MainWindow::showHistoryItem( const QString & word )
 
 void MainWindow::showTranslationFor( const QString & word, unsigned inGroup, const QString & scrollTo )
 {
-  ArticleView * view = getCurrentArticleView();
+  ArticleView * view = getFirstNonWebSiteArticleView();
 
   navPronounce->setEnabled( false );
 
@@ -2810,7 +2861,7 @@ void MainWindow::showTranslationForDicts( const QString & inWord,
                                           const QRegularExpression & searchRegExp,
                                           bool ignoreDiacritics )
 {
-  ArticleView * view = getCurrentArticleView();
+  ArticleView * view = getFirstNonWebSiteArticleView();
 
   navPronounce->setEnabled( false );
 
@@ -3334,7 +3385,6 @@ void MainWindow::on_saveArticle_triggered()
                                            &selectedFilter,
                                            options );
 
-  qDebug() << "selected filter: " << selectedFilter;
   // The " (*.html)" part of filters[i] is absent from selectedFilter in Qt 5.
   const bool complete = filters.at( 0 ).startsWith( selectedFilter );
 
@@ -3624,19 +3674,36 @@ void MainWindow::messageFromAnotherInstanceReceived( const QString & message )
 
 ArticleView * MainWindow::getCurrentArticleView()
 {
-  // Check if openWebsiteInNewTab is enabled, if not, return current view directly
-  if ( QWidget * cw = ui.tabWidget->currentWidget() ) {
-    auto * pView = dynamic_cast< ArticleView * >( cw );
-    if ( pView && !GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
-      pView->setWebsite( false );
-      return pView;
-    }
-    if ( pView && !pView->isWebsite() ) {
-      return pView;
+  QWidget * currentWidget   = ui.tabWidget->currentWidget();
+  ArticleView * currentView = qobject_cast< ArticleView * >( currentWidget );
+
+  if ( currentView ) {
+    return currentView;
+  }
+
+  return nullptr;
+}
+
+ArticleView * MainWindow::getFirstNonWebSiteArticleView()
+{
+  QWidget * currentWidget   = ui.tabWidget->currentWidget();
+  ArticleView * currentView = qobject_cast< ArticleView * >( currentWidget );
+
+  // First check if "openWebsiteInNewTab" is disabled
+  if ( !GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
+    if ( currentView ) {
+      currentView->setWebsite( false );
+      return currentView;
     }
   }
 
-  // First try to find the first non-website tab
+  //the following logic is under the condition that "openWebsiteInNewTab" is enabled.
+  // If current view is already a non-website tab, return it directly
+  if ( currentView && !currentView->isWebsite() ) {
+    return currentView;
+  }
+
+  // If current view is not suitable, look for the first non-website tab
   for ( int i = 0; i < ui.tabWidget->count(); i++ ) {
     auto * view = qobject_cast< ArticleView * >( ui.tabWidget->widget( i ) );
     if ( view && !view->isWebsite() ) {
@@ -3644,12 +3711,12 @@ ArticleView * MainWindow::getCurrentArticleView()
     }
   }
 
-  // If no non-website tab found, return current tab
-  if ( QWidget * cw = ui.tabWidget->currentWidget() ) {
-    auto * pView = dynamic_cast< ArticleView * >( cw );
-    pView->setWebsite( false );
-    return pView;
+  // If no non-website tab found, fall back to current view (if exists)
+  if ( currentView ) {
+    currentView->setWebsite( false );
+    return currentView;
   }
+
   return nullptr;
 }
 
@@ -3661,6 +3728,27 @@ ArticleView * MainWindow::findArticleViewByHost( const QString & host )
       return view;
     }
   }
+  return nullptr;
+}
+
+ArticleView * MainWindow::findArticleViewByDictId( const QString & dictId )
+{
+  // First check if openWebsiteInNewTab configuration is enabled
+  if ( GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
+    // Iterate through all tabs
+    for ( int i = 0; i < ui.tabWidget->count(); i++ ) {
+      auto * view = qobject_cast< ArticleView * >( ui.tabWidget->widget( i ) );
+      if ( view && view->isWebsite() ) {
+        // Check if current ArticleView's activeDictIds list contains the specified dictId
+        QString dictIdActive = view->getActiveArticleId();
+        if ( dictIdActive == dictId ) {
+          return view;
+        }
+      }
+    }
+  }
+  qDebug() << "findArticleViewByDictId() return nullptr with dictId:" << dictId;
+  // If configuration is not enabled or no matching ArticleView found, return nullptr
   return nullptr;
 }
 
@@ -3996,6 +4084,8 @@ void MainWindow::forceAddWordToHistory( const QString & word )
 
 void MainWindow::foundDictsPaneClicked( QListWidgetItem * item )
 {
+  // Since we only keep this event handler method, no reentrancy flag is needed here
+
   Qt::KeyboardModifiers m = QApplication::keyboardModifiers();
   if ( ( m & ( Qt::ControlModifier | Qt::ShiftModifier ) ) || ( m == Qt::AltModifier ) ) {
     QString id = item->data( Qt::UserRole ).toString();
@@ -4257,13 +4347,16 @@ void MainWindow::showFTSIndexingName( const QString & name )
   }
 }
 
-void MainWindow::openWebsiteInNewTab( QString name, QString url )
+void MainWindow::openWebsiteInNewTab( QString name, QString url, QString dictId )
 {
   auto view = findArticleViewByHost( QUrl( url ).host() );
   if ( view == nullptr ) {
     view = createNewTab( false, name );
     view->setWebsite( true );
+    // Set the dictId for the website view
+    view->setActiveArticleId( dictId );
   }
+
   view->load( url, name );
 }
 
