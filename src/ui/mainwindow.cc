@@ -3385,7 +3385,7 @@ void MainWindow::on_saveArticle_triggered()
                                            &selectedFilter,
                                            options );
 
-  qDebug() << "filter:" << selectedFilter;                                           
+  qDebug() << "filter:" << selectedFilter;
   // The " (*.html)" part of filters[i] is absent from selectedFilter in Qt 5.
   const bool complete = filters.at( 0 ).startsWith( selectedFilter );
 
