@@ -2486,10 +2486,6 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <translation>Yksittäinen HTML (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Pdf (*.pdf)</source>
-      <translation>Pdf (*.pdf)</translation>
-    </message>
-    <message>
       <source>Mime Html (*.mhtml)</source>
       <translation>Mime-HTML (*.mhtml)</translation>
     </message>
@@ -2612,6 +2608,10 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
     <message>
       <source>Save PDF failed</source>
       <translation>PDF-tiedostojen tallennus epäonnistui</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF-asiakirja (*.pdf *.PDF)</translation>
     </message>
   </context>
   <context>

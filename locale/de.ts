@@ -2485,10 +2485,6 @@ Um &apos;*&apos;, &apos;zu finden?&apos;, &apos;[&apos;, &apos;]&apos; Symbole v
       <translation>Einzelnes HTML (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Pdf (*.pdf)</source>
-      <translation>PDF (*.pdf)</translation>
-    </message>
-    <message>
       <source>Mime Html (*.mhtml)</source>
       <translation>Mime-HTML (*.mhtml)</translation>
     </message>
@@ -2611,6 +2607,10 @@ Um &apos;*&apos;, &apos;zu finden?&apos;, &apos;[&apos;, &apos;]&apos; Symbole v
     <message>
       <source>Save PDF failed</source>
       <translation>PDF speichern fehlgeschlagen</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF-Dokument (*.pdf *.PDF)</translation>
     </message>
   </context>
   <context>

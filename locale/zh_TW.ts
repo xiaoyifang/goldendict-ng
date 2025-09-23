@@ -260,11 +260,11 @@
     </message>
     <message>
       <source>Page Load Failed</source>
-      <translation type="unfinished">Page Load Failed</translation>
+      <translation>頁面載入失敗</translation>
     </message>
     <message>
       <source>Unable to load the requested page content</source>
-      <translation type="unfinished">Unable to load the requested page content</translation>
+      <translation>無法加載所請求的頁面內容</translation>
     </message>
   </context>
   <context>
@@ -2486,10 +2486,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>單一 Html (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Pdf (*.pdf)</source>
-      <translation>pdf (*.pdf)</translation>
-    </message>
-    <message>
       <source>Mime Html (*.mhtml)</source>
       <translation>Mime Html (*.mhtml)</translation>
     </message>
@@ -2612,6 +2608,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Save PDF failed</source>
       <translation>儲存 PDF 失敗</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF 文件 (*.pdf *.PDF)</translation>
     </message>
   </context>
   <context>
@@ -3467,7 +3467,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Enable Interface Font</source>
-      <translation type="unfinished">Enable Interface Font</translation>
+      <translation>啟用介面字型</translation>
     </message>
     <message>
       <source>Font</source>
@@ -3483,7 +3483,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Open website dictionary in seperate tab</source>
-      <translation type="unfinished">Open website dictionary in seperate tab</translation>
+      <translation>在另開的標籤頁中打開網站字典</translation>
     </message>
   </context>
   <context>
@@ -4004,23 +4004,23 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
       <source>Remove selected directories from the list?</source>
-      <translation type="unfinished">Remove selected directories from the list?</translation>
+      <translation>是否要從列表中移除所選目錄？</translation>
     </message>
     <message>
       <source>Remove %1 directories from the list?</source>
-      <translation type="unfinished">Remove %1 directories from the list?</translation>
+      <translation>是否從列表中移除 %1 個目錄？</translation>
     </message>
     <message>
       <source>Remove %1 sites from the list?</source>
-      <translation type="unfinished">Remove %1 sites from the list?</translation>
+      <translation>是否從清單中移除 %1 個網站？</translation>
     </message>
     <message>
       <source>Remove %1 servers from the list?</source>
-      <translation type="unfinished">Remove %1 servers from the list?</translation>
+      <translation>是否從列表中移除 %1 台伺服器？</translation>
     </message>
     <message>
       <source>Remove %1 programs from the list?</source>
-      <translation type="unfinished">Remove %1 programs from the list?</translation>
+      <translation>是否從清單中移除 %1 程式？</translation>
     </message>
   </context>
   <context>
