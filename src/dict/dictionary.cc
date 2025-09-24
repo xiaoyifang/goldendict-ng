@@ -368,7 +368,7 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
 
   QString newCSS;
   int currentPos = 0;
-  
+
   // Create isolation prefix using dictionary ID
   QString prefix( "#gdfrom-" );
   prefix += QString::fromLatin1( getId().c_str() );
@@ -377,7 +377,7 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
   }
 
   // Regular expressions for CSS parsing
-  QRegularExpression commentRegex( R"(\/\*(?:.(?!\*\/))*.?\*\/)" , QRegularExpression::DotMatchesEverythingOption );
+  QRegularExpression commentRegex( R"(\/\*(?:.(?!\*\/))*.?\*\/)", QRegularExpression::DotMatchesEverythingOption );
   QRegularExpression selectorSeparatorRegex( R"([ \*\>\+,;:\[\{\]])" );
   QRegularExpression selectorEndRegex( ",;\\{" );
 
@@ -393,19 +393,19 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
 
     if ( ch == '@' ) {
       // Handle @ rules
-      int ruleStart = currentPos;
+      int ruleStart   = currentPos;
       int ruleNameEnd = css.indexOf( QRegularExpression( "[^\\w-]" ), currentPos + 1 );
       if ( ruleNameEnd == -1 ) {
         // If no rule name end is found, copy remaining content
         newCSS.append( css.mid( currentPos ) );
         break;
       }
-      
+
       QString ruleName = css.mid( currentPos, ruleNameEnd - currentPos ).trimmed();
-      
+
       // Special handling for rules that don't need modification
-      if ( ruleName.compare( "@import", Qt::CaseInsensitive ) == 0 ||
-           ruleName.compare( "@charset", Qt::CaseInsensitive ) == 0 ) {
+      if ( ruleName.compare( "@import", Qt::CaseInsensitive ) == 0
+           || ruleName.compare( "@charset", Qt::CaseInsensitive ) == 0 ) {
         // Find semicolon as end marker
         int semicolonPos = css.indexOf( ';', currentPos );
         if ( semicolonPos != -1 ) {
@@ -414,7 +414,7 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
           continue;
         }
       }
-      
+
       // Skip @page rules as GoldenDict uses its own page layout
       if ( ruleName.compare( "@page", Qt::CaseInsensitive ) == 0 ) {
         int closeBracePos = css.indexOf( '}', currentPos );
@@ -423,46 +423,51 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
           continue;
         }
       }
-      
+
       // Find block start and semicolon positions for different @ rule formats
       int openBracePos = css.indexOf( '{', currentPos );
       int semicolonPos = css.indexOf( ';', currentPos );
-      
+
       if ( openBracePos != -1 && ( semicolonPos == -1 || openBracePos < semicolonPos ) ) {
         // @xxx { ... } format rules (supports @media, @keyframes, @font-face, etc.)
         // Add the @rule and opening brace
         newCSS.append( css.mid( currentPos, openBracePos - currentPos + 1 ) );
         currentPos = openBracePos + 1;
         // Continue parsing inside the block for media queries etc.
-      } else if ( semicolonPos != -1 ) {
+      }
+      else if ( semicolonPos != -1 ) {
         // @xxx yyyy; format rules (supports @import, @charset, @namespace, etc.)
         newCSS.append( css.mid( currentPos, semicolonPos - currentPos + 1 ) );
         currentPos = semicolonPos + 1;
         continue;
-      } else {
+      }
+      else {
         // Unrecognized @ rule format, copy remaining content as-is
         newCSS.append( css.mid( currentPos ) );
         break;
       }
-    } else if ( ch == '{' ) {
+    }
+    else if ( ch == '{' ) {
       // Selector declaration block - copy as is up to closing brace
       int closeBracePos = css.indexOf( '}', currentPos );
       if ( closeBracePos != -1 ) {
         newCSS.append( css.mid( currentPos, closeBracePos - currentPos + 1 ) );
         currentPos = closeBracePos + 1;
         continue;
-      } else {
+      }
+      else {
         newCSS.append( css.mid( currentPos ) );
         break;
       }
-    } else if ( ch.isLetter() || ch == '.' || ch == '#' || ch == '*' || ch == '\\' || ch == ':' ) {
+    }
+    else if ( ch.isLetter() || ch == '.' || ch == '#' || ch == '*' || ch == '\\' || ch == ':' ) {
       if ( ch.isLetter() || ch == '*' ) {
         // Check for namespace prefix
         QChar chr;
         for ( int i = currentPos; i < css.length(); i++ ) {
           chr = css.at( i );
-          if ( chr.isLetterOrNumber() || chr.isMark() || chr == '_' || chr == '-' ||
-               ( chr == '*' && i == currentPos ) ) {
+          if ( chr.isLetterOrNumber() || chr.isMark() || chr == '_' || chr == '-'
+               || ( chr == '*' && i == currentPos ) ) {
             continue;
           }
 
@@ -479,36 +484,38 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
       }
 
       // This is a selector - add isolation prefix to ensure CSS only affects content from this dictionary
-      int selectorEndPos = css.indexOf( selectorSeparatorRegex, currentPos + 1 );
+      int selectorEndPos   = css.indexOf( selectorSeparatorRegex, currentPos + 1 );
       QString selectorPart = css.mid( currentPos, selectorEndPos < 0 ? selectorEndPos : selectorEndPos - currentPos );
-      
+
       if ( selectorEndPos < 0 ) {
         newCSS.append( selectorPart );
         break;
       }
-      
+
       QString trimmedSelector = selectorPart.trimmed();
-      if ( trimmedSelector.compare( "body", Qt::CaseInsensitive ) == 0 ||
-           trimmedSelector.compare( "html", Qt::CaseInsensitive ) == 0 ) {
+      if ( trimmedSelector.compare( "body", Qt::CaseInsensitive ) == 0
+           || trimmedSelector.compare( "html", Qt::CaseInsensitive ) == 0 ) {
         // Special handling for body and html selectors to maintain CSS specificity
         newCSS.append( selectorPart + " " + prefix + " " );
         currentPos += 4;
-      } else {
+      }
+      else {
         // Add isolation prefix to normal selectors to scope them to this dictionary's content
         newCSS.append( prefix + " " );
       }
 
-      int ruleStartPos = css.indexOf( selectorEndRegex, currentPos );
+      int ruleStartPos      = css.indexOf( selectorEndRegex, currentPos );
       QString remainingPart = css.mid( currentPos, ruleStartPos < 0 ? ruleStartPos : ruleStartPos - currentPos );
       newCSS.append( remainingPart );
-      
+
       if ( ruleStartPos < 0 ) {
         break;
       }
-      
+
       currentPos = ruleStartPos;
       continue;
-    } else {
+    }
+    else {
       newCSS.append( ch );
       currentPos++;
     }
