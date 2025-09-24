@@ -3425,8 +3425,8 @@ void MainWindow::on_saveArticle_triggered()
     return;
   }
 
-  // Handle website 
-  if( view->isWebsite() ) {
+  // Handle website
+  if ( view->isWebsite() ) {
     // Create a QWebEnginePage object
     QWebEnginePage * page = view->page();
     // Handle Complete HTML format
