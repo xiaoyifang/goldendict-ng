@@ -386,7 +386,7 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
   // Regular expressions for CSS parsing
   QRegularExpression commentRegex( R"(\/\*(?:.(?!\*\/))*.?\*\/)", QRegularExpression::DotMatchesEverythingOption );
   QRegularExpression selectorSeparatorRegex( R"([ \*\>\+,;:\[\{\]])" );
-  QRegularExpression selectorEndRegex( "[,;\\{]" );
+  QRegularExpression selectorEndRegex( "[,\\{]" );
 
   // Remove comments from CSS
   css.replace( commentRegex, QString() );
@@ -537,58 +537,20 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
 
       // Handle double colon pseudo-elements like ::before, ::after, and ::highlight(name)
       if ( ch == ':' && currentPos + 1 < css.length() && css.at( currentPos + 1 ) == ':' ) {
-        // Check if it's a pseudo-element with parentheses like ::highlight(name)
-        int parenPos = css.indexOf( '(', currentPos );
-        if ( parenPos != -1 ) {
-          // Find matching closing parenthesis
-          int parenDepth      = 1;
-          int closingParenPos = -1;
-          for ( int i = parenPos + 1; i < css.length(); i++ ) {
-            QChar currentChar = css.at( i );
-            // Skip escaped parentheses
-            if ( currentChar == '\\' && i + 1 < css.length() ) {
-              i++; // Skip the next character as it's escaped
-              continue;
-            }
-            if ( currentChar == '(' ) {
-              parenDepth++;
-            }
-            else if ( currentChar == ')' ) {
-              parenDepth--;
-              if ( parenDepth == 0 ) {
-                closingParenPos = i;
-                break;
-              }
-            }
-          }
-
-          if ( closingParenPos != -1 ) {
-            // Add isolation prefix for double colon pseudo-elements with parentheses
-            newCSS.append( prefix + " " );
-            newCSS.append( css.mid( currentPos, closingParenPos - currentPos + 1 ) );
-            currentPos = closingParenPos + 1;
-            continue;
-          }
-        }
-        else {
-          // Handle pseudo-elements without parentheses like ::before, ::after
-          // Find the end of the pseudo-element name
-          int pseudoEndPos = currentPos + 2;
-          while ( pseudoEndPos < css.length() ) {
-            QChar currentChar = css.at( pseudoEndPos );
-            // Pseudo-element names can contain letters, hyphens, and numbers
-            if ( !currentChar.isLetterOrNumber() && currentChar != '-' ) {
-              break;
-            }
-            pseudoEndPos++;
-          }
-
-          // Add isolation prefix for double colon pseudo-elements without parentheses
+        // Use selectorEndRegex to determine the end of pseudo-element for both cases
+        int pseudoEndPos = css.indexOf( selectorEndRegex, currentPos + 2 );
+        if ( pseudoEndPos != -1 ) {
+          // Add isolation prefix for double colon pseudo-elements
           newCSS.append( prefix + " " );
           newCSS.append( css.mid( currentPos, pseudoEndPos - currentPos ) );
           currentPos = pseudoEndPos;
-          continue;
+        } else {
+          // If no end found, append remaining CSS and break
+          newCSS.append( prefix + " " );
+          newCSS.append( css.mid( currentPos ) );
+          currentPos = css.length();
         }
+        continue;
       }
 
       // This is a selector - add isolation prefix to ensure CSS only affects content from this dictionary
