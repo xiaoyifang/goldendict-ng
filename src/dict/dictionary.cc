@@ -459,7 +459,7 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
         break;
       }
     }
-    else if ( ch.isLetter() || ch == '.' || ch == '#' || ch == '*' || ch == '\\' || ch == ':' ) {
+    else if ( ch.isLetter() || ch == '.' || ch == '#' || ch == '*' || ch == '\\' || ch == ':' || ch == '[' ) {
       if ( ch.isLetter() || ch == '*' ) {
         // Check for namespace prefix
         QChar chr;
@@ -482,12 +482,48 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
         }
       }
 
+      // Handle attribute selectors specifically [attr=value]
+      if ( ch == '[' ) {
+        // Find the matching closing bracket for the attribute selector
+        int bracketDepth = 1;
+        int closingBracketPos = -1;
+        for ( int i = currentPos + 1; i < css.length(); i++ ) {
+          QChar currentChar = css.at( i );
+          // Skip escaped brackets and other characters
+          if ( currentChar == '\\' && i + 1 < css.length() ) {
+            i++; // Skip the next character as it's escaped
+            continue;
+          }
+          if ( currentChar == '[' ) {
+            bracketDepth++;
+          } else if ( currentChar == ']' ) {
+            bracketDepth--;
+            if ( bracketDepth == 0 ) {
+              closingBracketPos = i;
+              break;
+            }
+          }
+        }
+        
+        if ( closingBracketPos != -1 ) {
+          // Add isolation prefix for attribute selectors
+          newCSS.append( prefix + " " );
+          newCSS.append( css.mid( currentPos, closingBracketPos - currentPos + 1 ) );
+          currentPos = closingBracketPos + 1;
+          continue;
+        }
+      }
+
       // This is a selector - add isolation prefix to ensure CSS only affects content from this dictionary
       int selectorEndPos   = css.indexOf( selectorSeparatorRegex, currentPos + 1 );
+      // Fix for handling complex selectors with combinators like >, +, ~
+      if ( selectorEndPos < 0 ) {
+        selectorEndPos = css.indexOf( selectorEndRegex, currentPos );
+      }
       QString selectorPart = css.mid( currentPos, selectorEndPos < 0 ? selectorEndPos : selectorEndPos - currentPos );
 
       if ( selectorEndPos < 0 ) {
-        newCSS.append( selectorPart );
+        newCSS.append( prefix + " " + selectorPart );
         break;
       }
 
@@ -496,7 +532,7 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
            || trimmedSelector.compare( "html", Qt::CaseInsensitive ) == 0 ) {
         // Special handling for body and html selectors to maintain CSS specificity
         newCSS.append( selectorPart + " " + prefix + " " );
-        currentPos += 4;
+        currentPos += trimmedSelector.length();
       }
       else {
         // Add isolation prefix to normal selectors to scope them to this dictionary's content
