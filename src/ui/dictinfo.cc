@@ -2,6 +2,7 @@
 #include "language.hh"
 #include <QDesktopServices>
 #include "config.hh"
+#include <QWebEngineView>
 
 #include <QString>
 
@@ -48,12 +49,10 @@ void DictInfo::showInfo( sptr< Dictionary::Class > dict )
   ui.dictionaryFileList->setPlainText( filenamesText );
 
   if ( QString info = dict->getDescription(); !info.isEmpty() && info.compare( "NONE" ) != 0 ) {
-    //qtbug QTBUG-112020
-    info.remove( QRegularExpression( R"(<link[^>]*>)", QRegularExpression::CaseInsensitiveOption ) );
     ui.infoLabel->setHtml( info );
   }
   else {
-    ui.infoLabel->clear();
+    ui.infoLabel->setHtml( "" );
   }
 
   setWindowIcon( dict->getIcon() );

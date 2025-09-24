@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <utility>
 #include <QMenu>
+#include <QWebEngineView>
 
 using std::vector;
 using std::sort;
@@ -203,7 +204,7 @@ void OrderAndProps::disableDictionaryDescription()
   ui.dictionaryTranslatesTo->clear();
   ui.dictionaryFileList->clear();
 
-  ui.dictionaryDescription->clear();
+  ui.dictionaryDescription->setHtml( "" );
   ui.dictionaryDescription->setVisible( false );
   ui.dictionaryDescriptionLabel->setVisible( false );
   ui.infoVerticalSpacer->changeSize( 20, 5, QSizePolicy::Minimum, QSizePolicy::Expanding );
@@ -244,8 +245,6 @@ void OrderAndProps::describeDictionary( DictListWidget * lst, const QModelIndex 
 
     QString descText = dict->getDescription();
     if ( !descText.isEmpty() && descText.compare( "NONE" ) != 0 ) {
-      //qtbug QTBUG-112020
-      descText.remove( QRegularExpression( R"(<link[^>]*>)", QRegularExpression::CaseInsensitiveOption ) );
       ui.dictionaryDescription->setHtml( descText );
       ui.dictionaryDescription->setVisible( true );
       ui.dictionaryDescriptionLabel->setVisible( true );

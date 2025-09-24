@@ -167,12 +167,9 @@
          </widget>
         </item>
         <item>
-         <widget class="QTextEdit" name="dictionaryDescription">
+         <widget class="QWebEngineView" name="dictionaryDescription">
           <property name="frameShape">
            <enum>QFrame::NoFrame</enum>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
           </property>
          </widget>
         </item>

@@ -219,15 +219,12 @@
     </widget>
    </item>
    <item>
-    <widget class="QTextEdit" name="infoLabel">
+    <widget class="QWebEngineView" name="infoLabel">
      <property name="toolTip">
       <string notr="true"/>
      </property>
      <property name="horizontalScrollBarPolicy">
       <enum>Qt::ScrollBarAsNeeded</enum>
-     </property>
-     <property name="readOnly">
-      <bool>true</bool>
      </property>
     </widget>
    </item>
