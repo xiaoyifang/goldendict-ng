@@ -3386,7 +3386,7 @@ void MainWindow::on_saveArticle_triggered()
                                            options );
 
   qDebug() << "filter:" << selectedFilter;
-  // The " (*.html)" part of filters[i] is absent from selectedFilter in Qt 5.
+  // The " (*.html)" part of filters[i] is absent from selectedFilter in Qt 5&6.
   const bool complete = filters.at( 0 ).startsWith( selectedFilter );
 
   if ( fileName.isEmpty() ) {
@@ -3422,6 +3422,23 @@ void MainWindow::on_saveArticle_triggered()
     QWebEnginePage * page = view->page();
     page->save( fileName, QWebEngineDownloadRequest::MimeHtmlSaveFormat );
 
+    return;
+  }
+
+  // Handle website
+  if ( view->isWebsite() ) {
+    // Create a QWebEnginePage object
+    QWebEnginePage * page = view->page();
+    // Handle Complete HTML format
+    if ( filters.at( 0 ).startsWith( selectedFilter ) ) {
+      page->save( fileName, QWebEngineDownloadRequest::CompleteHtmlSaveFormat );
+    }
+    // Handle Single HTML format
+    else if ( filters.at( 1 ).startsWith( selectedFilter ) ) {
+      page->save( fileName, QWebEngineDownloadRequest::SingleHtmlSaveFormat );
+    }
+
+    mainStatusBar->showMessage( tr( "Save article complete" ), 5000 );
     return;
   }
 
