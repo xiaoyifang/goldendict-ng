@@ -431,7 +431,7 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
         // @xxx { ... } format rules (supports @media, @keyframes, @font-face, etc.)
         // Add the @rule and opening brace
         newCSS.append( css.mid( currentPos, openBracePos - currentPos + 1 ) );
-        
+
         // Find matching closing brace for the @rule block
         int closeBracePos = findMatchingBracket( css, openBracePos );
         if ( closeBracePos != -1 ) {
@@ -441,7 +441,8 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
           newCSS.append( innerCSS );
           newCSS.append( '}' );
           currentPos = closeBracePos + 1;
-        } else {
+        }
+        else {
           // If no matching brace found, continue processing
           currentPos = openBracePos + 1;
         }
@@ -533,7 +534,7 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
         int parenPos = css.indexOf( '(', currentPos );
         if ( parenPos != -1 ) {
           // Find matching closing parenthesis
-          int parenDepth = 1;
+          int parenDepth      = 1;
           int closingParenPos = -1;
           for ( int i = parenPos + 1; i < css.length(); i++ ) {
             QChar currentChar = css.at( i );
@@ -544,7 +545,8 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
             }
             if ( currentChar == '(' ) {
               parenDepth++;
-            } else if ( currentChar == ')' ) {
+            }
+            else if ( currentChar == ')' ) {
               parenDepth--;
               if ( parenDepth == 0 ) {
                 closingParenPos = i;
@@ -552,7 +554,7 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
               }
             }
           }
-          
+
           if ( closingParenPos != -1 ) {
             // Add isolation prefix for double colon pseudo-elements with parentheses
             newCSS.append( prefix + " " );
@@ -560,7 +562,8 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
             currentPos = closingParenPos + 1;
             continue;
           }
-        } else {
+        }
+        else {
           // Handle pseudo-elements without parentheses like ::before, ::after
           // Find the end of the pseudo-element name
           int pseudoEndPos = currentPos + 2;
@@ -572,7 +575,7 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
             }
             pseudoEndPos++;
           }
-          
+
           // Add isolation prefix for double colon pseudo-elements without parentheses
           newCSS.append( prefix + " " );
           newCSS.append( css.mid( currentPos, pseudoEndPos - currentPos ) );
@@ -632,16 +635,17 @@ int findMatchingBracket( const QString & css, int startPos )
   int depth = 1;
   for ( int i = startPos + 1; i < css.length(); i++ ) {
     QChar ch = css.at( i );
-    
+
     // Skip escaped characters
     if ( ch == '\\' && i + 1 < css.length() ) {
       i++;
       continue;
     }
-    
+
     if ( ch == '{' ) {
       depth++;
-    } else if ( ch == '}' ) {
+    }
+    else if ( ch == '}' ) {
       depth--;
       if ( depth == 0 ) {
         return i;
