@@ -485,7 +485,7 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
       // Handle attribute selectors specifically [attr=value]
       if ( ch == '[' ) {
         // Find the matching closing bracket for the attribute selector
-        int bracketDepth = 1;
+        int bracketDepth      = 1;
         int closingBracketPos = -1;
         for ( int i = currentPos + 1; i < css.length(); i++ ) {
           QChar currentChar = css.at( i );
@@ -496,7 +496,8 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
           }
           if ( currentChar == '[' ) {
             bracketDepth++;
-          } else if ( currentChar == ']' ) {
+          }
+          else if ( currentChar == ']' ) {
             bracketDepth--;
             if ( bracketDepth == 0 ) {
               closingBracketPos = i;
@@ -504,7 +505,7 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
             }
           }
         }
-        
+
         if ( closingBracketPos != -1 ) {
           // Add isolation prefix for attribute selectors
           newCSS.append( prefix + " " );
@@ -515,7 +516,7 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
       }
 
       // This is a selector - add isolation prefix to ensure CSS only affects content from this dictionary
-      int selectorEndPos   = css.indexOf( selectorSeparatorRegex, currentPos + 1 );
+      int selectorEndPos = css.indexOf( selectorSeparatorRegex, currentPos + 1 );
       // Fix for handling complex selectors with combinators like >, +, ~
       if ( selectorEndPos < 0 ) {
         selectorEndPos = css.indexOf( selectorEndRegex, currentPos );
