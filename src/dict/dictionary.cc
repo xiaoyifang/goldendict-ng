@@ -544,7 +544,8 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
           newCSS.append( prefix + " " );
           newCSS.append( css.mid( currentPos, pseudoEndPos - currentPos ) );
           currentPos = pseudoEndPos;
-        } else {
+        }
+        else {
           // If no end found, append remaining CSS and break
           newCSS.append( prefix + " " );
           newCSS.append( css.mid( currentPos ) );
