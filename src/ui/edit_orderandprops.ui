@@ -168,9 +168,6 @@
         </item>
         <item>
          <widget class="QWebEngineView" name="dictionaryDescription">
-          <property name="frameShape">
-           <enum>QFrame::NoFrame</enum>
-          </property>
          </widget>
         </item>
         <item>

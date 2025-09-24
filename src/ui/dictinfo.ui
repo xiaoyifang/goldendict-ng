@@ -220,12 +220,6 @@
    </item>
    <item>
     <widget class="QWebEngineView" name="infoLabel">
-     <property name="toolTip">
-      <string notr="true"/>
-     </property>
-     <property name="horizontalScrollBarPolicy">
-      <enum>Qt::ScrollBarAsNeeded</enum>
-     </property>
     </widget>
    </item>
    <item>
