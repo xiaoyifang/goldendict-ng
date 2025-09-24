@@ -369,6 +369,10 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
     return;
   }
 
+  if ( css.indexOf( "{" ) == -1 ) {
+    return;
+  }
+
   QString newCSS;
   int currentPos = 0;
 
