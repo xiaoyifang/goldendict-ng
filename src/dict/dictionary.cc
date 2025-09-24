@@ -536,24 +536,6 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
       }
 
       // Handle double colon pseudo-elements like ::before, ::after, and ::highlight(name)
-      if ( ch == ':' && currentPos + 1 < css.length() && css.at( currentPos + 1 ) == ':' ) {
-        // Use selectorEndRegex to determine the end of pseudo-element for both cases
-        int pseudoEndPos = css.indexOf( selectorEndRegex, currentPos + 2 );
-        if ( pseudoEndPos != -1 ) {
-          // Add isolation prefix for double colon pseudo-elements
-          newCSS.append( prefix + " " );
-          newCSS.append( css.mid( currentPos, pseudoEndPos - currentPos ) );
-          currentPos = pseudoEndPos;
-        }
-        else {
-          // If no end found, append remaining CSS and break
-          newCSS.append( prefix + " " );
-          newCSS.append( css.mid( currentPos ) );
-          currentPos = css.length();
-        }
-        continue;
-      }
-
       // This is a selector - add isolation prefix to ensure CSS only affects content from this dictionary
       int selectorEndPos = css.indexOf( selectorSeparatorRegex, currentPos + 1 );
       // Fix for handling complex selectors with combinators like >, +, ~
