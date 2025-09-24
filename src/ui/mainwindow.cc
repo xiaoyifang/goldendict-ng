@@ -3427,6 +3427,8 @@ void MainWindow::on_saveArticle_triggered()
 
   // Handle website 
   if( view->isWebsite() ) {
+    // Create a QWebEnginePage object
+    QWebEnginePage * page = view->page();
     // Handle Complete HTML format
     if ( filters.at( 0 ).startsWith( selectedFilter ) ) {
       page->save( fileName, QWebEngineDownloadRequest::CompleteHtmlSaveFormat );
