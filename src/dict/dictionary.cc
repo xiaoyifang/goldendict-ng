@@ -379,13 +379,13 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
   // Regular expressions for CSS parsing
   QRegularExpression commentRegex( R"(\/\*(?:.(?!\*\/))*.?\*\/)", QRegularExpression::DotMatchesEverythingOption );
   QRegularExpression selectorSeparatorRegex( R"([ \*\>\+,;:\[\{\]])" );
-  QRegularExpression selectorEndRegex( ",;\\{" );
+  QRegularExpression selectorEndRegex( "[,;\\{]" );
 
   // Remove comments from CSS
   css.replace( commentRegex, QString() );
 
   // Replace pseudo root selector with html
-  css.replace( QRegularExpression( R":root\s*{" ), "html{" );
+  css.replace( QRegularExpression( R"(:root\s*{)" ), "html{" );
 
   // Process CSS content
   while ( currentPos < css.length() ) {
@@ -393,7 +393,6 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
 
     if ( ch == '@' ) {
       // Handle @ rules
-      int ruleStart   = currentPos;
       int ruleNameEnd = css.indexOf( QRegularExpression( "[^\\w-]" ), currentPos + 1 );
       if ( ruleNameEnd == -1 ) {
         // If no rule name end is found, copy remaining content
