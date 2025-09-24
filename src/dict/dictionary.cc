@@ -420,6 +420,16 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
         currentPos = n + 1;
         continue;
       }
+      else if(css.mid(currentPos, 6).compare("@color", Qt::CaseInsensitive) == 0){
+        //@color box-gray = #FFDDDD;
+
+        // entry-index {
+        // 	display: none;
+        // }
+
+        //skip to the end of line
+        n = css.indexOf( '\n', currentPos );
+      }
       else {
         // Copy rule as is.
         n = css.indexOf( '}', currentPos );
