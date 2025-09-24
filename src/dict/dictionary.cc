@@ -359,6 +359,9 @@ QString Class::getAbbrName( const QString & text )
   return GlobalBroadcaster::instance()->getAbbrName( text );
 }
 
+// Forward declaration
+int findMatchingBracket( const QString & css, int startPos );
+
 void Class::isolateCSS( QString & css, const QString & wrapperSelector )
 {
   // Return early if CSS is empty
