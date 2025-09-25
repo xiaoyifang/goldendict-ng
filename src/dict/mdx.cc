@@ -526,14 +526,18 @@ public:
   }
 
 private:
-  bool processArticleBody(const string& articleBody, string& articleText);
-  bool isArticleDuplicate(const string& articleBody, set< uint32_t >& articlesIncluded, 
-                         set< QByteArray >& articleBodiesIncluded, uint32_t articleOffset);
+  bool processArticleBody( const string & articleBody, string & articleText );
+  bool isArticleDuplicate( const string & articleBody,
+                           set< uint32_t > & articlesIncluded,
+                           set< QByteArray > & articleBodiesIncluded,
+                           uint32_t articleOffset );
 };
 
 
-bool MdxArticleRequest::isArticleDuplicate(const string& articleBody, set< uint32_t >& articlesIncluded, 
-                                          set< QByteArray >& articleBodiesIncluded, uint32_t articleOffset)
+bool MdxArticleRequest::isArticleDuplicate( const string & articleBody,
+                                            set< uint32_t > & articlesIncluded,
+                                            set< QByteArray > & articleBodiesIncluded,
+                                            uint32_t articleOffset )
 {
   // Check if we've already included this article
   if ( articlesIncluded.find( articleOffset ) != articlesIncluded.end() ) {
@@ -549,7 +553,7 @@ bool MdxArticleRequest::isArticleDuplicate(const string& articleBody, set< uint3
 
   // Add article offset to our included set
   articlesIncluded.insert( articleOffset );
-  
+
   return false; // Not a duplicate
 }
 
@@ -572,10 +576,11 @@ void MdxArticleRequest::run()
     // Handle the special case of the "about" page
     QString articleBody = dict.getDescription();
     if ( !processArticleBody( articleBody.toStdString(), articleText ) ) {
-      qDebug() << "Failed processing article body for" << dict.getName().c_str() 
+      qDebug() << "Failed processing article body for" << dict.getName().c_str()
                << "reason:" << articleBody.toStdString().c_str();
     }
-  } else {
+  }
+  else {
     // Build the article chain for normal word lookup
     vector< WordArticleLink > chain = dict.findArticles( word, ignoreDiacritics );
 
@@ -1518,7 +1523,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
 
 } // namespace Mdx
 
-bool MdxArticleRequest::processArticleBody(const string& articleBody, string& articleText)
+bool MdxArticleRequest::processArticleBody( const string & articleBody, string & articleText )
 {
   // Handle internal redirects
   if ( strncmp( articleBody.c_str(), "@@@LINK=", 8 ) == 0 ) {
