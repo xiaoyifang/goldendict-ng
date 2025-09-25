@@ -1220,7 +1220,7 @@ void MdxDictionary::loadResourceFile( const std::u32string & resourceName, vecto
     newResourceName.insert( 0, 1, '\\' );
   }
   // local file takes precedence
-  if ( string fn = getContainingFolder().toStdString().toStdString() + Utils::Fs::separator() + u8ResourceName;
+  if ( string fn = getContainingFolder().toStdString() + Utils::Fs::separator() + u8ResourceName;
        Utils::Fs::exists( fn ) ) {
     File::loadFromFile( fn, data );
     return;
