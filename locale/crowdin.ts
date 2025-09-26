@@ -3611,11 +3611,11 @@ from Stardict, Babylon and GLS dictionaries</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Url: </source>
+        <source>Website Url:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>In the URL, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+        <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
