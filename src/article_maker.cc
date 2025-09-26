@@ -624,8 +624,6 @@ void ArticleRequest::bodyFinished()
     return;
   }
 
-  qDebug() << ">>>>";
-
   bool wasUpdated = false;
 
   QStringList dictIds;
