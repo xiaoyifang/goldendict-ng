@@ -520,7 +520,7 @@ void ArticleRequest::altSearchFinished()
       try {
         if ( word == ":about" ){
           auto r = std::make_shared< Dictionary::DataRequestInstant >( true );
-          r->appendString( activeDict->getDescription() );
+          r->appendString( activeDict->getDescription().toStdString() );
           bodyRequests.push_back( r );
         }
         else{
