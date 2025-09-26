@@ -10,7 +10,7 @@
 #ifdef Q_OS_WIN
 
 WinSignalHandler * WinSignalHandler::instance = nullptr;
-static BOOL quitRequested = FALSE;
+static BOOL quitRequested                     = FALSE;
 
 WinSignalHandler::WinSignalHandler()
 {
@@ -47,20 +47,20 @@ BOOL WINAPI WinSignalHandler::handlerRoutine( DWORD dwCtrlType )
     if ( dwCtrlType == CTRL_CLOSE_EVENT || dwCtrlType == CTRL_LOGOFF_EVENT || dwCtrlType == CTRL_SHUTDOWN_EVENT ) {
       // Set a flag to indicate quit was requested
       quitRequested = TRUE;
-      
+
       // Try to get the main window and save history
-      foreach (QWidget *widget, QApplication::topLevelWidgets()) {
-        MainWindow *mainWindow = qobject_cast<MainWindow*>(widget);
-        if (mainWindow) {
+      foreach ( QWidget * widget, QApplication::topLevelWidgets() ) {
+        MainWindow * mainWindow = qobject_cast< MainWindow * >( widget );
+        if ( mainWindow ) {
           // Save history immediately
           mainWindow->commitData();
           break;
         }
       }
-      
+
       // Give the application a little time to process events
       QApplication::processEvents();
-      
+
       // Return TRUE to indicate we've handled the event
       return TRUE;
     }
