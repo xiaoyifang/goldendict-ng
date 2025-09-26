@@ -111,10 +111,12 @@ sptr< DataRequest > WebSiteDictionary::getArticle( const std::u32string & str,
   const QString & encodeUrl = urlString;
 
   if ( GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
-    fmt::format_to( std::back_inserter( result ),
-                    R"(<div class="website-new-tab-notice">
+    fmt::format_to(
+      std::back_inserter( result ),
+      R"(<div class="website-new-tab-notice">
                           <p>{}</p>
-                        </div>)", QCoreApplication::translate( "WebSite", "This website dictionary is opened in a new tab" ).toStdString() );
+                        </div>)",
+      QCoreApplication::translate( "WebSite", "This website dictionary is opened in a new tab" ).toStdString() );
   }
   else {
     fmt::format_to( std::back_inserter( result ),
@@ -181,4 +183,3 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const Config::WebSites & w
 // fixes #2272
 // automoc include for Q_OBJECT should be at the very end of source code file, not inside a namespace
 #include "website.moc"
-
