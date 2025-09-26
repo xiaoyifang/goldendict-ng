@@ -61,6 +61,10 @@
   #include <windows.h>
 #endif
 
+#ifdef Q_OS_WIN
+  #include <windowsx.h>
+#endif
+
 #include <QGuiApplication>
 #include <QWebEngineSettings>
 #include <QProxyStyle>
@@ -1476,6 +1480,41 @@ void MainWindow::closeEvent( QCloseEvent * ev )
     // Ignore the close event because closing the main window breaks global hotkeys on Windows.
     ev->ignore();
     hide();
+#endif
+}
+
+#ifdef Q_OS_WIN
+bool MainWindow::nativeEvent( const QByteArray & eventType, void * message, qintptr * result )
+{
+  if ( eventType == "windows_generic_MSG" ) {
+    MSG * msg = static_cast< MSG * >( message );
+    switch ( msg->message ) {
+      case WM_QUERYENDSESSION:
+        // System is about to log off or shut down
+        // Save data immediately
+        commitData();
+        if ( result ) {
+          *result = TRUE; // Allow the session to end
+        }
+        return true; // We've handled the message
+
+      case WM_ENDSESSION:
+        // Session is ending, perform any final cleanup
+        if ( result ) {
+          *result = 0;
+        }
+        return true; // We've handled the message
+
+      case WM_CLOSE:
+        // Window is being closed
+        // Save data before closing
+        commitData();
+        // Let the default handler process the message
+        break;
+    }
+  }
+  return QMainWindow::nativeEvent( eventType, message, result );
+}
 #endif
   }
   else {

@@ -3,11 +3,14 @@
 */
 
 #include "winsignalhandler.hh"
+#include "mainwindow.hh"
 #include <QDebug>
+#include <QApplication>
 
 #ifdef Q_OS_WIN
 
 WinSignalHandler * WinSignalHandler::instance = nullptr;
+static BOOL quitRequested = FALSE;
 
 WinSignalHandler::WinSignalHandler()
 {
@@ -40,12 +43,26 @@ BOOL WINAPI WinSignalHandler::handlerRoutine( DWORD dwCtrlType )
     // Emit the signalReceived signal with the control event type
     emit instance->signalReceived( dwCtrlType );
 
-    // For CTRL_CLOSE_EVENT, we need to save data and exit quickly
-    // The system gives us 20 seconds before terminating the process
+    // For events that allow time for cleanup, we can perform quick operations
     if ( dwCtrlType == CTRL_CLOSE_EVENT || dwCtrlType == CTRL_LOGOFF_EVENT || dwCtrlType == CTRL_SHUTDOWN_EVENT ) {
-      // Perform quick cleanup operations here if needed
-      // Note: We cannot do lengthy operations here as the system will terminate the process
-      return TRUE; // Indicate that we have handled the event
+      // Set a flag to indicate quit was requested
+      quitRequested = TRUE;
+      
+      // Try to get the main window and save history
+      foreach (QWidget *widget, QApplication::topLevelWidgets()) {
+        MainWindow *mainWindow = qobject_cast<MainWindow*>(widget);
+        if (mainWindow) {
+          // Save history immediately
+          mainWindow->commitData();
+          break;
+        }
+      }
+      
+      // Give the application a little time to process events
+      QApplication::processEvents();
+      
+      // Return TRUE to indicate we've handled the event
+      return TRUE;
     }
 
     // For other events like CTRL_C_EVENT, we can return FALSE to let the system handle them

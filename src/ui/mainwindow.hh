@@ -190,6 +190,9 @@ private:
 
   void wheelEvent( QWheelEvent * );
   void closeEvent( QCloseEvent * );
+#ifdef Q_OS_WIN
+  bool nativeEvent( const QByteArray & eventType, void * message, qintptr * result ) override;
+#endif
 
   void applyProxySettings();
   void setupNetworkCache( int maxSize );
