@@ -1062,7 +1062,7 @@ QString MdxDictionary::isolateStyleCssInHtml( const QString & description )
       QString styleContent          = match.captured( 1 );
 
       // Call isolateCSS to process CSS content in <style> tags
-      dict.isolateCSS( styleContent, QString() );
+      isolateCSS( styleContent, QString() );
 
       // Simplified style tag construction as suggested by user
       QString newStyleTag = "<style>" + styleContent + "</style>";
