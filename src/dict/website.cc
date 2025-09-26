@@ -8,8 +8,8 @@
 #include <QFileInfo>
 #include "globalbroadcaster.hh"
 #include "fmt/compile.h"
-
 #include <QRegularExpression>
+#include <QCoreApplication>
 
 namespace WebSite {
 
@@ -21,32 +21,19 @@ class WebSiteDictionary: public Dictionary::Class
 {
   QByteArray urlTemplate;
   QString iconFilename;
-  bool inside_iframe;
-  QNetworkAccessManager & netMgr;
 
 public:
 
   WebSiteDictionary( const string & id,
                      const string & name_,
                      const QString & urlTemplate_,
-                     const QString & iconFilename_,
-                     bool inside_iframe_,
-                     QNetworkAccessManager & netMgr_ ):
+                     const QString & iconFilename_ ):
     Dictionary::Class( id, vector< string >() ),
-    iconFilename( iconFilename_ ),
-    inside_iframe( inside_iframe_ ),
-    netMgr( netMgr_ )
+    iconFilename( iconFilename_ )
   {
     dictionaryName        = name_;
     urlTemplate           = QUrl( urlTemplate_ ).toEncoded();
     dictionaryDescription = urlTemplate_;
-  }
-
-  map< QString, QString > getProperties() noexcept override
-  {
-    map< QString, QString > properties;
-    properties.insert( { "Url", urlTemplate } );
-    return properties;
   }
 
   unsigned long getArticleCount() noexcept override
@@ -96,205 +83,6 @@ sptr< WordSearchRequest > WebSiteDictionary::prefixMatch( const std::u32string &
   return sr;
 }
 
-
-class WebSiteArticleRequest: public WebSiteDataRequestSlots
-{
-  QNetworkReply * netReply;
-  QString url;
-  Class * dictPtr;
-  QNetworkAccessManager & mgr;
-
-public:
-
-  WebSiteArticleRequest( const QString & url, QNetworkAccessManager & _mgr, Class * dictPtr_ );
-  ~WebSiteArticleRequest() {}
-
-  void cancel() override;
-
-private:
-
-  void requestFinished( QNetworkReply * ) override;
-};
-
-void WebSiteArticleRequest::cancel()
-{
-  finish();
-}
-
-WebSiteArticleRequest::WebSiteArticleRequest( const QString & url_, QNetworkAccessManager & _mgr, Class * dictPtr_ ):
-  url( url_ ),
-  dictPtr( dictPtr_ ),
-  mgr( _mgr )
-{
-  connect( &mgr,
-           SIGNAL( finished( QNetworkReply * ) ),
-           this,
-           SLOT( requestFinished( QNetworkReply * ) ),
-           Qt::QueuedConnection );
-
-  QUrl reqUrl( url );
-
-  auto request = QNetworkRequest( reqUrl );
-  request.setAttribute( QNetworkRequest::RedirectPolicyAttribute, QNetworkRequest::NoLessSafeRedirectPolicy );
-  netReply = mgr.get( request );
-
-#ifndef QT_NO_SSL
-  connect( netReply, SIGNAL( sslErrors( QList< QSslError > ) ), netReply, SLOT( ignoreSslErrors() ) );
-#endif
-}
-
-void WebSiteArticleRequest::requestFinished( QNetworkReply * r )
-{
-  if ( isFinished() ) { // Was cancelled
-    return;
-  }
-
-  if ( r != netReply ) {
-    // Well, that's not our reply, don't do anything
-    return;
-  }
-
-  if ( netReply->error() == QNetworkReply::NoError ) {
-    // Check for redirect reply
-
-    QVariant possibleRedirectUrl = netReply->attribute( QNetworkRequest::RedirectionTargetAttribute );
-    QUrl redirectUrl             = possibleRedirectUrl.toUrl();
-    if ( !redirectUrl.isEmpty() ) {
-      disconnect( netReply, 0, 0, 0 );
-      netReply->deleteLater();
-      netReply = mgr.get( QNetworkRequest( redirectUrl ) );
-#ifndef QT_NO_SSL
-      connect( netReply, SIGNAL( sslErrors( QList< QSslError > ) ), netReply, SLOT( ignoreSslErrors() ) );
-#endif
-      return;
-    }
-
-    // Handle reply data
-
-    QByteArray replyData = netReply->readAll();
-    QString articleString;
-
-    QTextCodec * codec = QTextCodec::codecForHtml( replyData, 0 );
-    if ( codec ) {
-      articleString = codec->toUnicode( replyData );
-    }
-    else {
-      articleString = QString::fromUtf8( replyData );
-    }
-
-    // Change links from relative to absolute
-
-    QString root = netReply->url().scheme() + "://" + netReply->url().host();
-    QString base = root + netReply->url().path();
-    while ( !base.isEmpty() && !base.endsWith( "/" ) ) {
-      base.chop( 1 );
-    }
-
-    QRegularExpression tags( R"(<\s*(a|link|img|script)\s+[^>]*(src|href)\s*=\s*['"][^>]+>)",
-                             QRegularExpression::CaseInsensitiveOption );
-    QRegularExpression links( R"(\b(src|href)\s*=\s*(['"])([^'"]+['"]))", QRegularExpression::CaseInsensitiveOption );
-    int pos = 0;
-    QString articleNewString;
-    QRegularExpressionMatchIterator it = tags.globalMatch( articleString );
-    while ( it.hasNext() ) {
-      QRegularExpressionMatch match = it.next();
-      articleNewString += articleString.mid( pos, match.capturedStart() - pos );
-      pos = match.capturedEnd();
-
-      QString tag = match.captured();
-
-      QRegularExpressionMatch match_links = links.match( tag );
-      if ( !match_links.hasMatch() ) {
-        articleNewString += tag;
-        continue;
-      }
-
-      QString url = match_links.captured( 3 );
-
-      if ( url.indexOf( ":/" ) >= 0 || url.indexOf( "data:" ) >= 0 || url.indexOf( "mailto:" ) >= 0
-           || url.startsWith( "#" ) || url.startsWith( "javascript:" ) ) {
-        // External link, anchor or base64-encoded data
-        articleNewString += tag;
-        continue;
-      }
-
-      QString newUrl = match_links.captured( 1 ) + "=" + match_links.captured( 2 );
-      if ( url.startsWith( "//" ) ) {
-        newUrl += netReply->url().scheme() + ":";
-      }
-      else if ( url.startsWith( "/" ) ) {
-        newUrl += root;
-      }
-      else {
-        newUrl += base;
-      }
-      newUrl += match_links.captured( 3 );
-
-      tag.replace( match_links.capturedStart(), match_links.capturedLength(), newUrl );
-      articleNewString += tag;
-    }
-    if ( pos ) {
-      articleNewString += articleString.mid( pos );
-      articleString = articleNewString;
-      articleNewString.clear();
-    }
-
-    // Redirect CSS links to own handler
-
-    QString prefix = QString( "bres://" ) + dictPtr->getId().c_str() + "/";
-    QRegularExpression linkTags(
-      R"((<\s*link\s[^>]*rel\s*=\s*['"]stylesheet['"]\s+[^>]*href\s*=\s*['"])([^'"]+)://([^'"]+['"][^>]+>))",
-      QRegularExpression::CaseInsensitiveOption );
-    pos = 0;
-    it  = linkTags.globalMatch( articleString );
-
-    while ( it.hasNext() ) {
-      QRegularExpressionMatch match = it.next();
-      articleNewString += articleString.mid( pos, match.capturedStart() - pos );
-      pos = match.capturedEnd();
-
-      QString newTag = match.captured( 1 ) + prefix + match.captured( 2 ) + "/" + match.captured( 3 );
-      articleNewString += newTag;
-    }
-    if ( pos ) {
-      articleNewString += articleString.mid( pos );
-      articleString = articleNewString;
-      articleNewString.clear();
-    }
-
-    // See Issue #271: A mechanism to clean-up invalid HTML cards.
-    articleString += QString::fromStdString( Utils::Html::getHtmlCleaner() );
-
-
-    QString divStr = QString( "<div class=\"website\"" );
-    divStr += dictPtr->isToLanguageRTL() ? " dir=\"rtl\">" : ">";
-
-    articleString.prepend( divStr.toUtf8() );
-    articleString.append( "</div>" );
-
-    articleString.prepend( "<div class=\"website_padding\"></div>" );
-
-    appendString( articleString.toStdString() );
-
-    hasAnyData = true;
-  }
-  else {
-    if ( netReply->url().scheme() == "file" ) {
-      qWarning( "WebSites: Failed loading article from \"%s\", reason: %s",
-                dictPtr->getName().c_str(),
-                netReply->errorString().toUtf8().data() );
-    }
-    else {
-      setErrorString( netReply->errorString() );
-    }
-  }
-
-  disconnect( netReply, nullptr, 0, 0 );
-  netReply->deleteLater();
-
-  finish();
-}
-
 sptr< DataRequest > WebSiteDictionary::getArticle( const std::u32string & str,
                                                    const vector< std::u32string > & /*alts*/,
                                                    const std::u32string & context,
@@ -302,41 +90,45 @@ sptr< DataRequest > WebSiteDictionary::getArticle( const std::u32string & str,
 {
   QString urlString = Utils::WebSite::urlReplaceWord( QString( urlTemplate ), QString::fromStdU32String( str ) );
 
-  if ( inside_iframe ) {
-    // Just insert link in <iframe> tag
+  string result = R"(<div class="website_padding"></div>)";
 
-    string result = R"(<div class="website_padding"></div>)";
+  //heuristic add url to global whitelist.
+  QUrl url( urlString );
+  GlobalBroadcaster::instance()->addWhitelist( url.host() );
 
-    //heuristic add url to global whitelist.
-    QUrl url( urlString );
-    GlobalBroadcaster::instance()->addWhitelist( url.host() );
+  const QString & encodeUrl = urlString;
 
-    const QString & encodeUrl = urlString;
+  if ( GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
 
-    if ( GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
-      fmt::format_to( std::back_inserter( result ),
-                      R"(<div class="website-new-tab-notice">
-                           <p>This website dictionary is opened in a new tab</p>
-                         </div>)" );
+    //replace the word,and get the actual requested url
+    if ( !urlString.isEmpty() ) {
+      auto word  = QString::fromStdU32String( str );
+      auto title = QString::fromStdString( getName() );
+      // Pass dictId to the websiteDictionarySignal
+      emit GlobalBroadcaster::instance()
+        -> websiteDictionarySignal( title + "-" + word, urlString, QString::fromStdString( getId() ) );
     }
-    else {
-      fmt::format_to( std::back_inserter( result ),
-                      R"(<iframe id="gdexpandframe-{}" src="{}"
+
+    fmt::format_to(
+      std::back_inserter( result ),
+      R"(<div class="website-new-tab-notice">
+                          <p>{}</p>
+                        </div>)",
+      QCoreApplication::translate( "WebSite", "This website dictionary is opened in a new tab" ).toStdString() );
+  }
+  else {
+    fmt::format_to( std::back_inserter( result ),
+                    R"(<iframe id="gdexpandframe-{}" src="{}"
 scrolling="no" data-gd-id="{}" 
 class="website-iframe"
 sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>)",
-                      getId(),
-                      encodeUrl.toStdString(),
-                      getId() );
-    }
-    auto dr = std::make_shared< DataRequestInstant >( true );
-    dr->appendString( result );
-    return dr;
+                    getId(),
+                    encodeUrl.toStdString(),
+                    getId() );
   }
-
-  // To load data from site
-
-  return std::make_shared< WebSiteArticleRequest >( urlString, netMgr, this );
+  auto dr = std::make_shared< DataRequestInstant >( true );
+  dr->appendString( result );
+  return dr;
 }
 
 
@@ -373,12 +165,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const Config::WebSites & w
 
   for ( const auto & w : ws ) {
     if ( w.enabled ) {
-      result.push_back( std::make_shared< WebSiteDictionary >( w.id.toUtf8().data(),
-                                                               w.name.toUtf8().data(),
-                                                               w.url,
-                                                               w.iconFilename,
-                                                               w.inside_iframe,
-                                                               mgr ) );
+      result.push_back(
+        std::make_shared< WebSiteDictionary >( w.id.toUtf8().data(), w.name.toUtf8().data(), w.url, w.iconFilename ) );
     }
   }
 

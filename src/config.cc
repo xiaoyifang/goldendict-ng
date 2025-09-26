@@ -305,26 +305,22 @@ WebSites makeDefaultWebSites()
                          "Google En-En (Oxford)",
                          "https://www.google.com/search?q=define:%GDWORD%&hl=en",
                          false,
-                         "",
-                         true ) );
+                         "" ) );
   ws.push_back( WebSite( "f376365a0de651fd7505e7e5e683aa45",
                          "Urban Dictionary",
                          "https://www.urbandictionary.com/define.php?term=%GDWORD%",
                          false,
-                         "",
-                         true ) );
+                         "" ) );
   ws.push_back( WebSite( "324ca0306187df7511b26d3847f4b07c",
                          "Multitran (En-Ru)",
                          "https://www.multitran.com/m.exe?s=%GDWORD%&l1=1&l2=2",
                          false,
-                         "",
-                         true ) );
+                         "" ) );
   ws.push_back( WebSite( "379a0ce02a34747d642cb0d7de1b2882",
                          "Merriam-Webster (En)",
                          "https://www.merriam-webster.com/dictionary/%GDWORD%",
                          false,
-                         "",
-                         true ) );
+                         "" ) );
 
   return ws;
 }
@@ -748,7 +744,6 @@ Class load()
       w.url           = ws.attribute( "url" );
       w.enabled       = ( ws.attribute( "enabled" ) == "1" );
       w.iconFilename  = ws.attribute( "icon" );
-      w.inside_iframe = ( ws.attribute( "inside_iframe", "1" ) == "1" );
 
       c.webSites.push_back( w );
     }
@@ -1592,10 +1587,6 @@ void save( const Class & c )
       QDomAttr icon = dd.createAttribute( "icon" );
       icon.setValue( webSite.iconFilename );
       ws.setAttributeNode( icon );
-
-      QDomAttr inside_iframe = dd.createAttribute( "inside_iframe" );
-      inside_iframe.setValue( webSite.inside_iframe ? "1" : "0" );
-      ws.setAttributeNode( inside_iframe );
     }
   }
 

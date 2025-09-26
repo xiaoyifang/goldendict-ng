@@ -54,13 +54,10 @@ Sources::Sources( QWidget * parent, const Config::Class & cfg ):
 
   ui.webSites->setTabKeyNavigation( true );
   ui.webSites->setModel( &webSitesModel );
-  //[As link] column.
-  ui.webSites->setColumnHidden( 1, true );
   ui.webSites->resizeColumnToContents( 0 );
   ui.webSites->resizeColumnToContents( 1 );
   ui.webSites->resizeColumnToContents( 2 );
   ui.webSites->resizeColumnToContents( 3 );
-  ui.webSites->resizeColumnToContents( 4 );
   ui.webSites->setSelectionMode( QAbstractItemView::ExtendedSelection );
   ui.webSites->setSelectionBehavior( QAbstractItemView::SelectRows );
 
@@ -611,12 +608,8 @@ void WebSitesModel::addNewSite()
   Config::WebSite w;
 
   w.enabled = false;
-
-  w.id = Dictionary::generateRandomDictionaryId();
-
+  w.id      = Dictionary::generateRandomDictionaryId();
   w.url = "http://";
-
-  w.inside_iframe = true;
 
   beginInsertRows( QModelIndex(), webSites.size(), webSites.size() );
   webSites.push_back( w );
@@ -649,7 +642,7 @@ Qt::ItemFlags WebSitesModel::flags( const QModelIndex & index ) const
   Qt::ItemFlags result = QAbstractTableModel::flags( index );
 
   if ( index.isValid() ) {
-    if ( index.column() <= 1 ) {
+    if ( index.column() == 0 ) {
       result |= Qt::ItemIsUserCheckable;
     }
     else {
@@ -676,17 +669,13 @@ int WebSitesModel::columnCount( const QModelIndex & parent ) const
     return 0;
   }
   else {
-    return 5;
+    return 4;
   }
 }
 
 QVariant WebSitesModel::headerData( int section, Qt::Orientation /*orientation*/, int role ) const
 {
   if ( role == Qt::ToolTipRole ) {
-    if ( section == 1 ) {
-      return tr( "Insert article as link inside <iframe> tag" );
-    }
-
     return QVariant();
   }
 
@@ -695,12 +684,10 @@ QVariant WebSitesModel::headerData( int section, Qt::Orientation /*orientation*/
       case 0:
         return tr( "Enabled" );
       case 1:
-        return tr( "As link" );
-      case 2:
         return tr( "Name" );
-      case 3:
+      case 2:
         return tr( "Address" );
-      case 4:
+      case 3:
         return tr( "Icon" );
       default:
         return QVariant();
@@ -717,20 +704,16 @@ QVariant WebSitesModel::data( const QModelIndex & index, int role ) const
   }
 
   if ( role == Qt::ToolTipRole ) {
-    if ( index.column() == 1 ) {
-      return tr( "Insert article as link inside <iframe> tag" );
-    }
-
     return QVariant();
   }
 
   if ( role == Qt::DisplayRole || role == Qt::EditRole ) {
     switch ( index.column() ) {
-      case 2:
+      case 1:
         return webSites[ index.row() ].name;
-      case 3:
+      case 2:
         return webSites[ index.row() ].url;
-      case 4:
+      case 3:
         return webSites[ index.row() ].iconFilename;
       default:
         return QVariant();
@@ -739,10 +722,6 @@ QVariant WebSitesModel::data( const QModelIndex & index, int role ) const
 
   if ( role == Qt::CheckStateRole && !index.column() ) {
     return webSites[ index.row() ].enabled ? Qt::Checked : Qt::Unchecked;
-  }
-
-  if ( role == Qt::CheckStateRole && index.column() == 1 ) {
-    return webSites[ index.row() ].inside_iframe ? Qt::Checked : Qt::Unchecked;
   }
 
   return QVariant();
@@ -765,24 +744,17 @@ bool WebSitesModel::setData( const QModelIndex & index, const QVariant & value, 
     return true;
   }
 
-  if ( role == Qt::CheckStateRole && index.column() == 1 ) {
-    webSites[ index.row() ].inside_iframe = !webSites[ index.row() ].inside_iframe;
-
-    dataChanged( index, index );
-    return true;
-  }
-
   if ( role == Qt::DisplayRole || role == Qt::EditRole ) {
     switch ( index.column() ) {
-      case 2:
+      case 1:
         webSites[ index.row() ].name = value.toString();
         dataChanged( index, index );
         return true;
-      case 3:
+      case 2:
         webSites[ index.row() ].url = value.toString();
         dataChanged( index, index );
         return true;
-      case 4:
+      case 3:
         webSites[ index.row() ].iconFilename = value.toString();
         dataChanged( index, index );
         return true;
@@ -813,9 +785,7 @@ void DictServersModel::addNewServer()
   Config::DictServer d;
 
   d.enabled = false;
-
-  d.id = Dictionary::generateRandomDictionaryId();
-
+  d.id      = Dictionary::generateRandomDictionaryId();
   d.url = "dict://";
 
   beginInsertRows( QModelIndex(), dictServers.size(), dictServers.size() );
