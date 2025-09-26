@@ -152,4 +152,7 @@ private:
   /// Find end of corresponding </div> tag
   int findEndOfCloseDiv( const QString &, int pos );
   bool isCollapsable( Dictionary::DataRequest & req, const QString & dictId );
+  
+  /// Process <style> tags in dictionary description for CSS isolation
+  QString processStyleTags( const QString & description, const sptr< Dictionary::Class > & activeDict );
 };

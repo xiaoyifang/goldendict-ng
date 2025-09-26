@@ -701,7 +701,7 @@ QByteArray MddResourceRequest::isolate_css()
     css = newCSS;
     newCSS.clear();
   }
-  dict.isolateCSS( css, ".mdict" );
+  dict.isolateCSS( css );
   auto bytes = css.toUtf8();
 
   return bytes;
