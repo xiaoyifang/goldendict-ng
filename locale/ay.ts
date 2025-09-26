@@ -4252,20 +4252,17 @@ Taqi lista utjki uka arunakax &lt;a href=&quot;https://lingualibre.org/wiki/Ling
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>&lt;iframe&gt; manqhanxa chinuñjam qillqat unchataña.
-
-Insertar artículo como un enlace adentro de un &lt;iframe&gt;.</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation type="unfinished">This website dictionary is opened in a new tab</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>Naktata</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>Chinuñjama</translation>
     </message>
     <message>
       <source>Name</source>
