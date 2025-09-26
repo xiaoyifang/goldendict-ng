@@ -4121,18 +4121,17 @@ Có thể tìm thấy danh sách đầy đủ các ngôn ngữ khả dụng &lt;
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Chèn bài viết dưới dạng liên kết bên trong thẻ &lt;iframe&gt;</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation type="unfinished">This website dictionary is opened in a new tab</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>Bật</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>Dưới dạng liên kết</translation>
     </message>
     <message>
       <source>Name</source>
