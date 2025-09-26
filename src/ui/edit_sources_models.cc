@@ -1345,7 +1345,7 @@ Qt::ItemFlags SoundDirsModel::flags( const QModelIndex & index ) const
 {
   Qt::ItemFlags result = QAbstractTableModel::flags( index );
 
-  if ( index.isValid() && index.column() < 3  ) {
+  if ( index.isValid() && index.column() < 3 ) {
     result |= Qt::ItemIsEditable;
   }
 
