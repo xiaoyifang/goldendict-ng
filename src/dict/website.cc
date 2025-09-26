@@ -101,14 +101,12 @@ sptr< DataRequest > WebSiteDictionary::getArticle( const std::u32string & str,
   if ( GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
 
     //replace the word,and get the actual requested url
-    QString url = urlTemplate;
-    if ( !url.isEmpty() ) {
+    if ( !urlString.isEmpty() ) {
       auto word          = QString::fromStdU32String( str );
-      QString requestUrl = Utils::WebSite::urlReplaceWord( url, word );
       auto title         = QString::fromStdString( getName() );
       // Pass dictId to the websiteDictionarySignal
       emit GlobalBroadcaster::instance()
-        -> websiteDictionarySignal( title + "-" + word, requestUrl, QString::fromStdString( getId() ) );
+        -> websiteDictionarySignal( title + "-" + word, urlString, QString::fromStdString( getId() ) );
     }
 
     fmt::format_to(
