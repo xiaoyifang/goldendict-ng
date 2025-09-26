@@ -21,7 +21,6 @@ class WebSiteDictionary: public Dictionary::Class
 {
   QByteArray urlTemplate;
   QString iconFilename;
-  QNetworkAccessManager & netMgr;
 
 public:
 
@@ -31,8 +30,7 @@ public:
                      const QString & iconFilename_,
                      QNetworkAccessManager & netMgr_ ):
     Dictionary::Class( id, vector< string >() ),
-    iconFilename( iconFilename_ ),
-    netMgr( netMgr_ )
+    iconFilename( iconFilename_ )
   {
     dictionaryName        = name_;
     urlTemplate           = QUrl( urlTemplate_ ).toEncoded();
