@@ -4112,18 +4112,17 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>将文章在 &lt;iframe&gt; 标签中作为链接插入</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation>此网站字典在一个新标签中打开</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>已启用</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>作为链接</translation>
     </message>
     <message>
       <source>Name</source>
