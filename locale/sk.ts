@@ -4120,18 +4120,17 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Vložiť článok ako odkaz medzi značky &lt;iframe&gt;</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation type="unfinished">This website dictionary is opened in a new tab</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>Povolené</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>Ako odkaz</translation>
     </message>
     <message>
       <source>Name</source>
