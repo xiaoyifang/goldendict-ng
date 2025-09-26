@@ -207,12 +207,8 @@ void History::loadTemp()
     return; // No temporary file -- no history to recover
   }
 
-  // Store temporary items to be added at the beginning (most recent first)
-  QList< Item > tempItemsToAdd;
-  QList< Item > tempItemsToRemove;
-
   QTextStream in( &file );
-  while ( !in.atEnd() && ( items.size() + tempItemsToAdd.size() ) <= maxSize ) {
+  while ( !in.atEnd() && items.size()  <= maxSize ) {
     QString line = in.readLine( 4096 );
 
     if ( line.isEmpty() ) {
@@ -235,38 +231,17 @@ void History::loadTemp()
 
     if ( operation == '+' ) {
       // Check if the item already exists in the main history or in items to remove
-      if ( !items.contains( newItem ) && !tempItemsToRemove.contains( newItem ) ) {
+      if ( !items.contains( newItem ) ) {
         // Add to temporary list (they are in chronological order)
-        tempItemsToAdd.push_back( newItem );
+        items.push_front( newItem );
       }
     }
     else if ( operation == '-' ) {
-      // Add to items to remove
-      if ( !tempItemsToRemove.contains( newItem ) ) {
-        tempItemsToRemove.push_back( newItem );
-      }
-
-      // Also remove from items to add if it's there
-      if ( tempItemsToAdd.contains( newItem ) ) {
-        tempItemsToAdd.removeOne( newItem );
-      }
+      items.removeOne(newItem);
     }
   }
 
-  // Insert temporary items at the beginning in reverse order (most recent first)
-  for ( int i = tempItemsToAdd.size() - 1; i >= 0; --i ) {
-    // Check again if the item is not in the remove list
-    if ( !tempItemsToRemove.contains( tempItemsToAdd[ i ] ) ) {
-      items.push_front( tempItemsToAdd[ i ] );
-    }
-  }
-
-  // Mark as dirty so it gets saved to main file
-  if ( !tempItemsToAdd.isEmpty() ) {
-    dirty = true;
-  }
-
-  qDebug() << "Recovered" << tempItemsToAdd.size() << "items from temporary file";
+  qDebug() << "Recovered items from temporary file";
 }
 
 void History::removeTemp()
