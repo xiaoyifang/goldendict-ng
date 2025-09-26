@@ -520,9 +520,6 @@ void ArticleRequest::altSearchFinished()
       try {
         if ( word == ":about" ) {
           QString description = activeDict->getDescription();
-          // Process style tags using the new method
-          description = processStyleTags( description, activeDict );
-
           auto r = std::make_shared< Dictionary::DataRequestInstant >( true );
           r->appendString( description.toStdString() );
           bodyRequests.push_back( r );
@@ -610,47 +607,6 @@ bool ArticleRequest::isCollapsable( Dictionary::DataRequest & req, const QString
     }
   }
   return collapse;
-}
-
-QString ArticleRequest::processStyleTags( const QString & description, const sptr< Dictionary::Class > & activeDict )
-{
-  // Check if description contains <style> tags, if so, call isolateCSS to process them
-  if ( description.contains( "<style", Qt::CaseInsensitive ) ) {
-    // Extract content from <style> tags and process CSS isolation
-    QRegularExpression styleRegex( "<style[^>]*>(.*?)</style>",
-                                   QRegularExpression::CaseInsensitiveOption
-                                     | QRegularExpression::DotMatchesEverythingOption );
-    QRegularExpressionMatchIterator it = styleRegex.globalMatch( description );
-
-    // Construct a new string instead of modifying the original description
-    QString newDescription;
-    int lastPos = 0;
-
-    while ( it.hasNext() ) {
-      QRegularExpressionMatch match = it.next();
-      QString styleContent          = match.captured( 1 );
-
-      // Call isolateCSS to process CSS content in <style> tags
-      activeDict->isolateCSS( styleContent, QString() );
-
-      // Simplified style tag construction as suggested by user
-      QString newStyleTag = "<style>" + styleContent + "</style>";
-
-      // Append content before the match and the new style tag
-      newDescription += description.mid( lastPos, match.capturedStart() - lastPos );
-      newDescription += newStyleTag;
-
-      // Update last position
-      lastPos = match.capturedEnd();
-    }
-
-    // Append any remaining content after the last match
-    newDescription += description.mid( lastPos );
-
-    return newDescription;
-  }
-
-  return description;
 }
 
 void ArticleRequest::bodyFinished()
