@@ -33,7 +33,15 @@ public:
   {
     dictionaryName        = name_;
     urlTemplate           = QUrl( urlTemplate_ ).toEncoded();
-    dictionaryDescription = urlTemplate_;
+  }
+
+  const QString & getDescription() override
+  {
+    if ( dictionaryDescription.isEmpty() ) {
+      dictionaryDescription = QObject::tr( "Url: " ) + urlTemplate_ + "<br><br>" + 
+                             QObject::tr( "In the URL, \"%GDWORD%\" will be replaced with the word being searched." );
+    }
+    return dictionaryDescription;
   }
 
   unsigned long getArticleCount() noexcept override
