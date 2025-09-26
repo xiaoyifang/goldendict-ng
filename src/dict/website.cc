@@ -167,10 +167,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const Config::WebSites & w
 
   for ( const auto & w : ws ) {
     if ( w.enabled ) {
-      result.push_back( std::make_shared< WebSiteDictionary >( w.id.toUtf8().data(),
-                                                               w.name.toUtf8().data(),
-                                                               w.url,
-                                                               w.iconFilename ) );
+      result.push_back(
+        std::make_shared< WebSiteDictionary >( w.id.toUtf8().data(), w.name.toUtf8().data(), w.url, w.iconFilename ) );
     }
   }
 
