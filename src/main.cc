@@ -1,4 +1,4 @@
-﻿/* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
+/* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "config.hh"
@@ -16,6 +16,8 @@
 #include <stdio.h>
 #if defined( Q_OS_UNIX )
   #include "unix/ksignalhandler.hh"
+#elif defined( Q_OS_WIN )
+  #include "win/winsignalhandler.hh"
 #endif
 
 #ifdef Q_OS_MACOS
@@ -569,6 +571,12 @@ int main( int argc, char ** argv )
   KSignalHandler::self()->watchSignal( SIGINT );
   KSignalHandler::self()->watchSignal( SIGTERM );
   QObject::connect( KSignalHandler::self(), &KSignalHandler::signalReceived, &m, &MainWindow::quitApp );
+#elif defined( Q_OS_WIN )
+  // handle Windows console control events for graceful exit
+  WinSignalHandler winSignalHandler;
+  if ( winSignalHandler.installHandler() ) {
+    QObject::connect( &winSignalHandler, &WinSignalHandler::signalReceived, &m, &MainWindow::quitApp );
+  }
 #endif
   int r = app.exec();
   Logger::closeLogFile();
