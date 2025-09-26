@@ -748,7 +748,6 @@ Class load()
       w.url           = ws.attribute( "url" );
       w.enabled       = ( ws.attribute( "enabled" ) == "1" );
       w.iconFilename  = ws.attribute( "icon" );
-      w.inside_iframe = ( ws.attribute( "inside_iframe", "1" ) == "1" );
 
       c.webSites.push_back( w );
     }
@@ -1592,10 +1591,6 @@ void save( const Class & c )
       QDomAttr icon = dd.createAttribute( "icon" );
       icon.setValue( webSite.iconFilename );
       ws.setAttributeNode( icon );
-
-      QDomAttr inside_iframe = dd.createAttribute( "inside_iframe" );
-      inside_iframe.setValue( webSite.inside_iframe ? "1" : "0" );
-      ws.setAttributeNode( inside_iframe );
     }
   }
 
