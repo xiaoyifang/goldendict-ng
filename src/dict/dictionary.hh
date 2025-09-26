@@ -319,7 +319,7 @@ protected:
 
   static QString getAbbrName( const QString & text );
   static QColor intToFixedColor( int index );
-  
+
 public:
   /// Make css content usable only for articles from this dictionary
   void isolateCSS( QString & css, const QString & wrapperSelector = QString() );
