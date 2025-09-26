@@ -48,10 +48,10 @@ public:
   void removeItem( int index )
   {
     // Save to temporary file before removing an item
-    if (index >= 0 && index < items.size()) {
+    if ( index >= 0 && index < items.size() ) {
       saveTemp( items.at( index ), '-' );
     }
-    
+
     items.removeAt( index );
     dirty = true;
     emit itemsChanged();

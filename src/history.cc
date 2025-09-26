@@ -43,11 +43,11 @@ History::History( unsigned size, unsigned maxItemLength_ ):
       }
     }
   }
-  
+
   // Then try to load from temporary file (in case of previous crash)
   // This will add the most recent item at the beginning if it exists
   loadTemp();
-  
+
   // Remove temporary file after successful load
   removeTemp();
 }
@@ -89,7 +89,7 @@ void History::addItem( const Item & item )
   dirty = true;
 
   emit itemsChanged();
-  
+
   // Save to temporary file immediately after adding an item
   saveTemp( addedItem, '+' );
 }
@@ -153,7 +153,7 @@ void History::clear()
   dirty = true;
 
   emit itemsChanged();
-  
+
   // Remove temporary file when clearing history
   removeTemp();
 }
@@ -208,23 +208,23 @@ void History::loadTemp()
   }
 
   // Store temporary items to be added at the beginning (most recent first)
-  QList<Item> tempItemsToAdd;
-  QList<Item> tempItemsToRemove;
+  QList< Item > tempItemsToAdd;
+  QList< Item > tempItemsToRemove;
 
   QTextStream in( &file );
-  while ( !in.atEnd() && (items.size() + tempItemsToAdd.size()) <= maxSize ) {
+  while ( !in.atEnd() && ( items.size() + tempItemsToAdd.size() ) <= maxSize ) {
     QString line = in.readLine( 4096 );
 
-    if (line.isEmpty()) {
+    if ( line.isEmpty() ) {
       continue;
     }
 
     // First character indicates the operation: '+' for add, '-' for remove
-    QChar operation = line[0];
+    QChar operation = line[ 0 ];
     QString word;
 
-    if (line.size() > 2) {
-      word = line.mid(2).trimmed(); // Skip the operation character and space
+    if ( line.size() > 2 ) {
+      word = line.mid( 2 ).trimmed(); // Skip the operation character and space
     }
 
     if ( word.isEmpty() ) {
@@ -233,38 +233,39 @@ void History::loadTemp()
 
     Item newItem{ word };
 
-    if (operation == '+') {
+    if ( operation == '+' ) {
       // Check if the item already exists in the main history or in items to remove
       if ( !items.contains( newItem ) && !tempItemsToRemove.contains( newItem ) ) {
         // Add to temporary list (they are in chronological order)
         tempItemsToAdd.push_back( newItem );
       }
-    } else if (operation == '-') {
+    }
+    else if ( operation == '-' ) {
       // Add to items to remove
       if ( !tempItemsToRemove.contains( newItem ) ) {
         tempItemsToRemove.push_back( newItem );
       }
-      
+
       // Also remove from items to add if it's there
       if ( tempItemsToAdd.contains( newItem ) ) {
         tempItemsToAdd.removeOne( newItem );
       }
     }
   }
-  
+
   // Insert temporary items at the beginning in reverse order (most recent first)
-  for (int i = tempItemsToAdd.size() - 1; i >= 0; --i) {
+  for ( int i = tempItemsToAdd.size() - 1; i >= 0; --i ) {
     // Check again if the item is not in the remove list
-    if ( !tempItemsToRemove.contains( tempItemsToAdd[i] ) ) {
-      items.push_front(tempItemsToAdd[i]);
+    if ( !tempItemsToRemove.contains( tempItemsToAdd[ i ] ) ) {
+      items.push_front( tempItemsToAdd[ i ] );
     }
   }
-  
+
   // Mark as dirty so it gets saved to main file
   if ( !tempItemsToAdd.isEmpty() ) {
     dirty = true;
   }
-  
+
   qDebug() << "Recovered" << tempItemsToAdd.size() << "items from temporary file";
 }
 
