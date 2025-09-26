@@ -92,7 +92,6 @@ class ArticleRequest: public Dictionary::DataRequest
   bool altsDone{ false };
   bool bodyDone{ false };
   bool foundAnyDefinitions{ false };
-  // be closed after the article ends.
   sptr< WordFinder > stemmedWordFinder; // Used when there're no results
 
   /// A sequence of words and spacings between them, including the initial
