@@ -4129,18 +4129,17 @@ A lista completa de idiomas disponíveis pode ser encontrada &lt;a href=&quot;ht
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Inserir artigo como link dentro da tag &lt;iframe&gt;</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation>Este dicionário do site está aberto em uma nova aba</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>Ativado</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>Como link</translation>
     </message>
     <message>
       <source>Name</source>
