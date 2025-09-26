@@ -27,8 +27,7 @@ public:
   WebSiteDictionary( const string & id,
                      const string & name_,
                      const QString & urlTemplate_,
-                     const QString & iconFilename_,
-                     QNetworkAccessManager & netMgr_ ):
+                     const QString & iconFilename_ ):
     Dictionary::Class( id, vector< string >() ),
     iconFilename( iconFilename_ )
   {
@@ -171,8 +170,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const Config::WebSites & w
       result.push_back( std::make_shared< WebSiteDictionary >( w.id.toUtf8().data(),
                                                                w.name.toUtf8().data(),
                                                                w.url,
-                                                               w.iconFilename,
-                                                               mgr ) );
+                                                               w.iconFilename ) );
     }
   }
 
