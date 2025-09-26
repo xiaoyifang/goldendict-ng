@@ -39,7 +39,7 @@ BOOL WINAPI WinSignalHandler::handlerRoutine( DWORD dwCtrlType )
   if ( instance ) {
     // Emit the signalReceived signal with the control event type
     emit instance->signalReceived( dwCtrlType );
-    
+
     // For CTRL_CLOSE_EVENT, we need to save data and exit quickly
     // The system gives us 20 seconds before terminating the process
     if ( dwCtrlType == CTRL_CLOSE_EVENT || dwCtrlType == CTRL_LOGOFF_EVENT || dwCtrlType == CTRL_SHUTDOWN_EVENT ) {
@@ -47,7 +47,7 @@ BOOL WINAPI WinSignalHandler::handlerRoutine( DWORD dwCtrlType )
       // Note: We cannot do lengthy operations here as the system will terminate the process
       return TRUE; // Indicate that we have handled the event
     }
-    
+
     // For other events like CTRL_C_EVENT, we can return FALSE to let the system handle them
     return FALSE;
   }
