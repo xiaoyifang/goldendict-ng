@@ -4125,18 +4125,17 @@ De volledige lijst met beschikbare talen vindt u &lt;a href=&quot;https://lingua
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Artikel invoegen als link binnen &lt;iframe&gt; tag</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation>Dit woordenboek van deze website wordt geopend in een nieuw tabblad</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>Ingeschakeld</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>Als koppeling</translation>
     </message>
     <message>
       <source>Name</source>
