@@ -33,8 +33,8 @@ public:
   {
     dictionaryName        = name_;
     urlTemplate           = QUrl( urlTemplate_ ).toEncoded();
-    dictionaryDescription = QObject::tr( "Url: " ) + urlTemplate_ + "<br><br>"
-      + QObject::tr( "In the URL, \"%GDWORD%\" will be replaced with the word being searched." );
+    dictionaryDescription = QObject::tr( "Website Url:" ) + urlTemplate_ + "<br><br>"
+      + QObject::tr( "In the Url, \"%GDWORD%\" will be replaced with the word being searched." );
   }
 
   const QString & getDescription() override
