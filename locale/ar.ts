@@ -4128,18 +4128,17 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>إدراج المقالة كارتباط داخل علامة &lt;iframe&gt;</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation>تم فتح قاموس الموقع هذا في علامة تبويب جديدة</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>ممكن</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>كوصلة</translation>
     </message>
     <message>
       <source>Name</source>
