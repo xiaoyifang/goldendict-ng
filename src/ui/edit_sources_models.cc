@@ -642,7 +642,7 @@ Qt::ItemFlags WebSitesModel::flags( const QModelIndex & index ) const
   Qt::ItemFlags result = QAbstractTableModel::flags( index );
 
   if ( index.isValid() ) {
-    if ( index.column() <= 1 ) {
+    if ( index.column() == 0 ) {
       result |= Qt::ItemIsUserCheckable;
     }
     else {
