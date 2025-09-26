@@ -4124,18 +4124,17 @@ La liste complète des langues disponibles peut être trouvée &lt;a href=&quot;
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Insérer un article comme lien dans la balise &lt;iframe&gt;</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation>Le dictionnaire de ce site Web est ouvert dans un nouvel onglet</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>Activé</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>En tant que lien</translation>
     </message>
     <message>
       <source>Name</source>
