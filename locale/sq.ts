@@ -4120,18 +4120,17 @@ Lista e plotë e gjuhëve të disponueshme mund të gjendet &lt;a href=&quot;htt
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Fut artikullin si lidhje brenda etiketës &lt;iframe&gt;</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation type="unfinished">This website dictionary is opened in a new tab</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>Aktiv</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>Si lidhje</translation>
     </message>
     <message>
       <source>Name</source>
