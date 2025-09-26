@@ -319,10 +319,10 @@ protected:
 
   static QString getAbbrName( const QString & text );
   static QColor intToFixedColor( int index );
+  
+public:
   /// Make css content usable only for articles from this dictionary
   void isolateCSS( QString & css, const QString & wrapperSelector = QString() );
-
-public:
 
   /// Creates a dictionary. The id should be made using
   /// Format::makeDictionaryId(), the dictionaryFiles is the file names the
