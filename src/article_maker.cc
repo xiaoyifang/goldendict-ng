@@ -627,7 +627,6 @@ void ArticleRequest::bodyFinished()
   qDebug() << ">>>>";
 
   bool wasUpdated = false;
-  bool closePrevSpan{ false };          // Indicates whether the last opened article span is to
 
   QStringList dictIds;
   while ( bodyRequests.size() ) {
@@ -660,12 +659,10 @@ void ArticleRequest::bodyFinished()
                           R"( <div class="gdarticle {0} {1}" id="{2}"
                               data-gd-id="{3}"
                               >)" ),
-                        closePrevSpan ? "" : " gdactivearticle",
+                        "",
                         collapse ? " gdcollapsedarticle" : "",
                         gdFrom,
                         jsVal );
-
-        closePrevSpan = true;
 
         fmt::format_to( std::back_inserter( head ),
                         FMT_COMPILE(
