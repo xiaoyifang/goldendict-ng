@@ -4092,6 +4092,13 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
 </context>
 <context>
+    <name>WebSite</name>
+    <message>
+        <source>This website dictionary is opened in a new tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>WebSitesModel</name>
     <message>
         <source>Insert article as link inside &lt;iframe&gt; tag</source>
