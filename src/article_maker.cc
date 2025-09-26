@@ -624,8 +624,6 @@ void ArticleRequest::bodyFinished()
     return;
   }
 
-  qDebug() << ">>>>";
-
   bool wasUpdated = false;
 
   QStringList dictIds;
@@ -650,10 +648,6 @@ void ArticleRequest::bodyFinished()
 
         string gdFrom = "gdfrom-" + Html::escape( dictId );
 
-        if ( closePrevSpan ) {
-          head += R"(</div></div><div style="clear:both;"></div><span class="gdarticleseparator"></span>)";
-        }
-
         bool collapse = isCollapsable( req, QString::fromStdString( dictId ) );
 
         string jsVal = Html::escapeForJavaScript( dictId );
@@ -663,12 +657,10 @@ void ArticleRequest::bodyFinished()
                           R"( <div class="gdarticle {0} {1}" id="{2}"
                               data-gd-id="{3}"
                               >)" ),
-                        closePrevSpan ? "" : " gdactivearticle",
+                        "",
                         collapse ? " gdcollapsedarticle" : "",
                         gdFrom,
                         jsVal );
-
-        closePrevSpan = true;
 
         fmt::format_to( std::back_inserter( head ),
                         FMT_COMPILE(
@@ -725,6 +717,9 @@ void ArticleRequest::bodyFinished()
           qWarning( "getDataSlice error: %s", e.what() );
         }
 
+        auto separator = R"(</div></div><div style="clear:both;"></div><span class="gdarticleseparator"></span>)";
+        appendString( separator );
+
         wasUpdated = true;
 
         foundAnyDefinitions = true;
@@ -748,11 +743,6 @@ void ArticleRequest::bodyFinished()
     bodyDone = true;
 
     string footer;
-
-    if ( closePrevSpan ) {
-      footer += "</div></div>";
-      closePrevSpan = false;
-    }
 
     if ( !foundAnyDefinitions ) {
       // No definitions were ever found, say so to the user.
