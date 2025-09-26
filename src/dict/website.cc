@@ -39,13 +39,6 @@ public:
     dictionaryDescription = urlTemplate_;
   }
 
-  map< QString, QString > getProperties() noexcept override
-  {
-    map< QString, QString > properties;
-    properties.insert( { "Url", urlTemplate } );
-    return properties;
-  }
-
   unsigned long getArticleCount() noexcept override
   {
     return 0;
