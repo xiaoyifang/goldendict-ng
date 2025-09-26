@@ -6,6 +6,14 @@
 #include <QFile>
 #include <QSaveFile>
 #include <QDebug>
+#include <QStandardPaths>
+#include <QDir>
+
+// Helper function to get the temporary history file name
+QString getTempHistoryFileName()
+{
+  return Config::getHomeDir().filePath( "history.tmp" );
+}
 
 History::History( unsigned size, unsigned maxItemLength_ ):
   maxSize( size ),
@@ -14,28 +22,34 @@ History::History( unsigned size, unsigned maxItemLength_ ):
   dirty( false ),
   timerId( 0 )
 {
+  // First try to load from main history file
   QFile file( Config::getHistoryFileName() );
 
-  if ( !file.open( QFile::ReadOnly | QIODevice::Text ) ) {
-    return; // No file -- no history
-  }
+  if ( file.open( QFile::ReadOnly | QIODevice::Text ) ) {
+    QTextStream in( &file );
+    while ( !in.atEnd() && items.size() <= maxSize ) {
+      QString line = in.readLine( 4096 );
 
-  QTextStream in( &file );
-  while ( !in.atEnd() && items.size() <= maxSize ) {
-    QString line = in.readLine( 4096 );
+      auto firstSpace = line.indexOf( ' ' );
 
-    auto firstSpace = line.indexOf( ' ' );
+      if ( firstSpace < 0 || firstSpace == line.size() ) {
+        break;
+      }
 
-    if ( firstSpace < 0 || firstSpace == line.size() ) {
-      break;
-    }
+      QString t = line.right( line.size() - firstSpace - 1 ).trimmed();
 
-    QString t = line.right( line.size() - firstSpace - 1 ).trimmed();
-
-    if ( !t.isEmpty() ) {
-      items.push_back( Item{ line.right( line.size() - firstSpace - 1 ).trimmed() } );
+      if ( !t.isEmpty() ) {
+        items.push_back( Item{ line.right( line.size() - firstSpace - 1 ).trimmed() } );
+      }
     }
   }
+  
+  // Then try to load from temporary file (in case of previous crash)
+  // This will add the most recent item at the beginning if it exists
+  loadTemp();
+  
+  // Remove temporary file after successful load
+  removeTemp();
 }
 
 History::Item History::getItem( int index )
@@ -75,6 +89,9 @@ void History::addItem( const Item & item )
   dirty = true;
 
   emit itemsChanged();
+  
+  // Save to temporary file immediately after adding an item
+  saveTemp( addedItem, '+' );
 }
 
 bool History::ensureSizeConstraints()
@@ -121,6 +138,8 @@ bool History::save()
 
   if ( file.commit() ) {
     dirty = false;
+    // Remove temporary file after successful save to main file
+    removeTemp();
     return true;
   }
 
@@ -134,6 +153,9 @@ void History::clear()
   dirty = true;
 
   emit itemsChanged();
+  
+  // Remove temporary file when clearing history
+  removeTemp();
 }
 
 void History::setSaveInterval( unsigned interval )
@@ -154,4 +176,99 @@ void History::timerEvent( QTimerEvent * ev )
 {
   Q_UNUSED( ev );
   save();
+}
+
+void History::saveTemp( const Item & item, QChar operation )
+{
+  QSaveFile file( getTempHistoryFileName() );
+  // Use Append mode to accumulate new records in temporary file
+  if ( !file.open( QFile::Append | QIODevice::Text ) ) {
+    return; // Failed to open temporary file
+  }
+
+  QTextStream out( &file );
+  // operation indicates the type of operation: '+' for add, '-' for remove
+  out << operation << " " << item.word.trimmed() << '\n';
+
+  if ( file.commit() ) {
+    // Successfully saved to temporary file
+    // Note: We don't reset dirty flag here as the main file is not yet saved
+    return;
+  }
+
+  qDebug() << "Failed to save temporary history file";
+}
+
+void History::loadTemp()
+{
+  QFile file( getTempHistoryFileName() );
+
+  if ( !file.open( QFile::ReadOnly | QIODevice::Text ) ) {
+    return; // No temporary file -- no history to recover
+  }
+
+  // Store temporary items to be added at the beginning (most recent first)
+  QList<Item> tempItemsToAdd;
+  QList<Item> tempItemsToRemove;
+
+  QTextStream in( &file );
+  while ( !in.atEnd() && (items.size() + tempItemsToAdd.size()) <= maxSize ) {
+    QString line = in.readLine( 4096 );
+
+    if (line.isEmpty()) {
+      continue;
+    }
+
+    // First character indicates the operation: '+' for add, '-' for remove
+    QChar operation = line[0];
+    QString word;
+
+    if (line.size() > 2) {
+      word = line.mid(2).trimmed(); // Skip the operation character and space
+    }
+
+    if ( word.isEmpty() ) {
+      continue;
+    }
+
+    Item newItem{ word };
+
+    if (operation == '+') {
+      // Check if the item already exists in the main history or in items to remove
+      if ( !items.contains( newItem ) && !tempItemsToRemove.contains( newItem ) ) {
+        // Add to temporary list (they are in chronological order)
+        tempItemsToAdd.push_back( newItem );
+      }
+    } else if (operation == '-') {
+      // Add to items to remove
+      if ( !tempItemsToRemove.contains( newItem ) ) {
+        tempItemsToRemove.push_back( newItem );
+      }
+      
+      // Also remove from items to add if it's there
+      if ( tempItemsToAdd.contains( newItem ) ) {
+        tempItemsToAdd.removeOne( newItem );
+      }
+    }
+  }
+  
+  // Insert temporary items at the beginning in reverse order (most recent first)
+  for (int i = tempItemsToAdd.size() - 1; i >= 0; --i) {
+    // Check again if the item is not in the remove list
+    if ( !tempItemsToRemove.contains( tempItemsToAdd[i] ) ) {
+      items.push_front(tempItemsToAdd[i]);
+    }
+  }
+  
+  // Mark as dirty so it gets saved to main file
+  if ( !tempItemsToAdd.isEmpty() ) {
+    dirty = true;
+  }
+  
+  qDebug() << "Recovered" << tempItemsToAdd.size() << "items from temporary file";
+}
+
+void History::removeTemp()
+{
+  QFile::remove( getTempHistoryFileName() );
 }
