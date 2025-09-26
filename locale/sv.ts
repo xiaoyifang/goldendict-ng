@@ -4131,18 +4131,17 @@ Fullständig lista över tillgängliga språk finns &lt;a href=&quot;https://lin
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Infoga artikel som länk inuti &lt;iframe&gt; tagg</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation>Denna webbplats ordbok öppnas i en ny flik</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>Aktiverad</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>Som länk</translation>
     </message>
     <message>
       <source>Name</source>
