@@ -627,6 +627,7 @@ void ArticleRequest::bodyFinished()
   qDebug() << ">>>>";
 
   bool wasUpdated = false;
+  bool closePrevSpan{ false };          // Indicates whether the last opened article span is to
 
   QStringList dictIds;
   while ( bodyRequests.size() ) {
@@ -649,10 +650,6 @@ void ArticleRequest::bodyFinished()
         string head;
 
         string gdFrom = "gdfrom-" + Html::escape( dictId );
-
-        if ( closePrevSpan ) {
-          head += R"(</div></div><div style="clear:both;"></div><span class="gdarticleseparator"></span>)";
-        }
 
         bool collapse = isCollapsable( req, QString::fromStdString( dictId ) );
 
@@ -725,6 +722,9 @@ void ArticleRequest::bodyFinished()
           qWarning( "getDataSlice error: %s", e.what() );
         }
 
+        auto separator = R"(</div></div><div style="clear:both;"></div><span class="gdarticleseparator"></span>)";
+        appendString( separator );
+
         wasUpdated = true;
 
         foundAnyDefinitions = true;
@@ -748,11 +748,6 @@ void ArticleRequest::bodyFinished()
     bodyDone = true;
 
     string footer;
-
-    if ( closePrevSpan ) {
-      footer += "</div></div>";
-      closePrevSpan = false;
-    }
 
     if ( !foundAnyDefinitions ) {
       // No definitions were ever found, say so to the user.
