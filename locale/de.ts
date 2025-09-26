@@ -4122,18 +4122,17 @@ Eine vollständige Liste der verfügbaren Sprachen ist &lt;a href=&quot;https://
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Artikel als Link in &lt;iframe&gt; Tag einfügen</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation>Dieses Website-Wörterbuch ist in einem neuen Tab geöffnet</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>Aktiv</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>Als Link</translation>
     </message>
     <message>
       <source>Name</source>
