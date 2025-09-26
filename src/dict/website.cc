@@ -100,8 +100,6 @@ sptr< DataRequest > WebSiteDictionary::getArticle( const std::u32string & str,
 {
   QString urlString = Utils::WebSite::urlReplaceWord( QString( urlTemplate ), QString::fromStdU32String( str ) );
 
-  // Just insert link in <iframe> tag
-
   string result = R"(<div class="website_padding"></div>)";
 
   //heuristic add url to global whitelist.
@@ -111,6 +109,20 @@ sptr< DataRequest > WebSiteDictionary::getArticle( const std::u32string & str,
   const QString & encodeUrl = urlString;
 
   if ( GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
+
+    //replace the word,and get the actual requested url
+    QString url = urlTemplate;
+    if ( !url.isEmpty() ) {
+      auto word = QString::fromStdU32String( str );
+      QString requestUrl = Utils::WebSite::urlReplaceWord( url, word );
+      auto title         = QString::fromStdString( getName() );
+      // Pass dictId to the websiteDictionarySignal
+      emit GlobalBroadcaster::instance()
+        -> websiteDictionarySignal( title + "-" + word,
+                                    requestUrl,
+                                    QString::fromStdString( getId() ) );
+    }
+
     fmt::format_to(
       std::back_inserter( result ),
       R"(<div class="website-new-tab-notice">
