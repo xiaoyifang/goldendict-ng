@@ -43,7 +43,6 @@ QString portableHomeDirPath()
 }
 
 
-
 } // namespace
 
 ProxyServer::ProxyServer():
@@ -2230,7 +2229,7 @@ QString getPidFileName()
   return getHomeDir().filePath( "pid" );
 }
 
-  QDir getHomeDir()
+QDir getHomeDir()
 {
   if ( isPortableVersion() ) {
     return QDir( portableHomeDirPath() );
@@ -2246,13 +2245,13 @@ QString getPidFileName()
   result                  = QDir::fromNativeSeparators( QString::fromWCharArray( _wgetenv( L"APPDATA" ) ) );
 #else
   char const * pathInHome = ".goldendict";
-#ifdef XDG_BASE_DIRECTORY_COMPLIANCE
+  #ifdef XDG_BASE_DIRECTORY_COMPLIANCE
   // check if an old config dir is present, otherwise use standards-compliant location
   if ( !result.exists( pathInHome ) ) {
     result.setPath( QStandardPaths::writableLocation( QStandardPaths::ConfigLocation ) );
     pathInHome = xdgSubdirName;
   }
-#endif
+  #endif
 #endif
 
   result.mkpath( pathInHome );

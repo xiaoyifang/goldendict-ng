@@ -208,7 +208,7 @@ void History::loadTemp()
   }
 
   QTextStream in( &file );
-  while ( !in.atEnd() && items.size()  <= maxSize ) {
+  while ( !in.atEnd() && items.size() <= maxSize ) {
     QString line = in.readLine( 4096 );
 
     if ( line.isEmpty() ) {
@@ -237,7 +237,7 @@ void History::loadTemp()
       }
     }
     else if ( operation == '-' ) {
-      items.removeOne(newItem);
+      items.removeOne( newItem );
     }
   }
 

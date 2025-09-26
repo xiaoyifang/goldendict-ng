@@ -925,7 +925,7 @@ QString getConfigDir();
 /// Returns the index directory, where the indices are to be stored.
 QString getIndexDir();
 
-  QDir getHomeDir();
+QDir getHomeDir();
 /// Returns the filename of a .pid file which should store current pid of
 /// the process.
 QString getPidFileName();
