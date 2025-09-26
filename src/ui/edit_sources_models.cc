@@ -608,7 +608,7 @@ void WebSitesModel::addNewSite()
   Config::WebSite w;
 
   w.enabled = false;
-  w.id = Dictionary::generateRandomDictionaryId();
+  w.id      = Dictionary::generateRandomDictionaryId();
   w.url = "http://";
 
   beginInsertRows( QModelIndex(), webSites.size(), webSites.size() );
@@ -785,7 +785,7 @@ void DictServersModel::addNewServer()
   Config::DictServer d;
 
   d.enabled = false;
-  d.id = Dictionary::generateRandomDictionaryId();
+  d.id      = Dictionary::generateRandomDictionaryId();
   d.url = "dict://";
 
   beginInsertRows( QModelIndex(), dictServers.size(), dictServers.size() );
@@ -1345,7 +1345,7 @@ Qt::ItemFlags SoundDirsModel::flags( const QModelIndex & index ) const
 {
   Qt::ItemFlags result = QAbstractTableModel::flags( index );
 
-  if ( index.isValid() && (index.column() == 1 || index.column() == 2 || index.column() == 3) ) {
+  if ( index.isValid() && ( index.column() == 1 || index.column() == 2 || index.column() == 3 ) ) {
     result |= Qt::ItemIsEditable;
   }
 
