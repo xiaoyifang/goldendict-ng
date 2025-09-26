@@ -4126,18 +4126,17 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Vložit článek jako odkaz do &lt;iframe&gt; tagu</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation>Tento webový slovník je otevřen na nové kartě</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>Povoleno</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>Jako odkaz</translation>
     </message>
     <message>
       <source>Name</source>
