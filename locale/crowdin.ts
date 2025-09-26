@@ -4101,15 +4101,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
 <context>
     <name>WebSitesModel</name>
     <message>
-        <source>Insert article as link inside &lt;iframe&gt; tag</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Enabled</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>As link</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
