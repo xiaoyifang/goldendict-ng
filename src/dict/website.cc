@@ -102,8 +102,8 @@ sptr< DataRequest > WebSiteDictionary::getArticle( const std::u32string & str,
 
     //replace the word,and get the actual requested url
     if ( !urlString.isEmpty() ) {
-      auto word          = QString::fromStdU32String( str );
-      auto title         = QString::fromStdString( getName() );
+      auto word  = QString::fromStdU32String( str );
+      auto title = QString::fromStdString( getName() );
       // Pass dictId to the websiteDictionarySignal
       emit GlobalBroadcaster::instance()
         -> websiteDictionarySignal( title + "-" + word, urlString, QString::fromStdString( getId() ) );
