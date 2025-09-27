@@ -537,7 +537,8 @@ void ArticleRequest::altSearchFinished()
         }
       }
       catch ( const std::exception & e ) {
-        qWarning() << "getArticle request error:" << e.what() << "in" << QString::fromStdString( activeDict->getName() );
+        qWarning() << "getArticle request error:" << e.what() << "in"
+                   << QString::fromStdString( activeDict->getName() );
       }
     }
 
