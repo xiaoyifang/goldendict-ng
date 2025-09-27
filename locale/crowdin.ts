@@ -3610,6 +3610,14 @@ from Stardict, Babylon and GLS dictionaries</source>
         <source>Force the word to be translated in the mainwindow.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Website Url:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QuickFilterLine</name>
