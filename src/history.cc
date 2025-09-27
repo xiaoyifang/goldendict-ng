@@ -182,7 +182,8 @@ void History::saveTemp( const Item & item, QChar operation )
 {
   QSaveFile file( getTempHistoryFileName() );
   // Use Append mode to accumulate new records in temporary file
-  if ( !file.open( QFile::Append | QIODevice::Text ) ) {
+  // Use QFile::Append | QFile::WriteOnly to ensure file creation if it doesn't exist
+  if ( !file.open( QFile::Append | QFile::WriteOnly | QIODevice::Text ) ) {
     return; // Failed to open temporary file
   }
 
@@ -208,7 +209,7 @@ void History::loadTemp()
   }
 
   QTextStream in( &file );
-  while ( !in.atEnd() && items.size() <= maxSize ) {
+  while ( !in.atEnd() && items.size()  <= maxSize ) {
     QString line = in.readLine( 4096 );
 
     if ( line.isEmpty() ) {
@@ -231,9 +232,9 @@ void History::loadTemp()
 
     if ( operation == '+' ) {
       // Check if the item already exists in the main history or in items to remove
-      if ( !items.contains( newItem ) ) {
+      if (!items.contains(newItem)) {
         // Add to temporary list (they are in chronological order)
-        items.push_front( newItem );
+        items.push_front(newItem);
       }
     }
     else if ( operation == '-' ) {

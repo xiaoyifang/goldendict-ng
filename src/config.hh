@@ -926,6 +926,7 @@ QString getConfigDir();
 QString getIndexDir();
 
 QDir getHomeDir();
+
 /// Returns the filename of a .pid file which should store current pid of
 /// the process.
 QString getPidFileName();
