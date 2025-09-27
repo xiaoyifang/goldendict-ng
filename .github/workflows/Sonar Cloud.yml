@@ -50,5 +50,5 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            --define sonar.cfamily.compile-commands=build_dir/compile_commands.json
+            "--define sonar.cfamily.compile-commands=build_dir/compile_commands.json"
     
