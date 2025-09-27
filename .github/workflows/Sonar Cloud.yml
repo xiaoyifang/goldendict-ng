@@ -45,10 +45,10 @@ jobs:
           mkdir build_dir
           cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -S . -B build_dir -G Ninja
       - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@v5.3.1
+        uses: SonarSource/sonarqube-scan-action@v6.0.0
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            --define sonar.cfamily.compile-commands=build_dir/compile_commands.json
+            --define "sonar.cfamily.compile-commands=build_dir/compile_commands.json"
     
