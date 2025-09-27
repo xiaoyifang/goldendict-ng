@@ -810,7 +810,7 @@ const QString & MdxDictionary::getDescription()
   dictionaryDescription = filterResource( dictionaryDescription );
 
   //unclosed tags
-  dictionaryDescription = dictionaryDescription + QString::fromStdString(Utils::Html::getHtmlCleaner()) ;
+  dictionaryDescription = dictionaryDescription + QString::fromStdString( Utils::Html::getHtmlCleaner() );
   return dictionaryDescription;
 }
 
