@@ -4130,18 +4130,17 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Εισαγωγή άρθρου ως σύνδεσμος μέσα στην ετικέτα &lt;iframe&gt;</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation>Αυτό το λεξικό ιστοσελίδας ανοίγει σε νέα καρτέλα</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>Ενεργή</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>Ως σύνδεσμος</translation>
     </message>
     <message>
       <source>Name</source>

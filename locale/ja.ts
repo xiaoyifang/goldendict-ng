@@ -4123,18 +4123,17 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>&lt;iframe&gt; タグ内のリンクとして記事を挿入</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation>このウェブサイト辞書は新しいタブで開かれています</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>有効</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>リンクとして</translation>
     </message>
     <message>
       <source>Name</source>

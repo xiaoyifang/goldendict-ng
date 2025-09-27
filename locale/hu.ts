@@ -4128,18 +4128,17 @@ Az elérhető nyelvek teljes listája megtalálható &lt;a href=&quot;https://li
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Szócikk beszúrása hivatkozásként egy &lt;iframe&gt; keretben</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation type="unfinished">This website dictionary is opened in a new tab</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>Bekapcsolva</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>Hivatkozásként</translation>
     </message>
     <message>
       <source>Name</source>

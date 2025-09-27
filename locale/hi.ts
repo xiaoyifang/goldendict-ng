@@ -4107,18 +4107,17 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>लेख को लिंक के रूप में &lt;iframe&gt; टैग के अंदर डालें</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation type="unfinished">This website dictionary is opened in a new tab</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>सक्रिय</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>कड़ी के रूप में</translation>
     </message>
     <message>
       <source>Name</source>
