@@ -809,6 +809,8 @@ const QString & MdxDictionary::getDescription()
   dictionaryDescription = MdictParser::substituteStylesheet( dictionaryDescription, styleSheets );
   dictionaryDescription = filterResource( dictionaryDescription );
 
+  //unclosed tags
+  dictionaryDescription = dictionaryDescription + QString::fromStdString(Utils::Html::getHtmlCleaner()) ;
   return dictionaryDescription;
 }
 
