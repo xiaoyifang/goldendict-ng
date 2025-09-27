@@ -518,18 +518,27 @@ void ArticleRequest::altSearchFinished()
 
     for ( const auto & activeDict : activeDicts ) {
       try {
-        sptr< Dictionary::DataRequest > r = activeDict->getArticle(
-          wordStd,
-          altsVector,
-          Text::removeTrailingZero( contexts.value( QString::fromStdString( activeDict->getId() ) ) ),
-          ignoreDiacritics );
+        if ( word == ":about" ) {
+          QString description = activeDict->getDescription();
+          auto r              = std::make_shared< Dictionary::DataRequestInstant >( true );
+          r->appendString( description.toStdString() );
+          bodyRequests.push_back( r );
+        }
+        else {
+          sptr< Dictionary::DataRequest > r = activeDict->getArticle(
+            wordStd,
+            altsVector,
+            Text::removeTrailingZero( contexts.value( QString::fromStdString( activeDict->getId() ) ) ),
+            ignoreDiacritics );
 
-        connect( r.get(), &Dictionary::Request::finished, this, &ArticleRequest::bodyFinished, Qt::QueuedConnection );
+          connect( r.get(), &Dictionary::Request::finished, this, &ArticleRequest::bodyFinished, Qt::QueuedConnection );
 
-        bodyRequests.push_back( r );
+          bodyRequests.push_back( r );
+        }
       }
-      catch ( std::exception & e ) {
-        qWarning( "getArticle request error (%s) in \"%s\"", e.what(), activeDict->getName().c_str() );
+      catch ( const std::exception & e ) {
+        qWarning() << "getArticle request error:" << e.what() << "in"
+                   << QString::fromStdString( activeDict->getName() );
       }
     }
 
@@ -696,8 +705,8 @@ void ArticleRequest::bodyFinished()
             appendDataSlice( &d.front(), d.size() );
           }
         }
-        catch ( std::exception & e ) {
-          qWarning( "getDataSlice error: %s", e.what() );
+        catch ( const std::exception & e ) {
+          qWarning() << "getDataSlice error:" << e.what();
         }
 
         auto separator = R"(</div></div><div style="clear:both;"></div><span class="gdarticleseparator"></span>)";

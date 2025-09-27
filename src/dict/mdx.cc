@@ -273,6 +273,7 @@ private:
   QString & filterResource( QString & article );
 
   void replaceLinks( QString & id, QString & article );
+  QString isolateStyleCssInHtml( const QString & description );
   //@font-face
   void replaceStyleInHtml( QString & id, QString & article );
   void replaceFontLinks( QString & id, QString & article );
@@ -701,7 +702,7 @@ QByteArray MddResourceRequest::isolate_css()
     css = newCSS;
     newCSS.clear();
   }
-  dict.isolateCSS( css, ".mdict" );
+  dict.isolateCSS( css );
   auto bytes = css.toUtf8();
 
   return bytes;
@@ -805,6 +806,11 @@ const QString & MdxDictionary::getDescription()
     dictionaryDescription = QString::fromUtf8( str.c_str(), str.size() );
   }
 
+  dictionaryDescription = MdictParser::substituteStylesheet( dictionaryDescription, styleSheets );
+  dictionaryDescription = filterResource( dictionaryDescription );
+
+  //unclosed tags
+  dictionaryDescription = dictionaryDescription + QString::fromStdString( Utils::Html::getHtmlCleaner() );
   return dictionaryDescription;
 }
 
@@ -869,6 +875,7 @@ QString & MdxDictionary::filterResource( QString & article )
   QString id = QString::fromStdString( getId() );
   replaceLinks( id, article );
   replaceStyleInHtml( id, article );
+  article = isolateStyleCssInHtml( article );
   return article;
 }
 
@@ -1036,6 +1043,47 @@ void MdxDictionary::replaceLinks( QString & id, QString & article )
     articleNewText += article.mid( linkPos );
     article = articleNewText;
   }
+}
+
+QString MdxDictionary::isolateStyleCssInHtml( const QString & description )
+{
+  // Check if description contains <style> tags, if so, call isolateCSS to process them
+  if ( description.contains( "<style", Qt::CaseInsensitive ) ) {
+    // Extract content from <style> tags and process CSS isolation
+    QRegularExpression styleRegex( "<style[^>]*>(.*?)</style>",
+                                   QRegularExpression::CaseInsensitiveOption
+                                     | QRegularExpression::DotMatchesEverythingOption );
+    QRegularExpressionMatchIterator it = styleRegex.globalMatch( description );
+
+    // Construct a new string instead of modifying the original description
+    QString newDescription;
+    int lastPos = 0;
+
+    while ( it.hasNext() ) {
+      QRegularExpressionMatch match = it.next();
+      QString styleContent          = match.captured( 1 );
+
+      // Call isolateCSS to process CSS content in <style> tags
+      isolateCSS( styleContent, QString() );
+
+      // Simplified style tag construction as suggested by user
+      QString newStyleTag = "<style>" + styleContent + "</style>";
+
+      // Append content before the match and the new style tag
+      newDescription += description.mid( lastPos, match.capturedStart() - lastPos );
+      newDescription += newStyleTag;
+
+      // Update last position
+      lastPos = match.capturedEnd();
+    }
+
+    // Append any remaining content after the last match
+    newDescription += description.mid( lastPos );
+
+    return newDescription;
+  }
+
+  return description;
 }
 
 void MdxDictionary::replaceStyleInHtml( QString & id, QString & article )

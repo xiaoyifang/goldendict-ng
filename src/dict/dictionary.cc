@@ -377,7 +377,7 @@ void Class::isolateCSS( QString & css, const QString & wrapperSelector )
   int currentPos = 0;
 
   // Create isolation prefix using dictionary ID
-  QString prefix( "#gdfrom-" );
+  QString prefix( "#gdarticlefrom-" );
   prefix += QString::fromLatin1( getId().c_str() );
   if ( !wrapperSelector.isEmpty() ) {
     prefix += " " + wrapperSelector;
