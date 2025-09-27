@@ -3638,6 +3638,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Force the word to be translated in the mainwindow.</source>
       <translation>メインウィンドウに単語を強制的に翻訳します。</translation>
     </message>
+    <message>
+      <source>Website Url:</source>
+      <translation>Website Url:</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation>Url では、 &quot;%GDWORD%&quot; が検索されている単語に置き換えられます。</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
