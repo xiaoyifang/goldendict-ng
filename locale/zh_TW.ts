@@ -4120,7 +4120,7 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <name>WebSite</name>
     <message>
       <source>This website dictionary is opened in a new tab</source>
-      <translation type="unfinished">This website dictionary is opened in a new tab</translation>
+      <translation>這個網站字典會在新分頁中開啟</translation>
     </message>
   </context>
   <context>
