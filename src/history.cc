@@ -180,10 +180,11 @@ void History::timerEvent( QTimerEvent * ev )
 
 void History::saveTemp( const Item & item, QChar operation )
 {
-  QSaveFile file( getTempHistoryFileName() );
+  QFile file( getTempHistoryFileName() );
   // Use Append mode to accumulate new records in temporary file
   // Use QFile::Append | QFile::WriteOnly to ensure file creation if it doesn't exist
   if ( !file.open( QFile::Append | QFile::WriteOnly | QIODevice::Text ) ) {
+    qDebug() << "Failed to open temporary history file for writing:" << file.errorString();
     return; // Failed to open temporary file
   }
 
@@ -191,13 +192,8 @@ void History::saveTemp( const Item & item, QChar operation )
   // operation indicates the type of operation: '+' for add, '-' for remove
   out << operation << " " << item.word.trimmed() << '\n';
 
-  if ( file.commit() ) {
-    // Successfully saved to temporary file
-    // Note: We don't reset dirty flag here as the main file is not yet saved
-    return;
-  }
-
-  qDebug() << "Failed to save temporary history file";
+  out.flush();
+  file.flush();
 }
 
 void History::loadTemp()
