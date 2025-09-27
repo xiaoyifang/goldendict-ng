@@ -180,7 +180,7 @@ void History::timerEvent( QTimerEvent * ev )
 
 void History::saveTemp( const Item & item, QChar operation )
 {
-  QFile file( getTempHistoryFileName() );
+  QFile file(getTempHistoryFileName());
   // Use Append mode to accumulate new records in temporary file
   // Use QFile::Append | QFile::WriteOnly to ensure file creation if it doesn't exist
   if ( !file.open( QFile::Append | QFile::WriteOnly | QIODevice::Text ) ) {
