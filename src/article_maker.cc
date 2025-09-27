@@ -536,8 +536,8 @@ void ArticleRequest::altSearchFinished()
           bodyRequests.push_back( r );
         }
       }
-      catch ( std::exception & e ) {
-        qWarning( "getArticle request error (%s) in \"%s\"", e.what(), activeDict->getName().c_str() );
+      catch ( const std::exception & e ) {
+        qWarning() << "getArticle request error:" << e.what() << "in" << QString::fromStdString( activeDict->getName() );
       }
     }
 
@@ -704,8 +704,8 @@ void ArticleRequest::bodyFinished()
             appendDataSlice( &d.front(), d.size() );
           }
         }
-        catch ( std::exception & e ) {
-          qWarning( "getDataSlice error: %s", e.what() );
+        catch ( const std::exception & e ) {
+          qWarning() << "getDataSlice error:" << e.what();
         }
 
         auto separator = R"(</div></div><div style="clear:both;"></div><span class="gdarticleseparator"></span>)";
