@@ -42,39 +42,6 @@ QString portableHomeDirPath()
   return QCoreApplication::applicationDirPath() + "/portable";
 }
 
-QDir getHomeDir()
-{
-  if ( isPortableVersion() ) {
-    return QDir( portableHomeDirPath() );
-  }
-
-  QDir result;
-
-  result = QDir::home();
-#ifdef Q_OS_WIN32
-  if ( result.cd( "Application Data/GoldenDict" ) )
-    return result;
-  const char * pathInHome = "GoldenDict";
-  result                  = QDir::fromNativeSeparators( QString::fromWCharArray( _wgetenv( L"APPDATA" ) ) );
-#else
-  char const * pathInHome = ".goldendict";
-  #ifdef XDG_BASE_DIRECTORY_COMPLIANCE
-  // check if an old config dir is present, otherwise use standards-compliant location
-  if ( !result.exists( pathInHome ) ) {
-    result.setPath( QStandardPaths::writableLocation( QStandardPaths::ConfigLocation ) );
-    pathInHome = xdgSubdirName;
-  }
-  #endif
-#endif
-
-  result.mkpath( pathInHome );
-
-  if ( !result.cd( pathInHome ) ) {
-    throw exCantUseHomeDir();
-  }
-
-  return result;
-}
 
 } // namespace
 
@@ -2262,6 +2229,39 @@ QString getPidFileName()
   return getHomeDir().filePath( "pid" );
 }
 
+QDir getHomeDir()
+{
+  if ( isPortableVersion() ) {
+    return QDir( portableHomeDirPath() );
+  }
+
+  QDir result;
+
+  result = QDir::home();
+#ifdef Q_OS_WIN32
+  if ( result.cd( "Application Data/GoldenDict" ) )
+    return result;
+  const char * pathInHome = "GoldenDict";
+  result                  = QDir::fromNativeSeparators( QString::fromWCharArray( _wgetenv( L"APPDATA" ) ) );
+#else
+  char const * pathInHome = ".goldendict";
+  #ifdef XDG_BASE_DIRECTORY_COMPLIANCE
+  // check if an old config dir is present, otherwise use standards-compliant location
+  if ( !result.exists( pathInHome ) ) {
+    result.setPath( QStandardPaths::writableLocation( QStandardPaths::ConfigLocation ) );
+    pathInHome = xdgSubdirName;
+  }
+  #endif
+#endif
+
+  result.mkpath( pathInHome );
+
+  if ( !result.cd( pathInHome ) ) {
+    throw exCantUseHomeDir();
+  }
+
+  return result;
+}
 QString getHistoryFileName()
 {
   QString homeHistoryPath = getHomeDir().filePath( "history" );
