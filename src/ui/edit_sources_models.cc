@@ -648,8 +648,8 @@ Qt::ItemFlags WebSitesModel::flags( const QModelIndex & index ) const
     if ( index.column() == 0 ) {
       result |= Qt::ItemIsUserCheckable;
     }
-    else if (index.column() == 4) { // Script column
-      if (GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab) {
+    else if ( index.column() == 4 ) { // Script column
+      if ( GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
         result |= Qt::ItemIsEditable;
       }
     }

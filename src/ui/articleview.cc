@@ -734,7 +734,7 @@ void ArticleView::injectWebsiteConfigScript()
   // Find website configuration for current host
   const QString host = websiteHost;
   QString websiteScript;
-  
+
   // Look for website configuration matching the current host
   for ( const auto & website : cfg.webSites ) {
     if ( website.enabled && website.url.contains( host, Qt::CaseInsensitive ) ) {
@@ -742,12 +742,12 @@ void ArticleView::injectWebsiteConfigScript()
       break;
     }
   }
-  
+
   // If no script found for this host, return
   if ( websiteScript.isEmpty() ) {
     return;
   }
-  
+
   // Inject the website-specific script
   webview->page()->runJavaScript( websiteScript );
 }
