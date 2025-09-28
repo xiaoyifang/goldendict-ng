@@ -3641,6 +3641,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Force the word to be translated in the mainwindow.</source>
       <translation>Εξαναγκασμός μετάφρασης της λέξης στο κύριο παράθυρο.</translation>
     </message>
+    <message>
+      <source>Website Url:</source>
+      <translation>Url Ιστοσελίδας:</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation>Στο Url, &quot;%GDWORD%&quot; θα αντικατασταθεί με τη λέξη που θα αναζητηθεί.</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>

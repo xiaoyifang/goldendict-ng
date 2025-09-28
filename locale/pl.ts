@@ -3638,6 +3638,14 @@ ze słowników Stardict, Babylon i GLS</translation>
       <source>Force the word to be translated in the mainwindow.</source>
       <translation>Wymuś tłumaczenie słowa w głównym oknie.</translation>
     </message>
+    <message>
+      <source>Website Url:</source>
+      <translation>Adres strony internetowej:</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation>W URL, &quot;%GDWORD%&quot; zostanie zastąpiony słowem wyszukiwanym.</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>

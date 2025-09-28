@@ -3635,6 +3635,14 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <source>Force the word to be translated in the mainwindow.</source>
       <translation>Forceer het woord te vertalen in het hoofdvenster.</translation>
     </message>
+    <message>
+      <source>Website Url:</source>
+      <translation>Website URL:</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation>In de Url, &quot;%GDWORD%&quot; wordt vervangen door het woord dat wordt gezocht.</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>

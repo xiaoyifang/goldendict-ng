@@ -3631,6 +3631,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Force the word to be translated in the mainwindow.</source>
       <translation>Erzwingen Sie das Wort im Hauptfenster zu übersetzen.</translation>
     </message>
+    <message>
+      <source>Website Url:</source>
+      <translation>Website-Url:</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation>In der Url wird &quot;%GDWORD%&quot; durch das Suchwort ersetzt.</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>

@@ -3646,6 +3646,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Force the word to be translated in the mainwindow.</source>
       <translation>Принудительно переводить слово в главном окне.</translation>
     </message>
+    <message>
+      <source>Website Url:</source>
+      <translation>Ссылка на сайт:</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation>В Url, &quot;%GDWORD%&quot; будет заменена на поисковое слово.</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>

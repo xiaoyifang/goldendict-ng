@@ -3755,6 +3755,14 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
       <source>Force the word to be translated in the mainwindow.</source>
       <translation type="unfinished">Force the word to be translated in the mainwindow.</translation>
     </message>
+    <message>
+      <source>Website Url:</source>
+      <translation type="unfinished">Website Url:</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation type="unfinished">In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
