@@ -339,6 +339,21 @@ inline QString getHostBaseFromUrl( const QUrl & url )
   return getHostBase( host );
 }
 
+/// \brief Extract the base domain from a given domain string.
+///
+/// This method handles several cases:
+/// 1. Standard domains like "example.com" -> "example.com"
+/// 2. Subdomains like "www.example.com" -> "example.com"
+/// 3. Generic patterns like ".com.xx", ".co.xx", ".org.xx" where xx is a 2-3 character TLD -> "example.com"
+///
+/// Examples:
+/// - "www.example.com.jp" -> "example.com"
+/// - "subdomain.example.org.uk" -> "example.org"
+///
+/// \param domain The domain string to process
+/// \return The extracted base domain
+QString extractBaseDomain( const QString & domain );
+
 QString getSchemeAndHost( const QUrl & url );
 
 } // namespace Url

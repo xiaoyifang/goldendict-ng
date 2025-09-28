@@ -25,21 +25,6 @@ class GlobalBroadcaster: public QObject
   QSet< QString > whitelist;
   Icons::DictionaryIconName _icon_names;
 
-  /// \brief Extract the base domain from a given domain string.
-  ///
-  /// This method handles several cases:
-  /// 1. Standard domains like "example.com" -> "example.com"
-  /// 2. Subdomains like "www.example.com" -> "example.com"
-  /// 3. Generic patterns like ".com.xx", ".co.xx", ".org.xx" where xx is a 2-3 character TLD -> "example.com"
-  ///
-  /// Examples:
-  /// - "www.example.com.jp" -> "example.com"
-  /// - "subdomain.example.org.uk" -> "example.org"
-  ///
-  /// \param domain The domain string to process
-  /// \return The extracted base domain
-  QString extractBaseDomain( const QString & domain ) const;
-
 public:
   void setPreference( Config::Preferences * _pre );
   Config::Preferences * getPreference() const;
@@ -57,7 +42,7 @@ public:
   ///
   /// This method checks for exact matches and base domain matches:
   /// 1. Direct string matching - e.g. "www.example.com" matches "www.example.com"
-  /// 2. Base domain matching using extractBaseDomain() - e.g. "example.com" matches "www.example.com"
+  /// 2. Base domain matching using Utils::Url::extractBaseDomain() - e.g. "example.com" matches "www.example.com"
   ///
   /// Generic pattern handling for TLDs like .com.xx, .co.xx, .org.xx:
   /// - For "www.example.com.jp", the base domain is "example.com"

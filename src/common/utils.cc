@@ -72,6 +72,43 @@ QString Utils::Url::getSchemeAndHost( const QUrl & url )
   return origin;
 }
 
+QString Utils::Url::extractBaseDomain( const QString & domain )
+{
+  // More generic approach for detecting two-part TLDs
+  // Look for patterns like com.xx, co.xx, org.xx, gov.xx, net.xx, edu.xx
+  QStringList parts = domain.split( '.' );
+  if ( parts.size() >= 3 ) {
+    QString secondLevel = parts[ parts.size() - 2 ];
+    QString topLevel = parts[ parts.size() - 1 ];
+
+    // Check if the second level is a common second-level domain indicator
+    // and the top level is a standard TLD (2-3 characters)
+    if ( ( secondLevel == "com" || secondLevel == "co" || secondLevel == "org" ||
+           secondLevel == "gov" || secondLevel == "net" || secondLevel == "edu" ) &&
+         ( topLevel.length() == 2 || topLevel.length() == 3 ) ) {
+      // Extract the registrable domain (e.g., "example.com" from "www.example.com.jp")
+      if ( parts.size() >= 3 ) {
+        return parts[ parts.size() - 3 ] + "." + secondLevel;
+      }
+      return secondLevel + "." + topLevel;
+    }
+  }
+
+  // For domains with multiple parts, extract the last two parts as base domain
+  int dotCount = domain.count( '.' );
+  if ( dotCount >= 2 ) {
+    if ( parts.isEmpty() ) {
+      parts = domain.split( '.' );
+    }
+    if ( parts.size() >= 2 ) {
+      return parts[ parts.size() - 2 ] + "." + parts[ parts.size() - 1 ];
+    }
+  }
+
+  // For domains with one or no dots, return as is
+  return domain;
+}
+
 void Utils::Widget::setNoResultColor( QWidget * widget, bool noResult )
 {
   if ( noResult ) {
