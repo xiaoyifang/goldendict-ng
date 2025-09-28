@@ -3631,11 +3631,11 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Website Url:</source>
-      <translation type="unfinished">Website Url:</translation>
+      <translation>網站網址：</translation>
     </message>
     <message>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
-      <translation type="unfinished">In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</translation>
+      <translation>在網址中，"%GDWORD%" 將被替換為正在搜尋的單詞。</translation>
     </message>
   </context>
   <context>
