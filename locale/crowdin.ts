@@ -4124,6 +4124,10 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
         <source>Icon</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Script</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>WordFinder</name>
