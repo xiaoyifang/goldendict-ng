@@ -2,7 +2,6 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "edit_sources_models.hh"
-#include "gddebug.hh"
 #include "globalbroadcaster.hh"
 #include <QFileDialog>
 #include <QMessageBox>
