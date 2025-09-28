@@ -711,6 +711,7 @@ Class load()
       w.url           = ws.attribute( "url" );
       w.enabled       = ( ws.attribute( "enabled" ) == "1" );
       w.iconFilename  = ws.attribute( "icon" );
+      w.script       = ws.attribute( "script" );
 
       c.webSites.push_back( w );
     }
@@ -1554,6 +1555,10 @@ void save( const Class & c )
       QDomAttr icon = dd.createAttribute( "icon" );
       icon.setValue( webSite.iconFilename );
       ws.setAttributeNode( icon );
+
+      QDomAttr script = dd.createAttribute( "script" );
+      script.setValue( webSite.script );
+      ws.setAttributeNode( script );
     }
   }
 
