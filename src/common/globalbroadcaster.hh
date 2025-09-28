@@ -24,7 +24,7 @@ class GlobalBroadcaster: public QObject
   Config::Preferences * preference;
   QSet< QString > whitelist;
   Icons::DictionaryIconName _icon_names;
-  
+
   /// \brief Extract the base domain from a given domain string.
   ///
   /// This method handles several cases:
