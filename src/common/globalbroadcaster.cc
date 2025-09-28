@@ -29,21 +29,21 @@ Config::Preferences * GlobalBroadcaster::getPreference() const
   return preference;
 }
 
-void GlobalBroadcaster::addWhitelist( QString url )
+void GlobalBroadcaster::addWhitelist( QString host )
 {
-  whitelist.insert( url );
+  whitelist.insert( host );
 }
 
-bool GlobalBroadcaster::existedInWhitelist( QString url ) const
+bool GlobalBroadcaster::existedInWhitelist( QString host ) const
 {
   for ( const QString & item : whitelist ) {
     // Exact match - e.g. "www.example.com" matches "www.example.com"
-    if ( url == item ) {
+    if ( host == item ) {
       return true;
     }
 
-    // Extract base domain from both url and item for comparison
-    QString urlBaseDomain  = Utils::Url::extractBaseDomain( url );
+    // Extract base domain from both host and item for comparison
+    QString urlBaseDomain  = Utils::Url::extractBaseDomain( host );
     QString itemBaseDomain = Utils::Url::extractBaseDomain( item );
 
     // Compare base domains

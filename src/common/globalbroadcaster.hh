@@ -36,9 +36,9 @@ public:
   /// (e.g. "example.com.uk" for UK sites).
   ///
   /// \param host The host to add to whitelist
-  void addWhitelist( QString url );
+  void addWhitelist( QString host );
 
-  /// \brief Check if a URL exists in the whitelist
+  /// \brief Check if a host exists in the whitelist
   ///
   /// This method checks for exact matches and base domain matches:
   /// 1. Direct string matching - e.g. "www.example.com" matches "www.example.com"
@@ -52,9 +52,9 @@ public:
   /// - To match both ".com" and ".com.xx" domains, both "example.com" and "example.com.xx"
   ///   need to be added to the whitelist separately
   ///
-  /// \param url The URL to check
-  /// \return true if the URL is in the whitelist, false otherwise
-  bool existedInWhitelist( QString url ) const;
+  /// \param host The host to check
+  /// \return true if the host is in the whitelist, false otherwise
+  bool existedInWhitelist( QString host ) const;
   static GlobalBroadcaster * instance();
   unsigned currentGroupId;
   QString translateLineText{};
