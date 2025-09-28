@@ -43,7 +43,7 @@ bool GlobalBroadcaster::existedInWhitelist( QString url ) const
     }
 
     // Extract base domain from both url and item for comparison
-    QString urlBaseDomain = Utils::Url::extractBaseDomain( url );
+    QString urlBaseDomain  = Utils::Url::extractBaseDomain( url );
     QString itemBaseDomain = Utils::Url::extractBaseDomain( item );
 
     // Compare base domains

@@ -79,13 +79,13 @@ QString Utils::Url::extractBaseDomain( const QString & domain )
   QStringList parts = domain.split( '.' );
   if ( parts.size() >= 3 ) {
     QString secondLevel = parts[ parts.size() - 2 ];
-    QString topLevel = parts[ parts.size() - 1 ];
+    QString topLevel    = parts[ parts.size() - 1 ];
 
     // Check if the second level is a common second-level domain indicator
     // and the top level is a standard TLD (2-3 characters)
-    if ( ( secondLevel == "com" || secondLevel == "co" || secondLevel == "org" ||
-           secondLevel == "gov" || secondLevel == "net" || secondLevel == "edu" ) &&
-         ( topLevel.length() == 2 || topLevel.length() == 3 ) ) {
+    if ( ( secondLevel == "com" || secondLevel == "co" || secondLevel == "org" || secondLevel == "gov"
+           || secondLevel == "net" || secondLevel == "edu" )
+         && ( topLevel.length() == 2 || topLevel.length() == 3 ) ) {
       // Extract the registrable domain (e.g., "example.com" from "www.example.com.jp")
       if ( parts.size() >= 3 ) {
         return parts[ parts.size() - 3 ] + "." + secondLevel;
