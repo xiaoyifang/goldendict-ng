@@ -485,7 +485,8 @@ void ArticleView::loadFinished( bool result )
   }
   else {
     // Inject JavaScript for website views
-    injectWebsiteJavaScript();
+    injectDarkModeJavaScript();
+    injectWebsiteConfigScript();
   }
 
   //the click audio url such as gdau://xxxx ,webview also emit a pageLoaded signal but with the result is false.need future investigation.
@@ -649,7 +650,7 @@ void ArticleView::cleanupTemp()
   }
 }
 
-void ArticleView::injectWebsiteJavaScript()
+void ArticleView::injectDarkModeJavaScript()
 {
   // Check if dark reader mode is enabled for website views
   if ( !isDarkModeEnabled() ) {
@@ -721,6 +722,34 @@ void ArticleView::injectWebsiteJavaScript()
   )";
 
   webview->page()->runJavaScript( injectionScript );
+}
+
+void ArticleView::injectWebsiteConfigScript()
+{
+  // Skip if not a website view
+  if ( !isWebsiteView ) {
+    return;
+  }
+
+  // Find website configuration for current host
+  const QString host = websiteHost;
+  QString websiteScript;
+  
+  // Look for website configuration matching the current host
+  for ( const auto & website : cfg.webSites ) {
+    if ( website.enabled && website.url.contains( host, Qt::CaseInsensitive ) ) {
+      websiteScript = website.script;
+      break;
+    }
+  }
+  
+  // If no script found for this host, return
+  if ( websiteScript.isEmpty() ) {
+    return;
+  }
+  
+  // Inject the website-specific script
+  webview->page()->runJavaScript( websiteScript );
 }
 
 bool ArticleView::isDarkModeEnabled() const

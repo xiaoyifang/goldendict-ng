@@ -11,6 +11,7 @@
 #include <QItemEditorFactory>
 
 #include "texttospeechsource.hh"
+#include "globalbroadcaster.hh"
 
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
 // Forward declaration
