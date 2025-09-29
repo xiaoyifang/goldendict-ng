@@ -753,14 +753,14 @@ void ArticleView::injectWebsiteConfigScript()
 
   // Check if scriptConfigValue is a file path
   QFileInfo scriptFile( scriptConfigValue );
-  
+
   // If it's a relative path, look in the config directory
   if ( scriptFile.isRelative() ) {
     scriptFile.setFile( QDir( Config::getConfigDir() ), scriptConfigValue );
   }
-  
+
   QString finalScriptContent;
-  
+
   // If the file exists, load the script content from the file
   if ( scriptFile.exists() ) {
     QFile file( scriptFile.absoluteFilePath() );
@@ -768,7 +768,8 @@ void ArticleView::injectWebsiteConfigScript()
       finalScriptContent = file.readAll();
       file.close();
     }
-  } else {
+  }
+  else {
     // If not a file, use the config value directly as script content
     finalScriptContent = scriptConfigValue;
   }
