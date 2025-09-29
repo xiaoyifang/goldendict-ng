@@ -453,22 +453,12 @@ struct WebSite
   {
   }
 
-  WebSite(
-    const QString & id_, const QString & name_, const QString & url_, bool enabled_, const QString & iconFilename_ ):
-    id( id_ ),
-    name( name_ ),
-    url( url_ ),
-    enabled( enabled_ ),
-    iconFilename( iconFilename_ )
-  {
-  }
-
   WebSite( const QString & id_,
            const QString & name_,
            const QString & url_,
            bool enabled_,
            const QString & iconFilename_,
-           const QString & script_ ):
+           const QString & script_ = QString() ):
     id( id_ ),
     name( name_ ),
     url( url_ ),
