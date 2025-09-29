@@ -1,11 +1,11 @@
 ## Index file
 
-Each index file have 4 sections.
+Each index file has 4 sections.
 
-1. `IdxHeader`
-2. `ExtraInfo` (Being used but unnamed in source code)
-3. `Chunks`
-4. `BtreeIndex`
+1. `IdxHeader`:
+2. `ExtraInfo` (Being used but unnamed in source code):
+3. `Chunks`:
+4. `BtreeIndex`:
 
 The `IdxHeader` are 32bits blocks of various meta info of the index. The most important info are `chunksOffset` and `indexRootOffset` pointing to the starting offset of `BtreeIndex` and `Chunks`.
 
