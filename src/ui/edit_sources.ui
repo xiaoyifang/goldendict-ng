@@ -296,7 +296,45 @@ of the appropriate groups to use them.</string>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_6">
          <item>
-          <widget class="QTreeView" name="webSites"/>
+          <widget class="QTableWidget" name="webSites">
+           <property name="editTriggers">
+            <set>QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed</set>
+           </property>
+           <property name="selectionMode">
+            <enum>QAbstractItemView::ExtendedSelection</enum>
+           </property>
+           <property name="selectionBehavior">
+            <enum>QAbstractItemView::SelectRows</enum>
+           </property>
+           <attribute name="horizontalHeaderStretchLastSection">
+            <bool>true</bool>
+           </attribute>
+           <column>
+            <property name="text">
+             <string>Enabled</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Name</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Address</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Icon</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Script</string>
+            </property>
+           </column>
+          </widget>
          </item>
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_10">

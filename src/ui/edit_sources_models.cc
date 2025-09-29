@@ -54,14 +54,8 @@ Sources::Sources( QWidget * parent, const Config::Class & cfg ):
   ui.mediaWikis->setSelectionBehavior( QAbstractItemView::SelectRows );
 
   ui.webSites->setTabKeyNavigation( true );
-  ui.webSites->setModel( &webSitesModel );
-  ui.webSites->resizeColumnToContents( 0 );
-  ui.webSites->resizeColumnToContents( 1 );
-  ui.webSites->resizeColumnToContents( 2 );
-  ui.webSites->resizeColumnToContents( 3 );
-  ui.webSites->resizeColumnToContents( 4 );
-  ui.webSites->setSelectionMode( QAbstractItemView::ExtendedSelection );
-  ui.webSites->setSelectionBehavior( QAbstractItemView::SelectRows );
+  // Initialize webSites table
+  initializeWebSitesTable();
 
   ui.dictServers->setTabKeyNavigation( true );
   ui.dictServers->setModel( &dictServersModel );
@@ -262,29 +256,47 @@ void Sources::on_removeMediaWiki_clicked()
 void Sources::on_addWebSite_clicked()
 {
   webSitesModel.addNewSite();
-
-  QModelIndex result = webSitesModel.index( webSitesModel.rowCount( QModelIndex() ) - 1, 1, QModelIndex() );
-
-  ui.webSites->scrollTo( result );
-  ui.webSites->edit( result );
+  updateWebSitesTable();  // Update table display
+  
+  // Scroll to the newly added row and enter edit mode
+  int newRow = ui.webSites->rowCount() - 1;
+  ui.webSites->scrollToItem(ui.webSites->item(newRow, 1));
+  ui.webSites->editItem(ui.webSites->item(newRow, 1));
 }
 
 void Sources::on_removeWebSite_clicked()
 {
-  QModelIndexList selected = ui.webSites->selectionModel()->selectedRows();
-  if ( selected.isEmpty() ) {
+  QList<QTableWidgetSelectionRange> selectedRanges = ui.webSites->selectedRanges();
+  if ( selectedRanges.isEmpty() ) {
     return;
+  }
+  
+  // Calculate the number of selected rows
+  int selectedCount = 0;
+  for (const QTableWidgetSelectionRange& range : selectedRanges) {
+    selectedCount += range.rowCount();
   }
 
   if ( QMessageBox::question( this,
                               tr( "Confirm removal" ),
-                              tr( "Remove %1 sites from the list?" ).arg( selected.size() ),
+                              tr( "Remove %1 sites from the list?" ).arg( selectedCount ),
                               QMessageBox::Ok | QMessageBox::Cancel )
        != QMessageBox::Ok ) {
     return;
   }
 
-  webSitesModel.remove( selected );
+  // Create QModelIndexList to be compatible with webSitesModel.remove method
+  QModelIndexList selectedIndexes;
+  for (const QTableWidgetSelectionRange& range : selectedRanges) {
+    for (int row = range.topRow(); row <= range.bottomRow(); ++row) {
+      // Create a QModelIndex for each row, using the index of the second column (Name column)
+      QModelIndex index = webSitesModel.index(row, 1, QModelIndex());
+      selectedIndexes.append(index);
+    }
+  }
+
+  webSitesModel.remove( selectedIndexes );
+  updateWebSitesTable();  // Update table display
 }
 
 void Sources::on_addDictServer_clicked()
@@ -1577,4 +1589,54 @@ bool HunspellDictsModel::setData( const QModelIndex & index, const QVariant & /*
 void Sources::on_rescan_clicked()
 {
   emit rescan();
+}
+
+void Sources::initializeWebSitesTable()
+{
+  // Columns are already defined in the UI file, just need to set table properties
+  ui.webSites->setSelectionBehavior(QAbstractItemView::SelectRows);
+  ui.webSites->setSelectionMode(QAbstractItemView::ExtendedSelection);
+  ui.webSites->setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::EditKeyPressed);
+  ui.webSites->horizontalHeader()->setStretchLastSection(true);
+  
+  // Populate data
+  updateWebSitesTable();
+}
+
+void Sources::updateWebSitesTable()
+{
+  const Config::WebSites& sites = webSitesModel.getCurrentWebSites();
+  ui.webSites->setRowCount(sites.size());
+  
+  for (int i = 0; i < sites.size(); ++i) {
+    const Config::WebSite& site = sites[i];
+    
+    // Enabled column (checkbox)
+    QTableWidgetItem* enabledItem = new QTableWidgetItem();
+    enabledItem->setCheckState(site.enabled ? Qt::Checked : Qt::Unchecked);
+    ui.webSites->setItem(i, 0, enabledItem);
+    
+    // Name column
+    QTableWidgetItem* nameItem = new QTableWidgetItem(site.name);
+    ui.webSites->setItem(i, 1, nameItem);
+    
+    // Address column
+    QTableWidgetItem* urlItem = new QTableWidgetItem(site.url);
+    ui.webSites->setItem(i, 2, urlItem);
+    
+    // Icon column
+    QTableWidgetItem* iconItem = new QTableWidgetItem(site.iconFilename);
+    ui.webSites->setItem(i, 3, iconItem);
+    
+    // Script column
+    QTableWidgetItem* scriptItem = new QTableWidgetItem(site.script);
+    ui.webSites->setItem(i, 4, scriptItem);
+  }
+  
+  // Adjust column widths
+  ui.webSites->resizeColumnToContents(0);
+  ui.webSites->resizeColumnToContents(1);
+  ui.webSites->resizeColumnToContents(2);
+  ui.webSites->resizeColumnToContents(3);
+  ui.webSites->resizeColumnToContents(4);
 }
