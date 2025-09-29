@@ -4,8 +4,10 @@
 #include "edit_sources_models.hh"
 #include "globalbroadcaster.hh"
 #include <QFileDialog>
+#include <QGuiApplication>
 #include <QMessageBox>
 #include <QStandardItemModel>
+#include <QStyleHints>
 
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
   #include "chineseconversion.hh"
