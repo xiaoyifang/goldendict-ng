@@ -4144,6 +4144,18 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <source>Icon</source>
       <translation>图标</translation>
     </message>
+    <message>
+      <source>Script</source>
+      <translation>脚本</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation>图标文件名。相对于配置目录。</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation>仅当以单独标签打开网站时可用。可以是文件路径(相对于配置目录或绝对目录)，也可以是直接脚本内容。</translation>
+    </message>
   </context>
   <context>
     <name>WordFinder</name>
