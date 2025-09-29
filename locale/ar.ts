@@ -4160,6 +4160,18 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <source>Icon</source>
       <translation>أيقونة</translation>
     </message>
+    <message>
+      <source>Script</source>
+      <translation>النص</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation>اسم ملف الأيقونة. نسبة إلى دليل الإعداد.</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation>متاح فقط عند فتح المواقع في علامات تبويب منفصلة. يمكن أن يكون مسار الملف (نسبة إلى مجلد التكوين أو مطلق) أو محتوى البرنامج النصي المباشر.</translation>
+    </message>
   </context>
   <context>
     <name>WordFinder</name>
