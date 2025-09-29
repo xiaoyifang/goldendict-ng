@@ -4,23 +4,23 @@ GoldenDict allows you to inject custom JavaScript code into websites opened in s
 
 ## How to Use Website Scripting
 
-1. Open the **Edit | Dictionaries** dialog
-2. Go to the **Websites** tab
-3. Add or edit a website entry
+1. Open the **Edit | Dictionaries** dialog:
+2. Go to the **Websites** tab:
+3. Add or edit a website entry:
 4. In the **Script** column, you can specify either:
-   - A file path (relative to the config directory or absolute)
-   - Direct JavaScript code
+    - A file path (relative to the config directory or absolute)
+    - Direct JavaScript code
 
 ## Script Column Details
 
 The **Script** column in the Websites configuration accepts two types of input:
 
-1. **File Path**: 
-   - **Relative path**: Path relative to the GoldenDict configuration directory
-   - **Absolute path**: Full path to a JavaScript file on your system
+1. **File Path:**
+    - **Relative path:** Path relative to the GoldenDict configuration directory
+    - **Absolute path:** Full path to a JavaScript file on your system
    
-2. **Direct Script Content**: 
-   - JavaScript code directly entered in the field
+2. **Direct Script Content:**
+    - JavaScript code directly entered in the field
 
 When you specify a file path, GoldenDict will read the content of that file and inject it as JavaScript into the matching website. If the file doesn't exist or you've entered JavaScript code directly, GoldenDict will inject the content of the field directly as JavaScript.
 
@@ -38,7 +38,7 @@ You can also check the menu "Help->Configuration folder" to see the exact config
 
 ### Using a File
 
-1. Create a JavaScript file, for example `mywebsite.js` in your config directory
+1. Create a JavaScript file, for example `mywebsite.js` in your config directory:
 2. Add your JavaScript code to this file:
    ```javascript
    // Example: Hide a specific element
@@ -49,7 +49,7 @@ You can also check the menu "Help->Configuration folder" to see the exact config
        }
    });
    ```
-3. In the Script column, enter: `mywebsite.js`
+3. In the Script column, enter: `mywebsite.js`:
 
 ### Using Direct Script Content
 
