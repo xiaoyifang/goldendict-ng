@@ -4158,6 +4158,18 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <source>Icon</source>
       <translation>Ikona</translation>
     </message>
+    <message>
+      <source>Script</source>
+      <translation>Skript</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation>Název souboru ikon. Relativní k adresáři konfigurace.</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation>K dispozici pouze při otevírání webových stránek v oddělených kartách. Může být cesta k souborům (relativně k adresáři konfigurací nebo absolutním) nebo přímý obsah skriptu.</translation>
+    </message>
   </context>
   <context>
     <name>WordFinder</name>

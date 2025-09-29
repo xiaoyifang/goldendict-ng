@@ -4156,6 +4156,18 @@ La liste complète des langues disponibles peut être trouvée &lt;a href=&quot;
       <source>Icon</source>
       <translation>Icône</translation>
     </message>
+    <message>
+      <source>Script</source>
+      <translation>Écriture</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation>Nom du fichier d'icône. relatif au répertoire de configuration.</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation>Uniquement disponible lors de l'ouverture de sites Web dans des onglets séparés. Peut être un chemin de fichier (relatif au répertoire de configuration ou absolu) ou du contenu de script direct.</translation>
+    </message>
   </context>
   <context>
     <name>WordFinder</name>

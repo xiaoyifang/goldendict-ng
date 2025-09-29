@@ -4157,6 +4157,18 @@ De volledige lijst met beschikbare talen vindt u &lt;a href=&quot;https://lingua
       <source>Icon</source>
       <translation>Pictogram</translation>
     </message>
+    <message>
+      <source>Script</source>
+      <translation>Naam</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation>Pictogram bestandsnaam. Relatief met de configuratie map.</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation>Alleen beschikbaar bij het openen van websites op afzonderlijke tabbladen. Kan een bestandspad zijn (relatief aan configuratie-map of absolute) of directe script-inhoud.</translation>
+    </message>
   </context>
   <context>
     <name>WordFinder</name>

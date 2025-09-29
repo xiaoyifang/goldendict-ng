@@ -4155,6 +4155,18 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <source>Icon</source>
       <translation>アイコン</translation>
     </message>
+    <message>
+      <source>Script</source>
+      <translation>スクリプト</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation>アイコンのファイル名。設定ディレクトリに相対的です。</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation>個別のタブでウェブサイトを開くときにのみ利用できます。ファイルパス（設定ディレクトリまたは絶対ディレクトリからの相対）または直接スクリプトコンテンツにすることができます。</translation>
+    </message>
   </context>
   <context>
     <name>WordFinder</name>

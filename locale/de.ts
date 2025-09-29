@@ -4154,6 +4154,18 @@ Eine vollständige Liste der verfügbaren Sprachen ist &lt;a href=&quot;https://
       <source>Icon</source>
       <translation>Symbol</translation>
     </message>
+    <message>
+      <source>Script</source>
+      <translation>Skript</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation>Name der Symboldatei. Relativ zum Konfigurationsverzeichnis.</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation>Nur verfügbar, wenn Webseiten in separaten Tabs geöffnet werden. Kann ein Dateipfad (relativ zum Konfigurationsverzeichnis oder absolut) oder direkter Skriptinhalt sein.</translation>
+    </message>
   </context>
   <context>
     <name>WordFinder</name>
