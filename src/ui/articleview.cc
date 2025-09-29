@@ -14,6 +14,9 @@
 #include <QClipboard>
 #include <QDebug>
 #include <QDesktopServices>
+#include <QDir>
+#include <QFile>
+#include <QFileInfo>
 #include <QFileDialog>
 #include <QKeyEvent>
 #include <QMenu>
@@ -733,23 +736,45 @@ void ArticleView::injectWebsiteConfigScript()
 
   // Find website configuration for current host
   const QString host = websiteHost;
-  QString websiteScript;
+  QString scriptConfigValue;
 
   // Look for website configuration matching the current host
   for ( const auto & website : cfg.webSites ) {
     if ( website.enabled && website.url.contains( host, Qt::CaseInsensitive ) ) {
-      websiteScript = website.script;
+      scriptConfigValue = website.script;
       break;
     }
   }
 
   // If no script found for this host, return
-  if ( websiteScript.isEmpty() ) {
+  if ( scriptConfigValue.isEmpty() ) {
     return;
   }
 
+  // Check if scriptConfigValue is a file path
+  QFileInfo scriptFile( scriptConfigValue );
+  
+  // If it's a relative path, look in the config directory
+  if ( scriptFile.isRelative() ) {
+    scriptFile.setFile( QDir( Config::getConfigDir() ), scriptConfigValue );
+  }
+  
+  QString finalScriptContent;
+  
+  // If the file exists, load the script content from the file
+  if ( scriptFile.exists() ) {
+    QFile file( scriptFile.absoluteFilePath() );
+    if ( file.open( QIODevice::ReadOnly | QIODevice::Text ) ) {
+      finalScriptContent = file.readAll();
+      file.close();
+    }
+  } else {
+    // If not a file, use the config value directly as script content
+    finalScriptContent = scriptConfigValue;
+  }
+
   // Inject the website-specific script
-  webview->page()->runJavaScript( websiteScript );
+  webview->page()->runJavaScript( finalScriptContent );
 }
 
 bool ArticleView::isDarkModeEnabled() const
