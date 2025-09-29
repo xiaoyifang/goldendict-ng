@@ -4161,6 +4161,18 @@ Täydellinen luettelo saatavilla olevista kielistä löytyy &lt;a href=&quot;htt
       <source>Icon</source>
       <translation>Ikoni</translation>
     </message>
+    <message>
+      <source>Script</source>
+      <translation>Skripti</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation>Kuvakkeen tiedoston nimi. Suhteellinen asetuskansioon.</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation>Saatavilla vain, kun sivustoja avataan erillisillä välilehdillä. Voi olla tiedostopolku (suhteessa config hakemistoon tai absoluuttiin) tai suora skriptin sisältö.</translation>
+    </message>
   </context>
   <context>
     <name>WordFinder</name>
