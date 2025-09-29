@@ -678,8 +678,18 @@ int WebSitesModel::columnCount( const QModelIndex & parent ) const
   }
 }
 
-QVariant WebSitesModel::headerData( int section, Qt::Orientation /*orientation*/, int role ) const
+QVariant WebSitesModel::headerData( int section, Qt::Orientation orientation, int role ) const
 {
+  // For vertical header, show row numbers
+  if ( orientation == Qt::Vertical && role == Qt::DisplayRole ) {
+    return section + 1;  // Show 1-based row numbers
+  }
+
+  // For other vertical header roles or if it's horizontal header, continue processing
+  if ( orientation == Qt::Vertical ) {
+    return QVariant();
+  }
+
   if ( role == Qt::ToolTipRole ) {
     switch ( section ) {
       case 3:
