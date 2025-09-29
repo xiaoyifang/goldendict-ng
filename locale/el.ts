@@ -4162,6 +4162,18 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <source>Icon</source>
       <translation>Εικονίδιο</translation>
     </message>
+    <message>
+      <source>Script</source>
+      <translation>Σενάριο</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation>Όνομα αρχείου εικονιδίου. Σε σχέση με τον κατάλογο ρυθμίσεων.</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation>Διαθέσιμο μόνο όταν ανοίγετε ιστοσελίδες σε ξεχωριστές καρτέλες. Μπορεί να είναι μια διαδρομή αρχείου (σε σχέση με τον κατάλογο ρύθμισης ή απόλυτο) ή άμεση δέσμη ενεργειών περιεχομένου.</translation>
+    </message>
   </context>
   <context>
     <name>WordFinder</name>
