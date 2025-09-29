@@ -6,7 +6,7 @@
 #include "externalviewer.hh"
 
 ExternalViewer::ExternalViewer(
-  const char * data, int size, QString const & extension, QString const & viewerCmdLine_, QObject * parent ):
+  const char * data, int size, const QString & extension, const QString & viewerCmdLine_, QObject * parent ):
   QObject( parent ),
   tempFile( QDir::temp().filePath( QString( "gd-XXXXXXXX." ) + extension ) ),
   viewer( this ),

@@ -3,9 +3,7 @@
 #ifndef __APPLE__
   #include <QGestureRecognizer>
   #include <QGesture>
-  #include <QTimer>
   #include <QEvent>
-  #include <QAction>
 
 namespace Gestures {
 
@@ -38,7 +36,7 @@ public:
   {
     return scaleChanged;
   }
-  QPointF const & getCenterPoint() const
+  const QPointF & getCenterPoint() const
   {
     return centerPoint;
   }

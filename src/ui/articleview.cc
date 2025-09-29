@@ -9,10 +9,9 @@
 #include "speechclient.hh"
 #include "utils.hh"
 #include "webmultimediadownload.hh"
-#include "wildcard.hh"
+#include "htmlescape.hh"
 #include <QBuffer>
 #include <QClipboard>
-#include <QCryptographicHash>
 #include <QDebug>
 #include <QDesktopServices>
 #include <QFileDialog>
@@ -23,7 +22,6 @@
 #include <QVariant>
 #include <QWebChannel>
 #include <QWebEngineHistory>
-#include <QWebEngineScript>
 #include <QWebEngineScriptCollection>
 #include <QWebEngineSettings>
 #include <map>
@@ -31,6 +29,7 @@
 #include <QRandomGenerator>
 #include <QWebEngineContextMenuRequest>
 #include <QWebEngineFindTextResult>
+#include <QStyleHints>
 #include <utility>
 #ifdef Q_OS_WIN32
   #include <windows.h>
@@ -43,14 +42,14 @@ using std::list;
 
 namespace {
 
-char const * const scrollToPrefix = "gdfrom-";
+const char * const scrollToPrefix = "gdfrom-";
 
-bool isScrollTo( QString const & id )
+bool isScrollTo( const QString & id )
 {
   return id.startsWith( scrollToPrefix );
 }
 
-QString dictionaryIdFromScrollTo( QString const & scrollTo )
+QString dictionaryIdFromScrollTo( const QString & scrollTo )
 {
   Q_ASSERT( isScrollTo( scrollTo ) );
   constexpr int scrollToPrefixLength = 7;
@@ -72,7 +71,7 @@ QString searchStatusMessage( int activeMatch, int matchCount )
 
 } // unnamed namespace
 
-QString ArticleView::scrollToFromDictionaryId( QString const & dictionaryId )
+QString ArticleView::scrollToFromDictionaryId( const QString & dictionaryId )
 {
   Q_ASSERT( !isScrollTo( dictionaryId ) );
   return scrollToPrefix + dictionaryId;
@@ -80,12 +79,12 @@ QString ArticleView::scrollToFromDictionaryId( QString const & dictionaryId )
 
 ArticleView::ArticleView( QWidget * parent,
                           ArticleNetworkAccessManager & nm,
-                          AudioPlayerPtr const & audioPlayer_,
-                          std::vector< sptr< Dictionary::Class > > const & allDictionaries_,
-                          Instances::Groups const & groups_,
+                          const AudioPlayerPtr & audioPlayer_,
+                          const std::vector< sptr< Dictionary::Class > > & allDictionaries_,
+                          const Instances::Groups & groups_,
                           bool popupView_,
-                          Config::Class const & cfg_,
-                          QLineEdit const * translateLine_,
+                          const Config::Class & cfg_,
+                          const QLineEdit * translateLine_,
                           QAction * dictionaryBarToggled_,
                           unsigned int currentGroupId_ ):
   QWidget( parent ),
@@ -232,7 +231,7 @@ ArticleView::ArticleView( QWidget * parent,
   agent   = new ArticleViewAgent( this );
   attachWebChannelToHtml();
   ankiConnector = new AnkiConnector( this, cfg );
-  connect( ankiConnector, &AnkiConnector::errorText, this, [ this ]( QString const & errorText ) {
+  connect( ankiConnector, &AnkiConnector::errorText, this, [ this ]( const QString & errorText ) {
     emit statusBarMessage( errorText );
   } );
 
@@ -281,10 +280,10 @@ ArticleView::~ArticleView()
 #endif
 }
 
-void ArticleView::showDefinition( QString const & word,
+void ArticleView::showDefinition( const QString & word,
                                   unsigned group,
-                                  QString const & scrollTo,
-                                  Contexts const & contexts_ )
+                                  const QString & scrollTo,
+                                  const Contexts & contexts_ )
 {
   GlobalBroadcaster::instance()->pronounce_engine.reset();
   currentWord = word.trimmed();
@@ -335,7 +334,7 @@ void ArticleView::showDefinition( QString const & word,
 
   QString mutedDicts = getMutedForGroup( group );
 
-  if ( mutedDicts.size() ) {
+  if ( !mutedDicts.isEmpty() ) {
     reqQuery.addQueryItem( "muted", mutedDicts );
   }
 
@@ -351,9 +350,9 @@ void ArticleView::showDefinition( QString const & word,
   emit sendWordToHistory( word );
 }
 
-void ArticleView::showDefinition( QString const & word,
-                                  QStringList const & dictIDs,
-                                  QRegularExpression const & searchRegExp,
+void ArticleView::showDefinition( const QString & word,
+                                  const QStringList & dictIDs,
+                                  const QRegularExpression & searchRegExp,
                                   unsigned group,
                                   bool ignoreDiacritics )
 {
@@ -403,15 +402,15 @@ void ArticleView::showDefinition( QString const & word,
   emit sendWordToHistory( word );
 }
 
-void ArticleView::showDefinition( QString const & word,
-                                  QStringList const & dictIDs,
+void ArticleView::showDefinition( const QString & word,
+                                  const QStringList & dictIDs,
                                   unsigned group,
                                   bool ignoreDiacritics )
 {
   showDefinition( word, dictIDs, {}, group, ignoreDiacritics );
 }
 
-void ArticleView::sendToAnki( QString const & word, QString const & dict_definition, QString const & sentence )
+void ArticleView::sendToAnki( const QString & word, const QString & dict_definition, const QString & sentence )
 {
   ankiConnector->sendToAnki( word, dict_definition, sentence );
 }
@@ -432,7 +431,15 @@ void ArticleView::loadFinished( bool result )
   setZoomFactor( cfg.preferences.zoomFactor );
   webview->unsetCursor();
   if ( !result ) {
-    qWarning() << "article loaded unsuccessful";
+    qWarning() << "article loaded unsuccessful:" << webview->url().toString();
+
+    // Only show custom error page if openWebsiteInNewTab is true and URL is external link
+    if ( GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab
+         && Utils::isExternalLink( webview->url() ) ) {
+      // Create custom error page with internationalization support
+      QString errorHtml = createErrorPageHtml( webview->url() );
+      webview->setHtml( errorHtml, webview->url() );
+    }
     return;
   }
   QUrl url = webview->url();
@@ -441,32 +448,44 @@ void ArticleView::loadFinished( bool result )
   }
   qDebug() << "article view loaded url:" << url.url().left( 50 ) << result;
 
-  if ( cfg.preferences.autoScrollToTargetArticle ) {
-    QString const scrollTo = Utils::Url::queryItemValue( url, "scrollto" );
-    if ( isScrollTo( scrollTo ) ) {
-      setCurrentArticle( scrollTo, true );
+  // Skip dictionary-specific logic for website views
+  if ( !isWebsiteView ) {
+    if ( cfg.preferences.autoScrollToTargetArticle ) {
+      const QString scrollTo = Utils::Url::queryItemValue( url, "scrollto" );
+      if ( isScrollTo( scrollTo ) ) {
+        setCurrentArticle( scrollTo, true );
+      }
+      else {
+        setActiveArticleId( "" );
+      }
     }
     else {
+      //clear current active dictionary id;
       setActiveArticleId( "" );
+    }
+
+    // Expand collapsed article if only one loaded - only for dictionary views
+    webview->page()->runJavaScript(
+      QString( "if (typeof gdCheckArticlesNumber === 'function') { gdCheckArticlesNumber(); }" ) );
+
+    if ( !Utils::Url::queryItemValue( url, "gdanchor" ).isEmpty() ) {
+      const QString anchor = QUrl::fromPercentEncoding( Utils::Url::encodedQueryItemValue( url, "gdanchor" ) );
+
+      // Find GD anchor on page
+      url.clear();
+      url.setFragment( anchor );
+      webview->page()->runJavaScript(
+        QString( "window.location.hash = \"%1\"" ).arg( QString::fromUtf8( url.toEncoded() ) ) );
+    }
+
+    // Only highlight FTS results for dictionary views
+    if ( Utils::Url::hasQueryItem( webview->url(), "regexp" ) ) {
+      highlightFTSResults();
     }
   }
   else {
-    //clear current active dictionary id;
-    setActiveArticleId( "" );
-  }
-
-
-  // Expand collapsed article if only one loaded
-  webview->page()->runJavaScript( QString( "gdCheckArticlesNumber();" ) );
-
-  if ( !Utils::Url::queryItemValue( url, "gdanchor" ).isEmpty() ) {
-    const QString anchor = QUrl::fromPercentEncoding( Utils::Url::encodedQueryItemValue( url, "gdanchor" ) );
-
-    // Find GD anchor on page
-    url.clear();
-    url.setFragment( anchor );
-    webview->page()->runJavaScript(
-      QString( "window.location.hash = \"%1\"" ).arg( QString::fromUtf8( url.toEncoded() ) ) );
+    // Inject JavaScript for website views
+    injectWebsiteJavaScript();
   }
 
   //the click audio url such as gdau://xxxx ,webview also emit a pageLoaded signal but with the result is false.need future investigation.
@@ -474,19 +493,19 @@ void ArticleView::loadFinished( bool result )
   if ( result ) {
     emit pageLoaded( this );
   }
-  if ( Utils::Url::hasQueryItem( webview->url(), "regexp" ) ) {
-    highlightFTSResults();
-  }
 }
 
-void ArticleView::handleTitleChanged( QString const & title )
+void ArticleView::handleTitleChanged( const QString & title )
 {
-  if ( !title.isEmpty() && !title.contains( "://" ) ) {
-    emit titleChanged( this, title );
+  // Use custom title if it's a website view and custom title is set; otherwise use the original title
+  QString displayTitle = ( isWebsiteView && !customTitle.isEmpty() ) ? customTitle : title;
+
+  if ( !displayTitle.isEmpty() && !displayTitle.contains( "://" ) ) {
+    emit titleChanged( this, displayTitle );
   }
 }
 
-unsigned ArticleView::getGroup( QUrl const & url )
+unsigned ArticleView::getGroup( const QUrl & url )
 {
   if ( url.scheme() == "gdlookup" && Utils::Url::hasQueryItem( url, "group" ) ) {
     return Utils::Url::queryItemValue( url, "group" ).toUInt();
@@ -505,7 +524,7 @@ QString ArticleView::getActiveArticleId()
   return activeDictId;
 }
 
-void ArticleView::setActiveArticleId( QString const & dictId )
+void ArticleView::setActiveArticleId( const QString & dictId )
 {
   this->activeDictId = dictId;
 }
@@ -516,8 +535,12 @@ QString ArticleView::getCurrentArticle()
   return scrollToFromDictionaryId( dictId );
 }
 
-void ArticleView::jumpToDictionary( QString const & id, bool force )
+void ArticleView::jumpToDictionary( const QString & id, bool force )
 {
+  // Skip dictionary jump for website views
+  if ( isWebsiteView ) {
+    return;
+  }
 
   // jump only if neceessary, or when forced
   if ( const QString targetArticle = scrollToFromDictionaryId( id ); force && targetArticle != getCurrentArticle() ) {
@@ -525,8 +548,13 @@ void ArticleView::jumpToDictionary( QString const & id, bool force )
   }
 }
 
-bool ArticleView::setCurrentArticle( QString const & id, bool moveToIt )
+bool ArticleView::setCurrentArticle( const QString & id, bool moveToIt )
 {
+  // Skip dictionary article navigation for website views
+  if ( isWebsiteView ) {
+    return false;
+  }
+
   if ( !isScrollTo( id ) ) {
     return false; // Incorrect id
   }
@@ -554,13 +582,18 @@ bool ArticleView::setCurrentArticle( QString const & id, bool moveToIt )
 
 void ArticleView::selectCurrentArticle()
 {
+  // Skip dictionary article selection for website views
+  if ( isWebsiteView ) {
+    return;
+  }
+
   webview->page()->runJavaScript(
     QString(
       "gdSelectArticle( '%1' );var elem=document.getElementById('%2'); if(elem!=undefined){elem.scrollIntoView(true);}" )
       .arg( getActiveArticleId(), getCurrentArticle() ) );
 }
 
-void ArticleView::isFramedArticle( QString const & ca, const std::function< void( bool ) > & callback )
+void ArticleView::isFramedArticle( const QString & ca, const std::function< void( bool ) > & callback )
 {
   if ( ca.isEmpty() ) {
     callback( false );
@@ -587,8 +620,19 @@ void ArticleView::tryMangleWebsiteClickedUrl( QUrl & url, Contexts & contexts )
   }
 }
 
-void ArticleView::load( QUrl const & url )
+void ArticleView::load( const QUrl & url, const QString & customTitle )
 {
+  // Save custom title if provided
+  this->customTitle = customTitle;
+
+  // Auto-detect if this is a website URL
+  if ( url.scheme() == "http" || url.scheme() == "https" ) {
+    isWebsiteView = true;
+    setWebsiteHost( url.host() );
+  }
+  else {
+    isWebsiteView = false;
+  }
   webview->load( url );
 }
 
@@ -603,6 +647,153 @@ void ArticleView::cleanupTemp()
       ++it;
     }
   }
+}
+
+void ArticleView::injectWebsiteJavaScript()
+{
+  // Check if dark reader mode is enabled for website views
+  if ( !isDarkModeEnabled() ) {
+    return;
+  }
+
+  QString injectionScript = R"(
+    (function() {
+      // Prevent duplicate injection
+      if (window.gdDarkModeInjected) return;
+      window.gdDarkModeInjected = true;
+      
+      // Function to inject Dark Reader
+      function injectDarkReader() {
+        // Check if Dark Reader is already loaded
+        if (typeof DarkReader === 'undefined') {
+          // Create script element for darkreader
+          var script = document.createElement('script');
+          script.type = 'text/javascript';
+          script.src = 'qrc:///scripts/darkreader.js';
+          script.onload = function() {
+            if (window.DarkReader) {
+              // Set fetch method with no-cors mode to bypass CORS restrictions
+              if (typeof window.DarkReader.setFetchMethod !== 'undefined') {
+                // Custom fetch wrapper with no-cors mode
+                const customFetch = (url, options = {}) => {
+                  const fetchOptions = {...options, mode: 'no-cors'};
+                  return window.fetch(url, fetchOptions);
+                };
+                window.DarkReader.setFetchMethod(customFetch);
+              }
+              window.DarkReader.enable({
+                brightness: 100,
+                contrast: 90,
+                sepia: 10
+              });
+            }
+          };
+          script.onerror = function() {
+            console.warn('Failed to load Dark Reader');
+          };
+          document.head.appendChild(script);
+        } else {
+          // Dark Reader already exists, enable it
+          // Set fetch method with no-cors mode to bypass CORS restrictions
+          if (typeof window.DarkReader.setFetchMethod !== 'undefined') {
+            // Custom fetch wrapper with no-cors mode
+            const customFetch = (url, options = {}) => {
+              const fetchOptions = {...options, mode: 'no-cors'};
+              return window.fetch(url, fetchOptions);
+            };
+            window.DarkReader.setFetchMethod(customFetch);
+          }
+          window.DarkReader.enable({
+            brightness: 100,
+            contrast: 90,
+            sepia: 10
+          });
+        }
+      }
+      
+      // Inject after page load
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', injectDarkReader);
+      } else {
+        injectDarkReader();
+      }
+    })();
+  )";
+
+  webview->page()->runJavaScript( injectionScript );
+}
+
+bool ArticleView::isDarkModeEnabled() const
+{
+  bool darkModeEnabled = ( cfg.preferences.darkReaderMode == Config::Dark::On );
+
+#if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
+  if ( GlobalBroadcaster::instance()->getPreference()->darkReaderMode == Config::Dark::Auto
+  #if !defined( Q_OS_WINDOWS )
+       // For macOS & Linux, uses "System's style hint". There is no darkMode setting in GD for them.
+       && QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark
+  #else
+       // For Windows, uses the setting in GD
+       && GlobalBroadcaster::instance()->getPreference()->darkMode == Config::Dark::On
+  #endif
+  ) {
+    darkModeEnabled = true;
+  }
+#endif
+  return darkModeEnabled;
+}
+
+QString ArticleView::createErrorPageHtml( const QUrl & url ) const
+{
+  bool darkModeEnabled = isDarkModeEnabled();
+
+  return QString(
+           R"(
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+<title>%1</title>
+<script src='qrc:///scripts/darkreader.js'></script>
+<style>
+body { margin: 20px; font-family: system-ui; }
+.error-content { max-width: 800px; margin: 0 auto; }
+</style>
+<script>
+// Initialize Dark Reader based on configuration
+if (typeof DarkReader !== 'undefined') {
+  const darkMode = %4;
+  if (darkMode) {
+    // Set fetch method with no-cors mode to bypass CORS restrictions
+    if (typeof DarkReader.setFetchMethod !== 'undefined') {
+      // Custom fetch wrapper with no-cors mode
+      const customFetch = (url, options = {}) => {
+        const fetchOptions = {...options, mode: 'no-cors'};
+        return window.fetch(url, fetchOptions);
+      };
+      DarkReader.setFetchMethod(customFetch);
+    }
+    DarkReader.enable({
+      brightness: 100,
+      contrast: 90,
+      sepia: 10
+    });
+  }
+}
+</script>
+</head>
+<body>
+<div class='error-content'>
+<h2>%2</h2>
+<p>%3</p>
+</div>
+</body>
+</html>
+           )" )
+    .arg( tr( "Error Loading" ) )
+    .arg( tr( "Page Load Failed" ) )
+    .arg( tr( "Unable to load the requested page content" ) )
+    .arg( darkModeEnabled ? "true" : "false" );
 }
 
 bool ArticleView::handleF3( QObject * /*obj*/, QEvent * ev )
@@ -780,11 +971,11 @@ QStringList ArticleView::getMutedDictionaries( unsigned group )
 {
   if ( dictionaryBarToggled && dictionaryBarToggled->isChecked() ) {
     // Dictionary bar is active -- mute the muted dictionaries
-    Instances::Group const * groupInstance = dictionaryGroup->getGroupById( group );
+    const Instances::Group * groupInstance = dictionaryGroup->getGroupById( group );
 
     // Find muted dictionaries for current group
-    Config::Group const * grp = cfg.getGroup( group );
-    Config::MutedDictionaries const * mutedDictionaries;
+    const Config::Group * grp = cfg.getGroup( group );
+    const Config::MutedDictionaries * mutedDictionaries;
     if ( group == GroupId::AllGroupId ) {
       mutedDictionaries = popupView ? &cfg.popupMutedDictionaries : &cfg.mutedDictionaries;
     }
@@ -880,7 +1071,7 @@ void ArticleView::attachWebChannelToHtml()
   channel->registerObject( QStringLiteral( "articleview" ), agent );
 }
 
-void ArticleView::linkClicked( QUrl const & url_ )
+void ArticleView::linkClicked( const QUrl & url_ )
 {
   Qt::KeyboardModifiers kmod = QApplication::keyboardModifiers();
 
@@ -905,7 +1096,7 @@ void ArticleView::linkClicked( QUrl const & url_ )
   }
 }
 
-void ArticleView::linkClickedInHtml( QUrl const & url_ )
+void ArticleView::linkClickedInHtml( const QUrl & url_ )
 {
   webview->linkClickedInHtml( url_ );
   if ( !url_.isEmpty() ) {
@@ -913,15 +1104,15 @@ void ArticleView::linkClickedInHtml( QUrl const & url_ )
   }
 }
 
-void ArticleView::makeAnkiCardFromArticle( QString const & article_id )
+void ArticleView::makeAnkiCardFromArticle( const QString & article_id )
 {
-  auto const js_code = QString( R"EOF(document.getElementById("gdarticlefrom-%1").innerText)EOF" ).arg( article_id );
+  const auto js_code = QString( R"EOF(document.getElementById("gdarticlefrom-%1").innerText)EOF" ).arg( article_id );
   webview->page()->runJavaScript( js_code, [ this ]( const QVariant & article_text ) {
     sendToAnki( webview->title(), article_text.toString(), translateLine->text() );
   } );
 }
 
-void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & scrollTo, Contexts const & contexts_ )
+void ArticleView::openLink( const QUrl & url, const QUrl & ref, const QString & scrollTo, const Contexts & contexts_ )
 {
   audioPlayer->stop();
   qDebug() << "open link url:" << url;
@@ -1003,7 +1194,7 @@ void ArticleView::openLink( QUrl const & url, QUrl const & ref, QString const & 
   }
 }
 
-void ArticleView::playAudio( QUrl const & url )
+void ArticleView::playAudio( const QUrl & url )
 {
   audioPlayer->stop();
   qDebug() << "play audio [url]:" << url;
@@ -1177,7 +1368,7 @@ void ArticleView::setSelectionBySingleClick( bool set )
   webview->setSelectionBySingleClick( set );
 }
 
-void ArticleView::setDelayedHighlightText( QString const & text )
+void ArticleView::setDelayedHighlightText( const QString & text )
 {
   delayedHighlightText = text;
 }
@@ -1199,7 +1390,6 @@ QString ArticleView::getCurrentWord()
 {
   return currentWord;
 }
-
 
 void ArticleView::back()
 {
@@ -1280,6 +1470,11 @@ void ArticleView::setContent( const QByteArray & data, const QString & mimeType,
 
 QString ArticleView::getTitle()
 {
+  // Use custom title if it's a website view and custom title is set
+  if ( isWebsiteView && !customTitle.isEmpty() ) {
+    return customTitle;
+  }
+
   auto title = webview->title();
   if ( title.contains( "://" ) ) {
     return {};
@@ -1311,7 +1506,7 @@ void ArticleView::print( QPrinter * printer ) const
   }
 }
 
-void ArticleView::contextMenuRequested( QPoint const & pos )
+void ArticleView::contextMenuRequested( const QPoint & pos )
 {
   // Is that a link? Is there a selection?
   QWebEnginePage * r = webview->page();
@@ -1376,7 +1571,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
     menu.addAction( saveSoundAction );
   }
 
-  QString const selectedText = webview->selectedText();
+  const QString selectedText = webview->selectedText();
   QString text               = Utils::trimNonChar( selectedText );
 
   if ( text.size() && text.size() < 60 ) {
@@ -1398,7 +1593,7 @@ void ArticleView::contextMenuRequested( QPoint const & pos )
     addWordToHistoryAction = new QAction( tr( "&Add \"%1\" to history" ).arg( text ), &menu );
     menu.addAction( addWordToHistoryAction );
 
-    Instances::Group const * altGroup =
+    const Instances::Group * altGroup =
       ( currentGroupId != getGroup( webview->url() ) ) ? dictionaryGroup->getGroupById( currentGroupId ) : nullptr;
 
     if ( altGroup ) {
@@ -1653,7 +1848,7 @@ void ArticleView::resourceDownloadFinished( const sptr< Dictionary::DataRequest 
     return;
   }
   if ( req->dataSize() >= 0 ) {
-    vector< char > const & data = req->getFullData();
+    const vector< char > & data = req->getFullData();
 
     if ( resourceDownloadUrl.scheme() == "gdau" || Utils::Url::isWebAudioUrl( resourceDownloadUrl ) ) {
       // Audio data
@@ -1698,7 +1893,7 @@ void ArticleView::audioDownloadFinished( const sptr< Dictionary::DataRequest > &
   if ( req->dataSize() >= 0 ) {
     // Ok, got one finished, all others are irrelevant now
     qDebug() << "audio download finished. Playing...";
-    vector< char > const & data = req->getFullData();
+    const vector< char > & data = req->getFullData();
 
     // Audio data
     audioPlayer->stop();
@@ -1714,7 +1909,7 @@ void ArticleView::audioDownloadFinished( const sptr< Dictionary::DataRequest > &
   }
 }
 
-void ArticleView::audioPlayerError( QString const & message )
+void ArticleView::audioPlayerError( const QString & message )
 {
   emit statusBarMessage( tr( "WARNING: Audio Player: %1" ).arg( message ), 10000, QPixmap( ":/icons/error.svg" ) );
 }
@@ -1842,8 +2037,13 @@ void ArticleView::on_searchCaseSensitive_clicked( bool checked )
 }
 
 //the id start with "gdform-"
-void ArticleView::onJsActiveArticleChanged( QString const & id )
+void ArticleView::onJsActiveArticleChanged( const QString & id )
 {
+  // Skip dictionary article change handling for website views
+  if ( isWebsiteView ) {
+    return;
+  }
+
   if ( !isScrollTo( id ) ) {
     return; // Incorrect id
   }
@@ -1874,7 +2074,7 @@ void ArticleView::doubleClicked( QPoint pos )
         emit showDefinitionInNewTab( selectedText, getGroup( webview->url() ), getCurrentArticle(), Contexts() );
       }
       else {
-        QUrl const & ref = webview->url();
+        const QUrl & ref = webview->url();
 
         auto groupId = getGroup( ref );
         if ( groupId == 0 || groupId == GroupId::HelpGroupId ) {
@@ -2100,6 +2300,35 @@ void ArticleView::clearContent()
   webview->setHtml( QString::fromStdString( html ) );
 }
 
+void ArticleView::setWebsiteHost( const QString & host )
+{
+  websiteHost = host;
+}
+
+void ArticleView::setCustomTitle( const QString & customTitle )
+{
+  this->customTitle = customTitle;
+  // Trigger title update if page has already been loaded
+  if ( webview->url().isValid() ) {
+    emit titleChanged( this, getTitle() );
+  }
+}
+
+void ArticleView::load( QString url, const QString & customTitle )
+{
+  // Save custom title if provided
+  this->customTitle = customTitle;
+
+  QUrl qurl( url );
+  // Auto-detect if this is a website URL
+  if ( qurl.scheme() == "http" || qurl.scheme() == "https" ) {
+    isWebsiteView = true;
+    setWebsiteHost( qurl.host() );
+  }
+  webview->load( qurl );
+}
+
+
 ResourceToSaveHandler::ResourceToSaveHandler( ArticleView * view, QString fileName ):
   QObject( view ),
   fileName( std::move( fileName ) ),
@@ -2128,7 +2357,7 @@ void ResourceToSaveHandler::downloadFinished()
     if ( ( *i )->isFinished() ) {
       if ( ( *i )->dataSize() >= 0 && !alreadyDone ) {
         QByteArray resourceData;
-        vector< char > const & data = ( *i )->getFullData();
+        const vector< char > & data = ( *i )->getFullData();
         resourceData                = QByteArray( data.data(), data.size() );
 
         // Write data to file
@@ -2183,17 +2412,17 @@ ArticleViewAgent::ArticleViewAgent( ArticleView * articleView ):
 {
 }
 
-void ArticleViewAgent::onJsActiveArticleChanged( QString const & id )
+void ArticleViewAgent::onJsActiveArticleChanged( const QString & id )
 {
   articleView->onJsActiveArticleChanged( id );
 }
 
-void ArticleViewAgent::linkClickedInHtml( QUrl const & url )
+void ArticleViewAgent::linkClickedInHtml( const QUrl & url )
 {
   articleView->linkClickedInHtml( url );
 }
 
-void ArticleViewAgent::collapseInHtml( QString const & dictId, bool on ) const
+void ArticleViewAgent::collapseInHtml( const QString & dictId, bool on ) const
 {
   if ( GlobalBroadcaster::instance()->getPreference()->sessionCollapse ) {
     if ( on ) {

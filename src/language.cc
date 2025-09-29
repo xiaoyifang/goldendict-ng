@@ -19,14 +19,14 @@ struct LangData
 
 struct Db
 {
-  static Db const & instance();
+  static const Db & instance();
 
-  [[nodiscard]] QMap< QString, LangData > const & getIso2ToLangData() const
+  [[nodiscard]] const QMap< QString, LangData > & getIso2ToLangData() const
   {
     return iso2LangData;
   }
 
-  [[nodiscard]] QMap< QString, QString > const & translationLangMap() const
+  [[nodiscard]] const QMap< QString, QString > & translationLangMap() const
   {
     return translationLangs;
   }
@@ -83,19 +83,19 @@ private:
 
   Db();
 
-  void addEntry( QString const & iso2, QString const & english, QString const & localized );
+  void addEntry( const QString & iso2, const QString & english, const QString & localized );
 
-  void addExtraCountry( QString const & iso2, QString const & country );
+  void addExtraCountry( const QString & iso2, const QString & country );
 };
 
-Db const & Db::instance()
+const Db & Db::instance()
 {
   static Db v;
 
   return v;
 }
 
-void Db::addEntry( QString const & iso2, QString const & english, QString const & localized )
+void Db::addEntry( const QString & iso2, const QString & english, const QString & localized )
 {
   LangData lang_data;
   lang_data.english   = english;
@@ -103,7 +103,7 @@ void Db::addEntry( QString const & iso2, QString const & english, QString const 
   iso2LangData.insert( iso2, lang_data );
 }
 
-void Db::addExtraCountry( QString const & iso2, QString const & country )
+void Db::addExtraCountry( const QString & iso2, const QString & country )
 {
   if ( !iso2LangData.contains( iso2 ) ) {
     return;
@@ -468,7 +468,7 @@ BabylonLang getBabylonLangByIndex( int index )
   return BabylonDb[ index ];
 }
 
-quint32 findBlgLangIDByEnglishName( std::u32string const & lang )
+quint32 findBlgLangIDByEnglishName( const std::u32string & lang )
 {
   QString enName = QString::fromStdU32String( lang );
   for ( const auto & idx : BabylonDb ) {

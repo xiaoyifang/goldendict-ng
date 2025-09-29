@@ -70,7 +70,7 @@ public:
   QMutex mutex;
 
 
-  DictServerImpl( QObject * parent, QString const & url_, QString client_ ):
+  DictServerImpl( QObject * parent, const QString & url_, QString client_ ):
     QObject( parent ),
     url( url_ ),
     client( client_ )
@@ -95,7 +95,7 @@ public:
       qDebug() << "socket error message: " << error;
     } );
     connect( &socket, &QTcpSocket::readyRead, this, [ this, callback ]() {
-      QMutexLocker const _( &mutex );
+      const QMutexLocker _( &mutex );
 
       if ( state == DictServerState::CONNECT ) {
         QByteArray reply = socket.readLine();
@@ -188,12 +188,12 @@ class DictServerDictionary: public Dictionary::Class
   QString msgId;
 
 public:
-  DictServerDictionary( string const & id,
-                        string const & name_,
-                        QString const & url_,
-                        QString const & database_,
-                        QString const & strategies_,
-                        QString const & icon_ ):
+  DictServerDictionary( const string & id,
+                        const string & name_,
+                        const QString & url_,
+                        const QString & database_,
+                        const QString & strategies_,
+                        const QString & icon_ ):
     Dictionary::Class( id, vector< string >() ),
     url( url_ ),
     icon( icon_ ),
@@ -235,7 +235,7 @@ public:
       qDebug() << "socket error message: " << error;
     } );
     connect( &socket, &QTcpSocket::readyRead, this, [ this ]() {
-      QMutexLocker const _( &mutex );
+      const QMutexLocker _( &mutex );
       QByteArray reply = socket.readLine();
       qDebug() << "received:" << reply;
       if ( state == DictServerState::DB ) {
@@ -256,7 +256,7 @@ public:
             }
             reply = reply.trimmed();
 
-            qDebug() << "receive db:" << reply;
+            qDebug().noquote() << "receive db:" << reply;
 
             if ( reply[ 0 ] == '.' ) {
               state = DictServerState::DB_DATA_FINISHED;
@@ -278,7 +278,7 @@ public:
       else if ( state == DictServerState::DB_DATA ) {
         while ( !reply.isEmpty() ) {
 
-          qDebug() << "receive db:" << reply;
+          qDebug().noquote() << "receive db:" << reply;
           if ( reply[ 0 ] == '.' ) {
             state = DictServerState::DB_DATA_FINISHED;
             emit finishDatabase();
@@ -313,10 +313,10 @@ public:
     return 0;
   }
 
-  sptr< WordSearchRequest > prefixMatch( std::u32string const &, unsigned long maxResults ) override;
+  sptr< WordSearchRequest > prefixMatch( const std::u32string &, unsigned long maxResults ) override;
 
   sptr< DataRequest >
-  getArticle( std::u32string const &, vector< std::u32string > const & alts, std::u32string const &, bool ) override;
+  getArticle( const std::u32string &, const vector< std::u32string > & alts, const std::u32string &, bool ) override;
 
   quint32 getLangFrom() const override
   {
@@ -328,7 +328,7 @@ public:
     return langId;
   }
 
-  QString const & getDescription() override;
+  const QString & getDescription() override;
 
 protected:
 
@@ -360,7 +360,7 @@ void DictServerDictionary::loadIcon() noexcept
   dictionaryIconLoaded = true;
 }
 
-QString const & DictServerDictionary::getDescription()
+const QString & DictServerDictionary::getDescription()
 {
   if ( dictionaryDescription.isEmpty() ) {
     dictionaryDescription = QCoreApplication::translate( "DictServer", "Url: " ) + url + "<br>";
@@ -473,7 +473,7 @@ void DictServerWordSearchRequest::run()
   }
 
   connect( &dictImpl->socket, &QTcpSocket::readyRead, this, [ this ]() {
-    QMutexLocker const _( &dictImpl->mutex );
+    const QMutexLocker _( &dictImpl->mutex );
     if ( state == DictServerState::MATCH ) {
       QByteArray reply = dictImpl->socket.readLine();
       qDebug() << "receive match:" << reply;
@@ -761,7 +761,7 @@ void DictServerArticleRequest::run()
   }
 
   connect( &dictImpl->socket, &QTcpSocket::readyRead, this, [ this ]() {
-    QMutexLocker const _( &dictImpl->mutex );
+    const QMutexLocker _( &dictImpl->mutex );
     timer->start();
     if ( state == DictServerState::DEFINE ) {
       QByteArray reply = dictImpl->socket.readLine();
@@ -907,7 +907,7 @@ void DictServerArticleRequest::cancel()
   finish();
 }
 
-sptr< WordSearchRequest > DictServerDictionary::prefixMatch( std::u32string const & word, unsigned long maxResults )
+sptr< WordSearchRequest > DictServerDictionary::prefixMatch( const std::u32string & word, unsigned long maxResults )
 {
   (void)maxResults;
   if ( word.size() > 80 ) {
@@ -920,9 +920,9 @@ sptr< WordSearchRequest > DictServerDictionary::prefixMatch( std::u32string cons
   }
 }
 
-sptr< DataRequest > DictServerDictionary::getArticle( std::u32string const & word,
-                                                      vector< std::u32string > const &,
-                                                      std::u32string const &,
+sptr< DataRequest > DictServerDictionary::getArticle( const std::u32string & word,
+                                                      const vector< std::u32string > &,
+                                                      const std::u32string &,
                                                       bool )
 
 {
@@ -938,7 +938,7 @@ sptr< DataRequest > DictServerDictionary::getArticle( std::u32string const & wor
 
 } // namespace
 
-vector< sptr< Dictionary::Class > > makeDictionaries( Config::DictServers const & servers )
+vector< sptr< Dictionary::Class > > makeDictionaries( const Config::DictServers & servers )
 
 {
   vector< sptr< Dictionary::Class > > result;

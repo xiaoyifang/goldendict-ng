@@ -47,7 +47,7 @@ uint32_t Writer::startNewBlock()
   return bufferUsed | ( (uint32_t)offsets.size() << 16 );
 }
 
-void Writer::addToBlock( void const * data, size_t size )
+void Writer::addToBlock( const void * data, size_t size )
 {
   if ( !size ) {
     return;

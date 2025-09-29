@@ -254,6 +254,18 @@
       <source>&amp;Create Anki note</source>
       <translation>&amp;Vytvořit Anki poznámku</translation>
     </message>
+    <message>
+      <source>Error Loading</source>
+      <translation>Chyba při načítání</translation>
+    </message>
+    <message>
+      <source>Page Load Failed</source>
+      <translation>Načtení stránky se nezdařilo</translation>
+    </message>
+    <message>
+      <source>Unable to load the requested page content</source>
+      <translation>Nelze načíst požadovaný obsah stránky</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -2474,10 +2486,6 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
       <translation>Jeden HTML (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Pdf (*.pdf)</source>
-      <translation>PDF (*.pdf)</translation>
-    </message>
-    <message>
       <source>Mime Html (*.mhtml)</source>
       <translation>Mime HTML (*.mhtml)</translation>
     </message>
@@ -2600,6 +2608,10 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
     <message>
       <source>Save PDF failed</source>
       <translation>Uložení PDF selhalo</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF dokument (*.pdf *.PDF)</translation>
     </message>
   </context>
   <context>
@@ -2876,10 +2888,6 @@ ukončení aplikace.</translation>
     <message>
       <source>Appearance</source>
       <translation>Vzhled</translation>
-    </message>
-    <message>
-      <source>Interface Font</source>
-      <translation>Písmo rozhraní</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -3441,10 +3449,6 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <translation>Ukládat zprávy ladění do gd_log.txt do složky s konfigurací</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>Velikost písma rozhraní</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Jazyk rozhraní</translation>
     </message>
@@ -3467,6 +3471,26 @@ ze Stardict, Babylon a GLS slovníků</translation>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>GoldenDict-ng je slovníkový software.</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Povolit písmo rozhraní</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Žádná</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in seperate tab</source>
+      <translation>Otevřít webový slovník v samostatné záložce</translation>
     </message>
   </context>
   <context>
@@ -3611,6 +3635,14 @@ ze Stardict, Babylon a GLS slovníků</translation>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
       <translation>Vynutit překlad slova v hlavním okně.</translation>
+    </message>
+    <message>
+      <source>Website Url:</source>
+      <translation>Adresa URL webové stránky:</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation>V Urlu bude &quot;%GDWORD%&quot; nahrazeno hledaným slovem.</translation>
     </message>
   </context>
   <context>
@@ -3984,27 +4016,28 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>Potvrdit odebrání</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Odstranit adresář &lt;b&gt;%1&lt;/b&gt; ze seznamu?</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Odstranit stránky &lt;b&gt;%1&lt;/b&gt; ze seznamu?</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Odstranit program &lt;b&gt;%1&lt;/b&gt; ze seznamu?</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>The Czechoslovakia is a type of consonantal sound, used in some Speech communication languages.</translation>
     </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
     <message>
-      <source>None</source>
-      <translation>Žádná</translation>
+      <source>Remove selected directories from the list?</source>
+      <translation>Odstranit vybrané adresáře ze seznamu?</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation>Odstranit %1 adresáře ze seznamu?</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation>Odstranit stránky %1 ze seznamu?</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation>Odstranit %1 servery ze seznamu?</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation>Odstranit programy %1 ze seznamu?</translation>
     </message>
   </context>
   <context>
@@ -4101,18 +4134,17 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Vložit článek jako odkaz do &lt;iframe&gt; tagu</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation>Tento webový slovník je otevřen na nové kartě</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>Povoleno</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>Jako odkaz</translation>
     </message>
     <message>
       <source>Name</source>

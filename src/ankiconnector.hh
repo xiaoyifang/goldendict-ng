@@ -2,7 +2,6 @@
 
 #include "config.hh"
 
-#include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QObject>
 
@@ -11,20 +10,20 @@ class AnkiConnector: public QObject
   Q_OBJECT
 
 public:
-  explicit AnkiConnector( QObject * parent, Config::Class const & cfg );
+  explicit AnkiConnector( QObject * parent, const Config::Class & cfg );
 
-  void sendToAnki( QString const & word, QString text, QString const & sentence );
-  void ankiSearch( QString const & word );
+  void sendToAnki( const QString & word, QString text, const QString & sentence );
+  void ankiSearch( const QString & word );
 
 private:
   QNetworkAccessManager * mgr;
-  Config::Class const & cfg;
-  void postToAnki( QString const & postData );
+  const Config::Class & cfg;
+  void postToAnki( const QString & postData );
   static constexpr auto transfer_timeout = 3000;
 
 public:
 signals:
-  void errorText( QString const & );
+  void errorText( const QString & );
 private slots:
   void finishedSlot( QNetworkReply * reply );
 };

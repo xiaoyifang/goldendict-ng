@@ -27,7 +27,7 @@ public:
     QString word;
 
     // For assisting QList::contains & QList::removeOne
-    bool operator==( Item const & other ) const
+    bool operator==( const Item & other ) const
     {
       return QString::compare( word, other.word, Qt::CaseInsensitive ) == 0;
     }
@@ -40,13 +40,18 @@ public:
   /// If there was such an item already somewhere on the list, it gets removed
   /// from there. If otherwise the resulting list gets too large, the oldest
   /// item gets removed from the end of the list.
-  void addItem( Item const & );
+  void addItem( const Item & );
 
   Item getItem( int index );
 
   /// Remove item with given index from list
   void removeItem( int index )
   {
+    // Save to temporary file before removing an item
+    if ( index >= 0 && index < items.size() ) {
+      saveTemp( items.at( index ), '-' );
+    }
+
     items.removeAt( index );
     dirty = true;
     emit itemsChanged();
@@ -63,7 +68,7 @@ public:
   int size() const;
 
   /// Gets the current items. The first one is the newest one on the list.
-  QList< Item > const & getItems() const
+  const QList< Item > & getItems() const
   {
     return items;
   }
@@ -102,6 +107,15 @@ private:
   /// Returns true if the items list has been modified
   /// in order to fit into the constraints.
   bool ensureSizeConstraints();
+
+  /// Save history to temporary file for crash recovery
+  void saveTemp( const Item & item, QChar operation );
+
+  /// Load history from temporary file if main file is corrupted or missing
+  void loadTemp();
+
+  /// Remove temporary file
+  void removeTemp();
 
   QList< Item > items;
   unsigned maxSize;

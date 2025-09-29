@@ -18,7 +18,7 @@ bool isCombiningMark( char32_t ch )
   return QChar::isMark( ch );
 }
 
-std::u32string apply( std::u32string const & in, bool preserveWildcards )
+std::u32string apply( const std::u32string & in, bool preserveWildcards )
 {
   // remove diacritics (normalization), white space, punt,
   auto temp = QString::fromStdU32String( in )
@@ -40,9 +40,9 @@ std::u32string apply( std::u32string const & in, bool preserveWildcards )
   return caseFolded;
 }
 
-std::u32string applySimpleCaseOnly( std::u32string const & in )
+std::u32string applySimpleCaseOnly( const std::u32string & in )
 {
-  char32_t const * nextChar = in.data();
+  const char32_t * nextChar = in.data();
 
   std::u32string out;
 
@@ -55,25 +55,25 @@ std::u32string applySimpleCaseOnly( std::u32string const & in )
   return out;
 }
 
-std::u32string applySimpleCaseOnly( QString const & in )
+std::u32string applySimpleCaseOnly( const QString & in )
 {
   //qt only support simple case folding.
   return in.toCaseFolded().toStdU32String();
 }
 
-std::u32string applySimpleCaseOnly( std::string const & in )
+std::u32string applySimpleCaseOnly( const std::string & in )
 {
   return applySimpleCaseOnly( Text::toUtf32( in ) );
   // return QString::fromStdString( in ).toCaseFolded().toStdU32String();
 }
 
-std::u32string applyFullCaseOnly( std::u32string const & in )
+std::u32string applyFullCaseOnly( const std::u32string & in )
 {
   std::u32string caseFolded;
 
   caseFolded.reserve( in.size() * foldCaseMaxOut );
 
-  char32_t const * nextChar = in.data();
+  const char32_t * nextChar = in.data();
 
   char32_t buf[ foldCaseMaxOut ];
 
@@ -84,15 +84,15 @@ std::u32string applyFullCaseOnly( std::u32string const & in )
   return caseFolded;
 }
 
-std::u32string applyDiacriticsOnly( std::u32string const & in )
+std::u32string applyDiacriticsOnly( const std::u32string & in )
 {
   auto noAccent = QString::fromStdU32String( in ).normalized( QString::NormalizationForm_KD ).remove( RX::accentMark );
   return noAccent.toStdU32String();
 }
 
-std::u32string applyPunctOnly( std::u32string const & in )
+std::u32string applyPunctOnly( const std::u32string & in )
 {
-  char32_t const * nextChar = in.data();
+  const char32_t * nextChar = in.data();
 
   std::u32string out;
 
@@ -107,7 +107,7 @@ std::u32string applyPunctOnly( std::u32string const & in )
   return out;
 }
 
-QString applyPunctOnly( QString const & in )
+QString applyPunctOnly( const QString & in )
 {
   QString out;
   for ( auto c : in ) {
@@ -119,9 +119,9 @@ QString applyPunctOnly( QString const & in )
   return out;
 }
 
-std::u32string applyWhitespaceOnly( std::u32string const & in )
+std::u32string applyWhitespaceOnly( const std::u32string & in )
 {
-  char32_t const * nextChar = in.data();
+  const char32_t * nextChar = in.data();
 
   std::u32string out;
 
@@ -136,9 +136,9 @@ std::u32string applyWhitespaceOnly( std::u32string const & in )
   return out;
 }
 
-std::u32string applyWhitespaceAndPunctOnly( std::u32string const & in )
+std::u32string applyWhitespaceAndPunctOnly( const std::u32string & in )
 {
-  char32_t const * nextChar = in.data();
+  const char32_t * nextChar = in.data();
 
   std::u32string out;
 
@@ -168,9 +168,9 @@ bool isPunct( char32_t ch )
   return QChar::isPunct( ch );
 }
 
-std::u32string trimWhitespaceOrPunct( std::u32string const & in )
+std::u32string trimWhitespaceOrPunct( const std::u32string & in )
 {
-  char32_t const * wordBegin         = in.c_str();
+  const char32_t * wordBegin         = in.c_str();
   std::u32string::size_type wordSize = in.size();
 
   // Skip any leading whitespace
@@ -187,7 +187,7 @@ std::u32string trimWhitespaceOrPunct( std::u32string const & in )
   return std::u32string( wordBegin, wordSize );
 }
 
-QString trimWhitespaceOrPunct( QString const & in )
+QString trimWhitespaceOrPunct( const QString & in )
 {
   auto wordSize = in.size();
 
@@ -208,12 +208,12 @@ QString trimWhitespaceOrPunct( QString const & in )
   return in.mid( wordBegin, wordSize );
 }
 
-std::u32string trimWhitespace( std::u32string const & in )
+std::u32string trimWhitespace( const std::u32string & in )
 {
   if ( in.empty() ) {
     return in;
   }
-  char32_t const * wordBegin         = in.c_str();
+  const char32_t * wordBegin         = in.c_str();
   std::u32string::size_type wordSize = in.size();
 
   // Skip any leading whitespace
@@ -230,7 +230,7 @@ std::u32string trimWhitespace( std::u32string const & in )
   return std::u32string( wordBegin, wordSize );
 }
 
-QString trimWhitespace( QString const & in )
+QString trimWhitespace( const QString & in )
 {
   return in.trimmed();
 }

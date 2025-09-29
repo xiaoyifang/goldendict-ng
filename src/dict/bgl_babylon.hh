@@ -20,9 +20,7 @@
 
 #pragma once
 
-#include <stdlib.h>
 #include <zlib.h>
-
 #include <string>
 #include <vector>
 #include <qglobal.h>
@@ -140,13 +138,13 @@ public:
   {
   public:
 
-    virtual void handleBabylonResource( std::string const & filename, char const * data, size_t size ) = 0;
+    virtual void handleBabylonResource( const std::string & filename, const char * data, size_t size ) = 0;
 
     virtual ~ResourceHandler() {}
   };
 
   /// Sets a prefix string to append to each resource reference in hyperlinks.
-  void setResourcePrefix( std::string const & prefix )
+  void setResourcePrefix( const std::string & prefix )
   {
     m_resourcePrefix = prefix;
   }
@@ -191,7 +189,7 @@ public:
     return m_filename;
   }
 
-  std::vector< char > const & getIcon() const
+  const std::vector< char > & getIcon() const
   {
     return icon;
   }

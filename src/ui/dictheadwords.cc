@@ -3,7 +3,6 @@
 
 #include "dictheadwords.hh"
 #include "headwordsmodel.hh"
-#include <QDir>
 #include <QFileDialog>
 #include <QTimer>
 #include <QProgressDialog>
@@ -308,7 +307,7 @@ void DictHeadwords::exportAllWords( QProgressDialog & progress, QTextStream & ou
 
   const int headwordsNumber = model->totalCount();
 
-  QMutexLocker const _( &mutex );
+  const QMutexLocker _( &mutex );
   QSet< QString > allHeadwords;
 
   int totalCount = 0;
@@ -353,7 +352,7 @@ void DictHeadwords::exportAllWords( QProgressDialog & progress, QTextStream & ou
 void DictHeadwords::loadRegex( QProgressDialog & progress, QTextStream & out )
 {
 
-  QMutexLocker const _( &mutex );
+  const QMutexLocker _( &mutex );
   QSet< QString > allHeadwords;
 
   int totalCount = 0;
@@ -391,7 +390,7 @@ void DictHeadwords::saveHeadersToFile()
     }
   }
 
-  QString const fileName = QFileDialog::getSaveFileName( this,
+  const QString fileName = QFileDialog::getSaveFileName( this,
                                                          tr( "Save headwords to file" ),
                                                          exportPath,
                                                          tr( "Text files (*.txt);;All files (*.*)" ) );

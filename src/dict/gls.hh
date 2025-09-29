@@ -9,6 +9,6 @@ using std::vector;
 using std::string;
 
 vector< sptr< Dictionary::Class > >
-makeDictionaries( vector< string > const & fileNames, string const & indicesDir, Dictionary::Initializing & );
+makeDictionaries( const vector< string > & fileNames, const string & indicesDir, Dictionary::Initializing & );
 
 } // namespace Gls

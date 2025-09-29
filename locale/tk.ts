@@ -254,6 +254,18 @@
       <source>&amp;Create Anki note</source>
       <translation>&amp; Anki belligini dörediň</translation>
     </message>
+    <message>
+      <source>Error Loading</source>
+      <translation type="unfinished">Error Loading</translation>
+    </message>
+    <message>
+      <source>Page Load Failed</source>
+      <translation type="unfinished">Page Load Failed</translation>
+    </message>
+    <message>
+      <source>Unable to load the requested page content</source>
+      <translation type="unfinished">Unable to load the requested page content</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -2473,10 +2485,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Leeke Html (* .html * .htm)</translation>
     </message>
     <message>
-      <source>Pdf (*.pdf)</source>
-      <translation>Pdf (* .pdf)</translation>
-    </message>
-    <message>
       <source>Mime Html (*.mhtml)</source>
       <translation>Mime Html (* .mhtml)</translation>
     </message>
@@ -2599,6 +2607,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Save PDF failed</source>
       <translation type="unfinished">Save PDF failed</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
     </message>
   </context>
   <context>
@@ -2877,10 +2889,6 @@ programmany ýapmagyň ýerine ony gizlärdi.</translation>
     <message>
       <source>Appearance</source>
       <translation>Daş görnüşi</translation>
-    </message>
-    <message>
-      <source>Interface Font</source>
-      <translation>Interfeýs şrifti</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -3443,10 +3451,6 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
       <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>Interface Font Size</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3469,6 +3473,26 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation type="unfinished">Enable Interface Font</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation type="unfinished">Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation type="unfinished">Font Size</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Hiç birisi</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in seperate tab</source>
+      <translation type="unfinished">Open website dictionary in seperate tab</translation>
     </message>
   </context>
   <context>
@@ -3613,6 +3637,14 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
       <translation type="unfinished">Force the word to be translated in the mainwindow.</translation>
+    </message>
+    <message>
+      <source>Website Url:</source>
+      <translation type="unfinished">Website Url:</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation type="unfinished">In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</translation>
     </message>
   </context>
   <context>
@@ -3984,27 +4016,28 @@ tapyp bilersiňiz &lt;/a&gt;</translation>
       <translation>Aýyrmagy tassykla</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>&lt;b&gt;%1&lt;/b&gt; bukjasyny sanawdan aýyrmalymy?</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>&lt;b&gt;%1&lt;/b&gt; saýty sanawdan aýyrmalymy?</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>&lt;b&gt;%1&lt;/b&gt; programmany sanawdan aýyrmalymy?</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>Iňlis fonologiýasyna esaslanýan ýapon diliniň iň giňden ulanylýan usuly</translation>
     </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
     <message>
-      <source>None</source>
-      <translation>Hiç birisi</translation>
+      <source>Remove selected directories from the list?</source>
+      <translation type="unfinished">Remove selected directories from the list?</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation type="unfinished">Remove %1 directories from the list?</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation type="unfinished">Remove %1 sites from the list?</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation type="unfinished">Remove %1 servers from the list?</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation type="unfinished">Remove %1 programs from the list?</translation>
     </message>
   </context>
   <context>
@@ -4101,18 +4134,17 @@ tapyp bilersiňiz &lt;/a&gt;</translation>
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Makalany &lt;iframe&gt; belligiň içinde baglanyşyk hökmünde salyň</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation type="unfinished">This website dictionary is opened in a new tab</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>Işledilen</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>Baglanyşyk hökmünde</translation>
     </message>
     <message>
       <source>Name</source>

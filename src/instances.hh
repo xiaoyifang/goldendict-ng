@@ -6,7 +6,6 @@
 #include "config.hh"
 #include "dict/dictionary.hh"
 #include <QIcon>
-#include <limits.h>
 
 // This complements Config, providing instances for the stored configurations.
 // Simply put, it can convert groups to ones which hold references to
@@ -27,9 +26,9 @@ struct Group
 
   /// Instantiates the given group from its configuration. If some dictionary
   /// wasn't found, it just skips it.
-  Group( Config::Group const & cfgGroup,
-         std::vector< sptr< Dictionary::Class > > const & allDictionaries,
-         Config::Group const & inactiveGroup );
+  Group( const Config::Group & cfgGroup,
+         const std::vector< sptr< Dictionary::Class > > & allDictionaries,
+         const Config::Group & inactiveGroup );
 
   /// Creates an empty group.
   explicit Group();
@@ -46,35 +45,34 @@ struct Group
   void checkMutedDictionaries( Config::MutedDictionaries * mutedDictionaries ) const;
 };
 
-struct Groups: public vector< Group >
+struct Groups: vector< Group >
 {
-  /// Tries finding the given group by its id. Returns the group found, or
-  /// 0 if there's no such group.
-  Group * findGroup( unsigned id );
-  Group const * findGroup( unsigned id ) const;
+  /// Tries finding the given group by its id.
+  /// @return The group found, or nullptr if there's no such group.
+  const Group * findGroup( unsigned id ) const;
 };
 
 /// Adds any dictionaries not already present in the given group or in
 /// inactiveDictionaires to its end. Meant to be used with dictionaryOrder
 /// special group.
 void complementDictionaryOrder( Group & dictionaryOrder,
-                                Group const & inactiveDictionaries,
-                                vector< sptr< Dictionary::Class > > const & allDictionaries );
+                                const Group & inactiveDictionaries,
+                                const vector< sptr< Dictionary::Class > > & allDictionaries );
 
 /// For any dictionaries present in the group, updates their names to match
 /// the dictionaries they refer to in their current form, if they exist.
 /// If the dictionary instance can't be located, the name is left untouched.
-void updateNames( Config::Group &, vector< sptr< Dictionary::Class > > const & allDictionaries );
+void updateNames( Config::Group &, const vector< sptr< Dictionary::Class > > & allDictionaries );
 
 /// Does updateNames() for a set of given groups.
-void updateNames( Config::Groups &, vector< sptr< Dictionary::Class > > const & allDictionaries );
+void updateNames( Config::Groups &, const vector< sptr< Dictionary::Class > > & allDictionaries );
 
 /// Does updateNames() for any relevant dictionary groups present in the
 /// configuration.
-void updateNames( Config::Class &, vector< sptr< Dictionary::Class > > const & allDictionaries );
+void updateNames( Config::Class &, const vector< sptr< Dictionary::Class > > & allDictionaries );
 
 /// Creates icon from icon data. Used by Group, but also by others who work
 /// with icon data directly.
-QIcon iconFromData( QByteArray const & );
+QIcon iconFromData( const QByteArray & );
 
 } // namespace Instances

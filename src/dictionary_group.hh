@@ -9,23 +9,23 @@
 class DictionaryGroup
 {
 public:
-  DictionaryGroup( std::vector< sptr< Dictionary::Class > > const & allDictionaries_,
-                   Instances::Groups const & groups_ ):
+  DictionaryGroup( const std::vector< sptr< Dictionary::Class > > & allDictionaries_,
+                   const Instances::Groups & groups_ ):
     allDictionaries( allDictionaries_ ),
     groups( groups_ )
   {
   }
 
-  sptr< Dictionary::Class > getDictionaryByName( QString const & dictionaryName );
+  sptr< Dictionary::Class > getDictionaryByName( const QString & dictionaryName );
 
   const std::vector< sptr< Dictionary::Class > > * getActiveDictionaries( unsigned groupId );
 
   sptr< Dictionary::Class > getDictionaryById( const std::string & dictId );
 
-  Instances::Group const * getGroupById( unsigned groupId );
+  const Instances::Group * getGroupById( unsigned groupId );
 
 
 private:
-  std::vector< sptr< Dictionary::Class > > const & allDictionaries;
-  Instances::Groups const & groups;
+  const std::vector< sptr< Dictionary::Class > > & allDictionaries;
+  const Instances::Groups & groups;
 };

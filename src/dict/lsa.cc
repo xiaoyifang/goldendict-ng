@@ -67,7 +67,7 @@ bool indexIsOldOrBad( string const & indexFile )
     || header.formatVersion != CurrentFormatVersion;
 }
 
-string stripExtension( string const & str )
+string stripExtension( const string & str )
 {
   if ( Utils::endsWithIgnoreCase( str, ".wav" ) ) {
     return string( str, 0, str.size() - 4 );
@@ -154,7 +154,7 @@ class LsaDictionary: public BtreeIndexing::BtreeDictionary
 
 public:
 
-  LsaDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles );
+  LsaDictionary( const string & id, const string & indexFile, const vector< string > & dictionaryFiles );
 
   string getName() noexcept override;
 
@@ -168,12 +168,12 @@ public:
     return getArticleCount();
   }
 
-  sptr< Dictionary::DataRequest > getArticle( std::u32string const &,
-                                              vector< std::u32string > const & alts,
-                                              std::u32string const &,
+  sptr< Dictionary::DataRequest > getArticle( const std::u32string &,
+                                              const vector< std::u32string > & alts,
+                                              const std::u32string &,
                                               bool ignoreDiacritics ) override;
 
-  sptr< Dictionary::DataRequest > getResource( string const & name ) override;
+  sptr< Dictionary::DataRequest > getResource( const string & name ) override;
 
 protected:
 
@@ -190,7 +190,7 @@ string LsaDictionary::getName() noexcept
   return result;
 }
 
-LsaDictionary::LsaDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles ):
+LsaDictionary::LsaDictionary( const string & id, const string & indexFile, const vector< string > & dictionaryFiles ):
   BtreeDictionary( id, dictionaryFiles ),
   idx( indexFile, QIODevice::ReadOnly ),
   idxHeader( idx.read< IdxHeader >() )
@@ -200,9 +200,9 @@ LsaDictionary::LsaDictionary( string const & id, string const & indexFile, vecto
   openIndex( IndexInfo( idxHeader.indexBtreeMaxElements, idxHeader.indexRootOffset ), idx, idxMutex );
 }
 
-sptr< Dictionary::DataRequest > LsaDictionary::getArticle( std::u32string const & word,
-                                                           vector< std::u32string > const & alts,
-                                                           std::u32string const &,
+sptr< Dictionary::DataRequest > LsaDictionary::getArticle( const std::u32string & word,
+                                                           const vector< std::u32string > & alts,
+                                                           const std::u32string &,
                                                            bool ignoreDiacritics )
 
 {
@@ -384,7 +384,7 @@ __attribute__( ( packed ) )
 #endif
 ;
 
-sptr< Dictionary::DataRequest > LsaDictionary::getResource( string const & name )
+sptr< Dictionary::DataRequest > LsaDictionary::getResource( const string & name )
 
 {
   // See if the name ends in .wav. Remove that extension then
@@ -498,8 +498,8 @@ void LsaDictionary::loadIcon() noexcept
 
 } // namespace
 
-vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & fileNames,
-                                                      string const & indicesDir,
+vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & fileNames,
+                                                      const string & indicesDir,
                                                       Dictionary::Initializing & initializing )
 {
   vector< sptr< Dictionary::Class > > dictionaries;

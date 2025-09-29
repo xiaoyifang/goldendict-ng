@@ -36,7 +36,7 @@ void DictInfo::showInfo( sptr< Dictionary::Class > dict )
     ui.buttonsLayout->insertSpacerItem( 0, new QSpacerItem( 40, 20, QSizePolicy::Expanding ) );
   }
 
-  std::vector< std::string > const & filenames = dict->getDictionaryFilenames();
+  const std::vector< std::string > & filenames = dict->getDictionaryFilenames();
 
   QString filenamesText;
 

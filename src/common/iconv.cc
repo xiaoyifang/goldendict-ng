@@ -7,7 +7,7 @@
 #include <string.h>
 #include <QDebug>
 
-Iconv::Iconv( char const * from ):
+Iconv::Iconv( const char * from ):
   state( iconv_open( Text::utf8, from ) )
 {
   if ( state == (iconv_t)-1 ) {
@@ -66,7 +66,7 @@ QByteArray Iconv::fromUnicode( const QString & input, const char * toEncoding )
   return QByteArray( outBuf.data(), outBuf.size() );
 }
 
-QString Iconv::convert( void const *& inBuf, size_t & inBytesLeft )
+QString Iconv::convert( const void *& inBuf, size_t & inBytesLeft )
 {
   size_t dsz = inBytesLeft;
   //avoid most realloc
@@ -122,7 +122,7 @@ QString Iconv::convert( void const *& inBuf, size_t & inBytesLeft )
   return QString::fromUtf8( &outBuf.front(), datasize );
 }
 
-std::u32string Iconv::toWstring( char const * fromEncoding, void const * fromData, size_t dataSize )
+std::u32string Iconv::toWstring( const char * fromEncoding, const void * fromData, size_t dataSize )
 {
   /// Special-case the dataSize == 0 to avoid any kind of iconv-specific
   /// behaviour in that regard.
@@ -137,7 +137,7 @@ std::u32string Iconv::toWstring( char const * fromEncoding, void const * fromDat
   return outStr.toStdU32String();
 }
 
-std::string Iconv::toUtf8( char const * fromEncoding, void const * fromData, size_t dataSize )
+std::string Iconv::toUtf8( const char * fromEncoding, const void * fromData, size_t dataSize )
 
 {
   // Similar to toWstring
@@ -152,13 +152,13 @@ std::string Iconv::toUtf8( char const * fromEncoding, void const * fromData, siz
   return outStr.toStdString();
 }
 
-std::string Iconv::toUtf8( char const * fromEncoding, std::u32string_view str )
+std::string Iconv::toUtf8( const char * fromEncoding, std::u32string_view str )
 {
   // u32string::size -> returns the number of char32_t instead of the length of bytes
   return toUtf8( fromEncoding, str.data(), str.size() * sizeof( char32_t ) );
 }
 
-QString Iconv::toQString( char const * fromEncoding, void const * fromData, size_t dataSize )
+QString Iconv::toQString( const char * fromEncoding, const void * fromData, size_t dataSize )
 {
   if ( dataSize == 0 ) {
     return {};

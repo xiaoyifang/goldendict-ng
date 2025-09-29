@@ -13,8 +13,6 @@
 #include <string>
 #include <vector>
 #include <list>
-#include <wctype.h>
-#include <stdlib.h>
 #include "ftshelpers.hh"
 #include <QDir>
 #include <QUrl>
@@ -86,7 +84,7 @@ class DictdDictionary: public BtreeIndexing::BtreeDictionary
 
 public:
 
-  DictdDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles );
+  DictdDictionary( const string & id, const string & indexFile, const vector< string > & dictionaryFiles );
 
   ~DictdDictionary();
 
@@ -112,20 +110,20 @@ public:
     return idxHeader.langTo;
   }
 
-  sptr< Dictionary::DataRequest > getArticle( std::u32string const &,
-                                              vector< std::u32string > const & alts,
-                                              std::u32string const &,
+  sptr< Dictionary::DataRequest > getArticle( const std::u32string &,
+                                              const vector< std::u32string > & alts,
+                                              const std::u32string &,
                                               bool ignoreDiacritics ) override;
 
-  QString const & getDescription() override;
+  const QString & getDescription() override;
 
   sptr< Dictionary::DataRequest >
-  getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
+  getSearchResults( const QString & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
   void makeFTSIndex( QAtomicInt & isCancelled ) override;
 
-  void setFTSParameters( Config::FullTextSearch const & fts ) override
+  void setFTSParameters( const Config::FullTextSearch & fts ) override
   {
     if ( metadata_enable_fts.has_value() ) {
       can_FTS = fts.enabled && metadata_enable_fts.value();
@@ -137,9 +135,9 @@ public:
   }
 };
 
-DictdDictionary::DictdDictionary( string const & id,
-                                  string const & indexFile,
-                                  vector< string > const & dictionaryFiles ):
+DictdDictionary::DictdDictionary( const string & id,
+                                  const string & indexFile,
+                                  const vector< string > & dictionaryFiles ):
   BtreeDictionary( id, dictionaryFiles ),
   idx( indexFile, QIODevice::ReadOnly ),
   indexFile( dictionaryFiles[ 0 ], QIODevice::ReadOnly ),
@@ -176,19 +174,19 @@ DictdDictionary::~DictdDictionary()
   }
 }
 
-string nameFromFileName( string const & indexFileName )
+string nameFromFileName( const string & indexFileName )
 {
   if ( indexFileName.empty() ) {
     return string();
   }
 
-  char const * sep = strrchr( indexFileName.c_str(), Utils::Fs::separator() );
+  const char * sep = strrchr( indexFileName.c_str(), Utils::Fs::separator() );
 
   if ( !sep ) {
     sep = indexFileName.c_str();
   }
 
-  char const * dot = strrchr( sep, '.' );
+  const char * dot = strrchr( sep, '.' );
 
   if ( !dot ) {
     dot = indexFileName.c_str() + indexFileName.size();
@@ -213,14 +211,14 @@ void DictdDictionary::loadIcon() noexcept
   dictionaryIconLoaded = true;
 }
 
-uint32_t decodeBase64( string const & str )
+uint32_t decodeBase64( const string & str )
 {
-  static char const digits[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+  static const char digits[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
   uint32_t number = 0;
 
-  for ( char const * next = str.c_str(); *next; ++next ) {
-    char const * d = strchr( digits, *next );
+  for ( const char * next = str.c_str(); *next; ++next ) {
+    const char * d = strchr( digits, *next );
 
     if ( !d ) {
       throw exInvalidBase64();
@@ -232,9 +230,9 @@ uint32_t decodeBase64( string const & str )
   return number;
 }
 
-sptr< Dictionary::DataRequest > DictdDictionary::getArticle( std::u32string const & word,
-                                                             vector< std::u32string > const & alts,
-                                                             std::u32string const &,
+sptr< Dictionary::DataRequest > DictdDictionary::getArticle( const std::u32string & word,
+                                                             const vector< std::u32string > & alts,
+                                                             const std::u32string &,
                                                              bool ignoreDiacritics )
 
 {
@@ -414,7 +412,7 @@ sptr< Dictionary::DataRequest > DictdDictionary::getArticle( std::u32string cons
   }
 }
 
-QString const & DictdDictionary::getDescription()
+const QString & DictdDictionary::getDescription()
 {
   if ( !dictionaryDescription.isEmpty() ) {
     return dictionaryDescription;
@@ -535,7 +533,7 @@ void DictdDictionary::getArticleText( uint32_t articleAddress, QString & headwor
 }
 
 sptr< Dictionary::DataRequest >
-DictdDictionary::getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics )
+DictdDictionary::getSearchResults( const QString & searchString, int searchMode, bool matchCase, bool ignoreDiacritics )
 {
   return std::make_shared< FtsHelpers::FTSResultsRequest >( *this,
                                                             searchString,
@@ -546,8 +544,8 @@ DictdDictionary::getSearchResults( QString const & searchString, int searchMode,
 
 } // anonymous namespace
 
-vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & fileNames,
-                                                      string const & indicesDir,
+vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & fileNames,
+                                                      const string & indicesDir,
                                                       Dictionary::Initializing & initializing )
 
 {

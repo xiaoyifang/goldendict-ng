@@ -83,7 +83,7 @@ static_assert( alignof( IdxHeader ) == 1 );
   #pragma pack( pop )
 
 // Some supporting functions
-bool indexIsOldOrBad( string const & indexFile )
+bool indexIsOldOrBad( const string & indexFile )
 {
   File::Index idx( indexFile, QIODevice::ReadOnly );
 
@@ -93,7 +93,7 @@ bool indexIsOldOrBad( string const & indexFile )
     || header.formatVersion != CurrentFormatVersion;
 }
 
-quint32 getArticleCluster( ZimFile const & file, quint32 articleNumber )
+quint32 getArticleCluster( const ZimFile & file, quint32 articleNumber )
 {
   try {
     auto entry = file.getEntryByPath( articleNumber );
@@ -113,7 +113,7 @@ bool isArticleMime( const string & mime_type )
   return mime_type == "text/html" /*|| mime_type.compare( "text/plain" ) == 0*/;
 }
 
-quint32 readArticle( ZimFile const & file, quint32 articleNumber, string & result )
+quint32 readArticle( const ZimFile & file, quint32 articleNumber, string & result )
 {
   try {
     auto entry = file.getEntryByPath( articleNumber );
@@ -128,7 +128,7 @@ quint32 readArticle( ZimFile const & file, quint32 articleNumber, string & resul
   }
 }
 
-quint32 readArticleByPath( ZimFile const & file, const string & path, string & result )
+quint32 readArticleByPath( const ZimFile & file, const string & path, string & result )
 {
   try {
     auto entry = file.getEntryByPath( path );
@@ -156,7 +156,7 @@ class ZimDictionary: public BtreeIndexing::BtreeDictionary
 
 public:
 
-  ZimDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles );
+  ZimDictionary( const string & id, const string & indexFile, const vector< string > & dictionaryFiles );
 
   ~ZimDictionary() = default;
 
@@ -182,22 +182,22 @@ public:
   }
 
   sptr< Dictionary::DataRequest >
-  getArticle( u32string const &, vector< u32string > const & alts, u32string const &, bool ignoreDiacritics ) override;
+  getArticle( const u32string &, const vector< u32string > & alts, const u32string &, bool ignoreDiacritics ) override;
 
-  sptr< Dictionary::DataRequest > getResource( string const & name ) override;
+  sptr< Dictionary::DataRequest > getResource( const string & name ) override;
 
-  QString const & getDescription() override;
+  const QString & getDescription() override;
 
   /// Loads the resource.
   void loadResource( std::string & resourceName, string & data );
 
   sptr< Dictionary::DataRequest >
-  getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
+  getSearchResults( const QString & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
   void makeFTSIndex( QAtomicInt & isCancelled ) override;
 
-  void setFTSParameters( Config::FullTextSearch const & fts ) override
+  void setFTSParameters( const Config::FullTextSearch & fts ) override
   {
     if ( metadata_enable_fts.has_value() ) {
       can_FTS = fts.enabled && metadata_enable_fts.value();
@@ -217,12 +217,12 @@ private:
   /// Loads the article.
   quint32 loadArticle( quint32 address, string & articleText, bool rawText = false );
 
-  string convert( string const & in_data );
+  string convert( const string & in_data );
   friend class ZimArticleRequest;
   friend class ZimResourceRequest;
 };
 
-ZimDictionary::ZimDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles ):
+ZimDictionary::ZimDictionary( const string & id, const string & indexFile, const vector< string > & dictionaryFiles ):
   BtreeDictionary( id, dictionaryFiles ),
   idx( indexFile, QIODevice::ReadOnly ),
   idxHeader( idx.read< IdxHeader >() ),
@@ -452,7 +452,7 @@ void ZimDictionary::loadResource( std::string & resourceName, string & data )
   readArticleByPath( df, resourceName, data );
 }
 
-QString const & ZimDictionary::getDescription()
+const QString & ZimDictionary::getDescription()
 {
   if ( !dictionaryDescription.isEmpty() ) {
     return dictionaryDescription;
@@ -503,7 +503,7 @@ void ZimDictionary::getArticleText( uint32_t articleAddress, QString & headword,
 }
 
 sptr< Dictionary::DataRequest >
-ZimDictionary::getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics )
+ZimDictionary::getSearchResults( const QString & searchString, int searchMode, bool matchCase, bool ignoreDiacritics )
 {
   return std::make_shared< FtsHelpers::FTSResultsRequest >( *this,
                                                             searchString,
@@ -527,7 +527,7 @@ class ZimArticleRequest: public Dictionary::DataRequest
 public:
 
   ZimArticleRequest( u32string word_,
-                     vector< u32string > const & alts_,
+                     const vector< u32string > & alts_,
                      ZimDictionary & dict_,
                      bool ignoreDiacritics_ ):
     word( std::move( word_ ) ),
@@ -666,9 +666,9 @@ void ZimArticleRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > ZimDictionary::getArticle( u32string const & word,
-                                                           vector< u32string > const & alts,
-                                                           u32string const &,
+sptr< Dictionary::DataRequest > ZimDictionary::getArticle( const u32string & word,
+                                                           const vector< u32string > & alts,
+                                                           const u32string &,
                                                            bool ignoreDiacritics )
 
 {
@@ -728,7 +728,7 @@ void ZimResourceRequest::run()
 
     if ( Filetype::isNameOfCSS( resourceName ) ) {
       QString css = QString::fromUtf8( resource.data(), resource.size() );
-      dict.isolateCSS( css, ".zimdict" );
+      dict.isolateCSS( css );
       QByteArray bytes = css.toUtf8();
 
       QMutexLocker _( &dataMutex );
@@ -760,15 +760,15 @@ void ZimResourceRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > ZimDictionary::getResource( string const & name )
+sptr< Dictionary::DataRequest > ZimDictionary::getResource( const string & name )
 {
   auto noLeadingDot = QString::fromStdString( name ).remove( RX::Zim::leadingDotSlash );
   return std::make_shared< ZimResourceRequest >( *this, noLeadingDot.toStdString() );
 }
 
 u32string normalizeWord( const std::string & url );
-vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & fileNames,
-                                                      string const & indicesDir,
+vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & fileNames,
+                                                      const string & indicesDir,
                                                       Dictionary::Initializing & initializing,
                                                       unsigned maxHeadwordsToExpand )
 

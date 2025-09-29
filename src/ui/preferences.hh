@@ -1,7 +1,5 @@
 #pragma once
 
-#include <QDialog>
-#include <QAction>
 #include "config.hh"
 #include "ui_preferences.h"
 

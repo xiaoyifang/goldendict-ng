@@ -20,23 +20,19 @@
 
 #include "mdictparser.hh"
 
-#include <errno.h>
-#include <zlib.h>
-#include <lzo/lzo1x.h>
-
-#include <QtEndian>
-#include <QStringList>
-#include <QByteArray>
-#include <QFileInfo>
-#include <QRegularExpression>
-#include <QDomDocument>
-#include <QTextDocumentFragment>
-#include <QDataStream>
 #include "decompress.hh"
-#include "ripemd.hh"
-#include "utils.hh"
 #include "htmlescape.hh"
 #include "iconv.hh"
+#include "ripemd.hh"
+#include "utils.hh"
+#include <QByteArray>
+#include <QDataStream>
+#include <QDomDocument>
+#include <QStringList>
+#include <QTextDocumentFragment>
+#include <QtEndian>
+#include <lzo/lzo1x.h>
+#include <zlib.h>
 
 namespace Mdict {
 
@@ -317,7 +313,7 @@ bool MdictParser::readHeader( QDataStream & in )
 
   if ( headerText.contains( "StyleSheet" ) ) {
     // a workaround to bypass https://bugreports.qt.io/browse/QTBUG-102612
-    QRegularExpression const rx( "StyleSheet=\"([^\"]*?)\"", QRegularExpression::CaseInsensitiveOption );
+    const QRegularExpression rx( "StyleSheet=\"([^\"]*?)\"", QRegularExpression::CaseInsensitiveOption );
 
     auto match = rx.match( headerText );
 
@@ -487,7 +483,7 @@ bool MdictParser::readRecordBlockInfos()
   return true;
 }
 
-MdictParser::BlockInfoVector MdictParser::decodeHeadWordBlockInfo( QByteArray const & headWordBlockInfo )
+MdictParser::BlockInfoVector MdictParser::decodeHeadWordBlockInfo( const QByteArray & headWordBlockInfo )
 {
   BlockInfoVector headWordBlockInfos;
 
@@ -534,7 +530,7 @@ MdictParser::BlockInfoVector MdictParser::decodeHeadWordBlockInfo( QByteArray co
   return headWordBlockInfos;
 }
 
-MdictParser::HeadWordIndex MdictParser::splitHeadWordBlock( QByteArray const & block )
+MdictParser::HeadWordIndex MdictParser::splitHeadWordBlock( const QByteArray & block )
 {
   HeadWordIndex index;
 
@@ -578,7 +574,7 @@ bool MdictParser::readRecordBlock( MdictParser::HeadWordIndex & headWordIndex,
       return false;
     }
 
-    RecordIndex const & recordIndex     = recordBlockInfos_[ idx ];
+    const RecordIndex & recordIndex     = recordBlockInfos_[ idx ];
     HeadWordIndex::const_iterator iNext = i + 1;
     qint64 recordSize;
     if ( iNext == headWordIndex.end() ) {
@@ -601,7 +597,7 @@ bool MdictParser::readRecordBlock( MdictParser::HeadWordIndex & headWordIndex,
   return true;
 }
 
-QString & MdictParser::substituteStylesheet( QString & article, MdictParser::StyleSheets const & styleSheets )
+QString & MdictParser::substituteStylesheet( QString & article, const MdictParser::StyleSheets & styleSheets )
 {
   QRegularExpression rx( "`(\\d+)`", QRegularExpression::UseUnicodePropertiesOption );
   QString articleNewText;

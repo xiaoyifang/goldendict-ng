@@ -24,7 +24,7 @@ class ProgramsDictionary: public Dictionary::Class
 
 public:
 
-  ProgramsDictionary( Config::Program const & prg_ ):
+  ProgramsDictionary( const Config::Program & prg_ ):
     Dictionary::Class( prg_.id.toStdString(), vector< string >() ),
     prg( prg_ )
   {
@@ -45,17 +45,17 @@ public:
     return 0;
   }
 
-  sptr< WordSearchRequest > prefixMatch( std::u32string const & word, unsigned long maxResults ) override;
+  sptr< WordSearchRequest > prefixMatch( const std::u32string & word, unsigned long maxResults ) override;
 
   sptr< DataRequest >
-  getArticle( std::u32string const &, vector< std::u32string > const & alts, std::u32string const &, bool ) override;
+  getArticle( const std::u32string &, const vector< std::u32string > & alts, const std::u32string &, bool ) override;
 
 protected:
 
   void loadIcon() noexcept override;
 };
 
-sptr< WordSearchRequest > ProgramsDictionary::prefixMatch( std::u32string const & word, unsigned long /*maxResults*/ )
+sptr< WordSearchRequest > ProgramsDictionary::prefixMatch( const std::u32string & word, unsigned long /*maxResults*/ )
 
 {
   if ( prg.type == Config::Program::PrefixMatch ) {
@@ -70,9 +70,9 @@ sptr< WordSearchRequest > ProgramsDictionary::prefixMatch( std::u32string const 
   }
 }
 
-sptr< Dictionary::DataRequest > ProgramsDictionary::getArticle( std::u32string const & word,
-                                                                vector< std::u32string > const &,
-                                                                std::u32string const &,
+sptr< Dictionary::DataRequest > ProgramsDictionary::getArticle( const std::u32string & word,
+                                                                const vector< std::u32string > &,
+                                                                const std::u32string &,
                                                                 bool )
 
 {
@@ -140,7 +140,7 @@ RunInstance::RunInstance():
   connect( &process, &QProcess::errorOccurred, this, &RunInstance::processFinished );
 }
 
-bool RunInstance::start( Config::Program const & prg, QString const & word, QString & error )
+bool RunInstance::start( const Config::Program & prg, const QString & word, QString & error )
 {
   QStringList args = QProcess::splitCommand( prg.commandLine );
 
@@ -149,7 +149,7 @@ bool RunInstance::start( Config::Program const & prg, QString const & word, QStr
     args.pop_front();
 
     bool writeToStdInput       = true;
-    auto const & search_string = GlobalBroadcaster::instance()->translateLineText;
+    const auto & search_string = GlobalBroadcaster::instance()->translateLineText;
 
     for ( auto & arg : args ) {
       if ( arg.indexOf( "%GDWORD%" ) >= 0 ) {
@@ -204,7 +204,7 @@ void RunInstance::handleProcessFinished()
   emit finished( output, error );
 }
 
-ProgramDataRequest::ProgramDataRequest( QString const & word, Config::Program const & prg_ ):
+ProgramDataRequest::ProgramDataRequest( const QString & word, const Config::Program & prg_ ):
   prg( prg_ )
 {
   connect( &instance, &RunInstance::finished, this, &ProgramDataRequest::instanceFinished );
@@ -311,7 +311,7 @@ void ProgramDataRequest::cancel()
   finish();
 }
 
-ProgramWordSearchRequest::ProgramWordSearchRequest( QString const & word, Config::Program const & prg_ ):
+ProgramWordSearchRequest::ProgramWordSearchRequest( const QString & word, const Config::Program & prg_ ):
   prg( prg_ )
 {
   connect( &instance, &RunInstance::finished, this, &ProgramWordSearchRequest::instanceFinished );
@@ -347,7 +347,7 @@ void ProgramWordSearchRequest::cancel()
   finish();
 }
 
-vector< sptr< Dictionary::Class > > makeDictionaries( Config::Programs const & programs )
+vector< sptr< Dictionary::Class > > makeDictionaries( const Config::Programs & programs )
 
 {
   vector< sptr< Dictionary::Class > > result;

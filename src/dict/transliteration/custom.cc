@@ -28,7 +28,7 @@ void CustomTransTable::parse( const QString & content )
   }
 }
 
-std::vector< sptr< Dictionary::Class > > makeDictionaries( Config::CustomTrans const & cusTran )
+std::vector< sptr< Dictionary::Class > > makeDictionaries( const Config::CustomTrans & cusTran )
 {
 
   std::vector< sptr< Dictionary::Class > > result;

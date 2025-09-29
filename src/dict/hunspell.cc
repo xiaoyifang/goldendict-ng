@@ -38,7 +38,7 @@ class HunspellDictionary: public Dictionary::Class
 public:
 
   /// files[ 0 ] should be .aff file, files[ 1 ] should be .dic file.
-  HunspellDictionary( string const & id, string const & name_, vector< string > const & files ):
+  HunspellDictionary( const string & id, const string & name_, const vector< string > & files ):
     Dictionary::Class( id, files ),
 #ifdef Q_OS_WIN32
     hunspell( Utf8ToLocal8Bit( files[ 0 ] ).c_str(), Utf8ToLocal8Bit( files[ 1 ] ).c_str() )
@@ -59,12 +59,12 @@ public:
     return 0;
   }
 
-  sptr< WordSearchRequest > prefixMatch( std::u32string const &, unsigned long maxResults ) override;
+  sptr< WordSearchRequest > prefixMatch( const std::u32string &, unsigned long maxResults ) override;
 
-  sptr< WordSearchRequest > findHeadwordsForSynonym( std::u32string const & ) override;
+  sptr< WordSearchRequest > findHeadwordsForSynonym( const std::u32string & ) override;
 
   sptr< DataRequest >
-  getArticle( std::u32string const &, vector< std::u32string > const & alts, std::u32string const &, bool ) override;
+  getArticle( const std::u32string &, const vector< std::u32string > & alts, const std::u32string &, bool ) override;
 
   bool isLocalDictionary() override
   {
@@ -94,21 +94,21 @@ private:
 
 /// Decodes the given string returned by the hunspell object. May throw
 /// Iconv::Ex
-std::u32string decodeFromHunspell( Hunspell &, char const * );
+std::u32string decodeFromHunspell( Hunspell &, const char * );
 
 /// Generates suggestions via hunspell
 QList< std::u32string > suggest( std::u32string & word, QMutex & hunspellMutex, Hunspell & hunspell );
 
 /// Generates suggestions for compound expression
-void getSuggestionsForExpression( std::u32string const & expression,
+void getSuggestionsForExpression( const std::u32string & expression,
                                   vector< std::u32string > & suggestions,
                                   QMutex & hunspellMutex,
                                   Hunspell & hunspell );
 
 /// Returns true if the string contains whitespace, false otherwise
-bool containsWhitespace( std::u32string const & str )
+bool containsWhitespace( const std::u32string & str )
 {
-  char32_t const * next = str.c_str();
+  const char32_t * next = str.c_str();
 
   for ( ; *next; ++next ) {
     if ( Folding::isWhitespace( *next ) ) {
@@ -135,7 +135,7 @@ void HunspellDictionary::loadIcon() noexcept
   dictionaryIconLoaded = true;
 }
 
-vector< std::u32string > HunspellDictionary::getAlternateWritings( std::u32string const & word ) noexcept
+vector< std::u32string > HunspellDictionary::getAlternateWritings( const std::u32string & word ) noexcept
 {
   vector< std::u32string > results;
 
@@ -160,7 +160,7 @@ class HunspellArticleRequest: public Dictionary::DataRequest
 
 public:
 
-  HunspellArticleRequest( std::u32string const & word_, QMutex & hunspellMutex_, Hunspell & hunspell_ ):
+  HunspellArticleRequest( const std::u32string & word_, QMutex & hunspellMutex_, Hunspell & hunspell_ ):
     hunspellMutex( hunspellMutex_ ),
     hunspell( hunspell_ ),
     word( word_ )
@@ -261,9 +261,9 @@ void HunspellArticleRequest::run()
   finish();
 }
 
-sptr< DataRequest > HunspellDictionary::getArticle( std::u32string const & word,
-                                                    vector< std::u32string > const &,
-                                                    std::u32string const &,
+sptr< DataRequest > HunspellDictionary::getArticle( const std::u32string & word,
+                                                    const vector< std::u32string > &,
+                                                    const std::u32string &,
                                                     bool )
 
 {
@@ -285,7 +285,7 @@ class HunspellHeadwordsRequest: public Dictionary::WordSearchRequest
 
 public:
 
-  HunspellHeadwordsRequest( std::u32string const & word_, QMutex & hunspellMutex_, Hunspell & hunspell_ ):
+  HunspellHeadwordsRequest( const std::u32string & word_, QMutex & hunspellMutex_, Hunspell & hunspell_ ):
     hunspellMutex( hunspellMutex_ ),
     hunspell( hunspell_ ),
     word( word_ )
@@ -397,7 +397,7 @@ QList< std::u32string > suggest( std::u32string & word, QMutex & hunspellMutex, 
 }
 
 
-sptr< WordSearchRequest > HunspellDictionary::findHeadwordsForSynonym( std::u32string const & word )
+sptr< WordSearchRequest > HunspellDictionary::findHeadwordsForSynonym( const std::u32string & word )
 
 {
   return std::make_shared< HunspellHeadwordsRequest >( word, getHunspellMutex(), hunspell );
@@ -418,7 +418,7 @@ class HunspellPrefixMatchRequest: public Dictionary::WordSearchRequest
 
 public:
 
-  HunspellPrefixMatchRequest( std::u32string const & word_, QMutex & hunspellMutex_, Hunspell & hunspell_ ):
+  HunspellPrefixMatchRequest( const std::u32string & word_, QMutex & hunspellMutex_, Hunspell & hunspell_ ):
     hunspellMutex( hunspellMutex_ ),
     hunspell( hunspell_ ),
     word( word_ )
@@ -476,13 +476,13 @@ void HunspellPrefixMatchRequest::run()
   finish();
 }
 
-sptr< WordSearchRequest > HunspellDictionary::prefixMatch( std::u32string const & word, unsigned long /*maxResults*/ )
+sptr< WordSearchRequest > HunspellDictionary::prefixMatch( const std::u32string & word, unsigned long /*maxResults*/ )
 
 {
   return std::make_shared< HunspellPrefixMatchRequest >( word, getHunspellMutex(), hunspell );
 }
 
-void getSuggestionsForExpression( std::u32string const & expression,
+void getSuggestionsForExpression( const std::u32string & expression,
                                   vector< std::u32string > & suggestions,
                                   QMutex & hunspellMutex,
                                   Hunspell & hunspell )
@@ -499,7 +499,7 @@ void getSuggestionsForExpression( std::u32string const & expression,
 
   // Parse string to separate words
 
-  for ( char32_t const * c = trimmedWord.c_str();; ++c ) {
+  for ( const char32_t * c = trimmedWord.c_str();; ++c ) {
     if ( !*c || Folding::isPunct( *c ) || Folding::isWhitespace( *c ) ) {
       if ( word.size() ) {
         words.push_back( word );
@@ -576,11 +576,11 @@ void getSuggestionsForExpression( std::u32string const & expression,
   }
 }
 
-std::u32string decodeFromHunspell( Hunspell & hunspell, char const * str )
+std::u32string decodeFromHunspell( Hunspell & hunspell, const char * str )
 {
   Iconv conv( hunspell.get_dic_encoding() );
 
-  void const * in = str;
+  const void * in = str;
   size_t inLeft   = strlen( str );
 
   vector< char32_t > result( inLeft + 1 ); // +1 isn't needed, but see above
@@ -590,7 +590,7 @@ std::u32string decodeFromHunspell( Hunspell & hunspell, char const * str )
 }
 } // namespace
 
-vector< sptr< Dictionary::Class > > makeDictionaries( Config::Hunspell const & cfg )
+vector< sptr< Dictionary::Class > > makeDictionaries( const Config::Hunspell & cfg )
 
 {
   vector< sptr< Dictionary::Class > > result;
@@ -619,7 +619,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( Config::Hunspell const & c
   return result;
 }
 
-vector< DataFiles > findDataFiles( QString const & path )
+vector< DataFiles > findDataFiles( const QString & path )
 {
   // Empty path means unconfigured directory
   if ( path.isEmpty() ) {

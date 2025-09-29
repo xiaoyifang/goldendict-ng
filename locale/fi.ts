@@ -254,6 +254,18 @@
       <source>&amp;Create Anki note</source>
       <translation>&amp;Luo Anki-muistio</translation>
     </message>
+    <message>
+      <source>Error Loading</source>
+      <translation>Virhe Ladattaessa</translation>
+    </message>
+    <message>
+      <source>Page Load Failed</source>
+      <translation>Sivun Lataus Epäonnistui</translation>
+    </message>
+    <message>
+      <source>Unable to load the requested page content</source>
+      <translation>Pyydettyä sivun sisältöä ei voitu ladata</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -2474,10 +2486,6 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <translation>Yksittäinen HTML (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Pdf (*.pdf)</source>
-      <translation>Pdf (*.pdf)</translation>
-    </message>
-    <message>
       <source>Mime Html (*.mhtml)</source>
       <translation>Mime-HTML (*.mhtml)</translation>
     </message>
@@ -2600,6 +2608,10 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
     <message>
       <source>Save PDF failed</source>
       <translation>PDF-tiedostojen tallennus epäonnistui</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF-asiakirja (*.pdf *.PDF)</translation>
     </message>
   </context>
   <context>
@@ -2878,10 +2890,6 @@ sovellus.</translation>
     <message>
       <source>Appearance</source>
       <translation>Ulkomuoto</translation>
-    </message>
-    <message>
-      <source>Interface Font</source>
-      <translation>Käyttöliittymän Kirjasin</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -3444,10 +3452,6 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <translation>Tallenna debug viestit gd_log.txt asetuskansioon</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>Käyttöliittymän Kirjasimen Koko</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Käyttöliittymän kieli</translation>
     </message>
@@ -3470,6 +3474,26 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>GoldenDict-ng on sanakirja ohjelmisto.</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Ota Käyttöön Käyttöliittymän Kirjasin</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Tyhjä</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in seperate tab</source>
+      <translation>Avaa verkkosivuston sanakirja erillisessä välilehdessä</translation>
     </message>
   </context>
   <context>
@@ -3614,6 +3638,14 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
       <translation>Pakota sana kääntämään se verkkoikkunaan.</translation>
+    </message>
+    <message>
+      <source>Website Url:</source>
+      <translation>Sivuston URL-osoite:</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation type="unfinished">In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</translation>
     </message>
   </context>
   <context>
@@ -3987,27 +4019,28 @@ Täydellinen luettelo saatavilla olevista kielistä löytyy &lt;a href=&quot;htt
       <translation>Vahvista poistaminen</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Poistetaanko kansio &lt;b&gt;%1&lt;/b&gt; listalta?</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Poistetaanko sivusto &lt;b&gt;%1&lt;/b&gt; luettelosta?</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Poistetaanko ohjelma &lt;b&gt;%1&lt;/b&gt; listalta?</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>Yleisimmin käytetty menetelmä transkriptio japani, joka perustuu Englanti fonologia</translation>
     </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
     <message>
-      <source>None</source>
-      <translation>Tyhjä</translation>
+      <source>Remove selected directories from the list?</source>
+      <translation>Poistetaanko valitut kansiot luettelosta?</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation>Poistetaanko %1 hakemistot luettelosta?</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation>Poistetaanko %1 sivustot listalta?</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation>Poistetaanko %1 palvelimet listalta?</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation>Poistetaanko %1 ohjelmat listalta?</translation>
     </message>
   </context>
   <context>
@@ -4104,18 +4137,17 @@ Täydellinen luettelo saatavilla olevista kielistä löytyy &lt;a href=&quot;htt
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Lisää artikkeli linkkinä &lt;iframe&gt; -tagin sisälle</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation>Tämä sivusto sanakirja on avattu uudessa välilehdessä</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>Käytössä</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>Linkinä</translation>
     </message>
     <message>
       <source>Name</source>

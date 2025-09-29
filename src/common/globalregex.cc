@@ -75,7 +75,7 @@ QRegularExpression Mdx::styleElement( R"((<style[^>]*>)([\w\W]*?)(<\/style>))",
 QRegularExpression Epwing::refWord( R"([r|p](\d+)at(\d+))", QRegularExpression::CaseInsensitiveOption );
 
 
-bool Html::containHtmlEntity( std::string const & text )
+bool Html::containHtmlEntity( const std::string & text )
 {
   return QString::fromStdString( text ).contains( htmlEntity );
 }

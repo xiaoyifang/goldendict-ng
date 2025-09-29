@@ -1,6 +1,6 @@
-#include "iframeschemehandler.hh"
-
 #include "iconv.hh"
+#include "iframeschemehandler.hh"
+#include <QWebEngineUrlRequestJob>
 
 IframeSchemeHandler::IframeSchemeHandler( QObject * parent ):
   QWebEngineUrlSchemeHandler( parent )
@@ -109,7 +109,6 @@ void IframeSchemeHandler::requestStarted( QWebEngineUrlRequestJob * requestJob )
     buffer->setData( articleString.toUtf8() );
 
     requestJob->reply( "text/html; charset=utf-8", buffer );
-
   };
   connect( reply, &QNetworkReply::finished, requestJob, finishAction );
 

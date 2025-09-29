@@ -254,6 +254,18 @@
       <source>&amp;Create Anki note</source>
       <translation>&amp;Створити примітку</translation>
     </message>
+    <message>
+      <source>Error Loading</source>
+      <translation>Помилка під час завантаження</translation>
+    </message>
+    <message>
+      <source>Page Load Failed</source>
+      <translation>Помилка завантаження сторінки</translation>
+    </message>
+    <message>
+      <source>Unable to load the requested page content</source>
+      <translation>Не вдається завантажити вміст запитаної сторінки</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -2475,10 +2487,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Один Html (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Pdf (*.pdf)</source>
-      <translation>PDF (*.pdf)</translation>
-    </message>
-    <message>
       <source>Mime Html (*.mhtml)</source>
       <translation>Mime Html (*.mhtml)</translation>
     </message>
@@ -2601,6 +2609,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Save PDF failed</source>
       <translation>Не вдалося зберегти PDF</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF документ (*.pdf *.PDF)</translation>
     </message>
   </context>
   <context>
@@ -2878,10 +2890,6 @@ the application.</source>
     <message>
       <source>Appearance</source>
       <translation>Зовнішній вигляд</translation>
-    </message>
-    <message>
-      <source>Interface Font</source>
-      <translation>Шрифт інтерфейсу</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -3445,10 +3453,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Зберігати повідомлення налагодження в gd_log.txt в теці налаштувань</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>Розмір шрифту інтерфейсу</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Мова інтерфейсу</translation>
     </message>
@@ -3471,6 +3475,26 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>Золота Dict-ng - словникова програма.</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Увімкнути шрифт інтерфейсу</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Нема</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in seperate tab</source>
+      <translation>Відкрити словник веб-сайту в окремій вкладці</translation>
     </message>
   </context>
   <context>
@@ -3615,6 +3639,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
       <translation>Примусово перекладати слово в головне вікно.</translation>
+    </message>
+    <message>
+      <source>Website Url:</source>
+      <translation>Адреса сайту:</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation>В Url, &quot;%GDWORD%&quot; буде замінено вимовленим словом.</translation>
     </message>
   </context>
   <context>
@@ -3987,27 +4019,28 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>Підтвердження вилучення</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Вилучити теку &lt;b&gt;%1&lt;/b&gt; з переліку?</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Вилучити сайт &lt;b&gt;%1&lt;/b&gt; з переліку?</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Вилучити програму &lt;b&gt;%1&lt;/b&gt; зі списку?</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>Найбільш поширений метод транскрипції японської та базується на англійській фонології</translation>
     </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
     <message>
-      <source>None</source>
-      <translation>Жоден</translation>
+      <source>Remove selected directories from the list?</source>
+      <translation>Видалити вибрані каталоги з списку?</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation>Видалити каталоги %1 зі списку?</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation>Видалити %1 сайтів з списку?</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation>Видалити %1 серверів з списку?</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation>Видалити %1 програми з списку?</translation>
     </message>
   </context>
   <context>
@@ -4104,18 +4137,17 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Вставте статтю як посилання всередині тега &lt;iframe&gt;</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation>Цей словник веб-сайту відкрито у новій вкладці</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>Увімкнено</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>Як посилання</translation>
     </message>
     <message>
       <source>Name</source>

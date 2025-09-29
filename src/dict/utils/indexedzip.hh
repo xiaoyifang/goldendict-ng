@@ -4,7 +4,6 @@
 #pragma once
 
 #include "btreeidx.hh"
-#include <QFile>
 #include "zipfile.hh"
 #include <QMutex>
 
@@ -27,7 +26,7 @@ public:
   using BtreeIndexing::BtreeIndex::openIndex;
 
   /// Opens the zip file itself. Returns true if succeeded, false otherwise.
-  bool openZipFile( QString const & );
+  bool openZipFile( const QString & );
 
   /// Returns true if the zip is open, false otherwise.
   bool isOpen() const
@@ -37,11 +36,11 @@ public:
 
   /// Checks whether the given file exists in the zip file or not.
   /// Note that this function is thread-safe, since it does not access zip file.
-  bool hasFile( std::u32string const & name );
+  bool hasFile( const std::u32string & name );
 
   /// Attempts loading the given file into the given vector. Returns true on
   /// success, false otherwise.
-  bool loadFile( std::u32string const & name, std::vector< char > & );
+  bool loadFile( const std::u32string & name, std::vector< char > & );
   bool loadFile( uint32_t offset, std::vector< char > & );
 
   /// Index compressed files in zip file

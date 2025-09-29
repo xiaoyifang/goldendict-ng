@@ -14,10 +14,9 @@ public:
   void setAudioFormat( int sampleRate, int channels );
   void stop();
 
-protected:
+private:
   QScopedPointer< AudioOutputPrivate > d_ptr;
 
-private:
   Q_DISABLE_COPY( AudioOutput )
   Q_DECLARE_PRIVATE( AudioOutput )
 };

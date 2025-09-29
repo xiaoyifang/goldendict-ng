@@ -254,6 +254,18 @@
       <source>&amp;Create Anki note</source>
       <translation>&amp;अंकी नोट बनाएं</translation>
     </message>
+    <message>
+      <source>Error Loading</source>
+      <translation type="unfinished">Error Loading</translation>
+    </message>
+    <message>
+      <source>Page Load Failed</source>
+      <translation type="unfinished">Page Load Failed</translation>
+    </message>
+    <message>
+      <source>Unable to load the requested page content</source>
+      <translation type="unfinished">Unable to load the requested page content</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -2473,10 +2485,6 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
       <translation>एकल HTML (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Pdf (*.pdf)</source>
-      <translation>पीडीएफ (*.pdf)</translation>
-    </message>
-    <message>
       <source>Mime Html (*.mhtml)</source>
       <translation>माइम HTML (*.mhtml)</translation>
     </message>
@@ -2599,6 +2607,10 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     <message>
       <source>Save PDF failed</source>
       <translation type="unfinished">Save PDF failed</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
     </message>
   </context>
   <context>
@@ -2870,10 +2882,6 @@ the application.</source>
     <message>
       <source>Appearance</source>
       <translation>उपस्थिति</translation>
-    </message>
-    <message>
-      <source>Interface Font</source>
-      <translation>इंटरफ़ेस फ़ॉन्ट</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -3427,10 +3435,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>Interface Font Size</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3453,6 +3457,26 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation type="unfinished">Enable Interface Font</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation type="unfinished">Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation type="unfinished">Font Size</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>कोई नही</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in seperate tab</source>
+      <translation type="unfinished">Open website dictionary in seperate tab</translation>
     </message>
   </context>
   <context>
@@ -3597,6 +3621,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
       <translation type="unfinished">Force the word to be translated in the mainwindow.</translation>
+    </message>
+    <message>
+      <source>Website Url:</source>
+      <translation type="unfinished">Website Url:</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation type="unfinished">In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</translation>
     </message>
   </context>
   <context>
@@ -3965,27 +3997,28 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>हटाने की पुष्टि करें</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>निर्देशिका &lt;b&gt;%1&lt;/b&gt; को सूची से निकालें?</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>साइट &lt;b&gt;%1&lt;/b&gt; को सूची से निकालें ?</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>प्रोग्राम &lt;b&gt;%1&lt;/b&gt; को सूची से निकालें?</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation type="unfinished">The most widely used method of transcription of Japanese, based on English phonology</translation>
     </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
     <message>
-      <source>None</source>
-      <translation>कोई नही</translation>
+      <source>Remove selected directories from the list?</source>
+      <translation type="unfinished">Remove selected directories from the list?</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation type="unfinished">Remove %1 directories from the list?</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation type="unfinished">Remove %1 sites from the list?</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation type="unfinished">Remove %1 servers from the list?</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation type="unfinished">Remove %1 programs from the list?</translation>
     </message>
   </context>
   <context>
@@ -4082,18 +4115,17 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>लेख को लिंक के रूप में &lt;iframe&gt; टैग के अंदर डालें</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation type="unfinished">This website dictionary is opened in a new tab</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>सक्रिय</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>कड़ी के रूप में</translation>
     </message>
     <message>
       <source>Name</source>

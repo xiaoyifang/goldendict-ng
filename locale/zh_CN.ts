@@ -254,6 +254,18 @@
       <source>&amp;Create Anki note</source>
       <translation>创建 Anki 笔记(&amp;C)</translation>
     </message>
+    <message>
+      <source>Error Loading</source>
+      <translation>加载错误</translation>
+    </message>
+    <message>
+      <source>Page Load Failed</source>
+      <translation>页面加载失败</translation>
+    </message>
+    <message>
+      <source>Unable to load the requested page content</source>
+      <translation>无法加载请求的页面内容</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -2474,10 +2486,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>单个 HTML (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Pdf (*.pdf)</source>
-      <translation>PDF（*.pdf）</translation>
-    </message>
-    <message>
       <source>Mime Html (*.mhtml)</source>
       <translation>Mime Html (*.mhtml)</translation>
     </message>
@@ -2600,6 +2608,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Save PDF failed</source>
       <translation>保存 PDF 失败</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF 文档 (*.pdf *.PDF)</translation>
     </message>
   </context>
   <context>
@@ -2870,10 +2882,6 @@ the application.</source>
     <message>
       <source>Appearance</source>
       <translation>界面外观</translation>
-    </message>
-    <message>
-      <source>Interface Font</source>
-      <translation>界面字体</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -3429,10 +3437,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>在配置文件夹中将调试消息保存到 gd_log.txt</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>界面字体大小</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>界面语言</translation>
     </message>
@@ -3455,6 +3459,26 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>GoldenDict-ng 是一个字典软件。</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>启用接口字体</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>无</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in seperate tab</source>
+      <translation>在分隔符中打开网站词典</translation>
     </message>
   </context>
   <context>
@@ -3599,6 +3623,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
       <translation>强制在主窗口中翻译单词。</translation>
+    </message>
+    <message>
+      <source>Website Url:</source>
+      <translation>网站 Url：</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation type="unfinished">In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</translation>
     </message>
   </context>
   <context>
@@ -3970,27 +4002,28 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>确认移除</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>确定要将&lt;b&gt;%1&lt;/b&gt;目录从列表中移除吗？</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>确定要将&lt;b&gt;%1&lt;/b&gt;网站从列表中移除吗？</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>从列表中删除程序 &lt;b&gt;%1&lt;/b&gt;？</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>基于英语音系的日语最广泛使用的转录方法</translation>
     </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
     <message>
-      <source>None</source>
-      <translation>无</translation>
+      <source>Remove selected directories from the list?</source>
+      <translation>从列表中删除选中的目录？</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation>从列表中删除 %1 目录吗？</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation>从列表中删除 %1 站点？</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation>从列表中删除 %1 服务器吗？</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation>从列表中删除 %1 程序吗？</translation>
     </message>
   </context>
   <context>
@@ -4087,18 +4120,17 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>将文章在 &lt;iframe&gt; 标签中作为链接插入</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation>此网站字典在一个新标签中打开</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>已启用</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>作为链接</translation>
     </message>
     <message>
       <source>Name</source>
