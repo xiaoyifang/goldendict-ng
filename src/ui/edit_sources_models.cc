@@ -2,6 +2,7 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "edit_sources_models.hh"
+#include "globalbroadcaster.hh"
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QStandardItemModel>
@@ -58,6 +59,7 @@ Sources::Sources( QWidget * parent, const Config::Class & cfg ):
   ui.webSites->resizeColumnToContents( 1 );
   ui.webSites->resizeColumnToContents( 2 );
   ui.webSites->resizeColumnToContents( 3 );
+  ui.webSites->resizeColumnToContents( 4 );
   ui.webSites->setSelectionMode( QAbstractItemView::ExtendedSelection );
   ui.webSites->setSelectionBehavior( QAbstractItemView::SelectRows );
 
@@ -645,6 +647,11 @@ Qt::ItemFlags WebSitesModel::flags( const QModelIndex & index ) const
     if ( index.column() == 0 ) {
       result |= Qt::ItemIsUserCheckable;
     }
+    else if ( index.column() == 4 ) { // Script column
+      if ( GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
+        result |= Qt::ItemIsEditable;
+      }
+    }
     else {
       result |= Qt::ItemIsEditable;
     }
@@ -669,14 +676,22 @@ int WebSitesModel::columnCount( const QModelIndex & parent ) const
     return 0;
   }
   else {
-    return 4;
+    return 5;
   }
 }
 
 QVariant WebSitesModel::headerData( int section, Qt::Orientation /*orientation*/, int role ) const
 {
   if ( role == Qt::ToolTipRole ) {
-    return QVariant();
+    switch ( section ) {
+      case 3:
+        return tr( "Icon file name. Relative to the config directory." );
+      case 4:
+        return tr(
+          "Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content." );
+      default:
+        return QVariant();
+    }
   }
 
   if ( role == Qt::DisplayRole ) {
@@ -689,6 +704,8 @@ QVariant WebSitesModel::headerData( int section, Qt::Orientation /*orientation*/
         return tr( "Address" );
       case 3:
         return tr( "Icon" );
+      case 4:
+        return tr( "Script" );
       default:
         return QVariant();
     }
@@ -715,6 +732,8 @@ QVariant WebSitesModel::data( const QModelIndex & index, int role ) const
         return webSites[ index.row() ].url;
       case 3:
         return webSites[ index.row() ].iconFilename;
+      case 4:
+        return webSites[ index.row() ].script;
       default:
         return QVariant();
     }
@@ -756,6 +775,10 @@ bool WebSitesModel::setData( const QModelIndex & index, const QVariant & value, 
         return true;
       case 3:
         webSites[ index.row() ].iconFilename = value.toString();
+        dataChanged( index, index );
+        return true;
+      case 4:
+        webSites[ index.row() ].script = value.toString();
         dataChanged( index, index );
         return true;
       default:
