@@ -4170,6 +4170,18 @@ A lista completa de idiomas disponíveis pode ser encontrada &lt;a href=&quot;ht
       <source>Icon</source>
       <translation>Ícone</translation>
     </message>
+    <message>
+      <source>Script</source>
+      <translation>Roteiro</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation>Nome do arquivo ícone. Relativo ao diretório de configuração.</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation>Apenas disponível quando sites são abertos em abas separadas. Pode ser um caminho do arquivo (relativo ao diretório de configuração ou absoluto) ou um conteúdo direto de script.</translation>
+    </message>
   </context>
   <context>
     <name>WordFinder</name>
