@@ -4158,6 +4158,18 @@ Puede encontrar la lista completa de idiomas disponibles &lt;a href=&quot;https:
       <source>Icon</source>
       <translation>Icono</translation>
     </message>
+    <message>
+      <source>Script</source>
+      <translation>Escribir</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation>Nombre del archivo de icono. Relativo al directorio de configuración.</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation>Sólo disponible al abrir sitios web en pestañas separadas. Puede ser una ruta de archivo (relativa al directorio de configuración o absoluto) o el contenido de script directo.</translation>
+    </message>
   </context>
   <context>
     <name>WordFinder</name>
