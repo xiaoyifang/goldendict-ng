@@ -3630,7 +3630,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
-      <translation type="unfinished">In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</translation>
+      <translation>在 URL 中，"%GDWORD%" 将被替换为正在搜索的词。</translation>
     </message>
   </context>
   <context>
