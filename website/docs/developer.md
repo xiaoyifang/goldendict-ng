@@ -4,11 +4,11 @@ This page is a brief introduction on how to get started.
 
 For technical details see [how to build from source](howto/build_from_source.md).
 
-## 1. Install Qt
+## Install Qt
 
 To install Qt on macOS or Windows, use the [Qt Online Installer](https://doc.qt.io/qt-6/get-and-install-qt.html). It can be downloaded from [Qt for Open Source](https://www.qt.io/download-open-source).
 
-Those Qt components are needed
+Those Qt components are needed:
 
 + Qt
   + 6.7.2 (Or another version)
@@ -30,19 +30,19 @@ Note that MinGW is not supported.
 
 CMake and Ninja are needed.
 
-## 2. Install a compiler
+## Install a compiler
 
 For windows, MSVC can be obtained by [installing Visual Studio's "Desktop development with C++"](https://learn.microsoft.com/cpp/build/vscpp-step-0-installation).
 
 For macOS, install [XCode](https://developer.apple.com/xcode/).
 
-## 3. Obtain dependencies
+## Obtain dependencies
 
 For Windows, prebuilt libraries will be automatically downloaded.
 
 For macOS, install [Homebrew](https://brew.sh/) and install related packages as described in [how to build from source](howto/build_from_source.md) or search `brew install` command in [macOS release's build file](https://github.com/xiaoyifang/goldendict-ng/blob/staged/.github/workflows/release-macos-homebrew.yml).
 
-## 4. Build
+## Build
 
 First, get GoldenDict's source code by [Cloning a repository](https://docs.github.com/repositories/creating-and-managing-repositories/cloning-a-repository).
 

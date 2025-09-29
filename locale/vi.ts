@@ -4153,6 +4153,18 @@ Có thể tìm thấy danh sách đầy đủ các ngôn ngữ khả dụng &lt;
       <source>Icon</source>
       <translation>Biểu tượng</translation>
     </message>
+    <message>
+      <source>Script</source>
+      <translation type="unfinished">Script</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation type="unfinished">Icon file name. Relative to the config directory.</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation type="unfinished">Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</translation>
+    </message>
   </context>
   <context>
     <name>WordFinder</name>

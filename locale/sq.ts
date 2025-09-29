@@ -4152,6 +4152,18 @@ Lista e plotë e gjuhëve të disponueshme mund të gjendet &lt;a href=&quot;htt
       <source>Icon</source>
       <translation>Ikona</translation>
     </message>
+    <message>
+      <source>Script</source>
+      <translation type="unfinished">Script</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation type="unfinished">Icon file name. Relative to the config directory.</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation type="unfinished">Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</translation>
+    </message>
   </context>
   <context>
     <name>WordFinder</name>

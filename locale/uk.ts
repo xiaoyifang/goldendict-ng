@@ -4161,6 +4161,18 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <source>Icon</source>
       <translation>Наличка</translation>
     </message>
+    <message>
+      <source>Script</source>
+      <translation>Скрипт</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation>Ім'я файлу значків відноситься до каталогу конфігурації.</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation>Доступно тільки при відкритті сайтів в окремих вкладках. Може бути шлях до файлу (відносно каталогу конфігурації або абсолютний) або прямий зміст скриптів.</translation>
+    </message>
   </context>
   <context>
     <name>WordFinder</name>

@@ -40,6 +40,7 @@ nav:
   - Advanced Usages:
       - External Programs as Dict: howto/how to add a program as dictionary.md
       - Custom Stylesheet & JavaScript: topic_userstyle.md
+      - Website Scripting: topic_website_scripting.md
       - Portable Mode: topic_portablemode.md
       - Custom transliteration: topic_transliteration.md
       - Customize Dictionary: custom_dictionary.md

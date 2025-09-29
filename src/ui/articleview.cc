@@ -14,6 +14,9 @@
 #include <QClipboard>
 #include <QDebug>
 #include <QDesktopServices>
+#include <QDir>
+#include <QFile>
+#include <QFileInfo>
 #include <QFileDialog>
 #include <QKeyEvent>
 #include <QMenu>
@@ -485,7 +488,8 @@ void ArticleView::loadFinished( bool result )
   }
   else {
     // Inject JavaScript for website views
-    injectWebsiteJavaScript();
+    injectDarkModeJavaScript();
+    injectWebsiteConfigScript();
   }
 
   //the click audio url such as gdau://xxxx ,webview also emit a pageLoaded signal but with the result is false.need future investigation.
@@ -649,7 +653,7 @@ void ArticleView::cleanupTemp()
   }
 }
 
-void ArticleView::injectWebsiteJavaScript()
+void ArticleView::injectDarkModeJavaScript()
 {
   // Check if dark reader mode is enabled for website views
   if ( !isDarkModeEnabled() ) {
@@ -723,24 +727,62 @@ void ArticleView::injectWebsiteJavaScript()
   webview->page()->runJavaScript( injectionScript );
 }
 
+void ArticleView::injectWebsiteConfigScript()
+{
+  // Skip if not a website view
+  if ( !isWebsiteView ) {
+    return;
+  }
+
+  // Find website configuration for current host
+  const QString host = websiteHost;
+  QString scriptConfigValue;
+
+  // Look for website configuration matching the current host
+  for ( const auto & website : cfg.webSites ) {
+    if ( website.enabled && website.url.contains( host, Qt::CaseInsensitive ) ) {
+      scriptConfigValue = website.script;
+      break;
+    }
+  }
+
+  // If no script found for this host, return
+  if ( scriptConfigValue.isEmpty() ) {
+    return;
+  }
+
+  // Check if scriptConfigValue is a file path
+  QFileInfo scriptFile( scriptConfigValue );
+
+  // If it's a relative path, look in the config directory
+  if ( scriptFile.isRelative() ) {
+    scriptFile.setFile( QDir( Config::getConfigDir() ), scriptConfigValue );
+  }
+
+  QString finalScriptContent;
+
+  // If the file exists, load the script content from the file
+  if ( scriptFile.exists() ) {
+    QFile file( scriptFile.absoluteFilePath() );
+    if ( file.open( QIODevice::ReadOnly | QIODevice::Text ) ) {
+      finalScriptContent = file.readAll();
+      file.close();
+    }
+  }
+  else {
+    // If not a file, use the config value directly as script content
+    finalScriptContent = scriptConfigValue;
+  }
+
+  // Inject the website-specific script
+  webview->page()->runJavaScript( finalScriptContent );
+}
+
+// This method has been moved to GlobalBroadcaster::isDarkModeEnabled()
+// To check dark mode status, use GlobalBroadcaster::instance()->isDarkModeEnabled() instead
 bool ArticleView::isDarkModeEnabled() const
 {
-  bool darkModeEnabled = ( cfg.preferences.darkReaderMode == Config::Dark::On );
-
-#if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
-  if ( GlobalBroadcaster::instance()->getPreference()->darkReaderMode == Config::Dark::Auto
-  #if !defined( Q_OS_WINDOWS )
-       // For macOS & Linux, uses "System's style hint". There is no darkMode setting in GD for them.
-       && QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark
-  #else
-       // For Windows, uses the setting in GD
-       && GlobalBroadcaster::instance()->getPreference()->darkMode == Config::Dark::On
-  #endif
-  ) {
-    darkModeEnabled = true;
-  }
-#endif
-  return darkModeEnabled;
+  return GlobalBroadcaster::instance()->isDarkModeEnabled();
 }
 
 QString ArticleView::createErrorPageHtml( const QUrl & url ) const

@@ -2,9 +2,12 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "edit_sources_models.hh"
+#include "globalbroadcaster.hh"
 #include <QFileDialog>
+#include <QGuiApplication>
 #include <QMessageBox>
 #include <QStandardItemModel>
+#include <QStyleHints>
 
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
   #include "chineseconversion.hh"
@@ -58,8 +61,7 @@ Sources::Sources( QWidget * parent, const Config::Class & cfg ):
   ui.webSites->resizeColumnToContents( 1 );
   ui.webSites->resizeColumnToContents( 2 );
   ui.webSites->resizeColumnToContents( 3 );
-  ui.webSites->setSelectionMode( QAbstractItemView::ExtendedSelection );
-  ui.webSites->setSelectionBehavior( QAbstractItemView::SelectRows );
+  ui.webSites->resizeColumnToContents( 4 );
 
   ui.dictServers->setTabKeyNavigation( true );
   ui.dictServers->setModel( &dictServersModel );
@@ -261,8 +263,8 @@ void Sources::on_addWebSite_clicked()
 {
   webSitesModel.addNewSite();
 
+  // Scroll to the newly added row and enter edit mode
   QModelIndex result = webSitesModel.index( webSitesModel.rowCount( QModelIndex() ) - 1, 1, QModelIndex() );
-
   ui.webSites->scrollTo( result );
   ui.webSites->edit( result );
 }
@@ -645,6 +647,11 @@ Qt::ItemFlags WebSitesModel::flags( const QModelIndex & index ) const
     if ( index.column() == 0 ) {
       result |= Qt::ItemIsUserCheckable;
     }
+    else if ( index.column() == 4 ) { // Script column
+      if ( GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
+        result |= Qt::ItemIsEditable;
+      }
+    }
     else {
       result |= Qt::ItemIsEditable;
     }
@@ -669,14 +676,32 @@ int WebSitesModel::columnCount( const QModelIndex & parent ) const
     return 0;
   }
   else {
-    return 4;
+    return 5;
   }
 }
 
-QVariant WebSitesModel::headerData( int section, Qt::Orientation /*orientation*/, int role ) const
+QVariant WebSitesModel::headerData( int section, Qt::Orientation orientation, int role ) const
 {
-  if ( role == Qt::ToolTipRole ) {
+  // For vertical header, show row numbers
+  if ( orientation == Qt::Vertical && role == Qt::DisplayRole ) {
+    return section + 1; // Show 1-based row numbers
+  }
+
+  // For other vertical header roles or if it's horizontal header, continue processing
+  if ( orientation == Qt::Vertical ) {
     return QVariant();
+  }
+
+  if ( role == Qt::ToolTipRole ) {
+    switch ( section ) {
+      case 3:
+        return tr( "Icon file name. Relative to the config directory." );
+      case 4:
+        return tr(
+          "Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content." );
+      default:
+        return QVariant();
+    }
   }
 
   if ( role == Qt::DisplayRole ) {
@@ -689,6 +714,8 @@ QVariant WebSitesModel::headerData( int section, Qt::Orientation /*orientation*/
         return tr( "Address" );
       case 3:
         return tr( "Icon" );
+      case 4:
+        return tr( "Script" );
       default:
         return QVariant();
     }
@@ -715,8 +742,17 @@ QVariant WebSitesModel::data( const QModelIndex & index, int role ) const
         return webSites[ index.row() ].url;
       case 3:
         return webSites[ index.row() ].iconFilename;
+      case 4:
+        return webSites[ index.row() ].script;
       default:
         return QVariant();
+    }
+  }
+
+  // Set appropriate background for disabled Script column based on dark mode
+  if ( role == Qt::BackgroundRole && index.column() == 4 ) { // Script column
+    if ( !GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
+      return getScriptColumnBackground();
     }
   }
 
@@ -758,12 +794,33 @@ bool WebSitesModel::setData( const QModelIndex & index, const QVariant & value, 
         webSites[ index.row() ].iconFilename = value.toString();
         dataChanged( index, index );
         return true;
+      case 4:
+        webSites[ index.row() ].script = value.toString();
+        dataChanged( index, index );
+        return true;
       default:
         return false;
     }
   }
 
   return false;
+}
+
+QVariant WebSitesModel::getScriptColumnBackground() const
+{
+  // Check if dark mode is enabled using GlobalBroadcaster configuration
+  // This ensures compatibility across all platforms and Qt versions
+  bool isDarkMode = GlobalBroadcaster::instance()->isDarkModeEnabled();
+
+  // Return appropriate background color based on dark mode
+  if ( isDarkMode ) {
+    // Dark mode: use a darker gray that's still distinguishable from the background
+    return QBrush( QColor( 60, 60, 60 ) );
+  }
+  else {
+    // Light mode: use light gray
+    return QBrush( QColor( 230, 230, 230 ) );
+  }
 }
 
 ////////// DictServersModel

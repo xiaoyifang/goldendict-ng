@@ -446,26 +446,32 @@ struct WebSite
   QString id, name, url;
   bool enabled;
   QString iconFilename;
+  QString script;
 
   WebSite():
     enabled( false )
   {
   }
 
-  WebSite(
-    const QString & id_, const QString & name_, const QString & url_, bool enabled_, const QString & iconFilename_ ):
+  WebSite( const QString & id_,
+           const QString & name_,
+           const QString & url_,
+           bool enabled_,
+           const QString & iconFilename_,
+           const QString & script_ = QString() ):
     id( id_ ),
     name( name_ ),
     url( url_ ),
     enabled( enabled_ ),
-    iconFilename( iconFilename_ )
+    iconFilename( iconFilename_ ),
+    script( script_ )
   {
   }
 
   bool operator==( const WebSite & other ) const
   {
     return id == other.id && name == other.name && url == other.url && enabled == other.enabled
-      && iconFilename == other.iconFilename;
+      && iconFilename == other.iconFilename && script == other.script;
   }
 };
 

@@ -4163,6 +4163,18 @@ Fullständig lista över tillgängliga språk finns &lt;a href=&quot;https://lin
       <source>Icon</source>
       <translation>Ikon</translation>
     </message>
+    <message>
+      <source>Script</source>
+      <translation>Skript</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation>Ikon filnamn. Relativt till konfigurationskatalogen.</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation>Endast tillgängligt när webbplatser öppnas i separata flikar. Kan vara en filsökväg (relativ till konfigurationskatalog eller absolut) eller direkt skriptinnehåll.</translation>
+    </message>
   </context>
   <context>
     <name>WordFinder</name>
