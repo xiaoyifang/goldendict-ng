@@ -65,6 +65,11 @@ public:
 
   PronounceEngine pronounce_engine;
   QString getAbbrName( const QString & text );
+
+  /// Check if dark mode is enabled
+  /// @return true if dark mode is enabled, false otherwise
+  bool isDarkModeEnabled() const;
+
 signals:
   void dictionaryChanges( ActiveDictIds ad );
   void dictionaryClear( ActiveDictIds ad );

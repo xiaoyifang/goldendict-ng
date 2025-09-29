@@ -808,14 +808,9 @@ bool WebSitesModel::setData( const QModelIndex & index, const QVariant & value, 
 
 QVariant WebSitesModel::getScriptColumnBackground() const
 {
-  // Check if dark mode is enabled
-  bool isDarkMode = false;
-#ifdef Q_OS_WIN32
-  isDarkMode = ( GlobalBroadcaster::instance()->getPreference()->darkMode == Config::Dark::On );
-#else
-  // For other platforms, check system color scheme
-  isDarkMode = ( QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark );
-#endif
+  // Check if dark mode is enabled using GlobalBroadcaster configuration
+  // This ensures compatibility across all platforms and Qt versions
+  bool isDarkMode = GlobalBroadcaster::instance()->isDarkModeEnabled();
 
   // Return appropriate background color based on dark mode
   if ( isDarkMode ) {
