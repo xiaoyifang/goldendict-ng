@@ -682,7 +682,7 @@ QVariant WebSitesModel::headerData( int section, Qt::Orientation orientation, in
 {
   // For vertical header, show row numbers
   if ( orientation == Qt::Vertical && role == Qt::DisplayRole ) {
-    return section + 1;  // Show 1-based row numbers
+    return section + 1; // Show 1-based row numbers
   }
 
   // For other vertical header roles or if it's horizontal header, continue processing
