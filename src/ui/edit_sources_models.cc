@@ -4,8 +4,10 @@
 #include "edit_sources_models.hh"
 #include "globalbroadcaster.hh"
 #include <QFileDialog>
+#include <QGuiApplication>
 #include <QMessageBox>
 #include <QStandardItemModel>
+#include <QStyleHints>
 
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
   #include "chineseconversion.hh"
@@ -60,8 +62,6 @@ Sources::Sources( QWidget * parent, const Config::Class & cfg ):
   ui.webSites->resizeColumnToContents( 2 );
   ui.webSites->resizeColumnToContents( 3 );
   ui.webSites->resizeColumnToContents( 4 );
-  ui.webSites->setSelectionMode( QAbstractItemView::ExtendedSelection );
-  ui.webSites->setSelectionBehavior( QAbstractItemView::SelectRows );
 
   ui.dictServers->setTabKeyNavigation( true );
   ui.dictServers->setModel( &dictServersModel );
@@ -263,8 +263,8 @@ void Sources::on_addWebSite_clicked()
 {
   webSitesModel.addNewSite();
 
+  // Scroll to the newly added row and enter edit mode
   QModelIndex result = webSitesModel.index( webSitesModel.rowCount( QModelIndex() ) - 1, 1, QModelIndex() );
-
   ui.webSites->scrollTo( result );
   ui.webSites->edit( result );
 }
@@ -680,8 +680,18 @@ int WebSitesModel::columnCount( const QModelIndex & parent ) const
   }
 }
 
-QVariant WebSitesModel::headerData( int section, Qt::Orientation /*orientation*/, int role ) const
+QVariant WebSitesModel::headerData( int section, Qt::Orientation orientation, int role ) const
 {
+  // For vertical header, show row numbers
+  if ( orientation == Qt::Vertical && role == Qt::DisplayRole ) {
+    return section + 1; // Show 1-based row numbers
+  }
+
+  // For other vertical header roles or if it's horizontal header, continue processing
+  if ( orientation == Qt::Vertical ) {
+    return QVariant();
+  }
+
   if ( role == Qt::ToolTipRole ) {
     switch ( section ) {
       case 3:
@@ -739,6 +749,13 @@ QVariant WebSitesModel::data( const QModelIndex & index, int role ) const
     }
   }
 
+  // Set appropriate background for disabled Script column based on dark mode
+  if ( role == Qt::BackgroundRole && index.column() == 4 ) { // Script column
+    if ( !GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
+      return getScriptColumnBackground();
+    }
+  }
+
   if ( role == Qt::CheckStateRole && !index.column() ) {
     return webSites[ index.row() ].enabled ? Qt::Checked : Qt::Unchecked;
   }
@@ -787,6 +804,23 @@ bool WebSitesModel::setData( const QModelIndex & index, const QVariant & value, 
   }
 
   return false;
+}
+
+QVariant WebSitesModel::getScriptColumnBackground() const
+{
+  // Check if dark mode is enabled using GlobalBroadcaster configuration
+  // This ensures compatibility across all platforms and Qt versions
+  bool isDarkMode = GlobalBroadcaster::instance()->isDarkModeEnabled();
+
+  // Return appropriate background color based on dark mode
+  if ( isDarkMode ) {
+    // Dark mode: use a darker gray that's still distinguishable from the background
+    return QBrush( QColor( 60, 60, 60 ) );
+  }
+  else {
+    // Light mode: use light gray
+    return QBrush( QColor( 230, 230, 230 ) );
+  }
 }
 
 ////////// DictServersModel

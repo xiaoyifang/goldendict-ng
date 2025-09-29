@@ -1,5 +1,8 @@
 #include "globalbroadcaster.hh"
 #include <QGlobalStatic>
+#include <QGuiApplication>
+#include <QStyleHints>
+#include <Qt>
 #include "utils.hh"
 
 Q_GLOBAL_STATIC( GlobalBroadcaster, bdcaster )
@@ -70,4 +73,28 @@ QString GlobalBroadcaster::getAbbrName( const QString & text )
   }
 
   return _icon_names.getIconName( simplified );
+}
+
+bool GlobalBroadcaster::isDarkModeEnabled() const
+{
+  if ( !preference ) {
+    return false;
+  }
+
+  bool darkModeEnabled = ( preference->darkReaderMode == Config::Dark::On );
+
+#if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
+  if ( preference->darkReaderMode == Config::Dark::Auto
+  #if !defined( Q_OS_WINDOWS )
+       // For macOS & Linux, uses "System's style hint". There is no darkMode setting in GD for them.
+       && QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark
+  #else
+       // For Windows, uses the setting in GD
+       && preference->darkMode == Config::Dark::On
+  #endif
+  ) {
+    darkModeEnabled = true;
+  }
+#endif
+  return darkModeEnabled;
 }
