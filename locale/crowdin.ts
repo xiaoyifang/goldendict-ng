@@ -4129,7 +4129,11 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Only available when opening websites in separate tabs</source>
+        <source>Icon file name. Relative to the config directory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
