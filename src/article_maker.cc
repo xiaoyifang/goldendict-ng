@@ -138,26 +138,7 @@ std::string ArticleMaker::makeHtmlHeader( const QString & word, const QString & 
   result += R"(<script src="qrc:///scripts/mark.min.js"></script>)";
 
   /// Handling Dark reader mode.
-
-  bool darkReaderModeEnabled = false;
-
-  if ( GlobalBroadcaster::instance()->getPreference()->darkReaderMode == Config::Dark::On ) {
-    darkReaderModeEnabled = true;
-  }
-
-#if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
-  if ( GlobalBroadcaster::instance()->getPreference()->darkReaderMode == Config::Dark::Auto
-  #if !defined( Q_OS_WINDOWS )
-       // For macOS & Linux, uses "System's style hint". There is no darkMode setting in GD for them.
-       && QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark
-  #else
-       // For Windows, uses the setting in GD
-       && GlobalBroadcaster::instance()->getPreference()->darkMode == Config::Dark::On
-  #endif
-  ) {
-    darkReaderModeEnabled = true;
-  }
-#endif
+  bool darkReaderModeEnabled = GlobalBroadcaster::instance()->isDarkModeEnabled();
 
   if ( darkReaderModeEnabled ) {
     //only enable this darkmode on modern style.
