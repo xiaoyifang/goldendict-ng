@@ -683,6 +683,9 @@ int WebSitesModel::columnCount( const QModelIndex & parent ) const
 QVariant WebSitesModel::headerData( int section, Qt::Orientation /*orientation*/, int role ) const
 {
   if ( role == Qt::ToolTipRole ) {
+    if ( section == 4 ) {
+      return tr( "Only available when opening websites in separate tabs" );
+    }
     return QVariant();
   }
 
