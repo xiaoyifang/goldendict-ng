@@ -327,6 +327,7 @@ private:
 
   /// Initialize webSites table
   void initializeWebSitesTable();
+  void updateWebSitesTable();
   WebSitesModel webSitesModel;
   DictServersModel dictServersModel;
   ProgramsModel programsModel;
