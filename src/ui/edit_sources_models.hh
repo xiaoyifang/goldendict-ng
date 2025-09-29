@@ -324,7 +324,7 @@ private:
   QScopedPointer< QItemEditorFactory > itemEditorFactory;
 
   MediaWikisModel mediawikisModel;
-  
+
   /// Initialize webSites table
   void initializeWebSitesTable();
   WebSitesModel webSitesModel;
