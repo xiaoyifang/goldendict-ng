@@ -80,7 +80,7 @@ bool GlobalBroadcaster::isDarkModeEnabled() const
   if ( !preference ) {
     return false;
   }
-  
+
   bool darkModeEnabled = ( preference->darkReaderMode == Config::Dark::On );
 
 #if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
