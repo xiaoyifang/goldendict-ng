@@ -814,12 +814,13 @@ QVariant WebSitesModel::getScriptColumnBackground() const
   // For other platforms, check system color scheme
   isDarkMode = ( QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark );
 #endif
-  
+
   // Return appropriate background color based on dark mode
   if ( isDarkMode ) {
     // Dark mode: use a darker gray that's still distinguishable from the background
     return QBrush( QColor( 60, 60, 60 ) );
-  } else {
+  }
+  else {
     // Light mode: use light gray
     return QBrush( QColor( 230, 230, 230 ) );
   }
