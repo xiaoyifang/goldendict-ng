@@ -687,7 +687,8 @@ QVariant WebSitesModel::headerData( int section, Qt::Orientation /*orientation*/
       case 3:
         return tr( "Icon file name. Relative to the config directory." );
       case 4:
-        return tr( "Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content." );
+        return tr(
+          "Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content." );
       default:
         return QVariant();
     }
