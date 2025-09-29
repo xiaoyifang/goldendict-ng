@@ -260,7 +260,7 @@ void Sources::on_removeMediaWiki_clicked()
 void Sources::on_addWebSite_clicked()
 {
   webSitesModel.addNewSite();
-  
+
   // Scroll to the newly added row and enter edit mode
   QModelIndex result = webSitesModel.index( webSitesModel.rowCount( QModelIndex() ) - 1, 1, QModelIndex() );
   ui.webSites->scrollTo( result );
@@ -719,7 +719,7 @@ QVariant WebSitesModel::data( const QModelIndex & index, int role ) const
   }
 
   if ( role == Qt::ToolTipRole ) {
-        return QVariant();
+    return QVariant();
   }
 
   if ( role == Qt::DisplayRole || role == Qt::EditRole ) {
