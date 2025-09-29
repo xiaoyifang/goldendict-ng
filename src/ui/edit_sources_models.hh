@@ -80,6 +80,9 @@ public:
 private:
 
   Config::WebSites webSites;
+  
+  /// Returns appropriate background color for disabled Script column based on dark mode
+  QVariant getScriptColumnBackground() const;
 };
 
 /// A model to be projected into the dictServers view, according to Qt's MVC model

@@ -747,6 +747,13 @@ QVariant WebSitesModel::data( const QModelIndex & index, int role ) const
     }
   }
 
+  // Set appropriate background for disabled Script column based on dark mode
+  if ( role == Qt::BackgroundRole && index.column() == 4 ) { // Script column
+    if ( !GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
+      return getScriptColumnBackground();
+    }
+  }
+
   if ( role == Qt::CheckStateRole && !index.column() ) {
     return webSites[ index.row() ].enabled ? Qt::Checked : Qt::Unchecked;
   }
@@ -795,6 +802,27 @@ bool WebSitesModel::setData( const QModelIndex & index, const QVariant & value, 
   }
 
   return false;
+}
+
+QVariant WebSitesModel::getScriptColumnBackground() const
+{
+  // Check if dark mode is enabled
+  bool isDarkMode = false;
+#ifdef Q_OS_WIN32
+  isDarkMode = ( GlobalBroadcaster::instance()->getPreference()->darkMode == Config::Dark::On );
+#else
+  // For other platforms, check system color scheme
+  isDarkMode = ( QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark );
+#endif
+  
+  // Return appropriate background color based on dark mode
+  if ( isDarkMode ) {
+    // Dark mode: use a darker gray that's still distinguishable from the background
+    return QBrush( QColor( 60, 60, 60 ) );
+  } else {
+    // Light mode: use light gray
+    return QBrush( QColor( 230, 230, 230 ) );
+  }
 }
 
 ////////// DictServersModel
