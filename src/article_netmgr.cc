@@ -283,7 +283,7 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::checkImageResource(
       qDebug() << "Redirecting resource request from" << url.toString() << "to" << bresUrl.toString();
       
       // Call getResource to handle bres protocol
-      return getResource( bresUrl );
+      return getResource( bresUrl, {} );
     }
   }
   
