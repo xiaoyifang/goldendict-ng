@@ -281,35 +281,28 @@ inline std::pair< bool, QString > getQueryWord( const QUrl & url )
   return std::make_pair( validScheme, word );
 }
 
-  inline QString getParams( const QUrl & url, const QString & key )
-{
+inline QString getParams(const QUrl &url, const QString &key) {
   QString word;
-  bool validScheme = false;
-  if ( url.scheme().compare( "gdlookup" ) == 0 ) {
-    validScheme = true;
-    if ( hasQueryItem( url, key ) ) {
-      word = queryItemValue( url, key );
-    }
-    else {
-      word = url.path().mid( 1 );
+  if (url.scheme().compare("gdlookup") == 0) {
+    if (hasQueryItem(url, key)) {
+      word = queryItemValue(url, key);
+    } else {
+      word = url.path().mid(1);
     }
   }
-  if ( url.scheme().compare( "bword" ) == 0 || url.scheme().compare( "entry" ) == 0 ) {
-    validScheme = true;
-
+  if (url.scheme().compare("bword") == 0 || url.scheme().compare("entry") == 0) {
     auto path = url.path();
     // url like this , bword:word  or bword://localhost/word
-    if ( !path.isEmpty() ) {
+    if (!path.isEmpty()) {
       //url,bword://localhost/word
-      if ( path.startsWith( "/" ) )
-        word = path.mid( 1 );
+      if (path.startsWith("/"))
+        word = path.mid(1);
       else
         word = path;
-    }
-    else {
+    } else {
       // url looks like this, bword://word,or bword://localhost
       auto host = url.host();
-      if ( host != "localhost" ) {
+      if (host != "localhost") {
         word = host;
       }
     }

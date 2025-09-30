@@ -152,8 +152,6 @@ public:
 
   virtual QNetworkReply * getArticleReply( const QNetworkRequest & req );
   string getHtml( ResourceType resourceType );
-
-
 };
 
 class ArticleResourceReply: public QNetworkReply
