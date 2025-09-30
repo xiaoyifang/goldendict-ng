@@ -341,10 +341,15 @@ void ArticleView::showDefinition( const QString & word,
     reqQuery.addQueryItem( "muted", mutedDicts );
   }
 
+
   req.setQuery( reqQuery );
 
   // Any search opened is probably irrelevant now
   closeSearch();
+
+  //log, req request
+  qDebug() << "req url:" << req.toString();
+
   //QApplication::setOverrideCursor( Qt::WaitCursor );
   webview->setCursor( Qt::WaitCursor );
   load( req );
