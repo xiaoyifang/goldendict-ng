@@ -152,7 +152,7 @@ public:
 
   virtual QNetworkReply * getArticleReply( const QNetworkRequest & req );
   string getHtml( ResourceType resourceType );
-  
+
 private:
   /// Check if the URL represents an image or other resource file, and redirect to appropriate protocol if needed.
   sptr< Dictionary::DataRequest > checkImageResource( const QUrl & url );

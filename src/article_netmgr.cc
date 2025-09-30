@@ -262,16 +262,16 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::checkImageResource(
   if ( !path.isEmpty() && path != "/" ) {
     // Extract filename as resource name
     QString resourceName = path.mid( 1 ); // Remove leading slash
-    
+
     // Check if file extension indicates this is a resource file
     QFileInfo fileInfo( resourceName );
     QString extension = fileInfo.suffix().toLower();
-    
+
     // If it's a common resource file type, redirect to bres protocol
-    if ( extension == "png" || extension == "jpg" || extension == "jpeg" || extension == "gif" || 
-         extension == "svg" || extension == "css" || extension == "js" || extension == "mp3" || 
-         extension == "wav" || extension == "ogg" ) {
-      
+    if ( extension == "png" || extension == "jpg" || extension == "jpeg" || extension == "gif" || extension == "svg"
+         || extension == "css" || extension == "js" || extension == "mp3" || extension == "wav"
+         || extension == "ogg" ) {
+
       // Construct bres protocol URL
       QUrl bresUrl;
       bresUrl.setScheme( "bres" );
@@ -279,14 +279,14 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::checkImageResource(
       bresUrl.setPath( url.path() );
       // Preserve all query parameters from original URL
       bresUrl.setQuery( url.query() );
-      
+
       qDebug() << "Redirecting resource request from" << url.toString() << "to" << bresUrl.toString();
-      
+
       // Call getResource to handle bres protocol
       return getResource( bresUrl, {} );
     }
   }
-  
+
   // Not a resource file request, return null pointer
   return nullptr;
 }
