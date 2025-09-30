@@ -11,8 +11,13 @@
         return;
       }
 
+      //return if the link has onclick attribute
+      if (this.hasAttribute("onclick")) {
+        return;
+      }
+
       //return if the link is like gdlookup:// or other valid url.
-      if (link.indexOf(":") >= 0) {
+      if (link.indexOf("://") >= 0) {
         emitClickedEvent(link);
         return false;
       }
