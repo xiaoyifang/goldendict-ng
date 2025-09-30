@@ -209,7 +209,7 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( const 
     if ( groupIsValid && !word.isEmpty() ) { // Require group and phrase to be passed
       return articleMaker.makeDefinitionFor( word, group, contexts, mutedDicts, QStringList(), ignoreDiacritics );
     }
-    else{
+    else {
       return std::make_shared< Dictionary::DataRequestInstant >( false );
     }
   }
