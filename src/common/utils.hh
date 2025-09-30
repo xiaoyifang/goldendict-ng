@@ -315,7 +315,7 @@ inline QString getParams( const QUrl & url, const QString & key )
 
 inline bool isAudioUrl( const QUrl & url )
 {
-  if (!url.isValid()) {
+  if ( !url.isValid() ) {
     return false;
   }
 
@@ -331,7 +331,7 @@ inline bool isAudioUrl( const QUrl & url )
 
 inline bool isWebAudioUrl( const QUrl & url )
 {
-  if (!url.isValid()) {
+  if ( !url.isValid() ) {
     return false;
   }
   // Note: we check for forvo sound links explicitly, as they don't have extensions
@@ -349,16 +349,16 @@ inline QString getHostBase( const QString & host )
   int left = domains.size();
 
   // Skip last <=3-letter domain name
-  if (left && domains[left - 1].size() <= 3) {
+  if ( left && domains[ left - 1 ].size() <= 3 ) {
     --left;
   }
 
   // Skip another <=3-letter domain name
-  if (left && domains[left - 1].size() <= 3) {
+  if ( left && domains[ left - 1 ].size() <= 3 ) {
     --left;
   }
 
-  if (left > 1 ) {
+  if ( left > 1 ) {
     // We've got something like www.foobar.co.uk -- we can chop off the first
     // domain
 
@@ -366,7 +366,7 @@ inline QString getHostBase( const QString & host )
   }
   else {
     return host;
-}
+  }
 }
 
 inline QString getHostBaseFromUrl( const QUrl & url )
