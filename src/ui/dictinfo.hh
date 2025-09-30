@@ -1,6 +1,5 @@
 #pragma once
 
-#include <QDialog>
 #include "ui_dictinfo.h"
 #include "dict/dictionary.hh"
 #include "config.hh"

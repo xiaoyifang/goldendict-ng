@@ -5,9 +5,7 @@
 
 /// Various custom widgets used in the Groups dialog
 #include <vector>
-#include <QAction>
 #include <QListWidget>
-#include <QLineEdit>
 #include <QSortFilterProxyModel>
 #include "config.hh"
 #include "dict/dictionary.hh"
@@ -28,9 +26,9 @@ public:
 
   /// Populates the current model with the given dictionaries. This is
   /// ought to be part of construction process.
-  void populate( std::vector< sptr< Dictionary::Class > > const & active,
-                 std::vector< sptr< Dictionary::Class > > const & available );
-  void populate( std::vector< sptr< Dictionary::Class > > const & active );
+  void populate( const std::vector< sptr< Dictionary::Class > > & active,
+                 const std::vector< sptr< Dictionary::Class > > & available );
+  void populate( const std::vector< sptr< Dictionary::Class > > & active );
 
   /// Marks that this model is used as an immutable dictionary source
   void setAsSource();
@@ -40,17 +38,17 @@ public:
   }
 
   /// Returns the dictionaries the model currently has listed
-  std::vector< sptr< Dictionary::Class > > const & getCurrentDictionaries() const;
+  const std::vector< sptr< Dictionary::Class > > & getCurrentDictionaries() const;
 
   void removeSelectedRows( QItemSelectionModel * source );
   void addSelectedUniqueFromModel( QItemSelectionModel * source );
 
-  Qt::ItemFlags flags( QModelIndex const & index ) const override;
-  int rowCount( QModelIndex const & parent ) const override;
-  QVariant data( QModelIndex const & index, int role ) const override;
+  Qt::ItemFlags flags( const QModelIndex & index ) const override;
+  int rowCount( const QModelIndex & parent ) const override;
+  QVariant data( const QModelIndex & index, int role ) const override;
   bool insertRows( int row, int count, const QModelIndex & parent ) override;
   bool removeRows( int row, int count, const QModelIndex & parent ) override;
-  bool setData( QModelIndex const & index, const QVariant & value, int role ) override;
+  bool setData( const QModelIndex & index, const QVariant & value, int role ) override;
 
   void addRow( const QModelIndex & parent, sptr< Dictionary::Class > dict );
 
@@ -62,7 +60,7 @@ private:
 
   bool isSource;
   std::vector< sptr< Dictionary::Class > > dictionaries;
-  std::vector< sptr< Dictionary::Class > > const * allDicts;
+  const std::vector< sptr< Dictionary::Class > > * allDicts;
 
 signals:
   void contentChanged();
@@ -79,15 +77,15 @@ public:
   ~DictListWidget() override = default;
 
   /// Populates the current list with the given dictionaries.
-  void populate( std::vector< sptr< Dictionary::Class > > const & active,
-                 std::vector< sptr< Dictionary::Class > > const & available );
-  void populate( std::vector< sptr< Dictionary::Class > > const & active );
+  void populate( const std::vector< sptr< Dictionary::Class > > & active,
+                 const std::vector< sptr< Dictionary::Class > > & available );
+  void populate( const std::vector< sptr< Dictionary::Class > > & active );
 
   /// Marks that this widget is used as an immutable dictionary source
   void setAsSource();
 
   /// Returns the dictionaries the widget currently has listed
-  std::vector< sptr< Dictionary::Class > > const & getCurrentDictionaries() const;
+  const std::vector< sptr< Dictionary::Class > > & getCurrentDictionaries() const;
 
   DictListModel * getModel()
   {
@@ -101,7 +99,7 @@ protected:
   void dropEvent( QDropEvent * event ) override;
   void focusInEvent( QFocusEvent * ) override;
 
-  void rowsAboutToBeRemoved( QModelIndex const & parent, int start, int end ) override;
+  void rowsAboutToBeRemoved( const QModelIndex & parent, int start, int end ) override;
 
 private:
   DictListModel model;
@@ -115,7 +113,7 @@ class DictGroupWidget: public QWidget
   Q_OBJECT
 
 public:
-  DictGroupWidget( QWidget * parent, std::vector< sptr< Dictionary::Class > > const &, Config::Group const & );
+  DictGroupWidget( QWidget * parent, const std::vector< sptr< Dictionary::Class > > &, const Config::Group & );
 
   Config::Group makeGroup() const;
 
@@ -143,7 +141,7 @@ private slots:
 
   void groupIconActivated( int );
   void showDictInfo( const QPoint & pos );
-  void removeCurrentItem( QModelIndex const & );
+  void removeCurrentItem( const QModelIndex & );
 
 private:
   Ui::DictGroupWidget ui;
@@ -151,7 +149,7 @@ private:
   QString groupName;
 
 signals:
-  void showDictionaryInfo( QString const & id );
+  void showDictionaryInfo( const QString & id );
 };
 
 /// A tab widget with groups inside
@@ -164,16 +162,16 @@ public:
   DictGroupsWidget( QWidget * parent );
 
   /// Creates all the tabs with the groups
-  void populate( Config::Groups const &,
-                 std::vector< sptr< Dictionary::Class > > const & allDicts,
-                 std::vector< sptr< Dictionary::Class > > const & activeDicts );
+  void populate( const Config::Groups &,
+                 const std::vector< sptr< Dictionary::Class > > & allDicts,
+                 const std::vector< sptr< Dictionary::Class > > & activeDicts );
 
   /// Creates new empty group with the given name
-  int addNewGroup( QString const & );
+  int addNewGroup( const QString & );
 
   /// Creates new empty group with the given name if no such group
   /// and return it index
-  int addUniqueGroup( QString const & name );
+  int addUniqueGroup( const QString & name );
 
   void addAutoGroups();
 
@@ -187,7 +185,7 @@ public:
   QString getCurrentGroupName() const;
 
   /// Changes the name of the currently chosen group, if any, to the given one
-  void renameCurrentGroup( QString const & );
+  void renameCurrentGroup( const QString & );
 
   /// Removes the currently chosen group, if any
   void removeCurrentGroup();
@@ -212,15 +210,15 @@ private:
   void combineGroups( int source, int target );
 
   unsigned nextId;
-  std::vector< sptr< Dictionary::Class > > const * allDicts;
-  std::vector< sptr< Dictionary::Class > > const * activeDicts;
+  const std::vector< sptr< Dictionary::Class > > * allDicts;
+  const std::vector< sptr< Dictionary::Class > > * activeDicts;
 
 private slots:
-  void contextMenu( QPoint const & );
+  void contextMenu( const QPoint & );
   void tabDataChanged();
 
 signals:
-  void showDictionaryInfo( QString const & id );
+  void showDictionaryInfo( const QString & id );
 };
 
 class QuickFilterLine: public QLineEdit
@@ -240,7 +238,7 @@ public:
     return &m_focusAction;
   }
 
-  QModelIndex mapToSource( QModelIndex const & idx );
+  QModelIndex mapToSource( const QModelIndex & idx );
 
 protected:
   void keyPressEvent( QKeyEvent * event ) override;
@@ -256,5 +254,5 @@ private slots:
   void focusFilterLine();
 
 signals:
-  void filterChanged( QString const & filter );
+  void filterChanged( const QString & filter );
 };

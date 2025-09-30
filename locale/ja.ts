@@ -254,6 +254,18 @@
       <source>&amp;Create Anki note</source>
       <translation>アンキノートを作成(&amp;C)</translation>
     </message>
+    <message>
+      <source>Error Loading</source>
+      <translation>読み込みエラー</translation>
+    </message>
+    <message>
+      <source>Page Load Failed</source>
+      <translation>ページの読み込みに失敗しました</translation>
+    </message>
+    <message>
+      <source>Unable to load the requested page content</source>
+      <translation>要求されたページのコンテンツを読み込むことができません</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -2474,10 +2486,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>単一の HTML (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Pdf (*.pdf)</source>
-      <translation>PDF (*.pdf)</translation>
-    </message>
-    <message>
       <source>Mime Html (*.mhtml)</source>
       <translation>MIME HTML (*.mhtml)</translation>
     </message>
@@ -2600,6 +2608,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Save PDF failed</source>
       <translation>PDFの保存に失敗しました</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF ドキュメント (*.pdf *.PDF)</translation>
     </message>
   </context>
   <context>
@@ -2878,10 +2890,6 @@ the application.</source>
     <message>
       <source>Appearance</source>
       <translation>外観</translation>
-    </message>
-    <message>
-      <source>Interface Font</source>
-      <translation>インターフェースフォント</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -3443,10 +3451,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>設定フォルダ内のgd_log.txtにデバッグメッセージを保存します</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>インターフェースフォントサイズ</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>インターフェース言語</translation>
     </message>
@@ -3469,6 +3473,26 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>GoldenDict-ng は辞書ソフトウェアです。</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>インターフェースフォントを有効にする</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>なし</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in seperate tab</source>
+      <translation>別タブでウェブサイト辞書を開く</translation>
     </message>
   </context>
   <context>
@@ -3613,6 +3637,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
       <translation>メインウィンドウに単語を強制的に翻訳します。</translation>
+    </message>
+    <message>
+      <source>Website Url:</source>
+      <translation>Website Url:</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation>Url では、 &quot;%GDWORD%&quot; が検索されている単語に置き換えられます。</translation>
     </message>
   </context>
   <context>
@@ -3981,27 +4013,28 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>削除の確認</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>一覧からディレクトリ &lt;b&gt;%1&lt;/b&gt; を削除しますか?</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>一覧からサイト &lt;b&gt;%1&lt;/b&gt; を削除しますか?</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>リストからプログラム &lt;b&gt;%1&lt;/b&gt; を削除しますか？</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>最も広く使用されている日本語の音韻論に基づく表記法</translation>
     </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
     <message>
-      <source>None</source>
-      <translation>なし</translation>
+      <source>Remove selected directories from the list?</source>
+      <translation>リストから選択したディレクトリを削除しますか？</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation>%1 ディレクトリをリストから削除しますか？</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation>%1 サイトをリストから削除しますか？</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation>%1 サーバーをリストから削除しますか？</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation>%1 プログラムをリストから削除しますか？</translation>
     </message>
   </context>
   <context>
@@ -4098,18 +4131,17 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>&lt;iframe&gt; タグ内のリンクとして記事を挿入</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation>このウェブサイト辞書は新しいタブで開かれています</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>有効</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>リンクとして</translation>
     </message>
     <message>
       <source>Name</source>
@@ -4122,6 +4154,18 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>Icon</source>
       <translation>アイコン</translation>
+    </message>
+    <message>
+      <source>Script</source>
+      <translation>スクリプト</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation>アイコンのファイル名。設定ディレクトリに相対的です。</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation>個別のタブでウェブサイトを開くときにのみ利用できます。ファイルパス（設定ディレクトリまたは絶対ディレクトリからの相対）または直接スクリプトコンテンツにすることができます。</translation>
     </message>
   </context>
   <context>

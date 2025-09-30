@@ -254,6 +254,18 @@
       <source>&amp;Create Anki note</source>
       <translation>&amp;Créer une note Anki</translation>
     </message>
+    <message>
+      <source>Error Loading</source>
+      <translation>Erreur lors du chargement</translation>
+    </message>
+    <message>
+      <source>Page Load Failed</source>
+      <translation>Échec du chargement de la page</translation>
+    </message>
+    <message>
+      <source>Unable to load the requested page content</source>
+      <translation>Impossible de charger le contenu de la page demandée</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -2473,10 +2485,6 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
       <translation>HTML unique (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Pdf (*.pdf)</source>
-      <translation>Pdf (*.pdf)</translation>
-    </message>
-    <message>
       <source>Mime Html (*.mhtml)</source>
       <translation>MIME HTML (*.mhtml)</translation>
     </message>
@@ -2599,6 +2607,10 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     <message>
       <source>Save PDF failed</source>
       <translation>Échec de l'enregistrement du PDF</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>Document PDF (*.pdf *.PDF)</translation>
     </message>
   </context>
   <context>
@@ -2876,10 +2888,6 @@ the application.</source>
     <message>
       <source>Appearance</source>
       <translation>Apparence</translation>
-    </message>
-    <message>
-      <source>Interface Font</source>
-      <translation>Police de l'interface</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -3440,10 +3448,6 @@ des dictionnaires Stardict, Babylon et GLS</translation>
       <translation>Enregistrer les messages de débogage dans gd_log.txt dans le dossier de configuration</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>Taille de police de l'interface</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Langue de l'interface</translation>
     </message>
@@ -3466,6 +3470,26 @@ des dictionnaires Stardict, Babylon et GLS</translation>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>GoldenDict-ng est un logiciel de dictionnaire.</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Activer la police de l'interface</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Aucun</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in seperate tab</source>
+      <translation>Ouvrir le dictionnaire du site web dans un onglet séparé</translation>
     </message>
   </context>
   <context>
@@ -3610,6 +3634,14 @@ des dictionnaires Stardict, Babylon et GLS</translation>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
       <translation>Forcer la traduction du mot dans la fenêtre principale.</translation>
+    </message>
+    <message>
+      <source>Website Url:</source>
+      <translation>Url du site :</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation>Dans l’URL, &quot;%GDWORD%&quot; sera remplacé par le mot à rechercher.</translation>
     </message>
   </context>
   <context>
@@ -3982,27 +4014,28 @@ La liste complète des langues disponibles peut être trouvée &lt;a href=&quot;
       <translation>Confirmer la suppression</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Retirer le dossier &lt;b&gt;%1&lt;/b&gt; de la liste ?</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Retirer le site &lt;b&gt;%1&lt;/b&gt; de la liste ?</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Retirer le programme &lt;b&gt;%1&lt;/b&gt; de la liste ?</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>La méthode de transcription la plus utilisée du japonais, basée sur la phonologie anglaise</translation>
     </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
     <message>
-      <source>None</source>
-      <translation>Aucun</translation>
+      <source>Remove selected directories from the list?</source>
+      <translation>Supprimer les répertoires sélectionnés de la liste ?</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation>Supprimer les répertoires %1 de la liste ?</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation>Supprimer les sites %1 de la liste ?</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation>Supprimer les serveurs %1 de la liste ?</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation>Supprimer les programmes %1 de la liste ?</translation>
     </message>
   </context>
   <context>
@@ -4099,18 +4132,17 @@ La liste complète des langues disponibles peut être trouvée &lt;a href=&quot;
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Insérer un article comme lien dans la balise &lt;iframe&gt;</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation>Le dictionnaire de ce site Web est ouvert dans un nouvel onglet</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>Activé</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>En tant que lien</translation>
     </message>
     <message>
       <source>Name</source>
@@ -4123,6 +4155,18 @@ La liste complète des langues disponibles peut être trouvée &lt;a href=&quot;
     <message>
       <source>Icon</source>
       <translation>Icône</translation>
+    </message>
+    <message>
+      <source>Script</source>
+      <translation>Écriture</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation>Nom du fichier d'icône. relatif au répertoire de configuration.</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation>Uniquement disponible lors de l'ouverture de sites Web dans des onglets séparés. Peut être un chemin de fichier (relatif au répertoire de configuration ou absolu) ou du contenu de script direct.</translation>
     </message>
   </context>
   <context>

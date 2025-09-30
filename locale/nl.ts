@@ -254,6 +254,18 @@
       <source>&amp;Create Anki note</source>
       <translation>&amp;Maak Anki-notitie</translation>
     </message>
+    <message>
+      <source>Error Loading</source>
+      <translation>Fout bij laden</translation>
+    </message>
+    <message>
+      <source>Page Load Failed</source>
+      <translation>Pagina laden mislukt</translation>
+    </message>
+    <message>
+      <source>Unable to load the requested page content</source>
+      <translation>Niet in staat om de gewenste pagina-inhoud te laden</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -2474,10 +2486,6 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
       <translation>Enkele Html (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Pdf (*.pdf)</source>
-      <translation>Pdf-bestand (*.pdf)</translation>
-    </message>
-    <message>
       <source>Mime Html (*.mhtml)</source>
       <translation>Mime-HTML (*.mhtml)</translation>
     </message>
@@ -2600,6 +2608,10 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
     <message>
       <source>Save PDF failed</source>
       <translation>Opslaan PDF mislukt</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF-document (*.pdf *.PDF)</translation>
     </message>
   </context>
   <context>
@@ -2877,10 +2889,6 @@ the application.</source>
     <message>
       <source>Appearance</source>
       <translation>Verschijning</translation>
-    </message>
-    <message>
-      <source>Interface Font</source>
-      <translation>Lettertype interface</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -3440,10 +3448,6 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <translation>Debug berichten opslaan in gd_log.txt in de configuratie map</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>Tekengrootte interface</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface taal</translation>
     </message>
@@ -3466,6 +3470,26 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>GoldenDict-ng is een woordenboeksoftware.</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Interfacetlettertype inschakelen</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Geen</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in seperate tab</source>
+      <translation>Open het website-woordenboek in apart tabblad</translation>
     </message>
   </context>
   <context>
@@ -3610,6 +3634,14 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
       <translation>Forceer het woord te vertalen in het hoofdvenster.</translation>
+    </message>
+    <message>
+      <source>Website Url:</source>
+      <translation>Website URL:</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation>In de Url, &quot;%GDWORD%&quot; wordt vervangen door het woord dat wordt gezocht.</translation>
     </message>
   </context>
   <context>
@@ -3983,27 +4015,28 @@ De volledige lijst met beschikbare talen vindt u &lt;a href=&quot;https://lingua
       <translation>Verwijderen bevestigen</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>De map &lt;b&gt;%1&lt;/b&gt; uit de lijst verwijderen?</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>De site &lt;b&gt;%1&lt;/b&gt; uit de lijst verwijderen?</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Het programma &lt;b&gt;%1&lt;/b&gt; uit de lijst verwijderen?</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>De meest gebruikte methode van transcriptie van Japans op basis van de Engelse fonologie</translation>
     </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
     <message>
-      <source>None</source>
-      <translation>Geen</translation>
+      <source>Remove selected directories from the list?</source>
+      <translation>Geselecteerde mappen uit de lijst verwijderen?</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation>%1 mappen uit de lijst verwijderen?</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation>%1 sites uit de lijst verwijderen?</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation>%1 servers uit de lijst verwijderen?</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation>%1 programma's uit de lijst verwijderen?</translation>
     </message>
   </context>
   <context>
@@ -4100,18 +4133,17 @@ De volledige lijst met beschikbare talen vindt u &lt;a href=&quot;https://lingua
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Artikel invoegen als link binnen &lt;iframe&gt; tag</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation>Dit woordenboek van deze website wordt geopend in een nieuw tabblad</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>Ingeschakeld</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>Als koppeling</translation>
     </message>
     <message>
       <source>Name</source>
@@ -4124,6 +4156,18 @@ De volledige lijst met beschikbare talen vindt u &lt;a href=&quot;https://lingua
     <message>
       <source>Icon</source>
       <translation>Pictogram</translation>
+    </message>
+    <message>
+      <source>Script</source>
+      <translation>Naam</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation>Pictogram bestandsnaam. Relatief met de configuratie map.</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation>Alleen beschikbaar bij het openen van websites op afzonderlijke tabbladen. Kan een bestandspad zijn (relatief aan configuratie-map of absolute) of directe script-inhoud.</translation>
     </message>
   </context>
   <context>

@@ -1,7 +1,6 @@
 /* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
-#include <QString>
 #include <QTextDocumentFragment>
 
 #include <QRegularExpression>
@@ -10,7 +9,7 @@
 
 namespace Html {
 
-string escape( string const & str )
+string escape( const string & str )
 {
   string result( str );
 
@@ -44,7 +43,7 @@ string escape( string const & str )
   return result;
 }
 
-static void storeLineInDiv( string & result, string const & line, bool baseRightToLeft )
+static void storeLineInDiv( string & result, const string & line, bool baseRightToLeft )
 {
   result += "<div";
   if ( unescape( QString::fromUtf8( line.c_str(), line.size() ) ).isRightToLeft() != baseRightToLeft ) {
@@ -55,7 +54,7 @@ static void storeLineInDiv( string & result, string const & line, bool baseRight
   result += line + "</div>";
 }
 
-string preformat( string const & str, bool baseRightToLeft )
+string preformat( const string & str, bool baseRightToLeft )
 {
   string escaped = escape( str ), result, line;
 
@@ -64,7 +63,7 @@ string preformat( string const & str, bool baseRightToLeft )
 
   bool leading = true;
 
-  for ( char const * nextChar = escaped.c_str(); *nextChar; ++nextChar ) {
+  for ( const char * nextChar = escaped.c_str(); *nextChar; ++nextChar ) {
     if ( leading ) {
       if ( *nextChar == ' ' ) {
         line += "&nbsp;";
@@ -99,7 +98,7 @@ string preformat( string const & str, bool baseRightToLeft )
   return result;
 }
 
-string escapeForJavaScript( string const & str )
+string escapeForJavaScript( const string & str )
 {
   string result( str );
 
@@ -157,7 +156,7 @@ QString unescape( QString str, HtmlOption option )
   return str;
 }
 
-QString fromHtmlEscaped( QString const & str )
+QString fromHtmlEscaped( const QString & str )
 {
   QString retVal = str;
   QRegularExpression regExp( R"((?<lt>\&lt\;)|(?<gt>\&gt\;)|(?<amp>\&amp\;)|(?<quot>\&quot\;))",
@@ -186,6 +185,34 @@ QString fromHtmlEscaped( QString const & str )
 string unescapeUtf8( const string & str, HtmlOption option )
 {
   return string( unescape( QString::fromStdString( str ), option ).toUtf8().data() );
+}
+
+QString escapeQString( const QString & str )
+{
+  QString result;
+  result.reserve( str.size() * 6 ); // Reserve space for worst case scenario
+
+  for ( const QChar & ch : str ) {
+    switch ( ch.unicode() ) {
+      case '&':
+        result += "&amp;";
+        break;
+      case '<':
+        result += "&lt;";
+        break;
+      case '>':
+        result += "&gt;";
+        break;
+      case '"':
+        result += "&quot;";
+        break;
+      default:
+        result += ch;
+        break;
+    }
+  }
+
+  return result;
 }
 
 } // namespace Html

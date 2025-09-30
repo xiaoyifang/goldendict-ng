@@ -51,8 +51,8 @@ __attribute__( ( packed ) )
 #pragma pack( pop )
 
 static quint32 const endOfCdirRecordSignatureValue = qToLittleEndian( 0x06054b50 );
-static quint32 const centralFileHeaderSignature    = qToLittleEndian( 0x02014b50 );
-static quint32 const localFileHeaderSignature      = qToLittleEndian( 0x04034b50 );
+static const quint32 centralFileHeaderSignature    = qToLittleEndian( 0x02014b50 );
+static const quint32 localFileHeaderSignature      = qToLittleEndian( 0x04034b50 );
 
 static CompressionMethod getCompressionMethod( quint16 compressionMethod )
 {
@@ -90,7 +90,7 @@ bool positionAtCentralDir( SplitZipFile & zip )
 
   int lastIndex = eocBuffer.size() - sizeof( EndOfCdirRecord );
 
-  QByteArray endOfCdirRecordSignature( (char const *)&endOfCdirRecordSignatureValue,
+  QByteArray endOfCdirRecordSignature( (const char *)&endOfCdirRecordSignatureValue,
                                        sizeof( endOfCdirRecordSignatureValue ) );
 
   EndOfCdirRecord endOfCdirRecord;
@@ -163,12 +163,12 @@ bool readNextEntry( SplitZipFile & zip, CentralDirEntry & entry )
   }
 
   entry.centralHeaderOffset = zip.calcAbsoluteOffset( centralDirOffset, qFromLittleEndian( record.diskNumberStart ) );
-  entry.localHeaderOffset = zip.calcAbsoluteOffset( qFromLittleEndian( record.offsetOfLocalHeader ),
+  entry.localHeaderOffset   = zip.calcAbsoluteOffset( qFromLittleEndian( record.offsetOfLocalHeader ),
                                                     qFromLittleEndian( record.diskNumberStart ) );
-  entry.compressedSize    = qFromLittleEndian( record.compressedSize );
-  entry.uncompressedSize  = qFromLittleEndian( record.uncompressedSize );
-  entry.compressionMethod = getCompressionMethod( record.compressionMethod );
-  entry.fileNameInUTF8    = ( qFromLittleEndian( record.gpBits ) & 0x800 ) != 0;
+  entry.compressedSize      = qFromLittleEndian( record.compressedSize );
+  entry.uncompressedSize    = qFromLittleEndian( record.uncompressedSize );
+  entry.compressionMethod   = getCompressionMethod( record.compressionMethod );
+  entry.fileNameInUTF8      = ( qFromLittleEndian( record.gpBits ) & 0x800 ) != 0;
 
   return true;
 }

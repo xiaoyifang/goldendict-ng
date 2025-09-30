@@ -86,7 +86,7 @@ bool indexIsOldOrBad( string const & indexFile )
 }
 
 // Removes the $1$-like postfix
-string removePostfix( string const & in )
+string removePostfix( const string & in )
 {
   if ( in.size() && in[ in.size() - 1 ] == '$' ) {
     // Find the end of it and cut it, barring any unexpectedness
@@ -169,7 +169,7 @@ class BglDictionary: public BtreeIndexing::BtreeDictionary
 
 public:
 
-  BglDictionary( string const & id, string const & indexFile, string const & dictionaryFile );
+  BglDictionary( const string & id, const string & indexFile, const string & dictionaryFile );
 
   unsigned long getArticleCount() noexcept override
   {
@@ -191,24 +191,24 @@ public:
     return idxHeader.langTo;
   }
 
-  sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( std::u32string const & ) override;
+  sptr< Dictionary::WordSearchRequest > findHeadwordsForSynonym( const std::u32string & ) override;
 
-  sptr< Dictionary::DataRequest > getArticle( std::u32string const &,
-                                              vector< std::u32string > const & alts,
-                                              std::u32string const &,
+  sptr< Dictionary::DataRequest > getArticle( const std::u32string &,
+                                              const vector< std::u32string > & alts,
+                                              const std::u32string &,
                                               bool ignoreDiacritics ) override;
 
-  sptr< Dictionary::DataRequest > getResource( string const & name ) override;
+  sptr< Dictionary::DataRequest > getResource( const string & name ) override;
 
   sptr< Dictionary::DataRequest >
-  getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
-  QString const & getDescription() override;
+  getSearchResults( const QString & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
+  const QString & getDescription() override;
 
   void getArticleText( uint32_t articleAddress, QString & headword, QString & text ) override;
 
   void makeFTSIndex( QAtomicInt & isCancelled ) override;
 
-  void setFTSParameters( Config::FullTextSearch const & fts ) override
+  void setFTSParameters( const Config::FullTextSearch & fts ) override
   {
     if ( metadata_enable_fts.has_value() ) {
       can_FTS = fts.enabled && metadata_enable_fts.value();
@@ -236,7 +236,7 @@ private:
   friend class BglResourceRequest;
 };
 
-BglDictionary::BglDictionary( string const & id, string const & indexFile, string const & dictionaryFile ):
+BglDictionary::BglDictionary( const string & id, const string & indexFile, const string & dictionaryFile ):
   BtreeDictionary( id, vector< string >( 1, dictionaryFile ) ),
   idx( indexFile, QIODevice::ReadOnly ),
   idxHeader( idx.read< IdxHeader >() ),
@@ -321,7 +321,7 @@ void BglDictionary::loadArticle( uint32_t offset, string & headword, string & di
   articleText = string( articleData + headword.size() + displayedHeadword.size() + 2 );
 }
 
-QString const & BglDictionary::getDescription()
+const QString & BglDictionary::getDescription()
 {
   if ( !dictionaryDescription.isEmpty() ) {
     return dictionaryDescription;
@@ -442,7 +442,7 @@ class BglHeadwordsRequest: public Dictionary::WordSearchRequest
 
 public:
 
-  BglHeadwordsRequest( std::u32string const & word_, BglDictionary & dict_ ):
+  BglHeadwordsRequest( const std::u32string & word_, BglDictionary & dict_ ):
     str( word_ ),
     dict( dict_ )
   {
@@ -505,7 +505,7 @@ void BglHeadwordsRequest::run()
   finish();
 }
 
-sptr< Dictionary::WordSearchRequest > BglDictionary::findHeadwordsForSynonym( std::u32string const & word )
+sptr< Dictionary::WordSearchRequest > BglDictionary::findHeadwordsForSynonym( const std::u32string & word )
 
 {
   return synonymSearchEnabled ? std::make_shared< BglHeadwordsRequest >( word, *this ) :
@@ -513,7 +513,7 @@ sptr< Dictionary::WordSearchRequest > BglDictionary::findHeadwordsForSynonym( st
 }
 
 // Converts a $1$-like postfix to a <sup>1</sup> one
-string postfixToSuperscript( string const & in )
+string postfixToSuperscript( const string & in )
 {
   if ( !in.size() || in[ in.size() - 1 ] != '$' ) {
     return in;
@@ -555,8 +555,8 @@ class BglArticleRequest: public Dictionary::DataRequest
 
 public:
 
-  BglArticleRequest( std::u32string const & word_,
-                     vector< std::u32string > const & alts_,
+  BglArticleRequest( const std::u32string & word_,
+                     const vector< std::u32string > & alts_,
                      BglDictionary & dict_,
                      bool ignoreDiacritics_ ):
     word( word_ ),
@@ -692,7 +692,7 @@ void BglArticleRequest::run()
         fixHebString( displayedHeadword );
       }
 
-      string const & targetHeadword = displayedHeadword.size() ? displayedHeadword : headword;
+      const string & targetHeadword = displayedHeadword.size() ? displayedHeadword : headword;
 
       QCryptographicHash hash( QCryptographicHash::Md5 );
       hash.addData( { targetHeadword.data(), static_cast< qsizetype >( targetHeadword.size() + 1 ) } ); // with 0
@@ -800,9 +800,9 @@ void BglArticleRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > BglDictionary::getArticle( std::u32string const & word,
-                                                           vector< std::u32string > const & alts,
-                                                           std::u32string const &,
+sptr< Dictionary::DataRequest > BglDictionary::getArticle( const std::u32string & word,
+                                                           const vector< std::u32string > & alts,
+                                                           const std::u32string &,
                                                            bool ignoreDiacritics )
 
 {
@@ -829,7 +829,7 @@ public:
                       File::Index & idx_,
                       uint32_t resourceListOffset_,
                       uint32_t resourcesCount_,
-                      string const & name_ ):
+                      const string & name_ ):
     idxMutex( idxMutex_ ),
     idx( idx_ ),
     resourceListOffset( resourceListOffset_ ),
@@ -920,7 +920,7 @@ void BglResourceRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > BglDictionary::getResource( string const & name )
+sptr< Dictionary::DataRequest > BglDictionary::getResource( const string & name )
 
 {
   return std::shared_ptr< BglResourceRequest >(
@@ -974,16 +974,16 @@ public:
   {
   }
 
-  list< pair< string, uint32_t > > const & getResources() const
+  const list< pair< string, uint32_t > > & getResources() const
   {
     return resources;
   }
 
 protected:
-  void handleBabylonResource( string const & filename, char const * data, size_t size ) override;
+  void handleBabylonResource( const string & filename, const char * data, size_t size ) override;
 };
 
-void ResourceHandler::handleBabylonResource( string const & filename, char const * data, size_t size )
+void ResourceHandler::handleBabylonResource( const string & filename, const char * data, size_t size )
 {
   //qDebug( "Handling resource file %s (%u bytes)", filename.c_str(), size );
 
@@ -991,7 +991,7 @@ void ResourceHandler::handleBabylonResource( string const & filename, char const
 
   unsigned long compressedSize = compressedData.size();
 
-  if ( compress( &compressedData.front(), &compressedSize, (unsigned char const *)data, size ) != Z_OK ) {
+  if ( compress( &compressedData.front(), &compressedSize, (const unsigned char *)data, size ) != Z_OK ) {
     qWarning( "Failed to compress the body of resource \"%s\", dropping it.", filename.c_str() );
     return;
   }
@@ -1004,7 +1004,7 @@ void ResourceHandler::handleBabylonResource( string const & filename, char const
 }
 } // namespace
 
-sptr< Dictionary::DataRequest > BglDictionary::getSearchResults( QString const & searchString,
+sptr< Dictionary::DataRequest > BglDictionary::getSearchResults( const QString & searchString,
                                                                  int searchMode,
                                                                  bool matchCase,
 
@@ -1018,8 +1018,8 @@ sptr< Dictionary::DataRequest > BglDictionary::getSearchResults( QString const &
 }
 
 
-vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & fileNames,
-                                                      string const & indicesDir,
+vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & fileNames,
+                                                      const string & indicesDir,
                                                       Dictionary::Initializing & initializing )
 
 {

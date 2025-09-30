@@ -1,6 +1,5 @@
 #ifdef MAKE_FFMPEG_PLAYER
 
-  #include "audiooutput.hh"
   #include "ffmpegaudio.hh"
   #include "utils.hh"
   #include <QAudioDevice>
@@ -9,8 +8,6 @@
   #include <QString>
   #include <errno.h>
   #include <vector>
-
-using std::vector;
 
 namespace Ffmpeg {
 
@@ -53,7 +50,7 @@ void AudioService::stop()
 }
 
 
-DecoderContext::DecoderContext( QByteArray const & audioData, QAtomicInt & isCancelled ):
+DecoderContext::DecoderContext( const QByteArray & audioData, QAtomicInt & isCancelled ):
   isCancelled_( isCancelled ),
   audioData_( audioData ),
   audioDataStream_( audioData_ ),
@@ -167,8 +164,6 @@ bool DecoderContext::openCodec( QString & errorString )
     return false;
   }
 
-  // 61 = FFmpeg 7.0 -> https://github.com/FFmpeg/FFmpeg/blob/release/7.0/libavcodec/version_major.h
-  #if LIBAVCODEC_VERSION_MAJOR >= 61
   qDebug( "Codec open: %s: channels: %d, rate: %d, format: %s",
           codec_->long_name,
           codecContext_->ch_layout.nb_channels,
@@ -191,29 +186,6 @@ bool DecoderContext::openCodec( QString & errorString )
        != 0 ) {
     qDebug() << "swr_alloc_set_opts2 failed.";
   }
-  #else
-  qDebug( "Codec open: %s: channels: %d, rate: %d, format: %s",
-          codec_->long_name,
-          codecContext_->channels,
-          codecContext_->sample_rate,
-          av_get_sample_fmt_name( codecContext_->sample_fmt ) );
-
-  auto layout = codecContext_->channel_layout;
-  if ( !layout ) {
-    layout                        = av_get_default_channel_layout( codecContext_->channels );
-    codecContext_->channel_layout = layout;
-  }
-
-  swr_ = swr_alloc_set_opts( nullptr,
-                             layout,
-                             AV_SAMPLE_FMT_S16,
-                             44100,
-                             layout,
-                             codecContext_->sample_fmt,
-                             codecContext_->sample_rate,
-                             0,
-                             nullptr );
-  #endif
 
 
   if ( !swr_ || swr_init( swr_ ) < 0 ) {
@@ -279,11 +251,7 @@ bool DecoderContext::openOutputDevice( QString & errorString )
     errorString += QStringLiteral( "Failed to create audioOutput." );
     return false;
   }
-  #if LIBAVCODEC_VERSION_MAJOR >= 61
   audioOutput->setAudioFormat( 44100, codecContext_->ch_layout.nb_channels );
-  #else
-  audioOutput->setAudioFormat( 44100, codecContext_->channels );
-  #endif
   return true;
 }
 
@@ -337,7 +305,7 @@ void DecoderContext::stop()
 {
   if ( audioOutput ) {
     audioOutput->stop();
-    audioOutput->deleteLater();
+    delete audioOutput;
     audioOutput = nullptr;
   }
 }
@@ -346,11 +314,7 @@ bool DecoderContext::normalizeAudio( AVFrame * frame, vector< uint8_t > & sample
 {
   auto dst_freq = 44100;
 
-  #if LIBAVCODEC_VERSION_MAJOR >= 61
   auto dst_channels = codecContext_->ch_layout.nb_channels;
-  #else
-  auto dst_channels = codecContext_->channels;
-  #endif
 
   int out_count = (int64_t)frame->nb_samples * dst_freq / frame->sample_rate + 256;
   int out_size  = av_samples_get_buffer_size( nullptr, dst_channels, out_count, AV_SAMPLE_FMT_S16, 1 );
@@ -385,7 +349,7 @@ void DecoderContext::playFrame( AVFrame * frame )
   }
 }
 
-DecoderThread::DecoderThread( QByteArray const & audioData, QObject * parent ):
+DecoderThread::DecoderThread( const QByteArray & audioData, QObject * parent ):
   QThread( parent ),
   isCancelled_( 0 ),
   audioData_( audioData ),

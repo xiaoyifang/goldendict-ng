@@ -1,9 +1,12 @@
 cmake_minimum_required(VERSION 3.25) # Debian 11 Ubuntu 24.04 Fedora 36
 
-option(WITH_FFMPEG_PLAYER "Enable support for FFMPEG player" ON)
+option(WITH_FFMPEG_PLAYER "Enable support for FFMPEG player. Note: This is useless for Qt >= 6.8" ON)
+option(WITH_QT_MULTIMEDIA "Enable support for Qt Multimedia player" ON)
 option(WITH_EPWING_SUPPORT "Enable epwing support" ON)
 option(WITH_ZIM "enable zim support" ON)
 option(WITH_TTS "enable QTexttoSpeech support" OFF)
+
+option(WITH_X11 "Experimental flag. Don't disable this. Disable means pure Wayland." ON)
 
 # options for linux packaging
 option(USE_SYSTEM_FMT "use system fmt instead of bundled one" OFF)
@@ -37,7 +40,7 @@ endif ()
 include(FeatureSummary)
 
 project(goldendict-ng
-        VERSION 25.06.0
+        VERSION 25.10.0
         LANGUAGES CXX C)
 
 if (APPLE)
@@ -102,7 +105,7 @@ set(CMAKE_AUTOUIC_SEARCH_PATHS "${CMAKE_CURRENT_SOURCE_DIR}/src/ui/")
 file(GLOB_RECURSE ALL_SOURCE_FILES CONFIGURE_DEPENDS src/*.cc src/*.hh src/*.ui src/*.c)
 
 if (APPLE)
-    file(GLOB_RECURSE MACOS_SOURCE_FILES CONFIGURE_DEPENDS src/macos/*.mm)
+    file(GLOB_RECURSE MACOS_SOURCE_FILES CONFIGURE_DEPENDS src/**/*.mm)
 
     set(MACOS_APP_ICON ${CMAKE_SOURCE_DIR}/icons/macicon.icns)
     set_source_files_properties(${MACOS_APP_ICON} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
@@ -187,23 +190,15 @@ if (Qt6Widgets_VERSION VERSION_GREATER_EQUAL 6.8.2)
 endif ()
 
 target_compile_definitions(${GOLDENDICT} PUBLIC
-        MAKE_QTMULTIMEDIA_PLAYER
         MAKE_CHINESE_CONVERSION_SUPPORT
         $<$<BOOL:${WIN32}>:__WIN32>
         $<$<BOOL:${WITH_FFMPEG_PLAYER}>:MAKE_FFMPEG_PLAYER>
+        $<$<BOOL:${WITH_QT_MULTIMEDIA}>:MAKE_QTMULTIMEDIA_PLAYER>
         $<$<BOOL:${WITH_TTS}>:TTS_SUPPORT>
         $<$<BOOL:${WITH_EPWING_SUPPORT}>:EPWING_SUPPORT>
         $<$<BOOL:${WITH_ZIM}>:MAKE_ZIM_SUPPORT>
         $<$<BOOL:${WITH_VCPKG_BREAKPAD}>:USE_BREAKPAD>
 )
-
-#### libraries linking && includes for Win or Unix
-
-if (WIN32)
-    include(cmake/Deps_Vcpkg.cmake)
-else ()
-    include(cmake/Deps_Unix.cmake)
-endif ()
 
 #### add translations
 
@@ -223,14 +218,17 @@ qt_add_translations(${GOLDENDICT} TS_FILES ${TRANS_FILES}
 
 add_dependencies(${GOLDENDICT} "release_translations")
 
-#### installation or assemble redistribution
+#### Dependencies and Packaging (Don't unify them. They have little in common!)
 
-if (APPLE)
-    include(cmake/Package_macOS.cmake)
-elseif (LINUX OR BSD)
+if (LINUX OR BSD)
+    include(cmake/Deps_Linux.cmake)
     include(cmake/Package_Linux.cmake)
 elseif (WIN32)
+    include(cmake/Deps_Vcpkg.cmake)
     include(cmake/Package_Windows.cmake)
+else ()
+    include(cmake/Deps_macOS.cmake)
+    include(cmake/Package_macOS.cmake)
 endif ()
 
 feature_summary(WHAT ALL DESCRIPTION "Build configuration:")

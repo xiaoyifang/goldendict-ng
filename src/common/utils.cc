@@ -1,7 +1,5 @@
 #include "utils.hh"
 #include <QDir>
-#include <QPalette>
-#include <QStyle>
 #include <QMessageBox>
 #include <string>
 #include <QBuffer>
@@ -33,14 +31,14 @@ bool endsWithIgnoreCase( QByteArrayView str, QByteArrayView extension )
     && ( str.last( extension.size() ).compare( extension, Qt::CaseInsensitive ) == 0 );
 }
 
-QString escapeAmps( QString const & str )
+QString escapeAmps( const QString & str )
 {
   QString result( str );
   result.replace( "&", "&&" );
   return result;
 }
 
-QString unescapeAmps( QString const & str )
+QString unescapeAmps( const QString & str )
 {
   QString result( str );
   result.replace( "&&", "&" );
@@ -53,7 +51,7 @@ QString Utils::Path::combine( const QString & path1, const QString & path2 )
   return QDir::cleanPath( path1 + QDir::separator() + path2 );
 }
 
-QString Utils::Url::getSchemeAndHost( QUrl const & url )
+QString Utils::Url::getSchemeAndHost( const QUrl & url )
 {
   if ( !url.isValid() ) {
     return QString();
@@ -72,6 +70,43 @@ QString Utils::Url::getSchemeAndHost( QUrl const & url )
   }
 
   return origin;
+}
+
+QString Utils::Url::extractBaseDomain( const QString & domain )
+{
+  // More generic approach for detecting two-part TLDs
+  // Look for patterns like com.xx, co.xx, org.xx, gov.xx, net.xx, edu.xx
+  QStringList parts = domain.split( '.' );
+  if ( parts.size() >= 3 ) {
+    QString secondLevel = parts[ parts.size() - 2 ];
+    QString topLevel    = parts[ parts.size() - 1 ];
+
+    // Check if the second level is a common second-level domain indicator
+    // and the top level is a standard TLD (2-3 characters)
+    if ( ( secondLevel == "com" || secondLevel == "co" || secondLevel == "org" || secondLevel == "gov"
+           || secondLevel == "net" || secondLevel == "edu" )
+         && ( topLevel.length() == 2 || topLevel.length() == 3 ) ) {
+      // Extract the registrable domain (e.g., "example.com" from "www.example.com.jp")
+      if ( parts.size() >= 3 ) {
+        return parts[ parts.size() - 3 ] + "." + secondLevel;
+      }
+      return secondLevel + "." + topLevel;
+    }
+  }
+
+  // For domains with multiple parts, extract the last two parts as base domain
+  int dotCount = domain.count( '.' );
+  if ( dotCount >= 2 ) {
+    if ( parts.isEmpty() ) {
+      parts = domain.split( '.' );
+    }
+    if ( parts.size() >= 2 ) {
+      return parts[ parts.size() - 2 ] + "." + parts[ parts.size() - 1 ];
+    }
+  }
+
+  // For domains with one or no dots, return as is
+  return domain;
 }
 
 void Utils::Widget::setNoResultColor( QWidget * widget, bool noResult )
@@ -106,7 +141,7 @@ char separator()
   return QDir::separator().toLatin1();
 }
 
-std::string basename( std::string const & str )
+std::string basename( const std::string & str )
 {
   size_t x = str.rfind( separator() );
 
@@ -117,13 +152,13 @@ std::string basename( std::string const & str )
   return std::string( str, x + 1 );
 }
 
-void removeDirectory( QString const & directory )
+void removeDirectory( const QString & directory )
 {
   QDir dir( directory );
   dir.removeRecursively();
 }
 
-void removeDirectory( string const & directory )
+void removeDirectory( const string & directory )
 {
   removeDirectory( QString::fromStdString( directory ) );
 }

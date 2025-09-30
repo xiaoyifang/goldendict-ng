@@ -1,8 +1,12 @@
 #include "globalbroadcaster.hh"
 #include <QGlobalStatic>
+#include <QGuiApplication>
+#include <QStyleHints>
+#include <Qt>
 #include "utils.hh"
 
 Q_GLOBAL_STATIC( GlobalBroadcaster, bdcaster )
+
 GlobalBroadcaster::GlobalBroadcaster( QObject * parent ):
   QObject( parent )
 {
@@ -22,33 +26,44 @@ void GlobalBroadcaster::setPreference( Config::Preferences * p )
 {
   preference = p;
 }
+
 Config::Preferences * GlobalBroadcaster::getPreference() const
 {
   return preference;
 }
 
-void GlobalBroadcaster::addWhitelist( QString url )
+void GlobalBroadcaster::addWhitelist( QString host )
 {
-  whitelist.insert( url );
+  whitelist.insert( host );
 }
 
-bool GlobalBroadcaster::existedInWhitelist( QString url ) const
+bool GlobalBroadcaster::existedInWhitelist( QString host ) const
 {
   for ( const QString & item : whitelist ) {
-    if ( url.endsWith( item ) ) {
-      return true; // Match found
+    // Exact match - e.g. "www.example.com" matches "www.example.com"
+    if ( host == item ) {
+      return true;
+    }
+
+    // Extract base domain from both host and item for comparison
+    QString urlBaseDomain  = Utils::Url::extractBaseDomain( host );
+    QString itemBaseDomain = Utils::Url::extractBaseDomain( item );
+
+    // Compare base domains
+    if ( urlBaseDomain == itemBaseDomain ) {
+      return true;
     }
   }
   return false; // No match found
 }
 
 
-QString GlobalBroadcaster::getAbbrName( QString const & text )
+QString GlobalBroadcaster::getAbbrName( const QString & text )
 {
   if ( text.isEmpty() ) {
     return {};
   }
-  //remove whitespace,number,mark,puncuation,symbol
+  // remove whitespace,number,mark,puncuation,symbol
   QString simplified = text;
   simplified.remove(
     QRegularExpression( R"([\p{Z}\p{N}\p{M}\p{P}\p{S}])", QRegularExpression::UseUnicodePropertiesOption ) );
@@ -59,4 +74,27 @@ QString GlobalBroadcaster::getAbbrName( QString const & text )
 
   return _icon_names.getIconName( simplified );
 }
-// namespace global
+
+bool GlobalBroadcaster::isDarkModeEnabled() const
+{
+  if ( !preference ) {
+    return false;
+  }
+
+  bool darkModeEnabled = ( preference->darkReaderMode == Config::Dark::On );
+
+#if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
+  if ( preference->darkReaderMode == Config::Dark::Auto
+  #if !defined( Q_OS_WINDOWS )
+       // For macOS & Linux, uses "System's style hint". There is no darkMode setting in GD for them.
+       && QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark
+  #else
+       // For Windows, uses the setting in GD
+       && preference->darkMode == Config::Dark::On
+  #endif
+  ) {
+    darkModeEnabled = true;
+  }
+#endif
+  return darkModeEnabled;
+}

@@ -98,7 +98,7 @@ struct InsidedCard
   uint32_t offset;
   uint32_t size;
   QList< std::u32string > headwords;
-  InsidedCard( uint32_t _offset, uint32_t _size, QList< std::u32string > const & words ):
+  InsidedCard( uint32_t _offset, uint32_t _size, const QList< std::u32string > & words ):
     offset( _offset ),
     size( _size ),
     headwords( words )
@@ -107,7 +107,7 @@ struct InsidedCard
   InsidedCard() = default;
 };
 
-bool indexIsOldOrBad( string const & indexFile, bool hasZipFile )
+bool indexIsOldOrBad( const string & indexFile, bool hasZipFile )
 {
   File::Index idx( indexFile, QIODevice::ReadOnly );
 
@@ -146,7 +146,7 @@ class DslDictionary: public BtreeIndexing::BtreeDictionary
 
 public:
 
-  DslDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles );
+  DslDictionary( const string & id, const string & indexFile, const vector< string > & dictionaryFiles );
 
   void deferredInit() override;
 
@@ -184,16 +184,16 @@ public:
   }
 
 
-  sptr< Dictionary::DataRequest > getArticle( std::u32string const &,
-                                              vector< std::u32string > const & alts,
-                                              std::u32string const &,
+  sptr< Dictionary::DataRequest > getArticle( const std::u32string &,
+                                              const vector< std::u32string > & alts,
+                                              const std::u32string &,
                                               bool ignoreDiacritics ) override;
 
-  sptr< Dictionary::DataRequest > getResource( string const & name ) override;
+  sptr< Dictionary::DataRequest > getResource( const string & name ) override;
 
   sptr< Dictionary::DataRequest >
-  getSearchResults( QString const & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
-  QString const & getDescription() override;
+  getSearchResults( const QString & searchString, int searchMode, bool matchCase, bool ignoreDiacritics ) override;
+  const QString & getDescription() override;
 
   QString getMainFilename() override;
 
@@ -201,7 +201,7 @@ public:
 
   void makeFTSIndex( QAtomicInt & isCancelled ) override;
 
-  void setFTSParameters( Config::FullTextSearch const & fts ) override
+  void setFTSParameters( const Config::FullTextSearch & fts ) override
   {
     if ( ensureInitDone().size() ) {
       return;
@@ -226,12 +226,12 @@ protected:
 
 private:
 
-  string const & ensureInitDone() override;
+  const string & ensureInitDone() override;
   void doDeferredInit();
 
   /// Loads the article. Does not process the DSL language.
   void loadArticle( uint32_t address,
-                    std::u32string const & requestedHeadwordFolded,
+                    const std::u32string & requestedHeadwordFolded,
                     bool ignoreDiacritics,
                     std::u32string & tildeValue,
                     std::u32string & displayedHeadword,
@@ -239,12 +239,12 @@ private:
                     std::u32string & articleText );
 
   /// Converts DSL language to an Html.
-  string dslToHtml( std::u32string const &, std::u32string const & headword = std::u32string() );
+  string dslToHtml( const std::u32string &, const std::u32string & headword = std::u32string() );
 
   // Parts of dslToHtml()
-  string nodeToHtml( ArticleDom::Node const & );
-  string processNodeChildren( ArticleDom::Node const & node );
-  string getNodeLink( ArticleDom::Node const & node );
+  string nodeToHtml( const ArticleDom::Node & );
+  string processNodeChildren( const ArticleDom::Node & node );
+  string getNodeLink( const ArticleDom::Node & node );
 
   bool hasHiddenZones() /// Return true if article has hidden zones
   {
@@ -256,7 +256,7 @@ private:
   friend class DslFTSResultsRequest;
 };
 
-DslDictionary::DslDictionary( string const & id, string const & indexFile, vector< string > const & dictionaryFiles ):
+DslDictionary::DslDictionary( const string & id, const string & indexFile, const vector< string > & dictionaryFiles ):
   BtreeDictionary( id, dictionaryFiles ),
   idx( indexFile, QIODevice::ReadOnly ),
   idxHeader( idx.read< IdxHeader >() ),
@@ -322,7 +322,7 @@ void DslDictionary::deferredInit()
 }
 
 
-string const & DslDictionary::ensureInitDone()
+const string & DslDictionary::ensureInitDone()
 {
   // Simple, really.
   doDeferredInit();
@@ -463,7 +463,7 @@ bool isDslWs( char32_t ch )
 }
 
 void DslDictionary::loadArticle( uint32_t address,
-                                 std::u32string const & requestedHeadwordFolded,
+                                 const std::u32string & requestedHeadwordFolded,
                                  bool ignoreDiacritics,
                                  std::u32string & tildeValue,
                                  std::u32string & displayedHeadword,
@@ -693,7 +693,7 @@ void DslDictionary::loadArticle( uint32_t address,
   }
 }
 
-string DslDictionary::dslToHtml( std::u32string const & str, std::u32string const & headword )
+string DslDictionary::dslToHtml( const std::u32string & str, const std::u32string & headword )
 {
   // Normalize the string
   std::u32string normalizedStr = Text::normalize( str );
@@ -708,7 +708,7 @@ string DslDictionary::dslToHtml( std::u32string const & str, std::u32string cons
   return html;
 }
 
-string DslDictionary::processNodeChildren( ArticleDom::Node const & node )
+string DslDictionary::processNodeChildren( const ArticleDom::Node & node )
 {
   string result;
 
@@ -719,7 +719,7 @@ string DslDictionary::processNodeChildren( ArticleDom::Node const & node )
   return result;
 }
 
-string DslDictionary::getNodeLink( ArticleDom::Node const & node )
+string DslDictionary::getNodeLink( const ArticleDom::Node & node )
 {
   string link;
   if ( !node.tagAttrs.empty() ) {
@@ -738,7 +738,7 @@ string DslDictionary::getNodeLink( ArticleDom::Node const & node )
   return link;
 }
 
-string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
+string DslDictionary::nodeToHtml( const ArticleDom::Node & node )
 {
   string result;
 
@@ -1004,7 +1004,7 @@ string DslDictionary::nodeToHtml( ArticleDom::Node const & node )
   return result;
 }
 
-QString const & DslDictionary::getDescription()
+const QString & DslDictionary::getDescription()
 {
   if ( !dictionaryDescription.isEmpty() ) {
     return dictionaryDescription;
@@ -1388,8 +1388,8 @@ class DslArticleRequest: public Dictionary::DataRequest
 
 public:
 
-  DslArticleRequest( std::u32string const & word_,
-                     vector< std::u32string > const & alts_,
+  DslArticleRequest( const std::u32string & word_,
+                     const vector< std::u32string > & alts_,
                      DslDictionary & dict_,
                      bool ignoreDiacritics_ ):
     word( word_ ),
@@ -1542,9 +1542,9 @@ void DslArticleRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > DslDictionary::getArticle( std::u32string const & word,
-                                                           vector< std::u32string > const & alts,
-                                                           std::u32string const &,
+sptr< Dictionary::DataRequest > DslDictionary::getArticle( const std::u32string & word,
+                                                           const vector< std::u32string > & alts,
+                                                           const std::u32string &,
                                                            bool ignoreDiacritics )
 
 {
@@ -1564,7 +1564,7 @@ class DslResourceRequest: public Dictionary::DataRequest
 
 public:
 
-  DslResourceRequest( DslDictionary & dict_, string const & resourceName_ ):
+  DslResourceRequest( DslDictionary & dict_, const string & resourceName_ ):
     dict( dict_ ),
     resourceName( resourceName_ )
   {
@@ -1640,14 +1640,14 @@ void DslResourceRequest::run()
   finish();
 }
 
-sptr< Dictionary::DataRequest > DslDictionary::getResource( string const & name )
+sptr< Dictionary::DataRequest > DslDictionary::getResource( const string & name )
 
 {
   return std::make_shared< DslResourceRequest >( *this, name );
 }
 
 
-sptr< Dictionary::DataRequest > DslDictionary::getSearchResults( QString const & searchString,
+sptr< Dictionary::DataRequest > DslDictionary::getSearchResults( const QString & searchString,
                                                                  int searchMode,
                                                                  bool matchCase,
 
@@ -1664,8 +1664,8 @@ sptr< Dictionary::DataRequest > DslDictionary::getSearchResults( QString const &
 
 /// makeDictionaries
 
-vector< sptr< Dictionary::Class > > makeDictionaries( vector< string > const & fileNames,
-                                                      string const & indicesDir,
+vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & fileNames,
+                                                      const string & indicesDir,
                                                       Dictionary::Initializing & initializing,
                                                       unsigned int maxHeadwordSize )
 

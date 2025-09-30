@@ -13,7 +13,7 @@ namespace MediaWiki {
 using std::vector;
 
 vector< sptr< Dictionary::Class > >
-makeDictionaries( Dictionary::Initializing &, Config::MediaWikis const & wikis, QNetworkAccessManager & );
+makeDictionaries( Dictionary::Initializing &, const Config::MediaWikis & wikis, QNetworkAccessManager & );
 
 
 } // namespace MediaWiki

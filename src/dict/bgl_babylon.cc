@@ -30,7 +30,6 @@
 
 #include <algorithm>
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
 #include <QString>
@@ -691,7 +690,7 @@ bgl_entry Babylon::readEntry( ResourceHandler * resourceHandler )
           // as some kind of an identifier instead of being an actual headword)
           int totalDigits = 0;
 
-          for ( char const * p = headword.c_str(); *p; ++p ) {
+          for ( const char * p = headword.c_str(); *p; ++p ) {
             if ( *p >= '0' && *p <= '9' ) {
               if ( ++totalDigits > 1 ) {
                 break;

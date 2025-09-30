@@ -1,5 +1,6 @@
 #include "articlewebpage.hh"
 #include "utils.hh"
+#include "common/globalbroadcaster.hh"
 
 ArticleWebPage::ArticleWebPage( QObject * parent ):
   QWebEnginePage{ parent }
@@ -29,6 +30,14 @@ bool ArticleWebPage::acceptNavigationRequest( const QUrl & resUrl, NavigationTyp
   }
 
   if ( type == QWebEnginePage::NavigationTypeLinkClicked ) {
+    // If configured to open website in new tab, trigger linkClicked signal normally
+    // Otherwise, for websiteview, we allow navigation request
+    if ( GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
+      // Check if URL is external link, if so, allow navigation in current webview
+      if ( Utils::isExternalLink( url ) ) {
+        return true;
+      }
+    }
     emit linkClicked( url );
     return false;
   }

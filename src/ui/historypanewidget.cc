@@ -153,7 +153,7 @@ bool HistoryPaneWidget::eventFilter( QObject * obj, QEvent * ev )
   return QWidget::eventFilter( obj, ev );
 }
 
-void HistoryPaneWidget::showCustomMenu( QPoint const & pos )
+void HistoryPaneWidget::showCustomMenu( const QPoint & pos )
 {
   bool selectionEmpty = m_historyList->selectionModel()->selection().empty();
 
@@ -170,7 +170,7 @@ void HistoryPaneWidget::showCustomMenu( QPoint const & pos )
   m_historyMenu->exec( m_historyList->mapToGlobal( pos ) );
 }
 
-void HistoryPaneWidget::emitHistoryItemRequested( QModelIndex const & idx )
+void HistoryPaneWidget::emitHistoryItemRequested( const QModelIndex & idx )
 {
   QVariant value = m_historyList->model()->data( idx );
   if ( !value.isNull() ) {
@@ -190,7 +190,7 @@ void HistoryPaneWidget::onSelectionChanged( const QItemSelection & selection, co
   emitHistoryItemRequested( selection.front().topLeft() );
 }
 
-void HistoryPaneWidget::onItemClicked( QModelIndex const & idx )
+void HistoryPaneWidget::onItemClicked( const QModelIndex & idx )
 {
   // qDebug() << "clicked";
 
@@ -216,12 +216,12 @@ HistoryModel::HistoryModel( History * history, QObject * parent ):
   connect( m_history, &History::itemsChanged, this, &HistoryModel::historyChanged );
 }
 
-int HistoryModel::rowCount( QModelIndex const & /*parent*/ ) const
+int HistoryModel::rowCount( const QModelIndex & /*parent*/ ) const
 {
   return m_history->size();
 }
 
-QVariant HistoryModel::data( QModelIndex const & index, int role ) const
+QVariant HistoryModel::data( const QModelIndex & index, int role ) const
 {
   // qDebug() << "data: " << index;
 

@@ -285,39 +285,51 @@ the application.</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_16">
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_17">
-            <item>
-             <widget class="QLabel" name="label_29">
-              <property name="text">
-               <string>Interface Font</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QFontComboBox" name="systemFont"/>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_19">
-            <item>
-             <widget class="QLabel" name="label_30">
-              <property name="text">
-               <string>Interface Font Size</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QSpinBox" name="interfaceFontSize">
-              <property name="minimum">
-               <number>8</number>
-              </property>
-              <property name="maximum">
-               <number>32</number>
-              </property>
-             </widget>
-            </item>
-           </layout>
+           <widget class="QGroupBox" name="enableInterfaceFont">
+            <property name="title">
+             <string>Enable Interface Font</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_23">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_17">
+               <item>
+                <widget class="QLabel" name="label_29">
+                 <property name="text">
+                  <string>Font</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFontComboBox" name="systemFont"/>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_19">
+               <item>
+                <widget class="QLabel" name="label_30">
+                 <property name="text">
+                  <string>Font Size</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QSpinBox" name="interfaceFontSize">
+                 <property name="minimum">
+                  <number>8</number>
+                 </property>
+                 <property name="maximum">
+                  <number>32</number>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
           </item>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -386,7 +398,7 @@ the application.</string>
              </widget>
             </item>
             <item>
-             <widget class="StylesComboBox" name="addonStyles">
+             <widget class="QComboBox" name="addonStyles">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1435,7 +1447,7 @@ download page.</string>
           <bool>true</bool>
          </property>
          <property name="checked">
-          <bool>true</bool>
+          <bool>false</bool>
          </property>
          <layout class="QGridLayout" name="gridLayout_4">
           <item row="3" column="1">
@@ -1999,6 +2011,13 @@ from Stardict, Babylon and GLS dictionaries</string>
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QCheckBox" name="openWebsiteInNewTab">
+            <property name="text">
+             <string>Open website dictionary in seperate tab</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
@@ -2031,13 +2050,6 @@ from Stardict, Babylon and GLS dictionaries</string>
    </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>StylesComboBox</class>
-   <extends>QComboBox</extends>
-   <header>stylescombobox.hh</header>
-  </customwidget>
- </customwidgets>
  <tabstops>
   <tabstop>tabWidget</tabstop>
   <tabstop>buttonBox</tabstop>

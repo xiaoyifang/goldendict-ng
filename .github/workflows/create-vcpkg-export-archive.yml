@@ -2,6 +2,8 @@ name: Create vcpkg export archive
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
 
 env:
   outputName: goldendict-ng-vcpkg-export

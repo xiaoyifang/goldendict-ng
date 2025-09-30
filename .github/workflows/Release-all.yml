@@ -1,12 +1,14 @@
 name: Release All
-concurrency: 
+permissions:
+  contents: write
+concurrency:
    group: ${{ github.workflow }}-${{ github.ref }}
    cancel-in-progress: true
-env: 
-  version: 25.06.0
+env:
+  version: 25.10.0
   prerelease: ${{ !contains(github.ref_name,'master') }}
   versionSuffix: ${{ !contains(github.ref_name,'master') && 'alpha' || 'Release' }}
-on: 
+on:
   workflow_dispatch:
   push:
     branches:
@@ -24,7 +26,7 @@ jobs:
     strategy:
       matrix:
         os: [macos-13,macos-14]
-        qt_ver: [ 6.6.3, 6.7.2 ]
+        qt_ver: [ 6.8.3, 6.9.1 ] # 6.8 is LTS which is relatively stable, don't dump it until next LTS.
     steps:
       - uses: actions/checkout@v4
         with:
@@ -45,22 +47,25 @@ jobs:
             lzip \
             ninja \
             opencc \
+            ffmpeg@6 \
             xapian || true
       - name: Install eb
         run: |
           git clone https://github.com/xiaoyifang/eb.git
-          cd eb && ./configure && make -j 8 && sudo make install && cd ..         
+          cd eb && ./configure && make -j 8 && sudo make install && cd ..
       - uses: jurplel/install-qt-action@v4.2.1
         with:
           version: ${{ matrix.qt_ver }}
           arch: clang_64
-          modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech      
+          modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
       - name: Build
         run: |
           mkdir build_dir
+          export PKG_CONFIG_PATH="`brew --prefix ffmpeg@6`/lib/pkgconfig:$PKG_CONFIG_PATH"
           cmake -S . -B build_dir \
             -G Ninja \
-            -DWITH_FFMPEG_PLAYER=OFF \
+            -DWITH_FFMPEG_PLAYER=ON \
+            -DWITH_QT_MULTIMEDIA=OFF \
             -DWITH_TTS=OFF \
             -DCMAKE_BUILD_TYPE=RelWithDebInfo \
             -DCMAKE_OSX_DEPLOYMENT_TARGET="12.0"
@@ -101,7 +106,7 @@ jobs:
           & 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\Launch-VsDevShell.ps1' `
             -SkipAutomaticLocation -Arch amd64 -HostArch amd64
           New-Item -Path './build_dir' -ItemType Directory
-          
+
           # RelWithDebInfo + msvc's = .pdb file beside program file.
           cmake -S . -B "./build_dir" `
             -G Ninja `
@@ -124,7 +129,7 @@ jobs:
           cd ./build_dir
           mv "${namePrefix}.7z" "${namePrefix}-Windows-installer.7z"
           mv "${namePrefix}.exe" "${namePrefix}-Windows-installer.exe"
-          mv ./goldendict/goldendict.exe "./${namePrefix}-Windows-main-exe-file-only.exe" 
+          mv ./goldendict/goldendict.exe "./${namePrefix}-Windows-main-exe-file-only.exe"
           mv ./goldendict/goldendict.pdb "./${namePrefix}-Windows-pdb-debug-file.pdb"
           cd ..
           ls -R
@@ -137,7 +142,7 @@ jobs:
             ./build_dir/*.exe
             ./build_dir/*.7z
             ./build_dir/*.pdb
-  
+
   generate_other_staffs:
     runs-on: ubuntu-latest
     outputs:
@@ -158,7 +163,7 @@ jobs:
           then
             echo "This is a pre-release"
             previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v -e "Release" -e "vcpkg" | head -n 1)
-          else 
+          else
             echo "This is not a pre-release"
             previousTag=$(git tag --sort=-creatordate | grep "^v" | grep -v -e "alpha" -e "vcpkg" | head -n 1)
           fi
@@ -197,7 +202,7 @@ jobs:
           else
             echo "releaseTitle=v${{ env.version }}-${{ env.versionSuffix }}.${{ steps.shortSHA.outputs.sha_short }}" >> $GITHUB_OUTPUT
           fi
-          
+
       - uses: actions/upload-artifact@v4
         with:
           name: changelog.txt
@@ -236,8 +241,8 @@ jobs:
               --notes-file=./changelog.txt \
               --latest=true \
               --repo ${GITHUB_REPOSITORY}
-          fi 
+          fi
       - name: Upload artifacts
         run: |
           gh release upload '${{ env.newTag }}' --repo ${GITHUB_REPOSITORY} --clobber \
-            *.7z *.exe *.pdb *.dmg 
+            *.7z *.exe *.pdb *.dmg

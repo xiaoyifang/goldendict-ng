@@ -12,5 +12,5 @@
 /// 'say sound' functionality.
 /// The url should be escaped and surrounded by quotes.
 /// The dictionary id is used to make active dictionary feature work.
-std::string addAudioLink( std::string const & url, std::string const & dictionaryId );
-std::string addAudioLink( QString const & url, std::string const & dictionaryId );
+std::string addAudioLink( const std::string & url, const std::string & dictionaryId );
+std::string addAudioLink( const QString & url, const std::string & dictionaryId );

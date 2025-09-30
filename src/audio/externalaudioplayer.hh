@@ -16,7 +16,7 @@ public:
   ExternalAudioPlayer();
   ~ExternalAudioPlayer();
   /// \param playerCommandLine_ Will be used in future play() calls.
-  void setPlayerCommandLine( QString const & playerCommandLine_ );
+  void setPlayerCommandLine( const QString & playerCommandLine_ );
 
   virtual QString play( const char * data, int size );
   virtual void stop();

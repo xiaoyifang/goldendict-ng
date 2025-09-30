@@ -28,8 +28,8 @@ void Indexing::run()
 
       if ( dictionary->canFTS() && !dictionary->haveFTSIndex() ) {
         sem.acquire();
-        QFuture< void > const f = QtConcurrent::run( [ this, &sem, &dictionary ]() {
-          QSemaphoreReleaser const _( sem );
+        const QFuture< void > f = QtConcurrent::run( [ this, &sem, &dictionary ]() {
+          const QSemaphoreReleaser _( sem );
           const QString & dictionaryName = QString::fromUtf8( dictionary->getName().c_str() );
           qDebug() << "[FULLTEXT] checking fts for the dictionary:" << dictionaryName;
           emit sendNowIndexingName( dictionaryName );
@@ -76,7 +76,7 @@ void Indexing::timeout()
   }
 }
 
-FtsIndexing::FtsIndexing( std::vector< sptr< Dictionary::Class > > const & dicts ):
+FtsIndexing::FtsIndexing( const std::vector< sptr< Dictionary::Class > > & dicts ):
   dictionaries( dicts ),
   started( false )
 {
@@ -132,7 +132,7 @@ QString FtsIndexing::nowIndexingName()
   return nowIndexing;
 }
 
-void addSortedHeadwords( QList< FtsHeadword > & base_list, QList< FtsHeadword > const & add_list )
+void addSortedHeadwords( QList< FtsHeadword > & base_list, const QList< FtsHeadword > & add_list )
 {
   QList< FtsHeadword > list;
 
@@ -193,8 +193,8 @@ void addSortedHeadwords( QList< FtsHeadword > & base_list, QList< FtsHeadword > 
 
 FullTextSearchDialog::FullTextSearchDialog( QWidget * parent,
                                             Config::Class & cfg_,
-                                            std::vector< sptr< Dictionary::Class > > const & dictionaries_,
-                                            std::vector< Instances::Group > const & groups_,
+                                            const std::vector< sptr< Dictionary::Class > > & dictionaries_,
+                                            const std::vector< Instances::Group > & groups_,
                                             FtsIndexing & ftsidx ):
   QDialog( parent ),
   cfg( cfg_ ),
@@ -473,7 +473,7 @@ void FullTextSearchDialog::updateDictionaries()
 
   // Find the given group
 
-  Instances::Group const * activeGroup = 0;
+  const Instances::Group * activeGroup = 0;
 
   for ( unsigned x = 0; x < groups.size(); ++x ) {
     if ( groups[ x ].id == group ) {
@@ -484,12 +484,12 @@ void FullTextSearchDialog::updateDictionaries()
 
   // If we've found a group, use its dictionaries; otherwise, use the global
   // heap.
-  std::vector< sptr< Dictionary::Class > > const & groupDicts = activeGroup ? activeGroup->dictionaries : dictionaries;
+  const std::vector< sptr< Dictionary::Class > > & groupDicts = activeGroup ? activeGroup->dictionaries : dictionaries;
 
   // Exclude muted dictionaries
 
-  Config::Group const * grp = cfg.getGroup( group );
-  Config::MutedDictionaries const * mutedDicts;
+  const Config::Group * grp = cfg.getGroup( group );
+  const Config::MutedDictionaries * mutedDicts;
 
   if ( group == GroupId::AllGroupId ) {
     mutedDicts = &cfg.mutedDictionaries;
@@ -531,18 +531,18 @@ bool FullTextSearchDialog::eventFilter( QObject * obj, QEvent * ev )
 
 /// HeadwordsListModel
 
-int HeadwordsListModel::rowCount( QModelIndex const & ) const
+int HeadwordsListModel::rowCount( const QModelIndex & ) const
 {
   return headwords.size();
 }
 
-QVariant HeadwordsListModel::data( QModelIndex const & index, int role ) const
+QVariant HeadwordsListModel::data( const QModelIndex & index, int role ) const
 {
   if ( index.row() < 0 ) {
     return QVariant();
   }
 
-  FtsHeadword const & head = headwords[ index.row() ];
+  const FtsHeadword & head = headwords[ index.row() ];
 
   if ( head.headword.isEmpty() ) {
     return QVariant();
@@ -576,7 +576,7 @@ QVariant HeadwordsListModel::data( QModelIndex const & index, int role ) const
   return QVariant();
 }
 
-void HeadwordsListModel::addResults( const QModelIndex & parent, QList< FtsHeadword > const & hws )
+void HeadwordsListModel::addResults( const QModelIndex & parent, const QList< FtsHeadword > & hws )
 {
   Q_UNUSED( parent );
   beginResetModel();
@@ -600,7 +600,7 @@ bool HeadwordsListModel::clear()
   return true;
 }
 
-int HeadwordsListModel::getDictIndex( QString const & id ) const
+int HeadwordsListModel::getDictIndex( const QString & id ) const
 {
   std::string dictID( id.toUtf8().data() );
   for ( unsigned x = 0; x < dictionaries.size(); x++ ) {
@@ -612,7 +612,7 @@ int HeadwordsListModel::getDictIndex( QString const & id ) const
 }
 
 
-bool FtsHeadword::operator<( FtsHeadword const & other ) const
+bool FtsHeadword::operator<( const FtsHeadword & other ) const
 {
   QString first  = Utils::trimQuotes( headword );
   QString second = Utils::trimQuotes( other.headword );

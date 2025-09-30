@@ -254,6 +254,18 @@
       <source>&amp;Create Anki note</source>
       <translation>&amp;Skapa Anki anteckning</translation>
     </message>
+    <message>
+      <source>Error Loading</source>
+      <translation>Fel vid inläsning</translation>
+    </message>
+    <message>
+      <source>Page Load Failed</source>
+      <translation>Sidladdningen misslyckades</translation>
+    </message>
+    <message>
+      <source>Unable to load the requested page content</source>
+      <translation>Det går inte att ladda det begärda sidinnehållet</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -2474,10 +2486,6 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
       <translation>Enkel HTML (*.html *.html)</translation>
     </message>
     <message>
-      <source>Pdf (*.pdf)</source>
-      <translation>Pdf (*.pdf)</translation>
-    </message>
-    <message>
       <source>Mime Html (*.mhtml)</source>
       <translation>Mime HTML (*.mhtml)</translation>
     </message>
@@ -2600,6 +2608,10 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
     <message>
       <source>Save PDF failed</source>
       <translation>Kunde inte spara PDF</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF-dokument (*.pdf *.PDF)</translation>
     </message>
   </context>
   <context>
@@ -2877,10 +2889,6 @@ minimera fönstret till meddelandefältet istället för att avsluta programmet.
     <message>
       <source>Appearance</source>
       <translation>Utseende</translation>
-    </message>
-    <message>
-      <source>Interface Font</source>
-      <translation>Gränssnittets teckensnitt</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -3446,10 +3454,6 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <translation>Spara felsökningsmeddelanden till gd_log.txt i konfigurationsmappen</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>Gränssnittets teckenstorlek</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Gränssnittets språk</translation>
     </message>
@@ -3472,6 +3476,26 @@ från Stardict, Babylon och GLS ordböcker</translation>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>GoldenDict-ng är en ordbok programvara.</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Aktivera typsnitt för gränssnitt</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Ingen</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in seperate tab</source>
+      <translation>Öppna webbplatsordbok i separat flik</translation>
     </message>
   </context>
   <context>
@@ -3616,6 +3640,14 @@ från Stardict, Babylon och GLS ordböcker</translation>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
       <translation>Tvinga ordet som ska översättas i huvudfönstret.</translation>
+    </message>
+    <message>
+      <source>Website Url:</source>
+      <translation>Webbadurl:</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation>I Url kommer &quot;%GDWORD%&quot; att ersättas med ordet som söks.</translation>
     </message>
   </context>
   <context>
@@ -3989,27 +4021,28 @@ Fullständig lista över tillgängliga språk finns &lt;a href=&quot;https://lin
       <translation>Bekräfta borttagning</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Vill du ta bort mappen &lt;b&gt;%1&lt;/b&gt; ur listan?</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Vill du ta bort webbplatsen &lt;b&gt;%1&lt;/b&gt; ur listan?</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Vill du ta bort programmet &lt;b&gt;%1&lt;/b&gt; ur listan?</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>Den mest använda metoden av transkription av japanska, baserat på engelsk fonologi</translation>
     </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
     <message>
-      <source>None</source>
-      <translation>Ingen</translation>
+      <source>Remove selected directories from the list?</source>
+      <translation>Ta bort valda kataloger från listan?</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation>Ta bort %1 kataloger från listan?</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation>Ta bort %1 sajter från listan?</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation>Ta bort %1 servrar från listan?</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation>Ta bort %1 program från listan?</translation>
     </message>
   </context>
   <context>
@@ -4106,18 +4139,17 @@ Fullständig lista över tillgängliga språk finns &lt;a href=&quot;https://lin
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Infoga artikel som länk inuti &lt;iframe&gt; tagg</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation>Denna webbplats ordbok öppnas i en ny flik</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>Aktiverad</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>Som länk</translation>
     </message>
     <message>
       <source>Name</source>
@@ -4130,6 +4162,18 @@ Fullständig lista över tillgängliga språk finns &lt;a href=&quot;https://lin
     <message>
       <source>Icon</source>
       <translation>Ikon</translation>
+    </message>
+    <message>
+      <source>Script</source>
+      <translation>Skript</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation>Ikon filnamn. Relativt till konfigurationskatalogen.</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation>Endast tillgängligt när webbplatser öppnas i separata flikar. Kan vara en filsökväg (relativ till konfigurationskatalog eller absolut) eller direkt skriptinnehåll.</translation>
     </message>
   </context>
   <context>

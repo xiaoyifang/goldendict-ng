@@ -48,7 +48,7 @@ void Request::finish()
   }
 }
 
-void Request::setErrorString( QString const & str )
+void Request::setErrorString( const QString & str )
 {
   QMutexLocker _( &errorStringMutex );
 
@@ -92,7 +92,7 @@ vector< WordMatch > & WordSearchRequest::getAllMatches()
   return matches;
 }
 
-void WordSearchRequest::addMatch( WordMatch const & match )
+void WordSearchRequest::addMatch( const WordMatch & match )
 {
   QMutexLocker _( &dataMutex );
 
@@ -159,7 +159,7 @@ vector< char > & DataRequest::getFullData()
   return data;
 }
 
-Class::Class( string const & id_, vector< string > const & dictionaryFiles_ ):
+Class::Class( const string & id_, const vector< string > & dictionaryFiles_ ):
   id( id_ ),
   dictionaryFiles( dictionaryFiles_ ),
   indexedFtsDoc( 0 ),
@@ -174,7 +174,7 @@ void Class::deferredInit()
   //base method.
 }
 
-sptr< WordSearchRequest > Class::stemmedMatch( std::u32string const & /*str*/,
+sptr< WordSearchRequest > Class::stemmedMatch( const std::u32string & /*str*/,
                                                unsigned /*minLength*/,
                                                unsigned /*maxSuffixVariation*/,
                                                unsigned long /*maxResults*/ )
@@ -182,12 +182,12 @@ sptr< WordSearchRequest > Class::stemmedMatch( std::u32string const & /*str*/,
   return std::make_shared< WordSearchRequestInstant >();
 }
 
-sptr< WordSearchRequest > Class::findHeadwordsForSynonym( std::u32string const & )
+sptr< WordSearchRequest > Class::findHeadwordsForSynonym( const std::u32string & )
 {
   return std::make_shared< WordSearchRequestInstant >();
 }
 
-vector< std::u32string > Class::getAlternateWritings( std::u32string const & ) noexcept
+vector< std::u32string > Class::getAlternateWritings( const std::u32string & ) noexcept
 {
   return {};
 }
@@ -205,7 +205,7 @@ QString Class::getContainingFolder() const
   return {};
 }
 
-sptr< DataRequest > Class::getResource( string const & /*name*/ )
+sptr< DataRequest > Class::getResource( const string & /*name*/ )
 
 {
   return std::make_shared< DataRequestInstant >( false );
@@ -216,7 +216,7 @@ sptr< DataRequest > Class::getSearchResults( const QString &, int, bool, bool )
   return std::make_shared< DataRequestInstant >( false );
 }
 
-QString const & Class::getDescription()
+const QString & Class::getDescription()
 {
   return dictionaryDescription;
 }
@@ -226,7 +226,7 @@ QString Class::getMainFilename()
   return {};
 }
 
-QIcon const & Class::getIcon() noexcept
+const QIcon & Class::getIcon() noexcept
 {
   if ( !dictionaryIconLoaded ) {
     loadIcon();
@@ -244,7 +244,7 @@ int Class::getOptimalIconSize()
   return 64 * qGuiApp->devicePixelRatio();
 }
 
-bool Class::loadIconFromFileName( QString const & mainDictFileName )
+bool Class::loadIconFromFileName( const QString & mainDictFileName )
 {
   const QFileInfo info( mainDictFileName );
   QDir dir = info.absoluteDir();
@@ -269,7 +269,7 @@ bool Class::loadIconFromFileName( QString const & mainDictFileName )
   return false;
 }
 
-bool Class::loadIconFromFilePath( QString const & filename )
+bool Class::loadIconFromFilePath( const QString & filename )
 {
   auto iconSize = getOptimalIconSize();
   QImage img( filename );
@@ -285,7 +285,7 @@ bool Class::loadIconFromFilePath( QString const & filename )
   }
 }
 
-bool Class::loadIconFromText( const QString & iconUrl, QString const & text )
+bool Class::loadIconFromText( const QString & iconUrl, const QString & text )
 {
   //select a single char.
   auto abbrName = getAbbrName( text );
@@ -354,113 +354,144 @@ QColor Class::intToFixedColor( int index )
   return colors[ index % colors.size() ];
 }
 
-QString Class::getAbbrName( QString const & text )
+QString Class::getAbbrName( const QString & text )
 {
   return GlobalBroadcaster::instance()->getAbbrName( text );
 }
 
-void Class::isolateCSS( QString & css, QString const & wrapperSelector )
+// Forward declaration
+int findMatchingBracket( const QString & css, int startPos );
+
+void Class::isolateCSS( QString & css, const QString & wrapperSelector )
 {
+  // Return early if CSS is empty
   if ( css.isEmpty() ) {
     return;
   }
 
-  //comment syntax like:/* */
-  QRegularExpression reg1( R"(\/\*(?:.(?!\*\/))*.?\*\/)", QRegularExpression::DotMatchesEverythingOption );
-  QRegularExpression reg2( R"([ \*\>\+,;:\[\{\]])" );
-  QRegularExpression reg3( "[,;\\{]" );
+  if ( css.indexOf( "{" ) == -1 ) {
+    return;
+  }
 
-
-  int currentPos = 0;
   QString newCSS;
-  QString prefix( "#gdfrom-" );
+  int currentPos = 0;
+
+  // Create isolation prefix using dictionary ID
+  QString prefix( "#gdarticlefrom-" );
   prefix += QString::fromLatin1( getId().c_str() );
   if ( !wrapperSelector.isEmpty() ) {
     prefix += " " + wrapperSelector;
   }
 
-  // Strip comments
-  css.replace( reg1, QString() );
+  // Regular expressions for CSS parsing
+  QRegularExpression commentRegex( R"(\/\*(?:.(?!\*\/))*.?\*\/)", QRegularExpression::DotMatchesEverythingOption );
+  QRegularExpression selectorSeparatorRegex( R"([ \*\>\+,;:\[\{\]])" );
+  QRegularExpression selectorEndRegex( "[,\\{]" );
 
-  //replace the pseudo root selector with the prefix,like ":root  {"  to  "html{"
+  // Remove comments from CSS
+  css.replace( commentRegex, QString() );
+
+  // Replace pseudo root selector with html
   css.replace( QRegularExpression( R"(:root\s*{)" ), "html{" );
 
-  for ( ;; ) {
-    if ( currentPos >= css.length() ) {
-      break;
-    }
-    QChar ch = css[ currentPos ];
+  // Process CSS content
+  while ( currentPos < css.length() ) {
+    QChar ch = css.at( currentPos );
 
     if ( ch == '@' ) {
-      // @ rules
+      // Handle @ rules
+      int ruleNameEnd = css.indexOf( QRegularExpression( "[^\\w-]" ), currentPos + 1 );
+      if ( ruleNameEnd == -1 ) {
+        // If no rule name end is found, copy remaining content
+        newCSS.append( css.mid( currentPos ) );
+        break;
+      }
 
-      int n = currentPos;
-      if ( css.mid( currentPos, 7 ).compare( "@import", Qt::CaseInsensitive ) == 0
-           || css.mid( currentPos, 10 ).compare( "@font-face", Qt::CaseInsensitive ) == 0
-           || css.mid( currentPos, 10 ).compare( "@namespace", Qt::CaseInsensitive ) == 0
-           || css.mid( currentPos, 8 ).compare( "@charset", Qt::CaseInsensitive ) == 0 ) {
-        // Copy rule as is.
-        n      = css.indexOf( ';', currentPos );
-        int n2 = css.indexOf( '{', currentPos );
-        if ( n2 > 0 && n > n2 ) {
-          n = n2 - 1;
+      QString ruleName = css.mid( currentPos, ruleNameEnd - currentPos ).trimmed();
+
+      // Special handling for rules that don't need modification
+      if ( ruleName.compare( "@import", Qt::CaseInsensitive ) == 0
+           || ruleName.compare( "@charset", Qt::CaseInsensitive ) == 0 ) {
+        // Find semicolon as end marker
+        int semicolonPos = css.indexOf( ';', currentPos );
+        if ( semicolonPos != -1 ) {
+          newCSS.append( css.mid( currentPos, semicolonPos - currentPos + 1 ) );
+          currentPos = semicolonPos + 1;
+          continue;
         }
       }
-      else if ( css.mid( currentPos, 6 ).compare( "@media", Qt::CaseInsensitive ) == 0 ) {
-        // We must to parse it content to isolate it.
-        // Copy all up to '{' and continue parse inside.
-        n = css.indexOf( '{', currentPos );
-      }
-      else if ( css.mid( currentPos, 5 ).compare( "@page", Qt::CaseInsensitive ) == 0 ) {
-        // Don't copy rule. GD use own page layout.
-        n = css.indexOf( '}', currentPos );
-        if ( n < 0 ) {
-          break;
+
+      // Skip @page rules as GoldenDict uses its own page layout
+      if ( ruleName.compare( "@page", Qt::CaseInsensitive ) == 0 ) {
+        int closeBracePos = findMatchingBracket( css, currentPos );
+        if ( closeBracePos != -1 ) {
+          currentPos = closeBracePos + 1;
+          continue;
         }
-        currentPos = n + 1;
+      }
+
+      // Find block start and semicolon positions for different @ rule formats
+      int openBracePos = css.indexOf( '{', currentPos );
+      int semicolonPos = css.indexOf( ';', currentPos );
+
+      if ( openBracePos != -1 && ( semicolonPos == -1 || openBracePos < semicolonPos ) ) {
+        // @xxx { ... } format rules (supports @media, @keyframes, @font-face, etc.)
+        // Add the @rule and opening brace
+        newCSS.append( css.mid( currentPos, openBracePos - currentPos + 1 ) );
+
+        // Find matching closing brace for the @rule block
+        int closeBracePos = findMatchingBracket( css, openBracePos );
+        if ( closeBracePos != -1 ) {
+          // Process content inside the block recursively
+          QString innerCSS = css.mid( openBracePos + 1, closeBracePos - openBracePos - 1 );
+          isolateCSS( innerCSS, wrapperSelector ); // Recursive call to process inner CSS
+          newCSS.append( innerCSS );
+          newCSS.append( '}' );
+          currentPos = closeBracePos + 1;
+        }
+        else {
+          // If no matching brace found, continue processing
+          currentPos = openBracePos + 1;
+        }
+      }
+      else if ( semicolonPos != -1 ) {
+        // @xxx yyyy; format rules (supports @import, @charset, @namespace, etc.)
+        newCSS.append( css.mid( currentPos, semicolonPos - currentPos + 1 ) );
+        currentPos = semicolonPos + 1;
         continue;
       }
       else {
-        // Copy rule as is.
-        n = css.indexOf( '}', currentPos );
-      }
-
-      newCSS.append( css.mid( currentPos, n < 0 ? n : n - currentPos + 1 ) );
-
-      if ( n < 0 ) {
+        // Unrecognized @ rule format, copy remaining content as-is
+        newCSS.append( css.mid( currentPos ) );
         break;
       }
-
-      currentPos = n + 1;
-      continue;
     }
-
-    if ( ch == '{' ) {
-      // Selector declaration block.
-      // We copy it up to '}' as is.
-
-      int n = css.indexOf( '}', currentPos );
-      newCSS.append( css.mid( currentPos, n == -1 ? n : n - currentPos + 1 ) );
-      if ( n < 0 ) {
+    else if ( ch == '{' ) {
+      // Selector declaration block - copy as is up to closing brace
+      int closeBracePos = findMatchingBracket( css, currentPos );
+      if ( closeBracePos != -1 ) {
+        newCSS.append( css.mid( currentPos, closeBracePos - currentPos + 1 ) );
+        currentPos = closeBracePos + 1;
+        continue;
+      }
+      else {
+        newCSS.append( css.mid( currentPos ) );
         break;
       }
-      currentPos = n + 1;
-      continue;
     }
-
-    if ( ch.isLetter() || ch == '.' || ch == '#' || ch == '*' || ch == '\\' || ch == ':' ) {
+    else if ( ch.isLetter() || ch == '.' || ch == '#' || ch == '*' || ch == '\\' || ch == ':' || ch == '[' ) {
       if ( ch.isLetter() || ch == '*' ) {
         // Check for namespace prefix
         QChar chr;
         for ( int i = currentPos; i < css.length(); i++ ) {
-          chr = css[ i ];
+          chr = css.at( i );
           if ( chr.isLetterOrNumber() || chr.isMark() || chr == '_' || chr == '-'
                || ( chr == '*' && i == currentPos ) ) {
             continue;
           }
 
           if ( chr == '|' ) {
-            // Namespace prefix found, copy it as is
+            // Found namespace prefix, copy as is
             newCSS.append( css.mid( currentPos, i - currentPos + 1 ) );
             currentPos = i + 1;
           }
@@ -471,42 +502,112 @@ void Class::isolateCSS( QString & css, QString const & wrapperSelector )
         }
       }
 
-      // This is some selector.
-      // We must to add the isolate prefix to it.
+      // Handle attribute selectors specifically [attr=value]
+      if ( ch == '[' ) {
+        // Find the matching closing bracket for the attribute selector
+        int bracketDepth      = 1;
+        int closingBracketPos = -1;
+        for ( int i = currentPos + 1; i < css.length(); i++ ) {
+          QChar currentChar = css.at( i );
+          // Skip escaped brackets and other characters
+          if ( currentChar == '\\' && i + 1 < css.length() ) {
+            i++; // Skip the next character as it's escaped
+            continue;
+          }
+          if ( currentChar == '[' ) {
+            bracketDepth++;
+          }
+          else if ( currentChar == ']' ) {
+            bracketDepth--;
+            if ( bracketDepth == 0 ) {
+              closingBracketPos = i;
+              break;
+            }
+          }
+        }
 
-      int n     = css.indexOf( reg2, currentPos + 1 );
-      QString s = css.mid( currentPos, n < 0 ? n : n - currentPos );
-      if ( n < 0 ) {
-        newCSS.append( s );
+        if ( closingBracketPos != -1 ) {
+          // Add isolation prefix for attribute selectors
+          newCSS.append( prefix + " " );
+          newCSS.append( css.mid( currentPos, closingBracketPos - currentPos + 1 ) );
+          currentPos = closingBracketPos + 1;
+          continue;
+        }
+      }
+
+      // Handle double colon pseudo-elements like ::before, ::after, and ::highlight(name)
+      // This is a selector - add isolation prefix to ensure CSS only affects content from this dictionary
+      int selectorEndPos = css.indexOf( selectorSeparatorRegex, currentPos + 1 );
+      // Fix for handling complex selectors with combinators like >, +, ~
+      if ( selectorEndPos < 0 ) {
+        selectorEndPos = css.indexOf( selectorEndRegex, currentPos );
+      }
+      QString selectorPart = css.mid( currentPos, selectorEndPos < 0 ? selectorEndPos : selectorEndPos - currentPos );
+
+      if ( selectorEndPos < 0 ) {
+        newCSS.append( prefix + " " + selectorPart );
         break;
       }
-      QString trimmed = s.trimmed();
-      if ( trimmed.compare( "body", Qt::CaseInsensitive ) == 0
-           || trimmed.compare( "html", Qt::CaseInsensitive ) == 0 ) {
-        newCSS.append( s + " " + prefix + " " );
-        currentPos += 4;
+
+      QString trimmedSelector = selectorPart.trimmed();
+      if ( trimmedSelector.compare( "body", Qt::CaseInsensitive ) == 0
+           || trimmedSelector.compare( "html", Qt::CaseInsensitive ) == 0 ) {
+        // Special handling for body and html selectors to maintain CSS specificity
+        newCSS.append( selectorPart + " " + prefix + " " );
+        currentPos += trimmedSelector.length();
       }
       else {
+        // Add isolation prefix to normal selectors to scope them to this dictionary's content
         newCSS.append( prefix + " " );
       }
 
-      n = css.indexOf( reg3, currentPos );
-      s = css.mid( currentPos, n < 0 ? n : n - currentPos );
-      newCSS.append( s );
-      if ( n < 0 ) {
+      int ruleStartPos      = css.indexOf( selectorEndRegex, currentPos );
+      QString remainingPart = css.mid( currentPos, ruleStartPos < 0 ? ruleStartPos : ruleStartPos - currentPos );
+      newCSS.append( remainingPart );
+
+      if ( ruleStartPos < 0 ) {
         break;
       }
-      currentPos = n;
+
+      currentPos = ruleStartPos;
       continue;
     }
-
-    newCSS.append( ch );
-    ++currentPos;
+    else {
+      newCSS.append( ch );
+      currentPos++;
+    }
   }
+
   css = newCSS;
 }
 
-string makeDictionaryId( vector< string > const & dictionaryFiles ) noexcept
+// Helper function to find matching closing bracket considering nesting and escaped characters
+int findMatchingBracket( const QString & css, int startPos )
+{
+  int depth = 1;
+  for ( int i = startPos + 1; i < css.length(); i++ ) {
+    QChar ch = css.at( i );
+
+    // Skip escaped characters
+    if ( ch == '\\' && i + 1 < css.length() ) {
+      i++;
+      continue;
+    }
+
+    if ( ch == '{' ) {
+      depth++;
+    }
+    else if ( ch == '}' ) {
+      depth--;
+      if ( depth == 0 ) {
+        return i;
+      }
+    }
+  }
+  return -1; // No matching bracket found
+}
+
+string makeDictionaryId( const vector< string > & dictionaryFiles ) noexcept
 {
   std::vector< string > sortedList;
 
@@ -549,7 +650,7 @@ string makeDictionaryId( vector< string > const & dictionaryFiles ) noexcept
 // the dictionary backends, there's no platform-independent way to get hold
 // of a timestamp of the file, so we use here Qt anyway. It is supposed to
 // be fixed in the future when it's needed.
-bool needToRebuildIndex( vector< string > const & dictionaryFiles, string const & indexFile ) noexcept
+bool needToRebuildIndex( const vector< string > & dictionaryFiles, const string & indexFile ) noexcept
 {
   qint64 lastModified = 0;
 
@@ -601,7 +702,7 @@ QString generateRandomDictionaryId()
   return QCryptographicHash::hash( QUuid::createUuid().toString().toUtf8(), QCryptographicHash::Md5 ).toHex();
 }
 
-QMap< std::string, sptr< Dictionary::Class > > dictToMap( std::vector< sptr< Dictionary::Class > > const & dicts )
+QMap< std::string, sptr< Dictionary::Class > > dictToMap( const std::vector< sptr< Dictionary::Class > > & dicts )
 {
   QMap< std::string, sptr< Dictionary::Class > > dictMap;
   for ( const auto & dict : dicts ) {

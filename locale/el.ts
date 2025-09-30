@@ -254,6 +254,18 @@
       <source>&amp;Create Anki note</source>
       <translation>&amp;Δημιουργία σημείωσης Ανκί</translation>
     </message>
+    <message>
+      <source>Error Loading</source>
+      <translation>Σφάλμα Φόρτωσης</translation>
+    </message>
+    <message>
+      <source>Page Load Failed</source>
+      <translation>Αποτυχία Φόρτωσης Σελίδας</translation>
+    </message>
+    <message>
+      <source>Unable to load the requested page content</source>
+      <translation>Αδυναμία φόρτωσης του περιεχομένου της σελίδας που ζητήθηκε</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -2476,10 +2488,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Μονό Html (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Pdf (*.pdf)</source>
-      <translation>Pdf (*.pdf)</translation>
-    </message>
-    <message>
       <source>Mime Html (*.mhtml)</source>
       <translation>Mime Html (*.mhtml)</translation>
     </message>
@@ -2602,6 +2610,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Save PDF failed</source>
       <translation>Αποτυχία αποθήκευσης PDF</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF έγγραφο (*.pdf *.PDF)</translation>
     </message>
   </context>
   <context>
@@ -2879,10 +2891,6 @@ the application.</source>
     <message>
       <source>Appearance</source>
       <translation>Εμφάνιση</translation>
-    </message>
-    <message>
-      <source>Interface Font</source>
-      <translation>Γραμματοσειρά Διεπαφής</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -3446,10 +3454,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Αποθήκευση μηνυμάτων αποσφαλμάτωσης στο gd_log.txt στο φάκελο ρυθμίσεων</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>Μέγεθος Γραμματοσειράς Διεπαφής</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Γλώσσα διεπαφής</translation>
     </message>
@@ -3472,6 +3476,26 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>Το GoldenDict-ng είναι ένα λεξικό λογισμικό.</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Ενεργοποίηση Γραμματοσειράς Διεπαφής</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Κανένα</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in seperate tab</source>
+      <translation>Άνοιγμα λεξικού ιστοσελίδας σε διαχωριστική καρτέλα</translation>
     </message>
   </context>
   <context>
@@ -3616,6 +3640,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
       <translation>Εξαναγκασμός μετάφρασης της λέξης στο κύριο παράθυρο.</translation>
+    </message>
+    <message>
+      <source>Website Url:</source>
+      <translation>Url Ιστοσελίδας:</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation>Στο Url, &quot;%GDWORD%&quot; θα αντικατασταθεί με τη λέξη που θα αναζητηθεί.</translation>
     </message>
   </context>
   <context>
@@ -3988,27 +4020,28 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>Επιβεβαίωση αφαίρεσης</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Να αφαιρεθεί ο φάκελος &lt;b&gt;%1&lt;/b&gt; από τη λίστα;</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Να αφαιρεθεί η ιστοσελίδα &lt;b&gt;%1&lt;/b&gt; από τη λίστα;</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Να αφαιρεθεί το πρόγραμμα &lt;b&gt;%1&lt;/b&gt; από τη λίστα;</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>Η πιο ευρέως χρησιμοποιούμενη μέθοδος μεταγραφής ιαπωνικών, με βάση την αγγλική φωνολογία</translation>
     </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
     <message>
-      <source>None</source>
-      <translation>Κανένα</translation>
+      <source>Remove selected directories from the list?</source>
+      <translation>Αφαίρεση επιλεγμένων καταλόγων από τη λίστα?</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation>Κατάργηση καταλόγων %1 από τη λίστα?</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation>Αφαιρέστε %1 sites από τη λίστα?</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation>Κατάργηση εξυπηρετητών %1 από τη λίστα?</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation>Κατάργηση προγραμμάτων %1 από τη λίστα?</translation>
     </message>
   </context>
   <context>
@@ -4105,18 +4138,17 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Εισαγωγή άρθρου ως σύνδεσμος μέσα στην ετικέτα &lt;iframe&gt;</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation>Αυτό το λεξικό ιστοσελίδας ανοίγει σε νέα καρτέλα</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>Ενεργή</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>Ως σύνδεσμος</translation>
     </message>
     <message>
       <source>Name</source>
@@ -4129,6 +4161,18 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>Icon</source>
       <translation>Εικονίδιο</translation>
+    </message>
+    <message>
+      <source>Script</source>
+      <translation>Σενάριο</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation>Όνομα αρχείου εικονιδίου. Σε σχέση με τον κατάλογο ρυθμίσεων.</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation>Διαθέσιμο μόνο όταν ανοίγετε ιστοσελίδες σε ξεχωριστές καρτέλες. Μπορεί να είναι μια διαδρομή αρχείου (σε σχέση με τον κατάλογο ρύθμισης ή απόλυτο) ή άμεση δέσμη ενεργειών περιεχομένου.</translation>
     </message>
   </context>
   <context>

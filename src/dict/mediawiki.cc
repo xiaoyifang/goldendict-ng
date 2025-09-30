@@ -31,11 +31,11 @@ class MediaWikiDictionary: public Dictionary::Class
 
 public:
 
-  MediaWikiDictionary( string const & id,
-                       string const & name_,
-                       QString const & url_,
-                       QString const & icon_,
-                       QString const & lang_,
+  MediaWikiDictionary( const string & id,
+                       const string & name_,
+                       const QString & url_,
+                       const QString & icon_,
+                       const QString & lang_,
                        QNetworkAccessManager & netMgr_ ):
     Dictionary::Class( id, vector< string >() ),
     name( name_ ),
@@ -66,10 +66,10 @@ public:
     return 0;
   }
 
-  sptr< WordSearchRequest > prefixMatch( std::u32string const &, unsigned long maxResults ) override;
+  sptr< WordSearchRequest > prefixMatch( const std::u32string &, unsigned long maxResults ) override;
 
   sptr< DataRequest >
-  getArticle( std::u32string const &, vector< std::u32string > const & alts, std::u32string const &, bool ) override;
+  getArticle( const std::u32string &, const vector< std::u32string > & alts, const std::u32string &, bool ) override;
 
   quint32 getLangFrom() const override
   {
@@ -134,9 +134,9 @@ class MediaWikiWordSearchRequest: public MediaWikiWordSearchRequestSlots
 
 public:
 
-  MediaWikiWordSearchRequest( std::u32string const &,
-                              QString const & url,
-                              QString const & lang,
+  MediaWikiWordSearchRequest( const std::u32string &,
+                              const QString & url,
+                              const QString & lang,
                               QNetworkAccessManager & mgr );
 
   ~MediaWikiWordSearchRequest();
@@ -148,9 +148,9 @@ private:
   void downloadFinished() override;
 };
 
-MediaWikiWordSearchRequest::MediaWikiWordSearchRequest( std::u32string const & str,
-                                                        QString const & url,
-                                                        QString const & lang,
+MediaWikiWordSearchRequest::MediaWikiWordSearchRequest( const std::u32string & str,
+                                                        const QString & url,
+                                                        const QString & lang,
                                                         QNetworkAccessManager & mgr ):
   isCancelling( false )
 {
@@ -246,15 +246,15 @@ public:
   ///
   /// This function searches for an indicator of the empty ToC in an article HTML. If the indicator is present,
   /// generates ToC HTML from the sections element and replaces the indicator with the generated ToC.
-  static void generateTableOfContentsIfEmpty( QDomNode const & parseNode, QString & articleString )
+  static void generateTableOfContentsIfEmpty( const QDomNode & parseNode, QString & articleString )
   {
-    QString const emptyTocIndicator = "<meta property=\"mw:PageProp/toc\" />";
-    int const emptyTocPos           = articleString.indexOf( emptyTocIndicator );
+    const QString emptyTocIndicator = "<meta property=\"mw:PageProp/toc\" />";
+    const int emptyTocPos           = articleString.indexOf( emptyTocIndicator );
     if ( emptyTocPos == -1 ) {
       return; // The ToC must be absent or nonempty => nothing to do.
     }
 
-    QDomElement const sectionsElement = parseNode.firstChildElement( "sections" );
+    const QDomElement sectionsElement = parseNode.firstChildElement( "sections" );
     if ( sectionsElement.isNull() ) {
       qWarning( "MediaWiki: empty table of contents and missing sections element." );
       return;
@@ -271,16 +271,16 @@ private:
     previousLevel( 0 )
   {
   }
-  void generateTableOfContents( QDomElement const & sectionsElement );
+  void generateTableOfContents( const QDomElement & sectionsElement );
 
-  bool addListLevel( QString const & levelString );
+  bool addListLevel( const QString & levelString );
   void closeListTags( int currentLevel );
 
   QString tableOfContents;
   int previousLevel;
 };
 
-void MediaWikiSectionsParser::generateTableOfContents( QDomElement const & sectionsElement )
+void MediaWikiSectionsParser::generateTableOfContents( const QDomElement & sectionsElement )
 {
   // A real example of a typical child of the <sections> element:
   // <s linkAnchor="Marginal_densities" toclevel="2" fromtitle="Probability_density_function" level="3"
@@ -289,7 +289,7 @@ void MediaWikiSectionsParser::generateTableOfContents( QDomElement const & secti
   // Use Wiktionary's ToC style, which had also been Wikipedia's ToC style until the UI redesign.
   // Replace double quotes with single quotes to avoid escaping " within string literals.
 
-  QString const elTagName = "s";
+  const QString elTagName = "s";
   QDomElement el          = sectionsElement.firstChildElement( elTagName );
   if ( el.isNull() ) {
     return;
@@ -335,10 +335,10 @@ void MediaWikiSectionsParser::generateTableOfContents( QDomElement const & secti
   tableOfContents += "</ul>\n</div>";
 }
 
-bool MediaWikiSectionsParser::addListLevel( QString const & levelString )
+bool MediaWikiSectionsParser::addListLevel( const QString & levelString )
 {
   bool convertedToInt;
-  int const level = levelString.toInt( &convertedToInt );
+  const int level = levelString.toInt( &convertedToInt );
 
   if ( !convertedToInt ) {
     qWarning( "MediaWiki: sections level is not an integer: %s", levelString.toUtf8().constData() );
@@ -394,10 +394,10 @@ class MediaWikiArticleRequest: public MediaWikiDataRequestSlots
 
 public:
 
-  MediaWikiArticleRequest( std::u32string const & word,
-                           vector< std::u32string > const & alts,
-                           QString const & url,
-                           QString const & lang,
+  MediaWikiArticleRequest( const std::u32string & word,
+                           const vector< std::u32string > & alts,
+                           const QString & url,
+                           const QString & lang,
                            QNetworkAccessManager & mgr,
                            Class * dictPtr_ );
 
@@ -405,7 +405,7 @@ public:
 
 private:
 
-  void addQuery( QNetworkAccessManager & mgr, std::u32string const & word );
+  void addQuery( QNetworkAccessManager & mgr, const std::u32string & word );
 
   void requestFinished( QNetworkReply * ) override;
 
@@ -420,10 +420,10 @@ void MediaWikiArticleRequest::cancel()
   finish();
 }
 
-MediaWikiArticleRequest::MediaWikiArticleRequest( std::u32string const & str,
-                                                  vector< std::u32string > const & alts,
-                                                  QString const & url_,
-                                                  QString const & lang_,
+MediaWikiArticleRequest::MediaWikiArticleRequest( const std::u32string & str,
+                                                  const vector< std::u32string > & alts,
+                                                  const QString & url_,
+                                                  const QString & lang_,
                                                   QNetworkAccessManager & mgr,
                                                   Class * dictPtr_ ):
   url( url_ ),
@@ -443,7 +443,7 @@ MediaWikiArticleRequest::MediaWikiArticleRequest( std::u32string const & str,
   }
 }
 
-void MediaWikiArticleRequest::addQuery( QNetworkAccessManager & mgr, std::u32string const & str )
+void MediaWikiArticleRequest::addQuery( QNetworkAccessManager & mgr, const std::u32string & str )
 {
   qDebug( "MediaWiki: requesting article %s", QString::fromStdU32String( str ).toUtf8().data() );
 
@@ -694,7 +694,7 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
   }
 }
 
-sptr< WordSearchRequest > MediaWikiDictionary::prefixMatch( std::u32string const & word, unsigned long maxResults )
+sptr< WordSearchRequest > MediaWikiDictionary::prefixMatch( const std::u32string & word, unsigned long maxResults )
 
 {
   (void)maxResults;
@@ -708,9 +708,9 @@ sptr< WordSearchRequest > MediaWikiDictionary::prefixMatch( std::u32string const
   }
 }
 
-sptr< DataRequest > MediaWikiDictionary::getArticle( std::u32string const & word,
-                                                     vector< std::u32string > const & alts,
-                                                     std::u32string const &,
+sptr< DataRequest > MediaWikiDictionary::getArticle( const std::u32string & word,
+                                                     const vector< std::u32string > & alts,
+                                                     const std::u32string &,
                                                      bool )
 
 {
@@ -727,7 +727,7 @@ sptr< DataRequest > MediaWikiDictionary::getArticle( std::u32string const & word
 } // namespace
 
 vector< sptr< Dictionary::Class > >
-makeDictionaries( Dictionary::Initializing &, Config::MediaWikis const & wikis, QNetworkAccessManager & mgr )
+makeDictionaries( Dictionary::Initializing &, const Config::MediaWikis & wikis, QNetworkAccessManager & mgr )
 
 {
   vector< sptr< Dictionary::Class > > result;

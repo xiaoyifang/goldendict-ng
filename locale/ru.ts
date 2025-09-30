@@ -254,6 +254,18 @@
       <source>&amp;Create Anki note</source>
       <translation>&amp;Создать заметку Anki</translation>
     </message>
+    <message>
+      <source>Error Loading</source>
+      <translation>Ошибка загрузки</translation>
+    </message>
+    <message>
+      <source>Page Load Failed</source>
+      <translation>Ошибка загрузки страницы</translation>
+    </message>
+    <message>
+      <source>Unable to load the requested page content</source>
+      <translation>Не удается загрузить запрошенное содержимое страницы</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -2477,10 +2489,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Один HTML (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Pdf (*.pdf)</source>
-      <translation>PDF-файл (*.pdf)</translation>
-    </message>
-    <message>
       <source>Mime Html (*.mhtml)</source>
       <translation>Mime-HTML (*.mhtml)</translation>
     </message>
@@ -2603,6 +2611,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Save PDF failed</source>
       <translation>Сохранить PDF не удалось</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF документ (*.pdf *.PDF)</translation>
     </message>
   </context>
   <context>
@@ -2883,10 +2895,6 @@ the application.</source>
     <message>
       <source>Appearance</source>
       <translation>Появление</translation>
-    </message>
-    <message>
-      <source>Interface Font</source>
-      <translation>Шрифт интерфейса</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -3451,10 +3459,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Сохранить отладочные сообщения в gd_log.txt в папке конфигурации</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>Размер шрифта интерфейса</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Язык интерфейса</translation>
     </message>
@@ -3477,6 +3481,26 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>GoldenDict-ng это словарь программного обеспечения.</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Включить шрифт интерфейса</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Нет</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in seperate tab</source>
+      <translation>Открыть словарь сайта в отдельной вкладке</translation>
     </message>
   </context>
   <context>
@@ -3621,6 +3645,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
       <translation>Принудительно переводить слово в главном окне.</translation>
+    </message>
+    <message>
+      <source>Website Url:</source>
+      <translation>Ссылка на сайт:</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation>В Url, &quot;%GDWORD%&quot; будет заменена на поисковое слово.</translation>
     </message>
   </context>
   <context>
@@ -3997,27 +4029,28 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>Подтверждение удаления</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Удалить путь &lt;b&gt;%1&lt;/b&gt; из списка?</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Удалить веб-сайт &lt;b&gt;%1&lt;/b&gt; из списка?</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>Удалить программу &lt;b&gt;%1&lt;/b&gt; из списка?</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>Наиболее распространенный метод транскрипции японского языка на основе английского языка</translation>
     </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
     <message>
-      <source>None</source>
-      <translation>Нет</translation>
+      <source>Remove selected directories from the list?</source>
+      <translation>Удалить выбранные папки из списка?</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation>Удалить каталоги %1 из списка?</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation>Удалить сайты %1 из списка?</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation>Удалить %1 серверов из списка?</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation>Удалить программы %1 из списка?</translation>
     </message>
   </context>
   <context>
@@ -4114,18 +4147,17 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Вставлять статью как ссылку в теге &lt;iframe&gt;</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation>Этот словарь сайта открыт в новой вкладке</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>Включено</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>Как ссылку</translation>
     </message>
     <message>
       <source>Name</source>
@@ -4138,6 +4170,18 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>Icon</source>
       <translation>Значок</translation>
+    </message>
+    <message>
+      <source>Script</source>
+      <translation>Скрипт</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation>Имя файла иконок. Относительно каталога конфигурации.</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation>Доступно только при открытии сайтов в отдельных вкладках. Может быть путь к файлу (относительно конфигурационного каталога или абсолютного) или прямым содержанием скрипта.</translation>
     </message>
   </context>
   <context>

@@ -254,6 +254,18 @@
       <source>&amp;Create Anki note</source>
       <translation>製作anki note</translation>
     </message>
+    <message>
+      <source>Error Loading</source>
+      <translation>載入錯誤</translation>
+    </message>
+    <message>
+      <source>Page Load Failed</source>
+      <translation>頁面載入失敗</translation>
+    </message>
+    <message>
+      <source>Unable to load the requested page content</source>
+      <translation>無法加載所請求的頁面內容</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -2474,10 +2486,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>單一 Html (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Pdf (*.pdf)</source>
-      <translation>pdf (*.pdf)</translation>
-    </message>
-    <message>
       <source>Mime Html (*.mhtml)</source>
       <translation>Mime Html (*.mhtml)</translation>
     </message>
@@ -2600,6 +2608,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Save PDF failed</source>
       <translation>儲存 PDF 失敗</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF 文件 (*.pdf *.PDF)</translation>
     </message>
   </context>
   <context>
@@ -2872,10 +2884,6 @@ the application.</source>
     <message>
       <source>Appearance</source>
       <translation>界面外觀</translation>
-    </message>
-    <message>
-      <source>Interface Font</source>
-      <translation>介面用字型</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -3434,10 +3442,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>將調試消息保存到配置文件夾中的 gd_log.txt</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>介面字型大小</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>介面語言</translation>
     </message>
@@ -3460,6 +3464,26 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>GoldenDict-ng 是一款字典軟體。</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>啟用介面字型</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>字體</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>字體大小</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>無</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in seperate tab</source>
+      <translation>在另開的標籤頁中打開網站字典</translation>
     </message>
   </context>
   <context>
@@ -3604,6 +3628,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
       <translation>強制在主視窗中翻譯該單字。</translation>
+    </message>
+    <message>
+      <source>Website Url:</source>
+      <translation>網站網址：</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation>在網址中，"%GDWORD%" 將被替換為正在搜尋的單詞。</translation>
     </message>
   </context>
   <context>
@@ -3975,27 +4007,28 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>確認移除</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>確定要將 &lt;b&gt;%1&lt;/b&gt; 資料夾從清單中移除嗎？</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>確定要將 &lt;b&gt;%1&lt;/b&gt; 網站從清單中移除嗎？</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>將程式 &lt;b&gt;%1&lt;/b&gt; 從清單移除？</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>以英文語音學為基礎所建立的最常用日文轉寫方案</translation>
     </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
     <message>
-      <source>None</source>
-      <translation>無</translation>
+      <source>Remove selected directories from the list?</source>
+      <translation>是否要從列表中移除所選目錄？</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation>是否從列表中移除 %1 個目錄？</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation>是否從清單中移除 %1 個網站？</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation>是否從列表中移除 %1 台伺服器？</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation>是否從清單中移除 %1 程式？</translation>
     </message>
   </context>
   <context>
@@ -4092,18 +4125,17 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>在框架標籤內顯示條目(優先模式)</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation>這個網站字典會在新分頁中開啟</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>啟用</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>連結</translation>
     </message>
     <message>
       <source>Name</source>
@@ -4116,6 +4148,18 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>Icon</source>
       <translation>圖示</translation>
+    </message>
+    <message>
+      <source>Script</source>
+      <translation>腳本</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation>圖示檔案名稱。相對於配置目錄。</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation>僅在以分頁方式打開網站時可用。可以是檔案路徑（相對於配置目錄或絕對路徑）或直接的腳本內容。</translation>
     </message>
   </context>
   <context>

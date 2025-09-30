@@ -25,29 +25,29 @@ enum {
 
 /// Applies the folding algorithm to each character in the given string,
 /// making another one as a result.
-std::u32string apply( std::u32string const &, bool preserveWildcards = false );
+std::u32string apply( const std::u32string &, bool preserveWildcards = false );
 
 /// Applies only simple case folding algorithm. Since many dictionaries have
 /// different case style, we interpret words differing only by case as synonyms.
-std::u32string applySimpleCaseOnly( std::u32string const & );
-std::u32string applySimpleCaseOnly( QString const & in );
-std::u32string applySimpleCaseOnly( std::string const & in );
+std::u32string applySimpleCaseOnly( const std::u32string & );
+std::u32string applySimpleCaseOnly( const QString & in );
+std::u32string applySimpleCaseOnly( const std::string & in );
 
 /// Applies only full case folding algorithm. This includes simple case, but also
 /// decomposing ligatures and complex letters.
-std::u32string applyFullCaseOnly( std::u32string const & );
+std::u32string applyFullCaseOnly( const std::u32string & );
 
 /// Applies only diacritics folding algorithm.
-std::u32string applyDiacriticsOnly( std::u32string const & );
+std::u32string applyDiacriticsOnly( const std::u32string & );
 
 /// Applies only punctuation folding algorithm.
-std::u32string applyPunctOnly( std::u32string const & );
-QString applyPunctOnly( QString const & in );
+std::u32string applyPunctOnly( const std::u32string & );
+QString applyPunctOnly( const QString & in );
 /// Applies only whitespace folding algorithm.
-std::u32string applyWhitespaceOnly( std::u32string const & );
+std::u32string applyWhitespaceOnly( const std::u32string & );
 
 /// Applies only whitespace&punctuation folding algorithm.
-std::u32string applyWhitespaceAndPunctOnly( std::u32string const & );
+std::u32string applyWhitespaceAndPunctOnly( const std::u32string & );
 
 /// Returns true if the given character is any form of whitespace, false
 /// otherwise. Whitespace corresponds to Zl/Zp/Zs Unicode classes, and also
@@ -61,13 +61,13 @@ bool isPunct( char32_t ch );
 
 /// Removes any whitespace or punctuation from the beginning and the end of
 /// the word.
-std::u32string trimWhitespaceOrPunct( std::u32string const & );
-QString trimWhitespaceOrPunct( QString const & in );
+std::u32string trimWhitespaceOrPunct( const std::u32string & );
+QString trimWhitespaceOrPunct( const QString & in );
 
 /// Removes any whitespace from the beginning and the end of
 /// the word.
-std::u32string trimWhitespace( std::u32string const & );
-QString trimWhitespace( QString const & in );
+std::u32string trimWhitespace( const std::u32string & );
+QString trimWhitespace( const QString & in );
 
 /// Same as apply( wstring ), but without any heap operations, therefore
 /// preferable when there're many strings to process. Returns -1 if the
@@ -78,10 +78,10 @@ QString trimWhitespace( QString const & in );
 //ssize_t apply( wchar const * in, wchar * out, size_t outSize );
 
 /// Unescape all wildcard symbols (for exast search)
-QString unescapeWildcardSymbols( QString const & );
+QString unescapeWildcardSymbols( const QString & );
 
 /// Escape all wildcard symbols (for place word to input line)
-QString escapeWildcardSymbols( QString const & );
+QString escapeWildcardSymbols( const QString & );
 
 /// Tests if the given char is one of the Unicode combining marks.
 bool isCombiningMark( char32_t ch );

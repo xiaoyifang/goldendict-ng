@@ -254,6 +254,18 @@
       <source>&amp;Create Anki note</source>
       <translation>&amp; إنشاء ملاحظة Anki</translation>
     </message>
+    <message>
+      <source>Error Loading</source>
+      <translation>خطأ في التحميل</translation>
+    </message>
+    <message>
+      <source>Page Load Failed</source>
+      <translation>فشل تحميل الصفحة</translation>
+    </message>
+    <message>
+      <source>Unable to load the requested page content</source>
+      <translation>غير قادر على تحميل محتوى الصفحة المطلوبة</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -2473,10 +2485,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Single Html (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Pdf (*.pdf)</source>
-      <translation>Pdf (*.pdf)</translation>
-    </message>
-    <message>
       <source>Mime Html (*.mhtml)</source>
       <translation>Mime Html (*.mhtml)</translation>
     </message>
@@ -2599,6 +2607,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Save PDF failed</source>
       <translation>Save PDF failed</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>وثيقة PDF (*.pdf *.PDF)</translation>
     </message>
   </context>
   <context>
@@ -2877,10 +2889,6 @@ the application.</source>
     <message>
       <source>Appearance</source>
       <translation>مظهر</translation>
-    </message>
-    <message>
-      <source>Interface Font</source>
-      <translation>واجهة الخط</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -3442,10 +3450,6 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
     <message>
-      <source>Interface Font Size</source>
-      <translation>Interface Font Size</translation>
-    </message>
-    <message>
       <source>Interface language</source>
       <translation>Interface language</translation>
     </message>
@@ -3468,6 +3472,26 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>GoldenDict-ng is a dictionary software.</source>
       <translation>GoldenDict-ng is a dictionary software.</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>تمكين خط الواجهة</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>لا شيء</translation>
+    </message>
+    <message>
+      <source>Open website dictionary in seperate tab</source>
+      <translation>فتح قاموس الموقع في علامة تبويب منفصلة</translation>
     </message>
   </context>
   <context>
@@ -3612,6 +3636,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Force the word to be translated in the mainwindow.</source>
       <translation>Force the word to be translated in the mainwindow.</translation>
+    </message>
+    <message>
+      <source>Website Url:</source>
+      <translation>عنوان الموقع:</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation>في الرابط، سيتم استبدال &quot;%GDWORD%&quot; بالكلمة التي يتم بحثها.</translation>
     </message>
   </context>
   <context>
@@ -3986,27 +4018,28 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
       <translation>تأكيد الإزالة</translation>
     </message>
     <message>
-      <source>Remove directory &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>أأزيل القاموس &lt;b&gt;%1&lt;/b&gt; من القائمة؟</translation>
-    </message>
-    <message>
-      <source>Remove site &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>أأزيل الموقع &lt;b&gt;%1&lt;/b&gt; من القائمة؟</translation>
-    </message>
-    <message>
-      <source>Remove program &lt;b&gt;%1&lt;/b&gt; from the list?</source>
-      <translation>أأزيل البرنامج &lt;b&gt;%1&lt;/b&gt; من القائمة؟</translation>
-    </message>
-    <message>
       <source>The most widely used method of transcription of Japanese, based on English phonology</source>
       <translation>The most widely used method of transcription of Japanese, based on English phonology</translation>
     </message>
-  </context>
-  <context>
-    <name>StylesComboBox</name>
     <message>
-      <source>None</source>
-      <translation>لا شيء</translation>
+      <source>Remove selected directories from the list?</source>
+      <translation>إزالة الدلائل المحددة من القائمة؟</translation>
+    </message>
+    <message>
+      <source>Remove %1 directories from the list?</source>
+      <translation>إزالة أدلة %1 من القائمة؟</translation>
+    </message>
+    <message>
+      <source>Remove %1 sites from the list?</source>
+      <translation>إزالة مواقع %1 من القائمة؟</translation>
+    </message>
+    <message>
+      <source>Remove %1 servers from the list?</source>
+      <translation>إزالة خوادم %1 من القائمة؟</translation>
+    </message>
+    <message>
+      <source>Remove %1 programs from the list?</source>
+      <translation>إزالة برامج %1 من القائمة؟</translation>
     </message>
   </context>
   <context>
@@ -4103,18 +4136,17 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>إدراج المقالة كارتباط داخل علامة &lt;iframe&gt;</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation>تم فتح قاموس الموقع هذا في علامة تبويب جديدة</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>ممكن</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>كوصلة</translation>
     </message>
     <message>
       <source>Name</source>
@@ -4127,6 +4159,18 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>Icon</source>
       <translation>أيقونة</translation>
+    </message>
+    <message>
+      <source>Script</source>
+      <translation>النص</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation>اسم ملف الأيقونة. نسبة إلى دليل الإعداد.</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation>متاح فقط عند فتح المواقع في علامات تبويب منفصلة. يمكن أن يكون مسار الملف (نسبة إلى مجلد التكوين أو مطلق) أو محتوى البرنامج النصي المباشر.</translation>
     </message>
   </context>
   <context>

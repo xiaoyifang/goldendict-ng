@@ -11,6 +11,7 @@
 #include <QItemEditorFactory>
 
 #include "texttospeechsource.hh"
+#include "globalbroadcaster.hh"
 
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
 // Forward declaration
@@ -24,23 +25,25 @@ class MediaWikisModel: public QAbstractTableModel
 
 public:
 
-  MediaWikisModel( QWidget * parent, Config::MediaWikis const & );
+  MediaWikisModel( QWidget * parent, const Config::MediaWikis & );
 
   void removeWiki( int index );
   void addNewWiki();
 
+  void remove( const QModelIndexList & );
+
   /// Returns the wikis the model currently has listed
-  Config::MediaWikis const & getCurrentWikis() const
+  const Config::MediaWikis & getCurrentWikis() const
   {
     return mediawikis;
   }
 
-  Qt::ItemFlags flags( QModelIndex const & index ) const override;
-  int rowCount( QModelIndex const & parent ) const override;
-  int columnCount( QModelIndex const & parent ) const override;
+  Qt::ItemFlags flags( const QModelIndex & index ) const override;
+  int rowCount( const QModelIndex & parent ) const override;
+  int columnCount( const QModelIndex & parent ) const override;
   QVariant headerData( int section, Qt::Orientation orientation, int role ) const override;
-  QVariant data( QModelIndex const & index, int role ) const override;
-  bool setData( QModelIndex const & index, const QVariant & value, int role ) override;
+  QVariant data( const QModelIndex & index, int role ) const override;
+  bool setData( const QModelIndex & index, const QVariant & value, int role ) override;
 
 private:
 
@@ -54,27 +57,32 @@ class WebSitesModel: public QAbstractTableModel
 
 public:
 
-  WebSitesModel( QWidget * parent, Config::WebSites const & );
+  WebSitesModel( QWidget * parent, const Config::WebSites & );
 
   void removeSite( int index );
   void addNewSite();
 
+  void remove( const QModelIndexList & );
+
   /// Returns the sites the model currently has listed
-  Config::WebSites const & getCurrentWebSites() const
+  const Config::WebSites & getCurrentWebSites() const
   {
     return webSites;
   }
 
-  Qt::ItemFlags flags( QModelIndex const & index ) const override;
-  int rowCount( QModelIndex const & parent ) const override;
-  int columnCount( QModelIndex const & parent ) const override;
+  Qt::ItemFlags flags( const QModelIndex & index ) const override;
+  int rowCount( const QModelIndex & parent ) const override;
+  int columnCount( const QModelIndex & parent ) const override;
   QVariant headerData( int section, Qt::Orientation orientation, int role ) const override;
-  QVariant data( QModelIndex const & index, int role ) const override;
-  bool setData( QModelIndex const & index, const QVariant & value, int role ) override;
+  QVariant data( const QModelIndex & index, int role ) const override;
+  bool setData( const QModelIndex & index, const QVariant & value, int role ) override;
 
 private:
 
   Config::WebSites webSites;
+
+  /// Returns appropriate background color for disabled Script column based on dark mode
+  QVariant getScriptColumnBackground() const;
 };
 
 /// A model to be projected into the dictServers view, according to Qt's MVC model
@@ -84,23 +92,25 @@ class DictServersModel: public QAbstractTableModel
 
 public:
 
-  DictServersModel( QWidget * parent, Config::DictServers const & );
+  DictServersModel( QWidget * parent, const Config::DictServers & );
 
   void removeServer( int index );
   void addNewServer();
 
+  void remove( const QModelIndexList & );
+
   /// Returns the sites the model currently has listed
-  Config::DictServers const & getCurrentDictServers() const
+  const Config::DictServers & getCurrentDictServers() const
   {
     return dictServers;
   }
 
-  Qt::ItemFlags flags( QModelIndex const & index ) const override;
-  int rowCount( QModelIndex const & parent ) const override;
-  int columnCount( QModelIndex const & parent ) const override;
+  Qt::ItemFlags flags( const QModelIndex & index ) const override;
+  int rowCount( const QModelIndex & parent ) const override;
+  int columnCount( const QModelIndex & parent ) const override;
   QVariant headerData( int section, Qt::Orientation orientation, int role ) const override;
-  QVariant data( QModelIndex const & index, int role ) const override;
-  bool setData( QModelIndex const & index, const QVariant & value, int role ) override;
+  QVariant data( const QModelIndex & index, int role ) const override;
+  bool setData( const QModelIndex & index, const QVariant & value, int role ) override;
 
 private:
 
@@ -114,23 +124,25 @@ class ProgramsModel: public QAbstractTableModel
 
 public:
 
-  ProgramsModel( QWidget * parent, Config::Programs const & );
+  ProgramsModel( QWidget * parent, const Config::Programs & );
 
   void removeProgram( int index );
   void addNewProgram();
 
+  void remove( const QModelIndexList & );
+
   /// Returns the sites the model currently has listed
-  Config::Programs const & getCurrentPrograms() const
+  const Config::Programs & getCurrentPrograms() const
   {
     return programs;
   }
 
-  Qt::ItemFlags flags( QModelIndex const & index ) const override;
-  int rowCount( QModelIndex const & parent ) const override;
-  int columnCount( QModelIndex const & parent ) const override;
+  Qt::ItemFlags flags( const QModelIndex & index ) const override;
+  int rowCount( const QModelIndex & parent ) const override;
+  int columnCount( const QModelIndex & parent ) const override;
   QVariant headerData( int section, Qt::Orientation orientation, int role ) const override;
-  QVariant data( QModelIndex const & index, int role ) const override;
-  bool setData( QModelIndex const & index, const QVariant & value, int role ) override;
+  QVariant data( const QModelIndex & index, int role ) const override;
+  bool setData( const QModelIndex & index, const QVariant & value, int role ) override;
 
 private:
 
@@ -160,23 +172,26 @@ class PathsModel: public QAbstractTableModel
 
 public:
 
-  PathsModel( QWidget * parent, Config::Paths const & );
+  PathsModel( QWidget * parent, const Config::Paths & );
 
   void removePath( int index );
-  void addNewPath( QString const & );
+
+  void addNewPath( const QString & );
+
+  void remove( const QModelIndexList & );
 
   /// Returns the paths the model currently has listed
-  Config::Paths const & getCurrentPaths() const
+  const Config::Paths & getCurrentPaths() const
   {
     return paths;
   }
 
-  Qt::ItemFlags flags( QModelIndex const & index ) const override;
-  int rowCount( QModelIndex const & parent ) const override;
-  int columnCount( QModelIndex const & parent ) const override;
+  Qt::ItemFlags flags( const QModelIndex & index ) const override;
+  int rowCount( const QModelIndex & parent ) const override;
+  int columnCount( const QModelIndex & parent ) const override;
   QVariant headerData( int section, Qt::Orientation orientation, int role ) const override;
-  QVariant data( QModelIndex const & index, int role ) const override;
-  bool setData( QModelIndex const & index, const QVariant & value, int role ) override;
+  QVariant data( const QModelIndex & index, int role ) const override;
+  bool setData( const QModelIndex & index, const QVariant & value, int role ) override;
 
 private:
 
@@ -190,23 +205,26 @@ class SoundDirsModel: public QAbstractTableModel
 
 public:
 
-  SoundDirsModel( QWidget * parent, Config::SoundDirs const & );
+  SoundDirsModel( QWidget * parent, const Config::SoundDirs & );
 
   void removeSoundDir( int index );
-  void addNewSoundDir( QString const & path, QString const & name );
+
+  void addNewSoundDir( const QString & path, const QString & name );
+
+  void removeSoundDirs( const QList< QModelIndex > & indexes );
 
   /// Returns the soundDirs the model currently has listed
-  Config::SoundDirs const & getCurrentSoundDirs() const
+  const Config::SoundDirs & getCurrentSoundDirs() const
   {
     return soundDirs;
   }
 
-  Qt::ItemFlags flags( QModelIndex const & index ) const override;
-  int rowCount( QModelIndex const & parent ) const override;
-  int columnCount( QModelIndex const & parent ) const override;
+  Qt::ItemFlags flags( const QModelIndex & index ) const override;
+  int rowCount( const QModelIndex & parent ) const override;
+  int columnCount( const QModelIndex & parent ) const override;
   QVariant headerData( int section, Qt::Orientation orientation, int role ) const override;
-  QVariant data( QModelIndex const & index, int role ) const override;
-  bool setData( QModelIndex const & index, const QVariant & value, int role ) override;
+  QVariant data( const QModelIndex & index, int role ) const override;
+  bool setData( const QModelIndex & index, const QVariant & value, int role ) override;
 
 private:
 
@@ -220,22 +238,22 @@ class HunspellDictsModel: public QAbstractTableModel
 
 public:
 
-  HunspellDictsModel( QWidget * parent, Config::Hunspell const & );
+  HunspellDictsModel( QWidget * parent, const Config::Hunspell & );
 
-  void changePath( QString const & newPath );
+  void changePath( const QString & newPath );
 
   /// Returns the dictionaries currently enabled
-  Config::Hunspell::Dictionaries const & getEnabledDictionaries() const
+  const Config::Hunspell::Dictionaries & getEnabledDictionaries() const
   {
     return enabledDictionaries;
   }
 
-  Qt::ItemFlags flags( QModelIndex const & index ) const override;
-  int rowCount( QModelIndex const & parent ) const override;
-  int columnCount( QModelIndex const & parent ) const override;
+  Qt::ItemFlags flags( const QModelIndex & index ) const override;
+  int rowCount( const QModelIndex & parent ) const override;
+  int columnCount( const QModelIndex & parent ) const override;
   QVariant headerData( int section, Qt::Orientation orientation, int role ) const override;
-  QVariant data( QModelIndex const & index, int role ) const override;
-  bool setData( QModelIndex const & index, const QVariant & value, int role ) override;
+  QVariant data( const QModelIndex & index, int role ) const override;
+  bool setData( const QModelIndex & index, const QVariant & value, int role ) override;
 
 private:
 
@@ -249,34 +267,34 @@ class Sources: public QWidget
   Q_OBJECT
 
 public:
-  Sources( QWidget * parent, Config::Class const & );
+  Sources( QWidget * parent, const Config::Class & );
 
-  Config::Paths const & getPaths() const
+  const Config::Paths & getPaths() const
   {
     return pathsModel.getCurrentPaths();
   }
 
-  Config::SoundDirs const & getSoundDirs() const
+  const Config::SoundDirs & getSoundDirs() const
   {
     return soundDirsModel.getCurrentSoundDirs();
   }
 
-  Config::MediaWikis const & getMediaWikis() const
+  const Config::MediaWikis & getMediaWikis() const
   {
     return mediawikisModel.getCurrentWikis();
   }
 
-  Config::WebSites const & getWebSites() const
+  const Config::WebSites & getWebSites() const
   {
     return webSitesModel.getCurrentWebSites();
   }
 
-  Config::DictServers const & getDictServers() const
+  const Config::DictServers & getDictServers() const
   {
     return dictServersModel.getCurrentDictServers();
   }
 
-  Config::Programs const & getPrograms() const
+  const Config::Programs & getPrograms() const
   {
     return programsModel.getCurrentPrograms();
   }
@@ -309,6 +327,7 @@ private:
   QScopedPointer< QItemEditorFactory > itemEditorFactory;
 
   MediaWikisModel mediawikisModel;
+
   WebSitesModel webSitesModel;
   DictServersModel dictServersModel;
   ProgramsModel programsModel;
