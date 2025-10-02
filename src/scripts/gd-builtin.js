@@ -323,7 +323,7 @@ function gdStopAllAttributeMonitoring() {
 // Initialize attribute monitoring functionality
 function gdInitAttributeMonitoring() {
   // Automatically monitor all image src attribute changes - only for relative paths
-  monitorOnlyRelativePaths('img', 'src', (attr, oldVal, newVal, element) => {
+  monitorOnlyRelativePaths("img", "src", (attr, oldVal, newVal, element) => {
     // Default image src change handling logic
     console.log(`Image resource changed: ${element.src}`);
 
@@ -332,19 +332,18 @@ function gdInitAttributeMonitoring() {
   });
 
   // Automatically monitor all link href attribute changes - only for relative paths
-  monitorOnlyRelativePaths('a', 'href', (attr, oldVal, newVal, element) => {
+  monitorOnlyRelativePaths("a", "href", (attr, oldVal, newVal, element) => {
     // Default link href change handling logic
     console.log(`Link address changed: ${element.href}`);
 
     // Process relative links for links and resource files
     processRelativeLink(element, newVal);
   });
-
 }
 
 // Helper function to check if URL is absolute
 function isAbsoluteUrl(url) {
-  return url && (url.includes('://') || url.startsWith('//'));
+  return url && (url.includes("://") || url.startsWith("//"));
 }
 
 // Helper function to monitor only relative paths
@@ -356,7 +355,7 @@ function monitorOnlyRelativePaths(selector, attribute, callback) {
       callback(attr, oldVal, newVal, element);
     }
   };
-  
+
   // Monitor all elements but filter in the callback
   return gdMonitorElementsBySelector(selector, [attribute], filteredCallback);
 }
@@ -373,10 +372,10 @@ function processRelativeLink(element, url) {
   if (!element.dataset.originalUrl) {
     element.dataset.originalUrl = url;
   }
-  
+
   // Check if it's a relative link
   const isRelative = !isAbsoluteUrl(url);
-  
+
   if (isRelative) {
     // Check if it's an image or resource file (js, css, etc.)
     const isResourceFile =
