@@ -209,6 +209,9 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( const 
     if ( groupIsValid && !word.isEmpty() ) { // Require group and phrase to be passed
       return articleMaker.makeDefinitionFor( word, group, contexts, mutedDicts, QStringList(), ignoreDiacritics );
     }
+    else {
+      return std::make_shared< Dictionary::DataRequestInstant >( false );
+    }
   }
 
   if ( ( url.scheme() == "bres" || url.scheme() == "gdau" || url.scheme() == "gdvideo" || url.scheme() == "gico" )
