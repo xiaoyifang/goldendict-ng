@@ -326,7 +326,7 @@ function gdInitAttributeMonitoring() {
   gdMonitorImageSources((attr, oldVal, newVal, element) => {
     // Default image src change handling logic
     console.log(`Image resource changed: ${element.src}`);
-    
+
     // Process relative links for images
     processRelativeLink(element, newVal);
   });
@@ -335,7 +335,7 @@ function gdInitAttributeMonitoring() {
   gdMonitorLinkHrefs((attr, oldVal, newVal, element) => {
     // Default link href change handling logic
     console.log(`Link address changed: ${element.href}`);
-    
+
     // Process relative links for links and resource files
     processRelativeLink(element, newVal);
   });
@@ -348,49 +348,56 @@ function gdInitAttributeMonitoring() {
  */
 function processRelativeLink(element, url) {
   if (!url) return;
-  
+
   // Store original URL in a data attribute for potential reference
   if (!element.dataset.originalUrl) {
     element.dataset.originalUrl = url;
   }
-  
+
   // Check if it's a relative link (doesn't contain :// or start with //)
-  const isRelative = !url.includes('://') && !url.startsWith('//');
-  
+  const isRelative = !url.includes("://") && !url.startsWith("//");
+
   if (isRelative) {
     // Check if it's an image or resource file (js, css, etc.)
-    const isResourceFile = /\.(jpg|jpeg|png|gif|webp|svg|js|css|json|xml|woff|woff2|ttf|eot)$/i.test(url);
-    const isImageTag = element.tagName.toLowerCase() === 'img';
-    
+    const isResourceFile =
+      /\.(jpg|jpeg|png|gif|webp|svg|js|css|json|xml|woff|woff2|ttf|eot)$/i.test(
+        url,
+      );
+    const isImageTag = element.tagName.toLowerCase() === "img";
+
     if (isResourceFile || isImageTag) {
       // Find the parent div.gdarticle element and get its data-gd-id
-      const articleElement = element.closest('.gdarticle');
-      const dictId = articleElement ? articleElement.getAttribute('data-gd-id') : null;
-      
+      const articleElement = element.closest(".gdarticle");
+      const dictId = articleElement
+        ? articleElement.getAttribute("data-gd-id")
+        : null;
+
       if (dictId) {
         // Create the bres URL format: bres://[dictId]+relativePath
         // Remove leading slashes from relative path to avoid double slashes
-        const relativePath = url.replace(/^\//, '');
+        const relativePath = url.replace(/^\//, "");
         const bresUrl = `bres://${dictId}+${relativePath}`;
-        
+
         // Update the appropriate attribute based on the element type
-        if (element.tagName.toLowerCase() === 'a') {
-          element.setAttribute('href', bresUrl);
-        } else if (element.tagName.toLowerCase() === 'img') {
-          element.setAttribute('src', bresUrl);
+        if (element.tagName.toLowerCase() === "a") {
+          element.setAttribute("href", bresUrl);
+        } else if (element.tagName.toLowerCase() === "img") {
+          element.setAttribute("src", bresUrl);
         } else {
           // Handle other elements that might have resource URLs
-          if (element.hasAttribute('href')) {
-            element.setAttribute('href', bresUrl);
+          if (element.hasAttribute("href")) {
+            element.setAttribute("href", bresUrl);
           }
-          if (element.hasAttribute('src')) {
-            element.setAttribute('src', bresUrl);
+          if (element.hasAttribute("src")) {
+            element.setAttribute("src", bresUrl);
           }
         }
-        
+
         console.log(`Relative resource URL converted: ${url} -> ${bresUrl}`);
       } else {
-        console.warn(`Could not find parent .gdarticle element for relative URL: ${url}`);
+        console.warn(
+          `Could not find parent .gdarticle element for relative URL: ${url}`,
+        );
       }
     }
   }
