@@ -326,6 +326,9 @@ function gdInitAttributeMonitoring() {
   gdMonitorImageSources((attr, oldVal, newVal, element) => {
     // Default image src change handling logic
     console.log(`Image resource changed: ${element.src}`);
+    
+    // Process relative links for images
+    processRelativeLink(element, newVal);
   });
 
   // Automatically monitor all link href attribute changes
@@ -333,15 +336,10 @@ function gdInitAttributeMonitoring() {
     // Default link href change handling logic
     console.log(`Link address changed: ${element.href}`);
     
-    // Process relative links for images and resource files
+    // Process relative links for links and resource files
     processRelativeLink(element, newVal);
   });
-  
-  // Also monitor image src attribute changes
-  gdMonitorImageSources((attr, oldVal, newVal, element) => {
-    // Process relative links for images
-    processRelativeLink(element, newVal);
-  });
+}
 
 /**
  * Process relative links for images and resource files
