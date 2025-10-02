@@ -258,7 +258,7 @@ function gdMonitorLinkHrefs(callback) {
  * @returns {MutationObserver} - Returns the created observer instance
  */
 function gdMonitorElementsBySelector(selector, attributes, callback) {
-  // 将单个属性转换为数组格式
+  // Convert single attribute to array format
   const attributeList = Array.isArray(attributes) ? attributes : [attributes];
   
   // Monitor existing elements
