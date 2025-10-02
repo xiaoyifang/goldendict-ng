@@ -192,12 +192,181 @@ function handleIframeEvents() {
   });
 }
 
+// DOM attribute monitoring related methods
+let attributeMonitors = [];
+
+/**
+ * Monitor specific attribute changes of a single DOM element
+ * @param {HTMLElement} element - The DOM element to monitor
+ * @param {string|string[]} attributes - The attribute names to monitor, can be a single attribute or array of attributes
+ * @param {Function} callback - Callback function when attribute changes
+ * @returns {MutationObserver} - Returns the created observer instance
+ */
+function gdMonitorElementAttributes(element, attributes, callback) {
+  if (!element || !attributes) return null;
+  
+  // Convert single attribute to array format
+  const attributeList = Array.isArray(attributes) ? attributes : [attributes];
+  
+  const observer = new MutationObserver((mutationsList) => {
+    for (let mutation of mutationsList) {
+      if (mutation.type === 'attributes' && attributeList.includes(mutation.attributeName)) {
+        const oldValue = mutation.oldValue;
+        const newValue = element.getAttribute(mutation.attributeName);
+        console.log(`Attribute changed: ${mutation.attributeName} - from "${oldValue}" to "${newValue}"`);
+        
+        if (typeof callback === 'function') {
+          callback(mutation.attributeName, oldValue, newValue, element);
+        }
+      }
+    }
+  });
+  
+  observer.observe(element, {
+    attributes: true,
+    attributeOldValue: true,
+    attributeFilter: attributeList
+  });
+  
+  attributeMonitors.push(observer);
+  return observer;
+}
+
+/**
+ * Monitor src attribute changes of all img elements
+ * @param {Function} callback - Callback function when attribute changes
+ * @returns {MutationObserver} - Returns the created observer instance
+ */
+function gdMonitorImageSources(callback) {
+  return gdMonitorElementsBySelector('img', ['src'], callback);
+}
+
+/**
+ * Monitor href attribute changes of all a elements
+ * @param {Function} callback - Callback function when attribute changes
+ * @returns {MutationObserver} - Returns the created observer instance
+ */
+function gdMonitorLinkHrefs(callback) {
+  return gdMonitorElementsBySelector('a', ['href'], callback);
+}
+
+/**
+ * Monitor attribute changes of multiple elements based on CSS selector
+ * @param {string} selector - CSS selector
+ * @param {string|string[]} attributes - The attribute names to monitor
+ * @param {Function} callback - Callback function when attribute changes
+ * @returns {MutationObserver} - Returns the created observer instance
+ */
+function gdMonitorElementsBySelector(selector, attributes, callback) {
+  // 将单个属性转换为数组格式
+  const attributeList = Array.isArray(attributes) ? attributes : [attributes];
+  
+  // Monitor existing elements
+  const elements = document.querySelectorAll(selector);
+  const elementObservers = Array.from(elements).map(element => 
+    gdMonitorElementAttributes(element, attributeList, callback)
+  );
+  
+  // Monitor newly added elements
+  const observer = new MutationObserver((mutationsList) => {
+    for (let mutation of mutationsList) {
+      if (mutation.type === 'childList') {
+        // Check added nodes
+        mutation.addedNodes.forEach(node => {
+          if (node.nodeType === 1) { // Element node
+            // Check if the node itself matches the selector
+            if (node.matches(selector)) {
+              gdMonitorElementAttributes(node, attributeList, callback);
+            }
+            
+            // Check if child elements match the selector
+            const childElements = node.querySelectorAll(selector);
+            childElements.forEach(element => 
+              gdMonitorElementAttributes(element, attributeList, callback)
+            );
+          }
+        });
+      }
+    }
+  });
+  
+  // Start monitoring child node changes in the document
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
+  
+  attributeMonitors.push(observer);
+  return observer;
+}
+
+/**
+ * Stop all active attribute monitoring
+ */
+function gdStopAllAttributeMonitoring() {
+  attributeMonitors.forEach(observer => {
+    try {
+      observer.disconnect();
+    } catch (error) {
+      console.error("Error stopping monitoring:", error);
+    }
+  });
+  attributeMonitors = [];
+}
+
+// Initialize attribute monitoring functionality
+function gdInitAttributeMonitoring() {
+  // Automatically monitor all image src attribute changes
+  gdMonitorImageSources((attr, oldVal, newVal, element) => {
+    // Default image src change handling logic
+    console.log(`Image resource changed: ${element.src}`);
+  });
+  
+  // Automatically monitor all link href attribute changes
+  gdMonitorLinkHrefs((attr, oldVal, newVal, element) => {
+    // Default link href change handling logic
+    console.log(`Link address changed: ${element.href}`);
+  });
+}
+
 // Check the document ready state
 if (
   document.readyState === "complete" ||
   document.readyState === "interactive"
 ) {
   gdAttachEventHandlers();
+  gdInitAttributeMonitoring();
 } else {
-  document.addEventListener("DOMContentLoaded", gdAttachEventHandlers);
+  document.addEventListener("DOMContentLoaded", () => {
+    gdAttachEventHandlers();
+    gdInitAttributeMonitoring();
+  });
 }
+
+/**
+ * Usage examples:
+ * 
+ * 1. Monitor specific attributes of a single element:
+ *    const element = document.getElementById('myElement');
+ *    gdMonitorElementAttributes(element, 'src', (attr, oldVal, newVal, elem) => {
+ *      console.log(`${elem.id}'s ${attr} attribute changed from ${oldVal} to ${newVal}`);
+ *    });
+ * 
+ * 2. Monitor src attribute of all images:
+ *    gdMonitorImageSources((attr, oldVal, newVal, element) => {
+ *      console.log(`Image ${element.alt || 'unnamed'}'s src attribute changed`);
+ *    });
+ * 
+ * 3. Monitor href attribute of all links:
+ *    gdMonitorLinkHrefs((attr, oldVal, newVal, element) => {
+ *      console.log(`Link ${element.textContent}'s href attribute changed`);
+ *    });
+ * 
+ * 4. Monitor specific elements using CSS selector:
+ *    gdMonitorElementsBySelector('.dynamic-content', ['style', 'class'], (attr, oldVal, newVal, element) => {
+ *      console.log(`Dynamic content area's ${attr} attribute changed`);
+ *    });
+ * 
+ * 5. Stop all monitoring:
+ *    gdStopAllAttributeMonitoring();
+ */
