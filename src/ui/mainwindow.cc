@@ -4367,7 +4367,7 @@ void MainWindow::showFTSIndexingName( const QString & name )
 
 void MainWindow::openWebsiteInNewTab( QString name, QString url, QString dictId )
 {
-  auto view = findArticleViewByHost( QUrl( url ).host() );
+  auto view = findArticleViewByDictId( dictId );
   if ( view == nullptr ) {
     view = createNewTab( false, name );
     view->setWebsite( true );
