@@ -392,37 +392,37 @@ function processRelativeLink(element, url) {
         : null;
 
       // Sanitize dictId to be only alphanumeric, dash, underscore. If not, skip.
-        if (dictId && /^[a-zA-Z0-9_-]+$/.test(dictId)) {
-          // Create the bres URL format: bres://[dictId]/relativePath
-          // Remove leading slashes from relative path to avoid double slashes
-          const relativePath = url.replace(/^\//, "");
-          const bresUrl = `bres://${dictId}/${relativePath}`;
-          
-          // Update the appropriate attribute based on the element type
-          if (element.tagName.toLowerCase() === "a") {
-            element.setAttribute("href", bresUrl);
-          } else if (element.tagName.toLowerCase() === "img") {
-            element.setAttribute("src", bresUrl);
-          } else {
-            // Handle other elements that might have resource URLs
-            if (element.hasAttribute("href")) {
-              element.setAttribute("href", bresUrl);
-            }
-            if (element.hasAttribute("src")) {
-              element.setAttribute("src", bresUrl);
-            }
-          }
-          
-          console.log(`Relative resource URL converted: ${url} -> ${bresUrl}`);
-        } else if (dictId) {
-          console.warn(
-            `Unsafe dictId found in data-gd-id: "${dictId}". Skipping resource URL modification for: ${url}`,
-          );
+      if (dictId && /^[a-zA-Z0-9_-]+$/.test(dictId)) {
+        // Create the bres URL format: bres://[dictId]/relativePath
+        // Remove leading slashes from relative path to avoid double slashes
+        const relativePath = url.replace(/^\//, "");
+        const bresUrl = `bres://${dictId}/${relativePath}`;
+
+        // Update the appropriate attribute based on the element type
+        if (element.tagName.toLowerCase() === "a") {
+          element.setAttribute("href", bresUrl);
+        } else if (element.tagName.toLowerCase() === "img") {
+          element.setAttribute("src", bresUrl);
         } else {
-          console.warn(
-            `Could not find parent .gdarticle element for relative URL: ${url}`,
-          );
+          // Handle other elements that might have resource URLs
+          if (element.hasAttribute("href")) {
+            element.setAttribute("href", bresUrl);
+          }
+          if (element.hasAttribute("src")) {
+            element.setAttribute("src", bresUrl);
+          }
         }
+
+        console.log(`Relative resource URL converted: ${url} -> ${bresUrl}`);
+      } else if (dictId) {
+        console.warn(
+          `Unsafe dictId found in data-gd-id: "${dictId}". Skipping resource URL modification for: ${url}`,
+        );
+      } else {
+        console.warn(
+          `Could not find parent .gdarticle element for relative URL: ${url}`,
+        );
+      }
     }
   }
 }
