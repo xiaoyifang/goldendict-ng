@@ -360,6 +360,9 @@ function monitorOnlyRelativePaths(selector, attribute, callback) {
   return gdMonitorElementsBySelector(selector, [attribute], filteredCallback);
 }
 
+// Regular expression for matching resource file extensions
+const RESOURCE_FILE_REGEX = /\.(jpg|jpeg|png|gif|webp|svg|js|css|json|xml|woff|woff2|ttf|eot)$/i;
+
 /**
  * Process relative links for images and resource files
  * @param {HTMLElement} element - The DOM element with the link
@@ -378,18 +381,13 @@ function processRelativeLink(element, url) {
 
   if (isRelative) {
     // Check if it's an image or resource file (js, css, etc.)
-    const isResourceFile =
-      /\.(jpg|jpeg|png|gif|webp|svg|js|css|json|xml|woff|woff2|ttf|eot)$/i.test(
-        url,
-      );
+    const isResourceFile = RESOURCE_FILE_REGEX.test(url);
     const isImageTag = element.tagName.toLowerCase() === "img";
 
     if (isResourceFile || isImageTag) {
       // Find the parent div.gdarticle element and get its data-gd-id
       const articleElement = element.closest(".gdarticle");
-      let dictId = articleElement
-        ? articleElement.getAttribute("data-gd-id")
-        : null;
+      const dictId = articleElement ? articleElement.getAttribute("data-gd-id") : null;
 
       // Sanitize dictId to be only alphanumeric, dash, underscore. If not, skip.
       if (dictId && /^[a-zA-Z0-9_-]+$/.test(dictId)) {
