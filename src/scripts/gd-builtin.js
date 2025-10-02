@@ -204,30 +204,35 @@ let attributeMonitors = [];
  */
 function gdMonitorElementAttributes(element, attributes, callback) {
   if (!element || !attributes) return null;
-  
+
   // Convert single attribute to array format
   const attributeList = Array.isArray(attributes) ? attributes : [attributes];
-  
+
   const observer = new MutationObserver((mutationsList) => {
     for (let mutation of mutationsList) {
-      if (mutation.type === 'attributes' && attributeList.includes(mutation.attributeName)) {
+      if (
+        mutation.type === "attributes" &&
+        attributeList.includes(mutation.attributeName)
+      ) {
         const oldValue = mutation.oldValue;
         const newValue = element.getAttribute(mutation.attributeName);
-        console.log(`Attribute changed: ${mutation.attributeName} - from "${oldValue}" to "${newValue}"`);
-        
-        if (typeof callback === 'function') {
+        console.log(
+          `Attribute changed: ${mutation.attributeName} - from "${oldValue}" to "${newValue}"`,
+        );
+
+        if (typeof callback === "function") {
           callback(mutation.attributeName, oldValue, newValue, element);
         }
       }
     }
   });
-  
+
   observer.observe(element, {
     attributes: true,
     attributeOldValue: true,
-    attributeFilter: attributeList
+    attributeFilter: attributeList,
   });
-  
+
   attributeMonitors.push(observer);
   return observer;
 }
@@ -238,7 +243,7 @@ function gdMonitorElementAttributes(element, attributes, callback) {
  * @returns {MutationObserver} - Returns the created observer instance
  */
 function gdMonitorImageSources(callback) {
-  return gdMonitorElementsBySelector('img', ['src'], callback);
+  return gdMonitorElementsBySelector("img", ["src"], callback);
 }
 
 /**
@@ -247,7 +252,7 @@ function gdMonitorImageSources(callback) {
  * @returns {MutationObserver} - Returns the created observer instance
  */
 function gdMonitorLinkHrefs(callback) {
-  return gdMonitorElementsBySelector('a', ['href'], callback);
+  return gdMonitorElementsBySelector("a", ["href"], callback);
 }
 
 /**
@@ -260,42 +265,43 @@ function gdMonitorLinkHrefs(callback) {
 function gdMonitorElementsBySelector(selector, attributes, callback) {
   // Convert single attribute to array format
   const attributeList = Array.isArray(attributes) ? attributes : [attributes];
-  
+
   // Monitor existing elements
   const elements = document.querySelectorAll(selector);
-  const elementObservers = Array.from(elements).map(element => 
-    gdMonitorElementAttributes(element, attributeList, callback)
+  const elementObservers = Array.from(elements).map((element) =>
+    gdMonitorElementAttributes(element, attributeList, callback),
   );
-  
+
   // Monitor newly added elements
   const observer = new MutationObserver((mutationsList) => {
     for (let mutation of mutationsList) {
-      if (mutation.type === 'childList') {
+      if (mutation.type === "childList") {
         // Check added nodes
-        mutation.addedNodes.forEach(node => {
-          if (node.nodeType === 1) { // Element node
+        mutation.addedNodes.forEach((node) => {
+          if (node.nodeType === 1) {
+            // Element node
             // Check if the node itself matches the selector
             if (node.matches(selector)) {
               gdMonitorElementAttributes(node, attributeList, callback);
             }
-            
+
             // Check if child elements match the selector
             const childElements = node.querySelectorAll(selector);
-            childElements.forEach(element => 
-              gdMonitorElementAttributes(element, attributeList, callback)
+            childElements.forEach((element) =>
+              gdMonitorElementAttributes(element, attributeList, callback),
             );
           }
         });
       }
     }
   });
-  
+
   // Start monitoring child node changes in the document
   observer.observe(document.body, {
     childList: true,
-    subtree: true
+    subtree: true,
   });
-  
+
   attributeMonitors.push(observer);
   return observer;
 }
@@ -304,7 +310,7 @@ function gdMonitorElementsBySelector(selector, attributes, callback) {
  * Stop all active attribute monitoring
  */
 function gdStopAllAttributeMonitoring() {
-  attributeMonitors.forEach(observer => {
+  attributeMonitors.forEach((observer) => {
     try {
       observer.disconnect();
     } catch (error) {
@@ -321,7 +327,7 @@ function gdInitAttributeMonitoring() {
     // Default image src change handling logic
     console.log(`Image resource changed: ${element.src}`);
   });
-  
+
   // Automatically monitor all link href attribute changes
   gdMonitorLinkHrefs((attr, oldVal, newVal, element) => {
     // Default link href change handling logic
@@ -345,28 +351,28 @@ if (
 
 /**
  * Usage examples:
- * 
+ *
  * 1. Monitor specific attributes of a single element:
  *    const element = document.getElementById('myElement');
  *    gdMonitorElementAttributes(element, 'src', (attr, oldVal, newVal, elem) => {
  *      console.log(`${elem.id}'s ${attr} attribute changed from ${oldVal} to ${newVal}`);
  *    });
- * 
+ *
  * 2. Monitor src attribute of all images:
  *    gdMonitorImageSources((attr, oldVal, newVal, element) => {
  *      console.log(`Image ${element.alt || 'unnamed'}'s src attribute changed`);
  *    });
- * 
+ *
  * 3. Monitor href attribute of all links:
  *    gdMonitorLinkHrefs((attr, oldVal, newVal, element) => {
  *      console.log(`Link ${element.textContent}'s href attribute changed`);
  *    });
- * 
+ *
  * 4. Monitor specific elements using CSS selector:
  *    gdMonitorElementsBySelector('.dynamic-content', ['style', 'class'], (attr, oldVal, newVal, element) => {
  *      console.log(`Dynamic content area's ${attr} attribute changed`);
  *    });
- * 
+ *
  * 5. Stop all monitoring:
  *    gdStopAllAttributeMonitoring();
  */
