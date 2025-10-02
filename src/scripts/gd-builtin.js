@@ -387,11 +387,12 @@ function processRelativeLink(element, url) {
     if (isResourceFile || isImageTag) {
       // Find the parent div.gdarticle element and get its data-gd-id
       const articleElement = element.closest(".gdarticle");
-      const dictId = articleElement
+      let dictId = articleElement
         ? articleElement.getAttribute("data-gd-id")
         : null;
 
-      if (dictId) {
+      // Sanitize dictId to be only alphanumeric, dash, underscore. If not, skip.
+      if (dictId && /^[a-zA-Z0-9_-]+$/.test(dictId)) {
         // Create the bres URL format: bres://[dictId]+relativePath
         // Remove leading slashes from relative path to avoid double slashes
         const relativePath = url.replace(/^\//, "");
@@ -410,6 +411,10 @@ function processRelativeLink(element, url) {
           if (element.hasAttribute("src")) {
             element.setAttribute("src", bresUrl);
           }
+      } else if (dictId) {
+        console.warn(
+          `Unsafe dictId found in data-gd-id: "${dictId}". Skipping resource URL modification for: ${url}`,
+        );
         }
 
         console.log(`Relative resource URL converted: ${url} -> ${bresUrl}`);
