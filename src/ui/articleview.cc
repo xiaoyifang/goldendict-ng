@@ -18,10 +18,13 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QFileDialog>
+#include <QMimeDatabase>
 #include <QKeyEvent>
 #include <QMenu>
 #include <QMessageBox>
 #include <QRegularExpression>
+#include <QUuid>
+#include <QTimer>
 #include <QVariant>
 #include <QWebChannel>
 #include <QWebEngineHistory>
@@ -647,10 +650,22 @@ void ArticleView::load( const QUrl & url, const QString & customTitle )
 
 void ArticleView::cleanupTemp()
 {
+  // Clean up desktop opened temporary files
   auto it = desktopOpenedTempFiles.begin();
   while ( it != desktopOpenedTempFiles.end() ) {
     if ( QFile::remove( *it ) ) {
       it = desktopOpenedTempFiles.erase( it );
+    }
+    else {
+      ++it;
+    }
+  }
+
+  // Clean up audio temporary files for clipboard
+  it = audioTempFiles.begin();
+  while ( it != audioTempFiles.end() ) {
+    if ( QFile::remove( *it ) ) {
+      it = audioTempFiles.erase( it );
     }
     else {
       ++it;
@@ -1573,6 +1588,7 @@ void ArticleView::contextMenuRequested( const QPoint & pos )
   QAction * saveImageAction           = nullptr;
   QAction * openImageAction           = nullptr;
   QAction * saveSoundAction           = nullptr;
+  QAction * copySoundAction           = nullptr;
   QAction * saveBookmark              = nullptr;
 
   QWebEngineContextMenuRequest * menuData = webview->lastContextMenuRequest();
@@ -1616,6 +1632,9 @@ void ArticleView::contextMenuRequested( const QPoint & pos )
   if ( !popupView && isAudioLink( targetUrl ) ) {
     saveSoundAction = new QAction( tr( "Save s&ound..." ), &menu );
     menu.addAction( saveSoundAction );
+
+    copySoundAction = new QAction( tr( "&Copy sound to clipboard" ), &menu );
+    menu.addAction( copySoundAction );
   }
 
   const QString selectedText = webview->selectedText();
@@ -1784,6 +1803,12 @@ void ArticleView::contextMenuRequested( const QPoint & pos )
     }
     else if ( !popupView && result == lookupSelectionNewTabGr && currentGroupId ) {
       emit showDefinitionInNewTab( selectedText, currentGroupId, QString(), Contexts() );
+    }
+    else if ( result == copySoundAction ) {
+      QUrl url = ( result == saveImageAction ) ? imageUrl : targetUrl;
+
+      // Copy sound to clipboard
+      copyResourceToClipboard( url );
     }
     else if ( result == saveImageAction || result == saveSoundAction ) {
       QUrl url = ( result == saveImageAction ) ? imageUrl : targetUrl;
@@ -2204,6 +2229,77 @@ void ArticleView::copyAsText()
   QString text = webview->selectedText();
   if ( !text.isEmpty() ) {
     QApplication::clipboard()->setText( text );
+  }
+}
+
+void ArticleView::copyResourceToClipboard( const QUrl & url )
+{
+  // Download resource and copy to clipboard
+  QString contentType;
+  auto req = articleNetMgr.getResource( url, contentType );
+  if ( req ) {
+    connect( req.get(), &Dictionary::DataRequest::finished, this, [ req, this, url ]() {
+      if ( req->dataSize() < 0 ) {
+        emit statusBarMessage( tr( "Failed to copy sound" ) );
+        return;
+      }
+
+      // Get MIME type and extension using utility function
+      QString path = url.path();
+      QString extension;
+      QString mimeType = Utils::getAudioMimeType( path, extension );
+
+      // Get the audio data directly from the request
+      const auto & data = req->getFullData();
+
+      // Create temporary file with proper extension to ensure compatibility with applications
+      QTemporaryFile tempFile;
+      tempFile.setFileTemplate( QDir::tempPath() + "/audio_XXXXXX" + extension );
+      tempFile.setAutoRemove( false ); // We'll handle removal manually
+
+      if ( tempFile.open() ) {
+        QString tempFileName = tempFile.fileName();
+        qint64 bytesWritten  = tempFile.write( data.data(), data.size() );
+        tempFile.close();
+
+        if ( bytesWritten != static_cast< qint64 >( data.size() ) ) {
+          emit statusBarMessage( tr( "Failed to write complete audio data" ) );
+          QFile::remove( tempFileName );
+          return;
+        }
+
+        // Create MIME data with both file URL and raw data
+        auto * mimeData = new QMimeData;
+        QByteArray audioData( data.data(), data.size() );
+
+        // Add file URL - essential for many applications
+        QList< QUrl > urls;
+        urls << QUrl::fromLocalFile( tempFileName );
+        mimeData->setUrls( urls );
+
+        // Add raw audio data with correct MIME type
+        mimeData->setData( mimeType, audioData );
+
+        // Add generic audio MIME type
+        mimeData->setData( "audio/*", audioData );
+
+        // For MP3 files, add additional common MIME types
+        if ( extension == ".mp3" ) {
+          mimeData->setData( "audio/x-mpeg", audioData );
+        }
+
+        // Set clipboard with MIME data
+        QApplication::clipboard()->setMimeData( mimeData );
+
+        // Add the temporary file to our collection for cleanup on exit
+        audioTempFiles.insert( tempFileName );
+
+        emit statusBarMessage( tr( "Sound copied to clipboard" ), 2000 );
+      }
+    } );
+  }
+  else {
+    emit statusBarMessage( tr( "Failed to download sound" ) );
   }
 }
 

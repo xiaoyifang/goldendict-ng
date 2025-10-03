@@ -3,6 +3,7 @@
 #include <QMessageBox>
 #include <string>
 #include <QBuffer>
+#include <QMimeDatabase>
 
 using std::string;
 namespace Utils {
@@ -176,3 +177,23 @@ QString urlReplaceWord( const QString url, QString inputWord )
   return urlString;
 }
 } // namespace Utils::WebSite
+
+QString Utils::getAudioMimeType( const QString & path, QString & extension )
+{
+  // Default values
+  extension        = ".wav";
+  QString mimeType = "audio/wav";
+
+  // Use QMimeDatabase to determine MIME type based on file extension
+  QMimeDatabase mimeDb;
+  QFileInfo fileInfo( path );
+  if ( !fileInfo.suffix().isEmpty() ) {
+    extension      = "." + fileInfo.suffix().toLower();
+    QMimeType mime = mimeDb.mimeTypeForFile( fileInfo, QMimeDatabase::MatchExtension );
+    if ( mime.isValid() && mime.name().startsWith( "audio/" ) ) {
+      mimeType = mime.name();
+    }
+  }
+
+  return mimeType;
+}
