@@ -99,7 +99,7 @@ PenaltyIndentedWhitespace: 0
 PointerAlignment: Middle
 PPIndentWidth: -1
 ReferenceAlignment: Pointer
-ReflowComments: Never
+#ReflowComments: Never
 SortIncludes: Never
 RemoveBracesLLVM: false
 SeparateDefinitionBlocks: Leave
