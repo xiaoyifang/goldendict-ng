@@ -2262,7 +2262,7 @@ void ArticleView::copyResourceToClipboard( const QUrl & url )
         qint64 bytesWritten  = tempFile.write( data.data(), data.size() );
         tempFile.close();
 
-        if ( bytesWritten != static_cast<qint64>( data.size() ) ) {
+        if ( bytesWritten != static_cast< qint64 >( data.size() ) ) {
           emit statusBarMessage( tr( "Failed to write complete audio data" ) );
           QFile::remove( tempFileName );
           return;
