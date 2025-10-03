@@ -181,25 +181,25 @@ QString urlReplaceWord( const QString url, QString inputWord )
 QString Utils::getAudioMimeType( const QString & path, QString & extension )
 {
   // Default values
-  extension = ".wav";
+  extension        = ".wav";
   QString mimeType = "audio/wav";
-  
+
   // Use QMimeDatabase to determine MIME type based on file extension
   QMimeDatabase mimeDb;
-  QFileInfo fileInfo(path);
-  if (!fileInfo.suffix().isEmpty()) {
-    extension = "." + fileInfo.suffix().toLower();
-    QMimeType mime = mimeDb.mimeTypeForFile(fileInfo, QMimeDatabase::MatchExtension);
-    if (mime.isValid() && mime.name().startsWith("audio/")) {
+  QFileInfo fileInfo( path );
+  if ( !fileInfo.suffix().isEmpty() ) {
+    extension      = "." + fileInfo.suffix().toLower();
+    QMimeType mime = mimeDb.mimeTypeForFile( fileInfo, QMimeDatabase::MatchExtension );
+    if ( mime.isValid() && mime.name().startsWith( "audio/" ) ) {
       mimeType = mime.name();
     }
   }
-  
+
   // For specific audio formats, ensure we have correct MIME types
-  if (path.endsWith(".opus", Qt::CaseInsensitive)) {
+  if ( path.endsWith( ".opus", Qt::CaseInsensitive ) ) {
     extension = ".opus";
-    mimeType = "audio/opus"; // Explicitly set for opus as it might not be recognized by some systems
+    mimeType  = "audio/opus"; // Explicitly set for opus as it might not be recognized by some systems
   }
-  
+
   return mimeType;
 }

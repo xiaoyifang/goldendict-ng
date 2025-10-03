@@ -51,6 +51,9 @@ class ArticleView: public QWidget
 
   /// For resources opened via desktop services
   QSet< QString > desktopOpenedTempFiles;
+  
+  /// For audio temporary files created for clipboard operations
+  QSet< QString > audioTempFiles;
 
   QAction * dictionaryBarToggled;
 

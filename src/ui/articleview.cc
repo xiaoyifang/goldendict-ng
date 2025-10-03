@@ -650,10 +650,22 @@ void ArticleView::load( const QUrl & url, const QString & customTitle )
 
 void ArticleView::cleanupTemp()
 {
+  // Clean up desktop opened temporary files
   auto it = desktopOpenedTempFiles.begin();
   while ( it != desktopOpenedTempFiles.end() ) {
     if ( QFile::remove( *it ) ) {
       it = desktopOpenedTempFiles.erase( it );
+    }
+    else {
+      ++it;
+    }
+  }
+  
+  // Clean up audio temporary files for clipboard
+  it = audioTempFiles.begin();
+  while ( it != audioTempFiles.end() ) {
+    if ( QFile::remove( *it ) ) {
+      it = audioTempFiles.erase( it );
     }
     else {
       ++it;
@@ -2236,7 +2248,7 @@ void ArticleView::copyResourceToClipboard( const QUrl & url )
       // Get MIME type and extension using utility function
       QString path = url.path();
       QString extension;
-      QString mimeType = Utils::getAudioMimeType(path, extension);
+      QString mimeType = Utils::getAudioMimeType( path, extension );
 
       // Get the audio data directly from the request
       const auto & data = req->getFullData();
@@ -2248,7 +2260,7 @@ void ArticleView::copyResourceToClipboard( const QUrl & url )
 
       if ( tempFile.open() ) {
         QString tempFileName = tempFile.fileName();
-        qint64 bytesWritten = tempFile.write( data.data(), data.size() );
+        qint64 bytesWritten  = tempFile.write( data.data(), data.size() );
         tempFile.close();
 
         if ( bytesWritten != data.size() ) {
@@ -2268,10 +2280,10 @@ void ArticleView::copyResourceToClipboard( const QUrl & url )
 
         // Add raw audio data with correct MIME type
         mimeData->setData( mimeType, audioData );
-        
+
         // Add generic audio MIME type
         mimeData->setData( "audio/*", audioData );
-        
+
         // For MP3 files, add additional common MIME types
         if ( extension == ".mp3" ) {
           mimeData->setData( "audio/x-mpeg", audioData );
@@ -2280,10 +2292,8 @@ void ArticleView::copyResourceToClipboard( const QUrl & url )
         // Set clipboard with MIME data
         QApplication::clipboard()->setMimeData( mimeData );
 
-        // Keep the file for 30 seconds to allow paste operations
-        QTimer::singleShot( 30000, [tempFileName]() {
-          QFile::remove( tempFileName );
-        });
+        // Add the temporary file to our collection for cleanup on exit
+        audioTempFiles.insert( tempFileName );
 
         emit statusBarMessage( tr( "Sound copied to clipboard" ), 2000 );
       }
