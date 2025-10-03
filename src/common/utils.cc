@@ -195,11 +195,5 @@ QString Utils::getAudioMimeType( const QString & path, QString & extension )
     }
   }
 
-  // For specific audio formats, ensure we have correct MIME types
-  if ( path.endsWith( ".opus", Qt::CaseInsensitive ) ) {
-    extension = ".opus";
-    mimeType  = "audio/opus"; // Explicitly set for opus as it might not be recognized by some systems
-  }
-
   return mimeType;
 }
