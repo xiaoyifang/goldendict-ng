@@ -266,6 +266,26 @@
       <source>Unable to load the requested page content</source>
       <translation>无法加载请求的页面内容</translation>
     </message>
+    <message>
+      <source>&amp;Copy sound to clipboard</source>
+      <translation>&amp;复制声音到剪贴板</translation>
+    </message>
+    <message>
+      <source>Failed to copy sound</source>
+      <translation>复制声音失败</translation>
+    </message>
+    <message>
+      <source>Failed to write complete audio data</source>
+      <translation>写入完整音频数据失败</translation>
+    </message>
+    <message>
+      <source>Sound copied to clipboard</source>
+      <translation>声音已复制到剪贴板</translation>
+    </message>
+    <message>
+      <source>Failed to download sound</source>
+      <translation>下载声音失败</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
