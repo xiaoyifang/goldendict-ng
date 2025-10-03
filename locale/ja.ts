@@ -266,6 +266,26 @@
       <source>Unable to load the requested page content</source>
       <translation>要求されたページのコンテンツを読み込むことができません</translation>
     </message>
+    <message>
+      <source>&amp;Copy sound to clipboard</source>
+      <translation>サウンドをクリップボードにコピー(&amp;C)</translation>
+    </message>
+    <message>
+      <source>Failed to copy sound</source>
+      <translation>サウンドのコピーに失敗しました</translation>
+    </message>
+    <message>
+      <source>Failed to write complete audio data</source>
+      <translation>完全な音声データの書き込みに失敗しました</translation>
+    </message>
+    <message>
+      <source>Sound copied to clipboard</source>
+      <translation>サウンドをクリップボードにコピーしました</translation>
+    </message>
+    <message>
+      <source>Failed to download sound</source>
+      <translation>サウンドのダウンロードに失敗しました</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>

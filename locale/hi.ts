@@ -266,6 +266,26 @@
       <source>Unable to load the requested page content</source>
       <translation type="unfinished">Unable to load the requested page content</translation>
     </message>
+    <message>
+      <source>&amp;Copy sound to clipboard</source>
+      <translation type="unfinished">&amp;Copy sound to clipboard</translation>
+    </message>
+    <message>
+      <source>Failed to copy sound</source>
+      <translation type="unfinished">Failed to copy sound</translation>
+    </message>
+    <message>
+      <source>Failed to write complete audio data</source>
+      <translation type="unfinished">Failed to write complete audio data</translation>
+    </message>
+    <message>
+      <source>Sound copied to clipboard</source>
+      <translation type="unfinished">Sound copied to clipboard</translation>
+    </message>
+    <message>
+      <source>Failed to download sound</source>
+      <translation type="unfinished">Failed to download sound</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>

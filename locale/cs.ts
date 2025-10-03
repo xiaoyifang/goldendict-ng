@@ -266,6 +266,26 @@
       <source>Unable to load the requested page content</source>
       <translation>Nelze načíst požadovaný obsah stránky</translation>
     </message>
+    <message>
+      <source>&amp;Copy sound to clipboard</source>
+      <translation>&amp;Kopírovat zvuk do schránky</translation>
+    </message>
+    <message>
+      <source>Failed to copy sound</source>
+      <translation>Kopírování zvuku se nezdařilo</translation>
+    </message>
+    <message>
+      <source>Failed to write complete audio data</source>
+      <translation>Nepodařilo se zapsat kompletní zvuková data</translation>
+    </message>
+    <message>
+      <source>Sound copied to clipboard</source>
+      <translation>Zvuk zkopírován do schránky</translation>
+    </message>
+    <message>
+      <source>Failed to download sound</source>
+      <translation>Nepodařilo se stáhnout zvuk</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>

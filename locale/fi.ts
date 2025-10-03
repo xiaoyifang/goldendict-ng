@@ -266,6 +266,26 @@
       <source>Unable to load the requested page content</source>
       <translation>Pyydettyä sivun sisältöä ei voitu ladata</translation>
     </message>
+    <message>
+      <source>&amp;Copy sound to clipboard</source>
+      <translation>&amp;Kopioi ääni leikepöydälle</translation>
+    </message>
+    <message>
+      <source>Failed to copy sound</source>
+      <translation>Äänen kopiointi epäonnistui</translation>
+    </message>
+    <message>
+      <source>Failed to write complete audio data</source>
+      <translation>Valmiiden äänitietojen kirjoittaminen epäonnistui</translation>
+    </message>
+    <message>
+      <source>Sound copied to clipboard</source>
+      <translation>Ääni kopioitu leikepöydälle</translation>
+    </message>
+    <message>
+      <source>Failed to download sound</source>
+      <translation>Äänen lataaminen epäonnistui</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
