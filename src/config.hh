@@ -17,6 +17,7 @@
 #include <QString>
 #include <QThread>
 #include <optional>
+#include <QDir>
 
 /// Special group IDs
 enum GroupId : unsigned {
@@ -445,7 +446,7 @@ struct WebSite
   QString id, name, url;
   bool enabled;
   QString iconFilename;
-  bool inside_iframe = false;
+  QString script;
 
   WebSite():
     enabled( false )
@@ -457,20 +458,20 @@ struct WebSite
            const QString & url_,
            bool enabled_,
            const QString & iconFilename_,
-           bool inside_iframe_ ):
+           const QString & script_ = QString() ):
     id( id_ ),
     name( name_ ),
     url( url_ ),
     enabled( enabled_ ),
     iconFilename( iconFilename_ ),
-    inside_iframe( inside_iframe_ )
+    script( script_ )
   {
   }
 
   bool operator==( const WebSite & other ) const
   {
     return id == other.id && name == other.name && url == other.url && enabled == other.enabled
-      && iconFilename == other.iconFilename && inside_iframe == other.inside_iframe;
+      && iconFilename == other.iconFilename && script == other.script;
   }
 };
 
@@ -929,6 +930,8 @@ QString getConfigDir();
 
 /// Returns the index directory, where the indices are to be stored.
 QString getIndexDir();
+
+QDir getHomeDir();
 
 /// Returns the filename of a .pid file which should store current pid of
 /// the process.

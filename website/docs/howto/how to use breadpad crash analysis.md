@@ -6,15 +6,15 @@ When a crash is encountered, a dump file is generated under the folder `crash`.T
 
 ## Option 1: Visual Studio
 
-1. Open the `.dmp` file with VS
-2. Click `Debug with Native Only`
-3. Click `Locate goldendict.pdb manually` -> click to a path that contains the `.pdf` file (Require exact naming of `goldendict.pdb`)
+1. Open the `.dmp` file with VS:
+2. Click `Debug with Native Only`:
+3. Click `Locate goldendict.pdb manually` -> click to a path that contains the `.pdf` file (Require exact naming of `goldendict.pdb`):
 
 Bottom tab --> `locals` --> watch stack.
 
-## Option2: WinDbg 
+## Option 2: WinDbg 
 
-1. Grab a modern version of WinDbg https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/
+1. Grab a modern version of WinDbg https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/:
 2. Click Settings -> Debug settings -> Debugging paths -> Symbol path -> (add a path contains `goldendict.pdb`).
 
 
@@ -37,14 +37,15 @@ Download the exe files from
 
 Part of Google breakpad's repo. Grab them from random places of internet (e.g. [minidump-tools](https://gitee.com/wabwh/breakpad-minindump-tools/tree/master/)).
 
-1. `dump_syms.exe GoldenDict.pdb > GoldenDict.sym`
+1. `dump_syms.exe GoldenDict.pdb > GoldenDict.sym`:
 The content of GoldenDict.sym is like this:
 ```
 MODULE windows x86_64 904B2C52C1EC411D9D0271445CAD6DCD2 GoldenDict.pdb
 INFO CODE_ID 645510C96CC000 GoldenDict.exe
 ```
 
-2. create a folder such as `symbols`  and a series of folders like this:
+2. Create a folder such as `symbols`  and a series of folders like this:
+
 ```
 GoldDict.exe
 a.dmp                 (A)
@@ -57,8 +58,8 @@ symbols
 - `B`   this is a folder name
 - `C`   this folder takes the name from the first line of `GoldenDict.sym` file
 
-3. anlaysis the dump file like this
+3. Analysis the dump file like this:
 ```
 minidump_stackwalk.exe  -s a.dmp symbols > a.txt
 ```
-4.  check the a.txt file to find the possible crash reason. usually it will point to the actual crash line number of the source code.
+4. Check the a.txt file to find the possible crash reason. Usually it will point to the actual crash line number of the source code.

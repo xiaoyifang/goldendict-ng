@@ -2485,10 +2485,6 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
       <translation>HTML unique (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Pdf (*.pdf)</source>
-      <translation>Pdf (*.pdf)</translation>
-    </message>
-    <message>
       <source>Mime Html (*.mhtml)</source>
       <translation>MIME HTML (*.mhtml)</translation>
     </message>
@@ -2611,6 +2607,10 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     <message>
       <source>Save PDF failed</source>
       <translation>Échec de l'enregistrement du PDF</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>Document PDF (*.pdf *.PDF)</translation>
     </message>
   </context>
   <context>
@@ -3635,6 +3635,14 @@ des dictionnaires Stardict, Babylon et GLS</translation>
       <source>Force the word to be translated in the mainwindow.</source>
       <translation>Forcer la traduction du mot dans la fenêtre principale.</translation>
     </message>
+    <message>
+      <source>Website Url:</source>
+      <translation>Url du site :</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation>Dans l’URL, &quot;%GDWORD%&quot; sera remplacé par le mot à rechercher.</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -4124,18 +4132,17 @@ La liste complète des langues disponibles peut être trouvée &lt;a href=&quot;
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Insérer un article comme lien dans la balise &lt;iframe&gt;</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation>Le dictionnaire de ce site Web est ouvert dans un nouvel onglet</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>Activé</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>En tant que lien</translation>
     </message>
     <message>
       <source>Name</source>
@@ -4148,6 +4155,18 @@ La liste complète des langues disponibles peut être trouvée &lt;a href=&quot;
     <message>
       <source>Icon</source>
       <translation>Icône</translation>
+    </message>
+    <message>
+      <source>Script</source>
+      <translation>Écriture</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation>Nom du fichier d'icône. relatif au répertoire de configuration.</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation>Uniquement disponible lors de l'ouverture de sites Web dans des onglets séparés. Peut être un chemin de fichier (relatif au répertoire de configuration ou absolu) ou du contenu de script direct.</translation>
     </message>
   </context>
   <context>

@@ -2485,10 +2485,6 @@ Për të gjetur &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simbo
       <translation>Html e vetme (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Pdf (*.pdf)</source>
-      <translation>PDF (*.pdf)</translation>
-    </message>
-    <message>
       <source>Mime Html (*.mhtml)</source>
       <translation>Mime Html (*.mhtml)</translation>
     </message>
@@ -2611,6 +2607,10 @@ Për të gjetur &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; simbo
     <message>
       <source>Save PDF failed</source>
       <translation type="unfinished">Save PDF failed</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
     </message>
   </context>
   <context>
@@ -3631,6 +3631,14 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
       <source>Force the word to be translated in the mainwindow.</source>
       <translation type="unfinished">Force the word to be translated in the mainwindow.</translation>
     </message>
+    <message>
+      <source>Website Url:</source>
+      <translation type="unfinished">Website Url:</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation type="unfinished">In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -4120,18 +4128,17 @@ Lista e plotë e gjuhëve të disponueshme mund të gjendet &lt;a href=&quot;htt
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Fut artikullin si lidhje brenda etiketës &lt;iframe&gt;</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation type="unfinished">This website dictionary is opened in a new tab</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>Aktiv</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>Si lidhje</translation>
     </message>
     <message>
       <source>Name</source>
@@ -4144,6 +4151,18 @@ Lista e plotë e gjuhëve të disponueshme mund të gjendet &lt;a href=&quot;htt
     <message>
       <source>Icon</source>
       <translation>Ikona</translation>
+    </message>
+    <message>
+      <source>Script</source>
+      <translation type="unfinished">Script</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation type="unfinished">Icon file name. Relative to the config directory.</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation type="unfinished">Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</translation>
     </message>
   </context>
   <context>

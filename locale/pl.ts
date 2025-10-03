@@ -2486,10 +2486,6 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
       <translation>Pojedynczy HTML (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Pdf (*.pdf)</source>
-      <translation>Plik PDF (*.pdf)</translation>
-    </message>
-    <message>
       <source>Mime Html (*.mhtml)</source>
       <translation>Mime HTML (*.mhtml)</translation>
     </message>
@@ -2612,6 +2608,10 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
     <message>
       <source>Save PDF failed</source>
       <translation>Zapisanie PDF nie powiodło się</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>Dokument PDF (*.pdf *.PDF)</translation>
     </message>
   </context>
   <context>
@@ -3638,6 +3638,14 @@ ze słowników Stardict, Babylon i GLS</translation>
       <source>Force the word to be translated in the mainwindow.</source>
       <translation>Wymuś tłumaczenie słowa w głównym oknie.</translation>
     </message>
+    <message>
+      <source>Website Url:</source>
+      <translation>Adres strony internetowej:</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation>W URL, &quot;%GDWORD%&quot; zostanie zastąpiony słowem wyszukiwanym.</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -4129,18 +4137,17 @@ Pełną listę dostępnych języków można znaleźć &lt;a href=&quot;https://l
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Wstaw artykuł jako link wewnątrz tagu &lt;iframe&gt;</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation>Ten słownik strony jest otwarty w nowej karcie</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>Włączone</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>Jako link</translation>
     </message>
     <message>
       <source>Name</source>
@@ -4153,6 +4160,18 @@ Pełną listę dostępnych języków można znaleźć &lt;a href=&quot;https://l
     <message>
       <source>Icon</source>
       <translation>Ikona</translation>
+    </message>
+    <message>
+      <source>Script</source>
+      <translation>Skrypt</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation>Nazwa pliku ikony. W stosunku do katalogu konfiguracyjnego.</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation>Dostępne tylko podczas otwierania stron internetowych w oddzielnych kartach. Może być ścieżką pliku (w stosunku do katalogu konfiguracyjnego lub bezwzględnego) lub bezpośrednią zawartością skryptu.</translation>
     </message>
   </context>
   <context>

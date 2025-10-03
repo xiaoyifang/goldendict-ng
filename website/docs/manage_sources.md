@@ -4,7 +4,7 @@ To use local dictionaries, add them via `Sources` -> `Files`.
 
 To inspect or disable individual dictionaries, go `Edit` -> `Dictionaries` -> `Dictionaries`.
 
-If you have too many dictionaries, consider use `Groups` to manage them.
+If you have too many dictionaries, consider using `Groups` to manage them.
 
 ## Files
 
@@ -13,11 +13,11 @@ If you have too many dictionaries, consider use `Groups` to manage them.
 
 Here you can add local dictionaries.
 
-Press the "Add" button and select folders that includes your local dictionaries. To search every subfolders, enable the "Recursive".
+Press the "Add" button and select folders that include your local dictionaries. To search every subfolder, enable the "Recursive":
 
-GoldenDict will scan these folders and add found dictionaries into dictionaries list.
+GoldenDict will scan these folders and add found dictionaries to the dictionaries list.
 
-"Rescan" button start forced scan of all folders in list.
+The "Rescan" button starts a forced scan of all folders in the list.
 
 
 ## Sound Dirs
@@ -32,7 +32,7 @@ A word could have several forms, but sometimes a dictionary only contains one fo
 
 Morphology dictionary uses Hunspell's morphological analysis to obtain word's variant forms.
 
-You can specify a path that includes Hunspell format data files (`.aff` + `.dic`). GoldenDict scan this folder and create a list of available dictionaries.
+You can specify a path that includes Hunspell format data files (`.aff` + `.dic`). GoldenDict will scan this folder and create a list of available dictionaries.
 
 One possible source of Hunspell dictionaries is LibreOffice's [dictionaries](https://github.com/LibreOffice/dictionaries).
 
@@ -46,9 +46,9 @@ There are some specially tailored hunspell dicts to use for Morphology. Such as
 
 ## Websites
 
-Here you can add any website which allow to set target word in url. To add such site you should set it url with target word template, name for dictionaries list and set mark in "Enabled" column. In the "Icon" column you can set custom icon for this site. If you add icon file name without path GoldenDict will search this file in configuration folder. "As link" column define method of article insertion into common page. If this option is set article will be inserted as link inside `<iframe>` tag (preferable mode). If articles are not loaded in this mode turn this option off, then articles will be inserted as html-code.
+Here you can add any website that allows you to set the target word in the URL. To add such a site, you should set its URL with the target word template, name for the dictionaries list, and set a mark in the "Enabled" column. In the "Icon" column, you can set a custom icon for this site. If you add an icon file name without a path, GoldenDict will search for this file in the configuration folder. The "As link" column defines the method of article insertion into the common page. If this option is set, the article will be inserted as a link inside an `<iframe>` tag (preferable mode). If articles are not loaded in this mode, turn this option off, then articles will be inserted as HTML code.
 
-Target word can be inserted into url in next encodings::
+Target word can be inserted into url in next encodings:
 
 | Target word template   | Encoding                                |
 |------------------------|-----------------------------------------|
@@ -57,7 +57,7 @@ Target word can be inserted into url in next encodings::
 
 ## DICT servers
 
-Here you can add servers which uses DICT protocol. To add such server you should set its url, name for dictionaries list, server bases list, search strategies list and set mark in "Enabled" column. If bases list is empty GoldenDict will use all server bases. If search strategies list is empty GoldenDict will use "prefix" strategy (comparing the first part of the word).
+Here you can add servers which use the DICT protocol. To add such a server, you should set its URL, name for the dictionaries list, server bases list, search strategies list, and set a mark in the "Enabled" column. If the bases list is empty, GoldenDict will use all server bases. If the search strategies list is empty, GoldenDict will use the "prefix" strategy (comparing the first part of the word).
 
 In the "Icon" column you can set custom icon for every server. If you add icon file name without path GoldenDict will search this file in configuration folder.
 
@@ -72,7 +72,7 @@ The `%GDWORD%` in command line will be replaced by word from search line.
 |--------------|---------------------------------------------------------------------------------------|
 | Audio        | Play sound.                                                                           |
 | Text         | Text printed by the program will be shown as separate article.                        |
-| HTML         | HTML printed by the program Will be shown as separate article.                        |
+| HTML         | HTML printed by the program will be shown as separate article.                        |
 | Prefix match | A list of words printed by the program will be added to search bar's completion list. |
 
 Other than "Audio", the program should print the content to standard output.
@@ -95,7 +95,7 @@ In the "Icon" column, you can set a custom icon for every application. If you ad
 
 ## Transliteration
 
-Here you can add transliteration algorithms. To add algorithm into dictionaries list just set mark beside it. When such dictionary added into current dictionaries group GoldenDict will search word in the input line as well as result of its handling by corresponding transliteration algorithm.
+Here you can add transliteration algorithms. To add an algorithm to the dictionaries list, just set a mark beside it. When such a dictionary is added to the current dictionaries group, GoldenDict will search for the word in the input line as well as the result of its handling by the corresponding transliteration algorithm.
 
 ## System Text-to-speech engines
 

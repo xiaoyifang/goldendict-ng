@@ -2486,10 +2486,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>単一の HTML (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Pdf (*.pdf)</source>
-      <translation>PDF (*.pdf)</translation>
-    </message>
-    <message>
       <source>Mime Html (*.mhtml)</source>
       <translation>MIME HTML (*.mhtml)</translation>
     </message>
@@ -2612,6 +2608,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Save PDF failed</source>
       <translation>PDFの保存に失敗しました</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF ドキュメント (*.pdf *.PDF)</translation>
     </message>
   </context>
   <context>
@@ -3638,6 +3638,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Force the word to be translated in the mainwindow.</source>
       <translation>メインウィンドウに単語を強制的に翻訳します。</translation>
     </message>
+    <message>
+      <source>Website Url:</source>
+      <translation>Website Url:</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation>Url では、 &quot;%GDWORD%&quot; が検索されている単語に置き換えられます。</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -4123,18 +4131,17 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>&lt;iframe&gt; タグ内のリンクとして記事を挿入</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation>このウェブサイト辞書は新しいタブで開かれています</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>有効</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>リンクとして</translation>
     </message>
     <message>
       <source>Name</source>
@@ -4147,6 +4154,18 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>Icon</source>
       <translation>アイコン</translation>
+    </message>
+    <message>
+      <source>Script</source>
+      <translation>スクリプト</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation>アイコンのファイル名。設定ディレクトリに相対的です。</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation>個別のタブでウェブサイトを開くときにのみ利用できます。ファイルパス（設定ディレクトリまたは絶対ディレクトリからの相対）または直接スクリプトコンテンツにすることができます。</translation>
     </message>
   </context>
   <context>

@@ -256,7 +256,7 @@ public:
             }
             reply = reply.trimmed();
 
-            qDebug() << "receive db:" << reply;
+            qDebug().noquote() << "receive db:" << reply;
 
             if ( reply[ 0 ] == '.' ) {
               state = DictServerState::DB_DATA_FINISHED;
@@ -278,7 +278,7 @@ public:
       else if ( state == DictServerState::DB_DATA ) {
         while ( !reply.isEmpty() ) {
 
-          qDebug() << "receive db:" << reply;
+          qDebug().noquote() << "receive db:" << reply;
           if ( reply[ 0 ] == '.' ) {
             state = DictServerState::DB_DATA_FINISHED;
             emit finishDatabase();

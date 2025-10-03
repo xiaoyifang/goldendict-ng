@@ -2486,10 +2486,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Html ягона (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Pdf (*.pdf)</source>
-      <translation>PDF (*.pdf)</translation>
-    </message>
-    <message>
       <source>Mime Html (*.mhtml)</source>
       <translation>Mime Html (*.mhtml)</translation>
     </message>
@@ -2612,6 +2608,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Save PDF failed</source>
       <translation>Save PDF failed</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
     </message>
   </context>
   <context>
@@ -3639,6 +3639,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Force the word to be translated in the mainwindow.</source>
       <translation>Force the word to be translated in the mainwindow.</translation>
     </message>
+    <message>
+      <source>Website Url:</source>
+      <translation type="unfinished">Website Url:</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation type="unfinished">In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -4129,18 +4137,17 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Дарҷ кардани мақола ҳамчун пайванди дохили барчаспи &lt;iframe&gt;</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation type="unfinished">This website dictionary is opened in a new tab</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>Фаъолшуда</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>Ҳамчун пайванд</translation>
     </message>
     <message>
       <source>Name</source>
@@ -4153,6 +4160,18 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>Icon</source>
       <translation>Аломат</translation>
+    </message>
+    <message>
+      <source>Script</source>
+      <translation type="unfinished">Script</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation type="unfinished">Icon file name. Relative to the config directory.</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation type="unfinished">Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</translation>
     </message>
   </context>
   <context>

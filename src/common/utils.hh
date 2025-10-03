@@ -281,10 +281,43 @@ inline std::pair< bool, QString > getQueryWord( const QUrl & url )
   return std::make_pair( validScheme, word );
 }
 
+inline QString getParams( const QUrl & url, const QString & key )
+{
+  QString word;
+  if ( url.scheme().compare( "gdlookup" ) == 0 ) {
+    if ( hasQueryItem( url, key ) ) {
+      word = queryItemValue( url, key );
+    }
+    else {
+      word = url.path().mid( 1 );
+    }
+  }
+  if ( url.scheme().compare( "bword" ) == 0 || url.scheme().compare( "entry" ) == 0 ) {
+    auto path = url.path();
+    // url like this , bword:word  or bword://localhost/word
+    if ( !path.isEmpty() ) {
+      //url,bword://localhost/word
+      if ( path.startsWith( "/" ) )
+        word = path.mid( 1 );
+      else
+        word = path;
+    }
+    else {
+      // url looks like this, bword://word,or bword://localhost
+      auto host = url.host();
+      if ( host != "localhost" ) {
+        word = host;
+      }
+    }
+  }
+  return word;
+}
+
 inline bool isAudioUrl( const QUrl & url )
 {
-  if ( !url.isValid() )
+  if ( !url.isValid() ) {
     return false;
+  }
 
   // gdau links are known to be audios, (sometimes they may not have file extension).
   if ( url.scheme() == "gdau" || url.scheme() == "gdprg" || url.scheme() == "gdtts" ) {
@@ -298,8 +331,9 @@ inline bool isAudioUrl( const QUrl & url )
 
 inline bool isWebAudioUrl( const QUrl & url )
 {
-  if ( !url.isValid() )
+  if ( !url.isValid() ) {
     return false;
+  }
   // Note: we check for forvo sound links explicitly, as they don't have extensions
 
   return ( url.scheme() == "http" || url.scheme() == "https" )
@@ -315,12 +349,14 @@ inline QString getHostBase( const QString & host )
   int left = domains.size();
 
   // Skip last <=3-letter domain name
-  if ( left && domains[ left - 1 ].size() <= 3 )
+  if ( left && domains[ left - 1 ].size() <= 3 ) {
     --left;
+  }
 
   // Skip another <=3-letter domain name
-  if ( left && domains[ left - 1 ].size() <= 3 )
+  if ( left && domains[ left - 1 ].size() <= 3 ) {
     --left;
+  }
 
   if ( left > 1 ) {
     // We've got something like www.foobar.co.uk -- we can chop off the first
@@ -328,8 +364,9 @@ inline QString getHostBase( const QString & host )
 
     return host.mid( domains[ 0 ].size() + 1 );
   }
-  else
+  else {
     return host;
+  }
 }
 
 inline QString getHostBaseFromUrl( const QUrl & url )
@@ -338,6 +375,21 @@ inline QString getHostBaseFromUrl( const QUrl & url )
 
   return getHostBase( host );
 }
+
+/// \brief Extract the base domain from a given domain string.
+///
+/// This method handles several cases:
+/// 1. Standard domains like "example.com" -> "example.com"
+/// 2. Subdomains like "www.example.com" -> "example.com"
+/// 3. Generic patterns like ".com.xx", ".co.xx", ".org.xx" where xx is a 2-3 character TLD -> "example.com"
+///
+/// Examples:
+/// - "www.example.com.jp" -> "example.com"
+/// - "subdomain.example.org.uk" -> "example.org"
+///
+/// \param domain The domain string to process
+/// \return The extracted base domain
+QString extractBaseDomain( const QString & domain );
 
 QString getSchemeAndHost( const QUrl & url );
 

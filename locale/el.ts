@@ -2488,10 +2488,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Μονό Html (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Pdf (*.pdf)</source>
-      <translation>Pdf (*.pdf)</translation>
-    </message>
-    <message>
       <source>Mime Html (*.mhtml)</source>
       <translation>Mime Html (*.mhtml)</translation>
     </message>
@@ -2614,6 +2610,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Save PDF failed</source>
       <translation>Αποτυχία αποθήκευσης PDF</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF έγγραφο (*.pdf *.PDF)</translation>
     </message>
   </context>
   <context>
@@ -3641,6 +3641,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Force the word to be translated in the mainwindow.</source>
       <translation>Εξαναγκασμός μετάφρασης της λέξης στο κύριο παράθυρο.</translation>
     </message>
+    <message>
+      <source>Website Url:</source>
+      <translation>Url Ιστοσελίδας:</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation>Στο Url, &quot;%GDWORD%&quot; θα αντικατασταθεί με τη λέξη που θα αναζητηθεί.</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -4130,18 +4138,17 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Εισαγωγή άρθρου ως σύνδεσμος μέσα στην ετικέτα &lt;iframe&gt;</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation>Αυτό το λεξικό ιστοσελίδας ανοίγει σε νέα καρτέλα</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>Ενεργή</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>Ως σύνδεσμος</translation>
     </message>
     <message>
       <source>Name</source>
@@ -4154,6 +4161,18 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>Icon</source>
       <translation>Εικονίδιο</translation>
+    </message>
+    <message>
+      <source>Script</source>
+      <translation>Σενάριο</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation>Όνομα αρχείου εικονιδίου. Σε σχέση με τον κατάλογο ρυθμίσεων.</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation>Διαθέσιμο μόνο όταν ανοίγετε ιστοσελίδες σε ξεχωριστές καρτέλες. Μπορεί να είναι μια διαδρομή αρχείου (σε σχέση με τον κατάλογο ρύθμισης ή απόλυτο) ή άμεση δέσμη ενεργειών περιεχομένου.</translation>
     </message>
   </context>
   <context>

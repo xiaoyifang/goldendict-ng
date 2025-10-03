@@ -1,9 +1,11 @@
 name: Release All
+permissions:
+  contents: write
 concurrency:
    group: ${{ github.workflow }}-${{ github.ref }}
    cancel-in-progress: true
 env:
-  version: 25.07.0
+  version: 25.11.0
   prerelease: ${{ !contains(github.ref_name,'master') }}
   versionSuffix: ${{ !contains(github.ref_name,'master') && 'alpha' || 'Release' }}
 on:

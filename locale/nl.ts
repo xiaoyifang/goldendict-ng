@@ -2486,10 +2486,6 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
       <translation>Enkele Html (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Pdf (*.pdf)</source>
-      <translation>Pdf-bestand (*.pdf)</translation>
-    </message>
-    <message>
       <source>Mime Html (*.mhtml)</source>
       <translation>Mime-HTML (*.mhtml)</translation>
     </message>
@@ -2612,6 +2608,10 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
     <message>
       <source>Save PDF failed</source>
       <translation>Opslaan PDF mislukt</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF-document (*.pdf *.PDF)</translation>
     </message>
   </context>
   <context>
@@ -3635,6 +3635,14 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <source>Force the word to be translated in the mainwindow.</source>
       <translation>Forceer het woord te vertalen in het hoofdvenster.</translation>
     </message>
+    <message>
+      <source>Website Url:</source>
+      <translation>Website URL:</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation>In de Url, &quot;%GDWORD%&quot; wordt vervangen door het woord dat wordt gezocht.</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -4125,18 +4133,17 @@ De volledige lijst met beschikbare talen vindt u &lt;a href=&quot;https://lingua
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Artikel invoegen als link binnen &lt;iframe&gt; tag</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation>Dit woordenboek van deze website wordt geopend in een nieuw tabblad</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>Ingeschakeld</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>Als koppeling</translation>
     </message>
     <message>
       <source>Name</source>
@@ -4149,6 +4156,18 @@ De volledige lijst met beschikbare talen vindt u &lt;a href=&quot;https://lingua
     <message>
       <source>Icon</source>
       <translation>Pictogram</translation>
+    </message>
+    <message>
+      <source>Script</source>
+      <translation>Naam</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation>Pictogram bestandsnaam. Relatief met de configuratie map.</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation>Alleen beschikbaar bij het openen van websites op afzonderlijke tabbladen. Kan een bestandspad zijn (relatief aan configuratie-map of absolute) of directe script-inhoud.</translation>
     </message>
   </context>
   <context>

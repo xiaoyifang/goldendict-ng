@@ -2482,10 +2482,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Pdf (*.pdf)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Mime Html (*.mhtml)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2607,6 +2603,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
         <source>Save PDF failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PDF document (*.pdf *.PDF)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3610,6 +3610,14 @@ from Stardict, Babylon and GLS dictionaries</source>
         <source>Force the word to be translated in the mainwindow.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Website Url:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QuickFilterLine</name>
@@ -4092,17 +4100,16 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
 </context>
 <context>
+    <name>WebSite</name>
+    <message>
+        <source>This website dictionary is opened in a new tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>WebSitesModel</name>
     <message>
-        <source>Insert article as link inside &lt;iframe&gt; tag</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Enabled</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>As link</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4115,6 +4122,18 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
     <message>
         <source>Icon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Script</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Icon file name. Relative to the config directory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -2486,10 +2486,6 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; uso de
       <translation>Single Html (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Pdf (*.pdf)</source>
-      <translation>Pdf (*.pdf)</translation>
-    </message>
-    <message>
       <source>Mime Html (*.mhtml)</source>
       <translation>Mime Html (*.mhtml)</translation>
     </message>
@@ -2612,6 +2608,10 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; uso de
     <message>
       <source>Save PDF failed</source>
       <translation type="unfinished">Save PDF failed</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
     </message>
   </context>
   <context>
@@ -3634,6 +3634,14 @@ de los diccionarios Stardict, Babylon y GLS.</translation>
       <source>Force the word to be translated in the mainwindow.</source>
       <translation type="unfinished">Force the word to be translated in the mainwindow.</translation>
     </message>
+    <message>
+      <source>Website Url:</source>
+      <translation type="unfinished">Website Url:</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation type="unfinished">In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -4124,18 +4132,17 @@ Lista completa de idiomas disponibles puede encontrarse &lt;a href=&quot;https:/
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Insertar artículo como enlace dentro de la etiqueta &lt;iframe&gt;</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation type="unfinished">This website dictionary is opened in a new tab</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>Habilitado</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>Como enlace</translation>
     </message>
     <message>
       <source>Name</source>
@@ -4148,6 +4155,18 @@ Lista completa de idiomas disponibles puede encontrarse &lt;a href=&quot;https:/
     <message>
       <source>Icon</source>
       <translation>Icono</translation>
+    </message>
+    <message>
+      <source>Script</source>
+      <translation type="unfinished">Script</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation type="unfinished">Icon file name. Relative to the config directory.</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation type="unfinished">Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</translation>
     </message>
   </context>
   <context>

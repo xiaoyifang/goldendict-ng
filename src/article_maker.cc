@@ -51,8 +51,7 @@ std::string ArticleMaker::makeHtmlHeader( const QString & word, const QString & 
     result += R"(<script> jQuery.noConflict(); </script>)";
 
     result += R"(<script src="qrc:///scripts/gd-custom.js"></script>)";
-    result += R"(<script src="qrc:///scripts/iframe-resizer.jquery.js"></script>)";
-    result += R"(<script src="qrc:///scripts/iframe-resizer.parent.js"></script>)";
+    result += R"(<script src="qrc:///scripts/iframeResizer.min.js"></script>)";
   }
 
   // add qwebchannel
@@ -138,26 +137,7 @@ std::string ArticleMaker::makeHtmlHeader( const QString & word, const QString & 
   result += R"(<script src="qrc:///scripts/mark.min.js"></script>)";
 
   /// Handling Dark reader mode.
-
-  bool darkReaderModeEnabled = false;
-
-  if ( GlobalBroadcaster::instance()->getPreference()->darkReaderMode == Config::Dark::On ) {
-    darkReaderModeEnabled = true;
-  }
-
-#if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
-  if ( GlobalBroadcaster::instance()->getPreference()->darkReaderMode == Config::Dark::Auto
-  #if !defined( Q_OS_WINDOWS )
-       // For macOS & Linux, uses "System's style hint". There is no darkMode setting in GD for them.
-       && QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark
-  #else
-       // For Windows, uses the setting in GD
-       && GlobalBroadcaster::instance()->getPreference()->darkMode == Config::Dark::On
-  #endif
-  ) {
-    darkReaderModeEnabled = true;
-  }
-#endif
+  bool darkReaderModeEnabled = GlobalBroadcaster::instance()->isDarkModeEnabled();
 
   if ( darkReaderModeEnabled ) {
     //only enable this darkmode on modern style.
@@ -518,31 +498,27 @@ void ArticleRequest::altSearchFinished()
 
     for ( const auto & activeDict : activeDicts ) {
       try {
-        // if the dictionary is website dictionary and openinNewTab is enabled, emit a signal.
-        if ( GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
-          if ( ( activeDict->getFeatures() | Dictionary::WebSite ) == Dictionary::WebSite ) {
-            //replace the word,and get the actual requested url
-            QString url = activeDict->getProperties()[ "Url" ];
-            if ( !url.isEmpty() ) {
-              QString requestUrl = Utils::WebSite::urlReplaceWord( url, word );
-              auto title         = QString::fromStdString( activeDict->getName() );
-              emit GlobalBroadcaster::instance() -> websiteDictionarySignal( title + "-" + word, requestUrl );
-            }
-          }
+        if ( word == ":about" ) {
+          QString description = activeDict->getDescription();
+          auto r              = std::make_shared< Dictionary::DataRequestInstant >( true );
+          r->appendString( description.toStdString() );
+          bodyRequests.push_back( r );
         }
+        else {
+          sptr< Dictionary::DataRequest > r = activeDict->getArticle(
+            wordStd,
+            altsVector,
+            Text::removeTrailingZero( contexts.value( QString::fromStdString( activeDict->getId() ) ) ),
+            ignoreDiacritics );
 
-        sptr< Dictionary::DataRequest > r = activeDict->getArticle(
-          wordStd,
-          altsVector,
-          Text::removeTrailingZero( contexts.value( QString::fromStdString( activeDict->getId() ) ) ),
-          ignoreDiacritics );
+          connect( r.get(), &Dictionary::Request::finished, this, &ArticleRequest::bodyFinished, Qt::QueuedConnection );
 
-        connect( r.get(), &Dictionary::Request::finished, this, &ArticleRequest::bodyFinished, Qt::QueuedConnection );
-
-        bodyRequests.push_back( r );
+          bodyRequests.push_back( r );
+        }
       }
-      catch ( std::exception & e ) {
-        qWarning( "getArticle request error (%s) in \"%s\"", e.what(), activeDict->getName().c_str() );
+      catch ( const std::exception & e ) {
+        qWarning() << "getArticle request error:" << e.what() << "in"
+                   << QString::fromStdString( activeDict->getName() );
       }
     }
 
@@ -620,8 +596,6 @@ void ArticleRequest::bodyFinished()
     return;
   }
 
-  qDebug() << ">>>>";
-
   bool wasUpdated = false;
 
   QStringList dictIds;
@@ -646,10 +620,6 @@ void ArticleRequest::bodyFinished()
 
         string gdFrom = "gdfrom-" + Html::escape( dictId );
 
-        if ( closePrevSpan ) {
-          head += R"(</div></div><div style="clear:both;"></div><span class="gdarticleseparator"></span>)";
-        }
-
         bool collapse = isCollapsable( req, QString::fromStdString( dictId ) );
 
         string jsVal = Html::escapeForJavaScript( dictId );
@@ -659,12 +629,10 @@ void ArticleRequest::bodyFinished()
                           R"( <div class="gdarticle {0} {1}" id="{2}"
                               data-gd-id="{3}"
                               >)" ),
-                        closePrevSpan ? "" : " gdactivearticle",
+                        "",
                         collapse ? " gdcollapsedarticle" : "",
                         gdFrom,
                         jsVal );
-
-        closePrevSpan = true;
 
         fmt::format_to( std::back_inserter( head ),
                         FMT_COMPILE(
@@ -717,9 +685,12 @@ void ArticleRequest::bodyFinished()
             appendDataSlice( &d.front(), d.size() );
           }
         }
-        catch ( std::exception & e ) {
-          qWarning( "getDataSlice error: %s", e.what() );
+        catch ( const std::exception & e ) {
+          qWarning() << "getDataSlice error:" << e.what();
         }
+
+        auto separator = R"(</div></div><div style="clear:both;"></div><span class="gdarticleseparator"></span>)";
+        appendString( separator );
 
         wasUpdated = true;
 
@@ -744,11 +715,6 @@ void ArticleRequest::bodyFinished()
     bodyDone = true;
 
     string footer;
-
-    if ( closePrevSpan ) {
-      footer += "</div></div>";
-      closePrevSpan = false;
-    }
 
     if ( !foundAnyDefinitions ) {
       // No definitions were ever found, say so to the user.

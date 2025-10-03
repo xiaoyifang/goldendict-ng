@@ -2486,10 +2486,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>单个 HTML (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Pdf (*.pdf)</source>
-      <translation>PDF（*.pdf）</translation>
-    </message>
-    <message>
       <source>Mime Html (*.mhtml)</source>
       <translation>Mime Html (*.mhtml)</translation>
     </message>
@@ -2612,6 +2608,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Save PDF failed</source>
       <translation>保存 PDF 失败</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF 文档 (*.pdf *.PDF)</translation>
     </message>
   </context>
   <context>
@@ -3624,6 +3624,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Force the word to be translated in the mainwindow.</source>
       <translation>强制在主窗口中翻译单词。</translation>
     </message>
+    <message>
+      <source>Website Url:</source>
+      <translation>网站 Url：</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation>在 URL 中，"%GDWORD%" 将被替换为正在搜索的词。</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -4112,18 +4120,17 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>将文章在 &lt;iframe&gt; 标签中作为链接插入</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation>此网站字典在一个新标签中打开</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>已启用</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>作为链接</translation>
     </message>
     <message>
       <source>Name</source>
@@ -4136,6 +4143,18 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>Icon</source>
       <translation>图标</translation>
+    </message>
+    <message>
+      <source>Script</source>
+      <translation>脚本</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation>图标文件名。相对于配置目录。</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation>仅当以单独标签打开网站时可用。可以是文件路径(相对于配置目录或绝对目录)，也可以是直接脚本内容。</translation>
     </message>
   </context>
   <context>

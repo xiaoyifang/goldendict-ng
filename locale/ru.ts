@@ -2489,10 +2489,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Один HTML (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Pdf (*.pdf)</source>
-      <translation>PDF-файл (*.pdf)</translation>
-    </message>
-    <message>
       <source>Mime Html (*.mhtml)</source>
       <translation>Mime-HTML (*.mhtml)</translation>
     </message>
@@ -2615,6 +2611,10 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Save PDF failed</source>
       <translation>Сохранить PDF не удалось</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF документ (*.pdf *.PDF)</translation>
     </message>
   </context>
   <context>
@@ -3646,6 +3646,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Force the word to be translated in the mainwindow.</source>
       <translation>Принудительно переводить слово в главном окне.</translation>
     </message>
+    <message>
+      <source>Website Url:</source>
+      <translation>Ссылка на сайт:</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation>В Url, &quot;%GDWORD%&quot; будет заменена на поисковое слово.</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -4139,18 +4147,17 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Вставлять статью как ссылку в теге &lt;iframe&gt;</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation>Этот словарь сайта открыт в новой вкладке</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>Включено</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>Как ссылку</translation>
     </message>
     <message>
       <source>Name</source>
@@ -4163,6 +4170,18 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>Icon</source>
       <translation>Значок</translation>
+    </message>
+    <message>
+      <source>Script</source>
+      <translation>Скрипт</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation>Имя файла иконок. Относительно каталога конфигурации.</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation>Доступно только при открытии сайтов в отдельных вкладках. Может быть путь к файлу (относительно конфигурационного каталога или абсолютного) или прямым содержанием скрипта.</translation>
     </message>
   </context>
   <context>

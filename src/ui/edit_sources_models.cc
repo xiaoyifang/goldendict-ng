@@ -2,9 +2,12 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "edit_sources_models.hh"
+#include "globalbroadcaster.hh"
 #include <QFileDialog>
+#include <QGuiApplication>
 #include <QMessageBox>
 #include <QStandardItemModel>
+#include <QStyleHints>
 
 #ifdef MAKE_CHINESE_CONVERSION_SUPPORT
   #include "chineseconversion.hh"
@@ -54,15 +57,11 @@ Sources::Sources( QWidget * parent, const Config::Class & cfg ):
 
   ui.webSites->setTabKeyNavigation( true );
   ui.webSites->setModel( &webSitesModel );
-  //[As link] column.
-  ui.webSites->setColumnHidden( 1, true );
   ui.webSites->resizeColumnToContents( 0 );
   ui.webSites->resizeColumnToContents( 1 );
   ui.webSites->resizeColumnToContents( 2 );
   ui.webSites->resizeColumnToContents( 3 );
   ui.webSites->resizeColumnToContents( 4 );
-  ui.webSites->setSelectionMode( QAbstractItemView::ExtendedSelection );
-  ui.webSites->setSelectionBehavior( QAbstractItemView::SelectRows );
 
   ui.dictServers->setTabKeyNavigation( true );
   ui.dictServers->setModel( &dictServersModel );
@@ -264,8 +263,8 @@ void Sources::on_addWebSite_clicked()
 {
   webSitesModel.addNewSite();
 
+  // Scroll to the newly added row and enter edit mode
   QModelIndex result = webSitesModel.index( webSitesModel.rowCount( QModelIndex() ) - 1, 1, QModelIndex() );
-
   ui.webSites->scrollTo( result );
   ui.webSites->edit( result );
 }
@@ -611,12 +610,8 @@ void WebSitesModel::addNewSite()
   Config::WebSite w;
 
   w.enabled = false;
-
-  w.id = Dictionary::generateRandomDictionaryId();
-
+  w.id      = Dictionary::generateRandomDictionaryId();
   w.url = "http://";
-
-  w.inside_iframe = true;
 
   beginInsertRows( QModelIndex(), webSites.size(), webSites.size() );
   webSites.push_back( w );
@@ -649,8 +644,13 @@ Qt::ItemFlags WebSitesModel::flags( const QModelIndex & index ) const
   Qt::ItemFlags result = QAbstractTableModel::flags( index );
 
   if ( index.isValid() ) {
-    if ( index.column() <= 1 ) {
+    if ( index.column() == 0 ) {
       result |= Qt::ItemIsUserCheckable;
+    }
+    else if ( index.column() == 4 ) { // Script column
+      if ( GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
+        result |= Qt::ItemIsEditable;
+      }
     }
     else {
       result |= Qt::ItemIsEditable;
@@ -680,14 +680,28 @@ int WebSitesModel::columnCount( const QModelIndex & parent ) const
   }
 }
 
-QVariant WebSitesModel::headerData( int section, Qt::Orientation /*orientation*/, int role ) const
+QVariant WebSitesModel::headerData( int section, Qt::Orientation orientation, int role ) const
 {
-  if ( role == Qt::ToolTipRole ) {
-    if ( section == 1 ) {
-      return tr( "Insert article as link inside <iframe> tag" );
-    }
+  // For vertical header, show row numbers
+  if ( orientation == Qt::Vertical && role == Qt::DisplayRole ) {
+    return section + 1; // Show 1-based row numbers
+  }
 
+  // For other vertical header roles or if it's horizontal header, continue processing
+  if ( orientation == Qt::Vertical ) {
     return QVariant();
+  }
+
+  if ( role == Qt::ToolTipRole ) {
+    switch ( section ) {
+      case 3:
+        return tr( "Icon file name. Relative to the config directory." );
+      case 4:
+        return tr(
+          "Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content." );
+      default:
+        return QVariant();
+    }
   }
 
   if ( role == Qt::DisplayRole ) {
@@ -695,13 +709,13 @@ QVariant WebSitesModel::headerData( int section, Qt::Orientation /*orientation*/
       case 0:
         return tr( "Enabled" );
       case 1:
-        return tr( "As link" );
-      case 2:
         return tr( "Name" );
-      case 3:
+      case 2:
         return tr( "Address" );
-      case 4:
+      case 3:
         return tr( "Icon" );
+      case 4:
+        return tr( "Script" );
       default:
         return QVariant();
     }
@@ -717,32 +731,33 @@ QVariant WebSitesModel::data( const QModelIndex & index, int role ) const
   }
 
   if ( role == Qt::ToolTipRole ) {
-    if ( index.column() == 1 ) {
-      return tr( "Insert article as link inside <iframe> tag" );
-    }
-
     return QVariant();
   }
 
   if ( role == Qt::DisplayRole || role == Qt::EditRole ) {
     switch ( index.column() ) {
-      case 2:
+      case 1:
         return webSites[ index.row() ].name;
-      case 3:
+      case 2:
         return webSites[ index.row() ].url;
-      case 4:
+      case 3:
         return webSites[ index.row() ].iconFilename;
+      case 4:
+        return webSites[ index.row() ].script;
       default:
         return QVariant();
     }
   }
 
-  if ( role == Qt::CheckStateRole && !index.column() ) {
-    return webSites[ index.row() ].enabled ? Qt::Checked : Qt::Unchecked;
+  // Set appropriate background for disabled Script column based on dark mode
+  if ( role == Qt::BackgroundRole && index.column() == 4 ) { // Script column
+    if ( !GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
+      return getScriptColumnBackground();
+    }
   }
 
-  if ( role == Qt::CheckStateRole && index.column() == 1 ) {
-    return webSites[ index.row() ].inside_iframe ? Qt::Checked : Qt::Unchecked;
+  if ( role == Qt::CheckStateRole && !index.column() ) {
+    return webSites[ index.row() ].enabled ? Qt::Checked : Qt::Unchecked;
   }
 
   return QVariant();
@@ -765,25 +780,22 @@ bool WebSitesModel::setData( const QModelIndex & index, const QVariant & value, 
     return true;
   }
 
-  if ( role == Qt::CheckStateRole && index.column() == 1 ) {
-    webSites[ index.row() ].inside_iframe = !webSites[ index.row() ].inside_iframe;
-
-    dataChanged( index, index );
-    return true;
-  }
-
   if ( role == Qt::DisplayRole || role == Qt::EditRole ) {
     switch ( index.column() ) {
-      case 2:
+      case 1:
         webSites[ index.row() ].name = value.toString();
         dataChanged( index, index );
         return true;
-      case 3:
+      case 2:
         webSites[ index.row() ].url = value.toString();
         dataChanged( index, index );
         return true;
-      case 4:
+      case 3:
         webSites[ index.row() ].iconFilename = value.toString();
+        dataChanged( index, index );
+        return true;
+      case 4:
+        webSites[ index.row() ].script = value.toString();
         dataChanged( index, index );
         return true;
       default:
@@ -792,6 +804,23 @@ bool WebSitesModel::setData( const QModelIndex & index, const QVariant & value, 
   }
 
   return false;
+}
+
+QVariant WebSitesModel::getScriptColumnBackground() const
+{
+  // Check if dark mode is enabled using GlobalBroadcaster configuration
+  // This ensures compatibility across all platforms and Qt versions
+  bool isDarkMode = GlobalBroadcaster::instance()->isDarkModeEnabled();
+
+  // Return appropriate background color based on dark mode
+  if ( isDarkMode ) {
+    // Dark mode: use a darker gray that's still distinguishable from the background
+    return QBrush( QColor( 60, 60, 60 ) );
+  }
+  else {
+    // Light mode: use light gray
+    return QBrush( QColor( 230, 230, 230 ) );
+  }
 }
 
 ////////// DictServersModel
@@ -813,9 +842,7 @@ void DictServersModel::addNewServer()
   Config::DictServer d;
 
   d.enabled = false;
-
-  d.id = Dictionary::generateRandomDictionaryId();
-
+  d.id      = Dictionary::generateRandomDictionaryId();
   d.url = "dict://";
 
   beginInsertRows( QModelIndex(), dictServers.size(), dictServers.size() );

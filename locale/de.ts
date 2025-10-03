@@ -2485,10 +2485,6 @@ Um &apos;*&apos;, &apos;zu finden?&apos;, &apos;[&apos;, &apos;]&apos; Symbole v
       <translation>Einzelnes HTML (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Pdf (*.pdf)</source>
-      <translation>PDF (*.pdf)</translation>
-    </message>
-    <message>
       <source>Mime Html (*.mhtml)</source>
       <translation>Mime-HTML (*.mhtml)</translation>
     </message>
@@ -2611,6 +2607,10 @@ Um &apos;*&apos;, &apos;zu finden?&apos;, &apos;[&apos;, &apos;]&apos; Symbole v
     <message>
       <source>Save PDF failed</source>
       <translation>PDF speichern fehlgeschlagen</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF-Dokument (*.pdf *.PDF)</translation>
     </message>
   </context>
   <context>
@@ -3631,6 +3631,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Force the word to be translated in the mainwindow.</source>
       <translation>Erzwingen Sie das Wort im Hauptfenster zu übersetzen.</translation>
     </message>
+    <message>
+      <source>Website Url:</source>
+      <translation>Website-Url:</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation>In der Url wird &quot;%GDWORD%&quot; durch das Suchwort ersetzt.</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -4122,18 +4130,17 @@ Eine vollständige Liste der verfügbaren Sprachen ist &lt;a href=&quot;https://
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Artikel als Link in &lt;iframe&gt; Tag einfügen</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation>Dieses Website-Wörterbuch ist in einem neuen Tab geöffnet</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>Aktiv</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>Als Link</translation>
     </message>
     <message>
       <source>Name</source>
@@ -4146,6 +4153,18 @@ Eine vollständige Liste der verfügbaren Sprachen ist &lt;a href=&quot;https://
     <message>
       <source>Icon</source>
       <translation>Symbol</translation>
+    </message>
+    <message>
+      <source>Script</source>
+      <translation>Skript</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation>Name der Symboldatei. Relativ zum Konfigurationsverzeichnis.</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation>Nur verfügbar, wenn Webseiten in separaten Tabs geöffnet werden. Kann ein Dateipfad (relativ zum Konfigurationsverzeichnis oder absolut) oder direkter Skriptinhalt sein.</translation>
     </message>
   </context>
   <context>

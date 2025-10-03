@@ -12,8 +12,16 @@
       }
 
       //return if the link is like gdlookup:// or other valid url.
-      if (link.indexOf(":") >= 0) {
-        emitClickedEvent(link);
+      if (link.indexOf("://") >= 0) {
+        // Get current dictId from nearest parent .gdarticle div
+        const dictId = $(this).closest(".gdarticle").attr("data-gd-id");
+        if (dictId && link.indexOf("?") > -1) {
+          emitClickedEvent(link + "&dictionaries=" + dictId);
+        } else if (dictId) {
+          emitClickedEvent(link + "?dictionaries=" + dictId);
+        } else {
+          emitClickedEvent(link);
+        }
         return false;
       }
       emitClickedEvent("");
@@ -55,12 +63,14 @@
     });
 
     //monitor iframe height.
-    $("iframe").iframeResize({
+    $("iframe").iFrameResize({
       checkOrigin: false,
-      license: "GPLv3",
+      maxHeight: 800,
       scrolling: true,
       warningTimeout: 0,
-      log: "collapsed",
+      minHeight: 550,
+      log: true,
+      autoResize: false,
     });
   });
 })(jQuery);

@@ -2486,10 +2486,6 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
       <translation>Enkel HTML (*.html *.html)</translation>
     </message>
     <message>
-      <source>Pdf (*.pdf)</source>
-      <translation>Pdf (*.pdf)</translation>
-    </message>
-    <message>
       <source>Mime Html (*.mhtml)</source>
       <translation>Mime HTML (*.mhtml)</translation>
     </message>
@@ -2612,6 +2608,10 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
     <message>
       <source>Save PDF failed</source>
       <translation>Kunde inte spara PDF</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF-dokument (*.pdf *.PDF)</translation>
     </message>
   </context>
   <context>
@@ -3641,6 +3641,14 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <source>Force the word to be translated in the mainwindow.</source>
       <translation>Tvinga ordet som ska översättas i huvudfönstret.</translation>
     </message>
+    <message>
+      <source>Website Url:</source>
+      <translation>Webbadurl:</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation>I Url kommer &quot;%GDWORD%&quot; att ersättas med ordet som söks.</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -4131,18 +4139,17 @@ Fullständig lista över tillgängliga språk finns &lt;a href=&quot;https://lin
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Infoga artikel som länk inuti &lt;iframe&gt; tagg</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation>Denna webbplats ordbok öppnas i en ny flik</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>Aktiverad</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>Som länk</translation>
     </message>
     <message>
       <source>Name</source>
@@ -4155,6 +4162,18 @@ Fullständig lista över tillgängliga språk finns &lt;a href=&quot;https://lin
     <message>
       <source>Icon</source>
       <translation>Ikon</translation>
+    </message>
+    <message>
+      <source>Script</source>
+      <translation>Skript</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation>Ikon filnamn. Relativt till konfigurationskatalogen.</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation>Endast tillgängligt när webbplatser öppnas i separata flikar. Kan vara en filsökväg (relativ till konfigurationskatalog eller absolut) eller direkt skriptinnehåll.</translation>
     </message>
   </context>
   <context>

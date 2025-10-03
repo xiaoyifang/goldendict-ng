@@ -2486,10 +2486,6 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
       <translation>Jeden HTML (*.html *.htm)</translation>
     </message>
     <message>
-      <source>Pdf (*.pdf)</source>
-      <translation>PDF (*.pdf)</translation>
-    </message>
-    <message>
       <source>Mime Html (*.mhtml)</source>
       <translation>Mime HTML (*.mhtml)</translation>
     </message>
@@ -2612,6 +2608,10 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
     <message>
       <source>Save PDF failed</source>
       <translation>Uložení PDF selhalo</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF dokument (*.pdf *.PDF)</translation>
     </message>
   </context>
   <context>
@@ -3636,6 +3636,14 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <source>Force the word to be translated in the mainwindow.</source>
       <translation>Vynutit překlad slova v hlavním okně.</translation>
     </message>
+    <message>
+      <source>Website Url:</source>
+      <translation>Adresa URL webové stránky:</translation>
+    </message>
+    <message>
+      <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
+      <translation>V Urlu bude &quot;%GDWORD%&quot; nahrazeno hledaným slovem.</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -4126,18 +4134,17 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     </message>
   </context>
   <context>
-    <name>WebSitesModel</name>
+    <name>WebSite</name>
     <message>
-      <source>Insert article as link inside &lt;iframe&gt; tag</source>
-      <translation>Vložit článek jako odkaz do &lt;iframe&gt; tagu</translation>
+      <source>This website dictionary is opened in a new tab</source>
+      <translation>Tento webový slovník je otevřen na nové kartě</translation>
     </message>
+  </context>
+  <context>
+    <name>WebSitesModel</name>
     <message>
       <source>Enabled</source>
       <translation>Povoleno</translation>
-    </message>
-    <message>
-      <source>As link</source>
-      <translation>Jako odkaz</translation>
     </message>
     <message>
       <source>Name</source>
@@ -4150,6 +4157,18 @@ Full list of availiable languages can be found &lt;a href=&quot;https://linguali
     <message>
       <source>Icon</source>
       <translation>Ikona</translation>
+    </message>
+    <message>
+      <source>Script</source>
+      <translation>Skript</translation>
+    </message>
+    <message>
+      <source>Icon file name. Relative to the config directory.</source>
+      <translation>Název souboru ikon. Relativní k adresáři konfigurace.</translation>
+    </message>
+    <message>
+      <source>Only available when opening websites in separate tabs. Can be a file path (relative to config directory or absolute) or direct script content.</source>
+      <translation>K dispozici pouze při otevírání webových stránek v oddělených kartách. Může být cesta k souborům (relativně k adresáři konfigurací nebo absolutním) nebo přímý obsah skriptu.</translation>
     </message>
   </context>
   <context>

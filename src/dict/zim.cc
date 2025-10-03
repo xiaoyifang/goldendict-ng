@@ -728,7 +728,7 @@ void ZimResourceRequest::run()
 
     if ( Filetype::isNameOfCSS( resourceName ) ) {
       QString css = QString::fromUtf8( resource.data(), resource.size() );
-      dict.isolateCSS( css, ".zimdict" );
+      dict.isolateCSS( css );
       QByteArray bytes = css.toUtf8();
 
       QMutexLocker _( &dataMutex );
