@@ -51,8 +51,7 @@ std::string ArticleMaker::makeHtmlHeader( const QString & word, const QString & 
     result += R"(<script> jQuery.noConflict(); </script>)";
 
     result += R"(<script src="qrc:///scripts/gd-custom.js"></script>)";
-    result += R"(<script src="qrc:///scripts/iframe-resizer.jquery.js"></script>)";
-    result += R"(<script src="qrc:///scripts/iframe-resizer.parent.js"></script>)";
+    result += R"(<script src="qrc:///scripts/iframeResizer.min.js"></script>)";
   }
 
   // add qwebchannel

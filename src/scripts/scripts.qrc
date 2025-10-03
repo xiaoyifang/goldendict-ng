@@ -4,9 +4,8 @@
         <file>gd-builtin.js</file>
         <file>gd-custom.js</file>
         <file>iframe-defer.js</file>
-        <file>iframe-resizer.child.js</file>
-        <file>iframe-resizer.parent.js</file>
-        <file>iframe-resizer.jquery.js</file>
+        <file>iframeResizer.contentWindow.min.js</file>
+        <file>iframeResizer.min.js</file>
         <file>jquery-3.6.0.slim.min.js</file>
         <file>mark.min.js</file>
     </qresource>
