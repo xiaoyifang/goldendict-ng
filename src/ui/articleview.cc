@@ -660,7 +660,7 @@ void ArticleView::cleanupTemp()
       ++it;
     }
   }
-  
+
   // Clean up audio temporary files for clipboard
   it = audioTempFiles.begin();
   while ( it != audioTempFiles.end() ) {
@@ -1632,7 +1632,7 @@ void ArticleView::contextMenuRequested( const QPoint & pos )
   if ( !popupView && isAudioLink( targetUrl ) ) {
     saveSoundAction = new QAction( tr( "Save s&ound..." ), &menu );
     menu.addAction( saveSoundAction );
-    
+
     copySoundAction = new QAction( tr( "&Copy sound to clipboard" ), &menu );
     menu.addAction( copySoundAction );
   }
@@ -1804,7 +1804,7 @@ void ArticleView::contextMenuRequested( const QPoint & pos )
     else if ( !popupView && result == lookupSelectionNewTabGr && currentGroupId ) {
       emit showDefinitionInNewTab( selectedText, currentGroupId, QString(), Contexts() );
     }
-    else if (result==copySoundAction) {
+    else if ( result == copySoundAction ) {
       QUrl url = ( result == saveImageAction ) ? imageUrl : targetUrl;
 
       // Copy sound to clipboard
@@ -2238,8 +2238,7 @@ void ArticleView::copyResourceToClipboard( const QUrl & url )
   QString contentType;
   auto req = articleNetMgr.getResource( url, contentType );
   if ( req ) {
-    connect( req.get(), &Dictionary::DataRequest::finished,
-             this, [req, this, url]() {
+    connect( req.get(), &Dictionary::DataRequest::finished, this, [ req, this, url ]() {
       if ( req->dataSize() < 0 ) {
         emit statusBarMessage( tr( "Failed to copy sound" ) );
         return;
