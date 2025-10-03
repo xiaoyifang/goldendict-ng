@@ -2227,86 +2227,87 @@ void ArticleView::copyResourceToClipboard( const QUrl & url )
   if ( req ) {
     connect( req.get(), &Dictionary::DataRequest::finished,
              this, [req, this, url]() {
-               if ( req->dataSize() < 0 ) {
-                 emit statusBarMessage( tr( "Failed to copy sound" ) );
-                 return;
+      if ( req->dataSize() < 0 ) {
+        emit statusBarMessage( tr( "Failed to copy sound" ) );
+        return;
                }
-               
-               // Determine file extension and MIME type
-               QString extension = ".wav";
-               QString mimeType = "audio/wav"; // Default MIME type
-               QString path = url.path();
-               
-               if ( path.endsWith( ".mp3", Qt::CaseInsensitive ) ) {
-                 extension = ".mp3";
-                 mimeType = "audio/mpeg";
-               }
-               else if ( path.endsWith( ".ogg", Qt::CaseInsensitive ) || path.endsWith( ".oga", Qt::CaseInsensitive ) ) {
-                 extension = ".ogg";
-                 mimeType = "audio/ogg";
-               }
-               else if ( path.endsWith( ".opus", Qt::CaseInsensitive ) ) {
-                 extension = ".opus";
-                 mimeType = "audio/opus";
-               }
-               else if ( path.endsWith( ".flac", Qt::CaseInsensitive ) ) {
-                 extension = ".flac";
-                 mimeType = "audio/flac";
-               }
-               
-               // Create temporary file with proper extension using QTempFile
-               QTemporaryFile tempFile;
-               tempFile.setFileTemplate(QDir::tempPath() + "/audio_XXXXXX" + extension);
-               tempFile.setAutoRemove(false); // We'll handle removal manually
-               
-               if ( tempFile.open() ) {
-                   QString tempFileName = tempFile.fileName();
-                   const auto& data = req->getFullData();
-                   qint64 bytesWritten = tempFile.write( data.data(), data.size() );
-                   tempFile.close();
-                   
-                   // Verify file was written successfully
-                   if (bytesWritten != data.size()) {
-                     emit statusBarMessage( tr( "Failed to write complete audio data to temporary file" ) );
-                     QFile::remove(tempFileName); // Clean up on failure
-                     return;
-                   }
-                   
-                   // Create MIME data with comprehensive format support
-                   auto * mimeData = new QMimeData;
-                   QByteArray audioData( data.data(), data.size() );
-                   
-                   // Add file URL - primary method for Word integration
-                   QList<QUrl> urls;
-                   urls << QUrl::fromLocalFile( tempFileName );
-                   mimeData->setUrls( urls );
-                   
-                   // Add raw audio data with correct MIME type
-                   mimeData->setData( mimeType, audioData );
-                   
-                   // Add generic audio MIME type for better compatibility
-                   mimeData->setData( "audio/*", audioData );
-                   
-                   // For MP3 files, add additional common MIME types
-                   if (extension == ".mp3") {
-                     mimeData->setData( "audio/x-mpeg", audioData );
-                   }
-                   
-                   // Set clipboard with MIME data
-                   QApplication::clipboard()->setMimeData( mimeData );
-                    
-                   // Keep the file for a while to ensure clipboard operations complete
-                   QTimer::singleShot( 5000, [tempFileName]() {
-                     QFile::remove( tempFileName );
-                   });
-                    
-                   emit statusBarMessage( tr( "Sound copied to clipboard" ), 2000 );
-                   }
-                   else {
-                      emit statusBarMessage( tr( "Failed to create temporary file" ) );
-                    }
-                  } );
-  } else {
+
+      // Determine file extension and MIME type
+      QString extension = ".wav";
+      QString mimeType  = "audio/wav"; // Default MIME type
+      QString path      = url.path();
+
+      if ( path.endsWith( ".mp3", Qt::CaseInsensitive ) ) {
+        extension = ".mp3";
+        mimeType  = "audio/mpeg";
+      }
+      else if ( path.endsWith( ".ogg", Qt::CaseInsensitive ) || path.endsWith( ".oga", Qt::CaseInsensitive ) ) {
+        extension = ".ogg";
+        mimeType  = "audio/ogg";
+      }
+      else if ( path.endsWith( ".opus", Qt::CaseInsensitive ) ) {
+        extension = ".opus";
+        mimeType  = "audio/opus";
+      }
+      else if ( path.endsWith( ".flac", Qt::CaseInsensitive ) ) {
+        extension = ".flac";
+        mimeType  = "audio/flac";
+      }
+
+      // Create temporary file with proper extension using QTempFile
+      QTemporaryFile tempFile;
+      tempFile.setFileTemplate( QDir::tempPath() + "/audio_XXXXXX" + extension );
+      tempFile.setAutoRemove( false ); // We'll handle removal manually
+
+      if ( tempFile.open() ) {
+        QString tempFileName = tempFile.fileName();
+        const auto & data    = req->getFullData();
+        qint64 bytesWritten  = tempFile.write( data.data(), data.size() );
+        tempFile.close();
+
+        // Verify file was written successfully
+        if ( bytesWritten != data.size() ) {
+          emit statusBarMessage( tr( "Failed to write complete audio data to temporary file" ) );
+          QFile::remove( tempFileName ); // Clean up on failure
+          return;
+        }
+
+        // Create MIME data with comprehensive format support
+        auto * mimeData = new QMimeData;
+        QByteArray audioData( data.data(), data.size() );
+
+        // Add file URL - primary method for Word integration
+        QList< QUrl > urls;
+        urls << QUrl::fromLocalFile( tempFileName );
+        mimeData->setUrls( urls );
+
+        // Add raw audio data with correct MIME type
+        mimeData->setData( mimeType, audioData );
+
+        // Add generic audio MIME type for better compatibility
+        mimeData->setData( "audio/*", audioData );
+
+        // For MP3 files, add additional common MIME types
+        if ( extension == ".mp3" ) {
+          mimeData->setData( "audio/x-mpeg", audioData );
+        }
+
+        // Set clipboard with MIME data
+        QApplication::clipboard()->setMimeData( mimeData );
+
+        // Keep the file for a while to ensure clipboard operations complete
+        QTimer::singleShot( 5000, [ tempFileName ]() {
+          QFile::remove( tempFileName );
+        } );
+
+        emit statusBarMessage( tr( "Sound copied to clipboard" ), 2000 );
+      }
+      else {
+        emit statusBarMessage( tr( "Failed to create temporary file" ) );
+      }
+    } );
+  }
+  else {
     emit statusBarMessage( tr( "Failed to download sound" ) );
   }
 }
