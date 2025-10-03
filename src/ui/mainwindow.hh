@@ -360,8 +360,6 @@ private slots:
   /// Creates a new tab, which is to be populated then with some content.
   ArticleView * createNewTab( bool switchToIt, const QString & name );
 
-  /// Finds an existing ArticleView that has loaded a website with the given host
-  ArticleView * findArticleViewByHost( const QString & host );
   ArticleView * findArticleViewByDictId( const QString & dictId );
 
   void openLinkInNewTab( const QUrl &, const QUrl &, const QString &, const Contexts & contexts );

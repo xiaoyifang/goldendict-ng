@@ -3738,17 +3738,6 @@ ArticleView * MainWindow::getFirstNonWebSiteArticleView()
   return nullptr;
 }
 
-ArticleView * MainWindow::findArticleViewByHost( const QString & host )
-{
-  for ( int i = 0; i < ui.tabWidget->count(); i++ ) {
-    auto * view = qobject_cast< ArticleView * >( ui.tabWidget->widget( i ) );
-    if ( view && view->isWebsite() && view->getWebsiteHost() == host ) {
-      return view;
-    }
-  }
-  return nullptr;
-}
-
 ArticleView * MainWindow::findArticleViewByDictId( const QString & dictId )
 {
   // First check if openWebsiteInNewTab configuration is enabled
@@ -4367,7 +4356,7 @@ void MainWindow::showFTSIndexingName( const QString & name )
 
 void MainWindow::openWebsiteInNewTab( QString name, QString url, QString dictId )
 {
-  auto view = findArticleViewByHost( QUrl( url ).host() );
+  auto view = findArticleViewByDictId( dictId );
   if ( view == nullptr ) {
     view = createNewTab( false, name );
     view->setWebsite( true );

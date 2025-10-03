@@ -84,7 +84,7 @@ void IframeSchemeHandler::requestStarted( QWebEngineUrlRequestJob * requestJob )
 
     QString depressionFocus =
       R"(<script type="application/javascript"> HTMLElement.prototype.focus=function(){console.log("focus() has been disabled.");}</script>
-<script type="text/javascript" src="qrc:///scripts/iframe-resizer.child.js">
+<script type="text/javascript" src="qrc:///scripts/iframeResizer.contentWindow.min.js">
 </script><script type="text/javascript" src="qrc:///scripts/iframe-defer.js"></script>)";
 
     articleString.remove( baseTag );
