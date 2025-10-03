@@ -1573,6 +1573,7 @@ void ArticleView::contextMenuRequested( const QPoint & pos )
   QAction * saveImageAction           = nullptr;
   QAction * openImageAction           = nullptr;
   QAction * saveSoundAction           = nullptr;
+  QAction * copySoundAction           = nullptr;
   QAction * saveBookmark              = nullptr;
 
   QWebEngineContextMenuRequest * menuData = webview->lastContextMenuRequest();
@@ -1616,6 +1617,9 @@ void ArticleView::contextMenuRequested( const QPoint & pos )
   if ( !popupView && isAudioLink( targetUrl ) ) {
     saveSoundAction = new QAction( tr( "Save s&ound..." ), &menu );
     menu.addAction( saveSoundAction );
+    
+    copySoundAction = new QAction( tr( "&Copy sound to clipboard" ), &menu );
+    menu.addAction( copySoundAction );
   }
 
   const QString selectedText = webview->selectedText();
@@ -1784,6 +1788,12 @@ void ArticleView::contextMenuRequested( const QPoint & pos )
     }
     else if ( !popupView && result == lookupSelectionNewTabGr && currentGroupId ) {
       emit showDefinitionInNewTab( selectedText, currentGroupId, QString(), Contexts() );
+    }
+    else if (result==copySoundAction) {
+      QUrl url = ( result == saveImageAction ) ? imageUrl : targetUrl;
+
+      // Copy sound to clipboard
+      copyResourceToClipboard( url );
     }
     else if ( result == saveImageAction || result == saveSoundAction ) {
       QUrl url = ( result == saveImageAction ) ? imageUrl : targetUrl;
@@ -2204,6 +2214,56 @@ void ArticleView::copyAsText()
   QString text = webview->selectedText();
   if ( !text.isEmpty() ) {
     QApplication::clipboard()->setText( text );
+  }
+}
+
+void ArticleView::copyResourceToClipboard( const QUrl & url )
+{
+  // Download resource and copy to clipboard
+  QString contentType;
+  auto req = articleNetMgr.getResource( url, contentType );
+  if ( req ) {
+    connect( req.get(), &Dictionary::DataRequest::finished,
+             this, [req, this, url]() {
+               if ( req->dataSize()<0 ) {
+                 emit statusBarMessage( tr( "Failed to copy sound" )  );
+                 return;
+               }
+               
+               // Create temporary file
+               QTemporaryFile tempFile;
+               if ( tempFile.open() ) {
+                 tempFile.write( req->getFullData().data(),req->getFullData().size() );
+                 tempFile.close();
+                 
+                 // Copy temporary file to clipboard
+                 auto * mimeData = new QMimeData;
+                 QUrl fileUrl = QUrl::fromLocalFile( tempFile.fileName() );
+                 mimeData->setUrls( { fileUrl } );
+                 
+                 // Set audio MIME type
+                 QString mimeType = "audio/wav"; // Default MIME type
+                 QString path = url.path();
+                 if ( path.endsWith( ".mp3", Qt::CaseInsensitive ) )
+                   mimeType = "audio/mpeg";
+                 else if ( path.endsWith( ".ogg", Qt::CaseInsensitive ) || path.endsWith( ".oga", Qt::CaseInsensitive ) )
+                   mimeType = "audio/ogg";
+                 else if ( path.endsWith( ".opus", Qt::CaseInsensitive ) )
+                   mimeType = "audio/opus";
+                 else if ( path.endsWith( ".flac", Qt::CaseInsensitive ) )
+                   mimeType = "audio/flac";
+                 
+                 mimeData->setData( mimeType, QByteArray::fromRawData(  req->getFullData().data(), req->getFullData().size()) );
+                 QApplication::clipboard()->setMimeData( mimeData );
+                 
+                 emit statusBarMessage( tr( "Sound copied to clipboard" ), 2000 );
+               }
+               else {
+                 emit statusBarMessage( tr( "Failed to create temporary file" ) );
+               }
+             } );
+  } else {
+    emit statusBarMessage( tr( "Failed to download sound" ) );
   }
 }
 

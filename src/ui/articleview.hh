@@ -399,6 +399,7 @@ private slots:
 
   /// Copy current selection as plain text
   void copyAsText();
+  void copyResourceToClipboard( const QUrl & url );
 
   void setActiveDictIds( const ActiveDictIds & ad );
 
