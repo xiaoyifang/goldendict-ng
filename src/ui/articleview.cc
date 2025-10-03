@@ -2230,7 +2230,7 @@ void ArticleView::copyResourceToClipboard( const QUrl & url )
       if ( req->dataSize() < 0 ) {
         emit statusBarMessage( tr( "Failed to copy sound" ) );
         return;
-               }
+      }
 
       // Determine file extension and MIME type
       QString extension = ".wav";
