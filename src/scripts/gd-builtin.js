@@ -325,7 +325,9 @@ function gdInitAttributeMonitoring() {
   // Automatically monitor all image src attribute changes - only for relative paths
   monitorOnlyRelativePaths("img", "src", (attr, oldVal, newVal, element) => {
     // Default image src change handling logic
-    console.log(`Image resource changed: ${element.src},old value:${oldVal}, new val:${newVal}`);
+    console.log(
+      `Image resource changed: ${element.src},old value:${oldVal}, new val:${newVal}`,
+    );
 
     // Process relative links for images
     processRelativeLink(element, newVal);
