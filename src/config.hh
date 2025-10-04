@@ -826,6 +826,9 @@ struct Class
   Lingua lingua;
   Forvo forvo;
   Programs programs;
+  
+  // Flag indicating whether configuration has been modified, only need to save when dirty
+  bool dirty = false;
 #ifdef TTS_SUPPORT
   VoiceEngines voiceEngines;
 #endif

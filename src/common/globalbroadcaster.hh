@@ -21,12 +21,14 @@ class GlobalBroadcaster: public QObject
 {
   Q_OBJECT
 
-  Config::Preferences * preference;
+  Config::Class * config;
   QSet< QString > whitelist;
   Icons::DictionaryIconName _icon_names;
 
 public:
-  void setPreference( Config::Preferences * _pre );
+  void setConfig( Config::Class * _config );
+  Config::Class * getConfig() const;
+  // For backward compatibility
   Config::Preferences * getPreference() const;
   GlobalBroadcaster( QObject * parent = nullptr );
   /// \brief Add a host to whitelist.

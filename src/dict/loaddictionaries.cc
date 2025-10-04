@@ -26,6 +26,7 @@
 #include "dict/gls.hh"
 #include "dict/lingualibre.hh"
 #include "metadata.hh"
+#include "common/globalbroadcaster.hh"
 
 #include "dict/transliteration/belarusian.hh"
 #include "dict/transliteration/custom.hh"
@@ -139,7 +140,13 @@ void LoadDictionaries::run()
     }
 
     // Save configuration to ensure custom dictionary names and FTS options are preserved
-    Config::save( cfg );
+    Config::Class *cfg = GlobalBroadcaster::instance()->getConfig();
+  
+  if ( cfg )
+  {
+
+    Config::save( *cfg );
+  }
 
   }
   catch ( std::exception & e ) {

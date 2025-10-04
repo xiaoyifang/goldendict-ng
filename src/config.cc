@@ -1281,6 +1281,10 @@ void saveGroup( const Group & data, QDomElement & group )
 
 void save( const Class & c )
 {
+  // Only save when configuration is marked as dirty
+  if ( !c.dirty )
+    return;
+
   QSaveFile configFile( getConfigFileName() );
 
   if ( !configFile.open( QFile::WriteOnly ) ) {

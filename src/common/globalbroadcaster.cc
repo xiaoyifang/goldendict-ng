@@ -8,7 +8,8 @@
 Q_GLOBAL_STATIC( GlobalBroadcaster, bdcaster )
 
 GlobalBroadcaster::GlobalBroadcaster( QObject * parent ):
-  QObject( parent )
+  QObject( parent ),
+  config( nullptr )
 {
   QStringList whiteUrlHosts = { "googleapis.com", "gstatic.com" };
 
@@ -22,14 +23,19 @@ GlobalBroadcaster * GlobalBroadcaster::instance()
   return bdcaster;
 }
 
-void GlobalBroadcaster::setPreference( Config::Preferences * p )
+void GlobalBroadcaster::setConfig( Config::Class * _config )
 {
-  preference = p;
+  config = _config;
+}
+
+Config::Class * GlobalBroadcaster::getConfig() const
+{
+  return config;
 }
 
 Config::Preferences * GlobalBroadcaster::getPreference() const
 {
-  return preference;
+  return config ? &config->preferences : nullptr;
 }
 
 void GlobalBroadcaster::addWhitelist( QString host )
@@ -77,20 +83,20 @@ QString GlobalBroadcaster::getAbbrName( const QString & text )
 
 bool GlobalBroadcaster::isDarkModeEnabled() const
 {
-  if ( !preference ) {
+  if ( !config || !&config->preferences ) {
     return false;
   }
 
-  bool darkModeEnabled = ( preference->darkReaderMode == Config::Dark::On );
+  bool darkModeEnabled = ( config->preferences.darkReaderMode == Config::Dark::On );
 
 #if QT_VERSION >= QT_VERSION_CHECK( 6, 5, 0 )
-  if ( preference->darkReaderMode == Config::Dark::Auto
+  if ( config->preferences.darkReaderMode == Config::Dark::Auto
   #if !defined( Q_OS_WINDOWS )
        // For macOS & Linux, uses "System's style hint". There is no darkMode setting in GD for them.
        && QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark
   #else
        // For Windows, uses the setting in GD
-       && preference->darkMode == Config::Dark::On
+       && config->preferences.darkMode == Config::Dark::On
   #endif
   ) {
     darkModeEnabled = true;

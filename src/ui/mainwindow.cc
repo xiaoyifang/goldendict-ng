@@ -21,6 +21,7 @@
 #include <QUrl>
 #include <QMessageBox>
 #include <QIcon>
+#include <QPixmap>
 #include <QList>
 #include <QToolBar>
 #include <QCloseEvent>
@@ -179,7 +180,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   QThreadPool::globalInstance()->start( new InitSSLRunnable );
 #endif
 
-  GlobalBroadcaster::instance()->setPreference( &cfg.preferences );
+  GlobalBroadcaster::instance()->setConfig( &cfg );
 
   localSchemeHandler     = new LocalSchemeHandler( articleNetMgr, this );
   QStringList htmlScheme = { "gdlookup", "bword", "entry" };
@@ -580,7 +581,9 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( &dictionaryBar, &DictionaryBar::showDictionaryHeadwords, this, &MainWindow::showDictionaryHeadwords );
 
   connect( &dictionaryBar, &DictionaryBar::openDictionaryFolder, this, &MainWindow::openDictionaryFolder );
-  connect( &dictionaryBar, &DictionaryBar::showStatusBarMessage, this, &MainWindow::showStatusBarMessage );
+  connect( &dictionaryBar, &DictionaryBar::showStatusBarMessage, this, [this](const QString &  message) {
+    this->showStatusBarMessage( message, 5000, QPixmap() );
+  } );
 
   // Favorites
 

@@ -135,15 +135,15 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
     restoreSelectionAction = menu.addAction( tr( "Restore selection" ) );
   }
 
-  const QAction * editAction = menu.addAction( QIcon( ":/icons/bookcase.svg" ), tr( "Edit this group" ) );
-
-  const QAction * infoAction           = nullptr;
-  const QAction * headwordsAction      = nullptr;
+  const QAction * editAction = nullptr;
+  const QAction * infoAction = nullptr;
+  const QAction * headwordsAction = nullptr;
   const QAction * openDictFolderAction = nullptr;
+  const QAction * scheduleReindexAction = nullptr;
 
+  editAction = menu.addAction( QIcon( ":/icons/bookcase.svg" ), tr( "Edit this group" ) );
 
   QString dictFilename;
-
 
   const QAction * dictAction = actionAt( event->x(), event->y() );
   if ( dictAction ) {
@@ -160,7 +160,6 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
         infoAction = menu.addAction( tr( "Dictionary info" ) );
 
         // Add schedule/cancel reindex action for local dictionaries
-        const QAction * scheduleReindexAction = nullptr;
         if ( pDict->isLocalDictionary() ) {
           Config::Class cfg = Config::load();
           const QString dictId = pDict->getId().c_str();
@@ -228,7 +227,7 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
       
       // Note: Using status bar notification instead of message box for lighter user feedback
       // After canceling reindexing plan, show operation result in status bar
-      emit showStatusBarMessage( tr( "已取消该字典的重新索引计划。" ), 3000 ); // Show for 3 seconds
+      emit showStatusBarMessage( tr( "Cancel schedule reindex" ), 3000 ); // Show for 3 seconds
     } else {
       // Add to reindex list
       cfg.dictionariesToReindex.insert( dictId );
@@ -238,9 +237,9 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
       emit showStatusBarMessage( tr( "The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart." ), 3000 ); // Show for 3 seconds
     }
     
-    // Save config - This will be saved automatically on application exit, but we save it immediately
-    // to ensure data persistence even if the application crashes unexpectedly
-    Config::save( cfg );
+    // Save config immediately to ensure the action text updates correctly next time the menu is opened
+      cfg.dirty = true;
+      Config::save( cfg );
     
     return;
   }
