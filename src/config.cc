@@ -1281,9 +1281,8 @@ void saveGroup( const Group & data, QDomElement & group )
 
 void save( const Class & c )
 {
-  // Only save when configuration is marked as dirty
-  if ( !c.dirty )
-    return;
+  // Always save configuration regardless of dirty flag
+  // The dirty flag is still used to track changes in other parts of the code
 
   QSaveFile configFile( getConfigFileName() );
 

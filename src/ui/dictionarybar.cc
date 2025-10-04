@@ -237,9 +237,10 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
       emit showStatusBarMessage( tr( "The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart." ), 3000 ); // Show for 3 seconds
     }
     
-    // Save config immediately to ensure the action text updates correctly next time the menu is opened
-      cfg.dirty = true;
-      Config::save( cfg );
+    // Set dirty flag specifically for reindex schedule changes
+    cfg.dirty = true;
+    // Always save configuration to ensure the action text updates correctly next time the menu is opened
+    Config::save( cfg );
     
     return;
   }
