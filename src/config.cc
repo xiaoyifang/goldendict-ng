@@ -777,6 +777,7 @@ Class load()
 
   c.mutedDictionaries      = loadMutedDictionaries( root.namedItem( "mutedDictionaries" ) );
   c.popupMutedDictionaries = loadMutedDictionaries( root.namedItem( "popupMutedDictionaries" ) );
+  c.dictionariesToReindex  = loadMutedDictionaries( root.namedItem( "dictionariesToReindex" ) );
 
   QDomNode preferences = root.namedItem( "preferences" );
 
@@ -1687,6 +1688,12 @@ void save( const Class & c )
     QDomElement muted = dd.createElement( "popupMutedDictionaries" );
     root.appendChild( muted );
     saveMutedDictionaries( dd, muted, c.popupMutedDictionaries );
+  }
+
+  {
+    QDomElement reindex = dd.createElement( "dictionariesToReindex" );
+    root.appendChild( reindex );
+    saveMutedDictionaries( dd, reindex, c.dictionariesToReindex );
   }
 
   {

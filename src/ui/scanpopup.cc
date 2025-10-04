@@ -177,6 +177,8 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( this, &ScanPopup::closeMenu, &dictionaryBar, &DictionaryBar::closePopupMenu );
   connect( &dictionaryBar, &DictionaryBar::showDictionaryInfo, this, &ScanPopup::showDictionaryInfo );
   connect( &dictionaryBar, &DictionaryBar::openDictionaryFolder, this, &ScanPopup::openDictionaryFolder );
+  // 连接字典栏的状态栏消息信号到扫描弹窗的状态栏消息槽函数
+  connect( &dictionaryBar, &DictionaryBar::showStatusBarMessage, this, &ScanPopup::statusBarMessage );
 
   connect( &GlobalBroadcaster::instance()->pronounce_engine,
            &PronounceEngine::emitAudio,
@@ -1023,6 +1025,12 @@ void ScanPopup::pageLoaded( ArticleView * ) const
 void ScanPopup::showStatusBarMessage( const QString & message, int timeout, const QPixmap & icon ) const
 {
   mainStatusBar->showMessage( message, timeout, icon );
+}
+
+void ScanPopup::statusBarMessage( const QString & message, int timeout ) const
+{
+  // 状态栏消息槽函数实现，将消息转发给showStatusBarMessage函数（不带图标）
+  showStatusBarMessage( message, timeout, QPixmap() );
 }
 
 void ScanPopup::escapePressed()

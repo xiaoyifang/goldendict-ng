@@ -652,6 +652,19 @@ string makeDictionaryId( const vector< string > & dictionaryFiles ) noexcept
 // be fixed in the future when it's needed.
 bool needToRebuildIndex( const vector< string > & dictionaryFiles, const string & indexFile ) noexcept
 {
+  // First check if the dictionary is scheduled for reindexing
+  std::string dictId = makeDictionaryId( dictionaryFiles );
+  Config::Class cfg = Config::load();
+  
+  // If the dictionary ID is in the reindex list, return true and remove it
+  if ( cfg.dictionariesToReindex.contains( QString::fromStdString( dictId ) ) ) {
+    // Remove immediately to ensure index is rebuilt only once
+    cfg.dictionariesToReindex.remove( QString::fromStdString( dictId ) );
+
+    return true;
+  }
+  
+  // Original logic: check file modification times
   qint64 lastModified = 0;
 
   for ( const auto & dictionaryFile : dictionaryFiles ) {

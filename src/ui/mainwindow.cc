@@ -580,6 +580,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( &dictionaryBar, &DictionaryBar::showDictionaryHeadwords, this, &MainWindow::showDictionaryHeadwords );
 
   connect( &dictionaryBar, &DictionaryBar::openDictionaryFolder, this, &MainWindow::openDictionaryFolder );
+  connect( &dictionaryBar, &DictionaryBar::showStatusBarMessage, this, &MainWindow::showStatusBarMessage );
 
   // Favorites
 

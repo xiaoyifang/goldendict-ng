@@ -137,6 +137,10 @@ void LoadDictionaries::run()
         dict->setFtsEnable( dictMetaData->fullindex.value() );
       }
     }
+
+    // Save configuration to ensure custom dictionary names and FTS options are preserved
+    Config::save( cfg );
+
   }
   catch ( std::exception & e ) {
     exceptionTexts << QString::fromUtf8( e.what() );

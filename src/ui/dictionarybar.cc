@@ -157,9 +157,21 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
     }
 
     if ( pDict ) {
-      infoAction = menu.addAction( tr( "Dictionary info" ) );
+        infoAction = menu.addAction( tr( "Dictionary info" ) );
 
-      if ( pDict->isLocalDictionary() ) {
+        // Add schedule/cancel reindex action for local dictionaries
+        const QAction * scheduleReindexAction = nullptr;
+        if ( pDict->isLocalDictionary() ) {
+          Config::Class cfg = Config::load();
+          const QString dictId = pDict->getId().c_str();
+          if ( cfg.dictionariesToReindex.contains( dictId ) ) {
+            scheduleReindexAction = menu.addAction( tr( "Cancel reindex" ) );
+          } else {
+            scheduleReindexAction = menu.addAction( tr( "Schedule for reindex" ) );
+          }
+        }
+
+        if ( pDict->isLocalDictionary() ) {
         if ( pDict->getWordCount() > 0 ) {
           headwordsAction = menu.addAction( tr( "Dictionary headwords" ) );
         }
@@ -202,6 +214,34 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
   if ( result && result == infoAction ) {
     const QString id = dictAction->data().toString();
     emit showDictionaryInfo( id );
+    return;
+  }
+
+  if ( result && result == scheduleReindexAction ) {
+    const QString dictId = dictAction->data().toString();
+    Config::Class cfg = Config::load();
+    
+    // Check if the dictionary is already scheduled for reindexing
+    if ( cfg.dictionariesToReindex.contains( dictId ) ) {
+      // Remove from reindex list (cancel reindex)
+      cfg.dictionariesToReindex.remove( dictId );
+      
+      // Note: Using status bar notification instead of message box for lighter user feedback
+      // After canceling reindexing plan, show operation result in status bar
+      emit showStatusBarMessage( tr( "已取消该字典的重新索引计划。" ), 3000 ); // Show for 3 seconds
+    } else {
+      // Add to reindex list
+      cfg.dictionariesToReindex.insert( dictId );
+      
+      // Using status bar notification instead of message box for lighter user feedback
+      // After scheduling reindexing, show operation result and follow-up hint in status bar
+      emit showStatusBarMessage( tr( "The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart." ), 3000 ); // Show for 3 seconds
+    }
+    
+    // Save config - This will be saved automatically on application exit, but we save it immediately
+    // to ensure data persistence even if the application crashes unexpectedly
+    Config::save( cfg );
+    
     return;
   }
 

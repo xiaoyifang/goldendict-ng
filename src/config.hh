@@ -851,6 +851,7 @@ struct Class
 
   MutedDictionaries mutedDictionaries;      // Disabled via dictionary bar
   MutedDictionaries popupMutedDictionaries; // Disabled via dictionary bar in popup
+  MutedDictionaries dictionariesToReindex;  // Dictionaries scheduled for reindexing
 
   QDateTime timeForNewReleaseCheck; // Last time when the release was checked.
 
