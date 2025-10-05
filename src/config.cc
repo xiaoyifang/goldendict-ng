@@ -378,8 +378,7 @@ Group loadGroup( QDomElement grp, unsigned * nextId = 0 )
   return g;
 }
 
-DictionarySets loadDictionaries( const QDomNode & mutedDictionaries,
-								 const QString & elementName = "mutedDictionary" )
+DictionarySets loadDictionaries( const QDomNode & mutedDictionaries, const QString & elementName = "mutedDictionary" )
 {
   DictionarySets result;
 
