@@ -1022,9 +1022,9 @@ void ScanPopup::pageLoaded( ArticleView * ) const
   updateBackForwardButtons();
 }
 
-void ScanPopup::showStatusBarMessage( const QString & message, int timeout, const QPixmap & icon ) const
+void ScanPopup::showStatusBarMessage( const QString & message, int timeout )
 {
-  mainStatusBar->showMessage( message, timeout, icon );
+  mainStatusBar->showMessage( message, timeout );
 }
 
 void ScanPopup::escapePressed()
