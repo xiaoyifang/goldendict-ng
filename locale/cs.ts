@@ -725,6 +725,22 @@ a školní ortografií v cyrilici)</translation>
       <source>Restore selection</source>
       <translation>Obnovit výběr</translation>
     </message>
+    <message>
+      <source>Cancel reindex</source>
+      <translation>Zrušit reindexaci</translation>
+    </message>
+    <message>
+      <source>Schedule for reindex</source>
+      <translation>Harmonogram reindexace</translation>
+    </message>
+    <message>
+      <source>Cancel schedule reindex</source>
+      <translation>Zrušit reindexaci plánu</translation>
+    </message>
+    <message>
+      <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
+      <translation>Pro reindexaci byl naplánován slovník. Index bude rekonstruován na příštím restartu aplikace.</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
