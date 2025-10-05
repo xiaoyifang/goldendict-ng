@@ -725,6 +725,22 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <source>Restore selection</source>
       <translation>Herstel selectie</translation>
     </message>
+    <message>
+      <source>Cancel reindex</source>
+      <translation>Herindexeren annuleren</translation>
+    </message>
+    <message>
+      <source>Schedule for reindex</source>
+      <translation>Plan voor herindexering</translation>
+    </message>
+    <message>
+      <source>Cancel schedule reindex</source>
+      <translation>Herindexering van plannen annuleren</translation>
+    </message>
+    <message>
+      <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
+      <translation>Het woordenboek is gepland voor herindexering. De index wordt opnieuw opgebouwd bij de volgende applicatie.</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
