@@ -722,6 +722,22 @@ between classic and school orthography in cyrillic)</source>
         <source>Restore selection</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Cancel reindex</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Schedule for reindex</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel schedule reindex</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>EditDictionaries</name>
