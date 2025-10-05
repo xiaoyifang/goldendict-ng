@@ -7,21 +7,13 @@
         return;
       }
 
-      if (link.indexOf("javascript:") >= 0) {
+      if (link.indexOf("javascript:") >= 0 || link === "#") {
         return;
       }
 
       //return if the link is like gdlookup:// or other valid url.
       if (link.indexOf("://") >= 0) {
-        // Get current dictId from nearest parent .gdarticle div
-        const dictId = $(this).closest(".gdarticle").attr("data-gd-id");
-        if (dictId && link.indexOf("?") > -1) {
-          emitClickedEvent(link + "&dictionaries=" + dictId);
-        } else if (dictId) {
-          emitClickedEvent(link + "?dictionaries=" + dictId);
-        } else {
-          emitClickedEvent(link);
-        }
+        emitClickedEvent(link);
         return false;
       }
       emitClickedEvent("");
