@@ -378,7 +378,8 @@ Group loadGroup( QDomElement grp, unsigned * nextId = 0 )
   return g;
 }
 
-MutedDictionaries loadMutedDictionaries( const QDomNode & mutedDictionaries, const QString & elementName = "mutedDictionary" )
+MutedDictionaries loadMutedDictionaries( const QDomNode & mutedDictionaries,
+                                         const QString & elementName = "mutedDictionary" )
 {
   MutedDictionaries result;
 
@@ -393,7 +394,10 @@ MutedDictionaries loadMutedDictionaries( const QDomNode & mutedDictionaries, con
   return result;
 }
 
-void saveMutedDictionaries( QDomDocument & dd, QDomElement & muted, const MutedDictionaries & mutedDictionaries, const QString & elementName = "mutedDictionary" )
+void saveMutedDictionaries( QDomDocument & dd,
+                            QDomElement & muted,
+                            const MutedDictionaries & mutedDictionaries,
+                            const QString & elementName = "mutedDictionary" )
 {
   for ( const auto & mutedDictionarie : mutedDictionaries ) {
     QDomElement dict = dd.createElement( elementName );
