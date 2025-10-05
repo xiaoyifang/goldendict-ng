@@ -724,6 +724,22 @@ between classic and school orthography in cyrillic)</source>
       <source>Restore selection</source>
       <translation>Restore selection</translation>
     </message>
+    <message>
+      <source>Cancel reindex</source>
+      <translation>إلغاء Redex</translation>
+    </message>
+    <message>
+      <source>Schedule for reindex</source>
+      <translation>الجدول الزمني لإعادة النظر</translation>
+    </message>
+    <message>
+      <source>Cancel schedule reindex</source>
+      <translation>إلغاء جدولة Redex</translation>
+    </message>
+    <message>
+      <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
+      <translation>تم جدولة القاموس لإعادة تكسيسه. سيتم إعادة بناء الفهرس على إعادة تشغيل التطبيق التالي.</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
