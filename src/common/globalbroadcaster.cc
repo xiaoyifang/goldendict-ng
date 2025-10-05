@@ -83,7 +83,7 @@ QString GlobalBroadcaster::getAbbrName( const QString & text )
 
 bool GlobalBroadcaster::isDarkModeEnabled() const
 {
-  if ( !config || !&config->preferences ) {
+  if ( !config || !config->preferences ) {
     return false;
   }
 
