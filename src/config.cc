@@ -378,12 +378,12 @@ Group loadGroup( QDomElement grp, unsigned * nextId = 0 )
   return g;
 }
 
-MutedDictionaries loadMutedDictionaries( const QDomNode & mutedDictionaries )
+MutedDictionaries loadMutedDictionaries( const QDomNode & mutedDictionaries, const QString & elementName = "mutedDictionary" )
 {
   MutedDictionaries result;
 
   if ( !mutedDictionaries.isNull() ) {
-    QDomNodeList nl = mutedDictionaries.toElement().elementsByTagName( "mutedDictionary" );
+    QDomNodeList nl = mutedDictionaries.toElement().elementsByTagName( elementName );
 
     for ( int x = 0; x < nl.length(); ++x ) {
       result.insert( nl.item( x ).toElement().text() );
@@ -393,10 +393,10 @@ MutedDictionaries loadMutedDictionaries( const QDomNode & mutedDictionaries )
   return result;
 }
 
-void saveMutedDictionaries( QDomDocument & dd, QDomElement & muted, const MutedDictionaries & mutedDictionaries )
+void saveMutedDictionaries( QDomDocument & dd, QDomElement & muted, const MutedDictionaries & mutedDictionaries, const QString & elementName = "mutedDictionary" )
 {
   for ( const auto & mutedDictionarie : mutedDictionaries ) {
-    QDomElement dict = dd.createElement( "mutedDictionary" );
+    QDomElement dict = dd.createElement( elementName );
     muted.appendChild( dict );
 
     QDomText value = dd.createTextNode( mutedDictionarie );
@@ -777,7 +777,7 @@ Class load()
 
   c.mutedDictionaries      = loadMutedDictionaries( root.namedItem( "mutedDictionaries" ) );
   c.popupMutedDictionaries = loadMutedDictionaries( root.namedItem( "popupMutedDictionaries" ) );
-  c.dictionariesToReindex  = loadMutedDictionaries( root.namedItem( "dictionariesToReindex" ) );
+  c.dictionariesToReindex  = loadMutedDictionaries( root.namedItem( "dictionariesToReindex" ), "dictionary" );
 
   QDomNode preferences = root.namedItem( "preferences" );
 
@@ -1696,7 +1696,7 @@ void save( const Class & c )
   {
     QDomElement reindex = dd.createElement( "dictionariesToReindex" );
     root.appendChild( reindex );
-    saveMutedDictionaries( dd, reindex, c.dictionariesToReindex );
+    saveMutedDictionaries( dd, reindex, c.dictionariesToReindex, "dictionary" );
   }
 
   {
