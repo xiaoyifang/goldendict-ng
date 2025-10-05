@@ -725,6 +725,22 @@ between classic and school orthography in cyrillic)</source>
       <source>Restore selection</source>
       <translation>選択範囲を復元</translation>
     </message>
+    <message>
+      <source>Cancel reindex</source>
+      <translation>インデックス再作成をキャンセル</translation>
+    </message>
+    <message>
+      <source>Schedule for reindex</source>
+      <translation>再インデックスのスケジュール</translation>
+    </message>
+    <message>
+      <source>Cancel schedule reindex</source>
+      <translation>スケジュールの再インデックスをキャンセル</translation>
+    </message>
+    <message>
+      <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
+      <translation>辞書の再インデックスがスケジュールされています。インデックスは次のアプリケーションの再起動時に再構築されます。</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
