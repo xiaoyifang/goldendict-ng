@@ -11,6 +11,7 @@
 #include <QDateTime>
 
 #include "config.hh"
+#include "common/globalbroadcaster.hh"
 #include <QDir>
 #include <QCryptographicHash>
 #include <QImage>
@@ -652,6 +653,24 @@ string makeDictionaryId( const vector< string > & dictionaryFiles ) noexcept
 // be fixed in the future when it's needed.
 bool needToRebuildIndex( const vector< string > & dictionaryFiles, const string & indexFile ) noexcept
 {
+  // First check if the dictionary is scheduled for reindexing
+  Config::Class * cfg = GlobalBroadcaster::instance()->getConfig();
+
+  // Only calculate dictId and check if reindex list is not empty
+  if ( cfg && !cfg->dictionariesToReindex.isEmpty() ) {
+    std::string dictId = makeDictionaryId( dictionaryFiles );
+
+    // If the dictionary ID is in the reindex list, return true and remove it
+    if ( cfg->dictionariesToReindex.contains( QString::fromStdString( dictId ) ) ) {
+      // Remove immediately to ensure index is rebuilt only once
+      cfg->dictionariesToReindex.remove( QString::fromStdString( dictId ) );
+      // Set dirty flag to true, indicating configuration has been modified
+      cfg->dirty = true;
+      return true;
+    }
+  }
+
+  // Original logic: check file modification times
   qint64 lastModified = 0;
 
   for ( const auto & dictionaryFile : dictionaryFiles ) {
