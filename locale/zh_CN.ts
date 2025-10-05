@@ -724,6 +724,22 @@ between classic and school orthography in cyrillic)</source>
       <source>Restore selection</source>
       <translation>恢复选择</translation>
     </message>
+    <message>
+      <source>Cancel reindex</source>
+      <translation>取消重新索引</translation>
+    </message>
+    <message>
+      <source>Schedule for reindex</source>
+      <translation>重建计划</translation>
+    </message>
+    <message>
+      <source>Cancel schedule reindex</source>
+      <translation>取消计划恢复</translation>
+    </message>
+    <message>
+      <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
+      <translation>字典已计划重新索引。索引将在下次应用程序重新编译时重新构建。</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
