@@ -725,6 +725,22 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <source>Restore selection</source>
       <translation>Återställ markering</translation>
     </message>
+    <message>
+      <source>Cancel reindex</source>
+      <translation>Avbryt omindexering</translation>
+    </message>
+    <message>
+      <source>Schedule for reindex</source>
+      <translation>Schemalägg för omindexering</translation>
+    </message>
+    <message>
+      <source>Cancel schedule reindex</source>
+      <translation>Avbryt omindexering av schema</translation>
+    </message>
+    <message>
+      <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
+      <translation>Ordboken har schemalagts för omindexering. Indexet kommer att byggas om vid nästa omstart av programmet.</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
