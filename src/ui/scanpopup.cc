@@ -689,7 +689,7 @@ const vector< sptr< Dictionary::Class > > & ScanPopup::getActiveDicts()
 
   Q_ASSERT( 0 <= current || current <= (qsizetype)groups.size() );
 
-  const Config::MutedDictionaries * mutedDictionaries = dictionaryBar.getMutedDictionaries();
+  const Config::DictionarySets * mutedDictionaries = dictionaryBar.getMutedDictionaries();
 
   if ( !dictionaryBar.toggleViewAction()->isChecked() || mutedDictionaries == nullptr ) {
     return groups[ current ].dictionaries;

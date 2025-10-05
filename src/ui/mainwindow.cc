@@ -1676,7 +1676,7 @@ const vector< sptr< Dictionary::Class > > & MainWindow::getActiveDicts()
     return dictionaries;
   }
 
-  const Config::MutedDictionaries * mutedDictionaries = dictionaryBar.getMutedDictionaries();
+  const Config::DictionarySets * mutedDictionaries = dictionaryBar.getMutedDictionaries();
   if ( !dictionaryBar.toggleViewAction()->isChecked() || mutedDictionaries == nullptr ) {
     return groupInstances[ current ].dictionaries;
   }

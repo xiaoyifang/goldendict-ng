@@ -80,7 +80,7 @@ void DictionaryBar::setDictionaries( const vector< sptr< Dictionary::Class > > &
 }
 
 void DictionaryBar::updateToGroup( const Instances::Group * grp,
-                                   Config::MutedDictionaries * allGroupMutedDictionaries,
+                                   Config::DictionarySets * allGroupMutedDictionaries,
                                    Config::Class & cfg )
 {
   Q_ASSERT( grp != nullptr ); // should never occur

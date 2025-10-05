@@ -1037,7 +1037,7 @@ QStringList ArticleView::getMutedDictionaries( unsigned group )
 
     // Find muted dictionaries for current group
     const Config::Group * grp = cfg.getGroup( group );
-    const Config::MutedDictionaries * mutedDictionaries;
+    const Config::DictionarySets * mutedDictionaries;
     if ( group == GroupId::AllGroupId ) {
       mutedDictionaries = popupView ? &cfg.popupMutedDictionaries : &cfg.mutedDictionaries;
     }

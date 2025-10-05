@@ -42,7 +42,7 @@ enum class Dark : std::uint8_t {
 };
 
 /// Dictionaries which are temporarily disabled via the dictionary bar.
-using MutedDictionaries = QSet< QString >;
+using DictionarySets = QSet< QString >;
 
 /// A path where to search for the dictionaries
 struct Path
@@ -122,8 +122,8 @@ struct Group
   QKeySequence shortcut;
   QString favoritesFolder;
   QList< DictionaryRef > dictionaries;
-  Config::MutedDictionaries mutedDictionaries;      // Disabled via dictionary bar
-  Config::MutedDictionaries popupMutedDictionaries; // Disabled via dictionary bar in popup
+  Config::DictionarySets mutedDictionaries;      // Disabled via dictionary bar
+  Config::DictionarySets popupMutedDictionaries; // Disabled via dictionary bar in popup
 
   Group():
     id( 0 )
@@ -852,9 +852,9 @@ struct Class
   QByteArray mainWindowState;    // Binary state saved by QMainWindow
   QByteArray mainWindowGeometry; // Geometry saved by QMainWindow
 
-  MutedDictionaries mutedDictionaries;      // Disabled via dictionary bar
-  MutedDictionaries popupMutedDictionaries; // Disabled via dictionary bar in popup
-  MutedDictionaries dictionariesToReindex;  // Dictionaries scheduled for reindexing
+  DictionarySets mutedDictionaries;      // Disabled via dictionary bar
+  DictionarySets popupMutedDictionaries; // Disabled via dictionary bar in popup
+  DictionarySets dictionariesToReindex;  // Dictionaries scheduled for reindexing
 
   QDateTime timeForNewReleaseCheck; // Last time when the release was checked.
 

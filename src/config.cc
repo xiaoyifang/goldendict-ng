@@ -381,7 +381,7 @@ Group loadGroup( QDomElement grp, unsigned * nextId = 0 )
 MutedDictionaries loadMutedDictionaries( const QDomNode & mutedDictionaries,
                                          const QString & elementName = "mutedDictionary" )
 {
-  MutedDictionaries result;
+  DictionarySets result;
 
   if ( !mutedDictionaries.isNull() ) {
     QDomNodeList nl = mutedDictionaries.toElement().elementsByTagName( elementName );
@@ -394,10 +394,7 @@ MutedDictionaries loadMutedDictionaries( const QDomNode & mutedDictionaries,
   return result;
 }
 
-void saveMutedDictionaries( QDomDocument & dd,
-                            QDomElement & muted,
-                            const MutedDictionaries & mutedDictionaries,
-                            const QString & elementName = "mutedDictionary" )
+void saveMutedDictionaries( QDomDocument & dd, QDomElement & muted, const DictionarySets & mutedDictionaries, const QString & elementName = "mutedDictionary" )
 {
   for ( const auto & mutedDictionarie : mutedDictionaries ) {
     QDomElement dict = dd.createElement( elementName );
@@ -409,14 +406,6 @@ void saveMutedDictionaries( QDomDocument & dd,
 }
 
 } // namespace
-
-bool fromConfig2Preference( const QDomNode & node, const QString & expectedValue, bool defaultValue = false )
-{
-  if ( !node.isNull() ) {
-    return ( node.toElement().text() == expectedValue );
-  }
-  return defaultValue;
-}
 
 Class load()
 {
