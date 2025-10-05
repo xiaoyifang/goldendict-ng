@@ -725,6 +725,22 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
       <source>Restore selection</source>
       <translation>Przywróć zaznaczenie</translation>
     </message>
+    <message>
+      <source>Cancel reindex</source>
+      <translation>Anuluj reindeks</translation>
+    </message>
+    <message>
+      <source>Schedule for reindex</source>
+      <translation>Harmonogram przeindeksowania</translation>
+    </message>
+    <message>
+      <source>Cancel schedule reindex</source>
+      <translation>Anuluj przeindeksowanie harmonogramu</translation>
+    </message>
+    <message>
+      <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
+      <translation>Słownik został zaplanowany do przeindeksowania. Indeks zostanie przebudowany po ponownym uruchomieniu aplikacji.</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
