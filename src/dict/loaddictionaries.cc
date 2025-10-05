@@ -140,13 +140,11 @@ void LoadDictionaries::run()
     }
 
     // Save configuration to ensure custom dictionary names and FTS options are preserved
-    Config::Class *cfg = GlobalBroadcaster::instance()->getConfig();
+    Config::Class * cfg = GlobalBroadcaster::instance()->getConfig();
 
-    if ( cfg && cfg->dirty )
-    {
+    if ( cfg && cfg->dirty ) {
       Config::save( *cfg );
     }
-
   }
   catch ( std::exception & e ) {
     exceptionTexts << QString::fromUtf8( e.what() );

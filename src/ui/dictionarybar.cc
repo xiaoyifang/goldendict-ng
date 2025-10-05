@@ -136,9 +136,9 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
     restoreSelectionAction = menu.addAction( tr( "Restore selection" ) );
   }
 
-  const QAction * editAction = nullptr;
-  const QAction * infoAction = nullptr;
-  const QAction * headwordsAction = nullptr;
+  const QAction * editAction            = nullptr;
+  const QAction * infoAction            = nullptr;
+  const QAction * headwordsAction       = nullptr;
   const QAction * openDictFolderAction = nullptr;
   const QAction * scheduleReindexAction = nullptr;
 
@@ -158,20 +158,21 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
     }
 
     if ( pDict ) {
-        infoAction = menu.addAction( tr( "Dictionary info" ) );
+      infoAction = menu.addAction( tr( "Dictionary info" ) );
 
-        // Add schedule/cancel reindex action for local dictionaries
-        if ( pDict->isLocalDictionary() ) {
-          Config::Class *cfg = GlobalBroadcaster::instance()->getConfig();
-          const QString dictId = pDict->getId().c_str();
-          if ( cfg && cfg->dictionariesToReindex.contains( dictId ) ) {
-            scheduleReindexAction = menu.addAction( tr( "Cancel reindex" ) );
-          } else {
-            scheduleReindexAction = menu.addAction( tr( "Schedule for reindex" ) );
-          }
+      // Add schedule/cancel reindex action for local dictionaries
+      if ( pDict->isLocalDictionary() ) {
+        Config::Class * cfg  = GlobalBroadcaster::instance()->getConfig();
+        const QString dictId = pDict->getId().c_str();
+        if ( cfg && cfg->dictionariesToReindex.contains( dictId ) ) {
+          scheduleReindexAction = menu.addAction( tr( "Cancel reindex" ) );
         }
+        else {
+          scheduleReindexAction = menu.addAction( tr( "Schedule for reindex" ) );
+        }
+      }
 
-        if ( pDict->isLocalDictionary() ) {
+      if ( pDict->isLocalDictionary() ) {
         if ( pDict->getWordCount() > 0 ) {
           headwordsAction = menu.addAction( tr( "Dictionary headwords" ) );
         }
@@ -219,32 +220,36 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
 
   if ( result && result == scheduleReindexAction ) {
     const QString dictId = dictAction->data().toString();
-    Config::Class *cfg = GlobalBroadcaster::instance()->getConfig();
-    
+    Config::Class * cfg  = GlobalBroadcaster::instance()->getConfig();
+
     // Check if the dictionary is already scheduled for reindexing
-      if ( cfg && cfg->dictionariesToReindex.contains( dictId ) ) {
-        // Remove from reindex list (cancel reindex)
-        cfg->dictionariesToReindex.remove( dictId );
-      
+    if ( cfg && cfg->dictionariesToReindex.contains( dictId ) ) {
+      // Remove from reindex list (cancel reindex)
+      cfg->dictionariesToReindex.remove( dictId );
+
       // Note: Using status bar notification instead of message box for lighter user feedback
       // After canceling reindexing plan, show operation result in status bar
       emit showStatusBarMessage( tr( "Cancel schedule reindex" ), 3000 ); // Show for 3 seconds
-    } else if ( cfg ) {
-        // Add to reindex list
-        cfg->dictionariesToReindex.insert( dictId );
-      
+    }
+    else if ( cfg ) {
+      // Add to reindex list
+      cfg->dictionariesToReindex.insert( dictId );
+
       // Using status bar notification instead of message box for lighter user feedback
       // After scheduling reindexing, show operation result and follow-up hint in status bar
-      emit showStatusBarMessage( tr( "The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart." ), 3000 ); // Show for 3 seconds
+      emit showStatusBarMessage(
+        tr(
+          "The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart." ),
+        3000 ); // Show for 3 seconds
     }
-    
+
     // Set dirty flag specifically for reindex schedule changes
     if ( cfg ) {
       cfg->dirty = true;
       // Always save configuration to ensure the action text updates correctly next time the menu is opened
       Config::save( *cfg );
     }
-    
+
     return;
   }
 

@@ -64,7 +64,7 @@ signals:
 
   /// Signal to close context menu
   void closePopupMenu();
-  
+
   /// Signal to show status bar message (used instead of direct status bar calls)
   void showStatusBarMessage( const QString & message, int timeout = 3000 );
 
