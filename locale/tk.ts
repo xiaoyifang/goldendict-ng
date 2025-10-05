@@ -724,6 +724,22 @@ between classic and school orthography in cyrillic)</source>
       <source>Restore selection</source>
       <translation type="unfinished">Restore selection</translation>
     </message>
+    <message>
+      <source>Cancel reindex</source>
+      <translation type="unfinished">Cancel reindex</translation>
+    </message>
+    <message>
+      <source>Schedule for reindex</source>
+      <translation type="unfinished">Schedule for reindex</translation>
+    </message>
+    <message>
+      <source>Cancel schedule reindex</source>
+      <translation type="unfinished">Cancel schedule reindex</translation>
+    </message>
+    <message>
+      <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
+      <translation type="unfinished">The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
