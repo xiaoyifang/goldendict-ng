@@ -378,8 +378,8 @@ Group loadGroup( QDomElement grp, unsigned * nextId = 0 )
   return g;
 }
 
-MutedDictionaries loadMutedDictionaries( const QDomNode & mutedDictionaries,
-                                         const QString & elementName = "mutedDictionary" )
+DictionarySets loadDictionaries( const QDomNode & mutedDictionaries,
+								 const QString & elementName = "mutedDictionary" )
 {
   DictionarySets result;
 
@@ -394,7 +394,7 @@ MutedDictionaries loadMutedDictionaries( const QDomNode & mutedDictionaries,
   return result;
 }
 
-void saveMutedDictionaries( QDomDocument & dd,
+void saveMutedDictionaries( QDomDocument & dd, QDomElement & muted, const DictionarySets & mutedDictionaries, const QString & elementName = "mutedDictionary" )
                             QDomElement & muted,
                             const DictionarySets & mutedDictionaries,
                             const QString & elementName = "mutedDictionary" )
@@ -771,9 +771,9 @@ Class load()
   }
 #endif
 
-  c.mutedDictionaries      = loadMutedDictionaries( root.namedItem( "mutedDictionaries" ) );
-  c.popupMutedDictionaries = loadMutedDictionaries( root.namedItem( "popupMutedDictionaries" ) );
-  c.dictionariesToReindex  = loadMutedDictionaries( root.namedItem( "dictionariesToReindex" ), "dictionary" );
+  c.mutedDictionaries      = loadDictionaries( root.namedItem( "mutedDictionaries" ) );
+  c.popupMutedDictionaries = loadDictionaries( root.namedItem( "popupMutedDictionaries" ) );
+  c.dictionariesToReindex  = loadDictionaries( root.namedItem( "dictionariesToReindex" ), "dictionary" );
 
   QDomNode preferences = root.namedItem( "preferences" );
 
@@ -1680,19 +1680,19 @@ void save( const Class & c )
   {
     QDomElement muted = dd.createElement( "mutedDictionaries" );
     root.appendChild( muted );
-    saveMutedDictionaries( dd, muted, c.mutedDictionaries );
+    saveDictionaries( dd, muted, c.mutedDictionaries );
   }
 
   {
     QDomElement muted = dd.createElement( "popupMutedDictionaries" );
     root.appendChild( muted );
-    saveMutedDictionaries( dd, muted, c.popupMutedDictionaries );
+    saveDictionaries( dd, muted, c.popupMutedDictionaries );
   }
 
   {
     QDomElement reindex = dd.createElement( "dictionariesToReindex" );
     root.appendChild( reindex );
-    saveMutedDictionaries( dd, reindex, c.dictionariesToReindex, "dictionary" );
+    saveDictionaries( dd, reindex, c.dictionariesToReindex, "dictionary" );
   }
 
   {
