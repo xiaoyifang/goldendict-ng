@@ -394,9 +394,9 @@ DictionarySets loadDictionaries( const QDomNode & mutedDictionaries, const QStri
 }
 
 void saveDictionaries( QDomDocument & dd,
-                            QDomElement & muted,
-                            const DictionarySets & mutedDictionaries,
-                            const QString & elementName = "mutedDictionary" )
+                       QDomElement & muted,
+                       const DictionarySets & mutedDictionaries,
+                       const QString & elementName = "mutedDictionary" )
 {
   for ( const auto & mutedDictionarie : mutedDictionaries ) {
     QDomElement dict = dd.createElement( elementName );
