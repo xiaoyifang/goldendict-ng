@@ -725,6 +725,22 @@ between classic and school orthography in cyrillic)</source>
       <source>Restore selection</source>
       <translation>Відновити вибране</translation>
     </message>
+    <message>
+      <source>Cancel reindex</source>
+      <translation>Відмінити переіндексування</translation>
+    </message>
+    <message>
+      <source>Schedule for reindex</source>
+      <translation>Розклад для переіндексу</translation>
+    </message>
+    <message>
+      <source>Cancel schedule reindex</source>
+      <translation>Відмінити переіндексацію розкладу</translation>
+    </message>
+    <message>
+      <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
+      <translation>Цей словник заплановано до переіндексації. Індекс буде перебудований при наступному перезапуску програми.</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
