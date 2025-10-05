@@ -393,7 +393,7 @@ DictionarySets loadDictionaries( const QDomNode & mutedDictionaries, const QStri
   return result;
 }
 
-void saveMutedDictionaries( QDomDocument & dd, QDomElement & muted, const DictionarySets & mutedDictionaries, const QString & elementName = "mutedDictionary" )
+void saveDictionaries( QDomDocument & dd,
                             QDomElement & muted,
                             const DictionarySets & mutedDictionaries,
                             const QString & elementName = "mutedDictionary" )
