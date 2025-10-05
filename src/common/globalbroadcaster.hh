@@ -21,7 +21,7 @@ class GlobalBroadcaster: public QObject
 {
   Q_OBJECT
 
-  Config::Class * config;
+  Config::Class * config = nullptr;
   QSet< QString > whitelist;
   Icons::DictionaryIconName _icon_names;
 

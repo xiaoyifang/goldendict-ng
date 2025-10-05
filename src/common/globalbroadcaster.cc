@@ -8,8 +8,7 @@
 Q_GLOBAL_STATIC( GlobalBroadcaster, bdcaster )
 
 GlobalBroadcaster::GlobalBroadcaster( QObject * parent ):
-  QObject( parent ),
-  config( nullptr )
+  QObject( parent )
 {
   QStringList whiteUrlHosts = { "googleapis.com", "gstatic.com" };
 
