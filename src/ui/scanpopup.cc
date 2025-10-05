@@ -179,9 +179,11 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( &dictionaryBar, &DictionaryBar::openDictionaryFolder, this, &ScanPopup::openDictionaryFolder );
   // Connect the dictionary bar's status bar message signal to the scan popup's status bar message slot
   // Use lambda to adapt the signal (2 parameters) to the slot (3 parameters with default)
-  connect( &dictionaryBar, &DictionaryBar::showStatusBarMessage, this, 
-           [this]( const QString & message, int timeout ) { 
-               showStatusBarMessage( message, timeout ); 
+  connect( &dictionaryBar,
+           &DictionaryBar::showStatusBarMessage,
+           this,
+           [ this ]( const QString & message, int timeout ) {
+             showStatusBarMessage( message, timeout );
            } );
 
   connect( &GlobalBroadcaster::instance()->pronounce_engine,

@@ -582,9 +582,11 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   connect( &dictionaryBar, &DictionaryBar::openDictionaryFolder, this, &MainWindow::openDictionaryFolder );
   // Use lambda to adapt the signal (2 parameters) to the slot (3 parameters with default)
-  connect( &dictionaryBar, &DictionaryBar::showStatusBarMessage, this, 
-           [this]( const QString & message, int timeout ) { 
-               showStatusBarMessage( message, timeout ); 
+  connect( &dictionaryBar,
+           &DictionaryBar::showStatusBarMessage,
+           this,
+           [ this ]( const QString & message, int timeout ) {
+             showStatusBarMessage( message, timeout );
            } );
 
   // Favorites
