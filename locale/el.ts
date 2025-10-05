@@ -727,6 +727,22 @@ between classic and school orthography in cyrillic)</source>
       <source>Restore selection</source>
       <translation>Επαναφορά επιλογής</translation>
     </message>
+    <message>
+      <source>Cancel reindex</source>
+      <translation>Ακύρωση επαναευρετηρίου</translation>
+    </message>
+    <message>
+      <source>Schedule for reindex</source>
+      <translation>Χρονοδιάγραμμα επαναευρετηρίου</translation>
+    </message>
+    <message>
+      <source>Cancel schedule reindex</source>
+      <translation>Ακύρωση επαναευρετηρίου προγράμματος</translation>
+    </message>
+    <message>
+      <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
+      <translation>Το λεξικό έχει προγραμματιστεί για την επαναδημιουργία ευρετηρίου. Το ευρετήριο θα ανακατασκευαστεί στην επόμενη επανεκκίνηση της εφαρμογής.</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
