@@ -725,6 +725,22 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <source>Restore selection</source>
       <translation>Palauta valinta</translation>
     </message>
+    <message>
+      <source>Cancel reindex</source>
+      <translation>Peru uudelleenindeksointi</translation>
+    </message>
+    <message>
+      <source>Schedule for reindex</source>
+      <translation>Ajastus uudelleenindeksointia varten</translation>
+    </message>
+    <message>
+      <source>Cancel schedule reindex</source>
+      <translation>Peruuta ajoitettu uudelleenindeksointi</translation>
+    </message>
+    <message>
+      <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
+      <translation>Sanasto on tarkoitus indeksoida uudelleen. Indeksi rakennetaan uudelleen seuraavan sovelluksen uudelleenkäynnistyksen yhteydessä.</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
