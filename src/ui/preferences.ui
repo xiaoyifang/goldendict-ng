@@ -36,7 +36,7 @@
       <enum>Qt::ElideNone</enum>
      </property>
      <property name="usesScrollButtons">
-      <bool>false</bool>
+      <bool>true</bool>
      </property>
      <property name="documentMode">
       <bool>false</bool>
@@ -59,7 +59,7 @@
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>-256</y>
+            <y>0</y>
             <width>727</width>
             <height>713</height>
            </rect>
