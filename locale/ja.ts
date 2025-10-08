@@ -2826,10 +2826,6 @@ be the last ones.</source>
       <translation>現在の後に新しいタブを開く</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>タブを 1 つだけ開いているときにメイン タブ バーを表示したく&apos;場合は、このオプションを選択します。</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>単一タブを隠す</translation>
     </message>
@@ -3529,6 +3525,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>別タブでウェブサイト辞書を開く</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
     </message>
   </context>
   <context>
