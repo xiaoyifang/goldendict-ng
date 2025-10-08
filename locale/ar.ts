@@ -2825,10 +2825,6 @@ be the last ones.</source>
       <translation>افتح الألسنة الجديدة بعد الحاليّة</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>اختر هذا الخيار إن لم تكن تريد رؤية شريط الألسنة الرئيسي عندما يكون لسان واحد مفتوح.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>أخفِ لسانًا واحدًا</translation>
     </message>
@@ -3528,6 +3524,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>فتح قاموس الموقع في علامة تبويب منفصلة</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation>حدد هذا الخيار إذا كنت don&apos;وتريد أن ترى شريط التبويب الرئيسي عند فتح علامة تبويب واحدة فقط
+                  .
+                 </translation>
     </message>
   </context>
   <context>
