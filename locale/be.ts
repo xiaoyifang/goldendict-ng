@@ -2823,10 +2823,6 @@ be the last ones.</source>
       <translation>Адкрываць новыя ўкладкі пасля бягучай</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Адзначце гэты параметр, калі не хочаце бачыць галоўную панэль укладак, калі адкрыта толькі адна ўкладка.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Хаваць панэль пры адной ўкладцы</translation>
     </message>
@@ -3518,6 +3514,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
     </message>
   </context>
   <context>
