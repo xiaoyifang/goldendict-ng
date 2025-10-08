@@ -2828,11 +2828,6 @@ Do contrário, serão enfileiradas ao lado da
       <translation>Abrir novas guias após a atual</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Habilite esta opção se não quiser exibir a guia principal
-quando apenas uma delas estiver aberta.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Ocultar guia única</translation>
     </message>
@@ -3536,6 +3531,14 @@ dos dicionários Stardict, Babylon e GLS</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Abrir o dicionário do site na guia separada</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation>Selecione esta opção se você don&apos;t quer ver a barra de abas principal quando apenas uma aba for
+                  aberta.
+                 </translation>
     </message>
   </context>
   <context>
