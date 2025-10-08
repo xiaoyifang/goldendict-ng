@@ -11,8 +11,8 @@
         return;
       }
 
-      //return if the link is like gdlookup:// or other valid url.
-      if (link.indexOf("://") >= 0) {
+      //return if the link is like gdlookup:// or other valid url.bword:xxx is also valid url.
+      if (link.indexOf(":") >= 0) {
         emitClickedEvent(link);
         return false;
       }
