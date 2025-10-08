@@ -1444,6 +1444,8 @@ static const char * beginsWith( const char * substr, const char * str )
   return strncmp( str, substr, len ) == 0 ? str + len : 0;
 }
 
+
+
 Ifo::Ifo( const QString & fileName )
 {
   QFile f( fileName );
@@ -1451,66 +1453,79 @@ Ifo::Ifo( const QString & fileName )
     throw exCantReadFile( "Cannot open IFO file -> " + fileName.toStdString() );
   };
 
-  if ( !f.readLine().startsWith( "StarDict's dict ifo file" ) || !f.readLine().startsWith( "version=" ) ) {
+  // Set up text stream with automatic Unicode detection
+  QTextStream stream(&f);
+  stream.setAutoDetectUnicode(true);
+  
+  // Read and validate file format
+  QString firstLine = stream.readLine();
+  QString secondLine = stream.readLine();
+  
+  // Ensure proper file format detection even with BOM
+  if ( !firstLine.startsWith( "StarDict's dict ifo file" ) || !secondLine.startsWith( "version=" ) ) {
     throw exNotAnIfoFile();
   }
 
   /// Now go through the file and parse options
   {
-    while ( !f.atEnd() ) {
-      auto line   = f.readLine();
-      auto option = QByteArrayView( line ).trimmed();
+    while ( !stream.atEnd() ) {
+      QString line = stream.readLine();
+      QStringView option = QStringView( line ).trimmed();
       // Empty lines are allowed in .ifo file
 
       if ( option.isEmpty() ) {
         continue;
       }
 
-      if ( const char * val = beginsWith( "bookname=", option.data() ) ) {
+      // Convert QStringView to UTF-8 encoded const char*
+      QByteArray optionUtf8 = option.toString().toUtf8();
+      const char* optionData = optionUtf8.constData();
+      
+      if ( const char * val = beginsWith( "bookname=", optionData ) ) {
         bookname = val;
       }
-      else if ( const char * val = beginsWith( "wordcount=", option.data() ) ) {
+      else if ( const char * val = beginsWith( "wordcount=", optionData ) ) {
         if ( sscanf( val, "%u", &wordcount ) != 1 ) {
-          throw exBadFieldInIfo( option.data() );
+          throw exBadFieldInIfo( optionData );
         }
       }
-      else if ( const char * val = beginsWith( "synwordcount=", option.data() ) ) {
+      else if ( const char * val = beginsWith( "synwordcount=", optionData ) ) {
         if ( sscanf( val, "%u", &synwordcount ) != 1 ) {
-          throw exBadFieldInIfo( option.data() );
+          throw exBadFieldInIfo( optionData );
         }
       }
-      else if ( const char * val = beginsWith( "idxfilesize=", option.data() ) ) {
+      else if ( const char * val = beginsWith( "idxfilesize=", optionData ) ) {
         if ( sscanf( val, "%u", &idxfilesize ) != 1 ) {
-          throw exBadFieldInIfo( option.data() );
+          throw exBadFieldInIfo( optionData );
         }
       }
-      else if ( const char * val = beginsWith( "idxoffsetbits=", option.data() ) ) {
+      else if ( const char * val = beginsWith( "idxoffsetbits=", optionData ) ) {
         if ( sscanf( val, "%u", &idxoffsetbits ) != 1 || ( idxoffsetbits != 32 && idxoffsetbits != 64 ) ) {
-          throw exBadFieldInIfo( option.data() );
+          throw exBadFieldInIfo( optionData );
         }
       }
-      else if ( const char * val = beginsWith( "sametypesequence=", option.data() ) ) {
+      else if ( const char * val = beginsWith( "sametypesequence=", optionData ) ) {
         sametypesequence = val;
       }
-      else if ( const char * val = beginsWith( "dicttype=", option.data() ) ) {
+      else if ( const char * val = beginsWith( "dicttype=", optionData ) ) {
         dicttype = val;
       }
-      else if ( const char * val = beginsWith( "description=", option.data() ) ) {
+      else if ( const char * val = beginsWith( "description=", optionData ) ) {
         description = val;
       }
-      else if ( const char * val = beginsWith( "copyright=", option.data() ) ) {
+      else if ( const char * val = beginsWith( "copyright=", optionData ) ) {
         copyright = val;
       }
-      else if ( const char * val = beginsWith( "author=", option.data() ) ) {
+      else if ( const char * val = beginsWith( "author=", optionData ) ) {
         author = val;
       }
-      else if ( const char * val = beginsWith( "email=", option.data() ) ) {
+      else if ( const char * val = beginsWith( "email=", optionData ) ) {
         email = val;
       }
-      else if ( const char * val = beginsWith( "website=", option.data() ) ) {
+      else if ( const char * val = beginsWith( "website=", optionData ) ) {
         website = val;
       }
-      else if ( const char * val = beginsWith( "date=", option.data() ) ) {
+      else if ( const char * val = beginsWith( "date=", optionData ) ) {
         date = val;
       }
     }
