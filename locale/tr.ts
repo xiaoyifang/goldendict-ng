@@ -2824,10 +2824,6 @@ Aksi takdirde sekmelerin sonuna eklenecektir.</translation>
       <translation>Geçerli sekmeden sonra yeni sekme aç</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Yalnızca tek bir sekme açtığınızda ana sekme çubuğunun görmek istemiyorsanız bu seçeneği seçin.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Tek sekmeyi gizle</translation>
     </message>
@@ -3525,6 +3521,14 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
     </message>
   </context>
   <context>
