@@ -2826,10 +2826,6 @@ de efter den sista fliken i flikfältet.</translation>
       <translation>Öppna nya flikar bredvid den aktuella fliken</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Välj detta alternativ om du inte fill se flikfältet när endast en flik är öppen.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Dölj fliken och flikfältet om endast en flik är öppen</translation>
     </message>
@@ -3532,6 +3528,14 @@ från Stardict, Babylon och GLS ordböcker</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Öppna webbplatsordbok i separat flik</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation>Välj det här alternativet om du don&apos;t vill se huvudfliksfältet när bara en enda flik är
+                  öppnad.
+                 </translation>
     </message>
   </context>
   <context>
