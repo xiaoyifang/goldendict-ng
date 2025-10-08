@@ -2824,10 +2824,6 @@ justo después de la actual. Si no, se situarán las últimas.</translation>
       <translation>Abrir nuevas pestañas después de la actual</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Seleccione esta opción si no quiere que se muestre la barra de pestañas cuando sólo hay abierta una pestaña.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Ocultar una pesaña</translation>
     </message>
@@ -3527,6 +3523,14 @@ de diccionarios Stardict, Babylon y GLS</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Abrir diccionario de sitio web en pestaña separada</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation>Seleccione esta opción si no&apos;t desea ver la barra de pestañas principal cuando sólo una sola pestaña está
+                  abierta.
+                 </translation>
     </message>
   </context>
   <context>
