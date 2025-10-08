@@ -2825,10 +2825,6 @@ Inak sú pridané za poslednú kartu.</translation>
       <translation>Otvoriť nové karty za aktívnou kartou</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Vyberte si túto možnosť, pokiaľ nechcete vidieť panel s kartami, keď je otvorená len jedna karta.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Skryť hlavičku pri jednej karte</translation>
     </message>
@@ -3523,6 +3519,14 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
     </message>
   </context>
   <context>
