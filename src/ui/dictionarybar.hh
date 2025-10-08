@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QToolBar>
+class QMainWindow;
 #include <QSize>
 #include <QList>
 #include <QString>
@@ -26,11 +27,11 @@ public:
   /// Sets dictionaries to be displayed in the bar. Their statuses (enabled/
   /// disabled) are taken from the configuration data.
   void setDictionaries( const std::vector< sptr< Dictionary::Class > > & );
-  void setMutedDictionaries( Config::MutedDictionaries * mutedDictionaries_ )
+  void setMutedDictionaries( Config::DictionarySets * mutedDictionaries_ )
   {
     mutedDictionaries = mutedDictionaries_;
   }
-  const Config::MutedDictionaries * getMutedDictionaries() const
+  const Config::DictionarySets * getMutedDictionaries() const
   {
     return mutedDictionaries;
   }
@@ -43,7 +44,7 @@ public:
 
   void setDictionaryIconSize( IconSize size );
   void updateToGroup( const Instances::Group * grp,
-                      Config::MutedDictionaries * allGroupMutedDictionaries,
+                      Config::DictionarySets * allGroupMutedDictionaries,
                       Config::Class & cfg );
 
 signals:
@@ -64,12 +65,15 @@ signals:
   /// Signal to close context menu
   void closePopupMenu();
 
+  /// Signal to show status bar message (used instead of direct status bar calls)
+  void showStatusBarMessage( const QString & message, int timeout = 3000 );
+
 private:
 
-  Config::MutedDictionaries * mutedDictionaries;
+  Config::DictionarySets * mutedDictionaries;
 
   // In temporary selection, shift+click capture selections.
-  std::optional< Config::MutedDictionaries > tempSelectionCapturedMuted;
+  std::optional< Config::DictionarySets > tempSelectionCapturedMuted;
 
   Config::Events & configEvents;
 

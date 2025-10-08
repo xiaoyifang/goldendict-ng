@@ -378,12 +378,12 @@ Group loadGroup( QDomElement grp, unsigned * nextId = 0 )
   return g;
 }
 
-MutedDictionaries loadMutedDictionaries( const QDomNode & mutedDictionaries )
+DictionarySets loadDictionaries( const QDomNode & mutedDictionaries, const QString & elementName = "mutedDictionary" )
 {
-  MutedDictionaries result;
+  DictionarySets result;
 
   if ( !mutedDictionaries.isNull() ) {
-    QDomNodeList nl = mutedDictionaries.toElement().elementsByTagName( "mutedDictionary" );
+    QDomNodeList nl = mutedDictionaries.toElement().elementsByTagName( elementName );
 
     for ( int x = 0; x < nl.length(); ++x ) {
       result.insert( nl.item( x ).toElement().text() );
@@ -393,10 +393,13 @@ MutedDictionaries loadMutedDictionaries( const QDomNode & mutedDictionaries )
   return result;
 }
 
-void saveMutedDictionaries( QDomDocument & dd, QDomElement & muted, const MutedDictionaries & mutedDictionaries )
+void saveDictionaries( QDomDocument & dd,
+                       QDomElement & muted,
+                       const DictionarySets & mutedDictionaries,
+                       const QString & elementName = "mutedDictionary" )
 {
   for ( const auto & mutedDictionarie : mutedDictionaries ) {
-    QDomElement dict = dd.createElement( "mutedDictionary" );
+    QDomElement dict = dd.createElement( elementName );
     muted.appendChild( dict );
 
     QDomText value = dd.createTextNode( mutedDictionarie );
@@ -405,14 +408,6 @@ void saveMutedDictionaries( QDomDocument & dd, QDomElement & muted, const MutedD
 }
 
 } // namespace
-
-bool fromConfig2Preference( const QDomNode & node, const QString & expectedValue, bool defaultValue = false )
-{
-  if ( !node.isNull() ) {
-    return ( node.toElement().text() == expectedValue );
-  }
-  return defaultValue;
-}
 
 Class load()
 {
@@ -775,8 +770,9 @@ Class load()
   }
 #endif
 
-  c.mutedDictionaries      = loadMutedDictionaries( root.namedItem( "mutedDictionaries" ) );
-  c.popupMutedDictionaries = loadMutedDictionaries( root.namedItem( "popupMutedDictionaries" ) );
+  c.mutedDictionaries      = loadDictionaries( root.namedItem( "mutedDictionaries" ) );
+  c.popupMutedDictionaries = loadDictionaries( root.namedItem( "popupMutedDictionaries" ) );
+  c.dictionariesToReindex  = loadDictionaries( root.namedItem( "dictionariesToReindex" ), "dictionary" );
 
   QDomNode preferences = root.namedItem( "preferences" );
 
@@ -1280,6 +1276,9 @@ void saveGroup( const Group & data, QDomElement & group )
 
 void save( const Class & c )
 {
+  // Always save configuration regardless of dirty flag
+  // The dirty flag is still used to track changes in other parts of the code
+
   QSaveFile configFile( getConfigFileName() );
 
   if ( !configFile.open( QFile::WriteOnly ) ) {
@@ -1680,13 +1679,19 @@ void save( const Class & c )
   {
     QDomElement muted = dd.createElement( "mutedDictionaries" );
     root.appendChild( muted );
-    saveMutedDictionaries( dd, muted, c.mutedDictionaries );
+    saveDictionaries( dd, muted, c.mutedDictionaries );
   }
 
   {
     QDomElement muted = dd.createElement( "popupMutedDictionaries" );
     root.appendChild( muted );
-    saveMutedDictionaries( dd, muted, c.popupMutedDictionaries );
+    saveDictionaries( dd, muted, c.popupMutedDictionaries );
+  }
+
+  {
+    QDomElement reindex = dd.createElement( "dictionariesToReindex" );
+    root.appendChild( reindex );
+    saveDictionaries( dd, reindex, c.dictionariesToReindex, "dictionary" );
   }
 
   {

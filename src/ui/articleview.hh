@@ -52,6 +52,9 @@ class ArticleView: public QWidget
   /// For resources opened via desktop services
   QSet< QString > desktopOpenedTempFiles;
 
+  /// For audio temporary files created for clipboard operations
+  QSet< QString > audioTempFiles;
+
   QAction * dictionaryBarToggled;
 
   unsigned currentGroupId;
@@ -399,6 +402,7 @@ private slots:
 
   /// Copy current selection as plain text
   void copyAsText();
+  void copyResourceToClipboard( const QUrl & url );
 
   void setActiveDictIds( const ActiveDictIds & ad );
 

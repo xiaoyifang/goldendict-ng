@@ -266,6 +266,26 @@
         <source>Unable to load the requested page content</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>&amp;Copy sound to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to copy sound</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to write complete audio data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sound copied to clipboard</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Failed to download sound</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>BelarusianTranslit</name>
@@ -700,6 +720,22 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <source>Restore selection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel reindex</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Schedule for reindex</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel schedule reindex</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2782,10 +2818,6 @@ be the last ones.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Hide single tab</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3464,6 +3496,12 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
         <source>Open website dictionary in seperate tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
         <translation type="unfinished"></translation>
     </message>
 </context>

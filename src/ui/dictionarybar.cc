@@ -1,5 +1,6 @@
 #include "dictionarybar.hh"
 #include "instances.hh"
+#include "globalbroadcaster.hh"
 #include <QAction>
 #include <QApplication>
 #include <QMenu>
@@ -79,7 +80,7 @@ void DictionaryBar::setDictionaries( const vector< sptr< Dictionary::Class > > &
 }
 
 void DictionaryBar::updateToGroup( const Instances::Group * grp,
-                                   Config::MutedDictionaries * allGroupMutedDictionaries,
+                                   Config::DictionarySets * allGroupMutedDictionaries,
                                    Config::Class & cfg )
 {
   Q_ASSERT( grp != nullptr ); // should never occur
@@ -135,15 +136,15 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
     restoreSelectionAction = menu.addAction( tr( "Restore selection" ) );
   }
 
-  const QAction * editAction = menu.addAction( QIcon( ":/icons/bookcase.svg" ), tr( "Edit this group" ) );
-
-  const QAction * infoAction           = nullptr;
-  const QAction * headwordsAction      = nullptr;
+  const QAction * editAction            = nullptr;
+  const QAction * infoAction            = nullptr;
+  const QAction * headwordsAction       = nullptr;
   const QAction * openDictFolderAction = nullptr;
+  const QAction * scheduleReindexAction = nullptr;
 
+  editAction = menu.addAction( QIcon( ":/icons/bookcase.svg" ), tr( "Edit this group" ) );
 
   QString dictFilename;
-
 
   const QAction * dictAction = actionAt( event->x(), event->y() );
   if ( dictAction ) {
@@ -158,6 +159,18 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
 
     if ( pDict ) {
       infoAction = menu.addAction( tr( "Dictionary info" ) );
+
+      // Add schedule/cancel reindex action for local dictionaries
+      if ( pDict->isLocalDictionary() ) {
+        Config::Class * cfg  = GlobalBroadcaster::instance()->getConfig();
+        const QString dictId = pDict->getId().c_str();
+        if ( cfg && cfg->dictionariesToReindex.contains( dictId ) ) {
+          scheduleReindexAction = menu.addAction( tr( "Cancel reindex" ) );
+        }
+        else {
+          scheduleReindexAction = menu.addAction( tr( "Schedule for reindex" ) );
+        }
+      }
 
       if ( pDict->isLocalDictionary() ) {
         if ( pDict->getWordCount() > 0 ) {
@@ -202,6 +215,41 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
   if ( result && result == infoAction ) {
     const QString id = dictAction->data().toString();
     emit showDictionaryInfo( id );
+    return;
+  }
+
+  if ( result && result == scheduleReindexAction ) {
+    const QString dictId = dictAction->data().toString();
+    Config::Class * cfg  = GlobalBroadcaster::instance()->getConfig();
+
+    // Check if the dictionary is already scheduled for reindexing
+    if ( cfg && cfg->dictionariesToReindex.contains( dictId ) ) {
+      // Remove from reindex list (cancel reindex)
+      cfg->dictionariesToReindex.remove( dictId );
+
+      // Note: Using status bar notification instead of message box for lighter user feedback
+      // After canceling reindexing plan, show operation result in status bar
+      emit showStatusBarMessage( tr( "Cancel schedule reindex" ), 3000 ); // Show for 3 seconds
+    }
+    else if ( cfg ) {
+      // Add to reindex list
+      cfg->dictionariesToReindex.insert( dictId );
+
+      // Using status bar notification instead of message box for lighter user feedback
+      // After scheduling reindexing, show operation result and follow-up hint in status bar
+      emit showStatusBarMessage(
+        tr(
+          "The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart." ),
+        3000 ); // Show for 3 seconds
+    }
+
+    // Set dirty flag specifically for reindex schedule changes
+    if ( cfg ) {
+      cfg->dirty = true;
+      // Always save configuration to ensure the action text updates correctly next time the menu is opened
+      Config::save( *cfg );
+    }
+
     return;
   }
 
