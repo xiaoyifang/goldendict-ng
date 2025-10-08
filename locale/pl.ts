@@ -2824,10 +2824,6 @@ aktywną. W przeciwnym razie są one dodawane na końcu.</translation>
       <translation>Otwieraj nowe karty za bieżącą</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Zaznacz tę opcję, aby nie wyświetlać głównego paska kart, gdy otwarta jest tylko jedna karta.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Ukryj pojedynczą kartę</translation>
     </message>
@@ -3529,6 +3525,14 @@ ze słowników Stardict, Babylon i GLS</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Otwórz słownik strony w osobnej karcie</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation>Zaznacz tę opcję, jeśli nie jesteś&apos;t chcesz zobaczyć pasek karty głównej, gdy tylko jedna karta jest otwarta
+                  .
+                 </translation>
     </message>
   </context>
   <context>
