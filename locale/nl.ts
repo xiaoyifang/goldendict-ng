@@ -2825,10 +2825,6 @@ Indien uitgeschakeld worden ze als laatste toegevoegd.</translation>
       <translation>Nieuwe tabbladen na de huidige openen</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Selecteer deze optie om de tabbladbalk te verbergen als slechts één tabblad geopend is.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Enkel tabblad verbergen</translation>
     </message>
@@ -3526,6 +3522,14 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Open het website-woordenboek in apart tabblad</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
     </message>
   </context>
   <context>
