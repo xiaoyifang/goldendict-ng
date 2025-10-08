@@ -2827,10 +2827,6 @@ be the last ones.</source>
       <translation>Відкрити нові вкладки за поточною</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Оберіть цю опцію якщови не хочете бачити головну вкладку, у випадку якщо відкрито лише одну вкладку.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Сховати єдину вкладку</translation>
     </message>
@@ -3531,6 +3527,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Відкрити словник веб-сайту в окремій вкладці</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
     </message>
   </context>
   <context>
