@@ -266,6 +266,26 @@
       <source>Unable to load the requested page content</source>
       <translation>要求されたページのコンテンツを読み込むことができません</translation>
     </message>
+    <message>
+      <source>&amp;Copy sound to clipboard</source>
+      <translation>サウンドをクリップボードにコピー(&amp;C)</translation>
+    </message>
+    <message>
+      <source>Failed to copy sound</source>
+      <translation>サウンドのコピーに失敗しました</translation>
+    </message>
+    <message>
+      <source>Failed to write complete audio data</source>
+      <translation>完全な音声データの書き込みに失敗しました</translation>
+    </message>
+    <message>
+      <source>Sound copied to clipboard</source>
+      <translation>サウンドをクリップボードにコピーしました</translation>
+    </message>
+    <message>
+      <source>Failed to download sound</source>
+      <translation>サウンドのダウンロードに失敗しました</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -704,6 +724,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Restore selection</source>
       <translation>選択範囲を復元</translation>
+    </message>
+    <message>
+      <source>Cancel reindex</source>
+      <translation>インデックス再作成をキャンセル</translation>
+    </message>
+    <message>
+      <source>Schedule for reindex</source>
+      <translation>再インデックスのスケジュール</translation>
+    </message>
+    <message>
+      <source>Cancel schedule reindex</source>
+      <translation>スケジュールの再インデックスをキャンセル</translation>
+    </message>
+    <message>
+      <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
+      <translation>辞書の再インデックスがスケジュールされています。インデックスは次のアプリケーションの再起動時に再構築されます。</translation>
     </message>
   </context>
   <context>
@@ -2790,10 +2826,6 @@ be the last ones.</source>
       <translation>現在の後に新しいタブを開く</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>タブを 1 つだけ開いているときにメイン タブ バーを表示したく&apos;場合は、このオプションを選択します。</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>単一タブを隠す</translation>
     </message>
@@ -3493,6 +3525,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>別タブでウェブサイト辞書を開く</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
     </message>
   </context>
   <context>

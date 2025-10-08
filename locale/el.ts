@@ -266,6 +266,26 @@
       <source>Unable to load the requested page content</source>
       <translation>Αδυναμία φόρτωσης του περιεχομένου της σελίδας που ζητήθηκε</translation>
     </message>
+    <message>
+      <source>&amp;Copy sound to clipboard</source>
+      <translation>&amp;Αντιγραφή ήχου στο πρόχειρο</translation>
+    </message>
+    <message>
+      <source>Failed to copy sound</source>
+      <translation>Αποτυχία αντιγραφής ήχου</translation>
+    </message>
+    <message>
+      <source>Failed to write complete audio data</source>
+      <translation>Αποτυχία εγγραφής ολοκληρωμένων δεδομένων ήχου</translation>
+    </message>
+    <message>
+      <source>Sound copied to clipboard</source>
+      <translation>Ο ήχος αντιγράφηκε στο πρόχειρο</translation>
+    </message>
+    <message>
+      <source>Failed to download sound</source>
+      <translation>Αποτυχία λήψης ήχου</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -706,6 +726,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Restore selection</source>
       <translation>Επαναφορά επιλογής</translation>
+    </message>
+    <message>
+      <source>Cancel reindex</source>
+      <translation>Ακύρωση επαναευρετηρίου</translation>
+    </message>
+    <message>
+      <source>Schedule for reindex</source>
+      <translation>Χρονοδιάγραμμα επαναευρετηρίου</translation>
+    </message>
+    <message>
+      <source>Cancel schedule reindex</source>
+      <translation>Ακύρωση επαναευρετηρίου προγράμματος</translation>
+    </message>
+    <message>
+      <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
+      <translation>Το λεξικό έχει προγραμματιστεί για την επαναδημιουργία ευρετηρίου. Το ευρετήριο θα ανακατασκευαστεί στην επόμενη επανεκκίνηση της εφαρμογής.</translation>
     </message>
   </context>
   <context>
@@ -2791,10 +2827,6 @@ be the last ones.</source>
       <translation>Άνοιγμα νέων καρτελών δίπλα στην τρέχουσα</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Αν ενεργοποιηθεί, η γραμμή καρτελών δεν θα εμφανίζεται όταν είναι ανοιχτή μόνο μία καρτέλα.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Απόκρυψη μοναδικής καρτέλας</translation>
     </message>
@@ -3496,6 +3528,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Άνοιγμα λεξικού ιστοσελίδας σε διαχωριστική καρτέλα</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
     </message>
   </context>
   <context>

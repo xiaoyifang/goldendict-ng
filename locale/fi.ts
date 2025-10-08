@@ -266,6 +266,26 @@
       <source>Unable to load the requested page content</source>
       <translation>Pyydettyä sivun sisältöä ei voitu ladata</translation>
     </message>
+    <message>
+      <source>&amp;Copy sound to clipboard</source>
+      <translation>&amp;Kopioi ääni leikepöydälle</translation>
+    </message>
+    <message>
+      <source>Failed to copy sound</source>
+      <translation>Äänen kopiointi epäonnistui</translation>
+    </message>
+    <message>
+      <source>Failed to write complete audio data</source>
+      <translation>Valmiiden äänitietojen kirjoittaminen epäonnistui</translation>
+    </message>
+    <message>
+      <source>Sound copied to clipboard</source>
+      <translation>Ääni kopioitu leikepöydälle</translation>
+    </message>
+    <message>
+      <source>Failed to download sound</source>
+      <translation>Äänen lataaminen epäonnistui</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -704,6 +724,22 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
     <message>
       <source>Restore selection</source>
       <translation>Palauta valinta</translation>
+    </message>
+    <message>
+      <source>Cancel reindex</source>
+      <translation>Peru uudelleenindeksointi</translation>
+    </message>
+    <message>
+      <source>Schedule for reindex</source>
+      <translation>Ajastus uudelleenindeksointia varten</translation>
+    </message>
+    <message>
+      <source>Cancel schedule reindex</source>
+      <translation>Peruuta ajoitettu uudelleenindeksointi</translation>
+    </message>
+    <message>
+      <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
+      <translation>Sanasto on tarkoitus indeksoida uudelleen. Indeksi rakennetaan uudelleen seuraavan sovelluksen uudelleenkäynnistyksen yhteydessä.</translation>
     </message>
   </context>
   <context>
@@ -2790,10 +2826,6 @@ ovat viimeisiä.</translation>
       <translation>Avaa uudet välilehdet nykyisen välilehtien jälkeen</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Valitse tämä vaihtoehto, jos et halua&apos;t nähdä päävälilehden palkin, kun vain yksi välilehti on avattu.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Piilota yksi välilehti</translation>
     </message>
@@ -3494,6 +3526,14 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Avaa verkkosivuston sanakirja erillisessä välilehdessä</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
     </message>
   </context>
   <context>

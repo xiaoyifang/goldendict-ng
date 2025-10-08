@@ -266,6 +266,26 @@
       <source>Unable to load the requested page content</source>
       <translation>Der angeforderte Seiteninhalt konnte nicht geladen werden</translation>
     </message>
+    <message>
+      <source>&amp;Copy sound to clipboard</source>
+      <translation>&amp;Ton in Zwischenablage kopieren</translation>
+    </message>
+    <message>
+      <source>Failed to copy sound</source>
+      <translation>Fehler beim Kopieren des Tons</translation>
+    </message>
+    <message>
+      <source>Failed to write complete audio data</source>
+      <translation>Fehler beim Schreiben der kompletten Audiodaten</translation>
+    </message>
+    <message>
+      <source>Sound copied to clipboard</source>
+      <translation>Ton in Zwischenablage kopiert</translation>
+    </message>
+    <message>
+      <source>Failed to download sound</source>
+      <translation>Fehler beim Herunterladen des Tons</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -703,6 +723,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Restore selection</source>
       <translation>Auswahl wiederherstellen</translation>
+    </message>
+    <message>
+      <source>Cancel reindex</source>
+      <translation>Neuindex abbrechen</translation>
+    </message>
+    <message>
+      <source>Schedule for reindex</source>
+      <translation>Zeitplan für Neuindex</translation>
+    </message>
+    <message>
+      <source>Cancel schedule reindex</source>
+      <translation>Zeitplan neu indizieren</translation>
+    </message>
+    <message>
+      <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
+      <translation>Das Wörterbuch wurde für die Neuindizierung geplant. Der Index wird beim nächsten Anwendungs-Neustart neu aufgebaut.</translation>
     </message>
   </context>
   <context>
@@ -2788,10 +2824,6 @@ Andernfalls werden sie ans Ende hinzugefügt.</translation>
       <translation>Neue Reiter nach dem aktuellen öffnen</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Wählen Sie diese Option, falls sie die Reiterleiste bei einem offenem Reiter nicht sehen möchten.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Einzelnen Tab ausblenden</translation>
     </message>
@@ -3486,6 +3518,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Website-Wörterbuch in separatem Tab öffnen</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation>Wählen Sie diese Option, wenn Sie&apos;t die Haupt-Tableiste sehen möchten, wenn nur ein einziger Tab
+                  geöffnet ist.
+                 </translation>
     </message>
   </context>
   <context>

@@ -266,6 +266,26 @@
       <source>Unable to load the requested page content</source>
       <translation>Не удается загрузить запрошенное содержимое страницы</translation>
     </message>
+    <message>
+      <source>&amp;Copy sound to clipboard</source>
+      <translation>&amp;Копировать звук в буфер обмена</translation>
+    </message>
+    <message>
+      <source>Failed to copy sound</source>
+      <translation>Не удалось скопировать звук</translation>
+    </message>
+    <message>
+      <source>Failed to write complete audio data</source>
+      <translation>Не удалось записать аудио полные данные</translation>
+    </message>
+    <message>
+      <source>Sound copied to clipboard</source>
+      <translation>Звук скопирован в буфер обмена</translation>
+    </message>
+    <message>
+      <source>Failed to download sound</source>
+      <translation>Не удалось загрузить звук</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -706,6 +726,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Restore selection</source>
       <translation>Восстановить выбранное</translation>
+    </message>
+    <message>
+      <source>Cancel reindex</source>
+      <translation>Отменить переиндексацию</translation>
+    </message>
+    <message>
+      <source>Schedule for reindex</source>
+      <translation>График переиндексации</translation>
+    </message>
+    <message>
+      <source>Cancel schedule reindex</source>
+      <translation>Отменить переиндексацию расписания</translation>
+    </message>
+    <message>
+      <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
+      <translation>Для переиндексации был запланирован словарь. Индекс будет перестроен при следующем перезапуске приложения.</translation>
     </message>
   </context>
   <context>
@@ -2793,11 +2829,6 @@ be the last ones.</source>
       <translation>Открывать новые вкладки за текущей</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Включите эту опцию, если не хотите видеть панель закладок
-при единственной открытой вкладке.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Скрывать закладки</translation>
     </message>
@@ -3501,6 +3532,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Открыть словарь сайта в отдельной вкладке</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation>Выберите этот параметр, если don&apos;t хотите увидеть главную панель вкладок, когда открыта только одна вкладка
+                  .
+                 </translation>
     </message>
   </context>
   <context>

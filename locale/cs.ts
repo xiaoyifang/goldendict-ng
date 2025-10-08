@@ -266,6 +266,26 @@
       <source>Unable to load the requested page content</source>
       <translation>Nelze načíst požadovaný obsah stránky</translation>
     </message>
+    <message>
+      <source>&amp;Copy sound to clipboard</source>
+      <translation>&amp;Kopírovat zvuk do schránky</translation>
+    </message>
+    <message>
+      <source>Failed to copy sound</source>
+      <translation>Kopírování zvuku se nezdařilo</translation>
+    </message>
+    <message>
+      <source>Failed to write complete audio data</source>
+      <translation>Nepodařilo se zapsat kompletní zvuková data</translation>
+    </message>
+    <message>
+      <source>Sound copied to clipboard</source>
+      <translation>Zvuk zkopírován do schránky</translation>
+    </message>
+    <message>
+      <source>Failed to download sound</source>
+      <translation>Nepodařilo se stáhnout zvuk</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -704,6 +724,22 @@ a školní ortografií v cyrilici)</translation>
     <message>
       <source>Restore selection</source>
       <translation>Obnovit výběr</translation>
+    </message>
+    <message>
+      <source>Cancel reindex</source>
+      <translation>Zrušit reindexaci</translation>
+    </message>
+    <message>
+      <source>Schedule for reindex</source>
+      <translation>Harmonogram reindexace</translation>
+    </message>
+    <message>
+      <source>Cancel schedule reindex</source>
+      <translation>Zrušit reindexaci plánu</translation>
+    </message>
+    <message>
+      <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
+      <translation>Pro reindexaci byl naplánován slovník. Index bude rekonstruován na příštím restartu aplikace.</translation>
     </message>
   </context>
   <context>
@@ -2788,10 +2824,6 @@ kartou. Jinak jsou otevřeny jako poslední.</translation>
       <translation>Otevírat nové karty za současnou</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Vyberte tuto volbu pokud chcete aby se zobrazoval pruh s kartami ikdyž je otevřena jenom jedna karta.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Skrýt jednu kartu</translation>
     </message>
@@ -3491,6 +3523,14 @@ ze Stardict, Babylon a GLS slovníků</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Otevřít webový slovník v samostatné záložce</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
     </message>
   </context>
   <context>

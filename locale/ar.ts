@@ -266,6 +266,26 @@
       <source>Unable to load the requested page content</source>
       <translation>غير قادر على تحميل محتوى الصفحة المطلوبة</translation>
     </message>
+    <message>
+      <source>&amp;Copy sound to clipboard</source>
+      <translation>&amp;نسخ الصوت إلى الحافظة</translation>
+    </message>
+    <message>
+      <source>Failed to copy sound</source>
+      <translation>فشل في نسخ الصوت</translation>
+    </message>
+    <message>
+      <source>Failed to write complete audio data</source>
+      <translation>فشل في كتابة البيانات الصوتية الكاملة</translation>
+    </message>
+    <message>
+      <source>Sound copied to clipboard</source>
+      <translation>تم نسخ الصوت إلى الحافظة</translation>
+    </message>
+    <message>
+      <source>Failed to download sound</source>
+      <translation>فشل تنزيل الصوت</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -703,6 +723,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Restore selection</source>
       <translation>Restore selection</translation>
+    </message>
+    <message>
+      <source>Cancel reindex</source>
+      <translation>إلغاء Redex</translation>
+    </message>
+    <message>
+      <source>Schedule for reindex</source>
+      <translation>الجدول الزمني لإعادة النظر</translation>
+    </message>
+    <message>
+      <source>Cancel schedule reindex</source>
+      <translation>إلغاء جدولة Redex</translation>
+    </message>
+    <message>
+      <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
+      <translation>تم جدولة القاموس لإعادة تكسيسه. سيتم إعادة بناء الفهرس على إعادة تشغيل التطبيق التالي.</translation>
     </message>
   </context>
   <context>
@@ -2789,10 +2825,6 @@ be the last ones.</source>
       <translation>افتح الألسنة الجديدة بعد الحاليّة</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>اختر هذا الخيار إن لم تكن تريد رؤية شريط الألسنة الرئيسي عندما يكون لسان واحد مفتوح.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>أخفِ لسانًا واحدًا</translation>
     </message>
@@ -3492,6 +3524,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>فتح قاموس الموقع في علامة تبويب منفصلة</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation>حدد هذا الخيار إذا كنت don&apos;وتريد أن ترى شريط التبويب الرئيسي عند فتح علامة تبويب واحدة فقط
+                  .
+                 </translation>
     </message>
   </context>
   <context>

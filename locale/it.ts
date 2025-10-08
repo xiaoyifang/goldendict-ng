@@ -266,6 +266,26 @@
       <source>Unable to load the requested page content</source>
       <translation>Impossibile caricare il contenuto della pagina richiesta</translation>
     </message>
+    <message>
+      <source>&amp;Copy sound to clipboard</source>
+      <translation>&amp;Copia il suono negli appunti</translation>
+    </message>
+    <message>
+      <source>Failed to copy sound</source>
+      <translation>Impossibile copiare il suono</translation>
+    </message>
+    <message>
+      <source>Failed to write complete audio data</source>
+      <translation>Impossibile scrivere dati audio completi</translation>
+    </message>
+    <message>
+      <source>Sound copied to clipboard</source>
+      <translation>Suono copiato negli appunti</translation>
+    </message>
+    <message>
+      <source>Failed to download sound</source>
+      <translation>Impossibile scaricare il suono</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -704,6 +724,22 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
     <message>
       <source>Restore selection</source>
       <translation>Ripristina selezione</translation>
+    </message>
+    <message>
+      <source>Cancel reindex</source>
+      <translation>Annulla reindicizzazione</translation>
+    </message>
+    <message>
+      <source>Schedule for reindex</source>
+      <translation>Pianifica la reindicizzazione</translation>
+    </message>
+    <message>
+      <source>Cancel schedule reindex</source>
+      <translation>Annulla reindicizzazione pianificazione</translation>
+    </message>
+    <message>
+      <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
+      <translation>Il dizionario è stato programmato per la reindicizzazione. L'indice sarà ricostruito al prossimo riavvio dell'applicazione.</translation>
     </message>
   </context>
   <context>
@@ -2789,10 +2825,6 @@ a quella corrente altrimenti vengono accodate all&apos;ultima.</translation>
       <translation>apri le nuove schede accanto a quella corrente</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Spuntando questa casella, quando c&apos;è aperta una sola scheda la barra delle schede principale viene automaticamente nascosta.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>nascondi scheda singola</translation>
     </message>
@@ -3491,6 +3523,14 @@ dai dizionari di Stardict, Babylon e GLS</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Apri il dizionario del sito web in una scheda separata</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation>Selezionare questa opzione se si don&apos;t vuole vedere la barra delle schede principale quando è aperta solo una singola scheda
+                  .
+                 </translation>
     </message>
   </context>
   <context>

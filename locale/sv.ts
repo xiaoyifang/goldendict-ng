@@ -266,6 +266,26 @@
       <source>Unable to load the requested page content</source>
       <translation>Det går inte att ladda det begärda sidinnehållet</translation>
     </message>
+    <message>
+      <source>&amp;Copy sound to clipboard</source>
+      <translation>&amp;Kopiera ljud till urklipp</translation>
+    </message>
+    <message>
+      <source>Failed to copy sound</source>
+      <translation>Det gick inte att kopiera ljud</translation>
+    </message>
+    <message>
+      <source>Failed to write complete audio data</source>
+      <translation>Det gick inte att skriva fullständig ljuddata</translation>
+    </message>
+    <message>
+      <source>Sound copied to clipboard</source>
+      <translation>Ljud kopierat till urklipp</translation>
+    </message>
+    <message>
+      <source>Failed to download sound</source>
+      <translation>Det gick inte att ladda ner ljud</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -704,6 +724,22 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
     <message>
       <source>Restore selection</source>
       <translation>Återställ markering</translation>
+    </message>
+    <message>
+      <source>Cancel reindex</source>
+      <translation>Avbryt omindexering</translation>
+    </message>
+    <message>
+      <source>Schedule for reindex</source>
+      <translation>Schemalägg för omindexering</translation>
+    </message>
+    <message>
+      <source>Cancel schedule reindex</source>
+      <translation>Avbryt omindexering av schema</translation>
+    </message>
+    <message>
+      <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
+      <translation>Ordboken har schemalagts för omindexering. Indexet kommer att byggas om vid nästa omstart av programmet.</translation>
     </message>
   </context>
   <context>
@@ -2790,10 +2826,6 @@ de efter den sista fliken i flikfältet.</translation>
       <translation>Öppna nya flikar bredvid den aktuella fliken</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Välj detta alternativ om du inte fill se flikfältet när endast en flik är öppen.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Dölj fliken och flikfältet om endast en flik är öppen</translation>
     </message>
@@ -3496,6 +3528,14 @@ från Stardict, Babylon och GLS ordböcker</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Öppna webbplatsordbok i separat flik</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation>Välj det här alternativet om du don&apos;t vill se huvudfliksfältet när bara en enda flik är
+                  öppnad.
+                 </translation>
     </message>
   </context>
   <context>

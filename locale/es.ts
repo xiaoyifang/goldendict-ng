@@ -266,6 +266,26 @@
       <source>Unable to load the requested page content</source>
       <translation>No se puede cargar el contenido de la página solicitada</translation>
     </message>
+    <message>
+      <source>&amp;Copy sound to clipboard</source>
+      <translation>&amp;Copiar sonido al portapapeles</translation>
+    </message>
+    <message>
+      <source>Failed to copy sound</source>
+      <translation>Error al copiar el sonido</translation>
+    </message>
+    <message>
+      <source>Failed to write complete audio data</source>
+      <translation>Error al escribir datos de audio completos</translation>
+    </message>
+    <message>
+      <source>Sound copied to clipboard</source>
+      <translation>Sonido copiado al portapapeles</translation>
+    </message>
+    <message>
+      <source>Failed to download sound</source>
+      <translation>Error al descargar el sonido</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -704,6 +724,22 @@ entre ortografía clásica y escolar en cirílico)</translation>
     <message>
       <source>Restore selection</source>
       <translation>Restaurar selección</translation>
+    </message>
+    <message>
+      <source>Cancel reindex</source>
+      <translation>Cancelar reindexación</translation>
+    </message>
+    <message>
+      <source>Schedule for reindex</source>
+      <translation>Programar para reindexar</translation>
+    </message>
+    <message>
+      <source>Cancel schedule reindex</source>
+      <translation>Cancelar reindexación de horario</translation>
+    </message>
+    <message>
+      <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
+      <translation>El diccionario ha sido programado para reindexar. El índice se reconstruirá en el próximo reinicio de la aplicación.</translation>
     </message>
   </context>
   <context>
@@ -2788,10 +2824,6 @@ justo después de la actual. Si no, se situarán las últimas.</translation>
       <translation>Abrir nuevas pestañas después de la actual</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Seleccione esta opción si no quiere que se muestre la barra de pestañas cuando sólo hay abierta una pestaña.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Ocultar una pesaña</translation>
     </message>
@@ -3491,6 +3523,14 @@ de diccionarios Stardict, Babylon y GLS</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Abrir diccionario de sitio web en pestaña separada</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation>Seleccione esta opción si no&apos;t desea ver la barra de pestañas principal cuando sólo una sola pestaña está
+                  abierta.
+                 </translation>
     </message>
   </context>
   <context>

@@ -266,6 +266,26 @@
       <source>Unable to load the requested page content</source>
       <translation>无法加载请求的页面内容</translation>
     </message>
+    <message>
+      <source>&amp;Copy sound to clipboard</source>
+      <translation>&amp;复制声音到剪贴板</translation>
+    </message>
+    <message>
+      <source>Failed to copy sound</source>
+      <translation>复制声音失败</translation>
+    </message>
+    <message>
+      <source>Failed to write complete audio data</source>
+      <translation>写入完整音频数据失败</translation>
+    </message>
+    <message>
+      <source>Sound copied to clipboard</source>
+      <translation>声音已复制到剪贴板</translation>
+    </message>
+    <message>
+      <source>Failed to download sound</source>
+      <translation>下载声音失败</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -703,6 +723,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Restore selection</source>
       <translation>恢复选择</translation>
+    </message>
+    <message>
+      <source>Cancel reindex</source>
+      <translation>取消重新索引</translation>
+    </message>
+    <message>
+      <source>Schedule for reindex</source>
+      <translation>重建计划</translation>
+    </message>
+    <message>
+      <source>Cancel schedule reindex</source>
+      <translation>取消计划恢复</translation>
+    </message>
+    <message>
+      <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
+      <translation>字典已计划重新索引。索引将在下次应用程序重新编译时重新构建。</translation>
     </message>
   </context>
   <context>
@@ -2788,10 +2824,6 @@ be the last ones.</source>
       <translation>在当前页之后打开新标签页</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>如果你不想在单标签页时见到主标签栏，请启用此选项。</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>隐藏单标签页</translation>
     </message>
@@ -3479,6 +3511,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>在分隔符中打开网站词典</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
     </message>
   </context>
   <context>
