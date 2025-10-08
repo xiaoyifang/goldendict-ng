@@ -2825,10 +2825,6 @@ en fin de liste.</translation>
       <translation>Nouveaux onglets après l&apos;onglet courant</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Sélectionnez cette option si vous ne voulez pas voir la barre principale lorsqu&apos;un seul onglet est ouvert.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Cacher l&apos;onglet</translation>
     </message>
@@ -3526,6 +3522,14 @@ des dictionnaires Stardict, Babylon et GLS</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Ouvrir le dictionnaire du site web dans un onglet séparé</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation>Sélectionnez cette option si vous donnez&apos;ne voulez pas voir la barre d’onglets principale quand un seul onglet est
+                  ouvert.
+                 </translation>
     </message>
   </context>
   <context>
