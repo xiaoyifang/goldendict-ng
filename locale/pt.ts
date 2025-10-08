@@ -2826,10 +2826,6 @@ serem as últimas.</translation>
       <translation>Abrir novas abas após a atual</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Selecione esta opção se você usa&apos;t quer ver a barra de guias principal quando apenas uma única aba é aberta.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Ocultar aba única</translation>
     </message>
@@ -3530,6 +3526,14 @@ no Stardict, Babilônia e dicionários GLS</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Abrir o dicionário do site na guia separada</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation>Selecione esta opção se você don&apos;t quer ver a barra de abas principal quando apenas uma aba for
+                  aberta.
+                 </translation>
     </message>
   </context>
   <context>
