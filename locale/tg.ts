@@ -2826,10 +2826,6 @@ be the last ones.</source>
       <translation>Варақаҳои навро пас аз варақаи ҷорӣ кушодан</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Имконоти зеринро интихоб кунед, агар ҳангоми кушода будани варақаи ягона нахоҳед лавҳаи варақаҳоро намоиш диҳед.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Варақаи ягонаро пинҳон кардан</translation>
     </message>
@@ -3530,6 +3526,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
     </message>
   </context>
   <context>
