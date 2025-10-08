@@ -2824,10 +2824,6 @@ be the last ones.</source>
       <translation>在当前页之后打开新标签页</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>如果你不想在单标签页时见到主标签栏，请启用此选项。</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>隐藏单标签页</translation>
     </message>
@@ -3515,6 +3511,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>在分隔符中打开网站词典</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
     </message>
   </context>
   <context>
