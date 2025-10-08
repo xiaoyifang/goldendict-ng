@@ -2826,10 +2826,6 @@ esti la lastaj.</translation>
       <translation>Malfermu novajn langetojn post la nuna</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Elektu ĉi tiun opcion se vi ne volas vidi la ĉefan langeton kiam nur unu sola langeto estas malfermita.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Kaŝi ununuran langeton</translation>
     </message>
@@ -3530,6 +3526,14 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
     </message>
   </context>
   <context>
