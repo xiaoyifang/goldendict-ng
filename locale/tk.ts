@@ -2825,10 +2825,6 @@ tokdan soň işjeň açylýar. Otherwiseogsam iň soňkylary
       <translation>Täze wkladkalary şu wagtky wkladkadan soň aç</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Diňe bir tab açylanda esasy goýma setirini görmek islemeýän bolsaňyz, bu opsiýany saýlaň.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Ýeke wkladkany gizle</translation>
     </message>
@@ -3529,6 +3525,14 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
     </message>
   </context>
   <context>
