@@ -2818,10 +2818,6 @@ be the last ones.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Hide single tab</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3500,6 +3496,12 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
         <source>Open website dictionary in seperate tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
