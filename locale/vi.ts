@@ -2825,10 +2825,6 @@ thêm vào sau cùng.</translation>
       <translation>Mở thẻ mới ngay sau thẻ hiện tại</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Ẩn thẻ trên thanh thẻ chính nếu chỉ duy nhất một thẻ được mở.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Ẩn thẻ đơn nhất</translation>
     </message>
@@ -3523,6 +3519,14 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
     </message>
   </context>
   <context>
