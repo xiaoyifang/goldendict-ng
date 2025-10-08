@@ -2827,10 +2827,6 @@ be the last ones.</source>
       <translation>Άνοιγμα νέων καρτελών δίπλα στην τρέχουσα</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Αν ενεργοποιηθεί, η γραμμή καρτελών δεν θα εμφανίζεται όταν είναι ανοιχτή μόνο μία καρτέλα.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Απόκρυψη μοναδικής καρτέλας</translation>
     </message>
@@ -3532,6 +3528,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Άνοιγμα λεξικού ιστοσελίδας σε διαχωριστική καρτέλα</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
     </message>
   </context>
   <context>
