@@ -2824,10 +2824,6 @@ be the last ones.</source>
       <translation>在目前分頁之後開啟新分頁</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>啟用此選項會使主視窗在只有一個分頁時隱藏分頁列。</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>隱藏單一分頁</translation>
     </message>
@@ -3520,6 +3516,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>在另開的標籤頁中打開網站字典</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
     </message>
   </context>
   <context>
