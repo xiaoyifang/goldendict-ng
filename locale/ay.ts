@@ -2892,10 +2892,6 @@ Akampi machaq phichhunakawa phichhu chiqan ist&apos;aratatawal.</translation>
       <translation>Jiccha phichhu ukjaruxa, machaq phichhunak jist&apos;araña</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Aka amtawixa ajlliñawa jani&apos;t jach’a tabla uñakipaña munkipana kunapachatixa mä sapa tabla jist’aratäki ukhaxa.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Mä phichhukisa ukjaxa imantaña</translation>
     </message>
@@ -3646,6 +3642,14 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
     </message>
   </context>
   <context>
