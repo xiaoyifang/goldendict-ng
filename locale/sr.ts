@@ -2827,11 +2827,6 @@ be the last ones.</source>
       <translation>Отварање нове картице након тренутне</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Омогућите ову опцију ако не желите да видите траку са обележивачима
-у јединој отвореној картици.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Сакриј једну картицу</translation>
     </message>
@@ -3533,6 +3528,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
     </message>
   </context>
   <context>
