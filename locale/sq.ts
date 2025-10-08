@@ -2823,10 +2823,6 @@ asaj aktive. Përndryshe ato i shtohen më të fundit.</translation>
       <translation>Hap fushat e reja pas aktuales</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Zgjedh a duhet shfaqur brezi i fushave kur është hapur vetëm një fushë.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Fsheh fushën e vetme</translation>
     </message>
@@ -3522,6 +3518,14 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
     </message>
   </context>
   <context>
