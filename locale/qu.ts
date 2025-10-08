@@ -2826,10 +2826,6 @@ abiertas al lado de la pestaña actual.</translation>
       <translation>Kunan pestañaqpa chirunman musuq pestañata kichay</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Kay akllanata akllay sichus mana&apos;t hatun tabla barrata rikuyta munankichu huk tablalla kichasqa kaptin.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Sapalla tablata pakay</translation>
     </message>
@@ -3526,6 +3522,14 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
     </message>
   </context>
   <context>
