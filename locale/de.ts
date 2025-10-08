@@ -2824,10 +2824,6 @@ Andernfalls werden sie ans Ende hinzugefügt.</translation>
       <translation>Neue Reiter nach dem aktuellen öffnen</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Wählen Sie diese Option, falls sie die Reiterleiste bei einem offenem Reiter nicht sehen möchten.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Einzelnen Tab ausblenden</translation>
     </message>
@@ -3522,6 +3518,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Website-Wörterbuch in separatem Tab öffnen</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation>Wählen Sie diese Option, wenn Sie&apos;t die Haupt-Tableiste sehen möchten, wenn nur ein einziger Tab
+                  geöffnet ist.
+                 </translation>
     </message>
   </context>
   <context>
