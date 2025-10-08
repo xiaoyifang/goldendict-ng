@@ -2824,10 +2824,6 @@ kartou. Jinak jsou otevřeny jako poslední.</translation>
       <translation>Otevírat nové karty za současnou</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Vyberte tuto volbu pokud chcete aby se zobrazoval pruh s kartami ikdyž je otevřena jenom jedna karta.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Skrýt jednu kartu</translation>
     </message>
@@ -3527,6 +3523,14 @@ ze Stardict, Babylon a GLS slovníků</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Otevřít webový slovník v samostatné záložce</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
     </message>
   </context>
   <context>
