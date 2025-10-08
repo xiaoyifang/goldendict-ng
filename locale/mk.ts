@@ -2827,11 +2827,6 @@ be the last ones.</source>
       <translation>Отворање нова картичка по тековната</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Овозможите ја оваа опција ако не сакате да гледате лента со картички 
-а само една картичка е отворена.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Сокри сингл(една) картичка</translation>
     </message>
@@ -3533,6 +3528,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
     </message>
   </context>
   <context>
