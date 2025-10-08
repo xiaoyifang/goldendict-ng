@@ -1445,7 +1445,6 @@ static const char * beginsWith( const char * substr, const char * str )
 }
 
 
-
 Ifo::Ifo( const QString & fileName )
 {
   QFile f( fileName );
@@ -1454,13 +1453,13 @@ Ifo::Ifo( const QString & fileName )
   };
 
   // Set up text stream with automatic Unicode detection
-  QTextStream stream(&f);
-  stream.setAutoDetectUnicode(true);
-  
+  QTextStream stream( &f );
+  stream.setAutoDetectUnicode( true );
+
   // Read and validate file format
-  QString firstLine = stream.readLine();
+  QString firstLine  = stream.readLine();
   QString secondLine = stream.readLine();
-  
+
   // Ensure proper file format detection even with BOM
   if ( !firstLine.startsWith( "StarDict's dict ifo file" ) || !secondLine.startsWith( "version=" ) ) {
     throw exNotAnIfoFile();
@@ -1469,7 +1468,7 @@ Ifo::Ifo( const QString & fileName )
   /// Now go through the file and parse options
   {
     while ( !stream.atEnd() ) {
-      QString line = stream.readLine();
+      QString line       = stream.readLine();
       QStringView option = QStringView( line ).trimmed();
       // Empty lines are allowed in .ifo file
 
@@ -1478,9 +1477,9 @@ Ifo::Ifo( const QString & fileName )
       }
 
       // Convert QStringView to UTF-8 encoded const char*
-      QByteArray optionUtf8 = option.toString().toUtf8();
-      const char* optionData = optionUtf8.constData();
-      
+      QByteArray optionUtf8   = option.toString().toUtf8();
+      const char * optionData = optionUtf8.constData();
+
       if ( const char * val = beginsWith( "bookname=", optionData ) ) {
         bookname = val;
       }
