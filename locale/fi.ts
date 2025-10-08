@@ -2826,10 +2826,6 @@ ovat viimeisiä.</translation>
       <translation>Avaa uudet välilehdet nykyisen välilehtien jälkeen</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Valitse tämä vaihtoehto, jos et halua&apos;t nähdä päävälilehden palkin, kun vain yksi välilehti on avattu.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Piilota yksi välilehti</translation>
     </message>
@@ -3530,6 +3526,14 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Avaa verkkosivuston sanakirja erillisessä välilehdessä</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
     </message>
   </context>
   <context>
