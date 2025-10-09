@@ -1453,9 +1453,10 @@ sptr< Dictionary::DataRequest > StardictDictionary::getArticle( const std::u32st
  */
 static const char * beginsWith( const char * substr, const char * str )
 {
-  if (!substr || !str) return nullptr;
-  for (; *substr; ++substr, ++str)
-    if (*substr != *str)
+  if ( !substr || !str )
+    return nullptr;
+  for ( ; *substr; ++substr, ++str )
+    if ( *substr != *str )
       return nullptr;
   return str;
 }
@@ -1500,26 +1501,26 @@ Ifo::Ifo( const QString & fileName )
         bookname = val;
       }
       else if ( const char * val = beginsWith( "wordcount=", optionData ) ) {
-        auto [ptr, ec] = std::from_chars(val, val + strlen(val), wordcount);
-        if (ec != std::errc{}) {
-          throw exBadFieldInIfo(optionData);
+        auto [ ptr, ec ] = std::from_chars( val, val + strlen( val ), wordcount );
+        if ( ec != std::errc{} ) {
+          throw exBadFieldInIfo( optionData );
         }
       }
       else if ( const char * val = beginsWith( "synwordcount=", optionData ) ) {
-        auto [ptr, ec] = std::from_chars(val, val + strlen(val), synwordcount);
-        if (ec != std::errc{}) {
+        auto [ ptr, ec ] = std::from_chars( val, val + strlen( val ), synwordcount );
+        if ( ec != std::errc{} ) {
           throw exBadFieldInIfo( optionData );
         }
       }
       else if ( const char * val = beginsWith( "idxfilesize=", optionData ) ) {
-        auto [ptr, ec] = std::from_chars(val, val + strlen(val), idxfilesize);
-        if (ec != std::errc{}) {
+        auto [ ptr, ec ] = std::from_chars( val, val + strlen( val ), idxfilesize );
+        if ( ec != std::errc{} ) {
           throw exBadFieldInIfo( optionData );
         }
       }
       else if ( const char * val = beginsWith( "idxoffsetbits=", optionData ) ) {
-        auto [ptr, ec] = std::from_chars(val, val + strlen(val), idxoffsetbits);
-        if (ec != std::errc{} || ( idxoffsetbits != 32 && idxoffsetbits != 64 ) ) {
+        auto [ ptr, ec ] = std::from_chars( val, val + strlen( val ), idxoffsetbits );
+        if ( ec != std::errc{} || ( idxoffsetbits != 32 && idxoffsetbits != 64 ) ) {
           throw exBadFieldInIfo( optionData );
         }
       }
