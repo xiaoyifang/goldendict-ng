@@ -17,15 +17,15 @@ std::string getXapianIndexFilePath( const std::string & dictId ) {
 StreamedXapianIndexer::StreamedXapianIndexer(const std::string& dbPath)
     : db(dbPath, Xapian::DB_CREATE_OR_OPEN)
 {
-    // 使用 CJK N-gram 分词器以支持中日韩语言的全文搜索
+    // Use CJK N-gram tokenizer to support full-text search for Chinese, Japanese, and Korean.
     indexer.set_flags(Xapian::TermGenerator::FLAG_CJK_NGRAM);
 }
 
 StreamedXapianIndexer::~StreamedXapianIndexer()
 {
     if (!finished) {
-        // 确保在析构时，即使没有显式调用 finish()，数据库也能被正确关闭
-        // 尽管这通常表示一个未完成的索引过程
+        // Ensure the database is properly closed in the destructor, even if finish() was not explicitly called,
+        // although this usually indicates an incomplete indexing process.
         try {
             db.close();
         } catch (const Xapian::Error& e) {

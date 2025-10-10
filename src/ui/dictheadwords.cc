@@ -130,12 +130,12 @@ void DictHeadwords::setup( Dictionary::Class * dict_ )
 
   if (dict->hasXapianHeadwordStorage())
     {
-      // 如果词典使用 Xapian 存储词头，则使用新的模型
+      // If the dictionary uses Xapian for headword storage, use the new model.
       qDebug() << "Using XapianHeadwordListModel for" << QString::fromStdString(dict->getName());
       auto xapianModel = std::make_shared<XapianIndexing::XapianHeadwordListModel>();
       xapianModel->setDict(dict);
       model = xapianModel;
-      // 连接搜索框的信号到模型的 setFilter 槽
+      // Connect the signal from the search box to the model's setFilter slot
       // connect(mySearchLineEdit, &QLineEdit::textChanged, xapianModel.get(), &XapianIndexing::XapianHeadwordListModel::setFilter);
     }
   else
