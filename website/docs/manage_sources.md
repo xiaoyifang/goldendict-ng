@@ -46,9 +46,9 @@ There are some specially tailored hunspell dicts to use for Morphology. Such as
 
 ## Websites
 
-Here you can add any website that allows you to set the target word in the URL. To add such a site, you should set its URL with the target word template, name for the dictionaries list, and set a mark in the "Enabled" column. In the "Icon" column, you can set a custom icon for this site. If you add an icon file name without a path, GoldenDict will search for this file in the configuration folder. The "As link" column defines the method of article insertion into the common page. If this option is set, the article will be inserted as a link inside an `<iframe>` tag (preferable mode). If articles are not loaded in this mode, turn this option off, then articles will be inserted as HTML code.
+Here you can add any website that allows you to specify the query word in the URL. To add a site, provide its URL using one of the placeholders below, give it a name for the dictionary list, and check the "Enabled" column. You can also set a custom icon in the "Icon" column.If you add an icon file name without a path, GoldenDict will search for this file in the configuration folder.
 
-Target word can be inserted into url in next encodings:
+The query word can be inserted into the URL using the following placeholders:
 
 | Target word template   | Encoding                                |
 |------------------------|-----------------------------------------|
