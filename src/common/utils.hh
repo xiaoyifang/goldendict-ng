@@ -18,6 +18,9 @@
 using std::string;
 
 namespace Utils {
+
+/// Checks if the application is running under a Wayland session.
+bool isWayland();
 QMap< QString, QString > str2map( const QString & contextsEncoded );
 
 inline bool isCJKChar( ushort ch )
