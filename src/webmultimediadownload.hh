@@ -7,7 +7,7 @@ namespace Dictionary {
 
 /// Downloads data from the web, wrapped as a dictionary's DataRequest. This
 /// is useful for multimedia files, like sounds and pronunciations.
-class WebMultimediaDownload: public DataRequest
+class WebMultimediaDownload: public ResourceRequest
 {
   Q_OBJECT
 
