@@ -3516,9 +3516,7 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
                   opened.
                  </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
+      <translation>如果您不想在仅打开一个标签页时看到主标签页栏，请选择此选项。</translation>
     </message>
   </context>
   <context>
