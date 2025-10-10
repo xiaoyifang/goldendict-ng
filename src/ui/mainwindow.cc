@@ -21,6 +21,7 @@
 #include <QUrl>
 #include <QMessageBox>
 #include <QIcon>
+#include <QPixmap>
 #include <QList>
 #include <QToolBar>
 #include <QCloseEvent>
@@ -179,7 +180,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   QThreadPool::globalInstance()->start( new InitSSLRunnable );
 #endif
 
-  GlobalBroadcaster::instance()->setPreference( &cfg.preferences );
+  GlobalBroadcaster::instance()->setConfig( &cfg );
 
   localSchemeHandler     = new LocalSchemeHandler( articleNetMgr, this );
   QStringList htmlScheme = { "gdlookup", "bword", "entry" };
@@ -580,6 +581,13 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   connect( &dictionaryBar, &DictionaryBar::showDictionaryHeadwords, this, &MainWindow::showDictionaryHeadwords );
 
   connect( &dictionaryBar, &DictionaryBar::openDictionaryFolder, this, &MainWindow::openDictionaryFolder );
+  // Use lambda to adapt the signal (2 parameters) to the slot (3 parameters with default)
+  connect( &dictionaryBar,
+           &DictionaryBar::showStatusBarMessage,
+           this,
+           [ this ]( const QString & message, int timeout ) {
+             showStatusBarMessage( message, timeout );
+           } );
 
   // Favorites
 
@@ -1674,7 +1682,7 @@ const vector< sptr< Dictionary::Class > > & MainWindow::getActiveDicts()
     return dictionaries;
   }
 
-  const Config::MutedDictionaries * mutedDictionaries = dictionaryBar.getMutedDictionaries();
+  const Config::DictionarySets * mutedDictionaries = dictionaryBar.getMutedDictionaries();
   if ( !dictionaryBar.toggleViewAction()->isChecked() || mutedDictionaries == nullptr ) {
     return groupInstances[ current ].dictionaries;
   }
@@ -2950,7 +2958,7 @@ void MainWindow::toggleMainWindow( bool ensureShow )
 void MainWindow::installHotKeys()
 {
 #if defined( WITH_X11 )
-  if ( !qEnvironmentVariableIsEmpty( "GOLDENDICT_FORCE_WAYLAND" ) ) {
+  if ( !qEnvironmentVariableIsEmpty( "GOLDENDICT_FORCE_WAYLAND" ) || Utils::isWayland() ) {
     return;
   }
 #endif

@@ -266,6 +266,26 @@
       <source>Unable to load the requested page content</source>
       <translation>Impossible de charger le contenu de la page demandée</translation>
     </message>
+    <message>
+      <source>&amp;Copy sound to clipboard</source>
+      <translation>&amp;Copier le son dans le presse-papiers</translation>
+    </message>
+    <message>
+      <source>Failed to copy sound</source>
+      <translation>Impossible de copier le son</translation>
+    </message>
+    <message>
+      <source>Failed to write complete audio data</source>
+      <translation>Impossible d'écrire les données audio complètes</translation>
+    </message>
+    <message>
+      <source>Sound copied to clipboard</source>
+      <translation>Son copié dans le presse-papiers</translation>
+    </message>
+    <message>
+      <source>Failed to download sound</source>
+      <translation>Impossible de télécharger le son</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -703,6 +723,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Restore selection</source>
       <translation>Restaurer la sélection</translation>
+    </message>
+    <message>
+      <source>Cancel reindex</source>
+      <translation>Annuler la réindexation</translation>
+    </message>
+    <message>
+      <source>Schedule for reindex</source>
+      <translation>Planifier la réindexation</translation>
+    </message>
+    <message>
+      <source>Cancel schedule reindex</source>
+      <translation>Annuler la réindexation du planning</translation>
+    </message>
+    <message>
+      <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
+      <translation>Le dictionnaire a été programmé pour la réindexation. L'index sera reconstruit au prochain redémarrage de l'application.</translation>
     </message>
   </context>
   <context>
@@ -2789,10 +2825,6 @@ en fin de liste.</translation>
       <translation>Nouveaux onglets après l&apos;onglet courant</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Sélectionnez cette option si vous ne voulez pas voir la barre principale lorsqu&apos;un seul onglet est ouvert.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Cacher l&apos;onglet</translation>
     </message>
@@ -3490,6 +3522,14 @@ des dictionnaires Stardict, Babylon et GLS</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Ouvrir le dictionnaire du site web dans un onglet séparé</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation>Sélectionnez cette option si vous donnez&apos;ne voulez pas voir la barre d’onglets principale quand un seul onglet est
+                  ouvert.
+                 </translation>
     </message>
   </context>
   <context>

@@ -200,7 +200,8 @@ private slots:
   void prefixMatchFinished();
   void pinButtonClicked( bool checked );
   void dictionaryBar_visibility_changed( bool visible );
-  void showStatusBarMessage( const QString &, int, const QPixmap & ) const;
+  /// Status bar message slot function, used to handle status bar message signals sent by the dictionary bar
+  void showStatusBarMessage( const QString & message, int timeout = 3000, const QPixmap & icon = QPixmap() );
 
   void pronounceButton_clicked() const;
   void sendWordButton_clicked();

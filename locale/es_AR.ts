@@ -266,6 +266,26 @@
       <source>Unable to load the requested page content</source>
       <translation type="unfinished">Unable to load the requested page content</translation>
     </message>
+    <message>
+      <source>&amp;Copy sound to clipboard</source>
+      <translation type="unfinished">&amp;Copy sound to clipboard</translation>
+    </message>
+    <message>
+      <source>Failed to copy sound</source>
+      <translation type="unfinished">Failed to copy sound</translation>
+    </message>
+    <message>
+      <source>Failed to write complete audio data</source>
+      <translation type="unfinished">Failed to write complete audio data</translation>
+    </message>
+    <message>
+      <source>Sound copied to clipboard</source>
+      <translation type="unfinished">Sound copied to clipboard</translation>
+    </message>
+    <message>
+      <source>Failed to download sound</source>
+      <translation type="unfinished">Failed to download sound</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -703,6 +723,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Restore selection</source>
       <translation>Restore selection</translation>
+    </message>
+    <message>
+      <source>Cancel reindex</source>
+      <translation type="unfinished">Cancel reindex</translation>
+    </message>
+    <message>
+      <source>Schedule for reindex</source>
+      <translation type="unfinished">Schedule for reindex</translation>
+    </message>
+    <message>
+      <source>Cancel schedule reindex</source>
+      <translation type="unfinished">Cancel schedule reindex</translation>
+    </message>
+    <message>
+      <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
+      <translation type="unfinished">The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</translation>
     </message>
   </context>
   <context>
@@ -2789,10 +2825,6 @@ se agregarán al final de la lista de pestañas.</translation>
       <translation>Abrir nuevas pestañas a continuación de la actual</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Seleccione esta opción para no mostrar la barra de pestañas cuando existe una única pestaña.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Ocultar única pestaña</translation>
     </message>
@@ -3493,6 +3525,14 @@ de los diccionarios Stardict, Babylon y GLS.</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
     </message>
   </context>
   <context>

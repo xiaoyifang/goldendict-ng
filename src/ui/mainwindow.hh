@@ -56,7 +56,7 @@ public:
 public slots:
 
   void messageFromAnotherInstanceReceived( const QString & );
-  void showStatusBarMessage( const QString &, int, const QPixmap & );
+  void showStatusBarMessage( const QString & message, int timeout = 5000, const QPixmap & pixmap = QPixmap() );
   void wordReceived( const QString & );
   void headwordFromFavorites( const QString & word, const QString & favFolderFullPath );
   /// Save config and states...

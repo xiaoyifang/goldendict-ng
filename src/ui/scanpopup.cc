@@ -177,6 +177,14 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( this, &ScanPopup::closeMenu, &dictionaryBar, &DictionaryBar::closePopupMenu );
   connect( &dictionaryBar, &DictionaryBar::showDictionaryInfo, this, &ScanPopup::showDictionaryInfo );
   connect( &dictionaryBar, &DictionaryBar::openDictionaryFolder, this, &ScanPopup::openDictionaryFolder );
+  // Connect the dictionary bar's status bar message signal to the scan popup's status bar message slot
+  // Use lambda to adapt the signal (2 parameters) to the slot (3 parameters with default)
+  connect( &dictionaryBar,
+           &DictionaryBar::showStatusBarMessage,
+           this,
+           [ this ]( const QString & message, int timeout ) {
+             showStatusBarMessage( message, timeout );
+           } );
 
   connect( &GlobalBroadcaster::instance()->pronounce_engine,
            &PronounceEngine::emitAudio,
@@ -687,7 +695,7 @@ const vector< sptr< Dictionary::Class > > & ScanPopup::getActiveDicts()
 
   Q_ASSERT( 0 <= current || current <= (qsizetype)groups.size() );
 
-  const Config::MutedDictionaries * mutedDictionaries = dictionaryBar.getMutedDictionaries();
+  const Config::DictionarySets * mutedDictionaries = dictionaryBar.getMutedDictionaries();
 
   if ( !dictionaryBar.toggleViewAction()->isChecked() || mutedDictionaries == nullptr ) {
     return groups[ current ].dictionaries;
@@ -1020,7 +1028,7 @@ void ScanPopup::pageLoaded( ArticleView * ) const
   updateBackForwardButtons();
 }
 
-void ScanPopup::showStatusBarMessage( const QString & message, int timeout, const QPixmap & icon ) const
+void ScanPopup::showStatusBarMessage( const QString & message, int timeout, const QPixmap & icon )
 {
   mainStatusBar->showMessage( message, timeout, icon );
 }

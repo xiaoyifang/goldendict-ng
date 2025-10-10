@@ -1515,7 +1515,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
 
       // Save address of IndexInfos for resource files
       idxHeader.mddIndexInfosOffset = idx.tell();
-      idxHeader.mddIndexInfosCount  = mddIndexInfos.size();
+      idxHeader.mddIndexInfosCount  = dictFiles.size() - 1;
       for ( uint32_t mi = 0; mi < mddIndexInfos.size(); mi++ ) {
         const string & mddfile = mddFileNames[ mi ];
 

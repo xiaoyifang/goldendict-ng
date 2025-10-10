@@ -18,6 +18,9 @@
 using std::string;
 
 namespace Utils {
+
+/// Checks if the application is running under a Wayland session.
+bool isWayland();
 QMap< QString, QString > str2map( const QString & contextsEncoded );
 
 inline bool isCJKChar( ushort ch )
@@ -178,6 +181,14 @@ inline int loadAcquire( const QAtomicInt & ref )
 }
 
 } // namespace AtomicInt
+
+/**
+ * Get MIME type for audio file based on file path
+ * @param path File path to determine MIME type for
+ * @param extension Output parameter for the file extension
+ * @return The determined MIME type
+ */
+QString getAudioMimeType( const QString & path, QString & extension );
 
 namespace Url {
 

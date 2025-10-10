@@ -24,6 +24,7 @@
 #include <QDomDocument>
 #include "ufile.hh"
 #include "utils.hh"
+#include <charconv>
 #include <QRegularExpression>
 #include "globalregex.hh"
 #include <QDir>
@@ -1437,12 +1438,29 @@ sptr< Dictionary::DataRequest > StardictDictionary::getArticle( const std::u32st
 }
 
 
+/**
+ * @brief Checks if the string 'str' begins with the substring 'substr'.
+ *
+ * Compares the characters of 'substr' with the beginning of 'str'. If all characters
+ * in 'substr' match the corresponding characters in 'str', returns a pointer to the
+ * position in 'str' immediately after the matched substring. If 'substr' is not a
+ * prefix of 'str', or if either pointer is null, returns nullptr.
+ *
+ * @param substr The substring to check as a prefix.
+ * @param str The string to check against.
+ * @return const char* Pointer to the character in 'str' after the matched prefix,
+ *         or nullptr if 'substr' is not a prefix of 'str' or if any argument is null.
+ */
 static const char * beginsWith( const char * substr, const char * str )
 {
-  size_t len = strlen( substr );
-
-  return strncmp( str, substr, len ) == 0 ? str + len : 0;
+  if ( !substr || !str )
+    return nullptr;
+  for ( ; *substr; ++substr, ++str )
+    if ( *substr != *str )
+      return nullptr;
+  return str;
 }
+
 
 Ifo::Ifo( const QString & fileName )
 {
@@ -1451,66 +1469,83 @@ Ifo::Ifo( const QString & fileName )
     throw exCantReadFile( "Cannot open IFO file -> " + fileName.toStdString() );
   };
 
-  if ( !f.readLine().startsWith( "StarDict's dict ifo file" ) || !f.readLine().startsWith( "version=" ) ) {
+  // Set up text stream with automatic Unicode detection
+  QTextStream stream( &f );
+  stream.setAutoDetectUnicode( true );
+
+  // Read and validate file format
+  QString firstLine  = stream.readLine();
+  QString secondLine = stream.readLine();
+
+  // Ensure proper file format detection even with BOM
+  if ( !firstLine.startsWith( "StarDict's dict ifo file" ) || !secondLine.startsWith( "version=" ) ) {
     throw exNotAnIfoFile();
   }
 
   /// Now go through the file and parse options
   {
-    while ( !f.atEnd() ) {
-      auto line   = f.readLine();
-      auto option = QByteArrayView( line ).trimmed();
+    while ( !stream.atEnd() ) {
+      QString line       = stream.readLine();
+      QStringView option = QStringView( line ).trimmed();
       // Empty lines are allowed in .ifo file
 
       if ( option.isEmpty() ) {
         continue;
       }
 
-      if ( const char * val = beginsWith( "bookname=", option.data() ) ) {
+      // Convert QStringView to UTF-8 encoded const char*
+      QByteArray optionUtf8   = option.toString().toUtf8();
+      const char * optionData = optionUtf8.constData();
+
+      if ( const char * val = beginsWith( "bookname=", optionData ) ) {
         bookname = val;
       }
-      else if ( const char * val = beginsWith( "wordcount=", option.data() ) ) {
-        if ( sscanf( val, "%u", &wordcount ) != 1 ) {
-          throw exBadFieldInIfo( option.data() );
+      else if ( const char * val = beginsWith( "wordcount=", optionData ) ) {
+        auto [ ptr, ec ] = std::from_chars( val, val + strlen( val ), wordcount );
+        if ( ec != std::errc{} ) {
+          throw exBadFieldInIfo( optionData );
         }
       }
-      else if ( const char * val = beginsWith( "synwordcount=", option.data() ) ) {
-        if ( sscanf( val, "%u", &synwordcount ) != 1 ) {
-          throw exBadFieldInIfo( option.data() );
+      else if ( const char * val = beginsWith( "synwordcount=", optionData ) ) {
+        auto [ ptr, ec ] = std::from_chars( val, val + strlen( val ), synwordcount );
+        if ( ec != std::errc{} ) {
+          throw exBadFieldInIfo( optionData );
         }
       }
-      else if ( const char * val = beginsWith( "idxfilesize=", option.data() ) ) {
-        if ( sscanf( val, "%u", &idxfilesize ) != 1 ) {
-          throw exBadFieldInIfo( option.data() );
+      else if ( const char * val = beginsWith( "idxfilesize=", optionData ) ) {
+        auto [ ptr, ec ] = std::from_chars( val, val + strlen( val ), idxfilesize );
+        if ( ec != std::errc{} ) {
+          throw exBadFieldInIfo( optionData );
         }
       }
-      else if ( const char * val = beginsWith( "idxoffsetbits=", option.data() ) ) {
-        if ( sscanf( val, "%u", &idxoffsetbits ) != 1 || ( idxoffsetbits != 32 && idxoffsetbits != 64 ) ) {
-          throw exBadFieldInIfo( option.data() );
+      else if ( const char * val = beginsWith( "idxoffsetbits=", optionData ) ) {
+        auto [ ptr, ec ] = std::from_chars( val, val + strlen( val ), idxoffsetbits );
+        if ( ec != std::errc{} || ( idxoffsetbits != 32 && idxoffsetbits != 64 ) ) {
+          throw exBadFieldInIfo( optionData );
         }
       }
-      else if ( const char * val = beginsWith( "sametypesequence=", option.data() ) ) {
+      else if ( const char * val = beginsWith( "sametypesequence=", optionData ) ) {
         sametypesequence = val;
       }
-      else if ( const char * val = beginsWith( "dicttype=", option.data() ) ) {
+      else if ( const char * val = beginsWith( "dicttype=", optionData ) ) {
         dicttype = val;
       }
-      else if ( const char * val = beginsWith( "description=", option.data() ) ) {
+      else if ( const char * val = beginsWith( "description=", optionData ) ) {
         description = val;
       }
-      else if ( const char * val = beginsWith( "copyright=", option.data() ) ) {
+      else if ( const char * val = beginsWith( "copyright=", optionData ) ) {
         copyright = val;
       }
-      else if ( const char * val = beginsWith( "author=", option.data() ) ) {
+      else if ( const char * val = beginsWith( "author=", optionData ) ) {
         author = val;
       }
-      else if ( const char * val = beginsWith( "email=", option.data() ) ) {
+      else if ( const char * val = beginsWith( "email=", optionData ) ) {
         email = val;
       }
-      else if ( const char * val = beginsWith( "website=", option.data() ) ) {
+      else if ( const char * val = beginsWith( "website=", optionData ) ) {
         website = val;
       }
-      else if ( const char * val = beginsWith( "date=", option.data() ) ) {
+      else if ( const char * val = beginsWith( "date=", optionData ) ) {
         date = val;
       }
     }

@@ -3,9 +3,21 @@
 #include <QMessageBox>
 #include <string>
 #include <QBuffer>
+#include <QMimeDatabase>
+#include <QGuiApplication>
 
 using std::string;
 namespace Utils {
+
+bool isWayland()
+{
+  // QGuiApplication::platformName() is the most reliable way for a Qt application
+  // to check the windowing system it is running on.
+  // It returns "wayland" or "wayland-egl" for Wayland sessions.
+  // It returns "xcb" for X11 sessions.
+  return QGuiApplication::platformName().startsWith( "wayland", Qt::CaseInsensitive );
+}
+
 QMap< QString, QString > str2map( const QString & contextsEncoded )
 {
   QMap< QString, QString > contexts;
@@ -176,3 +188,23 @@ QString urlReplaceWord( const QString url, QString inputWord )
   return urlString;
 }
 } // namespace Utils::WebSite
+
+QString Utils::getAudioMimeType( const QString & path, QString & extension )
+{
+  // Default values
+  extension        = ".wav";
+  QString mimeType = "audio/wav";
+
+  // Use QMimeDatabase to determine MIME type based on file extension
+  QMimeDatabase mimeDb;
+  QFileInfo fileInfo( path );
+  if ( !fileInfo.suffix().isEmpty() ) {
+    extension      = "." + fileInfo.suffix().toLower();
+    QMimeType mime = mimeDb.mimeTypeForFile( fileInfo, QMimeDatabase::MatchExtension );
+    if ( mime.isValid() && mime.name().startsWith( "audio/" ) ) {
+      mimeType = mime.name();
+    }
+  }
+
+  return mimeType;
+}

@@ -266,6 +266,26 @@
       <source>Unable to load the requested page content</source>
       <translation>Не вдається завантажити вміст запитаної сторінки</translation>
     </message>
+    <message>
+      <source>&amp;Copy sound to clipboard</source>
+      <translation>&amp;Копіювати звук в буфер обміну</translation>
+    </message>
+    <message>
+      <source>Failed to copy sound</source>
+      <translation>Не вдалося скопіювати звук</translation>
+    </message>
+    <message>
+      <source>Failed to write complete audio data</source>
+      <translation>Не вдалося записати повні дані аудіо</translation>
+    </message>
+    <message>
+      <source>Sound copied to clipboard</source>
+      <translation>Звук скопійовано в буфер обміну</translation>
+    </message>
+    <message>
+      <source>Failed to download sound</source>
+      <translation>Не вдалося завантажити звук</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -704,6 +724,22 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>Restore selection</source>
       <translation>Відновити вибране</translation>
+    </message>
+    <message>
+      <source>Cancel reindex</source>
+      <translation>Відмінити переіндексування</translation>
+    </message>
+    <message>
+      <source>Schedule for reindex</source>
+      <translation>Розклад для переіндексу</translation>
+    </message>
+    <message>
+      <source>Cancel schedule reindex</source>
+      <translation>Відмінити переіндексацію розкладу</translation>
+    </message>
+    <message>
+      <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
+      <translation>Цей словник заплановано до переіндексації. Індекс буде перебудований при наступному перезапуску програми.</translation>
     </message>
   </context>
   <context>
@@ -2791,10 +2827,6 @@ be the last ones.</source>
       <translation>Відкрити нові вкладки за поточною</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Оберіть цю опцію якщови не хочете бачити головну вкладку, у випадку якщо відкрито лише одну вкладку.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Сховати єдину вкладку</translation>
     </message>
@@ -3495,6 +3527,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Відкрити словник веб-сайту в окремій вкладці</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
     </message>
   </context>
   <context>

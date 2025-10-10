@@ -266,6 +266,26 @@
       <source>Unable to load the requested page content</source>
       <translation>Não foi possível carregar o conteúdo da página solicitada</translation>
     </message>
+    <message>
+      <source>&amp;Copy sound to clipboard</source>
+      <translation>&amp;Copiar som para área de transferência</translation>
+    </message>
+    <message>
+      <source>Failed to copy sound</source>
+      <translation>Falha ao copiar som</translation>
+    </message>
+    <message>
+      <source>Failed to write complete audio data</source>
+      <translation>Falha ao gravar dados completos do áudio</translation>
+    </message>
+    <message>
+      <source>Sound copied to clipboard</source>
+      <translation>Som copiado para área de transferência</translation>
+    </message>
+    <message>
+      <source>Failed to download sound</source>
+      <translation>Falha ao baixar o som</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -704,6 +724,22 @@ entre clássico e ortografia escolar em cirílico)</translation>
     <message>
       <source>Restore selection</source>
       <translation>Restaurar seleção</translation>
+    </message>
+    <message>
+      <source>Cancel reindex</source>
+      <translation>Cancelar reindexação</translation>
+    </message>
+    <message>
+      <source>Schedule for reindex</source>
+      <translation>Programação para reindexação</translation>
+    </message>
+    <message>
+      <source>Cancel schedule reindex</source>
+      <translation>Cancelar programação de reindexação</translation>
+    </message>
+    <message>
+      <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
+      <translation>O dicionário foi agendado para reindexação. O índice será reconstruído na próxima reinicialização do aplicativo.</translation>
     </message>
   </context>
   <context>
@@ -2792,11 +2828,6 @@ Do contrário, serão enfileiradas ao lado da
       <translation>Abrir novas guias após a atual</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Habilite esta opção se não quiser exibir a guia principal
-quando apenas uma delas estiver aberta.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Ocultar guia única</translation>
     </message>
@@ -3500,6 +3531,14 @@ dos dicionários Stardict, Babylon e GLS</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Abrir o dicionário do site na guia separada</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation>Selecione esta opção se você don&apos;t quer ver a barra de abas principal quando apenas uma aba for
+                  aberta.
+                 </translation>
     </message>
   </context>
   <context>

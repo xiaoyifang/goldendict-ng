@@ -266,6 +266,26 @@
       <source>Unable to load the requested page content</source>
       <translation>Niet in staat om de gewenste pagina-inhoud te laden</translation>
     </message>
+    <message>
+      <source>&amp;Copy sound to clipboard</source>
+      <translation>&amp;Geluid kopiëren naar klembord</translation>
+    </message>
+    <message>
+      <source>Failed to copy sound</source>
+      <translation>Geluid kopiëren mislukt</translation>
+    </message>
+    <message>
+      <source>Failed to write complete audio data</source>
+      <translation>Kan complete audio-gegevens niet schrijven</translation>
+    </message>
+    <message>
+      <source>Sound copied to clipboard</source>
+      <translation>Geluid gekopieerd naar klembord</translation>
+    </message>
+    <message>
+      <source>Failed to download sound</source>
+      <translation>Kan geluid niet downloaden</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -704,6 +724,22 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
     <message>
       <source>Restore selection</source>
       <translation>Herstel selectie</translation>
+    </message>
+    <message>
+      <source>Cancel reindex</source>
+      <translation>Herindexeren annuleren</translation>
+    </message>
+    <message>
+      <source>Schedule for reindex</source>
+      <translation>Plan voor herindexering</translation>
+    </message>
+    <message>
+      <source>Cancel schedule reindex</source>
+      <translation>Herindexering van plannen annuleren</translation>
+    </message>
+    <message>
+      <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
+      <translation>Het woordenboek is gepland voor herindexering. De index wordt opnieuw opgebouwd bij de volgende applicatie.</translation>
     </message>
   </context>
   <context>
@@ -2789,10 +2825,6 @@ Indien uitgeschakeld worden ze als laatste toegevoegd.</translation>
       <translation>Nieuwe tabbladen na de huidige openen</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Selecteer deze optie om de tabbladbalk te verbergen als slechts één tabblad geopend is.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Enkel tabblad verbergen</translation>
     </message>
@@ -3490,6 +3522,14 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Open het website-woordenboek in apart tabblad</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
     </message>
   </context>
   <context>

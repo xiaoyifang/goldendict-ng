@@ -266,6 +266,26 @@
       <source>Unable to load the requested page content</source>
       <translation>Nie można załadować żądanej zawartości strony</translation>
     </message>
+    <message>
+      <source>&amp;Copy sound to clipboard</source>
+      <translation>&amp;Kopiuj dźwięk do schowka</translation>
+    </message>
+    <message>
+      <source>Failed to copy sound</source>
+      <translation>Nie udało się skopiować dźwięku</translation>
+    </message>
+    <message>
+      <source>Failed to write complete audio data</source>
+      <translation>Nie udało się zapisać kompletnych danych audio</translation>
+    </message>
+    <message>
+      <source>Sound copied to clipboard</source>
+      <translation>Dźwięk skopiowany do schowka</translation>
+    </message>
+    <message>
+      <source>Failed to download sound</source>
+      <translation>Nie udało się pobrać dźwięku</translation>
+    </message>
   </context>
   <context>
     <name>BelarusianTranslit</name>
@@ -704,6 +724,22 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
     <message>
       <source>Restore selection</source>
       <translation>Przywróć zaznaczenie</translation>
+    </message>
+    <message>
+      <source>Cancel reindex</source>
+      <translation>Anuluj reindeks</translation>
+    </message>
+    <message>
+      <source>Schedule for reindex</source>
+      <translation>Harmonogram przeindeksowania</translation>
+    </message>
+    <message>
+      <source>Cancel schedule reindex</source>
+      <translation>Anuluj przeindeksowanie harmonogramu</translation>
+    </message>
+    <message>
+      <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
+      <translation>Słownik został zaplanowany do przeindeksowania. Indeks zostanie przebudowany po ponownym uruchomieniu aplikacji.</translation>
     </message>
   </context>
   <context>
@@ -2788,10 +2824,6 @@ aktywną. W przeciwnym razie są one dodawane na końcu.</translation>
       <translation>Otwieraj nowe karty za bieżącą</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is opened.</source>
-      <translation>Zaznacz tę opcję, aby nie wyświetlać głównego paska kart, gdy otwarta jest tylko jedna karta.</translation>
-    </message>
-    <message>
       <source>Hide single tab</source>
       <translation>Ukryj pojedynczą kartę</translation>
     </message>
@@ -3493,6 +3525,14 @@ ze słowników Stardict, Babylon i GLS</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Otwórz słownik strony w osobnej karcie</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation>Zaznacz tę opcję, jeśli nie jesteś&apos;t chcesz zobaczyć pasek karty głównej, gdy tylko jedna karta jest otwarta
+                  .
+                 </translation>
     </message>
   </context>
   <context>
