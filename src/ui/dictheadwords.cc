@@ -53,11 +53,7 @@ DictHeadwords::DictHeadwords( QWidget * parent, Config::Class & cfg_, Dictionary
 
   ui.matchCase->setChecked( cfg.headwordsDialog.matchCase );
 
-  model = std::make_shared< QAbstractListModel >();
-  model->setMaxFilterResults( ui.filterMaxResult->value() );
   proxy = new QSortFilterProxyModel( this );
-
-  proxy->setSourceModel( model.get() );
 
   proxy->setSortCaseSensitivity( Qt::CaseInsensitive );
   proxy->setSortLocaleAware( true );
@@ -382,11 +378,23 @@ void DictHeadwords::exportAllWords( QProgressDialog & progress, QTextStream & ou
         headwords = btreeModel->getRemainRows( nodeIndex );
       }
   } else if (auto xapianModel = std::dynamic_pointer_cast<XapianIndexing::XapianHeadwordListModel>(model)) {
-    for (int i = 0; i < xapianModel->rowCount(); ++i) {
-      auto item = xapianModel->data(xapianModel->index(i, 0), Qt::DisplayRole).toString();
-      progress.setValue( totalCount++ );
-      writeWordToFile( out, item );
-    }
+    // For Xapian model, fetch in pages and write directly to file to avoid high memory usage.
+    quint32 offset = 0;
+    quint32 total = 0;
+    constexpr quint32 PageSize = 1000; // Use a larger page size for export
+
+    do {
+      std::map<QString, uint32_t> words = XapianIndexing::getIndexedWordsByOffset(dict->getId(), offset, PageSize, total);
+      if (words.empty()) {
+        break;
+      }
+      for (const auto& [word, _] : words) {
+        if (progress.wasCanceled()) break;
+        writeWordToFile(out, word);
+        progress.setValue(++totalCount);
+      }
+      offset += words.size();
+    } while (offset < total && !progress.wasCanceled());
   }
 }
 
@@ -411,8 +419,24 @@ void DictHeadwords::loadRegex( QProgressDialog & progress, QTextStream & out )
         allHeadwords.insert( value.toString() );
       }
   } else if (auto xapianModel = std::dynamic_pointer_cast<XapianIndexing::XapianHeadwordListModel>(model)) {
-      for (int i = 0; i < xapianModel->rowCount(); ++i) {
-          allHeadwords.insert(xapianModel->data(xapianModel->index(i, 0), Qt::DisplayRole).toString());
+      // For Xapian model with filter, fetch in pages and add to set.
+      // This still uses memory but is necessary for regex filtering on the client side.
+      // A more advanced solution would be to push regex to the search engine if possible.
+      quint32 offset = 0;
+      quint32 total = 0;
+      constexpr quint32 PageSize = 1000;
+
+      do {
+          std::map<QString, uint32_t> words = XapianIndexing::searchIndexedWordsByOffset(dict->getId(), ui.filterLine->text().toStdString(), offset, PageSize, total);
+          if (words.empty()) {
+              break;
+          }
+          for (const auto& [word, _] : words) {
+              if (progress.wasCanceled()) break;
+              allHeadwords.insert(word);
+          }
+          offset += words.size();
+      } while (offset < total && !progress.wasCanceled());
       }
   }
 
