@@ -247,7 +247,7 @@ int main( int argc, char ** argv )
   // natively on Wayland. This workaround will force GoldenDict to use
   // XWayland.
 
-  if ( qEnvironmentVariableIsEmpty( "GOLDENDICT_FORCE_WAYLAND" ) ) {
+  if ( qEnvironmentVariableIsEmpty( "GOLDENDICT_FORCE_WAYLAND" ) || !Utils::isWayland() ) {
     char * xdg_envc     = getenv( "XDG_SESSION_TYPE" );
     QString xdg_session = xdg_envc ? QString::fromLatin1( xdg_envc ) : QString();
     if ( !QString::compare( xdg_session, QString( "wayland" ), Qt::CaseInsensitive ) ) {
