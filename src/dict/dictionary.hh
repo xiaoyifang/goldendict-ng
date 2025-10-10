@@ -528,6 +528,9 @@ public:
     synonymSearchEnabled = enabled;
   }
 
+   /// Returns true if the dictionary uses Xapian for headword storage.
+  virtual bool hasXapianHeadwordStorage() const { return false; }
+
   virtual ~Class() = default;
 };
 

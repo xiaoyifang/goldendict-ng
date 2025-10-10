@@ -1,16 +1,46 @@
-/* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
+/* This file is (c) 2024 xiaoyifang, based on original work by Konstantin Isakov
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include "xapian.h"
 #include "xapianidx.hh"
 #include "utils.hh"
 #include <QDebug>
+#include <QFile>
 
 namespace XapianIndexing {
 
 // Helper function to generate Xapian index file path from dictionary ID
 std::string getXapianIndexFilePath( const std::string & dictId ) {
-  return Config::getIndexDir().toStdString() + dictId + ".xapianidx";
+    return Config::getIndexDir().toStdString() + dictId + ".xapianidx";
+}
+
+StreamedXapianIndexer::StreamedXapianIndexer(const std::string& dbPath)
+    : db(dbPath, Xapian::DB_CREATE_OR_OPEN)
+{
+    // 使用 CJK N-gram 分词器以支持中日韩语言的全文搜索
+    indexer.set_flags(Xapian::TermGenerator::FLAG_CJK_NGRAM);
+}
+
+StreamedXapianIndexer::~StreamedXapianIndexer()
+{
+    if (!finished) {
+        // 确保在析构时，即使没有显式调用 finish()，数据库也能被正确关闭
+        // 尽管这通常表示一个未完成的索引过程
+        try {
+            db.close();
+        } catch (const Xapian::Error& e) {
+            qWarning("Xapian error on closing database in destructor: %s", e.get_msg().c_str());
+        }
+    }
+}
+
+void StreamedXapianIndexer::addWord(const QString& word, uint32_t offset)
+{
+    Xapian::Document doc;
+    indexer.set_document(doc);
+    indexer.index_text(word.toStdString());
+    doc.set_data(std::to_string(offset));
+    db.add_document(doc);
 }
 
 /// Build Xapian index using dictionary ID
@@ -38,7 +68,6 @@ void buildXapianIndex( std::map< QString, uint32_t > const & indexedWords, const
       // Add the document to the database.
       db.add_document( doc );
     }
-
     db.commit();
 
     db.compact( file );
@@ -89,6 +118,13 @@ std::map< QString, uint32_t > getAllIndexedWords( const std::string & dictId ) {
   }
   
   return indexedWords;
+void StreamedXapianIndexer::addWord(const QString& word, uint32_t offset)
+{
+    Xapian::Document doc;
+    indexer.set_document(doc);
+    indexer.index_text(word.toStdString());
+    doc.set_data(std::to_string(offset));
+    db.add_document(doc);
 }
 
 /// Batch read indexed headwords with pagination using dictionary ID
@@ -151,6 +187,10 @@ std::map< QString, uint32_t > getIndexedWordsByOffset( const std::string & dictI
   }
   
   return indexedWords;
+void StreamedXapianIndexer::finish()
+{
+    db.commit();
+    finished = true;
 }
 
 /// Search indexed headwords with pagination using dictionary ID

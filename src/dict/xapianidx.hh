@@ -1,14 +1,30 @@
-/* This file is (c) 2008-2012 Konstantin Isakov <ikm@goldendict.org>
+/* This file is (c) 2024 xiaoyifang
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #pragma once
 
-#include "dict/dictionary.hh"
-#include <map>
 #include <string>
+#include <map>
 #include <vector>
+#include <xapian.h>
+#include <QString>
 
 namespace XapianIndexing {
+
+class StreamedXapianIndexer
+{
+public:
+    explicit StreamedXapianIndexer(const std::string& dbPath);
+    ~StreamedXapianIndexer();
+
+    void addWord(const QString& word, uint32_t offset);
+    void finish();
+
+private:
+    Xapian::WritableDatabase db;
+    Xapian::TermGenerator indexer;
+    bool finished = false;
+};
 
 // Helper function to generate Xapian index file path from dictionary ID
 std::string getXapianIndexFilePath( const std::string & dictId );

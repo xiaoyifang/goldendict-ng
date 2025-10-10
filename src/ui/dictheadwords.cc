@@ -6,6 +6,7 @@
 #include <QFileDialog>
 #include <QTimer>
 #include <QProgressDialog>
+#include "dict/xapianheadwordsmodel.hh"
 
 #include <QRegularExpression>
 #include "wildcard.hh"
@@ -52,7 +53,7 @@ DictHeadwords::DictHeadwords( QWidget * parent, Config::Class & cfg_, Dictionary
 
   ui.matchCase->setChecked( cfg.headwordsDialog.matchCase );
 
-  model = std::make_shared< HeadwordListModel >();
+  model = std::make_shared< QAbstractListModel >();
   model->setMaxFilterResults( ui.filterMaxResult->value() );
   proxy = new QSortFilterProxyModel( this );
 
@@ -131,10 +132,24 @@ void DictHeadwords::setup( Dictionary::Class * dict_ )
 
   setWindowTitle( QString::fromUtf8( dict->getName().c_str() ) );
 
-  std::shared_ptr< HeadwordListModel > other = std::make_shared< HeadwordListModel >();
-  model.swap( other );
-  model->setMaxFilterResults( ui.filterMaxResult->value() );
-  model->setDict( dict );
+  if (dict->hasXapianHeadwordStorage())
+    {
+      // 如果词典使用 Xapian 存储词头，则使用新的模型
+      qDebug() << "Using XapianHeadwordListModel for" << QString::fromStdString(dict->getName());
+      auto xapianModel = std::make_shared<XapianIndexing::XapianHeadwordListModel>();
+      xapianModel->setDict(dict);
+      model = xapianModel;
+      // 连接搜索框的信号到模型的 setFilter 槽
+      // connect(mySearchLineEdit, &QLineEdit::textChanged, xapianModel.get(), &XapianIndexing::XapianHeadwordListModel::setFilter);
+    }
+  else
+    {
+      auto btreeModel = std::make_shared<HeadwordListModel>();
+      btreeModel->setMaxFilterResults( ui.filterMaxResult->value() );
+      btreeModel->setDict( dict );
+      model = btreeModel;
+    
+    }
   proxy->setSourceModel( model.get() );
   proxy->sort( 0 );
   filterChanged();
@@ -153,13 +168,16 @@ void DictHeadwords::setup( Dictionary::Class * dict_ )
   dictId = QString( dict->getId().c_str() );
 
   QApplication::restoreOverrideCursor();
-  connect( model.get(), &HeadwordListModel::numberPopulated, this, [ this ]( int _ ) {
-    showHeadwordsNumber();
-  } );
+  if (auto btreeModel = std::dynamic_pointer_cast<HeadwordListModel>(model)) {
+      connect( btreeModel.get(), &HeadwordListModel::numberPopulated, this, [ this ]( int _ ) {
+        showHeadwordsNumber();
+      } );
+      connect( ui.filterMaxResult, &QSpinBox::valueChanged, this, [ btreeModel ]( int _value ) {
+        btreeModel->setMaxFilterResults( _value );
+      } );
+  }
+
   connect( proxy, &QAbstractItemModel::dataChanged, this, &DictHeadwords::showHeadwordsNumber );
-  connect( ui.filterMaxResult, &QSpinBox::valueChanged, this, [ this ]( int _value ) {
-    model->setMaxFilterResults( _value );
-  } );
 }
 
 void DictHeadwords::savePos()
@@ -263,7 +281,12 @@ void DictHeadwords::filterChanged()
 
   QApplication::setOverrideCursor( Qt::WaitCursor );
 
-  model->setFilter( regExp );
+  if (auto btreeModel = std::dynamic_pointer_cast<HeadwordListModel>(model)) {
+      btreeModel->setFilter( regExp );
+  }
+  else if (auto xapianModel = std::dynamic_pointer_cast<XapianIndexing::XapianHeadwordListModel>(model)) {
+      xapianModel->setFilter( ui.filterLine->text() );
+  }
 
   proxy->setFilterRegularExpression( regExp );
   proxy->sort( 0 );
@@ -289,12 +312,18 @@ void DictHeadwords::autoApplyStateChanged( int state )
 
 void DictHeadwords::showHeadwordsNumber()
 {
+  quint32 totalCount = 0;
+  if (auto btreeModel = std::dynamic_pointer_cast<HeadwordListModel>(model)) {
+      totalCount = btreeModel->totalCount();
+  } else if (auto xapianModel = std::dynamic_pointer_cast<XapianIndexing::XapianHeadwordListModel>(model)) {
+      totalCount = xapianModel->totalCount();
+  }
   if ( ui.filterLine->text().isEmpty() ) {
-    ui.headersNumber->setText( tr( "Unique headwords total: %1." ).arg( QString::number( model->totalCount() ) ) );
+    ui.headersNumber->setText( tr( "Unique headwords total: %1." ).arg( QString::number( totalCount ) ) );
   }
   else {
     ui.headersNumber->setText( tr( "Unique headwords total: %1, filtered(limited): %2" )
-                                 .arg( QString::number( model->totalCount() ), QString::number( proxy->rowCount() ) ) );
+                                 .arg( QString::number( totalCount ), QString::number( proxy->rowCount() ) ) );
   }
 }
 
@@ -305,47 +334,59 @@ void DictHeadwords::exportAllWords( QProgressDialog & progress, QTextStream & ou
     return;
   }
 
-  const int headwordsNumber = model->totalCount();
+  quint32 headwordsNumber = 0;
+  if (auto btreeModel = std::dynamic_pointer_cast<HeadwordListModel>(model)) {
+      headwordsNumber = btreeModel->totalCount();
+  } else if (auto xapianModel = std::dynamic_pointer_cast<XapianIndexing::XapianHeadwordListModel>(model)) {
+      headwordsNumber = xapianModel->totalCount();
+  }
 
   const QMutexLocker _( &mutex );
   QSet< QString > allHeadwords;
 
   int totalCount = 0;
-  for ( int i = 0; i < headwordsNumber && i < model->wordCount(); ++i ) {
-    if ( progress.wasCanceled() ) {
-      break;
-    }
+  if (auto btreeModel = std::dynamic_pointer_cast<HeadwordListModel>(model)) {
+      for ( int i = 0; i < headwordsNumber && i < btreeModel->wordCount(); ++i ) {
+        if ( progress.wasCanceled() ) {
+          break;
+        }
 
-    QVariant value = model->getRow( i );
-    if ( !value.canConvert< QString >() ) {
-      continue;
-    }
+        QVariant value = btreeModel->getRow( i );
+        if ( !value.canConvert< QString >() ) {
+          continue;
+        }
 
-    allHeadwords.insert( value.toString() );
-  }
+        allHeadwords.insert( value.toString() );
+      }
 
-  for ( const auto & item : allHeadwords ) {
-    progress.setValue( totalCount++ );
+      for ( const auto & item : allHeadwords ) {
+        progress.setValue( totalCount++ );
 
-    writeWordToFile( out, item );
-  }
+        writeWordToFile( out, item );
+      }
 
-  // continue to write the remaining headword
-  int nodeIndex  = model->getCurrentIndex();
-  auto headwords = model->getRemainRows( nodeIndex );
-  while ( !headwords.isEmpty() ) {
-    if ( progress.wasCanceled() ) {
-      break;
-    }
+      // continue to write the remaining headword
+      int nodeIndex  = btreeModel->getCurrentIndex();
+      auto headwords = btreeModel->getRemainRows( nodeIndex );
+      while ( !headwords.isEmpty() ) {
+        if ( progress.wasCanceled() ) {
+          break;
+        }
 
-    for ( const auto & item : std::as_const( headwords ) ) {
+        for ( const auto & item : std::as_const( headwords ) ) {
+          progress.setValue( totalCount++ );
+
+          writeWordToFile( out, item );
+        }
+
+        headwords = btreeModel->getRemainRows( nodeIndex );
+      }
+  } else if (auto xapianModel = std::dynamic_pointer_cast<XapianIndexing::XapianHeadwordListModel>(model)) {
+    for (int i = 0; i < xapianModel->rowCount(); ++i) {
+      auto item = xapianModel->data(xapianModel->index(i, 0), Qt::DisplayRole).toString();
       progress.setValue( totalCount++ );
-
       writeWordToFile( out, item );
     }
-
-
-    headwords = model->getRemainRows( nodeIndex );
   }
 }
 
@@ -356,17 +397,23 @@ void DictHeadwords::loadRegex( QProgressDialog & progress, QTextStream & out )
   QSet< QString > allHeadwords;
 
   int totalCount = 0;
-  for ( int i = 0; i < model->wordCount(); ++i ) {
-    if ( progress.wasCanceled() ) {
-      break;
-    }
+  if (auto btreeModel = std::dynamic_pointer_cast<HeadwordListModel>(model)) {
+      for ( int i = 0; i < btreeModel->wordCount(); ++i ) {
+        if ( progress.wasCanceled() ) {
+          break;
+        }
 
-    QVariant value = model->getRow( i );
-    if ( !value.canConvert< QString >() ) {
-      continue;
-    }
+        QVariant value = btreeModel->getRow( i );
+        if ( !value.canConvert< QString >() ) {
+          continue;
+        }
 
-    allHeadwords.insert( value.toString() );
+        allHeadwords.insert( value.toString() );
+      }
+  } else if (auto xapianModel = std::dynamic_pointer_cast<XapianIndexing::XapianHeadwordListModel>(model)) {
+      for (int i = 0; i < xapianModel->rowCount(); ++i) {
+          allHeadwords.insert(xapianModel->data(xapianModel->index(i, 0), Qt::DisplayRole).toString());
+      }
   }
 
   progress.setMaximum( allHeadwords.size() );
@@ -408,7 +455,13 @@ void DictHeadwords::saveHeadersToFile()
   cfg.headwordsDialog.headwordsExportPath =
     QDir::toNativeSeparators( QFileInfo( fileName ).absoluteDir().absolutePath() );
 
-  const int headwordsNumber = model->totalCount();
+  quint32 headwordsNumber = 0;
+  if (auto btreeModel = std::dynamic_pointer_cast<HeadwordListModel>(model)) {
+      headwordsNumber = btreeModel->totalCount();
+  } else if (auto xapianModel = std::dynamic_pointer_cast<XapianIndexing::XapianHeadwordListModel>(model)) {
+      headwordsNumber = xapianModel->totalCount();
+  }
+
 
   QProgressDialog progress( tr( "Export headwords..." ), tr( "Cancel" ), 0, headwordsNumber, this );
   progress.setWindowModality( Qt::WindowModal );

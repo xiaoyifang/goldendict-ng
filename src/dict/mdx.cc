@@ -258,6 +258,8 @@ public:
 
   QString getCachedFileName( QString name );
 
+  bool hasXapianHeadwordStorage() const override { return true; }
+
 protected:
 
   void loadIcon() noexcept override;
@@ -1277,10 +1279,10 @@ static void addEntryToIndexSingle( const QString & word, uint32_t offset, Indexe
 class ArticleHandler: public MdictParser::RecordHandler
 {
 public:
-  ArticleHandler( ChunkedStorage::Writer & chunks, IndexedWords & indexedWords ):
+  ArticleHandler( ChunkedStorage::Writer & chunks, IndexedWords & indexedWords, XapianIndexing::StreamedXapianIndexer & xapianIndexer ):
     chunks( chunks ),
     indexedWords( indexedWords ),
-    wordsMap()
+    xapianIndexer( xapianIndexer )
   {
   }
 
@@ -1291,21 +1293,13 @@ public:
     chunks.addToBlock( &recordInfo, sizeof( recordInfo ) );
     // Add entries to the index
     addEntryToIndex( headWord, articleAddress, indexedWords );
-    
-    // Update the wordsMap with the current headword and article address
-    wordsMap[ headWord ] = articleAddress;
-  }
-
-  /// Returns a map of indexed words to their article offsets
-  std::map< QString, uint32_t > getIndexedWordsMap() const
-  {
-    return wordsMap;
+    xapianIndexer.addWord( headWord, articleAddress );
   }
 
 private:
   ChunkedStorage::Writer & chunks;
   IndexedWords & indexedWords;
-  std::map< QString, uint32_t > wordsMap; ///< Tracks headwords and their article addresses
+  XapianIndexing::StreamedXapianIndexer & xapianIndexer;
 };
 
 class ResourceHandler: public MdictParser::RecordHandler
@@ -1413,6 +1407,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
 
       File::Index idx( indexFile, QIODevice::WriteOnly );
       auto headIndexFile = indexFile+".head";
+      XapianIndexing::StreamedXapianIndexer xapianIndexer(headIndexFile);
       IdxHeader idxHeader;
       memset( &idxHeader, 0, sizeof( idxHeader ) );
       // We write a dummy header first. At the end of the process the header
@@ -1448,7 +1443,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
         idxHeader.descriptionSize = description.size() + 1;
       }
 
-      ArticleHandler articleHandler( chunks, indexedWords );
+      ArticleHandler articleHandler( chunks, indexedWords, xapianIndexer );
       MdictParser::HeadWordIndex headWordIndex;
 
       // enumerating word and its definition
@@ -1482,8 +1477,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
 
       qDebug( "Writing index..." );
 
-      //headword idx
-      XapianIndexing::buildXapianIndex( articleHandler.getIndexedWordsMap(), headIndexFile );
+      xapianIndexer.finish();
+
       // Good. Now build the index
       IndexInfo idxInfo               = BtreeIndexing::buildIndex( indexedWords, idx );
       idxHeader.indexBtreeMaxElements = idxInfo.btreeMaxElements;
