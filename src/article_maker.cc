@@ -262,7 +262,7 @@ string ArticleMaker::makeWelcomeHtml() const
         <small>Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.</small>
       </footer>
     </div>)" )
-              .toUtf8();
+              .toUtf8().data();
 
   result += "</body></html>";
 
