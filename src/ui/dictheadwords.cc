@@ -331,13 +331,14 @@ void DictHeadwords::exportAllWords( QProgressDialog & progress, QTextStream & ou
 void DictHeadwords::loadRegex( QProgressDialog & progress, QTextStream & out )
 {
   int totalCount = 0;
-  // Process already loaded (and filtered) words
-  for ( int i = 0; i < model->wordCount(); ++i ) {
+  // Process already loaded (and filtered) words from proxy
+  for ( int i = 0; i < proxy->rowCount(); ++i ) {
     if ( progress.wasCanceled() ) {
       break;
     }
 
-    QVariant value = model->getRow( i );
+    QModelIndex proxyIndex = proxy->index( i, 0 );
+    QVariant value = proxy->data( proxyIndex, Qt::DisplayRole );
     if ( value.canConvert< QString >() ) {
       writeWordToFile( out, value.toString() );
       progress.setValue( ++totalCount );
