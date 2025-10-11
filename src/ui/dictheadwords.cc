@@ -305,8 +305,6 @@ void DictHeadwords::exportAllWords( QProgressDialog & progress, QTextStream & ou
     return;
   }
 
-  const int headwordsNumber = model->totalCount();
-
   int totalCount = 0;
   // Continue to write the remaining headwords in batches
   int nodeIndex  = 0;
