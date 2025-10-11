@@ -17,8 +17,9 @@ void WebUrlRequestInterceptor::interceptRequest( QWebEngineUrlRequestInfo & info
   info.setHttpHeader( "origin", Utils::Url::getSchemeAndHost( url ).toUtf8() );
   info.setHttpHeader( "referer", url.url().toUtf8() );
   if ( GlobalBroadcaster::instance()->getPreference()->disallowContentFromOtherSites && Utils::isExternalLink( url ) ) {
-    //file:// link ,pass
+    // Block file:// links to prevent local file access
     if ( url.scheme() == "file" ) {
+      info.block( true );
       return;
     }
     auto hostBase = url.host();
