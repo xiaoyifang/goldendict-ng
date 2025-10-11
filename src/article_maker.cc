@@ -254,14 +254,6 @@ string ArticleMaker::makeWelcomeHtml() const
         --link-color: #005a9c;
         --container-bg: #f9f9f9;
       }
-      @media (prefers-color-scheme: dark) {
-        body {
-          --text-color: #eee;
-          --secondary-text-color: #aaa;
-          --link-color: #58a6ff;
-          --container-bg: #2d2d2d;
-        }
-      }
       .welcome-container {
         max-width: 850px;
         margin: 2em auto;
