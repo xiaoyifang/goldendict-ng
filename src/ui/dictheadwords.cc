@@ -316,8 +316,8 @@ void DictHeadwords::exportAllWords( QProgressDialog & progress, QTextStream & ou
       break;
     }
     // Sort and write the batch
-    QList<QString> sortedBatch = headwords.values();
-    sortedBatch.sort(Qt::CaseInsensitive);
+    QList< QString > sortedBatch = headwords.values();
+    sortedBatch.sort( Qt::CaseInsensitive );
     for ( const auto & item : sortedBatch ) {
       progress.setValue( ++totalCount );
       writeWordToFile( out, item );
@@ -338,7 +338,7 @@ void DictHeadwords::loadRegex( QProgressDialog & progress, QTextStream & out )
     }
 
     QModelIndex proxyIndex = proxy->index( i, 0 );
-    QVariant value = proxy->data( proxyIndex, Qt::DisplayRole );
+    QVariant value         = proxy->data( proxyIndex, Qt::DisplayRole );
     if ( value.canConvert< QString >() ) {
       writeWordToFile( out, value.toString() );
       progress.setValue( ++totalCount );
