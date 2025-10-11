@@ -166,56 +166,58 @@ string ArticleNetworkAccessManager::getHtml( ResourceType resourceType )
 }
 
 namespace {
-  // Helper function to handle user files access
-  sptr< Dictionary::DataRequest > handleUserFileRequest(const QUrl & url) {
-    QString filePath = url.path().mid(1); // Get path part and remove leading slash
-    
-    // Look for the file in user's home directory
-    QDir userDir = Config::getHomeDir();
-    QString fullPath = userDir.filePath(filePath);
-    
-    QFile file(fullPath);
-    if (file.open(QIODevice::ReadOnly)) {
-      QByteArray content = file.readAll();
-      sptr<Dictionary::DataRequestInstant> req = std::make_shared<Dictionary::DataRequestInstant>(true);
-      req->getData().resize(content.size());
-      memcpy(&(req->getData().front()), content.data(), content.size());
-      return req;
-    }
-    else {
-      qWarning("Failed to open user file: %s", fullPath.toUtf8().data());
-      return {};
-    }
+// Helper function to handle user files access
+sptr< Dictionary::DataRequest > handleUserFileRequest( const QUrl & url )
+{
+  QString filePath = url.path().mid( 1 ); // Get path part and remove leading slash
+
+  // Look for the file in user's home directory
+  QDir userDir     = Config::getHomeDir();
+  QString fullPath = userDir.filePath( filePath );
+
+  QFile file( fullPath );
+  if ( file.open( QIODevice::ReadOnly ) ) {
+    QByteArray content                         = file.readAll();
+    sptr< Dictionary::DataRequestInstant > req = std::make_shared< Dictionary::DataRequestInstant >( true );
+    req->getData().resize( content.size() );
+    memcpy( &( req->getData().front() ), content.data(), content.size() );
+    return req;
   }
-  
-  // Helper function to handle dictionary resource requests
-  sptr< Dictionary::DataRequest > handleDictionaryResource(const QUrl & url, const string & id, 
-                                                          const std::vector< sptr< Dictionary::Class > > & dictionaries) {
-    for ( const auto & dictionary : dictionaries ) {
-      if ( dictionary->getId() == id ) {
-        if ( url.scheme() == "gico" ) {
-          QByteArray bytes;
-          QBuffer buffer( &bytes );
-          buffer.open( QIODevice::WriteOnly );
-          dictionary->getIcon().pixmap( 64 ).save( &buffer, "PNG" );
-          buffer.close();
-          sptr< Dictionary::DataRequestInstant > ico = std::make_shared< Dictionary::DataRequestInstant >( true );
-          ico->getData().resize( bytes.size() );
-          memcpy( &( ico->getData().front() ), bytes.data(), bytes.size() );
-          return ico;
-        }
-        try {
-          return dictionary->getResource( Utils::Url::path( url ).mid( 1 ).toUtf8().data() );
-        }
-        catch ( std::exception & e ) {
-          qWarning( "getResource request error (%s) in \"%s\"", e.what(), dictionary->getName().c_str() );
-          return {};
-        }
-      }
-    }
+  else {
+    qWarning( "Failed to open user file: %s", fullPath.toUtf8().data() );
     return {};
   }
 }
+
+// Helper function to handle dictionary resource requests
+sptr< Dictionary::DataRequest > handleDictionaryResource(
+  const QUrl & url, const string & id, const std::vector< sptr< Dictionary::Class > > & dictionaries )
+{
+  for ( const auto & dictionary : dictionaries ) {
+    if ( dictionary->getId() == id ) {
+      if ( url.scheme() == "gico" ) {
+        QByteArray bytes;
+        QBuffer buffer( &bytes );
+        buffer.open( QIODevice::WriteOnly );
+        dictionary->getIcon().pixmap( 64 ).save( &buffer, "PNG" );
+        buffer.close();
+        sptr< Dictionary::DataRequestInstant > ico = std::make_shared< Dictionary::DataRequestInstant >( true );
+        ico->getData().resize( bytes.size() );
+        memcpy( &( ico->getData().front() ), bytes.data(), bytes.size() );
+        return ico;
+      }
+      try {
+        return dictionary->getResource( Utils::Url::path( url ).mid( 1 ).toUtf8().data() );
+      }
+      catch ( std::exception & e ) {
+        qWarning( "getResource request error (%s) in \"%s\"", e.what(), dictionary->getName().c_str() );
+        return {};
+      }
+    }
+  }
+  return {};
+}
+} // namespace
 
 sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( const QUrl & url, QString & contentType )
 {
@@ -276,11 +278,11 @@ sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( const 
     string id          = url.host().toStdString();
 
     // Special handling for 'user' host to access user configuration files
-    if (id == "user" && url.scheme() == "bres") {
-      return handleUserFileRequest(url);
+    if ( id == "user" && url.scheme() == "bres" ) {
+      return handleUserFileRequest( url );
     }
 
-    return handleDictionaryResource(url, id, dictionaries);
+    return handleDictionaryResource( url, id, dictionaries );
   }
 
   return {};
