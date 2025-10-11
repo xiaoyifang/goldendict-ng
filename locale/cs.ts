@@ -57,16 +57,46 @@
       <translation>Vítejte!</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Vítejte v &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Chcete-li začít pracovat s programem, nejprve navštivte &lt;em&gt;Upravit | Slovníky&lt;/em&gt; pro přidání některých cest k adresářům, kam hledat soubory slovníku, zakládat různé stránky Wikipedie nebo jiné zdroje, upravovat pořadí slovníků nebo vytvářet skupiny slovníků.&lt;p&gt;A pak jste&apos;vyhledat svá slova! Můžete to udělat v tomto okně pomocí podokna vlevo nebo můžete &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;vyhledat slova z jiných aktivních aplikací&lt;/a&gt;. &lt;p&gt;Chcete-li přizpůsobit program, podívejte se na dostupné předvolby na &lt;em&gt;Upravit | Předvolby&lt;/em&gt;. Všechna nastavení tam mají popisky, určitě si je přečtěte, pokud máte o něčem pochybnosti.&lt;p&gt;Pokud potřebujete další pomoc, máte nějaké dotazy, návrhy nebo se jen zajímáte, co si myslí ostatní, jste vítáni na fóru programu&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;&lt;/a&gt;.&lt;p&gt;Zkontrolujte aktualizace programu&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;na webu&lt;/a&gt; . &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licencováno pod licencí GPLv3 nebo novější.</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(nepojmenovaný)</translation>
     </message>
     <message>
       <source>(picture)</source>
       <translation>(obrázek)</translation>
+    </message>
+    <message>
+      <source>
+    &lt;div class=&quot;welcome-container&quot;&gt;
+      &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;section&gt;
+        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
+          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/usage/scan-popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/section&gt;
+      &lt;p&gt;Should you need further help, have any questions, or suggestions, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; and &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
+      &lt;footer class=&quot;welcome-footer&quot;&gt;
+        &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
+      &lt;/footer&gt;
+    &lt;/div&gt;</source>
+      <translation>
+    &lt;div class=&quot;welcome-container&quot;&gt;
+      &lt;h3&gt;Vítejte v &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;section&gt;
+        &lt;h4&gt;Začínáte:&lt;/h4&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Přejděte na &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; a přidejte své slovníkové soubory, vytvořte online zdroje jako Wikipedie a organizujte je do skupin.&lt;/li&gt;
+          &lt;li&gt;Jakmile je nastaven, můžete hledat slova v tomto okně nebo &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/usage/scan-popup/&quot;&gt;z jiných aplikací pomocí Scan Popup&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;Pro přizpůsobení programu prozkoumá nastavení v &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Upravit&lt;/span&gt;&lt;span&gt;Nastavení&lt;/span&gt;&lt;/span&gt;. Všechna nastavení mají popisky nástrojů, takže si je nezapomeňte přečíst, pokud je něco nejasné.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/section&gt;
+      &lt;p&gt;, pokud byste potřebovali další pomoc, máte jakékoliv dotazy nebo návrhy, na programu&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;fórum&lt;/a&gt; a &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;webové stránce&lt;/a&gt;.&lt;/p&gt;
+      &lt;footer class=&quot;welcome-footer&quot;&gt;
+        &lt;small&gt;Založeno na původním GoldenDiktu od Konstantina Isakova, c) 2008-2013. Udržováno a rozvíjeno komunitou GoldenDict-NG, která je licencována pod licencí GPLv3 nebo novější.&lt;/small&gt;
+      &lt;/footer&gt;
+    &lt;/div&gt;</translation>
     </message>
   </context>
   <context>
