@@ -213,7 +213,7 @@ ArticleView::ArticleView( QWidget * parent,
   settings->setUnknownUrlSchemePolicy( QWebEngineSettings::UnknownUrlSchemePolicy::DisallowUnknownUrlSchemes );
 
   // More secure settings to prevent XSS attacks and filesystem access
-  settings->setAttribute( QWebEngineSettings::LocalContentCanAccessRemoteUrls, true );
+  settings->setAttribute( QWebEngineSettings::LocalContentCanAccessRemoteUrls, false );
   settings->setAttribute( QWebEngineSettings::LocalContentCanAccessFileUrls, false );
   settings->setAttribute( QWebEngineSettings::ErrorPageEnabled, false );
   settings->setAttribute( QWebEngineSettings::LinksIncludedInFocusChain, false );
