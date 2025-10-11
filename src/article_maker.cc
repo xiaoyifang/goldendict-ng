@@ -246,39 +246,6 @@ string ArticleMaker::makeWelcomeHtml() const
 {
   string result = makeHtmlHeader( tr( "Welcome!" ), QString(), cfg.alwaysExpandOptionalParts );
 
-  result += R"(
-    <style>
-      body {
-        --text-color: #222;
-        --secondary-text-color: #555;
-        --link-color: #005a9c;
-        --container-bg: #f9f9f9;
-      }
-      .welcome-container {
-        max-width: 850px;
-        margin: 2em auto;
-        padding: 1.5em 2em;
-        line-height: 1.7;
-        color: var(--text-color);
-        /* Optional: background and border-radius for a card-like look */
-        /* background-color: var(--container-bg); */
-        /* border-radius: 8px; */
-      }
-      .welcome-container h3, .welcome-container h4 {
-        text-align: center;
-        margin-bottom: 1em;
-      }
-      .welcome-container h3 { font-size: 1.6em; font-weight: 600; }
-      .welcome-container h4 { font-size: 1.2em; font-weight: 500; margin-top: 2em; }
-      .welcome-container p, .welcome-container ul { margin-bottom: 1.2em; }
-      .welcome-container ul { list-style: none; padding-left: 20px; }
-      .welcome-container li { margin-bottom: 0.5em; position: relative; padding-left: 25px; }
-      .welcome-container li::before { content: '✓'; position: absolute; left: 0; color: var(--link-color); }
-      .welcome-container a { color: var(--link-color); text-decoration: none; transition: color 0.2s; }
-      .welcome-container a:hover { text-decoration: underline; }
-      .welcome-footer { margin-top: 2.5em; text-align: center; font-size: 0.85em; color: var(--secondary-text-color); }
-    </style>)";
-
   result += tr( R"(
     <div class="welcome-container">
       <h3>Welcome to <strong>GoldenDict-ng</strong>!</h3>
