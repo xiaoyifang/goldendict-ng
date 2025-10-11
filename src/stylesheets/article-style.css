@@ -3124,6 +3124,24 @@ table#sv-hooks,
   color: var(--secondary-text-color);
 }
 
+.menu-path > span {
+  --menu-path-text-color: #3b5998;
+  --menu-path-arrow-color: #8b9dc3;
+  font-weight: 600;
+  font-style: normal;
+  color: var(--menu-path-text-color);
+}
+.menu-path > span + span::before {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin: 0 0.3em;
+  vertical-align: -0.15em;
+  background-color: var(--menu-path-arrow-color);
+  -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"><path d="M10 6L8.59 7.41L13.17 12l-4.58 4.59L10 18l6-6z"/></svg>');
+  mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"><path d="M10 6L8.59 7.41L13.17 12l-4.58 4.59L10 18l6-6z"/></svg>');
+}
 /************* GLS dictionaries **************/
 
 .glsdict_headwords {
