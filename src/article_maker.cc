@@ -246,23 +246,24 @@ string ArticleMaker::makeWelcomeHtml() const
 {
   string result = makeHtmlHeader( tr( "Welcome!" ), QString(), cfg.alwaysExpandOptionalParts );
 
-  result +=
-    tr(
-      "<h3 align=\"center\">Welcome to <b>GoldenDict</b>!</h3>"
-      "<p>To start working with the program, first visit <em>Edit | Dictionaries</em> to add some directory paths where to search "
-      "for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups."
-      "<p>And then you're ready to look up your words! You can do that in this window "
-      "by using a pane to the left, or you can <a href=\"https://xiaoyifang.github.io/goldendict-ng/ui_popup/\">look up words from other active applications</a>. "
-      "<p>To customize program, check out the available preferences at <em>Edit | Preferences</em>. "
-      "All settings there have tooltips, be sure to read them if you are in doubt about anything."
-      "<p>Should you need further help, have any questions, "
-      "suggestions or just wonder what the others think, you are welcome at the program's <a href=\"https://github.com/xiaoyifang/goldendict/discussions\">forum</a>."
-      "<p>Check program's <a href=\"https://github.com/xiaoyifang/goldendict\">website</a> for the updates. "
-      "<p>(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later."
-
-      )
-      .toUtf8()
-      .data();
+  result += tr( R"(
+    <div class="welcome-container">
+      <h3>Welcome to <strong>GoldenDict-ng</strong>!</h3>
+      <section>
+        <h4>To get started:</h4>
+        <ul>
+          <li>Go to <span class="menu-path"><span>Edit</span><span>Dictionaries</span></span> to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.</li>
+          <li>Once set up, you can look up words in this window or <a href="https://xiaoyifang.github.io/goldendict-ng/usage/scan-popup/">from other applications using the Scan Popup</a>.</li>
+          <li>To customize the program, explore the settings in <span class="menu-path"><span>Edit</span><span>Preferences</span></span>. All settings have tooltips, so be sure to read them if anything is unclear.</li>
+        </ul>
+      </section>
+      <p>Should you need further help, have any questions, or suggestions, you are welcome at the program's <a href="https://github.com/xiaoyifang/goldendict-ng/discussions">forum</a> and <a href="https://github.com/xiaoyifang/goldendict-ng">website</a>.</p>
+      <footer class="welcome-footer">
+        <small>Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.</small>
+      </footer>
+    </div>)" )
+              .toUtf8()
+              .data();
 
   result += "</body></html>";
 
