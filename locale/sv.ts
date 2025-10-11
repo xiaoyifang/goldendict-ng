@@ -57,16 +57,46 @@
       <translation>Välkommen!</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Välkommen till &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;För att börja arbeta med programmet, besök först &lt;em&gt;Redigera | Ordböcker&lt;/em&gt; för att lägga till några katalogsökvägar där man kan söka efter ordboksfilerna, skapa olika Wikipedia-webbplatser eller andra källor, justera ordboksordningen eller skapa ordboksgrupper.&lt;p&gt;Och då är du&apos;att slå upp dina ord! Du kan göra det i det här fönstret genom att använda en ruta till vänster, eller så kan du &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;upp ord från andra aktiva applikationer&lt;/a&gt;. &lt;p&gt;För att anpassa programmet, kolla in de tillgängliga inställningarna på &lt;em&gt;Redigera | Inställningar&lt;/em&gt;. Alla inställningar där har verktygstips, se till att läsa dem om du är osäker på något.&lt;p&gt;Behöver du ytterligare hjälp, har några frågor, förslag eller bara undrar vad de andra tycker är du välkommen till programmet&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Kolla program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;hemsida&lt;/a&gt; för uppdateringarna. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensierad under GPLv3 eller senare.</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(namnlös)</translation>
     </message>
     <message>
       <source>(picture)</source>
       <translation>(bild)</translation>
+    </message>
+    <message>
+      <source>
+    &lt;div class=&quot;welcome-container&quot;&gt;
+      &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;section&gt;
+        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
+          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/usage/scan-popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/section&gt;
+      &lt;p&gt;Should you need further help, have any questions, or suggestions, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; and &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
+      &lt;footer class=&quot;welcome-footer&quot;&gt;
+        &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
+      &lt;/footer&gt;
+    &lt;/div&gt;</source>
+      <translation>
+    &lt;div class=&quot;welcome-container&quot;&gt;
+      &lt;h3&gt;Välkommen till &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;section&gt;
+        &lt;h4&gt;För att komma igång:&lt;/h4&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Gå till &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Redigera&lt;/span&gt;&lt;span&gt;Ordböcker&lt;/span&gt;&lt;/span&gt; för att lägga till dina ordboksfiler, konfigurera onlinekällor som Wikipedia, och organisera dem i grupper.&lt;/li&gt;
+          &lt;li&gt;En gång i tiden du kan slå upp ord i detta fönster eller &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/usage/scan-popup/&quot;&gt;från andra program med hjälp av Scan Popup&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;För att anpassa programmet, utforska inställningarna i &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Redigera&lt;/span&gt;&lt;span&gt;Inställningar&lt;/span&gt;&lt;/span&gt;. Alla inställningar har verktygstips, så se till att läsa dem om något är oklart.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/section&gt;
+      &lt;p&gt;Skulle du behöva ytterligare hjälp, har frågor eller förslag, du är välkommen till programmet&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; och &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;webbplats&lt;/a&gt;.&lt;/p&gt;
+      &lt;footer class=&quot;welcome-footer&quot;&gt;
+        &lt;small&gt;Baserat på den ursprungliga GoldenDict av Konstantin Isakov (c) 2008-2013. Underhålls och utvecklas av GoldenDict-NG gemenskapen. Licensierad under GPLv3 eller senare.&lt;/small&gt;
+      &lt;/footer&gt;
+    &lt;/div&gt;</translation>
     </message>
   </context>
   <context>
