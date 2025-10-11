@@ -1228,7 +1228,10 @@ void BtreeIndex::findSingleNodeHeadwords( uint32_t offsets, QSet< QString > * he
 
     if ( headwords ) {
       for ( auto & i : result ) {
-        headwords->insert( QString::fromUtf8( ( i.prefix + i.word ).c_str() ) );
+        // Only add when prefix is empty
+        if ( i.prefix.empty() ) {
+          headwords->insert( QString::fromUtf8( ( i.prefix + i.word ).c_str() ) );
+        }
       }
     }
 
