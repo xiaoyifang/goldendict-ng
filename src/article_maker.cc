@@ -194,7 +194,7 @@ std::string ArticleMaker::makeHtmlHeader( const QString & word, const QString & 
 
   // load the `article-style.js` in user's config folder
   if ( auto userJsFile = Config::getUserJsFileName(); userJsFile.has_value() ) {
-    result += fmt::format( FMT_COMPILE( R"(<script src="file://{}" defer></script>)" ), userJsFile.value() );
+    result += fmt::format( FMT_COMPILE( R"(<script src="bres://user/{}" defer></script>)" ), userJsFile.value() );
   }
 
   result += "</head><body>";

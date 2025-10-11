@@ -2301,7 +2301,7 @@ std::optional< std::string > getUserJsFileName()
 {
   QString userJsPath = getHomeDir().filePath( "article-script.js" );
   if ( QFileInfo::exists( userJsPath ) ) {
-    return userJsPath.toStdString();
+    return "article-script.js";
   }
   else {
     return std::nullopt;
