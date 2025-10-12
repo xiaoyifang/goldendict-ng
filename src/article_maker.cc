@@ -253,7 +253,7 @@ string ArticleMaker::makeWelcomeHtml() const
         <h4>To get started:</h4>
         <ul>
           <li>Go to <span class="menu-path"><span>Edit</span><span>Dictionaries</span></span> to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.</li>
-          <li>Once set up, you can look up words in this window or <a href="https://xiaoyifang.github.io/goldendict-ng/usage/scan-popup/">from other applications using the Scan Popup</a>.</li>
+          <li>Once set up, you can look up words in this window or <a href="https://xiaoyifang.github.io/goldendict-ng/ui_popup/">from other applications using the Scan Popup</a>.</li>
           <li>To customize the program, explore the settings in <span class="menu-path"><span>Edit</span><span>Preferences</span></span>. All settings have tooltips, so be sure to read them if anything is unclear.</li>
         </ul>
       </section>
