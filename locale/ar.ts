@@ -57,16 +57,46 @@
       <translation>مرحبًا بك!</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;مرحبًا بك في &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;لبدء العمل مع البرنامج قم أولاً بزيارة &lt;em&gt;تحرير | القواميس&lt;/em&gt; لإضافة بعض مسارات الدليل حيث يمكنك البحث عن ملفات القاموس، أو إعداد مواقع ويكيبيديا المختلفة أو مصادر أخرى، أو ضبط ترتيب القاموس أو إنشاء مجموعات القاموس.&lt;p&gt;وبعد ذلك&apos;أنت مستعد للبحث عن كلماتك! يمكنك القيام بذلك في هذه النافذة باستخدام الجزء الموجود على اليسار، أو يمكنك &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;البحث عن كلمات من التطبيقات النشطة الأخرى&lt;/a&gt;. &lt;p&gt;لتخصيص البرنامج، تحقق من التفضيلات المتاحة في &lt;em&gt;تحرير | التفضيلات&lt;/em&gt;. تحتوي جميع الإعدادات هناك على تلميحات أدوات، تأكد من قراءتها إذا كنت تشك في أي شيء.&lt;p&gt;إذا كنت بحاجة إلى مزيد من المساعدة، أو لديك أي أسئلة أو اقتراحات أو تتساءل فقط عن رأي الآخرين، فمرحبًا بك في منتدى البرنامج&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;&lt;/a&gt;.&lt;p&gt;تحقق من موقع البرنامج&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;&lt;/a&gt; للحصول على التحديثات. &lt;p&gt;(ج) 2008-2013 كونستانتين إيزاكوف. مرخص بموجب GPLv3 أو الأحدث.</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(غير معنون)</translation>
     </message>
     <message>
       <source>(picture)</source>
       <translation>(صورة)</translation>
+    </message>
+    <message>
+      <source>
+    &lt;div class=&quot;welcome-container&quot;&gt;
+      &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;section&gt;
+        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
+          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/usage/scan-popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/section&gt;
+      &lt;p&gt;Should you need further help, have any questions, or suggestions, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; and &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
+      &lt;footer class=&quot;welcome-footer&quot;&gt;
+        &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
+      &lt;/footer&gt;
+    &lt;/div&gt;</source>
+      <translation>
+    &lt;div class=&quot;welcome-container&quot;&gt;
+      &lt;h3&gt;مرحبا بكم في &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;section&gt;
+        &lt;h4&gt;للبدء:&lt;/h4&gt;
+        &lt;ul&gt;
+          &lt;li&gt;اذهب إلى &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;تحرير&lt;/span&gt;&lt;span&gt;القواميس&lt;/span&gt;&lt;/span&gt; لإضافة ملفات القاموس الخاصة بك، إنشاء مصادر على الإنترنت مثل ويكيبيديا، وتنظيمها في مجموعات.&lt;/li&gt;
+          &lt;li&gt;بمجرد الإنشاء، يمكنك البحث عن الكلمات في هذه النافذة أو &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/usage/scan-popup/&quot;&gt;من التطبيقات الأخرى باستخدام المسح الضوئي للمنبثق&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;لتخصيص البرنامج، استكشاف الإعدادات في &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;تحرير&lt;/span&gt;&lt;span&gt;تفضيلات&lt;/span&gt;&lt;/span&gt;. جميع الإعدادات لديها نصائح أدوات، لذا تأكد من قراءتها إذا كان أي شيء غير واضح.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/section&gt;
+      &lt;p&gt;إذا كنت بحاجة إلى مزيد من المساعدة. لديك أي أسئلة، أو اقتراحات، نرحب بك في البرنامج&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;Forum&lt;/a&gt; و &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;على الموقع&lt;/a&gt;.&lt;/p&gt;
+      &lt;footer class=&quot;welcome-footer&quot;&gt;
+        &lt;small&gt;استنادا إلى القالب الذهبي الأصلي الذي أعده كونستانتين إيساكوف (ج) 2008-2013. تمت صيانتها وتطويرها من قبل جماعة GPLv3 أو أحدثها. مرخصة من قبل مجموعة GPLv3 أو لاحقا.&lt;/small&gt;
+      &lt;/footer&gt;
+    &lt;/div&gt;</translation>
     </message>
   </context>
   <context>

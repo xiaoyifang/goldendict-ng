@@ -57,16 +57,46 @@
       <translation>Benvenuto!</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Benvenuti a &lt;b&gt;&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Per iniziare a lavorare con il programma, visitare innanzitutto &lt;em&gt;Modifica | Dizionari&lt;/em&gt; per aggiungere alcuni percorsi di directory in cui cercare i file del dizionario, impostare vari siti Wikipedia o altre fonti, regolare l'ordine dei dizionari o creare gruppi di dizionari.&lt;p&gt;E poi sarai&apos;per cercare le tue parole! Puoi farlo in questa finestra utilizzando un riquadro a sinistra oppure puoi &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;parole da altre applicazioni attive&lt;/a&gt;. &lt;p&gt;Per personalizzare il programma, controllare le preferenze disponibili in &lt;em&gt;Modifica | Preferenze&lt;/em&gt;. Tutte le impostazioni hanno suggerimenti, assicurati di leggerli se hai dubbi su qualcosa.&lt;p&gt;Se hai bisogno di ulteriore aiuto, hai domande, suggerimenti o semplicemente ti chiedi cosa pensano gli altri, sei il benvenuto nel forum del programma&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;&lt;/a&gt;.&lt;p&gt;Controlla il programma&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;il sito web&lt;/a&gt; per gli aggiornamenti. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Concesso in licenza con GPLv3 o successiva.</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(senza titolo)</translation>
     </message>
     <message>
       <source>(picture)</source>
       <translation>(immagine)</translation>
+    </message>
+    <message>
+      <source>
+    &lt;div class=&quot;welcome-container&quot;&gt;
+      &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;section&gt;
+        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
+          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/usage/scan-popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/section&gt;
+      &lt;p&gt;Should you need further help, have any questions, or suggestions, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; and &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
+      &lt;footer class=&quot;welcome-footer&quot;&gt;
+        &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
+      &lt;/footer&gt;
+    &lt;/div&gt;</source>
+      <translation>
+    &lt;div class=&quot;welcome-container&quot;&gt;
+      &lt;h3&gt;Benvenuti su &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;section&gt;
+        &lt;h4&gt;Per iniziare:&lt;/h4&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Vai a &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Modifica&lt;/span&gt;&lt;span&gt;Dizionari&lt;/span&gt;&lt;/span&gt; per aggiungere file dizionario, creare fonti online come Wikipedia e organizzarle in gruppi.&lt;/li&gt;
+          &lt;li&gt;Una volta installato, è possibile cercare parole in questa finestra o &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/usage/scan-popup/&quot;&gt;da altre applicazioni utilizzando il Popup di scansione&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;Per personalizzare il programma, esplora le impostazioni in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferenze&lt;/span&gt;&lt;/span&gt;. Tutte le impostazioni hanno dei suggerimenti, quindi assicurati di leggerle se qualcosa non è chiaro.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/section&gt;
+      &lt;p&gt;Se hai bisogno di ulteriore aiuto, avere domande o suggerimenti, siete benvenuti al programma&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; e &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;sito web&lt;/a&gt;.&lt;/p&gt;
+      &lt;footer class=&quot;welcome-footer&quot;&gt;
+        &lt;small&gt;Basato sull'originale GoldenDict di Konstantin Isakov (c) 2008-2013. Mantenuto e sviluppato dalla Comunità GoldenDict-NG. Concessa in licenza sotto la GPLv3 o successiva.&lt;/small&gt;
+      &lt;/footer&gt;
+    &lt;/div&gt;</translation>
     </message>
   </context>
   <context>

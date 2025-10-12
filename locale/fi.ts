@@ -57,16 +57,46 @@
       <translation>Tervetuloa!</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Tervetuloa &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Aloita työskentely ohjelman kanssa käymällä ensin osoitteessa &lt;em&gt;Muokkaa | Sanakirjat&lt;/em&gt; lisätäksesi hakemistopolkuja, joihin voit etsiä sanakirjatiedostoja, perustaa erilaisia Wikipedia-sivustoja tai muita lähteitä, säätää sanakirjajärjestystä tai luoda sanakirjaryhmiä.&lt;p&gt;Ja sitten&apos;valmis etsimään sanojasi! Voit tehdä sen tässä ikkunassa käyttämällä vasemmalla olevaa ruutua tai voit &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;sanoja muista aktiivisista sovelluksista&lt;/a&gt;. &lt;p&gt;Voit mukauttaa ohjelmaa tutustumalla käytettävissä oleviin asetuksiin kohdassa &lt;em&gt;Muokkaa | Asetukset&lt;/em&gt;. Kaikissa asetuksissa on työkaluvihjeitä, muista lukea ne, jos olet epävarma jostain.&lt;p&gt;Jos tarvitset lisäapua, sinulla on kysyttävää, ehdotuksia tai vain ihmettelet muiden mielipiteitä, olet tervetullut ohjelman&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;foorumille&lt;/a&gt;.&lt;p&gt;Tarkista ohjelman&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;verkkosivuilta&lt;/a&gt; päivitykset. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Lisensoitu GPLv3:lla tai uudemmalla.</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(nimetön)</translation>
     </message>
     <message>
       <source>(picture)</source>
       <translation>(kuva)</translation>
+    </message>
+    <message>
+      <source>
+    &lt;div class=&quot;welcome-container&quot;&gt;
+      &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;section&gt;
+        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
+          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/usage/scan-popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/section&gt;
+      &lt;p&gt;Should you need further help, have any questions, or suggestions, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; and &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
+      &lt;footer class=&quot;welcome-footer&quot;&gt;
+        &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
+      &lt;/footer&gt;
+    &lt;/div&gt;</source>
+      <translation>
+    &lt;div class=&quot;welcome-container&quot;&gt;
+      &lt;h3&gt;Tervetuloa &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;section&gt;
+        &lt;h4&gt;Aloittaaksesi:&lt;/h4&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Siirry &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Muokkaa&lt;/span&gt;&lt;span&gt;sanakirjoja&lt;/span&gt;&lt;/span&gt; lisätäksesi sanakirjatiedostojasi, perustaa online-lähteitä, kuten Wikipediaa, ja järjestää ne ryhmiin.&lt;/li&gt;
+          &lt;li&gt;Kun asetus on asetettu, voit etsiä sanoja tässä ikkunassa tai &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/usage/scan-popup/&quot;&gt;muista sovelluksista käyttämällä Skannaa ponnahdusikkuna&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;mukauttaaksesi ohjelmaa, tutki asetuksia &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Muokkaa&lt;/span&gt;&lt;span&gt;Asetukset&lt;/span&gt;&lt;/span&gt;. Kaikissa asetuksissa on työkaluvihjeitä, joten muista lukea ne, jos jokin on epäselvä.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/section&gt;
+      &lt;p&gt;Jos tarvitset lisäapua, sinulla on kysyttävää tai ehdotuksia, olet tervetullut ohjelmaan&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;foorumi&lt;/a&gt; ja &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;verkkosivuilla&lt;/a&gt;.&lt;/p&gt;
+      &lt;footer class=&quot;welcome-footer&quot;&gt;
+        &lt;small&gt;Perustuu Konstantin Isakovin alkuperäiseen GoldenDictiin (c) 2008-2013. GoldenDict-NG yhteisön ylläpitämä ja kehittämä. Lisenssi GPLv3 tai uudempi.&lt;/small&gt;
+      &lt;/footer&gt;
+    &lt;/div&gt;</translation>
     </message>
   </context>
   <context>
