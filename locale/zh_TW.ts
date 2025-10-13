@@ -81,22 +81,21 @@
         &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</source>
-      <translation type="unfinished">
-    &lt;div class=&quot;welcome-container&quot;&gt;
-      &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
-      &lt;section&gt;
-        &lt;h4&gt;To get started:&lt;/h4&gt;
-        &lt;ul&gt;
-          &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
-          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
-          &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/section&gt;
-      &lt;p&gt;Should you need further help, have any questions, or suggestions, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; and &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
-      &lt;footer class=&quot;welcome-footer&quot;&gt;
-        &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
-      &lt;/footer&gt;
-    &lt;/div&gt;</translation>
+      <translation>&lt;div class=&quot;welcome-container&quot;&gt;
+&lt;h3&gt;歡迎使用 &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;！ &lt;/h3&gt;
+&lt;section&gt;
+&lt;h4&gt;開始使用：&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;前往&lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;編輯&lt;/span&gt;&lt;span&gt;字典&lt;/span&gt;&lt;/span&gt;新增您的字典文件，設定維基百科等線上資源，並將它們分組。 &lt;/li&gt;
+&lt;li&gt;設定完成後，您可以在此視窗中尋找單字，也可以&lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;使用掃描彈出視窗從其他應用程式中尋找單字&lt;/a&gt;。 &lt;/li&gt;
+&lt;li&gt;要自訂程序，請瀏覽&lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;編輯&lt;/span&gt;&lt;span&gt;偏好設定&lt;/span&gt;&lt;/span&gt;中的設定。所有設定均有工具提示，如有不清楚之處，請務必閱讀。 &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;p&gt;如果您需要進一步協助、有任何疑問或建議，歡迎造訪程式的&lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;論壇&lt;/a&gt;和&lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;網站&lt;/a&gt;。 &lt;/p&gt;
+&lt;footer class=&quot;welcome-footer&quot;&gt;
+&lt;small&gt;基於 Konstantin Isakov (c) 2008-2013 創作的 GoldenDict 原版。由 GoldenDict-NG 社區維護和開發。遵循 GPLv3 或更高版本許可。 &lt;/small&gt;
+&lt;/footer&gt;
+&lt;/div&gt;</translation>
     </message>
   </context>
   <context>
