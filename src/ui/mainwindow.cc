@@ -1197,6 +1197,7 @@ void MainWindow::addGlobalActionsToDialog( QDialog * dialog )
   dialog->addAction( &focusHeadwordsDlgAction );
   dialog->addAction( &focusArticleViewAction );
   dialog->addAction( ui.fullTextSearchAction );
+  dialog->addAction( ui.quit );
 }
 
 void MainWindow::addGroupComboBoxActionsToDialog( QDialog * dialog, GroupComboBox * pGroupComboBox )
