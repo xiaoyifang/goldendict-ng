@@ -141,6 +141,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   switchToNextTabAction( this ),
   switchToPrevTabAction( this ),
   showDictBarNamesAction( tr( "Show Names in Dictionary &Bar" ), this ),
+  lockPanelsAction( tr( "Lock Panels" ), this ),
   toggleMenuBarAction( tr( "&Menubar" ), this ),
   focusHeadwordsDlgAction( this ),
   focusArticleViewAction( this ),
@@ -541,6 +542,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   ui.menuView->addAction( &useLargeIconsInToolbarsAction );
   ui.menuView->addSeparator();
   ui.alwaysOnTop->setChecked( cfg.preferences.alwaysOnTop );
+  lockPanelsAction.setCheckable( true );
+  lockPanelsAction.setChecked( cfg.panelsLocked );
+  connect( &lockPanelsAction, &QAction::toggled, this, &MainWindow::onLockPanelsToggled );
+  ui.menuView->addAction( &lockPanelsAction );
   ui.menuView->addAction( ui.alwaysOnTop );
 
   // Dictionary bar
@@ -876,6 +881,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   if ( cfg.preferences.alwaysOnTop ) {
     on_alwaysOnTop_triggered( true );
   }
+  onLockPanelsToggled( cfg.panelsLocked );
 
   if ( cfg.preferences.hideMenubar ) {
     toggleMenuBarTriggered( false );
@@ -3589,6 +3595,23 @@ void MainWindow::on_alwaysOnTop_triggered( bool checked )
   }
 
   installHotKeys();
+}
+
+void MainWindow::onLockPanelsToggled( bool locked )
+{
+  cfg.panelsLocked = locked;
+
+  const QList< QDockWidget * > dockWidgets = findChildren< QDockWidget * >();
+
+  for ( QDockWidget * dockWidget : dockWidgets ) {
+    if ( locked ) {
+      dockWidget->setFeatures( QDockWidget::DockWidgetNoFeature );
+    }
+    else {
+      dockWidget->setFeatures( QDockWidget::DockWidgetClosable | QDockWidget::DockWidgetMovable
+                               | QDockWidget::DockWidgetFloatable );
+    }
+  }
 }
 
 void MainWindow::zoomin()
