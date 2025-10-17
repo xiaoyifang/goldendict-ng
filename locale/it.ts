@@ -2680,6 +2680,10 @@ Clicca &lt;b&gt;Scarica&lt;/b&gt; per accedere alla pagina di scaricamento.</tra
       <source>PDF document (*.pdf *.PDF)</source>
       <translation>Documento PDF (*.pdf *.PDF)</translation>
     </message>
+    <message>
+      <source>Lock Panels</source>
+      <translation>Blocca Pannelli</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
