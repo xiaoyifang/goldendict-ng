@@ -2679,6 +2679,10 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
       <source>PDF document (*.pdf *.PDF)</source>
       <translation>PDF-document (*.pdf *.PDF)</translation>
     </message>
+    <message>
+      <source>Lock Panels</source>
+      <translation>Panelen vergrendelen</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
