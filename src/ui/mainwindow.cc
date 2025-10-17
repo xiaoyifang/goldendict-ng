@@ -3605,7 +3605,7 @@ void MainWindow::onLockPanelsToggled( bool locked )
 
   for ( QDockWidget * dockWidget : dockWidgets ) {
     if ( locked ) {
-      dockWidget->setFeatures( QDockWidget::DockWidgetNoFeature );
+      dockWidget->setFeatures( QDockWidget::NoDockWidgetFeatures );
     }
     else {
       dockWidget->setFeatures( QDockWidget::DockWidgetClosable | QDockWidget::DockWidgetMovable
