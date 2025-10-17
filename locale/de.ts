@@ -2679,6 +2679,10 @@ Um &apos;*&apos;, &apos;zu finden?&apos;, &apos;[&apos;, &apos;]&apos; Symbole v
       <source>PDF document (*.pdf *.PDF)</source>
       <translation>PDF-Dokument (*.pdf *.PDF)</translation>
     </message>
+    <message>
+      <source>Lock Panels</source>
+      <translation>Sperrbildschirm</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
