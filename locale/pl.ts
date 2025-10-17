@@ -2679,6 +2679,10 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
       <source>PDF document (*.pdf *.PDF)</source>
       <translation>Dokument PDF (*.pdf *.PDF)</translation>
     </message>
+    <message>
+      <source>Lock Panels</source>
+      <translation>Zablokuj panele</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
