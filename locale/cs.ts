@@ -72,7 +72,7 @@
         &lt;h4&gt;To get started:&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
-          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/usage/scan-popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
           &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/section&gt;
@@ -88,7 +88,7 @@
         &lt;h4&gt;Začínáte:&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Přejděte na &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; a přidejte své slovníkové soubory, vytvořte online zdroje jako Wikipedie a organizujte je do skupin.&lt;/li&gt;
-          &lt;li&gt;Jakmile je nastaven, můžete hledat slova v tomto okně nebo &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/usage/scan-popup/&quot;&gt;z jiných aplikací pomocí Scan Popup&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;Jakmile je nastaven, můžete hledat slova v tomto okně nebo &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;z jiných aplikací pomocí Scan Popup&lt;/a&gt;.&lt;/li&gt;
           &lt;li&gt;Pro přizpůsobení programu prozkoumá nastavení v &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Upravit&lt;/span&gt;&lt;span&gt;Nastavení&lt;/span&gt;&lt;/span&gt;. Všechna nastavení mají popisky nástrojů, takže si je nezapomeňte přečíst, pokud je něco nejasné.&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/section&gt;

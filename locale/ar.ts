@@ -72,7 +72,7 @@
         &lt;h4&gt;To get started:&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
-          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/usage/scan-popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
           &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/section&gt;
@@ -88,7 +88,7 @@
         &lt;h4&gt;للبدء:&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;اذهب إلى &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;تحرير&lt;/span&gt;&lt;span&gt;القواميس&lt;/span&gt;&lt;/span&gt; لإضافة ملفات القاموس الخاصة بك، إنشاء مصادر على الإنترنت مثل ويكيبيديا، وتنظيمها في مجموعات.&lt;/li&gt;
-          &lt;li&gt;بمجرد الإنشاء، يمكنك البحث عن الكلمات في هذه النافذة أو &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/usage/scan-popup/&quot;&gt;من التطبيقات الأخرى باستخدام المسح الضوئي للمنبثق&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;بمجرد الإنشاء، يمكنك البحث عن الكلمات في هذه النافذة أو &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;من التطبيقات الأخرى باستخدام المسح الضوئي للمنبثق&lt;/a&gt;.&lt;/li&gt;
           &lt;li&gt;لتخصيص البرنامج، استكشاف الإعدادات في &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;تحرير&lt;/span&gt;&lt;span&gt;تفضيلات&lt;/span&gt;&lt;/span&gt;. جميع الإعدادات لديها نصائح أدوات، لذا تأكد من قراءتها إذا كان أي شيء غير واضح.&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/section&gt;

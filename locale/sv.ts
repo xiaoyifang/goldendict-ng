@@ -72,7 +72,7 @@
         &lt;h4&gt;To get started:&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
-          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/usage/scan-popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
           &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/section&gt;
@@ -88,7 +88,7 @@
         &lt;h4&gt;För att komma igång:&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Gå till &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Redigera&lt;/span&gt;&lt;span&gt;Ordböcker&lt;/span&gt;&lt;/span&gt; för att lägga till dina ordboksfiler, konfigurera onlinekällor som Wikipedia, och organisera dem i grupper.&lt;/li&gt;
-          &lt;li&gt;En gång i tiden du kan slå upp ord i detta fönster eller &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/usage/scan-popup/&quot;&gt;från andra program med hjälp av Scan Popup&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;En gång i tiden du kan slå upp ord i detta fönster eller &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;från andra program med hjälp av Scan Popup&lt;/a&gt;.&lt;/li&gt;
           &lt;li&gt;För att anpassa programmet, utforska inställningarna i &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Redigera&lt;/span&gt;&lt;span&gt;Inställningar&lt;/span&gt;&lt;/span&gt;. Alla inställningar har verktygstips, så se till att läsa dem om något är oklart.&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/section&gt;
