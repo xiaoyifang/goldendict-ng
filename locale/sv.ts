@@ -2679,6 +2679,10 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
       <source>PDF document (*.pdf *.PDF)</source>
       <translation>PDF-dokument (*.pdf *.PDF)</translation>
     </message>
+    <message>
+      <source>Lock Panels</source>
+      <translation>Lås paneler</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
