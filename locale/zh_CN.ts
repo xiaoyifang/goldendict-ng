@@ -72,7 +72,7 @@
         &lt;h4&gt;To get started:&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
-          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/usage/scan-popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
           &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/section&gt;
@@ -81,7 +81,21 @@
         &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</source>
-      <translation>&lt;div class=&quot;welcome-container&quot;&gt;&lt;h3&gt;欢迎使用 &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;！&lt;/h3&gt;&lt;section&gt;&lt;h4&gt;开始使用：&lt;/h4&gt;&lt;ul&gt;&lt;li&gt;前往 &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;编辑&lt;/span&gt;&lt;span&gt;词典&lt;/span&gt;&lt;/span&gt; 添加你的词典文件，设置如维基百科等在线资源，并将它们组织到不同的分组中。&lt;/li&gt;&lt;li&gt;设置完成后，你可以在此窗口中查词，或 &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/usage/scan-popup/&quot;&gt;通过扫描弹出功能在其他应用中查词&lt;/a&gt;。&lt;/li&gt;&lt;li&gt;要自定义程序，请在 &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;编辑&lt;/span&gt;&lt;span&gt;首选项&lt;/span&gt;&lt;/span&gt; 中浏览设置。所有设置都有工具提示，如果有不清楚的地方，请务必阅读提示。&lt;/li&gt;&lt;/ul&gt;&lt;/section&gt;&lt;p&gt;如果你需要进一步帮助、有任何问题或建议，欢迎访问程序的 &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;论坛&lt;/a&gt; 和 &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;官方网站&lt;/a&gt;。&lt;/p&gt;&lt;footer class=&quot;welcome-footer&quot;&gt;&lt;small&gt;基于 Konstantin Isakov 的原始 GoldenDict (c) 2008-2013。由 GoldenDict-NG 社区维护和开发。根据 GPLv3 及更高版本许可。&lt;/small&gt;&lt;/footer&gt;&lt;/div&gt;</translation>
+      <translation>&lt;div class=&quot;welcome-container&quot;&gt;
+&lt;h3&gt;欢迎使用 &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;！&lt;/h3&gt;
+&lt;section&gt;
+&lt;h4&gt;开始使用：&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;前往&lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;编辑&lt;/span&gt;&lt;span&gt;词典&lt;/span&gt;&lt;/span&gt;添加您的词典文件，设置维基百科等在线资源，并将它们分组。&lt;/li&gt;
+&lt;li&gt;设置完成后，您可以在此窗口中查找单词，也可以&lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;使用扫描弹出窗口从其他应用程序中查找单词&lt;/a&gt;。&lt;/li&gt;
+&lt;li&gt;要自定义程序，请浏览&lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;编辑&lt;/span&gt;&lt;span&gt;偏好设置&lt;/span&gt;&lt;/span&gt;中的设置。所有设置均有工具提示，如有不清楚之处，请务必阅读。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;p&gt;如果您需要进一步帮助、有任何疑问或建议，欢迎访问程序的&lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;论坛&lt;/a&gt;和&lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;网站&lt;/a&gt;。&lt;/p&gt;
+&lt;footer class=&quot;welcome-footer&quot;&gt;
+&lt;small&gt;基于 Konstantin Isakov (c) 2008-2013 创作的 GoldenDict 原版。由 GoldenDict-NG 社区维护和开发。遵循 GPLv3 或更高版本许可。&lt;/small&gt;
+&lt;/footer&gt;
+&lt;/div&gt;</translation>
     </message>
   </context>
   <context>

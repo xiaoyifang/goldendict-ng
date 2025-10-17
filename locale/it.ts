@@ -72,7 +72,7 @@
         &lt;h4&gt;To get started:&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
-          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/usage/scan-popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
           &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/section&gt;
@@ -88,7 +88,7 @@
         &lt;h4&gt;Per iniziare:&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Vai a &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Modifica&lt;/span&gt;&lt;span&gt;Dizionari&lt;/span&gt;&lt;/span&gt; per aggiungere file dizionario, creare fonti online come Wikipedia e organizzarle in gruppi.&lt;/li&gt;
-          &lt;li&gt;Una volta installato, è possibile cercare parole in questa finestra o &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/usage/scan-popup/&quot;&gt;da altre applicazioni utilizzando il Popup di scansione&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;Una volta installato, è possibile cercare parole in questa finestra o &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;da altre applicazioni utilizzando il Popup di scansione&lt;/a&gt;.&lt;/li&gt;
           &lt;li&gt;Per personalizzare il programma, esplora le impostazioni in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferenze&lt;/span&gt;&lt;/span&gt;. Tutte le impostazioni hanno dei suggerimenti, quindi assicurati di leggerle se qualcosa non è chiaro.&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/section&gt;

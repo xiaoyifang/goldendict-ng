@@ -72,7 +72,7 @@
         &lt;h4&gt;To get started:&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
-          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/usage/scan-popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
           &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/section&gt;
@@ -88,7 +88,7 @@
         &lt;h4&gt;Aloittaaksesi:&lt;/h4&gt;
         &lt;ul&gt;
           &lt;li&gt;Siirry &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Muokkaa&lt;/span&gt;&lt;span&gt;sanakirjoja&lt;/span&gt;&lt;/span&gt; lisätäksesi sanakirjatiedostojasi, perustaa online-lähteitä, kuten Wikipediaa, ja järjestää ne ryhmiin.&lt;/li&gt;
-          &lt;li&gt;Kun asetus on asetettu, voit etsiä sanoja tässä ikkunassa tai &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/usage/scan-popup/&quot;&gt;muista sovelluksista käyttämällä Skannaa ponnahdusikkuna&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;Kun asetus on asetettu, voit etsiä sanoja tässä ikkunassa tai &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;muista sovelluksista käyttämällä Skannaa ponnahdusikkuna&lt;/a&gt;.&lt;/li&gt;
           &lt;li&gt;mukauttaaksesi ohjelmaa, tutki asetuksia &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Muokkaa&lt;/span&gt;&lt;span&gt;Asetukset&lt;/span&gt;&lt;/span&gt;. Kaikissa asetuksissa on työkaluvihjeitä, joten muista lukea ne, jos jokin on epäselvä.&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/section&gt;
