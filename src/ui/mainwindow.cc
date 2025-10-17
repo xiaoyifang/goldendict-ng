@@ -3599,7 +3599,7 @@ void MainWindow::on_alwaysOnTop_triggered( bool checked )
 
 void MainWindow::onLockPanelsToggled( bool locked )
 {
-  cfg.panelsLocked = locked;
+  cfg.preferences.panelsLocked = locked;
 
   const QList< QDockWidget * > dockWidgets = findChildren< QDockWidget * >();
 
