@@ -289,6 +289,7 @@ struct Preferences
   bool hideSingleTab;
   bool mruTabOrder;
   bool hideMenubar;
+  bool panelsLocked = false;
 
 #ifdef Q_OS_MACOS // macOS uses the dock menu instead of the tray icon
   bool closeToTray    = false;

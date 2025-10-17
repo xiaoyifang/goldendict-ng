@@ -804,6 +804,10 @@ Class load()
     c.preferences.hideMenubar   = ( preferences.namedItem( "hideMenubar" ).toElement().text() == "1" );
 #ifndef Q_OS_MACOS // // macOS uses the dock menu instead of the tray icon
     c.preferences.enableTrayIcon = ( preferences.namedItem( "enableTrayIcon" ).toElement().text() == "1" );
+
+    if ( !preferences.namedItem( "panelsLocked" ).isNull() ) {
+      c.preferences.panelsLocked = ( preferences.namedItem( "panelsLocked" ).toElement().text() == "1" );
+    }
     c.preferences.startToTray    = ( preferences.namedItem( "startToTray" ).toElement().text() == "1" );
     c.preferences.closeToTray    = ( preferences.namedItem( "closeToTray" ).toElement().text() == "1" );
 #endif
@@ -1746,6 +1750,10 @@ void save( const Class & c )
 
     opt = dd.createElement( "hideMenubar" );
     opt.appendChild( dd.createTextNode( c.preferences.hideMenubar ? "1" : "0" ) );
+    preferences.appendChild( opt );
+
+    opt = dd.createElement( "panelsLocked" );
+    opt.appendChild( dd.createTextNode( c.preferences.panelsLocked ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "enableTrayIcon" );
