@@ -23,7 +23,7 @@ DictionaryBar::DictionaryBar( QWidget * parent,
   setObjectName( "dictionaryBar" );
 
   maxDictionaryRefsAction =
-    new QAction( QIcon( ":/icons/expand_opt.png" ), tr( "Extended menu with all dictionaries..." ), this );
+    new QAction( QIcon( ":/icons/addtab.svg" ), tr( "Extended menu with all dictionaries..." ), this );
 
   connect( &events, &Config::Events::mutedDictionariesChanged, this, &DictionaryBar::mutedDictionariesChanged );
 
