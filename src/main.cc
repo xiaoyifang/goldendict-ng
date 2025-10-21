@@ -348,7 +348,7 @@ int main( int argc, char ** argv )
   for ( const auto & localScheme : localSchemes ) {
     QWebEngineUrlScheme webUiScheme( localScheme.toLatin1() );
     webUiScheme.setSyntax( QWebEngineUrlScheme::Syntax::Host );
-    webUiScheme.setFlags( QWebEngineUrlScheme::LocalScheme | QWebEngineUrlScheme::LocalAccessAllowed
+    webUiScheme.setFlags( QWebEngineUrlScheme::LocalAccessAllowed
                           | QWebEngineUrlScheme::CorsEnabled );
     QWebEngineUrlScheme::registerScheme( webUiScheme );
   }
