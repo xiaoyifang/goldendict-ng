@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="6.742547mm"
+   height="6.7425466mm"
+   viewBox="0 0 6.7425469 6.7425465"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   sodipodi:docname="wiktionary.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="8.2142634"
+     inkscape:cx="22.64354"
+     inkscape:cy="37.434884"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <rect
+       x="172.1656"
+       y="64.734276"
+       width="260.31439"
+       height="247.91843"
+       id="rect4" />
+  </defs>
+  <g
+     inkscape:label="图层 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-15.15677,-58.298892)">
+    <path
+       d="M 17.765023,61.013037 Q 18.2685,60.21176 18.605443,59.19114 l 0.298214,0.11191 q -0.154916,0.389447 -0.304023,0.725178 h 1.814458 v 0.304396 h -0.848166 v 0.675938 h 0.817183 v 0.304395 h -0.817183 v 0.675937 h 0.817183 v 0.304396 h -0.817183 v 0.693843 h 0.894641 v 0.304396 H 18.49313 v 0.304396 h -0.294342 v -2.719418 q -0.123933,0.237251 -0.240121,0.431973 -0.07358,-0.138768 -0.193644,-0.295443 z m -0.685507,0.841565 q 0.367927,-0.04924 0.80944,-0.107433 -0.01936,0.219344 -0.03098,0.322301 -0.708742,0.094 -1.099907,0.17458 l -0.05809,-0.331255 q 0.21882,-0.235011 0.567382,-0.95795 -0.338879,0.02687 -0.555762,0.04924 l -0.07358,-0.282013 q 0.371798,-0.68489 0.654521,-1.539884 l 0.302087,0.12534 q -0.325324,0.801276 -0.62741,1.387686 0.137487,0 0.424082,-0.0067 0.135551,-0.295442 0.288531,-0.655793 l 0.278851,0.143246 q -0.542207,1.114625 -0.879151,1.678652 z m 1.413614,1.132531 h 0.778454 V 62.29329 H 18.49313 Z m 0,-0.998239 h 0.778454 V 61.312957 H 18.49313 Z m 0,-0.980332 h 0.778454 V 60.332624 H 18.49313 Z m -1.831888,1.951713 q 0.615793,-0.125339 1.3439,-0.308872 -0.01163,0.183533 -0.01163,0.344684 -0.77071,0.188008 -1.258696,0.299919 z m 2.478662,-3.585603 0.24012,-0.17458 q 0.22463,0.326778 0.367927,0.608792 l -0.255611,0.188009 q -0.139426,-0.286491 -0.352436,-0.622221 z"
+       id="text4"
+       style="font-size:192px;white-space:pre;fill:#0082d8;fill-opacity:0.956863;stroke-width:0.839303;stroke-linecap:square;paint-order:markers stroke fill"
+       aria-label="维" />
+    <g
+       id="use4"
+       transform="matrix(-0.03063651,0,0,0.06037166,21.587489,55.31203)"
+       style="fill:#0082d8;fill-opacity:0.956863">
+      <rect
+         style="fill:#0082d8;fill-opacity:0.956863;stroke-width:10;stroke-linecap:square;paint-order:markers stroke fill"
+         id="rect6"
+         width="17.856441"
+         height="99.850304"
+         x="0"
+         y="55.391407" />
+      <rect
+         style="fill:#0082d8;fill-opacity:0.956863;stroke-width:10;stroke-linecap:square;paint-order:markers stroke fill"
+         id="rect7"
+         width="37.170555"
+         height="17.127611"
+         x="0"
+         y="55.391407" />
+      <rect
+         style="fill:#0082d8;fill-opacity:0.956863;stroke-width:10;stroke-linecap:square;paint-order:markers stroke fill"
+         id="use7"
+         width="37.170555"
+         height="17.127611"
+         x="0"
+         y="138.11411" />
+    </g>
+    <path
+       id="rect5"
+       style="fill:#ff0000;stroke-width:0.311123;stroke-linecap:square;paint-order:markers stroke fill"
+       d="m 19.800283,58.283452 h 0.522688 l -0.223274,0.898735 -0.277068,-0.09074 z"
+       sodipodi:nodetypes="ccccc" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#use4"
+       id="use8"
+       transform="matrix(-1,0,0,1,37.098572,0)" />
+  </g>
+</svg>

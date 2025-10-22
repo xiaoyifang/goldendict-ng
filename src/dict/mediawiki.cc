@@ -118,7 +118,7 @@ void MediaWikiDictionary::loadIcon() noexcept
   }
   if ( dictionaryIcon.isNull() ) {
     if ( url.contains( "tionary" ) ) {
-      dictionaryIcon = QIcon( ":/icons/wiktionary.png" );
+      dictionaryIcon = QIcon( ":/icons/wiktionary.svg" );
     }
     else {
       dictionaryIcon = QIcon( ":/icons/icon32_wiki.png" );
