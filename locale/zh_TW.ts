@@ -2680,7 +2680,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Lock Panels</source>
-      <translation type="unfinished">Lock Panels</translation>
+      <translation>鎖定面板</translation>
     </message>
   </context>
   <context>
