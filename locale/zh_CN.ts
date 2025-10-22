@@ -2620,7 +2620,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Text files (*.txt);;XML files (*.xml)</source>
-      <translation>文本文件（*.txt）；XML 文件（*.xml）</translation>
+      <translation>文本文件 (*.txt);;XML 文件 (*.xml)</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
