@@ -83,9 +83,6 @@
     &lt;/div&gt;</source>
         <translation type="unfinished"></translation>
     </message>
-</context>
-<context>
-    <name>ArticleRequest</name>
     <message>
         <source>From </source>
         <translation type="unfinished"></translation>
@@ -2445,10 +2442,6 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <source>New Tab</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Welcome!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

@@ -244,7 +244,7 @@ std::string ArticleMaker::makeNotFoundBody( const QString & word, const QString 
 
 string ArticleMaker::makeWelcomeHtml() const
 {
-  string result = makeHtmlHeader( tr( "Welcome!" ), QString(), cfg.alwaysExpandOptionalParts );
+  string result = makeHtmlHeader( welcomeWord(), QString(), cfg.alwaysExpandOptionalParts );
 
   result += tr( R"(
     <div class="welcome-container">
@@ -268,6 +268,21 @@ string ArticleMaker::makeWelcomeHtml() const
   result += "</body></html>";
 
   return result;
+}
+
+QString ArticleMaker::welcomeWord()
+{
+  return tr( "Welcome!" );
+}
+
+sptr< Dictionary::DataRequest > ArticleMaker::makeWelcomePage() const
+{
+  string welcome                           = makeWelcomeHtml();
+  sptr< Dictionary::DataRequestInstant > r = std::make_shared< Dictionary::DataRequestInstant >( true );
+
+  r->appendString( welcome );
+
+  return r;
 }
 
 sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( const QString & word,
@@ -299,20 +314,6 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( const QString &
                                                header,
                                                -1,
                                                true );
-  }
-
-  if ( groupId == GroupId::HelpGroupId ) {
-    if ( word == tr( "Welcome!" ) ) {
-      string welcome                           = makeWelcomeHtml();
-      sptr< Dictionary::DataRequestInstant > r = std::make_shared< Dictionary::DataRequestInstant >( true );
-
-      r->appendString( welcome );
-      return r;
-    }
-    else {
-      // Not found
-      return makeNotFoundTextFor( word, "help" );
-    }
   }
 
   // Find the given group
@@ -367,6 +368,7 @@ sptr< Dictionary::DataRequest > ArticleMaker::makeDefinitionFor( const QString &
       ignoreDiacritics );
   }
 }
+
 
 sptr< Dictionary::DataRequest > ArticleMaker::makeNotFoundTextFor( const QString & word, const QString & group ) const
 {

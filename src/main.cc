@@ -341,6 +341,7 @@ int main( int argc, char ** argv )
                                      "gdprg",
                                      "gdvideo",
                                      "gdtts",
+                                     "gdinternal",
                                      "entry",
                                      "iframe-http",
                                      "iframe-https" };
@@ -450,7 +451,7 @@ int main( int argc, char ** argv )
     QApplication::setFont( font );
   }
   else {
-    qDebug() << "Invalid font size:" << cfg.preferences.interfaceFontSize << ", using default";
+    qDebug() << "Use default font";
     cfg.preferences.interfaceFontSize = Config::DEFAULT_FONT_SIZE;
   }
 
