@@ -15,12 +15,12 @@ MultimediaAudioPlayer::MultimediaAudioPlayer()
   player.setAudioOutput( &audioOutput );
 
   connect( &player, &QMediaPlayer::errorChanged, this, &MultimediaAudioPlayer::onMediaPlayerError );
-  connect( &player, &QMediaPlayer::mediaStatusChanged, this, [this](QMediaPlayer::MediaStatus status) {
-    if (status == QMediaPlayer::EndOfMedia) {
+  connect( &player, &QMediaPlayer::mediaStatusChanged, this, [ this ]( QMediaPlayer::MediaStatus status ) {
+    if ( status == QMediaPlayer::EndOfMedia ) {
       // After playback ends, ensure the player is stopped and resources are released.
       stop();
     }
-  });
+  } );
 
   connect( &mediaDevices, &QMediaDevices::audioOutputsChanged, this, &MultimediaAudioPlayer::audioOutputChange );
 }
