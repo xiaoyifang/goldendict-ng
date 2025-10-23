@@ -15,6 +15,12 @@ MultimediaAudioPlayer::MultimediaAudioPlayer()
   player.setAudioOutput( &audioOutput );
 
   connect( &player, &QMediaPlayer::errorChanged, this, &MultimediaAudioPlayer::onMediaPlayerError );
+  connect( &player, &QMediaPlayer::mediaStatusChanged, this, [this](QMediaPlayer::MediaStatus status) {
+    if (status == QMediaPlayer::EndOfMedia) {
+      // After playback ends, ensure the player is stopped and resources are released.
+      stop();
+    }
+  });
 
   connect( &mediaDevices, &QMediaDevices::audioOutputsChanged, this, &MultimediaAudioPlayer::audioOutputChange );
 }
@@ -42,6 +48,7 @@ QString MultimediaAudioPlayer::play( const char * data, int size )
 void MultimediaAudioPlayer::stop()
 {
   player.stop();
+  player.setSourceDevice( nullptr ); // Explicitly disassociate the device.
   player.setSource( QUrl() );
   if ( !audioBuffer.isNull() ) {
     audioBuffer->close();
