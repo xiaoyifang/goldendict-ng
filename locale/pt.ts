@@ -2679,6 +2679,10 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
       <source>PDF document (*.pdf *.PDF)</source>
       <translation>Documento PDF (*.pdf *.PDF)</translation>
     </message>
+    <message>
+      <source>Lock Panels</source>
+      <translation>Travar painéis</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

@@ -2679,6 +2679,10 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; uso de
       <source>PDF document (*.pdf *.PDF)</source>
       <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
     </message>
+    <message>
+      <source>Lock Panels</source>
+      <translation type="unfinished">Lock Panels</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

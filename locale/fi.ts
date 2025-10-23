@@ -2679,6 +2679,10 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <source>PDF document (*.pdf *.PDF)</source>
       <translation>PDF-asiakirja (*.pdf *.PDF)</translation>
     </message>
+    <message>
+      <source>Lock Panels</source>
+      <translation>Lukitse Paneelit</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

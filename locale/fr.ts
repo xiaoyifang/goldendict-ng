@@ -2679,6 +2679,10 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
       <source>PDF document (*.pdf *.PDF)</source>
       <translation>Document PDF (*.pdf *.PDF)</translation>
     </message>
+    <message>
+      <source>Lock Panels</source>
+      <translation>Verrouiller les panneaux</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>

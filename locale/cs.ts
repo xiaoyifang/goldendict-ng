@@ -2679,6 +2679,10 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
       <source>PDF document (*.pdf *.PDF)</source>
       <translation>PDF dokument (*.pdf *.PDF)</translation>
     </message>
+    <message>
+      <source>Lock Panels</source>
+      <translation>Uzamknout panely</translation>
+    </message>
   </context>
   <context>
     <name>Mdx::MdxArticleRequest</name>
