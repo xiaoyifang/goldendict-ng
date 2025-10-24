@@ -670,7 +670,7 @@ void ArticleRequest::bodyFinished()
             R"(<div class="gdarticlebody gdlangfrom-{}" lang="{}" style="display:{}" id="gdarticlefrom-{}">)" ),
           LangCoder::intToCode2( activeDict->getLangFrom() ).toStdString(),
           LangCoder::intToCode2( activeDict->getLangTo() ).toStdString(),
-          collapse ? "none" : "inline",
+          collapse ? "none" : "block",
           dictId );
 
         if ( errorString.size() ) {
