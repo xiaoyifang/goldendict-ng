@@ -83,6 +83,9 @@
     &lt;/div&gt;</source>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>ArticleRequest</name>
     <message>
         <source>From </source>
         <translation type="unfinished"></translation>
