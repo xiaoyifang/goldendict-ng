@@ -99,7 +99,7 @@ function gdExpandArticle(id) {
     return;
   }
 
-  const isExpanded = articleContent.style.display === "inline";
+  const isExpanded = articleContent.style.display === "block";
 
   if (isExpanded) {
     articleContent.style.display = "none";
@@ -111,7 +111,7 @@ function gdExpandArticle(id) {
 
     articleview.collapseInHtml(id, true);
   } else {
-    articleContent.style.display = "inline";
+    articleContent.style.display = "block";
     expandIcon.className = "gdcollapseicon";
     articleElement.classList.remove("gdcollapsedarticle");
 
