@@ -785,7 +785,9 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   );
 
   // Create and show the initial welcome tab
+  history.enableAdd( false );
   createNewTab( true, ArticleMaker::welcomeWord() )->load( QUrl( "gdinternal://welcome-page" ) );
+  history.enableAdd( cfg.preferences.storeHistory );
 
   // restore should be called after all UI initialized but not necessarily after show()
   // This must be called before show() as of Qt6.5 on Windows, not sure if it is a bug
