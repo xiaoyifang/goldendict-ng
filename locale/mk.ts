@@ -2466,10 +2466,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Нова картичка</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>Добро дојдовте!</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>Достапност API не е овозможен</translation>
     </message>
