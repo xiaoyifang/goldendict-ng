@@ -73,10 +73,10 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( const QNetworkRequ
   QString contentType = mineType.name();
 
   if ( req.url().scheme() == "gdlookup" ) {
+    // This is for handling simple lookup URLs like "gdlookup://word"
     QString path = url.path();
     if ( path.size() > 1 ) {
       url.setPath( "" );
-
       Utils::Url::addQueryItem( url, "word", path.mid( 1 ) );
       Utils::Url::addQueryItem( url, "group", QString::number( GlobalBroadcaster::instance()->currentGroupId ) );
     }
@@ -222,70 +222,88 @@ sptr< Dictionary::DataRequest > handleDictionaryResource(
 sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::getResource( const QUrl & url, QString & contentType )
 {
   qDebug() << "getResource:" << url.toString();
+  const QString scheme = url.scheme();
 
-  if ( url.scheme() == "gdlookup" ) {
-    if ( !url.host().isEmpty() && url.host() != "localhost" ) {
-      // Strange request - ignore it
-      return std::make_shared< Dictionary::DataRequestInstant >( false );
-    }
-
-    contentType = "text/html";
-
-    if ( Utils::Url::queryItemValue( url, "blank" ) == "1" ) {
-      return articleMaker.makeEmptyPage();
-    }
-
-    QString word = Utils::Url::queryItemValue( url, "word" ).trimmed();
-
-    bool groupIsValid = false;
-    unsigned group    = Utils::Url::queryItemValue( url, "group" ).toUInt( &groupIsValid );
-
-    QString dictIDs = Utils::Url::queryItemValue( url, "dictionaries" );
-    if ( !dictIDs.isEmpty() ) {
-      // Individual dictionaries set from full-text search
-      QStringList dictIDList = dictIDs.split( "," );
-      return articleMaker.makeDefinitionFor( word, group, QMap< QString, QString >(), QSet< QString >(), dictIDList );
-    }
-
-    // See if we have some dictionaries muted
-
-    QStringList mutedDictLists = Utils::Url::queryItemValue( url, "muted" ).split( ',' );
-    QSet< QString > mutedDicts( mutedDictLists.begin(), mutedDictLists.end() );
-
-    // Unpack contexts
-
-    const QString contextsEncoded           = Utils::Url::queryItemValue( url, "contexts" );
-    const QMap< QString, QString > contexts = Utils::str2map( contextsEncoded );
-
-    // See for ignore diacritics
-
-    bool ignoreDiacritics = Utils::Url::queryItemValue( url, "ignore_diacritics" ) == "1";
-
-    if ( groupIsValid && !word.isEmpty() ) { // Require group and phrase to be passed
-      return articleMaker.makeDefinitionFor( word, group, contexts, mutedDicts, QStringList(), ignoreDiacritics );
-    }
-    else {
-      return std::make_shared< Dictionary::DataRequestInstant >( false );
-    }
+  if ( scheme == "gdinternal" ) {
+    return handleInternalScheme( url, contentType );
+  }
+  if ( scheme == "gdlookup" ) {
+    return handleLookupScheme( url, contentType );
   }
 
-  if ( ( url.scheme() == "bres" || url.scheme() == "gdau" || url.scheme() == "gdvideo" || url.scheme() == "gico" )
-       && url.path().size() ) {
-
-
-    QMimeType mineType = db.mimeTypeForUrl( url );
-    contentType        = mineType.name();
-    string id          = url.host().toStdString();
-
-    // Special handling for 'user' host to access user configuration files
-    if ( id == "user" && url.scheme() == "bres" ) {
-      return handleUserFileRequest( url );
-    }
-
-    return handleDictionaryResource( url, id, dictionaries );
+  if ( ( scheme == "bres" || scheme == "gdau" || scheme == "gdvideo" || scheme == "gico" ) && url.path().size() ) {
+    return handleResourceScheme( url, contentType );
   }
 
   return {};
+}
+
+sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::handleInternalScheme( const QUrl & url,
+                                                                                   QString & contentType )
+{
+  contentType = "text/html";
+  if ( url.host() == "welcome-page" ) {
+    return articleMaker.makeWelcomePage();
+  }
+  if ( url.host() == "untitle-page" ) {
+    return articleMaker.makeEmptyPage();
+  }
+  return articleMaker.makeEmptyPage();
+}
+
+sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::handleLookupScheme( const QUrl & url,
+                                                                                 QString & contentType )
+{
+  if ( !url.host().isEmpty() && url.host() != "localhost" ) {
+    // Strange request - ignore it
+    return std::make_shared< Dictionary::DataRequestInstant >( false );
+  }
+  contentType = "text/html";
+
+  QString word = Utils::Url::queryItemValue( url, "word" ).trimmed();
+
+  bool groupIsValid = false;
+  unsigned group    = Utils::Url::queryItemValue( url, "group" ).toUInt( &groupIsValid );
+
+  QString dictIDs = Utils::Url::queryItemValue( url, "dictionaries" );
+  if ( !dictIDs.isEmpty() ) {
+    // Individual dictionaries set from full-text search
+    QStringList dictIDList = dictIDs.split( "," );
+    return articleMaker.makeDefinitionFor( word, group, QMap< QString, QString >(), QSet< QString >(), dictIDList );
+  }
+
+  // See if we have some dictionaries muted
+  QStringList mutedDictLists = Utils::Url::queryItemValue( url, "muted" ).split( ',' );
+  QSet< QString > mutedDicts( mutedDictLists.begin(), mutedDictLists.end() );
+
+  // Unpack contexts
+  const QString contextsEncoded           = Utils::Url::queryItemValue( url, "contexts" );
+  const QMap< QString, QString > contexts = Utils::str2map( contextsEncoded );
+
+  // See for ignore diacritics
+  bool ignoreDiacritics = Utils::Url::queryItemValue( url, "ignore_diacritics" ) == "1";
+
+  if ( groupIsValid && !word.isEmpty() ) { // Require group and phrase to be passed
+    return articleMaker.makeDefinitionFor( word, group, contexts, mutedDicts, QStringList(), ignoreDiacritics );
+  }
+  else {
+    return std::make_shared< Dictionary::DataRequestInstant >( false );
+  }
+}
+
+sptr< Dictionary::DataRequest > ArticleNetworkAccessManager::handleResourceScheme( const QUrl & url,
+                                                                                   QString & contentType )
+{
+  QMimeType mineType = db.mimeTypeForUrl( url );
+  contentType        = mineType.name();
+  string id          = url.host().toStdString();
+
+  // Special handling for 'user' host to access user configuration files
+  if ( id == "user" && url.scheme() == "bres" ) {
+    return handleUserFileRequest( url );
+  }
+
+  return handleDictionaryResource( url, id, dictionaries );
 }
 
 ArticleResourceReply::ArticleResourceReply( QObject * parent,
@@ -467,16 +485,21 @@ void LocalSchemeHandler::requestStarted( QWebEngineUrlRequestJob * requestJob )
   QNetworkRequest request;
   request.setUrl( url );
 
-  //all the url reached here must be either gdlookup or bword scheme.
-  auto [ schemeValid, word ] = Utils::Url::getQueryWord( url );
-  // or the condition can be (!queryWord.first || word.isEmpty())
-  // ( queryWord.first && word.isEmpty() ) is only part of the above condition.
-  if ( schemeValid && word.isEmpty() ) {
-    // invalid gdlookup url.
+  // all the url reached here must be either gdlookup or bword scheme.
+  if ( isInvalidLookupUrl( url ) ) {
+    // Invalid lookup URL, abort the request.
+    requestJob->fail( QWebEngineUrlRequestJob::RequestFailed );
     return;
   }
 
   QNetworkReply * reply = this->mManager.getArticleReply( request );
   requestJob->reply( "text/html", reply );
   connect( requestJob, &QObject::destroyed, reply, &QObject::deleteLater );
+}
+
+bool LocalSchemeHandler::isInvalidLookupUrl( const QUrl & url )
+{
+  auto [ schemeValid, word ] = Utils::Url::getQueryWord( url );
+  // A valid lookup URL must contain a non-empty word.
+  return schemeValid && word.isEmpty();
 }

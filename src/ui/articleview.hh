@@ -114,6 +114,9 @@ public:
 
   ~ArticleView();
 
+  /// Loads a page at @p url into view.
+  void load( const QUrl & url, const QString & customTitle = {} );
+
   void load( QString url, const QString & customTitle = {} );
 
   void setCustomTitle( const QString & customTitle );
@@ -178,8 +181,14 @@ public:
 
   QString getCurrentWord();
 
+  /// Returns whether this view is an internal page (welcome, untitled, etc.)
+  bool isInternalPage() const
+  {
+    return webview->url().scheme() == "gdinternal";
+  }
 
 private:
+
   // widgets
   ArticleWebView * webview;
   SearchPanel * searchPanel;
@@ -440,9 +449,6 @@ private:
   bool isDarkModeEnabled() const;
 
   QString createErrorPageHtml( const QUrl & url ) const;
-
-  /// Loads a page at @p url into view.
-  void load( const QUrl & url, const QString & customTitle = {} );
 
   /// Attempts removing last temporary file created.
   void cleanupTemp();

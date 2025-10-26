@@ -46,6 +46,9 @@ public:
                                                      const QStringList & dictIDs        = QStringList(),
                                                      bool ignoreDiacritics              = false ) const;
 
+  /// Creates a welcome page. The result is guaranteed to be instant.
+  sptr< Dictionary::DataRequest > makeWelcomePage() const;
+
   /// Makes up a text which states that no translation for the given word
   /// was found. Sometimes it's better to call this directly when it's already
   /// known that there's no translation.
@@ -60,6 +63,8 @@ public:
   /// Add base path to file path if it's relative and file not found
   /// Return true if path successfully adjusted
   static bool adjustFilePath( QString & fileName );
+  /// Returns the welcome word, translated.
+  static QString welcomeWord();
   string makeUntitleHtml() const;
   string makeWelcomeHtml() const;
   string makeBlankHtml() const;

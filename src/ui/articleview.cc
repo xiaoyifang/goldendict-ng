@@ -10,6 +10,7 @@
 #include "utils.hh"
 #include "webmultimediadownload.hh"
 #include "htmlescape.hh"
+#include "article_maker.hh"
 #include <QBuffer>
 #include <QClipboard>
 #include <QDebug>
@@ -220,10 +221,6 @@ ArticleView::ArticleView( QWidget * parent,
   settings->setAttribute( QWebEngineSettings::PlaybackRequiresUserGesture, false );
   settings->setAttribute( QWebEngineSettings::JavascriptCanAccessClipboard, false );
   settings->setAttribute( QWebEngineSettings::PrintElementBackgrounds, false );
-
-  auto html = articleNetMgr.getHtml( ResourceType::UNTITLE );
-
-  webview->setHtml( QString::fromStdString( html ) );
 
   expandOptionalParts = cfg.preferences.alwaysExpandOptionalParts;
 #ifndef Q_OS_MACOS
@@ -1992,10 +1989,11 @@ void ArticleView::pasteTriggered()
   QString word = cfg.preferences.sanitizeInputPhrase( QApplication::clipboard()->text() );
 
   if ( !word.isEmpty() ) {
-    unsigned groupId = getGroup( webview->url() );
-    if ( groupId == 0 || groupId == GroupId::HelpGroupId ) {
-      // We couldn't figure out the group out of the URL,
-      // so let's try the currently selected group.
+    unsigned groupId = getGroup( webview->url() ); // Try to get group from the current article URL
+
+    // If the group couldn't be determined from the URL (e.g., on internal or external pages),
+    // fall back to the currently selected group in the UI.
+    if ( groupId == GroupId::NoGroupId ) {
       groupId = currentGroupId;
     }
     showDefinition( word, groupId, getCurrentArticle() );
@@ -2150,7 +2148,7 @@ void ArticleView::doubleClicked( QPoint pos )
         const QUrl & ref = webview->url();
 
         auto groupId = getGroup( ref );
-        if ( groupId == 0 || groupId == GroupId::HelpGroupId ) {
+        if ( isInternalPage() ) {
           groupId = currentGroupId;
         }
         if ( Utils::Url::hasQueryItem( ref, "dictionaries" ) ) {
