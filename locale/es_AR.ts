@@ -2466,10 +2466,6 @@ Reordene los grupos usando el mouse sobre las pestañas con los nombres de los m
       <translation>Nueva pestaña</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>¡Bienvenido!</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>La función de accesibilidad no esta activada</translation>
     </message>
