@@ -2466,10 +2466,6 @@ a školní ortografií v cyrilici)</translation>
       <translation>Nová karta</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>Vítejte!</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>API pro zpřístupnění není povoleno</translation>
     </message>
