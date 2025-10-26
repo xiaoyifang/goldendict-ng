@@ -2466,10 +2466,6 @@ arasındaki farkı giderir)</translation>
       <translation>Yeni Sekme</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>Hoşgeldiniz!</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>Erişilebilirlik API&apos;si açılmadı</translation>
     </message>
