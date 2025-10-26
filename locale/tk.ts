@@ -2465,10 +2465,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Täze wkladka</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>Hoş geldiňiz!</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>API elýeterli edilmedik</translation>
     </message>
