@@ -2466,10 +2466,6 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
       <translation>Nowa karta</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>Witamy!</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>Nie włączono funkcji API dostępności</translation>
     </message>
