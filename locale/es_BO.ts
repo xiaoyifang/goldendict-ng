@@ -2466,10 +2466,6 @@ entre la ortografía clásica y la escolar en cirílico)</translation>
       <translation>Nueva pestaña</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>¡Bienvenido!</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>La API de accesibilidad no está habilitada</translation>
     </message>
