@@ -2466,10 +2466,6 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <translation>Ny flik</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>Välkommen!</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>API för hjälpmedel har inte aktiverats</translation>
     </message>
