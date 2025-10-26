@@ -2466,10 +2466,6 @@ between classic and school orthography in cyrillic)</translation>
       <translation>Nov carte</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>Benvenit!</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>API de accessibilitá ne es activat</translation>
     </message>
