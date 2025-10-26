@@ -2466,10 +2466,6 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Uusi välilehti</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>Tervetuloa!</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>Esteettömyyden API ei ole käytössä</translation>
     </message>
