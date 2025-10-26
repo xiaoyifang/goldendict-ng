@@ -2466,10 +2466,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Нов подпрозорец</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>Добре дошли!</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>Интерфейс Accessibility не включён</translation>
     </message>
