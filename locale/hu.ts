@@ -2466,10 +2466,6 @@ a klasszikus és az iskolai helyesírás közt cirillben)</translation>
       <translation>Új lap</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>Üdvözöljük!</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>A kisegítő lehetőségek API nincs bekapcsolva</translation>
     </message>
