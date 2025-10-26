@@ -2468,10 +2468,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Новая вкладка</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>Добро пожаловать!</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>Интерфейс Accessibility не включён</translation>
     </message>
