@@ -2468,10 +2468,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Νέα καρτέλα</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>Καλώς ήλθατε!</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>Δεν είναι ενεργοποιημένο το API προσβασιμότητας</translation>
     </message>
