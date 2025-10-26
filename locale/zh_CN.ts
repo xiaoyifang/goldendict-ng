@@ -2464,10 +2464,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>新建标签页</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>欢迎使用！</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>无障碍API未启用</translation>
     </message>
@@ -2620,7 +2616,7 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Text files (*.txt);;XML files (*.xml)</source>
-      <translation>文本文件 (*.txt);;XML 文件 (*.xml)</translation>
+      <translation>文本文件（*.txt）；XML 文件（*.xml）</translation>
     </message>
     <message>
       <source>Favorites export complete</source>
