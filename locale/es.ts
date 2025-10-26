@@ -2466,10 +2466,6 @@ entre ortografía clásica y escolar en cirílico)</translation>
       <translation>Nueva Pestaña</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>¡Bienvenido!</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>La API de accesibilidad no está activada</translation>
     </message>
