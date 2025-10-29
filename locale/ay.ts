@@ -2510,10 +2510,6 @@ Pronunciar palabra (Alt+S)</translation>
 Pestaña nueva</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>¡Aski jutawi!</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>API jaqiwisanakataki janiw naktatakiti</translation>
     </message>

@@ -2464,10 +2464,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>新建标签页</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>欢迎使用！</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>无障碍API未启用</translation>
     </message>

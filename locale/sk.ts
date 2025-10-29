@@ -2466,10 +2466,6 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
       <translation>Nová karta</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>Vitajte!</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>API Dostupnosti nie je povolené</translation>
     </message>

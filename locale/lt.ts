@@ -2465,10 +2465,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Nauja kortelė</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>Jus sveikina GoldenDict!</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>API prieinamumui nėra įgalinta</translation>
     </message>

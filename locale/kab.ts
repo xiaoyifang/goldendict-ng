@@ -2466,10 +2466,6 @@ between classic and school orthography in cyrillic)</translation>
       <translation>New Tab</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>Welcome!</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>Accessibility API is not enabled</translation>
     </message>

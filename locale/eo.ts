@@ -2466,10 +2466,6 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <translation>Nova langeto</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>Bonvenon!</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>Alirebleco API ne estas ebligita</translation>
     </message>

@@ -2465,10 +2465,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Thẻ mới</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>Chào mừng!</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>API Khả năng truy cập không được bật</translation>
     </message>

@@ -2466,10 +2466,6 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>Musuq Tab</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>¡Bienvenido!</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>Yaykuna API mana atichisqachu</translation>
     </message>

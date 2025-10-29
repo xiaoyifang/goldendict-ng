@@ -2465,10 +2465,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Fushë e re</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>Mirë se erdhët!</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>Accessibility API është joaktiv</translation>
     </message>

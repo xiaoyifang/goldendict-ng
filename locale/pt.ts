@@ -2466,10 +2466,6 @@ entre ortografia clássica e escolar em ciílico)</translation>
       <translation>New Tab</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>Bem-vindo!</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>API de acessibilidade não está habilitado</translation>
     </message>

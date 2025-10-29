@@ -2466,10 +2466,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Варақаи нав</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>Хуш омадед!</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>Қобилияти API фаъол нашудааст</translation>
     </message>

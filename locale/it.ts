@@ -2466,10 +2466,6 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
       <translation>Nuova scheda</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>Benvenuto!</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>L&apos;accessibilità alle API non è abilitita</translation>
     </message>

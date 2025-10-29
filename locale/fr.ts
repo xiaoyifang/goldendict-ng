@@ -2466,10 +2466,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>Nouvel onglet</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>Bienvenue !</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>L&apos;API d&apos;accessibilité n&apos;est pas activée</translation>
     </message>

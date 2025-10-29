@@ -2466,10 +2466,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Nieuw tabblad</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>Welkom!</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>Toegankelijkheid API is niet ingeschakeld</translation>
     </message>

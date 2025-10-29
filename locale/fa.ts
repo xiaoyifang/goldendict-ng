@@ -2466,10 +2466,6 @@ between classic and school orthography in cyrillic)</source>
       <translation>زبانه تازه</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>خوش آمدید!</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>API دست‌رسی به‌کار نیفتاده است</translation>
     </message>
