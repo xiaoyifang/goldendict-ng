@@ -25,7 +25,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-14]
+        os: [macos-13, macos-14]
         qt_ver: [ 6.8.3, 6.9.1 ] # 6.8 is LTS which is relatively stable, don't dump it until next LTS.
     steps:
       - uses: actions/checkout@v4
@@ -33,9 +33,20 @@ jobs:
           submodules: true
       - name: Update brew
         run: |
-          brew update
+          brew update --preinstall
+      - name: Setup Homebrew Cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/Library/Caches/Homebrew
+            /usr/local/Homebrew
+          key: ${{ runner.os }}-brew-${{ hashFiles('**/Homebrew.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-brew-
       - name: Install dependencies
         run: |
+          brew install ccache
+          echo "/usr/local/opt/ccache/libexec" >> $GITHUB_PATH
           brew install --force --overwrite \
             bzip2  \
             create-dmg \
@@ -49,10 +60,24 @@ jobs:
             opencc \
             ffmpeg@6 \
             xapian || true
+      - name: Setup ccache
+        uses: actions/cache@v4
+        with:
+          path: ~/.ccache
+          key: ${{ runner.os }}-ccache-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-ccache-
       - name: Install eb
+        id: install_eb
+        uses: actions/cache@v4
+        with:
+          path: /usr/local/lib/libeb.*
+          key: ${{ runner.os }}-eb-4.4.3
         run: |
-          git clone https://github.com/xiaoyifang/eb.git
-          cd eb && ./configure && make -j 8 && sudo make install && cd ..
+          if [[ "${{ steps.install_eb.outputs.cache-hit }}" != "true" ]]; then
+            git clone https://github.com/xiaoyifang/eb.git
+            cd eb && ./configure && make -j$(sysctl -n hw.ncpu) && sudo make install && cd ..
+          fi
       - uses: jurplel/install-qt-action@v4.2.1
         with:
           version: ${{ matrix.qt_ver }}
@@ -64,6 +89,8 @@ jobs:
           export PKG_CONFIG_PATH="`brew --prefix ffmpeg@6`/lib/pkgconfig:$PKG_CONFIG_PATH"
           cmake -S . -B build_dir \
             -G Ninja \
+            -DCMAKE_C_COMPILER_LAUNCHER=ccache \
+            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -DWITH_FFMPEG_PLAYER=ON \
             -DWITH_QT_MULTIMEDIA=OFF \
             -DWITH_TTS=OFF \
