@@ -68,13 +68,15 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-ccache-
       - name: Install eb
-        id: install_eb
+        id: cache-eb
         uses: actions/cache@v4
         with:
           path: /usr/local/lib/libeb.*
           key: ${{ runner.os }}-eb-4.4.3
+      - name: Build and install eb if cache miss
+        id: install_eb
         run: |
-          if [[ "${{ steps.install_eb.outputs.cache-hit }}" != "true" ]]; then
+          if [[ "${{ steps.cache-eb.outputs.cache-hit }}" != "true" ]]; then
             git clone https://github.com/xiaoyifang/eb.git
             cd eb && ./configure && make -j$(sysctl -n hw.ncpu) && sudo make install && cd ..
           fi
