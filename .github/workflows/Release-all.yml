@@ -33,7 +33,7 @@ jobs:
           submodules: true
       - name: Update brew
         run: |
-          brew update --preinstall
+          brew update
       - name: Setup Homebrew Cache
         uses: actions/cache@v4
         with:
