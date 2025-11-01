@@ -25,7 +25,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-14]
+        os: [macos-14,macos-15-intel]
         qt_ver: [ 6.8.3, 6.9.1 ] # 6.8 is LTS which is relatively stable, don't dump it until next LTS.
     steps:
       - uses: actions/checkout@v4
