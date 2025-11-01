@@ -341,6 +341,7 @@ int main( int argc, char ** argv )
                                      "gdprg",
                                      "gdvideo",
                                      "gdtts",
+                                     "gdinternal",
                                      "entry",
                                      "iframe-http",
                                      "iframe-https" };
@@ -348,8 +349,7 @@ int main( int argc, char ** argv )
   for ( const auto & localScheme : localSchemes ) {
     QWebEngineUrlScheme webUiScheme( localScheme.toLatin1() );
     webUiScheme.setSyntax( QWebEngineUrlScheme::Syntax::Host );
-    webUiScheme.setFlags( QWebEngineUrlScheme::LocalScheme | QWebEngineUrlScheme::LocalAccessAllowed
-                          | QWebEngineUrlScheme::CorsEnabled );
+    webUiScheme.setFlags( QWebEngineUrlScheme::LocalAccessAllowed | QWebEngineUrlScheme::CorsEnabled );
     QWebEngineUrlScheme::registerScheme( webUiScheme );
   }
 
@@ -451,7 +451,7 @@ int main( int argc, char ** argv )
     QApplication::setFont( font );
   }
   else {
-    qDebug() << "Invalid font size:" << cfg.preferences.interfaceFontSize << ", using default";
+    qDebug() << "Use default font";
     cfg.preferences.interfaceFontSize = Config::DEFAULT_FONT_SIZE;
   }
 

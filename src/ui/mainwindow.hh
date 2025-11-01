@@ -98,7 +98,7 @@ private:
 
   QAction escAction, focusTranslateLineAction, addTabAction, closeCurrentTabAction, closeAllTabAction,
     closeRestTabAction, switchToNextTabAction, switchToPrevTabAction, showDictBarNamesAction, toggleMenuBarAction,
-    focusHeadwordsDlgAction, focusArticleViewAction, addAllTabToFavoritesAction;
+    lockPanelsAction, focusHeadwordsDlgAction, focusArticleViewAction, addAllTabToFavoritesAction;
 
   QAction useSmallIconsInToolbarsAction, useLargeIconsInToolbarsAction, useNormalIconsInToolbarsAction;
 
@@ -419,6 +419,8 @@ private slots:
 
   void on_exportFavorites_triggered();
   void on_importFavorites_triggered();
+
+  void onLockPanelsToggled( bool locked );
 
   void updateSearchPaneAndBar( bool searchInDock );
 

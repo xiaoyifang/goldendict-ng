@@ -152,6 +152,13 @@ public:
 
   virtual QNetworkReply * getArticleReply( const QNetworkRequest & req );
   string getHtml( ResourceType resourceType );
+
+private:
+  sptr< Dictionary::DataRequest > handleInternalScheme( const QUrl & url, QString & contentType );
+
+  sptr< Dictionary::DataRequest > handleLookupScheme( const QUrl & url, QString & contentType );
+
+  sptr< Dictionary::DataRequest > handleResourceScheme( const QUrl & url, QString & contentType );
 };
 
 class ArticleResourceReply: public QNetworkReply
@@ -237,4 +244,5 @@ protected:
 private:
   ArticleNetworkAccessManager & mManager;
   QNetworkAccessManager mgr;
+  static bool isInvalidLookupUrl( const QUrl & url );
 };

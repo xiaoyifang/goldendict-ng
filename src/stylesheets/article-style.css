@@ -5,6 +5,10 @@ html {
 }
 
 body {
+  --text-color: #222;
+  --secondary-text-color: #555;
+  --link-color: #005a9c;
+  --container-bg: #f9f9f9;
   font-family:
     -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu,
     Cantarell, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji",
@@ -3060,6 +3064,84 @@ table#sv-hooks,
   vertical-align: baseline !important;
 }
 
+/************* Welcome Page **************/
+
+.welcome-container {
+  max-width: 850px;
+  margin: 2em auto;
+  padding: 1.5em 2em;
+  line-height: 1.7;
+  color: var(--text-color);
+  /* Optional: background and border-radius for a card-like look */
+  /* background-color: var(--container-bg); */
+  /* border-radius: 8px; */
+}
+.welcome-container h3,
+.welcome-container h4 {
+  text-align: center;
+  margin-bottom: 1em;
+}
+.welcome-container h3 {
+  font-size: 1.6em;
+  font-weight: 600;
+}
+.welcome-container h4 {
+  font-size: 1.2em;
+  font-weight: 500;
+  margin-top: 2em;
+}
+.welcome-container p,
+.welcome-container ul {
+  margin-bottom: 1.2em;
+}
+.welcome-container ul {
+  list-style: none;
+  padding-left: 20px;
+}
+.welcome-container li {
+  margin-bottom: 0.5em;
+  position: relative;
+  padding-left: 25px;
+}
+.welcome-container li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--link-color);
+}
+.welcome-container a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.welcome-container a:hover {
+  text-decoration: underline;
+}
+.welcome-footer {
+  margin-top: 2.5em;
+  text-align: center;
+  font-size: 0.85em;
+  color: var(--secondary-text-color);
+}
+
+.menu-path > span {
+  --menu-path-text-color: #3b5998;
+  --menu-path-arrow-color: #8b9dc3;
+  font-weight: 600;
+  font-style: normal;
+  color: var(--menu-path-text-color);
+}
+.menu-path > span + span::before {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin: 0 0.3em;
+  vertical-align: -0.15em;
+  background-color: var(--menu-path-arrow-color);
+  -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"><path d="M10 6L8.59 7.41L13.17 12l-4.58 4.59L10 18l6-6z"/></svg>');
+  mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"><path d="M10 6L8.59 7.41L13.17 12l-4.58 4.59L10 18l6-6z"/></svg>');
+}
 /************* GLS dictionaries **************/
 
 .glsdict_headwords {

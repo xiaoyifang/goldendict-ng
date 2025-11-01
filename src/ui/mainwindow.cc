@@ -142,6 +142,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   switchToPrevTabAction( this ),
   showDictBarNamesAction( tr( "Show Names in Dictionary &Bar" ), this ),
   toggleMenuBarAction( tr( "&Menubar" ), this ),
+  lockPanelsAction( tr( "Lock Panels" ), this ),
   focusHeadwordsDlgAction( this ),
   focusArticleViewAction( this ),
   addAllTabToFavoritesAction( this ),
@@ -183,7 +184,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   GlobalBroadcaster::instance()->setConfig( &cfg );
 
   localSchemeHandler     = new LocalSchemeHandler( articleNetMgr, this );
-  QStringList htmlScheme = { "gdlookup", "bword", "entry" };
+  QStringList htmlScheme = { "gdlookup", "bword", "entry", "gdinternal" };
   for ( const auto & localScheme : htmlScheme ) {
     QWebEngineProfile::defaultProfile()->installUrlSchemeHandler( localScheme.toLatin1(), localSchemeHandler );
   }
@@ -541,6 +542,10 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   ui.menuView->addAction( &useLargeIconsInToolbarsAction );
   ui.menuView->addSeparator();
   ui.alwaysOnTop->setChecked( cfg.preferences.alwaysOnTop );
+  lockPanelsAction.setCheckable( true );
+  lockPanelsAction.setChecked( cfg.preferences.panelsLocked );
+  connect( &lockPanelsAction, &QAction::toggled, this, &MainWindow::onLockPanelsToggled );
+  ui.menuView->addAction( &lockPanelsAction );
   ui.menuView->addAction( ui.alwaysOnTop );
 
   // Dictionary bar
@@ -779,11 +784,9 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 #endif
   );
 
-  // Show the initial welcome text
-  addNewTab();
-  ArticleView * view = getCurrentArticleView();
+  // Create and show the initial welcome tab
   history.enableAdd( false );
-  view->showDefinition( tr( "Welcome!" ), GroupId::HelpGroupId );
+  createNewTab( true, ArticleMaker::welcomeWord() )->load( QUrl( "gdinternal://welcome-page" ) );
   history.enableAdd( cfg.preferences.storeHistory );
 
   // restore should be called after all UI initialized but not necessarily after show()
@@ -876,6 +879,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   if ( cfg.preferences.alwaysOnTop ) {
     on_alwaysOnTop_triggered( true );
   }
+  onLockPanelsToggled( cfg.preferences.panelsLocked );
 
   if ( cfg.preferences.hideMenubar ) {
     toggleMenuBarTriggered( false );
@@ -1197,6 +1201,7 @@ void MainWindow::addGlobalActionsToDialog( QDialog * dialog )
   dialog->addAction( &focusHeadwordsDlgAction );
   dialog->addAction( &focusArticleViewAction );
   dialog->addAction( ui.fullTextSearchAction );
+  dialog->addAction( ui.quit );
 }
 
 void MainWindow::addGroupComboBoxActionsToDialog( QDialog * dialog, GroupComboBox * pGroupComboBox )
@@ -1764,7 +1769,7 @@ void MainWindow::switchToWindow( QAction * act )
 
 void MainWindow::addNewTab()
 {
-  createNewTab( true, tr( "(untitled)" ) );
+  createNewTab( true, tr( "(untitled)" ) )->load( QUrl( "gdinternal://untitle-page" ) );
 }
 
 ArticleView * MainWindow::createNewTab( bool switchToIt, const QString & name )
@@ -2392,6 +2397,15 @@ void MainWindow::currentGroupChanged( int )
 
   if ( auto view = getCurrentArticleView() ) {
     if ( view->getCurrentGroupId() != grg_id ) {
+      // If the current view is the "Welcome!" page, don't trigger a new lookup.
+      // Just update its group ID so that if the user types a new word,
+      // it will be looked up in the correct new group.
+      // We check the isWelcomePage() flag instead of the word to allow users
+      // to actually look up the word "Welcome!".
+      if ( view->isInternalPage() ) {
+        view->setCurrentGroupId( grg_id );
+        return;
+      }
       view->setCurrentGroupId( grg_id );
       QString word = Folding::unescapeWildcardSymbols( view->getWord() );
       respondToTranslationRequest( word, false );
@@ -3588,6 +3602,23 @@ void MainWindow::on_alwaysOnTop_triggered( bool checked )
   }
 
   installHotKeys();
+}
+
+void MainWindow::onLockPanelsToggled( bool locked )
+{
+  cfg.preferences.panelsLocked = locked;
+
+  const QList< QDockWidget * > dockWidgets = findChildren< QDockWidget * >();
+
+  for ( QDockWidget * dockWidget : dockWidgets ) {
+    if ( locked ) {
+      dockWidget->setFeatures( QDockWidget::NoDockWidgetFeatures );
+    }
+    else {
+      dockWidget->setFeatures( QDockWidget::DockWidgetClosable | QDockWidget::DockWidgetMovable
+                               | QDockWidget::DockWidgetFloatable );
+    }
+  }
 }
 
 void MainWindow::zoomin()

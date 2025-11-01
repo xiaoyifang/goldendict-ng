@@ -57,16 +57,46 @@
       <translation>Welkom!</translation>
     </message>
     <message>
-      <source>&lt;h3 align=&quot;center&quot;&gt;Welcome to &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;To start working with the program, first visit &lt;em&gt;Edit | Dictionaries&lt;/em&gt; to add some directory paths where to search for the dictionary files, set up various Wikipedia sites or other sources, adjust dictionary order or create dictionary groups.&lt;p&gt;And then you&apos;re ready to look up your words! You can do that in this window by using a pane to the left, or you can &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;look up words from other active applications&lt;/a&gt;. &lt;p&gt;To customize program, check out the available preferences at &lt;em&gt;Edit | Preferences&lt;/em&gt;. All settings there have tooltips, be sure to read them if you are in doubt about anything.&lt;p&gt;Should you need further help, have any questions, suggestions or just wonder what the others think, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Check program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; for the updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Licensed under GPLv3 or later.</source>
-      <translation>&lt;h3 align=&quot;center&quot;&gt;Welkom bij &lt;b&gt;GoldenDict&lt;/b&gt;!&lt;/h3&gt;&lt;p&gt;Om met het programma aan de slag te gaan, gaat u eerst naar &lt;em&gt;Bewerken | Woordenboeken&lt;/em&gt; om enkele mappaden toe te voegen waar u naar woordenboekbestanden kunt zoeken, verschillende Wikipedia-sites of andere bronnen kunt instellen, de volgorde van de woordenboeken kunt aanpassen of woordenboekgroepen kunt maken.&lt;p&gt;En dan ben je&apos;om je woorden op te zoeken! Dat kun je in dit venster doen door een venster aan de linkerkant te gebruiken, of je kunt &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;woorden opzoeken uit andere actieve applicaties&lt;/a&gt;. &lt;p&gt;Om het programma aan te passen, bekijk de beschikbare voorkeuren op &lt;em&gt;Bewerken | Voorkeuren&lt;/em&gt;. Alle instellingen daar hebben tooltips, lees deze zeker als u ergens over twijfelt.&lt;p&gt;Heeft u verdere hulp nodig, heeft u vragen, suggesties of vraagt u zich gewoon af wat anderen ervan vinden, dan bent u van harte welkom op het programma&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict/discussions&quot;&gt;forum&lt;/a&gt;.&lt;p&gt;Kijk programma&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict&quot;&gt;website&lt;/a&gt; voor de updates. &lt;p&gt;(c) 2008-2013 Konstantin Isakov. Gelicentieerd onder GPLv3 of hoger.</translation>
-    </message>
-    <message>
       <source>(untitled)</source>
       <translation>(naamloos)</translation>
     </message>
     <message>
       <source>(picture)</source>
       <translation>(afbeelding)</translation>
+    </message>
+    <message>
+      <source>
+    &lt;div class=&quot;welcome-container&quot;&gt;
+      &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;section&gt;
+        &lt;h4&gt;To get started:&lt;/h4&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
+          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/section&gt;
+      &lt;p&gt;Should you need further help, have any questions, or suggestions, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; and &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
+      &lt;footer class=&quot;welcome-footer&quot;&gt;
+        &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
+      &lt;/footer&gt;
+    &lt;/div&gt;</source>
+      <translation>
+    &lt;div class=&quot;welcome-container&quot;&gt;
+      &lt;h3&gt;Welkom bij &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+      &lt;section&gt;
+        &lt;h4&gt;om te starten:&lt;/h4&gt;
+        &lt;ul&gt;
+          &lt;li&gt;Ga naar &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Bewerken&lt;/span&gt;&lt;span&gt;Woordenboeken&lt;/span&gt;&lt;/span&gt; om je woordenboek toe te voegen, configureer online bronnen zoals Wikipedia en organiseer ze in groepen.&lt;/li&gt;
+          &lt;li&gt;Eenmaal ingesteld u kunt woorden opzoeken in dit venster of &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;van andere applicaties met behulp van de Scan Popup&lt;/a&gt;.&lt;/li&gt;
+          &lt;li&gt;Om het programma aan te passen, verken de instellingen in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Bewerken&lt;/span&gt;&lt;span&gt;Voorkeuren&lt;/span&gt;&lt;/span&gt;. Alle instellingen hebben tooltips, dus ga ze lezen als er iets onduidelijk is.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/section&gt;
+      &lt;p&gt;Moet je verdere hulp nodig hebben. heb vragen of suggesties, je bent welkom op het programma&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; en &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
+      &lt;footer class=&quot;welcome-footer&quot;&gt;
+        &lt;small&gt;Gebaseerd op de originele GoldenDict van Konstantin Isakov (c) 2008-2013. Behoud en ontwikkeld door de GoldenDict-NG Community. Licentie onder GPLv3 of hoger.&lt;/small&gt;
+      &lt;/footer&gt;
+    &lt;/div&gt;</translation>
     </message>
   </context>
   <context>
@@ -2436,10 +2466,6 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Nieuw tabblad</translation>
     </message>
     <message>
-      <source>Welcome!</source>
-      <translation>Welkom!</translation>
-    </message>
-    <message>
       <source>Accessibility API is not enabled</source>
       <translation>Toegankelijkheid API is niet ingeschakeld</translation>
     </message>
@@ -2648,6 +2674,10 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
     <message>
       <source>PDF document (*.pdf *.PDF)</source>
       <translation>PDF-document (*.pdf *.PDF)</translation>
+    </message>
+    <message>
+      <source>Lock Panels</source>
+      <translation>Panelen vergrendelen</translation>
     </message>
   </context>
   <context>

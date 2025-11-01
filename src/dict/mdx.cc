@@ -1326,7 +1326,7 @@ static bool indexIsOldOrBad( const vector< string > & dictFiles, const string & 
 
   return idx.readRecords( &header, sizeof( header ), 1 ) != 1 || header.signature != kSignature
     || header.formatVersion != kCurrentFormatVersion || header.parserVersion != MdictParser::kParserVersion
-    || header.foldingVersion != Folding::Version || header.mddIndexInfosCount != dictFiles.size() - 1;
+    || header.foldingVersion != Folding::Version;
 }
 
 static void findResourceFiles( const string & mdx, vector< string > & dictFiles )
@@ -1515,7 +1515,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
 
       // Save address of IndexInfos for resource files
       idxHeader.mddIndexInfosOffset = idx.tell();
-      idxHeader.mddIndexInfosCount  = dictFiles.size() - 1;
+      idxHeader.mddIndexInfosCount  = mddIndexInfos.size();
       for ( uint32_t mi = 0; mi < mddIndexInfos.size(); mi++ ) {
         const string & mddfile = mddFileNames[ mi ];
 

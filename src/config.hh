@@ -22,7 +22,6 @@
 /// Special group IDs
 enum GroupId : unsigned {
   AllGroupId  = UINT_MAX - 1, /// The 'All' group
-  HelpGroupId = UINT_MAX,     /// The fictitious 'Help' group
   NoGroupId   = 0,            /// Invalid value, used to specify that no group id is specified at all.
 };
 
@@ -289,6 +288,7 @@ struct Preferences
   bool hideSingleTab;
   bool mruTabOrder;
   bool hideMenubar;
+  bool panelsLocked = false;
 
 #ifdef Q_OS_MACOS // macOS uses the dock menu instead of the tray icon
   bool closeToTray    = false;
