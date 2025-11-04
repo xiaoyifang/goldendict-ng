@@ -83,6 +83,20 @@
     </widget>
    </item>
    <item>
+    <widget class="QToolButton" name="saveArticleButton">
+     <property name="toolTip">
+      <string>Save Article</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../../resources.qrc">
+       <normaloff>:/icons/filesave.png</normaloff>:/icons/filesave.png</iconset>
+     </property>
+     <property name="shortcut">
+      <string notr="true">F2</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QToolButton" name="sendWordToFavoritesButton">
      <property name="toolTip">
       <string>Add word to Favorites (Ctrl+E)</string>

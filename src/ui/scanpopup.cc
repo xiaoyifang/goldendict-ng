@@ -3,11 +3,19 @@
 
 #include "scanpopup.hh"
 #include "folding.hh"
+#include "articlesaver.hh"
 #include <QCursor>
 #include <QPixmap>
 #include <QMenu>
 #include <QMouseEvent>
+#include <QFileDialog>
+#include <QMessageBox>
 #include "gestures.hh"
+
+using std::set;
+using std::map;
+using std::pair;
+
 
 #ifdef Q_OS_MAC
   #include "macos/macmouseover.hh"
@@ -127,6 +135,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( ui.goBackButton, &QToolButton::pressed, this, &ScanPopup::goBackButton_clicked );
   connect( ui.goForwardButton, &QToolButton::pressed, this, &ScanPopup::goForwardButton_clicked );
   connect( ui.pronounceButton, &QToolButton::pressed, this, &ScanPopup::pronounceButton_clicked );
+  connect( ui.saveArticleButton, &QToolButton::pressed, this, &ScanPopup::saveArticleButton_clicked );
   connect( ui.sendWordButton, &QToolButton::pressed, this, &ScanPopup::sendWordButton_clicked );
   connect( ui.sendWordToFavoritesButton, &QToolButton::pressed, this, &ScanPopup::sendWordToFavoritesButton_clicked );
 
@@ -150,7 +159,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( translateBox, &TranslateBox::returnPressed, this, &ScanPopup::translateInputFinished );
 
   ui.pronounceButton->setDisabled( true );
-
+  
   groupList->fill( groups );
   groupList->setCurrentGroup( cfg.lastPopupGroupId );
 
@@ -942,6 +951,52 @@ void ScanPopup::prefixMatchFinished()
 void ScanPopup::pronounceButton_clicked() const
 {
   definition->playSound();
+}
+
+static void popfilterAndCollectResources( QString & html,
+                                       QRegularExpression & rx,
+                                       const QString & sep,
+                                       const QString & folder,
+                                       set< QByteArray > & resourceIncluded,
+                                       vector< pair< QUrl, QString > > & downloadResources )
+{
+  int pos = 0;
+
+  auto match = rx.match( html, pos );
+  while ( match.hasMatch() ) {
+    pos = match.capturedStart();
+    QUrl url( match.captured( 1 ) );
+    QString host         = url.host();
+    QString resourcePath = Utils::Url::path( url );
+
+    if ( !host.startsWith( '/' ) ) {
+      host.insert( 0, '/' );
+    }
+    if ( !resourcePath.startsWith( '/' ) ) {
+      resourcePath.insert( 0, '/' );
+    }
+
+    QCryptographicHash hash( QCryptographicHash::Md5 );
+    hash.addData( match.captured().toUtf8() );
+
+    if ( resourceIncluded.insert( hash.result() ).second ) {
+      // Gather resource information (url, filename) to be download later
+      downloadResources.emplace_back( url, folder + host + resourcePath );
+    }
+
+    // Modify original url, set to the native one
+    resourcePath   = QString::fromLatin1( QUrl::toPercentEncoding( resourcePath, "/" ) );
+    QString newUrl = sep + QDir( folder ).dirName() + host + resourcePath + sep;
+    html.replace( pos, match.captured().length(), newUrl );
+    pos += newUrl.length();
+    match = rx.match( html, pos );
+  }
+}
+
+void ScanPopup::saveArticleButton_clicked() 
+{
+  // Delegate to centralized saver; ScanPopup doesn't have an external status bar
+  ArticleSaver::saveArticle( definition, this, cfg, nullptr );
 }
 
 void ScanPopup::pinButtonClicked( bool checked )
