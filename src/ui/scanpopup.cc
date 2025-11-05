@@ -159,7 +159,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( translateBox, &TranslateBox::returnPressed, this, &ScanPopup::translateInputFinished );
 
   ui.pronounceButton->setDisabled( true );
-  
+
   groupList->fill( groups );
   groupList->setCurrentGroup( cfg.lastPopupGroupId );
 
@@ -954,11 +954,11 @@ void ScanPopup::pronounceButton_clicked() const
 }
 
 static void popfilterAndCollectResources( QString & html,
-                                       QRegularExpression & rx,
-                                       const QString & sep,
-                                       const QString & folder,
-                                       set< QByteArray > & resourceIncluded,
-                                       vector< pair< QUrl, QString > > & downloadResources )
+                                          QRegularExpression & rx,
+                                          const QString & sep,
+                                          const QString & folder,
+                                          set< QByteArray > & resourceIncluded,
+                                          vector< pair< QUrl, QString > > & downloadResources )
 {
   int pos = 0;
 
@@ -993,7 +993,7 @@ static void popfilterAndCollectResources( QString & html,
   }
 }
 
-void ScanPopup::saveArticleButton_clicked() 
+void ScanPopup::saveArticleButton_clicked()
 {
   // Delegate to centralized saver; ScanPopup doesn't have an external status bar
   ArticleSaver::saveArticle( definition, this, cfg, nullptr );

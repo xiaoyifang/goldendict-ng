@@ -11,26 +11,26 @@ class QWidget;
 /// multiple headers.
 class ArticleSaveProgressDialog: public QProgressDialog
 {
-	Q_OBJECT
+  Q_OBJECT
 
 public:
-	explicit ArticleSaveProgressDialog( QWidget * parent = nullptr, Qt::WindowFlags f = Qt::Widget ):
-		QProgressDialog( parent, f )
-	{
-		setAutoReset( false );
-		setAutoClose( false );
-	}
+  explicit ArticleSaveProgressDialog( QWidget * parent = nullptr, Qt::WindowFlags f = Qt::Widget ):
+    QProgressDialog( parent, f )
+  {
+    setAutoReset( false );
+    setAutoClose( false );
+  }
 
 public slots:
-	void perform()
-	{
-		int progress = value() + 1;
-		if ( progress == maximum() ) {
-			emit close();
-			deleteLater();
-		}
-		setValue( progress );
-	}
+  void perform()
+  {
+    int progress = value() + 1;
+    if ( progress == maximum() ) {
+      emit close();
+      deleteLater();
+    }
+    setValue( progress );
+  }
 };
 
 
@@ -49,4 +49,4 @@ namespace ArticleSaver {
 // `statusWidget` may be a pointer to `QStatusBar` (main window) or to
 // `MainStatusBar` (popup). Pass nullptr to skip status updates.
 void saveArticle( ArticleView * view, QWidget * parent, Config::Class & cfg, QWidget * statusWidget = nullptr );
-}
+} // namespace ArticleSaver

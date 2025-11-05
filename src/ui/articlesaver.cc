@@ -69,7 +69,7 @@ static void filterAndCollectResources( QString & html,
     match = rx.match( html, pos );
   }
 }
-}
+} // namespace
 
 namespace ArticleSaver {
 
@@ -125,7 +125,7 @@ void saveArticle( ArticleView * view, QWidget * parent, Config::Class & cfg, QWi
   }
 
   // Helper to display status messages on provided statusWidget (QStatusBar or MainStatusBar)
-  auto showStatusMessage = [statusWidget]( const QString & text, int timeout = 5000 ) {
+  auto showStatusMessage = [ statusWidget ]( const QString & text, int timeout = 5000 ) {
     if ( !statusWidget ) {
       qDebug() << text;
       return;
@@ -144,30 +144,34 @@ void saveArticle( ArticleView * view, QWidget * parent, Config::Class & cfg, QWi
   // PDF
   if ( filters.at( 2 ).startsWith( selectedFilter ) ) {
     QWebEnginePage * page = view->page();
-    QObject::connect( page, &QWebEnginePage::pdfPrintingFinished, page, [ fileName, statusWidget ]( const QString & fp, bool success ) {
-      Q_UNUSED( fileName )
-      if ( statusWidget ) {
-        // Try QStatusBar first
-        if ( auto sb = qobject_cast< QStatusBar * >( statusWidget ) ) {
-          sb->showMessage( QObject::tr( success ? "Save PDF complete" : "Save PDF failed" ), 5000 );
-        }
-        else {
-          // MainStatusBar has showMessage(QString,int,QPixmap)
-          // We'll attempt to call the most common overload via dynamic cast
-          using MainStatusBarT = class MainStatusBar;
-          MainStatusBarT * msb = dynamic_cast< MainStatusBarT * >( statusWidget );
-          if ( msb ) {
-            msb->showMessage( QObject::tr( success ? "Save PDF complete" : "Save PDF failed" ), 5000 );
-          }
-          else {
-            qDebug() << ( success ? "PDF exported successfully to:" : "Failed to export PDF." ) << fp;
-          }
-        }
-      }
-      else {
-        qDebug() << ( success ? "PDF exported successfully to:" : "Failed to export PDF." ) << fp;
-      }
-    } );
+    QObject::connect( page,
+                      &QWebEnginePage::pdfPrintingFinished,
+                      page,
+                      [ fileName, statusWidget ]( const QString & fp, bool success ) {
+                        Q_UNUSED( fileName )
+                        if ( statusWidget ) {
+                          // Try QStatusBar first
+                          if ( auto sb = qobject_cast< QStatusBar * >( statusWidget ) ) {
+                            sb->showMessage( QObject::tr( success ? "Save PDF complete" : "Save PDF failed" ), 5000 );
+                          }
+                          else {
+                            // MainStatusBar has showMessage(QString,int,QPixmap)
+                            // We'll attempt to call the most common overload via dynamic cast
+                            using MainStatusBarT = class MainStatusBar;
+                            MainStatusBarT * msb = dynamic_cast< MainStatusBarT * >( statusWidget );
+                            if ( msb ) {
+                              msb->showMessage( QObject::tr( success ? "Save PDF complete" : "Save PDF failed" ),
+                                                5000 );
+                            }
+                            else {
+                              qDebug() << ( success ? "PDF exported successfully to:" : "Failed to export PDF." ) << fp;
+                            }
+                          }
+                        }
+                        else {
+                          qDebug() << ( success ? "PDF exported successfully to:" : "Failed to export PDF." ) << fp;
+                        }
+                      } );
 
     page->printToPdf( fileName );
     return;
@@ -195,10 +199,12 @@ void saveArticle( ArticleView * view, QWidget * parent, Config::Class & cfg, QWi
   }
 
   // Internal article -> get HTML and possibly collect resources
-  view->toHtml( [=]( QString & html ) mutable {
+  view->toHtml( [ = ]( QString & html ) mutable {
     QFile file( fileName );
     if ( !file.open( QIODevice::WriteOnly ) ) {
-      QMessageBox::critical( parent, QObject::tr( "Error" ), QObject::tr( "Can't save article: %1" ).arg( file.errorString() ) );
+      QMessageBox::critical( parent,
+                             QObject::tr( "Error" ),
+                             QObject::tr( "Can't save article: %1" ).arg( file.errorString() ) );
     }
     else {
       QFileInfo fi( fileName );
@@ -210,7 +216,7 @@ void saveArticle( ArticleView * view, QWidget * parent, Config::Class & cfg, QWi
       QRegularExpression anchorRx( "(g[0-9a-f]{32}_[0-9a-f]+_)" );
       auto match = rx3.match( html, pos );
       while ( match.hasMatch() ) {
-        pos = match.capturedStart();
+        pos          = match.capturedStart();
         QString name = QUrl::fromPercentEncoding( match.captured( 2 ).simplified().toLatin1() );
         QString anchor;
         name.replace( "?gdanchor=", "#" );
@@ -244,13 +250,16 @@ void saveArticle( ArticleView * view, QWidget * parent, Config::Class & cfg, QWi
         filterAndCollectResources( html, rx2, "'", folder, resourceIncluded, downloadResources );
 
         auto * progressDialog = new ArticleSaveProgressDialog( parent );
-        int maxVal = 1; // main html
+        int maxVal            = 1; // main html
 
-        for ( auto const & p : downloadResources ) {
+        for ( const auto & p : downloadResources ) {
           ResourceToSaveHandler * handler = view->saveResource( p.first, p.second );
           if ( !handler->isEmpty() ) {
             maxVal += 1;
-            QObject::connect( handler, &ResourceToSaveHandler::done, progressDialog, &ArticleSaveProgressDialog::perform );
+            QObject::connect( handler,
+                              &ResourceToSaveHandler::done,
+                              progressDialog,
+                              &ArticleSaveProgressDialog::perform );
           }
         }
 
