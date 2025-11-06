@@ -484,10 +484,16 @@ int main( int argc, char ** argv )
     // If interfaceLanguage is explicitly set, uses filename-based loading, because GD have more languages than Qt & its locale database.
     // If not, then let Qt's qlocale mechanism decide which one to use, because "locale" handling is different in all 3 platforms, and we don't want to deal with that.
 
-    // Only load qt & webengine translators if GD's translation loading succeeds to avoid inconsistency
-    if ( cfg.preferences.interfaceLanguage.isEmpty() ?
-           loadTranslation_qlocale( *gd_ts, QString(), QString(), Config::getLocDir() ) :
-           gd_ts->load( cfg.preferences.interfaceLanguage, Config::getLocDir() ) ) {
+    bool loaded = false;
+    if ( cfg.preferences.interfaceLanguage.isEmpty() ) {
+      loaded = loadTranslation_qlocale( *gd_ts, QString(), QString(), Config::getLocDir() );
+    }
+    else if ( cfg.preferences.interfaceLanguage != "en" ) {
+      loaded = gd_ts->load( cfg.preferences.interfaceLanguage, Config::getLocDir() );
+    }
+
+    // Only install translator if loading succeeds
+    if ( loaded ) {
       QCoreApplication::installTranslator( gd_ts );
       qDebug() << "TS found: " << gd_ts->filePath();
 
