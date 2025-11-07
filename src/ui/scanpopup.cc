@@ -953,50 +953,15 @@ void ScanPopup::pronounceButton_clicked() const
   definition->playSound();
 }
 
-static void popfilterAndCollectResources( QString & html,
-                                       QRegularExpression & rx,
-                                       const QString & sep,
-                                       const QString & folder,
-                                       set< QByteArray > & resourceIncluded,
-                                       vector< pair< QUrl, QString > > & downloadResources )
-{
-  int pos = 0;
-
-  auto match = rx.match( html, pos );
-  while ( match.hasMatch() ) {
-    pos = match.capturedStart();
-    QUrl url( match.captured( 1 ) );
-    QString host         = url.host();
-    QString resourcePath = Utils::Url::path( url );
-
-    if ( !host.startsWith( '/' ) ) {
-      host.insert( 0, '/' );
-    }
-    if ( !resourcePath.startsWith( '/' ) ) {
-      resourcePath.insert( 0, '/' );
-    }
-
-    QCryptographicHash hash( QCryptographicHash::Md5 );
-    hash.addData( match.captured().toUtf8() );
-
-    if ( resourceIncluded.insert( hash.result() ).second ) {
-      // Gather resource information (url, filename) to be download later
-      downloadResources.emplace_back( url, folder + host + resourcePath );
-    }
-
-    // Modify original url, set to the native one
-    resourcePath   = QString::fromLatin1( QUrl::toPercentEncoding( resourcePath, "/" ) );
-    QString newUrl = sep + QDir( folder ).dirName() + host + resourcePath + sep;
-    html.replace( pos, match.captured().length(), newUrl );
-    pos += newUrl.length();
-    match = rx.match( html, pos );
-  }
-}
-
 void ScanPopup::saveArticleButton_clicked() 
 {
-  // Delegate to centralized saver; ScanPopup doesn't have an external status bar
-  ArticleSaver::saveArticle( definition, this, cfg, nullptr );
+  // Delegate to centralized saver object; ScanPopup will display status messages
+  auto * saver = new ArticleSaver::ArticleSaver( definition, this, cfg );
+  connect( saver,
+           &ArticleSaver::ArticleSaver::statusMessage,
+           this,
+           [ this ]( const QString & message, int timeout ) { showStatusBarMessage( message, timeout ); } );
+  saver->save();
 }
 
 void ScanPopup::pinButtonClicked( bool checked )

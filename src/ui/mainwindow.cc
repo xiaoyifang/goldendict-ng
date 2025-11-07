@@ -3371,8 +3371,17 @@ static void filterAndCollectResources( QString & html,
 
 void MainWindow::on_saveArticle_triggered()
 {
-  // Delegate to centralized saver
-  ArticleSaver::saveArticle( getCurrentArticleView(), this, cfg, mainStatusBar );
+  // Delegate to centralized saver object and show status messages on the main status bar
+  ArticleView * view = getCurrentArticleView();
+  if ( !view ) {
+    return;
+  }
+  auto * saver = new ArticleSaver::ArticleSaver( view, this, cfg );
+  connect( saver,
+           &ArticleSaver::ArticleSaver::statusMessage,
+           this,
+           [ this ]( const QString & message, int timeout ) { mainStatusBar->showMessage( message, timeout ); } );
+  saver->save();
 }
 
 void MainWindow::on_rescanFiles_triggered()

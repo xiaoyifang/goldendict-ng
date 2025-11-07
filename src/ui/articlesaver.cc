@@ -73,16 +73,24 @@ static void filterAndCollectResources( QString & html,
 
 namespace ArticleSaver {
 
-// statusWidget can be a QStatusBar (from main window) or MainStatusBar (popup),
-// so we accept QWidget* and dynamically dispatch in this TU.
-void saveArticle( ArticleView * view, QWidget * parent, Config::Class & cfg, QWidget * statusWidget )
+ArticleSaver::ArticleSaver( ArticleView * view, QWidget * uiParent, Config::Class & cfg ):
+  QObject( uiParent ),
+  view_( view ),
+  uiParent_( uiParent ),
+  cfg_( cfg )
 {
-  if ( !view ) {
-    qWarning() << "ArticleSaver::saveArticle called with null view";
+}
+
+ArticleSaver::~ArticleSaver() = default;
+
+void ArticleSaver::save()
+{
+  if ( !view_ ) {
+    qWarning() << "ArticleSaver::save called with null view";
     return;
   }
 
-  QString fileName = view->getTitle().simplified();
+  QString fileName = view_->getTitle().simplified();
 
   // Replace reserved filename characters
   QRegularExpression rxName( R"([/\\\?\*:|<>])" );
@@ -91,11 +99,11 @@ void saveArticle( ArticleView * view, QWidget * parent, Config::Class & cfg, QWi
   fileName += ".html";
   QString savePath;
 
-  if ( cfg.articleSavePath.isEmpty() ) {
+  if ( cfg_.articleSavePath.isEmpty() ) {
     savePath = QDir::homePath();
   }
   else {
-    savePath = QDir::fromNativeSeparators( cfg.articleSavePath );
+    savePath = QDir::fromNativeSeparators( cfg_.articleSavePath );
     if ( !QDir( savePath ).exists() ) {
       savePath = QDir::homePath();
     }
@@ -110,7 +118,7 @@ void saveArticle( ArticleView * view, QWidget * parent, Config::Class & cfg, QWi
   filters.push_back( QObject::tr( "Mime Html (*.mhtml)" ) );
 
   fileName = savePath + "/" + fileName;
-  fileName = QFileDialog::getSaveFileName( parent,
+  fileName = QFileDialog::getSaveFileName( uiParent_,
                                            QObject::tr( "Save Article As" ),
                                            fileName,
                                            filters.join( ";;" ),
@@ -124,49 +132,12 @@ void saveArticle( ArticleView * view, QWidget * parent, Config::Class & cfg, QWi
     return;
   }
 
-  // Helper to display status messages on provided statusWidget (QStatusBar or MainStatusBar)
-  auto showStatusMessage = [statusWidget]( const QString & text, int timeout = 5000 ) {
-    if ( !statusWidget ) {
-      qDebug() << text;
-      return;
-    }
-    if ( auto sb = qobject_cast< QStatusBar * >( statusWidget ) ) {
-      sb->showMessage( text, timeout );
-      return;
-    }
-    if ( auto msb = dynamic_cast< MainStatusBar * >( statusWidget ) ) {
-      msb->showMessage( text, timeout );
-      return;
-    }
-    qDebug() << text;
-  };
-
   // PDF
   if ( filters.at( 2 ).startsWith( selectedFilter ) ) {
-    QWebEnginePage * page = view->page();
-    QObject::connect( page, &QWebEnginePage::pdfPrintingFinished, page, [ fileName, statusWidget ]( const QString & fp, bool success ) {
-      Q_UNUSED( fileName )
-      if ( statusWidget ) {
-        // Try QStatusBar first
-        if ( auto sb = qobject_cast< QStatusBar * >( statusWidget ) ) {
-          sb->showMessage( QObject::tr( success ? "Save PDF complete" : "Save PDF failed" ), 5000 );
-        }
-        else {
-          // MainStatusBar has showMessage(QString,int,QPixmap)
-          // We'll attempt to call the most common overload via dynamic cast
-          using MainStatusBarT = class MainStatusBar;
-          MainStatusBarT * msb = dynamic_cast< MainStatusBarT * >( statusWidget );
-          if ( msb ) {
-            msb->showMessage( QObject::tr( success ? "Save PDF complete" : "Save PDF failed" ), 5000 );
-          }
-          else {
-            qDebug() << ( success ? "PDF exported successfully to:" : "Failed to export PDF." ) << fp;
-          }
-        }
-      }
-      else {
-        qDebug() << ( success ? "PDF exported successfully to:" : "Failed to export PDF." ) << fp;
-      }
+    QWebEnginePage * page = view_->page();
+    QObject::connect( page, &QWebEnginePage::pdfPrintingFinished, this, [ this ]( const QString & fp, bool success ) {
+      Q_UNUSED( fp )
+      emit statusMessage( QObject::tr( success ? "Save PDF complete" : "Save PDF failed" ), 5000 );
     } );
 
     page->printToPdf( fileName );
@@ -175,14 +146,14 @@ void saveArticle( ArticleView * view, QWidget * parent, Config::Class & cfg, QWi
 
   // MHTML
   if ( filters.at( 3 ).startsWith( selectedFilter ) ) {
-    QWebEnginePage * page = view->page();
+    QWebEnginePage * page = view_->page();
     page->save( fileName, QWebEngineDownloadRequest::MimeHtmlSaveFormat );
     return;
   }
 
   // Website handling
-  if ( view->isWebsite() ) {
-    QWebEnginePage * page = view->page();
+  if ( view_->isWebsite() ) {
+    QWebEnginePage * page = view_->page();
     if ( filters.at( 0 ).startsWith( selectedFilter ) ) {
       page->save( fileName, QWebEngineDownloadRequest::CompleteHtmlSaveFormat );
     }
@@ -190,19 +161,19 @@ void saveArticle( ArticleView * view, QWidget * parent, Config::Class & cfg, QWi
       page->save( fileName, QWebEngineDownloadRequest::SingleHtmlSaveFormat );
     }
 
-    showStatusMessage( QObject::tr( "Save article complete" ), 5000 );
+    emit statusMessage( QObject::tr( "Save article complete" ), 5000 );
     return;
   }
 
   // Internal article -> get HTML and possibly collect resources
-  view->toHtml( [=]( QString & html ) mutable {
+  view_->toHtml( [ this, fileName, complete, rxName ]( QString & html ) mutable {
     QFile file( fileName );
     if ( !file.open( QIODevice::WriteOnly ) ) {
-      QMessageBox::critical( parent, QObject::tr( "Error" ), QObject::tr( "Can't save article: %1" ).arg( file.errorString() ) );
+      QMessageBox::critical( uiParent_, QObject::tr( "Error" ), QObject::tr( "Can't save article: %1" ).arg( file.errorString() ) );
     }
     else {
       QFileInfo fi( fileName );
-      cfg.articleSavePath = QDir::toNativeSeparators( fi.absoluteDir().absolutePath() );
+      cfg_.articleSavePath = QDir::toNativeSeparators( fi.absoluteDir().absolutePath() );
 
       // Convert internal links
       static QRegularExpression rx3( R"lit(href="(bword:|gdlookup://localhost/)([^"]+)")lit" );
@@ -243,11 +214,11 @@ void saveArticle( ArticleView * view, QWidget * parent, Config::Class & cfg, QWi
         filterAndCollectResources( html, rx1, "\"", folder, resourceIncluded, downloadResources );
         filterAndCollectResources( html, rx2, "'", folder, resourceIncluded, downloadResources );
 
-        auto * progressDialog = new ArticleSaveProgressDialog( parent );
+        auto * progressDialog = new ArticleSaveProgressDialog( uiParent_ );
         int maxVal = 1; // main html
 
         for ( auto const & p : downloadResources ) {
-          ResourceToSaveHandler * handler = view->saveResource( p.first, p.second );
+          ResourceToSaveHandler * handler = view_->saveResource( p.first, p.second );
           if ( !handler->isEmpty() ) {
             maxVal += 1;
             QObject::connect( handler, &ResourceToSaveHandler::done, progressDialog, &ArticleSaveProgressDialog::perform );
@@ -269,7 +240,7 @@ void saveArticle( ArticleView * view, QWidget * parent, Config::Class & cfg, QWi
         file.write( html.toUtf8() );
       }
 
-      showStatusMessage( QObject::tr( "Save article complete" ), 5000 );
+      emit statusMessage( QObject::tr( "Save article complete" ), 5000 );
     }
   } );
 }

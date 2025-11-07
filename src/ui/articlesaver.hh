@@ -2,6 +2,7 @@
 #pragma once
 
 #include <QWidget>
+#include <QObject>
 #include <QProgressDialog>
 
 class QWidget;
@@ -41,12 +42,28 @@ class Class;
 class QWidget;
 
 namespace ArticleSaver {
-// Save the article shown in `view` using UI parent `parent`.
-// If `statusBar` is provided, completion/error messages are shown there.
-// This function mirrors the existing behavior in `MainWindow::on_saveArticle_triggered`
-// and `ScanPopup::saveArticleButton_clicked()` and is intentionally synchronous
-// in its API while performing necessary asynchronous operations internally.
-// `statusWidget` may be a pointer to `QStatusBar` (main window) or to
-// `MainStatusBar` (popup). Pass nullptr to skip status updates.
-void saveArticle( ArticleView * view, QWidget * parent, Config::Class & cfg, QWidget * statusWidget = nullptr );
-}
+// Article saver object that performs the same logic as the old free function.
+// It emits `statusMessage` for UI code to present to the user (status bars,
+// notifications, etc.). The saver itself is a QObject so it can be used with
+// Qt's signal/slot mechanism and can be parented for automatic cleanup.
+class ArticleSaver: public QObject
+{
+	Q_OBJECT
+
+public:
+	explicit ArticleSaver( ArticleView * view, QWidget * uiParent, Config::Class & cfg );
+	~ArticleSaver() override;
+
+	// Start the save operation. The operation is asynchronous where needed
+	// (e.g. resource downloads), but `save()` returns immediately.
+	void save();
+
+signals:
+	void statusMessage( const QString & text, int timeout );
+private:
+	ArticleView * view_;
+	QWidget * uiParent_;
+	Config::Class & cfg_;
+};
+
+} // namespace ArticleSaver
