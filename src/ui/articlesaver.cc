@@ -69,7 +69,7 @@ static void filterAndCollectResources( QString & html,
     match = rx.match( html, pos );
   }
 }
-}
+} // namespace
 
 namespace ArticleSaver {
 
@@ -181,7 +181,7 @@ void ArticleSaver::save()
       QRegularExpression anchorRx( "(g[0-9a-f]{32}_[0-9a-f]+_)" );
       auto match = rx3.match( html, pos );
       while ( match.hasMatch() ) {
-        pos = match.capturedStart();
+        pos          = match.capturedStart();
         QString name = QUrl::fromPercentEncoding( match.captured( 2 ).simplified().toLatin1() );
         QString anchor;
         name.replace( "?gdanchor=", "#" );
@@ -221,7 +221,10 @@ void ArticleSaver::save()
           ResourceToSaveHandler * handler = view_->saveResource( p.first, p.second );
           if ( !handler->isEmpty() ) {
             maxVal += 1;
-            QObject::connect( handler, &ResourceToSaveHandler::done, progressDialog, &ArticleSaveProgressDialog::perform );
+            QObject::connect( handler,
+                              &ResourceToSaveHandler::done,
+                              progressDialog,
+                              &ArticleSaveProgressDialog::perform );
           }
         }
 

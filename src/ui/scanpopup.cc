@@ -159,7 +159,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( translateBox, &TranslateBox::returnPressed, this, &ScanPopup::translateInputFinished );
 
   ui.pronounceButton->setDisabled( true );
-  
+
   groupList->fill( groups );
   groupList->setCurrentGroup( cfg.lastPopupGroupId );
 
