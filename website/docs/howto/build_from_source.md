@@ -5,15 +5,16 @@ The `Release-*` and `PR-check-*` workflow files under `.github` in the source co
 * C++17 compiler (For windows it must be MSVC)
 * Latest QT6
 
-For debian/ubuntu, those packages are needed
+For Debian/Ubuntu, those packages are needed:
 
 ```shell
-libavformat-dev libavutil-dev libbz2-dev libeb16-dev libhunspell-dev \
-liblzma-dev liblzo2-dev libopencc-dev libvorbis-dev \
-libx11-dev libxtst-dev libzim-dev libzstd-dev qt6-5compat-dev \
-qt6-base-dev qt6-multimedia-dev qt6-speech-dev qt6-svg-dev \
-qt6-tools-dev qt6-tools-dev-tools qt6-webchannel-dev \
-qt6-webengine-dev x11proto-record-dev zlib1g-dev
+sudo apt-get install build-essential ninja-build \
+libvorbis-dev zlib1g-dev libhunspell-dev x11proto-record-dev \
+libxtst-dev liblzo2-dev libbz2-dev libavutil-dev libavformat-dev \
+libeb16-dev libzstd-dev libxkbcommon-dev libxapian-dev libzim-dev \
+libopencc-dev qt6-5compat-dev qt6-base-dev qt6-multimedia-dev \
+qt6-speech-dev qt6-svg-dev qt6-tools-dev qt6-tools-dev-tools \
+qt6-webchannel-dev qt6-webengine-dev
 ```
 
 In other words, those libraries
