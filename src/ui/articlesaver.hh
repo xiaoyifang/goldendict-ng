@@ -48,22 +48,23 @@ namespace ArticleSaver {
 // Qt's signal/slot mechanism and can be parented for automatic cleanup.
 class ArticleSaver: public QObject
 {
-	Q_OBJECT
+  Q_OBJECT
 
 public:
-	explicit ArticleSaver( ArticleView * view, QWidget * uiParent, Config::Class & cfg );
-	~ArticleSaver() override;
+  explicit ArticleSaver( ArticleView * view, QWidget * uiParent, Config::Class & cfg );
+  ~ArticleSaver() override;
 
-	// Start the save operation. The operation is asynchronous where needed
-	// (e.g. resource downloads), but `save()` returns immediately.
-	void save();
+  // Start the save operation. The operation is asynchronous where needed
+  // (e.g. resource downloads), but `save()` returns immediately.
+  void save();
 
 signals:
-	void statusMessage( const QString & text, int timeout );
+  void statusMessage( const QString & text, int timeout );
+
 private:
-	ArticleView * view_;
-	QWidget * uiParent_;
-	Config::Class & cfg_;
+  ArticleView * view_;
+  QWidget * uiParent_;
+  Config::Class & cfg_;
 };
 
 } // namespace ArticleSaver

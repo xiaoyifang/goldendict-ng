@@ -953,14 +953,13 @@ void ScanPopup::pronounceButton_clicked() const
   definition->playSound();
 }
 
-void ScanPopup::saveArticleButton_clicked() 
+void ScanPopup::saveArticleButton_clicked()
 {
   // Delegate to centralized saver object; ScanPopup will display status messages
   auto * saver = new ArticleSaver::ArticleSaver( definition, this, cfg );
-  connect( saver,
-           &ArticleSaver::ArticleSaver::statusMessage,
-           this,
-           [ this ]( const QString & message, int timeout ) { showStatusBarMessage( message, timeout ); } );
+  connect( saver, &ArticleSaver::ArticleSaver::statusMessage, this, [ this ]( const QString & message, int timeout ) {
+    showStatusBarMessage( message, timeout );
+  } );
   saver->save();
 }
 

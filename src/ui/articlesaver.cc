@@ -169,7 +169,9 @@ void ArticleSaver::save()
   view_->toHtml( [ this, fileName, complete, rxName ]( QString & html ) mutable {
     QFile file( fileName );
     if ( !file.open( QIODevice::WriteOnly ) ) {
-      QMessageBox::critical( uiParent_, QObject::tr( "Error" ), QObject::tr( "Can't save article: %1" ).arg( file.errorString() ) );
+      QMessageBox::critical( uiParent_,
+                             QObject::tr( "Error" ),
+                             QObject::tr( "Can't save article: %1" ).arg( file.errorString() ) );
     }
     else {
       QFileInfo fi( fileName );
@@ -215,9 +217,9 @@ void ArticleSaver::save()
         filterAndCollectResources( html, rx2, "'", folder, resourceIncluded, downloadResources );
 
         auto * progressDialog = new ArticleSaveProgressDialog( uiParent_ );
-        int maxVal = 1; // main html
+        int maxVal            = 1; // main html
 
-        for ( auto const & p : downloadResources ) {
+        for ( const auto & p : downloadResources ) {
           ResourceToSaveHandler * handler = view_->saveResource( p.first, p.second );
           if ( !handler->isEmpty() ) {
             maxVal += 1;

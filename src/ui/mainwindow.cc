@@ -3377,10 +3377,9 @@ void MainWindow::on_saveArticle_triggered()
     return;
   }
   auto * saver = new ArticleSaver::ArticleSaver( view, this, cfg );
-  connect( saver,
-           &ArticleSaver::ArticleSaver::statusMessage,
-           this,
-           [ this ]( const QString & message, int timeout ) { mainStatusBar->showMessage( message, timeout ); } );
+  connect( saver, &ArticleSaver::ArticleSaver::statusMessage, this, [ this ]( const QString & message, int timeout ) {
+    mainStatusBar->showMessage( message, timeout );
+  } );
   saver->save();
 }
 
