@@ -825,7 +825,7 @@ string DslDictionary::nodeToHtml( const ArticleDom::Node & node )
       result += addAudioLink( url.toEncoded(), getId() );
 
       result += "<span class=\"dsl_s_wav\"><a href=" + ref
-        + R"(><img src="qrc:///icons/playsound.png" border="0" align="absmiddle" alt="Play"/></a></span>)";
+        + R"(><img src="qrc:///icons/playsound.svg" border="0" align="absmiddle" alt="Play"/></a></span>)";
     }
     else if ( Filetype::isNameOfPicture( filename ) ) {
       QUrl url;

@@ -668,7 +668,7 @@ string convert( const string & in,
           el_span.appendChild( el_a );
 
           QDomElement el_img = dd.createElement( "img" );
-          el_img.setAttribute( "src", "qrc:///icons/playsound.png" );
+          el_img.setAttribute( "src", "qrc:///icons/playsound.svg" );
           el_img.setAttribute( "border", "0" );
           el_img.setAttribute( "align", "absmiddle" );
           el_img.setAttribute( "alt", "Play" );
