@@ -442,7 +442,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const Config::SoundDirs & 
 
     bool rebuildNeeded;
 
-    if ( indexIsOldOrBad( indexFile ) ) {
+    if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) ) {
       rebuildNeeded = true;
     }
     else {
@@ -512,9 +512,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const Config::SoundDirs & 
 
       File::Index idx( indexFile, QIODevice::WriteOnly );
 
-      IdxHeader idxHeader;
-
-      memset( &idxHeader, 0, sizeof( idxHeader ) );
+      IdxHeader idxHeader = {};
 
       // We write a dummy header first. At the end of the process the header
       // will be rewritten with the right values.
