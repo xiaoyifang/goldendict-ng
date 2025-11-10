@@ -3,6 +3,21 @@
 #include "config.hh"
 #include "pronounceengine.hh"
 #include "dictionary_icon_name.hh"
+#include "sptr.hh"
+#include <QScopedPointer>
+#include <vector>
+
+// Forward declarations to break a circular dependency.
+// dictionary.hh includes globalbroadcaster.hh, and globalbroadcaster.hh
+// needs types from dictionary.hh.
+namespace Dictionary {
+class Class;
+}
+namespace Instances {
+struct Groups;
+}
+class AudioPlayerInterface;
+using AudioPlayerPtr = QScopedPointer< AudioPlayerInterface >;
 
 struct ActiveDictIds
 {
@@ -22,12 +37,21 @@ class GlobalBroadcaster: public QObject
   Q_OBJECT
 
   Config::Class * config = nullptr;
+  const AudioPlayerPtr * audioPlayer                         = nullptr;
+  std::vector< sptr< Dictionary::Class > > * allDictionaries = nullptr;
+  Instances::Groups * groups                                 = nullptr;
   QSet< QString > whitelist;
   Icons::DictionaryIconName _icon_names;
 
 public:
   void setConfig( Config::Class * _config );
   Config::Class * getConfig() const;
+  void setAudioPlayer( const AudioPlayerPtr * _audioPlayer );
+  const AudioPlayerPtr * getAudioPlayer() const;
+  void setAllDictionaries( std::vector< sptr< Dictionary::Class > > * _allDictionaries );
+  const std::vector< sptr< Dictionary::Class > > * getAllDictionaries() const;
+  void setGroups( Instances::Groups * _groups );
+  const Instances::Groups * getGroups() const;
   // For backward compatibility
   Config::Preferences * getPreference() const;
   GlobalBroadcaster( QObject * parent = nullptr );

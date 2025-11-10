@@ -94,9 +94,6 @@ public:
   /// The groups aren't copied -- rather than that, the reference is kept
   ArticleView( QWidget * parent,
                ArticleNetworkAccessManager &,
-               const AudioPlayerPtr &,
-               const std::vector< sptr< Dictionary::Class > > & allDictionaries,
-               const Instances::Groups &,
                bool popupView,
                const Config::Class & cfg,
                const QLineEdit * translateLine,

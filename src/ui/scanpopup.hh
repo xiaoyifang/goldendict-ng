@@ -30,13 +30,7 @@ class ScanPopup: public QMainWindow, KeyboardState
 
 public:
 
-  ScanPopup( QWidget * parent,
-             Config::Class & cfg,
-             ArticleNetworkAccessManager &,
-             const AudioPlayerPtr &,
-             const std::vector< sptr< Dictionary::Class > > & allDictionaries,
-             const Instances::Groups &,
-             History & );
+  ScanPopup( QWidget * parent, Config::Class & cfg, ArticleNetworkAccessManager &, History & );
 
   ~ScanPopup();
 

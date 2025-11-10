@@ -182,6 +182,9 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 #endif
 
   GlobalBroadcaster::instance()->setConfig( &cfg );
+  GlobalBroadcaster::instance()->setAudioPlayer( &audioPlayerFactory.player() );
+  GlobalBroadcaster::instance()->setAllDictionaries( &dictionaries );
+  GlobalBroadcaster::instance()->setGroups( &groupInstances );
 
   localSchemeHandler     = new LocalSchemeHandler( articleNetMgr, this );
   QStringList htmlScheme = { "gdlookup", "bword", "entry", "gdinternal" };
@@ -806,8 +809,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   }
 
   // Scanpopup related
-  scanPopup =
-    new ScanPopup( nullptr, cfg, articleNetMgr, audioPlayerFactory.player(), dictionaries, groupInstances, history );
+  scanPopup = new ScanPopup( nullptr, cfg, articleNetMgr, history );
 
   scanPopup->setStyleSheet( styleSheet() );
 
@@ -1776,9 +1778,6 @@ ArticleView * MainWindow::createNewTab( bool switchToIt, const QString & name )
 {
   ArticleView * view = new ArticleView( this,
                                         articleNetMgr,
-                                        audioPlayerFactory.player(),
-                                        dictionaries,
-                                        groupInstances,
                                         false,
                                         cfg,
                                         translateLine,
