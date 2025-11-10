@@ -126,7 +126,7 @@ const Instances::Groups * GlobalBroadcaster::getGroups() const
 void GlobalBroadcaster::addLsaDictMapping( const QString & dictId, const QString & path )
 {
   auto nativePath = QDir::toNativeSeparators( path );
-  lsaIdToPathMap.insert( dictId,  nativePath );
+  lsaIdToPathMap.insert( dictId, nativePath );
   lsaPathToIdMap.insert( nativePath, dictId );
 }
 
