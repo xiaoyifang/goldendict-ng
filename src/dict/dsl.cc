@@ -33,6 +33,7 @@
 #include <QSvgRenderer>
 #include <QtConcurrentRun>
 #include "utils.hh"
+#include "common/globalbroadcaster.hh"
 
 namespace Dsl {
 
@@ -1619,7 +1620,46 @@ void DslResourceRequest::run()
       }
     }
     else {
-      throw std::runtime_error( "Resource zip not opened" );
+      // try the .lsa dictionary if existed.
+      // The original resource request failed. Let's try to find a matching .lsa dictionary.
+      QString containingFolder = dict.getContainingFolder();
+      if ( !containingFolder.isEmpty() ) {
+        QDir dir( containingFolder );
+        QStringList lsaFiles = dir.entryList( QStringList() << "*.lsa", QDir::Files );
+
+        if ( !lsaFiles.isEmpty() ) {
+          QString lsaFilePath = dir.absoluteFilePath( lsaFiles.first() );
+          QString lsaDictId   = GlobalBroadcaster::instance()->getLsaIdFromPath( lsaFilePath );
+
+          if ( !lsaDictId.isEmpty() ) {
+            const auto * allDictionaries = GlobalBroadcaster::instance()->getAllDictionaries();
+            if ( allDictionaries ) {
+              sptr< Dictionary::Class > lsaDict;
+              for ( const auto & dictionary : *allDictionaries ) {
+                if ( QString::fromStdString( dictionary->getId() ) == lsaDictId ) {
+                  lsaDict = dictionary;
+                  break;
+                }
+              }
+
+              if ( lsaDict ) {
+                sptr< Dictionary::DataRequest > lsaReq = lsaDict->getResource( resourceName );
+
+                if ( lsaReq->isFinished() && lsaReq->hasData() ) {
+                  QMutexLocker _( &dataMutex );
+                  data       = lsaReq->getFullData();
+                  hasAnyData = true;
+                }
+              }
+            }
+          }
+        }
+      }
+      if ( !hasAnyData ) {
+        qWarning() << "DSL: Failed loading resource" << QString::fromStdString( resourceName ) << "for"
+                   << QString::fromStdString( dict.getName() ) << ", reason:" << ex.what();
+        throw std::runtime_error( "Resource not found." );
+      }
     }
 
     if ( Filetype::isNameOfTiff( resourceName ) ) {
@@ -1629,14 +1669,7 @@ void DslResourceRequest::run()
 
     hasAnyData = true;
   }
-  catch ( std::exception & ex ) {
-    qWarning( "DSL: Failed loading resource \"%s\" for \"%s\", reason: %s",
-              resourceName.c_str(),
-              dict.getName().c_str(),
-              ex.what() );
-    // Resource not loaded -- we don't set the hasAnyData flag then
-  }
-
+  
   finish();
 }
 
