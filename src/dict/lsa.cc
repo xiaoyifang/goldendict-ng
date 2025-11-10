@@ -20,6 +20,7 @@
 #include <QFile>
 
 #include "utils.hh"
+#include "globalbroadcaster.hh"
 
 namespace Lsa {
 
@@ -526,6 +527,9 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
       vector< string > dictFiles( 1, *i );
 
       string dictId = Dictionary::makeDictionaryId( dictFiles );
+
+      GlobalBroadcaster::instance()->addLsaDictMapping( QString::fromStdString( dictId ),
+                                                       QString::fromStdString( *i ) );
 
       string indexFile = indicesDir + dictId;
 

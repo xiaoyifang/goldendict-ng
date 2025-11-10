@@ -113,6 +113,22 @@ const Instances::Groups * GlobalBroadcaster::getGroups() const
   return groups;
 }
 
+void GlobalBroadcaster::addLsaDictMapping( const QString & dictId, const QString & path )
+{
+  lsaIdToPathMap.insert( dictId, path );
+  lsaPathToIdMap.insert( path, dictId );
+}
+
+QString GlobalBroadcaster::getLsaPathFromId( const QString & dictId ) const
+{
+  return lsaIdToPathMap.value( dictId );
+}
+
+QString GlobalBroadcaster::getLsaIdFromPath( const QString & path ) const
+{
+  return lsaPathToIdMap.value( path );
+}
+
 bool GlobalBroadcaster::isDarkModeEnabled() const
 {
   if ( !config ) {

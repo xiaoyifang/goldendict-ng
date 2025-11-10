@@ -42,6 +42,8 @@ class GlobalBroadcaster: public QObject
   Instances::Groups * groups                                 = nullptr;
   QSet< QString > whitelist;
   Icons::DictionaryIconName _icon_names;
+  QMap< QString, QString > lsaIdToPathMap;
+  QMap< QString, QString > lsaPathToIdMap;
 
 public:
   void setConfig( Config::Class * _config );
@@ -52,6 +54,9 @@ public:
   const std::vector< sptr< Dictionary::Class > > * getAllDictionaries() const;
   void setGroups( Instances::Groups * _groups );
   const Instances::Groups * getGroups() const;
+  void addLsaDictMapping( const QString & dictId, const QString & path );
+  QString getLsaPathFromId( const QString & dictId ) const;
+  QString getLsaIdFromPath( const QString & path ) const;
   // For backward compatibility
   Config::Preferences * getPreference() const;
   GlobalBroadcaster( QObject * parent = nullptr );
