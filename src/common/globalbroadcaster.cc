@@ -1,4 +1,7 @@
 #include "globalbroadcaster.hh"
+#include "dict/dictionary.hh"
+#include "instances.hh"
+#include "audio/audioplayerinterface.hh"
 #include <QGlobalStatic>
 #include <QGuiApplication>
 #include <QStyleHints>
