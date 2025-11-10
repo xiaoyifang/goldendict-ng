@@ -80,6 +80,36 @@ QString GlobalBroadcaster::getAbbrName( const QString & text )
   return _icon_names.getIconName( simplified );
 }
 
+void GlobalBroadcaster::setAudioPlayer( const AudioPlayerPtr * _audioPlayer )
+{
+  audioPlayer = _audioPlayer;
+}
+
+const AudioPlayerPtr * GlobalBroadcaster::getAudioPlayer() const
+{
+  return audioPlayer;
+}
+
+void GlobalBroadcaster::setAllDictionaries( std::vector< sptr< Dictionary::Class > > * _allDictionaries )
+{
+  allDictionaries = _allDictionaries;
+}
+
+const std::vector< sptr< Dictionary::Class > > * GlobalBroadcaster::getAllDictionaries() const
+{
+  return allDictionaries;
+}
+
+void GlobalBroadcaster::setGroups( Instances::Groups * _groups )
+{
+  groups = _groups;
+}
+
+const Instances::Groups * GlobalBroadcaster::getGroups() const
+{
+  return groups;
+}
+
 bool GlobalBroadcaster::isDarkModeEnabled() const
 {
   if ( !config ) {

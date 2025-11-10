@@ -33,9 +33,6 @@ public:
   ScanPopup( QWidget * parent,
              Config::Class & cfg,
              ArticleNetworkAccessManager &,
-             const AudioPlayerPtr &,
-             const std::vector< sptr< Dictionary::Class > > & allDictionaries,
-             const Instances::Groups &,
              History & );
 
   ~ScanPopup();
