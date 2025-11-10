@@ -3325,10 +3325,6 @@ ve muhtemelen indirme sayfasını açar.</translation>
       <translation>Azami geçmiş boyutu:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Tarih kaydetme aralığı. 0 olarak ayarlanırsa, geçmiş yalnızca çıkış sırasında kaydedilir.</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>Hepsini kaydet</translation>
     </message>
