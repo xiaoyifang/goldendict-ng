@@ -3319,10 +3319,6 @@ download page.</source>
       <translation>Максімальны памер гісторыі:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Інтэрвал захавання гісторыі. Калі 0, гісторыя будзе захоўвацца толькі перад выхадам.</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>Захоўваць кожныя</translation>
     </message>
