@@ -3327,10 +3327,6 @@ para su descarga.</translation>
       <translation>Tamaño máximo del historial:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Intervalo de tiempo para guardar el historial. Si se pone a 0, el historial se guardará sólo al terminar.</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>Guardar cada</translation>
     </message>
