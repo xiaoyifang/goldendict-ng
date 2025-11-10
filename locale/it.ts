@@ -3327,10 +3327,6 @@ e si collega al sito del programma.</translation>
       <translation>Dimensione massima della cronologia:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Intervallo di salvataggio della cronologia. Impostando il valore 0 la cronologia verrà salvata soltanto alla chiusura del programma.</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>Salva ogni </translation>
     </message>
