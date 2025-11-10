@@ -106,6 +106,9 @@ public:
   /// Tells the current position within the file, relative to its beginning.
   qint64 tell();
 
+  /// Returns file size.
+  qint64 size();
+
   /// QFile::atEnd() const
   bool eof() const;
 
