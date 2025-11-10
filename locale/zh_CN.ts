@@ -3315,10 +3315,6 @@ download page.</source>
       <translation>最大历史条数：</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>历史保存周期。若为 0 则只在程序退出时保存。</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>保存周期：</translation>
     </message>
