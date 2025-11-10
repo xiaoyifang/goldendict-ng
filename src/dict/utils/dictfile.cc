@@ -38,7 +38,7 @@ bool tryPossibleZipName( const std::string & name, std::string & copyTo )
 void loadFromFile( const std::string & filename, std::vector< char > & data )
 {
   File::Index f( filename, QIODevice::ReadOnly );
-  auto size = f.file().size(); // QFile::size() obtains size via statx on Linux
+  auto size = f.size();
   data.resize( size );
   f.read( data.data(), size );
 }
@@ -157,6 +157,11 @@ void Index::rewind()
 qint64 Index::tell()
 {
   return f.pos();
+}
+
+qint64 Index::size()
+{
+  return f.size();
 }
 
 bool Index::eof() const
