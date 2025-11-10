@@ -14,6 +14,9 @@
 #include <set>
 #include <QFileInfo>
 #include <QDirIterator>
+#include <QDateTime>
+#include <QDataStream>
+#include <QSet>
 
 namespace SoundDir {
 
@@ -29,7 +32,7 @@ namespace {
 
 enum {
   Signature            = 0x58524453, // SDRX on little-endian, XRDS on big-endian
-  CurrentFormatVersion = 1 + BtreeIndexing::FormatVersion + Folding::Version
+  CurrentFormatVersion = 2 + BtreeIndexing::FormatVersion + Folding::Version
 };
 
 #pragma pack( push, 1 )
@@ -39,6 +42,7 @@ struct IdxHeader
   uint32_t formatVersion;         // File format version, is to be CurrentFormatVersion
   uint32_t soundsCount;           // Total number of sounds, for informative purposes only
   uint32_t chunksOffset;          // The offset to chunks' storage
+  uint32_t dirTimestampsOffset;   // Offset to directory timestamps map
   uint32_t indexBtreeMaxElements; // Two fields from IndexInfo
   uint32_t indexRootOffset;
 };
@@ -438,29 +442,68 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const Config::SoundDirs & 
 
     string indexFile = indicesDir + dictId;
 
-    // Check if the soundDir and its subdirs' modification date changed, that means the user modified the sound files inside
+    bool rebuildNeeded;
 
-    bool soundDirModified = false;
-    {
-      QDateTime indexFileModifyTime = QFileInfo( QString::fromStdString( indexFile ) ).lastModified();
-      QDirIterator it( dir.path(),
-                       QDir::AllDirs | QDir::NoDotAndDotDot | QDir::NoSymLinks,
-                       QDirIterator::Subdirectories );
+    if ( indexIsOldOrBad( indexFile ) ) {
+      rebuildNeeded = true;
+    }
+    else {
+      rebuildNeeded = false; // Assume it's fine
+      try {
+        File::Index idx( indexFile, QIODevice::ReadOnly );
+        IdxHeader header = idx.read< IdxHeader >();
+        idx.seek( header.dirTimestampsOffset );
 
-      QDeadlineTimer deadline( 4000 );
-      while ( it.hasNext() && !deadline.hasExpired() ) {
-        it.next();
-        if ( it.fileInfo().lastModified() > indexFileModifyTime ) {
-          soundDirModified = true;
-          break;
+        // Reading the data for QDataStream
+        vector< char > data;
+        data.resize( idx.size() - header.dirTimestampsOffset );
+        idx.read( &data.front(), data.size() );
+        QByteArray timestampData = QByteArray::fromRawData( data.data(), data.size() );
+        QDataStream stream( &timestampData, QIODevice::ReadOnly );
+
+        QMap< QString, QDateTime > storedTimestamps;
+        stream >> storedTimestamps;
+
+        QSet< QString > onDiskDirs;
+
+        // Check root dir
+        QFileInfo rootInfo( dir.path() );
+        QString rootRelPath = ".";
+        onDiskDirs.insert( rootRelPath );
+        if ( !storedTimestamps.contains( rootRelPath ) || storedTimestamps.value( rootRelPath ) != rootInfo.lastModified() ) {
+          rebuildNeeded = true;
+        }
+
+        // Check subdirs
+        if ( !rebuildNeeded ) {
+          QDirIterator it( dir.path(),
+                           QDir::AllDirs | QDir::NoDotAndDotDot | QDir::NoSymLinks,
+                           QDirIterator::Subdirectories );
+          while ( it.hasNext() ) {
+            it.next();
+            QString relPath = dir.relativeFilePath( it.filePath() );
+            onDiskDirs.insert( relPath );
+            if ( !storedTimestamps.contains( relPath ) || storedTimestamps.value( relPath ) != it.fileInfo().lastModified() ) {
+              rebuildNeeded = true;
+              break;
+            }
+          }
+        }
+
+        // Check for deleted directories
+        if ( !rebuildNeeded && onDiskDirs.size() != storedTimestamps.size() ) {
+          rebuildNeeded = true;
         }
       }
-      if ( deadline.hasExpired() ) {
-        qDebug() << "SoundDir modification scanning timed out.";
+      catch ( std::exception & e ) {
+        qWarning( "Could not verify sounddir index for %s, forcing rebuild. Error: %s",
+                  soundDir.path.toUtf8().constData(),
+                  e.what() );
+        rebuildNeeded = true;
       }
     }
 
-    if ( Dictionary::needToRebuildIndex( dictFiles, indexFile ) || indexIsOldOrBad( indexFile ) || soundDirModified ) {
+    if ( rebuildNeeded ) {
       // Building the index
 
       qDebug() << "Sounds: Building the index for directory: " << soundDir.path;
@@ -498,6 +541,26 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const Config::SoundDirs & 
 
       idxHeader.indexBtreeMaxElements = idxInfo.btreeMaxElements;
       idxHeader.indexRootOffset       = idxInfo.rootOffset;
+
+      // Write directory timestamps
+      idxHeader.dirTimestampsOffset = idx.tell();
+      QMap< QString, QDateTime > dirTimestamps;
+      QDirIterator it( dir.path(),
+                       QDir::AllDirs | QDir::NoDotAndDotDot | QDir::NoSymLinks,
+                       QDirIterator::Subdirectories );
+      while ( it.hasNext() ) {
+        it.next();
+        dirTimestamps.insert( dir.relativeFilePath( it.filePath() ), it.fileInfo().lastModified() );
+      }
+      // Also add the root dir itself
+      dirTimestamps.insert( QString( "." ), QFileInfo( dir.path() ).lastModified() );
+
+      // Now write the map to the file
+      QByteArray timestampData;
+      QDataStream stream( &timestampData, QIODevice::WriteOnly );
+      stream << dirTimestamps;
+      idx.write( timestampData.constData(), timestampData.size() );
+
 
       // That concludes it. Update the header.
 
