@@ -529,7 +529,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
       string dictId = Dictionary::makeDictionaryId( dictFiles );
 
       GlobalBroadcaster::instance()->addLsaDictMapping( QString::fromStdString( dictId ),
-                                                       QString::fromStdString( *i ) );
+                                                        QString::fromStdString( *i ) );
 
       string indexFile = indicesDir + dictId;
 
