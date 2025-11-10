@@ -3332,10 +3332,6 @@ GoldenDict. Ако се појави нова верзија,  програмо�
       <translation>Максимална големина на историјата:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Период на чување на историјата. Ако се постави на 0 историјата ќесе чува само додека не излеземе.</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>Меморирај на секои</translation>
     </message>
