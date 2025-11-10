@@ -3332,10 +3332,6 @@ saken och ber denna att öppna en hämtningssida.</translation>
       <translation>Största historikstorlek:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Sparintervall för historiken. Ange till 0 för att endast  spara historiken vid programavslut.</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>Spara var</translation>
     </message>
