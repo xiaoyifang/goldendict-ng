@@ -3335,10 +3335,6 @@ e pergunta se ele deseja visitar a página de download.</translation>
       <translation>Tamanho máximo do histórico:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Intervalo ao salvar o histórico. Se definido histórico como 0, será salvo apenas durante a saída.</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>Salvar tudo</translation>
     </message>
