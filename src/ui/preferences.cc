@@ -240,7 +240,6 @@ Preferences::Preferences( QWidget * parent, Config::Class & cfg_ ):
 
   ui.storeHistory->setChecked( p.storeHistory );
   ui.historyMaxSizeField->setValue( p.maxStringsInHistory );
-  ui.historySaveIntervalField->setValue( p.historyStoreInterval );
   ui.alwaysExpandOptionalParts->setChecked( p.alwaysExpandOptionalParts );
 
   ui.favoritesSaveIntervalField->setValue( p.favoritesStoreInterval );
@@ -508,7 +507,6 @@ Config::Preferences Preferences::getPreferences()
 
   p.storeHistory              = ui.storeHistory->isChecked();
   p.maxStringsInHistory       = ui.historyMaxSizeField->text().toUInt();
-  p.historyStoreInterval      = ui.historySaveIntervalField->text().toUInt();
   p.alwaysExpandOptionalParts = ui.alwaysExpandOptionalParts->isChecked();
 
   p.favoritesStoreInterval   = ui.favoritesSaveIntervalField->text().toUInt();

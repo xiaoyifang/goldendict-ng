@@ -19,8 +19,7 @@ History::History( unsigned size, unsigned maxItemLength_ ):
   maxSize( size ),
   maxItemLength( maxItemLength_ ),
   addingEnabled( true ),
-  dirty( false ),
-  timerId( 0 )
+  dirty( false )
 {
   // First try to load from main history file
   QFile file( Config::getHistoryFileName() );
@@ -156,26 +155,6 @@ void History::clear()
 
   // Remove temporary file when clearing history
   removeTemp();
-}
-
-void History::setSaveInterval( unsigned interval )
-{
-  if ( timerId != 0 ) {
-    killTimer( timerId );
-    timerId = 0;
-  }
-  if ( interval != 0 ) {
-    if ( dirty ) {
-      save();
-    }
-    timerId = startTimer( interval * 60000 );
-  }
-}
-
-void History::timerEvent( QTimerEvent * ev )
-{
-  Q_UNUSED( ev );
-  save();
 }
 
 void History::saveTemp( const Item & item, QChar operation )

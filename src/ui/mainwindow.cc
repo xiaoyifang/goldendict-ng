@@ -900,7 +900,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   wasMaximized = isMaximized();
 
-  history.setSaveInterval( cfg.preferences.historyStoreInterval );
 #ifndef Q_OS_MACOS
   ui.centralWidget->grabGesture( Gestures::GDPinchGestureType );
   ui.centralWidget->grabGesture( Gestures::GDSwipeGestureType );
@@ -2274,11 +2273,6 @@ void MainWindow::editPreferences()
                          p.interfaceStyle
 #endif
       );
-    }
-
-
-    if ( cfg.preferences.historyStoreInterval != p.historyStoreInterval ) {
-      history.setSaveInterval( p.historyStoreInterval );
     }
 
     if ( cfg.preferences.favoritesStoreInterval != p.favoritesStoreInterval ) {
