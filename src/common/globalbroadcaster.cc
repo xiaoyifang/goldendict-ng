@@ -125,8 +125,9 @@ const Instances::Groups * GlobalBroadcaster::getGroups() const
 
 void GlobalBroadcaster::addLsaDictMapping( const QString & dictId, const QString & path )
 {
-  lsaIdToPathMap.insert( dictId, path );
-  lsaPathToIdMap.insert( path, dictId );
+  auto nativePath = QDir::toNativeSeparators( path );
+  lsaIdToPathMap.insert( dictId,  nativePath );
+  lsaPathToIdMap.insert( nativePath, dictId );
 }
 
 QString GlobalBroadcaster::getLsaPathFromId( const QString & dictId ) const
@@ -136,7 +137,8 @@ QString GlobalBroadcaster::getLsaPathFromId( const QString & dictId ) const
 
 QString GlobalBroadcaster::getLsaIdFromPath( const QString & path ) const
 {
-  return lsaPathToIdMap.value( path );
+  auto nativePath = QDir::toNativeSeparators( path );
+  return lsaPathToIdMap.value( nativePath );
 }
 
 bool GlobalBroadcaster::isDarkModeEnabled() const
