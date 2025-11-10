@@ -1637,7 +1637,7 @@ void DslResourceRequest::run()
             if ( lsaDict ) {
               sptr< Dictionary::DataRequest > lsaReq = lsaDict->getResource( resourceName );
 
-              if ( lsaReq->isFinished() && lsaReq->hasData() ) {
+              if ( lsaReq->isFinished() && lsaReq->dataSize() > 0 ) {
                 QMutexLocker _( &dataMutex );
                 data       = lsaReq->getFullData();
                 hasAnyData = true;
