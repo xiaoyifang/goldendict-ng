@@ -96,11 +96,21 @@ const AudioPlayerPtr * GlobalBroadcaster::getAudioPlayer() const
 void GlobalBroadcaster::setAllDictionaries( std::vector< sptr< Dictionary::Class > > * _allDictionaries )
 {
   allDictionaries = _allDictionaries;
+  if ( allDictionaries ) {
+    for ( const auto & dict : *allDictionaries ) {
+      dictMap.insert( QString::fromStdString( dict->getId() ), dict );
+    }
+  }
 }
 
 const std::vector< sptr< Dictionary::Class > > * GlobalBroadcaster::getAllDictionaries() const
 {
   return allDictionaries;
+}
+
+sptr< Dictionary::Class > GlobalBroadcaster::getDictionaryById( const QString & dictId ) const
+{
+  return dictMap.value( dictId );
 }
 
 void GlobalBroadcaster::setGroups( Instances::Groups * _groups )

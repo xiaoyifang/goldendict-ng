@@ -1632,24 +1632,15 @@ void DslResourceRequest::run()
           QString lsaDictId   = GlobalBroadcaster::instance()->getLsaIdFromPath( lsaFilePath );
 
           if ( !lsaDictId.isEmpty() ) {
-            const auto * allDictionaries = GlobalBroadcaster::instance()->getAllDictionaries();
-            if ( allDictionaries ) {
-              sptr< Dictionary::Class > lsaDict;
-              for ( const auto & dictionary : *allDictionaries ) {
-                if ( QString::fromStdString( dictionary->getId() ) == lsaDictId ) {
-                  lsaDict = dictionary;
-                  break;
-                }
-              }
+            sptr< Dictionary::Class > lsaDict = GlobalBroadcaster::instance()->getDictionaryById( lsaDictId );
 
-              if ( lsaDict ) {
-                sptr< Dictionary::DataRequest > lsaReq = lsaDict->getResource( resourceName );
+            if ( lsaDict ) {
+              sptr< Dictionary::DataRequest > lsaReq = lsaDict->getResource( resourceName );
 
-                if ( lsaReq->isFinished() && lsaReq->hasData() ) {
-                  QMutexLocker _( &dataMutex );
-                  data       = lsaReq->getFullData();
-                  hasAnyData = true;
-                }
+              if ( lsaReq->isFinished() && lsaReq->hasData() ) {
+                QMutexLocker _( &dataMutex );
+                data       = lsaReq->getFullData();
+                hasAnyData = true;
               }
             }
           }
@@ -1669,7 +1660,7 @@ void DslResourceRequest::run()
 
     hasAnyData = true;
   }
-  
+
   finish();
 }
 

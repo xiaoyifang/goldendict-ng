@@ -44,6 +44,7 @@ class GlobalBroadcaster: public QObject
   Icons::DictionaryIconName _icon_names;
   QMap< QString, QString > lsaIdToPathMap;
   QMap< QString, QString > lsaPathToIdMap;
+  QMap< QString, sptr< Dictionary::Class > > dictMap;
 
 public:
   void setConfig( Config::Class * _config );
@@ -52,6 +53,7 @@ public:
   const AudioPlayerPtr * getAudioPlayer() const;
   void setAllDictionaries( std::vector< sptr< Dictionary::Class > > * _allDictionaries );
   const std::vector< sptr< Dictionary::Class > > * getAllDictionaries() const;
+  sptr< Dictionary::Class > getDictionaryById( const QString & dictId ) const;
   void setGroups( Instances::Groups * _groups );
   const Instances::Groups * getGroups() const;
   void addLsaDictMapping( const QString & dictId, const QString & path );
