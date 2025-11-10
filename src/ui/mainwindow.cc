@@ -809,8 +809,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   }
 
   // Scanpopup related
-  scanPopup =
-    new ScanPopup( nullptr, cfg, articleNetMgr, history );
+  scanPopup = new ScanPopup( nullptr, cfg, articleNetMgr, history );
 
   scanPopup->setStyleSheet( styleSheet() );
 

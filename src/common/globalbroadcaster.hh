@@ -37,9 +37,9 @@ class GlobalBroadcaster: public QObject
   Q_OBJECT
 
   Config::Class * config = nullptr;
-  const AudioPlayerPtr * audioPlayer = nullptr;
+  const AudioPlayerPtr * audioPlayer                         = nullptr;
   std::vector< sptr< Dictionary::Class > > * allDictionaries = nullptr;
-  Instances::Groups * groups = nullptr;
+  Instances::Groups * groups                                 = nullptr;
   QSet< QString > whitelist;
   Icons::DictionaryIconName _icon_names;
 
