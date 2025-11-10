@@ -105,9 +105,9 @@ const std::vector< sptr< Dictionary::Class > > * GlobalBroadcaster::getAllDictio
 
 sptr< Dictionary::Class > GlobalBroadcaster::getDictionaryById( const QString & dictId )
 {
-  if (dictMap.empty()) {
+  if ( dictMap.empty() ) {
     if ( allDictionaries != nullptr ) {
-      for ( const auto& dict : *allDictionaries ) {
+      for ( const auto & dict : *allDictionaries ) {
         dictMap.insert( QString::fromStdString( dict->getId() ), dict );
       }
     }
