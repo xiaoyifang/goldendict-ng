@@ -3331,10 +3331,6 @@ download page.</source>
       <translation>Максимальний розмір історії:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Проміжок збереження історії. Якщо вказати 0, то історія зберігатиметься тільки після виходу з програми.</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>Зберігати кожні</translation>
     </message>
