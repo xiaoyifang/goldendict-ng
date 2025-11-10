@@ -4,6 +4,7 @@
 #include "pronounceengine.hh"
 #include "dictionary_icon_name.hh"
 #include "sptr.hh"
+#include <QMap>
 #include <QScopedPointer>
 #include <vector>
 
