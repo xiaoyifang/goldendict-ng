@@ -103,6 +103,18 @@ const std::vector< sptr< Dictionary::Class > > * GlobalBroadcaster::getAllDictio
   return allDictionaries;
 }
 
+sptr< Dictionary::Class > GlobalBroadcaster::getDictionaryById( const QString & dictId )
+{
+  if ( dictMap.empty() ) {
+    if ( allDictionaries != nullptr ) {
+      for ( const auto & dict : *allDictionaries ) {
+        dictMap.insert( QString::fromStdString( dict->getId() ), dict );
+      }
+    }
+  }
+  return dictMap.value( dictId );
+}
+
 void GlobalBroadcaster::setGroups( Instances::Groups * _groups )
 {
   groups = _groups;
@@ -111,6 +123,24 @@ void GlobalBroadcaster::setGroups( Instances::Groups * _groups )
 const Instances::Groups * GlobalBroadcaster::getGroups() const
 {
   return groups;
+}
+
+void GlobalBroadcaster::addLsaDictMapping( const QString & dictId, const QString & path )
+{
+  auto nativePath = QDir::toNativeSeparators( path );
+  lsaIdToPathMap.insert( dictId, nativePath );
+  lsaPathToIdMap.insert( nativePath, dictId );
+}
+
+QString GlobalBroadcaster::getLsaPathFromId( const QString & dictId ) const
+{
+  return lsaIdToPathMap.value( dictId );
+}
+
+QString GlobalBroadcaster::getLsaIdFromPath( const QString & path ) const
+{
+  auto nativePath = QDir::toNativeSeparators( path );
+  return lsaPathToIdMap.value( nativePath );
 }
 
 bool GlobalBroadcaster::isDarkModeEnabled() const

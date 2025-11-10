@@ -4,6 +4,7 @@
 #include "pronounceengine.hh"
 #include "dictionary_icon_name.hh"
 #include "sptr.hh"
+#include <QMap>
 #include <QScopedPointer>
 #include <vector>
 
@@ -42,6 +43,9 @@ class GlobalBroadcaster: public QObject
   Instances::Groups * groups                                 = nullptr;
   QSet< QString > whitelist;
   Icons::DictionaryIconName _icon_names;
+  QMap< QString, QString > lsaIdToPathMap;
+  QMap< QString, QString > lsaPathToIdMap;
+  QMap< QString, sptr< Dictionary::Class > > dictMap;
 
 public:
   void setConfig( Config::Class * _config );
@@ -50,8 +54,12 @@ public:
   const AudioPlayerPtr * getAudioPlayer() const;
   void setAllDictionaries( std::vector< sptr< Dictionary::Class > > * _allDictionaries );
   const std::vector< sptr< Dictionary::Class > > * getAllDictionaries() const;
+  sptr< Dictionary::Class > getDictionaryById( const QString & dictId );
   void setGroups( Instances::Groups * _groups );
   const Instances::Groups * getGroups() const;
+  void addLsaDictMapping( const QString & dictId, const QString & path );
+  QString getLsaPathFromId( const QString & dictId ) const;
+  QString getLsaIdFromPath( const QString & path ) const;
   // For backward compatibility
   Config::Preferences * getPreference() const;
   GlobalBroadcaster( QObject * parent = nullptr );
