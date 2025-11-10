@@ -382,26 +382,27 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( const string & 
   }
 }
 
-void addDir( const QDir & baseDir,
-             const QDir & dir,
+void addDir( const QDir & dir,
              IndexedWords & indexedWords,
              uint32_t & soundsCount,
              ChunkedStorage::Writer & chunks )
 {
-  const QFileInfoList entries = dir.entryInfoList( QDir::Dirs | QDir::Files | QDir::NoDotAndDotDot );
+  QDirIterator it( dir.path(),
+                   QDir::Files | QDir::NoSymLinks, // We only care about files
+                   QDirIterator::Subdirectories ); // Recurse into subdirectories
 
-  for ( QFileInfoList::const_iterator i = entries.constBegin(); i != entries.constEnd(); ++i ) {
-    if ( i->isDir() ) {
-      addDir( baseDir, QDir( i->absoluteFilePath() ), indexedWords, soundsCount, chunks );
-    }
-    else if ( Filetype::isNameOfSound( i->fileName().toUtf8().data() ) ) {
+  while ( it.hasNext() ) {
+    it.next();
+    const QFileInfo & fileInfo = it.fileInfo();
+
+    if ( Filetype::isNameOfSound( fileInfo.fileName().toUtf8().data() ) ) {
       // Add this sound to index
-      string fileName = baseDir.relativeFilePath( i->filePath() ).toUtf8().data();
+      string fileName = dir.relativeFilePath( fileInfo.filePath() ).toUtf8().data();
 
       const uint32_t articleOffset = chunks.startNewBlock();
       chunks.addToBlock( fileName.c_str(), fileName.size() + 1 );
 
-      std::u32string name = i->fileName().toStdU32String();
+      std::u32string name = fileInfo.fileName().toStdU32String();
 
       const std::u32string::size_type pos = name.rfind( L'.' );
 
@@ -527,7 +528,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const Config::SoundDirs & 
 
       uint32_t soundsCount = 0; // Header's one is packed, we can't ref it
 
-      addDir( dir, dir, indexedWords, soundsCount, chunks );
+      addDir( dir, indexedWords, soundsCount, chunks );
 
       idxHeader.soundsCount = soundsCount;
 
