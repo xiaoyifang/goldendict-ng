@@ -382,10 +382,7 @@ sptr< Dictionary::DataRequest > SoundDirDictionary::getResource( const string & 
   }
 }
 
-void addDir( const QDir & dir,
-             IndexedWords & indexedWords,
-             uint32_t & soundsCount,
-             ChunkedStorage::Writer & chunks )
+void addDir( const QDir & dir, IndexedWords & indexedWords, uint32_t & soundsCount, ChunkedStorage::Writer & chunks )
 {
   QDirIterator it( dir.path(),
                    QDir::Files | QDir::NoSymLinks, // We only care about files
@@ -471,7 +468,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const Config::SoundDirs & 
         QFileInfo rootInfo( dir.path() );
         QString rootRelPath = ".";
         onDiskDirs.insert( rootRelPath );
-        if ( !storedTimestamps.contains( rootRelPath ) || storedTimestamps.value( rootRelPath ) != rootInfo.lastModified() ) {
+        if ( !storedTimestamps.contains( rootRelPath )
+             || storedTimestamps.value( rootRelPath ) != rootInfo.lastModified() ) {
           rebuildNeeded = true;
         }
 
@@ -484,7 +482,8 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const Config::SoundDirs & 
             it.next();
             QString relPath = dir.relativeFilePath( it.filePath() );
             onDiskDirs.insert( relPath );
-            if ( !storedTimestamps.contains( relPath ) || storedTimestamps.value( relPath ) != it.fileInfo().lastModified() ) {
+            if ( !storedTimestamps.contains( relPath )
+                 || storedTimestamps.value( relPath ) != it.fileInfo().lastModified() ) {
               rebuildNeeded = true;
               break;
             }
