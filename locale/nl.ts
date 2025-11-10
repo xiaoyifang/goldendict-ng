@@ -3326,10 +3326,6 @@ gevraagd een downloadpagina te openen.</translation>
       <translation>Maximale grootte geschiedenis:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Opslag-interval voor geschiedenis (instellen op 0 om alleen op te slaan bij afsluiten).</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>Elke</translation>
     </message>
