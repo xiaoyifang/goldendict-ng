@@ -3329,10 +3329,6 @@ página web de descarga utilizando el navegador de internet.</translation>
       <translation>Tamaño máximo del historial:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Intervalo para grabar historial. Si se configura en 0, el historial sólo se grabará al cerrar el programa.</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>Guardar cada</translation>
     </message>
