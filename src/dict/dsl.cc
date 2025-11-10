@@ -1647,8 +1647,6 @@ void DslResourceRequest::run()
         }
       }
       if ( !hasAnyData ) {
-        qWarning() << "DSL: Failed loading resource" << QString::fromStdString( resourceName ) << "for"
-                   << QString::fromStdString( dict.getName() ) << ", reason:" << ex.what();
         throw std::runtime_error( "Resource not found." );
       }
     }
@@ -1659,6 +1657,12 @@ void DslResourceRequest::run()
     }
 
     hasAnyData = true;
+  }
+  catch ( std::exception & ex ) {
+    qWarning() << "DSL: Failed loading resource" << QString::fromStdString( resourceName ) << "for"
+               << QString::fromStdString( dict.getName() ) << ", reason:" << ex.what();
+
+    // Resource not loaded -- we don't set the hasAnyData flag then
   }
 
   finish();
