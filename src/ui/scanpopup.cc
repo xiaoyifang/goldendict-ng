@@ -947,7 +947,7 @@ void ScanPopup::pronounceButton_clicked() const
   definition->playSound();
 }
 
-void ScanPopup::saveArticleButton_clicked() 
+void ScanPopup::saveArticleButton_clicked()
 {
   // Delegate to centralized saver object; ScanPopup will display status messages
   auto * saver = new ArticleSaver( this, definition, cfg );
