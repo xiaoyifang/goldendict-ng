@@ -12,7 +12,6 @@
 
 #include "config.hh"
 #include "common/globalbroadcaster.hh"
-#include "common/globalbroadcaster.hh"
 #include <QDir>
 #include <QCryptographicHash>
 #include <QImage>
