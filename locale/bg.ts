@@ -3329,10 +3329,6 @@ download page.</source>
       <translation>Максимален размер История:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Интервал запазване на История. Ако не е 0, Историята ще се запазва само при Излизане.</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>Запазвай на всеки</translation>
     </message>

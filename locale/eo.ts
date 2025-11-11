@@ -3330,10 +3330,6 @@ elŝutan paĝon.</translation>
       <translation>Maksimuma historia grandeco:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Intervalo de konservado de historio. Se agordita al 0, la historio estos konservita nur dum eliro.</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>Konservu ĉiun</translation>
     </message>

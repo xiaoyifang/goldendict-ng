@@ -3323,10 +3323,6 @@ na stiahnutie.</translation>
       <translation>Maximálna veľkosť histórie:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Interval ukladania histórie. Ak je nastavený na 0, história sa bude ukladať pri ukončení.</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>Uložiť každých</translation>
     </message>

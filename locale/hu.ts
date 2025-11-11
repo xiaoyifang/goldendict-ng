@@ -3329,10 +3329,6 @@ a letöltési oldal megnyitására.</translation>
       <translation>Előzmények hossza:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Előzmények rendszeres mentésének időintervalluma. 0 esetén a kilépéskor kerülnek mentésre.</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>Mentés minden</translation>
     </message>

@@ -3314,10 +3314,6 @@ download page.</source>
       <translation>अधिकतम इतिहास का आकार:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>इतिहास रक्षण अंतराल। यदि 0 पर सेट किया जाता है तो इतिहास केवल निकास के दौरान ही सहेजा जाएगा।</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>प्रत्येक सहेजें</translation>
     </message>

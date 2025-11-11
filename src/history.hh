@@ -85,8 +85,6 @@ public:
 
   void setMaxSize( unsigned maxSize_ );
 
-  void setSaveInterval( unsigned interval );
-
   unsigned getMaxSize()
   {
     return maxSize;
@@ -122,8 +120,6 @@ private:
   unsigned maxItemLength;
   bool addingEnabled;
   bool dirty;
-  int timerId;
 
 protected:
-  virtual void timerEvent( QTimerEvent * );
 };

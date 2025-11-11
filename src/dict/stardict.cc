@@ -529,7 +529,7 @@ string StardictDictionary::handleResource( char type, const char * resource, siz
           std::string newTag = addAudioLink( audioLink, getId() ) + "<span class=\"sdict_h_wav\"><a href=" + href + ">";
           newTag += match.captured( 4 ).toUtf8().constData();
           if ( match.captured( 4 ).indexOf( "<img " ) < 0 ) {
-            newTag += R"( <img src="qrc:///icons/playsound.png" border="0" alt="Play">)";
+            newTag += R"( <img src="qrc:///icons/playsound.svg" border="0" alt="Play">)";
           }
           newTag += "</a></span>";
 

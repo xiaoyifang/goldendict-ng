@@ -3329,10 +3329,6 @@ download page.</source>
       <translation>履歴の最大サイズ:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>履歴の保存間隔。0に設定すると、終了時にのみ履歴が保存されます。</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>保存間隔</translation>
     </message>

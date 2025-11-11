@@ -593,7 +593,7 @@ void MediaWikiArticleRequest::requestFinished( QNetworkReply * r )
                 }
                 auto script       = addAudioLink( ref, this->dictPtr->getId() );
                 QString audio_url = QString::fromStdString( script ) + "<a href=\"" + ref
-                  + R"("><img src="qrc:///icons/playsound.png" border="0" align="absmiddle" alt="Play"/></a>)";
+                  + R"("><img src="qrc:///icons/playsound.svg" border="0" align="absmiddle" alt="Play"/></a>)";
                 articleNewString += audio_url;
               }
               else {

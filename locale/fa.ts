@@ -3328,10 +3328,6 @@ download page.</source>
       <translation>بیشینه اندازه پیشینه:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>وقفه ذخیره پیشینه. اگر ۰ قرار داده شود پیشینه تنها هنگام ترک برنامه ذخیره خواهد شد.</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>ذخیره کن هر</translation>
     </message>

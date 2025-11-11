@@ -51,10 +51,7 @@ jobs:
           ninja -k 0
   job_macos_build_check:
     name: macos Build and analyze
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [macos-15]
+    runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
         with:

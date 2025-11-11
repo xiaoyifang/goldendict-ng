@@ -183,6 +183,9 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 #endif
 
   GlobalBroadcaster::instance()->setConfig( &cfg );
+  GlobalBroadcaster::instance()->setAudioPlayer( &audioPlayerFactory.player() );
+  GlobalBroadcaster::instance()->setAllDictionaries( &dictionaries );
+  GlobalBroadcaster::instance()->setGroups( &groupInstances );
 
   localSchemeHandler     = new LocalSchemeHandler( articleNetMgr, this );
   QStringList htmlScheme = { "gdlookup", "bword", "entry", "gdinternal" };
@@ -807,8 +810,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   }
 
   // Scanpopup related
-  scanPopup =
-    new ScanPopup( nullptr, cfg, articleNetMgr, audioPlayerFactory.player(), dictionaries, groupInstances, history );
+  scanPopup = new ScanPopup( nullptr, cfg, articleNetMgr, history );
 
   scanPopup->setStyleSheet( styleSheet() );
 
@@ -899,7 +901,6 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   wasMaximized = isMaximized();
 
-  history.setSaveInterval( cfg.preferences.historyStoreInterval );
 #ifndef Q_OS_MACOS
   ui.centralWidget->grabGesture( Gestures::GDPinchGestureType );
   ui.centralWidget->grabGesture( Gestures::GDSwipeGestureType );
@@ -1361,6 +1362,16 @@ void MainWindow::updateAppearances( const QString & addonStyle,
     qApp->setStyle( "WindowsVista" );
     qApp->setPalette( QPalette() );
   }
+
+  // Re-apply the user-configured font after resetting the palette
+  if ( cfg.preferences.enableInterfaceFont && !cfg.preferences.interfaceFont.isEmpty() ) {
+    QFont font = QApplication::font();
+    font.setFamily( cfg.preferences.interfaceFont );
+    if ( cfg.preferences.interfaceFontSize > 0 ) {
+      font.setPixelSize( cfg.preferences.interfaceFontSize );
+    }
+    QApplication::setFont( font );
+  }
 #endif
 
 #if !defined( Q_OS_WIN )
@@ -1777,9 +1788,6 @@ ArticleView * MainWindow::createNewTab( bool switchToIt, const QString & name )
 {
   ArticleView * view = new ArticleView( this,
                                         articleNetMgr,
-                                        audioPlayerFactory.player(),
-                                        dictionaries,
-                                        groupInstances,
                                         false,
                                         cfg,
                                         translateLine,
@@ -2276,11 +2284,6 @@ void MainWindow::editPreferences()
                          p.interfaceStyle
 #endif
       );
-    }
-
-
-    if ( cfg.preferences.historyStoreInterval != p.historyStoreInterval ) {
-      history.setSaveInterval( p.historyStoreInterval );
     }
 
     if ( cfg.preferences.favoritesStoreInterval != p.favoritesStoreInterval ) {

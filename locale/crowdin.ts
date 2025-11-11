@@ -3244,10 +3244,6 @@ download page.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Save every</source>
         <translation type="unfinished"></translation>
     </message>

@@ -3334,11 +3334,6 @@ GoldenDict. Если новая версия появилась, програм�
       <translation>Максимальный размер журнала:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Интервал сохранения журнала. Если он установлен в 0,
-журнал будет сохраняться только при выходе из программы.</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>Сохранять каждые</translation>
     </message>

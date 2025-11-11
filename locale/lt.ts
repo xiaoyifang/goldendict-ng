@@ -3328,10 +3328,6 @@ ir pasiūlys atverti parsisiuntimo puslapį.
       <translation>Žurnalo įrašų didžiausias kiekis:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Žurnalo įrašymo dažnumas. 0 reiškia įrašymą tik užveriant programą.</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>Įrašyti kas</translation>
     </message>

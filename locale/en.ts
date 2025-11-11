@@ -3330,10 +3330,6 @@ download page.</translation>
       <translation type="unfinished">Maximum history size:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation type="unfinished">History saving interval. If set to 0 history will be saved only during exit.</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation type="unfinished">Save every</translation>
     </message>

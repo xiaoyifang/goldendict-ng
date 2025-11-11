@@ -3429,13 +3429,6 @@ Jakhu qillqatanakata uskuña imañataki.</translation>
       <translation>Thaqhat arunak qawqhch&apos;asa:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Guardar cada N minutos.
-
-Kunapachanakas thaqhat arunaka imt&apos;aña. 
-0 ukanixa thaqhat arunakaxa imt&apos;asiniwa mistxani ukja.</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>Imaña sapa</translation>
     </message>

@@ -3322,10 +3322,6 @@ kërkon ta shkarkojë.</translation>
       <translation>Masa maksimale e historikut:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Intervali i ruajtjes së historikut. Kur vendoset 0, historiku ruhet vetëm gjatë mbylljes së programit.</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>Ruaj çdo</translation>
     </message>

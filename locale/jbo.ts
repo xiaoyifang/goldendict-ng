@@ -3330,10 +3330,6 @@ download page.</translation>
       <translation>Maximum history size:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>History saving interval. If set to 0 history will be saved only during exit.</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>lo&apos;i nu co&apos;a vreji cu simxu lo ka pa mentu be li</translation>
     </message>

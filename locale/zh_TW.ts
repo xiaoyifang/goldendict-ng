@@ -3319,10 +3319,6 @@ download page.</source>
       <translation>歷史記錄最大為：</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>多久一次儲存歷史記錄。如果設定為 0 就代表只在離開時儲存。</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>每</translation>
     </message>

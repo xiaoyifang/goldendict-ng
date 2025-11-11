@@ -3327,10 +3327,6 @@ téléchargement.</translation>
       <translation>Taille maximale de l&apos;historique :</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Intervalle de sauvegarde de l&apos;historique. Si cette valeur vaut 0, l&apos;historique sera sauvegardé uniquement lors de la sortie du programme.</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>Sauver toutes les</translation>
     </message>

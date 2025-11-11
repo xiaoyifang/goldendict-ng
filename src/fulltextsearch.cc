@@ -4,6 +4,7 @@
 #include "ftshelpers.hh"
 #include "fulltextsearch.hh"
 #include "globalregex.hh"
+#include "common/globalbroadcaster.hh"
 #include "help.hh"
 #include <QFutureSynchronizer>
 #include <QMessageBox>
