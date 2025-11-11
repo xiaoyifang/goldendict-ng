@@ -12,6 +12,7 @@
 
 #include "config.hh"
 #include "common/globalbroadcaster.hh"
+#include "common/globalbroadcaster.hh"
 #include <QDir>
 #include <QCryptographicHash>
 #include <QImage>
@@ -221,6 +222,19 @@ const QString & Class::getDescription()
 {
   return dictionaryDescription;
 }
+
+void Class::setIndexedFtsDoc( long _indexedFtsDoc )
+{
+  indexedFtsDoc = _indexedFtsDoc;
+
+  auto newProgress = getIndexingFtsProgress();
+  if ( newProgress != lastProgress ) {
+    lastProgress = newProgress;
+    emit GlobalBroadcaster::instance()->indexingDictionary(
+      QString( "%1......%%2" ).arg( QString::fromStdString( getName() ) ).arg( newProgress ) );
+  }
+}
+
 
 QString Class::getMainFilename()
 {
