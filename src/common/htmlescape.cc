@@ -2,9 +2,7 @@
  * Part of GoldenDict. Licensed under GPLv3 or later, see the LICENSE file */
 
 #include <QTextDocumentFragment>
-
 #include <QRegularExpression>
-
 #include "htmlescape.hh"
 
 namespace Html {
