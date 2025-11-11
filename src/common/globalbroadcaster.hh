@@ -2,23 +2,14 @@
 
 #include "config.hh"
 #include "pronounceengine.hh"
+#include "dict/dictionary.hh"
 #include "dictionary_icon_name.hh"
 #include "sptr.hh"
 #include <QMap>
 #include <QScopedPointer>
 #include <vector>
-
-// Forward declarations to break a circular dependency.
-// dictionary.hh includes globalbroadcaster.hh, and globalbroadcaster.hh
-// needs types from dictionary.hh.
-namespace Dictionary {
-class Class;
-}
-namespace Instances {
-struct Groups;
-}
-class AudioPlayerInterface;
-using AudioPlayerPtr = QScopedPointer< AudioPlayerInterface >;
+#include "instances.hh"
+#include "audio/audioplayerinterface.hh"
 
 struct ActiveDictIds
 {
