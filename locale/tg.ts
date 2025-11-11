@@ -3330,10 +3330,6 @@ download page.</source>
       <translation>Андозаи калонтарини таърих:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Фосилаи вақти захиракунии таърих. Агар ба 0 танзим кунед, таърих танҳо дар хуруҷ захира мешавад.</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>Захира кардан баъд аз</translation>
     </message>

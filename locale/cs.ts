@@ -3327,10 +3327,6 @@ a nabídne otevření stránky s aktualizací ke stažení.</translation>
       <translation>Maximální velikost historie:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Interval ukládání historie. Pokud nastaven na 0, historie bude uložena při ukončení.</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>Uložit každých</translation>
     </message>

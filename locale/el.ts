@@ -3331,11 +3331,6 @@ GoldenDict. Αν ναι, το πρόγραμμα θα ειδοποιεί το
       <translation>Μέγιστο μέγεθος ιστορικού:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Συχνότητα αποθήκευσης ιστορικού. Αν χρησιμοποιήσετε 0, 
-το ιστορικό θα αποθηκεύεται μόνο κατά την έξοδο.</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>Αποθήκευση κάθε</translation>
     </message>

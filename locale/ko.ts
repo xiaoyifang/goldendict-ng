@@ -3326,10 +3326,6 @@ download page.</source>
       <translation>검색기록 최대크기:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>검색기록을 자동으로 저장하는 간격. 0으로 지정하면 종료시에만 저장됩니다.</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>저장 간격: </translation>
     </message>

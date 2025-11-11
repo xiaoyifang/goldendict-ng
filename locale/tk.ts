@@ -3329,10 +3329,6 @@ göçürip alyş sahypasyny açmagy teklip edýär.</translation>
       <translation>Geçmişiň maksimum sany:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Geçmişi ýatda saklanmagyň döwri. Eger 0 goýulsa, geçmiş diňe çykan wagty ýatda saklanar.</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>Ýatda sakla her</translation>
     </message>

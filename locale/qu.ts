@@ -3326,10 +3326,6 @@ la página web para descargarla.</translation>
       <translation>Aswan hatun willakuypa sayaynin:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Historia waqaychay chawpi. 0 nisqaman churasqa kaptinqa willakuyqa lluqsiy pachallapim waqaychasqa kanqa.</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>Waqaychay sapa</translation>
     </message>

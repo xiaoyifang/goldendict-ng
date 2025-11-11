@@ -3324,10 +3324,6 @@ Download-Seite.</translation>
       <translation>Maximale Verlaufgröße:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Intervall zum speichern des Verlaufs. Falls 0, wird der Verlauf beim Programmende gespeichert.</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>Speichern alle</translation>
     </message>

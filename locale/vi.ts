@@ -3323,10 +3323,6 @@ download page.</source>
       <translation>Số lịch sử tối đa:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Tần suất lưu lịch sử. Nếu đặt giá trị 0, lịch sử sẽ được lưu khi thoát chương trình.</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>Lưu mỗi</translation>
     </message>

@@ -3330,10 +3330,6 @@ página de download.</translation>
       <translation>Tamanho máximo do histórico:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Intervalo de salvamento do histórico. Se definido como 0 o histórico será salvo apenas durante a saída.</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>Salvar todos os</translation>
     </message>

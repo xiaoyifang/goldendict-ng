@@ -3328,10 +3328,6 @@ download page.</source>
       <translation>حجم التأريخ الأقصى:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>فترة حفظ التأريخ. إن عُيِّنت إلى 0، سيُحفظ التأريخ أثناء إنهاء التطبيق فقط.</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>احفظ كلّ</translation>
     </message>

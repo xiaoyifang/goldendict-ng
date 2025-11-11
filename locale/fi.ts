@@ -3330,10 +3330,6 @@ lataussivun.</translation>
       <translation>Historian enimmäiskoko:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Historian tallennus aika. Jos asetettu 0 historiaan, tallennetaan vain poistumisen aikana.</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>Tallenna joka</translation>
     </message>

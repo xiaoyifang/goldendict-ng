@@ -3329,10 +3329,6 @@ otwarcia strony pobierania.</translation>
       <translation>Maksymalna wielkość historii:</translation>
     </message>
     <message>
-      <source>History saving interval. If set to 0 history will be saved only during exit.</source>
-      <translation>Interwał zapisywania historii. Wartość zero oznacza, że historia jest zapisywana tylko przy wychodzeniu z programu.</translation>
-    </message>
-    <message>
       <source>Save every</source>
       <translation>Zapisuj co</translation>
     </message>
