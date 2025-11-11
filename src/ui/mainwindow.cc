@@ -1361,6 +1361,16 @@ void MainWindow::updateAppearances( const QString & addonStyle,
     qApp->setStyle( "WindowsVista" );
     qApp->setPalette( QPalette() );
   }
+
+  // Re-apply the user-configured font after resetting the palette
+  if ( cfg.preferences.enableInterfaceFont && !cfg.preferences.interfaceFont.isEmpty() ) {
+    QFont font = QApplication::font();
+    font.setFamily( cfg.preferences.interfaceFont );
+    if ( cfg.preferences.interfaceFontSize > 0 ) {
+      font.setPixelSize( cfg.preferences.interfaceFontSize );
+    }
+    QApplication::setFont( font );
+  }
 #endif
 
 #if !defined( Q_OS_WIN )
