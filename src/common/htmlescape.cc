@@ -158,28 +158,28 @@ QString unescape( QString str, HtmlOption option )
 
 QString fromHtmlEscaped( const QString & str )
 {
-  QString retVal = str;
-  QRegularExpression regExp( R"((?<lt>\&lt\;)|(?<gt>\&gt\;)|(?<amp>\&amp\;)|(?<quot>\&quot\;))",
-                             QRegularExpression::PatternOption::CaseInsensitiveOption );
-  auto match = regExp.match( str, 0 );
-
-  while ( match.hasMatch() ) {
-    if ( !match.captured( "lt" ).isEmpty() ) {
-      retVal.replace( match.capturedStart( "lt" ), match.capturedLength( "lt" ), "<" );
-    }
-    else if ( !match.captured( "gt" ).isEmpty() ) {
-      retVal.replace( match.capturedStart( "gt" ), match.capturedLength( "gt" ), ">" );
-    }
-    else if ( !match.captured( "amp" ).isEmpty() ) {
-      retVal.replace( match.capturedStart( "amp" ), match.capturedLength( "amp" ), "&" );
-    }
-    else if ( !match.captured( "quot" ).isEmpty() ) {
-      retVal.replace( match.capturedStart( "quot" ), match.capturedLength( "quot" ), "\"" );
-    }
-    match = regExp.match( retVal, match.capturedStart() + 1 );
+  // This function should only unescape basic HTML entities, not strip all HTML tags.
+  // Using QTextDocumentFragment::fromHtml().toPlainText() would incorrectly
+  // remove tags like <b>.
+  QString result;
+  result.reserve( str.size() );
+  QRegularExpression re( R"((&lt;)|(&gt;)|(&quot;)|(&amp;))" );
+  int lastPos = 0;
+  for ( auto it = re.globalMatch( str ); it.hasNext(); ) {
+    auto match = it.next();
+    result.append( str.mid( lastPos, match.capturedStart() - lastPos ) );
+    if ( match.captured( 1 ).size() )
+      result.append( '<' );
+    else if ( match.captured( 2 ).size() )
+      result.append( '>' );
+    else if ( match.captured( 3 ).size() )
+      result.append( '"' );
+    else if ( match.captured( 4 ).size() )
+      result.append( '&' );
+    lastPos = match.capturedEnd();
   }
-
-  return retVal;
+  result.append( str.mid( lastPos ) );
+  return result;
 }
 
 string unescapeUtf8( const string & str, HtmlOption option )
