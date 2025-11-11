@@ -229,8 +229,8 @@ void Class::setIndexedFtsDoc( long _indexedFtsDoc )
   auto newProgress = getIndexingFtsProgress();
   if ( newProgress != lastProgress ) {
     lastProgress = newProgress;
-    emit GlobalBroadcaster::instance()->indexingDictionary(
-      QString( "%1......%%2" ).arg( QString::fromStdString( getName() ) ).arg( newProgress ) );
+    emit GlobalBroadcaster::instance()
+      -> indexingDictionary( QString( "%1......%%2" ).arg( QString::fromStdString( getName() ) ).arg( newProgress ) );
   }
 }
 
