@@ -4,8 +4,7 @@
 #include <QWidget>
 #include <QObject>
 #include <QProgressDialog>
-
-class QWidget;
+#include "ui/articleview.hh"
 
 /// Shared small progress dialog used when saving articles (used by both
 /// main window and popup). Kept here to avoid duplicating the same class in
@@ -27,7 +26,7 @@ public slots:
   {
     int progress = value() + 1;
     if ( progress == maximum() ) {
-      emit close();
+      close();
       deleteLater();
     }
     setValue( progress );
@@ -35,35 +34,26 @@ public slots:
 };
 
 
-class ArticleView;
-namespace Config {
-class Class;
-}
-class QWidget;
-
-namespace ArticleSaver {
 // Article saver object that performs the same logic as the old free function.
 // It emits `statusMessage` for UI code to present to the user (status bars,
 // notifications, etc.). The saver itself is a QObject so it can be used with
 // Qt's signal/slot mechanism and can be parented for automatic cleanup.
 class ArticleSaver: public QObject
 {
-	Q_OBJECT
+  Q_OBJECT
 
 public:
-	explicit ArticleSaver( ArticleView * view, QWidget * uiParent, Config::Class & cfg );
-	~ArticleSaver() override;
+  explicit ArticleSaver( QWidget * uiParent, ArticleView * view, Config::Class & cfg );
+  ~ArticleSaver() override;
 
-	// Start the save operation. The operation is asynchronous where needed
-	// (e.g. resource downloads), but `save()` returns immediately.
-	void save();
+  // Start the save operation. The operation is asynchronous where needed
+  // (e.g. resource downloads), but `save()` returns immediately.
+  void save();
 
 signals:
-	void statusMessage( const QString & text, int timeout );
+  void statusMessage( const QString & text, int timeout );
 private:
-	ArticleView * view_;
-	QWidget * uiParent_;
-	Config::Class & cfg_;
+  QWidget * uiParent_;
+  ArticleView * view_;
+  Config::Class & cfg_;
 };
-
-} // namespace ArticleSaver

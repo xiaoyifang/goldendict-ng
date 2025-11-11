@@ -71,13 +71,13 @@ static void filterAndCollectResources( QString & html,
 }
 } // namespace
 
-namespace ArticleSaver {
+ArticleSaver::ArticleSaver(QWidget * uiParent,
+                           ArticleView * view,
+                           Config::Class & cfg) :
 
-ArticleSaver::ArticleSaver( ArticleView * view, QWidget * uiParent, Config::Class & cfg ):
-  QObject( uiParent ),
-  view_( view ),
-  uiParent_( uiParent ),
-  cfg_( cfg )
+  uiParent_(uiParent),
+  view_(view),
+  cfg_(cfg)
 {
 }
 
@@ -137,7 +137,7 @@ void ArticleSaver::save()
     QWebEnginePage * page = view_->page();
     QObject::connect( page, &QWebEnginePage::pdfPrintingFinished, this, [ this ]( const QString & fp, bool success ) {
       Q_UNUSED( fp )
-      emit statusMessage( QObject::tr( success ? "Save PDF complete" : "Save PDF failed" ), 5000 );
+      emit statusMessage( success ? QObject::tr( "Save PDF complete") : QObject::tr( "Save PDF failed" ), 5000 );
     } );
 
     page->printToPdf( fileName );
@@ -216,28 +216,37 @@ void ArticleSaver::save()
 
         auto * progressDialog = new ArticleSaveProgressDialog( uiParent_ );
         int maxVal = 1; // main html
+        bool anyHandlerConnected = false;
 
         for ( auto const & p : downloadResources ) {
           ResourceToSaveHandler * handler = view_->saveResource( p.first, p.second );
-          if ( !handler->isEmpty() ) {
+          if ( handler && !handler->isEmpty() ) {
+            anyHandlerConnected = true;
             maxVal += 1;
             QObject::connect( handler,
-                              &ResourceToSaveHandler::done,
-                              progressDialog,
-                              &ArticleSaveProgressDialog::perform );
+                  &ResourceToSaveHandler::done,
+                  progressDialog,
+                  &ArticleSaveProgressDialog::perform );
           }
         }
 
         progressDialog->setLabelText( QObject::tr( "Saving article..." ) );
         progressDialog->setRange( 0, maxVal );
-        progressDialog->setValue( 0 );
-        progressDialog->show();
+
+        if ( !anyHandlerConnected ) {
+          // No resource handlers attached — no background work expected.
+          // Close and schedule deletion of the dialog immediately to avoid
+          // leaving it open in rare edge-cases.
+          progressDialog->setValue( maxVal );
+          progressDialog->close();
+          progressDialog->deleteLater();
+        }
+        else {
+          progressDialog->setValue( 0 );
+          progressDialog->show();
+        }
 
         file.write( html.toUtf8() );
-        // start handlers
-        if ( progressDialog->value() == progressDialog->maximum() ) {
-          // nothing to wait for
-        }
       }
       else {
         file.write( html.toUtf8() );
@@ -248,4 +257,3 @@ void ArticleSaver::save()
   } );
 }
 
-} // namespace ArticleSaver
