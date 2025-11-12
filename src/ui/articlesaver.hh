@@ -52,6 +52,7 @@ public:
 
 signals:
   void statusMessage( const QString & text, int timeout );
+
 private:
   QWidget * uiParent_;
   ArticleView * view_;
