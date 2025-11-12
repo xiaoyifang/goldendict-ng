@@ -3659,6 +3659,14 @@ from Stardict, Babylon and GLS dictionaries</source>
         <source>Saving article...</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Save PDF complete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save PDF failed</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QuickFilterLine</name>
