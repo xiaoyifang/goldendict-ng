@@ -32,7 +32,7 @@ public:
     iconFilename( iconFilename_ )
   {
     dictionaryName        = name_;
-    urlTemplate           = urlTemplate_;
+    urlTemplate           = urlTemplate_.toUtf8();
     dictionaryDescription = QObject::tr( "Website Url:" ) + urlTemplate_ + "<br><br>"
       + QObject::tr( "In the Url, \"%GDWORD%\" will be replaced with the word being searched." );
   }
