@@ -204,6 +204,9 @@ public:
 
   QItemSelectionModel * getCurrentSelectionModel() const;
 
+protected:
+  void tabInserted( int index ) override;
+  void tabRemoved( int index ) override;
 private:
 
   /// Add source group to target group
@@ -222,6 +225,7 @@ private slots:
 
 signals:
   void showDictionaryInfo( const QString & id );
+  void countChanged();
 };
 
 class QuickFilterLine: public QLineEdit

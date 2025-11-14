@@ -56,6 +56,7 @@ Groups::Groups( QWidget * parent,
   connect( ui.dictionaries, &QWidget::customContextMenuRequested, this, &Groups::showDictInfo );
 
   countChanged();
+  connect( ui.groups, &DictGroupsWidget::countChanged, this, &Groups::countChanged );
 }
 
 void Groups::resetData( const vector< sptr< Dictionary::Class > > & dicts_,
@@ -125,26 +126,22 @@ void Groups::addNew()
 
   if ( ok ) {
     ui.groups->addNewGroup( name );
-    countChanged();
   }
 }
 
 void Groups::addAutoGroups()
 {
   ui.groups->addAutoGroups();
-  countChanged();
 }
 
 void Groups::addAutoGroupsByFolders()
 {
   ui.groups->addAutoGroupsByFolders();
-  countChanged();
 }
 
 void Groups::groupsByMetadata()
 {
   ui.groups->groupsByMetadata();
-  countChanged();
 }
 void Groups::renameCurrent()
 {
@@ -181,7 +178,6 @@ void Groups::removeCurrent()
             QMessageBox::Cancel )
          == QMessageBox::Yes ) {
     ui.groups->removeCurrentGroup();
-    countChanged();
   }
 }
 
@@ -197,7 +193,6 @@ void Groups::removeAll()
                                  QMessageBox::Cancel )
          == QMessageBox::Yes ) {
     ui.groups->removeAllGroups();
-    countChanged();
   }
 }
 

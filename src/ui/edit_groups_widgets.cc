@@ -1161,6 +1161,18 @@ void DictGroupsWidget::tabDataChanged()
   setTabToolTip( currentIndex(), toolTipStr );
 }
 
+void DictGroupsWidget::tabInserted( int index )
+{
+  QTabWidget::tabInserted( index );
+  emit countChanged();
+}
+
+void DictGroupsWidget::tabRemoved( int index )
+{
+  QTabWidget::tabRemoved( index );
+  emit countChanged();
+}
+
 QuickFilterLine::QuickFilterLine( QWidget * parent ):
   QLineEdit( parent ),
   m_focusAction( this )
