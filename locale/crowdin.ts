@@ -1025,27 +1025,11 @@ between classic and school orthography in cyrillic)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Create new dictionary group</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Add group</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Rename current dictionary group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Re&amp;name group</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Remove current dictionary group</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Remove group</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
