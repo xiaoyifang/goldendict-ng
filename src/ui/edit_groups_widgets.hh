@@ -216,6 +216,9 @@ private:
 private slots:
   void contextMenu( const QPoint & );
   void tabDataChanged();
+  void removeTabRequested( int index );
+  void addNewTab();
+
 
 signals:
   void showDictionaryInfo( const QString & id );

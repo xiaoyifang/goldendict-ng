@@ -46,6 +46,8 @@ Groups::Groups( QWidget * parent,
   connect( ui.dictionaries, &QAbstractItemView::doubleClicked, this, &Groups::addToGroup );
   connect( ui.removeDictsFromGroup, &QAbstractButton::clicked, this, &Groups::removeFromGroup );
   connect( ui.groups, &DictGroupsWidget::showDictionaryInfo, this, &Groups::showDictionaryInfo );
+  connect( ui.groups->tabBar(), &QTabBar::tabBarDoubleClicked,
+        this, &Groups::renameCurrent);
 
   connect( ui.autoGroups, &QAbstractButton::clicked, this, &Groups::addAutoGroups );
   connect( ui.autoGroupsFolders, &QAbstractButton::clicked, this, &Groups::addAutoGroupsByFolders );

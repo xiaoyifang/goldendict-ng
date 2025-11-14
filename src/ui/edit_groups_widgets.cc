@@ -539,6 +539,16 @@ DictGroupsWidget::DictGroupsWidget( QWidget * parent ):
   setContextMenuPolicy( Qt::CustomContextMenu );
   connect( this, &QWidget::customContextMenuRequested, this, &DictGroupsWidget::contextMenu );
 
+  addTabButton = new QToolButton(this);
+  addTabButton->setAutoRaise(true);
+  addTabButton->setIcon(QIcon(":/icons/addtab.svg"));
+  setCornerWidget(addTabButton, Qt::TopLeftCorner);
+
+  connect(addTabButton, &QToolButton::clicked, this, &DictGroupsWidget::addNewTab);
+
+  setTabsClosable( true );
+  connect( this, &QTabWidget::tabCloseRequested, this, &DictGroupsWidget::removeTabRequested );
+
   setElideMode( Qt::ElideNone );
   setUsesScrollButtons( true );
 }
@@ -940,6 +950,27 @@ void DictGroupsWidget::removeCurrentGroup()
     removeTab( current );
   }
 }
+
+void DictGroupsWidget::removeTabRequested( int index )
+{
+  if ( index < 0 ) {
+    return;
+  }
+  if ( QMessageBox::question( this,
+                              tr( "Remove group" ),
+                              tr( "Are you sure you want to remove the group <b>%1</b>?" ).arg( tabText( index ) ),
+                              QMessageBox::Yes,
+                              QMessageBox::Cancel )
+       == QMessageBox::Yes ) {
+    removeTab( index );
+  }
+}
+
+void DictGroupsWidget::addNewTab()
+{
+    addNewGroup(tr("New Group"));
+}
+
 
 void DictGroupsWidget::removeAllGroups()
 {
