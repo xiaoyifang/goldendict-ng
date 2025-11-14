@@ -489,6 +489,14 @@ chiqan kayninta sumaqyachin)</translation>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>Huñukunata &quot;%1&quot;nisqawan huñuy</translation>
     </message>
+    <message>
+      <source>Remove group</source>
+      <translation>Juñuta chinkachiy</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>&lt;b&gt;%1&lt;/b&gt; juñuta chinkachiyta munankichu?</translation>
+    </message>
   </context>
   <context>
     <name>DictHeadwords</name>
@@ -1035,28 +1043,12 @@ chiqan kayninta sumaqyachin)</translation>
       <translation>Pestaña 2</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>Simi-pirwakunaqpa musuq juñunkuta yurichiy</translation>
-    </message>
-    <message>
-      <source>&amp;Add group</source>
-      <translation>&amp;Juñuta yapay</translation>
-    </message>
-    <message>
       <source>Rename current dictionary group</source>
       <translation>Renombrar el grupo actual de diccionarios</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
       <translation>Juñuqpa &amp;waq sutinta churay</translation>
-    </message>
-    <message>
-      <source>Remove current dictionary group</source>
-      <translation>Simi-pirwakunawan kunan juñuta chinkachiy</translation>
-    </message>
-    <message>
-      <source>&amp;Remove group</source>
-      <translation>Juñuta &amp;chinkachiy</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>
