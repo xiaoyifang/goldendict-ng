@@ -488,6 +488,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>&quot;%1&quot;के साथ समूहों को मिलाएं</translation>
     </message>
+    <message>
+      <source>Remove group</source>
+      <translation>समूह निकालें</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>क्या आप वस्तुतः &lt;b&gt;%1&lt;/b&gt; समूह को निकालना चाहते हैं?</translation>
+    </message>
   </context>
   <context>
     <name>DictHeadwords</name>
@@ -1034,28 +1042,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>टैब २</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>नया शब्दकोश समूह बनाएँ</translation>
-    </message>
-    <message>
-      <source>&amp;Add group</source>
-      <translation>तथा समूह जोड़ें</translation>
-    </message>
-    <message>
       <source>Rename current dictionary group</source>
       <translation>वर्तमान शब्दकोश समूह का नाम बदलें</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
       <translation>समूह का नाम बदलें</translation>
-    </message>
-    <message>
-      <source>Remove current dictionary group</source>
-      <translation>वर्तमान शब्दकोश समूह निकालें</translation>
-    </message>
-    <message>
-      <source>&amp;Remove group</source>
-      <translation>तथा समूह निकालें</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>
