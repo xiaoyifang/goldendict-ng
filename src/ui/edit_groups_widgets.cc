@@ -19,6 +19,7 @@
 #include <QMessageBox>
 #include <QTimer>
 #include <QList>
+#include <QToolButton>
 
 using std::vector;
 
@@ -539,7 +540,7 @@ DictGroupsWidget::DictGroupsWidget( QWidget * parent ):
   setContextMenuPolicy( Qt::CustomContextMenu );
   connect( this, &QWidget::customContextMenuRequested, this, &DictGroupsWidget::contextMenu );
 
-  addTabButton = new QToolButton( this );
+  QToolButton * addTabButton = new QToolButton( this );
   addTabButton->setAutoRaise( true );
   addTabButton->setIcon( QIcon( ":/icons/addtab.svg" ) );
   setCornerWidget( addTabButton, Qt::TopLeftCorner );
