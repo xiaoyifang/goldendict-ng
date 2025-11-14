@@ -207,6 +207,7 @@ public:
 protected:
   void tabInserted( int index ) override;
   void tabRemoved( int index ) override;
+
 private:
 
   /// Add source group to target group
