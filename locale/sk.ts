@@ -489,6 +489,14 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>Kombinovať skupiny s &quot;%1&quot;</translation>
     </message>
+    <message>
+      <source>Remove group</source>
+      <translation>Odstrániť skupinu</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>Ste si istí, že chcete odstrániť skupinu &lt;b&gt;%1&lt;/b&gt;?</translation>
+    </message>
   </context>
   <context>
     <name>DictHeadwords</name>
@@ -1035,28 +1043,12 @@ medzi klasickou a školskou ortografiou v azbuke)</translation>
       <translation>Karta 2</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>Vytvoriť novú skupinu slovníkov</translation>
-    </message>
-    <message>
-      <source>&amp;Add group</source>
-      <translation>Prid&amp;ať skupinu</translation>
-    </message>
-    <message>
       <source>Rename current dictionary group</source>
       <translation>Premenovať aktuálnu slovníkovú skupinu</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
       <translation>Preme&amp;novať skupinu</translation>
-    </message>
-    <message>
-      <source>Remove current dictionary group</source>
-      <translation>Odstrániť aktuálnu slovníkovú skupinu</translation>
-    </message>
-    <message>
-      <source>&amp;Remove group</source>
-      <translation>Odst&amp;rániť skupinu</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>
