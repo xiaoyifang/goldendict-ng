@@ -487,6 +487,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>與 &quot;%1&quot; 合併分組</translation>
     </message>
+    <message>
+      <source>Remove group</source>
+      <translation>移除群組</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>您確定要移除&lt;b&gt;%1&lt;/b&gt;群組嗎？</translation>
+    </message>
   </context>
   <context>
     <name>DictHeadwords</name>
@@ -1033,28 +1041,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>分頁 2</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>建立新的字典群組</translation>
-    </message>
-    <message>
-      <source>&amp;Add group</source>
-      <translation>新增群組(&amp;A)</translation>
-    </message>
-    <message>
       <source>Rename current dictionary group</source>
       <translation>重新命名目前的字典群組</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
       <translation>重新命名群組(&amp;N)</translation>
-    </message>
-    <message>
-      <source>Remove current dictionary group</source>
-      <translation>移除目前的字典群組</translation>
-    </message>
-    <message>
-      <source>&amp;Remove group</source>
-      <translation>移除群組(&amp;R)</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>
