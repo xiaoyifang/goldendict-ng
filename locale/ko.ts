@@ -489,6 +489,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>&quot;%1&quot;와 그룹을 합칩니다</translation>
     </message>
+    <message>
+      <source>Remove group</source>
+      <translation>그룹 삭제</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>&lt;b&gt;%1&lt;/b&gt;그룹을 삭제하시겠습니까?</translation>
+    </message>
   </context>
   <context>
     <name>DictHeadwords</name>
@@ -1035,28 +1043,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>탭 2</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>새 사전 그룹을 만듭니다</translation>
-    </message>
-    <message>
-      <source>&amp;Add group</source>
-      <translation>그룹 추가(&amp;A)</translation>
-    </message>
-    <message>
       <source>Rename current dictionary group</source>
       <translation>현재 사전 그룹의 이름을 바꿉니다</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
       <translation>그룹 이름 바꾸기(&amp;N)</translation>
-    </message>
-    <message>
-      <source>Remove current dictionary group</source>
-      <translation>현재 사전 그룹을 삭제합니다</translation>
-    </message>
-    <message>
-      <source>&amp;Remove group</source>
-      <translation>그룹 삭제(&amp;R)</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>
