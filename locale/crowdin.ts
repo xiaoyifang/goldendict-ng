@@ -481,10 +481,6 @@ between classic and school orthography in cyrillic)</source>
         <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>New Group</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>DictHeadwords</name>
