@@ -488,6 +488,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>Gruppen kombinieren mit &quot;%1&quot;</translation>
     </message>
+    <message>
+      <source>Remove group</source>
+      <translation>Gruppe entfernen</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>Möchten Sie wirklich die Gruppe &lt;b&gt;%1&lt;/b&gt; entfernen?</translation>
+    </message>
   </context>
   <context>
     <name>DictHeadwords</name>
@@ -1032,28 +1040,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Tab 2</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>Eine neue Gruppe von Wörterbüchern erzeugen.</translation>
-    </message>
-    <message>
-      <source>&amp;Add group</source>
-      <translation>Gruppe &amp;hinzufügen</translation>
-    </message>
-    <message>
       <source>Rename current dictionary group</source>
       <translation>Die ausgewählte Wörterbuchgruppe umbenennen.</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
       <translation>Gruppe &amp;umbenennen</translation>
-    </message>
-    <message>
-      <source>Remove current dictionary group</source>
-      <translation>Die ausgewählte Wörterbuchgruppe entfernen.</translation>
-    </message>
-    <message>
-      <source>&amp;Remove group</source>
-      <translation>Gruppe &amp;entfernen</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>
