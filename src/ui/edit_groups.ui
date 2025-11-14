@@ -138,32 +138,12 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QPushButton" name="addGroup">
-         <property name="toolTip">
-          <string>Create new dictionary group</string>
-         </property>
-         <property name="text">
-          <string>&amp;Add group</string>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="QPushButton" name="renameGroup">
          <property name="toolTip">
           <string>Rename current dictionary group</string>
          </property>
          <property name="text">
           <string>Re&amp;name group</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="removeGroup">
-         <property name="toolTip">
-          <string>Remove current dictionary group</string>
-         </property>
-         <property name="text">
-          <string>&amp;Remove group</string>
          </property>
         </widget>
        </item>
@@ -273,9 +253,7 @@
   <tabstop>addDictsToGroup</tabstop>
   <tabstop>removeDictsFromGroup</tabstop>
   <tabstop>groups</tabstop>
-  <tabstop>addGroup</tabstop>
   <tabstop>renameGroup</tabstop>
-  <tabstop>removeGroup</tabstop>
   <tabstop>removeAllGroups</tabstop>
   <tabstop>searchLine</tabstop>
  </tabstops>

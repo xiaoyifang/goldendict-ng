@@ -38,9 +38,7 @@ Groups::Groups( QWidget * parent,
   connect( groupsListMenu, &QMenu::aboutToShow, this, &Groups::fillGroupsMenu );
   connect( groupsListMenu, &QMenu::triggered, this, &Groups::switchToGroup );
 
-  connect( ui.addGroup, &QAbstractButton::clicked, this, &Groups::addNew );
   connect( ui.renameGroup, &QAbstractButton::clicked, this, &Groups::renameCurrent );
-  connect( ui.removeGroup, &QAbstractButton::clicked, this, &Groups::removeCurrent );
   connect( ui.removeAllGroups, &QAbstractButton::clicked, this, &Groups::removeAll );
   connect( ui.addDictsToGroup, &QAbstractButton::clicked, this, &Groups::addToGroup );
   connect( ui.dictionaries, &QAbstractItemView::doubleClicked, this, &Groups::addToGroup );
@@ -104,7 +102,6 @@ void Groups::countChanged()
   bool en = ui.groups->count();
 
   ui.renameGroup->setEnabled( en );
-  ui.removeGroup->setEnabled( en );
   ui.removeAllGroups->setEnabled( en );
 }
 
