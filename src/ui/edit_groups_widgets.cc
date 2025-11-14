@@ -969,7 +969,7 @@ void DictGroupsWidget::removeTabRequested( int index )
 
 void DictGroupsWidget::addNewTab()
 {
-  addNewGroup( tr( "New Group" ) );
+  emit newTabRequested();
 }
 
 

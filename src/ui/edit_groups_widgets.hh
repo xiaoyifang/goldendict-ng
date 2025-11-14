@@ -227,6 +227,7 @@ private slots:
 signals:
   void showDictionaryInfo( const QString & id );
   void countChanged();
+  void newTabRequested();
 };
 
 class QuickFilterLine: public QLineEdit
