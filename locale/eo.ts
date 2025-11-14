@@ -489,6 +489,14 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>Kombinu grupojn kun &quot;%1&quot;</translation>
     </message>
+    <message>
+      <source>Remove group</source>
+      <translation>Forigi grupon</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>Ĉu vi certas, ke vi volas forigi la grupon &lt;b&gt;%1&lt;/b&gt;?</translation>
+    </message>
   </context>
   <context>
     <name>DictHeadwords</name>
@@ -1035,28 +1043,12 @@ inter klasika kaj lerneja ortografio en cirila)</translation>
       <translation>Langeto 2</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>Krei novan vortaran grupon</translation>
-    </message>
-    <message>
-      <source>&amp;Add group</source>
-      <translation>&amp;Aldoni grupon</translation>
-    </message>
-    <message>
       <source>Rename current dictionary group</source>
       <translation>Alinomi nunan vortargrupon</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
       <translation>Re&amp;nomi grupon</translation>
-    </message>
-    <message>
-      <source>Remove current dictionary group</source>
-      <translation>Forigi nunan vortaran grupon</translation>
-    </message>
-    <message>
-      <source>&amp;Remove group</source>
-      <translation>&amp;Forigi grupon</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>
