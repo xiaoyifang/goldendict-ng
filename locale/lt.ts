@@ -488,6 +488,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>Apjungti grupes pagal „%1“</translation>
     </message>
+    <message>
+      <source>Remove group</source>
+      <translation>Pašalinti grupę</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>Tikrai norite pašalinti &lt;b&gt;%1&lt;/b&gt; grupę?</translation>
+    </message>
   </context>
   <context>
     <name>DictHeadwords</name>
@@ -1034,28 +1042,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Kortelė</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>Sukurti naują žodynų grupę</translation>
-    </message>
-    <message>
-      <source>&amp;Add group</source>
-      <translation>Pri&amp;dėti grupę</translation>
-    </message>
-    <message>
       <source>Rename current dictionary group</source>
       <translation>Pervadinti esamą žodynų grupę</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
       <translation>Per&amp;vadinti grupę</translation>
-    </message>
-    <message>
-      <source>Remove current dictionary group</source>
-      <translation>Pašalinti esamą žodynų grupę</translation>
-    </message>
-    <message>
-      <source>&amp;Remove group</source>
-      <translation>Pašali&amp;nti grupę</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>
