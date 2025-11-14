@@ -539,12 +539,12 @@ DictGroupsWidget::DictGroupsWidget( QWidget * parent ):
   setContextMenuPolicy( Qt::CustomContextMenu );
   connect( this, &QWidget::customContextMenuRequested, this, &DictGroupsWidget::contextMenu );
 
-  addTabButton = new QToolButton(this);
-  addTabButton->setAutoRaise(true);
-  addTabButton->setIcon(QIcon(":/icons/addtab.svg"));
-  setCornerWidget(addTabButton, Qt::TopLeftCorner);
+  addTabButton = new QToolButton( this );
+  addTabButton->setAutoRaise( true );
+  addTabButton->setIcon( QIcon( ":/icons/addtab.svg" ) );
+  setCornerWidget( addTabButton, Qt::TopLeftCorner );
 
-  connect(addTabButton, &QToolButton::clicked, this, &DictGroupsWidget::addNewTab);
+  connect( addTabButton, &QToolButton::clicked, this, &DictGroupsWidget::addNewTab );
 
   setTabsClosable( true );
   connect( this, &QTabWidget::tabCloseRequested, this, &DictGroupsWidget::removeTabRequested );
@@ -968,7 +968,7 @@ void DictGroupsWidget::removeTabRequested( int index )
 
 void DictGroupsWidget::addNewTab()
 {
-    addNewGroup(tr("New Group"));
+  addNewGroup( tr( "New Group" ) );
 }
 
 
