@@ -489,6 +489,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>&quot;%1&quot; とグループを結合</translation>
     </message>
+    <message>
+      <source>Remove group</source>
+      <translation>グループの削除</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>グループ &lt;b&gt;%1&lt;/b&gt; を削除してもよろしいですか?</translation>
+    </message>
   </context>
   <context>
     <name>DictHeadwords</name>
@@ -1035,28 +1043,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>タブ 2</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>新しい辞書グループを作成します</translation>
-    </message>
-    <message>
-      <source>&amp;Add group</source>
-      <translation>グループの追加(&amp;A)</translation>
-    </message>
-    <message>
       <source>Rename current dictionary group</source>
       <translation>現在の辞書グループの名前を変更します</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
       <translation>グループ名の変更(&amp;N)</translation>
-    </message>
-    <message>
-      <source>Remove current dictionary group</source>
-      <translation>現在の辞書グループを削除します</translation>
-    </message>
-    <message>
-      <source>&amp;Remove group</source>
-      <translation>グループの削除(&amp;R)</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>
