@@ -488,6 +488,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>Kết hợp nhóm với &quot;%1&quot;</translation>
     </message>
+    <message>
+      <source>Remove group</source>
+      <translation>Xóa nhóm</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>Bạn có muốn xóa nhóm &lt;b&gt;%1&lt;/b&gt;?</translation>
+    </message>
   </context>
   <context>
     <name>DictHeadwords</name>
@@ -1034,28 +1042,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Thẻ 2</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>Tạo một nhóm từ điển mới</translation>
-    </message>
-    <message>
-      <source>&amp;Add group</source>
-      <translation>Thê&amp;m nhóm</translation>
-    </message>
-    <message>
       <source>Rename current dictionary group</source>
       <translation>Đổi tên nhóm từ điển hiện tại</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
       <translation>Đổi tên &amp;nhóm</translation>
-    </message>
-    <message>
-      <source>Remove current dictionary group</source>
-      <translation>Xóa nhóm hiện tại</translation>
-    </message>
-    <message>
-      <source>&amp;Remove group</source>
-      <translation>&amp;Xóa nhóm</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>
