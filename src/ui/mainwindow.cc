@@ -3332,46 +3332,6 @@ void MainWindow::printPreviewPaintRequested( QPrinter * printer )
   view->print( printer );
 }
 
-static void filterAndCollectResources( QString & html,
-                                       QRegularExpression & rx,
-                                       const QString & sep,
-                                       const QString & folder,
-                                       set< QByteArray > & resourceIncluded,
-                                       vector< pair< QUrl, QString > > & downloadResources )
-{
-  int pos = 0;
-
-  auto match = rx.match( html, pos );
-  while ( match.hasMatch() ) {
-    pos = match.capturedStart();
-    QUrl url( match.captured( 1 ) );
-    QString host         = url.host();
-    QString resourcePath = Utils::Url::path( url );
-
-    if ( !host.startsWith( '/' ) ) {
-      host.insert( 0, '/' );
-    }
-    if ( !resourcePath.startsWith( '/' ) ) {
-      resourcePath.insert( 0, '/' );
-    }
-
-    QCryptographicHash hash( QCryptographicHash::Md5 );
-    hash.addData( match.captured().toUtf8() );
-
-    if ( resourceIncluded.insert( hash.result() ).second ) {
-      // Gather resource information (url, filename) to be download later
-      downloadResources.emplace_back( url, folder + host + resourcePath );
-    }
-
-    // Modify original url, set to the native one
-    resourcePath   = QString::fromLatin1( QUrl::toPercentEncoding( resourcePath, "/" ) );
-    QString newUrl = sep + QDir( folder ).dirName() + host + resourcePath + sep;
-    html.replace( pos, match.captured().length(), newUrl );
-    pos += newUrl.length();
-    match = rx.match( html, pos );
-  }
-}
-
 void MainWindow::on_saveArticle_triggered()
 {
   // Delegate to centralized saver object and show status messages on the main status bar
