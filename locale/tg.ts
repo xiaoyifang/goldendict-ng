@@ -489,6 +489,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>Муттаҳид кардани гурӯҳҳо бо &quot;%1&quot;</translation>
     </message>
+    <message>
+      <source>Remove group</source>
+      <translation>Гурӯҳро тоза кардан</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>Шумо мутмаин ҳастед, ки мехоҳед гурӯҳи &lt;b&gt;%1&lt;/b&gt;-ро тоза кунед?</translation>
+    </message>
   </context>
   <context>
     <name>DictHeadwords</name>
@@ -1035,28 +1043,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Варақаи 2</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>Гурӯҳи нави луғатро эҷод кардан</translation>
-    </message>
-    <message>
-      <source>&amp;Add group</source>
-      <translation>&amp;Гурӯҳро илова кардан</translation>
-    </message>
-    <message>
       <source>Rename current dictionary group</source>
       <translation>Номи гурӯҳи луғати ҷориро иваз кардан</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
       <translation>&amp;Номи гурӯҳро иваз кардан</translation>
-    </message>
-    <message>
-      <source>Remove current dictionary group</source>
-      <translation>Гурӯҳи луғати ҷориро тоза кардан</translation>
-    </message>
-    <message>
-      <source>&amp;Remove group</source>
-      <translation>&amp;Гурӯҳро тоза кардан</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>

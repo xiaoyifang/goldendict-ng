@@ -491,6 +491,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>Συνδυασμός των ομάδων με &quot;%1&quot;</translation>
     </message>
+    <message>
+      <source>Remove group</source>
+      <translation>Αφαίρεση ομάδας</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>Σίγουρα θέλετε να αφαιρέσετε την ομάδα &lt;b&gt;%1&lt;/b&gt;;</translation>
+    </message>
   </context>
   <context>
     <name>DictHeadwords</name>
@@ -1037,28 +1045,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>Tab 2</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>Δημιουργία νέας ομάδας λεξικών</translation>
-    </message>
-    <message>
-      <source>&amp;Add group</source>
-      <translation>Προσ&amp;θήκη ομάδας</translation>
-    </message>
-    <message>
       <source>Rename current dictionary group</source>
       <translation>Μετονομασία τρέχουσας ομάδας λεξικών</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
       <translation>&amp;Μετονομασία ομάδας</translation>
-    </message>
-    <message>
-      <source>Remove current dictionary group</source>
-      <translation>Αφαίρεση τρέχουσας ομάδας λεξικών</translation>
-    </message>
-    <message>
-      <source>&amp;Remove group</source>
-      <translation>Α&amp;φαίρεση ομάδας</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>

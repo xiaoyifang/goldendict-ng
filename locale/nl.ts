@@ -489,6 +489,14 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>Groepen met &quot;%1&quot; combineren</translation>
     </message>
+    <message>
+      <source>Remove group</source>
+      <translation>Groep verwijderen</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>Weet u zeker dat u de groep &lt;b&gt;%1&lt;/b&gt; wilt verwijderen?</translation>
+    </message>
   </context>
   <context>
     <name>DictHeadwords</name>
@@ -1035,28 +1043,12 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <translation>Tab 2</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>Nieuwe woordenboekgroep maken</translation>
-    </message>
-    <message>
-      <source>&amp;Add group</source>
-      <translation>Groep &amp;toevoegen</translation>
-    </message>
-    <message>
       <source>Rename current dictionary group</source>
       <translation>Huidige groep hernoemen</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
       <translation>Groep &amp;hernoemen</translation>
-    </message>
-    <message>
-      <source>Remove current dictionary group</source>
-      <translation>Huidige groep verwijderen</translation>
-    </message>
-    <message>
-      <source>&amp;Remove group</source>
-      <translation>Groep &amp;verwijderen</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>

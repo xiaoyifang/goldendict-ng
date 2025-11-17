@@ -489,6 +489,14 @@ arasındaki farkı giderir)</translation>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>&quot;%1&quot; ile grupları birleştir</translation>
     </message>
+    <message>
+      <source>Remove group</source>
+      <translation>Grubu kaldır</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>&lt;b&gt;%1&lt;/b&gt; isimli grubu kaldırmak istiyor musunuz?</translation>
+    </message>
   </context>
   <context>
     <name>DictHeadwords</name>
@@ -1035,28 +1043,12 @@ arasındaki farkı giderir)</translation>
       <translation>2. Sekme</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>Yeni sözlük grubu oluştur</translation>
-    </message>
-    <message>
-      <source>&amp;Add group</source>
-      <translation>Grup &amp;ekle</translation>
-    </message>
-    <message>
       <source>Rename current dictionary group</source>
       <translation>Geçerli grubu yeniden adlandır</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
       <translation>Grubu &amp; yeniden adlandır</translation>
-    </message>
-    <message>
-      <source>Remove current dictionary group</source>
-      <translation>Geçerli grubu sil</translation>
-    </message>
-    <message>
-      <source>&amp;Remove group</source>
-      <translation>Grubu &amp;kaldır</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>

@@ -489,6 +489,14 @@ between classic and school orthography in cyrillic)</translation>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>Combine groups with &quot;%1&quot;</translation>
     </message>
+    <message>
+      <source>Remove group</source>
+      <translation>vimcu pa selcmi</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>.i xu do djica lo ka vimcu la&apos;o zoi. &lt;b&gt;%1&lt;/b&gt; .zoi noi selcmi</translation>
+    </message>
   </context>
   <context>
     <name>DictHeadwords</name>
@@ -1035,28 +1043,12 @@ between classic and school orthography in cyrillic)</translation>
       <translation>re moi lo&apos;i vanbi poi sepli</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>cupra pa vlacku selcmi</translation>
-    </message>
-    <message>
-      <source>&amp;Add group</source>
-      <translation>cupra pa selcmi</translation>
-    </message>
-    <message>
       <source>Rename current dictionary group</source>
       <translation>basti fi lo ka cmene lo vlacku selcmi poi ca se cuxna</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
       <translation>basti fi lo ka cmene lo selcmi</translation>
-    </message>
-    <message>
-      <source>Remove current dictionary group</source>
-      <translation>vimcu pa vlacku selcmi poi ca se cuxna</translation>
-    </message>
-    <message>
-      <source>&amp;Remove group</source>
-      <translation>vimcu pa selcmi</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>

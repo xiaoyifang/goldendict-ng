@@ -489,6 +489,14 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>Połącz grupy z „%1”</translation>
     </message>
+    <message>
+      <source>Remove group</source>
+      <translation>Usuń grupę</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>Czy na pewno usunąć grupę &lt;b&gt;%1&lt;/b&gt;?</translation>
+    </message>
   </context>
   <context>
     <name>DictHeadwords</name>
@@ -1035,28 +1043,12 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
       <translation>Karta 2</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>Utwórz nową grupę słowników</translation>
-    </message>
-    <message>
-      <source>&amp;Add group</source>
-      <translation>Dod&amp;aj grupę</translation>
-    </message>
-    <message>
       <source>Rename current dictionary group</source>
       <translation>Zmień nazwę bieżącej grupy słowników</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
       <translation>Zmień &amp;nazwę grupy</translation>
-    </message>
-    <message>
-      <source>Remove current dictionary group</source>
-      <translation>Usuń bieżącą grupę słowników</translation>
-    </message>
-    <message>
-      <source>&amp;Remove group</source>
-      <translation>&amp;Usuń grupę</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>
