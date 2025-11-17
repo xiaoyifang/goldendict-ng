@@ -951,10 +951,9 @@ void ScanPopup::saveArticleButton_clicked()
 {
   // Delegate to centralized saver object; ScanPopup will display status messages
   auto * saver = new ArticleSaver( this, definition, cfg );
-  connect( saver,
-           &ArticleSaver::statusMessage,
-           this,
-           [ this ]( const QString & message, int timeout ) { showStatusBarMessage( message, timeout ); } );
+  connect( saver, &ArticleSaver::statusMessage, this, [ this ]( const QString & message, int timeout ) {
+    showStatusBarMessage( message, timeout );
+  } );
   saver->save();
 }
 

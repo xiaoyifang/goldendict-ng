@@ -71,13 +71,11 @@ static void filterAndCollectResources( QString & html,
 }
 } // namespace
 
-ArticleSaver::ArticleSaver(QWidget * uiParent,
-                           ArticleView * view,
-                           Config::Class & cfg) :
+ArticleSaver::ArticleSaver( QWidget * uiParent, ArticleView * view, Config::Class & cfg ):
 
-  uiParent_(uiParent),
-  view_(view),
-  cfg_(cfg)
+  uiParent_( uiParent ),
+  view_( view ),
+  cfg_( cfg )
 {
 }
 
@@ -137,7 +135,7 @@ void ArticleSaver::save()
     QWebEnginePage * page = view_->page();
     QObject::connect( page, &QWebEnginePage::pdfPrintingFinished, this, [ this ]( const QString & fp, bool success ) {
       Q_UNUSED( fp )
-      emit statusMessage( success ? QObject::tr( "Save PDF complete") : QObject::tr( "Save PDF failed" ), 5000 );
+      emit statusMessage( success ? QObject::tr( "Save PDF complete" ) : QObject::tr( "Save PDF failed" ), 5000 );
     } );
 
     page->printToPdf( fileName );
@@ -216,8 +214,8 @@ void ArticleSaver::save()
         filterAndCollectResources( html, rx1, "\"", folder, resourceIncluded, downloadResources );
         filterAndCollectResources( html, rx2, "'", folder, resourceIncluded, downloadResources );
 
-        auto * progressDialog = new ArticleSaveProgressDialog( uiParent_ );
-        int maxVal = 1; // main html
+        auto * progressDialog    = new ArticleSaveProgressDialog( uiParent_ );
+        int maxVal               = 1; // main html
         bool anyHandlerConnected = false;
 
         for ( const auto & p : downloadResources ) {
@@ -226,9 +224,9 @@ void ArticleSaver::save()
             anyHandlerConnected = true;
             maxVal += 1;
             QObject::connect( handler,
-                  &ResourceToSaveHandler::done,
-                  progressDialog,
-                  &ArticleSaveProgressDialog::perform );
+                              &ResourceToSaveHandler::done,
+                              progressDialog,
+                              &ArticleSaveProgressDialog::perform );
           }
         }
 
@@ -258,4 +256,3 @@ void ArticleSaver::save()
     }
   } );
 }
-
