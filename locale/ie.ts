@@ -489,6 +489,14 @@ between classic and school orthography in cyrillic)</translation>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>Combinar gruppes per «%1»</translation>
     </message>
+    <message>
+      <source>Remove group</source>
+      <translation>Remover li gruppe</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>Esque vu vole remover li gruppe &lt;b&gt;%1&lt;/b&gt;?</translation>
+    </message>
   </context>
   <context>
     <name>DictHeadwords</name>
@@ -1035,28 +1043,12 @@ between classic and school orthography in cyrillic)</translation>
       <translation>Tab 2</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>Crear un nov gruppe de dictionariums</translation>
-    </message>
-    <message>
-      <source>&amp;Add group</source>
-      <translation>&amp;Adjunter</translation>
-    </message>
-    <message>
       <source>Rename current dictionary group</source>
       <translation>Renominar li actual gruppe de dictionariums</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
       <translation>Re&amp;nominar</translation>
-    </message>
-    <message>
-      <source>Remove current dictionary group</source>
-      <translation>Remover li actual gruppe de dictionariums</translation>
-    </message>
-    <message>
-      <source>&amp;Remove group</source>
-      <translation>&amp;Remover</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>

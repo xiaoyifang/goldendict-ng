@@ -489,6 +489,14 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>Kombinera grupper med &quot;%1&quot;</translation>
     </message>
+    <message>
+      <source>Remove group</source>
+      <translation>Ta bort grupp</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>Är du säker på att du vill ta bort gruppen &lt;b&gt;%1&lt;/b&gt;?</translation>
+    </message>
   </context>
   <context>
     <name>DictHeadwords</name>
@@ -1035,28 +1043,12 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <translation>Flik 2</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>Skapa en ny ordlistegrupp</translation>
-    </message>
-    <message>
-      <source>&amp;Add group</source>
-      <translation>&amp;Lägg till grupp</translation>
-    </message>
-    <message>
       <source>Rename current dictionary group</source>
       <translation>Byt namn på den aktuella ordlistegruppen</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
       <translation>Byt &amp;namn på grupp</translation>
-    </message>
-    <message>
-      <source>Remove current dictionary group</source>
-      <translation>Ta bort den aktuella ordlistegruppen</translation>
-    </message>
-    <message>
-      <source>&amp;Remove group</source>
-      <translation>Ta &amp;bort grupp</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>

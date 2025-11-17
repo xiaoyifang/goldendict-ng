@@ -489,6 +489,14 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>Yhdistä ryhmät &quot;%1&quot;</translation>
     </message>
+    <message>
+      <source>Remove group</source>
+      <translation>Poista ryhmä</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>Oletko varma, että haluat poistaa ryhmän &lt;b&gt;%1&lt;/b&gt;?</translation>
+    </message>
   </context>
   <context>
     <name>DictHeadwords</name>
@@ -1035,28 +1043,12 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <translation>Tab 2</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>Luo uusi sanakirja ryhmä</translation>
-    </message>
-    <message>
-      <source>&amp;Add group</source>
-      <translation>&amp;Lisää ryhmä</translation>
-    </message>
-    <message>
       <source>Rename current dictionary group</source>
       <translation>Nimeä nykyinen sanakirja uudestaan</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
       <translation>Ni&amp;meä ryhmä uudelleen</translation>
-    </message>
-    <message>
-      <source>Remove current dictionary group</source>
-      <translation>Poista nykyinen sanakirja ryhmä</translation>
-    </message>
-    <message>
-      <source>&amp;Remove group</source>
-      <translation>&amp;Poista ryhmä</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>

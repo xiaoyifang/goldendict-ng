@@ -489,6 +489,14 @@ between classic and school orthography in cyrillic)</source>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>گروه‌ها را ترکیب کنید با &quot;%1&quot;</translation>
     </message>
+    <message>
+      <source>Remove group</source>
+      <translation>حذف گروه</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>آیا شما از حذف گروه &lt;b&gt;%1&lt;/b&gt; اطمینان دارید؟</translation>
+    </message>
   </context>
   <context>
     <name>DictHeadwords</name>
@@ -1035,28 +1043,12 @@ between classic and school orthography in cyrillic)</source>
       <translation>زبانه ۲</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>ساخت گروه واژه‌نامه تازه</translation>
-    </message>
-    <message>
-      <source>&amp;Add group</source>
-      <translation>&amp;افزودن گروه</translation>
-    </message>
-    <message>
       <source>Rename current dictionary group</source>
       <translation>تغییرنام گروه واژه‌نامه جاری</translation>
     </message>
     <message>
       <source>Re&amp;name group</source>
       <translation>&amp;تغییرنام گروه</translation>
-    </message>
-    <message>
-      <source>Remove current dictionary group</source>
-      <translation>حذف گروه واژه‌نامه جاری</translation>
-    </message>
-    <message>
-      <source>&amp;Remove group</source>
-      <translation>&amp;حذف گروه</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>

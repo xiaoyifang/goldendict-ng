@@ -491,6 +491,15 @@ between classic and school orthography in cyrillic)</source>
       <source>Combine groups with &quot;%1&quot;</source>
       <translation>&quot;%1&quot; ukampi qutunak kisantaña</translation>
     </message>
+    <message>
+      <source>Remove group</source>
+      <translation>Qutu chhaqtayaña</translation>
+    </message>
+    <message>
+      <source>Are you sure you want to remove the group &lt;b&gt;%1&lt;/b&gt;?</source>
+      <translation>Chiqpacha &lt;b&gt;%1&lt;/b&gt; qutu chhaqtayañ muntati?&lt;br&gt;&lt;br&gt;
+¿Esta seguro de que quiere eliminar el grupo &lt;b&gt;%1&lt;/b&gt;?</translation>
+    </message>
   </context>
   <context>
     <name>DictHeadwords</name>
@@ -1049,16 +1058,6 @@ Eliminar los diccionarios seleccionados del grupo (SUPR)</translation>
       <translation>Phichhu 2</translation>
     </message>
     <message>
-      <source>Create new dictionary group</source>
-      <translation>Machaq qutu aru-pirwanak uñstayana.
-
-Crear un nuevo grupo de diccionarios.</translation>
-    </message>
-    <message>
-      <source>&amp;Add group</source>
-      <translation>Qutu &amp;yapaña</translation>
-    </message>
-    <message>
       <source>Rename current dictionary group</source>
       <translation>Jichha qutu aru-pirwanak mayampi suticht&apos;aña.
 
@@ -1067,16 +1066,6 @@ Renombrar el grupo de diccionarios actual.</translation>
     <message>
       <source>Re&amp;name group</source>
       <translation>&amp;Mayamp qutur suticht&apos;aña</translation>
-    </message>
-    <message>
-      <source>Remove current dictionary group</source>
-      <translation>Jiccha qutu aru-pirwanaka chhaqtayaña.
-
-Eliminar el grupo actual de diccionarios.</translation>
-    </message>
-    <message>
-      <source>&amp;Remove group</source>
-      <translation>Qutu &amp;chhaqtayaña</translation>
     </message>
     <message>
       <source>Remove all dictionary groups</source>
