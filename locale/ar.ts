@@ -2531,38 +2531,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>اطبع المقالة</translation>
     </message>
     <message>
-      <source>Complete Html (*.html *.htm)</source>
-      <translation>Complete Html (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Single Html (*.html *.htm)</source>
-      <translation>Single Html (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Mime Html (*.mhtml)</source>
-      <translation>Mime Html (*.mhtml)</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>احفظ المقالة كـ</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>خطأ</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>تعذّر حفظ المقالة: %1</translation>
-    </message>
-    <message>
-      <source>Saving article...</source>
-      <translation>يحفظ المقالة...</translation>
-    </message>
-    <message>
-      <source>Save article complete</source>
-      <translation>اكتمل حفظ المقال</translation>
-    </message>
-    <message>
       <source>The main window is set to be always on top.</source>
       <translation>عُيّنت النافذة الرئيسية في الأعلى دائمًا.</translation>
     </message>
@@ -2653,18 +2621,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Show</source>
       <translation>عرض</translation>
-    </message>
-    <message>
-      <source>Save PDF complete</source>
-      <translation>Save PDF complete</translation>
-    </message>
-    <message>
-      <source>Save PDF failed</source>
-      <translation>Save PDF failed</translation>
-    </message>
-    <message>
-      <source>PDF document (*.pdf *.PDF)</source>
-      <translation>وثيقة PDF (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Lock Panels</source>
@@ -3703,6 +3659,50 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
       <translation>في الرابط، سيتم استبدال &quot;%GDWORD%&quot; بالكلمة التي يتم بحثها.</translation>
     </message>
+    <message>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Complete Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Html واحد (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>وثيقة PDF (*.pdf *.PDF)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime Html (*.mhtml)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation>حفظ المقالة كـ</translation>
+    </message>
+    <message>
+      <source>Save article complete</source>
+      <translation>حفظ المقالة اكتمل</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>خطأ</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation type="unfinished">Can&apos;t save article: %1</translation>
+    </message>
+    <message>
+      <source>Saving article...</source>
+      <translation>حفظ المقال...</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>اكتمل حفظ PDF</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>فشل حفظ PDF</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3798,6 +3798,10 @@ from Stardict, Babylon and GLS dictionaries</source>
 could be resized or managed in other ways.</source>
       <translation>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>احفظ المقالة</translation>
     </message>
   </context>
   <context>
