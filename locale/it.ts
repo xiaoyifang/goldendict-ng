@@ -3688,7 +3688,7 @@ dai dizionari di Stardict, Babylon e GLS</translation>
     </message>
     <message>
       <source>Can&apos;t save article: %1</source>
-      <translation>Può&apos;t salvare l'articolo: %1</translation>
+      <translation>Impossibile salvare la traduzione: %1</translation>
     </message>
     <message>
       <source>Saving article...</source>
