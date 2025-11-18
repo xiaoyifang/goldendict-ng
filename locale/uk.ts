@@ -81,22 +81,21 @@
         &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</source>
-      <translation type="unfinished">
-    &lt;div class=&quot;welcome-container&quot;&gt;
-      &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
-      &lt;section&gt;
-        &lt;h4&gt;To get started:&lt;/h4&gt;
-        &lt;ul&gt;
-          &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
-          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
-          &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/section&gt;
-      &lt;p&gt;Should you need further help, have any questions, or suggestions, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; and &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
-      &lt;footer class=&quot;welcome-footer&quot;&gt;
-        &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
-      &lt;/footer&gt;
-    &lt;/div&gt;</translation>
+      <translation>&lt;div class=&quot;welcome-container&quot;&gt;
+&lt;h3&gt;Ласкаво просимо до &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
+&lt;section&gt;
+&lt;h4&gt;Щоб розпочати:&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Перейдіть до розділу &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Редагувати&lt;/span&gt;&lt;span&gt;Словники&lt;/span&gt;&lt;/span&gt;, щоб додати файли словників, налаштувати онлайн-джерела, такі як Вікіпедія, та організувати їх у групи.&lt;/li&gt;
+&lt;li&gt;Після налаштування ви можете шукати слова в цьому вікні або &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;з інших програм за допомогою спливаючого вікна сканування&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Щоб налаштувати програму, перегляньте параметри в розділі &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Редагувати&lt;/span&gt;&lt;span&gt;Налаштування&lt;/span&gt;&lt;/span&gt;. Усі налаштування мають підказки, тому обов’язково прочитайте їх, якщо щось незрозуміло.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;p&gt;Якщо вам потрібна додаткова допомога, у вас є запитання чи пропозиції, ласкаво просимо на &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;форум&lt;/a&gt; та &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;вебсайт&lt;/a&gt; програми.&lt;/p&gt;
+&lt;footer class=&quot;welcome-footer&quot;&gt;
+&lt;small&gt;На основі оригінального GoldenDict від Костянтина Ісакова (c) 2008-2013. Підтримується та розробляється спільнотою GoldenDict-NG. Ліцензовано за ліцензією GPLv3 або пізнішої версії.&lt;/small&gt;
+&lt;/footer&gt;
+&lt;/div&gt;</translation>
     </message>
   </context>
   <context>
@@ -3506,9 +3505,7 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
                   opened.
                  </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
+      <translation>Виберіть цей параметр, якщо ви не хочете бачити головну панель вкладок, коли відкрито лише одну вкладку.</translation>
     </message>
   </context>
   <context>
