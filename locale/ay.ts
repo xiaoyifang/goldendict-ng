@@ -3801,7 +3801,7 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     </message>
     <message>
       <source>Can&apos;t save article: %1</source>
-      <translation type="unfinished">Can&apos;t save article: %1</translation>
+      <translation>Janiw qillqa imañ atiykiti: %1</translation>
     </message>
     <message>
       <source>Saving article...</source>
