@@ -2533,38 +2533,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Надрукувати статтю</translation>
     </message>
     <message>
-      <source>Complete Html (*.html *.htm)</source>
-      <translation>Повний Html (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Single Html (*.html *.htm)</source>
-      <translation>Один Html (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Mime Html (*.mhtml)</source>
-      <translation>Mime Html (*.mhtml)</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>Зберегти статтю як</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>Помилка</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>Неможливо зберегти статтю: %1</translation>
-    </message>
-    <message>
-      <source>Saving article...</source>
-      <translation>Збередення статті…</translation>
-    </message>
-    <message>
-      <source>Save article complete</source>
-      <translation>Зберегти статтю завершено</translation>
-    </message>
-    <message>
       <source>The main window is set to be always on top.</source>
       <translation>Головне меню налаштовано аби завжди бути зверху.</translation>
     </message>
@@ -2655,18 +2623,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Show</source>
       <translation>Показати</translation>
-    </message>
-    <message>
-      <source>Save PDF complete</source>
-      <translation>Збереження PDF завершено</translation>
-    </message>
-    <message>
-      <source>Save PDF failed</source>
-      <translation>Не вдалося зберегти PDF</translation>
-    </message>
-    <message>
-      <source>PDF document (*.pdf *.PDF)</source>
-      <translation>PDF документ (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Lock Panels</source>
@@ -3706,6 +3662,50 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
       <translation>В Url, &quot;%GDWORD%&quot; буде замінено вимовленим словом.</translation>
     </message>
+    <message>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Complete Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Одинарний Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF документ (*.pdf *.PDF)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime Html (*.mhtml)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation>Зберегти статтю як</translation>
+    </message>
+    <message>
+      <source>Save article complete</source>
+      <translation>Зберегти статтю завершено</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>Помилка</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation>Може&apos;зберігати статтю: %1</translation>
+    </message>
+    <message>
+      <source>Saving article...</source>
+      <translation>Збереження статті...</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>Збереження PDF завершено</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>Не вдалося зберегти PDF</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3801,6 +3801,10 @@ from Stardict, Babylon and GLS dictionaries</source>
 could be resized or managed in other ways.</source>
       <translation>Використовуйте для закріплення вікна, щоб воно залишалося на екрані,
 може бути змінене або кероване іншими способами.</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>Зберегти статтю</translation>
     </message>
   </context>
   <context>
