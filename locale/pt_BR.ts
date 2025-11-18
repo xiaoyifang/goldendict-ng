@@ -2532,38 +2532,6 @@ Para encontrar os símbolos &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]
       <translation>Imprimir Verbete</translation>
     </message>
     <message>
-      <source>Complete Html (*.html *.htm)</source>
-      <translation>Html completo (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Single Html (*.html *.htm)</source>
-      <translation>HTML único (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Mime Html (*.mhtml)</source>
-      <translation>Mímica Html (*.mhtml)</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>Salvar Verbete como</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>Erro</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>Não foi possível salvar o verbete: %1</translation>
-    </message>
-    <message>
-      <source>Saving article...</source>
-      <translation>Salvando artigo...</translation>
-    </message>
-    <message>
-      <source>Save article complete</source>
-      <translation>Salvar artigo completo</translation>
-    </message>
-    <message>
       <source>The main window is set to be always on top.</source>
       <translation>A janela principal está definida para estar sempre no topo.</translation>
     </message>
@@ -2654,18 +2622,6 @@ Para encontrar os símbolos &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]
     <message>
       <source>Show</source>
       <translation>Mostrar</translation>
-    </message>
-    <message>
-      <source>Save PDF complete</source>
-      <translation>Salvar PDF completo</translation>
-    </message>
-    <message>
-      <source>Save PDF failed</source>
-      <translation>Falha ao salvar PDF</translation>
-    </message>
-    <message>
-      <source>PDF document (*.pdf *.PDF)</source>
-      <translation>Documento PDF (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Lock Panels</source>
@@ -3710,6 +3666,50 @@ dos dicionários Stardict, Babylon e GLS</translation>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
       <translation>Na Url, &quot;%GDWORD%&quot; será substituído pela palavra sendo pesquisada.</translation>
     </message>
+    <message>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Complete Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Html simples (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>Documento PDF (*.pdf *.PDF)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime Html (*.mhtml)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation type="unfinished">Save Article As</translation>
+    </message>
+    <message>
+      <source>Save article complete</source>
+      <translation type="unfinished">Save article complete</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>Erro</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation type="unfinished">Can&apos;t save article: %1</translation>
+    </message>
+    <message>
+      <source>Saving article...</source>
+      <translation type="unfinished">Saving article...</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation type="unfinished">Save PDF complete</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation type="unfinished">Save PDF failed</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3805,6 +3805,10 @@ dos dicionários Stardict, Babylon e GLS</translation>
 could be resized or managed in other ways.</source>
       <translation>Use isto para fixar a janela para que ela fique na tela,
 poderia ser redimensionado ou gerenciado de outras formas.</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>Salva o verbete atual</translation>
     </message>
   </context>
   <context>
