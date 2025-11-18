@@ -3687,7 +3687,7 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     </message>
     <message>
       <source>Can&apos;t save article: %1</source>
-      <translation>Kan&apos;t artikel opslaan: %1</translation>
+      <translation>Kan artikel niet opslaan: %1</translation>
     </message>
     <message>
       <source>Saving article...</source>
