@@ -2532,38 +2532,6 @@ A &apos;*&apos;, &apos;?&apos;, &apos;[&apos; és &apos;]&apos; karakterek keres
       <translation>Szócikk nyomtatása</translation>
     </message>
     <message>
-      <source>Complete Html (*.html *.htm)</source>
-      <translation>Teljes HTML (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Single Html (*.html *.htm)</source>
-      <translation>Egyetlen HTML (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Mime Html (*.mhtml)</source>
-      <translation>Mime HTML (*.mhtml)</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>Szócikk mentése mint</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>Hiba</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>A szócikk mentése nem sikerült: %1</translation>
-    </message>
-    <message>
-      <source>Saving article...</source>
-      <translation>Szócikk mentése...</translation>
-    </message>
-    <message>
-      <source>Save article complete</source>
-      <translation>Szócikk mentése kész</translation>
-    </message>
-    <message>
       <source>The main window is set to be always on top.</source>
       <translation>A főablak mindig felül megjelenítése be van kapcsolva.</translation>
     </message>
@@ -2654,18 +2622,6 @@ A &apos;*&apos;, &apos;?&apos;, &apos;[&apos; és &apos;]&apos; karakterek keres
     <message>
       <source>Show</source>
       <translation>Megjelenítés</translation>
-    </message>
-    <message>
-      <source>Save PDF complete</source>
-      <translation>Save PDF complete</translation>
-    </message>
-    <message>
-      <source>Save PDF failed</source>
-      <translation>Save PDF failed</translation>
-    </message>
-    <message>
-      <source>PDF document (*.pdf *.PDF)</source>
-      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Lock Panels</source>
@@ -3704,6 +3660,50 @@ is felhasználja további szócikkek felfedezéséhez</translation>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
       <translation type="unfinished">In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</translation>
     </message>
+    <message>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Single Html (*.html *.htm)</source>
+      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation type="unfinished">Mime Html (*.mhtml)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation type="unfinished">Save Article As</translation>
+    </message>
+    <message>
+      <source>Save article complete</source>
+      <translation type="unfinished">Save article complete</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>Hiba</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation type="unfinished">Can&apos;t save article: %1</translation>
+    </message>
+    <message>
+      <source>Saving article...</source>
+      <translation type="unfinished">Saving article...</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation type="unfinished">Save PDF complete</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation type="unfinished">Save PDF failed</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3799,6 +3799,10 @@ is felhasználja további szócikkek felfedezéséhez</translation>
 could be resized or managed in other ways.</source>
       <translation>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>Szócikk mentése</translation>
     </message>
   </context>
   <context>
