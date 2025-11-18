@@ -3692,7 +3692,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Can&apos;t save article: %1</source>
-      <translation>Μπορεί να&apos;t αποθηκεύσει άρθρο: %1</translation>
+      <translation>Αδύνατη η αποθήκευση του άρθρου: %1</translation>
     </message>
     <message>
       <source>Saving article...</source>
