@@ -115,9 +115,9 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
 
     auto start_it = offsets.cbegin();
     if ( skip ) {
-      start_it         = std::upper_bound( offsets.constBegin(), offsets.constEnd(), lastAddress );
-      long num_skipped = std::distance( offsets.constBegin(), start_it );
-      qDebug() << "Resuming FTS indexing from offset" << ( start_it != offsets.constEnd() ? *start_it : -1 )
+      start_it = std::upper_bound( offsets.cbegin(), offsets.cend(), lastAddress );
+      long num_skipped = std::distance( offsets.cbegin(), start_it );
+      qDebug() << "Resuming FTS indexing from offset" << ( start_it != offsets.cend() ? *start_it : -1 )
                << "at index" << num_skipped;
       indexedDoc += num_skipped;
     }
