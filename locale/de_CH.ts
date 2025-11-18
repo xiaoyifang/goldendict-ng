@@ -3677,7 +3677,7 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
     </message>
     <message>
       <source>Can&apos;t save article: %1</source>
-      <translation type="unfinished">Can&apos;t save article: %1</translation>
+      <translation>Kann Artikel nicht speichern: %1</translation>
     </message>
     <message>
       <source>Saving article...</source>
