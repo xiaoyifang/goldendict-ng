@@ -2532,38 +2532,6 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
       <translation>Imprimer l&apos;article</translation>
     </message>
     <message>
-      <source>Complete Html (*.html *.htm)</source>
-      <translation>HTML complet (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Single Html (*.html *.htm)</source>
-      <translation>HTML unique (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Mime Html (*.mhtml)</source>
-      <translation>MIME HTML (*.mhtml)</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>Enregister l&apos;article sous</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>Erreur</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>Impossible d&apos;enregistrer l&apos;article : %1</translation>
-    </message>
-    <message>
-      <source>Saving article...</source>
-      <translation>Sauvegarde de l&apos;article...</translation>
-    </message>
-    <message>
-      <source>Save article complete</source>
-      <translation>Enregistrer l'article terminé</translation>
-    </message>
-    <message>
       <source>The main window is set to be always on top.</source>
       <translation>La fenêtre pricipale est configurée pour être toujours au premier plan.</translation>
     </message>
@@ -2654,18 +2622,6 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     <message>
       <source>Show</source>
       <translation>Afficher</translation>
-    </message>
-    <message>
-      <source>Save PDF complete</source>
-      <translation>Enregistrer le PDF avec succès</translation>
-    </message>
-    <message>
-      <source>Save PDF failed</source>
-      <translation>Échec de l'enregistrement du PDF</translation>
-    </message>
-    <message>
-      <source>PDF document (*.pdf *.PDF)</source>
-      <translation>Document PDF (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Lock Panels</source>
@@ -3702,6 +3658,50 @@ des dictionnaires Stardict, Babylon et GLS</translation>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
       <translation>Dans l’URL, &quot;%GDWORD%&quot; sera remplacé par le mot à rechercher.</translation>
     </message>
+    <message>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Complete Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Html simple (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>Document PDF (*.pdf *.PDF)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime Html (*.mhtml)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation>Enregistrer l'article sous</translation>
+    </message>
+    <message>
+      <source>Save article complete</source>
+      <translation>Enregistrement de l'article terminé</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>Erreur</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation>Peut&apos;t enregistrer l'article : %1</translation>
+    </message>
+    <message>
+      <source>Saving article...</source>
+      <translation>Enregistrement de l'article...</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>Enregistrer le PDF avec succès</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>Échec de l'enregistrement du PDF</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3798,6 +3798,10 @@ Erreur lors de l&apos;enregistrement de la ressource :</translation>
 could be resized or managed in other ways.</source>
       <translation>Utilisez ceci pour épingler la fenêtre afin qu'elle reste à l'écran,
 pourrait être redimensionnée ou gérée de toute autre manière.</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>Sauver l&apos;article</translation>
     </message>
   </context>
   <context>
