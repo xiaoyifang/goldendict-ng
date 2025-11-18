@@ -3673,7 +3673,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Can&apos;t save article: %1</source>
-      <translation type="unfinished">Can&apos;t save article: %1</translation>
+      <translation>无法保存文章：%1</translation>
     </message>
     <message>
       <source>Saving article...</source>
