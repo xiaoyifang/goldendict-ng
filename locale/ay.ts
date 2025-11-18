@@ -2588,38 +2588,6 @@ instale una primero.</translation>
       <translation>Laphin qillqata liq&apos;suña</translation>
     </message>
     <message>
-      <source>Complete Html (*.html *.htm)</source>
-      <translation>Html (*.html *.htm) ukax phuqhatawa.</translation>
-    </message>
-    <message>
-      <source>Single Html (*.html *.htm)</source>
-      <translation>Mä sapa Html (*.html *.htm) .</translation>
-    </message>
-    <message>
-      <source>Mime Html (*.mhtml)</source>
-      <translation>Mime Html (*.mhtml) ukax mä juk’a pachanakanwa.</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>Kunjam qillqata imaña</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>Pantja</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>Janiw qillqa imañ atiykiti: %1</translation>
-    </message>
-    <message>
-      <source>Saving article...</source>
-      <translation>Qillqatax imasiskiwa...</translation>
-    </message>
-    <message>
-      <source>Save article complete</source>
-      <translation>Artículo completo ukar imaña</translation>
-    </message>
-    <message>
       <source>The main window is set to be always on top.</source>
       <translation>Nayrankir wintanax uñjkayapuniñapawa.</translation>
     </message>
@@ -2714,18 +2682,6 @@ Error de importación: datos incorrectos en el fichero.</translation>
     <message>
       <source>Show</source>
       <translation>Uñachayaña</translation>
-    </message>
-    <message>
-      <source>Save PDF complete</source>
-      <translation type="unfinished">Save PDF complete</translation>
-    </message>
-    <message>
-      <source>Save PDF failed</source>
-      <translation type="unfinished">Save PDF failed</translation>
-    </message>
-    <message>
-      <source>PDF document (*.pdf *.PDF)</source>
-      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Lock Panels</source>
@@ -3815,6 +3771,50 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
       <translation type="unfinished">In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</translation>
     </message>
+    <message>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Single Html (*.html *.htm)</source>
+      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation type="unfinished">Mime Html (*.mhtml)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation type="unfinished">Save Article As</translation>
+    </message>
+    <message>
+      <source>Save article complete</source>
+      <translation type="unfinished">Save article complete</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>Pantja</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation type="unfinished">Can&apos;t save article: %1</translation>
+    </message>
+    <message>
+      <source>Saving article...</source>
+      <translation type="unfinished">Saving article...</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation type="unfinished">Save PDF complete</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation type="unfinished">Save PDF failed</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3910,6 +3910,12 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
 could be resized or managed in other ways.</source>
       <translation>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>Qillqat imaña
+
+Guardar artículo</translation>
     </message>
   </context>
   <context>
