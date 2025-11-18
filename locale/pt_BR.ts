@@ -3684,11 +3684,11 @@ dos dicionários Stardict, Babylon e GLS</translation>
     </message>
     <message>
       <source>Save Article As</source>
-      <translation type="unfinished">Save Article As</translation>
+      <translation>Salvar Artigo Como</translation>
     </message>
     <message>
       <source>Save article complete</source>
-      <translation type="unfinished">Save article complete</translation>
+      <translation>Salvar artigo completo</translation>
     </message>
     <message>
       <source>Error</source>
@@ -3696,19 +3696,19 @@ dos dicionários Stardict, Babylon e GLS</translation>
     </message>
     <message>
       <source>Can&apos;t save article: %1</source>
-      <translation type="unfinished">Can&apos;t save article: %1</translation>
+      <translation>Pode&apos;t artigo salvo: %1</translation>
     </message>
     <message>
       <source>Saving article...</source>
-      <translation type="unfinished">Saving article...</translation>
+      <translation>Salvando artigo...</translation>
     </message>
     <message>
       <source>Save PDF complete</source>
-      <translation type="unfinished">Save PDF complete</translation>
+      <translation>Salvar PDF completo</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
-      <translation type="unfinished">Save PDF failed</translation>
+      <translation>Falha ao salvar PDF</translation>
     </message>
   </context>
   <context>
