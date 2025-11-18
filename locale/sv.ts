@@ -2532,38 +2532,6 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
       <translation>Skriv ut artikel</translation>
     </message>
     <message>
-      <source>Complete Html (*.html *.htm)</source>
-      <translation>Komplett HTML (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Single Html (*.html *.htm)</source>
-      <translation>Enkel HTML (*.html *.html)</translation>
-    </message>
-    <message>
-      <source>Mime Html (*.mhtml)</source>
-      <translation>Mime HTML (*.mhtml)</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>Spara artikel som</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>Fel</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>Det gick inte att spara artikeln: %1</translation>
-    </message>
-    <message>
-      <source>Saving article...</source>
-      <translation>Sparar artikel …</translation>
-    </message>
-    <message>
-      <source>Save article complete</source>
-      <translation>Spara artikeln klar</translation>
-    </message>
-    <message>
       <source>The main window is set to be always on top.</source>
       <translation>Huvudfönstret har ställts in att alltid ligga överst.</translation>
     </message>
@@ -2654,18 +2622,6 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
     <message>
       <source>Show</source>
       <translation>Visa</translation>
-    </message>
-    <message>
-      <source>Save PDF complete</source>
-      <translation>Spara PDF slutförd</translation>
-    </message>
-    <message>
-      <source>Save PDF failed</source>
-      <translation>Kunde inte spara PDF</translation>
-    </message>
-    <message>
-      <source>PDF document (*.pdf *.PDF)</source>
-      <translation>PDF-dokument (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Lock Panels</source>
@@ -3707,6 +3663,50 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
       <translation>I Url kommer &quot;%GDWORD%&quot; att ersättas med ordet som söks.</translation>
     </message>
+    <message>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Complete Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Enkel Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF-dokument (*.pdf *.PDF)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime Html (*.mhtml)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation>Spara artikel som</translation>
+    </message>
+    <message>
+      <source>Save article complete</source>
+      <translation>Spara artikel klar</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>Fel</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation>Kan&apos;t spara artikel: %1</translation>
+    </message>
+    <message>
+      <source>Saving article...</source>
+      <translation>Sparar artikel...</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>Spara PDF slutförd</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>Kunde inte spara PDF</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3802,6 +3802,10 @@ från Stardict, Babylon och GLS ordböcker</translation>
 could be resized or managed in other ways.</source>
       <translation>Använd detta för att fästa ner fönstret så att det skulle stanna på skärmen,
 kan skalas om eller hanteras på andra sätt.</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>Spara artikel</translation>
     </message>
   </context>
   <context>
