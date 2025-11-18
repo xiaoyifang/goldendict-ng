@@ -2535,38 +2535,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Печать статьи</translation>
     </message>
     <message>
-      <source>Complete Html (*.html *.htm)</source>
-      <translation>Полный HTML (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Single Html (*.html *.htm)</source>
-      <translation>Один HTML (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Mime Html (*.mhtml)</source>
-      <translation>Mime-HTML (*.mhtml)</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>Сохранить статью как</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>Ошибка</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>Невозможно сохранить статью: %1</translation>
-    </message>
-    <message>
-      <source>Saving article...</source>
-      <translation>Сохранение статьи...</translation>
-    </message>
-    <message>
-      <source>Save article complete</source>
-      <translation>Статья сохранена</translation>
-    </message>
-    <message>
       <source>The main window is set to be always on top.</source>
       <translation>Главное окно всегда поверх других окон.</translation>
     </message>
@@ -2657,18 +2625,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Show</source>
       <translation>Показать</translation>
-    </message>
-    <message>
-      <source>Save PDF complete</source>
-      <translation>PDF файл сохранен</translation>
-    </message>
-    <message>
-      <source>Save PDF failed</source>
-      <translation>Сохранить PDF не удалось</translation>
-    </message>
-    <message>
-      <source>PDF document (*.pdf *.PDF)</source>
-      <translation>PDF документ (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Lock Panels</source>
@@ -3710,6 +3666,50 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
       <translation>В Url, &quot;%GDWORD%&quot; будет заменена на поисковое слово.</translation>
     </message>
+    <message>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Complete Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Единый Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF документ (*.pdf *.PDF)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime Html (*.mhtml)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation>Сохранить статью как</translation>
+    </message>
+    <message>
+      <source>Save article complete</source>
+      <translation>Статья сохранена</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>Ошибка</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation>Может&apos;т сохранить статью: %1</translation>
+    </message>
+    <message>
+      <source>Saving article...</source>
+      <translation>Сохранение статьи...</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>PDF файл сохранен</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>Сохранить PDF не удалось</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3805,6 +3805,10 @@ from Stardict, Babylon and GLS dictionaries</source>
 could be resized or managed in other ways.</source>
       <translation>Используйте это для закрепления окна, чтобы оно оставалось на экране,
 может быть изменено или изменено другими способами.</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>Сохранить статью</translation>
     </message>
   </context>
   <context>
