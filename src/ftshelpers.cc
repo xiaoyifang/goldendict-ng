@@ -8,6 +8,8 @@
 #include "ftshelpers.hh"
 #include "dictfile.hh"
 #include "utils.hh"
+#include "stopwords.hh"
+#include "config.hh"
 
 #include <vector>
 #include <string>
@@ -64,11 +66,21 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
     const QByteArray encodedPath = QFile::encodeName( QString::fromStdString( path ) );
     Xapian::WritableDatabase db( encodedPath.toStdString(), Xapian::DB_CREATE_OR_OPEN );
 
-    Xapian::TermGenerator indexer;
+    Xapian::TermGenerator indexer;    
+    indexer.set_flags( Xapian::TermGenerator::FLAG_CJK_NGRAM );
+
+    std::vector<std::string> stopwords = Stopwords::getStopwords();
+
+    if ( !stopwords.empty() ) {
+      Xapian::SimpleStopper *stopper = new Xapian::SimpleStopper();
+      for ( const auto &word : stopwords ) {
+        stopper->add( word );
+      }
+      indexer.set_stopper( stopper );
+    }
+
     //  Xapian::Stem stemmer("english");
     //  indexer.set_stemmer(stemmer);
-    //  indexer.set_stemming_strategy(indexer.STEM_SOME_FULL_POS);
-    indexer.set_flags( Xapian::TermGenerator::FLAG_CJK_NGRAM );
 
     BtreeIndexing::IndexedWords indexedWords;
 
