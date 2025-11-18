@@ -81,7 +81,7 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
     }
 
     // More efficient way to get a sorted list of offsets
-    std::vector<uint32_t> offsets;
+    std::vector< uint32_t > offsets;
     offsets.assign( setOfOffsets.begin(), setOfOffsets.end() );
     // Sort offsets to allow for binary search resume
     std::sort( offsets.begin(), offsets.end() );
@@ -115,7 +115,7 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
 
     auto start_it = offsets.cbegin();
     if ( skip ) {
-      start_it = std::upper_bound( offsets.constBegin(), offsets.constEnd(), lastAddress );
+      start_it         = std::upper_bound( offsets.constBegin(), offsets.constEnd(), lastAddress );
       long num_skipped = std::distance( offsets.constBegin(), start_it );
       qDebug() << "Resuming FTS indexing from offset" << ( start_it != offsets.constEnd() ? *start_it : -1 )
                << "at index" << num_skipped;
