@@ -3688,7 +3688,7 @@ ze Stardict, Babylon a GLS slovníků</translation>
     </message>
     <message>
       <source>Can&apos;t save article: %1</source>
-      <translation>Může&apos;uložit článek: %1</translation>
+      <translation>Nemohu uložit článek: %1</translation>
     </message>
     <message>
       <source>Saving article...</source>
