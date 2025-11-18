@@ -2771,12 +2771,6 @@ switching to them.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Open new tabs after the current one</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2939,6 +2933,538 @@ the application.</source>
         <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
                   opened.
                  </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Style</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Appearance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable Interface Font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Font Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Interface language</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Article Display style</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add-on style</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Interface Style</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Turn the UI to dark.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dark Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Turn the article display style to dark.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dark Reader Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Preview Font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GoldenDict-ng is a dictionary software.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fallback Fonts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Standard Font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Serif Font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sans-serif Font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Monospace Font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Popup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start with clipboard monitoring turned on</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send translated word to main window instead of to show it in popup window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Send translated word to main window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Track clipboard changes when Scanning is enabled. Notice! You should always enable this unless you are on Linux.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Track Clipboard change</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Track Selection change</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>With this enabled, the popup would only show up if all chosen keys are
+in the pressed state when the word selection changes.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Only tack selection when all selected keys are kept pressed:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Alt key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Shift key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Windows key or Meta key</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show a flag window before showing popup window, click the flag to show popup window. </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show scan flag when word is selected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do not show popup when selection or clipboard in one of GoldenDict&apos;s own windows changes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ignore GoldenDict&apos;s own selection and clipboard changes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delay time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> ms</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hotkeys</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use the following hotkey to show or hide the main window:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use the following hotkey to translate a word from clipboard:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The hotkeys are global and work from any program and within any context as long as GoldenDict is running in background.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Audio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pronunciation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto-pronounce words in main window</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto-pronounce words in the popup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Playback</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Play audio files via built-in audio support</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use internal player:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Choose audio back end</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use any external program to play audio files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use external program:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enter audio player command line</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Network</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable if you wish to use a proxy server
+for all program&apos;s network requests.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use proxy server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>System proxy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom proxy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Custom settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Host:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Port:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>User:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Password:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Anki Connect</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>http://</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deck:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Model:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Word</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Vocabulary field...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Definition field...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sentence</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sentence field (can be empty)...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enabling this would make GoldenDict block most advertisements
+by disallowing content (images, frames) not originating from the site
+you are browsing. If some site breaks because of this, try disabling this.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disallow loading content from other sites (hides most advertisements)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Some sites detect GoldenDict via HTTP headers and block the requests.
+Enable this option to workaround the problem.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Do not identify GoldenDict in HTTP headers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Maximum network cache size:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Maximum disk space occupied by GoldenDict&apos;s network cache in
+%1
+If set to 0 the network disk cache will be disabled.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> MiB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>When this option is enabled, GoldenDict
+clears its network cache from disk during exit.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clear network cache on exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>When this is enabled, the program periodically
+checks if a new, updated version of GoldenDict
+is available for download. If it is so, the program
+informs the user about it and prompts to open a
+download page.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Check for new program releases periodically</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Full-text search</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Allow full-text search for:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Don&apos;t search in dictionaries containing more than</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>articles (0 - unlimited)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Create fulltext index with parallel threads </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ad&amp;vanced</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>History</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Turn this option on to store history of the translated words</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Store &amp;history</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Specify the maximum number of entries to keep in history.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Maximum history size:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Favorites</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save every</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>minutes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Turn this option on to confirm every operation of items deletion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Confirmation for items deletion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Articles</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ignore punctuation while searching</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Input phrases longer than this size will be ignored</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>symbols</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select this option to automatic collapse big articles</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Collapse articles more than</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Turn this option on to ignore unreasonably long input text
+from mouse-over, selection, clipboard or command line</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ignore input phrases longer than</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Articles longer than this size will be collapsed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Turn this option on to always expand optional parts of articles</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Expand optional &amp;parts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Turn this option on to ignore diacritics while searching articles</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ignore diacritics while searching</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>During successive searches,if one dictionary is collapsed by manual, it will remain collapsed in the next search</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Session collapse</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Turn this option on to enable extra articles search via synonym lists
+from Stardict, Babylon and GLS dictionaries</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Extra search via synonyms</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>When using clipboard, strip everything after newline</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>On a new search, focus the main or popup window even if it&apos;s visible</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Miscellaneous</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remove invalid index on exit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save debug messages to gd_log.txt in the config folder</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open website dictionary in seperate tab</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
