@@ -2532,38 +2532,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>記事の印刷</translation>
     </message>
     <message>
-      <source>Complete Html (*.html *.htm)</source>
-      <translation>完全な HTML (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Single Html (*.html *.htm)</source>
-      <translation>単一の HTML (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Mime Html (*.mhtml)</source>
-      <translation>MIME HTML (*.mhtml)</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>名前を付けて記事を保存</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>エラー</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>記事を保存できません: %1</translation>
-    </message>
-    <message>
-      <source>Saving article...</source>
-      <translation>記事を保存しています...</translation>
-    </message>
-    <message>
-      <source>Save article complete</source>
-      <translation>記事の保存が完了しました</translation>
-    </message>
-    <message>
       <source>The main window is set to be always on top.</source>
       <translation>メインウィンドウは常に上に設定されています。</translation>
     </message>
@@ -2654,18 +2622,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Show</source>
       <translation>表示</translation>
-    </message>
-    <message>
-      <source>Save PDF complete</source>
-      <translation>PDFの保存が完了しました</translation>
-    </message>
-    <message>
-      <source>Save PDF failed</source>
-      <translation>PDFの保存に失敗しました</translation>
-    </message>
-    <message>
-      <source>PDF document (*.pdf *.PDF)</source>
-      <translation>PDF ドキュメント (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Lock Panels</source>
@@ -3704,6 +3660,50 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
       <translation>Url では、 &quot;%GDWORD%&quot; が検索されている単語に置き換えられます。</translation>
     </message>
+    <message>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Complete Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>シングルHtml (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF ドキュメント (*.pdf *.PDF)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime Html (*.mhtml)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation>記事を別名保存</translation>
+    </message>
+    <message>
+      <source>Save article complete</source>
+      <translation>記事を保存完了しました</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>エラー</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation type="unfinished">Can&apos;t save article: %1</translation>
+    </message>
+    <message>
+      <source>Saving article...</source>
+      <translation>記事を保存しています...</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>PDFの保存が完了しました</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>PDFの保存に失敗しました</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3799,6 +3799,10 @@ from Stardict, Babylon and GLS dictionaries</source>
 could be resized or managed in other ways.</source>
       <translation>画面に表示されたままにするためにこれを使用すると、
 のサイズを変更したり、他の方法で管理することができます。</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>記事の保存</translation>
     </message>
   </context>
   <context>
