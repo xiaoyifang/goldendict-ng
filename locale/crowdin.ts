@@ -2513,38 +2513,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Complete Html (*.html *.htm)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Single Html (*.html *.htm)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Mime Html (*.mhtml)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Save Article As</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Error</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Can&apos;t save article: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Saving article...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Save article complete</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>The main window is set to be always on top.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2634,18 +2602,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
         <source>Show</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Save PDF complete</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Save PDF failed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>PDF document (*.pdf *.PDF)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3659,6 +3615,50 @@ from Stardict, Babylon and GLS dictionaries</source>
         <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Complete Html (*.html *.htm)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Single Html (*.html *.htm)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PDF document (*.pdf *.PDF)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mime Html (*.mhtml)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save Article As</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save article complete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Can&apos;t save article: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Saving article...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save PDF complete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save PDF failed</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QuickFilterLine</name>
@@ -3752,6 +3752,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
         <source>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save Article</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
