@@ -80,14 +80,11 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
       throw exUserAbort();
     }
 
-    QList< uint32_t > offsets;
-    offsets.resize( setOfOffsets.size() );
-    uint32_t * ptr = offsets.data();
-
-    for ( QSet< uint32_t >::ConstIterator it = setOfOffsets.constBegin(); it != setOfOffsets.constEnd(); ++it ) {
-      *ptr = *it;
-      ptr++;
-    }
+    // More efficient way to get a sorted list of offsets
+    std::vector<uint32_t> offsets;
+    offsets.assign( setOfOffsets.begin(), setOfOffsets.end() );
+    // Sort offsets to allow for binary search resume
+    std::sort( offsets.begin(), offsets.end() );
 
     // Free memory
     setOfOffsets.clear();
@@ -116,17 +113,18 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
 
     long indexedDoc = 0L;
 
-    for ( const auto & address : offsets ) {
-      indexedDoc++;
+    auto start_it = offsets.cbegin();
+    if ( skip ) {
+      start_it = std::upper_bound( offsets.constBegin(), offsets.constEnd(), lastAddress );
+      long num_skipped = std::distance( offsets.constBegin(), start_it );
+      qDebug() << "Resuming FTS indexing from offset" << ( start_it != offsets.constEnd() ? *start_it : -1 )
+               << "at index" << num_skipped;
+      indexedDoc += num_skipped;
+    }
 
-      if ( address == lastAddress && skip ) {
-        skip = false;
-        continue;
-      }
-      //skip until to the lastAddress;
-      if ( skip ) {
-        continue;
-      }
+    for ( auto it = start_it; it != offsets.cend(); ++it ) {
+      const auto & address = *it;
+      indexedDoc++;
 
       if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
         return;
