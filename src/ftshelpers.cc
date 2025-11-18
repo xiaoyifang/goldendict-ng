@@ -66,14 +66,14 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
     const QByteArray encodedPath = QFile::encodeName( QString::fromStdString( path ) );
     Xapian::WritableDatabase db( encodedPath.toStdString(), Xapian::DB_CREATE_OR_OPEN );
 
-    Xapian::TermGenerator indexer;    
+    Xapian::TermGenerator indexer;
     indexer.set_flags( Xapian::TermGenerator::FLAG_CJK_NGRAM );
 
-    std::vector<std::string> stopwords = Stopwords::getStopwords();
+    std::vector< std::string > stopwords = Stopwords::getStopwords();
 
     if ( !stopwords.empty() ) {
-      Xapian::SimpleStopper *stopper = new Xapian::SimpleStopper();
-      for ( const auto &word : stopwords ) {
+      Xapian::SimpleStopper * stopper = new Xapian::SimpleStopper();
+      for ( const auto & word : stopwords ) {
         stopper->add( word );
       }
       indexer.set_stopper( stopper );

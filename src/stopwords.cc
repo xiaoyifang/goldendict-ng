@@ -7,10 +7,10 @@
 
 namespace Stopwords {
 
-std::vector<std::string> getStopwords()
+std::vector< std::string > getStopwords()
 {
   // Use QSet to automatically handle duplicate stopwords
-  QSet<QString> stopwordsSet;
+  QSet< QString > stopwordsSet;
 
   // Load built-in stopwords from the resource file
   QFile bundledStopwords( ":/src/stopwords.txt" );
@@ -41,9 +41,9 @@ std::vector<std::string> getStopwords()
   }
 
   // Convert QSet to std::vector<std::string>
-  std::vector<std::string> result;
+  std::vector< std::string > result;
   result.reserve( stopwordsSet.size() );
-  for ( const auto &word : std::as_const( stopwordsSet ) ) {
+  for ( const auto & word : std::as_const( stopwordsSet ) ) {
     result.push_back( word.toStdString() );
   }
 
