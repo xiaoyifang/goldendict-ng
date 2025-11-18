@@ -140,8 +140,8 @@ void makeFTSIndex( BtreeIndexing::BtreeDictionary * dict, QAtomicInt & isCancell
 
       indexer.set_document( doc );
 
-      indexer.index_text( articleStr.toStdString() );
-      indexer.index_text( headword.toStdString() );
+      indexer.index_text( articleStr.toCaseFolded().toStdString() );
+      indexer.index_text( headword.toCaseFolded().toStdString() );
 
       doc.set_data( std::to_string( address ) );
       // Add the document to the database.
@@ -194,7 +194,7 @@ void FTSResultsRequest::run()
       // Combine the rest of the command line arguments with spaces between
       // them, so that simple queries don't have to be quoted at the shell
       // level.
-      string query_string( searchString.toStdString() );
+      string query_string( searchString.toCaseFolded().toStdString() );
 
       // Parse the query string to produce a Xapian::Query object.
       Xapian::QueryParser qp;
