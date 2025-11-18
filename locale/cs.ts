@@ -2532,38 +2532,6 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
       <translation>Vytisknout článek</translation>
     </message>
     <message>
-      <source>Complete Html (*.html *.htm)</source>
-      <translation>Kompletní HTML (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Single Html (*.html *.htm)</source>
-      <translation>Jeden HTML (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Mime Html (*.mhtml)</source>
-      <translation>Mime HTML (*.mhtml)</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>Uložit článek jako</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>Chyba</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>Nemohu uložit článek: %1</translation>
-    </message>
-    <message>
-      <source>Saving article...</source>
-      <translation>Ukládá se článek...</translation>
-    </message>
-    <message>
-      <source>Save article complete</source>
-      <translation>Uložit článek hotový</translation>
-    </message>
-    <message>
       <source>The main window is set to be always on top.</source>
       <translation>Hlavní okno je nastaveno vždy nahoře.</translation>
     </message>
@@ -2654,18 +2622,6 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
     <message>
       <source>Show</source>
       <translation>Zobrazit</translation>
-    </message>
-    <message>
-      <source>Save PDF complete</source>
-      <translation>Uložení PDF dokončeno</translation>
-    </message>
-    <message>
-      <source>Save PDF failed</source>
-      <translation>Uložení PDF selhalo</translation>
-    </message>
-    <message>
-      <source>PDF document (*.pdf *.PDF)</source>
-      <translation>PDF dokument (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Lock Panels</source>
@@ -3702,6 +3658,50 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
       <translation>V Urlu bude &quot;%GDWORD%&quot; nahrazeno hledaným slovem.</translation>
     </message>
+    <message>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Complete Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Jednoduchý Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF dokument (*.pdf *.PDF)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime Html (*.mhtml)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation>Uložit článek jako</translation>
+    </message>
+    <message>
+      <source>Save article complete</source>
+      <translation>Uložení článku dokončeno</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>Chyba</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation>Může&apos;uložit článek: %1</translation>
+    </message>
+    <message>
+      <source>Saving article...</source>
+      <translation>Ukládání článku...</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>Uložení PDF dokončeno</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>Uložení PDF selhalo</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3797,6 +3797,10 @@ ze Stardict, Babylon a GLS slovníků</translation>
 could be resized or managed in other ways.</source>
       <translation>Použij toto pro připnutí okna, takže by zůstal na obrazovce,
 by mohl být změněn nebo spravován jiným způsobem.</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>Uložit článek</translation>
     </message>
   </context>
   <context>
