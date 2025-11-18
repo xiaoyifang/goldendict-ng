@@ -2531,38 +2531,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>列印條目</translation>
     </message>
     <message>
-      <source>Complete Html (*.html *.htm)</source>
-      <translation>完整的 Html (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Single Html (*.html *.htm)</source>
-      <translation>單一 Html (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Mime Html (*.mhtml)</source>
-      <translation>Mime Html (*.mhtml)</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>條目另存新檔</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>錯誤</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>無法儲存條目：%1</translation>
-    </message>
-    <message>
-      <source>Saving article...</source>
-      <translation>儲存條目...</translation>
-    </message>
-    <message>
-      <source>Save article complete</source>
-      <translation>保存文章完成</translation>
-    </message>
-    <message>
       <source>The main window is set to be always on top.</source>
       <translation>主視窗設定為最上層顯示。</translation>
     </message>
@@ -2653,18 +2621,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Show</source>
       <translation>顯示</translation>
-    </message>
-    <message>
-      <source>Save PDF complete</source>
-      <translation>儲存 PDF 完成</translation>
-    </message>
-    <message>
-      <source>Save PDF failed</source>
-      <translation>儲存 PDF 失敗</translation>
-    </message>
-    <message>
-      <source>PDF document (*.pdf *.PDF)</source>
-      <translation>PDF 文件 (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Lock Panels</source>
@@ -3692,6 +3648,50 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
       <translation>在網址中，"%GDWORD%" 將被替換為正在搜尋的單詞。</translation>
     </message>
+    <message>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Single Html (*.html *.htm)</source>
+      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation type="unfinished">Mime Html (*.mhtml)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation type="unfinished">Save Article As</translation>
+    </message>
+    <message>
+      <source>Save article complete</source>
+      <translation type="unfinished">Save article complete</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>錯誤</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation type="unfinished">Can&apos;t save article: %1</translation>
+    </message>
+    <message>
+      <source>Saving article...</source>
+      <translation type="unfinished">Saving article...</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation type="unfinished">Save PDF complete</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation type="unfinished">Save PDF failed</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3787,6 +3787,10 @@ from Stardict, Babylon and GLS dictionaries</source>
 could be resized or managed in other ways.</source>
       <translation>使用此按鈕可以釘選視窗，以便它能停留在螢幕上，
 調整大小等相關視窗管理操作。</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>儲存條目</translation>
     </message>
   </context>
   <context>
