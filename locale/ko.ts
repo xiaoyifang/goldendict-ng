@@ -2532,38 +2532,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>항목 인쇄</translation>
     </message>
     <message>
-      <source>Complete Html (*.html *.htm)</source>
-      <translation>완전한 HTML(*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Single Html (*.html *.htm)</source>
-      <translation>단일 HTML(*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Mime Html (*.mhtml)</source>
-      <translation>MIME HTML(*.mhtml)</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>다른 이름으로 항목 저장</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>오류</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>항목을 저장할 수 없습니다: %1</translation>
-    </message>
-    <message>
-      <source>Saving article...</source>
-      <translation>항목 저장...</translation>
-    </message>
-    <message>
-      <source>Save article complete</source>
-      <translation>기사 저장 완료</translation>
-    </message>
-    <message>
       <source>The main window is set to be always on top.</source>
       <translation>메인창이 항상 위에 보이도록 설정합니다.</translation>
     </message>
@@ -2654,18 +2622,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Show</source>
       <translation>보여주다</translation>
-    </message>
-    <message>
-      <source>Save PDF complete</source>
-      <translation>PDF 저장 완료</translation>
-    </message>
-    <message>
-      <source>Save PDF failed</source>
-      <translation>PDF 저장 실패</translation>
-    </message>
-    <message>
-      <source>PDF document (*.pdf *.PDF)</source>
-      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Lock Panels</source>
@@ -3701,6 +3657,50 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
       <translation type="unfinished">In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</translation>
     </message>
+    <message>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Single Html (*.html *.htm)</source>
+      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation type="unfinished">Mime Html (*.mhtml)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation type="unfinished">Save Article As</translation>
+    </message>
+    <message>
+      <source>Save article complete</source>
+      <translation type="unfinished">Save article complete</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>오류</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation type="unfinished">Can&apos;t save article: %1</translation>
+    </message>
+    <message>
+      <source>Saving article...</source>
+      <translation type="unfinished">Saving article...</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation type="unfinished">Save PDF complete</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation type="unfinished">Save PDF failed</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3796,6 +3796,10 @@ from Stardict, Babylon and GLS dictionaries</source>
 could be resized or managed in other ways.</source>
       <translation>핀 아이콘을 선택하면 창을 항상 화면 맨 위에 표시하고, 
 팝업창 크기, 사전모음의 위치 등을 조절할 수 있습니다.</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>검색항목을 저장합니다</translation>
     </message>
   </context>
   <context>
