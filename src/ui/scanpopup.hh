@@ -198,6 +198,7 @@ private slots:
   void showStatusBarMessage( const QString & message, int timeout = 3000, const QPixmap & icon = QPixmap() );
 
   void pronounceButton_clicked() const;
+  void saveArticleButton_clicked();
   void sendWordButton_clicked();
   void sendWordToFavoritesButton_clicked();
   void goBackButton_clicked() const;
