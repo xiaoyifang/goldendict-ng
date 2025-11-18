@@ -5,6 +5,6 @@
 
 namespace Stopwords {
 
-std::vector<std::string> getStopwords();
+std::vector< std::string > getStopwords();
 
 } // namespace Stopwords
