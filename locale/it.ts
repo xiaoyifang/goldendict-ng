@@ -2533,38 +2533,6 @@ Clicca &lt;b&gt;Scarica&lt;/b&gt; per accedere alla pagina di scaricamento.</tra
       <translation>Stampa traduzione</translation>
     </message>
     <message>
-      <source>Complete Html (*.html *.htm)</source>
-      <translation>Html completo (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Single Html (*.html *.htm)</source>
-      <translation>Singolo Html (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Mime Html (*.mhtml)</source>
-      <translation>Mime Html (*.mhtml)</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>Salva traduzione come</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>Errore</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>Impossibile salvare la traduzione: %1</translation>
-    </message>
-    <message>
-      <source>Saving article...</source>
-      <translation>Salvataggio traduzioni...</translation>
-    </message>
-    <message>
-      <source>Save article complete</source>
-      <translation>Salva articolo completo</translation>
-    </message>
-    <message>
       <source>The main window is set to be always on top.</source>
       <translation>La finestra principale è impostata per essere mostrata sempre in primo piano.</translation>
     </message>
@@ -2655,18 +2623,6 @@ Clicca &lt;b&gt;Scarica&lt;/b&gt; per accedere alla pagina di scaricamento.</tra
     <message>
       <source>Show</source>
       <translation>Mostra</translation>
-    </message>
-    <message>
-      <source>Save PDF complete</source>
-      <translation>Salva PDF completato</translation>
-    </message>
-    <message>
-      <source>Save PDF failed</source>
-      <translation>Salvare PDF non riuscito</translation>
-    </message>
-    <message>
-      <source>PDF document (*.pdf *.PDF)</source>
-      <translation>Documento PDF (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Lock Panels</source>
@@ -3702,6 +3658,50 @@ dai dizionari di Stardict, Babylon e GLS</translation>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
       <translation>Nell'Url, &quot;%GDWORD%&quot; verrà sostituita con la parola da cercare.</translation>
     </message>
+    <message>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Complete Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Singolo Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>Documento PDF (*.pdf *.PDF)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime Html (*.mhtml)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation>Salva Articolo Come</translation>
+    </message>
+    <message>
+      <source>Save article complete</source>
+      <translation>Salva articolo completato</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>Errore</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation>Può&apos;t salvare l'articolo: %1</translation>
+    </message>
+    <message>
+      <source>Saving article...</source>
+      <translation>Salvataggio articolo...</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>Salva PDF completato</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>Salvare PDF non riuscito</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3797,6 +3797,10 @@ dai dizionari di Stardict, Babylon e GLS</translation>
 could be resized or managed in other ways.</source>
       <translation>Usa questo per chiudere la finestra in modo che rimanga sullo schermo,
 potrebbe essere ridimensionato o gestito in altri modi.</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>Salva la traduzione corrente</translation>
     </message>
   </context>
   <context>
