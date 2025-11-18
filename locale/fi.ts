@@ -2532,38 +2532,6 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <translation>Tulosta artikkeli</translation>
     </message>
     <message>
-      <source>Complete Html (*.html *.htm)</source>
-      <translation>Täydellinen HTML (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Single Html (*.html *.htm)</source>
-      <translation>Yksittäinen HTML (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Mime Html (*.mhtml)</source>
-      <translation>Mime-HTML (*.mhtml)</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>Tallenna artikkeli nimellä</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>Virhe</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>Voi&apos;t tallentaa artikkeli: %1</translation>
-    </message>
-    <message>
-      <source>Saving article...</source>
-      <translation>Tallennetaan artikkelia...</translation>
-    </message>
-    <message>
-      <source>Save article complete</source>
-      <translation>Artikkelin tallennus valmis</translation>
-    </message>
-    <message>
       <source>The main window is set to be always on top.</source>
       <translation>Tärkein ikkuna on asetettu aina päälle.</translation>
     </message>
@@ -2654,18 +2622,6 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
     <message>
       <source>Show</source>
       <translation>Näytä</translation>
-    </message>
-    <message>
-      <source>Save PDF complete</source>
-      <translation>Tallennus PDF-muodossa valmis</translation>
-    </message>
-    <message>
-      <source>Save PDF failed</source>
-      <translation>PDF-tiedostojen tallennus epäonnistui</translation>
-    </message>
-    <message>
-      <source>PDF document (*.pdf *.PDF)</source>
-      <translation>PDF-asiakirja (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Lock Panels</source>
@@ -3705,6 +3661,50 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
       <translation type="unfinished">In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</translation>
     </message>
+    <message>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Complete Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Yksittäinen Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF-asiakirja (*.pdf *.PDF)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime Html (*.mhtml)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation>Tallenna Artikkeli Nimellä</translation>
+    </message>
+    <message>
+      <source>Save article complete</source>
+      <translation>Tallenna artikkeli valmistui</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>Virhe</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation>Voi&apos;t tallentaa artikkeli: %1</translation>
+    </message>
+    <message>
+      <source>Saving article...</source>
+      <translation>Tallennetaan artikkelia...</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>Tallennus PDF-muodossa valmis</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>PDF-tiedostojen tallennus epäonnistui</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3800,6 +3800,10 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
 could be resized or managed in other ways.</source>
       <translation>Tämän avulla voit kiinnittää ikkunan alaspäin, jotta se pysyisi ruudulla,
 voidaan muuttaa tai hallita muulla tavoin.</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>Tallenna artikkeli</translation>
     </message>
   </context>
   <context>
