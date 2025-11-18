@@ -2532,38 +2532,6 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
       <translation>Drukuj artykuł</translation>
     </message>
     <message>
-      <source>Complete Html (*.html *.htm)</source>
-      <translation>Kompletny kod HTML (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Single Html (*.html *.htm)</source>
-      <translation>Pojedynczy HTML (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Mime Html (*.mhtml)</source>
-      <translation>Mime HTML (*.mhtml)</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>Zapisz artykuł jako</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>Błąd</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>Nie można zapisać artykułu: %1</translation>
-    </message>
-    <message>
-      <source>Saving article...</source>
-      <translation>Zapisywanie artykułu...</translation>
-    </message>
-    <message>
-      <source>Save article complete</source>
-      <translation>Zapisz artykuł ukończony</translation>
-    </message>
-    <message>
       <source>The main window is set to be always on top.</source>
       <translation>Okno główne będzie zawsze na wierzchu.</translation>
     </message>
@@ -2654,18 +2622,6 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
     <message>
       <source>Show</source>
       <translation>Pokaż</translation>
-    </message>
-    <message>
-      <source>Save PDF complete</source>
-      <translation>Zapisywanie PDF zakończone</translation>
-    </message>
-    <message>
-      <source>Save PDF failed</source>
-      <translation>Zapisanie PDF nie powiodło się</translation>
-    </message>
-    <message>
-      <source>PDF document (*.pdf *.PDF)</source>
-      <translation>Dokument PDF (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Lock Panels</source>
@@ -3704,6 +3660,50 @@ ze słowników Stardict, Babylon i GLS</translation>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
       <translation>W URL, &quot;%GDWORD%&quot; zostanie zastąpiony słowem wyszukiwanym.</translation>
     </message>
+    <message>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Complete Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Pojedynczy Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>Dokument PDF (*.pdf *.PDF)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime Html (*.mhtml)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation>Zapisz artykuł jako</translation>
+    </message>
+    <message>
+      <source>Save article complete</source>
+      <translation>Zapisywanie artykułu zakończone</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>Błąd</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation>Może&apos;t zapisać artykuł: %1</translation>
+    </message>
+    <message>
+      <source>Saving article...</source>
+      <translation>Zapisywanie artykułu...</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>Zapisywanie PDF zakończone</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>Zapisanie PDF nie powiodło się</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3799,6 +3799,10 @@ ze słowników Stardict, Babylon i GLS</translation>
 could be resized or managed in other ways.</source>
       <translation>Powoduje przypięcie okna, aby pozostało na ekranie, można
 było zmienić jego rozmiar lub zarządzać nim w inny sposób.</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>Zapisz artykuł</translation>
     </message>
   </context>
   <context>
