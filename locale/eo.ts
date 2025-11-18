@@ -3691,7 +3691,7 @@ el Stardict, Babylon kaj GLS-vortaroj</translation>
     </message>
     <message>
       <source>Can&apos;t save article: %1</source>
-      <translation type="unfinished">Can&apos;t save article: %1</translation>
+      <translation>Ne eblas konservi artikolon: %1</translation>
     </message>
     <message>
       <source>Saving article...</source>
