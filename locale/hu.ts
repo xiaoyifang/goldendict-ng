@@ -3690,7 +3690,7 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     </message>
     <message>
       <source>Can&apos;t save article: %1</source>
-      <translation type="unfinished">Can&apos;t save article: %1</translation>
+      <translation>A szócikk mentése nem sikerült: %1</translation>
     </message>
     <message>
       <source>Saving article...</source>
