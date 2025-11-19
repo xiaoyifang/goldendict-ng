@@ -1,6 +1,7 @@
 #include "metadata.hh"
 #include "toml++/toml.hpp"
 #include <QDebug>
+#include <QSaveFile>
 #include <QFile>
 
 std::optional< Metadata::result > Metadata::load( std::string_view filepath )
@@ -49,4 +50,33 @@ std::optional< Metadata::result > Metadata::load( std::string_view filepath )
     result.fullindex = value > 0;
   }
   return result;
+}
+
+void Metadata::saveDisplayName( std::string_view filepath, std::string_view name )
+{
+  toml::table tbl;
+  if ( QFile::exists( QString::fromStdString( std::string{ filepath } ) ) ) {
+    try {
+      tbl = toml::parse_file( filepath );
+    }
+    catch ( toml::parse_error & e ) {
+      qWarning() << "Failed to load metadata: " << QString::fromUtf8( filepath.data(), filepath.size() )
+                 << "Reason:" << e.what();
+      // Continue with an empty table
+    }
+  }
+
+  if ( !tbl.contains( "metadata" ) ) {
+    tbl.emplace( "metadata", toml::table{} );
+  }
+
+  tbl[ "metadata" ].as_table()->insert_or_assign( "name", name );
+
+  QSaveFile file( QString::fromStdString( std::string{ filepath } ) );
+  if ( file.open( QIODevice::WriteOnly | QIODevice::Text ) ) {
+    std::stringstream ss;
+    ss << tbl;
+    file.write( ss.str().c_str() );
+    file.commit();
+  }
 }
