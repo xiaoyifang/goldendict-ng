@@ -217,7 +217,7 @@ void ArticleSaver::save()
         int maxVal               = 1; // main html
         bool anyHandlerConnected = false;
 
-        QSharedPointer<int> counter = QSharedPointer<int>::create( 0 );
+        QSharedPointer< int > counter = QSharedPointer< int >::create( 0 );
 
         for ( const auto & p : downloadResources ) {
           ResourceToSaveHandler * handler = view_->saveResource( p.first, p.second );
@@ -225,16 +225,13 @@ void ArticleSaver::save()
             anyHandlerConnected = true;
             maxVal += 1;
             auto sp = counter; // copy for lambda lifetime
-            QObject::connect( handler,
-                              &ResourceToSaveHandler::done,
-                              this,
-                              [this, sp, maxVal]() mutable {
-                                ( *sp ) += 1;
-                                emit statusMessage( QObject::tr( "Saving article... %1/%2" ).arg( *sp ).arg( maxVal ), 0 );
-                                if ( *sp >= maxVal ) {
-                                  emit statusMessage( QObject::tr( "Save article complete" ), 5000 );
-                                }
-                              } );
+            QObject::connect( handler, &ResourceToSaveHandler::done, this, [ this, sp, maxVal ]() mutable {
+              ( *sp ) += 1;
+              emit statusMessage( QObject::tr( "Saving article... %1/%2" ).arg( *sp ).arg( maxVal ), 0 );
+              if ( *sp >= maxVal ) {
+                emit statusMessage( QObject::tr( "Save article complete" ), 5000 );
+              }
+            } );
           }
         }
 
