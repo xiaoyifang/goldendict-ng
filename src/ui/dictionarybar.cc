@@ -142,6 +142,7 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
   const QAction * editAction            = nullptr;
   const QAction * infoAction            = nullptr;
   const QAction * headwordsAction       = nullptr;
+  Dictionary::Class * pDict             = nullptr;
   QAction * changeNameAction            = nullptr;
   const QAction * openDictFolderAction = nullptr;
   const QAction * scheduleReindexAction = nullptr;
@@ -152,7 +153,6 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
 
   const QAction * dictAction = actionAt( event->x(), event->y() );
   if ( dictAction ) {
-    Dictionary::Class * pDict = nullptr;
     const QString id          = dictAction->data().toString();
     for ( const auto & dictionary : allDictionaries ) {
       if ( id.compare( dictionary->getId().c_str() ) == 0 ) {
@@ -224,21 +224,23 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
   }
 
   if ( result && result == changeNameAction ) {
-    bool ok;
-    QString newName = QInputDialog::getText( this,
-                                             tr( "Change display name" ),
-                                             tr( "New display name:" ),
-                                             QLineEdit::Normal,
-                                             QString::fromUtf8( pDict->getName().c_str() ),
-                                             &ok );
-    if ( ok && !newName.isEmpty() ) {
-      QString metadataPath = pDict->getContainingFolder();
-      if ( !metadataPath.isEmpty() ) {
-        auto filePath = Utils::Path::combine( metadataPath, "metadata.toml" );
-        Metadata::saveDisplayName( filePath.toStdString(), newName.toStdString() );
-        pDict->setName( newName.toStdString() );
-        const_cast< QAction * >( dictAction )->setText( elideDictName( newName ) );
-        const_cast< QAction * >( dictAction )->setToolTip( newName );
+    if ( pDict ) {
+      bool ok;
+      QString newName = QInputDialog::getText( this,
+                                               tr( "Change display name" ),
+                                               tr( "New display name:" ),
+                                               QLineEdit::Normal,
+                                               QString::fromUtf8( pDict->getName().c_str() ),
+                                               &ok );
+      if ( ok && !newName.isEmpty() ) {
+        QString metadataPath = pDict->getContainingFolder();
+        if ( !metadataPath.isEmpty() ) {
+          auto filePath = Utils::Path::combine( metadataPath, "metadata.toml" );
+          Metadata::saveDisplayName( filePath.toStdString(), newName.toStdString() );
+          pDict->setName( newName.toStdString() );
+          const_cast< QAction * >( dictAction )->setText( elideDictName( newName ) );
+          const_cast< QAction * >( dictAction )->setToolTip( newName );
+        }
       }
     }
   }
