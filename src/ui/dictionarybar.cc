@@ -4,6 +4,9 @@
 #include <QAction>
 #include <QApplication>
 #include <QMenu>
+#include <QInputDialog>
+#include "metadata.hh"
+#include "common/utils.hh"
 #include <QContextMenuEvent>
 #include <QStyle>
 
@@ -139,6 +142,7 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
   const QAction * editAction            = nullptr;
   const QAction * infoAction            = nullptr;
   const QAction * headwordsAction       = nullptr;
+  QAction * changeNameAction            = nullptr;
   const QAction * openDictFolderAction = nullptr;
   const QAction * scheduleReindexAction = nullptr;
 
@@ -160,8 +164,11 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
     if ( pDict ) {
       infoAction = menu.addAction( tr( "Dictionary info" ) );
 
-      // Add schedule/cancel reindex action for local dictionaries
+      // All actions below are only for local dictionaries
       if ( pDict->isLocalDictionary() ) {
+        changeNameAction = menu.addAction( tr( "Change display name" ) );
+
+        // Add schedule/cancel reindex action
         Config::Class * cfg  = GlobalBroadcaster::instance()->getConfig();
         const QString dictId = pDict->getId().c_str();
         if ( cfg && cfg->dictionariesToReindex.contains( dictId ) ) {
@@ -170,13 +177,11 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
         else {
           scheduleReindexAction = menu.addAction( tr( "Schedule for reindex" ) );
         }
-      }
 
-      if ( pDict->isLocalDictionary() ) {
+        // Add dictionary headwords action
         if ( pDict->getWordCount() > 0 ) {
           headwordsAction = menu.addAction( tr( "Dictionary headwords" ) );
         }
-
         openDictFolderAction = menu.addAction( tr( "Open dictionary folder" ) );
       }
     }
@@ -216,6 +221,26 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
     const QString id = dictAction->data().toString();
     emit showDictionaryInfo( id );
     return;
+  }
+
+  if ( result && result == changeNameAction ) {
+    bool ok;
+    QString newName = QInputDialog::getText( this,
+                                             tr( "Change display name" ),
+                                             tr( "New display name:" ),
+                                             QLineEdit::Normal,
+                                             QString::fromUtf8( pDict->getName().c_str() ),
+                                             &ok );
+    if ( ok && !newName.isEmpty() ) {
+      QString metadataPath = pDict->getContainingFolder();
+      if ( !metadataPath.isEmpty() ) {
+        auto filePath = Utils::Path::combine( metadataPath, "metadata.toml" );
+        Metadata::saveDisplayName( filePath.toStdString(), newName.toStdString() );
+        pDict->setName( newName.toStdString() );
+        const_cast< QAction * >( dictAction )->setText( elideDictName( newName ) );
+        const_cast< QAction * >( dictAction )->setToolTip( newName );
+      }
+    }
   }
 
   if ( result && result == scheduleReindexAction ) {
