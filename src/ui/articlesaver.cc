@@ -20,8 +20,8 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QUrl>
-#include <QProgressDialog>
 #include <QDebug>
+#include <QSharedPointer>
 
 using std::set;
 using std::vector;
@@ -214,36 +214,35 @@ void ArticleSaver::save()
         filterAndCollectResources( html, rx1, "\"", folder, resourceIncluded, downloadResources );
         filterAndCollectResources( html, rx2, "'", folder, resourceIncluded, downloadResources );
 
-        auto * progressDialog    = new ArticleSaveProgressDialog( uiParent_ );
         int maxVal               = 1; // main html
         bool anyHandlerConnected = false;
+
+        QSharedPointer<int> counter = QSharedPointer<int>::create( 0 );
 
         for ( const auto & p : downloadResources ) {
           ResourceToSaveHandler * handler = view_->saveResource( p.first, p.second );
           if ( handler && !handler->isEmpty() ) {
             anyHandlerConnected = true;
             maxVal += 1;
+            auto sp = counter; // copy for lambda lifetime
             QObject::connect( handler,
                               &ResourceToSaveHandler::done,
-                              progressDialog,
-                              &ArticleSaveProgressDialog::perform );
+                              this,
+                              [this, sp, maxVal]() mutable {
+                                ( *sp ) += 1;
+                                emit statusMessage( QObject::tr( "Saving article... %1/%2" ).arg( *sp ).arg( maxVal ), 0 );
+                                if ( *sp >= maxVal ) {
+                                  emit statusMessage( QObject::tr( "Save article complete" ), 5000 );
+                                }
+                              } );
           }
         }
 
-        progressDialog->setLabelText( QObject::tr( "Saving article..." ) );
-        progressDialog->setRange( 0, maxVal );
-
         if ( !anyHandlerConnected ) {
-          // No resource handlers attached — no background work expected.
-          // Close and schedule deletion of the dialog immediately to avoid
-          // leaving it open in rare edge-cases.
-          progressDialog->setValue( maxVal );
-          progressDialog->close();
-          progressDialog->deleteLater();
+          emit statusMessage( QObject::tr( "Save article complete" ), 5000 );
         }
         else {
-          progressDialog->setValue( 0 );
-          progressDialog->show();
+          emit statusMessage( QObject::tr( "Saving article... 0/%1" ).arg( maxVal ), 0 );
         }
 
         file.write( html.toUtf8() );

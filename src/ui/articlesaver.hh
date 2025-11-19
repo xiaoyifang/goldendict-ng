@@ -3,35 +3,8 @@
 
 #include <QWidget>
 #include <QObject>
-#include <QProgressDialog>
 #include "ui/articleview.hh"
 
-/// Shared small progress dialog used when saving articles (used by both
-/// main window and popup). Kept here to avoid duplicating the same class in
-/// multiple headers.
-class ArticleSaveProgressDialog: public QProgressDialog
-{
-  Q_OBJECT
-
-public:
-  explicit ArticleSaveProgressDialog( QWidget * parent = nullptr, Qt::WindowFlags f = Qt::Widget ):
-    QProgressDialog( parent, f )
-  {
-    setAutoReset( false );
-    setAutoClose( false );
-  }
-
-public slots:
-  void perform()
-  {
-    int progress = value() + 1;
-    if ( progress == maximum() ) {
-      close();
-      deleteLater();
-    }
-    setValue( progress );
-  }
-};
 
 
 // Article saver object that performs the same logic as the old free function.
