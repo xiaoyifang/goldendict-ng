@@ -2730,6 +2730,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
         <source>Dictionaries active: %1, inactive: %2</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Change display name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New display name:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PathsModel</name>
