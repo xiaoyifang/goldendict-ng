@@ -761,6 +761,14 @@ between classic and school orthography in cyrillic)</source>
         <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Change display name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New display name:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>EditDictionaries</name>
