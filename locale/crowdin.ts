@@ -2771,12 +2771,6 @@ switching to them.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Open new tabs after the current one</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2868,7 +2862,119 @@ the application.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>System default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Classic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Modern</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lingvo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Babylon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lingoes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Lingoes-Blue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto does nothing on some systems.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restart the program to apply the language change.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restart to apply the interface style change.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restart to apply the interface font change.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Restart needed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Automatic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Style</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Appearance</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enable Interface Font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Font Size</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Interface language</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Article Display style</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add-on style</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Interface Style</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2885,6 +2991,14 @@ the application.</source>
     </message>
     <message>
         <source>Dark Reader Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Preview Font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>GoldenDict-ng is a dictionary software.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3236,19 +3350,19 @@ download page.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Save every</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>minutes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Favorites</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save every</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>minutes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3346,121 +3460,11 @@ from Stardict, Babylon and GLS dictionaries</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>System default</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Default</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Classic</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Modern</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Lingvo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Babylon</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Lingoes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Lingoes-Blue</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Auto does nothing on some systems.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Restart the program to apply the language change.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Restart to apply the interface style change.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Restart to apply the interface font change.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Restart needed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enable</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Disable</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Automatic</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Save debug messages to gd_log.txt in the config folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Interface language</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Article Display style</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Add-on style</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Interface Style</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Preview Font</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>GoldenDict-ng is a dictionary software.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enable Interface Font</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Font</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Font Size</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>None</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Open website dictionary in seperate tab</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
