@@ -2793,14 +2793,6 @@ switching to them.</source>
       <translation>Отварање нове картице у позадини</translation>
     </message>
     <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>Ако је ова опција омогућена, нова картица ће бити
-отворена одмах након тренутне, у супротном
-додаје се на крају.</translation>
-    </message>
-    <message>
       <source>Open new tabs after the current one</source>
       <translation>Отварање нове картице након тренутне</translation>
     </message>
@@ -2899,8 +2891,124 @@ the application.</source>
       <translation>Ограничи падајући изборник речника:</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>Систем - подразумевано</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>Подразумевано</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>Цлассиц</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>Модеран</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>Лингво</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>Вавилон</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>Лингоес</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>Лингоес-Блуе</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Ауто не ради ништа на неким системима.</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>Поново покрените програм за промену језика.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>Поново покрените да бисте применили промену стила интерфејса.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Поново покрените да бисте применили промену фонта интерфејса.</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>Потребан је рестарт</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Омогући</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Онемогући</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>Аутоматски</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Ништа</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation type="unfinished">With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation type="unfinished">&amp;Style</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>Изглед</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation type="unfinished">Enable Interface Font</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation type="unfinished">Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation type="unfinished">Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Interface language</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Article Display style</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on style</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Interface Style</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2917,6 +3025,14 @@ the application.</source>
     <message>
       <source>Dark Reader Mode</source>
       <translation>Дарк Реадер Моде</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Preview Font</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -3280,20 +3396,20 @@ GoldenDict. Ако се појавила нова верзија, програм
       <translation>Максимална величина историје:</translation>
     </message>
     <message>
-      <source>Save every</source>
-      <translation>Сачувај сваких</translation>
-    </message>
-    <message>
-      <source>minutes</source>
-      <translation>минута</translation>
-    </message>
-    <message>
       <source>Favorites</source>
       <translation>Фаворитес</translation>
     </message>
     <message>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>Интервал чувања фаворита. Ако је подешено на 0 Фаворити ће бити сачувани само током изласка.</translation>
+    </message>
+    <message>
+      <source>Save every</source>
+      <translation>Сачувај сваких</translation>
+    </message>
+    <message>
+      <source>minutes</source>
+      <translation>минута</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3392,124 +3508,12 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Уклоните неважећи индекс на излазу</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>Систем - подразумевано</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>Подразумевано</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>Цлассиц</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>Модеран</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>Лингво</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>Вавилон</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>Лингоес</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>Лингоес-Блуе</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Ауто не ради ништа на неким системима.</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>Поново покрените програм за промену језика.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>Поново покрените да бисте применили промену стила интерфејса.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>Поново покрените да бисте применили промену фонта интерфејса.</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>Потребан је рестарт</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>Омогући</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>Онемогући</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>Аутоматски</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
     <message>
-      <source>Interface language</source>
-      <translation>Interface language</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>Article Display style</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>Add-on style</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>Interface Style</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>Preview Font</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation type="unfinished">Enable Interface Font</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation type="unfinished">Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation type="unfinished">Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>Ништа</translation>
-    </message>
-    <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
     </message>
   </context>
   <context>
