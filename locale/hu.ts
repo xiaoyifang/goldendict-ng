@@ -2792,14 +2792,6 @@ a program átváltana rájuk.</translation>
       <translation>Új lapok megnyitása a háttérben</translation>
     </message>
     <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>Ezzel a lehetőséggel, az új lapok közvetlenül az
-aktuális lap mellett nyílnak meg. Egyébként pedig
-az utolsó lap után.</translation>
-    </message>
-    <message>
       <source>Open new tabs after the current one</source>
       <translation>Új lap megnyitása az aktuális mellett</translation>
     </message>
@@ -2898,8 +2890,124 @@ való kilépés helyett.</translation>
       <translation>Helyi menük szótár korlátja:</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>Rendszer alapérték</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>Alapértelmezett</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>Klasszikus</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>Modern</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>Lingvo</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>Babylon</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>Lingoes</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>Lingoes kék</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Az Auto nem csinál semmit egyes rendszereken.</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>Indítsa újra a programot a kiválasztott nyelv alkalmazásához.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>Indítsa újra a programot a kiválasztott stílus alkalmazásához.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Indítsa újra a programot a kiválasztott betűkészletek alkalmazásához.</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>Újraindítás szükséges</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Engedélyezés</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Letiltás</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>Automatikus</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Nincs</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation type="unfinished">With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation type="unfinished">&amp;Style</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>Megjelenés</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation type="unfinished">Enable Interface Font</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation type="unfinished">Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation type="unfinished">Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Interface language</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Article Display style</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on style</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Interface Style</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2916,6 +3024,14 @@ való kilépés helyett.</translation>
     <message>
       <source>Dark Reader Mode</source>
       <translation>Sötét olvasó mód</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Preview Font</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng is a dictionary software.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -3277,20 +3393,20 @@ a letöltési oldal megnyitására.</translation>
       <translation>Előzmények hossza:</translation>
     </message>
     <message>
-      <source>Save every</source>
-      <translation>Mentés minden</translation>
-    </message>
-    <message>
-      <source>minutes</source>
-      <translation>percben</translation>
-    </message>
-    <message>
       <source>Favorites</source>
       <translation>Kedvencek</translation>
     </message>
     <message>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>Kedvencek rendszeres mentésének időintervalluma. 0 esetén a kilépéskor kerülnek mentésre.</translation>
+    </message>
+    <message>
+      <source>Save every</source>
+      <translation>Mentés minden</translation>
+    </message>
+    <message>
+      <source>minutes</source>
+      <translation>percben</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3389,124 +3505,12 @@ is felhasználja további szócikkek felfedezéséhez</translation>
       <translation>Érvénytelen index törlése a kilépéskor</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>Rendszer alapérték</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>Alapértelmezett</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>Klasszikus</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>Modern</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>Babylon</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>Lingoes</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>Lingoes kék</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Az Auto nem csinál semmit egyes rendszereken.</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>Indítsa újra a programot a kiválasztott nyelv alkalmazásához.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>Indítsa újra a programot a kiválasztott stílus alkalmazásához.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>Indítsa újra a programot a kiválasztott betűkészletek alkalmazásához.</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>Újraindítás szükséges</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>Engedélyezés</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>Letiltás</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>Automatikus</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
     <message>
-      <source>Interface language</source>
-      <translation>Interface language</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>Article Display style</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>Add-on style</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>Interface Style</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>Preview Font</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation>GoldenDict-ng is a dictionary software.</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation type="unfinished">Enable Interface Font</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation type="unfinished">Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation type="unfinished">Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>Nincs</translation>
-    </message>
-    <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
     </message>
   </context>
   <context>
