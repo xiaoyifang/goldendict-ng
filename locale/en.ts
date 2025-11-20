@@ -2792,14 +2792,6 @@ switching to them.</translation>
       <translation type="unfinished">Open new tabs in background</translation>
     </message>
     <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation type="unfinished">With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</translation>
-    </message>
-    <message>
       <source>Open new tabs after the current one</source>
       <translation type="unfinished">Open new tabs after the current one</translation>
     </message>
@@ -2898,8 +2890,124 @@ the application.</translation>
       <translation type="unfinished">Context menu dictionaries limit:</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation type="unfinished">System default</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation type="unfinished">Default</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation type="unfinished">Classic</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation type="unfinished">Modern</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation type="unfinished">Lingvo</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation type="unfinished">Babylon</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation type="unfinished">Lingoes</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation type="unfinished">Lingoes-Blue</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation type="unfinished">Auto does nothing on some systems.</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation type="unfinished">Restart the program to apply the language change.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation type="unfinished">Restart to apply the interface style change.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation type="unfinished">Restart to apply the interface font change.</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation type="unfinished">Restart needed</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation type="unfinished">Enable</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation type="unfinished">Disable</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation type="unfinished">Automatic</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation type="unfinished">None</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation type="unfinished">With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation type="unfinished">&amp;Style</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation type="unfinished">Appearance</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation type="unfinished">Enable Interface Font</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation type="unfinished">Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation type="unfinished">Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation type="unfinished">Interface language</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation type="unfinished">Article Display style</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation type="unfinished">Add-on style</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation type="unfinished">Interface Style</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2916,6 +3024,14 @@ the application.</translation>
     <message>
       <source>Dark Reader Mode</source>
       <translation type="unfinished">Dark Reader Mode</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation type="unfinished">Preview Font</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -3278,20 +3394,20 @@ download page.</translation>
       <translation type="unfinished">Maximum history size:</translation>
     </message>
     <message>
-      <source>Save every</source>
-      <translation type="unfinished">Save every</translation>
-    </message>
-    <message>
-      <source>minutes</source>
-      <translation type="unfinished">minutes</translation>
-    </message>
-    <message>
       <source>Favorites</source>
       <translation type="unfinished">Favorites</translation>
     </message>
     <message>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation type="unfinished">Favorites saving interval. If set to 0 Favorites will be saved only during exit.</translation>
+    </message>
+    <message>
+      <source>Save every</source>
+      <translation type="unfinished">Save every</translation>
+    </message>
+    <message>
+      <source>minutes</source>
+      <translation type="unfinished">minutes</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3390,124 +3506,12 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <translation type="unfinished">Remove invalid index on exit</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation type="unfinished">System default</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation type="unfinished">Default</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation type="unfinished">Classic</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation type="unfinished">Modern</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation type="unfinished">Lingvo</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation type="unfinished">Babylon</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation type="unfinished">Lingoes</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation type="unfinished">Lingoes-Blue</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation type="unfinished">Auto does nothing on some systems.</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation type="unfinished">Restart the program to apply the language change.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation type="unfinished">Restart to apply the interface style change.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation type="unfinished">Restart to apply the interface font change.</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation type="unfinished">Restart needed</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation type="unfinished">Enable</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation type="unfinished">Disable</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation type="unfinished">Automatic</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation type="unfinished">Save debug messages to gd_log.txt in the config folder</translation>
     </message>
     <message>
-      <source>Interface language</source>
-      <translation type="unfinished">Interface language</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation type="unfinished">Article Display style</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation type="unfinished">Add-on style</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation type="unfinished">Interface Style</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation type="unfinished">Preview Font</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation type="unfinished">Enable Interface Font</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation type="unfinished">Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation type="unfinished">Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation type="unfinished">None</translation>
-    </message>
-    <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
     </message>
   </context>
   <context>
