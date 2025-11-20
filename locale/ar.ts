@@ -2791,14 +2791,6 @@ switching to them.</source>
       <translation>افتح الألسنة الجديدة في الخلفية</translation>
     </message>
     <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>بهذه، الألسنة ستُفتح فقط بعد
-الحاليّة، النشطة. وإلّا ستُضاف
-إلى الألسنة الأخيرة.</translation>
-    </message>
-    <message>
       <source>Open new tabs after the current one</source>
       <translation>افتح الألسنة الجديدة بعد الحاليّة</translation>
     </message>
@@ -2897,8 +2889,124 @@ the application.</source>
       <translation>حد القواميس في قائمة السياق:</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>افتراضي النظام</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>الافتراضي</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>كلاسيك</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>عصري</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>لنغفو</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>بابيلون</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>لِنْغوز</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>لِنْغوز-بلو</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Auto does nothing on some systems.</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>أعد تشغيل البرنامج لتطبيق تغيير اللغة.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>أعد التشغيل لتطبيق تغيير نمط الواجهة.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>أعد التشغيل لتطبيق تغيير خط الواجهة.</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>إعادة التشغيل مطلوبة</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Enable</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Disable</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>Automatic</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>لا شيء</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation>حدد هذا الخيار إذا كنت don&apos;وتريد أن ترى شريط التبويب الرئيسي عند فتح علامة تبويب واحدة فقط
+                  .
+                 </translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation>مع هذا ، يتم فتح علامات تبويب جديدة مباشرة بعد
+الحالي ، نشط. وإلا ، يتم إضافتها إلى
+لتكون آخر علامات التبويب.</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation>&amp;نمط</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>مظهر</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>تمكين خط الواجهة</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Interface language</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Article Display style</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on style</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Interface Style</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2915,6 +3023,14 @@ the application.</source>
     <message>
       <source>Dark Reader Mode</source>
       <translation>وضع القارئ الداكن</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Preview Font</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng is a dictionary software.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -3276,20 +3392,20 @@ download page.</source>
       <translation>حجم التأريخ الأقصى:</translation>
     </message>
     <message>
-      <source>Save every</source>
-      <translation>احفظ كلّ</translation>
-    </message>
-    <message>
-      <source>minutes</source>
-      <translation>دقيقة</translation>
-    </message>
-    <message>
       <source>Favorites</source>
       <translation>المفضلة</translation>
     </message>
     <message>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>الفاصل الزمني لحفظ المفضلة. إذا تم التعيين على 0 المفضلة ، فسيتم حفظها أثناء الخروج فقط.</translation>
+    </message>
+    <message>
+      <source>Save every</source>
+      <translation>احفظ كلّ</translation>
+    </message>
+    <message>
+      <source>minutes</source>
+      <translation>دقيقة</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3388,124 +3504,12 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>قم بإزالة الفهرس غير الصالح عند الخروج</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>افتراضي النظام</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>الافتراضي</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>كلاسيك</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>عصري</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>لنغفو</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>بابيلون</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>لِنْغوز</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>لِنْغوز-بلو</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto does nothing on some systems.</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>أعد تشغيل البرنامج لتطبيق تغيير اللغة.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>أعد التشغيل لتطبيق تغيير نمط الواجهة.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>أعد التشغيل لتطبيق تغيير خط الواجهة.</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>إعادة التشغيل مطلوبة</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>Enable</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>Disable</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>Automatic</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
     <message>
-      <source>Interface language</source>
-      <translation>Interface language</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>Article Display style</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>Add-on style</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>Interface Style</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>Preview Font</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation>GoldenDict-ng is a dictionary software.</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation>تمكين خط الواجهة</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>لا شيء</translation>
-    </message>
-    <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>فتح قاموس الموقع في علامة تبويب منفصلة</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>حدد هذا الخيار إذا كنت don&apos;وتريد أن ترى شريط التبويب الرئيسي عند فتح علامة تبويب واحدة فقط
-                  .
-                 </translation>
     </message>
   </context>
   <context>
