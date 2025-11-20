@@ -2792,14 +2792,6 @@ switching to them.</translation>
       <translation>Open new tabs in background</translation>
     </message>
     <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</translation>
-    </message>
-    <message>
       <source>Open new tabs after the current one</source>
       <translation>Open new tabs after the current one</translation>
     </message>
@@ -2898,8 +2890,124 @@ the application.</translation>
       <translation>Context menu dictionaries limit:</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>System default</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>Default</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>Classic</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>Modern</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>Lingvo</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>Babylon</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>Lingoes</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>Lingoes-Blue</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Auto does nothing on some systems.</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>Restart the program to apply the language change.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>Restart to apply the interface style change.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Restart to apply the interface font change.</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>Restart needed</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Enable</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Disable</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>Automatic</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Ula yiwen</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation type="unfinished">With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation type="unfinished">&amp;Style</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>Appearance</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation type="unfinished">Enable Interface Font</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Tasefsit</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Teɣzi n tsefsit</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Interface language</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Article Display style</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on style</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Interface Style</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2916,6 +3024,14 @@ the application.</translation>
     <message>
       <source>Dark Reader Mode</source>
       <translation>Dark Reader Mode</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Preview Font</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -3278,20 +3394,20 @@ download page.</translation>
       <translation>Maximum history size:</translation>
     </message>
     <message>
-      <source>Save every</source>
-      <translation>Save every</translation>
-    </message>
-    <message>
-      <source>minutes</source>
-      <translation>minutes</translation>
-    </message>
-    <message>
       <source>Favorites</source>
       <translation>Favorites</translation>
     </message>
     <message>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</translation>
+    </message>
+    <message>
+      <source>Save every</source>
+      <translation>Save every</translation>
+    </message>
+    <message>
+      <source>minutes</source>
+      <translation>minutes</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3390,124 +3506,12 @@ from Stardict, Babylon and GLS dictionaries</translation>
       <translation>Remove invalid index on exit</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>System default</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>Default</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>Classic</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>Modern</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>Babylon</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>Lingoes</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>Lingoes-Blue</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto does nothing on some systems.</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>Restart the program to apply the language change.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>Restart to apply the interface style change.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>Restart to apply the interface font change.</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>Restart needed</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>Enable</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>Disable</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>Automatic</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
     <message>
-      <source>Interface language</source>
-      <translation>Interface language</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>Article Display style</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>Add-on style</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>Interface Style</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>Preview Font</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation type="unfinished">Enable Interface Font</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Tasefsit</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Teɣzi n tsefsit</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>Ula yiwen</translation>
-    </message>
-    <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
     </message>
   </context>
   <context>
