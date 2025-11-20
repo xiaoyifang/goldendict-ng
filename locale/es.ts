@@ -2791,13 +2791,6 @@ Con esta opción activada, en cambio, las nuevas pestañas se abrirán sin que s
       <translation>Abrir nuevas pestañas en segundo plano</translation>
     </message>
     <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>Con esta opción activada, las nuevas pestañas se abrirán
-justo después de la actual. Si no, se situarán las últimas.</translation>
-    </message>
-    <message>
       <source>Open new tabs after the current one</source>
       <translation>Abrir nuevas pestañas después de la actual</translation>
     </message>
@@ -2896,8 +2889,124 @@ en lugar de cerrrarse.</translation>
       <translation>Límite de diccionarios para el menú contextual:</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>Idioma por defecto del sistema</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>Por defecto</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>Clásico</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>Moderno</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>Lingvo</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>Babylon</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>Lingoes</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>Lingoes-Azul</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>En algunos sistemas, el modo automático no hace nada.</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>Vuelva a ejecutar el programa para hacer efectivo el cambio de idioma.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>Reinicie para aplicar el cambio de estilo de interfaz.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Reinicie para aplicar el cambio de fuente de la interfaz.</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>Reinicio necesario</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Permitir</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Desactivar</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>Automático</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Ninguno</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation>Seleccione esta opción si no&apos;t desea ver la barra de pestañas principal cuando sólo una sola pestaña está
+                  abierta.
+                 </translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation>Con esto, las nuevas pestañas se abren justo después de la
+actual y activa. De lo contrario, se añadirán a
+ser las últimas.</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation>&amp;Estilo</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>Apariencia</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Activar fuente de interfaz</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Idioma de la interfaz</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Estilo de visualización de artículo</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Estilo de complemento</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Estilo de interfaz</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2914,6 +3023,14 @@ en lugar de cerrrarse.</translation>
     <message>
       <source>Dark Reader Mode</source>
       <translation>Modo Lector Oscuro</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Previsualizar fuente</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng es un software de diccionario.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -3275,20 +3392,20 @@ para su descarga.</translation>
       <translation>Tamaño máximo del historial:</translation>
     </message>
     <message>
-      <source>Save every</source>
-      <translation>Guardar cada</translation>
-    </message>
-    <message>
-      <source>minutes</source>
-      <translation>minutos</translation>
-    </message>
-    <message>
       <source>Favorites</source>
       <translation>Favoritos</translation>
     </message>
     <message>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>Intervalo de ahorro de favoritos. Si se establece en 0 Favoritos sólo se guardará durante la salida.</translation>
+    </message>
+    <message>
+      <source>Save every</source>
+      <translation>Guardar cada</translation>
+    </message>
+    <message>
+      <source>minutes</source>
+      <translation>minutos</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3387,124 +3504,12 @@ de diccionarios Stardict, Babylon y GLS</translation>
       <translation>Eliminar índices no válidos al salir</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>Idioma por defecto del sistema</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>Por defecto</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>Clásico</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>Moderno</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>Babylon</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>Lingoes</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>Lingoes-Azul</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>En algunos sistemas, el modo automático no hace nada.</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>Vuelva a ejecutar el programa para hacer efectivo el cambio de idioma.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>Reinicie para aplicar el cambio de estilo de interfaz.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>Reinicie para aplicar el cambio de fuente de la interfaz.</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>Reinicio necesario</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>Permitir</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>Desactivar</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>Automático</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Guardar mensajes de depuración en gd_log.txt en la carpeta de configuración</translation>
     </message>
     <message>
-      <source>Interface language</source>
-      <translation>Idioma de la interfaz</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>Estilo de visualización de artículo</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>Estilo de complemento</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>Estilo de interfaz</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>Previsualizar fuente</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation>GoldenDict-ng es un software de diccionario.</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation>Activar fuente de interfaz</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>Ninguno</translation>
-    </message>
-    <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Abrir diccionario de sitio web en pestaña separada</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>Seleccione esta opción si no&apos;t desea ver la barra de pestañas principal cuando sólo una sola pestaña está
-                  abierta.
-                 </translation>
     </message>
   </context>
   <context>
