@@ -2792,14 +2792,6 @@ switching to them.</source>
       <translation>Варақаҳои навро дар равзанаи асосӣ кушодан</translation>
     </message>
     <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>Фаъол кардани ин имконот варақаҳои навро пас аз варақаи
-кушодашуда мекушояд. Агар ин имконотро фаъол намекунед
-варақаҳои нав дар охири рӯйхат кушода мешаванд.</translation>
-    </message>
-    <message>
       <source>Open new tabs after the current one</source>
       <translation>Варақаҳои навро пас аз варақаи ҷорӣ кушодан</translation>
     </message>
@@ -2898,8 +2890,124 @@ the application.</source>
       <translation>Ҳудуди луғатҳои менюи марбуд:</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>Системаи пешфарз</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>Пешфарз</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>Классик</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>Ҳозира</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>Луғати Lingvo</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>Луғати Babylon</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>Лингоҳо</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>Lingoes-кабуд</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Автомат дар баъзе системаҳо ҳеҷ кор намекунад.</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>Барои татбиқ кардани забони интихобшуда барномаро аз нав оғоз кунед.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>Барои татбиқи тағири услуби интерфейс аз нав оғоз кунед.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Барои татбиқи тағири ҳуруфи интерфейс аз нав оғоз кунед.</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>Аз нав оғоз кардан лозим аст</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Фаъол кардан</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Хомӯш кардан</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>Автоматӣ</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Ҳеҷ чиз</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation type="unfinished">With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation type="unfinished">&amp;Style</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>Намуди зоҳирӣ</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation type="unfinished">Enable Interface Font</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation type="unfinished">Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation type="unfinished">Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Interface language</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Article Display style</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on style</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Interface Style</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2916,6 +3024,14 @@ the application.</source>
     <message>
       <source>Dark Reader Mode</source>
       <translation>Ҳолати торикии хонанда</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Preview Font</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng is a dictionary software.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -3278,20 +3394,20 @@ download page.</source>
       <translation>Андозаи калонтарини таърих:</translation>
     </message>
     <message>
-      <source>Save every</source>
-      <translation>Захира кардан баъд аз</translation>
-    </message>
-    <message>
-      <source>minutes</source>
-      <translation>дақиқа</translation>
-    </message>
-    <message>
       <source>Favorites</source>
       <translation>Дӯстдоштаҳо</translation>
     </message>
     <message>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>Фосилаи сарфаи дӯстдошта. Агар ба 0 муқаррар карда шавад, дӯстдоштаҳо танҳо ҳангоми баромадан захира карда мешаванд.</translation>
+    </message>
+    <message>
+      <source>Save every</source>
+      <translation>Захира кардан баъд аз</translation>
+    </message>
+    <message>
+      <source>minutes</source>
+      <translation>дақиқа</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3390,124 +3506,12 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Индекси беэътиборро ҳангоми баромадан хориҷ кунед</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>Системаи пешфарз</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>Пешфарз</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>Классик</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>Ҳозира</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>Луғати Lingvo</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>Луғати Babylon</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>Лингоҳо</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>Lingoes-кабуд</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Автомат дар баъзе системаҳо ҳеҷ кор намекунад.</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>Барои татбиқ кардани забони интихобшуда барномаро аз нав оғоз кунед.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>Барои татбиқи тағири услуби интерфейс аз нав оғоз кунед.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>Барои татбиқи тағири ҳуруфи интерфейс аз нав оғоз кунед.</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>Аз нав оғоз кардан лозим аст</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>Фаъол кардан</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>Хомӯш кардан</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>Автоматӣ</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
     <message>
-      <source>Interface language</source>
-      <translation>Interface language</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>Article Display style</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>Add-on style</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>Interface Style</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>Preview Font</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation>GoldenDict-ng is a dictionary software.</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation type="unfinished">Enable Interface Font</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation type="unfinished">Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation type="unfinished">Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>Ҳеҷ чиз</translation>
-    </message>
-    <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
     </message>
   </context>
   <context>
