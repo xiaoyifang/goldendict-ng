@@ -2789,13 +2789,6 @@ diese zu selektionieren.</translation>
       <translation>Neue Reiter im Hintergrund öffnen</translation>
     </message>
     <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>Mit dieser Option werden neue Reiter nach dem aktuellen, aktiven Reiter geöffnet. 
-Andernfalls werden diese ans Ende hinzugefügt.</translation>
-    </message>
-    <message>
       <source>Open new tabs after the current one</source>
       <translation>Neue Reiter nach dem aktuellen öffnen</translation>
     </message>
@@ -2890,8 +2883,124 @@ the application.</source>
       <translation>Wörterbuchlimit im Kontextmenü:</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>Systemvorgabe</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>Standard</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>Klassisch</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>Modern</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>Lingvo</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>Babylon</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>Lingoes</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>Lingoes-Blau</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Auto does nothing on some systems.</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>Starten Sie das Programm neu um die neue Sprache zu aktivieren.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>Neustarten, um die Änderung des Interface-Stils zu übernehmen.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Neustarten, um die Änderung des Interface-Stils zu übernehmen.</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>Neustart erforderlich</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Enable</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Disable</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>Automatisch</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Keines</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation type="unfinished">With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation type="unfinished">&amp;Style</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>Erscheinungsbild</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation type="unfinished">Enable Interface Font</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation type="unfinished">Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation type="unfinished">Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Interface language</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Article Display style</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on style</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Interface Style</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2908,6 +3017,14 @@ the application.</source>
     <message>
       <source>Dark Reader Mode</source>
       <translation>Dunkler Lesemodus</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Preview Font</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -3264,20 +3381,20 @@ Sollte eine neuere Version verfügbar sein informiert GoldenDict den Benutzer un
       <translation>Maximale Verlaufgrösse:</translation>
     </message>
     <message>
-      <source>Save every</source>
-      <translation>Speichern alle</translation>
-    </message>
-    <message>
-      <source>minutes</source>
-      <translation>Minuten</translation>
-    </message>
-    <message>
       <source>Favorites</source>
       <translation>Lesezeichen</translation>
     </message>
     <message>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>Automatischer Speicherintervall für Lesezeichen. Falls der Wert 0 eingetragen wird, erfolgt die Speicherung nur bei Beendigung des Programms.</translation>
+    </message>
+    <message>
+      <source>Save every</source>
+      <translation>Speichern alle</translation>
+    </message>
+    <message>
+      <source>minutes</source>
+      <translation>Minuten</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3376,124 +3493,12 @@ Stardict, Babylon und GLS Wörterbüchern wünschen.</translation>
       <translation>Ungültigen Index beim Beenden entfernen</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>Systemvorgabe</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>Standard</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>Klassisch</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>Modern</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>Babylon</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>Lingoes</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>Lingoes-Blau</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto does nothing on some systems.</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>Starten Sie das Programm neu um die neue Sprache zu aktivieren.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>Neustarten, um die Änderung des Interface-Stils zu übernehmen.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>Neustarten, um die Änderung des Interface-Stils zu übernehmen.</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>Neustart erforderlich</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>Enable</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>Disable</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>Automatisch</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Speichere Debug Meldungen zu &quot;gd_log.txt&quot;, innerhalb des Config Ordners</translation>
     </message>
     <message>
-      <source>Interface language</source>
-      <translation>Interface language</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>Article Display style</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>Add-on style</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>Interface Style</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>Preview Font</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation type="unfinished">Enable Interface Font</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation type="unfinished">Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation type="unfinished">Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>Keines</translation>
-    </message>
-    <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
     </message>
   </context>
   <context>
