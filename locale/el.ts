@@ -2793,14 +2793,6 @@ switching to them.</source>
       <translation>Άνοιγμα νέων καρτελών στο παρασκήνιο</translation>
     </message>
     <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>Αν σημειώσετε αυτή την επιλογή, οι νέες καρτέλες 
-θα ανοίγουν ακριβώς δίπλα στην τρέχουσα ενεργή καρτέλα. 
-Στην αντίθετη περίπτωση θα ανοίγουν στο τέλος.</translation>
-    </message>
-    <message>
       <source>Open new tabs after the current one</source>
       <translation>Άνοιγμα νέων καρτελών δίπλα στην τρέχουσα</translation>
     </message>
@@ -2899,8 +2891,124 @@ the application.</source>
       <translation>Αριθμός λεξικών μενού περιεχομένου:</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>Συστήματος</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>Κλασική</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>Κλασικό</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>Μοντέρνα</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>Lingvo</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>Βαβυλώνα</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>Lingoes</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>Μπίνγκο-μπλε</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Το Auto δεν κάνει τίποτα σε ορισμένα συστήματα.</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>Απαιτείται επανεκκίνηση του προγράμματος για να εφαρμοστεί η αλλαγή γλώσσας.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>Κάντε επανεκκίνηση για να εφαρμόσετε την αλλαγή στυλ διεπαφής.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Επανεκκινήστε για να εφαρμόσετε την αλλαγή γραμματοσειράς της διασύνδεσης.</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>Απαιτείται επανεκκίνηση</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Καθιστώ ικανό</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Καθιστώ ανίκανο</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>Αυτόματο</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Κανένα</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation>Με αυτό, οι νέες καρτέλες ανοίγονται αμέσως μετά την τρέχουσα
+ενεργή. Διαφορετικά, προστίθενται σε
+είναι οι τελευταίες.</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation>&amp;Στυλ</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>Εμφάνιση</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Ενεργοποίηση Γραμματοσειράς Διεπαφής</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Γλώσσα διεπαφής</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Στυλ εμφάνισης άρθρου</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Στυλ πρόσθετου</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Στυλ Διεπαφής</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2917,6 +3025,14 @@ the application.</source>
     <message>
       <source>Dark Reader Mode</source>
       <translation>Σκοτεινή Λειτουργία Ανάγνωσης</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Προεπισκόπηση Γραμματοσειράς</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>Το GoldenDict-ng είναι ένα λεξικό λογισμικό.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -3279,20 +3395,20 @@ GoldenDict. Αν ναι, το πρόγραμμα θα ειδοποιεί το
       <translation>Μέγιστο μέγεθος ιστορικού:</translation>
     </message>
     <message>
-      <source>Save every</source>
-      <translation>Αποθήκευση κάθε</translation>
-    </message>
-    <message>
-      <source>minutes</source>
-      <translation>λεπτά</translation>
-    </message>
-    <message>
       <source>Favorites</source>
       <translation>Αγαπημένα</translation>
     </message>
     <message>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>Αγαπημένα διάστημα αποθήκευσης. Αν οριστεί στα 0 Αγαπημένα θα αποθηκευτεί μόνο κατά την έξοδο.</translation>
+    </message>
+    <message>
+      <source>Save every</source>
+      <translation>Αποθήκευση κάθε</translation>
+    </message>
+    <message>
+      <source>minutes</source>
+      <translation>λεπτά</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3391,124 +3507,12 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Καταργήστε το μη έγκυρο ευρετήριο κατά την έξοδο</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>Συστήματος</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>Κλασική</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>Κλασικό</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>Μοντέρνα</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>Βαβυλώνα</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>Lingoes</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>Μπίνγκο-μπλε</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Το Auto δεν κάνει τίποτα σε ορισμένα συστήματα.</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>Απαιτείται επανεκκίνηση του προγράμματος για να εφαρμοστεί η αλλαγή γλώσσας.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>Κάντε επανεκκίνηση για να εφαρμόσετε την αλλαγή στυλ διεπαφής.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>Επανεκκινήστε για να εφαρμόσετε την αλλαγή γραμματοσειράς της διασύνδεσης.</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>Απαιτείται επανεκκίνηση</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>Καθιστώ ικανό</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>Καθιστώ ανίκανο</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>Αυτόματο</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Αποθήκευση μηνυμάτων αποσφαλμάτωσης στο gd_log.txt στο φάκελο ρυθμίσεων</translation>
     </message>
     <message>
-      <source>Interface language</source>
-      <translation>Γλώσσα διεπαφής</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>Στυλ εμφάνισης άρθρου</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>Στυλ πρόσθετου</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>Στυλ Διεπαφής</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>Προεπισκόπηση Γραμματοσειράς</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation>Το GoldenDict-ng είναι ένα λεξικό λογισμικό.</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation>Ενεργοποίηση Γραμματοσειράς Διεπαφής</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>Κανένα</translation>
-    </message>
-    <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Άνοιγμα λεξικού ιστοσελίδας σε διαχωριστική καρτέλα</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
     </message>
   </context>
   <context>
