@@ -65,24 +65,18 @@ class Indexing: public QObject, public QRunnable
   QAtomicInt & isCancelled;
   const std::vector< sptr< Dictionary::Class > > & dictionaries;
   QSemaphore & hasExited;
-  QTimer * timer;
-  QThread * timerThread;
+  QTimer timer;
 
 public:
   Indexing( QAtomicInt & cancelled, const std::vector< sptr< Dictionary::Class > > & dicts, QSemaphore & hasExited_ ):
     isCancelled( cancelled ),
     dictionaries( dicts ),
-    hasExited( hasExited_ ),
-    timer( new QTimer( nullptr ) ), // must be null since it will live in separate thread
-    timerThread( new QThread( this ) )
+    hasExited( hasExited_ )
   {
-    connect( timer, &QTimer::timeout, this, &Indexing::timeout );
-    timer->moveToThread( timerThread );
-    connect( timerThread, &QThread::started, timer, [ this ]() {
-      timer->start( 2000 );
-    } );
-    connect( timerThread, &QThread::finished, timer, &QTimer::stop );
-    connect( timerThread, &QThread::finished, timer, &QObject::deleteLater );
+    // The timer will run in the thread that executes Indexing::run()
+    setAutoDelete( true ); // Ensure QThreadPool deletes this instance
+    timer.setInterval( 2000 );
+    connect( &timer, &QTimer::timeout, this, &Indexing::timeout );
   }
 
   ~Indexing()
