@@ -2795,14 +2795,6 @@ switching to them.</source>
       <translation>Открывать новые вкладки в фоне</translation>
     </message>
     <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>Если данная опция включена, новые вкладки будут
-открываться сразу за текущей, вместо того чтобы
-добавляться в конец..</translation>
-    </message>
-    <message>
       <source>Open new tabs after the current one</source>
       <translation>Открывать новые вкладки за текущей</translation>
     </message>
@@ -2902,8 +2894,124 @@ the application.</source>
       <translation>Предел количества словарей в контекстном меню:</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>По умолчанию</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>По умолчанию</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>Классика</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>Современный</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>Lingvo</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>Вавилон</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>Лингосы</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>Лингос-синий</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>В некоторых системах функция Auto не выполняет никаких действий.</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>Перезапустите программу, чтобы изменение языка вошло в силу.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>Перезапустите, чтобы применить изменение стиля интерфейса.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Перезапустите, чтобы применить изменение шрифта интерфейса.</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>Требуется перезагрузка</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Давать возможность</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Запрещать</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>Автоматический</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Нет</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation>Выберите этот параметр, если don&apos;t хотите увидеть главную панель вкладок, когда открыта только одна вкладка
+                  .
+                 </translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation type="unfinished">With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation>&amp;Стиль</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>Появление</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Включить шрифт интерфейса</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Язык интерфейса</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Стиль отображения статьи</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Стиль дополнения</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Стиль интерфейса</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2920,6 +3028,14 @@ the application.</source>
     <message>
       <source>Dark Reader Mode</source>
       <translation>Темная тема просмотрщика</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Предпросмотр шрифта</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng это словарь программного обеспечения.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -3282,14 +3398,6 @@ GoldenDict. Если новая версия появилась, програм�
       <translation>Максимальный размер журнала:</translation>
     </message>
     <message>
-      <source>Save every</source>
-      <translation>Сохранять каждые</translation>
-    </message>
-    <message>
-      <source>minutes</source>
-      <translation>минут</translation>
-    </message>
-    <message>
       <source>Favorites</source>
       <translation>Избранное</translation>
     </message>
@@ -3297,6 +3405,14 @@ GoldenDict. Если новая версия появилась, програм�
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>Интервал сохранения Избранного. Если он установлен в 0,
 журнал будет сохраняться только при выходе из программы.</translation>
+    </message>
+    <message>
+      <source>Save every</source>
+      <translation>Сохранять каждые</translation>
+    </message>
+    <message>
+      <source>minutes</source>
+      <translation>минут</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3395,124 +3511,12 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Удалить неверный индекс при выходе</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>По умолчанию</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>По умолчанию</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>Классика</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>Современный</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>Вавилон</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>Лингосы</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>Лингос-синий</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>В некоторых системах функция Auto не выполняет никаких действий.</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>Перезапустите программу, чтобы изменение языка вошло в силу.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>Перезапустите, чтобы применить изменение стиля интерфейса.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>Перезапустите, чтобы применить изменение шрифта интерфейса.</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>Требуется перезагрузка</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>Давать возможность</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>Запрещать</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>Автоматический</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Сохранить отладочные сообщения в gd_log.txt в папке конфигурации</translation>
     </message>
     <message>
-      <source>Interface language</source>
-      <translation>Язык интерфейса</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>Стиль отображения статьи</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>Стиль дополнения</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>Стиль интерфейса</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>Предпросмотр шрифта</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation>GoldenDict-ng это словарь программного обеспечения.</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation>Включить шрифт интерфейса</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>Нет</translation>
-    </message>
-    <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Открыть словарь сайта в отдельной вкладке</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>Выберите этот параметр, если don&apos;t хотите увидеть главную панель вкладок, когда открыта только одна вкладка
-                  .
-                 </translation>
     </message>
   </context>
   <context>
