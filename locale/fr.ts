@@ -2792,14 +2792,6 @@ sans basculer vers ceux-ci.</translation>
       <translation>Nouveaux onglets en arrière-plan</translation>
     </message>
     <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>Si cette option est activée, les nouveaux onglets seront
-ouverts à côté de l&apos;onglet courant. Sinon, ils seront ajoutés
-en fin de liste.</translation>
-    </message>
-    <message>
       <source>Open new tabs after the current one</source>
       <translation>Nouveaux onglets après l&apos;onglet courant</translation>
     </message>
@@ -2897,8 +2889,124 @@ the application.</source>
       <translation>Limite de dictionnaires dans les menus contextuels :</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>Défaut (système)</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>Défaut</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>Classique</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>Moderne</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>Lingvo</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>Babylone</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>Lingoes</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>Lingoes-Bleu</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Auto ne fait rien sur certains systèmes.</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>Redémarrez le programme pour appliquer le changement de langue.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>Redémarrez pour appliquer le changement de style d'interface.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Redémarrez pour appliquer le changement de police de l'interface.</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>Redémarrage nécessaire</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Activer</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Désactiver</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>Automatique</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Aucun</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation>Sélectionnez cette option si vous donnez&apos;ne voulez pas voir la barre d’onglets principale quand un seul onglet est
+                  ouvert.
+                 </translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation>Avec cette option, de nouveaux onglets sont ouverts juste après le
+courant, actif. Sinon, ils sont ajoutés à
+être les derniers.</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation>&amp;Style</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>Apparence</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Activer la police de l'interface</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Langue de l'interface</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Style d'affichage de l'article</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Style du module</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Style de l'interface</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2915,6 +3023,14 @@ the application.</source>
     <message>
       <source>Dark Reader Mode</source>
       <translation>Mode lecture sombre</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Aperçu de la police</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng est un logiciel de dictionnaire.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -3275,20 +3391,20 @@ téléchargement.</translation>
       <translation>Taille maximale de l&apos;historique :</translation>
     </message>
     <message>
-      <source>Save every</source>
-      <translation>Sauver toutes les</translation>
-    </message>
-    <message>
-      <source>minutes</source>
-      <translation>minutes</translation>
-    </message>
-    <message>
       <source>Favorites</source>
       <translation>Favoris</translation>
     </message>
     <message>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>Intervalle de sauvegarde des Favoris. Si défini à 0, les Favoris ne seront sauvegardés qu'à la sortie.</translation>
+    </message>
+    <message>
+      <source>Save every</source>
+      <translation>Sauver toutes les</translation>
+    </message>
+    <message>
+      <source>minutes</source>
+      <translation>minutes</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3387,124 +3503,12 @@ des dictionnaires Stardict, Babylon et GLS</translation>
       <translation>Supprimer l'index invalide à la sortie</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>Défaut (système)</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>Défaut</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>Classique</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>Moderne</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>Babylone</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>Lingoes</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>Lingoes-Bleu</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto ne fait rien sur certains systèmes.</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>Redémarrez le programme pour appliquer le changement de langue.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>Redémarrez pour appliquer le changement de style d'interface.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>Redémarrez pour appliquer le changement de police de l'interface.</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>Redémarrage nécessaire</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>Activer</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>Désactiver</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>Automatique</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Enregistrer les messages de débogage dans gd_log.txt dans le dossier de configuration</translation>
     </message>
     <message>
-      <source>Interface language</source>
-      <translation>Langue de l'interface</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>Style d'affichage de l'article</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>Style du module</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>Style de l'interface</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>Aperçu de la police</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation>GoldenDict-ng est un logiciel de dictionnaire.</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation>Activer la police de l'interface</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>Aucun</translation>
-    </message>
-    <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Ouvrir le dictionnaire du site web dans un onglet séparé</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>Sélectionnez cette option si vous donnez&apos;ne voulez pas voir la barre d’onglets principale quand un seul onglet est
-                  ouvert.
-                 </translation>
     </message>
   </context>
   <context>
