@@ -634,10 +634,10 @@ be the last ones.</string>
      <widget class="QWidget" name="tab_popup">
       <attribute name="icon">
        <iconset resource="../../resources.qrc">
-        <normaloff>:/icons/wizard.svg</normaloff>:/icons/wizard.svg</iconset>
+        <normaloff>:/icons/scan.svg</normaloff>:/icons/scan.svg</iconset>
       </attribute>
       <attribute name="title">
-       <string>&amp;Popup</string>
+       <string>S&amp;can</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_10">
        <item>
