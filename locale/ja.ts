@@ -2791,14 +2791,6 @@ switching to them.</source>
       <translation>背景で新しいタブを開く</translation>
     </message>
     <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>これがオンだと、新しいタブは現在の
-アクティブなものの後に開かれます。
-そうでなければ最後に追加されます。</translation>
-    </message>
-    <message>
       <source>Open new tabs after the current one</source>
       <translation>現在の後に新しいタブを開く</translation>
     </message>
@@ -2897,8 +2889,122 @@ the application.</source>
       <translation>コンテキストメニュー辞書の制限:</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>システム既定</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>既定</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>クラシック</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>モダンな</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>Lingvo</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>Babylon</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>Lingoes</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>ランゴー・ブルー</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>一部のシステムでは自動では何も実行されません。</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>言語の変更を適用するにはプログラムを再起動します。</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>再起動してインターフェイス スタイルの変更を適用します。</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>インターフェースのフォントの変更を適用するには再起動してください。</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>再起動が必要です</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>有効にする</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>無効にする</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>自動</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>なし</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation>1 つのタブのみを開いているときにメインのタブ バーを表示したくない場合は、このオプションを選択します。</translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation>これをオンにすると、
+現在のアクティブなタブの直後に新しいタブが開かれます。それ以外の場合は、
+最後のタブに追加されます。</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation>スタイル(&amp;S)</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>外観</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>インターフェースフォントを有効にする</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>インターフェース言語</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>記事表示のスタイル</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>アドオンのスタイル</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>インターフェイスのスタイル</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2915,6 +3021,14 @@ the application.</source>
     <message>
       <source>Dark Reader Mode</source>
       <translation>ダークリーダーモード</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>フォントをプレビュー</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng は辞書ソフトウェアです。</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -3276,20 +3390,20 @@ download page.</source>
       <translation>履歴の最大サイズ:</translation>
     </message>
     <message>
-      <source>Save every</source>
-      <translation>保存間隔</translation>
-    </message>
-    <message>
-      <source>minutes</source>
-      <translation>分</translation>
-    </message>
-    <message>
       <source>Favorites</source>
       <translation>お気に入り</translation>
     </message>
     <message>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>お気に入り保存間隔。0に設定すると、終了時にのみ保存されます。</translation>
+    </message>
+    <message>
+      <source>Save every</source>
+      <translation>保存間隔</translation>
+    </message>
+    <message>
+      <source>minutes</source>
+      <translation>分</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3388,122 +3502,12 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>終了時に無効なインデックスを削除する</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>システム既定</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>既定</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>クラシック</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>モダンな</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>Babylon</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>Lingoes</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>ランゴー・ブルー</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>一部のシステムでは自動では何も実行されません。</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>言語の変更を適用するにはプログラムを再起動します。</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>再起動してインターフェイス スタイルの変更を適用します。</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>インターフェースのフォントの変更を適用するには再起動してください。</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>再起動が必要です</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>有効にする</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>無効にする</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>自動</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>設定フォルダ内のgd_log.txtにデバッグメッセージを保存します</translation>
     </message>
     <message>
-      <source>Interface language</source>
-      <translation>インターフェース言語</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>記事表示のスタイル</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>アドオンのスタイル</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>インターフェイスのスタイル</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>フォントをプレビュー</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation>GoldenDict-ng は辞書ソフトウェアです。</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation>インターフェースフォントを有効にする</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>なし</translation>
-    </message>
-    <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>別タブでウェブサイト辞書を開く</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>1 つのタブのみを開いているときにメインのタブ バーを表示したくない場合は、このオプションを選択します。</translation>
     </message>
   </context>
   <context>
