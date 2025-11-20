@@ -2791,14 +2791,6 @@ switching to them.</source>
       <translation>باز کردن زبانه‌های تازه در پس‌زمینه</translation>
     </message>
     <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>با فعال کردن ابن، زبانه‌های تازه پس از 
-زبانه فعلی فعال باز می‌شوند، وگرنه
-به‌عنوان آخرین زیانه افزوده می‌شوند.</translation>
-    </message>
-    <message>
       <source>Open new tabs after the current one</source>
       <translation>باز کردن زبانه تازه پس از زبانه جاری</translation>
     </message>
@@ -2897,8 +2889,124 @@ the application.</source>
       <translation>شمار واژه‌نامه‌های فهرست زمینه:</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>پیش‌فرض سیستم</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>پیش‌فرض</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>کلاسیک</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>نوین</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>لینگوُ</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>بابیلون</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>لینگوز</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>لینگوز-آبی</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>خودکار در برخی از سیستم ها هیچ کاری نمی کند.</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>برای به‌کار برده شدن تغییر زبان برنامه را دوباره راه‌اندازی کنید.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>برای اعمال تغییر سبک رابط، راه اندازی مجدد کنید.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>برای اعمال تغییر فونت رابط، راه اندازی مجدد کنید.</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>نیاز به راه اندازی مجدد</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>فعال کردن</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>غیر فعال کردن</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>خودکار</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>هیج کدام</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation type="unfinished">With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation type="unfinished">&amp;Style</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>ظاهر</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation type="unfinished">Enable Interface Font</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation type="unfinished">Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation type="unfinished">Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Interface language</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Article Display style</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on style</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Interface Style</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2915,6 +3023,14 @@ the application.</source>
     <message>
       <source>Dark Reader Mode</source>
       <translation>حالت خواننده تاریک</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Preview Font</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -3276,20 +3392,20 @@ download page.</source>
       <translation>بیشینه اندازه پیشینه:</translation>
     </message>
     <message>
-      <source>Save every</source>
-      <translation>ذخیره کن هر</translation>
-    </message>
-    <message>
-      <source>minutes</source>
-      <translation>دقیقه</translation>
-    </message>
-    <message>
       <source>Favorites</source>
       <translation>پسندیده‌ها</translation>
     </message>
     <message>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>فاصله ذخیره موارد دلخواه. اگر روی 0 تنظیم شود، موارد دلخواه فقط در حین خروج ذخیره می شود.</translation>
+    </message>
+    <message>
+      <source>Save every</source>
+      <translation>ذخیره کن هر</translation>
+    </message>
+    <message>
+      <source>minutes</source>
+      <translation>دقیقه</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3388,124 +3504,12 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>هنگام خروج، فهرست نامعتبر را حذف کنید</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>پیش‌فرض سیستم</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>پیش‌فرض</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>کلاسیک</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>نوین</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>لینگوُ</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>بابیلون</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>لینگوز</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>لینگوز-آبی</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>خودکار در برخی از سیستم ها هیچ کاری نمی کند.</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>برای به‌کار برده شدن تغییر زبان برنامه را دوباره راه‌اندازی کنید.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>برای اعمال تغییر سبک رابط، راه اندازی مجدد کنید.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>برای اعمال تغییر فونت رابط، راه اندازی مجدد کنید.</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>نیاز به راه اندازی مجدد</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>فعال کردن</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>غیر فعال کردن</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>خودکار</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
     <message>
-      <source>Interface language</source>
-      <translation>Interface language</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>Article Display style</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>Add-on style</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>Interface Style</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>Preview Font</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation type="unfinished">Enable Interface Font</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation type="unfinished">Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation type="unfinished">Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>هیج کدام</translation>
-    </message>
-    <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
     </message>
   </context>
   <context>
