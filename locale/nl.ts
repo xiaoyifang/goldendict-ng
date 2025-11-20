@@ -2792,13 +2792,6 @@ geopend zonder ze te selecteren.</translation>
       <translation>Nieuwe tabbladen op de achtergrond openen</translation>
     </message>
     <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>Hiermee worden nieuwe tabbladen geopend na het actieve tabblad.
-Indien uitgeschakeld worden ze als laatste toegevoegd.</translation>
-    </message>
-    <message>
       <source>Open new tabs after the current one</source>
       <translation>Nieuwe tabbladen na de huidige openen</translation>
     </message>
@@ -2897,8 +2890,124 @@ the application.</source>
       <translation>Woordenboeken in contextmenu beperken tot:</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>Systeemstandaard</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>Standaard</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>Klassiek</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>Vernieuwend</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>Lingvo</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>Babylon</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>Bellen</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>Lingoes-Blauw</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Auto doet niets op sommige systemen.</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>Start het programma opnieuw om de toepassingstaal te wijzigen.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>Start opnieuw om de wijziging van de interfacestijl toe te passen.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Herstart om de lettertypewijziging van de interface toe te passen.</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>Opnieuw opstarten nodig</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Inschakelen</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Uitzetten</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>Automatisch</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Geen</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation>Met dit aan worden nieuwe tabbladen geopend net na de
+huidige, actief. Anders worden ze toegevoegd aan
+de laatste.</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation>&amp;Stijl</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>Verschijning</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Interfacetlettertype inschakelen</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Interface taal</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Weergavestijl artikel</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on stijl</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Interface Stijl</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2915,6 +3024,14 @@ the application.</source>
     <message>
       <source>Dark Reader Mode</source>
       <translation>Donkere lezer Modus</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Voorbeeld lettertype</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng is een woordenboeksoftware.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -3274,20 +3391,20 @@ gevraagd een downloadpagina te openen.</translation>
       <translation>Maximale grootte geschiedenis:</translation>
     </message>
     <message>
-      <source>Save every</source>
-      <translation>Elke</translation>
-    </message>
-    <message>
-      <source>minutes</source>
-      <translation>minuten opslaan</translation>
-    </message>
-    <message>
       <source>Favorites</source>
       <translation>Favorieten</translation>
     </message>
     <message>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>Favorieten opslaan interval. Indien ingesteld op 0 favorieten zal alleen worden opgeslagen tijdens het afsluiten.</translation>
+    </message>
+    <message>
+      <source>Save every</source>
+      <translation>Elke</translation>
+    </message>
+    <message>
+      <source>minutes</source>
+      <translation>minuten opslaan</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3386,124 +3503,12 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <translation>Verwijder ongeldige index bij afsluiten</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>Systeemstandaard</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>Standaard</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>Klassiek</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>Vernieuwend</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>Babylon</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>Bellen</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>Lingoes-Blauw</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto doet niets op sommige systemen.</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>Start het programma opnieuw om de toepassingstaal te wijzigen.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>Start opnieuw om de wijziging van de interfacestijl toe te passen.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>Herstart om de lettertypewijziging van de interface toe te passen.</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>Opnieuw opstarten nodig</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>Inschakelen</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>Uitzetten</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>Automatisch</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Debug berichten opslaan in gd_log.txt in de configuratie map</translation>
     </message>
     <message>
-      <source>Interface language</source>
-      <translation>Interface taal</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>Weergavestijl artikel</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>Add-on stijl</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>Interface Stijl</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>Voorbeeld lettertype</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation>GoldenDict-ng is een woordenboeksoftware.</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation>Interfacetlettertype inschakelen</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>Geen</translation>
-    </message>
-    <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Open het website-woordenboek in apart tabblad</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
     </message>
   </context>
   <context>
