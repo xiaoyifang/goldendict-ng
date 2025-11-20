@@ -2791,14 +2791,6 @@ switching to them.</source>
       <translation>Otvárať nové karty na pozadí</translation>
     </message>
     <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>S touto voľbou sú nové karty
-otvorené za aktívnou kartou.
-Inak sú pridané za poslednú kartu.</translation>
-    </message>
-    <message>
       <source>Open new tabs after the current one</source>
       <translation>Otvoriť nové karty za aktívnou kartou</translation>
     </message>
@@ -2894,8 +2886,124 @@ skryje program namiesto jeho ukončenia.</translation>
       <translation>Limit slovníkov pre kontextovú ponuku:</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>Systémové nastavenie</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>Štandardný</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>klasické</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>Moderné</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>Lingvo</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>Babylon</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>Lingoes</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>Lingoes-Blue</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Auto na niektorých systémoch nerobí nič.</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>Reštartovať program pre aplikovanie zmeny jazyka.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>Reštartujte, aby ste použili zmenu štýlu rozhrania.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Ak chcete použiť zmenu písma rozhrania, reštartujte.</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>Je potrebný reštart</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Povoliť</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Zakázať</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>Automaticky</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Žiadny</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation type="unfinished">With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation type="unfinished">&amp;Style</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>Vzhľad</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation type="unfinished">Enable Interface Font</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation type="unfinished">Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation type="unfinished">Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Interface language</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Article Display style</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on style</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Interface Style</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2912,6 +3020,14 @@ skryje program namiesto jeho ukončenia.</translation>
     <message>
       <source>Dark Reader Mode</source>
       <translation>Tmavý režim čítačky</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Preview Font</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -3271,20 +3387,20 @@ na stiahnutie.</translation>
       <translation>Maximálna veľkosť histórie:</translation>
     </message>
     <message>
-      <source>Save every</source>
-      <translation>Uložiť každých</translation>
-    </message>
-    <message>
-      <source>minutes</source>
-      <translation>minút</translation>
-    </message>
-    <message>
       <source>Favorites</source>
       <translation>Obľúbené</translation>
     </message>
     <message>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>Interval pre ukladanie Obľúbených. Ak je nastavené na nulu, Obľúbené budú uložené iba pri ukončení aplikácie.</translation>
+    </message>
+    <message>
+      <source>Save every</source>
+      <translation>Uložiť každých</translation>
+    </message>
+    <message>
+      <source>minutes</source>
+      <translation>minút</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3383,124 +3499,12 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
       <translation>Odstráňte neplatný index pri ukončení</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>Systémové nastavenie</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>Štandardný</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>klasické</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>Moderné</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>Babylon</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>Lingoes</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>Lingoes-Blue</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto na niektorých systémoch nerobí nič.</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>Reštartovať program pre aplikovanie zmeny jazyka.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>Reštartujte, aby ste použili zmenu štýlu rozhrania.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>Ak chcete použiť zmenu písma rozhrania, reštartujte.</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>Je potrebný reštart</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>Povoliť</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>Zakázať</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>Automaticky</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
     <message>
-      <source>Interface language</source>
-      <translation>Interface language</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>Article Display style</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>Add-on style</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>Interface Style</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>Preview Font</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation type="unfinished">Enable Interface Font</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation type="unfinished">Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation type="unfinished">Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>Žiadny</translation>
-    </message>
-    <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
     </message>
   </context>
   <context>
