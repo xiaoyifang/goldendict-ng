@@ -3026,10 +3026,6 @@ be the last ones.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Popup</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3465,6 +3461,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
         <source>Open website dictionary in seperate tab</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>S&amp;can</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
