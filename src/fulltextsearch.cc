@@ -15,7 +15,7 @@ namespace FTS {
 void Indexing::run()
 {
   try {
-    timerThread->start();
+    timer.start();
     const int parallel_count = GlobalBroadcaster::instance()->getPreference()->fts.parallelThreads;
     QSemaphore sem( parallel_count < 1 ? 1 : parallel_count );
 
@@ -42,8 +42,7 @@ void Indexing::run()
     qDebug() << "waiting for all the fts creation to finish.";
     synchronizer.waitForFinished();
     qDebug() << "finished/cancel all the fts creation";
-    timerThread->quit();
-    timerThread->wait();
+    timer.stop();
   }
   catch ( std::exception & ex ) {
     qWarning( "Exception occurred while full-text search: %s", ex.what() );
@@ -85,23 +84,23 @@ FtsIndexing::FtsIndexing( const std::vector< sptr< Dictionary::Class > > & dicts
 
 void FtsIndexing::doIndexing()
 {
+  // If the task is already running, do nothing.
+  // If a force restart is needed, stopIndexing() should be called first.
   if ( started ) {
-    stopIndexing();
+    return;
   }
 
-  if ( !started ) {
-    while ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
-      isCancelled.deref();
-    }
-
-    Indexing * idx = new Indexing( isCancelled, dictionaries, indexingExited );
-
-    connect( idx, &Indexing::sendNowIndexingName, this, &FtsIndexing::setNowIndexedName );
-
-    QThreadPool::globalInstance()->start( idx );
-
-    started = true;
+  while ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
+    isCancelled.deref();
   }
+
+  Indexing * idx = new Indexing( isCancelled, dictionaries, indexingExited );
+
+  connect( idx, &Indexing::sendNowIndexingName, this, &FtsIndexing::setNowIndexedName );
+
+  QThreadPool::globalInstance()->start( idx );
+
+  started = true;
 }
 
 void FtsIndexing::stopIndexing()
