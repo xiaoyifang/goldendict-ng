@@ -2790,13 +2790,6 @@ switching to them.</source>
       <translation>在后台打开新标签页</translation>
     </message>
     <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>打开此选项，新标签页将会在当前页面后打开；不
-打开此选项，新标签页将会自动添加到末尾。</translation>
-    </message>
-    <message>
       <source>Open new tabs after the current one</source>
       <translation>在当前页之后打开新标签页</translation>
     </message>
@@ -2889,8 +2882,122 @@ the application.</source>
       <translation>右键菜单词典数目限制：</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>系统默认</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>默认</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>经典</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>现代</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>Lingvo</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>巴比伦文</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>灵格斯</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>灵格斯-蓝色调</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>在某些系统上，自动不执行任何操作。</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>变更界面语言需要重新启动程序才能生效。</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>重启以应用界面风格更改。</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>重启以应用界面字体更改。</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>需要重启</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>启用</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>禁用</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>自动</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>无</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation>如果您不想在仅打开一个标签页时看到主标签页栏，请选择此选项。</translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation>开启后，新标签会在
+当前激活后打开。否则，它们会被添加到
+最后一个标签。</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation>样式</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>界面外观</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>启用接口字体</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>界面语言</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>文章显示样式</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>附加组件样式</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>界面风格</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2907,6 +3014,14 @@ the application.</source>
     <message>
       <source>Dark Reader Mode</source>
       <translation>深色阅读模式</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>预览字体</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng 是一个字典软件。</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -3263,20 +3378,20 @@ download page.</source>
       <translation>最大历史条数：</translation>
     </message>
     <message>
-      <source>Save every</source>
-      <translation>保存周期：</translation>
-    </message>
-    <message>
-      <source>minutes</source>
-      <translation>分钟</translation>
-    </message>
-    <message>
       <source>Favorites</source>
       <translation>收藏</translation>
     </message>
     <message>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>收藏内容保存周期。若为 0 则只在程序退出时保存。</translation>
+    </message>
+    <message>
+      <source>Save every</source>
+      <translation>保存周期：</translation>
+    </message>
+    <message>
+      <source>minutes</source>
+      <translation>分钟</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3374,122 +3489,12 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>退出时删除无效索引</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>系统默认</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>默认</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>经典</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>现代</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>巴比伦文</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>灵格斯</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>灵格斯-蓝色调</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>在某些系统上，自动不执行任何操作。</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>变更界面语言需要重新启动程序才能生效。</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>重启以应用界面风格更改。</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>重启以应用界面字体更改。</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>需要重启</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>启用</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>禁用</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>自动</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>在配置文件夹中将调试消息保存到 gd_log.txt</translation>
     </message>
     <message>
-      <source>Interface language</source>
-      <translation>界面语言</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>文章显示样式</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>附加组件样式</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>界面风格</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>预览字体</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation>GoldenDict-ng 是一个字典软件。</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation>启用接口字体</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>无</translation>
-    </message>
-    <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>在分隔符中打开网站词典</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>如果您不想在仅打开一个标签页时看到主标签页栏，请选择此选项。</translation>
     </message>
   </context>
   <context>
