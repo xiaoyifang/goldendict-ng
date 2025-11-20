@@ -2792,14 +2792,6 @@ abiertas sin trasladar a ellas.</translation>
       <translation>Musuq pestañata kichaqtin kunan pestañamanta ama ripuychu</translation>
     </message>
     <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>Por defecto, nuevas pestañas son agregadas al final 
-de la lista. Con está opción pestañas nuevas son 
-abiertas al lado de la pestaña actual.</translation>
-    </message>
-    <message>
       <source>Open new tabs after the current one</source>
       <translation>Kunan pestañaqpa chirunman musuq pestañata kichay</translation>
     </message>
@@ -2896,8 +2888,124 @@ cerrar la aplicación.</translation>
       <translation>Contexto menú diccionariokuna limite:</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>Sistema nisqaqpa simin</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>Mana aqllasqa</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>Clásico nisqa</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>Moderno</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>Lingvo</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>Babilonia</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>Lingokuna</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>Lingoes-Azul</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Autoqa wakin sistemakunapiqa manam imatapas ruwanchu.</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>Musuq simita jap&apos;ikunanpaq hukmanta programata qallarichiy.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>Interfaz estilo tikrayta churanapaq musuqmanta qallariy.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Interfazpa qillqa tikrayta churanapaq musuqmanta qallariy.</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>Wakmanta qallariy necesitakun</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Kawsarichisqa</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Wañuchisqa</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>Kikinmanta</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Ni ima</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation type="unfinished">With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation type="unfinished">&amp;Style</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>Rikchaynin</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation type="unfinished">Enable Interface Font</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation type="unfinished">Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation type="unfinished">Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Interface language</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Article Display style</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on style</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Interface Style</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2914,6 +3022,14 @@ cerrar la aplicación.</translation>
     <message>
       <source>Dark Reader Mode</source>
       <translation>Tutayaq Ñawinchaq Modo</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Preview Font</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -3274,20 +3390,20 @@ la página web para descargarla.</translation>
       <translation>Aswan hatun willakuypa sayaynin:</translation>
     </message>
     <message>
-      <source>Save every</source>
-      <translation>Waqaychay sapa</translation>
-    </message>
-    <message>
-      <source>minutes</source>
-      <translation>minutokuna</translation>
-    </message>
-    <message>
       <source>Favorites</source>
       <translation>Favoritos nisqakuna</translation>
     </message>
     <message>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>Favoritos waqaychay intervalo. 0 nisqaman churasqa kaptinqa Munasqakunaqa lluqsiy pachallapim waqaychasqa kanqa.</translation>
+    </message>
+    <message>
+      <source>Save every</source>
+      <translation>Waqaychay sapa</translation>
+    </message>
+    <message>
+      <source>minutes</source>
+      <translation>minutokuna</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3386,124 +3502,12 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
       <translation>Lluqsiypi mana allin indisyuta hurquy</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>Sistema nisqaqpa simin</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>Mana aqllasqa</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>Clásico nisqa</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>Moderno</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>Babilonia</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>Lingokuna</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>Lingoes-Azul</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Autoqa wakin sistemakunapiqa manam imatapas ruwanchu.</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>Musuq simita jap&apos;ikunanpaq hukmanta programata qallarichiy.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>Interfaz estilo tikrayta churanapaq musuqmanta qallariy.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>Interfazpa qillqa tikrayta churanapaq musuqmanta qallariy.</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>Wakmanta qallariy necesitakun</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>Kawsarichisqa</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>Wañuchisqa</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>Kikinmanta</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Save debug messages to gd_log.txt in the config folder</translation>
     </message>
     <message>
-      <source>Interface language</source>
-      <translation>Interface language</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>Article Display style</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>Add-on style</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>Interface Style</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>Preview Font</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation type="unfinished">Enable Interface Font</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation type="unfinished">Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation type="unfinished">Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>Ni ima</translation>
-    </message>
-    <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
     </message>
   </context>
   <context>
