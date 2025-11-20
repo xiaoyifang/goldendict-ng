@@ -2792,13 +2792,6 @@ switching to them.</source>
       <translation>새 탭을 배경으로 열기</translation>
     </message>
     <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>이 항목을 선택하면 새 탭이 현재의 활성탭 다음에 열립니다.
-기본값은 제일 마지막 위치에 새 탭이 열립니다.</translation>
-    </message>
-    <message>
       <source>Open new tabs after the current one</source>
       <translation>새 탭을 현재 탭 다음에 열기</translation>
     </message>
@@ -2896,8 +2889,124 @@ the application.</source>
       <translation>컨텍스트메뉴 사전 한도:</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>시스템 기본값</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>기본값</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>권위 있는</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>현대의</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>링보</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>바빌론</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>링고</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>링고-블루</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>일부 시스템에서는 자동이 아무 작업도 수행하지 않습니다.</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>언어변경을 적용하려면 프로그램을 다시 시작하십시오.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>인터페이스 스타일 변경 사항을 적용하려면 다시 시작하십시오.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>인터페이스 글꼴 변경 사항을 적용하려면 다시 시작하세요.</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>재시작 필요</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>할 수 있게 하다</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>장애를 입히다</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>오토매틱</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>없음</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation type="unfinished">With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation type="unfinished">&amp;Style</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>모습</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation type="unfinished">Enable Interface Font</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation type="unfinished">Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation type="unfinished">Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>인터페이스 언어</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>기사 표시 스타일</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on 스타일</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>인터페이스 스타일</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2914,6 +3023,14 @@ the application.</source>
     <message>
       <source>Dark Reader Mode</source>
       <translation>다크 리더 모드</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>글꼴 미리보기</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng는 사전 소프트웨어입니다.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -3274,20 +3391,20 @@ download page.</source>
       <translation>검색기록 최대크기:</translation>
     </message>
     <message>
-      <source>Save every</source>
-      <translation>저장 간격: </translation>
-    </message>
-    <message>
-      <source>minutes</source>
-      <translation>분 마다</translation>
-    </message>
-    <message>
       <source>Favorites</source>
       <translation>즐겨찾기</translation>
     </message>
     <message>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>즐겨찾기 저장 간격. 0으로 설정하면 종료 시에만 즐겨찾기가 저장됩니다.</translation>
+    </message>
+    <message>
+      <source>Save every</source>
+      <translation>저장 간격: </translation>
+    </message>
+    <message>
+      <source>minutes</source>
+      <translation>분 마다</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3386,124 +3503,12 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>종료 시 유효하지 않은 인덱스 제거</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>시스템 기본값</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>기본값</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>권위 있는</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>현대의</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>링보</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>바빌론</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>링고</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>링고-블루</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>일부 시스템에서는 자동이 아무 작업도 수행하지 않습니다.</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>언어변경을 적용하려면 프로그램을 다시 시작하십시오.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>인터페이스 스타일 변경 사항을 적용하려면 다시 시작하십시오.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>인터페이스 글꼴 변경 사항을 적용하려면 다시 시작하세요.</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>재시작 필요</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>할 수 있게 하다</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>장애를 입히다</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>오토매틱</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>config 폴더의 gd_log.txt에 디버그 메시지를 저장합니다</translation>
     </message>
     <message>
-      <source>Interface language</source>
-      <translation>인터페이스 언어</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>기사 표시 스타일</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>Add-on 스타일</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>인터페이스 스타일</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>글꼴 미리보기</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation>GoldenDict-ng는 사전 소프트웨어입니다.</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation type="unfinished">Enable Interface Font</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation type="unfinished">Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation type="unfinished">Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>없음</translation>
-    </message>
-    <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
-    </message>
-    <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
     </message>
   </context>
   <context>
