@@ -3057,10 +3057,6 @@ be the last ones.</translation>
       <translation>فونت Monospace</translation>
     </message>
     <message>
-      <source>&amp;Popup</source>
-      <translation>پویش &amp;واشو</translation>
-    </message>
-    <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
       <translation>انتخاب می کند که آیا هنگام راه اندازی برنامه&apos;نظارت بر کلیپ بورد به طور پیش فرض روشن شود یا خیر.</translation>
     </message>
@@ -3510,6 +3506,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation type="unfinished">S&amp;can</translation>
     </message>
   </context>
   <context>
