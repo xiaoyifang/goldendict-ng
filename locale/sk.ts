@@ -3054,10 +3054,6 @@ be the last ones.</translation>
       <translation>Jednopriestorové písmo</translation>
     </message>
     <message>
-      <source>&amp;Popup</source>
-      <translation>Vys&amp;kakovacie okno</translation>
-    </message>
-    <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
       <translation>Určuje, či bude pri spustení programu&apos;štandardne zapnuté sledovanie schránky.</translation>
     </message>
@@ -3505,6 +3501,10 @@ zo slovníkov Stardict, Babylon a GLS.</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation type="unfinished">S&amp;can</translation>
     </message>
   </context>
   <context>
