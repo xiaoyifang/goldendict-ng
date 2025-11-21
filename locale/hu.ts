@@ -3058,10 +3058,6 @@ be the last ones.</translation>
       <translation>Fix szélességű betűkészlet</translation>
     </message>
     <message>
-      <source>&amp;Popup</source>
-      <translation>Fordító felugró&amp;ablak</translation>
-    </message>
-    <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
       <translation>Kiválasztja, hogy a vágólap figyelése alapértelmezés szerint be legyen-e kapcsolva a&apos;program indításakor.</translation>
     </message>
@@ -3511,6 +3507,10 @@ is felhasználja további szócikkek felfedezéséhez</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation type="unfinished">S&amp;can</translation>
     </message>
   </context>
   <context>
