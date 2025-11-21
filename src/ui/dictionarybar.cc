@@ -151,7 +151,7 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
 
   QString dictFilename;
 
-  const QAction * dictAction = actionAt( event->x(), event->y() );
+  QAction * dictAction = actionAt( event->x(), event->y() );
   if ( dictAction ) {
     const QString id          = dictAction->data().toString();
     for ( const auto & dictionary : allDictionaries ) {
