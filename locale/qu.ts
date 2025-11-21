@@ -3056,10 +3056,6 @@ be the last ones.</translation>
       <translation>Monoespacio nisqa qillqa</translation>
     </message>
     <message>
-      <source>&amp;Popup</source>
-      <translation>&amp;Juch&apos;uy qhawanapi mask&apos;ay</translation>
-    </message>
-    <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
       <translation>Akllan sichus portapapeles qhawayqa ñawpaqmanta llamk'achisqa kanqa programa&apos;s qallariypi.</translation>
     </message>
@@ -3508,6 +3504,10 @@ kaqninta Stardict, Babylon chaymanta GLS simi pirwakunamanta</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation type="unfinished">S&amp;can</translation>
     </message>
   </context>
   <context>
