@@ -3057,10 +3057,6 @@ be the last ones.</translation>
       <translation>Monospace şrifti</translation>
     </message>
     <message>
-      <source>&amp;Popup</source>
-      <translation>&amp;Skan popup</translation>
-    </message>
-    <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
       <translation>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
     </message>
@@ -3511,6 +3507,10 @@ arkaly goşmaça makalalary gözlemek üçin bu opsiýany açyň</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation type="unfinished">S&amp;can</translation>
     </message>
   </context>
   <context>
