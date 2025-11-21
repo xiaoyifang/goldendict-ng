@@ -761,6 +761,14 @@ between classic and school orthography in cyrillic)</source>
         <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Change display name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New display name:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>EditDictionaries</name>
@@ -2728,6 +2736,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
         <source>Dictionaries active: %1, inactive: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Change display name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>New display name:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
