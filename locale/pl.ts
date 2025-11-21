@@ -779,6 +779,14 @@ między ortografią klasyczną i szkolną w cyrylicy)</translation>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
       <translation>Słownik został zaplanowany do przeindeksowania. Indeks zostanie przebudowany po ponownym uruchomieniu aplikacji.</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Zmień nazwę wyświetlaną</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Nowa nazwa wyświetlania:</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
@@ -2748,6 +2756,14 @@ Aby odnaleźć symbole „*”, „?”, „[” i „]”, należy użyć odpow
     <message>
       <source>Dictionaries active: %1, inactive: %2</source>
       <translation>Słowniki aktywne: %1, nieaktywne: %2</translation>
+    </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Zmień nazwę wyświetlaną</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Nowa nazwa wyświetlania:</translation>
     </message>
   </context>
   <context>
