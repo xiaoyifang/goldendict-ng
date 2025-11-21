@@ -779,6 +779,14 @@ tra l&apos;ortografia classica e scolastica in cirillico)</translation>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
       <translation>Il dizionario è stato programmato per la reindicizzazione. L'indice sarà ricostruito al prossimo riavvio dell'applicazione.</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Cambia nome display</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Nuovo nome del display:</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
@@ -2749,6 +2757,14 @@ Clicca &lt;b&gt;Scarica&lt;/b&gt; per accedere alla pagina di scaricamento.</tra
     <message>
       <source>Dictionaries active: %1, inactive: %2</source>
       <translation>Dizionari attivi: %1, inattivi: %2</translation>
+    </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Cambia nome display</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Nuovo nome del display:</translation>
     </message>
   </context>
   <context>
