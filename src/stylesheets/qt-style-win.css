@@ -5,7 +5,6 @@ QTabBar::close-button:hover {
   image: url(:/icons/closetab-hover.png);
 }
 
-
 #groupListToolbar {
   border: 0px;
 }
