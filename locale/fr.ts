@@ -3057,10 +3057,6 @@ courant, actif. Sinon, ils sont ajoutés à
       <translation>Police Monospace</translation>
     </message>
     <message>
-      <source>&amp;Popup</source>
-      <translation>Fenêtre de &amp;scan</translation>
-    </message>
-    <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
       <translation>Choisissez si la surveillance du presse-papiers sera activée par défaut au démarrage du programme&apos;.</translation>
     </message>
@@ -3509,6 +3505,10 @@ des dictionnaires Stardict, Babylon et GLS</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Ouvrir le dictionnaire du site web dans un onglet séparé</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation>&amp;Scanner</translation>
     </message>
   </context>
   <context>
