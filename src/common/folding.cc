@@ -43,7 +43,7 @@ std::u32string apply( const std::u32string & in, bool preserveWildcards )
 std::string applyForIndex( const QString & in )
 {
   // remove diacritics (normalization)
-  auto temp = in.normalized( QString::NormalizationForm_KD ).remove( RX::accentMark ).toStdU32String();
+  auto temp = in.normalized( QString::NormalizationForm_KD ).remove( RX::accentPunc ).toStdU32String();
   // case folding
   std::u32string caseFolded;
   caseFolded.reserve( temp.size() );
