@@ -3052,10 +3052,6 @@ be the last ones.</translation>
       <translation>मोनोस्पेस फ़ॉन्ट</translation>
     </message>
     <message>
-      <source>&amp;Popup</source>
-      <translation>&amp;स्कैन पॉपअप</translation>
-    </message>
-    <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
       <translation>यह चुनता है कि प्रोग्राम&apos;के प्रारंभ होने पर क्लिपबोर्ड मॉनिटरिंग डिफ़ॉल्ट रूप से चालू होगी या नहीं।</translation>
     </message>
@@ -3497,6 +3493,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation type="unfinished">S&amp;can</translation>
     </message>
   </context>
   <context>
