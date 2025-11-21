@@ -3058,10 +3058,6 @@ be the last ones.</translation>
       <translation>Fonte monoespaçada</translation>
     </message>
     <message>
-      <source>&amp;Popup</source>
-      <translation>&amp;Escanear pop-up</translation>
-    </message>
-    <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
       <translation>Escolhe se o monitoramento da área de transferência será ativado por padrão na inicialização do programa&apos;.</translation>
     </message>
@@ -3512,6 +3508,10 @@ no Stardict, Babilônia e dicionários GLS</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Abrir o dicionário do site na guia separada</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation>&amp;Abrir</translation>
     </message>
   </context>
   <context>
