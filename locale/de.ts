@@ -3056,10 +3056,6 @@ als letzte hinzugefügt.</translation>
       <translation>Monospace-Schriftart</translation>
     </message>
     <message>
-      <source>&amp;Popup</source>
-      <translation>Popup &amp;scannen</translation>
-    </message>
-    <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
       <translation>Wählt, ob die Zwischenablageüberwachung beim Start des Programms&apos;standardmäßig aktiviert wird.</translation>
     </message>
@@ -3506,6 +3502,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Website-Wörterbuch in separatem Tab öffnen</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation>&amp;Dosieren</translation>
     </message>
   </context>
   <context>
