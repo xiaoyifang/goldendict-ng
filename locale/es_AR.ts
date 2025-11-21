@@ -3060,10 +3060,6 @@ be the last ones.</translation>
       <translation>Fuente monoespaciada</translation>
     </message>
     <message>
-      <source>&amp;Popup</source>
-      <translation>&amp;Ventana emergente de lectura</translation>
-    </message>
-    <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
       <translation>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
     </message>
@@ -3511,6 +3507,10 @@ de los diccionarios Stardict, Babylon y GLS.</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation type="unfinished">S&amp;can</translation>
     </message>
   </context>
   <context>
