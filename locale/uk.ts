@@ -3055,10 +3055,6 @@ be the last ones.</translation>
       <translation>Моноширинний шрифт</translation>
     </message>
     <message>
-      <source>&amp;Popup</source>
-      <translation>&amp;Контекстне вікно</translation>
-    </message>
-    <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
       <translation>Вибирає, чи буде моніторинг буфера обміну ввімкнено за замовчуванням під час запуску програми&apos;.</translation>
     </message>
@@ -3510,6 +3506,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Відкрити словник веб-сайту в окремій вкладці</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation>С&amp;творити</translation>
     </message>
   </context>
   <context>
