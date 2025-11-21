@@ -224,24 +224,22 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
   }
 
   if ( result && result == changeNameAction ) {
-    if ( pDict ) {
-      bool ok;
-      QString newName = QInputDialog::getText( this,
-                                               tr( "Change display name" ),
-                                               tr( "New display name:" ),
-                                               QLineEdit::Normal,
-                                               QString::fromUtf8( pDict->getName().c_str() ),
-                                               &ok );
-      if ( ok && !newName.isEmpty() ) {
-        QString metadataPath = pDict->getContainingFolder();
-        if ( !metadataPath.isEmpty() ) {
-          auto filePath = Utils::Path::combine( metadataPath, "metadata.toml" );
-          Metadata::saveDisplayName( filePath.toStdString(), newName.toStdString() );
-          pDict->setName( newName.toStdString() );
-          const_cast< QAction * >( dictAction )->setText( elideDictName( newName ) );
-          const_cast< QAction * >( dictAction )->setToolTip( newName );
-        }
-      }
+    if ( !pDict ) {
+      return;
+    }
+    bool ok;
+    QString newName = QInputDialog::getText( this,
+                                             tr( "Change display name" ),
+                                             tr( "New display name:" ),
+                                             QLineEdit::Normal,
+                                             QString::fromUtf8( pDict->getName().c_str() ),
+                                             &ok );
+    if ( ok && !newName.isEmpty() && !pDict->getContainingFolder().isEmpty() ) {
+      Metadata::saveDisplayName( Utils::Path::combine( pDict->getContainingFolder(), "metadata.toml" ).toStdString(),
+                                 newName.toStdString() );
+      pDict->setName( newName.toStdString() );
+      const_cast< QAction * >( dictAction )->setText( elideDictName( newName ) );
+      const_cast< QAction * >( dictAction )->setToolTip( newName );
     }
   }
 
