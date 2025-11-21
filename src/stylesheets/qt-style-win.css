@@ -4,3 +4,20 @@ QTabBar::close-button {
 QTabBar::close-button:hover {
   image: url(:/icons/closetab-hover.png);
 }
+
+
+#groupListToolbar {
+  border: 0px;
+}
+
+#groupListToolbar::drop-down {
+  border: 0px;
+  background: transparent;
+  width: 20px;
+}
+
+#groupListToolbar::down-arrow {
+  image: url(:/icons/1downarrow.svg);
+  width: 12px;
+  height: 12px;
+}

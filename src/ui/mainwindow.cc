@@ -243,10 +243,7 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
 
   // translate box
   groupListInToolbar = new GroupComboBox( navToolbar );
-  groupListInToolbar->setFrame( false );
-  QFont groupFont = groupListInToolbar->font();
-  groupFont.setPointSizeF( groupFont.pointSizeF() * 1.2 );
-  groupListInToolbar->setFont( groupFont );
+  groupListInToolbar->setObjectName( "groupListToolbar" );
   groupListInToolbar->setSizePolicy( QSizePolicy::Preferred, QSizePolicy::MinimumExpanding );
   groupListInToolbar->setSizeAdjustPolicy( QComboBox::AdjustToContents );
   translateBoxLayout->addWidget( groupListInToolbar );
@@ -1391,6 +1388,12 @@ void MainWindow::updateAppearances( const QString & addonStyle,
 
 
   QByteArray css{};
+
+  QFile commonCssFile( ":qt-common.css" );
+  if ( commonCssFile.open( QFile::ReadOnly ) ) {
+    css += commonCssFile.readAll();
+  }
+
 #if defined( Q_OS_WIN )
   QFile winCssFile( ":qt-style-win.css" );
   winCssFile.open( QFile::ReadOnly );
