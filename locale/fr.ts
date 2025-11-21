@@ -779,6 +779,14 @@ between classic and school orthography in cyrillic)</source>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
       <translation>Le dictionnaire a été programmé pour la réindexation. L'index sera reconstruit au prochain redémarrage de l'application.</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Changer le nom d'affichage</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Nouveau nom d'affichage :</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
@@ -2532,38 +2540,6 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
       <translation>Imprimer l&apos;article</translation>
     </message>
     <message>
-      <source>Complete Html (*.html *.htm)</source>
-      <translation>HTML complet (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Single Html (*.html *.htm)</source>
-      <translation>HTML unique (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Mime Html (*.mhtml)</source>
-      <translation>MIME HTML (*.mhtml)</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>Enregister l&apos;article sous</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>Erreur</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>Impossible d&apos;enregistrer l&apos;article : %1</translation>
-    </message>
-    <message>
-      <source>Saving article...</source>
-      <translation>Sauvegarde de l&apos;article...</translation>
-    </message>
-    <message>
-      <source>Save article complete</source>
-      <translation>Enregistrer l'article terminé</translation>
-    </message>
-    <message>
       <source>The main window is set to be always on top.</source>
       <translation>La fenêtre pricipale est configurée pour être toujours au premier plan.</translation>
     </message>
@@ -2654,18 +2630,6 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     <message>
       <source>Show</source>
       <translation>Afficher</translation>
-    </message>
-    <message>
-      <source>Save PDF complete</source>
-      <translation>Enregistrer le PDF avec succès</translation>
-    </message>
-    <message>
-      <source>Save PDF failed</source>
-      <translation>Échec de l'enregistrement du PDF</translation>
-    </message>
-    <message>
-      <source>PDF document (*.pdf *.PDF)</source>
-      <translation>Document PDF (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Lock Panels</source>
@@ -2793,6 +2757,14 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
       <source>Dictionaries active: %1, inactive: %2</source>
       <translation>Dictionnaires actifs : %1, inactifs : %2</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Changer le nom d'affichage</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Nouveau nom d'affichage :</translation>
+    </message>
   </context>
   <context>
     <name>PathsModel</name>
@@ -2834,14 +2806,6 @@ sans basculer vers ceux-ci.</translation>
     <message>
       <source>Open new tabs in background</source>
       <translation>Nouveaux onglets en arrière-plan</translation>
-    </message>
-    <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>Si cette option est activée, les nouveaux onglets seront
-ouverts à côté de l&apos;onglet courant. Sinon, ils seront ajoutés
-en fin de liste.</translation>
     </message>
     <message>
       <source>Open new tabs after the current one</source>
@@ -2941,8 +2905,124 @@ the application.</source>
       <translation>Limite de dictionnaires dans les menus contextuels :</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>Défaut (système)</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>Défaut</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>Classique</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>Moderne</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>Lingvo</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>Babylone</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>Lingoes</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>Lingoes-Bleu</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Auto ne fait rien sur certains systèmes.</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>Redémarrez le programme pour appliquer le changement de langue.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>Redémarrez pour appliquer le changement de style d'interface.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Redémarrez pour appliquer le changement de police de l'interface.</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>Redémarrage nécessaire</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Activer</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Désactiver</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>Automatique</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Aucun</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation>Sélectionnez cette option si vous donnez&apos;ne voulez pas voir la barre d’onglets principale quand un seul onglet est
+                  ouvert.
+                 </translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation>Avec cette option, de nouveaux onglets sont ouverts juste après le
+courant, actif. Sinon, ils sont ajoutés à
+être les derniers.</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation>&amp;Style</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>Apparence</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Activer la police de l'interface</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Langue de l'interface</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Style d'affichage de l'article</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Style du module</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Style de l'interface</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2959,6 +3039,14 @@ the application.</source>
     <message>
       <source>Dark Reader Mode</source>
       <translation>Mode lecture sombre</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Aperçu de la police</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng est un logiciel de dictionnaire.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -2983,10 +3071,6 @@ the application.</source>
     <message>
       <source>Monospace Font</source>
       <translation>Police Monospace</translation>
-    </message>
-    <message>
-      <source>&amp;Popup</source>
-      <translation>Fenêtre de &amp;scan</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
@@ -3319,20 +3403,20 @@ téléchargement.</translation>
       <translation>Taille maximale de l&apos;historique :</translation>
     </message>
     <message>
-      <source>Save every</source>
-      <translation>Sauver toutes les</translation>
-    </message>
-    <message>
-      <source>minutes</source>
-      <translation>minutes</translation>
-    </message>
-    <message>
       <source>Favorites</source>
       <translation>Favoris</translation>
     </message>
     <message>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>Intervalle de sauvegarde des Favoris. Si défini à 0, les Favoris ne seront sauvegardés qu'à la sortie.</translation>
+    </message>
+    <message>
+      <source>Save every</source>
+      <translation>Sauver toutes les</translation>
+    </message>
+    <message>
+      <source>minutes</source>
+      <translation>minutes</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3431,124 +3515,16 @@ des dictionnaires Stardict, Babylon et GLS</translation>
       <translation>Supprimer l'index invalide à la sortie</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>Défaut (système)</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>Défaut</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>Classique</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>Moderne</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>Babylone</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>Lingoes</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>Lingoes-Bleu</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto ne fait rien sur certains systèmes.</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>Redémarrez le programme pour appliquer le changement de langue.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>Redémarrez pour appliquer le changement de style d'interface.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>Redémarrez pour appliquer le changement de police de l'interface.</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>Redémarrage nécessaire</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>Activer</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>Désactiver</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>Automatique</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Enregistrer les messages de débogage dans gd_log.txt dans le dossier de configuration</translation>
-    </message>
-    <message>
-      <source>Interface language</source>
-      <translation>Langue de l'interface</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>Style d'affichage de l'article</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>Style du module</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>Style de l'interface</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>Aperçu de la police</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation>GoldenDict-ng est un logiciel de dictionnaire.</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation>Activer la police de l'interface</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>Aucun</translation>
     </message>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Ouvrir le dictionnaire du site web dans un onglet séparé</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>Sélectionnez cette option si vous donnez&apos;ne voulez pas voir la barre d’onglets principale quand un seul onglet est
-                  ouvert.
-                 </translation>
+      <source>S&amp;can</source>
+      <translation>&amp;Scanner</translation>
     </message>
   </context>
   <context>
@@ -3702,6 +3678,50 @@ des dictionnaires Stardict, Babylon et GLS</translation>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
       <translation>Dans l’URL, &quot;%GDWORD%&quot; sera remplacé par le mot à rechercher.</translation>
     </message>
+    <message>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Complete Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Html simple (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>Document PDF (*.pdf *.PDF)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime Html (*.mhtml)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation>Enregistrer l'article sous</translation>
+    </message>
+    <message>
+      <source>Save article complete</source>
+      <translation>Enregistrement de l'article terminé</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>Erreur</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation>Peut&apos;t enregistrer l'article : %1</translation>
+    </message>
+    <message>
+      <source>Saving article...</source>
+      <translation>Enregistrement de l'article...</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>Enregistrer le PDF avec succès</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>Échec de l'enregistrement du PDF</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3798,6 +3818,10 @@ Erreur lors de l&apos;enregistrement de la ressource :</translation>
 could be resized or managed in other ways.</source>
       <translation>Utilisez ceci pour épingler la fenêtre afin qu'elle reste à l'écran,
 pourrait être redimensionnée ou gérée de toute autre manière.</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>Sauver l&apos;article</translation>
     </message>
   </context>
   <context>

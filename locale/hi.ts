@@ -778,6 +778,14 @@ between classic and school orthography in cyrillic)</source>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
       <translation type="unfinished">The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation type="unfinished">Change display name</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation type="unfinished">New display name:</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
@@ -2531,38 +2539,6 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
       <translation>Imprimer l&apos;article</translation>
     </message>
     <message>
-      <source>Complete Html (*.html *.htm)</source>
-      <translation>पूर्ण HTML (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Single Html (*.html *.htm)</source>
-      <translation>एकल HTML (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Mime Html (*.mhtml)</source>
-      <translation>माइम HTML (*.mhtml)</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>Enregister l&apos;article sous</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>Erreur</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>Impossible d&apos;enregistrer l&apos;article : %1</translation>
-    </message>
-    <message>
-      <source>Saving article...</source>
-      <translation>Sauvegarde de l&apos;article...</translation>
-    </message>
-    <message>
-      <source>Save article complete</source>
-      <translation>आलेख पूर्ण सहेजें</translation>
-    </message>
-    <message>
       <source>The main window is set to be always on top.</source>
       <translation>La fenêtre pricipale est configurée pour être toujours au premier plan.</translation>
     </message>
@@ -2653,18 +2629,6 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
     <message>
       <source>Show</source>
       <translation>दिखाना</translation>
-    </message>
-    <message>
-      <source>Save PDF complete</source>
-      <translation type="unfinished">Save PDF complete</translation>
-    </message>
-    <message>
-      <source>Save PDF failed</source>
-      <translation type="unfinished">Save PDF failed</translation>
-    </message>
-    <message>
-      <source>PDF document (*.pdf *.PDF)</source>
-      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Lock Panels</source>
@@ -2792,6 +2756,14 @@ Pour rechercher les symboles &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;
       <source>Dictionaries active: %1, inactive: %2</source>
       <translation>शब्दकोश सक्रिय: %1, निष्क्रिय: %2</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation type="unfinished">Change display name</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation type="unfinished">New display name:</translation>
+    </message>
   </context>
   <context>
     <name>PathsModel</name>
@@ -2831,12 +2803,6 @@ switching to them.</source>
     <message>
       <source>Open new tabs in background</source>
       <translation>पृष्ठभूमि में नए टैब खोलें</translation>
-    </message>
-    <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>इसके चालू होने पर, नया टैब वर्तमान सक्रिय टैब के ठीक बाद खोला जाता है अन्यथा उन्हें अंतिम में जोड़ा जाता है।</translation>
     </message>
     <message>
       <source>Open new tabs after the current one</source>
@@ -2934,8 +2900,124 @@ the application.</source>
       <translation>संदर्भ मेनू में शब्दकोशों की सीमा:</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>तंन्त्र औत्सर्गिक</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>औत्सर्गिक</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>क्लासिक</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>आधुनिक</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>लिंग्वो</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>बेबीलोन</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>लिंगोज</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>लिंगोज-नीला</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>कुछ प्रणालियों पर ऑटो कुछ भी नहीं करता।</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>भाषा परिवर्तन लागू करने के लिए प्रोग्राम को पुनरारंभ करें।</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>इंटरफ़ेस शैली परिवर्तन लागू करने के लिए पुनरारंभ करें।</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>इंटरफ़ेस फ़ॉन्ट परिवर्तन लागू करने के लिए पुनरारंभ करें।</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>पुनः प्रारंभ करने की आवश्यकता है</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>सक्षम</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>अक्षम करना</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>स्वचालित</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>कोई नही</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation type="unfinished">With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation type="unfinished">&amp;Style</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>उपस्थिति</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation type="unfinished">Enable Interface Font</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation type="unfinished">Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation type="unfinished">Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Interface language</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Article Display style</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Add-on style</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Interface Style</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2952,6 +3034,14 @@ the application.</source>
     <message>
       <source>Dark Reader Mode</source>
       <translation>डार्क रीडर मोड</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Preview Font</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -2976,10 +3066,6 @@ the application.</source>
     <message>
       <source>Monospace Font</source>
       <translation>मोनोस्पेस फ़ॉन्ट</translation>
-    </message>
-    <message>
-      <source>&amp;Popup</source>
-      <translation>&amp;स्कैन पॉपअप</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
@@ -3306,20 +3392,20 @@ download page.</source>
       <translation>अधिकतम इतिहास का आकार:</translation>
     </message>
     <message>
-      <source>Save every</source>
-      <translation>प्रत्येक सहेजें</translation>
-    </message>
-    <message>
-      <source>minutes</source>
-      <translation>मिनट</translation>
-    </message>
-    <message>
       <source>Favorites</source>
       <translation>पसंदीदा</translation>
     </message>
     <message>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>पसंदीदा रक्षण अंतराल। यदि 0 पर सेट किया जाता है तो पसंदीदा केवल निकास के समय रक्षण किया जाएगा।</translation>
+    </message>
+    <message>
+      <source>Save every</source>
+      <translation>प्रत्येक सहेजें</translation>
+    </message>
+    <message>
+      <source>minutes</source>
+      <translation>मिनट</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3417,124 +3503,16 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>बाहर निकलने पर अमान्य अनुक्रमणिका हटाएँ</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>तंन्त्र औत्सर्गिक</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>औत्सर्गिक</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>क्लासिक</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>आधुनिक</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>लिंग्वो</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>बेबीलोन</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>लिंगोज</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>लिंगोज-नीला</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>कुछ प्रणालियों पर ऑटो कुछ भी नहीं करता।</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>भाषा परिवर्तन लागू करने के लिए प्रोग्राम को पुनरारंभ करें।</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>इंटरफ़ेस शैली परिवर्तन लागू करने के लिए पुनरारंभ करें।</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>इंटरफ़ेस फ़ॉन्ट परिवर्तन लागू करने के लिए पुनरारंभ करें।</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>पुनः प्रारंभ करने की आवश्यकता है</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>सक्षम</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>अक्षम करना</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>स्वचालित</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Save debug messages to gd_log.txt in the config folder</translation>
-    </message>
-    <message>
-      <source>Interface language</source>
-      <translation>Interface language</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>Article Display style</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>Add-on style</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>Interface Style</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>Preview Font</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation type="unfinished">GoldenDict-ng is a dictionary software.</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation type="unfinished">Enable Interface Font</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation type="unfinished">Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation type="unfinished">Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>कोई नही</translation>
     </message>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
+      <source>S&amp;can</source>
+      <translation type="unfinished">S&amp;can</translation>
     </message>
   </context>
   <context>
@@ -3688,6 +3666,50 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
       <translation type="unfinished">In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</translation>
     </message>
+    <message>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Single Html (*.html *.htm)</source>
+      <translation type="unfinished">Single Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation type="unfinished">PDF document (*.pdf *.PDF)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation type="unfinished">Mime Html (*.mhtml)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation type="unfinished">Save Article As</translation>
+    </message>
+    <message>
+      <source>Save article complete</source>
+      <translation type="unfinished">Save article complete</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>त्रुटि</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation type="unfinished">Can&apos;t save article: %1</translation>
+    </message>
+    <message>
+      <source>Saving article...</source>
+      <translation type="unfinished">Saving article...</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation type="unfinished">Save PDF complete</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation type="unfinished">Save PDF failed</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3783,6 +3805,10 @@ from Stardict, Babylon and GLS dictionaries</source>
 could be resized or managed in other ways.</source>
       <translation>Use this to pin down the window so it would stay on screen,
 could be resized or managed in other ways.</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>Sauver l&apos;article</translation>
     </message>
   </context>
   <context>

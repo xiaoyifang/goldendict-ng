@@ -777,6 +777,14 @@ between classic and school orthography in cyrillic)</source>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
       <translation>字典已计划重新索引。索引将在下次应用程序重新编译时重新构建。</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation>更改显示名称</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>新显示名称：</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
@@ -2531,38 +2539,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>打印文章</translation>
     </message>
     <message>
-      <source>Complete Html (*.html *.htm)</source>
-      <translation>完整的 HTML (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Single Html (*.html *.htm)</source>
-      <translation>单个 HTML (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Mime Html (*.mhtml)</source>
-      <translation>Mime Html (*.mhtml)</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>文章另存为</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>错误</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>无法保存文章：%1</translation>
-    </message>
-    <message>
-      <source>Saving article...</source>
-      <translation>文章保存中……</translation>
-    </message>
-    <message>
-      <source>Save article complete</source>
-      <translation>文章保存完成</translation>
-    </message>
-    <message>
       <source>The main window is set to be always on top.</source>
       <translation>主窗口已设置为总在最前。</translation>
     </message>
@@ -2653,18 +2629,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Show</source>
       <translation>显示</translation>
-    </message>
-    <message>
-      <source>Save PDF complete</source>
-      <translation>保存 PDF 完成</translation>
-    </message>
-    <message>
-      <source>Save PDF failed</source>
-      <translation>保存 PDF 失败</translation>
-    </message>
-    <message>
-      <source>PDF document (*.pdf *.PDF)</source>
-      <translation>PDF 文档 (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Lock Panels</source>
@@ -2792,6 +2756,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Dictionaries active: %1, inactive: %2</source>
       <translation>激活的词典：%1，未激活的词典：%2</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation>更改显示名称</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>新显示名称：</translation>
+    </message>
   </context>
   <context>
     <name>PathsModel</name>
@@ -2832,13 +2804,6 @@ switching to them.</source>
     <message>
       <source>Open new tabs in background</source>
       <translation>在后台打开新标签页</translation>
-    </message>
-    <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>打开此选项，新标签页将会在当前页面后打开；不
-打开此选项，新标签页将会自动添加到末尾。</translation>
     </message>
     <message>
       <source>Open new tabs after the current one</source>
@@ -2933,8 +2898,122 @@ the application.</source>
       <translation>右键菜单词典数目限制：</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>系统默认</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>默认</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>经典</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>现代</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>Lingvo</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>巴比伦文</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>灵格斯</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>灵格斯-蓝色调</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>在某些系统上，自动不执行任何操作。</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>变更界面语言需要重新启动程序才能生效。</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>重启以应用界面风格更改。</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>重启以应用界面字体更改。</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>需要重启</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>启用</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>禁用</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>自动</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>无</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation>如果您不想在仅打开一个标签页时看到主标签页栏，请选择此选项。</translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation>开启后，新标签会在
+当前激活后打开。否则，它们会被添加到
+最后一个标签。</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation>样式</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>界面外观</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>启用接口字体</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>界面语言</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>文章显示样式</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>附加组件样式</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>界面风格</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2951,6 +3030,14 @@ the application.</source>
     <message>
       <source>Dark Reader Mode</source>
       <translation>深色阅读模式</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>预览字体</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng 是一个字典软件。</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -2975,10 +3062,6 @@ the application.</source>
     <message>
       <source>Monospace Font</source>
       <translation>等宽字体</translation>
-    </message>
-    <message>
-      <source>&amp;Popup</source>
-      <translation>屏幕取词(&amp;S)</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
@@ -3307,20 +3390,20 @@ download page.</source>
       <translation>最大历史条数：</translation>
     </message>
     <message>
-      <source>Save every</source>
-      <translation>保存周期：</translation>
-    </message>
-    <message>
-      <source>minutes</source>
-      <translation>分钟</translation>
-    </message>
-    <message>
       <source>Favorites</source>
       <translation>收藏</translation>
     </message>
     <message>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>收藏内容保存周期。若为 0 则只在程序退出时保存。</translation>
+    </message>
+    <message>
+      <source>Save every</source>
+      <translation>保存周期：</translation>
+    </message>
+    <message>
+      <source>minutes</source>
+      <translation>分钟</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3418,122 +3501,16 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>退出时删除无效索引</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>系统默认</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>默认</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>经典</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>现代</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>巴比伦文</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>灵格斯</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>灵格斯-蓝色调</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>在某些系统上，自动不执行任何操作。</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>变更界面语言需要重新启动程序才能生效。</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>重启以应用界面风格更改。</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>重启以应用界面字体更改。</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>需要重启</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>启用</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>禁用</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>自动</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>在配置文件夹中将调试消息保存到 gd_log.txt</translation>
-    </message>
-    <message>
-      <source>Interface language</source>
-      <translation>界面语言</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>文章显示样式</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>附加组件样式</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>界面风格</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>预览字体</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation>GoldenDict-ng 是一个字典软件。</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation>启用接口字体</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>无</translation>
     </message>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>在分隔符中打开网站词典</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>如果您不想在仅打开一个标签页时看到主标签页栏，请选择此选项。</translation>
+      <source>S&amp;can</source>
+      <translation>S&amp;can</translation>
     </message>
   </context>
   <context>
@@ -3687,6 +3664,50 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
       <translation>在 URL 中，"%GDWORD%" 将被替换为正在搜索的词。</translation>
     </message>
+    <message>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Complete Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>single Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF 文档 (*.pdf *.PDF)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime Html (*.mhtml)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation>文章另存为</translation>
+    </message>
+    <message>
+      <source>Save article complete</source>
+      <translation>文章保存完成</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>错误</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation>无法保存文章：%1</translation>
+    </message>
+    <message>
+      <source>Saving article...</source>
+      <translation>正在保存文章...</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>保存 PDF 完成</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>保存 PDF 失败</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3782,6 +3803,10 @@ from Stardict, Babylon and GLS dictionaries</source>
 could be resized or managed in other ways.</source>
       <translation>用它来固定窗口，使它保持在屏幕上，
 可以调整大小或以其他方式管理。</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>保存文章</translation>
     </message>
   </context>
   <context>

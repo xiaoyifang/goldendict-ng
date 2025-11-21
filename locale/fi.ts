@@ -779,6 +779,14 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
       <translation>Sanasto on tarkoitus indeksoida uudelleen. Indeksi rakennetaan uudelleen seuraavan sovelluksen uudelleenkäynnistyksen yhteydessä.</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Muuta näytön nimeä</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Uusi näytön nimi:</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
@@ -2532,38 +2540,6 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <translation>Tulosta artikkeli</translation>
     </message>
     <message>
-      <source>Complete Html (*.html *.htm)</source>
-      <translation>Täydellinen HTML (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Single Html (*.html *.htm)</source>
-      <translation>Yksittäinen HTML (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Mime Html (*.mhtml)</source>
-      <translation>Mime-HTML (*.mhtml)</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>Tallenna artikkeli nimellä</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>Virhe</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>Voi&apos;t tallentaa artikkeli: %1</translation>
-    </message>
-    <message>
-      <source>Saving article...</source>
-      <translation>Tallennetaan artikkelia...</translation>
-    </message>
-    <message>
-      <source>Save article complete</source>
-      <translation>Artikkelin tallennus valmis</translation>
-    </message>
-    <message>
       <source>The main window is set to be always on top.</source>
       <translation>Tärkein ikkuna on asetettu aina päälle.</translation>
     </message>
@@ -2654,18 +2630,6 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
     <message>
       <source>Show</source>
       <translation>Näytä</translation>
-    </message>
-    <message>
-      <source>Save PDF complete</source>
-      <translation>Tallennus PDF-muodossa valmis</translation>
-    </message>
-    <message>
-      <source>Save PDF failed</source>
-      <translation>PDF-tiedostojen tallennus epäonnistui</translation>
-    </message>
-    <message>
-      <source>PDF document (*.pdf *.PDF)</source>
-      <translation>PDF-asiakirja (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Lock Panels</source>
@@ -2793,6 +2757,14 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
       <source>Dictionaries active: %1, inactive: %2</source>
       <translation>Sanakirjat aktiivisia: %1, ei aktiivisia: %2</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Muuta näytön nimeä</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Uusi näytön nimi:</translation>
+    </message>
   </context>
   <context>
     <name>PathsModel</name>
@@ -2834,14 +2806,6 @@ vaihtamista niihin.</translation>
     <message>
       <source>Open new tabs in background</source>
       <translation>Avaa uudet välilehdet taustalla</translation>
-    </message>
-    <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>Tämän avulla avataan uudet välilehdet heti
-virtauksen jälkeen, aktiivinen välilehti. Muuten ne lisätään
-ovat viimeisiä.</translation>
     </message>
     <message>
       <source>Open new tabs after the current one</source>
@@ -2942,8 +2906,124 @@ sovellus.</translation>
       <translation>Kontekstivalikon sanakirjojen raja:</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>Järjestelmän oletus</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>Oletus</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>Klassinen</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>Moderni</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>Lingvo</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>Babylon</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>Lingot</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>Lingo-sininen</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>Auto ei tee mitään joissain järjestelmissä.</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>Ohjelma pitää käynnistää uudelleen jotta kieli voidaan vaihtaa.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>Käynnistä käyttöliittymän tyylin muutos uudelleen.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Käynnistä uudelleen ottaaksesi käyttöön käyttöliittymän kirjasimen muutokset.</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>Uudelleenkäynnistys tarvitaan</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Ota käyttöön</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Poista käytöstä</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>Automaattinen</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Tyhjä</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation>Tämän avulla uudet välilehdet avataan juuri
+-virran jälkeen. Muuten ne lisätään
+ovat viimeisiä.</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation>&amp;Tyyli</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>Ulkomuoto</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Ota Käyttöön Käyttöliittymän Kirjasin</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Käyttöliittymän kieli</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Artikkelin esitystyyli</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Lisäosan tyyli</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Käyttöliittymän Tyyli</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2960,6 +3040,14 @@ sovellus.</translation>
     <message>
       <source>Dark Reader Mode</source>
       <translation>Tumma Lukija -tila</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Esikatsele Kirjasinta</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng on sanakirja ohjelmisto.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -2984,10 +3072,6 @@ sovellus.</translation>
     <message>
       <source>Monospace Font</source>
       <translation>Monospace fontti</translation>
-    </message>
-    <message>
-      <source>&amp;Popup</source>
-      <translation>&amp;Kartoita Ponnahdusikkuna</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
@@ -3322,20 +3406,20 @@ lataussivun.</translation>
       <translation>Historian enimmäiskoko:</translation>
     </message>
     <message>
-      <source>Save every</source>
-      <translation>Tallenna joka</translation>
-    </message>
-    <message>
-      <source>minutes</source>
-      <translation>minuuttia</translation>
-    </message>
-    <message>
       <source>Favorites</source>
       <translation>Suosikit</translation>
     </message>
     <message>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>Suosikkien tallennusväli. Jos arvo on 0 Suosikkia, tallennetaan vain ulostulon aikana.</translation>
+    </message>
+    <message>
+      <source>Save every</source>
+      <translation>Tallenna joka</translation>
+    </message>
+    <message>
+      <source>minutes</source>
+      <translation>minuuttia</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3434,124 +3518,16 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <translation>Poista virheellinen indeksi poistuessasi</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>Järjestelmän oletus</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>Oletus</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>Klassinen</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>Moderni</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>Babylon</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>Lingot</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>Lingo-sininen</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>Auto ei tee mitään joissain järjestelmissä.</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>Ohjelma pitää käynnistää uudelleen jotta kieli voidaan vaihtaa.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>Käynnistä käyttöliittymän tyylin muutos uudelleen.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>Käynnistä uudelleen ottaaksesi käyttöön käyttöliittymän kirjasimen muutokset.</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>Uudelleenkäynnistys tarvitaan</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>Ota käyttöön</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>Poista käytöstä</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>Automaattinen</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Tallenna debug viestit gd_log.txt asetuskansioon</translation>
-    </message>
-    <message>
-      <source>Interface language</source>
-      <translation>Käyttöliittymän kieli</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>Artikkelin esitystyyli</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>Lisäosan tyyli</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>Käyttöliittymän Tyyli</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>Esikatsele Kirjasinta</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation>GoldenDict-ng on sanakirja ohjelmisto.</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation>Ota Käyttöön Käyttöliittymän Kirjasin</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>Tyhjä</translation>
     </message>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Avaa verkkosivuston sanakirja erillisessä välilehdessä</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
+      <source>S&amp;can</source>
+      <translation>S&amp;can</translation>
     </message>
   </context>
   <context>
@@ -3705,6 +3681,50 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
       <translation type="unfinished">In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</translation>
     </message>
+    <message>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Complete Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Yksittäinen Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF-asiakirja (*.pdf *.PDF)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime Html (*.mhtml)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation>Tallenna Artikkeli Nimellä</translation>
+    </message>
+    <message>
+      <source>Save article complete</source>
+      <translation>Tallenna artikkeli valmistui</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>Virhe</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation>Voi&apos;t tallentaa artikkeli: %1</translation>
+    </message>
+    <message>
+      <source>Saving article...</source>
+      <translation>Tallennetaan artikkelia...</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>Tallennus PDF-muodossa valmis</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>PDF-tiedostojen tallennus epäonnistui</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3800,6 +3820,10 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
 could be resized or managed in other ways.</source>
       <translation>Tämän avulla voit kiinnittää ikkunan alaspäin, jotta se pysyisi ruudulla,
 voidaan muuttaa tai hallita muulla tavoin.</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>Tallenna artikkeli</translation>
     </message>
   </context>
   <context>
