@@ -779,6 +779,14 @@ klassisk rättstavning och skolrättstavning i kyrillisk skrift)</translation>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
       <translation>Ordboken har schemalagts för omindexering. Indexet kommer att byggas om vid nästa omstart av programmet.</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Ändra visningsnamn</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Nytt visningsnamn:</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
@@ -2748,6 +2756,14 @@ För att hitta &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbol
     <message>
       <source>Dictionaries active: %1, inactive: %2</source>
       <translation>Ordlistor aktiva: % 1, inaktiva: % 2</translation>
+    </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Ändra visningsnamn</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Nytt visningsnamn:</translation>
     </message>
   </context>
   <context>
