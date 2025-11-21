@@ -40,6 +40,21 @@ std::u32string apply( const std::u32string & in, bool preserveWildcards )
   return caseFolded;
 }
 
+std::string applyForIndex( const QString & in )
+{
+  // remove diacritics (normalization)
+  auto temp = in.normalized( QString::NormalizationForm_KD ).remove( RX::accentMark ).toStdU32String();
+  // case folding
+  std::u32string caseFolded;
+  caseFolded.reserve( temp.size() );
+  char32_t buf[ foldCaseMaxOut ];
+  for ( const char32_t ch : temp ) {
+    auto n = foldCase( ch, buf );
+    caseFolded.append( buf, n );
+  }
+  return toUtf8( caseFolded );
+}
+
 std::u32string applySimpleCaseOnly( const std::u32string & in )
 {
   const char32_t * nextChar = in.data();
