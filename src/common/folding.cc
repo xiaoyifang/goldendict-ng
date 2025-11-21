@@ -52,7 +52,7 @@ std::string applyForIndex( const QString & in )
     auto n = foldCase( ch, buf );
     caseFolded.append( buf, n );
   }
-  return toUtf8( caseFolded );
+  return Text::toUtf8( caseFolded );
 }
 
 std::u32string applySimpleCaseOnly( const std::u32string & in )
