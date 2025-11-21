@@ -3058,10 +3058,6 @@ de laatste.</translation>
       <translation>Monospace-lettertype</translation>
     </message>
     <message>
-      <source>&amp;Popup</source>
-      <translation>Scan &amp;Popup</translation>
-    </message>
-    <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
       <translation>Hiermee kiest u of de klembordbewaking standaard wordt ingeschakeld bij het opstarten van het programma&apos;.</translation>
     </message>
@@ -3509,6 +3505,10 @@ van Stardict, Babylon en GLS woordenboeken</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Open het website-woordenboek in apart tabblad</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation>&amp;Kan</translation>
     </message>
   </context>
   <context>
