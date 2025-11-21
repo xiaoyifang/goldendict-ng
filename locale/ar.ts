@@ -778,6 +778,14 @@ between classic and school orthography in cyrillic)</source>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
       <translation>تم جدولة القاموس لإعادة تكسيسه. سيتم إعادة بناء الفهرس على إعادة تشغيل التطبيق التالي.</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation>تغيير اسم العرض</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>اسم العرض الجديد:</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
@@ -2747,6 +2755,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Dictionaries active: %1, inactive: %2</source>
       <translation>قواميس نشطة: %1، غير نشطة: %2</translation>
+    </message>
+    <message>
+      <source>Change display name</source>
+      <translation>تغيير اسم العرض</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>اسم العرض الجديد:</translation>
     </message>
   </context>
   <context>
