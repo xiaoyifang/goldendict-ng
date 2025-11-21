@@ -781,6 +781,14 @@ between classic and school orthography in cyrillic)</source>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
       <translation>Το λεξικό έχει προγραμματιστεί για την επαναδημιουργία ευρετηρίου. Το ευρετήριο θα ανακατασκευαστεί στην επόμενη επανεκκίνηση της εφαρμογής.</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Αλλαγή ονόματος εμφάνισης</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Νέο όνομα προβολής:</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
@@ -2750,6 +2758,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Dictionaries active: %1, inactive: %2</source>
       <translation>Ενεργά λεξικά: %1, ανενεργό: %2</translation>
+    </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Αλλαγή ονόματος εμφάνισης</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Νέο όνομα προβολής:</translation>
     </message>
   </context>
   <context>
