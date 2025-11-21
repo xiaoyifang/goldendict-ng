@@ -16,5 +16,6 @@
         <file>qt-modern.css</file>
         <file>qt-style-win.css</file>
         <file>article-style-darkmode.css</file>
+        <file>qt-common.css</file>
     </qresource>
 </RCC>
