@@ -238,8 +238,8 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
       Metadata::saveDisplayName( Utils::Path::combine( pDict->getContainingFolder(), "metadata.toml" ).toStdString(),
                                  newName.toStdString() );
       pDict->setName( newName.toStdString() );
-      const_cast< QAction * >( dictAction )->setText( elideDictName( newName ) );
-      const_cast< QAction * >( dictAction )->setToolTip( newName );
+      dictAction->setText( elideDictName( newName ) );
+      dictAction->setToolTip( newName );
     }
   }
 
