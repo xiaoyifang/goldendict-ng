@@ -3057,10 +3057,6 @@ be the last ones.</translation>
       <translation>모노스페이스 글꼴</translation>
     </message>
     <message>
-      <source>&amp;Popup</source>
-      <translation>스캔팝업(&amp;S)</translation>
-    </message>
-    <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
       <translation>프로그램을 시작할 때 클립보드 모니터링을 기본적으로 켤지 여부를 선택합니다.</translation>
     </message>
@@ -3509,6 +3505,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation type="unfinished">S&amp;can</translation>
     </message>
   </context>
   <context>
