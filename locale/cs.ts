@@ -779,6 +779,14 @@ a školní ortografií v cyrilici)</translation>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
       <translation>Pro reindexaci byl naplánován slovník. Index bude rekonstruován na příštím restartu aplikace.</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Změnit zobrazovaný název</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Nové zobrazovací jméno:</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
@@ -2748,6 +2756,14 @@ Pro zjištění &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbo
     <message>
       <source>Dictionaries active: %1, inactive: %2</source>
       <translation>Aktivní slovníky: %1, neaktivní: %2</translation>
+    </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Změnit zobrazovaný název</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Nové zobrazovací jméno:</translation>
     </message>
   </context>
   <context>
