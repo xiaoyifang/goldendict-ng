@@ -3059,10 +3059,6 @@ be the last ones.</translation>
       <translation>Моноспаце Фонт</translation>
     </message>
     <message>
-      <source>&amp;Popup</source>
-      <translation>&amp;Искачући прозор</translation>
-    </message>
-    <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
       <translation>Бира да ли ће праћење међуспремника бити укључено подразумевано при покретању програма&apos;.</translation>
     </message>
@@ -3514,6 +3510,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation type="unfinished">S&amp;can</translation>
     </message>
   </context>
   <context>
