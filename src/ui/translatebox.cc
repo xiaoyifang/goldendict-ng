@@ -23,7 +23,7 @@ TranslateBox::TranslateBox( QWidget * parent ):
 
   setFocusProxy( translate_line );
   translate_line->setObjectName( "translateLine" );
-  translate_line->setStyleSheet( "QLineEdit { margin: 0px; padding: 0px; }" );
+  translate_line->setTextMargins( 0, 0, 0, 0 );
   translate_line->setPlaceholderText( tr( "Type a word or phrase to search dictionaries" ) );
 
   auto layout = new QHBoxLayout( this );
@@ -68,7 +68,7 @@ void TranslateBox::setSizePolicy( QSizePolicy policy )
 {
   QWidget::setSizePolicy( policy );
   if ( translate_line ) {
-    translate_line->setSizePolicy( policy );
+    translate_line->setSizePolicy( policy.horizontalPolicy(), QSizePolicy::Fixed );
   }
 }
 
