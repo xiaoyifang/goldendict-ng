@@ -779,6 +779,14 @@ traditionele en hedendaagse spelling in het cyrillisch)</translation>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
       <translation>Het woordenboek is gepland voor herindexering. De index wordt opnieuw opgebouwd bij de volgende applicatie.</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Weergavenaam wijzigen</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Nieuwe weergavenaam</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
@@ -2748,6 +2756,14 @@ Om &apos;*&apos;te vinden, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbolen 
     <message>
       <source>Dictionaries active: %1, inactive: %2</source>
       <translation>Actieve woordenboeken: %1, inactief: %2</translation>
+    </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Weergavenaam wijzigen</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Nieuwe weergavenaam</translation>
     </message>
   </context>
   <context>
