@@ -3053,10 +3053,6 @@ be the last ones.</translation>
       <translation>Fonti Monospace</translation>
     </message>
     <message>
-      <source>&amp;Popup</source>
-      <translation>&amp;Skanimi i jashtëm</translation>
-    </message>
-    <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
       <translation>Zgjedh nëse monitorimi i kujtesës së fragmenteve do të aktivizohet si parazgjedhje në nisjen e programit&apos;.</translation>
     </message>
@@ -3505,6 +3501,10 @@ nga fjalorët Stardict, Babylon dhe GLS</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation type="unfinished">S&amp;can</translation>
     </message>
   </context>
   <context>
