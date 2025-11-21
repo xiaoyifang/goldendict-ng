@@ -3058,10 +3058,6 @@ ovat viimeisiä.</translation>
       <translation>Monospace fontti</translation>
     </message>
     <message>
-      <source>&amp;Popup</source>
-      <translation>&amp;Kartoita Ponnahdusikkuna</translation>
-    </message>
-    <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
       <translation>Valitsee, otetaanko leikepöydän valvonta oletusarvoisesti käyttöön ohjelman&apos;käynnistyessä.</translation>
     </message>
@@ -3512,6 +3508,10 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Avaa verkkosivuston sanakirja erillisessä välilehdessä</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation>S&amp;can</translation>
     </message>
   </context>
   <context>
