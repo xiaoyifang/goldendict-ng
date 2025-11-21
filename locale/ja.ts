@@ -778,6 +778,14 @@ between classic and school orthography in cyrillic)</source>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
       <translation>辞書の再インデックスがスケジュールされています。インデックスは次のアプリケーションの再起動時に再構築されます。</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation>表示名の変更</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>新しい表示名:</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
@@ -2747,6 +2755,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Dictionaries active: %1, inactive: %2</source>
       <translation>辞書はアクティブ: %1, 非アクティブ: %2</translation>
+    </message>
+    <message>
+      <source>Change display name</source>
+      <translation>表示名の変更</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>新しい表示名:</translation>
     </message>
   </context>
   <context>
