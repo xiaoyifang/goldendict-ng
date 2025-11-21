@@ -3057,10 +3057,6 @@ jako ostatnie.</translation>
       <translation>Czcionka o stałej szerokości</translation>
     </message>
     <message>
-      <source>&amp;Popup</source>
-      <translation>&amp;Skanowanie automatyczne</translation>
-    </message>
-    <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
       <translation>Wybiera, czy monitorowanie schowka będzie domyślnie włączone po uruchomieniu programu.</translation>
     </message>
@@ -3512,6 +3508,10 @@ ze słowników Stardict, Babylon i GLS</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Otwórz słownik strony w osobnej karcie</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation>&amp;Skanuj</translation>
     </message>
   </context>
   <context>
