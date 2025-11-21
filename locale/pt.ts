@@ -779,6 +779,14 @@ entre ortografia clássica e escolar em ciílico)</translation>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
       <translation>O dicionário foi agendado para reindexação. O índice será reconstruído na próxima reinicialização do aplicativo.</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Alterar nome de exibição</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Novo nome de exibição:</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
@@ -2748,6 +2756,14 @@ Para encontrar &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; símbo
     <message>
       <source>Dictionaries active: %1, inactive: %2</source>
       <translation>Dicionários ativos: %1, inativo: %2</translation>
+    </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Alterar nome de exibição</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Novo nome de exibição:</translation>
     </message>
   </context>
   <context>
