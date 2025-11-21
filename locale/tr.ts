@@ -3056,10 +3056,6 @@ be the last ones.</translation>
       <translation>Tek Aralıklı Yazı Tipi</translation>
     </message>
     <message>
-      <source>&amp;Popup</source>
-      <translation>&amp;Ekranda Kelime Yakala</translation>
-    </message>
-    <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
       <translation>Program&apos;başlatıldığında pano izleme özelliğinin varsayılan olarak açılıp açılmayacağını seçer.</translation>
     </message>
@@ -3508,6 +3504,10 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation type="unfinished">S&amp;can</translation>
     </message>
   </context>
   <context>
