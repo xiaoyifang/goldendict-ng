@@ -779,6 +779,14 @@ klassisen ja kouluortografian välillä kyrillisessä)</translation>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
       <translation>Sanasto on tarkoitus indeksoida uudelleen. Indeksi rakennetaan uudelleen seuraavan sovelluksen uudelleenkäynnistyksen yhteydessä.</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Muuta näytön nimeä</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Uusi näytön nimi:</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
@@ -2748,6 +2756,14 @@ Löytääksesi &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; tunnus
     <message>
       <source>Dictionaries active: %1, inactive: %2</source>
       <translation>Sanakirjat aktiivisia: %1, ei aktiivisia: %2</translation>
+    </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Muuta näytön nimeä</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Uusi näytön nimi:</translation>
     </message>
   </context>
   <context>
