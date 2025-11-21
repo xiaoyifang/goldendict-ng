@@ -143,8 +143,8 @@ void DictionaryBar::showContextMenu( QContextMenuEvent * event, bool extended )
   const QAction * infoAction            = nullptr;
   const QAction * headwordsAction       = nullptr;
   Dictionary::Class * pDict             = nullptr;
-  QAction * changeNameAction            = nullptr;
-  const QAction * openDictFolderAction = nullptr;
+  const QAction * changeNameAction      = nullptr;
+  const QAction * openDictFolderAction  = nullptr;
   const QAction * scheduleReindexAction = nullptr;
 
   editAction = menu.addAction( QIcon( ":/icons/bookcase.svg" ), tr( "Edit this group" ) );
