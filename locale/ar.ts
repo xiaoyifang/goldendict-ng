@@ -3057,10 +3057,6 @@ be the last ones.</source>
       <translation>الخط الأحادي الفضاء</translation>
     </message>
     <message>
-      <source>&amp;Popup</source>
-      <translation>منبثقة الا&amp;ستكشاف</translation>
-    </message>
-    <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
       <translation>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</translation>
     </message>
@@ -3510,6 +3506,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>فتح قاموس الموقع في علامة تبويب منفصلة</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation>امسح</translation>
     </message>
   </context>
   <context>
