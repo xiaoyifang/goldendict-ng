@@ -3057,10 +3057,6 @@ ser las últimas.</translation>
       <translation>Fuente monoespaciada</translation>
     </message>
     <message>
-      <source>&amp;Popup</source>
-      <translation>&amp;Ventana emergente de búsqueda</translation>
-    </message>
-    <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
       <translation>Selecciona si la monitorización del portapapeles se activará por defecto en el inicio del programa&apos;s.</translation>
     </message>
@@ -3510,6 +3506,10 @@ de diccionarios Stardict, Babylon y GLS</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Abrir diccionario de sitio web en pestaña separada</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation>&amp;Escanear</translation>
     </message>
   </context>
   <context>
