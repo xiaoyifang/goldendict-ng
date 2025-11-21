@@ -193,7 +193,7 @@ void FTSResultsRequest::run()
       // Combine the rest of the command line arguments with spaces between
       // them, so that simple queries don't have to be quoted at the shell
       // level.
-      string query_string( Folding::applyForIndex(searchString) );
+      string query_string( Folding::applyForIndex( searchString ) );
 
       // Parse the query string to produce a Xapian::Query object.
       Xapian::QueryParser qp;
