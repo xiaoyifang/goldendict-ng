@@ -777,6 +777,14 @@ between classic and school orthography in cyrillic)</source>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
       <translation>已安排對字典進行重新索引。下次應用程式重新啟動時將重建索引。</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation type="unfinished">Change display name</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation type="unfinished">New display name:</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
@@ -2747,6 +2755,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Dictionaries active: %1, inactive: %2</source>
       <translation>字典已啟用：%1，未啟用：%2</translation>
+    </message>
+    <message>
+      <source>Change display name</source>
+      <translation type="unfinished">Change display name</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation type="unfinished">New display name:</translation>
     </message>
   </context>
   <context>
