@@ -3058,10 +3058,6 @@ be the last ones.</translation>
       <translation>Монопространствен шрифт</translation>
     </message>
     <message>
-      <source>&amp;Popup</source>
-      <translation>&amp;Изскачащ прозорец</translation>
-    </message>
-    <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
       <translation>Избира дали наблюдението на клипборда да бъде включено по подразбиране при стартиране на програмата&apos;.</translation>
     </message>
@@ -3511,6 +3507,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation type="unfinished">S&amp;can</translation>
     </message>
   </context>
   <context>
