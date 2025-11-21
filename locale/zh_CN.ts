@@ -3048,10 +3048,6 @@ be the last ones.</source>
       <translation>等宽字体</translation>
     </message>
     <message>
-      <source>&amp;Popup</source>
-      <translation>屏幕取词(&amp;S)</translation>
-    </message>
-    <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
       <translation>选择在程序&apos;启动时是否默认打开剪贴板监视。</translation>
     </message>
@@ -3495,6 +3491,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>在分隔符中打开网站词典</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation>S&amp;can</translation>
     </message>
   </context>
   <context>
