@@ -3059,10 +3059,6 @@ be the last ones.</source>
       <translation>Γραμματοσειρά Monospace</translation>
     </message>
     <message>
-      <source>&amp;Popup</source>
-      <translation>Ανα&amp;δυόμενο παράθυρο</translation>
-    </message>
-    <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
       <translation>Επιλέγει εάν η παρακολούθηση του προχείρου θα ενεργοποιείται από προεπιλογή κατά την εκκίνηση του προγράμματος&apos;.</translation>
     </message>
@@ -3513,6 +3509,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Άνοιγμα λεξικού ιστοσελίδας σε διαχωριστική καρτέλα</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation>Σ&amp;άρωση</translation>
     </message>
   </context>
   <context>
