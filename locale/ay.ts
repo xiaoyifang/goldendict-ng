@@ -3133,10 +3133,6 @@ be the last ones.</translation>
       <translation>Monoespacio ukax Fuente ukawa</translation>
     </message>
     <message>
-      <source>&amp;Popup</source>
-      <translation>&amp;Uñstir wintanampi ullaña</translation>
-    </message>
-    <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
       <translation>Ajlliñawa, portapapeles uñakipañaxa wakichawi&apos;s qalltawipanxa nayraqata uñakipatawa.</translation>
     </message>
@@ -3621,6 +3617,10 @@ Activar esta opción para realizar búsquedas adicionales con listas de sinónim
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation type="unfinished">S&amp;can</translation>
     </message>
   </context>
   <context>
