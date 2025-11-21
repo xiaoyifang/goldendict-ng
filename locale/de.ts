@@ -779,6 +779,14 @@ between classic and school orthography in cyrillic)</source>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
       <translation>Das Wörterbuch wurde für die Neuindizierung geplant. Der Index wird beim nächsten Anwendungs-Neustart neu aufgebaut.</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Anzeigename ändern</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Neuer Anzeigename:</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
@@ -2748,6 +2756,14 @@ Um &apos;*&apos;, &apos;zu finden?&apos;, &apos;[&apos;, &apos;]&apos; Symbole v
     <message>
       <source>Dictionaries active: %1, inactive: %2</source>
       <translation>Wörterbücher aktiv: %1, inaktiv: %2</translation>
+    </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Anzeigename ändern</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Neuer Anzeigename:</translation>
     </message>
   </context>
   <context>
