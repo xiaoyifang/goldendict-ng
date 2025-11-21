@@ -3055,10 +3055,6 @@ be the last ones.</source>
       <translation>等幅フォント</translation>
     </message>
     <message>
-      <source>&amp;Popup</source>
-      <translation>スキャン ポップアップ(&amp;S)</translation>
-    </message>
-    <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
       <translation>プログラム&apos;の起動時にクリップボードのモニタリングがデフォルトでオンになるかどうかを選択します。</translation>
     </message>
@@ -3508,6 +3504,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>別タブでウェブサイト辞書を開く</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation>缶(&amp;C)</translation>
     </message>
   </context>
   <context>
