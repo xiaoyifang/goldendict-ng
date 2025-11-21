@@ -12,7 +12,6 @@ QTabBar::close-button:hover {
 #groupListToolbar::drop-down {
   border: 0px;
   background: transparent;
-  width: 20px;
 }
 
 #groupListToolbar::down-arrow {
