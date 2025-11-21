@@ -778,6 +778,14 @@ between classic and school orthography in cyrillic)</source>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
       <translation>Цей словник заплановано до переіндексації. Індекс буде перебудований при наступному перезапуску програми.</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Змінити відображуване ім'я</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Нове ім'я для відображення:</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
@@ -2748,6 +2756,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Dictionaries active: %1, inactive: %2</source>
       <translation>Словники активні: %1, неактивний: %2</translation>
+    </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Змінити відображуване ім'я</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Нове ім'я для відображення:</translation>
     </message>
   </context>
   <context>
