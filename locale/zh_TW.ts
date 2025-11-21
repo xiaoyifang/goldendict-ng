@@ -3050,10 +3050,6 @@ be the last ones.</translation>
       <translation>等寬字體</translation>
     </message>
     <message>
-      <source>&amp;Popup</source>
-      <translation>螢幕取詞(&amp;S)</translation>
-    </message>
-    <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
       <translation>選擇程式&apos;啟動時是否預設開啟剪貼簿監控。</translation>
     </message>
@@ -3500,6 +3496,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>在另開的標籤頁中打開網站字典</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation type="unfinished">S&amp;can</translation>
     </message>
   </context>
   <context>
