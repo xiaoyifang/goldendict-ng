@@ -3062,10 +3062,6 @@ be the last ones.</translation>
       <translation>Моноширинный шрифт</translation>
     </message>
     <message>
-      <source>&amp;Popup</source>
-      <translation>&amp;Всплывающее окно</translation>
-    </message>
-    <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
       <translation>Выбирает, будет ли мониторинг буфера обмена включен по умолчанию при запуске программы&apos;.</translation>
     </message>
@@ -3517,6 +3513,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Открыть словарь сайта в отдельной вкладке</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation>&amp;Сканировать</translation>
     </message>
   </context>
   <context>
