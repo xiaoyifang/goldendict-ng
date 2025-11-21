@@ -3057,10 +3057,6 @@ jako poslední.</translation>
       <translation>Jednoprostorové písmo</translation>
     </message>
     <message>
-      <source>&amp;Popup</source>
-      <translation>Vy&amp;skakovací okno</translation>
-    </message>
-    <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
       <translation>Určuje, zda bude při startu programu&apos;standardně zapnuto sledování schránky.</translation>
     </message>
@@ -3510,6 +3506,10 @@ ze Stardict, Babylon a GLS slovníků</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Otevřít webový slovník v samostatné záložce</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation>&amp;Skenovat</translation>
     </message>
   </context>
   <context>
