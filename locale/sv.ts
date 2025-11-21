@@ -3057,10 +3057,6 @@ vara de sista.</translation>
       <translation>Monospace teckensnitt</translation>
     </message>
     <message>
-      <source>&amp;Popup</source>
-      <translation>&amp;Sökpopupruta</translation>
-    </message>
-    <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
       <translation>Väljer om urklippsövervakningen ska aktiveras som standard vid uppstart av programmet&apos;.</translation>
     </message>
@@ -3514,6 +3510,10 @@ från Stardict, Babylon och GLS ordböcker</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Öppna webbplatsordbok i separat flik</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation>&amp;Skanna</translation>
     </message>
   </context>
   <context>
