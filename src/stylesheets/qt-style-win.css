@@ -17,6 +17,7 @@ QTabBar::close-button:hover {
 
 #groupListToolbar::down-arrow {
   image: url(:/icons/1downarrow.svg);
-  width: 12px;
-  height: 12px;
+  width: 16px;
+  height: 16px;
 }
+
