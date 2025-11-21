@@ -3055,10 +3055,6 @@ be the last ones.</translation>
       <translation>Phông chữ đơn cách</translation>
     </message>
     <message>
-      <source>&amp;Popup</source>
-      <translation>&amp;Quét Popup</translation>
-    </message>
-    <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
       <translation>Chọn xem tính năng giám sát clipboard có được bật mặc định khi chương trình khởi động hay không.</translation>
     </message>
@@ -3505,6 +3501,10 @@ từ các từ điển Stardict, Babylon và GLS</translation>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation type="unfinished">S&amp;can</translation>
     </message>
   </context>
   <context>
