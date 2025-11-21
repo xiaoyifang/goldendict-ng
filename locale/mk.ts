@@ -3059,10 +3059,6 @@ be the last ones.</translation>
       <translation>Моноспејс фонт</translation>
     </message>
     <message>
-      <source>&amp;Popup</source>
-      <translation>&amp;Скан попап </translation>
-    </message>
-    <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
       <translation>Избира дали следењето на таблата со исечоци ќе биде стандардно вклучено при стартување на програмата&apos;.</translation>
     </message>
@@ -3514,6 +3510,10 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation type="unfinished">Open website dictionary in seperate tab</translation>
+    </message>
+    <message>
+      <source>S&amp;can</source>
+      <translation type="unfinished">S&amp;can</translation>
     </message>
   </context>
   <context>
