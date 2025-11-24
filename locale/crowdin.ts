@@ -3354,18 +3354,6 @@ download page.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Save every</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>minutes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Turn this option on to confirm every operation of items deletion</source>
         <translation type="unfinished"></translation>
     </message>
