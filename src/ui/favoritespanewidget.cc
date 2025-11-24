@@ -595,17 +595,26 @@ FavoritesModel::FavoritesModel( QString favoritesFilename, QObject * parent ):
       if ( op.first == FavoritesWAL::Add ) {
         QStringList path = op.second.toStringList();
         if ( !path.isEmpty() ) {
-          QString word = path.last();
-          path.removeLast();
-
-          // Navigate to parent folder
+          // Check if this item already exists (could be a folder created by forceFolder)
+          TreeItem * existingItem = getItemByFullPath( path );
+          if ( existingItem ) {
+            // Item already exists, skip
+            continue;
+          }
+          
+          QString itemName = path.last();
+          QStringList parentPath = path;
+          parentPath.removeLast();
+          
+          // Navigate to parent folder (creates folders if needed)
           QModelIndex parentIdx = QModelIndex();
-          for ( const QString & folderName : path ) {
+          for ( const QString & folderName : parentPath ) {
             parentIdx = forceFolder( folderName, parentIdx );
           }
-
-          // Add word
-          addHeadword( word, parentIdx );
+          
+          // Try to add as word (if it's a folder, it would have been created by forceFolder)
+          // If the item name matches a folder that was just created, this will fail gracefully
+          addHeadword( itemName, parentIdx );
         }
       }
       else if ( op.first == FavoritesWAL::Remove ) {
@@ -729,6 +738,17 @@ int FavoritesModel::columnCount( const QModelIndex & ) const
 bool FavoritesModel::removeRows( int row, int count, const QModelIndex & parent )
 {
   TreeItem * parentItem = getItem( parent );
+
+  // Log to WAL before removing
+  if ( m_wal ) {
+    for ( int i = 0; i < count; i++ ) {
+      TreeItem * childItem = parentItem->child( row + i );
+      if ( childItem ) {
+        QStringList fullPath = childItem->fullPath();
+        m_wal->logRemove( fullPath );
+      }
+    }
+  }
 
   beginRemoveRows( parent, row, row + count - 1 );
 
@@ -1213,6 +1233,12 @@ QModelIndex FavoritesModel::addNewFolder( const QModelIndex & idx )
   TreeItem * newFolder = new TreeItem( name, parentItem, TreeItem::Folder );
   parentItem->insertChild( row, newFolder );
   endInsertRows();
+
+  // Log to WAL
+  if ( m_wal ) {
+    QStringList fullPath = newFolder->fullPath();
+    m_wal->logAdd( fullPath );
+  }
 
   dirty = true;
 

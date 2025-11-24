@@ -59,6 +59,7 @@ nav:
     - Start develop: developer.md
     - Build from source: howto/build_from_source.md
     - Architecture: architecture.md
+    - Favorites WAL Format: favorites_wal.md
     - Customize the opencc: howto/how to customize the opencc.md
     - Breadpad crash analysis: howto/how to use breadpad crash analysis.md
     - Update the crowdin.ts file: howto/how to update crowdin.ts file.md
