@@ -284,18 +284,6 @@
       <translation>创建 Anki 笔记(&amp;C)</translation>
     </message>
     <message>
-      <source>Error Loading</source>
-      <translation>加载错误</translation>
-    </message>
-    <message>
-      <source>Page Load Failed</source>
-      <translation>页面加载失败</translation>
-    </message>
-    <message>
-      <source>Unable to load the requested page content</source>
-      <translation>无法加载请求的页面内容</translation>
-    </message>
-    <message>
       <source>&amp;Copy sound to clipboard</source>
       <translation>&amp;复制声音到剪贴板</translation>
     </message>
@@ -3511,6 +3499,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>S&amp;can</source>
       <translation>S&amp;can</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
+      <translation>在文章视图中禁用 JavaScript 警示、确认和提示。</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript dialogs</source>
+      <translation>禁用 JavaScript 对话框</translation>
     </message>
   </context>
   <context>
