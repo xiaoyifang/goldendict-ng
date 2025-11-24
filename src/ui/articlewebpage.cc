@@ -81,7 +81,10 @@ bool ArticleWebPage::javaScriptPrompt( const QUrl & securityOrigin,
   return false;
 }
 
-void ArticleWebPage::javaScriptConsoleMessage( JavaScriptConsoleMessageLevel level, const QString & message, int lineNumber, const QString & sourceID )
+void ArticleWebPage::javaScriptConsoleMessage( JavaScriptConsoleMessageLevel level,
+                                               const QString & message,
+                                               int lineNumber,
+                                               const QString & sourceID )
 {
   if ( GlobalBroadcaster::instance()->getPreference()->suppressWebDialogs ) {
     // If we are suppressing dialogs, we might also want to be less noisy about console errors,
