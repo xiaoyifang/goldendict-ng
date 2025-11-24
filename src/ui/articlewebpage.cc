@@ -86,12 +86,7 @@ void ArticleWebPage::javaScriptConsoleMessage( JavaScriptConsoleMessageLevel lev
                                                int lineNumber,
                                                const QString & sourceID )
 {
-  if ( GlobalBroadcaster::instance()->getPreference()->suppressWebDialogs ) {
-    // If we are suppressing dialogs, we might also want to be less noisy about console errors,
-    // or maybe we just want to downgrade them to debug.
-    // For now, let's just log them as debug to avoid "Critical" in the log file.
-  }
-
+  // Default javascript errors will be logged as critical in gd_log.txt. For now, let's just log them as debug to avoid "Critical" in the log file.
   QString levelStr;
   switch ( level ) {
     case InfoMessageLevel:

@@ -18,14 +18,14 @@ signals:
   void linkClicked( const QUrl & url );
 
 protected:
-  virtual bool acceptNavigationRequest( const QUrl & url, NavigationType type, bool isMainFrame ) override;
-  virtual void javaScriptAlert( const QUrl & securityOrigin, const QString & msg ) override;
-  virtual bool javaScriptConfirm( const QUrl & securityOrigin, const QString & msg ) override;
-  virtual bool javaScriptPrompt( const QUrl & securityOrigin,
+  bool acceptNavigationRequest( const QUrl & url, NavigationType type, bool isMainFrame ) override;
+  void javaScriptAlert( const QUrl & securityOrigin, const QString & msg ) override;
+  bool javaScriptConfirm( const QUrl & securityOrigin, const QString & msg ) override;
+  bool javaScriptPrompt( const QUrl & securityOrigin,
                                  const QString & msg,
                                  const QString & defaultValue,
                                  QString * result ) override;
-  virtual void javaScriptConsoleMessage( JavaScriptConsoleMessageLevel level,
+  void javaScriptConsoleMessage( JavaScriptConsoleMessageLevel level,
                                          const QString & message,
                                          int lineNumber,
                                          const QString & sourceID ) override;
