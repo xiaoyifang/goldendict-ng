@@ -284,18 +284,6 @@
       <translation>&amp;Створити примітку</translation>
     </message>
     <message>
-      <source>Error Loading</source>
-      <translation>Помилка під час завантаження</translation>
-    </message>
-    <message>
-      <source>Page Load Failed</source>
-      <translation>Помилка завантаження сторінки</translation>
-    </message>
-    <message>
-      <source>Unable to load the requested page content</source>
-      <translation>Не вдається завантажити вміст запитаної сторінки</translation>
-    </message>
-    <message>
       <source>&amp;Copy sound to clipboard</source>
       <translation>&amp;Копіювати звук в буфер обміну</translation>
     </message>
@@ -3526,6 +3514,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>S&amp;can</source>
       <translation>С&amp;творити</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
+      <translation>Ігнорувати попередження JavaScript, підтвердження, та запити у поданні статті.</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript dialogs</source>
+      <translation>Ігнорувати діалогові вікна JavaScript</translation>
     </message>
   </context>
   <context>
