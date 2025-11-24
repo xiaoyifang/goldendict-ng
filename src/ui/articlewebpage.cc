@@ -81,10 +81,4 @@ bool ArticleWebPage::javaScriptPrompt( const QUrl & securityOrigin,
   return false;
 }
 
-void ArticleWebPage::javaScriptConsoleMessage( JavaScriptConsoleMessageLevel,
-                                               const QString &,
-                                               int,
-                                               const QString & )
-{
-
-}
+void ArticleWebPage::javaScriptConsoleMessage( JavaScriptConsoleMessageLevel, const QString &, int, const QString & ) {}
