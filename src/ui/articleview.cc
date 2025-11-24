@@ -439,8 +439,6 @@ void ArticleView::loadFinished( bool result )
   webview->unsetCursor();
   if ( !result ) {
     qWarning() << "article loaded unsuccessful:" << webview->url().toString();
-
-
     return;
   }
   QUrl url = webview->url();
