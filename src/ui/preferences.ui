@@ -1430,7 +1430,7 @@ download page.</string>
           <string>Suppress JavaScript dialogs</string>
          </property>
         </widget>
-        </item>
+       </item>
        <item>
         <spacer name="verticalSpacer_3">
          <property name="orientation">
