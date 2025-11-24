@@ -61,7 +61,7 @@ struct FtsHeadword
 class Indexing: public QObject, public QRunnable
 {
   Q_OBJECT
-  
+
   QAtomicInt & isCancelled;
   const std::vector< sptr< Dictionary::Class > > & dictionaries;
   QSemaphore & hasExited;
