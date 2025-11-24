@@ -624,7 +624,7 @@ FavoritesModel::FavoritesModel( QString favoritesFilename, QObject * parent ):
           if ( item && item->parent() ) {
             QModelIndex itemIdx = getModelIndexByFullPath( path );
             if ( itemIdx.isValid() ) {
-              removeRows( itemIdx.row(), 1, QAbstractItemModel::parent( itemIdx ) );
+              removeRows( itemIdx.row(), 1, FavoritesModel::parent( itemIdx ) );
             }
           }
         }
@@ -641,7 +641,7 @@ FavoritesModel::FavoritesModel( QString favoritesFilename, QObject * parent ):
           if ( item && item->parent() ) {
             QModelIndex fromIdx = getModelIndexByFullPath( fromPath );
             if ( fromIdx.isValid() ) {
-              removeRows( fromIdx.row(), 1, QAbstractItemModel::parent( fromIdx ) );
+              removeRows( fromIdx.row(), 1, FavoritesModel::parent( fromIdx ) );
             }
           }
 
