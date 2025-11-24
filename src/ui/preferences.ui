@@ -1422,6 +1422,15 @@ download page.</string>
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="suppressWebDialogs">
+         <property name="toolTip">
+          <string>Suppress JavaScript alerts, confirms, and prompts in the article view.</string>
+         </property>
+         <property name="text">
+          <string>Suppress JavaScript dialogs</string>
+         </property>
+        </item>
+       <item>
         <spacer name="verticalSpacer_3">
          <property name="orientation">
           <enum>Qt::Vertical</enum>

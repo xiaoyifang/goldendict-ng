@@ -44,3 +44,33 @@ bool ArticleWebPage::acceptNavigationRequest( const QUrl & resUrl, NavigationTyp
 
   return QWebEnginePage::acceptNavigationRequest( url, type, isMainFrame );
 }
+
+void ArticleWebPage::javaScriptAlert( const QUrl & securityOrigin, const QString & msg )
+{
+  if ( !GlobalBroadcaster::instance()->getPreference()->suppressWebDialogs ) {
+    QWebEnginePage::javaScriptAlert( securityOrigin, msg );
+    return;
+  }
+  qDebug() << "JavaScript Alert:" << msg << "from" << securityOrigin;
+  runJavaScript( QString( "console.log('JavaScript Alert: %1')" ).arg( msg.toHtmlEscaped() ) );
+}
+
+bool ArticleWebPage::javaScriptConfirm( const QUrl & securityOrigin, const QString & msg )
+{
+  if ( !GlobalBroadcaster::instance()->getPreference()->suppressWebDialogs ) {
+    return QWebEnginePage::javaScriptConfirm( securityOrigin, msg );
+  }
+  qDebug() << "JavaScript Confirm:" << msg << "from" << securityOrigin;
+  runJavaScript( QString( "console.log('JavaScript Confirm: %1')" ).arg( msg.toHtmlEscaped() ) );
+  return true;
+}
+
+bool ArticleWebPage::javaScriptPrompt( const QUrl & securityOrigin, const QString & msg, const QString & defaultValue, QString * result )
+{
+  if ( !GlobalBroadcaster::instance()->getPreference()->suppressWebDialogs ) {
+    return QWebEnginePage::javaScriptPrompt( securityOrigin, msg, defaultValue, result );
+  }
+  qDebug() << "JavaScript Prompt:" << msg << "Default:" << defaultValue << "from" << securityOrigin;
+  runJavaScript( QString( "console.log('JavaScript Prompt: %1')" ).arg( msg.toHtmlEscaped() ) );
+  return false;
+}
