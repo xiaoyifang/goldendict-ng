@@ -769,13 +769,25 @@ bool FavoritesModel::setData( const QModelIndex & index, const QVariant & value,
     return false;
   }
 
-  QModelIndex parentIdx = parent( index );
+  QModelIndex parentIdx = FavoritesModel::parent( index );
   if ( findItemInFolder( value.toString(), TreeItem::Folder, parentIdx ).isValid() ) {
     // Such folder is already presented in parent folder
     return false;
   }
 
   TreeItem * item = getItem( index );
+  
+  // Log to WAL: rename is treated as remove old + add new
+  if ( m_wal ) {
+    QStringList oldPath = item->fullPath();
+    m_wal->logRemove( oldPath );
+    
+    // Create new path with new name
+    QStringList newPath = oldPath;
+    newPath.last() = value.toString();
+    m_wal->logAdd( newPath );
+  }
+  
   item->setData( value );
 
   dirty = true;
