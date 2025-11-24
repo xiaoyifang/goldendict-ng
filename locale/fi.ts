@@ -285,18 +285,6 @@
       <translation>&amp;Luo Anki-muistio</translation>
     </message>
     <message>
-      <source>Error Loading</source>
-      <translation>Virhe Ladattaessa</translation>
-    </message>
-    <message>
-      <source>Page Load Failed</source>
-      <translation>Sivun Lataus Epäonnistui</translation>
-    </message>
-    <message>
-      <source>Unable to load the requested page content</source>
-      <translation>Pyydettyä sivun sisältöä ei voitu ladata</translation>
-    </message>
-    <message>
       <source>&amp;Copy sound to clipboard</source>
       <translation>&amp;Kopioi ääni leikepöydälle</translation>
     </message>
@@ -3528,6 +3516,14 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
     <message>
       <source>S&amp;can</source>
       <translation>S&amp;can</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
+      <translation>Piilota JavaScript-hälytykset, vahvistukset ja kehotukset artikkelin näkymässä.</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript dialogs</source>
+      <translation>Piilota JavaScript-ikkunat</translation>
     </message>
   </context>
   <context>
