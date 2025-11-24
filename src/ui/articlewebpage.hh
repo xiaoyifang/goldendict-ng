@@ -25,6 +25,10 @@ protected:
                                  const QString & msg,
                                  const QString & defaultValue,
                                  QString * result ) override;
+  virtual void javaScriptConsoleMessage( JavaScriptConsoleMessageLevel level,
+                                         const QString & message,
+                                         int lineNumber,
+                                         const QString & sourceID ) override;
 
 private:
   LastReqInfo lastReq;

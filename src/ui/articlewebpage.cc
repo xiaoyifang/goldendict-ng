@@ -80,3 +80,29 @@ bool ArticleWebPage::javaScriptPrompt( const QUrl & securityOrigin,
                    .arg( QString::fromUtf8( msg.toUtf8().toPercentEncoding() ) ) );
   return false;
 }
+
+void ArticleWebPage::javaScriptConsoleMessage( JavaScriptConsoleMessageLevel level, const QString & message, int lineNumber, const QString & sourceID )
+{
+  if ( GlobalBroadcaster::instance()->getPreference()->suppressWebDialogs ) {
+    // If we are suppressing dialogs, we might also want to be less noisy about console errors,
+    // or maybe we just want to downgrade them to debug.
+    // For now, let's just log them as debug to avoid "Critical" in the log file.
+  }
+
+  QString levelStr;
+  switch ( level ) {
+    case InfoMessageLevel:
+      levelStr = "Info";
+      break;
+    case WarningMessageLevel:
+      levelStr = "Warning";
+      break;
+    case ErrorMessageLevel:
+      levelStr = "Error";
+      break;
+    default:
+      levelStr = "Log";
+  }
+
+  qDebug() << "JS Console" << levelStr << ":" << message << "Line:" << lineNumber << "Source:" << sourceID;
+}
