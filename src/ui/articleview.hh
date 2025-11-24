@@ -445,7 +445,7 @@ private:
 
   bool isDarkModeEnabled() const;
 
-  QString createErrorPageHtml( const QUrl & url ) const;
+
 
   /// Attempts removing last temporary file created.
   void cleanupTemp();
