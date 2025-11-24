@@ -285,18 +285,6 @@
       <translation>&amp;Utwórz notatkę Anki</translation>
     </message>
     <message>
-      <source>Error Loading</source>
-      <translation>Błąd ładowania</translation>
-    </message>
-    <message>
-      <source>Page Load Failed</source>
-      <translation>Ładowanie strony nie powiodło się</translation>
-    </message>
-    <message>
-      <source>Unable to load the requested page content</source>
-      <translation>Nie można załadować żądanej zawartości strony</translation>
-    </message>
-    <message>
       <source>&amp;Copy sound to clipboard</source>
       <translation>&amp;Kopiuj dźwięk do schowka</translation>
     </message>
@@ -3528,6 +3516,14 @@ ze słowników Stardict, Babylon i GLS</translation>
     <message>
       <source>S&amp;can</source>
       <translation>&amp;Skanuj</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
+      <translation>Wyłącz alerty JavaScript, potwierdza i pyta w widoku artykułu.</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript dialogs</source>
+      <translation>Wyłącz dialogi JavaScript</translation>
     </message>
   </context>
   <context>
