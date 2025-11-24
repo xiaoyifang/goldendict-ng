@@ -602,7 +602,8 @@ MainWindow::MainWindow( Config::Class & cfg_ ):
   // Favorites
 
   ui.favoritesPaneWidget->setUp( &cfg, { ui.showHideFavorites, ui.importFavorites, ui.exportFavorites } );
-  ui.favoritesPaneWidget->setSaveInterval( cfg.preferences.favoritesStoreInterval );
+  // WAL compaction runs every 10 minutes automatically
+  ui.favoritesPaneWidget->setSaveInterval( 0 );
 
   connect( ui.favoritesPane, &QDockWidget::visibilityChanged, this, &MainWindow::updateFavoritesMenu );
   connect( ui.showHideFavorites, &QAction::triggered, this, &MainWindow::toggle_favoritesPane );
@@ -2293,9 +2294,7 @@ void MainWindow::editPreferences()
       );
     }
 
-    if ( cfg.preferences.favoritesStoreInterval != p.favoritesStoreInterval ) {
-      ui.favoritesPaneWidget->setSaveInterval( p.favoritesStoreInterval );
-    }
+    // WAL compaction interval is now fixed at 10 minutes, no need to update
 
     if ( cfg.preferences.maxNetworkCacheSize != p.maxNetworkCacheSize ) {
       setupNetworkCache( p.maxNetworkCacheSize );

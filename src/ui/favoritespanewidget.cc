@@ -373,16 +373,19 @@ bool FavoritesPaneWidget::setDataFromTxt( const QString & dataStr )
   return m_favoritesModel->setDataFromTxt( dataStr );
 }
 
-void FavoritesPaneWidget::setSaveInterval( unsigned interval )
+void FavoritesPaneWidget::setSaveInterval( unsigned )
 {
+  // Fixed 10-minute compaction interval for WAL
+  const unsigned COMPACTION_INTERVAL_MINUTES = 10;
+  
   if ( timerId ) {
     killTimer( timerId );
     timerId = 0;
   }
-  if ( interval ) {
-    m_favoritesModel->saveData();
-    timerId = startTimer( interval * 60000 );
-  }
+  
+  // Always use 10-minute interval
+  m_favoritesModel->saveData();
+  timerId = startTimer( COMPACTION_INTERVAL_MINUTES * 60000 );
 }
 
 void FavoritesPaneWidget::timerEvent( QTimerEvent * ev )
