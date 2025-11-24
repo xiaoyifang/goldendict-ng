@@ -81,27 +81,10 @@ bool ArticleWebPage::javaScriptPrompt( const QUrl & securityOrigin,
   return false;
 }
 
-void ArticleWebPage::javaScriptConsoleMessage( JavaScriptConsoleMessageLevel level,
-                                               const QString & message,
-                                               int lineNumber,
-                                               const QString & sourceID )
+void ArticleWebPage::javaScriptConsoleMessage( JavaScriptConsoleMessageLevel,
+                                               const QString &,
+                                               int,
+                                               const QString & )
 {
-  // Default javascript errors will be logged as critical in gd_log.txt. For now, let's just log them as debug to avoid
-  // "Critical" in the log file.
-  QString levelStr;
-  switch ( level ) {
-    case InfoMessageLevel:
-      levelStr = "Info";
-      break;
-    case WarningMessageLevel:
-      levelStr = "Warning";
-      break;
-    case ErrorMessageLevel:
-      levelStr = "Error";
-      break;
-    default:
-      levelStr = "Log";
-  }
 
-  qDebug() << "JS Console" << levelStr << ":" << message << "Line:" << lineNumber << "Source:" << sourceID;
 }
