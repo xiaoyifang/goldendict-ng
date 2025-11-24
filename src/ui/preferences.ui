@@ -1701,49 +1701,6 @@ download page.</string>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_21">
             <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_16">
-              <property name="spacing">
-               <number>0</number>
-              </property>
-              <item>
-               <widget class="QLabel" name="label_17">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="toolTip">
-                 <string>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</string>
-                </property>
-                <property name="text">
-                 <string>Save every</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QSpinBox" name="favoritesSaveIntervalField">
-                <property name="maximum">
-                 <number>120</number>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_18">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="text">
-                 <string>minutes</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
              <widget class="QCheckBox" name="confirmFavoritesDeletion">
               <property name="toolTip">
                <string>Turn this option on to confirm every operation of items deletion</string>
