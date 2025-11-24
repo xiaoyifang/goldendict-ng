@@ -620,7 +620,35 @@ FavoritesModel::FavoritesModel( QString favoritesFilename, QObject * parent ):
           }
         }
       }
-      // Move operations can be added later if needed
+      else if ( op.first == FavoritesWAL::Move ) {
+        // Handle move operations (remove from old location, add to new location)
+        QVariantMap moveData = op.second.toMap();
+        QStringList fromPath = moveData[ "from" ].toStringList();
+        QStringList toPath = moveData[ "to" ].toStringList();
+        
+        if ( !fromPath.isEmpty() && !toPath.isEmpty() ) {
+          // First, remove from old location
+          TreeItem * item = getItemByFullPath( fromPath );
+          if ( item && item->parent() ) {
+            QModelIndex fromIdx = getModelIndexByFullPath( fromPath );
+            if ( fromIdx.isValid() ) {
+              removeRows( fromIdx.row(), 1, parent( fromIdx ) );
+            }
+          }
+          
+          // Then, add to new location
+          QString word = toPath.last();
+          QStringList newFolderPath = toPath;
+          newFolderPath.removeLast();
+          
+          QModelIndex parentIdx = QModelIndex();
+          for ( const QString & folderName : newFolderPath ) {
+            parentIdx = forceFolder( folderName, parentIdx );
+          }
+          
+          addHeadword( word, parentIdx );
+        }
+      }
     }
     
     dirty = true;
