@@ -63,7 +63,7 @@ bool FavoritesWAL::logMove( const QStringList & fromPath, const QStringList & to
 
 QList< QPair< FavoritesWAL::OperationType, QVariantMap > > FavoritesWAL::replay()
 {
-  QList< QPair< OperationType, QVariantMap > > operations;
+  QList< QPair< FavoritesWAL::OperationType, QVariantMap > > operations;
 
   if ( !QFile::exists( m_walFilename ) ) {
     return operations;
@@ -82,7 +82,7 @@ QList< QPair< FavoritesWAL::OperationType, QVariantMap > > FavoritesWAL::replay(
       continue;
     }
 
-    auto op = parseEntry( line );
+    QPair< FavoritesWAL::OperationType, QVariantMap > op = parseEntry( line );
     if ( op.first != Add && op.first != Remove && op.first != Move ) {
       qWarning() << "Invalid WAL entry, skipping:" << line;
       continue;

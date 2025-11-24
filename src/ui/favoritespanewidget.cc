@@ -601,7 +601,6 @@ FavoritesModel::FavoritesModel( QString favoritesFilename, QObject * parent ):
         if ( opData.type() == QVariant::Map ) {
           QVariantMap dataMap = opData.toMap();
           path                = dataMap[ "path" ].toStringList();
-          isFolder            = dataMap[ "isFolder" ].toBool();
         }
         else {
           // Fallback to the original string list format for backward compatibility
@@ -629,7 +628,7 @@ FavoritesModel::FavoritesModel( QString favoritesFilename, QObject * parent ):
           // Add item according to its type
           if ( isFolder ) {
             // Force folder creation with the exact name
-            QModelIndex newFolderIdx = forceFolder( itemName, parentIdx );
+            forceFolder( itemName, parentIdx );
           }
           else {
             // Try to add as word
@@ -640,7 +639,6 @@ FavoritesModel::FavoritesModel( QString favoritesFilename, QObject * parent ):
       else if ( op.first == FavoritesWAL::Remove ) {
         QVariant opData = op.second;
         QStringList path;
-        bool isFolder = false;
 
         // Handle the QVariantMap format that includes type information
         if ( opData.type() == QVariant::Map ) {
@@ -665,7 +663,7 @@ FavoritesModel::FavoritesModel( QString favoritesFilename, QObject * parent ):
       }
       else if ( op.first == FavoritesWAL::Move ) {
         // Handle move operations (remove from old location, add to new location)
-        QVariantMap moveData = op.second.toMap();
+        QVariantMap moveData = op.second;
         QStringList fromPath = moveData[ "from" ].toStringList();
         QStringList toPath   = moveData[ "to" ].toStringList();
         bool isFolder        = moveData[ "isFolder" ].toBool();
