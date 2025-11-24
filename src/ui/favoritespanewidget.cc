@@ -592,15 +592,16 @@ FavoritesModel::FavoritesModel( QString favoritesFilename, QObject * parent ):
     auto operations = m_wal->replay();
 
     for ( const auto & op : operations ) {
-      if ( op.first == FavoritesWAL::Add ) {
+      if ( op.first == FavoritesWAL::Add || op.first == FavoritesWAL::AddFolder ) {
         QVariant opData = op.second;
         QStringList path;
-        bool isFolder = false;
+        bool isFolder = ( op.first == FavoritesWAL::AddFolder );
 
         // Handle the QVariantMap format that includes type information
         if ( opData.type() == QVariant::Map ) {
           QVariantMap dataMap = opData.toMap();
           path                = dataMap[ "path" ].toStringList();
+          // 不再从dataMap中读取isFolder，而是依赖操作类型
         }
         else {
           // Fallback to the original string list format for backward compatibility
@@ -636,15 +637,16 @@ FavoritesModel::FavoritesModel( QString favoritesFilename, QObject * parent ):
           }
         }
       }
-      else if ( op.first == FavoritesWAL::Remove ) {
+      else if ( op.first == FavoritesWAL::Remove || op.first == FavoritesWAL::RemoveFolder ) {
         QVariant opData = op.second;
         QStringList path;
+        bool isFolder = ( op.first == FavoritesWAL::RemoveFolder );
 
         // Handle the QVariantMap format that includes type information
         if ( opData.type() == QVariant::Map ) {
           QVariantMap dataMap = opData.toMap();
           path                = dataMap[ "path" ].toStringList();
-          isFolder            = dataMap[ "isFolder" ].toBool();
+          // 不再从dataMap中读取isFolder，而是依赖操作类型
         }
         else {
           // Fallback to the original string list format for backward compatibility

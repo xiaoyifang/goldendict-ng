@@ -27,11 +27,11 @@ FavoritesWAL::~FavoritesWAL()
 bool FavoritesWAL::logAdd( const QStringList & path, bool isFolder )
 {
   QJsonObject entry;
-  entry[ "op" ]       = "add";
-  entry[ "ts" ]       = QDateTime::currentSecsSinceEpoch();
-  entry[ "path" ]     = QJsonArray::fromStringList( path );
-  entry[ "isFolder" ] = isFolder;
-
+  // 使用不同的操作类型字符串来区分普通添加和文件夹添加
+  entry[ "op" ]   = isFolder ? "addfolder" : "add";
+  entry[ "ts" ]   = QDateTime::currentSecsSinceEpoch();
+  entry[ "path" ] = QJsonArray::fromStringList( path );
+  
   QJsonDocument doc( entry );
   return appendEntry( doc.toJson( QJsonDocument::Compact ) );
 }
@@ -39,11 +39,11 @@ bool FavoritesWAL::logAdd( const QStringList & path, bool isFolder )
 bool FavoritesWAL::logRemove( const QStringList & path, bool isFolder )
 {
   QJsonObject entry;
-  entry[ "op" ]       = "remove";
-  entry[ "ts" ]       = QDateTime::currentSecsSinceEpoch();
-  entry[ "path" ]     = QJsonArray::fromStringList( path );
-  entry[ "isFolder" ] = isFolder;
-
+  // 使用不同的操作类型字符串来区分普通删除和文件夹删除
+  entry[ "op" ]   = isFolder ? "removefolder" : "remove";
+  entry[ "ts" ]   = QDateTime::currentSecsSinceEpoch();
+  entry[ "path" ] = QJsonArray::fromStringList( path );
+  
   QJsonDocument doc( entry );
   return appendEntry( doc.toJson( QJsonDocument::Compact ) );
 }
@@ -55,6 +55,7 @@ bool FavoritesWAL::logMove( const QStringList & fromPath, const QStringList & to
   entry[ "ts" ]       = QDateTime::currentSecsSinceEpoch();
   entry[ "from" ]     = QJsonArray::fromStringList( fromPath );
   entry[ "to" ]       = QJsonArray::fromStringList( toPath );
+  // Move操作仍然需要isFolder字段，因为它没有单独的文件夹版本
   entry[ "isFolder" ] = isFolder;
 
   QJsonDocument doc( entry );
@@ -83,7 +84,7 @@ QList< QPair< FavoritesWAL::OperationType, QVariantMap > > FavoritesWAL::replay(
     }
 
     QPair< FavoritesWAL::OperationType, QVariantMap > op = parseEntry( line );
-    if ( op.first != Add && op.first != Remove && op.first != Move ) {
+    if ( op.first != Add && op.first != Remove && op.first != Move && op.first != AddFolder && op.first != RemoveFolder ) {
       qWarning() << "Invalid WAL entry, skipping:" << line;
       continue;
     }
@@ -169,29 +170,29 @@ QPair< FavoritesWAL::OperationType, QVariantMap > FavoritesWAL::parseEntry( cons
 
   QJsonObject obj = doc.object();
   QString op      = obj[ "op" ].toString();
-  bool isFolder   = obj.contains( "isFolder" ) ? obj[ "isFolder" ].toBool() : false;
+  // 不再从WAL条目中读取isFolder字段，因为我们已经通过操作类型区分了文件夹操作
 
-  if ( op == "add" ) {
+  if ( op == "add" || op == "addfolder" ) {
     QJsonArray pathArray = obj[ "path" ].toArray();
     QStringList path;
     for ( const auto & item : pathArray ) {
       path.append( item.toString() );
     }
     QVariantMap data;
-    data[ "path" ]     = path;
-    data[ "isFolder" ] = isFolder;
-    return qMakePair( Add, data );
+    data[ "path" ] = path;
+    // 根据操作类型字符串区分普通添加和文件夹添加
+    return qMakePair( (op == "addfolder") ? AddFolder : Add, data );
   }
-  else if ( op == "remove" ) {
+  else if ( op == "remove" || op == "removefolder" ) {
     QJsonArray pathArray = obj[ "path" ].toArray();
     QStringList path;
     for ( const auto & item : pathArray ) {
       path.append( item.toString() );
     }
     QVariantMap data;
-    data[ "path" ]     = path;
-    data[ "isFolder" ] = isFolder;
-    return qMakePair( Remove, data );
+    data[ "path" ] = path;
+    // 根据操作类型字符串区分普通删除和文件夹删除
+    return qMakePair( (op == "removefolder") ? RemoveFolder : Remove, data );
   }
   else if ( op == "move" ) {
     QJsonArray fromArray = obj[ "from" ].toArray();

@@ -18,7 +18,9 @@ public:
   enum OperationType {
     Add,
     Remove,
-    Move
+    Move,
+    AddFolder,
+    RemoveFolder
   };
 
   explicit FavoritesWAL( const QString & walFilename, QObject * parent = nullptr );
