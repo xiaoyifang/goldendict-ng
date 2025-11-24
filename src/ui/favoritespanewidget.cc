@@ -601,17 +601,17 @@ FavoritesModel::FavoritesModel( QString favoritesFilename, QObject * parent ):
             // Item already exists, skip
             continue;
           }
-          
-          QString itemName = path.last();
+
+          QString itemName       = path.last();
           QStringList parentPath = path;
           parentPath.removeLast();
-          
+
           // Navigate to parent folder (creates folders if needed)
           QModelIndex parentIdx = QModelIndex();
           for ( const QString & folderName : parentPath ) {
             parentIdx = forceFolder( folderName, parentIdx );
           }
-          
+
           // Try to add as word (if it's a folder, it would have been created by forceFolder)
           // If the item name matches a folder that was just created, this will fail gracefully
           addHeadword( itemName, parentIdx );
