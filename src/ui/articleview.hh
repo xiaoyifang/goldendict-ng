@@ -446,7 +446,6 @@ private:
   bool isDarkModeEnabled() const;
 
 
-
   /// Attempts removing last temporary file created.
   void cleanupTemp();
 

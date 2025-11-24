@@ -65,7 +65,10 @@ bool ArticleWebPage::javaScriptConfirm( const QUrl & securityOrigin, const QStri
   return true;
 }
 
-bool ArticleWebPage::javaScriptPrompt( const QUrl & securityOrigin, const QString & msg, const QString & defaultValue, QString * result )
+bool ArticleWebPage::javaScriptPrompt( const QUrl & securityOrigin,
+                                       const QString & msg,
+                                       const QString & defaultValue,
+                                       QString * result )
 {
   if ( !GlobalBroadcaster::instance()->getPreference()->suppressWebDialogs ) {
     return QWebEnginePage::javaScriptPrompt( securityOrigin, msg, defaultValue, result );

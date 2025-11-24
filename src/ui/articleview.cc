@@ -796,7 +796,6 @@ bool ArticleView::isDarkModeEnabled() const
 }
 
 
-
 bool ArticleView::handleF3( QObject * /*obj*/, QEvent * ev )
 {
   if ( ev->type() == QEvent::ShortcutOverride || ev->type() == QEvent::KeyPress ) {
