@@ -86,7 +86,8 @@ void ArticleWebPage::javaScriptConsoleMessage( JavaScriptConsoleMessageLevel lev
                                                int lineNumber,
                                                const QString & sourceID )
 {
-  // Default javascript errors will be logged as critical in gd_log.txt. For now, let's just log them as debug to avoid "Critical" in the log file.
+  // Default javascript errors will be logged as critical in gd_log.txt. For now, let's just log them as debug to avoid
+  // "Critical" in the log file.
   QString levelStr;
   switch ( level ) {
     case InfoMessageLevel:
