@@ -123,8 +123,7 @@ void FtsIndexing::stopIndexing()
 
 void FtsIndexing::onTimeout()
 {
-  if ( indexing )
-  {
+  if ( indexing ) {
     indexing->timeout();
   }
 }
