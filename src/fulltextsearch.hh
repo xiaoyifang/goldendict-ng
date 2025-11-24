@@ -58,8 +58,10 @@ struct FtsHeadword
   }
 };
 
-class Indexing: public QRunnable
+class Indexing: public QObject, public QRunnable
 {
+  Q_OBJECT
+  
   QAtomicInt & isCancelled;
   const std::vector< sptr< Dictionary::Class > > & dictionaries;
   QSemaphore & hasExited;
@@ -79,8 +81,6 @@ public:
   }
 
   virtual void run();
-
-  void timeout();
 
   const std::vector< sptr< Dictionary::Class > > & getDictionaries() const
   {
