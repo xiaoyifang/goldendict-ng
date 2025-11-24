@@ -52,7 +52,7 @@ void ArticleWebPage::javaScriptAlert( const QUrl & securityOrigin, const QString
     return;
   }
   qDebug() << "JavaScript Alert:" << msg << "from" << securityOrigin;
-  runJavaScript( QString( "console.log('JavaScript Alert: %1')" ).arg( msg.toHtmlEscaped() ) );
+  runJavaScript( QString( "console.log('JavaScript Alert:', decodeURIComponent('%1'))" ).arg( QString::fromUtf8( msg.toUtf8().toPercentEncoding() ) ) );
 }
 
 bool ArticleWebPage::javaScriptConfirm( const QUrl & securityOrigin, const QString & msg )
@@ -61,7 +61,7 @@ bool ArticleWebPage::javaScriptConfirm( const QUrl & securityOrigin, const QStri
     return QWebEnginePage::javaScriptConfirm( securityOrigin, msg );
   }
   qDebug() << "JavaScript Confirm:" << msg << "from" << securityOrigin;
-  runJavaScript( QString( "console.log('JavaScript Confirm: %1')" ).arg( msg.toHtmlEscaped() ) );
+  runJavaScript( QString( "console.log('JavaScript Confirm:', decodeURIComponent('%1'))" ).arg( QString::fromUtf8( msg.toUtf8().toPercentEncoding() ) ) );
   return true;
 }
 
@@ -74,6 +74,6 @@ bool ArticleWebPage::javaScriptPrompt( const QUrl & securityOrigin,
     return QWebEnginePage::javaScriptPrompt( securityOrigin, msg, defaultValue, result );
   }
   qDebug() << "JavaScript Prompt:" << msg << "Default:" << defaultValue << "from" << securityOrigin;
-  runJavaScript( QString( "console.log('JavaScript Prompt: %1')" ).arg( msg.toHtmlEscaped() ) );
+  runJavaScript( QString( "console.log('JavaScript Prompt:', decodeURIComponent('%1'))" ).arg( QString::fromUtf8( msg.toUtf8().toPercentEncoding() ) ) );
   return false;
 }
