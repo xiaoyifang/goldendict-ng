@@ -377,12 +377,12 @@ void FavoritesPaneWidget::setSaveInterval( unsigned )
 {
   // Fixed 10-minute compaction interval for WAL
   const unsigned COMPACTION_INTERVAL_MINUTES = 10;
-  
+
   if ( timerId ) {
     killTimer( timerId );
     timerId = 0;
   }
-  
+
   // Always use 10-minute interval
   m_favoritesModel->saveData();
   timerId = startTimer( COMPACTION_INTERVAL_MINUTES * 60000 );
@@ -581,29 +581,29 @@ FavoritesModel::FavoritesModel( QString favoritesFilename, QObject * parent ):
 {
   // Initialize WAL
   QString walFilename = favoritesFilename + ".wal";
-  m_wal = new FavoritesWAL( walFilename, this );
-  
+  m_wal               = new FavoritesWAL( walFilename, this );
+
   // Load main favorites file
   readData();
-  
+
   // Replay WAL to recover any uncommitted operations
   if ( m_wal->hasEntries() ) {
     qDebug() << "Replaying WAL for favorites recovery";
     auto operations = m_wal->replay();
-    
+
     for ( const auto & op : operations ) {
       if ( op.first == FavoritesWAL::Add ) {
         QStringList path = op.second.toStringList();
         if ( !path.isEmpty() ) {
           QString word = path.last();
           path.removeLast();
-          
+
           // Navigate to parent folder
           QModelIndex parentIdx = QModelIndex();
           for ( const QString & folderName : path ) {
             parentIdx = forceFolder( folderName, parentIdx );
           }
-          
+
           // Add word
           addHeadword( word, parentIdx );
         }
@@ -624,8 +624,8 @@ FavoritesModel::FavoritesModel( QString favoritesFilename, QObject * parent ):
         // Handle move operations (remove from old location, add to new location)
         QVariantMap moveData = op.second.toMap();
         QStringList fromPath = moveData[ "from" ].toStringList();
-        QStringList toPath = moveData[ "to" ].toStringList();
-        
+        QStringList toPath   = moveData[ "to" ].toStringList();
+
         if ( !fromPath.isEmpty() && !toPath.isEmpty() ) {
           // First, remove from old location
           TreeItem * item = getItemByFullPath( fromPath );
@@ -635,25 +635,25 @@ FavoritesModel::FavoritesModel( QString favoritesFilename, QObject * parent ):
               removeRows( fromIdx.row(), 1, parent( fromIdx ) );
             }
           }
-          
+
           // Then, add to new location
-          QString word = toPath.last();
+          QString word              = toPath.last();
           QStringList newFolderPath = toPath;
           newFolderPath.removeLast();
-          
+
           QModelIndex parentIdx = QModelIndex();
           for ( const QString & folderName : newFolderPath ) {
             parentIdx = forceFolder( folderName, parentIdx );
           }
-          
+
           addHeadword( word, parentIdx );
         }
       }
     }
-    
+
     dirty = true;
   }
-  
+
   dirty = false;
 }
 
@@ -880,7 +880,7 @@ void FavoritesModel::saveData()
 
   if ( tmpFile.commit() ) {
     dirty = false;
-    
+
     // Clear WAL after successful compaction
     if ( m_wal ) {
       m_wal->clear();
@@ -1030,7 +1030,7 @@ bool FavoritesModel::dropMimeData(
           TreeItem * item    = movedItems.at( i );
           TreeItem * newItem = item->duplicateItem( parentItem );
           parentItem->insertChild( row + i, newItem );
-          
+
           // Log to WAL for each moved item
           if ( m_wal && newItem->type() == TreeItem::Word ) {
             QStringList newPath = newItem->fullPath();
@@ -1223,14 +1223,14 @@ QModelIndex FavoritesModel::addNewFolder( const QModelIndex & idx )
 bool FavoritesModel::addNewWordFullPath( const QString & headword )
 {
   QModelIndex index = getModelIndexByFullPath( activeFolderFullPath );
-  
+
   // Log to WAL before adding
   QStringList fullPath = activeFolderFullPath;
   fullPath.append( headword );
   if ( m_wal ) {
     m_wal->logAdd( fullPath );
   }
-  
+
   return addHeadword( headword, index );
 }
 
@@ -1250,7 +1250,7 @@ bool FavoritesModel::removeWordFullPath( const QString & headword )
       if ( m_wal ) {
         m_wal->logRemove( fullPath );
       }
-      
+
       removeRows( i, 1, parentIndex );
       return true;
     }

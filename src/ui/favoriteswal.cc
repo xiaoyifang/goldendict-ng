@@ -27,8 +27,8 @@ FavoritesWAL::~FavoritesWAL()
 bool FavoritesWAL::logAdd( const QStringList & path )
 {
   QJsonObject entry;
-  entry[ "op" ] = "add";
-  entry[ "ts" ] = QDateTime::currentSecsSinceEpoch();
+  entry[ "op" ]   = "add";
+  entry[ "ts" ]   = QDateTime::currentSecsSinceEpoch();
   entry[ "path" ] = QJsonArray::fromStringList( path );
 
   QJsonDocument doc( entry );
@@ -38,8 +38,8 @@ bool FavoritesWAL::logAdd( const QStringList & path )
 bool FavoritesWAL::logRemove( const QStringList & path )
 {
   QJsonObject entry;
-  entry[ "op" ] = "remove";
-  entry[ "ts" ] = QDateTime::currentSecsSinceEpoch();
+  entry[ "op" ]   = "remove";
+  entry[ "ts" ]   = QDateTime::currentSecsSinceEpoch();
   entry[ "path" ] = QJsonArray::fromStringList( path );
 
   QJsonDocument doc( entry );
@@ -49,10 +49,10 @@ bool FavoritesWAL::logRemove( const QStringList & path )
 bool FavoritesWAL::logMove( const QStringList & fromPath, const QStringList & toPath )
 {
   QJsonObject entry;
-  entry[ "op" ] = "move";
-  entry[ "ts" ] = QDateTime::currentSecsSinceEpoch();
+  entry[ "op" ]   = "move";
+  entry[ "ts" ]   = QDateTime::currentSecsSinceEpoch();
   entry[ "from" ] = QJsonArray::fromStringList( fromPath );
-  entry[ "to" ] = QJsonArray::fromStringList( toPath );
+  entry[ "to" ]   = QJsonArray::fromStringList( toPath );
 
   QJsonDocument doc( entry );
   return appendEntry( doc.toJson( QJsonDocument::Compact ) );
@@ -124,7 +124,7 @@ bool FavoritesWAL::appendEntry( const QByteArray & jsonLine )
 {
   // Use QSaveFile for atomic writes
   QSaveFile file( m_walFilename );
-  
+
   // Read existing content
   QByteArray existingContent;
   if ( QFile::exists( m_walFilename ) ) {
@@ -165,7 +165,7 @@ QPair< FavoritesWAL::OperationType, QVariant > FavoritesWAL::parseEntry( const Q
   }
 
   QJsonObject obj = doc.object();
-  QString op = obj[ "op" ].toString();
+  QString op      = obj[ "op" ].toString();
 
   if ( op == "add" ) {
     QJsonArray pathArray = obj[ "path" ].toArray();
@@ -185,8 +185,8 @@ QPair< FavoritesWAL::OperationType, QVariant > FavoritesWAL::parseEntry( const Q
   }
   else if ( op == "move" ) {
     QJsonArray fromArray = obj[ "from" ].toArray();
-    QJsonArray toArray = obj[ "to" ].toArray();
-    
+    QJsonArray toArray   = obj[ "to" ].toArray();
+
     QStringList fromPath, toPath;
     for ( const auto & item : fromArray ) {
       fromPath.append( item.toString() );
@@ -197,7 +197,7 @@ QPair< FavoritesWAL::OperationType, QVariant > FavoritesWAL::parseEntry( const Q
 
     QVariantMap moveData;
     moveData[ "from" ] = fromPath;
-    moveData[ "to" ] = toPath;
+    moveData[ "to" ]   = toPath;
     return qMakePair( Move, QVariant( moveData ) );
   }
 

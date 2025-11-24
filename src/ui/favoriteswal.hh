@@ -10,7 +10,7 @@
 
 /// Write-Ahead Log manager for favorites operations
 /// Ensures no data loss by logging all operations before they are applied
-class FavoritesWAL : public QObject
+class FavoritesWAL: public QObject
 {
   Q_OBJECT
 
