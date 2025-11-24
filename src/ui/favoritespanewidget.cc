@@ -776,18 +776,18 @@ bool FavoritesModel::setData( const QModelIndex & index, const QVariant & value,
   }
 
   TreeItem * item = getItem( index );
-  
+
   // Log to WAL: rename is treated as remove old + add new
   if ( m_wal ) {
     QStringList oldPath = item->fullPath();
     m_wal->logRemove( oldPath );
-    
+
     // Create new path with new name
     QStringList newPath = oldPath;
-    newPath.last() = value.toString();
+    newPath.last()      = value.toString();
     m_wal->logAdd( newPath );
   }
-  
+
   item->setData( value );
 
   dirty = true;
