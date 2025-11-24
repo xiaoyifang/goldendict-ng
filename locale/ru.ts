@@ -285,18 +285,6 @@
       <translation>&amp;Создать заметку Anki</translation>
     </message>
     <message>
-      <source>Error Loading</source>
-      <translation>Ошибка загрузки</translation>
-    </message>
-    <message>
-      <source>Page Load Failed</source>
-      <translation>Ошибка загрузки страницы</translation>
-    </message>
-    <message>
-      <source>Unable to load the requested page content</source>
-      <translation>Не удается загрузить запрошенное содержимое страницы</translation>
-    </message>
-    <message>
       <source>&amp;Copy sound to clipboard</source>
       <translation>&amp;Копировать звук в буфер обмена</translation>
     </message>
@@ -3533,6 +3521,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>S&amp;can</source>
       <translation>&amp;Сканировать</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
+      <translation>Отключить уведомления JavaScript, подтверждения и подсказки при просмотре статьи.</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript dialogs</source>
+      <translation>Отключить диалоги JavaScript</translation>
     </message>
   </context>
   <context>
