@@ -980,6 +980,10 @@ Class load()
       c.preferences.openWebsiteInNewTab = ( preferences.namedItem( "openWebsiteInNewTab" ).toElement().text() == "1" );
     }
 
+    if ( !preferences.namedItem( "suppressWebDialogs" ).isNull() ) {
+      c.preferences.suppressWebDialogs = ( preferences.namedItem( "suppressWebDialogs" ).toElement().text() == "1" );
+    }
+
     if ( !preferences.namedItem( "maxStringsInHistory" ).isNull() ) {
       c.preferences.maxStringsInHistory = preferences.namedItem( "maxStringsInHistory" ).toElement().text().toUInt();
     }
@@ -2004,6 +2008,10 @@ void save( const Class & c )
 
     opt = dd.createElement( "openWebsiteInNewTab" );
     opt.appendChild( dd.createTextNode( c.preferences.openWebsiteInNewTab ? "1" : "0" ) );
+    preferences.appendChild( opt );
+
+    opt = dd.createElement( "suppressWebDialogs" );
+    opt.appendChild( dd.createTextNode( c.preferences.suppressWebDialogs ? "1" : "0" ) );
     preferences.appendChild( opt );
 
     opt = dd.createElement( "maxStringsInHistory" );

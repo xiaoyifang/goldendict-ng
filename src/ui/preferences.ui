@@ -1952,6 +1952,16 @@ from Stardict, Babylon and GLS dictionaries</string>
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QCheckBox" name="suppressWebDialogs">
+            <property name="toolTip">
+             <string>Suppress JavaScript alerts, confirms, and prompts in the article view.</string>
+            </property>
+            <property name="text">
+             <string>Suppress JavaScript dialogs</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
