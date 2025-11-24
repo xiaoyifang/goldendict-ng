@@ -15,7 +15,6 @@ namespace FTS {
 void Indexing::run()
 {
   try {
-    timer.start();
     const int parallel_count = GlobalBroadcaster::instance()->getPreference()->fts.parallelThreads;
     QSemaphore sem( parallel_count < 1 ? 1 : parallel_count );
 
@@ -42,7 +41,6 @@ void Indexing::run()
     qDebug() << "waiting for all the fts creation to finish.";
     synchronizer.waitForFinished();
     qDebug() << "finished/cancel all the fts creation";
-    timer.stop();
   }
   catch ( std::exception & ex ) {
     qWarning( "Exception occurred while full-text search: %s", ex.what() );
@@ -53,7 +51,7 @@ void Indexing::run()
 void Indexing::timeout()
 {
   QString indexingDicts;
-  for ( const auto & dictionary : dictionaries ) {
+  for ( const auto & dictionary : getDictionaries() ) {
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
       break;
     }
@@ -78,8 +76,11 @@ void Indexing::timeout()
 
 FtsIndexing::FtsIndexing( const std::vector< sptr< Dictionary::Class > > & dicts ):
   dictionaries( dicts ),
-  started( false )
+  started( false ),
+  indexing( nullptr )
 {
+  timer.setInterval( 2000 );
+  connect( &timer, &QTimer::timeout, this, &FtsIndexing::onTimeout );
 }
 
 void FtsIndexing::doIndexing()
@@ -94,12 +95,13 @@ void FtsIndexing::doIndexing()
     isCancelled.deref();
   }
 
-  Indexing * idx = new Indexing( isCancelled, dictionaries, indexingExited );
+  indexing = new Indexing( isCancelled, dictionaries, indexingExited );
 
-  connect( idx, &Indexing::sendNowIndexingName, this, &FtsIndexing::setNowIndexedName );
+  QObject::connect( indexing, &Indexing::sendNowIndexingName, this, &FtsIndexing::setNowIndexedName );
 
-  QThreadPool::globalInstance()->start( idx );
+  QThreadPool::globalInstance()->start( indexing );
 
+  timer.start();
   started = true;
 }
 
@@ -111,9 +113,18 @@ void FtsIndexing::stopIndexing()
     }
 
     indexingExited.acquire();
+    timer.stop();
     started = false;
+    indexing = nullptr;
 
     setNowIndexedName( QString() );
+  }
+}
+
+void FtsIndexing::onTimeout()
+{
+  if ( indexing ) {
+    indexing->timeout();
   }
 }
 
