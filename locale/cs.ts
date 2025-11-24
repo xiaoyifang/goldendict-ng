@@ -285,18 +285,6 @@
       <translation>&amp;Vytvořit Anki poznámku</translation>
     </message>
     <message>
-      <source>Error Loading</source>
-      <translation>Chyba při načítání</translation>
-    </message>
-    <message>
-      <source>Page Load Failed</source>
-      <translation>Načtení stránky se nezdařilo</translation>
-    </message>
-    <message>
-      <source>Unable to load the requested page content</source>
-      <translation>Nelze načíst požadovaný obsah stránky</translation>
-    </message>
-    <message>
       <source>&amp;Copy sound to clipboard</source>
       <translation>&amp;Kopírovat zvuk do schránky</translation>
     </message>
@@ -3526,6 +3514,14 @@ ze Stardict, Babylon a GLS slovníků</translation>
     <message>
       <source>S&amp;can</source>
       <translation>&amp;Skenovat</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
+      <translation>Potlačit výstrahy JavaScriptu, potvrzení a výzvy v zobrazení článku.</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript dialogs</source>
+      <translation>Potlačit dialogová okna JavaScriptu</translation>
     </message>
   </context>
   <context>
