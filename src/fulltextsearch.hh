@@ -90,7 +90,7 @@ public:
 signals:
   void sendNowIndexingName( QString );
 
-private slots:
+public slots:
   void timeout();
 };
 
