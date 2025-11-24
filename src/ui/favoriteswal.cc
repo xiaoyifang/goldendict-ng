@@ -24,43 +24,46 @@ FavoritesWAL::~FavoritesWAL()
   }
 }
 
-bool FavoritesWAL::logAdd( const QStringList & path )
+bool FavoritesWAL::logAdd( const QStringList & path, bool isFolder )
 {
   QJsonObject entry;
-  entry[ "op" ]   = "add";
-  entry[ "ts" ]   = QDateTime::currentSecsSinceEpoch();
-  entry[ "path" ] = QJsonArray::fromStringList( path );
+  entry[ "op" ]       = "add";
+  entry[ "ts" ]       = QDateTime::currentSecsSinceEpoch();
+  entry[ "path" ]     = QJsonArray::fromStringList( path );
+  entry[ "isFolder" ] = isFolder;
 
   QJsonDocument doc( entry );
   return appendEntry( doc.toJson( QJsonDocument::Compact ) );
 }
 
-bool FavoritesWAL::logRemove( const QStringList & path )
+bool FavoritesWAL::logRemove( const QStringList & path, bool isFolder )
 {
   QJsonObject entry;
-  entry[ "op" ]   = "remove";
-  entry[ "ts" ]   = QDateTime::currentSecsSinceEpoch();
-  entry[ "path" ] = QJsonArray::fromStringList( path );
+  entry[ "op" ]       = "remove";
+  entry[ "ts" ]       = QDateTime::currentSecsSinceEpoch();
+  entry[ "path" ]     = QJsonArray::fromStringList( path );
+  entry[ "isFolder" ] = isFolder;
 
   QJsonDocument doc( entry );
   return appendEntry( doc.toJson( QJsonDocument::Compact ) );
 }
 
-bool FavoritesWAL::logMove( const QStringList & fromPath, const QStringList & toPath )
+bool FavoritesWAL::logMove( const QStringList & fromPath, const QStringList & toPath, bool isFolder )
 {
   QJsonObject entry;
-  entry[ "op" ]   = "move";
-  entry[ "ts" ]   = QDateTime::currentSecsSinceEpoch();
-  entry[ "from" ] = QJsonArray::fromStringList( fromPath );
-  entry[ "to" ]   = QJsonArray::fromStringList( toPath );
+  entry[ "op" ]       = "move";
+  entry[ "ts" ]       = QDateTime::currentSecsSinceEpoch();
+  entry[ "from" ]     = QJsonArray::fromStringList( fromPath );
+  entry[ "to" ]       = QJsonArray::fromStringList( toPath );
+  entry[ "isFolder" ] = isFolder;
 
   QJsonDocument doc( entry );
   return appendEntry( doc.toJson( QJsonDocument::Compact ) );
 }
 
-QList< QPair< FavoritesWAL::OperationType, QVariant > > FavoritesWAL::replay()
+QList< QPair< FavoritesWAL::OperationType, QVariantMap > > FavoritesWAL::replay()
 {
-  QList< QPair< OperationType, QVariant > > operations;
+  QList< QPair< OperationType, QVariantMap > > operations;
 
   if ( !QFile::exists( m_walFilename ) ) {
     return operations;
@@ -156,16 +159,17 @@ bool FavoritesWAL::appendEntry( const QByteArray & jsonLine )
   return true;
 }
 
-QPair< FavoritesWAL::OperationType, QVariant > FavoritesWAL::parseEntry( const QString & line )
+QPair< FavoritesWAL::OperationType, QVariantMap > FavoritesWAL::parseEntry( const QString & line )
 {
   QJsonDocument doc = QJsonDocument::fromJson( line.toUtf8() );
   if ( doc.isNull() || !doc.isObject() ) {
     qWarning() << "Invalid JSON in WAL entry:" << line;
-    return qMakePair( Add, QVariant() ); // Return invalid entry
+    return qMakePair( Add, QVariantMap() ); // Return invalid entry
   }
 
   QJsonObject obj = doc.object();
   QString op      = obj[ "op" ].toString();
+  bool isFolder   = obj.contains( "isFolder" ) ? obj[ "isFolder" ].toBool() : false;
 
   if ( op == "add" ) {
     QJsonArray pathArray = obj[ "path" ].toArray();
@@ -173,7 +177,10 @@ QPair< FavoritesWAL::OperationType, QVariant > FavoritesWAL::parseEntry( const Q
     for ( const auto & item : pathArray ) {
       path.append( item.toString() );
     }
-    return qMakePair( Add, QVariant( path ) );
+    QVariantMap data;
+    data[ "path" ]     = path;
+    data[ "isFolder" ] = isFolder;
+    return qMakePair( Add, data );
   }
   else if ( op == "remove" ) {
     QJsonArray pathArray = obj[ "path" ].toArray();
@@ -181,7 +188,10 @@ QPair< FavoritesWAL::OperationType, QVariant > FavoritesWAL::parseEntry( const Q
     for ( const auto & item : pathArray ) {
       path.append( item.toString() );
     }
-    return qMakePair( Remove, QVariant( path ) );
+    QVariantMap data;
+    data[ "path" ]     = path;
+    data[ "isFolder" ] = isFolder;
+    return qMakePair( Remove, data );
   }
   else if ( op == "move" ) {
     QJsonArray fromArray = obj[ "from" ].toArray();
@@ -196,11 +206,12 @@ QPair< FavoritesWAL::OperationType, QVariant > FavoritesWAL::parseEntry( const Q
     }
 
     QVariantMap moveData;
-    moveData[ "from" ] = fromPath;
-    moveData[ "to" ]   = toPath;
-    return qMakePair( Move, QVariant( moveData ) );
+    moveData[ "from" ]     = fromPath;
+    moveData[ "to" ]       = toPath;
+    moveData[ "isFolder" ] = isFolder;
+    return qMakePair( Move, moveData );
   }
 
   qWarning() << "Unknown operation type in WAL:" << op;
-  return qMakePair( Add, QVariant() ); // Return invalid entry
+  return qMakePair( Add, QVariantMap() ); // Return invalid entry
 }

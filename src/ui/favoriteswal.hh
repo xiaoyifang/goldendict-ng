@@ -25,17 +25,17 @@ public:
   ~FavoritesWAL();
 
   /// Log an add operation to the WAL
-  bool logAdd( const QStringList & path );
+  bool logAdd( const QStringList & path, bool isFolder = false );
 
   /// Log a remove operation to the WAL
-  bool logRemove( const QStringList & path );
+  bool logRemove( const QStringList & path, bool isFolder = false );
 
   /// Log a move operation to the WAL
-  bool logMove( const QStringList & fromPath, const QStringList & toPath );
+  bool logMove( const QStringList & fromPath, const QStringList & toPath, bool isFolder = false );
 
   /// Replay all operations from the WAL
   /// Returns list of operations to be applied
-  QList< QPair< OperationType, QVariant > > replay();
+  QList< QPair< OperationType, QVariantMap > > replay();
 
   /// Clear the WAL file (called after successful compaction)
   bool clear();
