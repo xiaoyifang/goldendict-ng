@@ -1422,16 +1422,6 @@ download page.</string>
         </widget>
        </item>
        <item>
-        <widget class="QCheckBox" name="suppressWebDialogs">
-         <property name="toolTip">
-          <string>Suppress JavaScript alerts, confirms, and prompts in the article view.</string>
-         </property>
-         <property name="text">
-          <string>Suppress JavaScript dialogs</string>
-         </property>
-        </widget>
-       </item>
-       <item>
         <spacer name="verticalSpacer_3">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -1959,6 +1949,16 @@ from Stardict, Babylon and GLS dictionaries</string>
            <widget class="QCheckBox" name="openWebsiteInNewTab">
             <property name="text">
              <string>Open website dictionary in seperate tab</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="suppressWebDialogs">
+            <property name="toolTip">
+             <string>Suppress JavaScript alerts, confirms, and prompts in the article view.</string>
+            </property>
+            <property name="text">
+             <string>Suppress JavaScript dialogs</string>
             </property>
            </widget>
           </item>
