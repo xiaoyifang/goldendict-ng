@@ -284,18 +284,6 @@
       <translation>製作anki note</translation>
     </message>
     <message>
-      <source>Error Loading</source>
-      <translation>載入錯誤</translation>
-    </message>
-    <message>
-      <source>Page Load Failed</source>
-      <translation>頁面載入失敗</translation>
-    </message>
-    <message>
-      <source>Unable to load the requested page content</source>
-      <translation>無法加載所請求的頁面內容</translation>
-    </message>
-    <message>
       <source>&amp;Copy sound to clipboard</source>
       <translation>將聲音複製到剪貼簿(&amp;C)</translation>
     </message>
@@ -3516,6 +3504,14 @@ from Stardict, Babylon and GLS dictionaries</source>
     <message>
       <source>S&amp;can</source>
       <translation type="unfinished">S&amp;can</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
+      <translation type="unfinished">Suppress JavaScript alerts, confirms, and prompts in the article view.</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript dialogs</source>
+      <translation type="unfinished">Suppress JavaScript dialogs</translation>
     </message>
   </context>
   <context>
