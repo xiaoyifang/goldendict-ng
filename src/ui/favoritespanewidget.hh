@@ -17,6 +17,7 @@
 #include "delegate.hh"
 
 class FavoritesModel;
+class FavoritesWAL;
 
 class TreeItem;
 class FavoritesPaneWidget: public QWidget
@@ -295,6 +296,7 @@ private:
   TreeItem * rootItem;
   QDomDocument dom;
   bool dirty;
+  FavoritesWAL * m_wal;
 };
 
 #define FAVORITES_MIME_TYPE "application/x-goldendict-tree-items"
