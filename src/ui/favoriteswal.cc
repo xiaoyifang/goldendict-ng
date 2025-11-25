@@ -109,39 +109,17 @@ bool FavoritesWAL::hasEntries() const
 
 bool FavoritesWAL::appendEntry( const QString & line )
 {
-  // Use QSaveFile for atomic writes
-  QSaveFile file( m_walFilename );
+  QFile file( m_walFilename );
 
-  // Read existing content
-  QByteArray existingContent;
-  if ( QFile::exists( m_walFilename ) ) {
-    QFile existing( m_walFilename );
-    if ( existing.open( QIODevice::ReadOnly ) ) {
-      existingContent = existing.readAll();
-      existing.close();
-    }
-  }
-
-  // Open for writing
-  if ( !file.open( QIODevice::WriteOnly | QIODevice::Text ) ) {
-    qWarning() << "Failed to open WAL file for writing:" << m_walFilename;
+  // Open for appending
+  if ( !file.open( QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text ) ) {
+    qWarning() << "Failed to open WAL file for appending:" << m_walFilename;
     return false;
   }
 
-  // Write existing content + new entry
-  if ( !existingContent.isEmpty() ) {
-    file.write( existingContent );
-    if ( !existingContent.endsWith( '\n' ) ) {
-      file.write( "\n" );
-    }
-  }
   file.write( line.toUtf8() );
   file.write( "\n" );
-
-  if ( !file.commit() ) {
-    qWarning() << "Failed to commit WAL entry:" << file.errorString();
-    return false;
-  }
+  file.close();
 
   return true;
 }
