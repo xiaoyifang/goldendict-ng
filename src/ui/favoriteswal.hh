@@ -34,6 +34,25 @@ public:
     {
       return type == AddFolder || type == RemoveFolder || type == MoveFolder;
     }
+
+    QString toString() const {
+      QString typeStr;
+      switch ( type ) {
+        case Add: typeStr = "Add"; break;
+        case Remove: typeStr = "Remove"; break;
+        case Move: typeStr = "Move"; break;
+        case AddFolder: typeStr = "AddFolder"; break;
+        case RemoveFolder: typeStr = "RemoveFolder"; break;
+        case MoveFolder: typeStr = "MoveFolder"; break;
+        default: typeStr = "Unknown"; break;
+      }
+      
+      QString result = typeStr + ": " + path.join( "/" );
+      if ( type == Move || type == MoveFolder ) {
+        result += " -> " + destPath.join( "/" );
+      }
+      return result;
+    }
   };
 
   explicit FavoritesWAL( const QString & walFilename, QObject * parent = nullptr );
