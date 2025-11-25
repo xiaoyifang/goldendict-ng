@@ -24,12 +24,14 @@ public:
     MoveFolder
   };
 
-  struct Entry {
+  struct Entry
+  {
     OperationType type;
-    QStringList path;      // Used for Add/Remove, and as Source for Move
-    QStringList destPath;  // Used for Move (Destination)
+    QStringList path;     // Used for Add/Remove, and as Source for Move
+    QStringList destPath; // Used for Move (Destination)
 
-    bool isFolder() const {
+    bool isFolder() const
+    {
       return type == AddFolder || type == RemoveFolder || type == MoveFolder;
     }
   };

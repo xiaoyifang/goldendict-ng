@@ -793,17 +793,17 @@ bool FavoritesModel::setData( const QModelIndex & index, const QVariant & value,
 
   TreeItem * item = getItem( index );
 
-    // Log to WAL: rename is treated as move
-    if ( m_wal ) {
-      bool isFolder       = ( item->type() == TreeItem::Folder );
-      QStringList oldPath = item->fullPath();
+  // Log to WAL: rename is treated as move
+  if ( m_wal ) {
+    bool isFolder       = ( item->type() == TreeItem::Folder );
+    QStringList oldPath = item->fullPath();
 
-      // Create new path with new name
-      QStringList newPath = oldPath;
-      newPath.last()      = value.toString();
-      
-      m_wal->logMove( oldPath, newPath, isFolder );
-    }
+    // Create new path with new name
+    QStringList newPath = oldPath;
+    newPath.last()      = value.toString();
+
+    m_wal->logMove( oldPath, newPath, isFolder );
+  }
 
   item->setData( value );
 
