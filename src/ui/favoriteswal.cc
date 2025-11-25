@@ -98,17 +98,11 @@ QList< FavoritesWAL::Entry > FavoritesWAL::replay()
       continue;
     }
 
-<<<<<<< HEAD
-    QPair< FavoritesWAL::OperationType, QVariantMap > op = parseEntry( line );
-    if ( op.first != Add && op.first != Remove && op.first != Move && op.first != AddFolder
-         && op.first != RemoveFolder ) {
-=======
     Entry op = parseEntry( line );
     // Check if operation type is valid (Add is 0, so we need a better check or rely on empty map)
     // However, parseEntry returns Add with empty map on failure.
     // Let's check if the path is empty for Add/Remove/Move operations which should have data.
     if ( op.path.isEmpty() ) {
->>>>>>> b587f8ef (1)
       qWarning() << "Invalid WAL entry, skipping:" << line;
       continue;
     }
