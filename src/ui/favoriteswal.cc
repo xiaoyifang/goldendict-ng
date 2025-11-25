@@ -26,55 +26,20 @@ FavoritesWAL::~FavoritesWAL()
 
 bool FavoritesWAL::logAdd( const QStringList & path, bool isFolder )
 {
-<<<<<<< HEAD
-  QJsonObject entry;
-  // 使用不同的操作类型字符串来区分普通添加和文件夹添加
-  entry[ "op" ]   = isFolder ? "addfolder" : "add";
-  entry[ "ts" ]   = QDateTime::currentSecsSinceEpoch();
-  entry[ "path" ] = QJsonArray::fromStringList( path );
-
-  QJsonDocument doc( entry );
-  return appendEntry( doc.toJson( QJsonDocument::Compact ) );
-=======
   QString line = ( isFolder ? "++ " : "+ " ) + serializePath( path );
   return appendEntry( line );
->>>>>>> b587f8ef (1)
 }
 
 bool FavoritesWAL::logRemove( const QStringList & path, bool isFolder )
 {
-<<<<<<< HEAD
-  QJsonObject entry;
-  // 使用不同的操作类型字符串来区分普通删除和文件夹删除
-  entry[ "op" ]   = isFolder ? "removefolder" : "remove";
-  entry[ "ts" ]   = QDateTime::currentSecsSinceEpoch();
-  entry[ "path" ] = QJsonArray::fromStringList( path );
-
-  QJsonDocument doc( entry );
-  return appendEntry( doc.toJson( QJsonDocument::Compact ) );
-=======
   QString line = ( isFolder ? "-- " : "- " ) + serializePath( path );
   return appendEntry( line );
->>>>>>> b587f8ef (1)
 }
 
 bool FavoritesWAL::logMove( const QStringList & fromPath, const QStringList & toPath, bool isFolder )
 {
-<<<<<<< HEAD
-  QJsonObject entry;
-  entry[ "op" ]   = "move";
-  entry[ "ts" ]   = QDateTime::currentSecsSinceEpoch();
-  entry[ "from" ] = QJsonArray::fromStringList( fromPath );
-  entry[ "to" ]   = QJsonArray::fromStringList( toPath );
-  // Move操作仍然需要isFolder字段，因为它没有单独的文件夹版本
-  entry[ "isFolder" ] = isFolder;
-
-  QJsonDocument doc( entry );
-  return appendEntry( doc.toJson( QJsonDocument::Compact ) );
-=======
   QString line = ( isFolder ? ">> " : "> " ) + serializePath( fromPath ) + " | " + serializePath( toPath );
   return appendEntry( line );
->>>>>>> b587f8ef (1)
 }
 
 QList< FavoritesWAL::Entry > FavoritesWAL::replay()
