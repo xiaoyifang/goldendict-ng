@@ -592,92 +592,99 @@ FavoritesModel::FavoritesModel( QString favoritesFilename, QObject * parent ):
     auto operations = m_wal->replay();
 
     for ( const auto & op : operations ) {
-      if ( op.type == FavoritesWAL::Add || op.type == FavoritesWAL::AddFolder ) {
-        QStringList path = op.path;
-        bool isFolder    = ( op.type == FavoritesWAL::AddFolder );
+      try {
+        if ( op.type == FavoritesWAL::Add || op.type == FavoritesWAL::AddFolder ) {
+          QStringList path = op.path;
+          bool isFolder    = ( op.type == FavoritesWAL::AddFolder );
 
-        // Skip if path is empty
-        if ( path.isEmpty() ) {
-          continue;
-        }
-
-        // Check if this item already exists (could be a folder created by forceFolder)
-        TreeItem * existingItem = getItemByFullPath( path );
-        if ( existingItem ) {
-          // Item already exists, skip
-          continue;
-        }
-
-        QString itemName       = path.last();
-        QStringList parentPath = path;
-        parentPath.removeLast();
-
-        // Navigate to parent folder (creates folders if needed)
-        QModelIndex parentIdx = QModelIndex();
-        for ( const QString & folderName : parentPath ) {
-          parentIdx = forceFolder( folderName, parentIdx );
-        }
-
-        // Add item according to its type
-        if ( isFolder ) {
-          // Force folder creation with the exact name
-          forceFolder( itemName, parentIdx );
-        }
-        else {
-          // Try to add as word
-          addHeadword( itemName, parentIdx );
-        }
-      }
-      else if ( op.type == FavoritesWAL::Remove || op.type == FavoritesWAL::RemoveFolder ) {
-        QStringList path = op.path;
-
-        if ( !path.isEmpty() ) {
-          TreeItem * item = getItemByFullPath( path );
-          if ( item && item->parent() ) {
-            QModelIndex itemIdx = getModelIndexByFullPath( path );
-            if ( itemIdx.isValid() ) {
-              removeRows( itemIdx.row(), 1, FavoritesModel::parent( itemIdx ) );
-            }
-          }
-        }
-      }
-      else if ( op.type == FavoritesWAL::Move || op.type == FavoritesWAL::MoveFolder ) {
-        // Handle move operations (remove from old location, add to new location)
-        QStringList fromPath = op.path;
-        QStringList toPath   = op.destPath;
-        bool isFolder        = ( op.type == FavoritesWAL::MoveFolder );
-
-        if ( !fromPath.isEmpty() && !toPath.isEmpty() ) {
-          // First, remove from old location
-          TreeItem * item = getItemByFullPath( fromPath );
-          if ( item && item->parent() ) {
-            QModelIndex fromIdx = getModelIndexByFullPath( fromPath );
-            if ( fromIdx.isValid() ) {
-              removeRows( fromIdx.row(), 1, FavoritesModel::parent( fromIdx ) );
-            }
-          }
-
-          // Then, add to new location
-          if ( toPath.isEmpty() ) {
+          // Skip if path is empty
+          if ( path.isEmpty() ) {
             continue;
           }
-          QString itemName          = toPath.last();
-          QStringList newFolderPath = toPath;
-          newFolderPath.removeLast();
 
+          // Check if this item already exists (could be a folder created by forceFolder)
+          TreeItem * existingItem = getItemByFullPath( path );
+          if ( existingItem ) {
+            // Item already exists, skip
+            continue;
+          }
+
+          QString itemName       = path.last();
+          QStringList parentPath = path;
+          parentPath.removeLast();
+
+          // Navigate to parent folder (creates folders if needed)
           QModelIndex parentIdx = QModelIndex();
-          for ( const QString & folderName : newFolderPath ) {
+          for ( const QString & folderName : parentPath ) {
             parentIdx = forceFolder( folderName, parentIdx );
           }
 
           // Add item according to its type
           if ( isFolder ) {
+            // Force folder creation with the exact name
             forceFolder( itemName, parentIdx );
           }
           else {
+            // Try to add as word
             addHeadword( itemName, parentIdx );
           }
         }
+        else if ( op.type == FavoritesWAL::Remove || op.type == FavoritesWAL::RemoveFolder ) {
+          QStringList path = op.path;
+
+          if ( !path.isEmpty() ) {
+            TreeItem * item = getItemByFullPath( path );
+            if ( item && item->parent() ) {
+              QModelIndex itemIdx = getModelIndexByFullPath( path );
+              if ( itemIdx.isValid() ) {
+                removeRows( itemIdx.row(), 1, FavoritesModel::parent( itemIdx ) );
+              }
+            }
+          }
+        }
+        else if ( op.type == FavoritesWAL::Move || op.type == FavoritesWAL::MoveFolder ) {
+          // Handle move operations (remove from old location, add to new location)
+          QStringList fromPath = op.path;
+          QStringList toPath   = op.destPath;
+          bool isFolder        = ( op.type == FavoritesWAL::MoveFolder );
+
+          if ( !fromPath.isEmpty() && !toPath.isEmpty() ) {
+            // First, remove from old location
+            TreeItem * item = getItemByFullPath( fromPath );
+            if ( item && item->parent() ) {
+              QModelIndex fromIdx = getModelIndexByFullPath( fromPath );
+              if ( fromIdx.isValid() ) {
+                removeRows( fromIdx.row(), 1, FavoritesModel::parent( fromIdx ) );
+              }
+            }
+
+            // Then, add to new location
+            if ( toPath.isEmpty() ) {
+               continue;
+            }
+            QString itemName          = toPath.last();
+            QStringList newFolderPath = toPath;
+            newFolderPath.removeLast();
+
+            QModelIndex parentIdx = QModelIndex();
+            for ( const QString & folderName : newFolderPath ) {
+              parentIdx = forceFolder( folderName, parentIdx );
+            }
+
+            // Add item according to its type
+            if ( isFolder ) {
+              forceFolder( itemName, parentIdx );
+            }
+            else {
+              addHeadword( itemName, parentIdx );
+            }
+          }
+        }
+      }
+      catch ( ... ) {
+        // Ignore any exception and continue with next operation
+        qWarning() << "Exception occurred while replaying WAL entry, skipping";
+        continue;
       }
     }
 
