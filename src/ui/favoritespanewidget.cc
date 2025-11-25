@@ -683,7 +683,7 @@ FavoritesModel::FavoritesModel( QString favoritesFilename, QObject * parent ):
       }
       catch ( ... ) {
         // Ignore any exception and continue with next operation
-        qWarning() << "Exception occurred while replaying WAL entry, skipping";
+        qWarning() << "Exception occurred while replaying WAL entry, skipping" << op;
         continue;
       }
     }
