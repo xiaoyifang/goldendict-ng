@@ -53,6 +53,7 @@
         <file>icons/ontop.svg</file>
         <file>icons/addtab.svg</file>
         <file>icons/book.svg</file>
+        <file>icons/font.svg</file>
         <file>icons/bookcase.svg</file>
         <file>icons/closetab.svg</file>
         <file>icons/configure.svg</file>
@@ -104,6 +105,7 @@
         <file>icons/splash.png</file>
         <file>icons/fts_disabled.svg</file>
         <file>icons/fts_enabled.svg</file>
+        <file>icons/scan.svg</file>
         <file>icons/sc.svg</file>
         <file>icons/tc.svg</file>
         <file>icons/hk.svg</file>

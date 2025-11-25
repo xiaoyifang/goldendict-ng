@@ -355,6 +355,7 @@ struct Preferences
     false;
 #endif
   bool openWebsiteInNewTab = false;
+  bool suppressWebDialogs  = false;
 
   qreal zoomFactor;
   qreal helpZoomFactor;

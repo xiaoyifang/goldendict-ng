@@ -65,38 +65,32 @@ class Indexing: public QObject, public QRunnable
   QAtomicInt & isCancelled;
   const std::vector< sptr< Dictionary::Class > > & dictionaries;
   QSemaphore & hasExited;
-  QTimer * timer;
-  QThread * timerThread;
 
 public:
   Indexing( QAtomicInt & cancelled, const std::vector< sptr< Dictionary::Class > > & dicts, QSemaphore & hasExited_ ):
     isCancelled( cancelled ),
     dictionaries( dicts ),
-    hasExited( hasExited_ ),
-    timer( new QTimer( nullptr ) ), // must be null since it will live in separate thread
-    timerThread( new QThread( this ) )
+    hasExited( hasExited_ )
   {
-    connect( timer, &QTimer::timeout, this, &Indexing::timeout );
-    timer->moveToThread( timerThread );
-    connect( timerThread, &QThread::started, timer, [ this ]() {
-      timer->start( 2000 );
-    } );
-    connect( timerThread, &QThread::finished, timer, &QTimer::stop );
-    connect( timerThread, &QThread::finished, timer, &QObject::deleteLater );
+    setAutoDelete( true ); // Ensure QThreadPool deletes this instance
   }
 
   ~Indexing()
   {
-    emit sendNowIndexingName( QString() );
     hasExited.release();
   }
 
   virtual void run();
 
+  const std::vector< sptr< Dictionary::Class > > & getDictionaries() const
+  {
+    return dictionaries;
+  }
+
 signals:
   void sendNowIndexingName( QString );
 
-private slots:
+public slots:
   void timeout();
 };
 
@@ -108,6 +102,7 @@ public:
   FtsIndexing( const std::vector< sptr< Dictionary::Class > > & dicts );
   virtual ~FtsIndexing()
   {
+    timer.stop();
     stopIndexing();
   }
 
@@ -137,9 +132,12 @@ private:
   bool started;
   QString nowIndexing;
   QMutex nameMutex;
+  QTimer timer;
+  Indexing * indexing;
 
 private slots:
   void setNowIndexedName( const QString & name );
+  void onTimeout();
 
 signals:
   void newIndexingName( QString name );

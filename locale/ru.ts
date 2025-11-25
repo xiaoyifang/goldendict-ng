@@ -781,6 +781,14 @@ between classic and school orthography in cyrillic)</source>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
       <translation>Для переиндексации был запланирован словарь. Индекс будет перестроен при следующем перезапуске приложения.</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Изменить отображаемое имя</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Новое отображаемое имя:</translation>
+    </message>
   </context>
   <context>
     <name>EditDictionaries</name>
@@ -2535,38 +2543,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>Печать статьи</translation>
     </message>
     <message>
-      <source>Complete Html (*.html *.htm)</source>
-      <translation>Полный HTML (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Single Html (*.html *.htm)</source>
-      <translation>Один HTML (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Mime Html (*.mhtml)</source>
-      <translation>Mime-HTML (*.mhtml)</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>Сохранить статью как</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>Ошибка</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>Невозможно сохранить статью: %1</translation>
-    </message>
-    <message>
-      <source>Saving article...</source>
-      <translation>Сохранение статьи...</translation>
-    </message>
-    <message>
-      <source>Save article complete</source>
-      <translation>Статья сохранена</translation>
-    </message>
-    <message>
       <source>The main window is set to be always on top.</source>
       <translation>Главное окно всегда поверх других окон.</translation>
     </message>
@@ -2657,18 +2633,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Show</source>
       <translation>Показать</translation>
-    </message>
-    <message>
-      <source>Save PDF complete</source>
-      <translation>PDF файл сохранен</translation>
-    </message>
-    <message>
-      <source>Save PDF failed</source>
-      <translation>Сохранить PDF не удалось</translation>
-    </message>
-    <message>
-      <source>PDF document (*.pdf *.PDF)</source>
-      <translation>PDF документ (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Lock Panels</source>
@@ -2796,6 +2760,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Dictionaries active: %1, inactive: %2</source>
       <translation>Словарей активных: %1, неактивных: %2</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation>Изменить отображаемое имя</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>Новое отображаемое имя:</translation>
+    </message>
   </context>
   <context>
     <name>PathsModel</name>
@@ -2837,14 +2809,6 @@ switching to them.</source>
     <message>
       <source>Open new tabs in background</source>
       <translation>Открывать новые вкладки в фоне</translation>
-    </message>
-    <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>Если данная опция включена, новые вкладки будут
-открываться сразу за текущей, вместо того чтобы
-добавляться в конец..</translation>
     </message>
     <message>
       <source>Open new tabs after the current one</source>
@@ -2946,8 +2910,124 @@ the application.</source>
       <translation>Предел количества словарей в контекстном меню:</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>По умолчанию</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>По умолчанию</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>Классика</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>Современный</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>Lingvo</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>Вавилон</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>Лингосы</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>Лингос-синий</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>В некоторых системах функция Auto не выполняет никаких действий.</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>Перезапустите программу, чтобы изменение языка вошло в силу.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>Перезапустите, чтобы применить изменение стиля интерфейса.</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>Перезапустите, чтобы применить изменение шрифта интерфейса.</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>Требуется перезагрузка</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>Давать возможность</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>Запрещать</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>Автоматический</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>Нет</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation>Выберите этот параметр, если don&apos;t хотите увидеть главную панель вкладок, когда открыта только одна вкладка
+                  .
+                 </translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation type="unfinished">With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation>&amp;Стиль</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>Появление</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>Включить шрифт интерфейса</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>Язык интерфейса</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>Стиль отображения статьи</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>Стиль дополнения</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>Стиль интерфейса</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2964,6 +3044,14 @@ the application.</source>
     <message>
       <source>Dark Reader Mode</source>
       <translation>Темная тема просмотрщика</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>Предпросмотр шрифта</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng это словарь программного обеспечения.</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -2988,10 +3076,6 @@ the application.</source>
     <message>
       <source>Monospace Font</source>
       <translation>Моноширинный шрифт</translation>
-    </message>
-    <message>
-      <source>&amp;Popup</source>
-      <translation>&amp;Всплывающее окно</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
@@ -3326,14 +3410,6 @@ GoldenDict. Если новая версия появилась, програм�
       <translation>Максимальный размер журнала:</translation>
     </message>
     <message>
-      <source>Save every</source>
-      <translation>Сохранять каждые</translation>
-    </message>
-    <message>
-      <source>minutes</source>
-      <translation>минут</translation>
-    </message>
-    <message>
       <source>Favorites</source>
       <translation>Избранное</translation>
     </message>
@@ -3341,6 +3417,14 @@ GoldenDict. Если новая версия появилась, програм�
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>Интервал сохранения Избранного. Если он установлен в 0,
 журнал будет сохраняться только при выходе из программы.</translation>
+    </message>
+    <message>
+      <source>Save every</source>
+      <translation>Сохранять каждые</translation>
+    </message>
+    <message>
+      <source>minutes</source>
+      <translation>минут</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3439,124 +3523,16 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Удалить неверный индекс при выходе</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>По умолчанию</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>По умолчанию</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>Классика</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>Современный</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>Вавилон</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>Лингосы</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>Лингос-синий</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>В некоторых системах функция Auto не выполняет никаких действий.</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>Перезапустите программу, чтобы изменение языка вошло в силу.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>Перезапустите, чтобы применить изменение стиля интерфейса.</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>Перезапустите, чтобы применить изменение шрифта интерфейса.</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>Требуется перезагрузка</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>Давать возможность</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>Запрещать</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>Автоматический</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>Сохранить отладочные сообщения в gd_log.txt в папке конфигурации</translation>
-    </message>
-    <message>
-      <source>Interface language</source>
-      <translation>Язык интерфейса</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>Стиль отображения статьи</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>Стиль дополнения</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>Стиль интерфейса</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>Предпросмотр шрифта</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation>GoldenDict-ng это словарь программного обеспечения.</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation>Включить шрифт интерфейса</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>Нет</translation>
     </message>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>Открыть словарь сайта в отдельной вкладке</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation>Выберите этот параметр, если don&apos;t хотите увидеть главную панель вкладок, когда открыта только одна вкладка
-                  .
-                 </translation>
+      <source>S&amp;can</source>
+      <translation>&amp;Сканировать</translation>
     </message>
   </context>
   <context>
@@ -3710,6 +3686,50 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
       <translation>В Url, &quot;%GDWORD%&quot; будет заменена на поисковое слово.</translation>
     </message>
+    <message>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Complete Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>Единый Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF документ (*.pdf *.PDF)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime Html (*.mhtml)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation>Сохранить статью как</translation>
+    </message>
+    <message>
+      <source>Save article complete</source>
+      <translation>Статья сохранена</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>Ошибка</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation>Может&apos;т сохранить статью: %1</translation>
+    </message>
+    <message>
+      <source>Saving article...</source>
+      <translation>Сохранение статьи...</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>PDF файл сохранен</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>Сохранить PDF не удалось</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3805,6 +3825,10 @@ from Stardict, Babylon and GLS dictionaries</source>
 could be resized or managed in other ways.</source>
       <translation>Используйте это для закрепления окна, чтобы оно оставалось на экране,
 может быть изменено или изменено другими способами.</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>Сохранить статью</translation>
     </message>
   </context>
   <context>

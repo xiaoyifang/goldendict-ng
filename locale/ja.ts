@@ -20,7 +20,7 @@
     <name>AnkiConnector</name>
     <message>
       <source>Anki: can&apos;t create a card without a word</source>
-      <translation>Anki: can&apos;t create a card without a word</translation>
+      <translation>Anki: 単語がないとカードを作成できません</translation>
     </message>
     <message>
       <source>Anki search: AnkiConnect is not enabled.</source>
@@ -81,22 +81,21 @@
         &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
       &lt;/footer&gt;
     &lt;/div&gt;</source>
-      <translation type="unfinished">
-    &lt;div class=&quot;welcome-container&quot;&gt;
-      &lt;h3&gt;Welcome to &lt;strong&gt;GoldenDict-ng&lt;/strong&gt;!&lt;/h3&gt;
-      &lt;section&gt;
-        &lt;h4&gt;To get started:&lt;/h4&gt;
-        &lt;ul&gt;
-          &lt;li&gt;Go to &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Dictionaries&lt;/span&gt;&lt;/span&gt; to add your dictionary files, set up online sources like Wikipedia, and organize them into groups.&lt;/li&gt;
-          &lt;li&gt;Once set up, you can look up words in this window or &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;from other applications using the Scan Popup&lt;/a&gt;.&lt;/li&gt;
-          &lt;li&gt;To customize the program, explore the settings in &lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;Edit&lt;/span&gt;&lt;span&gt;Preferences&lt;/span&gt;&lt;/span&gt;. All settings have tooltips, so be sure to read them if anything is unclear.&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/section&gt;
-      &lt;p&gt;Should you need further help, have any questions, or suggestions, you are welcome at the program&apos;s &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;forum&lt;/a&gt; and &lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
-      &lt;footer class=&quot;welcome-footer&quot;&gt;
-        &lt;small&gt;Based on the original GoldenDict by Konstantin Isakov (c) 2008-2013. Maintained and developed by the GoldenDict-NG Community. Licensed under GPLv3 or later.&lt;/small&gt;
-      &lt;/footer&gt;
-    &lt;/div&gt;</translation>
+      <translation>&lt;div class=&quot;welcome-container&quot;&gt;
+&lt;h3&gt;&lt;strong&gt;GoldenDict-ng&lt;/strong&gt; へようこそ！&lt;/h3&gt;
+&lt;section&gt;
+&lt;h4&gt;始めるには:&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;「&lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;編集&lt;/span&gt;&lt;span&gt;辞書&lt;/span&gt;&lt;/span&gt;」に移動して、辞書ファイルを追加し、Wikipedia などのオンラインソースを設定して、グループに整理します。&lt;/li&gt;
+&lt;li&gt;設定が完了すると、このウィンドウ、または &lt;a href=&quot;https://xiaoyifang.github.io/goldendict-ng/ui_popup/&quot;&gt;「スキャンポップアップ」を使用して他のアプリケーションから&lt;/a&gt;単語を検索できるようになります。&lt;/li&gt;
+&lt;li&gt;プログラムをカスタマイズするには、「&lt;span class=&quot;menu-path&quot;&gt;&lt;span&gt;編集&lt;/span&gt;&lt;span&gt;設定&lt;/span&gt;&lt;/span&gt;」の設定を確認してください。すべての設定にはツールチップが表示されますので、不明な点があれば必ずお読みください。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/section&gt;
+&lt;p&gt;さらにサポートが必要な場合、ご質問やご提案がございましたら、プログラムの&lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng/discussions&quot;&gt;フォーラム&lt;/a&gt;および&lt;a href=&quot;https://github.com/xiaoyifang/goldendict-ng&quot;&gt;ウェブサイト&lt;/a&gt;をご利用ください。&lt;/p&gt;
+&lt;footer class=&quot;welcome-footer&quot;&gt;
+&lt;small&gt;Konstantin Isakov氏によるオリジナルのGoldenDict (c) 2008-2013に基づいています。GoldenDict-NGコミュニティによって保守および開発されています。GPLv3以降のライセンスが適用されます。&lt;/small&gt;
+&lt;/footer&gt;
+&lt;/div&gt;</translation>
     </message>
   </context>
   <context>
@@ -778,6 +777,14 @@ between classic and school orthography in cyrillic)</source>
     <message>
       <source>The dictionary has been scheduled for reindexing. The index will be rebuilt on the next application restart.</source>
       <translation>辞書の再インデックスがスケジュールされています。インデックスは次のアプリケーションの再起動時に再構築されます。</translation>
+    </message>
+    <message>
+      <source>Change display name</source>
+      <translation>表示名の変更</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>新しい表示名:</translation>
     </message>
   </context>
   <context>
@@ -2532,38 +2539,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <translation>記事の印刷</translation>
     </message>
     <message>
-      <source>Complete Html (*.html *.htm)</source>
-      <translation>完全な HTML (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Single Html (*.html *.htm)</source>
-      <translation>単一の HTML (*.html *.htm)</translation>
-    </message>
-    <message>
-      <source>Mime Html (*.mhtml)</source>
-      <translation>MIME HTML (*.mhtml)</translation>
-    </message>
-    <message>
-      <source>Save Article As</source>
-      <translation>名前を付けて記事を保存</translation>
-    </message>
-    <message>
-      <source>Error</source>
-      <translation>エラー</translation>
-    </message>
-    <message>
-      <source>Can&apos;t save article: %1</source>
-      <translation>記事を保存できません: %1</translation>
-    </message>
-    <message>
-      <source>Saving article...</source>
-      <translation>記事を保存しています...</translation>
-    </message>
-    <message>
-      <source>Save article complete</source>
-      <translation>記事の保存が完了しました</translation>
-    </message>
-    <message>
       <source>The main window is set to be always on top.</source>
       <translation>メインウィンドウは常に上に設定されています。</translation>
     </message>
@@ -2654,18 +2629,6 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     <message>
       <source>Show</source>
       <translation>表示</translation>
-    </message>
-    <message>
-      <source>Save PDF complete</source>
-      <translation>PDFの保存が完了しました</translation>
-    </message>
-    <message>
-      <source>Save PDF failed</source>
-      <translation>PDFの保存に失敗しました</translation>
-    </message>
-    <message>
-      <source>PDF document (*.pdf *.PDF)</source>
-      <translation>PDF ドキュメント (*.pdf *.PDF)</translation>
     </message>
     <message>
       <source>Lock Panels</source>
@@ -2793,6 +2756,14 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
       <source>Dictionaries active: %1, inactive: %2</source>
       <translation>辞書はアクティブ: %1, 非アクティブ: %2</translation>
     </message>
+    <message>
+      <source>Change display name</source>
+      <translation>表示名の変更</translation>
+    </message>
+    <message>
+      <source>New display name:</source>
+      <translation>新しい表示名:</translation>
+    </message>
   </context>
   <context>
     <name>PathsModel</name>
@@ -2834,14 +2805,6 @@ switching to them.</source>
     <message>
       <source>Open new tabs in background</source>
       <translation>背景で新しいタブを開く</translation>
-    </message>
-    <message>
-      <source>With this on, new tabs are opened just after the
-current, active one. Otherwise they are added to
-be the last ones.</source>
-      <translation>これがオンだと、新しいタブは現在の
-アクティブなものの後に開かれます。
-そうでなければ最後に追加されます。</translation>
     </message>
     <message>
       <source>Open new tabs after the current one</source>
@@ -2942,8 +2905,122 @@ the application.</source>
       <translation>コンテキストメニュー辞書の制限:</translation>
     </message>
     <message>
+      <source>System default</source>
+      <translation>システム既定</translation>
+    </message>
+    <message>
+      <source>Default</source>
+      <translation>既定</translation>
+    </message>
+    <message>
+      <source>Classic</source>
+      <translation>クラシック</translation>
+    </message>
+    <message>
+      <source>Modern</source>
+      <translation>モダンな</translation>
+    </message>
+    <message>
+      <source>Lingvo</source>
+      <translation>Lingvo</translation>
+    </message>
+    <message>
+      <source>Babylon</source>
+      <translation>Babylon</translation>
+    </message>
+    <message>
+      <source>Lingoes</source>
+      <translation>Lingoes</translation>
+    </message>
+    <message>
+      <source>Lingoes-Blue</source>
+      <translation>ランゴー・ブルー</translation>
+    </message>
+    <message>
+      <source>Auto does nothing on some systems.</source>
+      <translation>一部のシステムでは自動では何も実行されません。</translation>
+    </message>
+    <message>
+      <source>Restart the program to apply the language change.</source>
+      <translation>言語の変更を適用するにはプログラムを再起動します。</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface style change.</source>
+      <translation>再起動してインターフェイス スタイルの変更を適用します。</translation>
+    </message>
+    <message>
+      <source>Restart to apply the interface font change.</source>
+      <translation>インターフェースのフォントの変更を適用するには再起動してください。</translation>
+    </message>
+    <message>
+      <source>Restart needed</source>
+      <translation>再起動が必要です</translation>
+    </message>
+    <message>
+      <source>Enable</source>
+      <translation>有効にする</translation>
+    </message>
+    <message>
+      <source>Disable</source>
+      <translation>無効にする</translation>
+    </message>
+    <message>
+      <source>Automatic</source>
+      <translation>自動</translation>
+    </message>
+    <message>
+      <source>None</source>
+      <translation>なし</translation>
+    </message>
+    <message>
+      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
+                  opened.
+                 </source>
+      <translation>1 つのタブのみを開いているときにメインのタブ バーを表示したくない場合は、このオプションを選択します。</translation>
+    </message>
+    <message>
+      <source>With this on, new tabs are opened just after the
+current, active one. Otherwise, they are added to
+be the last ones.</source>
+      <translation>これをオンにすると、
+現在のアクティブなタブの直後に新しいタブが開かれます。それ以外の場合は、
+最後のタブに追加されます。</translation>
+    </message>
+    <message>
+      <source>&amp;Style</source>
+      <translation>スタイル(&amp;S)</translation>
+    </message>
+    <message>
       <source>Appearance</source>
       <translation>外観</translation>
+    </message>
+    <message>
+      <source>Enable Interface Font</source>
+      <translation>インターフェースフォントを有効にする</translation>
+    </message>
+    <message>
+      <source>Font</source>
+      <translation>Font</translation>
+    </message>
+    <message>
+      <source>Font Size</source>
+      <translation>Font Size</translation>
+    </message>
+    <message>
+      <source>Interface language</source>
+      <translation>インターフェース言語</translation>
+    </message>
+    <message>
+      <source>Article Display style</source>
+      <translation>記事表示のスタイル</translation>
+    </message>
+    <message>
+      <source>Add-on style</source>
+      <translation>アドオンのスタイル</translation>
+    </message>
+    <message>
+      <source>Interface Style</source>
+      <translation>インターフェイスのスタイル</translation>
     </message>
     <message>
       <source>Turn the UI to dark.</source>
@@ -2960,6 +3037,14 @@ the application.</source>
     <message>
       <source>Dark Reader Mode</source>
       <translation>ダークリーダーモード</translation>
+    </message>
+    <message>
+      <source>Preview Font</source>
+      <translation>フォントをプレビュー</translation>
+    </message>
+    <message>
+      <source>GoldenDict-ng is a dictionary software.</source>
+      <translation>GoldenDict-ng は辞書ソフトウェアです。</translation>
     </message>
     <message>
       <source>These fonts will be applied when the fonts specified by a dictionary are not found.</source>
@@ -2984,10 +3069,6 @@ the application.</source>
     <message>
       <source>Monospace Font</source>
       <translation>等幅フォント</translation>
-    </message>
-    <message>
-      <source>&amp;Popup</source>
-      <translation>スキャン ポップアップ(&amp;S)</translation>
     </message>
     <message>
       <source>Chooses whether the clipboard monitoring will be turned on by default at the program&apos;s startup.</source>
@@ -3321,20 +3402,20 @@ download page.</source>
       <translation>履歴の最大サイズ:</translation>
     </message>
     <message>
-      <source>Save every</source>
-      <translation>保存間隔</translation>
-    </message>
-    <message>
-      <source>minutes</source>
-      <translation>分</translation>
-    </message>
-    <message>
       <source>Favorites</source>
       <translation>お気に入り</translation>
     </message>
     <message>
       <source>Favorites saving interval. If set to 0 Favorites will be saved only during exit.</source>
       <translation>お気に入り保存間隔。0に設定すると、終了時にのみ保存されます。</translation>
+    </message>
+    <message>
+      <source>Save every</source>
+      <translation>保存間隔</translation>
+    </message>
+    <message>
+      <source>minutes</source>
+      <translation>分</translation>
     </message>
     <message>
       <source>Turn this option on to confirm every operation of items deletion</source>
@@ -3433,124 +3514,16 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>終了時に無効なインデックスを削除する</translation>
     </message>
     <message>
-      <source>System default</source>
-      <translation>システム既定</translation>
-    </message>
-    <message>
-      <source>Default</source>
-      <translation>既定</translation>
-    </message>
-    <message>
-      <source>Classic</source>
-      <translation>クラシック</translation>
-    </message>
-    <message>
-      <source>Modern</source>
-      <translation>モダンな</translation>
-    </message>
-    <message>
-      <source>Lingvo</source>
-      <translation>Lingvo</translation>
-    </message>
-    <message>
-      <source>Babylon</source>
-      <translation>Babylon</translation>
-    </message>
-    <message>
-      <source>Lingoes</source>
-      <translation>Lingoes</translation>
-    </message>
-    <message>
-      <source>Lingoes-Blue</source>
-      <translation>ランゴー・ブルー</translation>
-    </message>
-    <message>
-      <source>Auto does nothing on some systems.</source>
-      <translation>一部のシステムでは自動では何も実行されません。</translation>
-    </message>
-    <message>
-      <source>Restart the program to apply the language change.</source>
-      <translation>言語の変更を適用するにはプログラムを再起動します。</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface style change.</source>
-      <translation>再起動してインターフェイス スタイルの変更を適用します。</translation>
-    </message>
-    <message>
-      <source>Restart to apply the interface font change.</source>
-      <translation>インターフェースのフォントの変更を適用するには再起動してください。</translation>
-    </message>
-    <message>
-      <source>Restart needed</source>
-      <translation>再起動が必要です</translation>
-    </message>
-    <message>
-      <source>Enable</source>
-      <translation>有効にする</translation>
-    </message>
-    <message>
-      <source>Disable</source>
-      <translation>無効にする</translation>
-    </message>
-    <message>
-      <source>Automatic</source>
-      <translation>自動</translation>
-    </message>
-    <message>
       <source>Save debug messages to gd_log.txt in the config folder</source>
       <translation>設定フォルダ内のgd_log.txtにデバッグメッセージを保存します</translation>
-    </message>
-    <message>
-      <source>Interface language</source>
-      <translation>インターフェース言語</translation>
-    </message>
-    <message>
-      <source>Article Display style</source>
-      <translation>記事表示のスタイル</translation>
-    </message>
-    <message>
-      <source>Add-on style</source>
-      <translation>アドオンのスタイル</translation>
-    </message>
-    <message>
-      <source>Interface Style</source>
-      <translation>インターフェイスのスタイル</translation>
-    </message>
-    <message>
-      <source>Preview Font</source>
-      <translation>フォントをプレビュー</translation>
-    </message>
-    <message>
-      <source>GoldenDict-ng is a dictionary software.</source>
-      <translation>GoldenDict-ng は辞書ソフトウェアです。</translation>
-    </message>
-    <message>
-      <source>Enable Interface Font</source>
-      <translation>インターフェースフォントを有効にする</translation>
-    </message>
-    <message>
-      <source>Font</source>
-      <translation>Font</translation>
-    </message>
-    <message>
-      <source>Font Size</source>
-      <translation>Font Size</translation>
-    </message>
-    <message>
-      <source>None</source>
-      <translation>なし</translation>
     </message>
     <message>
       <source>Open website dictionary in seperate tab</source>
       <translation>別タブでウェブサイト辞書を開く</translation>
     </message>
     <message>
-      <source>Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </source>
-      <translation type="unfinished">Select this option if you don&apos;t want to see the main tab bar when only a single tab is
-                  opened.
-                 </translation>
+      <source>S&amp;can</source>
+      <translation>缶(&amp;C)</translation>
     </message>
   </context>
   <context>
@@ -3704,6 +3677,50 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>In the Url, &quot;%GDWORD%&quot; will be replaced with the word being searched.</source>
       <translation>Url では、 &quot;%GDWORD%&quot; が検索されている単語に置き換えられます。</translation>
     </message>
+    <message>
+      <source>Complete Html (*.html *.htm)</source>
+      <translation>Complete Html (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>Single Html (*.html *.htm)</source>
+      <translation>シングルHtml (*.html *.htm)</translation>
+    </message>
+    <message>
+      <source>PDF document (*.pdf *.PDF)</source>
+      <translation>PDF ドキュメント (*.pdf *.PDF)</translation>
+    </message>
+    <message>
+      <source>Mime Html (*.mhtml)</source>
+      <translation>Mime Html (*.mhtml)</translation>
+    </message>
+    <message>
+      <source>Save Article As</source>
+      <translation>記事を別名保存</translation>
+    </message>
+    <message>
+      <source>Save article complete</source>
+      <translation>記事を保存完了しました</translation>
+    </message>
+    <message>
+      <source>Error</source>
+      <translation>エラー</translation>
+    </message>
+    <message>
+      <source>Can&apos;t save article: %1</source>
+      <translation>記事を保存できません: %1</translation>
+    </message>
+    <message>
+      <source>Saving article...</source>
+      <translation>記事を保存しています...</translation>
+    </message>
+    <message>
+      <source>Save PDF complete</source>
+      <translation>PDFの保存が完了しました</translation>
+    </message>
+    <message>
+      <source>Save PDF failed</source>
+      <translation>PDFの保存に失敗しました</translation>
+    </message>
   </context>
   <context>
     <name>QuickFilterLine</name>
@@ -3799,6 +3816,10 @@ from Stardict, Babylon and GLS dictionaries</source>
 could be resized or managed in other ways.</source>
       <translation>画面に表示されたままにするためにこれを使用すると、
 のサイズを変更したり、他の方法で管理することができます。</translation>
+    </message>
+    <message>
+      <source>Save Article</source>
+      <translation>記事の保存</translation>
     </message>
   </context>
   <context>
