@@ -659,7 +659,7 @@ FavoritesModel::FavoritesModel( QString favoritesFilename, QObject * parent ):
 
           // Then, add to new location
           if ( toPath.isEmpty() ) {
-             continue;
+            continue;
           }
           QString itemName          = toPath.last();
           QStringList newFolderPath = toPath;
