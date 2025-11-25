@@ -596,33 +596,36 @@ FavoritesModel::FavoritesModel( QString favoritesFilename, QObject * parent ):
         QStringList path = op.path;
         bool isFolder    = ( op.type == FavoritesWAL::AddFolder );
 
-        if ( !path.isEmpty() ) {
-          // Check if this item already exists (could be a folder created by forceFolder)
-          TreeItem * existingItem = getItemByFullPath( path );
-          if ( existingItem ) {
-            // Item already exists, skip
-            continue;
-          }
+        // Skip if path is empty
+        if ( path.isEmpty() ) {
+          continue;
+        }
 
-          QString itemName       = path.last();
-          QStringList parentPath = path;
-          parentPath.removeLast();
+        // Check if this item already exists (could be a folder created by forceFolder)
+        TreeItem * existingItem = getItemByFullPath( path );
+        if ( existingItem ) {
+          // Item already exists, skip
+          continue;
+        }
 
-          // Navigate to parent folder (creates folders if needed)
-          QModelIndex parentIdx = QModelIndex();
-          for ( const QString & folderName : parentPath ) {
-            parentIdx = forceFolder( folderName, parentIdx );
-          }
+        QString itemName       = path.last();
+        QStringList parentPath = path;
+        parentPath.removeLast();
 
-          // Add item according to its type
-          if ( isFolder ) {
-            // Force folder creation with the exact name
-            forceFolder( itemName, parentIdx );
-          }
-          else {
-            // Try to add as word
-            addHeadword( itemName, parentIdx );
-          }
+        // Navigate to parent folder (creates folders if needed)
+        QModelIndex parentIdx = QModelIndex();
+        for ( const QString & folderName : parentPath ) {
+          parentIdx = forceFolder( folderName, parentIdx );
+        }
+
+        // Add item according to its type
+        if ( isFolder ) {
+          // Force folder creation with the exact name
+          forceFolder( itemName, parentIdx );
+        }
+        else {
+          // Try to add as word
+          addHeadword( itemName, parentIdx );
         }
       }
       else if ( op.type == FavoritesWAL::Remove || op.type == FavoritesWAL::RemoveFolder ) {
@@ -655,6 +658,9 @@ FavoritesModel::FavoritesModel( QString favoritesFilename, QObject * parent ):
           }
 
           // Then, add to new location
+          if ( toPath.isEmpty() ) {
+             continue;
+          }
           QString itemName          = toPath.last();
           QStringList newFolderPath = toPath;
           newFolderPath.removeLast();

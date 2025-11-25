@@ -37,7 +37,7 @@ public:
   };
 
   explicit FavoritesWAL( const QString & walFilename, QObject * parent = nullptr );
-  ~FavoritesWAL();
+  ~FavoritesWAL() = default;
 
   /// Log an add operation to the WAL
   bool logAdd( const QStringList & path, bool isFolder = false );
@@ -60,7 +60,6 @@ public:
 
 private:
   QString m_walFilename;
-  QFile m_walFile;
 
   /// Append a text line to the WAL
   bool appendEntry( const QString & line );

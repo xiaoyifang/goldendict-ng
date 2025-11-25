@@ -12,16 +12,8 @@
 
 FavoritesWAL::FavoritesWAL( const QString & walFilename, QObject * parent ):
   QObject( parent ),
-  m_walFilename( walFilename ),
-  m_walFile( walFilename )
+  m_walFilename( walFilename )
 {
-}
-
-FavoritesWAL::~FavoritesWAL()
-{
-  if ( m_walFile.isOpen() ) {
-    m_walFile.close();
-  }
 }
 
 bool FavoritesWAL::logAdd( const QStringList & path, bool isFolder )
