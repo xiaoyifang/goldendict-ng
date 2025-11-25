@@ -592,21 +592,9 @@ FavoritesModel::FavoritesModel( QString favoritesFilename, QObject * parent ):
     auto operations = m_wal->replay();
 
     for ( const auto & op : operations ) {
-      if ( op.first == FavoritesWAL::Add || op.first == FavoritesWAL::AddFolder ) {
-        QVariant opData = op.second;
-        QStringList path;
-        bool isFolder = ( op.first == FavoritesWAL::AddFolder );
-
-        // Handle the QVariantMap format that includes type information
-        if ( opData.type() == QVariant::Map ) {
-          QVariantMap dataMap = opData.toMap();
-          path                = dataMap[ "path" ].toStringList();
-          // 不再从dataMap中读取isFolder，而是依赖操作类型
-        }
-        else {
-          // Fallback to the original string list format for backward compatibility
-          path = opData.toStringList();
-        }
+      if ( op.type == FavoritesWAL::Add || op.type == FavoritesWAL::AddFolder ) {
+        QStringList path = op.path;
+        bool isFolder    = ( op.type == FavoritesWAL::AddFolder );
 
         if ( !path.isEmpty() ) {
           // Check if this item already exists (could be a folder created by forceFolder)
@@ -637,21 +625,8 @@ FavoritesModel::FavoritesModel( QString favoritesFilename, QObject * parent ):
           }
         }
       }
-      else if ( op.first == FavoritesWAL::Remove || op.first == FavoritesWAL::RemoveFolder ) {
-        QVariant opData = op.second;
-        QStringList path;
-        bool isFolder = ( op.first == FavoritesWAL::RemoveFolder );
-
-        // Handle the QVariantMap format that includes type information
-        if ( opData.type() == QVariant::Map ) {
-          QVariantMap dataMap = opData.toMap();
-          path                = dataMap[ "path" ].toStringList();
-          // 不再从dataMap中读取isFolder，而是依赖操作类型
-        }
-        else {
-          // Fallback to the original string list format for backward compatibility
-          path = opData.toStringList();
-        }
+      else if ( op.type == FavoritesWAL::Remove || op.type == FavoritesWAL::RemoveFolder ) {
+        QStringList path = op.path;
 
         if ( !path.isEmpty() ) {
           TreeItem * item = getItemByFullPath( path );
@@ -663,12 +638,11 @@ FavoritesModel::FavoritesModel( QString favoritesFilename, QObject * parent ):
           }
         }
       }
-      else if ( op.first == FavoritesWAL::Move ) {
+      else if ( op.type == FavoritesWAL::Move || op.type == FavoritesWAL::MoveFolder ) {
         // Handle move operations (remove from old location, add to new location)
-        QVariantMap moveData = op.second;
-        QStringList fromPath = moveData[ "from" ].toStringList();
-        QStringList toPath   = moveData[ "to" ].toStringList();
-        bool isFolder        = moveData[ "isFolder" ].toBool();
+        QStringList fromPath = op.path;
+        QStringList toPath   = op.destPath;
+        bool isFolder        = ( op.type == FavoritesWAL::MoveFolder );
 
         if ( !fromPath.isEmpty() && !toPath.isEmpty() ) {
           // First, remove from old location
@@ -819,17 +793,17 @@ bool FavoritesModel::setData( const QModelIndex & index, const QVariant & value,
 
   TreeItem * item = getItem( index );
 
-  // Log to WAL: rename is treated as remove old + add new
-  if ( m_wal ) {
-    bool isFolder       = ( item->type() == TreeItem::Folder );
-    QStringList oldPath = item->fullPath();
-    m_wal->logRemove( oldPath, isFolder );
+    // Log to WAL: rename is treated as move
+    if ( m_wal ) {
+      bool isFolder       = ( item->type() == TreeItem::Folder );
+      QStringList oldPath = item->fullPath();
 
-    // Create new path with new name
-    QStringList newPath = oldPath;
-    newPath.last()      = value.toString();
-    m_wal->logAdd( newPath, isFolder );
-  }
+      // Create new path with new name
+      QStringList newPath = oldPath;
+      newPath.last()      = value.toString();
+      
+      m_wal->logMove( oldPath, newPath, isFolder );
+    }
 
   item->setData( value );
 
@@ -1111,10 +1085,9 @@ bool FavoritesModel::dropMimeData(
             bool isFolder       = ( newItem->type() == TreeItem::Folder );
             QStringList newPath = newItem->fullPath();
             if ( action == Qt::MoveAction ) {
-              // For move, log remove from old location and add to new location
+              // For move, log move operation
               QStringList oldPath = item->fullPath();
-              m_wal->logRemove( oldPath, isFolder );
-              m_wal->logAdd( newPath, isFolder );
+              m_wal->logMove( oldPath, newPath, isFolder );
             }
             else {
               // For copy, just log add to new location

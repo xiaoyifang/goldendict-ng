@@ -26,6 +26,7 @@ FavoritesWAL::~FavoritesWAL()
 
 bool FavoritesWAL::logAdd( const QStringList & path, bool isFolder )
 {
+<<<<<<< HEAD
   QJsonObject entry;
   // 使用不同的操作类型字符串来区分普通添加和文件夹添加
   entry[ "op" ]   = isFolder ? "addfolder" : "add";
@@ -34,10 +35,15 @@ bool FavoritesWAL::logAdd( const QStringList & path, bool isFolder )
 
   QJsonDocument doc( entry );
   return appendEntry( doc.toJson( QJsonDocument::Compact ) );
+=======
+  QString line = ( isFolder ? "++ " : "+ " ) + serializePath( path );
+  return appendEntry( line );
+>>>>>>> b587f8ef (1)
 }
 
 bool FavoritesWAL::logRemove( const QStringList & path, bool isFolder )
 {
+<<<<<<< HEAD
   QJsonObject entry;
   // 使用不同的操作类型字符串来区分普通删除和文件夹删除
   entry[ "op" ]   = isFolder ? "removefolder" : "remove";
@@ -46,10 +52,15 @@ bool FavoritesWAL::logRemove( const QStringList & path, bool isFolder )
 
   QJsonDocument doc( entry );
   return appendEntry( doc.toJson( QJsonDocument::Compact ) );
+=======
+  QString line = ( isFolder ? "-- " : "- " ) + serializePath( path );
+  return appendEntry( line );
+>>>>>>> b587f8ef (1)
 }
 
 bool FavoritesWAL::logMove( const QStringList & fromPath, const QStringList & toPath, bool isFolder )
 {
+<<<<<<< HEAD
   QJsonObject entry;
   entry[ "op" ]   = "move";
   entry[ "ts" ]   = QDateTime::currentSecsSinceEpoch();
@@ -60,11 +71,15 @@ bool FavoritesWAL::logMove( const QStringList & fromPath, const QStringList & to
 
   QJsonDocument doc( entry );
   return appendEntry( doc.toJson( QJsonDocument::Compact ) );
+=======
+  QString line = ( isFolder ? ">> " : "> " ) + serializePath( fromPath ) + " | " + serializePath( toPath );
+  return appendEntry( line );
+>>>>>>> b587f8ef (1)
 }
 
-QList< QPair< FavoritesWAL::OperationType, QVariantMap > > FavoritesWAL::replay()
+QList< FavoritesWAL::Entry > FavoritesWAL::replay()
 {
-  QList< QPair< FavoritesWAL::OperationType, QVariantMap > > operations;
+  QList< FavoritesWAL::Entry > operations;
 
   if ( !QFile::exists( m_walFilename ) ) {
     return operations;
@@ -83,9 +98,17 @@ QList< QPair< FavoritesWAL::OperationType, QVariantMap > > FavoritesWAL::replay(
       continue;
     }
 
+<<<<<<< HEAD
     QPair< FavoritesWAL::OperationType, QVariantMap > op = parseEntry( line );
     if ( op.first != Add && op.first != Remove && op.first != Move && op.first != AddFolder
          && op.first != RemoveFolder ) {
+=======
+    Entry op = parseEntry( line );
+    // Check if operation type is valid (Add is 0, so we need a better check or rely on empty map)
+    // However, parseEntry returns Add with empty map on failure.
+    // Let's check if the path is empty for Add/Remove/Move operations which should have data.
+    if ( op.path.isEmpty() ) {
+>>>>>>> b587f8ef (1)
       qWarning() << "Invalid WAL entry, skipping:" << line;
       continue;
     }
@@ -125,7 +148,7 @@ bool FavoritesWAL::hasEntries() const
   return hasContent;
 }
 
-bool FavoritesWAL::appendEntry( const QByteArray & jsonLine )
+bool FavoritesWAL::appendEntry( const QString & line )
 {
   // Use QSaveFile for atomic writes
   QSaveFile file( m_walFilename );
@@ -149,8 +172,11 @@ bool FavoritesWAL::appendEntry( const QByteArray & jsonLine )
   // Write existing content + new entry
   if ( !existingContent.isEmpty() ) {
     file.write( existingContent );
+    if ( !existingContent.endsWith( '\n' ) ) {
+      file.write( "\n" );
+    }
   }
-  file.write( jsonLine );
+  file.write( line.toUtf8() );
   file.write( "\n" );
 
   if ( !file.commit() ) {
@@ -161,14 +187,58 @@ bool FavoritesWAL::appendEntry( const QByteArray & jsonLine )
   return true;
 }
 
-QPair< FavoritesWAL::OperationType, QVariantMap > FavoritesWAL::parseEntry( const QString & line )
+FavoritesWAL::Entry FavoritesWAL::parseEntry( const QString & line )
 {
-  QJsonDocument doc = QJsonDocument::fromJson( line.toUtf8() );
-  if ( doc.isNull() || !doc.isObject() ) {
-    qWarning() << "Invalid JSON in WAL entry:" << line;
-    return qMakePair( Add, QVariantMap() ); // Return invalid entry
+  Entry entry;
+  entry.type = Add; // Default
+
+  if ( line.startsWith( "++ " ) ) {
+    QString pathStr = line.mid( 3 ).trimmed();
+    entry.type      = AddFolder;
+    entry.path      = deserializePath( pathStr );
+  }
+  else if ( line.startsWith( "+ " ) ) {
+    QString pathStr = line.mid( 2 ).trimmed();
+    entry.type      = Add;
+    entry.path      = deserializePath( pathStr );
+  }
+  else if ( line.startsWith( "-- " ) ) {
+    QString pathStr = line.mid( 3 ).trimmed();
+    entry.type      = RemoveFolder;
+    entry.path      = deserializePath( pathStr );
+  }
+  else if ( line.startsWith( "- " ) ) {
+    QString pathStr = line.mid( 2 ).trimmed();
+    entry.type      = Remove;
+    entry.path      = deserializePath( pathStr );
+  }
+  else if ( line.startsWith( ">> " ) ) {
+    QString rest = line.mid( 3 ).trimmed();
+    int splitIdx = rest.indexOf( " | " );
+    if ( splitIdx != -1 ) {
+      QString fromStr = rest.left( splitIdx ).trimmed();
+      QString toStr   = rest.mid( splitIdx + 3 ).trimmed();
+      entry.type      = MoveFolder;
+      entry.path      = deserializePath( fromStr );
+      entry.destPath  = deserializePath( toStr );
+    }
+  }
+  else if ( line.startsWith( "> " ) ) {
+    QString rest = line.mid( 2 ).trimmed();
+    int splitIdx = rest.indexOf( " | " );
+    if ( splitIdx != -1 ) {
+      QString fromStr = rest.left( splitIdx ).trimmed();
+      QString toStr   = rest.mid( splitIdx + 3 ).trimmed();
+      entry.type      = Move;
+      entry.path      = deserializePath( fromStr );
+      entry.destPath  = deserializePath( toStr );
+    }
+  }
+  else {
+    qWarning() << "Unknown operation type in WAL:" << line;
   }
 
+<<<<<<< HEAD
   QJsonObject obj = doc.object();
   QString op      = obj[ "op" ].toString();
   // 不再从WAL条目中读取isFolder字段，因为我们已经通过操作类型区分了文件夹操作
@@ -216,4 +286,47 @@ QPair< FavoritesWAL::OperationType, QVariantMap > FavoritesWAL::parseEntry( cons
 
   qWarning() << "Unknown operation type in WAL:" << op;
   return qMakePair( Add, QVariantMap() ); // Return invalid entry
+=======
+  return entry;
+}
+
+QString FavoritesWAL::serializePath( const QStringList & path )
+{
+  QStringList escapedParts;
+  for ( const QString & part : path ) {
+    QString escaped = part;
+    escaped.replace( "\\", "\\\\" ); // Escape backslash first
+    escaped.replace( "/", "\\/" );   // Escape forward slash
+    escaped.replace( "|", "\\|" );   // Escape pipe
+    escapedParts.append( escaped );
+  }
+  return escapedParts.join( "/" );
+}
+
+QStringList FavoritesWAL::deserializePath( const QString & pathStr )
+{
+  QStringList path;
+  QString currentPart;
+  bool escaped = false;
+
+  for ( int i = 0; i < pathStr.length(); ++i ) {
+    QChar c = pathStr[ i ];
+    if ( escaped ) {
+      currentPart.append( c );
+      escaped = false;
+    }
+    else if ( c == '\\' ) {
+      escaped = true;
+    }
+    else if ( c == '/' ) {
+      path.append( currentPart );
+      currentPart.clear();
+    }
+    else {
+      currentPart.append( c );
+    }
+  }
+  path.append( currentPart );
+  return path;
+>>>>>>> b587f8ef (1)
 }

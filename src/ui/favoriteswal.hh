@@ -20,7 +20,18 @@ public:
     Remove,
     Move,
     AddFolder,
-    RemoveFolder
+    RemoveFolder,
+    MoveFolder
+  };
+
+  struct Entry {
+    OperationType type;
+    QStringList path;      // Used for Add/Remove, and as Source for Move
+    QStringList destPath;  // Used for Move (Destination)
+
+    bool isFolder() const {
+      return type == AddFolder || type == RemoveFolder || type == MoveFolder;
+    }
   };
 
   explicit FavoritesWAL( const QString & walFilename, QObject * parent = nullptr );
@@ -37,7 +48,7 @@ public:
 
   /// Replay all operations from the WAL
   /// Returns list of operations to be applied
-  QList< QPair< OperationType, QVariantMap > > replay();
+  QList< Entry > replay();
 
   /// Clear the WAL file (called after successful compaction)
   bool clear();
@@ -49,9 +60,15 @@ private:
   QString m_walFilename;
   QFile m_walFile;
 
-  /// Append a JSON line to the WAL
-  bool appendEntry( const QByteArray & jsonLine );
+  /// Append a text line to the WAL
+  bool appendEntry( const QString & line );
 
   /// Parse a single WAL entry
-  QPair< OperationType, QVariant > parseEntry( const QString & line );
+  Entry parseEntry( const QString & line );
+
+  /// Serialize path to string with escaping
+  static QString serializePath( const QStringList & path );
+
+  /// Deserialize path from string with unescaping
+  static QStringList deserializePath( const QString & pathStr );
 };
