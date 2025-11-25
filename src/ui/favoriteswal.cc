@@ -238,55 +238,6 @@ FavoritesWAL::Entry FavoritesWAL::parseEntry( const QString & line )
     qWarning() << "Unknown operation type in WAL:" << line;
   }
 
-<<<<<<< HEAD
-  QJsonObject obj = doc.object();
-  QString op      = obj[ "op" ].toString();
-  // 不再从WAL条目中读取isFolder字段，因为我们已经通过操作类型区分了文件夹操作
-
-  if ( op == "add" || op == "addfolder" ) {
-    QJsonArray pathArray = obj[ "path" ].toArray();
-    QStringList path;
-    for ( const auto & item : pathArray ) {
-      path.append( item.toString() );
-    }
-    QVariantMap data;
-    data[ "path" ] = path;
-    // 根据操作类型字符串区分普通添加和文件夹添加
-    return qMakePair( ( op == "addfolder" ) ? AddFolder : Add, data );
-  }
-  else if ( op == "remove" || op == "removefolder" ) {
-    QJsonArray pathArray = obj[ "path" ].toArray();
-    QStringList path;
-    for ( const auto & item : pathArray ) {
-      path.append( item.toString() );
-    }
-    QVariantMap data;
-    data[ "path" ] = path;
-    // 根据操作类型字符串区分普通删除和文件夹删除
-    return qMakePair( ( op == "removefolder" ) ? RemoveFolder : Remove, data );
-  }
-  else if ( op == "move" ) {
-    QJsonArray fromArray = obj[ "from" ].toArray();
-    QJsonArray toArray   = obj[ "to" ].toArray();
-
-    QStringList fromPath, toPath;
-    for ( const auto & item : fromArray ) {
-      fromPath.append( item.toString() );
-    }
-    for ( const auto & item : toArray ) {
-      toPath.append( item.toString() );
-    }
-
-    QVariantMap moveData;
-    moveData[ "from" ]     = fromPath;
-    moveData[ "to" ]       = toPath;
-    moveData[ "isFolder" ] = isFolder;
-    return qMakePair( Move, moveData );
-  }
-
-  qWarning() << "Unknown operation type in WAL:" << op;
-  return qMakePair( Add, QVariantMap() ); // Return invalid entry
-=======
   return entry;
 }
 
@@ -328,5 +279,4 @@ QStringList FavoritesWAL::deserializePath( const QString & pathStr )
   }
   path.append( currentPart );
   return path;
->>>>>>> b587f8ef (1)
 }
