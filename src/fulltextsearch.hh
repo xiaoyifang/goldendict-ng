@@ -88,6 +88,7 @@ public slots:
 
 signals:
   void sendNowIndexingName( QString );
+};
 
 class FtsIndexing: public QObject
 {
