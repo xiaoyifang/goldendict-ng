@@ -812,45 +812,6 @@ between classic and school orthography in cyrillic)</source>
     </message>
 </context>
 <context>
-    <name>FTS::FullTextSearchDialog</name>
-    <message>
-        <source>Full-text search</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Default</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Wildcards</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Support xapian search syntax, such as AND OR +/- etc.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Articles found: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Now indexing: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>None</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>The querying word can not be empty.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>No dictionaries for full-text search</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>FavoritesModel</name>
     <message>
         <source>Error in favorities file</source>
@@ -974,6 +935,42 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
         <source>Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Full-text search</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wildcards</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Support xapian search syntax, such as AND OR +/- etc.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Articles found: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Now indexing: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>The querying word can not be empty.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No dictionaries for full-text search</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
