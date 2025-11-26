@@ -128,7 +128,7 @@ private:
   QString nowIndexing;
   QMutex nameMutex;
   QTimer timer;
-  QPointer< Indexing > indexing;  // QPointer automatically becomes null when object is deleted
+  QPointer< Indexing > indexing; // QPointer automatically becomes null when object is deleted
 
 private slots:
   void setNowIndexedName( const QString & name );
