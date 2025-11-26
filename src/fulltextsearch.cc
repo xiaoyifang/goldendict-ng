@@ -133,6 +133,13 @@ void FtsIndexing::setNowIndexedName( const QString & name )
   {
     QMutexLocker _( &nameMutex );
     nowIndexing = name;
+    
+    // When indexing completes naturally, Indexing::run() emits an empty name
+    // Stop the timer to avoid unnecessary callbacks
+    if ( name.isEmpty() && started ) {
+      timer.stop();
+      started = false;
+    }
   }
   emit newIndexingName( name );
 }
