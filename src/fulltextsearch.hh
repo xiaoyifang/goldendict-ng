@@ -3,6 +3,7 @@
 #include <QTimer>
 #include <QRunnable>
 #include <QSemaphore>
+#include <QPointer>
 #include "dict/dictionary.hh"
 #include "ui_fulltextsearch.h"
 #include "config.hh"
@@ -82,16 +83,11 @@ public:
 
   virtual void run();
 
-  const std::vector< sptr< Dictionary::Class > > & getDictionaries() const
-  {
-    return dictionaries;
-  }
+public slots:
+  void timeout();
 
 signals:
   void sendNowIndexingName( QString );
-
-public slots:
-  void timeout();
 };
 
 class FtsIndexing: public QObject
@@ -133,7 +129,7 @@ private:
   QString nowIndexing;
   QMutex nameMutex;
   QTimer timer;
-  Indexing * indexing;
+  QPointer< Indexing > indexing; // QPointer automatically becomes null when object is deleted
 
 private slots:
   void setNowIndexedName( const QString & name );

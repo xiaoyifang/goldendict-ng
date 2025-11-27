@@ -51,7 +51,7 @@ void Indexing::run()
 void Indexing::timeout()
 {
   QString indexingDicts;
-  for ( const auto & dictionary : getDictionaries() ) {
+  for ( const auto & dictionary : dictionaries ) {
     if ( Utils::AtomicInt::loadAcquire( isCancelled ) ) {
       break;
     }
@@ -76,8 +76,7 @@ void Indexing::timeout()
 
 FtsIndexing::FtsIndexing( const std::vector< sptr< Dictionary::Class > > & dicts ):
   dictionaries( dicts ),
-  started( false ),
-  indexing( nullptr )
+  started( false )
 {
   timer.setInterval( 2000 );
   connect( &timer, &QTimer::timeout, this, &FtsIndexing::onTimeout );
@@ -115,7 +114,6 @@ void FtsIndexing::stopIndexing()
     indexingExited.acquire();
     timer.stop();
     started = false;
-    indexing = nullptr;
 
     setNowIndexedName( QString() );
   }
@@ -123,7 +121,9 @@ void FtsIndexing::stopIndexing()
 
 void FtsIndexing::onTimeout()
 {
-  if ( indexing ) {
+  // QPointer automatically becomes null when the Indexing object is deleted
+  // No mutex needed - QPointer is thread-safe for null checks
+  if ( !indexing.isNull() ) {
     indexing->timeout();
   }
 }
@@ -133,6 +133,13 @@ void FtsIndexing::setNowIndexedName( const QString & name )
   {
     QMutexLocker _( &nameMutex );
     nowIndexing = name;
+
+    // When indexing completes naturally, Indexing::run() emits an empty name
+    // Stop the timer to avoid unnecessary callbacks
+    if ( name.isEmpty() && started ) {
+      timer.stop();
+      started = false;
+    }
   }
   emit newIndexingName( name );
 }
