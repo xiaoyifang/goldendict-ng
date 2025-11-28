@@ -3672,11 +3672,15 @@ from Stardict, Babylon and GLS dictionaries</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Saving article... %1/%2</source>
+        <source>Saving article... (0/%1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Saving article... 0/%1</source>
+        <source>Saving article...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Saving article... (%1/%2)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

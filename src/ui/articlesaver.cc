@@ -213,7 +213,7 @@ void ArticleSaver::save()
         filterAndCollectResources( html, rx1, "\"", folder, resourceIncluded, downloadResources );
         filterAndCollectResources( html, rx2, "'", folder, resourceIncluded, downloadResources );
 
-        int totalResources = downloadResources.size();
+        int totalResources         = downloadResources.size();
         auto completedResourcesPtr = std::make_shared< int >( 0 );
 
         if ( totalResources > 0 ) {
@@ -226,21 +226,22 @@ void ArticleSaver::save()
         for ( const auto & p : downloadResources ) {
           ResourceToSaveHandler * handler = view_->saveResource( p.first, p.second );
           if ( handler && !handler->isEmpty() ) {
-            QObject::connect( handler,
-                              &ResourceToSaveHandler::done,
-                              this,
-                              [ this, totalResources, completedResourcesPtr ]() {
-                                *completedResourcesPtr += 1;
-                                if ( *completedResourcesPtr == totalResources ) {
-                                  // All resources completed
-                                  emit statusMessage( QObject::tr( "Save article complete" ), 5000 );
-                                }
-                                else {
-                                  emit statusMessage( QObject::tr( "Saving article... (%1/%2)" )
-                                                        .arg( *completedResourcesPtr )
-                                                        .arg( totalResources ), 0 );
-                                }
-                              } );
+            QObject::connect(
+              handler,
+              &ResourceToSaveHandler::done,
+              this,
+              [ this, totalResources, completedResourcesPtr ]() {
+                *completedResourcesPtr += 1;
+                if ( *completedResourcesPtr == totalResources ) {
+                  // All resources completed
+                  emit statusMessage( QObject::tr( "Save article complete" ), 5000 );
+                }
+                else {
+                  emit statusMessage(
+                    QObject::tr( "Saving article... (%1/%2)" ).arg( *completedResourcesPtr ).arg( totalResources ),
+                    0 );
+                }
+              } );
           }
           else {
             // Handler is empty, count it as already completed
