@@ -7,7 +7,6 @@
 
 #include "ui/articleview.hh"
 #include "config.hh"
-#include "mainstatusbar.hh"
 #include <QStatusBar>
 
 #include <QFileDialog>
@@ -146,6 +145,7 @@ void ArticleSaver::save()
   if ( filters.at( 3 ).startsWith( selectedFilter ) ) {
     QWebEnginePage * page = view_->page();
     page->save( fileName, QWebEngineDownloadRequest::MimeHtmlSaveFormat );
+    emit statusMessage( QObject::tr( "Save article complete" ), 5000 );
     return;
   }
 
@@ -214,41 +214,50 @@ void ArticleSaver::save()
         filterAndCollectResources( html, rx1, "\"", folder, resourceIncluded, downloadResources );
         filterAndCollectResources( html, rx2, "'", folder, resourceIncluded, downloadResources );
 
-        int maxVal               = 1; // main html
-        bool anyHandlerConnected = false;
+        int totalResources = downloadResources.size();
+        auto completedResourcesPtr = std::make_shared< int >( 0 );
+
+        if ( totalResources > 0 ) {
+          emit statusMessage( QObject::tr( "Saving article... (0/%1)" ).arg( totalResources ), 0 );
+        }
+        else {
+          emit statusMessage( QObject::tr( "Saving article..." ), 0 );
+        }
 
         QSharedPointer< int > counter = QSharedPointer< int >::create( 0 );
 
         for ( const auto & p : downloadResources ) {
           ResourceToSaveHandler * handler = view_->saveResource( p.first, p.second );
           if ( handler && !handler->isEmpty() ) {
-            anyHandlerConnected = true;
-            maxVal += 1;
-            auto sp = counter; // copy for lambda lifetime
-            QObject::connect( handler, &ResourceToSaveHandler::done, this, [ this, sp, maxVal ]() mutable {
-              ( *sp ) += 1;
-              emit statusMessage( QObject::tr( "Saving article... %1/%2" ).arg( *sp ).arg( maxVal ), 0 );
-              if ( *sp >= maxVal ) {
-                emit statusMessage( QObject::tr( "Save article complete" ), 5000 );
-              }
-            } );
+            QObject::connect( handler,
+                              &ResourceToSaveHandler::done,
+                              this,
+                              [ this, totalResources, completedResourcesPtr ]() {
+                                *completedResourcesPtr += 1;
+                                if ( *completedResourcesPtr == totalResources ) {
+                                  // All resources completed
+                                  emit statusMessage( QObject::tr( "Save article complete" ), 5000 );
+                                }
+                                else {
+                                  emit statusMessage( QObject::tr( "Saving article... (%1/%2)" )
+                                                        .arg( *completedResourcesPtr )
+                                                        .arg( totalResources ), 0 );
+                                  qDebug() << "Saved resources:" << *completedResourcesPtr << "/" << totalResources;
+                                }
+                              } );
           }
-        }
-
-        if ( !anyHandlerConnected ) {
-          emit statusMessage( QObject::tr( "Save article complete" ), 5000 );
-        }
-        else {
-          emit statusMessage( QObject::tr( "Saving article... 0/%1" ).arg( maxVal ), 0 );
+          else {
+            // Handler is empty, count it as already completed
+            *completedResourcesPtr += 1;
+          }
         }
 
         file.write( html.toUtf8() );
       }
       else {
         file.write( html.toUtf8() );
+        emit statusMessage( QObject::tr( "Save article complete" ), 5000 );
       }
-
-      emit statusMessage( QObject::tr( "Save article complete" ), 5000 );
     }
   } );
 }

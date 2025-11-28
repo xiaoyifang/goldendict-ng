@@ -5,7 +5,6 @@
 #include <QObject>
 #include "ui/articleview.hh"
 
-
 // Article saver object that performs the same logic as the old free function.
 // It emits `statusMessage` for UI code to present to the user (status bars,
 // notifications, etc.). The saver itself is a QObject so it can be used with
