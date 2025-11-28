@@ -216,13 +216,6 @@ void ArticleSaver::save()
         int totalResources         = downloadResources.size();
         auto completedResourcesPtr = std::make_shared< int >( 0 );
 
-        if ( totalResources > 0 ) {
-          emit statusMessage( QObject::tr( "Saving article... (0/%1)" ).arg( totalResources ), 0 );
-        }
-        else {
-          emit statusMessage( QObject::tr( "Saving article..." ), 0 );
-        }
-
         for ( const auto & p : downloadResources ) {
           ResourceToSaveHandler * handler = view_->saveResource( p.first, p.second );
           if ( handler && !handler->isEmpty() ) {
@@ -239,7 +232,7 @@ void ArticleSaver::save()
                 else {
                   emit statusMessage(
                     QObject::tr( "Saving article... (%1/%2)" ).arg( *completedResourcesPtr ).arg( totalResources ),
-                    0 );
+                    100 );
                 }
               } );
           }
