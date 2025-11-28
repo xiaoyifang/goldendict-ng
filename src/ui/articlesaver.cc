@@ -20,7 +20,6 @@
 #include <QFileInfo>
 #include <QUrl>
 #include <QDebug>
-#include <QSharedPointer>
 
 using std::set;
 using std::vector;
@@ -224,8 +223,6 @@ void ArticleSaver::save()
           emit statusMessage( QObject::tr( "Saving article..." ), 0 );
         }
 
-        QSharedPointer< int > counter = QSharedPointer< int >::create( 0 );
-
         for ( const auto & p : downloadResources ) {
           ResourceToSaveHandler * handler = view_->saveResource( p.first, p.second );
           if ( handler && !handler->isEmpty() ) {
@@ -242,7 +239,6 @@ void ArticleSaver::save()
                                   emit statusMessage( QObject::tr( "Saving article... (%1/%2)" )
                                                         .arg( *completedResourcesPtr )
                                                         .arg( totalResources ), 0 );
-                                  qDebug() << "Saved resources:" << *completedResourcesPtr << "/" << totalResources;
                                 }
                               } );
           }
