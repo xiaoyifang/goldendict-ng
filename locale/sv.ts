@@ -3712,16 +3712,16 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <translation>Kan&apos;t spara artikel: %1</translation>
     </message>
     <message>
-      <source>Saving article...</source>
-      <translation>Sparar artikel...</translation>
-    </message>
-    <message>
       <source>Save PDF complete</source>
       <translation>Spara PDF slutförd</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
       <translation>Kunde inte spara PDF</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation>Sparar artikel... (%1/%2)</translation>
     </message>
   </context>
   <context>
