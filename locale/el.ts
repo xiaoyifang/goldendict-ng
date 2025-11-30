@@ -285,18 +285,6 @@
       <translation>&amp;Δημιουργία σημείωσης Ανκί</translation>
     </message>
     <message>
-      <source>Error Loading</source>
-      <translation>Σφάλμα Φόρτωσης</translation>
-    </message>
-    <message>
-      <source>Page Load Failed</source>
-      <translation>Αποτυχία Φόρτωσης Σελίδας</translation>
-    </message>
-    <message>
-      <source>Unable to load the requested page content</source>
-      <translation>Αδυναμία φόρτωσης του περιεχομένου της σελίδας που ζητήθηκε</translation>
-    </message>
-    <message>
       <source>&amp;Copy sound to clipboard</source>
       <translation>&amp;Αντιγραφή ήχου στο πρόχειρο</translation>
     </message>
@@ -3530,6 +3518,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>S&amp;can</source>
       <translation>Σ&amp;άρωση</translation>
     </message>
+    <message>
+      <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
+      <translation>Καταστολή ειδοποιήσεων JavaScript, επιβεβαιώνει και ζητά στην προβολή άρθρου.</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript dialogs</source>
+      <translation>Καταστολή διαλόγων JavaScript</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3715,16 +3711,16 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Αδύνατη η αποθήκευση του άρθρου: %1</translation>
     </message>
     <message>
-      <source>Saving article...</source>
-      <translation>Αποθήκευση άρθρου...</translation>
-    </message>
-    <message>
       <source>Save PDF complete</source>
       <translation>Αποθήκευση PDF ολοκληρώθηκε</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
       <translation>Αποτυχία αποθήκευσης PDF</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation>Αποθήκευση άρθρου... (%1/%2)</translation>
     </message>
   </context>
   <context>

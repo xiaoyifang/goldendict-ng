@@ -285,18 +285,6 @@
       <translation>Anki &amp;feljegyzés létrehozása</translation>
     </message>
     <message>
-      <source>Error Loading</source>
-      <translation type="unfinished">Error Loading</translation>
-    </message>
-    <message>
-      <source>Page Load Failed</source>
-      <translation type="unfinished">Page Load Failed</translation>
-    </message>
-    <message>
-      <source>Unable to load the requested page content</source>
-      <translation type="unfinished">Unable to load the requested page content</translation>
-    </message>
-    <message>
       <source>&amp;Copy sound to clipboard</source>
       <translation type="unfinished">&amp;Copy sound to clipboard</translation>
     </message>
@@ -3528,6 +3516,14 @@ is felhasználja további szócikkek felfedezéséhez</translation>
       <source>S&amp;can</source>
       <translation type="unfinished">S&amp;can</translation>
     </message>
+    <message>
+      <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
+      <translation type="unfinished">Suppress JavaScript alerts, confirms, and prompts in the article view.</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript dialogs</source>
+      <translation type="unfinished">Suppress JavaScript dialogs</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3713,16 +3709,16 @@ is felhasználja további szócikkek felfedezéséhez</translation>
       <translation>A szócikk mentése nem sikerült: %1</translation>
     </message>
     <message>
-      <source>Saving article...</source>
-      <translation type="unfinished">Saving article...</translation>
-    </message>
-    <message>
       <source>Save PDF complete</source>
       <translation type="unfinished">Save PDF complete</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
       <translation type="unfinished">Save PDF failed</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation type="unfinished">Saving article... (%1/%2)</translation>
     </message>
   </context>
   <context>

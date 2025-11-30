@@ -285,18 +285,6 @@
       <translation>&amp;Criar nota Anki</translation>
     </message>
     <message>
-      <source>Error Loading</source>
-      <translation>Erro ao Carregar</translation>
-    </message>
-    <message>
-      <source>Page Load Failed</source>
-      <translation>Falha ao carregar página</translation>
-    </message>
-    <message>
-      <source>Unable to load the requested page content</source>
-      <translation>Não foi possível carregar o conteúdo da página solicitada</translation>
-    </message>
-    <message>
       <source>&amp;Copy sound to clipboard</source>
       <translation>&amp;Copiar som para área de transferência</translation>
     </message>
@@ -3533,6 +3521,14 @@ dos dicionários Stardict, Babylon e GLS</translation>
       <source>S&amp;can</source>
       <translation>&amp;Abrir</translation>
     </message>
+    <message>
+      <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
+      <translation>Suprimir alertas JavaScript, confirmar e prompts na visualização de artigos.</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript dialogs</source>
+      <translation>Suprimir diálogos JavaScript</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3718,16 +3714,16 @@ dos dicionários Stardict, Babylon e GLS</translation>
       <translation>Pode&apos;t artigo salvo: %1</translation>
     </message>
     <message>
-      <source>Saving article...</source>
-      <translation>Salvando artigo...</translation>
-    </message>
-    <message>
       <source>Save PDF complete</source>
       <translation>Salvar PDF completo</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
       <translation>Falha ao salvar PDF</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation>Salvando artigo... (%1/%2)</translation>
     </message>
   </context>
   <context>

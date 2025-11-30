@@ -286,18 +286,6 @@
       <translation>Anki-Notiz &amp;erstellen</translation>
     </message>
     <message>
-      <source>Error Loading</source>
-      <translation>Fehler beim Laden</translation>
-    </message>
-    <message>
-      <source>Page Load Failed</source>
-      <translation>Laden der Seite fehlgeschlagen</translation>
-    </message>
-    <message>
-      <source>Unable to load the requested page content</source>
-      <translation>Der angeforderte Seiteninhalt konnte nicht geladen werden</translation>
-    </message>
-    <message>
       <source>&amp;Copy sound to clipboard</source>
       <translation>&amp;Ton in Zwischenablage kopieren</translation>
     </message>
@@ -3523,6 +3511,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>S&amp;can</source>
       <translation>&amp;Dosieren</translation>
     </message>
+    <message>
+      <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
+      <translation>JavaScript-Warnungen unterdrücken, Bestätigungen und Abfragen in der Artikelansicht.</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript dialogs</source>
+      <translation>JavaScript-Dialoge unterdrücken</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3708,16 +3704,16 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Kann Artikel nicht speichern: %1</translation>
     </message>
     <message>
-      <source>Saving article...</source>
-      <translation>Artikel speichern...</translation>
-    </message>
-    <message>
       <source>Save PDF complete</source>
       <translation>PDF speichern abgeschlossen</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
       <translation>PDF speichern fehlgeschlagen</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation>Artikel speichern... (%1/%2)</translation>
     </message>
   </context>
   <context>

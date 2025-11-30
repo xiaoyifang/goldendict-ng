@@ -285,18 +285,6 @@
       <translation>&amp; إنشاء ملاحظة Anki</translation>
     </message>
     <message>
-      <source>Error Loading</source>
-      <translation>خطأ في التحميل</translation>
-    </message>
-    <message>
-      <source>Page Load Failed</source>
-      <translation>فشل تحميل الصفحة</translation>
-    </message>
-    <message>
-      <source>Unable to load the requested page content</source>
-      <translation>غير قادر على تحميل محتوى الصفحة المطلوبة</translation>
-    </message>
-    <message>
       <source>&amp;Copy sound to clipboard</source>
       <translation>&amp;نسخ الصوت إلى الحافظة</translation>
     </message>
@@ -3527,6 +3515,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>S&amp;can</source>
       <translation>امسح</translation>
     </message>
+    <message>
+      <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
+      <translation>قمع تنبيهات جافا سكريبت والتأكيدات والمطالبات في عرض المقالة.</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript dialogs</source>
+      <translation>قمع مربعات حوار جافا سكريبت</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3712,16 +3708,16 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation type="unfinished">Can&apos;t save article: %1</translation>
     </message>
     <message>
-      <source>Saving article...</source>
-      <translation>حفظ المقال...</translation>
-    </message>
-    <message>
       <source>Save PDF complete</source>
       <translation>اكتمل حفظ PDF</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
       <translation>فشل حفظ PDF</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation>حفظ المقال... (%1/%2)</translation>
     </message>
   </context>
   <context>

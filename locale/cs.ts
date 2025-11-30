@@ -285,18 +285,6 @@
       <translation>&amp;Vytvořit Anki poznámku</translation>
     </message>
     <message>
-      <source>Error Loading</source>
-      <translation>Chyba při načítání</translation>
-    </message>
-    <message>
-      <source>Page Load Failed</source>
-      <translation>Načtení stránky se nezdařilo</translation>
-    </message>
-    <message>
-      <source>Unable to load the requested page content</source>
-      <translation>Nelze načíst požadovaný obsah stránky</translation>
-    </message>
-    <message>
       <source>&amp;Copy sound to clipboard</source>
       <translation>&amp;Kopírovat zvuk do schránky</translation>
     </message>
@@ -3527,6 +3515,14 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <source>S&amp;can</source>
       <translation>&amp;Skenovat</translation>
     </message>
+    <message>
+      <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
+      <translation>Potlačit výstrahy JavaScriptu, potvrzení a výzvy v zobrazení článku.</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript dialogs</source>
+      <translation>Potlačit dialogová okna JavaScriptu</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3712,16 +3708,16 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <translation>Nemohu uložit článek: %1</translation>
     </message>
     <message>
-      <source>Saving article...</source>
-      <translation>Ukládání článku...</translation>
-    </message>
-    <message>
       <source>Save PDF complete</source>
       <translation>Uložení PDF dokončeno</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
       <translation>Uložení PDF selhalo</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation>Ukládání článku... (%1/%2)</translation>
     </message>
   </context>
   <context>

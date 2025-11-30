@@ -286,18 +286,6 @@
       <translation>&amp;Créer une note Anki</translation>
     </message>
     <message>
-      <source>Error Loading</source>
-      <translation>Erreur lors du chargement</translation>
-    </message>
-    <message>
-      <source>Page Load Failed</source>
-      <translation>Échec du chargement de la page</translation>
-    </message>
-    <message>
-      <source>Unable to load the requested page content</source>
-      <translation>Impossible de charger le contenu de la page demandée</translation>
-    </message>
-    <message>
       <source>&amp;Copy sound to clipboard</source>
       <translation>&amp;Copier le son dans le presse-papiers</translation>
     </message>
@@ -3526,6 +3514,14 @@ des dictionnaires Stardict, Babylon et GLS</translation>
       <source>S&amp;can</source>
       <translation>&amp;Scanner</translation>
     </message>
+    <message>
+      <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
+      <translation>Supprime les alertes JavaScript, confirmations et invite dans la vue article.</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript dialogs</source>
+      <translation>Supprimer les boîtes de dialogue JavaScript</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3711,16 +3707,16 @@ des dictionnaires Stardict, Babylon et GLS</translation>
       <translation>Peut&apos;t enregistrer l'article : %1</translation>
     </message>
     <message>
-      <source>Saving article...</source>
-      <translation>Enregistrement de l'article...</translation>
-    </message>
-    <message>
       <source>Save PDF complete</source>
       <translation>Enregistrer le PDF avec succès</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
       <translation>Échec de l'enregistrement du PDF</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation>Enregistrement de l'article... (%1/%2)</translation>
     </message>
   </context>
   <context>

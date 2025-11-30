@@ -284,18 +284,6 @@
       <translation>製作anki note</translation>
     </message>
     <message>
-      <source>Error Loading</source>
-      <translation>載入錯誤</translation>
-    </message>
-    <message>
-      <source>Page Load Failed</source>
-      <translation>頁面載入失敗</translation>
-    </message>
-    <message>
-      <source>Unable to load the requested page content</source>
-      <translation>無法加載所請求的頁面內容</translation>
-    </message>
-    <message>
       <source>&amp;Copy sound to clipboard</source>
       <translation>將聲音複製到剪貼簿(&amp;C)</translation>
     </message>
@@ -779,11 +767,11 @@ between classic and school orthography in cyrillic)</source>
     </message>
     <message>
       <source>Change display name</source>
-      <translation type="unfinished">Change display name</translation>
+      <translation>更改顯示名稱</translation>
     </message>
     <message>
       <source>New display name:</source>
-      <translation type="unfinished">New display name:</translation>
+      <translation>新的顯示名稱：</translation>
     </message>
   </context>
   <context>
@@ -2758,11 +2746,11 @@ To find &apos;*&apos;, &apos;?&apos;, &apos;[&apos;, &apos;]&apos; symbols use &
     </message>
     <message>
       <source>Change display name</source>
-      <translation type="unfinished">Change display name</translation>
+      <translation>更改顯示名稱</translation>
     </message>
     <message>
       <source>New display name:</source>
-      <translation type="unfinished">New display name:</translation>
+      <translation>新的顯示名稱：</translation>
     </message>
   </context>
   <context>
@@ -2977,13 +2965,11 @@ the application.</source>
       <source>With this on, new tabs are opened just after the
 current, active one. Otherwise, they are added to
 be the last ones.</source>
-      <translation type="unfinished">With this on, new tabs are opened just after the
-current, active one. Otherwise, they are added to
-be the last ones.</translation>
+      <translation>啟用此功能後，新標籤頁會在目前活動標籤頁之後立即開啟。否則，它們會成為最後打開的標籤頁。</translation>
     </message>
     <message>
       <source>&amp;Style</source>
-      <translation type="unfinished">&amp;Style</translation>
+      <translation>樣式(&amp;S)</translation>
     </message>
     <message>
       <source>Appearance</source>
@@ -3515,7 +3501,15 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>S&amp;can</source>
-      <translation type="unfinished">S&amp;can</translation>
+      <translation>掃描(&amp;C)</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
+      <translation>在文章視圖中停用 JavaScript 警告、確認和提示。</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript dialogs</source>
+      <translation>禁止顯示 JavaScript 對話框</translation>
     </message>
   </context>
   <context>
@@ -3671,7 +3665,7 @@ from Stardict, Babylon and GLS dictionaries</source>
     </message>
     <message>
       <source>Complete Html (*.html *.htm)</source>
-      <translation type="unfinished">Complete Html (*.html *.htm)</translation>
+      <translation>完整的 HTML (*.html *.htm)</translation>
     </message>
     <message>
       <source>Single Html (*.html *.htm)</source>
@@ -3702,16 +3696,16 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>無法儲存條目：%1</translation>
     </message>
     <message>
-      <source>Saving article...</source>
-      <translation type="unfinished">Saving article...</translation>
-    </message>
-    <message>
       <source>Save PDF complete</source>
       <translation type="unfinished">Save PDF complete</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
       <translation type="unfinished">Save PDF failed</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation type="unfinished">Saving article... (%1/%2)</translation>
     </message>
   </context>
   <context>

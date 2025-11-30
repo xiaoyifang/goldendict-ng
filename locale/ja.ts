@@ -284,18 +284,6 @@
       <translation>アンキノートを作成(&amp;C)</translation>
     </message>
     <message>
-      <source>Error Loading</source>
-      <translation>読み込みエラー</translation>
-    </message>
-    <message>
-      <source>Page Load Failed</source>
-      <translation>ページの読み込みに失敗しました</translation>
-    </message>
-    <message>
-      <source>Unable to load the requested page content</source>
-      <translation>要求されたページのコンテンツを読み込むことができません</translation>
-    </message>
-    <message>
       <source>&amp;Copy sound to clipboard</source>
       <translation>サウンドをクリップボードにコピー(&amp;C)</translation>
     </message>
@@ -3525,6 +3513,14 @@ from Stardict, Babylon and GLS dictionaries</source>
       <source>S&amp;can</source>
       <translation>缶(&amp;C)</translation>
     </message>
+    <message>
+      <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
+      <translation>記事ビューでJavaScriptアラート、確認、およびプロンプトを抑制します。</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript dialogs</source>
+      <translation>JavaScriptダイアログを抑制する</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3710,16 +3706,16 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>記事を保存できません: %1</translation>
     </message>
     <message>
-      <source>Saving article...</source>
-      <translation>記事を保存しています...</translation>
-    </message>
-    <message>
       <source>Save PDF complete</source>
       <translation>PDFの保存が完了しました</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
       <translation>PDFの保存に失敗しました</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation>記事を保存しています... (%1/%2)</translation>
     </message>
   </context>
   <context>

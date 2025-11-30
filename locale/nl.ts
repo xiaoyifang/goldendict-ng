@@ -285,18 +285,6 @@
       <translation>&amp;Maak Anki-notitie</translation>
     </message>
     <message>
-      <source>Error Loading</source>
-      <translation>Fout bij laden</translation>
-    </message>
-    <message>
-      <source>Page Load Failed</source>
-      <translation>Pagina laden mislukt</translation>
-    </message>
-    <message>
-      <source>Unable to load the requested page content</source>
-      <translation>Niet in staat om de gewenste pagina-inhoud te laden</translation>
-    </message>
-    <message>
       <source>&amp;Copy sound to clipboard</source>
       <translation>&amp;Geluid kopiëren naar klembord</translation>
     </message>
@@ -3526,6 +3514,14 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <source>S&amp;can</source>
       <translation>&amp;Kan</translation>
     </message>
+    <message>
+      <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
+      <translation>Onderdruk JavaScript waarschuwingen, bevestigingen en aanwijzingen in de artikelweergave.</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript dialogs</source>
+      <translation>Onderdruk JavaScript dialogen</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3711,16 +3707,16 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <translation>Kan artikel niet opslaan: %1</translation>
     </message>
     <message>
-      <source>Saving article...</source>
-      <translation>Artikel opslaan...</translation>
-    </message>
-    <message>
       <source>Save PDF complete</source>
       <translation>PDF-bestand opslaan voltooid</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
       <translation>Opslaan PDF mislukt</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation>Artikel opslaan... (%1/%2)</translation>
     </message>
   </context>
   <context>

@@ -285,18 +285,6 @@
       <translation>&amp;Skapa Anki anteckning</translation>
     </message>
     <message>
-      <source>Error Loading</source>
-      <translation>Fel vid inläsning</translation>
-    </message>
-    <message>
-      <source>Page Load Failed</source>
-      <translation>Sidladdningen misslyckades</translation>
-    </message>
-    <message>
-      <source>Unable to load the requested page content</source>
-      <translation>Det går inte att ladda det begärda sidinnehållet</translation>
-    </message>
-    <message>
       <source>&amp;Copy sound to clipboard</source>
       <translation>&amp;Kopiera ljud till urklipp</translation>
     </message>
@@ -3531,6 +3519,14 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <source>S&amp;can</source>
       <translation>&amp;Skanna</translation>
     </message>
+    <message>
+      <source>Suppress JavaScript alerts, confirms, and prompts in the article view.</source>
+      <translation>Förhindra JavaScript-varningar, bekräftelser och uppmaningar i artikelvyn.</translation>
+    </message>
+    <message>
+      <source>Suppress JavaScript dialogs</source>
+      <translation>Undertrycka JavaScript dialogrutor</translation>
+    </message>
   </context>
   <context>
     <name>ProgramTypeEditor</name>
@@ -3716,16 +3712,16 @@ från Stardict, Babylon och GLS ordböcker</translation>
       <translation>Kan&apos;t spara artikel: %1</translation>
     </message>
     <message>
-      <source>Saving article...</source>
-      <translation>Sparar artikel...</translation>
-    </message>
-    <message>
       <source>Save PDF complete</source>
       <translation>Spara PDF slutförd</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
       <translation>Kunde inte spara PDF</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation>Sparar artikel... (%1/%2)</translation>
     </message>
   </context>
   <context>
