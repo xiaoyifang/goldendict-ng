@@ -3715,16 +3715,16 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Может&apos;т сохранить статью: %1</translation>
     </message>
     <message>
-      <source>Saving article...</source>
-      <translation>Сохранение статьи...</translation>
-    </message>
-    <message>
       <source>Save PDF complete</source>
       <translation>PDF файл сохранен</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
       <translation>Сохранить PDF не удалось</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation>Сохранение статьи... (%1/%2)</translation>
     </message>
   </context>
   <context>
