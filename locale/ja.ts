@@ -3706,16 +3706,16 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>記事を保存できません: %1</translation>
     </message>
     <message>
-      <source>Saving article...</source>
-      <translation>記事を保存しています...</translation>
-    </message>
-    <message>
       <source>Save PDF complete</source>
       <translation>PDFの保存が完了しました</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
       <translation>PDFの保存に失敗しました</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation>記事を保存しています... (%1/%2)</translation>
     </message>
   </context>
   <context>
