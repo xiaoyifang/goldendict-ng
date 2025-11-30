@@ -3708,16 +3708,16 @@ de diccionarios Stardict, Babylon y GLS</translation>
       <translation>Puede&apos;t guardar artículo: %1</translation>
     </message>
     <message>
-      <source>Saving article...</source>
-      <translation>Guardando artículo...</translation>
-    </message>
-    <message>
       <source>Save PDF complete</source>
       <translation>Guardar PDF completo</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
       <translation>Fallo al guardar PDF</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation>Guardando artículo... (%1/%2)</translation>
     </message>
   </context>
   <context>
