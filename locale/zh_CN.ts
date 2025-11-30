@@ -3693,16 +3693,16 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>无法保存文章：%1</translation>
     </message>
     <message>
-      <source>Saving article...</source>
-      <translation>正在保存文章...</translation>
-    </message>
-    <message>
       <source>Save PDF complete</source>
       <translation>保存 PDF 完成</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
       <translation>保存 PDF 失败</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation type="unfinished">Saving article... (%1/%2)</translation>
     </message>
   </context>
   <context>
