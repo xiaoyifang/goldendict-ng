@@ -3710,16 +3710,16 @@ alkaen alkaen alkupisteestä, Babylonista ja GLS-sanakirjoista</translation>
       <translation>Voi&apos;t tallentaa artikkeli: %1</translation>
     </message>
     <message>
-      <source>Saving article...</source>
-      <translation>Tallennetaan artikkelia...</translation>
-    </message>
-    <message>
       <source>Save PDF complete</source>
       <translation>Tallennus PDF-muodossa valmis</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
       <translation>PDF-tiedostojen tallennus epäonnistui</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation>Tallennetaan artikkelia... (%1/%2)</translation>
     </message>
   </context>
   <context>
