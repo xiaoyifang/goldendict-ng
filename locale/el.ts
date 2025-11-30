@@ -3711,16 +3711,16 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Αδύνατη η αποθήκευση του άρθρου: %1</translation>
     </message>
     <message>
-      <source>Saving article...</source>
-      <translation>Αποθήκευση άρθρου...</translation>
-    </message>
-    <message>
       <source>Save PDF complete</source>
       <translation>Αποθήκευση PDF ολοκληρώθηκε</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
       <translation>Αποτυχία αποθήκευσης PDF</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation>Αποθήκευση άρθρου... (%1/%2)</translation>
     </message>
   </context>
   <context>
