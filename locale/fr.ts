@@ -3707,16 +3707,16 @@ des dictionnaires Stardict, Babylon et GLS</translation>
       <translation>Peut&apos;t enregistrer l'article : %1</translation>
     </message>
     <message>
-      <source>Saving article...</source>
-      <translation>Enregistrement de l'article...</translation>
-    </message>
-    <message>
       <source>Save PDF complete</source>
       <translation>Enregistrer le PDF avec succès</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
       <translation>Échec de l'enregistrement du PDF</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation>Enregistrement de l'article... (%1/%2)</translation>
     </message>
   </context>
   <context>
