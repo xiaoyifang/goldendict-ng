@@ -7,7 +7,6 @@
 
 #include "ui/articleview.hh"
 #include "config.hh"
-#include "mainstatusbar.hh"
 #include <QStatusBar>
 
 #include <QFileDialog>
@@ -20,7 +19,6 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QUrl>
-#include <QProgressDialog>
 #include <QDebug>
 
 using std::set;
@@ -146,6 +144,7 @@ void ArticleSaver::save()
   if ( filters.at( 3 ).startsWith( selectedFilter ) ) {
     QWebEnginePage * page = view_->page();
     page->save( fileName, QWebEngineDownloadRequest::MimeHtmlSaveFormat );
+    emit statusMessage( QObject::tr( "Save article complete" ), 5000 );
     return;
   }
 
@@ -214,45 +213,41 @@ void ArticleSaver::save()
         filterAndCollectResources( html, rx1, "\"", folder, resourceIncluded, downloadResources );
         filterAndCollectResources( html, rx2, "'", folder, resourceIncluded, downloadResources );
 
-        auto * progressDialog    = new ArticleSaveProgressDialog( uiParent_ );
-        int maxVal               = 1; // main html
-        bool anyHandlerConnected = false;
+        int totalResources         = downloadResources.size();
+        auto completedResourcesPtr = std::make_shared< int >( 0 );
 
         for ( const auto & p : downloadResources ) {
           ResourceToSaveHandler * handler = view_->saveResource( p.first, p.second );
           if ( handler && !handler->isEmpty() ) {
-            anyHandlerConnected = true;
-            maxVal += 1;
-            QObject::connect( handler,
-                              &ResourceToSaveHandler::done,
-                              progressDialog,
-                              &ArticleSaveProgressDialog::perform );
+            QObject::connect(
+              handler,
+              &ResourceToSaveHandler::done,
+              this,
+              [ this, totalResources, completedResourcesPtr ]() {
+                *completedResourcesPtr += 1;
+                if ( *completedResourcesPtr == totalResources ) {
+                  // All resources completed
+                  emit statusMessage( QObject::tr( "Save article complete" ), 5000 );
+                }
+                else {
+                  emit statusMessage(
+                    QObject::tr( "Saving article... (%1/%2)" ).arg( *completedResourcesPtr ).arg( totalResources ),
+                    100 );
+                }
+              } );
           }
-        }
-
-        progressDialog->setLabelText( QObject::tr( "Saving article..." ) );
-        progressDialog->setRange( 0, maxVal );
-
-        if ( !anyHandlerConnected ) {
-          // No resource handlers attached — no background work expected.
-          // Close and schedule deletion of the dialog immediately to avoid
-          // leaving it open in rare edge-cases.
-          progressDialog->setValue( maxVal );
-          progressDialog->close();
-          progressDialog->deleteLater();
-        }
-        else {
-          progressDialog->setValue( 0 );
-          progressDialog->show();
+          else {
+            // Handler is empty, count it as already completed
+            *completedResourcesPtr += 1;
+          }
         }
 
         file.write( html.toUtf8() );
       }
       else {
         file.write( html.toUtf8() );
+        emit statusMessage( QObject::tr( "Save article complete" ), 5000 );
       }
-
-      emit statusMessage( QObject::tr( "Save article complete" ), 5000 );
     }
   } );
 }
