@@ -3708,16 +3708,16 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Може&apos;зберігати статтю: %1</translation>
     </message>
     <message>
-      <source>Saving article...</source>
-      <translation>Збереження статті...</translation>
-    </message>
-    <message>
       <source>Save PDF complete</source>
       <translation>Збереження PDF завершено</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
       <translation>Не вдалося зберегти PDF</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation>Збереження статті... (%1/%2)</translation>
     </message>
   </context>
   <context>
