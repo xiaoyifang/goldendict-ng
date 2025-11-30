@@ -3710,16 +3710,16 @@ no Stardict, Babilônia e dicionários GLS</translation>
       <translation>Pode&apos;t artigo salvo: %1</translation>
     </message>
     <message>
-      <source>Saving article...</source>
-      <translation>Salvando artigo...</translation>
-    </message>
-    <message>
       <source>Save PDF complete</source>
       <translation>Salvar PDF completo</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
       <translation>Falha ao salvar PDF</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation>Salvando artigo... (%1/%2)</translation>
     </message>
   </context>
   <context>
