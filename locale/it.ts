@@ -3708,16 +3708,16 @@ dai dizionari di Stardict, Babylon e GLS</translation>
       <translation>Impossibile salvare la traduzione: %1</translation>
     </message>
     <message>
-      <source>Saving article...</source>
-      <translation>Salvataggio articolo...</translation>
-    </message>
-    <message>
       <source>Save PDF complete</source>
       <translation>Salva PDF completato</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
       <translation>Salvare PDF non riuscito</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation>Salvataggio articolo... (%1/%2)</translation>
     </message>
   </context>
   <context>
