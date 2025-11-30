@@ -3706,16 +3706,16 @@ eşanlamlı listeleri aracılığıyla ekstra makale aramasını etkinleştirmek
       <translation type="unfinished">Can&apos;t save article: %1</translation>
     </message>
     <message>
-      <source>Saving article...</source>
-      <translation type="unfinished">Saving article...</translation>
-    </message>
-    <message>
       <source>Save PDF complete</source>
       <translation type="unfinished">Save PDF complete</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
       <translation type="unfinished">Save PDF failed</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation type="unfinished">Saving article... (%1/%2)</translation>
     </message>
   </context>
   <context>
