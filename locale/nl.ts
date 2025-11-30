@@ -3707,16 +3707,16 @@ van Stardict, Babylon en GLS woordenboeken</translation>
       <translation>Kan artikel niet opslaan: %1</translation>
     </message>
     <message>
-      <source>Saving article...</source>
-      <translation>Artikel opslaan...</translation>
-    </message>
-    <message>
       <source>Save PDF complete</source>
       <translation>PDF-bestand opslaan voltooid</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
       <translation>Opslaan PDF mislukt</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation>Artikel opslaan... (%1/%2)</translation>
     </message>
   </context>
   <context>
