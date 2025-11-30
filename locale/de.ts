@@ -3704,16 +3704,16 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation>Kann Artikel nicht speichern: %1</translation>
     </message>
     <message>
-      <source>Saving article...</source>
-      <translation>Artikel speichern...</translation>
-    </message>
-    <message>
       <source>Save PDF complete</source>
       <translation>PDF speichern abgeschlossen</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
       <translation>PDF speichern fehlgeschlagen</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation>Artikel speichern... (%1/%2)</translation>
     </message>
   </context>
   <context>
