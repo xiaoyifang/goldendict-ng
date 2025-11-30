@@ -3708,16 +3708,16 @@ from Stardict, Babylon and GLS dictionaries</source>
       <translation type="unfinished">Can&apos;t save article: %1</translation>
     </message>
     <message>
-      <source>Saving article...</source>
-      <translation>حفظ المقال...</translation>
-    </message>
-    <message>
       <source>Save PDF complete</source>
       <translation>اكتمل حفظ PDF</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
       <translation>فشل حفظ PDF</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation>حفظ المقال... (%1/%2)</translation>
     </message>
   </context>
   <context>
