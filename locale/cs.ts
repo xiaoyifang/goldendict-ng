@@ -3708,16 +3708,16 @@ ze Stardict, Babylon a GLS slovníků</translation>
       <translation>Nemohu uložit článek: %1</translation>
     </message>
     <message>
-      <source>Saving article...</source>
-      <translation>Ukládání článku...</translation>
-    </message>
-    <message>
       <source>Save PDF complete</source>
       <translation>Uložení PDF dokončeno</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
       <translation>Uložení PDF selhalo</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation>Ukládání článku... (%1/%2)</translation>
     </message>
   </context>
   <context>
