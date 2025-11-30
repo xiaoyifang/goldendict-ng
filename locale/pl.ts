@@ -3710,16 +3710,16 @@ ze słowników Stardict, Babylon i GLS</translation>
       <translation>Może&apos;t zapisać artykuł: %1</translation>
     </message>
     <message>
-      <source>Saving article...</source>
-      <translation>Zapisywanie artykułu...</translation>
-    </message>
-    <message>
       <source>Save PDF complete</source>
       <translation>Zapisywanie PDF zakończone</translation>
     </message>
     <message>
       <source>Save PDF failed</source>
       <translation>Zapisanie PDF nie powiodło się</translation>
+    </message>
+    <message>
+      <source>Saving article... (%1/%2)</source>
+      <translation>Zapisywanie artykułu... (%1/%2)</translation>
     </message>
   </context>
   <context>
