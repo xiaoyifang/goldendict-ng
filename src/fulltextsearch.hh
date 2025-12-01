@@ -88,6 +88,7 @@ public slots:
 
 signals:
   void sendNowIndexingName( QString );
+  void indexingFinished();
 };
 
 class FtsIndexing: public QObject
@@ -134,6 +135,7 @@ private:
 private slots:
   void setNowIndexedName( const QString & name );
   void onTimeout();
+  void onIndexingFinished();
 
 signals:
   void newIndexingName( QString name );
