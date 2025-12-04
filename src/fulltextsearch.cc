@@ -45,7 +45,7 @@ void Indexing::run()
   catch ( std::exception & ex ) {
     qWarning( "Exception occurred while full-text search: %s", ex.what() );
   }
-  emit sendNowIndexingName( QString() );
+  emit indexingFinished();
 }
 
 void Indexing::timeout()
@@ -97,6 +97,7 @@ void FtsIndexing::doIndexing()
   indexing = new Indexing( isCancelled, dictionaries, indexingExited );
 
   QObject::connect( indexing, &Indexing::sendNowIndexingName, this, &FtsIndexing::setNowIndexedName );
+  QObject::connect( indexing, &Indexing::indexingFinished, this, &FtsIndexing::onIndexingFinished );
 
   QThreadPool::globalInstance()->start( indexing );
 
@@ -128,18 +129,20 @@ void FtsIndexing::onTimeout()
   }
 }
 
+void FtsIndexing::onIndexingFinished()
+{
+  if ( started ) {
+    timer.stop();
+    started = false;
+  }
+  setNowIndexedName( QString() );
+}
+
 void FtsIndexing::setNowIndexedName( const QString & name )
 {
   {
     QMutexLocker _( &nameMutex );
     nowIndexing = name;
-
-    // When indexing completes naturally, Indexing::run() emits an empty name
-    // Stop the timer to avoid unnecessary callbacks
-    if ( name.isEmpty() && started ) {
-      timer.stop();
-      started = false;
-    }
   }
   emit newIndexingName( name );
 }
