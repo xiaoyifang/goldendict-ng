@@ -1644,20 +1644,25 @@ void buildHeadwordsIndex( const IndexedWords & indexedWords, File::Index & file 
   uint32_t itemsInBlock = 0;
 
   for ( const auto & item : indexedWords ) {
-    const std::string & word = item.first;
-    // Skip empty words if any (though IndexedWords shouldn't have them usually)
-    if ( word.empty() ) continue;
+    for ( const auto & link : item.second ) {
+      if ( !link.prefix.empty() ) {
+        continue;
+      }
 
-    if ( itemsInBlock == 0 ) {
-      offsets.push_back( file.tell() );
-    }
+      const std::string & word = link.word;
+      // Skip empty words if any
+      if ( word.empty() ) continue;
 
-    size_t len = word.length();
-    blockBuffer.insert( blockBuffer.end(), word.begin(), word.end() );
-    blockBuffer.push_back( 0 ); // Null terminator
-    itemsInBlock++;
+      if ( itemsInBlock == 0 ) {
+        offsets.push_back( file.tell() );
+      }
 
-    if ( itemsInBlock >= blockSize ) {
+      size_t len = word.length();
+      blockBuffer.insert( blockBuffer.end(), word.begin(), word.end() );
+      blockBuffer.push_back( 0 ); // Null terminator
+      itemsInBlock++;
+
+      if ( itemsInBlock >= blockSize ) {
       // Compress and write block
       vector< unsigned char > compressedData( compressBound( blockBuffer.size() ) );
       unsigned long compressedSize = compressedData.size();
