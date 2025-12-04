@@ -25,6 +25,7 @@ enum {
 
 BtreeIndex::BtreeIndex():
   idxFile( nullptr ),
+  idxFileMutex( nullptr ),
   rootNodeLoaded( false )
 {
 }
@@ -51,6 +52,18 @@ void BtreeIndex::openIndex( const IndexInfo & indexInfo, File::Index & file, QMu
 
   rootNodeLoaded = false;
   rootNode.clear();
+
+  // Try to open headwords index
+  try {
+    QString headwordsFileName = file.file().fileName() + ".headwords";
+    if ( QFile::exists( headwordsFileName ) ) {
+      headwordsIdxFile = std::make_unique< File::Index >( headwordsFileName.toStdString(), QIODevice::ReadOnly );
+      headwordsIndex.openIndex( *headwordsIdxFile, headwordsMutex );
+    }
+  }
+  catch ( ... ) {
+    qWarning( "Failed to open headwords index" );
+  }
 }
 
 vector< WordArticleLink >
@@ -1060,6 +1073,16 @@ IndexInfo buildIndex( const IndexedWords & indexedWords, File::Index & file )
 
   uint32_t rootOffset = buildBtreeNode( nextIndex, indexSize, file, btreeMaxElements, lastLeafOffset );
 
+  // Build headwords index
+  try {
+    QString headwordsFileName = file.file().fileName() + ".headwords";
+    File::Index headwordsFile( headwordsFileName.toStdString(), QIODevice::WriteOnly );
+    buildHeadwordsIndex( indexedWords, headwordsFile );
+  }
+  catch ( ... ) {
+    qWarning( "Failed to build headwords index" );
+  }
+
   return IndexInfo( btreeMaxElements, rootOffset );
 }
 
@@ -1398,6 +1421,10 @@ bool BtreeDictionary::getHeadwords( QStringList & headwords )
 {
   QSet< QString > setOfHeadwords;
 
+  if ( headwordsIndex.getHeadwords( headwords ) ) {
+    return true;
+  }
+
   headwords.clear();
   setOfHeadwords.reserve( getWordCount() );
 
@@ -1419,15 +1446,258 @@ bool BtreeDictionary::getHeadwords( QStringList & headwords )
     qWarning( "Failed headwords retrieving for \"%s\", reason: %s", getName().c_str(), ex.what() );
   }
 
+
   return headwords.size() > 0;
 }
 
 void BtreeDictionary::findHeadWordsWithLenth( int & index, QSet< QString > * headwords, uint32_t length )
 {
+  if ( headwordsIndex.findHeadWordsWithLenth( index, headwords, length ) ) {
+    return;
+  }
   auto leafNodeOffsets = findNodes();
   findHeadWords( leafNodeOffsets, index, headwords, length );
 }
 
 void BtreeDictionary::getArticleText( uint32_t, QString &, QString & ) {}
+
+// HeadwordsIndex implementation
+
+HeadwordsIndex::HeadwordsIndex():
+  idxFile( nullptr ),
+  idxFileMutex( nullptr ),
+  headwordsCount( 0 ),
+  blockSize( 0 )
+{
+}
+
+bool HeadwordsIndex::openIndex( File::Index & file, QMutex & mutex )
+{
+  idxFile      = &file;
+  idxFileMutex = &mutex;
+
+  try {
+    // Check magic
+    uint32_t magic = idxFile->read< uint32_t >();
+    if ( magic != 0x48445744 ) // "HDWD"
+    {
+      return false;
+    }
+
+    // Check version
+    uint32_t version = idxFile->read< uint32_t >();
+    if ( version != 1 ) {
+      return false;
+    }
+
+    headwordsCount = idxFile->read< uint32_t >();
+    blockSize      = idxFile->read< uint32_t >();
+    uint32_t blockCount = idxFile->read< uint32_t >();
+
+    blockOffsets.resize( blockCount );
+    idxFile->read( &blockOffsets.front(), blockCount * sizeof( uint32_t ) );
+
+    return true;
+  }
+  catch ( ... ) {
+    return false;
+  }
+}
+
+bool HeadwordsIndex::getHeadwords( QStringList & headwords )
+{
+  if ( !idxFile ) {
+    return false;
+  }
+
+  QMutexLocker _( idxFileMutex );
+
+  try {
+    for ( uint32_t offset : blockOffsets ) {
+      idxFile->seek( offset );
+      uint32_t compressedSize   = idxFile->read< uint32_t >();
+      uint32_t uncompressedSize = idxFile->read< uint32_t >();
+
+      vector< unsigned char > compressedData( compressedSize );
+      idxFile->read( &compressedData.front(), compressedSize );
+
+      vector< unsigned char > uncompressedData( uncompressedSize );
+      unsigned long destLen = uncompressedSize;
+      if ( uncompress( &uncompressedData.front(),
+                       &destLen,
+                       &compressedData.front(),
+                       compressedSize )
+           != Z_OK ) {
+        return false;
+      }
+
+      const char * ptr = (const char *)&uncompressedData.front();
+      const char * end = ptr + uncompressedSize;
+
+      while ( ptr < end ) {
+        headwords.append( QString::fromUtf8( ptr ) );
+        ptr += strlen( ptr ) + 1;
+      }
+    }
+    return true;
+  }
+  catch ( ... ) {
+    return false;
+  }
+}
+
+void HeadwordsIndex::findHeadWordsWithLenth( int & index, QSet< QString > * headwords, uint32_t length )
+{
+  if ( !idxFile || blockSize == 0 ) {
+    return;
+  }
+
+  QMutexLocker _( idxFileMutex );
+
+  try {
+    uint32_t startBlock = index / blockSize;
+    uint32_t startIndex = index % blockSize;
+
+    for ( size_t i = startBlock; i < blockOffsets.size(); ++i ) {
+      idxFile->seek( blockOffsets[ i ] );
+      uint32_t compressedSize   = idxFile->read< uint32_t >();
+      uint32_t uncompressedSize = idxFile->read< uint32_t >();
+
+      vector< unsigned char > compressedData( compressedSize );
+      idxFile->read( &compressedData.front(), compressedSize );
+
+      vector< unsigned char > uncompressedData( uncompressedSize );
+      unsigned long destLen = uncompressedSize;
+      if ( uncompress( &uncompressedData.front(),
+                       &destLen,
+                       &compressedData.front(),
+                       compressedSize )
+           != Z_OK ) {
+        return;
+      }
+
+      const char * ptr = (const char *)&uncompressedData.front();
+      const char * end = ptr + uncompressedSize;
+
+      uint32_t currentInBlock = 0;
+      while ( ptr < end ) {
+        if ( currentInBlock >= startIndex ) {
+          headwords->insert( QString::fromUtf8( ptr ) );
+          index++;
+          if ( headwords->size() >= (int)length ) {
+            return;
+          }
+        }
+        ptr += strlen( ptr ) + 1;
+        currentInBlock++;
+      }
+      startIndex = 0; // Reset for next blocks
+    }
+  }
+  catch ( ... ) {
+  }
+}
+
+void buildHeadwordsIndex( const IndexedWords & indexedWords, File::Index & file )
+{
+  // Magic "HDWD"
+  file.write< uint32_t >( 0x48445744 );
+  // Version
+  file.write< uint32_t >( 1 );
+  // Total count
+  file.write< uint32_t >( indexedWords.size() );
+  // Block size (items per block)
+  uint32_t blockSize = 256;
+  file.write< uint32_t >( blockSize );
+
+  // Reserve space for block count and offsets table
+  // We don't know block count yet, but we can estimate or just write placeholder
+  // Since we write sequentially, we can write blocks first, then go back and write offsets?
+  // No, usually we write offsets table first or last. If last, we need a pointer to it in header.
+  // But here I defined header -> block count -> offsets -> blocks.
+  // So I need to buffer offsets.
+
+  uint32_t blockCountOffset = file.tell();
+  file.write< uint32_t >( 0 ); // Placeholder for block count
+
+  // Placeholder for offsets (we don't know how many blocks yet, so we can't reserve exact space)
+  // Better design: Header -> Pointer to Offsets Table.
+  // Let's change design slightly:
+  // Header: Magic, Version, Count, BlockSize, OffsetsTableOffset
+  // Blocks...
+  // OffsetsTable (at the end)
+
+  // Re-write header with OffsetsTableOffset
+  file.seek( file.tell() - sizeof( uint32_t ) * 4 ); // Rewind
+  file.write< uint32_t >( 0x48445744 );
+  file.write< uint32_t >( 1 );
+  file.write< uint32_t >( indexedWords.size() );
+  file.write< uint32_t >( blockSize );
+  
+  uint32_t offsetsTablePtrOffset = file.tell();
+  file.write< uint32_t >( 0 ); // Placeholder for OffsetsTableOffset
+
+  std::vector< uint32_t > offsets;
+  std::vector< char > blockBuffer;
+  uint32_t itemsInBlock = 0;
+
+  for ( const auto & item : indexedWords ) {
+    const std::string & word = item.first;
+    // Skip empty words if any (though IndexedWords shouldn't have them usually)
+    if ( word.empty() ) continue;
+
+    if ( itemsInBlock == 0 ) {
+      offsets.push_back( file.tell() );
+    }
+
+    size_t len = word.length();
+    blockBuffer.insert( blockBuffer.end(), word.begin(), word.end() );
+    blockBuffer.push_back( 0 ); // Null terminator
+    itemsInBlock++;
+
+    if ( itemsInBlock >= blockSize ) {
+      // Compress and write block
+      vector< unsigned char > compressedData( compressBound( blockBuffer.size() ) );
+      unsigned long compressedSize = compressedData.size();
+      if ( compress( &compressedData.front(), &compressedSize, (const unsigned char *)&blockBuffer.front(), blockBuffer.size() ) != Z_OK ) {
+         qWarning( "Failed to compress headwords block" );
+         return; 
+      }
+      
+      file.write< uint32_t >( compressedSize );
+      file.write< uint32_t >( blockBuffer.size() );
+      file.write( &compressedData.front(), compressedSize );
+
+      blockBuffer.clear();
+      itemsInBlock = 0;
+    }
+  }
+
+  // Write last block if not empty
+  if ( !blockBuffer.empty() ) {
+      vector< unsigned char > compressedData( compressBound( blockBuffer.size() ) );
+      unsigned long compressedSize = compressedData.size();
+      if ( compress( &compressedData.front(), &compressedSize, (const unsigned char *)&blockBuffer.front(), blockBuffer.size() ) != Z_OK ) {
+         qWarning( "Failed to compress headwords block" );
+         return; 
+      }
+      
+      file.write< uint32_t >( compressedSize );
+      file.write< uint32_t >( blockBuffer.size() );
+      file.write( &compressedData.front(), compressedSize );
+  }
+
+  // Write offsets table
+  uint32_t offsetsTableOffset = file.tell();
+  file.write< uint32_t >( offsets.size() );
+  file.write( &offsets.front(), offsets.size() * sizeof( uint32_t ) );
+
+  // Update pointer
+  file.seek( offsetsTablePtrOffset );
+  file.write< uint32_t >( offsetsTableOffset );
+  
+  // Restore position
+  file.seek( file.tell() ); // Go to end
+}
 
 } // namespace BtreeIndexing
