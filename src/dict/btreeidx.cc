@@ -1546,10 +1546,10 @@ bool HeadwordsIndex::getHeadwords( QStringList & headwords )
   }
 }
 
-void HeadwordsIndex::findHeadWordsWithLenth( int & index, QSet< QString > * headwords, uint32_t length )
+bool HeadwordsIndex::findHeadWordsWithLenth( int & index, QSet< QString > * headwords, uint32_t length )
 {
   if ( !idxFile || blockSize == 0 ) {
-    return;
+    return false;
   }
 
   QMutexLocker _( idxFileMutex );
@@ -1573,7 +1573,7 @@ void HeadwordsIndex::findHeadWordsWithLenth( int & index, QSet< QString > * head
                        &compressedData.front(),
                        compressedSize )
            != Z_OK ) {
-        return;
+        return false;
       }
 
       const char * ptr = (const char *)&uncompressedData.front();
@@ -1585,7 +1585,7 @@ void HeadwordsIndex::findHeadWordsWithLenth( int & index, QSet< QString > * head
           headwords->insert( QString::fromUtf8( ptr ) );
           index++;
           if ( headwords->size() >= (int)length ) {
-            return;
+            return true;
           }
         }
         ptr += strlen( ptr ) + 1;
@@ -1593,8 +1593,10 @@ void HeadwordsIndex::findHeadWordsWithLenth( int & index, QSet< QString > * head
       }
       startIndex = 0; // Reset for next blocks
     }
+    return true;
   }
   catch ( ... ) {
+    return false;
   }
 }
 

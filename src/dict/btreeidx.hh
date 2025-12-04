@@ -286,7 +286,7 @@ public:
   /// Retrieve all unique headwords from index
   bool getHeadwords( QStringList & headwords );
 
-  void findHeadWordsWithLenth( int & index, QSet< QString > * headwords, uint32_t length );
+  bool findHeadWordsWithLenth( int & index, QSet< QString > * headwords, uint32_t length );
 
 private:
   File::Index * idxFile;
