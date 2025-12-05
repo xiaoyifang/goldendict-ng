@@ -323,7 +323,7 @@ std::string detectEncodingFromBom( const char * data, size_t size )
     return {};
   }
 
-  const unsigned char * bytes = reinterpret_cast< const unsigned char * >( data );
+  auto bytes = reinterpret_cast< const unsigned char * >( data );
 
   // Check for UTF-32 BOMs (4 bytes) - must check before UTF-16
   if ( size >= 4 ) {
@@ -363,7 +363,7 @@ std::string detectEncodingFromBom( const char * data, size_t size )
 
 bool isValidUtf8( const char * data, size_t size )
 {
-  const unsigned char * bytes = reinterpret_cast< const unsigned char * >( data );
+  auto bytes = reinterpret_cast< const unsigned char * >( data );
   size_t i                    = 0;
 
   while ( i < size ) {
