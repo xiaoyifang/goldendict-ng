@@ -674,7 +674,7 @@ private:
   // 2. UTF-8 validity check (content-based detection)
   // 3. Dictionary encoding fallback
   // 4. UTF-8 fallback
-  static QString detectCssEncoding( const vector<char> & data, const string & dictEncoding )
+  static QString detectCssEncoding( const vector< char > & data, const string & dictEncoding )
   {
     if ( data.empty() ) {
       return "UTF-8";
@@ -700,7 +700,6 @@ private:
     return "UTF-8";
   }
 };
-
 
 
 QByteArray MddResourceRequest::isolate_css()
