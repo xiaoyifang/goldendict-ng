@@ -364,7 +364,7 @@ std::string detectEncodingFromBom( const char * data, size_t size )
 bool isValidUtf8( const char * data, size_t size )
 {
   auto bytes = reinterpret_cast< const unsigned char * >( data );
-  size_t i                    = 0;
+  size_t i   = 0;
 
   while ( i < size ) {
     unsigned char byte = bytes[ i ];
