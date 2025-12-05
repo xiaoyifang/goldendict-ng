@@ -317,4 +317,100 @@ std::u32string normalize( const std::u32string & str )
 }
 
 
+std::string detectEncodingFromBom( const char * data, size_t size )
+{
+  if ( !data || size == 0 ) {
+    return {};
+  }
+
+  const unsigned char * bytes = reinterpret_cast< const unsigned char * >( data );
+
+  // Check for UTF-32 BOMs (4 bytes) - must check before UTF-16
+  if ( size >= 4 ) {
+    // UTF-32 LE: FF FE 00 00
+    if ( bytes[ 0 ] == 0xFF && bytes[ 1 ] == 0xFE && bytes[ 2 ] == 0x00 && bytes[ 3 ] == 0x00 ) {
+      return utf32_le;
+    }
+    // UTF-32 BE: 00 00 FE FF
+    if ( bytes[ 0 ] == 0x00 && bytes[ 1 ] == 0x00 && bytes[ 2 ] == 0xFE && bytes[ 3 ] == 0xFF ) {
+      return utf32_be;
+    }
+  }
+
+  // Check for UTF-8 BOM (3 bytes)
+  if ( size >= 3 ) {
+    // UTF-8: EF BB BF
+    if ( bytes[ 0 ] == 0xEF && bytes[ 1 ] == 0xBB && bytes[ 2 ] == 0xBF ) {
+      return utf8;
+    }
+  }
+
+  // Check for UTF-16 BOMs (2 bytes)
+  if ( size >= 2 ) {
+    // UTF-16 LE: FF FE
+    if ( bytes[ 0 ] == 0xFF && bytes[ 1 ] == 0xFE ) {
+      return utf16_le;
+    }
+    // UTF-16 BE: FE FF
+    if ( bytes[ 0 ] == 0xFE && bytes[ 1 ] == 0xFF ) {
+      return utf16_be;
+    }
+  }
+
+  // No BOM found
+  return {};
+}
+
+bool isValidUtf8( const char * data, size_t size )
+{
+  const unsigned char * bytes = reinterpret_cast< const unsigned char * >( data );
+  size_t i                    = 0;
+
+  while ( i < size ) {
+    unsigned char byte = bytes[ i ];
+
+    // ASCII (0x00-0x7F): single byte
+    if ( byte <= 0x7F ) {
+      i++;
+      continue;
+    }
+
+    // Multi-byte sequence
+    int extraBytes = 0;
+
+    // 2-byte: 110xxxxx 10xxxxxx
+    if ( ( byte & 0xE0 ) == 0xC0 ) {
+      extraBytes = 1;
+    }
+    // 3-byte: 1110xxxx 10xxxxxx 10xxxxxx
+    else if ( ( byte & 0xF0 ) == 0xE0 ) {
+      extraBytes = 2;
+    }
+    // 4-byte: 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
+    else if ( ( byte & 0xF8 ) == 0xF0 ) {
+      extraBytes = 3;
+    }
+    else {
+      // Invalid UTF-8 start byte
+      return false;
+    }
+
+    // Check if we have enough bytes
+    if ( i + extraBytes >= size ) {
+      return false;
+    }
+
+    // Validate continuation bytes (must be 10xxxxxx)
+    for ( int j = 1; j <= extraBytes; j++ ) {
+      if ( ( bytes[ i + j ] & 0xC0 ) != 0x80 ) {
+        return false;
+      }
+    }
+
+    i += extraBytes + 1;
+  }
+
+  return true;
+}
+
 } // namespace Text
