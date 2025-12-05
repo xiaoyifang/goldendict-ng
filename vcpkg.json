@@ -12,7 +12,8 @@
     "opencc",
     "xapian",
     "zlib",
-    "openssl"
+    "openssl",
+    "rocksdb"
   ],
   "features": {
     "breakpad": {

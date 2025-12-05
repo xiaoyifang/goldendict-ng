@@ -939,8 +939,6 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
         idxHeader.indexBtreeMaxElements = idxInfo.btreeMaxElements;
         idxHeader.indexRootOffset       = idxInfo.rootOffset;
 
-        indexedWords.clear(); // Release memory -- no need for this data
-
         // That concludes it. Update the header.
 
         idxHeader.signature     = Signature;

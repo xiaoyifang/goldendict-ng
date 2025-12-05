@@ -1149,6 +1149,7 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
 
         qDebug( "Writing index..." );
 
+        // The indexedWords object will be destroyed, releasing RocksDB resources.
         // Good. Now build the index
 
         IndexInfo idxInfo = BtreeIndexing::buildIndex( indexedWords, idx );

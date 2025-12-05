@@ -3,6 +3,7 @@ find_package(Iconv REQUIRED)
 find_package(LibLZMA REQUIRED)
 find_package(Vorbis CONFIG REQUIRED)
 find_package(ZLIB REQUIRED)
+find_package(RocksDB REQUIRED)
 
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(PKGCONFIG_DEPS IMPORTED_TARGET

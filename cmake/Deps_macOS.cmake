@@ -53,6 +53,7 @@ pkg_check_modules(DEPS REQUIRED IMPORTED_TARGET
 
 find_package(Iconv REQUIRED)
 find_package(BZip2 REQUIRED)
+find_package(RocksDB REQUIRED)
 target_link_libraries(${GOLDENDICT} PRIVATE PkgConfig::DEPS BZip2::BZip2 Iconv::Iconv)
 
 if (WITH_EPWING_SUPPORT)

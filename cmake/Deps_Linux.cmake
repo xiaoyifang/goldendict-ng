@@ -1,4 +1,5 @@
 find_package(PkgConfig REQUIRED)
+find_package(RocksDB REQUIRED)
 
 set(Optional_Pkgs "")
 if (USE_SYSTEM_FMT)

@@ -154,6 +154,7 @@ target_link_libraries(${GOLDENDICT} PRIVATE
         Qt6::WebEngineWidgets
         Qt6::Widgets
         Qt6::Svg
+        $<$<TARGET_EXISTS:RocksDB::rocksdb>:RocksDB::rocksdb>
         $<$<BOOL:${WITH_TTS}>:Qt6::TextToSpeech>
 )
 

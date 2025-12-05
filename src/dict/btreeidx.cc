@@ -12,6 +12,10 @@
 #include "globalbroadcaster.hh"
 
 #include <QtConcurrentRun>
+#include <QDir>
+#include <QTemporaryDir>
+#include <QUuid>
+#include <rocksdb/convenience.h>
 #include <zlib.h>
 
 namespace BtreeIndexing {
@@ -970,11 +974,9 @@ void IndexedWords::addWord( const std::u32string & index_word, uint32_t articleO
         if ( wordsAdded == 0 ) {
           std::u32string folded = Folding::applyWhitespaceOnly( std::u32string( wordBegin, wordSize ) );
           if ( !folded.empty() ) {
-            auto i = insert( { Text::toUtf8( folded ), vector< WordArticleLink >() } ).first;
-
             string utfWord = Text::toUtf8( std::u32string( wordBegin, wordSize ) );
             string utfPrefix;
-            i->second.emplace_back( utfWord, articleOffset, utfPrefix );
+            db->Merge(write_options, Text::toUtf8(folded), serializeLink({utfWord, articleOffset, utfPrefix}));
           }
         }
         return;
@@ -988,20 +990,11 @@ void IndexedWords::addWord( const std::u32string & index_word, uint32_t articleO
     // Insert this word
     std::u32string folded = Folding::apply( nextChar );
     auto name             = Text::toUtf8( folded );
+    
+    string utfWord   = Text::toUtf8( std::u32string( nextChar, wordSize - ( nextChar - wordBegin ) ) );
+    string utfPrefix = Text::toUtf8( std::u32string( wordBegin, nextChar - wordBegin ) );
 
-    auto i = insert( { std::move( name ), vector< WordArticleLink >() } ).first;
-
-    if ( ( i->second.size() < 1024 ) || ( nextChar == wordBegin ) ) // Don't overpopulate chains with middle matches
-    {
-      string utfWord   = Text::toUtf8( std::u32string( nextChar, wordSize - ( nextChar - wordBegin ) ) );
-      string utfPrefix = Text::toUtf8( std::u32string( wordBegin, nextChar - wordBegin ) );
-
-      i->second.emplace_back( std::move( utfWord ), articleOffset, std::move( utfPrefix ) );
-      // reduce the vector reallocation.
-      if ( i->second.size() * 1.0 / i->second.capacity() > 0.75 ) {
-        i->second.reserve( i->second.capacity() * 2 );
-      }
-    }
+    db->Merge(write_options, name, serializeLink({std::move(utfWord), articleOffset, std::move(utfPrefix)}));
 
     wordsAdded += 1;
 
@@ -1018,6 +1011,104 @@ void IndexedWords::addWord( const std::u32string & index_word, uint32_t articleO
   }
 }
 
+IndexedWords::IndexedWords() : db(nullptr) {
+  QTemporaryDir tempDir;
+  if (tempDir.isValid()) {
+    db_path = tempDir.path().toStdString() + QDir::separator().toLatin1() + QUuid::createUuid().toString().toStdString();
+  } else {
+    db_path = (QDir::tempPath() + QDir::separator() + QUuid::createUuid().toString()).toStdString();
+  }
+
+  rocksdb::Options options;
+  options.create_if_missing = true;
+  options.merge_operator.reset(new WordArticleLinkMergeOperator());
+  // Optimize for bulk loading
+  options.IncreaseParallelism();
+  options.OptimizeLevelStyleCompaction();
+
+  rocksdb::Status status = rocksdb::DB::Open(options, db_path, &db);
+  if (!status.ok()) {
+    qWarning() << "Failed to open RocksDB database at " << QString::fromStdString(db_path) << ": " << status.ToString().c_str();
+    db = nullptr;
+  }
+  write_options.disableWAL = true; // Faster writes for bulk loading
+}
+
+IndexedWords::~IndexedWords() {
+  if (db) {
+    delete db;
+    db = nullptr;
+    rocksdb::DestroyDB(db_path, rocksdb::Options());
+  }
+}
+
+rocksdb::Iterator* IndexedWords::newIterator() {
+  if (!db) return nullptr;
+  rocksdb::ReadOptions read_options;
+  read_options.fill_cache = false; // Don't pollute cache during bulk read
+  return db->NewIterator(read_options);
+}
+
+uint64_t IndexedWords::size() {
+  if (!db) return 0;
+  uint64_t num_keys = 0;
+  db->GetAggregatedIntProperty("rocksdb.estimate-num-keys", &num_keys);
+  return num_keys;
+}
+
+bool IndexedWords::empty() {
+  return size() == 0;
+}
+
+void IndexedWords::clear() {
+  if (db) {
+    delete db;
+    db = nullptr;
+    rocksdb::DestroyDB(db_path, rocksdb::Options());
+
+    rocksdb::Options options;
+    options.create_if_missing = true;
+    options.merge_operator.reset(new WordArticleLinkMergeOperator());
+    rocksdb::Status status = rocksdb::DB::Open(options, db_path, &db);
+    if (!status.ok()) {
+      qWarning() << "Failed to reopen RocksDB database at " << QString::fromStdString(db_path) << ": " << status.ToString().c_str();
+      db = nullptr;
+    }
+  }
+}
+
+void IndexedWords::clear()
+{
+  // intentionally left blank, rocksdb will auto clean in destructor.
+}
+string IndexedWords::serializeLink(const WordArticleLink& link) {
+    string serialized;
+    serialized.reserve(sizeof(uint32_t) * 2 + link.word.size() + link.prefix.size() + sizeof(uint32_t));
+    uint32_t word_len = link.word.size();
+    uint32_t prefix_len = link.prefix.size();
+    serialized.append(reinterpret_cast<const char*>(&word_len), sizeof(word_len));
+    serialized.append(link.word);
+    serialized.append(reinterpret_cast<const char*>(&prefix_len), sizeof(prefix_len));
+    serialized.append(link.prefix);
+    serialized.append(reinterpret_cast<const char*>(&link.articleOffset), sizeof(link.articleOffset));
+    return serialized;
+}
+
+vector<WordArticleLink> IndexedWords::deserializeChain(const rocksdb::Slice& slice) {
+    vector<WordArticleLink> chain;
+    const char* ptr = slice.data();
+    const char* end = ptr + slice.size();
+    while (ptr < end) {
+        uint32_t word_len = *reinterpret_cast<const uint32_t*>(ptr); ptr += sizeof(uint32_t);
+        string word(ptr, word_len); ptr += word_len;
+        uint32_t prefix_len = *reinterpret_cast<const uint32_t*>(ptr); ptr += sizeof(uint32_t);
+        string prefix(ptr, prefix_len); ptr += prefix_len;
+        uint32_t articleOffset = *reinterpret_cast<const uint32_t*>(ptr); ptr += sizeof(uint32_t);
+        chain.emplace_back(word, articleOffset, prefix);
+    }
+    return chain;
+}
+
 void IndexedWords::addSingleWord( const std::u32string & index_word, uint32_t articleOffset )
 {
   const std::u32string & word = Text::removeTrailingZero( index_word );
@@ -1025,20 +1116,20 @@ void IndexedWords::addSingleWord( const std::u32string & index_word, uint32_t ar
   if ( folded.empty() ) {
     folded = Folding::applyWhitespaceOnly( word );
   }
-  operator[]( Text::toUtf8( folded ) ).emplace_back( Text::toUtf8( word ), articleOffset );
+  db->Merge(write_options, Text::toUtf8(folded), serializeLink({Text::toUtf8(word), articleOffset}));
 }
 
-IndexInfo buildIndex( const IndexedWords & indexedWords, File::Index & file )
+IndexInfo buildIndex( IndexedWords & indexedWords, File::Index & file )
 {
   size_t indexSize = indexedWords.size();
-  auto nextIndex   = indexedWords.begin();
+  sptr<rocksdb::Iterator> it(indexedWords.newIterator());
 
   // Skip any empty words. No point in indexing those, and some dictionaries
   // are known to have buggy empty-word entries (Stardict's jargon for instance).
-
-  while ( indexSize && nextIndex->first.empty() ) {
+  it->SeekToFirst();
+  while (indexSize && it->Valid() && it->key().empty()) {
     indexSize--;
-    ++nextIndex;
+    it->Next();
   }
 
   // We try to stick to two-level tree for most dictionaries. Try finding
@@ -1058,7 +1149,7 @@ IndexInfo buildIndex( const IndexedWords & indexedWords, File::Index & file )
 
   uint32_t lastLeafOffset = 0;
 
-  uint32_t rootOffset = buildBtreeNode( nextIndex, indexSize, file, btreeMaxElements, lastLeafOffset );
+  uint32_t rootOffset = buildBtreeNode( it, indexSize, file, btreeMaxElements, lastLeafOffset );
 
   return IndexInfo( btreeMaxElements, rootOffset );
 }

@@ -11,6 +11,9 @@
 #include <vector>
 #include <QFuture>
 #include <QList>
+#include <rocksdb/db.h>
+#include <rocksdb/options.h>
+#include <rocksdb/merge_operator.h>
 
 
 /// A base for the dictionary which creates a btree index to look up
@@ -247,12 +250,49 @@ public:
 
 // Everything below is for building the index data.
 
+/// Custom Merge Operator for RocksDB. It concatenates WordArticleLink entries.
+class WordArticleLinkMergeOperator : public rocksdb::MergeOperator {
+public:
+  virtual bool FullMergeV2(const MergeOperationInput& merge_in,
+                           MergeOperationOutput* merge_out) const override {
+    merge_out->new_value.clear();
+    for (const auto& operand : merge_in.operand_list) {
+      merge_out->new_value.append(operand.data(), operand.size());
+    }
+    return true;
+  }
+
+  virtual bool PartialMergeMulti(const rocksdb::Slice& key,
+                                 const std::deque<rocksdb::Slice>& operand_list,
+                                 std::string* new_value,
+                                 rocksdb::Logger* logger) const override {
+    new_value->clear();
+    for (const auto& operand : operand_list) {
+      new_value->append(operand.data(), operand.size());
+    }
+    return true;
+  }
+
+  const char* Name() const override {
+    return "WordArticleLinkMergeOperator";
+  }
+};
+
+
 /// This represents the index in its source form, as a map which binds folded
 /// words to sequences of their unfolded source forms and the corresponding
 /// article offsets. The words are utf8-encoded -- it doesn't break Unicode
 /// sorting, but conserves space.
-struct IndexedWords: public map< string, vector< WordArticleLink > >
+class IndexedWords
 {
+public:
+  IndexedWords();
+  ~IndexedWords();
+
+  // Disable copy and assign
+  IndexedWords(const IndexedWords&) = delete;
+  IndexedWords& operator=(const IndexedWords&) = delete;
+
   /// Instead of adding to the map directly, use this function. It does folding
   /// itself, and for phrases/sentences it adds additional entries beginning with
   /// each new word.
@@ -261,11 +301,36 @@ struct IndexedWords: public map< string, vector< WordArticleLink > >
   /// Differs from addWord() in that it only adds a single entry. We use this
   /// for zip's file names.
   void addSingleWord( const std::u32string & word, uint32_t articleOffset );
+
+  /// Returns an iterator to the beginning of the data.
+  rocksdb::Iterator* newIterator();
+
+  /// Returns the approximate number of keys.
+  uint64_t size();
+
+  /// Returns true if there are no keys.
+  bool empty();
+
+  /// Clears all data.
+  void clear();
+
+private:
+  rocksdb::DB* db;
+  string db_path;
+  rocksdb::WriteOptions write_options;
+
+  /// Serializes a WordArticleLink into a string.
+  static string serializeLink(const WordArticleLink& link);
+
+  /// Deserializes a string slice into a vector of WordArticleLinks.
+  static vector<WordArticleLink> deserializeChain(const rocksdb::Slice& slice);
+
+  friend IndexInfo buildIndex(IndexedWords&, File::Index&);
 };
 
 /// Builds the index, as a compressed btree. Returns IndexInfo.
 /// All the data is stored to the given file, beginning from its current
 /// position.
-IndexInfo buildIndex( const IndexedWords &, File::Index & file );
+IndexInfo buildIndex( IndexedWords &, File::Index & file );
 
 } // namespace BtreeIndexing

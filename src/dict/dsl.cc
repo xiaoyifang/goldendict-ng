@@ -2117,8 +2117,6 @@ vector< sptr< Dictionary::Class > > makeDictionaries( const vector< string > & f
           idxHeader.indexBtreeMaxElements = idxInfo.btreeMaxElements;
           idxHeader.indexRootOffset       = idxInfo.rootOffset;
 
-          indexedWords.clear(); // Release memory -- no need for this data
-
           // If there was a zip file, index it too
 
           if ( zipFileName.size() ) {
