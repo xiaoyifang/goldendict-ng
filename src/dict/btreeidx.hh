@@ -76,6 +76,7 @@ class BtreeIndex
 public:
 
   BtreeIndex();
+  virtual ~BtreeIndex();
 
   /// Opens the index. The file reference is saved to be used for
   /// subsequent lookups.
@@ -106,6 +107,13 @@ public:
   /// Retrieve headwords for presented article addresses
   void
   getHeadwordsFromOffsets( QList< uint32_t > & offsets, QList< QString > & headwords, QAtomicInt * isCancelled = 0 );
+
+  /// Opens the headwords RocksDB index for querying
+  bool openHeadwordIndex( const std::string & rocksDbPath );
+
+  /// Gets headwords that start with the given prefix from RocksDB
+  /// If prefix is empty, returns all headwords
+  QStringList getHeadwordsWithPrefix( const std::string & prefix );
 
 protected:
 
@@ -151,6 +159,10 @@ private:
   bool rootNodeLoaded;
   vector< char > rootNode; // We load root note here and keep it at all times,
                            // since all searches always start with it.
+
+  // RocksDB headword index
+  rocksdb::DB* headwordDb;
+  rocksdb::ColumnFamilyHandle* headwordsCF;
 };
 
 /// A base for the dictionary that utilizes a btree index build using
@@ -314,9 +326,21 @@ public:
   /// Clears all data.
   void clear();
 
+
+  /// Drops the index column family to save disk space after btree is built.
+  /// Only keeps the headwords column family.
+  void dropIndexFamily();
+  
+  /// Moves the temporary database to a persistent path.
+  /// Closes the current DB, moves files, and updates internal path.
+  bool moveToPersistent(const std::string& newPath);
+
 private:
   rocksdb::DB* db;
+  rocksdb::ColumnFamilyHandle* indexCF;      // Column family for building btree
+  rocksdb::ColumnFamilyHandle* headwordsCF;  // Column family for headword queries
   string db_path;
+  bool isPersistent;  // If true, don't destroy DB on destruction
   rocksdb::WriteOptions write_options;
 
   /// Serializes a WordArticleLink into a string.

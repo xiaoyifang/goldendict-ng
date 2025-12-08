@@ -13,6 +13,7 @@
 
 #include <QtConcurrentRun>
 #include <QDir>
+#include <QFileInfo>
 #include <QTemporaryDir>
 #include <QUuid>
 #include <rocksdb/convenience.h>
@@ -29,8 +30,22 @@ enum {
 
 BtreeIndex::BtreeIndex():
   idxFile( nullptr ),
-  rootNodeLoaded( false )
+  rootNodeLoaded( false ),
+  headwordDb( nullptr ),
+  headwordsCF( nullptr )
 {
+}
+
+BtreeIndex::~BtreeIndex()
+{
+  if ( headwordDb )
+  {
+    if ( headwordsCF )
+    {
+      delete headwordsCF;
+    }
+    delete headwordDb;
+  }
 }
 
 BtreeDictionary::BtreeDictionary( const string & id, const vector< string > & dictionaryFiles ):
@@ -976,7 +991,12 @@ void IndexedWords::addWord( const std::u32string & index_word, uint32_t articleO
           if ( !folded.empty() ) {
             string utfWord = Text::toUtf8( std::u32string( wordBegin, wordSize ) );
             string utfPrefix;
-            db->Merge(write_options, Text::toUtf8(folded), serializeLink({utfWord, articleOffset, utfPrefix}));
+            // Write to index column family
+            db->Merge(write_options, indexCF, Text::toUtf8(folded), serializeLink({utfWord, articleOffset, utfPrefix}));
+            // Write to headwords column family (only when prefix is empty)
+            if (headwordsCF) {
+              db->Put(write_options, headwordsCF, Text::toUtf8(folded), utfWord);
+            }
           }
         }
         return;
@@ -994,7 +1014,15 @@ void IndexedWords::addWord( const std::u32string & index_word, uint32_t articleO
     string utfWord   = Text::toUtf8( std::u32string( nextChar, wordSize - ( nextChar - wordBegin ) ) );
     string utfPrefix = Text::toUtf8( std::u32string( wordBegin, nextChar - wordBegin ) );
 
-    db->Merge(write_options, name, serializeLink({std::move(utfWord), articleOffset, std::move(utfPrefix)}));
+    // Write to index column family
+    db->Merge(write_options, indexCF, name, serializeLink({utfWord, articleOffset, utfPrefix}));
+    
+    // Write to headwords column family only if prefix is empty (first word)
+    if (headwordsCF && utfPrefix.empty()) {
+      // Store the complete original headword
+      string completeHeadword = Text::toUtf8( std::u32string( wordBegin, wordSize ) );
+      db->Put(write_options, headwordsCF, name, completeHeadword);
+    }
 
     wordsAdded += 1;
 
@@ -1011,7 +1039,7 @@ void IndexedWords::addWord( const std::u32string & index_word, uint32_t articleO
   }
 }
 
-IndexedWords::IndexedWords() : db(nullptr) {
+IndexedWords::IndexedWords() : db(nullptr), indexCF(nullptr), headwordsCF(nullptr), isPersistent(false) {
   QTemporaryDir tempDir;
   if (tempDir.isValid()) {
     db_path = tempDir.path().toStdString() + QDir::separator().toLatin1() + QUuid::createUuid().toString().toStdString();
@@ -1026,27 +1054,58 @@ IndexedWords::IndexedWords() : db(nullptr) {
   options.IncreaseParallelism();
   options.OptimizeLevelStyleCompaction();
 
-  rocksdb::Status status = rocksdb::DB::Open(options, db_path, &db);
+  // Define Column Families
+  std::vector<rocksdb::ColumnFamilyDescriptor> column_families;
+  column_families.push_back(rocksdb::ColumnFamilyDescriptor(
+      rocksdb::kDefaultColumnFamilyName, rocksdb::ColumnFamilyOptions()));
+  column_families.push_back(rocksdb::ColumnFamilyDescriptor(
+      "headwords", rocksdb::ColumnFamilyOptions()));
+
+  std::vector<rocksdb::ColumnFamilyHandle*> handles;
+  rocksdb::Status status = rocksdb::DB::Open(options, db_path, column_families, &handles, &db);
+  
   if (!status.ok()) {
-    qWarning() << "Failed to open RocksDB database at " << QString::fromStdString(db_path) << ": " << status.ToString().c_str();
+    qWarning() << "Failed to open RocksDB database at " << QString::fromStdString(db_path) 
+               << ": " << status.ToString().c_str();
     db = nullptr;
+    indexCF = nullptr;
+    headwordsCF = nullptr;
+  } else {
+    indexCF = handles[0];      // default column family for index
+    headwordsCF = handles[1];  // headwords column family
   }
+  
   write_options.disableWAL = true; // Faster writes for bulk loading
 }
 
 IndexedWords::~IndexedWords() {
   if (db) {
+    // Close column family handles
+    if (indexCF) {
+      delete indexCF;
+      indexCF = nullptr;
+    }
+    if (headwordsCF) {
+      delete headwordsCF;
+      headwordsCF = nullptr;
+    }
+    
+    // Close database
     delete db;
     db = nullptr;
-    rocksdb::DestroyDB(db_path, rocksdb::Options());
+    
+    // Only destroy database if it's temporary (not persistent)
+    if (!isPersistent) {
+      rocksdb::DestroyDB(db_path, rocksdb::Options());
+    }
   }
 }
 
 rocksdb::Iterator* IndexedWords::newIterator() {
-  if (!db) return nullptr;
+  if (!db || !indexCF) return nullptr;
   rocksdb::ReadOptions read_options;
   read_options.fill_cache = false; // Don't pollute cache during bulk read
-  return db->NewIterator(read_options);
+  return db->NewIterator(read_options, indexCF);
 }
 
 uint64_t IndexedWords::size() {
@@ -1081,6 +1140,70 @@ void IndexedWords::clear()
 {
   // intentionally left blank, rocksdb will auto clean in destructor.
 }
+
+void IndexedWords::dropIndexFamily() {
+  if (!db || !indexCF) {
+    return;
+  }
+  
+  qDebug() << "Dropping index column family to save disk space...";
+  
+  // Drop the index column family
+  rocksdb::Status status = db->DropColumnFamily(indexCF);
+  if (!status.ok()) {
+    qWarning() << "Failed to drop index column family: " << status.ToString().c_str();
+    return;
+  }
+  
+  // Delete the column family handle
+  delete indexCF;
+  indexCF = nullptr;
+  
+  qDebug() << "Index column family dropped successfully";
+}
+
+bool IndexedWords::moveToPersistent(const std::string& newPath) {
+  if (!db || isPersistent) {
+    return false;
+  }
+
+  // Close everything first
+  if (indexCF) {
+    delete indexCF;
+    indexCF = nullptr;
+  }
+  if (headwordsCF) {
+    delete headwordsCF;
+    headwordsCF = nullptr;
+  }
+  delete db;
+  db = nullptr;
+
+  // Move the directory
+  if (QFile::exists(QString::fromStdString(newPath))) {
+      QDir(QString::fromStdString(newPath)).removeRecursively();
+  }
+  
+  if (!QFile::rename(QString::fromStdString(db_path), QString::fromStdString(newPath))) {
+      qWarning() << "Failed to move RocksDB from " << QString::fromStdString(db_path) 
+                 << " to " << QString::fromStdString(newPath);
+      // Try to recover? For now getting back is hard without re-opening.
+      // But we shouldn't fail silently.
+      return false;
+  }
+
+  // Update state
+  // QTemporaryDir destructor will try to remove the old path, but it's gone.
+  // We don't need to do anything about QTemporaryDir object since it's local to constructor.
+  // Wait, QTemporaryDir was local to constructor. It already tried to remove it when constructor finished.
+  // But we determined that the logic in constructor used a text path derived from it.
+  
+  db_path = newPath;
+  isPersistent = true;
+  
+  return true;
+}
+
 string IndexedWords::serializeLink(const WordArticleLink& link) {
     string serialized;
     serialized.reserve(sizeof(uint32_t) * 2 + link.word.size() + link.prefix.size() + sizeof(uint32_t));
@@ -1116,7 +1239,16 @@ void IndexedWords::addSingleWord( const std::u32string & index_word, uint32_t ar
   if ( folded.empty() ) {
     folded = Folding::applyWhitespaceOnly( word );
   }
-  db->Merge(write_options, Text::toUtf8(folded), serializeLink({Text::toUtf8(word), articleOffset}));
+  string foldedUtf8 = Text::toUtf8(folded);
+  string wordUtf8 = Text::toUtf8(word);
+  
+  // Write to index column family
+  db->Merge(write_options, indexCF, foldedUtf8, serializeLink({wordUtf8, articleOffset}));
+  
+  // Write to headwords column family (single words always have empty prefix)
+  if (headwordsCF) {
+    db->Put(write_options, headwordsCF, foldedUtf8, wordUtf8);
+  }
 }
 
 IndexInfo buildIndex( IndexedWords & indexedWords, File::Index & file )
@@ -1150,6 +1282,14 @@ IndexInfo buildIndex( IndexedWords & indexedWords, File::Index & file )
   uint32_t lastLeafOffset = 0;
 
   uint32_t rootOffset = buildBtreeNode( it, indexSize, file, btreeMaxElements, lastLeafOffset );
+
+  // After btree is built, drop the index column family to save disk space
+  // The headwords column family will be retained for querying
+  indexedWords.dropIndexFamily();
+
+  // Persist the RocksDB query index
+  string rocksDbPath = file.fileName().toStdString() + ".rocksdb";
+  indexedWords.moveToPersistent(rocksDbPath);
 
   return IndexInfo( btreeMaxElements, rootOffset );
 }
@@ -1520,5 +1660,99 @@ void BtreeDictionary::findHeadWordsWithLenth( int & index, QSet< QString > * hea
 }
 
 void BtreeDictionary::getArticleText( uint32_t, QString &, QString & ) {}
+
+bool BtreeIndex::openHeadwordIndex( const std::string & rocksDbPath )
+{
+  if ( headwordDb ) {
+    return true; // Already open
+  }
+
+  // Check if the directory exists
+  if ( !QFileInfo( QString::fromStdString( rocksDbPath ) ).exists() ) {
+    return false;
+  }
+
+  rocksdb::Options options;
+  
+  // We need to list column families and open them
+  std::vector<std::string> column_families;
+  rocksdb::Status status = rocksdb::DB::ListColumnFamilies(rocksdb::DBOptions(), rocksDbPath, &column_families);
+  if (!status.ok()) {
+     // This might happen if the DB was created without column families (legacy/temp)
+     // or if path is invalid. But we checked existence.
+     // Also, ListColumnFamilies requires the DB to exist.
+     return false;
+  }
+  
+  std::vector<rocksdb::ColumnFamilyDescriptor> descriptors;
+  for (const auto& cf_name : column_families) {
+    descriptors.emplace_back(cf_name, rocksdb::ColumnFamilyOptions());
+  }
+
+  std::vector<rocksdb::ColumnFamilyHandle*> handles;
+  status = rocksdb::DB::OpenForReadOnly(rocksdb::DBOptions(), rocksDbPath, descriptors, &handles, &headwordDb);
+  
+  if (!status.ok()) {
+    qWarning() << "Failed to open RocksDB for reading at " << QString::fromStdString(rocksDbPath) << ": " << status.ToString().c_str();
+    return false;
+  }
+  
+  // Find the headwords column family handle
+  for (size_t i = 0; i < column_families.size(); ++i) {
+    if (column_families[i] == "headwords") {
+      headwordsCF = handles[i];
+    } else {
+        // We don't need other handles, but we must delete them
+        delete handles[i];
+    }
+  }
+  
+  if (!headwordsCF) {
+      // "headwords" family not found? Then we can't use it.
+      // This implies an incomplete DB or old format.
+      delete headwordDb; 
+      headwordDb = nullptr;
+      return false;
+  }
+  
+  return true;
+}
+
+QStringList BtreeIndex::getHeadwordsWithPrefix( const std::string & prefix )
+{
+    QStringList results;
+    if (!headwordDb || !headwordsCF) {
+        return results;
+    }
+
+    rocksdb::ReadOptions read_options;
+    // Optimize for prefix seek?
+    
+    std::unique_ptr<rocksdb::Iterator> it(headwordDb->NewIterator(read_options, headwordsCF));
+    
+    rocksdb::Slice prefix_slice(prefix);
+    
+    if (prefix.empty()) {
+        it->SeekToFirst();
+    } else {
+        it->Seek(prefix_slice);
+    }
+
+    for (; it->Valid(); it->Next()) {
+        // Check if key starts with prefix
+        if (!prefix.empty()) {
+           rocksdb::Slice key = it->key();
+           if (!key.starts_with(prefix_slice)) {
+               break;
+           }
+        }
+        
+        // Extract value (original headword)
+        std::string val = it->value().ToString();
+        results.append(QString::fromUtf8(val.c_str()));
+    }
+    
+    return results;
+}
 
 } // namespace BtreeIndexing
