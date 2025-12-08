@@ -2085,8 +2085,11 @@ void ArticleView::doubleClicked( QPoint pos )
       else {
         const QUrl & ref = webview->url();
 
-        auto groupId = getGroup( ref );
-        if ( isInternalPage() ) {
+        auto groupId = getGroup( ref ); // Try to get group ID from the current article URL
+
+        // If the group can't be determined from the URL (e.g. on internal or
+        // external pages), fall back to the currently selected group in the UI.
+        if ( groupId == GroupId::NoGroupId || isInternalPage() ) {
           groupId = currentGroupId;
         }
         if ( Utils::Url::hasQueryItem( ref, "dictionaries" ) ) {
