@@ -70,6 +70,10 @@ void BtreeIndex::openIndex( const IndexInfo & indexInfo, File::Index & file, QMu
 
   rootNodeLoaded = false;
   rootNode.clear();
+
+  // Try to open RocksDB headword index if it exists
+  string rocksDbPath = file.fileName().toStdString() + ".rocksdb";
+  openHeadwordIndex(rocksDbPath);
 }
 
 vector< WordArticleLink >
@@ -410,6 +414,19 @@ sptr< Dictionary::WordSearchRequest > BtreeDictionary::prefixMatch( const std::u
                                                                     unsigned long maxResults )
 
 {
+  if ( headwordDb && headwordsCF ) {
+    sptr< Dictionary::WordSearchRequestInstant > request = std::make_shared< Dictionary::WordSearchRequestInstant >();
+    QStringList results = getHeadwordsWithPrefix( Text::toUtf8( str ) );
+    
+    // Convert QStringList to Matches
+    for( const auto & result : results ) {
+        if ( request->matchesCount() >= maxResults ) break;
+        request->addMatch( Dictionary::WordMatch( Text::toUtf32( result.toStdString() ) ) );
+    }
+    
+    request->setUncertain( results.size() >= maxResults );
+    return request;
+  }
   return std::make_shared< BtreeWordSearchRequest >( *this, str, 0, -1, true, maxResults );
 }
 
