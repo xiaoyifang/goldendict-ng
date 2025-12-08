@@ -1317,7 +1317,27 @@ void BtreeIndex::getAllHeadwords( QSet< QString > & headwords )
     throw exIndexWasNotOpened();
   }
 
-  findArticleLinks( nullptr, nullptr, &headwords );
+  // Check if RocksDB headword index is available
+  if ( headwordDb && headwordsCF ) {
+    rocksdb::ReadOptions read_options;
+    std::unique_ptr<rocksdb::Iterator> it(headwordDb->NewIterator(read_options, headwordsCF));
+    
+    // Iterate over all entries in the headwords column family
+    for (it->SeekToFirst(); it->Valid(); it->Next()) {
+      // The key is the headword itself (stored as folded string)
+      std::string headword_str = it->key().ToString();
+      headwords.insert( QString::fromUtf8( headword_str.c_str() ) );
+    }
+    
+    if ( !it->status().ok() ) {
+      qWarning() << "RocksDB iterator error in getAllHeadwords:" << it->status().ToString().c_str();
+      // Fall back to Btree implementation if there's an error
+      findArticleLinks( nullptr, nullptr, &headwords );
+    }
+  } else {
+    // Use Btree implementation if RocksDB index is not available
+    findArticleLinks( nullptr, nullptr, &headwords );
+  }
 }
 
 void BtreeIndex::findAllArticleLinks( QList< WordArticleLink > & articleLinks )
@@ -1441,12 +1461,63 @@ void BtreeIndex::findArticleLinks( QList< WordArticleLink > * articleLinks,
 
 void BtreeIndex::findHeadWords( QList< uint32_t > offsets, int & index, QSet< QString > * headwords, uint32_t length )
 {
-  for ( auto begin = offsets.begin() + index; begin != offsets.end(); begin++ ) {
-    findSingleNodeHeadwords( *begin, headwords );
-    index++;
+  // Check if RocksDB headword index is available
+  if ( headwordDb && headwordsCF ) {
+    rocksdb::ReadOptions read_options;
+    // Optimize read options for better performance
+    read_options.fill_cache = false; // Don't pollute cache with sequential scans
+    
+    std::unique_ptr<rocksdb::Iterator> it(headwordDb->NewIterator(read_options, headwordsCF));
+    
+    if (this->last_headword_key.empty()) {
+      // First call or reset, start from the beginning
+      it->SeekToFirst();
+    } else {
+      // Subsequent pages, start from the last key we processed
+      it->Seek(this->last_headword_key);
+      // Skip the last key if it exists (we already processed it)
+      if (it->Valid() && it->key().ToString() == this->last_headword_key) {
+        it->Next();
+      }
+    }
+    
+    // Collect the requested number of headwords
+    while (it->Valid() && headwords->size() < length) {
+      // The key is the headword itself (stored as folded string)
+      std::string headword_str = it->key().ToString();
+      headwords->insert( QString::fromUtf8( headword_str.c_str() ) );
+      
+      // Save the last key for next pagination
+      this->last_headword_key = headword_str;
+      
+      // Move to the next entry
+      it->Next();
+    }
+    
+    if ( !it->status().ok() ) {
+      qWarning() << "RocksDB iterator error in findHeadWords:" << it->status().ToString().c_str();
+      // Fall back to Btree implementation if there's an error
+      index = 0;
+      this->last_headword_key.clear();
+      for ( auto begin = offsets.begin() + index; begin != offsets.end(); begin++ ) {
+        findSingleNodeHeadwords( *begin, headwords );
+        index++;
 
-    if ( headwords->size() >= length ) {
-      break;
+        if ( headwords->size() >= length ) {
+          break;
+        }
+      }
+    }
+    // No need to increment index, we use last_headword_key for pagination now
+  } else {
+    // Use Btree implementation if RocksDB index is not available
+    for ( auto begin = offsets.begin() + index; begin != offsets.end(); begin++ ) {
+      findSingleNodeHeadwords( *begin, headwords );
+      index++;
+
+      if ( headwords->size() >= length ) {
+        break;
+      }
     }
   }
 }
@@ -1492,6 +1563,12 @@ void BtreeIndex::findSingleNodeHeadwords( uint32_t offsets, QSet< QString > * he
 //find the next chain ptr ,which is larger than this currentChainPtr
 QList< uint32_t > BtreeIndex::findNodes()
 {
+  // Check if RocksDB headword index is available
+  if ( headwordDb && headwordsCF ) {
+    // Return empty list if RocksDB index is available, as we won't need Btree nodes
+    return QList< uint32_t >();
+  }
+  
   QMutexLocker _( idxFileMutex );
 
   if ( !rootNodeLoaded ) {

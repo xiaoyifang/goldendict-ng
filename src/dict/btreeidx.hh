@@ -163,6 +163,9 @@ private:
   // RocksDB headword index
   rocksdb::DB* headwordDb;
   rocksdb::ColumnFamilyHandle* headwordsCF;
+  
+  // Last headword key for pagination
+  std::string last_headword_key;
 };
 
 /// A base for the dictionary that utilizes a btree index build using
