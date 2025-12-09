@@ -26,21 +26,15 @@
         <file>icons/icon32_sdict.png</file>
         <file>icons/icon32_aard.png</file>
         <file>icons/expand_opt.svg</file>
-        <file>icons/collapse_opt.png</file>
         <file>icons/collapse_opt.svg</file>
         <file>icons/menu_button.svg</file>
         <file>icons/clear.png</file>
         <file>icons/icon32_lingoes.png</file>
         <file>icons/mdict.png</file>
-        <file>icons/downarrow.png</file>
         <file>icons/downarrow.svg</file>
-        <file>icons/expand_article_hovered.png</file>
-        <file>icons/expand_article.png</file>
         <file>icons/expand_article_hovered.svg</file>
         <file>icons/expand_article.svg</file>
-        <file>icons/collapse_article_hovered.png</file>
         <file>icons/collapse_article_hovered.svg</file>
-        <file>icons/collapse_article.png</file>
         <file>icons/collapse_article.svg</file>
         <file>icons/video.png</file>
         <file>icons/programicon_old.png</file>
