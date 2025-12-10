@@ -6,14 +6,37 @@
    cursor="pointer"
    version="1.1"
    id="svg4"
-   sodipodi:docname="exported_image.svg"
+   sodipodi:docname="playsound.svg"
    inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
-     id="defs4" />
+     id="defs4">
+    <linearGradient
+       id="linearGradient8"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#00ffff;stop-opacity:1;"
+         offset="0.41690543"
+         id="stop8" />
+      <stop
+         style="stop-color:#00ffff;stop-opacity:0;"
+         offset="1"
+         id="stop9" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient8"
+       id="linearGradient9"
+       x1="16"
+       y1="32"
+       x2="29"
+       y2="32"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
   <sodipodi:namedview
      id="namedview4"
      pagecolor="#ffffff"
@@ -24,8 +47,8 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="6.3671875"
-     inkscape:cx="-22.380368"
-     inkscape:cy="26.149693"
+     inkscape:cx="-22.458896"
+     inkscape:cy="25.992638"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
      inkscape:window-x="-8"
@@ -86,12 +109,5 @@
      stroke-linejoin="round"
      id="polygon4"
      transform="matrix(0.71827705,0,0,0.71827705,-3.1349141,-8.3199121)"
-     style="fill:#af5d6c;fill-opacity:1;stroke:none" />
-  <style
-     id="style4">
-    rect { transition: all 0.3s ease; }
-    polygon { transition: all 0.3s ease; }
-    svg:hover rect { fill: #3367D6; transform: scaleY(1.1) translate(0,-12); }
-    svg:hover polygon { fill: #ffffff; stroke: #222222; transform: scale(1.05); }
-  </style>
+     style="fill:url(#linearGradient9);fill-opacity:1;stroke:none" />
 </svg>
