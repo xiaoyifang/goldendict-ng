@@ -1,7 +1,7 @@
 # Website Scripting
 
 GoldenDict allows you to inject custom JavaScript code into websites opened in separate tabs. This feature is useful for customizing the appearance or behavior of websites, fixing display issues, or adding additional functionality.
-<img width="781" height="335" alt="image" src="https://github.com/user-attachments/assets/ccbfd45c-3bd2-4486-bd52-4576b16eeae6" />
+![](img/seperate-website.png)
 
 ## How to Use Website Scripting
 
