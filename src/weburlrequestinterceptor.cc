@@ -37,6 +37,7 @@ void WebUrlRequestInterceptor::interceptRequest( QWebEngineUrlRequestInfo & info
 
     // block external links
     {
+      qDebug() << "Blocked external link: " << url.toString();
       info.block( true );
       return;
     }
@@ -49,6 +50,7 @@ void WebUrlRequestInterceptor::interceptRequest( QWebEngineUrlRequestInfo & info
       return;
     }
     emit linkClicked( url );
+    qDebug() << "Blocked external link: " << url.toString();
     info.block( true );
   }
 
