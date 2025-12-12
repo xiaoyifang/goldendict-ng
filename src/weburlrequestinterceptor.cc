@@ -14,8 +14,8 @@ void WebUrlRequestInterceptor::interceptRequest( QWebEngineUrlRequestInfo & info
     url.setScheme( url.scheme().mid( 7 ) );
   }
 
-  info.setHttpHeader( "origin", Utils::Url::getSchemeAndHost( url ).toUtf8() );
-  info.setHttpHeader( "referer", url.url().toUtf8() );
+  // info.setHttpHeader( "origin", Utils::Url::getSchemeAndHost( url ).toUtf8() );
+  // info.setHttpHeader( "referer", url.url().toUtf8() );
   if ( GlobalBroadcaster::instance()->getPreference()->disallowContentFromOtherSites && Utils::isExternalLink( url ) ) {
     // Block file:// links to prevent local file access
     if ( url.scheme() == "file" ) {
