@@ -16,7 +16,7 @@ void WebUrlRequestInterceptor::interceptRequest( QWebEngineUrlRequestInfo & info
 
   // When content is loaded inside GoldenDict's article view, we might face CORS issues.
   // Setting Origin and Referer headers can help bypass some CORS restrictions.
-  if ( !GlobalBroadcaster::instance()->getPreference()->openInSeparateTab ) {
+  if ( !GlobalBroadcaster::instance()->getPreference()->openWebsiteInNewTab ) {
     info.setHttpHeader( "origin", Utils::Url::getSchemeAndHost( url ).toUtf8() );
     info.setHttpHeader( "referer", url.url().toUtf8() );
   }
