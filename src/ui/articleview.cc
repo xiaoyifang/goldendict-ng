@@ -445,7 +445,8 @@ void ArticleView::loadFinished( bool result )
   if ( url.url() == "about:blank" ) {
     return;
   }
-  qDebug() << "article view loaded url:" << url.url().left( 50 ) + "..." << result;
+  const QString urlString = url.url();
+  qDebug() << "article view loaded url:" << ( urlString.length() > 50 ? urlString.left( 50 ) + "..." : urlString ) << result;
 
   // Skip dictionary-specific logic for website views
   if ( !isWebsiteView ) {
