@@ -446,7 +446,8 @@ void ArticleView::loadFinished( bool result )
     return;
   }
   const QString urlString = url.url();
-  qDebug() << "article view loaded url:" << ( urlString.length() > 50 ? urlString.left( 50 ) + "..." : urlString ) << result;
+  qDebug() << "article view loaded url:" << ( urlString.length() > 50 ? urlString.left( 50 ) + "..." : urlString )
+           << result;
 
   // Skip dictionary-specific logic for website views
   if ( !isWebsiteView ) {
