@@ -1219,7 +1219,7 @@ void ArticleView::playAudio( const QUrl & url )
 
       if ( dict ) {
         try {
-          sptr< Dictionary::DataRequest > req = dict->getResource( url.path().mid( 1 ).toUtf8().data() );
+          sptr< Dictionary::DataRequest > req = dict->getResource( (url.path() + "#" + url.fragment() ).mid( 1 ).toUtf8().data() );
 
           if ( !req->isFinished() ) {
             // Queued loading
