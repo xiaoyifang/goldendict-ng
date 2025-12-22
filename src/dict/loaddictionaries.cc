@@ -234,7 +234,9 @@ void loadDictionaries( QWidget * parent,
 
   QObject::connect( &loadDicts, &LoadDictionaries::finished, &localLoop, &QEventLoop::quit );
 
-  QThreadPool::globalInstance()->start( [ &loadDicts ]() { loadDicts.load(); } );
+  QThreadPool::globalInstance()->start( [ &loadDicts ]() {
+    loadDicts.load();
+  } );
 
   localLoop.exec();
 
