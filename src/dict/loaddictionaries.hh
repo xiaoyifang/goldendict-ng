@@ -11,7 +11,7 @@
 #include <QStringList>
 
 /// Use loadDictionaries() function below -- this is a helper thread class
-class LoadDictionaries: public QThread, public Dictionary::Initializing
+class LoadDictionaries: public QObject, public Dictionary::Initializing
 {
   Q_OBJECT
 
@@ -29,7 +29,7 @@ public:
 
   LoadDictionaries( const Config::Class & cfg );
 
-  virtual void run();
+  void load();
 
   const std::vector< sptr< Dictionary::Class > > & getDictionaries() const
   {
@@ -58,6 +58,7 @@ private:
 signals:
   void indexingDictionarySignal( const QString & dictionaryName );
   void loadingDictionarySignal( const QString & dictionaryName );
+  void finished();
 };
 
 /// Loads all dictionaries mentioned in the configuration passed, into the
