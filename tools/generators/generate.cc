@@ -88,7 +88,7 @@ int main()
     while ( fgets( buf, sizeof( buf ), inf ) ) {
       line++;
 
-      if ( *buf == '#' || *buf == '\n')
+      if ( *buf == '#' || *buf == '\n' )
         continue; // A comment or new line
 
       unsigned long in, out[ 4 ];
@@ -99,7 +99,8 @@ int main()
       if ( sscanf( buf, "%lx; %c; %lx %lx %lx %lx;", &in, &type, out, out + 1, out + 2, out + 3 ) == 6 ) {
         fprintf( stderr,
                  "Four output chars ecountered in CaseFolding.txt, line %d, which we expected"
-                 "the file didn't have, make changes into the program.\n", line );
+                 "the file didn't have, make changes into the program.\n",
+                 line );
 
         return 1;
       }
@@ -163,7 +164,9 @@ int main()
       return 1;
     }
 
-    fprintf( outf, "// This file was generated automatically from https://www.unicode.org/Public/UCD/latest/ucd/CaseFolding.txt.\n" );
+    fprintf(
+      outf,
+      "// This file was generated automatically from https://www.unicode.org/Public/UCD/latest/ucd/CaseFolding.txt.\n" );
     fprintf( outf, "// Do not edit directly!\n\n" );
 
     fprintf( outf, "#pragma once\n\n" );
