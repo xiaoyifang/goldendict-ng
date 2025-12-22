@@ -43,7 +43,7 @@
   #include "dict/transliteration/chinese.hh"
 #endif
 
-#include <QtConcurrent>
+#include <QThreadPool>
 #include <QMessageBox>
 #include <QDir>
 #include <QString>
@@ -234,7 +234,7 @@ void loadDictionaries( QWidget * parent,
 
   QObject::connect( &loadDicts, &LoadDictionaries::finished, &localLoop, &QEventLoop::quit );
 
-  QtConcurrent::run( &LoadDictionaries::load, &loadDicts );
+  QThreadPool::globalInstance()->start( [ &loadDicts ]() { loadDicts.load(); } );
 
   localLoop.exec();
 
