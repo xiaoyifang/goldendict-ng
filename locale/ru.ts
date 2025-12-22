@@ -2977,9 +2977,9 @@ the application.</source>
       <source>With this on, new tabs are opened just after the
 current, active one. Otherwise, they are added to
 be the last ones.</source>
-      <translation type="unfinished">With this on, new tabs are opened just after the
-current, active one. Otherwise, they are added to
-be the last ones.</translation>
+      <translation>Если данная опция включена, новые вкладки будут
+открываться сразу за текущей, вместо того чтобы
+добавляться в конец.</translation>
     </message>
     <message>
       <source>&amp;Style</source>
