@@ -83,11 +83,13 @@ int main()
 
     map< char32_t, u32string > foldTable;
     map< char32_t, char32_t > simpleFoldTable;
+    unsigned int line = 0;
 
     while ( fgets( buf, sizeof( buf ), inf ) ) {
-      if ( *buf == '#' )
-        continue; // A comment
+      line++;
 
+      if ( *buf == '#' || *buf == '\n')
+        continue; // A comment or new line
 
       unsigned long in, out[ 4 ];
       char type;
@@ -96,8 +98,8 @@ int main()
 
       if ( sscanf( buf, "%lx; %c; %lx %lx %lx %lx;", &in, &type, out, out + 1, out + 2, out + 3 ) == 6 ) {
         fprintf( stderr,
-                 "Four output chars ecountered in CaseFolding.txt, which we expected"
-                 "the file didn't have, make changes into the program.\n" );
+                 "Four output chars ecountered in CaseFolding.txt, line %d, which we expected"
+                 "the file didn't have, make changes into the program.\n", line );
 
         return 1;
       }
@@ -109,15 +111,14 @@ int main()
       else if ( sscanf( buf, "%lx; %c; %lx;", &in, &type, out ) == 3 )
         totalOut = 1;
       else {
-        fprintf( stderr, "Erroneous input in CaseFolding.txt: %s\n", buf );
-
+        fprintf( stderr, "Erroneous input in CaseFolding.txt: %s, line: %d\n", buf, line );
         return 1;
       }
 
       switch ( type ) {
         case 'C':
           if ( totalOut != 1 ) {
-            fprintf( stderr, "C-record has more than one output char in CaseFolding.txt: %s\n", buf );
+            fprintf( stderr, "C-record has more than one output char in CaseFolding.txt: %s, line: %d\n", buf, line );
 
             return 1;
           }
@@ -133,7 +134,7 @@ int main()
         } break;
         case 'S': {
           if ( totalOut != 1 ) {
-            fprintf( stderr, "S-record has more than one output char in CaseFolding.txt: %s\n", buf );
+            fprintf( stderr, "S-record has more than one output char in CaseFolding.txt: %s, line: %d\n", buf, line );
 
             return 1;
           }
@@ -162,7 +163,8 @@ int main()
       return 1;
     }
 
-    fprintf( outf, "// This file was generated automatically. Do not edit directly.\n\n" );
+    fprintf( outf, "// This file was generated automatically from https://www.unicode.org/Public/UCD/latest/ucd/CaseFolding.txt.\n" );
+    fprintf( outf, "// Do not edit directly!\n\n" );
 
     fprintf( outf, "#pragma once\n\n" );
     fprintf( outf, "enum { foldCaseMaxOut = 3 };\n\n" );
