@@ -26,11 +26,15 @@ jobs:
           $pkgs = "bzip2 hunspell libiconv liblzma libvorbis libzim lzo opencc xapian zlib openssl fmt breakpad"
 
           vcpkg install $pkgs --allow-unsupported
-          vcpkg export $pkgs --raw --output-dir=.\exports --output=${{ env.outputName }} --allow-unsupported
+          vcpkg export $pkgs --raw --output-dir=.\exports --output=${{ env.outputName }} 
           
+          echo "Checking exported directory contents:"
+          ls .\exports
+
           echo "Starts compressing..."
           cd .\exports
-          cmake -E tar c ${{ env.outputName }}.tar.zst --zstd .\${{ env.outputName }}
+          # Use the directory name directly
+          cmake -E tar c "${{ env.outputName }}.tar.zst" --zstd "${{ env.outputName }}"
 
       - name: Upload as release
         env:
