@@ -15,11 +15,19 @@ jobs:
       - uses: actions/checkout@v4
       - name: Create export
         run: |
+          # Create directory manually to avoid "path not found" errors
+          mkdir exports
+
           # ensure always up to date
           vcpkg x-update-baseline
   
-          vcpkg install --x-feature=breakpad --allow-unsupported
-          vcpkg export --raw --output-dir=.\exports --output=${{ env.outputName }} --allow-unsupported
+          # Explicitly list packages to ensure they are installed in the global root for exporting, 
+          # matching the dependencies in vcpkg.json
+          $pkgs = "bzip2 hunspell libiconv liblzma libvorbis libzim lzo opencc xapian zlib openssl fmt breakpad"
+
+          vcpkg install $pkgs --allow-unsupported
+          vcpkg export $pkgs --raw --output-dir=.\exports --output=${{ env.outputName }} --allow-unsupported
+          
           echo "Starts compressing..."
           cd .\exports
           cmake -E tar c ${{ env.outputName }}.tar.zst --zstd .\${{ env.outputName }}
