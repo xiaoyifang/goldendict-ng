@@ -12,7 +12,8 @@
     "opencc",
     "xapian",
     "zlib",
-    "openssl"
+    "openssl",
+    "fmt"
   ],
   "features": {
     "breakpad": {

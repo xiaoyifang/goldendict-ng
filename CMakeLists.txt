@@ -9,7 +9,6 @@ option(WITH_TTS "enable QTexttoSpeech support" OFF)
 option(WITH_X11 "Experimental flag. Don't disable this. Disable means pure Wayland." ON)
 
 # options for linux packaging
-option(USE_SYSTEM_FMT "use system fmt instead of bundled one" OFF)
 option(USE_SYSTEM_TOML "use system toml++ instead of bundled one" OFF)
 
 ## This should be avoided because of small regressions, as some scripts and icons themes assume the binary name and resources folder to be `goldendict`
@@ -136,9 +135,6 @@ target_sources(${GOLDENDICT} PRIVATE
         ${WINDOWS_ICON_RC}
 )
 
-if (NOT USE_SYSTEM_FMT)
-    target_sources(${GOLDENDICT} PRIVATE thirdparty/fmt/format.cc)
-endif ()
 
 ### Common parts amount all platforms
 
@@ -170,9 +166,6 @@ if (NOT USE_SYSTEM_TOML)
     target_include_directories(${GOLDENDICT} PRIVATE ${PROJECT_SOURCE_DIR}/thirdparty/tomlplusplus)
 endif ()
 
-if (NOT USE_SYSTEM_FMT)
-    target_include_directories(${GOLDENDICT} PRIVATE ${PROJECT_SOURCE_DIR}/thirdparty/fmt/include)
-endif ()
 
 #### Compile definitions
 

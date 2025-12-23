@@ -15,8 +15,8 @@
 #include <QUrl>
 #include <QStyleHints>
 
-#include "fmt/core.h"
-#include "fmt/compile.h"
+#include <fmt/core.h>
+#include <fmt/compile.h>
 
 using std::vector;
 using std::string;

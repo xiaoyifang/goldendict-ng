@@ -7,7 +7,7 @@
 #include <QDir>
 #include <QFileInfo>
 #include "globalbroadcaster.hh"
-#include "fmt/compile.h"
+#include <fmt/compile.h>
 #include <QRegularExpression>
 #include <QCoreApplication>
 
