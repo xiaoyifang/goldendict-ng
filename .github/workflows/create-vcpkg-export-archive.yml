@@ -18,8 +18,8 @@ jobs:
           # ensure always up to date
           vcpkg x-update-baseline
   
-          vcpkg install --x-feature=breakpad
-          vcpkg export --raw --output-dir=.\exports --output=${{ env.outputName }}
+          vcpkg install --x-feature=breakpad --allow-unsupported
+          vcpkg export --raw --output-dir=.\exports --output=${{ env.outputName }} --allow-unsupported
           echo "Starts compressing..."
           cd .\exports
           cmake -E tar c ${{ env.outputName }}.tar.zst --zstd .\${{ env.outputName }}
