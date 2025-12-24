@@ -72,6 +72,7 @@ jobs:
           libvorbis \
           hunspell \
           xapian \
+          fmt \
           libzim \
           qt || true
       - name: Install eb
