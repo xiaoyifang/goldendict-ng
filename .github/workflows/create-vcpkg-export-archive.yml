@@ -21,20 +21,9 @@ jobs:
           # ensure always up to date
           vcpkg x-update-baseline
   
-          # Explicitly list packages to ensure they are installed in the global root for exporting, 
-          # matching the dependencies in vcpkg.json
-          $pkgs = "bzip2 hunspell libiconv liblzma libvorbis libzim lzo opencc xapian zlib openssl fmt breakpad"
-
-          vcpkg install $pkgs --allow-unsupported
-          vcpkg export $pkgs --raw --output-dir=.\exports --output=${{ env.outputName }} 
-          
-          echo "Checking exported directory contents:"
+          vcpkg install --x-feature=breakpad --allow-unsupported
+          vcpkg export --zip --output-dir=.\exports --output=${{ env.outputName }} 
           ls .\exports
-
-          echo "Starts compressing..."
-          cd .\exports
-          # Use the directory name directly
-          cmake -E tar c "${{ env.outputName }}.tar.zst" --zstd "${{ env.outputName }}"
 
       - name: Upload as release
         env:
@@ -46,7 +35,7 @@ jobs:
           $tagName = "vcpkg_${dateString}_${vcpkgBaselineVersion}"
 
           cd .\exports\
-          $fileHash = $(Get-FileHash ${{ env.outputName }}.tar.zst SHA512).Hash
+          $fileHash = $(Get-FileHash ${{ env.outputName }}.zip SHA512).Hash
           
           
           $notes=@"
@@ -67,4 +56,4 @@ jobs:
           
           
           gh release create "${tagName}" --notes-file=.\note.txt --title "vcpkg package export archive" --latest=false
-          gh release upload "${tagName}" ${{ env.outputName }}.tar.zst  --clobber
+          gh release upload "${tagName}" ${{ env.outputName }}.zip  --clobber
