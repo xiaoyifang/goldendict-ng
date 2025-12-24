@@ -26,7 +26,7 @@ jobs:
           libxtst-dev liblzo2-dev libbz2-dev \
           libavutil-dev libavformat-dev libeb16-dev \
           libzstd-dev libxkbcommon-dev \
-          libxapian-dev libzim-dev libopencc-dev \
+          libxapian-dev libzim-dev libopencc-dev libfmt-dev \
           qt6-5compat-dev \
           qt6-base-dev \
           qt6-multimedia-dev \

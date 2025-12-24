@@ -1,9 +1,7 @@
 find_package(PkgConfig REQUIRED)
 
 set(Optional_Pkgs "")
-if (USE_SYSTEM_FMT)
-    list(APPEND Optional_Pkgs "fmt")
-endif ()
+list(APPEND Optional_Pkgs "fmt")
 if (USE_SYSTEM_TOML)
     list(APPEND Optional_Pkgs "tomlplusplus")
 endif ()

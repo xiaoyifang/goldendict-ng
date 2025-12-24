@@ -47,6 +47,7 @@ jobs:
             lzip \
             ninja \
             opencc \
+            fmt \
             ffmpeg@6 \
             xapian || true
       - name: Install eb
