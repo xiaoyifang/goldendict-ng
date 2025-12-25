@@ -274,12 +274,8 @@ int main( int argc, char ** argv )
   qputenv( "QT_QPA_PLATFORM", "windows:darkmode=1" );
 
 #endif
-  //high dpi screen support
-  if ( !qEnvironmentVariableIsSet( "QT_ENABLE_HIGHDPI_SCALING" )
-       || qEnvironmentVariableIsEmpty( "QT_ENABLE_HIGHDPI_SCALING" ) ) {
-    qputenv( "QT_ENABLE_HIGHDPI_SCALING", "1" );
-  }
-  QApplication::setHighDpiScaleFactorRoundingPolicy( Qt::HighDpiScaleFactorRoundingPolicy::PassThrough );
+  // High DPI screen support
+  QGuiApplication::setHighDpiScaleFactorRoundingPolicy( Qt::HighDpiScaleFactorRoundingPolicy::PassThrough );
 
   // Registration of custom URL schemes must be done before QCoreApplication/QApplication is created.
   const QStringList localSchemes = { "gdlookup",
