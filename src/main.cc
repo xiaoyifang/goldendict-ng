@@ -281,6 +281,28 @@ int main( int argc, char ** argv )
   }
   QApplication::setHighDpiScaleFactorRoundingPolicy( Qt::HighDpiScaleFactorRoundingPolicy::PassThrough );
 
+  // Registration of custom URL schemes must be done before QCoreApplication/QApplication is created.
+  const QStringList localSchemes = { "gdlookup",
+                                     "gdau",
+                                     "gico",
+                                     "qrcx",
+                                     "bres",
+                                     "bword",
+                                     "gdprg",
+                                     "gdvideo",
+                                     "gdtts",
+                                     "gdinternal",
+                                     "entry",
+                                     "iframe-http",
+                                     "iframe-https" };
+
+  for ( const auto & localScheme : localSchemes ) {
+    QWebEngineUrlScheme webUiScheme( localScheme.toLatin1() );
+    webUiScheme.setSyntax( QWebEngineUrlScheme::Syntax::Host );
+    webUiScheme.setFlags( QWebEngineUrlScheme::LocalAccessAllowed | QWebEngineUrlScheme::CorsEnabled );
+    QWebEngineUrlScheme::registerScheme( webUiScheme );
+  }
+
   GD_QApplication app( "GoldenDict-ng", argc, argv );
 
   app.setDesktopFileName( "io.github.xiaoyifang.goldendict_ng" );
@@ -331,27 +353,6 @@ int main( int argc, char ** argv )
   _setmaxstdio( 2048 );
 
 #endif
-
-  const QStringList localSchemes = { "gdlookup",
-                                     "gdau",
-                                     "gico",
-                                     "qrcx",
-                                     "bres",
-                                     "bword",
-                                     "gdprg",
-                                     "gdvideo",
-                                     "gdtts",
-                                     "gdinternal",
-                                     "entry",
-                                     "iframe-http",
-                                     "iframe-https" };
-
-  for ( const auto & localScheme : localSchemes ) {
-    QWebEngineUrlScheme webUiScheme( localScheme.toLatin1() );
-    webUiScheme.setSyntax( QWebEngineUrlScheme::Syntax::Host );
-    webUiScheme.setFlags( QWebEngineUrlScheme::LocalAccessAllowed | QWebEngineUrlScheme::CorsEnabled );
-    QWebEngineUrlScheme::registerScheme( webUiScheme );
-  }
 
   QFont f = QApplication::font();
   f.setStyleStrategy( QFont::PreferAntialias );
