@@ -276,7 +276,7 @@ int main( int argc, char ** argv )
 #endif
   // High DPI screen support
   QGuiApplication::setHighDpiScaleFactorRoundingPolicy( Qt::HighDpiScaleFactorRoundingPolicy::PassThrough );
-
+  
   // Registration of custom URL schemes must be done before QCoreApplication/QApplication is created.
   const QStringList localSchemes = { "gdlookup",
                                      "gdau",
@@ -342,11 +342,11 @@ int main( int argc, char ** argv )
     processCommandLine( &app, &gdcl );
   }
 
-#ifdef __WIN32
+#ifdef Q_OS_WIN
 
   // Under Windows, increase the amount of fopen()-able file descriptors from
-  // the default 512 up to 2048.
-  _setmaxstdio( 2048 );
+  // the default 512 up to 8192.
+  _setmaxstdio( 8192 );
 
 #endif
 
