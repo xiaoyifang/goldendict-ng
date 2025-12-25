@@ -1250,6 +1250,16 @@ void ScanPopup::openWebsiteInNewTab( QString name, QString url, QString dictId )
     return;
   }
 
+  // Look for an existing tab with the same dictionary id
+  for ( int i = 0; i < tabWidget->count(); ++i ) {
+    if ( auto view = qobject_cast< ArticleView * >( tabWidget->widget( i ) ) ) {
+      if ( view->isWebsite() && view->getActiveArticleId() == dictId ) {
+        view->load( url, name );
+        return;
+      }
+    }
+  }
+
   auto view = new ArticleView( tabWidget,
                                articleNetMgr,
                                true,
@@ -1260,6 +1270,7 @@ void ScanPopup::openWebsiteInNewTab( QString name, QString url, QString dictId )
 
   view->setWebsite( true );
   view->setWebsiteHost( QUrl( url ).host() );
+  view->setActiveArticleId( dictId );
 
   // Connect vital signals
   connect( view, &ArticleView::inspectSignal, this, &ScanPopup::inspectElementWhenPinned );
