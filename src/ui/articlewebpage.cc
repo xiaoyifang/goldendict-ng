@@ -1,6 +1,7 @@
 #include "articlewebpage.hh"
 #include "utils.hh"
 #include "common/globalbroadcaster.hh"
+#include <QTimer>
 
 ArticleWebPage::ArticleWebPage( QObject * parent ):
   QWebEnginePage{ parent }
@@ -19,7 +20,10 @@ bool ArticleWebPage::acceptNavigationRequest( const QUrl & resUrl, NavigationTyp
     urlQuery.addQueryItem( "group", lastReq.group );
     urlQuery.addQueryItem( "muted", lastReq.mutedDicts );
     url.setQuery( urlQuery );
-    setUrl( url );
+
+    // Use singleShot to avoid synchronous navigation request within acceptNavigationRequest,
+    // which can lead to reentrancy issues or crashes.
+    QTimer::singleShot( 0, this, [ this, url ]() { setUrl( url ); } );
     return false;
   }
 
@@ -38,7 +42,10 @@ bool ArticleWebPage::acceptNavigationRequest( const QUrl & resUrl, NavigationTyp
         return true;
       }
     }
-    emit linkClicked( url );
+
+    // Use singleShot to emit signal asynchronously. This prevents crashes if the
+    // signal handler deletes this object or the containing tab.
+    QTimer::singleShot( 0, this, [ this, url ]() { emit linkClicked( url ); } );
     return false;
   }
 
