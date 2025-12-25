@@ -17,6 +17,7 @@
 #include <QActionGroup>
 #include "groupcombobox.hh"
 #include "translatebox.hh"
+#include "maintabwidget.hh"
 #ifdef WITH_X11
   #include "scanflag.hh"
 #endif
@@ -93,6 +94,7 @@ public slots:
   void editGroupRequested();
 
   void setGroupByName( const QString & name ) const;
+  void openWebsiteInNewTab( QString name, QString url, QString dictId );
 
 #ifdef WITH_X11
   void showEngagePopup();
@@ -138,6 +140,8 @@ private:
   QToolBar * foundBar;
   QActionGroup * actionGroup = nullptr;
   MainStatusBar * mainStatusBar;
+  MainTabWidget * tabWidget;
+  ArticleNetworkAccessManager & articleNetMgr;
   /// Fonts saved before words zooming is in effect, so it could be reset back.
   QFont wordListDefaultFont, translateLineDefaultFont, groupListDefaultFont;
 

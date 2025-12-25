@@ -4209,6 +4209,10 @@ void MainWindow::showFTSIndexingName( const QString & name )
 
 void MainWindow::openWebsiteInNewTab( QString name, QString url, QString dictId )
 {
+  if ( scanPopup && scanPopup->isVisible() && scanPopup->isActiveWindow() ) {
+    return;
+  }
+
   auto view = findArticleViewByDictId( dictId );
   if ( view == nullptr ) {
     view = createNewTab( false, name );

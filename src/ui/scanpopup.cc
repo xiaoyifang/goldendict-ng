@@ -58,7 +58,8 @@ ScanPopup::ScanPopup( QWidget * parent,
   openSearchAction( this ),
   wordFinder( this ),
   dictionaryBar( this, configEvents, cfg.preferences.maxDictionaryRefsInContextMenu ),
-  hideTimer( this )
+  hideTimer( this ),
+  articleNetMgr( articleNetMgr )
 {
   // Init UI
   QWidget * toolBarWidget = new QWidget( this );
@@ -107,14 +108,26 @@ ScanPopup::ScanPopup( QWidget * parent,
 
   mainStatusBar = new MainStatusBar( this );
 
+  tabWidget = new MainTabWidget( this );
+  tabWidget->setTabsClosable( true );
+  tabWidget->setHideSingleTab( true );
+  connect( tabWidget, &QTabWidget::tabCloseRequested, this, [ this ]( int index ) {
+    if ( index > 0 ) {
+      auto widget = tabWidget->widget( index );
+      tabWidget->removeTab( index );
+      widget->deleteLater();
+    }
+  } );
 
-  definition = new ArticleView( this,
+  definition = new ArticleView( tabWidget,
                                 articleNetMgr,
                                 true,
                                 cfg,
                                 translateBox->translateLine(),
                                 dictionaryBar.toggleViewAction(),
                                 cfg.lastPopupGroupId );
+
+  tabWidget->addTab( definition, tr( "Definition" ) );
 
   resize( 247, 400 );
 
@@ -142,7 +155,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   translateLineDefaultFont = translateBox->font();
   groupListDefaultFont     = groupList->font();
 
-  setCentralWidget( definition );
+  setCentralWidget( tabWidget );
 
   translateBox->translateLine()->installEventFilter( this );
   definition->installEventFilter( this );
@@ -279,6 +292,15 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( definition, &ArticleView::statusBarMessage, this, &ScanPopup::showStatusBarMessage );
 
   connect( definition, &ArticleView::titleChanged, this, &ScanPopup::titleChanged );
+
+  connect( GlobalBroadcaster::instance(),
+           &GlobalBroadcaster::websiteDictionarySignal,
+           this,
+           &ScanPopup::openWebsiteInNewTab );
+
+  connect( tabWidget, &QTabWidget::currentChanged, this, [ this ]( int ) {
+    updateBackForwardButtons();
+  } );
 
 #ifdef Q_OS_MAC
   connect( &MouseOver::instance(), &MouseOver::hovered, this, &ScanPopup::handleInputWord );
@@ -434,7 +456,11 @@ void ScanPopup::inspectElementWhenPinned( QWebEnginePage * page )
 
 void ScanPopup::applyZoomFactor() const
 {
-  definition->setZoomFactor( cfg.preferences.zoomFactor );
+  for ( int i = 0; i < tabWidget->count(); ++i ) {
+    if ( auto view = qobject_cast< ArticleView * >( tabWidget->widget( i ) ) ) {
+      view->setZoomFactor( cfg.preferences.zoomFactor );
+    }
+  }
 }
 
 Qt::WindowFlags ScanPopup::unpinnedWindowFlags() const
@@ -1007,7 +1033,9 @@ void ScanPopup::focusTranslateLine()
 
 void ScanPopup::stopAudio() const
 {
-  definition->stopSound();
+  if ( auto view = qobject_cast< ArticleView * >( tabWidget->currentWidget() ) ) {
+    view->stopSound();
+  }
 }
 
 void ScanPopup::dictionaryBar_visibility_changed( bool visible )
@@ -1140,18 +1168,24 @@ void ScanPopup::switchExpandOptionalPartsMode()
 
 void ScanPopup::updateBackForwardButtons() const
 {
-  ui.goBackButton->setEnabled( definition->canGoBack() );
-  ui.goForwardButton->setEnabled( definition->canGoForward() );
+  if ( auto view = qobject_cast< ArticleView * >( tabWidget->currentWidget() ) ) {
+    ui.goBackButton->setEnabled( view->canGoBack() );
+    ui.goForwardButton->setEnabled( view->canGoForward() );
+  }
 }
 
 void ScanPopup::goBackButton_clicked() const
 {
-  definition->back();
+  if ( auto view = qobject_cast< ArticleView * >( tabWidget->currentWidget() ) ) {
+    view->back();
+  }
 }
 
 void ScanPopup::goForwardButton_clicked() const
 {
-  definition->forward();
+  if ( auto view = qobject_cast< ArticleView * >( tabWidget->currentWidget() ) ) {
+    view->forward();
+  }
 }
 
 void ScanPopup::setDictionaryIconSize()
@@ -1206,9 +1240,40 @@ void ScanPopup::alwaysOnTopClicked( bool checked )
 
 void ScanPopup::titleChanged( ArticleView *, const QString & title ) const
 {
-
   // Set icon for "Add to Favorites" button
   ui.sendWordToFavoritesButton->setIcon( isWordPresentedInFavorites( title ) ? blueStarIcon : starIcon );
+}
+
+void ScanPopup::openWebsiteInNewTab( QString name, QString url, QString dictId )
+{
+  if ( !isVisible() ) {
+    return;
+  }
+
+  auto view = new ArticleView( tabWidget,
+                               articleNetMgr,
+                               true,
+                               cfg,
+                               translateBox->translateLine(),
+                               dictionaryBar.toggleViewAction(),
+                               groupList->getCurrentGroup() );
+
+  view->setWebsite( true );
+  view->setWebsiteHost( QUrl( url ).host() );
+
+  // Connect vital signals
+  connect( view, &ArticleView::inspectSignal, this, &ScanPopup::inspectElementWhenPinned );
+  connect( view, &ArticleView::forceAddWordToHistory, this, &ScanPopup::forceAddWordToHistory );
+  connect( this, &ScanPopup::closeMenu, view, &ArticleView::closePopupMenu );
+  connect( view, &ArticleView::sendWordToHistory, this, &ScanPopup::sendWordToHistory );
+  connect( view, &ArticleView::typingEvent, this, &ScanPopup::typingEvent );
+  connect( view, &ArticleView::statusBarMessage, this, &ScanPopup::showStatusBarMessage );
+  connect( view, &ArticleView::pageLoaded, this, &ScanPopup::pageLoaded );
+
+  int index = tabWidget->addTab( view, name );
+  tabWidget->setCurrentIndex( index );
+
+  view->load( url, name );
 }
 
 bool ScanPopup::isWordPresentedInFavorites( const QString & word ) const
