@@ -77,7 +77,7 @@ bool ArticleWebView::eventFilter( QObject * obj, QEvent * ev )
       singleClickToDbClick = true;
       dbClicked            = false;
       QTimer::singleShot( QApplication::doubleClickInterval(), this, [ = ]() {
-        singleClickAction( pe );
+        singleClickAction();
       } );
     }
     if ( pe->buttons() & Qt::MiddleButton ) {
@@ -109,7 +109,7 @@ bool ArticleWebView::eventFilter( QObject * obj, QEvent * ev )
   return QWebEngineView::eventFilter( obj, ev );
 }
 
-void ArticleWebView::singleClickAction( QMouseEvent * event )
+void ArticleWebView::singleClickAction()
 {
   if ( !singleClickToDbClick ) {
     return;
