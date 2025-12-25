@@ -276,7 +276,7 @@ int main( int argc, char ** argv )
 #endif
   // High DPI screen support
   QGuiApplication::setHighDpiScaleFactorRoundingPolicy( Qt::HighDpiScaleFactorRoundingPolicy::PassThrough );
-  
+
   // Registration of custom URL schemes must be done before QCoreApplication/QApplication is created.
   const QStringList localSchemes = { "gdlookup",
                                      "gdau",

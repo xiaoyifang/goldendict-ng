@@ -23,7 +23,9 @@ bool ArticleWebPage::acceptNavigationRequest( const QUrl & resUrl, NavigationTyp
 
     // Use singleShot to avoid synchronous navigation request within acceptNavigationRequest,
     // which can lead to reentrancy issues or crashes.
-    QTimer::singleShot( 0, this, [ this, url ]() { setUrl( url ); } );
+    QTimer::singleShot( 0, this, [ this, url ]() {
+      setUrl( url );
+    } );
     return false;
   }
 
@@ -45,7 +47,9 @@ bool ArticleWebPage::acceptNavigationRequest( const QUrl & resUrl, NavigationTyp
 
     // Use singleShot to emit signal asynchronously. This prevents crashes if the
     // signal handler deletes this object or the containing tab.
-    QTimer::singleShot( 0, this, [ this, url ]() { emit linkClicked( url ); } );
+    QTimer::singleShot( 0, this, [ this, url ]() {
+      emit linkClicked( url );
+    } );
     return false;
   }
 
