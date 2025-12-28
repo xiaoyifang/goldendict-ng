@@ -22,10 +22,18 @@ if (WIN32)
     else ()
         message(STATUS "CMAKE_TOOLCHAIN_FILE is not set. Try fetching cached vcpkg.")
         include(FetchContent)
+        set(VCPKG_EXPORT_URL "https://github.com/xiaoyifang/goldendict-ng/releases/download/vcpkg_251224_afef7d8e6ea636f8bb14159191eeb9ca97c97c0a/goldendict-ng-vcpkg-export.zip")
+        set(VCPKG_EXPORT_HASH "SHA512=99E1843FC308938BDB4501C3C2456066F5755240A9BF006413510FE9FB7A196CBED62846D1955AF8EE7DF6855F0CC8E063FDF4187F0C19F6A986296919663A19")
+
+        if (CMAKE_GENERATOR_PLATFORM MATCHES "ARM64" OR CMAKE_SYSTEM_PROCESSOR MATCHES "ARM64")
+            # set(VCPKG_EXPORT_URL "")
+            # set(VCPKG_EXPORT_HASH "")
+        endif ()
+
         FetchContent_Declare(
                 vcpkg-export
-                URL https://github.com/xiaoyifang/goldendict-ng/releases/download/vcpkg_251224_afef7d8e6ea636f8bb14159191eeb9ca97c97c0a/goldendict-ng-vcpkg-export.zip
-                URL_HASH SHA512=99E1843FC308938BDB4501C3C2456066F5755240A9BF006413510FE9FB7A196CBED62846D1955AF8EE7DF6855F0CC8E063FDF4187F0C19F6A986296919663A19
+                URL ${VCPKG_EXPORT_URL}
+                URL_HASH ${VCPKG_EXPORT_HASH}
         )
         FetchContent_MakeAvailable(vcpkg-export)
         set(VCPKG_MANIFEST_MODE OFF CACHE BOOL "disable existing manifest mode caused by the existrance of vcpkg.json" FORCE)

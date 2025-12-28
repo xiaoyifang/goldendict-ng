@@ -143,7 +143,65 @@ jobs:
             ./build_dir/*.exe
             ./build_dir/*.7z
             ./build_dir/*.pdb
+  build_Windows:
+      runs-on: ${{ matrix.os }}
+      strategy:
+        matrix:
+          os: [windows-2025-arm64]
+          qt_ver: [ 6.7.2 ]
+      steps:
+        - uses: jurplel/install-qt-action@v4.2.1
+          with:
+            version: ${{ matrix.qt_ver }}
+            arch: win64_msvc2022_arm64
+            modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
+            # setup-python: 'false'
+        - name: Setup MSVC (ARM64)
+          uses: ilammy/msvc-dev-cmd@v1
+          with:
+            arch: amd64_arm64        
+        - uses: actions/checkout@v4
+          with:
+            submodules: true
+        - name: Build
+          id: build
+          run: |
+            New-Item -Path './build_dir' -ItemType Directory
 
+            # RelWithDebInfo + msvc's = .pdb file beside program file.
+            cmake -S . -B "./build_dir" `
+              -G Ninja `
+              -DCMAKE_BUILD_TYPE=RelWithDebInfo `
+              -DWITH_FFMPEG_PLAYER=OFF `
+              -DWITH_VCPKG_BREAKPAD=ON
+            cmake --build "./build_dir"
+        - name: Package
+          run: |
+            cd './build_dir'
+            cpack --verbose --trace
+            cd ..
+        - name: Move files
+          shell: bash
+          run: |
+            namePrefix=$(basename "$(ls ./build_dir/*.7z)" .7z)
+
+            # note the name will ensure `installer` ranked higher after sorting
+            cd ./build_dir
+            mv "${namePrefix}.7z" "${namePrefix}-Windows-installer.7z"
+            mv "${namePrefix}.exe" "${namePrefix}-Windows-installer.exe"
+            mv ./goldendict/goldendict.exe "./${namePrefix}-Windows-main-exe-file-only.exe"
+            mv ./goldendict/goldendict.pdb "./${namePrefix}-Windows-pdb-debug-file.pdb"
+            cd ..
+            ls -R
+        - uses: actions/upload-artifact@v4
+          with:
+            name: Windows-Qt${{ matrix.qt_ver }}
+            if-no-files-found: error
+            retention-days: 7
+            path: |
+              ./build_dir/*.exe
+              ./build_dir/*.7z
+              ./build_dir/*.pdb
   generate_other_staffs:
     runs-on: ubuntu-latest
     outputs:

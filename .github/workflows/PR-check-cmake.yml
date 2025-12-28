@@ -121,6 +121,33 @@ jobs:
             -DWITH_FFMPEG_PLAYER=OFF
           cd "./build_dir"
           ninja -k 0
+  job_window_arm64_build_check:
+    name: windows Build and analyze
+    runs-on: windows-2025-arm64
+    steps:
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v4.2.1
+        with:
+          version: 6.7.3
+          arch: win64_msvc2022_arm64
+          modules: qtwebengine qtwebchannel qtpositioning qt5compat qtmultimedia qtimageformats qtspeech
+          # setup-python: 'false'
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+      - name: Setup MSVC (ARM64)
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: amd64_arm64     
+      - name: Run build
+        run: |
+
+          cmake -S . -B "./build_dir" `
+            -G Ninja `
+            -DWITH_VCPKG_BREAKPAD=ON `
+            -DWITH_FFMPEG_PLAYER=OFF
+          cd "./build_dir"
+          ninja -k 0
 
   job_archlinux_build_check:
     name: archlinux Build and analyze
