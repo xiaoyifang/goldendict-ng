@@ -123,7 +123,7 @@ jobs:
           ninja -k 0
   job_window_arm64_build_check:
     name: windows ARM64 Build and analyze
-    runs-on: windows-2025-arm64
+    runs-on: windows-11-arm
     steps:
       - name: Install Qt
         uses: jurplel/install-qt-action@v4.2.1

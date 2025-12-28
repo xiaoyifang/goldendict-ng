@@ -10,7 +10,7 @@ env:
 
 jobs:
   create_new_cache:
-    runs-on: windows-2025-arm64
+    runs-on: windows-11-arm
     steps:
       - uses: actions/checkout@v4
       - name: Create export
