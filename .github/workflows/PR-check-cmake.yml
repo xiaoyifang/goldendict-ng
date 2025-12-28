@@ -122,7 +122,7 @@ jobs:
           cd "./build_dir"
           ninja -k 0
   job_window_arm64_build_check:
-    name: windows Build and analyze
+    name: windows ARM64 Build and analyze
     runs-on: windows-2025-arm64
     steps:
       - name: Install Qt
