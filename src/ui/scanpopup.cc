@@ -723,6 +723,10 @@ void ScanPopup::showTranslationFor( const QString & word ) const
   unsigned groupId = groupList->getCurrentGroup();
   definition->showDefinition( word, groupId );
   definition->focus();
+  int index = tabWidget->indexOf( definition );
+  if ( index != -1 ) {
+    tabWidget->setTabText( index, word );
+  }
 }
 
 const vector< sptr< Dictionary::Class > > & ScanPopup::getActiveDicts()
@@ -1263,27 +1267,6 @@ void ScanPopup::activeArticleChanged( const ArticleView * view, const QString & 
 {
   if ( view != tabWidget->currentWidget() || view->isWebsite() ) {
     return;
-  }
-
-  QString name = view->getWord();
-
-  if ( name.isEmpty() ) {
-    name = tr( "Definition" );
-  }
-
-  int index = tabWidget->indexOf( const_cast< ArticleView * >( view ) );
-  if ( index != -1 ) {
-    tabWidget->setTabText( index, name );
-    tabWidget->setTabToolTip( index, name );
-  }
-
-  if ( actionGroup != nullptr ) {
-    for ( auto action : actionGroup->actions() ) {
-      if ( action->data().toString() == id ) {
-        action->setChecked( true );
-        break;
-      }
-    }
   }
 }
 
