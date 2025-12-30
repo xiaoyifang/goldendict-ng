@@ -58,8 +58,8 @@ ScanPopup::ScanPopup( QWidget * parent,
   openSearchAction( this ),
   wordFinder( this ),
   dictionaryBar( this, configEvents, cfg.preferences.maxDictionaryRefsInContextMenu ),
-  hideTimer( this ),
-  articleNetMgr( articleNetMgr )
+  articleNetMgr( articleNetMgr ),
+  hideTimer( this )
 {
   // Init UI
   QWidget * toolBarWidget = new QWidget( this );
