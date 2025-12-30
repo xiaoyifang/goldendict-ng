@@ -18,7 +18,6 @@ using std::vector;
 /// dictionaries when requested.
 
 
-
 enum class ResourceType {
   UNTITLE,
   WELCOME,
