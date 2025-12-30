@@ -128,6 +128,8 @@ ScanPopup::ScanPopup( QWidget * parent,
                                 cfg.lastPopupGroupId );
 
   tabWidget->addTab( definition, tr( "Definition" ) );
+  tabWidget->tabBar()->setTabButton( 0, QTabBar::RightSide, nullptr );
+  tabWidget->tabBar()->setTabButton( 0, QTabBar::LeftSide, nullptr );
 
   resize( 247, 400 );
 
@@ -723,10 +725,8 @@ void ScanPopup::showTranslationFor( const QString & word ) const
   unsigned groupId = groupList->getCurrentGroup();
   definition->showDefinition( word, groupId );
   definition->focus();
-  int index = tabWidget->indexOf( definition );
-  if ( index != -1 ) {
-    tabWidget->setTabText( index, word );
-  }
+  //definition is the first tab
+  tabWidget->setTabText( 0, word );
 }
 
 const vector< sptr< Dictionary::Class > > & ScanPopup::getActiveDicts()
