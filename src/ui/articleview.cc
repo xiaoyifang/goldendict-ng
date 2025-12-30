@@ -2081,6 +2081,11 @@ void ArticleView::doubleClicked( QPoint pos )
     }
 
     emit sendWordToInputLine( selectedText );
+
+    if ( popupView ) {
+      return;
+    }
+
     // Do some checks to make sure there's a sensible selection indeed
     if ( Folding::applyWhitespaceOnly( selectedText.toStdU32String() ).size() && selectedText.size() < 60 ) {
       // Initiate translation
