@@ -3730,6 +3730,10 @@ from Stardict, Babylon and GLS dictionaries</source>
         <source>WARNING: %1</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Definition</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ScanPopupToolBar</name>
