@@ -193,6 +193,7 @@ private:
 
   void updateSuggestionList();
   void updateSuggestionList( const QString & text );
+  ArticleView * findArticleViewByDictId( const QString & dictId );
 private slots:
   void currentGroupChanged( int );
   void prefixMatchFinished();

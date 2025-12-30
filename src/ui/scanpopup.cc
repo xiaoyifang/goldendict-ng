@@ -350,6 +350,12 @@ void ScanPopup::onActionTriggered()
   if ( action != nullptr ) {
     auto dictId = action->data().toString();
     qDebug() << "Action triggered:" << dictId;
+
+    if ( auto otherView = findArticleViewByDictId( dictId ) ) {
+      tabWidget->setCurrentWidget( otherView );
+      return;
+    }
+
     definition->jumpToDictionary( dictId, true );
   }
 }
@@ -1255,7 +1261,7 @@ void ScanPopup::titleChanged( ArticleView * view, const QString & title ) const
 
 void ScanPopup::activeArticleChanged( const ArticleView * view, const QString & id )
 {
-  if ( view->isWebsite() ) {
+  if ( view != tabWidget->currentWidget() || view->isWebsite() ) {
     return;
   }
 
@@ -1270,6 +1276,28 @@ void ScanPopup::activeArticleChanged( const ArticleView * view, const QString & 
     tabWidget->setTabText( index, name );
     tabWidget->setTabToolTip( index, name );
   }
+
+  if ( actionGroup != nullptr ) {
+    for ( auto action : actionGroup->actions() ) {
+      if ( action->data().toString() == id ) {
+        action->setChecked( true );
+        break;
+      }
+    }
+  }
+}
+
+ArticleView * ScanPopup::findArticleViewByDictId( const QString & dictId )
+{
+  if ( cfg.preferences.openWebsiteInNewTab ) {
+    for ( int i = 0; i < tabWidget->count(); i++ ) {
+      auto * view = qobject_cast< ArticleView * >( tabWidget->widget( i ) );
+      if ( view && view->isWebsite() && view->getActiveArticleId() == dictId ) {
+        return view;
+      }
+    }
+  }
+  return nullptr;
 }
 
 void ScanPopup::openWebsiteInNewTab( QString name, QString url, QString dictId )
