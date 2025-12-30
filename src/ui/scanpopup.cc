@@ -1260,7 +1260,7 @@ void ScanPopup::activeArticleChanged( const ArticleView * view, const QString & 
   }
 
   QString name;
-  for ( auto const & d : allDictionaries ) {
+  for ( const auto & d : allDictionaries ) {
     if ( d->getId() == id.toStdString() ) {
       name = QString::fromUtf8( d->getName().c_str() );
       break;
