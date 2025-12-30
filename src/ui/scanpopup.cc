@@ -1259,13 +1259,7 @@ void ScanPopup::activeArticleChanged( const ArticleView * view, const QString & 
     return;
   }
 
-  QString name;
-  for ( const auto & d : allDictionaries ) {
-    if ( d->getId() == id.toStdString() ) {
-      name = QString::fromUtf8( d->getName().c_str() );
-      break;
-    }
-  }
+  QString name = view->getWord();
 
   if ( name.isEmpty() ) {
     name = tr( "Definition" );
