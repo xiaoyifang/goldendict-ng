@@ -22,6 +22,7 @@ public:
   void setSizePolicy( QSizePolicy::Policy hor, QSizePolicy::Policy ver );
 
   void setModel( QStringList & _words );
+  void setNoResults( bool noResults );
 
 public slots:
   void setPopupEnabled( bool enable );
@@ -35,6 +36,7 @@ private slots:
 
 private:
   QLineEdit * translate_line;
+  QAction * dropdown;
   bool m_popupEnabled;
   QCompleter * completer;
   QStringList words;

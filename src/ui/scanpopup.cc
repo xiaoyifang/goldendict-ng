@@ -708,8 +708,7 @@ void ScanPopup::updateSuggestionList( const QString & text )
   if ( !req.size() ) {
     // An empty request always results in an empty result
     wordFinder.cancel();
-
-
+    translateBox->setNoResults( false );
     return;
   }
 
@@ -975,9 +974,7 @@ void ScanPopup::prefixMatchFinished()
       }
 
       // Reset the noResults mark if it's on right now
-      auto translateLine = translateBox->translateLine();
-
-      Utils::Widget::setNoResultColor( translateLine, _results.isEmpty() );
+      translateBox->setNoResults( _results.isEmpty() );
       translateBox->setModel( _results );
     }
   }
