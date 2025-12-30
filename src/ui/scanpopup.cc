@@ -725,7 +725,7 @@ void ScanPopup::showTranslationFor( const QString & word ) const
   unsigned groupId = groupList->getCurrentGroup();
   definition->showDefinition( word, groupId );
   definition->focus();
-  //definition is the first tab
+  // definition is the first tab
   tabWidget->setTabText( 0, word );
 }
 
