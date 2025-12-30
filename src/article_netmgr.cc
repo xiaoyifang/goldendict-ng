@@ -15,11 +15,6 @@ using std::string;
 
 QNetworkReply * ArticleNetworkAccessManager::getArticleReply( const QNetworkRequest & req )
 {
-  if ( req.url().scheme() == "qrcx" ) {
-    // Do not support qrcx which is the custom define protocol.
-    return new BlockedNetworkReply( this );
-  }
-
   auto op = GetOperation;
 
   QUrl url            = req.url();
