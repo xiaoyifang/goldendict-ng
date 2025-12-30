@@ -295,6 +295,7 @@ ScanPopup::ScanPopup( QWidget * parent,
 
   connect( definition, &ArticleView::titleChanged, this, &ScanPopup::titleChanged );
   connect( definition, &ArticleView::activeArticleChanged, this, &ScanPopup::activeArticleChanged );
+  connect( definition, &ArticleView::sendWordToInputLine, this, &ScanPopup::translateWord );
 
   connect( GlobalBroadcaster::instance(),
            &GlobalBroadcaster::websiteDictionarySignal,
@@ -357,6 +358,8 @@ void ScanPopup::onActionTriggered()
       tabWidget->setCurrentWidget( otherView );
       return;
     }
+    
+    tabWidget->setCurrentWidget( definition );
 
     definition->jumpToDictionary( dictId, true );
   }
@@ -1321,6 +1324,7 @@ void ScanPopup::openWebsiteInNewTab( QString name, QString url, QString dictId )
   connect( view, &ArticleView::statusBarMessage, this, &ScanPopup::showStatusBarMessage );
   connect( view, &ArticleView::pageLoaded, this, &ScanPopup::pageLoaded );
   connect( view, &ArticleView::titleChanged, this, &ScanPopup::titleChanged );
+  connect( view, &ArticleView::sendWordToInputLine, this, &ScanPopup::translateWord );
 
   int index = tabWidget->addTab( view, name );
   tabWidget->setCurrentIndex( index );
