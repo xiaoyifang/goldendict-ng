@@ -358,7 +358,7 @@ void ScanPopup::onActionTriggered()
       tabWidget->setCurrentWidget( otherView );
       return;
     }
-    
+
     tabWidget->setCurrentWidget( definition );
 
     definition->jumpToDictionary( dictId, true );
