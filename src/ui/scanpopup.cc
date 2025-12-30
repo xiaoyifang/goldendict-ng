@@ -292,6 +292,7 @@ ScanPopup::ScanPopup( QWidget * parent,
   connect( definition, &ArticleView::statusBarMessage, this, &ScanPopup::showStatusBarMessage );
 
   connect( definition, &ArticleView::titleChanged, this, &ScanPopup::titleChanged );
+  connect( definition, &ArticleView::activeArticleChanged, this, &ScanPopup::activeArticleChanged );
 
   connect( GlobalBroadcaster::instance(),
            &GlobalBroadcaster::websiteDictionarySignal,
@@ -1238,10 +1239,43 @@ void ScanPopup::alwaysOnTopClicked( bool checked )
   }
 }
 
-void ScanPopup::titleChanged( ArticleView *, const QString & title ) const
+void ScanPopup::titleChanged( ArticleView * view, const QString & title ) const
 {
   // Set icon for "Add to Favorites" button
   ui.sendWordToFavoritesButton->setIcon( isWordPresentedInFavorites( title ) ? blueStarIcon : starIcon );
+
+  if ( view->isWebsite() ) {
+    int index = tabWidget->indexOf( view );
+    if ( index != -1 ) {
+      tabWidget->setTabText( index, title );
+      tabWidget->setTabToolTip( index, title );
+    }
+  }
+}
+
+void ScanPopup::activeArticleChanged( const ArticleView * view, const QString & id )
+{
+  if ( view->isWebsite() ) {
+    return;
+  }
+
+  QString name;
+  for ( auto const & d : allDictionaries ) {
+    if ( d->getId() == id.toStdString() ) {
+      name = QString::fromUtf8( d->getName().c_str() );
+      break;
+    }
+  }
+
+  if ( name.isEmpty() ) {
+    name = tr( "Definition" );
+  }
+
+  int index = tabWidget->indexOf( const_cast< ArticleView * >( view ) );
+  if ( index != -1 ) {
+    tabWidget->setTabText( index, name );
+    tabWidget->setTabToolTip( index, name );
+  }
 }
 
 void ScanPopup::openWebsiteInNewTab( QString name, QString url, QString dictId )
@@ -1255,6 +1289,7 @@ void ScanPopup::openWebsiteInNewTab( QString name, QString url, QString dictId )
     if ( auto view = qobject_cast< ArticleView * >( tabWidget->widget( i ) ) ) {
       if ( view->isWebsite() && view->getActiveArticleId() == dictId ) {
         view->load( url, name );
+        tabWidget->setTabText( i, name );
         return;
       }
     }
@@ -1280,6 +1315,7 @@ void ScanPopup::openWebsiteInNewTab( QString name, QString url, QString dictId )
   connect( view, &ArticleView::typingEvent, this, &ScanPopup::typingEvent );
   connect( view, &ArticleView::statusBarMessage, this, &ScanPopup::showStatusBarMessage );
   connect( view, &ArticleView::pageLoaded, this, &ScanPopup::pageLoaded );
+  connect( view, &ArticleView::titleChanged, this, &ScanPopup::titleChanged );
 
   int index = tabWidget->addTab( view, name );
   tabWidget->setCurrentIndex( index );

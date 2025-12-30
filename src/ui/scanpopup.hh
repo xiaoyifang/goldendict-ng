@@ -235,6 +235,7 @@ private slots:
   void alwaysOnTopClicked( bool checked );
 
   void titleChanged( ArticleView *, const QString & title ) const;
+  void activeArticleChanged( const ArticleView *, const QString & id );
   void updateFoundInDictsList();
   void onActionTriggered();
 };
