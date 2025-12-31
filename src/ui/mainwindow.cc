@@ -4213,6 +4213,10 @@ void MainWindow::openWebsiteInNewTab( QString name, QString url, QString dictId 
     return;
   }
 
+  if ( !isActiveWindow() ) {
+    return;
+  }
+
   auto view = findArticleViewByDictId( dictId );
   if ( view == nullptr ) {
     view = createNewTab( false, name );
