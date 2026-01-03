@@ -3028,11 +3028,11 @@ void MainWindow::installHotKeys()
 void MainWindow::hotKeyActivated( int hk )
 {
   if ( !hk ) {
-    GlobalBroadcaster::instance()->is_popup=false;
+    GlobalBroadcaster::instance()->is_popup = false;
     toggleMainWindow( false );
   }
   else if ( scanPopup ) {
-    GlobalBroadcaster::instance()->is_popup=true;
+    GlobalBroadcaster::instance()->is_popup = true;
 #if defined( Q_OS_UNIX ) && !defined( Q_OS_MACOS )
     // When the user requests translation with the Ctrl+C+C hotkey in certain apps
     // on some GNU/Linux systems, GoldenDict appears to handle Ctrl+C+C before the

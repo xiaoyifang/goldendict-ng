@@ -39,7 +39,6 @@ class GlobalBroadcaster: public QObject
   QMap< QString, sptr< Dictionary::Class > > dictMap;
 
 
-
 public:
   std::atomic_bool is_popup;
 
@@ -105,5 +104,5 @@ signals:
 
   void indexingDictionary( QString );
 
-  void websiteDictionarySignal( QString, QString, QString, bool);
+  void websiteDictionarySignal( QString, QString, QString, bool );
 };
