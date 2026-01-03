@@ -12,60 +12,9 @@
 
 using std::string;
 
-// AllowFrameReply
-
-AllowFrameReply::AllowFrameReply( QNetworkReply * _reply ):
-  baseReply( _reply )
-{
-  // Set base data
-
-  setOperation( baseReply->operation() );
-  setRequest( baseReply->request() );
-  setUrl( baseReply->url() );
-
-  QList< QByteArray > rawHeaders = baseReply->rawHeaderList();
-  for ( const auto & header : rawHeaders ) {
-    if ( header.toLower() != "x-frame-options" )
-      setRawHeader( header, baseReply->rawHeader( header ) );
-  }
-
-  connect( baseReply, &QNetworkReply::errorOccurred, this, &AllowFrameReply::applyError );
-
-  connect( baseReply, &QIODevice::readyRead, this, &QIODevice::readyRead );
-
-  // Redirect QNetworkReply signals
-
-  connect( baseReply, &QNetworkReply::finished, this, &QNetworkReply::finished );
-
-  setOpenMode( QIODevice::ReadOnly );
-}
-
-qint64 AllowFrameReply::bytesAvailable() const
-{
-  return baseReply->bytesAvailable();
-}
-
-void AllowFrameReply::applyError( QNetworkReply::NetworkError code )
-{
-  setError( code, baseReply->errorString() );
-  emit errorOccurred( code );
-}
-
-qint64 AllowFrameReply::readData( char * data, qint64 maxSize )
-{
-  auto bytesAvailable = baseReply->bytesAvailable();
-  qint64 size         = qMin( maxSize, bytesAvailable );
-  baseReply->read( data, size );
-  return size;
-}
 
 QNetworkReply * ArticleNetworkAccessManager::getArticleReply( const QNetworkRequest & req )
 {
-  if ( req.url().scheme() == "qrcx" ) {
-    // Do not support qrcx which is the custom define protocol.
-    return new BlockedNetworkReply( this );
-  }
-
   auto op = GetOperation;
 
   QUrl url            = req.url();
@@ -148,7 +97,7 @@ QNetworkReply * ArticleNetworkAccessManager::getArticleReply( const QNetworkRequ
 #endif
   }
 
-  return new AllowFrameReply( reply );
+  return reply;
 }
 
 string ArticleNetworkAccessManager::getHtml( ResourceType resourceType )
