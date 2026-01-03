@@ -497,6 +497,7 @@ void ScanPopup::editGroupRequested()
 
 void ScanPopup::translateWordFromClipboard( QClipboard::Mode m )
 {
+  GlobalBroadcaster::instance()->is_popup=true;
   QString subtype = QStringLiteral( "plain" );
   QString str     = QApplication::clipboard()->text( subtype, m );
   qDebug( "Translate from clipboard %d -> %s", qToUnderlying( m ), str.toStdString().c_str() );
@@ -1286,9 +1287,13 @@ ArticleView * ScanPopup::findArticleViewByDictId( const QString & dictId )
   return nullptr;
 }
 
-void ScanPopup::openWebsiteInNewTab( QString name, QString url, QString dictId )
+void ScanPopup::openWebsiteInNewTab( QString name, QString url, QString dictId, bool isPopup )
 {
   if ( !isVisible() ) {
+    return;
+  }
+
+  if (!isPopup) {
     return;
   }
 
