@@ -7,7 +7,6 @@ target_link_libraries(${GOLDENDICT} PRIVATE ${CARBON_LIBRARY})
 find_package(PkgConfig REQUIRED)
 
 set(Optional_Pkgs "")
-list(APPEND Optional_Pkgs "fmt")
 if (USE_SYSTEM_TOML)
     list(APPEND Optional_Pkgs "tomlplusplus")
 endif ()
@@ -51,7 +50,8 @@ pkg_check_modules(DEPS REQUIRED IMPORTED_TARGET
 
 find_package(Iconv REQUIRED)
 find_package(BZip2 REQUIRED)
-target_link_libraries(${GOLDENDICT} PRIVATE PkgConfig::DEPS BZip2::BZip2 Iconv::Iconv)
+find_package(fmt REQUIRED)
+target_link_libraries(${GOLDENDICT} PRIVATE PkgConfig::DEPS BZip2::BZip2 Iconv::Iconv fmt::fmt)
 
 if (WITH_EPWING_SUPPORT)
     find_library(EB_LIBRARY eb REQUIRED)
